@@ -1,11 +1,11 @@
 ---
-title: "Gewähren von Benutzerberechtigungen für bestimmte Labrichtlinien | Microsoft Docs"
-description: "Erfahren Sie, wie Sie Berechtigungen für bestimmte Labrichtlinien in DevTest Labs basierend auf den Anforderungen der Benutzer gewähren."
+title: Gewähren von Benutzerberechtigungen für bestimmte Labrichtlinien | Microsoft Docs
+description: Erfahren Sie, wie Sie Berechtigungen für bestimmte Labrichtlinien in DevTest Labs basierend auf den Anforderungen der Benutzer gewähren.
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 5ca829f0-eb69-40a1-ae26-03a629db1d7e
 ms.service: devtest-lab
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: v-craic
 ms.openlocfilehash: f92ad5e991bdb066bb9680b4865501076d43f450
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Gewähren von Benutzerberechtigungen für bestimmte Labrichtlinien
 ## <a name="overview"></a>Übersicht

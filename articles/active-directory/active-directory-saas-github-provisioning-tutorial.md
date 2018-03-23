@@ -1,8 +1,8 @@
 ---
-title: "Tutorial: Konfigurieren von GitHub für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in GitHub konfigurieren."
+title: 'Tutorial: Konfigurieren von GitHub für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in GitHub konfigurieren.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.openlocfilehash: 53eb2d0e76cb4765612dfd30226979d839a96235
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von GitHub für die automatische Benutzerbereitstellung
 

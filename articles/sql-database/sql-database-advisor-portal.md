@@ -1,25 +1,19 @@
 ---
-title: "Anwenden von Empfehlungen zur Leistung für Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Im Azure-Portal erhalten Sie Empfehlungen zur Leistungsverbesserung, mit denen Sie die Leistung Ihrer Azure SQL-Datenbank optimieren können."
+title: Anwenden von Empfehlungen zur Leistung für Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Im Azure-Portal erhalten Sie Empfehlungen zur Leistungsverbesserung, mit denen Sie die Leistung Ihrer Azure SQL-Datenbank optimieren können.
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: monicar
-ms.assetid: cda8a646-0584-4368-b28a-85cdd9b54fcd
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: fe76be59d6ee09049ed8c1343d1a91e42646c262
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a5772e67d5b91ff989ac6d049b14b1ccad5c952e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Suchen und Anwenden von Empfehlungen zur Leistung
 
@@ -52,7 +46,7 @@ Empfehlungen werden nach möglichen Auswirkungen auf die Leistung in die folgend
 > Azure SQL-Datenbank muss Aktivitäten mindestens einen Tag lang überwachen, um einige Empfehlungen aufstellen zu können. Der Azure SQL-Datenbank kann leichter für konsistente Abfragemuster optimiert werden als für zufällige, unregelmäßige Aktivitätsspitzen. Wenn gerade keine Empfehlungen verfügbar sind, wird der Grund dafür auf der Seite **Empfehlungen zur Leistung** erläutert.
 > 
 
-Außerdem können Sie hier die Verlaufsdaten der Vorgänge sehen. Wählen Sie eine Empfehlung oder einen Status aus, um weitere Details anzuzeigen.
+Außerdem können Sie hier die Verlaufsdaten der Vorgänge sehen. Wählen Sie eine Empfehlung oder einen Status aus, um weitere Informationen anzuzeigen.
 
 Hier sehen Sie die Empfehlung „Index erstellen“ im Azure-Portal.
 
@@ -130,7 +124,7 @@ Eine Empfehlung wird möglicherweise nicht umgehend angewendet. Im Portal finden
 | Wird zurückgesetzt |Die Empfehlung wurde angewendet, wird jedoch als nicht leistungsfähig erachtet und automatisch zurückgesetzt. |
 | Zurückgesetzt |Die Empfehlung wurde zurückgesetzt. |
 
-Klicken Sie auf eine in Bearbeitung befindliche Empfehlung in der Liste, um weitere Details anzuzeigen:
+Klicken Sie auf eine in Bearbeitung befindliche Empfehlung in der Liste, um weitere Informationen anzuzeigen:
 
 ![Empfohlene Indizes](./media/sql-database-advisor-portal/operations.png)
 

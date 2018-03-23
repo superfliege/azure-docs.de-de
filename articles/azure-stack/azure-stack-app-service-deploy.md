@@ -2,27 +2,32 @@
 title: 'Bereitstellen von App Service: Azure Stack | Microsoft-Dokumentation'
 description: Detaillierte Anleitung zum Bereitstellen von App Service in Azure Stack
 services: azure-stack
-documentationcenter: 
-author: brenduns
-manager: femila
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: apwestgarth
+manager: stefsch
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
-ms.author: brenduns
-ms.reviewer: anwestg
-ms.openlocfilehash: 570ef0b782e073220af8bc7299cc4ad388d47136
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 03/09/2018
+ms.author: anwestg
+ms.openlocfilehash: 2d26aedf37727a4e3d687cdc6c748268d546f60f
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack
+
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+
+> [!IMPORTANT]
+> Wenden Sie Update 1802 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack-Development Kit vor der Bereitstellung von Azure App Service bereit.
+>
+>
 
 Als Azure Stack-Cloudoperator können Sie Ihren Benutzern ermöglichen, Web- und API-Anwendungen zu erstellen. Zu diesem Zweck müssen Sie zunächst Ihrer Azure Stack-Bereitstellung den [App Service-Ressourcenanbieter](azure-stack-app-service-overview.md) hinzufügen, wie in diesem Artikel beschrieben. Nachdem Sie den App Service-Ressourcenanbieter installiert haben, können Sie ihn in Ihre Angebote und Pläne einfügen. Benutzer können ihn dann abonnieren, um den Dienst abzurufen und mit dem Erstellen von Anwendungen zu beginnen.
 
@@ -31,11 +36,9 @@ Als Azure Stack-Cloudoperator können Sie Ihren Benutzern ermöglichen, Web- und
 >
 >
 
-
-
 ## <a name="run-the-app-service-resource-provider-installer"></a>Ausführen des Installationsprogramms für den App Service-Ressourcenanbieter
 
-Das Installieren des App Service-Ressourcenanbieters in Ihrer Azure Stack-Umgebung kann bis zu einer Stunde dauern. Während dieses Vorgangs führt das Installationsprogramm Folgendes aus:
+Das Installieren des App Service-Ressourcenanbieters in Ihrer Azure Stack-Umgebung kann je nachdem, wie viele Rolleninstanzen Sie bereitstellen möchten, mindestens eine Stunde dauern. Während dieses Vorgangs führt das Installationsprogramm Folgendes aus:
 
 * Es erstellt im angegebenen Azure Stack-Speicherkonto einen Blobcontainer.
 * Es erstellt eine DNS-Zone und DNS-Einträge für App Service.
@@ -44,35 +47,47 @@ Das Installieren des App Service-Ressourcenanbieters in Ihrer Azure Stack-Umgebu
 
 Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgenden Schritte aus:
 
-1. Führen Sie „appservice.exe“ als Administrator (azurestack\CloudAdmin) aus.
+1. Führen Sie „appservice.exe“ als Administrator auf einem PC aus, der den Azure-Ressourcenverwaltungsendpunkt des Azure Stack-Administrators erreichen kann.
 
-2. Klicken Sie auf **Bereitstellung von App Service in Ihrer Azure Stack-Cloud**.
+2. Klicken Sie auf **App Service bereitstellen oder Upgrade auf die neueste Version durchführen**.
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image01.png)
+    ![App Service-Installationsprogramm][1]
 
 3. Lesen und akzeptieren Sie die Lizenzbedingungen von Microsoft-Software, und klicken Sie dann auf **Weiter**.
 
 4. Lesen und akzeptieren Sie die Drittanbieter-Lizenzbedingungen, und klicken Sie dann auf **Weiter**.
 
-5. Stellen Sie sicher, dass die App Service-Cloudkonfigurationsinformationen stimmen. Wenn Sie während der Bereitstellung mit dem Azure Stack Development Kit die Standardeinstellungen verwendet haben, können Sie hier die Standardwerte übernehmen. Wenn Sie die Optionen bei der Bereitstellung von Azure Stack jedoch angepasst haben, müssen Sie die Werte in diesem Fenster entsprechend anpassen. Wenn Sie z.B. das Domänensuffix „mycloud.com“ verwenden, muss Ihr Endpunkt in „management.mycloud.com“ geändert werden. Nachdem Sie Ihre Informationen bestätigt haben, klicken Sie auf **Weiter**.
+5. Stellen Sie sicher, dass die App Service-Cloudkonfigurationsinformationen stimmen. Wenn Sie während der Bereitstellung mit dem Azure Stack Development Kit die Standardeinstellungen verwendet haben, können Sie hier die Standardwerte übernehmen. Wenn Sie die Optionen bei der Bereitstellung von Azure Stack jedoch angepasst haben oder in einem integrierten System bereitstellen, müssen Sie die Werte in diesem Fenster entsprechend anpassen. Wenn Sie beispielsweise das Domänensuffix „mycloud.com“ verwenden, muss der Azure Resource Manager-Endpunkt des Azure Stack-Mandanten in „management.&lt;region&gt;.mycloud.com“ geändert werden. Nachdem Sie Ihre Informationen bestätigt haben, klicken Sie auf **Weiter**.
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image02.png)
+    ![App Service-Installationsprogramm][2]
 
 6. Auf der nächsten Seite:
     1. Klicken Sie neben dem Feld **Azure Stack-Abonnements** auf die Schaltfläche **Verbinden**.
-        - Wenn Sie Azure Active Directory (Azure AD) verwenden, geben Sie das Azure AD-Administratorkonto, das Sie bei der Bereitstellung von Azure Stack angegeben haben, und das zugehörige Kennwort ein. Klicken Sie auf **Anmelden**.
-        - Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden, geben Sie Ihr Administratorkonto an. Beispiel: cloudadmin@azurestack.local. Geben Sie Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
-    2. Wählen Sie im Feld **Azure Stack-Abonnements** Ihr Abonnement aus.
+        * Wenn Sie Azure Active Directory (Azure AD) verwenden, geben Sie das Azure AD-Administratorkonto, das Sie bei der Bereitstellung von Azure Stack angegeben haben, und das zugehörige Kennwort ein. Klicken Sie auf **Anmelden**.
+        * Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden, geben Sie Ihr Administratorkonto an. Beispiel: cloudadmin@azurestack.local. Geben Sie Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
+    2. Wählen Sie im Feld **Azure Stack-Abonnements** das **Standardabonnement des Anbieters** aus.
     3. Wählen Sie im Feld **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus, wenn Ihre Bereitstellung im Azure Stack Development Kit erfolgt.
-    4. Geben Sie einen **Ressourcengruppennamen** für Ihre App Service-Bereitstellung ein. Dieser ist standardmäßig auf **APPSERVICE\<REGION\>** festgelegt.
-    5. Geben Sie den **Namen des Speicherkontos** ein, das App Service während der Installation erstellen soll. Dieser ist standardmäßig auf **appsvclocalstor** festgelegt.
-    6. Klicken Sie auf **Weiter**.
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image03.png)
+    ![App Service-Installationsprogramm][3]
 
-7. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**. Die Adresse der Dateifreigabe muss den vollqualifizierten Domänennamen Ihres Dateiservers oder die IP-Adresse verwenden. Beispiel: \\„\appservicefileserver.local.cloudapp.azurestack.external\websites“ oder \\„\10.0.0.1\websites“.
+4. Sie haben jetzt die Möglichkeit zum Bereitstellen in einem vorhandenen virtuellen Netzwerk, das mit den Schritten [hier](azure-stack-app-service-before-you-get-started.md#virtual-network) konfiguriert wurde. Außerdem können Sie zulassen, dass das App Service-Installationsprogramm ein virtuelles Netzwerk und zugehörige Subnetze erstellt.
+    1. Wählen Sie **Create VNet with default settings** (VNET mit Standardeinstellungen erstellen), übernehmen Sie die Standardwerte, und klicken Sie auf **Weiter**, oder;
+    2. Wählen Sie **Use existing VNet and Subnets** (Vorhandenes VNET und zugehörige Subnetze verwenden).
+        1. Wählen Sie die **Ressourcengruppe** aus, die Ihr virtuelles Netzwerk enthält;
+        2. Wählen Sie den richtigen Namen des **virtuellen Netzwerks** aus, in dem Sie bereitstellen möchten;
+        3. Wählen Sie die richtigen **Subnetz**werte für die einzelnen erforderlichen Rollensubnetze aus;
+        4. Klicken Sie unten auf der Seite auf **Weiter**
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image04.png)
+    ![App Service-Installationsprogramm][4]
+
+7. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**. Die Adresse der Dateifreigabe muss den vollqualifizierten Domänennamen oder die IP-Adresse Ihres Dateiservers verwenden. Beispiel: \\„\appservicefileserver.local.cloudapp.azurestack.external\websites“ oder \\„\10.0.0.1\websites“.
+
+   > [!NOTE]
+   > Das Installationsprogramm versucht, die Konnektivität mit der Dateifreigabe zu testen, bevor es fortgesetzt wird.  Wenn Sie sich jedoch für die Bereitstellung in einem vorhandenen virtuellen Netzwerk entschieden haben, kann das Installationsprogramm möglicherweise keine Verbindung mit der Dateifreigabe herstellen, und es wird eine Warnung mit der Frage angezeigt, ob Sie den Vorgang fortsetzen möchten.  Überprüfen Sie die Dateifreigabeinformationen, und fahren Sie fort, wenn diese richtig sind.
+   >
+   >
+
+   ![App Service-Installationsprogramm][7]
 
 8. Auf der nächsten Seite:
     1. Geben Sie im Feld **Identitätsanwendungs-ID** die GUID der Anwendung ein, die Sie für die Identität verwenden (aus Azure AD).
@@ -81,9 +96,9 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
     4. Geben Sie im Feld **Azure Resource Manager-Stammzertifikatsdatei** den Speicherort der Zertifikatsdatei ein (oder navigieren Sie zu diesem).
     5. Klicken Sie auf **Weiter**.
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image05.png)
+    ![App Service-Installationsprogramm][9]
 
-9. Klicken Sie für jede der drei Zertifikatsdateien auf **Durchsuchen**, und navigieren Sie zu der entsprechenden Zertifikatsdatei. Geben Sie das Kennwort für jedes Zertifikat an. Diese Zertifikate haben Sie im Schritt [Erstellen der erforderlichen Zertifikate](azure-stack-app-service-deploy.md#create-the-required-certificates) erstellt. Klicken Sie auf **Weiter**, nachdem Sie alle Informationen eingegeben haben.
+9. Klicken Sie für jede der drei Zertifikatsdateien auf **Durchsuchen**, und navigieren Sie zu der entsprechenden Zertifikatsdatei. Sie müssen das Kennwort für jedes Zertifikat angeben. Diese Zertifikate haben Sie im Schritt [Erstellen der erforderlichen Zertifikate](azure-stack-app-service-before-you-get-started.md#get-certificates) erstellt. Klicken Sie auf **Weiter**, nachdem Sie alle Informationen eingegeben haben.
 
     | Box | Beispielname für eine Zertifikatsdatei |
     | --- | --- |
@@ -93,11 +108,16 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     Wenn Sie beim Erstellen der Zertifikate ein anderes Domänensuffix verwendet haben, verwenden die Zertifikatsdateinamen nicht *local.AzureStack.external*. Verwenden Sie stattdessen Ihre benutzerdefinierten Domäneninformationen.
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image06.png)    
+    ![App Service-Installationsprogramm][10]
 
 10. Geben Sie die SQL Server-Informationen für die Serverinstanz ein, auf der die Datenbanken des App Service-Ressourcenanbieters gehostet werden sollen, und klicken Sie dann auf **Weiter**. Das Installationsprogramm überprüft die SQL-Verbindungseigenschaften.
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image07.png)    
+    > [!NOTE]
+    > Das Installationsprogramm versucht, die Konnektivität mit SQL Server zu testen, bevor es fortgesetzt wird.  Wenn Sie sich jedoch für die Bereitstellung in einem vorhandenen virtuellen Netzwerk entschieden haben, kann das Installationsprogramm möglicherweise keine Verbindung mit SQL Server herstellen, und es wird eine Warnung mit der Frage angezeigt, ob Sie den Vorgang fortsetzen möchten.  Überprüfen Sie die SQL Server-Informationen, und fahren Sie fort, wenn diese richtig sind.
+    >
+    >
+
+    ![App Service-Installationsprogramm][11]
 
 11. Überprüfen Sie die Optionen für Rolleninstanz und SKU. Als Standardwerte werden die Mindestanzahl der Instanz und die Mindest-SKU für jede Rolle in einer ASDK-Bereitstellung verwendet. Eine Übersicht über die vCPU- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
 
@@ -114,10 +134,10 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
     | FrontEnd | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Leitet Anforderungen an App Service-Anwendungen weiter |
     | Freigegebener Worker | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Hostet Web oder -API-Anwendungen und Azure Functions-Apps. Sie können ggf. weitere Instanzen hinzufügen. Als Operator können Sie Ihr Angebot definieren und eine SKU-Ebene auswählen. Die Ebenen müssen mindestens eine vCPU aufweisen. |
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image08.png)    
+    ![App Service-Installationsprogramm][13]
 
     > [!NOTE]
-    > **Windows Server 2016 Core ist kein unterstütztes Plattformimage für die Verwendung mit Azure App Service für Azure Stack**.
+    > **Windows Server 2016 Core ist kein unterstütztes Plattformimage für die Verwendung mit Azure App Service für Azure Stack.  Verwenden Sie Evaluierungsimages nicht für Produktionsbereitstellungen.**
 
 12. Wählen Sie im Feld **Plattformimage auswählen** aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für Windows Server 2016 aus. Klicken Sie auf **Weiter**.
 
@@ -126,21 +146,20 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
      2. Geben Sie den Administratorbenutzernamen für den virtuellen Computer der anderen Rollen und das zugehörige Kennwort ein.
      3. Klicken Sie auf **Weiter**.
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image09.png)    
+    ![App Service-Installationsprogramm][15]    
 
 14. Auf der Zusammenfassungsseite:
     1. Überprüfen Sie Ihre Auswahl. Um Änderungen vorzunehmen, verwenden Sie die Schaltfläche **Zurück**, um auf die vorherigen Seiten zu gelangen.
     2. Wenn die Konfigurationen richtig sind, aktivieren Sie das Kontrollkästchen.
     3. Um die Bereitstellung zu starten, klicken Sie auf **Weiter**.
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image10.png)    
+    ![App Service-Installationsprogramm][16]
 
 15. Auf der nächsten Seite:
     1. Verfolgen Sie den Installationsstatus nach. Bei Auswahl der Standardoptionen dauert die Bereitstellung von App Service in Azure Stack ca. 60 Minuten.
     2. Klicken Sie nach erfolgreichem Abschluss des Installationsprogramms auf **Beenden**.
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image11.png)    
-
+    ![App Service-Installationsprogramm][17]
 
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Überprüfen der Installation von App Service in Azure Stack
 
@@ -148,7 +167,7 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
 2. Überprüfen Sie in der Übersicht unter „Status“, ob für **Status** die Option **Alle Rollen sind bereit** angezeigt wird.
 
-    ![App Service-Verwaltung](media/azure-stack-app-service-deploy/image12.png)    
+    ![App Service-Verwaltung](media/azure-stack-app-service-deploy/image12.png)
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Testen von App Service in Azure Stack
 
@@ -196,3 +215,22 @@ Sie können auch weitere [PaaS-Dienste (Platform-as-a-Service)](azure-stack-tool
 [Azure_Stack_App_Service_preview_installer]: http://go.microsoft.com/fwlink/?LinkID=717531
 [App_Service_Deployment]: http://go.microsoft.com/fwlink/?LinkId=723982
 [AppServiceHelperScripts]: http://go.microsoft.com/fwlink/?LinkId=733525
+
+<!--Image references-->
+[1]: ./media/azure-stack-app-service-deploy/app-service-installer.png
+[2]: ./media/azure-stack-app-service-deploy/app-service-azure-stack-arm-endpoints.png
+[3]: ./media/azure-stack-app-service-deploy/app-service-azure-stack-subscription-information.png
+[4]: ./media/azure-stack-app-service-deploy/app-service-default-VNET-config.png
+[5]: ./media/azure-stack-app-service-deploy/app-service-custom-VNET-config.png
+[6]: ./media/azure-stack-app-service-deploy/app-service-custom-VNET-config-with-values.png
+[7]: ./media/azure-stack-app-service-deploy/app-service-fileshare-configuration.png
+[8]: ./media/azure-stack-app-service-deploy/app-service-fileshare-configuration-error.png
+[9]: ./media/azure-stack-app-service-deploy/app-service-identity-app.png
+[10]: ./media/azure-stack-app-service-deploy/app-service-certificates.png
+[11]: ./media/azure-stack-app-service-deploy/app-service-sql-configuration.png
+[12]: ./media/azure-stack-app-service-deploy/app-service-sql-configuration-error.png
+[13]: ./media/azure-stack-app-service-deploy/app-service-cloud-quantities.png
+[14]: ./media/azure-stack-app-service-deploy/app-service-windows-image-selection.png
+[15]: ./media/azure-stack-app-service-deploy/app-service-role-credentials.png
+[16]: ./media/azure-stack-app-service-deploy/app-service-azure-stack-deployment-summary.png
+[17]: ./media/azure-stack-app-service-deploy/app-service-deployment-progress.png

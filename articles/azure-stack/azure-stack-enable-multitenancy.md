@@ -1,11 +1,11 @@
 ---
-title: "Aktivieren der Mehrinstanzenfähigkeit in Azure Stack | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mehrere Azure Active Directory-Verzeichnisse in Azure Stack unterstützen."
+title: Aktivieren der Mehrinstanzenfähigkeit in Azure Stack | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mehrere Azure Active Directory-Verzeichnisse in Azure Stack unterstützen.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: mabrigg
 ms.openlocfilehash: 66689d80cbee0be36b3e8c9951a43d0d43fa01be
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Aktivieren der Mehrinstanzenfähigkeit in Azure Stack
 

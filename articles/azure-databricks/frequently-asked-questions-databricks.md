@@ -1,8 +1,8 @@
 ---
-title: "Azure Databricks: Häufig gestellte Fragen und Hilfe | Microsoft-Dokumentation"
-description: "Erhalten Sie Antworten auf häufig gestellte Fragen und Informationen zur Problembehandlung für Azure Databricks."
+title: 'Azure Databricks: Häufig gestellte Fragen und Hilfe | Microsoft-Dokumentation'
+description: Erhalten Sie Antworten auf häufig gestellte Fragen und Informationen zur Problembehandlung für Azure Databricks.
 services: azure-databricks
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: nitinme
 ms.openlocfilehash: 5da6ffc346cc0e7f0f83bf4a4c33600b668a17ca
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Häufig gestellte Fragen zu Azure Databricks
 
@@ -46,7 +46,7 @@ Hier folgen einige Probleme, die mit Databricks auftreten können.
 
 #### <a name="error-message"></a>Fehlermeldung
 
-„Dieses Abonnement ist nicht für die Verwendung des Namespace „Microsoft.Databricks“ registriert. Informationen zum Registrieren von Abonnements finden Sie unter „https://aka.ms/rps-not-found“. (Code: MissingSubscriptionRegistration)“
+„Dieses Abonnement ist nicht für die Verwendung des Namespace „Microsoft.Databricks“ registriert. Informationen zum Registrieren von Abonnements finden Sie unter https://aka.ms/rps-not-found. (Code: MissingSubscriptionRegistration)“
 
 #### <a name="solution"></a>Lösung
 
@@ -101,7 +101,7 @@ Databricks-Cluster verwenden eine öffentliche IP-Adresse pro Knoten. Wenn für 
 #### <a name="error-message"></a>Fehlermeldung
 
 „Startfehler des Cloudanbieters: Beim Einrichten des Clusters ist ein Fehler des Cloudanbieters aufgetreten. Weitere Informationen finden Sie im Databricks-Handbuch.
-Azure-Fehlercode: MissingSubscriptionRegistration; Azure-Fehlermeldung: Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.Compute“ registriert. Informationen zum Registrieren von Abonnements finden Sie unter „https://aka.ms/rps-not-found“.“
+Azure-Fehlercode: MissingSubscriptionRegistration; Azure-Fehlermeldung: Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.Compute“ registriert. Informationen zum Registrieren von Abonnements finden Sie unter https://aka.ms/rps-not-found.“
 
 #### <a name="solution"></a>Lösung
 

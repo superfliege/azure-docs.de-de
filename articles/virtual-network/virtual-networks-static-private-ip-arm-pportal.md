@@ -1,6 +1,6 @@
 ---
-title: "Konfigurieren von privaten IP-Adressen für virtuelle Computer – Azure-Portal | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie private IP-Adressen für virtuelle Computer über das Azure-Portal konfigurieren."
+title: Konfigurieren von privaten IP-Adressen für virtuelle Computer – Azure-Portal | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie private IP-Adressen für virtuelle Computer über das Azure-Portal konfigurieren.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2679c7cb75c438402f3ab64c3e14c964cb8a85d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d551758277373995a6f92e1a25a59d170464fe5e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer über das Azure-Portal
 
 > [!div class="op_single_selector"]
-> * [Azure portal](virtual-networks-static-private-ip-arm-pportal.md)
+> * [Azure-Portal](virtual-networks-static-private-ip-arm-pportal.md)
 > * [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 > * [Azure-CLI](virtual-networks-static-private-ip-arm-cli.md)
 > * [Azure-Portal (klassisch)](virtual-networks-static-private-ip-classic-pportal.md)
@@ -41,7 +41,7 @@ Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie könn
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Für die folgenden Schritte wird vorausgesetzt, dass bereits eine einfache Umgebung erstellt wurde. Wenn Sie die in diesem Dokument aufgeführten Schritte ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](virtual-networks-create-vnet-arm-pportal.md)beschrieben.
+Für die folgenden Schritte wird vorausgesetzt, dass bereits eine einfache Umgebung erstellt wurde. Wenn Sie die in diesem Dokument aufgeführten Schritte ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines virtuellen Netzwerks](quick-create-portal.md) beschrieben.
 
 ## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>Erstellen einer VM zum Testen statischer privater IP-Adressen
 Im Azure-Portal ist es nicht möglich, beim Erstellen eines virtuellen Computers im Ressourcen-Manager-Bereitstellungsmodus eine statische private IP-Adresse festzulegen. Sie müssen den virtuellen Computer zuerst erstellen und dann seine private IP-Adresse als statisch festlegen.

@@ -1,25 +1,19 @@
 ---
-title: "Tabellenüberwachung, TDS-Umleitung und IP-Endpunkte für Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Erfahren Sie etwas über die Überwachung, TDS-Umleitungen und IP-Endpunktänderungen beim Implementieren der Tabellenüberwachung in Azure SQL-Datenbank."
+title: Tabellenüberwachung, TDS-Umleitung und IP-Endpunkte für Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Erfahren Sie etwas über die Überwachung, TDS-Umleitungen und IP-Endpunktänderungen beim Implementieren der Tabellenüberwachung in Azure SQL-Datenbank.
 services: sql-database
-documentationcenter: 
 author: giladm
-manager: jhubbard
-editor: 
-ms.assetid: 4ef19ed1-e798-43a2-ad99-0e563f93ab53
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: giladm
-ms.openlocfilehash: 42c89f09eee4394fec7d2f33f51ddc5875587530
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 1053869ed26739463ab6035692052d7b6b34bff0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL-Datenbank – Unterstützung für kompatible Clients und IP-Endpunktänderungen für die Tabellenüberwachung
 
@@ -57,25 +51,25 @@ Der neue Datenbank-IP-Endpunkt ist abhängig von der Region der Datenbank:
 | China, Norden |139.217.29.176, 139.217.28.254 |
 | China, Osten |42.159.245.65, 42.159.246.245 |
 | Australien (Osten) |104.210.91.32, 40.126.244.159, 191.239.64.60, 40.126.255.94 |
-| Australien (Südost) |191.239.184.223, 40.127.85.81, 191.239.161.83, 40.127.81.130 |
+| Australien, Südosten |191.239.184.223, 40.127.85.81, 191.239.161.83, 40.127.81.130 |
 | Brasilien Süd |104.41.44.161, 104.41.62.230, 23.97.99.54, 104.41.59.191 |
 | USA (Mitte) |104.43.255.70, 40.83.14.7, 23.99.128.244, 40.83.15.176 |
 | USA, Mitte (EUAP) |52.180.178.16, 52.180.176.190 |
-| Ostasien |23.99.125.133, 13.75.40.42, 23.97.71.138, 13.94.43.245 |
+| Asien, Osten |23.99.125.133, 13.75.40.42, 23.97.71.138, 13.94.43.245 |
 | USA (Ost) 2 |104.209.141.31, 104.208.238.177, 191.237.131.51, 104.208.235.50 |
 | USA (Ost) |23.96.107.223, 104.41.150.122, 23.96.38.170, 104.41.146.44 |
 | USA, Osten (EUAP) |52.225.190.86, 52.225.191.187 |
-| Indien (Mitte) |104.211.98.219, 104.211.103.71 |
+| Indien, Mitte |104.211.98.219, 104.211.103.71 |
 | Indien (Süden) |104.211.227.102, 104.211.225.157 |
 | Indien, Westen |104.211.161.152, 104.211.162.21 |
-| Japan Ost |104.41.179.1, 40.115.253.81, 23.102.64.207, 40.115.250.196 |
-| Japan (Westen) |104.214.140.140, 104.214.146.31, 191.233.32.34, 104.214.146.198 |
-| USA (Mitte/Norden) |191.236.155.178, 23.96.192.130, 23.96.177.169, 23.96.193.231 |
+| Japan, Osten |104.41.179.1, 40.115.253.81, 23.102.64.207, 40.115.250.196 |
+| Japan, Westen |104.214.140.140, 104.214.146.31, 191.233.32.34, 104.214.146.198 |
+| USA Nord Mitte |191.236.155.178, 23.96.192.130, 23.96.177.169, 23.96.193.231 |
 | Nordeuropa |104.41.209.221, 40.85.139.245, 137.116.251.66, 40.85.142.176 |
-| USA (Mitte/Süden) |191.238.184.128, 40.84.190.84, 23.102.160.153, 40.84.186.66 |
-| Südostasien |104.215.198.156, 13.76.252.200, 23.97.51.109, 13.76.252.113 |
-| Westeuropa |104.40.230.120, 13.80.23.64, 137.117.171.161, 13.80.8.37, 104.47.167.215, 40.118.56.193, 104.40.176.73, 40.118.56.20 |
-| USA (West) |191.236.123.146, 138.91.163.240, 168.62.194.148, 23.99.6.91 |
+| USA Süd Mitte |191.238.184.128, 40.84.190.84, 23.102.160.153, 40.84.186.66 |
+| Asien, Südosten |104.215.198.156, 13.76.252.200, 23.97.51.109, 13.76.252.113 |
+| Europa, Westen |104.40.230.120, 13.80.23.64, 137.117.171.161, 13.80.8.37, 104.47.167.215, 40.118.56.193, 104.40.176.73, 40.118.56.20 |
+| USA (Westen) |191.236.123.146, 138.91.163.240, 168.62.194.148, 23.99.6.91 |
 | USA, Westen 2 |13.66.224.156, 13.66.227.8 |
 | USA, Westen-Mitte |52.161.29.186, 52.161.27.213 |
 | Kanada, Mitte |13.88.248.106, 13.88.248.110 |

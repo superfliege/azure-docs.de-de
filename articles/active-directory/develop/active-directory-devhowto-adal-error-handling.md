@@ -1,8 +1,8 @@
 ---
-title: "Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)"
-description: "Stellt Anleitungen für die Fehlerbehandlung und bewährten Methoden für ADAL-Clientanwendungen bereit."
+title: Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)
+description: Stellt Anleitungen für die Fehlerbehandlung und bewährten Methoden für ADAL-Clientanwendungen bereit.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: danieldobalian
 manager: mtillman
 ms.author: bryanla
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
-ms.custom: 
-ms.openlocfilehash: 275ab65569a1861f046c8ee77914e0859d41d5f7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.date: 02/27/2017
+ms.custom: ''
+ms.openlocfilehash: 2b4c945f5707c158c76c8edbd233d1a8b034111f
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)
 
@@ -479,6 +479,9 @@ Wir haben ein [vollständiges Beispiel](https://github.com/Azure-Samples/active-
 
 ## <a name="error-and-logging-reference"></a>Fehler- und Protokollierungsreferenz
 
+### <a name="logging-personal-identifiable-information-pii--organizational-identifiable-information-oii"></a>Protokollieren von personenbezogenen Informationen (PII) und organisationsbezogenen Informationen (OII)
+Standardmäßig werden bei der ADAL-Protokollierung keine personen- oder organisationsbezogenen Informationen erfasst. Die Bibliothek erlaubt App-Entwicklern aber, dies über einen Setter in der Protokollierungsklasse zu aktivieren. Nach der Aktivierung von personen- und organisationsbezogenen Daten ist die App für die sichere Verarbeitung hochgradig sensibler Daten und die Einhaltung von gesetzlichen Anforderungen verantwortlich.
+
 ### <a name="net"></a>.NET
 
 #### <a name="adal-library-errors"></a>Fehler der ADAL-Bibliothek
@@ -487,7 +490,7 @@ Um spezifische ADAL-Fehler zu untersuchen, stellt der Quellcode im [azure-active
 
 #### <a name="guidance-for-error-logging-code"></a>Leitfaden für Fehlerprotokollierungscode
 
-Die ADAL .NET-Protokollierung ändert sich abhängig von der Plattform, auf der gearbeitet wird. Code zum Aktivieren der Protokollierung finden Sie in der [Dokumentation zur Protokollierung](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet#diagnostics).
+Die ADAL .NET-Protokollierung ändert sich abhängig von der Plattform, auf der gearbeitet wird. Code zum Aktivieren der Protokollierung finden Sie im [Protokollierungs-Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Logging-in-ADAL.Net).
 
 ### <a name="android"></a>Android
 
@@ -497,14 +500,9 @@ Um spezifische ADAL-Fehler zu untersuchen, stellt der Quellcode im [azure-active
 
 #### <a name="operating-system-errors"></a>Betriebssystemfehler
 
-Android-Betriebssystemfehler werden durch AuthenticationException in ADAL verfügbar gemacht, sind als "SERVER_INVALID_REQUEST" identifizierbar und können durch die Fehlerbeschreibungen weiter differenziert werden. Die beiden Hauptmeldungen, die eine Anwendung auswählen kann, um sie in der Benutzeroberfläche anzuzeigen, sind:
+Android-Betriebssystemfehler werden durch AuthenticationException in ADAL verfügbar gemacht, sind als "SERVER_INVALID_REQUEST" identifizierbar und können durch die Fehlerbeschreibungen weiter differenziert werden. 
 
-- SSL-Fehler 
-  - [Endbenutzer verwendet Chrome 53](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/SSL-Certificate-Validation-Issue)
-  - [Zertifikatkette hat ein Zertifikat als zusätzlichen Download gekennzeichnet (Benutzer muss sich an den IT-Administrator wenden)](https://vkbexternal.partners.extranet.microsoft.com/VKBWebService/ViewContent.aspx?scid=KB;EN-US;3203929)
-  - Das Gerät vertraut der Stammzertifizierungsstelle nicht. Wenden Sie sich an den IT-Administrator. 
-- Netzwerkbezogene Fehler 
-  - [Netzwerkproblem, das möglicherweise im Zusammenhang mit der Überprüfung des SSL-Zertifikats steht](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/SSL-Certificate-Validation-Issue), einzelner Wiederholungsversuch kann unternommen werden
+Eine vollständige Liste häufiger Fehler und die Schritte, die beim Auftreten dieser Fehler in Ihrer App oder beim Endbenutzer ausgeführt werden sollten, finden Sie im [ADAL-Android-Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki). 
 
 #### <a name="guidance-for-error-logging-code"></a>Leitfaden für Fehlerprotokollierungscode
 
@@ -521,6 +519,15 @@ Logger.getInstance().setExternalLogger(new ILogger() {
 
 // 2. Set the log level
 Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
+
+// By default, the `Logger` does not capture any PII or OII
+
+// PII or OII will be logged
+Logger.getInstance().setEnablePII(true);
+
+// To STOP logging PII or OII, use the following setter
+Logger.getInstance().setEnablePII(false);
+
 
 // 3. Send logs to logcat.
 adb logcat > "C:\logmsg\logfile.txt";

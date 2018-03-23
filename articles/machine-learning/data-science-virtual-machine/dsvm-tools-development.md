@@ -1,13 +1,13 @@
 ---
-title: "Entwicklungstools für die Data Science-VM – Azure | Microsoft-Dokumentation"
-description: "Entwicklungstools für die Data Science-VM."
-keywords: "Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science"
+title: Entwicklungstools für die Data Science-VM – Azure | Microsoft-Dokumentation
+description: Entwicklungstools für die Data Science-VM.
+keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 6aef0fbe44e19b515c2bc10c0e7c38fabac10dae
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 0d7ee9a54c2c11f814ce041c5c7e5bd9f2e605e5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Entwicklungstools auf der Data Science-VM
 
@@ -31,7 +31,7 @@ Die Data Science-VM (DSVM) bündelt mehrere beliebte Tools und IDEs zu einer pro
 | Was ist das?   | Allgemeine IDE      |
 | Unterstützte DSVM-Versionen      | Windows      |
 | Typische Verwendung      | Softwareentwicklung    |
-| Konfiguration/Installation auf der DSVM      | Data Science-Workload (Python- und R-Tools), Azure-Workload (Hadoop, Data Lake), Node.js, SQL Server-Tools    |
+| Konfiguration/Installation auf der DSVM      | Data Science-Workload (Python- und R-Tools), Azure-Workload (Hadoop, Data Lake), Node.js, SQL Server-Tools, [Visual Studio-Tools für AI](https://github.com/Microsoft/vs-tools-for-ai)    |
 | Verwendung/Ausführung      | Desktopverknüpfung (`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe`)    |
 | Verwandte Tools auf der DSVM      |     Visual Studio Code, RStudio, Juno  |
 

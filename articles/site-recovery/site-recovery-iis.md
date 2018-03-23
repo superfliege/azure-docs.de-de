@@ -2,25 +2,19 @@
 title: Replizieren einer IIS-basierten Webanwendung mit mehreren Ebenen mit Azure Site Recovery | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie virtuelle Computer einer IIS-Webfarm mit Azure Site Recovery replizieren.
 services: site-recovery
-documentationcenter: 
 author: nsoneji
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/05/2018
 ms.author: nisoneji
-ms.openlocfilehash: a4a8ea14fecac73b187c9c7d3f9ca318bb2671c5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1ed0184ac76b5fb3e607458559327da5e8fe90c5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="replicate-a-multi-tier-iis-based-web-application-by-using-site-recovery"></a>Replizieren einer IIS-basierten Webanwendung mit mehreren Ebenen mit Site Recovery
+# <a name="replicate-a-multi-tier-iis-based-web-application"></a>Replizieren einer IIS-basierten Webanwendung mit mehreren Ebenen
 
 Die Anwendungssoftware ist der Motor der geschäftlichen Produktivität in einer Organisation. Verschiedene Webanwendungen können in einer Organisation unterschiedliche Zwecke erfüllen. Einige Anwendungen, z.B. Anwendungen für Gehaltsabrechnungen, Finanzanwendungen und Kunden zugängliche Websites sind für ein Unternehmen möglicherweise von entscheidender Bedeutung. Um einen Produktivitätsverlust zu verhindern, ist es für die Organisation wichtig, dass diese Anwendungen ständig verfügbar sind und ausgeführt werden. Vor allem kann eine ständige Verfügbarkeit dieser Anwendungen Schaden an der Marke oder dem Image der Organisation verhindern.
 
@@ -36,7 +30,7 @@ In diesem Artikel wird beschrieben, wie Sie mit [Azure Site Recovery](site-recov
 
 Bevor Sie beginnen, stellen Sie sicher, dass Sie wissen, wie Sie die folgenden Aufgaben ausführen:
 
-* [Replizieren eines virtuellen Computers in Azure](site-recovery-vmware-to-azure.md)
+* [Replizieren eines virtuellen Computers in Azure](vmware-azure-tutorial.md)
 * [Entwerfen eines Netzwerks für die Wiederherstellung](site-recovery-network-design.md)
 * [Ausführen eines Testfailovers in Azure](site-recovery-test-failover-to-azure.md)
 * [Ausführen eines Failovers in Azure](site-recovery-failover.md)
@@ -75,7 +69,7 @@ Azure|Nicht verfügbar|Ja
 
 Um mit der Replikation aller virtuellen Computer einer IIS Webfarm in Azure zu beginnen, befolgen Sie die Anleitung unter [Testfailover nach Azure in Site Recovery](site-recovery-test-failover-to-azure.md).
 
-Wenn Sie eine statische IP-Adresse verwenden, können Sie die IP-Adresse angeben, die Sie dem virtuellen Computer zuordnen möchten. Um die IP-Adresse festzulegen, wechseln Sie zu **Einstellungen für Compute und Netzwerk** > [**ZIEL-IP**](./site-recovery-replicate-vmware-to-azure.md#view-and-manage-vm-properties).
+Wenn Sie eine statische IP-Adresse verwenden, können Sie die IP-Adresse angeben, die Sie dem virtuellen Computer zuordnen möchten. Um die IP-Adresse festzulegen, wechseln Sie zu **Einstellungen für Compute und Netzwerk** > **ZIEL-IP**.
 
 ![Screenshot, der zeigt, wie die Ziel-IP-Adresse im Site Recovery-Bereich „Compute und Netzwerk“ festgelegt wird](./media/site-recovery-active-directory/dns-target-ip.png)
 

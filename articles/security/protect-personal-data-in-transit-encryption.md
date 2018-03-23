@@ -1,31 +1,29 @@
 ---
-title: "Schützen personenbezogener Daten während der Übertragung mithilfe von Verschlüsselung in Azure | Microsoft-Dokumentation"
-description: "Verwenden der Verschlüsselung in Azure zum Schützen personenbezogener Daten"
+title: Schützen personenbezogener Daten während der Übertragung mithilfe von Verschlüsselung in Azure | Microsoft-Dokumentation
+description: Informationen zur Azure-Verschlüsselung zum Schutz personenbezogener Daten können bei der Einhaltung der Datenschutz-Grundverordnung (DSGVO) hilfreich sein.
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 461ddfda796bfe6639e27f6c4cd53e82b4e397d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 6975358d40206a497a53de16731d16ef374db905
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-in-transit-with-encryption"></a>Azure-Verschlüsselungstechnologien: Schützen personenbezogener Daten während der Übertragung mithilfe von Verschlüsselung
 
-Dieser Artikel enthält grundlegende Informationen zur Verwendung von Azure-Verschlüsselungstechnologien zum Sichern von Daten während der Übertragung. 
-
-Der Datenschutz personenbezogener Daten während der Übertragung im Netzwerk ist ein wesentlicher Teil einer mehrschichtigen Defense-in-Depth-Sicherheitsstrategie. Die Verschlüsselung während der Übertragung wurde entwickelt, um zu verhindern, dass Angreifer, die Übertragungen abfangen, die Daten anzeigen oder verwenden können.
+Dieser Artikel enthält grundlegende Informationen zur Verwendung von Azure-Verschlüsselungstechnologien zum Sichern von Daten während der Übertragung. Der Datenschutz personenbezogener Daten während der Übertragung im Netzwerk ist ein wesentlicher Teil einer mehrschichtigen Defense-in-Depth-Sicherheitsstrategie. Die Verschlüsselung während der Übertragung wurde entwickelt, um zu verhindern, dass Angreifer, die Übertragungen abfangen, die Daten anzeigen oder verwenden können. Die Informationen in diesem Artikel können Organisationen bei der Einhaltung der Datenschutz-Grundverordnung (DSGVO) behilflich sein.
 
 ## <a name="scenario"></a>Szenario
 

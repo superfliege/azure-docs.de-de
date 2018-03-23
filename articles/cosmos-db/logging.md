@@ -1,24 +1,24 @@
 ---
-title: "Diagnoseprotokollierung für Azure Cosmos DB | Microsoft-Dokumentation"
+title: Diagnoseprotokollierung für Azure Cosmos DB | Microsoft-Dokumentation
 description: Dieses Tutorial dient als Hilfe bei den ersten Schritten mit der Azure Cosmos DB-Protokollierung.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 03/07/2018
 ms.author: mimig
-ms.openlocfilehash: 0d76e3bea8b3d24c4232c699354320f6b873722e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f647387b4e80c36339a456b8e9a2cfade7ac8102
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Diagnoseprotokollierung für Azure Cosmos DB
 
@@ -31,6 +31,13 @@ Bevor wir uns mit der Überwachung Ihres Azure Cosmos DB-Kontos befassen, sollte
 Die folgende Abbildung zeigt die verschiedenen Arten verfügbarer Azure-Protokolle.
 
 ![Verschiedene Arten von Azure-Protokollen](./media/logging/azurelogging.png)
+
+In der Abbildung oben sind die **Computeressourcen** die Azure-Ressourcen, für die Sie auf das Gastbetriebssystem zugreifen können. Beispielsweise werden Azure Virtual Machines, VM-Skalierungsgruppen, Azure Container Service usw. als Computeressourcen angesehen. Computeressourcen generieren Aktivitätsprotokolle, Diagnoseprotokolle und Anwendungsprotokolle. Weitere Informationen finden Sie unter [Azure Monitor-Quellen – Computeteilmenge](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---compute-subset).
+
+**Nicht-Computeressourcen** sind Ressourcen, bei denen Sie nicht auf das zugrunde liegende Betriebssystem zugreifen und direkt mit der Ressource arbeiten können. Beispiele hierfür sind Netzwerksicherheitsgruppen, Logik-Apps usw. **Cosmos DB** ist eine Nicht-Computeressource. Sie können Protokolle für Nicht-Computeressourcen im Aktivitätsprotokoll anzeigen, oder Sie können im Portal die Option „Diagnoseprotokolle“ aktivieren. Weitere Informationen finden Sie unter [Azure Monitor-Quellen – Sonstiges](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---everything-else).
+
+Im Aktivitätsprotokoll werden die Vorgänge auf einer Abonnementebene für Cosmos DB, Vorgänge wie ListKeys, Write DatabaseAccounts usw. aufgezeichnet. Diagnoseprotokolle ermöglichen eine feiner abgestimmte Protokollierung, und Sie können DataPlaneRequests (Create, Read, Query) und MongoRequests protokollieren.
+
 
 In den folgenden Erläuterungen werden Azure-Aktivitätsprotokolle, Azure-Diagnoseprotokolle und Metriken behandelt. Was ist der Unterschied zwischen diesen drei Protokollen? 
 

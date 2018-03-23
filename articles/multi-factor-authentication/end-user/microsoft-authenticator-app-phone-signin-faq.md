@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Authenticator-Anmeldung per Telefon – Azure- und Microsoft-Konten | Microsoft-Dokumentation"
-description: "Melden Sie sich bei Ihrem Microsoft-Konto über Ihr Smartphone an, anstatt Ihr Kennwort einzugeben. In diesem Artikel werden häufig gestellte Fragen zu diesem Feature beantwortet."
+title: Microsoft Authenticator-Anmeldung per Telefon – Azure- und Microsoft-Konten | Microsoft-Dokumentation
+description: Melden Sie sich bei Ihrem Microsoft-Konto über Ihr Smartphone an, anstatt Ihr Kennwort einzugeben. In diesem Artikel werden häufig gestellte Fragen zu diesem Feature beantwortet.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
 ms.openlocfilehash: 86cf6ba2f2ec86a609b4ec60cc143b07d9e542b3
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Anmelden per Smartphone anstelle Ihres Kennworts
 
@@ -72,7 +72,7 @@ Nein, müssen Sie nicht. Wenn Sie sich bei Ihrem Microsoft-Konto mit Ihrem Smart
 
 ### <a name="what-if-i-lose-my-phone-or-dont-have-it-with-me-how-can-i-access-my-account"></a>Wie kann ich auf mein Konto zugreifen, wenn ich mein Smartphone verliere oder nicht zur Hand habe?  
 
-Sie können auf der Anmeldeseite jederzeit auf **Stattdessen ein Kennwort verwenden** klicken und wieder Ihr Kennwort verwenden. Bei Verwendung der zweistufigen Überprüfung benötigen Sie weiterhin eine zweite Methode, um Ihre Anmeldung zu bestätigen. Daher sollten Sie immer über zusätzliche, aktuelle Sicherheitsinformationen für Ihr Konto verfügen. Ihre Sicherheitsinformationen können Sie unter „https://account.live.com/proofs/manage“ verwalten.
+Sie können auf der Anmeldeseite jederzeit auf **Stattdessen ein Kennwort verwenden** klicken und wieder Ihr Kennwort verwenden. Bei Verwendung der zweistufigen Überprüfung benötigen Sie weiterhin eine zweite Methode, um Ihre Anmeldung zu bestätigen. Daher sollten Sie immer über zusätzliche, aktuelle Sicherheitsinformationen für Ihr Konto verfügen. Sie können Ihre Sicherheitsinformationen unter https://account.live.com/proofs/manage verwalten.
  
 ### <a name="how-do-i-stop-using-this-feature-and-go-back-to-entering-my-password"></a>Wie kann ich die Verwendung des Features beenden und wieder zur Eingabe meines Kennworts zurückkehren?
 

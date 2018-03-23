@@ -1,25 +1,19 @@
 ---
 title: Verwenden des Azure-Portals zum Erstellen von SQL-Datenbankwarnungen | Microsoft Docs
-description: "Verwenden Sie das Azure-Portal, um SQL-Datenbankwarnungen zu erstellen, die Benachrichtigungen oder eine Automatisierung auslösen, wenn die angegebenen Bedingungen erfüllt sind."
+description: Verwenden Sie das Azure-Portal, um SQL-Datenbankwarnungen zu erstellen, die Benachrichtigungen oder eine Automatisierung auslösen, wenn die angegebenen Bedingungen erfüllt sind.
 author: aamalvea
-manager: jhubbard
-editor: 
+manager: craigg
 services: sql-database
-documentationcenter: 
-ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
 ms.service: sql-database
 ms.custom: monitor and tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: aamalvea
-ms.openlocfilehash: fd21c9b5e573ac6a47fef88c2a9d31c52618ecb8
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 611b88c540902bc7a72d53671dacd098d9798b48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Verwenden des Azure-Portals zum Erstellen von Warnungen für Azure SQL-Datenbanken und Data Warehouse
 
@@ -46,9 +40,9 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen z
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik mit dem Azure-Portal
 1. Suchen Sie im [Portal](https://portal.azure.com/)die Ressource, die Sie überwachen möchten, und wählen Sie sie aus.
-2. Dieser Schritt ist für SQL-Datenbank und elastische Pools im Vergleich zu SQL DW unterschiedlich: 
+2. Dieser Schritt ist für SQL-Datenbank und Pools für elastische Datenbanken im Vergleich zu SQL DW unterschiedlich: 
 
-   - **Nur SQL-Datenbank und elastische Pools**: Wählen Sie im Abschnitt ÜBERWACHUNG **Warnungen** oder **Warnungsregeln** aus. Text und Symbol können je nach Ressource geringfügig variieren.  
+   - **Nur SQL-Datenbank und Pools für elastische Datenbanken**: Wählen Sie im Abschnitt ÜBERWACHUNG **Warnungen** oder **Warnungsregeln** aus. Text und Symbol können je nach Ressource geringfügig variieren.  
    
      ![Überwachung](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButton.png)
   
@@ -96,16 +90,16 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 | SQL database | dtu_limit | DTU-Grenzwert | Durchschnitt | 5 Minuten |
 | SQL database | dtu_used | DTU-Verbrauch | Durchschnitt | 5 Minuten |
 ||||||
-| Elastischer Pool | cpu_percent | CPU-Prozentsatz | Durchschnitt | 10 Minuten |
-| Elastischer Pool | physical_data_read_percent | E/A-Prozentsatz für Daten | Durchschnitt | 10 Minuten |
-| Elastischer Pool | log_write_percent | E/A-Prozentsatz für Protokoll | Durchschnitt | 10 Minuten |
-| Elastischer Pool | dtu_consumption_percent | DTU-Prozentsatz | Durchschnitt | 10 Minuten |
-| Elastischer Pool | storage_percent | Speicher in Prozent | Durchschnitt | 10 Minuten |
-| Elastischer Pool | workers_percent | Worker in Prozent | Durchschnitt | 10 Minuten |
-| Elastischer Pool | eDTU_limit | eDTU-Grenzwert | Durchschnitt | 10 Minuten |
-| Elastischer Pool | storage_limit | Speicherbegrenzung | Durchschnitt | 10 Minuten |
-| Elastischer Pool | eDTU_used | eDTU-Verbrauch | Durchschnitt | 10 Minuten |
-| Elastischer Pool | storage_used | Verwendeter Speicher | Durchschnitt | 10 Minuten |
+| Pool für elastische Datenbanken | cpu_percent | CPU-Prozentsatz | Durchschnitt | 10 Minuten |
+| Pool für elastische Datenbanken | physical_data_read_percent | E/A-Prozentsatz für Daten | Durchschnitt | 10 Minuten |
+| Pool für elastische Datenbanken | log_write_percent | E/A-Prozentsatz für Protokoll | Durchschnitt | 10 Minuten |
+| Pool für elastische Datenbanken | dtu_consumption_percent | DTU-Prozentsatz | Durchschnitt | 10 Minuten |
+| Pool für elastische Datenbanken | storage_percent | Speicher in Prozent | Durchschnitt | 10 Minuten |
+| Pool für elastische Datenbanken | workers_percent | Worker in Prozent | Durchschnitt | 10 Minuten |
+| Pool für elastische Datenbanken | eDTU_limit | eDTU-Grenzwert | Durchschnitt | 10 Minuten |
+| Pool für elastische Datenbanken | storage_limit | Speicherbegrenzung | Durchschnitt | 10 Minuten |
+| Pool für elastische Datenbanken | eDTU_used | eDTU-Verbrauch | Durchschnitt | 10 Minuten |
+| Pool für elastische Datenbanken | storage_used | Verwendeter Speicher | Durchschnitt | 10 Minuten |
 ||||||               
 | SQL Data Warehouse | cpu_percent | CPU-Prozentsatz | Durchschnitt | 10 Minuten |
 | SQL Data Warehouse | physical_data_read_percent | E/A-Prozentsatz für Daten | Durchschnitt | 10 Minuten |

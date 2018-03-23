@@ -1,24 +1,20 @@
 ---
-title: "Erstellen eines eigenständigen Azure Automation-Kontos | Microsoft-Dokumentation"
-description: "Dieser Artikel führt Sie anhand eines Beispiels durch die Schritte zum Erstellen, Testen und Verwenden der Authentifizierung per Sicherheitsprinzipal in Azure Automation."
+title: Erstellen eines eigenständigen Azure Automation-Kontos
+description: Dieser Artikel führt Sie anhand eines Beispiels durch die Schritte zum Erstellen, Testen und Verwenden der Authentifizierung per Sicherheitsprinzipal in Azure Automation.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: 2f783441-15c7-4ea0-ba27-d7daa39b1dd3
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/15/2018
 ms.topic: article
-ms.date: 08/18/2017
-ms.author: magoedte
-ms.openlocfilehash: 4a6946f34babfd63a2b9a12818761c6d6c74bc15
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: 5ea3d1af6f8bb4a6c0ef45560d8707afc58f61b1
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Erstellen eines eigenständigen Azure Automation-Kontos
 In diesem Artikel erfahren Sie, wie Sie ein Azure Automation-Konto im Azure-Portal erstellen. Mit dem Automation-Konto im Portal können Sie Automation evaluieren und sich damit vertraut machen, ohne zusätzliche Verwaltungslösungen oder eine Azure Log Analytics-Integration in Operations Management Suite (OMS) zu verwenden. Wenn Sie Runbookaufträge später genauer überwachen möchten, können Sie jederzeit entsprechende Verwaltungslösungen hinzufügen oder eine Log Analytics-Integration durchführen. 
@@ -30,7 +26,7 @@ Wenn Sie im Azure-Portal ein Automation-Konto erstellen, werden automatisch folg
 * **Ausführendes Konto:** Das Konto führt folgende Aufgaben aus:
   - Erstellen eines Dienstprinzipals in Azure Active Directory (Azure AD)
   - Erstellen eines Zertifikats
-  - Zuweisen der RBAC-Rolle „Mitwirkender“ (Role-Based Access Control; rollenbasierte Zugriffssteuerung) für die Verwaltung von Azure Resource Manager-Ressourcen mit Runbooks
+  - Zuweisen der Rolle „Mitwirkender“ der rollenbasierten Zugriffssteuerung (RBAC), die zum Verwalten von Azure Resource Manager-Ressourcen mit Runbooks verwendet wird
 * **Klassisches ausführendes Konto:** Dieses Konto lädt ein Verwaltungszertifikat hoch. Das Zertifikat verwaltet klassische Ressourcen mithilfe von Runbooks.
 
 Dank der automatischen Erstellung dieser Konten können Sie schnell Runbooks für Ihre Automatisierungsanforderungen erstellen und bereitstellen.  
@@ -41,15 +37,15 @@ Zum Erstellen oder Aktualisieren eines Automation-Kontos sowie zum Durchführen 
 * Für die Erstellung eines Automation-Kontos muss Ihr Azure AD-Benutzerkonto einer Rolle mit Berechtigungen hinzugefügt werden, die der Rolle „Besitzer“ für **Microsoft. Automation**-Ressourcen entspricht. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).  
 * Wenn im Azure-Portal unter **Azure Active Directory** > **VERWALTEN** > **App-Registrierungen** die Option **-App-Registrierungen** auf **Ja** festgelegt ist, können Benutzer ohne Administratorrechte in Ihrem Azure AD-Mandanten [Active Directory-Anwendungen registrieren](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions). Wenn **App-Registrierungen** auf **Nein** festgelegt ist, muss ein Benutzer, der diese Aktion ausführt, ein globaler Administrator in Azure AD sein. 
 
-Wenn Sie vor dem Hinzufügen zur Rolle „Globaler Administrator/Co-Administrator“ des Abonnements kein Mitglied der Active Directory-Instanz des Abonnements waren, werden Sie Active Directory als Gast hinzugefügt. In diesem Szenario wird auf der Seite **Automation-Konto hinzufügen** eine Meldung mit dem Hinweis angezeigt, dass Sie über keine Berechtigungen zum Erstellen verfügen. 
+Wenn Sie kein Mitglied der Active Directory-Instanz des Abonnements sind, werden Sie, bevor Sie der Rolle „Globaler Administrator/Co-Administrator“ des Abonnements hinzugefügt werden, zunächst in Active Directory als Gast hinzugefügt. In diesem Szenario wird auf der Seite **Automation-Konto hinzufügen** diese Meldung angezeigt: „Sie haben keine Berechtigungen zum Erstellen“. 
 
-Wurde ein Benutzer zuerst der Rolle des globalen Administrators/Co-Administrators hinzugefügt, können Sie ihn aus der Active Directory-Instanz des Abonnements entfernen und anschließend der vollwertigen Benutzerrolle in Active Directory hinzufügen.
+Wird ein Benutzer zuerst der Rolle des globalen Administrators/Co-Administrators hinzugefügt, können Sie diesen aus der Active Directory-Instanz des Abonnements entfernen, um ihn dann erneut als Vollbenutzer in Active Directory hinzuzufügen.
 
-So überprüfen Sie Benutzerrollen:
+So überprüfen Sie Benutzerrollen
 1. Navigieren Sie im Azure-Portal zum Bereich **Azure Active Directory**.
 2. Wählen Sie **Benutzer und Gruppen**.
 3. Wählen Sie **Alle Benutzer**. 
-4. Klicken Sie nach der Wahl eines bestimmten Benutzers auf **Profil**. Als Wert des Attributs **Benutzertyp** im Benutzerprofil darf nicht **Gast** angegeben sein.
+4. Wählen Sie nach der Auswahl eines bestimmten Benutzers **Profil** aus. Als Wert des Attributs **Benutzertyp** im Benutzerprofil darf nicht **Gast** angegeben sein.
 
 ## <a name="create-a-new-automation-account-in-the-azure-portal"></a>Erstellen eines neuen Automation-Kontos über das Azure-Portal
 Führen Sie die folgenden Schritte aus, um ein Azure Automation-Konto über das Azure-Portal zu erstellen:    

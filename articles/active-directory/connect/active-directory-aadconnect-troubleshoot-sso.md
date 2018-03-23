@@ -1,9 +1,9 @@
 ---
 title: 'Azure Active Directory Connect: Problembehandlung beim nahtlosen einmaligen Anmelden | Microsoft-Dokumentation'
-description: "In diesem Thema wird beschrieben, wie Sie Probleme beim nahtlosen einmaligen Anmelden in Azure Active Directory behandeln können."
+description: In diesem Thema wird beschrieben, wie Sie Probleme beim nahtlosen einmaligen Anmelden in Azure Active Directory behandeln können.
 services: active-directory
-keywords: "Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden"
-documentationcenter: 
+keywords: Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,36 +12,41 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: aa28431c5926656ae97ded3f23b83f2a91c60487
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 6e81ea9f98733b1b7e0c9bf7466ac844a37b6046
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problembehandlung beim nahtlosen einmaligen Anmelden mit Azure Active Directory
 
 In diesem Artikel finden Sie Informationen zur Problembehandlung bei bekannten Problemen beim nahtlosen einmaligen Anmelden (nahtloses SSO) in Azure Active Directory (Azure AD).
 
-## <a name="known-problems"></a>Bekannte Probleme
+## <a name="known-issues"></a>Bekannte Probleme
 
 - Die Aktivierung der nahtlosen einmaligen Anmeldung kann in seltenen Fällen bis zu 30 Minuten dauern.
 - Wenn Sie die nahtlose einmalige Anmeldung für Ihren Mandanten deaktivieren und dann erneut aktivieren, steht die Benutzeroberfläche zum einmaligen Anmelden Benutzern erst wieder zur Verfügung, nachdem ihre zwischengespeicherten Kerberos-Tickets, die im Normalfall 10 Stunden gültig sind, abgelaufen sind.
 - Edge-Browser wird nicht unterstützt.
-- Beim Starten von Office-Clients, insbesondere in Szenarien mit freigegebenen Computern, werden Benutzer zur erneuten Anmeldung aufgefordert. Benutzer müssen häufig ihren Benutzernamen, aber nur selten ihr Kennwort eingeben.
 - Wenn nahtloses einmaliges Anmelden erfolgreich ausgeführt wurde, hat der Benutzer nicht die Möglichkeit, die Option **Angemeldet bleiben** auszuwählen. Aufgrund dieses Verhaltens funktionieren Zuordnungsszenarien für SharePoint und OneDrive nicht.
+- Office-Clients mit einer älteren Version als 16.0.8730.xxxx unterstützen die nicht interaktive Anmeldung mit nahtlosem SSO nicht. Auf diesen Clients müssen Benutzer für die Anmeldung ihren Benutzernamen, aber kein Kennwort eingeben.
 - Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus.
 - Dies gilt auch für den Internet Explorer, wenn der erweiterte Schutzmodus aktiviert ist.
 - Das nahtlose einmalige Anmelden funktioniert nicht in mobilen Browsern unter iOS und Android.
 - Wenn Sie 30 oder mehr Active Directory-Gesamtstrukturen synchronisieren, kann die nahtlose einmalige Anmeldung nicht mit Azure AD Connect aktiviert werden. Zur Problembehebung können Sie die Funktion auf Ihrem Mandanten [manuell aktivieren](#manual-reset-of-azure-ad-seamless-sso).
-- Wenn Sie Dienst-URLs von Azure AD (https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net) statt zur Zone „Lokales Intranet“ zur Zone „Vertrauenswürdige Sites“ hinzufügen, *können sich Benutzer nicht anmelden*.
+- Wenn Sie die Dienst-URL von Azure AD (https://autologon.microsoftazuread-sso.com) statt zur Zone „Lokales Intranet“ zur Zone „Vertrauenswürdige Sites“ hinzufügen, *können sich Benutzer nicht anmelden*.
+- Wenn die Verwendung des Verschlüsselungstyps **RC4_HMAC_MD5** für Kerberos in Ihren Active Directory-Einstellungen deaktiviert wird, tritt bei nahtlosem SSO ein Fehler auf. Stellen Sie im Gruppenrichtlinienverwaltungs-Editor sicher, dass der Richtlinienwert für **RC4_HMAC_MD5** unter **Computerkonfiguration > Windows-Einstellungen > Sicherheitseinstellungen > Lokale Richtlinien > Sicherheitsoptionen > „Netzwerksicherheit: Für Kerberos zulässige Verschlüsselungstypen konfigurieren“** aktiviert ist.
 
-## <a name="check-the-status-of-the-feature"></a>Überprüfen Sie den Status des Features.
+## <a name="check-status-of-feature"></a>Überprüfen des Status des Features
 
 Stellen Sie sicher, dass das nahtlose einmalige Anmelden für Ihren Mandanten noch **Aktiviert** ist. Um den Status zu überprüfen, können Sie zum Bereich **Azure AD Connect** im [Azure Active Directory Admin Center](https://aad.portal.azure.com/) navigieren.
 
 ![Azure Active Directory Admin Center: Azure AD Connect-Bereich](./media/active-directory-aadconnect-sso/sso10.png)
+
+Klicken Sie, um alle AD-Gesamtstrukturen anzuzeigen, die für nahtloses SSO aktiviert wurden.
+
+![Azure Active Directory Admin Center: Bereich „Nahtloses SSO“](./media/active-directory-aadconnect-sso/sso13.png)
 
 ## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Gründe für Anmeldefehler im Azure Active Directory Admin Center (Premium-Lizenz erforderlich)
 
@@ -70,7 +75,7 @@ Verwenden Sie die folgende Checkliste zur Behebung von Problemen in Bezug auf di
 
 - Überprüfen Sie, ob die Funktion zum nahtlosen einmaligen Anmelden in Azure AD Connect aktiviert ist. Wenn Sie die Funktion (z.B. aufgrund eines blockierten Ports) nicht aktivieren können, vergewissern Sie sich, dass alle [Voraussetzungen](active-directory-aadconnect-sso-quick-start.md#step-1-check-the-prerequisites) erfüllt sind.
 - Wenn Sie für Ihren Mandanten sowohl [Azure AD Join](../active-directory-azureadjoin-overview.md) als auch nahtlose einmalige Anmeldung aktiviert haben, vergewissern Sie sich, dass das Problem nicht bei Azure AD Join liegt. Einmaliges Anmelden von Azure AD Join hat Vorrang vor der nahtlosen einmaligen Anmeldung, wenn das Gerät sowohl bei Azure AD registriert als auch Mitglied einer Domäne ist. Bei einmaligem Anmelden von Azure AD Join wird dem Benutzer eine Anmeldekachel mit dem Text „Mit Windows verbunden“ angezeigt.
-- Stellen Sie sicher, dass beide Azure AD-URLs (https://autologon.microsoftazuread-sso.com und https://aadg.windows.net.nsatc.net) Teil der Intranetzoneneinstellungen des Benutzers sind.
+- Stellen Sie sicher, dass die Azure AD-URL (https://autologon.microsoftazuread-sso.com) Teil der Intranetzoneneinstellungen des Benutzers ist.
 - Stellen Sie sicher, dass das Unternehmensgerät mit der Active Directory-Domäne verknüpft ist.
 - Stellen Sie sicher, dass der Benutzer über ein Active Directory-Domänenkonto beim Gerät angemeldet ist.
 - Stellen Sie sicher, dass das Benutzerkonto aus einer Active Directory-Gesamtstruktur stammt, in der nahtloses einmaliges Anmelden eingerichtet wurde.

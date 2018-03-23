@@ -1,24 +1,18 @@
 ---
-title: "Planung für eine Azure Files-Bereitstellung | Microsoft-Dokumentation"
-description: "Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung berücksichtigen müssen."
+title: Planung für eine Azure Files-Bereitstellung | Microsoft-Dokumentation
+description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung berücksichtigen müssen.
 services: storage
-documentationcenter: 
 author: wmgries
-manager: klaasl
-editor: jgerend
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 03/06/2018
 ms.author: wgries
-ms.openlocfilehash: 590bc459a71b8691741f7f33d2d70b0ba4474591
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 017dd79e2d15fdd98ea020c686857d282bad244e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Standardprotokoll SMB zugegriffen werden kann. Da Azure Files vollständig verwaltet ist, ist die Bereitstellung in Produktionsszenarien wesentlich einfacher als das Bereitstellen und Verwalten eines Dateiservers oder NAS-Geräts. In diesem Artikel werden die Aspekte behandelt, die beim Bereitstellen einer Azure-Dateifreigabe in der Produktionsumgebung Ihrer Organisation zu berücksichtigen sind.
@@ -63,7 +57,7 @@ Azure Files bietet mehrere integrierte Optionen zum Gewährleisten der Datensich
     * Clients, die die SMB 3.0-Verschlüsselung unterstützen, senden und empfangen Daten über einen verschlüsselten Kanal.
     * Clients, die SMB 3.0 nicht unterstützen, können innerhalb des Rechenzentrums über SMB 2.1 oder SMB 3.0 unverschlüsselt kommunizieren. Beachten Sie, dass Clients zwischen Rechenzentren nicht unverschlüsselt über SMB 2.1 oder SMB 3.0 kommunizieren dürfen.
     * Clients können über die REST-API „File“ mit HTTP oder HTTPS kommunizieren.
-* Verschlüsselung für ruhende Daten ([Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Wir befassen uns gerade mit der Aktivierung der Storage Service Encryption (SSE) auf der zugrunde liegenden Azure Storage-Plattform. Dies bedeutet, dass die Verschlüsselung standardmäßig für alle Speicherkonten aktiviert wird. Wenn Sie in einer Region mit standardmäßiger Verschlüsselung ruhender Daten ein neues Speicherkonto erstellen, müssen Sie zur Aktivierung keine Schritte unternehmen. Ruhende Daten werden mit vollständig verwalteten Schlüsseln verschlüsselt. Durch Verschlüsselung ruhender Daten erhöhen sich weder die Speicherkosten, noch wird die Leistung verringert. 
+* Verschlüsselung ruhender Daten ([Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Storage Service Encryption (SSE) ist standardmäßig für alle Speicherkonten aktiviert. Ruhende Daten werden mit vollständig verwalteten Schlüsseln verschlüsselt. Durch Verschlüsselung ruhender Daten erhöhen sich weder die Speicherkosten, noch wird die Leistung verringert. 
 * Optionale Anforderung der Verschlüsselung von Daten während der Übertragung: Bei Auswahl dieser Option lehnt Azure Files den Zugriff auf die Daten über unverschlüsselte Kanäle ab. Konkret sind bei verschlüsselten Verbindungen nur HTTPS und SMB 3.0 zugelassen. 
 
     > [!Important]  

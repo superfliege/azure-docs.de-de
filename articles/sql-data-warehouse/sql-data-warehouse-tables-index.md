@@ -1,25 +1,24 @@
 ---
 title: Indizieren von Tabellen in SQL Data Warehouse | Microsoft Azure
-description: "Enthält Informationen zu den ersten Schritten bei der Tabellenindizierung in Azure SQL Data Warehouse."
+description: Enthält Informationen zu den ersten Schritten bei der Tabellenindizierung in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
-ms.assetid: 3e617674-7b62-43ab-9ca2-3f40c41d5a88
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 12/06/2017
+ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 672270536a7405e617edbcf5ec0e6eff68be7fde
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f0e19be5ec7453a76ff4f22ead6d3885e50beca8
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indizieren von Tabellen in SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -205,7 +204,7 @@ Als Batch ausgeführte Aktualisierungs- und Einfügevorgänge, die den Massensch
 ### <a name="small-or-trickle-load-operations"></a>Kleine oder langsame Ladevorgänge
 Kleine Ladevorgänge in SQL Data Warehouse werden manchmal auch als langsame Ladevorgänge bezeichnet. Sie stellen in der Regel einen annähernd konstanten Datenstrom dar, der vom System erfasst wird. Dieser Datenstrom ist zwar fast kontinuierlich, die Anzahl der Zeilen ist jedoch nicht besonders groß. In den meisten Fällen liegt die Datenmenge deutlich unter dem Schwellenwert, der für ein direktes Laden in das Columnstore-Format erforderlich ist.
 
-In diesen Situationen ist es oft besser, die Daten zunächst in den Azure-Blobspeicher zu laden, damit sie sich vor dem Laden ansammeln können. Diese Technik wird auch als *Verarbeitung von Mikrobatches*bezeichnet.
+In diesen Situationen ist es oft besser, die Daten zunächst in Azure Blob Storage zu laden, damit sie sich vor dem Laden ansammeln können. Diese Technik wird auch als *Verarbeitung von Mikrobatches*bezeichnet.
 
 ### <a name="too-many-partitions"></a>Zu viele Partitionen
 Ein weiterer zu berücksichtigender Aspekt ist die Auswirkung der Partitionierung auf Ihre gruppierten Columnstore-Tabellen.  Vor dem Partitionieren teilt SQL Data Warehouse Ihre Daten bereits auf 60 Datenbanken auf.  Durch die Partitionierung werden die Daten dann noch weiter aufgeteilt.  Beim Partitionieren Ihrer Daten sollten Sie darauf achten, dass **jede** Partition mindestens 1 Million Zeilen aufweisen muss, um von einem gruppierten Columnstore-Index zu profitieren.  Wenn Sie Ihre Tabelle in 100 Partitionen unterteilen, muss die Tabelle mindestens 6 Milliarden Zeilen aufweisen, um von einem gruppierten Columnstore-Index zu profitieren (60 Verteilungen * 100 Partitionen * 1 Million Zeilen). Falls Ihre Tabelle mit 100 Partitionen nicht 6 Milliarden Zeilen enthält, sollten Sie entweder die Anzahl der Partitionen reduzieren oder stattdessen eine Heaptabelle verwenden.
@@ -308,7 +307,7 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 [Partition]: ./sql-data-warehouse-tables-partition.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
-[Concurrency]: ./sql-data-warehouse-develop-concurrency.md
+[Concurrency]: ./resource-classes-for-workload-management.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
 [SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 

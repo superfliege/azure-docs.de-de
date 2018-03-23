@@ -1,26 +1,20 @@
 ---
 title: Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation
-description: "Diese Übersicht enthält eine Einführung in die Azure SQL-Datensynchronisierung (Vorschauversion)."
+description: Diese Übersicht enthält eine Einführung in die Azure SQL-Datensynchronisierung (Vorschauversion).
 services: sql-database
-documentationcenter: 
 author: douglaslms
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
-ms.custom: load & move data
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.custom: data-sync
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 5cf74140969fb354e426c41552d4d73a06c76890
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 5abe3e5a56dfca263f109b86f473ac490da3eac7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung (Vorschauversion)
 
@@ -168,9 +162,9 @@ Eine Datenbank für den Verbundstamm kann im Dienst für die SQL-Datensynchronis
 
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
--   [Erste Schritte mit der Azure SQL-Datensynchronisierung (Vorschauversion)](sql-database-get-started-sql-data-sync.md)
+-   [Einrichten von Azure SQL-Datensynchronisierung](sql-database-get-started-sql-data-sync.md)
 -   [Best practices for Azure SQL Data Sync (Preview)](sql-database-best-practices-data-sync.md) (Bewährte Methoden für die Azure SQL-Datensynchronisierung-Vorschauversion)
--   [Überwachen der Azure SQL-Datensynchronisierung-Vorschauversion mit OMS Log Analytics](sql-database-sync-monitor-oms.md)
+-   [Überwachen der Azure SQL-Datensynchronisierung mit OMS Log Analytics](sql-database-sync-monitor-oms.md)
 -   [Troubleshoot issues with SQL Data Sync (Preview)](sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:

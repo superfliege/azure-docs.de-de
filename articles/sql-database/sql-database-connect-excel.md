@@ -3,24 +3,18 @@ title: Verbinden von Excel mit SQL-Datenbank | Microsoft Docs
 description: Erfahren Sie, wie Sie Microsoft Excel mit Azure SQL-Datenbank in der Cloud verbinden. Importieren Sie Daten zwecks Berichterstellung und Untersuchung in Excel.
 services: sql-database
 keywords: Verbinden von Excel mit SQL, Importieren von Daten in Excel
-documentationcenter: 
 author: joseidz
 manager: jhubbard
-editor: 
-ms.assetid: 906924bc-2707-48d3-bac6-397976a0409d
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2017
-ms.author: jhubbard
-ms.openlocfilehash: 34ff5c479cfcf1e861a82205eef93dfee01cb4a2
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.author: craigg
+ms.openlocfilehash: 64896e87bf049c3ccd58f060ac27f35787d4ce4a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Verbinden von Excel mit einer Azure SQL-Datenbank und Erstellen eines Berichts
 
@@ -77,6 +71,6 @@ Nachdem Sie die Verbindung hergestellt und die Datei mit Daten und Verbindungsin
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie das [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio](sql-database-connect-query-ssms.md) durchführen, um erweiterte Abfragen und Analysen zu ermöglichen.
-* Erfahren Sie mehr über die Vorteile von [elastischen Pools](sql-database-elastic-pool.md).
+* Erfahren Sie mehr über die Vorteile von [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 * Erfahren Sie, wie Sie [eine Webanwendung erstellen, die eine Verbindung mit SQL-Datenbank auf dem Back-End herstellt](../app-service/app-service-web-tutorial-dotnet-sqldatabase.md).
 

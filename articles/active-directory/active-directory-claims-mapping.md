@@ -1,5 +1,5 @@
 ---
-title: "Anspruchszuordnung in Azure Active Directory (öffentliche Vorschauversion) | Microsoft-Dokumentation"
+title: Anspruchszuordnung in Azure Active Directory (öffentliche Vorschauversion) | Microsoft-Dokumentation
 description: Auf dieser Seite wird die Anspruchszuordnung in Azure Active Directory beschreiben.
 services: active-directory
 author: billmath
@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 1bc669dfa5a41e38b35751af62560ff650575a08
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b0dae074734b13046fb0d90e178e05f81399b5c6
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Anspruchszuordnung in Azure Active Directory (Public Preview)
 
@@ -30,7 +30,7 @@ Diese Funktion wird von Mandantenadministratoren verwendet, um die in Token ausg
 - Auswählen, aus welcher Quelle die in bestimmten Ansprüchen ausgegebenen Daten stammen, oder diese ändern
 
 >[!NOTE]
->Diese Funktion befindet sich derzeit in der Public Preview. Seien Sie darauf vorbereitet, Änderungen zurückzusetzen bzw. zu löschen. Während der Public Preview ist die Funktion in allen Azure Active Directory-Abonnements verfügbar. Sobald die Funktion aber allgemeine verfügbar wird, ist für einige Aspekte des Features unter Umständen ein Azure Active Directory Premium-Abonnement erforderlich.
+>Diese Funktion befindet sich derzeit in der Public Preview. Seien Sie darauf vorbereitet, Änderungen zurückzusetzen bzw. zu löschen. Während der Public Preview ist die Funktion in allen Azure Active Directory-Abonnements verfügbar. Sobald die Funktion aber allgemeine verfügbar wird, ist für einige Aspekte des Features unter Umständen ein Azure Active Directory Premium-Abonnement erforderlich. Diese Funktion unterstützt das Konfigurieren von Richtlinien für die Anspruchszuordnung für WS-Fed-, SAML-, OAuth- und OpenID Connect-Protokolle.
 
 ## <a name="claims-mapping-policy-type"></a>Richtlinientyp einer Anspruchszuordnung
 Ein **Richtlinienobjekt** stellt in Azure AD eine Reihe von Regeln dar, die für einzelne Anwendungen oder alle Anwendungen in einer Organisation erzwungen werden. Jede Art von Richtlinie verfügt über eine eindeutige Struktur mit einem Satz von Eigenschaften, die auf Objekte angewendet werden, denen sie zugewiesen sind.
@@ -184,7 +184,7 @@ Eingeschränkte Ansprüche können mithilfe der Richtlinien nicht geändert werd
 |win_ver|
 
 #### <a name="table-2-security-assertion-markup-language-saml-restricted-claim-set"></a>Tabelle2: Eingeschränkter Anspruchssatz von Security Assertion Markup Language (SAML)
-|Claim type (URI)|
+|Anspruchstyp (URI)|
 | ----- |
 |http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration|
 |http://schemas.microsoft.com/ws/2008/06/identity/claims/expired|

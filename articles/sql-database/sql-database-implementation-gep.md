@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL-Datenbank – Azure-Fallstudie: GEP | Microsoft Docs"
-description: "Erfahren Sie, wie GEP mithilfe von SQL-Datenbank mehr globale Kunden erreicht und größere Effizienz erzielt."
+title: 'Azure SQL-Datenbank – Azure-Fallstudie: GEP | Microsoft Docs'
+description: Erfahren Sie, wie GEP mithilfe von SQL-Datenbank mehr globale Kunden erreicht und größere Effizienz erzielt.
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: ae8bcb10-c251-4bac-b666-10a253918583
+manager: craigg
 ms.service: sql-database
 ms.custom: reference
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: bced4e04f541dde58410e25fe0c3aa5493a5e5fd
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 093f891ea9dd36a2766d0a797c4f0a67b11aa8a4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-gives-gep-global-reach-and-greater-efficiency"></a>Azure bietet GEP globale Reichweite und mehr Effizienz
 ![GEP-Logo](./media/sql-database-implementation-gep/geplogo.png)
@@ -65,10 +59,10 @@ Das Kernstück der Anwendung SMART by GEP sind die Azure SQL-Datenbankinstanzen,
 
 Dank der in Azure SQL-Datenbank integrierten Fehlertoleranzfunktionen verfügt GEP automatisch über mehr Optionen für eine Notfallwiederherstellung, als das Unternehmen mit wirtschaftlich vertretbarem Aufwand in ein lokales System hätte implementieren können. GEP verwendet die aktive Georeplikation in Azure SQL-Datenbank zusammen mit mehreren aktiven, lesbaren und online gestellten sekundären Replikaten (Always On-Verfügbarkeitsgruppen) in verschiedenen Regionen, um Hochverfügbarkeitspaare zu bilden. Die regionsübergreifende Replikation von SMART by GEP-Daten bedeutet Folgendes: Sollte einmal eine Region vollständig ausfallen, kann GEP Kundendaten über ein Minimal-RPO (Recovery-Point Objective) und ein Minimal-RTO (Recovery-Time Objective) problemlos wiederherstellen.
 
-Jeder SMART by GEP-Kunde verfügt über zwei Azure SQL-Datenbankinstanzen: eine für die Onlinetransaktionsverarbeitung (Online Transaction Processing, OLTP) und eine für Analysen (beispielsweise von Kundenausgaben und -berichten). Mit den elastischen Pools für Azure SQL-Datenbank kann GEP problemlos Tausende von Datenbanken global verwalten, um unvorhersehbare Anforderungen an Datenbankressourcen zu verarbeiten. Dank der elastischen Pools kann GEP sicherstellen, dass sich die Kundendatenbanken ganz nach Bedarf skalieren lassen, ohne Über- oder Unterdimensionierung von Ressourcen. Gleichzeitig kann GEP die Kosten besser kontrollieren. Und da es sich um einen PaaS-Dienst handelt, erhält GEP darüber hinaus über die automatischen Upgrades alle neuen Azure SQL-Datenbankfunktionen.
+Jeder SMART by GEP-Kunde verfügt über zwei Azure SQL-Datenbankinstanzen: eine für die Onlinetransaktionsverarbeitung (Online Transaction Processing, OLTP) und eine für Analysen (beispielsweise von Kundenausgaben und -berichten). Mit den Pools für elastische Azure SQL-Datenbank-Instanzen kann GEP problemlos Tausende von Datenbanken global verwalten, um unvorhersehbare Anforderungen an Datenbankressourcen zu verarbeiten. Dank der Pools für elastische Datenbanken kann GEP sicherstellen, dass sich die Kundendatenbanken ganz nach Bedarf skalieren lassen, ohne Über- oder Unterdimensionierung von Ressourcen. Gleichzeitig kann GEP die Kosten besser kontrollieren. Und da es sich um einen PaaS-Dienst handelt, erhält GEP darüber hinaus über die automatischen Upgrades alle neuen Azure SQL-Datenbankfunktionen.
 
 ## <a name="unstructured-and-semi-structured-data"></a>Unstrukturierte und semistrukturierte Daten
-Einige SMART by GEP-Kundendaten erfordern allerdings einen weniger strikt strukturierten Speicher. Für diese Art von Daten nutzt GEP Azure-Blobspeicher, Azure-Tabellenspeicher und Azure Redis Cache. In Azure-Blobspeichern befinden sich alle Anlagen, die SMART by GEP-Benutzer in die Anwendung hochladen. Hier speichert SMART by GEP auch statische Inhalte, wie z.B. Cascading Stylesheets (CSS-Dateien) und JavaScript-Dateien.
+Einige SMART by GEP-Kundendaten erfordern allerdings einen weniger strikt strukturierten Speicher. Für diese Art von Daten nutzt GEP Azure Blob Storage, Azure Table Storage und Azure Redis Cache. in Azure Blob Storage befinden sich alle Anlagen, die SMART by GEP-Benutzer in die Anwendung hochladen. Hier speichert SMART by GEP auch statische Inhalte, wie z.B. Cascading Stylesheets (CSS-Dateien) und JavaScript-Dateien.
 
 GEP speichert nicht für den Kunden gedachte Daten – wie etwa SMART by GEP-Protokolldaten – in Azure-Tabellenspeichern. So profitiert GEP effektiv von unbegrenztem kostengünstigem Speicherplatz und schnellen Abrufzeiten, ohne sich Gedanken um das Einrichten eines Schemas für die Daten machen zu müssen. Als Mastercache setzt GEP Azure Redis Cache ein.
 
@@ -80,7 +74,7 @@ Nach der Anmeldung können Kunden auf die richtigen Geschäftsressourcen in SMAR
 ## <a name="other-azure-services"></a>Weitere Azure-Dienste
 GEP verwendet eine Reihe weiterer Azure-Dienste, um mit SMART by GEP noch besser auf Kundenanforderungen reagieren zu können. GEP nutzt beispielsweise Azure-Clouddienste (sowohl Web- als auch Workerrollen), um die Anwendungspräsentation und die gesicherten Geschäftslogikdienste zu hosten. Clouddienste ermöglichen es Entwicklern, Infrastruktur als Code zu verwalten und neue SMART by GEP-Anwendungen in einem Bruchteil der Zeit bereitzustellen, die bei Verwendung von lokalen Rechenzentren erforderlich ist – und all dies ohne jegliche Beteiligung der IT-Abteilung. Die Entwickler von GEP können die Stagingumgebung der Clouddienste verwenden, um neue Versionen ohne jede Auswirkung auf die aktuelle Produktionsbereitstellung zu testen. Nach den Tests verwendet GEP die VIP-Swapfunktionen der Azure-Clouddienste, um den Code aus der Stagingumgebung innerhalb einer Minute in den Produktionsslot zu verschieben und so die Ausfallzeiten aufgrund der Bereitstellung erheblich zu reduzieren.
 
-Zum Reduzieren der Anwendungslatenz verwendet GEP das Azure Content Delivery Network (CDN), um statische Inhalte (z.B. CSS- und JavaScript-Dateien), die sich in Azure-Blobspeichern befinden, auf Edgeserver in der Nähe der Benutzer zu verschieben. GEP verwendet Azure Service Bus, um Anwendungsarchitekturmuster zu unterstützen, wie z.B. Veröffentlichen/Abonnieren-Architekturen, teilweise auf CQRS (Command Query Responsibility Segregation) basierende Architekturen oder Schichtarchitekturen mit loser Kopplung und asynchroner Kommunikation. GEP verwendet Azure Media Services, um den Kundendienst zu verbessern. GEP stellt beispielsweise Videos für den Benutzersupport auf Azure Media Services zur Verfügung. Diese Videos beantworten allgemeine Benutzerfragen, wodurch die Zufriedenheit der SMART by GEP-Benutzer steigt und gleichzeitig die Belastung der Kundendienstmitarbeiter von GEP sinkt.
+Zum Reduzieren der Anwendungslatenz verwendet GEP das Azure Content Delivery Network (CDN), um statische Inhalte (z.B. CSS- und JavaScript-Dateien), die sich in Azure Blob Storage befinden, auf Edgeserver in der Nähe der Benutzer zu verschieben. GEP verwendet Azure Service Bus, um Anwendungsarchitekturmuster zu unterstützen, wie z.B. Veröffentlichen/Abonnieren-Architekturen, teilweise auf CQRS (Command Query Responsibility Segregation) basierende Architekturen oder Schichtarchitekturen mit loser Kopplung und asynchroner Kommunikation. GEP verwendet Azure Media Services, um den Kundendienst zu verbessern. GEP stellt beispielsweise Videos für den Benutzersupport auf Azure Media Services zur Verfügung. Diese Videos beantworten allgemeine Benutzerfragen, wodurch die Zufriedenheit der SMART by GEP-Benutzer steigt und gleichzeitig die Belastung der Kundendienstmitarbeiter von GEP sinkt.
 
 Um die Tausenden von Transaktions-E-Mails zu senden, die täglich von SMART by GEP generiert werden, verwendet das Unternehmen die .NET API von SendGrid zur Integration in Azure. Dies ist kein Problem für die GEP-Entwickler – das SendGrid-Add-On für Azure steht direkt im Azure Marketplace zur Verfügung. GEP-Entwickler können SMART by GEP konfigurieren, indem sie das SendGrid-NuGet-Paket direkt in Microsoft Visual Studio verwenden. Die IT-Abteilung von GEP kann den SendGrid-E-Mail-Datenverkehr der Software direkt in Azure überwachen.
 

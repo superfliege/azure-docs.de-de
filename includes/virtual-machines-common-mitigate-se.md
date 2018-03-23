@@ -1,17 +1,23 @@
 
 
 
-**Letzte Aktualisierung des Dokuments**: 22. Januar, 15:00 Uhr PST
+**Letzte Aktualisierung des Dokuments:** 6. März, 10:00 Uhr PST.
 
 Eine vor kurzem öffentlich gemachte [neue Art von CPU-Sicherheitsrisiken](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), die als „Seitenkanalangriffe mit spekulativer Ausführung“ bezeichnet wird, hatte Fragen von Kunden zur Folge, sich mehr Klarheit wünschen.  
 
 Die Infrastruktur, in der Azure ausgeführt und Kundenworkloads voneinander isoliert werden, ist geschützt.  Dies bedeutet, dass andere Kunden in Azure diese Sicherheitsrisiken nicht für Angriffe auf Ihre Anwendung ausnutzen können.
 
 > [!NOTE] 
-> Die zuvor am 3. Januar 2018 angekündigten Azure-Maßnahmen sind von den neuesten [aktualisierten Anweisungen](https://newsroom.intel.com/news/root-cause-of-reboot-issue-identified-updated-guidance-for-customers-and-partners/) von Intel nicht betroffen. Diese neuen Informationen ziehen keine zusätzlichen Wartungsaktivitäten für Kunden-VMs nach sich.
+> Ende Februar 2018 veröffentlichte die Intel Corporation aktuelle [Microcode-Revisionsrichtlinien](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) zum Status ihrer Microcodereleases, die die Stabilität verbessern und vor den vor Kurzem durch [Google Project Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html) offengelegten Schwachstellen schützen. Die von Azure am [3. Januar 2018](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/) eingerichteten Entschärfungen sind durch das Intel-Microcodeupdate nicht betroffen. Microsoft hat bereits eine umfassende Risikominderung zum Schutz von Azure-Kunden vor anderen Azure-Mandanten eingerichtet.  
 >
-> Diese bewährten Methoden werden im Zuge der Microcodeupdates durch Hardwareanbieter weiterhin aktualisiert. Halten Sie Ausschau nach der aktualisierten Anleitung.
+> Der Microcode von Intel betrifft Spectre-Variante 2 ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715)) zum Schutz vor Angriffen. Dies betrifft Sie nur, wenn Sie freigegebene oder nicht vertrauenswürdige Workloads in Ihren virtuellen Computern in Azure ausführen. Unsere Techniker testen derzeit die Stabilität zur Minimierung von Leistungsauswirkungen auf den Microcode, bevor dieser Azure-Kunden zur Verfügung gestellt wird.  Da nur wenige Kunden nicht vertrauenswürdige Workloads auf ihren virtuellen Computern ausführen, müssen die meisten Kunden diese Funktion nach der Veröffentlichung nicht aktivieren. 
 >
+> Diese Seite wird aktualisiert, sobald weitere Informationen verfügbar sind.  
+
+
+
+
+
 
 ## <a name="keeping-your-operating-systems-up-to-date"></a>Halten Sie Ihre Betriebssysteme auf dem neuesten Stand
 
@@ -43,7 +49,7 @@ Weitere Kundenaktionen sind nur erforderlich, wenn nicht vertrauenswürdiger Cod
 
 
 ### <a name="windows"></a>Windows 
-Wenn Sie Windows verwenden und nicht vertrauenswürdigen Code hosten, müssen Sie auch die Windows-Funktion zur Remotesteuerung der virtuellen Kerneladresse aktivieren, die zusätzlichen Schutz gegen Sicherheitsrisiken durch Seitenkanalangriffe mit spekulativer Ausführung bietet. Diese Funktion ist standardmäßig deaktiviert, da sie im aktivierten Zustand die Leistung beeinträchtigen kann. Führen Sie die Anweisungen in [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) aus, um Schutzmaßnahmen auf dem Server zu aktivieren. Wenn Sie Azure Cloud Services ausführen, stellen Sie sicher, dass „WA-GUEST-OS-5.15_201801-01“ oder „WA-GUEST-OS-4.50_201801-01“ (verfügbar ab 10. Januar) ausgeführt wird, und aktivieren Sie den Registrierungsschlüssel über eine Startaufgabe.
+Wenn Sie Windows verwenden und nicht vertrauenswürdigen Code hosten, müssen Sie auch die Windows-Funktion zur Remotesteuerung der virtuellen Kerneladresse aktivieren, die zusätzlichen Schutz gegen Sicherheitsrisiken durch Seitenkanalangriffe mit spekulativer Ausführung bietet. Diese Funktion ist standardmäßig deaktiviert, da sie im aktivierten Zustand die Leistung beeinträchtigen kann. Führen Sie die Anweisungen in [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) aus, um Schutzmaßnahmen auf dem Server zu aktivieren. Wenn Sie Azure Cloud Services ausführen, stellen Sie sicher, dass WA-GUEST-OS-5.15_201801-01 oder WA-GUEST-OS-4.50_201801-01 (verfügbar ab 10. Januar 2018) ausgeführt wird, und aktivieren Sie den Registrierungsschlüssel über eine Startaufgabe.
 
 
 ### <a name="linux"></a>Linux

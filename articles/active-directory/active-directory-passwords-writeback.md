@@ -1,26 +1,26 @@
 ---
-title: "Azure AD SSPR mit Kennwortrückschreiben | Microsoft-Dokumentation"
-description: "Verwenden von Azure AD und Azure AD Connect zum Rückschreiben von Kennwörtern in ein lokales Verzeichnis"
+title: Azure AD SSPR mit Kennwortrückschreiben | Microsoft-Dokumentation
+description: Verwenden von Azure AD und Azure AD Connect zum Rückschreiben von Kennwörtern in ein lokales Verzeichnis
 services: active-directory
-keywords: "Active Directory-Kennwortverwaltung, Kennwortverwaltung, Self-Service-Kennwortzurücksetzung in Azure AD"
-documentationcenter: 
+keywords: Active Directory-Kennwortverwaltung, Kennwortverwaltung, Self-Service-Kennwortzurücksetzung in Azure AD
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: b4a14d3c79f93988eeac1525da09cf70dc2de634
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: bcb7074a6d590a08ad683c8746156245bc60c5e8
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="password-writeback-overview"></a>Übersicht über die Kennwortrückschreibung
 
@@ -31,6 +31,7 @@ Kennwortrückschreiben bietet die folgenden Features:
 * **Bereitstellung von Feedback ohne Verzögerung**: Kennwortrückschreiben ist ein synchroner Vorgang. Ihre Benutzer werden sofort benachrichtigt, wenn ihre Kennwörter nicht der Richtlinie entsprechen oder das Zurücksetzen oder Ändern des Kennworts aus irgendeinem Grund nicht möglich war.
 * **Unterstützung für Kennwortzurücksetzungen für Benutzer, die Active Directory Federation Services (AD FS) oder andere Verbundtechnologien nutzen**: Solange die Verbundbenutzerkonten mit Ihrem Azure AD-Mandanten synchronisiert sind, können die Benutzer durch das Kennwortrückschreiben ihre lokalen Active Directory-Kennwörter über die Cloud verwalten.
 * **Unterstützung für Kennwortzurücksetzungenen für Benutzer, die eine** Kennworthashsynchronisierung[ verwenden](./connect/active-directory-aadconnectsync-implement-password-synchronization.md): Wenn der Dienst für die Kennwortzurücksetzung ermittelt, dass ein synchronisiertes Benutzerkonto für die Kennworthashsynchronisierung aktiviert ist, werden das lokale Kennwort und das Cloudkennwort für dieses Konto simultan zurückgesetzt.
+* **Unterstützung für Kennwortzurücksetzungen für Benutzer, die Passthrough-Authentifizierung nutzen**: Solange die Passthrough-Authentifizierungskonten mit Ihrem Azure AD-Mandanten synchronisiert sind, können die Benutzer durch das Kennwortrückschreiben ihre lokalen Active Directory-Kennwörter über die Cloud verwalten.
 * **Unterstützung von Kennwortänderungen über den Zugriffsbereich und Office 365**: Wenn Verbundbenutzer oder Benutzer mit Kennwortsynchronisierung ihre abgelaufenen oder noch nicht abgelaufenen Kennwörter ändern möchten, werden diese Kennwörter in die lokale Active Directory-Umgebung zurückgeschrieben.
 * **Unterstützung für Kennwortrückschreiben, wenn die Kennwörter im Azure-Portal von einem Administrator zurückgesetzt werden**: Wenn ein Administrator das Kennwort eines Benutzers im [Azure-Portal](https://portal.azure.com) zurücksetzt und der Benutzer ein Verbundkonto oder ein Konto mit Kennwortsynchronisierung verwendet, wird das vom Administrator ausgewählte Kennwort auch im lokalen Active Directory festgelegt. Diese Funktionalität wird im Office-Verwaltungsportal derzeit nicht unterstützt.
 * **Erzwingung von lokalen Active Directory-Kennwortrichtlinien:**: Wenn ein Benutzer sein Kennwort zurücksetzt, wird sichergestellt, dass es die lokalen Active Directory-Richtlinien erfüllt, bevor es für dieses Verzeichnis übernommen wird. Diese Überprüfung umfasst Prüfen des Verlaufs, der Komplexität, des Alters, der Kennwortfilter und aller weiteren Kennwortbeschränkungen, die Sie im lokalen Active Directory definiert haben.

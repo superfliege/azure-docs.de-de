@@ -1,23 +1,20 @@
 ---
-title: "Azure SQL-Datenbank: Beispiel für mehrinstanzenfähige App – Wingtip-SaaS | Microsoft-Dokumentation"
-description: "In diesem Artikel erfahren Sie, wie Sie eine mehrinstanzenfähige Beispielanwendung nutzen, die Azure SQL-Datenbank verwendet – das Wingtip-SaaS-Beispiel."
+title: 'Azure SQL-Datenbank: Beispiel für mehrinstanzenfähige App – Wingtip-SaaS | Microsoft-Dokumentation'
+description: In diesem Artikel erfahren Sie, wie Sie eine mehrinstanzenfähige Beispielanwendung nutzen, die Azure SQL-Datenbank verwendet – das Wingtip-SaaS-Beispiel.
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: sstein
-ms.openlocfilehash: 2871d2b1208013808958e8a5b0c62fce31af86ec
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 451e1fc87fc5f626e78760d8cd5c4115ea02bb0d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="introduction-to-a-multi-tenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Einführung in eine mehrinstanzenfähige SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet
 

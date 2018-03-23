@@ -1,6 +1,6 @@
 ---
-title: "Bikesharing-Tutorial – Erweiterte Datenvorbereitung mit der Azure Machine Learning Workbench"
-description: "In diesem Tutorial führen Sie mithilfe von Azure Machine Learning Workbench eine vollständige Vorbereitungsaufgabe durch."
+title: Bikesharing-Tutorial – Erweiterte Datenvorbereitung mit der Azure Machine Learning Workbench
+description: In diesem Tutorial führen Sie mithilfe von Azure Machine Learning Workbench eine vollständige Vorbereitungsaufgabe durch.
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: ca7239fd3e31c7a6cfc6fb64e04afb376e01c190
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f1d4b58d0fe0628aa00b8229a1383d3ada414f62
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Tutorial: Erweiterte Datenvorbereitung (Bikesharing-Daten) mit Azure Machine Learning Workbench
 Azure Machine Learning (Vorschauversion) ist eine integrierte End-to-End-Lösung für Data Science-Anwendungen und erweiterte Analysen, die sich an professionelle Datenspezialisten richtet und zum Vorbereiten von Daten, Entwickeln von Experimenten und Bereitstellen von Modellen auf Cloudniveau verwendet werden kann.
@@ -736,7 +736,7 @@ Wenn Sie den Datenfluss **Join Result** in einer CSV-Datei speichern möchten, m
 3. Erstellen Sie die HDInsight-Ausführungskonfiguration. Sie benötigen den Namen des Clusters und das `sshuser`-Kennwort.
 
     ```azurecli
-    az ml computetarget attach --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password> --type cluster
+    az ml computetarget attach cluster --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password>
     az ml experiment prepare -c hdinsight
     ```
 > [!NOTE]

@@ -1,12 +1,12 @@
 ---
-title: "Schnellstartanleitung für Bash in Azure Cloud Shell | Microsoft-Dokumentation"
-description: "Schnellstart für Bash in Cloud Shell"
-services: 
-documentationcenter: 
+title: Schnellstartanleitung für Bash in Azure Cloud Shell | Microsoft-Dokumentation
+description: Schnellstart für Bash in Cloud Shell
+services: ''
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: 69431979769a03b62a7f9fd7760e6eb614e37cd6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3f605645e7a53f285cb7e508034ebab0daa0d335
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Schnellstart für Bash in Azure Cloud Shell
 
@@ -37,7 +37,7 @@ Dieses Dokument erläutert die Verwendung von Bash in Azure Cloud Shell im [Azur
 > Sie werden in jeder Sitzung automatisch bei der Azure CLI 2.0 authentifiziert.
 
 ### <a name="select-the-bash-environment"></a>Auswählen der Bash-Umgebung
-1. Wählen Sie auf der linken Seite des Shell-Fensters im Dropdownmenü die Umgebung aus. <br>
+1. Klicken Sie auf der linken Seite des Shellfensters auf das Dropdownmenü für Umgebungen. <br>
 ![](media/quickstart/env-selector.png)
 2. Wählen Sie „Bash“ aus.
 

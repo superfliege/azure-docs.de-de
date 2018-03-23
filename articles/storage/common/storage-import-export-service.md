@@ -1,6 +1,6 @@
 ---
-title: "Verwenden des Azure Import/Export-Diensts zum Übertragen von Daten in und aus Azure Storage | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Import- und Exportaufträge im Azure-Portal erstellen, um Daten in und aus Azure Storage zu übertragen."
+title: Verwenden des Azure Import/Export-Diensts zum Übertragen von Daten in und aus Azure Storage | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Import- und Exportaufträge im Azure-Portal erstellen, um Daten in und aus Azure Storage zu übertragen.
 author: muralikk
 manager: syadav
 services: storage
@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: e9fce2530bc4e654304b946cea1715ac8e2ce6fa
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7eaf4c3c9b390e87dd8494cd6bfb2ea155451608
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Azure Store
 Dieser Artikel enthält schrittweise Anweisungen, wie Sie mit dem Import/Export-Dienst von Azure große Datenmengen auf sichere Weise in Azure Blob Storage und Azure Files übertragen können, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Storage auf Festplattenlaufwerke und zum Versand an Ihre lokalen Standorte nutzen. Daten von einer einzelnen internen SATA-Festplatte können entweder in Azure Blob Storage oder in Azure Files importiert werden. 
@@ -294,7 +294,7 @@ Die folgende Tabelle beschreibt die Laufwerkfehlerstatus und die Aktionen, die f
 | N/V | Ein Laufwerk, das nicht Teil eines Auftrags ist, trifft als Teil eines anderen Auftrags im Rechenzentrum ein. | Das Laufwerk wird als zusätzliches Laufwerk gekennzeichnet und nach Abschluss des Auftrags, der dem Originalpaket zugeordnet ist, an den Kunden zurückgegeben. |
 
 ### <a name="time-to-process-job"></a>Verarbeitungsdauer des Auftrags
-Die Verarbeitungsdauer eines Import- oder Exportauftrags kann aufgrund von verschiedenen Faktoren variieren, z.B. Versanddauer, Auftragstyp, Typ und Größe der zu kopierenden Daten und Größe der geschickten Festplatten. Der Import/Export-Dienst verfügt nicht über eine SLA. Nach Erhalt der Datenträger versucht der Dienst jedoch, die Kopie in sieben bis zehn Tagen fertigzustellen. Sie können die REST-API verwenden, um den Auftragsstatus genauer verfolgen zu können. Der Vorgang zum Auflisten von Aufträgen enthält einen Parameter für die prozentuale Fertigstellung, mit dem Sie den Status des Kopiervorgangs verfolgen können. Sie können sich gern an uns wenden, falls Sie für einen zeitkritischen Import- oder Exportauftrag einen geschätzten Fertigstellungszeitpunkt benötigen.
+Der erforderliche Zeitraum für die Verarbeitung eines Import-/Exportauftrags variiert basierend auf einer bestimmten Anzahl von Faktoren, z.B. Versanddauer, Ladevorgang im Rechenzentrum, Auftragstyp und Größe der kopierten Daten und Anzahl von Datenträgern in einem Auftrag. Der Import/Export-Dienst verfügt nicht über eine SLA. Nach Erhalt der Datenträger versucht der Dienst aber, die Kopie in sieben bis zehn Tagen fertigzustellen. Zusätzlich zum Status, der im Azure-Portal angegeben wird, können REST-APIs zum Nachverfolgen des Auftragsstatus verwendet werden. Der API-Aufruf des Vorgangs zum Auflisten von Aufträgen enthält einen Parameter für die prozentuale Fertigstellung, mit dem Sie den Status des Kopiervorgangs verfolgen können.
 
 ### <a name="pricing"></a>Preise
 **Bearbeitungsgebühr für Festplatte**

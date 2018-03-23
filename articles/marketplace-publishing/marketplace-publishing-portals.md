@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über die verschiedenen Portale, die zum Erstellen eines Angebots für den Marketplace benötigt werden | Microsoft Docs"
-description: "Übersicht über die verschiedenen Portale, die zum Erstellen eines Angebots für den Marketplace benötigt werden"
+title: Übersicht über die verschiedenen Portale, die zum Erstellen eines Angebots für den Marketplace benötigt werden | Microsoft Docs
+description: Übersicht über die verschiedenen Portale, die zum Erstellen eines Angebots für den Marketplace benötigt werden
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 89ce82b3-c28a-4b0d-b37a-db3112160a4e
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
-ms.author: hascipio
-ms.openlocfilehash: 093d3ee3ecce89c86a12e7e216072ece57f82f9d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 663d9a01b80b0c41e37037b0cbec10c93511d24c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="portals-you-will-need"></a>Portale, die Sie benötigen
 Bevor Sie mit der Veröffentlichung eines Angebots beginnen, sollten Sie sich mit den verschiedenen Portalen vertraut machen, die Sie dazu benötigen. Im Anschluss folgt eine kurze Zusammenfassung der Portale (Developer Center, Azure-Veröffentlichungsportal und Azure-Portal) in der Reihenfolge, in der Sie mit ihnen interagieren.                                                                            
@@ -26,7 +26,7 @@ Bevor Sie mit der Veröffentlichung eines Angebots beginnen, sollten Sie sich mi
 ## <a name="developer-center"></a>Developer Center
 [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Das Erstellen Ihres Microsoft Developer Center-Kontos ist eine einmalige Aufgabe. Vergewissern Sie sich vor der Kontoerstellung, dass Ihr Unternehmen nicht bereits über ein Developer Center-Konto verfügt. Während des Prozesses erfassen wir Bankdaten, Steuerinformationen und Adressdaten Ihres Unternehmens.
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Im Idealfall ist dies eine Verteilerliste oder Sicherheitsgruppe (z.B. azurepubl
 ## <a name="publishing-portal"></a>Veröffentlichungsportal
 [https://publish.windowsazure.com](https://publish.windowsazure.com)
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Dieses Portal dient zum Bearbeiten und Veröffentlichen des Angebots. Hierzu zählen unter anderem Marketing, Preisgestaltung, Veröffentlichung und ggf. Zertifizierung.
 
 ### <a name="identityaccount-used"></a>Verwendete Identität/Verwendetes Konto
@@ -54,7 +54,7 @@ Die weiter oben erwähnte Verteilerliste oder Sicherheitsgruppe muss bei der ers
 ## <a name="azure-portal"></a>Azure-Portal
 [https://portal.azure.com](https://portal.azure.com)
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Dies ist das Portal, in dem Sie Ihre bereitgestellten und veröffentlichten Angebote im Azure Marketplace anzeigen können (gilt für virtuelle Computer, Lösungsvorlagen und auf dem Azure-Ressourcen-Manager basierende Entwicklerdienste).
 
 ### <a name="identityaccount-used"></a>Verwendete Identität/Verwendetes Konto

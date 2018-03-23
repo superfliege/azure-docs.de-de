@@ -1,8 +1,8 @@
 ---
 title: Bereitstellen einer Linux CentOS Data Science-VM in Azure | Microsoft-Dokumentation
-description: "Konfigurieren und erstellen Sie eine Linux Data Science Virtual Machine in Azure, um Analysen und Machine Learning-Vorgänge durchzuführen."
+description: Konfigurieren und erstellen Sie eine Linux Data Science Virtual Machine in Azure, um Analysen und Machine Learning-Vorgänge durchzuführen.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: e36c28ef1c05dcdcebc7372316c7f144c92fd02f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 550d49e3d6007c6b494deec95b785ea9bc214f3a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Bereitstellen einer Linux CentOS Data Science-VM in Azure
 
@@ -30,7 +30,7 @@ Die Linux Data Science Virtual Machine ist ein auf CentOS basierender virtueller
 * JuliaPro: eine betreute Distribution der Sprache Julia mit gängigen wissenschaftlichen und Datenanalyse-Bibliotheken
 * Eigenständige Spark-Instanz und Hadoop für einen einzelnen Knoten (HDFS, Yarn)
 * JupyterHub: Jupyter Notebook-Server für mehrere Benutzer mit Unterstützung von R, Python, PySpark, Julia-Kernels
-* Azure-Speicher-Explorer
+* Azure Storage-Explorer
 * Azure-Befehlszeilenschnittstelle für die Verwaltung von Azure-Ressourcen
 * PostgreSQL-Datenbank
 * Machine Learning-Tools
@@ -151,10 +151,10 @@ Python 3.5 wird unter */anaconda/envs/py35/bin*installiert.
 
 Geben Sie zum Aufrufen einer interaktiven Python-Sitzung in der Shell einfach **python** ein. Wenn Sie sich in einer grafischen Benutzeroberfläche befinden oder die X11-Weiterleitung eingerichtet haben, können Sie **pycharm** eingeben, um die PyCharm Python-IDE zu starten.
 
-Um weitere Python-Bibliotheken zu installieren, müssen Sie den Befehl ```conda``` oder ````pip```` unter sudo ausführen und den vollständigen Pfad des Python-Paket-Managers (conda oder pip) bereitstellen, um die richtige Python-Umgebung zu installieren. Beispiel:
+Um weitere Python-Bibliotheken zu installieren, müssen Sie den Befehl ```conda``` oder ````pip```` unter sudo ausführen und den vollständigen Pfad des Python-Paket-Managers (conda oder pip) bereitstellen, um die richtige Python-Umgebung zu installieren. Beispiel: 
 
-    sudo /anaconda/bin/pip install <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install <package> # for Python 3.5 environment
+    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
+    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
 
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
@@ -250,7 +250,7 @@ So greifen Sie auf **Postgres**zu
 Die folgenden Azure-Tools werden auf dem virtuellen Computer installiert:
 
 * **Azure-Befehlszeilenschnittstelle:**Mit der Azure-Befehlszeilenschnittstelle können Sie Azure-Ressourcen über Shellbefehle erstellen und verwalten. Geben Sie zum Aufrufen der Azure-Tools einfach **azure help**ein. Weitere Informationen finden Sie auf der [Dokumentationsseite zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Microsoft Azure-Speicher-Explorer:**Der Microsoft Azure-Speicher-Explorer ist ein grafisches Tool zum Navigieren durch die Objekte, die Sie in Ihrem Azure-Speicherkonto gespeichert haben, und zum Hoch- und Herunterladen der Daten in und aus Azure-Blobs. Sie können über das Symbol der Desktopverknüpfung auf den Speicher-Explorer zugreifen. Sie können ihn auch über eine Eingabeaufforderung der Shell aufrufen, indem Sie **StorageExplorer**eingeben. Sie müssen über einen X2Go-Client angemeldet sein oder die X11-Weiterleitung eingerichtet haben.
+* **Microsoft Azure Storage-Explorer:**Der Microsoft Azure Storage-Explorer ist ein grafisches Tool zum Navigieren durch die Objekte, die Sie in Ihrem Azure Storage-Konto gespeichert haben, und zum Hoch- und Herunterladen der Daten in und aus Azure-Blobs. Sie können über das Symbol der Desktopverknüpfung auf den Storage-Explorer zugreifen. Sie können ihn auch über eine Eingabeaufforderung der Shell aufrufen, indem Sie **StorageExplorer**eingeben. Sie müssen über einen X2Go-Client angemeldet sein oder die X11-Weiterleitung eingerichtet haben.
 * **Azure-Bibliotheken**: Im Folgenden finden Sie einige der vorinstallierten Bibliotheken.
   
   * **Python**: Die installierten zu Azure gehörenden Bibliotheken in Python sind **azure**, **azureml**, **pydocumentdb** und **pyodbc**. Mit den ersten drei Bibliotheken können Sie auf Azure-Speicherdienste, Azure Machine Learning und Azure Cosmos DB (eine NoSQL-Datenbank in Azure) zugreifen. Mit der vierten Bibliothek, pyodbc (zusammen mit dem Microsoft ODBC-Treiber für SQL Server), können Sie unter Verwendung einer ODBC-Schnittstelle über Python auf SQL Server, Azure SQL-Datenbank und Azure SQL Data Warehouse zugreifen. Geben Sie **pip list** ein, um alle aufgeführten Bibliotheken anzuzeigen. Achten Sie darauf, dass dieser Befehl sowohl in der Python 2.7- als auch in der Python 3.5-Umgebung ausgeführt wird.
@@ -274,7 +274,7 @@ Informationen zum Bereitstellen von Modellen in R und Python in Azure Machine Le
 > 
 
 ### <a name="machine-learning-tools"></a>Machine Learning-Tools
-Die VM enthält einige Machine Learning-Tools und -Algorithmen, die vorkompiliert und lokal vorinstalliert wurden. Diese umfassen:
+Die VM enthält einige Machine Learning-Tools und -Algorithmen, die vorkompiliert und lokal vorinstalliert wurden. Das umfasst:
 
 * **Microsoft Cognitive Toolkit**: Ein Deep Learning-Toolkit.
 * **Vowpal Wabbit**: Ein Algorithmus für schnelles Onlinelernen.

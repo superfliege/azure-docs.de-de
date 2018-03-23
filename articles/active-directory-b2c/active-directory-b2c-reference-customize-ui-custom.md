@@ -2,11 +2,11 @@
 title: 'Azure Active Directory B2C: Referenz: Anpassen der UI einer User Journey mit benutzerdefinierten Richtlinien | Microsoft-Dokumentation'
 description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: rojasja
 manager: mtillman
 editor: rojasja
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
 ms.openlocfilehash: 40245c25a7f80db27a25a0d34eb20f1057fc5e02
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Anpassen der UI einer User Journey mit benutzerdefinierten Richtlinien
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/21/2018
 > Dieser Artikel enthält eine erweiterte Beschreibung der Funktionsweise der UI-Anpassung und der Aktivierung mit benutzerdefinierten B2C-Richtlinien per Identity Experience Framework.
 
 
-Ein nahtloses Benutzererlebnis ist für jede B2C-Lösung (Business to Consumer) von entscheidender Bedeutung. Ein nahtloses Benutzererlebnis bedeutet, dass sich eine „User Journey“ durch unseren Dienst – ob per Gerät oder Browser – nicht von der User Journey des verwendeten Diensts des Kunden unterscheidet.
+Ein reibungslose Benutzeroberfläche ist für jede B2C-Lösung (Business to Consumer) von entscheidender Bedeutung. Ein nahtloses Benutzererlebnis bedeutet, dass sich eine „User Journey“ durch unseren Dienst – ob per Gerät oder Browser – nicht von der User Journey des verwendeten Diensts des Kunden unterscheidet.
 
 ## <a name="understand-the-cors-way-for-ui-customization"></a>Verinnerlichen des CORS-Ansatzes für die UI-Anpassung
 
@@ -36,7 +36,7 @@ Mit Azure AD B2C können Sie das Aussehen und Verhalten der Benutzeroberfläche 
 
 Zu diesem Zweck wird von Azure AD B2C Code im Browser des Kunden ausgeführt und der moderne Standardansatz [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](http://www.w3.org/TR/cors/) verwendet, um für benutzerdefinierten Inhalt von einer bestimmten URL, die Sie in einer benutzerdefinierten Richtlinie angeben, auf Ihre HTML5/CSS-Vorlagen zu verweisen. CORS ist ein Mechanismus, mit dem eingeschränkte Ressourcen, z.B. Schriftarten, auf einer Webseite von einer anderen Domäne aus angefordert werden können, die sich außerhalb der Ursprungsdomäne der Ressource befindet.
 
-Im Vergleich zum herkömmlichen Ansatz, bei dem sich Vorlagenseiten im Besitz der Lösung befinden, nur eingeschränkte Textelemente und Bilder bereitgestellt werden und sich aufgrund der eingeschränkten Steuerbarkeit des Layouts und Aussehens kein nahtloses Benutzererlebnis erzielen lässt, unterstützt der CORS-Ansatz HTML5 und CSS. Dies eröffnet Ihnen folgende Möglichkeiten:
+Im Vergleich zum herkömmlichen Ansatz, bei dem sich Vorlagenseiten im Besitz der Lösung befinden, nur eingeschränkte Textelemente und Bilder bereitgestellt werden und eine eingeschränkte Steuerung des Layouts und Aussehens möglich war und sich Schwierigkeiten in Bezug auf die Bereitstellung einer reibungslosen Oberfläche ergeben haben, werden beim CORS-Ansatz HTML5 und CSS unterstützt. Dies eröffnet Ihnen folgende Möglichkeiten:
 
 - Sie hosten den Inhalt, und die Lösung fügt dann die Steuerelemente der Lösung per clientseitigem Skript ein.
 - Sie haben die vollständige Kontrolle über jedes Pixel des Layouts und somit des Erscheinungsbilds.
@@ -66,16 +66,16 @@ Schließlich wird der zusammengeführte Inhalt Ihrem Kunden als dynamisches Doku
 
 Führen Sie folgende Schritte aus, um dafür zu sorgen, dass alles wie gewünscht funktioniert:
 
-- Stellen Sie sicher, dass Ihr Inhalt HTML5-konform und zugänglich ist.
-- Stellen Sie sicher, dass Ihr Inhaltsserver für CORS aktiviert ist.
-- Stellen Sie Inhalt per HTTPS bereit.
-- Verwenden Sie absolute URLs, z.B. „https://ihredomäne/content“, für alle Links und den gesamten CSS-Inhalt.
+- Sicherstellen, dass Ihr Inhalt HTML5-konform und zugänglich ist
+- Sicherstellen, dass Ihr Inhaltsserver für CORS aktiviert ist
+- Bereitstellen von Inhalt per HTTPS
+- Verwenden von absoluten URLs, z.B. „https://ihredomäne/content“, für alle Links und den gesamten CSS-Inhalt.
 
 > [!TIP]
-> Sie können die Website „http://test-cors.org/“ verwenden, um zu bestätigen, dass die von Ihnen gehostete Website für Ihren Inhalt über eine CORS-Aktivierung verfügt, und um CORS-Anforderungen zu testen. Dank dieser Website können Sie die CORS-Anforderung an einen Remoteserver senden (um zu testen, ob CORS unterstützt wird). Sie können die CORS-Anforderung auch an einen Testserver senden (um bestimmte Features von CORS auszuprobieren).
+> Sie können die Website http://test-cors.org/ verwenden, um sicherzustellen, dass die von Ihnen gehostete Website für Ihren Inhalt über eine CORS-Aktivierung verfügt, und um CORS-Anforderungen zu testen. Dank dieser Website können Sie die CORS-Anforderung an einen Remoteserver senden (um zu testen, ob CORS unterstützt wird). Sie können die CORS-Anforderung auch an einen Testserver senden (um bestimmte Features von CORS auszuprobieren).
 
 > [!TIP]
-> Auch die Website „http://enable-cors.org/“ ist eine sehr nützliche Ressource für CORS.
+> Auch die Website http://enable-cors.org/ ist eine sehr nützliche Ressource für CORS.
 
 Dank dieses CORS-basierten Ansatzes kommen die Endbenutzer sowohl bei Ihrer Anwendung als auch bei den von Azure AD B2C bereitgestellten Seiten in den Genuss eines konsistenten Benutzererlebnisses.
 
@@ -122,8 +122,8 @@ CORS (Cross-Origin Resource Sharing) muss auf Ihrem Endpunkt aktiviert sein, dam
 
 Führen Sie die folgenden Schritte aus, um sicherzustellen, dass für den Speicher, in dem Sie Ihren Inhalt hosten, CORS aktiviert ist:
 
-1. Öffnen Sie eine Browsersitzung, und navigieren Sie zur Seite *unified.html*, indem Sie die vollständige URL des Standorts in Ihrem Speicherkonto verwenden: `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Beispiel: „https://contoso369b2c.blob.core.windows.net/b2c/unified.html“.
-2. Navigieren Sie zu „http://test-cors.org“. Mit dieser Website können Sie überprüfen, ob für die verwendete Seite CORS aktiviert ist.  
+1. Öffnen Sie eine Browsersitzung, und navigieren Sie zur Seite *unified.html*, indem Sie die vollständige URL des Standorts in Ihrem Speicherkonto verwenden: `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Beispiel: https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
+2. Navigieren Sie zu http://test-cors.org. Mit dieser Website können Sie überprüfen, ob für die verwendete Seite CORS aktiviert ist.  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->

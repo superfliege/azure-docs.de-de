@@ -1,17 +1,17 @@
 ---
 title: " Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie einen vorhandenen Konfigurationsserver für die Notfallwiederherstellung von physischen Servern in Azure mit dem Azure Site Recovery-Dienst verwalten."
+description: In diesem Artikel wird beschrieben, wie Sie einen vorhandenen Konfigurationsserver für die Notfallwiederherstellung von physischen Servern in Azure mit dem Azure Site Recovery-Dienst verwalten.
 services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 7fe68f072ef438e21f3e6d3d52aee9e86e537687
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 2fdccade577788d3fc5bc076604547b2ab6690d9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern
 
@@ -36,7 +36,7 @@ In der Tabelle werden die erforderlichen Komponenten für die Bereitstellung des
 | IIS | - Keine bereits vorhandene Standardwebsite <br> - Aktivieren der [anonymen Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - Aktivieren der Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen<br>|
 | NIC-Typ | VMXNET3 (bei Bereitstellung als VMware-VM) |
 | Art der IP-Adresse | statischen |
-| Zugriff auf das Internet | Der Server benötigt Zugriff auf diese URLs: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (für horizontal hochskalierte Prozessserver nicht erforderlich) <br> - time.nist.gov <br> - time.windows.com |
+| Zugriff auf das Internet | Der Server benötigt Zugriff auf diese URLs: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (für horizontal hochskalierte Prozessserver nicht erforderlich) <br> - time.nist.gov <br> - time.windows.com |
 | Ports | 443 (Steuerkanalorchestrierung)<br>9443 (Datentransport)|
 
 ## <a name="download-the-latest-installation-file"></a>Herunterladen der aktuellen Installationsdatei
@@ -164,7 +164,7 @@ Sie können Proxyeinstellungen für den Konfigurationsservercomputer wie folgt �
   ```
 
   >[!WARNING]
-  Wenn Sie zusätzliche Prozessserver mit dem Konfigurationsserver verbunden haben, müssen Sie [die Proxyeinstellungen auf allen Prozessservern für horizontale Skalierung](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server) in Ihrer Bereitstellung korrigieren.
+  Wenn Sie zusätzliche Prozessserver mit dem Konfigurationsserver verbunden haben, müssen Sie [die Proxyeinstellungen auf allen Prozessservern für horizontale Skalierung](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) in Ihrer Bereitstellung korrigieren.
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Erneutes Registrieren eines Konfigurationsservers im selben Tresor
   1. Melden Sie sich am Konfigurationsserver an.
@@ -184,7 +184,7 @@ Sie können Proxyeinstellungen für den Konfigurationsservercomputer wie folgt �
       ```
 
   >[!WARNING]
-  Bei mehreren Prozessservern müssen Sie sie [erneut registrieren](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server).
+  Bei mehreren Prozessservern müssen Sie sie [erneut registrieren](vmware-azure-manage-process-server.md#reregister-a-process-server).
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>Registrieren eines Konfigurationsservers in einem anderen Tresor
 
@@ -233,8 +233,8 @@ Aktualisieren Sie den Server wie folgt:
 > [!WARNING]
 > Überprüfen Sie Folgendes vor der Außerbetriebnahme Ihres Konfigurationsservers.
 > 1. [Deaktivieren Sie den Schutz](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) für alle virtuellen Computer unter diesem Konfigurationsserver.
-> 2. [Heben Sie die Zuordnung von allen Replikationsrichtlinien zum Konfigurationsserver auf](site-recovery-setup-replication-settings-vmware.md#dissociate-a-configuration-server-from-a-replication-policy), oder [löschen](site-recovery-setup-replication-settings-vmware.md#delete-a-replication-policy) Sie sie.
-> 3. [Löschen](site-recovery-vmware-to-azure-manage-vCenter.md#delete-a-vcenter-in-azure-site-recovery) Sie alle vCenter-Server/vSphere-Hosts, die mit dem Konfigurationsserver verknüpft sind.
+> 2. [Heben Sie die Zuordnung von allen Replikationsrichtlinien zum Konfigurationsserver auf](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy), oder [löschen](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) Sie sie.
+> 3. [Löschen](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) Sie alle vCenter-Server/vSphere-Hosts, die mit dem Konfigurationsserver verknüpft sind.
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>Löschen des Konfigurationsservers im Azure-Portal

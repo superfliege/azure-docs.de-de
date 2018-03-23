@@ -1,13 +1,13 @@
 ---
-title: "Erstellen, Ändern oder Löschen einer Azure-Routingtabelle | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie eine Routingtabelle erstellen, ändern oder löschen."
+title: Erstellen, Ändern oder Löschen einer Azure-Routingtabelle | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie eine Routingtabelle erstellen, ändern oder löschen.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 7edc73f337a72c24fd24d94468ee590b75dfa7df
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 7630fd82cf62f1fcb0df80cec5b5e0030da81a85
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Erstellen, Ändern oder Löschen einer Routingtabelle
 
-Azure führt für Datenverkehr automatisch das Routing zwischen Azure-Subnetzen, virtuellen Netzwerken und lokalen Netzwerken durch. Wenn Sie das Standardrouting von Azure ändern möchten, erstellen Sie eine Routingtabelle. Falls Sie mit dem Azure-Routing nicht vertraut sein sollten, empfehlen wir Ihnen, den Artikel [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md) zu lesen und das Tutorial [Erstellen einer benutzerdefinierten Route – Azure-Portal](create-user-defined-route-portal.md) durchzuarbeiten, bevor Sie die Aufgaben in diesem Artikel durchführen.
+Azure führt für Datenverkehr automatisch das Routing zwischen Azure-Subnetzen, virtuellen Netzwerken und lokalen Netzwerken durch. Wenn Sie das Standardrouting von Azure ändern möchten, erstellen Sie eine Routingtabelle. Falls Sie mit dem Azure-Routing nicht vertraut sein sollten, empfehlen wir Ihnen, den Artikel [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md) zu lesen und das Tutorial [Erstellen einer benutzerdefinierten Route – Azure-Portal](tutorial-create-route-table-portal.md) durchzuarbeiten, bevor Sie die Aufgaben in diesem Artikel durchführen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -38,7 +38,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
 Die Anzahl von Routingtabellen, die Sie pro Azure-Standort und -Abonnement erstellen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. Wählen Sie oben links im Portal die Option **+ Neu**.
+1. Wählen Sie links oben im Portal **+ Ressource erstellen** aus.
 2. Wählen Sie die Option **Netzwerk** und dann **Routingtabelle**.
 3. Geben Sie unter **Name** einen Namen für die Routingtabelle ein, wählen Sie Ihr **Abonnement**, erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus, wählen Sie einen **Standort**, und wählen Sie dann die Option **Erstellen**. Mit der Option **BGP-Routenverteilung deaktivieren** wird verhindert, dass lokale Routen per BGP in einem virtuellen Azure-Netzwerk verteilt werden. Wählen Sie *Deaktiviert*, wenn Ihr virtuelles Netzwerk nicht mit einem Azure-Netzwerkgateway (VPN oder ExpressRoute) verbunden ist. 
 

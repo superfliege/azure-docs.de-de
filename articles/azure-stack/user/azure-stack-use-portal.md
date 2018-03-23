@@ -2,10 +2,10 @@
 title: Verwenden des Azure Stack-Portals | Microsoft-Dokumentation
 description: Informationen zum Zugriff auf das Benutzerportal in Azure Stack und zu dessen Verwendung.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 5aa00123-5b87-45e0-a671-4165e66bfbc6
 ms.service: azure-stack
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 7c34d7a225be63da95f664525b0366ff89b28838
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="using-the-azure-stack-portal"></a>Verwenden des Azure Stack-Portals
 
@@ -31,7 +31,7 @@ Als Nutzer der Azure Stack-Dienste können Sie im Azure Stack-Portal öffentlich
 Ihr Azure Stack-Operator (ein Dienstanbieter oder ein Administrator in Ihrer Organisation) teilt Ihnen die richtige URL für den Zugriff auf das Portal mit. 
 
 - Für ein integriertes System variiert die URL basierend auf der Region Ihres Operators und dem externen Domänenamen und hat das Format https://portal.&lt;*Region*&gt;.&lt; *FQDN*&gt;.
-- Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse „https://portal.local.azurestack.external“.
+- Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse https://portal.local.azurestack.external.
 
 ![Screenshot des Azure Stack-Benutzerportals](media/azure-stack-use-portal/UserPortal.png)
 

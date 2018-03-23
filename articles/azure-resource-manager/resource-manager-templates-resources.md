@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: 89e4b52e7d306bd495c426bcf775f59d0f30eb55
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: b5438080f71fa8f5c4f03006b75b826f1cfa576a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Abschnitt „Resources“ von Azure Resource Manager-Vorlagen
 
@@ -213,7 +213,7 @@ Wenn Sie den Speicherort in Ihrer Vorlage hartcodieren müssen, geben Sie den Na
 ```
 
 ## <a name="tags"></a>Tags
-[!INCLUDE [resource-manager-tag-introduction](../../includes/resource-manager-tag-introduction.md)]
+[!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
 ### <a name="add-tags-to-your-template"></a>Hinzufügen von Tags zu Ihrer Vorlage
 
@@ -293,7 +293,7 @@ Die folgenden Informationen können bei der Verwendung von Ressourcen hilfreich 
    ]
    ```
 
-* Wenn Sie einen *öffentlichen Endpunkt* in Ihrer Vorlage verwenden (z.B. in Form eines Azure-Blobspeichers), dürfen Sie den Namespace *nicht hartcodieren*. Verwenden Sie die **reference**-Funktion, um den Namespace dynamisch abzurufen. Mit diesem Ansatz können Sie die Vorlage in anderen öffentlichen Namespace-Umgebungen bereitstellen, ohne den Endpunkt in der Vorlage manuell zu ändern. Legen Sie die API-Version auf die Version fest, die Sie für das Speicherkonto in der Vorlage verwenden:
+* Wenn Sie einen *öffentlichen Endpunkt* in Ihrer Vorlage verwenden (z.B. einen öffentlichen Azure Blob Storage-Endpunkt), dürfen Sie den Namespace *nicht hartcodieren*. Verwenden Sie die **reference**-Funktion, um den Namespace dynamisch abzurufen. Mit diesem Ansatz können Sie die Vorlage in anderen öffentlichen Namespace-Umgebungen bereitstellen, ohne den Endpunkt in der Vorlage manuell zu ändern. Legen Sie die API-Version auf die Version fest, die Sie für das Speicherkonto in der Vorlage verwenden:
    
    ```json
    "osDisk": {

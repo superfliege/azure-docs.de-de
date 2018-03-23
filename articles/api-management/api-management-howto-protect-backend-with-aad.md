@@ -1,11 +1,11 @@
 ---
-title: "Schützen eines Web-API-Back-Ends mit Azure Active Directory und API Management | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie ein Web-API-Back-End mit Azure Active Directory und API Management schützen."
+title: Schützen eines Web-API-Back-Ends mit Azure Active Directory und API Management | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie ein Web-API-Back-End mit Azure Active Directory und API Management schützen.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 2a5be24aba8a675290045b282cc64dda4b7c594e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b7fc48412799aea0c4bba971102b4912dbb18e05
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>So schützen Sie ein Web-API-Back-End mit Azure Active Directory und API Management
 
@@ -179,7 +179,7 @@ APIs werden im API-Herausgeberportal konfiguriert, das über das Azure-Portal er
 
 ![Herausgeberportal][api-management-management-console]
 
-Vorgänge können [APIs manuell hinzugefügt](api-management-howto-add-operations.md)oder importiert werden. In diesem Video werden Vorgänge im Swagger-Format importiert (ab 6:40).
+Vorgänge können [APIs manuell hinzugefügt](api-management-howto-add-operations.md)oder importiert werden.
 
 Erstellen Sie eine Datei mit dem Namen `calcapi.json` mit folgenden Inhalt, und speichern Sie sie auf Ihrem Computer. Stellen Sie sicher, dass das `host` -Attribut auf Ihr Web-API-Back-End verweist. In diesem Beispiel wird `"host": "apimaaddemo.azurewebsites.net"` verwendet.
 

@@ -8,7 +8,7 @@
 | SQL-Datenbankserver pro Abonnement |6 |150 |
 | DNS-Server pro Abonnement |9 |100 |
 | Reservierte IPs pro Abonnement |20 |100 |
-| Zertifikate für gehostete Dienste pro Abonnement |400 |400 |
+| Zertifikate für gehostete Dienste pro Abonnement |199 |199 |
 | [Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) pro Abonnement |256 |256 |
 
 

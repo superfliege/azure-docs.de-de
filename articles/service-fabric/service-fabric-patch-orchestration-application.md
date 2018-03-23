@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric-Anwendung für die Patchorchestrierung | Microsoft-Dokumentation"
+title: Azure Service Fabric-Anwendung für die Patchorchestrierung | Microsoft-Dokumentation
 description: Anwendung zum Automatisieren von Betriebssystempatches in einem Service Fabric-Cluster.
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/16/2018
+ms.date: 3/07/2018
 ms.author: nachandr
-ms.openlocfilehash: bb3afdd3afa81664589f738945a63d20013d5291
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 43a0675b1613e7bcf338537c1203de7df9a02fc4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/21/2018
 
 Die Anwendung für die Patchorchestrierung ist eine Azure Service Fabric-Anwendung, mit der das Aufspielen von Betriebssystempatches in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann.
 
-Die App für die Patchorchestrierung umfasst die folgenden Funktionen:
+Die App für die Patchorchestrierung umfasst die folgenden Features:
 
 - **Automatische Installation von Betriebssystemupdates**. Betriebssystemupdates werden automatisch heruntergeladen und installiert. Clusterknoten werden bei Bedarf ohne Ausfall des Clusters neu gestartet.
 
@@ -136,7 +136,9 @@ Automatische Windows-Updates können zu einer Verringerung der Verfügbarkeit f�
 
 ## <a name="download-the-app-package"></a>Herunterladen des App-Pakets
 
-Laden Sie die Anwendung über den [Downloadlink](https://go.microsoft.com/fwlink/P/?linkid=849590) herunter.
+Die Anwendung kann zusammen mit Installationsskripts über den [Archivlink](https://go.microsoft.com/fwlink/?linkid=869566) heruntergeladen werden.
+
+Die Anwendung im SFPKG-Format kann über den [SFPKG-Link](https://go.microsoft.com/fwlink/?linkid=869567) heruntergeladen werden. Dies ist praktisch für die [Azure Resource Manager-basierte Anwendungsbereitstellung](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurieren der App
 
@@ -152,7 +154,7 @@ Das Verhalten der App für die Patchorchestrierung kann Ihren Anforderungen ents
 | WUOperationTimeOutInMinutes | int <br>(Standardwert: 90)                   | Gibt den Timeoutwert für jeden Windows Update-Vorgang an (Suchen/Herunterladen/Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
 | WURescheduleCount     | int <br> (Standardwert: 5)                  | Gibt an, wie oft der Dienst das Windows Update maximal erneut plant, falls bei dem Vorgang wiederholt ein Fehler auftritt.          |
 | WURescheduleTimeInMinutes | int <br>(Standardwert: 30) | Das Intervall, nach dem der Dienst das Windows-Update erneut plant, falls der Fehler weiterhin besteht. |
-| WUFrequency           | Durch Trennzeichen getrennte Zeichenfolge (Standard: „Wöchentlich, Mittwoch, 7:00:00“)     | Die Häufigkeit, mit der Windows-Updates installiert werden sollen. Folgende Formate und Werte sind möglich: <br>– Monatlich, TT, HH:MM:SS, z.B. Monatlich, 5,12:22:32. <br> – Wöchentlich, TAG,HH:MM:SS, z.B. Wöchentlich, Dienstag, 12:22:32.  <br> – Täglich, HH:MM:SS, z.B. Täglich, 12:22:32.  <br> – Keine: Gibt an, dass keine Windows-Updates durchgeführt werden sollen.  <br><br> Die Uhrzeiten sind in UTC angegeben.|
+| WUFrequency           | Durch Trennzeichen getrennte Zeichenfolge (Standard: „Wöchentlich, Mittwoch, 7:00:00“)     | Die Häufigkeit, mit der Windows-Updates installiert werden sollen. Folgende Formate und Werte sind möglich: <br>– Monatlich, TT, HH:MM:SS, z.B. Monatlich, 5,12:22:32. <br> – Wöchentlich, TAG, HH:MM:SS, z.B. Wöchentlich, Dienstag, 12:22:32  <br> – Täglich, HH:MM:SS, z.B. Täglich, 12:22:32.  <br> – Keine: Gibt an, dass keine Windows-Updates durchgeführt werden sollen.  <br><br> Die Uhrzeiten sind in UTC angegeben.|
 | AcceptWindowsUpdateEula | Boolescher Wert <br>(Standardwert: true) | Wenn Sie dieses Flag festlegen, akzeptiert die Anwendung den Endbenutzer-Lizenzvertrag für Windows Update für den Besitzer des Computers.              |
 
 > [!TIP]
@@ -361,8 +363,12 @@ Ein Administrator muss eingreifen und ermitteln, weshalb die Integrität der Anw
 ### <a name="version-111"></a>Version 1.1.1
 - Korrektur eines Fehlers in „SetupEntryPoint“ von „NodeAgentService“, der die Installation von „NodeAgentNTService“ verhindert hat.
 
-### <a name="version-120-latest"></a>Version 1.2.0 (aktuelle Version)
+### <a name="version-120"></a>Version 1.2.0
 
 - Korrektur von Fehler im Zusammenhang mit dem Workflow für den Systemneustart.
 - Korrektur eines Fehlers bei der Erstellung von RM-Aufgaben, durch den die Integritätsüberprüfung während Reparaturvorbereitungsaufgaben nicht wie erwartet erfolgt ist.
 - Änderung des Startmodus für den Windows-Dienst „POANodeSvc“ von automatisch in verzögert automatisch.
+
+### <a name="version-121-latest"></a>Version 1.2.1 (aktuell)
+
+- Fehlerbehebung im Workflow zum Herunterskalieren eines Clusters. Logik der automatischen Speicherbereinigung für POA-Reparaturaufgaben eingeführt, die nicht vorhandenen Knoten angehören.

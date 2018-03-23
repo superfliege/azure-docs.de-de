@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL-Datenbank – Azure-Fallstudie: Daxko/CSI | Microsoft Docs"
+title: 'Azure SQL-Datenbank – Azure-Fallstudie: Daxko/CSI | Microsoft Docs'
 description: Erfahren Sie, wie Daxko/CSI SQL-Datenbank verwendet, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern.
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 00c8a713-f20c-4d6b-b8b7-0c1b9ba5f05b
+manager: craigg
 ms.service: sql-database
 ms.custom: reference
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 4ecef0526bcdc61d29ae0ee0ac0d55c5651a1b2b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4726a82628d56b068d28b555567bda9dc22b5abb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI verwendet Azure, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern
 ![Daxko/CSI-Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)

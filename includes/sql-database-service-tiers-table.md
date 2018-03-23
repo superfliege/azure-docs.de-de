@@ -52,6 +52,7 @@ sql-database-single-database-resources.md
 | Max. gleichzeitige Sitzungen | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
+
 > [!IMPORTANT]
 > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
 >
@@ -59,3 +60,4 @@ sql-database-single-database-resources.md
 > 
 >\*\* Die maximale Anzahl von eDTUs pro Datenbank beginnt im Standard-Tarif ab 200 eDTUs und befindet sich in der Vorschauphase.
 >
+

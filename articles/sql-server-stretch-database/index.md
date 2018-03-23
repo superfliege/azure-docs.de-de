@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation für Azure SQL Server Stretch-Datenbank | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie SQL Server Stretch-Datenbank verwenden, um kalte Daten sicher zu Azure zu migrieren, ohne Abfragen oder Anwendungen zu ändern. Tutorials und anderes Dokumentationsmaterial."
+title: "Dokumentation für Azure SQL Server Stretch Database | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie SQL Server Stretch Database verwenden, um kalte Daten sicher zu Azure zu migrieren, ohne Abfragen oder Anwendungen zu ändern. Tutorials und anderes Dokumentationsmaterial."
 services: sql-server-stretch-database
 author: czeumault
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: cbdd210f2fe46228daa8c138815826df2b3b0fd7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d40cd906abbee8b1d33f9e67c1940918ba4acb28
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
-#<a name="sql-server-stretch-database-documentation"></a>Dokumentation zu SQL Server Stretch-Datenbank
+# <a name="sql-server-stretch-database-documentation"></a>Dokumentation zu SQL Server Stretch Database
 
-Erfahren Sie, wie Sie SQL Server Stretch-Datenbank verwenden, um Ihre kalten Daten transparent und sicher zur Azure-Cloud zu migrieren. Tutorials und anderes Dokumentationsmaterial unterstützen Sie beim Einrichten kosteneffizienter Verfügbarkeit für Datenbanken mit selten verwendeten Daten, ohne dass vorhandene Abfragen oder Anwendungen geändert werden müssen.
+Erfahren Sie, wie Sie SQL Server Stretch Database verwenden, um Ihre kalten Daten transparent und sicher zur Azure-Cloud zu migrieren. Tutorials und anderes Dokumentationsmaterial unterstützen Sie beim Einrichten kosteneffizienter Verfügbarkeit für Datenbanken mit selten verwendeten Daten, ohne dass vorhandene Abfragen oder Anwendungen geändert werden müssen.
 
 
 <ul class="panelContent cardsFTitle">
@@ -35,7 +35,7 @@ Erfahren Sie, wie Sie SQL Server Stretch-Datenbank verwenden, um Ihre kalten Dat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Informationen zu Azure SQL Server Stretch-Datenbank</h3>
+                        <h3>Informationen zu Azure SQL Server Stretch Database</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ Erfahren Sie, wie Sie SQL Server Stretch-Datenbank verwenden, um Ihre kalten Dat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Videobibliothek zu Azure SQL Server Stretch-Datenbank</h3>
+                        <h3>Videobibliothek zu Azure SQL Server Stretch Database</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@ Erfahren Sie, wie Sie SQL Server Stretch-Datenbank verwenden, um Ihre kalten Dat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit SQL Server Stretch-Datenbank</h3>
+                        <h3>Erste Schritte mit SQL Server Stretch Database</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@ Erfahren Sie, wie Sie SQL Server Stretch-Datenbank verwenden, um Ihre kalten Dat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit dem SQL Server Stretch-Datenbank-Assistenten</h3>
+                        <h3>Erste Schritte mit dem SQL Server Stretch Database-Assistenten</h3>
                     </div>
                 </div>
             </div>

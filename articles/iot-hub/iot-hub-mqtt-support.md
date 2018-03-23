@@ -1,25 +1,25 @@
 ---
-title: "Grundlegendes zur Azure IoT Hub MQTT-Unterstützung | Microsoft-Dokumentation"
-description: "Entwicklerhandbuch: Unterstützung für Geräte, die unter Verwendung des MQTT-Protokolls eine Verbindung mit einem geräteseitigen IoT Hub-Endpunkt herstellen. Enthält Informationen zur integrierten MQTT-Unterstützung der Azure IoT-Geräte-SDKs."
+title: Grundlegendes zur Azure IoT Hub MQTT-Unterstützung | Microsoft-Dokumentation
+description: 'Entwicklerhandbuch: Unterstützung für Geräte, die unter Verwendung des MQTT-Protokolls eine Verbindung mit einem geräteseitigen IoT Hub-Endpunkt herstellen. Enthält Informationen zur integrierten MQTT-Unterstützung der Azure IoT-Geräte-SDKs.'
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1d71c27c-b466-4a40-b95b-d6550cf85144
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2018
+ms.date: 03/05/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a22c20a26ee4750c79c23fbba69de72a0084dfe7
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 9acda980583319414cc9e8668424907947a257db
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -100,6 +100,8 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
 
 Für die MQTT-Pakete CONNECT und DISCONNECT löst IoT Hub ein Ereignis im Kanal **Vorgangsüberwachung** aus. Dieses Ereignis weist zusätzliche Informationen auf, mit deren Hilfe Sie Konnektivitätsprobleme beheben können.
 
+Die Geräte-App kann eine **Will**-Nachricht im **CONNECT**-Paket angeben. Für die Geräte-App sollte `devices/{device_id}/messages/events/{property_bag}` oder `devices/{device_id}/messages/events/{property_bag}` als **Will**-Themenname verwendet werden, um festzulegen, dass **Will**-Nachrichten als Telemetrienachricht weitergeleitet werden sollen. Wenn die Netzwerkverbindung geschlossen ist, aber vorher kein **DISCONNECT**-Paket vom Gerät eingegangen ist, sendet IoT Hub in diesem Fall die im **CONNECT**-Paket bereitgestellte **Will**-Nachricht an den Telemetriekanal. Der Telemetriekanal kann entweder der Standardendpunkt **Ereignisse** oder ein benutzerdefinierter Endpunkt sein, der per IoT Hub-Routing definiert wird. Die Nachricht verfügt über die **iothub-MessageType**-Eigenschaft, der der Wert **Will** zugewiesen ist.
+
 ### <a name="tlsssl-configuration"></a>TLS/SSL-Konfiguration
 
 Damit Sie das MQTT-Protokoll direkt verwenden können, *muss* Ihr Client die Verbindung über TLS/SSL herstellen. Wenn Sie versuchen, diesen Schritt zu überspringen, treten Verbindungsfehler auf.
@@ -165,7 +167,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 > [!NOTE]
 > Dieses `{property_bag}`-Element verwendet die gleiche Codierung wie bei Abfragezeichenfolgen im HTTPS-Protokoll.
 
-Die Geräte-App kann auch `devices/{device_id}/messages/events/{property_bag}` als **Will-Themennamen** verwenden, um festzulegen, dass *Will-Nachrichten* als Telemetrienachricht weitergeleitet werden sollen.
+Hier ist eine Liste mit dem spezifischen Verhalten für die IoT Hub-Implementierung angegeben:
 
 * IoT Hub unterstützt keine QoS 2-Nachrichten. Wenn eine Geräte-App eine Nachricht mit **QoS 2**veröffentlicht, schließt IoT Hub die Netzwerkverbindung.
 * IoT Hub speichert Beibehaltungsnachrichten („Retain“) nicht beständig. Wenn ein Geräte eine Nachricht mit auf 1 festgelegtem **RETAIN**-Flag sendet, fügt IoT Hub der Nachricht die Anwendungseigenschaft **x-opt-retain** hinzu. In diesem Fall speichert IoT Hub die Beibehaltungsnachricht nicht beständig, sondern übergibt sie an die Back-End-App.

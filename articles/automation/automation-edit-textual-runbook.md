@@ -1,24 +1,20 @@
 ---
 title: Bearbeiten von Textrunbooks in Azure Automation
-description: "Dieser Artikel enthält verschiedene Verfahren zum Arbeiten mit PowerShell und PowerShell-Workflow-Runbooks in Azure Automation unter Verwendung des Text-Editors."
+description: Dieser Artikel enthält verschiedene Verfahren zum Arbeiten mit PowerShell und PowerShell-Workflow-Runbooks in Azure Automation unter Verwendung des Text-Editors.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: stevenka
-editor: tysonn
-ms.assetid: 6f5b48fb-6f30-4e99-9e14-9061b5554b08
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/23/2016
-ms.author: magoedte;bwren
-ms.openlocfilehash: e166700be0ec6b32d40f34bd47f92a7cff1cc7bf
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 4fbb24f068092e4e256119b5e0288360dcef8fe0
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Bearbeiten von Textrunbooks in Azure Automation
 Mit dem Text-Editor in Azure Automation können Sie [PowerShell-Runbooks](automation-runbook-types.md#powershell-runbooks) und [PowerShell-Workflow-Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) bearbeiten. Dieser Editor bietet neben den üblichen Features anderer Code-Editoren wie Intellisense und Farbcodierung zusätzliche spezielle Features, um den Zugriff auf für Runbooks typische Ressourcen zu ermöglichen.  Dieser Artikel enthält detaillierte Schritte zum Ausführen verschiedener Funktionen mit diesem Editor.
@@ -79,7 +75,7 @@ Gehen Sie wie folgt vor, um ein Runbook zur Bearbeitung im Text-Editor zu öffne
 4. Wählen Sie im Bereich **Aktivität** eine Aktivität aus.
 5. Beachten Sie in der Spalte **Beschreibung** die Beschreibung der Aktivität. Sie können auch auf „Detaillierte Hilfe anzeigen“ klicken, um die Hilfe zur Aktivität im Browser zu starten.
 6. Klicken Sie auf den Pfeil nach rechts.  Wenn die Aktivität über Parameter verfügt, werden sie zur Information aufgelistet.
-7. Klicken Sie dann die Taste „Aktivieren“.  Code zum Ausführen der Aktivität wird in das Runbook eingefügt.
+7. Klicken Sie dann auf das Häkchen.  Code zum Ausführen der Aktivität wird in das Runbook eingefügt.
 8. Sind für die Aktivität Parameter erforderlich, geben Sie anstelle des Datentyps in spitzen Klammern (<>) einen zulässigen Wert ein.
 
 ### <a name="to-insert-code-for-a-child-runbook-into-a-runbook"></a>So fügen Sie Code für ein untergeordnetes Runbook in ein Runbook ein
@@ -87,7 +83,7 @@ Gehen Sie wie folgt vor, um ein Runbook zur Bearbeitung im Text-Editor zu öffne
 2. Klicken Sie unten auf dem Bildschirm auf **Einfügen** und anschließend auf **Runbook**.
 3. Wählen Sie das einzufügende Runbook aus der mittleren Spalte aus, und klicken Sie auf den Pfeil nach rechts.
 4. Wenn das Runbook über Parameter verfügt, werden sie zur Information aufgelistet.
-5. Klicken Sie dann die Taste „Aktivieren“.  Code zum Ausführen des ausgewählten Runbooks wird in das aktuelle Runbook eingefügt.
+5. Klicken Sie dann auf das Häkchen.  Code zum Ausführen des ausgewählten Runbooks wird in das aktuelle Runbook eingefügt.
 6. Sind für das Runbook Parameter erforderlich, geben Sie anstelle des Datentyps in spitzen Klammern (<>) einen zulässigen Wert ein.
 
 ### <a name="to-insert-an-asset-into-a-runbook"></a>So fügen Sie ein Objekt in ein Runbook ein
@@ -126,7 +122,7 @@ Die folgenden Beispielbefehle zeigen, wie der vorhandene Inhalt eines Runbooks d
 * [Erstellen oder Importieren eines Runbooks in Azure Automation](automation-creating-importing-runbook.md)
 * [Grundlagen des PowerShell-Workflows](automation-powershell-workflow.md)
 * [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md)
-* [Zertifikate](automation-certificates.md)
+* [Certificates](automation-certificates.md)
 * [Verbindungen](automation-connections.md)
 * [Anmeldeinformationen](automation-credentials.md)
 * [Zeitpläne](automation-schedules.md)

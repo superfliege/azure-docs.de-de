@@ -1,25 +1,25 @@
 ---
-title: "Tools zum Durchsuchen und Visualisieren von Daten – Azure | Microsoft-Dokumentation"
-description: "Tools zum Durchsuchen und Visualisieren von Daten für die Data Science-VM."
-keywords: "Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science"
+title: Tools zum Durchsuchen und Visualisieren von Daten – Azure | Microsoft-Dokumentation
+description: Tools zum Durchsuchen und Visualisieren von Daten für die Data Science-VM.
+keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2017
+ms.date: 03/16/2018
 ms.author: gokuma;bradsev
-ms.openlocfilehash: d8f0616f17dbaa02082492cc1c68f1d989ea5aae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96f8d1bcf5a7e51823ed55a1b924d1397eba9da5
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Auf der Data Science-VM verfügbare Tools zum Durchsuchen und Visualisieren von Daten
 
@@ -28,7 +28,7 @@ Bei Data Science geht es unter anderem darum, Daten zu verstehen. Hierbei helfen
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   | Open Source-SQL-Abfragemodul für Big Data    |
+| Was ist das?   | Open Source-SQL-Abfrage-Engine für Big Data    |
 | Unterstützte DSVM-Versionen      | Windows, Linux  |
 | Konfiguration/Installation auf der DSVM      |  Installiert unter `/dsvm/tools/drill*` (nur im eingebetteten Modus)   |
 | Typische Verwendung      |  Lokales Durchsuchen von Daten ohne ETL. Abfragen verschiedener Datenquellen und Formate – einschließlich CSV, JSON, relationale Tabellen und Hadoop.     |

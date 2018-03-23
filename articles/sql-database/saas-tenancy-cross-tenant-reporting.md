@@ -1,26 +1,21 @@
 ---
-title: "Ausführen von Berichtsabfragen für mehrere Azure SQL-Datenbanken | Microsoft-Dokumentation"
-description: "Mandantenübergreifende Berichte mithilfe verteilter Abfragen"
+title: Ausführen von Berichtsabfragen für mehrere Azure SQL-Datenbanken | Microsoft-Dokumentation
+description: Mandantenübergreifende Berichte mithilfe verteilter Abfragen
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: articles
 ms.date: 11/13/2017
-ms.author: billgib; sstein; AyoOlubeko
-ms.openlocfilehash: 531d284798e455622faa1bfe7b0c8f178b3642fd
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.author: billgib
+ms.reviewer: sstein; AyoOlubeko
+ms.openlocfilehash: b470a9cf4e3c08e582bda3f0b02378e68de7c8cf
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Mandantenübergreifende Berichte mithilfe verteilter Abfragen
 
@@ -50,9 +45,9 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 Ein Vorteil von SaaS-Anwendungen ist die Verwendung der riesigen Menge von in der Cloud gespeicherten Mandantendaten, um Einblick in den Betrieb und die Verwendung Ihrer Anwendung zu erhalten. An diesen gewonnenen Erkenntnissen können Sie sich bei der Entwicklung von Funktionen, Verbesserungen der Benutzerfreundlichkeit und anderen Investitionen in Ihre Apps und Dienste orientieren.
 
-Es ist einfach, auf diese Daten in einer Datenbank mit mehreren Mandanten zuzugreifen, aber weniger einfach bei einer Verteilung über potentiell Tausende von Datenbanken. Ein Ansatz besteht in der Verwendung [elastischer Abfragen](sql-database-elastic-query-overview.md), wodurch Abfragen für einen verteilten Satz von Datenbanken mit gemeinsamem Schema ermöglicht werden. Diese Datenbanken können auf verschiedene Ressourcengruppen und Abonnements verteilt werden, müssen jedoch dieselbe Anmeldung durchführen. Elastische Abfragen verwenden eine einzige *Hauptdatenbank*, in der externe Tabellen definiert werden, die Tabellen oder Sichten in den verteilten Datenbanken (Mandantendatenbanken) spiegeln. Abfragen, die an diese Hauptdatenbank übermittelt werden, werden kompiliert, um einen Plan der verteilten Abfrage zu erzeugen, bei dem Teile der Abfrage nach Bedarf per Push an die Mandantendatenbanken übertragen werden. Elastische Abfragen verwenden die Shardzuordnung in der Katalogdatenbank, um den Speicherort aller Mandantendatenbanken festzulegen. Für Setup und Abfragen der Hauptdatenbank wird einfach gewöhnlicher [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)-Code verwendet, und Abfragen von Tools wie Power BI und Excel werden unterstützt.
+Es ist einfach, auf diese Daten in einer Datenbank mit mehreren Mandanten zuzugreifen, aber weniger einfach bei einer Verteilung über potentiell Tausende von Datenbanken. Ein Ansatz besteht in der Verwendung von [Elastic Query](sql-database-elastic-query-overview.md), wodurch Abfragen für einen verteilten Satz von Datenbanken mit gemeinsamem Schema ermöglicht werden. Diese Datenbanken können auf verschiedene Ressourcengruppen und Abonnements verteilt werden, müssen jedoch dieselbe Anmeldung durchführen. Flexible Abfragen verwenden eine einzige *Hauptdatenbank*, in der externe Tabellen definiert werden, die Tabellen oder Sichten in den verteilten Datenbanken (Mandantendatenbanken) spiegeln. Abfragen, die an diese Hauptdatenbank übermittelt werden, werden kompiliert, um einen Plan der verteilten Abfrage zu erzeugen, bei dem Teile der Abfrage nach Bedarf per Push an die Mandantendatenbanken übertragen werden. Elastische Abfragen verwenden die Shardzuordnung in der Katalogdatenbank, um den Speicherort aller Mandantendatenbanken festzulegen. Für Setup und Abfragen der Hauptdatenbank wird einfach gewöhnlicher [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)-Code verwendet, und Abfragen von Tools wie Power BI und Excel werden unterstützt.
 
-Durch das Verteilen von Abfragen über Mandantendatenbanken bieten elastische Abfragen schnellen Einblick in Liveproduktionsdaten. Dadurch, dass elastische Abfragen möglicherweise Daten aus vielen Datenbanken abrufen, kann die Abfragewartezeit länger sein als bei entsprechenden Abfragen, die an eine einzelne Datenbank mit mehreren Mandanten übermittelt werden. Entwerfen Sie Abfragen so, dass ein Minimum von Daten an die Hauptdatenbank zurückgegeben wird. Elastische Abfragen eignen sich häufig optimal für das Abfragen kleiner Mengen von Echtzeitdaten und weniger für das Erstellen von häufig verwendeten oder komplexen Analyseabfragen oder -berichten. Wenn Abfragen nicht optimal ausgeführt werden, schauen Sie sich den [Ausführungsplan](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) an, um zu sehen, welcher Teil der Abfrage per Push an die Remotedatenbank übertragen wird und wie viele Daten zurückgegeben werden. Abfragen, die eine komplexe Aggregation oder analytische Verarbeitung erfordern, können möglicherweise besser gehandhabt werden, indem Mandantendaten in eine Datenbank oder ein Data Warehouse extrahiert werden, die bzw. das für Analyseabfragen optimiert ist. Dieses Muster wird im [Tutorial zu Mandantenanalysen](saas-tenancy-tenant-analytics.md) erklärt. 
+Durch das Verteilen von Abfragen über Mandantendatenbanken bietet Elastic Query schnellen Einblick in Liveproduktionsdaten. Dadurch, dass elastische Abfragen möglicherweise Daten aus vielen Datenbanken abrufen, kann die Abfragewartezeit länger sein als bei entsprechenden Abfragen, die an eine einzelne Datenbank mit mehreren Mandanten übermittelt werden. Entwerfen Sie Abfragen so, dass ein Minimum von Daten an die Hauptdatenbank zurückgegeben wird. Elastic Query ist häufig optimal für das Abfragen kleiner Mengen von Echtzeitdaten und weniger für das Erstellen von häufig verwendeten oder komplexen Analyseabfragen oder -berichten. Wenn Abfragen nicht optimal ausgeführt werden, schauen Sie sich den [Ausführungsplan](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) an, um zu sehen, welcher Teil der Abfrage per Push an die Remotedatenbank übertragen wird und wie viele Daten zurückgegeben werden. Abfragen, die eine komplexe Aggregation oder analytische Verarbeitung erfordern, können möglicherweise besser gehandhabt werden, indem Mandantendaten in eine Datenbank oder ein Data Warehouse extrahiert werden, die bzw. das für Analyseabfragen optimiert ist. Dieses Muster wird im [Tutorial zu Mandantenanalysen](saas-tenancy-tenant-analytics.md) erklärt. 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
 
@@ -68,7 +63,7 @@ Um Abfragen mit einem interessanteren Dataset auszuführen, erstellen Sie Ticket
 
 ## <a name="explore-the-global-views"></a>Untersuchen der globalen Sichten
 
-In der SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant ist jedem Mandanten eine Datenbank zugeordnet. Die in den Datenbanktabellen enthaltenen Daten sind somit auf die Perspektive eines einzelnen Mandanten ausgerichtet. Wenn Sie alle Datenbanken abfragen, ist es wichtig, dass die elastische Abfrage die Daten so behandelt, als seien sie Teil einer einzigen logischen Datenbank, die vom Mandanten freigegeben wurde. 
+In der SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant ist jedem Mandanten eine Datenbank zugeordnet. Die in den Datenbanktabellen enthaltenen Daten sind somit auf die Perspektive eines einzelnen Mandanten ausgerichtet. Wenn Sie alle Datenbanken abfragen, ist es wichtig, dass Elastic Query die Daten so behandeln kann, als seinen Sie Teil einer einzigen logischen Datenbank, die vom Mandanten freigegeben wurde. 
 
 Dieses Muster können Sie simulieren, indem Sie einen Satz von „globalen“ Ansichten der Mandantendatenbank hinzufügen, die eine Mandanten-ID in jede der global abgefragten Tabellen projizieren. Beispielsweise fügt die Ansicht *VenueEvents* eine berechnete *VenueId* in den Spalten ein, die von der Tabelle *Events* projiziert wurden. Auf ähnliche Weise fügen die Ansichten *VenueTicketPurchases* und *VenueTickets* eine berechnete *VenueId*-Spalte hinzu, die aus ihren jeweiligen Tabellen projiziert wird. Diese Ansichten werden von der elastischen Abfrage verwendet, um Abfragen zu parallelisieren und bei Vorhandensein einer *VenueId*-Spalte in die entsprechende Remotemandantendatenbank zu verschieben. Dadurch wird die Menge an zurückgegebenen Daten deutlich verringert und die Leistung von vielen Abfragen wesentlich gesteigert. Diese globalen Ansichten wurden in allen Mandantendatenbanken vorab erstellt.
 
@@ -125,19 +120,19 @@ In dieser Übung wird ein Schema (die externe Datenquelle und die externen Tabel
 
    Für die elastische Abfrage werden datenbankbezogene Anmeldeinformationen verwendet, um auf die einzelnen Mandantendatenbanken zuzugreifen. Diese Anmeldeinformationen müssen in allen Datenbanken verfügbar sein, und im Normalfall sollten die Rechte gewährt werden, die zum Aktivieren dieser Abfragen mindestens erforderlich sind.
 
-    ![Erstellen von Anmeldeinformationen](media/saas-tenancy-cross-tenant-reporting/create-credential.png)
+    ![erstellen von anmeldeinformationen](media/saas-tenancy-cross-tenant-reporting/create-credential.png)
 
    Mit der Katalogdatenbank als externer Datenquelle werden Abfragen auf alle Datenbanken verteilt, die bei Ausführung der Abfrage im Katalog registriert sind. Da sich Servernamen bei jeder Bereitstellung unterscheiden, ruft dieses Skript den Speicherort der Katalogdatenbank vom aktuellen Server (@@servername) ab, auf dem das Skript ausgeführt wird.
 
-    ![Erstellen einer externen Datenquelle](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
+    ![erstellen einer externen datenquelle](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
    Die externen Tabellen, die auf die globalen Sichten aus dem vorherigen Abschnitt verweisen, und die mit **DISTRIBUTION = SHARDED(VenueId)** definiert werden. Da jede *VenueId* auf eine einzelne Datenbank verweist, wird so die Leistung in vielen Szenarios verbessert, wie im nächsten Abschnitt gezeigt.
 
-    ![Erstellen externer Tabellen](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
+    ![erstellen externer tabellen](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 
    Die lokale Tabelle _VenueTypes_, die erstellt und mit Daten gefüllt wird. Diese Verweisdatentabelle kommt in allen Mandantendatenbanken vor. Daher kann sie hier als lokale Tabelle dargestellt werden, die mit den gemeinsamen Daten aufgefüllt ist. Bei einigen Abfragen kann durch eine Definition dieser Tabelle in der Hauptdatenbank die Datenmenge verringert werden, die in die Hauptdatenbank verschoben werden muss.
 
-    ![Erstellen einer Tabelle](media/saas-tenancy-cross-tenant-reporting/create-table.png)
+    ![tabelle erstellen](media/saas-tenancy-cross-tenant-reporting/create-table.png)
 
    Wenn Sie so Verweistabellen einbeziehen, achten Sie darauf, dass Sie das Tabellenschema und die Tabellendaten aktualisieren, immer wenn Sie die Mandantendatenbank aktualisieren.
 
@@ -176,7 +171,7 @@ Beachten Sie, dass durch das Festlegen von **DISTRIBUTION = SHARDED(VenueId)** b
 
    Diese Abfrage führt etwas komplexere Verknüpfungen und Aggregationen durch. Der Großteil der Verarbeitung erfolgt remote.  Nur einzelne Zeilen mit den Ticketverkaufszahlen pro Tag für jeden Veranstaltungsort werden an die Hauptdatenbank zurückgegeben.
 
-   ![Abfrage](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
+   ![query](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

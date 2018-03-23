@@ -1,8 +1,8 @@
 ---
 title: Problembehebung bei der Azure-Dateisynchronisierung (Vorschau) | Microsoft-Dokumentation
-description: "Beheben von häufigen Problemen bei der Azure-Dateisynchronisierung"
+description: Beheben von häufigen Problemen bei der Azure-Dateisynchronisierung
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 5558a69756075dd83f890d5e9e00c9944d841591
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4f022bf227c8d460d014ea9bbc5dc426f0ada511
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Problembehandlung bei der Azure-Dateisynchronisierung (Vorschau)
 Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -51,7 +51,7 @@ StorageSyncAgent.msi /l*v Installer.log
 Um dieses Problem zu beheben, übertragen Sie die PDC-Rolle auf einen anderen Domänencontroller unter Windows Server 2012 R2 oder höher und installieren dann den Synchronisierungsdienst.
 
 <a id="agent-installation-websitename-failure"></a>**Fehler bei der Installation des Agents: „Storage Sync Agent Wizard ended prematurely“ (Assistent für Speichersynchronisierungs-Agent wurde vorzeitig beendet)**  
-Dieses Problem kann auftreten, wenn der Standardname der IIS-Website geändert wurde. Um dieses Problem zu umgehen, benennen Sie die IIS-Standardwebsite in „Default Web Site“ um, und versuchen Sie die Installation erneut. Dieses Problem wird in einem zukünftigen Update des Agents behoben. 
+Dieses Problem kann beim Agent der Version 1.x auftreten, wenn der Standardname der IIS-Website geändert wurde. Verwenden Sie unseren Agent ab Version 2.0.11, um dieses Problem zu umgehen.
 
 <a id="server-registration-missing"></a>**Der Server ist im Azure-Portal nicht unter „Registrierte Server“ aufgeführt.**  
 Wenn ein Server für einen Speichersynchronisierungsdienst nicht unter **Registrierte Server** aufgeführt wird:

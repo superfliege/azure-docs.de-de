@@ -2,23 +2,23 @@
 title: Melden von Azure Stack-Nutzungsdaten an Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie das Melden von Nutzungsdaten in Azure Stack einrichten.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: 2A397C83-1A6C-4290-B0EF-FDC34EE290CD
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
-ms.author: mabrigg;AlfredoPizzirani
-ms.openlocfilehash: 451e8c604e48d9cfc42284f2413fa5ed4fea03bc
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 02/22/2018
+ms.author: mabrigg
+ms.reviewer: alfredop
+ms.openlocfilehash: 29d53f63bf3d551823ca27df04f0e385a92cdec7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Melden von Azure Stack-Nutzungsdaten an Azure 
 
@@ -36,7 +36,7 @@ Nutzungsdaten werden von Azure Stack über Azure Bridge an Azure gesendet. In Az
 
 ## <a name="set-up-usage-data-reporting"></a>Einrichten der Berichterstellung zu Nutzungsdaten
 
-Um die Berichterstellung zu Nutzungsdaten einzurichten, müssen Sie [Ihre Azure Stack-Instanz bei Azure registrieren](azure-stack-register.md). Im Rahmen des Registrierungsprozesses wird die Azure Bridge-Komponente von Azure Stack, die eine Verbindung zwischen Azure Stack und Azure herstellt und die Nutzungsdaten sendet, konfiguriert. Die folgenden Nutzungsdaten werden von Azure Stack an Azure gesendet:
+Um die Berichterstellung zu Nutzungsdaten einzurichten, müssen Sie [Ihre Azure Stack-Instanz bei Azure registrieren](azure-stack-register.md). Im Rahmen des Registrierungsprozesses wird die Azure-Bridge-Komponente von Azure Stack, die eine Verbindung zwischen Azure Stack und Azure herstellt und die Nutzungsdaten sendet, konfiguriert. Die folgenden Nutzungsdaten werden von Azure Stack an Azure gesendet:
 
 - **ID der Verbrauchseinheit**: Eine eindeutige ID für die verwendete Ressource
 - **Menge**: Menge der Ressourcennutzung.
@@ -108,3 +108,4 @@ Zwischen den von den Azure Stack-Nutzungs-APIs und den vom Azure-Kontocenter gem
 * [Anbieternutzungs-API](azure-stack-provider-resource-api.md)  
 * [Mandantennutzungs-API](azure-stack-tenant-resource-usage-api.md)
 * [FAQ zur Nutzung](azure-stack-usage-related-faq.md)
+* [Verwalten von Nutzung und Abrechnung als Cloud-Dienstanbieter](azure-stack-add-manage-billing-as-a-csp.md)

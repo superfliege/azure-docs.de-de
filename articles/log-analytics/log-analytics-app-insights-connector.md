@@ -1,11 +1,11 @@
 ---
 title: Anzeigen von Azure Application Insights-App-Daten | Microsoft-Dokumentation
-description: "Sie können die Application Insights-Connector-Lösung verwenden, um Leistungsprobleme zu diagnostizieren und zu verstehen, wofür Benutzer Ihre App verwenden, wenn die Überwachung mit Application Insights durchgeführt wird."
+description: Sie können die Application Insights-Connector-Lösung verwenden, um Leistungsprobleme zu diagnostizieren und zu verstehen, wofür Benutzer Ihre App verwenden, wenn die Überwachung mit Application Insights durchgeführt wird.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: magoedte
-ms.openlocfilehash: bf3259909a84e1e1f5325ff4e39d5c10f1abc831
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 1556e91710990351d6723325789201afa99b1943
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-Connector-Verwaltungslösung (Vorschau)
 
@@ -64,7 +64,7 @@ Innerhalb von ca. 30 Minuten sind die Daten verfügbar, und die Application Insi
 Beachten Sie auch die folgenden Punkte:
 
 - Sie können Application Insights-Apps nur mit einem einzigen Log Analytics-Arbeitsbereich verknüpfen.
-- Sie können nur [Application Insights-Ressourcen vom Typ „Standard“ oder „Premium“](https://azure.microsoft.com/pricing/details/application-insights) mit Log Analytics verknüpfen. Sie können aber den Free-Tarif von Log Analytics nutzen.
+- Sie können nur [Application Insights-Ressourcen vom Typ „Basic“ oder „Enterprise“](https://azure.microsoft.com/pricing/details/application-insights) mit Log Analytics verknüpfen. Sie können aber den Free-Tarif von Log Analytics nutzen.
 
 ## <a name="management-packs"></a>Management Packs
 

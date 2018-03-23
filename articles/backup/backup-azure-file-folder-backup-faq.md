@@ -1,11 +1,11 @@
 ---
-title: "Häufig gestellte Fragen zum Azure Backup-Agent | Microsoft-Dokumentation"
-description: "Antworten auf häufig gestellte Fragen zur Funktionsweise des Azure Backup-Agents sowie zu den Grenzwerten für Sicherung und Aufbewahrung."
+title: Häufig gestellte Fragen zum Azure Backup-Agent | Microsoft-Dokumentation
+description: Antworten auf häufig gestellte Fragen zur Funktionsweise des Azure Backup-Agents sowie zu den Grenzwerten für Sicherung und Aufbewahrung.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: 
+editor: ''
 keywords: Sicherung und Notfallwiederherstellung; Backup-Dienst
 ms.assetid: 778c6ccf-3e57-4103-a022-367cc60c411a
 ms.service: backup
@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 227cdc87f3e2c8ed393145f4bbde7f74606bdf3b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8777b2265666a4505a3432aca6683e2510519cac
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Fragen zum Azure Backup-Agent
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen, damit Sie sich schnell mit den Komponenten des Azure Backup-Agents vertraut machen können. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="configure-backup"></a>Konfigurieren der Sicherung
 ### <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>Wo kann ich den neuesten Azure Backup-Agent herunterladen? <br/>
@@ -73,7 +75,7 @@ Ja. Der Agent-Dienst konvertiert die deduplizierten Daten bei der Vorbereitung d
 ### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>Wie kann ich den Cachespeicherort für den Azure Backup-Agent ändern?<br/>
 Verwenden Sie die folgende Liste, um den Cachespeicherort zu ändern.
 
-1. Beenden Sie das Backup-Modul, indem Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten ausführen:
+1. Beenden Sie die Backup-Engine, indem Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten ausführen:
 
     ```PS C:\> Net stop obengine``` 
   
@@ -85,7 +87,7 @@ Verwenden Sie die folgende Liste, um den Cachespeicherort zu ändern.
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
 
-4. Starten Sie das Backup-Modul neu, indem Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten ausführen:
+4. Starten Sie die Backup-Engine neu, indem Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten ausführen:
 
     ```PS C:\> Net start obengine```
 

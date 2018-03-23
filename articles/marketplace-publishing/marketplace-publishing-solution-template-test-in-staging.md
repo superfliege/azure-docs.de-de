@@ -1,11 +1,11 @@
 ---
-title: "Testen Ihres Angebots einer Lösungsvorlage für Marketplace | Microsoft Docs"
-description: "Grundlegendes zum Testen Ihres Angebots einer Lösungsvorlage für Azure Marketplace."
+title: Testen Ihres Angebots einer Lösungsvorlage für Marketplace | Microsoft Docs
+description: Grundlegendes zum Testen Ihres Angebots einer Lösungsvorlage für Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: ef8f9b5e-b98c-49f3-913f-cdf772c14c12
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2015
-ms.author: hascipio; v-divte
-ms.openlocfilehash: da1fc4713fd1d832c7ba91226f72cbef63b241bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: e789d0996e72c935ed9d5f456f9868b73d5ef4ee
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="test-your-solution-template-offer-in-staging"></a>Testen Ihres Angebots einer Lösungsvorlage in der Stagingumgebung
 In der Stagingumgebung wird Ihr Angebot in einem privaten "Sandkasten" bereitgestellt, in dem Sie es testen und seine Funktionalität vor der Veröffentlichung überprüfen können. Das Angebot wird in der Stagingumgebung genau wie bei einem Kunden angezeigt, der sie bereitgestellt hat. Ihr Angebot muss für die Freigabe in der Stagingumgebung zertifiziert sein.

@@ -4,7 +4,7 @@
 | Ressource | Standardlimit | 
 | --- | --- | 
 | Azure Media Services (AMS)-Konten in einem einzelnen Abonnement | 25 (feststehend) |
-| Reservierte Einheiten für Medien (Media Reserved Units; RUs) pro AMS-Konto |25 (S1, S2)<br/>10 (S3) <sup>(1)</sup> | 
+| Reservierte Einheiten für Medien (Media Reserved Units; RUs) pro AMS-Konto |25 (S1)<br/>10 (S2, S3) <sup>(1)</sup> | 
 | Aufträge pro AMS-Konto | 50,000<sup>(2)</sup> |
 | Verkettete Aufgaben pro Auftrag | 30 (feststehend) |
 | Objekte pro AMS-Konto | 1.000.000|
@@ -20,7 +20,7 @@
 | Richtlinien | 1,000,000<sup>(6)</sup> |
 | Dateigröße| In einigen Szenarien werden für die Verarbeitung in Media Services nur Dateien bis zu einer bestimmten Größe unterstützt. <sup>7</sup> |
   
-<sup>1</sup> S3 RUs sind nicht in der Region „Indien, Westen“ verfügbar. Wenn Sie den Typ ändern (etwa von S2 in S1) werden die maximalen RU-Grenzwerte zurückgesetzt.
+<sup>1</sup> Wenn Sie den Typ ändern (etwa von S2 in S1), werden die maximalen RU-Grenzwerte zurückgesetzt.
 
 <sup>2</sup> Diese Zahl umfasst fertig gestellte, aktive und abgebrochene Aufträge sowie Aufträge in der Warteschlange. Gelöschte Aufträge sind nicht enthalten. Sie können die alten Aufträge mithilfe von **IJob.Delete** oder der HTTP **DELETE**-Anforderung löschen.
 
@@ -37,7 +37,7 @@ Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter 
 >[!NOTE]
 > Wenn Sie immer die gleichen Tage und Zugriffsberechtigungen usw. verwenden, sollten Sie die gleiche Richtlinien-ID verwenden. Weitere Informationen und ein Beispiel finden Sie in [diesem](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies) Abschnitt.
 
-<sup>7</sup>Berücksichtigen Sie die Einschränkungen hinsichtlich der unterstützten maximalen Dateigrößen, wenn Sie Inhalte an ein Medienobjekt in Azure Media Services hochladen und mit einem der Medienprozessoren im Dienst (also mit Encodern wie Media Encoder Standard und Media Encoder Premium Workflow oder mit Analysemodulen wie Gesichtserkennung) verarbeiten möchten. 
+<sup>7</sup>Berücksichtigen Sie die Einschränkungen hinsichtlich der unterstützten maximalen Dateigrößen, wenn Sie Inhalte an ein Medienobjekt in Azure Media Services hochladen und mit einem der Medienprozessoren im Dienst (also mit Encodern wie Media Encoder Standard und Media Encoder Premium Workflow oder mit Analyse-Engines wie Gesichtserkennung) verarbeiten möchten. 
 
 In Azure Blob Storage werden derzeit als Größe für ein einzelnes Blob bis zu 5 TB unterstützt. Allerdings gelten basierend auf den vom Dienst verwendeten VM-Größen zusätzliche Grenzwerte in Azure Media Services. Die folgende Tabelle enthält die Grenzwerte für die einzelnen reservierten Einheiten für Medien (S1, S2, S3.) Wenn die Quelldatei größer als die in der Tabelle definierten Grenzwerte ist, tritt beim Codierungsauftrag ein Fehler auf. Beim Codieren von Quellen mit 4K-Auflösung und langer Dauer müssen Sie reservierte Einheiten für Medien vom Typ „S3“ verwenden, um die erforderliche Leistung zu erzielen. Bei 4K-Inhalten, die den Grenzwert von 260 GB für reservierte Einheiten für Medien vom Typ „S3“ überschreiten, kontaktieren Sie uns unter amshelp@microsoft.com, um Informationen zu möglichen Lösungen zur Unterstützung Ihres Szenarios zu erhalten.
 

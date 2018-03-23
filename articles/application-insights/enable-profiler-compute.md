@@ -1,8 +1,8 @@
 ---
-title: "Aktivieren von Application Insights-Profiler für Anwendungen, die auf Azure Cloud Services-Ressourcen gehostet werden | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Application Insights Profiler für eine Anwendung einrichten, die in Azure Cloud Services ausgeführt wird."
+title: Aktivieren von Application Insights-Profiler für Anwendungen, die auf Azure Cloud Services-Ressourcen gehostet werden | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Application Insights Profiler für eine Anwendung einrichten, die in Azure Cloud Services ausgeführt wird.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: ramach-msft
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: 278d8241ddd67b6df64b7280d4a17c6d3152f223
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: a24695f7bbb5fb0546e27c934319a60a3418b9e1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Aktivieren von Application Insights Profiler für virtuelle Azure-Computer, Service Fabric und Azure Cloud Services
 
@@ -46,8 +46,7 @@ Zur vollständigen Aktivierung von Profiler müssen Sie die Konfiguration an dre
 
    ![Speicherort des Instrumentierungsschlüssels](./media/enable-profiler-compute/CopyAIKey.png)
 
-3. Wenden Sie anschließend das in [Aktivieren von Profiler](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler) beschriebene Verfahren an, um die Einrichtung der Application Insights-Instanz für Profiler abzuschließen.  
-    Sie müssen die Web-Apps nicht verknüpfen, da die Schritte speziell für die App Services-Ressource gelten. Stellen Sie sicher, dass Profiler im Bereich **Profiler konfigurieren** aktiviert ist.
+3. Wenden Sie anschließend das in „Aktivieren von Profiler“ beschriebene Verfahren an, um die Einrichtung der Application Insights-Instanz für Profiler abzuschließen. Sie müssen die Web-Apps nicht verknüpfen, da die Schritte speziell für die App Services-Ressource gelten. Stellen Sie sicher, dass Profiler im Bereich **Profiler konfigurieren** aktiviert ist.
 
 
 ## <a name="set-up-the-application-source-code"></a>Einrichten des Quellcodes der Anwendung
@@ -157,6 +156,8 @@ Zum Einrichten Ihrer Umgebung führen Sie folgende Schritte aus:
 
       Informationen zum Hinzufügen der Diagnoseerweiterung zu Ihrer Bereitstellungsvorlage finden Sie unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
+> [!TIP]
+> Für Virtual Machines gibt es folgende Alternative zu den oben beschriebenen JSON-basierten Schritten: Navigieren Sie im Azure-Portal zu**Virtual Machines** > **Diagnoseeinstellungen** > **Senken**, **aktivieren** Sie das Senden von Diagnosedaten an Application Insights, und wählen Sie entweder ein Application Insights-Konto oder einen bestimmten iKey aus.
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 
@@ -196,7 +197,7 @@ Zum Einrichten Ihrer Umgebung führen Sie folgende Schritte aus:
 
 1. Stellen Sie die geänderte Definition für die Umgebungsbereitstellung bereit.  
 
-   In der Regel wird eine vollständige Vorlagenbereitstellung oder eine Cloud Services-Veröffentlichung über PowerShell-Cmdlets oder Visual Studio verwendet, um die Änderungen anzuwenden.  
+   In der Regel wird eine vollständige Vorlagenbereitstellung oder eine Cloud Services-basierte Veröffentlichung über PowerShell-Cmdlets oder Visual Studio verwendet, um die Änderungen anzuwenden.  
 
    Nachfolgend finden Sie einen alternativen Ansatz für vorhandene virtuelle Computer, der nur die Azure-Diagnose-Erweiterung betrifft:  
 

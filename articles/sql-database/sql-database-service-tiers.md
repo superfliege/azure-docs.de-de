@@ -1,12 +1,12 @@
 ---
 title: Azure SQL-Datenbank-Dienst | Microsoft-Dokumentation
-description: "Erfahren Sie mehr über Dienstebenen für Einzel- und Pooldatenbanken, um verschiedene Leistungsstufen und Speichergrößen bereitzustellen."
-keywords: 
+description: Erfahren Sie mehr über Dienstebenen für Einzel- und Pooldatenbanken, um verschiedene Leistungsstufen und Speichergrößen bereitzustellen.
+keywords: ''
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: CarlRabeler
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
 ms.service: sql-database
 ms.custom: DBs & servers
@@ -14,17 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 02/26/2018
+ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: b36af32d900f9426424dd08c43946e7dcb5b39b9
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: ebfd44098a81b4a9d8863623458460ceb25f0d5d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Wie heißen die Dienstebenen von SQL-Datenbank?
 
-[Azure SQL-Datenbank](sql-database-technical-overview.md) bietet die Dienstebenen **Basic**, **Standard** und **Premium** sowohl für [einzelne Datenbanken](sql-database-single-database-resources.md) als auch für [Pools für elastische Datenbanken](sql-database-elastic-pool.md). Dienstebenen unterscheiden sich in erster Linie durch eine Reihe zur Wahl stehender Leistungsstufen und Speichergrößen sowie den Preis.  Alle Dienstebenen bieten Flexibilität beim Wechsel von Leistungsstufe und Speichergröße.  Einzelne Datenbanken und Pools für elastische Datenbanken werden stündlich basierend auf Dienstebene, Leistungsstufe und Speichergröße abgerechnet.   
+[Azure SQL-Datenbank](sql-database-technical-overview.md) bietet die Dienstebenen **Basic**, **Standard** und **Premium** sowohl für [einzelne Datenbanken](sql-database-single-database-resources.md) als auch für [Pools für elastische Datenbanken](sql-database-elastic-pool.md). SQL-Datenbank bietet eine universelle Dienstebene für [verwaltete Azure SQL-Datenbank-Instanzen](sql-database-managed-instance.md#managed-instance-service-tier). Dienstebenen unterscheiden sich in erster Linie durch eine Reihe zur Wahl stehender Leistungsstufen und Speichergrößen sowie den Preis.  Alle Dienstebenen bieten Flexibilität beim Wechsel von Leistungsstufe und Speichergröße.  Einzelne Datenbanken und Pools für elastische Datenbanken werden stündlich basierend auf Dienstebene, Leistungsstufe und Speichergröße abgerechnet.   
+
+> [!IMPORTANT]
+> Die verwaltete Azure SQL-Datenbank-Instanz ist derzeit als öffentliche Vorschauversion verfügbar und bietet eine einzelne universelle Dienstebene. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md). Der Rest dieses Artikels gilt nicht für verwaltete Instanzen.
 
 ## <a name="choosing-a-service-tier"></a>Auswählen einer Dienstebene
 

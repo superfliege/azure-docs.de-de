@@ -1,11 +1,11 @@
 ---
-title: "Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie in Azure Active Directory eingebundene Hybridgeräte konfigurieren."
+title: Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie in Azure Active Directory eingebundene Hybridgeräte konfigurieren.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 203e36b198186db63b7e902db296adeaa9ffb4ee
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 188f02aa69d7b39bc5bc4873b437825107a7ae4e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -34,7 +34,7 @@ Bevor Sie beginnen, in Azure AD eingebundene Hybridgeräte in Ihrer Umgebung zu 
 
 Wenn Sie das [Systemvorbereitungstool (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)) verwenden, vergewissern Sie sich, dass Sie Images von einer Installation von Windows erstellen, die noch nicht bei Azure AD registriert wurde.
 
-Für alle in die Domäne eingebundenen Geräte, auf denen Windows 10 Anniversary Update und Windows Server 2016 ausgeführt wird, wird bei einem Neustart des Geräts oder der Anmeldung eines Benutzers eine automatische Registrierung bei Azure AD durchgeführt, sobald die unten beschriebenen Konfigurationsschritte durchgeführt wurden. Wenn dieses Verhalten zur automatischen Registrierung nicht erwünscht ist oder wenn ein kontrollierter Rollout gewünscht wird, aktivieren oder deaktivieren Sie zuerst selektiv das automatische Rollout (siehe Anweisungen im Abschnitt „Steuern der Bereitstellung und des Rollouts“), bevor Sie mit den anderen Konfigurationsschritten fortfahren.  
+Für alle in die Domäne eingebundenen Geräte, auf denen Windows 10 Anniversary Update und Windows Server 2016 ausgeführt wird, wird bei einem Neustart des Geräts oder der Anmeldung eines Benutzers eine automatische Registrierung bei Azure AD durchgeführt, sobald die unten beschriebenen Konfigurationsschritte durchgeführt wurden. **Wenn dieses Verhalten zur automatischen Registrierung nicht erwünscht ist oder wenn ein kontrollierter Rollout gewünscht wird**, aktivieren oder deaktivieren Sie zuerst selektiv den automatischen Rollout (siehe Anweisungen im Abschnitt „Schritt 4: Steuern der Bereitstellung und des Rollouts“), bevor Sie mit den anderen Konfigurationsschritten fortfahren.  
 
 In diesem Thema werden die folgenden Bezeichnungen verwendet, um die Lesbarkeit der Beschreibungen zu erleichtern: 
 
@@ -542,7 +542,7 @@ Nachdem Sie die erforderlichen Schritte ausgeführt haben, können in die Domän
 
 ### <a name="remarks"></a>Anmerkungen
 
-- Sie können ein Gruppenrichtlinienobjekt verwenden, um den Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter Windows 10/Windows Server 2016 zu steuern.
+- Sie können ein Gruppenrichtlinienobjekt verwenden, um den Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter Windows 10/Windows Server 2016 zu steuern. **Wenn Sie nicht möchten, dass diese Geräte automatisch für Azure AD registriert werden, oder wenn Sie die Registrierung steuern möchten**, müssen Sie vor dem Ausführen der Konfigurationsschritte zuerst den Rollout für die Gruppenrichtlinie durchführen und die automatische Registrierung auf allen Geräten deaktivieren. Wenn Sie mit dem Konfigurieren fertig und zum Testen bereit sind, müssen Sie den Rollout der Gruppenrichtlinie durchführen und die automatische Registrierung nur für die Testgeräte aktivieren – und anschließend wie gewünscht für alle anderen Geräte.
 
 - Windows 10 November 2015 Update wird **nur** automatisch in Azure AD eingebunden, wenn das Rollout-Gruppenrichtlinienobjekt festgelegt ist.
 

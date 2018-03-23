@@ -1,25 +1,20 @@
 ---
-title: "Verteilte Transaktionen über Clouddatenbanken"
-description: "Übersicht über elastische Datenbanktransaktionen mit Azure SQL-Datenbank"
+title: Verteilte Transaktionen über Clouddatenbanken
+description: Übersicht über elastische Datenbanktransaktionen mit Azure SQL-Datenbank
 services: sql-database
-documentationcenter: 
-author: torsteng
-manager: jhubbard
-editor: torsteng
-ms.assetid: e14df7a3-7788-4cfb-bcd1-7ad6433ef1f9
+author: stevestein
+manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.custom: scale out apps
 ms.workload: On Demand
 ms.date: 05/27/2016
-ms.author: torsteng
-ms.openlocfilehash: 012fc38075285b898599517f3e6ed5a3c9eb854d
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 65657a4813467edd45a6eee4fa98964b4a781663
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Verteilte Transaktionen über Clouddatenbanken
 Mithilfe elastischer Datenbanktransaktionen für Azure SQL-Datenbank (SQL-DB) können Sie übergreifende Transaktionen für mehrere Datenbanken in SQL-DB ausführen. Elastische Datenbanktransaktionen für SQL-DB stehen für .NET-Anwendungen über ADO.NET zur Verfügung und lassen sich mithilfe der Klassen vom Typ [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) in die vertraute Programmierumgebung integrieren. Informationen zum Abrufen der Bibliothek finden Sie unter [.NET Framework 4.6.1 (Webinstaller)](https://www.microsoft.com/download/details.aspx?id=49981).
@@ -133,14 +128,14 @@ Verwenden Sie DMVs (Dynamic Management Views) in  SQL-SB, um Status und Fortschr
 
 Folgende DMVs sind besonders hilfreich:
 
-* **sys.dm\_tran\_active\_transactions**: Führt die derzeit aktiven Transaktionen und deren Status auf. Die UOW-Spalte (Arbeitseinheit) gibt die verschiedenen untergeordneten Transaktionen an, die zur gleichen verteilten Transaktion gehören. Alle Transaktionen innerhalb einer verteilten Transaktion haben den gleichen UOW-Wert. Weitere Informationen finden Sie in der [DMV-Dokumentation](https://msdn.microsoft.com/library/ms174302.aspx) .
-* **sys.dm\_tran\_database\_transactions**: Liefert zusätzliche Informationen zu Transaktionen (wie etwa die Position der Transaktion im Protokoll). Weitere Informationen finden Sie in der [DMV-Dokumentation](https://msdn.microsoft.com/library/ms186957.aspx) .
-* **sys.dm\_tran\_locks**: Enthält Informationen zu den Sperren, die derzeit für laufende Transaktionen aktiv sind. Weitere Informationen finden Sie in der [DMV-Dokumentation](https://msdn.microsoft.com/library/ms190345.aspx) .
+* **sys.dm\_tran\_active\_transactions**: Führt die derzeit aktiven Transaktionen und deren Status auf. Die UOW-Spalte (Arbeitseinheit) gibt die verschiedenen untergeordneten Transaktionen an, die zur gleichen verteilten Transaktion gehören. Alle Transaktionen innerhalb einer verteilten Transaktion haben den gleichen UOW-Wert. Weitere Informationen finden Sie in der [DMV-Dokumentation](https://msdn.microsoft.com/library/ms174302.aspx).
+* **sys.dm\_tran\_database\_transactions**: Liefert zusätzliche Informationen zu Transaktionen (wie etwa die Position der Transaktion im Protokoll). Weitere Informationen finden Sie in der [DMV-Dokumentation](https://msdn.microsoft.com/library/ms186957.aspx).
+* **sys.dm\_tran\_locks**: Enthält Informationen zu den Sperren, die derzeit für laufende Transaktionen aktiv sind. Weitere Informationen finden Sie in der [DMV-Dokumentation](https://msdn.microsoft.com/library/ms190345.aspx).
 
 ## <a name="limitations"></a>Einschränkungen
 Derzeit gelten für elastische Datenbanktransaktionen in SQL-DB folgende Einschränkungen:
 
-* Es werden nur datenbankübergreifende Transaktionen in SQL-DB unterstützt. Andere Ressourcenanbieter für [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) sowie Datenbanken außerhalb von SQL-DB können nicht an elastischen Datenbanktransaktionen beteiligt werden. Das bedeutet, dass sich elastische Datenbanktransaktionen nicht über lokale SQL Server- und Azure SQL-Datenbanken erstrecken können. Für lokale verteilte Transaktionen muss weiterhin MSDTC verwendet werden. 
+* Es werden nur datenbankübergreifende Transaktionen in SQL-DB unterstützt. Andere Ressourcenanbieter für [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) sowie Datenbanken außerhalb von SQL-DB können nicht an elastischen Datenbanktransaktionen beteiligt werden. Das bedeutet, dass sich elastische Datenbanktransaktionen nicht über lokale SQL Server- und Azure SQL-Datenbanken erstrecken können. Für lokale verteilte Transaktionen muss weiterhin MSDTC verwendet werden. 
 * Nur clientkoordinierte Transaktionen einer .NET-Anwendung werden unterstützt. Die serverseitige Unterstützung für T-SQL (etwa „BEGIN DISTRIBUTED TRANSACTION“) ist zwar geplant, aber noch nicht verfügbar. 
 * Transaktionen über WCF-Dienste werden nicht unterstützt. Nehmen wir beispielsweise eine WCF-Dienstmethode, die eine Transaktion ausführt. Das Umschließen des Aufrufs innerhalb eines Transaktionsbereichs schlägt als [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)fehl.
 

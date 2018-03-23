@@ -1,6 +1,6 @@
 ---
 title: 'Azure Cosmos DB: .NET Change Feed Processor-API, -SDK und -Ressourcen | Microsoft-Dokumentation'
-description: "Wichtige Informationen zur Change Feed Processor-API und zum Change Feed Processor-SDK, einschließlich Terminen für Veröffentlichung und Außerbetriebnahme sowie Änderungen an den einzelnen Versionen des .NET Change Feed Processor-SDK."
+description: Wichtige Informationen zur Change Feed Processor-API und zum Change Feed Processor-SDK, einschließlich Terminen für Veröffentlichung und Außerbetriebnahme sowie Änderungen an den einzelnen Versionen des .NET Change Feed Processor-SDK.
 services: cosmos-db
 documentationcenter: .net
 author: ealsur
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 03/07/2018
 ms.author: maquaran
-ms.openlocfilehash: 962ad3aca82e34fa22da925a274a1e82e2086e03
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e53cf67bc6e03a5f45de5ad4e23ff91624874f4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zur Version
 > [!div class="op_single_selector"]
@@ -43,6 +43,11 @@ ms.lasthandoff: 03/02/2018
 |**Aktuelles unterstütztes Framework**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
+* Verbesserungen der Stabilität.
+* Unterstützung für das manuelle Setzen von Prüfpunkten.
+* Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.21 und höher.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Unterstützung für .NET Standard 2.0 wurde hinzugefügt. Das Paket unterstützt nun die Frameworkmoniker `netstandard2.0` und `net451`.
@@ -72,6 +77,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.3.0](#1.3.0) |07. März 2018 |--- |
 | [1.2.0](#1.2.0) |31. Oktober 2017 |--- |
 | [1.1.1](#1.1.1) |29. August 2017 |--- |
 | [1.1.0](#1.1.0) |13. August 2017 |--- |

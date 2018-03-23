@@ -1,9 +1,9 @@
 ---
-title: "Azure AD-Passthrough-Authentifizierung – Schnellstart | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie die ersten Schritte für die Azure AD-Passthrough-Authentifizierung (Azure Active Directory) ausführen."
+title: Azure AD-Passthrough-Authentifizierung – Schnellstart | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie die ersten Schritte für die Azure AD-Passthrough-Authentifizierung (Azure Active Directory) ausführen.
 services: active-directory
-keywords: "Azure AD Connect-Passthrough-Authentifizierung, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden"
-documentationcenter: 
+keywords: Azure AD Connect-Passthrough-Authentifizierung, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: 1da7c064030501b5c6547b65c091b1a50da93899
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b592eb8ca43e5bf3eebe2b0c47d8f17dbec7b238
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
@@ -116,20 +116,38 @@ Jetzt können sich Benutzer aus allen verwalteten Domänen Ihres Mandanten mit d
 
 ## <a name="step-5-ensure-high-availability"></a>Schritt 5: Sicherstellen der Hochverfügbarkeit
 
-Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktionsumgebung planen, sollten Sie einen eigenständigen Authentifizierungs-Agent installieren. Installieren Sie diesen zweiten Authentifizierungs-Agent auf einem _anderen_ Server – also nicht auf dem Server, auf dem Azure AD Connect und der erste Authentifizierungs-Agent ausgeführt werden. Mit diesem Setup erzielen Sie Hochverfügbarkeit für Anmeldeanforderungen. Befolgen Sie diese Anweisungen zum Bereitstellen eines eigenständigen Authentifizierungs-Agents:
+Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktionsumgebung planen, müssen Sie mindestens einen eigenständigen Authentifizierungs-Agent installieren. Installieren Sie Authentifizierungs-Agents auf _anderen_ Servern als dem, auf dem Azure AD Connect ausgeführt wird. Mit dieser Einrichtung erzielen Sie Hochverfügbarkeit für Anforderungen zur Benutzeranmeldung.
 
-1. Laden Sie die neueste Version des Authentifizierungs-Agents (Version 1.5.193.0 oder höher) herunter. Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory Admin Center](https://aad.portal.azure.com) an.
+Befolgen Sie diese Anweisungen zum Herunterladen der Authentifizierungs-Agent-Software:
+
+1. Zum Herunterladen der neuesten Version des Authentifizierungs-Agents (Version 1.5.193.0 oder höher) melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory-Admin Center](https://aad.portal.azure.com) an.
 2. Wählen Sie im linken Bereich die Option **Azure Active Directory** aus.
 3. Klicken Sie auf **Azure AD Connect**, **Passthrough-Authentifizierung** und dann auf **Agent herunterladen**.
 4. Klicken Sie auf die Schaltfläche **Bedingungen akzeptieren und herunterladen**.
-5. Installieren Sie die neueste Version des Authentifizierungs-Agents, indem Sie die im vorherigen Schritt heruntergeladene ausführbare Datei ausführen. Geben Sie bei entsprechender Aufforderung die Anmeldeinformationen des globalen Administrators Ihres Mandanten ein.
 
 ![Azure Active Directory Admin Center: Schaltfläche zum Herunterladen des Authentifizierungs-Agents](./media/active-directory-aadconnect-pass-through-authentication/pta9.png)
 
 ![Azure Active Directory Admin Center: Bereich „Agent herunterladen“](./media/active-directory-aadconnect-pass-through-authentication/pta10.png)
 
 >[!NOTE]
->Sie können auch den [Azure Active Directory-Authentifizierungs-Agent](https://aka.ms/getauthagent) herunterladen. _Ehe_ Sie den Authentifizierungs-Agent installieren, müssen Sie die [Nutzungsbedingungen](https://aka.ms/authagenteula) lesen und akzeptieren.
+>Sie können die Authentifizierungs-Agent-Software auch [hier](https://aka.ms/getauthagent) direkt herunterladen. Lesen und akzeptieren Sie die [Nutzungsbedingungen](https://aka.ms/authagenteula) für den Authentifizierungs-Agent, _bevor_ Sie ihn installieren.
+
+Es gibt zwei Methoden zum Bereitstellen eines eigenständigen Authentifizierungs-Agents:
+
+Die erste Methode ist die interaktive Bereitstellung, indem einfach die heruntergeladene ausführbare Authentifizierungs-Agent-Datei ausgeführt wird, und Sie bei Aufforderung die Anmeldeinformationen des globalen Administrators Ihres Mandanten angeben.
+
+Zweitens können Sie auch ein unbeaufsichtigtes Bereitstellungsskript erstellen und ausführen. Dies ist hilfreich, wenn Sie mehrere Authentifizierungs-Agents gleichzeitig bereitstellen oder Authentifizierungs-Agents auf Windows-Servern installieren möchten, auf denen keine Benutzeroberfläche aktiviert ist bzw. auf die Sie nicht mit Remotedesktop zugreifen können. Hier finden Sie die Anweisungen für diesen Ansatz:
+
+1. Führen Sie den folgenden Befehl aus, um einen Authentifizierungs-Agent zu installieren: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
+2. Sie können den Authentifizierungs-Agent mithilfe von Windows PowerShell bei unserem Dienst registrieren. Erstellen Sie ein PowerShell-Anmeldeinformationsobjekt (`$cred`) mit einem globalen Administratorbenutzernamen und -kennwort für Ihren Mandanten. Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei *\<username\>* und *\<password\>* durch die entsprechenden Werte:
+   
+        $User = "<username>"
+        $PlainPassword = '<password>'
+        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
+3. Wechseln Sie zu **C:\Programme\Microsoft Azure AD Connect Authentication Agent**, und führen Sie das folgende Skript unter Verwendung des zuvor erstellten Objekts `$cred` aus:
+   
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Smart Lockout:](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen

@@ -1,6 +1,6 @@
 ---
-title: "Ausführen eines Validierungstests in Azure Stack | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie Protokolldateien für die Diagnose in Azure Stack sammeln."
+title: Ausführen eines Validierungstests in Azure Stack | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie Protokolldateien für die Diagnose in Azure Stack sammeln.
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -11,17 +11,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/26/2018
 ms.author: mabrigg
-ms.openlocfilehash: 53ef19628b40c4a008143c867c9e7867ac91854d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 4f86397d4db5a0e67b294befd92087166d6b8109
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Ausführen eines Validierungstests für Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
  
 Sie können den Status Ihrer Azure Stack-Instanz prüfen. Wenn ein Problem vorliegt, wenden Sie sich an den Microsoft-Support. Der Support fordert Sie auf, das Cmdlet „Test-AzureStack“ auf Ihrem Verwaltungsknoten auszuführen. Der Validierungstest isoliert den Fehler. Der Support kann dann die detaillierten Protokolle analysieren, sich auf den Bereich konzentrieren, in dem der Fehler aufgetreten ist, und mit Ihnen bei der Lösung des Problems zusammenarbeiten.
 
@@ -64,7 +64,7 @@ Dieser Abschnitt enthält eine Übersicht über das Cmdlet „Test-AzureStack“
 | ServiceAdminCredentials | PSCredential    | Nein        | FALSE   |
 | DoNotDeployTenantVm     | SwitchParameter | Nein        | FALSE   |
 | AdminCredential         | PSCredential    | Nein        | Nicht verfügbar      |
-| StorageConnectionString | Zeichenfolge          | Nein        | Nicht verfügbar      |
+<!-- | StorageConnectionString | Zeichenfolge          | Nein        | Nicht verfügbar      | Nicht unterstützt in 1802 -->
 | Auflisten                    | SwitchParameter | Nein        | FALSE   |
 | Ignorieren                  | Zeichenfolge          | Nein        | Nicht verfügbar      |
 | Include                 | Zeichenfolge          | Nein        | Nicht verfügbar      |
@@ -148,7 +148,7 @@ So schließen Sie bestimmte Tests aus
 
 In der folgenden Tabelle sind die Validierungstests zusammengefasst, die von „Test AzureStack“ ausgeführt werden.
 
-| Name                                                                                                                              |
+| NAME                                                                                                                              |
 |-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
 | Zusammenfassung der Cloudhostinginfrastruktur für Azure Stack                                                                                  |
 | Zusammenfassung der Azure Stack-Speicherdienste                                                                                              |

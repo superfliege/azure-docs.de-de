@@ -1,12 +1,12 @@
 ---
-title: "Überprüfen von PKI-Zertifikaten für Azure Stack für die Bereitstellung von in Azure Stack integrierten Systemen | Microsoft-Dokumentation"
-description: "Beschreibt die Vorgehensweise zum Überprüfen von Azure Stack-PKI-Zertifikaten für in Azure Stack integrierte Systeme."
+title: Überprüfen von PKI-Zertifikaten für Azure Stack für die Bereitstellung von in Azure Stack integrierten Systemen | Microsoft-Dokumentation
+description: Beschreibt die Vorgehensweise zum Überprüfen von Azure Stack-PKI-Zertifikaten für in Azure Stack integrierte Systeme.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -158,7 +158,7 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu
 
 
 ## <a name="prepare-deployment-script-certificates"></a>Vorbereiten von Bereitstellungsskriptzertifikaten 
-Im letzten Schritt müssen alle vorbereiteten Zertifikate in den entsprechenden Verzeichnissen des Bereitstellungshosts platziert werden. Erstellen Sie auf Ihrem Bereitstellungshost einen Ordner namens ** Certificates**, und platzieren Sie Ihre exportierten Zertifikatdateien in den entsprechenden Unterordnern, wie im Abschnitt [Erforderliche Zertifikate](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates) angegeben:
+Im letzten Schritt müssen alle vorbereiteten Zertifikate in den entsprechenden Verzeichnissen des Bereitstellungshosts platziert werden. Erstellen Sie auf Ihrem Bereitstellungshost einen Ordner namens ** Certificates\*\*, und platzieren Sie Ihre exportierten Zertifikatdateien in den entsprechenden Unterordnern, wie im Abschnitt [Erforderliche Zertifikate](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates) angegeben:
 
 ```
 \Certificates
@@ -173,7 +173,7 @@ Im letzten Schritt müssen alle vorbereiteten Zertifikate in den entsprechenden 
 \Graph\ssl.pfx*
 ```
 
-<sup>*</sup> Die mit einem Sternchen (*) gekennzeichneten Zertifikate sind nur erforderlich, wenn AD FS als Identitätsspeicher verwendet wird.
+<sup>\*</sup> Die mit einem Sternchen (\*) gekennzeichneten Zertifikate sind nur erforderlich, wenn AD FS als Identitätsspeicher verwendet wird.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,18 +1,18 @@
 ---
-title: "Weiterleiten von Azure Blob Storage-Ereignissen an einen benutzerdefinierten Web-Endpunkt – PowerShell | Microsoft-Dokumentation"
+title: Weiterleiten von Azure Blob Storage-Ereignissen an einen benutzerdefinierten Web-Endpunkt – PowerShell | Microsoft-Dokumentation
 description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid.
 services: storage,event-grid
-keywords: 
+keywords: ''
 author: david-stanford
 ms.author: dastanfo
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 329a79511b810159244b5530a49a5916440d2046
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 374a24448eb1bf366e26bb55fdf09e470b030c89
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Web-Endpunkt mit PowerShell
 
@@ -65,7 +65,7 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 Zur Verwendung von Blob Storage-Ereignissen benötigen Sie ein [Blob Storage-Konto](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) oder ein [Speicherkonto des Typs „General Purpose v2“](../common/storage-account-options.md#general-purpose-v2). Bei **General Purpose v2 (GPv2)** handelt es sich um Speicherkonten, die alle Features für alle Speicherdienste unterstützen, z.B. Blobs, Files, Queues und Tables. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten.  
 
-Erstellen Sie mithilfe von [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) ein Blob Storage-Konto mit LRS-Replikation, und rufen Sie anschließend den Kontext des Speicherkontos ab, der das zu verwendende Speicherkonto definiert. Wenn Sie Aktionen für ein Speicherkonto ausführen, verweisen Sie auf den Kontext, anstatt wiederholt die Anmeldeinformationen anzugeben. In diesem Beispiel wird ein Speicherkonto namens **gridstorage** mit lokal redundantem Speicher (LRS) und Blobverschlüsselung (standardmäßig aktiviert) erstellt. 
+Erstellen Sie mithilfe von [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) ein Blob Storage-Konto mit LRS-Replikation, und rufen Sie anschließend den Kontext des Speicherkontos ab, der das zu verwendende Speicherkonto definiert. Wenn Sie Aktionen für ein Speicherkonto ausführen, verweisen Sie auf den Kontext, anstatt wiederholt die Anmeldeinformationen anzugeben. In diesem Beispiel wird ein Speicherkonto namens **gridstorage** mit lokal redundantem Speicher (LRS) erstellt. 
 
 > [!NOTE]
 > Speicherkontonamen sind in einem globalen Namespace angegeben, sodass Sie dem in diesem Skript angegebenen Namen zufällig gewählte Zeichen anfügen müssen.

@@ -1,25 +1,20 @@
 ---
 title: Herstellen einer Verbindung mit SQL-Datenbank mit C und C++ | Microsoft-Dokumentation
-description: "Verwenden Sie den Beispielcode in diesem Schnellstart-Artikel zum Erstellen einer modernen Anwendung in C++, die mit Azure SQL-Datenbank durch eine leistungsfähige relationale Datenbank in der Cloud unterstützt wird."
+description: Verwenden Sie den Beispielcode in diesem Schnellstart-Artikel zum Erstellen einer modernen Anwendung in C++, die mit Azure SQL-Datenbank durch eine leistungsfähige relationale Datenbank in der Cloud unterstützt wird.
 services: sql-database
-documentationcenter: 
 author: edmacauley
-manager: jhubbard
-editor: 
-ms.assetid: 07d9e0b1-3234-4f17-a252-a7559160a9db
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: edmacauley
-ms.openlocfilehash: 7c78f90c14c1915c760720948d6d7ae99ceb6f1d
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 659b413b2686a50a0681e7307b51188e6e6d0859
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Herstellen einer Verbindung mit SQL-Datenbank mit C und C++
 Dieser Beitrag ist für C- und C++-Entwickler gedacht, die eine Verbindung mit Azure SQL-Datenbank herstellen möchten. Er ist in Abschnitte unterteilt, damit Sie direkt auf den für Sie interessanten Abschnitt zugreifen können. 

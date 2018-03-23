@@ -2,7 +2,7 @@
 title: Visuelles Erstellen in Azure Data Factory | Microsoft-Dokumentation
 description: Informationen zum Verwenden der visuellen Erstellung in Azure Data Factory
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/9/2018
 ms.author: shlo
-ms.openlocfilehash: 81b97bb6b6abb5431bedd4efec5f807fa577c4e4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 209afba99ac2b43c252d93c32930908ec1f957f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visuelles Erstellen in Azure Data Factory
 Mithilfe der Azure Data Factory-Benutzeroberfläche (UX) können Sie Ressourcen für Ihre Data Factory visuell erstellen und bereitstellen, ohne Code schreiben zu müssen. Sie können Aktivitäten auf eine Pipelinecanvas ziehen, Testläufe ausführen, iterativ debuggen sowie Ihre Pipelineausführungen bereitstellen und überwachen. Die Benutzeroberfläche kann auf zwei Arten zum visuellen Erstellen verwendet werden:
@@ -40,6 +40,9 @@ Wenn Sie die **UX-Canvas** für die Erstellung zum direkten Erstellen mit dem Da
 ## <a name="author-with-vsts-git-integration"></a>Erstellen mit VSTS Git-Integration
 Das visuelle Erstellen mit VSTS Git-Integration unterstützt Quellcodeverwaltung und Zusammenarbeit beim Arbeiten an den Data Factory-Pipelines. Sie können eine Data Factory einem VSTS Git-Kontorepository für die Quellcodeverwaltung, Zusammenarbeit, Versionsverwaltung usw. zuordnen. Ein einzelnes VSTS Git-Konto kann über mehrere Repositorys verfügen. Allerdings kann ein VSTS Git-Repository nur einer einzigen Data Factory zugeordnet werden. Wenn Sie noch nicht über ein VSTS-Konto oder ein Repository verfügen, folgen Sie [diesen Anweisungen](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) zum Erstellen der Ressourcen.
 
+> [!NOTE]
+> Eine Data Factory-Pipeline kann nicht auf Dateien zugreifen, die in einem VSTS-Git-Repository gespeichert sind. Daher können Sie Dateien, die Data Factory-Pipeline-Aktivitäten – z.B. Datendateien und Skriptdateien – verwendet werden, nicht in einem VSTS-Git-Repository speichern.
+
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurieren eines VSTS Git-Repositorys mit Azure Data Factory
 Es gibt zwei Methoden zum Konfigurieren eines VSTS Git-Repositorys mit einer Data Factory.
 
@@ -55,7 +58,7 @@ Der Konfigurationsbereich **Repositoryeinstellungen** wird angezeigt:
 
 Im Bereich werden die folgenden Einstellungen für den VSTS-Coderepository angezeigt:
 
-| Einstellung | Beschreibung | Wert |
+| Einstellung | BESCHREIBUNG | Wert |
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des VSTS Coderepositorys.<br/>**Hinweis**: GitHub wird derzeit nicht unterstützt. | Visual Studio Team Services Git |
 | **Visual Studio Team Services-Konto** | Ihr VSTS-Kontoname. Den VSTS-Kontonamen finden Sie unter `https://{account name}.visualstudio.com`. Sie können sich [bei Ihrem VSTS-Konto anmelden](https://www.visualstudio.com/team-services/git/), um auf Ihr Visual Studio-Profil zuzugreifen und Ihre Repositorys und Projekte anzuzeigen. | \<Ihr Kontoname> |

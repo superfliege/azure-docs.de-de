@@ -1,11 +1,11 @@
 ---
-title: "Zertifizieren von AppSource für Azure Active Directory | Microsoft Docs"
-description: "Detailinformationen zur Zertifizierung Ihrer AppSource-Anwendung für Azure Active Directory."
+title: Zertifizieren von AppSource für Azure Active Directory | Microsoft Docs
+description: Detailinformationen zur Zertifizierung Ihrer AppSource-Anwendung für Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: andretms
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
 ms.devlang: na
@@ -16,10 +16,10 @@ ms.date: 08/03/2017
 ms.author: andret
 ms.custom: aaddev
 ms.openlocfilehash: 5601ad80e271364fec519cf34bcdc2f650f3bb92
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Zertifizieren von AppSource für Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) ist ein Ziel für Geschäftsbenutzer zum Entdecken, Ausprobieren und Verwalten branchenspezifischer SaaS-Anwendungen (eigenständiges SaaS und Add-On zu vorhandenen SaaS-Produkten von Microsoft).
@@ -35,7 +35,7 @@ Eine Anwendung, die Anmeldungen von Benutzern aus allen Unternehmen oder Organis
 
 So aktivieren Sie die Mehrinstanzenfähigkeit in Ihrer Anwendung:
 - Legen Sie in den Registrierungsdaten Ihrer Anwendung im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) die `Multi-Tenanted`-Eigenschaft auf `Yes` fest (standardmäßig werden im Azure-Portal erstellte Anwendungen als *mit nur einem Mandanten* konfiguriert).
-- Aktualisieren Sie den Code zum Senden von Anforderungen an den „`common`“-Endpunkt (aktualisieren Sie den Endpunkt von *https://login.microsoftonline.com/{IhrMandant}* in *https://login.microsoftonline.com/common*).
+- Aktualisieren Sie Ihren Code zum Senden von Anforderungen an den Endpunkt „`common`“ (aktualisieren Sie den Endpunkt von *https://login.microsoftonline.com/{yourtenant}* zu *https://login.microsoftonline.com/common*)
 - Für einige Plattformen, wie ASP.NET, müssen Sie den Code auch zum Akzeptieren mehrere Aussteller aktualisieren.
 
 Weitere Informationen zur Mehrinstanzenfähigkeit finden Sie unter: [Anmelden von Azure Active Directory-Benutzern (AD) mit dem mehrinstanzenfähigen Anwendungsmuster](./active-directory-devhowto-multi-tenant-overview.md).

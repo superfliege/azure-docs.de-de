@@ -1,6 +1,6 @@
 ---
-title: "Verknüpfen von Vorlagen für die Azure-Bereitstellung | Microsoft-Dokumentation"
-description: "Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden."
+title: Verknüpfen von Vorlagen für die Azure-Bereitstellung | Microsoft-Dokumentation
+description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 38d4281dfadaefdf331e493745363e8b4152209d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c9a7fc0025e6f4f2b793f0616b4bc41c22c2a498
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -27,8 +27,6 @@ Um Ihre Lösung bereitzustellen, können Sie entweder eine Einzelvorlage oder ei
 Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen und Vorlagen wiederverwenden.
 
 Bei Verwendung verknüpfter Vorlagen erstellen Sie eine Hauptvorlage, in der während der Bereitstellung Parameterwerte empfangen werden. Die Hauptvorlage enthält alle verknüpften Vorlagen und übergibt bei Bedarf Werte an diese Vorlagen.
-
-![Verknüpfte Vorlagen](./media/resource-group-linked-templates/nestedTemplateDesign.png)
 
 ## <a name="link-or-nest-a-template"></a>Verknüpfen oder Schachteln einer Vorlage
 
@@ -85,7 +83,7 @@ Verwenden Sie zum Schachteln der Vorlage mit der Hauptvorlage die **template**-E
 > [!NOTE]
 > Für geschachtelte Vorlagen können Sie keine Parameter oder Variablen verwenden, die in der geschachtelten Vorlage definiert sind. Sie können Parameter und Variablen über die Hauptvorlage verwenden. Im vorherigen Beispiel wird mit `[variables('storageName')]` kein Wert aus der geschachtelten Vorlage abgerufen, sondern aus der Hauptvorlage. Diese Einschränkung gilt nicht für externe Vorlagen.
 >
-> Sie können die Funktion `reference` nicht im Ausgabeabschnitt einer verschachtelten Vorlage verwenden. Um die Werte für eine bereitgestellte Ressource in einer verschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre verschachtelte Vorlage in eine verknüpfte Vorlage.
+> Sie können die Funktion `reference` nicht im Ausgabeabschnitt einer verschachtelten Vorlage verwenden. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre geschachtelte Vorlage in eine verknüpfte Vorlage.
 
 ### <a name="external-template-and-external-parameters"></a>Externe Vorlage und externe Parameter
 

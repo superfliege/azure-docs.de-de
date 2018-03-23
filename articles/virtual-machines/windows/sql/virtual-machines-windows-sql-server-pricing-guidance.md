@@ -1,29 +1,36 @@
 ---
-title: "Effektives Verwalten der Kosten für SQL Server auf virtuellen Azure-Computern | Microsoft-Dokumentation"
-description: "Enthält bewährte Methoden zum Auswählen des richtigen Preismodells für virtuelle SQL Server-Computer."
+title: Effektives Verwalten der Kosten für SQL Server auf virtuellen Azure-Computern | Microsoft-Dokumentation
+description: Enthält bewährte Methoden zum Auswählen des richtigen Preismodells für virtuelle SQL Server-Computer.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/17/2017
+ms.date: 02/20/2018
 ms.author: jroth
-ms.openlocfilehash: fe04aa382a3e829b201dbe92442f841fb29fff15
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3103ca2c659e40fd945b597ed4671fe96daf1905
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Preisinformationen für virtuelle Azure-Computer mit SQL Server
 
-Dieser Artikel enthält Preisinformationen zu virtuellen SQL Server-Computern in Azure. Verschiedene Optionen wirken sich auf die Kosten aus, und es ist wichtig, das richtige Image auszuwählen, damit Kosten und Geschäftsanforderungen im Gleichgewicht sind.
+Dieser Artikel enthält Preisinformationen zu [virtuellen SQL Server-Computern](virtual-machines-windows-sql-server-iaas-overview.md) in Azure. Verschiedene Optionen wirken sich auf die Kosten aus, und es ist wichtig, das richtige Image auszuwählen, damit Kosten und Geschäftsanforderungen im Gleichgewicht sind.
+
+> [!TIP]
+> Wenn Sie nur eine Kostenschätzung für eine bestimmte Kombination von SQL Server-Edition und Größe des virtuellen Computers ermitteln müssen, sehen Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-machines/windows) nach. Wählen Sie Ihr Betriebssystem und die SQL Server-Edition in der Liste **Betriebssystem/Software** aus.
+>
+> ![Benutzeroberfläche auf der Preisseite für virtuelle Computer](./media/virtual-machines-windows-sql-server-pricing-guidance/virtual-machines-pricing-ui.png)
+>
+> Oder verwenden Sie den [Preisrechner](https://azure.microsoft.com/pricing/#explore-cost) zum Hinzufügen und Konfigurieren eines virtuellen Computers. 
 
 ## <a name="free-licensed-sql-server-editions"></a>SQL Server-Editionen mit kostenlosen Lizenzen
 
@@ -56,7 +63,7 @@ Es gibt zwei Möglichkeiten, für die Lizenzierung dieser SQL Server-Editionen z
 
 ### <a name="pay-per-usage"></a>Nutzungsbasierte Bezahlung
 
-Die **Bezahlung für SQL Server-Lizenzen je nach Nutzung** bedeutet, dass die minutenbasierten Kosten für die Ausführung des virtuellen Azure-Computers die Kosten für die SQL Server-Lizenz einschließen. Die Preise für die verschiedenen SQL-Server-Editionen (Web, Standard, Enterprise) finden Sie auf der [Preisseite für virtuelle Azure-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard). Die Kosten sind für alle SQL Server-Versionen (2012 SP3 bis 2017) gleich. Ebenso wie bei der SQL Server-Lizenzierung im Allgemeinen richten sich die Lizenzierungskosten pro Minute nach der Anzahl der VM-Kerne.
+Die **Bezahlung für SQL Server-Lizenzen je nach Nutzung** bedeutet, dass die minutenbasierten Kosten für die Ausführung des virtuellen Azure-Computers die Kosten für die SQL Server-Lizenz einschließen. Die Preise für die verschiedenen SQL-Server-Editionen (Web, Standard, Enterprise) finden Sie auf der [Preisseite für virtuelle Azure-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Die Kosten sind für alle SQL Server-Versionen (2012 SP3 bis 2017) gleich. Ebenso wie bei der SQL Server-Lizenzierung im Allgemeinen richten sich die Lizenzierungskosten pro Minute nach der Anzahl der VM-Kerne.
 
 Die nutzungsbasierte Bezahlung der SQL Server-Lizenzierung empfiehlt sich in folgenden Fällen:
 
@@ -147,6 +154,6 @@ Bei anderen Workflows sollten Sie eine Skriptlösung wie z.B. [Azure Automation]
 
 Allgemeine Informationen zu den Preisen in Azure finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](../../../billing/billing-getting-started.md).
 
-Die neuesten Preisinformationen für virtuelle Computer, einschließlich SQL Server, finden Sie auf der [Preisseite für virtuelle Azure-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard).
+Die neuesten Preisinformationen für virtuelle Computer, einschließlich SQL Server, finden Sie auf der [Preisseite für virtuelle Azure-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
 Erfahren Sie mehr über virtuelle SQL Server-Computer: [virtuelle SQL Server Windows-Computer](virtual-machines-windows-sql-server-iaas-overview.md) und [virtuelle SQL Server Linux-Computer](../../linux/sql/sql-server-linux-virtual-machines-overview.md).

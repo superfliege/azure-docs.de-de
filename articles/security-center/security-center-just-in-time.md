@@ -1,31 +1,31 @@
 ---
 title: Just-In-Time-VM-Zugriff in Azure Security Center | Microsoft-Dokumentation
-description: "In diesem Dokument wird beschrieben, wie Sie mit Just-In-Time-VM-Zugriff in Azure Security Center den Zugriff auf die virtuellen Azure-Computer steuern können."
+description: In diesem Dokument wird beschrieben, wie Sie mit Just-In-Time-VM-Zugriff in Azure Security Center den Zugriff auf die virtuellen Azure-Computer steuern können.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2018
+ms.date: 03/06/2018
 ms.author: terrylan
-ms.openlocfilehash: a15857f0df5c967031aed00d89e71b3199eed0c4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f1ea31d1081bc263cf85cf4dcc3d73d4cc0b842d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="manage-virtual-machine-access-using-just-in-time-preview"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features (Vorschau)
+# <a name="manage-virtual-machine-access-using-just-in-time"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features
 
 Mit Just-In-Time-VM-Zugriff kann eingehender Datenverkehr auf den Azure-VMs gesperrt werden, um die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen.
 
 > [!NOTE]
-> Das Just-In-Time-Feature befindet sich in der Vorschauphase und ist im Standard-Tarif von Security Center verfügbar.  Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
+> Das Just-In-Time-Feature ist im Standard-Tarif von Security Center verfügbar.  Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
 >
 >
 
@@ -79,7 +79,7 @@ So wählen Sie den virtuellen Computer aus, den Sie aktivieren möchten:
 
 2. Wählen Sie unter **Virtueller Computer** die virtuellen Computer aus, die Sie aktivieren möchten. Hierdurch wird der virtuelle Computer mit einem Häkchen markiert.
 3. Wählen Sie **JIT auf VMs aktivieren** aus.
-4. Wählen Sie **Speichern** aus.
+4. Wählen Sie **Speichern**aus.
 
 ### <a name="default-ports"></a>Standardports
 
@@ -137,7 +137,7 @@ Zum Bearbeiten einer vorhandenen Just-In-Time-Richtlinie eines virtuellen Comput
 
 4. Geben Sie unter **Portkonfiguration hinzufügen** den Port, den Protokolltyp, zulässige Quell-IP-Adressen und die maximale Anforderungszeit an.
 5. Klicken Sie auf **OK**.
-6. Wählen Sie **Speichern** aus.
+6. Wählen Sie **Speichern**aus.
 
 ## <a name="auditing-just-in-time-access-activity"></a>Überwachen der Just-In-Time-Zugriffsaktivität
 

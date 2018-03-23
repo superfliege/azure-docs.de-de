@@ -1,11 +1,11 @@
 ---
-title: "Verbinden von Computern über das OMS-Gateway | Microsoft Docs"
-description: "Verbinden Sie Ihre Geräte und durch Operations Manager überwachte Computer mit dem OMS-Gateway, um Daten an den Azure Automation- und Log Analytics-Dienst zu senden, wenn diese Dienste nicht über Internetzugriff verfügen."
+title: Verbinden von Computern über das OMS-Gateway | Microsoft Docs
+description: Verbinden Sie Ihre Geräte und durch Operations Manager überwachte Computer mit dem OMS-Gateway, um Daten an den Azure Automation- und Log Analytics-Dienst zu senden, wenn diese Dienste nicht über Internetzugriff verfügen.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: magoedte
-ms.openlocfilehash: daf3cc236ef04ae27731e023d35cfe2aa82fc70a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 10422af5a57fc4da77958f15af5b2db61c023e40
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Verbinden von Computern ohne Internetzugriff über das OMS-Gateway
 Dieses Dokument beschreibt, wie die Kommunikation mit Azure Automation and Log Analytics über das OMS-Gateway konfiguriert wird, wenn direkt verbundene oder durch Operations Manager überwachte Computer keinen Internetzugang haben.  Das OMS-Gateway, ein HTTP-Weiterleitungsproxy, der HTTP-Tunnel mit dem Befehl HTTP CONNECT unterstützt, kann Daten erfassen und im Auftrag der Computer an Azure Automation und Log Analytics senden.  
@@ -120,7 +120,6 @@ Führen Sie die folgenden Schritte aus, um ein Gateway zu installieren.  Falls e
       Der gültige Bereich der Portnummer ist 1 bis 65535. Wenn die Eingabe außerhalb dieses Bereichs liegt, wird eine Fehlermeldung angezeigt.
    2. Optional: Falls der Server, auf dem das Gateway installiert ist, über einen Proxy kommunizieren muss, geben Sie die Proxyadresse ein, mit der das Gateway eine Verbindung herstellen muss. Beispiel: `http://myorgname.corp.contoso.com:80`.  Ohne Angabe versucht das Gateway, eine direkte Verbindung mit dem Internet herzustellen.  Falls der Proxyserver eine Authentifizierung erfordert, geben Sie einen Benutzernamen und ein Kennwort ein.<br><br> ![Gateway-Assistent-Proxykonfiguration](./media/log-analytics-oms-gateway/gateway-wizard02.png)<br>   
    3. Klicken Sie auf **Weiter**.
-
 5. Falls Microsoft Update nicht aktiviert ist, wird die Seite „Microsoft Update“ angezeigt, auf der Sie Microsoft Update aktivieren können. Treffen Sie eine Auswahl, und klicken Sie dann auf **Weiter**. Fahren Sie andernfalls mit dem nächsten Schritt fort.
 6. Übernehmen Sie auf der Seite **Zielordner** entweder den Standardordner „C:\Programme\OMS Gateway“, oder geben Sie den Speicherort zum Installieren des Gateways ein, und klicken Sie anschließend auf **Weiter**.
 7. Klicken Sie auf der Seite **Bereit zur Installation** auf **Installieren**. Unter Umständen fordert die Benutzerkontensteuerung eine Installationsberechtigung an. Ist dies der Fall, klicken Sie auf **Ja**.

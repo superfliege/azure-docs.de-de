@@ -2,24 +2,24 @@
 title: Asynchrones Aktualisieren von Azure Analysis Services-Modellen | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die asynchrone Aktualisierung mit der REST-API programmieren.
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 03/05/2018
 ms.author: owend
-ms.openlocfilehash: 1f31c05554db16d604a9825ef9b1317a0f281456
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4c317736af30b4181fa975713258a41b42ed0da3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchrones Aktualisieren mit der REST-API
 Durch Verwendung einer Programmiersprache, die REST-Aufrufe unterstützt, können Sie asynchrone Datenaktualisierungsvorgänge in Ihren tabellarischen Azure Analysis Services-Modellen durchführen. Dies schließt die Synchronisierung von schreibgeschützten Replikaten für die horizontale Skalierung von Abfragen ein. 
@@ -67,8 +67,11 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 Alle Aufrufe müssen mit einem gültigen Azure Active Directory-Token (OAuth 2) im Autorisierungsheader authentifiziert werden und die folgenden Anforderungen erfüllen:
 
 - Das Token muss ein Benutzertoken oder ein Anwendungsdienstprinzipal sein.
-- Der Benutzer oder die Anwendung muss für den Server oder das Modell über ausreichende Berechtigungen zum Ausführen des angeforderten Aufrufs verfügen. Die Berechtigungsebene wird durch Rollen innerhalb des Modells oder der Administratorengruppe auf dem Server bestimmt.
 - Für das Token muss die richtige Zielgruppe auf `https://*.asazure.windows.net` festgelegt sein.
+- Der Benutzer oder die Anwendung muss für den Server oder das Modell über ausreichende Berechtigungen zum Ausführen des angeforderten Aufrufs verfügen. Die Berechtigungsebene wird durch Rollen innerhalb des Modells oder der Administratorengruppe auf dem Server bestimmt.
+
+    > [!IMPORTANT]
+    > Derzeit sind Berechtigungen der Rolle **Serveradministrator** erforderlich.
 
 ## <a name="post-refreshes"></a>POST /refreshes
 

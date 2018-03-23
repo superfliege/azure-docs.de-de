@@ -1,6 +1,6 @@
 ---
-title: "Azure Virtual Network – häufig gestellte Fragen | Microsoft-Dokumentation"
-description: "Enthält Antworten auf häufig gestellte Fragen zu virtuellen Microsoft Azure-Netzwerken."
+title: Azure Virtual Network – häufig gestellte Fragen | Microsoft-Dokumentation
+description: Enthält Antworten auf häufig gestellte Fragen zu virtuellen Microsoft Azure-Netzwerken.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
-ms.openlocfilehash: 8800dc59306c349daba8f4d9703e0c713eed06ec
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: a5b4bac9e0d8bc10defaff251557129a70d8a022
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -57,7 +57,7 @@ Sie können die folgenden Tools zum Erstellen oder Konfigurieren eines VNet verw
 Alle in [RFC 1918](http://tools.ietf.org/html/rfc1918) definierten IP-Adressbereiche. Beispiel: 10.0.0.0/16.
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Können öffentliche IP-Adressen in VNets verwendet werden?
-Ja. Weitere Informationen zu öffentlichen IP-Adressbereichen finden Sie unter [Create, change, or delete a virtual network](virtual-network-manage-network.md#create-a-virtual-network) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks). Auf öffentliche IP-Adressen kann nicht direkt über das Internet zugegriffen werden.
+Ja. Weitere Informationen zu öffentlichen IP-Adressbereichen finden Sie unter [Create, change, or delete a virtual network](manage-virtual-network.md#create-a-virtual-network) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks). Auf öffentliche IP-Adressen kann nicht direkt über das Internet zugegriffen werden.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Ist die Anzahl von Subnetzen im VNet begrenzt?
 Ja. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Die Adressräume von Subnetzen können sich nicht überlappen.
@@ -218,6 +218,6 @@ Ja. Sie können REST-APIs für VNETs im Rahmen des [Azure Resource Manager-Berei
 
 ### <a name="is-there-tooling-support-for-vnets"></a>Sind Tools zur Unterstützung von VNets verfügbar?
 Ja. Weitere Informationen zur Verwendung von folgenden Tools:
-- Azure-Portal: Bereitstellen von VNets über das [Azure Resource Manager](virtual-networks-create-vnet-arm-pportal.md)- und [klassische](virtual-networks-create-vnet-classic-pportal.md) Bereitstellungsmodell.
+- Azure-Portal: Bereitstellen von VNets über das [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network)- und [klassische](virtual-networks-create-vnet-classic-pportal.md) Bereitstellungsmodell.
 - PowerShell: Verwalten von VNets, die über das [Resource Manager](/powershell/module/azurerm.network)- und [klassische](/powershell/module/azure/?view=azuresmps-3.7.0) Bereitstellungsmodell bereitgestellt werden.
 - Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) zum Bereitstellen und Verwalten von VNETs, die über das [Resource Manager-Modell](/cli/azure/network/vnet) und das [klassische](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) Bereitstellungsmodell bereitgestellt werden  

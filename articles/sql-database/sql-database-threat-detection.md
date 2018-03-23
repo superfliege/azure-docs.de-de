@@ -1,8 +1,8 @@
 ---
-title: "Bedrohungserkennung – Azure SQL-Datenbank | Microsoft Docs"
-description: "Die Bedrohungserkennung erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten."
+title: Bedrohungserkennung – Azure SQL-Datenbank | Microsoft Docs
+description: Die Bedrohungserkennung erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten.
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: rmatchoro
 manager: shaik
 editor: v-romcal
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 06/19/2017
 ms.author: ronmat
-ms.openlocfilehash: 889f65a796aee20d7902964b8c47af46dd9149cb
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: a01721b10305ac45082943fbe4fb7fb199a0e49f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="sql-database-threat-detection"></a>Bedrohungserkennung von SQL-Datenbank
 
@@ -30,7 +30,7 @@ Die SQL-Bedrohungserkennung bietet eine neue Sicherheitsebene, die es den Kunden
 
 Beispielsweise ist die Einschleusung von SQL-Befehlen ein verbreitetes Sicherheitsproblem für Webanwendungen im Internet und wird für Angriffe auf datengesteuerte Anwendungen verwendet. Die Angreifer nutzen Sicherheitslücken der Anwendung, um böswillige SQL-Anweisungen in Eingabefelder der Anwendung einzuschleusen, sodass Daten in der Datenbank manipuliert oder verändert werden können.
 
-Durch die SQL-Bedrohungserkennung werden Warnungen in [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/) integriert. Jeder geschützte SQL-Datenbankserver wird zu demselben Preis wie der Standardtarif von Azure Security Center abgerechnet (15 $/Knoten/Monat). Hierbei zählt jeder geschützte SQL-Datenbankserver als ein Knoten.  
+Durch die SQL-Bedrohungserkennung werden Warnungen in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert. Jeder geschützte SQL-Datenbankserver wird zu demselben Preis wie der Standardtarif von Azure Security Center abgerechnet (15 $/Knoten/Monat). Hierbei zählt jeder geschützte SQL-Datenbankserver als ein Knoten.  
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Einrichten der Bedrohungserkennung für Ihre Datenbank im Azure-Portal
 1. Rufen Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com) auf.
@@ -54,13 +54,13 @@ Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Date
    Die E-Mail enthält Informationen zum verdächtigen Sicherheitsereignis (dazu gehören Art der anomalen Aktivitäten, Datenbankname, Servername, Anwendungsname und Zeit des Ereignisses). Darüber hinaus enthält die E-Mail Angaben zu möglichen Ursachen und empfohlenen Maßnahmen zur Untersuchung und Abwehr der potenziellen Bedrohung für die Datenbank.<br/>
      
     ![Navigationsbereich][4]
-2. Die E-Mail-Warnung enthält einen direkten Link zum SQL Überwachungsprotokoll. Durch Klicken auf diesen Link wird das Azure-Portal gestartet und werden die SQL-Überwachungsdatensätze geöffnet, die in zeitlicher Nähe zum verdächtigen Ereignis liegen. Klicken Sie auf einen Überwachungsdatensatz, um weitere Details zu den verdächtigen Datenbankaktivitäten anzuzeigen. Damit haben Sie es einfacher, die SQL-Anweisungen zu finden, die ausgeführt wurden (wer hat den Zugriff ausgelöst, was wurde wann ausgeführt), und zu bestimmen, ob das Ereignis zulässig oder böswillig war (z. B. Anwendungsanfälligkeit für die Einschleusung von SQL-Befehlen wurde ausgenutzt, jemand hat vertrauliche Daten verletzt usw.).<br/>
+2. Die E-Mail-Warnung enthält einen direkten Link zum SQL Überwachungsprotokoll. Durch Klicken auf diesen Link wird das Azure-Portal gestartet und werden die SQL-Überwachungsdatensätze geöffnet, die in zeitlicher Nähe zum verdächtigen Ereignis liegen. Klicken Sie auf einen Überwachungsdatensatz, um weitere Informationen zu den verdächtigen Datenbankaktivitäten anzuzeigen. Damit haben Sie es einfacher, die SQL-Anweisungen zu finden, die ausgeführt wurden (wer hat den Zugriff ausgelöst, was wurde wann ausgeführt), und zu bestimmen, ob das Ereignis zulässig oder böswillig war (z.B. Anwendungsanfälligkeit für die Einschleusung von SQL-Befehlen wurde ausgenutzt, jemand hat vertrauliche Daten verletzt usw.).<br/>
    ![Navigationsbereich][5]
 
 
 ## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Auswerten von Bedrohungserkennungswarnungen für Ihre Datenbank im Azure-Portal
 
-Die Warnungen der Bedrohungserkennung von SQL-Datenbank sind in [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/) eingebunden. Auf einer Livekachel für SQL-Sicherheit auf der Datenbankseite im Azure-Portal wird der Status von aktiven Bedrohungen nachverfolgt. 
+Die Warnungen der Bedrohungserkennung von SQL-Datenbank sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) eingebunden. Auf einer Livekachel für SQL-Sicherheit auf der Datenbankseite im Azure-Portal wird der Status von aktiven Bedrohungen nachverfolgt. 
 
    ![Navigationsbereich][6]
    
@@ -75,10 +75,10 @@ Die Warnungen der Bedrohungserkennung von SQL-Datenbank sind in [Azure Security 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Bedrohungserkennung: siehe [Azure-Blog](https://azure.microsoft.com/en-us/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/) 
+* Weitere Informationen zur Bedrohungserkennung: siehe [Azure-Blog](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/) 
 * Weitere Informationen zu [Überwachung von Azure SQL-Datenbank](sql-database-auditing.md)
 * Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Ausführlichere Informationen zu den Preisen finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/en-us/pricing/details/sql-database/).  
+* Weitere Informationen zu den Preisen finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).  
 * Ein PowerShell-Skriptbeispiel: siehe [Konfigurieren von Überwachung von SQL-Datenbank und Bedrohungserkennung mit PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md)
 
 

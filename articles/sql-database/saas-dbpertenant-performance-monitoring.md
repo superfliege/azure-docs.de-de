@@ -1,26 +1,20 @@
 ---
-title: "Überwachen der Leistung vieler Azure SQL-Datenbanken in einer mehrinstanzenfähigen SaaS-App | Microsoft-Dokumentation"
-description: "Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App"
+title: Überwachen der Leistung vieler Azure SQL-Datenbanken in einer mehrinstanzenfähigen SaaS-App | Microsoft-Dokumentation
+description: Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: sstein
-ms.openlocfilehash: 289f1f99b1661e499fa7132887e2f65e086ad689
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 352b0d48ab223a236b96c633526f792b6f8a703d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 
@@ -62,7 +56,7 @@ Das [Azure-Portal](https://portal.azure.com) bietet integrierte Überwachung und
 
 Bei Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, kann [Log Analytics (OMS)](saas-dbpertenant-log-analytics.md) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Diagnoseprotokolle und Telemetriedaten bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Log Analytics kann Telemetriedaten über eine Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Benachrichtigungen verwendet werden.
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur Anwendung Wingtip Tickets SaaS Database Per Tenant
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
 
 Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
 

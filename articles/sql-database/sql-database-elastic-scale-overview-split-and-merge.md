@@ -1,24 +1,19 @@
 ---
 title: Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken | Microsoft Docs
-description: "Hier wird erläutert, wie Sie Shards manipulieren und Daten über einen selbst gehosteten Dienst mithilfe von APIs für elastische Datenbanken verschieben."
+description: Hier wird erläutert, wie Sie Shards manipulieren und Daten über einen selbst gehosteten Dienst mithilfe von APIs für elastische Datenbanken verschieben.
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-ms.assetid: 204fd902-0397-4185-985a-dea3ed7c7d9f
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: 328989c4fc1f9a404d4c048eb148a95e9105bdf5
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 9e2b231ad2e9fc5ab07532daef44da9870cef4ae
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken
 Wenn Sie Software- oder Dienstentwickler sind, und plötzlich eine enorme Nachfrage nach Ihrer App entsteht, müssen Sie das Wachstum anpassen. So fügen Sie weitere Datenbanken (Shards) hinzu. Wie verteilen Sie die Daten ohne Unterbrechung der Datenintegrität neu auf die neuen Datenbanken? Verschieben Sie Daten mit dem **Split-Merge-Tool** aus eingeschränkten Datenbanken in die neuen Datenbanken.  
@@ -27,7 +22,7 @@ Das Split-Merge-Tool wird als Azure-Webdienst ausgeführt. Ein Administrator ode
 
 ![Übersicht][1]
 
-## <a name="download"></a>Herunterladen
+## <a name="download"></a>Download
 [Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentation

@@ -2,19 +2,19 @@
 title: Bereitstellung eines Azure Machine Learning-Modells mithilfe der Modellverwaltung als Webdienst | Microsoft-Dokumentation
 description: In diesem Dokument werden die Schritte zum Bereitstellen eines Machine Learning-Modells mithilfe der Azure Machine Learning-Modellverwaltung vorgestellt.
 services: machine-learning
-author: raymondl
-ms.author: raymondl, aashishb
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/03/2018
-ms.openlocfilehash: 9fbdb190e7c745000b358451c1a6e3058cb861fd
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 7b481fb3287b8ee2c22e5f25f8cf1935eed05428
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>Bereitstellen eines Machine Learning-Modells als Webdienst
 
@@ -64,20 +64,20 @@ Definieren Sie als Nächstes die Eingabevariablen, wie z.B. einen Spark-Datenrah
 
 ```python
 inputs = {"input_array": SampleDefinition(DataTypes.NUMPY, yourinputarray)}
-generate_schema(run_func=run, inputs=inputs, filepath='service_schema.json')
+generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
 ```
 Im folgenden Beispiel wird ein Spark-Datenrahmen verwendet:
 
 ```python
 inputs = {"input_df": SampleDefinition(DataTypes.SPARK, yourinputdataframe)}
-generate_schema(run_func=run, inputs=inputs, filepath='service_schema.json')
+generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
 ```
 
 Im folgenden Beispiel wird ein Pandas-Datenrahmen verwendet:
 
 ```python
 inputs = {"input_df": SampleDefinition(DataTypes.PANDAS, yourinputdataframe)}
-generate_schema(run_func=run, inputs=inputs, filepath='service_schema.json')
+generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
 ```
 
 ### <a name="3-create-a-scorepy-file"></a>3. Erstellen der Datei „score.py“
@@ -136,7 +136,7 @@ az ml model register --model [path to model file] --name [model name]
 Der folgenden Befehl dient zum Erstellen eines Manifests für das Modell.
 
 ```
-az ml manifest create --manifest-name [your new manifest name] -f [path to code file] -r [runtime for the image, e.g. spark-py]
+az ml manifest create --manifest-name [your new manifest name] -f [path to score file] -r [runtime for the image, e.g. spark-py]
 ```
 Sie können ein zuvor registriertes Modell zum Manifest hinzufügen, indem Sie das Argument `--model-id` oder `-i` im zuvor gezeigten Befehl verwenden. Mehrere Modelle können mit zusätzlichen „-i“-Argumenten angegeben werden.
 

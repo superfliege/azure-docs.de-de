@@ -1,25 +1,19 @@
 ---
-title: "Übersicht über das Durchführen von Vergleichstests für Azure SQL-Datenbank"
+title: Übersicht über das Durchführen von Vergleichstests für Azure SQL-Datenbank
 description: Dieses Thema beschreibt den Azure SQL Database Benchmark-Vergleichstest zum Messen der Leistung von Azure SQL-Datenbank.
 services: sql-database
-documentationcenter: na
 author: jan-eng
 manager: jhubbard
-editor: monicar
-ms.assetid: e26f8a66-2c12-49d7-8297-45b4d48a5c01
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: fb8a5f205ddc143dc47349829048f46f88963d05
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 25685f663d976674ad877bcfa1409ef016dd02ae
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Übersicht über das Durchführen von Vergleichstests für Azure SQL-Datenbank
 ## <a name="overview"></a>Übersicht
@@ -49,9 +43,9 @@ Ein Datengenerierungsprogramm erzeugt die Daten für die ursprüngliche Datenban
 Die Datenbankgröße basiert auf einem "Skalierungsfaktor". Der Skalierungsfaktor (abgekürzt SF) bestimmt die Kardinalität der Skalierungs- und anwachsenden Tabellen. Wie im folgenden Abschnitt "Benutzer und Geschwindigkeit" beschrieben, werden die Datenbankgröße, Anzahl der Benutzer und maximale Leistung allesamt proportional zueinander skaliert.
 
 ## <a name="transactions"></a>Transaktionen
-Die Workload besteht aus neun Transaktionstypen, wie in der folgenden Tabelle dargestellt. Jede Transaktion ist darauf ausgelegt, eine bestimmte Gruppe von Systemmerkmalen im Datenbankmodul und in der Systemhardware in starker Abgrenzung zu den anderen Transaktionen hervorzuheben. Dieser Ansatz erleichtert das Bewerten der Auswirkung verschiedener Komponenten auf die Gesamtleistung. Beispielsweise erzeugt die Transaktion "Leseintensiv" eine hohe Anzahl von Lesevorgängen auf dem Datenträger.
+Die Workload besteht aus neun Transaktionstypen, wie in der folgenden Tabelle dargestellt. Jede Transaktion ist darauf ausgelegt, eine bestimmte Gruppe von Systemmerkmalen in der Datenbank-Engine und in der Systemhardware in starker Abgrenzung zu den anderen Transaktionen hervorzuheben. Dieser Ansatz erleichtert das Bewerten der Auswirkung verschiedener Komponenten auf die Gesamtleistung. Beispielsweise erzeugt die Transaktion "Leseintensiv" eine hohe Anzahl von Lesevorgängen auf dem Datenträger.
 
-| Transaktionstyp | Beschreibung |
+| Transaktionstyp | BESCHREIBUNG |
 | --- | --- |
 | Nicht leseintensiv |SELECT, speicherintern, schreibgeschützt |
 | Mittel leseintensiv |SELECT, zumeist speicherintern, schreibgeschützt |
@@ -126,7 +120,7 @@ Die Hauptmetriken im Vergleichstest sind Durchsatz und Antwortzeit.
 ## <a name="conclusion"></a>Zusammenfassung
 Der Azure SQL-Datenbankvergleichstest misst die relative Leistung von Azure SQL-Datenbank bei Ausführung im Bereich der verfügbaren Tarife und Leistungsstufen. Für den Vergleichstest wird eine Kombination grundlegender Datenbankvorgänge ausgeführt, die bei OLTP-Workloads (Online Transaction Processing, Onlinetransaktionsverarbeitung) am häufigsten vorkommen. Durch Messen der tatsächlichen Leistung bietet der Vergleichstest eine aussagekräftigere Bewertung der Auswirkungen auf den Durchsatz durch Ändern der Leistungsstufe als dies möglich ist, indem bloß die Ressourcen aufgelistet werden, die jede Stufe zu bieten hat, wie z. B. CPU-Geschwindigkeit, Arbeitsspeichergröße und IOPS (E/A-Vorgänge pro Sekunde). Wir werden den Vergleichstest künftig weiterentwickeln, um seinen Umfang und die bereitgestellten Daten zu vergrößern.
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 [Einführung in SQL-Datenbank](sql-database-technical-overview.md)
 
 [Tarife und Leistungsebenen](sql-database-service-tiers.md)

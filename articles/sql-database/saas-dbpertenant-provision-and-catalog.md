@@ -1,26 +1,20 @@
 ---
-title: "Bereitstellen neuer Mandanten in einer mehrinstanzenfähigen App, die die Azure SQL-Datenbank verwendet | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie neue Mandanten in einer mehrinstanzenfähigen SaaS-App in Azure SQL-Datenbank bereitstellen und katalogisieren können."
+title: Bereitstellen neuer Mandanten in einer mehrinstanzenfähigen App, die die Azure SQL-Datenbank verwendet | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie neue Mandanten in einer mehrinstanzenfähigen SaaS-App in Azure SQL-Datenbank bereitstellen und katalogisieren können.
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
-ms.openlocfilehash: 79b3743054f73914c6755a3c9b102b613b1944f2
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 21f0bca3a16164ead4e0990842a968fd9b95c33f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Hier erfahren Sie, wie Sie neue Mandanten bereitstellen und sie im Katalog registrieren.
 
@@ -99,8 +93,8 @@ Verfolgen Sie die Ausführung des Skripts mit den Optionen (**F10** und **F11**)
 
 Die folgenden Schritte müssen nicht genau befolgt werden, sondern stellen eine Erläuterung des Workflows dar, den Sie beim Debuggen des Skripts schrittweise durchlaufen:
 
-1. **Importieren Sie das Modul „SubscriptionManagement.psm1“**, das Funktionen enthält, um sich bei Azure anzumelden und das Azure-Abonnement auszuwählen, mit dem Sie arbeiten.
 1. **Importieren Sie das Modul „CatalogAndDatabaseManagement.psm1“**, das eine Abstraktion auf Katalog- und Mandantenebene über die [Shardverwaltungsfunktionen](sql-database-elastic-scale-shard-map-management.md) bereitstellt. Dieses Modul kapselt einen Großteil des Katalogmusters, und es lohnt sich, dieses Modul genauer zu betrachten.
+1. **Importieren Sie das Modul „SubscriptionManagement.psm1“**, das Funktionen enthält, um sich bei Azure anzumelden und das Azure-Abonnement auszuwählen, mit dem Sie arbeiten.
 1. **Rufen Sie Konfigurationsinformationen ab**. Wechseln Sie zu „Get-Configuration“ (mit F11), und sehen Sie sich an, wie die App-Konfiguration angegeben ist. Hier sind Ressourcennamen und andere App-spezifische Werte definiert. Ändern Sie diese Werte nicht, es sei denn, sie kennen sich gut mit Skripts aus.
 1. **Rufen Sie das Katalogobjekt ab**. Wechseln Sie zu „Get-Catalog“. Hierdurch wird ein im übergeordneten Skript verwendetes Katalogobjekt erstellt und zurückgegeben.  Diese Funktion verwendet aus **AzureShardManagement.psm1** importierte Shardverwaltungsfunktionen. Das Katalogobjekt besteht aus den folgenden Elementen:
    * „$catalogServerFullyQualifiedName“ wird aus dem Standardstamm plus Ihrem Benutzernamen gebildet: _catalog-\<Benutzer\>.database.windows.net_.

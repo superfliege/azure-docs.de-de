@@ -1,11 +1,11 @@
 ---
-title: "Integrieren einer externen Überwachungslösung mit Azure Stack | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Azure Stack mit einer externen Überwachungslösung in Ihr Rechenzentrum integrieren können."
+title: Integrieren einer externen Überwachungslösung mit Azure Stack | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure Stack mit einer externen Überwachungslösung in Ihr Rechenzentrum integrieren können.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
 ms.service: azure-stack
 ms.workload: na
@@ -16,10 +16,10 @@ ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.openlocfilehash: 3435ada40afb9f1c6e57be64d1b9086d0cdaefd9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integrieren einer externen Überwachungslösung mit Azure Stack
 
@@ -145,7 +145,7 @@ Die Anforderung erhält alle aktiven und geschlossenen Warnungen für das Standa
 
 |Argument  |BESCHREIBUNG  |
 |---------|---------|
-|armendpoint     |  Der Endpunkt von Azure Resource Manager für Ihre Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z. B. *azurestack.external* und der Regionsname *local* ist, dann ist der Resource Manager-Endpunkt „https://adminmanagement.local.azurestack.external“.       |
+|armendpoint     |  Der Endpunkt von Azure Resource Manager für Ihre Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z.B. *azurestack.external* und der Regionsname *local* ist, dann ist der Resource Manager-Endpunkt https://adminmanagement.local.azurestack.external.       |
 |subid     |   Abonnement-ID des Benutzers, von dem der Aufruf ausgeht Mit dieser API können Sie nur mit einem Benutzer abfragen, der über die Berechtigung für das Standardanbieterabonnement verfügt.      |
 |RegionName     |    Der Name der Region der Azure Stack-Bereitstellung.     |
 |api-version     |  Die Version des Protokolls, dass für diese Anforderung verwendet wird. Sie müssen 2016-05-01 verwenden.      |
@@ -248,7 +248,7 @@ Die Anforderung schließt eine Warnung über ihre eindeutige ID.
 
 |Argument  |BESCHREIBUNG  |
 |---------|---------|
-|*armendpunkt*     |   Der Endpunkt von Azure Resource Manager für Ihre Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z. B. *azurestack.external* und der Regionsname *local* ist, dann ist der Resource Manager-Endpunkt „https://adminmanagement.local.azurestack.external“.      |
+|*armendpunkt*     |   Der Endpunkt von Azure Resource Manager für Ihre Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z.B. *azurestack.external* und der Regionsname *local* ist, dann ist der Resource Manager-Endpunkt https://adminmanagement.local.azurestack.external.      |
 |*subid*     |    Abonnement-ID des Benutzers, von dem der Aufruf ausgeht Mit dieser API können Sie nur mit einem Benutzer abfragen, der über die Berechtigung für das Standardanbieterabonnement verfügt.     |
 |*RegionName*     |   Der Name der Region der Azure Stack-Bereitstellung.      |
 |*api-version*     |    Die Version des Protokolls, dass für diese Anforderung verwendet wird. Sie müssen 2016-05-01 verwenden.     |
@@ -393,7 +393,7 @@ Die Anforderung erhält den Integritätsstatus für alle registrierten Ressource
 
 |Argumente  |BESCHREIBUNG  |
 |---------|---------|
-|*armendpunkt*     |    Der Endpunkt des Azure Resource Managers Ihrer Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z. B. „azurestack.external“ und der Regionsname „local“ ist, dann ist der Resource Manager-Endpunkt „https://adminmanagement.local.azurestack.external“.     |
+|*armendpunkt*     |    Der Endpunkt des Azure Resource Managers Ihrer Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z.B. „azurestack.external“ und der Regionsname „local“ ist, dann ist der Resource Manager-Endpunkt https://adminmanagement.local.azurestack.external.     |
 |*subid*     |     Abonnement-ID des Benutzers, von dem der Aufruf ausgeht Mit dieser API können Sie nur mit einem Benutzer abfragen, der über die Berechtigung für das Standardanbieterabonnement verfügt.    |
 |*RegionName*     |     Der Name der Region der Azure Stack-Bereitstellung.    |
 |*api-version*     |   Die Version des Protokolls, dass für diese Anforderung verwendet wird. Sie müssen 2016-05-01 verwenden.      |
@@ -462,7 +462,7 @@ Die Anforderung ruft den Integritätsstatus für einen bestimmten registrierten 
 
 |Argumente  |BESCHREIBUNG  |
 |---------|---------|
-|*armendpunkt*     |    Der Endpunkt des Azure Resource Managers Ihrer Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z. B. „azurestack.external“ und der Regionsname „local“ ist, dann ist der Resource Manager-Endpunkt „https://adminmanagement.local.azurestack.external“.     |
+|*armendpunkt*     |    Der Endpunkt des Azure Resource Managers Ihrer Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z.B. „azurestack.external“ und der Regionsname „local“ ist, dann ist der Resource Manager-Endpunkt https://adminmanagement.local.azurestack.external.     |
 |*subid*     |Abonnement-ID des Benutzers, von dem der Aufruf ausgeht Mit dieser API können Sie nur mit einem Benutzer abfragen, der über die Berechtigung für das Standardanbieterabonnement verfügt.         |
 |*RegionName*     |  Der Name der Region der Azure Stack-Bereitstellung.       |
 |*api-version*     |  Die Version des Protokolls, dass für diese Anforderung verwendet wird. Sie müssen 2016-05-01 verwenden.       |

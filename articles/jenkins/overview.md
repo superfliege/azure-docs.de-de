@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über Jenkins und Azure | Microsoft-Dokumentation"
-description: "Verwenden Sie Azure für das Hosten des Jenkins-Builds und das Bereitstellen von Automatisierungsservern. Nutzen Sie darüber hinaus Azure Compute- und Azure Storage-Ressourcen, um die Pipelines für Continuous Integration und Continuous Deployment (CI/CD) zu erweitern."
+title: Übersicht über Jenkins und Azure | Microsoft-Dokumentation
+description: Verwenden Sie Azure für das Hosten des Jenkins-Builds und das Bereitstellen von Automatisierungsservern. Nutzen Sie darüber hinaus Azure Compute- und Azure Storage-Ressourcen, um die Pipelines für Continuous Integration und Continuous Deployment (CI/CD) zu erweitern.
 services: jenkins
 author: rloutlaw
 manager: justhe
@@ -11,11 +11,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: routlaw
 ms.custom: mvc
-ms.openlocfilehash: 69bb79a1f02e601b9ed0104dde00211612473adc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 08906939ecc80999de94ad7e7141081f959fb6f2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-and-jenkins"></a>Azure und Jenkins
 
@@ -31,7 +31,7 @@ Hosten Sie Jenkins in Azure, um Ihre Buildautomatisierung zu zentralisieren und 
 - Mit [Azure Virtual Machines](/azure/virtual-machines/linux/overview). In unserem [Tutorial](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd) finden Sie Informationen zum Erstellen einer Jenkins-Instanz auf einem virtuellen Computer.
 - Informationen zu einem Kubernetes-Cluster im [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) finden Sie in unserer [Anleitung](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
-Überwachen und verwalten Sie Ihre Azure-Jenkins-Bereitstellung mit [Log Analytics](/azure/log-analytics/log-analytics-overview), [Operations Management Suite](/azure/operations-management-suite/operations-management-suite-overview) und der [Azure-Befehlszeilenschnittstelle](/cli/azure/overview).
+Überwachen und verwalten Sie Ihre Azure Jenkins-Bereitstellung mit [Log Analytics](/azure/log-analytics/log-analytics-overview), [Operations Management Suite](/azure/operations-management-suite/operations-management-suite-overview) und der [Azure-Befehlszeilenschnittstelle](/cli/azure).
 
 ## <a name="scale-your-build-automation-on-demand"></a>Skalieren der Buildautomatisierung nach Bedarf
 

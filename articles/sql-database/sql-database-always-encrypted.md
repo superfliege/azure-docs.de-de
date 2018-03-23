@@ -1,26 +1,20 @@
 ---
-title: "Always Encrypted: Azure SQL-Datenbank – Windows-Zertifikatspeicher | Microsoft-Dokumentation"
-description: "In diesem Artikel erfahren Sie, wie Sie vertrauliche Daten in einer SQL-Datenbank mithilfe der Datenbankverschlüsselung unter Einsatz des Always Encrypted-Assistenten in SQL Server Management Studio (SSMS) sichern. Sie erfahren hier auch, wie Sie Ihre Verschlüsselungsschlüssel im Windows-Zertifikatspeicher speichern."
-keywords: "Verschlüsseln von Daten, SQL-Verschlüsselung, Datenbankverschlüsselung, vertrauliche Daten, Always Encrypted"
+title: 'Always Encrypted: Azure SQL-Datenbank – Windows-Zertifikatspeicher | Microsoft-Dokumentation'
+description: In diesem Artikel erfahren Sie, wie Sie vertrauliche Daten in einer SQL-Datenbank mithilfe der Datenbankverschlüsselung unter Einsatz des Always Encrypted-Assistenten in SQL Server Management Studio (SSMS) sichern. Sie erfahren hier auch, wie Sie Ihre Verschlüsselungsschlüssel im Windows-Zertifikatspeicher speichern.
+keywords: Verschlüsseln von Daten, SQL-Verschlüsselung, Datenbankverschlüsselung, vertrauliche Daten, Always Encrypted
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: cgronlun
-ms.assetid: ce7e052e-8bf6-4d7c-9204-4c6f4afeba4b
 ms.service: sql-database
 ms.custom: security
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: sstein
-ms.openlocfilehash: 8e86648195811a666a197b6ee06ad610a1c8d568
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1bb3f6bd3b4bfc1546e992734a85921248eff8fd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: Schützen von vertraulichen Daten in SQL-Datenbank und Speichern der Verschlüsselungsschlüssel im Windows-Zertifikatspeicher
 
@@ -108,7 +102,6 @@ Klicken Sie auf der Seite **Einführung** auf **Weiter**, um die Seite **Spalten
 Verschlüsseln Sie für jeden Patienten die Daten **SSN** (US-Sozialversicherungsnummer) und **BirthDate** (Geburtsdatum). Für die Spalte **SSN** wird die deterministische Verschlüsselung verwendet, die Suchvorgänge nach Gleichheit, Joins und Group By unterstützt. Für die Spalte **BirthDate** wird die zufällige Verschlüsselung verwendet, bei der keine Operationen unterstützt werden.
 
 Legen Sie als **Verschlüsselungstyp** für die Spalte **SSN** die Option **Deterministisch** und für die Spalte **BirthDate** die Option **Zufällig** fest. Klicken Sie auf **Weiter**.
-
 
 ![Spalten verschlüsseln](./media/sql-database-always-encrypted/column-selection.png)
 

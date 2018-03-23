@@ -1,13 +1,13 @@
 ---
-title: "Datenerfassungstools für die Data Science-VM – Azure | Microsoft-Dokumentation"
-description: "Datenerfassungstools für die Data Science-VM"
-keywords: "Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science"
+title: Datenerfassungstools für die Data Science-VM – Azure | Microsoft-Dokumentation
+description: Datenerfassungstools für die Data Science-VM
+keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: a2422d8a79d102accb72476f6934bae38603973a
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8526e949aee2935824a03a0972d9e45c71d6601b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Datenerfassungstools für die Data Science-VM
 
@@ -35,7 +35,7 @@ Im Anschluss sind einige der Datenverschiebungstools aufgeführt, die auf der DS
 | Unterstützte DSVM-Versionen      | Windows      |
 | Typische Verwendung      | Importieren mehrerer Blobs aus Azure Storage in Azure Data Lake Store      |
 |  Verwendung/Ausführung    |   Öffnen Sie eine Eingabeaufforderung, und geben Sie `adlcopy` ein, um die Hilfe anzuzeigen.    |
-| Links zu Beispielen      | [Using AdlCopy]https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| Links zu Beispielen      | [Verwenden von AdlCopy](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | Verwandte Tools auf der DSVM      | AzCopy, Azure-Befehlszeile     |
 
 ## <a name="azure-command-line"></a>Azure-Befehlszeile
@@ -46,7 +46,7 @@ Im Anschluss sind einige der Datenverschiebungstools aufgeführt, die auf der DS
 | Unterstützte DSVM-Versionen      | Windows, Linux     |
 | Typische Verwendung      | Importieren/Exportieren von Daten in bzw. aus Azure Storage und Azure Data Lake Store      |
 |  Verwendung/Ausführung    |   Öffnen Sie eine Eingabeaufforderung, und geben Sie `az` ein, um die Hilfe anzuzeigen.    |
-| Links zu Beispielen      | [Verwenden der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?viee-cli-latest)     |
+| Links zu Beispielen      | [Verwenden der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure)     |
 | Verwandte Tools auf der DSVM      | AzCopy, AdlCopy      |
 
 
@@ -93,7 +93,7 @@ Im Anschluss sind einige der Datenverschiebungstools aufgeführt, die auf der DS
 | Unterstützte DSVM-Versionen      | Linux      |
 | Typische Verwendung      | Lese- und Schreibzugriff auf Blobs in einem Container      |
 |  Verwendung/Ausführung    |   Führen Sie _blobfuse_ auf einem Terminal aus.    |
-| Links zu Beispielen      | [blobfuse auf GitHub) [https://github.com/Azure/azure-storage-fuse]      |
+| Links zu Beispielen      | [blobfuse auf GitHub](https://github.com/Azure/azure-storage-fuse)      |
 | Verwandte Tools auf der DSVM      | Azure-Befehlszeile      |
 
 

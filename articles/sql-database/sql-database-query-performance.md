@@ -1,25 +1,19 @@
 ---
 title: Einblicke in die Abfrageleistung der Azure SQL-Datenbank | Microsoft-Dokumentation
-description: "Mit der Überwachung der Abfrageleistung werden für eine Azure SQL-Datenbank die Abfragen mit der höchsten CPU-Auslastung identifiziert."
+description: Mit der Überwachung der Abfrageleistung werden für eine Azure SQL-Datenbank die Abfragen mit der höchsten CPU-Auslastung identifiziert.
 services: sql-database
-documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: monicar
-ms.assetid: c2f580b2-3835-453f-89f5-140e02dd2ea7
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 015f3255d0ff9691168899df1e983e70f35215b1
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 18d03ffcd586a809b37cbc1ca9a7843c25c7758d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Query Performance Insight für Azure SQL-Datenbank
 Das Verwalten und Abstimmen der Leistung von relationalen Datenbanken ist eine anspruchsvolle Aufgabe, die ein erhebliches Maß an Wissen und Zeit erfordert. Mithilfe von Query Performance Insight können Sie den Zeitaufwand für die Problembehandlung der Datenbankleistung reduzieren. Dieses Tool stellt Folgendes bereit:
@@ -27,7 +21,7 @@ Das Verwalten und Abstimmen der Leistung von relationalen Datenbanken ist eine a
 * Tiefere Einblicke in den Verbrauch von Datenbankressourcen (DTU). 
 * Die häufigsten Abfragen nach den Werten von CPU-Nutzung/Dauer/Ausführungshäufigkeit, bei denen unter Umständen eine Leistungssteigerung erzielt werden kann.
 * Die Fähigkeit, die Details einer Abfrage, den Abfragetext und den Verlauf der Ressourcenverwendung anzuzeigen. 
-* Anmerkungen zur Leistungsoptimierung, die die vom [Azure SQL-Datenbankratgeber](sql-database-advisor.md)  
+* Anmerkungen zur Leistungsoptimierung, die die von [Azure SQL Database Advisor](sql-database-advisor.md) ausgeführten Aktionen zeigen  
 
 
 
@@ -47,7 +41,7 @@ Query Performance Insight ist einfach zu verwenden:
   * Wählen Sie im Menü links unter „Support und Problembehandlung“ die Option „Query Performance Insight“.
 * Überprüfen Sie auf der ersten Registerkarte die Liste mit den Abfragen, die den höchsten Ressourcenverbrauch aufweisen.
 * Wählen Sie eine einzelne Abfrage aus, um die Details anzuzeigen.
-* Öffnen Sie den [Azure SQL-Datenbankratgeber](sql-database-advisor.md) , und überprüfen Sie, ob Empfehlungen verfügbar sind.
+* Öffnen Sie [SQL Database Advisor](sql-database-advisor.md), und überprüfen Sie, ob Empfehlungen verfügbar sind.
 * Verwenden Sie Schieberegler oder Zoomsymbole, um das beobachtete Intervall zu ändern.
   
     ![Leistungsdashboard](./media/sql-database-query-performance/performance.png)
@@ -86,7 +80,7 @@ Gehen Sie im [Portal](http://portal.azure.com) wie folgt vor:
    * Anzahl von Abfragen
    * Aggregationsfunktion
      
-     ![Einstellungen](./media/sql-database-query-performance/custom-tab.png)
+     ![settings](./media/sql-database-query-performance/custom-tab.png)
 
 ## <a name="viewing-individual-query-details"></a>Anzeigen von Details einzelner Abfragen
 So zeigen Sie die Details von Abfragen an
@@ -140,11 +134,11 @@ So identifizieren Sie häufig ausgeführte Abfragen:
 ## <a name="understanding-performance-tuning-annotations"></a>Grundlegendes zu Anmerkungen der Leistungsoptimierung
 Während Sie die Workload in Query Performance Insight untersuchen, bemerken Sie möglicherweise Symbole mit einem senkrechten Strich oberhalb des Diagramms.<br>
 
-Diese Symbole sind Anmerkungen und stehen für Aktionen des [Azure SQL-Datenbankratgebers](sql-database-advisor.md), die sich auf die Leistung auswirken. Indem Sie auf eine Anmerkung zeigen, erhalten Sie grundlegende Informationen zu der Aktion:
+Diese Symbole sind Anmerkungen und stehen für Aktionen von [Azure SQL Database Advisor](sql-database-advisor.md), die sich auf die Leistung auswirken. Indem Sie auf eine Anmerkung zeigen, erhalten Sie grundlegende Informationen zu der Aktion:
 
 ![Anmerkung zur Abfrage][6]
 
-Wenn Sie mehr über die Empfehlung erfahren oder die Empfehlung anwenden möchten, klicken Sie auf das Symbol. Dadurch wird die Detailansicht der Aktion geöffnet. Wenn es sich um eine aktive Empfehlung handelt, können Sie sie mit einem Befehl sofort anwenden.
+Wenn Sie mehr über die Advisor-Empfehlung erfahren oder die Advisor-Empfehlung anwenden möchten, klicken Sie auf das Symbol. Dadurch wird die Detailansicht der Aktion geöffnet. Wenn es sich um eine aktive Empfehlung handelt, können Sie sie mit einem Befehl sofort anwenden.
 
 ![Details der Anmerkung zur Abfrage][7]
 
@@ -212,7 +206,7 @@ Dank Query Performance Insight können Sie die Auswirkungen der Abfragen-Workloa
 ## <a name="next-steps"></a>Nächste Schritte
 Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erhalten, klicken Sie auf dem Blatt [Query Performance Insight](sql-database-advisor.md) auf **Empfehlungen** .
 
-![Leistungsratgeber](./media/sql-database-query-performance/ia.png)
+![Leistungs-Advisor](./media/sql-database-query-performance/ia.png)
 
 <!--Image references-->
 [1]: ./media/sql-database-query-performance/tile.png

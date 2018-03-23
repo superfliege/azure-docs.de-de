@@ -1,17 +1,17 @@
 ---
 title: Collectorappliance in Azure Migrate | Microsoft-Dokumentation
-description: "Bietet eine Übersicht über die Collectorappliance und deren Konfiguration."
+description: Bietet eine Übersicht über die Collectorappliance und deren Konfiguration.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: fcf6d2bf13af785eae26ff60035a4754f6ec702e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 49f3d5ba55a9c1abfcd6dcb50058ed7a001a2eec
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="collector-appliance"></a>Collectorappliance
 
@@ -26,6 +26,20 @@ Ein Azure Migrate-Collector ist eine einfache Appliance, die zum Ermitteln Ihrer
 Die Collectorappliance ist ein OVF-Paket, das Sie aus dem Azure Migrate-Projekt herunterladen können. Es instanziiert einen virtuellen VMware-Computer mit 4 Kernen, 8 GB RAM und einem Datenträger mit 80 GB. Das Betriebssystem der Appliance ist Windows Server 2012 R2 (64-Bit).
 
 Sie können den Collector erstellen, indem Sie die Schritte in [Erstellen der Collector-VM](tutorial-assessment-vmware.md#create-the-collector-vm) ausführen.
+
+## <a name="collector-communication-diagram"></a>Abbildung zur Kommunikation zwischen Collectors
+
+![Abbildung zur Kommunikation zwischen Collectors](./media/tutorial-assessment-vmware/portdiagram.PNG)
+
+
+| Komponente      | Für die Kommunikation mit   | Erforderlicher Port                            | Grund                                   |
+| -------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
+| Collector      | Azure Migrate-Dienst | TCP 443                                  | Der Collector sollte über SSL-Port 443 mit dem Dienst kommunizieren können. |
+| Collector      | vCenter Server        | Standard 443                             | Der Collector sollte über vCenter Server mit dem Dienst kommunizieren können. Standardmäßig stellt er über 443 eine Verbindung mit vCenter her. Wenn vCenter an einem anderen Port lauscht, muss dieser Port auf dem Collector als ausgehender Port konfiguriert werden. |
+| Collector      | RDP|   | TCP 3389 | Damit soll Ihnen die Verwendung des RDP auf dem Collectorcomputer ermöglicht werden. |
+
+
+
 
 
 ## <a name="collector-pre-requisites"></a>Voraussetzungen für den Collector
@@ -158,6 +172,32 @@ Die folgende Tabelle enthält die erfassten Leistungsindikatoren sowie die Bewer
 Der Collector ermittelt nur die Computerdaten und sendet sie an das Projekt. Das Projekt kann zusätzliche Zeit in Anspruch nehmen, bis die ermittelten Daten im Portal angezeigt werden und Sie mit dem Erstellen einer Bewertung beginnen können.
 
 Je nach Anzahl der virtuellen Computer im ausgewählten Bereich dauert das Senden der statischen Metadaten an das Projekt bis zu 15 Minuten. Sobald die statischen Metadaten im Portal verfügbar sind, können Sie die Liste der Computer im Portal anzeigen und mit der Gruppenerstellung beginnen. Eine Bewertung kann erst erstellt werden, wenn der Auftrag abgeschlossen ist und das Projekt die Daten verarbeitet hat. Nachdem der Sammlungsauftrag auf dem Collector abgeschlossen ist, kann es bis zu einer Stunde dauern, bis die Leistungsdaten im Portal verfügbar sind. Die Dauer hängt von der Anzahl der virtuellen Computer im ausgewählten Bereich ab.
+
+## <a name="how-to-upgrade-collector"></a>Gewusst wie: Durchführen eines Upgrades für den Collector
+
+Sie können ein Upgrade für den Collector auf die neueste Version durchführen, ohne die OVA-Datei erneut herunterladen zu müssen.
+
+1. Laden Sie das aktuelle [Upgradepaket](https://aka.ms/migrate/col/latestupgrade) herunter.
+2. Um sicherzustellen, dass der heruntergeladene Hotfix sicher ist, öffnen Sie das Befehlsfenster als Administrator, und führen Sie den folgenden Befehl zum Generieren des Hash für die ZIP-Datei aus. Der generierte Hash sollte mit dem für die betreffende Version genannten Hash übereinstimmen:
+
+    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    
+    (Beispiel: „C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256“)
+3. Kopieren Sie die ZIP-Datei auf den virtuellen Azure Migrate-Collectorcomputer (Collectorappliance).
+4. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei, und wählen Sie „Alle extrahieren“ aus.
+5. Klicken Sie mit der rechten Maustaste auf „Setup.ps1“, und klicken Sie auf „Mit PowerShell ausführen“. Befolgen Sie dann die Anweisungen auf dem Bildschirm, um das Update zu installieren.
+
+### <a name="list-of-updates"></a>Liste der Updates
+
+#### <a name="upgrade-to-version-1095"></a>Upgrade auf Version 1.0.9.5
+
+Laden Sie zum Durchführen eines Upgrade auf Version 1.0.9.5 das [Paket](https://aka.ms/migrate/col/upgrade_9_5) herunter.
+
+**Algorithmus** | **Hashwert**
+--- | ---
+MD5 | d969ebf3bdacc3952df0310d8891ffdf
+SHA1 | f96cc428eaa49d597eb77e51721dec600af19d53
+SHA256 | 07c03abaac686faca1e82aef8b80e8ad8eca39067f1f80b4038967be1dc86fa1
 
 ## <a name="next-steps"></a>Nächste Schritte
 

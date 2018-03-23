@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.openlocfilehash: 4f8dd685c3ae89535217d7a17a01c5129ca7e6e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a58ab1165f3886484fb695170100422c2f1b0486
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="http2-support-in-azure-cdn"></a>HTTP/2-Unterstützung in Azure CDN
 
 HTTP/2 ist eine größere Überarbeitung von HTTP/1.1\. Sie bietet eine höhere Webleistung, kürzere Antwortzeiten und eine verbesserte Benutzeroberfläche, während gleichzeitig die gewohnten HTTP-Methoden, Statuscodes und Semantik beibehalten werden. Obwohl HTTP/2 darauf ausgelegt ist, unter HTTP und HTTPS zu funktionieren, unterstützen viele Clientwebbrowser HTTP/2 nur über TLS.
 
-###<a name="http2-benefits"></a>Vorteile von HTTP/2
+### <a name="http2-benefits"></a>Vorteile von HTTP/2
 
 HTTP/2 bietet unter anderem folgende Vorteile:
 
@@ -40,7 +40,7 @@ HTTP/2 bietet unter anderem folgende Vorteile:
     Datenstrom-Abhängigkeiten ermöglichen dem Client, dem Server anzugeben, welche der Ressourcen Vorrang haben.
 
 
-##<a name="http2-browser-support"></a>HTTP/2-Browserunterstützung
+## <a name="http2-browser-support"></a>HTTP/2-Browserunterstützung
 
 Alle wichtigen Browser haben HTTP/2-Unterstützung in ihren aktuellen Versionen implementiert. Nicht unterstützte Browser führen ein automatisches Fallback auf HTTP/1.1 durch.
 
@@ -52,11 +52,11 @@ Alle wichtigen Browser haben HTTP/2-Unterstützung in ihren aktuellen Versionen 
 |Opera| 32|
 |Safari| 9|
 
-##<a name="enabling-http2-support-in-azure-cdn"></a>Aktivieren von HTTP/2-Unterstützung in Azure CDN
+## <a name="enabling-http2-support-in-azure-cdn"></a>Aktivieren von HTTP/2-Unterstützung in Azure CDN
 
 HTTP/2-Unterstützung ist derzeit für Profile von **Azure CDN von Akamai** und **Azure CDN von Verizon** aktiv. Es ist keine weitere Aktion vom Kunden erforderlich.
 
-##<a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Sehen Sie sich [diese Demo von Akamai](https://http2.akamai.com/demo) an, um die Vorteile der HTTP/2 in Aktion sehen zu können.
 

@@ -1,27 +1,27 @@
 ---
 title: Erste Schritte mit SAP in Azure-VMs | Microsoft-Dokumentation
-description: "Hier erfahren Sie mehr über SAP-Lösungen auf virtuellen Windows-Computern in Microsoft Azure."
+description: Hier erfahren Sie mehr über SAP-Lösungen auf virtuellen Windows-Computern in Microsoft Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/02/2018
+ms.date: 03/05/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a0dcb941db5038b7c904c9eaa8599c5a1dc6e83
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 729fbd93566115499a6044f79a714232cdbc2f64
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -227,7 +227,7 @@ ms.lasthandoff: 01/03/2018
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
-[sap-pam]:https://support.sap.com/pam (SAP Product Availability Matrix)
+[sap-pam]:https://support.sap.com/pam (SAP-Produktverfügbarkeitsmatrix (PAM))
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -279,7 +279,7 @@ ms.lasthandoff: 01/03/2018
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
-[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md
+[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
 [virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
 [virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
@@ -298,7 +298,7 @@ Mit Microsoft Azure als für SAP geeignetem Cloudpartner können Sie Ihre gesch�
 
 Neben dem Hosten von SAP NetWeaver-Szenarien mit verschiedenen DBMS-Lösungen in Azure können Sie auch andere SAP-Workloadszenarien hosten, z.B. SAP BI unter Azure. Die Dokumentation zu SAP NetWeaver-Bereitstellungen auf nativen virtuellen Azure-Computern finden Sie im Abschnitt „SAP NetWeaver in Azure Virtual Machines“.
 
-Azure verfügt über native Angebote für Azure Virtual Machines, bei denen die Größe der CPU- und Arbeitsspeicherressourcen ständig erhöht wird, um SAP-Workloads mit Nutzung von SAP HANA abzudecken. Weitere Informationen zu diesem Thema finden Sie in den Dokumenten im Abschnitt „SAP HANA in Azure Virtual Machines“.
+Azure verfügt über native Angebote für Azure Virtual Machines, bei denen die Größe der CPU- und Arbeitsspeicherressourcen ständig erhöht wird, um SAP-Workloads mit Nutzung von SAP HANA abzudecken. Weitere Informationen zu diesem Bereich finden Sie in den Dokumenten im Abschnitt „SAP HANA in Azure Virtual Machines“.
 
 Die Einzigartigkeit von Azure für SAP HANA ist ein unvergleichliches Angebot, mit dem sich Azure von seinen Wettbewerbern absetzt. Um das Hosten von SAP-Szenarien mit SAP HANA zu ermöglichen, für die mehr Arbeitsspeicher- und CPU-Ressourcen benötigt werden, wird in Azure die Nutzung von dedizierter Bare-Metal-Hardware für Kunden angeboten. Sie kann zum Ausführen von SAP HANA-Bereitstellungen verwendet werden, für die bis zu 20 TB Arbeitsspeicher (60 TB bei horizontaler Hochskalierung) für S/4HANA oder andere SAP HANA-Workloads erforderlich sind. Mit dieser einzigartigen Azure-Lösung von SAP HANA in Azure (große Instanzen) können Sie SAP HANA auf der dedizierten Bare-Metal-Hardware mit der SAP-Anwendungsschicht oder Workload-Middleware-Ebene ausführen, die auf nativen Azure Virtual Machines gehostet wird. Diese Lösung wird in mehreren Dokumenten im Abschnitt „SAP HANA in Azure (große Instanzen)“ beschrieben.   
 
@@ -310,7 +310,7 @@ Durch das Hosten von SAP-Workloadszenarien in Azure können auch Anforderungen i
 ### <a name="overview-and-architecture-of-sap-hana-on-azure-large-instances"></a>Übersicht und Architektur von SAP HANA in Azure (große Instanzen)
 Titel: Übersicht und Architektur von SAP HANA in Azure (große Instanzen)
 
-Zusammenfassung: Dieses Handbuch zur Architektur und technischen Bereitstellung bietet Ihnen Informationen zur Bereitstellung von SAP auf dem neuen SAP HANA in Azure (große Instanzen). Das Handbuch ist keine umfassende Anleitung für die spezifische Einrichtung von SAP-Lösungen, sondern soll Ihnen nützliche Informationen für Ihre Erstbereitstellung und den laufenden Betrieb an die Hand geben. Verwenden Sie es nicht als Ersatz für die SAP-Dokumentation zur Installation von SAP HANA (oder für die zahlreichen SAP-Supporthinweise, die sich mit dem Thema befassen). Das Handbuch bietet Ihnen eine Übersicht und enthält zusätzliche Details zur Installation von SAP HANA in Azure (große Instanzen).
+Zusammenfassung: Dieses Handbuch zur Architektur und technischen Bereitstellung bietet Ihnen Informationen zur Bereitstellung von SAP auf dem neuen SAP HANA in Azure (große Instanzen). Das Handbuch ist keine umfassende Anleitung für die spezifische Einrichtung von SAP-Lösungen, sondern soll Ihnen nützliche Informationen für Ihre Erstbereitstellung und den laufenden Betrieb an die Hand geben. Verwenden Sie es nicht als Ersatz für die SAP-Dokumentation zur Installation von SAP HANA (oder für die zahlreichen SAP-Supporthinweise, die sich mit dem Bereich befassen). Das Handbuch bietet Ihnen eine Übersicht und enthält zusätzliche Details zur Installation von SAP HANA in Azure (große Instanzen).
 
 Aktualisiert: Oktober 2017
 
@@ -337,7 +337,7 @@ Aktualisiert: Juli 2017
 ### <a name="high-availability-and-disaster-recovery-of-sap-hana-on-azure-large-instances"></a>Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)
 Titel: Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)
 
-Zusammenfassung: Hochverfügbarkeit und Notfallwiederherstellung sind sehr wichtige Aspekte bei der Ausführung Ihrer unternehmenskritischen SAP HANA auf Azure-Servern (große Instanzen). Wichtig ist, dass Sie mit SAP, Ihrem Systemintegrator und/oder Microsoft zusammenarbeiten, um die richtige Strategie für hohe Verfügbarkeit/Notfallwiederherstellung zu bestimmen und umzusetzen. Dabei müssen wichtige Aspekte wie Recovery Point Objective (RPO) und Recovery Time Objective (RTO) für Ihre Umgebung berücksichtigt werden.  Dieses Dokument erläutert die Optionen, die Ihnen für die Aktivierung Ihrer bevorzugten Funktionen für hohe Verfügbarkeit und Notfallwiederherstellung zur Verfügung stehen.
+Zusammenfassung: Hochverfügbarkeit und Notfallwiederherstellung sind wichtige Aspekte bei der Ausführung Ihrer unternehmenskritischen Server mit SAP HANA in Azure (große Instanzen). Wichtig ist, dass Sie mit SAP, Ihrem Systemintegrator und/oder Microsoft zusammenarbeiten, um die richtige Strategie für hohe Verfügbarkeit/Notfallwiederherstellung zu bestimmen und umzusetzen. Dabei müssen wichtige Aspekte wie Recovery Point Objective (RPO) und Recovery Time Objective (RTO) für Ihre Umgebung berücksichtigt werden.  Dieses Dokument erläutert die Optionen, die Ihnen für die Aktivierung Ihrer bevorzugten Funktionen für hohe Verfügbarkeit und Notfallwiederherstellung zur Verfügung stehen.
 
 Aktualisiert: Oktober 2017
 

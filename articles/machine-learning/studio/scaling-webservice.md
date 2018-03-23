@@ -1,12 +1,12 @@
 ---
-title: "Erhöhen der Parallelität eines Azure Machine Learning-Webdiensts | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie die Parallelität eines Azure Machine Learning-Webdiensts durch Hinzufügen zusätzlicher Endpunkte erhöhen."
+title: Erhöhen der Parallelität eines Azure Machine Learning-Webdiensts | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die Parallelität eines Azure Machine Learning-Webdiensts durch Hinzufügen zusätzlicher Endpunkte erhöhen.
 services: machine-learning
-documentationcenter: 
-author: raymondlaghaeian
+documentationcenter: ''
+author: aashishb
 manager: srikants
 editor: cgronlun
-keywords: "Azure Machine Learning, Webdienste, Operationalisierung, Skalierung, Endpunkt, Parallelität"
+keywords: Azure Machine Learning, Webdienste, Operationalisierung, Skalierung, Endpunkt, Parallelität
 ms.assetid: c2c51d7f-fd2d-4f03-bc51-bf47e6969296
 ms.service: machine-learning
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: raymondl
-ms.openlocfilehash: 0d9c4b77ae16b5919a62f855c5b472708ba39004
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.author: aashishb
+ms.openlocfilehash: bec69a273a9996782376196b193686ab8cfe1eaa
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>Skalieren eines Azure Machine Learning-Webdiensts durch Hinzufügen zusätzlicher Endpunkte
 > [!NOTE]

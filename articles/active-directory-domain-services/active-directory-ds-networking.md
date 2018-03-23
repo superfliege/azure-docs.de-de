@@ -1,8 +1,8 @@
 ---
 title: 'Azure AD Domain Services: Netzwerkrichtlinien | Microsoft Docs'
-description: "Netzwerkaspekte für die Azure Active Directory Domain Services"
+description: Netzwerkaspekte für die Azure Active Directory Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: a6f0089f13de10ba8bc1f9a656a2d21f9c559047
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: eee7905db4faedef3217118e8d491e2cb019fa30
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Netzwerkaspekte für die Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Auswählen eines virtuellen Azure-Netzwerks
@@ -53,6 +53,7 @@ Die folgenden Richtlinien dienen Ihnen als Hilfe bei der Auswahl eines virtuelle
 * Wenden Sie auf das dedizierte Subnetz für Ihre verwaltete Domäne keine Netzwerksicherheitsgruppen an. Wenn Sie Netzwerksicherheitsgruppen auf das dedizierte Netzwerk anwenden müssen, stellen Sie sicher, dass Sie **keine Ports blockieren, die für den Dienst und zum Verwalten Ihrer Domäne benötigt werden**.
 * Schränken Sie die Anzahl verfügbarer IP-Adressen im dedizierten Subnetz für Ihre verwaltete Domäne nicht zu stark ein. Diese Einschränkung verhindert, dass der Dienst zwei Domänencontroller für Ihre verwaltete Domäne zur Verfügung stellt.
 * **Aktivieren Sie die Azure AD Domain Services nicht im Gatewaysubnetz** Ihres virtuellen Netzwerks.
+* Blockieren Sie nicht den ausgehenden Zugriff aus dem Subnetz, in dem Ihre verwaltete Domäne aktiviert ist.
 
 > [!WARNING]
 > Wenn Sie eine NSG einem Subnetz zuordnen, für das die Azure AD Domain Services aktiviert sind, kann es passieren, dass die Domäne von Microsoft nicht mehr gewartet und verwaltet werden kann. Darüber hinaus wird die Synchronisierung zwischen Ihrem Azure AD-Mandanten und der verwalteten Domäne beeinträchtigt. **Die Vereinbarung zum Servicelevel (SLA) gilt nicht für Bereitstellungen, bei denen eine NSG auf das Subnetz angewendet wurde, mit der das Aktualisieren und Verwalten Ihrer Domäne durch die Azure AD Domain Services blockiert wird.**
@@ -62,7 +63,7 @@ Die folgenden Richtlinien dienen Ihnen als Hilfe bei der Auswahl eines virtuelle
 ## <a name="ports-required-for-azure-ad-domain-services"></a>Erforderliche Ports für die Azure AD Domain Services
 Die folgenden Ports werden für Azure AD Domain Services benötigt, um Ihre verwaltete Domäne zu verwalten und zu warten. Stellen Sie sicher, dass diese Ports nicht für das Subnetz blockiert sind, in dem Sie Ihre verwaltete Domäne aktiviert haben.
 
-| Portnummer | Erforderlich | Zweck |
+| Portnummer | Erforderlich? | Zweck |
 | --- | --- | --- |
 | 443 | Erforderlich |Synchronisierung mit Ihrem Azure AD-Mandanten |
 | 5986 | Erforderlich | Verwaltung Ihrer Domäne |
@@ -89,6 +90,8 @@ Die folgenden Ports werden für Azure AD Domain Services benötigt, um Ihre verw
 * Dient zum Aktivieren des sicheren LDAP-Zugriffs auf Ihre verwaltete Domäne über das Internet.
 * Das Öffnen dieses Ports über Ihre NSG ist optional. Öffnen Sie den Port nur, wenn Sie den sicheren LDAP-Zugriff über das Internet aktiviert haben.
 * Der eingehende Zugriff auf diesen Port kann auf die Quell-IP-Adressen beschränkt werden, über die Sie voraussichtlich eine sichere LDAP-Verbindung herstellen.
+
+**Ausgehender Zugriff** AAD Domain Services benötigt ausgehenden Zugriff auf verschiedene andere Azure-Dienste, um Ihre verwaltete Domäne zu verwalten, zu sichern und zu überwachen. Blockieren Sie nicht den ausgehenden Zugriff aus dem dedizierten Subnetz, in dem Ihre verwaltete Domäne aktiviert ist.
 
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen

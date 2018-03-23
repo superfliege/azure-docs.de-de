@@ -1,26 +1,26 @@
 ---
-title: "Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation"
-description: "Erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit."
+title: Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation
+description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 01/08/2018
+ms.date: 03/06/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 21511b37eba2cd2e87d8720f3e9cfe453b50d88c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 409bb14635afbfc6d31efd853837677c74851b41
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -84,8 +84,8 @@ Ja. Die folgenden Informationen sind für SSPR (Self-Service Password Reset, sel
 ### <a name="is-password-reset-available-for-guest-users-in-a-just-in-time-jit-or-viral-tenant-who-accepted-invitations-with-a-work-or-school-email-address-but-who-didnt-have-a-pre-existing-azure-ad-account"></a>Ist die Kennwortrücksetzung bei Gastbenutzern eines JIT- (Just-In-Time) oder „viralen“ Mandanten verfügbar, der Einladungen mit einer Geschäfts-, Schul- oder Uni-E-Mail-Adresse akzeptiert, jedoch zuvor über kein Azure AD-Konto verfügt hat?
 Ja. Es kann eine E-Mail für die Kennwortrücksetzung gesendet werden, über die ein Benutzer sein Kennwort im JIT-Mandanten zurücksetzen kann.
 
-### <a name="does-microsoft-dynamics-crm-provide-online-support-for-azure-ad-b2b-collaboration"></a>Bietet Microsoft Dynamics CRM Onlineunterstützung für die Azure AD B2B-Zusammenarbeit?
-Derzeit bietet Microsoft Dynamics CRM keine Onlineunterstützung für die Azure AD B2B-Zusammenarbeit. Allerdings ist geplant, diese Funktion in Zukunft einzuführen.
+### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Bietet Microsoft Dynamics 365 Onlineunterstützung für die Azure AD B2B-Zusammenarbeit?
+Ja, Dynamics 365 (online) bietet Unterstützung für die Azure AD B2B-Zusammenarbeit. Weitere Informationen finden Sie im Dynamics 365-Artikel [Laden Sie Benutzer zu Dynamics 365 mit Azure Active Directory B2B Zusammenarbeit ein](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Wie lang ist ein anfängliches Kennwort für einen neu erstellten B2B-Zusammenarbeitsbenutzer gültig?
 Azure AD verfügt über einen festen Satz von Anforderungen an Zeichen, Kennwortstärke und Kontosperre, die gleichermaßen für alle Azure AD-Cloudbenutzerkonten gelten. Cloudbenutzerkonten sind Konten, die nicht mit einem anderen Identitätsanbieter verbunden sind, z.B. 

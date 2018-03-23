@@ -1,26 +1,19 @@
 ---
-title: "Abrufen von Werten zum Authentifizieren einer App – Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Erstellen Sie einen Dienstprinzipalnamen für den Zugriff auf SQL-Datenbank aus dem Code."
+title: Abrufen von Werten zum Authentifizieren einer App – Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Erstellen Sie einen Dienstprinzipalnamen für den Zugriff auf SQL-Datenbank aus dem Code.
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: b43e43bb-6660-49e6-b069-abde97eb5770
 ms.service: sql-database
 ms.custom: develop apps
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 09/30/2016
 ms.author: sstein
-ms.openlocfilehash: e76144bcb65da992c6d723d7333b4db8aa1ca488
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: e907edc98228ecab645e63f5e38094e3a04812de
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Abrufen der erforderlichen Werte aus dem Code zum Authentifizieren einer Anwendung für den Zugriff auf die SQL-Datenbank
 Zum Erstellen und Verwalten der SQL-Datenbank über den Code müssen Sie Ihre App in der Azure Active Directory-Domäne (AAD) in dem Abonnement registrieren, in dem die Azure-Ressourcen erstellt wurden.
@@ -71,7 +64,7 @@ Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung u
 
 
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Erstellen einer SQL-Datenbank mit C#](sql-database-get-started-csharp.md)
 * [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
 

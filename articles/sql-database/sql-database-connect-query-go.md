@@ -1,25 +1,21 @@
 ---
 title: Abfragen von Azure SQL-Datenbank mithilfe von Go | Microsoft-Dokumentation
-description: "Erstellen Sie unter Verwendung von Go ein Programm, das eine Verbindung mit einer Azure SQL-Datenbank herstellt, und verwenden Sie Transact-SQL-Anweisungen zum Abfragen und Ändern von Daten."
+description: Erstellen Sie unter Verwendung von Go ein Programm, das eine Verbindung mit einer Azure SQL-Datenbank herstellt, und verwenden Sie Transact-SQL-Anweisungen zum Abfragen und Ändern von Daten.
 services: sql-database
-documentationcenter: 
 author: David-Engel
 manager: craigg
-editor: MightyPen
-ms.assetid: 
+ms.reviewer: MightyPen
 ms.service: sql-database
 ms.custom: mvc,develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-daveng
-ms.openlocfilehash: 248f4d0b4b54ce2a2ca005379a590d895e9b4b3e
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: e479b0445e0055b77773554bb5b725cb04498ba2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-go-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von Go
 

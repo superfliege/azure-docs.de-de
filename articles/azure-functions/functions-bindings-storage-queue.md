@@ -1,12 +1,12 @@
 ---
-title: "Azure Queue Storage-Bindungen für Azure Functions"
+title: Azure Queue Storage-Bindungen für Azure Functions
 description: Hier erfahren Sie, wie Sie den Azure Queue Storage-Trigger und die entsprechende Ausgabebindung in Azure Functions verwenden.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
 ms.service: functions
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: e2f9c75ba6e43f93aeb742b9eceebf846ec85cbf
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b139fbadb03ae2893331e763bc49b249c0dd05d7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue Storage-Bindungen für Azure Functions
 
@@ -58,7 +58,7 @@ public static class QueueFunctions
 
 ### <a name="trigger---c-script-example"></a>Trigger: C#-Skriptbeispiel
 
-Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei vom Typ *function.json* sowie Code vom Typ [C#-Skript (.csx)](functions-reference-csharp.md), in dem die Bindung verwendet wird. Die Funktion fragt die Warteschlange `myqueue-items` ab und schreibt ein Protokoll, sobald ein Warteschlangenelement verarbeitet wird.
+Das folgende Beispiel enthält eine Warteschlangentrigger-Bindung in einer Datei vom Typ *function.json* sowie Code vom Typ [C#-Skript (.csx)](functions-reference-csharp.md), in dem die Bindung verwendet wird. Die Funktion fragt die Warteschlange `myqueue-items` ab und schreibt ein Protokoll, sobald ein Warteschlangenelement verarbeitet wird.
 
 Die Datei *function.json* sieht wie folgt aus:
 
@@ -112,7 +112,7 @@ Im Abschnitt [Verwendung](#trigger---usage) finden Sie weitere Informationen zu 
 
 ### <a name="trigger---javascript-example"></a>Trigger: JavaScript-Beispiel
 
-Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion fragt die Warteschlange `myqueue-items` ab und schreibt ein Protokoll, sobald ein Warteschlangenelement verarbeitet wird.
+Das folgende Beispiel enthält eine Warteschlangentrigger-Bindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion fragt die Warteschlange `myqueue-items` ab und schreibt ein Protokoll, sobald ein Warteschlangenelement verarbeitet wird.
 
 Die Datei *function.json* sieht wie folgt aus:
 
@@ -223,9 +223,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="trigger---usage"></a>Trigger: Verwendung
  
-Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `Stream paramName`, um auf die Blobdaten zuzugreifen. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Eine Bindung kann mit folgenden Typen erstellt werden:
+Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `string paramName`, um auf die Nachrichtendaten zuzugreifen. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Eine Bindung kann mit folgenden Typen erstellt werden:
 
-* POCO-Objekt: Die Functions-Laufzeit deserialisiert eine JSON-Nutzlast im POCO-Objekt. 
+* Objekt – Die Functions-Runtime deserialisiert eine JSON-Nutzlast in eine Instanz einer beliebigen Klasse, die in Ihrem Code definiert ist. 
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -302,7 +302,7 @@ public static class QueueFunctions
 
 ### <a name="output---c-script-example"></a>Ausgabe: C#-Skriptbeispiel
 
-Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei vom Typ *function.json* sowie Code vom Typ [C#-Skript (.csx)](functions-reference-csharp.md), in dem die Bindung verwendet wird. Die Funktion erstellt ein Warteschlangenelement mit einer POCO-Nutzlast für jede empfangene HTTP-Anforderung.
+Das folgende Beispiel enthält eine HTTP-Triggerbindung in einer Datei vom Typ *function.json* sowie Code vom Typ [C#-Skript (.csx)](functions-reference-csharp.md), in dem die Bindung verwendet wird. Die Funktion erstellt ein Warteschlangenelement mit einer **CustomQueueMessage**-Objektnutzlast für jede empfangene HTTP-Anforderung.
 
 Die Datei *function.json* sieht wie folgt aus:
 
@@ -353,17 +353,17 @@ Mithilfe eines Parameters vom Typ `ICollector` oder `IAsyncCollector` können me
 ```cs
 public static void Run(
     CustomQueueMessage input, 
-    ICollector<CustomQueueMessage> myQueueItem, 
+    ICollector<CustomQueueMessage> myQueueItems, 
     TraceWriter log)
 {
-    myQueueItem.Add(input);
-    myQueueItem.Add(new CustomQueueMessage { PersonName = "You", Title = "None" });
+    myQueueItems.Add(input);
+    myQueueItems.Add(new CustomQueueMessage { PersonName = "You", Title = "None" });
 }
 ```
 
 ### <a name="output---javascript-example"></a>Ausgabe: JavaScript-Beispiel
 
-Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion erstellt ein Warteschlangenelement für jede empfangene HTTP-Anforderung.
+Das folgende Beispiel enthält eine HTTP-Triggerbindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion erstellt ein Warteschlangenelement für jede empfangene HTTP-Anforderung.
 
 Die Datei *function.json* sieht wie folgt aus:
 
@@ -459,7 +459,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
  
 Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `out T paramName`, um eine einzelne Warteschlangennachricht zu schreiben. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Anstelle eines Parameters vom Typ `out` können Sie den Rückgabetyp der Methode verwenden, und `T` kann einer der folgenden Typen sein:
 
-* Ein als JSON serialisierbares POCO
+* Ein Objekt, das als JSON serialisierbar ist
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 

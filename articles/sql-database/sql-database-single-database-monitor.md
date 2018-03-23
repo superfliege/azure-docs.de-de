@@ -1,12 +1,12 @@
 ---
-title: "Überwachen der Datenbankleistung in Azure SQL-Datenbank | Microsoft Docs"
-description: "Lernen Sie die Optionen zum Überwachen Ihrer Datenbank mithilfe von Azure-Tools und dynamischen Verwaltungssichten kennen."
-keywords: "Datenbanküberwachung, Clouddatenbankleistung"
+title: Überwachen der Datenbankleistung in Azure SQL-Datenbank | Microsoft Docs
+description: Lernen Sie die Optionen zum Überwachen Ihrer Datenbank mithilfe von Azure-Tools und dynamischen Verwaltungssichten kennen.
+keywords: Datenbanküberwachung, Clouddatenbankleistung
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: CarlRabeler
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: a2e47475-c955-4a8d-a65c-cbef9a6d9b9f
 ms.service: sql-database
 ms.custom: monitor & tune
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: carlrab
-ms.openlocfilehash: 2286843317230b8167b315b1e8e413e7571da4fe
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: f6b370db3363180017c6561d7bd3a6d6b40d03ab
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Überwachen der Datenbankleistung mithilfe von Azure SQL-Datenbank
 Die Überwachung der Leistung einer SQL-Datenbank in Azure beginnt mit der Überwachung der Ressourcennutzung relativ zur gewählten Datenbankleistung. Dank der Überwachung können Sie ermitteln, ob Ihre Datenbank über Zusatzkapazität verfügt, oder ob Probleme infolge ausgeschöpfter Kapazität auftreten. Anschließend können Sie entscheiden, ob die Leistungsstufe und [Dienstebene](sql-database-service-tiers.md) Ihrer Datenbank angepasst werden müssen. Sie können die Datenbank mithilfe grafischer Tools im [Azure-Portal](https://portal.azure.com) oder mithilfe [dynamischer Verwaltungssichten](https://msdn.microsoft.com/library/ms188754.aspx) in SQL überwachen.
@@ -37,7 +37,7 @@ Im [Azure-Portal](https://portal.azure.com/)können Sie die Nutzung einer Einzel
 * E/A-Prozentsatz für Daten
 * Datenbankgröße als Prozentsatz
 
-Nachdem Sie diese Metriken hinzugefügt haben, können Sie sie im Diagramm **Überwachung** mit weiteren Details im Fenster **Metrik** anzeigen. Alle vier Metriken geben die durchschnittliche prozentuale Nutzung relativ zur **DTU** der Datenbank an. Ausführliche Informationen zu DTUs finden Sie im Artikel [Dienstebenen](sql-database-service-tiers.md) .
+Nachdem Sie diese Metriken hinzugefügt haben, können Sie sie im Diagramm **Überwachung** mit weiteren Informationen im Fenster **Metrik** anzeigen. Alle vier Metriken geben die durchschnittliche prozentuale Nutzung relativ zur **DTU** der Datenbank an. Ausführliche Informationen zu DTUs finden Sie im Artikel [Dienstebenen](sql-database-service-tiers.md) .
 
 ![Tarifbezogenes Überwachen der Datenbankleistung.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 

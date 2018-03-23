@@ -1,25 +1,19 @@
 ---
-title: "Failovergruppen und aktive Georeplikation – Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Verwenden von automatischen Failovergruppen mit aktiver Georeplikation und Aktivieren von automatischem Failover bei Ausfällen"
+title: Failovergruppen und aktive Georeplikation – Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Verwenden von automatischen Failovergruppen mit aktiver Georeplikation und Aktivieren von automatischem Failover bei Ausfällen
 services: sql-database
-documentationcenter: na
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: 2a29f657-82fb-4283-9a83-e14a144bfd93
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
 ms.date: 10/11/2017
 ms.author: sashan
-ms.openlocfilehash: 7d731865ae8da9e1ae9e9f11eef814b86fc10c64
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 45ddc4070e2162715eefab21841d75f1fa2a29e5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Übersicht: Failovergruppen und aktive Georeplikation
 Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenbanken am gleichen oder an verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen für Abfragen und Failover zur Verfügung, wenn ein Rechenzentrum ausgefallen oder keine Verbindung mit der primären Datenbank möglich ist. Das Failover muss durch die Anwendung des Benutzers manuell eingeleitet werden. Nach einem Failover hat die neue primäre Datenbank einen anderen Verbindungsendpunkt. 

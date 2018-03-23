@@ -1,18 +1,20 @@
 ---
-title: "Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie bei Auslösung einer Azure-Warnung ein Runbook auslösen."
+title: Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks
+description: Es wird beschrieben, wie Sie bei Auslösung einer Azure-Warnung ein Runbook auslösen.
 services: automation
-keywords: 
+ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/11/2018
+ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 9ea51a85110bb8169dce0a445549e2590c51207e
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: e1fc357e654aa60b94944a93118431b944898bff
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks
 
@@ -27,7 +29,7 @@ Sie können Automation-Runbooks mit drei Warnungstypen verwenden:
 
 Wenn eine Warnung ein Runbook aufruft, erfolgt der eigentliche Aufruf in Form einer HTTP POST-Anforderung an den Webhook. Der Text der POST-Anforderung enthält ein JSON-formatiertes Objekt, das nützliche Eigenschaften im Zusammenhang mit der Warnung enthält. In der folgenden Tabelle sind Links zu den Nutzlastschemas der einzelnen Warnungstypen angegeben:
 
-|Warnung  |Beschreibung|Nutzlast und Schema  |
+|Warnung  |BESCHREIBUNG|Nutzlast und Schema  |
 |---------|---------|---------|
 |[Klassische Metrikwarnung](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |Sendet eine Benachrichtigung, wenn eine beliebige Metrik auf Plattformebene eine bestimmte Bedingung erfüllt. Beispiel: Der Wert für **CPU in %** auf einer VM liegt seit fünf Minuten über dem Wert **90**.| [Nutzlastschema vom Typ „Klassenmetrikwarnung“](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
 |[Aktivitätsprotokollwarnung](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Sendet eine Benachrichtigung, wenn ein beliebiges neues Ereignis im Azure-Aktivitätsprotokoll bestimmte Bedingungen erfüllt. Beispiel: Wenn ein `Delete VM`-Vorgang in **myProductionResourceGroup** auftritt oder wenn ein neues Azure Service Health-Ereignis mit dem Status **Aktiv** angezeigt wird.| [Nutzlastschema vom Typ „Aktivitätsprotokollwarnung“](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)        |

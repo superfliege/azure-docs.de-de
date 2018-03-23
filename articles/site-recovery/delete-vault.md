@@ -1,24 +1,19 @@
 ---
-title: "Löschen eines Site Recovery-Tresors"
-description: "Hier wird anhand des Site Recovery-Szenarios erläutert, wie Sie einen Azure Site Recovery-Tresor löschen."
+title: Löschen eines Site Recovery-Tresors
+description: Hier wird anhand des Site Recovery-Szenarios erläutert, wie Sie einen Azure Site Recovery-Tresor löschen.
 service: site-recovery
-documentationcenter: 
 author: rajani-janaki-ram
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 02/22/2018
+ms.date: 03/05/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 4cb5c387319b9659b16f0c98dc38cb79d72987e2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 89ab1e7c8b2fa0f4014ecfa0e677b398e601e6fa
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="delete-a-site-recovery-vault"></a>Löschen eines Site Recovery-Tresors
 Abhängigkeiten können das Löschen eines Azure Site Recovery-Tresors verhindern. Die auszuführenden Aktionen variieren basierend auf dem Site Recovery-Szenario: VMware zu Azure, Hyper-V (mit und ohne System Center Virtual Machine Manager) zu Azure und Azure Backup. Informationen zum Löschen eines in Azure Backup verwendeten Tresors finden Sie unter [Löschen eines Azure Backup-Tresors](../backup/backup-azure-delete-vault.md).
@@ -32,11 +27,11 @@ Befolgen Sie die empfohlenen Schritte für Ihr Szenario, um den Tresor zu lösch
 
 1. Löschen Sie alle geschützten virtuellen Computer anhand der Schritte unter [Deaktivieren des Schutzes für eine VMware-VM oder einen physischen Server](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure).
 
-2. Löschen Sie alle Replikationsrichtlinien anhand der Schritte unter [Löschen einer Replikationsrichtlinie](site-recovery-setup-replication-settings-vmware.md##delete-a-replication-policy).
+2. Löschen Sie alle Replikationsrichtlinien anhand der Schritte unter [Löschen einer Replikationsrichtlinie](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy).
 
-3. Löschen Sie Verweise auf vCenter anhand der Schritte unter [Löschen eines vCenters in Azure Site Recovery](site-recovery-vmware-to-azure-manage-vCenter.md##delete-a-vcenter-in-azure-site-recovery).
+3. Löschen Sie Verweise auf vCenter anhand der Schritte unter [Manage VMware vCenter servers](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) (Verwalten von VMware vCenter-Servern).
 
-4. Löschen Sie den Konfigurationsserver anhand der Schritte unter [Außerbetriebnahme eines Konfigurationsservers](site-recovery-vmware-to-azure-manage-configuration-server.md##delete-or-unregister-a-configuration-server).
+4. Löschen Sie den Konfigurationsserver anhand der Schritte unter [Außerbetriebnahme eines Konfigurationsservers](vmware-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server).
 
 5. Löschen Sie den Tresor.
 

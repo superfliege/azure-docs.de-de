@@ -1,9 +1,9 @@
 ---
 title: 'Azure AD Connect: Passthrough-Authentifizierung - Smart Lockout | Microsoft-Dokumentation'
-description: "In diesem Artikel wird beschrieben, wie die Azure Active Directory-Passthrough-Authentifizierung (Azure AD) Ihre lokalen Konten vor Brute-Force-Angriffen auf Ihre Kennwörter in der Cloud schützt."
+description: In diesem Artikel wird beschrieben, wie die Azure Active Directory-Passthrough-Authentifizierung (Azure AD) Ihre lokalen Konten vor Brute-Force-Angriffen auf Ihre Kennwörter in der Cloud schützt.
 services: active-directory
-keywords: "Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden"
-documentationcenter: 
+keywords: Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: fc46fe1d68538757ba5a8c5aa1acb4b51f8a171b
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 9477d47824213d7ea15bcf6c6b615a220bae2e48
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory-Passthrough-Authentifizierung: Smart Lockout
 
 ## <a name="overview"></a>Übersicht
 
-Active Directory (Azure AD) bietet Schutz gegen Brute-Force-Angriffe auf Kennwörter und verhindert, dass echte Benutzer aus ihrer Office 365-Anwendung oder aus SaaS-Anwendungen ausgeschlossen werden. Diese Funktion namens *Smart Lockout* wird unterstützt, wenn die Passthrough-Authentifizierung als Anmeldemethode verwendet wird. Smart Lockout ist standardmäßig für alle Mandanten aktiviert und schützt Ihre Benutzerkonten durchgängig.
+Active Directory (Azure AD) bietet Schutz gegen Brute-Force-Angriffe auf Kennwörter und verhindert, dass echte Benutzer aus ihrer Office 365-Anwendung oder aus SaaS-Anwendungen ausgeschlossen werden. Diese Funktion namens *Smart Lockout* wird unterstützt, wenn die Passthrough-Authentifizierung als Anmeldemethode verwendet wird. Smart Lockout ist standardmäßig für alle Mandanten aktiviert, nicht für nur Mandanten, die Passthrough-Authentifizierung verwenden, und es schützt Ihre Benutzerkonten durchgängig.
 
 Smart Lockout verfolgt fehlgeschlagene Anmeldeversuche nach. Nach einem bestimmten *Sperrschwellenwert* lässt Smart Lockout eine *Sperrdauer* wirksam werden. Smart Lockout weist während der Sperrdauer jeden Anmeldeversuch des Angreifers zurück. Wird der Angriff fortgesetzt, bewirken weitere gescheiterte Anmeldeversuche nach Ablauf der Sperrdauer längere Sperrdauern.
 

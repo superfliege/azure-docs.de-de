@@ -2,10 +2,10 @@
 title: Delegieren von Benutzerregistrierung und Produktabonnierung
 description: Erfahren Sie, wie Sie die Benutzerregistrierung und Produktabonnements an einen Dritten in Azure API Management delegieren.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: antonba
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8b7ad5ee-a873-4966-a400-7e508bbbe158
 ms.service: api-management
 ms.workload: mobile
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: fc8c5774eb616c33c00ecebeacd31e2a07b36e0c
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
 Mit der Delegierung können Sie Anmeldung, Registrierung und Produktabonnierung von Entwicklern mit Ihrer vorhandenen Website umsetzen, anstatt die integrierte Funktion im Entwicklerportal zu verwenden. Auf diese Weise besitzt die Website die Benutzerdaten und kann die Prüfung dieser Schritte auf selbst definierte Weise durchführen.
@@ -44,7 +44,7 @@ Anschließend müssen Sie den **Delegierungsendpunkt**einrichten. Dieser Endpunk
 
 1. Empfang einer Anforderung in der folgenden Form:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&amp;returnUrl={URL der Herkunftsseite}&amp;salt={Zeichenfolge}&amp;sig={Zeichenfolge}*
+   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}*
    > 
    > 
    
@@ -70,7 +70,7 @@ Anschließend müssen Sie den **Delegierungsendpunkt**einrichten. Dieser Endpunk
    * [Fordern Sie ein Token für die einmalige Anmeldung an (SSO)] ; verwenden Sie hierzu die REST-API von API Management
    * Hängen Sie einen returnUrl-Abfrageparameter an die SSO-URL an, die Sie aus dem obigen API-Aufruf erhalten haben:
      
-     > beispielsweise „https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url“ 
+     > Beispiel: https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
      > 
      > 
    * Leiten Sie den Benutzer an die oben generierte URL um.
@@ -101,7 +101,7 @@ Konfigurieren Sie anschließend die folgenden Aktionen für den Delegierungsendp
 
 1. Empfang einer Anforderung in der folgenden Form:
    
-   > *http://www.Ihre Website.com/apimdelegation?operation={Operation}&amp;productId={zu abonnierendes Produkt}&amp;userId={Benutzer}&amp;salt={Zeichenfolge}&amp;sig={Zeichenfolge}*
+   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
    > 
    > 
    

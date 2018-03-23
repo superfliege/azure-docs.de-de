@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration mit SCC LifeCycle | Microsoft Docs'
-description: "Hier erfahren Sie, wie Sie SCC LifeCycle mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen."
+description: Hier erfahren Sie, wie Sie SCC LifeCycle mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen.
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.openlocfilehash: 943698311d10b479879fd92d2482d827650e2b0c
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Tutorial: Azure Active Directory-Integration mit SCC LifeCycle
 In diesem Tutorial wird die Integration von Azure und  SCC LifeCycle erläutert.  
@@ -75,7 +75,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei SCC LifeCycle anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-scc-lifecycle-tutorial/IC794123.png "Einmaliges Anmelden konfigurieren")
-3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer SCC LifeCycle-Anwendung verwendete URL im Format *https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx* ein, und klicken Sie dann auf **Weiter**.
+3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer SCC LifeCycle-Anwendung verwendete URL im Format „*https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx*“ ein, und klicken Sie dann auf **Weiter**.
    
     ![App-URL konfigurieren](./media/active-directory-saas-scc-lifecycle-tutorial/IC794124.png "App-URL konfigurieren")
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für SCC LifeCycle** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.

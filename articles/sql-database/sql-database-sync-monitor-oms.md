@@ -1,6 +1,6 @@
 ---
-title: "Überwachen der Azure SQL-Datensynchronisierung mit OMS Log Analytics | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie die Azure SQL-Datensynchronisierung mithilfe von OMS Log Analytics überwachen."
+title: Überwachen der Azure SQL-Datensynchronisierung mit OMS Log Analytics | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die Azure SQL-Datensynchronisierung mithilfe von OMS Log Analytics überwachen.
 services: sql-database
 ms.date: 11/07/2017
 ms.topic: article
@@ -8,11 +8,12 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 8683b3aec569f210529c1188cbbf514f7956b340
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: data-sync
+ms.openlocfilehash: 423614227b16ad6cfa6dadfab1c5f2b93c5bbe62
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>Überwachen der SQL-Datensynchronisierung (Vorschau) mit OMS Log Analytics 
 
@@ -92,7 +93,7 @@ Weitere Informationen zum Erstellen eines Runbooks finden Sie unter [Mein erstes
 
     2.  Informationen zur Synchronisierungsgruppe
 
-    3.  OMS-Informationen. Diese Informationen finden Sie unter „OMS-Portal“ > „Einstellungen“ > „Verbundene Quellen“. Weitere Informationen zum Senden von Daten an Log Analytics finden Sie unter [Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Public Preview)](../log-analytics/log-analytics-data-collector-api.md).
+    3.  OMS-Informationen. Diese Informationen finden Sie unter „OMS-Portal“ > „Einstellungen“ > „Verbundene Quellen“. Weitere Informationen zum Senden von Daten an Log Analytics finden Sie unter [Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Vorschauversion)](../log-analytics/log-analytics-data-collector-api.md).
 
 11. Führen Sie das Runbook im Testbereich aus. Vergewissern Sie sich, dass es erfolgreich ausgeführt wurde.
 

@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über das Erstellen und Bereitstellen eines Angebots im Marketplace | Microsoft Docs"
-description: "Beschreibung der Schritte, die ausgeführt werden müssen, um sich als zugelassener Microsoft-Entwickler zu qualifizieren und Angebote für VM-Images, Vorlagen, Datendienste oder Entwicklerdienste im Azure Marketplace zu erstellen und bereitzustellen"
+title: Übersicht über das Erstellen und Bereitstellen eines Angebots im Marketplace | Microsoft Docs
+description: Beschreibung der Schritte, die ausgeführt werden müssen, um sich als zugelassener Microsoft-Entwickler zu qualifizieren und Angebote für VM-Images, Vorlagen, Datendienste oder Entwicklerdienste im Azure Marketplace zu erstellen und bereitzustellen
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 5343bd26-c6e4-4589-85b7-4a2c00bba8ab
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
-ms.author: hascipio
-ms.openlocfilehash: 82580fbab68eab28a2027cd277213f1fb2a76e07
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.author: mbaldwin
+ms.openlocfilehash: 02df78de48c8466f3488ef5f8346e1852b4e3ded
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 > [!NOTE]
 > Diese Dokumentation ist nicht mehr aktuell und ist nicht genau. Wechseln Sie stattdessen zum [Azure Marketplace-Verkäuferhandbuch](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide), um einen Leitfaden zur Veröffentlichung eines Angebots im Azure Marketplace zu erhalten.

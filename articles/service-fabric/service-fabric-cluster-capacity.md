@@ -1,11 +1,11 @@
 ---
-title: "Planen der Service Fabric-Clusterkapazität | Microsoft Docs"
-description: "Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster. Knotentypen, Vorgänge, Dauerhaftigkeit und Zuverlässigkeitsstufen"
+title: Planen der Service Fabric-Clusterkapazität | Microsoft Docs
+description: Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster. Knotentypen, Vorgänge, Dauerhaftigkeit und Zuverlässigkeitsstufen
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: 8e2fceaf7e8a0d6c177d3122bd07de5b8c11f295
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: ad5f396cd71eb0136fe683bbccb9360291be2d59
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
@@ -88,10 +88,11 @@ Sie können die Dauerhaftigkeitsstufe für jeden Ihrer Knotentypen auswählen. F
  
 1. Für Bereitstellungen in Ihrer VM-Skalierungsgruppe (und anderen verwandten Azure-Ressourcen) kann eine Verzögerung bzw. ein Timeout auftreten, oder sie können durch Probleme in Ihrem Cluster oder auf der Infrastrukturebene vollständig blockiert werden. 
 2. Erhöht die Anzahl der [Lebenszyklusereignisse für Replikate](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle ) (z.B. Tausch des primären Replikats) aufgrund von automatischen Knotendeaktivierungen während Azure-Infrastrukturvorgängen.
+3. Stellt Knoten für bestimmte Zeiträume außer Dienst, während Updates der Azure-Plattformsoftware oder Aktivitäten zur Hardwarewartung durchgeführt werden. Es kann sein, dass Knoten während dieser Aktivitäten den Status „Wird deaktiviert“ oder „Deaktiviert“ aufweisen. Hierdurch reduziert sich die Kapazität Ihres Clusters vorübergehend, aber es sollten sich keine Auswirkungen auf die Verfügbarkeit Ihres Clusters oder Ihrer Anwendungen ergeben.
 
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>Empfehlungen, wann die Dauerhaftigkeitsstufe „Silber“ oder „Gold“ verwendet werden soll
 
-Verwenden Sie die Silber- oder Gold-Dauerhaftigkeit für alle Knotentypen, die zustandsbehaftete Dienste hosten, für die Sie eine häufige horizontale Herunterskalierung (Reduzierung der VM-Instanzanzahl) erwarten und Sie bevorzugen, dass sich Bereitstellungsvorgänge zugunsten einer Vereinfachung dieser Herunterskalierungsvorgänge verzögern. Die Szenarien mit horizontaler Hochskalierung (Hinzufügen von virtuellen Computerinstanzen) haben keinen Einfluss auf Ihre Wahl der Dauerhaftigkeitsstufe, dies ist nur bei horizontaler Hochskalierung der Fall.
+Verwenden Sie die Silber- oder Gold-Dauerhaftigkeit für alle Knotentypen, die zustandsbehaftete Dienste hosten, für die Sie eine häufige horizontale Herunterskalierung (Reduzierung der VM-Instanzanzahl) erwarten und für die Sie bevorzugen, dass sich – zugunsten einer Vereinfachung dieser Herunterskalierungsvorgänge – Bereitstellungsvorgänge verzögern und die Kapazität reduziert wird. Die Szenarien mit horizontaler Hochskalierung (Hinzufügen von virtuellen Computerinstanzen) haben keinen Einfluss auf Ihre Wahl der Dauerhaftigkeitsstufe, dies ist nur bei horizontaler Hochskalierung der Fall.
 
 ### <a name="changing-durability-levels"></a>Ändern von Dauerhaftigkeitsstufen
 - Knotentypen mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ können nicht auf „Bronze“ herabgestuft werden.

@@ -1,25 +1,20 @@
 ---
 title: Azure SQL-Datenbankmetriken und Diagnoseprotokollierung | Microsoft Docs
-description: "Hier erhalten Sie Informationen zum Konfigurieren von Azure SQL-Datenbank zum Speichern von Statistiken für Ressourcenverbrauch, Konnektivität und Abfrageausführung."
+description: Hier erhalten Sie Informationen zum Konfigurieren von Azure SQL-Datenbank zum Speichern von Statistiken für Ressourcenverbrauch, Konnektivität und Abfrageausführung.
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: veljko-msft
-manager: jhubbard
-editor: 
-ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2017
+ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: 2d0a2d5966c8c99e7d71d97d4819d58a1474c2fe
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 11ffb1a6260fca52ccb173cb842c1a2d5adbf139
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
 Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
@@ -52,8 +47,8 @@ Sie können eine neue Azure-Ressource bereitstellen oder eine vorhandene Ressour
 - [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Enthält Informationen zu den Laufzeitstatistiken der Abfrage, z.B. CPU-Nutzung und Abfragedauer.
 - [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): Enthält Informationen zu den Wartestatistiken der Abfrage, die angibt, worauf Ihre Abfragen warten, z.B. CPU, Protokolle und Sperrungen.
 - [Errors](sql-database-metrics-diag-logging.md#errors-dataset): Enthält Informationen zu den SQL-Fehlern, die für diese Datenbank aufgetreten sind.
-- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-waits-dataset): Enthält Informationen dazu, wie lange eine Datenbank jeweils auf die verschiedenen Wartezeittypen gewartet hat.
-- [Timeouts](sql-database-metrics-diag-logging.md#timeouts-dataset): Enthält Informationen zu Timeouts, die für eine Datenbank aufgetreten sind.
+- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Enthält Informationen dazu, wie lange eine Datenbank jeweils auf die verschiedenen Wartezeittypen gewartet hat.
+- [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset): Enthält Informationen zu Timeouts, die für eine Datenbank aufgetreten sind.
 - [Blockings](sql-database-metrics-diag-logging.md#blockings-dataset): Enthält Informationen zu blockierenden Ereignissen, die für eine Datenbank aufgetreten sind.
 - [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Enthält Intelligent Insights. [Weitere Informationen zu Intelligent Insights](sql-database-intelligent-insights.md).
 
@@ -257,7 +252,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="download-metrics-and-logs-from-storage"></a>Herunterladen von Metriken und Protokollen aus Storage
 
-Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs).
+Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).
 
 ## <a name="metrics-and-logs-available"></a>Verfügbare Metriken und Protokolle
 
@@ -478,4 +473,4 @@ Weitere Informationen zu Event Hubs finden Sie hier:
 * [Was ist Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 * [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-Weitere Informationen zu Storage finden Sie unter [Herunterladen von Metrik- und Diagnoseprotokollen aus Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs).
+Weitere Informationen zu Storage finden Sie unter [Herunterladen von Metrik- und Diagnoseprotokollen aus Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).

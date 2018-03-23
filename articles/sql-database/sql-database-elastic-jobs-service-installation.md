@@ -1,25 +1,19 @@
 ---
-title: "Installieren von Aufträgen für die elastische Datenbank | Microsoft Docs"
-description: "Schrittweise Anleitung für die Installation der Funktion für elastische Aufträge"
+title: Installieren von Aufträgen für die elastische Datenbank | Microsoft Docs
+description: Schrittweise Anleitung für die Installation der Funktion für elastische Aufträge
 services: sql-database
-documentationcenter: 
-manager: jhubbard
+manager: craigg
 author: ddove
-editor: 
-ms.assetid: cbe0aa2b-17e3-4b6f-a16f-6ebc1f5a66af
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: ef5a8931eeda0f7ddc485632acaf2d76b71dccde
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.author: sstein
+ms.openlocfilehash: 7e5258e0ccb88c8e2f3fe3277f69444ae5424cd0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Installieren von Aufträgen für die elastische Datenbank – Übersicht
 [**Aufträge für die elastische Datenbank**](sql-database-elastic-jobs-overview.md) können mithilfe von PowerShell oder über das Azure-Portal installiert werden. Der Zugriff zum Erstellen und Verwalten von Aufträgen mithilfe der PowerShell-API ist jedoch nur möglich, wenn Sie das PowerShell-Paket installieren. Darüber hinaus stellen die PowerShell-APIs zurzeit erheblich mehr Funktionen bereit als das Portal.
@@ -29,7 +23,7 @@ Wenn Sie **Aufträge für die elastische Datenbank** bereits über das Portal au
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement. Eine kostenlose Testversion finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * Azure PowerShell. Installieren Sie die neueste Version mithilfe des [Webplattform-Installers](http://go.microsoft.com/fwlink/p/?linkid=320376). Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
-* [NuGet-Befehlszeilenhilfsprogramm](https://nuget.org/nuget.exe) verwendet. Weitere Informationen finden Sie hier: http://docs.nuget.org/docs/start-here/installing-nuget.
+* [NuGet-Befehlszeilenhilfsprogramm](https://nuget.org/nuget.exe) verwendet. Weitere Informationen finden Sie unter http://docs.nuget.org/docs/start-here/installing-nuget.
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Herunterladen und Importieren des PowerShell-Pakets der Aufträge für die elastische Datenbank
 1. Öffnen Sie das Microsoft Azure PowerShell-Befehlsfenster, und navigieren Sie zu dem Verzeichnis, in das Sie das NuGet-Befehlszeilenhilfsprogramm („nuget.exe“) heruntergeladen haben.
@@ -64,7 +58,7 @@ Die für diesen Beispielaufruf angegebenen Parameter können nach Ihren Wünsche
 <table style="width:100%">
   <tr>
     <th>Parameter</th>
-    <th>Beschreibung</th>
+    <th>BESCHREIBUNG</th>
   </tr>
 
 <tr>
@@ -125,7 +119,7 @@ Zum Aktualisieren der Größe der VM einer Installation führen Sie das folgende
 <table style="width:100%">
   <tr>
   <th>Parameter</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
 </tr>
 
   <tr>

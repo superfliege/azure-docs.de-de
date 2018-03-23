@@ -1,25 +1,19 @@
 ---
-title: "Verwenden der Clientbibliothek für elastische Datenbanken mit Entity Framework | Microsoft Docs"
-description: "Verwenden der Clientbibliothek für elastische Datenbanken und von Entity Framework für die Programmierung von Datenbanken"
+title: Verwenden der Clientbibliothek für elastische Datenbanken mit Entity Framework | Microsoft Docs
+description: Verwenden der Clientbibliothek für elastische Datenbanken und von Entity Framework für die Programmierung von Datenbanken
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: torsteng
-editor: 
-ms.assetid: b9c3065b-cb92-41be-aa7f-deba23e7e159
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
-ms.author: torsteng
-ms.openlocfilehash: 1fc61657419f1f4581c5c67639d7bc2e4b0d509f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 5f215c6c6f65804785e35ae1b3ec9cce24e2a976
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Clientbibliothek für elastische Datenbanken mit Entity Framework
 Dieses Dokument zeigt, welche Änderungen in einer Entity Framework-Anwendung erforderlich sind, damit diese die Funktionen der [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md)nutzen kann. Der Schwerpunkt liegt auf der Erstellung der [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) und des [datenabhängigen Routings](sql-database-elastic-scale-data-dependent-routing.md) mit dem **Code First**-Ansatz von Entity Framework. Das Tutorial [Code First für eine neue Datenbank](http://msdn.microsoft.com/data/jj193542.aspx) für EF wird im gesamten Dokument als Beispiel verwendet. Der zu diesem Dokument gehörige Beispielcode ist Teil der Beispielserie der Tools für elastische Datenbanken in den Visual Studio-Codebeispielen.
@@ -58,7 +52,7 @@ Mit der Clientbibliothek für elastische Datenbanken definieren Sie Partitionen 
 
 Die Shard-Zuordnungsverwaltung schützt den Benutzer vor inkonsistenten Sichten in Shardlet-Daten, die auftreten können, wenn gleichzeitige Shardlet-Verwaltungsvorgänge (z. B. das Verschieben von Daten zwischen Shards) ausgeführt werden. Dazu fungieren die von der Clientbibliothek verwalteten Shard-Zuordnungen als Broker der Datenbankverbindungen für eine Anwendung. Dadurch können die Shard-Zuordnungsfunktionen automatisch eine Datenbankverbindung beenden, wenn sich Shard-Verwaltungsvorgänge auf das Shardlet auswirken können, für das die Verbindung erstellt wurde. Bei diesem Ansatz müssen einige EF-Funktionen berücksichtigt werden, wie z. B. das Erstellen neuer Verbindungen aus einer vorhandenen Datenbank, um zu prüfen, ob die Datenbank vorhanden ist. Unserer Erfahrung nach funktionieren die DbContext-Standardkonstruktoren im Allgemeinen nur mit geschlossenen Datenbankverbindungen zuverlässig, die für EF sicher geklont werden können. Dagegen setzt das Entwurfsmodell von elastischen Datenbanken voraus, dass nur offene Verbindungen vermittelt werden. Man könnte vermuten, dass sich dieses Problem lösen lässt, indem Verbindungen geschlossen werden, für die die Clientbibliothek als Broker fungiert, bevor Sie an DbContext von EF übergeben werden. Wenn die Verbindung jedoch geschlossen und somit das erneute Herstellen der Verbindung EF überlassen wird, finden die von der Bibliothek durchgeführten Gültigkeits- und Konsistenzprüfungen nicht statt. Die Migrationsfunktionalität in EF verwendet diese Verbindungen jedoch, um das zugrunde liegende Datenbankschema auf eine Weise zu verwalten, die für die Anwendung transparent ist. Im Idealfall behalten Sie alle diese Funktionen – sowohl die der Clientbibliothek für elastische Datenbanken als auch die von EF – in der gleichen Anwendung und kombinieren sie in dieser. Im folgenden Abschnitt werden diese Eigenschaften und Anforderungen detaillierter erläutert. 
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Bei gleichzeitiger Verwendung der Clientbibliothek für elastische Datenbanken und der Entity Framework-APIs sollten die folgenden Eigenschaften beibehalten werden: 
 
 * **Horizontale Skalierung**: Datenbanken werden entsprechend den Kapazitätsanforderungen der partitionierten Anwendung zur Datenbankebene der Anwendung hinzugefügt oder daraus entfernt. Dies impliziert die Kontrolle über die Erstellung und Löschung von Datenbanken und den Einsatz der APIs für die Shardzuordnungsverwaltung von elastischen Datenbanken, um Datenbanken und die Zuordnung von Shardlets zu verwalten. 
@@ -127,7 +121,7 @@ Das folgende Codebeispiel veranschaulicht diese Vorgehensweise. (Dieser Code ist
   * Die Shard-Zuordnung erstellt die offene Verbindung mit der Shard, die das Shardlet für den gegebenen Sharding-Schlüssel enthält.
   * Diese offene Verbindung wird zurück an den Basisklassenkonstruktor von DbContext übergeben, um anzugeben, dass EF diese Verbindung verwenden und nicht automatisch eine neue Verbindung erstellen soll. Auf diese Weise wird die Verbindung von der Client-API für elastische Datenbanken markiert, damit die Konsistenz unter den Shard-Zuordnungsverwaltungs-Vorgängen gewährleistet werden kann.
 
-Verwenden Sie in Ihrem Code den neuen Konstruktor für die DbContext-Unterklasse statt des Standardkonstruktors. Beispiel: 
+Verwenden Sie in Ihrem Code den neuen Konstruktor für die DbContext-Unterklasse statt des Standardkonstruktors. Beispiel:  
 
     // Create and save a new blog.
 
@@ -178,7 +172,7 @@ Die Notwendigkeit, den Rückgabeort für vorübergehende Ausnahmen zu steuern, s
 #### <a name="constructor-rewrites"></a>Neuschreiben von Konstruktoren
 Die oben aufgeführten Codebeispiele veranschaulichen, welche Änderungen am Standardkonstruktor vorgenommen werden müssen, damit Ihre Anwendung das datenabhängige Routing mit Entity Framework verwenden kann. In der folgende Tabelle wird dieser Ansatz für die anderen Konstruktoren verallgemeinert. 
 
-| Aktuelle Konstruktor | Für Daten veränderter Konstruktor | Basiskonstruktor | Hinweise |
+| Aktuelle Konstruktor | Für Daten veränderter Konstruktor | Basiskonstruktor | Notizen |
 | --- | --- | --- | --- |
 | MyContext() |ElasticScaleContext (ShardMap, TKey) |DbContext(DbConnection, bool) |Die Verbindung muss eine Funktion der Shard-Zuordnung und des datenabhängigen Routingschlüssels sein. Sie müssen die automatische Erstellung von Verbindungen in EEF umgehen und stattdessen die Shard-Zuordnung als Verbindungsbroker verwenden. |
 | MyContext(string) |ElasticScaleContext (ShardMap, TKey) |DbContext(DbConnection, bool) |Die Verbindung ist eine Funktion der Shard Map und des datenabhängigen Routingschlüssels. Ein fester Datenbankname oder eine Verbindungszeichenfolge funktionieren nicht, da hiermit die Überprüfung der Shardzuordnung umgangen wird. |

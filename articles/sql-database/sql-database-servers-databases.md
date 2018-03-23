@@ -5,51 +5,40 @@ services: sql-database
 documentationcenter: na
 author: CarlRabeler
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 10/11/2017
+ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: 469db4f3faf12cbd778f18b7bc74ec6b86b412c7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 0e2dabc5cc0b816f2623fce5f8fb09a7004039c7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Erstellen und Verwalten von Azure SQL-Datenbankservern und -datenbanken
 
-Eine Azure SQL-Datenbank ist eine verwaltete Datenbank in Microsoft Azure, die innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von [Compute- und Speicherressourcen für verschiedene Workloads](sql-database-service-tiers.md) erstellt wird. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird. 
+SQL-Datenbank bietet drei Typen von Datenbanken:
 
-## <a name="an-azure-sql-database-can-be-a-single-pooled-or-partitioned-database"></a>Eine Azure SQL-Datenbank kann eine einzelne, zusammengelegte oder partitionierte Datenbank sein.
+- Eine Einzeldatenbank, die innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von [Compute- und Speicherressourcen für verschiedene Workloads](sql-database-service-tiers.md) erstellt wird. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
+- Eine Datenbank, die als Teil eines [Datenbankpools](sql-database-elastic-pool.md) innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von [Compute- und Speicherressourcen für verschiedene Workloads](sql-database-service-tiers.md) erstellt wird, die von allen Datenbanken im Pool gemeinsam verwendet werden. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
+- Eine [Instanz von SQL-Server](sql-database-managed-instance.md), die innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von Compute- und Speicherressourcen alle Datenbanken auf dieser Serverinstanz für erstellt wird. Eine verwaltete Instanz enthält sowohl System- als auch Benutzerdatenbanken. Eine verwaltete Instanz ist so konzipiert, dass sie eine Datenbankmigration per Lift & Shift zu einem vollständig verwalteten PaaS ermöglicht, ohne dass die Anwendung neu gestaltet werden muss. Verwaltete Instanzen bieten umfassende Kompatibilität mit dem SQL Server-Programmiermodell sowie Unterstützung für die überwiegende Mehrheit von SQL Server-Features sowie die zugehörigen Tools und Dienste.  
 
-Eine Azure SQL-Datenbank kann Folgendes sein:
+Microsoft Azure SQL-Datenbank unterstützt den TDS-Client (Tabular Data Stream) ab Version 7.3 und lässt nur verschlüsselte TCP/IP-Verbindungen zu.
 
-- Eine [einzelne Datenbank](sql-database-single-database-resources.md) mit ihrem eigenen Ressourcensatz
-- Teil eines [elastischen Pools](sql-database-elastic-pool.md) mit gemeinsamer Nutzung eines Ressourcensatzes
-- Teil eines [skalierten Satzes von Sharddatenbanken](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling), die entweder einfache oder in einem Pool zusammengefasste Datenbanken sein können
-- Teil von Datenbanksätzen, die an einem [mehrinstanzfähigen SaaS-Entwurfsmuster](sql-database-design-patterns-multi-tenancy-saas-applications.md) teilnehmen, und deren Datenbanken entweder einzelne oder in einem Pool zusammengefasste Datenbanken (oder beides) sein können 
-
-> [!TIP]
-> Gültige Datenbanknamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). 
->
- 
-- Die standardmäßige Datenbanksortierung von Microsoft Azure SQL-Datenbank ist **SQL_LATIN1_GENERAL_CP1_CI_AS**, wobei **LATIN1_GENERAL** für Englisch (USA), **CP1** für Codepage 1252, **CI** für keine Unterscheidung von Groß-/Kleinschreibung und **AS** für die Unterscheidung nach Akzent steht. Weitere Informationen zum Festlegen der Sortierung finden Sie unter [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx).
-- Microsoft Azure SQL-Datenbank unterstützt den TDS-Client (Tabular Data Stream) ab Version 7.3.
-- Nur TCP/IP-Verbindungen sind zulässig.
+> [!IMPORTANT]
+> Die verwaltete Azure SQL-Datenbank-Instanz ist derzeit als öffentliche Vorschauversion verfügbar und bietet eine einzelne universelle Dienstebene. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md). Der Rest dieses Artikels gilt nicht für verwaltete Instanzen.
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Was ist ein logischer Azure SQL-Server?
 
-Ein logischer Server fungiert als zentraler Verwaltungspunkt für mehrere Datenbanken, einschließlich [Pools für elastische Datenbanken](sql-database-elastic-pool.md), [Anmeldungen](sql-database-manage-logins.md), [Firewallregeln](sql-database-firewall-configure.md), [Überwachungsregeln](sql-database-auditing.md), [Richtlinien zur Erkennung von Bedrohungen](sql-database-threat-detection.md) und [Failovergruppen](sql-database-geo-replication-overview.md). Ein logischer Server kann sich in einer anderen Region als seine Ressourcengruppe befinden. Der logische Server muss vorhanden sein, bevor Sie die Azure SQL-Datenbank erstellen können. Alle Datenbanken auf einem Server werden innerhalb der gleichen Region wie der logische Server erstellt. 
+Ein logischer Server fungiert als zentraler Verwaltungspunkt für mehrere einzelne oder [in einem Pool zusammengefasste](sql-database-elastic-pool.md) Datenbanken, [Anmeldungen](sql-database-manage-logins.md), [Firewallregeln](sql-database-firewall-configure.md), [Überwachungsregeln](sql-database-auditing.md), [Richtlinien zur Erkennung von Bedrohungen](sql-database-threat-detection.md) und [Failovergruppen](sql-database-geo-replication-overview.md). Ein logischer Server kann sich in einer anderen Region als seine Ressourcengruppe befinden. Der logische Server muss vorhanden sein, bevor Sie die Azure SQL-Datenbank erstellen können. Alle Datenbanken auf einem Server werden innerhalb der gleichen Region wie der logische Server erstellt.
 
-
-> [!IMPORTANT]
-> In SQL-Datenbank ist ein Server ein logisches Konstrukt, das von einer SQL Server-Instanz unterschieden wird, mit der Sie möglicherweise in der lokalen Welt vertraut sind. Insbesondere der SQL-Datenbankdienst gibt keine Garantie bezüglich des Speicherorts der Datenbanken in Bezug auf ihre logischen Server, und bietet kein Zugriff oder Funktion auf Instanzebene.
-> 
+Ein logischer Server ist ein logisches Konstrukt, das von einer SQL Server-Instanz unterschieden wird, mit der Sie möglicherweise in der lokalen Welt vertraut sind. Insbesondere der SQL-Datenbankdienst gibt keine Garantie bezüglich des Speicherorts der Datenbanken in Bezug auf ihre logischen Server, und bietet kein Zugriff oder Funktion auf Instanzebene. Ein Server in einer verwalteten Azure SQL-Datenbank-Instanz ähnelt dagegen einer SQL Server-Instanz, mit der Sie möglicherweise in der lokalen Welt vertraut sind.
 
 Wenn Sie einen logischen Server erstellen, geben Sie ein Serveranmeldekonto und -kennwort an, mit dem Sie Administratorrechte für die Masterdatenbank auf diesem Server und alle auf diesem Server erstellte Datenbanken haben. Bei diesem anfänglichen Konto handelt es sich um ein SQL-Anmeldekonto. Azure SQL-Datenbank unterstützt für die Authentifizierung die SQL-Authentifizierung und die Azure Active Directory-Authentifizierung. Weitere Informationen zu Anmeldungen und Authentifizierungen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](sql-database-manage-logins.md). Windows-Authentifizierung wird nicht unterstützt. 
 
@@ -60,7 +49,7 @@ Wenn Sie einen logischen Server erstellen, geben Sie ein Serveranmeldekonto und 
 Ein logischer Azure Datenbankserver:
 
 - wird in einem Azure-Abonnement erstellt, kann aber mit seinen enthaltenen Ressourcen in ein anderes Abonnement verschoben werden
-- ist die übergeordnete Ressource für Datenbanken, elastische Pools und Data Warehouses
+- ist die übergeordnete Ressource für Datenbanken, Pools für elastische Datenbanken und Data Warehouses
 - bietet einen Namespace für Datenbanken, für Pools für elastische Datenbanken und Data Warehouses
 - ist ein logischer Container mit Semantik von hoher Lebensdauer – beim Löschen eines Servers werden die enthaltenen Datenbanken, Pools für elastische Datenbanken und Data Warehouses gelöscht
 - beteiligt sich an der [rollenbasierten Zugriffssteuerung (role-based access control, RBAC) in Azure](/active-directory/role-based-access-control-what-is) – Datenbanken, Pools für elastische Datenbanken und Data Warehouses innerhalb eines Servers erben dessen Zugriffsrechte
@@ -74,6 +63,7 @@ Ein logischer Azure Datenbankserver:
 - ist der Versionsverwaltungsbereich für Funktionen, die in enthaltenen Ressourcen aktiviert wurden 
 - Serverebenenprinzipal-Anmeldungen können alle Datenbanken auf einem Server verwalten
 - kann Anmeldungen enthalten, die denen in SQL-Instanzen vor Ort ähnlich sind und die über Zugriff auf eine oder mehrere Datenbanken auf dem Server verfügen und denen beschränkte Administratorrechte zugewiesen werden können. Weitere Informationen finden Sie unter [Logins (Anmeldungen)](sql-database-manage-logins.md).
+- Die Standardsortierung für alle auf einem logischen Server erstellten Benutzerdatenbanken ist `SQL_LATIN1_GENERAL_CP1_CI_AS`, wobei `LATIN1_GENERAL` für Englisch (USA), `CP1` für Codepage 1252, `CI` für keine Unterscheidung von Groß-/Kleinschreibung und `AS` für die Unterscheidung nach Akzent steht.
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>Azure SQL-Datenbanken, die von der SQL-Datenbank-Firewall geschützt werden
 
@@ -97,6 +87,8 @@ Zum Erstellen einer Azure SQL-Datenbank mithilfe des [Azure-Portals](https://por
 > Informationen zum Auswählen des Tarifs für Ihre Datenbank finden Sie unter [Dienstebenen](sql-database-service-tiers.md).
 >
 
+Informationen zum Erstellen einer verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-tutorial-portal.md)
+
 ### <a name="manage-an-existing-sql-server"></a>Verwalten eines vorhandenen SQL-Servers
 
 Zum Verwalten eines vorhandenen Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z.B. über eine bestimmte Seite der SQL-Datenbank, die Seite der **SQL-Server** oder die Seite **All resources** (Alle Ressourcen). 
@@ -115,9 +107,9 @@ Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Dat
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von PowerShell
 
-Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder upgraden müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) weiter. Informationen zum Erstellen und Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
+Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) weiter. Informationen zum Erstellen und Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
-| Cmdlet | Beschreibung |
+| Cmdlet | BESCHREIBUNG |
 | --- | --- |
 |[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|Erstellt eine Datenbank |
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Ruft mindestens eine Datenbank ab|
@@ -140,9 +132,9 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der Azure CLI
 
-Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der [Azure CLI](/cli/azure/overview) die folgenden [Azure CLI-SQL-Datenbank](/cli/azure/sql/db)-Befehle. Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows. Informationen zum Erstellen und Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
+Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der [Azure CLI](/cli/azure) die folgenden [Azure CLI-SQL-Datenbank](/cli/azure/sql/db)-Befehle. Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows. Informationen zum Erstellen und Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
-| Cmdlet | Beschreibung |
+| Cmdlet | BESCHREIBUNG |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az_sql_db_create) |Erstellt eine Datenbank|
 |[az sql db list](/cli/azure/sql/db#az_sql_db_list)|Listet alle Datenbanken und Data Warehouses eines Servers oder alle Datenbanken eines Pools für elastische Datenbanken auf|
@@ -176,7 +168,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 > Sie können einen Server mithilfe von Transact-SQL nicht erstellen oder löschen.
 >
 
-| Befehl | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 |[CREATE DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/create-database-azure-sql-database)|Erstellt eine neue Datenbank. Sie müssen über eine Verbindung mit der Masterdatenbank verfügen, um eine neue Datenbank erstellen zu können.|
 | [ALTER DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/alter-database-azure-sql-database) |Ändert eine Azure SQL-Datenbank. |
@@ -202,7 +194,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 
 Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls diese REST-API-Anforderungen.
 
-| Befehl | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 |[Servers - Create Or Update](/rest/api/sql/servers/createorupdate)|Erstellt oder aktualisiert einen neuen Server.|
 |[Servers - Delete](/rest/api/sql/servers/delete)|Löscht eine SQL Server-Instanz.|
@@ -211,11 +203,11 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[Servers - List By Resource Group](/rest/api/sql/servers/listbyresourcegroup)|Gibt eine Liste aller Server in einer Ressourcengruppe zurück.|
 |[Server - Update](/rest/api/sql/servers/update)|Aktualisiert einen vorhandenen Server.|
 |[Servers - Sql](/rest/api/sql/servers%20-%20sql)|Bestimmt, ob eine Ressource mit dem angegebenen Namen erstellt werden kann.|
-|[Databases - Create Or Update](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
+|[Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
 |[Datenbanken – Abrufen](/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
 |[Datenbanken – Abrufen nach Pool für elastische Datenbanken](/rest/api/sql/databases/getbyelasticpool)|Ruft eine Datenbank in einem Pool für elastische Datenbanken ab|
 |[Datenbanken – Abrufen nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/getbyrecommendedelasticpool)|Ruft eine Datenbank in einem empfohlenen Pool für elastische Datenbanken ab|
-|[Datenbanken – Auflisten nach Pool für elastische Datenbanken](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem elastischen Pool zurück.|
+|[Datenbanken – Auflisten nach Pool für elastische Datenbanken](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
 |[Datenbanken – Auflisten nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück|
 |[Datenbanken – Auflisten nach Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
 |[Datenbanken – Aktualisieren](/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank.|
@@ -226,7 +218,5 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Zusammenlegen von Datenbanken mithilfe von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
-- Informationen über den Azure SQL-Datenbank-Dienst finden Sie unter [Was ist SQL-Datenbank?](sql-database-technical-overview.md).
 - Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
 - Informationen zu unterstützten Funktionen finden Sie unter [Features (Funktionen)](sql-database-features.md).

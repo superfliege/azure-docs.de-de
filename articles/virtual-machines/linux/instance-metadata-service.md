@@ -1,11 +1,11 @@
 ---
 title: Azure-Instanzmetadatendienst | Microsoft-Dokumentation
-description: "RESTful-Schnittstelle zum Abrufen von Informationen über Compute-, Netzwerk- und anstehende Wartungsereignisse einer Linux-VM."
+description: RESTful-Schnittstelle zum Abrufen von Informationen über Compute-, Netzwerk- und anstehende Wartungsereignisse einer Linux-VM.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: harijayms
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 9222fcebd51ff13e797f40f3fdb0ddaa955d2611
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: a291aaf8456fd800edcf5a2df5d68c386d9f87c1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -26,20 +26,20 @@ ms.lasthandoff: 02/23/2018
 Der Azure-Instanzmetadatendienst stellt Informationen zum Ausführen von Instanzen virtueller Computer bereit, die zum Verwalten und Konfigurieren Ihrer virtuellen Computer verwendet werden können.
 Hierzu gehören Informationen wie die SKU, die Netzwerkkonfiguration und bevorstehende Wartungsereignisse. Weitere Informationen zu der Art der verfügbaren Informationen finden Sie unter [Metadatenkategorien](#instance-metadata-data-categories).
 
-Der Instanzmetadatendienst von Azure ist ein REST-Endpunkt, der für alle IaaS-VMs verfügbar ist, die mit dem neuen [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) erstellt wurden. Der Endpunkt steht unter einer bekannten, nicht routingfähigen IP-Adresse zur Verfügung (`169.254.169.254`), auf die nur innerhalb der VM zugegriffen werden kann.
+Der Instanzmetadatendienst von Azure ist ein REST-Endpunkt, der für virtuelle IaaS-Computer verfügbar ist, die mit dem neuen [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) erstellt wurden. Der Endpunkt steht unter einer bekannten, nicht routingfähigen IP-Adresse zur Verfügung (`169.254.169.254`), auf die nur innerhalb der VM zugegriffen werden kann.
 
 > [!IMPORTANT]
-> Dieser Dienst ist in allen Azure-Regionen **allgemein verfügbar**.  Er empfängt regelmäßig Updates, um neue Informationen zu Instanzen virtueller Computer verfügbar zu machen. Auf dieser Seite werden die neuesten [Datenkategorien](#instance-metadata-data-categories) angezeigt.
+> Dieser Dienst ist in Azure-Regionen **allgemein verfügbar**.  Er empfängt regelmäßig Updates, um neue Informationen zu Instanzen virtueller Computer verfügbar zu machen. Auf dieser Seite werden die neuesten [Datenkategorien](#instance-metadata-data-categories) angezeigt.
 
 ## <a name="service-availability"></a>Dienstverfügbarkeit
-Der Dienst ist in allen Azure-Regionen allgemein verfügbar. Unter Umständen sind nicht alle API-Versionen in allen Azure-Regionen verfügbar.
+Der Dienst ist in Azure-Regionen allgemein verfügbar. Unter Umständen sind nicht alle API-Versionen in allen Azure-Regionen verfügbar.
 
 Regionen                                        | Verfügbarkeit?                                 | Unterstützte Versionen
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar   | 2017-04-02, 2017-08-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Allgemein verfügbar | 2017-04-02
-[Azure China](https://www.azure.cn/)                                                           | Allgemein verfügbar | 2017-04-02
-[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | Allgemein verfügbar | 2017-04-02
+[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar   | 2017-04-02, 2017-08-01, 2017-12-01 (Diese Version ist nicht in Regionen des Vereinigten Königreichs verfügbar.)
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Allgemein verfügbar | 2017-04-02,2017-08-01
+[Azure China](https://www.azure.cn/)                                                           | Allgemein verfügbar | 2017-04-02,2017-08-01
+[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | Allgemein verfügbar | 2017-04-02,2017-08-01
 
 Diese Tabelle wird aktualisiert, wenn Dienstupdates oder neue unterstützte Versionen verfügbar sind.
 
@@ -48,12 +48,12 @@ Um den Instanzmetadatendienst zu testen, erstellen Sie eine VM über den [Azure 
 ## <a name="usage"></a>Verwendung
 
 ### <a name="versioning"></a>Versionsverwaltung
-Für den Instanzmetadatendienst wird die Versionsverwaltung genutzt. Versionen sind obligatorisch, und die aktuelle Version in globalen Azure-Regionen ist `2017-08-01`. Aktuelle unterstützte Versionen: 2017-04-02, 2017-08-01
+Für den Instanzmetadatendienst wird die Versionsverwaltung genutzt. Versionen sind obligatorisch, und die aktuelle Version in globalen Azure-Regionen ist `2017-12-01`. Aktuelle unterstützte Versionen: 2017-04-02, 2017-08-01,2017-12-01
 
 > [!NOTE] 
 > In früheren Vorschauversionen von geplanten Ereignissen wird {latest} als „api-version“ unterstützt. Dieses Format wird nicht mehr unterstützt und wird zukünftig veraltet sein.
 
-Wenn wir neuere Versionen hinzufügen, kann auf ältere Versionen aus Kompatibilitätsgründen weiterhin zugegriffen werden, falls Ihre Skripts von bestimmten Datenformaten abhängig sind. Beachten Sie jedoch, dass die vorherige Vorschauversion (2017-03-01) möglicherweise nicht verfügbar ist, sobald der Dienst allgemein zur Verfügung steht.
+Wenn neuere Versionen hinzugefügt werden, kann auf ältere Versionen aus Kompatibilitätsgründen weiterhin zugegriffen werden, falls Ihre Skripts von bestimmten Datenformaten abhängig sind. Beachten Sie jedoch, dass die vorherige Vorschauversion (2017-03-01) möglicherweise nicht mehr verfügbar ist, sobald der Dienst allgemein zur Verfügung steht.
 
 ### <a name="using-headers"></a>Verwenden von Headern
 Bei der Abfrage des Instanzmetadatendiensts müssen Sie den Header `Metadata: true` angeben, um sicherzustellen, dass die Anforderung nicht unbeabsichtigt umgeleitet wurde.
@@ -62,8 +62,8 @@ Bei der Abfrage des Instanzmetadatendiensts müssen Sie den Header `Metadata: tr
 
 Instanzmetadaten stehen für die Ausführung von VMs zur Verfügung, die mit dem [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) erstellt/verwaltet werden. Über folgende Anforderung können Sie auf alle Datenkategorien einer Instanz eines virtuellen Computers zugreifen:
 
-```
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02"
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
 ```
 
 > [!NOTE] 
@@ -80,8 +80,8 @@ API | Standarddatenformat | Andere Formate
 
 Um auf ein nicht standardmäßiges Antwortformat zuzugreifen, geben Sie das angeforderte Format als QueryString-Parameter in der Anforderung an. Beispiel:
 
-```
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02&format=text"
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 ### <a name="security"></a>Sicherheit
@@ -109,7 +109,7 @@ HTTP-Statuscode | Grund
 
 **Anforderung**
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
 ```
 
@@ -118,7 +118,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 > [!NOTE] 
 > Die Antwort stellt eine JSON-Zeichenfolge dar. Die folgende Beispielantwort wird zur besseren Lesbarkeit im Schöndruck gedruckt.
 
-```
+```json
 {
   "interface": [
     {
@@ -148,16 +148,16 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 
 #### <a name="retrieving-public-ip-address"></a>Abrufen der öffentlichen IP-Adresse
 
-```
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&format=text"
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="retrieving-all-metadata-for-an-instance"></a>Abrufen aller Metadaten für eine Instanz
 
 **Anforderung**
 
-```
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-12-01"
 ```
 
 **Antwort**
@@ -165,7 +165,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > [!NOTE] 
 > Die Antwort stellt eine JSON-Zeichenfolge dar. Die folgende Beispielantwort wird zur besseren Lesbarkeit im Schöndruck gedruckt.
 
-```
+```json
 {
   "compute": {
     "location": "westus",
@@ -182,7 +182,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
     "tags": "",
     "version": "16.04.201708030",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
-    "vmSize": "Standard_D1"
+    "vmScaleSetName": "",
+    "vmSize": "Standard_D1",
+    "zone": "1"
   },
   "network": {
     "interface": [
@@ -217,14 +219,14 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 
 Die Instanzmetadaten können unter Windows über das PowerShell-Hilfsprogramm `curl` abgerufen werden: 
 
-```
-curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2017-04-02 | select -ExpandProperty Content
+```bash
+curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2017-08-01 | select -ExpandProperty Content
 ```
 
 Alternativ ist dies auch über das Cmdlet `Invoke-RestMethod` möglich:
     
-```
-Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-04-02 -Method get 
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-08-01 -Method get 
 ```
 
 **Antwort**
@@ -232,7 +234,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 > [!NOTE] 
 > Die Antwort stellt eine JSON-Zeichenfolge dar. Die folgende Beispielantwort wird zur besseren Lesbarkeit im Schöndruck gedruckt.
 
-```
+```json
 {
   "compute": {
     "location": "westus",
@@ -296,13 +298,15 @@ subscriptionId | Azure-Abonnement für den virtuellen Computer | 2017-08-01
 tags | [Tags](../../azure-resource-manager/resource-group-using-tags.md) für den virtuellen Computer  | 2017-08-01
 resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) für den virtuellen Computer | 2017-08-01
 placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
+vmScaleSetName | [Name der VM-Skalierungsgruppe] (../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) Ihrer VM-Skalierungsgruppe | 2017-12-01
+Zone | [Verfügbarkeitszone](../../availability-zones/az-overview.md) Ihres virtuellen Computers | 2017-12-01 
 ipv4/privateIpAddress | Lokale IPv4-Adresse der VM | 2017-04-02
 ipv4/publicIpAddress | Öffentliche IPv4-Adresse der VM | 2017-04-02
 subnet/address | Subnetzadresse der VM | 2017-04-02 
 subnet/prefix | Subnetzpräfix, Beispiel 24 | 2017-04-02 
 ipv6/ipAddress | Lokale IPv6-Adresse der VM | 2017-04-02 
 macAddress | VM-Mac-Adresse | 2017-04-02 
-scheduledevents | Siehe [scheduledevents](scheduled-events.md) | 2017-03-01
+scheduledevents | Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Windows-VMs](scheduled-events.md) | 2017-08-01
 
 ## <a name="example-scenarios-for-usage"></a>Beispielszenarien für die Verwendung  
 
@@ -312,8 +316,8 @@ Als Dienstanbieter müssen Sie möglicherweise die Anzahl von VMs nachverfolgen,
 
 **Anforderung**
 
-```
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-04-02&format=text"
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 **Antwort**
@@ -325,12 +329,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 ### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Platzierung von Containern und Datenpartitionen basierend auf der Fehler-/Updatedomäne 
 
 In bestimmten Szenarien ist die Platzierung unterschiedlicher Datenreplikate von primärer Bedeutung. Beispielsweise müssen Sie bei der [HDFS-Replikatplatzierung](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) oder bei der Containerplatzierung über einen [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) die `platformFaultDomain` und die `platformUpdateDomain` kennen, auf denen die VM ausgeführt wird.
-Sie können diese Daten direkt über den Instanzmetadatendienst abfragen.
+Sie können [Verfügbarkeitszonen](../../availability-zones/az-overview.md) auch für die Instanzen nutzen, um diese Entscheidungen zu treffen. Sie können diese Daten direkt über den Instanzmetadatendienst abfragen.
 
 **Anforderung**
 
-```
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-04-02&format=text" 
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text" 
 ```
 
 **Antwort**
@@ -345,8 +349,8 @@ Als Dienstanbieter erhalten Sie möglicherweise eine Supportanfrage, für die Si
 
 **Anforderung**
 
-```
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-04-02"
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-08-01"
 ```
 
 **Antwort**
@@ -354,7 +358,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 > [!NOTE] 
 > Die Antwort stellt eine JSON-Zeichenfolge dar. Die folgende Beispielantwort wird zur besseren Lesbarkeit im Schöndruck gedruckt.
 
-```
+```json
 {
   "compute": {
     "location": "CentralUS",
@@ -393,7 +397,7 @@ Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 1. Ich erhalte die Fehlermeldung `400 Bad Request, Required metadata header not specified`. Was bedeutet dies?
    * Für den Instanzmetadatendienst muss der Header `Metadata: true` in der Anforderung übergeben werden. Durch Übergeben dieses Headers im REST-Aufruf wird der Zugriff auf den Instanzmetadatendienst ermöglicht. 
 2. Warum erhalte ich keine Compute-Informationen für meine VM?
-   * Der Instanzmetadatendienst unterstützt derzeit nur Instanzen, die mit dem Azure Resource Manager erstellt wurden. In Zukunft können wir zusätzliche Unterstützung für Clouddienst-VMs bieten.
+   * Der Instanzmetadatendienst unterstützt derzeit nur Instanzen, die mit dem Azure Resource Manager erstellt wurden. In Zukunft kann zusätzliche Unterstützung für Clouddienst-VMs hinzugefügt werden.
 3. Ich habe meinen virtuellen Computer vor einiger Zeit über den Azure Resource Manager erstellt. Warum sehe ich keine Computemetadateninformationen?
    * Fügen Sie für VMs, die nach September 2016 erstellt wurden, ein [Tag](../../azure-resource-manager/resource-group-using-tags.md) hinzu, damit Computemetadaten angezeigt werden. Fügen Sie bei älteren VMs (die vor September 2016 erstellt wurden) Erweiterungen oder Datenträger zur VM hinzu, bzw. entfernen Sie diese, um Metadaten zu aktualisieren.
 4. Nicht alle Daten wurden für die neue Version 2017-08-01 aufgefüllt.
@@ -405,10 +409,11 @@ Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 7. Gilt dies auch für VM-Skalierungsgruppeninstanzen?
    * Ja, der Metadatendienst ist für Skalierungsgruppeninstanzen verfügbar. 
 8. Wie beziehe ich Support für den Dienst?
-   * Um Support für den Dienst zu beziehen, erstellen Sie im Azure-Portal eine Supportanfrage für die VM, auf der Sie nach wiederholten Versuchen keine Metadatenantwort erhalten. 
+   * Um Support für den Dienst zu beziehen, erstellen Sie im Azure-Portal ein Supportproblem für die VM, auf der Sie nach wiederholten Versuchen keine Metadatenantwort erhalten. 
 
    ![Instanzmetadatenunterstützung](./media/instance-metadata-service/InstanceMetadata-support.png)
     
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über [geplante Ereignisse](scheduled-events.md).
+

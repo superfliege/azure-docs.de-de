@@ -1,11 +1,11 @@
 ---
 title: Skalieren der Medienverarbeitung mithilfe des Azure-Portals | Microsoft-Dokumentation
-description: "Dieses Tutorial führt Sie durch die Schritte zur Skalierung der Medienverarbeitung mithilfe des Azure-Portals."
+description: Dieses Tutorial führt Sie durch die Schritte zur Skalierung der Medienverarbeitung mithilfe des Azure-Portals.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: e500f733-68aa-450c-b212-cf717c0d15da
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: juliako
-ms.openlocfilehash: d2312803a4471e207d3696ca8350a86e3c4761e6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f65ba489d70a3844169780c4680fcc43b3064b54
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="change-the-reserved-unit-type"></a>Ändern Sie den Typ reservierter Einheiten
 > [!div class="op_single_selector"]
@@ -54,11 +54,10 @@ Führen Sie folgende Schritte aus, um den Typ reservierter Einheiten und die Anz
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.
 2. Wählen Sie im Fenster **Einstellungen** die Option **Reservierte Einheiten für Medien** aus.
    
-    Verwenden Sie zum Ändern der Anzahl reservierter Einheiten für den ausgewählten Typ den Schieberegler unter **Reservierte Einheiten für Medien** .
+    Verwenden Sie zum Ändern der Anzahl reservierter Einheiten für den ausgewählten Typ den Schieberegler unter **Reservierte Einheiten für Medien** am oberen Bildschirmrand.
    
-    Um den **TYP RESERVIERTER EINHEITEN**zu ändern, wählen Sie S1, S2 oder S3 aus.
+    Zum Ändern von **RESERVIERTER EINHEITSTYP** klicken Sie auf die Leiste **Geschwindigkeit der reservierten Einheiten für die Verarbeitung**. Wählen Sie dann den benötigten Tarif aus: S1, S2 oder S3.
    
-    ![Prozessorenseite](./media/media-services-portal-scale-media-processing/media-services-scale-media-processing.png)
 3. Klicken Sie auf die Schaltfläche "Speichern", um die Änderungen zu speichern.
    
     Die neuen reservierten Einheiten werden zugewiesen, wenn Sie auf SPEICHERN klicken.

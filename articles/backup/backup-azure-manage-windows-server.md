@@ -2,7 +2,7 @@
 title: Verwalten von Azure Recovery Services-Tresoren und -Servern | Microsoft Docs
 description: Verwenden Sie diesen Artikel zum Verwalten von Azure Recovery Services-Tresoren und -Servern.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: markgal
-ms.openlocfilehash: 2e5fd9e7e3cae1665519e4f08604fddf7834fd51
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 18ab960c3d86f4154f7cbbaa3dd4909b9b16b697
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Überwachen und Verwalten von Azure Recovery Services-Tresoren und -Servern für Windows-Computer
 
@@ -196,6 +196,8 @@ Im Menü „Produktionsserver“ sind alle verfügbaren Produktionsserver aufgel
 > Informationen zum **Wiederherstellen von Daten**finden Sie unter [Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell](backup-azure-restore-windows-server.md).
 >
 >
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="modify-the-backup-schedule"></a>Ändern des Sicherungszeitplans
 1. Klicken Sie im Microsoft Azure Backup-Agent auf **Sicherung planen**.

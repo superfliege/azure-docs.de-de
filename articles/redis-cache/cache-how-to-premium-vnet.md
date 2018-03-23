@@ -1,11 +1,11 @@
 ---
-title: "Konfigurieren eines virtuellen Netzwerks für einen Azure Redis Cache vom Typ „Premium“ | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Unterstützung für virtuelle Netzwerke für Azure Redis Cache-Instanzen im Tarif \"Premium\" erstellen und verwalten."
+title: Konfigurieren eines virtuellen Netzwerks für einen Azure Redis Cache vom Typ „Premium“ | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Unterstützung für virtuelle Netzwerke für Azure Redis Cache-Instanzen im Tarif "Premium" erstellen und verwalten.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 8b1e43a0-a70e-41e6-8994-0ac246d8bf7f
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 5ed5af627fa8ec8007f095face2cbf115ead4b27
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ba3a7ccc059dd5036753f471b762e27f22a179af
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ "Premium"
 Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Redis Cache-Instanz mit einem VNet konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNet kann nur über virtuelle Computer und Anwendungen innerhalb des VNet zugegriffen werden. In diesem Artikel wird erläutert, wie die Unterstützung eines virtuellen Netzwerks für eine Azure Redis Cache-Instanz vom Typ „Premium“ konfiguriert wird.
@@ -38,7 +38,7 @@ Die Unterstützung für ein virtuelles Netzwerk (VNet) wird während der Erstell
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Nachdem Sie einen Premium-Tarif ausgewählt haben, können Sie die Redis-VNet-Integration konfigurieren, indem Sie ein virtuelles Netzwerk auswählen, das sich im selben Abonnement und am gleichen Speicherort wie Ihr Cache befindet. Um ein neues virtuelles Netzwerk verwenden zu können, müssen Sie es zuerst erstellen. Befolgen Sie dazu die Anleitungen unter [Erstellen eines virtuellen Netzwerks über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) und [Erstellen eines virtuellen Netzwerks (klassisch) über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Kehren Sie anschließend zum Blatt **Neuer Redis Cache** zurück, um Ihrem Premium-Cache zu erstellen und zu konfigurieren.
+Nachdem Sie einen Premium-Tarif ausgewählt haben, können Sie die Redis-VNet-Integration konfigurieren, indem Sie ein virtuelles Netzwerk auswählen, das sich im selben Abonnement und am gleichen Speicherort wie Ihr Cache befindet. Um ein neues virtuelles Netzwerk verwenden zu können, müssen Sie es zuerst erstellen. Befolgen Sie dazu die Anleitungen unter [Erstellen eines virtuellen Netzwerks über das Azure-Portal](../virtual-network/manage-virtual-network.md#create-a-virtual-network) und [Erstellen eines virtuellen Netzwerks (klassisch) über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Kehren Sie anschließend zum Blatt **Neuer Redis Cache** zurück, um Ihrem Premium-Cache zu erstellen und zu konfigurieren.
 
 Klicken Sie zum Konfigurieren des virtuellen Netzwerks für Ihren neuen Cache auf dem Blatt **Neuer Redis Cache** auf **Virtuelles Netzwerk**, und wählen Sie das gewünschte virtuelle Netzwerk aus der Dropdownliste aus.
 

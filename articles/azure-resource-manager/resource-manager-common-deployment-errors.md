@@ -1,8 +1,8 @@
 ---
-title: "Problembehandlung bei häufigen Azure-Bereitstellungsfehlern | Microsoft Docs"
-description: "Informationen zum Beheben gängiger Fehler beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager."
+title: Problembehandlung bei häufigen Azure-Bereitstellungsfehlern | Microsoft Docs
+description: Informationen zum Beheben gängiger Fehler beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: ca7e3cb541948e6cc0b8d077616f3611e3ab2477
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 2cf31b32e02923aa573d5586b8ca24bf30b7d97b
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
@@ -37,6 +37,7 @@ In diesem Artikel werden einige häufige Azure-Bereitstellungsfehler beschrieben
 | BadRequest | Sie haben Bereitstellungswerte gesendet, die nicht den von Resource Manager erwarteten Werten entsprechen. Überprüfen Sie die interne Statusmeldung, um Hilfe zur Problembehandlung zu erhalten. | [Vorlagenreferenz](/azure/templates/) und [Unterstützte Speicherorte](resource-manager-templates-resources.md#location) |
 | Konflikt: | Sie fordern einen Vorgang an, der im aktuellen Zustand der Ressource nicht zulässig ist. Eine Größenänderung für den Datenträger ist beispielsweise nur zulässig, wenn ein virtueller Computer erstellt wird oder die Zuweisung des virtuellen Computers aufgehoben wurde. | |
 | DeploymentActive | Warten Sie, bis die gleichzeitige Bereitstellung für diese Ressourcengruppe abgeschlossen ist. | |
+| DeploymentFailed | „DeploymentFailed“ ist ein allgemeiner Fehler, der nicht die Informationen bereitstellt, die Sie zum Beheben des Fehlers benötigen. Suchen Sie in den Fehlerdetails nach einem Fehlercode, der weitere Informationen bereitstellt. | [Ermitteln des Fehlercodes](#find-error-code) |
 | DnsRecordInUse | Der Name des DNS-Eintrags muss eindeutig sein. Geben Sie entweder einen anderen Namen an, oder ändern Sie den vorhandenen Datensatz. | |
 | ImageNotFound | Überprüfen Sie die Einstellungen für das VM-Image. |  |
 | InUseSubnetCannotBeDeleted | Dieser Fehler kann ggf. bei dem Versuch auftreten, eine Ressource zu aktualisieren, aber die Anforderung wird verarbeitet, indem die Ressource gelöscht und erstellt wird. Stellen Sie sicher, dass Sie alle unveränderten Werte angeben. | [Aktualisieren von Ressourcen](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -44,7 +45,7 @@ In diesem Artikel werden einige häufige Azure-Bereitstellungsfehler beschrieben
 | InvalidContentLink | Sie haben wahrscheinlich versucht, eine geschachtelte Vorlage zu verknüpfen, die nicht verfügbar ist. Überprüfen Sie den URI, den Sie für die geschachtelte Vorlage angegeben haben. Wenn die Vorlage in einem Speicherkonto vorhanden ist, stellen Sie sicher, dass auf den URI zugegriffen werden kann. Möglicherweise müssen Sie ein SAS-Token übergeben. | [Verknüpfte Vorlagen](resource-group-linked-templates.md) |
 | InvalidParameter | Einer der Werte, die Sie für eine Ressource angegeben haben, stimmt nicht mit dem erwarteten Wert überein. Ursache für diesen Fehler können viele unterschiedliche Bedingungen sein. Beispielsweise kann ein Kennwort unzureichend oder ein Blobname fehlerhaft sein. Überprüfen Sie die Fehlermeldung, um zu ermitteln, welcher Wert korrigiert werden muss. | |
 | InvalidRequestContent | Ihre Bereitstellungswerte enthalten entweder unerwartete Werte, oder es fehlen erforderliche Werte. Bestätigen Sie die Werte für Ihren Ressourcentyp. | [Vorlagenreferenz](/azure/templates/) |
-| InvalidRequestFormat | Aktivieren Sie die Debugprotokollierung, wenn Sie die Bereitstellung durchführen, und überprüfen Sie den Inhalt der Anforderung. | [Debugprotokollierung](resource-manager-troubleshoot-tips.md#enable-debug-logging) |
+| InvalidRequestFormat | Aktivieren Sie die Debugprotokollierung, wenn Sie die Bereitstellung durchführen, und überprüfen Sie den Inhalt der Anforderung. | [Debugprotokollierung](#enable-debug-logging) |
 | InvalidResourceNamespace | Überprüfen Sie den Ressourcennamespace, den Sie in der **type**-Eigenschaft angegeben haben. | [Vorlagenreferenz](/azure/templates/) |
 | InvalidResourceReference | Die Ressource ist entweder noch nicht vorhanden, oder der Verweis darauf ist fehlerhaft. Überprüfen Sie, ob Sie eine Abhängigkeit hinzufügen müssen. Überprüfen Sie, ob Ihre Verwendung der Funktion **reference** die für Ihr Szenario erforderlichen Parameter umfasst. | [Auflösen von Abhängigkeiten](resource-manager-not-found-errors.md) |
 | InvalidResourceType | Überprüfen Sie den Ressourcentyp, den Sie in der **type**-Eigenschaft angegeben haben. | [Vorlagenreferenz](/azure/templates/) |
@@ -75,7 +76,124 @@ In diesem Artikel werden einige häufige Azure-Bereitstellungsfehler beschrieben
 
 ## <a name="find-error-code"></a>Ermitteln des Fehlercodes
 
-Wenn während der Bereitstellung ein Fehler auftritt, gibt Resource Manager einen Fehlercode zurück. Sie können die Fehlermeldung über das Portal, PowerShell oder die Azure CLI anzeigen. Die äußere Fehlermeldung ist für die Problembehandlung ggf. zu allgemein. Sehen Sie sich die innere Meldung an, die ausführliche Informationen zum Fehler enthält. Weitere Informationen finden Sie unter [Bestimmen des Fehlercodes](resource-manager-troubleshoot-tips.md#determine-error-code).
+Es gibt zwei Arten von Fehlern, die auftreten können:
+
+* Überprüfungsfehler
+* Bereitstellungsfehler
+
+Überprüfungsfehler entstehen durch Szenarien, die vor der Bereitstellung bestimmt werden können. Dazu gehören Syntaxfehler in Ihrer Vorlage oder Versuche, Ressourcen bereitzustellen, die Ihre Abonnementkontingente überschreiten würden. Bereitstellungsfehler können durch Bedingungen verursacht werden, die während des Bereitstellungsprozesses auftreten. Dazu gehören Versuche, auf eine Ressource zuzugreifen, die parallel bereitgestellt wird.
+
+Beide Fehlertypen geben einen Fehlercode zurück, der für die Problembehandlung für die Bereitstellung genutzt werden kann. Beide Fehlertypen werden im [Aktivitätsprotokoll](resource-group-audit.md) angezeigt. Überprüfungsfehler werden allerdings nicht im Bereitstellungsverlauf festgehalten, da die Bereitstellung tatsächlich nie gestartet wurde.
+
+### <a name="validation-errors"></a>Überprüfungsfehler
+
+Wenn Sie Bereitstellungen über das Portal ausführen, wird ein Überprüfungsfehler nach dem Senden der Werte angezeigt.
+
+![Anzeigen eines Überprüfungsfehlers im Portal](./media/resource-manager-common-deployment-errors/validation-error.png)
+
+Wählen Sie die Meldung aus, um weitere Details zu sehen. In der folgenden Abbildung sehen Sie einen **InvalidTemplateDeployment**-Fehler und eine Meldung, die auf eine durch eine Richtlinie blockierte Bereitstellung hinweist.
+
+![Anzeigen von Überprüfungsdetails](./media/resource-manager-common-deployment-errors/validation-details.png)
+
+### <a name="deployment-errors"></a>Bereitstellungsfehler
+
+Wenn der Vorgang die Überprüfung besteht, aber ein Fehler während der Bereitstellung auftritt, wird der Fehler in den Benachrichtigungen angezeigt. Wählen Sie die Benachrichtigung aus.
+
+![Benachrichtigungsfehler](./media/resource-manager-common-deployment-errors/notification.png)
+
+Sie sehen weitere Details zur Bereitstellung. Wählen Sie die Option aus, um weitere Informationen zum Fehler zu finden.
+
+![Fehler bei der Bereitstellung](./media/resource-manager-common-deployment-errors/deployment-failed.png)
+
+Die Fehlermeldung und die Fehlercodes werden angezeigt. Es sind zwei Fehlercodes vorhanden. Der erste Fehlercode (**DeploymentFailed**) ist ein allgemeiner Fehler, der nicht die Informationen bereitstellt, die Sie zum Beheben des Fehlers benötigen. Der zweite Fehlercode (**StorageAccountNotFound**) enthält die Details, die Sie benötigen. 
+
+![Fehlerdetails](./media/resource-manager-common-deployment-errors/error-details.png)
+
+## <a name="enable-debug-logging"></a>Debugprotokollierung aktivieren
+
+Manchmal benötigen Sie weitere Informationen zur Anforderung und zur Antwort, um den genauen Fehler zu ermitteln. Mithilfe von PowerShell oder der Azure CLI können Sie anfordern, dass während der Bereitstellung zusätzliche Informationen protokolliert werden.
+
+- PowerShell
+
+   Legen Sie in PowerShell den Parameter **DeploymentDebugLogLevel** auf „All“, „ResponseContent“ oder „RequestContent“ fest.
+
+  ```powershell
+  New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile c:\Azure\Templates\storage.json -DeploymentDebugLogLevel All
+  ```
+
+   Überprüfen Sie den Anforderungsinhalt mit folgendem Cmdlet:
+
+  ```powershell
+  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.request | ConvertTo-Json
+  ```
+
+   Oder überprüfen Sie den Antwortinhalt mit:
+
+  ```powershell
+  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.response | ConvertTo-Json
+  ```
+
+   Mithilfe dieser Informationen können Sie ermitteln, ob ein Wert in der Vorlage nicht ordnungsgemäß festgelegt wurde.
+
+- Azure-Befehlszeilenschnittstelle
+
+   Untersuchen Sie die Bereitstellungsvorgänge mit folgendem Befehl:
+
+  ```azurecli
+  az group deployment operation list --resource-group ExampleGroup --name vmlinux
+  ```
+
+- Geschachtelte Vorlage
+
+   Verwenden Sie zum Protokollieren von Debuginformationen zu einer geschachtelten Vorlage das **debugSetting**-Element.
+
+  ```json
+  {
+      "apiVersion": "2016-09-01",
+      "name": "nestedTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+          "mode": "Incremental",
+          "templateLink": {
+              "uri": "{template-uri}",
+              "contentVersion": "1.0.0.0"
+          },
+          "debugSetting": {
+             "detailLevel": "requestContent, responseContent"
+          }
+      }
+  }
+  ```
+
+## <a name="create-a-troubleshooting-template"></a>Erstellen einer Vorlage zur Problembehandlung
+
+Mitunter ist die einfachste Möglichkeit für die Behandlung von Problemen bei Ihrer Vorlage das Testen von Teilen davon. Sie können eine vereinfachte Vorlage erstellen, die es Ihnen ermöglicht, sich auf den Teil zu konzentrieren, der Ihrer Meinung nach den Fehler verursacht. Nehmen wir beispielsweise an, dass ein Fehler auftritt, wenn Sie auf eine Ressource verweisen. Anstatt sich mit einer gesamten Vorlage zu beschäftigen, erstellen Sie eine Vorlage, die den Teil wiedergibt, der Ihr Problem möglicherweise verursacht. So können Sie besser ermitteln, ob die richtigen Parameter übergeben, Vorlagenfunktionen ordnungsgemäß genutzt und die Ressourcen abgerufen werden, die Sie erwarten.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageName": {
+        "type": "string"
+    },
+    "storageResourceGroup": {
+        "type": "string"
+    }
+  },
+  "variables": {},
+  "resources": [],
+  "outputs": {
+    "exampleOutput": {
+        "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageName')), '2016-05-01')]",
+        "type" : "object"
+    }
+  }
+}
+```
+
+Ein anderes Beispiel: Es treten Bereitstellungsfehler auf, von denen Sie annehmen, dass sie aufgrund falsch festgelegter Abhängigkeiten entstehen. Testen Sie Ihre Vorlage, indem Sie sie in einfachere Vorlagen aufteilen. Erstellen Sie zunächst eine Vorlage, mit der nur eine einzige Ressource bereitgestellt wird (z.B. eine SQL Server-Instanz). Wenn Sie sicher sind, dass die Ressource richtig definiert ist, fügen Sie eine Ressource hinzu, die davon abhängig ist (z.B. eine SQL-Datenbank). Wenn diese beiden Ressourcen richtig definiert sind, fügen Sie weitere abhängige Ressourcen hinzu (z.B. Überwachungsrichtlinien). Löschen Sie zwischen den jeweiligen Testbereitstellungen die Ressourcengruppe, um sicherzustellen, dass Sie die Abhängigkeiten angemessen testen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).

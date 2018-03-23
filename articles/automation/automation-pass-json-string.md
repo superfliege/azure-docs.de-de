@@ -1,23 +1,21 @@
 ---
-title: "Übergeben eines JSON-Objekts an ein Azure Automation-Runbook | Microsoft-Dokumentation"
-description: "Übergeben von Parametern an ein Runbook als JSON-Objekt"
+title: Übergeben eines JSON-Objekts an ein Azure Automation-Runbook
+description: Übergeben von Parametern an ein Runbook als JSON-Objekt
 services: automation
-documentationcenter: dev-center-name
-author: georgewallace
-manager: carmonm
-keywords: PowerShell, Runbook, JSON, Azure Automation
 ms.service: automation
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: powershell
-ms.workload: TBD
-ms.date: 06/15/2017
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 5390ba34a25713aed84d6e778335e30f27c2b1f8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 03/16/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+keywords: PowerShell, Runbook, JSON, Azure Automation
+ms.openlocfilehash: c5ceced9f37cb76c8c760a7f2d1c680f98e704c3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Übergeben eines JSON-Objekts an ein Azure Automation-Runbook
 

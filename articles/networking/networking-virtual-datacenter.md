@@ -1,5 +1,5 @@
 ---
-title: Virtuelle Microsoft Azure-Rechenzentren | Microsoft-Dokumentation
+title: 'Virtuelles Rechenzentrum in Microsoft Azure: Eine Netzwerkperspektive | Microsoft-Dokumentation'
 description: In diesem Artikel erfahren Sie, wie Sie Ihr virtuelles Rechenzentrum in Azure erstellen.
 services: networking
 author: tracsman
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
-ms.openlocfilehash: 7dcc6b77bde8b8a7b485525105c1a07c53301f8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c4693d91fe81ce55c6faa6610ea19219ac5cfcb5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
-# <a name="microsoft-azure-virtual-data-center"></a>Virtuelle Microsoft Azure-Rechenzentren
+# <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Virtuelles Rechenzentrum in Microsoft Azure: Eine Netzwerkperspektive
 **Microsoft Azure**: Schneller agieren, Geld sparen, lokale Apps und Daten integrieren
 
 ## <a name="overview"></a>Übersicht

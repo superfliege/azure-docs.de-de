@@ -1,12 +1,12 @@
 ---
-title: "Behandeln von externen Ereignissen in Durable Functions – Azure"
-description: "Es wird beschrieben, wie Sie externe Ereignisse in der Erweiterung Durable Functions für Azure Functions behandeln."
+title: Behandeln von externen Ereignissen in Durable Functions – Azure
+description: Es wird beschrieben, wie Sie externe Ereignisse in der Erweiterung Durable Functions für Azure Functions behandeln.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1f581be0abaff542285abc0d4c2f4bffe7281d20
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 5ffbe6a7d74f0be2193d711d304f19e62ab08741
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Behandeln von externen Ereignissen in Durable Functions (Azure Functions)
 
@@ -128,7 +128,7 @@ Intern fügt `RaiseEventAsync` eine Nachricht in die Warteschlange ein, die von 
 > [Eternal orchestrations in Durable Functions (Azure Functions)](durable-functions-eternal-orchestrations.md) (Ewige Orchestrierungen in Durable Functions [Azure Functions])
 
 > [!div class="nextstepaction"]
-> [Stateful singletons in Durable Functions - Counter sample](durable-functions-counter.md) (Statusbehaftete Singletons in Durable Functions – Zählerbeispiel)
+> [Stateful singletons in Durable Functions - Counter sample](durable-functions-phone-verification.md) (Statusbehaftete Singletons in Durable Functions – Zählerbeispiel)
 
 > [!div class="nextstepaction"]
 > [Human interaction in Durable Functions - Phone verification sample](durable-functions-phone-verification.md) (Menschliche Interaktion in Durable Functions – Telefonüberprüfungsbeispiel)

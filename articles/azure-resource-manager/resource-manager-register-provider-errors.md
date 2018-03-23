@@ -2,22 +2,22 @@
 title: Fehler bei der Azure-Ressourcenanbieterregistrierung | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie Fehler bei der Azure-Ressourcenanbieterregistrierung beheben.
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: d6a99917e732a3439a31cafa5608348694014054
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 303b3ae0ee7b4baeda974d2b3c62fefa0a68796f
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Beheben von Fehlern bei der Ressourcenanbieterregistrierung
 
@@ -40,6 +40,8 @@ Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
+Die Fehlermeldung enthält in der Regel Vorschläge für die unterstützten Standorte und API-Versionen. Sie können Ihre Vorlage in einen der vorgeschlagenen Werte ändern. Die meisten Anbieter werden automatisch über das Azure-Portal oder die verwendete Befehlszeilenschnittstelle registriert. Wenn Sie zuvor noch keinen bestimmten Ressourcenanbieter verwendet haben, müssen Sie diesen Anbieter unter Umständen registrieren.
+
 ## <a name="cause"></a>Ursache
 
 Für diese Fehler gibt es drei Gründe:
@@ -48,11 +50,7 @@ Für diese Fehler gibt es drei Gründe:
 1. Die API-Version wird für den Ressourcentyp nicht unterstützt.
 1. Der Standort wird für den Ressourcentyp nicht unterstützt.
 
-## <a name="solution"></a>Lösung
-
-Die Fehlermeldung enthält in der Regel Vorschläge für die unterstützten Standorte und API-Versionen. Sie können Ihre Vorlage in einen der vorgeschlagenen Werte ändern. Die meisten Anbieter werden automatisch über das Azure-Portal oder die verwendete Befehlszeilenschnittstelle registriert. Wenn Sie zuvor noch keinen bestimmten Ressourcenanbieter verwendet haben, müssen Sie diesen Anbieter unter Umständen registrieren. Weitere Informationen zu Ressourcenanbietern erhalten Sie in PowerShell oder der Azure-Befehlszeilenschnittstelle.
-
-### <a name="solution-1"></a>Lösung 1
+## <a name="solution-1---powershell"></a>Lösung 1: PowerShell
 
 Für PowerShell verwenden Sie zum Anzeigen des Registrierungsstatus **Get-AzureRmResourceProvider**.
 
@@ -78,9 +76,7 @@ Verwenden Sie zum Abrufen der unterstützten API-Versionen für einen bestimmten
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
-### <a name="solution-2"></a>Lösung 2
-
-**Azure-Befehlszeilenschnittstelle**
+## <a name="solution-2---azure-cli"></a>Lösung 2: Azure CLI
 
 Mit dem Befehl `az provider list` können Sie ermitteln, ob der Anbieter registriert ist.
 
@@ -100,7 +96,7 @@ Verwenden Sie zum Anzeigen der unterstützten Standorte und API-Versionen für e
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-### <a name="solution-3"></a>Lösung 3
+## <a name="solution-3---azure-portal"></a>Lösung 3: Azure-Portal
 
 Sie können den Registrierungsstatus sehen und einen Ressourcenanbieter-Namespace über das Portal registrieren.
 

@@ -1,11 +1,11 @@
 ---
 title: 'Azure Backup: Vorbereiten der Sicherung virtueller Computer | Microsoft-Dokumentation'
-description: "Vergewissern Sie sich, dass Ihre Umgebung für die Sicherung virtueller Computer in Azure vorbereitet ist."
+description: Vergewissern Sie sich, dass Ihre Umgebung für die Sicherung virtueller Computer in Azure vorbereitet ist.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 keywords: Sicherung; Sichern;
 ms.assetid: e87e8db2-b4d9-40e1-a481-1aa560c03395
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 62e047d706bdc42abbe44340c87267e59eb84369
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: cd8274ab6b50eee83bc3e41ea543930aa309e790
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
@@ -49,12 +49,6 @@ Wenn diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit d
 Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen vertraut:
 
 * Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
-* Das Sichern virtueller Computer mit Datenträgern, die größer als 1.023 GB sind, wird nicht unterstützt.
-
-  > [!NOTE]
-  > Es gibt eine private Vorschauversion zur Unterstützung von Sicherungen für VMs mit Datenträgern, die größer sind als 1 TB. Einzelheiten entnehmen Sie dem Dokument für die [private Vorschauversion für die Unterstützung von Sicherungen virtueller Computer mit großen Datenträgern](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
-  >
-
 * Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
 * Das Sichern von virtuellen Linux-Computern, die mit Linux Unified Key Setup (LUKS) verschlüsselt sind, wird nicht unterstützt.
 * Das Sichern von virtuellen Computern, die freigegebene Clustervolumes (Cluster Shared Volumes, CSV) oder eine Konfiguration für Dateiserver mit horizontaler Skalierung enthalten, wird nicht empfohlen. Dafür müssen alle während einer Momentaufnahmenaufgabe in der Clusterkonfiguration enthaltenen virtuellen Computer berücksichtigt werden. Azure Backup unterstützt keine Multi-VM-Konsistenz. 

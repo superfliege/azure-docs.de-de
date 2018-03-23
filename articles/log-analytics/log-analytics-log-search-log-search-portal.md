@@ -1,11 +1,11 @@
 ---
-title: "Verwenden des Portals für die Protokollsuche in Azure Log Analytics | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält ein Tutorial, mit dem das Erstellen von Protokollsuchvorgängen und das Analysieren von Daten in Ihrem Log Analytics-Arbeitsbereich mithilfe des Portals für die Protokollsuche beschrieben wird.  Das Tutorial umfasst die Ausführung einiger einfachen Abfragen zum Zurückgeben von verschiedenen Arten von Daten und das Analysieren der Ergebnisse."
+title: Verwenden des Portals für die Protokollsuche in Azure Log Analytics | Microsoft-Dokumentation
+description: Dieser Artikel enthält ein Tutorial, mit dem das Erstellen von Protokollsuchvorgängen und das Analysieren von Daten in Ihrem Log Analytics-Arbeitsbereich mithilfe des Portals für die Protokollsuche beschrieben wird.  Das Tutorial umfasst die Ausführung einiger einfachen Abfragen zum Zurückgeben von verschiedenen Arten von Daten und das Analysieren der Ergebnisse.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 3a2e8803d51d81ab0eda3dc814d01822e17bc14e
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 37213012e817f0fae21a47a4334a519bbbca206b
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Erstellen von Protokollsuchvorgängen in Azure Log Analytics mit dem Portal für die Protokollsuche
 
@@ -98,7 +98,7 @@ Die Option **Filter** ist nur für Eigenschaften verfügbar, deren Name in Blau 
 
 ![Menü „Filter“](media/log-analytics-log-search-log-search-portal/log-search-portal-01a.png)
 
-Sie können die Ergebnisse nach einer einzelnen Eigenschaft gruppieren, indem Sie im Datensatzmenü die Option **Gruppieren nach** auswählen.  Dadurch wird der Abfrage ein [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator)-Operator hinzugefügt, um die Ergebnisse in einem Diagramm anzuzeigen.  Sie können auch nach mehreren Eigenschaften gruppieren, dazu müssen Sie die Abfrage jedoch direkt bearbeiten.  Wählen Sie im Datensatzmenü neben der **Computer**-Eigenschaft **Gruppieren nach „Computer“** aus.  
+Sie können die Ergebnisse nach einer einzelnen Eigenschaft gruppieren, indem Sie im Datensatzmenü die Option **Gruppieren nach** auswählen.  Dadurch wird der Abfrage ein [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator)-Operator hinzugefügt, um die Ergebnisse in einem Diagramm anzuzeigen.  Sie können auch nach mehreren Eigenschaften gruppieren, dazu müssen Sie die Abfrage jedoch direkt bearbeiten.  Wählen Sie im Datensatzmenü neben der Eigenschaften **Computer** die Option **Gruppieren nach „Computer“** aus.  
 
 ![Gruppieren nach „Computer“](media/log-analytics-log-search-log-search-portal/log-search-portal-10.png)
 

@@ -2,10 +2,10 @@
 title: Sichern des Windows-Systemstatus in Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Systemstatus von Windows Server und/oder Windows-Computern in Azure sichern.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: saurabhsensharma
 manager: carmonm
-editor: 
+editor: ''
 keywords: Sichern; Sicherung; Sichern von Dateien und Ordnern
 ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: saurse;markgal
-ms.openlocfilehash: e7dce94e56a8b51dd1c47e306aeb1d11d0dfb45c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: df2565be7c543be061c3297f4d87aeae5eae4b8e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Sichern des Windows-Systemstatus in der Ressourcen Manager-Bereitstellung
 Dieser Artikel beschreibt, wie Sie den Systemstatus von Windows Server in Azure sichern. Dies ist ein Tutorial, in dem die Grundlagen beschrieben werden.
@@ -33,7 +33,7 @@ Um den Systemstatus von Windows Server zu sichern, müssen Sie einen Recovery Se
 
 ### <a name="to-create-a-recovery-services-vault"></a>So erstellen Sie einen Recovery Services-Tresor
 1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com/) an, sofern Sie noch nicht angemeldet sind.
-2. Klicken Sie im Hub-Menü auf **Alle Dienste**, geben Sie in der Ressourcenliste **Recovery Services** ein, und klicken Sie auf **Recovery Services-Tresore**.
+2. Klicken Sie im Hubmenü auf **Alle Dienste**, geben Sie in der Ressourcenliste **Recovery Services** ein, und klicken Sie auf **Recovery Services-Tresore**.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-system-state/open-rs-vault-list.png) <br/>
 
@@ -139,6 +139,8 @@ Sie haben einen Tresor erstellt und können ihn nun für das Sichern des Windows
 > Die Tresoranmeldeinformationen dürfen nur an einem für die Windows Server-Instanz lokalen Speicherort gespeichert werden, in der Sie den Agent verwenden möchten. 
 >
 
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
+
 ## <a name="install-and-register-the-agent"></a>Installieren und Registrieren des Agents
 
 > [!NOTE]
@@ -191,7 +193,6 @@ Für die erste Sicherung verwenden Sie den Microsoft Azure Recovery Services-Age
 5. Wählen Sie **Systemstatus** aus, und klicken Sie anschließend auf **OK**.
 
 6. Klicken Sie auf **Weiter**.
-
 
 7. Wählen Sie auf den nachfolgenden Seiten die erforderliche Sicherungshäufigkeit und Aufbewahrungsrichtlinie für die Systemstatussicherungen. 
 

@@ -1,25 +1,19 @@
 ---
 title: Verwalten von Verlaufsdaten in temporalen Tabellen mit einer Aufbewahrungsrichtlinie | Microsoft Docs
-description: "Erfahren Sie, wie Sie eine temporale Aufbewahrungsrichtlinie verwenden, um die Kontrolle über Verlaufsdaten zu behalten."
+description: Erfahren Sie, wie Sie eine temporale Aufbewahrungsrichtlinie verwenden, um die Kontrolle über Verlaufsdaten zu behalten.
 services: sql-database
-documentationcenter: 
 author: bonova
-manager: drasumic
-editor: 
-ms.assetid: 76cfa06a-e758-453e-942c-9f1ed6a38c2a
+manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 10/12/2016
 ms.author: bonova
-ms.openlocfilehash: b4e1524008837094b57a3df469439ceaebf9c166
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 36ce6889cccbf5ae7df519c5c73846f12eed4a08
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Verwalten von Verlaufsdaten in temporalen Tabellen mit einer Aufbewahrungsrichtlinie
 Temporale Tabellen können die Größe einer Datenbank mehr erhöhen als reguläre Tabellen, insbesondere, wenn Sie Verlaufsdaten für einen längeren Zeitraum beibehalten. Daher stellt eine Aufbewahrungsrichtlinie für Verlaufsdaten einen wichtigen Aspekt der Planung und Verwaltung des Lebenszyklus jeder temporalen Tabelle dar. Temporale Tabellen in Azure SQL-Datenbank verfügen über einen benutzerfreundlichen Aufbewahrungsmechanismus, der Sie bei dieser Aufgabe unterstützt.
@@ -147,7 +141,7 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 
 Der Versuch, die obige Anweisung auszuführen, ist nicht erfolgreich, und es wird folgende Fehlermeldung ausgegeben:
 
-*Meldg. 13772, Ebene 16, Status 1 <br></br> Cannot create non-clustered index on a temporal history table 'WebsiteUserInfoHistory' since it has finite retention period and clustered columnstore index defined. (Ungruppierter Index kann für temporale Verlaufstabelle 'WebsiteUserInfoHistory' nicht erstellt werden, da sie eine begrenzte Beibehaltungsdauer hat und ein gruppierter Columnstore-Index definiert wurde.)*
+*Msg 13772, Level 16, State 1 <br></br> Cannot create non-clustered index on a temporal history table 'WebsiteUserInfoHistory' since it has finite retention period and clustered columnstore index defined. (Nicht-gruppierter Index kann für temporale Verlaufstabelle 'WebsiteUserInfoHistory' nicht erstellt werden, da sie eine begrenzte Beibehaltungsdauer hat und ein gruppierter Columnstore-Index definiert wurde.)*
 
 ## <a name="querying-tables-with-retention-policy"></a>Abfragen von Tabellen mit Aufbewahrungsrichtlinie
 Alle Abfragen für die temporale Tabelle filtern automatisch Zeilen mit Verlaufsdaten aus, die der begrenzten Aufbewahrungsrichtlinie entsprechen, um unvorhersehbare und inkonsistente Ergebnisse zu vermeiden, da veraltete Zeilen *jederzeit und in beliebiger Reihenfolge* durch den Bereinigungstask gelöscht werden können.

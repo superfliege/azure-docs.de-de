@@ -1,29 +1,29 @@
 ---
-title: "Schützen personenbezogener Daten in Microsoft Azure | Microsoft-Dokumentation"
-description: "Erster Artikel einer Reihe von Artikeln zur Verwendung von Azure zum Schützen personenbezogener Daten"
+title: Schützen personenbezogener Daten in Microsoft Azure | Microsoft-Dokumentation
+description: Dieser Artikel dient zur Unterstützung bei der Verwendung von Azure zum Schützen von personenbezogenen Daten und zur Einhaltung der Datenschutz-Grundverordnung (DSGVO).
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 4dbdb2dc11bdc515fb3856dd45203868122c7726
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 741fb17be315faacef6483cbaaa565136622cb45
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-in-microsoft-azure"></a>Schützen personenbezogener Daten in Microsoft Azure
 
-Dieser Artikel bildet die Einführung in eine Reihe von Artikeln zur Verwendung von Sicherheitstechnologien und -diensten von Azure zum Schützen personenbezogener Daten. Dies ist eine wesentliche Anforderung für viele unternehmens- und branchenspezifische Compliance- und Governanceinitiativen. Hier werden das Szenario, die Problembeschreibung und die Unternehmensziele beschrieben.
+Dieser Artikel bildet die Einführung in eine Reihe von Artikeln zur Verwendung von Sicherheitstechnologien und -diensten von Azure zum Schützen personenbezogener Daten. Dies ist eine wesentliche Anforderung für viele unternehmens- und branchenspezifische Compliance- und Governanceinitiativen. Beispielsweise können Sie die Informationen in dieser Artikelreihe zur Einhaltung der Datenschutz-Grundverordnung (DSGVO). nutzen. Hier werden das Szenario, die Problembeschreibung und die Unternehmensziele beschrieben.
 
 ## <a name="scenario-and-problem-statement"></a>Szenario und Problembeschreibung
 

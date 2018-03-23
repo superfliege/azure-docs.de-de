@@ -1,11 +1,11 @@
 ---
-title: "Verbinden eines Clouddiensts mit einem benutzerdefinierten Domänencontroller | Microsoft Docs"
-description: "Hier erfahren Sie, wie Sie mithilfe von PowerShell und der AD-Domänenerweiterung eine Verbindung zwischen Ihren Web-/Workerrollen und einer benutzerdefinierten AD-Domäne herstellen."
+title: Verbinden eines Clouddiensts mit einem benutzerdefinierten Domänencontroller | Microsoft Docs
+description: Hier erfahren Sie, wie Sie mithilfe von PowerShell und der AD-Domänenerweiterung eine Verbindung zwischen Ihren Web-/Workerrollen und einer benutzerdefinierten AD-Domäne herstellen.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1e2d7c87-d254-4e7a-a832-67f84411ec95
 ms.service: cloud-services
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: e2aadf6a103e92a4fbb11223a449280a36dea6b4
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4a50ae5e19ff9bf79b7f5361e5a274a2aba350f5
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Verbinden von Azure Cloud Services-Rollen mit einem in Azure gehosteten AD-Domänencontroller
 Zunächst richten wir ein Virtual Network (VNet) in Azure ein. Anschließend fügen wir dem VNet einen Active Directory-Domänencontroller (gehostet auf einem virtuellen Azure-Computer) hinzu. Danach fügen wir dem erstellten VNET vorhandene Clouddienstrollen hinzu und verbinden diese mit dem Domänencontroller.
@@ -33,7 +33,7 @@ Befolgen Sie diese Schrittanleitung, und fügen Sie am Ende des Artikels einen K
 Beim Netzwerk, auf das vom Clouddienst verwiesen wird, muss es sich um ein **klassisches virtuelles Netzwerk** handeln.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-Sie können ein virtuelles Netzwerk in Azure über das Azure-Portal oder über PowerShell erstellen. In diesem Tutorial wird PowerShell verwendet. Informationen zum Erstellen eines virtuellen Netzwerks über das Azure-Portal finden Sie unter [Erstellen eines virtuellen Netzwerks](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Sie können ein virtuelles Netzwerk in Azure über das Azure-Portal oder über PowerShell erstellen. In diesem Tutorial wird PowerShell verwendet. Informationen zum Erstellen eines virtuellen Netzwerks über das Azure-Portal finden Sie unter [Erstellen eines virtuellen Netzwerks](../virtual-network/quick-create-portal.md). Im Artikel wird die Erstellung eines virtuellen Netzwerks (Resource Manager) beschrieben, aber Sie müssen ein virtuelles Netzwerk (klassisch) für Clouddienste erstellen. Wählen Sie hierzu im Portal die Option **Ressource erstellen**, geben Sie im Feld **Suche** den Suchbegriff *virtuelles Netzwerk* ein, und drücken Sie die **EINGABETASTE**. Wählen Sie in den Suchergebnissen unter **Alles** die Option **Virtuelles Netzwerk**. Wählen Sie unter **Bereitstellungsmodell auswählen** die Option **Klassisch** und die Option **Erstellen**. Anschließend können Sie die Schritte des Artikels ausführen.
 
 ```powershell
 #Create Virtual Network

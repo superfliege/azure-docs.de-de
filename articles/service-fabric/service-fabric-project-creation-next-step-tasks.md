@@ -1,11 +1,11 @@
 ---
-title: "Nächste Schritte bei der Service Fabric-Projekterstellung | Microsoft Docs"
-description: "Erfahren Sie mehr über das Anwendungsprojekt, das Sie gerade in Visual Studio erstellt haben.  Erfahren Sie, wie Sie mithilfe von Tutorials Dienste erstellen können, und erfahren Sie mehr über die Entwicklung von Diensten für Service Fabric."
+title: Nächste Schritte bei der Service Fabric-Projekterstellung | Microsoft Docs
+description: Erfahren Sie mehr über das Anwendungsprojekt, das Sie gerade in Visual Studio erstellt haben.  Erfahren Sie, wie Sie mithilfe von Tutorials Dienste erstellen können, und erfahren Sie mehr über die Entwicklung von Diensten für Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 299d1f97-1ca9-440d-9f81-d1d0dd2bf4df
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: rwike77
-ms.openlocfilehash: 17eb1e7c2184fe9cae19685a47ea80716292b754
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 1e5b8523422aae00655b003bf15103d5467b4177
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Ihre Service Fabric-Anwendung und nächste Schritte
 Ihre Azure Service Fabric-Anwendung wurde erstellt. In diesem Artikel werden einige Tutorials zum Ausprobieren, der Aufbau Ihres Projekts, weitere interessante Informationen und mögliche nächste Schritte beschrieben.
@@ -55,7 +55,7 @@ Das Anwendungsprojekt besteht aus Folgendem:
 
 
 ## <a name="learn-more-about-the-programming-models"></a>Weitere Informationen zu den Programmiermodellen
-Service Fabric bietet verschiedene Methoden zum Schreiben und Verwalten von Diensten.  Hier folgen eine Übersicht und konzeptionelle Informationen zu [zustandslosen und zustandsbehafteten Reliable Services](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [Containern](service-fabric-containers-overview.md), [ausführbaren Gastdateien](service-fabric-deploy-existing-app.md) und [zustandslosen und zustandsbehafteten ASP.NET Core-Diensten](service-fabric-reliable-services-communication-aspnetcore.md).
+Service Fabric bietet verschiedene Methoden zum Schreiben und Verwalten von Diensten.  Hier folgen eine Übersicht und konzeptionelle Informationen zu [zustandslosen und zustandsbehafteten Reliable Services](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [Containern](service-fabric-containers-overview.md), [ausführbaren Gastdateien](service-fabric-guest-executables-introduction.md) und [zustandslosen und zustandsbehafteten ASP.NET Core-Diensten](service-fabric-reliable-services-communication-aspnetcore.md).
 
 ## <a name="learn-about-service-communication"></a>Weitere Informationen zur Dienstkommunikation
 Eine Service Fabric-Anwendung besteht aus verschiedenen Diensten, die jeweils eine bestimmte Aufgabe ausführen. Diese Dienste können miteinander kommunizieren und es kann Clientanwendungen außerhalb des Clusters geben, die sich mit den Diensten verbinden und mit ihnen kommunizieren. Erfahren Sie, wie die [Kommunikation mit und zwischen Ihren Diensten](service-fabric-connect-and-communicate-with-services.md) in Service Fabric eingerichtet wird. 

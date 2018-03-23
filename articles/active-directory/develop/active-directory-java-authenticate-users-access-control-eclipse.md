@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: java
 author: rmcmurray
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 247dfd59-0221-4193-97ec-4f3ebe01d3c7
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
 ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse
 Diese Anleitung zeigt, wie der Azure Access Control Service (ACS) im Azure Toolkit für Eclipse verwendet wird. Weitere Informationen zum ACS finden Sie im Abschnitt [Nächste Schritte](#next_steps) .
@@ -58,8 +58,7 @@ Wenn zwischen dem ACS und einem IP ein Vertrauensverhältnis konfiguriert worden
 
 **Verbundanbieter (Federation Provider, FP)** – Identitätsanbieter (IPs) kennen die Benutzer, authentifizieren Benutzer anhand ihrer Anmeldeinformationen und geben Ansprüche für Benutzer anhand der ihnen bekannten Informationen aus. Ein Verbundanbieter (FP) ist eine andere Art von Authentifizierungsstelle: Er authentifiziert Benutzer nicht direkt, sondern fungiert als Instanz zur Vermittlung der Authentifizierung zwischen einer RP und einer oder mehreren IP-Adressen. Sowohl IPs als auch FPs geben Sicherheitstokens aus. Daher verwenden Sie beide Security Token Services (STS). Der ACS ist ein FP.
 
-
-            **ACS-Regel-Engine** – Die Logik, die eingehende Tokens von vertrauenswürdigen IPs in Tokens transformiert, die von einer RP verwendet werden können, ist in Form einfacher Anspruchstransformationsregeln kodifiziert. Der ACS funktioniert als Regel-Engine, die jede Transformationsregel anwendet, die Sie für Ihre RP festgelegt haben.
+**ACS-Regel-Engine** – Die Logik, die eingehende Tokens von vertrauenswürdigen IPs in Tokens transformiert, die von einer RP verwendet werden können, ist in Form einfacher Anspruchstransformationsregeln kodifiziert. Der ACS funktioniert als Regel-Engine, die jede Transformationsregel anwendet, die Sie für Ihre RP festgelegt haben.
 
 **ACS-Namespace** - Ein Namespace ist eine Partition auf der obersten Ebene des ACS, die Sie zur Organisation Ihrer Einstellungen verwenden. Ein Namespace enthält eine Liste der IPs, denen Sie vertrauen, die Anwendungen der vertrauenden Seite, die Sie bereitstellen möchten, und die Regeln, die die Regel-Engine auf eingehende Tokens anwenden soll. Ein Namespace weist verschiedene Endpunkte auf, die von der Anwendung und dem Entwickler verwendet werden, damit der ACS seine Funktion ausführt.
 
@@ -79,9 +78,9 @@ Die folgende Abbildung zeigt, wie die ACS-Authentifizierung bei einer Webanwendu
 Damit Sie die in dieser Anleitung gestellten Aufgaben ausführen können, brauchen Sie Folgendes:
 
 * Ein Java Developer Kit (JDK), Version 1.6 oder höher.
-* Eclipse IDE für Java EE-Entwickler, Indigo oder höher. Dies kann von <http://www.eclipse.org/downloads/> heruntergeladen werden. 
+* Eclipse IDE für Java EE-Entwickler, Indigo oder höher. Diese kann von <http://www.eclipse.org/downloads/> heruntergeladen werden. 
 * Eine Distribution eines Java-basierten Webservers oder Anwendungsservers wie Apache Tomcat, GlassFish, JBoss Application Server oder Jetty.
-* Ein Azure-Abonnement, das Sie unter <http://www.microsoft.com/windowsazure/offers/> erhalten.
+* Ein Azure-Abonnement, das von <http://www.microsoft.com/windowsazure/offers/> bezogen werden kann.
 * Das Azure Toolkit für Eclipse, Version von April 2014 oder höher. Weitere Informationen finden Sie unter [Installation des Azure Toolkit für Eclipse](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx).
 * Ein X.509-Zertifikat, das von Ihrer Anwendung verwendet werden kann. Dieses Zertifikat wird sowohl als öffentliches Zertifikat (.cer) als auch im Format Personal Information Exchange (.PFX) benötigt. (Optionen zur Erstellung dieses Zertifikats finden Sie weiter unten in diesem Lernprogramm).
 * Außerdem sollten Sie mit dem Azure-Serveremulator und den Einsatztechniken vertraut sein, die unter [Creating a Hello World Application for Microsoft Azure in Eclipse (Erstellen einer Hallo-Welt-Anwendung für Azure in Eclipse, in englischer Sprache)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)diskutiert werden.
@@ -171,7 +170,6 @@ Auf der Seite **Login Page Integration: Azure Web App** (Anmeldeseitenintegratio
     ![Hinzufügen einer JSP-Datei für den ACS (Beispiel)][add_jsp_file_acs]
    
     Klicken Sie auf **Weiter**.
-
 4. Wählen Sie im Dialogfeld **JSP-Vorlage auswählen** die Option **Neue JSP-Datei (HTML)**, und klicken Sie auf **Fertig stellen**.
 5. Wenn in Eclipse die Datei „index.jsp“ geöffnet wird, geben Sie den Text **Hello ACS World!** ein, damit er dynamisch im vorhandenen `<body>`-Element angezeigt wird. Der aktualisierte `<body>` -Inhalt sollte wie folgt aussehen:
    
@@ -207,7 +205,7 @@ Auf der Seite **Login Page Integration: Azure Web App** (Anmeldeseitenintegratio
 4. Klicken Sie auf **Fertig stellen**.
 5. Klicken Sie auf die Schaltfläche **Run in Azure Emulator** .
 6. Schließen Sie nach dem Start Ihrer Java-Anwendung im Serveremulator alle Instanzen Ihres Browsers, damit andere laufende Browsersitzungen keine Konflikte mit Ihrem ACS-Anmeldungstest auslösen.
-7. Führen Sie die Anwendung aus, indem Sie in Ihrem Browser <http://localhost:8080/MyACSHelloWorld/> öffnen (oder <https://localhost:8080/MyACSHelloWorld/>, wenn Sie **Require HTTPS connections** [HTTPS-Verbindungen erfordern] aktiviert haben). Sie sollten nun zur Anmeldung bei Windows Live ID aufgefordert und dann zur Rückgabe-URL weitergeleitet werden, die Sie für die Anwendung der vertrauenden Seite angegeben haben.
+7. Führen Sie die Anwendung durch Öffnen von <http://localhost:8080/MyACSHelloWorld/> in Ihrem Browser (oder <https://localhost:8080/MyACSHelloWorld/>, wenn Sie die Option für **erforderliche HTTPS-Verbindungen** aktiviert haben) aus. Sie sollten nun zur Anmeldung bei Windows Live ID aufgefordert und dann zur Rückgabe-URL weitergeleitet werden, die Sie für die Anwendung der vertrauenden Seite angegeben haben.
 8. Wenn Sie die Anzeige Ihrer Anwendung beendet haben, klicken Sie auf die Schaltfläche **Reset Azure Emulator** .
 
 ## <a name="deploy-to-azure"></a>Bereitstellen in Azure

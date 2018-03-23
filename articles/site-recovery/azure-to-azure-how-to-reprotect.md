@@ -1,18 +1,18 @@
 ---
-title: "Erneutes Schützen von virtuellen Azure-Computern, für die mithilfe von Azure Site Recovery ein Failover zurück zur primären Azure-Region durchgeführt wurde | Microsoft-Dokumentation"
-description: "Beschreibt das erneute Schützen von virtuellen Azure-Computern in einer sekundären Region nach einem Failover aus einer primären Region mithilfe von Azure Site Recovery."
+title: Erneutes Schützen von virtuellen Azure-Computern, für die mithilfe von Azure Site Recovery ein Failover zurück zur primären Azure-Region durchgeführt wurde | Microsoft-Dokumentation
+description: Beschreibt das erneute Schützen von virtuellen Azure-Computern in einer sekundären Region nach einem Failover aus einer primären Region mithilfe von Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: d24376c57c468a562fc6d6dd52b4e9b01b53c3da
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 47056c85c6cb66a7fa28d623a4472b827d970dab
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde
 
@@ -29,7 +29,7 @@ Wenn Sie mithilfe von [Azure Site Recovery](site-recovery-overview.md) ein [Fail
 - Nachdem das erneute Schützen abgeschlossen ist und die virtuellen Computer replizieren, können Sie ein Failover für sie von der sekundären zur primären Region durchführen.
 
 > [!WARNING]
-> Wenn Sie Computer von der sekundären zur primären Region [migriert](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, können Sie den virtuellen Computer weder erneut schützen noch ein Failback dafür ausführen.
+> Wenn Sie Computer von der sekundären zur primären Region [migriert](migrate-overview.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, können Sie den virtuellen Computer weder erneut schützen noch ein Failback dafür ausführen.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen

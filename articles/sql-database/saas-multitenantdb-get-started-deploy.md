@@ -1,25 +1,21 @@
 ---
-title: "Bereitstellen einer mehrinstanzenfähigen SaaS-Datenbankanwendung mit Sharding, die Azure SQL-Datenbank verwendet | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie die mehrinstanzenfähige Wingtip Tickets-SaaS-Datenbankanwendung mit Sharding bereitstellen und kennenlernen, mit der SaaS-Muster per Azure SQL-Datenbank dargestellt werden."
+title: Bereitstellen einer mehrinstanzenfähigen SaaS-Datenbankanwendung mit Sharding, die Azure SQL-Datenbank verwendet | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie die mehrinstanzenfähige Wingtip Tickets-SaaS-Datenbankanwendung mit Sharding bereitstellen und kennenlernen, mit der SaaS-Muster per Azure SQL-Datenbank dargestellt werden.
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: billgib;anjangsh
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: genemi
-ms.openlocfilehash: 3bbfdccd020f5efc7510d9688ea38f5e1af4ebde
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 82983c8926bdf3c7256c529448e5b4f3b2c2381c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding, die Azure SQL-Datenbank verwendet
 
@@ -126,14 +122,14 @@ Jeder Veranstaltungsort erhält eine personalisierte Web-App, über die Veransta
 
 Auf der zentralen Webseite **Veranstaltungshub** wird eine Liste mit Links zu den Mandanten in der jeweiligen Bereitstellung aufgeführt. Anhand der folgenden Schritte können Sie die Webseite **Veranstaltungshub** und die jeweilige Web-App erkunden:
 
-1. Öffnen Sie den **Veranstaltungshub** in Ihrem Webbrowser:
+1. Öffnen Sie den **Ereignis-Hub** in Ihrem Webbrowser:
     - http://events.wingtip-mt.&lt;Benutzer&gt;.trafficmanager.net &nbsp; *(ersetzen Sie &gt;Benutzer* durch den Benutzerwert Ihrer Bereitstellung)&lt;
 
-    ![Veranstaltungshub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
+    ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
-2. Klicken Sie im **Veranstaltungshub** auf **Fabrikam Jazz Club**.
+2. Klicken Sie im **Ereignis-Hub** auf **Fabrikam Jazz Club**.
 
-   ![Veranstaltungen](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Ereignisse](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 #### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
@@ -149,7 +145,7 @@ Zum Steuern der Verteilung eingehender Anforderungen nutzt die Wingtip-App den [
 #### <a name="events-hub"></a>Veranstaltungshub
 
 1. Im **Veranstaltungshub** werden alle im Katalog registrierten Mandanten sowie deren Veranstaltungen aufgelistet.
-2. Der **Veranstaltungshub** ruft mit erweiterten Metadaten im Katalog den Namen des Mandanten für die jeweilige Zuordnung ab, um die URL zu erstellen.
+2. Der **Ereignis-Hub** ruft mit erweiterten Metadaten im Katalog den Namen des Mandanten für die jeweilige Zuordnung ab, um die URL zu erstellen.
 
 In einer Produktionsumgebung erstellen Sie typischerweise einen CNAME-DNS-Eintrag zum [Zuordnen einer Unternehmensinternetdomäne](../traffic-manager/traffic-manager-point-internet-domain.md) zum Traffic Manager-Profil.
 

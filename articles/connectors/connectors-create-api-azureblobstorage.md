@@ -1,11 +1,11 @@
 ---
-title: "Hinzufügen des Azure Blob Storage-Connectors in Ihren Logik-Apps | Microsoft Docs"
+title: Hinzufügen des Azure Blob Storage-Connectors in Ihren Logik-Apps | Microsoft Docs
 description: Verwenden und Konfigurieren des Azure Blob Storage-Connectors in einer Logik-App
-services: 
-documentationcenter: 
-author: MandiOhlinger
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: b5dc3f75-6bea-420b-b250-183668d2848d
 ms.service: logic-apps
@@ -14,17 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/02/2017
-ms.author: mandia; ladocs
-ms.openlocfilehash: e12669abd41f09d161fab786af29955da54a1633
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 7aaff2ac78201c4484105c6cacc5f0fef19ca7b5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-the-azure-blob-storage-connector-in-a-logic-app"></a>Verwenden des Azure Blob Storage-Connectors in einer Logik-App
 Mit dem Azure Blob Storage-Connector können Sie Blobs in Ihr(em) Speicherkonto hochladen, aktualisieren, abrufen und löschen – und all das in einer Logik-App.  
 
-Azure-Blobspeicher ermöglicht Folgendes:
+Azure Blob Storage ermöglicht Folgendes:
 
 * Gestalten Sie Ihren Workflow, indem Sie neue Projekte hochladen oder kürzlich aktualisierte Dateien abrufen.
 * Mithilfe von Aktionen können Sie unter anderem Dateimetadaten abrufen, eine Datei löschen und Dateien kopieren. Wenn also beispielsweise ein Tool auf einer Azure-Website aktualisiert wird (Trigger), kann eine Datei in Blob Storage aktualisiert werden (Aktion). 
@@ -65,7 +65,7 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 5. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
 
 > [!TIP]
-> Der [Speicher-Explorer](http://storageexplorer.com/) ist ein praktisches Verwaltungstool für mehrere Speicherkonten.
+> Der [Storage-Explorer](http://storageexplorer.com/) ist ein praktisches Verwaltungstool für mehrere Speicherkonten.
 
 ## <a name="connector-specific-details"></a>Connectorspezifische Details
 

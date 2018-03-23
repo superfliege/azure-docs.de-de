@@ -1,11 +1,11 @@
 ---
-title: "Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation"
-description: "Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppen."
+title: Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppen.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
 ms.openlocfilehash: 52be84b73e70a02c43ef71917dc272060d82b42d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -293,7 +293,7 @@ Laut Azure Key Vault-Dokumentation gibt die REST-API zum Abrufen des Geheimnisse
  
 Methode | URL
 --- | ---
-GET | https://mykeyvault.vault.azure.net/secrets/{Name des geheimen Schlüssels}/{Version des geheimen Schlüssels}?api-version={API-Version}
+GET | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
 
 Ersetzen Sie {*Name des geheimen Schlüssels*} durch den Namen und {*Version des geheimen Schlüssels*} durch die Version des Geheimnisses, das Sie abrufen möchten. Die Geheimnisversion kann weggelassen werden. In diesem Fall wird die aktuelle Version abgerufen.
   
@@ -339,7 +339,7 @@ Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microso
 
 ### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>Funktioniert die [verwaltete Azure-Dienstidentität](https://docs.microsoft.com/azure/active-directory/msi-overview) mit Skalierungsgruppen für virtuelle Computer?
 
-Ja. Einige MSI-Beispielvorlagen finden Sie in den Azure-Schnellstartvorlagen. Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux). Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows).
+Ja. Einige MSI-Beispielvorlagen finden Sie in den Azure-Schnellstartvorlagen. Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux) Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows)
 
 
 ## <a name="extensions"></a>Erweiterungen

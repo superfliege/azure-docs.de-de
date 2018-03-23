@@ -1,12 +1,12 @@
 ---
 title: Arbeiten mit Proxys in Azure Functions | Microsoft-Dokumentation
-description: "Übersicht zum Verwenden von Azure Functions-Proxys"
+description: Übersicht zum Verwenden von Azure Functions-Proxys
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 75b568c12fd58d5599b6878dedb6c2266b6cb649
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 0e7fe474c3b247baa6550770c661af62e83b3737
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
 
@@ -106,7 +106,7 @@ Bei der Back-End-URL *https://%ORDER_PROCESSING_HOST%/api/orders* wird z.B. „%
 
 ## <a name="debugProxies"></a>Problembehandlung bei Proxys
 
-Wenn Sie das Flag `"debug":true` zu einem Proxy in `proxy.json` hinzufügen, aktivieren Sie die Debugprotokollierung. Die Protokolle werden unter `D:\home\LogFiles\Application\Proxies\DetailedTrace` gespeichert. Auf sie kann über die erweiterten Tools (Kudu) zugegriffen werden. HTTP-Antworten enthalten auch einen `Proxy-Trace-Location`-Header mit einer URL für den Zugriff auf die Protokolldatei.
+Wenn Sie das Flag `"debug":true` zu einem Proxy in `proxies.json` hinzufügen, aktivieren Sie die Debugprotokollierung. Die Protokolle werden unter `D:\home\LogFiles\Application\Proxies\DetailedTrace` gespeichert. Auf sie kann über die erweiterten Tools (Kudu) zugegriffen werden. HTTP-Antworten enthalten auch einen `Proxy-Trace-Location`-Header mit einer URL für den Zugriff auf die Protokolldatei.
 
 Sie können einen Proxy von der Clientseite debuggen, indem Sie einen `Proxy-Trace-Enabled`-Header hinzufügen, der auf `true` festgelegt ist. Dadurch wird auch eine Ablaufverfolgung für das Dateisystem protokolliert, und die Ablaufverfolgungs-URL wird als Header in der Antwort zurückgegeben.
 
@@ -114,7 +114,7 @@ Sie können einen Proxy von der Clientseite debuggen, indem Sie einen `Proxy-Tra
 
 Aus Sicherheitsgründen möchten Sie es unter Umständen nicht zulassen, dass Ihr Dienst zum Generieren einer Ablaufverfolgung aufgerufen wird. Andere können dann ohne Ihre Anmeldeinformationen nicht auf die Ablaufverfolgungsinhalte zugreifen. Das Erstellen der Ablaufverfolgung verbraucht jedoch Ressourcen und legt offen, dass Sie Funktionsproxys verwenden.
 
-Deaktivieren Sie Ablaufverfolgungen vollständig, indem Sie `"debug":false` zu einem bestimmten Proxy in `proxy.json` hinzufügen.
+Deaktivieren Sie Ablaufverfolgungen vollständig, indem Sie `"debug":false` zu einem bestimmten Proxy in `proxies.json` hinzufügen.
 
 ## <a name="advanced-configuration"></a>Erweiterte Konfiguration
 

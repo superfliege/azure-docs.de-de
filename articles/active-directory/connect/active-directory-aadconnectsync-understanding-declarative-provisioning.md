@@ -1,11 +1,11 @@
 ---
 title: 'Azure AD Connect: Grundlegendes zur deklarativen Bereitstellung | Microsoft-Dokumentation'
-description: "Erklärt das Konfigurationsmodell für die deklarative Bereitstellung in Azure AD Connect"
+description: Erklärt das Konfigurationsmodell für die deklarative Bereitstellung in Azure AD Connect
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
 ms.service: active-directory
 ms.workload: identity
@@ -46,7 +46,7 @@ Das Bereichsmodul wertet ein Objekt aus und bestimmt die Regeln, die sich innerh
 Der Bereich wird als Gruppen und Klauseln definiert. Die Klauseln liegen innerhalb einer Gruppe. Ein logisches AND wird zwischen allen Klauseln in einer Gruppe verwendet. Zum Beispiel (department =IT AND country = Denmark). Ein logisches OR wird zwischen Gruppen verwendet.
 
 ![Umfang](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope2.png)  
-Der Bereich in der folgenden Abbildung wird gelesen als (department = IT AND country = Denmark) OR (country=Sweden). Wenn die Auswertung zeigt, dass weder Gruppe 1 noch Gruppe 2 zutrifft, befindet sich die Regel innerhalb des Bereichs.
+Der Bereich in der folgenden Abbildung wird gelesen als (department = IT AND country = Denmark) OR (country=Sweden). Wenn entweder Gruppe 1 oder Gruppe 2 wahr ist, befindet sich die Regel im Geltungsbereich.
 
 Das Bereichsmodul unterstützt die folgenden Vorgänge.
 

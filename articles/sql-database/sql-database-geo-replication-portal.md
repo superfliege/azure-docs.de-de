@@ -1,25 +1,19 @@
 ---
-title: "Azure-Portal: SQL-Datenbank – Georeplikation | Microsoft-Dokumentation"
-description: "Konfigurieren der Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers"
+title: 'Azure-Portal: SQL-Datenbank – Georeplikation | Microsoft-Dokumentation'
+description: Konfigurieren der Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: d0b29822-714f-4633-a5ab-fb1a09d43ced
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 03/06/2016
 ms.author: carlrab
-ms.openlocfilehash: d880a2f1aef3fa1bfc824f14650088bac4cb8693
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 33e67c9415ddf3504d593858d56f15cdc7282d69
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 
@@ -53,7 +47,7 @@ Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beg
 3. Wählen Sie den Server und den Tarif für die sekundäre Datenbank aus bzw. konfigurieren Sie Server und Tarif.
    
     ![Konfigurieren der sekundären Datenbank](./media/sql-database-geo-replication-portal/create-secondary.png)
-4. Optional können Sie einem elastischen Pool eine sekundäre Datenbank hinzufügen. Um die sekundäre Datenbank in einem Pool zu erstellen, klicken Sie auf **Elastischer Pool**, und wählen Sie einen Pool auf dem Zielserver aus. Ein Pool muss bereits auf dem Zielserver vorhanden sein. Dieser Workflow erstellt keinen Pool.
+4. Optional können Sie einem Pool für elastische Datenbanken eine sekundäre Datenbank hinzufügen. Um die sekundäre Datenbank in einem Pool zu erstellen, klicken Sie auf **Pool für elastische Datenbanken**, und wählen Sie einen Pool auf dem Zielserver aus. Ein Pool muss bereits auf dem Zielserver vorhanden sein. Dieser Workflow erstellt keinen Pool.
 5. Klicken Sie auf **Erstellen** , um die sekundäre Datenbank hinzuzufügen.
 6. Die sekundäre Datenbank wird erstellt, und der Seedingprozess beginnt.
    

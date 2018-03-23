@@ -1,26 +1,21 @@
 ---
-title: "Überwachen und Optimieren der Datenbankleistung in Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Tipps für die Leistungsoptimierung in Azure SQL-Datenbank durch Auswertung und Verbesserung."
+title: Überwachen und Optimieren der Datenbankleistung in Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Tipps für die Leistungsoptimierung in Azure SQL-Datenbank durch Auswertung und Verbesserung.
 services: sql-database
-documentationcenter: 
 author: v-shysun
-manager: felixwu
-editor: 
+manager: craigg
+editor: ''
 keywords: SQL-Leistungsoptimierung, Datenbankleistungsoptimierung, Tipps zur SQL-Leistungsoptimierung, Optimierung der SQL-Datenbankleistung
-ms.assetid: eb7b3f66-3b33-4e1b-84fb-424a928a6672
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 11/03/2017
 ms.author: v-shysun
-ms.openlocfilehash: 1791c56f86ee1997177daa95638c4f14068f8115
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 273a80134975fb9aa4d40b132c1403cc27246371
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitoring-and-performance-tuning"></a>Überwachen und Optimieren der Datenbankleistung
 
@@ -54,9 +49,9 @@ Sie können die Leistung Ihrer Abfragen auch automatisch durch Azure SQL-Datenba
 
 ## <a name="improving-database-performance-with-more-resources"></a>Verbesserung der Datenbankleistung mit mehr Ressourcen
 
-Schließlich können Sie noch die Anzahl der in Azure SQL-Datenbank verfügbaren Ressourcen ändern, wenn es keine umsetzbaren Elemente gibt, die die Leistung Ihrer Datenbank verbessern können. Sie können mehr Ressourcen zuweisen, indem Sie die [Dienstebene](sql-database-service-tiers.md) einer eigenständigen Datenbank verändern oder die eDTUs eines elastischen Pools zu einer beliebigen Zeit erhöhen.
+Schließlich können Sie noch die Anzahl der in Azure SQL-Datenbank verfügbaren Ressourcen ändern, wenn es keine umsetzbaren Elemente gibt, die die Leistung Ihrer Datenbank verbessern können. Sie können mehr Ressourcen zuweisen, indem Sie die [Dienstebene](sql-database-service-tiers.md) einer eigenständigen Datenbank verändern oder die eDTUs eines Pools für elastische Datenbanken zu einer beliebigen Zeit erhöhen.
 1. Für eigenständige Datenbanken können Sie die [Diensttarife bedarfsgesteuert ändern](sql-database-service-tiers.md), um die Datenbankleistung zu steigern.
-2. Ziehen Sie bei mehreren Datenbanken [elastische Pools](sql-database-elastic-pool-guidance.md) in Betracht, um Ressourcen automatisch zu skalieren.
+2. Ziehen Sie bei mehreren Datenbanken [Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md) in Betracht, um Ressourcen automatisch zu skalieren.
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>Optimieren und Ändern von Anwendungs- oder Datenbankcode
 

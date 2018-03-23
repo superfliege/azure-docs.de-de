@@ -1,8 +1,8 @@
 ---
-title: "Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff | Microsoft-Dokumentation"
-description: "Verschaffen Sie sich einen Überblick über die unterstützten Einstellungen in einer Richtlinie für den bedingten Azure Active Directory-Zugriff."
+title: Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff | Microsoft-Dokumentation
+description: Verschaffen Sie sich einen Überblick über die unterstützten Einstellungen in einer Richtlinie für den bedingten Azure Active Directory-Zugriff.
 services: active-directory.
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 03/07/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: fd82d77e79f05a67f8e818095753b8dc22ccf314
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ba93e1b597bb6bdb752563f2873b8e0c5f7a8181
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff
 
@@ -136,9 +136,19 @@ Diese Einstellung funktioniert mit allen Browsern. Die folgenden Betriebssysteme
 | macOS                  | Chrome, Safari                      | ![Prüfen][1] |
 
 
-> [!NOTE]
-> Um Chrome-Unterstützung zu erhalten, müssen Sie Windows 10 Creators Update (Version 1703) oder höher verwenden.<br>
-> Sie können [diese Erweiterung](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) installieren.
+
+#### <a name="chrome-support"></a>Chrome-Unterstützung
+
+Installieren Sie [diese Erweiterung](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji), damit Chrome unter **Windows 10 Creators Update (Version 1703**) oder höher unterstützt wird.
+
+Erstellen Sie den folgenden Registrierungsschlüssel, damit Chrome unter **Windows 8.1 und 7** unterstützt wird:
+
+|    |    |
+|--- | ---|
+|path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+|NAME | 1 |
+|Typ | REG_SZ (Zeichenfolge) |
+|Daten | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 Diese Browser unterstützen die Geräteauthentifizierung, sodass das Gerät identifiziert und anhand einer Richtlinie überprüft werden kann. Bei der Geräteüberprüfung tritt ein Fehler auf, wenn der Browser im privaten Modus ausgeführt wird. 
 
@@ -183,6 +193,10 @@ Sie können in der Richtlinie für bedingten Zugriff vorschreiben, dass ein Zugr
 Diese Einstellung gilt für die folgenden Client-Apps:
 
 
+- Microsoft Intune Managed Browser
+- Microsoft PowerBI
+- Microsoft Invoicing
+- Microsoft Launcher
 - Microsoft Azure Information Protection
 - Microsoft Excel
 - Microsoft Kaizala 

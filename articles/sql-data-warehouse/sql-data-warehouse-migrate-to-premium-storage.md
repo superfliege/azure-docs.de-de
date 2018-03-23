@@ -5,7 +5,7 @@ services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
-ms.date: 11/29/2016
+ms.date: 03/15/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 751f553c277cec579327771beb2f3256664452b1
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 3b43bc17b7f9cf80a9520c5c573be3a48d82e4e7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Migrieren eines Data Warehouse zu Storage Premium
 Für Azure SQL Data Warehouse wurde vor Kurzem [Storage Premium eingeführt, um die Leistung besser vorhersagen zu können][premium storage for greater performance predictability]. Vorhandene Data Warehouses mit derzeit Standardspeicher können nun zu Storage Premium migriert werden. Sie können die automatische Migration nutzen. Wenn Sie aber den Migrationszeitpunkt bestimmen möchten (was eine gewisse Ausfallzeit mit sich bringt), können Sie die Migration selbst vornehmen.
@@ -31,13 +31,13 @@ Wenn Sie ein Data Warehouse vor den folgenden Terminen erstellt haben, verwenden
 
 | **Region** | **Vor diesem Datum erstelltes Data Warehouse** |
 |:--- |:--- |
-| Australien (Osten) |Storage Premium noch nicht verfügbar |
+| Australien (Osten) |1. Januar 2018 |
 | China, Osten |1. November 2016 |
 | China, Norden |1. November 2016 |
 | Deutschland, Mitte |1. November 2016 |
 | Deutschland, Nordosten |1. November 2016 |
-| Indien, Westen |Storage Premium noch nicht verfügbar |
-| Japan, Westen |Storage Premium noch nicht verfügbar |
+| Indien, Westen |1. Februar 2018 |
+| Japan, Westen |1. Februar 2018 |
 | USA Nord Mitte |10. November 2016 |
 
 ## <a name="automatic-migration-details"></a>Details zur automatischen Migration
@@ -69,14 +69,14 @@ Automatische Migrationen erfolgen zwischen 18:00 Uhr und 06:00 Uhr (Ortszeit in 
 
 | **Region** | **Geschätztes Startdatum** | **Geschätztes Enddatum** |
 |:--- |:--- |:--- |
-| Australien (Osten) |Noch nicht festgelegt |Noch nicht festgelegt |
-| China, Osten |9. Januar 2017 |13. Januar 2017 |
-| China, Norden |9. Januar 2017 |13. Januar 2017 |
-| Deutschland, Mitte |9. Januar 2017 |13. Januar 2017 |
-| Deutschland, Nordosten |9. Januar 2017 |13. Januar 2017 |
-| Indien, Westen |Noch nicht festgelegt |Noch nicht festgelegt |
-| Japan, Westen |Noch nicht festgelegt |Noch nicht festgelegt |
-| USA Nord Mitte |9. Januar 2017 |13. Januar 2017 |
+| Australien (Osten) |19. März 2018 |20. März 2018 |
+| China, Osten |Bereits migriert |Bereits migriert |
+| China, Norden |Bereits migriert |Bereits migriert |
+| Deutschland, Mitte |Bereits migriert |Bereits migriert |
+| Deutschland, Nordosten |Bereits migriert |Bereits migriert |
+| Indien, Westen |19. März 2018 |20. März 2018 |
+| Japan, Westen |19. März 2018 |20. März 2018 |
+| USA Nord Mitte |Bereits migriert |Bereits migriert |
 
 ## <a name="self-migration-to-premium-storage"></a>Selbst durchgeführte Migration zu Storage Premium
 Wenn Sie steuern möchten, wann genau Ihr Data Warehouse nicht verfügbar sein soll, können Sie die folgenden Schritte ausführen, um ein vorhandenes Data Warehouse von Standardspeicher zu Storage Premium zu migrieren. Wenn Sie sich hierfür entscheiden, müssen Sie die selbst durchgeführte Migration vor Beginn der automatischen Migration in dieser Region abschließen. Dadurch wird sichergestellt, dass Sie alle Risiken aufgrund eines Konflikts mit der automatischen Migration vermeiden (siehe den [Zeitplan für die automatische Migration][automatic migration schedule]).
@@ -84,11 +84,14 @@ Wenn Sie steuern möchten, wann genau Ihr Data Warehouse nicht verfügbar sein s
 ### <a name="self-migration-instructions"></a>Anleitung zur selbst durchgeführten Migration
 Verwenden Sie zum Migrieren Ihres Data Warehouse die Sicherung- und Wiederherstellungsfunktionen. Der Wiederherstellungsanteil der Migration dauert pro Data Warehouse pro TB gespeicherter Daten ca. eine Stunde. Führen Sie die [Schritte zum Umbenennen während der Migration][steps to rename during migration] aus, wenn Sie nach Abschluss der Migration den gleichen Namen beibehalten möchten.
 
-1. [Halten][Pause] Sie Ihr Data Warehouse an. Daraufhin wird eine automatische Sicherung erstellt.
+1. [Halten][Pause] Sie Ihr Data Warehouse an. 
 2. Führen Sie eine [Wiederherstellung][Restore] der neuesten Momentaufnahme durch.
 3. Löschen Sie das vorhandene Data Warehouse in Standardspeicher. **Wenn Sie diesen Schritt nicht ausführen, werden Ihnen beide Data Warehouses in Rechnung gestellt.**
 
 > [!NOTE]
+>
+> Achten Sie beim Wiederherstellen Ihres Data Warehouse darauf, dass der letzte verfügbare Wiederherstellungspunkt nach dem Anhalten des Data Warehouse liegt.
+>
 > Die folgenden Einstellungen werden im Rahmen der Migration nicht übernommen:
 >
 > * Die Überwachung auf Datenbankebene muss erneut aktiviert werden.
@@ -105,60 +108,13 @@ Beispiel: Ihr vorhandenes Data Warehouse mit Standardspeicher hat derzeit den Na
    ```
    ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
    ```
-2. [Halten][Pause] Sie „MyDW_BeforeMigration“ an. Daraufhin wird eine automatische Sicherung erstellt.
+2. [Halten][Pause] Sie „MyDW_BeforeMigration“ an. 
 3. Führen Sie mithilfe der neuesten Momentaufnahme eine [Wiederherstellung][Restore] durch, und erstellen Sie dabei eine neue Datenbank mit dem vorherigen Namen (z.B. „MyDW“).
 4. Löschen Sie „MyDW_BeforeMigration“. **Wenn Sie diesen Schritt nicht ausführen, werden Ihnen beide Data Warehouses in Rechnung gestellt.**
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Mit dem Wechsel zu Storage Premium haben wir auch die Anzahl von Datenbank-Blobdateien in der zugrunde liegenden Architektur Ihrer Data Warehouse-Instanz erhöht. Um die Leistungsvorteile dieses Wechsels zu maximieren, erstellen Sie Ihre gruppierten Columnstore-Indizes mit dem folgenden Skript neu. Das Skript erzwingt, dass einige Ihrer Daten in den zusätzlichen Blobs gespeichert werden. Wenn Sie keine Maßnahmen ergreifen, werden die Daten im Laufe der Zeit auf natürliche Weise verteilt, sobald Sie weitere Daten in Ihre Tabellen laden.
-
-**Voraussetzungen:**
-
-- Das Data Warehouse sollte mit 1.000 Data Warehouse-Einheiten oder mehr ausgeführt werden (siehe [Skalieren von Computeleistung][scale compute power]).
-- Der Benutzer, der das Skript ausführt, muss die [Rolle „mediumrc“][mediumrc role] oder höher haben. Führen Sie Folgendes aus, um dieser Rolle einen Benutzer hinzuzufügen: ````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
-
-````sql
--------------------------------------------------------------------------------
--- Step 1: Create table to control index rebuild
--- Run as user in mediumrc or higher
---------------------------------------------------------------------------------
-create table sql_statements
-WITH (distribution = round_robin)
-as select
-    'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement,
-    row_number() over (order by s.name, t.name) as sequence
-from
-    sys.schemas s
-    inner join sys.tables t
-        on s.schema_id = t.schema_id
-where
-    is_external = 0
-;
-go
-
---------------------------------------------------------------------------------
--- Step 2: Execute index rebuilds. If script fails, the below can be re-run to restart where last left off.
--- Run as user in mediumrc or higher
---------------------------------------------------------------------------------
-
-declare @nbr_statements int = (select count(*) from sql_statements)
-declare @i int = 1
-while(@i <= @nbr_statements)
-begin
-      declare @statement nvarchar(1000)= (select statement from sql_statements where sequence = @i)
-      print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement
-      exec (@statement)
-      delete from sql_statements where sequence = @i
-      set @i += 1
-end;
-go
--------------------------------------------------------------------------------
--- Step 3: Clean up table created in Step 1
---------------------------------------------------------------------------------
-drop table sql_statements;
-go
-````
 
 Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket erstellen][create a support ticket] und als möglichen Grund „Migration zu Storage Premium“ angeben.
 
@@ -174,7 +130,7 @@ Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket
 [Restore]: sql-data-warehouse-restore-database-portal.md
 [steps to rename during migration]: #optional-steps-to-rename-during-migration
 [scale compute power]: quickstart-scale-compute-portal.md
-[mediumrc role]: sql-data-warehouse-develop-concurrency.md
+[mediumrc role]: resource-classes-for-workload-management.md
 
 <!--MSDN references-->
 

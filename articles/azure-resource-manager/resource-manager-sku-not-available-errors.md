@@ -1,23 +1,23 @@
 ---
-title: "Fehler: Azure SKU nicht verfügbar | Microsoft-Dokumentation"
-description: "Hier wird beschrieben, wie Sie den Fehler vom Typ „SKU nicht verfügbar“ während der Bereitstellung beheben."
+title: 'Fehler: Azure SKU nicht verfügbar | Microsoft-Dokumentation'
+description: Hier wird beschrieben, wie Sie den Fehler vom Typ „SKU nicht verfügbar“ während der Bereitstellung beheben.
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: a6cccfa5097847429d3e402e3d522addc14b8c31
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: b0cbd3c232e5df831031cc8e436f8dbb24b0e72c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Beheben des Fehlers vom Typ „SKU nicht verfügbar“
 
@@ -37,13 +37,9 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 Sie erhalten diesen Fehler, wenn die ausgewählte Ressourcen-SKU (z.B. die Größe des virtuellen Computers) für den ausgewählten Standort nicht verfügbar ist.
 
-## <a name="solution"></a>Lösung
+## <a name="solution-1---powershell"></a>Lösung 1: PowerShell
 
-Zum Beheben dieses Problems müssen Sie ermitteln, welche SKUs in einer Region verfügbar sind. Sie können PowerShell, das Portal oder einen REST-Vorgang verwenden, um nach verfügbaren SKUs zu suchen.
-
-### <a name="solution-1"></a>Lösung 1
-
-Verwenden Sie in PowerShell den Befehl [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku). Filtern Sie die Ergebnisse nach Standort. Für diesen Befehl benötigen Sie die aktuelle Version von PowerShell.
+Verwenden Sie den Befehl [Get AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku), um zu ermitteln, welche SKUs in einer Region verfügbar sind. Filtern Sie die Ergebnisse nach Standort. Für diesen Befehl benötigen Sie die aktuelle Version von PowerShell.
 
 ```powershell
 Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "southcentralus"}
@@ -61,9 +57,9 @@ virtualMachines      Standard_A1 southcentralus
 virtualMachines      Standard_A2 southcentralus
 ```
 
-### <a name="solution-2"></a>Lösung 2
+## <a name="solution-2---azure-cli"></a>Lösung 2: Azure CLI
 
-Verwenden Sie in der Azure CLI den Befehl `az vm list-skus`. Anschließend können Sie zum Filtern der Ausgabe `grep` oder ein ähnliches Hilfsprogramm verwenden.
+Verwenden Sie den Befehl `az vm list-skus`, um zu ermitteln, welche SKUs in einer Region verfügbar sind. Anschließend können Sie zum Filtern der Ausgabe `grep` oder ein ähnliches Hilfsprogramm verwenden.
 
 ```bash
 $ az vm list-skus --output table
@@ -79,15 +75,15 @@ availabilitySets  centralus           Classic                 MaximumPlatformFau
 availabilitySets  centralus           Aligned                 MaximumPlatformFaultDomainCount=3
 ```
 
-### <a name="solution-3"></a>Lösung 3
+## <a name="solution-3---azure-portal"></a>Lösung 3: Azure-Portal
 
-Verwenden Sie das [Portal](https://portal.azure.com). Melden Sie sich beim Portal an, und fügen Sie über die Oberfläche eine Ressource hinzu. Beim Festlegen der Werte werden die verfügbaren SKUs für die Ressource angezeigt. Sie müssen die Bereitstellung nicht abschließen.
+Verwenden Sie das [Portal](https://portal.azure.com), um zu ermitteln, welche SKUs in einer Region verfügbar sind. Melden Sie sich beim Portal an, und fügen Sie über die Oberfläche eine Ressource hinzu. Beim Festlegen der Werte werden die verfügbaren SKUs für die Ressource angezeigt. Sie müssen die Bereitstellung nicht abschließen.
 
 ![Verfügbare SKUs](./media/resource-manager-sku-not-available-errors/view-sku.png)
 
-### <a name="solution-4"></a>Lösung 4
+## <a name="solution-4---rest"></a>Lösung 4: REST
 
-Verwenden Sie die REST-API für virtuelle Computer. Senden Sie die folgende Anforderung:
+Verwenden Sie die REST-API für virtuelle Computer, um zu ermitteln, welche SKUs in einer Region verfügbar sind. Senden Sie die folgende Anforderung:
 
 ```HTTP 
 GET

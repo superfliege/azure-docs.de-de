@@ -1,24 +1,24 @@
 ---
 title: 'Azure AD Connect: Voraussetzungen und Hardware | Microsoft Docs'
-description: "Dieses Thema beschreibt die Voraussetzungen und die Hardwareanforderungen für Azure AD Connect."
+description: Dieses Thema beschreibt die Voraussetzungen und die Hardwareanforderungen für Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 91b88fda-bca6-49a8-898f-8d906a661f07
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 03/09/2018
 ms.author: billmath
-ms.openlocfilehash: d82a91aa51b6684e6bf88de142d00705a0ceddba
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: d6d6eadf0ae8996b019a0564715f843913101944
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 Dieses Thema beschreibt die Voraussetzungen und die Hardwareanforderungen für Azure AD Connect.
@@ -31,6 +31,7 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
   * Sie können auch das [Azure-Portal](https://portal.azure.com) verwenden. Für dieses Portal ist keine Azure AD-Lizenz erforderlich.
 * [Fügen Sie die Domäne hinzu](../active-directory-domains-add-azure-portal.md) , die Sie in Azure AD verwenden möchten, und überprüfen Sie sie. Wenn Sie beispielsweise planen, „contoso.com“ für Ihre Benutzer zu verwenden, sollten Sie sicherstellen, dass diese Domäne überprüft wurde und nicht nur die Standarddomäne „contoso.onmicrosoft.com“ verwendet wird.
 * In einem Azure AD-Mandanten sind standardmäßig 50.000 Objekte zulässig. Wenn Sie Ihre Domäne verifizieren, wird der Grenzwert auf 300.000 Objekte erhöht. Wenn Sie noch mehr Objekte in Azure AD benötigen, müssen Sie eine Supportanfrage stellen, um den Grenzwert noch weiter zu erhöhen. Wenn Sie mehr als 500.000 Objekte verwalten müssen, benötigen Sie eine Lizenz, z.B. für Office 365, Azure AD Basic, Azure AD Premium oder Enterprise Mobility and Security.
+* ADSyncPrep ist ein PowerShell-Skriptmodul, das Funktionen zum Vorbereiten Ihrer Active Directory-Umgebung auf Azure AD Connect bereitstellt.  ADSyncPrep erfordert das [Azure AD Microsoft Online v1.1-PowerShell-Modul](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).  Version 2 funktioniert nicht.  Sie können das Modul mithilfe des Cmdlets `Install-Module` installieren.  Weitere Informationen finden Sie über den angegebenen Link.
 
 ### <a name="prepare-your-on-premises-data"></a>Vorbereiten Ihrer lokalen Daten
 * Verwenden Sie [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) zum Ermitteln von Fehlern wie Duplikaten und Formatierungsproblemen in Ihrem Verzeichnis, bevor Sie eine Synchronisierung mit Azure AD und Office 365 durchführen.

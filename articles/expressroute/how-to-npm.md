@@ -1,13 +1,13 @@
 ---
-title: "Konfigurieren des Netzwerkleistungsmonitors für Azure ExpressRoute-Leitungen | Microsoft-Dokumentation"
-description: "Konfigurieren Sie die cloudbasierte Netzwerküberwachung für Azure ExpressRoute-Leitungen."
+title: Konfigurieren des Netzwerkleistungsmonitors für Azure ExpressRoute-Leitungen | Microsoft-Dokumentation
+description: Konfigurieren Sie die cloudbasierte Netzwerküberwachung für Azure ExpressRoute-Leitungen.
 documentationcenter: na
 services: expressroute
 author: ajaycode
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 4f3edb6879ff256b1b50a1437fe349084fe7de41
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 36cd2f106c39f1a6bdcb6ee33b96209974a06336
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
 
@@ -102,10 +102,7 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
 
 1. Wechseln Sie zur Registerkarte **Allgemeine Einstellungen** auf der Seite **Konfiguration des Netzwerkleistungsmonitors** für Ihre Ressource. Klicken Sie auf den Agent, der dem Prozessoren des Servers aus dem Abschnitt **Installieren der OMS-Agents** entspricht, und laden Sie die Setupdatei herunter.
 
-  >[!NOTE]
-  >Der Agent muss auf einem Windows Server-Computer (2008 SP1 oder höher) installiert werden. Die Überwachung von ExpressRoute-Leitungen unter Verwendung des Windows Desktop- oder Linux-Betriebssystem wird nicht unterstützt. 
-  >
-  >
+ 
 2. Kopieren Sie dann die **Arbeitsbereich-ID** und den **Primärschlüssel**, und fügen Sie diese in Editor ein.
 3. Laden Sie das PowerShell-Skript aus dem Abschnitt **Konfigurieren der OMS-Agents für die Überwachung per TCP-Protokoll** herunter. Das PowerShell-Skript unterstützt Sie beim Öffnen des relevanten Firewallports für die TCP-Transaktionen.
 
@@ -114,6 +111,16 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
 ### <a name="installagent"></a>2.2: Installieren eines Überwachungs-Agents auf jedem Überwachungsserver (für jedes zu überwachende VNET)
 
 Es wird empfohlen, dass Sie zur Bereitstellung von Redundanz mindestens zwei Agents auf jeder Seite der ExpressRoute-Verbindung (z.B. lokal, Azure-VNETs) installieren. Führen Sie die folgenden Schritte aus, um die Agents zu installieren:
+  
+  >[!NOTE]
+  >Der Agent muss auf einem Windows Server-Computer (2008 SP1 oder höher) installiert werden. Die Überwachung von ExpressRoute-Leitungen unter Verwendung des Windows Desktop- oder Linux-Betriebssystem wird nicht unterstützt. 
+  >
+  >
+  
+  >[!NOTE]
+  >SCOM-Agents sind u.U. nicht immer in der Lage, zu erkennen, ob sie in Azure gehostet werden.  Es wird empfohlen, keine SCOM-Agents in Azure-VNETs zu verwenden, um ExpressRoute zu überwachen.
+  >
+  >
 
 1. Führen Sie das **Setup** aus, um den Agent auf jedem Server zu installieren, den Sie zum Überwachen von ExpressRoute verwenden möchten. Der Server, den Sie für die Überwachung verwenden, kann lokal oder ein virtueller Computer sein und benötigt Zugriff auf das Internet. Sie müssen mindestens einen Agent lokal und einen in jedem Netzwerksegment, das in Azure überwacht werden soll, installieren.
 2. Klicken Sie auf der Seite **Willkommen**auf **Weiter**.

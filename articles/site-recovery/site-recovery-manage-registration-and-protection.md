@@ -1,18 +1,18 @@
 ---
 title: Entfernen von Servern und Deaktivieren des Schutzes | Microsoft Docs
-description: "In diesem Artikel wird erläutert, wie Sie die Registrierung von Servern im Site Recovery-Tresor aufheben und den Schutz für virtuelle Computer und physische Server deaktivieren."
+description: In diesem Artikel wird erläutert, wie Sie die Registrierung von Servern im Site Recovery-Tresor aufheben und den Schutz für virtuelle Computer und physische Server deaktivieren.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 03/05/2018
 ms.author: raynew
-ms.openlocfilehash: b26766ec26cc5afd82ec86c21e52d2737512fe8a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 16a5eaac1138d328f81cfa7d50f8705da867e352
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="remove-servers-and-disable-protection"></a>Entfernen von Servern und Deaktivieren des Schutzes
 
@@ -24,8 +24,8 @@ In diesem Artikel erfahren Sie, wie Sie die Registrierung von Servern in einem R
 Wenn Sie VMware-VMs oder physische Windows-/Linux-Server in Azure replizieren, können Sie die Registrierung des nicht verbundenen Konfigurationsservers bei einem Tresor wie folgt aufheben:
 
 1. [Deaktivieren des Schutzes für virtuelle Computer](#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)
-2. [Aufheben der Zuordnung](site-recovery-setup-replication-settings-vmware.md#dissociate-a-configuration-server-from-a-replication-policy) und [Löschen](site-recovery-setup-replication-settings-vmware.md#delete-a-replication-policy) aller Replikationsrichtlinien
-3. [Löschen des Konfigurationsservers](site-recovery-vmware-to-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server)
+2. [Aufheben der Zuordnung oder Löschen](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) von Replikationsrichtlinien
+3. [Löschen des Konfigurationsservers](vmware-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server)
 
 ## <a name="unregister-a-vmm-server"></a>Aufheben der Registrierung eines VMM-Servers
 

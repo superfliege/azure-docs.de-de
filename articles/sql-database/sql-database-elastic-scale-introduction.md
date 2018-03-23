@@ -1,25 +1,19 @@
 ---
 title: Horizontales Hochskalieren mit Azure SQL-Datenbank | Microsoft Docs
-description: "SaaS-Entwickler (Software-as-a-Service) können mit diesen Tools problemlos elastische und skalierbare Datenbanken in der Cloud erstellen."
+description: SaaS-Entwickler (Software-as-a-Service) können mit diesen Tools problemlos elastische und skalierbare Datenbanken in der Cloud erstellen.
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: d15a2e3f-5adf-41f0-95fa-4b945448e184
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
-ms.author: ddove
-ms.openlocfilehash: a99607a0a57087c313d1718ff0b77af3637e1fa9
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 784f244f64464c92f1b04ce0523e8850f66b8383
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Horizontales Hochskalieren mit Azure SQL-Datenbank
 Mithilfe der Tools für **elastische Datenbanken** können Sie Azure SQL-Datenbanken problemlos horizontal hochskalieren. Mit diesen Tools und Features können Sie Datenbankressourcen von **Azure SQL-Datenbank** zum Erstellen von Lösungen für transaktionale Workloads und insbesondere SaaS-Anwendungen (Software-as-a-Service) verwenden. Die Features für elastische Datenbanken umfassen folgende:
@@ -64,7 +58,7 @@ Vertikales Skalieren bezeichnet das Erhöhen oder Verringern der Leistungsstufe 
 Die meisten Datenbankanwendungen für Clouds verwenden eine Kombination aus diesen beiden Ansätzen. Eine SaaS-Anwendung (Software as a Service) kann z.B. die horizontale Skalierung für Bereitstellungen an neue Endkunden nutzen und die vertikale Skalierung, damit die Ressourcen für die Datenbanken der einzelnen Endkunden bei entsprechender Workload vergrößert oder verkleinert werden können.
 
 * Die horizontale Skalierung wird mithilfe der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md)verwaltet.
-* Bei der vertikalen Skalierung wird mithilfe von Azure PowerShell-Cmdlets die Dienstebene geändert, oder es werden Datenbanken einem elastischen Pool zugewiesen.
+* Bei der vertikalen Skalierung wird mithilfe von Azure PowerShell-Cmdlets die Dienstebene geändert, oder es werden Datenbanken einem Pool für elastische Datenbanken zugewiesen.
 
 ## <a name="sharding"></a>Sharding (Horizontales Partitionieren)
 Mit *Sharding* (horizontalem Partitionieren) werden große Mengen identisch strukturierter Daten auf mehrere unabhängige Datenbanken verteilt. Sharding ist besonders bei Cloudentwicklern beliebt, die SaaS-Angebote (Software as a Service) für Endbenutzer oder Unternehmen erstellen. Diese Endbenutzer werden häufig als „Mandanten“ bezeichnet. Sharding kann aus verschiedenen Gründen erforderlich sein:  
@@ -83,7 +77,7 @@ Einige Anwendungen verwenden den einfachsten Ansatz und erstellen für jeden Man
 
 ![Einzelinstanzen und Mehrinstanzen][4]
 
-In anderen Szenarien werden mehrere Mandanten in Datenbanken zusammengefasst, statt sie in getrennten Datenbanken zu isolieren. Dabei handelt es sich um ein typisches **Shardingszenario mit mehreren Mandanten**, dem die Tatsache zugrunde liegen kann, dass eine Anwendung eine große Anzahl von kleinen Mandanten verwalten muss. Beim Sharding mit mehreren Mandanten sollen die Zeilen in den Datenbanktabellen einen Schlüssel enthalten, der die Mandanten-ID oder den Sharding-Schlüssel eindeutig identifiziert. Auch hier ist es Aufgabe der Anwendungsschicht, die Anforderung eines Mandanten an die entsprechende Datenbank weiterzuleiten. Dieser Vorgang kann durch die Clientbibliothek für elastische Datenbanken unterstützt werden. Darüber hinaus kann die Sicherheit auf Zeilenebene zum Filtern der Zeilen verwendet werden, auf die jeder Mandant Zugriff hat. Weitere Informationen hierzu finden Sie unter [Mehrinstanzenfähige Anwendungen mit Tools für elastische Datenbanken und zeilenbasierter Sicherheit](sql-database-elastic-tools-multi-tenant-row-level-security.md). Beim Sharding mit mehreren Mandanten ist möglicherweise eine Neuverteilung der Daten zwischen den Datenbanken erforderlich, die mit dem Split-Merge-Tool für elastische Datenbanken durchgeführt wird. Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die elastische Pools verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+In anderen Szenarien werden mehrere Mandanten in Datenbanken zusammengefasst, statt sie in getrennten Datenbanken zu isolieren. Dabei handelt es sich um ein typisches **Shardingszenario mit mehreren Mandanten**, dem die Tatsache zugrunde liegen kann, dass eine Anwendung eine große Anzahl von kleinen Mandanten verwalten muss. Beim Sharding mit mehreren Mandanten sollen die Zeilen in den Datenbanktabellen einen Schlüssel enthalten, der die Mandanten-ID oder den Sharding-Schlüssel eindeutig identifiziert. Auch hier ist es Aufgabe der Anwendungsschicht, die Anforderung eines Mandanten an die entsprechende Datenbank weiterzuleiten. Dieser Vorgang kann durch die Clientbibliothek für elastische Datenbanken unterstützt werden. Darüber hinaus kann die Sicherheit auf Zeilenebene zum Filtern der Zeilen verwendet werden, auf die jeder Mandant Zugriff hat. Weitere Informationen hierzu finden Sie unter [Mehrinstanzenfähige Anwendungen mit Tools für elastische Datenbanken und zeilenbasierter Sicherheit](sql-database-elastic-tools-multi-tenant-row-level-security.md). Beim Sharding mit mehreren Mandanten ist möglicherweise eine Neuverteilung der Daten zwischen den Datenbanken erforderlich, die mit dem Split-Merge-Tool für elastische Datenbanken durchgeführt wird. Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die Pools für elastische Datenbanken verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
 ### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Verschieben von Daten aus Datenbanken mit mehreren Mandanten in Datenbanken mit Einzelmandant
 Wenn Sie eine SaaS-Anwendung erstellen, wird Interessenten üblicherweise eine Testversion der Software bereitgestellt. In diesem Fall ist es aus Kostengründen sinnvoll, für die Daten eine Datenbank mit mehreren Mandanten zu verwenden. Wenn aus dem Interessenten allerdings ein Kunde wird, ist eine Datenbank mit nur einem Mandanten die bessere Wahl, da diese eine bessere Leistung bietet. Falls der Kunde während des Testzeitraums Daten erstellt hat, können Sie diese mithilfe des [Split-Merge-Tools](sql-database-elastic-scale-overview-split-and-merge.md) aus der Datenbank mit mehreren Mandanten in die neue Einzelmandantendatenbank verschieben.

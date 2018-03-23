@@ -1,25 +1,25 @@
 ---
 title: Wichtige Features und Konzepte in Azure Stack | Microsoft-Dokumentation
-description: "Erfahren Sie etwas über die wichtigen Features und Konzepte in Azure Stack."
+description: Erfahren Sie etwas über die wichtigen Features und Konzepte in Azure Stack.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 09ca32b7-0e81-4a27-a6cc-0ba90441d097
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 02/27/2018
 ms.author: jeffgilb
-ms.reviewer: unknown
-ms.openlocfilehash: 6c02ec42874e4e3221c53e6d6e85378bbe2e414a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.reviewer: ''
+ms.openlocfilehash: b773ddc5da12f92960ef3378decac8569dac9ab9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Wichtige Features und Konzepte in Azure Stack
 
@@ -91,6 +91,7 @@ Abonnements helfen Anbietern beim Organisieren von und dem Zugriff auf Cloudress
 
 Für den Administrator wird während der Bereitstellung ein Standardanbieterabonnement erstellt. Dieses Abonnement kann zum Verwalten von Azure Stack, zum Bereitstellen weiterer Ressourcenanbieter sowie zum Erstellen von Plänen und Angeboten für Mandanten verwendet werden. Es darf nicht zum Ausführen von Workloads und Anwendungen von Kunden verwendet werden. 
 
+
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 Mithilfe von Azure Resource Manager können Sie in einem vorlagenbasierten, deklarativen Modell mit Ihren Infrastrukturressourcen arbeiten.   Er bietet eine zentrale Benutzeroberfläche, auf der Sie Ihre Lösungskomponenten bereitstellen und verwalten können. Umfassende Informationen und Anleitungen finden Sie in der [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
@@ -127,6 +128,25 @@ Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. 
 
 ### <a name="keyvault"></a>KeyVault
 Der KeyVault-Ressourcenanbieter stellt die Verwaltung und Überwachung von Geheimnissen wie Kennwörtern und Zertifikaten bereit. Beispielsweise kann ein Mandant den KeyVault-Ressourcenanbieter während der Bereitstellung eines virtuellen Computers zum Angeben von Administratorkennwörtern oder Schlüsseln verwenden.
+
+## <a name="high-availability-for-azure-stack"></a>Hochverfügbarkeit für Azure Stack
+*Gilt für: Azure Stack 1802 oder höhere Versionen*
+
+Zur Erreichung von Hochverfügbarkeit für ein Produktionssystem mit mehreren VMs in Azure werden die VMs in einer Verfügbarkeitsgruppe angeordnet, um sie auf mehrere Fehlerdomänen und Updatedomänen zu verteilen. Auf diese Weise werden [in Verfügbarkeitsgruppen bereitgestellte VMs](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) in separaten Serverracks physisch voneinander isoliert, um die Fehlerresilienz zu ermöglichen. Dies ist im folgenden Diagramm dargestellt:
+
+  ![Azure Stack-Hochverfügbarkeit](media/azure-stack-key-features/high-availability.png)
+
+### <a name="availablity-sets-in-azure-stack"></a>Verfügbarkeitsgruppen in Azure Stack
+Die Infrastruktur von Azure Stack verfügt zwar bereits über Resilienz gegenüber Fehlern, aber bei einem Hardwarefehler kommt es bei der zugrunde liegenden Technologie (Failoverclustering) für VMs auf einem betroffenen physischen Server trotzdem noch zu Ausfallzeiten. Azure Stack unterstützt die Verwendung einer Verfügbarkeitsgruppe mit maximal drei Fehlerdomänen, um Konsistenz mit Azure zu erzielen.
+
+- **Fehlerdomänen**: In einer Verfügbarkeitsgruppe angeordnete VMs werden physisch voneinander isoliert, indem sie so gleichmäßig wie möglich auf mehrere Fehlerdomänen (Azure Stack-Knoten) verteilt werden. Bei einem Hardwarefehler werden VMs aus der betroffenen Fehlerdomäne in anderen Fehlerdomänen neu gestartet. Dies sind nach Möglichkeit aber Fehlerdomänen, die von den anderen VMs in derselben Verfügbarkeitsgruppe getrennt sind. Nachdem die Hardware wieder in den Onlinezustand versetzt wurde, wird für die VMs ein neuer Ausgleichsvorgang durchgeführt, um die Hochverfügbarkeit sicherzustellen. 
+ 
+- **Updatedomänen**: Updatedomänen sind ein anderes Azure-Konzept, mit dem für Hochverfügbarkeit in Verfügbarkeitsgruppen gesorgt wird. Eine Updatedomäne ist eine logische Gruppe von zugrunde liegender Hardware, die zur gleichen Zeit gewartet werden kann. VMs in derselben Updatedomäne werden während einer geplanten Wartung gemeinsam neu gestartet. Wenn Mandanten VMs in einer Verfügbarkeitsgruppe erstellen, werden die VMs von der Azure-Plattform automatisch auf diese Updatedomänen verteilt. In Azure Stack wird für VMs eine Livemigration über die anderen Onlinehosts im Cluster durchgeführt, bevor der zugrunde liegende Host aktualisiert wird. Da es während eines Hostupdates nicht zu Mandantenausfallzeiten kommt, ist das Updatedomänenfeature in Azure Stack nur für die Vorlagenkompatibilität mit Azure vorhanden. 
+
+### <a name="upgrade-scenarios"></a>Upgradeszenarien 
+VMs in Verfügbarkeitsgruppen, die vor Azure Stack-Version 1802 erstellt wurden, erhalten eine Standardanzahl von Fehler- und Updatedomänen (1 und 1). Zur Erreichung der Hochverfügbarkeit für VMs in diesen bereits vorhandenen Verfügbarkeitsgruppen müssen Sie zuerst die vorhandenen VMs löschen und dann mit der richtigen Anzahl von Fehler- und Updatedomänen in einer neuen Verfügbarkeitsgruppe erneut bereitstellen. Dies ist unter [Ändern der Verfügbarkeitsgruppe für einen virtuellen Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set) beschrieben. 
+
+Für VM-Skalierungsgruppen wird eine Verfügbarkeitsgruppe intern mit einer Standardanzahl von Fehler- und Updatedomänen erstellt (3 bzw. 5). Alle VM-Skalierungsgruppen, die vor Update 1802 erstellt wurden, werden in einer Verfügbarkeitsgruppe mit der Standardanzahl von Fehler- und Updatedomänen (1 und 1) angeordnet. Gehen Sie wie folgt vor, um diese VM-Skalierungsgruppeninstanzen zu aktualisieren und die neuere Verteilung zu erreichen: Skalieren Sie die VM-Skalierungsgruppen horizontal um die Anzahl von Instanzen hoch, die vor Update 1802 vorhanden waren, und löschen Sie anschließend die älteren Instanzen der VM-Skalierungsgruppen. 
 
 ## <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung
 Mit der rollenbasierten Zugriffssteuerung (Role Based Access Control, RBAC) können Sie autorisierten Benutzern, Gruppen und Diensten Systemzugriff gewähren, indem Sie ihnen Rollen auf Abonnement-, Ressourcengruppen- oder Ressourcenebene zuweisen. Jede Rolle definiert die Zugriffsebene, die ein Benutzer, eine Gruppe oder ein Dienst auf Microsoft Azure Stack-Ressourcen hat.

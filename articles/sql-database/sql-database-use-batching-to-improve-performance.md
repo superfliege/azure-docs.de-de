@@ -1,25 +1,19 @@
 ---
-title: "Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbankanwendungen mithilfe von Batchverarbeitung"
-description: "Dieses Thema belegt, dass die Verwendung der Batchverarbeitung bei Datenbankvorgängen erheblich zur Verbesserung der Geschwindigkeit und Skalierbarkeit Ihrer Azure SQL-Datenbankanwendungen beiträgt. Die Batchverarbeitungstechniken können zwar für jede beliebige SQL Server-Datenbank verwendet werden, der Artikel konzentriert sich jedoch auf Azure."
+title: 'Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbankanwendungen mithilfe von Batchverarbeitung'
+description: Dieses Thema belegt, dass die Verwendung der Batchverarbeitung bei Datenbankvorgängen erheblich zur Verbesserung der Geschwindigkeit und Skalierbarkeit Ihrer Azure SQL-Datenbankanwendungen beiträgt. Die Batchverarbeitungstechniken können zwar für jede beliebige SQL Server-Datenbank verwendet werden, der Artikel konzentriert sich jedoch auf Azure.
 services: sql-database
-documentationcenter: na
 author: stevestein
-manager: jhubbard
-editor: 
-ms.assetid: 563862ca-c65a-46f6-975d-10df7ff6aa9c
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 07/12/2016
 ms.author: sstein
-ms.openlocfilehash: 8622bddc809c9d95f7acf359ff708d5ab31cf620
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 5c7846fdd8d6a7584cab2b4f3811151332171ba4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung
 Mit Batchvorgängen für Azure SQL-Datenbank können Sie die Leistung und Skalierbarkeit Ihrer Anwendungen erheblich verbessern. Zur Veranschaulichung der Vorteile werden im ersten Teil dieses Artikels zunächst beispielhaft einige Testergebnisse behandelt, die sequenzielle und batchbasierte SQL-Datenbankanforderungen miteinander vergleichen. Der Rest des Artikels geht auf Techniken, Szenarien und Überlegungen ein, die Sie bei der erfolgreichen Verwendung der Batchverarbeitung in Ihrer Azure-Anwendung unterstützen.
@@ -618,5 +612,5 @@ Die folgende Liste enthält eine Zusammenfassung der in diesem Thema behandelten
 * Erwägen Sie für weitere Szenarien eine größen- und zeitabhängige Pufferung als Implementierungsoption für die Batchverarbeitung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel ging es in erster Linie darum, wie Datenbankdesign und Programmiertechniken im Zusammenhang mit der Batchverarbeitung die Leistung und Skalierbarkeit Ihrer Anwendung verbessern können. Dies ist jedoch nur einer von vielen Faktoren einer Gesamtstrategie. Weitere Methoden zur Verbesserung der Leistung und Skalierbarkeit finden Sie unter [Azure SQL-Datenbank und Leistung für Einzeldatenbanken](sql-database-performance-guidance.md) und [Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool-guidance.md).
+In diesem Artikel ging es in erster Linie darum, wie Datenbankdesign und Programmiertechniken im Zusammenhang mit der Batchverarbeitung die Leistung und Skalierbarkeit Ihrer Anwendung verbessern können. Dies ist jedoch nur einer von vielen Faktoren einer Gesamtstrategie. Weitere Methoden zur Verbesserung der Leistung und Skalierbarkeit finden Sie unter [Azure SQL-Datenbank und Leistung für Einzeldatenbanken](sql-database-performance-guidance.md) und [Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md).
 

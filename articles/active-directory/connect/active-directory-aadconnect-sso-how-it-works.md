@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Nahtloses einmaliges Anmelden – Funktionsweise | Microsoft-Dokumentation"
+title: 'Azure AD Connect: Nahtloses einmaliges Anmelden – Funktionsweise | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie die das nahtlose einmalige Anmelden in Azure Active Directory funktioniert.
 services: active-directory
-keywords: "Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden"
-documentationcenter: 
+keywords: Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 02/15/2018
 ms.author: billmath
-ms.openlocfilehash: 0a28cd9016588d266670aa5a7fcbdd854d7ebce0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9d17a4038f2171b74c8ba1dbc21e8335e6893691
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory: Nahtloses einmaliges Anmelden: Technische Einblicke
 
@@ -26,9 +26,10 @@ In diesem Artikel finden Sie technische Details zur Funktionsweise des nahtlosen
 
 ## <a name="how-does-seamless-sso-work"></a>Wie funktioniert das nahtlose einmalige Anmelden?
 
-Dieser Abschnitt enthält zwei Teile:
+Dieser Abschnitt enthält drei Teile:
 1. Die Einrichtung des nahtlosen einmaligen Anmeldens
-2. Funktionsweise einer Anmeldungstransaktion eines einzelnen Benutzers mit dem nahtlosen einmaligen Anmelden
+2. Funktionsweise einer Anmeldungstransaktion eines einzelnen Benutzers in einem Webbrowser mit dem nahtlosen einmaligen Anmelden
+3. Funktionsweise einer Anmeldungstransaktion eines einzelnen Benutzers auf einem nativen Client mit dem nahtlosen einmaligen Anmelden
 
 ### <a name="how-does-set-up-work"></a>Wie funktioniert die Einrichtung?
 
@@ -43,30 +44,52 @@ Das nahtlose einmalige Anmelden wird mithilfe von Azure AD Connect wie [hier](ac
 >[!IMPORTANT]
 >Es wird dringend empfohlen, den [Rollover des Kerberos-Entschlüsselungsschlüssels](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) für das Computerkonto `AZUREADSSOACC` mindestens alle 30 Tage durchzuführen.
 
-### <a name="how-does-sign-in-with-seamless-sso-work"></a>Wie funktioniert die Anmeldung mit dem nahtlosen einmaligen Anmelden?
+Nach der Einrichtung funktioniert das nahtlose einmalige Anmelden genauso wie jede andere Anmeldung, die die integrierte Windows-Authentifizierung (IWA) verwendet.
 
-Nach der Einrichtung funktioniert das nahtlose einmalige Anmelden genauso wie jede andere Anmeldung, die die integrierte Windows-Authentifizierung (IWA) verwendet. Der Ablauf ist wie folgt:
+### <a name="how-does-sign-in-on-a-web-browser-with-seamless-sso-work"></a>Wie funktioniert die Anmeldung in einem Webbrowser mit dem nahtlosen einmaligen Anmelden?
 
-1. Der Benutzer versucht von einem in eine Domäne eingebundenen unternehmenseigenen Gerät innerhalb Ihres Netzwerks auf eine Anwendung zuzugreifen (z.B. auf die Outlook Web App: https://outlook.office365.com/owa/).
+Anmeldungsablauf in einem Webbrowser:
+
+1. Der Benutzer versucht auf einem in eine Domäne eingebundenen unternehmenseigenen Gerät innerhalb Ihres Netzwerks auf eine Webanwendung zuzugreifen (z.B. auf die Outlook Web App: https://outlook.office365.com/owa/).
 2. Wenn der Benutzer nicht bereits angemeldet ist, wird der Benutzer zur Azure AD-Anmeldeseite umgeleitet.
+3. Der Benutzer gibt auf der Azure AD-Anmeldeseite seinen Benutzernamen ein.
 
   >[!NOTE]
-  >Wenn die Azure AD-Anmeldeseite die Parameter `domain_hint` (zum Ermitteln Ihres Mandanten, z.B. contoso.onmicrosoft.com) oder `login_hint` enthält (zum Ermitteln des Benutzers, z.B. user@contoso.onmicrosoft.com oder user@contoso.com), wird Schritt 2 übersprungen.
+  >Für [bestimmte Anwendungen](./active-directory-aadconnect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso) werden die Schritte 2 und 3 übersprungen.
 
-3. Der Benutzer gibt auf der Azure AD-Anmeldeseite seinen Benutzernamen ein.
 4. Wenn JavaScript im Hintergrund verwendet wird, fordert Azure AD den Browser über eine „401 – Nicht autorisiert“-Antwort auf, ein Kerberos-Ticket bereitzustellen.
 5. Der Browser fordert wiederum ein Ticket von Active Directory für das `AZUREADSSOACC`-Computerkonto an (das Azure AD darstellt).
 6. Active Directory sucht das Computerkonto und gibt ein Kerberos-Ticket an den Browser zurück, das mit dem Geheimnis des Computerkontos verschlüsselt ist.
-7. Der Browser leitet das Kerberos-Ticket aus Active Directory an Azure AD weiter (zu einer der [Azure AD-URLs, die zuvor den Browsereinstellungen für Intranetzonen hinzugefügt wurden](active-directory-aadconnect-sso-quick-start.md#step-3-roll-out-the-feature)).
+7. Der Browser leitet das von Active Directory abgerufene Kerberos-Ticket an Azure AD weiter.
 8. Azure AD entschlüsselt das Kerberos-Ticket, das die Identität des auf dem unternehmenseigenen Gerät angemeldeten Benutzers enthält, mithilfe des zuvor freigegebenen Schlüssels.
 9. Nach der Auswertung gibt Azure AD entweder ein Token an die Anwendung zurück oder fordert den Benutzer auf, zusätzliche Nachweise z.B. per Multi-Factor Authentication bereitzustellen.
 10. Wenn die Anmeldung erfolgreich ist, kann der Benutzer auf die Anwendung zugreifen.
 
 Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte und Komponenten.
 
-![Nahtloses einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso2.png)
+![Nahtloses einmaliges Anmelden – Ablauf bei einer Web-App](./media/active-directory-aadconnect-sso/sso2.png)
 
 Das nahtlose einmalige Anmelden ist ein opportunistisches Feature, d.h., wenn ein Fehler auftritt, wird auf die reguläre Benutzeranmeldung zurückgegriffen – die Benutzer müssen für die Anmeldung also ihr Kennwort eingeben.
+
+### <a name="how-does-sign-in-on-a-native-client-with-seamless-sso-work"></a>Wie funktioniert die Anmeldung auf einem nativen Client mit dem nahtlosen einmaligen Anmelden?
+
+Anmeldungsablauf auf einem nativen Client:
+
+1. Der Benutzer versucht auf einem in eine Domäne eingebundenen unternehmenseigenen Gerät innerhalb Ihres Netzwerks auf eine native Anwendung zuzugreifen (z.B. auf den Outlook-Client).
+2. Wenn der Benutzer noch nicht angemeldet ist, ruft die native Anwendung den Benutzernamen des Benutzers aus der Windows-Sitzung des Geräts ab.
+3. Die App sendet den Benutzernamen an Azure AD und ruft den WS-Trust-MEX-Endpunkt Ihres Mandanten ab.
+4. Anschließend fragt die App den WS-Trust-MEX-Endpunkt ab, um festzustellen, ob der integrierte Authentifizierungsendpunkt verfügbar ist.
+5. Wenn Schritt 4 erfolgreich ist, wird eine Kerberos-Aufforderung ausgegeben.
+6. Wenn die App das Kerberos-Ticket abrufen kann, wird es bis zum integrierten Authentifizierungsendpunkt von Azure AD weitergeleitet.
+7. Azure AD entschlüsselt das Kerberos-Ticket und überprüft es.
+8. Azure AD meldet den Benutzer an und gibt ein SAML-Token für die App aus.
+9. Die App übermittelt das SAML-Token dann an den OAuth2-Tokenendpunkt von Azure AD.
+10. Azure AD überprüft das SAML-Token und gibt ein Zugriffstoken an die App sowie ein Aktualisierungstoken für die angegebene Ressource und ein ID-Token aus.
+11. Der Benutzer erhält Zugriff auf die Ressource der App.
+
+Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte und Komponenten.
+
+![Nahtloses einmaliges Anmelden – Ablauf bei einer nativen App](./media/active-directory-aadconnect-sso/sso14.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

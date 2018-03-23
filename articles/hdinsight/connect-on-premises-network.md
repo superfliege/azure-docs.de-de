@@ -1,7 +1,7 @@
 ---
-title: "Verbinden von HDInsight mit Ihrem lokalen Netzwerk – Azure HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie einen HDInsight-Cluster in einem virtuellen Azure-Netzwerk erstellen und ihn anschließend mit Ihrem lokalen Netzwerk verbinden. Sie erfahren außerdem, wie Sie unter Verwendung eines benutzerdefinierten DNS-Servers die Namensauflösung zwischen HDInsight und Ihrem lokalen Netzwerk konfigurieren."
-documentationcenter: 
+title: Verbinden von HDInsight mit Ihrem lokalen Netzwerk – Azure HDInsight | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einen HDInsight-Cluster in einem virtuellen Azure-Netzwerk erstellen und ihn anschließend mit Ihrem lokalen Netzwerk verbinden. Sie erfahren außerdem, wie Sie unter Verwendung eines benutzerdefinierten DNS-Servers die Namensauflösung zwischen HDInsight und Ihrem lokalen Netzwerk konfigurieren.
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 03214f25858ae340908a1d1b7f3ff7f62d545dc9
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9470e052b4f57e52fa140b53fa7c32d199c58e1e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>Verbinden von HDInsight mit Ihrem lokalen Netzwerk
 
@@ -273,13 +273,13 @@ Sie können Netzwerksicherheitsgruppen (NSGs) oder benutzerdefinierte Routen daz
 
 > [!WARNING]
 > HDInsight erfordert eingehenden Zugriff auf bestimmte IP-Adressen in der Azure-Cloud sowie unbeschränkten ausgehenden Zugriff. Wenn Sie NSGs oder benutzerdefinierte Routen zum Steuern des Datenverkehrs verwenden, müssen Sie die folgenden Schritte ausführen:
->
-> 1. Ermitteln Sie die IP-Adressen für den Standort, der Ihr lokales Netzwerk enthält. Eine Liste der benötigten IPs nach Standort finden Sie unter [Erforderliche IP-Adressen](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip).
->
-> 2. Lassen Sie eingehenden Datenverkehr von diesen IP-Adressen zu.
->
->    * __NSG__: Lassen Sie __eingehenden__ Datenverkehr auf Port __443__ aus dem __Internet__ zu.
->    * __Benutzerdefinierte Route__: Legen Sie für __Nächster Hop__ als Routentyp __Internet__ fest.
+
+1. Ermitteln Sie die IP-Adressen für den Standort, der Ihr lokales Netzwerk enthält. Eine Liste der benötigten IPs nach Standort finden Sie unter [Erforderliche IP-Adressen](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip).
+
+2. Lassen Sie für die in Schritt 1 identifizierten IP-Adressen eingehenden Datenverkehr von diesen IP-Adressen zu.
+
+   * Bei Verwendung von __NSG__: Lassen Sie __eingehenden__ Datenverkehr an Port __443__ für die IP-Adressen zu.
+   * Bei Verwendung von __UDR__: Legen Sie den Typ des __nächsten Hops__ der Route für die IP-Adressen auf __Internet__ fest.
 
 Ein Beispiel zur Verwendung von Azure PowerShell oder der Azure CLI zum Erstellen von NSGs finden Sie im Dokument [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg).
 

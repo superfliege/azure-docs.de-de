@@ -1,9 +1,9 @@
 ---
-title: "Erstellen von Aktivitätsprotokollwarnungen und Verwenden der neuen Oberfläche „Warnungen“ (Vorschauversion) in Azure Monitor für die Verwaltung | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Informationen zur Erstellung von Aktivitätsprotokollwarnungen auf der Registerkarte „Warnungen“ (Vorschauversion) in Azure Monitor. Im Artikel wird die neue Benutzeroberfläche für dieses Feature ausführlich beschrieben."
+title: Erstellen von Aktivitätsprotokollwarnungen und Verwenden der neuen Oberfläche „Warnungen“ (Vorschauversion) in Azure Monitor für die Verwaltung | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zur Erstellung von Aktivitätsprotokollwarnungen auf der Registerkarte „Warnungen“ (Vorschauversion) in Azure Monitor. Im Artikel wird die neue Benutzeroberfläche für dieses Feature ausführlich beschrieben.
 author: JYOTHIRMAISURI
 manager: vvithal
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: aabc0e57-78cd-44dd-a8d1-af5e1e567360
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
-ms.custom: 
-ms.openlocfilehash: afdd82617c47f0dee22c229feba87bdf79b90a69
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.custom: ''
+ms.openlocfilehash: a7553e4155df0d4ee49b798f44ca636dc7ecdcd2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>Erstellen von Aktivitätsprotokollwarnungen mit der neuen Oberfläche „Warnungen“ (Vorschauversion)
 
@@ -89,7 +89,7 @@ Gehen Sie dazu wie folgt vor:
 
      ![Auswählen des Ziels](./media/monitoring-activity-log-alerts-new-experience/select-target.png)
 
-    - Klicken Sie unter „Zielkriterien“ auf **Kriterien hinzufügen**, und wählen Sie als Signaltyp **Aktivitätsprotokoll** aus.
+    - Klicken Sie unter **Zielkriterien** auf **Kriterien hinzufügen**, und wählen Sie als Signaltyp **Aktivitätsprotokoll** aus.
 
     - Wählen Sie das Signal in der angegebenen Liste aus.
 
@@ -111,7 +111,7 @@ Gehen Sie dazu wie folgt vor:
 
         ![ criteria selected](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
 
-4. Geben Sie unter **define alert rules** (Warnungsregeln definieren) die folgenden Details an:
+4. Geben Sie unter **define alert rules details** (Informationen zu Warnungsregeln definieren) die folgenden Details an:
 
     - **Name der Warnungsregel**: Der Name für die neue Warnungsregel.
     - **Beschreibung**: Die Beschreibung für die neue Warnungsregel.

@@ -1,8 +1,8 @@
 ---
 title: Erstellen einer selbstgehosteten Integrationslaufzeit in Azure Data Factory | Microsoft-Dokumentation
-description: "Es wird beschrieben, wie Sie in Azure Data Factory eine selbstgehostete Integrationslaufzeit erstellen, mit der Data Factorys das Zugreifen auf Datenspeicher in einem privaten Netzwerk ermöglicht wird."
+description: Es wird beschrieben, wie Sie in Azure Data Factory eine selbstgehostete Integrationslaufzeit erstellen, mit der Data Factorys das Zugreifen auf Datenspeicher in einem privaten Netzwerk ermöglicht wird.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
 manager: jhubbard
 editor: monicar
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 92f773d3bbabe763d342366f0d56a77621829487
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 3f1b55f2752821de447e6c03bcbf79f01d9f8264
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integrationslaufzeit finden Sie unter [Integration Runtime Overview](concepts-integration-runtime.md) (Übersicht über Integrationslaufzeit).
@@ -65,6 +65,7 @@ Hier ist ein allgemeiner Datenfluss als Zusammenfassung der Schritte zum Kopiere
 - Die selbstgehostete Integrationslaufzeit muss verwendet werden, um die Datenintegration im virtuellen Azure-Netzwerk zu unterstützen.
 - Behandeln Sie Ihre Datenquelle wie eine lokale Datenquelle (die sich hinter einer Firewall befindet), selbst wenn Sie **ExpressRoute**verwenden. Verwenden Sie die selbstgehostete Integrationslaufzeit, um die Konnektivität zwischen dem Dienst und der Datenquelle herzustellen.
 - Sie müssen die selbstgehostete Integrationslaufzeit auch verwenden, wenn sich der Datenspeicher in der Cloud auf einem **virtuellen Azure IaaS-Computer** befindet.
+- In einer selbstgehosteten Integration Runtime-Instanz, die auf einem Windows Server-Computer mit aktivierter FIPS-konformer Verschlüsselung installiert ist, schlagen Aufgaben u.U. fehl. Deaktivieren Sie die FIPS-konforme Verschlüsselung auf dem Server, um dieses Problem zu umgehen. Zum Deaktivieren der FIPS-konformen Verschlüsselung ändern Sie den folgenden Registrierungswert von 1 (aktiviert) in 0 (deaktiviert): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

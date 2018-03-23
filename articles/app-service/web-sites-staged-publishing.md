@@ -1,8 +1,8 @@
 ---
-title: "Einrichten von Stagingumgebungen für Web-Apps in Azure App Service | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Stagingveröffentlichungen Ihrer Web-Apps in Azure App Service verwenden."
+title: Einrichten von Stagingumgebungen für Web-Apps in Azure App Service | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Stagingveröffentlichungen Ihrer Web-Apps in Azure App Service verwenden.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 writer: cephalin
 manager: erikre
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 55c023e8f6b41c17e85ba441f862a7682b2f2599
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 18f6ef3997ba60f588040f641ebe9e9aca8d091a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
 
-Sie können die Bereitstellung Ihrer Web-App, Web-App unter Linux, Ihres mobilen Back-Ends oder Ihrer API-App in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) in einem separaten Bereitstellungsslot anstelle des Standardproduktionsslots vornehmen, wenn die Ausführung im App Service-Plan **Standard** oder **Premium** erfolgt. Bereitstellungsslots sind tatsächlich aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. Die Bereitstellung von Anwendungen in einem Bereitstellungsslot hat die folgenden Vorteile:
+Sie können die Bereitstellung Ihrer Web-App, Web-App unter Linux, Ihres mobilen Back-Ends oder Ihrer API-App in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) in einem separaten Bereitstellungsslot anstelle des Standardproduktionsslots vornehmen, wenn die Ausführung im Tarif **Standard** oder **Premium** des App Service-Plans erfolgt. Bereitstellungsslots sind tatsächlich aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. Die Bereitstellung von Anwendungen in einem Bereitstellungsslot hat die folgenden Vorteile:
 
 * Sie können App-Änderungen in einem Stagingbereitstellungsslot überprüfen, bevor Sie die App in den Produktionsslot überführen.
 * Indem Sie eine App zuerst in einem Slot bereitstellen und sie dann in den Produktionsslot überführen, stellen Sie sicher, dass alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen werden. Dadurch vermeiden Sie Ausfallzeiten bei der Bereitstellung der App. Die Verkehrsweiterleitung ist nahtlos, und es werden keine Anfragen aufgrund von Überführungsoperationen fallengelassen. Dieser gesamte Workflow kann durch Konfigurieren von [Automatisch tauschen](#Auto-Swap) automatisiert werden, wenn keine Überprüfung vor dem Austauschen erforderlich ist.
 * Nach der Überführung enthält der Slot mit der vorherigen Staging-App die vorherige Produktions-App. Wenn die in den Produktionsslot überführten Änderungen nicht Ihren Erwartungen entsprechen, können Sie denselben Austausch sofort noch einmal vornehmen, um die "letzte als gut befundene Website" zurückzuerhalten.
 
-Jeder App Service-Planmodus unterstützt eine andere Anzahl von Bereitstellungsslots. Informationen zum Herausfinden, wie viele Slots Ihr App-Modus unterstützt, finden Sie unter [App-Service-Preisdetails](https://azure.microsoft.com/pricing/details/app-service/).
+Jeder App Service-Plantarif unterstützt eine andere Anzahl von Bereitstellungsslots. Informationen zur Ermittlung, wie viele Slots der Tarif Ihrer App unterstützt, finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
 
-* Wenn Ihre App mehrere Slots aufweist, können Sie den Modus nicht ändern.
+* Wenn Ihre App mehrere Slots aufweist, können Sie den Tarif nicht ändern.
 * Die Skalierung ist für Nicht-Produktionsslots nicht verfügbar,
-* Die Verwaltung verknüpfter Ressourcen wird für Nicht-Produktionsslots nicht unterstützt. Sie können diese negativen Auswirkungen für einen Produktionsslot nur im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715) vermeiden, indem Sie den Nicht-Produktionsslot vorübergehend in einen anderen App Service-Planmodus verschieben. Beachten Sie, dass der Nicht-Produktionsslot wieder im selben Modus freigegeben werden muss wie der Produktionsslot, bevor Sie die beiden Slots austauschen können.
+* Die Verwaltung verknüpfter Ressourcen wird für Nicht-Produktionsslots nicht unterstützt. Sie können diese negativen Auswirkungen für einen Produktionsslot nur im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715) vermeiden, indem Sie den Nicht-Produktionsslot vorübergehend in einen anderen App Service-Plantarif verschieben. Beachten Sie, dass der Nicht-Produktionsslot wieder in demselben Tarif wie der Produktionsslot freigegeben werden muss, bevor Sie die beiden Slots austauschen können.
 
 <a name="Add"></a>
 
 ## <a name="add-a-deployment-slot"></a>Hinzufügen eines Bereitstellungsslots
-Die App muss im Modus **Standard** oder **Premium** ausgeführt werden, damit mehrere Bereitstellungsslots aktiviert werden können.
+Die App muss im Tarif **Standard** oder **Premium** ausgeführt werden, damit mehrere Bereitstellungsslots aktiviert werden können.
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) das Blatt [Ressourcen](../azure-resource-manager/resource-group-portal.md#manage-resources) Ihrer App.
 2. Wählen Sie die Option **Bereitstellungsslots** aus, und klicken Sie auf **Slot hinzufügen**.
@@ -47,7 +47,7 @@ Die App muss im Modus **Standard** oder **Premium** ausgeführt werden, damit me
     ![Neuen Bereitstellungsslot hinzufügen][QGAddNewDeploymentSlot]
    
    > [!NOTE]
-   > Wenn die App nicht bereits im Modus **Standard** oder **Premium** ausgeführt wird, wird eine Meldung angezeigt, in der auf die unterstützten Modi für die Veröffentlichung in einer Stagingumgebung hingewiesen wird. An diesem Punkt können Sie **Upgrade** auswählen und zur Registerkarte **Skalierung** der App navigieren, bevor Sie den Vorgang fortsetzen.
+   > Wenn die App nicht bereits im Tarif **Standard** oder **Premium** ausgeführt wird, wird eine Meldung angezeigt, in der auf die unterstützten Tarife für die Veröffentlichung in einer Stagingumgebung hingewiesen wird. An diesem Punkt können Sie **Upgrade** auswählen und zur Registerkarte **Skalierung** der App navigieren, bevor Sie den Vorgang fortsetzen.
    > 
    > 
 3. Weisen Sie dem Slot auf dem Blatt **Slot hinzufügen** einen Namen zu, und wählen Sie aus, ob Sie die App-Konfiguration von einem anderen vorhandenen Bereitstellungsslot klonen möchten. Klicken Sie auf das Häkchen, um fortzufahren.

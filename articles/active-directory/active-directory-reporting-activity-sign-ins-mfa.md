@@ -1,25 +1,25 @@
 ---
-title: "Referenz zur Berichterstellung für die mehrstufige Authentifizierung im Azure-Portal | Microsoft-Dokumentation"
-description: "Enthält Referenzinformationen zur Berichterstellung für die mehrstufige Authentifizierung im Azure-Portal."
+title: Referenz zur Berichterstellung für die mehrstufige Authentifizierung im Azure-Portal | Microsoft-Dokumentation
+description: Enthält Referenzinformationen zur Berichterstellung für die mehrstufige Authentifizierung im Azure-Portal.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 03/16/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cb4ef0e361cb3495a03e5a7ed49d9a84a54dbdc3
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: e92d1383f3179f03194b460e0467314c137fd9e2
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="reference-for-multi-factor-authentication-reporting-in-the-azure-portal"></a>Referenz zur Berichterstellung für die mehrstufige Authentifizierung im Azure-Portal
 
@@ -95,17 +95,9 @@ Dieser Abschnitt enthält die möglichen Werte für die Statuszeichenfolge zum M
 
     - satisfied by claim in the token (per Anspruch im Token erfüllt) 
 
-    - satisfied by claim in the token (per Anspruch im Token erfüllt) 
-
-    - satisfied by claim in the token (per Anspruch im Token erfüllt) 
-
-    - satisfied by claim in the token (per Anspruch im Token erfüllt) 
-
     - satisfied by claim provided by external provider (per Anspruch vom externen Anbieter erfüllt) 
 
     - satisfied by strong authentication (per strenger Authentifizierung erfüllt) 
-
-    - skipped as flow exercised was Windows broker logon flow (übersprungen, da es sich um einen Windows-Broker-Anmeldefluss gehandelt hat) 
 
     - skipped as flow exercised was Windows broker logon flow (übersprungen, da es sich um einen Windows-Broker-Anmeldefluss gehandelt hat) 
 

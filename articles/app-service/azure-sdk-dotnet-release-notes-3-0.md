@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 03/07/2017
 ms.author: juliako
-ms.openlocfilehash: eea4e569ac2d0192ed7872d2fcb9bed03614832b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 207aa137b25e44baf73e7f481ebc8b6362dfa245
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-sdk-for-net-30-release-notes"></a>Versionshinweise zu Azure SDK für .NET 3.0
 
 Dieses Thema enthält die Versionshinweise für Version 3.0 des Azure SDK für .NET.
 
-##<a name="azure-sdk-for-net-30-release-summary"></a>Version 3.0 des Azure SDK für .NET – Zusammenfassung
+## <a name="azure-sdk-for-net-30-release-summary"></a>Version 3.0 des Azure SDK für .NET – Zusammenfassung
 
 Herausgabedatum: 07.03.2017
  
@@ -45,7 +45,7 @@ Mit dieser Version wurden keine grundlegenden Änderungen für das Azure SDK 3.0
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
-- Durch das Azure .NET SDK 3.0 wurde ein Problem beim Entfernen von Visual Studio 2017 in einer parallelen Konfiguration mit Visual Studio 2015 eingeführt.  Wenn Sie das Azure SDK für Visual Studio 2015 installiert haben, werden Microsoft Azure-Speicheremulator und Microsoft Azure-Serveremulator entfernt, wenn Sie Visual Studio 2017 deinstallieren.  Dies erzeugt einen Fehler beim Erstellen und Debuggen von neuen Clouddienstprojekten in Visual Studio 2015. Um dieses Problem zu beheben, müssen Sie das Azure SDK erneut über den Webplattform-Installer installieren.  Das Problem wird in einem zukünftigen Update von Visual Studio 2017 gelöst.  beschrieben.
+- Durch das Azure .NET SDK 3.0 wurde ein Problem beim Entfernen von Visual Studio 2017 in einer parallelen Konfiguration mit Visual Studio 2015 eingeführt.  Wenn Sie das Azure SDK für Visual Studio 2015 installiert haben, werden Microsoft Azure-Speicheremulator und Microsoft Azure-Serveremulator entfernt, wenn Sie Visual Studio 2017 deinstallieren.  Dies erzeugt einen Fehler beim Erstellen und Debuggen von neuen Clouddienstprojekten in Visual Studio 2015. Um dieses Problem zu beheben, müssen Sie das Azure SDK erneut über den Webplattform-Installer installieren.  Das Problem wird in einem zukünftigen Update von Visual Studio 2017 gelöst.  zu erstellen und zu verwalten.
 
  
 ### <a name="azure-in-role-cache"></a>Azure In-Role Cache 

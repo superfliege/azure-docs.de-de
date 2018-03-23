@@ -1,29 +1,29 @@
 ---
-title: "Ermitteln, Identifizieren und Klassifizieren von persönlichen Daten in Microsoft Azure | Microsoft-Dokumentation"
-description: Hier erfahren Sie, wie Sie nach Daten suchen und Daten klassifizieren, ermitteln sowie identifizieren.
+title: Ermitteln, Identifizieren und Klassifizieren von persönlichen Daten in Microsoft Azure | Microsoft-Dokumentation
+description: Das Suchen, Klassifizieren, Erkennen und Identifizieren von Daten in Azure kann Ihnen bei der Einhaltung der Datenschutz-Grundverordnung (DSGVO) helfen.
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
 editor: TShinder
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 011fe26c297ff991af1282c1ff3914031a99f1e4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: ''
+ms.openlocfilehash: 21308faf5d3efd3908eccab4f37acb0cfccdcb8e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Ermitteln, Identifizieren und Klassifizieren von persönlichen Daten in Microsoft Azure
 
-Dieser Artikel bietet einen Leitfaden für das Ermitteln, Identifizieren und Klassifizieren von persönlichen Daten in mehreren Azure-Tools und -Diensten, einschließlich der Verwendung von Azure Data Catalog, Azure Active Directory, SQL-Datenbank, Power Query für Hadoop-Cluster in Azure HDInsight, Azure Information Protection, Azure Search und SQL-Abfragen für Azure Cosmos DB.
+Dieser Artikel bietet einen Leitfaden für das Ermitteln, Identifizieren und Klassifizieren von persönlichen Daten in mehreren Azure-Tools und -Diensten, einschließlich der Verwendung von Azure Data Catalog, Azure Active Directory, SQL-Datenbank, Power Query für Hadoop-Cluster in Azure HDInsight, Azure Information Protection, Azure Search und SQL-Abfragen für Azure Cosmos DB. Diese Tools und Prozesse können für die Einhaltung der Datenschutz-Grundverordnung (DSGVO) verwendet werden.
 
 ## <a name="scenario-problem-statement-and-goal"></a>Szenario, Problembeschreibung und Ziel
 
@@ -114,7 +114,7 @@ Ausführliche Anweisungen und Informationen zu dieser Methode der Datenbankerste
 >[!Note]
 Windows-Administratoren verwenden meist PowerShell, manche von ihnen bevorzugen jedoch die Azure-Befehlszeilenschnittstelle.
 
-### <a name="how-do-i-search-for-personal-data-in-sql-database-in-the-azure-portal"></a>Gewusst wie: Suchen nach persönlichen Daten in SQL-Datenbank im Azure-Portal**
+### <a name="how-do-i-search-for-personal-data-in-sql-database-in-the-azure-portal"></a>Gewusst wie: Suchen nach persönlichen Daten in SQL-Datenbank im Azure-Portal
 
 Sie können das integrierte Abfrage-Editor-Tool im Azure-Portal verwenden, um nach persönlichen Daten zu suchen. Sie melden sich mit Ihrem SQL Server-Administratorbenutzernamen und -kennwort beim Tool an und geben dann eine Abfrage ein.
 

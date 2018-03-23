@@ -1,6 +1,6 @@
 ---
-title: "Verwalten dynamischer Azure-Bestände mithilfe von Ansible"
-description: "Hier erfahren Sie, wie Sie Ihre dynamischen Azure-Bestände mithilfe von Ansible verwalten."
+title: Verwalten dynamischer Azure-Bestände mithilfe von Ansible
+description: Hier erfahren Sie, wie Sie Ihre dynamischen Azure-Bestände mithilfe von Ansible verwalten.
 ms.service: ansible
 keywords: Ansible, Azure, DevOps, Bash, CloudShell, dynamischer Bestand
 author: tomarcher
@@ -8,14 +8,14 @@ manager: routlaw
 ms.author: tarcher
 ms.date: 01/14/2018
 ms.topic: article
-ms.openlocfilehash: 8753d039582abdf22f105bf7f139a35c224e7c59
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 799be6d2bb521de38af952376bf8ee14a18846de
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Verwalten dynamischer Azure-Bestände mithilfe von Ansible
-Mit Ansible können Bestandsinformationen aus verschiedenen Quellen (einschließlich Cloudquellen wie Azure) in einen *dynamischen Bestand* abgerufen werden. In diesem Artikel verwenden Sie [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md), um einen dynamischen Azure-Bestand von Ansible zu konfigurieren, in dem Sie zwei virtuelle Computer erstellen, einen der beiden virtuellen Computer markieren und Nginx auf dem markierten virtuellen Computer installieren.
+Mit Ansible können Bestandsinformationen aus verschiedenen Quellen (einschließlich Cloudquellen wie Azure) in einen *dynamischen Bestand* abgerufen werden. In diesem Artikel verwenden Sie [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md), um einen dynamischen Azure-Bestand von Ansible zu konfigurieren, in dem Sie zwei virtuelle Computer erstellen, einen der beiden virtuellen Computer markieren und NGINX auf dem markierten virtuellen Computer installieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -59,7 +59,7 @@ Sie können [Ihre Azure-Ressourcen mithilfe von Tags nach benutzerdefinierten Ka
 Geben Sie den folgenden Befehl vom Typ [az resource tag](/cli/azure/resource?view=azure-cli-latest.md#az_resource_tag) ein, um den virtuellen Computer `ansible-inventory-test-vm1` mit dem Schlüssel `nginx` zu markieren:
 
 ```azurecli-interactive
-az resource tag --tags nginx --id /subscriptions/&lt;YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
+az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
 ```
 
 ## <a name="generate-a-dynamic-inventory"></a>Generieren eines dynamischen Bestands

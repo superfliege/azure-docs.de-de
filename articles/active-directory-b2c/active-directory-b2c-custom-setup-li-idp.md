@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory B2C: Hinzufügen von LinkedIn als OAuth2-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien"
+title: 'Azure Active Directory B2C: Hinzufügen von LinkedIn als OAuth2-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien'
 description: Artikel zur Einrichtung einer LinkedIn-Anwendung mithilfe des OAuth2-Protokolls und benutzerdefinierter Richtlinien
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: yoelhor
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
 ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Hinzufügen von LinkedIn als Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -43,7 +43,7 @@ Um LinkedIn als Identitätsanbieter in Azure Active Directory B2C (Azure AD B2C)
 
     c. Wählen Sie unter **Application Use** einen Anwendungsverwendungszweck aus.
 
-    d. Fügen Sie im Feld **Website URL** die Zeichenfolge **https://login.microsoftonline.com** ein.
+    d. Fügen Sie **https://login.microsoftonline.com** im Feld **Website-URL** ein.
 
     e. Machen Sie Angaben für **Business Email** (Geschäftliche E-Mail-Adresse) und **Business Phone** (Geschäftliche Telefonnummer).
 
@@ -53,7 +53,7 @@ Um LinkedIn als Identitätsanbieter in Azure Active Directory B2C (Azure AD B2C)
 
 3. Wählen Sie **Authentication** (Authentifizierung) aus, und notieren Sie die Werte für **Client ID** und **Client Secret** (Clientgeheimnis).
 
-4. Fügen Sie im Feld **Authorized Redirect URLs** (Autorisierte Weiterleitungs-URLs) die Zeichenfolge **https://login.microsoftonline.com/te/{Mandant}.onmicrosoft.com/oauth2/authresp** ein. Ersetzen Sie {*Mandant*} durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“). Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden. 
+4. Fügen Sie **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** im Feld **Autorisierte Umleitungs-URLs** ein. Ersetzen Sie {*Mandant*} durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“). Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden. 
 
     ![LinkedIn-Konto: Festlegen von autorisierten Umleitungs-URLs](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app3.png)
 

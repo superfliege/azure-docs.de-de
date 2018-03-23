@@ -1,11 +1,11 @@
 ---
-title: "Connectors für Azure Logic Apps | Microsoft-Dokumentation"
+title: Connectors für Azure Logic Apps | Microsoft-Dokumentation
 description: Bei der Erstellung von Logik-Apps stehen zahlreiche Microsoft-Connectors zur Auswahl.
 services: logic-apps
-documentationcenter: 
-author: MandiOhlinger
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: f1f1fd50-b7f9-4d13-824a-39678619aa7a
 ms.service: logic-apps
@@ -14,20 +14,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
-ms.author: mandia; ladocs
-ms.openlocfilehash: ec532ce0871d11fea222050bb08ec73afe5f2be3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: estfan; ladocs
+ms.openlocfilehash: f140f1a3d751b5d83b139edde931a6193334b6ee
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connectors-list"></a>Liste mit den Connectors
 Die in der Swagger-Beschreibung der einzelnen Connectors definierten Trigger und Aktionen sowie mögliche Connectoreinschränkungen finden Sie unter [Connectors](/connectors/).
 
 Connectors sind ein wesentlicher Bestandteil der Logik-App-Erstellung. Mithilfe dieser Connectors können Sie Ihre lokalen und cloudbasierten Anwendungen erweitern und neu erstellte oder bereits vorhandene Daten für verschiedenste Dinge nutzen. Die Connectors stehen entweder als integrierte Aktionen oder als verwaltete Connectors zur Verfügung.
 
-
-            **Integrierte Aktionen:** Die Logic Apps-Engine bietet integrierte Aktionen für die Kommunikation mit Endpunkten und die Ausführung von Aufgaben. Mit diesen Aktionen können Sie beispielsweise HTTP-Endpunkte, Azure Functions und Azure API Management-Vorgänge aufrufen sowie Nachrichten mit Datenvorgängen und Variablen anpassen.
+**Integrierte Aktionen:** Die Logic Apps-Engine bietet integrierte Aktionen für die Kommunikation mit Endpunkten und die Ausführung von Aufgaben. Mit diesen Aktionen können Sie beispielsweise HTTP-Endpunkte, Azure Functions und Azure API Management-Vorgänge aufrufen sowie Nachrichten mit Datenvorgängen und Variablen anpassen.
 
 **Verwaltete Connectors:** Diese ermöglichen den Zugriff auf APIs für verschiedene Dienste durch Erstellung von API-Verbindungen, die vom Logic Apps-Dienst gehostet und verwaltet werden. Bei verwalteten Connectors wird zwischen folgenden Kategorien unterschieden:
 

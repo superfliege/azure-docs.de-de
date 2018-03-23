@@ -1,9 +1,9 @@
 ---
-title: "Streamen von Azure-Überwachungsdaten an Event Hubs | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie all Ihre Azure-Überwachungsdaten an einen Event Hub streamen, um die Daten in einem SIEM- oder Analysetool von Partnern abzurufen."
+title: Streamen von Azure-Überwachungsdaten an Event Hubs | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie all Ihre Azure-Überwachungsdaten an einen Event Hub streamen, um die Daten in einem SIEM- oder Analysetool von Partnern abzurufen.
 author: johnkemnetz
 manager: robb
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: monitoring-and-diagnostics
@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/13/2018
+ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: d449be98cd59756e2bafc584e0501b8c83c594eb
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 1b1c50f106be8848fb1f32deefa6cb9acb7a298a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool
 
@@ -36,7 +36,18 @@ In Ihrer Azure-Umgebung gibt es mehrere Schichten von Überwachungsdaten, weshal
 
 Daten aus beliebigen Schichten können an einen Event Hub gesendet und in ein Partnertool geladen werden. In den nächsten Abschnitten wird beschrieben, wie Sie Daten aus den einzelnen Schichten zum Streamen an einen Event Hub konfigurieren können. Bei der Erläuterung der Schritte wird davon ausgegangen, dass bereits zu überwachende Ressourcen in dieser Schicht vorhanden sind.
 
-Bevor Sie beginnen, müssen Sie [einen Event Hubs-Namespace und einen Event Hub erstellen](../event-hubs/event-hubs-create.md). Dieser Namespace und Event Hub sind das Ziel für sämtliche Ihrer Überwachungsdaten.
+## <a name="set-up-an-event-hubs-namespace"></a>Einrichten eines Event Hubs-Namespace
+
+Bevor Sie beginnen, müssen Sie [einen Event Hubs-Namespace und einen Event Hub erstellen](../event-hubs/event-hubs-create.md). Dieser Namespace und Event Hub sind das Ziel für sämtliche Ihrer Überwachungsdaten. Ein Event Hubs-Namespace ist eine logische Gruppierung von Event Hubs mit derselben Zugriffsrichtlinie, er ähnelt damit einem Speicherkonto mit mehreren Blobs. Beachten Sie einige Details über den Event Hubs-Namespace und die Event Hubs, die Sie erstellen:
+* Es wird empfohlen, einen Event Hubs-Standardnamespace zu verwenden.
+* In der Regel ist nur eine Durchsatzeinheit erforderlich. Wenn Sie aufgrund steigender Protokollnutzung zentral hochskalieren müssen, können Sie zu einem späteren Zeitpunkt stets manuell die Anzahl der Durchsatzeinheiten für den Namespace erhöhen oder die automatische Aufstockung aktivieren.
+* Über die Anzahl der Durchsatzeinheiten können Sie den Durchsatz für Ihre Event Hubs erhöhen. Über die Anzahl von Partitionen können Sie den Verbrauch vieler Consumer parallelisieren. Eine einzelne Partition kann bis zu 20 MBit/s oder ungefähr 20.000 Nachrichten pro Sekunde verarbeiten. Je nach Tool, das die Daten nutzt, ist es auch möglich, Daten von mehreren Partitionen zu verarbeiten. Wenn Sie nicht sicher sind, welche Anzahl von Partitionen Sie festlegen sollten, werden zu Beginn vier Partitionen empfohlen.
+* Es wird empfohlen, dass Sie die Nachrichtenvermerkdauer für Ihren Event Hub auf 7 Tage festlegen. Wenn Ihr Tool mehr als einen Tag ausfällt, wird dadurch sichergestellt, dass das Tool dort fortfahren kann, wo es aufgehört hatte (für bis zu 7 Tage alte Ereignisse).
+* Es wird empfohlen, die Standardconsumergruppe für Ihren Event Hub zu verwenden. Es ist nur dann erforderlich, andere Consumergruppen zu erstellen oder eine separate Consumergruppe zu verwenden, wenn Sie zwei verschiedenen Tools verwenden möchten, um dieselben Daten vom selben Event Hub zu verarbeiten.
+* Für das Azure-Aktivitätsprotokoll wählen Sie einen Event Hubs-Namespace aus. Azure Monitor erstellt dann in diesem Namespace den Event Hub „insights-logs-operationallogs“. Für andere Protokolltypen können Sie entweder einen vorhandenen Event Hub verwenden (sodass Sie den gleichen Event Hub „insights-logs-operationallogs“ wiederverwenden können) oder Azure Monitor für jede Protokollkategorie einen Event Hub erstellen lassen.
+* In der Regel müssen die Ports 5671 und 5672 auf dem Computer offen sein, der die Daten vom Event Hub verarbeitet.
+
+Lesen Sie auch die Informationen unter [Azure Event Hubs – häufig gestellte Fragen](../event-hubs/event-hubs-faq.md).
 
 ## <a name="how-do-i-set-up-azure-platform-monitoring-data-to-be-streamed-to-an-event-hub"></a>Wie richte ich die Überwachungsdaten zur Azure-Plattform für das Streaming an einen Event Hub ein?
 

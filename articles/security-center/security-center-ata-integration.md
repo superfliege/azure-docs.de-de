@@ -5,20 +5,20 @@ services: security-center
 documentationcenter: na
 author: YuriDio
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 5d80bf91-16c3-40b3-82fc-e0805e6708db
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 03/05/2018
 ms.author: yurid
-ms.openlocfilehash: e1b9e598af3b55c1d9591e5c1e529a80ae3319ca
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 02e14315018f6586644eb560894785e6b6eb022e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Verbinden von Microsoft Advanced Threat Analytics mit Azure Security Center
 Dieses Dokument soll Sie bei der Konfiguration der Integration zwischen Microsoft Advanced Threat Analytics und dem Azure Security Center unterstützen.
@@ -61,7 +61,7 @@ Folgen Sie diesen Schritten zur Konfiguration dieser Integration, wenn Sie Advan
 12. Installieren Sie diesen Agent im Advanced Threat Analytics-Center. Stellen Sie bei der Installation sicher, dass die Option **Connect the agent to Azure Log Analytics (OMS)** (Den Agent mit der Azure-Protokollanalyse (OMS) verbinden) ausgewählt ist, und geben Sie die *Arbeitsbereich-ID* und den *Primärschlüssel* ein, wenn Sie dazu aufgefordert werden.
 
 
-Sobald Sie die Installation beendet haben, ist die Integration abgeschlossen, und Ihnen werden neue Warnungen, die von Advanced Threat Analytics an das Security Center gesendet werden, unter **Sicherheitswarnungen** und **Suchen** angezeigt. Die Lösung erscheint auf der Seite **Sicherheitslösungen** unter **Verbundene Lösungen**. 
+Sobald Sie die Installation beendet haben, ist die Integration abgeschlossen, und Ihnen werden neue Warnungen, die von ATA an das Security Center im **Suchergebnis** gesendet werden, angezeigt. Die Lösung erscheint auf der Seite **Sicherheitslösungen** unter **Verbundene Lösungen**. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde erläutert, wie Sie Microsoft Advanced Threat Analytics mit Security Center verbinden. Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:

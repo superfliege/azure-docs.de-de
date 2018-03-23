@@ -1,6 +1,6 @@
 ---
 title: Behandeln von Problemen mit der Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Sie häufige Probleme mit der Azure SQL-Datensynchronisierung (Vorschauversion) behandeln."
+description: Hier erfahren Sie, wie Sie häufige Probleme mit der Azure SQL-Datensynchronisierung (Vorschauversion) behandeln.
 services: sql-database
 ms.date: 11/13/2017
 ms.topic: article
@@ -8,11 +8,11 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 50cabbaa584671e52c1ea7efbd2ad990b8438272
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: c174f5120ba2e5bf8018cce0f0e34c1fc3f8eb3f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Behandeln von Problemen mit der SQL-Datensynchronisierung (Vorschau)
 
@@ -383,7 +383,7 @@ Erteilen Sie dem Benutzerkonto die Berechtigung für die Anmeldung als Dienst.
 1. Wechseln Sie zu **Start** > **Systemsteuerung** > **Verwaltung** > **Lokale Sicherheitsrichtlinie** > **Lokale Richtlinien** > **Zuweisen von Benutzerrechten**.
 2. Wählen Sie **Anmelden als Dienst** aus.
 3. Klicken Sie im Dialogfeld **Eigenschaften** auf das Benutzerkonto.
-4. Klicken Sie auf **Übernehmen** und dann auf **OK**.
+4. Klicken Sie auf **Apply** (Anwenden) und dann auf **OK**.
 5. Schließen Sie alle Fenster.
 
 ### <a name="a-database-has-an-out-of-date-status"></a>Eine Datenbank hat den Status „Veraltet“.

@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren von Azure Redis Cache | Microsoft Docs
-description: "Grundlagen der Redis-Standardkonfiguration für Azure Redis Cache und Informationen zur Konfiguration Ihrer Azure Redis Cache-Instanzen"
+description: Grundlagen der Redis-Standardkonfiguration für Azure Redis Cache und Informationen zur Konfiguration Ihrer Azure Redis Cache-Instanzen
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: a65832a30a570944ff30d02c2f173df345bde32c
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: fa78c42ce93729379d3c532f94bc67bb8c069d53
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Gewusst wie: Konfigurieren von Azure Redis Cache
-In diesem Thema wird beschrieben, wie Sie die Konfiguration für Ihre Azure Redis Cache-Instanzen überprüfen und aktualisieren. Außerdem wird die standardmäßige Redis-Serverkonfiguration für Azure Redis Cache-Instanzen beschrieben.
+In diesem Thema sind die für Ihre Azure Redis Cache-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Redis Cache-Instanzen behandelt.
 
 > [!NOTE]
 > Weitere Informationen zur Konfiguration und Verwendung von Premium-Cache-Features finden Sie unter [Konfigurieren von Persistenz](cache-how-to-premium-persistence.md), [Konfigurieren von Clustern](cache-how-to-premium-clustering.md) und [Konfigurieren der Virtual Network-Unterstützung](cache-how-to-premium-vnet.md).
@@ -79,7 +79,7 @@ Klicken Sie auf **Aktivitätsprotokoll** , um in Ihrem Cache ausgeführte Aktion
 
 ### <a name="access-control-iam"></a>Zugriffssteuerung (IAM)
 
-Der Abschnitt **Zugriffssteuerung (IAM)** bietet Unterstützung für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) über das Azure-Portal, damit Organisationen ihre Zugriffsverwaltungsanforderungen einfach und präzise erfüllen können. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../active-directory/role-based-access-control-configure.md).
+Der Abschnitt **Zugriffssteuerung (IAM)** bietet Unterstützung für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) über das Azure-Portal. Mit dieser Konfiguration können Organisationen ihre Zugriffsverwaltungsanforderungen einfach und präzise erfüllen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../active-directory/role-based-access-control-configure.md).
 
 ### <a name="tags"></a>Tags
 
@@ -136,7 +136,7 @@ Mit den Einstellungen **Maxmemory policy**, **maxmemory-reserved** und **maxfrag
 
 Mit **Maxmemory policy** wird die Entfernungsrichtlinie für den Cache konfiguriert und die Auswahl zwischen den folgenden Entfernungsrichtlinien ermöglicht:
 
-* `volatile-lru`: Dies ist die Standardoption.
+* `volatile-lru`:Dies ist die Standardrichtlinie für die Entfernung.
 * `allkeys-lru`
 * `volatile-random`
 * `allkeys-random`
@@ -147,7 +147,7 @@ Weitere Informationen zu `maxmemory`-Richtlinien finden Sie unter [Eviction poli
 
 Mit der Einstellung **maxmemory-reserved** wird die Arbeitsspeichermenge in MB konfiguriert, die für andere Prozesse als Cacheprozesse reserviert ist, z.B. die Replikation während eines Failovers. Mit dem Festlegen dieses Werts können Sie dafür sorgen, dass Sie bei wechselnden Auslastungen eine konsistentere Redis-Servererfahrung erzielen. Für Workloads, die mit hohem Schreibaufwand verbunden sind, sollte ein höherer Wert festgelegt werden. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
 
-Mit der Einstellung **maxfragmentationmemory-reserved** wird der Arbeitsspeicher in MB konfiguriert, der für die Speicherfragmentierung reserviert ist. Durch Festlegen dieses Werts können Sie eine konsistentere Redis-Servererfahrung erzielen, wenn der Cache voll bzw. beinahe voll und das Fragmentierungsverhältnis ebenfalls hoch ist. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
+Mit der Einstellung **maxfragmentationmemory-reserved** wird der Arbeitsspeicher in MB konfiguriert, der für die Speicherfragmentierung reserviert ist. Durch Festlegen dieses Werts können Sie eine konsistentere Redis-Servererfahrung erzielen, wenn der Cache voll bzw. beinahe voll und das Fragmentierungsverhältnis hoch ist. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
 
 Bei der Auswahl eines neuen Speicherreservierungswerts (**maxmemory-reserved** oder **maxfragmentationmemory-reserved**) sollte berücksichtigt werden, wie sich diese Änderung auf einen Cache auswirkt, der bereits mit einer großen Datenmenge ausgeführt wird. Beispiel: Wenn Ihr Cache über eine Kapazität von 53 GB verfügt und 49 GB an Daten enthält, ändern Sie den Reservierungswert in 8 GB, um den maximal verfügbaren Arbeitsspeicher für das System auf 45 GB zu verringern. Wenn entweder der aktuelle Wert für `used_memory` oder der Wert für `used_memory_rss` höher als der neue Grenzwert von 45 GB ist, muss das System Daten entfernen, bis sowohl `used_memory` als auch `used_memory_rss` unter 45 GB liegen. Durch die Entfernung können sich Serverauslastung und Arbeitsspeicherfragmentierung erhöhen. Weitere Informationen zu Cachemetriken, etwa `used_memory` und `used_memory_rss`, finden Sie unter [Verfügbare Metriken und Berichtsintervalle](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
@@ -269,7 +269,9 @@ Im Abschnitt **Virtuelles Netzwerk** können Sie die Einstellungen des virtuelle
 
 ### <a name="firewall"></a>Firewall
 
-Klicken Sie auf **Firewall**, um Firewallregeln für Ihr Azure Redis Cache vom Typ „Premium“ anzuzeigen und zu konfigurieren.
+Die Konfiguration von Firewall-Regeln ist für alle Azure Redis Cache-Tarife verfügbar.
+
+Klicken Sie auf **Firewall**, um Firewallregeln für den Cache anzuzeigen und zu konfigurieren.
 
 ![Firewall](./media/cache-configure/redis-firewall-rules.png)
 
@@ -337,7 +339,7 @@ Zum Neustarten eines oder mehrerer Knoten Ihres Caches wählen Sie die gewünsch
 
 Im Abschnitt **Überwachung** können Sie die Diagnose und Überwachung für Ihren Redis Cache konfigurieren. Weitere Informationen zur Azure Redis Cache-Diagnose und -Überwachung finden Sie unter [Überwachen von Azure Redis Cache](cache-how-to-monitor.md).
 
-![Diagnostics](./media/cache-configure/redis-cache-diagnostics.png)
+![Diagnose](./media/cache-configure/redis-cache-diagnostics.png)
 
 * [Redis-Metriken](#redis-metrics)
 * [Warnregeln](#alert-rules)
@@ -350,7 +352,7 @@ Klicken Sie auf **Redis Metriken**, um für Ihren Cache [Metriken anzuzeigen](ca
 
 Klicken Sie auf **Warnregeln**, um Warnungen basierend auf Redis Cache-Metriken zu konfigurieren. Weitere Informationen finden Sie unter [Warnungen](cache-how-to-monitor.md#alerts).
 
-### <a name="diagnostics"></a>Diagnostics
+### <a name="diagnostics"></a>Diagnose
 
 Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, klicken Sie zum **Konfigurieren des Speicherkontos** für Cachediagnosedaten auf [Diagnose](cache-how-to-monitor.md#export-cache-metrics).
 
@@ -383,7 +385,7 @@ Klicken Sie auf **Neue Supportanfrage** , um eine Supportanfrage für Ihren Cach
 
 
 ## <a name="default-redis-server-configuration"></a>Standardmäßige Redis-Serverkonfiguration
-Neue Azure Redis Cache-Instanzen werden mit den folgenden standardmäßigen Redis-Konfigurationswerten konfiguriert.
+Neue Azure Redis Cache-Instanzen werden mit den folgenden standardmäßigen Redis-Konfigurationswerten konfiguriert:
 
 > [!NOTE]
 > Die Einstellungen in diesem Abschnitt können mit der `StackExchange.Redis.IServer.ConfigSet`-Methode nicht geändert werden. Wenn diese Methode mit einem der Befehle in diesem Abschnitt aufgerufen wird, wird eine Ausnahme ausgelöst, die in etwa wie folgt lautet:  
@@ -397,7 +399,7 @@ Neue Azure Redis Cache-Instanzen werden mit den folgenden standardmäßigen Redi
 | Einstellung | Standardwert | BESCHREIBUNG |
 | --- | --- | --- |
 | `databases` |16 |Die Standardanzahl von Datenbanken ist 16, Sie können aber basierend auf dem Tarif eine andere Anzahl konfigurieren.<sup>1</sup> Die Standarddatenbank ist „DB 0“. Sie können mithilfe von `connection.GetDatabase(dbid)` pro Verbindung eine andere Datenbank auswählen. Hierbei steht `dbid` für eine Zahl zwischen `0` und `databases - 1`. |
-| `maxclients` |Tarifabhängig<sup>2</sup> |Dies ist die maximale Anzahl von verbundenen Clients, die gleichzeitig zulässig sind. Sobald der Grenzwert erreicht ist, schließt Redis alle neuen Verbindungen und gibt den Fehler „max number of clients reached“ (Maximale Anzahl von Clients erreicht) zurück. |
+| `maxclients` |Tarifabhängig<sup>2</sup> |Dieser Wert ist die maximale Anzahl von verbundenen Clients, die gleichzeitig zulässig sind. Sobald der Grenzwert erreicht ist, schließt Redis alle neuen Verbindungen und gibt den Fehler „max number of clients reached“ (Maximale Anzahl von Clients erreicht) zurück. |
 | `maxmemory-policy` |`volatile-lru` |Mit der Einstellung „maxmemory-policy“ wird festgelegt, was in Redis entfernt werden soll, wenn der Wert für `maxmemory` (Größe des Caches, die Sie beim Erstellen des Caches ausgewählt haben) erreicht ist. Bei Azure Redis Cache lautet die Standardeinstellung `volatile-lru`. Hierbei werden die Schlüssel anhand eines Ablaufverfahrens mit LRU-Algorithmus entfernt. Diese Einstellung kann im Azure-Portal konfiguriert werden. Weitere Informationen finden Sie unter [Arbeitsspeicherrichtlinien](#memory-policies). |
 | `maxmemory-samples` |3 |Zur Einsparung von Arbeitsspeicher sind LRU- und minimale TTL-Algorithmen keine präzisen Algorithmen, sondern angenäherte Algorithmen. Standardmäßig werden von Redis drei Schlüssel geprüft, und es wird der Schlüssel ausgewählt, der vor längerer Zeit verwendet wurde. |
 | `lua-time-limit` |5.000 |Maximale Ausführungszeit eines Lua-Skripts in Millisekunden. Wenn die maximale Ausführungszeit erreicht wird, protokolliert Redis, dass ein Skript nach der maximal zulässigen Ausführungszeit weiterhin ausgeführt wird. Es wird dann damit begonnen, auf Abfragen mit einem Fehler zu antworten. |
@@ -495,7 +497,7 @@ Bei Verwendung der Redis-Konsole mit einem gruppierten Premium-Cache können Sie
 
 ![Redis-Konsole](./media/cache-configure/redis-console-premium-cluster.png)
 
-Wenn Sie auf einen Schlüssel zugreifen, der in einem anderen als dem verbundenen Shard gespeichert ist, wird eine Fehlermeldung ähnlich der folgenden angezeigt.
+Wenn Sie auf einen Schlüssel zugreifen, der in einem anderen als dem verbundenen Shard gespeichert ist, wird eine Fehlermeldung ähnlich der folgenden angezeigt:
 
 ```
 shard1>get myKey

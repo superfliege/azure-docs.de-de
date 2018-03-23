@@ -1,11 +1,11 @@
 ---
-title: "Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Data Lake Store"
-description: "Dieses Tutorial veranschaulicht die Verwendung einer Linux-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure Data Lake Store."
+title: Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Data Lake Store
+description: Dieses Tutorial veranschaulicht die Verwendung einer Linux-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure Data Lake Store.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e2a2b885dd0dc5b240aef234ef1ff139d788de3c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Data Lake Store
 

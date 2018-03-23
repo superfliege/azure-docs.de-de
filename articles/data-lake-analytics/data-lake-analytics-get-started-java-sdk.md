@@ -1,8 +1,8 @@
 ---
 title: Entwickeln von Anwendungen mithilfe des Data Lake Analytics Java SDK | Microsoft Docs
-description: "Verwenden Sie das Java-SDK für Azure Data Lake Analytics zur Anwendungsentwicklung"
+description: Verwenden Sie das Java-SDK für Azure Data Lake Analytics zur Anwendungsentwicklung
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
-ms.author: edmaca
-ms.openlocfilehash: 795d9ec0b0cac5d74673404f1d0d851393336df0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: saveenr
+ms.openlocfilehash: 5b283e91daf25d4fad3e92c69f8ddde9ddb097b4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-java-sdk"></a>Erste Schritte mit Azure Data Lake Analytics mithilfe des Java SDK
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -30,7 +30,7 @@ In diesem Tutorial entwickeln Sie eine Java-Konsolenanwendung, die Beispiele fü
 ## <a name="prerequisites"></a>Voraussetzungen
 * Java Development Kit (JDK) 8 (mit Java-Version 1.8).
 * IntelliJ oder eine andere geeignete Java-Entwicklungsumgebung. Ist optional, wird aber empfohlen. In der Anleitung unten wird IntelliJ verwendet.
-* **Ein Azure-Abonnement**. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/pricing/free-trial/)(in englischer Sprache).
+* **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * Erstellen Sie eine AAD-Anwendung (Azure Active Directory), und rufen Sie dafür **Client-ID**, **Mandanten-ID** und **Schlüssel** ab. Weitere Informationen über AAD-Anwendungen und Anweisungen zum Abrufen einer Client-ID finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md). Der Antwort-URI und der Schlüssel stehen auch über das Portal zur Verfügung, sobald Sie die Anwendung erstellt und den Schlüssel generiert haben.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Wie authentifiziere ich mich mithilfe von Azure Active Directory?
@@ -342,7 +342,7 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 
 1. Befolgen Sie die Anweisungen zum Ausführen und Fertigstellen der Anwendung.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * Wenn Sie dasselbe Tutorial mit anderen Tools verwenden möchten, klicken Sie oben auf der Seite auf die Registerkartenauswahl.
 * Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
 * Informationen zu den ersten Schritten der Entwicklung von U-SQL-Anwendungen finden Sie unter [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).

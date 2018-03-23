@@ -1,11 +1,11 @@
 ---
-title: "Erstellen und Verwenden eines SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure| Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie ein SSH-Schlüsselpaar (öffentlicher und privater Schlüssel) für virtuelle Linux-Computer in Azure erstellen und verwenden, um die Sicherheit des Authentifizierungsprozesses zu verbessern."
+title: Erstellen und Verwenden eines SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure| Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie ein SSH-Schlüsselpaar (öffentlicher und privater Schlüssel) für virtuelle Linux-Computer in Azure erstellen und verwenden, um die Sicherheit des Authentifizierungsprozesses zu verbessern.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 34ae9482-da3e-4b2d-9d0d-9d672aa42498
 ms.service: virtual-machines-linux
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: a37bfa01343527a60193d893c7913e4e9c50d210
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ecd3a01ee5591cb09140edb1b1290ff2d4510200
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure
 Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie virtuelle Computer (VMs) in Azure erstellen, bei deren Authentifizierung SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. In diesem Artikel erfahren Sie, wie Sie für virtuelle Linux-Computer eine Datei mit einem SSH-Schlüsselpaar (ein öffentlicher und ein privater Schlüssel) der Protokollversion 2 RSA generieren. Sie können diese Schritte mit Azure Cloud Shell, einem macOS- oder Linux-Host oder dem Windows-Subsystem für Linux ausführen. Ausführliche Schritte und weitere Beispiele finden Sie unter [Ausführliche exemplarische Vorgehensweise zum Erstellen eines SSH-Schlüsselpaars mit zusätzlichen Zertifikaten für einen virtuellen Linux-Computer in Azure](create-ssh-keys-detailed.md).
 
 ## <a name="create-an-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
-Verwenden Sie den Befehl `ssh-keygen`, um Dateien mit einem öffentlichen und einem privaten SSH-Schlüssel zu erstellen. Standardmäßig werden die Dateien im Verzeichnis `~/.ssh` erstellt, aber Sie können auch einen anderen Speicherort und eine zusätzliche Passphrase (Kennwort zum Zugreifen auf die Datei mit dem privaten Schlüssel) angeben, wenn Sie dazu aufgefordert werden. Führen Sie den folgenden Befehl in einer Bash-Shell aus, und geben Sie Ihre Informationen ein, wenn die entsprechenden Aufforderungen angezeigt werden.
+Verwenden Sie den `ssh-keygen` Befehl, um öffentliche und private SSH-Schlüsseldateien zu erstellen, die standardmäßig im Verzeichnis `~/.ssh` erstellt werden. Sie können einen anderen Speicherort und eine zusätzliche Passphrase (ein Kennwort zum Zugriff auf die private Schlüsseldatei) angeben, wenn Sie dazu aufgefordert werden. Wenn am aktuellen Speicherort bereits ein SSH-Schlüsselpaar vorhanden ist, wird es überschrieben.
 
 ```bash
 ssh-keygen -t rsa -b 2048

@@ -1,9 +1,9 @@
 ---
-title: "Protokollwarnungen in Azure Monitor – Warnungen (Vorschauversion) | Microsoft-Dokumentation"
-description: "E-Mails, Benachrichtigungen oder Automatisierung werden ausgelöst und URLs (Webhooks) von Websites aufgerufen, wenn die von Ihnen angegebenen komplexen Abfragebedingungen für Azure-Warnungen (Vorschauversion) erfüllt sind."
+title: Protokollwarnungen in Azure Monitor – Warnungen (Vorschauversion) | Microsoft-Dokumentation
+description: E-Mails, Benachrichtigungen oder Automatisierung werden ausgelöst und URLs (Webhooks) von Websites aufgerufen, wenn die von Ihnen angegebenen komplexen Abfragebedingungen für Azure-Warnungen (Vorschauversion) erfüllt sind.
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: vinagara
-ms.openlocfilehash: 438776e7f0885dbdb0d66ccdd18d854e14beb299
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0cee8bf77e0facc12159b823152b8859ce5cedd8
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Protokollwarnungen in Azure Monitor – Warnungen (Vorschauversion)
-Dieser Artikel enthält Details zur Funktionsweise von Warnungsregeln in Analytics-Abfragen auf der Azure-Oberfläche „Warnungen (Vorschauversion)“ und beschreibt die Unterschiede verschiedener Arten von Protokollwarnungsregeln.
+Dieser Artikel enthält Details zur Funktionsweise von Warnungsregeln in Analytics-Abfragen auf der Azure-Oberfläche „Warnungen (Vorschauversion)“ und beschreibt die Unterschiede verschiedener Arten von Protokollwarnungsregeln. Details zu Metrikwarnungen, die Protokolle verwenden, finden Sie unter [Metrikwarnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md).
 
 Derzeit unterstützen Azure-Warnungen (Vorschau) Protokollwarnungen zu Abfragen von [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) und [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events).
 
@@ -40,7 +40,7 @@ Die gespeicherte Warnung wird daraufhin beim [Erstellen einer Protokollwarnung i
 
 ## <a name="log-alert-rules"></a>Protokollwarnungsregeln
 
-Warnungen werden mithilfe der Azure-Oberfläche „Warnungen (Vorschauversion)“ erstellt, für die in regelmäßigen Abständen automatisch Protokollabfragen ausgeführt werden.  Wenn die Ergebnisse der Protokollabfrage bestimmte Kriterien erfüllen, wird ein Warnungsdatensatz erstellt. Die Regel kann dann automatisch Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess wie das Senden von Daten an eine externe Anwendung mit [JSON-basiertem Webhook](monitor-alerts-unified-log-webhook.md) unter Verwendung von [Aktionsgruppen](monitoring-action-groups.md) aufzurufen. Verschiedene Typen von Warnungsregeln verwenden für diese Analyse unterschiedliche Logik.
+Warnungen werden von Azure-Warnungen (Vorschauversion) erstellt, um in regelmäßigen Abständen automatisch Protokollabfragen auszuführen.  Wenn die Ergebnisse der Protokollabfrage bestimmte Kriterien erfüllen, wird ein Warnungsdatensatz erstellt. Die Regel kann dann automatisch Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess wie das Senden von Daten an eine externe Anwendung mit [JSON-basiertem Webhook](monitor-alerts-unified-log-webhook.md) unter Verwendung von [Aktionsgruppen](monitoring-action-groups.md) aufzurufen. Verschiedene Typen von Warnungsregeln verwenden für diese Analyse unterschiedliche Logik.
 
 Warnungsregeln werden anhand der folgenden Details definiert:
 
@@ -96,7 +96,7 @@ Warnungsregeln des Typs **Metrische Maßeinheit** erzeugen eine Warnung für jed
 
 **Intervall**: Definiert das Zeitintervall, über das die Daten aggregiert werden.  Bei Angabe von **Fünf Minuten** wird beispielsweise ein Datensatz für jede Instanz des Gruppenfelds erstellt, das für das für die Warnung angegebene Zeitfenster in 5-Minuten-Intervallen aggregiert wird.
 > [!NOTE]
-> In der Abfrage muss die Funktion „bin“ verwendet werden. Sollte die Verwendung der Funktion „bin“ zu ungleichen Zeitintervallen für das Zeitfenster führen, wird stattdessen die Funktion „bin_at“ verwendet, um sicherzustellen, dass ein Fixpunkt vorhanden ist.
+> In der Abfrage muss die Funktion „bin“ verwendet werden. Da „bin()“ zu ungleichen Zeitintervallen führen kann, wird stattdessen die Funktion „bin_at“ mit der richtigen Zeit zur Laufzeit verwendet, um Ergebnisse mit Fixpunkt sicherzustellen.
 
 **Schwellenwert**: Der Schwellenwert für Warnungsregeln des Typs „Metrische Maßeinheit“ wird mittels eines Aggregatwerts und einer Anzahl von Verstößen definiert.  Wenn bei der Protokollsuche ein Datenpunkt diesen Wert überschreitet, gilt dies als Verstoß.  Wenn die Anzahl der Verstöße für ein beliebiges Objekt in den Ergebnissen den angegebenen Wert überschreitet, wird eine Warnung für dieses Objekt generiert.
 
@@ -120,5 +120,5 @@ Bei diesem Beispiel werden separate Warnungen für srv02 und srv03 erstellt, da 
 * Machen Sie sich mit [Webhookaktionen für Protokollwarnungen](monitor-alerts-unified-log-webhook.md) vertraut.
 * [Verschaffen Sie sich einen Überblick über Azure-Warnungen (Vorschauversion).](monitoring-overview-unified-alerts.md)
 * Erfahren Sie mehr über die [Verwendung von Azure-Warnungen (Vorschauversion).](monitor-alerts-unified-usage.md)
-* Informieren Sie sich ausführlicher über [Application Insights](../application-insights/app-insights-analytics.md).
+* Weitere Informationen zu [Application Insights](../application-insights/app-insights-analytics.md)
 * Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-overview.md).    

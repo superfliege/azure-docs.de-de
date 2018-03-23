@@ -1,11 +1,11 @@
 ---
-title: "Einrichten eines Windows RDMA-Clusters zum Ausführen von MPI-Anwendungen | Microsoft Docs"
-description: "Hier erfahren Sie, wie Sie einen Windows-basierten HPC Pack-Cluster mit virtuellen Computern der Größe H16r, H16mr, A8 oder A9 erstellen, um das Azure RDMA-Netzwerk zum Ausführen von MPI-Apps zu verwenden."
+title: Einrichten eines Windows RDMA-Clusters zum Ausführen von MPI-Anwendungen | Microsoft Docs
+description: Hier erfahren Sie, wie Sie einen Windows-basierten HPC Pack-Cluster mit virtuellen Computern der Größe H16r, H16mr, A8 oder A9 erstellen, um das Azure RDMA-Netzwerk zum Ausführen von MPI-Apps zu verwenden.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 7d9f5bc8-012f-48dd-b290-db81c7592215
 ms.service: virtual-machines-windows
@@ -13,28 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 06/01/2017
+ms.date: 03/06/2018
 ms.author: danlep
-ms.openlocfilehash: 19be1d693fe13af0f6c1ab0cb6f7bc829b9fad5a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 437c475735ec3823de51c5f9e996a5303fe9cfa7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen
-Richten Sie einen Windows RDMA-Cluster mit [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) und [Größen von virtuellen HPC-Computern (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) in Azure ein, um parallele MPI-Anwendungen (Message Passing Interface) auszuführen. Wenn Sie RDMA-fähige, Windows Server-basierte Knoten in einem HPC Pack-Cluster einrichten, wird die Kommunikation der MPI-Anwendungen in Azure effizient über ein auf RDMA-Technologie (Remote Direct Memory Access) basierendes Netzwerk mit niedriger Latenz und hohem Durchsatz abgewickelt.
+Richten Sie anhand der Informationen unter [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) und [Größen von virtuellen HPC-Computern (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances) (Abschnitt „RDMA-fähige Instanzen“) einen Windows RDMA-Cluster in Azure ein, um parallele MPI-Anwendungen (Message Passing Interface) auszuführen. Wenn Sie RDMA-fähige, Windows Server-basierte Knoten in einem HPC Pack-Cluster einrichten, wird die Kommunikation der MPI-Anwendungen in Azure effizient über ein auf RDMA-Technologie (Remote Direct Memory Access) basierendes Netzwerk mit niedriger Latenz und hohem Durchsatz abgewickelt.
 
 Weitere Informationen zum Ausführen von MPI-Workloads auf virtuellen Linux-Computern, die auf das Azure RDMA-Netzwerk zugreifen, finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](../../linux/classic/rdma-cluster.md).
 
 ## <a name="hpc-pack-cluster-deployment-options"></a>Optionen für die Bereitstellung von HPC Pack-Clustern
 Microsoft HPC Pack ist ein kostenloses Tool zum Erstellen von HPC-Clustern (lokal oder in Azure) für die Ausführung Windows- oder Linux-basierter HPC-Anwendungen. HPC Pack enthält eine Laufzeitumgebung für die Microsoft-Implementierung von Message Passing Interface für Windows (MS-MPI). Bei Verwendung mit RDMA-fähigen Instanzen unter einem unterstützten Windows Server-Betriebssystem stellt HPC Pack eine effiziente Option für die Ausführung von Windows-MPI-Anwendungen dar, die auf das Azure RDMA-Netzwerk zugreifen. 
 
-Dieser Artikel enthält zwei Szenarien und Links zu detaillierten Anleitungen zur Einrichtung eines Windows-RDMA-Clusters mit Microsoft HPC Pack. 
+Dieser Artikel enthält zwei Szenarien sowie Links zu detaillierten Anleitungen zur Einrichtung eines Windows RDMA-Clusters mit Microsoft HPC Pack 2012 R2. 
 
 * Szenario 1: Bereitstellen rechenintensiver Workerrolleninstanzen (PaaS)
 * Szenario 2: Bereitstellen von Computeknoten in rechenintensiven virtuellen Computern (IaaS)
-
-Informationen zu den allgemeinen Voraussetzungen für die Verwendung rechenintensiver Instanzen mit Windows finden Sie unter [Größen von virtuellen HPC-Computern (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="scenario-1-deploy-compute-intensive-worker-role-instances-paas"></a>Szenario 1: Bereitstellen rechenintensiver Workerrolleninstanzen (PaaS)
 Fügen Sie aus einem vorhandenen HPC Pack-Cluster zusätzliche Computeressourcen in Azure-Workerrolleninstanzen (Azure-Knoten) hinzu, die in einem Clouddienst (PaaS) ausgeführt werden. Diese Funktion wird auch als "Burst auf Azure" mit HPC Pack bezeichnet und unterstützt verschiedene Größen für die Workerrolleninstanzen. Geben Sie beim Hinzufügen der Azure-Knoten eine der RDMA-fähigen Größen an.
@@ -51,13 +49,14 @@ Im Anschluss finden Sie Überlegungen und Schritte zum Burst auf RDMA-fähige Az
 ### <a name="steps"></a>Schritte
 1. **Bereitstellen und Konfigurieren eines HPC Pack 2012 R2-Hauptknotens**
    
-    Laden Sie das neueste HPC Pack-Installationspaket aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922)herunter. Voraussetzungen und Anleitungen für die Vorbereitung der Azure-Burstbereitstellung finden Sie unter [Burst to Azure with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx) (Burst auf Azure-Workerinstanzen mit Microsoft HPC Pack).
+    Laden Sie das HPC Pack-Installationspaket aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922) herunter. Voraussetzungen und Anleitungen für die Vorbereitung der Azure-Burstbereitstellung finden Sie unter [Burst to Azure with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx) (Burst auf Azure-Workerinstanzen mit Microsoft HPC Pack).
 2. **Konfigurieren eines Verwaltungszertifikats im Azure-Abonnement**
    
     Konfigurieren Sie ein Zertifikat, um die Verbindung zwischen dem Hauptknoten und Azure zu sichern. Optionen und Verfahren finden Sie unter [Szenarien zum Konfigurieren des Azure-Verwaltungszertifikats für HPC Pack](http://technet.microsoft.com/library/gg481759.aspx). Für Testbereitstellungen installiert HPC Pack ein Zertifikat mit dem Namen „Default Microsoft HPC Azure Management“, das Sie schnell in Ihr Azure-Abonnement hochladen können.
 3. **Erstellen eines neuen Clouddiensts und eines Speicherkontos**
    
-    Verwenden Sie das Azure-Portal, um einen Clouddienst und ein Speicherkonto für die Bereitstellung in einer Region zu erstellen, in der RDMA-fähige Instanzen verfügbar sind.
+    Verwenden Sie das Azure-Portal, um einen Clouddienst (klassisch) und ein Speicherkonto (klassisch) für die Bereitstellung zu erstellen. Erstellen Sie diese Ressourcen in einer Region, in der die H-Serie bzw. die gewünschte Größe (A8 oder A9) verfügbar ist. Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
+
 4. **Erstellen einer Azure-Knotenvorlage**
    
     Verwenden Sie den Assistenten zum Erstellen von Knotenvorlagen in HPC Cluster Manager. Die Schritte finden Sie unter [Erstellen einer Azure-Knotenvorlage](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) im Thema mit den Schritten zum Bereitstellen von Azure-Knoten mit Microsoft HPC Pack.
@@ -91,19 +90,20 @@ In diesem Szenario stellen Sie den HPC Pack-Hauptknoten und Clustercomputeknoten
 ### <a name="steps"></a>Schritte
 1. **Erstellen eines Clusterhauptknotens und von Computeknoten-VMs durch Ausführen des IaaS-Bereitstellungsskripts von HPC Pack auf einem Clientcomputer**
    
-    Laden Sie das HPC Pack-Paket mit dem IaaS-Bereitstellungsskript aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922)herunter.
+    Laden Sie das HPC Pack-Paket mit dem IaaS-Bereitstellungsskript aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949)herunter.
    
     Erstellen Sie zur Vorbereitung des Clientcomputers die Skriptkonfigurationsdatei, und führen Sie das Skript aus. Weitere Informationen finden Sie unter [Erstellen eines HPC-Clusters mit dem IaaS-Bereitstellungsskript von HPC Pack](hpcpack-cluster-powershell-script.md). 
    
-    Berücksichtigen Sie beim Bereitstellen RDMA-fähiger Computeknoten außerdem die folgenden Aspekte:
+    Überlegungen zum Bereitstellen von RDMA-fähigen Computeknoten finden Sie unter [Größen von virtuellen HPC-Computern (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances). Beachten Sie Folgendes:
    
-   * **Virtuelles Netzwerk**: Geben Sie ein neues virtuelles Netzwerk in einer Region an, in der die gewünschte RDMA-fähige Instanzgröße verfügbar ist.
-   * **Windows Server-Betriebssystem**: Geben Sie zur Unterstützung von RDMA-Verbindungen für die virtuellen Computer des Computeknotens ein Windows Server 2012 R2- oder Windows Server 2012-basiertes Betriebssystem an.
-   * **Clouddienste**: Es empfiehlt sich, den Hauptknoten in einem Clouddienst und die Computeknoten in einem anderen Clouddienst bereitzustellen.
+   * **Virtuelles Netzwerk:** Geben Sie ein neues virtuelles Netzwerk in einer Region an, in der die H-Serie bzw. die gewünschte Größe (A8 oder A9) verfügbar ist. Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
+
+   * **Windows Server-Betriebssystem:** Geben Sie zur Unterstützung von RDMA-Verbindungen für die virtuellen Computer des Computeknotens ein kompatibles Windows Server-Betriebssystem wie Windows Server 2012 R2 an.
+   * **Clouddienste:** Da das Skript das klassische Bereitstellungsmodell verwendet, werden die virtuellen Clustercomputer mithilfe von Azure-Clouddiensten bereitgestellt (`ServiceName`-Einstellungen in der Konfigurationsdatei). Es empfiehlt sich, den Hauptknoten in einem Clouddienst und die Computeknoten in einem anderen Clouddienst bereitzustellen. 
    * **Hauptknotengröße**: In diesem Szenario sollte für den Hauptknoten mindestens die Größe A4 (sehr groß) verwendet werden.
    * **HpcVmDrivers-Erweiterung**: Das Bereitstellungsskript installiert den Azure-VM-Agent und die Erweiterung „HpcVmDrivers“ automatisch bei der Bereitstellung von Computeknoten der Größe A8 oder A9 mit einem Windows Server-Betriebssystem. Mit HpcVmDrivers werden auf den Computeknoten-VMs Treiber installiert, damit eine Verbindung mit dem RDMA-Netzwerk hergestellt werden kann. Auf virtuellen Computer der RDMA-fähigen H-Serie müssen Sie die Erweiterung „HpcVmDrivers“ manuell installieren. Siehe [Größen von virtuellen HPC-Computern (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
    * **Netzwerkkonfiguration des Clusters**: Das Bereitstellungsskript richtet den HPC Pack-Cluster automatisch in Topologie 5 (alle Knoten im Unternehmensnetzwerk) ein. Diese Topologie ist für alle HPC Pack-Clusterbereitstellungen auf virtuellen Computern erforderlich. Ändern Sie die Topologie des Clusternetzwerks später nicht.
-2. **Onlineschalten der Computeknoten zum Ausführen von Aufträgen**
+1. **Onlineschalten der Computeknoten zum Ausführen von Aufträgen**
    
     Wählen Sie die Knoten aus, und verwenden Sie die Aktion **Online schalten** in HPC Cluster Manager. Die Knoten sind zum Ausführen von Aufträgen bereit.
 3. **Übermitteln von Aufträgen an den Cluster**

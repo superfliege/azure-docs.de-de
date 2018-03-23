@@ -1,11 +1,11 @@
 ---
-title: "Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation"
-description: "Konfigurieren Sie die benötigte Verbindungsinfrastruktur, um SAP HANA in Azure (große Instanzen) zu verwenden."
+title: Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
+description: Konfigurieren Sie die benötigte Verbindungsinfrastruktur, um SAP HANA in Azure (große Instanzen) zu verwenden.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a44fdbfb973d75c21aa87e9b9d0eea8fb2b3392
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: d94e491d12ac43a4d85a638c79bcd3b24a4bc0ef
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen) 
 
@@ -75,7 +75,7 @@ Nun soll ein genauerer Blick auf das Erstellen des Azure-VNets für HANA (große
 >[!Note]
 >Das Azure-VNet für HANA (großen Instanzen) muss entsprechend dem Azure Resource Manager-Bereitstellungsmodells erstellt werden. Das ältere Azure-Bereitstellungsmodell, üblicherweise als klassisches Bereitstellungsmodell bezeichnet, wird für die Lösung HANA (großen Instanzen) nicht unterstützt.
 
-Das VNet kann mithilfe des Azure-Portals, mit PowerShell, der Azure-Vorlage oder Azure CLI erstellt werden (siehe [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Im folgenden Beispiel wird ein VNet erläutert, das über das Azure-Portal erstellt wurde.
+Das VNet kann mithilfe des Azure-Portals, mit PowerShell, der Azure-Vorlage oder Azure CLI erstellt werden (siehe [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). Im folgenden Beispiel wird ein VNet erläutert, das über das Azure-Portal erstellt wurde.
 
 Bei Betrachtung der Definitionen eines Azure-VNets über das Azure-Portal sollen einige Definitionen untersucht werden. Außerdem soll ermittelt werden, welche Beziehung sie zu den nachstehend aufgelisteten verschiedenen IP-Adressbereichen haben. Mit **Adressraum** ist der Adressraum gemeint, der für das Azure-VNet verwenden werden kann. Dieser Adressraum ist auch der Adressbereich, der im VNet für die BGP-Routenweitergabe verwendet wird. Dieser **Adressraum** ist hier zu sehen:
 
@@ -126,7 +126,7 @@ Einige IP-Adressbereiche, die zum Bereitstellen von HANA (große Instanzen) erfo
 - **IP-Adressbereich des VNet-Gatewaysubnetzes:** Je nachdem, welche Features Sie verwenden möchten, wird die folgende Größe empfohlen:
    - Höchstleistungs-ExpressRoute-Gateway: /26-Adressblock – erforderlich für Typ II-Klasse von SKUs
    - Koexistenz mit VPN und ExpressRoute über ein Hochleistungs-ExpressRoute-Gateway (oder kleiner): /27-Adressblock
-   - Alle anderen Fälle: /28-Adressblock. Dieser Adressbereich muss Bestandteil der Werte sein, die in den Werten von „Azure-VNet-Adressraum“ verwendet werden. Dieser Adressbereich muss Bestandteil der Werte sein, die in dem Azure-VNet-Adressraum verwendet werden, den Sie an Microsoft übermitteln müssen. Wie erhalten Sie diesen IP-Adressbereich? Ihr Unternehmensnetzwerkteam oder Dienstanbieter sollte einen IP-Adressbereich bereitstellen, der in Ihrem Netzwerk derzeit nicht verwendet wird. 
+   - Alle anderen Fälle: /28-Adressblock. Dieser Adressbereich muss Bestandteil der Werte sein, die in den Werten von „Azure-VNET-Adressraum“ verwendet werden. Dieser Adressbereich muss Bestandteil der Werte sein, die in dem Azure-VNet-Adressraum verwendet werden, den Sie an Microsoft übermitteln müssen. Wie erhalten Sie diesen IP-Adressbereich? Ihr Unternehmensnetzwerkteam oder Dienstanbieter sollte einen IP-Adressbereich bereitstellen, der in Ihrem Netzwerk derzeit nicht verwendet wird. 
 
 - **Adressbereich für ER-P2P-Konnektivität:** Dieser Adressbereich ist der IP-Adressbereich für die ExpressRoute-P2P-Verbindung von SAP HANA (große Instanzen) (ExpressRoute = ER). Dieser Bereich von IP-Adressen muss ein /29-CIDR-IP-Adressbereich sein. Dieser Bereich darf weder mit dem lokalen noch mit anderen Azure-IP-Adressbereichen überlappen. Dieser IP-Adressbereich wird verwendet, um die ER-Konnektivität von Ihrem Azure-VNet ExpressRoute-Gateway zu den Servern von SAP HANA (große Instanzen) einzurichten. Wie erhalten Sie diesen IP-Adressbereich? Ihr Unternehmensnetzwerkteam oder Dienstanbieter sollte einen IP-Adressbereich bereitstellen, der in Ihrem Netzwerk derzeit nicht verwendet wird. **Dieser Bereich ist ein IP-Adressbereich, der an Microsoft übermittelt werden muss, wenn eine Erstbereitstellung angefordert wird.**
   
@@ -250,7 +250,7 @@ Verwenden Sie zum Hinzufügen weiterer IP-Adressen und Subnetze das Azure-Portal
 
 In diesem Fall empfiehlt es sich, den neuen IP-Adressbereich dem VNet-Adressraum als neuen Bereich hinzuzufügen, anstatt einen neuen aggregierten Bereich zu erstellen. In beiden Fällen müssen Sie diese Änderung an Microsoft übermitteln, damit Verbindungen aus diesem neuen IP-Adressbereich mit den SAP HANA (große Instanzen)-Einheiten in Ihrem Client zugelassen werden. Sie können eine Azure-Supportanfrage öffnen, um den neuen VNet-Adressraum hinzufügen zu lassen. Führen Sie nach Erhalt einer Bestätigung die nächsten Schritte aus.
 
-Wenn Sie im Azure-Portal ein zusätzliches Subnetz erstellen möchten, lesen Sie den Artikel [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Wie diese Schritte mit PowerShell erfolgen, finden Sie unter [Erstellen eines virtuellen Netzwerks mithilfe von PowerShell](../../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Wenn Sie im Azure-Portal ein zusätzliches Subnetz erstellen möchten, lesen Sie den Artikel [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). Wie diese Schritte mit PowerShell erfolgen, finden Sie unter [Erstellen eines virtuellen Netzwerks mithilfe von PowerShell](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
 
 ## <a name="adding-vnets"></a>Hinzufügen von VNets
 
@@ -277,15 +277,13 @@ Nachdem die neue Verbindung erstellt wurde und die SAP HANA in Azure-Dienstverwa
 
 Zum Entfernen eines VNet-Subnetzes kann das Azure-Portal, PowerShell oder die CLI verwendet werden. Für den Fall, dass Ihr Azure-VNet-IP-Adressbereich/Azure VNet-Adressraum ein aggregierter Bereich ist, besteht keine Notwendigkeit zur Nachsorge mit Microsoft. Die einzige Ausnahme ist, dass das VNet weiterhin BGP-Routenadressraum weitergibt, der das gelöschte Subnetz umfasst. Wenn Sie den Azure-VNet-IP-Adressbereich/Azure-VNet-Adressraum als mehrere IP-Adressbereiche definiert haben, von denen einer dem gelöschten Subnetz zugewiesen war, sollten Sie diesen aus Ihrem VNet-Adressraum löschen und dann die SAP HANA in Azure-Dienstverwaltung informieren, den Bereich aus den Bereichen zu entfernen, mit denen SAP HANA in Azure (große Instanzen) kommunizieren darf.
 
-Es gibt noch keine speziellen Anleitungen für Azure.com zum Entfernen von Subnetzen. Doch der Prozess zum Entfernen von Subnetzen ist die Umkehrung des Hinzufügens von Subnetzen. Der Artikel [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) enthält weitere Informationen zum Erstellen von Subnetzen.
+Wenn Sie ein Subnetz löschen möchten, finden Sie unter [Löschen eines Subnetzes](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet) weitere Informationen zum Erstellen von Subnetzen.
 
 ## <a name="deleting-a-vnet"></a>Löschen eines VNet
 
-Sie können ein VNet mithilfe des Azure-Portals, von PowerShell oder der CLI löschen. Das SAP HANA in Azure-Dienstverwaltungsteam entfernt die vorhandenen Autorisierungen für die ExpressRoute-Leitung von SAP HANA in Azure (große Instanzen) und den Azure-VNet-IP-Adressbereich/Azure-VNet-Adressraum für die Kommunikation mit SAP HANA (große Instanzen).
+Informationen zum Löschen eines virtuellen Netzwerks finden Sie unter [Löschen eines virtuellen Netzwerks](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network). Das SAP HANA in Azure-Dienstverwaltungsteam entfernt die vorhandenen Autorisierungen für die ExpressRoute-Leitung von SAP HANA in Azure (große Instanzen) und den Azure-VNet-IP-Adressbereich/Azure-VNet-Adressraum für die Kommunikation mit SAP HANA (große Instanzen).
 
 Nachdem das VNet entfernt wurde, beantragen Sie in einer Azure-Supportanfrage das Entfernen der IP-Adressbereiche.
-
-Es gibt noch keine speziellen Anleitungen für Azure.com zum Entfernen von VNets. Doch der Prozess zum Entfernen von VNets ist die Umkehrung des zuvor beschriebenen Hinzufügens von VNets. In den Artikeln [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) und [Erstellen eines virtuellen Netzwerks mithilfe von PowerShell](../../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) finden Sie weitere Informationen zum Erstellen von VNets.
 
 Um sicherzustellen, dass alles entfernt wurde, löschen Sie die folgenden Elemente:
 

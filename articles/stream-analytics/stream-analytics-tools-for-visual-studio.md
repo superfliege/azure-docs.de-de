@@ -1,8 +1,8 @@
 ---
-title: "Verwenden der Azure Stream Analytics-Tools für Visual Studio | Microsoft-Dokumentation"
-description: "Tutorial mit ersten Schritten für die Azure Stream Analytics-Tools für Visual Studio"
+title: Verwenden der Azure Stream Analytics-Tools für Visual Studio | Microsoft-Dokumentation
+description: Tutorial mit ersten Schritten für die Azure Stream Analytics-Tools für Visual Studio
 keywords: Visual Studio
-documentationcenter: 
+documentationcenter: ''
 services: stream-analytics
 author: su-jie
 manager: jhubbard
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
+ms.date: 03/05/2018
 ms.author: sujie
-ms.openlocfilehash: b06eae6b85f2ca41390955cde2499af2531e2e12
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 71e7247226f9432b3f9590ca87ac33883ea576ce
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Verwenden der Azure Stream Analytics-Tools für Visual Studio
 Azure Stream Analytics-Tools für Visual Studio sind jetzt allgemein verfügbar. Diese Tools bieten umfangreichere Funktionen für Stream Analytics-Benutzer beim Beheben von Problemen sowie beim Verfassen komplexer Abfragen und sogar beim lokalen Schreiben von Abfragen. Sie können auch einen Stream Analytics-Auftrag in ein Visual Studio-Projekt exportieren.
 
 ## <a name="introduction"></a>Einführung
-In diesem Tutorial erfahren Sie, wie Sie mit Stream Analytics-Tools für Visual Studio Ihre Stream Analytics-Aufträge erstellen, verfassen, lokal testen, verwalten und debuggen. 
+In diesem Tutorial erfahren Sie, wie Sie mit Stream Analytics-Tools für Visual Studio Ihre Stream Analytics-Aufträge erstellen, verfassen, lokal testen, verwalten und debuggen. Nach der Erstellung des Auftrags können Sie mithilfe des CI/CD Nuget-Pakets einen Continuous Integration- und Continuous Deployment-Prozess für Azure einrichten. Weitere Informationen finden Sie im Artikel [Einrichten von Continuous Integration und Continuous Deployment mithilfe der Stream Analytics Visual Studio-Tools](stream-analytics-tools-for-visual-studio-cicd.md).
 
 Nach Abschluss dieses Tutorials, werden Sie in der Lage sein, folgende Aufgaben auszuführen:
 
@@ -115,7 +115,7 @@ Jetzt sind alle Eingaben definiert.
 
 4. Geben Sie für **Benutzername** den Text **tolladmin** ein. Geben Sie für **Kennwort** den Text **123toll!** ein. Geben Sie für **Tabelle** den Text **TollDataRefJoin** ein.
 
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
    ![Ausgabeeinstellungen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-output-01.png)
  
@@ -157,7 +157,7 @@ Sie können zunächst die Abfrage kompilieren, um festzustellen, ob ein Syntaxfe
    
    ![Lokale Eingabe hinzufügen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-01.png)
    
-2. Wählen Sie im Popupfenster die Beispieldaten in Ihrem lokalen Pfad aus. Wählen Sie **Speichern** aus.
+2. Wählen Sie im Popupfenster die Beispieldaten in Ihrem lokalen Pfad aus. Wählen Sie **Speichern**aus.
    
    ![Lokale Eingabe hinzufügen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-02.png)
    

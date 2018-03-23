@@ -2,7 +2,7 @@
 title: Verschieben von Azure-Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe | Microsoft-Dokumentation
 description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6a1d56a270ae0c44db18f26091cc3c550a37e420
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c4bf3871b4636ce769dd8d84a637b88d4a00db97
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -99,7 +99,7 @@ Wenden Sie sich in folgenden Fällen an den [Support](https://portal.azure.com/#
 * Sie verschieben Ihre Ressourcen in ein neues Azure-Konto (und einen neuen Azure Active Directory-Mandanten) und benötigen Unterstützung für die Anweisungen im vorherigen Abschnitt.
 * Verschieben von klassischen Ressourcen, wenn Probleme durch Einschränkungen auftreten
 
-## <a name="services-that-enable-move"></a>Dienste, die eine Verschiebung ermöglichen
+## <a name="services-that-can-be-moved"></a>Dienste, die verschoben werden können
 
 Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe und ein neues Abonnement:
 
@@ -149,7 +149,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Virtual Network – siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations)
 * VPN Gateway
 
-## <a name="services-that-do-not-enable-move"></a>Dienste, die keine Verschiebung ermöglichen
+## <a name="services-that-cannot-be-moved"></a>Dienste, die nicht verschoben werden können
 
 Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht:
 

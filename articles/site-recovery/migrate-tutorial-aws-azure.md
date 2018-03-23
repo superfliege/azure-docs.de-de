@@ -1,6 +1,6 @@
 ---
 title: Migrieren von VMs aus AWS zu Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation
-description: "In diesem Artikel wird beschrieben, wie Sie unter Amazon Web Services (AWS) ausgeführte Windows-VMs mithilfe von Azure Site Recovery zu Azure migrieren."
+description: In diesem Artikel wird beschrieben, wie Sie unter Amazon Web Services (AWS) ausgeführte Windows-VMs mithilfe von Azure Site Recovery zu Azure migrieren.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -133,7 +133,7 @@ Klicken Sie auf der Seite **Quelle vorbereiten** auf **+ Konfigurationsserver**.
 
 6. Führen Sie auf der VM die Datei **cspsconfigtool.exe** aus, um mindestens ein Verwaltungskonto auf dem Konfigurationsserver zu erstellen. Vergewissern Sie sich, dass die Verwaltungskonten über Administratorrechte auf den EC2-Instanzen verfügen, die migriert werden sollen.
 
-Wenn Sie die Einrichtung des Konfigurationsservers abgeschlossen haben, wechseln Sie zurück zum Portal. Wählen Sie für **Konfigurationsserver** den soeben erstellten Server aus, und klicken Sie auf *OK**, um mit „Schritt 3: Ziel, Vorbereiten“ fortzufahren.
+Wenn Sie die Einrichtung des Konfigurationsservers abgeschlossen haben, wechseln Sie zurück zum Portal. Wählen Sie für **Konfigurationsserver** den soeben erstellten Server aus, und klicken Sie auf *OK** , um mit „Schritt 3: Ziel, Vorbereiten“ fortzufahren.
 
 ### <a name="3-target-prepare"></a>3 Ziel, Vorbereiten
 

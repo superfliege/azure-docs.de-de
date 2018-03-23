@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning-Experimentieren-Dienst – Konfigurationsdateien"
-description: "In diesem Dokument werden die Konfigurationseinstellungen für den Azure ML-Experimentieren-Dienst erläutert."
+title: Azure Machine Learning-Experimentieren-Dienst – Konfigurationsdateien
+description: In diesem Dokument werden die Konfigurationseinstellungen für den Azure ML-Experimentieren-Dienst erläutert.
 services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 00e98ff07d144db791fcf074699614f1e664634b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 75b55b45c355f585fd73bdc1d97bc6adbbc4e9a0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning-Experimentieren-Dienst – Konfigurationsdateien
 
@@ -142,8 +142,7 @@ Die Datei _\<Computezielname>.compute_ gibt Verbindungs- und Konfigurationsinfor
 
 **password**: Das verschlüsselte Kennwort für die SSH-Verbindung.
 
-
-            **sharedVolumes**: Flag, das signalisiert, dass die Ausführungs-Engine die Docker-Funktion „freigegebene Volumes“ verwenden sollte, um Projektdateien hin und her zu senden. Ist dieses Flag aktiviert, kann die Ausführung beschleunigt werden, da Docker direkt auf Projekte zugreifen kann, ohne sie kopieren zu müssen. Es wird empfohlen, _FALSE_ festzulegen, wenn die Docker-Engine unter Windows ausgeführt wird, da das Freigeben von Volumes für Docker unter Windows unzuverlässig sein kann. Legen Sie es auf _TRUE_ fest, wenn das Modul auf MacOS oder Linux ausgeführt wird.
+**sharedVolumes**: Flag, das signalisiert, dass die Ausführungs-Engine die Docker-Funktion „freigegebene Volumes“ verwenden sollte, um Projektdateien hin und her zu senden. Ist dieses Flag aktiviert, kann die Ausführung beschleunigt werden, da Docker direkt auf Projekte zugreifen kann, ohne sie kopieren zu müssen. Es wird empfohlen, _FALSE_ festzulegen, wenn die Docker-Engine unter Windows ausgeführt wird, da das Freigeben von Volumes für Docker unter Windows unzuverlässig sein kann. Legen Sie es auf _TRUE_ fest, wenn das Modul auf MacOS oder Linux ausgeführt wird.
 
 **NvidiaDocker**: Wird dieses Flag auf _TRUE_ festgelegt, so weist es den Azure ML-Experimentieren-Dienst dazu an, den Befehl _nvidia-Docker_ anstelle des normalen _docker_-Befehls zu verwenden, um das Docker-Image zu starten. Die _Nvidia-Docker_-Engine gewährt dem Docker-Container Zugriff auf die GPU-Hardware. Die Einstellung ist erforderlich, wenn die GPU-Ausführung im Docker-Container stattfinden soll. Nur der Linux-Host unterstützt _Nvidia-docker_. Angenommen, die Linux-basierte DSVM in Azure wird mit _Nvidia-Docker_ bereitgestellt. _nvidia-docker_ wird ab jetzt unter Windows nicht unterstützt.
 
@@ -207,7 +206,7 @@ Im folgende Beispiel ersetzen die „mylocal.datasource“-Verweise in Azure ML 
  
 ```
 DataSourceSubstitutions:
-    myocal.dsource: myremote.dsource
+    mylocal.dsource: myremote.dsource
 ```
 
 Auf der Grundlage des oben genannten Ersatzes liest das folgende Codebeispiel jetzt von „myremote.dsource“ anstelle von „mylocal.dsource“, ohne dass Benutzer ihren Code ändern.

@@ -1,4 +1,19 @@
-
+---
+title: Includedatei
+description: Includedatei
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 3dfc72ff0347a93c6c6dce0e7ec763dd8241c55b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/16/2018
+---
 ## <a name="azure-backup"></a>Azure Backup
 
 Verwenden Sie Azure Backup zum Sichern von Azure-VMs, auf denen Produktionsworkloads ausgeführt werden. Azure Backup unterstützt anwendungskonsistente Sicherungen für virtuelle Windows- und Linux-Computer. Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder nur bestimmte Dateien wiederherstellen. 

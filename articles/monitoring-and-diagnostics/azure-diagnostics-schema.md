@@ -1,12 +1,12 @@
 ---
-title: "Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas | Microsoft-Dokumentation"
-description: "Relevant für die Erfassung von Leistungsindikatoren in Azure Virtual Machines, VM-Skalierungsgruppen, Service Fabric und Cloud Services."
+title: Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas | Microsoft-Dokumentation
+description: Relevant für die Erfassung von Leistungsindikatoren in Azure Virtual Machines, VM Scale Sets, Service Fabric und Cloud Services.
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: robb
-ms.openlocfilehash: 119e8a237f24cdc80a1ab8e376f2b308c9eada05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 45a092452bc702a6a593cd6c21a8d2eaf4ff44bd
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="azure-diagnostics-extention-configuration-schema-versions-and-history"></a>Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas
+# <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas
 Diese Seite enthält einen Index für die Schemaversionen der Azure-Diagnoseerweiterung, die zusammen mit dem Microsoft Azure SDK bereitgestellt werden.  
 
 > [!NOTE]
@@ -33,14 +33,14 @@ Diese Seite enthält einen Index für die Schemaversionen der Azure-Diagnoseerwe
 > 
 > Diese Seite ist nur relevant, wenn Sie einen dieser Dienste verwenden.
 
-Die Azure-Diagnoseerweiterung wird zusammen mit anderen Microsoft-Diagnoseprodukten wie Azure Monitor, Application Insights und Log Analytics verwendet. Weitere Informationen finden Sie unter [Übersicht der Microsoft-Überwachungstools](monitoring-overview.md).
+Die Azure-Diagnoseerweiterung wird zusammen mit anderen Microsoft-Diagnoseprodukten wie Azure Monitor, Application Insights und Log Analytics verwendet. Weitere Informationen finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](monitoring-overview.md).
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK- und -Diagnoseversionen – Bereitstellungsdiagramm  
 
 |Azure SDK-Version | Version der Diagnoseerweiterung | Modell|  
 |------------------|-------------------------------|------|  
-|1.x               |1,0                            |Plug-In|  
-|2.0–2.4         |1,0                            |Plug-In|  
+|1.x               |1.0                            |Plug-In|  
+|2.0–2.4         |1.0                            |Plug-In|  
 |2.5               |1.2                            |Erweiterung|  
 |2.6               |1.3                            |"|  
 |2.7               |1.4                            |"|  
@@ -135,18 +135,18 @@ Das Element „sinks“ wurde hinzugefügt, ebenso die Möglichkeit, Diagnosedat
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2.6 und Diagnoseerweiterung 1.3 
 Für Clouddienstprojekte in Visual Studio wurden die folgenden Änderungen vorgenommen. (Diese Änderungen gelten auch für spätere Versionen des Azure SDK.)
 
-* Der lokale Emulator unterstützt jetzt die Diagnose. Dies bedeutet, dass Sie Diagnosedaten erfassen und sicherstellen können, dass Ihre Anwendung die richtigen Ablaufverfolgungen erstellt, während Sie Ihre Entwicklung und Tests in Visual Studio durchführen. Die Verbindungszeichenfolge `UseDevelopmentStorage=true` aktiviert das Sammeln von Diagnosedaten, während Sie Ihr Clouddienstprojekt in Visual Studio mithilfe des Azure-Speicheremulators ausführen. Alle Diagnosedaten werden im Speicherkonto (Development Storage) gesammelt.
+* Der lokale Emulator unterstützt jetzt die Diagnose. Diese Änderung bedeutet, dass Sie Diagnosedaten erfassen und sicherstellen können, dass Ihre Anwendung die richtigen Ablaufverfolgungen erstellt, während Sie Ihre Entwicklung und Tests in Visual Studio durchführen. Die Verbindungszeichenfolge `UseDevelopmentStorage=true` aktiviert das Sammeln von Diagnosedaten, während Sie Ihr Clouddienstprojekt in Visual Studio mithilfe des Azure-Speicheremulators ausführen. Alle Diagnosedaten werden im Speicherkonto (Development Storage) gesammelt.
 * Die Verbindungszeichenfolge für das Diagnosespeicherkonto (Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString) wird erneut in der Dienstkonfigurationsdatei (.cscfg) gespeichert. In Azure SDK 2.5 wurde das Diagnosespeicherkonto in der Datei "diagnostics.wadcfgx" angegeben.
 
 Es gibt einige wichtige Unterschiede zwischen der Funktion der Verbindungszeichenfolge in Azure SDK 2.4 und früher und in Azure SDK 2.6 und später.
 
-* Bis Azure SDK 2.4 wurde die Verbindungszeichenfolge vom Diagnose-Plug-In als Laufzeit verwendet, um Informationen zum Speicherkonto für die Übertragung der Diagnoseprotokolle abzurufen.
-* Ab Azure SDK 2.6 wird die Diagnoseverbindungszeichenfolge von Visual Studio während der Veröffentlichung zum Konfigurieren der Diagnoseerweiterung mit den entsprechenden Speicherkontoinformationen verwendet. Mit der Verbindungszeichenfolge können Sie die verschiedenen Speicherkonten für verschiedene Dienstkonfigurationen definieren, die Visual Studio beim Veröffentlichen verwendet. Da das Diagnose-Plug-In (nach Azure SDK 2.5) nicht mehr verfügbar ist, kann jedoch die CSCFG-Datei allein die Diagnoseerweiterung nicht aktivieren. Sie müssen die Erweiterung mithilfe von Tools wie Visual Studio oder PowerShell separat aktivieren.
+* Bis Azure SDK 2.4 wurde die Verbindungszeichenfolge vom Diagnose-Plug-In zur Laufzeit verwendet, um Informationen zum Speicherkonto für die Übertragung der Diagnoseprotokolle abzurufen.
+* Ab Azure SDK 2.6 wird die Diagnoseverbindungszeichenfolge von Visual Studio während der Veröffentlichung zum Konfigurieren der Diagnoseerweiterung mit den entsprechenden Speicherkontoinformationen verwendet. Mit der Verbindungszeichenfolge können Sie die verschiedenen Speicherkonten für verschiedene Dienstkonfigurationen definieren, die Visual Studio beim Veröffentlichen verwendet. Da das Diagnose-Plug-In (nach Azure SDK 2.5) nicht mehr verfügbar ist, kann jedoch die CSCFG-Datei allein die Diagnoseerweiterung nicht aktivieren. Sie müssen die Erweiterung mithilfe von Tools wie Visual Studio oder PowerShell separat aktivieren.
 * Um die Konfiguration der Diagnoseerweiterung mit PowerShell zu vereinfachen, enthält die Paketausgabe von Visual Studio auch die öffentliche Konfigurations-XML für die Diagnoseerweiterung jeder Rolle. Visual Studio verwendet die Diagnoseverbindungszeichenfolge zum Ausfüllen der Speicherkontoinformationen, die in der öffentlichen Konfiguration vorhanden sind. Die öffentlichen Konfigurationsdateien werden im Extensions-Ordner erstellt und haben das folgende Namensgebungsmuster: "PaaSDiagnostics<RoleName>. PubConfig.xml". Dieses Muster kann von allen PowerShell-basierten Bereitstellungen verwendet werden, um die einzelnen Konfigurationen einer Rolle zuzuordnen.
 * Die Verbindungszeichenfolge in der CSCFG-Datei wird auch im Azure-Portal verwendet, um auf die Diagnosedaten zuzugreifen, sodass sie in der Registerkarte **Überwachung** angezeigt werden kann. Die Verbindungszeichenfolge ist erforderlich, um den Dienst so zu konfigurieren, dass ausführliche Überwachungsdaten im Portal angezeigt werden.
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Migrieren von Projekten zu Azure SDK 2.6 und höher
-Wenn beim Migrieren von Azure SDK 2.5 zu Azure SDK 2.6 oder höher in der WADCFGX-Datei ein Diagnosespeicherkonto angegeben ist, dann bleibt der Speicherort unverändert. Um die Flexibilität, die sich aus der Verwendung verschiedener Speicherkonten für unterschiedliche Speicherkonfigurationen ergibt, nutzen zu können, müssen Sie Ihrem Projekt die Verbindungszeichenfolge manuell hinzufügen. Wenn Sie ein Projekt aus Azure SDK 2.4 oder früher zu Azure SDK 2.6 migrieren, werden die Diagnoseverbindungszeichenfolgen beibehalten. Beachten Sie jedoch die Änderungen im Hinblick auf die Handhabung von Verbindungszeichenfolgen in Azure SDK 2.6, wie im vorherigen Abschnitt beschrieben.
+Wenn beim Migrieren von Azure SDK 2.5 zu Azure SDK 2.6 oder höher in der WADCFGX-Datei ein Diagnosespeicherkonto angegeben ist, dann bleibt der Speicherort unverändert. Um die Flexibilität, die sich aus der Verwendung verschiedener Speicherkonten für unterschiedliche Speicherkonfigurationen ergibt, nutzen zu können, müssen Sie Ihrem Projekt die Verbindungszeichenfolge manuell hinzufügen. Wenn Sie ein Projekt aus Azure SDK 2.4 oder früher zu Azure SDK 2.6 migrieren, werden die Diagnoseverbindungszeichenfolgen beibehalten. Beachten Sie aber die Änderungen im Hinblick auf die Handhabung von Verbindungszeichenfolgen in Azure SDK 2.6, wie im vorherigen Abschnitt beschrieben.
 
 #### <a name="how-visual-studio-determines-the-diagnostics-storage-account"></a>Bestimmung des Diagnosespeicherkontos durch Visual Studio
 * Wenn eine Diagnoseverbindungszeichenfolge in der CSCFG-Datei angegeben ist, wird es von Visual Studio beim Veröffentlichen und beim Generieren der öffentlichen XML-Konfigurationsdateien beim Verpacken zur Konfiguration der Diagnoseerweiterung verwendet.

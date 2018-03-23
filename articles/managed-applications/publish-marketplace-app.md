@@ -1,6 +1,6 @@
 ---
 title: Verwaltete Azure-Anwendungen im Marketplace | Microsoft-Dokumentation
-description: "In diesem Artikel werden verwaltete Azure-Anwendungen beschrieben, die im Marketplace zur Verfügung stehen."
+description: In diesem Artikel werden verwaltete Azure-Anwendungen beschrieben, die im Marketplace zur Verfügung stehen.
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/18/2018
+ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: fccc2dbb7623f4ceb0d3decc7037f75a05858910
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 61815098a4935983f19b3dcea6e001230aee4771
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Verwaltete Azure-Anwendungen im Marketplace
 
@@ -42,7 +42,7 @@ Der Weg zum Herausgeber im Azure Marketplace umfasst folgende Schritte:
 
 1. Erstellen einer Microsoft-ID: Erstellen Sie Ihr Microsoft-Konto mit einer E-Mail-Adresse, die zur Domäne Ihres Unternehmens, aber nicht zu einer Einzelperson gehört. Diese E-Mail-Adresse wird sowohl für das Microsoft Developer Center als auch für das Cloud-Partnerportal verwendet. Weitere Informationen finden Sie im [Azure Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide).
 1. Übermitteln des [Nominierungsformulars für den Azure Marketplace](https://aka.ms/ampnomination): Wählen Sie unter **Solution that you intend to publish?** (Welche Lösung möchten Sie veröffentlichen?) die Option **Managed Application** (Verwaltete Anwendung) aus. Das übermittelte Formular mit Ihrer Anfrage wird vom Marketplace-Onboardingteam geprüft. Der Genehmigungsprozess kann bis zu drei Tage dauern. Nach der Genehmigung Ihrer Nominierung erhalten Sie einen Angebotscode, durch den die Registrierungsgebühr für das Developer Center entfällt. Wenn Sie das Nominierungsformular für den Marketplace **nicht** ausfüllen, fällt eine Registrierungsgebühr in Höhe von 99 USD an.
-1. Registrieren beim [Developer Center](https://developer.microsoft.com): Microsoft überprüft, ob es sich bei Ihrer Organisation um eine gültige juristische Person mit einer gültigen Steuernummer für das Land handelt, in dem sie registriert ist. Die Genehmigung kann fünf bis zehn Tage dauern. Verwenden Sie den Angebotscode, den Sie im Rahmen des Nominierungsprozesses per E-Mail erhalten haben, um sich die Registrierungsgebühr zu sparen. Weitere Informationen finden Sie im [Azure Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide).
+1. Registrieren beim [Developer Center](http://dev.windows.com/registration?accountprogram=azure): Microsoft überprüft, ob es sich bei Ihrer Organisation um eine gültige juristische Person mit einer gültigen Steuernummer für das Land handelt, in dem sie registriert ist. Die Genehmigung kann fünf bis zehn Tage dauern. Verwenden Sie den Angebotscode, den Sie im Rahmen des Nominierungsprozesses per E-Mail erhalten haben, um sich die Registrierungsgebühr zu sparen. Weitere Informationen finden Sie im [Azure Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide).
 1. Anmelden beim [Cloud Partnerportal](https://cloudpartner.azure.com): Verknüpfen Sie im Herausgeberprofil Ihr Developer Center-Konto mit dem Marketplace-Herausgeberprofil. Weitere Informationen finden Sie im [Azure Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide).
 
 ## <a name="create-a-new-azure-application-offer"></a>Erstellen eines neuen Angebots für eine Azure-Anwendung

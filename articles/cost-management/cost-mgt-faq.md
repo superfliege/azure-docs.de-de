@@ -1,24 +1,24 @@
 ---
-title: "Häufig gestellte Fragen zu Azure Cost Management | Microsoft-Dokumentation"
-description: "Enthält Antworten auf einige der häufig gestellten Fragen zu Azure Cost Management."
+title: Häufig gestellte Fragen zu Azure Cost Management | Microsoft-Dokumentation
+description: Enthält Antworten auf einige der häufig gestellten Fragen zu Azure Cost Management.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/14/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 0d33f434dccae7836ae7774afbdf9b80d4685eb4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: ''
+ms.openlocfilehash: 8920ff082fa1b442aa147068080085c40760e290
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Häufig gestellte Fragen zu Azure Cost Management
 
-In diesem Artikel werden einige häufig gestellte Fragen zu Azure Cost Management (auch als Cloudyn bezeichnet) beantwortet. Wenn Sie Fragen zu Azure Cost Management haben, können Sie diese unter [FAQs for Azure Cost Management by Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn) (Häufig gestellte Fragen zu Azure Cost Management per Cloudyn) stellen.
+In diesem Artikel werden einige häufig gestellte Fragen zu Azure Cost Management (auch als Cloudyn bezeichnet) beantwortet. Wenn Sie Fragen zu Cost Management haben, können Sie diese unter [FAQs for Azure Cost Management by Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn) (Häufig gestellte Fragen zu Azure Cost Management per Cloudyn) stellen.
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Wie kann ich Fehler beheben, die häufig bei der indirekten Enterprise-Einrichtung auftreten?
 
@@ -62,7 +62,6 @@ So aktivieren Sie ein Konto:
 2.  Suchen Sie auf der Registerkarte „Microsoft Azure-Konten“ nach Konten, für die **deaktivierte** Abonnements vorliegen.
 3.  Klicken Sie rechts neben einem deaktivierten Konto auf das Symbol **Bearbeiten**, das wie ein Bleistift aussieht.
 4.  Die Mandanten-ID und die Kosten-ID werden automatisch ermittelt. Klicken Sie auf **Weiter**.
-
 5.  Sie werden zum Azure-Portal weitergeleitet. Melden Sie sich beim Portal an, und autorisieren Sie für Cloudyn-Collector den Zugriff auf Ihre Azure-Daten.
 6.  Sie werden als Nächstes auf die Verwaltungsseite für Cloudyn-Konten weitergeleitet, und Ihr Abonnement wird aktualisiert, sodass als Kontostatus **aktiv** angezeigt wird. Es wird ein grünes Häkchen angezeigt.
 7.  Sollte für manche Abonnements kein grünes Häkchen angezeigt werden, bedeutet das, dass Sie nicht zum Erstellen einer Lese-App (Cloudyn-Collector) für das Abonnement berechtigt sind. Ein Benutzer mit höheren Berechtigungen für das Abonnement muss die Schritte 3 und 4 wiederholen.  

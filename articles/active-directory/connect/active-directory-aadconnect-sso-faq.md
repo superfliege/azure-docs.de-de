@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Nahtloses einmaliges Anmelden – Häufig gestellte Fragen | Microsoft-Dokumentation"
-description: "Antworten auf häufig gestellte Fragen zum nahtlosen einmaligen Anmelden mit Azure Active Directory."
+title: 'Azure AD Connect: Nahtloses einmaliges Anmelden – Häufig gestellte Fragen | Microsoft-Dokumentation'
+description: Antworten auf häufig gestellte Fragen zum nahtlosen einmaligen Anmelden mit Azure Active Directory.
 services: active-directory
-keywords: "Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden"
-documentationcenter: 
+keywords: Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: bbaed9ee5db895810fac476ea5bf560800b0bdec
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 15155ecaf17ae309a218bb1f51a4757e5338f64c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen (FAQs)
 
@@ -38,7 +38,16 @@ Nein. Das nahtlose einmalige Anmelden ist nur in der weltweiten Instanz von Azur
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Welche Anwendungen nutzen die `domain_hint`- oder `login_hint`-Parameterfunktion der nahtlosen SSO?
 
-Wir arbeiten zurzeit daran, eine Liste der Anwendungen zu kompilieren, die diese Parameter senden sowie eine Liste derer, die sie nicht senden. Wenn Sie an bestimmten Anwendungen interessiert sind, teilen Sie uns dies bitte im Abschnitt „Kommentare“ mit.
+Nachfolgend finden Sie eine nicht erschöpfende Liste von Anwendungen, die diese Parameter an Azure AD senden und Benutzern so eine unbeaufsichtigte Anmeldung über das nahtlose einmalige Anmelden ermöglichen:
+
+| Anwendungsname | Zu verwendende Anwendungs-URL |
+| -- | -- |
+| Zugriffsbereich | myapps.microsoft.com/contoso.com |
+| Outlook im Web | outlook.office365.com/contoso.com |
+
+Ersetzen Sie „contoso.com“ in der Tabelle oben durch Ihren Domänennamen, um die richtigen Anwendungs-URLs für Ihren Mandanten zu erhalten.
+
+Wenn Sie an anderen Anwendungen interessiert sind, teilen Sie uns dies bitte im Abschnitt „Kommentare“ mit.
 
 ## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Unterstützt die nahtlose SSO `Alternate ID` als Benutzername anstelle von `userPrincipalName`?
 

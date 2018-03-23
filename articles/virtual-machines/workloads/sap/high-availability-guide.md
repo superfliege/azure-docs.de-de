@@ -1,13 +1,13 @@
 ---
-title: "Hohe Verfügbarkeit von Azure Virtual Machines für SAP NetWeaver | Microsoft-Dokumentation"
-description: "Handbuch zum Thema „Hohe Verfügbarkeit“ für SAP NetWeaver auf virtuellen Azure-Computern"
+title: Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver | Microsoft-Dokumentation
+description: Handbuch zum Thema „Hohe Verfügbarkeit“ für SAP NetWeaver auf virtuellen Azure-Computern
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,13 +17,13 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae90fe1d6d9e91bffa3fd4c6a7d79d069ab604a2
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: f2216a2d5c30e95fcd02b4df56305153335511e0
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hohe Verfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern
+# <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -293,7 +293,7 @@ ms.lasthandoff: 11/02/2017
 [sap-ha-guide-10.2]:high-availability-guide.md#5e959fa9-8fcd-49e5-a12c-37f6ba07b916
 [sap-ha-guide-10.3]:high-availability-guide.md#755a6b93-0099-4533-9f6d-5c9a613878b5
 
-[sap-ha-multi-sid-guide]:high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:high-availability-multi-sid.md (SAP-Multi-SID-Konfiguration mit Hochverfügbarkeit)
 
 
 [sap-ha-guide-figure-1000]:media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -367,7 +367,7 @@ ms.lasthandoff: 11/02/2017
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
-[sap-pam]:https://support.sap.com/pam (SAP Product Availability Matrix)
+[sap-pam]:https://support.sap.com/pam (SAP-Produktverfügbarkeitsmatrix (PAM))
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -422,7 +422,7 @@ ms.lasthandoff: 11/02/2017
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
-[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md
+[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
 [virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
 [virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
@@ -463,7 +463,7 @@ In diesen Artikeln werden SAP-Bereitstellungen in Azure behandelt:
 * [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide] (Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver)
 * [Azure Virtual Machines deployment for SAP NetWeaver][deployment-guide] (Azure Virtual Machines – Bereitstellung für SAP NetWeaver)
 * [Azure Virtual Machines DBMS deployment for SAP NetWeaver][dbms-guide] (Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver)
-* [Hohe Verfügbarkeit von Azure Virtual Machines für SAP NetWeaver (dieses Handbuch)][sap-ha-guide]
+* [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver (dieses Handbuch)][sap-ha-guide]
 
 > [!NOTE]
 > Sofern möglich, wird ein Link zum entsprechenden SAP-Installationshandbuch bereitgestellt (siehe [SAP-Installationshandbücher][sap-installation-guides]). Wenn Sie Informationen zu den Voraussetzungen und zum Installationsvorgang benötigen, sollten Sie die SAP NetWeaver-Installationshandbücher sorgfältig lesen. Dieser Artikel behandelt nur die spezifischen Aufgaben für SAP NetWeaver-basierte Systeme, die Sie mit Azure Virtual Machines verwenden können.
@@ -536,7 +536,7 @@ _**Abbildung 1:** Beispiel für eine Windows Server-Failoverclusterkonfiguration
 Abbildung 1 zeigt auch einen Cluster mit zwei Knoten und freigegebenem Speicher. In einem lokalen Cluster mit freigegebenem Speicher erkennen alle Knoten im Cluster den freigegebenen Speicher. Mithilfe eines Sperrmechanismus werden die Daten vor Beschädigung geschützt. Alle Knoten können erkennen, wenn ein anderer Knoten ausfällt. Wenn ein Knoten ausfällt, übernehmen die restlichen den Besitz der Speicherressourcen und stellen die Verfügbarkeit der Dienste sicher.
 
 > [!NOTE]
-> Sie benötigen bei einigen DBMS-Anwendungen wie SQL Server für eine hohe Verfügbarkeit keine freigegebenen Datenträger. SQL Server Always On führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
+> Sie benötigen bei einigen DBMS-Anwendungen wie SQL Server für Hochverfügbarkeit keine freigegebenen Datenträger. SQL Server Always On führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
 >
 >
 
@@ -572,7 +572,7 @@ Weitere Informationen zu [SIOS DataKeeper](http://us.sios.com/products/datakeepe
 _**Abbildung 3:** Windows Server-Failoverclusteringkonfiguration in Azure mit SIOS DataKeeper_
 
 > [!NOTE]
-> Sie benötigen bei einigen DBMS-Produkten wie SQL Server für eine hohe Verfügbarkeit keine freigegebenen Datenträger. SQL Server Always On führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
+> Sie benötigen bei einigen DBMS-Produkten wie SQL Server für Hochverfügbarkeit keine freigegebenen Datenträger. SQL Server Always On führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
 >
 >
 
@@ -583,7 +583,7 @@ Sie müssen den internen Load Balancer in der Ressourcengruppe bereitstellen, di
 Die Clients können über den virtuellen Hostnamen eine Verbindung herstellen. Der DNS-Server löst die IP-Adresse des Clusters auf. Der interne Load Balancer übernimmt die Weiterleitung an den aktiven Knoten des Clusters.
 
 ## <a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a> Hohe Verfügbarkeit von SAP NetWeaver in Azure Infrastructure-as-a-Service (IaaS)
-Um hohe Verfügbarkeit für SAP-Anwendungen zu erreichen, z.B. für SAP-Softwarekomponenten, müssen Sie die folgenden Komponenten schützen:
+Um Hochverfügbarkeit für SAP-Anwendungen zu erreichen, z.B. für SAP-Softwarekomponenten, müssen Sie die folgenden Komponenten schützen:
 
 * SAP-Anwendungsserverinstanz
 * SAP ASCS/SCS-Instanz
@@ -592,7 +592,7 @@ Um hohe Verfügbarkeit für SAP-Anwendungen zu erreichen, z.B. für SAP-Software
 Weitere Informationen zum Schützen von SAP-Komponenten in Szenarien mit hoher Verfügbarkeit finden Sie unter [Azure Virtual Machines planning and implementation for SAP NetWeaver](planning-guide.md) (Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver).
 
 ### <a name="93faa747-907e-440a-b00a-1ae0a89b1c0e"></a> Hohe Verfügbarkeit für SAP-Anwendungsserver
-Für die SAP-Anwendungsserver und -Dialoginstanzen ist meist keine spezielle hoch verfügbare Lösung erforderlich. Sie erreichen hohe Verfügbarkeit durch Redundanz und indem Sie mehrere Dialoginstanzen in verschiedenen Instanzen von virtuellen Azure-Computern konfigurieren. Es müssen mindestens zwei SAP-Anwendungsinstanzen auf zwei Instanzen von virtuellen Azure-Computern installiert sein.
+Für die SAP-Anwendungsserver und -Dialoginstanzen ist meist keine spezielle hoch verfügbare Lösung erforderlich. Sie erreichen Hochverfügbarkeit durch Redundanz und durch Konfiguration mehrerer Dialoginstanzen in verschiedenen Instanzen von virtuellen Azure-Computern. Es müssen mindestens zwei SAP-Anwendungsinstanzen auf zwei Instanzen von virtuellen Azure-Computern installiert sein.
 
 ![Abbildung 4: Hohe Verfügbarkeit für SAP-Anwendungsserver][sap-ha-guide-figure-2000]
 
@@ -1018,10 +1018,10 @@ Legen Sie die IP-Adresse des Lastenausgleichs **pr1-lb-dbms** auf die IP-Adresse
 
 Wenn Sie andere Nummern für die SAP ASCS- oder SCS-Instanzen verwenden möchten, müssen Sie die Namen und Werte der entsprechenden Ports in der Standardeinstellung ändern.
 
-1.  Wählen Sie im Azure-Portal **<*SID*>-lb-ascs load balancer** > **Lastenausgleichsregeln** aus.
+1.  Wählen Sie im Azure-Portal **<*SID*>-lb-ascs load balancer** > **Lastenausgleichsregeln**.
 2.  Ändern Sie für alle zur SAP ASCS- oder SCS-Instanz gehörenden Lastenausgleichsregeln die folgenden Werte:
 
-  * Name
+  * NAME
   * Port
   * Back-End-Port
 
@@ -1549,7 +1549,7 @@ So fügen Sie einen Testport hinzu
   }
   ```
 
-  Nachdem Sie die Clusterrolle **SAP <*SID*>** online geschaltet haben, überprüfen Sie, ob **ProbePort** auf den neuen Wert festgelegt wurde.
+  Überprüfen Sie, nachdem Sie die Clusterrolle **SAP <*SID*>** online geschaltet haben, ob **ProbePort** auf den neuen Wert festgelegt wurde.
 
   ```PowerShell
   $SAPSID = "PR1"     # SAP <SID>

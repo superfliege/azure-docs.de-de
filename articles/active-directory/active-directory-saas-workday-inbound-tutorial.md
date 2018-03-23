@@ -1,6 +1,6 @@
 ---
-title: "Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Workday als Quelle von Identitätsdaten für Active Directory und Azure Active Directory verwendet wird."
+title: 'Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Workday als Quelle von Identitätsdaten für Active Directory und Azure Active Directory verwendet wird.
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 2db9e60fe2807b1aa8ed7cab7eed6f7db8059a89
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 825bf3f6a3ea07cb229f00c81ad699d792ac53f9
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -654,7 +654,7 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 1. Laden Sie [Workday Studio](https://community.workday.com/studio-download), herunter, und installieren Sie es. Sie benötigen ein Workday-Communitykonto, um auf das Installationsprogramm zuzugreifen.
 
-2. Laden Sie die WSDL-Datei „Workday Human_Resources“ von dieser URL herunter: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
+2. Laden Sie die WDSL-Datei „Workday Human_Resources“ über diese URL herunter: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
 
 3. Starten Sie Workday Studio.
 
@@ -768,12 +768,27 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 * Ein anderes Problem, das dazu führte, dass Überwachungsprotokolle bei Azure AD-Mandanten in der Europäischen Union nicht angezeigt wurden, ist inzwischen behoben. Für Azure AD-Mandanten in der EU müssen jedoch zusätzliche Agent-Konfigurationsschritte ausgeführt werden. Ausführlichere Informationen finden Sie in [Teil 3: Konfigurieren des lokalen Synchronisierungs-Agents](#Part 3: Configure the on-premises synchronization agent).
 
+## <a name="gdpr-compliance"></a>Einhaltung der DSGVO
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Tutorial: Konfigurieren des einmaligen Anmeldens zwischen Workday und Azure Active Directory](active-directory-saas-workday-tutorial.md)
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+Die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält Vorschriften für Unternehmen, Regierungsbehörden, gemeinnützige Organisationen und andere Organisationen, die Menschen in der EU Waren und Dienstleistungen anbieten oder Daten in Bezug auf EU-Bürger sammeln und analysieren. 
+
+Der Azure AD-Bereitstellungsdienst sowie die übrigen Dienste und Features von Microsoft halten die DSGVO ein. Weitere Informationen zur DSGVO von Microsoft finden Sie in den [Nutzungsbedingungen](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
+
+Da für die Workday-Bereitstellungslösung für Active Directory ein Synchronisierungs-Agent auf einem in die Domäne eingebundenen Server installiert werden muss, müssen zur Einhaltung der DSGVO einige Ereignisse überwacht werden.
+ 
+Der Agent erstellt Protokolle im **Windows-Ereignisprotokoll**, die personenbezogene Daten enthalten können.
+
+Es gibt zwei Möglichkeiten zur Einhaltung der DSGVO:
+
+1. Extrahieren von Daten für eine Person und Entfernen der Daten dieser Person aus den Windows-Ereignisprotokollen auf Anforderung 
+2. Aufbewahrung von Windows-Ereignisprotokollen aus dem AADSyncAgent-Prozess für maximal 48 Stunden
+
+Informationen zum Konfigurieren der Datenaufbewahrung für die Windows-Ereignisprotokolle finden Sie unter [Settings for event logs](https://technet.microsoft.com/en-us/library/cc952132.aspx) (Einstellungen für Ereignisprotokolle). Allgemeine Informationen zum Windows-Ereignisprotokoll finden Sie in [diesem Artikel](https://msdn.microsoft.com/en-us/library/windows/desktop/aa385772.aspx).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
+* [Lesen Sie, wie Sie das einmalige Anmelden zwischen Workday und Azure Active Directory konfigurieren.](active-directory-saas-workday-tutorial.md)
+* [Erfahren Sie, wie Sie andere SaaS-Anwendungen in Azure Active Directory integrieren.](active-directory-saas-tutorial-list.md)
+

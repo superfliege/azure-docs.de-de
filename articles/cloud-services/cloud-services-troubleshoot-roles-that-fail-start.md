@@ -1,11 +1,11 @@
 ---
 title: Problembehandlung bei Rollen, die nicht gestartet werden | Microsoft-Dokumentation
-description: "Hier finden Sie einige der häufigsten Gründe, aus denen eine Clouddienstrolle nicht gestartet wird. Es werden auch Lösungen für diese Probleme bereitgestellt."
+description: Hier finden Sie einige der häufigsten Gründe, aus denen eine Clouddienstrolle nicht gestartet wird. Es werden auch Lösungen für diese Probleme bereitgestellt.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: d24a55fd3b93760035f852a24537c1cec9e4bab2
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 36966151b616a14e429807feb63df93503e7b249
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Problembehandlung bei Clouddienstrollen, die nicht gestartet werden
 In diesem Artikel finden Sie Informationen zu allgemeinen Problemen in Zusammenhang mit nicht gestarteten Azure-Clouddienstrollen sowie zur Lösung dieser Probleme.
@@ -53,7 +53,7 @@ So zeigen Sie umfassendere Fehlerinformationen an, ohne Remotedesktop zu verwend
     ```xml
     <customErrors mode="Off" />
     ```
-4. Speichern Sie die Datei.
+4. Speichern Sie die Datei .
 5. Packen Sie den Dienst neu, und stellen Sie ihn erneut bereit.
 
 Nachdem der Dienst neu bereitgestellt wurde, sehen Sie eine Fehlermeldung mit dem Namen der fehlenden Assembly oder DLL.
@@ -62,7 +62,7 @@ Nachdem der Dienst neu bereitgestellt wurde, sehen Sie eine Fehlermeldung mit de
 Sie können Remotedesktop verwenden, um remote auf die Rolle zuzugreifen und vollständige Fehlerinformationen anzuzeigen. Gehen Sie wie folgt vor, um Fehler mithilfe von Remotedesktop anzuzeigen:
 
 1. Stellen Sie sicher, dass Azure SDK 1.3 oder höher installiert ist.
-2. Wählen Sie während der Bereitstellung der Projektmappe per Visual Studio die Option „Remotedesktopverbindungen konfigurieren“. Weitere Informationen zum Konfigurieren der Remotedesktopverbindung finden Sie unter [Verwenden von Remotedesktop mit Azure-Rollen](../vs-azure-tools-remote-desktop-roles.md).
+2. Aktivieren Sie Remotedesktop während der Bereitstellung der Projektmappe mit Visual Studio. Weitere Informationen finden Sie unter [Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services mit Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md).
 3. Wenn die Instanz im Microsoft Azure-Portal den Status **Bereit** zeigt, stellen Sie eine Remoteverbindung mit der Instanz her. Weitere Informationen zur Verwendung des Remotedesktops mit Cloud Services finden Sie unter [Remotezugriff auf Rolleninstanzen](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Melden Sie sich mit den Anmeldeinformationen, die während der Remotedesktopkonfiguration angegeben wurden, an der virtuellen Maschine an.
 6. Öffnen Sie ein Befehlsfenster.
@@ -77,7 +77,7 @@ Wenn Sie zur Website navigieren, werden nun ausführlichere Fehlermeldungen zur�
 * Beschreibung: Unbehandelte Ausnahme beim Ausführen der aktuellen Webanforderung. Überprüfen Sie die Stapelüberwachung, um weitere Informationen über diesen Fehler anzuzeigen und festzustellen, wo der Fehler im Code verursacht wurde.
 * Ausnahmedetails: System.IO.FIleNotFoundException: Die Datei oder Assembly  "Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35" oder eine Abhängigkeit davon wurde nicht gefunden. Die angegebene Datei wurde nicht gefunden.
 
-Beispiel:
+Beispiel: 
 
 ![Expliziter Serverfehler in Anwendung '/'](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 

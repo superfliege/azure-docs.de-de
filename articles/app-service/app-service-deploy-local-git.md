@@ -2,115 +2,126 @@
 title: Lokale Git-Bereitstellung in Azure App Service
 description: Erfahren Sie, wie Sie die lokale Git-Bereitstellung in Azure App Service aktivieren.
 services: app-service
-documentationcenter: 
-author: dariagrigoriu
+documentationcenter: ''
+author: cephalin
 manager: cfowler
-editor: mollybos
 ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2016
-ms.author: dariagrigoriu
-ms.openlocfilehash: 948c54a2e9be2260d0a7d2cce31b67ffbbd23d03
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.date: 03/05/2018
+ms.author: dariagrigoriu;cephalin
+ms.openlocfilehash: 4cbe26055bdbf906223a327ab8cf94bebe9e7998
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-Bereitstellung in Azure App Service
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre App aus einem Git-Repository auf dem lokalen Computer in [Azure-Web-Apps](app-service-web-overview.md) bereitstellen. App Service unterstützt diesen Ansatz mit der Bereitstellungsoption **Lokales Git** im [Azure-Portal].
+In dieser Anleitung erfahren Sie, wie Sie Ihren Code aus einem Git-Repository auf dem lokalen Computer in [Azure App Service](app-service-web-overview.md) bereitstellen.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie Folgendes:
+Ausführen der Schritte in dieser Anleitung:
 
-* Git. Sie können die Binärdateien für die Installation [hier](http://www.git-scm.com/downloads)herunterladen.
-* Git-Grundkenntnisse.
-* Ein Microsoft Azure-Konto. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details).
+* [Git installieren](http://www.git-scm.com/downloads).
+* Verwalten Sie ein lokales Git-Repository mit Code, den Sie bereitstellen möchten.
+
+Zur Verwendung eines Beispielrepositorys zum Nachzuvollziehen führen Sie den folgenden Befehl in Ihrem lokalen Terminalfenster aus:
+
+```bash
+git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
+```
+
+## <a name="prepare-your-repository"></a>Vorbereiten Ihres Repositorys
+
+Stellen Sie sicher, dass Ihr Repositorystamm die richtigen Dateien in Ihrem Projekt aufweist.
+
+| Laufzeit | Stammverzeichnisdateien |
+|-|-|
+| ASP.NET (nur Windows) | _*.sln_, _*.csproj_ oder _default.aspx_ |
+| ASP.NET Core | _*.sln_ oder _*.csproj_ |
+| PHP | _index.php_ |
+| Ruby (nur Linux) | _Gemfile_ |
+| Node.js | _server.js_, _app.js_ oder _package.json_ mit einem Startskript |
+| Python (nur Windows) | _\*.py_, _requirements.txt_ oder _runtime.txt_ |
+| HTML | _default.htm_, _default.html_, _default.asp_, _index.htm_, _index.html_ oder _iisstart.htm_ |
+| WebJobs | _\<job_name>/run.\<erweiterung>_ unter _App\_Data/jobs/continuous_ (für fortlaufende WebJobs) oder _App\_Data/jobs/triggered_ (für ausgelöste WebJobs). Weitere Informationen finden Sie in der [Kudu-Dokumentation zu WebJobs](https://github.com/projectkudu/kudu/wiki/WebJobs). |
+| Funktionen | Siehe [Kontinuierliche Bereitstellung für Azure Functions](../azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements). |
+
+Zum Anpassen Ihrer Bereitstellung können Sie eine Datei vom Typ _.deployment_ in dem Repositorystamm einschließen. Weitere Informationen finden Sie unter [Customizing deployments](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) (Anpassen von Bereitstellungen) und [Custom Deployment Script](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) (Benutzerdefiniertes Bereitstellungsskript).
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Achten Sie darauf, `git commit` für alle Änderungen auszuführen, die Sie bereitstellen möchten.
+>
 >
 
-## <a name="Step1"></a>Schritt 1: Erstellen eines lokalen Repositorys
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Führen Sie die folgenden Aufgaben durch, um ein neues Git-Repository zu erstellen.
+[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user.md)]
 
-1. Starten Sie ein Befehlszeilentool wie **GitBash** (Windows) oder **Bash** (Unix Shell). Auf OS X-Systemen können Sie auf die Befehlszeile über die **Terminal**-Anwendung zugreifen.
-1. Navigieren Sie zum Verzeichnis, in dem sich der bereitzustellende Inhalt befinden wird.
-1. Verwenden Sie den folgenden Befehl, um ein neues Git-Repository zu initialisieren.
+## <a name="enable-git-for-your-app"></a>Aktivieren von Git für die App
 
-  ```bash
-  git init
-  ```
+Zum Aktivieren der Git-Bereitstellung für eine vorhandene App Service-App führen Sie [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) in Cloud Shell aus.
 
-## <a name="Step2"></a>Schritt 2: Ausführen eines Commits für die Inhalte
+```azurecli-interactive
+az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
+```
 
-App Service unterstützt in verschiedenen Programmiersprachen erstellte Anwendungen.
+Wenn Sie stattdessen eine Git-fähige App erstellen möchten, führen Sie [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) in Cloud Shell mit dem Parameter `--deployment-local-git` aus.
 
-1. Enthält Ihr Repository noch keinen Inhalt, fügen Sie eine statische HTML-Datei wie folgt hinzu, oder überspringen Sie diesen Schritt:
-   * Erstellen Sie mit einem Text-Editor eine neue Datei namens **index.html** im Stammverzeichnis des Git-Repositorys.
-   * Geben Sie den folgenden Text als Inhalt der Datei „index.html“ ein, und speichern Sie die Datei: *Hello Git!*
-1. Stellen Sie mit der Befehlszeile sicher, dass Sie sich im Stammverzeichnis Ihres Git-Repositorys befinden. Verwenden Sie dann den folgenden Befehl, um dem Repository Dateien hinzuzufügen:
+```azurecli-interactive
+az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
+```
 
-        git add -A 
-1. Übernehmen Sie dann die Änderungen am Repository mithilfe des folgenden Befehls:
+Die Ausgabe des Befehls `az webapp create` sollte ungefähr wie folgt aussehen:
 
-        git commit -m "Hello Azure App Service"
+```json
+Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
+{
+  "availabilityState": "Normal",
+  "clientAffinityEnabled": true,
+  "clientCertEnabled": false,
+  "cloningInfo": null,
+  "containerSize": 0,
+  "dailyMemoryTimeQuota": 0,
+  "defaultHostName": "<app_name>.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git",
+  "enabled": true,
+  < JSON data removed for brevity. >
+}
+```
 
-## <a name="Step3"></a>Schritt 3: Aktivieren des App Service-App-Repositorys
+## <a name="deploy-your-project"></a>Bereitstellen des Projekts
 
-Führen Sie die folgenden Schritte durch, um ein Git-Repository für Ihre App Service-App zu aktivieren.
+Kehren Sie zum _lokalen Terminalfenster_ zurück, und fügen Sie Ihrem lokalen Git-Repository einen Azure-Remotespeicherort hinzu. Ersetzen Sie _\<Url>_ durch die URL des Git-Remoterepositorys, die Sie beim [Aktivieren von Git für die App](#enable-git-for-you-app) erhalten haben.
 
-1. Melden Sie sich beim [Azure-Portal]an.
-1. Klicken Sie in der Ansicht Ihrer App Service-App auf **Einstellungen > Bereitstellungsquelle**. Klicken Sie auf **Quelle auswählen**, dann auf **Lokales Git-Repository** und schließlich auf **OK**.
+```bash
+git remote add azure <url>
+```
 
-    ![Lokales Git-Repository](./media/app-service-deploy-local-git/local_git_selection.png)
+Führen Sie einen Pushvorgang zum Azure-Remotespeicherort durch, um Ihre App mit dem folgenden Befehl bereitzustellen. Stellen Sie sicher, dass Sie bei der entsprechenden Aufforderung das Kennwort eingeben, das Sie unter [Konfigurieren eines Bereitstellungsbenutzers](#configure-a-deployment-user) erstellt haben, und nicht das Kennwort für die Anmeldung am Azure-Portal.
 
-1. Wenn Sie zum ersten Mal ein Repository in Azure einrichten, müssen Sie dafür Anmeldeinformationen erstellen. Sie verwenden diese, um eine Anmeldung beim Azure-Repository vorzunehmen und Änderungen aus Ihrem lokalen Git-Repository mithilfe von Push zu übertragen. Klicken Sie in der Ansicht Ihrer Web-App auf **Einstellungen > Anmeldeinformationen für Bereitstellung**, und konfigurieren Sie dann den Benutzernamen und das Kennwort für die Bereitstellung. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+```bash
+git push azure master
+```
 
-    ![](./media/app-service-deploy-local-git/deployment_credentials.png)
+Die Ausgabe enthält u.U. laufzeitspezifische Automatisierungen wie MSBuild für ASP.NET, `npm install` für Node.js und `pip install` für Python. 
 
-## <a name="Step4"></a>Schritt 4: Bereitstellen des Projekts
+Nach Abschluss der Bereitstellung sollte Ihre App im Azure-Portal jetzt einen Datensatz mit Ihrer `git push`-Anweisung auf der Seite **Bereitstellungsoptionen** aufweisen.
 
-Führen Sie die folgenden Schritte durch, um Ihre App mit einem lokalen Git in App Service zu veröffentlichen:
+![](./media/app-service-deploy-local-git/deployment_history.png)
 
-1. Klicken Sie im Azure-Portal in der Ansicht Ihrer Web-App für die **Git-URL** auf **Einstellungen > Eigenschaften**.
+Navigieren Sie zu Ihrer App, um sicherzustellen, dass der Inhalt bereitgestellt wird.
 
-    ![](./media/app-service-deploy-local-git/git_url.png)
+## <a name="troubleshooting"></a>Problembehandlung
 
-    **Einstellungen &amp;gt; Eigenschaften** ist die Remotereferenz für die Bereitstellung aus dem lokalen Repository. Verwenden Sie diese URL in den nächsten Schritten.
-1. Stellen Sie mithilfe der Befehlszeile sicher, dass Sie sich im Stammverzeichnis Ihres lokalen Git-Repositorys befinden.
-1. Fügen Sie mit `git remote` die in Schritt 1 unter **Git-URL** aufgeführte Remotereferenz hinzu. Ihr Befehl sieht in etwa wie folgt aus:
-
-    ```bash
-    git remote add azure https://<username>@localgitdeployment.scm.azurewebsites.net:443/localgitdeployment.git
-    ```
-
-   > [!NOTE]
-   > Der Befehl **remote** fügt einem Remoterepository einen benannten Verweis hinzu. In diesem Beispiel wird ein Verweis mit dem Namen "azure" für das Repository Ihrer Web-App erstellt.
-   >
-
-1. Übertragen Sie die Inhalte mit dem neuen Remoteverweis **azure**, den Sie erstellt haben, in App Service.
-
-    ```bash
-    git push azure master
-    ```
-
-    Sie werden zur Eingabe des Kennworts aufgefordert, das zuvor beim Zurücksetzen Ihrer Anmeldeinformationen für die Bereitstellung im Azure-Portal erstellt wurde. Geben Sie das Kennwort ein (beachten Sie, dass Gitbash keine Sternchen in der Konsole anzeigt, wenn Sie Ihr Kennwort eingeben). 
-1. Kehren Sie zu Ihrer App im Azure-Portal zurück. Ein Protokolleintrag des letzten Pushvorgangs sollte in der Ansicht **Bereitstellungen** angezeigt werden.
-
-    ![](./media/app-service-deploy-local-git/deployment_history.png)
-
-1. Klicken Sie oben auf der Web-App-Seite auf die Schaltfläche **Durchsuchen**, um zu überprüfen, ob die Inhalte bereitgestellt wurden.
-
-## <a name="Step5"></a>Problembehandlung
-
-Die folgenden Fehler und Probleme treten häufiger auf, wenn Git zum Veröffentlichen in einer App Service-App in Azure verwendet wird:
+Die folgenden Fehler und Probleme treten häufig auf, wenn Git zum Veröffentlichen in einer App Service-App in Azure verwendet wird:
 
 ---
 **Symptom**: `Unable to access '[siteURL]': Failed to connect to [scmAddress]`
@@ -122,16 +133,16 @@ Die folgenden Fehler und Probleme treten häufiger auf, wenn Git zum Veröffentl
 ---
 **Symptom**: `Couldn't resolve host 'hostname'`
 
-**Ursache**: Dieser Fehler kann auftreten, wenn die beim Erstellen der "azure"-Remotewebsite eingegebenen Adressinformationen falsch waren.
+**Ursache**: Dieser Fehler kann auftreten, wenn die beim Erstellen des Remoterepositorys „azure“ eingegebenen Adressinformationen falsch waren.
 
 **Lösung**: Verwenden Sie den Befehl `git remote -v`, um alle Remotewebsites zusammen mit der jeweils zugehörigen URL aufzulisten. Überprüfen Sie, ob die URL für die 'azure'-Remotewebsite korrekt ist. Entfernen Sie diese Remote-Website bei Bedarf und erstellen Sie sie mit der korrekten URL neu.
 
 ---
 **Symptom**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
-**Ursache**: Dieser Fehler kann auftreten, wenn Sie keine Verzweigung während `git push` angeben, oder wenn Sie den Wert `push.default` in `.gitconfig` nicht festgelegt haben.
+**Ursache**: Dieser Fehler kann auftreten, wenn Sie während `git push` keine Verzweigung angeben, oder wenn Sie den Wert `push.default` in `.gitconfig` nicht festgelegt haben.
 
-**Lösung**: Führen Sie den Pushvorgang unter Angabe der Hauptverzweigung erneut durch. Beispiel: 
+**Lösung**: Führen Sie `git push` erneut aus, und geben Sie dabei den Masterbranch an. Beispiel: 
 
 ```bash
 git push azure master
@@ -140,9 +151,9 @@ git push azure master
 ---
 **Symptom**: `src refspec [branchname] does not match any.`
 
-**Ursache**: Dieser Fehler kann auftreten, wenn Sie versuchen, etwas per Push auf eine andere Verzweigung als die Hauptverzweigung auf der "azure"-Remotewebsite zu übertragen.
+**Ursache**: Dieser Fehler kann auftreten, wenn Sie versuchen, etwas per Push auf eine andere Verzweigung als die Hauptverzweigung auf dem Remoterepository „azure“ zu übertragen.
 
-**Lösung**: Führen Sie den Pushvorgang unter Angabe der Hauptverzweigung erneut durch. Beispiel: 
+**Lösung**: Führen Sie `git push` erneut aus, und geben Sie dabei den Masterbranch an. Beispiel: 
 
 ```bash
 git push azure master
@@ -162,9 +173,9 @@ git config --global http.postBuffer 524288000
 ---
 **Symptom**: `Error - Changes committed to remote repository but your web app not updated.`
 
-**Ursache**: Dieser Fehler kann auftreten, wenn Sie eine Node.js-App mit einer Datei „package.json“ bereitstellen, die zusätzliche erforderliche Module angibt.
+**Ursache**: Dieser Fehler kann auftreten, wenn Sie eine Node.js-App mit einer Datei von Typ _package.json_ bereitstellen, die zusätzliche erforderliche Module angibt.
 
-**Lösung:** Zusätzliche Meldungen mit „npm ERR!“ sollten vor diesem Fehler protokolliert werden und können zusätzlichen Kontext für diesen Fehler bereitstellen. Es folgen bekannte Ursachen für diesen Fehler und die entsprechende Meldung vom Typ „npm ERR!“ :
+**Lösung:** Zusätzliche Meldungen mit „npm ERR!“ müssen vor diesem Fehler protokolliert werden und können zusätzlichen Kontext für diesen Fehler bereitstellen. Es folgen bekannte Ursachen für diesen Fehler und die entsprechende Meldung vom Typ „npm ERR!“ :
 
 * **Ungültige package.json-Datei**: npm ERR! Couldn't read dependencies.
 * **Systemeigenes Modul ohne binäre Distribution für Windows**:
@@ -176,17 +187,5 @@ git config --global http.postBuffer 524288000
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Git-Dokumentation](http://git-scm.com/documentation)
 * [Project Kudu documentation](https://github.com/projectkudu/kudu/wiki)
 * [Continuous Deployment in Azure App Service](app-service-continuous-deployment.md)
-* [Verwenden von PowerShell für Azure](/powershell/azure/overview)
-* [Verwenden der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)
-
-[Azure Developer Center]: http://www.windowsazure.com/en-us/develop/overview/
-[Azure-Portal]: https://portal.azure.com
-[Git website]: http://git-scm.com
-[Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[Azure Command-Line Interface]: https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/
-
-[Using Git with CodePlex]: http://codeplex.codeplex.com/wikipage?title=Using%20Git%20with%20CodePlex&referringTitle=Source%20control%20clients&ProjectName=codeplex
-[Quick Start - Mercurial]: http://mercurial.selenic.com/wiki/QuickStart

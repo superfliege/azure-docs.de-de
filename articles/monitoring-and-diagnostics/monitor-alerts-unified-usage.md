@@ -1,9 +1,9 @@
 ---
-title: "Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor – Warnungen (Vorschauversion) | Microsoft-Dokumentation"
-description: "Verwenden Sie die neue einheitliche Oberfläche für Azure-Warnungen, um über eine zentrale Oberfläche Metrik- und Protokollwarnungsregeln zu erstellen, anzuzeigen und zu verwalten."
+title: Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor – Warnungen (Vorschauversion) | Microsoft-Dokumentation
+description: Verwenden Sie die neue einheitliche Oberfläche für Azure-Warnungen, um über eine zentrale Oberfläche Metrik- und Protokollwarnungsregeln zu erstellen, anzuzeigen und zu verwalten.
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 36729da3-e002-4a64-86b2-2513ca2cbb58
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: b537bb42d43c4232c100061322e09bf492f2a20f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b6b6bfee5b9e9036a6d7ff17ff1a8d4de542bbd3
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor – Warnungen (Vorschauversion)
 
@@ -65,13 +65,13 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
     > Der Dienst für einheitliche Warnungen (Vorschauversion) unterstützt ebenfalls Aktivitätsprotokollwarnungen. [Weitere Informationen](monitoring-activity-log-alerts-new-experience.md)
 
-5. *Metrikwarnungen*: Stellen Sie sicher, dass **Ressourcentyp** die ausgewählte Plattform oder der ausgewählte Überwachungsdienst (außer *Log Analytics*) ist, indem Sie bei Auswahl von **Ressource** auf die Schaltfläche *Fertig* klicken, um zu „Warnung erstellen“ zurückzukehren. Verwenden Sie als Nächstes die Schaltfläche **Kriterien hinzufügen**, um für die zuvor ausgewählte Ressource das jeweilige Signal aus der Liste von Signaloptionen, den entsprechenden Überwachungsdienst und den aufgeführten Typ auszuwählen.
+5. *Metrikwarnungen*: Stellen Sie sicher, dass **Ressourcentyp** mit dem Signaltyp **Metrik** ausgewählt ist. Klicken Sie nach dem Auswählen der entsprechenden **Ressource** auf die Schaltfläche *Fertig*, um zu „Warnung erstellen“ zurückzukehren. Verwenden Sie als Nächstes die Schaltfläche **Kriterien hinzufügen**, um für die zuvor ausgewählte Ressource das jeweilige Signal aus der Liste von Signaloptionen, den entsprechenden Überwachungsdienst und den aufgeführten Typ auszuwählen.
 
     ![Auswählen einer Ressource](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
     > [!NOTE]
 
-    > Die neuen Metrikfunktionen, die eigens für schnelle Warnungen eingeführt wurden, sind in Signaltypen als Metriken über den Plattformdienst enthalten.
+    >  Alle Ressourcen, für die [Warnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md) möglich sind, werden mit dem Überwachungsdienst **Plattform** und dem Signaltyp **Metrik** aufgeführt.
 
 6. *Metrikwarnungen*: Sobald das Signal ausgewählt ist, kann die Logik für Warnungen angegeben werden. Als Referenz werden Verlaufsdaten zum Signal mit der Option angezeigt, über **Verlauf anzeigen** das Zeitfenster von den letzten sechs Stunden bis zur letzten Woche anzupassen. Ist die Visualisierung eingerichtet, kann die **Warnungslogik** aus den angezeigten Optionen „Bedingung“, „Aggregation“ und schließlich „Schwellenwert“ ausgewählt werden. Die Bedingung wird als Vorschauversion der angegebenen Logik zusammen mit dem Signalverlauf in der Visualisierung angezeigt, wodurch dargestellt wird, wann die Warnung ausgelöst wurde. Geben Sie schließlich an, für welchen Zeitraum eine Warnung auf die angegebene Bedingung prüfen soll. Legen Sie hierfür den **Zeitraum** und die **Häufigkeit** fest, wie oft eine Warnung ausgeführt werden soll.
 
@@ -81,7 +81,7 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
     ![Konfigurieren der Signallogik für mehrdimensionale Metriken](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
-8. *Protokollwarnungen:* Stellen Sie sicher, dass als **Ressourcentyp** eine Analysequelle wie *Log Analytics* oder *Application Insights* ausgewählt ist, und klicken Sie nach Auswahl der entsprechenden **Ressource** auf *Fertig*. Klicken Sie als Nächstes auf die Schaltfläche **Kriterien hinzufügen**, um die Liste mit den für die Ressource verfügbaren Signaloptionen und die Option **Benutzerdefinierte Protokollsuche** für den ausgewählten Protokollüberwachungsdienst (z.B. *Log Analytics* oder *Application Insights*) aus der Signalliste anzuzeigen.
+8. *Protokollwarnungen:* Stellen Sie sicher, dass als **Ressourcentyp** eine Analysequelle wie *Log Analytics* oder *Application Insights* und der Signaltyp **Protokoll** ausgewählt sind, und klicken Sie nach Auswahl der entsprechenden **Ressource** auf *Fertig*. Klicken Sie als Nächstes auf die Schaltfläche **Kriterien hinzufügen**, um die Liste mit den für die Ressource verfügbaren Signaloptionen und die Option **Benutzerdefinierte Protokollsuche** für den ausgewählten Protokollüberwachungsdienst (z.B. *Log Analytics* oder *Application Insights*) aus der Signalliste anzuzeigen.
 
    ![Auswählen einer Ressource – benutzerdefinierte Protokollsuche](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
 
@@ -121,8 +121,8 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
     Für **Protokollwarnungen** sind einige zusätzliche Funktionen zum Überschreiben der Standardaktionen verfügbar:
 
-    - **E-Mail-Benachrichtigung**: Diese Option überschreibt den Betreff in der über die Aktionsgruppe gesendeten E-Mail. Sie können den Haupttext der E-Mail nicht ändern.
-    - **Benutzerdefinierte JSON-Nutzlast einschließen**: Diese Option überschreibt den von Aktionsgruppen verwendeten JSON-Webhook und ersetzt die Standardnutzlast stattdessen durch eine benutzerdefinierte Nutzlast. Weitere Informationen zu Webhookformaten finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](monitor-alerts-unified-log-webhook.md).
+    - **E-Mail-Benachrichtigung:**: Überschreibt den *E-Mail-Betreff* in der E-Mail, die über die Aktionsgruppe gesendet wurde wenn mindestens eine E-Mail-Aktion in der genannten Aktionsgruppe vorhanden ist. Der Text der E-Mail kann nicht geändert werden, und dieses Feld ist **nicht** für E-Mail-Adressen vorgesehen.
+    - **Benutzerdefinierte JSON-Nutzlast einschließen:** Diese Option überschreibt den von Aktionsgruppen verwendeten JSON-Webhook, wenn mindestens eine Webhookaktion in der genannten Aktionsgruppe vorhanden ist. Der Benutzer kann das JSON-Format angeben, das für alle in zugewiesenen Aktionsgruppen konfigurierte Webhooks verwendet werden kann. Weitere Informationen zu Webhookformaten finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](monitor-alerts-unified-log-webhook.md). Mit der Option zum Testen von Webhooks können das Format und die Verarbeitung nach Ziel mithilfe von JSON-Beispielformaten überprüft werden. Diese Option ist nur zu **Testzwecken** vorgesehen.
 
         ![Aktionsüberschreibungen für Protokollwarnungen](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 

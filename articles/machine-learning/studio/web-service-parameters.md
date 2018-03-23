@@ -1,10 +1,11 @@
 ---
 title: Verwenden von Azure Machine Learning-Webdienstparametern | Microsoft Docs
-description: "Anleitung: Verwenden von Azure Machine Learning Webdienstparametern, um das Verhalten des Modells beim Zugriff auf den Webdienst zu ändern."
+description: 'Anleitung: Verwenden von Azure Machine Learning Webdienstparametern, um das Verhalten des Modells beim Zugriff auf den Webdienst zu ändern.'
 services: machine-learning
-documentationcenter: 
-author: raymondlaghaeian
-manager: jhubbard
+documentationcenter: ''
+author: aashishb
+ms.author: aashishb
+manager: hjerez
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.author: raymondl;garye
-ms.openlocfilehash: 715ea008b84c1a503661394da14e8af167327941
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41b35b8160c777c8598a30e2d775d997e06438f0
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Verwenden von Azure Machine Learning-Webdienstparametern
 Ein Azure Machine Learning-Webdienst wird erstellt, indem ein Experiment veröffentlicht wird, das Module mit konfigurierbaren Parametern enthält. In einigen Fällen kann es vielleicht erforderlich sein, das Verhalten des Moduls zu ändern, während der Webdienst ausgeführt wird. *Webdienstparameter* erlauben Ihnen, diese Aufgabe auszuführen. 
@@ -51,7 +51,7 @@ Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem Modul [Export
    
    * Wählen Sie unter **Please specify data destination**(Datenziel angeben) das Ziel "Azure Blob Storage" (Azure-Blob-Speicher" aus.
    * Wählen Sie unter **Please specify authentication type**(Authentifizierungstyp angeben) die Option "Account" (Konto) aus.
-   * Geben Sie die Kontoinformationen für den Azure-Blobspeicher ein. 
+   * Geben Sie die Kontoinformationen für Azure Blob Storage ein. 
      <p />
 3. Klicken Sie auf das Symbol rechts neben **Path to blob beginning with container parameter** (Blob-Pfad beginnt mit Containerparameter). Es sieht folgendermaßen aus:
    
@@ -64,7 +64,7 @@ Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem Modul [Export
 5. Um einen Standardwert für den Webdienstparameter bereitzustellen, klicken Sie auf das Symbol rechts neben dem Namen, wählen Sie „Provide default value“ (Standardwert bereitstellen) aus, geben Sie einen Wert ein (z.B. „container1/output1.csv“), und drücken Sie die **EINGABETASTE**.
    
    ![Webdienstparameter][parameter]
-6. Klicken Sie auf **Run**(Ausführen). 
+6. Klicken Sie auf **Ausführen**. 
 7. Klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [Classic]** oder **Deploy Web Service [New]** aus, um den Webdienst bereitzustellen.
 
 > [!NOTE] 

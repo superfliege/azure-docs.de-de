@@ -1,25 +1,25 @@
 ---
-title: "Machine Learning- und Data Science-Tools – Azure | Microsoft-Dokumentation"
+title: Machine Learning- und Data Science-Tools – Azure | Microsoft-Dokumentation
 description: Machine Learning- und Data Science-Tools
-keywords: "Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science"
+keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2017
+ms.date: 03/16/2018
 ms.author: gokuma;bradsev
-ms.openlocfilehash: c772fa16b94d09e0fc0450ce86503553c26f8a24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1897f793b5907a304af0859a1ab321a06d1ce808
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Machine Learning- und Data Science-Tools
 Die Data Science-VM (DSVM) verfügt über ein umfangreiches Angebot an Tools und Bibliotheken für Machine Learning in gängigen Sprachen wie Python, R und Julia. 

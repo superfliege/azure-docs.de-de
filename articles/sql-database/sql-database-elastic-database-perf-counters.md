@@ -1,25 +1,19 @@
 ---
-title: "Leistungsindikatoren für den Shardzuordnungs-Manager"
-description: "ShardMapManager-Klasse und datenabhängiges Routing – Leistungsindikatoren"
+title: Leistungsindikatoren für den Shardzuordnungs-Manager
+description: ShardMapManager-Klasse und datenabhängiges Routing – Leistungsindikatoren
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: b090aba0-2e30-454c-96b3-dffa281f539a
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
-ms.author: ddove
-ms.openlocfilehash: 4a7a2e0b4f2be852c61fc3ccdd4dea2034b80918
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 11f19348e91f11d73d885f5d9bb70245c709fab9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="performance-counters-for-shard-map-manager"></a>Leistungsindikatoren für den Shardzuordnungs-Manager
 Sie können die Leistung eines [Shardzuordnungs-Managers](sql-database-elastic-scale-shard-map-management.md) insbesondere bei der Verwendung des [datenabhängigen Routings](sql-database-elastic-scale-data-dependent-routing.md) erfassen. Leistungsindikatoren werden mit Methoden der Klasse „Microsoft.Azure.SqlDatabase.ElasticScale.Client“ erstellt.  
@@ -48,7 +42,7 @@ Sie können auch [dieses](https://gallery.technet.microsoft.com/scriptcenter/Ela
 
 Leistungsindikatoren werden für jede zwischengespeicherte Shardzuordnung pro Prozess erstellt.  
 
-## <a name="notes"></a>Hinweise
+## <a name="notes"></a>Notizen
 Die folgenden Ereignisse lösen die Erstellung der Leistungsindikatoren aus:  
 
 * Initialisierung von [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) mit [Eager Loading](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy.aspx), wenn der ShardMapManager Shardzuordnungen enthält. Dazu gehören die Methoden [GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) und [TryGetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx).

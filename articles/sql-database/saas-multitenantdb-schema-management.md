@@ -1,26 +1,21 @@
 ---
-title: "Verwalten eines Schemas für Azure SQL-Datenbank in einer mehrinstanzenfähigen App | Microsoft-Dokumentation"
-description: "Verwalten des Schemas für mehrere Mandanten in einer mehrinstanzenfähigen Anwendung, die Azure SQL-Datenbank verwendet"
+title: Verwalten eines Schemas für Azure SQL-Datenbank in einer mehrinstanzenfähigen App | Microsoft-Dokumentation
+description: Verwalten des Schemas für mehrere Mandanten in einer mehrinstanzenfähigen Anwendung, die Azure SQL-Datenbank verwendet
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.reviewers: billgib
 ms.author: genemi
-ms.openlocfilehash: 0303da917ecb03ca27e0444afb56f49766b70029
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 474b7842c8295be0dd30c2c03b92dc68ce40630d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Verwalten von Schemas in einer SaaS-Anwendung, die mehrinstanzenfähige SQL-Datenbanken mit Sharding verwendet
 
@@ -68,7 +63,7 @@ Das in diesem Beispiel verwendete mehrinstanzenfähige Datenbankmodell mit Shard
 
 Es gibt eine neue Version von „Elastische Aufträge“, die nun eine integrierte Funktion von Azure SQL-Datenbank darstellt. Diese neue Version von Elastische Aufträge liegt derzeit als eingeschränkte Vorschauversion vor. Die eingeschränkte Vorschauversion unterstützt derzeit die Verwendung von PowerShell zum Erstellen eines Auftrags-Agents sowie T-SQL zum Erstellen und Verwalten von Aufträgen.
 > [!NOTE] 
-> In diesem Tutorial werden Funktionen des SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen (Aufträge für die elastische Datenbank). Wenn Sie dieses Tutorial durcharbeiten möchten, senden Sie Ihre Abonnement-ID an SaaSFeedback@microsoft.com mit dem Betreff „Elastic Jobs Preview“. Wenn das Aktivieren Ihres Abonnements bestätigt wurde, laden Sie die aktuelle Vorabversion der Job-Cmdlets herunter, und installieren Sie diese. Die Vorschauversion ist eingeschränkt, wenden Sie sich daher an SaaSFeedback@microsoft.com, wenn Sie Fragen haben oder Support benötigen.
+> In diesem Tutorial werden Funktionen des SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen (Aufträge für die elastische Datenbank). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID per E-Mail an SaaSFeedback@microsoft.com mit dem Betreff „Vorschau von Elastische Aufträge“ an. Wenn das Aktivieren Ihres Abonnements bestätigt wurde, laden Sie die aktuelle Vorabversion der Job-Cmdlets herunter, und installieren Sie diese. Die Vorschauversion ist eingeschränkt, wenden Sie sich daher an SaaSFeedback@microsoft.com, wenn Sie Fragen haben oder Support benötigen.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Abrufen von Quellcode und Skripts zur Anwendung Wingtip Tickets SaaS Multi-tenant Database
 
@@ -89,10 +84,10 @@ Das Skript *Demo-SchemaManagement.ps1* ruft das Skript *Deploy-SchemaManagement.
 
 Jede Mandantendatenbank enthält in der Tabelle **VenueTypes** eine Gruppe von Veranstaltungsorttypen. Jeder Typ definiert eine bestimmte Art von Ereignissen, die an einem Veranstaltungsort präsentiert werden können. Diese Veranstaltungsorttypen entsprechen den Hintergrundbildern, die in der Mandantenereignis-App angezeigt werden.  In dieser Übung stellen Sie eine Aktualisierung für alle Datenbanken bereit, wobei zwei weitere Veranstaltungsorttypen hinzugefügt werden: *Motorcycle Racing* und *Swimming Club*. 
 
-Prüfen Sie zunächst die in jeder Mandantendatenbank enthaltenen Veranstaltungsorttypen. Stellen Sie in SQL Server Management Studio (SSMS) eine Verbindung zu einer der Mandantendatenbanken her, und überprüfen Sie die Tabelle mit den Veranstaltungsorttypen (Tabelle „VenueTypes“).  Sie können diese Tabelle auch im Azure-Portal im Abfrage-Editor abfragen, den Sie über die Seite „Datenbank“ aufrufen können. 
+Prüfen Sie zunächst die in jeder Mandantendatenbank enthaltenen Veranstaltungsorttypen. Stellen Sie in SQL Server Management Studio (SSMS) eine Verbindung mit einer der Mandantendatenbanken her, und überprüfen Sie die Tabelle VenueTypes.  Sie können diese Tabelle auch im Azure-Portal im Abfrage-Editor abfragen, den Sie über die Seite „Datenbank“ aufrufen können. 
 
 1. Öffnen Sie SSMS, und stellen Sie eine Verbindung mit dem Mandantenserver *tenants1-dpt-&lt;Benutzer&gt;.database.windows.net* her.
-1. Um sicherzustellen, dass *Motorcycle Racing* und *Swimming Club* **nicht** in der Ergebnisliste enthalten sind, navigieren Sie zur Datenbank *contosoconcerthall* auf dem Server *tenants1-dpt-&lt;Benutzer&gt;*, und fragen Sie die Tabelle *VenueTypes* ab.
+1. Um sich zu vergewissern, dass *Motorcycle Racing* und *Swimming Club* **nicht** in der Ergebnisliste enthalten sind, navigieren Sie zur Datenbank *contosoconcerthall* auf dem Server *tenants1-dpt-&lt;Benutzer&gt;*, und fragen Sie die Tabelle *VenueTypes* ab.
 
 
 

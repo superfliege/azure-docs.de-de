@@ -1,25 +1,20 @@
 ---
 title: Verwalten horizontal hochskalierter Clouddatenbanken | Microsoft Docs
-description: "Verwenden Sie den Auftragsdienst der elastischen Datenbank, um ein Skript für eine Gruppe von Datenbanken auszuführen."
+description: Verwenden Sie den Auftragsdienst der elastischen Datenbank, um ein Skript für eine Gruppe von Datenbanken auszuführen.
 metakeywords: azure sql database elastic databases
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-ms.assetid: 6fa47cf2-1162-4534-a206-6e2d95b78580
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: f709cd38a690ba666ca290cc029caa2ce4f9dff0
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 1f0e022eb98619b22f7e62e0602d36ba821def22
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Verwalten horizontal hochskalierter Clouddatenbanken
 Für die Verwaltung horizontal hochskalierter Sharddatenbanken ermöglicht Ihnen das Feature **Auftrag für die elastische Datenbank** (Vorschau) das zuverlässige Ausführen eines Transact-SQL-Skripts (T-SQL) für eine Gruppe von Datenbanken. Dies schließt Folgendes ein:
@@ -60,11 +55,11 @@ Aufträge führen das Skript aus und protokollieren den Ausführungsstatus für 
 Definieren Sie benutzerdefinierte Gruppen von Azure SQL-Datenbanken, und definieren Sie einen Zeitplan für die Ausführung eines Auftrags.
 
 > [!NOTE]
-> Im Azure-Portal steht nur eine eingeschränkte Anzahl von Funktionen für elastische SQL Azure-Pools zur Verfügung. Verwenden Sie die PowerShell-APIs, um auf den gesamten aktuell verfügbaren Funktionsumfang zuzugreifen.
+> Im Azure-Portal steht nur eine eingeschränkte Anzahl von Funktionen für Pools für elastische SQL Azure-Datenbanken zur Verfügung. Verwenden Sie die PowerShell-APIs, um auf den gesamten aktuell verfügbaren Funktionsumfang zuzugreifen.
 > 
 > 
 
-## <a name="applications"></a>Anwendungen
+## <a name="applications"></a>ANWENDUNGEN
 * Führen Sie Verwaltungsaufgaben durch, wie z.B. die Bereitstellung eines neuen Schemas.
 * Aktualisieren Sie Referenzdaten, z.B. allgemeine Produktinformationen, die für alle Datenbanken gelten. Sie können auch automatische Updates für jeden Arbeitstag nach Geschäftsschluss planen.
 * Neuerstellung von Indizes zum Verbessern der Abfrageleistung. Für die Neuerstellung kann die Ausführung für eine gesamte Sammlung von Datenbanken auf wiederkehrender Basis konfiguriert werden, etwa in Zeiten mit geringer Auslastung.
@@ -106,7 +101,7 @@ Benutzerdefinierte Gruppen werden dagegen starr definiert. Sie müssen explizit 
 ## <a name="components-and-pricing"></a>Komponenten und Preise
 Die folgenden Komponenten arbeiten zusammen, um einen Azure-Clouddienst zu erstellen, der eine Ad-hoc-Ausführung von Verwaltungsaufgaben ermöglicht. Die Komponenten werden installiert und automatisch während der Installation in Ihrem Abonnement konfiguriert. Sie können die Dienste am automatisch generierten identischen Namen erkennen. Der Name ist eindeutig und besteht aus dem Präfix "edj", gefolgt von 21 zufällig generierten Zeichen.
 
-* **Azure Cloud Service**: Elastische Datenbankaufträge (Vorschau) werden als vom Kunden gehosteter Azure-Clouddienst bereitgestellt, um die angeforderten Aufgaben auszuführen. Der Dienst wird im Portal bereitgestellt und im Microsoft Azure-Abonnement gehostet. Der standardmäßig bereitgestellte Dienst wird mit mindestens zwei Workerrollen für hohe Verfügbarkeit ausgeführt. Die Standardgröße der einzelnen Workerrollen ("ElasticDatabaseJobWorker") wird in einer A0-Instanz ausgeführt. Die Preise finden Sie unter [Cloud Services Preise](https://azure.microsoft.com/pricing/details/cloud-services/). 
+* **Azure Cloud Service**: Elastische Datenbankaufträge (Vorschau) werden als vom Kunden gehosteter Azure-Clouddienst bereitgestellt, um die angeforderten Aufgaben auszuführen. Der Dienst wird im Portal bereitgestellt und im Microsoft Azure-Abonnement gehostet. Der standardmäßig bereitgestellte Dienst wird mit mindestens zwei Workerrollen für Hochverfügbarkeit ausgeführt. Die Standardgröße der einzelnen Workerrollen ("ElasticDatabaseJobWorker") wird in einer A0-Instanz ausgeführt. Die Preise finden Sie unter [Cloud Services Preise](https://azure.microsoft.com/pricing/details/cloud-services/). 
 * **Azure SQL-Datenbank**: Der Dienst verwendet zum Speichern aller Auftragsmetadaten eine Azure SQL-Datenbank, die als **Verwaltungsdatenbank** bezeichnet wird. Die Standarddienstebene ist S0. Informationen zu den Preisen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/).
 * **Azure Service Bus**: Ein Azure Service Bus dient der Koordination der Arbeit innerhalb von Azure Cloud Service. Siehe [Service Bus Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 * **Azure Storage:**Ein Azure Storage-Konto wird zum Speichern von Diagnoseausgabeprotokollen verwendet, falls ein aufgetretenes Problem weiteres Debuggen erfordert (siehe [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md)). Information zu den Preisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).

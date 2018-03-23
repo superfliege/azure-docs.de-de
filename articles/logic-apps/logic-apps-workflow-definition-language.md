@@ -1,11 +1,11 @@
 ---
-title: "Schema der Definitionssprache für Workflows – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Definieren von Workflows auf der Grundlage des Workflowdefinitionsschemas für Azure Logic Apps"
+title: Schema der Definitionssprache für Workflows – Azure Logic Apps | Microsoft-Dokumentation
+description: Definieren von Workflows auf der Grundlage des Workflowdefinitionsschemas für Azure Logic Apps
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
 ms.workload: integration
@@ -126,14 +126,14 @@ Bei den JSON-Werten in der Definition kann es sich um Literalwerte oder um Ausdr
 > [!NOTE]
 > Einige Ausdrücke erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung unter Umständen noch nicht vorhanden sind. Einige dieser Werte können mithilfe von **Funktionen** abgerufen werden.  
   
-Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwendet werden und ergeben immer einen anderen JSON-Wert. Wenn ein JSON-Wert als Ausdruck erkannt wurde, wird der Text des Ausdrucks durch Entfernen des @-Zeichens extrahiert. Falls Sie ein Zeichenfolgenliteral benötigen, das mit einem @-Zeichen beginnt, muss die Zeichenfolge wie folgt mit einem Escapezeichen versehen werden: @. Die folgenden Beispiele veranschaulichen die Auswertung von Ausdrücken.  
+Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwendet werden und ergeben immer einen anderen JSON-Wert. Wenn ein JSON-Wert als Ausdruck erkannt wurde, wird der Text des Ausdrucks durch Entfernen des @-Zeichens extrahiert. Falls Sie ein Zeichenfolgenliteral benötigen, das mit einem \@-Zeichen beginnt, muss die Zeichenfolge wie folgt mit einem Escapezeichen versehen werden: @. Die folgenden Beispiele veranschaulichen die Auswertung von Ausdrücken.  
   
 |JSON-Wert|Ergebnis|  
 |----------------|------------|  
 |"parameters"|Die Zeichenfolge „parameters“ wird zurückgegeben.|  
 |"parameters[1]"|Die Zeichenfolge „parameters[1]“ wird zurückgegeben.|  
-|"@@"|Eine Zeichenfolge, die „@“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
-|" @"|Eine Zeichenfolge, die „ @“ enthält, wird zurückgegeben (zwei Zeichen).|  
+|\"\@\@\"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
+|\" \@\"|Eine Zeichenfolge, die \„ \@\“ enthält, wird zurückgegeben (zwei Zeichen).|  
   
 Mit der *Zeichenfolgeninterpolation* können Ausdrücke auch innerhalb von Zeichenfolgen verwendet werden. Dabei werden die Ausdrücke in `@{ ... }` eingeschlossen. Beispiel:  <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 
@@ -142,12 +142,12 @@ Das Ergebnis ist immer eine Zeichenfolge. Somit ist dieses Feature vergleichbar 
 |JSON-Wert|Ergebnis|  
 |----------------|------------|  
 |"@parameters('myString')"|Gibt `sampleString` als Zeichenfolge zurück.|  
-|"@{parameters('myString')}"|Gibt `sampleString` als Zeichenfolge zurück.|  
+|\"\@{parameters('myString')}"|Gibt `sampleString` als Zeichenfolge zurück.|  
 |"@parameters('myNumber')"|Gibt `42` als *Zahl* zurück.|  
-|"@{parameters('myNumber')}"|Gibt `42` als *Zeichenfolge* zurück.|  
-|"Answer is: @{parameters('myNumber')}"|Gibt die Zeichenfolge `Answer is: 42` zurück.|  
+|\"\@{parameters('myNumber')}"|Gibt `42` als *Zeichenfolge* zurück.|  
+|"Answer is: \@{parameters('myNumber')}"|Gibt die Zeichenfolge `Answer is: 42` zurück.|  
 |"@concat('Answer is: ', string(parameters('myNumber')))"|Gibt die Zeichenfolge `Answer is: 42` zurück.|  
-|"Answer is: @@{parameters('myNumber')}"|Gibt die Zeichenfolge `Answer is: @{parameters('myNumber')}` zurück.|  
+|"Answer is: \@\@{parameters('myNumber')}"|Gibt die Zeichenfolge `Answer is: @{parameters('myNumber')}` zurück.|  
   
 ## <a name="operators"></a>Operatoren  
 

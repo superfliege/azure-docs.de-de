@@ -1,12 +1,12 @@
 ---
 title: Erstellen einer serverlosen App in Visual Studio | Microsoft-Dokumentation
 description: Erste Schritte mit Ihrer ersten serverlosen App beim Erstellen, Bereitstellen und Verwalten der App in Visual Studio.
-keywords: 
+keywords: ''
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 3672beda8a502e5fe2c8182076a8edef7ee9ebf6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3cd509a0073e45bf910e9a74a279d678ff03b63
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="build-a-serverless-app-in-visual-studio-with-logic-apps-and-functions"></a>Erstellen Sie eine serverlose App mit Logik-Apps und Functions in Visual Studio
 
@@ -86,7 +86,7 @@ Wenn Sie JavaScript, Python, F#, Bash, Batches oder PowerShell verwenden und ein
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen eines serverlosen sozialen Dashboards](logic-apps-scenario-social-serverless.md)
-* [Verwalten einer Logik-App im Cloud-Explorer von Visual Studio](logic-apps-manage-from-vs.md)
+* [Verwalten einer Logik-App im Cloud-Explorer von Visual Studio](manage-logic-apps-with-visual-studio.md)
 * [Definitionssprache für Logik-App-Workflows](logic-apps-workflow-definition-language.md)
 
 <!-- Image references -->

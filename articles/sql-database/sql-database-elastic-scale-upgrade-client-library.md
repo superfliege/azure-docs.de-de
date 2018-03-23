@@ -1,24 +1,19 @@
 ---
-title: "Upgrade auf die neueste Clientbibliothek für elastische Datenbanken | Microsoft Docs"
-description: "Verwenden Sie NuGet, um ein Upgrade der Clientbibliothek für elastische Datenbanken durchzuführen."
+title: Upgrade auf die neueste Clientbibliothek für elastische Datenbanken | Microsoft Docs
+description: Verwenden Sie NuGet, um ein Upgrade der Clientbibliothek für elastische Datenbanken durchzuführen.
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-ms.assetid: 0a546510-76e7-465e-9271-f15ff0cfa959
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
-ms.author: ddove
-ms.openlocfilehash: 62609f2488a01d9b406c6b730c53ecc9f9b6ea1b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 54ddde10935fa5add07aaf0c514cf48c6115678e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade einer App auf die neueste Clientbibliothek für elastische Datenbanken
 Neue Versionen der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) stehen über NuGet und die NuGetPackage Manager-Benutzeroberfläche in Visual Studio zur Verfügung. Upgrades bieten Fehlerkorrekturen und Unterstützung für die neuen Funktionen der Clientbibliothek.

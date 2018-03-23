@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 10e7e7c95dc0dd614c7c01581cb746f1e854a9e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce3699f4838c30eaaa0ab2938190c05de1feb781
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
-#<a name="traffic-manager-documentation"></a>Traffic Manager-Dokumentation
+# <a name="traffic-manager-documentation"></a>Traffic Manager-Dokumentation
 
 Hier erfahren Sie, wie Sie mithilfe von Traffic Manager eingehenden Datenverkehr weiterleiten, um die Leistung und Zuverlässigkeit von Anwendungen zu optimieren. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie an Azure oder an externe Dienstendpunkte gerichteten Datenverkehr verwalten.
 
@@ -99,7 +99,7 @@ Hier erfahren Sie, wie Sie mithilfe von Traffic Manager eingehenden Datenverkehr
 
 ---
 
-## <a name="reference"></a>Referenz
+## <a name="reference"></a>Verweis
 
 <ul class="panelContent cardsW">
     <li>
@@ -109,7 +109,7 @@ Hier erfahren Sie, wie Sie mithilfe von Traffic Manager eingehenden Datenverkehr
                     <div class="cardText">
                         <h3>Sprachen</h3>
                         <p><a href="/powershell/resourcemanager/azurerm.trafficmanager/v2.5.0/azurerm.trafficmanager">PowerShell</a></p>
-                        <p><a href="/cli/azure/network/traffic-manager">Azure-Befehlszeilenschnittstelle</a></p>
+                        <p><a href="/cli/azure/network/traffic-manager">Azure-CLI</a></p>
                         <p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p>
                         <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.js</a></p>
                         <p><a href="http://www.rubydoc.info/gems/azure_mgmt_traffic_manager">Ruby</a></p>

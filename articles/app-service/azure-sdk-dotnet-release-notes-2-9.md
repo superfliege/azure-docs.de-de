@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 199f0906f73d693d7cd4b73c928f23ae83b99596
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a62268cee0750c544703fb4c3f7e91238e26b872
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Versionshinweise zu Azure SDK für .NET 2.9
 
 Dieses Thema enthält die Versionshinweise für Version 2.9 und 2.9.6 des Azure SDK für .NET.
 
-##<a name="azure-sdk-for-net-296-release-summary"></a>Version 2.9.6 des Azure SDK für .NET – Zusammenfassung
+## <a name="azure-sdk-for-net-296-release-summary"></a>Version 2.9.6 des Azure SDK für .NET – Zusammenfassung
 
 Veröffentlichungsdatum: 16.11.2016
  
@@ -85,9 +85,9 @@ Dieses Update umfasst Folgendes:
 ## <a name="hdinsight-tools"></a>HDInsight-Tools
 **HDInsight Tools** für Visual Studio unterstützt jetzt HDInsight Version 3.3, einschließlich der Anzeige von Tez-Diagrammen und anderen Sprachkorrekturen.
 
-## <a name="azure-resource-manager"></a>Azure-Ressourcen-Manager
+## <a name="azure-resource-manager"></a>Azure Resource Manager
 Neu in dieser Version ist die [Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)-Unterstützung für Resource Manager-Vorlagen.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Ankündigungsbeitrag zu Azure SDK 2.9 (in englischer Sprache)](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
 

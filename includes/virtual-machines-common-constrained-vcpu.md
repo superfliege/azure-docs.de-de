@@ -9,12 +9,17 @@ Beispielsweise verfügt die aktuelle VM-Größe „Standard_GS5“ über 32 vCPU
 Die Lizenzgebühren für SQL Server oder Oracle sind auf die neue vCPU-Anzahl beschränkt, und andere Produkte sollten auf der Grundlage der neuen vCPU-Anzahl berechnet werden. Dies führt zu einer Erhöhung des Verhältnisses zwischen VM-Spezifikationen und aktiven (abrechenbaren) vCPUs um 50 % bis 75 %. Diese neuen VM-Größen, die nur in Azure verfügbar sind, ermöglichen es Workloads, eine höhere CPU-Auslastung zu einem Bruchteil der Lizenzkosten (pro Kern) zu erreichen. Zu diesem Zeitpunkt bleiben die Computekosten (einschließlich der Betriebssystemlizenzierung) gleich wie bei der ursprünglichen Größe. Weitere Informationen finden Sie unter [Azure VM-Größen für kostengünstigere Datenbankworkloads](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Name                | vCPU | Spezifikationen           |
+| NAME                | vCPU | Spezifikationen           |
 |---------------------|------|-----------------|
 | Standard_M64-32ms   | 32   | Identisch mit M64ms   |
 | Standard_M64-16ms   | 16   | Identisch mit M64ms   |
 | Standard_M128-64ms  | 64   | Identisch mit M128ms  |
 | Standard_M128-32ms  | 32   | Identisch mit M128ms  |
+| Standard_E4-2s_v3   | 2    | Identisch mit E4s_v3  |
+| Standard_E8-4s_v3   | 4    | Identisch mit E8s_v3  |
+| Standard_E8-2s_v3   | 2    | Identisch mit E8s_v3  |
+| Standard_E16-8s_v3  | 8    | Identisch mit E16s_v3 |
+| Standard_E16-4s_v3  | 4    | Identisch mit E16s_v3 |
 | Standard_E32-16_v3  | 16   | Identisch mit E32s_v3 |
 | Standard_E32-8s_v3  | 8    | Identisch mit E32s_v3 |
 | Standard_E64-32s_v3 | 32   | Identisch mit E64s_v3 |
@@ -23,6 +28,9 @@ Die Lizenzgebühren für SQL Server oder Oracle sind auf die neue vCPU-Anzahl be
 | Standard_GS4-4      | 4    | Identisch mit GS4     |
 | Standard_GS5-16     | 16   | Identisch mit GS5     |
 | Standard_GS5-8      | 8    | Identisch mit GS5     |
+| Standard_DS11-1_v2  | 1    | Identisch mit DS11_v2 |
+| Standard_DS12-2_v2  | 2    | Identisch mit DS12_v2 |
+| Standard_DS12-1_v2  | 1    | Identisch mit DS12_v2 |
 | Standard_DS13-4_v2  | 4    | Identisch mit DS13_v2 |
 | Standard_DS13-2_v2  | 2    | Identisch mit DS13_v2 |
 | Standard_DS14-8_v2  | 8    | Identisch mit DS14_v2 |

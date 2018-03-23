@@ -1,12 +1,12 @@
 ---
-title: "Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows | Microsoft-Dokumentation"
-description: "Hier finden Sie eine Einführung in die Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows."
+title: Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows | Microsoft-Dokumentation
+description: Hier finden Sie eine Einführung in die Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows.
 services: virtual-machines-windows'
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
 editor: na
-tags: 
+tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 5a7dc313f1d6453562e4d5a11ceca03e4459b043
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 8f6f3fc8325fb2587dc09b982efa52fbe663e2a9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows
 
@@ -29,7 +29,7 @@ Die Azure-VM-Erweiterung für die Leistungsdiagnose ermöglicht das Sammeln von 
 Diese Erweiterung kann unter Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016 installiert werden. Außerdem ist die Installation unter Windows 8.1 und Windows 10 möglich.
 
 ## <a name="extension-schema"></a>Erweiterungsschema
-Der folgende JSON-Code zeigt das Schema für die Azure-VM-Erweiterung für die Leistungsdiagnose. Für diese Erweiterung sind der Name und der Schlüssel für ein Speicherkonto erforderlich, in dem die Ausgabe der Diagnose und der Bericht gespeichert werden. Diese Werte sind vertraulich und sollten in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Beachten Sie, dass für **storageAccountName** und **storageAccountKey** die Groß- und Kleinschreibung berücksichtigt wird. Weitere erforderliche Parameter sind im folgenden Abschnitt aufgeführt.
+Der folgende JSON-Code zeigt das Schema für die Azure-VM-Erweiterung für die Leistungsdiagnose. Für diese Erweiterung sind der Name und der Schlüssel für ein Speicherkonto erforderlich, in dem die Ausgabe der Diagnose und der Bericht gespeichert werden. Diese Werte sind vertraulich. Speicherkontoschlüssel müssen in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Beachten Sie, dass für **storageAccountName** und **storageAccountKey** die Groß- und Kleinschreibung berücksichtigt wird. Weitere erforderliche Parameter sind im folgenden Abschnitt aufgeführt.
 
 ```JSON
     {
@@ -43,19 +43,19 @@ Der folgende JSON-Code zeigt das Schema für die Azure-VM-Erweiterung für die L
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
+            "storageAccountName": "[parameters('storageAccountName')]",
             "performanceScenario": "[parameters('performanceScenario')]",
-                  "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "perfCounterTrace": "[parameters('perfCounterTrace')]",
-                  "networkTrace": "[parameters('networkTrace')]",
-                  "xperfTrace": "[parameters('xperfTrace')]",
-                  "storPortTrace": "[parameters('storPortTrace')]",
+            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+            "perfCounterTrace": "[parameters('perfCounterTrace')]",
+            "networkTrace": "[parameters('networkTrace')]",
+            "xperfTrace": "[parameters('xperfTrace')]",
+            "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
             "requestTimeUtc":  "[parameters('requestTimeUtc')]"
         },
-          "protectedSettings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
+        "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"        
-            }
+        }
       }
     }
 ```
@@ -75,12 +75,13 @@ Der folgende JSON-Code zeigt das Schema für die Azure-VM-Erweiterung für die L
 |xperfTrace|x|Option zum Aktivieren der XPerf-Ablaufverfolgung. Gültige Werte sind **x** oder ein leerer Wert. Lassen Sie den Wert leer, wenn Sie diese Ablaufverfolgung nicht erfassen möchten.
 |storPortTrace|s|Option zum Aktivieren der StorPort-Ablaufverfolgung. Gültige Werte sind **s** oder ein leerer Wert. Lassen Sie den Wert leer, wenn Sie diese Ablaufverfolgung nicht erfassen möchten.
 |srNumber|123452016365929|Die Supportticketnummer, sofern verfügbar. Lassen Sie den Wert andernfalls leer.
+|requestTimeUtc|2017-09-28T22:08:53.736Z|Aktueller Wert für Datum und Uhrzeit in UTC. Sie müssen diesen Wert nicht angeben, wenn Sie das Portal verwenden, um diese Erweiterung zu installieren.
 |storageAccountName|mystorageaccount|Der Name des Speicherkontos zum Speichern der Diagnoseprotokolle und Ergebnisse.
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|Der Schlüssel für das Speicherkonto.
 
 ## <a name="install-the-extension"></a>Installieren der Erweiterung
 
-Führen Sie die folgenden Schritte aus, um die Erweiterung auf virtuellen Windows-Computern zu installieren:
+Führen Sie die folgenden Anweisungen aus, um die Erweiterung auf virtuellen Windows-Computern zu installieren:
 
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
 2. Wählen Sie den virtuellen Computer aus, auf dem Sie diese Erweiterung installieren möchten.
@@ -182,19 +183,19 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
+            "storageAccountName": "[parameters('storageAccountName')]",
             "performanceScenario": "[parameters('performanceScenario')]",
-                  "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "perfCounterTrace": "[parameters('perfCounterTrace')]",
-                  "networkTrace": "[parameters('networkTrace')]",
-                  "xperfTrace": "[parameters('xperfTrace')]",
-                  "storPortTrace": "[parameters('storPortTrace')]",
+            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+            "perfCounterTrace": "[parameters('perfCounterTrace')]",
+            "networkTrace": "[parameters('networkTrace')]",
+            "xperfTrace": "[parameters('xperfTrace')]",
+            "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
             "requestTimeUtc":  "[parameters('requestTimeUtc')]"
         },
-          "protectedSettings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
+        "protectedSettings": {            
             "storageAccountKey": "[parameters('storageAccountKey')]"        
-            }
+        }
       }
     }
   ]
@@ -202,13 +203,13 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 ````
 
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
-Mit dem Befehl `Set-AzureRmVMExtension` können Sie die Azure-VM-Erweiterung für die Leistungsdiagnose auf einem vorhandenen virtuellen Computer bereitstellen. Speichern Sie vor dem Ausführen des Befehls die öffentliche und die private Konfiguration in einer PowerShell-Hashtabelle.
+Mit dem Befehl `Set-AzureRmVMExtension` können Sie die Azure-VM-Erweiterung für die Leistungsdiagnose auf einem vorhandenen virtuellen Computer bereitstellen.
 
 PowerShell
 
 ````
-$PublicSettings = @{ "performanceScenario":"basic","traceDurationInSeconds":300,"perfCounterTrace":"p","networkTrace":"","xperfTrace":"","storPortTrace":"","srNumber":"","requestTimeUtc":"2017-09-28T22:08:53.736Z" }
-$ProtectedSettings = @{"storageAccountName":"mystorageaccount","storageAccountKey":"mystoragekey"}
+$PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z" }
+$ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `
@@ -218,7 +219,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -TypeHandlerVersion 1.0 `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
-    -Location WestUS `
+    -Location WestUS
 ````
 
 ## <a name="information-on-the-data-captured"></a>Informationen zu den erfassten Daten
@@ -234,7 +235,7 @@ Zur Unterstützung des Supporttechnikers, der Ihr Supportticket bearbeitet, verw
 
 Um den Bericht anzuzeigen, extrahieren Sie die ZIP-Datei und öffnen die Datei **PerfInsights Report.html**.
 
-Sie können die ZIP-Datei auch direkt aus dem Portal herunterladen, indem Sie die Erweiterung auswählen.
+Sie sollten die ZIP-Datei auch direkt aus dem Portal herunterladen können, indem Sie die Erweiterung auswählen.
 
 ![Screenshot: Ausführlicher Status der Leistungsdiagnose](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 

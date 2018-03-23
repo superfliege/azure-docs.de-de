@@ -1,24 +1,24 @@
 ---
-title: "Grundlegendes zu Azure Stack-Sicherheitsmaßnahmen | Microsoft-Dokumentation"
-description: "Als Dienstadministrator erhalten Sie Informationen zu Sicherheitsmaßnahmen, die auf Azure Stack angewendet werden"
+title: Grundlegendes zu Azure Stack-Sicherheitsmaßnahmen | Microsoft-Dokumentation
+description: Als Dienstadministrator erhalten Sie Informationen zu Sicherheitsmaßnahmen, die auf Azure Stack angewendet werden
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: fa0800f03d823769dcd9f01601689122b0d09ec5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c1d92f8f2ed9e8ab504afc65bab861e1f7bb3689
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Sicherheitsstatus der Azure Stack-Infrastruktur
 
@@ -31,8 +31,12 @@ In Azure Stack koexistieren zwei Sicherheitsstatusebenen. Die erste Ebene besteh
 ## <a name="security-approach"></a>Sicherheitsansatz
 Azure Stack wurde mit einem Sicherheitsstatus konzipiert, um moderne Bedrohungen abzuwehren und die Anforderungen der wichtigsten Konformitätsstandards zu erfüllen. Daraus resultiert, dass der Sicherheitsstatus der Azure Stack-Infrastruktur auf zwei Säulen ruht:
 
- - **Von einer Sicherheitsübertretung ausgehen.** Von der Annahme ausgehend, dass bereits eine systemseitige Sicherheitsverletzung vorliegt, konzentrieren wir uns auf das *Erkennen und Beschränken der Auswirkungen von Sicherheitsverletzungen*, anstatt nur zu versuchen, Angriffe zu verhindern. 
- - **Standardmäßig verstärkt.**  Da die Infrastruktur auf klar definierter Hardware und Software ausgeführt wird, *aktivieren, konfigurieren und überprüfen wir die Sicherheitsfeatures*, deren Implementierung dem Kunden überlassen ist.
+ - **Von einer Sicherheitsübertretung ausgehen.**  
+Von der Annahme ausgehend, dass bereits eine systemseitige Sicherheitsverletzung vorliegt, konzentrieren wir uns auf das *Erkennen und Beschränken der Auswirkungen von Sicherheitsverletzungen*, anstatt nur zu versuchen, Angriffe zu verhindern. 
+ - **Standardmäßig verstärkt.**  
+Da die Infrastruktur auf klar definierter Hardware und Software ausgeführt wird, *aktivieren, konfigurieren und überprüfen wir alle Sicherheitsfeatures* standardmäßig.
+
+
 
 Da Azure Stack als integriertes System geliefert wird, wird der Sicherheitsstatus der Azure Stack-Infrastruktur von Microsoft definiert. Genau wie in Azure sind Mandanten dafür verantwortlich, den Sicherheitsstatus ihrer Mandantenworkloads zu definieren. Dieses Dokument vermittelt grundlegende Kenntnisse über den Sicherheitsstatus der Azure Stack-Infrastruktur.
 

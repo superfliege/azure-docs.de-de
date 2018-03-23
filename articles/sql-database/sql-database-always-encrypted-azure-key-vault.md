@@ -1,25 +1,20 @@
 ---
-title: "Always Encrypted: SQL-Datenbank – Azure Key Vault | Microsoft-Dokumentation"
-description: "In diesem Artikel erfahren Sie, wie Sie vertrauliche Daten in einer SQL-Datenbank mithilfe der Datenverschlüsselung unter Einsatz des Always Encrypted-Assistenten in SQL Server Management Studio sichern."
-keywords: "Verschlüsselung, Verschlüsselungsschlüssel, Cloud-Verschlüsselung"
+title: 'Always Encrypted: SQL-Datenbank – Azure Key Vault | Microsoft-Dokumentation'
+description: In diesem Artikel erfahren Sie, wie Sie vertrauliche Daten in einer SQL-Datenbank mithilfe der Datenverschlüsselung unter Einsatz des Always Encrypted-Assistenten in SQL Server Management Studio sichern.
+keywords: Verschlüsselung, Verschlüsselungsschlüssel, Cloud-Verschlüsselung
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-ms.assetid: 6ca16644-5969-497b-a413-d28c3b835c9b
 ms.service: sql-database
 ms.custom: security
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.openlocfilehash: ca4566ced525f0cb732afc15d96d9ef73fd8cff5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3525355a7f997a5dcc54d14f216d0d647aef8407
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted – Schützen von vertraulichen Daten in SQL-Datenbank und Speichern der Verschlüsselungsschlüssel in Azure Key Vault
 
@@ -140,7 +135,6 @@ Verschlüsseln Sie für jeden Patienten die Daten **SSN** (US-Sozialversicherung
 
 Legen Sie als **Verschlüsselungstyp** für die Spalte „SSN“ **Deterministisch** und für die Spalte „BirthDate“ **Zufällig** fest. Klicken Sie auf **Weiter**.
 
-
 ![Spalten verschlüsseln](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
 ### <a name="master-key-configuration"></a>Hauptschlüsselkonfiguration
@@ -151,7 +145,6 @@ Dieses Tutorial zeigt, wie Sie Ihre Schlüssel in Azure Key Vault speichern.
 1. Wählen Sie **Azure Key Vault**aus.
 2. Wählen Sie in der Dropdownliste den gewünschten Schlüsseltresor aus.
 3. Klicken Sie auf **Weiter**.
-
 
 ![Hauptschlüsselkonfiguration](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 

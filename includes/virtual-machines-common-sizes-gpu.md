@@ -5,14 +5,14 @@ services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 03/01/2018
-ms.author: danlep
+ms.date: 03/05/2018
+ms.author: danlep;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 34b38ff02d401e87be10f1f72cb2025b66317c9e
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 96826b2f8acd579cbfe30f2e524d94ce4867df30
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einzelnen oder mehreren NVIDIA-GPUs verfügbar. Diese Größen sind für rechenintensive, grafikintensive und visualisierungsorientierte Workloads vorgesehen. Dieser Artikel enthält Informationen zu Anzahl und Art von GPUs, vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
 
@@ -34,7 +34,7 @@ NC-Serien-VMs werden mit der NVIDIA-Grafikkarte [Tesla K80](http://images.nvidia
 
 1 GPU = halbe K80-Karte
 
-* RDMA-fähig
+*RDMA-fähig
 
 ## <a name="ncv2-series"></a>NCv2-Serie
 
@@ -53,7 +53,7 @@ NCv2-Serien-VMs werden mit [NVIDIA Tesla P100](http://images.nvidia.com/content/
 
 Eine GPU entspricht einer P100-Karte.
 
-* RDMA-fähig
+*RDMA-fähig
 
 ## <a name="ncv3-series"></a>NCv3-Serie
 
@@ -72,7 +72,7 @@ NCv3-Serien-VMs werden mit [NVIDIA Tesla V100](http://www.nvidia.com/content/PDF
 
 Eine GPU entspricht einer V100-Karte.
 
-* RDMA-fähig
+*RDMA-fähig
 
 ## <a name="nd-series"></a>ND-Serie
 
@@ -91,18 +91,20 @@ Die virtuellen Computer der ND-Serie sind eine neue Ergänzung der GPU-Familie u
 
 Eine GPU entspricht einer P40-Karte.
 
-* RDMA-fähig
+*RDMA-fähig
 
 ## <a name="nv-series"></a>NV-Serie
 
-Die NV-Serie nutzt NVIDIA-GPUs vom Typ [Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) sowie NVIDIA GRID-Technologie und ermöglicht die Verwendung beschleunigter Desktopanwendungen und virtueller Desktops, mit denen Kunden ihre Daten oder Simulationen visualisieren können. Benutzer können ihre grafikintensiven Workflows mit den NV-Instanzen visualisieren, um überragende Grafikfunktionen zu erhalten, und darüber hinaus Workloads mit einfacher Genauigkeit ausführen (beispielsweise Codierung und Rendering). 
+Die virtuellen Computer der NV-Serie nutzen NVIDIA-GPUs vom Typ [Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) sowie NVIDIA GRID-Technologie und ermöglichen die Verwendung beschleunigter Desktopanwendungen und virtueller Desktops, mit denen Kunden ihre Daten oder Simulationen visualisieren können. Benutzer können ihre grafikintensiven Workflows mit den NV-Instanzen visualisieren, um überragende Grafikfunktionen zu erhalten, und darüber hinaus Workloads mit einfacher Genauigkeit ausführen (beispielsweise Codierung und Rendering). 
 
-| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | GPU | Max. Anzahl Datenträger | Maximale Anzahl NICs |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6 |6 |56 |380 | 1 | 24 | 1 |
-| Standard_NV12 |12 |112 |680 | 2 | 48 | 2 |
-| Standard_NV24 |24 |224 |1.440 | 4 | 64 | 4 |
+Alle GPUs in NV-Instanzen beinhalten eine GRID-Lizenz. Diese Lizenz bietet Ihnen die erforderliche Flexibilität für die Verwendung einer NV-Instanz als virtuelle Arbeitsstation für einen einzelnen Benutzer. Außerdem besteht für ein Szenario mit einer virtuellen Anwendung die Möglichkeit, dass 25 Benutzer gleichzeitig eine Verbindung mit dem virtuellen Computer herstellen.
+
+| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | GPU | Max. Anzahl Datenträger | Maximale Anzahl NICs | Virtuelle Arbeitsstationen | Virtuelle Anwendungen | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NV6 |6 |56 |380 | 1 | 24 | 1 | 1 | 25 |
+| Standard_NV12 |12 |112 |680 | 2 | 48 | 2 | 2 | 50 |
+| Standard_NV24 |24 |224 |1.440 | 4 | 64 | 4 | 4 | 100 |
 
 1 GPU = halbe M60-Karte
 
-
+ 

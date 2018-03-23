@@ -1,11 +1,11 @@
 ---
-title: "Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Azure Media Services | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie Azure Media Services verwenden können, um PlayReady- und/oder Widevine-Lizenzen und AES-Schlüssel zu übermitteln, aber die restlichen Aufgaben (Codierung, Verschlüsselung, Streaming) mithilfe Ihrer lokalen Server auszuführen."
+title: Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Azure Media Services | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie Azure Media Services verwenden können, um PlayReady- und/oder Widevine-Lizenzen und AES-Schlüssel zu übermitteln, aber die restlichen Aufgaben (Codierung, Verschlüsselung, Streaming) mithilfe Ihrer lokalen Server auszuführen.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 8546c2c1-430b-4254-a88d-4436a83f9192
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/10/2017
 ms.author: juliako
 ms.openlocfilehash: 0f934cc572409462ca1a35ff3cce49be2f82a9bd
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Azure Media Services
 Azure Media Services ermöglicht Ihnen das Erfassen, Codieren, Hinzufügen von Inhaltsschutz und Streamen Ihrer Inhalte. Weitere Informationen finden Sie unter [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-playready-widevine.md). Manche Kunden möchten Media Services nur zum Übermitteln von Lizenzen und/oder Schlüsseln verwenden und das Codieren, Verschlüsseln und Streamen mithilfe eigener, lokaler Server erledigen. Dieser Artikel beschreibt, wie Sie mit Media Services PlayReady- und/oder Widevine-Lizenzen bereitstellen und die restlichen Aufgaben auf Ihren lokalen Servern ausführen können. 

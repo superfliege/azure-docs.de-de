@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: a1b3517ddae732ffdfb6653507c43348ec1455ad
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7724bc1392a65d7628b97142cd8801acf7f5448f
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
-#<a name="active-directory-b2c-documentation"></a>Active Directory B2C-Dokumentation
+# <a name="active-directory-b2c-documentation"></a>Active Directory B2C-Dokumentation
 
 Hier erfahren Sie, wie Sie mithilfe von Active Directory B2C eine umfassende Kundenidentitätsverwaltung in der Cloud einrichten und verwalten. Anhand von Tutorials, Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie kundenorientierte Web-Apps und mobile Apps mit einer sicheren Anmeldung schützen.
 

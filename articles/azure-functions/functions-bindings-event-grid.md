@@ -1,13 +1,13 @@
 ---
-title: "Event Grid-Trigger für Azure Functions"
+title: Event Grid-Trigger für Azure Functions
 description: Behandlung von Event Grid-Ereignissen in Azure Functions.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 2a6fe85c2c3d6d4f44dc197db6c28ebbc2b1d431
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a1ffd9311f6ff171502efe64557463abc49ad636
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-Trigger für Azure Functions
 
@@ -33,6 +33,16 @@ Bei Bedarf können Sie einen HTTP-Trigger zur Behandlung von Event Grid-Ereignis
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
+## <a name="packages"></a>Pakete
+
+Der Event Grid-Trigger wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension).
+
+Das Paket wird zum [Bereitstellen der C#-Klassenbibliothek](functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code) und [Registrieren der Functions v2-Bindungserweiterung](functions-triggers-bindings.md#local-development-azure-functions-core-tools) verwendet.
+
+<!--
+If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` type instead of `JObject`, install the [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) package.
+-->
+
 ## <a name="example"></a>Beispiel
 
 Siehe das jeweilige sprachspezifische Beispiel für einen Event Grid-Trigger:
@@ -45,24 +55,58 @@ Ein Beispiel für einen HTTP-Trigger finden Sie unter [Verwenden eines HTTP-Trig
 
 ### <a name="c-example"></a>C#-Beispiel
 
-Im folgenden Beispiel ist eine [C#-Funktion](functions-dotnet-class-library.md) dargestellt, mit der einige der Felder protokolliert werden, die für alle Ereignisse und alle ereignisspezifischen Daten gelten.
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md) für die Bindung an `JObject`:
 
 ```cs
-[FunctionName("EventGridTest")]
-public static void EventGridTest([EventGridTrigger] EventGridEvent eventGridEvent, TraceWriter log)
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace Company.Function
 {
-    log.Info("C# Event Grid function processed a request.");
-    log.Info($"Subject: {eventGridEvent.Subject}");
-    log.Info($"Time: {eventGridEvent.EventTime}");
-    log.Info($"Data: {eventGridEvent.Data.ToString()}");
+    public static class EventGridTriggerCSharp
+    {
+        [FunctionName("EventGridTriggerCSharp")]
+        public static void Run([EventGridTrigger]JObject eventGridEvent, TraceWriter log)
+        {
+            log.Info(eventGridEvent.ToString(Formatting.Indented));
+        }
+    }
 }
 ```
 
-Das Attribut `EventGridTrigger` wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) definiert.
+<!--
+The following example shows a [C# function](functions-dotnet-class-library.md) that binds to `EventGridEvent`:
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+
+namespace Company.Function
+{
+    public static class EventGridTriggerCSharp
+    {
+        [FunctionName("EventGridTest")]
+            public static void EventGridTest([EventGridTrigger] Microsoft.Azure.EventGrid.Models.EventGridEvent eventGridEvent, TraceWriter log)
+        {
+            log.Info("C# Event Grid function processed a request.");
+            log.Info($"Subject: {eventGridEvent.Subject}");
+            log.Info($"Time: {eventGridEvent.EventTime}");
+            log.Info($"Data: {eventGridEvent.Data.ToString()}");
+        }
+    }
+}
+```
+-->
+
+Weitere Informationen finden Sie unter [Pakete](#packages), [Attribute](#attributes), [Konfiguration](#configuration) und [Verwendung](#usage).
 
 ### <a name="c-script-example"></a>C#-Skriptbeispiel
 
-Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Mit der Funktion werden einige der Felder protokolliert, die für alle Ereignisse und alle ereignisspezifischen Daten gelten.
+Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -79,12 +123,30 @@ Bindungsdaten in der Datei *function.json*:
 }
 ```
 
-Der C#-Skriptcode sieht wie folgt aus:
+C#-Skriptcode für die Bindung an `JObject`:
+
+```cs
+#r "Newtonsoft.Json"
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject eventGridEvent, TraceWriter log)
+{
+    log.Info(eventGridEvent.ToString(Formatting.Indented));
+}
+```
+
+<!--
+Here's C# script code that binds to `EventGridEvent`:
 
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.Azure.WebJobs.Extensions.EventGrid"
+#r "Microsoft.Azure.EventGrid"
+
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+Using Microsoft.Azure.EventGrid.Models;
 
 public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
 {
@@ -94,10 +156,13 @@ public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
     log.Info($"Data: {eventGridEvent.Data.ToString()}");
 }
 ```
+-->
+
+Weitere Informationen finden Sie unter [Pakete](#packages), [Attribute](#attributes), [Konfiguration](#configuration) und [Verwendung](#usage).
 
 ### <a name="javascript-example"></a>JavaScript-Beispiel
 
-Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Mit der Funktion werden einige der Felder protokolliert, die für alle Ereignisse und alle ereignisspezifischen Daten gelten.
+Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -128,13 +193,13 @@ module.exports = function (context, eventGridEvent) {
      
 ## <a name="attributes"></a>Attribute
 
-Verwenden Sie in [C#-Bibliotheken](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) definierte [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs)-Attribut.
+In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) verwenden Sie das [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs)-Attribut.
 
 Dies ist ein `EventGridTrigger`-Attribut in einer Methodensignatur:
 
 ```csharp
 [FunctionName("EventGridTest")]
-public static void EventGridTest([EventGridTrigger] EventGridEvent eventGridEvent, TraceWriter log)
+public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, TraceWriter log)
 {
     ...
 }
@@ -154,7 +219,11 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="usage"></a>Verwendung
 
-Deklarieren Sie bei C#- und F#-Funktionen den Typ der Triggereingabe als `EventGridEvent` oder als benutzerdefinierten Typ. Bei einem benutzerdefinierten Typ wird in der Functions-Runtime versucht, den Ereignis-JSON-Code zu analysieren, um die Objekteigenschaften festzulegen.
+In C#- und F#-Funktionen können Sie die folgenden Parametertypen für den Event Grid-Trigger verwenden:
+
+* `JObject`
+* `string`
+* `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` definiert Eigenschaften für die Felder, die für alle Ereignistypen gelten. **Dieser Typ ist veraltet**, seine Ersetzung wurde jedoch noch nicht in NuGet veröffentlicht.
 
 Bei JavaScript-Funktionen enthält der durch die `name`-Eigenschaft in *function.json* benannte Parameter einen Verweis auf das Ereignisobjekt.
 
@@ -315,7 +384,7 @@ Verwenden Sie ein Tool wie z.B. [Postman](https://www.getpostman.com/) oder [cUR
 * Stellen Sie die Anforderung mithilfe des folgenden Musters für die URL der Event Grid-Triggerfunktion bereit:
 
 ```
-http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={methodname}
+http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
 
 Der `functionName`-Parameter muss der im `FunctionName`-Attribut angegebene Name sein.
@@ -376,7 +445,7 @@ Die ngrok-URL erhält in Event Grid keine spezielle Behandlung, daher muss die F
 Erstellen Sie entsprechend dem folgenden Muster ein Event Grid-Abonnement des Abonnementtyps, der getestet werden soll, und legen Sie für das Abonnement Ihren ngrok-Endpunkt fest:
 
 ```
-https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={methodname}
+https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
 
 Der `functionName`-Parameter muss der im `FunctionName`-Attribut angegebene Name sein.

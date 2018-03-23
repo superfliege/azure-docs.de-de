@@ -1,29 +1,29 @@
 ---
-title: "Schützen personenbezogener Daten mit der Identitäts- und Zugriffssteuerung von Azure | Microsoft-Dokumentation"
-description: "Verwenden der Identitäts- und Zugriffssteuerung von Azure zum Schützen personenbezogener Daten"
+title: Schützen personenbezogener Daten mit der Identitäts- und Zugriffssteuerung von Azure | Microsoft-Dokumentation
+description: Die Identitäts- und Zugriffssteuerung von Azure hilft Ihnen beim Schützen personenbezogener Daten und kann zur Einhaltung der Datenschutz-Grundverordnung (DSGVO) beitragen.
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/13/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: e6de9526a1a72cfc81caca51207e000f8b3673cc
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.custom: ''
+ms.openlocfilehash: fd3beb57cda4993f922fb935263b0e962b38da6a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory und Multi-Factor Authentication: Schützen personenbezogener Daten mit der Identitäts- und Zugriffssteuerung
 
-Dieser Artikel enthält Informationen und Verfahren zum Schützen personenbezogener Daten mithilfe der Sicherheitsfunktionen und -dienste von Azure Active Directory und Multi-Factor Authentication.
+Dieser Artikel enthält Informationen und Verfahren zum Schützen personenbezogener Daten mithilfe der Sicherheitsfunktionen und -dienste von Azure Active Directory und Multi-Factor Authentication. Die Informationen in diesem Artikel können Ihnen bei der Einhaltung der Datenschutz-Grundverordnung (DSGVO) behilflich sein.
 
 ## <a name="scenario"></a>Szenario
 
@@ -115,9 +115,9 @@ Anweisungen zum Verwalten von Azure RBAC mit PowerShell finden Sie unter [Verwal
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
-[Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/) (MFA) ist eine Lösung zur Überprüfung in zwei Schritten, die zum Schutz des Zugriffs auf Daten und Anwendungen beiträgt und gleichzeitig ein einfaches Anmeldeverfahren für Benutzer bietet. Sie bietet eine sichere Authentifizierung mit verschiedenen Überprüfungsmethoden, einschließlich Telefonanruf, SMS oder mobile App.
+[Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/) (MFA) ist eine Lösung zur zweistufigen Überprüfung, die zum Schutz des Zugriffs auf Daten und Anwendungen beiträgt und gleichzeitig ein einfaches Anmeldeverfahren für Benutzer bietet. Sie bietet eine sichere Authentifizierung mit verschiedenen Überprüfungsmethoden, einschließlich Telefonanruf, SMS oder mobile App.
 
-Zur Bereitstellung von MFA in der Azure-Cloud müssen Sie zunächst MFA und dann die Überprüfung in zwei Schritten für Benutzer aktivieren.
+Zur Bereitstellung von MFA in der Azure-Cloud müssen Sie zunächst MFA und dann die zweistufige Überprüfung für Benutzer aktivieren.
 
 #### <a name="how-do-i-enable-azure-to-use-mfa"></a>Wie aktiviere ich in Azure die Verwendung von MFA?
 
@@ -135,19 +135,19 @@ Wenn Sie derzeit über keine Lizenzen verfügen, müssen Sie den am besten geeig
 
     ![](media/protect-personal-data-identity-access-controls/mfa-server-settings.png)
 
-4. Klicken Sie unten auf der Seite auf **Speichern**
+4. Klicken Sie unten auf der Seite auf **Speichern**.
 
 In diesem Fenster haben Sie auch die Möglichkeit, den MFA-Server herunterzuladen. Im Artikel [Erste Schritte mit Azure Multi-Factor Authentication-Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md) finden Sie weitere ausführliche Informationen zum Festlegen der Größe und Planen einer Bereitstellung.
 
 Weitere Anweisungen zum Verwalten Ihres Multi-Factor Authentication-Anbieters finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication-Anbietern](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider).
 
-#### <a name="how-do-i-turn-on-two-step-verification-for-users"></a>Wie aktiviere ich die Überprüfung in zwei Schritten für Benutzer?
+#### <a name="how-do-i-turn-on-two-step-verification-for-users"></a>Wie aktiviere ich die zweistufige Überprüfung für Benutzer?
 
-Sie können die Überprüfung in zwei Schritten für alle Anmeldungen erzwingen oder Richtlinien für bedingten Zugriff erstellen, um die Überprüfung in zwei Schritten nur dann vorauszusetzen, wenn bestimmte Bedingungen gelten.
+Sie können die zweistufige Überprüfung für alle Anmeldungen erzwingen oder Richtlinien für bedingten Zugriff erstellen, um die zweistufige Überprüfung nur dann vorauszusetzen, wenn bestimmte Bedingungen gelten.
 
-Die Aktivierung von Azure MFA durch Ändern der Benutzerstatus ist der herkömmliche Ansatz, um die Überprüfung in zwei Schritten zu erzwingen. Die Anforderung ist für alle aktivierten Benutzer identisch: Jedes Mal, wenn sie sich anmelden, müssen sie die Überprüfung in zwei Schritten ausführen. Durch die Aktivierung eines Benutzers werden alle Richtlinien für bedingten Zugriff überschrieben, die diesen Benutzer betreffen könnten.
+Die Aktivierung von Azure MFA durch Ändern der Benutzerstatus ist der herkömmliche Ansatz, um die zweistufige Überprüfung zu erzwingen. Die Anforderung ist für alle aktivierten Benutzer identisch: Jedes Mal, wenn sie sich anmelden, müssen sie die zweistufige Überprüfung ausführen. Durch die Aktivierung eines Benutzers werden alle Richtlinien für bedingten Zugriff überschrieben, die diesen Benutzer betreffen könnten.
 
-Die Aktivierung von Azure MFA mit einer Richtlinie für bedingten Zugriff ist ein flexiblerer Ansatz, um die Überprüfung in zwei Schritten zu erzwingen. Sie können Richtlinien für bedingten Zugriff erstellen, die sowohl für Gruppen als auch für einzelne Benutzer gelten. Gruppen, bei denen ein hohes Risiko besteht, können umfassendere Einschränkungen zugewiesen werden. Alternativ kann die Überprüfung in zwei Schritten nur für Cloud-Apps mit hohem Risiko erzwungen und für Apps mit niedrigem Risiko übersprungen werden. Der bedingte Zugriff ist jedoch ein kostenpflichtiges Feature von Azure Active Directory.
+Die Aktivierung von Azure MFA mit einer Richtlinie für bedingten Zugriff ist ein flexiblerer Ansatz, um die zweistufige Überprüfung zu erzwingen. Sie können Richtlinien für bedingten Zugriff erstellen, die sowohl für Gruppen als auch für einzelne Benutzer gelten. Gruppen, bei denen ein hohes Risiko besteht, können umfassendere Einschränkungen zugewiesen werden. Alternativ kann die zweistufige Überprüfung nur für Cloud-Apps mit hohem Risiko erzwungen und für Apps mit niedrigem Risiko übersprungen werden. Der bedingte Zugriff ist jedoch ein kostenpflichtiges Feature von Azure Active Directory.
 
 Führen Sie folgende Schritte aus, um MFA durch Ändern des Benutzerstatus zu aktivieren:
 

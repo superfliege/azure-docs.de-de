@@ -1,25 +1,24 @@
 ---
-title: Was sind Data Warehouse-Einheiten (DWUs, cDWUs) in Azure SQL Data Warehouse? | Microsoft Docs
-description: "Funktionen zur horizontalen Leistungshochskalierung in Azure SQL Data Warehouse. Führen Sie eine horizontale Skalierung durch, indem Sie DWUs/cDWUs anpassen oder Computeressourcen anhalten und fortsetzen, um Kosten zu sparen."
+title: Was sind Data Warehouse-Einheiten (DWUs, cDWUs) in Azure SQL Data Warehouse? | Microsoft-Dokumentation
+description: Funktionen zur horizontalen Leistungshochskalierung in Azure SQL Data Warehouse. Führen Sie eine horizontale Skalierung durch, indem Sie DWUs/cDWUs anpassen oder Computeressourcen anhalten und fortsetzen, um Kosten zu sparen.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
-ms.assetid: e13a82b0-abfe-429f-ac3c-f2b6789a70c6
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 11/10/2017
+ms.date: 03/15/2018
 ms.author: jrj;barbkess
-ms.openlocfilehash: 02998c48dcab5d3ed191b168665c9e47bbfbd232
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: f634bdde2c71f7563df11f686d7ce217311df81d
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse-Einheiten (DWUs) und Compute Data Warehouse-Einheiten (cDWUs)
 Erläutert Data Warehouse-Einheiten (DWUs) und Compute Data Warehouse-Einheiten (cDWUS) für Azure SQL Data Warehouse. Enthält Empfehlungen zum Auswählen der idealen Anzahl von Data Warehouse-Einheiten sowie zum Ändern der Anzahl. 
@@ -81,7 +80,7 @@ So zeigen Sie die aktuellen DWU-Einstellungen an:
 
 1. Öffnen Sie den Objekt-Explorer von SQL Server in Visual Studio.
 2. Stellen Sie eine Verbindung mit der Masterdatenbank mit dem logischen SQL-Datenbankserver her.
-3. Treffen Sie eine Auswahl aus der dynamischen Verwaltungssicht „sys.database_service_objectives“. Beispiel: 
+3. Treffen Sie eine Auswahl aus der dynamischen Verwaltungssicht „sys.database_service_objectives“. Beispiel:  
 
 ```sql
 SELECT  db.name [Database]
@@ -201,7 +200,7 @@ Informationen zu zusätzlichen zentralen Leistungskonzepten finden Sie in den fo
 [Check database state with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#check-database-state
 [Check database state with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#check-database-state
 
-[Workload and concurrency management]: ./sql-data-warehouse-develop-concurrency.md
+[Workload and concurrency management]: ./resource-classes-for-workload-management.md
 [Table design overview]: ./sql-data-warehouse-tables-overview.md
 [Table distribution]: ./sql-data-warehouse-tables-distribute.md
 [Table indexing]: ./sql-data-warehouse-tables-index.md

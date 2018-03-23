@@ -1,25 +1,25 @@
 ---
 title: Anbieten von Diensten in Azure Stack | Microsoft-Dokumentation
-description: "Als Cloudbetreiber können Sie Dienste für Ihre Benutzer anbieten."
+description: Als Cloudbetreiber können Sie Dienste für Ihre Benutzer anbieten.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 03/05/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 7e2b98391bab5806b59d8a16ec7dc24295a0d224
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.reviewer: ''
+ms.openlocfilehash: 5b117a9b174f5d2419ff596cc90436e4b9d21645
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Übersicht über das Anbieten von Diensten in Azure Stack
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/02/2018
 
 [Microsoft Azure Stack](azure-stack-poc.md) ist eine Hybrid-Cloudplattform, die das Bereitstellen von Diensten aus Ihrem Datencenter ermöglicht. Als Dienstanbieter können Sie Dienste für Ihre Mandanten anbieten. Innerhalb eines Unternehmens oder einer Behörde ist es möglich, den Mitarbeitern lokale Dienste anzubieten. Die Dienste, die Sie bereitstellen können umfassen u.a.:
 
-- PaaS-Dienste (Platform-as-a-Service) wie App Services, Mobile Apps, API-Apps, API-Funktionen, SQL, MySQL.
+- PaaS-Dienste (Platform-as-a-Service) wie App Services, API-Apps, API-Funktionen, SQL, MySQL.
 
 Sie können auch Dienste kombinieren, um komplexe Lösungen für verschiedene Benutzer zu integrieren und zu erstellen.
 

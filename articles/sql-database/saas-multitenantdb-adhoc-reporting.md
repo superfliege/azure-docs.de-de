@@ -1,26 +1,23 @@
 ---
-title: "Ausführen von Ad-hoc-Berichterstellungsabfragen für mehrere Azure SQL-Datenbank-Instanzen | Microsoft-Dokumentation"
-description: "Ausführen von Ad-hoc-Berichterstellungsabfragen für mehrere SQL-Datenbanken in dem Beispiel einer mehrinstanzenfähigen App"
+title: Ausführen von Ad-hoc-Berichterstellungsabfragen für mehrere Azure SQL-Datenbank-Instanzen | Microsoft-Dokumentation
+description: Ausführen von Ad-hoc-Berichterstellungsabfragen für mehrere SQL-Datenbanken in dem Beispiel einer mehrinstanzenfähigen App
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: Inactive
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: ''
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: AyoOlubeko
-ms.openlocfilehash: c0ed3eb344ea8ec7e2d3e86125d60c8cc28f723d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: d33b95cf4dc05f4eb9f79509cda56e8ab51b7701
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Ausführen von Ad-hoc-Analyseabfragen für mehrere Azure SQL-Datenbanken
 
@@ -37,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Die App Wingtip Tickets SaaS Multi-tenant Database wird bereitgestellt. Unter [Bereitstellen und Kennenlernen der App Wingtip Tickets SaaS Multi-tenant Database](saas-multitenantdb-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
+* Die App „Wingtip Tickets SaaS Multi-tenant Database“ wurde bereitgestellt. Unter [Bereitstellen und Kennenlernen der App „Wingtip Tickets SaaS Multi-tenant Database“](saas-multitenantdb-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
 * Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * SQL Server Management Studio (SSMS) muss installiert sein. Sie können SSMS unter [Herunterladen von SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) herunterladen und installieren.
 
@@ -154,7 +151,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Ausführen verteilter Abfragen für alle Mandantendatenbanken
 > * Stellen Sie eine Ad-hoc-Berichtsdatenbank bereit, und fügen Sie Schemas hinzu, um verteilte Abfragen auszuführen.
 
-Probieren Sie das [Tutorial zu Mandantenanalysen](saas-multitenantdb-tenant-analytics.md), um sich mit dem Extrahieren von Daten in eine separate Analysedatenbank für komplexere Analyseverarbeitungen vertraut zu machen.
+Probieren Sie das [Tutorial zu Mandantenanalysen](saas-multitenantdb-tenant-analytics.md) aus, um sich mit dem Extrahieren von Daten in eine separate Analysedatenbank für komplexere Analyseverarbeitungen vertraut zu machen.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

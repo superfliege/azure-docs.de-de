@@ -1,11 +1,11 @@
 ---
-title: "Probleme beim Anmelden bei einer nicht im Katalog enthaltenen Anwendung, die für einmaliges Anmelden im Verbund konfiguriert ist | Microsoft-Dokumentation"
-description: "Leitfaden zu den möglichen Problemen beim Anmelden bei einer Anwendung, die für SAML-basiertes einmaliges Anmelden im Verbund mit Azure AD konfiguriert wurde"
+title: Probleme beim Anmelden bei einer nicht im Katalog enthaltenen Anwendung, die für einmaliges Anmelden im Verbund konfiguriert ist | Microsoft-Dokumentation
+description: Leitfaden zu den möglichen Problemen beim Anmelden bei einer Anwendung, die für SAML-basiertes einmaliges Anmelden im Verbund mit Azure AD konfiguriert wurde
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: cfd4e478850783983caa3042cbbb2b096a576292
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Probleme beim Anmelden bei einer nicht im Katalog enthaltenen Anwendung, die für einmaliges Anmelden im Verbund konfiguriert ist
 
@@ -31,7 +31,7 @@ Um das Problem zu beheben, müssen Sie die Anwendungskonfiguration in Azure AD w
 
 ## <a name="application-not-found-in-directory"></a>Die Anwendung wurde im Verzeichnis nicht gefunden.
 
-*Fehler AADSTS70001: Die Anwendung mit dem Bezeichner „https://contoso.com“ wurde im Verzeichnis nicht gefunden.*
+*Fehler AADSTS70001: Die Anwendung mit dem Bezeichner „https://contoso.com“ wurde im Verzeichnis nicht gefunden*.
 
 **Mögliche Ursache**
 

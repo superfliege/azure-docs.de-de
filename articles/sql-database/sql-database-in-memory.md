@@ -2,10 +2,10 @@
 title: In-Memory-Technologien von Azure SQL-Datenbank | Microsoft-Dokumentation
 description: In-Memory-Technologien von Azure SQL-Datenbank verbessern die Leistung von Transaktions- und Analyseworkloads erheblich.
 services: sql-database
-documentationCenter: 
+documentationCenter: ''
 author: jodebrui
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 250ef341-90e5-492f-b075-b4750d237c05
 ms.service: sql-database
 ms.custom: develop databases
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jodebrui
-ms.openlocfilehash: 23b313a473b93ba0eab7fc4cf97a5d26bfa31505
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 98b4a0b4bcb271a68880359b1bb04655cae8d003
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in SQL-Datenbank
 
@@ -30,7 +30,7 @@ Hier sind zwei Beispiele dafür, wie In-Memory-OLTP geholfen hat, die Leistung d
 - Mithilfe von In-Memory-OLTP [konnten Quorum Business Solutions ihre Workload verdoppeln und ihre DTUs um 70 % verbessern](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
     - DTU bedeutet *Database Throughput Unit* (Datenbankdurchsatzeinheit) und schließt eine Messung der Ressourcennutzung ein.
 - Das folgende Video veranschaulicht anhand einer Beispielworkload eine erhebliche Verbesserung der Ressourcennutzung: [In-Memory-OLTP in Azure SQL-Datenbank](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
-    - Weitere Informationen finden Sie im Blogbeitrag [In-Memory OLTP in Azure SQL Database Blog Post](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) (In-Memory OLTP in Azure SQL-Datenbank).
+    - Weitere Informationen finden Sie im Blogbeitrag [In-Memory OLTP in Azure SQL Database Blog Post](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) (In-Memory-OLTP in Azure SQL-Datenbank).
 
 In-Memory-Technologien sind in allen Datenbanken des Tarifs „Premium“, einschließlich Datenbanken im Premium-Tarif für Pools für elastische Datenbanken, verfügbar.
 
@@ -164,7 +164,7 @@ Eine einfachere, aber visuell ansprechendere Demo der Leistung von In-Memory-OLT
 
 3. Kopieren Sie das [In-Memory OLTP Transact-SQL-Skript](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) in die Zwischenablage. Das T-SQL-Skript erstellt die erforderlichen In-Memory-Objekte in der in Schritt 1 erstellten Beispieldatenbank „AdventureWorksLT“.
 
-4. Fügen Sie das T-SQL-Skript in SSMS ein, und führen Sie es aus. Unerlässlich ist die `MEMORY_OPTIMIZED = ON`-Klausel in den CREATE TABLE-Anweisungen. Beispiel:
+4. Fügen Sie das T-SQL-Skript in SSMS ein, und führen Sie es aus. Unerlässlich ist die `MEMORY_OPTIMIZED = ON`-Klausel in den CREATE TABLE-Anweisungen. Beispiel: 
 
 
 ```
@@ -292,7 +292,7 @@ Im Idealfall planen Sie die Ausführung von „ostress.exe“ auf einer Azure-VM
 
 Installieren Sie auf der VM oder dem gewählten Host die RML-Hilfsprogramme (Replay Markup Language). Dazu zählt auch „ostress.exe“.
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter 
 - Diskussion zu „ostress.exe“ unter [Beispieldatenbank für In-Memory-OLTP](http://msdn.microsoft.com/library/mt465764.aspx).
 - [Beispieldatenbank für In-Memory-OLTP](http://msdn.microsoft.com/library/mt465764.aspx).
 - [Blog zur Installation von „ostress.exe“](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).

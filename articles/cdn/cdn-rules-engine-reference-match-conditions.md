@@ -1,11 +1,11 @@
 ---
-title: "Übereinstimmungsbedingungen der Azure CDN-Regel-Engine | Microsoft-Dokumentation"
-description: "Regel zu Übereinstimmungsbedingungen für die Azure Content Delivery Network-Regel-Engine."
+title: Übereinstimmungsbedingungen der Azure CDN-Regel-Engine | Microsoft-Dokumentation
+description: Regel zu Übereinstimmungsbedingungen für die Azure Content Delivery Network-Regel-Engine.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -737,7 +737,7 @@ Wichtige Informationen:
     
 - Sie können mehrere URL-Pfade angeben, indem Sie sie durch ein einzelnes Leerzeichen voneinander trennen.
 
-   Beispiel: /marketing/asset.* /sales/*.htm
+   Beispiel: /marketing/asset.\* /sales/\*.htm
 
 - Abfragezeichenfolgen in der URL werden ignoriert.
     
@@ -753,11 +753,11 @@ Bei den Beispielkonfigurationen in der folgenden Tabelle wird vorausgesetzt, das
 
 Wert                   | Relativ zu    | Ergebnis 
 ------------------------|----------------|-------
-*/test.html */test.php  | Stamm oder Ursprung | Für dieses Muster ergeben sich in beliebigen Ordnern Übereinstimmungen für Anforderungen von Objekten mit dem Namen „test.html“ oder „test.php“.
+\*/test.html \*/test.php  | Stamm oder Ursprung | Für dieses Muster ergeben sich in beliebigen Ordnern Übereinstimmungen für Anforderungen von Objekten mit dem Namen „test.html“ oder „test.php“.
 /80ABCD/origin/text/*   | Stamm           | Für dieses Muster ergibt sich eine Übereinstimmung, wenn das angeforderte Objekt die folgenden Kriterien erfüllt: <br />- Es muss sich an einem Kundenursprungsort mit dem Namen „origin“ befinden. <br />- Der relative Pfad muss mit einem Ordner mit dem Namen „text“ beginnen. Dies bedeutet, dass sich das angeforderte Objekt entweder im Ordner „text“ oder in einem der rekursiven Unterordner befinden kann.
 */css/* */js/*          | Stamm oder Ursprung | Für dieses Muster ergeben sich Übereinstimmungen für alle CDN- oder Edge-CNAME-URLs, die den Ordner „css“ oder „js“ enthalten.
 *.jpg *.gif *.png       | Stamm oder Ursprung | Für dieses Muster ergeben sich Übereinstimmungen für alle CDN- oder Edge-CNAME-URLs, die auf „.jpg“, „.gif“ oder „.png“ enden. Eine alternative Möglichkeit zum Angeben dieses Musters ist die Verwendung der [Übereinstimmungsbedingung „URL Path Extension“](#url-path-extension).
-/images/* /media/*      | Origin         | Für dieses Muster ergibt sich eine Übereinstimmung für CDN- oder Edge-CNAME-URLs, deren relativer Pfad mit dem Ordner „images“ oder „media“ beginnt. <br />- CDN-URL: http:\//wpc.0001.&lt;Domäne&gt;/800001/myorigin/images/sales/event1.png<br />- Beispiel für Edge-CNAME-URL: http:\//cdn.mydomain.com/images/sales/event1.png
+/images/\* /media/\*      | Origin         | Für dieses Muster ergibt sich eine Übereinstimmung für CDN- oder Edge-CNAME-URLs, deren relativer Pfad mit dem Ordner „images“ oder „media“ beginnt. <br />- CDN-URL: http:\//wpc.0001.&lt;Domäne&gt;/800001/myorigin/images/sales/event1.png<br />- Beispiel für Edge-CNAME-URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
 [Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
 

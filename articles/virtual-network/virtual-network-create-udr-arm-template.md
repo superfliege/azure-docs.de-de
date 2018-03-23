@@ -1,11 +1,11 @@
 ---
-title: "Steuern des Routings und von virtuellen Geräten in Azure – Vorlage | Microsoft Docs"
-description: "Erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage das Routing und virtuelle Geräte steuern."
+title: Steuern des Routings und von virtuellen Geräten in Azure – Vorlage | Microsoft Docs
+description: Erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage das Routing und virtuelle Geräte steuern.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 832c7831-d0e9-449b-b39c-9a09ba051531
 ms.service: virtual-network
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-ms.openlocfilehash: b2c962d5449d18b51cfd84b0e1992695b54d1c48
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a00b908f9811822f262d2c6113e3ff5fc364b1b4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>Erstellen benutzerdefinierter Routen (UDR) mit einer Vorlage
 
 > [!div class="op_single_selector"]
-> * [PowerShell](virtual-network-create-udr-arm-ps.md)
-> * [Azure-Befehlszeilenschnittstelle](virtual-network-create-udr-arm-cli.md)
+> * [PowerShell](tutorial-create-route-table-powershell.md)
+> * [Azure-CLI](tutorial-create-route-table-cli.md)
 > * [Vorlage](virtual-network-create-udr-arm-template.md)
 > * [PowerShell (klassisch)](virtual-network-create-udr-classic-ps.md)
 > * [CLI (klassisch)](virtual-network-create-udr-classic-cli.md)
@@ -75,7 +75,7 @@ Um die UDR dem Front-End-Subnetz zuzuordnen, müssen Sie die Subnetzdefinition i
 
 Beachten Sie, dass für die Back-End-NSG und das Back-End-Subnetz in der Vorlage die gleichen Schritte ausgeführt werden.
 
-Außerdem müssen Sie sicherstellen, dass für den virtuellen Computer **FW1** die IP-Weiterleitungseigenschaft auf der Netzwerkschnittstelle aktiviert ist, die zum Empfangen und Weiterleiten von Paketen verwendet wird. Im Abschnitt unten wird die Definition für die Netzwerkschnittstelle für FW1 in der Datei „azuredeploy-nsg-udr.json“ basierend auf dem obigen Szenario gezeigt.
+Außerdem müssen Sie sicherstellen, dass für den virtuellen Computer **FW1** die IP-Weiterleitungseigenschaft auf der Netzwerkschnittstelle aktiviert ist, die zum Empfangen und Weiterleiten von Paketen verwendet wird. Im folgenden Abschnitt wird die Definition für die Netzwerkschnittstelle für FW1 in der Datei „azuredeploy-nsg-udr.json“ basierend auf dem Szenario veranschaulicht.
 
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/networkInterfaces",
@@ -114,7 +114,7 @@ Außerdem müssen Sie sicherstellen, dass für den virtuellen Computer **FW1** d
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>Bereitstellen der Vorlage per Klick
 In der verfügbaren Beispielvorlage im öffentlichen Repository wird eine Parameterdatei verwendet, die die Standardwerte zum Generieren des oben beschriebenen Szenarios enthält. Öffnen Sie zum Bereitstellen dieser Vorlage per Klick [diesen Link](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR), klicken Sie auf **In Azure bereitstellen**, ersetzen Sie ggf. die Standardwerte der Parameter, und führen Sie die Schritte im Portal aus.
 
-1. Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) , und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+1. Wenn Sie Azure PowerShell noch nie verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) , und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 2. Führen Sie den folgenden Befehl aus, um eine Ressourcengruppe zu erstellen:
 
     ```powershell
@@ -173,7 +173,7 @@ In der verfügbaren Beispielvorlage im öffentlichen Repository wird eine Parame
 
 ## <a name="deploy-the-template-by-using-the-azure-cli"></a>Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnittstelle
 
-Führen Sie zum Bereitstellen der ARM-Vorlage mithilfe der Azure-Befehlszeilenschnittstelle die folgenden Schritte aus:
+Führen Sie zum Bereitstellen der Azure Resource Manager-Vorlage mithilfe der Azure-Befehlszeilenschnittstelle die folgenden Schritte aus:
 
 1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 2. Führen Sie den folgenden Befehl aus, um in den Resource Manager-Modus zu wechseln:
@@ -182,11 +182,11 @@ Führen Sie zum Bereitstellen der ARM-Vorlage mithilfe der Azure-Befehlszeilensc
     azure config mode arm
     ```
 
-    Hier ist die erwartete Ausgabe des obigen Befehls:
+    Hier ist die erwartete Ausgabe des vorherigen Befehls angegeben:
 
         info:    New mode is arm
 
-3. Navigieren Sie über Ihren Browser zu **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, kopieren Sie den Inhalt der JSON-Datei, und fügen Sie ihn in eine neue Datei auf Ihrem Computer ein. Für dieses Szenario kopieren Sie die unten angegebenen Werte in eine Datei namens **c:\udr\azuredeploy.parameters.json**.
+3. Navigieren Sie über Ihren Browser zu **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, kopieren Sie den Inhalt der JSON-Datei, und fügen Sie ihn in eine neue Datei auf Ihrem Computer ein. Kopieren Sie für dieses Szenario die folgenden Werte in eine Datei mit dem Namen **c:\udr\azuredeploy.parameters.json**.
 
     ```json
         {

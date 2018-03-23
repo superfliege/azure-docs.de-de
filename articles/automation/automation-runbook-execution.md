@@ -1,24 +1,18 @@
 ---
-title: "Ausführen eines Runbooks in Azure Automation | Microsoft Docs"
-description: "Beschreibt ausführlich, wie ein Runbook in Azure Automation verarbeitet wird."
+title: Ausführen von Runbooks in Azure Automation
+description: Beschreibt ausführlich, wie ein Runbook in Azure Automation verarbeitet wird.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: d10c8ce2-2c0b-4ea7-ba3c-d20e09b2c9ca
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/15/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: a443071aee3e0f845de4387322d2866157a9fe87
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+manager: carmonm
+ms.openlocfilehash: edfd317e7d3f7595f656c6c24ad65f3d87fea14c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 Wenn Sie ein Runbook in Azure Automation starten, wird ein Auftrag erstellt. Ein Auftrag ist eine einzelne Ausführungsinstanz eines Runbooks. Für die Ausführung jedes Auftrags wird ein Azure Automation-Worker zugewiesen. Wenngleich Worker von mehreren Azure-Konten gemeinsam genutzt werden, sind die Aufträge von verschiedenen Automation-Konten voneinander isoliert. Sie können nicht steuern, welcher Worker die Anforderung für Ihren Auftrag verarbeitet. Für ein einzelnes Runbook können mehrere Aufträge gleichzeitig ausgeführt werden.  Die Ausführungsumgebung für Aufträge aus dem gleichen Automation-Konto kann wiederverwendet werden. Wenn Sie die Liste der Runbooks im Azure-Portal anzeigen, wird der Status aller Aufträge aufgelistet, die für jedes Runbook gestartet wurden. Sie können die Liste der Aufträge für jedes Runbook anzeigen, um den Status der einzelnen Aufträge nachzuverfolgen. Eine Beschreibung der verschiedenen Auftragsstatusangaben finden Sie unter [Auftragsstatuswerte](#job-statuses).

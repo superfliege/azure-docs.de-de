@@ -26,8 +26,8 @@ Beispiele für Regionspaare:
 | Primär | Sekundär |
 |:--- |:--- |
 | USA (Westen) |USA (Ost) |
-| Nordeuropa |Westeuropa |
-| Südostasien |Asien (Osten) |
+| Nordeuropa |Europa, Westen |
+| Asien, Südosten |Asien (Osten) |
 
 Sie können die vollständige [Liste von Regionspaaren hier](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)anzeigen.
 
@@ -55,8 +55,8 @@ Die folgende Tabelle bietet einen schnellen Überblick über die Unterschiede zw
 
 | Replikationsstrategie | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Daten werden in mehreren Datencentern repliziert. |Nein |Ja |Ja |Ja |
-| Daten können vom sekundären Standort und vom primären Standort aus gelesen werden. |Nein |Nein |Nein |Ja |
+| Daten werden in mehreren Datencentern repliziert. |Nein  |Ja |Ja |Ja |
+| Daten können vom sekundären Standort und vom primären Standort aus gelesen werden. |Nein  |Nein  |Nein  |Ja |
 | Anzahl von Datenkopien, die auf separaten Knoten aufbewahrt werden. |3 |3 |6 |6 |
 
 Sie erhalten weitere Informationen über [Azure Storage-Replikationsoptionen hier](../articles/storage/common/storage-redundancy.md). Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md).
@@ -75,7 +75,7 @@ Die Preise hängen vom gewählten Speichertyp und der gewünschten Verfügbarkei
 Informationen zu den Preisen für die verschiedenen Speichertypen und Verfügbarkeitsoptionen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/) .
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen
-Eine Verfügbarkeitsgruppe ist eine logische Gruppierung von virtuellen Computern in einem Datencenter, über die Azure erkennen kann, wie Ihre Anwendung erstellt wurde, um für Redundanz und Verfügbarkeit zu sorgen. Es empfiehlt sich, mindestens zwei virtuelle Computer in einer Verfügbarkeitsgruppe zu erstellen, um eine Anwendung mit hoher Verfügbarkeit zu erhalten und die [Azure-SLA von 99,95 Prozent](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Wenn ein einzelner virtuelle Computer [Azure Storage Premium](../articles/virtual-machines/windows/premium-storage.md) verwendet, gilt die Azure-SLA für ungeplante Wartungsereignisse. 
+Eine Verfügbarkeitsgruppe ist eine logische Gruppierung von virtuellen Computern in einem Datencenter, über die Azure erkennen kann, wie Ihre Anwendung erstellt wurde, um für Redundanz und Verfügbarkeit zu sorgen. Es empfiehlt sich, mindestens zwei virtuelle Computer in einer Verfügbarkeitsgruppe zu erstellen, um eine Anwendung mit hoher Verfügbarkeit zu erhalten und die [Azure-SLA von 99,95 Prozent](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Für die Verfügbarkeitsgruppe selbst entstehen keine Kosten. Sie bezahlen nur für die einzelnen VM-Instanzen, die Sie erstellen. Wenn ein einzelner virtuelle Computer [Azure Storage Premium](../articles/virtual-machines/windows/premium-storage.md) verwendet, gilt die Azure-SLA für ungeplante Wartungsereignisse. 
 
 Eine Verfügbarkeitsgruppe besteht aus zwei zusätzlichen Gruppierungen, die vor Hardwareausfällen schützen und die sichere Anwendung von Updates ermöglichen: Fehlerdomänen (FDs) und Updatedomänen (UDs). Erfahren Sie mehr über das Verwalten der Verfügbarkeit von [virtuellen Linux-Computern](../articles/virtual-machines/linux/manage-availability.md) oder [virtuellen Windows-Computern](../articles/virtual-machines/windows/manage-availability.md).
 

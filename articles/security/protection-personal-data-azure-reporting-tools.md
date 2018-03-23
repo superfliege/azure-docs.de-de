@@ -1,29 +1,28 @@
 ---
 title: Dokumentschutz personenbezogener Daten mit Azure-Berichtstools | Microsoft-Dokumentation
-description: "Verwenden von Berichtsdiensten und -technologien von Azure für den Datenschutz personenbezogener Daten."
+description: Verwenden Sie Azure-Berichtsdienste zum Schutz personenbezogener Daten bei Initiativen zur Einhaltung der Datenschutz-Grundverordnung (DSGVO).
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 397161cf2eaea9712fec352a45f5fc49e8da486c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2c677a1dea001c6a414304fbaa683c3787b355b1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Dokumentschutz personenbezogener Daten mit Azure-Berichtstools
 
-In diesem Artikel erfahren Sie, wie mithilfe von Berichtsdiensten und -technologien von Azure der Datenschutz personenbezogener Daten sichergestellt werden kann.
-
+In diesem Artikel erfahren Sie, wie mithilfe von Berichtsdiensten und -technologien von Azure der Datenschutz personenbezogener Daten sichergestellt werden kann. Diese Informationen können zur Einhaltung von Branchenvorschriften oder gesetzlichen Vorschriften wie der Datenschutz-Grundverordnung (DSGVO) verwendet werden.
 ## <a name="scenario"></a>Szenario
 
 Ein großes Kreuzfahrtunternehmen mit Hauptsitz in den USA expandiert und bietet Routen im Mittelmeer, der Adria und der Ostsee sowie zu den Britischen Inseln an. Zu diesem Zweck hat das Unternehmen mehrere kleinere Kreuzfahrtunternehmen in Italien, Deutschland, Dänemark und Großbritannien erworben.

@@ -1,29 +1,29 @@
 ---
-title: "Schützen personenbezogener Daten mit Azure Security Center | Microsoft-Dokumentation"
-description: "Schützen personenbezogener Daten mit Azure Security Center"
+title: Schützen personenbezogener Daten mit Azure Security Center | Microsoft-Dokumentation
+description: Schützen Sie persönliche Daten mit Security Center. Dies kann für die Einhaltung der Datenschutz-Grundverordnung (DSGVO) verwendet werden.
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 3a941389713a4d3dbffbbfe8a717409927d85c6d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 118752a030a1c300306aa3e05571bb9b624a2c20
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-from-breaches-and-attacks-azure-security-center"></a>Schützen personenbezogener Daten vor Sicherheitsverletzungen und Angriffen: Azure Security Center
 
-Dieser Artikel enthält Informationen zur Verwendung von Azure Security Center zum Schützen personenbezogener Daten vor Sicherheitsverletzungen und Angriffen.
+Dieser Artikel enthält Informationen zur Verwendung von Azure Security Center zum Schützen personenbezogener Daten vor Sicherheitsverletzungen und Angriffen. Die hier bereitgestellten Informationen helfen Ihnen bei der Einhaltung der Datenschutz-Grundverordnung (DSGVO).
 
 ## <a name="scenario"></a>Szenario 
 
@@ -84,7 +84,7 @@ Wenn JIT aktiviert ist, sperrt das Security Center durch das Erstellen einer NSG
 
 3. Wählen Sie unter **VMs** die virtuellen Computer aus, die Sie aktivieren möchten. Hierdurch wird der virtuelle Computer mit einem Häkchen markiert. 
 4. Wählen Sie **JIT auf VMs aktivieren** aus.
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
 Dann können Sie die Standardports sehen, deren Aktivierung in ASC für JIT empfohlen wird. Sie können auch einen neuen Port hinzufügen und konfigurieren, für den Sie die Just-In-Time-Lösung aktivieren möchten. Auf der Kachel **JIT-VM-Zugriff** im Security Center wird die Anzahl der für den JIT-Zugriff konfigurierten virtuellen Computer angezeigt. Zudem wird die Anzahl der genehmigten in der letzten Woche vorgenommenen Zugriffsanforderungen angezeigt.
 

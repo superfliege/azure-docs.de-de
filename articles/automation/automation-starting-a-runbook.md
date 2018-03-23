@@ -1,31 +1,25 @@
 ---
-title: Starten eines Runbooks in Azure Automation | Microsoft Docs
-description: "Bietet eine Übersicht über die verschiedenen Methoden, die zum Starten eines Runbooks in Azure Automation verwendet werden können, und stellt Informationen zur Verwendung des Azure-Portals sowie von Windows PowerShell bereit."
+title: Starten eines Runbooks in Azure Automation
+description: Bietet eine Übersicht über die verschiedenen Methoden, die zum Starten eines Runbooks in Azure Automation verwendet werden können, und stellt Informationen zur Verwendung des Azure-Portals sowie von Windows PowerShell bereit.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 6ee756b4-9200-4eb2-9bda-ec156853803b
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/07/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: c6a18bedec6eca5ff25d205bccecc23ecd342744
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+manager: carmonm
+ms.openlocfilehash: 064ba5f73b53681a824b1416243d10ab0e565c44
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Starten eines Runbooks in Azure Automation
 Die folgende Tabelle hilft Ihnen dabei herauszufinden, welche Methode zum Starten eines Runbooks in Azure Automation sich am besten für Ihr jeweiliges Szenario eignet. Dieser Artikel enthält Details zum Starten eines Runbooks über das Azure-Portal oder mit Windows PowerShell. Details zu den anderen Methoden werden in anderen Artikeln bereitgestellt, auf die Sie über unten stehende Links zugreifen können.
 
 | **METHODE** | **MERKMALE** |
 | --- | --- |
-| [Azure portal](#starting-a-runbook-with-the-azure-portal) |<li>Einfachste Methode mit interaktiver Benutzeroberfläche.<br> <li>Formular zum Bereitstellen von einfachen Parameterwerten.<br> <li>Einfaches Nachverfolgen des Auftragsstatus.<br> <li>Authentifizierter Zugriff über Azure-Anmeldung. |
+| [Azure-Portal](#starting-a-runbook-with-the-azure-portal) |<li>Einfachste Methode mit interaktiver Benutzeroberfläche.<br> <li>Formular zum Bereitstellen von einfachen Parameterwerten.<br> <li>Einfaches Nachverfolgen des Auftragsstatus.<br> <li>Authentifizierter Zugriff über Azure-Anmeldung. |
 | [Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) |<li>Aufruf über Befehlszeile mit Windows PowerShell-Cmdlets.<br> <li>Kann in eine automatisierte Lösung mit mehreren Schritten eingebunden werden.<br> <li>Anforderung wird über Zertifikat oder OAuth-Benutzerprinzipal/-Dienstprinzipal authentifiziert.<br> <li>Bereitstellen von einfachen und komplexen Parameterwerten.<br> <li>Nachverfolgen des Auftragsstatus.<br> <li>Client erforderlich zur Unterstützung der PowerShell-Befehle. |
 | [Azure Automation-API](https://msdn.microsoft.com/library/azure/mt662285.aspx) |<li>Flexibelste Methode, jedoch auch sehr komplex.<br> <li>Aufruf aus jedem benutzerdefinierten Code, der HTTP-Anforderungen ausführen kann.<br> <li>Anforderung wird über Zertifikat oder OAuth-Benutzerprinzipal/-Dienstprinzipal authentifiziert.<br> <li>Bereitstellen von einfachen und komplexen Parameterwerten. *Wenn Sie über die API ein Python-Runbook aufrufen, muss die JSON-Nutzlast serialisiert werden.*<br> <li>Nachverfolgen des Auftragsstatus. |
 | [Webhooks](automation-webhooks.md) |<li>Starten eines Runbooks über eine einzelne HTTP-Anforderung.<br> <li>Authentifizierung über Sicherheitstoken in der URL.<br> <li>Client kann keine Parameterwerte überschreiben, die beim Erstellen des Webhooks festgelegt wurden. Ein Runbook kann einen einzelnen Parameter definieren, der mit den Details zur HTTP-Anforderung aufgefüllt wird.<br> <li>Keine Möglichkeit, den Auftragsstatus über die Webhook-URL nachzuverfolgen. |

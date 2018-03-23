@@ -1,26 +1,20 @@
 ---
-title: "Tutorial für SaaS-Anwendungen mit einer Datenbank pro Mandant – Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie die mehrinstanzenfähige Wingtip Tickets-SaaS-Anwendung bereitstellen und kennenlernen, mit der Datenbanken pro Mandant und andere SaaS-Muster per Azure SQL-Datenbank dargestellt werden."
+title: Tutorial für SaaS-Anwendungen mit einer Datenbank pro Mandant – Azure SQL-Datenbank | Microsoft Docs
+description: Es wird beschrieben, wie Sie die mehrinstanzenfähige Wingtip Tickets-SaaS-Anwendung bereitstellen und kennenlernen, mit der Datenbanken pro Mandant und andere SaaS-Muster per Azure SQL-Datenbank dargestellt werden.
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: genemi
-ms.openlocfilehash: cbe8a04abbf2dada7cc43e57e823c3a41bf83fe7
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8aa4c8691093779bd8febee80fca88efad93dc00
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-and-explore-a-multi-tenant-saas-application-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Bereitstellen und Untersuchen einer mehrinstanzenfähigen SaaS-Anwendung, die das Muster mit einer Datenbank pro Mandant mit Azure SQL-Datenbank verwendet
 
@@ -115,13 +109,13 @@ In der App werden Veranstaltungsorte vorgestellt. Beispiele hierfür sind Konzer
 
 Innerhalb der App wird für jeden Mandanten eine SQL-Datenbank in einem Pool für elastische SQL-Datenbanken bereitgestellt.
 
-Auf einer zentralen **Veranstaltungshub**-Seite wird eine Liste mit Links zu den Mandanten in Ihrer Bereitstellung aufgeführt.
+Auf einer zentralen **Event Hub**-Seite wird eine Liste mit Links zu den Mandanten in Ihrer Bereitstellung aufgeführt.
 
 1. Öffnen Sie den *Veranstaltungshub* in Ihrem Webbrowser: http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net (ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung):
 
-    ![Veranstaltungshub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
+    ![Events Hub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
-2. Klicken Sie im **Veranstaltungshub** auf *Fabrikam Jazz Club*.
+2. Klicken Sie im **Ereignis-Hub** auf *Fabrikam Jazz Club*.
 
     ![Ereignisse](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
@@ -218,7 +212,7 @@ Nach der erfolgreichen Bereitstellung wird die Website für *Veranstaltungen* de
 
 ![Neuer Mandant](./media/saas-dbpertenant-get-started-deploy/red-maple-racing.png)
 
-Aktualisieren Sie den *Veranstaltungshub*, damit der neue Mandant in der Liste angezeigt wird.
+Aktualisieren Sie den *Event Hub*, damit der neue Mandant in der Liste angezeigt wird.
 
 ## <a name="explore-the-servers-pools-and-tenant-databases"></a>Untersuchen der Server, Pools und Mandantendatenbanken
 

@@ -1,16 +1,16 @@
 ---
 title: Behandeln von Problemen bei Azure Migrate | Microsoft-Dokumentation
-description: "Bietet eine Übersicht über bekannte Probleme im Azure Migrate-Dienst und Problembehandlungstipps für häufige Fehler."
+description: Bietet eine Übersicht über bekannte Probleme im Azure Migrate-Dienst und Problembehandlungstipps für häufige Fehler.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: troubleshooting
 ms.date: 02/21/2018
 ms.author: raynew
-ms.openlocfilehash: 249de45dbd9bedf1b3c2d2a5957acf31d6c0d243
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: e1e7a1a57f780ef477379dfb1ceaead0c8654970
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problembehandlung für Azure Migrate
 
@@ -126,5 +126,23 @@ Führen Sie folgende Schritte aus, um die Ereignisablaufverfolgung für Windows 
 7. Schließen Sie die Entwicklertools.
  
 
+## <a name="vcenter-errors"></a>vCenter-Fehler
 
+### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Fehler: UnhandledException Interner Fehler: System.IO.FileNotFoundException
+
+Dies ist ein Problem, das für ältere Collector-Versionen als 1.0.9.5 auftritt. Falls Sie die Collector-Version 1.0.9.2 oder keine GA-Version (z.B. 1.0.8.59) verwenden, tritt dieses Problem auf. Unter [diesem Link zu den Foren](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate) finden Sie eine ausführliche Antwort zur Lösung.
+
+[Aktualisieren Sie Ihre Collector-Version, um das Problem zu beheben](https://aka.ms/migrate/col/checkforupdates).
+
+### <a name="error-unabletoconnecttoserver"></a>Fehler: UnableToConnectToServer
+
+Aufgrund eines Fehlers konnte keine Verbindung mit vCenter Server „Servername.com:9443“ hergestellt werden: Unter „https://Servername.com:9443/sdk“ hat kein Endpunkt gelauscht, der die Nachricht akzeptieren konnte.
+
+Dies passiert, wenn der Collector-Computer den angegebenen vCenter Server-Namen nicht auflösen kann oder der angegebene Port falsch ist. Wenn der Port nicht angegeben ist, versucht Collector standardmäßig, eine Verbindung mit Port 443 herzustellen.
+
+1. Versuchen Sie, „Servername.com“ vom Collector-Computer aus per Ping zu erreichen.
+2. Wenn Schritt 1 nicht erfolgreich ist, können Sie versuchen, über die IP-Adresse eine Verbindung mit vCenter Server herzustellen.
+3. Ermitteln Sie die richtige Portnummer für die Verbindungsherstellung mit vCenter.
+4. Überprüfen Sie abschließend, ob vCenter Server ausgeführt wird und betriebsbereit ist.
+ 
 

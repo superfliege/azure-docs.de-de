@@ -1,26 +1,20 @@
 ---
-title: "Beheben eines SQL-Verbindungsfehlers oder vorübergehenden Fehlers | Microsoft Docs"
-description: "Erfahren Sie, wie Sie einen SQL-Verbindungsfehler oder vorübergehenden Fehler in Azure SQL-Datenbank behandeln, diagnostizieren und verhindern."
-keywords: "SQL-Verbindung,Verbindungszeichenfolge,Verbindungsprobleme,vorübergehender Fehler,Verbindungsfehler"
+title: Beheben eines SQL-Verbindungsfehlers oder vorübergehenden Fehlers | Microsoft Docs
+description: Erfahren Sie, wie Sie einen SQL-Verbindungsfehler oder vorübergehenden Fehler in Azure SQL-Datenbank behandeln, diagnostizieren und verhindern.
+keywords: SQL-Verbindung,Verbindungszeichenfolge,Verbindungsprobleme,vorübergehender Fehler,Verbindungsfehler
 services: sql-database
-documentationcenter: 
 author: dalechen
-manager: cshepard
-editor: 
-ms.assetid: efb35451-3fed-4264-bf86-72b350f67d50
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 11/29/2017
 ms.author: daleche
-ms.openlocfilehash: 7d393cd08ef5c20ef680e4e1ab3aded191abe932
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f6b5f825d7f8111075fe37b5dc29d174928d913e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Durchführen der Problembehandlung, Diagnose und Verhinderung von SQL-Verbindungsfehlern und vorübergehenden Fehlern für SQL-Datenbank
 In diesem Artikel wird beschrieben, wie Sie Verbindungsausfälle und vorübergehende Fehler verhindern, behandeln, diagnostizieren und beheben, die bei Ihrer Clientanwendung während der Interaktion mit Azure SQL-Datenbank auftreten. Erfahren Sie, wie Sie die Wiederholungslogik konfigurieren, die Verbindungszeichenfolge erstellen und andere Verbindungseinstellungen anpassen.
@@ -94,7 +88,7 @@ Um diesen Test in der Praxis umzusetzen, trennen Sie Ihren Computer vom Netzwerk
 * Das Programm führt den ersten Verbindungsversuch durch.
 * Nachdem der Fehler ermittelt wurde, wird 11001 aus der Liste entfernt.
 * Eine Meldung fordert den Benutzer auf, den Computer an das Netzwerk anzuschließen.
-   * Die weitere Ausführung wird angehalten (über die **Console.ReadLine**-Methode oder über ein Dialogfeld mit der Schaltfläche „OK“). Nachdem der Computer mit dem Netzwerk verbunden wurde, drückt der Benutzer die EINGABETASTE.
+   * Die weitere Ausführung wird angehalten (über die **Console.ReadLine** -Methode oder über ein Dialogfeld mit der Schaltfläche „OK“). Nachdem der Computer mit dem Netzwerk verbunden wurde, drückt der Benutzer die EINGABETASTE.
 * Es wird erneut versucht, eine Verbindung herzustellen (dieser Versuch sollte erfolgreich sein).
 
 #### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Testen der Logik, indem beim Herstellen der Verbindung ein falscher Datenbankname eingegeben wird
@@ -258,7 +252,7 @@ Enterprise Library 6 (EntLib60) bietet verwaltete .NET-Klassen zur Unterstützun
 ### <a name="diagnostics-examine-system-logs-for-errors"></a>Diagnose: Überprüfen der Systemprotokolle auf Fehler
 Nachfolgend finden Sie einige Transact-SQL-SELECT-Anweisungen, mit denen Fehlerprotokolle und andere Informationen abgefragt werden.
 
-| Protokollabfrage | Beschreibung |
+| Protokollabfrage | BESCHREIBUNG |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Die [sys.event_log](http://msdn.microsoft.com/library/dn270018.aspx)-Ansicht bietet Informationen zu einzelnen Ereignissen, einschließlich solcher, die vorübergehende Fehler oder Verbindungsfehler verursachen können.<br/><br/>Idealerweise können Sie die Werte **start_time** oder **end_time** den Zeiten zuordnen, zu denen in Ihrem Clientprogramm Probleme aufgetreten sind.<br/><br/>Sie müssen eine Verbindung mit der *Masterdatenbank* herstellen, um diese Abfrage auszuführen. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Die [sys.database_connection_stats](http://msdn.microsoft.com/library/dn269986.aspx)-Ansicht bietet aggregierte Werte der Ereignistypen für die weitere Diagnose.<br/><br/>Sie müssen eine Verbindung mit der *Masterdatenbank* herstellen, um diese Abfrage auszuführen. |

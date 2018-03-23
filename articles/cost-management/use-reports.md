@@ -2,19 +2,19 @@
 title: Verwenden von Cost Management-Berichten in Azure Cost Management | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie verschiedene Cost Management-Berichte im Cloudyn-Portal verwenden.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 0a4f6a5940ccffe897a5609b837ddaeea98d87aa
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.custom: ''
+ms.openlocfilehash: 8078591b1e2ad120190a23dd29800bd0f1ae33ea
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-cost-management-reports"></a>Verwenden von Cost Management-Berichten
 
@@ -152,7 +152,7 @@ Sie können den Bericht „Cost Over Time“ (Kosten im Zeitverlauf) für Folgen
 3. Fügen Sie Gruppen hinzu.
 4. Wählen Sie ein Kostenmodell aus, das Sie zuvor erstellt haben.
 5. Wählen Sie Ist-Kosten oder amortisierte Kosten aus.
-6. Legen Sie fest, ob Zuordnungsregeln angewendet werden, um die Ansicht der Abrechnungsrohdaten anzuzeigen oder um Kosten in der Cloudyn-Ansicht neu zu berechnen.
+6. Legen Sie fest, ob Zuordnungsregeln angewendet werden, um die Ansicht der Abrechnungsrohdaten anzuzeigen oder um Kosten in der Ansicht neu zu berechnen.
 
 Es folgt ein Beispiel für den Bericht.
 

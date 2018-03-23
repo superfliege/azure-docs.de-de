@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect: Verwenden eines SAML 2.0-Identitätsanbieters für einmaliges Anmelden | Microsoft-Dokumentation"
-description: "In diesem Thema wird beschrieben, wie ein für SAML 2.0 kompatibler Identitätsanbieter für einmaliges Anmelden verwendet wird."
+title: 'Azure AD Connect: Verwenden eines SAML 2.0-Identitätsanbieters für einmaliges Anmelden | Microsoft-Dokumentation'
+description: In diesem Thema wird beschrieben, wie ein für SAML 2.0 kompatibler Identitätsanbieter für einmaliges Anmelden verwendet wird.
 services: active-directory
 author: billmath
 manager: mtillman
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.openlocfilehash: 46c65e0efdc91b70c5d0d2afdf83d7205efc8057
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2018
+ms.lasthandoff: 03/13/2018
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
@@ -45,8 +45,8 @@ Dieses Thema enthält detaillierte Anforderungen an die Protokoll- und Benachric
 
 Sie sollten sicherstellen, dass die ausgehenden Nachrichten Ihres SAML 2.0-Identitätsanbieters den bereitgestellten Beispielablaufverfolgungen so ähnlich wie möglich sind. Verwenden Sie auch wenn möglich die bestimmten Attributwerte aus den bereitgestellten Azure AD-Metadaten. Wenn Sie mit den Ausgabenachrichten zufrieden sind, können Sie mit der Microsoft-Verbindungsuntersuchung wie unten beschrieben Tests durchführen.
 
-Die Azure AD-Metadaten können von dieser Seite heruntergeladen werden: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
-Für Kunden in China muss mithilfe der für China spezifischen Instanz von Office 365 der folgende Verbundendpunkt verwendet werden: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
+Die Azure AD-Metadaten können unter dieser URL heruntergeladen werden: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
+Für Kunden in China, die die für China bestimmte Instanz von Office 365 nutzen, sollte der folgende Verbundendpunkt verwendet werden: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
 
 ## <a name="saml-protocol-requirements"></a>SAML-Protokollanforderungen
 In diesem Abschnitt wird beschrieben, wie die Anforderungs- und Anwortbenachrichtigungspaare zusammengefügt werden, damit Sie Ihre Benachrichtigungen richtig formatieren können.
@@ -149,7 +149,7 @@ Dies ist eine Beispielantwortbenachrichtigung, die von dem mit SAML 2.0 kompatib
 Dieses Thema enthält Richtlinien zum Konfigurieren Ihres SAML 2.0-Identitätsanbieters für einen Verbund mit Azure AD für die Aktivierung des einmaligen Anmeldens für den Zugriff auf einen oder mehrere Microsoft-Clouddienste (z.B. Office 365) mithilfe des SAML 2.0-Protokolls. Die vertrauende SAML 2.0-Seite für einen Microsoft-Clouddienst, die in diesem Szenario verwendet wird, ist Azure AD.
 
 ## <a name="add-azure-ad-metadata"></a>Hinzufügen von Azure AD-Metadaten
-Ihr SAML 2.0-Identitätsanbieter muss Informationen zur vertrauenden Azure AD-Seite befolgen. Azure AD veröffentlicht Metadaten unter „https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml“.
+Ihr SAML 2.0-Identitätsanbieter muss Informationen zur vertrauenden Azure AD-Seite befolgen. Azure AD veröffentlicht Metadaten unter https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml.
 
 Es wird empfohlen, immer die aktuellen Azure AD-Metadaten zu importieren, wenn Sie Ihren SAML 2.0-Identitätsanbieter konfigurieren. Beachten Sie, dass Azure AD keine Metadaten vom Identitätsanbieter liest.
 
@@ -182,12 +182,12 @@ Das folgende Verfahren führt Sie durch das Konvertieren einer vorhandenen Stand
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-Weitere Informationen zu „Set-MsolDomainAuthentication“ finden Sie unter: [http://technet.microsoft.com/library/dn194112.aspx](http://technet.microsoft.com/library/dn194112.aspx).
+Weitere Informationen zu „Set-MsolDomainAuthentication“ finden Sie unter [http://technet.microsoft.com/library/dn194112.aspx](http://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
->Sie müssen „$ecpUrl = “https://WS2012R2-0.contoso.com/PAOS““ nur verwenden, wenn Sie eine ECP-Erweiterung für Ihren Identitätsanbieter einrichten möchten. Exchange Online-Clients mit Ausnahme von Outlook Web Application (OWA) basieren auf einem auf POST basierenden aktiven Endpunkt. Wenn Ihr SAML 2.0-STS einen aktiven Endpunkt implementiert, der der ECP-Implementierung von Shibboleth von einem aktiven Endpunkt ähnelt, können diese Rich Clients möglicherweise mit dem Exchange Online-Dienst interagieren.
+>Sie müssen „$ecpUrl = „https://WS2012R2-0.contoso.com/PAOS““ nur ausführen, wenn Sie eine ECP-Erweiterung für Ihren Identitätsanbieter einrichten. Exchange Online-Clients mit Ausnahme von Outlook Web Application (OWA) basieren auf einem auf POST basierenden aktiven Endpunkt. Wenn Ihr SAML 2.0-STS einen aktiven Endpunkt implementiert, der der ECP-Implementierung von Shibboleth von einem aktiven Endpunkt ähnelt, können diese Rich Clients möglicherweise mit dem Exchange Online-Dienst interagieren.
 
-Nachdem der Verbund konfiguriert wurde, können Sie zurück zu „ohne Verbund“ (oder „verwaltet“) wechseln. Diese Änderung benötigen jedoch bis zu zwei Stunden und erfordern die Zuweisung neuer zufälliger Kennwörter für die cloudbasierte Anmeldung für jeden Benutzer. Das Zurückwechseln zu „verwaltet“ ist in einigen Szenarios möglicherweise erforderlich, um einen Fehler in Ihren Einstellungen zurückzusetzen. Weitere Informationen zu Domänenkonvertierung finden Sie unter: [http://msdn.microsoft.com/library/windowsazure/dn194122.aspx](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
+Nachdem der Verbund konfiguriert wurde, können Sie zurück zu „ohne Verbund“ (oder „verwaltet“) wechseln. Diese Änderung benötigen jedoch bis zu zwei Stunden und erfordern die Zuweisung neuer zufälliger Kennwörter für die cloudbasierte Anmeldung für jeden Benutzer. Das Zurückwechseln zu „verwaltet“ ist in einigen Szenarios möglicherweise erforderlich, um einen Fehler in Ihren Einstellungen zurückzusetzen. Weitere Informationen zur Domänenkonvertierung finden Sie unter [http://msdn.microsoft.com/library/windowsazure/dn194122.aspx](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>Bereitstellen von Benutzerprinzipalen für Azure AD/Office 365
 Bevor Sie Ihre Benutzer mit Office 365 authentifizieren können, müssen Sie Azure AD mit Benutzerprinzipalen bereitstellen, die mit der Assertion im SAML 2.0-Anspruch übereinstimmen. Wenn Azure AD diese Benutzerprinzipale im Voraus nicht bekannt sind, können sie für die Verbundanmeldung verwendet werden. Azure AD Connect oder Windows PowerShell können zum Bereitstellen von Benutzerprinzipalen verwendet werden.
@@ -210,7 +210,7 @@ Diese Prozedur zeigt, wie Azure AD ein einzelner Benutzer hinzugefügt wird.
         -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
         -UsageLocation "US" ` 
 
-Weitere Informationen zu „New-MsolUser“ finden Sie unter [http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx)
+Weitere Informationen zu „New-MsolUser“ finden Sie unter [http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx).
 
 >[!NOTE]
 >Der Wert „UserPrinciplName“ muss mit dem Wert übereinstimmen, den Sie für „IDPEmail“ in Ihrem SAML 2.0-Anspruch senden, und der Wert „ImmutableID“ muss mit dem Wert übereinstimmen, der in Ihrer „NameID“-Assertion gesendet wurde.

@@ -2,10 +2,10 @@
 title: 'Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration | Microsoft Docs'
 description: Dieser Artikel beschreibt die Standardkonfiguration der Azure AD Connect-Synchronisierung.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 87f513ffd2e8854085d9dfcd399148082de37698
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: dba7a6fcf936e9610a5f1f04e367d32e9aae6643
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration
 In diesem Artikel werden die standardmäßigen Konfigurationsregeln erläutert. Er dokumentiert die Regeln und deren Auswirkungen auf die Konfiguration. Außerdem wird die Standardkonfiguration der Azure AD Connect-Synchronisierung beschrieben. Der Leser soll verstehen, wie das als deklarative Bereitstellung bezeichnete Konfigurationsmodell in einem realistischen Beispiel funktioniert. Dieser Artikel setzt voraus, dass die Azure AD Connect-Synchronisierung bereits mit dem Installations-Assistenten installiert und konfiguriert wurde.
@@ -50,7 +50,7 @@ Die folgenden Benutzerobjekte werden **nicht** mit Azure AD synchronisiert:
 * Verhindert die Synchronisierung von Objekten, die nicht für Exchange Online geeignet sind.
   `CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))`  
   Diese Bitmaske (&amp;H21C07000) filtert folgende Objekte heraus:
-  * E-Mail-aktivierter, öffentlicher Ordner
+  * E-Mail-aktivierter öffentlicher Ordner (ab Version 1.1.524.0 als Vorschauversion)
   * Postfach der Systemaufsicht
   * Postfachdatenbankpostfach (Systempostfach)
   * Universelle Sicherheitsgruppe (gilt nicht für Benutzer; nur aus Legacygründen vorhanden)

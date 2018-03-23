@@ -1,31 +1,28 @@
 ---
-title: "Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie einen Anwendungsentwurf für hoch verfügbare Dienste mithilfe von Azure SQL-Datenbank erstellen."
-keywords: "cloudbasierte Notfallwiederherstellung,Notfallwiederherstellungslösungen,App-Datensicherung,Georeplikation,Planen der Geschäftskontinuität"
+title: Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einen Anwendungsentwurf für hoch verfügbare Dienste mithilfe von Azure SQL-Datenbank erstellen.
+keywords: cloudbasierte Notfallwiederherstellung,Notfallwiederherstellungslösungen,App-Datensicherung,Georeplikation,Planen der Geschäftskontinuität
 services: sql-database
-documentationcenter: 
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: e8a346ac-dd08-41e7-9685-46cebca04582
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.date: 12/13/2017
-ms.workload: On Demand
+ms.date: 03/07/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 3d6ad95c1ca316b2e7c3f722315d2ddec03a3716
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: c596006e33c2c4f0228c14a65f58e82bcf300727
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank
 
 Beim Erstellen und Bereitstellen von hoch verfügbaren Diensten für Azure SQL-Datenbank verwenden Sie [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md), um Resilienz bei regionalen Ausfällen und schwerwiegenden Fehlern bereitzustellen. Zudem wird eine schnelle Wiederherstellung in den sekundären Datenbanken ermöglicht. Dieser Artikel konzentriert sich auf gängige Anwendungsmuster und erörtert die Vor- und Nachteile der einzelnen Optionen. Informationen zur Verwendung der aktiven Georeplikation mit Pools für elastische Datenbanken finden Sie unter [Strategien zur Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+
+> [!NOTE]
+> Wenn Sie Premium-Datenbanken und -Pools verwenden, können Sie sie resistent gegenüber regionalen Ausfällen machen, indem Sie sie auf die Konfiguration der zonenredundanten Bereitstellung umstellen (derzeit in der Vorschauphase). Informationen finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).  
 
 ## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Szenario 1: Verwenden von zwei Azure-Regionen für die Geschäftskontinuität mit minimalen Ausfallzeiten
 In diesem Szenario weist die Anwendung die folgenden Merkmale auf: 
@@ -47,8 +44,7 @@ Das folgende Diagramm zeigt diese Konfiguration vor einem Ausfall:
 Nach einem Ausfall in der primären Region erkennt der SQL-Datenbank-Dienst, dass auf die primäre Datenbank nicht zugegriffen werden kann, und löst basierend auf den Parametern der Richtlinie für automatisches Failover ein Failover auf die sekundäre Region aus (1). Abhängig von Ihrer Anwendungs-SLA können Sie eine Toleranzperiode konfigurieren, die die Zeit zwischen der Erkennung des Ausfalls und dem Failover selbst steuert. Es ist möglich, dass Traffic Manager das Endpunktfailover initiiert, bevor die Failovergruppe das Failover der Datenbank auslöst. In diesem Fall kann die Webanwendung die Verbindung mit der Datenbank nicht sofort wiederherstellen. Die Verbindungswiederherstellungen sind jedoch automatisch erfolgreich, sobald das Datenbankfailover abgeschlossen ist. Wenn die fehlerhafte Region wiederhergestellt und wieder online ist, stellt die alte primäre Datenbank automatisch wieder eine Verbindung als neue sekundäre Datenbank her. Das folgende Diagramm veranschaulicht die Konfiguration nach dem Failover.
  
 > [!NOTE]
-> Alle committeten Transaktionen nach dem Failover gehen bei der Verbindungswiederherstellung verloren. Nach Abschluss des Failovers kann die Anwendung in Region B die Verbindung wiederherstellen und die Verarbeitung der Benutzeranforderungen erneut starten. Sowohl die Webanwendung als auch die primäre Datenbank befinden sich nun in Region B und bleiben verbunden. 
-n>
+> Alle committeten Transaktionen nach dem Failover gehen bei der Verbindungswiederherstellung verloren. Nach Abschluss des Failovers kann die Anwendung in Region B die Verbindung wiederherstellen und die Verarbeitung der Benutzeranforderungen erneut starten. Sowohl die Webanwendung als auch die primäre Datenbank befinden sich nun in Region B und bleiben verbunden. n>
 
 ![Szenario 1: Konfiguration nach Failover](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
 

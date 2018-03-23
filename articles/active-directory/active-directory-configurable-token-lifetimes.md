@@ -1,11 +1,11 @@
 ---
-title: "Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie Gültigkeitsdauern für Token festlegen, die von Azure AD ausgestellt werden."
+title: Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie Gültigkeitsdauern für Token festlegen, die von Azure AD ausgestellt werden.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: eaf9e7088c8c88140ea690c13ff7e0c7026b8f86
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 568bf5f0a4cf3eb77b528af2550d9729dcc59878
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (öffentliche Vorschau)
 Sie können die Gültigkeitsdauer eines Tokens angeben, das von Azure Active Directory (Azure AD) ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen.
@@ -34,6 +34,11 @@ In Azure AD steht ein Richtlinienobjekt für eine Reihe von Regeln, die für ein
 
 Sie können eine Richtlinie als Standardrichtlinie für Ihre Organisation festlegen. Die Richtlinie wird auf alle Anwendungen der Organisation angewendet, sofern sie nicht von einer Richtlinie mit einer höheren Priorität außer Kraft gesetzt wird. Sie können eine Richtlinie auch bestimmten Anwendungen zuweisen. Die Reihenfolge der Priorität variiert je nach Richtlinientyp.
 
+> [!NOTE]
+> Die Richtlinie für konfigurierbare Tokengültigkeitsdauer wird für SharePoint Online nicht unterstützt.  Sie haben zwar die Möglichkeit, diese Richtlinie über PowerShell zu erstellen, sie wird von SharePoint Online aber nicht akzeptiert. Im [SharePoint Online-Blog](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) finden Sie weitere Informationen zum Konfigurieren von Timeouts für Leerlaufsitzungen.
+>* Die Standardlebensdauer für das SharePoint Online-Zugriffstoken beträgt eine Stunde. 
+>* Die standardmäßige maximale Inaktivitätsdauer für das SharePoint Online-Aktualisierungstoken beträgt 90 Tage.
+>
 
 ## <a name="token-types"></a>Tokentypen
 

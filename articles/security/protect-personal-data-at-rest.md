@@ -1,32 +1,31 @@
 ---
-title: "Azure: Schützen von ruhenden personenbezogenen Daten durch Verschlüsselung | Microsoft-Dokumentation"
-description: "Dieser Artikel ist Teil einer Serie, die Sie beim Schutz personenbezogener Daten mit Azure unterstützen soll."
+title: 'Azure: Schützen von ruhenden personenbezogenen Daten durch Verschlüsselung | Microsoft-Dokumentation'
+description: Dieser Artikel kann zur Einhaltung von Branchenanforderungen oder gesetzlichen Anforderungen wie der Datenschutz-Grundverordnung (DSGVO) verwendet werden.
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 31e41f9befd9319115e5d147b473756486100c6e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.custom: ''
+ms.openlocfilehash: 37da3d91df4be871d6647b6290768ea4999a5010
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-at-rest-with-encryption"></a>Azure-Verschlüsselungstechnologien: Schützen ruhender personenbezogener Daten durch Verschlüsselung
 
 Dieser Artikel enthält grundlegende Informationen zur Verwendung von Azure-Verschlüsselungstechnologien zum Schützen ruhender Daten.
 
-Die Verschlüsselung ruhender Daten eine wichtige bewährte Methode zum Schutz sensibler oder personenbezogener Daten und zur Erfüllung von Compliance- und Datenschutzanforderungen.
-Die Verschlüsselung ruhender Daten wurde entwickelt, um dem Angreifer den Zugriff auf die unverschlüsselten Daten zu verwehren, indem die Daten auf der Festplatte verschlüsselt sind.
+Die Verschlüsselung ruhender Daten eine wichtige bewährte Methode zum Schutz sensibler oder personenbezogener Daten und zur Erfüllung von Compliance- und Datenschutzanforderungen. Die Verschlüsselung ruhender Daten wurde entwickelt, um dem Angreifer den Zugriff auf die unverschlüsselten Daten zu verwehren, indem die Daten auf der Festplatte verschlüsselt sind. Die Informationen in diesem Artikel können für die Einhaltung der Datenschutz-Grundverordnung (DSGVO) verwendet werden.
 
 ## <a name="scenario"></a>Szenario 
 
@@ -135,7 +134,7 @@ Kopieren Sie nach dem Aktivieren der Verschlüsselung Daten in das Speicherkonto
 
 3. Kopieren Sie Blob- oder Dateidaten mithilfe von [Storage-Clientbibliotheken wie .NET](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-blobs) in den oder aus dem Blobspeicher oder zwischen Speicherkonten.
 
-4.  Verwenden Sie einen [Speicher-Explorer](https://docs.microsoft.com/azure/storage/storage-explorers) zum Hochladen von Blobs in Ihr Speicherkonto mit aktivierter Verschlüsselung.
+4.  Verwenden Sie einen [Storage-Explorer](https://docs.microsoft.com/azure/storage/storage-explorers) zum Hochladen von Blobs in Ihr Speicherkonto mit aktivierter Verschlüsselung.
 
 ### <a name="transparent-data-encryption"></a>Transparent Data Encryption
 

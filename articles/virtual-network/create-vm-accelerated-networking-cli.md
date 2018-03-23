@@ -5,9 +5,9 @@ services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 82a0a336e8315d7fe9862e22e47a6847f94bfcb1
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.custom: ''
+ms.openlocfilehash: 5c09ffe6867972e772334ae7ae1dd655cdac431f
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
 
 > [!IMPORTANT] 
-> Virtuelle Computer müssen mit aktiviertem beschleunigtem Netzwerkbetrieb erstellt werden. Dieses Feature kann nicht auf vorhandenen virtuellen Computern aktiviert werden. Anhand der nachfolgenden Schritte können Sie den beschleunigten Netzwerkbetrieb aktivieren:
+> Virtuelle Computer müssen mit aktiviertem beschleunigtem Netzwerkbetrieb erstellt werden. Dieses Feature kann nicht auf vorhandenen virtuellen Computern aktiviert werden. Führen Sie die folgenden Schritte aus, um den beschleunigten Netzwerkbetrieb zu aktivieren:
 >   1. Löschen Sie den virtuellen Computer.
 >   2. Erstellen Sie erneut einen virtuellen Computer mit aktiviertem beschleunigtem Netzwerkbetrieb.
 >
@@ -66,9 +66,11 @@ Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
 * **VM-Erstellung:** Eine NIC mit aktiviertem beschleunigten Netzwerkbetrieb kann nur an eine VM angefügt werden, während diese erstellt wird. Die NIC kann nicht an eine vorhandene VM angefügt werden. Wenn Sie den virtuellen Computer zu einer vorhandenen Verfügbarkeitsgruppe hinzufügen, muss der beschleunigte Netzwerkbetrieb für alle virtuellen Computer in der Verfügbarkeitsgruppe aktiviert sein.
 * **Bereitstellung nur über den Azure Resource Manager:** Virtuelle Computer (klassisch) können nicht mit beschleunigtem Netzwerkbetrieb bereitgestellt werden.
 
+In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure-Befehlszeilenschnittstelle dargestellt, Sie können jedoch auch [über das Azure-Portal einen virtuellen Computer mit beschleunigtem Netzwerkbetrieb erstellen](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie einen virtuellen Computer mit einem unterstützten Betriebssystem und einer unterstützten VM-Größe im Portal erstellen, wählen Sie unter **Einstellungen** für **Beschleunigter Netzwerkbetrieb** die Option **Aktiviert** aus. Nach dem Erstellen des virtuellen Computers müssen Sie die Anweisungen unter [Bestätigen der Aktivierung des beschleunigten Netzwerkbetriebs](#confirm-that-accelerated-networking-is-enabled) abschließen.
+
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#az_login) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
+Installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
 
 Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *centralus* eine Ressourcengruppe namens *myResourceGroup* erstellt:
 

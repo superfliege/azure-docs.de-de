@@ -1,25 +1,24 @@
 ---
-title: "Verbessern der Columnstore-Indexleistung – Azure SQL Data Warehouse | Microsoft Docs"
-description: "Reduzieren Sie Arbeitsspeicheranforderungen, oder erhöhen Sie den verfügbaren Arbeitsspeicher, um die Anzahl von Zeilen zu maximieren, die ein Columnstore-Index in jede Zeilengruppe komprimieren kann."
+title: Verbessern der Columnstore-Indexleistung – Azure SQL Data Warehouse | Microsoft Docs
+description: Reduzieren Sie Arbeitsspeicheranforderungen, oder erhöhen Sie den verfügbaren Arbeitsspeicher, um die Anzahl von Zeilen zu maximieren, die ein Columnstore-Index in jede Zeilengruppe komprimieren kann.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
-ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 10/23/2017
+ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 6640ed8958f6b05c015fb6c61d07aeea95b18022
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 74e641f9da418d678bdbef0c69f9f59ccee32303
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximieren der Zeilengruppenqualität für Columnstore
 
@@ -140,9 +139,9 @@ OPTION (MAXDOP 1);
 Die DWU-Größe und die Benutzer-Ressourcenklasse bestimmen zusammen, wie viel Arbeitsspeicher für einen Benutzer zur Verfügung steht. Um die Arbeitsspeicherzuweisung für eine Ladeanfrage zu erhöhen, können Sie entweder die Anzahl der DWUs oder die Ressourcenklasse erhöhen.
 
 - Wie Sie die DWUs erhöhen, erfahren Sie unter [Wie skaliere ich Leistung?](quickstart-scale-compute-portal.md)
-- Wie Sie die Ressourcenklasse für eine Abfrage ändern, erfahren Sie unter [Beispiel: Ändern der Ressourcenklasse eines Benutzers](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example).
+- Wie Sie die Ressourcenklasse für eine Abfrage ändern, erfahren Sie unter [Beispiel: Ändern der Ressourcenklasse eines Benutzers](resource-classes-for-workload-management.md#assigning-resource-classes).
 
-Beispielsweise kann ein Benutzer in der Ressourcenklasse „smallrc“ auf DWU-100 100 MB Arbeitsspeicher für jede Verteilung verwenden. Details finden Sie unter [Parallelität in SQL Data Warehouse](sql-data-warehouse-develop-concurrency.md).
+Beispielsweise kann ein Benutzer in der Ressourcenklasse „smallrc“ auf DWU-100 100 MB Arbeitsspeicher für jede Verteilung verwenden. Details finden Sie unter [Parallelität in SQL Data Warehouse](resource-classes-for-workload-management.md).
 
 Angenommen, Sie stellen fest, dass Sie 700 MB Arbeitsspeicher brauchen, um Zeilengruppengrößen von hoher Qualität zu bekommen. Anhand dieser Beispiele wird gezeigt, wie Sie die Ladeabfrage mit genug Arbeitsspeicher ausführen.
 

@@ -1,27 +1,28 @@
 ---
-title: "Horizontales Hochskalieren von Workerrollen in App Services – Azure Stack | Microsoft-Dokumentation"
-description: "Ausführliche Anleitung zum Skalieren von Azure Stack App Services"
+title: Horizontales Hochskalieren von Workerrollen in App Services – Azure Stack | Microsoft-Dokumentation
+description: Ausführliche Anleitung zum Skalieren von Azure Stack App Services
 services: azure-stack
-documentationcenter: 
-author: brenduns
-manager: femila
-editor: 
+documentationcenter: ''
+author: apwestgarth
+manager: stefsch
+editor: ''
 ms.assetid: 3cbe87bd-8ae2-47dc-a367-51e67ed4b3c0
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
-ms.author: brenduns
-ms.reviewer: anwestg
-ms.openlocfilehash: ddd9820715e964218db8b88fb5211b3725c808b9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 03/08/2018
+ms.author: anwestg
+ms.reviewer: brenduns
+ms.openlocfilehash: 680cb70777574d0ed88c5f83fb0a6fa20263b951
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>App Service für Azure Stack: Hinzufügen von weiteren Infrastruktur- oder Workerrollen
+
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*  
 
 Dieses Dokument enthält Anleitungen zum Skalieren der Infrastruktur- und Workerrollen für App Service in Azure Stack. Es werden die Schritte zum Erstellen von zusätzlichen Workerrollen aufgeführt, um Anwendungen beliebiger Größe zu unterstützen.
@@ -35,7 +36,49 @@ Wenn Sie sich nicht sicher sind, welche Elemente mit der App Service-Standardver
 
 Azure App Service in Azure Stack stellt alle Rollen mithilfe von VM-Skalierungsgruppen bereit und nutzt somit die Skalierungsfunktionen dieser Workload. Aus diesem Grund erfolgt die gesamte Skalierung der Workerebenen über den App Service-Administrator.
 
-Direktes Hinzufügen von zusätzlichen Workern über den Administrator des App Service-Ressourcenanbieters
+> [!IMPORTANT]
+> Derzeit ist es nicht möglich, VM-Skalierungsgruppen im Portal wie in den Azure Stack-Versionshinweisen angegeben zu skalieren. Verwenden Sie für das horizontale Hochskalieren deshalb das PowerShell-Beispiel.
+>
+>
+
+## <a name="add-additional-workers-with-powershell"></a>Hinzufügen von zusätzlichen Workern mit PowerShell
+
+1. [Einrichten der Azure Stack-Administratorumgebung in PowerShell](azure-stack-powershell-configure-admin.md)
+
+2. Verwenden Sie dieses Beispiel, um die Skalierungsgruppe horizontal hochzuskalieren:
+   ```powershell
+   
+    ##### Scale out the AppService Role instances ######
+   
+    # Set context to AzureStack admin.
+    Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+                                                 
+    ## Name of the Resource group where AppService is deployed.
+    $AppServiceResourceGroupName = "AppService.local"
+
+    ## Name of the ScaleSet : e.g. FrontEndsScaleSet, ManagementServersScaleSet, PublishersScaleSet , LargeWorkerTierScaleSet,      MediumWorkerTierScaleSet, SmallWorkerTierScaleSet, SharedWorkerTierScaleSet
+    $ScaleSetName = "SharedWorkerTierScaleSet"
+
+    ## TotalCapacity is sum of the instances needed at the end of operation. 
+    ## e.g. if your VMSS has 1 instance(s) currently and you need 1 more the TotalCapacity should be set to 2
+    $TotalCapacity = 2  
+
+    # Get current scale set
+    $vmss = Get-AzureRmVmss -ResourceGroupName $AppServiceResourceGroupName -VMScaleSetName $ScaleSetName
+
+    # Set and update the capacity
+    $vmss.sku.capacity = $TotalCapacity
+    Update-AzureRmVmss -ResourceGroupName $AppServiceResourceGroupName -Name $ScaleSetName -VirtualMachineScaleSet $vmss 
+   ```    
+
+   > [!NOTE]
+   > Es kann je nach Typ der Rolle und der Anzahl von Instanzen einigen Stunden dauern, bis dieser Schritt abgeschlossen ist.
+   >
+   >
+
+3. Überwachen Sie den Status der neuen Rolleninstanzen in der App Service-Verwaltung. Klicken Sie in der Liste auf den Rollentyp, um den Status einer einzelnen Rolleninstanz zu überprüfen.
+
+## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>Direktes Hinzufügen von zusätzlichen Workern über den Administrator des App Service-Ressourcenanbieters
 
 1. Melden Sie sich beim Azure Stack-Verwaltungsportal als Dienstadministrator an.
 
@@ -57,12 +100,16 @@ Direktes Hinzufügen von zusätzlichen Workern über den Administrator des App S
 
 7. Sie können den Bereitschaftsstatus der neuen Rollen überwachen, indem Sie die Worker auf dem Blatt **Rollen** anzeigen.
 
+## <a name="result"></a>Ergebnis
+
 Nachdem die Worker vollständig bereitgestellt wurden und einsatzbereit sind, werden sie für die Benutzer verfügbar gemacht, damit diese ihre Workloads darauf bereitstellen können. Unten sehen Sie ein Beispiel für die verschiedenen Tarife, die standardmäßig verfügbar sind. Die Option zum Auswählen des entsprechenden Tarifs ist nicht verfügbar, wenn für eine bestimmte Workerebene keine Worker vorhanden sind.
 
 ![](media/azure-stack-app-service-add-worker-roles/image04.png)
 
 >[!NOTE]
-> Um die Rollen „Management“, „Front-End“ oder „Herausgeber“ horizontal hochzuskalieren, müssen Sie die entsprechende VM-Skalierungsgruppe horizontal hochskalieren. Wir fügen die Möglichkeit, diese Rollen über die App Service-Verwaltung horizontal hochzuskalieren, in einer zukünftigen Version hinzu.
+> Um die Rollen „Management“, „Front-End“ oder „Herausgeber“ horizontal hochzuskalieren, müssen Sie den entsprechenden Rollentyp horizontal hochskalieren. 
+>
+>
 
 Um die Rollen „Management“, „Front-End“ oder „Herausgeber“ horizontal hochzuskalieren, befolgen Sie die gleichen Schritte und wählen dabei den entsprechenden Rollentyp aus. Controller werden nicht als Skalierungsgruppen bereitgestellt. Aus diesem Grund sollten zwei Controller zum Installationszeitpunkt für alle Produktionsbereitstellungen bereitgestellt werden.
 

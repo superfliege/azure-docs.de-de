@@ -1,29 +1,29 @@
 ---
-title: "Schützen personenbezogener Daten mit Azure-Netzwerksicherheitsfunktionen | Microsoft-Dokumentation"
-description: "Schützen personenbezogener Daten mit Azure-Netzwerksicherheitsfunktionen"
+title: Schützen personenbezogener Daten mit Azure-Netzwerksicherheitsfunktionen | Microsoft-Dokumentation
+description: Schützen Sie personenbezogene Daten mit Azure-Netzwerksicherheitsfunktionen. Dies kann für die Einhaltung der Datenschutz-Grundverordnung (DSGVO) verwendet werden.
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 2510a4aed34b6a156cc9a9da6215de5956aac023
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: ''
+ms.openlocfilehash: 54aeb22a501e248105931df341d23e524448155a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-with-network-security-features-azure-application-gateway-and-network-security-groups"></a>Schützen personenbezogener Daten mit Netzwerksicherheitsfunktionen: Azure Application Gateway und Netzwerksicherheitsgruppen
 
-Dieser Artikel enthält Informationen und Verfahren zur Verwendung von Azure Application Gateway und Netzwerksicherheitsgruppen zum Schützen personenbezogener Daten.
+Dieser Artikel enthält Informationen und Verfahren zur Verwendung von Azure Application Gateway und Netzwerksicherheitsgruppen zum Schützen personenbezogener Daten. Diese Informationen können Ihnen bei der Einhaltung der Datenschutz-Grundverordnung (DSGVO) behilflich sein.
 
 Ein wichtiger Bestandteil einer mehrschichtigen Sicherheitsstrategie zur Gewährleistung des Datenschutzes personenbezogener Daten ist der Schutz vor verbreiteten Exploits für Sicherheitslücken, z.B. Einschleusung von SQL-Befehlen oder Cross-Site-Scripting. Das Fernhalten unerwünschten Netzwerkdatenverkehrs von Ihrem virtuellen Azure-Netzwerk trägt zum Schutz vor einer potenziellen Gefährdung sensibler Daten bei. Und Microsoft Azure stellt Ihnen die Tools zum Schutz Ihrer Daten vor Angreifern bereit.
 

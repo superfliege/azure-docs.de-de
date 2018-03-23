@@ -1,12 +1,12 @@
 ---
-title: "Übersicht: Azure Load Balancer Standard | Microsoft Docs"
-description: "Übersicht: Features von Azure Load Balancer Standard"
+title: 'Übersicht: Azure Load Balancer Standard | Microsoft Docs'
+description: 'Übersicht: Features von Azure Load Balancer Standard'
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: ddbfb415f062396f022f0f58cb975f6e3a5f1807
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e4fa38145ac21aaca8efa37250cc32ef1b1655c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Übersicht: Azure Load Balancer Standard (Preview)
 
@@ -327,7 +327,7 @@ SKUs sind nicht änderbar. Führen Sie die Schritte in diesem Abschnitt aus, um 
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-Load Balancer Standard ist zurzeit in allen öffentlichen Cloudregionen verfügbar.
+Load Balancer Standard ist zurzeit in allen öffentlichen Cloudregionen außer USA, Westen verfügbar.
 
 >[!IMPORTANT]
 > Für einen kurzen Zeitraum ist für den Zugriff in Regionen außerhalb der anfänglichen Startregionen („USA, Osten 2“, „USA, Mitte“, „Europa, Norden“, „USA, Westen-Mitte“, „Europa, Westen“, „Asien, Südosten“) die Registrierung zusätzlicher Abonnementfeatures (AllowLBPreviewWave2 und AllowLBPreviewWave3) erforderlich.  [Führen Sie diese Schritte aus](#additionalpreviewregions). Führen Sie alle Schritte aus, auch wenn Sie sich zuvor bereits für AllowLBPreview registriert haben.
@@ -467,6 +467,7 @@ Die folgenden Einschränkungen gelten für die Preview und können jederzeit ge�
 - [Azure Monitor-Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) werden zu diesem Zeitpunkt nicht unterstützt.
 - Das Portal bietet noch keine Unterstützung für die erweiterten Vorschauregionen.  Verwenden Sie als Problemumgehung Clienttools wie beispielsweise Vorlagen, Azure CLI 2.0 oder PowerShell.
 - Abonnementverschiebungen werden nicht unterstützt.
+- Nicht verfügbar in USA, Westen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,27 +1,27 @@
 ---
-title: Bereitstellen der App in Azure App Service mit einer ZIP-Datei | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Ihre App mit einer ZIP-Datei für Azure App Service bereitstellen."
+title: Bereitstellen der App in Azure App Service mit einer ZIP- oder WAR-Datei | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihre App mit einer ZIP-Datei (oder für Java-Entwickler mit einer WAR-Datei) in Azure App Service bereitstellen.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 03/07/2018
 ms.author: cephalin;sisirap
-ms.openlocfilehash: a0e4df0ef0a1c873f1efcac1d8dbfe3cada18218
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 6ecbf111bad96bce310109ac1a3e8f3bb846be6c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="deploy-your-app-to-azure-app-service-with-a-zip-file"></a>Bereitstellen der App in Azure App Service mit einer ZIP-Datei
+# <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Bereitstellen der App in Azure App Service mit einer ZIP- oder WAR-Datei
 
-In diesem Artikel erfahren Sie, wie Sie Ihre Web-App mithilfe einer ZIP-Datei in [Azure App Service](app-service-web-overview.md) bereitstellen. 
+In diesem Artikel erfahren Sie, wie Sie Ihre Web-App mithilfe einer ZIP- oder WAR-Datei in [Azure App Service](app-service-web-overview.md) bereitstellen. 
 
 Bei dieser Bereitstellung per ZIP-Datei wird der gleiche Kudu-Dienst verwendet, der auch bei der Continuous Integration-basierten Bereitstellungen zum Einsatz kommt. Kudu unterstützt die folgenden Funktionen für die Bereitstellung per ZIP-Datei: 
 
@@ -31,6 +31,10 @@ Bei dieser Bereitstellung per ZIP-Datei wird der gleiche Kudu-Dienst verwendet, 
 - Bereitstellungsprotokolle 
 
 Weitere Informationen finden Sie in der [Kudu-Dokumentation](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
+
+Bei der Bereitstellung mit einer WAR-Datei wird Ihre [WAR](https://wikipedia.org/wiki/WAR_(file_format))-Datei in App Service bereitgestellt, um dort Ihre Java-Web-App auszuführen. Weitere Informationen finden Sie unter [Bereitstellen einer WAR-Datei](#deploy-war-file).
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,35 +62,50 @@ zip -r <file-name>.zip .
 Compress-Archive -Path * -DestinationPath <file-name>.zip
 ``` 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="deploy-zip-file-with-azure-cli"></a>Bereitstellen einer ZIP-Datei mit der Azure-Befehlszeilenschnittstelle
 
-## <a name="upload-zip-file-to-cloud-shell"></a>Hochladen der ZIP-Datei in die Cloud-Shell
+Vergewissern Sie sich, dass Sie mindestens Version 2.0.21 von Azure CLI verwenden. Sie ermitteln die ausgeführte Version, indem Sie den Befehl `az --version` im Terminalfenster ausführen.
 
-Wenn Sie die Azure-Befehlszeilenschnittstelle lieber von Ihrem lokalen Terminal ausführen möchten, überspringen Sie diesen Schritt.
-
-Führen Sie die hier beschriebenen Schritte aus, um die ZIP-Datei in die Cloud-Shell hochzuladen. 
-
-[!INCLUDE [app-service-web-upload-zip.md](../../includes/app-service-web-upload-zip-no-h.md)]
-
-Weitere Informationen finden Sie unter [Beibehalten von Dateien in Azure Cloud Shell](../cloud-shell/persisting-shell-storage.md).
-
-## <a name="deploy-zip-file"></a>Bereitstellen der ZIP-Datei
-
-Stellen Sie die hochgeladene ZIP-Datei mit dem Befehl [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_zip) für Ihre Web-App bereit. Wenn Sie nicht Cloud-Shell verwenden möchten, müssen Sie sicherzustellen, dass Sie mindestens Version 2.0.21 der Azure-Befehlszeilenschnittstelle verwenden. Sie ermitteln die ausgeführte Version, indem Sie den Befehl `az --version` im lokalen Terminalfenster ausführen. 
+Stellen Sie die hochgeladene ZIP-Datei mit dem Befehl [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_zip) für Ihre Web-App bereit.  
 
 Im folgenden Beispiel wird die ZIP-Datei bereitgestellt, die Sie hochgeladen haben. Wenn Sie eine lokale Installation der Azure-Befehlszeilenschnittstelle verwenden, geben Sie den Pfad zu Ihrer lokalen ZIP-Datei als `--src` an.   
 
 ```azurecli-interactive
-az webapp deployment source config-zip --resource-group myResouceGroup --name <app_name> --src clouddrive/<filename>.zip
+az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
 ```
 
 Mit diesem Befehl werden die Dateien und Verzeichnisse aus der ZIP-Datei in Ihrem Standardordner der App Service-Anwendung (`\home\site\wwwroot`) bereitgestellt, und die App wird neu gestartet. Falls ein zusätzlicher benutzerdefinierter Buildprozess konfiguriert wurde, wird dieser ebenfalls ausgeführt. Weitere Informationen finden Sie in der [Kudu-Dokumentation](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
 
-Zum Anzeigen der Liste der Bereitstellungen für diese App müssen Sie die REST-APIs verwenden (siehe nächster Abschnitt). 
-
 [!INCLUDE [app-service-deploy-zip-push-rest](../../includes/app-service-deploy-zip-push-rest.md)]  
+
+## <a name="deploy-war-file"></a>Bereitstellen einer WAR-Datei
+
+Senden Sie zum Bereitstellen einer WAR-Datei in App Service eine POST-Anforderung an https://<App_Name>.scm.azurewebsites.net/api/wardeploy. Die POST-Anforderung muss die WAR-Datei im Nachrichtentext enthalten. Die Anmeldeinformationen für die Bereitstellung für Ihre App werden in der Anforderung mithilfe von HTTP-Standardauthentifizierung bereitgestellt. 
+
+Für die HTTP-Standardauthentifizierung benötigen Sie die Anmeldeinformationen für die App Service-Bereitstellung. Informationen zum Festlegen der Anmeldeinformationen für Ihre Bereitstellung finden Sie unter [Festlegen und Zurücksetzen von Anmeldeinformationen auf Benutzerebene](app-service-deployment-credentials.md#userscope).
+
+### <a name="with-curl"></a>Mit cURL
+
+Im folgenden Beispiel wird das cURL-Tool verwendet, um eine WAR-Datei bereitzustellen. Ersetzen Sie die Platzhalter `<username>`, `<war_file_path>` und `<app_name>`. Wenn Sie von cURL dazu aufgefordert werden, geben Sie das Kennwort ein.
+
+```bash
+curl -X POST -u <username> --data-binary @"<war_file_path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
+```
+
+### <a name="with-powershell"></a>Mit PowerShell
+
+Das folgende Beispiel verwendet [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod), um eine Anforderung zu senden, die die WAR-Datei enthält. Ersetzen Sie die Platzhalter `<deployment_user>`, `<deployment_password>`, `<zip_file_path>` und `<app_name>`.
+
+```PowerShell
+$username = "<deployment_user>"
+$password = "<deployment_password>"
+$filePath = "<war_file_path>"
+$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/wardeploy"
+$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "multipart/form-data"
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

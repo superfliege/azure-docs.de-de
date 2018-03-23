@@ -1,8 +1,8 @@
 ---
-title: "Entwerfen von Lösungen für die Notfallwiederherstellung – Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie durch Wahl des richtigen Failovermusters Ihre Cloud-Lösung für die Notfallwiederherstellung entwerfen können."
+title: Entwerfen von Lösungen für die Notfallwiederherstellung – Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie durch Wahl des richtigen Failovermusters Ihre Cloud-Lösung für die Notfallwiederherstellung entwerfen können.
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: anosov1960
 manager: jhubbard
 editor: monicar
@@ -12,15 +12,15 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.date: 12/13/2017
+ms.workload: Inactive
+ms.date: 03/05/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.workload: Inactive
-ms.openlocfilehash: 9d12fb8a7dbd3bb763e42fd0981d7ef18b57248b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: b2a8f897130c2bf21321366a727ce2e2ae9d1d99
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategien für die Notfallwiederherstellung für Anwendungen mit Pools für elastische SQL-Datenbank-Instanzen
 Im Laufe der Jahre haben wir gelernt, dass Clouddienste nicht narrensicher sind und dass es zu schwerwiegenden Vorfällen kommen kann. SQL-Datenbank verfügt über verschiedene Funktionen, mit denen für die geschäftliche Kontinuität Ihrer Anwendung gesorgt werden kann, wenn Vorfälle dieser Art auftreten. [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und einzelne Datenbanken unterstützen die gleichen Funktionen für die Notfallwiederherstellung. In diesem Artikel werden mehrere Notfallwiederherstellungsstrategien für Pools für elastische Datenbanken beschrieben, bei denen diese SQL-Datenbankfunktionen zur Sicherstellung der geschäftlichen Kontinuität verwendet werden.
@@ -30,6 +30,9 @@ In diesem Artikel wird das folgende kanonische SaaS-ISV-Anwendungsmuster verwend
 <i>Bei einer modernen cloudbasierten Webanwendung wird eine SQL-Datenbank für jeden Endbenutzer bereitgestellt. Der ISV verfügt über zahlreiche Kunden und setzt aus diesem Grund viele Datenbanken ein, die als Mandantendatenbanken bezeichnet werden. Da die Mandantendatenbanken in der Regel unvorhersagbare Aktivitätsmuster aufweisen, nutzt der ISV einen Pool für elastische Datenbanken, um die Datenbankkosten für längere Zeiträume eindeutig vorhersagbar zu machen. Mit dem Pool für elastische Datenbanken wird außerdem die Leistungsverwaltung bei Spitzen der Benutzeraktivität vereinfacht. Zusätzlich zu den Mandantendatenbanken werden für die Anwendung auch mehrere Datenbanken genutzt, um Benutzerprofile und die Sicherheit zu verwalten, Verwendungsmuster zu erfassen usw. Die Verfügbarkeit der einzelnen Mandanten wirkt sich nicht auf die Gesamtverfügbarkeit der Anwendung aus. Die Verfügbarkeit und Leistung von Verwaltungsdatenbanken ist für die Funktion der Anwendung von entscheidender Bedeutung, und wenn die Verwaltungsdatenbanken offline sind, ist auch die gesamte Anwendung offline.</i>  
 
 In diesem Artikel werden Strategien für die Notfallwiederherstellung anhand mehrerer Szenarios besprochen, angefangen bei kostenbewussten Anwendungen bis hin zu Anwendungen mit strengen Verfügbarkeitsanforderungen.
+
+> [!NOTE]
+> Wenn Sie Premium-Datenbanken und -Pools verwenden, können Sie sie resistent gegenüber regionalen Ausfällen machen, indem Sie sie auf die Konfiguration der zonenredundanten Bereitstellung umstellen (derzeit in der Vorschauphase). Informationen finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).
 
 ## <a name="scenario-1-cost-sensitive-startup"></a>Szenario 1: Kostenbewusste Anwendung für Startup-Unternehmen
 <i>Wir sind ein Startup-Unternehmen, bei dem stark auf die Kosten geachtet wird.  Wir möchten die Bereitstellung und Verwaltung der Anwendung vereinfachen und einen eingeschränkten Servicelevel (SLA) für einzelne Kunden verwenden. Es soll aber sichergestellt sein, dass die Anwendung als Ganzes niemals offline ist.</i>

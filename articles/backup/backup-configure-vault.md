@@ -1,11 +1,11 @@
 ---
 title: Verwenden des Azure Backup-Agents zum Sichern von Dateien und Ordnern | Microsoft-Dokumentation
-description: "Verwenden Sie den Microsoft Azure Backup-Agent, um Windows-Dateien und -Ordner in Azure zu sichern. Erstellen Sie einen Recovery Services-Tresor, installieren Sie den Backup-Agent, definieren Sie die Sicherungsrichtlinie, und führen Sie die erste Sicherung der Dateien und Ordner aus."
+description: Verwenden Sie den Microsoft Azure Backup-Agent, um Windows-Dateien und -Ordner in Azure zu sichern. Erstellen Sie einen Recovery Services-Tresor, installieren Sie den Backup-Agent, definieren Sie die Sicherungsrichtlinie, und führen Sie die erste Sicherung der Dateien und Ordner aus.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 keywords: Sicherungstresor; Windows-Server sichern; Windows sichern;
 ms.assetid: 7f5b1943-b3c1-4ddb-8fb7-3560533c68d5
 ms.service: backup
@@ -15,14 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/5/2018
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 0adb2565299a2cd613068539736d4272d59a2397
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 88a588322d88f817937cf06e25b5b25a147f03d0
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Sichern eines Windows-Servers oder -Clients in Azure unter Verwendung des Resource Manager-Bereitstellungsmodells
-
 In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner eines Windows-Servers (oder Windows-Clients) mithilfe von Azure Backup und des Resource Manager-Bereitstellungsmodells in Azure sichern.
 
 ![Sicherungsprozessschritte](./media/backup-configure-vault/initial-backup-process.png)
@@ -144,6 +143,9 @@ Nachdem Sie nun über einen Tresor verfügen, bereiten Sie Ihre Infrastruktur au
   Die Anmeldeinformationen für den Tresor werden in den Ordner „Downloads“ heruntergeladen. Nach dem Herunterladen der Anmeldeinformationen für den Tresor erscheint ein Popup mit der Frage, ob Sie die Anmeldeinformationen öffnen oder speichern möchten. Klicken Sie auf **Speichern**. Wenn Sie versehentlich auf **Öffnen** klicken, brechen Sie den Vorgang zum Öffnen der Anmeldeinformationen für den Tresor ab. Sie können die Anmeldeinformationen für den Tresor nicht öffnen. Fahren Sie mit dem nächsten Schritt fort. Die Anmeldeinformationen für den Tresor befinden sich im Ordner „Downloads“.   
 
   ![Herunterladen der Tresoranmeldeinformationen abgeschlossen](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
+
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="install-and-register-the-agent"></a>Installieren und Registrieren des Agents
 

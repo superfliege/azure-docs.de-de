@@ -1,11 +1,11 @@
 ---
 title: Protokollsuchen in Azure Log Analytics | Microsoft-Dokumentation
-description: "Sie benötigen eine Protokollsuche zum Abrufen von Daten aus Log Analytics.  In diesem Artikel wird beschrieben, wie neue Protokollsuchen in Log Analytics verwendet werden. Er enthält Konzepte, die Ihnen vor dem Erstellen bekannt sein sollten."
+description: Sie benötigen eine Protokollsuche zum Abrufen von Daten aus Log Analytics.  In diesem Artikel wird beschrieben, wie neue Protokollsuchen in Log Analytics verwendet werden. Er enthält Konzepte, die Ihnen vor dem Erstellen bekannt sein sollten.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.author: bwren
 ms.openlocfilehash: 5f040d1480433ccf4c0b2b22c0cf1e25a7151d74
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Grundlegendes zu Protokollsuchvorgängen in Log Analytics
 

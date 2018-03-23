@@ -1,8 +1,8 @@
 ---
 title: Kopieren von Daten nach bzw. aus Azure Cosmos DB mit Data Factory | Microsoft-Dokumentation
-description: "Erfahren Sie, wie mithilfe der Data Factory Daten von unterstützten Quelldatenspeichern nach Azure Cosmos DB oder aus Cosmos DB in unterstützte Senkenspeicher kopiert werden."
+description: Erfahren Sie, wie mithilfe der Data Factory Daten von unterstützten Quelldatenspeichern nach Azure Cosmos DB oder aus Cosmos DB in unterstützte Senkenspeicher kopiert werden.
 services: data-factory, cosmosdb
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: c791f335bfa9ec6073eb83149068571ceb253f82
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b54aba19ecb92867bc817cbbb921f4e6537ef70c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Cosmos DB mithilfe von Azure Data Factory
 
@@ -162,7 +162,7 @@ Legen Sie zum Kopieren von Daten aus Azure Cosmos DB den Quelltyp in der Kopiera
 
 ### <a name="azure-cosmos-db-as-sink"></a>Azure Cosmos DB als Senke
 
-Legen Sie zum Kopieren von Daten aus Azure Cosmos DB den Senkentyp in der Kopieraktivität auf **DocumentDbCollectionSink** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
+Legen Sie zum Kopieren von Daten in Azure Cosmos DB den Senkentyp in der Copy-Aktivität auf **DocumentDbCollectionSink** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |

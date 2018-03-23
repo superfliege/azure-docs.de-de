@@ -1,10 +1,10 @@
 ---
 title: Variablenobjekte in Azure Automation | Microsoft Docs
-description: "Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurationen in Azure Automation zur Verfügung stehen.  Dieser Artikel stellt eine ausführliche Beschreibung von Variablen bereit und zeigt, wie diese in Textrunbooks und grafischen Runbooks eingesetzt werden."
+description: Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurationen in Azure Automation zur Verfügung stehen.  Dieser Artikel stellt eine ausführliche Beschreibung von Variablen bereit und zeigt, wie diese in Textrunbooks und grafischen Runbooks eingesetzt werden.
 services: automation
-documentationcenter: 
+documentationcenter: ''
 author: georgewallace
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: b880c15f-46f5-4881-8e98-e034cc5a66ec
 ms.service: automation
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/09/2017
+ms.date: 03/07/2018
 ms.author: magoedte;bwren
-ms.openlocfilehash: f166b420dcd424b38f89275e1befd42a505b5785
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 2ed4cf16615a0ca1789b789a635de564af568eb9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variable Objekte in Azure Automation
 
@@ -30,16 +30,16 @@ Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurationen in Ihrem
 
 - Verwalten eines Werts über das Portal oder über die von Runbooks oder DSC-Konfigurationen verwendete Windows PowerShell-Befehlszeile, z.B. ein Satz von allgemeinen Konfigurationselementen wie eine bestimmte Liste von VM-Namen, eine bestimmte Ressourcengruppe, ein AD-Domänenname usw.  
 
-Automation-Variablen werden persistent gespeichert und bleiben daher auch dann verfügbar, wenn die Ausführung eines Runbooks oder einer DSC-Konfiguration misslingt.  Dadurch kann ein Wert von einem Runbook festgelegt und anschließend von einem anderen oder vom gleichen Runbook bzw. von einer anderen oder von der gleichen DSC-Konfiguration bei der nächsten Ausführung verwendet werden.
+Automation-Variablen werden persistent gespeichert und bleiben daher auch dann verfügbar, wenn die Ausführung eines Runbooks oder einer DSC-Konfiguration misslingt. Dadurch kann ein Wert von einem Runbook festgelegt und anschließend von einem anderen oder vom gleichen Runbook bzw. von einer anderen oder von der gleichen DSC-Konfiguration bei der nächsten Ausführung verwendet werden.
 
-Beim Erstellen einer Variablen können Sie festlegen, dass diese verschlüsselt gespeichert wird.  Wenn eine Variable verschlüsselt wird, wird sie sicher in Azure Automation gespeichert, und ihr Wert kann vom Cmdlet [Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx) , das zum Lieferumfang des Azure PowerShell-Moduls gehört, nicht abgerufen werden.  Ein verschlüsselter Wert kann ausschließlich über die Aktivität **Get-AutomationVariable** in einem Runbook oder einer DSC-Konfiguration abgerufen werden.
+Beim Erstellen einer Variablen können Sie festlegen, dass diese verschlüsselt gespeichert wird. Wenn eine Variable verschlüsselt wird, wird sie sicher in Azure Automation gespeichert, und ihr Wert kann vom Cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) , das zum Lieferumfang des Azure PowerShell-Moduls gehört, nicht abgerufen werden. Ein verschlüsselter Wert kann ausschließlich über die Aktivität **Get-AutomationVariable** in einem Runbook oder einer DSC-Konfiguration abgerufen werden.
 
 > [!NOTE]
 > Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Dieser Schlüssel wird mit einem Masterzertifikat verschlüsselt und in Azure Automation gespeichert. Vor dem Speichern eines sicheren Objekts wird der Schlüssel für das Automation-Konto mit dem Masterzertifikat verschlüsselt und anschließend zum Verschlüsseln des Objekts verwendet.
 
 ## <a name="variable-types"></a>Variablentypen
 
-Beim Erstellen einer Variablen über das Azure-Portal müssen Sie einen Datentyp aus der Dropdownliste angeben, damit das entsprechende Steuerelement zur Eingabe des Variablenwerts im Portal angezeigt werden kann. Die Variable ist nicht auf diesen Datentyp beschränkt, Sie müssen die Variable jedoch in Windows PowerShell festlegen, wenn Sie einen anderen Wertetyp angeben möchten. Wenn Sie **Nicht definiert** angeben, wird der Wert der Variablen auf **$null** festgelegt, und Sie müssen den Wert mithilfe des Cmdlets [Set-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913767.aspx) oder der Aktivität **Set-AutomationVariable** festlegen.  Sie können den Wert für einen komplexen Variablentyp nicht über das Portal festlegen, Sie können jedoch einen Wert jedes Typs in Windows PowerShell bereitstellen. Komplexe Typen werden als [PSCustomObject](http://msdn.microsoft.com/library/system.management.automation.pscustomobject.aspx)zurückgegeben.
+Beim Erstellen einer Variablen über das Azure-Portal müssen Sie einen Datentyp aus der Dropdownliste angeben, damit das entsprechende Steuerelement zur Eingabe des Variablenwerts im Portal angezeigt werden kann. Die Variable ist nicht auf diesen Datentyp beschränkt, Sie müssen die Variable jedoch in Windows PowerShell festlegen, wenn Sie einen anderen Wertetyp angeben möchten. Wenn Sie **Nicht definiert** angeben, wird der Wert der Variablen auf **$null** festgelegt, und Sie müssen den Wert mithilfe des Cmdlets [Set-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable) oder der Aktivität **Set-AutomationVariable** festlegen. Sie können den Wert für einen komplexen Variablentyp nicht über das Portal festlegen, Sie können jedoch einen Wert jedes Typs in Windows PowerShell bereitstellen. Komplexe Typen werden als [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) zurückgegeben.
 
 Sie können mehrere Werte in einer einzigen Variable speichern, indem Sie ein Array oder eine Hashtabelle erstellen und in der Variable speichern.
 
@@ -52,14 +52,14 @@ Im Folgenden finden Sie eine Liste von in Automation verfügbaren Variablentypen
 * Null
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-Cmdlets
-Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet.  Sie gehören zum Lieferumfang des [AzureRM.Automation-Moduls](/powershell/azure/overview), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
+Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet. Sie gehören zum Lieferumfang des [AzureRM.Automation-Moduls](/powershell/azure/overview), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
 | Cmdlets | BESCHREIBUNG |
 |:---|:---|
-|[Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx)|Ruft den Wert einer vorhandenen Variable ab.|
-|[New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx)|Erstellt eine neue Variable und legt ihren Wert fest.|
-|[Remove-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt619354.aspx)|Entfernt eine vorhandene Variable.|
-|[Set-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603601.aspx)|Legt den Wert für eine vorhandene Variable fest.|
+|[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|Ruft den Wert einer vorhandenen Variable ab.|
+|[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|Erstellt eine neue Variable und legt ihren Wert fest.|
+|[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|Entfernt eine vorhandene Variable.|
+|[Set-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable)|Legt den Wert für eine vorhandene Variable fest.|
 
 ## <a name="activities"></a>Aktivitäten
 Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Anmeldeinformationen in einem Runbook und DSC-Konfigurationen verwendet.
@@ -92,7 +92,7 @@ Die Funktionen in der folgenden Tabelle werden zum Zugreifen auf und Abrufen von
 
 ### <a name="to-create-a-new-variable-with-windows-powershell"></a>So erstellen Sie eine neue Variable mit Windows PowerShell
 
-Das Cmdlet [New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx) erstellt eine neue Variable und legt ihren anfänglichen Wert fest. Sie können den Wert mithilfe von [Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx)abrufen. Wenn es sich um einen einfachen Wert handelt, wird der gleiche Typ zurückgegeben. Wenn es sich um einen komplexen Wert handelt, wird ein **PSCustomObject** zurückgegeben.
+Das Cmdlet [New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) erstellt eine neue Variable und legt ihren anfänglichen Wert fest. Sie können den Wert mithilfe von [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)abrufen. Wenn es sich um einen einfachen Wert handelt, wird der gleiche Typ zurückgegeben. Wenn es sich um einen komplexen Wert handelt, wird ein **PSCustomObject** zurückgegeben.
 
 Die folgenden Beispielbefehle zeigen, wie eine Variable vom Typ "string" erstellt und anschließend der Wert dieser Variablen zurückgegeben wird.
 
@@ -116,7 +116,7 @@ Die folgenden Beispielbefehle zeigen, wie eine Variable eines komplexen Typs ers
 
 ## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>Verwenden einer Variablen in einem Runbook oder einer DSC-Konfiguration
 
-Verwenden Sie die Aktivität **Set-AutomationVariable**, um den Wert einer Automation-Variablen in einem PowerShell-Runbook oder einer DSC-Konfiguration festzulegen, und die Aktivität **Get-AutomationVariable**, um den Wert abzurufen.  Die Verwendung der Cmdlets **Set-AzureAutomationVariable** oder **Get-AzureAutomationVariable** in einem Runbook oder einer DSC-Konfiguration empfiehlt sich nicht, da sie weniger effizient sind als die Workflowaktivitäten.  Außerdem können Sie den Wert sicherer Variablen mit **Get-AzureAutomationVariable**nicht abrufen.  Die einzige Möglichkeit, eine neue Variable in einem Runbook oder einer DSC-Konfiguration zu erstellen, ist die Verwendung des Cmdlets [New-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913771.aspx).
+Verwenden Sie die Aktivität **Set-AutomationVariable**, um den Wert einer Automation-Variablen in einem PowerShell-Runbook oder einer DSC-Konfiguration festzulegen, und die Aktivität **Get-AutomationVariable**, um den Wert abzurufen. Die Verwendung der Cmdlets **Set-AzureRMAutomationVariable** oder **Get-AzureRMAutomationVariable** in einem Runbook oder einer DSC-Konfiguration empfiehlt sich nicht, da sie weniger effizient als die Workflowaktivitäten sind. Außerdem können Sie den Wert sicherer Variablen mit **Get-AzureRMAutomationVariable** nicht abrufen. Die einzige Möglichkeit, eine neue Variable in einem Runbook oder einer DSC-Konfiguration zu erstellen, ist die Verwendung des Cmdlets [New-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable).
 
 
 ### <a name="textual-runbook-samples"></a>Beispiele für Textrunbooks
@@ -153,7 +153,7 @@ Im folgenden Code wird der Wert aus der Variablen abgerufen und zum Starten des 
 
 #### <a name="setting-and-retrieving-a-collection-in-a-variable"></a>Festlegen und Abrufen eine Auflistung in einer Variablen
 
-Der folgende Beispielcode zeigt, wie eine Variable mit einer Auflistung komplexer Werte in einem Textrunbook aktualisiert wird. In diesem Beispiel werden mehrere virtuelle Azure-Computer mit **Get-AzureVM** abgerufen und in einer vorhandenen Automation-Variablen gespeichert.  Wie im Abschnitt [Variablentypen](#variable-types)erläutert, erfolgt die Speicherung als PSCustomObject-Auflistung gespeichert.
+Der folgende Beispielcode zeigt, wie eine Variable mit einer Auflistung komplexer Werte in einem Textrunbook aktualisiert wird. In diesem Beispiel werden mehrere virtuelle Azure-Computer mit **Get-AzureVM** abgerufen und in einer vorhandenen Automation-Variablen gespeichert. Wie im Abschnitt [Variablentypen](#variable-types)erläutert, erfolgt die Speicherung als PSCustomObject-Auflistung gespeichert.
 
     $vms = Get-AzureVM | Where -FilterScript {$_.Name -match "my"}     
     Set-AutomationVariable -Name 'MyComplexVariable' -Value $vms
@@ -197,7 +197,7 @@ In einem grafischen Runbook fügen Sie **Get-AutomationVariable** oder **Set-Aut
 ![Hinzufügen einer Variablen zum Zeichenbereich](media/automation-variables/runbook-variable-add-canvas.png)
 
 #### <a name="setting-values-in-a-variable"></a>Festlegen von Werten in einer Variablen
-Die folgende Abbildung zeigt Beispielaktivitäten zum Aktualisieren einer Variablen mit einem einfachen Wert in einem grafischen Runbook. In diesem Beispiel wird ein einzelner virtueller Azure-Computer mit **Get-AzureRmVM** abgerufen, und der Name des Computers wird in einer vorhandenen Automation-Variablen vom Typ „string“ gespeichert.  Es spielt keine Rolle, ob es sich bei der [Verknüpfung um eine Pipeline oder eine Sequenz](automation-graphical-authoring-intro.md#links-and-workflow) handelt, da in der Ausgabe nur ein einziges Objekt zu erwarten ist.
+Die folgende Abbildung zeigt Beispielaktivitäten zum Aktualisieren einer Variablen mit einem einfachen Wert in einem grafischen Runbook. In diesem Beispiel wird ein einzelner virtueller Azure-Computer mit **Get-AzureRmVM** abgerufen, und der Name des Computers wird in einer vorhandenen Automation-Variablen vom Typ „string“ gespeichert. Es spielt keine Rolle, ob es sich bei der [Verknüpfung um eine Pipeline oder eine Sequenz](automation-graphical-authoring-intro.md#links-and-workflow) handelt, da in der Ausgabe nur ein einziges Objekt zu erwarten ist.
 
 ![Festlegen einer einfachen Variablen](media/automation-variables/runbook-set-simple-variable.png)
 

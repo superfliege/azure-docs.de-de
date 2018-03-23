@@ -1,6 +1,6 @@
 ---
-title: "Tutorial zu Kubernetes in Azure – Bereitstellen von Clustern"
-description: "AKS-Tutorial – Bereitstellen eines Clusters"
+title: Tutorial zu Kubernetes in Azure – Bereitstellen von Clustern
+description: AKS-Tutorial – Bereitstellen eines Clusters
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: d02229739e3f358e4a6510dfbb0585939e947f9c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6ea26a2d4214c41faa5d63b7c72667955a43d6a2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Bereitstellen eines Azure Container Service-Clusters (AKS)
 
@@ -96,7 +96,7 @@ CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --q
 Rufen Sie die Ressourcen-ID für die ACR ab. Aktualisieren Sie den Registrierungsnamen auf den Namen Ihrer ACR und die Ressourcengruppe auf die Ressourcengruppe, in der sich die ACR befindet.
 
 ```azurecli
-ACR_ID=$(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
+ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
 ```
 
 Erstellen Sie die Rollenzuweisung, mit der der richtige Zugriff gewährt wird.

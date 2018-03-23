@@ -1,11 +1,11 @@
 ---
 title: Problem beim Installieren des Anwendungsproxy-Agent-Connectors | Microsoft-Dokumentation
-description: "Beheben von Problemen, die beim Installieren des Anwendungsproxy-Agent-Connectors auftreten können"
+description: Beheben von Problemen, die beim Installieren des Anwendungsproxy-Agent-Connectors auftreten können
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 8fbd707b6708661ab0d655afadff2b18694a981e
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem beim Installieren des Anwendungsproxy-Agent-Connectors
 
@@ -37,7 +37,7 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 **Ziel**: Überprüfen Sie, ob der Connectorcomputer eine Verbindung mit dem Registrierungsendpunkt des AAD-Anwendungsproxys und der Microsoft-Anmeldeseite herstellen kann.
 
-1.  Öffnen Sie einen Browser, und wechseln Sie zu der folgenden Webseite: <https://aadap-portcheck.connectorporttest.msappproxy.net>. Überprüfen Sie dann, ob die Verbindungen mit Rechenzentren in den USA (Mitte und Osten) mit den Ports 80 und 443 funktionieren.
+1.  Öffnen Sie einen Browser, und wechseln Sie zur folgenden Webseite: <https://aadap-portcheck.connectorporttest.msappproxy.net>. Überprüfen Sie anschließend, ob die Verbindungen mit den Rechenzentren in „USA, Mitte“ und „USA, Osten“ mit den Ports 80 und 443 funktionieren.
 
 2.  Wenn keiner dieser Ports erfolgreich ist (kein grünes Häkchen aufweist), stellen Sie sicher, dass die Firewall oder der Back-End-Proxy über \*.msappproxy.net mit ordnungsgemäß definierten Ports 80 und 443 verfügt.
 
@@ -54,7 +54,7 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 **So lösen Sie das Problem:**
 
-1.  Überprüfen Sie, ob der Computer TLS 1.2 unterstützt – Alle Windows-Versionen nach 2012 R2 sollten TLS 1.2 unterstützen. Wenn Ihr Connectorcomputer Version 2012 R2 oder früher verwendet, stellen Sie sicher, dass die folgenden KBs auf dem Computer installiert sind: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>.
+1.  Überprüfen Sie, ob der Computer TLS 1.2 unterstützt – Alle Windows-Versionen nach 2012 R2 sollten TLS 1.2 unterstützen. Wenn für Ihren Connectorcomputer eine Version von 2012 R2 oder früher verwendet wird, sollten Sie sicherstellen, dass die folgenden KBs darauf installiert sind: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>.
 
 2.  Wenden Sie sich an Ihren Netzwerkadministrator, damit der Back-End-Proxy und die Firewall überprüft werden, damit sie SHA512 nicht für ausgehenden Datenverkehr blockieren.
 
@@ -64,7 +64,7 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 **So überprüfen Sie, ob die Anmeldeinformationen korrekt sind:**
 
-Stellen Sie eine Verbindung mit <https://login.microsoftonline.com> her, und verwenden Sie dieselben Anmeldeinformationen. Überprüfen Sie, ob die Anmeldung erfolgreich war. Sie können die Benutzerrolle überprüfen, indem Sie zu **Azure Active Directory** -&gt; **Benutzer und Gruppen** -&gt; **Alle Benutzer** wechseln. 
+Stellen Sie eine Verbindung mit <https://login.microsoftonline.com> her, und verwenden Sie die gleichen Anmeldeinformationen. Überprüfen Sie, ob die Anmeldung erfolgreich war. Sie können die Benutzerrolle überprüfen, indem Sie zu **Azure Active Directory** -&gt; **Benutzer und Gruppen** -&gt; **Alle Benutzer** wechseln. 
 
 Wählen Sie Ihr Benutzerkonto aus, und klicken Sie dann im daraufhin angezeigten Menü auf „Verzeichnisrolle“. Überprüfen Sie, ob die ausgewählte Rolle „Globaler Administrator“ ist. Wenn Sie im Verlauf dieser Schritte nicht auf die Seiten zugreifen können, sind Sie kein globaler Administrator.
 

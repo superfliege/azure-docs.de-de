@@ -1,5 +1,5 @@
 ---
-title: "Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service | Microsoft-Dokumentation"
+title: Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie ein App Service-Zertifikat erwerben und es an Ihre App Service-App binden.
 services: app-service
 documentationcenter: .net
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
 ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service
 
@@ -26,7 +26,7 @@ In diesem Tutorial wird gezeigt, wie Sie Ihre Web-App schützen, indem Sie ein S
 
 ## <a name="step-1---log-in-to-azure"></a>Schritt 1: Anmelden bei Azure
 
-Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="step-2---place-an-ssl-certificate-order"></a>Schritt 2: Bestellen eines SSL-Zertifikats
 

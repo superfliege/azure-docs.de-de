@@ -1,25 +1,19 @@
 ---
-title: "Überwachen und Verbessern der Leistung in Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Die Azure SQL-Datenbank bietet Leistungstools, mit denen Sie Bereiche identifizieren können, in denen die aktuelle Abfrageleistung verbessert werden kann."
+title: Überwachen und Verbessern der Leistung in Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Die Azure SQL-Datenbank bietet Leistungstools, mit denen Sie Bereiche identifizieren können, in denen die aktuelle Abfrageleistung verbessert werden kann.
 services: sql-database
-documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: monicar
-ms.assetid: a60b75ac-cf27-4d73-8322-ee4d4c448aa2
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 07/19/2016
 ms.author: sstein
-ms.openlocfilehash: 49b24619372d41ff25f815ca493ca7e6ce69ef9c
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 1d327e33a84917688e70f234df311e7b7cf4b30b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-and-improve-performance"></a>Überwachen und Verbessern der Leistung
 Azure SQL-Datenbank stellt intelligente Aktionen zur Optimierung und Empfehlungen bereit, mit denen potenzielle Probleme in Ihrer Datenbank identifiziert werden und Aktionen zur Leistungsverbesserung Ihrer Workload vorgeschlagen werden.
@@ -75,5 +69,5 @@ Weitere Informationen zu dieser Seite finden Sie im Artikel **[How to use Query 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken](sql-database-performance-guidance.md)
-* [Wann sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool-guidance.md)
+* [Wann sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md)
 

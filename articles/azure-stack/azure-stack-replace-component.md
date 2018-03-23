@@ -2,10 +2,10 @@
 title: Ersetzen einer Hardwarekomponente auf einem Azure Stack-Skalierungseinheitenknoten | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Hardwarekomponente in einem System mit integriertem Azure Stack ersetzen.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: c6e036bf-8c80-48b5-b2d2-aa7390c1b7c9
 ms.service: azure-stack
 ms.workload: na
@@ -44,7 +44,7 @@ Das folgende Flussdiagramm zeigt den allgemeinen FRU-Vorgang zum Ersetzen einer 
 
 *Diese Aktion ist abhängig vom physischen Zustand der Hardware möglicherweise nicht erforderlich.
 
-**Ob der OEM-Hardwareanbieter den Austausch von Komponenten und die Aktualisierung der Firmware durchführt, kann je nach Ihrem Supportvertrag variieren.
+\*\*Ob der OEM-Hardwareanbieter den Austausch von Komponenten und die Aktualisierung der Firmware durchführt, kann je nach Ihrem Supportvertrag variieren.
 
 ## <a name="review-alert-information"></a>Überprüfen von Warnungsinformation
 

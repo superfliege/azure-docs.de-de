@@ -2,7 +2,7 @@
 title: Was ist der Zugriffsbereich in Azure Active Directory? | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Varianten des Zugriffsbereichs (Webbrowser, Android-App, iPhone- und iPad-App) zum Zugreifen auf SaaS-Apps verwenden.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/06/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9069cb0b46ddc1155c64bd63a7fcd8a685abbad
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c9b647e8f731995537a8797ab28248a1c42b6460
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-the-access-panel"></a>Was ist der Zugriffsbereich?
 
@@ -67,6 +67,9 @@ Nach der Authentifizierung können Sie mit den Anwendungen interagieren, die Ihr
 ## <a name="web-browser-requirements"></a>Webbrowseranforderungen
 
 Die Mindestanforderung für den Zugriffsbereich ist ein Browser mit JavaScript-Unterstützung und CSS-Aktivierung. Zur Verwendung von kennwortbasiertem einmaligem Anmelden (Single Sign-On, SSO) bei Anwendungen muss in Ihrem Browser die Erweiterung für den Zugriffsbereich installiert sein. Die Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung auswählen, die für kennwortbasiertes einmaliges Anmelden konfiguriert ist.
+
+Das Installationsprogramm ist architekturspezifisch. Wenn Sie auf Downloadlink klicken, erhalten Sie nur das Installationsprogramm für die BS-Architektur, die Sie derzeit verwenden. Wenn Sie ein Anwendungsadministrator für die Bereitstellung sind, achten Sie darauf, den Downloadlink auf einem 64-Bit- und einem 32-Bit-Gerät aufzurufen, um beide Installationsdateien abzurufen.
+
 
 Die Zugriffsbereichserweiterung ist derzeit verfügbar für:
 - **Edge:** Unter Windows 10 Anniversary Edition oder höher 

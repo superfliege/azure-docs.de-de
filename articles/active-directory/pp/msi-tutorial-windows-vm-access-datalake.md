@@ -1,11 +1,11 @@
 ---
-title: "Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Data Lake Store"
-description: "Dieses Tutorial veranschaulicht die Verwendung einer Windows-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure Data Lake Store."
+title: Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Data Lake Store
+description: Dieses Tutorial veranschaulicht die Verwendung einer Windows-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure Data Lake Store.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 742b76e17b7ad00a70b0d18895c0b59ebe044d47
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Data Lake Store
 
@@ -100,7 +100,7 @@ In diesem Tutorial authentifizieren Sie sich bei der REST-API für das Data Lake
 1. Navigieren Sie im Portal zu **Virtuelle Computer**, wechseln Sie dann zu Ihrem virtuellen Windows-Computer, und klicken Sie in der **Übersicht** auf **Verbinden**.
 2. Geben Sie Ihren **Benutzernamen** und Ihr **Kennwort** ein, das Sie beim Erstellen des virtuellen Windows-Computers hinzugefügt haben. 
 3. Sie haben nun eine **Remotedesktopverbindung** mit dem virtuellen Computer erstellt. Öffnen Sie jetzt **PowerShell** in der Remotesitzung. 
-4. Erstellen Sie mithilfe des PowerShell-Befehls `Invoke-WebRequest` eine Anforderung an den lokalen MSI-Endpunkt, um ein Zugriffstoken für Azure Data Lake Store zu erhalten.  Der Ressourcenbezeichner für Data Lake Store lautet „https://datalake.azure.net/“.  Data Lake führt eine Prüfung auf genaue Übereinstimmung der Ressourcen-ID durch, bei der auf der abschließende Schrägstrich wichtig ist.
+4. Erstellen Sie mithilfe des PowerShell-Befehls `Invoke-WebRequest` eine Anforderung an den lokalen MSI-Endpunkt, um ein Zugriffstoken für Azure Data Lake Store zu erhalten.  Der Ressourcenbezeichner für Data Lake Store lautet https://datalake.azure.net/.  Data Lake führt eine Prüfung auf genaue Übereinstimmung der Ressourcen-ID durch, bei der auf der abschließende Schrägstrich wichtig ist.
 
    ```powershell
    $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://datalake.azure.net/"} -Headers @{Metadata="true"}

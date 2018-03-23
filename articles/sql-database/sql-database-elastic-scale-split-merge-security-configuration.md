@@ -1,25 +1,20 @@
 ---
 title: Split-Merge-Sicherheitskonfiguration| Microsoft Docs
-description: "Richten Sie X409-Zertifikate für die Verschlüsselung mit dem Split/Merge-Dienst für elastische Skalierung ein."
+description: Richten Sie X409-Zertifikate für die Verschlüsselung mit dem Split/Merge-Dienst für elastische Skalierung ein.
 metakeywords: Elastic Database certificates security
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: torsteng
-ms.assetid: f9e89c57-61a0-484f-b787-82dae2349cb6
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
-ms.author: torsteng
-ms.openlocfilehash: 98f046a943c1fe33b421b3ab6830d78e6c4304a0
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.author: sstein
+ms.openlocfilehash: c07ba1e74daace546bae4f4209842312136914a3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge-Sicherheitskonfiguration
 Zur Verwendung des Split-Merge-Diensts müssen Sie die Sicherheit ordnungsgemäß konfigurieren. Der Dienst ist Teil der Funktion Elastic Scale von Microsoft Azure SQL-Datenbank. Weitere Informationen finden Sie im [Lernprogramm zum Split-Merge-Dienst für die elastische Skalierung](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -83,7 +78,7 @@ Clientzertifikate sind erforderlich, um Anforderungen an den Dienst zu authentif
 8. [Konfigurieren der zulässigen Clients in der Dienstkonfigurationsdatei](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>So verwenden Sie vorhandene Clientzertifikate
-1. [Suchen des öffentlichen Schlüssels der Zertifizierungsstelle](#find-ca-public-key)
+1. [Find CA Public Key](#find-ca-public-key)
 2. [Hochladen eines CA-Zertifikats zum Clouddienst](#Upload-CA-certificate-to-cloud-service)
 3. [Aktualisieren des CA-Zertifikats in der Dienstkonfigurationsdatei](#Update-CA-Certificate-in-Service-Configuration-File)
 4. [Kopieren der Clientfingerabdrücke](#Copy-Client-Certificate-Thumbprints)
@@ -401,19 +396,15 @@ Folgen Sie diesen Schritten:
 Gehen Sie im **Zertifikatexport-Assistenten**wie folgt vor:
 
 1. Klicken Sie auf **Weiter**.
-
 2. Wählen Sie Ja **und** dann **Privaten Schlüssel exportieren** aus.
 3. Klicken Sie auf **Weiter**.
-
 4. Wählen Sie das gewünschte Ausgabeformat für die Datei aus.
 5. Aktivieren Sie die gewünschten Optionen.
 6. Aktivieren Sie **Kennwort**.
 7. Geben Sie ein sicheres Kennwort ein, und bestätigen Sie es.
 8. Klicken Sie auf **Weiter**.
-
 9. Geben einen Dateinamen für das Speichern des Zertifikats ein, oder suchen Sie danach (verwenden Sie die Dateierweiterung .PFX).
 10. Klicken Sie auf **Weiter**.
-
 11. Klicken Sie auf **Fertig stellen**.
 12. Klicken Sie auf **OK**.
 
@@ -425,7 +416,6 @@ Gehen Sie im Zertifikatimport-Assistenten wie folgt vor:
    * Wählen Sie **Aktueller Benutzer** aus, wenn nur Prozesse, die unter dem aktuellen Benutzer ausgeführt werden, auf den Dienst zugreifen.
    * Wählen Sie **Lokaler Computer** aus, wenn andere Prozesse auf diesem Computer auf den Dienst zugreifen.
 2. Klicken Sie auf **Weiter**.
-
 3. Wenn Sie Daten aus einer Datei importieren, bestätigen Sie den Dateipfad.
 4. Beim Importieren einer.PFX-Datei:
    1. Geben Sie das Kennwort ein, das den privaten Schlüssel schützt.

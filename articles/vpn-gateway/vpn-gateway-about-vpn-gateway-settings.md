@@ -1,11 +1,11 @@
 ---
-title: "VPN Gateway-Einstellungen für standortübergreifende Azure-Verbindungen | Microsoft-Dokumentation"
-description: "Hier erhalten Sie Informationen zu VPN Gateway-Einstellungen für virtuelle Azure-Netzwerkgateways."
+title: VPN Gateway-Einstellungen für standortübergreifende Azure-Verbindungen | Microsoft-Dokumentation
+description: Hier erhalten Sie Informationen zu VPN Gateway-Einstellungen für virtuelle Azure-Netzwerkgateways.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ae665bc5-0089-45d0-a0d5-bc0ab4e79899
 ms.service: vpn-gateway
@@ -13,19 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/12/2017
+ms.date: 03/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: d265c72cfc02710afb630f3b8258602c936d1ebc
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: e4f02e2b001b6821e732cead660aa0b758f1133e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informationen zu VPN Gateway-Einstellungen
 
 Ein VPN Gateway ist eine Art von Gateway für virtuelle Netzwerke, mit dem verschlüsselter Datenverkehr zwischen Ihrem virtuellen Netzwerk und Ihrem lokalen Standort über eine öffentliche Verbindung gesendet wird. Über ein VPN Gateway können Sie auch Datenverkehr zwischen virtuellen Netzwerken über den Azure-Backbone senden.
 
 Für eine VPN Gateway-Verbindung müssen mehrere Ressourcen konfiguriert werden, die jeweils konfigurierbare Einstellungen enthalten. In den Abschnitten in diesem Artikel werden die Ressourcen und Einstellungen beschrieben, die sich auf ein im Resource Manager-Bereitstellungsmodell erstelltes VPN-Gateway beziehen. Beschreibungen und Topologiediagramme für jede Verbindungslösung finden Sie im Artikel [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md) .
+
+>[!NOTE]
+> Die Werte in diesem Artikel gelten für Gateways des virtuellen Netzwerks, die den Gatewaytyp „Vpn“ verwenden. Deshalb werden sie als VPN-Gateways bezeichnet. Werte, die für den Gatewaytyp „ExpressRoute“ gelten, finden Sie unter [Gateways für virtuelle Netzwerke für ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md). Die Werte für ExpressRoute-Gateways sind andere Werte, als Sie für VPN-Gateways verwenden.
+>
+>
 
 ## <a name="gwtype"></a>Gatewaytypen
 
@@ -149,7 +154,7 @@ Manchmal müssen Sie die Einstellungen des Gateways des lokalen Netzwerks änder
 
 Zusätzliche technische Ressourcen und spezielle Syntaxanforderungen bei der Verwendung von REST-APIs, PowerShell-Cmdlets oder die Azure-CLI für VPN-Gatewaykonfigurationen finden Sie auf den folgenden Seiten:
 
-| **Klassisch** | **Ressourcen-Manager** |
+| **Klassisch** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/azure#networking) |[PowerShell](/powershell/module/azurerm.network#vpn) |
 | [REST-API](https://msdn.microsoft.com/library/jj154113) |[REST-API](/rest/api/network/virtualnetworkgateways) |

@@ -1,11 +1,11 @@
 ---
-title: "Prüfbarkeit: Dienstkommunikation | Microsoft Docs"
+title: 'Prüfbarkeit: Dienstkommunikation | Microsoft Docs'
 description: Die Kommunikation von Dienst zu Dienst ist ein wichtiger Integrationspunkt einer Service Fabric-Anwendung. In diesem Artikel werden Entwurfsaspekte und Testverfahren beschrieben.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 017557df-fb59-4e4a-a65d-2732f29255b8
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4c6b53673dd4c79ce435c1593e7d08c7dd4a1cb0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c87b5d82b6eef2b1d28a3280cc2fa07c28084f90
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric-Testability-Szenarien: Dienstkommunikation
 Microservices und dienstorientierte Architekturstile können in Azure Service Fabric auf natürliche Weise genutzt werden. Bei diesen Arten von verteilten Architekturen setzen sich komponentenbasierte Microserviceanwendungen in der Regel aus mehreren Diensten zusammen, die miteinander kommunizieren müssen. Sogar im einfachsten Fall verfügen Sie im Allgemeinen mindestens über einen zustandslosen Webdienst und einen zustandsbehafteten Datenspeicherdienst, die miteinander kommunizieren müssen.
@@ -67,14 +67,14 @@ Mit den Testability-Tools von Service Fabric können Sie ein Testszenario zum Te
    
     ```powershell
    
-    PS > Restart-ServiceFabricNode -NodeName Node_1
+    PS > Stop-ServiceFabricNode -NodeName Node_1
    
     ```
 
 ## <a name="maintain-service-availability"></a>Aufrechterhalten der Dienstverfügbarkeit
-Service Fabric ist eine Plattform, mit der für Ihre Dienste eine hohe Verfügbarkeit erzielt werden soll. In Extremfällen können zugrunde liegende Infrastrukturprobleme trotzdem noch zum Ausfall der Verfügbarkeit führen. Es ist wichtig, auch für diese Szenarien Tests durchzuführen.
+Service Fabric ist eine Plattform, mit der für Ihre Dienste Hochverfügbarkeit erzielt werden soll. In Extremfällen können zugrunde liegende Infrastrukturprobleme trotzdem noch zum Ausfall der Verfügbarkeit führen. Es ist wichtig, auch für diese Szenarien Tests durchzuführen.
 
-Für zustandsbehaftete Dienste wird ein quorumbasiertes System zum Replizieren des Zustands mit dem Ziel einer hohen Verfügbarkeit verwendet. Dies bedeutet, dass ein Quorum von Replikaten verfügbar sein muss, um Schreibvorgänge ausführen zu können. In seltenen Fällen, z. B. bei einem umfangreicheren Hardwarefehler, ist unter Umständen kein Quorum von Replikaten verfügbar. Sie können dann keine Schreibvorgänge ausführen, während Lesevorgänge weiterhin möglich sind.
+Für zustandsbehaftete Dienste wird ein quorumbasiertes System zum Replizieren des Zustands mit dem Ziel der Hochverfügbarkeit verwendet. Dies bedeutet, dass ein Quorum von Replikaten verfügbar sein muss, um Schreibvorgänge ausführen zu können. In seltenen Fällen, z. B. bei einem umfangreicheren Hardwarefehler, ist unter Umständen kein Quorum von Replikaten verfügbar. Sie können dann keine Schreibvorgänge ausführen, während Lesevorgänge weiterhin möglich sind.
 
 ### <a name="test-it-write-operation-unavailability"></a>Testen: Nichtverfügbarkeit von Schreibvorgängen
 Mithilfe der Testability-Tools in Service Fabric können Sie als Test einen Fehler einfügen, der Quorumverlust ausgelöst. Ein solches Szenario ist zwar selten, aber es ist trotzdem ist es wichtig, dass Clients und Dienste, die von einem zustandsbehafteten Dienst abhängig sind, auf die Behandlung von Situationen vorbereitet sind, in denen keine Schreibanforderungen an den Dienst möglich sind. Außerdem ist es wichtig, dass der zustandsbehaftete Dienst selbst über diese Möglichkeit informiert ist und mit Aufrufern ordnungsgemäß kommunizieren kann.

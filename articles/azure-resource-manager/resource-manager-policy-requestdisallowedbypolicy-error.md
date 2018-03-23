@@ -1,23 +1,23 @@
 ---
-title: "Fehler „RequestDisallowedByPolicy“ bei Azure-Ressourcenrichtlinien | Microsoft-Dokumentation"
-description: "Beschreibt die Ursache des Fehlers „RequestDisallowedByPolicy“."
+title: Fehler „RequestDisallowedByPolicy“ bei Azure-Ressourcenrichtlinien | Microsoft-Dokumentation
+description: Beschreibt die Ursache des Fehlers „RequestDisallowedByPolicy“.
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 11/03/2017
+ms.date: 03/09/2018
 ms.author: genli
-ms.openlocfilehash: 2e821c0369c6f01a7f09361c1093259429a79fa6
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 5a9efa6b807e933726104e7af315589ede5d9b74
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Fehler „RequestDisallowedByPolicy“ bei Azure-Ressourcenrichtlinien
 
@@ -25,7 +25,7 @@ Dieser Artikel beschreibt die Ursache des Fehlers „RequestDisallowedByPolicy�
 
 ## <a name="symptom"></a>Symptom
 
-Wenn Sie versuchen, während der Bereitstellung eine Aktion auszuführen, erhalten Sie möglicherweise den Fehler **RequestDisallowedByPolicy**, der verhindert, dass die Aktion abgeschlossen wird. Das folgende Beispiel zeigt den Fehler:
+Während der Bereitstellung erhalten Sie ggf. den Fehler **RequestDisallowedByPolicy**, der die Erstellung der Ressourcen verhindert. Das folgende Beispiel zeigt den Fehler:
 
 ```json
 {
@@ -40,7 +40,7 @@ Wenn Sie versuchen, während der Bereitstellung eine Aktion auszuführen, erhalt
 
 Verwenden Sie zum Abrufen von Details zur Richtlinie, die die Bereitstellung blockiert hat, eine der folgenden Methoden:
 
-### <a name="method-1"></a>Methode 1
+### <a name="powershell"></a>PowerShell
 
 Geben Sie in PowerShell diese Richtlinienkennung als `Id`-Parameter an, um Details zur Richtlinie abzurufen, die Ihre Bereitstellung blockiert.
 
@@ -48,9 +48,9 @@ Geben Sie in PowerShell diese Richtlinienkennung als `Id`-Parameter an, um Detai
 (Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-### <a name="method-2"></a>Methode 2 
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Geben Sie in Azure CLI 2.0 den Namen der Richtliniendefinition an: 
+Geben Sie in Azure CLI 2.0 den Namen der Richtliniendefinition an:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -58,10 +58,10 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Lösung
 
-Für Sicherheit und Kompatibilität kann Ihre IT-Abteilung eine Ressourcenrichtlinie erzwingen, die das Erstellen von öffentlichen IP-Adressen, Netzwerksicherheitsgruppen, benutzerdefinierten Routen oder Routentabellen verhindert. Die Fehlermeldung im Abschnitt **Symptoms** zeigt eine Richtlinie mit dem Namen **regionPolicyDefinition** an. Ihre Richtlinie hat möglicherweise einen anderen Namen.
-Zum Beheben dieses Problems arbeiten Sie mit Ihrer IT-Abteilung zusammen, um die Ressourcenrichtlinien zu überprüfen und zu bestimmen, wie die angeforderte Aktion in Übereinstimmung mit diesen Richtlinien ausgeführt werden kann.
+Ihre Abonnementadministratoren können zu Sicherheits- oder Compliancezwecken Richtlinien zuweisen, mit denen eingeschränkt wird, wie Ressourcen bereitgestellt werden. Beispielsweise kann Ihr Abonnement über eine Richtlinie verfügen, mit der die Erstellung von öffentlichen IP-Adressen, Netzwerksicherheitsgruppen, benutzerdefinierten Routen oder Routingtabellen verhindert wird. Die Fehlermeldung im Abschnitt **Symptome** enthält den Namen der Richtlinie.
+Sehen Sie sich zum Beheben dieses Problems die Ressourcenrichtlinien an, und ermitteln Sie, wie Sie Ressourcen bereitstellen, die diese Richtlinien einhalten.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Übersicht über Ressourcenrichtlinien](resource-manager-policy.md)
-- [Anzeigen der Richtlinienzuweisungen](resource-manager-policy-portal.md)
+- [Was ist Azure Policy?](../azure-policy/azure-policy-introduction.md)
+- [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../azure-policy/create-manage-policy.md)

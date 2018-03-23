@@ -1,6 +1,6 @@
 ---
-title: "Konfigurieren von privaten IP-Adressen für virtuelle Computer – Azure PowerShell | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie private IP-Adressen für virtuelle Computer mithilfe von PowerShell konfigurieren."
+title: Konfigurieren von privaten IP-Adressen für virtuelle Computer – Azure PowerShell | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie private IP-Adressen für virtuelle Computer mithilfe von PowerShell konfigurieren.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2810190897c44c944912ef3325b1f40479aa3078
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8727318c9dff79b795b473caf7b778272134726c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-powershell"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer mithilfe von PowerShell
 
@@ -32,7 +32,7 @@ Azure verfügt über zwei Bereitstellungsmodelle: Azure Resource Manager und kla
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Die folgenden Beispielbefehle für PowerShell setzen voraus, dass bereits eine einfache Umgebung erstellt wurde, die auf dem zuvor beschriebenen Szenario basiert. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](virtual-networks-create-vnet-arm-ps.md)beschrieben.
+Die folgenden Beispielbefehle für PowerShell setzen voraus, dass bereits eine einfache Umgebung erstellt wurde, die auf dem zuvor beschriebenen Szenario basiert. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines virtuellen Netzwerks](quick-create-powershell.md) beschrieben.
 
 ## <a name="create-a-vm-with-a-static-private-ip-address"></a>Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse
 Erstellen Sie in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen Computer mit dem Namen *DNS01* und der statischen privaten IP-Adresse *192.168.1.101*. Gehen Sie dabei wie folgt vor:

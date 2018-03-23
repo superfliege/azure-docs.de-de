@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory B2C: Hinzufügen von Twitter als OAuth1-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien"
-description: "Verwenden von Twitter als Identitätsanbieter unter Verwendung des OAuth1-Protokolls"
+title: 'Azure Active Directory B2C: Hinzufügen von Twitter als OAuth1-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien'
+description: Verwenden von Twitter als Identitätsanbieter unter Verwendung des OAuth1-Protokolls
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: yoelhor
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
 ms.openlocfilehash: 629e0bbaa7c62ef5d381085588c6a99c203c41cb
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Hinzufügen von Twitter als OAuth1-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -39,9 +39,9 @@ Um Twitter als Identitätsanbieter in Azure Active Directory B2C (Azure AD B2C) 
  
     a. Geben Sie **Name** und **Beschreibung** für Ihre neue App ein. 
 
-    b. Fügen Sie im Feld **Website** die Zeichenfolge **https://login.microsoftonline.com** ein. 
+    b. Fügen Sie **https://login.microsoftonline.com** ins Feld **Website** ein. 
 
-    c. Fügen Sie im Feld **Callback URL** (Rückruf-URL) die Zeichenfolge **https://login.microsoftonline.com/te/{Mandant}.onmicrosoft.com/oauth2/authresp** ein. Ersetzen Sie {*Mandant*} durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“). Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden. 
+    c. Geben Sie **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** ins Feld **Callback URL** (Rückruf-URL) ein. Ersetzen Sie {*Mandant*} durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“). Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden. 
 
     d. Lesen und bestätigen Sie die Nutzungsbedingungen am Ende der Seite, und wählen Sie **Create your Twitter application** (Twitter-Anwendung erstellen) aus.
 

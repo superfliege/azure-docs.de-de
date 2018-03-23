@@ -1,26 +1,19 @@
 ---
-title: "Code für XEvent-Ereignisdatei für SQL-Datenbank | Microsoft Docs"
-description: "Stellt ein PowerShell- und ein Transact-SQL-Skript für ein zweiphasiges Codebeispiel zur Veranschaulichung des Ereignisdateiziels in einem erweiterten Ereignis in Azure SQL-Datenbank bereit. Azure Storage ist ein erforderlicher Bestandteil in diesem Szenario."
+title: Code für XEvent-Ereignisdatei für SQL-Datenbank | Microsoft Docs
+description: Stellt ein PowerShell- und ein Transact-SQL-Skript für ein zweiphasiges Codebeispiel zur Veranschaulichung des Ereignisdateiziels in einem erweiterten Ereignis in Azure SQL-Datenbank bereit. Azure Storage ist ein erforderlicher Bestandteil in diesem Szenario.
 services: sql-database
-documentationcenter: 
 author: MightyPen
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: bbb10ecc-739f-4159-b844-12b4be161231
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
 ms.author: genemi
-ms.openlocfilehash: abf660e3fafd1a5020cdf9a6beb5b73252b72cfc
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 630e0ca84479757d3bb4397aa63ee8a440e69427
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Code des Ereignisdateiziels für erweiterte Ereignisse in SQL-Datenbank
 
@@ -460,7 +453,7 @@ GO
 ```
 
 
-## <a name="output"></a>Ausgabe
+## <a name="output"></a>Output
 
 Klicken Sie auf eine Zelle unter der Spaltenüberschrift **event_data_XML**, nachdem das Transact-SQL-Skript abgeschlossen ist. Es wird ein **<event>** -Element mit einer UPDATE-Anweisung angezeigt.
 

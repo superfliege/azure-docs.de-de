@@ -1,24 +1,24 @@
 ---
-title: "Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit .NET SDK | Microsoft-Dokumentation"
-description: "In diesem Thema wird die Konfiguration verschiedener Übermittlungsrichtlinien für Medienobjekte mit Azure Media Services .NET SDK erläutert."
+title: Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit .NET SDK | Microsoft-Dokumentation
+description: In diesem Thema wird die Konfiguration verschiedener Übermittlungsrichtlinien für Medienobjekte mit Azure Media Services .NET SDK erläutert.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Mingfeiy
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 3ec46f58-6cbb-4d49-bac6-1fd01a5a456b
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/13/2017
-ms.author: juliako;mingfeiy
-ms.openlocfilehash: 515467fefe9b318900ed64979d950b0ab783fd4a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 03/05/2018
+ms.author: juliako
+ms.openlocfilehash: 8fe78d2d8cef1ee5484bcdcd83b00afe8e5b30ce
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit .NET SDK
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
@@ -32,7 +32,6 @@ In diesem Artikel wird erläutert, warum und wie Übermittlungsrichtlinien für 
 >Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Zustand **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
 >
 >Darüber hinaus muss Ihr Medienobjekt einen MP4-Satz bzw. Smooth Streaming-Dateien mit adaptiver Bitrate enthalten, damit die dynamische Paketerstellung und die dynamische Verschlüsselung verwendet werden können.
-
 
 Sie können verschiedene Richtlinien auf dasselbe Medienobjekt anwenden. Sie könnten z. B. eine PlayReady-Verschlüsselung auf Smooth Streaming und AES-Umschlagverschlüsselung auf MPEG-DASH und HLS anwenden. Alle Protokolle, die nicht in einer Übermittlungsrichtlinie definiert sind (wenn Sie z. B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme ist, wenn Sie überhaupt keine Bereitstellungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
 
@@ -54,9 +53,8 @@ MPEG DASH
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=mpd-time-csf)
 
-
 ## <a name="considerations"></a>Überlegungen
-* Sie können eine mit einem Asset verknüpfte AssetDeliveryPolicy nicht löschen, solange ein OnDemand-Locator (Streaminglocator) für dieses Asset vorhanden ist. Es wird empfohlen, die Richtlinie aus dem Asset zu entfernen, bevor Sie die Richtlinie löschen.
+* Vor dem Löschen von „AssetDeliveryPolicy“ müssen Sie alle Streaminglocators löschen, die dem Asset zugeordnet sind. Später können Sie bei Bedarf neue Streaminglocators mit einem neuen AssetDeliveryPolicy-Element erstellen.
 * Ein Streaminglocator kann nicht auf einem speicherverschlüsselten Asset erstellt werden, wenn keine Übermittlungsrichtlinie für das Asset festgelegt ist.  Wenn das Asset nicht speicherverschlüsselt ist, lässt Sie das System einen Locator erstellen und das Asset in Klartext ohne Übermittlungsrichtlinie streamen.
 * Sie haben die Möglichkeit, mehrere Übermittlungsrichtlinien für ein einzelnes Asset zu verwenden, aber Sie dürfen nur eine Möglichkeit zum Verarbeiten eines bestimmten AssetDeliveryProtocol angeben.  Wenn Sie also versuchen, zwei Übermittlungsrichtlinien zu verknüpfen, die das AssetDeliveryProtocol.SmoothStreaming-Protokoll angeben, führt dies zu einem Fehler, da das System nicht weiß, welche Richtlinie angewendet werden soll, wenn ein Client eine Smooth Streaming-Anforderung sendet.
 * Wenn Sie über ein Asset mit einem vorhandenen Streaminglocator verfügen, können Sie keine neue Richtlinie mit dem Asset verknüpfen (Sie können entweder eine vorhandene Richtlinienverknüpfung des Assets aufheben oder eine Übermittlungsrichtlinie aktualisieren, die dem Asset zugeordnet ist).  Sie müssen zuerst den Streaminglocator entfernen, die Richtlinien anpassen und dann den Streaminglocator neu erstellen.  Sie können die gleiche Locator-ID verwenden, wenn Sie den Streaminglocator neu erstellen. Allerdings sollten Sie sicherstellen, dass dadurch keine Probleme für Clients auftreten, da Inhalte nach Ursprung oder einem nachgelagerten CDN zwischengespeichert werden können.

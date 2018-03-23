@@ -1,19 +1,19 @@
 ---
 title: SQL-Modul in Azure IoT Edge | Microsoft-Dokumentation
-description: "Speichern von Daten im Edge-Bereich mit Microsoft SQL-Modulen, einschließlich Azure Functions zum Formatieren der Daten"
+description: Speichern von Daten im Edge-Bereich mit Microsoft SQL-Modulen, einschließlich Azure Functions zum Formatieren der Daten
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban, ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4b66a699e4c58662cadd799cf6aec83b9d34b7e6
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: ce3c3abd00dba23887b5f811af6cab8d2c83323d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -48,7 +48,7 @@ Es können sowohl Windows- als auch Linux-Container in X64-Prozessorarchitekture
 
 ## <a name="deploy-a-sql-server-container"></a>Bereitstellen eines SQL Server-Containers
 
-In diesem Abschnitt fügen Sie dem simulierten IoT Edge-Gerät eine MS SQL-Datenbank hinzu. Verwenden Sie das Docker-Containerimage von SQL Server 2017, das unter [Windows](https://hub.docker.com/r/microsoft/mssql-server-windows-developer/) und [Linux](https://hub.docker.com/r/microsoft/mssql-server-linux/) verfügbar ist. 
+In diesem Abschnitt fügen Sie dem simulierten IoT Edge-Gerät eine MS SQL-Datenbank hinzu. Verwenden Sie das SQL Server 2017-Docker-Containerimage, das als [Windows](https://hub.docker.com/r/microsoft/mssql-server-windows-developer/)-Container und [Linux](https://hub.docker.com/r/microsoft/mssql-server-linux/)-Container verfügbar ist. 
 
 ### <a name="deploy-sql-server-2017"></a>Bereitstellen von SQL Server 2017
 
@@ -100,14 +100,14 @@ In Schritt 3 fügen Sie Erstellungsoptionen zum SQL Server-Container hinzu, die 
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\r\n\t"Env": [\r\n\t\t"ACCEPT_EULA=Y",\r\n\t\t"sa_password=Strong!Passw0rd"\r\n\t],\r\n\t"HostConfig": {\r\n\t\t"Mounts": [{\r\n\t\t\t"Target": "C:\\\\mssql",\r\n\t\t\t"Source": "sqlVolume",\r\n\t\t\t"Type": "volume"\r\n\t\t}],\r\n\t\t"PortBindings": {\r\n\t\t\t"1433/tcp": [{\r\n\t\t\t\t"HostPort": "1401"\r\n\t\t\t}]\r\n\t\t}\r\n\t}\r\n}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}"
       ```
 
    * Linux:
 
       ```json
       "image": "microsoft/mssql-server-linux:2017-latest",
-      "createOptions": "{\r\n\t"Env": [\r\n\t\t"ACCEPT_EULA=Y",\r\n\t\t"MSSQL_SA_PASSWORD=Strong!Passw0rd"\r\n\t],\r\n\t"HostConfig": {\r\n\t\t"Mounts": [{\r\n\t\t\t"Target": "/var/opt/mssql",\r\n\t\t\t"Source": "sqlVolume",\r\n\t\t\t"Type": "volume"\r\n\t\t}],\r\n\t\t"PortBindings": {\r\n\t\t\t"1433/tcp": [{\r\n\t\t\t\t"HostPort": "1401"\r\n\t\t\t}]\r\n\t\t}\r\n\t}\r\n}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"/var/opt/mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
 4. Speichern Sie die Datei . 
@@ -125,31 +125,31 @@ Dieser Abschnitt führt Sie durch das Einrichten der SQL-Datenbank zum Speichern
 
 Stellen Sie in einem Befehlszeilentool eine Verbindung mit Ihrer Datenbank her: 
 
-* Windows
+* Windows-Container
    ```cmd
-   Docker exec -it sql cmd
+   docker exec -it sql cmd
    ```
 
-* Linux    
+* Linux-Container
    ```bash
-   Docker exec -it sql 'bash'
+   docker exec -it sql bash
    ```
 
 Öffnen Sie das SQL-Befehlstool: 
 
-* Windows
+* Windows-Container
    ```cmd
    sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
 
-* Linux
+* Linux-Container
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
 
 Erstellen Sie die Datenbank: 
 
-* Windows
+* Windows-Container
    ```sql
    CREATE DATABASE MeasurementsDB
    ON
@@ -157,7 +157,7 @@ Erstellen Sie die Datenbank:
    GO
    ```
 
-* Linux
+* Linux-Container
    ```sql
    CREATE DATABASE MeasurementsDB
    ON
@@ -302,24 +302,24 @@ Sobald die Container neu gestartet sind, werden die von den Temperatursensoren e
 
 Stellen Sie in einem Befehlszeilentool eine Verbindung mit Ihrer Datenbank her: 
 
-* Windows
+* Windows-Container
    ```cmd
-   Docker exec -it sql cmd
+   docker exec -it sql cmd
    ```
 
-* Linux    
+* Linux-Container
    ```bash
-   Docker exec -it sql 'bash'
+   docker exec -it sql bash
    ```
 
 Öffnen Sie das SQL-Befehlstool: 
 
-* Windows
+* Windows-Container
    ```cmd
    sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
 
-* Linux
+* Linux-Container
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
@@ -327,7 +327,7 @@ Stellen Sie in einem Befehlszeilentool eine Verbindung mit Ihrer Datenbank her:
 Zeigen Sie die Daten an: 
 
    ```sql
-   Select * FROM MeasurementsDB.dbo.TemperatureMeasurements
+   SELECT * FROM MeasurementsDB.dbo.TemperatureMeasurements
    GO
    ```
 

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Andromeda SCM | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Andromeda SCM konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit Andromeda | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Andromeda konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,32 +12,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 72b66eec34995c334c6d65a1d03637fe21b9dc80
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7e2a140ba6dc4825283801ed4f3435136b307153
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-andromeda-scm"></a>Tutorial: Azure Active Directory-Integration mit Andromeda SCM
+# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Tutorial: Azure Active Directory-Integration mit Andromeda
 
-In diesem Tutorial erfahren Sie, wie Sie Andromeda SCM in Azure Active Directory (Azure AD) integrieren.
+In diesem Tutorial erfahren Sie, wie Sie Andromeda in Azure Active Directory (Azure AD) integrieren.
 
-Die Integration von Andromeda SCM in Azure AD bietet die folgenden Vorteile:
+Die Integration von Andromeda in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Andromeda SCM hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Andromeda SCM anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
+- Sie können in Azure AD steuern, wer Zugriff auf Andromeda hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Andromeda anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 - Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Andromeda SCM konfigurieren zu können, benötigen Sie Folgendes:
+Um die Azure AD-Integration mit Andromeda konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Andromeda SCM-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein Andromeda-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -50,13 +50,13 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von Andromeda SCM aus dem Katalog
+1. Hinzufügen von Andromeda aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-andromeda-scm-from-the-gallery"></a>Hinzufügen von Andromeda SCM aus dem Katalog
-Zum Konfigurieren der Integration von Andromeda SCM in Azure AD müssen Sie Andromeda SCM aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
+## <a name="adding-andromeda-from-the-gallery"></a>Hinzufügen von Andromeda aus dem Katalog
+Zum Konfigurieren der Integration von Andromeda in Azure AD müssen Sie Andromeda aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Andromeda SCM über den Katalog hinzuzufügen:**
+**Führen Sie die folgenden Schritte aus, um Andromeda über den Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
@@ -70,31 +70,31 @@ Zum Konfigurieren der Integration von Andromeda SCM in Azure AD müssen Sie Andr
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Andromeda SCM** ein, wählen Sie im Ergebnisbereich **Andromeda SCM** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Andromeda** ein, wählen Sie im Ergebnisbereich **Andromeda** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Andromeda SCM in der Ergebnisliste](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_addfromgallery.png)
+    ![Andromeda in der Ergebnisliste](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Andromeda SCM basierend auf einer Testbenutzerin namens Britta Simon.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Andromeda basierend auf einer Testbenutzerin namens Britta Simon.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Andromeda SCM als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Andromeda SCM muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Andromeda als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Andromeda muss eine Linkbeziehung eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Andromeda SCM müssen die folgenden Schritte ausgeführt werden:
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Andromeda müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Andromeda SCM-Testbenutzers](#create-an-andromeda-scm-test-user)**, um in Andromeda SCM ein Pendant von Britta Simon zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+3. **[Erstellen eines Andromeda-Testbenutzers](#create-an-andromeda-test-user)**, um in Andromeda ein Pendant von Britta Simon zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden bei Ihrer Andromeda SCM-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden bei Ihrer Andromeda-Anwendung.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Andromeda SCM die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Andromeda die folgenden Schritte aus:**
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Andromeda SCM** auf **Einmaliges Anmelden**.
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Andromeda** auf **Einmaliges Anmelden**.
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
@@ -102,24 +102,24 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Andromeda SCM** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
+3. Führen Sie im Abschnitt **Domäne und URLs für Andromeda** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Andromeda SCM](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Andromeda](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<tenantURL>`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<tenantURL>.ngcxpress.com/`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<tenantURL>`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Andromeda SCM](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url1.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Andromeda](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url1.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenantURL>/SAMLLogon.aspx`.
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`.
      
     > [!NOTE] 
     > Der vorangehende Wert ist kein echter Wert. Sie aktualisieren den Wert mit dem tatsächlichen Bezeichner und der tatsächlichen Antwort-URL und Anmelde-URL. Dies wird später in diesem Tutorial beschrieben.
 
-5. Die Andromeda SCM-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
+5. Die Andromeda-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
     
     ![Einmaliges Anmelden konfigurieren, Attribut](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attribute.png)
 
@@ -129,10 +129,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 6. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
     | Attributname | Attributwert |
-    | ------------------- | -------------------- |    
-    | role        | DEMO |
-    | type        | DEFAULT |
-    | company       | COMP02    |
+    | -------------- | -------------------- |    
+    | role        | App-spezifische Rolle |
+    | type        | App-Typ |
+    | company       | CompanyName    |
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie dienen nur zur Veranschaulichung. Verwenden Sie Ihre eigenen Organisationsrollen.
@@ -159,31 +159,31 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-andromedascm-tutorial/tutorial_general_400.png)
     
-9. Klicken Sie im Abschnitt **Andromeda SCM-Konfiguration** auf **Andromeda SCM konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+9. Klicken Sie im Abschnitt **Andromeda-Konfiguration** auf **Andromeda konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Andromeda SCM-Konfiguration](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_configure.png)
+    ![Andromeda-Konfiguration](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_configure.png)
 
-10. Melden Sie sich bei Ihrer Andromeda SCM-Unternehmenswebsite als Administrator an.
+10. Melden Sie sich bei Ihrer Andromeda-Unternehmenswebsite als Administrator an.
 
 11. Klicken Sie oben auf der Menüleiste auf **Admin** (Administrator), und navigieren Sie zu **Administration** (Verwaltung).
 
-    ![Andromeda SCM-Administrator](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_admin.png)
+    ![Andromeda-Administrator](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_admin.png)
 
 12. Klicken Sie links auf der Symbolleiste unter **Interfaces** (Schnittstellen) auf **SAML Configuration** (SAML-Konfiguration).
 
-    ![Andromeda SCM: SAML](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_saml.png)
+    ![Andromeda: SAML](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_saml.png)
 
 13. Führen Sie auf der Seite mit dem Abschnitt **SAML Configuration** (SAML-Konfiguration) die folgenden Schritte aus:
 
-    ![Andromeda SCM-Konfiguration](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_config.png)
+    ![Andromeda-Konfiguration](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_config.png)
 
     a. Aktivieren Sie **Enable SSO with SAML** (SSO mit SAML zulassen).
 
-    b. Kopieren Sie im Abschnitt **Andromeda Information** (Informationen zu Andromeda) den Wert für **SP Identity** (SP-Identität), und fügen Sie ihn im Abschnitt **Domäne und URLs für Andromeda SCM** ins Textfeld **Bezeichner** ein.
+    b. Kopieren Sie im Abschnitt **Andromeda Information** (Informationen zu Andromeda) den Wert für **SP Identity** (SP-Identität), und fügen Sie ihn im Abschnitt **Domäne und URLs für Andromeda** ins Textfeld **Bezeichner** ein.
 
-    c. Kopieren Sie den Wert **Consumer URL** (Consumer-URL), und fügen Sie ihn im Abschnitt **Domäne und URLs für Andromeda SCM** ins Textfeld **Antwort-URL** ein.
+    c. Kopieren Sie den Wert **Consumer URL** (Consumer-URL), und fügen Sie ihn im Abschnitt **Domäne und URLs für Andromeda** ins Textfeld **Antwort-URL** ein.
 
-    d. Kopieren Sie den Wert **Logon URL** (Anmelde-URL), und fügen Sie ihn im Abschnitt **Domäne und URLs für Andromeda SCM** ins Textfeld **Anmelde-URL** ein.
+    d. Kopieren Sie den Wert **Logon URL** (Anmelde-URL), und fügen Sie ihn im Abschnitt **Domäne und URLs für Andromeda** ins Textfeld **Anmelde-URL** ein.
 
     e. Geben Sie im Abschnitt **SAML Identity Provider** (SAML-Identitätsanbieter) den IdP-Namen ein.
 
@@ -193,7 +193,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     h. Weisen Sie den folgenden Attributen die entsprechenden Werte zu, um die SSO-Anmeldung über Azure AD zu ermöglichen. Das Attribut **User ID** (Benutzer-ID) ist für die Anmeldung erforderlich. Für die Bereitstellung sind die Attribute **Email** (E-Mail), **Company** (Unternehmen), **User Type** (Benutzertyp) and **Role** (Rolle) erforderlich. In diesem Abschnitt definieren wir die Zuordnung von Attributen (Namen und Werte) zu den Attributen des Azure-Portals.
 
-    ![Andromeda SCM-Attributzuordnung](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    ![Andromeda-Attributzuordnung](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
 
     i. Klicken Sie auf **Speichern**.
 
@@ -232,28 +232,28 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     d. Klicken Sie auf **Create**.
  
-### <a name="create-an-andromeda-scm-test-user"></a>Erstellen eines Andromeda SCM-Testbenutzers
+### <a name="create-an-andromeda-test-user"></a>Erstellen eines Andromeda-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Andromeda SCM. Andromeda SCM unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Andromeda SCM ein neuer Benutzer erstellt.
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Andromeda. Andromeda unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Andromeda ein neuer Benutzer erstellt.
 
 >[!Note]
->Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam für den Andromeda SCM-Client](https://www.ngcsoftware.com/support/) in Verbindung.
+>Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam für den Andromeda-Client](https://www.ngcsoftware.com/support/) in Verbindung.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Andromeda SCM gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Andromeda gewähren.
 
 ![Zuweisen der Benutzerrolle][200] 
 
-**Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu Andromeda SCM durchzuführen:**
+**Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu Andromeda durchzuführen:**
 
 1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Andromeda SCM** aus.
+2. Wählen Sie in der Anwendungsliste **Andromeda** aus.
 
-    ![Andromeda SCM-Link in der Anwendungsliste](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_app.png)  
+    ![Andromeda-Link in der Anwendungsliste](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_app.png)  
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -273,7 +273,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Andromeda SCM“ klicken, sollten Sie automatisch bei Ihrer Andromeda SCM-Anwendung angemeldet werden.
+Wenn Sie im Zugriffsbereich auf die Kachel „Andromeda“ klicken, sollten Sie automatisch bei Ihrer Andromeda-Anwendung angemeldet werden.
 Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
@@ -296,4 +296,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_203.png
-

@@ -2,7 +2,7 @@
 title: Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy | Microsoft-Dokumentation
 description: Erfahren Sie, wie Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy verwendet werden.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: d5450da1-9e06-4d08-8146-011c84922ab5
@@ -15,11 +15,11 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 28e43d48b4fa27202d58ee081a60e2fb5bfe9d99
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f97b2541bb755a9b7ab8e3602dfad90f50ada740
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy 
 
@@ -70,7 +70,7 @@ Bei der Verwendung benutzerdefinierter Domänen müssen Sie einen DNS-Eintrag mi
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-Um sicherzustellen, dass Sie den CNAME-Eintrag ordnungsgemäß konfiguriert haben, können Sie [nslookup](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup) für einen der Zielendpunkte, z.B. `expenses.adventure-works.com`, ausführen.  Die Antwort sollte den bereits erwähnten Alias (`<Id.tenant>.runtime.msappproxy.net`) enthalten.
+Um sicherzustellen, dass Sie den CNAME-Eintrag ordnungsgemäß konfiguriert haben, können Sie [nslookup](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup) für einen der Zielendpunkte, z.B. `expenses.adventure-works.com`, ausführen.  Die Antwort sollte den bereits erwähnten Alias (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) enthalten.
 
 
 ## <a name="considerations"></a>Überlegungen

@@ -1,32 +1,40 @@
 ---
 title: Konfigurieren von Azure AD Privileged Identity Management | Microsoft-Dokumentation
-description: "Ein Thema, in dem erläutert wird, was Azure AD Privileged Identity Management ist und wie Sie damit die Sicherheit in Ihrer Cloud erhöhen."
+description: Ein Thema, in dem erläutert wird, was Azure AD Privileged Identity Management ist und wie Sie damit die Sicherheit in Ihrer Cloud erhöhen.
 services: active-directory
-documentationcenter: 
-author: barclayn
+documentationcenter: ''
+author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c548ed2e-06e3-4eaf-a63d-0f02ee72da25
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
-ms.author: barclayn
+ms.date: 03/07/2018
+ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 94855cf102764532fa0a6718541beffe93230fd1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 827e3521be8918f4de00113fd9eaf4e01679cac5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
 Mit Azure Active Directory (AD) Privileged Identity Management können Sie den Zugriff innerhalb Ihrer Organisation verwalten, steuern und überwachen. Dazu zählt der Zugriff auf Ressourcen in Azure AD, in Azure-Ressourcen (Vorschauversion) und anderen Microsoft-Onlinediensten wie Office 365 oder Microsoft Intune.
 
 > [!NOTE]
-> Privileged Identity Management ist für Ihre gesamte Organisation verfügbar, wenn Sie Ihre Administratoren mit der Premium P2-Edition von Azure Active Directory lizenzieren. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
+> Wenn Sie Privileged Identity Management für Ihren Mandanten aktivieren, ist für jeden Benutzer, der mit dem Dienst interagiert oder einen Nutzen daraus zieht, eine gültige Lizenz vom Typ Azure AD Premium P2 oder Enterprise Mobility + Security E5 (kostenpflichtig oder Testversion) erforderlich. Beispiele sind Benutzer bzw. Benutzer in einer Gruppe, für die Folgendes gilt:
+>
+>- Zuweisung der Rolle „Administrator für privilegierte Rollen“ 
+>- Zuweisung als für andere Verzeichnisrollen verfügbar, die per PIM verwaltet werden können 
+>- Möglichkeit zum Genehmigen/Ablehnen von Anforderungen in PIM 
+>- Zuweisung einer Azure-Ressourcenrolle mit Just-in-Time- oder direkten (zeitbasierten) Zuweisungen  
+>- Zuweisung zu einer Zugriffsüberprüfung
+>
+>Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 
 Organisationen möchten die Anzahl von Personen mit Zugriff auf sichere Informationen oder Ressourcen möglichst gering halten, da sich dadurch das Risiko verringert, dass ein böswilliger Benutzer Zugriff darauf erhält oder dass ein autorisierter Benutzer versehentlich eine sensible Ressource kompromittiert.  Benutzer müssen jedoch in Azure AD, Azure, Office 365 oder SaaS-Apps weiterhin privilegierte Vorgänge ausführen. Organisationen können Benutzern privilegierten Zugriff auf Azure-Ressourcen wie Abonnements und Azure AD gewähren. Dabei muss jedoch überwacht werden, wofür diese Benutzer ihre Administratorrechte nutzen. Azure AD Privileged Identity Management trägt dazu bei, das Risiko durch unverhältnismäßige oder unnötige Zugriffsrechte bzw. durch deren Missbrauch zu verringern.
 

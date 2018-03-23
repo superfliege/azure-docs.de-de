@@ -1,9 +1,9 @@
 ---
-title: "Hue mit Hadoop in Linux-basierten HDInsight-Clustern – Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Hue auf HDInsight-Clustern installieren und die Anfragen mittels Tunneln an Hue weiterleiten. Verwenden Sie Hue, um Speicher zu durchsuchen und Hive oder Pig auszuführen."
+title: Hue mit Hadoop in Linux-basierten HDInsight-Clustern – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Hue auf HDInsight-Clustern installieren und die Anfragen mittels Tunneln an Hue weiterleiten. Verwenden Sie Hue, um Speicher zu durchsuchen und Hive oder Pig auszuführen.
 keywords: Hue Hadoop
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: nitinme
 ms.openlocfilehash: 5cef5e72af8a8b7c007b688b029f875e89d163ae
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Hue in HDInsight Hadoop-Clustern
 
@@ -42,13 +42,13 @@ Bei Hue handelt es sich um einen Satz von Webanwendungen zur Interaktion mit ein
 > [!WARNING]
 > Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
 >
-> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), [z. B. Hadoop](http://hadoop.apache.org/).
+> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z.B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), z.B. [Hadoop](http://hadoop.apache.org/).
 >
 >
 
 ## <a name="install-hue-using-script-actions"></a>Installation von Hue mithilfe von Skriptaktionen
 
-Das Skript für die Installation von Hue in einem Linux-basierten HDInsight-Cluster kann von https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh heruntergeladen werden. Mit diesem Skript können Sie Hue in Clustern installieren, die Azure Storage Blobs (WASB) oder Azure Data Lake Store als Standardspeicher verwenden.
+Das Skript zum Installieren von Hue auf einem Linux-basierten HDInsight-Cluster ist unter https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh verfügbar. Mit diesem Skript können Sie Hue in Clustern installieren, die Azure Storage Blobs (WASB) oder Azure Data Lake Store als Standardspeicher verwenden.
 
 Dieser Abschnitt enthält Anweisungen zur Verwendung des Skripts während der Bereitstellung des Clusters mithilfe des Azure-Portals.
 
@@ -68,7 +68,7 @@ Dieser Abschnitt enthält Anweisungen zur Verwendung des Skripts während der Be
     ![Bereitstellen von Skriptaktionsparametern für Hue](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "Bereitstellen von Skriptaktionsparametern für Hue")
 
    * **NAME**: Geben Sie einen Anzeigenamen für die Skriptaktion ein.
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
+   * **SKRIPT-URI**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **HEAD**: Aktivieren Sie diese Option.
    * **WORKER**: Lassen Sie diese Option deaktiviert.
    * **ZOOKEEPER**: Lassen Sie diese Option deaktiviert.

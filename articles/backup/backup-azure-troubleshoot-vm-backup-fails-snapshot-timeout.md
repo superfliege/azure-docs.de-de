@@ -1,12 +1,12 @@
 ---
 title: 'Problembehandlung bei Azure Backup-Fehlern: Status des Gast-Agents ist unbekannt | Microsoft-Dokumentation'
-description: "Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Azure Backup-Fehlern in Verbindung mit dem Agent, der Erweiterung und Datenträgern."
+description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Azure Backup-Fehlern in Verbindung mit dem Agent, der Erweiterung und Datenträgern.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
-keywords: "Azure Backup; VM-Agent; Netzwerkkonnektivität;"
+editor: ''
+keywords: Azure Backup; VM-Agent; Netzwerkkonnektivität;
 ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: c205023b025a477ee05ddcbfc536573f31426167
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: a18718aba3ef7f70caa541c6eb56311082d02bed
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Beheben von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -30,9 +30,6 @@ Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Der VM-Agent kann nicht mit Azure Backup kommunizieren
 
 Fehlermeldung: „VM Agent unable to communicate with Azure Backup“ (VM-Agent kann nicht mit Azure Backup kommunizieren)
-
-> [!NOTE]
-> Wenn dieser Fehler seit dem 4. Januar 2018 bei Ihren Azure-Linux-VM-Sicherungen auftritt, führen Sie folgenden Befehl auf dem virtuellen Computer aus, und versuchen Sie dann erneut, die Sicherungen auszuführen: `sudo rm -f /var/lib/waagent/*.[0-9]*.xml`
 
 Nachdem Sie einen virtuellen Computer für den Backup-Dienst registriert und geplant haben, initiiert Backup den Auftrag, indem der Dienst mit dem VM-Agent kommuniziert, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn eine Momentaufnahme nicht ausgelöst wird, kann dies zu einem Fehler bei der Sicherung führen. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:
 
@@ -58,9 +55,8 @@ Fehlermeldung: „VMSnapshot extension operation failed“ (Fehler beim Vorgang 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:  
 **Ursache 1: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Ursache 2: [Die Sicherungserweiterung kann nicht aktualisiert oder geladen werden](#the-backup-extension-fails-to-update-or-load)**  
-**Ursache 3: [Der virtuelle Computer verfügt nicht über Internetzugriff](#the-vm-has-no-internet-access)**  
-**Ursache 4: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Ursache 5: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**Ursache 3: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**Ursache 4: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Fehler bei der Sicherung, weil der VM-Agent nicht reagiert
 
@@ -149,7 +145,7 @@ Die meisten Fehler im Zusammenhang mit Agents oder Erweiterungen bei virtuellen 
 1. Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents ](../virtual-machines/linux/update-agent.md).
 
  > [!NOTE]
- > Wir *empfehlen dringend*, den Agent ausschließlich über ein Distributionsrepository zu aktualisieren. Wir raten davon ab, den Agent-Code direkt von GitHub herunterzuladen und die Aktualisierung durchzuführen. Falls der aktuelle Agent für Ihre Distribution nicht verfügbar ist, können Sie sich an den zuständigen Support wenden, um Informationen zur Installation zu erhalten. Eine Prüfung auf den aktuellen Agent können Sie auf der Seite für den [Windows Azure-Linux-Agent](https://github.com/Azure/WALinuxAgent/releases) im GitHub-Repository durchführen.
+ > Wir *empfehlen dringend*, den Agent ausschließlich über ein Verteilungsrepository zu aktualisieren. Wir raten davon ab, den Agent-Code direkt von GitHub herunterzuladen und die Aktualisierung durchzuführen. Falls der aktuelle Agent für Ihre Distribution nicht verfügbar ist, können Sie sich an den zuständigen Support wenden, um Informationen zur Installation zu erhalten. Eine Prüfung auf den aktuellen Agent können Sie auf der Seite für den [Windows Azure-Linux-Agent](https://github.com/Azure/WALinuxAgent/releases) im GitHub-Repository durchführen.
 
 2. Stellen Sie mit dem folgenden Befehl sicher, dass der Azure-Agent auf dem virtuellen Computer ausgeführt wird: `ps -e`
 
@@ -168,7 +164,7 @@ Die meisten Fehler im Zusammenhang mit Agents oder Erweiterungen bei virtuellen 
 Führen Sie die folgenden Schritte aus, falls die ausführliche Protokollierung für waagent erforderlich ist:
 
 1. Suchen Sie in der Datei „/etc/waagent.conf“ nach der folgenden Zeile: **Enable verbose logging (y|n)**
-2. Ändern Sie den Wert für **Logs.Verbose** von *n* auf *y*.
+2. Ändern Sie den Wert für **Logs.Verbose** von *n* in *y*.
 3. Speichern Sie die Änderung, und starten Sie waagent neu, indem Sie die weiter oben in diesem Abschnitt beschriebenen Schritte ausführen.
 
 ###  <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden
@@ -179,7 +175,6 @@ Die folgenden Umstände können zu Fehlern bei Momentaufnahmetasks führen:
 
 | Ursache | Lösung |
 | --- | --- |
-| Für die VM ist die SQL Server-Sicherung konfiguriert. | Standardmäßig wird bei der Sicherung virtueller Computer eine vollständige VSS-Sicherung (Volume Shadow Copy Service, Volumeschattenkopie-Dienst) auf virtuellen Windows-Computern ausgeführt. Auf virtuellen Computern, auf denen SQL Server-basierte Server ausgeführt werden und auf denen die SQL Server-Sicherung konfiguriert ist, können Verzögerungen bei der Ausführung von Momentaufnahmen auftreten.<br><br>Wenn aufgrund eines Problems mit der Momentaufnahme ein Sicherungsfehler auftritt, legen Sie den folgenden Registrierungsschlüssel fest:<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
 | Der VM-Status wird falsch gemeldet, weil der virtuelle Computer im Remotedesktopprotokoll (RDP) heruntergefahren ist. | Wenn Sie den virtuellen Computer im Remotedesktopprotokoll herunterfahren, überprüfen Sie im Portal, ob der VM-Status richtig angezeigt wird. Falls nicht, fahren Sie den virtuellen Computer im Portal mithilfe der Option **Herunterfahren** auf dem VM-Dashboard herunter. |
 | Der virtuelle Computer kann die Host- oder Fabric-Adresse nicht aus DHCP abrufen. | Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein. Wenn der virtuelle Computer die Host- oder Fabric-Adresse nicht aus DHCP-Antwort 245 abrufen kann, können keine Erweiterungen heruntergeladen oder ausgeführt werden. Wenn Sie eine statische private IP-Adresse benötigen, konfigurieren Sie diese über die Plattform. Die DHCP-Option innerhalb des virtuellen Computers sollte aktiviert bleiben. Weitere Informationen finden Sie unter [Festlegen einer statischen internen privaten IP-Adresse](../virtual-network/virtual-networks-reserved-private-ip.md). |
 
@@ -188,12 +183,7 @@ Wenn Erweiterungen nicht geladen werden können, tritt bei der Sicherung ein Feh
 
 #### <a name="solution"></a>Lösung
 
-**Windows-Gäste**: Vergewissern Sie sich, dass der iaasvmprovider-Dienst aktiviert und der Starttyp auf *automatisch* festgelegt ist. Falls der Dienst nicht auf diese Weise konfiguriert ist, ermöglichen Sie dem Dienst zu ermitteln, ob die nächste Sicherung erfolgreich ist.
-
-**Linux-Gäste**: Vergewissern Sie sich, dass die neueste Version von VMSnapshot für Linux (die von Backup verwendete Erweiterung) 1.0.91.0 lautet.<br>
-
-
-Wenn die Sicherungserweiterung weiterhin nicht aktualisiert oder geladen werden kann, deinstallieren Sie die Erweiterung, um ein erneutes Laden der VMSnapshot-Erweiterung zu erzwingen. Beim nächsten Sicherungsversuch wird die Erweiterung neu geladen.
+Deinstallieren Sie die Erweiterung, um das erneute Laden der VMSnapshot-Erweiterung zu erzwingen. Beim nächsten Sicherungsversuch wird die Erweiterung neu geladen.
 
 So deinstallieren Sie die Erweiterung:
 

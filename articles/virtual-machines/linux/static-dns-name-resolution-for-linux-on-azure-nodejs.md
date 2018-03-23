@@ -1,13 +1,13 @@
 ---
-title: "Verwenden von internen DNS-Namen für die VM-Namensauflösung in Azure | Microsoft-Dokumentation"
-description: "Verwenden von internen DNS-Namen für die VM-Namensauflösung in Azure."
+title: Verwenden von internen DNS-Namen für die VM-Namensauflösung in Azure | Microsoft-Dokumentation
+description: Verwenden von internen DNS-Namen für die VM-Namensauflösung in Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: v-livech
-ms.openlocfilehash: bfba2cf38a0624e8480a32bf153f391d820da5a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e73e780123f4582c9fa78975324e7904c85f87be
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-internal-dns-for-vm-name-resolution-on-azure"></a>Verwenden von internen DNS-Namen für die VM-Namensauflösung in Azure
 
@@ -35,7 +35,7 @@ Folgende Anforderungen müssen erfüllt sein:
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#quick-commands): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0:](static-dns-name-resolution-for-linux-on-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0](static-dns-name-resolution-for-linux-on-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
@@ -94,7 +94,7 @@ azure group create myResourceGroup \
 
 ## <a name="create-the-vnet"></a>Erstellen des VNET
 
-Der erste Schritt besteht aus der Erstellung eines VNET, um die VMs darin zu starten.  Das VNET enthält ein Subnetz für diese exemplarische Vorgehensweise.  Weitere Informationen über Azure VNETs finden Sie unter [Create a virtual network by using the Azure CLI](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Erstellen eines virtuellen Netzwerks mithelfe der Azure-Befehlszeilenschnittstelle)
+Der erste Schritt besteht aus der Erstellung eines VNET, um die VMs darin zu starten.  Das VNET enthält ein Subnetz für diese exemplarische Vorgehensweise.  Weitere Informationen zu Azure-VNETs finden Sie unter [Create, change, or delete a virtual network](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks).
 
 ```azurecli
 azure network vnet create myVNet \

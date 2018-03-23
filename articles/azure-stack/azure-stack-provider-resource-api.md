@@ -1,24 +1,24 @@
 ---
-title: "Ressourcennutzungs-API für Anbieter | Microsoft-Dokumentation"
-description: "Referenz für die Ressourcennutzungs-API, die Azure Stack-Nutzungsinformationen abruft"
+title: Ressourcennutzungs-API für Anbieter | Microsoft-Dokumentation
+description: Referenz für die Ressourcennutzungs-API, die Azure Stack-Nutzungsinformationen abruft
 services: azure-stack
-documentationcenter: 
-author: AlfredoPizzirani
-manager: byronr
-editor: 
-ms.assetid: b6055923-b6a6-45f0-8979-225b713150ae
+documentationcenter: ''
+author: mattbriggs
+manager: femila
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
-ms.author: alfredop
-ms.openlocfilehash: 0c45ce3bc93945ed8700464beebabcda07e8d77c
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.date: 02/22/2018
+ms.author: mabrigg
+ms.reviewer: alfredop
+ms.openlocfilehash: 763b0af9c258a70392e8c7ebbb4c107e94fce5b2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="provider-resource-usage-api"></a>Ressourcennutzungs-API für Anbieter
 Der Begriff *Anbieter* bezieht sich auf den Dienstadministrator und alle delegierten Anbieter. Azure Stack-Operators und delegierte Anbieter können die Nutzungs-API für Anbieter verwenden, um einen Einblick in die Nutzung ihrer direkten Mandanten zu erhalten. Wie im Diagramm dargestellt, kann P0 beispielsweise die Anbieter-API aufrufen, um die Nutzungsinformationen zur direkten Nutzung von P1 und P2 abzurufen, und P1 kann die Nutzungsinformationen von P3 und P4 abrufen.
@@ -47,7 +47,7 @@ Die Nutzungs-API ist eine Anbieter-API. Aus diesem Grund muss dem Aufrufer im Ab
 | *api-version* |Die Version des Protokolls, das für diese Anforderung verwendet wird. Dieser Wert ist auf *2015-06-01-preview* festgelegt. |
 | *fortsetzungsToken* |Das Token, das durch den letzten Aufruf des Anbieters der Nutzungs-API abgerufen wurde. Dieses Token ist erforderlich, wenn eine Antwort länger als 1000 Zeilen ist und als Textmarke für den Fortschritt fungiert. Falls das Token nicht vorhanden ist, werden die Daten auf Grundlage der übergebenen Granularität vom Anfang des Tages oder der Stunde abgerufen. |
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 GET /subscriptions/sub1/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&subscriberId=sub1.1&api-version=1.0
 
 ```json
@@ -88,6 +88,18 @@ meterID1",
 | *instanceData* |Schlüssel-Wert-Paare der genaueren Angaben zu der Instanz (in neuem Format):<br> *resourceUri*: Vollqualifizierte Ressourcen-ID, die die Ressourcengruppen und den Instanznamen enthält. <br> *location*: Region, in der der Dienst ausgeführt wurde. <br> *tags*: Ressourcentags, die vom Benutzer angegeben werden. <br> *additionalInfo*: Weitere Angaben zur genutzten Ressource, z.B. die Betriebssystemversion oder der Imagetyp. |
 | *quantity* |Menge der Ressourcennutzung, die in diesem Zeitraum aufgetreten ist. |
 | *meterId* |Eindeutige ID der Verbrauchseinheit: Eine eindeutige ID für die verwendete Ressource (auch als *ResourceID* bezeichnet). |
+
+
+## <a name="retrieve-usage-information"></a>Abrufen von Nutzungsinformationen
+
+Um Nutzungsdaten zu generieren, benötigen Sie Ressourcen, die ausgeführt werden und das System aktiv verwenden, beispielsweise einen aktiven virtuellen Computer oder ein Speicherkonto mit Daten. Wenn Sie nicht sicher sind, ob Sie über Ressourcen verfügen, die im Azure Stack Marketplace ausgeführt werden, stellen Sie einen virtuellen Computer bereit, und überprüfen Sie das Überwachungsblatt für diesen Computer, um sicherzustellen, dass er ausgeführt wird. Verwenden Sie die folgenden PowerShell-Cmdlets, um die Nutzungsdaten anzuzeigen:
+
+1. [Installieren Sie PowerShell für Azure Stack-](azure-stack-powershell-install.md)
+2. Konfigurieren Sie die PowerShell-Umgebung des [Azure Stack-Benutzers](user/azure-stack-powershell-configure-user.md) oder des [Azure Stack-Betreibers](azure-stack-powershell-configure-admin.md). 
+3. Um die Nutzungsdaten abzurufen, verwenden Sie das PowerShell-Cmdlet [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates):
+```powershell
+Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Referenz zur Ressourcennutzungs-API für Mandanten](azure-stack-tenant-resource-usage-api.md)

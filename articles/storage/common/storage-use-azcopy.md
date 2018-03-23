@@ -2,7 +2,7 @@
 title: Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy unter Windows | Microsoft-Dokumentation
 description: Verwenden Sie unter Windows das Hilfsprogramm AzCopy zum Verschieben oder Kopieren von Daten zu oder von Blob-, Tabellen- und Dateiinhalten. Kopieren Sie Daten aus lokalen Dateien nach Azure Storage oder innerhalb von bzw. zwischen Speicherkonten. Migrieren Sie Ihre Daten ganz einfach nach Azure Storage.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: seguler
 manager: jahogg
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: seguler
-ms.openlocfilehash: 7d875a1e43908f49424f4e40fe923639cfa02385
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 13e09a3081c9dfa2d88625489a82c687d6722f20
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Übertragen von Daten mit AzCopy unter Windows
 AzCopy ist ein Befehlszeilenprogramm, das entwickelt wurde, um Daten in/aus Microsoft Azure Blob, File und Table Storage zu kopieren. Hierbei werden einfache Befehle verwendet, die für optimale Leistung konzipiert sind. Sie können Daten zwischen einem Dateisystem und einem Speicherkonto oder zwischen Speicherkonten kopieren.  
@@ -56,7 +56,7 @@ Beachten Sie, dass, AzCopy den Ordner `C:\myfolder` erstellt, wenn dieser noch n
 ### <a name="download-a-single-blob-from-the-secondary-region"></a>Herunterladen eines einzelnen Blobs aus der sekundären Region
 
 ```azcopy
-AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
 ```
 
 Beachten Sie, dass georedundanter Speicher mit Lesezugriff aktiviert sein muss, damit Sie auf die sekundäre Region zugreifen können.
@@ -106,7 +106,7 @@ Nach dem Herunterladen enthält der Ordner `C:\myfolder` die folgenden Dateien:
     C:\myfolder\abc1.txt
     C:\myfolder\abc2.txt
 
-Das Präfix gilt für das virtuelle Verzeichnis, das den ersten Teil des Blobnamens bildet. Im obigen Beispiel stimmt das virtuelle Verzeichnis nicht mit dem angegebenen Präfix überein. Daher wird es nicht heruntergeladen. Darüber hinaus lädt AzCopy keine Blobs herunter, wenn die Option `\S` nicht angegeben ist.
+Das Präfix gilt für das virtuelle Verzeichnis, das den ersten Teil des Blobnamens bildet. Im obigen Beispiel stimmt das virtuelle Verzeichnis nicht mit dem angegebenen Präfix überein. Daher wird es nicht heruntergeladen. Darüber hinaus lädt AzCopy keine Blobs herunter, wenn die Option `/S` nicht angegeben ist.
 
 ### <a name="set-the-last-modified-time-of-exported-files-to-be-same-as-the-source-blobs"></a>Für exportierte Dateien und Quell-Blobs dieselbe Uhrzeit der letzten Änderung festlegen
 
@@ -616,7 +616,7 @@ Parameter für AzCopy werden unten beschrieben. Sie können auch einen der folge
 
 * Für eine detaillierte Befehlszeilenhilfe für AzCopy: `AzCopy /?`
 * Für eine detaillierte Hilfe zu einzelnen AzCopy-Parametern: `AzCopy /?:SourceKey`
-* Für Befehlszeilenbeispiele: `AzCopy /?:Samples`
+* Für Befehlszeilenbeispiele: `AzCopy /?:Sample`
 
 ### <a name="sourcesource"></a>/Source: "Quelle"
 

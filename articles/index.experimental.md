@@ -1,13 +1,13 @@
 ---
 layout: HubPage
-hide_bc: True
+hide_bc: ''
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
-ms.openlocfilehash: 85745cf147296e053824a879108c1ea607343f57
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 5084e6f9ab8d73e2c8ffefc95a376bc85222320c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -134,6 +134,11 @@ ms.lasthandoff: 12/11/2017
                                                         <span>Python</span>
                                                     </a>
                                                 </div>
+                                                <div class="ico48Link">
+                                                    <a href="/go/azure/">
+                                                        <span>Go</span>
+                                                    </a>
+                                                </div>
                                                 <div>
                                                     <h4>App-Modelle</h4>
                                                     <ul class="noBullet">
@@ -179,7 +184,7 @@ ms.lasthandoff: 12/11/2017
                                             <div class="cardText">
                                                 <h3>Befehlszeilentools</h3>
                                                 <div class="ico48Link">
-                                                    <a href="/cli/azure/overview">
+                                                    <a href="/cli/azure">
                                                         <img src="media/index/azure_dev-7.svg" alt="">
                                                         <span>Azure<br />CLI</span>
                                                     </a>
@@ -252,7 +257,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/azure-functions/">
                                                 <img src="media/index/AzureFunctions.svg" alt="" />
-                                                <p>Functions</p>
+                                                <p>Funktionen</p>
                                             </a>
                                         </li>
                                         <li>
@@ -359,12 +364,12 @@ ms.lasthandoff: 12/11/2017
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>Unternehmensintegration</h3>
+                                    <h3>Enterprise Integration</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/logic-apps/">
                                                 <img src="media/index/LogicApp.svg" alt="" />
-                                                <p>Logik-Apps</p>
+                                                <p>Logic Apps</p>
                                             </a>
                                         </li>
                                         <li>
@@ -438,7 +443,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/virtual-network/">
                                                 <img src="media/index/VirtualNetwork.svg" alt="" />
-                                                <p>Virtual Network</p>
+                                                <p>Virtuelles Netzwerk</p>
                                             </a>
                                         </li>
                                         <li>
@@ -627,7 +632,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/cognitive-services/recommendations/overview">
                                                 <img src="media/index/API_Know_Recommendations.svg" alt="" />
-                                                <p>Recommendations</p>
+                                                <p>Empfehlungen</p>
                                             </a>
                                         </li>
                                         <li>
@@ -682,7 +687,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/DataLakeStore.svg" alt="" />
-                                                <p>Data Lake Store</p>
+                                                <p>Data Lake-Speicher</p>
                                             </a>
                                         </li>
                                         <li>
@@ -739,7 +744,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/DataLakeStore.svg" alt="" />
-                                                <p>Data Lake Store</p>
+                                                <p>Data Lake-Speicher</p>
                                             </a>
                                         </li>
                                         <li>
@@ -876,7 +881,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/logic-apps/">
                                                 <img src="media/index/LogicApp.svg" alt="" />
-                                                <p>Logik-Apps</p>
+                                                <p>Logic Apps</p>
                                             </a>
                                         </li>
                                         <li>
@@ -894,7 +899,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/search/">
                                                 <img src="media/index/Search.svg" alt="" />
-                                                <p>Search</p>
+                                                <p>Suchen,</p>
                                             </a>
                                         </li>
                                         <li>
@@ -921,7 +926,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/key-vault/">
                                                 <img src="media/index/KeyVault.svg" alt="" />
-                                                <p>Key Vault</p>
+                                                <p>Schlüsseltresor</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1020,7 +1025,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/azure-resource-manager/">
                                                 <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Azure-Ressourcen-Manager</p>
+                                                <p>Azure Resource Manager</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1137,7 +1142,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Functions</h3>
+                                                    <h3>Funktionen</h3>
                                                     <p>Ereignisse mit serverlosem Code verarbeiten</p>
                                                 </div>
                                             </div>
@@ -1236,7 +1241,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Virtual Network</h3>
+                                                    <h3>Virtuelles Netzwerk</h3>
                                                     <p>Bereitstellen privater Netzwerke und optionales Herstellen einer Verbindung mit lokalen Datencentern</p>
                                                 </div>
                                             </div>
@@ -1431,7 +1436,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Lake Store</h3>
+                                                    <h3>Data Lake-Speicher</h3>
                                                     <p>Riesiges Repository für Big Data-Analyseworkloads</p>
                                                 </div>
                                             </div>
@@ -1569,7 +1574,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Logik-Apps</h3>
+                                                    <h3>Logic Apps</h3>
                                                     <p>Automatisieren des Zugriffs und der Nutzung von Daten über mehrere Clouds, ohne Code schreiben zu müssen</p>
                                                 </div>
                                             </div>
@@ -1626,7 +1631,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Search</h3>
+                                                    <h3>Suchen,</h3>
                                                     <p>Vollständig verwaltete SaaS-Lösung (Search-as-a-Service)</p>
                                                 </div>
                                             </div>
@@ -1665,7 +1670,7 @@ ms.lasthandoff: 12/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Notification Hubs</h3>
-                                                    <p>Ein skalierbares Pushbenachrichtigungsmodul zum Senden mehrerer Millionen Nachrichten in kürzester Zeit</p>
+                                                    <p>Eine skalierbare Pushbenachrichtigungs-Engine zum Senden mehrerer Millionen Nachrichten in kürzester Zeit</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2197,7 +2202,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Lake Store</h3>
+                                                    <h3>Data Lake-Speicher</h3>
                                                     <p>Riesiges Repository für Big Data-Analyseworkloads</p>
                                                 </div>
                                             </div>
@@ -2412,7 +2417,7 @@ ms.lasthandoff: 12/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Notification Hubs</h3>
-                                                    <p>Ein skalierbares Pushbenachrichtigungsmodul zum Senden mehrerer Millionen Nachrichten in kürzester Zeit</p>
+                                                    <p>Eine skalierbare Pushbenachrichtigungs-Engine zum Senden mehrerer Millionen Nachrichten in kürzester Zeit</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2454,7 +2459,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Logik-Apps</h3>
+                                                    <h3>Logic Apps</h3>
                                                     <p>Automatisieren des Zugriffs und der Nutzung von Daten über mehrere Clouds, ohne Code schreiben zu müssen</p>
                                                 </div>
                                             </div>
@@ -2611,7 +2616,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Key Vault</h3>
+                                                    <h3>Schlüsseltresor</h3>
                                                     <p>Erfahren, wie Kryptografieschlüssel und geheime Schlüssel verwaltet werden</p>
                                                 </div>
                                             </div>
@@ -3020,7 +3025,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure-Ressourcen-Manager</h3>
+                                                    <h3>Azure Resource Manager</h3>
                                                     <p>Bereitstellen und Verwalten von Azure-Ressourcen</p>
                                                 </div>
                                             </div>
@@ -3249,6 +3254,29 @@ ms.lasthandoff: 12/11/2017
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+                                                    <a href="/go/azure/">Abrufen des Go SDK</a>
+                                                </h3>
+                                                <p>
+                                                    <a href="/go/azure/azure-sdk-go-qs-vm">Erste Schritte</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">Referenz</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
                                                     <img src="media/index/azure_dev-6.svg" alt="" />
                                                 </div>
                                             </div>
@@ -3284,7 +3312,7 @@ ms.lasthandoff: 12/11/2017
                                             <div class="cardText">
                                                 <h3>Azure CLI 2.0 </h3>
                                                 <p>
-                                                    <a href="/cli/azure/overview">Erste Schritte</a>
+                                                    <a href="/cli/azure">Erste Schritte</a>
                                                 </p>
                                                 <p>
                                                     <a href="/cli/azure/install-azure-cli">Herunterladen von Azure CLI 2.0</a>
@@ -3441,7 +3469,7 @@ ms.lasthandoff: 12/11/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://storageexplorer.com">Speicher-Explorer</a>
+                                                    <a href="http://storageexplorer.com">Storage-Explorer</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">Erste Schritte</a>

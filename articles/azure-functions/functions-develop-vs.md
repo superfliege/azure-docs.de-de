@@ -1,11 +1,11 @@
 ---
 title: Entwickeln von Azure Functions mithilfe von Visual Studio| Microsoft-Dokumentation
-description: "In diesem Artikel erhalten Sie Informationen über das Entwickeln und Testen von Azure-Funktionen mithilfe von Azure Functions-Tools für Visual Studio 2017."
+description: In diesem Artikel erhalten Sie Informationen über das Entwickeln und Testen von Azure-Funktionen mithilfe von Azure Functions-Tools für Visual Studio 2017.
 services: functions
 documentationcenter: .net
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: dotnet
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: ec9258a123774607ffee8705a1bc5391525567f5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 26df11bb010414ba979077c45d01e66f17f6b12e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions-Tools für Visual Studio  
 
@@ -52,14 +52,15 @@ Zum Erstellen und Bereitstellen von Funktionen benötigen Sie ebenso:
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
-
-## <a name="configure-the-project-for-local-development"></a>Konfigurieren des Projekts für die lokale Entwicklung
-
-Wenn Sie ein neues Projekt mithilfe der Azure Functions-Vorlage erstellen, erhalten Sie ein leeres C#-Projekt, das die folgenden Dateien enthält:
+Die Projektvorlage erstellt ein C#-Projekt, installiert das NuGet-Paket `Microsoft.NET.Sdk.Functions` und legt das Zielframework fest. Functions 1.x ist für .NET Framework ausgelegt, und Functions 2.x ist für .NET Standard ausgelegt. Das neue Projekt enthält die folgenden Dateien:
 
 * **host.json**: Ermöglicht das Konfigurieren des Functions-Hosts. Diese Einstellungen gelten für die lokale Ausführung und die Ausführung in Azure. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json.md).
     
 * **local.settings.json**: Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden nicht von Azure benutzt, sondern von den [Azure Functions Core-Tools](functions-run-local.md). Verwenden Sie diese Datei, um Einstellungen wie Verbindungszeichenfolgen zu anderen Azure-Diensten anzugeben. Fügen Sie dem **Values**-Array für jede Verbindung, die von Funktionen in Ihrem Projekt benötigt wird, einen neuen Schlüssel hinzu. Weitere Informationen finden Sie unter [Local settings file (Datei mit lokalen Einstellungen)](functions-run-local.md#local-settings-file) im Thema zu Azure Functions Core-Tools.
+
+Weitere Informationen finden Sie unter [Funktionsklassenbibliotheks-Projekt](functions-dotnet-class-library.md#functions-class-library-project).
+
+## <a name="configure-the-project-for-local-development"></a>Konfigurieren des Projekts für die lokale Entwicklung
 
 Die Functions-Laufzeit verwendet intern ein Azure-Speicherkonto. Sie müssen für alle Triggertypen außer HTTP und Webhooks den Schlüssel **Values.AzureWebJobsStorage** auf eine gültige Verbindungszeichenfolge des Azure-Speicherkontos festlegen. 
 
@@ -147,5 +148,6 @@ Sie können die Anwendungseinstellungen auch folgendermaßen verwalten:
 
 Weitere Informationen zu Azure Functions-Tools finden Sie im Abschnitt „Common Questions“ (häufig gestellte Fragen) des Blogbeitrags [Visual Studio 2017 Tools for Azure Functions](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) (in englischer Sprache).
 
-Weitere Informationen zu Azure Functions Core-Tools finden Sie unter [Lokales Codieren und Testen von Azure-Funktionen](functions-run-local.md).  
+Weitere Informationen zu Azure Functions Core-Tools finden Sie unter [Lokales Codieren und Testen von Azure-Funktionen](functions-run-local.md).
+
 Weitere Informationen zum Entwickeln von Funktionen als .NET-Klassenbibliotheken finden Sie unter [C#-Entwicklerreferenz zu Azure Functions](functions-dotnet-class-library.md). Dieses Thema enthält auch Links zu Beispielen für die Verwendung von Attributen zum Deklarieren der verschiedenen Typen von Bindungen, die von Azure Functions unterstützt werden.    

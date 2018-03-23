@@ -1,23 +1,24 @@
 ---
 title: Verwenden von SQL-Datenbanken in Azure Stack | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie in wenigen Schritten SQL-Datenbanken als Dienst in Azure Stack und den SQL Server-Ressourcenanbieteradapter bereitstellen können."
+description: Erfahren Sie, wie Sie in wenigen Schritten SQL-Datenbanken als Dienst in Azure Stack und den SQL Server-Ressourcenanbieteradapter bereitstellen können.
 services: azure-stack
-documentationCenter: 
-author: JeffGoldner
-manager: bradleyb
-editor: 
+documentationCenter: ''
+author: mattbriggs
+manager: femila
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
-ms.author: JeffGo
-ms.openlocfilehash: bf52ed4986b4e0930b57721c0e38bbf748045a36
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 03/07/2018
+ms.author: mabrigg
+ms.reviewer: jeffgo
+ms.openlocfilehash: 4d2a00f04e5b07aeb3585fb3ab6c8966e0de7e19
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Verwenden von SQL-Datenbanken in Microsoft Azure Stack
 
@@ -35,14 +36,17 @@ Der Ressourcenanbieter unterstützt nicht alle Datenbankverwaltungsfunktionen vo
 Der Ressourcenanbieter besteht aus drei Komponenten:
 
 - **Dem virtuellen Computer des SQL-Ressourcenanbieteradapters**, einem virtuellen Windows-Computer, der die Anbieterdienste ausführt.
-- **Dem Ressourcenanbieter selbst**, der die Bereitstellungsanforderungen verarbeitet und Datenbankressourcen verfügbar macht.
+- **Dem Ressourcenanbieter selbst**, der die Bereitstellungsanforderungen verarbeitet und Datenbankressourcen verfügbar macht
 - **Servern, die SQL Server hosten**, die Kapazität für Datenbanken bereitstellen und als „Hostserver“ bezeichnet werden.
 
-Sie müssen mindestens eine SQL Server-Instanz erstellen und/oder Zugriff auf externe SQL Server-Instanzen bereitstellen.
+Sie müssen mindestens eine SQL Server-Instanz erstellen bzw. den Zugriff auf externe SQL Server-Instanzen bereitstellen.
+
+> [!NOTE]
+> Hostserver, die auf integrierten Azure Stack-Systemen installiert werden, müssen mit einem Mandantenabonnement erstellt werden. Sie können nicht mit dem Standardabonnement des Anbieters erstellt werden. Sie müssen im Mandantenportal oder einer PowerShell-Sitzung mit einer geeigneten Anmeldung erstellt werden. Alle Hostserver sind abrechenbare VMs, die entsprechende Lizenzen benötigen. Der Dienstadministrator kann Besitzer des Mandantenabonnements sein.
 
 ## <a name="deploy-the-resource-provider"></a>Bereitstellen des Ressourcenanbieters
 
-1. Wenn nicht bereits geschehen, registrieren Sie Ihr Development Kit und laden das Image „Windows Server 2016 Datacenter Core“ über die Marketplace-Verwaltung herunter. Sie müssen ein Windows Server 2016 Core-Image verwenden. Sie können auch ein Skript zum Erstellen eines [Windows Server 2016-Images](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image) verwenden. (Achten Sie darauf, dass die Option „Core“ ausgewählt ist.) Die .NET 3.5-Laufzeit ist nicht mehr erforderlich.
+1. Wenn nicht bereits geschehen, registrieren Sie Ihr Development Kit und laden das Image „Windows Server 2016 Datacenter Core“ über die Marketplace-Verwaltung herunter. Sie müssen ein Windows Server 2016 Core-Image verwenden. Sie können auch ein Skript zum Erstellen eines [Windows Server 2016-Images](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image) verwenden. (Achten Sie darauf, dass die Option „Core“ ausgewählt ist.)
 
 2. Melden Sie sich bei einem Host an, der Zugriff auf die VM mit dem privilegierten Endpunkt hat.
 
@@ -57,16 +61,17 @@ Sie müssen mindestens eine SQL Server-Instanz erstellen und/oder Zugriff auf ex
 3. Laden Sie die Binärdatei des SQL-Ressourcenanbieters herunter. Führen Sie das selbstextrahierende Programm aus, um die Inhalte in ein temporäres Verzeichnis zu extrahieren.
 
     >[!NOTE] 
-    > Der Build des Ressourcenanbieters entspricht den Azure Stack-Builds. Vergewissern Sie sich, dass Sie die richtige Binärdatei für die ausgeführte Azure Stack-Version herunterladen.
+    > Der Ressourcenanbieter verfügt über einen entsprechenden Mindestbuild für Azure Stack. Vergewissern Sie sich, dass Sie die richtige Binärdatei für die ausgeführte Azure Stack-Version herunterladen.
 
     | Azure Stack-Build | Installationsprogramm für SQL-Ressourcenanbieter |
     | --- | --- |
-    |1.0.180102.3, 1.0.180103.2 oder 1.0.180106.1 (mehrere Knoten) | [SQL RP Version 1.1.14.0](https://aka.ms/azurestacksqlrp1712) |
-    | 1.0.171122.1 | [SQL RP Version 1.1.12.0](https://aka.ms/azurestacksqlrp1711) |
-    | 1.0.171028.1 | [SQL RP Version 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
+    | 1802: 1.0.180302.1 | [SQL RP Version 1.1.18.0](https://aka.ms/azurestacksqlrp1802) |
+    | 1712: 1.0.180102.3, 1.0.180103.2 oder 1.0.180106.1 (mehrere Knoten) | [SQL RP Version 1.1.14.0](https://aka.ms/azurestacksqlrp1712) |
+    | 1711: 1.0.171122.1 | [SQL RP Version 1.1.12.0](https://aka.ms/azurestacksqlrp1711) |
+    | 1710: 1.0.171028.1 | [SQL RP Version 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
   
 
-4. Das Azure Stack-Stammzertifikat wird vom privilegierten Endpunkt abgerufen. Für das Azure Stack SDK wird im Rahmen dieses Prozesses ein selbstsigniertes Zertifikat erstellt. Bei mehreren Knoten müssen Sie ein entsprechendes Zertifikat bereitstellen.
+4. Das Azure Stack-Stammzertifikat wird vom privilegierten Endpunkt abgerufen. Für das Azure Stack SDK wird im Rahmen dieses Prozesses ein selbstsigniertes Zertifikat erstellt. Bei integrierten Systemen müssen Sie ein entsprechendes Zertifikat bereitstellen.
 
    Um Ihr eigenes Zertifikat bereitzustellen, platzieren Sie wie folgt eine PFX-Datei in **DependencyFilesLocalPath**:
 
@@ -74,7 +79,7 @@ Sie müssen mindestens eine SQL Server-Instanz erstellen und/oder Zugriff auf ex
 
     - Dem Zertifikat muss vertraut werden. Das bedeutet, die Vertrauenskette muss vorhanden sein, ohne dass Zwischenzertifikate erforderlich sind.
 
-    - Unter „DependencyFilesLocalPath“ ist nur eine Zertifikatdatei vorhanden.
+    - In dem Verzeichnis, auf das mit dem Parameter „DependencyFilesLocalPath“ verwiesen wird, kann nur eine Zertifikatdatei vorhanden sein.
 
     - Der Dateiname darf keine Sonderzeichen enthalten.
 
@@ -91,10 +96,10 @@ Sie müssen mindestens eine SQL Server-Instanz erstellen und/oder Zugriff auf ex
     - Stellt einen virtuellen Computer mithilfe des in Schritt 1 erstellten Windows Server 2016-Images bereit, und installiert dann den Ressourcenanbieter.
     - Registriert einen lokalen DNS-Eintrag, der dem virtuellen Computer mit dem Ressourcenanbieter zugeordnet wird.
     - Registriert Ihren Ressourcenanbieter bei der lokalen Azure Resource Manager-Instanz (Benutzer und Administrator).
+    - Installiert während der Installation des Ressourcenanbieters optional ein einzelnes Windows-Update.
 
-> [!NOTE]
-> Wenn die Installation mehr als 90 Minuten dauert, tritt möglicherweise ein Fehler auf. In diesem Fall wird auf dem Bildschirm und in der Protokolldatei eine Fehlermeldung angezeigt. Die Bereitstellung wird jedoch ab dem fehlerhaften Schritt wiederholt. Systeme, die nicht die empfohlenen Arbeitsspeicher- und vCPU-Spezifikationen aufweisen, können den SQL-Ressourcenanbieter möglicherweise nicht bereitstellen.
->
+8. Wir empfehlen Ihnen, das aktuelle Windows Server 2016 Core-Image aus der Marketplace-Verwaltung herunterzuladen. Wenn Sie ein Update installieren müssen, können Sie unter dem lokalen Abhängigkeitspfad ein einzelnes MSU-Paket anordnen. Falls mehr als eine MSU-Datei gefunden wird, schlägt die Ausführung des Skripts fehl.
+
 
 Hier finden Sie ein Beispiel, das Sie an der PowerShell-Eingabeaufforderung ausführen können. (Achten Sie darauf, die Kontoinformationen und Kennwörter wie erforderlich zu ändern.)
 
@@ -104,11 +109,11 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
@@ -118,7 +123,7 @@ $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set credentials for the new Resource Provider VM.
+# Set credentials for the new resource provider VM local administrator account
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 
@@ -170,14 +175,20 @@ Sie können diese Parameter in der Befehlszeile angeben. Wenn Sie keine Paramete
 
 
 ## <a name="update-the-sql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>Aktualisieren des SQL-Ressourcenanbieteradapters (nur mehrere Knoten, Build 1710 und höher)
-Bei jeder Aktualisierung des Azure Stack-Builds wird ein neuer SQL-Ressourcenanbieteradapter veröffentlicht. Der vorhandene Adapter funktioniert möglicherweise weiterhin. Es wird jedoch empfohlen, nach der Aktualisierung des Azure Stack-Builds den Adapter so schnell wie möglich ebenfalls zu aktualisieren. 
+Unter Umständen wird ein neuer SQL-Ressourcenanbieteradapter veröffentlicht, wenn Azure Stack-Builds aktualisiert werden. Der vorhandene Adapter funktioniert zwar weiterhin, aber es ist ratsam, so schnell wie möglich das Update auf den aktuellen Build durchzuführen. Updates müssen in der richtigen Reihenfolge installiert werden. Es ist nicht möglich, Versionen zu überspringen (siehe Tabelle in Schritt 3 unter [Bereitstellen des Ressourcenanbieters](#deploy-the-resource-provider)).
 
-Der Updateprozess ähnelt dem oben beschriebenen Installationsvorgang. Sie erstellen einen neuen virtuellen Computer mit dem neuesten Ressourcenanbietercode. Darüber hinaus migrieren Sie Einstellungen auf diese neue Instanz, einschließlich der Informationen zu Datenbank und Hostserver. Sie migrieren auch den erforderlichen DNS-Eintrag.
+Verwenden Sie zum Aktualisieren des Ressourcenanbieters das Skript *UpdateSQLProvider.ps1*. Der Prozess ähnelt dem Prozess zum Installieren eines Ressourcenanbieters, wie im Abschnitt [Bereitstellen des Ressourcenanbieters](#deploy-the-resource-provider) dieses Artikels beschrieben. Das Skript ist im Download des Ressourcenanbieters enthalten.
 
-Verwenden Sie das Skript „UpdateSQLProvider.ps1“ mit den gleichen Argumenten wie oben beschrieben. Sie müssen das Zertifikat hier ebenfalls angeben.
+Mit dem Skript *UpdateSQLProvider.ps1* wird eine neue VM mit dem aktuellen Ressourcenanbietercode erstellt, und die Einstellungen werden von der alten VM zur neuen VM migriert. Zu den migrierten Einstellungen gehören Datenbank- und Hostserverinformationen und der erforderliche DNS-Eintrag.
+
+Für das Skript ist die Verwendung der Argumente erforderlich, die für das Skript „DeploySqlProvider.ps1“ beschrieben wurden. Geben Sie hier auch das Zertifikat an. 
+
+Wir empfehlen Ihnen, das aktuelle Windows Server 2016 Core-Image aus der Marketplace-Verwaltung herunterzuladen. Wenn Sie ein Update installieren müssen, können Sie unter dem lokalen Abhängigkeitspfad ein einzelnes MSU-Paket anordnen. Falls mehr als eine MSU-Datei gefunden wird, schlägt die Ausführung des Skripts fehl.
+
+Hier ist ein Beispiel für das Skript *UpdateSQLProvider.ps1* angegeben, das Sie an der PowerShell-Eingabeaufforderung ausführen können. Achten Sie darauf, die Kontoinformationen und Kennwörter wie erforderlich zu ändern: 
 
 > [!NOTE]
-> Dieser Updateprozess wird nur in Systemen mit mehreren Knoten unterstützt.
+> Der Updateprozess gilt nur für integrierte Systeme.
 
 ```
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
@@ -185,11 +196,11 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
@@ -237,6 +248,103 @@ Sie können diese Parameter in der Befehlszeile angeben. Wenn Sie keine Paramete
 | **DebugMode** | Verhindert die automatische Bereinigung nach einem Fehler. | Nein  |
 
 
+## <a name="collect-diagnostic-logs"></a>Erfassen von Diagnoseprotokollen
+Der SQL-Ressourcenanbieter ist ein gesperrter virtueller Computer. Wenn es notwendig ist, Protokolle vom virtuellen Computer zu erfassen, wird zu diesem Zweck der PowerShell-JEA-Endpunkt (Just Enough Administration) mit dem Namen _DBAdapterDiagnostics_ bereitgestellt. Über diesen Endpunkt sind zwei Befehle verfügbar:
+
+* Get-AzsDBAdapterLog: Dient zum Vorbereiten eines ZIP-Pakets mit Ressourcenanbieter-Diagnoseprotokollen und zum Ablegen des Pakets auf dem Benutzerdatenträger der Sitzung. Der Befehl kann ohne Parameter aufgerufen werden und sammelt die Protokolle für die letzten vier Stunden.
+* Remove-AzsDBAdapterLog: Dient zum Bereinigen vorhandener Protokollpakete auf der Ressourcenanbieter-VM.
+
+Während der Bereitstellung bzw. des Updates des Ressourcenanbieters wird ein Benutzerkonto mit dem Namen _dbadapterdiag_ erstellt, um für die Extraktion von Ressourcenanbieterprotokollen eine Verbindung mit dem Diagnoseendpunkt herzustellen. Das Kennwort dieses Kontos entspricht dem Kennwort, das während der Bereitstellung bzw. des Updates für das lokale Administratorkonto angegeben wird.
+
+Zum Nutzen dieser Befehle müssen Sie eine PowerShell-Remotesitzung mit dem virtuellen Computer des Ressourcenanbieters herstellen und den Befehl aufrufen. Optional können Sie die Parameter „FromDate“ und „ToDate“ angeben. Wenn Sie nicht einen oder beide Parameter angeben, liegt „FromDate“ vier Stunden vor dem aktuellen Zeitpunkt, und „ToDate“ ist der aktuelle Zeitpunkt.
+
+In diesem Beispielskript wird die Verwendung dieser Befehle veranschaulicht:
+
+```
+# Create a new diagnostics endpoint session.
+$databaseRPMachineIP = '<RP VM IP>'
+$diagnosticsUserName = 'dbadapterdiag'
+$diagnosticsUserPassword = '<see above>'
+
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+        ($diagnosticsUserName, $diagnosticsUserPassword)
+$session = New-PSSession -ComputerName $databaseRPMachineIP -Credential $diagCreds `
+        -ConfigurationName DBAdapterDiagnostics
+
+# Sample captures logs from the previous one hour
+$fromDate = (Get-Date).AddHours(-1)
+$dateNow = Get-Date
+$sb = {param($d1,$d2) Get-AzSDBAdapterLog -FromDate $d1 -ToDate $d2}
+$logs = Invoke-Command -Session $session -ScriptBlock $sb -ArgumentList $fromDate,$dateNow
+
+# Copy the logs
+$sourcePath = "User:\{0}" -f $logs
+$destinationPackage = Join-Path -Path (Convert-Path '.') -ChildPath $logs
+Copy-Item -FromSession $session -Path $sourcePath -Destination $destinationPackage
+
+# Cleanup logs
+$cleanup = Invoke-Command -Session $session -ScriptBlock {Remove- AzsDBAdapterLog }
+# Close the session
+$session | Remove-PSSession
+```
+
+## <a name="maintenance-operations-integrated-systems"></a>Wartungsvorgänge (integrierte Systeme)
+Der SQL-Ressourcenanbieter ist ein gesperrter virtueller Computer. Die Aktualisierung der Sicherheit einer Ressourcenanbieter-VM kann über den PowerShell-JEA-Endpunkt (Just Enough Administration) _DBAdapterMaintenance_ erfolgen.
+
+Das Ressourcenanbieter-Installationspaket enthält ein Skript für diese Vorgänge.
+
+### <a name="update-the-virtual-machine-operating-system"></a>Aktualisieren des Betriebssystems für den virtuellen Computer
+Es gibt mehrere Möglichkeiten, die Windows Server-VM zu aktualisieren:
+* Installieren des aktuellen Ressourcenanbieterpakets über ein gepatchtes Windows Server 2016 Core-Image
+* Installieren eines Windows Update-Pakets während der Installation oder des Updates des Ressourcenanbieters
+
+
+### <a name="update-the-virtual-machine-windows-defender-definitions"></a>Aktualisieren der Windows Defender-Definitionen für den virtuellen Computer
+
+Führen Sie diese Schritte aus, um die Defender-Definitionen zu aktualisieren:
+
+1. Laden Sie das Update der Windows Defender-Definitionen von der Seite [Windows Defender Definition](https://www.microsoft.com/en-us/wdsi/definitions) (Windows Defender-Definition) herunter.
+
+    Laden Sie auf dieser Seite unter „Manually download and install the definitions“ (Definitionen manuell herunterladen und installieren) die 64-Bit-Datei „Windows Defender Antivirus for Windows 10 and Windows 8.1“ herunter. 
+    
+    Direkter Link: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+
+2. Erstellen Sie eine PowerShell-Sitzung mit dem VM-Wartungsendpunkt des SQL-Ressourcenanbieteradapters.
+3. Kopieren Sie die Updatedatei für die Definitionen auf den DB-Adaptercomputer, indem Sie die Wartungsendpunkt-Sitzung verwenden.
+4. Rufen Sie in der PowerShell-Wartungssitzung den Befehl _Update-DBAdapterWindowsDefenderDefinitions_ auf.
+5. Es wird empfohlen, nach der Installation die verwendete Updatedatei für die Definitionen zu entfernen. Sie können sie in der Wartungssitzung mit dem Befehl _Remove-ItemOnUserDrive_ entfernen.
+
+
+Hier ist ein Beispielskript zum Aktualisieren der Defender-Definitionen angegeben (ersetzen Sie die Adresse bzw. den Namen des virtuellen Computers durch den tatsächlichen Wert):
+
+```
+# Set credentials for the diagnostic user
+$diagPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+    ("dbadapterdiag", $vmLocalAdminPass)$diagCreds = Get-Credential
+
+# Public IP Address of the DB adapter machine
+$databaseRPMachine  = "XX.XX.XX.XX"
+$localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
+ 
+# Download Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions. 
+Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64 `
+    -Outfile $localPathToDefenderUpdate 
+
+# Create session to the maintenance endpoint
+$session = New-PSSession -ComputerName $databaseRPMachine `
+    -Credential $diagCreds -ConfigurationName DBAdapterMaintenance
+# Copy defender update file to the db adapter machine
+Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
+     -Destination "User:\mpam-fe.exe"
+# Install the update file
+Invoke-Command -Session $session -ScriptBlock `
+    {Update-AzSDBAdapterWindowsDefenderDefinitions -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
+# Cleanup the definitions package file and session
+Invoke-Command -Session $session -ScriptBlock `
+    {Remove-AzSItemOnUserDrive -ItemPath "User:\mpam-fe.exe"}
+$session | Remove-PSSession
+```
 
 ## <a name="remove-the-sql-resource-provider-adapter"></a>Entfernen des SQL-Ressourcenanbieteradapters
 

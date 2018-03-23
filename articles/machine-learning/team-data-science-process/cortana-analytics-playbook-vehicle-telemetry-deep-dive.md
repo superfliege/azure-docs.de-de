@@ -1,8 +1,8 @@
 ---
-title: "Ausführliche Informationen zum Vorhersagen von Fahrzeugzustand und Fahrgewohnheiten – Azure | Microsoft-Dokumentation"
-description: "Verwenden Sie die Funktionen von Cortana Intelligence zur Echtzeitgewinnung von prädiktiven Einblicken in Fahrzeugzustand und Fahrgewohnheiten."
+title: Ausführliche Informationen zum Vorhersagen von Fahrzeugzustand und Fahrgewohnheiten – Azure | Microsoft-Dokumentation
+description: Verwenden Sie die Funktionen von Cortana Intelligence zur Echtzeitgewinnung von prädiktiven Einblicken in Fahrzeugzustand und Fahrgewohnheiten.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/24/2017
+ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: a21316ef6ab05918f07a09243b5ce04950ecd9dc
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 370ab807ef85240238c51d1693796c26981edb15
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Lösungs-Playbook zur Fahrzeugtelemetrieanalyse: Ausführliche Betrachtung der Lösung
 Dieses Menü enthält Links zu den Abschnitten des Playbooks: 
@@ -40,7 +40,7 @@ Zu dieser Lösung gehört ein Simulator für Fahrzeugtelematik, wie im folgenden
 
 Dieses Dataset im JSON-Format enthält das folgendes Schema.
 
-| Column | Beschreibung | Werte |
+| Column | BESCHREIBUNG | Werte |
 | --- | --- | --- |
 | VIN (Fahrzeug-Identifizierungsnummer) |Zufällig generierte VIN |Aus einer Masterliste von 10.000 nach dem Zufallsprinzip generierten VINs |
 | Outside temperature (Außentemperatur) |Die Außentemperatur an dem Ort, an dem sich das Fahrzeug befindet |Zufällig generierte Zahl von 0 bis 100 |
@@ -58,8 +58,8 @@ Dieses Dataset im JSON-Format enthält das folgendes Schema.
 | Ignition_status (Status der Zündung) |Gibt an, ob das Fahrzeug fährt oder ob die Zündung ausgeschaltet ist |„true“ oder „false“ |
 | Windshield_wiper_status (Scheibenwischerstatus) |Gibt an, ob die Scheibenwischer eingeschaltet sind |„true“ oder „false“ |
 | ABS (ABS) |Gibt an, ob ABS aktiviert ist |„true“ oder „false“ |
-| Zeitstempel |Zeitstempel für die Erstellung des Datenpunkts |Date |
-| City (Ort) |Standort des Fahrzeugs |Diese Projektmappe enthält vier Orte : Bellevue, Redmond, Sammamish, Seattle |
+| Zeitstempel |Zeitstempel für die Erstellung des Datenpunkts |Datum |
+| City |Standort des Fahrzeugs |Diese Projektmappe enthält vier Orte : Bellevue, Redmond, Sammamish, Seattle |
 
 Im Fahrzeugmodell-Verweisdataset werden VINs Modellen zugeordnet. 
 

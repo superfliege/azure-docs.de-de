@@ -2,24 +2,19 @@
 title: In-Memory OLTP verbessert SQL-Transaktionsleistung | Microsoft Docs
 description: Verwenden von In-Memory OLTP zum Verbessern der Transaktionsleistung in einer vorhandenen SQL-Datenbank.
 services: sql-database
-documentationcenter: 
 author: jodebrui
-manager: jhubbard
-editor: MightyPen
-ms.assetid: c2bf14a0-905b-47b4-afb6-efe9a61147d5
+manager: craigg
+ms.reviewer: MightyPen
 ms.service: sql-database
 ms.custom: develop databases
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: jodebrui
-ms.openlocfilehash: 71dd7d36eee210b80ed6a791b52f977a416b6bb7
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 77e73ec1004babb5fce1e293acfade9264cd6945
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Verwenden von In-Memory-OLTP zur Verbesserung der Anwendungsleistung in SQL-Datenbank
 [In-Memory OLTP](sql-database-in-memory.md) kann verwendet werden, um die Leistung der Transaktionsverarbeitung, Datenerfassung und der vorübergehenden Datenszenarios in Azure SQL-Datenbanken des Typs [Premium](sql-database-service-tiers.md) zu verbessern, ohne den Tarif zu erhöhen. 
@@ -77,12 +72,12 @@ Sie müssen eine speicheroptimierte Kopie der Tabelle, die Sie testen möchten, 
 So verwenden Sie diese Migrationsoption:
 
 1. Stellen Sie über SSMS eine Verbindung mit der Testdatenbank her.
-2. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Tabelle, und klicken Sie dann auf **Ratgeber für die Speicheroptimierung**.
+2. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Tabelle, und klicken Sie dann auf **Advisor für die Speicheroptimierung**.
    
-   * Der **Ratgeber für die Tabellenspeicheroptimierung** -Assistent wird angezeigt.
-3. Klicken Sie im Assistenten auf **Migrationsüberprüfung** (oder die Schaltfläche **Weiter**), um zu überprüfen, ob die Tabelle nicht unterstützte Features enthält, die in den speicheroptimierten Tabellen nicht unterstützt werden. Weitere Informationen finden Sie unter:
+   * Der Assistent für den **Ratgeber für die Tabellenspeicheroptimierung** wird angezeigt.
+3. Klicken Sie im Assistenten auf **Migrationsüberprüfung** (oder die Schaltfläche **Weiter**), um zu überprüfen, ob die Tabelle nicht unterstützte Features enthält, die in den speicheroptimierten Tabellen nicht unterstützt werden. Weitere Informationen finden Sie unter 
    
-   * Die *Prüfliste für die Speicheroptimierung* im [Ratgeber für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx).
+   * Die *Prüfliste für die Speicheroptimierung* im [Advisor für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx).
    * [Von In-Memory OLTP nicht unterstützte Transact-SQL-Konstrukte](http://msdn.microsoft.com/library/dn246937.aspx).
    * [Migrieren zu In-Memory OLTP](http://msdn.microsoft.com/library/dn247639.aspx).
 4. Wenn die Tabelle nicht unterstützte Features enthält, kann der Ratgeber das aktuelle Schema und die Datenmigration für Sie ausführen.
@@ -172,5 +167,5 @@ Sie sollten die Leistungseffekte Ihrer In-Memory-Implementierungen in der Produk
 ## <a name="related-links"></a>Verwandte Links
 * [In-Memory OLTP (In-Memory Optimization)](http://msdn.microsoft.com/library/dn133186.aspx)
 * [Einführung zu systemeigen kompilierten gespeicherten Prozeduren](http://msdn.microsoft.com/library/dn133184.aspx)
-* [Ratgeber für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx)
+* [Advisor für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx)
 

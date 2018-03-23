@@ -1,11 +1,11 @@
 ---
-title: "Entwurfskonzepte für Azure AD Connect | Microsoft Docs"
+title: Entwurfskonzepte für Azure AD Connect | Microsoft Docs
 description: In diesem Thema werden bestimmte Aspekte des Implementierungsentwurfs beschrieben.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4114a6c0-f96a-493c-be74-1153666ce6c9
 ms.service: active-directory
 ms.custom: azure-ad-connect
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 510efc4ae6674a3987c2bb5d7cd155ea8c710c83
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 179a669e4c9567950d22ed76a693ec6ab7a2db8d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Designkonzepte
 Dieses Themas beschreibt, welche Aspekte bei der Planung der Implementierung von Azure AD Connect berücksichtigt werden müssen. Bestimmte Aspekte werden in diesem Thema sehr gründlich behandelt, und diese Konzepte werden in anderen Themen ebenfalls kurz beschrieben.
@@ -117,7 +117,7 @@ Wenn Sie Azure AD Connect mit benutzerdefiniertem Modus installieren, bietet der
 
 ![Benutzerdefinierte Installation – Konfiguration von „sourceAnchor“](./media/active-directory-aadconnect-design-concepts/consistencyGuid-02.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 | --- | --- |
 | Ich möchte den Quellanker durch Azure verwalten lassen | Wählen Sie diese Option aus, wenn Azure AD das Attribut für Sie auswählen soll. Wenn Sie diese Option auswählen, wendet der Azure AD Connect-Assistent dieselbe [Logik wie bei der Auswahl des Attributs „sourceAnchor“ bei der Express-Installation](#express-installation) an. Ähnlich wie bei der Express-Installation informiert der Assistent Sie nach Abschluss der benutzerdefinierten Installation darüber, welches Attribut als Quellankerattribut ausgewählt wurde. |
 | Ein bestimmtes Attribut | Wählen Sie diese Option aus, wenn Sie ein vorhandenes AD-Attribut als sourceAnchor-Attribut angeben möchten. |

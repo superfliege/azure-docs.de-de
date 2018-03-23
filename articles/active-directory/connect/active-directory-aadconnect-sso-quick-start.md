@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie Ihre ersten Schritte für das nahtlose einmalige Anmelden von Azure Active Directory ausführen."
+title: 'Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart | Microsoft-Dokumentation'
+description: In diesem Artikel wird beschrieben, wie Sie Ihre ersten Schritte für das nahtlose einmalige Anmelden von Azure Active Directory ausführen.
 services: active-directory
-keywords: "Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden"
-documentationcenter: 
+keywords: Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: billmath
 ms.openlocfilehash: 58ca992f9fcf9a03d917f0dc250a292c4d5f49e5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
@@ -87,7 +87,7 @@ Darüber hinaus müssen Sie mithilfe der Gruppenrichtlinie eine Richtlinieneinst
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Warum müssen Sie Einstellungen von Benutzern für Intranetzonen ändern?
 
-Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zone (Internet oder Intranet). Beispielsweise ist http://contoso/ der Intranetzone und http://intranet.contoso.com/ der Internetzone zugeordnet (da die URL einen Punkt enthält). Browser senden keine Kerberos-Tickets an Cloudendpunkte wie die Azure AD-URL, sofern Sie die URL nicht explizit zur Intranetzone des Browsers hinzufügen.
+Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zone (Internet oder Intranet). Beispielsweise ist http://contoso/ der Intranetzone und „http://intranet.contoso.com/“ der Internetzone zugeordnet (da die URL einen Punkt enthält). Browser senden keine Kerberos-Tickets an Cloudendpunkte wie die Azure AD-URL, sofern Sie die URL nicht explizit zur Intranetzone des Browsers hinzufügen.
 
 ### <a name="detailed-steps"></a>Ausführliche Schritte
 
@@ -138,7 +138,7 @@ Stellen Sie sicher, dass der Computer mit Mac OS in Azure AD eingebunden ist. An
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (alle Plattformen)
 
-Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) oder [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) in Ihrer Umgebung außer Kraft gesetzt haben, stellen Sie sicher, dass Sie ihnen auch die URL von Azure AD (https://autologon.microsoftazuread-sso.com) hinzufügen.
+Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) oder [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) in Ihrer Umgebung außer Kraft gesetzt haben, stellen Sie sicher, dass Sie ihnen auch die URL von Azure AD (https://autologon.microsoftazuread-sso.com)) hinzufügen.
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome (nur Mac OS)
 
@@ -159,11 +159,11 @@ Um das Feature für einen bestimmten Benutzer zu testen, stellen Sie sicher, das
   - Sie haben [das Feature für diesen Benutzer mithilfe von Gruppenrichtlinien ausgerollt](##step-3-roll-out-the-feature).
 
 So testen Sie das Szenario, wenn der Benutzer nur den Benutzernamen eingibt, jedoch kein Kennwort:
-   - Melden Sie sich unter https://myapps.microsoft.com/ in einer neuen, privaten Browsersitzung an.
+   - Melden Sie sich in einer neuen privaten Browsersitzung bei https://myapps.microsoft.com/ an.
 
 Führen Sie zum Testen des Szenarios, in dem der Benutzer weder den Benutzernamen noch das Kennwort eingeben muss, einen der folgenden Schritte aus: 
-   - Melden Sie sich unter https://myapps.microsoft.com/contoso.onmicrosoft.com in einer neuen, privaten Browsersitzung an. Ersetzen Sie *contoso* durch den Namen Ihres Mandanten.
-   - Melden Sie sich alternativ unter https://myapps.microsoft.com/contoso.com in einer neuen, privaten Browsersitzung an. Ersetzen Sie *contoso.com* durch eine überprüfte Domäne (keine Verbunddomäne) in Ihrem Mandanten.
+   - Melden Sie sich in einer neuen privaten Browsersitzung bei https://myapps.microsoft.com/contoso.onmicrosoft.com an. Ersetzen Sie *contoso* durch den Namen Ihres Mandanten.
+   - Melden Sie sich in einer neuen privaten Browsersitzung bei https://myapps.microsoft.com/contoso.com an. Ersetzen Sie *contoso.com* durch eine überprüfte Domäne (keine Verbunddomäne) in Ihrem Mandanten.
 
 ## <a name="step-5-roll-over-keys"></a>Schritt 5: Durchführen des Rollovers für Schlüssel
 

@@ -1,11 +1,11 @@
 ---
 title: Sichern von Workloads in Azure mithilfe von Azure Backup Server | Microsoft-Dokumentation
-description: "Verwenden Sie Azure Backup Server, um Workloads im Azure-Portal zu schützen und zu sichern."
+description: Verwenden Sie Azure Backup Server, um Workloads im Azure-Portal zu schützen und zu sichern.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: PVRK
 manager: shivamg
-editor: 
+editor: ''
 keywords: azure backup server; protect workloads; back up workloads
 ms.assetid: e7fb1907-9dc1-4ca1-8c61-50423d86540c
 ms.service: backup
@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/20/2017
+ms.date: 3/5/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: addb4312ce1eb57ce86afae449eb3d31d0037418
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: c33cea62dac1c06dd1cb4031897af8c822e61661
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Vorbereiten der Sicherung von Workloads per Azure Backup Server
 > [!div class="op_single_selector"]
@@ -44,11 +44,11 @@ Sie können auch IaaS-Workloads (Infrastructure as a Service) schützen – beis
 
 Azure Backup Server erbt einen Großteil der Funktionalität für die Workloadsicherung von Data Protection Manager (DPM). Dieser Artikel enthält Links zur DPM-Dokumentation mit einer Beschreibung der gemeinsamen Funktionen. Azure Backup Server verfügt auch über einen Großteil der Funktionen von DPM. Für Azure Backup Server werden keine Sicherungen auf Band durchgeführt, und es erfolgt auch keine Integration in System Center.
 
-## <a name="1-choose-an-installation-platform"></a>1. Auswahl der Installationsplattform
+## <a name="choose-an-installation-platform"></a>Auswahl der Installationsplattform
 Der erste Schritt zur Inbetriebnahme von Azure Backup Server ist die Einrichtung eines Computers mit Windows Server. Der Server kann sich unter Azure oder am lokalen Standort befinden.
 
 ### <a name="using-a-server-in-azure"></a>Verwenden eines Servers in Azure
-Beim Auswählen eines Servers zum Ausführen von Azure Backup Server wird empfohlen, mit einem Katalogimage von Windows Server 2012 R2 Datacenter zu beginnen. Der Artikel [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) enthält ein Tutorial zu den ersten Schritten für den empfohlenen virtuellen Computer in Azure. Dies gilt auch, wenn Sie Azure noch nie verwendet haben. Die empfohlenen Mindestanforderungen für den virtuellen Servercomputer lauten: A2-Standard mit zwei 5 Kernen und 3,5 GB RAM.
+Beim Auswählen eines Servers zum Ausführen von Azure Backup Server wird empfohlen, mit einem Katalogimage von Windows Server 2012 R2 Datacenter oder Windows Server 2016 Datacenter zu beginnen. Der Artikel [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) enthält ein Tutorial zu den ersten Schritten für den empfohlenen virtuellen Computer in Azure. Dies gilt auch, wenn Sie Azure noch nie verwendet haben. Die empfohlenen Mindestanforderungen für den virtuellen Servercomputer lauten: A2-Standard mit zwei 5 Kernen und 3,5 GB RAM.
 
 Beim Schützen von Workloads mit Azure Backup Server sind viele Feinheiten zu beachten. Dies wird im Artikel [Installieren von DPM als virtuellen Azure-Computer](https://technet.microsoft.com/library/jj852163.aspx)beschrieben. Lesen Sie sich den Artikel ganz durch, bevor Sie den Computer bereitstellen.
 
@@ -75,7 +75,7 @@ Sie können die DPM-Speicherung deduplizieren, indem Sie die Windows Server-Dedu
 
 Binden Sie Azure Backup Server immer in eine Domäne ein. Wenn Sie den Server in eine andere Domäne verschieben möchten, wird empfohlen, den Server vor der Installation von Azure Backup Server in eine neue Domäne einzubinden. Das Verschieben eines vorhandenen Azure Backup Server-Computers in eine neue Domäne nach der Bereitstellung wird *nicht unterstützt*.
 
-## <a name="2-recovery-services-vault"></a>2. Recovery Services-Tresor
+## <a name="recovery-services-vault"></a>Recovery Services-Tresor
 Die Software muss unabhängig davon über eine Verbindung mit Azure verfügen, ob Sie Sicherungsdaten an Azure senden oder lokal verwalten. Genauer gesagt: Der Azure Backup Server-Computer muss für einen Recovery Services-Tresor registriert sein.
 
 So erstellen Sie einen Recovery Services-Tresor:
@@ -112,7 +112,7 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
     Wenn Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie den virtuellen Computer dem Tresor zuordnen. Ermitteln und registrieren Sie die virtuellen Azure-Computer, um mit der Zuordnung zu beginnen.
 
-## <a name="3-software-package"></a>3. Softwarepaket
+## <a name="software-package"></a>Softwarepaket
 ### <a name="downloading-the-software-package"></a>Herunterladen des Softwarepakets
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 3 fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben und sich im Azure-Portal befinden, klicken Sie im Hub-Menü auf **Durchsuchen**.
@@ -231,7 +231,7 @@ Die erste Sicherungskopie wird in einem Speicherbereich vorgehalten, der dem Azu
 >
 >
 
-## <a name="4-network-connectivity"></a>4. Netzwerkverbindung
+## <a name="network-connectivity"></a>Netzwerkverbindung
 Azure Backup Server muss mit dem Azure Backup-Dienst verbunden sein, um erfolgreich ausgeführt werden zu können. Verwenden Sie zum Überprüfen, ob der Computer über eine Verbindung mit Azure verfügt, das Cmdlet ```Get-DPMCloudConnection``` in der Azure Backup Server-PowerShell-Konsole. Wenn die Ausgabe des Cmdlets „TRUE“ lautet, besteht eine Verbindung, andernfalls nicht.
 
 Gleichzeitig muss das Azure-Abonnement einen fehlerfreien Zustand aufweisen. Um den Status Ihres Abonnements zu ermitteln und es zu verwalten, melden Sie sich beim [Abonnementportal](https://account.windowsazure.com/Subscriptions)an.

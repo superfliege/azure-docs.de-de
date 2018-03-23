@@ -2,12 +2,12 @@
 title: Erstellen einer verwalteten Azure-VM aus einer generalisierten lokalen VHD | Microsoft-Dokumentation
 description: Laden Sie eine generalisierte VHD in Azure hoch, und erstellen Sie damit neue VMs im Resource Manager-Bereitstellungsmodell.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: cynthn
-ms.openlocfilehash: d802ba16ecb4e32e2adb7be3a8e99c72a1625841
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e78ecf6bd281bd5d30f59413789eb1e6fc7b5bc
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Hochladen einer generalisierten VHD und Verwendung dieser zum Erstellen neuer VMs in Azure
 
@@ -53,7 +53,7 @@ Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sys
 1. Melden Sie sich bei dem virtuellen Windows-Computer an.
 2. Öffnen Sie das Eingabeaufforderungsfenster als Administrator. Wechseln Sie in das Verzeichnis **%windir%\system32\sysprep**, und führen Sie anschließend `sysprep.exe` aus.
 3. Wählen Sie unter **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und vergewissern Sie sich, dass das Kontrollkästchen **Verallgemeinern** aktiviert ist.
-4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren**.
+4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus.
 5. Klicken Sie auf **OK**.
    
     ![Starten von Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
@@ -158,11 +158,17 @@ Speichern Sie den Pfad des **Ziel-URI** zur späteren Verwendung, wenn Sie beabs
 Sie können eine VHD zudem mit den folgenden Tools in ein Speicherkonto hochladen:
 
 - [AzCopy](http://aka.ms/downloadazcopy)
-- [Azure Storage Copy Blob-API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-- [Azure-Speicher-Explorer: Hochladen von Blobs](https://azurestorageexplorer.codeplex.com/)
+- [Copy Blob](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+- [Azure Storage-Explorer: Hochladen von Blobs](https://azurestorageexplorer.codeplex.com/)
 - [Speicher-Import/Export Service REST-API-Referenz](https://msdn.microsoft.com/library/dn529096.aspx)
 -   Wir empfehlen das Verwenden des Import/Export-Diensts, wenn die geschätzte Hochladedauer sieben Tage überschreitet. Sie können mithilfe von [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) die Dauer anhand der Datengröße und Übertragungseinheit schätzen. 
     Der Import/Export-Dienst kann zum Kopieren in oder aus dem Standardspeicherkonto verwendet werden. Sie benötigen ein Tool wie AzCopy zum Kopieren zwischen Standardspeicherkonto und Premium-Speicherkonto.
+
+> [!IMPORTANT]
+> Wenn Sie Ihre VHD mithilfe von AzCopy zu Azure hochladen, stellen Sie vor dem Ausführen des Uploadskripts sicher, dass [/BlobType:page](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) festgelegt ist. Wenn das Ziel ein Blob ist und diese Option nicht angegeben wurde, erstellt AzCopy standardmäßig ein Blockblob.
+> 
+> 
+
 
 
 ## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Erstellen eines verwalteten Images anhand der hochgeladenen VHD 

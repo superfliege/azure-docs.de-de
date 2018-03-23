@@ -1,25 +1,25 @@
 ---
-title: "Bereitstellen von Windows-Geräten für die Remoteüberwachung in C – Azure | Microsoft-Dokumentation"
-description: "Beschreibt, wie Sie ein Gerät mit der vorkonfigurierten Remoteüberwachungslösung von Azure IoT Suite verbinden, indem Sie eine in C geschriebene Anwendung unter Windows ausführen."
-services: 
+title: Bereitstellen von Windows-Geräten für die Remoteüberwachung in C – Azure | Microsoft-Dokumentation
+description: Beschreibt, wie Sie ein Gerät mit der vorkonfigurierten Remoteüberwachungslösung von Azure IoT Suite verbinden, indem Sie eine in C geschriebene Anwendung unter Windows ausführen.
+services: ''
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 34e39a58-2434-482c-b3fa-29438a0c05e8
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: a6453c8d84b7025f1f510db5e675cde8685c23ed
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 83d0427a3ba8c634699608c38ab22efb1f275e52
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-windows"></a>Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Windows)
 
@@ -95,7 +95,7 @@ Fügen Sie die Parson JSON-Bibliothek dem **RMDevice**-Projekt hinzu, und fügen
     #include "schemaserializer.h"
     #include "azure_c_shared_utility/threadapi.h"
     #include "azure_c_shared_utility/platform.h"
-    #include "parson.h"
+    #include <string.h>
     ```
 
     > [!NOTE]
@@ -117,7 +117,7 @@ Fügen Sie Code zum Aufrufen der Funktion **remote\_monitoring\_run** hinzu, ers
     }
     ```
 
-1. Wählen Sie **Erstellen** und dann **Projektmappe erstellen**, um die Geräteanwendung zu erstellen. Ignorieren Sie die Warnung bezüglich der **gmtime**-Funktion.
+1. Wählen Sie **Erstellen** und dann **Projektmappe erstellen**, um die Geräteanwendung zu erstellen.
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **RMDevice**, wählen Sie **Debuggen** und dann **Neue Instanz starten**, um das Beispiel auszuführen. Die Konsole zeigt Meldungen an wie:
 

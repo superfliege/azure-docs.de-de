@@ -1,6 +1,6 @@
 ---
-title: "Erste Schritte mit der Gerätesimulationslösung – Azure | Microsoft-Dokumentation"
-description: "Die IoT Suite-Simulationslösung ist ein Tool, das Sie beim Entwickeln und Testen einer IoT-Lösung unterstützen kann. Dieser Simulationsdienst ist ein eigenständiges Angebot, das zusammen mit anderen vorkonfigurierten Lösungen oder mit Ihren eigenen benutzerdefinierten Lösungen verwendet werden kann."
+title: Erste Schritte mit der Gerätesimulationslösung – Azure | Microsoft-Dokumentation
+description: Die IoT Suite-Simulationslösung ist ein Tool, das Sie beim Entwickeln und Testen einer IoT-Lösung unterstützen kann. Dieser Simulationsdienst ist ein eigenständiges Angebot, das zusammen mit anderen vorkonfigurierten Lösungen oder mit Ihren eigenen benutzerdefinierten Lösungen verwendet werden kann.
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 25b9d1c7debe0d98a87b7d0b47dea6ab6f36c8af
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 2a9a6f3387b7f9fb4e3896fc55a06ac4a902ad24
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="device-simulation-walkthrough"></a>Exemplarische Vorgehensweise bei der Gerätesimulation
 
@@ -35,7 +35,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Zum Durcharbeiten dieses Tutorials benötigen Sie eine bereitgestellte Instanz der Azure-IoT-Gerätesimulation in Ihrem Azure-Abonnement.
 
-Wenn Sie die Gerätesimulation noch nicht bereitgestellt haben, sollten Sie zunächst das Tutorial [Bereitstellen der Azure-IoT-Gerätesimulation](iot-suite-device-simulation-explore.md) durcharbeiten.
+Wenn Sie die Gerätesimulation noch nicht bereitgestellt haben, sollten Sie zunächst das Tutorial [Bereitstellen der Azure-IoT-Gerätesimulation](iot-suite-device-simulation-deploy.md) durcharbeiten.
 
 ## <a name="configuring-device-simulation"></a>Konfigurieren der Gerätesimulation
 
@@ -76,7 +76,7 @@ Die folgende Tabelle zeigt eine Liste der Konfigurationen für jedes vorkonfigur
 | Gerätemodell | Sensor | Unit | Telemetriefrequenz
 | -------------| ------ | -----| --------------------|
 | Kältemaschine | Luftfeuchtigkeit | % | 5 Sekunden |
-| | Druck | psig | 5 Sekunden |
+| | pressure | psig | 5 Sekunden |
 | | Temperatur | F | 5 Sekunden |
 | Aufzug | Etage | | 5 Sekunden |
 | | Vibration | MM | 5 Sekunden |

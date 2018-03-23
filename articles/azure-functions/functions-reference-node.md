@@ -1,12 +1,12 @@
 ---
 title: JavaScript-Entwicklerreferenz zu Azure Functions | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln können."
+description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln können.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: functions
@@ -14,13 +14,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: f613e480f6699b323c18402f01873e565768f10f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 0a436a929696f759cdbe9807faa2a15902b7ce6d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -116,7 +116,7 @@ context.log(message)
 Ermöglicht das Schreiben in die Streamingkonsolenprotokolle auf Standard-Ablaufverfolgungsebene. Es sind zusätzliche Protokollierungsmethoden in `context.log` verfügbar, mit denen Sie auf anderen Ablaufverfolgungsebenen in das Konsolenprotokoll schreiben können:
 
 
-| Methode                 | Beschreibung                                |
+| Methode                 | BESCHREIBUNG                                |
 | ---------------------- | ------------------------------------------ |
 | **Fehler(_Meldung_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
 | **warn(_Meldung_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
@@ -206,7 +206,7 @@ HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Respon
 
 Das `request`-Objekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft      | Beschreibung                                                    |
+| Eigenschaft      | BESCHREIBUNG                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | Ein Objekt, das den Hauptteil der Anforderung enthält.               |
 | _headers_     | Ein Objekt, das die Header der Anforderung enthält.                   |
@@ -221,7 +221,7 @@ Das `request`-Objekt weist die folgenden Eigenschaften auf:
 
 Das `response`-Objekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft  | Beschreibung                                               |
+| Eigenschaft  | BESCHREIBUNG                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | Ein Objekt, das den Hauptteil der Antwort enthält.         |
 | _headers_ | Ein Objekt, das die Header der Antwort enthält.             |
@@ -265,7 +265,15 @@ Bei der Arbeit mit HTTP-Triggern haben Sie drei Möglichkeiten, auf HTTP-Anforde
     ```  
 
 ## <a name="node-version-and-package-management"></a>Node-Version und Paketverwaltung
-Die Node-Version ist derzeit unveränderlich auf `6.5.0`festgelegt. Wir untersuchen die Option, Unterstützung für weitere Versionen sowie Konfigurationsmöglichkeiten hinzuzufügen.
+
+Die folgende Tabelle zeigt die jeweilige von den Hauptversionen von Functions Runtime verwendete Node.js-Version:
+
+| Functions-Version | Node.js-Version | 
+|---|---|
+| 1.x | 6.11.2 (durch die Laufzeit gesperrt) |
+| 2.x  |>=8.4.0 mit aktuellem LTS 8.9.4 empfohlen. Legen Sie die Version mithilfe der [App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) „WEBSITE_DEFAULT_NODE_VERSION“ fest.|
+
+Die aktuell von der Laufzeit verwendete Version finden Sie in der Ausgabe `process.version` einer Funktion.
 
 Mit den folgenden Schritten können Sie Pakete in Ihre Funktionen-App einbeziehen: 
 

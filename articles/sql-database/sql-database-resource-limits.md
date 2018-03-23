@@ -1,11 +1,11 @@
 ---
-title: "Ressourceneinschränkungen für Azure SQL-Datenbanken | Microsoft Docs"
-description: "Diese Seite beschreibt einige allgemeine Ressourceneinschränkungen für Azure SQL-Datenbanken."
+title: Ressourceneinschränkungen für Azure SQL-Datenbanken | Microsoft Docs
+description: Diese Seite beschreibt einige allgemeine Ressourceneinschränkungen für Azure SQL-Datenbanken.
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 884e519f-23bb-4b73-a718-00658629646a
 ms.service: sql-database
 ms.custom: DBs & servers
@@ -13,35 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 02/27/2018
-=======
-<<<<<<< HEAD
-ms.date: 02/27/2018
+ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: 839705b902b8e1343c1e0bda97a2ec1dc6b47042
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: eea4362e33ff2587758601758db463ffa82382b3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
-<<<<<<< HEAD
-=======
-ms.date: 02/12/2018
->>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
-ms.author: carlrab
-ms.openlocfilehash: 839705b902b8e1343c1e0bda97a2ec1dc6b47042
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
-ms.translationtype: HT
-ms.contentlocale: de-DE
-<<<<<<< HEAD
-ms.lasthandoff: 02/28/2018
-=======
-ms.lasthandoff: 02/21/2018
->>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
->>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
-=======
->>>>>>> badf78d3a696bb4bc2277e8b2840da1a5bb1178d
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Ressourceneinschränkungen für Azure SQL-Datenbank
+
+> [!IMPORTANT]
+> Informationen zu Ressourceneinschränkungen bei „Verwaltete Azure SQL-Datenbank-Instanz“ finden Sie unter [What is a Managed Instance (preview)?](sql-database-managed-instance.md#managed-instance-service-tier) (Was ist eine verwaltete Instanz (Vorschauversion)?).
 
 ## <a name="single-database-storage-sizes-and-performance-levels"></a>Einzeldatenbank: Speichergrößen und Leistungsstufen
 
@@ -99,7 +82,6 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 
 > [!NOTE]
 > Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen hinsichtlich DTU-Anzahl und Dienstebene denen einzelner Datenbanken außerhalb von Pools. Auf eine S2-Datenbank können z.B. maximal 120 Mitarbeiter gleichzeitig zugreifen. Also können auch 120 Mitarbeiter gleichzeitig auf eine Datenbank in einem Standard-Pool zugreifen, wenn max. 50 DTUs pro Datenbank im Pool zulässig sind (entspricht S2).
->
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 

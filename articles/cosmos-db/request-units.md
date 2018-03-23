@@ -1,11 +1,11 @@
 ---
-title: "Anforderungseinheiten und Schätzen des Durchsatzes – Azure Cosmos DB | Microsoft-Dokumentation"
-description: "Enthält Informationen zu den Grundlagen von Anforderungseinheiten in Azure Cosmos DB sowie zur Angabe und zur Schätzung des Bedarfs an Anforderungseinheiten."
+title: Anforderungseinheiten und Schätzen des Durchsatzes – Azure Cosmos DB | Microsoft-Dokumentation
+description: Enthält Informationen zu den Grundlagen von Anforderungseinheiten in Azure Cosmos DB sowie zur Angabe und zur Schätzung des Bedarfs an Anforderungseinheiten.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: mimig
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: mimig
-ms.openlocfilehash: d263c4f5ad14f6692a7c8f6e66429b439a52a84a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3679aa76d4a6b9fd6335371e1639f1f246867fa5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 Jetzt verfügbar: [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner) in Azure Cosmos DB. Erfahren Sie mehr unter [Schätzen der Durchsatzanforderungen](request-units.md#estimating-throughput-needs).
@@ -35,9 +35,9 @@ Sie müssen einen Durchsatz von 100 RU/Sekunde reservieren, um eine vorhersagbar
 Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:  
 
 * Was sind Anforderungseinheiten und Anforderungsgebühren?
-* Wie gebe ich die Kapazität der Anforderungseinheiten für eine Sammlung an?
+* Wie gebe ich die Kapazität der Anforderungseinheiten für einen Container an?
 * Wie schätze ich die benötigten Anforderungseinheiten für meine Anwendung?
-* Was geschieht, wenn ich die Kapazität der Anforderungseinheiten für eine Sammlung überschreite?
+* Was geschieht, wenn ich die Kapazität der Anforderungseinheiten für einen Container überschreite?
 
 Da es sich bei Azure Cosmos DB um eine Datenbank mit mehreren Modellen handelt, ist es wichtig zu beachten, dass im Artikel für eine Dokument-API auf eine Sammlung bzw. auf ein Dokument, für eine Graph-API auf einen Graph/Knoten und für eine Tabellen-API auf eine Tabelle/Entität verwiesen wird. Dieser Artikel bezieht sich auf die Konzepte Sammlung, Graph oder Tabelle als Container sowie Dokument, Knoten oder Entität als Element.
 
@@ -53,14 +53,14 @@ Wir empfehlen Ihnen, sich zunächst das folgende Video anzusehen, in dem Aravind
 > 
 
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Angeben der Kapazität der Anforderungseinheiten in Azure Cosmos DB
-Wenn Sie eine neue Sammlung, eine Tabelle oder einen Graph beginnen, geben Sie die Anzahl von Anforderungseinheiten (Request Units, RUs) pro Sekunde an, die reserviert werden sollen. Basierend auf dem bereitgestellten Durchsatz ordnet Azure Cosmos DB physische Partitionen zum Hosten Ihrer Sammlung zu, und Daten werden gemäß ihres Wachstums zwischen Partitionen aufgeteilt/neu verteilt.
+Wenn Sie einen neuen Container beginnen, geben Sie die Anzahl von Anforderungseinheiten (Request Units, RUs) pro Sekunde an, die reserviert werden sollen. Basierend auf dem bereitgestellten Durchsatz ordnet Azure Cosmos DB physische Partitionen zum Hosten Ihres Containers zu, und Daten werden gemäß ihres Wachstums zwischen Partitionen aufgeteilt/neu verteilt.
 
-Azure Cosmos DB-Container können als „mit fester Größe“ oder als „unbegrenzt“ erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 1.000 RU/s und einen [Partitionsschlüssel](partition-data.md) angeben. Da Ihre Daten möglicherweise auf mehrere Partitionen aufgeteilt werden müssen, ist es notwendig, einen Partitionsschlüssel mit hoher Kardinalität (Hunderte bis Millionen von unterschiedlichen Werten) auszuwählen. Durch Auswahl eines Partitionsschlüssels mit vielen unterschiedlichen Werten stellen Sie sicher, dass Sammlung/Tabelle/Graph und Anforderungen von Azure Cosmos DB einheitlich skaliert werden können. 
+Azure Cosmos DB-Container können als „mit fester Größe“ oder als „unbegrenzt“ erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 1.000 RU/s und einen [Partitionsschlüssel](partition-data.md) angeben. Da Ihre Daten möglicherweise auf mehrere Partitionen aufgeteilt werden müssen, ist es notwendig, einen Partitionsschlüssel mit hoher Kardinalität (Hunderte bis Millionen von unterschiedlichen Werten) auszuwählen. Durch Auswahl eines Partitionsschlüssels mit vielen unterschiedlichen Werten stellen Sie sicher, dass Container/Tabelle/Graph und Anforderungen von Azure Cosmos DB einheitlich skaliert werden können. 
 
 > [!NOTE]
 > Ein Partitionsschlüssel ist eine logische Grenze, keine physische. Daher müssen Sie die Anzahl der unterschiedlichen Partitionsschlüsselwerte nicht beschränken. Es ist in der Tat besser, mehr unterschiedliche Partitionschlüsselwerte zu haben, da Azure Cosmos DB dann mehr Optionen für den Lastenausgleich zur Verfügung stehen.
 
-Hier sehen Sie einen Codeausschnitt zum Erstellen einer Sammlung mit 3.000 Anforderungseinheiten pro Sekunde mit .NET SDK:
+Hier sehen Sie einen Codeausschnitt zum Erstellen eines Containers mit 3.000 Anforderungseinheiten pro Sekunde mit .NET SDK:
 
 ```csharp
 DocumentCollection myCollection = new DocumentCollection();
@@ -75,7 +75,7 @@ await client.CreateDocumentCollectionAsync(
 
 Azure Cosmos DB wird mit einem Reservierungsmodell für den Durchsatz ausgeführt. Ihnen wird also der *reservierte* Durchsatz berechnet, unabhängig davon, wie viel von diesem Durchsatz aktiv *verwendet* wird. Sie können die Menge reservierter RUs über SDKs oder über das [Azure-Portal](https://portal.azure.com) ganz leicht zentral hoch- oder herunterskalieren, wenn sich die Auslastung, die Daten und die Nutzungsmuster Ihrer Anwendung verändern.
 
-Jede Sammlung, jede Tabelle bzw. jeder Graph ist einer `Offer`-Ressource in Azure Cosmos DB zugeordnet, die bzw. der Metadaten zu dem bereitgestellten Durchsatz enthält. Sie können den reservierten Durchsatz ändern, indem Sie die entsprechende Angebotsressource für einen Container suchen und mit dem neuen Durchsatzwert aktualisieren. Hier sehen Sie einen Codeausschnitt zum Ändern des Durchsatzes einer Sammlung auf 5.000 Anforderungseinheiten pro Sekunde mithilfe von .NET SDK:
+Jeder Container ist einer `Offer`-Ressource in Azure Cosmos DB zugeordnet, der Metadaten zu dem bereitgestellten Durchsatz enthält. Sie können den reservierten Durchsatz ändern, indem Sie die entsprechende Angebotsressource für einen Container suchen und mit dem neuen Durchsatzwert aktualisieren. Hier sehen Sie einen Codeausschnitt zum Ändern des Durchsatzes eines Containers in 5.000 Anforderungseinheiten pro Sekunde mithilfe des .NET SDK:
 
 ```csharp
 // Fetch the resource to be updated
@@ -334,10 +334,10 @@ Mit diesen Informationen können Sie den RU-Bedarf für diese Anwendung angesich
 | Nach Nahrungsmittelgruppe auswählen |10 |700 |
 | 10 beliebteste auswählen |15 |150 insgesamt |
 
-In diesem Fall erwarten wir einen durchschnittlichen Durchsatzbedarf von 1.275 RU/s.  Wir runden auf den nächsten Hunderterwert auf und würden für die Sammlung dieser Anwendung 1.300 RU/s bereitstellen.
+In diesem Fall erwarten wir einen durchschnittlichen Durchsatzbedarf von 1.275 RU/s.  Wir runden auf den nächsten Hunderterwert auf und würden für den Container dieser Anwendung 1.300 RU/s bereitstellen.
 
 ## <a id="RequestRateTooLarge"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz in Azure Cosmos DB
-Der Verbrauch von Anforderungseinheiten wird bei leerem Budget als Rate pro Sekunde bemessen. Für Anwendungen, die die bereitgestellte Anforderungseinheitsrate für einen Container überschreiten, werden Anforderungen an die Sammlung gedrosselt, bis die Rate unter das reservierte Niveau fällt. Bei einer Drosselung beendet der Server die Anforderung präemptiv mit „RequestRateTooLargeException“ (HTTP-Statuscode 429) und gibt den Header x-ms-retry-after-ms zurück. Darin ist die Zeitspanne in Millisekunden angegeben, die der Benutzer abwarten muss, bevor ein neuer Anforderungsversuch unternommen werden kann.
+Der Verbrauch von Anforderungseinheiten wird bei leerem Budget als Rate pro Sekunde bemessen. Für Anwendungen, die die bereitgestellte Anforderungseinheitsrate für einen Container überschreiten, werden Anforderungen an den Container gedrosselt, bis die Rate unter das reservierte Niveau fällt. Bei einer Drosselung beendet der Server die Anforderung präemptiv mit „RequestRateTooLargeException“ (HTTP-Statuscode 429) und gibt den Header x-ms-retry-after-ms zurück. Darin ist die Zeitspanne in Millisekunden angegeben, die der Benutzer abwarten muss, bevor ein neuer Anforderungsversuch unternommen werden kann.
 
     HTTP Status 429
     Status Line: RequestRateTooLarge
@@ -348,7 +348,7 @@ Wenn Sie das .NET Client SDK und LINQ-Abfragen verwenden, werden Sie sich normal
 Wenn mehrere Clients kumulativ oberhalb der Anforderungsrate arbeiten, reicht das Standard-Wiederholungsverhalten möglicherweise nicht aus, und der Client löst für die Anwendung eine DocumentClientException mit dem Statuscode 429 aus. In diesen Fällen sollten Sie in Betracht ziehen, das Wiederholungsverhalten und die zugehörige Logik in die Anwendungsroutinen zur Fehlerbehandlung aufzunehmen oder den reservierten Durchsatz für den Container zu erhöhen.
 
 ## <a id="RequestRateTooLargeAPIforMongoDB"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz in der MongoDB-API
-Anwendungen, die die bereitgestellten Anforderungseinheiten für eine Sammlung überschreiten, werden gedrosselt, bis die Rate unter das reservierte Niveau fällt. Wenn eine Drosselung eintritt, beendet das Back-End die Anforderung präventiv mit einem *16500*-Fehlercode – *Zu viele Anforderungen*. Die MongoDB-API versucht standardmäßig automatisch bis zu 10-mal, eine Anforderung erneut zu senden, bevor der Fehlercode *Zu viele Anforderungen* zurückgegeben wird. Wenn Sie zu viele Fehlercodes *Zu viele Anforderungen* erhalten, sollten Sie in Betracht ziehen, das Wiederholungsverhalten in die Fehlerbehandlungsroutinen Ihrer Anwendung aufzunehmen oder den [reservierten Durchsatz für die Sammlung zu erhöhen](set-throughput.md).
+Anwendungen, die die bereitgestellten Anforderungseinheiten für einen Container überschreiten, werden gedrosselt, bis die Rate unter das reservierte Niveau fällt. Wenn eine Drosselung eintritt, beendet das Back-End die Anforderung präventiv mit einem *16500*-Fehlercode – *Zu viele Anforderungen*. Die MongoDB-API versucht standardmäßig automatisch bis zu 10-mal, eine Anforderung erneut zu senden, bevor der Fehlercode *Zu viele Anforderungen* zurückgegeben wird. Wenn Sie zu viele Fehlercodes vom Typ *Zu viele Anforderungen* erhalten, sollten Sie in Betracht ziehen, das Wiederholungsverhalten in die Fehlerbehandlungsroutinen Ihrer Anwendung aufzunehmen oder den [reservierten Durchsatz für den Container zu erhöhen](set-throughput.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum reservierten Durchsatz mit Azure Cosmos DB-Datenbanken finden Sie in folgenden Ressourcen:

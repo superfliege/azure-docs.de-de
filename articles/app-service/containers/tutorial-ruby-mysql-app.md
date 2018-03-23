@@ -1,8 +1,8 @@
 ---
 title: Erstellen einer Ruby- und MySQL-Web-App in Azure App Service unter Linux | Microsoft Docs
-description: "Hier erhalten Sie Informationen zum Ausführen einer Ruby-App in Azure, die Sie mit einer MySQL-Datenbank in Azure verbinden."
+description: Hier erhalten Sie Informationen zum Ausführen einer Ruby-App in Azure, die Sie mit einer MySQL-Datenbank in Azure verbinden.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
 ms.service: app-service-web
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/21/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 951e66e47cf8fbe9d2cdf1606a8d63054bcada13
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 73839127c23eca29e3a20ab4d68668dfb7c6a375
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="build-a-ruby-and-mysql-web-app-in-azure-app-service-on-linux"></a>Erstellen einer Ruby- und MySQL-Web-App in Azure App Service unter Linux
 
@@ -132,7 +132,7 @@ In diesem Schritt erstellen Sie eine MySQL-Datenbank in [Azure-Datenbank für My
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-no-h.md)] 
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
 ### <a name="create-a-mysql-server"></a>Erstellen eines MySQL-Servers
 
@@ -312,37 +312,7 @@ In diesem Schritt stellen Sie die mit MySQL verbundene Rails-Anwendung in Azure 
 
 ### <a name="create-a-web-app"></a>Erstellen einer Web-App
 
-Erstellen Sie in Cloud Shell mit dem Befehl [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) eine Web-App im App Service-Plan `myAppServicePlan`. 
-
-Ersetzen Sie im folgenden Beispiel `<app_name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Die Runtime ist auf `RUBY|2.3` festgelegt, die das [Ruby-Standardbild](https://hub.docker.com/r/appsvc/ruby/) bereitstellt. Führen Sie [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes) aus, um alle unterstützten Laufzeiten anzuzeigen. 
-
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "RUBY|2.3" --deployment-local-git
-```
-
-Nach Erstellung der Web-App zeigt die Azure CLI eine Ausgabe wie im folgenden Beispiel an:
-
-```json
-Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
-
-Sie haben eine leere neue Web-App mit aktivierter Git-Bereitstellung erstellt.
-
-> [!NOTE]
-> Die URL des Git-Remotespeicherorts wird in der `deploymentLocalGitUrl`-Eigenschaft im Format `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git` angezeigt. Speichern Sie diese URL, da Sie sie später noch benötigen.
->
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
 ### <a name="configure-database-settings"></a>Konfigurieren der Datenbankeinstellungen
 
