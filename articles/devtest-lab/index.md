@@ -1,24 +1,24 @@
 ---
-title: "Dokumentation für Azure DevTest Labs – Tutorials | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie schnell Anwendungstestumgebungen mit wiederverwendbaren Artefakten erstellen. Anhand von Tutorials, Videos und anderem Material wird gezeigt, wie Sie Labs erstellen, verwalten und schützen."
+title: Dokumentation für Azure DevTest Labs – Tutorials | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie schnell Anwendungstestumgebungen mit wiederverwendbaren Artefakten erstellen. Anhand von Tutorials, Videos und anderem Material wird gezeigt, wie Sie Labs erstellen, verwalten und schützen.
 services: devtest-lab
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: devtest-lab
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 92aab190dfba196d48feacbfcc81a0097102b810
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41b7ae5ecf87f4ca544e03c3e62b6c850cf799d0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="devtest-labs-documentation"></a>Dokumentation zu DevTest Labs
+# <a name="devtest-labs-documentation"></a>Dokumentation zu DevTest Labs
 
 Hier erfahren Sie, wie Sie mithilfe von DevTest Labs schnell Anwendungstestumgebungen mit wiederverwendbaren Artefakten erstellen. Anhand von Tutorials, Videos und anderem Dokumentationsmaterial wird gezeigt, wie Sie Labs erstellen, verwalten und schützen und wie Sie Artefakte hinzufügen und verwalten.
 
@@ -117,7 +117,7 @@ Hier erfahren Sie, wie Sie mithilfe von DevTest Labs schnell Anwendungstestumgeb
 
 ---
 
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -150,7 +150,7 @@ Hier erfahren Sie, wie Sie mithilfe von DevTest Labs schnell Anwendungstestumgeb
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Sonstige</h3>
+                        <h3>Andere</h3>
                         <p><a href="https://github.com/Azure/azure-devtestlab/tree/master/Samples">Resource Manager-Vorlagen</a></p>
                     </div>
                 </div>

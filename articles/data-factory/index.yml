@@ -1,36 +1,36 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure Data Factory V2 Vorschau – Dokumentation"
+title: Azure Data Factory V2 Vorschau – Dokumentation
 metadata:
-  title: "Dokumentation für Azure Data Factory – Tutorials, API-Referenz | Microsoft-Dokumentation"
-  description: "Hier erfahren Sie, wie Sie mithilfe von Data Factory automatisierte bidirektionale Datenpipelines für lokale und cloudbasierte Quellen einrichten, um Daten für die Analyse zu verschieben und zu verarbeiten."
+  title: Dokumentation für Azure Data Factory – Tutorials, API-Referenz | Microsoft-Dokumentation
+  description: Hier erfahren Sie, wie Sie mithilfe von Data Factory automatisierte bidirektionale Datenpipelines für lokale und cloudbasierte Quellen einrichten, um Daten für die Analyse zu verschieben und zu verarbeiten.
   services: data-factory
-  author: spelluru
-  manager: jhubbard
+  author: douglaslMS
+  manager: craigg
   ms.service: data-factory
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 09/08/2017
-  ms.author: spelluru
-  ms.openlocfilehash: 0eb34f3b8cd287624e4a8a6930e8cc145d5e8fbb
-  ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+  ms.author: douglasl
+  ms.openlocfilehash: e31500a02bc3470e338f727771eebe887dcc493f
+  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 02/01/2018
+  ms.lasthandoff: 03/23/2018
 abstract:
-  description: "Hier erfahren Sie, wie mithilfe von Data Factory (einem cloudbasierten Datenintegrationsdienst) Dienste für die Speicherung, Verschiebung und Verarbeitung von Daten in automatisierten Datenpipelines kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Datenpipelines einrichten und verwalten und wie Sie zu analysierende Daten verschieben und transformieren. <p>Derzeit ist die Version V2 der Data Factory in der Vorschau. Die Version V1 ist allgemein verfügbar. Wenn Sie V1 des Data Factory-Diensts verwenden, lesen Sie die <a href=/azure/data-factory/v1/data-factory-introduction>V1-Dokumentation.</a></p>"
+  description: Hier erfahren Sie, wie mithilfe von Data Factory (einem cloudbasierten Datenintegrationsdienst) Dienste für die Speicherung, Verschiebung und Verarbeitung von Daten in automatisierten Datenpipelines kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Datenpipelines einrichten und verwalten und wie Sie zu analysierende Daten verschieben und transformieren. <p>Derzeit ist die Version V2 der Data Factory in der Vorschau. Die Version V1 ist allgemein verfügbar. Wenn Sie V1 des Data Factory-Diensts verwenden, lesen Sie die <a href=/azure/data-factory/v1/data-factory-introduction>V1-Dokumentation.</a></p>
   aside:
     image:
       alt: 
       height: 110
       src: media/index/video.png
       width: 250
-    title: "Visuelle Erstellung von Pipelines für Azure Data Factory V2 (19:31)"
+    title: Visuelle Erstellung von Pipelines für Azure Data Factory V2 (19:31)
     href: https://azure.microsoft.com/en-us/resources/videos/azure-friday-visually-build-pipelines-for-azure-data-factory-v2
     width: 250
 sections:
-- title: "Fünfminütige Schnellstarts"
+- title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
     text: 'Erfahren Sie, wie Sie eine Data Factory erstellen mithilfe von:'
@@ -39,7 +39,7 @@ sections:
     items:
     - image:
         src: /azure/data-factory/media/index/portal.svg
-      text: "Data Factory-Benutzeroberfläche"
+      text: Data Factory-Benutzeroberfläche
       href: /azure/data-factory/quickstart-create-data-factory-portal
     - image:
         src: /azure/data-factory/media/index/copy-data-tool.png
@@ -65,21 +65,21 @@ sections:
         src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
       text: Resource Manager-Vorlage
       href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
-- title: "Schritt-für-Schritt-Tutorials"
+- title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
-    text: "Erfahren Sie, wie Sie eine Data Factory erstellen und überwachen:"
+    text: 'Erfahren Sie, wie Sie eine Data Factory erstellen und überwachen:'
   - type: list
     style: ordered
     items:
-    - html: "Bereitstellen von SSIS-Paketen in Azure – <a href=\"/azure/data-factory/tutorial-create-azure-ssis-runtime-portal\">Data Factory-Benutzeroberfläche</a> | <a href=\"/azure/data-factory/tutorial-deploy-ssis-packages-azure\">Azure PowerShell</a>"
-    - html: "Kopieren von Daten in der Cloud – <a href=\"/azure/data-factory/tutorial-copy-data-tool\">Tool zum Kopieren von Daten</a> | <a href=\"/azure/data-factory/tutorial-copy-data-portal\">Data Factory-Benutzeroberfläche</a> | <a href=\"/azure/data-factory/tutorial-copy-data-dot-net\">.NET</a>"
-    - html: "Kopieren lokaler Daten in die Cloud – <a href=\"/azure/data-factory/tutorial-hybrid-copy-data-tool\">Tool zum Kopieren von Daten | <a href=\"/azure/data-factory/tutorial-hybrid-copy-portal\">Data Factory-Benutzeroberfläche</a> | <a href=\"/azure/data-factory/tutorial-hybrid-copy-powershell\">Azure PowerShell</a>"
-    - html: "Massenkopieren von Daten – <a href=\"/azure/data-factory/tutorial-bulk-copy-portal\">Data Factory-Benutzeroberfläche</a> | <a href=\"/azure/data-factory/tutorial-bulk-copy\">Azure PowerShell</a>"
-    - html: "Inkrementelles Kopieren von Daten – <a href=\"/azure/data-factory/tutorial-incremental-copy-portal\">Data Factory-Benutzeroberfläche</a> | <a href=\"/azure/data-factory/tutorial-incremental-copy-powershell\">Azure PowerShell</a>"
-    - html: "Transformieren von Daten in der Cloud mit Spark – <a href=\"/azure/data-factory/tutorial-transform-data-spark-portal\">Data Factory-Benutzeroberfläche</a> | <a href=\"/azure/data-factory/tutorial-transform-data-spark-powershell\">Azure PowerShell</a>"
-    - html: "Transformieren von Daten im virtuellen Netzwerk – <a href=\"/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal\">Data Factory-Benutzeroberfläche</a> | <a href=\"/azure/data-factory/tutorial-transform-data-hive-virtual-network\">Azure PowerShell</a>"
-    - html: "Ablaufsteuerung – <a href=\"/azure/data-factory/tutorial-control-flow-portal\">Data Factory-Benutzeroberfläche</a> | <a href=\"/azure/data-factory/tutorial-control-flow\">.NET</a>"
+    - html: Bereitstellen von SSIS-Paketen in Azure – <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
+    - html: Kopieren von Daten in der Cloud – <a href="/azure/data-factory/tutorial-copy-data-tool">Tool zum Kopieren von Daten</a> | <a href="/azure/data-factory/tutorial-copy-data-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-copy-data-dot-net">.NET</a>
+    - html: Kopieren lokaler Daten in die Cloud – <a href="/azure/data-factory/tutorial-hybrid-copy-data-tool">Tool zum Kopieren von Daten | <a href="/azure/data-factory/tutorial-hybrid-copy-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-hybrid-copy-powershell">Azure PowerShell</a>
+    - html: Massenkopieren von Daten – <a href="/azure/data-factory/tutorial-bulk-copy-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-bulk-copy">Azure PowerShell</a>
+    - html: Inkrementelles Kopieren von Daten – <a href="/azure/data-factory/tutorial-incremental-copy-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-incremental-copy-powershell">Azure PowerShell</a>
+    - html: Transformieren von Daten in der Cloud mit Spark – <a href="/azure/data-factory/tutorial-transform-data-spark-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-transform-data-spark-powershell">Azure PowerShell</a>
+    - html: Transformieren von Daten im virtuellen Netzwerk – <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
+    - html: Ablaufsteuerung – <a href="/azure/data-factory/tutorial-control-flow-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
 - title: Beispiele
   items:
   - type: paragraph

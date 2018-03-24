@@ -1,24 +1,24 @@
 ---
-title: "Dokumentation für Azure HDInsight – Tutorials, API-Referenz | Microsoft-Dokumentation"
+title: Dokumentation für Azure HDInsight – Tutorials, API-Referenz | Microsoft-Dokumentation
 description: Lernen Sie Hadoop in HDInsight kennen. Die Dokumentation zeigt, wie Sie unter anderem Hadoop, Spark, HBase und R-Server verwenden, um Big Data zu verarbeiten, zu analysieren und Erkenntnisse zu gewinnen.
 services: hdinsight
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 12/05/2017
 ms.author: carolz
-ms.openlocfilehash: 12fbfada95f9356b1d32c0edd3346a57c6ffa26f
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 6d00f3194f7cf02d9c0218ed768f3c3350efdd16
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="azure-hdinsight-documentation"></a>Azure HDInsight-Dokumentation
+# <a name="azure-hdinsight-documentation"></a>Azure HDInsight-Dokumentation
 
 Hier erfahren Sie, wie Sie Azure HDInsight verwenden, um Streamingdaten oder historische Daten zu analysieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Cluster erstellen, Big Data verarbeiten und analysieren und Lösungen mit den beliebtesten Open Source-Frameworks wie Hadoop, Spark, Hive, LLAP, Kafka, Storm, R usw. entwerfen. 
 
@@ -233,7 +233,7 @@ Azure HDInsight ist ein umfassender, vollständig verwalteter Open Source-Analys
 
 ---
  
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">

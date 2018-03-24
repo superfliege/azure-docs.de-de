@@ -1,24 +1,24 @@
 ---
-title: "Dokumentation für Azure Data Catalog – Tutorials, API-Referenz | Microsoft-Dokumentation"
+title: Dokumentation für Azure Data Catalog – Tutorials, API-Referenz | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Datenkatalog einrichten, in dem Ihre Organisation Datenquellen suchen, verstehen und nutzen kann. Tutorials, API-Referenz und anderes Dokumentationsmaterial.
 services: data-catalog
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: data-catalog
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/25/2017
 ms.author: carolz
-ms.openlocfilehash: c901562753be86613ac4ca4dec1e727d1383e626
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ec21b9b55015c247cef3f216dbb14f4ddc30e8d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="data-catalog-documentation"></a>Data Catalog-Dokumentation
+# <a name="data-catalog-documentation"></a>Data Catalog-Dokumentation
 
 Hier erfahren Sie, wie Sie Ihre Organisation und Ihr Team mithilfe von Data Catalog beim Finden, Verstehen und Nutzen Ihrer Daten unterstützen können. Anhand von Tutorials, einer REST-API-Referenz und anderem Dokumentationsmaterial wird gezeigt, wie Sie ein Datenrepository planen und einrichten, in dem Datennutzer verfügbare Datenquellen finden und sich mit Informationen von Experten vertraut machen können.
 
@@ -63,7 +63,7 @@ Hier erfahren Sie, wie Sie Ihre Organisation und Ihr Team mithilfe von Data Cata
 
 ---
  
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">

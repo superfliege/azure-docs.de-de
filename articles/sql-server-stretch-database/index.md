@@ -1,11 +1,11 @@
 ---
-title: "Dokumentation für Azure SQL Server Stretch Database | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie SQL Server Stretch Database verwenden, um kalte Daten sicher zu Azure zu migrieren, ohne Abfragen oder Anwendungen zu ändern. Tutorials und anderes Dokumentationsmaterial."
+title: Dokumentation für Azure SQL Server Stretch Database | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie SQL Server Stretch Database verwenden, um kalte Daten sicher zu Azure zu migrieren, ohne Abfragen oder Anwendungen zu ändern. Tutorials und anderes Dokumentationsmaterial.
 services: sql-server-stretch-database
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-server-stretch-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ms.openlocfilehash: d40cd906abbee8b1d33f9e67c1940918ba4acb28
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="sql-server-stretch-database-documentation"></a>Dokumentation zu SQL Server Stretch Database
 

@@ -1,24 +1,24 @@
 ---
-title: "Dokumentation für Azure ExpressRoute – Tutorials, API-Referenz | Microsoft-Dokumentation"
+title: Dokumentation für Azure ExpressRoute – Tutorials, API-Referenz | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie in Ihrer lokalen Infrastruktur oder Kollokationsumgebung eine private ExpressRoute-Verbindung mit Microsoft Cloud Services konfigurieren und verwalten.
 services: expressroute
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 8c12fd74d131538e736d6357da586c5debb9929c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9255a4166809568258d733c2894e5788d27cd612
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="expressroute-documentation"></a>ExpressRoute-Dokumentation
+# <a name="expressroute-documentation"></a>ExpressRoute-Dokumentation
 
 Hier erfahren Sie, wie Sie mithilfe von ExpressRoute in Ihrer lokalen Infrastruktur oder Kollokationsumgebung eine schnelle private Verbindung mit Microsoft Cloud Services konfigurieren und verwalten. Anhand von Tutorials, REST-APIs und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine ExpressRoute-Verbindung konfigurieren und verwalten.
 
@@ -81,7 +81,7 @@ Hier erfahren Sie, wie Sie mithilfe von ExpressRoute in Ihrer lokalen Infrastruk
 
 ---
 
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -90,7 +90,7 @@ Hier erfahren Sie, wie Sie mithilfe von ExpressRoute in Ihrer lokalen Infrastruk
                     <div class="cardText">
                         <h3>Befehlszeile</h3>
                         <p><a href="/powershell/module/azurerm.network/#expressroute">PowerShell</a></p>
-                        <p><a href="/cli/azure/network/express-route">Azure-Befehlszeilenschnittstelle</a></p>
+                        <p><a href="/cli/azure/network/express-route">Azure-CLI</a></p>
                     </div>
                 </div>
             </div> 

@@ -28,7 +28,7 @@
 - name: Konzepte
   items:
     - name: Grundlagen zu Kostenberichten
-      href: understading-cost-reports.md
+      href: understanding-cost-reports.md
 - name: Anleitungen
   items:
     - name: Aktivieren von Azure-Abonnements und -Konten

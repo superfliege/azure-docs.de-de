@@ -1,24 +1,24 @@
 ---
-title: "Dokumentation für Azure-VM-Skalierungsgruppen – Tutorials, API-Referenz | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe von VM-Skalierungsgruppen automatisch skalierende virtuelle Windows- oder Linux-Computer für Big Compute-, Big Data- und Containerlösungen erstellen."
+title: Dokumentation für Azure-VM-Skalierungsgruppen – Tutorials, API-Referenz | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe von VM-Skalierungsgruppen automatisch skalierende virtuelle Windows- oder Linux-Computer für Big Compute-, Big Data- und Containerlösungen erstellen.
 services: virtual-machine-scale-sets
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f6c51a605a3fe28fb906e8c35a68a885a46136ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53a6db483ff760c143d98a209e622e1214762ce3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="virtual-machine-scale-sets-documentation"></a>Dokumentation zu VM-Skalierungsgruppen
+# <a name="virtual-machine-scale-sets-documentation"></a>Dokumentation zu VM-Skalierungsgruppen
 
 Hier erfahren Sie, wie Sie mithilfe von VM-Skalierungsgruppen eine Gruppe identischer, automatisch skalierender virtueller Windows- oder Linux-Computer bereitstellen und verwalten. Die Dokumentation zeigt, wie Sie mithilfe von Skalierungsgruppen Dienste unterstützen, die für Big Compute-, Big Data- und Containerlösungen vorgesehen sind.
 
@@ -82,7 +82,7 @@ Hier erfahren Sie, wie Sie mithilfe von VM-Skalierungsgruppen eine Gruppe identi
 
 ---
 
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -91,7 +91,7 @@ Hier erfahren Sie, wie Sie mithilfe von VM-Skalierungsgruppen eine Gruppe identi
                     <div class="cardText">
                         <h3>Befehlszeile</h3>
                         <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
-                        <p><a href="/cli/azure/vm">Azure-Befehlszeilenschnittstelle</a></p>
+                        <p><a href="/cli/azure/vm">Azure-CLI</a></p>
                     </div>
                 </div>
             </div>

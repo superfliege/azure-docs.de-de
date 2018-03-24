@@ -1,26 +1,26 @@
 ---
-title: "Dokumentation für Azure Load Balancer – Tutorials, API-Referenz | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe von Load Balancer die Netzwerkleistung von Apps optimieren. Verwalten Sie Datenverkehr für virtuelle Computer und Cloudressourcen sowie in standortübergreifenden virtuellen Netzwerken."
+title: Dokumentation für Azure Load Balancer – Tutorials, API-Referenz | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe von Load Balancer die Netzwerkleistung von Apps optimieren. Verwalten Sie Datenverkehr für virtuelle Computer und Cloudressourcen sowie in standortübergreifenden virtuellen Netzwerken.
 services: load-balancer
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 169ca89ccd80e5a70f3e9ab07b3c34358c154be7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4642b0108343b417dc09bbc5978b6a18a58d39a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="load-balancer-documentation"></a>Dokumentation zu Load Balancer
+# <a name="load-balancer-documentation"></a>Dokumentation zu Load Balancer
 
-Hier erfahren Sie, wie Sie Load Balancer konfigurieren, um hohe Verfügbarkeit und Netzwerkleistung für Ihre Anwendungen zu erhalten. Die Dokumentation zeigt, wie Sie einen Lastenausgleich für den bidirektionalen Datenverkehr von virtuellen Computern und Cloudressourcen sowie in standortübergreifenden virtuellen Netzwerken verwenden.
+Hier erfahren Sie, wie Sie Load Balancer konfigurieren, um Hochverfügbarkeit und Netzwerkleistung für Ihre Anwendungen zu erhalten. Die Dokumentation zeigt, wie Sie einen Lastenausgleich für den bidirektionalen Datenverkehr von virtuellen Computern und Cloudressourcen sowie in standortübergreifenden virtuellen Netzwerken verwenden.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -99,7 +99,7 @@ Hier erfahren Sie, wie Sie Load Balancer konfigurieren, um hohe Verfügbarkeit u
 
 ---
 
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">

@@ -1,11 +1,11 @@
 ---
-title: "Dokumentation für Azure Traffic Manager – Tutorials, API-Referenz | Microsoft-Dokumentation"
+title: Dokumentation für Azure Traffic Manager – Tutorials, API-Referenz | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie eingehenden Datenverkehr zur Optimierung der Anwendungsleistung verwalten. Die Dokumentation zeigt, wie Sie Datenverkehr verteilen, der bei Azure oder an externen Dienstendpunkten eingeht.
 services: traffic-manager
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: traffic-manager
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ms.openlocfilehash: ce3699f4838c30eaaa0ab2938190c05de1feb781
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-documentation"></a>Traffic Manager-Dokumentation
 

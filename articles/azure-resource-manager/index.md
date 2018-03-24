@@ -1,24 +1,24 @@
 ---
-title: "Dokumentation für Azure Resource Manager – Tutorials, API-Referenz | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe von Resource Manager Lösungsressourcen als Gruppe bereitstellen und verwalten und wie Sie Vorlagen für eine konsistente und wiederholbare Ressourcenbereitstellung erstellen."
+title: Dokumentation für Azure Resource Manager – Tutorials, API-Referenz | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe von Resource Manager Lösungsressourcen als Gruppe bereitstellen und verwalten und wie Sie Vorlagen für eine konsistente und wiederholbare Ressourcenbereitstellung erstellen.
 services: azure-resource-manager
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: ab6725298c9e9c496d2e20b4e68ff72af1432bb2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 471ed43d5eec54a138262b7c4c89802020683fdc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="azure-resource-manager-documentation"></a>Dokumentation zum Azure Resource Manager
+# <a name="azure-resource-manager-documentation"></a>Dokumentation zum Azure Resource Manager
 
 Hier erfahren Sie, wie Sie mithilfe von Resource Manager Lösungsressourcen als Gruppe bereitstellen, überwachen und verwalten. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Ressourcengruppen einrichten und Vorlagen für eine konsistente und wiederholbare Bereitstellung erstellen.
 
@@ -117,7 +117,7 @@ Hier erfahren Sie, wie Sie mithilfe von Resource Manager Lösungsressourcen als 
 
 ---
  
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -126,7 +126,7 @@ Hier erfahren Sie, wie Sie mithilfe von Resource Manager Lösungsressourcen als 
                     <div class="cardText">
                         <h3>Befehlszeile</h3>
                         <p><a href="/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources">PowerShell</a></p>
-                        <p><a href="/cli/azure/resource">Azure-Befehlszeilenschnittstelle</a></p>
+                        <p><a href="/cli/azure/resource">Azure-CLI</a></p>
                     </div>
                 </div>
             </div>
