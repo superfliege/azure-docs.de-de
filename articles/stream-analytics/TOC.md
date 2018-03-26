@@ -41,6 +41,7 @@
 ### [Twitter-Stimmungsanalyse](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [Betrugsermittlung in Echtzeit](stream-analytics-real-time-fraud-detection.md)
 ### [Ausführen von Aufträgen unter IoT Edge](stream-analytics-edge.md) 
+### [Analysieren von Sensordaten von Mauthäuschen](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
 ### [Ausführen eines benutzerdefinierten JavaScript-Aggregats](stream-analytics-javascript-user-defined-aggregates.md)
 ### [Hochfrequenzhandel](stream-analytics-high-frequency-trading.md)
 ### [Ausführen von Azure Functions](stream-analytics-with-azure-functions.md)

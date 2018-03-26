@@ -236,6 +236,7 @@
 ## [REST](/rest/api/media/mediaservice)
 ## Spezifikationen
 ### [Liveerfassung: Spezifikation für die Liveerfassung von fragmentiertem MP4](media-services-fmp4-live-ingest-overview.md)
+### [Liveerfassungs: Signalisieren von zeitlich festgelegten Metadaten beim Livestreaming](media-services-specifications-live-timed-metadata.md)
 ### [Smooth Streaming (HEVC)](media-services-specifications-ms-sstr-ammendment-hevc.md)
 
 # angeben

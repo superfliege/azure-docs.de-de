@@ -7,20 +7,40 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen eines Databricks-Arbeitsbereichs
+    - name: Erstellen eines Databricks-Arbeitsbereichs – Portal
       href: quickstart-create-databricks-workspace-portal.md
+    - name: Erstellen eines Databricks-Arbeitsbereichs – Resource Manager-Vorlage
+      href: quickstart-create-databricks-workspace-resource-manager-template.md
 - name: Tutorials
   items:
+    - name: Durchführen von ETL-Vorgängen
+      href: databricks-extract-load-sql-data-warehouse.md
     - name: Streamen von Daten mithilfe von Event Hubs
       href: databricks-stream-from-eventhubs.md
     - name: Stimmungsanalyse mit Cognitive Services
       href: databricks-sentiment-analysis-cognitive-services.md
+    - name: Streamen von Daten aus HDInsight Kafka
+      href: 'https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html'
 - name: Anleitungen
   items:
+    - name: Erstellen eines Spark-Clusters
+      href: 'https://docs.azuredatabricks.net/user-guide/clusters/index.html'
+    - name: Arbeiten mit Notebooks
+      href: 'https://docs.azuredatabricks.net/user-guide/notebooks/index.html'
+    - name: Ausführen von Spark-Aufträgen
+      href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
+    - name: Verbindungen mit Datenquellen
+      href: databricks-connect-to-data-sources.md
     - name: 'Herstellen einer Verbindung mit Excel, R und Python'
       href: connect-databricks-excel-python-r.md
     - name: Verwenden der Databricks-Befehlszeilenschnittstelle über Azure Cloud Shell
       href: databricks-cli-from-azure-cloud-shell.md
+    - name: Verwenden von BI-Tools
+      href: 'https://docs.azuredatabricks.net/user-guide/bi/index.html'
+- name: Verweis
+  items:
+    - name: REST-API
+      href: /rest/api/databricks
 - name: angeben
   items:
     - name: Häufig gestellte Fragen

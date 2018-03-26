@@ -56,7 +56,10 @@
 #### [Andere Bereitstellungsmodelle – gleiches Abonnement](create-peering-different-deployment-models.md)
 #### [Andere Bereitstellungsmodelle – andere Abonnements](create-peering-different-deployment-models-subscriptions.md)
 
-### [Virtuelles Netzwerk – Dienstendpunkte](virtual-network-service-endpoints-configure.md)
+### Dienstendpunkte im virtuellen Netzwerk
+#### [Azure-Portal](tutorial-restrict-network-access-to-resources.md)
+#### [Azure PowerShell](tutorial-restrict-network-access-to-resources-powershell.md)
+#### [Azure-CLI](tutorial-restrict-network-access-to-resources-cli.md)
 
 ### Virtuelle Computer
 #### [Virtual machine network throughput (VM-Netzwerkdurchsatz)](virtual-machine-network-throughput.md)
@@ -176,8 +179,12 @@
 ### [Konnektivitätsprobleme zwischen virtuellen Computern](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 ### [Konfigurieren von PTR für die SMTP-Bannerüberprüfung](create-ptr-for-smtp-service.md)
 
+## Beispielskripts
+### [Azure-CLI](cli-samples.md)
+### [Azure PowerShell](powershell-samples.md)
+
 # Verweis
-## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
+## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=virtual-network)
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.network)
 ## [Azure PowerShell [klassisch]](/powershell/module/azure/)
 ## [Azure-CLI](/cli/azure/network)

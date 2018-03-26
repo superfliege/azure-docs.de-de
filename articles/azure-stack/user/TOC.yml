@@ -131,6 +131,8 @@
   items:
     - name: Dokumentation für Azure Stack-Bediener
       href: /azure/azure-stack/
+    - name: ASDK-Dokumentation
+      href: /azure/azure-stack/asdk/
 - name: angeben
   items:
     - name: Roadmap für Azure Stack

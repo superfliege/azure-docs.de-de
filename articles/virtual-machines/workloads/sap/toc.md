@@ -40,6 +40,7 @@
 #### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-infrastructure-wsfc-shared-disk.md)
 #### [Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-high-availability-infrastructure-wsfc-file-share.md)
 #### [SUSE Linux mit NFS für die (A)SCS-Instanz](high-availability-guide-suse.md)
+#### [Pacemaker unter SLES](high-availability-guide-suse-pacemaker.md)
 ### SAP-Installation
 #### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-installation-wsfc-shared-disk.md)
 #### [Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-high-availability-installation-wsfc-file-share.md)

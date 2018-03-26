@@ -103,6 +103,8 @@
               href: hyper-v-vmm-architecture.md
     - name: Notfallwiederherstellung für Apps
       href: site-recovery-workload.md
+    - name: Informationen zu Wiederherstellungsplänen
+      href: recovery-plan-overview.md
     - name: Informationen zur Migration
       href: migrate-overview.md
     - name: Informationen zur rollenbasierten Zugriffssteuerung mit Site Recovery
@@ -273,6 +275,12 @@
           items:
             - name: Durchführen eines Notfallwiederherstellungsverfahrens in Azure
               href: site-recovery-test-failover-to-azure.md
+            - name: Einrichten von Wiederherstellungsplänen
+              href: site-recovery-create-recovery-plans.md
+            - name: Hinzufügen von VMM-Skripts zu Wiederherstellungsplänen
+              href: hyper-v-vmm-recovery-script.md
+            - name: Hinzufügen von Azure-Runbooks zu Wiederherstellungsplänen
+              href: site-recovery-runbook-automation.md
             - name: Ausführen eines Failovers auf Azure
               href: site-recovery-failover.md
             - name: Failback von Azure nach Hyper-V

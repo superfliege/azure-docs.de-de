@@ -2,7 +2,7 @@
   href: index.md
 - name: Architektur und Entwurf
   href: azure-security.md
-  expanded: true
+  expanded: false
   items:
     - name: Erweiterte Bedrohungserkennung
       href: azure-threat-detection.md
@@ -67,6 +67,8 @@
       items:
         - name: Bewährte Methoden
           href: azure-security-identity-management-best-practices.md
+        - name: Erzwingen der mehrstufigen Authentifizierung für Abonnementadministratoren
+          href: azure-security-global-admin.md
     - name: Netzwerksicherheit
       href: security-network-overview.md
       items:

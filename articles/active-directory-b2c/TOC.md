@@ -91,7 +91,8 @@
 #### [Konfigurieren der Kennwortkomplexität in benutzerdefinierten Richtlinien](active-directory-b2c-reference-password-complexity-custom.md)
 #### [Kennwortänderung](active-directory-b2c-reference-password-change-custom.md)
 #### [Aktivieren des Angemeldetbleibens](active-directory-b2c-reference-kmsi-custom.md)
-### Problembehandlung
+### Problembehandlung und Ereignisprotokolle
+#### [Erstellen von benutzerdefinierten Ereignissen mit Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md)
 #### [Erfassen von Protokollen von Application Insights](active-directory-b2c-troubleshoot-custom.md)
 ## Verweis
 ### [Anmerkungen zu dieser Version](active-directory-b2c-developer-notes-custom.md)

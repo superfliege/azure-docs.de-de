@@ -7,28 +7,31 @@
 ## [DNS-Delegierung mit Azure DNS](dns-domain-delegation.md)
 ## [Häufig gestellte Fragen zu DNS](dns-faq.md)
 ## [Verwenden privater DNS-Zonen](private-dns-overview.md)
+## [Privates DNS – Szenarien](private-dns-scenarios.md)
+
 
 # Erste Schritte
 
 ## Erstellen einer DNS-Zone und eines Eintrags
-### [Azure portal](dns-getstarted-portal.md)
+### [Azure-Portal](dns-getstarted-portal.md)
 ### [Azure PowerShell](dns-getstarted-powershell.md)
 ### [Azure-CLI](dns-getstarted-cli.md)
 
 ## Erstellen einer privaten DNS-Zone und eines Eintrags
 ### [PowerShell](private-dns-getstarted-powershell.md)
+### [Azure-CLI](private-dns-getstarted-cli.md)
 ## [Delegieren einer Domäne an Azure DNS](dns-delegate-domain-azure-dns.md)
 ## [Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App](dns-web-sites-custom-domain.md)
 
 # Anleitung
 
 ## Verwalten von DNS-Zonen
-### [Azure portal](dns-operations-dnszones-portal.md)
+### [Azure-Portal](dns-operations-dnszones-portal.md)
 ### [Azure PowerShell](dns-operations-dnszones.md)
 ### [Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli.md)
 
 ## Verwalten von DNS-Einträgen
-### [Azure portal](dns-operations-recordsets-portal.md)
+### [Azure-Portal](dns-operations-recordsets-portal.md)
 ### [Azure PowerShell](dns-operations-recordsets.md)
 ### [Azure-CLI](dns-operations-recordsets-cli.md)
 

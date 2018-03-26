@@ -65,7 +65,7 @@
 # Verweis
 ##  [Regel-Engine – Referenz](cdn-rules-engine-reference.md)
 ### [Regel-Engine – bedingte Ausdrücke](cdn-rules-engine-reference-conditional-expressions.md)
-### [Regel-Engine – Übereinstimmungsbedingungen](cdn-rules-engine-reference-match-conditions.md)
+### [Übereinstimmungsbedingungen der Regel-Engine](cdn-rules-engine-reference-match-conditions.md)
 ### [Regel-Engine – Features](cdn-rules-engine-reference-features.md)
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
 ## [Azure PowerShell](/powershell/module/azurerm.cdn)
@@ -74,7 +74,9 @@
 ## [REST](/rest/api/cdn/)
 
 # angeben
-## [Azure CDN-POP-Standorte](cdn-pop-locations.md)
+## Azure CDN-POP-Standorte
+### [POP-Standorte nach Region](cdn-pop-locations.md)
+### [POP-Standorte nach Abkürzung](cdn-pop-abbreviations.md)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
 ## [Preise](https://azure.microsoft.com/pricing/details/cdn/)

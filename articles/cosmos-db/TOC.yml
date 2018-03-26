@@ -237,8 +237,6 @@
                   href: sql-api-python-samples.md
             - name: angeben
               items:
-                - name: Spickzettel zur SQL-Grammatik
-                  href: sql-api-sql-query-cheat-sheet.md
                 - name: Videos
                   href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
                 - name: Dienstupdates
@@ -435,6 +433,8 @@
           href: graph-sdk-dotnet.md
 - name: angeben
   items:
+    - name: Cheat Sheet für die Abfrage
+      href: query-cheat-sheet.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Azure Cosmos DB kostenlos testen

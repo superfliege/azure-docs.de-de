@@ -208,9 +208,11 @@
       href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Routing von Ereignissen an einen benutzerdefinierten Endpunkt
       href: storage-blob-event-quickstart.md
-    - name: Benutzerdefinierte Domänen
+    - name: Wiederherstellen von gelöschten Blobs
+      href: storage-blob-soft-delete.md
+    - name: Konfigurieren einer benutzerdefinierten Domäne
       href: storage-custom-domain-name.md
-    - name: Durchsuchen von Blob Storage mit Azure Search
+    - name: Durchsuchen des Blob-Speichers mit Azure Search
       href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Übertragen von Daten
       items:
