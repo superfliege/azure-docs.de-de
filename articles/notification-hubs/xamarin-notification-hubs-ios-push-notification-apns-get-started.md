@@ -1,12 +1,12 @@
 ---
-title: "Erste Schritte mit Azure Notification Hubs für Xamarin.iOS-Apps | Microsoft-Dokumentation"
+title: Erste Schritte mit Azure Notification Hubs für Xamarin.iOS-Apps | Microsoft-Dokumentation
 description: In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Azure Notification Hubs eine Pushbenachrichtigung an eine Xamarin.iOS-Anwendung senden.
 services: notification-hubs
 keywords: iOS-Pushbenachrichtigungen,Pushnachrichten,Pushbenachrichtigungen,Pushnachricht
 documentationcenter: xamarin
 author: jwhiteDev
 manager: kpiteira
-editor: 
+editor: ''
 ms.assetid: 4d4dfd42-c5a5-4360-9d70-7812f96924d2
 ms.service: notification-hubs
 ms.workload: mobile
@@ -255,4 +255,4 @@ In diesem einfachen Beispiel haben Sie Pushbenachrichtigungen an alle Ihre iOS-G
 
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 [GitHub]: https://github.com/xamarin/mobile-samples/tree/master/Azure/NotificationHubs
-[Zugriffsrichtlinien]: https://portal.azure.com
+[Azure-Portal]: https://portal.azure.com
