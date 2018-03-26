@@ -1,9 +1,9 @@
 ---
 title: 'Azure AD Connect: Passthrough-Authentifizierung | Microsoft-Dokumentation'
-description: "In diesem Artikel wird beschrieben, wie die Passthrough-Authentifizierung mit Azure Active Directory (Azure AD) funktioniert und wie sie Azure AD-Anmeldungen durch die Überprüfung von Benutzerkennwörtern anhand des lokalen Active Directory ermöglicht."
+description: In diesem Artikel wird beschrieben, wie die Passthrough-Authentifizierung mit Azure Active Directory (Azure AD) funktioniert und wie sie Azure AD-Anmeldungen durch die Überprüfung von Benutzerkennwörtern anhand des lokalen Active Directory ermöglicht.
 services: active-directory
-keywords: "Was ist die Pass-Through-Authentifizierung mit Azure AD Connect?, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden"
-documentationcenter: 
+keywords: Was ist die Pass-Through-Authentifizierung mit Azure AD Connect?, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -38,7 +38,7 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 
 - *Große Benutzerfreundlichkeit*
   - Benutzer verwenden für die Anmeldung bei lokalen und cloudbasierten Anwendungen das gleiche Kennwort.
-  - Benutzer verbringen Zeit weniger mit dem Lösen von Kennwortproblemen mit dem IT-Helpdesk.
+  - Benutzer verbringen weniger Zeit mit dem gemeinsamen Lösen von Kennwortproblemen mit dem IT-Helpdesk
   - Benutzer können die [Self-Service-Kennwortverwaltung](../active-directory-passwords-overview.md) selbst in der Cloud durchführen.
 - *Einfache Bereitstellung und Verwaltung*
   - Bereitstellungen oder Netzwerkkonfigurationen müssen nicht mehr komplex und lokal sein.
