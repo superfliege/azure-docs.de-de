@@ -1,21 +1,21 @@
 ---
 title: 'Schnellstart: Erstellen Ihres ersten Azure Container Instances-Containers mit dem Azure-Portal'
-description: Bereitstellung und erste Schritte mit Azure Container Instances
+description: In dieser Schnellstartanleitung stellen Sie mithilfe des Azure-Portals einen Windows-Container in Azure Container Instances bereit.
 services: container-instances
 author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 03/19/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 63f22544276da07ec98e779cc524879603655db6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 18238c94ba9acff15497a666a63b65b95779d4ac
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="create-your-first-container-in-azure-container-instances"></a>Erstellen Ihres ersten Containers in Azure Container Instances
+# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Schnellstartanleitung: Erstellen Ihres ersten Containers in Azure Container Instances
 
 Mit Azure Container Instances können Sie ganz einfach Container in Azure erstellen und verwalten. In dieser Schnellstartanleitung erstellen Sie einen Container in Azure und machen ihn mit einer öffentlichen IP-Adresse über das Internet verfügbar. Dieser Vorgang wird mit dem Azure-Portal durchgeführt. Nach wenigen Klicks wird in Ihrem Browser Folgendes angezeigt:
 
@@ -23,7 +23,7 @@ Mit Azure Container Instances können Sie ganz einfach Container in Azure erstel
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-container-instance"></a>Erstellen einer Containerinstanz
 

@@ -47,7 +47,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
    > [!IMPORTANT]
    > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
    >
-   >\* Im Premium-Tarif ist derzeit eine Speicherkapazität von mehr als 1 TB in folgenden Regionen verfügbar: „Australien, Osten“, „Australien, Südosten“, „Kanada, Mitte“, „Kanada, Osten“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Südkorea, Mitte“, „USA, Süden-Mitte“, „Asien, Südosten“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. Siehe [Aktuelle Einschränkungen für P11–P15](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   >\* Im Premium-Tarif ist derzeit eine Speicherkapazität von mehr als 1 TB in folgenden Regionen verfügbar: „Kanada, Mitte“, „Kanada, Osten“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Südkorea, Mitte“, „USA, Süden-Mitte“, „Asien, Südosten“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. Siehe [Aktuelle Einschränkungen für P11–P15](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    > 
 
 9. Klicken Sie auf **Übernehmen**, wenn Sie die Dienstebene, die Anzahl von DTUs und die Menge an Speicherplatz ausgewählt haben.  

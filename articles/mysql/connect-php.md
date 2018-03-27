@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung mit Azure Database for MySQL per PHP
-description: "Dieser Schnellstart enthält mehrere PHP-Codebeispiele, die Sie nutzen können, um zu den Daten von Azure-Datenbank für MySQL eine Verbindung herzustellen und Abfragen dafür durchzuführen."
+description: Dieser Schnellstart enthält mehrere PHP-Codebeispiele, die Sie nutzen können, um zu den Daten von Azure-Datenbank für MySQL eine Verbindung herzustellen und Abfragen dafür durchzuführen.
 services: mysql
 author: mswutao
 ms.author: wuta
@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: d20aaf8a4cabd4e013e7ff43010c0f463eaccb79
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 581d3f181f5237d2cb3e469295b06eacd31b784f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Verwenden von PHP zum Verbinden und Abfragen von Daten
 Dieser Schnellstart zeigt, wie Sie mit einer [PHP](http://php.net/manual/intro-whatis.php)-Anwendung eine Verbindung mit einer Azure-Datenbank für MySQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der PHP-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
@@ -230,4 +230,4 @@ mysqli_close($conn);
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit der Azure-Datenbank für MySQL] (howto-configure-ssl.md)
+> [Herstellen einer Verbindung mit Azure-Datenbank für MySQL über SSL](howto-configure-ssl.md)

@@ -1,26 +1,26 @@
 ---
-title: "Azure-Schnellstart – Erstellen einer VM mit dem Portal | Microsoft-Dokumentation"
-description: "Azure-Schnellstart – Erstellen einer VM mit dem Portal"
+title: Azure-Schnellstart – Erstellen einer VM mit dem Portal | Microsoft-Dokumentation
+description: Azure-Schnellstart – Erstellen einer VM mit dem Portal
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/11/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a9a2e2ace4c4b6867e5d8b318c5d80a9df124ecc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d4bd596257b7430a03ec81a0f378286fda8cbace
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Erstellen einer Linux-VM mit dem Azure-Portal
 
@@ -42,7 +42,7 @@ Ausführlichere Informationen zu diesem Vorgang finden Sie [hier](https://docs.m
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure 
 
-Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 

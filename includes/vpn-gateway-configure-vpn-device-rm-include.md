@@ -1,10 +1,14 @@
-**Informationen zur Konfiguration finden Sie unter folgenden Links:**
+**So laden Sie VPN-Gerätekonfigurationsskripts herunter:**
+
+Abhängig von Ihrem VPN-Gerät können Sie ggf. ein VPN-Gerätekonfigurationsskript herunterladen. Weitere Informationen finden Sie unter [Herunterladen von VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen](../articles/vpn-gateway/vpn-gateway-download-vpndevicescript.md).
+
+**Weitere Informationen zur Konfiguration finden Sie unter den folgenden Links:**
 
 - Informationen zu kompatiblen VPN-Geräten finden Sie unter [VPN-Geräte](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
 - Führen Sie vor dem Konfigurieren Ihres VPN-Geräts eine Überprüfung auf [bekannte Probleme mit der Gerätekompatibilität](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#known) für das VPN-Gerät durch, das Sie verwenden möchten.
 
-- Links zu Konfigurationseinstellungen für Geräte finden Sie unter [Überprüfte VPN-Geräte](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable). Die Links zur Gerätekonfiguration werden nach bestem Wissen bereitgestellt. Die beste Vorgehensweise besteht immer darin, die aktuellen Informationen zur Konfiguration bei Ihrem Gerätehersteller zu erfragen. Die bereitgestellte Liste enthält die getesteten Versionen. Ist Ihr Betriebssystem nicht in der Liste enthalten, ist die Version vielleicht dennoch kompatibel. Wenden Sie sich an den Gerätehersteller, um zu erfragen, ob die Betriebssystemversion für Ihr VPN-Gerät kompatibel ist.
+- Links zu Konfigurationseinstellungen für Geräte finden Sie unter [Überprüfte VPN-Geräte](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable). Die Links zur Gerätekonfiguration werden nach bestem Wissen bereitgestellt. Die beste Vorgehensweise besteht immer darin, die aktuellen Informationen zur Konfiguration bei Ihrem Gerätehersteller zu erfragen. Die Liste enthält die von uns getesteten Versionen. Ist Ihr Betriebssystem nicht in der Liste enthalten, ist die Version vielleicht dennoch kompatibel. Wenden Sie sich an den Gerätehersteller, um zu erfragen, ob die Betriebssystemversion für Ihr VPN-Gerät kompatibel ist.
 
 - Eine Übersicht über die VPN-Gerätekonfiguration finden Sie unter [Übersicht über die Konfigurationen von VPN-Drittanbietergeräten](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md).
 

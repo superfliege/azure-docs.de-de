@@ -1,19 +1,19 @@
 ---
-title: "Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit Python | Microsoft-Dokumentation"
-description: "In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für Python, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten."
+title: Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit Python | Microsoft-Dokumentation
+description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für Python, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: a82ec92449730a784e7cd36d7f364a9a4516c15f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d4c489bc41a9c04b15e2ee28b944edc1f15ef81c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Python
 
@@ -23,7 +23,7 @@ In diesem Schnellstart erfahren Sie, wie Sie mit Python Blockblobs in einem Cont
 
 So führen Sie diesen Schnellstart durch: 
 * [Installieren Sie Python.](https://www.python.org/downloads/)
-* Laden Sie das [Azure Storage SDK für Python](storage-python-how-to-use-blob-storage.md#download-and-install-azure-storage-sdk-for-python) herunter, und installieren Sie es. 
+* Laden Sie das [Azure Storage SDK für Python](storage-python-how-to-use-blob-storage.md) herunter, und installieren Sie es. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -160,6 +160,18 @@ block_blob_service.delete_container(container_name)
 os.remove(full_path_to_file)
 os.remove(full_path_to_file2)
 ```
+## <a name="resources-for-developing-python-applications-with-blobs"></a>Ressourcen für die Entwicklung von Python-Anwendungen mit Blobs
+
+Sehen Sie sich diese zusätzlichen Ressourcen zur Python-Entwicklung mit Blobspeicher an:
+
+### <a name="binaries-and-source-code"></a>Binärdateien und Quellcode
+
+- Zeigen Sie den [Quellcode der Python-Clientbibliothek](https://github.com/Azure/azure-storage-python) für Azure Storage auf GitHub an, laden Sie ihn herunter, und installieren Sie ihn.
+
+### <a name="client-library-reference-and-samples"></a>Clientbibliothek – Referenz und Beispiele
+
+- Weitere Informationen zur Python-Clientbibliothek finden Sie in der [Python-API-Referenz](https://docs.microsoft.com/python/api/overview/azure/storage).
+- Sehen Sie sich die [Beispiele für Blobspeicher](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob) an, die mit der Python-Clientbibliothek geschrieben wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
  
@@ -168,5 +180,4 @@ In diesem Schnellstart haben Sie gelernt, wie Sie mit Python Dateien zwischen ei
 > [!div class="nextstepaction"]
 > [Gewusst wie: Blob Storage-Vorgänge](./storage-python-how-to-use-blob-storage.md)
  
-
 Weitere Informationen zum Storage-Explorer und Blobs finden Sie unter [Verwalten von Azure Blob Storage-Ressourcen mit dem Speicher-Explorer (Vorschau)](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

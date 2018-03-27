@@ -1,8 +1,8 @@
 ---
 title: Transformieren von Daten mithilfe von Hive in Azure Virtual Network | Microsoft-Dokumentation
-description: "Dieses Tutorial bietet Schrittanleitungen zum Transformieren von Daten mithilfe einer Hive-Aktivität in Azure Data Factory."
+description: Dieses Tutorial bietet Schrittanleitungen zum Transformieren von Daten mithilfe einer Hive-Aktivität in Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
 ms.author: shengc
-ms.openlocfilehash: a7575549225d47e5266ca7e1778c3e61835de1cc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8711d7ed1d02f0960ef00c1cf5053e97aa00ad5c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Hive-Aktivität in einem HDInsight-Cluster transformiert, der sich in einem virtuellen Azure-Netzwerk (VNet) befindet. In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -71,7 +71,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird derzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
+1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.    
 2. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
@@ -114,7 +114,7 @@ Da sich der Hadoop-Cluster in einem virtuellen Netzwerk befindet, müssen Sie in
 2. Wählen Sie im Fenster **Integration Runtime Setup** (Integration Runtime-Setup) die Option **Perform data movement and dispatch activities to external computes** (Datenverschiebung und -verteilung an externe Computeressourcen ausführen), und klicken Sie auf **Weiter**. 
 
    ![Auswählen der Option für Datenverschiebung und -verteilung](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-perform-data-movement-compute-option.png)
-3. Wählen Sie **Öffentliches Netzwerk** aus, und klicken Sie auf **Weiter**.
+3. Wählen Sie **Privates Netzwerk**, und klicken Sie auf **Weiter**.
     
    ![Auswählen von „Privates Netzwerk“](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
 4. Geben Sie unter **Name** die Zeichenfolge **MySelfHostedIR** ein, und klicken Sie auf **Weiter**. 

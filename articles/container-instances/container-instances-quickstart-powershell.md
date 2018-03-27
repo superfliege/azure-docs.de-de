@@ -1,25 +1,23 @@
 ---
 title: 'Schnellstart: Erstellen Ihres ersten Azure Container Instances-Containers mit PowerShell'
-description: Beginnen Sie mit der Nutzung von Azure Container Instances, indem Sie eine Windows-Containerinstanz mit PowerShell erstellen.
+description: In dieser Schnellstartanleitung stellen Sie mithilfe von Azure PowerShell einen Windows-Container in Azure Container Instances bereit.
 services: container-instances
 author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 03/19/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 18a342fed7e99e82082764d6f5a3429a3ce794b7
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 6e43a525010ac57a75f6db4c43f6f1407dab93a8
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="create-your-first-container-in-azure-container-instances"></a>Erstellen Ihres ersten Containers in Azure Container Instances
+# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Schnellstartanleitung: Erstellen Ihres ersten Containers in Azure Container Instances
 
-Azure Container Instances erleichtert die Erstellung und Verwaltung von Docker-Containern in Azure, ohne dass Sie virtuelle Computer bereitstellen oder einen übergeordneten Dienst einführen müssen.
-
-In dieser Schnellstartanleitung erstellen Sie einen Windows-Container in Azure und machen ihn mit einer öffentlichen IP-Adresse über das Internet verfügbar. Dieser Vorgang wird mit einem einzelnen Befehl durchgeführt. Nach kurzer Zeit wird die ausgeführte Anwendung in Ihrem Browser angezeigt:
+Azure Container Instances erleichtert die Erstellung und Verwaltung von Docker-Containern in Azure, ohne dass Sie virtuelle Computer bereitstellen oder einen übergeordneten Dienst einführen müssen. In dieser Schnellstartanleitung erstellen Sie einen Windows-Container in Azure und machen ihn mit einem vollqualifizierten Domänennamen (FQDN) über das Internet verfügbar. Dieser Vorgang wird mit einem einzelnen Befehl durchgeführt. Nach kurzer Zeit wird die ausgeführte Anwendung in Ihrem Browser angezeigt:
 
 ![Mit Azure Container Instances bereitgestellte App im Browser][qs-powershell-01]
 
@@ -27,7 +25,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.5 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -39,23 +37,28 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-Zum Erstellen eines Containers müssen Sie einen Namen, ein Docker-Image und eine Azure-Ressourcengruppe für das Cmdlet [New-AzureRmContainerGroup][New-AzureRmContainerGroup] angeben. Der Container kann außerdem mit einer öffentlichen IP-Adresse über das Internet verfügbar gemacht werden, dies ist jedoch optional. Wir verwenden in diesem Fall einen Nano Server-Container mit Internetinformationsdienste (Internet Information Services, IIS).
+Zum Erstellen eines Containers müssen Sie einen Namen, ein Docker-Image und eine Azure-Ressourcengruppe für das Cmdlet [New-AzureRmContainerGroup][New-AzureRmContainerGroup] angeben. Der Container kann optional auch mit einer DNS-Namensbezeichnung für das Internet verfügbar gemacht werden.
+
+Führen Sie den folgenden Befehl aus, um einen Nano Server-Container mit Internetinformationsdienste (Internet Information Services, IIS) zu starten. Der Wert `-DnsNameLabel` muss innerhalb der Azure-Region, in der Sie die Instanz erstellen, eindeutig sein. Passen Sie den Wert also ggf. entsprechend an.
 
  ```azurepowershell-interactive
-New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -IpAddressType Public
+New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
-Innerhalb weniger Sekunden erhalten Sie eine Antwort auf Ihre Anforderung. Der Container befindet sich zunächst im Zustand **Wird erstellt...**, wird aber innerhalb von ein bis zwei Minuten gestartet. Überprüfen Sie den Status mithilfe des Cmdlets [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup]:
+Innerhalb weniger Sekunden erhalten Sie eine Antwort auf Ihre Anforderung. Der Container befindet sich zunächst im Zustand **Wird erstellt...**, wird aber innerhalb von ein bis zwei Minuten gestartet. Den Bereitstellungsstatus können Sie mithilfe des Cmdlets [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] überprüfen:
 
  ```azurepowershell-interactive
 Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
-Der Bereitstellungsstatus und die IP-Adresse des Containers werden in der Cmdlet-Ausgabe angezeigt:
+Der Bereitstellungsstatus, der vollqualifizierte Domänenname (Fully Qualified Domain Name, FQDN) und die IP-Adresse des Containers werden in der Cmdlet-Ausgabe angezeigt:
 
-```
+```console
+PS Azure:\> Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
+
+
 ResourceGroupName        : myResourceGroup
-Id                       : /subscriptions/12345678-1234-1234-1234-12345678abcd/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
+Id                       : /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
 Name                     : mycontainer
 Type                     : Microsoft.ContainerInstance/containerGroups
 Location                 : eastus
@@ -63,14 +66,18 @@ Tags                     :
 ProvisioningState        : Creating
 Containers               : {mycontainer}
 ImageRegistryCredentials :
-RestartPolicy            :
-IpAddress                : 40.71.248.73
+RestartPolicy            : Always
+IpAddress                : 52.226.19.87
+DnsNameLabel             : aci-demo-win
+Fqdn                     : aci-demo-win.eastus.azurecontainer.io
 Ports                    : {80}
 OsType                   : Windows
 Volumes                  :
+State                    : Pending
+Events                   : {}
 ```
 
-Sobald **ProvisioningState** für den Container `Succeeded` lautet, ist er über den Browser unter der angegebenen IP-Adresse erreichbar.
+Wenn **ProvisioningState** des Containers `Succeeded` lautet, navigieren Sie in Ihrem Browser zum `Fqdn`:
 
 ![Mit Azure Container Instances bereitgestellte IIS-Instanz im Browser][qs-powershell-01]
 

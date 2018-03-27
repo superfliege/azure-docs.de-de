@@ -1,33 +1,36 @@
 ---
 title: 'Azure Cosmos DB: Erstellen einer Web-App mit Xamarin und Authentifizierung mit Facebook | Microsoft-Dokumentation'
-description: "Veranschaulichung eines .NET-Codebeispiels, das Sie zur Verbindung mit und Abfrage von Azure Cosmos DB verwenden können"
+description: Veranschaulichung eines .NET-Codebeispiels, das Sie zur Verbindung mit und Abfrage von Azure Cosmos DB verwenden können
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: dfaa8d05d999f5528daff875d89e38d4fc442992
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5074034b18bdf842c34b1208e6cc6312d7a3e6b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-web-app-with-net-xamarin-and-facebook-authentication"></a>Azure Cosmos DB: Erstellen einer Web-App mit .NET, Xamarin und Authentifizierung mit Facebook
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen. 
+Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen.
 
-In diesem Schnellstart wird veranschaulicht, wie Sie ein Azure Cosmos DB-Konto, eine Dokumentendatenbank und eine Sammlung mithilfe des Azure-Portals erstellen. Anschließend erstellen Sie eine Web-App für To-Do-Listen mit der [SQL-.NET-API](sql-api-sdk-dotnet.md), [Xamarin](https://www.xamarin.com/) und dem Autorisierungsmodul von Azure Cosmos DB. Die Web-App implementiert ein Datenmuster pro Benutzer, mit dem sich Benutzer über die Authentifizierung mit Facebook anmelden und ihre eigenen To-Do-Elemente verwalten können.
+> [!NOTE]
+> Beispielcode für eine vollständige kanonische Xamarin-Beispiel-App, die mehrere Azure-Angebote (einschließlich CosmosDB) veranschaulicht, finden Sie auf [GitHub](https://github.com/xamarinhq/app-geocontacts). Diese App veranschaulicht das Anzeigen geografisch verteilter Kontakte und zeigt, wie diesen Kontakten das Aktualisieren ihres Standorts ermöglicht werden kann.
+
+In dieser Schnellstartanleitung wird veranschaulicht, wie Sie über das Azure-Portal ein Azure Cosmos DB-Konto, eine Dokumentendatenbank und eine Sammlung erstellen. Anschließend erstellen Sie eine Web-App für To-Do-Listen mit der [SQL-.NET-API](sql-api-sdk-dotnet.md), [Xamarin](https://www.xamarin.com/) und dem Autorisierungsmodul von Azure Cosmos DB. Die Aufgabenlisten-Web-App implementiert ein benutzerspezifisches Datenmuster, mit dem sich Benutzer über die Authentifizierung mit Facebook anmelden und ihre eigenen Aufgabenelemente verwalten können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,7 +51,7 @@ Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kos
 
 Klonen Sie zunächst eine SQL-API-App aus GitHub, legen Sie die Verbindungszeichenfolge fest, und führen Sie sie aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
 
-1. Öffnen Sie ein Git-Terminalfenster, z.B. ein Git Bash, und `cd` in einem Arbeitsverzeichnis.  
+1. Öffnen Sie ein Git-Terminalfenster, z.B. ein Git Bash, und `cd` in einem Arbeitsverzeichnis.
 
 2. Führen Sie den folgenden Befehl aus, um das Beispielrepository zu klonen. 
 
@@ -56,7 +59,7 @@ Klonen Sie zunächst eine SQL-API-App aus GitHub, legen Sie die Verbindungszeich
     git clone https://github.com/Azure/azure-documentdb-dotnet.git
     ```
 
-3. Öffnen Sie anschließend die Datei „DocumentDBTodo.sln“ aus dem Ordner „samples/xamarin/UserItems/xamarin.forms“ in Visual Studio. 
+3. Öffnen Sie anschließend die Datei „DocumentDBTodo.sln“ aus dem Ordner „samples/xamarin/UserItems/xamarin.forms“ in Visual Studio.
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
@@ -65,17 +68,17 @@ Der Code im Xamarin-Ordner enthält Folgendes:
 * Eine Xamarin-App. Die App speichert die To-Do-Elemente des Benutzers in einer partitionierten Sammlung mit dem Namen „UserItems“.
 * Eine Ressourcentokenbroker-API. Eine einfache ASP.NET-Web-API, die Ressourcentoken von Azure Cosmos DB an in der App angemeldete Benutzer vermittelt. Ressourcentoken sind Zugriffstoken mit kurzer Lebensdauer, die der App den Zugriff auf die Daten des angemeldeten Benutzers ermöglichen.
 
-Der Authentifizierungs- und Datenfluss wird im unten stehenden Diagramm veranschaulicht.
+Der Authentifizierungs- und Datenfluss wird im Diagramm weiter unten veranschaulicht.
 
 * Die Sammlung „UserItems“ wird mit dem Partitionsschlüssel „/userid“ erstellt. Durch die Angabe eines Partitionsschlüssels für eine Sammlung kann Azure Cosmos DB seine Größe unendlich an eine wachsende Zahl von Benutzern und Elementen anpassen.
-* In der Xamarin-App können sich Benutzer mit Ihren Facebook-Anmeldeinformationen anmelden.
+* In der Xamarin-App können sich Benutzer mit ihren Facebook-Anmeldeinformationen anmelden.
 * Die Xamarin-App verwendet ein Zugriffstoken von Facebook, um sich bei der ResourceTokenBroker-API zu authentifizieren
 * Die Ressourcentokenbroker-API authentifiziert die Anforderung mit der Funktion „App Service Auth“ (App Service-Authentifizierung) und fordert ein Ressourcentoken von Azure Cosmos DB mit Lese-/Schreibzugriff für alle Dokumente mit demselben Partitionsschlüssel eines authentifizierten Benutzers an.
 * Der Ressourcentokenbroker gibt das Ressourcentoken an die Client-App zurück.
 * Die App greift mit dem Ressourcentoken auf die To-Do-Elemente des Benutzers zu.
 
 ![To-Do-App mit Beispieldaten](./media/create-sql-api-xamarin-dotnet/tokenbroker.png)
-    
+
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren.
@@ -90,7 +93,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     `<add key="accountUrl" value="{Azure Cosmos DB account URL}"/>`
 
-4. Kopieren Sie anschließend den Wert für PRIMARY KEY aus dem Portal, und legen Sie ihn in „web.config“ als Wert von AccountKey fest. 
+4. Kopieren Sie anschließend den Wert für „PRIMARY KEY“ aus dem Portal, und legen Sie ihn in „Web.config“ als Wert von „accountKey“ fest.
 
     `<add key="accountKey" value="{Azure Cosmos DB secret}"/>`
 
@@ -109,7 +112,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 4. Öffnen Sie das Xamarin-Projekt, und navigieren Sie zu „TodoItemManager.cs“. Geben Sie Werte für accountURL, collectionId, databaseId sowie für resourceTokenBrokerURL als zugrundeliegende HTTPS-URL für die Ressourcentokenbroker-Website ein.
 
-5. Führen Sie das Tutorial [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung](../app-service/app-service-mobile-how-to-configure-facebook-authentication.md) durch, um die Authentifizierung mit Facebook einzurichten und die ResourceTokenBroker-Website zu konfigurieren.
+5. Absolvieren Sie das Tutorial [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung](../app-service/app-service-mobile-how-to-configure-facebook-authentication.md), um die Authentifizierung mit Facebook einzurichten und die ResourceTokenBroker-Website zu konfigurieren.
 
     Führen Sie die Xamarin-App aus.
 
@@ -119,14 +122,14 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie diese App nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen im Azure-Portal. Führen Sie dazu folgende Schritte durch: 
+Wenn Sie diese App nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen im Azure-Portal. Führen Sie dazu folgende Schritte durch:
 
-1. Klicken Sie im Menü links im Azure-Portal auf **Ressourcengruppen** und dann auf den Namen der von Ihnen gerade erstellten Ressource. 
+1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen**, und klicken Sie auf den Namen der erstellten Ressource.
 2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto sowie eine Sammlung mit dem Daten-Explorer erstellen und eine Xamarin-App erstellen und bereitstellen können. Jetzt können Sie zusätzliche Daten in Ihr Cosmos DB-Konto importieren. 
+In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto sowie eine Sammlung mit dem Daten-Explorer erstellen und eine Xamarin-App erstellen und bereitstellen können. Jetzt können Sie zusätzliche Daten in Ihr Cosmos DB-Konto importieren.
 
 > [!div class="nextstepaction"]
 > [Import data into Azure Cosmos DB (Importieren von Daten in Azure Cosmos DB)](import-data.md)

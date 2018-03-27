@@ -1,28 +1,28 @@
 ---
-title: "Wie werden Abfragen von Tabellendaten in Azure Cosmos DB durchgeführt? | Microsoft Docs"
+title: Wie werden Abfragen von Tabellendaten in Azure Cosmos DB durchgeführt? | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Tabellendaten in Azure Cosmos DB abfragen.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: kanshiG
 manager: jhubbard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 14bcb94e-583c-46f7-9ea8-db010eb2ab43
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 80fed91c45ae19193f6b8dfcaef747f8c4253dee
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 969b16457b32cedb7140bb032c1830e95ebed9be
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api"></a>Azure Cosmos DB: Abfragen von Tabellendaten mithilfe der Table-API
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der Tabellen-API
 
 Die [Table-API](table-introduction.md) von Azure Cosmos DB unterstützt OData- und [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service)-Abfragen von Schlüssel-/Wertdaten (Tabellendaten).  
 
@@ -33,7 +33,7 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 
 Die Abfragen in diesem Artikel verwenden die folgende Beispieltabelle `People`:
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-Mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -50,14 +50,14 @@ Diese Abfragen können nur funktionieren, wenn Sie über ein Azure Cosmos DB-Kon
 ## <a name="query-on-partitionkey-and-rowkey"></a>Abfragen nach PartitionKey und RowKey
 Da die Eigenschaften PartitionKey und RowKey den Primärschlüssel einer Entität bilden, können Sie die folgende spezielle Syntax verwenden, um die Entität zu identifizieren: 
 
-**Abfragen**
+**Abfrage**
 
 ```
 https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')  
 ```
 **Ergebnisse**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-Mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -73,7 +73,7 @@ Wenn Sie eine Filterzeichenfolge erstellen, gelten diese Regeln:
 
 Diese Beispielabfrage zeigt das Filtern nach den Eigenschaften PartitionKey und Email unter Verwendung eines OData-`$filter`.
 
-**Abfragen**
+**Abfrage**
 
 ```
 https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and%20Email%20eq%20'Ben@contoso.com'
@@ -83,7 +83,7 @@ Weitere Informationen zum Erstellen von Filterausdrücken für verschiedene Date
 
 **Ergebnisse**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-Mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Ben |Smith | Ben@contoso.com| 425-555-0102 |
 

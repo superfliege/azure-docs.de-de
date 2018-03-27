@@ -1,11 +1,11 @@
 ---
-title: "Hinzufügen eines vorhandenen Abonnements zu Ihrem Azure AD-Verzeichnis | Microsoft-Dokumentation"
-description: "Hinzufügen eines vorhandenen Abonnements zu Ihrem Azure AD-Verzeichnis"
+title: Hinzufügen eines vorhandenen Abonnements zu Ihrem Azure AD-Verzeichnis | Microsoft-Dokumentation
+description: Hinzufügen eines vorhandenen Abonnements zu Ihrem Azure AD-Verzeichnis
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: bc4773c2-bc4a-4d21-9264-2267065f0aea
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: e063e6a46b6b99c4bbe749347e6887a930adb882
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 2b9ed5b3374c98740923790dac90cb1eb2f065d8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory
 
@@ -34,6 +34,7 @@ Alle Benutzer verfügen über ein einzelnes Basisverzeichnis für die Authentifi
 
 * Sie müssen sich mit einem Konto anmelden, das über RBAC-Besitzerzugriff für das Abonnement verfügt.
 * Sie müssen sich mit einem Konto anmelden, das sowohl in dem aktuellen Verzeichnis, dem das Abonnement zugeordnet ist, und in dem Verzeichnis, das Sie hinzufügen möchten, vorhanden ist. Weitere Informationen dazu, wie Sie Zugriff auf ein anderes Verzeichnis erlangen, finden Sie unter [Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-admin-add-users.md).
+* Diese Funktion ist für CSP-Abonnements (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-159P) und Microsoft Imagine-Abonnements (MS-AZR-0144P) nicht verfügbar.
 
 ## <a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>So weisen Sie Ihrem Azure AD-Verzeichnis ein vorhandenes Abonnement zu
 

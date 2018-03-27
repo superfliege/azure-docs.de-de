@@ -1,31 +1,31 @@
 ---
-title: "Verwalten der Kapazität des physischer Speichers für Azure Stack | Microsoft-Dokumentation"
-description: "Überwachen und verwalten Sie den verfügbaren Speicherplatz für Azure Stack."
+title: Verwalten der Kapazität des physischer Speichers für Azure Stack | Microsoft-Dokumentation
+description: Überwachen und verwalten Sie den verfügbaren Speicherplatz für Azure Stack.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 84518E90-75E1-4037-8D4E-497EAC72AAA1
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/22/2017
+ms.date: 03/13/2018
 ms.author: mabrigg
 ms.reviewer: Thomas.Roettinger
-ms.openlocfilehash: 137e5d726aaedb405852c786b909b51110df1a50
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b922790d51c7028c37bb5863d43e99e19790488c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>Verwalten der Kapazität des physischen Speichers für Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-Sie können zusätzlichen Speicher hinzufügen, um die verfügbare Gesamtspeicherkapazität für Azure Stack zu erhöhen. In Azure Stack wird Ihr physischer Server auch als *Skalierungseinheitknoten* bezeichnet. Alle Skalierungseinheitknoten, die Mitglied einer einzelnen Skalierungseinheit sind, müssen über die gleiche Speichermenge verfügen.
+Sie können zusätzlichen Speicher hinzufügen, um die verfügbare Gesamtspeicherkapazität für Azure Stack zu erhöhen. In Azure Stack wird Ihr physischer Server auch als *Skalierungseinheitknoten* bezeichnet. Alle Skalierungseinheitknoten, die Mitglieder einer einzelnen Skalierungseinheit sind, müssen über die gleiche Speichermenge verfügen.
 
 > [!note]  
 > Sehen Sie vor dem Fortfahren in der Dokumentation des Hardwareherstellers nach, ob Ihr Hersteller Upgrades des physischen Speichers unterstützt. Im Rahmen des Supportvertrags Ihres OEM-Hardwareanbieters kann festgelegt sein, dass der Einbau von physischen Serverracks und Updates der Gerätefirmware vom Anbieter durchgeführt werden müssen.

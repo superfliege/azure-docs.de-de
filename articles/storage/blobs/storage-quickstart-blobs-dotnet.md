@@ -1,19 +1,19 @@
 ---
-title: "Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit .NET | Microsoft-Dokumentation"
-description: "In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für .NET, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten."
+title: Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit .NET | Microsoft-Dokumentation
+description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für .NET, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/01/2018
+ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: 8d1f09a39e865500aa8e4d093473d4989f134c3d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 716e61840f4bfb5a68a995683e67dae0b43d3854
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET
 
@@ -253,13 +253,13 @@ Sehen Sie sich diese zusätzlichen Ressourcen zur .NET-Entwicklung mit Blobspeic
 
 ### <a name="binaries-and-source-code"></a>Binärdateien und Quellcode
 
-- Laden Sie das NuGet-Paket für die aktuelle Version der [Storage-.NET-Clientbibliothek](https://www.nuget.org/packages/WindowsAzure.Storage/) herunter. 
-- Zeigen Sie den [Quellcode der Storage-.NET-Clientbibliothek](https://github.com/Azure/azure-storage-net) auf GitHub an.
+- Laden Sie das NuGet-Paket für die aktuelle Version der [.NET-Clientbibliothek](https://www.nuget.org/packages/WindowsAzure.Storage/) für Azure Storage herunter. 
+- Zeigen Sie den [Quellcode der .NET-Clientbibliothek](https://github.com/Azure/azure-storage-net) auf GitHub an.
 
 ### <a name="client-library-reference-and-samples"></a>Clientbibliothek – Referenz und Beispiele
 
-- Weitere Informationen zur Clientbibliothek finden Sie in der [Referenz zur Storage-.NET-API](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
-- Erkunden Sie die [Beispiele für Blobspeicher](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob), die mit der Storage-.NET-Clientbibliothek geschrieben wurden.
+- Weitere Informationen zur .NET-Clientbibliothek finden Sie in der [Referenz zur .NET-API](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
+- Erkunden Sie die [Beispiele für Blobspeicher](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob), die mit der .NET-Clientbibliothek geschrieben wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

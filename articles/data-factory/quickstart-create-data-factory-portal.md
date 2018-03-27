@@ -1,8 +1,8 @@
 ---
-title: "Erstellen einer Azure Data Factory über die Azure Data Factory-Benutzeroberfläche | Microsoft-Dokumentation"
-description: In diesem Tutorial wird gezeigt, wie Sie eine Data Factory mit einer Pipeline erstellen, die Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage kopiert.
+title: Erstellen einer Azure Data Factory über die Azure Data Factory-Benutzeroberfläche | Microsoft-Dokumentation
+description: Erstellen Sie eine Data Factory-Instanz mit einer Pipeline, die Daten von einem Speicherort im Azure Blob-Speicher an einen anderen Speicherort kopiert.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 02/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 7065b0b6e0576238e3b32fdbf7ac43b7fc2ae9e6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 79b19121b25b03181eeda1bedd800f45a2adf57e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -38,7 +38,7 @@ Dieses Video enthält Informationen zur Data Factory-Benutzeroberfläche:
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird derzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
+1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 2. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
 3. Klicken Sie im linken Menü auf **Neu** und anschließend auf **Daten + Analysen** und **Data Factory**. 
    

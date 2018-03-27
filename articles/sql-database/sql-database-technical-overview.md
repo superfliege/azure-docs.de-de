@@ -1,27 +1,19 @@
 ---
 title: Worum handelt es sich beim Azure SQL-Datenbankdienst? | Microsoft-Dokumentation
 description: Lernen Sie die technischen Details und Funktionen von SQL-Datenbank kennen, des relationalen Datenbankmanagementsystems von Microsoft in der Cloud.
-keywords: "Einführung in SQL, Was ist SQL-Datenbank?"
+keywords: Einführung in SQL, Was ist SQL-Datenbank?
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
+manager: craigg
 ms.service: sql-database
-ms.custom: overview
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.date: 03/07/2018
-ms.workload: Active
 ms.author: carlrab
-ms.reviewer: carlrab
-ms.openlocfilehash: a1c4426acec8e9e006c2349b886297f45cc8ecb2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7a06ed8433ebcf728c7b090f5e984d4e3ebeb846
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbankdienst? 
 
@@ -37,7 +29,8 @@ SQL-Datenbank nutzt diese Codebasis gemeinsam mit der [Microsoft SQL Server-Date
 
 SQL-Datenbank bietet eine vorhersagbare Leistung mit mehreren Serviceleveln, die eine dynamische Skalierung ohne Ausfallzeit, integrierte intelligente Optimierung, globale Skalierbarkeit und Verfügbarkeit sowie erweiterte Sicherheitsoptionen bieten – alles mit nahezu keinem Verwaltungsaufwand. Mit diesen Funktionen können Sie sich auf die schnelle Entwicklung von Apps und die Verkürzung des Zeitraums bis zur Markteinführung konzentrieren, anstatt wertvolle Zeit und Ressourcen für die Verwaltung von virtuellen Computern und der Infrastruktur aufwenden zu müssen. Der SQL-Datenbank-Dienst wird derzeit in 38 Rechenzentren auf der ganzen Welt ausgeführt – und regelmäßig werden neue online geschaltet. Dies ermöglicht die Ausführung Ihrer Datenbank in einem Rechenzentrum in Ihrer Nähe.
 
-> [!IMPORTANT] Die verwaltete Azure SQL-Datenbank-Instanz befindet sich derzeit in der Vorschauphase und ist nur auf einer einzelnen Dienstebene verfügbar. Weitere Informationen finden Sie unter [What is a Managed Instance (preview)?](sql-database-managed-instance.md) (Was ist eine verwaltete Instanz (Vorschauversion)?).
+> [!IMPORTANT]
+> Die verwaltete Azure SQL-Datenbank-Instanz befindet sich derzeit in der Vorschauphase und ist nur auf einer einzelnen Dienstebene verfügbar. Weitere Informationen finden Sie unter [What is a Managed Instance (preview)?](sql-database-managed-instance.md) (Was ist eine verwaltete Instanz (Vorschauversion)?).
 >
 
 ## <a name="scalable-performance-and-pools"></a>Skalierbare Leistung und Pools

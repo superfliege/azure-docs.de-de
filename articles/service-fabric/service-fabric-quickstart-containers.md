@@ -6,7 +6,7 @@ documentationcenter: .net
 author: rwike77
 manager: timlt
 editor: vturecek
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: quickstart
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/27/18
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7a8d28ef842ba77355628c79c20fa7fd3c693380
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d4fe2d410152fc4d65f2d22bc26e5e72b91bc282
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="quickstart-deploy-a-service-fabric-windows-container-application-on-azure"></a>Schnellstart: Bereitstellen einer Service Fabric-Containeranwendung unter Windows in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -83,7 +83,7 @@ Konfigurieren Sie die Zuordnung von Containerport zu Hostport, sodass an Port 80
 Eine vollständige ApplicationManifest.xml-Beispieldatei finden Sie am Ende dieses Artikels.
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
-Zum Bereitstellen der Anwendung in einem Cluster in Azure können Sie einen Partycluster einbinden. Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit. 
+Zum Bereitstellen der Anwendung in einem Cluster in Azure können Sie einen Partycluster einbinden. Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann.  Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit. Partycluster unterstützen Container. Wenn Sie einen eigenen Cluster einrichten, muss der Cluster jedoch unter Windows Server 2016 mit Containern ausgeführt werden, um Container auszuführen.
 
 Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Das Zertifikat und der Wert für **Verbindungsendpunkt** werden in den folgenden Schritten verwendet.
 
@@ -118,7 +118,7 @@ Klicken Sie auf **Veröffentlichen**.
 
 Jede Anwendung im Cluster muss einen eindeutigen Namen besitzen.  Bei Partyclustern handelt es sich jedoch um eine öffentliche, freigegebene Umgebung, und unter Umständen tritt in einer vorhandenen Anwendung ein Konflikt auf.  Kommt es zu einem Namenskonflikt, benennen Sie das Visual Studio-Projekt um, und stellen Sie es erneut bereit.
 
-Navigieren Sie in einem Browser zu http://zwin7fh14scd.westus.cloudapp.azure.com:80. Die IIS-Standardwebseite sollte angezeigt werden: ![IIS-Standardwebseite][iis-default]
+Öffnen Sie einen Browser, und navigieren Sie zu http://zwin7fh14scd.westus.cloudapp.azure.com:80. Die IIS-Standardwebseite sollte angezeigt werden: ![IIS-Standardwebseite][iis-default]
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Vollständige Beispiele für Service Fabric-Anwendungs- und Dienstmanifeste
 Im Anschluss finden Sie die vollständigen Dienst- und Anwendungsmanifeste, die in dieser Schnellstartanleitung verwendet werden:

@@ -1,35 +1,35 @@
 ---
 title: Erstellen einer ASP.NET Core-Web-App in Azure | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Web-Apps in Azure App Service ausführen, indem Sie die standardmäßige ASP.NET Core-Web-App bereitstellen."
+description: Erfahren Sie, wie Sie Web-Apps in Azure App Service ausführen, indem Sie die standardmäßige ASP.NET Core-Web-App bereitstellen.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/05/2018
+ms.date: 03/18/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7f098b6c66109cb5cafbcb19e463daa15a65b59
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4b7dbf7609b6ca7fb11391e01a1ac0ce2bc2e897
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Erstellen von ASP.NET Core-Web-Apps in Azure
 
 > [!NOTE]
-> In diesem Artikel wird eine App in App Service unter Windows bereitgestellt. Informationen zur Bereitstellung in App Service unter _Linux_ finden Sie unter [Erstellen einer .NET Core-Web-App in App Service unter Linux](./containers/quickstart-dotnetcore.md).
+> In diesem Artikel wird eine App in App Service unter Windows bereitgestellt. Informationen zur Bereitstellung in App Service unter _Linux_ finden Sie unter [Erstellen einer .NET Core-Web-App in App Service unter Linux](./containers/quickstart-dotnetcore.md). 
 >
 > Informationen zu den Schritten für eine ASP.NET Framework-App finden Sie unter [Erstellen einer ASP.NET Framework-Web-App in Azure](app-service-web-get-started-dotnet-framework.md). 
 >
 
-[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching.  Diese Schnellstartanleitung veranschaulicht die Bereitstellung Ihrer ersten ASP.NET Core-Web-App in Azure-Web-Apps. Am Ende verfügen Sie über eine Ressourcengruppe, die einen App Service-Plan und eine Azure-Web-App mit einer bereitgestellten Webanwendung umfasst.
+[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching.  Diese Schnellstartanleitung veranschaulicht die Bereitstellung Ihrer ersten ASP.NET Core-Web-App in Azure-Web-Apps. Am Ende verfügen Sie über eine Ressourcengruppe, die einen App Service-Plan und eine Azure-Web-App mit einer bereitgestellten Webanwendung umfasst. Sie können sich [ein Video ansehen](#video), das die vollständige Ausführung dieser Schritte in Visual Studio 2017 veranschaulicht.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -186,6 +186,10 @@ Die Übersichtsseite Ihrer Web-App wird angezeigt. Hier können Sie einfache Ver
 Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App angezeigt. 
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
+
+## <a name="video"></a>Video
+
+> [!VIDEO https://www.youtube-nocookie.com/embed/AEfG9PWPAxg]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,10 +3,10 @@ title: Erstellen einer Ruby-App und Bereitstellen dieser in App Service unter Li
 description: Erfahren Sie, wie Sie Ruby-Apps mit App Service unter Linux erstellen.
 keywords: Azure App Service, Linux, OSS, Ruby
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: SyntaxC4
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.service: app-service
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: db3086724c22e485e2a9a69c36a990fc5b8016a9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6668f02bb7ac9588e1bb11b3848d0a3e25cbed67
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Erstellen einer Ruby-App in App Service unter Linux
 
@@ -88,37 +88,23 @@ Ihre App ist jetzt konfiguriert. Navigieren Sie in Ihrem Webbrowser zu `http://l
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-## <a name="create-a-ruby-web-app-on-azure"></a>Erstellen einer Ruby-Web-App in Azure
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 
-Es ist eine Ressourcengruppe erforderlich, die die erforderlichen Ressourcen für Ihre Web-App enthalten soll. Verwenden Sie den Befehl [`az group create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create), um eine Ressourcengruppe zu erstellen.
+[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-```azurecli-interactive
-az group create --location westeurope --name myResourceGroup
-```
+## <a name="create-a-web-app"></a>Erstellen einer Web-App
 
-Erstellen Sie mit dem Befehl [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) einen App Service-Plan für Ihre Web-App.
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-```azurecli-interactive
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
-```
-
-Verwenden Sie als Nächstes den Befehl [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create), um die Web-App zu erstellen, die den neu erstellten Service-Plan verwendet. Beachten Sie, dass die Runtime auf `ruby|2.3` festgelegt ist. Vergessen Sie nicht, `<app name>` durch einen eindeutigen App-Namen zu ersetzen.
-
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> \
---runtime "ruby|2.3" --deployment-local-git
-```
-
-Die Ausgabe des Befehls zeigt Informationen über die neu erstellte Web-App sowie die Bereitstellungs-URL an. Sie sollte in etwa wie das folgende Beispiel aussehen. Kopieren Sie die URL zur späteren Verwendung in diesem Tutorial.
+Browsen Sie zu der Website, um Ihre neu erstellte Web-App mit integriertem Image anzuzeigen. Ersetzen Sie _&lt;App-Name>_ durch Ihren Web-App-Namen.
 
 ```bash
-https://<deployment user name>@<app name>.scm.azurewebsites.net/<app name>.git
+http://<app_name>.azurewebsites.net
 ```
 
-Nach dem Erstellen der Web-App kann die Seite **Übersicht** angezeigt werden. Navigieren Sie zu dieser. Die folgende Begrüßungsseite wird angezeigt:
+Ihre neue Web-App sollte nun wie folgt aussehen:
 
 ![Begrüßungsseite](./media/quickstart-ruby/splash-page.png)
-
 
 ## <a name="deploy-your-application"></a>Bereitstellen der Anwendung
 

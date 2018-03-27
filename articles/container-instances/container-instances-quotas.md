@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Instances: Kontingente und Regionsverfügbarkeit"
-description: "Hier finden Sie Informationen zu den Standardkontingenten und zur Regionsverfügbarkeit des Azure Container Instances-Diensts."
+title: 'Azure Container Instances: Kontingente und Regionsverfügbarkeit'
+description: Hier finden Sie Informationen zu den Standardkontingenten und zur Regionsverfügbarkeit des Azure Container Instances-Diensts.
 services: container-instances
 author: mmacy
 manager: timlt
@@ -8,11 +8,11 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 02/27/2018
 ms.author: marsma
-ms.openlocfilehash: 008b07402cb0b937174488982cac64811baa5d5d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 28177e17a15c5e3b92b9af52e05fa2f8e95db95f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Kontingente und Regionsverfügbarkeit für Azure Container Instances
 
@@ -29,9 +29,9 @@ Azure Container Instances ist mit den angegebenen CPU- und Arbeitsspeicherlimits
 | Speicherort | Betriebssystem | CPU | Arbeitsspeicher (GB) |
 | -------- | -- | :---: | :-----------: |
 | Europa, Westen; USA, Westen; USA, Osten | Linux | 4 | 14 |
-| Asien, Südosten  | Linux | 1 | 1.5 |
+| USA, Westen 2; Asien, Südosten | Linux | 2 | 7 |
 | Europa, Westen; USA, Westen; USA, Osten | Windows | 4 | 14 |
-| Asien, Südosten  | Windows | 2 | 3,5 |
+| USA, Westen 2; Asien, Südosten | Windows | 2 | 3,5 |
 
 Containerinstanzen, die innerhalb dieser Ressourcenlimits erstellt werden, unterliegen der Verfügbarkeit in der Bereitstellungsregion. Wenn eine Region stark ausgelastet ist, kann bei der Bereitstellung von Instanzen ein Fehler auftreten. Um einen solchen Fehler bei der Bereitstellung zu beheben, versuchen Sie, Instanzen mit niedrigeren CPU- und Arbeitsspeichereinstellungen bereitzustellen, oder führen Sie die Bereitstellung zu einem späteren Zeitpunkt durch.
 

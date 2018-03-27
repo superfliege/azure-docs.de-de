@@ -1,12 +1,12 @@
 ---
 title: Erstellen einer .NET Service Fabric-Anwendung in Azure | Microsoft-Dokumentation
-description: "In diesem Schnellstart erstellen Sie eine .NET-Anwendung für Azure, indem Sie die Service Fabric Reliable Services-Beispielanwendung verwenden."
+description: In diesem Schnellstart erstellen Sie eine .NET-Anwendung für Azure, indem Sie die Service Fabric Reliable Services-Beispielanwendung verwenden.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: quickstart
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/25/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5187aadf686a49f6d78fc4f5c2b2c42487e56c13
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4c81baec0c047b551e1bdac2152b330f010baa18
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Schnellstart: Erstellen einer .NET Service Fabric-Anwendung in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -125,15 +125,19 @@ Für die Bereitstellung der Anwendung in Azure benötigen Sie einen Service Fabr
 ### <a name="join-a-party-cluster"></a>Beitreten zu einem Partycluster
 Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit. 
 
-Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Das Zertifikat und der Wert für **Verbindungsendpunkt** werden in den folgenden Schritten verwendet.
+Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Klicken Sie auf den Link **How to connect to a secure Party cluster?** (Herstellen einer Verbindung mit einem sicheren Partycluster), und kopieren Sie das Zertifikatkennwort. Das Zertifikat, das Zertifikatkennwort und der Wert für **Verbindungsendpunkt** werden in den folgenden Schritten verwendet.
 
 ![PFX-Zertifikat und Verbindungsendpunkt](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
 
-Installieren Sie das PFX-Zertifikat auf einem Windows-Computer im Zertifikatspeicher *CurrentUser\My*.
+> [!Note]
+> Pro Stunde ist eine begrenzte Anzahl von Partyclustern verfügbar. Sollte beim Registrieren für einen Partycluster ein Fehler auftreten, können Sie eine Weile warten und es dann erneut versuchen. Alternativ können Sie die Schritte aus dem [Tutorial zum Bereitstellen einer .NET-App](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application) ausführen, um in Ihrem Azure-Abonnement einen Service Fabric-Cluster zu erstellen und die Anwendung darin bereitzustellen. Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen. Nachdem Sie die Anwendung in Ihrem Cluster bereitgestellt und überprüft haben, können Sie direkt mit dem [Skalieren von Anwendungen und Diensten in einem Cluster](#scale-applications-and-services-in-a-cluster) in dieser Schnellstartanleitung fortfahren.
+>
+
+
+Installieren Sie das PFX-Zertifikat auf Ihrem Windows-Computer im Zertifikatspeicher *CurrentUser\My*.
 
 ```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
-\CurrentUser\My
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
 
 
    PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
@@ -155,7 +159,7 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und wählen Sie **Veröffentlichen**. Das Dialogfeld „Veröffentlichen“ wird angezeigt.
 
 
-2. Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und geben Sie die folgenden Informationen an.  Die Werte *FindValue* und *ServerCertThumbprint* müssen dem Fingerabdruck des in einem früheren Schritt installierten Zertifikats entsprechen. 
+2. Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und vergewissern Sie sich, dass die Werte für *FindValue* und *ServerCertThumbprint* dem Fingerabdruck des in einem früheren Schritt installierten Zertifikats entsprechen. 
 
     ![Dialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
@@ -165,7 +169,7 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 
 4. Öffnen Sie einen Browser, und geben Sie die Clusteradresse gefolgt von „:8080“ ein, um die Anwendung im Cluster abzurufen (z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`). Sie sollten jetzt sehen, dass die Anwendung im Cluster in Azure ausgeführt wird.
 
-![Front-End der Anwendung](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
+    ![Front-End der Anwendung](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalieren von Anwendungen und Diensten in einem Cluster
 Service Fabric-Dienste können für einen Cluster auf einfache Weise skaliert werden, um eine Änderung der Last für die Dienste auszugleichen. Sie skalieren einen Dienst, indem Sie die Anzahl von Instanzen ändern, die im Cluster ausgeführt werden. Sie haben mehrere Möglichkeiten, Ihre Dienste zu skalieren. Sie können Skripts oder Befehle aus PowerShell oder der Service Fabric CLI (sfctl) verwenden. In diesem Beispiel verwenden Sie Service Fabric Explorer.

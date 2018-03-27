@@ -1,19 +1,19 @@
 ---
-title: "Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit Ruby | Microsoft-Dokumentation"
-description: "In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für Ruby, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten."
+title: Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit Ruby | Microsoft-Dokumentation
+description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für Ruby, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 03/15/2018
 ms.author: seguler
-ms.openlocfilehash: df885849e879317be6379767a09dd30a93687902
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fa92875fe859e7d1364267d6157f7a706d9eb8df
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Ruby
 
@@ -177,6 +177,12 @@ blob_client.delete_container(container_name)
 File.delete(full_path_to_file)
 File.delete(full_path_to_file2)    
 ```
+## <a name="resources-for-developing-ruby-applications-with-blobs"></a>Ressourcen für die Entwicklung von Ruby-Anwendungen mit Blobs
+
+Sehen Sie sich diese zusätzlichen Ressourcen zur Ruby-Entwicklung mit Blobspeicher an:
+
+- Zeigen Sie den [Quellcode der Ruby-Clientbibliothek](https://github.com/Azure/azure-storage-ruby) für Azure Storage auf GitHub an, und laden Sie ihn herunter.
+- Sehen Sie sich die [Beispiele für Blobspeicher](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=ruby&term=blob) an, die mit der Ruby-Clientbibliothek geschrieben wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
  

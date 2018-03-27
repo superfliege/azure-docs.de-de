@@ -1,8 +1,8 @@
 ---
 title: Kopieren von Daten mithilfe des Azure-Tools zum Kopieren von Daten | Microsoft-Dokumentation
-description: Erstellen Sie eine Azure Data Factory-Instanz, und verwenden Sie dann das Tool zum Kopieren von Daten, um Daten aus einem Ordner in Azure Blob Storage in einen anderen Ordner zu kopieren.
+description: Erstellen Sie eine Azure Data Factory-Instanz, und verwenden Sie dann das Tool zum Kopieren von Daten, um Daten von einem Speicherort in Azure Blob Storage an einen anderen Speicherort zu kopieren.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 01/16/2018
 ms.author: jingwang
-ms.openlocfilehash: aa9cdba4f4e891d5321eb8af6349d8b141faee03
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: d09422f31a2dda5e14fb891fa07f65fdcceb72c1
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>Kopieren von Daten mithilfe des Tools zum Kopieren von Daten 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]

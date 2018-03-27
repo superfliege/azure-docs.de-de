@@ -1,19 +1,19 @@
 ---
-title: "Vorbereiten lokaler VMware-Server für die Notfallwiederherstellung von VMware-VMs in Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie lokale VMware-Server mit dem Azure Site Recovery-Dienst für die Notfallwiederherstellung in Azure einrichten."
+title: Vorbereiten lokaler VMware-Server für die Notfallwiederherstellung von VMware-VMs in Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie lokale VMware-Server mit dem Azure Site Recovery-Dienst für die Notfallwiederherstellung in Azure einrichten.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07f62775c9286250d33635febe01dbad4362df12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6898f725d1d3cbf3f8d9d90faeafc13fbc8cb201
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler VMware-Server für die Notfallwiederherstellung in Azure
 
@@ -59,34 +59,16 @@ Der Mobility Service muss auf der VM installiert sein, die Sie replizieren möch
 3. Für die Installation auf virtuellen Linux-Computern bereiten Sie ein root-Konto auf dem Linux-Quellserver vor.
 
 
-## <a name="check-vmware-server-requirements"></a>Überprüfen der Anforderungen für VMware-Server
+## <a name="check-vmware-requirements"></a>Überprüfen der VMware-Anforderungen
 
-Vergewissern Sie sich, dass die VMware-Server die folgenden Anforderungen erfüllen.
+Stellen Sie sicher, dass VMware-Server und virtuelle Computer die Anforderungen erfüllen.
 
-**Komponente** | **Anforderung**
---- | ---
-**vCenter-Server** | vCenter 6.5, 6.0 oder 5.5
-**vSphere-Host** | vSphere 6.5, 6.0, 5.5
+1. [Überprüfen](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers) Sie die Anforderungen für VMware-Server.
+2. [Überprüfen](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) Sie für Linux die Dateisystem- und Speicheranforderungen. 
+3. Überprüfen Sie die Unterstützung für das lokale [Netzwerk](vmware-physical-azure-support-matrix.md#network) und den lokalen [Speicher](vmware-physical-azure-support-matrix.md#storage). 
+4. Überprüfen Sie, was nach einem Failover für [Azure-Netzwerke](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [Speicher](vmware-physical-azure-support-matrix.md#azure-storage) und [Computer](vmware-physical-azure-support-matrix.md#azure-compute) unterstützt wird.
+5. Ihre lokalen virtuellen Computer, die Sie in Azure replizieren, müssen die [Azure-VM-Anforderungen](vmware-physical-azure-support-matrix.md#azure-vm-requirements) einhalten.
 
-## <a name="check-vmware-vm-requirements"></a>Überprüfen der Anforderungen für VMware-VMs
-
-Vergewissern Sie sich, dass der virtuelle Computer die Azure-Anforderungen in der folgenden Tabelle erfüllt.
-
-**VM-Anforderung** | **Details**
---- | ---
-**Größe des Betriebssystemdatenträgers** | Bis zu 2.048 GB
-**Anzahl von Betriebssystemdatenträgern** | 1
-**Anzahl von Datenträgern für Daten** | Maximal 64
-**Größe des VHD-Datenträgers** | Bis zu 4.095 GB
-**Netzwerkadapter** | Es werden mehrere Adapter unterstützt.
-**Freigegebene VHD** | Nicht unterstützt
-**FC-Datenträger** | Nicht unterstützt
-**Festplattenformat** | VHD oder VHDX<br/><br/> Obwohl VHDX in Azure derzeit nicht unterstützt wird, führt Site Recovery automatisch die Konvertierung von VHDX in VHD durch, wenn Sie das Failover auf Azure anstoßen. Wenn Sie das Failback auf lokalen VMs durchführen, verwenden Sie weiter das VHDX-Format.
-**BitLocker** | Nicht unterstützt. Deaktivieren Sie die Option vor dem Aktivieren der Replikation für einen virtuellen Computer.
-**VM-Name** | Zwischen 1 und 63 Zeichen.<br/><br/> Ist auf Buchstaben, Zahlen und Bindestriche beschränkt. Der VM-Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.
-**VM-Typ** | Generation 1 – Linux oder Windows<br/><br/>Generation 2 – nur Windows
-
-Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden. Eine vollständige Liste der unterstützten Versionen finden Sie in der [Supportmatrix für VMware und physische Server](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
 

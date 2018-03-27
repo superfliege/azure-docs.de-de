@@ -1,12 +1,12 @@
 ---
-title: "Routing von Datenverkehr für virtuelle Azure-Netzwerke | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie VNet-Datenverkehr von Azure weitergeleitet wird und wie Sie das Routing von Azure anpassen können."
+title: Routing von Datenverkehr für virtuelle Azure-Netzwerke | Microsoft-Dokumentation
+description: Es wird beschrieben, wie VNet-Datenverkehr von Azure weitergeleitet wird und wie Sie das Routing von Azure anpassen können.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 4f4c4e9749eb5f0f6ba1950521f459f140cb5221
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: 9afaa7d34665f5c8ef4c4c819fe3b7e995bd71d3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -132,6 +132,9 @@ Wenn mehrere Routen das gleiche Präfix enthalten, wählt Azure den Routentyp na
 1. Benutzerdefinierte Route
 2. BGP-Route
 3. Systemroute
+
+> [!NOTE]
+> Systemrouten für Datenverkehr im Zusammenhang mit virtuellen Netzwerken, virtuellen Netzwerken über Peerings oder Dienstendpunkte im virtuellen Netzwerk sind die bevorzugten Routen, auch wenn BGP-Routen spezifischer sind.
 
 Eine Routentabelle enthält beispielsweise die folgenden Routen:
 

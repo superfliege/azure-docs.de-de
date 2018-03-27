@@ -2,7 +2,7 @@
 title: Diagnostizieren von Leistungsproblemen mit Azure Application Insights | Microsoft-Dokumentation
 description: Tutorial zum Suchen und Diagnostizieren von Leistungsproblemen in Ihrer Anwendung mithilfe von Azure Application Insights
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/18/2017
@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 26f5acf369dd80d7877ab760806e0e08a49cfe6d
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 8489992303425cc00c15994b55ade958d77549e4
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights
 
@@ -38,10 +38,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - [Aktivieren Sie Application Insights Profiler](app-insights-profiler.md#installation) für Ihre Anwendung.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="identify-slow-server-operations"></a>Identifizieren langsamer Servervorgänge
-Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in Ihrer Anwendung.  Durch Identifizieren der Vorgänge mit der längsten Dauer können Sie potenzielle Probleme diagnostizieren oder die aktuelle Entwicklung bestmöglich auf die Verbesserung der allgemeinen Leistung der Anwendung ausrichten.
+Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in Ihrer Anwendung. Durch Identifizieren der Vorgänge mit der längsten Dauer können Sie potenzielle Probleme diagnostizieren oder die aktuelle Entwicklung bestmöglich auf die Verbesserung der allgemeinen Leistung der Anwendung ausrichten.
 
 1. Wählen Sie zuerst **Application Insights** und anschließend Ihr Abonnement aus.  
 1. Um den Bereich **Leistung** zu öffnen, klicken Sie entweder im Menü **Untersuchen** auf die Option **Leistung** oder auf das Diagramm **Serverantwortzeit**.

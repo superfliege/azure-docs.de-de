@@ -1,25 +1,24 @@
 ---
-title: "Bewährte Methoden für Azure SQL Data Warehouse | Microsoft Docs"
-description: "Enthält Empfehlungen und bewährte Methoden, die Sie kennen sollten, wenn Sie Lösungen für Azure SQL Data Warehouse entwickeln. Sie tragen dazu bei, dass Sie erfolgreich sind."
+title: Bewährte Methoden für Azure SQL Data Warehouse | Microsoft Docs
+description: Enthält Empfehlungen und bewährte Methoden, die Sie kennen sollten, wenn Sie Lösungen für Azure SQL Data Warehouse entwickeln. Sie tragen dazu bei, dass Sie erfolgreich sind.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
-ms.assetid: 7b698cad-b152-4d33-97f5-5155dfa60f79
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 02/20/2018
+ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 50d02b657ec3063b0ca4078844563b4ba7932f37
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 53ad9f654c498f562d66de461a2a489895d0a46b
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Bewährte Methoden für Azure SQL Data Warehouse
 Dieser Artikel enthält eine Sammlung vieler bewährter Methoden, mit denen Sie die optimale Leistung mit Ihrem Azure SQL Data Warehouse erzielen.  Einige Konzepte dieses Artikels sind einfach und leicht zu erklären, während andere Konzepte etwas komplizierter sind, sodass in diesem Artikel nicht ausführlicher darauf eingegangen wird.  Dieser Artikel soll Ihnen als einfache Anleitung dienen und Sie auf wichtige Punkte aufmerksam machen, die Sie beim Erstellen des Data Warehouse beachten sollten.  In jedem Abschnitt wird ein Konzept vorgestellt, und es sind Links zu Artikeln mit ausführlicheren Informationen angegeben, in denen näher auf ein Konzept eingegangen wird.
@@ -89,12 +88,12 @@ Siehe auch: [Tabellenindizes][Table indexes], [Beschreibung von Columnstore-Indi
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Verwenden einer größeren Ressourcenklasse zum Verbessern der Abfrageleistung
 SQL Data Warehouse nutzt Ressourcengruppen zum Zuordnen von Arbeitsspeicher zu Abfragen.  Standardmäßig werden alle Benutzer der kleinen Ressourcenklasse zugewiesen, bei der pro Verteilung 100 MB Arbeitsspeicher gewährt werden.  Da immer 60 Verteilungen vorhanden sind, und jede Verteilung mindestens 100MB erhält, beträgt die gesamte systemweite Arbeitsspeicherzuordnung 6.000MB bzw. knapp 6GB.  Bestimmte Abfragen, z.B. große Verknüpfungen oder Ladevorgänge für gruppierte Columnstore-Tabellen, profitieren von größeren Arbeitsspeicherzuordnungen.  Für einige Abfragen, z.B. reine Scans, ergibt sich kein Vorteil.  Andererseits wirkt sich die Nutzung größerer Ressourcenklassen auf die Parallelität aus. Dies sollten Sie berücksichtigen, bevor Sie alle Benutzer in eine große Ressourcenklasse verschieben.
 
-Siehe auch: [Parallelitäts- und Workloadverwaltung][Concurrency and workload management]
+Siehe auch [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md)
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>Verwenden einer kleineren Ressourcenklasse zur Steigerung der Parallelität
 Wenn Sie bemerken, dass Benutzerabfragen mit einer langen Verzögerung verbunden sind, werden Ihre Benutzer unter Umständen in größeren Ressourcenklassen ausgeführt und verbrauchen viele Parallelitätsslots, sodass für andere Abfragen eine Warteschlange entsteht.  Führen Sie `SELECT * FROM sys.dm_pdw_waits` aus, um zu ermitteln, ob Zeilen zurückgegeben werden. So können Sie feststellen, ob Benutzeranfragen in eine Warteschlange eingereiht werden.
 
-Siehe auch: [Parallelitäts- und Workloadverwaltung][Concurrency and workload management], [sys.dm_pdw_waits][sys.dm_pdw_waits]
+Siehe auch [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md), [sys.dm_pdw_waits][sys.dm_pdw_waits]
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Verwenden von DMVs zum Überwachen und Optimieren von Abfragen
 SQL Data Warehouse verfügt über mehrere dynamische Verwaltungssichten (DMVs), die zum Überwachen der Abfrageausführung verwendet werden können.  Unten im Artikel zur Überwachung werden Sie Schritt für Schritt durch das Anzeigen einer ausgeführten Abfrage geführt.  Die Verwendung der Option LABEL für Abfragen kann hilfreich sein, um Abfragen für diese DMVs schnell finden zu können.
@@ -112,7 +111,6 @@ Verwenden Sie die Seite für [Azure SQL Data Warehouse-Feedback][Azure SQL Data 
 
 <!--Article references-->
 [Create a support ticket]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
 [Create table as select (CTAS)]: ./sql-data-warehouse-develop-ctas.md
 [Table overview]: ./sql-data-warehouse-tables-overview.md
 [Table data types]: ./sql-data-warehouse-tables-data-types.md

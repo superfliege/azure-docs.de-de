@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Entwerfen Ihrer ersten Azure Database for PostgreSQL-Instanz mithilfe des Azure-Portals'
-description: "In diesem Tutorial lernen Sie, wie Sie Ihre erste Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals entwerfen."
+title: 'Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe des Azure-Portals'
+description: In diesem Tutorial lernen Sie, wie Sie Ihre erste Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals entwerfen.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -10,13 +10,13 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: df8f308b17879d7fd22d033fb535b59bd8a85086
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9f4d886bbbf2b9111d736e291e420b822de9766a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>Tutorial: Entwerfen Ihrer ersten Azure Database for PostgreSQL-Instanz mithilfe des Azure-Portals
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe des Azure-Portals
 
 Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Mit dem Azure-Portal können Sie mühelos Ihren Server verwalten und eine Datenbank entwerfen.
 

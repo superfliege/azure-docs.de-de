@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 7480c1f71a64e31b65cc76f28734df6f424a6b3f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -139,7 +139,7 @@ Konvertieren Sie das SSL-Zertifikat in eine PFX-Datei, und speichern Sie es. Die
 
 Wenn Sie ein selbstsigniertes Zertifikat erstellen möchten, können Sie hier die PowerShell-Befehle verwenden. Sie müssen anstelle von *internal.contoso.com* den ILB-ASE-Domänennamen verwenden: 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "\*.internal-contoso.com","\*.scm.internal-contoso.com"
+    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
     
     $certThumbprint = "cert:\localMachine\my\" +$certificate.Thumbprint
     $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
@@ -174,9 +174,9 @@ So laden Sie eigene Zertifikate hoch und prüfen den Zugriff:
 
     b. Um Web Deploy-Publishing oder den Zugriff auf die erweiterte Konsole zu testen, erstellen Sie einen Datensatz für _mytestapp.scm.ilbase.com_.
 
-7. Navigieren Sie in einem Browser auf dieser VM zu „http://mytestapp.ilbase.com“. (Navigieren Sie alternativ zum Namen Ihrer Web-App, der in Ihrer Domäne verwendet wird.)
+7. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu http://mytestapp.ilbase.com. (Navigieren Sie alternativ zum Namen Ihrer Web-App, der in Ihrer Domäne verwendet wird.)
 
-8. Navigieren Sie in einem Browser auf dieser VM zu „https://mytestapp.ilbase.com“. Wenn Sie ein selbstsigniertes Zertifikat verwenden, müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen.
+8. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. Wenn Sie ein selbstsigniertes Zertifikat verwenden, müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen.
 
     Die IP-Adresse für Ihren ILB wird unter **IP-Adressen** aufgelistet. In dieser Liste sind auch die von der externen VIP und für eingehenden Datenverkehr für die Verwaltung verwendeten IP-Adressen aufgeführt.
 

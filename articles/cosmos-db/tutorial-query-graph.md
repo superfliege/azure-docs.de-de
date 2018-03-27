@@ -1,28 +1,28 @@
 ---
-title: "Wie werden Abfragen von Diagrammdaten in Azure Cosmos DB durchgeführt? | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Abfragen von Diagrammdaten in Azure Cosmos DB durchführen."
+title: Wie werden Abfragen von Diagrammdaten in Azure Cosmos DB durchgeführt? | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Abfragen von Diagrammdaten in Azure Cosmos DB durchführen.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
 manager: jhubbard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 8bde5c80-581c-4f70-acb4-9578873c92fa
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 5a635abfa9fa10cd8c8498e3c95a17af997cea3e
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: eb1da11c8b27a429ffcf9ea8fb50b6c7cee26ec0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-the-graph-api"></a>Azure Cosmos DB: Wie werden Abfragen mit der Graph-API durchgeführt?
+# <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>Tutorial: Abfragen der Graph-API von Azure Cosmos BD mithilfe von Gremlin
 
 Die [Graph-API](graph-introduction.md) von Azure Cosmos DB unterstützt [Gremlin](https://github.com/tinkerpop/gremlin/wiki)-Abfragen. Dieser Artikel enthält Beispieldokumente und Abfragen, um Ihnen den Einstieg zu erleichtern. Eine detaillierte Gremlin-Referenz finden Sie im Artikel [Azure Cosmos DB Gremlin graph support](gremlin-support.md) (Azure Cosmos DB: Gremlin-Graphunterstützung).
 

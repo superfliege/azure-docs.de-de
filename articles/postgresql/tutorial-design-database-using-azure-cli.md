@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Entwerfen Ihrer ersten Azure Database for PostgreSQL-Instanz mit der Azure CLI'
+title: 'Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe der Azure CLI'
 description: In diesem Tutorial wird veranschaulicht, wie Sie Ihren ersten Azure Database for PostgreSQL-Server mit der Azure CLI erstellen, konfigurieren und abfragen.
 services: postgresql
 author: rachel-msft
@@ -11,13 +11,13 @@ ms.custom: mvc
 ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: 7eeb3b01ddaea56b1e11fc37bbeba7d3f328772d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 56425ec7ccb1d6629b82db6683a02a57ab9999b4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-design-your-first-azure-database-for-postgresql-using-azure-cli"></a>Tutorial: Entwerfen Ihrer ersten Azure Database for PostgreSQL-Instanz mit der Azure CLI 
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe der Azure CLI 
 In diesem Tutorial verwenden Sie die Azure CLI (Befehlszeilenschnittstelle) und andere Hilfsprogramme, um zu lernen, wie Sie Folgendes ausführen:
 > [!div class="checklist"]
 > * Erstellen einer Azure-Datenbank für PostgreSQL-Server
@@ -32,7 +32,7 @@ Sie können Azure Cloud Shell im Browser verwenden oder [Azure CLI 2.0 auf dem l
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI in Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource vorhanden ist oder in Rechnung gestellt wird. Wählen Sie eine bestimmte Abonnement-ID unter Ihrem Konto mit dem Befehl [az account set](/cli/azure/account#az_account_set) aus.
 ```azurecli-interactive
@@ -79,7 +79,7 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver -
 ```
 
 > [!IMPORTANT]
-> Der hier angegebene Benutzername bzw. das Kennwort für den Serveradministrator sind erforderlich, um später in diesem Schnellstart die Anmeldung am Server und an den dazugehörigen Datenbanken durchzuführen. Behalten Sie diese Angaben im Kopf, oder notieren Sie sie zur späteren Verwendung.
+> Der hier angegebene Benutzername und das Kennwort für den Serveradministrator sind erforderlich, um später in diesem Schnellstart die Anmeldung am Server und bei den zugehörigen Datenbanken auszuführen. Behalten Sie diese Angaben im Kopf, oder notieren Sie sie zur späteren Verwendung.
 
 Standardmäßig wird die **postgres**-Datenbank unter dem Server erstellt. Die [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html)-Datenbank ist eine Standarddatenbank für die Verwendung durch Benutzer, Hilfsprogramme und Drittanbieteranwendungen. 
 
@@ -163,9 +163,9 @@ CREATE DATABASE mypgsqldb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>Erstellen von Tabellen in der Datenbank
-Da Sie nun wissen, wie Sie eine Verbindung mit der Azure-Datenbank für PostgreSQL herstellen, können wir die Ausführung einiger grundlegender Aufgaben erörtern.
+Da Sie nun wissen, wie Sie eine Verbindung mit Azure Database for PostgreSQL herstellen, können Sie einige grundlegende Aufgaben ausführen:
 
-Zunächst können wir eine Tabelle erstellen und mit einigen Daten füllen. Erstellen Sie nun eine Tabelle, die Bestandsinformationen nachverfolgt:
+Zunächst erstellen Sie eine Tabelle und füllen sie mit einigen Daten auf. Erstellen Sie beispielsweise eine Tabelle, die Bestandsinformationen nachverfolgt:
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 
@@ -180,7 +180,7 @@ Um die neu erstellte Tabelle in der Liste der Tabellen anzuzeigen, geben Sie Fol
 ```
 
 ## <a name="load-data-into-the-table"></a>Laden von Daten in die Tabelle
-Jetzt können wir einige Daten in die Tabelle einfügen. Führen Sie im geöffneten Eingabeaufforderungsfenster die folgende Abfrage zum Einfügen einiger Datenzeilen aus:
+Die Tabelle ist jetzt erstellt. Fügen Sie einige Daten ein. Führen Sie im geöffneten Eingabeaufforderungsfenster die folgende Abfrage zum Einfügen einiger Datenzeilen aus:
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);

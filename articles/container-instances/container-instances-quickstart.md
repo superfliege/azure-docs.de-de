@@ -1,21 +1,22 @@
 ---
 title: 'Schnellstart: Erstellen Ihres ersten Azure Container Instances-Containers'
-description: Bereitstellung und erste Schritte mit Azure Container Instances
+description: In dieser Schnellstartanleitung stellen Sie mithilfe der Azure-Befehlszeilenschnittstelle einen Windows-Container in Azure Container Instances bereit.
 services: container-instances
-author: seanmck
+author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 02/22/2018
-ms.author: seanmck
+ms.date: 03/19/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: f8fe53f834e4fcf7f16174222cb51d89e40305ec
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b85c38bb561e4f1dc9a0545595590719ce1883e4
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="create-your-first-container-in-azure-container-instances"></a>Erstellen Ihres ersten Containers in Azure Container Instances
+# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Schnellstartanleitung: Erstellen Ihres ersten Containers in Azure Container Instances
+
 Azure Container Instances erleichtert die Erstellung und Verwaltung von Docker-Containern in Azure, ohne dass Sie virtuelle Computer bereitstellen oder einen übergeordneten Dienst einführen müssen. In dieser Schnellstartanleitung erstellen Sie einen Container in Azure und machen ihn mit einem vollqualifizierten Domänennamen (FQDN) über das Internet verfügbar. Dieser Vorgang wird mit einem einzelnen Befehl durchgeführt. Nach wenigen Sekunden wird in Ihrem Browser Folgendes angezeigt:
 
 ![Mit Azure Container Instances bereitgestellte App im Browser][aci-app-browser]
@@ -28,7 +29,7 @@ Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für d
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Azure Container Instances-Instanzen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe (eine logische Sammlung für die Bereitstellung und Verwaltung von Azure-Ressourcen) platziert werden.
+Wie alle Azure-Ressourcen müssen auch Azure-Containerinstanzen in einer Ressourcengruppe (eine logische Sammlung für die Bereitstellung und Verwaltung von Azure-Ressourcen) platziert werden.
 
 Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe.
 
@@ -75,12 +76,41 @@ Die Protokolle für den erstellten Container können mithilfe des Befehls [az co
 az container logs --resource-group myResourceGroup --name mycontainer
 ```
 
-Ausgabe:
+Die Ausgabe sollte in etwa wie im folgenden Beispiel aussehen:
 
-```bash
+```console
+$ az container logs --resource-group myResourceGroup -n mycontainer
 listening on port 80
-::ffff:10.240.255.107 - - [29/Nov/2017:20:48:50 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
-::ffff:10.240.255.107 - - [29/Nov/2017:20:48:50 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://52.224.178.107/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
+::ffff:10.240.255.105 - - [15/Mar/2018:21:18:26 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
+::ffff:10.240.255.105 - - [15/Mar/2018:21:18:26 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
+```
+
+## <a name="attach-output-streams"></a>Anfügen von Ausgabestreams
+
+Zusätzlich zum Anfügen der Protokolle können Sie Ihre lokalen Standardausgabestreams und Standardfehlerstreams an die Streams des Containers anfügen.
+
+Führen Sie zunächst den Befehl [az container attach][az-container-attach] aus, um Ihrer lokalen Konsole die Ausgabestreams des Containers anzufügen:
+
+```azurecli-interactive
+az container attach --resource-group myResourceGroup -n mycontainer
+```
+
+Aktualisieren Sie nach dem Anfügen mehrmals Ihren Browser, um zusätzliche Ausgaben zu generieren. Trennen Sie schließlich Ihre Konsole mit `Control+C` wieder. Eine Ausgabe ähnlich der folgenden sollte angezeigt werden:
+
+```console
+$ az container attach --resource-group myResourceGroup -n mycontainer
+Container 'mycontainer' is in state 'Running'...
+(count: 1) (last timestamp: 2018-03-15 21:17:59+00:00) pulling image "microsoft/aci-helloworld"
+(count: 1) (last timestamp: 2018-03-15 21:18:05+00:00) Successfully pulled image "microsoft/aci-helloworld"
+(count: 1) (last timestamp: 2018-03-15 21:18:05+00:00) Created container with id 3534a1e2ee392d6f47b2c158ce8c1808d1686fc54f17de3a953d356cf5f26a45
+(count: 1) (last timestamp: 2018-03-15 21:18:06+00:00) Started container with id 3534a1e2ee392d6f47b2c158ce8c1808d1686fc54f17de3a953d356cf5f26a45
+
+Start streaming logs:
+listening on port 80
+::ffff:10.240.255.105 - - [15/Mar/2018:21:18:26 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
+::ffff:10.240.255.105 - - [15/Mar/2018:21:18:26 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
+::ffff:10.240.255.107 - - [15/Mar/2018:21:18:44 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
+::ffff:10.240.255.107 - - [15/Mar/2018:21:18:47 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
 ```
 
 ## <a name="delete-the-container"></a>Löschen des Containers
@@ -117,12 +147,13 @@ Um Optionen zum Ausführen von Containern in einem Orchestrierungssystem in Azur
 [node-js]: http://nodejs.org
 
 <!-- LINKS - Internal -->
-[az-group-create]: /cli/azure/group?view=azure-cli-latest#az_group_create
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az_container_create
-[az-container-delete]: /cli/azure/container?view=azure-cli-latest#az_container_delete
-[az-container-list]: /cli/azure/container?view=azure-cli-latest#az_container_list
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az_container_logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az_container_show
+[az-container-attach]: /cli/azure/container#az_container_attach
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-delete]: /cli/azure/container#az_container_delete
+[az-container-list]: /cli/azure/container#az_container_list
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
+[az-group-create]: /cli/azure/group#az_group_create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-service]: ../aks/kubernetes-walkthrough.md
 [service-fabric]: ../service-fabric/service-fabric-quickstart-containers.md

@@ -1,19 +1,19 @@
 ---
-title: "Schnellstart – Azure-Kubernetes-Cluster für Linux"
-description: "Hier lernen Sie schnell, einen Kubernetes-Cluster für Linux-Container in Azure Container Service (ACS) mithilfe der Azure CLI zu erstellen."
+title: Schnellstart – Azure-Kubernetes-Cluster für Linux
+description: Hier lernen Sie schnell, einen Kubernetes-Cluster für Linux-Container in Azure Container Service (ACS) mithilfe der Azure CLI zu erstellen.
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 02/26/2018
+ms.date: 03/14/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 817b204cde8708ff06507c30e1725c0e46185877
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3005023e45bc6516732f077f152aed93564be38b
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Bereitstellen eines Azure Container Service-Clusters
 
@@ -27,10 +27,14 @@ In dieser Schnellstartanleitung wird davon ausgegangen, dass Sie grundlegend mit
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.27 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
 
-## <a name="enabling-aks-preview-for-your-azure-subscription"></a>Aktivieren der AKS-Vorschau für Ihr Azure-Abonnement
-Während AKS in der Vorschau ist, erfordert das Erstellen neuer Cluster ein Featureflag für Ihr Abonnement. Sie können dieses Feature für eine beliebige Anzahl von Abonnements anfordern, die Sie verwenden möchten. Verwenden Sie den Befehl `az provider register` zum Registrieren des AKS-Anbieters:
+## <a name="enabling-aks-preview"></a>Aktivieren der AKS-Vorschau
+
+Stellen Sie mithilfe des Befehls `az provider register` sicher, dass die erforderlichen Azure-Dienstanbieter aktiviert sind. 
 
 ```azurecli-interactive
+az provider register -n Microsoft.Network
+az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Compute
 az provider register -n Microsoft.ContainerService
 ```
 
@@ -64,7 +68,7 @@ Ausgabe:
 
 ## <a name="create-aks-cluster"></a>Erstellen eines ACS-Clusters
 
-Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* erstellt.
+Erstellen Sie mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* erstellt.
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
@@ -76,14 +80,14 @@ Nach einigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werde
 
 Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeilenclient [kubectl][kubectl].
 
-Wenn Sie Azure Cloud Shell verwenden, ist „kubectl“ bereits installiert. Führen Sie für eine lokale Installation den folgenden Befehl aus.
+Wenn Sie Azure Cloud Shell verwenden, ist „kubectl“ bereits installiert. Wenn Sie ihn lokal installieren möchten, verwenden Sie den Befehl [az aks install-cli][az-aks-install-cli].
 
 
 ```azurecli
 az aks install-cli
 ```
 
-Führen Sie den folgenden Befehl aus, um „kubectl“ für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster zu konfigurieren. Dieser Schritt dient dazu, Anmeldeinformationen herunterzuladen und die Kubernetes-Befehlszeilenschnittstelle für ihre Verwendung zu konfigurieren.
+Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie „kubectl“ für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Dieser Schritt dient dazu, Anmeldeinformationen herunterzuladen und die Kubernetes-Befehlszeilenschnittstelle für ihre Verwendung zu konfigurieren.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -244,7 +248,9 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 
 <!-- LINKS - internal -->
 [az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az_aks_browse
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
+[az aks install-cli]: /cli/azure/aks?view=azure-cli-latest#az_aks_install_cli
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli

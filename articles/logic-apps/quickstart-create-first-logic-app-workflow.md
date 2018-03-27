@@ -1,12 +1,12 @@
 ---
-title: "Erstellen Ihres ersten automatisierten Workflows – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Diese Schnellstartanleitung veranschaulicht, wie Sie Ihren ersten Workflow mit Azure Logic Apps für Systemintegrations- und Enterprise Application Integration-Szenarien (EAI) automatisieren, bei denen Systeme und Clouddienste integriert werden."
+title: Erstellen Ihres ersten automatisierten Workflows – Azure Logic Apps | Microsoft-Dokumentation
+description: Diese Schnellstartanleitung veranschaulicht, wie Sie Ihren ersten Workflow mit Azure Logic Apps für Systemintegrations- und Enterprise Application Integration-Szenarien (EAI) automatisieren, bei denen Systeme und Clouddienste integriert werden.
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
 keywords: Workflows, Clouddienste, Systemintegration, Enterprise Application Integration, EAI
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 1/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: d382144c202b2b7f5623f2cca2a82c384387e8ca
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>Schnellstart: Erstellen Ihres ersten Logik-App-Workflows – Azure-Portal
 
@@ -60,6 +60,8 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
    ![Auswählen der Vorlage „Leere Logik-App“](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
 Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzu, der bei einem neuen RSS-Feedelement ausgelöst wird. Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt wird. Bei jeder Auslösung des Triggers erstellt die Logic Apps-Engine eine Logik-App-Instanz, mit der Ihr Workflow gestartet und ausgeführt wird.
+
+<a name="add-rss-trigger"></a>
 
 ## <a name="check-rss-feed-with-a-trigger"></a>Überprüfen des RSS-Feeds mit einem Trigger
 
@@ -144,7 +146,7 @@ Fügen Sie nun eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-conc
       ![Hinzufügen des Inhalts für den E-Mail-Text](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
       | Einstellung | BESCHREIBUNG | 
-      | ----- | ----------- | 
+      | ------- | ----------- | 
       | **Feedtitel** | Der Titel des Elements | 
       | **Feed veröffentlicht am** | Datum und Uhrzeit der Elementveröffentlichung | 
       | **Link zum primären Feed** | Die URL für das Element | 
@@ -156,15 +158,16 @@ Testen Sie als Nächstes Ihre Logik-App.
 
 ## <a name="run-your-logic-app"></a>Ausführen Ihrer Logik-App
 
-Wählen Sie in der Symbolleiste des Designers die Option **Ausführen**, um Ihre Logik-App manuell zu starten. Oder warten Sie, bis Ihre Logik-App gemäß dem festgelegten Zeitplan (minütlich) ausgeführt wird. Falls der RSS-Feed über neue Elemente verfügt, sendet Ihre Logik-App für jedes neue Element eine E-Mail. Falls der Feed jedoch keine neuen Elemente enthält, überspringt die Logik-App die Triggerauslösung und wartet auf das nächste Intervall, um die Prüfung zu wiederholen. 
+Wählen Sie in der Symbolleiste des Designers die Option **Ausführen**, um Ihre Logik-App manuell zu starten. Oder warten Sie, bis Ihre Logik-App den RSS-Feed gemäß dem festgelegten Zeitplan (minütlich) überprüft. Falls der RSS-Feed über neue Elemente verfügt, sendet Ihre Logik-App für jedes neue Element eine E-Mail. Andernfalls wartet Ihre Logik mit einer erneuten Prüfung bis zum nächsten Intervall. 
 
-Hier ist ein Beispiel für eine E-Mail angegeben, die von dieser Logik-App gesendet wird:
+Im Anschluss sehen Sie eine Beispiel-E-Mail, die von dieser Logik-App gesendet wird. Überprüfen Sie Ihren Ordner mit den Junk-E-Mails, falls Sie keine E-Mails erhalten.
 
 ![Gesendete E-Mail bei neuem RSS-Feedelement](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-Sollten Sie keine E-Mails erhalten, überprüfen Sie Ihren Ordner für Junk-E-Mails. E-Mails dieser Art werden unter Umständen durch Ihren Junk-E-Mail-Filter umgeleitet. 
+Aus technischer Sicht passiert Folgendes: Wenn der Trigger den RSS-Feed prüft und neue Elemente findet, wird der Trigger ausgelöst, und die Logic Apps-Engine erstellt eine Instanz Ihres Logik-App-Workflows, mit der Aktionen im Workflow ausgeführt werden.
+Falls der Trigger keine neuen Elemente findet, wird er nicht ausgelöst und überspringt das Instanziieren des Workflows.
 
-Glückwunsch! Sie haben Ihre erste Logik-App erstellt und ausgeführt.
+Herzlichen Glückwunsch! Sie haben Ihre erste Logik-App über das Azure-Portal erstellt und ausgeführt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

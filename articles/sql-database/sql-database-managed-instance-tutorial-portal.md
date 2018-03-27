@@ -7,18 +7,15 @@ author: bonova
 ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
-ms.workload: Active
-ms.tgt_pltfrm: portal
-ms.devlang: 
 ms.topic: tutorial
-ms.date: 03/07/2018
+ms.date: 03/14/2018
 ms.author: bonova
-manager: cguyer
-ms.openlocfilehash: 0d6261392dfdab0d48cb0c524d1fcf416c85d72c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+manager: craigg
+ms.openlocfilehash: 774a761465cfd886b85378a35dd43ac656a7ee48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Erstellen einer verwalteten Azure SQL-Datenbank-Instanz im Azure-Portal
 
@@ -26,6 +23,9 @@ In diesem Tutorial wird veranschaulicht, wie Sie eine verwaltete Azure SQL-Daten
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
+> [!IMPORTANT]
+> Eine Liste mit den Regionen, in denen die verwaltete Instanz derzeit verfügbar ist, finden Sie unter [Migrieren Ihrer Datenbanken zu einem vollständig verwalteten Dienst mit einer verwalteten Instanz von Azure SQL-Datenbank](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
+ 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/#create/Microsoft.SQLManagedInstance)an.
@@ -56,7 +56,7 @@ Die verwaltete SQL-Datenbank-Instanz wird anfänglich als geschlossene öffentli
 In den folgenden Schritten wird gezeigt, wie Sie ein neues [Azure Resource Manager](../azure-resource-manager/resource-manager-deployment-model.md)-VNET zur Verwendung durch Ihre verwaltete Azure SQL-Datenbank-Instanz erstellen. Weitere Informationen zur VNET-Konfiguration finden Sie unter [Configure a VNet for Azure SQL Database Managed Instance](sql-database-managed-instance-vnet-configuration.md) (Konfigurieren eines VNET für eine verwaltete Azure SQL-Datenbank-Instanz).
 
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
-2. Klicken Sie auf die Option **Virtuelles Netzwerk**, vergewissern Sie sich, dass **Resource Manager** als Bereitstellungsmodus ausgewählt ist, und klicken Sie dann auf **Erstellen**.
+2. Klicken Sie auf die Option **Virtuelles Netzwerk**, vergewissern Sie sich, dass der **Resource Manager** als Bereitstellungsmodus ausgewählt ist, und klicken Sie dann auf **Erstellen**.
 
    ![Virtuelles Netzwerk – Erstellen](./media/sql-database-managed-instance-tutorial/virtual-network-create.png)
 
@@ -94,13 +94,13 @@ In den folgenden Schritten wird veranschaulicht, wie Sie eine Route des folgende
    |**Name**|Ein gültiger Name|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
    |**Abonnement**|Ihr Abonnement|Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions).|
    |**Ressourcengruppe**|Wählen Sie die Ressourcengruppe aus, die Sie im vorherigen Abschnitt erstellt haben.|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Standort**|Wählen Sie den Standort aus, den Sie im vorherigen Abschnitt angegeben haben.| Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).|
+   |**Location**|Wählen Sie den Standort aus, den Sie im vorherigen Abschnitt angegeben haben.| Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).|
    |**BGP-Routenverteilung deaktivieren**|Deaktiviert||
    ||||
 
    ![Formular für die Erstellung einer Routingtabelle](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
 
-4. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Create**.
 5. Öffnen Sie nach der Erstellung der Routingtabelle die neu erstellte Routingtabelle.
 
    ![Routingtabelle](./media/sql-database-managed-instance-tutorial/route-table.png)
@@ -111,7 +111,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie eine Route des folgende
 
 7.  Fügen Sie **0.0.0.0/0 Next Hop Internet route** (Route vom Typ 0.0.0.0/0, nächster Hop „Internet“) als **einzige** Route hinzu, indem Sie die Informationen in der folgenden Tabelle verwenden:
 
-    | Einstellung| Empfohlener Wert | Beschreibung |
+    | Einstellung| Empfohlener Wert | BESCHREIBUNG |
     | ------ | --------------- | ----------- |
     |**Routenname**|Ein gültiger Name|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
     |**Adresspräfix**|0.0.0.0/0|Die IP-Zieladresse in CIDR-Notation, für die diese Route gilt.|
@@ -155,13 +155,13 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Ihre verwaltete Instanz
 
 4. Füllen Sie das Formular für die verwaltete Instanz mit den geforderten Informationen aus, indem Sie die Angaben in der folgenden Tabelle verwenden:
 
-   | Einstellung| Empfohlener Wert | Beschreibung |
+   | Einstellung| Empfohlener Wert | BESCHREIBUNG |
    | ------ | --------------- | ----------- |
    |**Name der verwalteten Instanz**|Ein gültiger Name|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
    |**Administratoranmeldung für verwaltete Instanz**|Beliebiger gültiger Benutzername|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).| 
    |**Kennwort**|Ein gültiges Kennwort|Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
    |**Ressourcengruppe**|Die zuvor erstellte Ressourcengruppe||
-   |**Standort**|Der zuvor ausgewählte Standort|Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).|
+   |**Location**|Der zuvor ausgewählte Standort|Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).|
    |**Virtuelles Netzwerk**|Das zuvor erstellte virtuelle Netzwerk|
 
    ![Formular für die Erstellung der verwalteten Instanz](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
@@ -191,7 +191,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie ein zweites Subnetz im 
 
 1. Öffnen Sie Ihre VNET-Ressource.
  
-   ![VNET](./media/sql-database-managed-instance-tutorial/vnet.png)
+   ![VNet](./media/sql-database-managed-instance-tutorial/vnet.png)
 
 2. Klicken Sie auf **Subnetze** und dann auf **+Subnetz**.
  
@@ -230,7 +230,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie einen virtuellen Comput
    |**Kennwort**|Ein gültiges Kennwort|Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.| 
    |**Abonnement**|Ihr Abonnement|Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions).|
    |**Ressourcengruppe**|Die zuvor erstellte Ressourcengruppe||
-   |**Standort**|Der zuvor ausgewählte Standort||
+   |**Location**|Der zuvor ausgewählte Standort||
    |**Already have a Windows license** (Windows-Lizenz bereits vorhanden)|Nein |Wenn Sie über Windows-Lizenzen mit aktiver Software Assurance (SA) verfügen, können Sie mit dem Azure-Hybridvorteil Computekosten sparen.|
    ||||
 
@@ -284,7 +284,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie SSMS herunterladen und 
     ![Verstärkte Sicherheitskonfiguration für Internet Explorer](./media/sql-database-managed-instance-tutorial/internet-explorer-security-configuration.png)  
 4. Öffnen Sie über die Taskleiste **Internet Explorer**.
 5. Wählen Sie die Option **Use recommended security and compatibility settings** (Empfohlene Sicherheits- und Kompatibilitätseinstellungen verwenden), und klicken Sie anschließend auf **OK**, um das Setup von Internet Explorer 11 abzuschließen.
-6. Geben Sie im Feld für die URL-Adresse „https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms“ ein, und drücken Sie die **EINGABETASTE**. 
+6. Geben Sie https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms in das Adressfeld für die URL ein, und drücken Sie die**EINGABETASTE**. 
 7. Laden Sie die aktuelle Version von SQL Server Management Studio herunter, und klicken Sie auf **Ausführen**, wenn Sie dazu aufgefordert werden.
 8. Klicken Sie in der Aufforderung auf **Installieren**, um den Vorgang zu starten.
 9. Klicken Sie nach Abschluss der Installation auf **Schließen**.
@@ -299,7 +299,7 @@ Nach der Verbindungsherstellung können Sie Ihre System- und Benutzerdatenbanken
 
 Verwenden Sie die folgenden Schritte, um die Sicherungsdatei „Wide World Importers – Standard“ herunterzuladen.
 
-Geben Sie in Internet Explorer im Feld für die URL-Adresse „https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Standard.bak“ ein, und klicken Sie in der Aufforderung auf **Speichern**, um diese Datei im Ordner **Downloads** zu speichern.
+Geben Sie in Internet Explorer https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Standard.bak in das Adressfeld für die URL ein, und klicken Sie nach entsprechender Aufforderung auf **Speichern**, um die Datei im Ordner **Downloads** zu speichern.
 
 ## <a name="create-azure-storage-account-and-upload-backup-file"></a>Erstellen des Azure-Speicherkontos und Hochladen der Sicherungsdatei
 
@@ -341,7 +341,7 @@ Geben Sie in Internet Explorer im Feld für die URL-Adresse „https://github.co
 9. Kopieren und speichern Sie das **SAS-Token** und die **Blob server SAS URL** (Blobserver-SAS-URL).
 10. Klicken Sie unter **Einstellungen** auf **Container**.
 
-    ![Container](./media/sql-database-managed-instance-tutorial/containers.png)
+    ![containers](./media/sql-database-managed-instance-tutorial/containers.png)
 
 11. Klicken Sie auf **+ Container**, um einen Container für Ihre Sicherungsdatei zu erstellen.
 12. Füllen Sie das Formular für den Container mit den geforderten Informationen aus, indem Sie die Angaben in der folgenden Tabelle verwenden:
@@ -356,7 +356,7 @@ Geben Sie in Internet Explorer im Feld für die URL-Adresse „https://github.co
 13. Klicken Sie auf **OK**.
 14. Öffnen Sie den Container, nachdem er erstellt wurde.
 
-    ![Container](./media/sql-database-managed-instance-tutorial/container.png)
+    ![container](./media/sql-database-managed-instance-tutorial/container.png)
 
 15. Klicken Sie auf **Containereigenschaften**, und kopieren Sie die URL anschließend in den Container.
 
@@ -364,11 +364,11 @@ Geben Sie in Internet Explorer im Feld für die URL-Adresse „https://github.co
 
 16. Klicken Sie auf **Hochladen**, um das Formular **Blob hochladen** zu öffnen.
 
-    ![Upload](./media/sql-database-managed-instance-tutorial/upload.png)
+    ![upload](./media/sql-database-managed-instance-tutorial/upload.png)
 
 17. Navigieren Sie zu Ihrem Downloadordner, und wählen Sie die Datei **AdventureWorks2016.bak** aus.
 
-    ![Upload](./media/sql-database-managed-instance-tutorial/upload-bak.png)
+    ![upload](./media/sql-database-managed-instance-tutorial/upload-bak.png)
 
 18. Klicken Sie auf **Hochladen**.
 19. Fahren Sie erst fort, nachdem der Upload abgeschlossen wurde.
@@ -389,7 +389,7 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE'
 , SECRET = '<shared_access_signature_key_with_removed_first_?_symbol>' 
    ```
 
-    ![Anmeldeinformation](./media/sql-database-managed-instance-tutorial/credential.png)
+    ![credential](./media/sql-database-managed-instance-tutorial/credential.png)
 
 3. Verwenden Sie das folgende Skript, um die Gültigkeit der SAS-Anmeldeinformationen und der Sicherung zu prüfen. Geben Sie die URL für den Container mit der Sicherungsdatei an:
 

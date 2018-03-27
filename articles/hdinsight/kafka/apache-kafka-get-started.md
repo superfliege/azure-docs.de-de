@@ -1,25 +1,25 @@
 ---
-title: "Erste Schritte mit Apache Kafka – Azure HDInsight | Microsoft-Dokumentation"
+title: Erste Schritte mit Apache Kafka – Azure HDInsight | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie ein Apache Kafka-Cluster in Azure HDInsight erstellen. Erfahren Sie, wie Sie Themen, Abonnenten und Consumer erstellen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
+ms.devlang: ''
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: e00ab06a26d60dd5beca11362df58f35812491d9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 27e6472480dac104de799ebf0e7579a7987f6c4c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>Einstieg in Apache Kafka in HDInsight
 
@@ -39,6 +39,15 @@ Gehen Sie wie folgt vor, um einen Cluster vom Typ „Kafka in HDInsight“ zu er
 
     * **Clustername**: Der Name des HDInsight-Clusters. Dieser Name muss eindeutig sein.
     * **Abonnement**: Wählen Sie das zu verwendende Abonnement aus.
+    * **Clustertyp**: Wählen Sie diesen Eintrag aus, und legen Sie dann unter **Clusterkonfiguration** die folgenden Werte fest:
+
+        * **Clustertyp**: Kafka
+        * **Version**: Kafka 0.10.0 (HDI 3.6)
+
+        Klicken Sie auf die Schaltfläche **Auswählen**, um die Clustertypeinstellungen zu speichern.
+
+        ![Auswählen des Clustertyps](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
+
     * **Benutzername für Clusteranmeldung** und **Kennwort für Clusteranmeldung**: Die Anmeldung beim Zugriff auf den Cluster über HTTPS. Sie verwenden diese Anmeldeinformationen für den Zugriff auf Dienste wie z.B. die Ambari-Webbenutzeroberfläche oder die REST-API.
     * **Secure Shell (SSH)-Benutzername**: Die für den Clusterzugriff über SSH verwendete Anmeldung. Das Kennwort ist standardmäßig mit dem Kennwort für die Clusteranmeldung identisch.
     * **Ressourcengruppe**: Die Ressourcengruppe, in der der Cluster erstellt wird.
@@ -49,24 +58,15 @@ Gehen Sie wie folgt vor, um einen Cluster vom Typ „Kafka in HDInsight“ zu er
    
  ![Wählen Sie das Abonnement aus.](./media/apache-kafka-get-started/hdinsight-basic-configuration.png)
 
-3. Wählen Sie **Clustertyp** aus, und legen Sie dann unter **Clusterkonfiguration** die folgenden Werte fest:
-   
-    * **Clustertyp**: Kafka
-    * **Version**: Kafka 0.10.0 (HDI 3.6)
+3. Schließen Sie mit der Schaltfläche __Weiter__ die grundlegende Konfiguration ab.
 
-    Klicken Sie abschließend auf die Schaltfläche **Auswählen**, um die Einstellungen zu speichern.
-     
- ![Auswählen des Clustertyps](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
-
-4. Legen Sie nach dem Auswählen des Clustertyps mit der Schaltfläche __Auswählen__ den Clustertyp fest. Schließen Sie dann mit der Schaltfläche __Weiter__ die grundlegende Konfiguration ab.
-
-5. Wählen Sie unter **Speicher** ein Speicherkonto aus, oder erstellen Sie eines. Behalten Sie für die Schritte in diesem Dokument für die weiteren Felder die Standardwerte bei. Speichern Sie mit der Schaltfläche __Weiter__ die Speicherkonfiguration.
+4. Wählen Sie unter **Speicher** ein Speicherkonto aus, oder erstellen Sie eines. Behalten Sie für die Schritte in diesem Dokument für die weiteren Felder die Standardwerte bei. Speichern Sie mit der Schaltfläche __Weiter__ die Speicherkonfiguration.
 
     ![Festlegen der Speicherkontoeinstellungen für HDInsight](./media/apache-kafka-get-started/set-hdinsight-storage-account.png)
 
-6. Wählen Sie unter __Anwendungen (optional)__ zum Fortfahren __Weiter__ aus. Für dieses Beispiel sind keine Anwendungen erforderlich.
+5. Wählen Sie unter __Anwendungen (optional)__ zum Fortfahren __Weiter__ aus. Für dieses Beispiel sind keine Anwendungen erforderlich.
 
-7. Wählen Sie unter __Clustergröße__ zum Fortfahren die Option __Weiter__ aus.
+6. Wählen Sie unter __Clustergröße__ zum Fortfahren die Option __Weiter__ aus.
 
     > [!WARNING]
     > Um die Verfügbarkeit von Kafka in HDInsight zu gewährleisten, muss der Cluster mindestens drei Workerknoten enthalten. Weitere Informationen finden Sie im Abschnitt [Hochverfügbarkeit von Daten](#data-high-availability).
@@ -76,9 +76,9 @@ Gehen Sie wie folgt vor, um einen Cluster vom Typ „Kafka in HDInsight“ zu er
     > [!IMPORTANT]
     > Der Eintrag für **Datenträger pro Workerknoten** konfiguriert die Skalierbarkeit von Kafka in HDInsight. Kafka in HDInsight verwendet den lokalen Datenträger der virtuellen Computer im Cluster. Da Kafka sehr E/A-intensiv ist, wird [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) verwendet, um einen hohen Durchsatz zu ermöglichen und mehr Speicher pro Knoten bereitzustellen. Der Typ des verwalteten Datenträgers kann entweder __Standard__ (HDD) oder __Premium__ (SSD) sein. Premium-Datenträger werden mit virtuellen Computern der DS- und GS-Serie verwendet. Alle anderen virtuellen Computertypen verwenden den Standardtyp.
 
-8. Wählen Sie unter __Erweiterte Einstellungen__ die Option __Weiter__ aus, um fortzufahren.
+7. Wählen Sie unter __Erweiterte Einstellungen__ die Option __Weiter__ aus, um fortzufahren.
 
-9. Überprüfen Sie unter **Zusammenfassung** die Konfiguration für den Cluster. Ändern Sie ggf. falsche Einstellungen mithilfe der Link zum __Bearbeiten__. Verwenden Sie abschließend die Schaltfläche__Erstellen__, um den Cluster zu erstellen.
+8. Überprüfen Sie unter **Zusammenfassung** die Konfiguration für den Cluster. Ändern Sie ggf. falsche Einstellungen mithilfe der Link zum __Bearbeiten__. Verwenden Sie abschließend die Schaltfläche__Erstellen__, um den Cluster zu erstellen.
    
     ![Zusammenfassung der Clusterkonfiguration](./media/apache-kafka-get-started/hdinsight-configuration-summary.png)
    

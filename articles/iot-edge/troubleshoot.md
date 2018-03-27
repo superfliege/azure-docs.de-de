@@ -1,8 +1,8 @@
 ---
 title: Beheben von Problemen mit Azure IoT Edge | Microsoft-Dokumentation
-description: "Beheben häufig auftretender Probleme und Aneignen von Fähigkeiten bei der Problembehandlung bei Azure IoT Edge"
+description: Beheben häufig auftretender Probleme und Aneignen von Fähigkeiten bei der Problembehandlung bei Azure IoT Edge
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -10,11 +10,11 @@ ms.date: 12/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7b9f9f8295aac0920ae4726289c535aae12c4482
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4d6dd0d46d909acfbfc04a23be74a571953ce660
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
 
@@ -30,10 +30,16 @@ Wenn ein Problem auftritt, erfahren Sie mehr über den Status Ihres IoT Edge-Ger
    docker logs <container name>
    ```
 
-* Zeigen Sie die Nachrichten an, die Edge Hub durchlaufen, und verschaffen Sie sich mit ausführlichen Protokollen von den Runtimecontainern Einblicke in Aktualisierungen der Geräteeigenschaften. Sie können ggf. die Option „--auto-cert-gen-force-no-passwords“ hinzufügen, wenn Sie den Anweisungen in den Schnellstartartikeln folgen.
+* Zeigen Sie die Nachrichten an, die Edge Hub durchlaufen, und verschaffen Sie sich mit ausführlichen Protokollen von den Runtimecontainern Einblicke in Aktualisierungen der Geräteeigenschaften.
 
    ```cmd
    iotedgectl setup --connection-string "{device connection string}" --runtime-log-level debug
+   ```
+   
+* Anzeigen von ausführlichen Protokollen aus iotedgectl-Befehlen:
+
+   ```cmd
+   iotedgectl --verbose DEBUG <command>
    ```
 
 * Wenn Verbindungsprobleme auftreten, überprüfen Sie die Umgebungsvariablen Ihres Edge-Geräts, etwa die Verbindungszeichenfolge des Geräts:

@@ -1,19 +1,19 @@
 ---
-title: "Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit Java | Microsoft-Dokumentation"
-description: "In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für Java, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten."
+title: Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit Java | Microsoft-Dokumentation
+description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für Java, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 services: storage
 author: roygara
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 03/15/2018
 ms.author: rogarana
-ms.openlocfilehash: cde366e75e4111a911be67795a2ad4dfa73778ea
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 44e5f921ca9303e680c76d439ab7503ea3c39680
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-java"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Java
 
@@ -202,6 +202,19 @@ downloadedFile.deleteOnExit();
 if(sourceFile != null)
 sourceFile.deleteOnExit();
 ```
+
+## <a name="resources-for-developing-java-applications-with-blobs"></a>Ressourcen für die Entwicklung von Java-Anwendungen mit Blobs
+
+Sehen Sie sich diese zusätzlichen Ressourcen zur Java-Entwicklung mit Blobspeicher an:
+
+### <a name="binaries-and-source-code"></a>Binärdateien und Quellcode
+
+- Zeigen Sie den [Quellcode der Java-Clientbibliothek](https://github.com/Azure/azure-storage-java) für Azure Storage auf GitHub an, und laden Sie ihn herunter.
+
+### <a name="client-library-reference-and-samples"></a>Clientbibliothek – Referenz und Beispiele
+
+- Weitere Informationen zur Java-Clientbibliothek finden Sie in der [Java-API-Referenz](https://docs.microsoft.com/en-us/java/api/overview/azure/storage).
+- Sehen Sie sich die [Beispiele für Blobspeicher](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=java&term=blob) an, die mit der Java-Clientbibliothek geschrieben wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

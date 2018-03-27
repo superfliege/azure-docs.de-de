@@ -1,23 +1,23 @@
 ---
-title: "Tutorial zum Bereitstellen eines Modells für Azure Machine Learning-Dienste (Vorschau) | Microsoft-Dokumentation"
-description: "Dieses Tutorial in voller Länge zeigt, wie Azure Machine Learning-Dienste (Vorschau) konsistent verwendet werden können. Dies ist der dritte Teil, in dem das Bereitstellen des Modells beschrieben wird."
+title: Tutorial zum Bereitstellen eines Modells für Azure Machine Learning-Dienste
+description: In diesem umfassenden Tutorial wird die Verwendung von Azure Machine Learning-Diensten erläutert. Dies ist der dritte Teil, in dem das Bereitstellen des Modells beschrieben wird.
 services: machine-learning
-author: raymondl
-ms.author: raymondl, j-martens, aashishb
+author: aashishb
+ms.author: aashishb
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
+ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/7/2018
-ms.openlocfilehash: 13ddc0ef8c7eac86e6cd7abb684ce35ae18fba84
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.date: 3/13/2018
+ms.openlocfilehash: 87d1e605bfd7603e4e07f6b427033fe2c1d2b83e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-classify-iris-part-3-deploy-a-model"></a>Tutorial: Klassifizieren von Iris – Teil 3: Bereitstellen eines Modells
+# <a name="tutorial-3-classify-iris-deploy-a-model"></a>Tutorial 3: Klassifizieren von Iris: Bereitstellen eines Modells
 Bei Azure Machine Learning (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
 
 Dieses Tutorial ist der **dritte Teil einer dreiteiligen Reihe**. In diesem Tutorial verwenden Sie Machine Learning (Vorschauversion) für folgende Zwecke:
@@ -30,17 +30,15 @@ Dieses Tutorial ist der **dritte Teil einer dreiteiligen Reihe**. In diesem Tuto
 > * Ausführen des Echtzeit-Webdiensts
 > * Untersuchen der Ausgabeblobdaten 
 
-In diesem Tutorial wird das zeitlose Schwertlilien-Dataset ([Iris flower data set](https://en.wikipedia.org/wiki/iris_flower_data_set)) verwendet. Die Screenshots sind Windows-spezifisch, aber die Darstellung ist unter Mac OS nahezu identisch.
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+In diesem Tutorial wird das zeitlose Schwertlilien-Dataset ([Iris flower data set](https://en.wikipedia.org/wiki/Iris_flower_data_set)) verwendet. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Arbeiten Sie die ersten beiden Teile dieser Tutorial-Reihe durch:
 
-   * Führen Sie das [Tutorial zum Vorbereiten der Daten](tutorial-classifying-iris-part-1.md) aus, um Machine Learning-Ressourcen zu erstellen und die Azure Machine Learning Workbench-Anwendung zu installieren.
-   * Führen Sie das [Tutorial „Erstellen eines Modells“](tutorial-classifying-iris-part-2.md) aus, um in Machine Learning ein Modell für die logistische Regression zu erstellen.
-
-Hierzu benötigen Sie eine lokal installierte und ausgeführte Docker-Engine. Alternativ können Sie als Bereitstellungsziel einen Azure Container Service-Cluster in Azure verwenden.
+Für dieses Tutorial benötigen Sie Folgendes:
+- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+- Ein Experimentierkonto und eine Installation von Azure Machine Learning Workbench, wie in dieser [Schnellstartanleitung](quickstart-installation.md) beschrieben.
+- Das Klassifizierungsmodell aus dem [zweiten Teil des Tutorials](tutorial-classifying-iris-part-2.md).
+- Eine lokal installierte und ausgeführte Docker-Engine.
 
 ## <a name="download-the-model-pickle-file"></a>Herunterladen der pickle-Modelldatei
 Im vorherigen Teil des Tutorials wurde das Skript **iris_sklearn.py** lokal in Machine Learning Workbench ausgeführt. Mit dieser Aktion wurde das Modell für die logistische Regression über das beliebte Python-Paket [pickle](https://docs.python.org/3/library/pickle.html) für die Objektserialisierung serialisiert. 
@@ -91,7 +89,7 @@ Zum Bereitstellen des Webdiensts zusammen mit der Modelldatei benötigen Sie auc
 
 4. Führen Sie das Skript aus, um die Schemadatei abzurufen. Wählen Sie in der Befehlsleiste die Umgebung **local** und das Skript **score_iris.py** und anschließend **Ausführen**. 
 
-5. Mit diesem Skript wird im Abschnitt **outputs** eine JSON-Datei erstellt, mit der das für das Modell benötigte Eingabedatenschema erfasst wird.
+   Mit diesem Skript wird im Abschnitt **outputs** eine JSON-Datei erstellt, mit der das für das Modell benötigte Eingabedatenschema erfasst wird.
 
 6. Beachten Sie den Bereich **Aufträge** rechts im Bereich **Projektdashboard**. Warten Sie, bis für den aktuellen Auftrag **score_iris.py** in Grün der Status **Abgeschlossen** angezeigt wird. Wählen Sie anschließend den Hyperlink **score_iris.py** für die letzte Auftragsausführung aus, um die Ausführungsdetails anzuzeigen. 
 
@@ -128,7 +126,10 @@ Verwenden Sie für Docker-Container auf Ihrem lokalen Computer die Bereitstellun
 Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker-Engine muss lokal ausgeführt werden, um die folgenden Schritte zum Operationalisieren des Modells auszuführen. Sie können das Flag `-h` am Ende jedes Befehls verwenden, um die entsprechende Hilfemeldung anzuzeigen.
 
 >[!NOTE]
->Falls Sie nicht über eine lokale Docker-Engine verfügen, können Sie trotzdem fortfahren, indem Sie in Azure einen Cluster für die Bereitstellung erstellen. Stellen Sie lediglich sicher, dass Sie den Cluster nach Abschluss des Tutorials löschen, damit keine laufenden Gebühren anfallen.
+>Falls Sie nicht über eine lokale Docker-Engine verfügen, können Sie trotzdem fortfahren, indem Sie in Azure einen Cluster für die Bereitstellung erstellen. Sie können den Cluster beibehalten und weiterverwenden oder ihn nach Abschluss des Tutorials löschen, damit keine weiteren Gebühren anfallen.
+
+>[!NOTE]
+>Lokal bereitgestellte Webdienste werden im Azure-Portal nicht in der Liste mit den Diensten angezeigt. Sie werden in Docker auf dem lokalen Computer ausgeführt.
 
 1. Öffnen Sie die Befehlszeilenschnittstelle (CLI).
    Wählen Sie in der Anwendung Machine Learning Workbench im Menü **Datei** die Option **Eingabeaufforderung öffnen**.

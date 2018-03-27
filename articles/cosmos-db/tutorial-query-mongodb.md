@@ -1,28 +1,28 @@
 ---
-title: "Azure Cosmos DB: Wie werden Abfragen mit der MongoDB-API durchgeführt? | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mit der MongoDB-API für Azure Cosmos DB Abfragen durchführen."
+title: 'Azure Cosmos DB: Wie werden Abfragen mit der MongoDB-API durchgeführt? | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie mit der MongoDB-API für Azure Cosmos DB Abfragen durchführen.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
-ms.date: 05/10/2017
+ms.workload: ''
+ms.date: 03/16/2018
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 1818476a95ddf373701ad93860b02ea4c2ad761d
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 7c51a2a1cace89305b971d5fb0f56c360cbf93cb
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB: Wie werden Abfragen mit der API für MongoDB durchgeführt?
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der MongoDB-API
 
 Die [API für MongoDB](mongodb-introduction.md) von Azure Cosmos DB unterstützt [MongoDB-Shellabfragen](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
@@ -119,7 +119,7 @@ Die nächste Abfrage gibt alle Kinder in der Familie zurück.
 
 **Abfrage**
     
-    db.familes.find( { id: “WakefieldFamily” }, { children: true } )
+    db.families.find( { id: “WakefieldFamily” }, { children: true } )
 
 **Ergebnisse**
 

@@ -1,12 +1,12 @@
 ---
 title: Erstellen Ihrer ersten Funktion in Azure mit Visual Studio | Microsoft-Dokumentation
-description: "Es wird beschrieben, wie Sie in Azure eine einfache per HTTP ausgelöste Funktion erstellen und veröffentlichen, indem Sie die Azure Functions-Tools für Visual Studio verwenden."
+description: Es wird beschrieben, wie Sie in Azure eine einfache per HTTP ausgelöste Funktion erstellen und veröffentlichen, indem Sie die Azure Functions-Tools für Visual Studio verwenden.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, Compute, serverlose Architektur
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: functions
@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/17/2018
+ms.date: 03/13/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fa17a021526a728c6fabc9607b1d00f5521cbb21
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9b43ec7106c70b7d9b326208043d2fe874fb7e20
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Erstellen Ihrer ersten Funktion mit Visual Studio
 
@@ -37,11 +37,13 @@ Dieses Thema enthält ein [Video](#watch-the-video) zu einigen grundlegenden Sch
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Installieren Sie [Visual Studio 2017 Version 15.4](https://www.visualstudio.com/vs/) oder eine höhere Version, einschließlich der Workload **Azure-Entwicklung**.
+* Installieren Sie mindestens die [Version 15.5 von Visual Studio 2017](https://www.visualstudio.com/vs/) – einschließlich der Workload **Azure-Entwicklung**.
 
     ![Installation von Visual Studio 2017 mit der Workload „Azure-Entwicklung“](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-* Vergewissern Sie sich, dass Sie das Update auf die aktuelle Version von Azure Functions und der WebJobs-Tools durchgeführt haben. Verwenden Sie hierfür unter **Updates** > **Visual Studio Marketplace** die Option **Erweiterungen und Updates**.
+    Wenn Sie Visual Studio bereits installiert haben, vergewissern Sie sich, dass Sie alle ausstehenden Updates installiert haben. 
+
+* Falls Sie die Workload für die Azure-Entwicklung mit der Version 15.4 von Visual Studio 2017 (oder mit einer älteren Version) installiert haben, müssen Sie gegebenenfalls auch [Ihre Azure Functions-Tools aktualisieren](functions-develop-vs.md#check-your-tools-version). 
     
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
@@ -53,7 +55,7 @@ Visual Studio erstellt ein Projekt, das eine Klasse mit den Codebausteinen für 
 
 ![Funktionscodedatei](./media/functions-create-your-first-function-visual-studio/functions-code-page.png)
 
-Nachdem Sie nun Ihr Funktionsprojekt und eine per HTTP ausgelöste Funktion erstellt haben, können Sie sie auf Ihrem lokalen Computer testen.
+Nachdem Sie nun Ihr Funktionsprojekt und eine Funktion mit HTTP-Trigger erstellt haben, können Sie sie auf Ihrem lokalen Computer testen.
 
 ## <a name="test-the-function-locally"></a>Lokales Testen der Funktion
 
