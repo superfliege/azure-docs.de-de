@@ -1,24 +1,24 @@
 ---
-title: "Azure AD Connect-Synchronisierung: Vornehmen einer Konfigurationsänderung in der Azure AD Connect-Synchronisierung | Microsoft-Dokumentation"
-description: "Erläutert Schritt für Schritt, wie Sie eine Änderung an der Konfiguration in der Azure AD Connect-Synchronisierung vornehmen."
+title: 'Azure AD Connect-Synchronisierung: Vornehmen einer Konfigurationsänderung in der Azure AD Connect-Synchronisierung | Microsoft-Dokumentation'
+description: Erläutert Schritt für Schritt, wie Sie eine Änderung an der Konfiguration in der Azure AD Connect-Synchronisierung vornehmen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2018
+ms.date: 03/16/2018
 ms.author: billmath
-ms.openlocfilehash: e97d3e3e35ee87864c5d38e75e08e62088e25fdb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 06c715cf5dbf039334adfde8b3111d9bfcb86568
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration
 In diesem Artikel wird Schritt für Schritt erläutert, wie Sie Änderungen an der Standardkonfiguration in der Azure AD Connect-Synchronisierung (Azure Active Directory) vornehmen. Es enthält Schrittanleitungen für einige allgemeinen Szenarien. Mit diesem Wissen sollten Sie in der Lage sein, basierend auf Ihren eigenen Geschäftsregeln einfache Änderungen an Ihrer eigenen Konfiguration vorzunehmen.
@@ -245,7 +245,7 @@ Standardmäßig wird das UserType-Attribut nicht in den Azure AD Connect-Bereich
  1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Connectors**.
  2. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Eigenschaften** aus.
  3. Navigieren Sie im Popupdialogfeld zur Registerkarte **Attribute auswählen**.
- 4. Stellen Sie sicher, dass das Attribut „PreferredDataLocation“ in der Attributliste aktiviert ist.
+ 4. Stellen Sie sicher, dass das UserType-Attribut in der Attributliste aktiviert ist.
  5. Klicken Sie zum Speichern auf **OK**.
 
 ![Hinzufügen des Quellattributs zum Azure AD-Connectorschema](./media/active-directory-aadconnectsync-change-the-configuration/usertype2.png)
@@ -293,7 +293,7 @@ Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung de
 ![Erstellen einer Synchronisierungsregel für eingehende Daten](./media/active-directory-aadconnectsync-change-the-configuration/usertype3.png)
 
 ### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>Schritt 5: Erstellen einer Synchronisierungsregel für ausgehende Daten zur Übertragung des Attributwerts an Azure AD
-Die Synchronisierungsregel für ausgehende Daten ermöglicht die Übertragung des Attributwerts aus der Metaverse auf das Attribut „PreferredDataLocation“ in Azure AD:
+Die Synchronisierungsregel für ausgehende Daten ermöglicht die Übertragung des Attributwerts aus der Metaverse auf das UserType-Attribut in Azure AD:
 
 1. Navigieren Sie zum Synchronisierungsregel-Editor.
 2. Legen Sie den Suchfilter **Richtung** auf **Ausgehend** fest.

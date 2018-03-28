@@ -1,45 +1,44 @@
 ---
-title: "Optimieren von Transaktionen für SQL Data Warehouse | Microsoft Docs"
-description: "Bewährte Methoden zum Schreiben von effizienten Transaktionsupdates in Azure SQL Data Warehouse"
+title: Optimieren von Transaktionen für SQL Data Warehouse | Microsoft-Dokumentation
+description: Bewährte Methoden zum Schreiben von effizienten Transaktionsupdates in Azure SQL Data Warehouse
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: 
-ms.assetid: 6f326f26-8a54-49df-a482-9c96a58db371
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: t-sql
-ms.date: 10/31/2016
+ms.date: 03/15/2018
 ms.author: jrj;barbkess
-ms.openlocfilehash: f9f19d75a37351b3562ce8c2f3629df14c5437c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 607c169e3d9e8aa741084392439da383f46cfe0c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="optimizing-transactions-for-sql-data-warehouse"></a>Optimieren von Transaktionen für SQL Data Warehouse
 Dieser Artikel erläutert, wie die Leistung des Transaktionscodes optimiert wird und gleichzeitig die Risiken für lange Rollbacks minimiert werden.
 
 ## <a name="transactions-and-logging"></a>Transaktionen und Protokollierung
-Transaktionen sind eine wichtige Komponente eines relationalen Datenbankmoduls. Bei SQL Data Warehouse werden Transaktionen während der Änderung von Daten verwendet. Diese Transaktionen können expliziter oder impliziter Art sein. Einzelne `INSERT`-, `UPDATE`- und `DELETE`-Anweisungen sind Beispiele für implizite Transaktionen. Explizite Transaktionen werden explizit von einem Entwickler mit `BEGIN TRAN`, `COMMIT TRAN` oder `ROLLBACK TRAN` geschrieben. Sie werden normalerweise verwendet, wenn mehrere Änderungsanweisungen zu einer einzelnen atomischen Einheit zusammengefasst werden müssen. 
+Transaktionen sind eine wichtige Komponente einer relationalen Datenbank-Engine. Bei SQL Data Warehouse werden Transaktionen während der Änderung von Daten verwendet. Diese Transaktionen können expliziter oder impliziter Art sein. Einzelne `INSERT`-, `UPDATE`- und `DELETE`-Anweisungen sind Beispiele für implizite Transaktionen. Explizite Transaktionen verwenden `BEGIN TRAN`, `COMMIT TRAN` oder `ROLLBACK TRAN`. Explizite Transaktionen werden normalerweise verwendet, wenn mehrere Änderungsanweisungen zu einer einzelnen atomischen Einheit zusammengefasst werden müssen. 
 
 Azure SQL Data Warehouse speichert Änderungen in Form von Transaktionsprotokollen in der Datenbank. Jede Verteilung verfügt über ein eigenes Transaktionsprotokoll. Schreibvorgänge für Transaktionsprotokolle werden automatisch durchgeführt. Es ist keine Konfiguration erforderlich. Mit diesem Prozess wird der Schreibvorgang zwar sichergestellt, aber er bedeutet auch Mehraufwand für das System. Sie können diese negative Auswirkung reduzieren, indem Sie Code schreiben, der in Bezug auf Transaktionen effektiv ist. Code dieser Art lässt sich grob in zwei Kategorien einteilen.
 
-* Nutzen von Konstrukten mit minimaler Protokollierung, wo dies möglich ist
+* Verwenden von Konstrukten mit minimaler Protokollierung, wann immer möglich
 * Verarbeiten von Daten mit bereichsbezogenen Batches, um einzelne Transaktionen mit langer Ausführungsdauer zu vermeiden
 * Nutzen eines Partitionswechselmusters für große Änderungen einer bestimmten Partition
 
 ## <a name="minimal-vs-full-logging"></a>Vergleich von minimaler und vollständiger Protokollierung
-Im Gegensatz zu vollständig protokollierten Vorgängen, bei denen das Transaktionsprotokoll zum Nachverfolgen aller Zeilenänderungen verwendet wird, werden bei Vorgängen mit minimaler Protokollierung nur Umfangszuordnungen und Metadatenänderungen nachverfolgt. Die minimale Protokollierung umfasst daher nur die Informationen, die erforderlich sind, um für die Transaktion im Falle eines Ausfalls oder einer expliziten Anforderung (`ROLLBACK TRAN`) ein Rollback durchzuführen. Da im Transaktionsprotokoll deutlich weniger Informationen nachverfolgt werden, weist ein Vorgang mit minimaler Protokollierung eine höhere Leistung als ein Vorgang mit ähnlicher Größe und vollständiger Protokollierung auf. Da außerdem weniger Schreibvorgänge für das Transaktionsprotokoll anfallen, wird eine viel kleinere Menge von Protokolldaten generiert, und die E/A-Effizienz steigt.
+Im Gegensatz zu vollständig protokollierten Vorgängen, bei denen das Transaktionsprotokoll zum Nachverfolgen aller Zeilenänderungen verwendet wird, werden bei Vorgängen mit minimaler Protokollierung nur Umfangszuordnungen und Metadatenänderungen nachverfolgt. Die minimale Protokollierung umfasst daher nur die Informationen, die erforderlich sind, um für die Transaktion nach einem Ausfall oder bei einer expliziten Anforderung (`ROLLBACK TRAN`) ein Rollback auszuführen. Da im Transaktionsprotokoll deutlich weniger Informationen nachverfolgt werden, weist ein Vorgang mit minimaler Protokollierung eine höhere Leistung als ein Vorgang mit ähnlicher Größe und vollständiger Protokollierung auf. Da außerdem weniger Schreibvorgänge für das Transaktionsprotokoll anfallen, wird eine viel kleinere Menge von Protokolldaten generiert, und die E/A-Effizienz steigt.
 
 Die Sicherheitslimits für Transaktionen gelten nur für Vorgänge mit vollständiger Protokollierung.
 
 > [!NOTE]
-> Vorgänge mit minimaler Protokollierung können Teil von expliziten Transaktionen sein. Da alle Änderungen in Zuordnungsstrukturen nachverfolgt werden, ist es möglich, für Vorgänge mit minimaler Protokollierung ein Rollback durchzuführen. Es ist wichtig zu verstehen, dass für die Änderung eine „minimale“ Protokollierung erfolgt. Dies bedeutet nicht, dass keine Protokollierung durchgeführt wird.
+> Vorgänge mit minimaler Protokollierung können Teil von expliziten Transaktionen sein. Da alle Änderungen in Zuordnungsstrukturen nachverfolgt werden, ist es möglich, für Vorgänge mit minimaler Protokollierung ein Rollback durchzuführen. 
 > 
 > 
 
@@ -67,7 +66,7 @@ Eine minimale Protokollierung ist für folgende Vorgänge möglich:
 > 
 
 ## <a name="minimal-logging-with-bulk-load"></a>Minimale Protokollierung mit Massenladen
-Sowohl `CTAS` als auch `INSERT...SELECT` sind Massenladevorgänge. Beide werden aber durch die Zieltabellendefinition beeinflusst und sind vom Ladeszenario abhängig. In der Tabelle ist angegeben, ob der Massenvorgang über eine vollständige oder minimale Protokollierung verfügt:  
+Sowohl `CTAS` als auch `INSERT...SELECT` sind Massenladevorgänge. Beide werden aber durch die Zieltabellendefinition beeinflusst und sind vom Ladeszenario abhängig. In der folgenden Tabelle wird erläutert, wann Massenvorgänge vollständig oder nur minimal protokolliert werden:  
 
 | Primärer Index | Ladeszenario | Protokollierungsmodus |
 | --- | --- | --- |
@@ -88,7 +87,7 @@ Beachten Sie, dass es sich bei allen Schreibvorgängen zum Aktualisieren von sek
 Das Laden von Daten in eine nicht leere Tabelle mit einem gruppierten Index kann häufig eine Mischung aus vollständig protokollierten und minimal protokollierten Zeilen umfassen. Bei einem gruppierten Index handelt es sich um eine ausbalancierte Struktur (B-Struktur) von Seiten. Falls die Seite, auf die geschrieben wird, bereits Zeilen aus einer anderen Transaktion enthält, werden diese Schreibvorgänge vollständig protokolliert. Aber wenn die Seite leer ist, wird für das Schreiben auf die Seite nur die minimale Protokollierung genutzt.
 
 ## <a name="optimizing-deletes"></a>Optimieren der Löschvorgänge
-`DELETE` ist ein Vorgang mit vollständiger Protokollierung.  Wenn Sie eine große Datenmenge in einer Tabelle oder Partition löschen müssen, ist es häufiger sinnvoller, stattdessen mit `SELECT` die Daten auszuwählen, die Sie behalten möchten. Dieser Vorgang kann mit minimaler Protokollierung ausgeführt werden.  Um dies zu erreichen, erstellen Sie mit [CTAS][CTAS] eine neue Tabelle.  Verwenden Sie nach der Erstellung [RENAME][RENAME], um die alte Tabelle gegen die neu erstellte Tabelle zu auszutauschen.
+`DELETE` ist ein Vorgang mit vollständiger Protokollierung.  Wenn Sie eine große Datenmenge in einer Tabelle oder Partition löschen müssen, ist es häufiger sinnvoller, stattdessen mit `SELECT` die Daten auszuwählen, die Sie behalten möchten. Dieser Vorgang kann mit minimaler Protokollierung ausgeführt werden.  Um die Daten auszuwählen, erstellen Sie mit [CTAS][CTAS] eine neue Tabelle.  Verwenden Sie nach der Erstellung [RENAME][RENAME], um die alte Tabelle gegen die neu erstellte Tabelle zu auszutauschen.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -180,12 +179,12 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Bei der Neuerstellung großer Tabellen kann die Nutzung von SQL Data Warehouse-Features zur Workloadverwaltung vorteilhaft sein. Weitere Details finden Sie im Artikel zur [Parallelität][concurrency] im Abschnitt zur Workloadverwaltung.
+> Bei der Neuerstellung großer Tabellen kann die Nutzung von SQL Data Warehouse-Features zur Workloadverwaltung vorteilhaft sein. Weitere Informationen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md).
 > 
 > 
 
 ## <a name="optimizing-with-partition-switching"></a>Optimieren mit Partitionswechsel
-Bei umfangreichen Änderungen innerhalb einer [Tabellenpartition][table partition] ist ein Muster für Partitionswechsel sehr sinnvoll. Wenn der Datenänderungsaufwand groß ist und mehrere Partitionen umfasst, lässt sich mit dem einfachen Durchlaufen der Partitionen das gleiche Ergebnis erzielen.
+Bei umfangreichen Änderungen innerhalb einer [Tabellenpartition][table partition] ist ein Muster für Partitionswechsel sinnvoll. Wenn der Datenänderungsaufwand groß ist und mehrere Partitionen umfasst, lässt sich mit dem Durchlaufen der Partitionen das gleiche Ergebnis erzielen.
 
 Schritte zum Durchführen eines Partitionswechsels:
 
@@ -195,7 +194,7 @@ Schritte zum Durchführen eines Partitionswechsels:
 4. Einfügen der neuen Daten
 5. Bereinigen der Daten
 
-Um die zu wechselnden Partitionen besser ermitteln zu können, erstellen wir zuerst ein Hilfsverfahren wie im Beispiel unten. 
+Um jedoch die zu wechselnden Partitionen zu identifizieren, erstellen Sie das folgende Hilfsprogramm.  
 
 ```sql
 CREATE PROCEDURE dbo.partition_data_get
@@ -243,7 +242,7 @@ GO
 
 Mit diesem Verfahren wird die Wiederverwendung von Code erhöht, und das Partitionswechselbeispiel ist übersichtlicher.
 
-Im Code unten sind die fünf oben erwähnten Schritte enthalten, mit denen eine vollständige Partitionswechselroutine erzielt werden kann.
+Im folgenden Code sind die oben erwähnten Schritte enthalten, mit denen eine vollständige Partitionswechselroutine erzielt werden kann.
 
 ```sql
 --Create a partitioned aligned empty table to switch out the data 
@@ -349,7 +348,7 @@ DROP TABLE #ptn_data
 ## <a name="minimize-logging-with-small-batches"></a>Minimieren der Protokollierung mit kleinen Batches
 Bei großen Datenänderungsvorgängen kann es sinnvoll sein, den Vorgang in Teile oder Batches aufzuteilen, um kleinere Einheiten zu erhalten.
 
-Unten ist ein funktionierendes Beispiel angegeben. Für die Batchgröße wurde ein Beispielwert gewählt, um die Vorgehensweise zu verdeutlichen. In Wirklichkeit wäre der Wert für die Batchgröße deutlich höher. 
+Der folgende Code ist ein funktionierendes Beispiel. Für die Batchgröße wurde ein Beispielwert gewählt, um die Vorgehensweise zu verdeutlichen. In Wirklichkeit wäre der Wert für die Batchgröße deutlich höher. 
 
 ```sql
 SET NO_COUNT ON;
@@ -408,17 +407,17 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Anleitung zum Anhalten und Skalieren
-Mit Azure SQL Data Warehouse können Sie den Vorgang anhalten und fortsetzen und das Data Warehouse bedarfsgesteuert skalieren. Wenn Sie SQL Data Warehouse anhalten oder skalieren, ist es wichtig zu verstehen, dass alle laufenden Transaktionen sofort beendet werden. Dies führt dazu, dass für alle geöffneten Transaktionen ein Rollback durchgeführt wird. Wenn für Ihre Workload vor dem Anhalte- oder Skaliervorgang eine längere und unvollständige Datenänderung ausgegeben wurde, müssen diese Schritte rückgängig gemacht werden. Dies kann sich auf den Zeitraum auswirken, der für das Anhalten oder Skalieren der Azure SQL Data Warehouse-Datenbank erforderlich ist. 
+Mit Azure SQL Data Warehouse können Sie das Data Warehouse bedarfsgesteuert [anhalten, fortsetzen und skalieren](sql-data-warehouse-manage-compute-overview.md). Wenn Sie SQL Data Warehouse anhalten oder skalieren, ist es wichtig zu verstehen, dass alle laufenden Transaktionen sofort beendet werden. Dies führt dazu, dass für alle geöffneten Transaktionen ein Rollback durchgeführt wird. Wenn für Ihre Workload vor dem Anhalte- oder Skaliervorgang eine längere und unvollständige Datenänderung ausgegeben wurde, müssen diese Schritte rückgängig gemacht werden. Dieses Rückgängigmachen kann sich auf den Zeitraum auswirken, der für das Anhalten oder Skalieren der Azure SQL Data Warehouse-Datenbank erforderlich ist. 
 
 > [!IMPORTANT]
 > Sowohl `UPDATE` als auch `DELETE` sind Vorgänge mit vollständiger Protokollierung. Diese Vorgänge zum Rückgängigmachen und Wiederholen können also deutlich länger dauern als vergleichbare Vorgänge mit minimaler Protokollierung. 
 > 
 > 
 
-Die beste Vorgehensweise ist, auf den Abschluss aktiver Datenänderungstransaktionen zu warten, bevor SQL Data Warehouse angehalten oder skaliert wird. Allerdings ist dies unter Umständen nicht immer praktikabel. Sie können folgende Optionen verwenden, um das Risiko eines langen Rollbackvorgangs zu verringern:
+Die beste Vorgehensweise ist, auf den Abschluss aktiver Datenänderungstransaktionen zu warten, bevor SQL Data Warehouse angehalten oder skaliert wird. Allerdings ist dieses Szenario unter Umständen nicht immer praktikabel. Sie können folgende Optionen verwenden, um das Risiko eines langen Rollbackvorgangs zu verringern:
 
-* Schreiben Sie Vorgänge mit langer Ausführungsdauer mithilfe von [CTAS][CTAS].
-* Teilen Sie den Vorgang in Teile auf, und arbeiten Sie mit einer Teilmenge der Zeilen.
+* Umschreiben von Vorgängen mit langer Ausführungsdauer mithilfe von [CTAS][CTAS]
+* Unterteilen des Vorgangs in Blöcke, ausgeführt für jeweils eine Teilmenge der Zeilen
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Isolationsstufen und Transaktionsgrenzen finden Sie unter [Transaktionen in SQL Data Warehouse][Transactions in SQL Data Warehouse].  Eine Übersicht über andere bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][SQL Data Warehouse Best Practices].
@@ -428,7 +427,6 @@ Weitere Informationen zu Isolationsstufen und Transaktionsgrenzen finden Sie unt
 <!--Article references-->
 [Transactions in SQL Data Warehouse]: ./sql-data-warehouse-develop-transactions.md
 [table partition]: ./sql-data-warehouse-tables-partition.md
-[Concurrency]: ./sql-data-warehouse-develop-concurrency.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
 [SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 

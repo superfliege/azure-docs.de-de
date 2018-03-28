@@ -14,7 +14,7 @@ Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Com
 
 
 ## <a name="ansible"></a>Ansible
-[Ansible](https://www.ansible.com/) ist ein Automatisierungsmodul für die Konfigurationsverwaltung, VM-Erstellung oder Anwendungsbereitstellung. Für die Authentifizierung und Verwaltung der Zielcomputer kommt bei Ansible ein Agent-loses Modell (üblicherweise mit SSH-Schlüsseln) zum Einsatz. Konfigurationsaufgaben werden in Runbooks definiert. Dabei steht eine Reihe von Ansible-Modulen zur Ausführung bestimmter Aufgaben zur Verfügung. Weitere Informationen finden Sie unter [How Ansible works](https://www.ansible.com/how-ansible-works) (Funktionsweise von Ansible).
+[Ansible](https://www.ansible.com/) ist ein Automatisierungsmodul für die Konfigurationsverwaltung, VM-Erstellung oder Anwendungsbereitstellung. Für die Authentifizierung und Verwaltung der Zielcomputer kommt bei Ansible ein Agent-loses Modell (üblicherweise mit SSH-Schlüsseln) zum Einsatz. Konfigurationsaufgaben werden in Playbooks definiert. Dabei steht eine Reihe von Ansible-Modulen zur Ausführung bestimmter Aufgaben zur Verfügung. Weitere Informationen finden Sie unter [How Ansible works](https://www.ansible.com/how-ansible-works) (Funktionsweise von Ansible).
 
 In diesem Artikel werden folgende Themen erläutert:
 
@@ -64,7 +64,7 @@ Erfahren Sie mehr über cloud-init in Azure:
 ## <a name="powershell-dsc"></a>PowerShell DSC
 [PowerShell DSC (Desired State Configuration)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) ist eine Verwaltungsplattform zum Definieren der Konfiguration von Zielcomputern. DSC kann über den [OMI-Server (Open Management Infrastructure)](https://collaboration.opengroup.org/omi/) auch unter Linux verwendet werden.
 
-DSC-Konfigurationen definieren, was auf einem Computer installiert und wie der Host konfiguriert werden soll. Ein LCM-Modul (Local Configuration Manager) wird auf jedem Zielknoten ausgeführt, der angeforderte Aktionen auf der Grundlage gepushter Konfigurationen verarbeitet. Ein Pull-Server ist ein Webdienst, der auf einem zentralen Host ausgeführt wird, um die DSC-Konfigurationen und die dazugehörigen Ressourcen zu speichern. Der Pull-Server kommuniziert mit dem LCM-Modul auf den einzelnen Zielhosts, um die erforderlichen Konfigurationen bereitzustellen und Complianceberichte zu erstellen.
+DSC-Konfigurationen definieren, was auf einem Computer installiert und wie der Host konfiguriert werden soll. Eine LCM-Engine (Local Configuration Manager) wird auf jedem Zielknoten ausgeführt, der angeforderte Aktionen auf der Grundlage gepushter Konfigurationen verarbeitet. Ein Pull-Server ist ein Webdienst, der auf einem zentralen Host ausgeführt wird, um die DSC-Konfigurationen und die dazugehörigen Ressourcen zu speichern. Der Pull-Server kommuniziert mit der LCM-Engine auf den einzelnen Zielhosts, um die erforderlichen Konfigurationen bereitzustellen und Complianceberichte zu erstellen.
 
 In diesem Artikel werden folgende Themen erläutert:
 

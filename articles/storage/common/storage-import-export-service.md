@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: 7eaf4c3c9b390e87dd8494cd6bfb2ea155451608
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d096d6fd4664fecc9c759d683ed79e76cda9b6af
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Azure Store
 Dieser Artikel enthält schrittweise Anweisungen, wie Sie mit dem Import/Export-Dienst von Azure große Datenmengen auf sichere Weise in Azure Blob Storage und Azure Files übertragen können, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Storage auf Festplattenlaufwerke und zum Versand an Ihre lokalen Standorte nutzen. Daten von einer einzelnen internen SATA-Festplatte können entweder in Azure Blob Storage oder in Azure Files importiert werden. 
@@ -29,15 +29,15 @@ Führen Sie die unten beschriebenen Schritte aus, wenn die Daten auf dem Datentr
 2.  Beschaffen Sie in Abhängigkeit von der Gesamtgröße der Daten die erforderliche Anzahl von 2,5-Zoll-SSD-Laufwerken oder 2,5-Zoll- bzw. 3,5-Zoll-SATA II- oder -III-Festplatten.
 3.  Fügen Sie die Festplatten direkt mithilfe von SATA oder über externe USB-Adapter an einen Windows-Computer an.
 1.  Erstellen Sie ein einzelnes NTFS-Volume auf jeder Festplatte, und weisen Sie dem Volume einen Laufwerkbuchstaben zu. Keine Bereitstellungspunkte.
-2.  Wenn Sie auf dem Windows-Computer eine Verschlüsselung aktivieren möchten, aktivieren Sie die BitLocker-Verschlüsselung auf dem NTFS-Volume. Befolgen Sie die Anweisungen unter https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx.
+2.  Wenn Sie auf dem Windows-Computer eine Verschlüsselung aktivieren möchten, aktivieren Sie die BitLocker-Verschlüsselung auf dem NTFS-Volume. Verwenden Sie die Anweisungen auf https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx.
 3.  Kopieren Sie die Daten mithilfe von „Kopieren und Einfügen“ oder „Drag & Drop“ oder Robocopy bzw. einem ähnlichen Tool vollständig auf diese verschlüsselten einzelnen NTFS-Volumes auf Datenträgern.
-7.  Laden Sie WAImportExport V1 von „https://www.microsoft.com/en-us/download/details.aspx?id=42659“ herunter.
+7.  Herunterladen von WAImportExport V1 aus https://www.microsoft.com/en-us/download/details.aspx?id=42659
 8.  Entzippen Sie die Dateien in den Standardordner „waimportexportv1“. Beispiel: C:\WaImportExportV1  
 9.  Öffnen Sie PowerShell oder eine Befehlszeile als Administrator, und wechseln Sie in den entzippten Ordner. Beispiel: cd C:\WaImportExportV1
 10. Kopieren Sie die folgende Befehlszeile in einen Editor, und bearbeiten Sie sie, um eine Befehlszeile zu erstellen:
 
     ```
-    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ 
+    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ /skipwrite 
     ```
     
     Diese Befehlszeilenoptionen sind in der folgenden Tabelle beschrieben:
@@ -47,16 +47,16 @@ Führen Sie die unten beschriebenen Schritte aus, wenn die Daten auf dem Datentr
     |/j:     |Der Name der Journaldatei mit der Erweiterung „.jrn“. Eine Journaldatei wird pro Laufwerk generiert. Es wird empfohlen, die Seriennummer des Datenträgers als Journaldateinamen zu verwenden.         |
     |/sk:     |Der Azure Storage-Kontoschlüssel         |
     |/t:     |Der Laufwerksbuchstabe des auszuliefernden Datenträgers. Beispiel: Laufwerk `D`         |
-    |/bk:     |Der BitLocker-Schlüssel für das Laufwerk         |
+    |/bk:     |Der BitLocker-Schlüssel für das Laufwerk Sein numerisches Kennwort aus der Ausgabe von ` manage-bde -protectors -get D: `      |
     |/srcdir:     |Der Laufwerksbuchstabe des auszuliefernden Datenträgers gefolgt von `:\`. Beispiel: `D:\`.         |
     |/dstdir:     |Der Name des Zielcontainers in Azure Storage         |
-
+    |/skipwrite:     |Die Option, die angibt, dass keine neuen Daten kopiert werden müssen und vorhandene Daten auf dem Datenträger vorbereitet werden sollen.         |
 1. Wiederholen Sie Schritt 10 für jeden auszuliefernden Datenträger.
 2. Für jede Ausführung der Befehlszeile wird eine Journaldatei mit Namen mit bereitgestelltem Parameter /j: erstellt.
 
 ### <a name="step-2-create-an-import-job-on-azure-portal"></a>Schritt 2: Erstellen Sie einen Importauftrag im Azure-Portal.
 
-1. Melden Sie sich bei „https://portal.azure.com/“ an, und klicken Sie unter „Weitere Dienste“ -> SPEICHER -> „Import-/Exportaufträge“ auf **Import-/Exportauftrag erstellen**.
+1. Melden Sie sich bei https://portal.azure.com/ an, und klicken Sie unter „Weitere Dienste“ -> SPEICHER -> „Import-/Exportaufträge“ auf **Import-/Exportauftrag erstellen**.
 
 2. Wählen Sie im Abschnitt „Grundlegende Einstellungen“ die Option „Import in Azure“, geben Sie eine Zeichenfolge für den Auftragsnamen ein, und wählen Sie ein Abonnement aus. Geben Sie dann eine Ressourcengruppe ein, oder wählen Sie sie aus. Geben Sie einen aussagekräftigen Namen für den Importauftrag ein. Beachten Sie, dass der eingegebene Name nur Kleinbuchstaben, Ziffern, Trennstriche und Unterstriche enthalten darf, mit einem Buchstaben beginnen muss und keine Leerzeichen enthalten darf. Mithilfe des ausgewählten Namens können Sie Ihre Aufträge während und nach der Bearbeitung nachverfolgen.
 

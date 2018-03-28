@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/12/2018
 ms.author: billmath
-ms.openlocfilehash: ac085bf972885819f7c79996b0f6638fc01fc00d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3e533b8b23c095a3de845d9b26a96aea9d8ee086
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory-Passthrough-Authentifizierung: aktuelle Einschränkungen
 
@@ -40,13 +40,14 @@ Folgende Szenarios werden vollständig unterstützt:
 
 Folgende Szenarios werden _nicht_ unterstützt:
 
-- Benutzeranmeldungen bei älteren Office-Clientanwendungen außer Outlook: Office 2010 und Office 2013 _ohne_ moderne Authentifizierung. Organisationen wird empfohlen, möglichst zur modernen Authentifizierung zu wechseln. Die moderne Authentifizierung ermöglicht die Unterstützung der Passthrough-Authentifizierung. Sie trägt zudem mit Features für [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) wie etwa Multi-Factor Authentication (MFA) auch zum Schutz Ihrer Benutzerkonten bei.
+- Benutzeranmeldungen bei älteren Office-Clientanwendungen außer Outlook (siehe oben **Unterstützte Szenarien**): Office 2010 und Office 2013 _ohne_ moderne Authentifizierung Organisationen wird empfohlen, möglichst zur modernen Authentifizierung zu wechseln. Die moderne Authentifizierung ermöglicht die Unterstützung der Passthrough-Authentifizierung. Sie trägt zudem mit Features für [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) wie etwa Multi-Factor Authentication (MFA) auch zum Schutz Ihrer Benutzerkonten bei.
+- Zugriff auf Kalenderfreigabe und Frei-/Gebucht-Informationen in Exchange-Hybridumgebungen nur in Office 2010.
 - Benutzeranmeldungen bei Skype for Business-Clientanwendungen _ohne_ moderne Authentifizierung.
 - Benutzeranmeldungen bei PowerShell Version 1.0. Es empfiehlt sich, PowerShell 2.0 zu verwenden.
 - Erkennen von Benutzern mit [kompromittierten Anmeldeinformationen](../active-directory-reporting-risk-events.md#leaked-credentials).
 - Für Azure AD Domain Services muss Kennworthashsynchronisierung auf dem Mandanten aktiviert sein. Aus diesem Grund funktionieren Mandanten, die Pass-Through-Authentifizierung verwenden, _nur_ in Szenarien nicht, die Azure AD Domain Services benötigen.
 - Pass-Through Authentifizierung ist nicht in [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) integriert.
-- Das Apple Device Enrollment Program (Apple DEP) unterstützt keine moderne Authentifizierung.  Bei Apple DEP-Geräten tritt bei der Registrierung bei Intune für Domänen, die Pass-Through-Authentifizierung verwenden, ein Fehler auf.
+- Das Apple Device Enrollment Program (Apple DEP) mit dem iOS-Setup-Assistenten unterstützt keine moderne Authentifizierung. Bei Apple DEP-Geräten tritt bei der Registrierung bei Intune für verwaltete Domänen, die Pass-Through-Authentifizierung verwenden, ein Fehler auf. Sie können auch die [Unternehmensportal-App](https://blogs.technet.microsoft.com/intunesupport/2018/02/08/support-for-multi-token-dep-and-authentication-with-company-portal/) als Alternative verwenden.
 
 >[!IMPORTANT]
 >Zur _ausschließlichen_ Umgehung nicht unterstützter Szenarien können Sie im Azure AD Connect-Assistenten auf der Seite [Optionale Features](active-directory-aadconnect-get-started-custom.md#optional-features) die Kennworthashsynchronisierung aktivieren.

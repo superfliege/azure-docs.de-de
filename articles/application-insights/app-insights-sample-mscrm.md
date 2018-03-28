@@ -1,8 +1,8 @@
 ---
 title: Microsoft Dynamics CRM und Azure Application Insights | Microsoft-Dokumentation
-description: "Abrufen von Telemetriedaten aus Microsoft Dynamics CRM Online mithilfe von Application Insights Exemplarische Vorgehensweise für das Einrichten, Abrufen von Daten, Visualisieren und Exportieren."
+description: Abrufen von Telemetriedaten aus Microsoft Dynamics CRM Online mithilfe von Application Insights Exemplarische Vorgehensweise für das Einrichten, Abrufen von Daten, Visualisieren und Exportieren.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mazharmicrosoft
 manager: carmonm
 ms.assetid: 04c66338-687e-49e5-9975-be935f98f156
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2017
+ms.date: 03/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 759dac681592d0e5951e09638533b93c6348d899
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c5a651a24fcf5d1fc64922483045c08321a3b89c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Exemplarische Vorgehensweise: Aktivieren von Telemetriedaten für Microsoft Dynamics CRM Online mithilfe von Application Insights
 Dieser Artikel beschreibt, wie Sie Telemetriedaten aus [Microsoft Dynamics CRM Online](https://www.dynamics.com/) mit [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) abrufen können. Der vollständige Vorgang des Hinzufügens eines Application Insights-Skripts zu Ihrer Anwendung, das Erfassen von Daten und die Visualisierung von Daten werden erläutert.
@@ -33,12 +33,12 @@ Zum Überwachen Ihrer Anwendung fügen Sie Ihrer Anwendung ein Application Insig
 ### <a name="create-an-application-insights-resource-in-azure"></a>Erstellen einer Application Insights-Ressource in Azure
 1. Fordern Sie [ein Konto in Microsoft Azure](http://azure.com/pricing)an. 
 2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und fügen Sie eine neue Application Insights-Ressource hinzu. Hier werden die Daten verarbeitet und angezeigt.
-   
+
     ![Klicken Sie auf "+", "Entwicklerdienste", "Application Insights".](./media/app-insights-sample-mscrm/01.png)
-   
+
     Wählen Sie als Anwendungstyp "ASP.NET" aus.
 3. Öffnen Sie die Seite „Erste Schritte“ und dann „Überwachung und Diagnose der clientseitigen Anwendung“.
-   
+
     ![Codeausschnitt zum Einfügen in Ihre Webseite](./media/app-insights-sample-mscrm/03.png)
 
 **Lassen Sie die Codeseite geöffnet** , während Sie den nächsten Schritt in einem anderen Browserfenster ausführen. Sie benötigen den Code bald. 
@@ -46,41 +46,38 @@ Zum Überwachen Ihrer Anwendung fügen Sie Ihrer Anwendung ein Application Insig
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Erstellen einer JavaScript-Webressource in Microsoft Dynamics CRM
 1. Öffnen Sie Ihre CRM Online-Instanz, und melden Sie sich mit Administratorrechten an.
 2. Öffnen Sie „Microsoft Dynamics CRM Settings“, „Anpassungen“, „System anpassen“.
-   
-    ![Microsoft Dynamics CRM Settings](./media/app-insights-sample-mscrm/04.png)
-   
-    ![Einstellungen > Anpassungen](./media/app-insights-sample-mscrm/05.png)
 
-    ![Option „System anpassen“](./media/app-insights-sample-mscrm/06.png)
+    ![Microsoft Dynamics CRM Settings](./media/app-insights-sample-mscrm/00001.png)
+
+    ![Einstellungen > Anpassungen](./media/app-insights-sample-mscrm/00002.png)
 
 1. Erstellen Sie eine JavaScript-Ressource.
-   
+
     ![Dialogfeld für neue Webressource](./media/app-insights-sample-mscrm/07.png)
-   
+
     Geben Sie ihr einen Namen, wählen Sie **Skript (JScript)** , und öffnen Sie den Text-Editor.
-   
-    ![Text-Editor öffnen](./media/app-insights-sample-mscrm/08.png)
-2. Kopieren Sie den Code aus Application Insights. Achten Sie beim Kopieren darauf, Skript-Tags zu ignorieren. Siehe Screenshot unten:
-   
-    ![Instrumentationsschlüssel festlegen](./media/app-insights-sample-mscrm/09.png)
-   
+
+    ![Text-Editor öffnen](./media/app-insights-sample-mscrm/00004.png)
+2. Kopieren Sie den Code aus Application Insights. Achten Sie beim Kopieren darauf, Skripttags zu ignorieren. Siehe Screenshot unten:
+
+    ![Instrumentationsschlüssel festlegen](./media/app-insights-sample-mscrm/00005.png)
+
     Der Code enthält den Instrumentationsschlüssel, der Ihre Application Insights-Ressource identifiziert.
 3. Speichern und veröffentlichen Sie die Ressource.
-   
-    ![Speichern und veröffentlichen](./media/app-insights-sample-mscrm/10.png)
+
+    ![Speichern und veröffentlichen](./media/app-insights-sample-mscrm/00006.png)
 
 ### <a name="instrument-forms"></a>Instrumentieren von Formularen
 1. Öffnen Sie in Microsoft CRM Online das Formular "Firma".
-   
-    ![Konto-Formular](./media/app-insights-sample-mscrm/11.png)
+
+    ![Konto-Formular](./media/app-insights-sample-mscrm/00007.png)
 2. Öffnen Sie "Formulareigenschaften".
-   
-    ![Formulareigenschaften](./media/app-insights-sample-mscrm/12.png)
+
+    ![Formulareigenschaften](./media/app-insights-sample-mscrm/00008.png)
 3. Fügen Sie die JavaScript-Webressource hinzu, die Sie erstellt haben.
-   
+
     ![Menü „Hinzufügen“](./media/app-insights-sample-mscrm/13.png)
-   
-    ![Die Webressource hinzufügen](./media/app-insights-sample-mscrm/14.png)
+
 4. Speichern und veröffentlichen Sie die Formularanpassungen.
 
 ## <a name="metrics-captured"></a>Erfasste Metriken

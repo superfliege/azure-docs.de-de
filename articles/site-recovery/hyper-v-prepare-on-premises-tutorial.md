@@ -1,18 +1,18 @@
 ---
-title: "Vorbereiten lokaler Hyper-V-Server für die Notfallwiederherstellung von Hyper-V-VMs in Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie lokale Hyper-V-VMs, die nicht von System Center VMM verwaltet werden, für die Notfallwiederherstellung mit dem Azure Site Recovery-Dienst vorbereiten."
+title: Vorbereiten lokaler Hyper-V-Server für die Notfallwiederherstellung von Hyper-V-VMs in Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie lokale Hyper-V-VMs, die nicht von System Center VMM verwaltet werden, für die Notfallwiederherstellung mit dem Azure Site Recovery-Dienst vorbereiten.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9524ffde4a588d3ac029bc8a3df91726082e157d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 1290a186ca8e83b09f53b286e80c5ce75f08d88c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler Hyper-V-Server für die Notfallwiederherstellung in Azure
 
@@ -28,25 +28,16 @@ Dies ist das zweite Tutorial in der Reihe. Stellen Sie sicher, dass Sie die [Azu
 
 
 
-## <a name="review-server-requirements"></a>Überprüfen der Serveranforderungen
+## <a name="review-requirements-and-prerequisites"></a>Überprüfen von Anforderungen und Voraussetzungen
 
-Vergewissern Sie sich, dass die Hyper-V-Hosts die folgenden Anforderungen erfüllen. Wenn Sie Hosts in System Center Virtual Machine Manager-Clouds (VMM) verwalten, überprüfen Sie die VMM-Anforderungen.
+Stellen Sie sicher, dass Hyper-V-Hosts und VMs die Anforderungen erfüllen.
 
+1. [Überprüfen](hyper-v-azure-support-matrix.md#on-premises-servers) Sie lokale Serveranforderungen.
+2. [Überprüfen Sie die Anforderungen](hyper-v-azure-support-matrix.md#replicated-vms) für Hyper-V-VMs, die Sie in Azure replizieren möchten.
+3. Überprüfen Sie die Hyper-V-[Hostnetzwerke](hyper-v-azure-support-matrix.md#hyper-v-network-configuration) sowie die [Speicherunterstützung](hyper-v-azure-support-matrix.md#hyper-v-host-storage) durch Host- und Gastcomputer für lokale Hyper-V-Hosts.
+4. Überprüfen Sie, was nach einem Failover für [Azure-Netzwerke](hyper-v-azure-support-matrix.md#azure-vm-network-configuration-after-failover), [Speicher](hyper-v-azure-support-matrix.md#azure-storage) und [Computer](hyper-v-azure-support-matrix.md#azure-compute-features) unterstützt wird.
+5. Ihre lokalen VMs, die Sie in Azure replizieren, müssen die [Azure-VM-Anforderungen](hyper-v-azure-support-matrix.md#azure-vm-requirements) einhalten.
 
-**Komponente** | **Mit VMM verwaltetes Hyper-V** | **Hyper-V ohne VMM**
---- | --- | ---
-**Hyper-V-Hostbetriebssystem** | Windows Server 2016, 2012 R2 | Nicht verfügbar
-**VMM** | VMM 2012, VMM 2012 R2 | Nicht verfügbar
-
-
-## <a name="review-hyper-v-vm-requirements"></a>Überprüfen der Hyper-V-VM-Anforderungen
-
-Vergewissern Sie sich, dass der virtuelle Computer die in der Tabelle zusammengefassten Anforderungen erfüllt.
-
-**VM-Anforderung** | **Details**
---- | ---
-**Gastbetriebssystem** | Alle [von Azure unterstützten](https://technet.microsoft.com/library/cc794868.aspx) Gastbetriebssysteme.
-**Anforderungen für Azure** | Lokale Hyper-V-VMs müssen die Azure-VM-Anforderungen erfüllen (site-recovery-support-matrix-to-azure.md).
 
 ## <a name="prepare-vmm-optional"></a>Vorbereiten von VMM (optional)
 
@@ -82,13 +73,14 @@ Bereiten Sie VMM wie folgt für die Netzwerkzuordnung vor:
 
 In einem Failoverszenario sollten Sie eine Verbindung mit Ihrem replizierten lokalen Netzwerk herstellen können.
 
-Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Windows-VMs nach dem Failover per RDP herstellen möchten:
+Lassen Sie den Zugriff wie folgt zu, um die Verbindung mit Windows-VMs nach dem Failover per RDP herzustellen:
 
 1. Aktivieren Sie vor dem Failover RDP auf dem lokalen virtuellen Computer, um über das Internet darauf zuzugreifen. Stellen Sie sicher, dass TCP- und UDP-Regeln für das Profil **Öffentlich** hinzugefügt werden und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.
 2. Für den Zugriff über ein Site-to-Site-VPN aktivieren Sie RDP auf dem lokalen Computer. RDP sollte unter **Windows-Firewall** -> **Zugelassene Apps und Feature** für **private und Domänennetzwerke** zugelassen werden.
    Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135) Auf dem virtuellen Computer sollten keine ausstehenden Windows-Updates vorhanden sein, wenn Sie ein Failover auslösen. Andernfalls können Sie sich nach Abschluss des Updates nicht mehr auf dem virtuellen Computer anmelden.
 3. Aktivieren Sie nach dem Failover auf der Windows-Azure-VM die **Startdiagnose**, um einen Screenshot des virtuellen Computers anzuzeigen. Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob der virtuelle Computer ausgeführt wird, und sehen sich dann diese [Tipps zur Problembehandlung](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.
 
+Nach dem Failover können Sie mit derselben IP-Adresse wie die lokale replizierte VM oder einer anderen IP-Adresse zugreifen. [Erfahren Sie mehr](concepts-on-premises-to-azure-networking.md) zum Einrichten der IP-Adressierung für das Failover.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

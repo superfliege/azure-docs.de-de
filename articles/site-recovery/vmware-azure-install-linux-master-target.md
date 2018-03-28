@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: nisoneji
-ms.openlocfilehash: b7292514e72476f38e9a0572b201be8468f0030a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4d54ecb3f92754fa6575ec17ec5572b6fb9abb88
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>Installieren eines Linux-Masterzielservers
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -41,7 +41,7 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 
 Erstellen Sie das Masterziel gemäß den folgenden Richtlinien zum Festlegen der Größe:
 - **RAM:** 6 GB oder mehr
-- **Größe des Betriebssystemdatenträgers:** 100 GB oder mehr (für die CentOS6.6-Installation)
+- **Größe des Betriebssystemdatenträgers:** 100 GB oder mehr (für die Betriebssysteminstallation)
 - **Zusätzliche Datenträgergröße für Aufbewahrungslaufwerk:** 1 TB
 - **CPU-Kerne:** mindestens 4 Kerne
 
@@ -112,24 +112,31 @@ Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit 
 
 1.  Wählen Sie **Yes**, um die Änderungen auf den Datenträger zu schreiben, und drücken Sie die **EINGABETASTE**.
 
-1.  Wählen Sie in der Auswahl für die Proxykonfiguration die Standardoption, und wählen Sie dann **Continue**, und drücken Sie die **EINGABETASTE**.
+    ![Standardoption auswählen](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-     ![Standardoption auswählen](./media/vmware-azure-install-linux-master-target/image17.png)
+1.  Wählen Sie in der Auswahl für die Proxykonfiguration die Standardoption, und wählen Sie dann **Continue**, und drücken Sie die **EINGABETASTE**.
+     
+     ![Option zum Verwalten von Upgrades auswählen](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
 1.  Wählen Sie in der Auswahl zur Verwaltung von Upgrades auf Ihrem System die Option **No automatic updates**, und drücken Sie die **EINGABETASTE**.
 
-     ![Option zum Verwalten von Upgrades auswählen](./media/vmware-azure-install-linux-master-target/image18.png)
+     ![Option zum Verwalten von Upgrades auswählen](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
 
     > [!WARNING]
     > Da der Azure Site Recovery-Masterzielserver eine ganz bestimmte Version von Ubuntu erfordert, müssen Sie sicherstellen, dass die Kernelupgrades für den virtuellen Computer deaktiviert sind. Wenn sie aktiviert sind, verursacht jedes reguläre Upgrade Fehlfunktionen auf dem Masterzielserver. Stellen Sie sicher, dass die Option **Keine automatischen Updates** ausgewählt ist.
 
 1.  Wählen Sie die Standardoptionen aus. Wenn Sie OpenSSH für eine SSH-Verbindung verwenden möchten, wählen Sie die Option **OpenSSH Server** aus, und wählen Sie dann **Weiter** aus.
 
-    ![Software auswählen](./media/vmware-azure-install-linux-master-target/image19.png)
+    ![Software auswählen](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
 1. Wählen Sie in der Auswahl für die Installation des GRUB-Startladeprogramms die Option **Yes**, und drücken Sie anschließend die **EINGABETASTE**.
+     
+    ![GRUB-Startinstallationsprogramm](./media/vmware-azure-install-linux-master-target/image20.png)
+
 
 1. Wählen Sie das entsprechende Gerät für die Installation des Startladeprogramms (vorzugsweise **/dev/sda**) aus, und drücken Sie dann die **EINGABETASTE**.
+     
+    ![Auswählen des entsprechenden Geräts](./media/vmware-azure-install-linux-master-target/image21.png)
 
 1. Wählen Sie **Continue**, und drücken Sie die **EINGABETASTE**, um die Installation abzuschließen.
 
@@ -154,7 +161,7 @@ Der Parameter **disk.EnableUUID = TRUE** muss aktiviert werden, um die ID für j
 
 4. Wählen Sie im linken Bereich **Advanced** (Erweitert)  > **General** (Allgemein) aus, und klicken Sie rechts unten in der Anzeige auf die Schaltfläche **Configuration Parameters** (Konfigurationsparameter).
 
-    ![Registerkarte „Options“ (Optionen)](./media/vmware-azure-install-linux-master-target/image20.png)
+    ![Offener Konfigurationsparameter](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
     Die Option **Configuration Parameters** (Konfigurationsparameter) ist nicht verfügbar, wenn der Computer ausgeführt wird. Um diese Registerkarte zu aktivieren, fahren Sie den virtuellen Computer herunter.
 
@@ -168,7 +175,7 @@ Der Parameter **disk.EnableUUID = TRUE** muss aktiviert werden, um die ID für j
 
     - Fügen Sie in der Spalte „Name“ **disk.EnableUUID** hinzu, und legen Sie den Wert auf **TRUE** fest.
 
-    ![Überprüfen, ob disk.EnableUUID bereits vorhanden ist](./media/vmware-azure-install-linux-master-target/image21.png)
+    ![Überprüfen, ob disk.EnableUUID bereits vorhanden ist](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>Deaktivieren des Kernelupgrades
 
@@ -244,7 +251,7 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
     
     `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
     
-    ![Erstellen eines Dateisystems auf dem Laufwerk](./media/vmware-azure-install-linux-master-target/media/image23.png)
+    ![Erstellen eines Dateisystems auf dem Laufwerk](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
 4. Nach dem Erstellen des Dateisystems stellen Sie den Aufbewahrungsdatenträger bereit.
 
@@ -252,7 +259,6 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
     ```
-    ![Bereitstellen des Aufbewahrungsdatenträgers](./media/vmware-azure-install-linux-master-target/image24.png)
 
 5. Erstellen Sie den **fstab**-Eintrag, um den Aufbewahrungsdatenträger bei jedem Systemstart bereitzustellen.
     

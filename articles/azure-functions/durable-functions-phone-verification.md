@@ -1,12 +1,12 @@
 ---
 title: 'Benutzerinteraktion und Zeitlimits in Durable Functions: Azure'
-description: "In diesem Artikel wird erläutert, wie Sie die Benutzerinteraktion und Zeitlimits in der Erweiterung „Durable Functions“ für Azure Functions behandeln."
+description: In diesem Artikel wird erläutert, wie Sie die Benutzerinteraktion und Zeitlimits in der Erweiterung „Durable Functions“ für Azure Functions behandeln.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1763c63b37c5e6b326c3623dc058974f718ac990
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: e0b919ae5ef0639c8afdc5f9b006d899c8dbc4c1
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Benutzerinteraktion in Durable Functions: Beispiel zur Telefonüberprüfung
 
@@ -35,21 +35,13 @@ In diesem Beispiel wird ein SMS-basiertes Telefonüberprüfungssystem implementi
 
 Bei der Telefonüberprüfung wird überprüft, ob Benutzer Ihrer Anwendung Spammer sind und ob die Angaben zu dieser Person korrekt sind. Die mehrstufige Authentifizierung wird häufig angewendet, um Benutzerkonten vor Hackern zu schützen. Die Herausforderung bei der Implementierung Ihrer eigenen Telefonüberprüfung besteht darin, dass eine **zustandsbehaftete Interaktion** mit einer Person erforderlich ist. In der Regel wird Code für einen Benutzer bereitgestellt (z.B. eine vierstellige Zahl). Dieser muss **in einem angemessenen Zeitraum** darauf reagieren.
 
-Normale Azure-Funktionen sind zustandslos (wie viele andere Cloud-Endpunkte auf anderen Plattformen). Folglich umfassen diese Interaktionsarten explizit eine externe Verwaltung der Zustände in einer Datenbank oder einem anderen persistenten Speicher. Zusätzlich muss die Interaktion in mehrere Funktionen unterteilt werden, die zusammen koordiniert werden können. Sie benötigen beispielsweise mindestens eine Funktion, um sich für einen Code zu entscheiden, diesen an einer bestimmten Position persistent zu speichern und an das Telefon des Benutzers zu senden. Darüber hinaus ist mindestens eine weitere Funktion erforderlich, damit Sie eine Antwort vom Benutzer empfangen und diese wieder dem ursprünglichen Funktionsaufruf zuordnen können, um anschließend die Codevalidierung durchführen zu können. Ein Zeitlimit ist ein weiterer wichtiger Aspekt zur Gewährleistung der Sicherheit. Dies kann ziemlich schnell recht komplex werden.
+Normale Azure-Funktionen sind zustandslos (wie viele andere Cloudendpunkte auf anderen Plattformen). Folglich umfassen diese Interaktionsarten explizit eine externe Verwaltung der Zustände in einer Datenbank oder einem anderen persistenten Speicher. Zusätzlich muss die Interaktion in mehrere Funktionen unterteilt werden, die zusammen koordiniert werden können. Sie benötigen beispielsweise mindestens eine Funktion, um sich für einen Code zu entscheiden, diesen an einer bestimmten Position persistent zu speichern und an das Telefon des Benutzers zu senden. Darüber hinaus ist mindestens eine weitere Funktion erforderlich, damit Sie eine Antwort vom Benutzer empfangen und diese wieder dem ursprünglichen Funktionsaufruf zuordnen können, um anschließend die Codevalidierung durchführen zu können. Ein Zeitlimit ist ein weiterer wichtiger Aspekt zur Gewährleistung der Sicherheit. Dies kann ziemlich schnell komplex werden.
 
-Mit Durable Functions wird die Komplexität dieses Szenarios erheblich reduziert. Wie Sie in diesem Beispiel sehen, kann eine Orchestratorfunktion die zustandsbehaftete Interaktion sehr einfach und ohne die Einbeziehung von externen Datenspeichern verwalten. Da Orchestratorfunktionen *dauerhaft* sind, sind diese interaktiven Flüsse auch sehr zuverlässig.
+Mit Durable Functions wird die Komplexität dieses Szenarios erheblich reduziert. Wie Sie in diesem Beispiel sehen, kann eine Orchestratorfunktion die zustandsbehaftete Interaktion einfach und ohne die Einbeziehung von externen Datenspeichern verwalten. Da Orchestratorfunktionen *dauerhaft* sind, sind diese interaktiven Flüsse auch sehr zuverlässig.
 
 ## <a name="configuring-twilio-integration"></a>Konfigurieren der Twilio-Integration
 
-Dieses Beispiel beinhaltet die Verwendung des [Twilio](https://www.twilio.com/)-Diensts zum Senden von SMS-Nachrichten an ein Mobiltelefon. Azure Functions bietet über die [Twilio-Bindung](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio) bereits Unterstützung für Twilio an. Dieses Feature wird in dem Beispiel verwendet.
-
-Zunächst benötigen Sie ein Twilio-Konto. Sie können unter folgender Adresse ein kostenloses Konto erstellen: https://www.twilio.com/try-twilio. Fügen Sie nach der Einrichtung Ihres Kontos die folgenden drei **App-Einstellungen** zu Ihrer Funktions-App hinzu.
-
-| Name der App-Einstellung | Wertbeschreibung |
-| - | - |
-| **TwilioAccountSid**  | Die SID für Ihr Twilio-Konto |
-| **TwilioAuthToken**   | Das Authentifizierungstoken für Ihr Twilio-Konto |
-| **TwilioPhoneNumber** | Die Ihrem Twilio-Konto zugeordnete Telefonnummer. Diese wird für das Senden von SMS-Nachrichten verwendet. |
+[!INCLUDE [functions-twilio-integration](../../includes/functions-twilio-integration.md)]
 
 ## <a name="the-functions"></a>Die Funktionen
 
@@ -99,7 +91,7 @@ Die Funktion **E4_SendSmsChallenge** wird nur einmal aufgerufen, selbst dann, we
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 
-Wenn Sie die über HTTP ausgelösten Funktionen verwenden, die im Beispiel enthalten sind, können Sie mit der Orchestrierung beginnen, indem Sie folgende HTTP POST-Anforderung senden.
+Wenn Sie die über HTTP ausgelösten Funktionen verwenden, die im Beispiel enthalten sind, können Sie mit der Orchestrierung beginnen, indem Sie folgende HTTP POST-Anforderung senden:
 
 ```
 POST http://{host}/orchestrators/E4_SmsPhoneVerification

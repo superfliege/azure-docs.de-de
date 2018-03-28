@@ -1,24 +1,18 @@
 ---
-title: Integration der Quellcodeverwaltung in Azure Automation | Microsoft Docs
-description: "In diesem Artikel wird die Integration der Quellcodeverwaltung mit GitHub in Azure Automation erläutert."
+title: Integration der Quellcodeverwaltung in Azure Automation
+description: In diesem Artikel wird die Integration der Quellcodeverwaltung mit GitHub in Azure Automation erläutert.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 224d7375-9887-44dd-b137-06ffe396a4b4
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/29/2017
-ms.author: magoedte;sngun
-ms.openlocfilehash: 15e69105d4171c63b4ccef0b072bccf49a2e9ceb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+manager: carmonm
+ms.openlocfilehash: 96b4f38ea990edcb23ae792d40651672a921a7c7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 Durch die Integration der Quellcodeverwaltung können Sie Runbooks in Ihrem Automation-Konto einem GitHub-Repository für die Quellcodeverwaltung zuordnen. Sie können mit der Quellcodeverwaltung einfach mit Ihrem Team zusammenarbeiten, Änderungen nachverfolgen und Ihre Runbooks auf frühere Versionen zurücksetzen. Die Quellcodeverwaltung ermöglicht beispielsweise das Synchronisieren verschiedener Verzweigungen der Quellcodeverwaltung Ihrer Automation-Konten für Entwicklung, Test oder Produktion. Dadurch können Sie Code, der in Ihrer Entwicklungsumgebung getestet wurde, in Ihr Automation-Produktionskonto hochstufen.
@@ -110,7 +104,7 @@ Durch Einchecken des Runbooks können Sie die Änderungen, die Sie an einem Runb
 3. Der Name des geänderten Runbooks wird als Eingabeparameter an das eingecheckte Runbook gesendet. Sie können die [Auftragsdetails anzeigen](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal), indem Sie das Runbook auf der Seite **Repositorysynchronisierung** erweitern.  
    
     ![Eingabe zum Einchecken](media/automation-source-control-integration/automation_09_CheckinInput.png)
-4. Aktualisieren Sie das GitHub-Repository nach Abschluss des Auftrags, um die Änderungen anzuzeigen.  Ihr Repository sollte einen Commit mit der Meldung enthalten, dass eine  ***Aktualisierung von* Runbookname** in Azure Automation erfolgt ist.  
+4. Aktualisieren Sie das GitHub-Repository nach Abschluss des Auftrags, um die Änderungen anzuzeigen.  Ihr Repository sollte einen Commit mit der Meldung enthalten, dass eine ***Aktualisierung von*Runbookname** in Azure Automation erfolgt ist.  
 
 ### <a name="sync-runbooks-from-source-control-to-azure-automation"></a>Synchronisieren von Runbooks aus der Quellcodeverwaltung in Azure Automation
 Mit der Synchronisierungsschaltfläche auf der Seite „Repositorysynchronisierung“ können Sie alle Runbooks im Runbook-Ordnerpfad des Repositorys in Ihr Automation-Konto verschieben. Dasselbe Repository kann mit mehreren Automation-Konten synchronisiert werden. Mit den folgenden Schritten können Sie ein Runbook synchronisieren:

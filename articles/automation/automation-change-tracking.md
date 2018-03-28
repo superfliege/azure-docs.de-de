@@ -1,27 +1,23 @@
 ---
-title: "Nachverfolgen von Änderungen mit Azure Automation | Microsoft-Dokumentation"
-description: "Mit der Lösung für die Änderungsnachverfolgung können Sie Änderungen an Software und Windows-Diensten in Ihrer Umgebung besser erkennen."
+title: Nachverfolgen von Änderungen mit Azure Automation
+description: Mit der Lösung für die Änderungsnachverfolgung können Sie Änderungen an Software und Windows-Diensten in Ihrer Umgebung besser erkennen.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: f8040d5d-3c89-4f0c-8520-751c00251cb7
 ms.service: automation
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/28/2018
+author: georgewallace
 ms.author: gwallace
+ms.date: 03/15/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c5f354c3e63856474e46e2b6928af829604e15
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 06034a87d6015a057c01c2bc87ae4db9fba1269a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen an der Software in Ihrer Umgebung mit der Change Tracking-Lösung
+# <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
 Dieser Artikel unterstützt Sie bei der Verwendung der Lösung für die Änderungsnachverfolgung, damit Sie Änderungen an Ihrer Umgebung einfach erkennen können. Die Lösung verfolgt Änderungen an Windows- und Linux-Software, an Windows- und Linux-Dateien sowie an Windows-Registrierungsschlüsseln, Windows-Diensten und Linux-Daemons. Durch Ermitteln von Konfigurationsänderungen können Sie Betriebsprobleme präzise bestimmen.
 
@@ -53,16 +49,16 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Linux-Computern die fo
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
-|Elementname     | Anzeigename der nachzuverfolgenden Datei        |
-|Gruppe     | Gruppenname für die logische Gruppierung von Dateien        |
-|Pfad eingeben     | Der zu überprüfende Pfad für die Datei Beispiel: „/etc/*.conf“       |
+|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
+|Group     | Gruppenname für die logische Gruppierung von Dateien        |
+|Pfad eingeben     | Der zu überprüfende Pfad für die Datei, Beispiel: „/etc/*.conf“       |
 |Pfadtyp     | Typ des nachzuverfolgenden Elements (mögliche Werte sind „Datei“ und „Verzeichnis“)        |
 |Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
 |Sudo verwenden     | Diese Einstellung bestimmt, ob „sudo“ bei der Suche nach dem Element verwendet wird         |
-|Verknüpfungen     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignorieren**: Symbolische Verknüpfungen werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen<br>**Folgen**: Folgt den symbolischen Verknüpfungen bei der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein<br>**Verwalten**: Folgt den symbolischen Verknüpfungen und ermöglicht das Ändern von zurückgegebenen Inhalten     |
+|Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignorieren**: Symbolische Verknüpfungen werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen<br>**Folgen**: Folgt den symbolischen Verknüpfungen bei der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein<br>**Verwalten**: Folgt den symbolischen Verknüpfungen und ermöglicht das Ändern von zurückgegebenen Inhalten     |
 
 > [!NOTE]
-> Die Verknüpfungsoption „Verwalten“ wird nicht empfohlen. Das Abrufen von Dateiinhalten wird nicht unterstützt.
+> Die Linkoption „Verwalten“ wird nicht empfohlen. Das Abrufen von Dateiinhalten wird nicht unterstützt.
 
 ### <a name="configure-windows-files-to-track"></a>Konfigurieren der nachzuverfolgenden Windows-Dateien
 
@@ -75,8 +71,8 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Windows-Computern die 
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
-|Elementname     | Anzeigename der nachzuverfolgenden Datei        |
-|Gruppe     | Gruppenname für die logische Gruppierung von Dateien        |
+|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
+|Group     | Gruppenname für die logische Gruppierung von Dateien        |
 |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z. B. „c:\temp\meinedatei.txt“       |
 
 ### <a name="configure-windows-registry-keys-to-track"></a>Konfigurieren der nachzuverfolgenden Windows-Registrierungsschlüssel
@@ -90,8 +86,8 @@ Führen Sie zum Konfigurieren der Nachverfolgung von Registrierungsschlüsseln a
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
-|Elementname     | Anzeigename der nachzuverfolgenden Datei        |
-|Gruppe     | Gruppenname für die logische Gruppierung von Dateien        |
+|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
+|Group     | Gruppenname für die logische Gruppierung von Dateien        |
 |Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für die Datei, z. B. „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup“      |
 
 ## <a name="limitations"></a>Einschränkungen
@@ -173,7 +169,7 @@ Die Überwachung von Änderungen der Registrierungsschlüssel dient dem Ermittel
 > |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Überwacht die Liste der Pakete, die Ereignisbenachrichtigungen von Winlogon, dem interaktiven Anmeldungsunterstützungsmodell für das Windows-Betriebssystem, empfangen können.|
 
-## <a name="use-change-tracking"></a>Verwenden der Änderungsnachverfolgung
+## <a name="use-change-tracking"></a>Verwenden von Change Tracking
 
 Nachdem die Lösung aktiviert ist, können Sie die Zusammenfassung der Änderungen für Ihre überwachten Computern anzeigen. Wählen Sie dazu in Ihrem Automation-Konto unter **KONFIGURATIONSVERWALTUNG** die Option **Änderungsnachverfolgung** aus.
 

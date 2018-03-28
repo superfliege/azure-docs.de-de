@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/15/2018
 ms.author: raynew
-ms.openlocfilehash: 413234204175b9361cd2a837e0b318bf5220f58f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c4fb466443e2f29fb79c3707ce142895f140f9a7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Unterstützungsmatrix für die Replikation von VMware-VMs und physischen Servern in Azure
 
@@ -22,15 +22,15 @@ Dieser Artikel enthält eine Übersicht über die unterstützten Komponenten und
 
 **Szenario** | **Details**
 --- | ---
-**Virtuelle VMware-Computer** | Sie können die Notfallwiederherstellung für lokale VMware-VMs in Azure ausführen. Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.
-**Physische Server** | Sie können die Notfallwiederherstellung für lokale physische Windows- und Linux-Server in Azure ausführen. Dieses Szenario können Sie im Azure-Portal bereitstellen.
+Virtuelle VMware-Computer | Sie können die Notfallwiederherstellung für lokale VMware-VMs in Azure ausführen. Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.
+Physische Server | Sie können die Notfallwiederherstellung für lokale physische Windows- und Linux-Server in Azure ausführen. Dieses Szenario können Sie im Azure-Portal bereitstellen.
 
-## <a name="on-premises-virtualizationhost-servers"></a>Lokale Virtualisierungs-/Hostserver
+## <a name="on-premises-virtualization-servers"></a>Lokale Virtualisierungsserver
 
 **Server** | **Anforderungen** | **Details**
 --- | --- | ---
-**VMware** | vCenter Server 6.5, 6.0 oder 5.5 bzw. vSphere 6.5, 6.0 oder 5.5 | Es wird die Verwendung eines vCenter-Servers empfohlen.
-**Physische Server** | N/V
+VMware | vCenter Server 6.5, 6.0 oder 5.5 bzw. vSphere 6.5, 6.0 oder 5.5 | Es wird die Verwendung eines vCenter-Servers empfohlen.
+Physisch | N/V
 
 
 ## <a name="replicated-machines"></a>Replizierte Computer
@@ -39,7 +39,7 @@ In der folgenden Tabelle ist die Replikationsunterstützung für VMware-VMs und 
 
 **Komponente** | **Details**
 --- | ---
-Computereinstellungen | Computer, die in Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#failed-over-azure-vm-requirements) erfüllen.
+Computereinstellungen | Computer, die in Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#azure-vm-requirements) erfüllen.
 Windows-Betriebssystem | Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1. Windows 2016 Nano Server wird nicht unterstützt.
 Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 bis 7.4 <br/><br/>CentOS: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 bis 7.4 <br/><br/>Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7/Debian 8<br/><br/>Oracle Enterprise Linux 6.4, 6.5, unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird. <br/><br/>SUSE Linux Enterprise Server 11 SP3 oder SUSE Linux Enterprise Server 11 SP4 <br/><br/>Das Upgrade replizierter Computer von SP3 auf SP4 wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation und aktivieren Sie sie nach dem Upgrade erneut.
 
@@ -68,15 +68,15 @@ Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 
 
 **Komponente** | **Unterstützt**
 --- | ---
-Dateisysteme | ext3, ext4, ReiserFS (nur Suse Linux Enterprise Server), XFS
-Volume-Manager | LVM2
-Multipfadsoftware | Gerätezuordnung
+Dateisysteme | ext3, ext4, ReiserFS (nur Suse Linux Enterprise Server), XFS.
+Volume-Manager | LVM2.
+Multipfadsoftware | Gerätezuordnung.
 Paravirtualisierte Speichergeräte | Von paravirtualisierten Treibern exportierte Geräte werden nicht unterstützt.
 E/A-Geräte mit Blöcken mit mehreren Warteschlangen | Nicht unterstützt.
 Physische Server mit HP CCISS-Speichercontroller | Nicht unterstützt.
-Verzeichnisse | Diese Verzeichnisse (sofern als separate Partitionen/Dateisysteme eingerichtet) müssen sich auf demselben Betriebssystem-Datenträger auf dem Quellserver befinden: /(root), /boot, /usr, /usr/local, /var, /etc.</br></br> /boot muss sich auf einer Datenträgerpartition und nicht auf einem LVM-Volume befinden.<br/><br/>
+Verzeichnisse | Diese Verzeichnisse (sofern als separate Partitionen/Dateisysteme eingerichtet) müssen sich alle auf demselben Betriebssystem-Datenträger auf dem Quellserver befinden: /(root), /boot, /usr, /usr/local, /var, /etc.</br></br> /boot muss sich auf einer Datenträgerpartition und nicht auf einem LVM-Volume befinden.<br/><br/>
 Erforderlicher Speicherbedarf| 2 GB auf der /root-Partition <br/><br/> 250 MB im Installationsordner
-XFSv5 | XFSv5-Features auf XFS-Dateisystemen wie Metadaten-Prüfsummen werden ab Mobility Service-Version 9.10 unterstützt. Verwenden Sie das Hilfsprogramm „xfs_info“, um den XFS-Superblock für die Partition zu überprüfen. Wenn „ftype“ auf 1 festgelegt ist, werden XFSv5-Features verwendet.
+XFSv5 | XFSv5-Features auf XFS-Dateisystemen wie Metadatenprüfsummen werden ab Mobility Service-Version 9.10 unterstützt. Verwenden Sie das Hilfsprogramm „xfs_info“, um den XFS-Superblock für die Partition zu überprüfen. Wenn „ftype“ auf 1 festgelegt ist, werden XFSv5-Features verwendet.
 
 
 
@@ -85,15 +85,15 @@ XFSv5 | XFSv5-Features auf XFS-Dateisystemen wie Metadaten-Prüfsummen werden ab
 **Komponente** | **Unterstützt**
 --- | ---
 NIC-Teaming im Hostnetzwerk | Unterstützt für VMware-VMs. <br/><br/>Nicht unterstützt für die Replikation physischer Computer
-VLAN im Hostnetzwerk | Ja
-IPv4 im Hostnetzwerk | Ja
-IPv6 im Hostnetzwerk | Nein 
-NIC-Teaming im Gast-/Servernetzwerk | Nein 
-IPv4 im Gast-/Servernetzwerk | Ja
-IPv6 im Gast-/Servernetzwerk | Nein 
-Statische IP im Gast-/Servernetzwerk (Windows) | Ja
-Statische IP im Gast-/Servernetzwerk (Linux) | Ja <br/><br/>VMs werden für die Verwendung von DHCP bei Failback konfiguriert.  
-Mehrere NICs im Gast-/Servernetzwerk | Ja
+VLAN im Hostnetzwerk | Ja.
+IPv4 im Hostnetzwerk | Ja.
+IPv6 im Hostnetzwerk | Nein.
+NIC-Teaming im Gast-/Servernetzwerk | Nein.
+IPv4 im Gast-/Servernetzwerk | Ja.
+IPv6 im Gast-/Servernetzwerk | Nein.
+Statische IP im Gast-/Servernetzwerk (Windows) | Ja.
+Statische IP im Gast-/Servernetzwerk (Linux) | Ja. <br/><br/>VMs werden für die Verwendung von DHCP bei Failback konfiguriert.
+Mehrere NICs im Gast-/Servernetzwerk | Ja.
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure-VM-Netzwerk (nach Failover)
@@ -124,13 +124,13 @@ Gast-/Server-NFS | Nein
 Gast/Server-SMB 3.0 | Nein 
 Gast-/Server-RDM | Ja<br/><br/> Nicht verfügbar für physische Server
 Gast-/Serverdatenträger > 1 TB | Ja<br/><br/>Bis zu 4.095 GB
-Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 4k | Ja<
+Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 4k | Ja
 Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 512 Bytes | Ja
-Gast-/Servervolume mit Stripesetdatenträgern > 4 TB <br><br/>LVM (logische Volumeverwaltung) | Ja
+Gast-/Servervolume mit Stripesetdatenträgern > 4 TB <br><br/>Logisches Volumenmanagement (Logical Volume Management, LVM)| Ja
 Gast/Server – Speicherplätze | Nein 
 Gast/Server – Datenträger bei laufendem Systembetrieb hinzufügen/entfernen | Nein 
 Gast/Server – Datenträger ausschließen | Ja
-Gast-Server – Multipfad (MPIO) | N/V
+Gast-/Servermultipfad (MPIO) | N/V
 
 > [!NOTE]
 > Virtuelle VMware-Computer unter Windows Server 2012 oder höher mit UEFI Boot können zu Azure migriert werden. Es gelten folgende Einschränkungen:
@@ -140,17 +140,17 @@ Gast-Server – Multipfad (MPIO) | N/V
 > - Erfordert Mobility Service-Version 9.13 oder höher.
 > - Nicht bei physischen Servern unterstützt.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure-Speicher
 
 **Komponente** | **Unterstützt**
 --- | ---
-LRS | Ja
-GRS | Ja
-RA-GRS | Ja
+Lokal redundanter Speicher | Ja
+Georedundanter Speicher | Ja
+Georedundanter Speicher mit Lesezugriff | Ja
 Speicherebene „Kalt“ | Nein 
 Speicherebene „Heiß“| Nein 
 Blockblobs | Nein 
-Verschlüsselung ruhender Daten (SSE)| Ja
+Verschlüsselung ruhender Daten (Speicherdienstverschlüsselung)| Ja
 Storage Premium | Ja
 Import-/Exportdienst | Nein 
 Virtual Network-Dienstendpunkte<br/><br/> Storage-Firewalls und virtuelle Netzwerke in Zielspeicher-/Cachespeicherkonto (zum Speichern von Replikationsdaten) konfiguriert | Nein 
@@ -161,7 +161,7 @@ Universelle v2-Speicherkonten (heiße und kalte Ebene) | Nein
 **Feature** | **Unterstützt**
 --- | ---
 Verfügbarkeitsgruppen | Ja
-HUB | Ja   
+HUB | Ja
 Verwaltete Datenträger | Ja
 
 ## <a name="azure-vm-requirements"></a>Azure-VM-Anforderungen
@@ -170,20 +170,18 @@ Lokale virtuelle Computer, die Sie in Azure replizieren, müssen die in dieser T
 
 **Komponente** | **Anforderungen** | **Details**
 --- | --- | ---
-**Gastbetriebssystem** | Überprüfung der [unterstützten Betriebssysteme](#replicated machines) | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
-**Architektur des Gastbetriebssystems** | 64 Bit | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
-**Größe des Betriebssystemdatenträgers** | Bis zu 2.048 GB | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
-**Anzahl von Betriebssystemdatenträgern** | 1 | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.  
-**Anzahl von Datenträgern für Daten** | Maximal 64 | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.  
-**Größe des VHD-Datenträgers** | Bis zu 4.095 GB | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
-**Netzwerkadapter** | Es werden mehrere Adapter unterstützt. | 
-**Freigegebene VHD** | Nicht unterstützt. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
-**FC-Datenträger** | Nicht unterstützt. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
-**Festplattenformat** | VHD  <br/><br/> VHDX | VHDX wird in Azure derzeit nicht unterstützt, aber Site Recovery führt nach einem Failover automatisch die Konvertierung von VHDX in VHD durch. Wenn Sie das Failback auf lokalen VMs ausführen, verwenden Sie weiter das VHDX-Format.
-**BitLocker** | Nicht unterstützt | BitLocker muss deaktiviert sein, bevor Sie die Replikation für einen Computer aktivieren. | 
-**VM-Name** | 1 bis 63 Zeichen<br/><br/> Ist auf Buchstaben, Zahlen und Bindestriche beschränkt.<br/><br/> Der Computername muss mit einem Buchstaben oder einer Ziffer beginnen und enden. |  Aktualisieren Sie den Wert in den Computereigenschaften in Site Recovery.
-**VM-Typ** | Generation 1, Generation 2 (nur Windows) |  VMs der Generation 2 müssen über einen Basis-Betriebssystemdatenträger (einschließlich zwei als VHDX formatierte Datenvolumes) und weniger als 300 GB Speicherplatz verfügen. 
-Linux-VMs der Generation 2 werden nicht unterstützt. 
+Gastbetriebssystem | Überprüfung der [unterstützten Betriebssysteme](#replicated machines) | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
+Architektur des Gastbetriebssystems | 64 Bit. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
+Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
+Anzahl von Betriebssystem-Datenträgern | 1 | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.  
+Anzahl von Datenträgern für Daten | Maximal 64. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.  
+Größe des VHD-Datenträgers | Bis zu 4.095 GB | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
+Netzwerkadapter | Es werden mehrere Adapter unterstützt. | 
+Freigegebene VHD | Nicht unterstützt. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
+Fiber-Channel-Datenträger | Nicht unterstützt. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist. 
+BitLocker | Nicht unterstützt. | BitLocker muss deaktiviert sein, bevor Sie die Replikation für einen Computer aktivieren. | 
+Name des virtuellen Computers | 1 bis 63 Zeichen.<br/><br/> Ist auf Buchstaben, Zahlen und Bindestriche beschränkt.<br/><br/> Der Computername muss mit einem Buchstaben oder einer Ziffer beginnen und enden. |  Aktualisieren Sie den Wert in den Computereigenschaften in Site Recovery.
+
 
 ## <a name="vault-tasks"></a>Tresortasks
 
@@ -197,8 +195,8 @@ Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br
 
 **Name** | **Beschreibung** | **Aktuelle Version** | **Details**
 --- | --- | --- | --- | ---
-**Einheitliches Setup von Azure Site Recovery** | Koordiniert die Kommunikation zwischen lokalen VMware-Servern und Azure  <br/><br/> Installiert auf lokalen VMware-Servern | 9.12.4653.1 (über das Portal verfügbar) | [Neueste Features und Fixes](https://aka.ms/latest_asr_updates)
-**Mobilitätsdienst** | Koordiniert die Replikation zwischen lokalen VMware-Servern/physischen Servern und Azure/sekundärem Standort<br/><br/> Installiert auf einem virtuellen VMware-Computer oder auf physischen Servern, die Sie replizieren möchten | 9.12.4653.1 (über das Portal verfügbar) | [Neueste Features und Fixes](https://aka.ms/latest_asr_updates)
+Einheitliches Setup von Azure Site Recovery | Koordiniert die Kommunikation zwischen lokalen VMware-Servern und Azure  <br/><br/> Installiert auf lokalen VMware-Servern | 9.12.4653.1 (über das Portal verfügbar) | [Neueste Features und Fixes](https://aka.ms/latest_asr_updates)
+Mobility Service | Koordiniert die Replikation zwischen lokalen VMware-Servern/physischen Servern und Azure/sekundärem Standort<br/><br/> Installiert auf einem virtuellen VMware-Computer oder auf physischen Servern, die Sie replizieren möchten | 9.12.4653.1 (über das Portal verfügbar) | [Neueste Features und Fixes](https://aka.ms/latest_asr_updates)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

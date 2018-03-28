@@ -1,24 +1,18 @@
 ---
-title: "Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten (Vorschauversion) | Microsoft-Dokumentation"
-description: "Mit dieser Lösung für die VM-Verwaltung werden Ihre virtuellen Azure Resource Manager-Computer nach einem Zeitplan gestartet und beendet und mit Log Analytics proaktiv überwacht."
+title: Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten (Vorschauversion)
+description: Mit dieser Lösung für die VM-Verwaltung werden Ihre virtuellen Azure Resource Manager-Computer nach einem Zeitplan gestartet und beendet und mit Log Analytics proaktiv überwacht.
 services: automation
-documentationCenter: 
-authors: eslesar
-manager: carmonm
-editor: 
-ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 12/18/2017
-ms.author: magoedte
-ms.openlocfilehash: 7ffd424de2a7224b5ac50fa228289c5397092b2e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+manager: carmonm
+ms.openlocfilehash: ec15859a92527c4e084075b40d3439d7a19fea1a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation (Vorschauversion)
 
@@ -129,7 +123,7 @@ Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappend
 
 Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit dem Automation-Konto hinzuzufügen und anschließend die Variablen zum Anpassen der Lösung zu konfigurieren.
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.<br> ![Azure portal](media/automation-solution-vm-management/azure-portal-01.png)<br>  
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.<br> ![Azure-Portal](media/automation-solution-vm-management/azure-portal-01.png)<br>  
 2. Geben Sie im Bereich „Marketplace“ ein Schlüsselwort ein, z.B. **Starten** oder **Starten/Beenden**. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Alternativ hierzu können Sie ein oder mehrere Schlüsselwörter des vollständigen Namens der Lösung eingeben und dann die EINGABETASTE drücken.  Wählen Sie **VMs außerhalb der Geschäftszeiten starten/beenden [Vorschau]** in den Suchergebnissen aus.  
 3. Sehen Sie sich im Bereich **VMs außerhalb der Geschäftszeiten starten/beenden [Vorschau]** für die ausgewählte Lösung die Zusammenfassung an, und klicken Sie dann auf **Erstellen**.  
 4. Der Bereich **Lösung hinzufügen** wird angezeigt. Sie werden aufgefordert, die Lösung vor dem Importieren in Ihr Automation-Abonnement zu konfigurieren.<br><br> ![Blatt „Lösung hinzufügen“ der VM-Verwaltung](media/automation-solution-vm-management/azure-portal-add-solution-01.png)<br><br>

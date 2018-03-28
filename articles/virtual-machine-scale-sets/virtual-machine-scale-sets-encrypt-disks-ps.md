@@ -1,102 +1,158 @@
 ---
-title: "Verschlüsseln von Datenträgern für Microsoft Azure Virtual Machine Scale Sets | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie angefügte Datenträger in VM-Skalierungsgruppen verschlüsseln."
+title: Datenträgerverschlüsselung für Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mit Azure PowerShell VM-Instanzen und angefügte Datenträger in VM-Skalierungsgruppen verschlüsseln können.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/09/2018
 ms.author: iainfou
-ms.openlocfilehash: dddcece9f7566961b256369330661e5dbd5d4665
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 856d4bc7dd636b3a2f3d072a10989cafd7efd6a6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>Verschlüsseln von Betriebssystem- und angefügten Datenträgern in einer VM-Skalierungsgruppe
-Azure [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) unterstützt Azure Disk Encryption (ADE).  Azure Disk Encryption kann für Windows- und Linux-VM-Skalierungsgruppen aktiviert werden, um die ruhenden Daten in den Skalierungsgruppen mit Industriestandard-Verschlüsselungstechnologie zu schützen. Weitere Informationen finden Sie unter „Azure Disk Encryption für virtuelle Windows- und Linux-Computer“.
+Um die ruhenden Daten mit einer Verschlüsselungstechnologie nach Industriestandard zu schützen, unterstützen VM-Skalierungsgruppen Azure Disk Encryption (ADE). Die Verschlüsselung kann für Windows- und Linux-VM-Skalierungsgruppen aktiviert werden. Weitere Informationen finden Sie unter [Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer](../security/azure-security-disk-encryption.md).
 
 > [!NOTE]
->  Azure Disk Encryption für VM-Skalierungsgruppen befindet sich derzeit in der öffentlichen Vorschau und ist in allen öffentlichen Azure-Regionen verfügbar.
+>  Azure Disk Encryption für VM-Skalierungsgruppen befindet sich derzeit in der Vorschauversion und ist in allen öffentlichen Azure-Regionen verfügbar. 
+>
+> Reimaging- und Upgradevorgänge von Skalierungsgruppen-VMs werden in der aktuellen Vorschauversion nicht unterstützt. In der Vorschauversion wird die Verschlüsselung von Skalierungsgruppen nur in Testumgebungen empfohlen. Aktivieren Sie in der Vorschauversion die Datenträgerverschlüsselung nicht in Produktionsumgebungen, in denen Sie möglicherweise ein Betriebssystemimage aktualisieren müssen.
 
 Azure Disk Encryption wird unterstützt:
 - für Skalierungsgruppen mit verwalteten Datenträgern (nicht für native oder nicht verwaltete Datenträger-Skalierungsgruppen).
 - für Betriebssystem- und Datenvolumes in Windows-Skalierungsgruppen. Das Deaktivieren der Verschlüsselung wird bei Betriebssystem- und Datenvolumes für Windows-Skalierungsgruppen unterstützt.
 - für Datenvolumes in Linux-Skalierungsgruppen. Die Betriebssystem-Datenträgerverschlüsselung wird in der aktuellen Vorschau für Linux-Skalierungsgruppen NICHT unterstützt.
 
-Reimaging- und Upgradevorgänge von Skalierungsgruppen-VMs werden in der aktuellen Vorschauversion nicht unterstützt. Die Vorschauversion von Azure Disk Encryption für VM-Skalierungsgruppen wird nur in Testumgebungen empfohlen. Aktivieren Sie in der Vorschauversion die Datenträgerverschlüsselung nicht in Produktionsumgebungen, in denen Sie möglicherweise ein Betriebssystemimage in einer verschlüsselten Skalierungsgruppe aktualisieren müssen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Installieren Sie die neueste Version von [Azure PowerShell](https://github.com/Azure/azure-powershell/releases), die die Verschlüsselungsbefehle enthält.
+Für diesen Artikel ist Version 5.3.0 oder höher des Azure PowerShell-Moduls erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
-Für die Vorschauversion von Azure Disk Encryption für VM-Skalierungsgruppen müssen Sie Ihr Abonnement mit den folgenden PowerShell-Befehlen selbst registrieren: 
+Registrieren Sie mit [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature) Ihr Azure-Abonnement für die Vorschauversion der Datenträgerverschlüsselung für VM-Skalierungsgruppen: 
 
 ```powershell
 Login-AzureRmAccount
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
-Warten Sie ca. 10 Minuten, bis beim folgenden Befehl der Status „Registriert“ zurückgegeben wird: 
+Warten Sie ca. 10 Minuten, bis der Status *Registriert* von [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) zurückgegeben wird, registrieren Sie dann den Anbieter `Microsoft.Compute` erneut: 
 
 ```powershell
 Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Erstellen eines für Datenträgerverschlüsselung aktivierten Azure Key Vault
-Erstellen Sie einen neuen Schlüsseltresor im selben Abonnement und derselben Region wie die Skalierungsgruppe, und legen Sie als Zugriffsrichtlinie „EnabledForDiskEncryption“ fest.
+
+## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Erstellen eines für die Datenträgerverschlüsselung aktivierten Azure-Schlüsseltresors
+In Azure Key Vault können Schlüssel, geheime Schlüssel und Kennwörter gespeichert werden, um eine sichere Implementierung in Anwendungen und Diensten zu ermöglichen. Kryptografische Schlüssel werden in Azure Key Vault mit Softwareschutz gespeichert. Alternativ können Sie Schlüssel aber auch in Hardwaresicherheitsmodulen (HSMs) mit FIPS 140-2 Level 2-Zertifizierung importieren oder generieren. Die kryptografischen Schlüssel dienen zum Verschlüsseln und Entschlüsseln virtueller Datenträger, die an Ihren virtuellen Computer angefügt sind. Diese kryptografischen Schlüssel werden allein von Ihnen kontrolliert, und Sie können deren Verwendung überwachen.
+
+Erstellen Sie mit [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) einen Schlüsseltresor. Damit der Schlüsseltresor für die Datenträgerverschlüsselung verwendet werden kann, legen Sie den Parameter *EnabledForDiskEncryption* fest. Das folgende Beispiel definiert auch Variablen für den Ressourcengruppennamen, den Schlüsseltresornamen und den Speicherort. Geben Sie Ihren eigenen eindeutigen Schlüsseltresornamen an:
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VaultName="encryptionvault321"
+$rgName="myResourceGroup"
+$vaultName="myuniquekeyvault"
+$location = "EastUS"
 
-New-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $rgName -Location southcentralus -EnabledForDiskEncryption
-``` 
-
-Alternativ dazu können Sie auch einen vorhandenen Schlüsseltresor im selben Abonnement und derselben Region wie die Skalierungsgruppe für die Datenträgerverschlüsselung aktivieren.
-
-```powershell
-$VaultName="encryptionvault321"
-Set-AzureRmKeyVaultAccessPolicy -VaultName $VaultName -EnabledForDiskEncryption
+New-AzureRmResourceGroup -Name $rgName -Location $location
+New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location -EnabledForDiskEncryption
 ```
+
+
+### <a name="use-an-existing-key-vault"></a>Verwenden eines vorhandenen Schlüsseltresors
+Dieser Schritt ist nur erforderlich, wenn Sie über einen vorhandenen Schlüsseltresor verfügen, den Sie mit der Datenträgerverschlüsselung verwenden möchten. Überspringen Sie diesen Schritt, wenn Sie im vorherigen Abschnitt einen Schlüsseltresor erstellt haben.
+
+Sie können mit [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/AzureRM.KeyVault/Set-AzureRmKeyVaultAccessPolicy) einen vorhandenen Schlüsseltresor im gleichen Abonnement und der gleichen Region wie die Skalierungsgruppe für die Datenträgerverschlüsselung aktivieren. Definieren Sie den Namen Ihres vorhandenen Schlüsseltresors in der Variablen *$vaultName* wie folgt:
+
+```powershell
+$vaultName="myexistingkeyvault"
+Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -EnabledForDiskEncryption
+```
+
+
+## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
+Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) zuerst den Benutzernamen und das Kennwort des Administrators der VM-Instanzen fest:
+
+```powershell
+$cred = Get-Credential
+```
+
+Erstellen Sie nun mit [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) eine VM-Skalierungsgruppe. Um Datenverkehr an die einzelnen VM-Instanzen zu verteilen, wird auch ein Lastenausgleich erstellt. Der Lastenausgleich enthält Regeln zum Verteilen von Datenverkehr über TCP-Port 80 und zum Zulassen von Remotedesktop-Datenverkehr über TCP-Port 3389 und PowerShell-Remoting über TCP-Port 5985:
+
+```powershell
+$vmssName="myScaleSet"
+
+New-AzureRmVmss `
+    -ResourceGroupName $rgName `
+    -VMScaleSetName $vmssName `
+    -Location $location `
+    -VirtualNetworkName "myVnet" `
+    -SubnetName "mySubnet" `
+    -PublicIpAddressName "myPublicIPAddress" `
+    -LoadBalancerName "myLoadBalancer" `
+    -UpgradePolicy "Automatic" `
+    -Credential $cred
+```
+
 
 ## <a name="enable-encryption"></a>Aktivieren der Verschlüsselung
-Mit den folgenden Befehlen wird ein Datenträger für Daten in einer ausgeführten Skalierungsgruppe mithilfe eines Schlüsseltresors in derselben Ressourcengruppe verschlüsselt. Sie können auch Vorlagen zum Verschlüsseln von Datenträgern in einer ausgeführten [Windows-](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) oder [Linux-Skalierungsgruppe](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox) verwenden.
+Um VM-Instanzen in einer Skalierungsgruppe zu verschlüsseln, rufen Sie zunächst mit [Get-AzureRmKeyVault](/powershell/module/AzureRM.KeyVault/Get-AzureRmKeyVault) einige Informationen zum Schlüsseltresor-URI und zur Ressourcen-ID ab. Diese Variablen dienen dann zum Starten des Verschlüsselungsvorgangs mit [Satz AzureRmVmssDiskEncryptionExtension](/powershell/module/AzureRM.Compute/Set-AzureRmVmssDiskEncryptionExtension):
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VmssName="nt1vm"
-$DiskEncryptionKeyVaultUrl="https://encryptionvault321.vault.azure.net"
-$KeyVaultResourceId="/subscriptions/0754ecc2-d80d-426a-902c-b83f4cfbdc95/resourceGroups/windatadiskencryptiontest/providers/Microsoft.KeyVault/vaults/encryptionvault321"
+$diskEncryptionKeyVaultUrl=(Get-AzureRmKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
+$keyVaultResourceId=(Get-AzureRmKeyVault -ResourceGroupName $rgName -Name $vaultName).ResourceId
 
-Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $VmssName `
-    -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId –VolumeType Data
+Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vmssName `
+    -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId –VolumeType "All"
 ```
+
+Wenn Sie dazu aufgefordert werden, geben Sie *y* ein, um die Datenträgerverschlüsselung auf VM-Instanzen der Skalierungsgruppe fortzusetzen.
+
 
 ## <a name="check-encryption-progress"></a>Überprüfen des Verschlüsselungsfortschritts
-Verwenden Sie die folgenden Befehle, um den Verschlüsselungsstatus der Skalierungsgruppe anzuzeigen.
+Verwenden Sie [Get AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Get-AzureRmVmssDiskEncryption) zum Überprüfen des Status der Datenträgerverschlüsselung:
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VmssName="nt1vm"
-Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName
-
-Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName -InstanceId "4"
+Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
+
+Wenn VM-Instanzen verschlüsselt sind, gibt der Code *EncryptionSummary* den Wert *ProvisioningState/succeeded* an, wie in der folgenden Beispielausgabe gezeigt:
+
+```powershell
+ResourceGroupName            : myResourceGroup
+VmScaleSetName               : myScaleSet
+EncryptionSettings           :
+  KeyVaultURL                : https://myuniquekeyvault.vault.azure.net/
+  KeyEncryptionKeyURL        :
+  KeyVaultResourceId         : /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myuniquekeyvault
+  KekVaultResourceId         :
+  KeyEncryptionAlgorithm     :
+  VolumeType                 : All
+  EncryptionOperation        : EnableEncryption
+EncryptionSummary[0]         :
+  Code                       : ProvisioningState/succeeded
+  Count                      : 2
+EncryptionEnabled            : True
+EncryptionExtensionInstalled : True
+```
+
 
 ## <a name="disable-encryption"></a>Deaktivieren der Verschlüsselung
-Sie deaktivieren die Verschlüsselung einer ausgeführten VM-Skalierungsgruppe mithilfe der folgenden Befehle. Sie können auch Vorlagen zum Deaktivieren der Verschlüsselung in einer ausgeführten [Windows-](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows) oder [Linux-Skalierungsgruppe](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux) verwenden.
+Wenn Sie die verschlüsselten Datenträger von VM-Instanzen nicht mehr verwenden möchten, können Sie die Verschlüsselung mit [Disable-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Disable-AzureRmVmssDiskEncryption) wie folgt deaktivieren:
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VmssName="nt1vm"
-Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName
+Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
+
+
+## <a name="next-steps"></a>Nächste Schritte
+In diesem Artikel haben Sie Azure PowerShell verwendet, um eine VM-Skalierungsgruppe zu verschlüsseln. Sie können auch [Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md) oder Vorlagen für [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) oder [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox) verwenden.

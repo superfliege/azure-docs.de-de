@@ -1,8 +1,8 @@
 ---
-title: "Datasets und verknüpfte Dienste in Azure Data Factory | Microsoft-Dokumentation"
-description: "Informationen über Datasets und verknüpfte Dienste in Data Factory. Verknüpfte Dienste verknüpfen Compute/-Datenspeicher mit einer Data Factory. Datasets stellen Eingabe/Ausgabe-Daten dar."
+title: Datasets und verknüpfte Dienste in Azure Data Factory | Microsoft-Dokumentation
+description: Informationen über Datasets und verknüpfte Dienste in Data Factory. Verknüpfte Dienste verknüpfen Compute/-Datenspeicher mit einer Data Factory. Datasets stellen Eingabe/Ausgabe-Daten dar.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
 manager: jhubbard
 editor: spelluru
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: bfc95588378466fe1e83bcc4e899eca6b66b358a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 98d58b97457cc64954094d7e8d8b4defca7e05ff
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datasets und verknüpfte Dienste in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -184,31 +184,37 @@ Im vorherigen Abschnitt ist im Beispiel der Typ des Datasets auf **AzureSqlTable
 }
 ```
 ## <a name="dataset-structure"></a>Datasetstruktur
-Der Abschnitt **structure** ist optional. In ihm ist das Schema des Datasets in einer Sammlung der Namen und Datentypen der Spalten definiert. Im Abschnitt „structure“ legen Sie Typinformationen fest, die zum Konvertieren von Typen und Zuordnen von Spalten von der Quelle zum Ziel bereitgestellt werden. Im folgenden Beispiel hat das Dataset drei Spalten: „timestamp“, „projectname“ und „pageviews“. Die Spalten haben jeweils den folgenden Typ: „String“, „String“, „Decimal“.
-
-```json
-[
-    { "name": "timestamp", "type": "String"},
-    { "name": "projectname", "type": "String"},
-    { "name": "pageviews", "type": "Decimal"}
-]
-```
+Der Abschnitt **structure** ist optional. In ihm ist das Schema des Datasets in einer Sammlung der Namen und Datentypen der Spalten definiert. Im Abschnitt „structure“ legen Sie Typinformationen fest, die zum Konvertieren von Typen und Zuordnen von Spalten von der Quelle zum Ziel bereitgestellt werden.
 
 Jede Spalte im Abschnitt „structure“ enthält die folgenden Eigenschaften:
 
 Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
 name | Name der Spalte. | Ja
-type | Datentyp der Spalte. | Nein 
+type | Datentyp der Spalte. Data Factory unterstützt die folgenden Zwischendatentypen als zulässige Werte: **Int16, Int32, Int64, Single, Double, Decimal, Byte[], Boolean, String, Guid, Datetime, Datetimeoffset und Timespan**. | Nein 
 culture | Zu verwendendes .NET-basiertes Gebietsschema, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. Der Standardwert lautet `en-us`. | Nein 
-format | Zu verwendende Formatzeichenfolge, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. | Nein 
+format | Zu verwendende Formatzeichenfolge, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. Informationen zum Formatieren von Datum und Uhrzeit finden Sie unter [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings). | Nein 
 
-Anhand der folgenden Anleitungen können Sie entscheiden, wann der Abschnitt **structure** mit welchen Informationen verwendet werden sollte.
+### <a name="example"></a>Beispiel
+Nehmen Sie für das folgende Beispiel an, dass die Quellblobdaten im CSV-Format vorliegen und drei Spalten aufweisen: „userid“, „name“ und „lastlogindate“. Sie haben den Typ „Int64“, „String“ bzw. „Datetime“ mit einem benutzerdefinierten datetime-Format mit abgekürzten französischen Namen für die Wochentage.
 
-- **Für strukturierte Datenquellen** geben Sie den Abschnitt „structure“ nur an, wenn Sie Quellspalten zu Zielspalten zuordnen möchten und die Spaltennamen nicht identisch sind. Diese Art von strukturierter Datenquelle speichert Informationen zu Datenschema und Datentyp zusammen mit den Daten selbst. Zu Beispielen für strukturierte Datenquellen gehören SQL Server, Oracle und Azure SQL-Datenbank.<br/><br/>Da Typinformationen für strukturierte Datenquellen bereits verfügbar sind, sollten Sie keine Typinformationen einschließen, wenn Sie sich für die Verwendung des Abschnitts „structure“ entscheiden.
-- **Für das Schema von Lesedatenquellen (insbesondere Blob Storage)** können Sie Daten speichern, ohne Schema- oder Typinformationen mit den Daten zu speichern. Für diese Datenquellentypen geben Sie „structure“ an, wenn Sie Quellspalten zu Zielspalten zuordnen möchten. Geben Sie „structure“ auch an, wenn das Dataset eine Eingabe für eine Kopieraktivität ist und die Datentypen des Quelldatasets in systemeigene Typen für das Ziel (Senke) konvertiert werden müssen.<br/><br/> Data Factory unterstützt die folgenden Werte für das Bereitstellen von Typinformationen in der Struktur: `Int16, Int32, Int64, Single, Double, Decimal, Byte[], Boolean, String, Guid, Datetime, Datetimeoffset, and Timespan`. 
+Definieren Sie die Blobdatasetstruktur wie folgt zusammen mit Typdefinitionen für die Spalten:
 
-Hier finden Sie weitere Informationen darüber, wie Data Factory Quelldaten aufgrund der [Schema- und Typzuordnung]( copy-activity-schema-and-type-mapping.md) Senken zuordnet, und wann Strukturinformationen angegeben werden müssen.
+```json
+"structure":
+[
+    { "name": "userid", "type": "Int64"},
+    { "name": "name", "type": "String"},
+    { "name": "lastlogindate", "type": "Datetime", "culture": "fr-fr", "format": "ddd-MM-YYYY"}
+]
+```
+
+### <a name="guidance"></a>Anleitungen
+
+Anhand der folgenden Anleitungen können Sie erkennen, wann der Abschnitt **structure** mit welchen Informationen verwendet werden sollte. Hier finden Sie weitere Informationen darüber, wie Data Factory Quelldaten zu Senken zuordnet und wann Strukturinformationen der [Schema- und Typzuordnung](copy-activity-schema-and-type-mapping.md) angegeben werden müssen.
+
+- **Für Datenquellen mit festem Schema** geben Sie den Abschnitt „structure“ nur an, wenn Sie Quellspalten zu Senkenspalten zuordnen möchten und die Spaltennamen nicht identisch sind. Diese Art von strukturierter Datenquelle speichert Informationen zu Datenschema und Datentyp zusammen mit den Daten selbst. Zu Beispielen für strukturierte Datenquellen gehören SQL Server, Oracle und Azure SQL-Datenbank.<br/><br/>Da Typinformationen für strukturierte Datenquellen bereits verfügbar sind, sollten Sie keine Typinformationen einschließen, wenn Sie sich für die Verwendung des Abschnitts „structure“ entscheiden.
+- **Geben Sie für Datenquellen ohne Schema oder mit schwachem Schema, z.B. eine Textdatei im Blobspeicher**, „structure“ auch an, wenn das Dataset eine Eingabe für eine Kopieraktivität ist und die Datentypen des Quelldatasets für die Senke in native Typen konvertiert werden müssen. Geben Sie „structure“ darüber hinaus an, wenn Sie Quellspalten zu Senkenspalten zuordnen möchten.
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
 Datasets können Sie mit einem dieser Tools oder SDKs erstellen: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST-API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager-Vorlage und Azure-Portal

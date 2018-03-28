@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: c4bf3871b4636ce769dd8d84a637b88d4a00db97
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4709ee707aa67c8de531b2b3e0b58dbed5c2667b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -123,7 +123,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * HDInsight-Cluster – siehe [HDInsight-Einschränkungen](#hdinsight-limitations)
 * IoT Hubs
 * Schlüsseltresor
-* Load Balancer
+* Load Balancer – siehe [Load Balancer-Einschränkungen](#lb-limitations)
 * Logic Apps
 * Machine Learning
 * Media Services
@@ -132,6 +132,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Operational Insights
 * Operations Management
 * Power BI
+* Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
 * Redis-Cache
 * Scheduler
 * Suchen,
@@ -161,8 +162,10 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * ExpressRoute
 * DevTest-Labs: Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Dynamics LCS
+* Load Balancer – siehe [Load Balancer-Einschränkungen](#lb-limitations)
 * Verwaltete Anwendungen
 * Managed Disks – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
+* Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
 * Recovery Services-Tresor – verschieben Sie außerdem nicht die dem Recovery Services-Tresor zugeordneten Compute-, Netzwerk- und Speicherressourcen. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
 * Sicherheit
 * StorSimple-Geräte-Manager
@@ -320,6 +323,16 @@ Beim Verschieben eines HDInsight-Clusters in ein neues Abonnement sollten Sie zu
 
 Sie können nicht mehrere Suchressourcen, die sich in verschiedenen Regionen befinden, gleichzeitig verschieben.
 In diesem Fall müssen Sie sie separat verschieben.
+
+## <a name="lb-limitations"></a> Load Balancer-Einschränkungen
+
+Load Balancer der SKU „Basic“ kann verschoben werden.
+Load Balancer der SKU „Standard“ kann nicht verschoben werden.
+
+## <a name="pip-limitations"></a> Einschränkungen der öffentlichen IP-Adresse
+
+Öffentliche IP-Adresse der SKU „Basic“ kann verschoben werden.
+Öffentliche IP-Adresse der SKU „Standard“ kann nicht verschoben werden.
 
 ## <a name="use-portal"></a>Mithilfe des Portals
 

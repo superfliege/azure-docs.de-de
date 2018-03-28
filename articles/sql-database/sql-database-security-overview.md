@@ -2,25 +2,19 @@
 title: Übersicht über die Sicherheit der Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Informationen zu Azure SQL-Datenbank und zur SQL Server-Sicherheit, z.B. Unterschiede zwischen der Cloud und lokalem SQL Server.
 services: sql-database
-documentationcenter: ''
 author: giladm
-manager: shaik
+manager: craigg
 ms.reviewer: carlrab
-editor: ''
-ms.assetid: a012bb85-7fb4-4fde-a2fc-cf426c0a56bb
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
-ms.date: 01/29/2018
+ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 41051944af863c4c50595ea843e2adf3513b3a12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1dc34f021fa6482c65cce0e922951ae329987c43
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="securing-your-sql-database"></a>Sichern der SQL-Datenbank
 
@@ -62,7 +56,6 @@ Als Schutz für Ihre Daten verhindern Firewalls jeglichen Zugriff auf Ihren Date
 
 ### <a name="authentication"></a>Authentifizierung
 Die SQL-Datenbank-Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL-Datenbank unterstützt zwei Arten der Authentifizierung:
-
 * **SQL-Authentifizierung**, bei der ein Benutzername und ein Kennwort verwendet werden. Bei der Erstellung des logischen Servers für die Datenbank haben Sie eine "Server Admin"-Anmeldung mit Benutzername und Kennwort angegeben. Mit diesen Anmeldeinformationen können Sie sich bei jeder Datenbank auf diesem Server als Datenbankbesitzer bzw. "dbo" (database owner) authentifizieren. 
 * **Azure Active Directory-Authentifizierung**, bei der von Azure Active Directory verwaltete Identitäten verwendet werden und die für verwaltete und integrierte Domänen unterstützt wird. Verwenden Sie immer die Active Directory-Authentifizierung (integrierte Sicherheit), [sofern dies möglich ist](https://msdn.microsoft.com/library/ms144284.aspx). Wenn Sie die Azure Active Directory-Authentifizierung verwenden möchten, müssen Sie einen weiteren Serveradministrator mit der Bezeichnung "Azure AD Admin" erstellen, der zum Verwalten von Azure Active Directory-Benutzern und -Gruppen berechtigt ist. Dieser Administrator kann außerdem die gleichen Aufgaben wie ein normaler Serveradministrator ausführen. Unter [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md) finden Sie eine exemplarische Vorgehensweise zum Erstellen eines Azure AD-Administrators, um die Azure Active Directory-Authentifizierung zu aktivieren.
 
@@ -86,6 +79,21 @@ Mit der Bedrohungserkennung wird die Überwachung vervollständigt, indem der Az
  
 ## <a name="compliance"></a>Compliance
 Zusätzlich zu den oben aufgeführten Features und Funktionalitäten, mit denen Ihre Anwendung eine Reihe von Sicherheitsanforderungen erfüllen kann, wird Azure SQL-Datenbank außerdem regelmäßigen Überprüfungen unterzogen und ist für eine Reihe von Kompatibilitätsstandards zertifiziert. Weitere Informationen finden Sie im [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/), wo die aktuellste Liste von [Compliance-Zertifizierungen für SQL-Datenbank](https://azure.microsoft.com/support/trust-center/services/) angezeigt wird.
+
+
+## <a name="security-management"></a>Sicherheitsverwaltung
+
+SQL-Datenbank unterstützt Sie bei der Verwaltung Ihrer Datensicherheit durch Datenbanküberprüfungen und ein zentrales Sicherheitsdashboard mit der [SQL-Sicherheitsrisikobewertung](sql-vulnerability-assessment.md).
+
+**Sicherheitsrisikobewertung**: Die [SQL-Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) (derzeit als Vorschauversion) ist ein leicht konfigurierbares Tool, das in Azure SQL-Datenbank integriert ist und mit dem potenzielle Sicherheitsrisiken der Datenbank ermittelt, nachverfolgt und behoben werden können. Die Bewertung führt einen Schwachstellenprüfung in Ihrer Datenbank durch und generiert einen Bericht zum Sicherheitszustand, der verwertbare Schritte zur Lösung von Sicherheitsproblemen und zur Verbesserung Ihrer Datenbanksicherheit enthält. Ein Bewertungsbericht kann für Ihre Umgebung angepasst werden, indem eine akzeptable Baseline für Berechtigungskonfigurationen, Funktionskonfigurationen und Datenbankeinstellungen festgelegt wird. Dies kann Ihnen bei Folgendem helfen:
+
+- Erfüllen der Konformitätsanforderungen, die die Berichte für die Datenbanküberprüfung erfordern 
+
+- Erfüllen der Datenschutzstandards 
+
+- Überwachen einer dynamischen Datenbankumgebung, bei der Änderungen schwer nachzuverfolgen sind.
+
+Weitere Informationen finden Sie unter [SQL-Sicherheitsrisikobewertung](sql-vulnerability-assessment.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

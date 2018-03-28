@@ -1,12 +1,12 @@
 ---
 title: Weitere Informationen zu Azure Service Fabric | Microsoft-Dokumentation
-description: "Erfahren Sie mehr über die grundlegenden Konzepte und die wesentlichen Bereiche von Azure Service Fabric. Dieser Artikel bietet eine erweiterte Übersicht über Service Fabric und das Erstellen von Microservices."
+description: Erfahren Sie mehr über die grundlegenden Konzepte und die wesentlichen Bereiche von Azure Service Fabric. Dieser Artikel bietet eine erweiterte Übersicht über Service Fabric und das Erstellen von Microservices.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 9360d29eb30171651b0bcc688fe7884614b50cf4
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e9d0691876a417fe8665bed2d712d643a4364120
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Service Fabric bietet allerdings eine große Oberfläche, und es gibt viel darüber zu erfahren.  Dieser Artikel enthält eine Zusammenfassung von Service Fabric und beschreibt die grundlegenden Konzepte, Programmiermodelle, Cluster, den Anwendungslebenszyklus und die Systemüberwachung. Eine Einführung und eine Anleitung zum Erstellen von Microservices mit Service Fabric finden Sie unter [Übersicht](service-fabric-overview.md) und [Was sind Microservices?](service-fabric-overview-microservices.md). Dieser Artikel enthält keine umfassende Liste der Inhalte, aber Links zu Artikeln zur Übersicht und zu den ersten Schritten für die einzelnen Bereiche von Service Fabric. 
@@ -98,7 +98,7 @@ Service Fabric integriert mit [ASP.NET Core](service-fabric-reliable-services-co
 - Im Rahmen eines zuverlässigen Diensts. Diese Methode ermöglicht eine bessere Integration in die Service Fabric-Laufzeit und die Verwendung zustandsbehafteter ASP.NET Core-Dienste.
 
 ### <a name="guest-executables"></a>Ausführbare Gastanwendungsdateien
-Bei einer [ausführbaren Gastanwendungsdatei](service-fabric-deploy-existing-app.md) handelt es sich um eine vorhandene, beliebig ausführbare Datei (die in einer beliebigen Sprache geschrieben sein kann), die neben anderen Diensten auf einem Service Fabric-Cluster gehostet wird. Ausführbare Gastanwendungsdateien lassen sich nicht direkt in Service Fabric-APIs integrieren. Sie profitieren jedoch weiterhin von den angebotenen Features der Plattform. Hierzu zählen beispielsweise Integritäts- und Auslastungsberichte und die Auffindbarkeit von Diensten durch Aufrufen von REST-APIs. Außerdem wird der Anwendungslebenszyklus vollständig unterstützt. 
+Bei einer [ausführbaren Gastanwendungsdatei](service-fabric-guest-executables-introduction.md) handelt es sich um eine vorhandene, beliebig ausführbare Datei (die in einer beliebigen Sprache geschrieben sein kann), die neben anderen Diensten auf einem Service Fabric-Cluster gehostet wird. Ausführbare Gastanwendungsdateien lassen sich nicht direkt in Service Fabric-APIs integrieren. Sie profitieren jedoch weiterhin von den angebotenen Features der Plattform. Hierzu zählen beispielsweise Integritäts- und Auslastungsberichte und die Auffindbarkeit von Diensten durch Aufrufen von REST-APIs. Außerdem wird der Anwendungslebenszyklus vollständig unterstützt. 
 
 ## <a name="application-lifecycle"></a>Anwendungslebenszyklus
 Ähnlich wie auf anderen Plattformen durchläuft eine Anwendung auf Service Fabric normalerweise die folgenden Phasen: Entwurf, Entwicklung, Test, Bereitstellung, Upgrade, Wartung und Deinstallation. Service Fabric bietet erstklassige Unterstützung für den gesamten Anwendungslebenszyklus von Cloudanwendungen: von der Entwicklung über die Bereitstellung, die tägliche Verwaltung und die Wartung bis zur endgültigen Außerbetriebnahme. Das Dienstmodell ermöglicht die unabhängige Beteiligung verschiedener Rollen am Anwendungslebenszyklus. [Service Fabric-Anwendungslebenszyklus](service-fabric-application-lifecycle.md) bietet eine Übersicht über die APIs und wie sie von den verschiedenen Rollen während der Phasen des Service Fabric-Anwendungslebenszyklus verwendet werden. 
@@ -138,7 +138,7 @@ Das Ausführen von Service Fabric-Clustern unter Azure ermöglicht die Integrati
 
 Sie können einen Cluster über das [Azure-Portal](service-fabric-cluster-creation-via-portal.md), mithilfe einer [Vorlage](service-fabric-cluster-creation-via-arm.md) oder mit [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) in Azure erstellen.
 
-Service Fabric unter Linux ermöglicht Ihnen, hoch verfügbare und skalierbare Anwendungen unter Linux (genauso wie unter Windows) zu erstellen, bereitzustellen und zu verwalten. Neben C# (.NET Core) stehen Service Fabric-Frameworks (Reliable Services und Reliable Actors) in Java unter Linux zur Verfügung. Sie können auch [ausführbare Gastdienste](service-fabric-deploy-existing-app.md) mit jeder beliebigen Sprache und jedem beliebigen Framework erstellen. Orchestrierung von Docker-Containern wird ebenfalls unterstützt. Docker-Container können ausführbare Gastanwendungsdateien oder native Service Fabric-Dienste ausführen, die die Service Fabric-Frameworks nutzen. Weitere Informationen finden Sie unter [Service Fabric unter Linux](service-fabric-deploy-anywhere.md).
+Service Fabric unter Linux ermöglicht Ihnen, hoch verfügbare und skalierbare Anwendungen unter Linux (genauso wie unter Windows) zu erstellen, bereitzustellen und zu verwalten. Neben C# (.NET Core) stehen Service Fabric-Frameworks (Reliable Services und Reliable Actors) in Java unter Linux zur Verfügung. Sie können auch [ausführbare Gastdienste](service-fabric-guest-executables-introduction.md) mit jeder beliebigen Sprache und jedem beliebigen Framework erstellen. Orchestrierung von Docker-Containern wird ebenfalls unterstützt. Docker-Container können ausführbare Gastanwendungsdateien oder native Service Fabric-Dienste ausführen, die die Service Fabric-Frameworks nutzen. Weitere Informationen finden Sie unter [Service Fabric unter Linux](service-fabric-deploy-anywhere.md).
 
 Einige Features werden unter Windows unterstützt, aber nicht unter Linux. Weitere Informationen finden Sie unter [Unterschiede zwischen Service Fabric unter Linux und Windows](service-fabric-linux-windows-differences.md).
 
@@ -167,7 +167,7 @@ Es werden Regelmäßig neue Versionen der Service Fabric-Runtime veröffentlicht
 
 Ein Service Fabric-Cluster ist eine Ressource, die Sie besitzen, die jedoch teilweise von Microsoft verwaltet wird. Microsoft ist für das Patchen des zugrunde liegenden Betriebssystems und das Durchführen von Fabric-Upgrades auf dem Cluster zuständig. Sie können Ihren Cluster so konfigurieren, dass er Fabric-Upgrades entweder automatisch erhält oder wenn Microsoft eine neue Version veröffentlicht. Alternativ können Sie eine gewünschte unterstützte Fabric-Version auswählen. Fabric- und Konfigurationsupgrades können über das Azure-Portal oder über Resource Manager festgelegt werden. Weitere Informationen finden Sie unter [Upgrade von Service Fabric-Clustern](service-fabric-cluster-upgrade.md). 
 
-Ein eigenständiger Cluster ist eine Ressource, die Sie vollständig besitzen. Sie sind für das Patchen des zugrunde liegenden Betriebssystems und das Starten von Fabric-Upgrades zuständig. Wenn Ihr Cluster eine Verbindung mit [https://www.microsoft.com/download](https://www.microsoft.com/download) herstellen kann, können Sie für Ihren Cluster das automatische Herunterladen und Bereitstellen des neuen Service Fabric Runtime-Pakets festlegen. Sie würden dann das Upgrade starten. Wenn Ihr Cluster nicht auf [https://www.microsoft.com/download](https://www.microsoft.com/download) zugreifen kann, können Sie das neue Runtimepaket manuell auf einen mit dem Internet verbundenen Computer herunterladen und dann das Upgrade starten. Weitere Informationen finden Sie unter [Upgrade eines eigenständigen Service Fabric-Clusters](service-fabric-cluster-upgrade-windows-server.md).
+Ein eigenständiger Cluster ist eine Ressource, die Sie vollständig besitzen. Sie sind für das Patchen des zugrunde liegenden Betriebssystems und das Starten von Fabric-Upgrades zuständig. Wenn Ihr Cluster eine Verbindung mit [https://www.microsoft.com/download](https://www.microsoft.com/download) herstellen kann, können Sie für Ihren Cluster das automatische Herunterladen und Bereitstellen des neuen Service Fabric-Runtimepakets festlegen. Sie würden dann das Upgrade starten. Wenn Ihr Cluster nicht auf [https://www.microsoft.com/download](https://www.microsoft.com/download) zugreifen kann, können Sie das neue Runtimepaket manuell auf einen mit dem Internet verbundenen Computer herunterladen und dann das Upgrade starten. Weitere Informationen finden Sie unter [Upgrade eines eigenständigen Service Fabric-Clusters](service-fabric-cluster-upgrade-windows-server.md).
 
 ## <a name="health-monitoring"></a>Systemüberwachung
 Service Fabric bietet ein [Integritätsmodell](service-fabric-health-introduction.md), das fehlerhafte Cluster- und Anwendungsbedingungen auf bestimmten Entitäten kennzeichnet (z. B. Clusterknoten und Dienstreplikate). Das Integritätsmodell verwendet Integritäts-Reporter (Systemkomponenten und Watchdogs). Das Ziel ist die einfache und schnelle Diagnose und Reparatur. Dienstgeneratoren müssen sich im Vorfeld Gedanken zur Integrität und zum [Design der Integritätsberichte](service-fabric-report-health.md#design-health-reporting) machen. Jede Bedingung, die zur Beeinträchtigung der Integrität führen kann, sollte gemeldet werden, insbesondere wenn damit die Ursachen von Problemen ermittelt werden können. Diese Integritätsinformationen können beim Debuggen und Untersuchen Zeit und Arbeit sparen, sobald der Dienst ordnungsgemäß in der Produktionsumgebung ausgeführt wird.

@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Azure Table Storage mit .NET | Microsoft Docs
+title: Erste Schritte mit Azure Table Storage mit .NET | Microsoft-Dokumentation
 description: Speichern Sie strukturierte Daten mit Azure Table Storage, einem NoSQL-Datenspeicher, in der Cloud.
 services: cosmos-db
 documentationcenter: .net
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 953ee3932ac1acad5cc41fba9bd5e168a94d7db7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d31dd1c267bcc63106616b191b6b79d5800e31e9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>Erste Schritte mit Azure Table Storage mit .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -83,9 +83,9 @@ Alle Codebeispiele in diesem Tutorial können in der Datei `Program.cs` Ihrer Ko
 Sie können die Azure Cosmos DB-Tabellenbibliothek in jeder Art von .NET-Anwendung nutzen, z.B. einem Azure-Clouddienst, einer Azure-Web-App, einer Desktopanwendung oder einer mobilen Anwendung. In diesem Leitfaden verwenden wir der Einfachheit halber eine Konsolenanwendung.
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>Verwenden von NuGet zum Installieren der erforderlichen Pakete
-Es gibt drei Pakete, auf die Sie in Ihrem Projekt verweisen müssen, um dieses Tutorial abzuschließen:
+Es gibt drei empfohlene Pakete, auf die Sie in Ihrem Projekt verweisen müssen, um dieses Tutorial abzuschließen:
 
-* [Allgemeine Azure Storage-Bibliothek für .NET (Vorschauversion 8.6.0)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/8.6.0-preview). 
+* [Allgemeine Azure Storage-Bibliothek für .NET (Vorschau)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common) 
 * [Microsoft Azure Cosmos DB-Tabellenbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Datenressourcen in Ihrem Azure Table Storage-Konto bzw. Ihrem Konto für die Azure Cosmos DB-Tabellen-API.
 * [Microsoft Azure Configuration Manager Library für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
 
@@ -100,6 +100,11 @@ Sie können NuGet verwenden, um beide Pakete zu erhalten. Folgen Sie diesen Schr
 > Die ODataLib-Abhängigkeiten in der allgemeinen Storage-Bibliothek für .NET werden mit den ODataLib-Paketen aufgelöst, die auf NuGet verfügbar sind (nicht von WCF Data Services). Die ODataLib-Bibliotheken können direkt heruntergeladen werden, oder es wird über Ihr Codeprojekt durch NuGet darauf verwiesen. Die spezifischen ODataLib-Pakete, die von der Speicherclientbibliothek verwendet werden, lauten [OData](http://nuget.org/packages/Microsoft.Data.OData/), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/) und [Spatial](http://nuget.org/packages/System.Spatial/). Diese Bibliotheken werden von Azure Table Storage-Klassen verwendet und sind erforderliche Abhängigkeiten für die Programmierung mit der allgemeinen Storage-Bibliothek.
 > 
 > 
+
+> [!TIP]
+> Entwickler, die bereits mit Azure Table Storage vertraut sind, haben in der Vergangenheit möglicherweise das [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/)-Paket verwendet. Es wird empfohlen, dass alle neuen Tabellenanwendungen die [allgemeine Azure Storage-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) und [Azure Cosmos DB-Tabellenbibliothek](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) verwenden, wobei auch das WindowsAzure.Storage-Paket weiterhin unterstützt wird. Wenn Sie die WindowsAzure.Storage-Bibliothek verwenden, schließen Sie Microsoft.WindowsAzure.Storage.Table in Ihre using-Anweisungen ein.
+>
+>
 
 ### <a name="determine-your-target-environment"></a>Bestimmen der Zielumgebung
 Es gibt für die Ausführung der Beispiele in diesem Leitfaden zwei Umgebungsoptionen:

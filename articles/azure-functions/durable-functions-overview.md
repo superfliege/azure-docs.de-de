@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über Durable Functions – Azure (Vorschauversion)"
-description: "Einführung in die Durable Functions-Erweiterung für Azure Functions."
+title: Übersicht über Durable Functions – Azure (Vorschauversion)
+description: Einführung in die Durable Functions-Erweiterung für Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: f1def2a43edee58bc8b5a33880e206130a1b4687
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: b5269bb51c787c927b4224b3520d5514b6d24501
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="durable-functions-overview-preview"></a>Übersicht über Durable Functions (Vorschauversion)
 
@@ -153,44 +153,43 @@ public static async Task<HttpResponseMessage> Run(
 
 Der [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter`-Parameter ist ein Wert aus der `orchestrationClient`-Ausgabebindung, die ein Teil der Erweiterung Durable Functions ist. Sie bietet Methoden, mit denen neue oder vorhandene Orchestratorfunktionsinstanzen gestartet, Ereignisse an sie gesendet, sie beendet und Abfragen an sie gerichtet werden können. Im obigen Beispiel nimmt eine HTTP-ausgelöste-Funktion einen `functionName`-Wert von der eingehenden URL entgegen und übergibt den Wert an [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). Diese Bindungs-API gibt dann eine Antwort zurück, die einen `Location`-Header und zusätzliche Informationen über die Instanz enthält, die später verwendet werden können, um den Status der gestarteten Instanz abzurufen oder sie zu beenden.
 
-## <a name="pattern-4-stateful-singletons"></a>Muster 4: Zustandsbehaftete Singletons
+## <a name="pattern-4-monitoring"></a>Muster 4: Überwachung
 
-Die meisten Funktionen haben einen expliziten Start und ein explizites Ende und interagieren nicht direkt mit externen Ereignisquellen. Orchestrierungen unterstützen jedoch ein Muster eines [zustandsbehafteten Singletons](durable-functions-singletons.md), das ihnen ermöglicht, sich in der verteilten Verarbeitung wie zuverlässige [Akteure](https://en.wikipedia.org/wiki/Actor_model) zu verhalten.
+Das Monitormuster bezieht sich auf einen flexiblen *wiederkehrenden* Prozess in einem Workflow – wenn beispielsweise bestimmte Elemente solange abgerufen werden, bis bestimmte Bedingungen erfüllt sind. Ein normaler Timertrigger kann ein einfaches Szenario adressieren, wie z.B. einen periodischen Bereinigungsauftrag, aber sein Intervall ist statisch und die Verwaltung der Instanzlebensdauer wird komplex. Durable Functions ermöglicht flexible Wiederholungsintervalle, die Verwaltung der Aufgabenlebensdauer und die Erstellung mehrerer Monitorprozesse aus einer einzigen Orchestrierung.
 
-Das folgende Diagramm veranschaulicht eine Funktion, die während der Verarbeitung von Ereignissen aus externen Quellen in einer Endlosschleife ausgeführt wird.
+Ein Beispiel wäre das Umkehren des früheren asynchronen HTTP-API-Szenarios. Anstatt einen Endpunkt für einen externen Client freizugeben, um einen lang laufenden Vorgang zu überwachen, belegt der lang laufende Monitor einen Eingabeendpunkt und wartet auf einen Zustandswechsel.
 
-![Diagramm eines zustandsbehafteten Singletons](media/durable-functions-overview/stateful-singleton.png)
+![Monitordiagramm](media/durable-functions-overview/monitor.png)
 
-Durable Functions ist zwar keine Implementierung des Akteurmodells, aber Orchestratorfunktionen weisen viele ähnliche Laufzeiteigenschaften auf. Beispielsweise werden sie lange (möglicherweise endlos) ausgeführt, sind zustandsbehaftet, zuverlässig, Singlethreadfunktionen, haben einen transparenten Speicherort und sind global adressierbar. Dies qualifiziert Orchestratorfunktionen für „Akteur“-ähnliche Szenarien.
-
-Gewöhnliche Funktionen sind zustandslos und daher nicht zum Implementieren eines zustandsbehafteten Singletonmusters geeignet. Jedenfalls vereinfacht die Erweiterung Durable Functions die Implementierung des statusbehafteten Singletonmusters enorm. Der folgende Code ist eine einfache Orchestratorfunktion, die einen Leistungsindikator implementiert.
+Mithilfe von Durable Functions können mehrere Monitore, die beliebige Endpunkte beobachten, in ein paar Codezeilen erstellt werden. Die Monitore können die Ausführung beenden, wenn eine Bedingung erfüllt ist, oder durch den [DurableOrchestrationClient](durable-functions-instance-management.md) beendet werden. Zudem kann ihr Warteintervall basierend auf einer Bedingung (z.B. exponentielles Backoff) geändert werden. Der folgende Code implementiert einen grundlegenden Monitor.
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
 {
-    int counterState = ctx.GetInput<int>();
-
-    string operation = await ctx.WaitForExternalEvent<string>("operation");
-    if (operation == "incr")
+    int jobId = ctx.GetInput<int>();
+    int pollingInterval = GetPollingInterval();
+    DateTime expiryTime = GetExpiryTime();
+    
+    while (ctx.CurrentUtcDateTime < expiryTime) 
     {
-        counterState++;
-    }
-    else if (operation == "decr")
-    {
-        counterState--;
+        var jobStatus = await ctx.CallActivityAsync<string>("GetJobStatus", jobId);
+        if (jobStatus == "Completed")
+        {
+            // Perform action when condition met
+            await ctx.CallActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration will sleep until this time
+        var nextCheck = ctx.CurrentUtcDateTime.AddSeconds(pollingInterval);
+        await ctx.CreateTimer(nextCheck, CancellationToken.None);
     }
 
-    ctx.ContinueAsNew(counterState);
+    // Perform further work here, or let the orchestration end
 }
 ```
 
-Dieser Code könnte als „ewige Orchestrierung“ beschrieben werden – also eine beginnende, aber niemals endende. Er führt die folgenden Schritte aus:
-
-* Beginn mit einem Eingabewert in `counterState`.
-* Unbegrenztes Warten auf eine Nachricht namens `operation`.
-* Ausführen von Code zum Aktualisieren seines lokalen Status.
-* „Neustart“ in Eigeninitiative durch Aufrufen von `ctx.ContinueAsNew`.
-* Erneut unbegrenztes Warten auf den nächsten Vorgang.
+Wenn eine Anforderung empfangen wird, wird eine neue Orchestrierungsinstanz für diese Auftrags-ID erstellt. Die Instanz fragt den Status ab, bis eine Bedingung erfüllt ist und die Schleife beendet wird. Ein permanenter Timer wird verwendet, um das Abrufintervall zu steuern. Nun können weitere Arbeitsschritte ausgeführt werden, oder die Orchestrierung wird beendet. Wenn `ctx.CurrentUtcDateTime` die `expiryTime` überschreitet, wird der Monitor beendet.
 
 ## <a name="pattern-5-human-interaction"></a>Muster 5: Benutzerinteraktion
 
@@ -259,7 +258,7 @@ Das Feld `customDimensions` jedes Protokolleintrags enthält viele nützliche st
 
 ![customDimensions-Feld in Application Insights-Abfrage](media/durable-functions-overview/app-insights-2.png)
 
-Aufgrund des Wiedergabeverhaltens des Durable Task Framework-Verteilers können Sie davon ausgehen, redundante Protokolleinträge für wiedergegebene Aktionen zu sehen. Dies kann hilfreich sein, um das Wiedergabeverhalten des Kernmoduls zu verstehen. Der Artikel [Diagnostics in Durable Functions (Azure Functions)](durable-functions-diagnostics.md) (Diagnose in Durable Functions [Azure Functions]) zeigt Beispiele für Abfragen, die Wiedergabeprotokolle ausfiltern, sodass Sie nur die „Echtzeitprotokolle“ sehen.
+Aufgrund des Wiedergabeverhaltens des Durable Task Framework-Verteilers können Sie davon ausgehen, redundante Protokolleinträge für wiedergegebene Aktionen zu sehen. Dies kann hilfreich sein, um das Wiedergabeverhalten der Kern-Engine zu verstehen. Der Artikel [Diagnostics in Durable Functions (Azure Functions)](durable-functions-diagnostics.md) (Diagnose in Durable Functions [Azure Functions]) zeigt Beispiele für Abfragen, die Wiedergabeprotokolle ausfiltern, sodass Sie nur die „Echtzeitprotokolle“ sehen.
 
 ## <a name="storage-and-scalability"></a>Speicherung und Skalierbarkeit
 

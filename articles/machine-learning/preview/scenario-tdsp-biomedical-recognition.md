@@ -1,12 +1,12 @@
 ---
-title: "Erkennung von biomedizinischen Entitäten – Team Data Science-Prozess – Azure Machine Learning | Microsoft-Dokumentation"
-description: "Schnellstart für Projekte des Team Data Science-Prozesses, bei dem Deep Learning zur Erkennung von biomedizinischen Entitäten in Azure Machine Learning Workbench verwendet wird."
+title: Erkennung von biomedizinischen Entitäten – Team Data Science-Prozess – Azure Machine Learning | Microsoft-Dokumentation
+description: Schnellstart für Projekte des Team Data Science-Prozesses, bei dem Deep Learning zur Erkennung von biomedizinischen Entitäten in Azure Machine Learning Workbench verwendet wird.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 7de3a30e477fcec66ce703b6c3fec7d17d79d3ab
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4e8450cc20718185a3cea02bf8fbb6b97dd91ddb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Erkennung von biomedizinischen Entitäten unter Verwendung der Team Data Science-Prozessvorlage (TDSP)
 
@@ -36,13 +36,13 @@ Die Entitätsextraktion ist eine Unteraufgabe der Informationsextraktion (auch b
     * Automatisierte Verwaltung Ihrer Projektabhängigkeiten, einschließlich Download und Installation
     * Ausführung von Python-Skripts in verschiedenen Compute-Umgebungen
     * Verfolgung des Ausführungsverlaufs für Python-Skripts
-    * Ausführung von Aufträgen im Spark-Remoterechenkontext mithilfe von HDInsight Spark 2.1-Clustern
+    * Ausführung von Aufträgen im Spark-Remotecomputekontext mithilfe von HDInsight Spark 2.1-Clustern
     * Ausführung von Aufträgen auf virtuellen GPU-Remotecomputern in Azure
     * Einfache Operationalisierung von Deep Learning-Modellen als Webdienste in Azure Container Service (ACS)
 
 ## <a name="use-case-overview"></a>Übersicht über den Anwendungsfall
 Die Erkennung biomedizinischer benannter Entitäten ist ein wichtiger Schritt für komplexe biomedizinische NLP-Aufgaben wie beispielsweise: 
-* Extrahieren der Nennungen benannter Entitäten wie Krankheiten, Medikamente, Chemikalien und Symptome aus elektronischen medizinischen oder Patientenakten.
+* Extrahieren der Nennungen benannter Entitäten wie Krankheiten, Medikamente, Chemikalien und Symptome aus elektronischen medizinischen oder Patientenakten
 * Erkennung von Medikamenten
 * Aufzeigen der Interaktionen zwischen verschiedenen Entitätstypen, z.B. Interaktion zwischen Medikamenten, Beziehung zwischen Medikamenten und Krankheiten und Beziehung zwischen Genen und Proteinen
 
@@ -106,7 +106,7 @@ Es folgt der Link zum öffentlichen GitHub-Repository des realen Szenarios, das 
 
 ### <a name="python-packages"></a>Python-Pakete
 
-Alle erforderlichen Abhängigkeiten sind in der Datei „aml_config/conda_dependencies.yml“ im Projektordner des Szenarios definiert. Die in dieser Datei definierten Abhängigkeiten werden für Ausführungen für Docker-, VM- und HDI-Cluster-Ziele automatisch bereitgestellt. Informationen zum Dateiformat der Conda-Umgebung finden Sie [hier](https://conda.io/docs/using/envs.html#create-environment-file-by-hand).
+Alle erforderlichen Abhängigkeiten sind in der Datei „aml_config/conda_dependencies.yml“ im Projektordner des Szenarios definiert. Die in dieser Datei definierten Abhängigkeiten werden für Ausführungen für Docker-, VM- und HDI-Clusterziele automatisch bereitgestellt. Informationen zum Dateiformat der Conda-Umgebung finden Sie [hier](https://conda.io/docs/using/envs.html#create-environment-file-by-hand).
 
 * [TensorFlow](https://www.tensorflow.org/install/)
 * [CNTK 2.0](https://docs.microsoft.com/cognitive-toolkit/using-cntk-with-keras)
@@ -198,7 +198,7 @@ Wie in der folgenden Abbildung dargestellt, enthält die t-SNE-Visualisierung me
 
 Siehe [Trainieren der neuronalen Entitätsextraktionsfunktion](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/02_model_creation/ReadMe.md).
 
-Die Architektur von neuronalen Feedforward-Netzen weist das Problem auf, dass alle Eingaben und Ausgaben unabhängig von den anderen Ein- und Ausgaben verarbeitet werden. Mit dieser Architektur können keine Sequence-to-Sequence-Bezeichnungsaufgaben wie maschinelle Übersetzung und Entitätsextraktion modelliert werden. In rekurrenten neuronalen Netzmodellen besteht dieses Problem nicht, da die bis zum aktuellen Zeitpunkt berechneten Informationen an den nächsten Knoten übergeben werden können. Diese Eigenschaft wird als Speicherkapazität im Netz bezeichnet, da es möglich ist, die zuvor berechneten Informationen zu verwenden, wie in der folgenden Abbildung dargestellt:
+Die Architektur von neuronalen Feedforwardnetzen weist das Problem auf, dass alle Eingaben und Ausgaben unabhängig von den anderen Ein- und Ausgaben verarbeitet werden. Mit dieser Architektur können keine Sequence-to-Sequence-Bezeichnungsaufgaben wie maschinelle Übersetzung und Entitätsextraktion modelliert werden. In rekurrenten neuronalen Netzmodellen besteht dieses Problem nicht, da die bis zum aktuellen Zeitpunkt berechneten Informationen an den nächsten Knoten übergeben werden können. Diese Eigenschaft wird als Speicherkapazität im Netz bezeichnet, da es möglich ist, die zuvor berechneten Informationen zu verwenden, wie in der folgenden Abbildung dargestellt:
 
 ![Rekurrentes neuronales Netz](./media/scenario-tdsp-biomedical-recognition/rnn-expanded.png)
 

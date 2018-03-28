@@ -1,24 +1,24 @@
 ---
-title: "Herausgeberleitfaden für Azure Marketplace und AppSource"
-description: "Schritt-für-Schritt-Anleitung und Veröffentlichung von Prüflisten für neue Herausgeber in Azure Marketplace"
+title: Herausgeberleitfaden für Azure Marketplace und AppSource
+description: Schritt-für-Schritt-Anleitung und Veröffentlichung von Prüflisten für neue Herausgeber in Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: 
+documentationcenter: ''
 author: ellacroi
 manager: msmbaldwin
-editor: 
+editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: d02d6e942dfc503dd87a8ebcb6e2ddcf6b6065c5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7faa34b5528c53c06aeda25be17cbc5f3db2acdf
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Herausgeberleitfaden für Azure Marketplace und AppSource
 
@@ -51,7 +51,7 @@ Nutzen Sie Marketplace-Funktionen, um Ihr Geschäftswachstum zu fördern:
 
 ## <a name="what-are-azure-marketplace-and-appsource"></a>Was sind Azure Marketplace und AppSource?
 
-Microsoft bietet zwei unterschiedliche Marketplace-Storefronts, wo Partner Angebote auflisten, Testversionen aktivieren und direkt Transaktionen mit Microsoft-Kunden und -Ökosystem durchführen können: [Azure Marketplace] (https://azuremarketplace.microsoft.com) und [AppSource] (https://appsource.microsoft.com). In diesen Storefronts können Kunden Anwendungen und Dienste suchen, testen und kaufen, die ihre digitale Transformation beschleunigen, und die Storefronts erleichtern das Geschäftswachstum von Herausgebern, indem sie ihnen einen erweiterten Zugang zu Kunden und Partnerökosystem von Microsoft bieten.
+Microsoft bietet zwei unterschiedliche Marketplace-Storefronts, wo Partner Angebote auflisten, Testversionen aktivieren und direkt Transaktionen mit Microsoft-Kunden und -Ökosystem durchführen können: [Azure Marketplace] (https://azuremarketplace.microsoft.com)) und [AppSource] (https://appsource.microsoft.com)). In diesen Storefronts können Kunden Anwendungen und Dienste suchen, testen und kaufen, die ihre digitale Transformation beschleunigen, und die Storefronts erleichtern das Geschäftswachstum von Herausgebern, indem sie ihnen einen erweiterten Zugang zu Kunden und Partnerökosystem von Microsoft bieten.
  
 Die Marketplace-Storefronts sind auf Zielgruppen und Microsoft-Cloudprodukte ausgerichtet, damit Kunden das finden, was sie benötigen. Jede Storefront bietet spezielle, in der folgenden Tabelle zusammengefasste Veröffentlichungsoptionen, damit sich Ihre Veröffentlichung maximal amortisiert:
 
@@ -238,7 +238,7 @@ Jeder Enterprise Agreement-Kunde kann durch eine vorherige, Azure betreffende fi
 
 |**Anforderung**  |**Details**  |**Veröffentlichungsoption**  |
 |---------|---------|---------|
-|**Teilnahmerichtlinien**    | Die Teilnahmerichtlinien für Azure Marketplace finden Sie [hier] (https://azure.microsoft.com/support/legal/marketplace/participation-policies/).       | Auflisten, Testversion, Transaktion        |
+|**Teilnahmerichtlinien**    | Prüfen Sie Teilnahmerichtlinien für Microsoft Azure Marketplace [hier] (https://azure.microsoft.com/support/legal/marketplace/participation-policies/).       | Auflisten, Testversion, Transaktion        |
 |**Integration in Microsoft**    | Azure Marketplace-Angebote sollten Microsoft Azure-Dienste wie Compute, Netzwerk oder Storage nutzen bzw. erweitern und an einer vorhandenen Azure Marketplace-Kategorie wie Datenbanken, Sicherheit, Netzwerke usw. ausrichten. Die vollständige Liste finden Sie [hier](https://azuremarketplace.microsoft.com/marketplace/apps).        | Auflisten, Testversion, Transaktion        |
 |**Zielgruppe**    | Azure Marketplace-Angebote müssen sich an IT-Experten, Cloudentwickler oder andere technische Kundenrollen richten.       |  Auflisten, Testversion, Transaktion 
 |**Leadverwaltung**    | Um Leads vom Marketplace zu erhalten, müssen Sie Ihr Kundenbeziehungsmanagement (Customer Relationship Management, CRM) (Marketo, Microsoft Dynamics oder Salesforce) für den Empfang von Leaddaten aktivieren.        |   Auflisten, Testversion, Transaktion      |
@@ -260,7 +260,7 @@ Jeder Enterprise Agreement-Kunde kann durch eine vorherige, Azure betreffende fi
 |**Anforderung**  |**Details** |**Veröffentlichungsoption**  |
 |---------|---------|---------|
 |**Abrechnung und Messung**    |  Ihr virtueller Computer muss entweder BYOL- oder nutzungsbasierte monatliche Abrechnung zulassen.       |    Transaktion    |
-|**Azure-kompatibler virtueller Datenträger (Virtual Hard Disk, VHD)**     |   Virtuelle Computer müssen unter [Windows] (https://docs.microsoft.com/de-de/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) oder [Linux] (https://docs.microsoft.com/de-de/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) erstellt werden    |   Transaktion      |
+|**Azure-kompatibler virtueller Datenträger (Virtual Hard Disk, VHD)**     |   Virtuelle Computer müssen auf [Windows] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) oder [Linux] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) erstellt werden.    |   Transaktion      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Bestimmte Voraussetzungen für die Veröffentlichung von Beratungsdiensten
 
@@ -268,12 +268,12 @@ Jeder Enterprise Agreement-Kunde kann durch eine vorherige, Azure betreffende fi
 |**Anforderungen** |**Details**  |**Veröffentlichungsoption**  |
 |---------|---------|---------|
 |**Merkmale des Dienstangebots**     | Ihr Beratungsdienst muss mit festem Umfang, fester Dauer, festem Preis (oder kostenlos) als primär vertriebsvorbereitend, auf einen einzelnen Kunden beschränkt und vor Ort durchgeführt bereitgestellt werden.        |    Auflisten     |
-|**Partneranforderungen für Beratungsdienste**    |   **Nur AppSource.**  Dynamics 365 for Customer Engagement [Cloud Customer Relationship Management-Kompetenz Silber oder Gold](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency). Dynamics 365 for Finance and Operations Enterprise-Edition: Silber oder Gold [Enterprise Resource Planning] (https://partner.microsoft.com/de-de/membership/enterprise-resource-planning-competency)-Kompetenz und ein Mindestumsatz von 25.000 USD mit Cloudvorgängen in den letzten 12 Monaten. Dynamics 365 for Finance and Operations, Business-Edition: Tätigkeit als [Clouddiensteanbieter (Cloud Services Provider, CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) oder [Digital Partner of Record (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) für mindestens einen Kunden. Power BI: Erfüllen der [Solution Partner] (file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20 & % 20Incentives.pdf)-Kriterien. PowerApps: Anbieten einer [Partner-Showcase] (https://powerapps.microsoft.com/de-de/partner-showcase/)-Lösung. |    Auflisten     |
+|**Partneranforderungen für Beratungsdienste**    |   **Nur AppSource.**  Dynamics 365 for Customer Engagement [Cloud Customer Relationship Management-Kompetenz Silber oder Gold](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency). Dynamics 365 for Finance and Operations Enterprise-Edition: Die Kompetenz Silber oder Gold [Enterprise Resource Planning] (https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency)) und ein Mindestumsatz von 25.000 USD mit Cloudvorgängen in den letzten 12 Monaten. Dynamics 365 for Finance and Operations, Business-Edition: Tätigkeit als [Clouddiensteanbieter (Cloud Services Provider, CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) oder [Digital Partner of Record (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) für mindestens einen Kunden. Power BI: Erfüllen der [Solution Partner] (file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20 & % 20Incentives.pdf)-Kriterien. PowerApps: Eine Lösung zur [Vorstellung unserer Partner] (https://powerapps.microsoft.com/en-us/partner-showcase/) |    Auflisten     |
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Verwenden von Azure Active Directory, um Tests zu ermöglichen
 Azure Active Directory (AAD) ist ein Cloudidentitätsdienst, der die Authentifizierung mit einem Geschäfts- oder Schulkonto von Microsoft mithilfe der branchenüblichen Protokolle OAuth und OpenID Connect ermöglicht. Weitere Informationen zu AAD erhalten Sie [hier](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features). 
 
-Microsoft authentifiziert alle Marketplace-Benutzer mit AAD, d.h. wenn ein authentifizierter Benutzer in Marketplace durch Ihr Testversionsangebot klickt und zu Ihrer Testumgebung geleitet wird, können Sie dem Benutzer ohne zusätzlichen Anmeldungsschritt direkt eine Testversion bereitstellen. Das [Token, das Ihre App während der Authentifizierung von AAD erhält] (https://docs.microsoft.com/de-de/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens), enthält wichtige Benutzerinformationen, mit denen Sie ein Benutzerkonto in Ihrer App erstellen können, sodass Sie die Bereitstellung automatisieren und die Wahrscheinlichkeit der Konvertierung steigern können. 
+Microsoft authentifiziert alle Marketplace-Benutzer mit AAD, d.h. wenn ein authentifizierter Benutzer in Marketplace durch Ihr Testversionsangebot klickt und zu Ihrer Testumgebung geleitet wird, können Sie dem Benutzer ohne zusätzlichen Anmeldungsschritt direkt eine Testversion bereitstellen. Das [Token, das Ihre App während der Authentifizierung von AAD erhält] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens), enthält wichtige Benutzerinformationen, mit denen Sie ein Benutzerkonto in Ihrer App erstellen können, sodass Sie die Bereitstellung automatisieren und die Wahrscheinlichkeit der Konvertierung steigern können. 
 
 Die Verwendung von AAD, um die Ein-Klick-Authentifizierung bei Ihrer App oder Testversion zu aktivieren, bewirkt Folgendes:
 
@@ -295,7 +295,7 @@ Wenn Sie AAD heute unterstützen
 Wenn die einmalige Azure Active Directory-Verbundanmeldung für Sie neu ist
 
 - Registrieren Sie Ihre Anwendung im Azure-Portal
-- Entwickeln Sie die einmalige Azure Active Directory-Verbundanmeldung mithilfe von [OpenID Connect] (https://docs.microsoft.com/de-de/azure/active-directory/develop/active-directory-protocols-openid-connect-code) oder [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code)
+- Entwickeln Sie SSO mit AAD mithilfe von [OpenID Connect] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) oder [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code)
 - Aktivieren Sie das Feature zur Unterstützung der Mehrinstanzenfähigkeit in AAD, um die „Ein-Klick“-Testversion zu ermöglichen
 - [Hier erhalten Sie weitere Informationen](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified)
 
@@ -303,7 +303,7 @@ Für Anwendungen mit einem Mandanten:
 
 Es gibt mehrere Optionen für Anwendungen mit einem Mandanten:
 
-- Hinzufügen von Benutzern zu Ihrem Verzeichnis als Gastbenutzer mit [Azure B2B] (https://docs.microsoft.com/de-de/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+- Hinzufügen von Benutzern als Gastbenutzer zu Ihrem Verzeichnis mit [Azure B2B] (https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
 - Manuelle Bereitstellung von Testversionen für Kunden über „Kontaktaufnahme“
 - Entwickeln einer „Testversion“ pro Kunde
 - Erstellen einer mehrinstanzenfähigen Beispiel-Demo-App mit SSO
@@ -510,7 +510,7 @@ Beachten Sie beim Erstellen eines Unternehmenskontos diese Richtlinien, wenn meh
 - Fügen Sie eine Telefonnummer hinzu, die keine Durchwahl benötigt, und auf die wichtige Teammitglieder zugreifen können.
 - Sorgen Sie im Allgemeinen dafür, dass Entwickler vertrauenswürdige Geräten verwenden, um sich beim Entwicklerkonto Ihres Unternehmens anzumelden. Alle wichtigen Teammitglieder sollten auf diese vertrauenswürdigen Geräten zugreifen können. Dies reduziert die Notwendigkeit, beim Zugriff auf das Konto Sicherheitscodes senden zu müssen.
 - Wenn Sie Zugriff auf das Konto von einem nicht vertrauenswürdigen PC zulassen müssen, begrenzen Sie den Zugriff auf ein Maximum von fünf Entwicklern. Im Idealfall sollten diese Entwickler mit Computern auf das Konto zugreifen, die den gleichen geografischen und Netzwerkstandort haben.
-- Überprüfen Sie die Sicherheitsinfos für Ihr Unternehmen regelmäßig unter [https://account.live.com/proofs/Manage](https://account.live.com/proofs/Manage), um sicherzustellen, dass sie aktuell sind.
+- Überprüfen Sie die Sicherheitsinformationen für Ihr Unternehmen regelmäßig unter [https://account.live.com/proofs/Manage](https://account.live.com/proofs/Manage), um sicherzustellen, dass sie aktuell sind.
 
 Auf Ihr Entwicklerkonto sollte in erster Linie mit vertrauenswürdigen PCs zugegriffen werden. Dies ist wichtig, da die Anzahl der pro Konto und Woche generierten Codes beschränkt ist. Darüber hinaus ermöglicht dies die nahtloseste Anmeldeerfahrung.
 Um weitere Informationen zu zusätzlichen Entwicklerkontorichtlinien und zur Sicherheit zu erhalten, klicken Sie [hier](https://docs.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account).
@@ -521,7 +521,7 @@ Ihr Firmenkonto kann mithilfe von [Azure Active Directory](https://docs.microsof
 
 Sie sollten eine neue E-Mail-Adresse in der **@outlook.com**-Domäne erstellen. Folgen Sie diesen Schritten:
 
-1. Wechseln Sie zu [https://signup.live.com/signup](https://signup.live.com/signup), und wählen Sie **Neue E-Mail-Adresse anfordern**.
+1. Wechseln Sie zu [https://signup.live.com/signup](https://signup.live.com/signup), und wählen Sie **Neue E-Mail-Adresse anfordern** aus.
 
 
 2. Erstellen Sie die neue E-Mail-Adresse, und geben Sie ein Kennwort ein. Dadurch werden eine neue Microsoft-ID und ein E-Mail-Postfach im outlook.com-Dienst erstellt. Setzen Sie die Registrierung fort, bis das Konto erstellt ist.
@@ -538,7 +538,7 @@ Nachdem dieser letzte Schritt abgeschlossen ist, wird alle E-Mail/Kommunikation 
 ### <a name="instructions-on-how-to-register-in-the-development-center"></a>Anweisungen zum Registrieren im Developer Center
 
 1. Öffnen Sie eine neue Internet Explorer-InPrivate- oder Chrome-Inkognito-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind.
-2. Wechseln Sie zu [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) , um sich im Developer Center als Verkäufer zu registrieren. Bitte lesen Sie den folgenden wichtigen Hinweis, bevor Sie fortfahren.
+2. Wechseln Sie zu [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure), um sich selbst als Verkäufer im Developer Center zu registrieren. Bitte lesen Sie den folgenden wichtigen Hinweis, bevor Sie fortfahren.
 
    ![Developer Center-E-Mail-Adresse](./media/marketplace-publishers-guide/registerdevcenteremail.png)
 
@@ -548,7 +548,7 @@ Nachdem dieser letzte Schritt abgeschlossen ist, wird alle E-Mail/Kommunikation 
    ![Kontoinformationen](./media/marketplace-publishers-guide/devcenterregistrationaccountinfo.png)
    
    >[!WARNING]
-   >„Verkäuferländer“: Um Ihre Dienste im Azure Marketplace verkaufen zu können, muss die registrierte Organisation in einem der obigen genehmigten „Verkäuferländer“ ansässig sein. Diese Einschränkung hat auszahlungstechnische und steuerliche Gründe. Weitere Informationen finden Sie unter den [Teilnahmerichtlinien für Microsoft Azure Marketplace]https://azure.microsoft.com/support/legal/marketplace/participation-policies/.
+   >„Verkäuferländer“: Um Ihre Dienste im Azure Marketplace verkaufen zu können, muss die registrierte Organisation in einem der obigen genehmigten „Verkäuferländer“ ansässig sein. Diese Einschränkung hat auszahlungstechnische und steuerliche Gründe. Weitere Informationen finden Sie in den [Marketplace-Teilnahmerichtlinien]https://azure.microsoft.com/support/legal/marketplace/participation-policies/.
 
 5. Wählen Sie als „Kontotyp“ **Unternehmen** aus, und klicken Sie dann auf die Schaltfläche **Weiter**.
 
@@ -607,7 +607,6 @@ Wenn Sie Angebote für den Erwerb veröffentlichen möchten, müssen Sie auch Au
 1. Melden Sie mit Ihrem Microsoft-Konto am [Microsoft Developer Center](https://dev.windows.com) an (falls erforderlich).
 2. Klicken Sie im Menü auf der linken Seite auf **Steuerprofil** .
 3. Wählen Sie auf der Seite **Richten Sie Ihr Steuerformular ein** das Land oder die Region aus, in dem bzw. der sich Ihr ständiger Wohnsitz befindet. Wählen Sie anschließend das Land oder die Region aus, dessen bzw. deren erste Staatsbürgerschaft Sie besitzen. Klicken Sie auf **Weiter**.
-
 4. Geben Sie Ihre Steuerdaten ein, und klicken Sie auf **Weiter**.
 
    >    [!WARNING]
@@ -615,7 +614,7 @@ Wenn Sie Angebote für den Erwerb veröffentlichen möchten, müssen Sie auch Au
 
 Wenn beim Abschließen der Developer Center-Registrierung Probleme auftreten, öffnen Sie wie nachfolgend beschrieben ein Supportticket:
 
-1. Klicken Sie auf den Supportlink „https://developer.microsoft.com/windows/support“.
+1. Wechseln Sie zum Supportlink https://developer.microsoft.com/windows/support.
 2. Klicken Sie im Abschnitt **Kontakt** auf die Schaltfläche **Vorfall übermitteln**, wie im folgenden Screenshot gezeigt.
 3. Wählen Sie „Hilfe zu Developer Center“ als **Problemtyp** und „Veröffentlichen und Verwalten von Apps“ als **Kategorie** aus. Klicken Sie anschließend auf die Schaltfläche „E-Mail starten“.
 

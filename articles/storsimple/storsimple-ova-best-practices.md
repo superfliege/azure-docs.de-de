@@ -1,24 +1,24 @@
 ---
-title: "StorSimple Virtual Array – Bewährte Methoden | Microsoft Docs"
-description: "Es werden die bewährten Methoden für die Bereitstellung und Verwaltung des StorSimple Virtual Array beschrieben."
+title: StorSimple Virtual Array – Bewährte Methoden | Microsoft-Dokumentation
+description: Es werden die bewährten Methoden für die Bereitstellung und Verwaltung des StorSimple Virtual Array beschrieben.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 57ac6eeb-c47c-442d-a5f4-b360d81a76a6
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/08/2017
+ms.date: 03/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 264764c5e9c32574d97beb2cc3c1bb1cfb555568
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46fd818d8ca15515c91bb6e65e99b0a3bc1f1fa4
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array – Bewährte Methoden
 ## <a name="overview"></a>Übersicht
@@ -38,7 +38,7 @@ Implementieren Sie die folgenden bewährten Methoden, wenn Sie das virtuelle Arr
 
 |  | Hyper-V | VMware |
 | --- | --- | --- |
-| **Typ des virtuellen Computers** |**2. Generation** für die Verwendung mit Windows Server 2012 oder höher und ein *VHDX* -Image. <br></br> **1. Generation** für die Verwendung mit Windows Server 2008 oder höher und ein *VHD* -Image. |Setzen Sie einen virtuellen Computer der Version 8 bis 11 ein, wenn Sie das *VMDK* -Image verwenden. |
+| **Typ des virtuellen Computers** |**2. Generation** für die Verwendung mit Windows Server 2012 oder höher und ein *VHDX* -Image. <br></br> **1. Generation** für die Verwendung mit Windows Server 2008 oder höher und ein *VHD* -Image. |Setzen Sie einen virtuellen Computer der Version 8 ein, wenn Sie das *VMDK*-Image verwenden. |
 | **Speichertyp** |Konfigurieren Sie dies als **statischen Speicher**. <br></br> Verwenden Sie nicht die Option **Dynamischer Arbeitsspeicher** . | |
 | **Datenträger für Daten** |Führen Sie die Bereitstellung als **Dynamisch erweiterbar** durch.<br></br> **Feste Größe** ist mit einem größeren Zeitaufwand verbunden. <br></br> Verwenden Sie nicht die Option **Differenzierend** . |Verwenden Sie die Option **Thin Provision** (Schlanke Speicherzuweisung). |
 | **Datenträgeränderung** |Eine Erweiterung oder Verkleinerung ist nicht zulässig. Wenn ein Versuch dieser Art gestartet wird, gehen alle lokalen Daten auf dem Gerät verloren. |Eine Erweiterung oder Verkleinerung ist nicht zulässig. Wenn ein Versuch dieser Art gestartet wird, gehen alle lokalen Daten auf dem Gerät verloren. |
@@ -210,7 +210,7 @@ Häufigkeit und Aufbewahrungsdauer von Standardsicherungen können nicht geände
 * Planen Sie Sicherungen für Zeiten außerhalb der Zeiträume mit Spitzenlast. Die Startzeit der Sicherung sollte nicht mit einer hohen E/A-Auslastung des Hosts zusammentreffen.
 * Initiieren Sie eine manuelle bedarfsgesteuerte Sicherung, wenn Sie die Durchführung eines Gerätefailovers planen, oder vor dem Wartungsfenster, um die Daten in Ihrem virtuellen Array zu schützen.
 
-### <a name="restore"></a>Wiederherstellen
+### <a name="restore"></a>Restore 
 Sie können die Wiederherstellung für einen Sicherungssatz auf zwei Arten durchführen: Führen Sie die Wiederherstellung auf einem anderen Volume oder einer anderen Freigabe durch, oder wählen Sie die Wiederherstellung auf Elementebene (nur für ein virtuelles Array verfügbar, das als Dateiserver konfiguriert ist). Bei der Wiederherstellung auf Elementebene können Sie die Dateien und Ordner einer Cloudsicherung für alle Freigaben des StorSimple-Geräts präzise wiederherstellen. Weitere Informationen finden Sie unter [Wiederherstellen aus einer Sicherung des StorSimple Virtual Array](storsimple-virtual-array-clone.md).
 
 Beachten Sie beim Durchführen einer Wiederherstellung die folgenden Richtlinien:
@@ -282,6 +282,6 @@ Ggf. müssen mehrere virtuelle Arrays bereitgestellt werden, um einen wachsenden
 * Für die Bereitstellung mehrerer virtueller Arrays empfehlen wir, das Array aus Sicht des Lastenausgleichs auf mehrere Hypervisor-Hosts aufzuteilen.
 * Mehrere virtuelle Arrays (bei Konfiguration als Dateiserver oder iSCSI-Server) können in einem Namespace für das verteilte Dateisystem (Distributed File System, DFS) bereitgestellt werden. Ausführliche Schritte finden Sie unter [Distributed File System Namespace Solution with Hybrid Cloud Storage Deployment Guide](https://www.microsoft.com/download/details.aspx?id=45507)(DFS-Namespacelösung mit Hybridcloudspeicher – Leitfaden zur Bereitstellung). Die DFS-Replikation ist für die Verwendung mit dem virtuellen Array derzeit nicht zu empfehlen. 
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 Informieren Sie sich über das [Verwalten des StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts](storsimple-virtual-array-manager-service-administration.md) .
 

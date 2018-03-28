@@ -1,9 +1,9 @@
 ---
-title: "Referenz zur Befehlszeilenschnittstelle für die Azure Machine Learning-Modellverwaltung | Microsoft-Dokumentation"
-description: "Referenz zur Befehlszeilenschnittstelle für die Azure Machine Learning-Modellverwaltung"
+title: Referenz zur Befehlszeilenschnittstelle für die Azure Machine Learning-Modellverwaltung | Microsoft-Dokumentation
+description: Referenz zur Befehlszeilenschnittstelle für die Azure Machine Learning-Modellverwaltung
 services: machine-learning
-author: raymondl
-ms.author: raymondl, aashishb
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/08/2017
-ms.openlocfilehash: 219c61d1842369caadaf8e85dcb039242c37ef6c
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 27361c5b92a8748a026d457875fadfc1f3529076
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="model-management-command-line-interface-reference"></a>Referenz zur Befehlszeilenschnittstelle für die Modellverwaltung
 
@@ -40,7 +40,7 @@ Ein Modellverwaltungskonto ist für die Nutzung der Dienste erforderlich, mit de
 
 **Erstellen des Kontos für die Modellverwaltung**
 
-Erstellen Sie das Konto für die Modellverwaltung mithilfe des folgenden Befehls. Dieses Konto wird für die Abrechnung verwendet.
+Erstellen Sie das Konto für die Modellverwaltung zur Abrechnung mithilfe des folgenden Befehls:
 
 `az ml account modelmanagement create --location [Azure region e.g. eastus2] --name [new account name] --resource-group [resource group name to store the account in]`
 
@@ -76,7 +76,7 @@ Es gibt zwei Optionen für die Bereitstellung: *local* und *cluster*. Das Festle
 
 `az ml env setup [-c] --location [location of environment resources] --name[name of environment]`
 
-Dies initialisiert Ihre Azure Machine Learning-Umgebung mit einem Speicherkonto, der ACR-Registrierung und dem Application Insights-Dienst, der in Ihrem Abonnement erstellt wird. Standardmäßig wird die Umgebung nur für lokale Bereitstellungen (ohne ACS) initialisiert, wenn kein Flag angegeben wird. Wenn Sie den Dienst skalieren müssen, geben Sie das Flag `--cluster` (oder `-c`) an, um einen ACS-Cluster zu erstellen.
+Dieser Befehl initialisiert Ihre Azure Machine Learning-Umgebung mit einem Speicherkonto, der ACR-Registrierung und dem Application Insights-Dienst, der in Ihrem Abonnement erstellt wird. Standardmäßig wird die Umgebung nur für lokale Bereitstellungen (ohne ACS) initialisiert, wenn kein Flag angegeben wird. Wenn Sie den Dienst skalieren müssen, geben Sie das Flag `--cluster` (oder `-c`) an, um einen ACS-Cluster zu erstellen.
 
 Befehlsdetails:
 
@@ -89,12 +89,12 @@ Befehlsdetails:
     --cluster -c                   : Flag to provision ACS cluster. Off by default; specify this to force an ACS cluster deployment.
     --key-pem                      : Path to .pem file with certificate key.
     --master-count -m              : Number of master nodes to provision in the ACS cluster. Acceptable values: 1, 3, 5. Default: 1.
-    --resource-group -g            : Resource group in which to create compute resource. Will be created if it does not exist.
-                                     If not provided, resource group will be created with 'rg' appended to 'name.'.
+    --resource-group -g            : Resource group in which to create compute resource. Is created if it does not exist.
+                                     If not provided, resource group is created with 'rg' appended to 'name.'.
     --service-principal-app-id -a  : App ID of service principal to use for configuring ML compute.
     --service-principal-password -p: Password associated with service principal.
     --storage -s                   : ARM ID of storage account to associate with this environment.
-    --yes -y                       : Flag to answer 'yes' to any prompts. Command will fail if user is not logged in.
+    --yes -y                       : Flag to answer 'yes' to any prompts. Command fails if user is not logged in.
 
 Globale Argumente
 ```
@@ -143,7 +143,7 @@ Globale Argumente
 
 **Erstellen eines Manifests**
 
-Erstellt eine Manifestdatei für das Modell. 
+Der folgende Befehl erstellt eine Manifestdatei für das Modell. 
 
 `az ml manifest create --manifest-name [your new manifest name] -f [path to code file] -r [runtime for the image, e.g. spark-py]`
 
@@ -289,7 +289,7 @@ Globale Argumente
 
 Hinweis zum Flag `-d` für das Anfügen von Abhängigkeiten: Wenn Sie den Namen eines Verzeichnisses übergeben, das nicht bereits komprimiert ist (ZIP, TAR usw.), wird dieses Verzeichnis automatisch komprimiert, übergeben und am anderen Ende dekomprimiert. 
 
-Wenn Sie ein Verzeichnis übergeben, das bereits komprimiert ist, wird es als Datei behandelt und unverändert übergeben. Es wird nicht automatisch dekomprimiert. Es wird erwartet, dass Sie in Ihrem Code dafür sorgen.
+Wenn Sie ein Verzeichnis übergeben, das bereits komprimiert ist, wird das Verzeichnis als Datei behandelt und unverändert übergeben. Es wird automatisch dekomprimiert. Es wird erwartet, dass Sie in Ihrem Code dafür sorgen.
 
 **Abrufen von Dienstdetails**
 

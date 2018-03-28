@@ -1,11 +1,11 @@
 ---
 title: Ausgehende Verbindungen in Azure | Microsoft-Dokumentation
-description: "In diesem Artikel wird erläutert, wie Azure virtuellen Computern die Kommunikation mit öffentlichen Internetdiensten ermöglicht."
+description: In diesem Artikel wird erläutert, wie Azure virtuellen Computern die Kommunikation mit öffentlichen Internetdiensten ermöglicht.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/05/2018
 ms.author: kumud
-ms.openlocfilehash: 1c776d94d217622186d880352c518ad5a34b0949
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 32661ad4d647f266273c4c94a5ba177a348c5431
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
-
+>[!NOTE]
+> Die Load Balancer Standard-SKU ist zurzeit als Preview verfügbar. Während der Previewphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Verwenden Sie die allgemein verfügbare [Load Balancer Basic-SKU](load-balancer-overview.md) für Ihre Produktionsdienste. Zur Verwendung der [Verfügbarkeitszonen (Vorschau)](https://aka.ms/availabilityzones) mit dieser Vorschau ist zusätzlich zur Registrierung für Load Balancer [Standard (Vorschau)](#preview-sign-up) eine [separate Registrierung](https://aka.ms/availabilityzones) erforderlich.
 
 In Azure wird die Konnektivität in ausgehender Richtung für Benutzerbereitstellungen mit mehreren unterschiedlichen Mechanismen erzielt. In diesem Artikel wird beschrieben, welche Szenarien es gibt, wann sie zutreffen, wie sie funktionieren und wie sie verwaltet werden.
 
@@ -33,7 +33,10 @@ Azure verwendet für diese Aufgabe das Verfahren „Übersetzung der Quellnetzwe
 
 Es gibt mehrere [Szenarien für die ausgehende Richtung](#scenarios). Diese Szenarien können nach Bedarf kombiniert werden. Prüfen Sie sie sorgfältig, um die Funktionen, Einschränkungen und Muster sowie die damit verbundenen Auswirkungen auf Ihr Bereitstellungsmodell und Anwendungsszenario zu verstehen. Sehen Sie sich die Anleitung zur [Verwaltung dieser Szenarien](#snatexhaust) an.
 
-## <a name="scenarios"></a>Übersicht über die Szenarien
+>[!IMPORTANT] 
+>Standard Load Balancer führt neue Fähigkeiten und anderes Verhalten für ausgehende Verbindungen ein.   Beispielsweise gibt es [Szenario 3](#defaultsnat) nicht, wenn ein interner Standard Load Balancer vorhanden ist und andere Schritte durchgeführt werden müssen.   Lesen Sie dieses ganze Dokument sorgfältig durch, um die Gesamtkonzepte und Unterschiede zwischen den einzelnen SKUs zu verstehen.
+
+## <a name="scenarios"></a>Übersicht über das Szenario
 
 Azure verfügt über zwei Hauptmodelle für die Bereitstellung: Azure Resource Manager und klassisch. Azure Load Balancer und die zugehörigen Ressourcen werden bei Verwendung von [Azure Resource Manager](#arm) explizit definiert. Bei klassischen Bereitstellungen wird das Konzept eines Lastenausgleichs abstrahiert und eine ähnliche Funktion ausgedrückt, indem die Endpunkte eines [Clouddiensts](#classic) definiert werden. Welche [Szenarien](#scenarios) auf Ihre Bereitstellung anwendbar sind, hängt von dem verwendeten Bereitstellungsmodell ab.
 
@@ -67,7 +70,7 @@ Wenn Ihre Anwendung viele ausgehende Datenflüsse initiiert und es zu einer Übe
 
 ### <a name="lb"></a>Szenario 2: Virtueller Computer mit Lastenausgleich ohne öffentliche IP-Adresse auf Instanzebene
 
-Bei diesem Szenario ist die VM Teil eines Back-End-Pools für den öffentlichen Lastenausgleich. Der VM ist keine öffentliche IP-Adresse zugewiesen. Die Lastenausgleichsressource muss mit einer Lastenausgleichsregel zum Erstellen einer Verknüpfung der öffentlichen Front-End-IP mit dem Back-End-Pool konfiguriert werden. 
+Bei diesem Szenario ist die VM Teil eines Back-End-Pools für den öffentlichen Lastenausgleich. Der VM ist keine öffentliche IP-Adresse zugewiesen. Die Lastenausgleichsressource muss mit einer Lastenausgleichsregel zum Erstellen einer Verknüpfung der öffentlichen Front-End-IP mit dem Back-End-Pool konfiguriert werden.
 
 Wenn Sie diese Regelkonfiguration nicht abschließen, ergibt sich das Verhalten wie oben unter [Eigenständige VM ohne öffentliche IP-Adresse auf Instanzebene](#defaultsnat) beschrieben. Die Regel muss nicht über einen funktionierenden Listener im Back-End-Pool verfügen, damit der Integritätstest erfolgreich durchgeführt werden kann.
 
@@ -75,7 +78,7 @@ Wenn die dem Lastenausgleich unterliegende VM einen ausgehenden Datenfluss erste
 
 Mit kurzlebigen Ports der öffentlichen Front-End-IP-Adresse des Lastenausgleich werden die einzelnen Datenflüsse unterschieden, die von dem virtuellen Computer stammen. Beim Erstellen ausgehender Datenflüsse werden für SNAT [vorab zugewiesene kurzlebige Ports](#preallocatedports) verwendet. In diesem Zusammenhang werden die kurzlebigen für SNAT verwendeten Ports als SNAT-Ports bezeichnet.
 
-SNAT-Ports werden vorab zugeordnet, wie im Abschnitt [Grundlagen von SNAT und PAT](#snat) beschrieben. Es handelt sich um eine begrenzte Ressource, die überlastet werden kann. Es ist wichtig zu verstehen, wie sie [genutzt](#pat) werden. Um zu verstehen, wie Sie diese Nutzung beim Entwurf berücksichtigen und je nach Bedarf Abhilfemaßnahmen schaffen können, lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust).
+SNAT-Ports werden vorab zugeordnet, wie im Abschnitt [Grundlagen von SNAT und PAT](#snat) beschrieben. Es handelt sich um eine begrenzte Ressource, die überlastet werden kann. Es ist wichtig zu verstehen, wie sie [genutzt](#pat) wird. Um zu verstehen, wie Sie diese Nutzung beim Entwurf berücksichtigen und je nach Bedarf Abhilfemaßnahmen schaffen können, lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust).
 
 Wenn [Load Balancer Basic mehrere (öffentliche) IP-Adressen zugeordnet sind](load-balancer-multivip-overview.md), sind diese öffentlichen IP-Adressen [Kandidaten für ausgehende Datenflüsse](#multivipsnat), und eine davon wird ausgewählt.  
 
@@ -83,11 +86,14 @@ Zum Überwachen der Integrität ausgehender Verbindungen mit Load Balancer Basic
 
 ### <a name="defaultsnat"></a>Szenario 3: Eigenständiger virtueller Computer ohne öffentliche IP-Adresse auf Instanzebene
 
-In diesem Szenario gehört der virtuelle Computer nicht zu einem Azure Load Balancer-Pool, und ihm ist keine öffentliche IP-Adresse auf Instanzebene zugewiesen. Wenn der virtuelle Computer einen ausgehenden Datenfluss einleitet, übersetzt Azure die private IP-Quelladresse für den ausgehenden Datenfluss in eine öffentliche IP-Quelladresse. Die für diesen ausgehenden Datenfluss verwendete öffentliche IP-Adresse ist nicht konfigurierbar und wird nicht auf die Ressourcengrenze des Abonnements für öffentliche IP-Adressen angerechnet. 
+In diesem Szenario gehört die VM nicht zu einem öffentlichen Load Balancer-Pool (und sie ist nicht Teil eines internen Standard Load Balancer-Pools), und ihr ist keine ILPIP-Adresse zugewiesen. Wenn der virtuelle Computer einen ausgehenden Datenfluss einleitet, übersetzt Azure die private IP-Quelladresse für den ausgehenden Datenfluss in eine öffentliche IP-Quelladresse. Die für diesen ausgehenden Datenfluss verwendete öffentliche IP-Adresse ist nicht konfigurierbar und wird nicht auf die Ressourcengrenze des Abonnements für öffentliche IP-Adressen angerechnet.
 
-Azure verwendet SNAT mit Portmaskierung ([PAT](#pat)) für diese Aufgabe. Dieses Szenario ähnelt [Szenario 2](#lb). Der Unterschied besteht darin, dass keine Steuerung der IP-Adresse verwendet wird. Dies ist ein Fallbackszenario für den Fall, dass Szenario 1 und Szenario 2 nicht vorhanden sind. Dieses Szenario wird nicht empfohlen, wenn eine Kontrolle über die ausgehende Adresse gewünscht ist.
+>[!IMPORTANT] 
+>Dieses Szenario gilt auch, wenn __nur__ ein interner Basic Load Balancer verknüpft ist. Szenario 3 ist __nicht verfügbar__, wenn ein interner Standard Load Balancer mit einer VM verknüpft ist.  Sie müssen [Szenario 1](#ilpip) oder [Szenario 2](#lb) zusätzlich zu einem internen Standard Load Balancer explizit erstellen.
 
-SNAT-Ports werden vorab zugeordnet, wie im Abschnitt [Grundlagen von SNAT und PAT](#snat) beschrieben. Es handelt sich um eine begrenzte Ressource, die überlastet werden kann. Es ist wichtig zu verstehen, wie sie [genutzt](#pat) wird. Um zu verstehen, wie Sie diese Nutzung beim Entwurf berücksichtigen und je nach Bedarf Abhilfemaßnahmen schaffen können, lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust).
+Azure verwendet SNAT mit Portmaskierung ([PAT](#pat)) für diese Aufgabe. Dieses Szenario ähnelt [Szenario 2](#lb). Der Unterschied besteht darin, dass keine Steuerung der IP-Adresse verwendet wird. Dies ist ein Fallbackszenario für den Fall, dass Szenario 1 und Szenario 2 nicht vorhanden sind. Dieses Szenario wird nicht empfohlen, wenn eine Kontrolle über die ausgehende Adresse gewünscht ist. Wenn ausgehende Verbindungen ein wichtiger Teil Ihrer Anwendung sind, sollten Sie ein anderes Szenario wählen.
+
+SNAT-Ports werden vorab zugeordnet, wie im Abschnitt [Grundlagen von SNAT und PAT](#snat) beschrieben.  Die Anzahl der VMs, die sich eine Verfügbarkeitsgruppe teilen, bestimmt, welche Stufe der Vorabzuordnung gilt.  Eine eigenständige VM ohne Verfügbarkeitsgruppe ist effektiv ein Pool von 1 für die Ermittlung der Vorabzuordnung (1024 SNAT-Ports). SNAT Ports sind begrenzte Ressourcen, die sich erschöpfen können. Es ist wichtig zu verstehen, wie sie [genutzt](#pat) wird. Um zu verstehen, wie Sie diese Nutzung beim Entwurf berücksichtigen und je nach Bedarf Abhilfemaßnahmen schaffen können, lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust).
 
 ### <a name="combinations"></a>Mehrere kombinierte Szenarien
 
@@ -95,9 +101,31 @@ Sie können die in den vorherigen Abschnitten beschriebenen Szenarien kombiniere
 
 Ein Beispiel hierfür ist eine Azure Resource Manager-Bereitstellung, bei der die Anwendung stark von ausgehenden Verbindungen mit einer begrenzten Anzahl von Zielen abhängig ist, aber auch eingehende Datenflüsse über ein Front-End des Lastenausgleichs empfängt. In diesem Fall können Sie als Lösung die Szenarien 1 und 2 kombinieren. Informationen zu zusätzlichen Mustern finden Sie unter [Verwalten der SNAT-Auslastung](#snatexhaust).
 
-### <a name="multivipsnat"></a>Mehrere Front-Ends für ausgehende Datenflüsse
+### <a name="multife"></a>Mehrere Front-Ends für ausgehende Datenflüsse
+
+#### <a name="load-balancer-basic"></a>Load Balancer Basic
 
 Load Balancer Basic wählt ein einzelnes Front-End für ausgehende Datenflüsse aus, wenn [mehrere (öffentliche) Front-End-IP-Adressen](load-balancer-multivip-overview.md) Kandidaten für ausgehende Datenflüsse sind. Diese Auswahl ist nicht konfigurierbar; Sie sollten den Auswahlalgorithmus als zufällig betrachten. Sie können für ausgehende Datenflüsse eine bestimmte IP-Adresse festlegen, wie unter [Mehrere kombinierte Szenarien](#combinations) beschrieben.
+
+#### <a name="load-balancer-standard"></a>Load Balancer Standard
+
+Load Balancer Standard verwendet alle Kandidaten für ausgehende Datenflüsse, wenn gleichzeitig [mehrere (öffentliche) IP-Front-Ends](load-balancer-multivip-overview.md) vorhanden sind. Jedes Front-End multipliziert die Anzahl von verfügbaren, vorab zugeordneten SNAT-Ports, wenn eine Lastenausgleichsregel für ausgehende Verbindungen aktiviert ist.
+
+Sie können die Verwendung einer Front-End-IP-Adresse für ausgehende Verbindungen mit einer neuen Option für Lastausgleichsregeln unterdrücken:
+
+```json    
+      "loadBalancingRules": [
+        {
+          "disableOutboundSnat": false
+        }
+      ]
+```
+
+Normalerweise ist diese Option auf _false_ voreingestellt und bedeutet, dass diese Regel den ausgehenden SNAT für die zugehörigen VMs im Back-End-Pool der Lastenausgleichsregel programmiert.  Diese kann auf _true_ gesetzt werden, um zu verhindern, dass für den Lastenausgleich die zugehörige Front-End-IP-Adresse für ausgehende Verbindungen der VMs im Back-End-Pool dieser Lastenausgleichsregel verwendet wird.  Zudem können Sie noch immer für ausgehende Datenflüsse eine bestimmte IP-Adresse festlegen, wie unter [Mehrere kombinierte Szenarien](#combinations) beschrieben.
+
+### <a name="az"></a>Verfügbarkeitszonen
+
+Bei Verwendung von [Standard Load Balancer mit Verfügbarkeitszonen](load-balancer-standard-availability-zones.md) können zonenredundante ausgehende SNAT-Verbindungen von zonenredundanten Front-Ends bereitgestellt werden. Die SNAT-Programmierung ist nach Zonenausfällen noch immer vorhanden.  Wenn zonenbezogene Front-Ends verwendet werden, geschieht mit ausgehenden SNAT-Verbindungen dasselbe wie mit der Zone, zu der sie gehören.
 
 ## <a name="snat"></a>Grundlagen von SNAT und PAT
 
@@ -132,40 +160,53 @@ In der folgenden Tabelle sind die SNAT-Port-Vorabzuordnungen für die Ebenen der
 | 401-800 | 64 |
 | 801-1.000 | 32 |
 
+>[!NOTE]
+> Bei Verwendung von Standard Load Balancer mit [mehreren Front-Ends](load-balancer-multivip-overview.md) [multipliziert jede Front-End-IP-Adresse die Anzahl der verfügbaren SNAT-Ports](#multivipsnat) in der vorherigen Tabelle. Beispielsweise verwendet ein Back-End-Pool von 50 VMs mit zwei Lastenausgleichsregeln, jede mit einer eigenen Front-End-IP-Adresse, 2048 (2 x 1024) SNAT-Ports pro IP-Konfiguration. Weitere Informationen finden Sie in den Details zu [mehreren Front-Ends](#multife).
+
 Denken Sie daran, dass die Anzahl der verfügbaren SNAT-Ports nicht direkt in die Anzahl der Datenflüsse zu übersetzen ist. Ein einzelner SNAT-Port kann für mehrere eindeutige Ziele wiederverwendet werden. Ports werden nur genutzt, wenn Datenflüsse eindeutig gemacht werden müssen. Eine Anleitung für den Entwurf und Lösungsmöglichkeiten finden Sie in den Abschnitten, in den die [Verwaltung dieser begrenzten Ressource](#snatexhaust) und [PAT](#pat) beschrieben sind.
 
 Von einer Größenänderung Ihres Back-End-Pools können einige der eingerichteten Datenflüsse betroffen sein. Wenn die Größe des Back-End-Pools zunimmt und der Übergang auf die nächste Ebene erfolgt, wird die Hälfte der vorab zugeordneten SNAT-Ports während des Übergangs zur nächstgrößeren Back-End-Poolebene freigegeben. Bei Datenflüssen, die einem wieder freigegebenen SNAT-Port zugeordnet sind, tritt ein Timeout auf, und sie müssen neu eingerichtet werden. Versuche zum Einrichten eines neuen Datenflusses sind sofort erfolgreich, solange vorab zugeordnete Ports verfügbar sind.
 
 Wenn sich die Größe des Back-End-Pools reduziert und der Übergang auf eine niedrigere Ebene erfolgt, nimmt die Anzahl der verfügbaren SNAT-Ports zu. In diesem Fall sind vorhandene zugeordnete SNAT-Ports und die entsprechenden Datenflüsse nicht betroffen.
 
-## <a name="snatexhaust"></a>Verwalten der SNAT-Auslastung (PAT)
+## <a name="problemsolving"></a> Problembehebung 
 
+Dieser Abschnitt soll dazu beitragen, die SNAT-Überlastung und andere Szenarien, die bei ausgehenden Verbindungen in Azure auftreten können, zu verringern.
+
+### <a name="snatexhaust"></a>Verwalten der SNAT-Portauslastung (PAT)
 Für [PAT](#pat) verwendete [kurzlebige Ports](#preallocatedports) sind eine begrenzte Ressource, wie unter [Eigenständiger virtueller Computer ohne öffentliche IP-Adresse auf Instanzebene](#defaultsnat) und [Virtueller Computer mit Lastenausgleich ohne öffentliche IP-Adresse auf Instanzebene](#lb) beschrieben.
 
 Wenn Sie wissen, dass Sie viele ausgehende TCP- oder UDP-Verbindungen zu derselben IP-Zieladresse und demselben Port initiieren und Fehler bei ausgehenden Verbindungen feststellen oder vom Support darauf hingewiesen werden, dass Sie zu viele SNAT-Ports (vorab zugeordnete [kurzlebige Ports](#preallocatedports), die für [PAT](#pat) verwendet werden) in Anspruch nehmen, stehen Ihnen mehrere Lösungsmöglichkeiten zur Verfügung. Überprüfen Sie diese Optionen, und entscheiden Sie, welche für Ihr Szenario verfügbar und am besten geeignet sind. Möglicherweise kann die ein oder andere die Verwaltung dieses Szenarios erleichtern.
 
 Wenn Sie Probleme haben, das Verhalten der ausgehenden Verbindungen zu verstehen, können Sie die IP-Stapelstatistiken (netstat) verwenden. Es kann aber auch hilfreich sein, das Verbindungsverhalten mithilfe von Paketerfassungen zu beobachten. Sie können diese Paketerfassungen im Gastbetriebssystem Ihrer Instanz durchführen oder [Network Watcher für die Paketerfassung](../network-watcher/network-watcher-packet-capture-manage-portal.md) verwenden.
 
-### <a name="connectionreuse"></a>Ändern der Anwendung für die Wiederverwendung von Verbindungen 
+#### <a name="connectionreuse"></a>Ändern der Anwendung für die Wiederverwendung von Verbindungen 
 Sie können den Bedarf an kurzlebigen Ports, die für SNAT verwendet werden, durch Wiederverwenden von Verbindungen in der Anwendung reduzieren. Dies gilt insbesondere für Protokolle wie HTTP/1.1, das standardmäßig Verbindungen wiederverwendet. Andere Protokolle, die HTTP als Transportprotokoll verwenden (z. B. REST) können davon wiederum profitieren. 
 
 Die Wiederverwendung ist immer besser als einzelne, unteilbare TCP-Verbindungen für jede Anforderung. Die Wiederverwendung führt zu leistungsfähigeren, sehr effizienten TCP-Transaktionen.
 
-### <a name="connection pooling"></a>Ändern der Anwendung für die Verwendung von Verbindungspooling
+#### <a name="connection pooling"></a>Ändern der Anwendung für die Verwendung von Verbindungspooling
 Sie können in Ihrer Anwendung ein Verbindungspoolingschema verwenden, bei dem Anforderungen intern auf einen festen Satz von Verbindungen verteilt werden (wobei die Verbindungen möglichst wiederverwendet werden). Bei diesem Schema wird die Anzahl der verwendeten kurzlebigen Ports eingeschränkt und eine besser vorhersagbare Umgebung erstellt. Dies kann auch den Durchsatz von Anforderungen erhöhen, da mehrere gleichzeitige Vorgänge zugelassen werden, wenn eine einzelne Verbindung durch die Antwort eines Vorgangs blockiert wird.  
 
 Verbindungspooling ist möglicherweise innerhalb des Frameworks, das Sie zum Entwickeln Ihrer Anwendung oder der Konfigurationseinstellungen für Ihre Anwendung verwenden, bereits vorhanden. Sie können das Verbindungspooling mit der Wiederverwendung von Verbindungen kombinieren. Mehrere Anforderungen nutzen dann eine feste vorhersagbare Anzahl von Ports für die gleiche IP-Zieladresse und den gleichen Port. Bei den Anforderungen profitieren Sie außerdem von der effizienten Verwendung von TCP-Transaktionen, was zu niedrigeren Latenzzeiten und geringerer Ressourcenauslastung führt. Auch bei den UDP-Transaktionen können Sie profitieren, da Sie durch das Verwalten der Anzahl von UDP-Datenflüssen wiederum Zustände mit Überlastung vermeiden und die SNAT-Portauslastung verwalten können.
 
-### <a name="retry logic"></a>Ändern der Anwendung für die Verwendung weniger aggressiver Wiederholungslogik
+#### <a name="retry logic"></a>Ändern der Anwendung für die Verwendung weniger aggressiver Wiederholungslogik
 Wenn die für [PAT](#pat) verwendeten [vorab zugeordneten kurzlebigen Ports](#preallocatedports) erschöpft sind oder Anwendungsfehler auftreten, führen aggressive oder Brute-Force-Wiederholungsversuche ohne Verfalls- und Backofflogik zu Erschöpfung oder gar anhaltender Erschöpfung. Sie können den Bedarf an kurzlebigen Ports durch Verwendung einer weniger aggressiven Wiederholungslogik reduzieren. 
 
 Kurzlebige Ports haben ein Leerlauftimeout von vier Minuten (nicht veränderbar). Wenn die Wiederholungen zu aggressiv sind, besteht keine Möglichkeit, dass sich die Überlastung von alleine erholt. Daher ist die Überlegung, wie und wie oft Ihre Anwendung Transaktionen wiederholen soll, ein wichtiger Aspekt des Entwurfs.
 
-### <a name="assignilpip"></a>Zuweisen einer öffentlichen IP-Adresse auf Instanzebene für jeden virtuellen Computer
+#### <a name="assignilpip"></a>Zuweisen einer öffentlichen IP-Adresse auf Instanzebene für jeden virtuellen Computer
 Durch das Zuweisen einer öffentlichen IP-Adresse auf Instanzebene erhalten Sie das Szenario [Virtueller Computer mit öffentlicher IP-Adresse auf Instanzebene](#ilpip). Alle kurzlebigen Ports für die öffentliche IP-Adresse, die für jeden virtuellen Computer verwendet werden, sind für den virtuellen Computer verfügbar. (Das steht im Gegensatz zu Szenarien, bei denen kurzlebige Ports für eine öffentliche IP-Adresse von allen virtuellen Computern, die dem entsprechenden Back-End-Pool zugeordnet sind, gemeinsam genutzt werden.) Es müssen auch Nachteile berücksichtigt werden, wie beispielsweise zusätzliche Kosten für öffentliche IP-Adressen und mögliche Auswirkungen des Whitelistings für eine große Anzahl einzelner IP-Adressen.
 
 >[!NOTE] 
 >Diese Option ist für Webworkerrollen nicht verfügbar.
+
+#### <a name="multifesnat"></a>Verwenden mehrerer Front-Ends
+
+Bei Verwendung des öffentlichen Standard Load Balancers vergeben Sie [mehrere Front-End-IP-Adressen für ausgehende Verbindungen](#multife) und [multiplizieren die Anzahl der verfügbaren SNAT-Ports](#preallocatedports).  Sie müssen eine Front-End-IP-Konfiguration, eine Regel und einen Back-End-Pool anlegen, um die Programmierung von SNAT auf die öffentliche IP-Adresse des Front-Ends auszulösen.  Die Regel muss nicht funktionieren, und ein Integritätstest muss nicht erfolgreich sein.  Wenn Sie auch für eingehende (und nicht nur für ausgehende) Datenflüsse mehrere Front-Ends verwenden, sollten Sie benutzerdefinierte Integritätstests verwenden, um die Zuverlässigkeit zu gewährleisten.
+
+>[!NOTE]
+>In den meisten Fällen ist die Überlastung der SNAT-Ports ein Zeichen für ein schlechtes Design.  Stellen Sie sicher, dass die Gründe für die Portüberlastung kennen, bevor Sie weitere Front-Ends verwenden, um SNAT-Ports hinzuzufügen.  Möglicherweise verdecken Sie ein Problem, das später zu Fehlern führen kann.
 
 ### <a name="idletimeout"></a>Verwenden von Keepalives zum Zurücksetzen des Leerlauftimeouts für ausgehende Verbindungen
 
@@ -184,6 +225,9 @@ Manchmal ist es nicht wünschenswert, einem virtuellen Computer das Erstellen ei
 Wenn Sie eine Netzwerksicherheitsgruppe einem virtuellen Computer mit Lastenausgleich zuordnen, müssen Sie auf die [Standardtags](../virtual-network/virtual-networks-nsg.md#default-tags) und [Standardregeln](../virtual-network/virtual-networks-nsg.md#default-rules) achten. Sie müssen sicherstellen, dass die VM Anforderungen von Integritätstests von Azure Load Balancer empfangen kann. 
 
 Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Standardtag AZURE_LOADBALANCER blockiert, misslingt Ihr VM-Integritätstests, weshalb die VM mit „Außer Betrieb“ markiert wird. Der Lastenausgleich beendet das Senden neuer Datenflüsse an diese VM.
+
+## <a name="limitations"></a>Einschränkungen
+- DisableOutboundSnat ist bei der Konfiguration einer Lastausgleichsregel im Portal nicht als Option verfügbar.  Verwenden Sie stattdessen REST, eine Vorlage oder Clienttools.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

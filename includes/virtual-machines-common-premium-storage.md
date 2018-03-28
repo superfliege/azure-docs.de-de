@@ -57,10 +57,12 @@ Hier sind einige Features von Storage Premium aufgeführt:
 
     Ein Premium-Speicherkonto unterstützt nur lokal redundanten Speicher als Replikationsoption. Beim lokal redundanten Speicher werden drei Kopien der Daten in derselben Region aufbewahrt. Für die regionale Notfallwiederherstellung müssen Sie Ihre VM-Datenträger mit [Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) in einer anderen Region sichern. Außerdem ist es erforderlich, ein GRS-Konto (georedundanter Speicher) als Sicherungstresor zu verwenden. 
 
-    Von Azure wird Ihr Speicherkonto als Container für Ihre nicht verwalteten Datenträger genutzt. Wenn Sie einen virtuellen Azure-Computer der DS-, DSv2-, GS- oder Fs-Serie von Azure mit nicht verwalteten Datenträgern erstellen und ein Premium-Speicherkonto auswählen, werden Ihr Betriebssystem und die Datenträger in diesem Speicherkonto gespeichert.
+    Von Azure wird Ihr Speicherkonto als Container für Ihre nicht verwalteten Datenträger genutzt. Wenn Sie einen virtuellen Azure-Computer, der Storage Premium unterstützt, mit nicht verwalteten Datenträgern erstellen und ein Storage Premium-Konto auswählen, werden Ihr Betriebssystem und die Datenträger in diesem Speicherkonto gespeichert.
 
 ## <a name="supported-vms"></a>Unterstützte VMs
-Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS-, Ls-, Fs- und B-Serie. Mit diesen VM-Typen können Sie Standard- und Premium-Speicherdatenträger verwenden. Sie können keine Premium-Speicherdatenträger für VM-Serien verwenden, die nicht mit Storage Premium kompatibel sind.
+
+Storage Premium unterstützt virtuelle Computer der B-, DS-, DSv2-, DSv3-, GS-, Ls-, M- und Fs-Serie. Mit diesen VM-Typen können Sie Standard- und Premium-Speicherdatenträger verwenden. Sie können keine Premium-Speicherdatenträger für VM-Serien verwenden, die nicht mit Storage Premium kompatibel sind.
+
 
 Informationen zu VM-Typen und -Größen in Azure für Windows finden Sie unter [Windows-VM-Größen](../articles/virtual-machines/windows/sizes.md). Informationen zu VM-Typen und -Größen in Azure für Linux finden Sie unter [Linux-VM-Größen](../articles/virtual-machines/linux/sizes.md).
 

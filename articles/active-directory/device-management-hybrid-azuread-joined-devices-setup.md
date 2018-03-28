@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 188f02aa69d7b39bc5bc4873b437825107a7ae4e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -62,7 +62,13 @@ In diesem Thema werden die folgenden Bezeichnungen verwendet, um die Lesbarkeit 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie mit dem Aktivieren von in Azure AD eingebundenen Hybridgeräten in Ihrer Organisation beginnen, müssen Sie sicherstellen, dass Sie eine aktuelle Version von Azure AD Connect verwenden.
+Bevor Sie beginnen, in Hybrid-Azure AD eingebundene Geräte in Ihrem Unternehmen zu aktivieren, müssen Sie Folgendes sicherstellen:
+
+- Sie führen eine aktuelle Version von Azure AD Connect aus.
+
+- Azure AD hat die Computerobjekte der Geräte für die Hybrid-Azure AD-Einbindung mit Azure AD synchronisiert. Wenn die Computerobjekte zu bestimmten Organisationseinheiten (OEs) gehören, müssen diese OEs auch für die Synchronisierung in Azure AD Connect konfiguriert werden.
+
+  
 
 Azure AD Connect:
 
@@ -145,7 +151,7 @@ Mit dem folgenden Skript wird ein Beispiel für die Verwendung des Cmdlets veran
 Für das `Initialize-ADSyncDomainJoinedComputerSync`-Cmdlet gilt Folgendes:
 
 - Es verwendet das Active Directory-PowerShell-Modul und die AD DS-Tools, die von der Ausführung von Active Directory-Webdiensten auf einem Domänencontroller abhängig sind. Active Directory-Webdienste werden auf Domänencontrollern mit Windows Server 2008 R2 und höher unterstützt.
-- Es wird nur von der **MSOnline PowerShell-Modulversion 1.1.166.0** unterstützt. Dieses Modul können Sie [hier](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185) herunterladen.   
+- Es wird nur von der **MSOnline PowerShell-Modulversion 1.1.166.0** unterstützt. Dieses Modul können Sie [hier](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/) herunterladen.   
 - Wenn die AD DS-Tools nicht installiert sind, tritt bei `Initialize-ADSyncDomainJoinedComputerSync` ein Fehler auf.  Die AD DS-Tools können über Server-Manager unter „Features“ > „Remoteserver-Verwaltungstools“ > „Rollenverwaltungstools“ installiert werden.
 
 Verwenden Sie für Domänencontroller mit Windows Server 2008 oder früher das unten angegebene Skript zum Erstellen des Dienstverbindungsendpunkts.
@@ -306,7 +312,7 @@ Mithilfe der Definition können Sie überprüfen, ob die Werte vorhanden sind od
 
 Im Anspruch oben
 
-- ist `<verified-domain-name>` ein Platzhalter, den Sie durch einen Ihrer überprüften Domänennamen in Azure AD ersetzen müssen. Beispiel: Wert = „http://contoso.com/adfs/services/trust/“
+- ist `<verified-domain-name>` ein Platzhalter, den Sie durch einen Ihrer überprüften Domänennamen in Azure AD ersetzen müssen. Zum Beispiel: Wert = „http://contoso.com/adfs/services/trust/“
 
 
 

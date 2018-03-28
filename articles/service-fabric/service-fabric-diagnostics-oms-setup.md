@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric: Einrichten der Überwachung mit OMS Log Analytics | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Operations Management Suite für die Visualisierung und Analyse von Ereignissen einrichten, um Ihre Azure Service Fabric-Cluster zu überwachen."
+title: 'Azure Service Fabric: Einrichten der Überwachung mit OMS Log Analytics | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie die Operations Management Suite für die Visualisierung und Analyse von Ereignissen einrichten, um Ihre Azure Service Fabric-Cluster zu überwachen.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2017
 ms.author: dekapur
-ms.openlocfilehash: 288c7482058cd9f824b6001bb9ad36d1a5e0f8bf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 98ac32b011744ce388762322edd538b467f93494
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>Einrichten von Operations Management Suite Log Analytics für einen Cluster
 
@@ -48,7 +48,7 @@ Wenn Sie Windows verwenden, fahren Sie mit den folgenden Schritten zum Verknüpf
 >[!NOTE]
 >Für Linux-Cluster ist dies noch nicht verfügbar. 
 
-### <a name="add-the-oms-agent-to-your-cluster"></a>Hinzufügen des OMS-Agents zu Ihrem Cluster 
+### <a name="connect-the-oms-workspace-to-your-cluster"></a>Verbinden des OMS-Arbeitsbereichs mit Ihrem Cluster 
 
 1. Der Arbeitsbereich muss mit den Diagnosedaten aus Ihrem Cluster verknüpft werden. Navigieren Sie zu der Ressourcengruppe, in der Sie die Lösung der Service Fabric-Analyse erstellt haben. Wählen Sie **ServiceFabric\<OMS-Arbeitsbereichsname\>** aus, und wechseln Sie zur zugehörigen Übersichtsseite. Dort können Sie Lösungseinstellungen und Arbeitsbereichseinstellungen ändern und auf das OMS-Portal zugreifen.
 

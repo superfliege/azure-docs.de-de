@@ -1,9 +1,9 @@
 ---
-title: "Überwachen von Azure-Anwendungen und -Ressourcen | Microsoft-Dokumentation"
-description: "Übersicht über die Microsoft-Dienste und -Funktionen, die zu einer vollständigen Überwachungsstrategie für Ihre Azure-Dienste und -Anwendungen beitragen."
+title: Überwachen von Azure-Anwendungen und -Ressourcen | Microsoft-Dokumentation
+description: Übersicht über die Microsoft-Dienste und -Funktionen, die zu einer vollständigen Überwachungsstrategie für Ihre Azure-Dienste und -Anwendungen beitragen.
 author: robb
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 1b962c74-8d36-4778-b816-a893f738f92d
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: d8da175a551f7c589c313b2289b2a0209dbd2b56
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a6a15c1b6a017839eb072ba72b48b714c50fd6c0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Überwachen von Azure-Anwendungen und -Ressourcen
 
@@ -28,67 +28,17 @@ Azure umfasst mehrere Dienste, die eine bestimmte Rolle oder Aufgabe im Überwac
 
 Das folgende Diagramm zeigt eine konzeptionelle Ansicht der Komponenten, die bei der Überwachung der Azure-Ressourcen zusammenwirken. Diese Komponenten werden in den folgenden Abschnitten mit Links zu ausführlichen technischen Informationen beschrieben.
 
-![Übersicht zur Überwachung](media/monitoring-overview/overview.png)
-
-## <a name="basic-monitoring"></a>Grundlegende Überwachung
-Unter der grundlegenden Überwachung versteht man die elementare, erforderliche Überwachung aller Azure-Ressourcen. Diese Dienste benötigen nur eine minimale Konfiguration und sammeln die von den Premium-Überwachungsdiensten genutzten Telemetriedaten.    
-
-### <a name="azure-monitor"></a>Azure Monitor
-[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) ermöglicht dem Azure-Dienst die grundlegende Überwachung durch die Sammlung von [Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md), [Aktivitätsprotokollen](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) und [Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). Beispielsweise können Sie dem Aktivitätsprotokoll entnehmen, wann neue Ressourcen erstellt oder geändert werden. 
-
-Metriken stehen zur Verfügung und liefern Leistungsstatistiken für verschiedene Ressourcen und sogar das Betriebssystem der virtuellen Computer. Sie können diese Daten mit einem der Explorer im Azure-Portal anzeigen, zur Trend- und Detailanalyse an Azure Log Analytics senden oder Warnungsregeln erstellen, damit Sie proaktiv über kritische Probleme informiert werden.
-
-### <a name="service-health"></a>Dienstintegrität
-Die Integrität Ihrer Anwendung basiert auf den Azure-Diensten, von denen sie abhängt. [Azure Service Health](../service-health/service-health-overview.md) identifiziert Probleme mit Azure-Diensten, die sich auf Ihre Anwendung auswirken können. Service Health unterstützt Sie außerdem bei der geplanten Wartung.
-
-### <a name="azure-advisor"></a>Azure Advisor
-[Azure Advisor](../advisor/advisor-overview.md) überwacht ständig Ihre Ressourcenkonfiguration und Nutzungstelemetriedaten. Sie erhalten personalisierte Empfehlungen auf der Basis von Best Practices. Wenn Sie diese Empfehlungen befolgen, verbessern Sie Leistung, Sicherheit und Verfügbarkeit der Ressourcen, die Ihre Anwendungen unterstützen.
+![Übersicht zur Überwachung](media/monitoring-overview/monitoring-products-overview.png)
 
 
-## <a name="premium-monitoring-services"></a>Premium-Überwachungsdienste
-Die folgenden Azure-Dienste bieten umfassende Funktionen für das Sammeln und Analysieren von Überwachungsdaten. Diese Dienste bauen auf der grundlegenden Überwachung auf und nutzen allgemeine Funktionen in Azure. Sie bieten leistungsstarke Analysen der gesammelten Daten und somit einzigartige Einblicke Ihre Anwendungen und Infrastrukturen. Sie stellen Daten im Kontext von Szenarien dar, die auf verschiedene Zielgruppen ausgerichtet sind.
-
-### <a name="application-insights"></a>Application Insights
-Mit [Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) können Sie die Verfügbarkeit, Leistung und Nutzung Ihrer in der Cloud oder lokal gehosteten Anwendung überwachen. 
-
-Durch die Instrumentierung Ihrer Anwendung zur Zusammenarbeit mit Application Insights können Sie umfassende Einblicke erzielen. Sie können Fehler dann schnell erkennen und diagnostizieren, ohne darauf warten zu müssen, dass diese von Benutzern gemeldet werden. Mit den gesammelten Informationen können Sie fundierte Entscheidungen zu Wartung und Verbesserung Ihrer Anwendung vornehmen. 
-
-Application Insights verfügt über umfassende Tools für die Interaktion mit den gesammelten Daten. Application Insights speichert die Daten in einem gemeinsamen Repository. Sie können gemeinsame Funktionen wie Warnungen, Dashboards und umfassende Analysen mit der Log Analytics-Abfragesprache nutzen.
-
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) spielt bei der Azure-Überwachung eine zentrale Rolle, indem Daten aus einer Vielzahl von Ressourcen gesammelt und in einem einzelnen Repository gespeichert werden. Dort können Sie die Daten mit einer leistungsfähigen Abfragesprache analysieren. 
-
-Application Insights und Azure Security Center speichern Daten im Log Analytics-Datenspeicher und nutzen das zugehörige Analysemodul. Daten werden von Azure Monitor, Verwaltungslösungen und auf den virtuellen Computern in der Cloud oder lokal installierten Agents gesammelt. Dadurch erhalten Sie ein vollständiges Bild von Ihrer gesamten Umgebung. 
-
-
-### <a name="service-map"></a>Dienstzuordnung
-[Dienstzuordnung](../operations-management-suite/operations-management-suite-service-map.md) bietet durch die Analyse der virtuellen Computer mit ihren verschiedenen Prozessen und Abhängigkeiten von anderen Computern und externen Prozessen einen Einblick in Ihre IaaS-Umgebung. Die Anwendung integriert Ereignisse, Leistungsdaten und Verwaltungslösungen in Log Analytics. Sie können diese Daten dann im Kontext der einzelnen Computer und deren Beziehung zum Rest Ihrer Umgebung anzeigen. 
-
-Die Dienstzuordnung weist Ähnlichkeiten zur [Anwendungszuordnung in Application Insights](../application-insights/app-insights-app-map.md) auf. Ihr Schwerpunkt liegt auf den Infrastrukturkomponenten, die Ihre Anwendungen unterstützen.
-
-### <a name="network-watcher"></a>Network Watcher
-[Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) bietet eine szenariobasierte Überwachung und Diagnose für verschiedene Netzwerkszenarien in Azure. Der Dienst speichert Daten zur weiteren Analyse in Azure-Metriken. Mit den folgenden Netzwerküberwachungslösungen bietet er eine umfassende Überwachung verschiedener Aspekte Ihres Netzwerks:
-* [Netzwerkleistungsmonitor (Network Performance Monitor, NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/): Eine cloudbasierte Lösung für die Netzwerküberwachung, die die Konnektivität zwischen öffentlichen Clouds, Rechenzentren und lokalen Umgebungen überwacht.
-* [ExpressRoute Monitor](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/): Eine NPM-Funktion, die die gesamte Konnektivität und Leistung von Azure ExpressRoute-Verbindungen überwacht.
-* Traffic Analytics: Eine cloudbasierte Lösung, die Einblick in Benutzer- und Anwendungsaktivitäten in Ihrem Cloudnetzwerk bietet.
-* [DNS-Analyse](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-dns): Bietet Sicherheit, Leistung und vorgangsbezogene Einblicke basierend auf Ihren DNS-Servern.
-
-### <a name="management-solutions"></a>Verwaltungslösungen
-[Verwaltungslösungen](../log-analytics/log-analytics-add-solutions.md) sind Programmpakete, die Einblicke für eine bestimmte Anwendung oder einen bestimmten Dienst liefern. Sie nutzen Log Analytics zum Speichern und Analysieren der von ihnen gesammelten Überwachungsdaten. 
-
-Microsoft und Partner bieten Verwaltungslösungen zur Überwachung verschiedener Azure- und Drittanbieterdienste. Beispiele für Überwachungslösungen:
-* [Containerüberwachung](../log-analytics/log-analytics-containers.md) hilft Ihnen beim Anzeigen und Verwalten der Containerhosts.
-* [Azure SQL-Analyse](../log-analytics/log-analytics-azure-sql.md) erfasst und visualisiert Leistungsmetriken für Azure SQL-Datenbanken.
-
-
-## <a name="shared-functionality"></a>Gemeinsam genutzte Funktionalität
-Die folgenden Azure-Tools bieten wichtige Funktionen für die Premium-Überwachungsdienste. Sie werden von mehreren Diensten gemeinsam genutzt. Sie können also allgemeine Funktionen und Konfigurationen für mehrere Dienste nutzen.
+## <a name="shared-capabilities"></a>Gemeinsam genutzte Funktionen
+Der Kernüberwachungsdienst und der umfassende Überwachungsdienst nutzen die folgenden gemeinsamen Funktionen. 
 
 ### <a name="alerts"></a>Alerts
 [Azure-Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) informieren Sie proaktiv über kritische Zustände und leiten potenziell Korrekturmaßnahmen ein. Warnungsregeln können Daten aus mehreren Quellen einschließlich Metriken und Protokollen nutzen. Sie verwenden [Aktionsgruppen](../monitoring-and-diagnostics/monitoring-action-groups.md), die eindeutige Sätze von Empfängern und Aktionen als Reaktion auf eine Warnung enthalten. Je nach Ihren Anforderungen können Warnungen externe Aktionen mithilfe von Webhooks starten und in Ihre ITSM-Tools integrieren.
 
 ### <a name="dashboards"></a>Dashboards
-Mit [Azure Dashboards](../azure-portal/azure-portal-dashboards.md) können Sie verschiedene Arten von Daten zentral in einem Bereich im Azure-Portal kombinieren. Sie können das Dashboard gemeinsam mit anderen Azure-Benutzern nutzen. 
+Mit [Azure Dashboards](../azure-portal/azure-portal-dashboards.md) können Sie verschiedene Arten von Daten zentral in einem Bereich im [Azure-Portal](https://portal.azure.com) kombinieren. Sie können das Dashboard gemeinsam mit anderen Azure-Benutzern nutzen. 
 
 Sie können z.B. ein Dashboard erstellen, das Folgendes kombiniert:
 - Kacheln, die ein Diagramm der Metriken zeigen
@@ -102,6 +52,21 @@ Sie können auch Log Analytics-Daten nach [Power BI](https://docs.microsoft.com/
 [Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md) sind von einer Azure-Ressource generierte numerische Werte, die Ihnen helfen, Betrieb und Leistung der Ressource zu verstehen. Mit dem Metrik-Explorer können Sie Metriken für die Analyse mit Daten aus anderen Quellen an Log Analytics senden.
 
 
+## <a name="core-monitoring"></a>Kernüberwachung
+Unter der Kernüberwachung versteht man die grundlegende, erforderliche Überwachung aller Azure-Ressourcen. Diese Dienste benötigen nur eine minimale Konfiguration und sammeln die von den Premium-Überwachungsdiensten genutzten Telemetriedaten.    
+
+### <a name="azure-monitor"></a>Azure Monitor
+[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) ermöglicht Azure-Diensten die Kernüberwachung durch die Sammlung von [Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md), [Aktivitätsprotokollen](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) und [Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). Beispielsweise können Sie dem Aktivitätsprotokoll entnehmen, wann neue Ressourcen erstellt oder geändert werden. 
+
+Metriken stehen zur Verfügung und liefern Leistungsstatistiken für verschiedene Ressourcen und sogar das Betriebssystem der virtuellen Computer. Sie können diese Daten mit einem der Explorer im Azure-Portal anzeigen und basierend auf diesen Metriken Benachrichtigungen erstellen. Azure Monitor bietet die schnellste Metrikpipeline (nur zwischen einer und fünf Minuten) und sollte daher für zeitkritische Warnungen und Benachrichtigungen verwendet werden. 
+
+Sie können diese Metriken und Protokolle zur Trend- und Detailanalyse an Azure Log Analytics senden oder Warnungsregeln erstellen, damit Sie proaktiv über kritische Probleme informiert werden, die bei dieser Analyse erkannt werden.  
+
+### <a name="azure-advisor"></a>Azure Advisor
+[Azure Advisor](../advisor/advisor-overview.md) überwacht ständig Ihre Ressourcenkonfiguration und Nutzungstelemetriedaten. Sie erhalten personalisierte Empfehlungen auf der Basis von Best Practices. Wenn Sie diese Empfehlungen befolgen, verbessern Sie Leistung, Sicherheit und Verfügbarkeit der Ressourcen, die Ihre Anwendungen unterstützen.
+
+### <a name="service-health"></a>Dienstintegrität
+Die Integrität Ihrer Anwendung basiert auf den Azure-Diensten, von denen sie abhängt. [Azure Service Health](../service-health/service-health-overview.md) identifiziert Probleme mit Azure-Diensten, die sich auf Ihre Anwendung auswirken können. Service Health unterstützt Sie außerdem bei der geplanten Wartung.
 
 ### <a name="activity-log"></a>Aktivitätsprotokoll
 [Aktivitätsprotokolle](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) enthalten Daten zum Betrieb einer Azure-Ressource. Folgende Informationen sind vorhanden:
@@ -112,7 +77,52 @@ Sie können auch Log Analytics-Daten nach [Power BI](https://docs.microsoft.com/
 
 Sie können Protokolle für eine bestimmte Ressource auf der zugehörigen Seite im Azure-Portal anzeigen. Zudem können Sie Protokolle mehrerer Ressourcen im Aktivitätsprotokoll-Explorer anzeigen. 
 
-Außerdem können Sie Aktivitätsprotokolle auch an Log Analytics senden. Dort können Sie die Protokolle mithilfe von Daten analysieren, die von Verwaltungslösungen, Agents auf virtuellen Computern und anderen Quellen gesammelt wurden.
+Außerdem können Sie Aktivitätsprotokolleinträge auch an Log Analytics senden. Dort können Sie die Protokolle mithilfe von Daten analysieren, die von Verwaltungslösungen, Agents auf virtuellen Computern und anderen Quellen gesammelt wurden.
+
+## <a name="deep-monitoring-services"></a>Umfassende Überwachungsdienste
+Die folgenden Azure-Dienste bieten umfassende Funktionen für das Sammeln und Analysieren von Überwachungsdaten auf einer tieferen Ebene. Diese Dienste bauen auf der Kernüberwachung auf und nutzen allgemeine Funktionen in Azure. Sie bieten leistungsstarke Analysen der gesammelten Daten und somit einzigartige Einblicke Ihre Anwendungen und Infrastrukturen. Sie stellen Daten im Kontext von Szenarien dar, die auf verschiedene Zielgruppen ausgerichtet sind.
+
+## <a name="deep-application-monitoring"></a>Umfassende Anwendungsüberwachung
+### <a name="application-insights"></a>Application Insights
+Mit [Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) können Sie die Verfügbarkeit, Leistung und Nutzung Ihrer in der Cloud oder lokal gehosteten Anwendung überwachen. 
+
+Durch die Instrumentierung Ihrer Anwendung zur Zusammenarbeit mit Application Insights können Sie umfassende Einblicke erzielen und DevOps-Szenarien implementieren. Sie können Fehler schnell erkennen und diagnostizieren, ohne darauf warten zu müssen, dass diese von Benutzern gemeldet werden. Mit den gesammelten Informationen können Sie fundierte Entscheidungen zu Wartung und Verbesserung Ihrer Anwendung vornehmen. 
+
+Application Insights verfügt über umfassende Tools für die Interaktion mit den gesammelten Daten. Application Insights speichert die Daten in einem gemeinsamen Repository. Sie können gemeinsame Funktionen wie Warnungen, Dashboards und umfassende Analysen mit der Log Analytics-Abfragesprache nutzen.
+
+## <a name="deep-infrastructure-monitoring"></a>Umfassende Infrastrukturüberwachung
+### <a name="log-analytics"></a>Log Analytics
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) spielt bei der Azure-Überwachung eine zentrale Rolle, indem Daten aus einer Vielzahl von Ressourcen (einschließlich Tools anderer Anbieter als Microsoft) gesammelt und in einem einzelnen Repository gespeichert werden. Dort können Sie die Daten mit einer leistungsfähigen Abfragesprache analysieren. 
+
+Application Insights und Azure Security Center speichern Daten im Log Analytics-Datenspeicher und nutzen das zugehörige Analysemodul. Zudem werden Daten aus Azure Monitor, Verwaltungslösungen und auf den virtuellen Computern in der Cloud oder lokal installierten Agents gesammelt. Dadurch erhalten Sie ein vollständiges Bild von Ihrer gesamten Umgebung.
+
+### <a name="management-solutions"></a>Verwaltungslösungen
+[Verwaltungslösungen](../log-analytics/log-analytics-add-solutions.md) sind Programmpakete, die Einblicke für eine bestimmte Anwendung oder einen bestimmten Dienst liefern. Sie nutzen Log Analytics zum Speichern und Analysieren der von ihnen gesammelten Überwachungsdaten. 
+
+Microsoft und Partner bieten Verwaltungslösungen zur Überwachung verschiedener Azure- und Drittanbieterdienste. Beispiele für Überwachungslösungen:
+* [Containerüberwachung](../log-analytics/log-analytics-containers.md) hilft Ihnen beim Anzeigen und Verwalten der Containerhosts.
+* [Azure SQL-Analyse](../log-analytics/log-analytics-azure-sql.md) erfasst und visualisiert Leistungsmetriken für Azure SQL-Datenbanken.
+
+Sie können alle verfügbaren Verwaltungslösungen im Azure-Portal unter *Monitor* anzeigen. 
+
+### <a name="network-monitoring"></a>Netzwerküberwachung
+Es gibt mehrere Tools, die zusammenarbeiten, um verschiedene Aspekte Ihres Netzwerks zu überwachen, sei es in Azure oder lokal.  
+
+[Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) bietet eine szenariobasierte Überwachung und Diagnose für verschiedene Netzwerkszenarien in Azure. Der Dienst speichert Daten zur weiteren Analyse in Azure-Metriken. Mit den folgenden Netzwerküberwachungslösungen ermöglicht er die Überwachung verschiedener Aspekte Ihres Netzwerks. 
+
+[Netzwerkleistungsmonitor (Network Performance Monitor, NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/) ist eine cloudbasierte Lösung für die Netzwerküberwachung, die die Konnektivität zwischen öffentlichen Clouds, Rechenzentren und lokalen Umgebungen überwacht.
+
+[ExpressRoute Monitor](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) ist eine NPM-Funktion, die die gesamte Konnektivität und Leistung von Azure ExpressRoute-Verbindungen überwacht.
+
+[DNS-Analyse](../log-analytics/log-analytics-dns.md) ist eine Lösung, die Sicherheit, Leistung und vorgangsbezogene Einblicke basierend auf Ihren DNS-Servern bietet.
+
+Die [Dienstendpunktüberwachung](../networking/network-monitoring-overview.md) testet die Erreichbarkeit von Anwendungen und erkennt Leistungsengpässe in der lokalen Umgebung, in Netzbetreiber-Netzwerken und in cloudbasierten/privaten Rechenzentren.
+
+
+### <a name="service-map"></a>Dienstzuordnung
+[Dienstzuordnung](../operations-management-suite/operations-management-suite-service-map.md) bietet durch die Analyse der virtuellen Computer mit ihren verschiedenen Prozessen und Abhängigkeiten von anderen Computern und externen Prozessen einen Einblick in Ihre IaaS-Umgebung. Die Anwendung integriert Ereignisse, Leistungsdaten und Verwaltungslösungen in Log Analytics. Sie können diese Daten dann im Kontext der einzelnen Computer und deren Beziehung zum Rest Ihrer Umgebung anzeigen. 
+
+Die Dienstzuordnung weist Ähnlichkeiten zur [Anwendungszuordnung in Application Insights](../application-insights/app-insights-app-map.md) auf. Ihr Schwerpunkt liegt auf den Infrastrukturkomponenten, die Ihre Anwendungen unterstützen.
 
 
 ## <a name="example-scenarios"></a>Beispielszenarien
@@ -144,8 +154,6 @@ Nach einem gemeldeten Ausfall identifizieren Sie mit Hilfe der Dienstzuordnung d
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen:
 
-* [Azure Monitor in einem Video von der Ignite 2016](https://myignite.microsoft.com/videos/4977)
-* [Erste Schritte mit Azure Monitor](monitoring-get-started.md)
-* [Azure-Diagnose](../azure-diagnostics.md) diagnostiziert Probleme mit Clouddiensten, virtuellen Computern, VM-Skalierungsgruppen oder Azure Service Fabric-Anwendungen.
+* [Azure Monitor](https://azure.microsoft.com/en-us/services/monitor/) zum Einstieg in die Metriken und Warnungen der Kernüberwachung.
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) diagnostiziert Probleme mit Ihrer App Service-Web-App.
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) zur Analyse der gesammelten Überwachungsdaten.
+* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) zur Analyse der gesammelten Überwachungsdaten und -protokolle.

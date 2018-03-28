@@ -1,24 +1,20 @@
 ---
-title: Grafische Erstellung in Azure Automation | Microsoft Docs
-description: "Die grafische Erstellung ermöglicht Ihnen das Erstellen von Runbooks für Azure Automation, ohne mit Code zu arbeiten. Dieser Artikel bietet eine Einführung in die grafische Erstellung und alle Informationen, die Sie für die Erstellung eines grafischen Runbooks benötigen."
+title: Grafische Erstellung in Azure Automation
+description: Die grafische Erstellung ermöglicht Ihnen das Erstellen von Runbooks für Azure Automation, ohne mit Code zu arbeiten. Dieser Artikel bietet eine Einführung in die grafische Erstellung und alle Informationen, die Sie für die Erstellung eines grafischen Runbooks benötigen.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: 4b6f840c-e941-4293-a728-b33407317943
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/14/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: 34f896619e8fe02b0a88a8bbf52b9342a72bfd9a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5bdb92378a72789918f40494bebb5faf68e64c84
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafische Erstellung in Azure Automation
 ## <a name="introduction"></a>Einführung
@@ -122,7 +118,7 @@ Wenn Sie eine Wiederholung für eine Aktivität aktivieren, können Sie eine Ver
 
 ![Wiederholungsverzögerung für Aktivität](media/automation-graphical-authoring-intro/retry-delay.png)
 
-Die Wiederholungsbedingung ist ein PowerShell-Ausdruck, der nach jeder Ausführung der Aktivität ausgewertet wird. Wenn der Ausdruck in „True“ resultiert, wird die Aktivität erneut ausgeführt. Wenn der Ausdruck in „False“ resultiert, wird die Aktivität nicht erneut ausgeführt, und das Runbook fährt mit der nächsten Aktivität fort. 
+Die Wiederholungsbedingung ist ein PowerShell-Ausdruck, der nach jeder Ausführung der Aktivität ausgewertet wird. Wenn der Ausdruck „True“ ergibt, wird die Aktivität erneut ausgeführt. Wenn der Ausdruck in „False“ resultiert, wird die Aktivität nicht erneut ausgeführt, und das Runbook fährt mit der nächsten Aktivität fort. 
 
 ![Wiederholungsverzögerung für Aktivität](media/automation-graphical-authoring-intro/retry-condition.png)
 
@@ -203,7 +199,7 @@ So startet beispielsweise die Aktivität **Start-AzureRmVm** im nachstehenden Ru
 
 ![Beispiel einer bedingten Verknüpfung](media/automation-graphical-authoring-intro/runbook-conditional-links.png)
 
-Alle Aktivitäten, die der ersten Verknüpfung folgen und die Aktivitätsausgabe von „Get-AzureVM“ verwenden, rufen nur die virtuellen Computer ab, die zum Zeitpunkt der Ausführung von „Get-AzureVM“ gestartet waren. Alle Aktivitäten, die der zweiten Verknüpfung folgen, rufen nur die virtuellen Computer ab, die zum Zeitpunkt der Ausführung von „Get-AzureVM“ beendet waren. Alle Aktivitäten, die der dritten Verknüpfung folgen, rufen alle virtuellen Computer ab, unabhängig von deren Ausführungsstatus.
+Alle Aktivitäten, die auf die erste Verknüpfung folgen und die Aktivitätsausgabe von "Get-AzureVM" verwenden, empfangen nur die virtuellen Computer, die zum Zeitpunkt der Ausführung von "Get-AzureVM" gestartet waren. Alle Aktivitäten, die der zweiten Verknüpfung folgen, rufen nur die virtuellen Computer ab, die zum Zeitpunkt der Ausführung von „Get-AzureVM“ beendet waren. Alle Aktivitäten, die der dritten Verknüpfung folgen, rufen alle virtuellen Computer ab, unabhängig von deren Ausführungsstatus.
 
 ### <a name="junctions"></a>Verbindungen
 Eine Verbindung ist eine spezielle Aktivität, die wartet, bis alle eingehenden Verzweigungen abgeschlossen wurden. Auf diese Weise können mehrere Aktivitäten parallel ausgeführt werden, und vor dem Fortfahren sichergestellt, dass alle Aktivitäten abgeschlossen wurden.

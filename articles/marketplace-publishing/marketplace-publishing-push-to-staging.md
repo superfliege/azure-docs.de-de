@@ -1,11 +1,11 @@
 ---
-title: "Vorbereiten und Testen Ihres Angebots für die Bereitstellung im Azure Marketplace | Microsoft Docs"
-description: "Detaillierte Informationen zum Bereitstellen von Marketinginhalten, Konfigurieren von Preisplänen und Testen des Angebots vor der Bereitstellung im Azure Marketplace."
+title: Vorbereiten und Testen Ihres Angebots für die Bereitstellung im Azure Marketplace | Microsoft-Dokumentation
+description: Detaillierte Informationen zum Bereitstellen von Marketinginhalten, Konfigurieren von Preisplänen und Testen des Angebots vor der Bereitstellung im Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 3ccd2448-895b-477e-adf6-ab655a21d2fa
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/17/2016
-ms.author: hascipio
-ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 5bec9ac89487a824b9de9209547f0b96fa5fe678
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>Abschließen der Angebotserstellung mit Marketinginhalten
 In diesem Schritt des Veröffentlichungsprozesses müssen Sie bestimmte Marketinginhalte sowie Details zu Ihrem Angebot und/oder SKUs im Azure Marketplace bereitstellen. So stellen Sie beispielsweise eine Beschreibung Ihres Produkts, Firmenlogos, Preispläne, detaillierte Informationen zu Plänen sowie weitere Informationen bereit, die zum Überführen Ihres Angebots und/oder Ihrer SKU in der Stagingumgebung erforderlich sind. Diese Informationen werden im Azure-Portal als Marketinginhalte verwendet. Sie starten diesen Prozess im [Veröffentlichungsportal][link-pubportal].
@@ -26,7 +26,7 @@ In diesem Schritt des Veröffentlichungsprozesses müssen Sie bestimmte Marketin
 ## <a name="step-1-provide-marketplace-marketing-content"></a>Schritt 1: Bereitstellen von Marketinginhalten im Marketplace
 **Englisch ist die Standardsprache und die einzige unterstützte Sprache.** Geben Sie daher bitte alle Informationen in den Feldern auf Englisch ein. Alle Informationen können vor der Überführung in die Stagingumgebung jederzeit bearbeitet werden.
 
-1. Wechseln Sie zum Veröffentlichungsportal: [https://publish.windowsazure.com](https://publish.windowsazure.com).
+1. Wechseln Sie zum Veröffentlichungsportal [https://publish.windowsazure.com](https://publish.windowsazure.com).
 2. Klicken Sie im linken Menü auf die Registerkarte **Marketing** .
 3. Klicken Sie im Hauptbereich auf die Schaltfläche **English (US)** .
    
@@ -122,7 +122,7 @@ Für VM-Angebote gilt: Sobald ein Angebot/eine SKU im Azure Marketplace aufgefü
 
 ## <a name="step-2-set-your-prices"></a>Schritt 2: Festlegen der Preise
 ### <a name="pricing-models"></a>Preismodelle
-| Preismodell | Beschreibung |
+| Preismodell | BESCHREIBUNG |
 | --- | --- |
 | Basis |Monatliche Pauschale, Bezahlung zum Zeitpunkt des Kaufs, z. B. 10 USD/Monat. |
 | Verbrauch (auch als Nutzung oder Verwendung bezeichnet) |Nutzungsbasierte Bezahlung, die vom Herausgeber definiert wird. Eine Überschreitung kann nicht pro Arbeitsplatz, pro Benutzer usw. definiert werden, da es kein Konzept eines Bruchteils von Benutzern oder Kapazitäten gibt, um die Nutzung anteilig zu verrechnen. Die Nutzung wird vom Partner auf Stundenbasis berechnet. Der Kunde zahlt die Gebühren monatlich im Nachhinein, im Gegensatz zur Vorauszahlung bei Monatsplänen. |
@@ -139,7 +139,7 @@ Für VM-Angebote gilt: Sobald ein Angebot/eine SKU im Azure Marketplace aufgefü
 
 |  | Nur Basis | Nur Verbrauch | Basis und Verbrauch |
 | --- | --- | --- | --- |
-| VM-Image |Nein |Ja |Nein |
+| VM-Image |Nein  |Ja |Nein  |
 | Entwicklerdienst |Ja |Ja |Ja |
 
 ### <a name="21-set-your-vm-prices"></a>2.1. Festlegen der VM-Preise

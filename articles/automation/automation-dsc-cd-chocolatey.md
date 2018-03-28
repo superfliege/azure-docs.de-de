@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation DSC – Fortlaufende Bereitstellung mit Chocolatey | Microsoft Docs"
-description: "Fortlaufende DevOps-Bereitstellung per Azure Automation DSC und Chocolatey-Paket-Manager.  Beispiel mit vollständiger JSON-ARM-Vorlage und PowerShell-Quelle."
+title: Azure Automation DSC – Fortlaufende Bereitstellung mit Chocolatey
+description: Fortlaufende DevOps-Bereitstellung per Azure Automation DSC und Chocolatey-Paket-Manager.  Beispiel mit vollständiger JSON-ARM-Vorlage und PowerShell-Quelle.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: c0baa411-eb76-4f91-8d14-68f68b4805b6
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: na
-ms.date: 10/29/2016
-ms.author: golive
-ms.openlocfilehash: f9957d745ed910fbdcbeeee7d9ddb24a51da141b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: 8c1427bd40a6fd75a755c4709d88a4b8e4c55571
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Anwendungsbeispiel: Fortlaufende Bereitstellung auf virtuellen Computern mit Automation DSC und Chocolatey
 In einer DevOps-Welt gibt es viele Tools, die an den verschiedenen Punkten der Continuous Integration-Pipeline als Hilfe dienen.  Azure Automation Desired State Configuration (DSC), also die Konfiguration des gewünschten Zustands, ist eine willkommene neue Option für DevOps-Teams.  In diesem Artikel wird das Einrichten der fortlaufenden Bereitstellung (Continuous Deployment, CD) für einen Windows-Computer veranschaulicht.  Sie können das Verfahren leicht so erweitern, dass in der Rolle (z. B. einer Website) so viele Windows-Computer wie nötig enthalten sind, und von diesem Punkt aus noch eine Erweiterung auf zusätzliche Rollen durchführen.
@@ -47,7 +43,7 @@ Resource Manager-Vorlagen stellen einen deklarativen Weg zum Generieren Ihrer In
 Ein wichtiges Merkmal einer Resource Manager-Vorlage ist die Möglichkeit, bei seiner Bereitstellung eine VM-Erweiterung auf einem virtuellen Computer zu installieren.  Eine VM-Erweiterung verfügt über bestimmte Funktionen, z. B. das Ausführen eines benutzerdefinierten Skripts, Installieren einer Antivirensoftware oder Ausführen eines DSC-Konfigurationsskripts.  Es gibt noch viele andere Arten von VM-Erweiterungen.
 
 ## <a name="quick-trip-around-the-diagram"></a>Kurzvorstellung des Diagramms
-Sie beginnen oben und schreiben Ihren Code, führen die Erstellung und das Testen durch und erstellen dann ein Installationspaket.  Chocolatey kann verschiedene Arten von Installationspaketen verarbeiten, z. B. MSI, MSU, ZIP.  Und Sie verfügen über die volle Leistungsfähigkeit von PowerShell zum Durchführen der eigentlichen Installation, falls die systemeigenen Funktionen von Chocolatey nicht ausreichen sollten.  Legen Sie das Paket an einem erreichbaren Ort ab, z. B. in einem Paketrepository.  In diesem Anwendungsbeispiel wird ein öffentlicher Ordner in einem Azure Blob-Speicherkonto verwendet, aber er kann sich an einem beliebigen Ort befinden.  Chocolatey arbeitet standardmäßig mit NuGet-Servern und einigen anderen zusammen, was die Verwaltung der Paketmetadaten betrifft.  Die Optionen werden in [diesem Artikel](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) beschrieben.  In diesem Anwendungsbeispiel wird NuGet verwendet.  Bei „Nuspec“ handelt es sich um Metadaten zu Ihren Paketen.  Nuspec-Elemente werden in NuPkg-Element „kompiliert“ und auf einem NuGet-Server gespeichert.  Wenn Ihre Konfiguration ein Paket dem Namen nach anfordert und auf einen NuGet-Server verweist, verwendet die Chocolatey DSC-Ressource (die sich jetzt auf dem virtuellen Computer befindet) das Paket und installiert es für Sie.  Sie können auch eine bestimmte Version eines Pakets anfordern.
+Sie beginnen oben und schreiben Ihren Code, führen die Erstellung und das Testen durch und erstellen dann ein Installationspaket.  Chocolatey kann verschiedene Arten von Installationspaketen verarbeiten, z. B. MSI, MSU, ZIP.  Und Sie verfügen über die volle Leistungsfähigkeit von PowerShell zum Durchführen der eigentlichen Installation, falls die systemeigenen Funktionen von Chocolatey nicht ausreichen sollten.  Legen Sie das Paket an einem erreichbaren Ort ab, z. B. in einem Paketrepository.  In diesem Anwendungsbeispiel wird ein öffentlicher Ordner in einem Azure Blob Storage-Konto verwendet, aber er kann sich an einem beliebigen Ort befinden.  Chocolatey arbeitet standardmäßig mit NuGet-Servern und einigen anderen zusammen, was die Verwaltung der Paketmetadaten betrifft.  Die Optionen werden in [diesem Artikel](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) beschrieben.  In diesem Anwendungsbeispiel wird NuGet verwendet.  Bei „Nuspec“ handelt es sich um Metadaten zu Ihren Paketen.  Nuspec-Elemente werden in NuPkg-Element „kompiliert“ und auf einem NuGet-Server gespeichert.  Wenn Ihre Konfiguration ein Paket dem Namen nach anfordert und auf einen NuGet-Server verweist, verwendet die Chocolatey DSC-Ressource (die sich jetzt auf dem virtuellen Computer befindet) das Paket und installiert es für Sie.  Sie können auch eine bestimmte Version eines Pakets anfordern.
 
 Im unteren linken Bereich des Bilds befindet sich eine Azure-Ressourcen-Manager-Vorlage.  In diesem Anwendungsbeispiel wird der virtuelle Computer von der VM-Erweiterung für den Azure Automation DSC-Pullserver (also von einem Pullserver) als Knoten registriert.  Die Konfiguration wird auf dem Pullserver gespeichert.  Eigentlich wird sie zweimal gespeichert: einmal in reiner Textform und einmal kompiliert als MOF-Datei (als Hinweis für Benutzer, die sich hiermit auskennen).  Im Portal ist die MOF-Datei eine „Knotenkonfiguration“ (im Gegensatz zu einer normalen „Konfiguration“).  Es ist das Artefakt, das einem Knoten zugeordnet ist, damit dem Knoten die Konfiguration bekannt ist.  Die Details unten verdeutlichen, wie Sie die Knotenkonfiguration dem Knoten zuweisen.
 

@@ -1,11 +1,11 @@
 ---
-title: Partitionieren von Tabellen in SQL Data Warehouse | Microsoft Docs
-description: "Enthält Informationen zu den ersten Schritten bei der Tabellenpartitionierung in Azure SQL Data Warehouse."
+title: Partitionieren von Tabellen in SQL Data Warehouse | Microsoft-Dokumentation
+description: Enthält Informationen zu den ersten Schritten bei der Tabellenpartitionierung in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
+editor: ''
 ms.assetid: 6cef870c-114f-470c-af10-02300c58885d
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 12/06/2017
 ms.author: barbkess
-ms.openlocfilehash: a28cb1f8a2e48332b344566620dc49b29d9d3c99
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f94bc3770fbd7e707194032cb99c67b09f8a0618
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Partitionieren von Tabellen in SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -49,10 +49,10 @@ Die Partitionierung kann auch verwendet werden, um die Abfrageleistung zu verbes
 ## <a name="partition-sizing-guidance"></a>Anleitung zur Festlegung der Partitionsgröße
 Die Partitionierung kann zwar verwendet werden, um die Leistung in einigen Szenarien zu verbessern, aber das Erstellen einer Tabelle mit **zu vielen** Partitionen kann die Leistung unter Umständen beeinträchtigen.  Dies gilt besonders für gruppierte Columnstore-Tabellen.  Es muss klar sein, wann sich der Einsatz der Partitionierung anbietet und wie viele Partitionen erstellt werden sollten, damit die Partitionierung hilfreich ist.  Es gibt keine genaue Vorgabe, welche Anzahl von Partitionen zu hoch ist. Dies hängt von Ihren Daten und außerdem davon ab, wie viele Partitionen gleichzeitig geladen werden.  Ein erfolgreiches Partitionierungsschema hat normalerweise Dutzende bis Hunderte von Partitionen, nicht Tausende.
 
-Beim Erstellen von Partitionierungen für **gruppierte Columnstore**-Tabellen ist es wichtig zu beachten, wie viele Zeilen zu jeder Partition gehören werden.  Für eine optimale Komprimierung und Leistung von gruppierten Columnstore-Tabellen sind mindestens 1 Million Zeilen pro Verteilung und Partition erforderlich.  Bereits vor der Erstellung von Partitionen teilt SQL Data Warehouse jede Tabelle auf 60 verteilte Datenbanken auf.  Jegliche Partitionierungen, die einer Tabelle hinzugefügt werden, werden zusätzlich zu den im Hintergrund erstellten Verteilungen durchgeführt.  Für dieses Beispiel bedeutet dies Folgendes: Wenn die Umsatzfaktentabelle 36 Monatspartitionen enthält und SQL Data Warehouse 60 Verteilungen umfasst, muss die Umsatzfaktentabelle mindestens 60 Millionen Zeilen pro Monat umfassen (oder 2,1 Milliarden Zeilen, wenn alle Monate aufgefüllt sind).  Wenn eine Tabelle deutlich weniger Zeilen als das empfohlene Minimum an Zeilen pro Partition enthält, sollten Sie die Verwendung von weniger Partitionen erwägen, um die Anzahl von Zeilen pro Partition zu erhöhen.  Lesen Sie sich auch den Artikel zur [Indizierung][Index] durch. Darin sind Abfragen enthalten, die für SQL Data Warehouse ausgeführt werden können, um die Qualität von gruppierten Columnstore-Indizes zu bewerten.
+Beim Erstellen von Partitionierungen für **gruppierte Columnstore**-Tabellen ist es wichtig zu beachten, wie viele Zeilen zu jeder Partition gehören werden.  Für eine optimale Komprimierung und Leistung von gruppierten Columnstore-Tabellen sind mindestens 1 Million Zeilen pro Verteilung und Partition erforderlich.  Bereits vor der Erstellung von Partitionen teilt SQL Data Warehouse jede Tabelle auf 60 verteilte Datenbanken auf.  Jegliche Partitionierungen, die einer Tabelle hinzugefügt werden, werden zusätzlich zu den im Hintergrund erstellten Verteilungen durchgeführt.  Für dieses Beispiel bedeutet dies Folgendes: Wenn die Umsatzfaktentabelle 36 Monatspartitionen enthält und SQL Data Warehouse 60 Verteilungen umfasst, muss die Umsatzfaktentabelle mindestens 60 Millionen Zeilen pro Monat umfassen (oder 2,1 Milliarden Zeilen, wenn alle Monate aufgefüllt sind).  Wenn eine Tabelle weniger Zeilen als das empfohlene Minimum an Zeilen pro Partition enthält, sollten Sie die Verwendung von weniger Partitionen erwägen, um die Anzahl von Zeilen pro Partition zu erhöhen.  Lesen Sie sich auch den Artikel zur [Indizierung][Index] durch. Darin sind Abfragen enthalten, die für SQL Data Warehouse ausgeführt werden können, um die Qualität von gruppierten Columnstore-Indizes zu bewerten.
 
 ## <a name="syntax-difference-from-sql-server"></a>Syntaxunterschied gegenüber SQL Server
-Mit SQL Data Warehouse wird eine vereinfachte Methode zum Definieren der Partitionen eingeführt, die sich geringfügig von der in SQL Server unterscheidet.  Partitionierungsfunktionen und -schemen werden in SQL Data Warehouse nicht so wie in SQL Server verwendet.  Stattdessen müssen Sie lediglich die partitionierte Spalte und die Grenzpunkte identifizieren.  Die Syntax der Partitionierung kann gegenüber SQL Server leicht variieren, aber die grundlegenden Konzepte sind identisch.  SQL Server und SQL Data Warehouse unterstützen eine Partitionsspalte pro Tabelle, und es kann sich um eine Bereichspartition handeln.  Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Tabellen und Indizes][Partitioned Tables and Indexes].
+SQL Data Warehouse bietet eine einfachere Möglichkeit zum Definieren von Partitionen als SQL Server.  Partitionierungsfunktionen und -schemen werden in SQL Data Warehouse nicht so wie in SQL Server verwendet.  Stattdessen müssen Sie lediglich die partitionierte Spalte und die Grenzpunkte identifizieren.  Die Syntax der Partitionierung kann gegenüber SQL Server leicht variieren, aber die grundlegenden Konzepte sind identisch.  SQL Server und SQL Data Warehouse unterstützen eine Partitionsspalte pro Tabelle, und es kann sich um eine Bereichspartition handeln.  Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Tabellen und Indizes][Partitioned Tables and Indexes].
 
 Im folgenden Beispiel für eine SQL Data Warehouse-Partition mit der [CREATE TABLE][CREATE TABLE]-Anweisung wird die Tabelle „FactInternetSales“ nach der Spalte „OrderDateKey“ partitioniert:
 
@@ -125,7 +125,7 @@ GROUP BY    s.[name]
 ## <a name="workload-management"></a>Workloadverwaltung
 Ein letzter Punkt, den Sie der Tabellenpartitionsentscheidung berücksichtigen müssen, ist die [Workloadverwaltung][workload management].  Bei der Workloadverwaltung in SQL Data Warehouse geht es hauptsächlich um die Verwaltung von Arbeitsspeicher und Parallelität.  In SQL Data Warehouse wird die maximale Speichermenge für die einzelnen Verteilungspunkte während der Abfrageausführung über Ressourcenklassen geregelt.  Idealerweise sollte die Größe unter Berücksichtigung anderer Faktoren festgelegt werden, z. B. den Arbeitsspeicheranforderungen in Bezug auf die Erstellung von gruppierten Columnstore-Indizes.  Gruppierte Columnstore-Indizes profitieren stark, wenn ihnen mehr Arbeitsspeicher zugeordnet wird.  Aus diesem Grund sollten Sie sicherstellen, dass für die Neuerstellung eines Partitionsindex genügend Arbeitsspeicher zur Verfügung steht. Sie können die Menge an Arbeitsspeicher für die Abfrage erhöhen, indem Sie von der Standardrolle (smallrc) zu einer der anderen verfügbaren Rollen (z.B. largerc) wechseln.
 
-Informationen über die Zuordnung von Arbeitsspeicher pro Verteilung erhalten Sie durch Abfragen der dynamischen Resource Governor-Verwaltungsansichten. In der Praxis ist die Arbeitsspeicherzuweisung geringer als in den folgenden Abbildungen angegeben. Die Abbildung bietet jedoch eine Richtlinie, die Sie für die Größe der Partitionen für Verwaltungsvorgänge verwenden können.  Versuchen Sie, zu vermeiden, Ihre Partitionen größer als die Arbeitsspeicherzuweisung zu erstellen, die durch die größte Ressourcenklasse bereitgestellt wird. Wenn die Partitionen die Größen in dieser Abbildung übersteigen, besteht das Risiko der Speicherauslastung, was wiederum zu weniger optimaler Komprimierung führt.
+Informationen über die Zuordnung von Arbeitsspeicher pro Verteilung erhalten Sie durch Abfragen der dynamischen Resource Governor-Verwaltungssichten. In der Praxis ist die Speicherzuweisung geringer als die in der folgenden Abfrage enthaltenen Ergebnisse. Die Abfrage bietet jedoch eine Richtlinie, die Sie für die Größe der Partitionen für Datenverwaltungsvorgänge verwenden können.  Versuchen Sie, zu vermeiden, Ihre Partitionen größer als die Arbeitsspeicherzuweisung zu erstellen, die durch die größte Ressourcenklasse bereitgestellt wird. Wenn die Partitionen die Größen in dieser Abbildung übersteigen, besteht das Risiko der Speicherauslastung, was wiederum zu weniger optimaler Komprimierung führt.
 
 ```sql
 SELECT  rp.[name]                                AS [pool_name]
@@ -146,12 +146,12 @@ AND     rp.[name]    = 'SloDWPool'
 ## <a name="partition-switching"></a>Partitionswechsel
 SQL Data Warehouse unterstützt das Aufteilen, Zusammenführen und Wechseln von Partitionen. Jede dieser Funktionen wird mithilfe der [ALTER TABLE][ALTER TABLE]-Anweisung ausgeführt.
 
-Für den Wechsel zweier Partitionen zwischen zwei Tabellen müssen Sie sicherstellen, dass die Partitionen an ihren jeweiligen Grenzen ausgerichtet sind und die Tabellendefinitionen übereinstimmen. Da keine Überprüfungseinschränkungen verfügbar sind, um den Bereich der Werte in einer Tabelle zu erzwingen, muss die Quelltabelle die gleichen Partitionsgrenzen enthalten wie die Zieltabelle. Ist dies nicht der Fall, schlägt der Partitionswechsel fehl, da die Partitionsmetadaten nicht synchronisiert werden.
+Für den Wechsel zweier Partitionen zwischen zwei Tabellen müssen Sie sicherstellen, dass die Partitionen an ihren jeweiligen Grenzen ausgerichtet sind und die Tabellendefinitionen übereinstimmen. Da keine Überprüfungseinschränkungen verfügbar sind, um den Bereich der Werte in einer Tabelle zu erzwingen, muss die Quelltabelle die gleichen Partitionsgrenzen enthalten wie die Zieltabelle. Ist dies nicht der Fall, tritt ein Fehler beim Partitionswechsel auf, da die Partitionsmetadaten nicht synchronisiert werden.
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Aufteilen einer Partition mit Daten
 Die effizienteste Methode, um eine Partition zu teilen, die bereits Daten enthält, ist die Verwendung einer `CTAS` -Anweisung. Wenn es sich bei der partitionierten Tabelle um einen gruppierten Columnstore handelt, muss die Tabellenpartition leer sein, bevor sie aufgeteilt werden kann.
 
-Im Folgenden finden Sie ein Beispiel für eine partitionierte Columnstore-Tabelle, die eine Zeile in jeder Partition enthält:
+Im folgenden Beispiel wird eine partitionierte Columnstore-Tabelle erstellt. In jeder Partition wird eine Zeile eingefügt:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -185,11 +185,11 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 ```
 
 > [!NOTE]
-> Durch das Erstellen des Statistikobjekts stellen wir sicher, dass die Tabellenmetadaten genauer sind. Wenn wir das Erstellen von Statistiken auslassen, verwendet SQL Data Warehouse Standardwerte. Ausführliche Informationen zu Statistiken finden Sie unter [Statistiken][statistics].
+> Durch das Erstellen des Statistikobjekts sind die Tabellenmetadaten genauer. Wenn Sie keine Statistiken erstellen, verwendet SQL Data Warehouse Standardwerte. Ausführliche Informationen zu Statistiken finden Sie unter [Statistiken][statistics].
 > 
 > 
 
-Anschließend können wir mit der `sys.partitions` -Katalogsicht die Zeilenanzahl abfragen:
+Die folgende Abfrage sucht die Anzahl der Zeilen über die Katalogsicht `sys.partitions`:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -206,7 +206,7 @@ WHERE t.[name] = 'FactInternetSales'
 ;
 ```
 
-Wenn wir versuchen, diese Tabelle aufzuteilen, erhalten wir einen Fehler:
+Der folgende Split-Befehl erhält eine Fehlermeldung:
 
 ```sql
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
@@ -214,7 +214,7 @@ ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 
 Msg 35346, Level 15, State 1, Line 44 SPLIT clause of ALTER PARTITION statement failed because the partition is not empty.  Nur leere Partitionen können aufgeteilt werden, wenn ein Columnstore-Index für die Tabelle vorhanden ist. Deaktivieren Sie ggf. den Columnstore-Index vor Ausgabe der ALTER PARTITION-Anweisung, und erstellen Sie dann nach Abschluss von ALTER PARTITION den Columnstore-Index neu.
 
-Wir können aber auch `CTAS` für die Erstellung einer neuen Tabelle zum Speichern von Daten verwenden.
+Sie können aber auch `CTAS` zum Erstellen einer neuen Datentabelle verwenden.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -232,7 +232,7 @@ WHERE   1=2
 ;
 ```
 
-Ein Wechsel ist zulässig, da die Partitionsgrenzen ausgerichtet sind. Dadurch verbleibt die Quelltabelle mit einer leeren Partition, die wir später aufteilen können.
+Ein Wechsel ist zulässig, da die Partitionsgrenzen ausgerichtet sind. Dadurch verbleibt die Quelltabelle mit einer leeren Partition, die Sie später aufteilen können.
 
 ```sql
 ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 PARTITION 2;
@@ -240,7 +240,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Wir müssen nun lediglich die Daten mit `CTAS` an die neuen Partitionsgrenzen anpassen und wieder in die Haupttabelle zurückführen.
+Sie müssen nun lediglich die Daten mit `CTAS` an die neuen Partitionsgrenzen anpassen und dann wieder in die Haupttabelle zurückführen.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -261,7 +261,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2;
 ```
 
-Nach Abschluss der Datenverschiebung empfiehlt es sich, die Statistiken für die Zieltabelle zu aktualisieren, um sicherzustellen, dass sie genau die neue Verteilung der Daten in den entsprechenden Partitionen wiedergeben:
+Nach dem Verschieben der Daten ist es sinnvoll, die Statistiken für die Zieltabelle zu aktualisieren. Durch das Aktualisieren der Statistiken wird sichergestellt, dass diese die neue Aufteilung der Daten in ihren jeweiligen Partitionen genau widerspiegeln.
 
 ```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
@@ -362,7 +362,7 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 [Partition]: ./sql-data-warehouse-tables-partition.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
-[workload management]: ./sql-data-warehouse-develop-concurrency.md
+[workload management]: ./resource-classes-for-workload-management.md
 [SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!-- MSDN Articles -->

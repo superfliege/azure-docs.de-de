@@ -2,19 +2,19 @@
 title: Einrichtung und Konfiguration der Azure Machine Learning-Modellverwaltung | Microsoft-Dokumentation
 description: Dieses Dokument beschreibt die Schritte und Konzepte zur Einrichtung und Konfiguration der Modellverwaltung in Azure Machine Learning.
 services: machine-learning
-author: raymondlaghaeian
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: hjerez
-ms.reviewer: jmartens,jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/6/2017
-ms.openlocfilehash: 4e2ac548ee08f1a20cf2c1744242ee13535e55cc
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: d231fd525d310d2496c9ace40808b7deab0dd48f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="model-management-setup"></a>Einrichtung der Modellverwaltung
 
@@ -70,7 +70,7 @@ Beginnen Sie mit einer lokalen Bereitstellung. Überprüfen Sie, ob Ihr Modell u
 Zuallererst müssen Sie Ihre Bereitstellungsumgebung einrichten. Dieser Vorgang muss nur einmal erfolgen. Nachdem die Einrichtung abgeschlossen ist, können Sie die Umgebung für nachfolgende Bereitstellungen wiederverwenden. Im folgenden Abschnitt finden Sie weitere Details.
 
 Schritte im Anschluss an die Einrichtung der Umgebung:
-- Sie werden aufgefordert, sich bei Azure anzumelden. Öffnen Sie dazu in einem Webbrowser die Seite https://aka.ms/devicelogin, und geben Sie zur Authentifizierung den angegebenen Code ein.
+- Sie werden aufgefordert, sich bei Azure anzumelden. Verwenden Sie zur Anmeldung einen Webbrowser, um die Seite https://aka.ms/devicelogin zu öffnen. Geben Sie dann zur Authentifizierung den bereitgestellten Code ein.
 - Während des Authentifizierungsvorgangs werden Sie für die Authentifizierung zur Angabe eines Kontos aufgefordert. Wichtig: Wählen Sie ein Konto mit einem gültigen Azure-Abonnement und ausreichenden Berechtigungen zum Erstellen von Ressourcen im Konto aus. Wenn die Anmeldung abgeschlossen ist, werden Ihre Abonnementinformationen angezeigt, und Sie werden gefragt, ob Sie mit dem ausgewählten Konto fortfahren möchten.
 
 ### <a name="environment-setup"></a>Einrichten der Umgebung

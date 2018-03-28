@@ -90,12 +90,12 @@ Get-AzureStorageTableRowByColumnName -table $storageTable `
 
 Diese Abfrage ruft einen einzelnen Datensatz ab.
 
-|Feld|Wert|
+|Feld|value|
 |----|----|
 | userid | 1 |
 | username | Chris |
 | PartitionKey | partition1 |
-| Zeilenschlüssel      | CA |
+| RowKey      | CA |
 
 #### <a name="retrieve-entities-using-a-custom-filter"></a>Abrufen von Entitäten unter Verwendung eines benutzerdefinierten Filters 
 
@@ -104,17 +104,17 @@ Wenn Sie Entitäten unter Verwendung eines benutzerdefinierten Filters abrufen m
 ```powershell
 Get-AzureStorageTableRowByCustomFilter `
     -table $storageTable `
-    -customFilter "(userid eq '1')"
+    -customFilter "(userid eq 1)"
 ```
 
 Diese Abfrage ruft einen einzelnen Datensatz ab.
 
-|Feld|Wert|
+|Feld|value|
 |----|----|
 | userid | 1 |
 | username | Chris |
 | PartitionKey | partition1 |
-| Zeilenschlüssel      | CA |
+| RowKey      | CA |
 
 ### <a name="updating-entities"></a>Aktualisieren von Entitäten 
 
@@ -144,12 +144,12 @@ Get-AzureStorageTableRowByCustomFilter -table $storageTable `
 
 In den Ergebnissen wird der Jessie2-Datensatz angezeigt.
 
-|Feld|Wert|
+|Feld|value|
 |----|----|
 | userid | 2 |
 | username | Jessie2 |
 | PartitionKey | partition2 |
-| Zeilenschlüssel      | NM |
+| RowKey      | NM |
 
 ### <a name="deleting-table-entities"></a>Löschen von Tabellenentitäten
 
@@ -180,7 +180,7 @@ Get-AzureStorageTableRowAll -table $storageTable | ft
 Wenn Sie alle Entitäten in der Tabelle löschen möchten, rufen Sie sie ab, und übergeben Sie die Ergebnisse an das Remove-Cmdlet. 
 
 ```powershell
-# Get all rows and pipe it into the remove cmdlet.
+# Get all rows and pipe the result into the remove cmdlet.
 Get-AzureStorageTableRowAll `
     -table $storageTable | Remove-AzureStorageTableRow -table $storageTable 
 

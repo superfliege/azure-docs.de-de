@@ -1,6 +1,6 @@
 ---
 title: 'Azure Cosmos DB: SQL .NET-API, -SDK und -Ressourcen | Microsoft-Dokumentation'
-description: "Erhalten Sie alle Informationen zu SQL .NET-API und -SDK, einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen an den einzelnen Versionen des Azure Cosmos DB .NET SDK."
+description: Erhalten Sie alle Informationen zu SQL .NET-API und -SDK, einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen an den einzelnen Versionen des Azure Cosmos DB .NET SDK.
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 825b2657cc6aa7b4e116f44020767beff911b1fc
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5dd2fb353246120f58840914e8a4e5527d7a4486
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -54,6 +54,11 @@ ms.lasthandoff: 03/12/2018
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+### <a name="a-name12111211"></a><a name="1.21.1"/>1.21.1
+
+* Korrektur von KeyNotFoundException für die partitionsübergreifende Reihenfolge von Abfragen in Ausnahmefällen.
+* Korrektur eines Fehlers, bei dem ein JsonPropery-Attribut in der Select-Klausel für LINQ-Abfragen nicht berücksichtigt wurde.
+
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
 * Korrektur eines Fehlers, der bei Verwendung der Sitzungskonsistenzebene unter bestimmten Racebedingungen zu vorübergehenden Fehlern vom Typ „Microsoft.Azure.Documents.NotFoundException: Die Lesesitzung für das eingegebene Sitzungstoken ist nicht verfügbar“ geführt hat.
@@ -290,6 +295,8 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.21.1](#1.20.1) |09. März 2018 |--- |
+| [1.20.2](#1.20.1) |21. Februar 2018 |--- |
 | [1.20.1](#1.20.1) |05. Februar 2018 |--- |
 | [1.19.1](#1.19.1) |16. November 2017 |--- |
 | [1.19.0](#1.19.0) |10. November 2017 |--- |

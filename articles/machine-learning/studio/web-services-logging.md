@@ -1,10 +1,11 @@
 ---
-title: "Protokollierung für Machine Learning-Webdienste | Microsoft Docs"
-description: "Erfahren Sie, wie Sie die Protokollierung für Machine Learning-Webdienste aktivieren können. Die Protokollierung stellt zusätzliche Informationen zur Problembehandlung von APIs bereit."
+title: Protokollierung für Machine Learning-Webdienste | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Protokollierung für Machine Learning-Webdienste aktivieren können. Die Protokollierung stellt zusätzliche Informationen zur Problembehandlung von APIs bereit.
 services: machine-learning
-documentationcenter: 
-author: raymondlaghaeian
-manager: jhubbard
+documentationcenter: ''
+author: aashishb
+ms.author: aashishb
+manager: hjerez
 editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.author: raymondl;garye
-ms.openlocfilehash: 31497bcae5889590a2261b716574ec4eae21852d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e04ef638c46ef0f3b40fd56d27ba3673565bdc7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>Aktivieren der Protokollierung für Machine Learning-Webdienste
 Dieses Dokument enthält Informationen zur Protokollierungsfunktion von Machine Learning-Webdiensten. Durch die Protokollierung erhalten Sie zusätzliche Informationen, die über die Fehlernummer und eine Meldung hinausgehen und die Ihnen helfen können, Probleme beim Aufrufen der Machine Learning-APIs zu beheben.  
@@ -27,7 +27,7 @@ Dieses Dokument enthält Informationen zur Protokollierungsfunktion von Machine 
 
 Aktivieren Sie die Protokollierung im [Azure Machine Learning Web Services-Portal](https://services.azureml.net). 
 
-1. Melden Sie sich unter [https://services.azureml.net](https://services.azureml.net) Azure Machine Learning Web Services-Portal an. Bei einem klassischen Webdienst gelangen Sie auch zum Portal, indem Sie in Machine Learning Studio auf der Machine Learning-Webdienstseite auf **New Web Services Experience** (Neue Webdienstfunktion) klicken.
+1. Melden Sie sich beim Azure Machine Learning-Webdienstportal unter [https://services.azureml.net](https://services.azureml.net) an. Bei einem klassischen Webdienst gelangen Sie auch zum Portal, indem Sie in Machine Learning Studio auf der Machine Learning-Webdienstseite auf **New Web Services Experience** (Neue Webdienstfunktion) klicken.
 
    ![Link für neue Webdienstfunktion](./media/web-services-logging/new-web-services-experience-link.png)
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 3261a312cde9ebdf41f6dadb82c14d108715f8f7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5323fe505adfd9b3495dd85ce41d6f141125184b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Vor den ersten Schritten mit App Service in Azure Stack
 
@@ -47,7 +47,7 @@ Bevor Sie Azure App Service in Azure Stack bereitstellen, müssen die erforderli
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 
-Aufgrund des 1802-Release von Azure Stack, mit dem Unterstützung für Fehlerdomänen hinzugefügt wurde, werden neue Bereitstellungen von Azure App Service in Azure Stack über Fehlerdomänen hinweg verteilt und sorgen für Fehlertoleranz.  Für vorhandene Bereitstellungen von Azure App Service in Azure Stack, die vor der Veröffentlichung von Update 1802 bereitgestellt wurden, lesen Sie in der Dokumentation (azure-stack-app-service-fault-domain-update.md) nach, wie die Bereitstellung ausgeglichen wird.
+Aufgrund des 1802-Release von Azure Stack, mit dem Unterstützung für Fehlerdomänen hinzugefügt wurde, werden neue Bereitstellungen von Azure App Service in Azure Stack über Fehlerdomänen hinweg verteilt und sorgen für Fehlertoleranz.  Für vorhandene Bereitstellungen von Azure App Service in Azure Stack, die vor der Veröffentlichung von Update 1802 bereitgestellt wurden, lesen Sie in der [Dokumentation](azure-stack-app-service-fault-domain-update.md) nach, wie die Bereitstellung ausgeglichen wird.
 
 Neben Azure App Service in Azure Stack für Hochverfügbarkeit stellen Sie auch den erforderlichen Dateiserver und die SQL Server-Instanz in einer Hochverfügbarkeitskonfiguration bereit. 
 

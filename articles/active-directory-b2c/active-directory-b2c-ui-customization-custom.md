@@ -1,8 +1,8 @@
 ---
-title: "Anpassen einer Benutzeroberfläche mit benutzerdefinierten Richtlinien – Azure AD B2C | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie eine Benutzeroberfläche (UI) anpassen, während Sie benutzerdefinierte Richtlinien in Azure AD B2C verwenden."
+title: Anpassen einer Benutzeroberfläche mit benutzerdefinierten Richtlinien – Azure AD B2C | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie eine Benutzeroberfläche (UI) anpassen, während Sie benutzerdefinierte Richtlinien in Azure AD B2C verwenden.
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: saeedakhter-msft
 manager: mtillman
 editor: parakhj
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: c430b488016f038ed1d7a67a8d52c057df1ea40e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dcd8b6df68a68f5feb428b4fd98aee938b3bfe6c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberflächenanpassung in einer benutzerdefinierten Richtlinie
 
@@ -66,7 +66,7 @@ Erstellen Sie den HTML-Inhalt mit dem Markennamen Ihres Produkts im Titel.
 
 Gehen Sie wie folgt vor, um diesen HTML-Inhalt im Blob-Speicher zu hosten:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im Menü **Hub** die Option **Neu** > **Speicher** > **Speicherkonto**.
 3. Geben Sie einen eindeutigen **Namen** für Ihr Speicherkonto ein.
 4. Als **Bereitstellungsmodell** können Sie **Resource Manager** unverändert lassen.
@@ -118,7 +118,7 @@ Konfigurieren Sie den Blob-Speicher für die Ressourcenfreigabe zwischen verschi
 
 Überprüfen Sie, ob alles bereit ist, indem Sie die folgenden Schritte ausführen:
 
-1. Navigieren Sie zur Website [test-cors.org](http://test-cors.org/), und fügen Sie anschließend die URL in das Feld **Remote-URL** ein.
+1. Navigieren Sie zur Website [www.test-cors.org](http://www.test-cors.org/), und fügen Sie anschließend die URL in das Feld **Remote-URL** ein.
 2. Klicken Sie auf **Anforderung senden**.  
     Wenn ein Fehler ausgegeben wird, sollten Sie sich vergewissern, dass Ihre [CORS-Einstellungen](#configure-cors) richtig sind. Außerdem müssen Sie unter Umständen Ihren Browsercache löschen oder eine InPrivate-Browsersitzung öffnen, indem Sie STRG+UMSCHALT+P drücken.
 
@@ -149,7 +149,7 @@ Unter dem *\<TrustFrameworkPolicy\>*-Tag der obersten Ebene sollte sich das *\<B
 2. Wählen Sie die benutzerdefinierte Richtlinie aus, die hochgeladen werden soll, und klicken Sie auf die Schaltfläche **Jetzt ausführen**.
 3. Sie sollten sich mit einer E-Mail-Adresse registrieren können.
 
-## <a name="reference"></a>Referenz
+## <a name="reference"></a>Verweis
 
 Beispielvorlagen für die Benutzeroberflächenanpassung finden Sie hier:
 
@@ -159,7 +159,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 Der Ordner „sample_templates/wingtip“ enthält die folgenden HTML-Dateien:
 
-| HTML5-Vorlage | Beschreibung |
+| HTML5-Vorlage | BESCHREIBUNG |
 |----------------|-------------|
 | *phonefactor.html* | Verwenden Sie diese Datei als Vorlage für eine Seite für die mehrstufige Authentifizierung. |
 | *resetpassword.html* | Verwenden Sie diese Datei als Vorlage für eine Seite vom Typ „Kennwort vergessen“. |
@@ -169,7 +169,7 @@ Der Ordner „sample_templates/wingtip“ enthält die folgenden HTML-Dateien:
 
 Im Abschnitt [Ändern von benutzerdefinierten Registrierungs- oder Anmelderichtlinien](#modify-your-sign-up-or-sign-in-custom-policy) haben Sie die Inhaltsdefinition für `api.idpselections` konfiguriert. Der vollständige Satz mit IDs für die Inhaltsdefinition, die vom Azure AD B2C Identity Experience Framework erkannt werden, und die dazugehörigen Beschreibungen sind in der folgenden Tabelle enthalten:
 
-| ID für Inhaltsdefinition | Beschreibung | 
+| ID für Inhaltsdefinition | BESCHREIBUNG | 
 |-----------------------|-------------|
 | *api.error* | **Fehlerseite**: Diese Seite wird angezeigt, wenn eine Ausnahme oder ein Fehler auftreten. |
 | *api.idpselections* | **Seite zur Auswahl des Identitätsanbieters**: Diese Seite enthält eine Liste mit den Identitätsanbietern, unter denen der Benutzer bei der Anmeldung wählen kann. Bei diesen Optionen handelt es sich um Unternehmensidentitätsanbieter, Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten. |

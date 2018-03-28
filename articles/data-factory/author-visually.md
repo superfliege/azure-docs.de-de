@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/9/2018
 ms.author: shlo
-ms.openlocfilehash: 209afba99ac2b43c252d93c32930908ec1f957f9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 954693ee208dc7868a5a5ad0e774c5c352036627
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visuelles Erstellen in Azure Data Factory
 Mithilfe der Azure Data Factory-Benutzeroberfläche (UX) können Sie Ressourcen für Ihre Data Factory visuell erstellen und bereitstellen, ohne Code schreiben zu müssen. Sie können Aktivitäten auf eine Pipelinecanvas ziehen, Testläufe ausführen, iterativ debuggen sowie Ihre Pipelineausführungen bereitstellen und überwachen. Die Benutzeroberfläche kann auf zwei Arten zum visuellen Erstellen verwendet werden:
@@ -41,7 +41,7 @@ Wenn Sie die **UX-Canvas** für die Erstellung zum direkten Erstellen mit dem Da
 Das visuelle Erstellen mit VSTS Git-Integration unterstützt Quellcodeverwaltung und Zusammenarbeit beim Arbeiten an den Data Factory-Pipelines. Sie können eine Data Factory einem VSTS Git-Kontorepository für die Quellcodeverwaltung, Zusammenarbeit, Versionsverwaltung usw. zuordnen. Ein einzelnes VSTS Git-Konto kann über mehrere Repositorys verfügen. Allerdings kann ein VSTS Git-Repository nur einer einzigen Data Factory zugeordnet werden. Wenn Sie noch nicht über ein VSTS-Konto oder ein Repository verfügen, folgen Sie [diesen Anweisungen](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) zum Erstellen der Ressourcen.
 
 > [!NOTE]
-> Eine Data Factory-Pipeline kann nicht auf Dateien zugreifen, die in einem VSTS-Git-Repository gespeichert sind. Daher können Sie Dateien, die Data Factory-Pipeline-Aktivitäten – z.B. Datendateien und Skriptdateien – verwendet werden, nicht in einem VSTS-Git-Repository speichern.
+> Sie können Skript- und Datendateien in einem VSTS-Git-Repository speichern. Allerdings müssen Sie die Dateien manuell in Azure Storage hochladen. Eine Data Factory-Pipeline lädt Skript- oder Datendateien, die in einem VSTS-Git-Repository gespeichert sind, nicht automatisch in Azure Storage hoch.
 
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurieren eines VSTS Git-Repositorys mit Azure Data Factory
 Es gibt zwei Methoden zum Konfigurieren eines VSTS Git-Repositorys mit einer Data Factory.

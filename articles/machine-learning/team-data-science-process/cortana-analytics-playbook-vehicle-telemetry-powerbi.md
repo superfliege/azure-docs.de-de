@@ -1,8 +1,8 @@
 ---
-title: "Power BI-Dashboard für Fahrzeugzustand und Fahrgewohnheiten – Azure | Microsoft-Dokumentation"
-description: "Verwenden Sie die Funktionen von Cortana Intelligence zur Echtzeitgewinnung von prädiktiven Einblicken in Fahrzeugzustand und Fahrgewohnheiten."
+title: Power BI-Dashboard für Fahrzeugzustand und Fahrgewohnheiten – Azure | Microsoft-Dokumentation
+description: Verwenden Sie die Funktionen von Cortana Intelligence zur Echtzeitgewinnung von prädiktiven Einblicken in Fahrzeugzustand und Fahrgewohnheiten.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: 626987ec0648f9e770499b4a48bc4ca2d175d2b4
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 6a46a05539a7211fbc2a3a9f6ec45a28f5c64039
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Lösungsvorlage „Analyse von Telemetriedaten für Fahrzeuge“ – Anweisungen zur Einrichtung des Power BI-Dashboards
-Dieses Menü bietet Links zu den Kapiteln dieses Playbooks: 
+Dieses Menü bietet Links zu den Kapiteln in diesem Playbook: 
 
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
-Die Lösung zur Fahrzeugtelemetrieanalyse zeigt, wie Autohändler, Hersteller und Versicherungsunternehmen die Funktionen von Cortana Intelligence verwenden können. Sie können Echtzeit- und Prognosedaten zu Fahrzeugzustand und Fahrgewohnheiten abrufen um so die Kundenzufriedenheit, Forschung und Entwicklung und Marketingkampagnen optimieren. Diese schrittweisen Anleitungen zeigen, wie Sie Power BI-Berichte und das Dashboard konfigurieren können, nachdem die Lösung in Ihrem Abonnement bereitgestellt wurde. 
+Die Lösung zur Fahrzeugtelemetrieanalyse zeigt, wie Autohändler, Hersteller und Versicherungsunternehmen die Funktionen von Cortana Intelligence verwenden können. Sie können Echtzeit- und Prognosedaten zu Fahrzeugzustand und Fahrgewohnheiten abrufen, um so die Kundenzufriedenheit, Forschung und Entwicklung sowie Marketingkampagnen zu optimieren. Diese schrittweisen Anleitungen zeigen, wie Sie Power BI-Berichte und das Dashboard konfigurieren, nachdem die Lösung in Ihrem Abonnement bereitgestellt wurde. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Stellen Sie die Lösung [Analyse von Telemetriedaten für Fahrzeuge](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) bereit. 
@@ -42,7 +42,7 @@ Die nachstehenden Cortana Intelligence-Dienste werden als Teil der Lösungsvorla
 * **Azure HDInsight** transformiert Daten auch in großem Umfang.
 * **Azure Data Factory** übernimmt die Orchestrierung, Planung, Ressourcenverwaltung und Überwachung der Batchverarbeitungs-Pipeline.
 
-**Power BI** bietet dieser Lösung ein umfassendes Dashboard für Visualisierungen von Echtzeitdaten und Predictive Analytics. 
+**Power BI** bietet dieser Lösung ein umfassendes Dashboard für Visualisierungen von Daten und Predictive Analytics. 
 
 Für die Lösung werden zwei unterschiedliche Datenquellen verwendet:
 
@@ -101,7 +101,7 @@ Diese Lösung enthält drei Echtzeitberichte:
 * Vehicles Requiring Maintenance (Fahrzeuge, für die die Wartung erforderlich ist)
 * Vehicles Health Statistics (Fahrzeugzustandsstatistik)
 
-Sie können alle drei Echtzeitberichte konfigurieren oder den Vorgang nach jeder Phase beenden. Sie können dann mit dem nächsten Abschnitt zum Konfigurieren von Batchberichten fortfahren. Wir empfehlen, alle drei Berichte zu erstellen, um den Echtzeitpfad der Lösung in vollem Umfang zu visualisieren.  
+Sie können alle drei Berichte konfigurieren oder den Vorgang nach jeder Phase beenden. Sie können dann mit dem nächsten Abschnitt zum Konfigurieren von Batchberichten fortfahren. Wir empfehlen, alle drei Berichte zu erstellen, um den Echtzeitpfad der Lösung in vollem Umfang zu visualisieren.  
 
 ### <a name="vehicles-in-operation-report"></a>Bericht „Vehicles in Operation“ (Fahrzeuge im Einsatz)
 1. Doppelklicken Sie auf **Seite 1**, und benennen Sie sie in **Vehicles in Operation** (Fahrzeuge im Einsatz) um.
@@ -160,7 +160,7 @@ Sie können alle drei Echtzeitberichte konfigurieren oder den Vorgang nach jeder
 
     ![Dashboard mit Visualisierungen](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4k.png)
 
-Sie haben den Echtzeitbericht „Vehicles in Operation“ (Fahrzeuge im Einsatz) erfolgreich konfiguriert. Sie können den nächsten Echtzeitbericht erstellen oder hier aufhören und das Dashboard konfigurieren. 
+Sie haben den Bericht „Vehicles in Operation“ (Fahrzeuge im Einsatz) erfolgreich konfiguriert. Sie können den nächsten Echtzeitbericht erstellen oder hier aufhören und das Dashboard konfigurieren. 
 
 ### <a name="vehicles-requiring-maintenance-report"></a>Bericht „Vehicles Requiring Maintenance“ (Fahrzeuge, für die die Wartung erforderlich ist)
 
@@ -198,7 +198,7 @@ Sie haben den Echtzeitbericht „Vehicles in Operation“ (Fahrzeuge im Einsatz)
 
 6. Ziehen Sie auf der Registerkarte **Felder** den Eintrag **Model** in den Bereich **Achse**. Ziehen Sie **vin** in den Bereich **Wert**. Sortieren Sie die Visualisierung dann nach **Count of vin**. Ändern Sie den **Titel** des Diagramms in **Vehicles requiring maintenance by model** (Fahrzeuge, für die die Wartung erforderlich ist, nach Modell). 
 
-7. Ziehen Sie im Abschnitt **Felder** ![Felder](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) der Registerkarte **Visualisierungen** den Eintrag **vin** zu **Farbsättigung**.
+7. Ziehen Sie im Abschnitt **Felder** ![Felderimage](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) der Registerkarte **Visualisierungen** den Eintrag **vin** zu **Farbsättigung**.
 
     ![Farbsättigung](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)  
 
@@ -333,7 +333,7 @@ Sie haben das Echtzeit-Dashboard erfolgreich erstellt. Wenn Sie „CarEventGener
 
 ## <a name="set-up-the-power-bi-batch-processing-dashboard"></a>Einrichten des Power BI-Dashboards für die Batchverarbeitung
 > [!NOTE]
-> Es dauert ca. zwei Stunden (ab dem erfolgreichen Abschluss der Bereitstellung), bis die Pipeline für die End-to-End-Batchverarbeitung die Ausführung beendet und generierte Daten für den Zeitraum eines Jahres verarbeitet hat. Warten Sie auf den Abschluss der Verarbeitung, bevor Sie die folgenden Schritte ausführen. 
+> Es dauert ca. zwei Stunden (ab dem erfolgreichen Abschluss der Bereitstellung), bis die Pipeline für die End-to-End-Batchverarbeitung die Ausführung beendet und generierte Daten für den Zeitraum eines Jahres verarbeitet hat. Warten Sie auf den Abschluss der Verarbeitung, bevor Sie die folgenden Schritte ausführen:
 > 
 > 
 

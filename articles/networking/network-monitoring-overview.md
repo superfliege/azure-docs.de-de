@@ -1,13 +1,13 @@
 ---
-title: "Informationen zur Netzwerküberwachung in Log Analytics | Microsoft-Dokumentation"
-description: "Übersicht über Netzwerküberwachungslösungen (einschließlich NPM) für die übergreifende Verwaltung von Netzwerken in cloudbasierten und lokalen Umgebungen sowie in Hybridumgebungen."
+title: Informationen zur Netzwerküberwachung in Log Analytics | Microsoft-Dokumentation
+description: Übersicht über Netzwerküberwachungslösungen (einschließlich NPM) für die übergreifende Verwaltung von Netzwerken in cloudbasierten und lokalen Umgebungen sowie in Hybridumgebungen.
 services: monitoring-and-diagnostics
 documentationcenter: na
 author: agummadi
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 6d93821b59e1f69a48c3d5eeda96dad2edddb188
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7b9f42607f313f5570f414e810eafc6775ea18b9
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="network-monitoring-solutions"></a>Netzwerküberwachungslösungen 
 
@@ -33,6 +33,8 @@ Der Netzwerkleistungsmonitor (Network Performance Monitor, NPM) ist eine Sammlun
 * Mehreren Rechenzentren und Zweigstellen
 * Unternehmenswichtigen Microservices/Anwendungen mit mehreren Ebenen
 * Benutzerstandorten und webbasierten Anwendungen (HTTP/HTTPS) 
+
+Systemmonitor, ExpressRoute-Monitor und Dienstendpunktmonitor sind Überwachungsfunktionen in NPM und werden im Folgenden beschrieben.
 
 ## <a name="performance-monitor"></a>Systemmonitor
 
@@ -82,6 +84,37 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Konfigurieren des Netzwerkleistungsmonitors für die Überwachung von Dienstendpunkten](https://aka.ms/applicationconnectivitymonitorguide)
 * [Blogbeitrag](https://aka.ms/svcendptmonitor)
+
+## <a name="traffic-analytics"></a>Traffic Analytics
+Traffic Analytics ist eine cloudbasierte Lösung, die Einblick in Benutzer- und Anwendungsaktivitäten in Ihrem Cloudnetzwerk bietet. NSG-Flow-Protokolle werden analysiert, um Einblicke zu bieten in:
+
+* Datenverkehrsflüsse über Ihre Netzwerke zwischen Azure und Internet, öffentliche Cloudregionen, VNETs und Subnetze
+* Anwendungen und Protokolle in Ihrem Netzwerk, ohne die Notwendigkeit, Sniffer oder dedizierte Datenflusssammler-Appliances einzusetzen
+* Spitzennutzer, „geschwätzige“ Anwendungen, VM-Konversationen in der Cloud, die Datenverkehrhotspots
+* Quellen und Ziele des Datenverkehrs über VNETs, Beziehungen zwischen geschäftskritischen Diensten und Anwendungen
+* Sicherheit – schädlicher Datenverkehr, zum Internet offene Ports, Anwendungen oder VMs, die versuchen, auf das Internet zuzugreifen...
+* Kapazitätsauslastung – unterstützt Sie beim Vermeiden von Überbereitstellung oder Unterauslastung durch Überwachung der Nutzungstrends von VPN-Gateways und anderen Diensten
+
+Traffic Analytics bietet Ihnen Informationen, die Ihnen erleichtern, die Netzwerkaktivität Ihres Unternehmens zu überwachen, Anwendungen und Daten zu schützen, die Arbeitsauslastungsleistung zu optimieren und die Kompatibilität aufrechtzuerhalten.
+
+![Geografische Karte, die Datenverkehr Regionen übergreifend darstellt](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+
+Verwandte Links:
+* [Blogbeitrag](https://aka.ms/trafficanalytics), [Dokumentation](https://aka.ms/trafficanalyticsdocs), [FAQ](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+
+## <a name="dns-analytics"></a>DNS-Analyse
+Diese für DNS-Administratoren konzipierte Lösung erfasst, analysiert und korreliert DNS-Protokolle, um Sicherheit, Vorgänge und leistungsbezogene Einblicke bereitzustellen.  Einige der Funktionen sind:
+
+* Identifizieren von Clients, die versuchen, schädliche Domänennamen aufzulösen
+* Identifizieren von veralteten Ressourceneinträgen
+* Einblick in häufig abgefragte Domänennamen und DNS-Clients mit hoher Aktivität
+* Einblick in die Anforderungsbelastung auf DNS-Servern
+* Überwachen von Fehlern der dynamischen DNS-Registrierung
+
+![DNS Analytics-Dashboard](./media/network-monitoring-overview/dns-analytics-overview.png) 
+
+Verwandte Links:
+* [Blogbeitrag](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [Dokumentation](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

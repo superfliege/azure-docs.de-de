@@ -1,23 +1,20 @@
 ---
-title: Weiterleiten von Azure Automation DSC-Berichtsdaten an OMS Log Analytics | Microsoft-Dokumentation
-description: "In diesem Artikel wird erläutert, wie Berichtsdaten zum gewünschten Zustand (Desired State Configuration, DSC) an Microsoft Operations Management Suite Log Analytics gesendet werden, um zusätzliche Einblicke und Verwaltungsoptionen zu erhalten."
+title: Weiterleiten von Azure Automation DSC-Berichtsdaten an Log Analytics
+description: In diesem Artikel wird erläutert, wie Berichtsdaten zum gewünschten Zustand (Desired State Configuration, DSC) an Log Analytics gesendet werden, um zusätzliche Einblicke und Verwaltungsoptionen zu erhalten.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
 ms.service: automation
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/24/2017
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 5de22072a436e7a2dbaa7d413595c048f730189b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 03/16/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: d06ec240477c2defca7a463b2e9338bc5e3930ab
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>Weiterleiten von Azure Automation DSC-Berichtsdaten an OMS Log Analytics
 
@@ -121,7 +118,7 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in L
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TimeGenerated |Datum und Uhrzeit der Durchführung der Konformitätsprüfung. |
 | NameVorgang |DscNodeStatusData |
@@ -132,7 +129,7 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in L
 | ConfigurationMode | Gibt an, wie die Konfiguration auf den Knoten angewendet wird. Mögliche Werte sind __ApplyOnly__, __ApplyandMonitior__ und __ApplyandAutoCorrect__. <ul><li>__ApplyOnly:__ DSC wendet die Konfiguration an und führt nur dann weitere Schritte durch, wenn eine neue Konfiguration per Push an den Zielknoten übertragen oder eine neue Konfiguration von einem Server abgerufen wird. Nach der ersten Anwendung einer neuen Konfiguration führt DSC keine Überprüfung auf Abweichungen von einem zuvor konfigurierten Zustand durch. DSC versucht, die Konfiguration anzuwenden, bis der Vorgang erfolgreich abgeschlossen wurde und bevor __ApplyOnly__ in Kraft tritt. </li><li> __ApplyAndMonitor:__ Dies ist der Standardwert. Der LCM wendet alle neuen Konfigurationen an. Nach der ersten Anwendung einer neuen Konfiguration meldet DSC Abweichungen in Protokollen, wenn der Zielknoten vom gewünschten Zustand abweicht. DSC versucht, die Konfiguration anzuwenden, bis der Vorgang erfolgreich abgeschlossen wurde und bevor __ApplyAndMonitor__ in Kraft tritt.</li><li>__ApplyAndAutoCorrect:__ DSC wendet alle neuen Konfigurationen an. Nach der ersten Anwendung einer neuen Konfiguration meldet DSC Abweichungen in Protokollen, wenn der Zielknoten vom gewünschten Zustand abweicht, und wendet dann die aktuelle Konfiguration erneut an.</li></ul> |
 | HostName_s | Der Name des verwalteten Knotens. |
 | IPAddress | Die IPv4-Adresse des verwalteten Knotens. |
-| Kategorie | DscNodeStatus |
+| Category (Kategorie) | DscNodeStatus |
 | Ressource | Der Name des Azure Automation-Kontos. |
 | Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
 | NodeId_g |Eindeutiger Bezeichner (GUID), der den verwalteten Knoten identifiziert. |
@@ -152,13 +149,13 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in L
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TimeGenerated |Datum und Uhrzeit der Durchführung der Konformitätsprüfung. |
 | NameVorgang |DscResourceStatusData|
 | ResultType |Gibt an, ob die Ressource konform ist. |
 | NodeName_s |Der Name des verwalteten Knotens. |
-| Kategorie | DscNodeStatus |
+| Category (Kategorie) | DscNodeStatus |
 | Ressource | Der Name des Azure Automation-Kontos. |
 | Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
 | NodeId_g |Eindeutiger Bezeichner (GUID), der den verwalteten Knoten identifiziert. |

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 8f6f3fc8325fb2587dc09b982efa52fbe663e2a9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3e2f8be0f77e220da483dcfb18d6b324d3f203ed
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows
 
@@ -227,9 +227,7 @@ Das Tool PerfInsights erfasst abhängig vom ausgewählten Szenario verschiedene 
 
 ## <a name="view-and-share-the-results"></a>Anzeigen und Freigeben der Ergebnisse
 
-Die Ausgabe der Erweiterung wird in einem Ordner gespeichert. Der Ordner hat den Namen „log_collection“ und befindet sich standardmäßig auf dem temporären Laufwerk (normalerweise „D:\log_collection“). Dieser Ordner enthält ZIP-Dateien mit den Diagnoseprotokollen und einen Bericht mit Ergebnissen und Empfehlungen.
-
-Sie finden die ZIP-Datei auch im Speicherkonto, das während der Installation angegeben wurde. Sie ist 30 Tage lang für den Zugriff mit [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) freigegeben. Die Textdatei „*zipfilename*_saslink.txt“ wird ebenfalls im Ordner „log_collection“ erstellt. Diese Datei enthält den SAS-Link, der zum Herunterladen der ZIP-Datei erstellt wurde. Jede Person kann mit diesem Link die ZIP-Datei herunterladen.
+Die Ausgabe von der Erweiterung kann in einer ZIP-Datei gefunden werden, die in das während der Installation angegebene Speicherkonto hochgeladen wird und für 30 Tage über [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) freigegeben ist. Diese ZIP-Datei enthält Diagnoseprotokolle und einen Bericht mit Ergebnissen und Empfehlungen. Ein SAS-Link zur Ausgabe-ZIP-Datei befindet sich in einer Textdatei namens *Zipdateiname*_saslink.txt im Ordner **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<Version>**. Jede Person kann mit diesem Link die ZIP-Datei herunterladen.
 
 Zur Unterstützung des Supporttechnikers, der Ihr Supportticket bearbeitet, verwendet Microsoft diesen SAS-Link unter Umständen zum Herunterladen der Diagnosedaten.
 
@@ -240,7 +238,7 @@ Sie sollten die ZIP-Datei auch direkt aus dem Portal herunterladen können, inde
 ![Screenshot: Ausführlicher Status der Leistungsdiagnose](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
 > [!NOTE]
-> Der im Portal angezeigte SAS-Link funktioniert ggf. nicht. Dies kann durch eine falsch formatierte URL während der Codier- und Decodiervorgänge verursacht werden. Sie können den Link stattdessen direkt der Datei „*_saslink.txt“ auf dem virtuellen Computer entnehmen.
+> Der im Portal angezeigte SAS-Link funktioniert in einigen Fällen nicht. Dies kann durch eine falsch formatierte URL während der Codier- und Decodiervorgänge verursacht werden. Sie können den Link stattdessen direkt der Datei „*_saslink.txt“ auf dem virtuellen Computer entnehmen.
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 
@@ -249,6 +247,6 @@ Sie sollten die ZIP-Datei auch direkt aus dem Portal herunterladen können, inde
     Dieses Problem kann bedenkenlos ignoriert werden, solange der Erweiterungsstatus anzeigt, dass die Erweiterung erfolgreich bereitgestellt wurde.
 - Sie können einige Probleme während der Installation mithilfe der Erweiterungsprotokolle lösen. Die Ausgabe der Erweiterungsausführung wird in Dateien im folgenden Verzeichnis protokolliert:
 
-        C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics
+        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
 Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie die Option **Support erhalten**. Informationen zur Nutzung von Azure-Support finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/).

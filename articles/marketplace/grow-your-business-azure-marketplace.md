@@ -1,24 +1,24 @@
 ---
-title: "Fördern des Unternehmenswachstums mit Azure Marketplace"
-description: "Schritt-für-Schritt-Anleitung und Veröffentlichung von Prüflisten für neue Herausgeber in Azure Marketplace"
+title: Fördern des Unternehmenswachstums mit Azure Marketplace
+description: Schritt-für-Schritt-Anleitung und Veröffentlichung von Prüflisten für neue Herausgeber in Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: 
+documentationcenter: ''
 author: ellacroi
 manager: msmbaldwin
-editor: 
+editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 51cc413d61e4951f28e9247efcee934af23572e5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 85baba61d5603539641f45f7ab1d722ca98514ad
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="grow-your-business-by-using-the-azure-marketplace"></a>Fördern des Unternehmenswachstums mit Azure Marketplace
 
@@ -129,7 +129,8 @@ Um die Wirkung dieser Aktivitäten zu maximieren, bitten wir Sie, Ihren Startpla
 >[!NOTE]
 >Der OCP-Katalog (One Commercial Partner-Katalog) ist ein Vorteil von Mitgliedern im Microsoft Partner Network. 
 
-![Marketplace-GTM-Vorteile](./media/marketplace-publishers-guide/marketplace-gtm-promotion.png)
+[Marketplace-GTM-Vorteile](./media/marketplace-publishers-guide/marketplace-gtm-current-march-8.png)
+
 
 Weitere Informationen finden Sie unter [Microsoft Go To Market](https://www.microsoftgotomarket.com) (Microsoft-Markteinführung). Dort finden Sie die Vorlagen, Webinhalte, Training und Tools, die Ihr Unternehmen voranbringen.
 

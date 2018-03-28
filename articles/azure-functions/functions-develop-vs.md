@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 03/13/2018
 ms.author: glenga
-ms.openlocfilehash: 26df11bb010414ba979077c45d01e66f17f6b12e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: dddb35ea2ba1c02f78234fe33cdb832e9aacbff5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions-Tools für Visual Studio  
 
@@ -38,15 +38,41 @@ In diesem Thema wird gezeigt, wie Sie mithilfe von Azure Functions-Tools für Vi
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Azure Functions-Tools sind in der Azure-Entwicklungsworkload in [Visual Studio 2017 Version 15.4](https://www.visualstudio.com/vs/) und höheren Versionen enthalten. Stellen Sie sicher, dass Sie die **Azure-Entwicklungsworkload** in der Installation von Visual Studio 2017 einschließen:
+Azure Functions-Tools sind in der Azure-Entwicklungsworkload in [Visual Studio 2017 Version 15.5](https://www.visualstudio.com/vs/) und höheren Versionen enthalten. Stellen Sie sicher, dass Sie die **Azure-Entwicklungsworkload** in der Installation von Visual Studio 2017 einschließen:
 
 ![Installation von Visual Studio 2017 mit der Workload „Azure-Entwicklung“](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+
+Stellen Sie sicher, dass Ihre Visual Studio-Version auf dem neuesten Stand ist und Sie die [neueste Version](#check-your-tools-version) der Azure Functions-Tools verwenden.
+
+### <a name="other-requirements"></a>Sonstige Anforderungen
 
 Zum Erstellen und Bereitstellen von Funktionen benötigen Sie ebenso:
 
 * Ein aktives Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
 * Azure Storage-Konto Informationen zum Erstellen eines Speicherkontos finden Sie unter [Erstellen Sie ein Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+
+### <a name="check-your-tools-version"></a>Überprüfen Ihrer Tools-Version
+
+1. Wählen Sie im Menü **Extras** auf **Erweiterungen und Updates**. Erweitern Sie **Installierte** > **Tools**, und wählen Sie **Azure Functions und Webauftragstools**.
+
+    ![Überprüfen der Functions-Toolsversion](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
+
+2. Notieren Sie sich die installierte **Version**. Sie können dann diese Version mit der aktuellen Version vergleichen, die [in den Versionshinweisen](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md) aufgeführt ist. 
+
+3. Wenn Ihre Version älter ist, aktualisieren Sie Ihre Tools in Visual Studio, wie im folgenden Abschnitt gezeigt.
+
+### <a name="update-your-tools"></a>Aktualisieren Ihrer Tools
+
+1. Erweitern Sie im Dialogfeld **Erweiterungen und Updates** die Option **Updates** > **Visual Studio Marketplace**, wählen Sie **Azure Functions und Webauftragstools**, und wählen Sie **Aktualisieren**.
+
+    ![Aktualisieren der Functions-Toolsversion](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
+
+2. Nachdem das Toolupdate heruntergeladen wurde, schließen Sie Visual Studio, damit die Tools mit dem VSIX-Installationsprogramm aktualisiert werden.
+
+3. Wählen Sie im Installationsprogramm **OK**, um den Vorgang zu starten, und dann **Ändern**, um die Tools zu aktualisieren. 
+
+4. Nachdem das Update abgeschlossen ist, wählen Sie **Schließen** und starten Visual Studio neu.
 
 ## <a name="create-an-azure-functions-project"></a>Erstellen eines Azure Functions-Projekts 
 

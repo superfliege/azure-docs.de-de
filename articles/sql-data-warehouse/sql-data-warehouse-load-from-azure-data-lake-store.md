@@ -1,33 +1,33 @@
 ---
-title: "Laden – Azure Data Lake Store in SQL Data Warehouse | Microsoft-Dokumentation"
+title: Laden – Azure Data Lake Store in SQL Data Warehouse | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe externer PolyBase-Tabellen Daten aus Azure Data Lake Store in Azure SQL Data Warehouse laden.
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: barbkess
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 12/14/2017
+ms.date: 3/14/2018
 ms.author: cakarst;barbkess
-ms.openlocfilehash: a2a7d15eb51374b828d1d641e0e6754115f7aaf6
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: f8cd293236255e227f80a42e78d25aebd8789bdd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Laden von Daten aus Azure Data Lake Store in SQL Data Warehouse
 Dieses Dokument enthält alle Schritte, die ausgeführt werden müssen, um Daten aus Azure Data Lake Store (ADLS) mithilfe von PolyBase in SQL Data Warehouse zu laden.
-Für die in ADLS gespeicherten Daten können mithilfe der externen Tabellen zwar auch Ad-hoc-Abfragen ausgeführt werden, es empfiehlt sich jedoch, die Daten in SQL Data Warehouse zu importieren.
+Für die in ADLS gespeicherten Daten können mithilfe der externen Tabellen zwar auch Ad-hoc-Abfragen ausgeführt werden, es empfiehlt sich jedoch, die Daten für optimale Leistung in SQL Data Warehouse zu importieren.
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
-1. Erstellen externer Datenbankobjekte zum Laden von Daten aus Azure Data Lake Store
+1. Erstellen von erforderlichen Datenbankobjekten zum Laden von Daten aus Azure Data Lake Store
 2. Herstellen einer Verbindung mit einem Azure Data Lake Store-Verzeichnis
 3. Laden von Daten in Azure SQL Data Warehouse
 
@@ -42,9 +42,9 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * SQL Server Management Studio oder SQL Server Data Tools. Informationen zum Herunterladen von SSMS sowie zum Herstellen einer Verbindung finden Sie unter [Herstellen einer Verbindung mit der SQL Data Warehouse-Instanz mit SQL Server Management Studio (SSMS)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms).
 
-* Eine Azure SQL Data Warehouse-Instanz. Eine Erstellungsanleitung finden Sie unter „https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision“.
+* Folgen Sie zum Erstellen eines Azure SQL Data Warehouse: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
 
-* Eine Azure Data Lake Store-Instanz. Eine Erstellungsanleitung finden Sie unter „https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal“.
+* Folgen Sie zum Erstellen eines Azure Data Lake Store: https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
 
 
 ###  <a name="create-a-credential"></a>Erstellen einer Anmeldeinformation
@@ -82,7 +82,7 @@ WITH
 
 
 ### <a name="create-the-external-data-source"></a>Erstellen der externen Datenquelle
-Verwenden Sie den Befehl [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE], um den Speicherort der Daten zu speichern. Zum Ermitteln des ADL-URI im Azure-Portal navigieren Sie zu Azure Data Lake Store, und sehen Sie sich den Bereich „Zusammenfassung“ an.
+Verwenden Sie den Befehl [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE], um den Speicherort der Daten zu speichern. 
 
 ```sql
 -- C: Create an external data source
@@ -99,8 +99,8 @@ WITH (
 ```
 
 ## <a name="configure-data-format"></a>Konfigurieren des Datenformats
-Zum Importieren der Daten aus ADLS müssen Sie das externe Dateiformat angeben. Dieser Befehl verfügt über formatspezifische Optionen, um Ihre Daten zu beschreiben.
-Eine vollständige Liste für [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] finden Sie in unserer T-SQL-Dokumentation.
+Zum Importieren der Daten aus ADLS müssen Sie das externe Dateiformat angeben. Dieses Objekt definiert, wie die Dateien in ADLS geschrieben werden.
+Eine vollständige Liste finden Sie in unserer T-SQL-Dokumentation [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT].
 
 ```sql
 -- D: Create an external file format
@@ -155,9 +155,9 @@ Eine externe Tabelle lässt sich sehr einfach erstellen, es gibt jedoch einige F
 Externe Tabellen sind stark typisiert. Das bedeutet, dass jede Zeile der erfassten Daten der Tabellenschemadefinition entsprechen muss.
 Zeilen, die der Schemadefinition nicht entsprechen, werden nicht geladen.
 
-Mithilfe der Optionen „REJECT_TYPE“ und „REJECT_VALUE“ können Sie definieren, wie viele Zeilen oder wie viel Prozent der Daten in der endgültigen Tabelle vorhanden sein müssen. Wird während des Ladevorgangs der Ablehnungswert erreicht, ist der Vorgang nicht erfolgreich. Die Ablehnung von Zeilen ist in den meisten Fällen auf einen Konflikt mit der Schemadefinition zurückzuführen. Wenn also beispielsweise eine Spalte fälschlicherweise mit einem int-Schema versehen wird, obwohl es sich bei den Daten in der Datei um eine Zeichenfolge handelt, können die Zeilen nicht geladen werden.
+Mithilfe des Optionen „REJECT_TYPE“ und „REJECT_VALUE“ können Sie definieren, wie viele Zeilen oder wie viel Prozent der Daten in der endgültigen Tabelle vorhanden sein müssen. Wird während des Ladevorgangs der Ablehnungswert erreicht, ist der Vorgang nicht erfolgreich. Die Ablehnung von Zeilen ist in den meisten Fällen auf einen Konflikt mit der Schemadefinition zurückzuführen. Wenn also beispielsweise eine Spalte fälschlicherweise mit einem int-Schema versehen wird, obwohl es sich bei den Daten in der Datei um eine Zeichenfolge handelt, können die Zeilen nicht geladen werden.
 
- Azure Data Lake Store steuert den Zugriff auf die Daten durch die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC). Dies bedeutet, dass der Dienstprinzipal mit Leseberechtigungen für die im Speicherortparameter definierten Verzeichnisse sowie die untergeordneten Ordner der endgültigen Verzeichnisse und Dateien ausgestattet sein muss. Dadurch kann PolyBase diese Daten zum Lesen authentifizieren und laden. 
+ Azure Data Lake Store steuert den Zugriff auf die Daten durch die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC). Dies bedeutet, dass der Dienstprinzipal mit Leseberechtigungen für die im Speicherortparameter definierten Verzeichnisse sowie die untergeordneten Ordner der endgültigen Verzeichnisse und Dateien ausgestattet sein muss. Dadurch kann PolyBase diese Daten authentifizieren und laden. 
 
 ## <a name="load-the-data"></a>Laden der Daten
 Verwenden Sie die Anweisung [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)], um Daten aus Azure Data Lake Store zu laden. 
@@ -201,7 +201,7 @@ Das folgende Beispiel ist ein guter Ausgangspunkt zum Erstellen von Statistiken.
 Sie haben erfolgreich Daten in Azure SQL Data Warehouse geladen. Großartig!
 
 ## <a name="next-steps"></a>Nächste Schritte
-Das Laden von Daten ist der erste Schritt auf dem Weg zu einer Data Warehouse-Lösung mit SQL Data Warehouse. Sehen Sie sich unsere Entwicklungsressourcen zu [Tabellen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview) und [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops.md) an.
+Das Laden von Daten ist der erste Schritt auf dem Weg zu einer Data Warehouse-Lösung mit SQL Data Warehouse. Sehen Sie sich unsere Entwicklungsressourcen zu [Tabellen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview) und [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops) an.
 
 
 <!--Image references-->

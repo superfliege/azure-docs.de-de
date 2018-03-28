@@ -2,8 +2,8 @@
 title: Handbuch zur Problembehandlung bei der Bereitstellung von Azure Machine Learning | Microsoft-Dokumentation
 description: Handbuch zur Problembehandlung bei der Bereitstellung und Diensterstellung
 services: machine-learning
-author: raymondl
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 4cf372f17c3ded5c25a6ebde70b17b2c095a7169
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7b8d2f4fb52c6d4faed8e813779e3b01d1817355
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>Problembehandlung bei der Dienstbereitstellung und Umgebungseinrichtung
 Folgende Informationen können dabei helfen, beim Einrichten der Modellverwaltungsumgebung die Ursache von Fehlern zu finden.
@@ -87,7 +87,7 @@ Beispiel für Python:
 ```
 
 ## <a name="other-common-problems"></a>Andere allgemeine Probleme
-- Falls auf einem Windows-Computer bei der pip-Installation von „azure-cli-ml“ der Fehler `cannot find the path specified` auftritt, müssen Sie die Unterstützung langer Pfade aktivieren. Informationen finden Sie unter https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/. 
+- Falls auf einem Windows-Computer bei der pip-Installation von „azure-cli-ml“ der Fehler `cannot find the path specified` auftritt, müssen Sie die Unterstützung langer Pfade aktivieren. Siehe https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/. 
 - Wenn der Befehl `env setup` den Fehler `LocationNotAvailableForResourceType` ausgibt, verwenden Sie wahrscheinlich den falschen Standort (Region) für die Ressourcen für maschinelles Lernen. Stellen Sie sicher, dass der mit dem Parameter `-l` angegebene Standort `eastus2`, `westcentralus` oder `australiaeast` lautet.
 - Wenn der Befehl `env setup` den Fehler `Resource quota limit exceeded` ausgibt, stellen Sie sicher, dass Sie über ausreichende verfügbare Kerne in Ihrem Abonnement verfügen und dass Ihre Ressourcen nicht in anderen Vorgängen aufgebraucht werden.
 - Wenn der Befehl `env setup` den Fehler `Invalid environment name. Name must only contain lowercase alphanumeric characters` ausgibt, stellen Sie sicher, dass der Dienstname keine Großbuchstaben, Symbole oder Unterstriche (_) enthält (wie in *myenvironment*).

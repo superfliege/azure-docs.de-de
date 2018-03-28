@@ -2,23 +2,17 @@
 title: Versionshinweise zum Azure File Sync-Agent (Vorschauversion) | Microsoft-Dokumentation
 description: Versionshinweise zum Azure File Sync-Agent (Vorschauversion)
 services: storage
-documentationcenter: 
 author: wmgries
-manager: klaasl
-editor: tamram
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 10/08/2017
+ms.topic: article
+ms.date: 03/12/2018
 ms.author: wgries
-ms.openlocfilehash: fabfb02a199744c63c3a2191589fd450cfdd0304
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b42287580078b4391ddbc5b8ff2835131c64236d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Versionshinweise zum Azure File Sync-Agent (Vorschauversion)
 Mit Azure File Sync können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -28,14 +22,25 @@ Dieser Artikel enthält die Versionshinweise für die unterstützten Versionen d
 ## <a name="supported-versions"></a>Unterstützte Versionen
 Für den Azure File Sync-Agent werden die folgenden Versionen unterstützt:
 
-| Version | Herausgabedatum | Enddatum für Support |
-|---------|--------------|------------------|
-| 2.1.0.0 | 28. Februar 2018 | Aktuelle Version |
-| 2.0.11.0 | 8. Februar 2018 | Aktuelle Version |
-| 1.1.0.0 | 26. September 2017 | 30. Juli 2018 |
+| Meilenstein | Agent-Versionsnummer | Herausgabedatum | Status |
+|----|----------------------|--------------|------------------|
+| Updaterollup von März | 2.2.0.0 | 12. März 2018 | Unterstützt (empfohlene Version) |
+| Updaterollup von Februar | 2.1.0.0 | 28. Februar 2018 | Unterstützt |
+| Aktualisierung 1 | 2.0.11.0 | 8. Februar 2018 | Unterstützt |
+| Updaterollup von Januar | 1.4.0.0 | 8. Januar 2018 | Ende der Unterstützung: 8. Mai 2018<sup>1</sup> |
+| Updaterollup von November | 1.3.0.0 | 30. November 2017 | Ende der Unterstützung: 8. Mai 2018<sup>1</sup> |
+| Updaterollup von Oktober | 1.2.0.0 | 31. Oktober 2017 | Ende der Unterstützung: 8. Mai 2018<sup>1</sup> |
+| Erste Vorschauversion | 1.1.0.0 | 26. September 2017 | Ende der Unterstützung: 8. Mai 2018<sup>1</sup> |
 
-### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure File Sync-Agent
+\[1\]: Versionen des Azure File Sync-Agents während der Vorschau entsprechen absichtlich nicht der Updaterichtlinie. Die Updaterichtlinie wird ab der ersten Version des Agents erzwungen, nachdem Azure File Sync als allgemein verfügbar erklärt wurde.
+
+### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-2200"></a>Agent-Version 2.2.0.0
+Die folgenden Versionshinweise gelten für Version 2.2.0.0 des Azure File Sync-Agents (veröffentlicht am 12. März 2018).  Diese Hinweise gelten zusätzlich zu den Versionshinweisen, die für Version 2.1.0.0 und 2.0.11.0 angegeben sind.
+
+Die Installation von Version 2.1.0.0 ist für einige Kunden nicht erfolgreich, da die FileSyncSvc nicht stoppt. Dieses Problem wird mit diesem Update behoben.
 
 ## <a name="agent-version-2100"></a>Agent-Version 2.1.0.0
 Die folgenden Versionshinweise gelten für Version 2.1.0.0 des Azure File Sync-Agents, der am 28. Februar 2018 veröffentlicht wurde. Diese Hinweise gelten zusätzlich zu den Versionshinweisen, die für Version 2.0.11.0 angegeben sind.

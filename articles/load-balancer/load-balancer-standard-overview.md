@@ -1,5 +1,5 @@
 ---
-title: 'Übersicht: Azure Load Balancer Standard | Microsoft Docs'
+title: 'Übersicht: Azure Load Balancer Standard | Microsoft-Dokumentation'
 description: 'Übersicht: Features von Azure Load Balancer Standard'
 services: load-balancer
 documentationcenter: na
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/04/2018
+ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: 7e4fa38145ac21aaca8efa37250cc32ef1b1655c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2d7fcb3ee066fa768615fbf643a0c2e1c1d28498
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Übersicht: Azure Load Balancer Standard (Preview)
 
@@ -466,7 +466,7 @@ Die folgenden Einschränkungen gelten für die Preview und können jederzeit ge�
 - Im Kontext von Verfügbarkeitszonen kann eine zonale öffentliche IP-Adresse nicht aus einer Zone in eine andere verschoben werden.
 - [Azure Monitor-Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) werden zu diesem Zeitpunkt nicht unterstützt.
 - Das Portal bietet noch keine Unterstützung für die erweiterten Vorschauregionen.  Verwenden Sie als Problemumgehung Clienttools wie beispielsweise Vorlagen, Azure CLI 2.0 oder PowerShell.
-- Abonnementverschiebungen werden nicht unterstützt.
+- [Vorgänge zum Verschieben von Abonnements](../azure-resource-manager/resource-group-move-resources.md) werden für Standard-SKU-LB- und -PIP-Ressourcen nicht unterstützt.
 - Nicht verfügbar in USA, Westen.
 
 

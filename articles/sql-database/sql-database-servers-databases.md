@@ -2,24 +2,18 @@
 title: Erstellen und Verwalten von Azure SQL-Servern und -Datenbanken | Microsoft-Dokumentation
 description: Informationen zum Azure SQL-Datenbankserver und zu Datenbankkonzepten sowie zum Erstellen und Verwalten von Servern und Datenbanken.
 services: sql-database
-documentationcenter: na
 author: CarlRabeler
-manager: jhubbard
-editor: ''
-ms.assetid: ''
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
-ms.date: 02/28/2018
+ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 0e2dabc5cc0b816f2623fce5f8fb09a7004039c7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2e05be2131ca89a084da5eeffc0b025b38432a8d
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Erstellen und Verwalten von Azure SQL-Datenbankservern und -datenbanken
 
@@ -27,7 +21,7 @@ SQL-Datenbank bietet drei Typen von Datenbanken:
 
 - Eine Einzeldatenbank, die innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von [Compute- und Speicherressourcen für verschiedene Workloads](sql-database-service-tiers.md) erstellt wird. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
 - Eine Datenbank, die als Teil eines [Datenbankpools](sql-database-elastic-pool.md) innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von [Compute- und Speicherressourcen für verschiedene Workloads](sql-database-service-tiers.md) erstellt wird, die von allen Datenbanken im Pool gemeinsam verwendet werden. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
-- Eine [Instanz von SQL-Server](sql-database-managed-instance.md), die innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von Compute- und Speicherressourcen alle Datenbanken auf dieser Serverinstanz für erstellt wird. Eine verwaltete Instanz enthält sowohl System- als auch Benutzerdatenbanken. Eine verwaltete Instanz ist so konzipiert, dass sie eine Datenbankmigration per Lift & Shift zu einem vollständig verwalteten PaaS ermöglicht, ohne dass die Anwendung neu gestaltet werden muss. Verwaltete Instanzen bieten umfassende Kompatibilität mit dem SQL Server-Programmiermodell sowie Unterstützung für die überwiegende Mehrheit von SQL Server-Features sowie die zugehörigen Tools und Dienste.  
+- Eine [Instanz von SQL-Server](sql-database-managed-instance.md) (eine verwaltete Instanz), die innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von Compute- und Speicherressourcen alle Datenbanken auf dieser Serverinstanz für erstellt wird. Eine verwaltete Instanz enthält sowohl System- als auch Benutzerdatenbanken. Eine verwaltete Instanz ist so konzipiert, dass sie eine Datenbankmigration per Lift & Shift zu einem vollständig verwalteten PaaS ermöglicht, ohne dass die Anwendung neu gestaltet werden muss. Verwaltete Instanzen bieten umfassende Kompatibilität mit dem SQL Server-Programmiermodell sowie Unterstützung für die überwiegende Mehrheit von SQL Server-Features sowie die zugehörigen Tools und Dienste.  
 
 Microsoft Azure SQL-Datenbank unterstützt den TDS-Client (Tabular Data Stream) ab Version 7.3 und lässt nur verschlüsselte TCP/IP-Verbindungen zu.
 
@@ -146,7 +140,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[az group create](/cli/azure/group#az_group_create)|Erstellt eine Ressourcengruppe|
 |[az sql server create](/cli/azure/sql/server#az_sql_server_create)|Erstellt einen Server|
 |[az sql server list](/cli/azure/sql/server#az_sql_server_list)|Listet Server auf|
-|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list-usages)|Gibt Informationen zur Server-Verwendung zurück|
+|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list_usages)|Gibt Informationen zur Server-Verwendung zurück|
 |[az sql server show](/cli/azure/sql/server#az_sql_server_show)|Ruft einen Server ab|
 |[az sql server update](/cli/azure/sql/server#az_sql_server_update)|Aktualisiert einen Server|
 |[az sql server delete](/cli/azure/sql/server#az_sql_server_delete)|Löscht einen Server|
@@ -202,13 +196,12 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[Servers - List](/rest/api/sql/servers/list)|Gibt eine Serverliste zurück.|
 |[Servers - List By Resource Group](/rest/api/sql/servers/listbyresourcegroup)|Gibt eine Liste aller Server in einer Ressourcengruppe zurück.|
 |[Server - Update](/rest/api/sql/servers/update)|Aktualisiert einen vorhandenen Server.|
-|[Servers - Sql](/rest/api/sql/servers%20-%20sql)|Bestimmt, ob eine Ressource mit dem angegebenen Namen erstellt werden kann.|
 |[Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
 |[Datenbanken – Abrufen](/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
 |[Datenbanken – Abrufen nach Pool für elastische Datenbanken](/rest/api/sql/databases/getbyelasticpool)|Ruft eine Datenbank in einem Pool für elastische Datenbanken ab|
 |[Datenbanken – Abrufen nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/getbyrecommendedelasticpool)|Ruft eine Datenbank in einem empfohlenen Pool für elastische Datenbanken ab|
 |[Datenbanken – Auflisten nach Pool für elastische Datenbanken](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
-|[Datenbanken – Auflisten nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück|
+|[Datenbanken – Auflisten nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück.|
 |[Datenbanken – Auflisten nach Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
 |[Datenbanken – Aktualisieren](/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank.|
 |[Firewall Rules - Create Or Update](/rest/api/sql/firewallrules/createorupdate)|Erstellt oder aktualisiert eine Firewallregel.|

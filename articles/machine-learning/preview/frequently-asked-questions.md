@@ -1,6 +1,6 @@
 ---
-title: "Häufig gestellte Fragen zur Azure Machine Learning 2017-Vorschauversion | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Funktionen der Azure Machine Learning-Vorschauversion."
+title: Häufig gestellte Fragen zur Azure Machine Learning 2017-Vorschauversion | Microsoft-Dokumentation
+description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Funktionen der Azure Machine Learning-Vorschauversion.
 services: machine-learning
 author: serinakaye
 ms.author: serinak
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 86ef8acf46cef2b057596d8224c6c29f3a0f534d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6146e1ce98144a05bef2ca29705f451aa3f5fb50
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Machine Learning
 
@@ -32,7 +32,7 @@ Mit fortschreitender Entwicklung des Produkts kommen weitere Regionen hinzu.  Au
 
 **Welche anderen Azure-Dienste sind erforderlich?**
 
-Um den gesamten Funktionsumfang von Azure Machine Learning uneingeschränkt nutzen zu können, verwendet Azure Machine Learning ein Visual Studio VSTS-Konto, Azure Blob Storage, Azure Container Registry, Data Science VM oder HDInsight Compute sowie Azure Container Service.
+Azure Blob Storage und Azure Container Registry werden von Azure Machine Learning verwendet. Darüber hinaus müssen Sie Computeressourcen wie eine Data Science-VM oder einen HDInsight-Cluster bereitstellen. Computing und Hosting sind auch beim Bereitstellen von Webdiensten wie [Azure Container Service](https://docs.microsoft.com/azure/aks) erforderlich.
 
 **In welcher Beziehung steht Azure Machine Learning zu Microsoft Machine Learning-Diensten in SQL Server 2017?**   
 
@@ -46,7 +46,7 @@ Derzeit wird ausschließlich Python unterstützt. Wir arbeiten an der R-Integrat
 
 MMLSpark bietet umfassende Learning- und Data Science-Tools für Apache Spark, wobei der Schwerpunkt auf Produktivität, unkompliziertem Experimentieren und modernsten Algorithmen liegt. MMLSpark bietet die Integration von Spark Machine Learning-Pipelines mit dem Microsoft Cognitive Toolkit und OpenCV. Sie können leistungsstarke, hochgradig skalierbare Prognose- und Analysemodelle für Bild- und Textdaten erstellen. MMLSpark ist mit einer Open-Source-Lizenz erhältlich und als Gruppe von verwendbaren Modellen und Algorithmen in AML Workbench enthalten. Wenn Sie weitere Informationen zu MMLSpark wünschen, sehen Sie unsere Produktdokumentation ein. 
 
-**Welche Versionen von Spark werden von den neuen Tools und Diensten unterstützt? Oberster Abschnitt**
+**Welche Versionen von Spark werden von den neuen Tools und Diensten unterstützt?**
 
 Workbench enthält und unterstützt derzeit MMLSpark, Version 0.8; diese ist kompatibel mit Apache Spark 2.1. Sie haben auch die Möglichkeit, ein GPU-fähiges Docker-Image von MMLSpark 0.8 auf virtuellen Linux-Computern zu verwenden.
 
@@ -119,7 +119,7 @@ Der Azure Machine Learning-Workbench ist eine unterstützende Anwendung, die fü
 
 **Ist die Workbench eine IDE?**
 
-Nein. Die Machine Learning Workbench wurde als Begleitprodukt für beliebte IDEs wie Jupyter Notebooks, Visual Studio Code und PyCharm konzipiert, stellt jedoch keine IDE mit vollem Funktionsumfang dar. Die Machine Learning Workbench bietet einige grundlegende Textbearbeitungsfunktionen. Debugging, Intellisense und andere häufig verwendete IDE-Funktionen hingegen werden nicht unterstützt. Wir empfehlen, die jeweils bevorzugte IDE zum Entwickeln, Bearbeiten und Debuggen von Code zu verwenden. 
+Nein. Die Machine Learning Workbench wurde als Begleitprodukt für beliebte IDEs wie Jupyter Notebooks, Visual Studio Code und PyCharm konzipiert, stellt jedoch keine IDE mit vollem Funktionsumfang dar. Die Machine Learning Workbench bietet einige grundlegende Textbearbeitungsfunktionen. Debugging, Intellisense und andere häufig verwendete IDE-Funktionen hingegen werden nicht unterstützt. Wir empfehlen, die jeweils bevorzugte IDE zum Entwickeln, Bearbeiten und Debuggen von Code zu verwenden. Möglicherweise möchten Sie auch die [Visual Studio Code-Tools für KI](https://www.visualstudio.com/downloads/ai-tools-vscode) ausprobieren.
 
 **Werden für die Verwendung der Azure Machine Learning Workbench Gebühren berechnet?**
 

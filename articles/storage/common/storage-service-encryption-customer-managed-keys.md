@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault | Microsoft-Dokumentation"
-description: "Mit Azure Storage Service Encryption können Sie Azure Blob Storage auf Dienstseite beim Speichern von Daten verschlüsseln und wieder entschlüsseln, wenn Daten mit von Kunden verwalteten Schlüsseln abgerufen werden."
+title: Azure Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault | Microsoft-Dokumentation
+description: Mit Azure Storage Service Encryption können Sie Azure Blob Storage auf Dienstseite beim Speichern von Daten verschlüsseln und wieder entschlüsseln, wenn Daten mit von Kunden verwalteten Schlüsseln abgerufen werden.
 services: storage
 author: lakasa
 manager: jeconnoc
@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: lakasa
-ms.openlocfilehash: b40858640d10e5661be420976520774bd50837cb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1360d8bb0911c424747209c69b830fc1ee461798
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault
 
@@ -81,6 +81,7 @@ Gehen Sie wie folgt vor, um Ihren Schlüssel über einen URI anzugeben:
 
     ![Screenshot des Portals: Verschlüsselungsoption „Schlüssel-URI eingeben“](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
 
+
 #### <a name="specify-a-key-from-a-key-vault"></a>Festlegen eines Schlüssels aus einem Schlüsseltresor 
 
 Gehen Sie wie folgt vor, um Ihren Schlüssel aus einem Schlüsseltresor anzugeben:
@@ -96,6 +97,17 @@ Wenn das Speicherkonto keinen Zugriff auf den Schlüsseltresor hat, können Sie 
 ![Screenshot des Portals: Zugriff auf den Schlüsseltresor verweigert](./media/storage-service-encryption-customer-managed-keys/ssecmk4.png)
 
 Sie können den Zugriff auch über das Azure-Portal gewähren. Navigieren Sie dazu im Azure-Portal zu Azure Key Vault, und gewähren Sie Zugriff auf das Speicherkonto.
+
+
+Sie können den obigen Schlüssel mit den folgenden PowerShell-Befehlen einem vorhandenen Speicherkonto zuordnen:
+```powershell
+$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+$keyVault = Get-AzureRmKeyVault -VaultName "mykeyvault"
+$key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
+Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -EnableEncryptionService "Blob" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+```
+
 
 ### <a name="step-5-copy-data-to-storage-account"></a>Schritt 5: Kopieren von Daten in das Speicherkonto
 

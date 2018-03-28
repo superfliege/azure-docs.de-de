@@ -1,18 +1,18 @@
 ---
-title: "Azure Event Grid – Sicherheit und Authentifizierung"
-description: "Beschreibt Azure Event Grid und die zugehörigen Konzepte."
+title: Azure Event Grid – Sicherheit und Authentifizierung
+description: Beschreibt Azure Event Grid und die zugehörigen Konzepte.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/15/2018
 ms.author: babanisa
-ms.openlocfilehash: 9d2b32df6e4b931539eac34d09135ea33069b936
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0b7ef71cf940f82f46a7f053e5c9f7ef64342b6e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid – Sicherheit und Authentifizierung 
 
@@ -24,9 +24,9 @@ Azure Event Grid verfügt über drei Authentifizierungsarten:
 
 ## <a name="webhook-event-delivery"></a>Webhook-Ereignisbereitstellung
 
-Ein Webhook ist eine von vielen Möglichkeiten zum Empfangen von Ereignissen in Echtzeit von Azure Event Grid. Jedes Mal, wenn ein neues Ereignis bereitgestellt werden kann, fügt der Event Grid-Webhook eine HTTP-Anforderung mit dem Ereignis im Hauptteil an den konfigurierten HTTP-Endpunkt ein.
+Ein Webhook ist eine von vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Bei jedem neuen Ereignis sendet der Event Grid-Webhook eine HTTP-Anforderung mit dem Ereignis im Hauptteil an den konfigurierten HTTP-Endpunkt.
 
-Wenn Sie Ihren eigenen Webhook-Endpunkt bei Event Grid registrieren, wird Ihnen eine POST-Anforderung mit einem einfachen Validierungscode gesendet, damit Sie den Besitz des Endpunkts nachweisen können. Ihre App muss durch Rückgabe desselben Validierungscodes reagieren. Event Grid übermittelt keine Ereignisse an Webhook-Endpunkte, welche die Überprüfung nicht erfolgreich abgeschlossen haben.
+Wenn Sie Ihren eigenen Webhook-Endpunkt bei Event Grid registrieren, wird Ihnen eine POST-Anforderung mit einem einfachen Validierungscode gesendet, damit Sie den Besitz des Endpunkts nachweisen können. Ihre App muss durch Rückgabe desselben Validierungscodes reagieren. Event Grid übermittelt keine Ereignisse an Webhook-Endpunkte, welche die Validierung nicht erfolgreich abgeschlossen haben.
 
 ### <a name="validation-details"></a>Überprüfungsdetails
 
@@ -34,6 +34,7 @@ Wenn Sie Ihren eigenen Webhook-Endpunkt bei Event Grid registrieren, wird Ihnen 
 * Das Ereignis enthält den Headerwert „Aeg-Event-Type: SubscriptionValidation“.
 * Der Hauptteil des Ereignisses weist dasselbe Schema wie andere Event Grid-Ereignisse auf.
 * Die Ereignisdaten enthalten die Eigenschaft „validationCode“ mit einer zufällig generierten Zeichenfolge. Beispiel: „validationCode: acb13…“.
+* Das Array enthält ausschließlich das Validierungsereignis. Andere Ereignisse werden in einer separaten Anforderung gesendet, nachdem Sie den Validierungscode zurückgegeben haben.
 
 Ein Beispiel für „SubscriptionValidationEvent“ finden Sie im folgenden Beispiel:
 
@@ -79,7 +80,7 @@ Beispiel: Um ein Ereignis im Speicherkonto **myacct** zu abonnieren, benötigen 
 
 ### <a name="custom-topics"></a>Benutzerdefinierte Themen
 
-Für benutzerdefinierte Themen benötigen Sie die Berechtigung zum Schreiben eines neuen Abonnements im Gültigkeitsbereich des Event Grid-Themas. Das Format der Ressource ist: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`.
+Für benutzerdefinierte Themen benötigen Sie die Berechtigung zum Schreiben eines neuen Ereignisabonnements im Gültigkeitsbereich des Event Grid-Themas. Das Format der Ressource ist: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`.
 
 Beispiel: Um das benutzerdefinierte Thema **mytopic** zu abonnieren, benötigen Sie die Berechtigung Microsoft.EventGrid/EventSubscriptions/Write für: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`.
 
@@ -103,7 +104,7 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 SAS-Token für Event Grid schließen die Ressource, eine Ablaufzeit und eine Signatur ein. Das Format des SAS-Tokens ist: `r={resource}&e={expiration}&s={signature}`.
 
-Die Ressource ist der Pfad für das Thema, an das Sie Ereignisse senden. Beispielsweise lautet ein gültiger Ressourcenpfad: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`.
+Die Ressource ist der Pfad für das Event Grid-Thema, an das Sie Ereignisse senden. Beispielsweise lautet ein gültiger Ressourcenpfad: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`.
 
 Sie generieren die Signatur aus einem Schlüssel.
 

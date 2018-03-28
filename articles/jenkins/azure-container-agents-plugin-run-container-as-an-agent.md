@@ -1,24 +1,20 @@
 ---
 title: Erstellen eines Projekts in Azure mithilfe von Jenkins und Azure Container Instances
-description: "Erfahren Sie, wie Sie mit dem Azure Container Agent-Plug-In für Jenkins ein Projekt in Azure mit Azure Container Instances erstellen."
-services: multiple
-documentationcenter: 
+description: Erfahren Sie, wie Sie mit dem Azure Container Agent-Plug-In für Jenkins ein Projekt in Azure mit Azure Container Instances erstellen.
 author: tomarcher
 manager: rloutlaw
-editor: 
 ms.service: multiple
+ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
-ms.date: 02/28/2018
+ms.date: 03/16/2018
 ms.author: tarcher
-ms.custom: jenkins
-ms.openlocfilehash: 557b21340a0ba4e5381d7505b14a172aa3478b84
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: Jenkins
+ms.openlocfilehash: a18136afc096f8315310fae134d3f683994b6d0a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="build-a-project-in-azure-using-jenkins-and-azure-container-instances"></a>Erstellen eines Projekts in Azure mithilfe von Jenkins und Azure Container Instances
 
@@ -72,6 +68,11 @@ In diesem Abschnitt wird das Festlegen der Jenkins-URL erläutert.
 1. Wählen Sie **Speichern**aus.
 
 ## <a name="update-jenkins-to-allow-java-network-launch-protocol-jnlp"></a>Aktualisieren von Jenkins zum Zulassen von JNLP (Java Network Launch Protocol)
+
+> [!NOTE]
+> In diesem Tutorial wird veranschaulicht, wie ein JNLP-Agent konfiguriert wird. Ab Version 0.4.x und höher unterstützt auch das [Jenkins Azure-Container-Agents-Plug-In](https://plugins.jenkins.io/azure-container-agents) SSH.
+>
+>
 
 Der Jenkins-Agent stellt über das JNLP (Java Network Launch Protocol) eine Verbindung mit dem Jenkins-Server her. In diesem Abschnitt wird erläutert, wie ein Port für JNLP-Agents für die Kommunikation mit dem Jenkins-Server angegeben wird.
 

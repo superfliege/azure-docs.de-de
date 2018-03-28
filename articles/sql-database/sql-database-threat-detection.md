@@ -1,24 +1,19 @@
 ---
-title: Bedrohungserkennung – Azure SQL-Datenbank | Microsoft Docs
+title: Bedrohungserkennung – Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Die Bedrohungserkennung erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten.
 services: sql-database
-documentationcenter: ''
 author: rmatchoro
-manager: shaik
-editor: v-romcal
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 06/19/2017
 ms.author: ronmat
-ms.openlocfilehash: a01721b10305ac45082943fbe4fb7fb199a0e49f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4cb31eef4ba4b85ea28a58bb9b947b4e07cb0b58
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database-threat-detection"></a>Bedrohungserkennung von SQL-Datenbank
 
@@ -33,7 +28,7 @@ Beispielsweise ist die Einschleusung von SQL-Befehlen ein verbreitetes Sicherhei
 Durch die SQL-Bedrohungserkennung werden Warnungen in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert. Jeder geschützte SQL-Datenbankserver wird zu demselben Preis wie der Standardtarif von Azure Security Center abgerechnet (15 $/Knoten/Monat). Hierbei zählt jeder geschützte SQL-Datenbankserver als ein Knoten.  
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Einrichten der Bedrohungserkennung für Ihre Datenbank im Azure-Portal
-1. Rufen Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com) auf.
+1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).
 2. Navigieren Sie zur Konfigurationsseite der SQL-Datenbank, die Sie überwachen möchten. Wählen Sie auf der Seite „Einstellungen“ die Option **Überwachung und Bedrohungserkennung**. 
     ![Navigationsbereich][1]
 3. **Aktivieren Sie** auf der Konfigurationsseite für die **Überwachung und Bedrohungserkennung** die Überwachung. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.

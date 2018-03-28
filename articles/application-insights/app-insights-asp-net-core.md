@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights für ASP.NET Core | Microsoft-Dokumentation"
-description: "Überwachen Sie Webanwendungen auf Verfügbarkeit, Leistung und Auslastung."
+title: Azure Application Insights für ASP.NET Core | Microsoft-Dokumentation
+description: Überwachen Sie Webanwendungen auf Verfügbarkeit, Leistung und Auslastung.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: e9fb3e68db66449d9ca3b43e6974910cb9477e62
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 77c48a22f974e027b4e8858d5e38018bbf5bb54f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights für ASP.NET Core
 
@@ -121,7 +121,7 @@ Klicken Sie im Visual Studio-Menü auf **Projekt** > **Application Insights** > 
 
 ## <a name="collect-failed-requests-live-stream--page-view-load-time"></a>Sammeln von Daten für „Fehlerhafte Anforderungen“, „Live Stream“ und „Ladezeit der Seitenansicht“
 
-### <a name="failed-requests"></a>Fehlerhafte Anforderungen
+### <a name="failed-requests"></a>Anforderungsfehler
 
 Genau genommen werden Daten für **Fehlerhafte Anforderungen** gesammelt, es sind jedoch noch keine aufgetreten. Zur Beschleunigung des Prozesses kann dem vorhandenen Projekt eine benutzerdefinierte Ausnahme hinzugefügt werden, um eine echte Ausnahme zu simulieren. Falls Ihre App noch in Visual Studio ausgeführt wird, **beenden Sie das Debuggen** (UMSCHALT+F5), bevor Sie den Vorgang fortsetzen.
 
@@ -214,5 +214,6 @@ _Leistungsindikatoren_ bezieht sich in diesem Kontext auf [serverseitige Leistun
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Untersuchen Sie Benutzerabläufe](app-insights-usage-flows.md), um die Benutzernavigation in Ihrer App nachzuvollziehen.
+* [Konfigurieren Sie die Momentaufnahmensammlung](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications), um den Status des Quellcodes und der Variablen zu dem Zeitpunkt anzuzeigen, zu dem eine Ausnahme ausgelöst wurde.
 * [Verwenden Sie die API](app-insights-api-custom-events-metrics.md) , um Ihre eigenen Ereignisse und Metriken für eine detailliertere Ansicht der Leistung und Nutzung Ihrer App zu senden.
 * [Availability tests](app-insights-monitor-web-app-availability.md) wird Ihre App fortwährend an Standorten auf der ganzen Welt überprüft.

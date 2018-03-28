@@ -11,7 +11,7 @@
 
 <sup>1</sup> Dies umfasst sowohl Standard- als auch Premium-Speicherkonten. Wenn Sie mehr als 200 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen. 
 
-<sup>2</sup>Falls die angegebenen Grenzwerte für Kapazität, Ein-/Ausgang und Anforderungsrate für Ihre Standardspeicherkonten nicht ausreichen, fordern Sie beim [Azure-Support](https://azure.microsoft.com/support/faq/) eine Erhöhung an. Das Azure Storage-Team prüft Ihre Anforderung und entscheidet von Fall zu Fall, ob eine Erhöhung gewährt wird.
+<sup>2</sup> Wenn Sie erweiterte Grenzwerte für Ihr Speicherkonto benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team prüft Ihre Anforderung und entscheidet von Fall zu Fall, ob eine Erhöhung gewährt wird. Sowohl Universal- als auch Blobspeicherkonten unterstützen eine erhöhte Kapazität, eingehende/ausgehende Daten und eine Anforderungsrate auf Anfrage. Die neuen Höchstwerte für Blobspeicherkonten finden Sie im Blog zur [Ankündigung größerer Speicherkonten mit größerer Skalierung](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 <sup>3</sup> Die einzigen Beschränkungen sind die Grenzwerte für Kontoeingang und -ausgang. *Eingang* bezieht sich auf alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden. *Ausgang* bezieht sich auf alle Daten (Antworten), die von einem Speicherkonto empfangen werden.  
 

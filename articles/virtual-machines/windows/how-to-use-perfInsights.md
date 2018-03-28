@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: ee8334cbe9256b7a5ecd5e96afa2f15d6389afa8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 06b3b246d5c350f0982faa9b1d5f5692cd0c428e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights 
 
@@ -238,11 +238,11 @@ Gehen Sie wie folgt vor, um das Tool PerfInsights auszuführen:
     >
     >Wenn der Switch **/d** für die Dauer nicht angegeben ist, werden Sie von PerfInsights zum Reproduzieren des Problems aufgefordert, während die Szenarien vmslow, azurefiles und das benutzerdefinierte Szenario ausgeführt werden. 
 
-Wenn die Ablaufverfolgungen oder Vorgänge abgeschlossen sind, wird eine neue Datei unter „D:\\log\_collection“ (oder auf dem temporären Laufwerk) angezeigt. Der Name der Datei lautet **CollectedData\_jjjj-MM-tt\_hh\_mm\_ss.zip**. Sie können diese Datei zur Analyse an den Support-Agent senden oder den Bericht in der ZIP-Datei öffnen, um Ergebnisse und Empfehlungen anzuzeigen.
+Wenn die Ablaufverfolgungen oder Vorgänge abgeschlossen sind, wird eine neue Datei im selben Ordner wie PerfInsights angezeigt. Der Name der Datei lautet **CollectedData\_jjjj-MM-tt\_hh-mm-ss-fff.zip**. Sie können diese Datei zur Analyse an den Support-Agent senden oder den Bericht in der ZIP-Datei öffnen, um Ergebnisse und Empfehlungen anzuzeigen.
 
 ## <a name="review-the-diagnostics-report"></a>Überprüfen des Diagnoseberichts
 
-Innerhalb der Datei **CollectedData\_jjjj-MM-tt\_hh\_mm\_ss.zip** finden Sie einen HTML-Bericht, der die Ergebnisse von PerfInsights detailliert beschreibt. Um den Bericht anzuzeigen, erweitern Sie die Datei **CollectedData\_jjjj-MM-tt\_hh\_mm\_ss.zip**, und öffnen Sie dann die Datei **PerfInsights Report.html**.
+Innerhalb der Datei **CollectedData\_jjjj-MM-tt\_hh-mm-ss-fff.zip** finden Sie einen HTML-Bericht, der die Ergebnisse von PerfInsights detailliert beschreibt. Um den Bericht anzuzeigen, erweitern Sie die Datei **CollectedData\_jjjj-MM-tt\_hh-mm-ss-fff.zip**, und öffnen Sie dann die Datei **PerfInsights Report.html**.
 
 Wählen Sie die Registerkarte **Ergebnisse**.
 
@@ -307,4 +307,4 @@ Der folgende Screenshot zeigt eine Nachricht, die der an Sie gesendeten Nachrich
 
 Befolgen Sie die Anweisungen in der Nachricht, um auf den Arbeitsbereich für die Dateiübertragung zuzugreifen. Zur Erhöhung der Sicherheit müssen Sie das Kennwort bei der ersten Verwendung ändern.
 
-Nach der Anmeldung sehen Sie ein Dialogfeld zum Hochladen der von PerfInsights erfassten Datei **CollectedData\_jjjj-MM-tt\_hh\_mm\_ss.zip**.
+Nach der Anmeldung sehen Sie ein Dialogfeld zum Hochladen der von PerfInsights erfassten Datei **CollectedData\_jjjj-MM-tt\_hh-mm-ss-fff.zip**.
