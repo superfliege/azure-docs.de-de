@@ -1,11 +1,11 @@
 ---
-title: "Nicht technische Voraussetzungen für das Erstellen eines Angebots für den Azure Marketplace | Microsoft Docs"
-description: "Grundlegendes zu den Anforderungen für das Erstellen und Bereitstellen eines Angebots im Azure Marketplace, damit andere Benutzer dieses erwerben können."
+title: Nicht technische Voraussetzungen für das Erstellen eines Angebots für den Azure Marketplace | Microsoft Docs
+description: Grundlegendes zu den Anforderungen für das Erstellen und Bereitstellen eines Angebots im Azure Marketplace, damit andere Benutzer dieses erwerben können.
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 3dae463b-8f48-4f52-8fa8-4e3975f09f43
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
-ms.author: hascipio
-ms.openlocfilehash: 4f86d444a2f2b97fd8605d480db358813bc39fd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 5c30e62bf345843fe83b3f17b728e1a937d19ce3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Allgemeine Voraussetzungen für das Erstellen eines Angebots für den Azure Marketplace
 Bevor Sie mit der Angebotserstellung fortfahren, müssen Sie sich zunächst mit den allgemeinen, geschäftsprozessbezogenen Voraussetzungen vertraut machen.
@@ -65,7 +65,7 @@ Administratoren des Veröffentlichungsportals können die anderen Mitglieder des
 > 
 
 ## <a name="acquire-an-azure-pay-as-you-go-subscription"></a>Erwerben eines Azure-Abonnements mit nutzungsbasierter Bezahlung
-Dieses Abonnement basiert auf einer nutzungsbasierten Bezahlung und wird zum Erstellen Ihrer VM-Images und zum Bereitstellen der Images im [Azure Marketplace](https://azure.microsoft.com/marketplace/)verwendet. Wenn Sie noch kein Abonnement besitzen, können Sie sich hier registrieren: https://account.windowsazure.com/signup?offer=ms-azr-0003p.
+Dieses Abonnement basiert auf einer nutzungsbasierten Bezahlung und wird zum Erstellen Ihrer VM-Images und zum Bereitstellen der Images im [Azure Marketplace](https://azure.microsoft.com/marketplace/)verwendet. Falls Sie über kein Abonnement verfügen, registrieren Sie sich unter https://account.windowsazure.com/signup?offer=ms-azr-0003p.
 
 ## <a name="sell-from-countries"></a>Verkäuferländer
 > [!WARNING]
@@ -79,6 +79,6 @@ Nachdem die nicht technischen Voraussetzungen erfüllt sind, geht es als Nächst
 * [Technische Voraussetzungen für das Erstellen eines VM-Images für den Azure Marketplace](marketplace-publishing-vm-image-creation-prerequisites.md)
 * [Technische Voraussetzungen für das Erstellen einer Lösungsvorlage für den Azure Marketplace](marketplace-publishing-solution-template-creation-prerequisites.md)
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 

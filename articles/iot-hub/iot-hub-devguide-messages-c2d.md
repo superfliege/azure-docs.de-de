@@ -1,23 +1,23 @@
 ---
 title: Grundlegendes zum Azure IoT Hub-C2D-Messaging | Microsoft-Dokumentation
-description: "Entwicklerhandbuch: Verwenden des C2D-Messaging mit IoT Hub. Enthält Informationen über den Lebenszyklus von Nachrichten und die Konfigurationsoptionen."
+description: 'Entwicklerhandbuch: Verwenden des C2D-Messaging mit IoT Hub. Enthält Informationen über den Lebenszyklus von Nachrichten und die Konfigurationsoptionen.'
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2017
+ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: 1b34e579f2ba40f4d77f7a3ba1841f59f795d292
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d265d35c7d5a394afa0e59f40ff1a5741e0ec35c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Senden von C2D-Nachrichten von IoT Hub
 
@@ -75,25 +75,25 @@ Beim Senden einer C2D-Nachricht kann der Dienst das Übermitteln von Feedback au
 
 | Ack-Eigenschaft | Verhalten |
 | ------------ | -------- |
-| **positive** | Wenn die Cloud-zu-Gerät-Nachricht den Status **Abgeschlossen** erreicht, generiert IoT Hub eine Feedbacknachricht. |
+| **positive** | Wenn die C2D-Nachricht den Status **Abgeschlossen** erreicht, generiert IoT Hub eine Feedbacknachricht. |
 | **negative** | Wenn die Cloud-zu-Gerät-Nachricht den Status **Unzustellbar** erreicht, generiert IoT Hub eine Feedbacknachricht. |
 | **full**     | IoT Hub generiert in beiden Fällen eine Feedbacknachricht. |
 
 Wenn **Ack** auf **Voll** festgelegt ist und Sie keine Feedbacknachricht erhalten, bedeutet dies, dass die Feedbacknachricht abgelaufen ist. Der Dienst kann nicht wissen, was mit der ursprünglichen Nachricht geschehen ist. In der Praxis sollte ein Dienst sicherstellen, dass Feedback verarbeitet werden kann, bevor es abläuft. Die maximale Ablaufzeit beträgt zwei Tage, sodass ausreichend Zeit verbleibt, um den Dienst wieder zu starten, wenn ein Fehler auftritt.
 
-Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Feedback in Form von Nachrichten über einen dienstseitigen Endpunkt (**/messages/servicebound/feedback**). Die Semantik für den Empfang von Feedback stimmt mit der für C2D-Nachrichten überein und weist den gleichen [Nachrichtenlebenszyklus][lnk-lifecycle] auf. Nachrichtenfeedback wird nach Möglichkeit in einer einzigen Nachricht zusammengefasst, die das folgende Format aufweist:
+Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Feedback in Form von Nachrichten über einen dienstseitigen Endpunkt (**/messages/servicebound/feedback**). Die Semantik für den Empfang von Feedback entspricht der Semantik für C2D-Nachrichten. Nachrichtenfeedback wird nach Möglichkeit in einer einzigen Nachricht zusammengefasst, die das folgende Format aufweist:
 
-| Eigenschaft     | BESCHREIBUNG |
+| Eigenschaft     | Beschreibung |
 | ------------ | ----------- |
-| EnqueuedTime | Zeitstempel, der die Erstellung der Nachricht angibt. |
+| EnqueuedTime | Zeitstempel, der angibt, wann die Feedbacknachricht vom Hub empfangen wurde. |
 | UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
 Der Nachrichtenkörper ist ein serialisiertes JSON-Array aus Datensätzen, von denen jeder die folgenden Eigenschaften aufweist:
 
-| Eigenschaft           | BESCHREIBUNG |
+| Eigenschaft           | Beschreibung |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | Zeitstempel, der den Zeitpunkt des Nachrichtenergebnisses angibt. Diese Eigenschaft kann beispielsweise angeben, wann das Gerät abgeschlossen wurde oder die Nachricht abgelaufen ist. |
+| EnqueuedTimeUtc    | Zeitstempel, der den Zeitpunkt des Nachrichtenergebnisses angibt. (Beispiel: Der Hub hat die Feedbacknachricht empfangen, oder die ursprüngliche Nachricht ist abgelaufen.) |
 | OriginalMessageId  | **MessageId** der C2D-Nachricht, auf die sich das Feedback bezieht. |
 | StatusCode         | Erforderliche Zeichenfolge. In von IoT Hub erzeugten Feedbacknachrichten verwendet. <br/> 'Success' <br/> 'Expired' <br/> 'DeliveryCountExceeded' <br/> 'Rejected' <br/> 'Purged' |
 | BESCHREIBUNG        | Zeichenfolgenwerte für **StatusCode**. |

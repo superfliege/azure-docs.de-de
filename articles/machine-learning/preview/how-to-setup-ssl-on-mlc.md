@@ -1,6 +1,6 @@
 ---
-title: "Aktivieren von SSL für einen Azure-MLC-Cluster (Machine Learning Compute) | Microsoft-Dokumentation"
-description: "Hier finden Sie eine Anleitung zum Einrichten von SSL für Bewertungsaufrufe in einem Azure-MLC-Cluster (Machine Learning Compute)."
+title: Aktivieren von SSL für einen Azure-MLC-Cluster (Machine Learning Compute) | Microsoft-Dokumentation
+description: Hier finden Sie eine Anleitung zum Einrichten von SSL für Bewertungsaufrufe in einem Azure-MLC-Cluster (Machine Learning Compute).
 services: machine-learning
 author: SerinaKaye
 ms.author: serinak
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
-ms.openlocfilehash: b76fe7c0caa4a9aca76a9a3f50d1fced0ab67cba
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 444803eeb77e79a8bfe3271ddf27bd428042c875
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>Aktivieren von SSL für einen Azure-MLC-Cluster (Machine Learning Compute) 
 
@@ -31,7 +31,7 @@ Anhand dieser Anleitung können Sie SSL für Bewertungsaufrufe in einem MLC-Clus
 
 Nach Abschluss der Vorbereitung verfügen Sie über zwei Dateien:
 
-* Eine Datei für das Zertifikat (beispielsweise `cert.pem`).
+* Eine Datei für das Zertifikat (beispielsweise `cert.pem`). Stellen Sie sicher, dass die Datei über die vollständige Vertrauenskette verfügt.
 * Eine Datei für den Schlüssel (beispielsweise `key.pem`).
 
 
@@ -55,7 +55,7 @@ Set-AzureRmMlOpCluster -ResourceGroupName my-rg -Name my-cluster -SslStatus Enab
 
 ## <a name="map-the-cname-and-the-ip-address"></a>Zuordnen von CNAME-Eintrag und IP-Adresse
 
-Erstellen Sie eine Zuordnung zwischen dem CNAME-Eintrag, den Sie im Rahmen der Vorbereitung gewählt haben, und der IP-Adresse des Echtzeit-Front-Ends (FE). Führen Sie zum Ermitteln der IP-Adresse des FEs den weiter unten angegebenen Befehl aus. Die Ausgabe enthält ein Feld namens „publicIpAddress“ mit der IP-Adresse des Echtzeitcluster-Front-Ends. Informationen zum Einrichten eines CNAME-Eintrags erhalten Sie von Ihrem DNS-Anbieter.
+Erstellen Sie eine Zuordnung zwischen dem CNAME-Eintrag, den Sie im Rahmen der Vorbereitung gewählt haben, und der IP-Adresse des Echtzeit-Front-Ends (FE). Führen Sie zum Ermitteln der IP-Adresse des FEs den weiter unten angegebenen Befehl aus. Die Ausgabe enthält ein Feld namens „publicIpAddress“ mit der IP-Adresse des Echtzeitcluster-Front-Ends. Richten Sie gemäß den Anweisungen Ihres DNS-Anbieters einen Eintrag zwischen dem in CNAME verwendeten FQDN und der öffentlichen IP-Adresse ein.
 
 
 

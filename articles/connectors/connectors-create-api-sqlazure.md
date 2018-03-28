@@ -1,11 +1,11 @@
 ---
-title: "Hinzufügen des Azure SQL-Datenbank-Connectors in Ihren Logik-Apps | Microsoft Docs"
-description: "Übersicht über den Azure SQL-Datenbank-Connector mit REST-API-Parametern"
-services: 
-documentationcenter: 
-author: MandiOhlinger
+title: Hinzufügen des Azure SQL-Datenbank-Connectors in Ihren Logik-Apps | Microsoft Docs
+description: Übersicht über den Azure SQL-Datenbank-Connector mit REST-API-Parametern
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: d8a319d0-e4df-40cf-88f0-29a6158c898c
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: def2b65f009c377233c45356f8fa661b86d73f51
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 4313ead0c31ab2e72238701d58dc2f321f116fa6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-azure-sql-database-connector"></a>Erste Schritte mit dem Azure SQL-Datenbank-Connector
 Mithilfe des Azure SQL-Datenbank-Connectors können Sie für Ihre Organisation Workflows zur Verwaltung von Tabellendaten erstellen. 
@@ -29,7 +29,7 @@ SQL-Datenbank ermöglicht Folgendes:
 * Erstellen Sie Ihren Workflow, indem Sie einer Kundendatenbank einen neuen Kunden hinzufügen oder einen Auftrag in einer Auftragsdatenbank aktualisieren.
 * Verwenden Sie Aktionen, um eine Datenzeile abzurufen, eine neue Zeile einzufügen oder Löschvorgänge auszuführen. Wenn also etwa ein Datensatz in Dynamics CRM Online erstellt wird (Trigger), soll eine Zeile in eine Azure SQL-Datenbank eingefügt werden (Aktion). 
 
-Dieses Thema beschreibt, wie Sie den SQL-Datenbank-Connector in einer Logik-App verwenden, und enthält eine Liste mit Aktionen.
+Dieser Artikel zeigt, wie Sie den SQL-Datenbank-Connector in einer Logik-App verwenden, und enthält eine Liste mit den Aktionen.
 
 Weitere Informationen zu Logik-Apps finden Sie unter [Was sind Logik-Apps](../logic-apps/logic-apps-overview.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -54,11 +54,11 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 3. Geben Sie im Textfeld die Zeichenfolge „sql“ ein, um eine Liste mit allen verfügbaren Aktionen zu erhalten.
    
     ![](./media/connectors-create-api-sqlazure/sql-1.png) 
-4. In unserem Beispiel wählen wir **SQL Server - Get row** (SQL Server – Zeile abrufen) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie in der Dropdownliste den **Tabellennamen** aus, und geben Sie die **Zeilen-ID** ein, die zurückgegeben werden soll.
+4. Wählen Sie in diesem Beispiel **SQL Server - Get row** (SQL Server – Zeile abrufen) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie in der Dropdownliste den **Tabellennamen** aus, und geben Sie die **Zeilen-ID** ein, die zurückgegeben werden soll.
    
     ![](./media/connectors-create-api-sqlazure/sample-table.png)
    
-    Wenn Sie zur Eingabe der Verbindungsinformationen aufgefordert werden, geben Sie die Details ein, um die Verbindung zu erstellen. Die Eigenschaften werden in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-sqlazure.md#create-the-connection) beschrieben. 
+    Wenn Sie zur Eingabe der Verbindungsinformationen aufgefordert werden, geben Sie die Details ein, um die Verbindung zu erstellen. Die Eigenschaften werden in diesem Artikel unter [Erstellen der Verbindung](connectors-create-api-sqlazure.md#create-the-connection) beschrieben. 
    
    > [!NOTE]
    > In diesem Beispiel geben wir eine Zeile aus einer Tabelle zurück. Fügen Sie zum Anzeigen der Daten aus dieser Zeile eine weitere Aktion hinzu, die eine Datei mit den Feldern aus der Tabelle erstellt. Fügen Sie beispielsweise eine OneDrive-Aktion hinzu, die auf der Grundlage der Felder „FirstName“ und „LastName“ eine neue Datei im Cloudspeicherkonto erstellt. 
@@ -71,5 +71,5 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/sql/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
+[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informieren Sie sich anhand der [API-Liste](apis-list.md)über die anderen verfügbaren Connectors in Logic Apps.
 

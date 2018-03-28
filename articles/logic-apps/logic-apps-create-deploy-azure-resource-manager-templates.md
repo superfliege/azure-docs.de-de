@@ -2,10 +2,10 @@
 title: Erstellen von Logik-Apps auf der Grundlage von Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
 description: Erstellen und Bereitstellen von Logik-App-Workflows mit Azure Resource Manager-Vorlagen
 services: logic-apps
-documentationcenter: 
-author: MandiOhlinger
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.service: logic-apps
 ms.workload: integration
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2017
-ms.author: LADocs; mandia
-ms.openlocfilehash: e30ed8b1b8e2241bbebab1d7c5f337fabf37e1dd
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.author: LADocs; estfan
+ms.openlocfilehash: 9e696f6e4614052456cf2b55123d98d61b8b3b9c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Erstellen und Bereitstellen von Logik-Apps mit Azure Resource Manager-Vorlagen
 
@@ -82,7 +82,7 @@ Die Vorlage verwendet Parameterwerte für den Logik-App-Namen (```logicAppName``
 
 Im Anschluss werden die Parameter in der Vorlage beschrieben:
 
-| Parameter | Beschreibung | Beispiel für JSON-Definition | 
+| Parameter | BESCHREIBUNG | Beispiel für JSON-Definition | 
 | --------- | ----------- | ----------------------- | 
 | `logicAppName` | Definiert den Namen der Logik-App, die durch diese Vorlage erstellt wird. | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
 | `testUri` | Definiert den Speicherort, der zu Testzwecken gepingt werden soll. | "testUri": { "type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
@@ -94,7 +94,7 @@ Bei Bedarf können Sie sich ausführlicher über die [REST-API für Logic Apps-W
 
 Wenn Sie eine Logik-App erstellen und automatisch in Azure bereitstellen möchten, klicken Sie hier auf **In Azure bereitstellen**:
 
-[![In Azure bereitstellen](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![Bereitstellen in Azure](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 Dadurch werden Sie beim Azure-Portal angemeldet, wo Sie die Details zu Ihrer Logik-App angeben und die Vorlage oder die Parameter nach Bedarf ändern können. Im Azure-Portal werden beispielsweise folgende Details angefordert:
 

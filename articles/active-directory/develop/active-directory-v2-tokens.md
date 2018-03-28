@@ -2,10 +2,10 @@
 title: Azure Active Directory v2.0-Tokenreferenz | Microsoft Docs
 description: Vom Azure AD v2.0-Endpunkt ausgestellte Token- und Anspruchstypen
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: dc58c282-9684-4b38-b151-f3e079f034fd
 ms.service: active-directory
 ms.workload: identity
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 01994e067bd7ce0343f12ec3334a91bd062251a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4479b3d34824b88f0a666b6185a6bc89337358a9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0-Tokenreferenz
 Der Azure Active Directory (Azure AD) v2.0-Endpunkt stellt bei jedem [Authentifizierungsfluss](active-directory-v2-flows.md) verschiedene Arten von Sicherheitstoken aus. Dieses Dokument beschreibt das Format, die Sicherheitsmerkmale und den Inhalt der einzelnen Tokentypen.
@@ -54,7 +54,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 >
 
 #### <a name="claims-in-id-tokens"></a>Ansprüche in ID-Token
-| Name | Anspruch | Beispielwert | Beschreibung |
+| NAME | Anspruch | Beispielwert | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | audience |`aud` |`6731de76-14a6-49ae-97bc-6eba6914391e` |Identifiziert den vorgesehenen Empfänger des Tokens. Die Zielgruppe von ID-Token ist die Anwendungs-ID Ihrer App, die der App im Microsoft-Anwendungsregistrierungsportal zugewiesen wurde. Ihre App sollte diesen Wert überprüfen und das Token ablehnen, wenn der Wert nicht übereinstimmt. |
 | Issuer (Aussteller) |`iss` |`https://login.microsoftonline.com/b9419818-09af-49c2-b0c3-653adc1f376e/v2.0 ` |Identifiziert den Sicherheitstokendienst (STS), der das Token und den Azure AD-Mandanten, in dem der Benutzer authentifiziert wurde, erstellt und zurückgibt. Ihre App sollte den Ausstelleranspruch überprüfen, um sicherzustellen, dass das Token vom v2.0-Endpunkt stammt. Sie sollte ferner den GUID-Abschnitt des Anspruchs nutzen, um die Gruppe der Mandanten zu beschränken, die sich bei der App anmelden können. Die GUID, die angibt, dass der Benutzer ein Consumer-Benutzer eines Microsoft-Kontos ist, lautet `9188040d-6c67-4c5b-b112-36a304b66dad`. |
@@ -86,7 +86,7 @@ Aktualisierungstoken bestehen aus mehreren Ressourcen. Ein Aktualisierungstoken,
 
 Um eine Aktualisierung bei einer Tokenantwort zu erhalten, muss Ihre App den `offline_acesss`-Bereich anfordern, und dieser Bereich muss gewährt werden. Weitere Informationen zum `offline_access`-Bereich finden Sie im Artikel zu [Bereichen und Zustimmungen](active-directory-v2-scopes.md).
 
-Aktualisierungstoken sind für Ihre App niemals transparent. Sie werden vom Azure AD v2.0-Endpunkt ausgestellt und können nur von diesem v2.0-Endpunkt überprüft und interpretiert werden. Sie sind zwar sehr lange gültig, in Ihrer App darf aber nicht von einer unbegrenzten Gültigkeitsdauer ausgegangen werden. Aktualisierungstoken können jederzeit aus unterschiedlichen Gründen ungültig werden. Die einzige Möglichkeit für Ihre App, die Gültigkeit eines Aktualisierungstokens zu überprüfen, besteht in der Einlösung des Tokens. Führen Sie dazu eine Tokenanforderung auf dem v2.0-Endpunkt aus.
+Aktualisierungstoken sind für Ihre App niemals transparent. Sie werden vom Azure AD v2.0-Endpunkt ausgestellt und können nur von diesem v2.0-Endpunkt überprüft und interpretiert werden. Sie sind zwar sehr lange gültig, in Ihrer App darf aber nicht von einer unbegrenzten Gültigkeitsdauer ausgegangen werden. Aktualisierungstoken können jederzeit aus unterschiedlichen Gründen ungültig werden. Ausführlichere Informationen finden Sie im Abschnitt zum [Widerrufen von Token](active-directory-token-and-claims.md#token-revocation). Die einzige Möglichkeit für Ihre App, die Gültigkeit eines Aktualisierungstokens zu überprüfen, besteht in der Einlösung des Tokens. Führen Sie dazu eine Tokenanforderung auf dem v2.0-Endpunkt aus.
 
 Wenn Sie ein Aktualisierungstoken für ein neues Zugriffstoken einlösen (und wenn Ihrer App der `offline_access`-Bereich zugeteilt wurde), erhalten Sie ein neues Aktualisierungstoken in der Tokenantwort. Speichern Sie das neu ausgestellte Aktualisierungstoken, um das in der Anforderung verwendete Token zu ersetzen. Dadurch wird sichergestellt, dass die Aktualisierungstoken möglichst lange gültig bleiben.
 
@@ -99,7 +99,7 @@ Microsoft bietet Bibliotheken und Codebeispiele, die zeigen, wie die Tokenüberp
 ### <a name="validate-the-signature"></a>Überprüfen der Signatur
 Ein JWT enthält drei Segmente, die durch das Zeichen `.` getrennt sind. Das erste Segment wird als *Header*, das zweite als *Text* und das dritte als *Signatur* bezeichnet. Mit dem Signatursegment kann die Authentizität des ID-Tokens überprüft werden, sodass es für Ihre App als vertrauenswürdig eingestuft werden kann.
 
-ID-Token werden mit branchenüblichen asymmetrischen Verschlüsselungsalgorithmen wie etwa RSA 256 signiert. Der Header des ID-Tokens enthält Informationen zum Schlüssel und zur Verschlüsselungsmethode, die zum Signieren des Tokens verwendet wird. Beispiel:
+ID-Token werden mit branchenüblichen asymmetrischen Verschlüsselungsalgorithmen wie etwa RSA 256 signiert. Der Header des ID-Tokens enthält Informationen zum Schlüssel und zur Verschlüsselungsmethode, die zum Signieren des Tokens verwendet wird. Beispiel: 
 
 ```
 {
@@ -143,7 +143,7 @@ Details zu den erwarteten Werten für diese Ansprüche finden Sie oben im Abschn
 ## <a name="token-lifetimes"></a>Tokengültigkeitsdauer
 Die folgenden Tokengültigkeitsdauern werden nur zu Informationszwecken angegeben. Diese Informationen können Sie beim Entwickeln und Debuggen von Apps unterstützen. Beim Schreiben Ihrer Apps darf nicht davon ausgegangen werden, dass die Gültigkeitsdauer konstant bleibt. Die Gültigkeitsdauer von Token kann und wird sich zu einem beliebigen Zeitpunkt ändern.
 
-| Tokenverschlüsselung | Gültigkeitsdauer | Beschreibung |
+| Tokenverschlüsselung | Gültigkeitsdauer | BESCHREIBUNG |
 | --- | --- | --- |
 | ID-Token (Geschäfts- oder Schulkonten) |1 Stunde |ID-Token sind in der Regel eine Stunde lang gültig. Ihre Web-App kann dieselbe Lebensdauer für ihre eigene Sitzung mit dem Benutzer verwenden (empfohlen), oder Sie können eine andere Sitzungsdauer wählen. Falls Ihre App ein neues ID-Token abrufen muss, muss sie lediglich eine neue Anmeldeanforderung an den v2.0-Autorisierungsendpunkt senden. Wenn der Benutzer eine gültige Browsersitzung für den v2.0-Endpunkt nutzt, muss der Benutzer unter Umständen seine Anmeldeinformationen nicht erneut eingeben. |
 | ID-Token (persönliche Konten) |24 Stunden |ID-Token für persönliche Konten gelten in der Regel 24 Stunden. Ihre Web-App kann dieselbe Lebensdauer für ihre eigene Sitzung mit dem Benutzer verwenden (empfohlen), oder Sie können eine andere Sitzungsdauer wählen. Falls Ihre App ein neues ID-Token abrufen muss, muss sie lediglich eine neue Anmeldeanforderung an den v2.0-Autorisierungsendpunkt senden. Wenn der Benutzer eine gültige Browsersitzung für den v2.0-Endpunkt nutzt, muss der Benutzer unter Umständen seine Anmeldeinformationen nicht erneut eingeben. |

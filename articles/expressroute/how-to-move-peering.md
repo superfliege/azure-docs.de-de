@@ -1,25 +1,25 @@
 ---
-title: "Umstellen eines öffentlichen Peerings über Azure ExpressRoute auf Microsoft-Peering | Microsoft-Dokumentation"
-description: "In diesem Artikel erfahren Sie, wie Sie Ihr öffentliches Peering über ExpressRoute auf Microsoft-Peering umstellen."
+title: Umstellen eines öffentlichen Peerings über Azure ExpressRoute auf Microsoft-Peering | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie Ihr öffentliches Peering über ExpressRoute auf Microsoft-Peering umstellen.
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/09/2017
+ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4fd0f1cbba36957ae5ecc1b7436d1f1734a3ef79
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 02d7c3f587a4cbfb11fc3b6863f75ca30b4d6c51
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Umstellen von öffentlichem Peering auf Microsoft-Peering
 
@@ -52,7 +52,7 @@ Vergewissern Sie sich, dass Microsoft-Peering aktiviert ist und die angekündigt
 
   * [Azure-Portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)
   * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)
-  * [Azure-Befehlszeilenschnittstelle](howto-routing-cli.md#getmsft)
+  * [Azure-CLI](howto-routing-cli.md#getmsft)
 
 ## <a name="routefilter"></a>3. Konfigurieren eines Routenfilters und Anfügen des Routenfilters an die Verbindung
 
@@ -73,6 +73,10 @@ Nachdem Sie sich vergewissert haben, dass das Microsoft-Peering konfiguriert ist
   * [Löschen des öffentlichen Azure-Peerings über das Azure-Portal](expressroute-howto-routing-portal-resource-manager.md#deletepublic)
   * [Löschen des öffentlichen Azure-Peerings mithilfe von Azure PowerShell](expressroute-howto-routing-arm.md#deletepublic)
   * [Löschen des öffentlichen Azure-Peerings mithilfe der Befehlszeilenschnittstelle](howto-routing-cli.md#deletepublic)
+  
+## <a name="view"></a>5. Anzeigen der Peerings
+  
+Im Azure-Portal können Sie eine Liste mit allen ExpressRoute-Leitungen und -Peerings anzeigen. Weitere Informationen finden Sie unter [So zeigen Sie die Details zum Microsoft-Peering an](expressroute-howto-routing-portal-resource-manager.md#getmsft).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: "Konfigurieren der SSL-Richtlinie für Azure Application Gateway – PowerShell | Microsoft-Dokumentation"
-description: "Diese Seite enthält Anweisungen zum Konfigurieren der SSL-Richtlinie für Azure Application Gateway."
+title: Konfigurieren der SSL-Richtlinie für Azure Application Gateway – PowerShell | Microsoft-Dokumentation
+description: Diese Seite enthält Anweisungen zum Konfigurieren der SSL-Richtlinie für Azure Application Gateway.
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
-ms.openlocfilehash: 407b62042d3f0d5c68234c4faeaa139c5e21b3a6
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: fa192ca1ee0dc5ee7190b6c63b64297c7406291d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurieren von SSL-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway
 
@@ -75,7 +75,7 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-ssl-policies"></a>Auflisten vordefinierter SSL-Richtlinien
 
-Application Gateway bietet drei vordefinierte Richtlinien, die Sie verwenden können. Diese Richtlinien können mithilfe des Cmdlets `Get-AzureRmApplicationGatewaySslPredefinedPolicy` abgerufen werden. In jeder Richtlinie sind unterschiedliche Protokollversionen und Verschlüsselungssammlungen aktiviert. Mit diesen vordefinierten Richtlinien können Sie schnell eine SSL-Richtlinie für Ihr Anwendungsgateway konfigurieren. Ist keine spezifische SSL-Richtlinie definiert, wird standardmäßig **AppGwSslPolicy20170401** verwendet.
+Application Gateway bietet drei vordefinierte Richtlinien, die Sie verwenden können. Diese Richtlinien können mithilfe des Cmdlets `Get-AzureRmApplicationGatewaySslPredefinedPolicy` abgerufen werden. In jeder Richtlinie sind unterschiedliche Protokollversionen und Verschlüsselungssammlungen aktiviert. Mit diesen vordefinierten Richtlinien können Sie schnell eine SSL-Richtlinie für Ihr Anwendungsgateway konfigurieren. Ist keine spezifische SSL-Richtlinie definiert, wird standardmäßig **AppGwSslPolicy20150501** verwendet.
 
 Im Anschluss finden Sie ein Beispiel für die Ausführung von `Get-AzureRmApplicationGatewaySslPredefinedPolicy`.
 

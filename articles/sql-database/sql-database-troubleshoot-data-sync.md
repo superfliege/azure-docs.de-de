@@ -8,11 +8,12 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: c174f5120ba2e5bf8018cce0f0e34c1fc3f8eb3f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.custom: data-sync
+ms.openlocfilehash: a24e16abd78a89d6143c00fc08a3ef91d7dd8202
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Behandeln von Problemen mit der SQL-Datensynchronisierung (Vorschau)
 
@@ -239,7 +240,7 @@ Bevor Sie fortfahren, überprüfen Sie die folgenden Bedingungen:
 
 -   Der Windows-Dienst für die SQL-Datensynchronisierung-Vorschauversion wird ausgeführt.  
 -   Das Dienstkonto für den Windows-Dienst „SQL Data Sync (Preview) Preview“ (SQL-Datensynchronisierung-Vorschauversion: Vorschauversion) verfügt über Netzwerkzugriff.    
--   Der Client-Agent kann den Locatordienst kontaktieren. Vergewissern Sie sich, dass der folgende Registrierungsschlüssel den Wert „https://locator.sync.azure.com/LocatorServiceApi.svc“ aufweist:  
+-   Der Client-Agent kann den Locatordienst kontaktieren. Vergewissern Sie sich, dass der folgende Registrierungsschlüssel den Wert https://locator.sync.azure.com/LocatorServiceApi.svc: hat:  
     -   x86-Computer: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
     -   x64-Computer: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
 

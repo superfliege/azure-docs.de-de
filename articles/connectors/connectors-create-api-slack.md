@@ -2,10 +2,10 @@
 title: Verwenden des Slack-Connectors in Ihren Azure-Logik-Apps | Microsoft-Dokumentation
 description: Stellen Sie in Ihren Logik-Apps eine Verbindung mit Slack her.
 services: logic-apps
-documentationcenter: 
-author: MandiOhlinger
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 04ea4508495b227d6ace4a3105f283c474c51d14
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 73c512c70f1c135bd791d93cecc42bd6f4c06b3d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-slack-connector"></a>Erste Schritte mit dem Slack-Connector
 Slack ist ein Tool für die Kommunikation in Teams, das alle Kommunikationen in Ihrem Team zentral zusammenführt und unmittelbar durchsuchbar und überall verfügbar macht. 
@@ -33,7 +33,7 @@ Stellen Sie zum Verwenden des Slack-Connectors zunächst eine **Verbindung** her
 | --- | --- | --- |
 | Tokenverschlüsselung |Ja |Angeben von Slack-Anmeldeinformationen |
 
-Führen Sie folgende Schritte aus, um sich bei Slack anzumelden und die Konfiguration der Slack-**Verbindung** in Ihrer Logik-App abzuschließen:
+Führen Sie folgende Schritte aus, um sich bei Slack anzumelden und die Konfiguration der **Slack-Verbindung** in Ihrer Logik-App abzuschließen:
 
 1. Wählen Sie **Wiederholung**
 2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an.
@@ -45,11 +45,11 @@ Führen Sie folgende Schritte aus, um sich bei Slack anzumelden und die Konfigur
    ![Slack konfigurieren][2]
 7. Geben Sie Ihre Slack-Anmeldeinformationen ein, um die Anwendung zu autorisieren.    
    ![Slack konfigurieren][3]  
-8. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. **Autorisieren** Sie Slack für die Interaktion mit Ihrer Logik-App:      
+8. Sie werden auf die Anmeldeseite Ihrer Organisation umgeleitet. **Autorisieren** Sie Slack für die Interaktion mit Ihrer Logik-App:      
    ![Slack konfigurieren][5] 
 9. Nach Abschluss der Autorisierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie den Abschnitt **Slack – Alle Nachrichten abrufen**. Fügen Sie bei Bedarf weitere Trigger und Aktionen hinzu.  
    ![Slack konfigurieren][6]
-10. Wählen Sie auf der oberen Menüleiste die Option **Speichern** aus, um Ihre Arbeit zu speichern.
+10. Klicken Sie im Menü (im oberen Bereich) auf **Speichern**, um Ihre Arbeit zu speichern.
 
 ## <a name="connector-specific-details"></a>Connectorspezifische Details
 

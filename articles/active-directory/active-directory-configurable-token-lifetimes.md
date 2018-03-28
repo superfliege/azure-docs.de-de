@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 568bf5f0a4cf3eb77b528af2550d9729dcc59878
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 553283f246b701b5084f0a3a9914d7ceb8826fe4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (öffentliche Vorschau)
 Sie können die Gültigkeitsdauer eines Tokens angeben, das von Azure Active Directory (Azure AD) ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen.
@@ -276,7 +276,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, bei der es erforderlich ist, d
 
 2.  Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die **ObjectId** Ihres Dienstprinzipals ab. 
 
-    1.  Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im [Graph-Explorer von Azure AD](https://graphexplorer.cloudapp.net/) an Ihrem Azure AD-Konto an.
+    1.  Sie können entweder [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) oder [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Dies können Sie auch im [Azure AD Graph-Explorer](https://graphexplorer.cloudapp.net/) und im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) testen. Verwenden Sie hierzu Ihr Azure AD-Konto.
 
     2.  Führen Sie den folgenden Befehl aus, wenn Sie über die **ObjectId** Ihres Dienstprinzipals verfügen:
 
@@ -332,7 +332,7 @@ In diesem Beispiel erstellen Sie einige Richtlinien, um zu erfahren, wie das Pri
 
     Sie verfügen jetzt über eine Richtlinie, die für die gesamte Organisation gilt. Es kann beispielsweise sein, dass diese 30-Tage-Richtlinie für einen bestimmten Dienstprinzipal beibehalten werden soll, während die Organisationsstandardrichtlinie so geändert wird, dass sie als Obergrenze für „Bis zum Widerruf“ fungiert.
 
-    1.  Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im [Graph-Explorer von Azure AD](https://graphexplorer.cloudapp.net/) mit Ihrem Azure AD-Konto an.
+    1.  Sie können entweder [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) oder [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Dies können Sie auch im [Azure AD Graph-Explorer](https://graphexplorer.cloudapp.net/) und im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) testen. Verwenden Sie hierzu Ihr Azure AD-Konto.
 
     2.  Führen Sie den folgenden Befehl aus, wenn Sie über die **ObjectId** Ihres Dienstprinzipals verfügen:
 

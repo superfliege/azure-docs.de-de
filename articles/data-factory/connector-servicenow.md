@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 4d05d816b43e04c2c2e88cab33b8e4c623ab9185
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e04de7cb3fad1ba651d0ce21be7f244a89753c1a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopieren von Daten aus ServiceNow mithilfe von Azure Data Factory
 
@@ -112,7 +112,7 @@ Legen Sie zum Kopieren von Daten aus ServiceNow den Quelltyp in der Kopieraktivi
 Beachten Sie Folgendes, wenn Sie das Schema und die Spalte für ServiceNow in der Abfrage angeben:
 
 - **Schema:** Geben Sie in der ServiceNow-Abfrage das Schema als `Actual` oder `Display` an, das als Parameter `sysparm_display_value` (als TRUE oder FALSE) beim Aufrufen von [ServiceNow-RESTful-APIs](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) angesehen werden kann. 
-- **Spalte:** Der Spaltenname für den Istwert unter dem Schema `Actual` ist `[columne name]_value`, während unter dem Schema `Display` der Wert für die Anzeige `[columne name]_display_value` ist. Beachten Sie, dass der Spaltenname dem Schema zugeordnet sein muss, das in der Abfrage verwendet wird.
+- **Spalte:** Der Spaltenname für den tatsächlichen Wert unter dem Schema `Actual` lautet `[columne name]_value`. Der Anzeigewert unter dem Schema `Display` lautet dagegen `[columne name]_display_value`. Beachten Sie, dass der Spaltenname dem Schema zugeordnet sein muss, das in der Abfrage verwendet wird.
 
 **Beispielabfrage:**
 `SELECT col_value FROM Actual.alm_asset` ODER `SELECT col_display_value FROM Display.alm_asset`

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: a1ffd9311f6ff171502efe64557463abc49ad636
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5039798d76017d93b77d724b2e6bca6712af0370
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-Trigger für Azure Functions
 
@@ -37,11 +37,11 @@ Bei Bedarf können Sie einen HTTP-Trigger zur Behandlung von Event Grid-Ereignis
 
 Der Event Grid-Trigger wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension).
 
-Das Paket wird zum [Bereitstellen der C#-Klassenbibliothek](functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code) und [Registrieren der Functions v2-Bindungserweiterung](functions-triggers-bindings.md#local-development-azure-functions-core-tools) verwendet.
-
 <!--
 If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` type instead of `JObject`, install the [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) package.
 -->
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="example"></a>Beispiel
 
@@ -348,7 +348,7 @@ Nach Abschluss der Tests können Sie dasselbe Abonnement für die Produktion ver
 
 ### <a name="create-a-requestbin-endpoint"></a>Erstellen eines RequestBin-Endpunkts
 
-RequestBin ist ein Open-Source-Tool, das HTTP-Anforderungen akzeptiert und den Anforderungstext anzeigt. Die URL http://requestb.in erhält in Azure Event Grid eine spezielle Behandlung. Zum vereinfachten Testen sendet Event Grid Ereignisse an die RequestBin-URL, ohne dass eine richtige Antwort auf Anforderungen zur Abonnementüberprüfung erforderlich ist. Zwei weiteren Testtools kommt die gleiche Behandlung zu: http://webhookinbox.com und http://hookbin.com.
+RequestBin ist ein Open-Source-Tool, das HTTP-Anforderungen akzeptiert und den Anforderungstext anzeigt. Die URL http://requestb.in erhält in Azure Event Grid eine Sonderbehandlung. Zum vereinfachten Testen sendet Event Grid Ereignisse an die RequestBin-URL, ohne dass eine richtige Antwort auf Anforderungen zur Abonnementüberprüfung erforderlich ist. Zwei andere Testtools werden auf die gleiche Weise behandelt: http://webhookinbox.com und http://hookbin.com.
 
 RequestBin ist nicht für hohen Durchsatz konzipiert. Wenn Sie gleichzeitig mehrere Ereignisse pushen, werden möglicherweise nicht alle Ereignisse im Tool angezeigt.
 

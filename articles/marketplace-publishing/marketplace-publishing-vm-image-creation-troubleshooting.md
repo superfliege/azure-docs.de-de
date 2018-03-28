@@ -1,11 +1,11 @@
 ---
-title: "Behandlung häufig auftretender Probleme bei der Erstellung virtueller Festplatten | Microsoft-Dokumentation"
-description: "Hier finden Sie Antworten auf häufig gestellte Fragen zur Problembehandlung und zu Problemen bei der Erstellung virtueller Festplatten."
+title: Behandlung häufig auftretender Probleme bei der Erstellung virtueller Festplatten | Microsoft-Dokumentation
+description: Hier finden Sie Antworten auf häufig gestellte Fragen zur Problembehandlung und zu Problemen bei der Erstellung virtueller Festplatten.
 services: Azure Marketplace
-documentationcenter: 
-author: HannibalSII
-manager: 
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: ''
+editor: ''
 ms.assetid: e39563d8-8646-4cb7-b078-8b10ac35b494
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 09/26/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: c4e88a9fbb15dd90d619b159ae1065dfacc1907f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 65361ad5bd7c3311c428b64b8476ec8f2ea2d17b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>Behandlung häufig auftretender Probleme bei der Erstellung virtueller Festplatten
 Dieser Artikel soll Azure Marketplace-Herausgeber und/oder Co-Administratoren unterstützen, die Probleme oder allgemeine Fragen beim Veröffentlichen oder Verwalten ihrer Lösungen mit virtuellen Computern haben.
@@ -32,19 +32,19 @@ Dieser Artikel soll Azure Marketplace-Herausgeber und/oder Co-Administratoren un
    * [Referenz für virtuelle Linux-Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
 3. Wie werden neue SSH-Zertifikate generiert?
    
-   Informationen finden Sie unter folgendem Link: [https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+   Informationen hierzu finden Sie unter folgendem Link: [https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
 4. Wie wird ein offenes VPN-Zertifikat konfiguriert?
    
-   Informationen finden Sie unter folgendem Link: [https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/](https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/)
+   Informationen hierzu finden Sie unter folgendem Link: [https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/](https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/)
 5. Welche Unterstützungsrichtlinie gilt für die Ausführung von Microsoft-Serversoftware in der Umgebung für virtuelle Microsoft Azure-Computer (Infrastructure-as-a-Service)?
    
-   Informationen finden Sie unter folgendem Link: [https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672)
+   Informationen hierzu finden Sie unter folgendem Link: [https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672)
 6. Besitzen virtuelle Computer einen eindeutigen Bezeichner?
    
    Von Azure wird auf jedem virtuellen Computer eine eindeutige Azure-VM-ID codiert. Details hierzu finden Sie in diesem Blog und dieser Dokumentation.
 7. Wie wird auf einem virtuellen Computer die benutzerdefinierte Skripterweiterung in der Startaufgabe verwaltet?
    
-   Informationen finden Sie unter folgendem Link: [https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
+   Informationen hierzu finden Sie unter folgendem Link: [https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 8. Wie erstelle ich mithilfe der virtuellen Festplatte, die in Storage Premium hochgeladen wird, einen virtuellen Computer im Azure-Portal?
    
    Dieses Feature wird noch nicht unterstützt.

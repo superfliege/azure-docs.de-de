@@ -1,8 +1,8 @@
 ---
-title: Benannte Orte in Azure Active Directory | Microsoft-Dokumentation
-description: "Erfahren Sie, was benannte Orte sind und wie Sie sie konfigurieren können."
+title: Konfigurieren benannter Orte in Azure Active Directory | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie benannte Orte konfigurieren.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6f80cde24edcbec68309ba033d4da16ee97b731
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3b7bd6f4bea111815f647af09ebaa868696b25bc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="named-locations-in-azure-active-directory"></a>Benannte Orte in Azure Active Directory
+# <a name="configure-named-locations-in-azure-active-directory"></a>Konfigurieren benannter Orte in Azure Active Directory
 
 Mit benannten Orten können Sie in Ihrer Organisation vertrauenswürdige IP-Adressbereiche bezeichnen. Azure Active Directory verwendet benannte Orte im folgenden Kontext:
 
@@ -89,22 +89,14 @@ Sie können auf die Seite mit der Konfiguration des benannten Orts im Abschnitt 
 
 
 
-## <a name="what-you-should-know"></a>Wichtige Informationen
-
-**Massenaktualisierungen:** Beim Erstellen oder Aktualisieren benannter Orte können Sie für eine Massenaktualisierung eine CSV-Datei mit den IP-Adressbereichen hochladen. Durch das Hochladen werden die IP-Adressbereiche in der Datei der Liste hinzugefügt, anstatt diese zu überschreiben.
-
-![Die Links zum Hochladen und Herunterladen](./media/active-directory-named-locations/09.png)
-
-
-**Einschränkungen:** Sie können maximal 60 benannte Orte definieren, wobei jedem ein IP-Adressbereich zugewiesen wird. Wenn Sie nur einen benannten Ort konfiguriert haben, können Sie dafür bis zu 500 IP-Adressbereiche definieren.
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen:
+Weitere Informationen finden Sie unter 
 
-- Informationen zu **Risikoereignissen** finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-reporting-risk-events.md).
+- [Bedingter Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal.md)
 
-- Informationen zum **bedingten Zugriff** finden Sie unter [Bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access-azure-portal.md).
+- [Standortbedingungen beim bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-locations.md)
 
-- Informationen zu **Berichten zu riskanten Anmeldungen** finden Sie unter [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](active-directory-reporting-security-risky-sign-ins.md).  
+- [Azure Active Directory-Risikoereignisse](active-directory-reporting-risk-events.md)
+
+- [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](active-directory-reporting-security-risky-sign-ins.md)  

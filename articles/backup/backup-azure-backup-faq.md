@@ -1,11 +1,11 @@
 ---
-title: "Häufig gestellte Fragen zu Azure Backup | Microsoft Docs"
-description: "Antworten auf häufig gestellte Fragen zu Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. "
+title: Häufig gestellte Fragen zu Azure Backup | Microsoft Docs
+description: 'Antworten auf häufig gestellte Fragen zu Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 keywords: Sicherung und Notfallwiederherstellung; Backup-Dienst
 ms.assetid: 1011bdd6-7a64-434f-abd7-2783436668d7
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 2e829ae90aa0366964f96b3c43f88503c7f3e894
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 39e7c95f236f53d7b7c4de0e5b792debe5c0c6f6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Fragen zum Azure Backup-Dienst
 In diesem Artikel werden allgemeine Fragen zu den Azure Backup-Komponenten beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Fragen zu Azure Backup können Sie durch Klicken auf **Kommentare** (rechts) stellen. Kommentare erscheinen am Ende dieses Artikels. Zum Kommentieren wird ein Livefyre-Konto benötigt. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -132,8 +132,7 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 | Microsoft Exchange |Summe aller Exchange-Datenbanken eines zu sichernden Exchange-Servers |
 | BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu sichernden Computers |
 
-Bei Azure VM Backup kann jeder virtuelle Computer über bis zu 16 Datenträger mit einer Größe von jeweils bis zu 1024 GB verfügen. <br>
-Es ist eine [private Vorschau](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a?redir=0) zur Unterstützung von Datenträgern bis zu einer Größe von 4 TB verfügbar. 
+Bei Azure VM Backup kann jeder virtuelle Computer über bis zu 16 Datenträger mit einer Größe von jeweils bis zu 4095 GB verfügen. <br>
 
 ## <a name="retention-policy-and-recovery-points"></a>Aufbewahrungsrichtlinie und Wiederherstellungspunkte
 ### <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-that-is-on-windows-server-without-dpmbr"></a>Gibt es einen Unterschied zwischen der Aufbewahrungsrichtlinie für DPM und Windows Server bzw. Windows-Client (also unter Windows Server ohne DPM)?<br/>

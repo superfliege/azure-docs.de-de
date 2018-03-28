@@ -1,9 +1,9 @@
 ---
-title: "Übersicht über die Service Fabric-Programmiermodelle | Microsoft Docs"
+title: Übersicht über die Service Fabric-Programmiermodelle | Microsoft Docs
 description: 'Service Fabric bietet zwei Frameworks zum Erstellen von Diensten: das Actors-Framework und das Services-Framework. Sie bieten unterschiedliche Kompromisse im Hinblick auf Einfachheit und Steuerung.'
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: vturecek
 manager: timlt
 editor: vturecek
 ms.assetid: 974b2614-014e-4587-a947-28fcef28b382
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: a68db62f87bca5c641db310823588df6fb74f75e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6c4503b3e05f7d78f64a161f620b1fbd6cd38ab1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="service-fabric-programming-model-overview"></a>Übersicht über die Service Fabric-Programmiermodelle
-Service Fabric bietet verschiedene Methoden zum Schreiben und Verwalten von Diensten. Dienste können die Service Fabric-APIs verwenden, um Features und Anwendungsframeworks der Plattform umfassend zu nutzen. Ein Dienst kann auch ein kompiliertes ausführbares Programm sein, das in einer beliebigen Sprache oder in einem beliebigen Code geschrieben wurde und in einem Container ausgeführt wird, der einfach in einem Service Fabric-Cluster gehostet wird.
+Service Fabric bietet verschiedene Methoden zum Schreiben und Verwalten von Diensten. Dienste können die Service Fabric-APIs verwenden, um Features und Anwendungsframeworks der Plattform umfassend zu nutzen. Ein Dienst kann auch ein kompiliertes ausführbares Programm sein, das in einer beliebigen Sprache oder in einem beliebigen Code geschrieben wurde und in einem Container ausgeführt wird, der in einem Service Fabric-Cluster gehostet wird.
 
 ## <a name="guest-executables"></a>Ausführbare Gastanwendungsdateien
-Eine [ausführbare Gastdatei](service-fabric-deploy-existing-app.md) ist eine vorhandene, beliebig ausführbare Datei, die in einer beliebigen Sprache geschrieben sein kann, die als Service in Ihrer Anwendung ausgeführt werden kann. Ausführbare Gastdateien rufen die APIs der Service Fabric SDK nicht direkt auf. Dennoch profitieren sie von den angebotenen Features der Plattform. Hierzu zählen beispielsweise die Auffindbarkeit von Diensten und benutzerdefinierte Integritäts- und Auslastungsberichte durch Aufrufen von REST-APIs, die über Service Fabric verfügbar gemacht werden. Außerdem wird der Anwendungslebenszyklus vollständig unterstützt.
+Eine [ausführbare Gastdatei](service-fabric-guest-executables-introduction.md) ist eine vorhandene, beliebig ausführbare Datei, die in einer beliebigen Sprache geschrieben sein kann, die als Service in Ihrer Anwendung ausgeführt werden kann. Ausführbare Gastdateien rufen die APIs der Service Fabric SDK nicht direkt auf. Dennoch profitieren sie von den angebotenen Features der Plattform. Hierzu zählen beispielsweise die Auffindbarkeit von Diensten und benutzerdefinierte Integritäts- und Auslastungsberichte durch Aufrufen von REST-APIs, die über Service Fabric verfügbar gemacht werden. Außerdem wird der Anwendungslebenszyklus vollständig unterstützt.
 
 Beginnen Sie damit, die erste [ausführbare Gastanwendungsdatei](service-fabric-deploy-existing-app.md)bereitzustellen.
 
@@ -50,7 +50,7 @@ ASP.NET Core ist ein neues quelloffenes und plattformübergreifendes Framework z
 ## <a name="reliable-actors"></a>Reliable Actors
 Das Reliable Actor-Anwendungsframework setzt auf Reliable Services auf und implementiert das „Virtual Actor“-Muster, basierend auf dem Entwurfsmuster für Akteure. Das Reliable Actor-Framework verwendet unabhängige Compute- und Statuseinheiten mit Singlethreadausführung, die als Akteure bezeichnet werden. Das Reliable Actor-Framework bietet integrierte Kommunikation für Akteure sowie voreingestellte Statuspersistenz und horizontal hochskalierbare Konfigurationen.
 
-Da es sich bei Reliable Actors selbst um ein Anwendungsframework handelt, das auf Reliable Services aufsetzt, ist es vollständig in die Service Fabric-Plattform integriert und profitiert von allen Features, die die Plattform bietet.
+Da es sich bei Reliable Actors um ein Anwendungsframework handelt, das auf Reliable Services basiert, ist es vollständig in die Service Fabric-Plattform integriert und profitiert von allen Features, die die Plattform bietet.
 
 [Erfahren Sie mehr über Reliable Actors](service-fabric-reliable-actors-introduction.md), oder legen Sie direkt los, indem Sie [Ihren ersten Reliable Actor-Dienst schreiben](service-fabric-reliable-actors-get-started.md).
 

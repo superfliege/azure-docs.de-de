@@ -1,11 +1,11 @@
 ---
-title: "Hinzufügen des Office 365 Outlook-Connectors in Ihren Logik-Apps | Microsoft Docs"
-description: "Erstellen Sie Logik-Apps mit Office 365-Connector, um die Interaktion mit Office 365 zu ermöglichen. Sie können beispielsweise Kontakte und Kalendereinträge erstellen, bearbeiten und aktualisieren."
-services: 
-documentationcenter: 
-author: MandiOhlinger
+title: Hinzufügen des Office 365 Outlook-Connectors in Ihren Logik-Apps | Microsoft Docs
+description: Erstellen Sie Logik-Apps mit Office 365-Connector, um die Interaktion mit Office 365 zu ermöglichen. Sie können beispielsweise Kontakte und Kalendereinträge erstellen, bearbeiten und aktualisieren.
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: b2f6cc2c-bba2-493a-b0ba-841785462a80
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 51b8e3de639b5cce954547adb77ff13b79ad6747
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: ea0b2f657f808bb6ba4bf427497955b9e520c669
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Erste Schritte mit dem Office 365 Outlook-Connector
 Der Office 365 Outlook-Connector ermöglicht die Interaktion mit Outlook in Office 365. Verwenden Sie diesen Connector zum Erstellen, Bearbeiten und Aktualisieren von Kontakten und Kalenderelementen sowie zum Empfangen, Senden und Beantworten von E-Mails.
@@ -30,7 +30,7 @@ Office 365 Outlook ermöglicht Folgendes:
 * Verwenden von Triggern, um den Workflow zu starten, wenn beispielsweise eine neue E-Mail vorliegt oder ein Kalenderelement aktualisiert wird.
 * Verwenden von Aktionen, um beispielsweise eine E-Mail zu senden oder ein neues Kalenderereignis zu erstellen. Wenn also beispielsweise ein neues Objekt in Salesforce vorhanden ist (Trigger), kann eine E-Mail an Office 365 Outlook gesendet werden (Aktion). 
 
-Dieses Thema beschreibt, wie Sie den Office 365 Outlook-Connector in einer Logik-App verwenden, und enthält eine Liste mit den Triggern und Aktionen.
+Dieser Artikel beschreibt, wie Sie den Office 365 Outlook-Connector in einer Logik-App verwenden, und enthält eine Liste mit den Triggern und Aktionen.
 
 > [!NOTE]
 > Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps.

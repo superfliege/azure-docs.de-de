@@ -1,11 +1,11 @@
 ---
-title: "Erstellen und Registrieren eines Kontos für die Veröffentlichung | Microsoft Docs"
-description: "Anweisungen zum Erstellen eines Microsoft-Entwicklerkontos, mit dem – nach Genehmigung des Kontos – verschiedene Arten von Angeboten im Azure Marketplace veröffentlicht werden können."
+title: Erstellen und Registrieren eines Kontos für die Veröffentlichung | Microsoft Docs
+description: Anweisungen zum Erstellen eines Microsoft-Entwicklerkontos, mit dem – nach Genehmigung des Kontos – verschiedene Arten von Angeboten im Azure Marketplace veröffentlicht werden können.
 services: Azure Marketplace
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 5a2fe68d-2967-463f-8af6-42bed07e3eaa
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
-ms.author: hascipio
-ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: da805bead3f6af4ebd0b4b94b30a51ff2abc62dd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-microsoft-developer-account"></a>Erstellen eines Microsoft-Entwicklerkontos
 In diesem Artikel werden die Schritte zur Erstellung und Registrierung eines Kontos erläutert, die notwendig sind, um anerkannter Microsoft-Entwickler im Azure Marketplace zu werden.
@@ -45,7 +45,7 @@ Beachten Sie beim Erstellen eines Unternehmenskontos diese Richtlinien, wenn meh
 * Fügen Sie eine Telefonnummer hinzu, die keine Durchwahl benötigt, und auf die wichtige Teammitglieder zugreifen können.
 * Sorgen Sie im Allgemeinen dafür, dass Entwickler vertrauenswürdige Geräten verwenden, um sich beim Entwicklerkonto Ihres Unternehmens anzumelden. Alle wichtigen Teammitglieder sollten auf diese vertrauenswürdigen Geräten zugreifen können. Dies reduziert die Notwendigkeit, beim Zugriff auf das Konto Sicherheitscodes senden zu müssen.
 * Wenn Sie Zugriff auf das Konto von einem nicht vertrauenswürdigen PC zulassen müssen, begrenzen Sie den Zugriff auf ein Maximum von fünf Entwicklern. Im Idealfall sollten diese Entwickler mit Computern auf das Konto zugreifen, die den gleichen geografischen und Netzwerkstandort haben.
-* Überprüfen Sie die Sicherheitsinfos für Ihr Unternehmen regelmäßig unter [https://account.live.com/proofs/Manage](https://account.live.com/proofs/Manage), um sicherzustellen, dass sie aktuell sind.
+* Überprüfen Sie die Sicherheitsinformationen für Ihr Unternehmen regelmäßig unter [https://account.live.com/proofs/Manage](https://account.live.com/proofs/Manage), um sicherzustellen, dass sie aktuell sind.
 
 Auf Ihr Entwicklerkonto sollte in erster Linie mit vertrauenswürdigen PCs zugegriffen werden. Dies ist wichtig, da die Anzahl der pro Konto und Woche generierten Codes beschränkt ist. Darüber hinaus ermöglicht dies die nahtloseste Anmeldeerfahrung.
 
@@ -81,7 +81,7 @@ Das Microsoft Developer Center wird für die einmalige Registrierung der Unterne
 
 ### <a name="register-your-company-account"></a>Registrieren Ihres Unternehmenskontos
 1. Öffnen Sie eine neue Internet Explorer-InPrivate- oder Chrome-Inkognito-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind.
-2. Wechseln Sie zu [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) , um sich im Developer Center als Verkäufer zu registrieren. Bitte lesen Sie den folgenden wichtigen Hinweis, bevor Sie fortfahren.
+2. Wechseln Sie zu [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure), um sich als Verkäufer im Developer Center zu registrieren. Bitte lesen Sie den folgenden wichtigen Hinweis, bevor Sie fortfahren.
 
    > [!IMPORTANT]
    > Stellen Sie sicher, dass die E-Mail-ID oder Verteilerliste (eine Verteilerliste wird empfohlen, um die Abhängigkeit von einzelnen Personen aufzuheben), die Sie für die Registrierung im Developer Center verwenden werden, zunächst als Microsoft-Konto registriert wird. Falls nicht, dann registrieren Sie sich bitte über diesen [Link](https://signup.live.com/signup?uaid=e479342fe2824efeb0c3d92c8f961fd3&lic=1). Darüber hinaus kann für die Developer Center-Registrierung **keine E-Mail-ID unter der Microsoft-Unternehmensdomäne ( d.h. @microsoft.com) verwendet werden**.
@@ -161,13 +161,11 @@ Wenn Sie Ihre Steuer- und Bankdaten später aktualisieren möchten, können Sie 
    >
 4. Klicken Sie auf **Weiter**.
 
-
 **Steuerinformationen**
 
 1. Melden Sie mit Ihrem Microsoft-Konto am [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) an (falls erforderlich).
 2. Klicken Sie im Menü auf der linken Seite auf **Steuerprofil** .
 3. Wählen Sie auf der Seite **Richten Sie Ihr Steuerformular ein** das Land oder die Region aus, in dem bzw. der sich Ihr ständiger Wohnsitz befindet. Wählen Sie anschließend das Land oder die Region aus, dessen bzw. deren erste Staatsbürgerschaft Sie besitzen. Klicken Sie auf **Weiter**.
-
 4. Geben Sie Ihre Steuerdaten ein, und klicken Sie auf **Weiter**.
 
 > [!WARNING]
@@ -177,7 +175,7 @@ Wenn Sie Ihre Steuer- und Bankdaten später aktualisieren möchten, können Sie 
 
 Wenn beim Abschließen der Developer Center-Registrierung Probleme auftreten, öffnen Sie wie nachfolgend beschrieben ein Supportticket:
 
-1. Klicken Sie auf den Supportlink [https://developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support)
+1. Verwenden Sie den Supportlink [https://developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support).
 2. Klicken Sie im Abschnitt **Kontakt** auf die Schaltfläche **Vorfall übermitteln** (wie im folgenden Screenshot gezeigt).
 
     ![Abbildung](media/marketplace-publishing-accounts-creation-registration/imgAddTax_02.png)
@@ -193,7 +191,7 @@ Wenn beim Abschließen der Developer Center-Registrierung Probleme auftreten, ö
 Das [Veröffentlichungsportal](http://publish.windowsazure.com) dient zum Veröffentlichen und Verwalten Ihrer Angebote.
 
 1. Öffnen Sie eine neue Chrome-Inkognito- oder Internet Explorer-InPrivate-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind.
-2. Wechseln Sie zu [http://publish.windowsazure.com](http://publish.windowsazure.com).
+2. Navigieren Sie zu [http://publish.windowsazure.com](http://publish.windowsazure.com).
 3. Wenn Sie sich als neuer Benutzer zum ersten Mal beim Veröffentlichungsportal anmelden, müssen Sie sich mit der gleichen E-Mail-ID anmelden, unter der Ihr Developer Center-Konto registriert ist. Auf diese Weise werden Ihr Developer Center-Konto und das Veröffentlichungsportal miteinander verknüpft. Sie können später als Co-Admin die anderen Mitglieder des Unternehmens, die an der Anwendung arbeiten, mit den folgenden Schritten dem Veröffentlichungsportal hinzufügen.
 
 Wenn Sie als Co-Admin dem Veröffentlichungsportal hinzugefügt werden, können Sie sich mit Ihrem Co-Admin-Konto anmelden.

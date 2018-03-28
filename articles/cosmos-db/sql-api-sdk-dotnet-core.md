@@ -1,6 +1,6 @@
 ---
 title: 'Azure Cosmos DB: SQL .NET Core-API, -SDK und -Ressourcen | Microsoft-Dokumentation'
-description: "Hier finden Sie umfassende Informationen zur SQL .NET Core-API und zum entsprechenden SDK – einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen der einzelnen Versionen des Azure Cosmos DB .NET Core SDKs."
+description: Hier finden Sie umfassende Informationen zur SQL .NET Core-API und zum entsprechenden SDK – einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen der einzelnen Versionen des Azure Cosmos DB .NET Core SDKs.
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 55946915573f53bb7e1917d4705e6d8e74abf448
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7c7981bc0388fee763396e68d6de3375a01178a7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -59,6 +59,11 @@ Die Features des Azure Cosmos DB .NET Core SDKs sind mit den Features der neuest
 
 > [!NOTE] 
 > Das Azure Cosmos DB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Senden Sie eine E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com), um Informationen zum .NET Core SDK zu erhalten, mit dem UWP-Apps unterstützt werden.
+
+### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
+
+* Korrektur von „KeyNotFoundException“ für die plattformübergreifende Partitionsreihenfolge durch Abfragen in Ausnahmefällen.
+* Korrektur eines Fehlers, bei dem ein JsonProperty-Attribut in der Select-Klausel für LINQ-Abfragen nicht berücksichtigt wurde.
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
@@ -170,6 +175,7 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](http:
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.9.1](#1.9.1) |09. März 2018 |--- |
 | [1.8.2](#1.8.2) |21. Februar 2018 |--- |
 | [1.8.1](#1.8.1) |05. Februar 2018 |--- |
 | [1.7.1](#1.7.1) |16. November 2017 |--- |

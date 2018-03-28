@@ -1,6 +1,6 @@
 ---
-title: "Konzeptionelle Übersicht über die Azure Machine Learning-Modellverwaltung | Microsoft-Dokumentation"
-description: "Informationen zu den Modellverwaltungskonzepten für Azure Machine Learning"
+title: Konzeptionelle Übersicht über die Azure Machine Learning-Modellverwaltung | Microsoft-Dokumentation
+description: Informationen zu den Modellverwaltungskonzepten für Azure Machine Learning
 services: machine-learning
 author: nk773
 ms.author: padou
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 931dfae740996325cc62071a861e81ef5f67548b
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 89f95753248f74c7f6cb9ca1f680a01b07dd43d1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning-Modellverwaltung
 
@@ -99,27 +99,27 @@ Die folgende Abbildung zeigt den vollständigen Workflow basierend auf den besch
 ![](media/model-management-overview/modelmanagementworkflow.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) 
-- Welche Datentypen werden unterstützt? Kann ich NumPy-Arrays als Eingabe direkt an den Webdienst übergeben?
+- **Welche Datentypen werden unterstützt? Kann ich NumPy-Arrays als Eingabe direkt an den Webdienst übergeben?**
 
    Wenn Sie eine Schemadatei bereitstellen, die mit dem generate_schema-SDK erstellt wurde, können Sie NumPy und/oder Pandas DF übergeben. Sie können auch alle serialisierbaren JSON-Eingaben übergeben. Oder Sie können Images als binär codierte Zeichenfolgen übergeben.
 
-- Werden vom Webdienst mehrere Eingaben unterstützt oder verschiedene Eingaben analysiert? 
+- **Werden vom Webdienst mehrere Eingaben unterstützt oder verschiedene Eingaben analysiert?**
 
    Ja, Sie können mehrere Eingaben als Wörterbuch in eine JSON-Anforderung packen. Jede Eingabe entspricht dann einem einzelnen eindeutigen Wörterbuchschlüssel.
 
-- Ist der Aufruf, der durch eine Anforderung an den Webdienst aktiviert wird, ein blockierender Aufruf oder ein asynchroner Aufruf?
+- **Ist der Aufruf, der durch eine Anforderung an den Webdienst aktiviert wird, ein blockierender Aufruf oder ein asynchroner Aufruf?**
 
    Wurde der Dienst mit Echtzeit-Option als Teil der CLI oder API erstellt, handelt es sich um einen blockierenden/synchronen Aufruf. Seine Geschwindigkeit soll der Echtzeit entsprechen. Auf der Clientseite können Sie ihn jedoch mit der asynchronen HTTP-Bibliothek aufrufen, um ein Blockieren des Clientthreads zu verhindern.
 
-- Wie viele Anforderungen kann der Webdienst gleichzeitig verarbeiten?
+- **Wie viele Anforderungen kann der Webdienst gleichzeitig verarbeiten?**
 
    Dies hängt von der Skalierung des Clusters und des Webdiensts ab. Sie können den Dienst auf die hundertfache Anzahl von Replikaten hochskalieren, damit er eine Vielzahl von Anforderungen gleichzeitig verarbeiten kann. Sie können auch die maximale Anzahl von gleichzeitigen Anforderungen pro Replikat konfigurieren, um den Durchsatz des Diensts zu erhöhen.
 
-- Wie viele Anforderungen kann der Webdienst in die Warteschlange stellen?
+- **Wie viele Anforderungen kann der Webdienst in die Warteschlange stellen?**
 
    Das können Sie selbst konfigurieren. Der Standardwert ist 10 Anforderungen pro einzelnes Replikat. Sie können den Wert jedoch erhöhen/verringern, um ihn an Ihre Anwendungsanforderungen anzupassen. In der Regel erhöht eine Erhöhung der Anzahl der Anforderungen in der Warteschlange den Durchsatz des Diensts, verschlechtert aber gleichzeitig die Wartezeiten. Damit die Wartezeiten konstant bleiben, können Sie für die Warteschlange einen niedrigen Wert festlegen (1-5) und gleichzeitig die Anzahl der Replikate erhöhen, die den Durchsatz verarbeiten. Sie können auch die automatische Skalierung aktivieren, damit sich die Anzahl der Replikate automatisch an die Auslastung anpasst. 
 
-- Kann der gleiche Computer oder Cluster für mehrere Webdienst-Endpunkte verwendet werden?
+- **Kann der gleiche Computer oder Cluster für mehrere Webdienst-Endpunkte verwendet werden?**
 
    Absolut. Sie können Hunderte von Diensten/Endpunkten im gleichen Cluster ausführen. 
 

@@ -1,26 +1,21 @@
 ---
-title: "Wiederherstellen einer Azure SQL-Datenbank-Instanz in einer mehrinstanzenfähigen SaaS-App | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die SQL-Datenbank-Instanz eines einzelnen Mandanten nach versehentlichem Löschen von Daten wiederherstellen."
+title: Wiederherstellen einer Azure SQL-Datenbank-Instanz in einer mehrinstanzenfähigen SaaS-App | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die SQL-Datenbank-Instanz eines einzelnen Mandanten nach versehentlichem Löschen von Daten wiederherstellen.
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
-ms.author: billgib;sstein
-ms.openlocfilehash: 46471073f88247510f45d6c4152afa43be6e1aaa
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.author: sstein
+ms.reviewer: billgib
+ms.openlocfilehash: 7ae8bcb6172d9f9d56c531e149635434057fc2af
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Wiederherstellen eines einzelnen Mandanten mit einer SaaS-Anwendung mit einer Datenbank pro Mandant
 
@@ -69,7 +64,7 @@ Um diese Wiederherstellungsszenarien zu demonstrieren, müssen Sie zuerst ein Er
 
 ### <a name="open-the-events-app-to-review-the-current-events"></a>Öffnen der Events-App, um die aktuellen Ereignisse zu prüfen
 
-1. Öffnen Sie den *Events Hub* (http://events.wtp.&lt;user&gt;.trafficmanager.net), und klicken Sie auf **Contoso Concert Hall**:
+1. Öffnen Sie den *Veranstaltungshub* (http://events.wtp.&lt;Benutzer&gt;.trafficmanager.net), und klicken Sie auf **Contoso Concert Hall**:
 
    ![Events Hub](media/saas-dbpertenant-restore-single-tenant/events-hub.png)
 

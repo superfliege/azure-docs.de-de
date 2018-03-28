@@ -1,13 +1,13 @@
 ---
-title: "Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung – Azure Active Directory"
-description: "Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung in Azure AD"
+title: Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung – Azure Active Directory
+description: Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung in Azure AD
 services: active-directory
-keywords: "Active Directory-Kennwortverwaltung, Kennwortverwaltung, Self-Service-Kennwortzurücksetzung in Azure AD"
-documentationcenter: 
+keywords: Active Directory-Kennwortverwaltung, Kennwortverwaltung, Self-Service-Kennwortzurücksetzung in Azure AD
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: 686cc2a94af729e6f872c334a6e5fda947d43725
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f5236b81c70caee4417777ffadcababebaa84620
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -40,7 +40,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 
 * **F: Können meine Benutzer ihre eigenen Daten zur Kennwortzurücksetzung registrieren?**
 
-  > **A:** Ja. Wenn die Kennwortzurücksetzung aktiviert ist und die Benutzer lizenziert sind, können diese das Portal zur Registrierung für die Kennwortzurücksetzung (https://aka.ms/ssprsetup) öffnen und ihre Authentifizierungsdaten registrieren. Benutzer können sich auch über den Zugriffsbereich (http://myapps.microsoft.com) registrieren. Bei der Registrierung über den Zugriffsbereich müssen die Benutzer ihr Profilbild auswählen. Anschließend wählen sie **Profil** und dann die Option **Für das Zurücksetzen des Kennworts registrieren** aus.
+  > **A:** Ja. Wenn die Kennwortzurücksetzung aktiviert ist und die Benutzer lizenziert sind, können diese das Kennwortregistrierungsportal (https://aka.ms/ssprsetup) öffnen und ihre Authentifizierungsdaten registrieren. Benutzer können sich auch über den Zugriffsbereich (http://myapps.microsoft.com) registrieren. Bei der Registrierung über den Zugriffsbereich müssen die Benutzer ihr Profilbild auswählen. Anschließend wählen sie **Profil** und dann die Option **Für das Zurücksetzen des Kennworts registrieren** aus.
   >
   >
 * **F: Wenn ich Kennwortzurücksetzung für eine Gruppe aktiviere und mich anschließend entscheide, sie für alle zu aktivieren, müssen sich meine Benutzer dann erneut registrieren?**
@@ -269,7 +269,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F: Für welche Arten von Konten funktioniert das Rückschreiben von Kennwörtern?**
 
-  > **A:** Das Kennwortrückschreiben funktioniert für Benutzer mit Verbundauthentifizierung und mit Kennworthashsynchronisierung.
+  > **A:** Kennwortrückschreiben kann für Benutzerkonten verwendet werden, die aus dem lokalen Active Directory mit Azure AD synchronisiert werden. Dies schließt Verbundbenutzer, Benutzer mit Kennworthashsynchronisierung und Benutzer mit Passthrough-Authentifizierung ein.
   >
   >
 * **F: Werden die Kennwortrichtlinien meiner Domäne durch die Kennwortrückschreibung durchgesetzt?**

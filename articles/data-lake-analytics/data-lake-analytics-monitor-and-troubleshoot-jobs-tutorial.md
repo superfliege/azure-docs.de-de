@@ -1,8 +1,8 @@
 ---
-title: "Problembehandelung bei Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals | Microsoft Docs"
-description: "Erfahren Sie, wie die Problembehandlung von Data Lake Analytics-Aufträgen im Azure-Portal erfolgt. "
+title: Problembehandelung bei Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals | Microsoft Docs
+description: 'Erfahren Sie, wie die Problembehandlung von Data Lake Analytics-Aufträgen im Azure-Portal erfolgt. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
-ms.author: edmaca
-ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: saveenr
+ms.openlocfilehash: f6168997c449be5354bd223c516d4f929a1bf894
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>Problembehandelung bei Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals
-Erfahren Sie, wie die Problembehandlung von Data Lake Analytics-Aufträgen im Azure-Portal erfolgt.
+# <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>Behandeln von Problemen mit Azure Data Lake Analytics-Aufträgen über das Azure-Portal
+Hier erfahren Sie, wie Sie Probleme mit Data Lake Analytics-Aufträgen über das Azure-Portal behandeln.
 
-In diesem Lernprogramm simulieren Sie das Problem einer fehlenden Quelldatei, das Sie anschließend im Azure-Portal beheben.
+In diesem Tutorial simulieren Sie das Problem einer fehlenden Quelldatei und behandeln es anschließend über das Azure-Portal.
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Übermitteln eines Data Lake Analytics-Auftrags
 
@@ -62,7 +62,7 @@ Die im Skript definierte Quelldatei heißt **/Samples/Data/SearchLog.tsv1**, sol
 3. Klicken Sie auf die Kachel **Auftragsverwaltung** , um die Aufträge anzuzeigen. Die Aufträge haben die Kategorien **Wird ausgeführt**, **In Warteschlange** und **Beendet**. Der fehlerhafte Auftrag sollte im Abschnitt **Beendet** angezeigt werden. Es muss der erste in der Liste sein. Wenn viele Aufträge vorhanden sind, können Sie auf **Filter** klicken, um Aufträge einfacher zu finden.
 
     ![Azure Data Lake Analytics – Filtern von Aufträgen](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
-4. Klicken Sie in der Liste auf den fehlerhaften Auftrag, um die Auftragsdetails in einem neuen Blatt zu öffnen:
+4. Klicken Sie in der Liste auf den fehlerhaften Auftrag, um die Auftragsdetails zu öffnen:
 
     ![Azure Data Lake Analytics – Fehlerhafter Auftrag](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
 
@@ -78,7 +78,7 @@ Die im Skript definierte Quelldatei heißt **/Samples/Data/SearchLog.tsv1**, sol
     „/Samples/Data/SearchLog.tsv“
 8. Klicken Sie auf **Auftrag senden**.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md)
 * [Erste Schritte mit Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-get-started-powershell.md)
 * [Erste Schritte mit Azure Data Lake Analytics und U-SQL mithilfe von Visual Studio](data-lake-analytics-u-sql-get-started.md)

@@ -1,11 +1,11 @@
 ---
-title: "Erstellen eines VM-Images für Azure Marketplace | Microsoft-Dokumentation"
-description: "Ausführliche Anleitung zum Erstellen eines VM-Images, um es anderen Benutzern über den Azure Marketplace zum Kauf anzubieten"
+title: Erstellen eines VM-Images für Azure Marketplace | Microsoft-Dokumentation
+description: Ausführliche Anleitung zum Erstellen eines VM-Images, um es anderen Benutzern über den Azure Marketplace zum Kauf anzubieten
 services: Azure Marketplace
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 5c937b8e-e28d-4007-9fef-624046bca2ae
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
-ms.author: hascipio; v-divte
-ms.openlocfilehash: 0379592f1c4f6e9d3f6fd2127b8e34e99a8b0176
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: mbaldwin
+ms.openlocfilehash: f7b19066ca3fa156456766ff82afeadadc6b1efa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Anleitung zum Erstellen eines VM-Images für Azure Marketplace
 In diesem Artikel ( **Schritt 2**) werden Sie durch die Vorbereitung der virtuellen Festplatten (VHDs) geführt, die Sie im Azure Marketplace bereitstellen möchten. Ihre VHDs bilden die Grundlage Ihrer SKU. Der Prozess variiert in Abhängigkeit davon, ob Sie eine Linux- oder Windows-basierte SKU bereitstellen. Dieser Artikel deckt beide Szenarien ab. Dieser Vorgang kann parallel zum [Erstellen und Registrieren eines Kontos][link-acct-creation] ausgeführt werden.
@@ -28,8 +28,8 @@ In diesem Abschnitt lernen Sie, wie Sie die Angebote und die zugehörigen SKUs d
 
 Ein Angebot ist ein „übergeordnetes Element“ für alle darin enthaltenen SKUs. Sie können mehrere Angebote definieren. Wie Sie Ihre Angebote aufbauen, bleibt Ihnen überlassen. Wenn ein Angebot in die Stagingphase überführt wird, werden alle SKUs mit einbezogen. Die SKU-IDs sollten sorgfältig geprüft werden, da sie in der URL sichtbar sind.
 
-* Azure.com: http://azure.microsoft.com/marketplace/partners/{Partner-Namespace}/{Angebots-ID}-{SKU-ID}
-* Azure-Vorschauportal: https://portal.azure.com/#gallery/{Herausgeber-Namespace}.{Angebots-ID}{SKU-ID}  
+* Azure.com: http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
+* Azure-Vorschauportal: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
 
 SKU ist der Handelsname für ein VM-Image. Ein VM-Image enthält einen Betriebssystem-Datenträger und null oder mehr Datenträger. Es handelt sich im Wesentlichen um das komplette Speicherprofil für einen virtuellen Computer. Pro Datenträger wird eine VHD benötigt. Auch für leere Datenträger wird für die Erstellung eine VHD benötigt.
 
@@ -514,11 +514,11 @@ Nach dem Erstellen des Angebots und der SKU müssen Sie die zu dieser SKU gehör
 
 |Problem|Fehlermeldung|Behebung|Link zur Dokumentation|
 |---|---|---|---|
-|Fehler beim Kopieren von Bildern: „?“ nicht in der SAS-URL enthalten|Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.|Aktualisieren Sie die SAS-URL mithilfe empfohlener Tools.|[https://azure.microsoft.com/de-de/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Fehler beim Kopieren von Bilder: Parameter „st“ und „se“ nicht in SAS-URL enthalten|Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.|Aktualisieren Sie die SAS-URL mit Start- und Enddatum.|[https://azure.microsoft.com/de-de/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Fehler beim Kopieren von Bildern: „sp=rl“ nicht in der SAS-URL enthalten|Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.|Aktualisieren Sie die SAS-URL durch Festlegen der Berechtigungen „Lesen“ und „Auflisten“.|[https://azure.microsoft.com/de-de/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Fehler beim Kopieren von Bildern: SAS-URL enthält Leerzeichen im VHD-Namen.|Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.|Entfernen Sie die Leerzeichen aus der SAS-URL.|[https://azure.microsoft.com/de-de/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Fehler beim Kopieren von Bildern: SAS-URL-Autorisierungsfehler|Fehler: Kopieren von Bildern. Blob aufgrund eines Autorisierungsfehlers nicht heruntergeladen werden.|Erstellen Sie die SAS-URL neu.|[https://azure.microsoft.com/de-de/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Fehler beim Kopieren von Bildern: „?“ nicht in der SAS-URL enthalten|Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.|Aktualisieren Sie die SAS-URL mithilfe empfohlener Tools.|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Fehler beim Kopieren von Bilder: Parameter „st“ und „se“ nicht in SAS-URL enthalten|Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.|Aktualisieren Sie die SAS-URL mit Start- und Enddatum.|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Fehler beim Kopieren von Bildern: „sp=rl“ nicht in der SAS-URL enthalten|Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.|Aktualisieren Sie die SAS-URL durch Festlegen der Berechtigungen „Lesen“ und „Auflisten“.|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Fehler beim Kopieren von Bildern: SAS-URL enthält Leerzeichen im VHD-Namen.|Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.|Entfernen Sie die Leerzeichen aus der SAS-URL.|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Fehler beim Kopieren von Bildern: SAS-URL-Autorisierungsfehler|Fehler: Kopieren von Bildern. Blob aufgrund eines Autorisierungsfehlers nicht heruntergeladen werden.|Erstellen Sie die SAS-URL neu.|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Fehler beim Kopieren von Bildern – die Parameter „st“ und „se“ der SAS-URL verfügen nicht über eine vollständige Angabe für Datum und Uhrzeit|Fehler: Kopieren von Bildern. Blob kann aufgrund einer falschen SAS-URL nicht heruntergeladen werden. |Für die Parameter der SAS-URL („st“ und „se“) müssen vollständige Angaben für Datum und Uhrzeit gemacht werden (z.B. „11-02-2017T00:00:00Z“). Nur das Datum oder eine Kurzform der Uhrzeit reichen nicht aus. Dieses Szenario kann bei Verwendung von Azure CLI 2.0 (az-Befehl) eintreten. Geben Sie unbedingt vollständige Werte für Datum und Uhrzeit an, und generieren Sie die SAS-URL dann neu.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Nächster Schritt

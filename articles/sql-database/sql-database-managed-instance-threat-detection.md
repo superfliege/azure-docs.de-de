@@ -3,18 +3,18 @@ title: Bedrohungserkennung – Verwaltete Azure SQL-Datenbank-Instanz | Microsof
 description: Die Bedrohungserkennung erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten.
 services: sql-database
 author: rmatchoro
-manager: cguyer
+manager: craigg
 ms.service: sql-database
 ms.custom: security, managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: ronmat
 ms.reviewer: carlrab
-ms.openlocfilehash: f8c08bc16d622516958b8bd182179d07edfa4891
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2112a0a3997af478de6b8c80abcf7924a66302f0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Bedrohungserkennung für eine verwaltete Azure SQL-Datenbank-Instanz
 
@@ -29,7 +29,7 @@ Die Bedrohungserkennung bietet eine neue Sicherheitsebene, die es den Kunden erm
 Durch die SQL-Bedrohungserkennung werden Warnungen in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert. Jede geschützte verwaltete Instanz wird zum selben Preis wie der Standard-Tarif von Azure Security Center abgerechnet (15 $/Knoten/Monat). Hierbei zählt jede verwaltete Instanz als ein Knoten.  
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Einrichten der Bedrohungserkennung für Ihre verwaltete Instanz im Azure-Portal
-1. Rufen Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com) auf.
+1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).
 2. Navigieren Sie zur Konfigurationsseite der verwalteten Instanz, die geschützt werden soll. Wählen Sie auf der Seite **Einstellungen** die Option **Bedrohungserkennung** aus. 
 3. Auf der Konfigurationsseite für die Bedrohungserkennung 
    - **Aktivieren Sie** die Bedrohungserkennung.

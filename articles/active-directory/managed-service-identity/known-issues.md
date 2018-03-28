@@ -1,24 +1,24 @@
 ---
-title: "FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory"
-description: "Bekannte Probleme mit der verwalteten Dienstidentität für Azure Active Directory."
+title: FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory
+description: Bekannte Probleme mit der verwalteten Dienstidentität für Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: bd931b220c417f91b47278c82707d38de5c7f65e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 84390f73fdac6554699dd43a0a36d16eace9a2bb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory
 
@@ -37,6 +37,10 @@ Nein, es ist keine Unterstützung von MSI in Azure Cloud Services geplant.
 ### <a name="does-msi-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Funktioniert MSI mit ADAL (Active Directory Authentication Library) oder MSAL (Microsoft Authentication Library)?
 
 Nein, MSI ist noch nicht in ADAL oder MSAL integriert. Ausführliche Informationen zum Anfordern eines MSI-Tokens mit dem MSI-REST-Endpunkt finden Sie unter [Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für den Tokenabruf](how-to-use-vm-token.md).
+
+### <a name="what-is-the-security-boundary-of-a-managed-service-identity"></a>Was ist die Sicherheitsgrenze einer verwalteten Dienstidentität?
+
+Bei der Sicherheitsgrenze der Identität handelt es sich um die Ressource, an die sie angefügt ist. Die Sicherheitsgrenze einer VM-MSI ist beispielsweise der virtuelle Computer. Jeglicher Code, der auf diesem virtuellen Computer ausgeführt wird, kann den MSI-Endpunkt aufrufen und Token anfordern. Ähnlich verhält es sich mit anderen Ressourcen, die MSI unterstützen.
 
 ### <a name="what-are-the-supported-linux-distributions"></a>Welche Linux-Distributionen werden unterstützt?
 

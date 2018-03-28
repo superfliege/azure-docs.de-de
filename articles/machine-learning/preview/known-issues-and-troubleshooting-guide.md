@@ -1,6 +1,6 @@
 ---
 title: Leitfaden zu bekannten Problemen und zur Problembehandlung | Microsoft-Dokumentation
-description: "Liste der bekannten Probleme und eine Anleitung für die Problembehandlung"
+description: Liste der bekannten Probleme und eine Anleitung für die Problembehandlung
 services: machine-learning
 author: svankam
 ms.author: svankam
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: d1e3a4fd4415afb995f614ac687096f6fb8ece95
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 62207fa20c4660d1e828053ee73953cb68af1b9d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning-Workbench – bekannte Probleme und Anleitung zur Problembehandlung 
 Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu suchen und zu beheben, die bei der Verwendung der Anwendung Azure Machine Learning Workbench auftreten können. 
@@ -23,7 +23,7 @@ Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu suchen und zu beheben, die 
 Bei der Kommunikation mit dem Supportteam ist es wichtig, dass Sie die Buildnummer der Workbench-App angeben. Unter Windows finden Sie die Buildnummer, indem Sie auf das Menü **Hilfe** klicken und die Option **Info zu Azure ML Workbench** auswählen. Unter macOS können Sie auf das Menü **Azure ML Workbench** klicken und die Option **Info zu Azure ML Workbench** auswählen.
 
 ## <a name="machine-learning-msdn-forum"></a>MSDN-Forum zum Machine Learning
-Wir betreiben ein MSDN-Forum, in dem Sie Fragen stellen können. Das Forum wird vom Produktteam ständig überwacht. Die URL des Forums lautet [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum). 
+Wir betreiben ein MSDN-Forum, in dem Sie Fragen stellen können. Das Forum wird vom Produktteam ständig überwacht. Die Forum-URL lautet [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum). 
 
 ## <a name="gather-diagnostics-information"></a>Sammeln von Diagnoseinformationen
 Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können, wenn Sie um Hilfe bitten. Die Protkolldateien finden Sie hier:
@@ -102,7 +102,7 @@ Leider gibt es hierfür keine einfache Lösung. Sie müssen die folgenden Schrit
    - Entfernen des Ordners `C:\Users\<Username>\AppData\Local\amlworkbench`
    - Entfernen des Skripts `C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
    - Entfernen der Desktopverknüpfung, die das oben genannte Skript startet
-   - Herunterladen des Installationsprogramms von https://aka.ms/azureml-wb-msi und erneutes Installieren
+   - Herunterladen des Installationsprogramms (https://aka.ms/azureml-wb-msi) und erneutes Installieren
 
 ## <a name="stuck-at-checking-experimentation-account-screen-after-logging-in"></a>Festhängen nach der Anmeldung am Bildschirm zur Überprüfung des Experimentieren-Kontos
 Nach der Anmeldung kann es vorkommen, dass die Workbench-App auf einem leeren Bildschirm mit der Meldung „Experimentieren-Konto wird überprüft“ mit einem drehenden Rad stecken bleibt. Führen Sie zum Beheben dieses Problems die folgenden Schritte aus:
@@ -185,7 +185,7 @@ Hierbei ist _username_ der Name, der von Azure Machine Learning Workbench für d
 
 Die Zeile muss nach #includedir "/etc/sudoers.d" angeordnet werden, da sie sonst von einer anderen Regel außer Kraft gesetzt wird.
 
-Falls Sie über eine kompliziertere sudo-Konfiguration verfügen, ist es ratsam, die sudo-Dokumentation für Ubuntu zu verwenden. Sie finden sie unter „https://help.ubuntu.com/community/Sudoers“.
+Falls Sie über eine kompliziertere sudo-Konfiguration verfügen, ist es ratsam, die sudo-Dokumentation für Ubuntu zu verwenden: https://help.ubuntu.com/community/Sudoers.
 
 Der obige Fehler kann auch vorkommen, wenn Sie in Azure keine Ubuntu-basierte Linux-VM als Ausführungsziel verwenden. Wir unterstützen nur Ubuntu-basierte Linux-VMs für die Remoteausführung. 
 
@@ -203,11 +203,14 @@ Sie können auch einen Datenträger für Daten hinzufügen und die Docker-Engine
 Sie können auch den Betriebssystemdatenträger erweitern, ohne dass es erforderlich ist, die Konfiguration der Docker-Engine zu ändern. [Hier erfahren Sie, wie Sie den Betriebssystemdatenträger erweitern](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks).
 
 ```azure-cli
-#Deallocate VM (stopping will not work)
+# Deallocate VM (stopping will not work)
 $ az vm deallocate --resource-group myResourceGroup  --name myVM
 
-# Update Disc Size
-$ az disk update --resource-group myResourceGroup --name myVM --size-gb 250
+# Get VM's Disc Name
+az disk list --resource-group myResourceGroup --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
+
+# Update Disc Size using above name
+$ az disk update --resource-group myResourceGroup --name myVMdisc --size-gb 250
     
 # Start VM    
 $ az vm start --resource-group myResourceGroup  --name myVM

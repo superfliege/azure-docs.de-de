@@ -1,25 +1,25 @@
 ---
-title: "Hinzufügen des Oracle-Datenbankconnectors in Ihren Azure Logic Apps | Microsoft-Dokumentation"
+title: Hinzufügen des Oracle-Datenbankconnectors in Ihren Azure Logic Apps | Microsoft-Dokumentation
 description: Verwendung des Oracle-Datenbankconnectors in einer Logik-App
-services: 
-documentationcenter: 
-author: MandiOhlinger
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
-ms.assetid: 
+ms.assetid: ''
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
-ms.author: mandia; ladocs
-ms.openlocfilehash: 4119e72abd568c9b53245a872691f06329b040de
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 57931b6c2f96debeb9ab7f1a3b6700f23e7d2a7e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Erste Schritte mit dem Oracle-Datenbankconnector
 
@@ -28,7 +28,7 @@ Mit dem Oracle-Datenbankconnector erstellen Sie Unternehmensworkflows, die auf D
 * Erstellen Sie Ihren Workflow, indem Sie einer Kundendatenbank einen neuen Kunden hinzufügen oder einen Auftrag in einer Auftragsdatenbank aktualisieren.
 * Verwenden Sie Aktionen, um eine Datenzeile abzurufen, eine neue Zeile einzufügen oder Löschvorgänge auszuführen. Wenn also etwa ein Datensatz in Dynamics CRM Online erstellt wird (Trigger), fügen Sie eine Zeile in eine Oracle-Datenbank ein (Aktion). 
 
-In diesem Thema wird veranschaulicht, wie Sie den Oracle-Datenbankconnector in einer Logik-App verwenden.
+In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer Logik-App verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,7 +46,7 @@ In diesem Thema wird veranschaulicht, wie Sie den Oracle-Datenbankconnector in e
   [64-Bit-ODAC 12c Release 4 (12.1.0.2.4) für Windows x64](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
-    > Wenn der Oracle-Client nicht installiert ist, tritt ein Fehler auf, wenn Sie versuchen, eine Verbindung herzustellen oder diese zu verwenden. Weitere Informationen finden Sie im Abschnitt zu häufigen Fehlern in diesem Thema.
+    > Wenn der Oracle-Client nicht installiert ist, tritt ein Fehler auf, wenn Sie versuchen, eine Verbindung herzustellen oder diese zu verwenden. Weitere Informationen finden Sie im Abschnitt zu häufigen Fehlern in diesem Artikel.
 
 
 ## <a name="add-the-connector"></a>Hinzufügen des Connectors
@@ -60,7 +60,7 @@ In diesem Thema wird veranschaulicht, wie Sie den Oracle-Datenbankconnector in e
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. Wählen Sie **Speichern** aus. Beim Speichern wird automatisch eine Anforderungs-URL generiert. 
+3. Wählen Sie **Speichern**aus. Beim Speichern wird automatisch eine Anforderungs-URL generiert. 
 
 4. Wählen Sie **Neuer Schritt** aus und anschließend **Aktion hinzufügen**. Geben Sie `oracle` ein, um die verfügbaren Aktionen anzuzeigen: 
 
@@ -104,7 +104,7 @@ In diesem Thema wird veranschaulicht, wie Sie den Oracle-Datenbankconnector in e
 
 **Lösung**: Stellen Sie sicher, dass Ihr Gateway auf dem lokalen Computer ausgeführt wird, auf dem dieser installiert ist, und dass eine Internetverbindung hergestellt werden kann.  Es wird empfohlen, das Gateway nicht auf einem Computer zu installieren, der möglicherweise ausgeschaltet wird oder in den Standbymodus wechselt. Sie können auch den lokalen Datengatewaydienst (PBIEgwService) neu starten.
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-please-visit-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fehler**: Der verwendete Anbieter ist veraltet: „System.Data.OracleClient erfordert Version 8.1.7 oder höher der Oracle-Clientsoftware.“. Um den offiziellen Anbieter zu installieren, besuchen Sie [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376).
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fehler**: Der verwendete Anbieter ist veraltet: „System.Data.OracleClient erfordert Version 8.1.7 oder höher der Oracle-Clientsoftware.“. Informationen zum Installieren des offiziellen Anbieters finden Sie unter [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376).
 
 **Ursache**: Das Oracle-Client-SDK ist nicht auf dem Computer installiert, auf dem das lokale Datengateway ausgeführt wird.  
 
@@ -134,4 +134,4 @@ Sie können zur Verbesserung von Logik-Apps und Connectors beitragen, indem Sie 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) und informieren Sie sich mit unserer [API-Liste](apis-list.md) über die verfügbaren Connectors in Logik-Apps.
+[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md), und informieren Sie sich anhand unserer [API-Liste](apis-list.md) über die in Logic Apps verfügbaren Connectors.

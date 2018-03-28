@@ -1,8 +1,8 @@
 ---
-title: "Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory | Microsoft Docs"
-description: "Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, um Attributwerte während der automatisierten Bereitstellung von SaaS-App-Objekten in Azure Active Directory in ein akzeptables Format zu transformieren."
+title: Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory | Microsoft Docs
+description: Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, um Attributwerte während der automatisierten Bereitstellung von SaaS-App-Objekten in Azure Active Directory in ein akzeptables Format zu transformieren.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: b13c51cd-1bea-4e5e-9791-5d951a518943
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 5549fb8f20ac2eb07b52b3b8e1c418873e467c93
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -108,7 +108,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 - - -
 ### <a name="replace"></a>Replace
-**Funktion:**<br> ObsoleteReplace(Quelle, AlterWert, RegexMuster, RegexGruppenname, Ersatzwert, Ersatzattributname, Vorlage)
+**Funktion:**<br> Replace(Quelle, AlterWert, RegexMuster, RegexGruppenname, Ersatzwert, Ersatzattributname, Vorlage)
 
 **Beschreibung:**<br>
 Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachdem, welche Parameter angegeben werden:
@@ -119,13 +119,13 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 * Bei Angabe von **AlterWert** und **Vorlage**:
   
   * Ersetzt alle Vorkommen von **AlterWert** in **Vorlage** durch den **Quellwert**).
-* Bei Angabe von **AlterWertRegexMuster**, **AlterWertRegexGruppenname** und **Ersatzwert**:
+* Bei Angabe von **RegexMuster**, **RegexGruppenname** und **Ersatzwert**:
   
   * Ersetzt alle Werte, die mit dem "AlterWertRegexMuster" in der Quellzeichenfolge übereinstimmen, durch den "Ersatzwert".
-* Bei Angabe von **AlterWertRegexMuster**, **AlterWertRegexGruppenname** und **Ersatzeigenschaftsname**:
+* Bei Angabe von **RegexMuster**, **RegexGruppenname** und **Ersatzeigenschaftsname**:
   
-  * Falls ein Wert für **Quelle** vorhanden ist, wird der **Quellwert** zurückgegeben.
-  * Ist kein Wert für **Quelle** vorhanden, wird der Ersatzwert aus der Eigenschaft mit **Ersatzeigenschaftsname** unter Verwendung von **AlterWertRegexMuster** und **AlterWertRegexGruppenname** extrahiert. Der Ersatzwert wird als Ergebnis zurückgegeben.
+  * Falls kein Wert für **Quelle** vorhanden ist, wird **Quelle** zurückgegeben.
+  * Ist ein Wert für **Quelle** vorhanden, wird der Ersatzwert aus der Eigenschaft mit **Ersatzeigenschaftsname** unter Verwendung von **RegexMuster** und **RegexGruppenname** extrahiert. Der Ersatzwert wird als Ergebnis zurückgegeben.
 
 **Parameter:**<br> 
 
@@ -213,6 +213,17 @@ Sie müssen einen Benutzeralias generieren, indem Sie die ersten drei Buchstaben
 * **EINGABE** (givenName): "John"
 * **EINGABE** (surname): "Doe"
 * **AUSGABE**: "JohDoe"
+
+### <a name="remove-diacritics-from-a-string-and-convert-to-lowercase"></a>Entfernen diakritischer Zeichen aus einer Zeichenfolge und Konvertieren der Zeichenfolge in Kleinbuchstaben
+Sie müssen Sonderzeichen aus einer Zeichenfolge entfernen und Großbuchstaben in Kleinbuchstaben konvertieren.
+
+**Ausdruck:** <br>
+`Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace([givenName], , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , )`
+
+**Beispieleingabe/-ausgabe:** <br>
+
+* **EINGABE** (givenName): „Zoë“
+* **AUSGABE**: „zoe“
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Ausgabedatum eines Datums als Zeichenfolge in einem bestimmten Format
 Sie möchten Datumsangaben in einem bestimmten Format an eine SaaS-Anwendung senden. <br>

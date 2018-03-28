@@ -1,11 +1,11 @@
 ---
-title: Worin unterscheidet sich der Azure AD v2.0-Endpunkt? | Microsoft Docs
-description: "Ein Vergleich zwischen dem ursprünglichen Azure AD und den v2.0-Endpunkten."
+title: Worin unterscheidet sich der Azure AD v2.0-Endpunkt? | Microsoft-Dokumentation
+description: Ein Vergleich zwischen dem ursprünglichen Azure AD und den v2.0-Endpunkten.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
 ms.service: active-directory
 ms.workload: identity
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4216c2215f494a81935cd4cdca52427b0cbac143
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 502bfa128422a029878513d6aa4533718bdddbb5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>Wo liegen die Unterschiede beim v2.0-Endpunkt?
 Wenn Sie mit Azure Active Directory vertraut sind oder in der Vergangenheit Apps in Azure AD integriert haben, gibt es möglicherweise einige Unterschiede im v2.0-Endpunkt, die Sie nicht erwarten.  In diesem Dokument werden die Unterschiede zu Ihrem Verständnis erläutert.
 
 > [!NOTE]
-> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 >
 
 ## <a name="microsoft-accounts-and-azure-ad-accounts"></a>Microsoft-Konten und Azure AD-Konten
@@ -59,7 +59,7 @@ In Azure Active Directory kann sich eine App als **Ressource** oder Empfänger v
 * Ressourcenbezeichner, oder `AppID URI`: `https://graph.windows.net/`
 * Bereiche, oder `OAuth2Permissions`: `Directory.Read`, `Directory.Write`, usw.  
 
-All dies gilt auch für den v2.0-Endpunkt.  Eine App kann sich immer noch als Ressource verhalten, Bereiche definieren und durch einen URI identifiziert werden.  Clientanwendungen können immer noch den Zugriff auf diese Bereiche anfordern.  Allerdings hat sich die Art und Weise geändert, auf die ein Client solche Berechtigungen anfordert.  In der Vergangenheit sah eine OAuth 2.0-Autorisierungsanforderung an Azure AD etwa wie folgt aus:
+Das alles gilt auch für den v2.0-Endpunkt.  Eine App kann sich immer noch als Ressource verhalten, Bereiche definieren und durch einen URI identifiziert werden.  Clientanwendungen können immer noch den Zugriff auf diese Bereiche anfordern.  Allerdings hat sich die Art und Weise geändert, auf die ein Client solche Berechtigungen anfordert.  In der Vergangenheit sah eine OAuth 2.0-Autorisierungsanforderung an Azure AD etwa wie folgt aus:
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/authorize?

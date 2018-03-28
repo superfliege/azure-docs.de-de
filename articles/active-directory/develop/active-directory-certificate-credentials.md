@@ -1,11 +1,11 @@
 ---
 title: Zertifikatanmeldeinformationen in Azure AD | Microsoft-Dokumentation
-description: "In diesem Artikel werden die Registrierung für die Anwendungsauthentifizierung und die Verwendung von Zertifikatanmeldeinformationen für diesen Zweck beschrieben."
+description: In diesem Artikel werden die Registrierung für die Anwendungsauthentifizierung und die Verwendung von Zertifikatanmeldeinformationen für diesen Zweck beschrieben.
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: d05456912324c06a0895cd4cf049b60c9d126904
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 68de6295b84385f54eaadd6d24e8309a32fae9ce
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
@@ -32,7 +32,7 @@ Für die Berechnung der Assertion empfiehlt sich die Verwendung einer der zahlre
 #### <a name="header"></a>Header
 
 | Parameter |  Anmerkung |
-| --- | --- | --- |
+| --- | --- |
 | `alg` | Muss **RS256** sein. |
 | `typ` | Muss **JWT** sein. |
 | `x5t` | Muss der SHA-1-Fingerabdruck des X.509-Zertifikats sein. |
@@ -40,8 +40,8 @@ Für die Berechnung der Assertion empfiehlt sich die Verwendung einer der zahlre
 #### <a name="claims-payload"></a>Ansprüche (Nutzlast)
 
 | Parameter |  Anmerkung |
-| --- | --- | --- |
-| `aud` | Zielgruppe: Muss **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** sein. |
+| --- | --- |
+| `aud` | Zielgruppe: Muss **https://login.microsoftonline.com/*Mandanten-ID*/oauth2/token** lauten. |
 | `exp` | Ablaufdatum: Datum, an dem das Token abläuft. Die Zeit wird als Anzahl der Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z) UTC bis zum Zeitpunkt dargestellt, an dem die Gültigkeit des Tokens abläuft.|
 | `iss` | Aussteller: Muss die Client-ID (Anwendungs-ID des Clientdiensts) sein. |
 | `jti` | GUID: Die JWT-ID. |
@@ -49,9 +49,11 @@ Für die Berechnung der Assertion empfiehlt sich die Verwendung einer der zahlre
 | `sub` | Antragsteller: Muss wie bei `iss` die Client-ID (Anwendungs-ID des Clientdiensts) sein. |
 
 #### <a name="signature"></a>Signatur
+
 Zur Berechnung der Signatur wird das Zertifikat wie in der [Spezifikation für JSON-Webtoken vom Typ „RFC7519“](https://tools.ietf.org/html/rfc7519) beschrieben angewendet.
 
 ### <a name="example-of-a-decoded-jwt-assertion"></a>Beispiel einer decodierten JWT-Assertion
+
 ```
 {
   "alg": "RS256",
@@ -73,6 +75,7 @@ Zur Berechnung der Signatur wird das Zertifikat wie in der [Spezifikation für J
 ```
 
 ### <a name="example-of-an-encoded-jwt-assertion"></a>Beispiel einer codierten JWT-Assertion
+
 Die folgende Zeichenfolge ist ein Beispiel für eine codierte Assertion. Bei genauer Betrachtung sehen Sie drei Abschnitte, die jeweils durch einen Punkt getrennt sind.
 Der erste Abschnitt codiert den Header, der zweite die Nutzlast. Bei dem letzten Abschnitt handelt es sich um die Signatur, die mit den Zertifikaten aus dem Inhalt der ersten beiden Abschnitte berechnet wurde.
 ```
@@ -81,14 +84,17 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
 ### <a name="register-your-certificate-with-azure-ad"></a>Registrieren Ihres Zertifikats bei Azure AD
+
 Sie müssen das Anwendungsmanifest bearbeiten, um die Zertifikatanmeldeinformationen der Clientanwendung in Azure AD zuzuordnen.
 Wenn Sie über ein Zertifikat verfügen, berechnen Sie Folgendes:
+
 - `$base64Thumbprint`: Die base64-Codierung des Zertifikathashs.
 - `$base64Value`: Die base64-Codierung der Zertifikatrohdaten.
 
 Geben Sie außerdem eine GUID an, um den Schlüssel im Anwendungsmanifest (`$keyId`) zu identifizieren.
 
 Öffnen Sie bei der Registrierung der Azure-App für die Clientanwendung das Anwendungsmanifest, und ersetzen Sie mithilfe des folgenden Schemas die Eigenschaft *keyCredentials* durch Ihre neuen Zertifikatsinformationen:
+
 ```
 "keyCredentials": [
     {

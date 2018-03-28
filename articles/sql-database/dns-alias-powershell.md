@@ -1,26 +1,21 @@
 ---
-title: "PowerShell für den DNS-Alias für Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Mit PowerShell-Cmdlets wie New-AzureRMSqlServerDNSAlias können Sie neue Clientverbindungen mit einem anderen Azure SQL-Datenbankserver umleiten, ohne Clientkonfigurationen vornehmen zu müssen."
+title: PowerShell für den DNS-Alias für Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Mit PowerShell-Cmdlets wie New-AzureRMSqlServerDNSAlias können Sie neue Clientverbindungen mit einem anderen Azure SQL-Datenbankserver umleiten, ohne Clientkonfigurationen vornehmen zu müssen.
 keywords: dns sql database
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: 
 ms.service: sql-database
-ms.custom: 
-ms.workload: 
-ms.tgt_pltfrm: 
 ms.devlang: PowerShell
 ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi;amagarwa;maboja
 ms.author: dmalik
-ms.openlocfilehash: ec638d7b48b443cda5755e3077c6304b0c5ad78e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2aae669364c3de2e9b00ffe8e28b1521d3a781e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell für den DNS-Alias für Azure SQL-Datenbank
 
@@ -50,7 +45,7 @@ Um eine Verbindung mit einem bestimmten Azure SQL-Datenbankserver herzustellen, 
 
 Wenn Sie das in diesem Artikel angegebene PowerShell-Demoskript ausführen möchten, gelten die folgenden Voraussetzungen:
 
-- Ein Azure-Abonnement und -Konto. Klicken Sie auf [https://azure.microsoft.com/free/][https://azure.microsoft.com/free/], um eine kostenlose Testversion zu erhalten.
+- Ein Azure-Abonnement und -Konto. Eine kostenlose Testversion erhalten Sie unter [https://azure.microsoft.com/free/][https://azure.microsoft.com/free/].
 
 - Azure PowerShell-Modul mit dem Cmdlet **New-AzureRMSqlServerDNSAlias**
     - Informationen zum Installieren oder Durchführen eines Upgrades finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][install-azurerm-ps-84p].
