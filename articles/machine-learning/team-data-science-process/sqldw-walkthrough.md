@@ -2,7 +2,7 @@
 title: 'Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse | Microsoft Docs'
 description: Advanced Analytics Process and Technology in Aktion
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: bradsev;weig
-ms.openlocfilehash: 9c858427b01f7b94aae87136a46e1d9ae5e09a1c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.author: bradsev
+ms.openlocfilehash: 6566db5f186b92179df3125deaf5ad17c6f9e974
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse
 In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells mit SQL Data Warehouse (SQL DW) für ein öffentlich zugängliches Dataset: das Dataset [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/). Das erstellte binäre Klassifizierungsmodell sagt voraus, ob ein Trinkgeld für eine Fahrt bezahlt wird. Zudem werden Modelle für Multiklassenklassifizierung und Regression behandelt, die die Verteilung der gezahlten Trinkgeldbeträge vorhersagen.
@@ -67,14 +67,14 @@ Wir formulieren drei Vorhersageprobleme basierend auf *tip\_amount*, um drei Art
 ## <a name="setup"></a>Einrichten der Azure Data Science-Umgebung für die erweiterte Analyse
 Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schritte durch:
 
-**Erstellen Ihres eigenen Azure-Blobspeicherkontos**
+**Erstellen Ihres eigenen Azure Blob Storage-Kontos**
 
-* Wenn Sie Ihren eigenen Azure-Blobspeicher bereitstellen, wählen Sie einen geografischen Standort für Ihren Azure-Blobspeicher aus, der so nah wie möglich bei **USA, Süden-Mitte**liegt, wo die NYC Taxi-Daten gespeichert sind. Die Daten werden mit AzCopy aus dem öffentlichen Blobspeichercontainer in einen Container in Ihrem eigenen Speicherkonto kopiert. Je näher Ihr Azure-Blobspeicher bei „USA, Süden-Mitte“ liegt, desto schneller wird diese Aufgabe (Schritt 4) abgeschlossen.
+* Wenn Sie eine eigeneAzure Blob Storage-Instanz bereitstellen, wählen Sie einen geografischen Standort für Azure Blob Storage aus, der so nah wie möglich bei **USA, Süden-Mitte** liegt, wo die NYC Taxi-Daten gespeichert sind. Die Daten werden mit AzCopy aus dem öffentlichen Blobspeichercontainer in einen Container in Ihrem eigenen Speicherkonto kopiert. Je näher Ihre Azure Blob Storage-Instanz an „USA, Süden-Mitte“ liegt, desto schneller wird diese Aufgabe (Schritt 4) abgeschlossen.
 * Um Ihr eigenes Azure-Speicherkonto zu erstellen, befolgen Sie die in [Informationen zu Azure-Speicherkonten](../../storage/common/storage-create-storage-account.md)beschriebenen Schritte. Notieren Sie sich unbedingt die Werte für die folgenden Anmeldeinformationen für das Speicherkonto, da sie später in der exemplarischen Vorgehensweise benötigt werden.
   
   * **Speicherkontoname**
   * **Speicherkontoschlüssel**
-  * **Containername** (in dem die Daten im Azure-Blobspeicher gespeichert werden sollen)
+  * **Containername** (in dem die Daten in Azure Blob Storage gespeichert werden sollen)
 
 **Stellen Sie Ihre Azure SQL Data Warehouse-Instanz bereit.**
 Befolgen Sie die Dokumentation unter [Erstellen eines SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) , um eine SQL Data Warehouse-Instanz bereitzustellen. Notieren Sie sich unbedingt die folgenden Anmeldeinformationen für SQL Data Warehouse, die in späteren Schritten verwendet werden.
@@ -125,7 +125,7 @@ Führen Sie im *-DestDir*das folgende PowerShell-Skript im Administratormodus au
 
     ./SQLDW_Data_Import.ps1
 
-Bei der ersten Ausführung des PowerShell-Skripts werden Sie aufgefordert, die Informationen aus Ihrem Azure SQL Data Warehouse und Ihrem Azure-Blobspeicherkonto einzugeben. Wenn das PowerShell-Skripts erstmals vollständig ausgeführt wurde, wurden die von Ihnen eingegebenen Anmeldeinformationen in eine Konfigurationsdatei „SQLDW.conf“ im aktuellen Arbeitsverzeichnis geschrieben. Bei der zukünftigen Ausführung dieser PowerShell-Skriptdatei können alle benötigten Parameter aus dieser Konfigurationsdatei gelesen werden. Wenn Sie einige Parameter ändern müssen, können Sie entweder die Parameter nach Aufforderung am Bildschirm eingeben, indem Sie diese Konfigurationsdatei löschen und die Parameterwerte wie abgefragt eingeben, oder die Parameterwerte ändern, indem Sie die Datei „SQLDW.conf“ in Ihrem *-DestDir* -Verzeichnis bearbeiten.
+Bei der ersten Ausführung des PowerShell-Skripts werden Sie aufgefordert, die Informationen aus Ihrem Azure SQL Data Warehouse und Ihrem Azure Blob Storage-Konto einzugeben. Wenn das PowerShell-Skripts erstmals vollständig ausgeführt wurde, wurden die von Ihnen eingegebenen Anmeldeinformationen in eine Konfigurationsdatei „SQLDW.conf“ im aktuellen Arbeitsverzeichnis geschrieben. Bei der zukünftigen Ausführung dieser PowerShell-Skriptdatei können alle benötigten Parameter aus dieser Konfigurationsdatei gelesen werden. Wenn Sie einige Parameter ändern müssen, können Sie entweder die Parameter nach Aufforderung am Bildschirm eingeben, indem Sie diese Konfigurationsdatei löschen und die Parameterwerte wie abgefragt eingeben, oder die Parameterwerte ändern, indem Sie die Datei „SQLDW.conf“ in Ihrem *-DestDir* -Verzeichnis bearbeiten.
 
 > [!NOTE]
 > Um beim direkten Lesen von Parametern aus der Datei „SQLDW.conf“ Namenskonflikte mit den Schemas zu vermeiden, die bereits in Ihrem Azure SQL Data Warehouse vorhanden sind, wird dem Schemanamen aus der Datei „SQLDW.conf“ eine dreistellige Zufallszahl als Standardschemaname für jede Ausführung hinzugefügt. Das PowerShell-Skript könnte Sie auffordern, einen Schemanamen einzugeben: Der Name kann nach Ermessen des Benutzers angegeben werden.
@@ -207,7 +207,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
               )
           )
           ;
-  * Erstellen externer Fahrpreis- und Trinkgeldtabellen für das „NYC Taxi“-Dataset im Azure-Blobspeicher
+  * Erstellen externer Fahrpreis- und Trinkgeldtabellen für das „NYC Taxi“-Dataset in Azure Blob Storage
     
           CREATE EXTERNAL TABLE {external_nyctaxi_fare}
           (
@@ -256,7 +256,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
                 REJECT_VALUE = 12         
             )
 
-    - Laden von Daten aus externen Tabellen im Azure-Blobspeicher in SQL Data Warehouse
+    - Laden von Daten aus externen Tabellen in Azure Blob Storage in SQL Data Warehouse
 
             CREATE TABLE {schemaname}.{nyctaxi_fare}
             WITH
@@ -328,7 +328,7 @@ Sie müssen entscheiden, was erfolgen soll, wenn Sie über doppelte Quell- und Z
 Sie können Ihre eigenen Daten verwenden. Wenn Ihre Daten auf Ihrem lokalen Computer in einer realen Anwendung gespeichert sind, können Sie AzCopy dennoch zum Hochladen lokaler Daten in Ihren privaten Azure Blob Storage verwenden. Sie müssen im AzCopy-Befehl der PowerShell-Skriptdatei nur den Speicherort von **Source**, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, in das lokale Verzeichnis ändern, das Ihre Daten enthält.
 
 > [!TIP]
-> Wenn Ihre Daten sich bereits in Ihrem privaten Azure-Blobspeicher in einer realen Anwendung befinden, können Sie den AzCopy-Schritt im PowerShell-Skript überspringen und die Daten direkt in Azure SQL Data Warehouse hochladen. Dies erfordert zusätzliche Bearbeitung des Skripts, um es dem Format Ihrer Daten anzupassen.
+> Wenn Ihre Daten sich bereits in Ihrer privaten Azure Blob Storage-Instanz in einer realen Anwendung befinden, können Sie den AzCopy-Schritt im PowerShell-Skript überspringen und die Daten direkt in Azure SQL Data Warehouse hochladen. Dies erfordert zusätzliche Bearbeitung des Skripts, um es dem Format Ihrer Daten anzupassen.
 > 
 > 
 
@@ -713,7 +713,7 @@ Die oben genannte Klassifizierungsverteilung können wir wie folgt in einem Balk
 
 ![Grafik 3][3]
 
-und
+and
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
@@ -841,7 +841,7 @@ Sie haben in dieser Übung bereits die Daten in SQL Data Warehouse untersucht un
 5. Geben Sie den *SQL-Benutzernamen* unter **Server user account name** und das *Kennwort* unter **Server user account password** ein.
 7. Fügen Sie im Textbereich für die **Datenbankabfrage** die Abfrage ein, die die erforderlichen Datenbankfelder (einschließlich berechneter Felder wie die Bezeichner) extrahiert und die Daten auf die gewünschte Stichprobengröße reduziert.
 
-Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten direkt aus der SQL Data Warehouse-Datenbank wird in der folgenden Abbildung gezeigt. (Ersetzen Sie die Tabellennamen „nyctaxi_trip“ und „nyctaxi_fare“ durch den Schemanamen und die Tabellennamen, die Sie in Ihrer exemplarischen Vorgehensweise verwendet haben.) (Ersetzen Sie die Tabellennamen „nyctaxi_trip“ und „nyctaxi_fare“ durch den Schemanamen und die Tabellennamen, die Sie in Ihrer exemplarischen Vorgehensweise verwendet haben.) Ähnliche Experimente können für Multiklassenklassifizierungen und Regressionsprobleme erstellt werden.
+Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten direkt aus der SQL Data Warehouse-Datenbank wird in der folgenden Abbildung gezeigt. (Ersetzen Sie die Tabellennamen „nyctaxi_trip“ und „nyctaxi_fare“ durch den Schemanamen und die Tabellennamen, die Sie in Ihrer exemplarischen Vorgehensweise verwendet haben.) Ähnliche Experimente können für Multiklassenklassifizierungen und Regressionsprobleme erstellt werden.
 
 ![Azure ML-Schulung][10]
 

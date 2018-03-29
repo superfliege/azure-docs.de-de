@@ -1,23 +1,21 @@
 ---
-title: "Testen einer einseitigen Azure AD B2C-fähigen App"
-description: "Schnellstart zum Testen einer einseitigen Beispiel-App, für die Azure Active Directory B2C zum Authentifizieren und Registrieren von Benutzern verwendet wird."
+title: Testen einer einseitigen Azure AD B2C-fähigen App
+description: Schnellstart zum Testen einer einseitigen Beispiel-App, für die Azure Active Directory B2C zum Authentifizieren und Registrieren von Benutzern verwendet wird.
 services: active-directory-b2c
-documentationcenter: 
-author: PatAltimore
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-ms.reviewer: saraford
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: javascript
-ms.topic: quickstart
+ms.topic: article
 ms.date: 2/13/2018
-ms.author: patricka
-ms.openlocfilehash: e659fd228c2294313a62b331c8e530b7d34073ac
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: davidmu
+ms.openlocfilehash: 02a0515ff7c461370f29a511ac576d857676cb2b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-single-page-app"></a>Schnellstart: Testen einer einseitigen Azure AD B2C-fähigen App
 
@@ -69,7 +67,7 @@ In der Beispielanwendung werden mehrere Registrierungsoptionen unterstützt, z.B
 
 ### <a name="sign-up-using-a-social-identity-provider"></a>Registrieren mit einem sozialen Netzwerk als Identitätsanbieter
 
-Azure AD B2C zeigt eine benutzerdefinierte Anmeldeseite für eine fiktive Marke „Wingtip Toys“ für die Beispiel-Web-App an. 
+Azure AD B2C zeigt für die Beispiel-Web-App eine benutzerdefinierte Anmeldeseite für die fiktive Marke „Wingtip Toys“ an. 
 
 1. Um sich mit einem Social Media-Konto als Identitätsanbieter zu registrieren, klicken Sie auf die Schaltfläche des Identitätsanbieters, den Sie verwenden möchten.
 

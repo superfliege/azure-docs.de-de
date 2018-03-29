@@ -1,31 +1,28 @@
 ---
-title: "Verfügbarmachen von virtuellen Computern für Ihre Azure Stack-Benutzer | Microsoft-Dokumentation"
-description: "Enthält ein Tutorial zum Verfügbarmachen von virtuellen Computern in Azure Stack."
+title: Verfügbarmachen von virtuellen Computern für Ihre Azure Stack-Benutzer | Microsoft-Dokumentation
+description: Enthält ein Tutorial zum Verfügbarmachen von virtuellen Computern in Azure Stack.
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2018
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: d169a18df8916cfb8dd30b00248099a3d374aacc
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: af97f32736959f8ebf8f3c4fbca400d6b0c41f3e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Verfügbarmachen von virtuellen Computern für Ihre Azure Stack-Benutzer
-
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
-
 Als Azure Stack-Cloudadministrator können Sie Angebote erstellen, die von Ihren Benutzern (ggf. auch als Mandanten bezeichnet) abonniert werden können. Mit ihrem Abonnement können Benutzer dann Azure Stack-Dienste nutzen.
 
 In diesem Artikel wird veranschaulicht, wie Sie ein Angebot erstellen und anschließend testen. Für den Test melden Sie sich im Portal als Benutzer an, abonnieren das Angebot und erstellen mit dem Abonnement dann einen virtuellen Computer.
@@ -117,7 +114,7 @@ Nachdem Sie ein Angebot erstellt haben, können Sie es testen. Melden Sie sich a
 
    a. Melden Sie sich beim Benutzerportal als Benutzer an, und klicken Sie auf **Abonnement erwerben**.
    - Für ein integriertes System variiert die URL basierend auf der Region Ihres Operators und dem externen Domänenamen und hat das Format https://portal.&lt;*Region*&gt;.&lt; *FQDN*&gt;.
-   - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse „https://portal.local.azurestack.external“.
+   - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse https://portal.local.azurestack.external.
 
    ![Erwerben eines Abonnements](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
@@ -135,7 +132,7 @@ Nachdem Sie ein Angebot erstellt haben, können Sie es testen. Melden Sie sich a
 
    a. Melden Sie sich am Benutzerportal als Benutzer an.
       - Für ein integriertes System variiert die URL basierend auf der Region Ihres Operators und dem externen Domänenamen und hat das Format https://portal.&lt;*Region*&gt;.&lt; *FQDN*&gt;.
-   - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse „https://portal.local.azurestack.external“.
+   - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse https://portal.local.azurestack.external.
 
    b.  Klicken Sie im Dashboard auf **Neu** > **Compute** > **Windows Server 2016 Datacenter Eval**, und klicken Sie dann auf **Erstellen**.
 

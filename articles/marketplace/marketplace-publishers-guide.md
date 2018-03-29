@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7faa34b5528c53c06aeda25be17cbc5f3db2acdf
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0abf25726936a3d5e69c809c9714965936c7c64c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Herausgeberleitfaden für Azure Marketplace und AppSource
 
@@ -308,7 +308,7 @@ Es gibt mehrere Optionen für Anwendungen mit einem Mandanten:
 - Entwickeln einer „Testversion“ pro Kunde
 - Erstellen einer mehrinstanzenfähigen Beispiel-Demo-App mit SSO
 
-##<a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>Veröffentlichungsprozesse nach Produkt für Office, Dynamics und Power BI
+## <a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>Veröffentlichungsprozesse nach Produkt für Office, Dynamics und Power BI
 Weitere Informationen zu den speziellen Anforderungen für AppSource-Apps, die Office, Dynamics und Power BI erweitern, erhalten Sie in der produktspezifischen Dokumentation in diesem Abschnitt. 
 
 
@@ -538,7 +538,7 @@ Nachdem dieser letzte Schritt abgeschlossen ist, wird alle E-Mail/Kommunikation 
 ### <a name="instructions-on-how-to-register-in-the-development-center"></a>Anweisungen zum Registrieren im Developer Center
 
 1. Öffnen Sie eine neue Internet Explorer-InPrivate- oder Chrome-Inkognito-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind.
-2. Wechseln Sie zu [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure), um sich selbst als Verkäufer im Developer Center zu registrieren. Bitte lesen Sie den folgenden wichtigen Hinweis, bevor Sie fortfahren.
+2. Wechseln Sie zu [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure), um sich als Verkäufer im Developer Center zu registrieren. Bitte lesen Sie den folgenden wichtigen Hinweis, bevor Sie fortfahren.
 
    ![Developer Center-E-Mail-Adresse](./media/marketplace-publishers-guide/registerdevcenteremail.png)
 

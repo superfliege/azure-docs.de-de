@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4201395085dd72eb92b774eaed5980737b2e5de0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1b8a6079a68c50f80b593a1f56bc5256047ef31c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Bereitstellen von Azure Machine Learning als IoT Edge-Modul – Vorschau
 
@@ -44,7 +44,7 @@ Laden Sie auf dem Computer, auf dem die Modulverwaltung für Azure ML ausgeführ
 Verwenden Sie das trainierte Modell, um einen Container zu erstellen, der für IoT Edge-Geräte bereitgestellt werden kann. Verwenden Sie den folgenden Befehl, um folgende Aktionen auszuführen:
 
    * Registrieren des Modells
-   * Erstellen eines Manifests
+   * Erstellen Sie ein Manifest.
    * Erstellen eines Docker-Containerimages namens *machinelearningmodule*
    * Bereitstellen des Images in Ihrem Azure Container Service-Cluster (AKS)
 

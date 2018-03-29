@@ -1,10 +1,10 @@
 ---
 title: Verwenden von Shared Access Signatures (SAS) in Azure Storage | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Shared Access Signatures (SAS) verwenden, um Zugriff auf Azure Storage-Ressourcen, einschließlich Blobs, Warteschlangen, Tabellen und Dateien, zu delegieren."
+description: Erfahren Sie, wie Sie Shared Access Signatures (SAS) verwenden, um Zugriff auf Azure Storage-Ressourcen, einschließlich Blobs, Warteschlangen, Tabellen und Dateien, zu delegieren.
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: craigshoemaker
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 46fd99d7-36b3-4283-81e3-f214b29f1152
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
-ms.author: tamram
-ms.openlocfilehash: 32e92e6ffc376d27297810596691f0371770e86d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cshoe
+ms.openlocfilehash: d3f8b3261f9e2e86dbcaa41b92111545abeffe54
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-shared-access-signatures-sas"></a>Verwenden von Shared Access Signatures (SAS)
 
@@ -113,7 +113,7 @@ Dies ist ein Beispiel für einen Dienst-SAS-URI, der Lese- und Schreibzugriff f�
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 ```
 
-| Name | SAS-Teil | Beschreibung |
+| NAME | SAS-Teil | BESCHREIBUNG |
 | --- | --- | --- |
 | Blob-URI |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |Die Blob-Adresse. Sie sollten unbedingt HTTPS verwenden. |
 | Version des Speicherdienstes |`sv=2015-04-05` |Für Speicherdienste der Version 2012-02-12 und später gibt dieser Parameter die zu verwendende Version an. |
@@ -133,7 +133,7 @@ Hier ist ein Beispiel für eine Konto-SAS angegeben, bei der dieselben allgemein
 https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 ```
 
-| Name | SAS-Teil | Beschreibung |
+| NAME | SAS-Teil | BESCHREIBUNG |
 | --- | --- | --- |
 | Ressourcen-URI |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Der Blob-Dienstendpunkt mit Parametern zum Abrufen von Diensteigenschaften (bei Aufruf mit GET) oder Festlegen von Diensteigenschaften (bei Aufruf mit SET). |
 | Dienste |`ss=bf` |Die SAS gilt für die Blob- und Dateidienste. |

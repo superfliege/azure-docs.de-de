@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren des Azure Load Balancer-Verteilungsmodus | Microsoft-Dokumentation
-description: "Konfigurieren des Verteilungsmodus für Azure Load Balancer zur Unterstützung von Quell-IP-Affinität"
+description: Konfigurieren des Verteilungsmodus für Azure Load Balancer zur Unterstützung von Quell-IP-Affinität
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,15 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d04a469c04553b7d6a14df7054ad5ef795baa500
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: ae793bad9cef86158418eb87e0c38ee0370a6bd2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurieren des Verteilungsmodus für Azure Load Balancer
-
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 ## <a name="hash-based-distribution-mode"></a>Modus der hashbasierten Verteilung
 
@@ -146,7 +144,7 @@ Verwenden Sie das klassische Azure-Bereitstellungsmodell, um eine vorhandene Ber
 
 Legen Sie gemäß der vorherigen Beschreibung für den Wert des `LoadBalancerDistribution`-Elements „sourceIP“ für die 2-Tupel-Affinität oder „sourceIPProtocol“ für die 3-Tupel-Affinität fest, oder geben Sie keinen Wert (keine Affinität) an (5-Tupel-Affinität).
 
-#### <a name="response"></a>Antwort
+#### <a name="response"></a>response
 
     HTTP/1.1 202 Accepted
     Cache-Control: no-cache

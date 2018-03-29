@@ -1,6 +1,6 @@
 ---
-title: "Erstellen eines Service Fabric-Clusters über das Azure-Portal | Microsoft-Dokumentation"
-description: "Dieser Artikel beschreibt, wie Sie über das Azure-Portal und mithilfe von Azure Key Vault einen sicheren Service Fabric-Cluster in Azure erstellen."
+title: Erstellen eines Service Fabric-Clusters über das Azure-Portal | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie über das Azure-Portal und mithilfe von Azure Key Vault einen sicheren Service Fabric-Cluster in Azure erstellen.
 services: service-fabric
 documentationcenter: .net
 author: chackdan
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 4a42e36307f440a29740d947314f91dffac51a42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 864952554b04d8d6bc14aad92d168298e554710e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure-Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -131,7 +131,7 @@ Konfigurieren Sie die Clusterknoten. Knotentypen definieren die Größe, die Anz
 
 Um Ihnen das Einrichten eines sicheren Testclusters zu erleichtern, stellen wir die Option **Basic** bereit. Wenn Sie bereits über ein Zertifikat verfügen und es in Ihren Schlüsseltresor hochgeladen (und den Schlüsseltresor für die Bereitstellung aktiviert) haben, dann verwenden Sie die Option **Benutzerdefiniert**.
 
-#####<a name="basic-option"></a>Optionen „Basic“
+##### <a name="basic-option"></a>Optionen „Basic“
 Folgen Sie den Anweisungen auf dem Bildschirm, um einen vorhandenen Schlüsseltresor hinzuzufügen oder wiederzuverwenden und ein Zertifikat hinzuzufügen. Das Hinzufügen des Zertifikats ist ein synchroner Vorgang, sodass Sie auf die Erstellung des Zertifikats warten müssen.
 
 
@@ -151,7 +151,7 @@ Sie sind nun bereit, mit dem Rest des Clustererstellungsvorgangs fortzufahren.
 
 ![CreateKeyVault4]
 
-#####<a name="custom-option"></a>Option „Benutzerdefiniert“
+##### <a name="custom-option"></a>Option „Benutzerdefiniert“
 Überspringen Sie diesen Abschnitt, wenn Sie bereits die Schritte für die Option **Basic** ausgeführt haben.
 
 ![SecurityCustomOption]

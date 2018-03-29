@@ -2,9 +2,10 @@
 title: Experimente im Azure AI-Katalog | Microsoft-Dokumentation
 description: Entdecken und Freigeben von Experimenten im Azure AI-Katalog.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: f4248922-c961-4d3a-9e1b-aec743210166
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.author: garye
-ms.openlocfilehash: 80c2ab0cd97ce5afef7e38bad9f0fa0e4f3f363c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: d6de7aa6d16196f415688d68251e8c1b0a4b9aee
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="discover-experiments-in-azure-ai-gallery"></a>Entdecken und Freigeben von Experimenten im Azure AI-Katalog
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -42,7 +42,7 @@ Sie können weitere Informationen zu einem Experiment auf der Detailseite des Ex
 
 ![Fügen Sie Ihre eigenen Kommentare hinzu](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="download"></a>Herunterladen
+## <a name="download"></a>Download
 Sie können eine Kopie jedes Experiments aus dem Katalog in den Machine Learning Studio-Arbeitsbereich herunterladen. Anschließend können Sie die Kopie bearbeiten, um Ihre eigenen Lösungen zu erstellen.
 
 Der Azure AI-Katalog bietet die folgenden zwei Möglichkeiten, eine Kopie eines Experiments zu importieren:

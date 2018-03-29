@@ -41,8 +41,8 @@
           href: what-is-a-data-warehouse-unit-dwu-cdwu.md
         - name: 'Horizontale Skalierung, Anhalten, Fortsetzen'
           href: sql-data-warehouse-manage-compute-overview.md
-        - name: Data Warehouse-Sicherungen
-          href: sql-data-warehouse-backups.md
+        - name: Sichern und Wiederherstellen
+          href: backup-and-restore.md
         - name: Überwachung
           href: sql-data-warehouse-auditing-overview.md
         - name: Kapazitätsgrenzen

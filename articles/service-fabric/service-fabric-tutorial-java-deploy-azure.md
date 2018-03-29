@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 5245e53429278f2a346077cdb70426aaca339488
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 92445ffa7954d42ec1a864264fbfc7555986ad58
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Tutorial: Bereitstellen einer Java-Anwendung in einem Service Fabric-Cluster in Azure
 Dieses Tutorial ist der dritte Teil einer Reihe. Es wird beschrieben, wie Sie eine Service Fabric-Anwendung in einem Cluster in Azure bereitstellen.
@@ -30,7 +30,7 @@ Im dritten Teil der Serie lernen Sie Folgendes:
 > * Erstellen eines sicheren Linux-Clusters in Azure 
 > * Übermitteln einer Anwendung an den Cluster
 
-In dieser Tutorialreihe lernen Sie Folgendes:
+In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
 > *  [Erstellen einer Service Fabric Reliable Services-Java-Anwendung](service-fabric-tutorial-create-java-app.md)
 > * [Bereitstellen und Debuggen der Anwendung in einem lokalen Cluster](service-fabric-tutorial-debug-log-local-cluster.md)
@@ -106,7 +106,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 8. Kopieren Sie die Konto-SAS-URL, und bewahren Sie sie für die Erstellung Ihres Service Fabric-Clusters auf. Die URL lautet in etwa wie folgt:
 
     ```
-    https://teststorageaccount.table.core.windows.net/?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
+    ?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
     ```
 
 9. Erstellen Sie eine Ressourcengruppe, in der die Event Hub-Ressourcen enthalten sind. Event Hubs wird zum Senden von Nachrichten von Service Fabric an den Server verwendet, auf dem die ELK-Ressourcen ausgeführt werden.
@@ -163,10 +163,10 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
     Kopieren Sie den Wert des Felds **sr** in der zurückgegebenen JSON-Ausgabe. Der Wert des Felds **sr** ist das SAS-Token für EventHubs. Die folgende URL ist ein Beispiel für das Feld **sr**:
 
     ```bash
-    https%3A%2F%2Ftesteventhubs.servicebus.windows.net%2Ftesteventhubs&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=<policy_name>
+    https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    Ihre SAS-URL für EventHubs hat die folgende Struktur: https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>. Zum Beispiel, https://testeventhubs.servicebus.windows.net/testeventhubs?sr=https%3A%2F%2Ftesteventhubs.servicebus.windows.net%2Ftesteventhubs&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
+    Ihre SAS-URL für EventHubs hat die folgende Struktur: https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>. Zum Beispiel, https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
 
 12. Öffnen Sie die Datei *sfdeploy.parameters.json*, und ersetzen Sie den folgenden Inhalt aus den vorherigen Schritten: 
 

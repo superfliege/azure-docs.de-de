@@ -1,24 +1,21 @@
 ---
-title: "Anpassen der Benutzeroberfläche: Azure AD B2C | Microsoft-Dokumentation"
-description: "Ein Thema über die Anpassungsfeatures für die Benutzeroberfläche (UI) in Azure Active Directory B2C"
+title: 'Anpassen der Benutzeroberfläche: Azure AD B2C | Microsoft-Dokumentation'
+description: Ein Thema über die Anpassungsfeatures für die Benutzeroberfläche (UI) in Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 99f5a391-5328-471d-a15c-a2fafafe233d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: saeedakhter-msft
-ms.openlocfilehash: a9136ebd15a995361a325804ca81ece0db30b3e6
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: davidmu
+ms.openlocfilehash: ea33fa95aa7b73668aeee313a9d71a7f78e89a77
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Anpassen der Azure AD B2C-Benutzeroberfläche (UI)
 
@@ -50,7 +47,7 @@ So funktioniert es: Azure AD B2C führt den Code im Browser Ihres Kunden aus und
 
 ### <a name="a-basic-example-of-customized-html"></a>Ein einfaches Beispiel benutzerdefinierter HTML
 
-Das folgende Beispiel ist der einfachste HTML-Inhalt, den Sie zum Testen dieser Funktion verwenden können. Nutzen Sie das [Hilfsprogramm](active-directory-b2c-reference-ui-customization-helper-tool.md), um diesen Inhalt in Ihren Azure-Blobspeicher hochzuladen und zu konfigurieren. So können Sie sicherstellen, dass die grundlegenden unformatierten Schaltflächen und Formularfelder auf jeder Seite angezeigt werden und funktionieren.
+Das folgende Beispiel ist der einfachste HTML-Inhalt, den Sie zum Testen dieser Funktion verwenden können. Nutzen Sie das [Hilfsprogramm](active-directory-b2c-reference-ui-customization-helper-tool.md), um diesen Inhalt in Azure Blob Storage hochzuladen und zu konfigurieren. So können Sie sicherstellen, dass die grundlegenden unformatierten Schaltflächen und Formularfelder auf jeder Seite angezeigt werden und funktionieren.
 
 ```HTML
 <!DOCTYPE html>
@@ -66,10 +63,10 @@ Das folgende Beispiel ist der einfachste HTML-Inhalt, den Sie zum Testen dieser 
 
 ## <a name="test-out-the-ui-customization-feature"></a>Testen des Anpassungsfeatures für die Benutzeroberfläche (UI)
 
-Möchten Sie mit unserem Beispiel-HTML- und CSS-Inhalt die Funktion zum Anpassen der Benutzeroberfläche testen?  Wir haben [ein Hilfsprogramm](active-directory-b2c-reference-ui-customization-helper-tool.md) bereitgestellt, das Beispielinhalte in Ihren Azure-Blobspeicher hochlädt und konfiguriert.
+Möchten Sie mit unserem Beispiel-HTML- und CSS-Inhalt die Funktion zum Anpassen der Benutzeroberfläche testen?  Wir haben [ein Hilfsprogramm](active-directory-b2c-reference-ui-customization-helper-tool.md) bereitgestellt, das Beispielinhalte in Azure Blob Storage hochlädt und konfiguriert.
 
 > [!NOTE]
-> Sie können Ihre UI-Inhalte überall hosten: auf Webservern, CDNs, AWS S3, Dateifreigabesystemen usw. Solange die Inhalte auf einem öffentlich verfügbaren HTTPS-Endpunkt (mit aktiviertem CORS) gehostet werden, ist alles in Ordnung. Wir verwenden den Azure-Blobspeicher nur zur Veranschaulichung.
+> Sie können Ihre UI-Inhalte überall hosten: auf Webservern, CDNs, AWS S3, Dateifreigabesystemen usw. Solange die Inhalte auf einem öffentlich verfügbaren HTTPS-Endpunkt (mit aktiviertem CORS) gehostet werden, ist alles in Ordnung. Wir verwenden Azure Blob Storage nur zur Veranschaulichung.
 >
 
 ## <a name="the-ui-fragments-embedded-by-azure-ad-b2c"></a>Die von Azure AD B2C eingebetteten Benutzeroberflächenfragmente

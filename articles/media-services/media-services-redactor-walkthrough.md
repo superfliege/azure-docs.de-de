@@ -1,11 +1,11 @@
 ---
 title: 'Exemplarische Vorgehensweise: Bearbeiten von Gesichtern mit Azure Media Analytics| Microsoft Docs'
-description: "In diesem Thema werden Schritt-für-Schritt-Anweisungen zur Ausführung eines vollständigen Bearbeitungsworkflows mithilfe von Azure Media Services Explorer (AMSE) und Azure Media Redactor Visualizer (Open Source-Tool) vorgestellt."
+description: In diesem Thema werden Schritt-für-Schritt-Anweisungen zur Ausführung eines vollständigen Bearbeitungsworkflows mithilfe von Azure Media Services Explorer (AMSE) und Azure Media Redactor Visualizer (Open Source-Tool) vorgestellt.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: d6fa21b8-d80a-41b7-80c1-ff1761bc68f2
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.openlocfilehash: 0bd385ba78028a722c52cdf1508f3348ff90f05f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b33da21a32373196d86ec8c93f180b3d40b1c6e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Exemplarische Vorgehensweise: Bearbeiten von Gesichtern mit Azure Media Analytics
 
@@ -59,7 +59,7 @@ Die Ausgabe umfasst sowohl eine Anmerkungen-JSON-Datei mit Gesichtsspeicherort-D
 
 ![Gesichtsbearbeitung](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
-###<a name="second-pass--redact-mode"></a>Zweiter Durchgang – Redact-Modus
+### <a name="second-pass--redact-mode"></a>Zweiter Durchgang – Redact-Modus
 
 1. Laden Sie Ihre ursprüngliche Videoressource zur Ausgabe des ersten Durchgangs hoch, und legen Sie sie als primäre Ressource fest. 
 
@@ -78,7 +78,7 @@ Die Ausgabe umfasst sowohl eine Anmerkungen-JSON-Datei mit Gesichtsspeicherort-D
 
     ![Gesichtsbearbeitung](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
-##<a name="azure-media-redactor-visualizer-open-source-tool"></a>Open Source-Tool Azure Media Redactor Visualizer
+## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Open Source-Tool Azure Media Redactor Visualizer
 
 Ein Open Source-[Visualizer-Tool](https://github.com/Microsoft/azure-media-redactor-visualizer) soll Entwicklern, die gerade in das Anmerkungenformat einsteigen, Analyse und Verwendung der Ausgabe erleichtern.
 

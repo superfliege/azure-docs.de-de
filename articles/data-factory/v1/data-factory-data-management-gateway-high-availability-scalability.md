@@ -1,11 +1,11 @@
 ---
-title: "Hochverfügbarkeit mit Datenverwaltungsgateway in Azure Data Factory | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie ein Datenverwaltungsgateway horizontal hochskalieren können, indem Sie mehr Knoten hinzufügen. Außerdem erfahren Sie, wie Sie das zentrale Hochskalieren durchführen, indem Sie die Anzahl von gleichzeitigen Aufträgen erhöhen, die für einen Knoten ausgeführt werden können."
+title: Hochverfügbarkeit mit Datenverwaltungsgateway in Azure Data Factory | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie ein Datenverwaltungsgateway horizontal hochskalieren können, indem Sie mehr Knoten hinzufügen. Außerdem erfahren Sie, wie Sie das zentrale Hochskalieren durchführen, indem Sie die Anzahl von gleichzeitigen Aufträgen erhöhen, die für einen Knoten ausgeführt werden können.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 195a1a4810de478b77538716fa8d1362428864d8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d04500e770bf43278b88c2f980a10693590c7d16
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)
 > [!NOTE]

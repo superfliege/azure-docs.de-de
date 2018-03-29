@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: Einbinden einer CoreOS Linux-VM in eine verwaltete Domäne | Microsoft-Dokumentation"
+title: 'Azure Active Directory Domain Services: Einbinden einer CoreOS Linux-VM in eine verwaltete Domäne | Microsoft-Dokumentation'
 description: Einbinden einer CoreOS Linux-VM in Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 790ad85df0dbf68674e2b9c6254858100ddfd0fd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6c7290db73645a4e1e745142f266aabc6df735df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>Einbinden einer CoreOS Linux-VM in eine verwaltete Domäne
 In diesem Artikel wird beschrieben, wie Sie eine CoreOS Linux-VM in eine durch Azure AD Domain Services verwaltete Domäne einbinden.
@@ -35,7 +35,7 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 ## <a name="provision-a-coreos-linux-virtual-machine"></a>Bereitstellen einer CoreOS Linux-VM
 Stellen Sie mithilfe einer der folgenden Methoden eine CoreOS-VM in Azure bereit:
 * [Azure-Portal](../virtual-machines/linux/quick-create-portal.md)
-* [Azure-Befehlszeilenschnittstelle](../virtual-machines/linux/quick-create-cli.md)
+* [Azure-CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
 In diesem Artikel wird die **stabile Version des CoreOS Linux**-VM-Images in Azure verwendet.
@@ -140,7 +140,7 @@ Starten Sie den SSSD-Dienst. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ei
 
 
 ## <a name="troubleshooting-domain-join"></a>Problembehandlung beim Domänenbeitritt
-Informationen finden Sie im Artikel [Problembehandlung beim Domänenbeitritt](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) .
+Informationen finden Sie im Artikel [Problembehandlung beim Domänenbeitritt](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) .
 
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](active-directory-ds-getting-started.md)

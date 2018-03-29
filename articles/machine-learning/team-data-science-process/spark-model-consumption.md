@@ -2,7 +2,7 @@
 title: Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden | Microsoft-Dokumentation
 description: Laden und Bewerten von in Azure Blob Storage (WASB) gespeicherten Learning-Modellen mit Python.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 9ff633b4543fbc537ffdb721756706e8de5e8e88
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 3a586d40a9d195fe5ec3fa456d450cb3d86f2e9d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -334,7 +334,7 @@ Es enthält auch Code, der zeigt, wie Daten mit dem von MLlib bereitgestellten `
 Für die Ausführung der obigen Zelle benötigte Zeit: 11,72 Sekunden
 
 ## <a name="score-with-the-logistic-regression-model-and-save-output-to-blob"></a>Bewerten mit dem logistischen Regressionsmodell und Speichern der Ausgabe im Blob
-Der Code in diesem Abschnitt veranschaulicht das Laden eines in Azure-Blobspeicher gespeicherten logistischen Regressionsmodells und seine Verwendung zu der Vorhersage, ob ein Trinkgeld für eine Taxifahrt gezahlt wird, seine Bewertung mit standardisierten Klassifizierungsmetriken und anschließendes Zeichnen der Ergebnisse und Speichern im Blobspeicher. Die bewerteten Ergebnisse werden in RDD-Objekten gespeichert. 
+Der Code in diesem Abschnitt veranschaulicht das Laden eines in Azure Blob Storage gespeicherten logistischen Regressionsmodells und seine Verwendung zu der Vorhersage, ob ein Trinkgeld für eine Taxifahrt gezahlt wird, seine Bewertung mit standardisierten Klassifizierungsmetriken und anschließendes Zeichnen der Ergebnisse und Speichern in Blob Storage. Die bewerteten Ergebnisse werden in RDD-Objekten gespeichert. 
 
     # SCORE AND EVALUATE LOGISTIC REGRESSION MODEL
 
@@ -367,7 +367,7 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 19,22 Sekunden
 ## <a name="score-a-linear-regression-model"></a>Bewerten eines linearen Regressionsmodells
 Wir verwendeten [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) zum Trainieren eines linearen Regressionsmodells mit dem stochastischen Gradientenverfahren (SGD) für die Optimierung der Vorhersage der gezahlten Trinkgeldbeträge. 
 
-Der Code in diesem Abschnitt zeigt, wie ein lineares Regressionsmodell aus Azure-Blobspeicher geladen und mittels skalierter Variablen bewertet wird und dann die Ergebnisse wieder im Blob gespeichert werden.
+Der Code in diesem Abschnitt zeigt, wie ein lineares Regressionsmodell aus Azure Blob Storage geladen und mittels skalierter Variablen bewertet wird und dann die Ergebnisse wieder im Blob gespeichert werden.
 
     #SCORE LINEAR REGRESSION MODEL
 
@@ -398,7 +398,7 @@ Der Code in diesem Abschnitt zeigt, wie ein lineares Regressionsmodell aus Azure
 Für die Ausführung der obigen Zelle benötigte Zeit: 16,63 Sekunden
 
 ## <a name="score-classification-and-regression-random-forest-models"></a>Bewerten der Random Forest-Modelle für Klassifizierung und Regression
-Der Code in diesem Abschnitt zeigt, wie die im Azure-Blobspeicher gespeicherten Random Forest-Modelle für Klassifizierung und Regression geladen werden, ihre Leistung mit Standardklassifizierungs- und Regressionsmaßnahmen bewertet wird und dann die Ergebnis wieder im Blobspeicher gespeichert werden.
+Der Code in diesem Abschnitt zeigt, wie die in Azure Blob Storage gespeicherten Random Forest-Modelle für Klassifizierung und Regression geladen werden, ihre Leistung mit Standardklassifizierungs- und Regressionsmaßnahmen bewertet wird und dann die Ergebnis wieder in Blob Storage gespeichert werden.
 
 [Random Forests](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Gruppen von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forest können kategorische Features behandeln, auf die Mehrklassenklassifizierung ausgedehnt werden, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Random Forest zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
 
@@ -444,7 +444,7 @@ Der Code in diesem Abschnitt zeigt, wie die im Azure-Blobspeicher gespeicherten 
 Für die Ausführung der obigen Zelle benötigte Zeit: 31,07 Sekunden
 
 ## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>Bewerten der Gradient-Boosted-Strukturmodelle für Klassifizierung und Regression
-Der Code in diesem Abschnitt zeigt, wie die im Azure-Blobspeicher gespeicherten Gradient-Boosted-Strukturmodelle für Klassifizierung und Regression geladen werden, ihre Leistung mit Standardklassifizierungs- und Regressionsmaßnahmen bewertet wird und dann die Ergebnis wieder im Blobspeicher gespeichert werden. 
+Der Code in diesem Abschnitt zeigt, wie die in Azure Blob Storage gespeicherten Gradient-Boosted-Strukturmodelle für Klassifizierung und Regression geladen werden, ihre Leistung mit Standardklassifizierungs- und Regressionsmaßnahmen bewertet wird und dann die Ergebnis wieder in Blob Storage gespeichert werden. 
 
 **spark.mllib** unterstützt GBTs für binäre Klassifizierung sowie Regression mit kontinuierlichen und kategorischen Features. 
 
@@ -530,7 +530,7 @@ BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.
 Spark stellt einen Mechanismus zur Remoteübermittlung von Batchaufträgen oder interaktiven Abfragen über eine REST-Schnittstelle mit einer Komponente namens Livy bereit. Livy ist standardmäßig auf dem HDInsight Spark-Cluster aktiviert. Weitere Informationen zu Livy finden Sie unter [Remoteübermittlung von Spark-Aufträgen unter Verwendung von Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Livy können Sie zur Remoteübermittlung eines Auftrags verwenden, der eine Datei im Batch bewertet, die in einem Azure-Blob gespeichert ist, und dann die Ergebnisse in einen anderen Blob schreibt. Laden Sie zu diesem Zweck das Python-Skript von   
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) in das Blob des Spark-Clusters hoch. Sie können zum Kopieren des Skripts in das Clusterblob ein Tool wie **Microsoft Azure-Speicher-Explorer** oder **AzCopy** verwenden. In unserem Fall haben wir das Skript in ***wasb:///example/python/ConsumeGBNYCReg.py*** hochgeladen.   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) in das Blob des Spark-Clusters hoch. Sie können zum Kopieren des Skripts in das Clusterblob ein Tool wie **Microsoft Azure Storage-Explorer** oder **AzCopy** verwenden. In unserem Fall haben wir das Skript in ***wasb:///example/python/ConsumeGBNYCReg.py*** hochgeladen.   
 
 > [!NOTE]
 > Die benötigten Zugriffsschlüssel finden Sie im Portal für das Speicherkonto, das dem Spark-Cluster zugeordnet ist. 

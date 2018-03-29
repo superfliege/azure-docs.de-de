@@ -1,8 +1,8 @@
 ---
 title: Konfigurieren von Azure Multi-Factor Authentication | Microsoft-Dokumentation
-description: "In diesem Artikel wird beschrieben, wie Azure Multi-Factor Authentication-Einstellungen für Berichte, Betrugswarnungen, Einmalumgehungen, benutzerdefinierte Sprachnachrichten, Zwischenspeicherungen, vertrauenswürdige IP-Adressen und App-Kennwörter konfiguriert werden."
+description: In diesem Artikel wird beschrieben, wie Azure Multi-Factor Authentication-Einstellungen für Berichte, Betrugswarnungen, Einmalumgehungen, benutzerdefinierte Sprachnachrichten, Zwischenspeicherungen, vertrauenswürdige IP-Adressen und App-Kennwörter konfiguriert werden.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 75af734e-4b12-40de-aba4-b68d91064ae8
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 4421b995e69e115fbb6c7379af79aaef537aed0d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: e2b6651f0d341567f1d02d0ca16b8f445e3d26f4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
-Dieser Artikel bietet Unterstützung bei der Verwaltung von Azure Multi-Factor Authentication, nachdem Sie nun bereit für die Ausführung sind. Der Artikel umfasst eine Vielzahl von Themen, die Ihnen dabei helfen, Azure Multi-Factor Authentication optimal zu nutzen. Nicht alle Funktionen sind in jeder [Version von Azure Multi-Factor Authentication](/multi-factor-authentication-get-started.md#what-features-do-i-need) verfügbar.
+Dieser Artikel bietet Unterstützung bei der Verwaltung von Azure Multi-Factor Authentication, nachdem Sie nun bereit für die Ausführung sind. Der Artikel umfasst eine Vielzahl von Themen, die Ihnen dabei helfen, Azure Multi-Factor Authentication optimal zu nutzen. Nicht alle Funktionen sind in jeder [Version von Azure Multi-Factor Authentication](multi-factor-authentication-get-started.md#what-features-do-i-need) verfügbar.
 
 | Feature | BESCHREIBUNG | 
 |:--- |:--- |
@@ -68,7 +68,7 @@ Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerisc
    ![Aktivieren von Betrugswarnungen](./media/multi-factor-authentication-whats-next/fraudalert.png)
 
 3. Legen Sie die Einstellung **Benutzern die Ausgabe von Betrugswarnungen erlauben** auf **Ein** fest.
-4. Wählen Sie **Speichern** aus.
+4. Wählen Sie **Speichern**aus.
 
 ### <a name="configuration-options"></a>Konfigurationsoptionen
 
@@ -197,7 +197,7 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
      
      Sie können bis zu 50 IP-Adressbereiche eingeben. Benutzer, die sich über diese IP-Adressen anmelden, umgehen die zweistufige Überprüfung.
 
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Aktivieren des Features „Vertrauenswürdige IPs“ mit Diensteinstellungen
 
@@ -220,7 +220,7 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
      
      Sie können bis zu 50 IP-Adressbereiche eingeben. Benutzer, die sich über diese IP-Adressen anmelden, umgehen die zweistufige Überprüfung.
 
-6. Wählen Sie **Speichern** aus.
+6. Wählen Sie **Speichern**aus.
 
 ![Aktivieren von vertrauenswürdigen IPs mit Diensteinstellungen](./media/multi-factor-authentication-whats-next/trustedips3.png)
 
@@ -335,7 +335,7 @@ Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps,
    ![Speichern von Multi-Factor Authentication für vertrauenswürdige Geräte](./media/multi-factor-authentication-whats-next/remember.png)
 
 6. Legen Sie fest, für wie viele Tage die vertrauenswürdigen Geräte die zweistufige Überprüfung umgehen können. Der Standardwert ist 14 Tage.
-7. Wählen Sie **Speichern** aus.
+7. Wählen Sie **Speichern**aus.
 
 ### <a name="mark-a-device-as-trusted"></a>Markieren eines Geräts als vertrauenswürdig
 

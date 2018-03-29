@@ -1,10 +1,11 @@
 ---
 title: Debuggen Ihres Modells in Azure Machine Learning | Microsoft Docs
-description: "Debuggen von Fehlern, die von den Modulen „Train Model“ und „Score Model“ in Azure Machine Learning generiert wurden."
+description: Debuggen von Fehlern, die von den Modulen „Train Model“ und „Score Model“ in Azure Machine Learning generiert wurden.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 629dc45e-ac1e-4b7d-b120-08813dc448be
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: e6e9e1a3b30f84d634592581ea24fb308dcb478e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bca5ebbda2d46270cc0a996df5fc46f201931343
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="debug-your-model-in-azure-machine-learning"></a>Debuggen Ihres Modells in Azure Machine Learning
 
@@ -48,7 +48,7 @@ Für dieses Modul kann in den folgenden Fällen ein Fehler auftreten:
 
 ## <a name="score-model-module-produces-incorrect-results"></a>Das Modul „Score Model“ liefert falsche Ergebnisse.
 
-![image2](./media/debug-models/train_test-2.png)
+![Bild2](./media/debug-models/train_test-2.png)
 
 In einem typischen Trainings- und Testexperiment für das beaufsichtigte Lernen teilt das Modul [Split Data][split] das ursprüngliche Dataset in zwei Teile auf: Ein Teil wird zum Trainieren des Modells verwendet, mit dem anderen Teil wird die Leistung des trainierten Modells bewertet. Mit dem trainierten Modell werden dann die Testdaten bewertet und anschließend die Ergebnisse evaluiert, um die Genauigkeit des Modells zu bestimmen.
 

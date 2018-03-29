@@ -1,12 +1,12 @@
 ---
 title: Installieren von Azure Backup Server v2 | Microsoft-Dokumentation
-description: "Azure Backup Server v2 bietet Ihnen erweiterte Sicherungsfunktionen für den Schutz von u.a. virtuellen Computern, Dateien, Ordner und Workloads. Erfahren Sie, wie Sie Azure Backup Server v2 installieren oder ein Upgrade auf diese Version ausführen."
+description: Azure Backup Server v2 bietet Ihnen erweiterte Sicherungsfunktionen für den Schutz von u.a. virtuellen Computern, Dateien, Ordner und Workloads. Erfahren Sie, wie Sie Azure Backup Server v2 installieren oder ein Upgrade auf diese Version ausführen.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.openlocfilehash: 1bbb16afef7940933b4c3ae23873f212770137e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd7b76d9e06bc82ffd75f12131c2c247da05cc91
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-azure-backup-server-v2"></a>Installieren von Azure Backup Server v2
 
@@ -36,7 +36,7 @@ Sie können Backup Server v2 unter Windows Server 2012 R2 oder Windows Server 20
 ## <a name="upgrade-backup-server-to-v2"></a>Upgrade von Azure Backup Server auf v2
 Stellen Sie für ein Upgrade von Backup Server v1 auf Backup Server v2 sicher, dass die Installation über die erforderlichen Updates verfügt:
 
-- [Aktualisieren Sie die Schutz-Agents](backup-mabs-upgrade-to-v2.md#update-the-dpm-protection-agent) auf den geschützten Servern.
+- [Aktualisieren Sie die Schutz-Agents](backup-mabs-upgrade-to-v2.md#update-the-data-protection-manager-protection-agent) auf den geschützten Servern.
 - Aktualisieren Sie Windows Server 2012 R2 auf Windows Server 2016.
 - Aktualisieren Sie den Azure Backup Server-Remoteadministrator auf allen Produktionsservern.
 - Stellen Sie sicher, dass Sicherungen auf Fortsetzen ohne Neustarten Ihres Produktionsservers festgelegt sind.

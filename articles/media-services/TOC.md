@@ -237,7 +237,7 @@
 ## Spezifikationen
 ### [Liveerfassung: Spezifikation für die Liveerfassung von fragmentiertem MP4](media-services-fmp4-live-ingest-overview.md)
 ### [Liveerfassungs: Signalisieren von zeitlich festgelegten Metadaten beim Livestreaming](media-services-specifications-live-timed-metadata.md)
-### [Smooth Streaming (HEVC)](media-services-specifications-ms-sstr-ammendment-hevc.md)
+### [Smooth Streaming (HEVC)](media-services-specifications-ms-sstr-amendment-hevc.md)
 
 # angeben
 ## [Azure Media Services-Community](media-services-community.md)

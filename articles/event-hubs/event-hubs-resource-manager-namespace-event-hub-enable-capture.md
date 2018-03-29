@@ -1,11 +1,11 @@
 ---
-title: "Erstellen eines Azure Event Hubs-Namespace und Aktivieren von Capture über eine Vorlage | Microsoft-Dokumentation"
-description: "Erstellen eines Azure Event Hubs-Namespace mit einem Event Hub und Aktivieren der von Capture über eine Azure Resource Manager-Vorlage"
+title: Erstellen eines Azure Event Hubs-Namespace und Aktivieren von Capture über eine Vorlage | Microsoft-Dokumentation
+description: Erstellen eines Azure Event Hubs-Namespace mit einem Event Hub und Aktivieren der von Capture über eine Azure Resource Manager-Vorlage
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 8bdda6a2-5ff1-45e3-b696-c553768f1090
 ms.service: event-hubs
 ms.devlang: tbd
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 09345b32e80008d4afe61078bd4d272fafe631d2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c241b8c38aab355729cd1bea318e70e85cf4ff1f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Erstellen eines Namespace mit Event Hub und Aktivieren von Capture mithilfe einer Vorlage
 
@@ -177,7 +177,7 @@ Das Größenintervall, in dem Capture mit der Datenerfassung beginnt.
 }
 ```
 
-###<a name="capturenameformat"></a>captureNameFormat
+### <a name="capturenameformat"></a>captureNameFormat
 
 Das Namensformat, das von Event Hubs Capture beim Schreiben der Avro-Dateien verwendet wird. Ein Capture-Namensformat muss die Felder `{Namespace}`, `{EventHub}`, `{PartitionId}`, `{Year}`, `{Month}`, `{Day}`, `{Hour}`, `{Minute}` und `{Second}` umfassen. Diese können in beliebiger Reihenfolge sowie mit oder ohne Trennzeichen verwendet werden.
  
@@ -236,7 +236,7 @@ Der BLOB-Container, in dem die Ereignisdaten erfasst werden sollen.
 
 Wenn Sie Azure Data Lake Store als Ziel wählen, verwenden Sie die folgenden Parameter: Sie müssen Berechtigungen für Ihren Data Lake Store-Pfad festlegen, an dem Sie das Ereignis erfassen möchten. Informationen zum Festlegen von Berechtigungen finden Sie in [diesem Artikel](event-hubs-capture-enable-through-portal.md#capture-data-to-an-azure-data-lake-store-account).
 
-###<a name="subscriptionid"></a>subscriptionId
+### <a name="subscriptionid"></a>subscriptionId
 
 Abonnement-ID für den Event Hubs-Namespace und für Azure Data Lake Store. Beide Ressourcen müssen sich unter der gleichen Abonnement-ID befinden.
 
@@ -249,7 +249,7 @@ Abonnement-ID für den Event Hubs-Namespace und für Azure Data Lake Store. Beid
  }
 ```
 
-###<a name="datalakeaccountname"></a>dataLakeAccountName
+### <a name="datalakeaccountname"></a>dataLakeAccountName
 
 Der Azure Data Lake Store-Name für die erfassten Ereignisse.
 
@@ -262,7 +262,7 @@ Der Azure Data Lake Store-Name für die erfassten Ereignisse.
 }
 ```
 
-###<a name="datalakefolderpath"></a>dataLakeFolderPath
+### <a name="datalakefolderpath"></a>dataLakeFolderPath
 
 Der Zielordnerpfad für die erfassten Ereignisse. In diesem Ordner in Ihrer Data Lake Store-Instanz werden die Ereignisse während des Erfassungsvorgangs abgelegt. Informationen zum Festlegen von Berechtigungen für diesen Ordner finden Sie unter [Verwenden von Azure Data Lake Store zum Erfassen von Daten von Event Hubs](../data-lake-store/data-lake-store-archive-eventhub-capture.md).
 

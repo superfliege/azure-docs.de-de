@@ -1,11 +1,10 @@
 ---
-title: "Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory | Microsoft-Dokumentation"
-description: "Sie erhalten Informationen über das Schützen von Datenverschiebung in Azure Data Factory."
+title: Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory | Microsoft-Dokumentation
+description: Sie erhalten Informationen über das Schützen von Datenverschiebung in Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: f483109170ed1dda7506f7ef5f02fb8b42ea331e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c2b6c494a9c4d0dac37315520b8d7b962f3490b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
 
@@ -48,7 +47,7 @@ In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenv
 - **Hybridszenario** In diesem Szenario befindet sich entweder die Quelle oder das Ziel hinter einer Firewall oder in einem lokalen Unternehmensnetzwerk, oder der Datenspeicher befindet sich in einem privaten Netzwerk/virtuellen Netzwerk (meist die Quelle) und ist nicht öffentlich zugänglich. Zu diesem Szenario zählen auch Datenbankserver, die auf virtuellen Computern gehostet werden.
 
 ## <a name="cloud-scenarios"></a>Cloudszenarien
-###<a name="securing-data-store-credentials"></a>Schützen von Datenspeicher-Anmeldeinformationen
+### <a name="securing-data-store-credentials"></a>Schützen von Datenspeicher-Anmeldeinformationen
 Azure Data Factory schützt Ihre Datenspeicher-Anmeldeinformationen dadurch, dass sie **verschlüsselt** werden, wozu **von Microsoft verwaltete Zertifikate** verwendet werden. Diese Zertifikate werden alle **zwei Jahre** ausgetauscht (wozu Erneuerung des Zertifikats und Migration von Anmeldeinformationen gehören). Diese verschlüsselten Anmeldeinformationen werden sicher in einem **von Azure Data Factory-Verwaltungsdienste verwalteten Azure Storage** gespeichert. Weitere Informationen zur Azure Storage-Sicherheit finden Sie unter [Übersicht über die Sicherheit von Azure Storage](../../security/security-storage-overview.md).
 
 ### <a name="data-encryption-in-transit"></a>Datenverschlüsselung während der Übertragung

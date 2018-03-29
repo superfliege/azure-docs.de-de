@@ -1,11 +1,11 @@
 ---
-title: "Lösung „Kapazität und Leistung“ in Azure Log Analytics | Microsoft-Dokumentation"
-description: "Die Lösung „Kapazität und Leistung“ in Log Analytics hilft Ihnen, die Kapazität Ihrer Hyper-V-Server zu verstehen."
+title: Lösung „Kapazität und Leistung“ in Azure Log Analytics | Microsoft-Dokumentation
+description: Die Lösung „Kapazität und Leistung“ in Log Analytics hilft Ihnen, die Kapazität Ihrer Hyper-V-Server zu verstehen.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 26e87da60dc02dce8122c82a2208477a8b1813a7
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 99c29afec7d06a458ed6d34071f1b6acbba1f03b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (Vorschau)
 
@@ -120,20 +120,8 @@ Zusammenfassend lässt sich festhalten, dass mit der Lösung Daten zur Kapazitä
 
 Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Daten zur Kapazität und Leistung, die mit dieser Lösung gesammelt und berechnet werden.
 
+
 | Abfragen | BESCHREIBUNG |
-|---|---|
-| Alle Konfigurationen des Hostarbeitsspeichers | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="Host Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
-| Alle Konfigurationen des VM-Arbeitsspeichers | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="VM Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
-| Aufschlüsselung des IOPS-Gesamtwerts für die Datenträger aller VMs | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="VHD Reads/s" OR CounterName="VHD Writes/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Aufschlüsselung des gesamten Durchsatzes für die Datenträger aller VMs | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="VHD Read MB/s" OR CounterName="VHD Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Aufschlüsselung des IOPS-Gesamtwerts für alle freigegebenen Clustervolumes | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Reads/s" OR CounterName="CSV Writes/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Aufschlüsselung des gesamten Durchsatzes für alle freigegebenen Clustervolumes | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read MB/s" OR CounterName="CSV Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Aufschlüsselung der gesamten Wartezeit für alle freigegebenen Clustervolumes | <code> Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read Latency" OR CounterName="CSV Write Latency") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-
->[!NOTE]
-> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden.
-
-> | Abfragen | BESCHREIBUNG |
 |:--- |:--- |
 | Alle Konfigurationen des Hostarbeitsspeichers | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "Host Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
 | Alle Konfigurationen des VM-Arbeitsspeichers | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "VM Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
@@ -145,4 +133,4 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Daten zur Kapa
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md), um ausführliche Daten zur Kapazität und Leistung anzuzeigen.
+* Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-search.md), um ausführliche Daten zur Kapazität und Leistung anzuzeigen.

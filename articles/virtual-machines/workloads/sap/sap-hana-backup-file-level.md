@@ -1,11 +1,11 @@
 ---
 title: SAP HANA-Sicherung mit Azure Backup auf Dateiebene | Microsoft-Dokumentation
-description: "Für SAP HANA auf virtuellen Azure-Computern stehen grundsätzlich zwei Sicherungsoptionen zur Verfügung. In diesem Artikel wird die SAP HANA-Sicherung mit Azure Backup auf Dateiebene behandelt."
+description: Für SAP HANA auf virtuellen Azure-Computern stehen grundsätzlich zwei Sicherungsoptionen zur Verfügung. In diesem Artikel wird die SAP HANA-Sicherung mit Azure Backup auf Dateiebene behandelt.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 ms.openlocfilehash: 5db0ceb1648b5afa278e1cbe1c42fce8033bfdc1
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA-Sicherung mit Azure Backup auf Dateiebene
 

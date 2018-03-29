@@ -1,24 +1,22 @@
 ---
-title: "Azure AD B2C: Schützen einer Web-API mit Node.js | Microsoft Docs"
+title: 'Azure AD B2C: Schützen einer Web-API mit Node.js | Microsoft Docs'
 description: Erstellen einer Node.js-Web-API, die Token von einem B2C-Mandanten akzeptiert
 services: active-directory-b2c
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: hero-article
+ms.topic: article
 ms.date: 01/07/2017
-ms.author: xerners
-ms.openlocfilehash: 3a0249f2f7dfd76d89cbf497376f53fe06c250c3
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: davidmu
+ms.openlocfilehash: 3ce0e43beec41599c842cd273cb7230660bdf8d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Schützen einer Web-API mit „Node.js“
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -62,7 +60,7 @@ Nachdem Sie die drei Richtlinien erstellt haben, können Sie Ihre App erstellen.
 
 Grundlegende Informationen zur Funktionsweise von Richtlinien in Azure AD B2C finden Sie im [Tutorial zu den ersten Schritten mit .NET-Web-Apps](active-directory-b2c-devquickstarts-web-dotnet.md).
 
-## <a name="download-the-code"></a>Herunterladen des Codes
+## <a name="download-the-code"></a>Laden Sie den Code herunter.
 Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS)verwaltet. Zum Erstellen des Beispiels können Sie [ein Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). Sie können das Gerüst auch klonen:
 
 ```
@@ -238,7 +236,7 @@ var passport = require('passport');
 var OIDCBearerStrategy = require('passport-azure-ad').BearerStrategy;
 ```
 
-Speichern Sie die Datei. Sie wird später noch benötigt.
+Speichern Sie die Datei . Sie wird später noch benötigt.
 
 ## <a name="create-a-configjs-file-to-store-your-azure-ad-settings"></a>Erstellen der Datei „config.js“ für die Azure AD-Einstellungen
 Diese Codedatei übergibt Ihre Konfigurationsparameter aus dem Azure AD-Portal an die Datei `Passport.js` . Sie haben diese Konfigurationswerte erstellt, als Sie die Web-API im ersten Teil dieser exemplarischen Vorgehensweise zum Portal hinzufügten. Welche Werte Sie für diese Parameter eingeben sollen, erfahren Sie, nachdem Sie den Code kopiert haben.

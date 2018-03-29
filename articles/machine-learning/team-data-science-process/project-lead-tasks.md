@@ -1,23 +1,23 @@
 ---
-title: "Aufgaben des Projektleiters eines Team Data Science-Prozesses – Azure | Microsoft-Dokumentation"
-description: "Ein Überblick über die Aufgaben eines Projektleiters an einem Data Science-Teamprojekt."
-documentationcenter: 
+title: Aufgaben des Projektleiters eines Team Data Science-Prozesses – Azure | Microsoft-Dokumentation
+description: Ein Überblick über die Aufgaben eines Projektleiters an einem Data Science-Teamprojekt.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: fe7cf1e6167de7d0dfaa5ed75c0b7f5ec23b18cf
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 5c769fda09e70cfb0a43e0305ffab4923fbe3307
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="project-lead-tasks"></a>Aufgaben eines Projektleiters
 
@@ -29,7 +29,7 @@ Ein **Projektleiter** verwaltet die täglichen Aktivitäten der einzelnen Datena
 
 Dieses Thema enthält derzeit die Aufgaben 1,2 und 6 dieses Workflows für Projektleiter.
 
->[AZURE.NOTE] Wir beschreiben in den folgenden Anweisungen die erforderlichen Schritte zum Einrichten einer TDSP-Teamumgebung für ein Projekt mithilfe von Visual Studio Team Services (VSTS). Wir geben an, wie diese Aufgaben mit VSTS erledigt werden können, da wir bei Microsoft TDSP auf diese Weise implementieren. Wenn für Ihre Gruppe eine andere Plattform zum Hosten des Codes verwendet wird, ändern sich die vom Teamleiter auszuführenden Aufgaben in der Regel nicht. Sie müssen jedoch auf andere Weise ausgeführt werden.
+>[AZURE.NOTE] Wir beschreiben in den folgenden Anweisungen die erforderlichen Schritte zum Einrichten einer TDSP-Teamumgebung für ein Projekt mithilfe von Visual Studio Team Services (VSTS). Wir geben an, wie diese Aufgaben mit VSTS erledigt werden können, da wir bei Microsoft den TDSP auf diese Weise implementieren. Wenn für Ihre Gruppe eine andere Plattform zum Hosten des Codes verwendet wird, ändern sich die vom Teamleiter auszuführenden Aufgaben in der Regel nicht. Sie müssen jedoch auf andere Weise ausgeführt werden.
 
 
 ## <a name="repositories-and-directories"></a>Repositorys und Verzeichnisse

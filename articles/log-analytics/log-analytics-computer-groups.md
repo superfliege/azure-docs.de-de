@@ -1,24 +1,24 @@
 ---
 title: Computergruppen bei Protokollsuchen in Azure Log Analytics| Microsoft-Dokumentation
-description: "Mit Computergruppen in Log Analytics können Sie Protokollsuchvorgänge auf eine bestimmte Gruppe von Computern eingrenzen.  In diesem Artikel werden die verschiedenen Methoden beschrieben, mit denen Sie Computergruppen erstellen, sowie wie sie diese in einer Suche verwenden."
+description: Mit Computergruppen in Log Analytics können Sie Protokollsuchvorgänge auf eine bestimmte Gruppe von Computern eingrenzen.  In diesem Artikel werden die verschiedenen Methoden beschrieben, mit denen Sie Computergruppen erstellen, sowie wie sie diese in einer Suche verwenden.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: a28b9e8a-6761-4ead-aa61-c8451ca90125
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4d6a80082711f09e9c189d53fb4fda00a7d73c29
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: a6f0aa58762966f8da76387f3da7a7895801fcb9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Computergruppen in Log Analytics-Protokollsuchen
 
@@ -66,12 +66,6 @@ Gehen Sie zum Erstellen einer Computergruppe aus einer Protokollsuche im OMS-Por
 5. Geben Sie Werte für jede Eigenschaft der Computergruppe an. 
 
 
->[!NOTE]
-> Wenn Sie für Ihren Arbeitsbereich die [Legacyversion der Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) verwenden, gehen Sie zum Erstellen einer Computergruppe genauso vor, nutzen aber die Syntax der Legacysprache.
-
-
-### <a name="log-search-api"></a>Protokollsuch-API
-Computergruppen, die mit der Protokoll-API erstellt wurden, sind mit denen, die mit einer Protokollsuche erstellt wurden, identisch.  Weitere Informationen zum Erstellen einer Computergruppe mithilfe der Protokollsuch-API finden Sie unter [Computergruppen in der Log Analytics-REST-API für die Protokollsuche](log-analytics-log-search-api.md#computer-groups).
 
 ### <a name="active-directory"></a>Active Directory
 Wenn Sie Log Analytics für das Importieren von Active Directory-Gruppenmitgliedschaften konfigurieren, werden dabei die Gruppenmitgliedschaften von in eine Domäne eingebundenen Computern mit dem OMS-Agent analysiert.  Für jede Sicherheitsgruppe in Active Directory wird in Log Analytics eine Computergruppe erstellt, und jeder Computer wird der Computergruppe hinzugefügt, die den Sicherheitsgruppen entspricht, in denen er Mitglied ist.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert.  
@@ -129,18 +123,6 @@ Die folgende Abfrage würde UpdateSummary-Datensätze ausschließlich für Compu
   UpdateSummary | where Computer in (ADComputers)
   ```
 
-
-
-  
-
->[!NOTE]
-> Wenn Sie für Ihren Arbeitsbereich die [Legacyversion der Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) verwenden, nutzen Sie die folgende Syntax, um in einer Protokollsuche auf eine Computergruppe zu verweisen:  Die Angabe der **Kategorie** ist optional und nur erforderlich, wenn Sie über mehrere Computergruppen mit demselben Namen in verschiedenen Kategorien verfügen. 
->
->    `$ComputerGroups[Category: Name]`
->
->Computergruppen werden häufig mit der **IN**-Klausel in der Protokollsuche verwendet, wie im folgenden Beispiel gezeigt:
->
->    `Type=UpdateSummary Computer IN $ComputerGroups[My Computer Group]`
 
 
 

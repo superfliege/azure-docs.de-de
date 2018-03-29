@@ -1,11 +1,11 @@
 ---
 title: Kopieren von Daten aus Xero mithilfe von Azure Data Factory (Beta)
-description: "Erfahren Sie, wie Daten aus Xero mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden."
+description: Erfahren Sie, wie Daten aus Xero mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 458ad702b510c0fd01ab63541b2026b8a9a06e91
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 09a1bfc47cd048e371575f80933f5bfd0116bf8e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>Kopieren von Daten aus Xero mithilfe von Azure Data Factory (Beta)
 
@@ -166,7 +166,7 @@ Die folgenden Tabellen enthalten die gleichen Informationen im Schema „Minimal
 
 - Bank_Transactions
 - Contact_Groups 
-- Contacts 
+- Kontakte 
 - Contacts_Sales_Tracking_Categories 
 - Contacts_Phones 
 - Contacts_Addresses 

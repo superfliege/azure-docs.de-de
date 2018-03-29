@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über Azure Service Fabric-Überwachung und -Diagnose | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über die Überwachung und Diagnose für Cluster, Anwendungen und Dienste von Azure Service Fabric."
+title: Übersicht über Azure Service Fabric-Überwachung und -Diagnose | Microsoft-Dokumentation
+description: Erfahren Sie mehr über die Überwachung und Diagnose für Cluster, Anwendungen und Dienste von Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2018
 ms.author: dekapur
-ms.openlocfilehash: 1da2fab92c6fd51c5fc18589da5f8bbec2929503
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f784576547f0d85a825ad9dd107c6c84cd261092
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Überwachung und Diagnose für Azure Service Fabric
 
@@ -86,7 +86,7 @@ Die Service Fabric-Plattform umfasst ein Integritätsmodell, das erweiterbare In
 
 ![Integritätsdashboard von SFX](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
 
-Sie können die aktuellen Integritätsberichte in SFX einsehen, zusätzlich steht jeder Bericht aber auch als Ereignis zur Verfügung. Integritätsereignisse können über den Betriebskanal erfasst (siehe [Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md#collect-health-and-load-events)) und in OMS Log Analytics gespeichert werden. So stehen sie zukünftig für Warnungen und Abfragen zur Verfügung. Auf diese Weise lassen sich Probleme, die u. U. die Anwendungsverfügbarkeit beeinträchtigen, leichter erkennen. Daher wird empfohlen, Warnungen für entsprechende Fehlerszenarien einzurichten (benutzerdefinierte Warnungen über OMS).
+Sie können die aktuellen Integritätsberichte in SFX einsehen, zusätzlich steht jeder Bericht aber auch als Ereignis zur Verfügung. Integritätsereignisse können über den Betriebskanal erfasst (siehe [Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)) und in OMS Log Analytics gespeichert werden. So stehen sie zukünftig für Warnungen und Abfragen zur Verfügung. Auf diese Weise lassen sich Probleme, die u. U. die Anwendungsverfügbarkeit beeinträchtigen, leichter erkennen. Daher wird empfohlen, Warnungen für entsprechende Fehlerszenarien einzurichten (benutzerdefinierte Warnungen über OMS).
 
 ## <a name="monitoring-workflow"></a>Überwachungsworkflow 
 

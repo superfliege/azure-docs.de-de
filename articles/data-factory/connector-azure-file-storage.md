@@ -1,11 +1,11 @@
 ---
 title: Kopieren von Daten aus/in Azure File Storage mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Sie mithilfe von Azure Data Factory Daten aus Azure File Storage in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern in Azure File Storage kopieren."
+description: Hier erfahren Sie, wie Sie mithilfe von Azure Data Factory Daten aus Azure File Storage in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern in Azure File Storage kopieren.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 772af3bce6947a92fa62a93a84ee84ee34093d82
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e317294c673f9c22c4fa219d4db98248e9aa270e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus bzw. in Azure File Storage mithilfe von Azure Data Factory
 

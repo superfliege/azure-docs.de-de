@@ -1,13 +1,13 @@
 ---
-title: "Erstellen einer Azure-Skalierungsgruppe, die Verfügbarkeitszonen verwendet (Vorschauversion) | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Skalierungsgruppen für virtuelle Azure Computer erstellt werden, die Verfügbarkeitszonen verwenden, um bessere Redundanz bei Ausfällen bereitzustellen."
+title: Erstellen einer Azure-Skalierungsgruppe, die Verfügbarkeitszonen verwendet (Vorschauversion) | Microsoft-Dokumentation
+description: Erfahren Sie, wie Skalierungsgruppen für virtuelle Azure Computer erstellt werden, die Verfügbarkeitszonen verwenden, um bessere Redundanz bei Ausfällen bereitzustellen.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 2de214f604469025a8a4accde44359fea0ded7e9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8b497af8bc7e3060e184dd6a029b23ccb2d2bbfb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones-preview"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet (Vorschauversion)
 Um Ihre VM-Skalierungsgruppen vor Fehlern auf Rechenzentrumsebene zu schützen, können Sie eine Skalierungsgruppe über mehrere Verfügbarkeitszonen erstellen. Azure-Regionen, die Verfügbarkeitszonen unterstützen, weisen mindestens drei getrennte Zonen auf, mit je eigener, unabhängiger Stromquelle, Netzwerk und Kühlung. Weitere Informationen finden Sie in der [Overview of Availability Zones (Übersicht über Verfügbarkeitszonen)](../availability-zones/az-overview.md).
@@ -34,14 +34,14 @@ Wenn Sie eine Skalierungsgruppe in einer einzelnen Zone erstellen, können Sie s
 
 Damit Verfügbarkeitszonen verwendet werden können, muss Ihre Skalierungsgruppe in einer [unterstützten Azure-Region](../availability-zones/az-overview.md#regions-that-support-availability-zones) erstellt werden. Sie müssen sich außerdem [für die Vorschau von Verfügbarkeitszonen registrieren](http://aka.ms/azenroll). Sie können mit einer der folgenden Methoden eine Skalierungsgruppe erstellen, die Verfügbarkeitszonen verwendet:
 
-- [Azure portal](#use-the-azure-portal)
+- [Azure-Portal](#use-the-azure-portal)
 - [Azure CLI 2.0](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure-Ressourcen-Manager-Vorlagen](#use-azure-resource-manager-templates)
 
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
-Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](virtual-machine-scale-sets-create-portal.md) ausführlich beschrieben wird. Achten Sie darauf, dass Sie sich [für die Vorschau von Verfügbarkeitszonen registriert haben](http://aka.ms/azenroll). Wenn Sie eine unterstützte Azure-Region auswählen, können Sie eine Skalierungsgruppe in einer der Verfügbarkeitszonen erstellen, wie im folgenden Beispiel gezeigt:
+Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](quick-create-portal.md) ausführlich beschrieben wird. Achten Sie darauf, dass Sie sich [für die Vorschau von Verfügbarkeitszonen registriert haben](http://aka.ms/azenroll). Wenn Sie eine unterstützte Azure-Region auswählen, können Sie eine Skalierungsgruppe in einer der Verfügbarkeitszonen erstellen, wie im folgenden Beispiel gezeigt:
 
 ![Erstellen einer Skalierungsgruppe in einer einzelnen Verfügbarkeitszone](media/virtual-machine-scale-sets-use-availability-zones/create-portal-single-az.png)
 
@@ -49,7 +49,7 @@ Die Skalierungsgruppe und die unterstützenden Ressourcen, wie etwa der Azure Lo
 
 
 ## <a name="use-the-azure-cli-20"></a>Verwenden von Azure CLI 2.0
-Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](virtual-machine-scale-sets-create-cli.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen und [für die Vorschau von Verfügbarkeitszonen registriert sein](http://aka.ms/azenroll).
+Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](quick-create-cli.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen und [für die Vorschau von Verfügbarkeitszonen registriert sein](http://aka.ms/azenroll).
 
 Fügen Sie dem [az vmss create](/cli/azure/vmss#az_vmss_create)-Befehl den `--zones`-Parameter hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*). Im folgenden Beispiel wird eine Skalierungsgruppe mit einer Zone namens *myScaleSet* in Zone *1* erstellt:
 
@@ -114,7 +114,7 @@ Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Sk
 
 
 ## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
-Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](virtual-machine-scale-sets-create-powershell.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen und [für die Vorschau von Verfügbarkeitszonen registriert sein](http://aka.ms/azenroll). Fügen Sie dem [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig)-Befehl den `-Zone`-Parameter hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*). 
+Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](quick-create-powershell.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen und [für die Vorschau von Verfügbarkeitszonen registriert sein](http://aka.ms/azenroll). Fügen Sie dem [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig)-Befehl den `-Zone`-Parameter hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*). 
 
 Im folgenden Beispiel wird eine Konfiguration für eine Skalierungsgruppe mit einer einzelnen Zone namens *vmssConfig* in Zone *1* von *USA, Osten 2* erstellt:
 
@@ -178,7 +178,7 @@ Ein vollständiges Beispiel einer zonenredundanten Skalierungsgruppe mit Netzwer
 
 
 ## <a name="use-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
-Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im Artikel „Erste Schritte“ für [Linux](virtual-machine-scale-sets-create-template-linux.md) oder [Windows](virtual-machine-scale-sets-create-template-windows.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen und [für die Vorschau von Verfügbarkeitszonen registriert sein](http://aka.ms/azenroll). Fügen Sie in Ihrer Vorlage dem Ressourcentyp *Microsoft.Compute/virtualMachineScaleSets* die Eigenschaft `zones` hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*).
+Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im Artikel „Erste Schritte“ für [Linux](quick-create-template-linux.md) oder [Windows](quick-create-template-windows.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen und [für die Vorschau von Verfügbarkeitszonen registriert sein](http://aka.ms/azenroll). Fügen Sie in Ihrer Vorlage dem Ressourcentyp *Microsoft.Compute/virtualMachineScaleSets* die Eigenschaft `zones` hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*).
 
 Im folgenden Beispiel wird eine Linux-Skalierungsgruppe mit einer einzelnen Zone namens *myScaleSet* in Zone *1* von *USA, Osten 2* erstellt:
 

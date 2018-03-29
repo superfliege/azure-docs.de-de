@@ -1,11 +1,11 @@
 ---
-title: "Dienstverwaltung für Azure Search im Azure-Portal"
+title: Dienstverwaltung für Azure Search im Azure-Portal
 description: Es wird beschrieben, wie Sie Azure Search, einen gehosteten Cloudsuchdienst in Microsoft Azure, mit dem Azure-Portal verwalten.
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-portal
 ms.assetid: c87d1fdd-b3b8-4702-a753-6d7e29dbe0a2
 ms.service: search
@@ -15,11 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 916a08aacca428530bc4f728d5de422e04bed8bc
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d19683291e001c3c3f2a7bfc5c203b5121a8a418
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Search im Azure-Portal
 > [!div class="op_single_selector"]
@@ -44,26 +44,12 @@ Beachten Sie, dass *Upgrade* nicht als administrativer Task aufgeführt ist. Da 
 ## <a name="administrator-rights"></a>Administratorrechte
 Die Bereitstellung oder Außerbetriebnahme des eigentlichen Diensts kann von einem Administrator oder Co-Administrator des Azure-Abonnements durchgeführt werden.
 
-Innerhalb eines Diensts hat jede Person mit Zugriff auf die Dienst-URL und einem Admin-API-Schlüssel Lese-/Schreibzugriff auf den Dienst. Der Lese-/Schreibzugriff ermöglicht das Hinzufügen, Löschen oder Ändern von Serverobjekten, einschließlich der API-Schlüssel, Indizes, Indexer, Datenquellen, Zeitpläne und Rollenzuweisungen, die über [per RBAC-definierte Rollen](#rbac) implementiert wurden.
+Innerhalb eines Diensts hat jede Person mit Zugriff auf die Dienst-URL und einem Admin-API-Schlüssel Lese-/Schreibzugriff auf den Dienst. Der Lese-/Schreibzugriff ermöglicht das Hinzufügen, Löschen oder Ändern von Serverobjekten, einschließlich der API-Schlüssel, Indizes, Indexer, Datenquellen, Zeitpläne und Rollenzuweisungen, die über [per RBAC-definierte Rollen](search-security-rbac.md) implementiert wurden.
 
-Alle Benutzerinteraktionen mit Azure Search fallen unter einen dieser beiden Modi: Lese-/Schreibzugriff auf den Dienst (Administratorrechte) oder Lesezugriff auf den Dienst (Abfragerechte). Weitere Informationen finden Sie unter [Verwalten der API-Schlüssel](#manage-keys).
+Alle Benutzerinteraktionen mit Azure Search fallen unter einen dieser beiden Modi: Lese-/Schreibzugriff auf den Dienst (Administratorrechte) oder Lesezugriff auf den Dienst (Abfragerechte). Weitere Informationen finden Sie unter [Verwalten der API-Schlüssel](search-security-api-keys.md).
 
 <a id="sys-info"></a>
 
-## <a name="set-rbac-roles-for-administrative-access"></a>Festlegen von RBAC-Rollen für den Administratorzugriff
-In Azure wird ein [globales Modell für die rollenbasierte Autorisierung](../active-directory/role-based-access-control-configure.md) für alle Dienste bereitgestellt, die über das Portal oder mit Resource Manager-APIs verwaltet werden. Die Rollen „Besitzer“, „Mitwirkender“ und „Leser“ bestimmen die Ebene der Dienstverwaltung für Active Directory-Benutzer, -Gruppen und -Dienstprinzipale, die einer Rolle jeweils zugewiesen sind. 
-
-Für Azure Search werden die folgenden administrativen Aufgaben mit RBAC-Berechtigungen gesteuert:
-
-| Rolle | Task |
-| --- | --- |
-| Besitzer |Erstellen oder löschen Sie den Dienst bzw. jedes Objekt im Dienst, einschließlich API-Schlüsseln, Indizes, Indexern sowie Datenquellen und Zeitplänen für Indexer.<p>Zeigen Sie den Dienststatus an, einschließlich Anzahl und Speichergröße.<p>Hinzufügen oder Löschen von Rollenmitgliedschaften (Nur ein Besitzer kann die Rollenmitgliedschaften verwalten.)<p>Abonnementadministratoren und Dienstbesitzer sind automatisch Mitglieder der Besitzerrolle. |
-| Mitwirkender |Die gleiche Ebene wie „Besitzer“, mit Ausnahme der RBAC-Rollenverwaltung. So kann z.B. ein Mitwirkender den `api-key` anzeigen und neu generieren, aber nicht die Rollenmitgliedschaften ändern. |
-| Leser |Dienststatus und Abfrageschlüssel anzeigen. Mitglieder dieser Rolle können die Dienstkonfiguration nicht ändern und auch keine Admin-Schlüssel anzeigen. |
-
-Rollen erteilen keine Zugriffsrechte für den Dienstendpunkt. Suchdienstoperationen, wie z. B. die Indexverwaltung, Auffüllung des Indexes und Abfragen von Suchdaten werden durch die API-Schlüssel und nicht durch Rollen gesteuert. Weitere Informationen finden Sie unter „Autorisierung für Verwaltungsvorgänge im Vergleich zu Datenvorgängen“ im Artikel [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md).
-
-<a id="secure-keys"></a>
 ## <a name="logging-and-system-information"></a>Protokollierungs- und Systeminformationen
 In Azure Search werden keine Protokolldateien für einen einzelnen Dienst über das Portal oder programmgesteuerte Schnittstellen verfügbar gemacht. Im Basic-Tarif und höher überwacht Microsoft alle Azure Search-Dienste auf eine Verfügbarkeit von 99,9% gemäß der Vereinbarung zum Servicelevel (SLA). Wenn der Dienst langsam ist oder der Anforderungsdurchsatz unter die SLA-Schwellenwerte fällt, überprüfen Supportteams die verfügbaren Protokolldateien und kümmern sich um die Lösung des Problems.
 
@@ -72,38 +58,6 @@ Allgemeine Informationen zu Ihrem Dienst erhalten Sie wie folgt:
 * Im Portal über das Dashboard des Diensts in Form von Benachrichtigungen, Eigenschaften und Statusmeldungen.
 * Über [PowerShell](search-manage-powershell.md) oder die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/), um [Diensteigenschaften abzurufen](https://docs.microsoft.com/rest/api/searchmanagement/services) oder den Status der Indexressourcennutzung zu ermitteln.
 * Über [Datenverkehrsanalyse durchsuchen](search-traffic-analytics.md), wie bereits erwähnt.
-
-<a id="manage-keys"></a>
-
-## <a name="manage-api-keys"></a>Verwalten von API-Schlüsseln
-Für alle Anforderungen an einen Suchdienst wird ein API-Schlüssel benötigt, der speziell für Ihren Dienst generiert wurde. Dieser API-Schlüssel ist der einzige Authentifizierungsmechanismus für den Zugriff auf Ihren Dienstendpunkt. 
-
-Ein API-Schlüssel ist eine Zeichenfolge, die aus zufällig generierten Zahlen und Buchstaben besteht. Mit den [RBAC-Berechtigungen](#rbac) können Sie die Schlüssel löschen oder lesen, sie aber nicht mit einem benutzerdefinierten Kennwort ersetzen. 
-
-Zwei Arten von Schlüsseln werden für den Zugriff auf Ihren Suchdienst verwendet:
-
-* Admin (gültig für alle Lese-/Schreibvorgänge für den Dienst)
-* Abfrage (gültig für Lesevorgänge, z.B. Abfragen eines Index)
-
-Ein Admin-API-Schlüssel wird erstellt, wenn der Dienst bereitgestellt wird. Es gibt zwei Administratorschlüssel, die zur besseren Unterscheidung als *primärer* und *sekundärer* Schlüssel bezeichnet werden. In Wirklichkeit sind sie aber austauschbar. Jeder Dienst verfügt über zwei Admin-Schlüssel, sodass Sie für einen Schlüssel ein Rollover durchführen können, ohne den Zugriff auf den Dienst zu verlieren. Sie können beide Admin-Schlüssel austauschen, können allerdings keine weiteren Schlüssel hinzufügen. Pro Dienst können maximal zwei Admin-Schlüssel vorhanden sein.
-
-Abfrage-Schlüssel sind für Clientanwendungen bestimmt, bei denen Search direkt aufgerufen wird. Sie können bis zu 50 Abfrage-Schlüssel generieren. Im Anwendungscode geben Sie die Such-URL und einen Abfrage-API-Schlüssel ein, um den Lesezugriff auf den Dienst zuzulassen. Im Anwendungscode wird auch der Index angegeben, der von der Anwendung verwendet wird. Zusammen definieren der Endpunkt, ein API-Schlüssel für den Lesezugriff und ein Zielindex den Bereich und die Zugriffsebene der Verbindung von Ihrer Clientanwendung.
-
-Öffnen Sie das Dienst-Dashboard, um API-Schlüssel abzurufen oder zu generieren. Klicken Sie auf **SCHLÜSSEL**, um die Schlüsselverwaltungsseite zu öffnen. Sie finden die Befehle zum Generieren bzw. erneuten Generieren von Schlüsseln am oberen Seitenrand. Standardmäßig werden nur Admin-Schlüssel erstellt. Abfrage-API-Schlüssel müssen manuell erstellt werden.
-
- ![][9]
-
-<a id="rbac"></a>
-
-## <a name="secure-api-keys"></a>Sichern von API-Schlüsseln
-Die Sicherheit der Schlüssel wird erreicht, indem der Zugriff über das Portal oder Resource Manager-Oberflächen (PowerShell oder Befehlszeilenschnittstelle) eingeschränkt wird. Wie bereits erwähnt, können Abonnementadministratoren alle API-Schlüssel anzeigen und neu generieren. Informieren Sie sich über Rollenzuweisungen, damit Sie wissen, wer Zugriff auf die Admin-Schlüssel hat.
-
-1. Klicken Sie im Dashboard des Diensts auf das Zugriffssymbol, um das Blatt „Benutzer“ zu öffnen.
-   ![][7]
-2. Sehen Sie sich auf dem Blatt „Benutzer“ die vorhandenen Rollenzuweisungen an. Wie Sie bereits vermuten, haben Abonnementadministratoren über die Rolle „Besitzer“ bereits Vollzugriff auf den Dienst.
-3. Fahren Sie fort, indem Sie auf **Abonnementadministratoren** klicken. Erweitern Sie dann die Liste mit den Rollenzuweisungen, um zu ermitteln, wer über Co-Administratorrechte für Ihren Suchdienst verfügt.
-
-Eine weitere Möglichkeit zum Anzeigen der Zugriffsberechtigungen besteht darin, auf dem Blatt „Benutzer“ auf **Rollen** zu klicken. Die verfügbaren Rollen und die Anzahl von Benutzern oder Gruppen, die einer Rolle jeweils zugewiesen sind, werden angezeigt.
 
 <a id="sub-5"></a>
 
@@ -184,9 +138,6 @@ Außerdem wird empfohlen, dass Sie sich den [Artikel zu Leistung und Optimierung
 Es wird ebenfalls empfohlen, sich das im vorherigen Abschnitt erwähnte Video anzusehen. Er bietet umfangreichere Informationen zu den in diesem Abschnitt erwähnten Verfahren.
 
 <!--Image references-->
-[7]: ./media/search-manage/rbac-icon.png
-[8]: ./media/search-manage/Azure-Search-Manage-1-URL.png
-[9]: ./media/search-manage/Azure-Search-Manage-2-Keys.png
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png
 
 

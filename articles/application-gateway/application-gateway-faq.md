@@ -1,6 +1,6 @@
 ---
-title: "Häufig gestellte Fragen zu Azure Application Gateway | Microsoft-Dokumentation"
-description: "Diese Seite enthält Antworten auf häufig gestellte Fragen zu Azure Application Gateway."
+title: Häufig gestellte Fragen zu Azure Application Gateway | Microsoft-Dokumentation
+description: Diese Seite enthält Antworten auf häufig gestellte Fragen zu Azure Application Gateway.
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
-ms.openlocfilehash: f92af44df9863bbf48abb4afcf9b1505c843fadc
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 5b400b373577fc38fe108a74eb8bad936a82be0c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -136,10 +136,6 @@ Benutzerdefinierte Überprüfungen unterstützen keine Platzhalter/regulären Au
 
 Regeln werden gemäß der Konfigurationsreihenfolge verarbeitet. Es empfiehlt sich, Regeln für mehrere Standorte vor einfachen Regeln zu konfigurieren, um zu vermeiden, dass Datenverkehr an das falsche Back-End weitergeleitet wird, weil die einfache Regel auf der Grundlage des Ports zu dem Datenverkehr passen würde, bevor die Regel für mehrere Standorte ausgewertet wurde.
 
-**F: Wie werden Regeln verarbeitet?**
-
-Regeln werden gemäß der Erstellungsreihenfolge verarbeitet. Es wird empfohlen, Regeln für mehrere Standorte vor einfachen Regeln zu konfigurieren. Indem Listener mit mehreren Standorten zuerst konfiguriert werden, ist es weniger wahrscheinlich, dass Datenverkehr an das ungeeignete Back-End weitergeleitet wird. Dieses Routingproblem kann auftreten, wenn die einfache Regel auf der Grundlage des Ports dem Datenverkehr zugeordnet wird, bevor die Regel für mehrere Standorte ausgewertet wird.
-
 **F: Was ist im Feld „Host“ für benutzerdefinierte Überprüfungen angegeben?**
 
 Das Feld „Host“ gibt den Namen an, an den die Überprüfung zu senden ist. Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie 127.0.0.1. Dieser Wert entspricht nicht dem VM-Hostnamen und weist folgendes Format auf: \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\>.
@@ -160,9 +156,9 @@ Dieses Szenario können Sie mithilfe von Netzwerksicherheitsgruppen im Applicati
 
 ## <a name="performance"></a>Leistung
 
-**F: Wie unterstützt Application Gateway hohe Verfügbarkeit und Skalierbarkeit?**
+**F: Wie unterstützt Application Gateway Hochverfügbarkeit und Skalierbarkeit?**
 
-Application Gateway unterstützt Szenarios mit hoher Verfügbarkeit, wenn zwei oder mehr Instanzen bereitgestellt werden. Azure verteilt diese Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Application Gateway unterstützt Skalierbarkeit durch Hinzufügen mehrerer Instanzen des gleichen Gateways, um die Last zu teilen.
+Application Gateway unterstützt Szenarios mit Hochverfügbarkeit, wenn zwei oder mehr Instanzen bereitgestellt werden. Azure verteilt diese Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Application Gateway unterstützt Skalierbarkeit durch Hinzufügen mehrerer Instanzen des gleichen Gateways, um die Last zu teilen.
 
 **F: Wie erziele ich mit Application Gateway ein rechenzentrumsübergreifendes DR-Szenario?**
 

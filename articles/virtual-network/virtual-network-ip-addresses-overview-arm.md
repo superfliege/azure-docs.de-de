@@ -1,11 +1,11 @@
 ---
 title: IP-Adresstypen in Azure | Microsoft-Dokumentation
-description: "Enthält Informationen zu öffentlichen und privaten IP-Adressen in Azure."
+description: Enthält Informationen zu öffentlichen und privaten IP-Adressen in Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 610b911c-f358-4cfe-ad82-8b61b87c3b7e
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/16/2017
 ms.author: jdial
-ms.openlocfilehash: e3baedba814cf6ac19df72c49e1c95ea2cd5cf73
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: a5cda1b5ecb686c9b03da27bdbca42ddc1a74f54
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -68,13 +68,10 @@ Für öffentliche IP-Adressen vom Typ „Standard-SKU“ gilt Folgendes:
 
 - Sie werden nur mit der statischen Zuordnungsmethode zugewiesen.
 - Sie können Netzwerkschnittstellen oder Standard-Lastenausgleichsmodulen mit Internetzugriff zugewiesen werden. Weitere Informationen zu SKUs von Azure Load Balancer finden Sie unter [Azure load balancer standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Standard-SKU von Azure Load Balancer).
-- Sie sind standardmäßig zonenredundant. Können in Zonen erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden.  Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Overview of Availability Zones in Azure (Preview)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Übersicht über Verfügbarkeitszonen in Azure (Vorschau)).
+- Sie sind standardmäßig zonenredundant. Können in Zonen erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Overview of Availability Zones in Azure (Preview)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Übersicht über Verfügbarkeitszonen in Azure (Vorschau)).
  
 > [!NOTE]
-> Wenn Sie eine öffentliche IP-Adresse für eine Standard-SKU der Netzwerkschnittstelle eines virtuellen Computers zuweisen, müssen Sie den geplanten Datenverkehr explizit mit einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) zulassen.  Die Kommunikation mit der Ressource schlägt fehl, bis Sie eine Netzwerksicherheitsgruppe erstellen und den gewünschten Datenverkehr explizit zulassen.
-
-Die Standard-SKU befindet sich in der Vorschauversion. Vor dem Erstellen einer öffentlichen IP-Adresse vom Typ „Standard-SKU“ müssen Sie sich zuerst für die Vorschauversion registrieren und die Adresse an einem unterstützten Standort erstellen. Unter [Register for the standard SKU preview](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview) (Registrieren für die Vorschauversion der Standard-SKU) können Sie sich für die Vorschauversion registrieren. Eine Liste mit den unterstützten Standorten (Regionen) finden Sie unter [Region availability](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability) (Regionsverfügbarkeit). Auf der Seite [Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network) (Updates für Azure Virtual Network) erhalten Sie außerdem zusätzlichen Support für Regionen.
-
+> Wenn Sie der Netzwerkschnittstelle eines virtuellen Computers eine öffentliche IP-Adresse für eine Standard-SKU zuweisen, müssen Sie den geplanten Datenverkehr explizit mit einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) zulassen. Die Kommunikation mit der Ressource schlägt fehl, bis Sie eine Netzwerksicherheitsgruppe erstellen und zuordnen und den gewünschten Datenverkehr explizit zulassen.
 
 ### <a name="allocation-method"></a>Zuordnungsmethode
 
@@ -123,12 +120,12 @@ Sie können eine öffentliche IP-Adresse einem Azure [Application Gateway](../ap
 ### <a name="at-a-glance"></a>Auf einen Blick
 In der Tabelle unten sind die spezifischen Eigenschaften, über die eine öffentliche IP-Adresse einer Ressource der obersten Ebene zugeordnet sein kann, und die möglichen Zuweisungsverfahren (dynamisch oder statisch) angegeben.
 
-| Ressource der obersten Ebene | Zuordnung der IP-Adresse | dynamisch | statisch |
+| Ressource der obersten Ebene | Zuordnung der IP-Adresse | Dynamisch | statischen |
 | --- | --- | --- | --- |
 | Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
 | Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |Ja |Ja |
-| VPN Gateway |Gateway-IP-Konfiguration |Ja |Nein |
-| Anwendungsgateway |Front-End-Konfiguration |Ja |Nein |
+| VPN-Gateway |Gateway-IP-Konfiguration |Ja |Nein  |
+| Anwendungsgateway |Front-End-Konfiguration |Ja |Nein  |
 
 ## <a name="private-ip-addresses"></a>Private IP-Adressen
 Private IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit anderen Ressourcen in einem [virtuellen Netzwerk](virtual-networks-overview.md) oder in einem lokalen Netzwerk über ein VPN-Gateway oder eine ExpressRoute-Verbindung, ohne dass dabei eine über das Internet erreichbare IP-Adresse verwendet wird.
@@ -171,13 +168,13 @@ Sie können der **Front-End**-Konfiguration eines [internen Azure-Lastenausgleic
 ### <a name="at-a-glance"></a>Auf einen Blick
 In der Tabelle unten sind die spezifischen Eigenschaften, über die eine private IP-Adresse einer Ressource der obersten Ebene zugeordnet sein kann, und die möglichen Zuweisungsverfahren (dynamisch oder statisch) angegeben.
 
-| Ressource der obersten Ebene | Zuordnung der IP-Adresse | dynamisch | statisch |
+| Ressource der obersten Ebene | Zuordnung der IP-Adresse | dynamisch | statischen |
 | --- | --- | --- | --- |
 | Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
 | Load Balancer |Front-End-Konfiguration |Ja |Ja |
 | Anwendungsgateway |Front-End-Konfiguration |Ja |Ja |
 
-## <a name="limits"></a>Grenzen
+## <a name="limits"></a>Einschränkungen
 Die Grenzwerte für die IP-Adressierung finden Sie in den vollständigen Informationen zu [Grenzwerten für Netzwerke](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Azure. Die Grenzwerte gelten pro Region und pro Abonnement. Sie können sich [an den Support wenden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , um die Standardgrenzwerte je nach Ihren Unternehmensanforderungen bis auf die maximalen Grenzwerte zu erhöhen.
 
 ## <a name="pricing"></a>Preise

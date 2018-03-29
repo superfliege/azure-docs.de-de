@@ -2,10 +2,9 @@
 title: Kopien von Daten in/aus Oracle mit Data Factory | Microsoft Dokumentation
 description: Informationen zum Kopieren von Daten in und aus einer Oracle-Datenbank, die lokal oder mithilfe von Azure Data Factory gehostet wird.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 82fe637b46decfc9c8d09b5c7e03f328a8636263
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 64e8a20f72d451908c12751c0f8062bf4ae86370
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Kopieren von Daten in lokales/aus lokalem Oracle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -197,7 +196,7 @@ Das Beispiel kopiert Daten stündlich aus einer Tabelle einer lokalen Oracle-Dat
 }
 ```
 
-**Mit Azure-Blobspeicher verknüpfter Dienst:**
+**Mit Azure Blob Storage verknüpfter Dienst:**
 
 ```json
 {
@@ -356,7 +355,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 ```
 
 ## <a name="example-copy-data-from-azure-blob-to-oracle"></a>Beispiel: Kopieren von Daten aus einem Azure-Blob in Oracle
-In diesem Beispiel wird gezeigt, wie Sie Daten aus Azure Blog Storage in eine lokale Oracle-Datenbank kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus den [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Quellen kopiert werden.  
+In diesem Beispiel wird gezeigt, wie Sie Daten aus Azure Blob Storage in eine lokale Oracle-Datenbank kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus den [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Quellen kopiert werden.  
 
 Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
@@ -383,7 +382,7 @@ Das Beispiel kopiert Daten stündlich aus einem Blob in eine Tabelle in einer lo
 }
 ```
 
-**Mit Azure-Blobspeicher verknüpfter Dienst:**
+**Mit Azure Blob Storage verknüpfter Dienst:**
 ```json
 {
     "name": "StorageLinkedService",

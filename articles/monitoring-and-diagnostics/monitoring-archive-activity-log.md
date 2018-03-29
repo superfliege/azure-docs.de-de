@@ -1,9 +1,9 @@
 ---
-title: "Archivieren des Azure-Aktivitätsprotokolls | Microsoft Docs"
-description: "Hier erfahren Sie, wie Sie Ihr Azure-Aktivitätsprotokoll zur langfristigen Aufbewahrung in einem Speicherkonto archivieren."
+title: Archivieren des Azure-Aktivitätsprotokolls | Microsoft Docs
+description: Hier erfahren Sie, wie Sie Ihr Azure-Aktivitätsprotokoll zur langfristigen Aufbewahrung in einem Speicherkonto archivieren.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.openlocfilehash: 0b041cc6a986c6f7a11d213f03294c9716c20d04
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ee634b3acf0fa8815b69aef21e6213aee636ce1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivieren des Azure-Aktivitätsprotokolls
 In diesem Artikel erfahren Sie, wie Sie Ihr [**Azure-Aktivitätsprotokoll**](monitoring-overview-activity-logs.md) über das Azure-Portal, mithilfe von PowerShell-Cmdlets oder mithilfe der plattformübergreifenden Befehlszeilenschnittstelle in einem Speicherkonto archivieren. Dies ist hilfreich, wenn Sie Ihr Aktivitätsprotokoll (bei vollständiger Kontrolle über die Aufbewahrungsrichtlinie) zur Überwachung, statischen Analyse oder als Sicherungskopie länger als 90 Tage aufbewahren möchten. Falls Sie Ihre Ereignisse nur maximal 90 Tage lang aufbewahren möchten, müssen Sie keine Archivierung in einem Speicherkonto einrichten, da Aktivitätsprotokollereignisse in der Azure-Plattform auch ohne aktivierte Archivierung 90 Tage lang aufbewahrt werden.
@@ -164,7 +164,7 @@ Die einzelnen Ereignisse werden innerhalb der Datei „PT1H.json“ im folgenden
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Herunterladen von Blobs für die Analyse](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
+* [Herunterladen von Blobs für die Analyse](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [Streamen des Aktivitätsprotokolls an Event Hubs](monitoring-stream-activity-logs-event-hubs.md)
 * [Weitere Informationen zum Aktivitätsprotokoll](monitoring-overview-activity-logs.md)
 

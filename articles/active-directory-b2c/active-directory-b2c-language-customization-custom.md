@@ -1,23 +1,23 @@
 ---
 title: 'Azure Active Directory B2C: Sprachanpassung in benutzerdefinierten Richtlinien | Microsoft-Dokumentation'
-description: "Erfahren Sie, wie Sie Inhalte in benutzerdefinierten Richtlinien für mehrere Sprachen lokalisieren"
+description: Erfahren Sie, wie Sie Inhalte in benutzerdefinierten Richtlinien für mehrere Sprachen lokalisieren
 services: active-directory-b2c
-documentationcenter: 
-author: sammak
+documentationcenter: ''
+author: davidmu1
+manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 11/13/2017
-ms.author: sama
-ms.openlocfilehash: 4ed9791d6590e3982a1bc79b96f8592995bc315c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: davidmu
+ms.openlocfilehash: 45cfa152615da1447cc695e0dd201e5b8d046cf4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="language-customization-in-custom-policies"></a>Sprachanpassung in benutzerdefinierten Richtlinien
+# <a name="language-customization-in-custom-policies"></a>Sprachanpassung in benutzerdefinierten Richtlinien
 
 > [!NOTE]
 > Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/15/2017
 
 In benutzerdefinierten Richtlinien funktioniert die Sprachanpassung genau so wie bei den integrierten Richtlinien.  Lesen Sie in der integrierten [Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-language-customization) nach, die das Verhalten bei der Auswahl der Sprache basierend auf Parametern und Browsereinstellungen beschreibt.
 
-##<a name="enable-supported-languages"></a>Aktivieren unterstützter Sprachen
+## <a name="enable-supported-languages"></a>Aktivieren unterstützter Sprachen
 Wenn „ui-locales“ nicht angegeben wurde und der Browser des Benutzers nach einer dieser Sprachen fragt, werden die unterstützten Sprachen dem Benutzer angezeigt.  
 
 Unterstützte Sprachen sind in `<BuildingBlocks>` im folgenden Format definiert:
@@ -43,7 +43,7 @@ Unterstützte Sprachen sind in `<BuildingBlocks>` im folgenden Format definiert:
 
 Standardsprache und unterstützte Sprachen verhalten sich ebenso wie in den integrierten Richtlinien.
 
-##<a name="enable-custom-language-strings"></a>Aktivieren von Zeichenfolgen in einer benutzerdefinierten Sprache
+## <a name="enable-custom-language-strings"></a>Aktivieren von Zeichenfolgen in einer benutzerdefinierten Sprache
 
 Für das Erstellen von Zeichenfolgen in einer benutzerdefinierten Sprache sind zwei Schritte erforderlich:
 1. Bearbeiten der `<ContentDefinition>` für die Seite, um eine Ressourcen-ID für die gewünschten Sprachen anzugeben
@@ -51,7 +51,7 @@ Für das Erstellen von Zeichenfolgen in einer benutzerdefinierten Sprache sind z
 
 Beachten Sie, dass Sie abhängig davon, ob die Änderungen für alle Ihre erbenden Richtlinien übernommen werden sollen oder nicht, eine `<ContentDefinition>` und einen `<BuildingBlock>` sowohl in Ihrer Erweiterungsdatei als auch in der zugrundeliegenden Richtliniendatei ablegen können.
 
-###<a name="edit-the-contentdefinition-for-the-page"></a>Bearbeiten der ContentDefinition für die Seite
+### <a name="edit-the-contentdefinition-for-the-page"></a>Bearbeiten der ContentDefinition für die Seite
 
 Für jede Seite, die Sie lokalisieren möchten, können Sie in der `<ContentDefinition>` angeben, welche Sprachressourcen für die einzelnen Sprachcodes gesucht werden sollen.
 
@@ -67,7 +67,7 @@ Für jede Seite, die Sie lokalisieren möchten, können Sie in der `<ContentDefi
 In diesem Beispiel werden benutzerdefinierte Zeichenfolgen für Französisch („fr“) und Englisch („en“) zur Unified-Registrierungs- oder -Anmeldeseite hinzugefügt.  Die `LocalizedResourcesReferenceId` für jede `LocalizedResourcesReference` ist identisch mit ihrem Gebietsschema, Sie können aber eine beliebige Zeichenfolge als ID verwenden.  Für jede Sprach- und Seitenkombination müssen Sie wie nachfolgend gezeigt entsprechende `<LocalizedResources>` erstellen.
 
 
-###<a name="create-the-localizedresources"></a>Erstellen von LocalizedResources
+### <a name="create-the-localizedresources"></a>Erstellen von LocalizedResources
 
 Ihre Außerkraftsetzungen sind in Ihren `<BuildingBlocks>` enthalten, und es gibt `<LocalizedResources>` für jede Seite und die in der `<ContentDefinition>` der jeweiligen Seite angegebene Sprache.  Jede Außerkraftsetzung wird wie im folgenden Beispiel gezeigt als `<LocalizedString>` angegeben:
 

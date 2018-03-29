@@ -2,10 +2,9 @@
 title: Verschieben von Daten nach/aus Azure Cosmos DB | Microsoft-Dokumentation
 description: Erfahren Sie, wie Daten mithilfe von Azure Data Factory in eine bzw. aus einer Azure Cosmos DB-Sammlung verschoben werden.
 services: data-factory, cosmosdb
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: c9297b71-1bb4-4b29-ba3c-4cf1f5575fac
 ms.service: multiple
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 89b860bb4174a06c17da1db2bce2eaa11832b0b2
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 996fdd9934d79f1640e58c7853564ac05ebb90bb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Verschieben von Daten nach und aus Azure Cosmos DB mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -174,7 +173,7 @@ Im Beispiel werden die Daten aus Azure Cosmos DB in ein Azure-Blob kopiert. Die 
   }
 }
 ```
-**Mit Azure-Blobspeicher verknüpfter Dienst:**
+**Mit Azure Blob Storage verknüpfter Dienst:**
 
 ```JSON
 {
@@ -310,7 +309,7 @@ Das nachstehende Beispiel zeigt Folgendes:
 
 Im Beispiel werden Daten aus dem Azure-Blob nach Azure Cosmos DB kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
-**Mit Azure-Blobspeicher verknüpfter Dienst:**
+**Mit Azure Blob Storage verknüpfter Dienst:**
 
 ```JSON
 {

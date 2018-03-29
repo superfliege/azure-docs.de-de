@@ -1,11 +1,11 @@
 ---
 title: Grundlagen zur Verwaltung von Azure Stack | Microsoft-Dokumentation
-description: "Erfahren Sie alles, was Sie über die Verwaltung von Azure Stack wissen müssen."
+description: Erfahren Sie alles, was Sie über die Verwaltung von Azure Stack wissen müssen.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
 ms.service: azure-stack
 ms.workload: na
@@ -14,16 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: fa77faac195de3be7bf7b2785eb589b030a6e6ce
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 799651caf937ca2bafc79dc76f99ae43e700673a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-administration-basics"></a>Grundlagen zur Verwaltung von Azure Stack
-
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
-
 Wenn Sie nicht mit der Azure Stack-Verwaltung vertraut sind, gibt es verschiedene Punkte, die Ihnen bekannt sein müssen. Dieser Leitfaden enthält einen Überblick über Ihre Rolle als Azure Stack-Betreiber sowie Informationen, die Sie Ihren Benutzern bereitstellen müssen, damit diese rasch Produktivitätssteigerungen erzielen können.
 
 ## <a name="understand-the-builds"></a>Grundlegendes zu den Builds
@@ -134,6 +131,6 @@ Fragen rund um den Support für das Development Kit können Sie in den [Microsof
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Regionsverwaltung in Azure Stack](azure-stack-region-management.md)
+- [Region management in Azure Stack](azure-stack-region-management.md) (Regionsverwaltung in Azure Stack)
 
 

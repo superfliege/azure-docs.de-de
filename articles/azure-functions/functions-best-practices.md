@@ -1,13 +1,13 @@
 ---
-title: "Bewährte Methoden für Azure Functions | Microsoft-Dokumentation"
-description: "Enthält Beschreibungen der bewährten Methoden und Muster für Azure Functions."
+title: Bewährte Methoden für Azure Functions | Microsoft-Dokumentation
+description: Enthält Beschreibungen der bewährten Methoden und Muster für Azure Functions.
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, Muster, bewährte Methoden, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur"
+editor: ''
+tags: ''
+keywords: Azure Functions, Muster, bewährte Methoden, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: functions
 ms.devlang: multiple
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8088a8a83bcaefce17ac2756360a46119c8eb27
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 19ca9d70f769a19556d131d1d131f1bc9d107ef0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
@@ -99,7 +99,7 @@ Die asynchrone Programmierung wird als bewährte Methode empfohlen. Vermeiden Si
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Empfangen von Nachrichten in Batches (sofern möglich)
 
-Einige Trigger wie Event Hub ermöglichen das Erhalten von mehreren Nachrichten in einem einzigen Aufruf.  Die Batchverarbeitung von Nachrichten ermöglicht eine viel bessere Leistung.  Sie können die maximale Batchgröße in der Datei `functions.json` wie in der [Dokumentation zur host.json-Referenz](functions-host-json.md) konfigurieren.
+Einige Trigger wie Event Hub ermöglichen das Erhalten von mehreren Nachrichten in einem einzigen Aufruf.  Die Batchverarbeitung von Nachrichten ermöglicht eine viel bessere Leistung.  Sie können die maximale Batchgröße in der Datei `host.json` wie in der [Dokumentation zur host.json-Referenz](functions-host-json.md) konfigurieren.
 
 Bei C#-Funktionen können Sie den Typ in ein stark typisiertes Array ändern.  Beispielsweise könnte die Methodensignatur `EventData sensorEvent` statt `EventData[] sensorEvent` lauten.  Bei anderen Sprachen müssen Sie die Kardinalitätseigenschaft explizit in Ihrer `function.json` auf `many` festlegen, um die Batchverarbeitung [wie hier gezeigt](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10) zu aktivieren.
 

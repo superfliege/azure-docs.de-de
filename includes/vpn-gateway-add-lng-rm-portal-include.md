@@ -1,3 +1,19 @@
+---
+title: Includedatei
+description: Includedatei
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 932aab3f16a571d4c83c77c1cc2274ae60ea3d35
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/23/2018
+---
 1. Klicken Sie im Portal im Abschnitt **Alle Ressourcen** auf **+Hinzufügen**.
 2. Geben Sie im Suchfeld der Seite **Alles** den Text **Lokales Netzwerkgateway** ein, und klicken Sie, damit eine Liste mit Ressourcen zurückgegeben wird. Klicken Sie auf **Lokales Netzwerkgateway**, um die Seite zu öffnen. Klicken Sie dann auf **Erstellen**, um die Seite **Lokales Netzwerkgateway erstellen** zu öffnen.
 

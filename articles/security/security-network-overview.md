@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: e477ce9a5f9f35d88a6faeb68ee4e0403f64c030
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0e32cd1f4267b9ae0825fbb34ed00e25dd1b63b5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-network-security-overview"></a>Die Netzwerksicherheit in Azure im Überblick
 Microsoft Azure verfügt über eine robuste Netzwerkinfrastruktur zur Unterstützung der Konnektivitätsanforderungen Ihrer Anwendungen und Dienste. Netzwerkkonnektivität ist zwischen Ressourcen in Azure, zwischen lokalen und in Azure gehosteten Ressourcen und zu und aus dem Internet und Azure möglich.
@@ -252,11 +252,11 @@ Azure bietet Funktionen, die Sie in diesem wichtigen Bereich durch eine frühe E
 ### <a name="azure-network-watcher"></a>Azure Network Watcher
 Azure Network Watcher beinhaltet eine Vielzahl von Funktionen, die bei der Behebung von Problemen helfen und einen komplett neuen Satz von Tools bereitstellen, um bei der Identifizierung von Sicherheitsproblemen zu unterstützen.
 
-Die [Sicherheitsgruppenansicht ](/network-watcher/network-watcher-security-group-view-overview.md) unterstützt bei der Überprüfung und Sicherheitskonformität von VMs (Virtual Machines) und kann zur Durchführung von programmgesteuerten Prüfungen verwendet werden, um die von Ihrem Unternehmen definierten Basisrichtlinien mit den effektiven Regeln für all Ihre VMs zu vergleichen. Hierdurch können Konfigurationsabweichungen einfacher festgestellt werden.
+Die [Sicherheitsgruppenansicht ](../network-watcher/network-watcher-security-group-view-overview.md) unterstützt bei der Überprüfung und Sicherheitskonformität von VMs (Virtual Machines) und kann zur Durchführung von programmgesteuerten Prüfungen verwendet werden, um die von Ihrem Unternehmen definierten Basisrichtlinien mit den effektiven Regeln für all Ihre VMs zu vergleichen. Hierdurch können Konfigurationsabweichungen einfacher festgestellt werden.
 
-Die [Paketerfassung](/network-watcher/network-watcher-packet-capture-overview.md) ermöglicht die Erfassung des Netzwerkdatenverkehrs zur und von der virtuellen Maschine. Neben der Sammlung von Netzwerkstatistiken und der Behebung von Anwendungsproblemen kann die Paketerfassung auch hinsichtlich der Überprüfung von Angriffen auf das Netzwerk von unschätzbarem Wert sein. Sie können diese Funktion auch zusammen mit Azure Functions verwenden, um als Reaktion auf bestimmte Azure-Warnungen Netzwerkaufnahmen zu starten.
+Die [Paketerfassung](../network-watcher/network-watcher-packet-capture-overview.md) ermöglicht die Erfassung des Netzwerkdatenverkehrs zur und von der virtuellen Maschine. Neben der Sammlung von Netzwerkstatistiken und der Behebung von Anwendungsproblemen kann die Paketerfassung auch hinsichtlich der Überprüfung von Angriffen auf das Netzwerk von unschätzbarem Wert sein. Sie können diese Funktion auch zusammen mit Azure Functions verwenden, um als Reaktion auf bestimmte Azure-Warnungen Netzwerkaufnahmen zu starten.
 
-Um weitere Informationen zu Azure Network Watcher zu erhalten und zu erfahren, wie Sie einige Funktionen in Ihren Übungen prüfen, lesen Sie [Übersicht über die Überwachung in Azure Network Watcher](/network-watcher/network-watcher-monitoring-overview.md).
+Um weitere Informationen zu Azure Network Watcher zu erhalten und zu erfahren, wie Sie einige Funktionen in Ihren Übungen prüfen, lesen Sie [Übersicht über die Überwachung in Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md).
 
 >[!NOTE]
 Azure Network Watcher befindet sich noch in der öffentlichen Vorschauphase und weist daher unter Umständen nicht dasselbe Maß an Verfügbarkeit und Zuverlässigkeit auf wie Dienste in Versionen mit allgemeiner Verfügbarkeit. Bestimmte Features werden eventuell nicht unterstützt, bieten möglicherweise eingeschränkte Funktionen und sind vielleicht nicht an allen Azure-Standorten verfügbar. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Diensts finden Sie auf der Seite mit [Azure-Updates](https://azure.microsoft.com/updates/?product=network-watcher).

@@ -1,19 +1,19 @@
 ---
 title: Kopieren von Daten nach oder aus Azure Blob Storage mit Data Factory | Microsoft-Dokumentation
-description: "Erfahren Sie, wie mithilfe von Data Factory Daten aus unterstützten Quelldatenspeichern nach Azure Blob Storage oder aus Blob Storage in unterstützte Senkendatenspeicher kopiert werden."
+description: Erfahren Sie, wie mithilfe von Data Factory Daten aus unterstützten Quelldatenspeichern nach Azure Blob Storage oder aus Blob Storage in unterstützte Senkendatenspeicher kopiert werden.
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: d492147b8855d8f1ef64d3421c62e11a1951eadd
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b0eca20a801bbe431eff8ed0accffe2705d6c41c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

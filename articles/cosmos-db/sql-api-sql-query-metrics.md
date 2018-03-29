@@ -1,9 +1,9 @@
 ---
-title: "SQL-Abfragemetriken für die Azure Cosmos DB-SQL-API | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie die SQL-Abfrageleistung von Azure Cosmos DB-Anforderungen instrumentiert und ein Debugging durchgeführt wird."
+title: SQL-Abfragemetriken für die Azure Cosmos DB-SQL-API | Microsoft-Dokumentation
+description: Erfahren Sie, wie die SQL-Abfrageleistung von Azure Cosmos DB-Anforderungen instrumentiert und ein Debugging durchgeführt wird.
 keywords: SQL-Syntax, SQL-Abfrage, SQL-Abfragen, JSON-Abfragesprache, Datenbankkonzepte und SQL-Abfragen, Aggregatfunktionen
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
 editor: monicar
@@ -15,15 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: a2a42fd65ba4344f703ca423dc451802f3f0ac76
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: a92d2ed1686765a54812ff82066bc30c1d48848d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Azure Cosmos DB bietet eine [SQL-API zum Abfragen von Daten](sql-api-sql-query.md), ohne dass Schemas oder sekundäre Indizes erforderlich sind. Dieser Artikel enthält folgende Informationen für Entwickler:
 

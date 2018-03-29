@@ -1,24 +1,21 @@
 ---
-title: "Tokenreferenz – Azure AD B2C | Microsoft-Dokumentation"
-description: "Enthält eine Beschreibung der Typen von Token, die in Azure Active Directory B2C ausgegeben werden"
+title: Tokenreferenz – Azure AD B2C | Microsoft-Dokumentation
+description: Enthält eine Beschreibung der Typen von Token, die in Azure Active Directory B2C ausgegeben werden
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 6df79878-65cb-4dfc-98bb-2b328055bc2e
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: parakhj
-ms.openlocfilehash: ce82fcc82cf411d1596fea56ff368d96eceeff38
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: e5cc6a0974f9481491518779209ec5256870921f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Referenz zu Azure AD B2C-Token
 
@@ -27,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) stellt bei der Verarbeitung der einzel
 ## <a name="types-of-tokens"></a>Tokentypen
 Azure AD B2C unterstützt das [OAuth 2.0-Autorisierungsprotokoll](active-directory-b2c-reference-protocols.md), für das Zugriffstoken und Aktualisierungstoken verwendet werden. Darüber hinaus wird die Authentifizierung und Anmeldung über [OpenID Connect](active-directory-b2c-reference-protocols.md) unterstützt. Dabei wird ein dritter Tokentyp eingeführt, das ID-Token. Alle diese Token werden als Bearertoken dargestellt.
 
-Ein Bearertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. Der Bearer ist jede beliebige Partei, die das Token vorweisen kann. Azure AD B2C muss eine Partei zunächst authentifizieren, damit sie ein Bearertoken erhalten kann. Falls jedoch nicht die erforderlichen Schritte ausgeführt werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer nicht vorgesehenen Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine Verwendung durch nicht autorisierte Parteien verhindert, Bearertoken besitzen diesen Mechanismus jedoch nicht. Sie und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden.
+Ein Bearertoken ist ein einfaches Sicherheitstoken, das dem Inhaber, dem „Bearer“, den Zugriff auf eine geschützte Ressource ermöglicht. Der Bearer ist jede beliebige Partei, die das Token vorweisen kann. Azure AD B2C muss eine Partei zunächst authentifizieren, damit sie ein Bearertoken erhalten kann. Falls jedoch nicht die erforderlichen Schritte ausgeführt werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer nicht vorgesehenen Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine Verwendung durch nicht autorisierte Parteien verhindert, Bearertoken besitzen diesen Mechanismus jedoch nicht. Sie und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden.
 
 Wird ein Bearertoken außerhalb eines sicheren Kanals gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abrufen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Bearertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert.
 
@@ -71,10 +68,10 @@ Bei der Verwendung von Azure AD B2C verfügen Sie über eine präzise Kontrolle 
 
 Beachten Sie, dass die Ansprüche in ID-Token nicht in einer bestimmten Reihenfolge zurückgegeben werden. Darüber hinaus können jederzeit neue Ansprüche in ID-Token eingeführt werden Ihre App darf nicht unterbrochen werden, wenn neue Ansprüche eingeführt werden. Im Folgenden finden Sie die Ansprüche, von denen Sie erwarten, dass sie in den von Azure AD B2C ausgegebenen ID- und Zugriffstoken enthalten sind. Alle weiteren Ansprüche werden anhand von Richtlinien bestimmt. Überprüfen Sie zu Übungszwecken die Ansprüche im ID-Beispieltoken, indem Sie sie in [jwt.ms](https://jwt.ms) einfügen. Weitere Informationen finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html).
 
-| Name | Anspruch | Beispielwert | Beschreibung |
+| NAME | Anspruch | Beispielwert | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | Zielgruppe |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Ein „Audience“-Anspruch identifiziert den vorgesehenen Empfänger des Tokens. Für Azure AD B2C ist die Zielgruppe die Anwendungs-ID der App, die Ihrer App im App-Registrierungsportal zugewiesen wurde. Ihre App sollte diesen Wert überprüfen und das Token ablehnen, wenn er nicht übereinstimmt. |
-| Aussteller |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |Dieser Anspruch identifiziert den Sicherheitstokendienst (STS), der das Token erstellt und zurückgibt. Er identifiziert auch das Azure AD-Verzeichnis, in dem der Benutzer authentifiziert wurde. Ihre App sollte den Ausstelleranspruch überprüfen, um sicherzustellen, dass das Token vom Endpunkt von Azure Active Directory mit der Version 2.0 stammt. |
+| Issuer (Aussteller) |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |Dieser Anspruch identifiziert den Sicherheitstokendienst (STS), der das Token erstellt und zurückgibt. Er identifiziert auch das Azure AD-Verzeichnis, in dem der Benutzer authentifiziert wurde. Ihre App sollte den Ausstelleranspruch überprüfen, um sicherzustellen, dass das Token vom Endpunkt von Azure Active Directory mit der Version 2.0 stammt. |
 | Ausgestellt um |`iat` |`1438535543` |Dieser Anspruch ist die Zeit, zu der das Token ausgestellt wurde (dargestellt als Epochenzeit) |
 | Ablaufzeit |`exp` |`1438539443` |Der Ablaufzeit-Anspruch ist die Zeit, zu der das Token ungültig wird (dargestellt als Epochenzeit) Ihre App sollte mit diesem Anspruch die Gültigkeit der Tokenlebensdauer überprüfen. |
 | Nicht vor |`nbf` |`1438535543` |Dieser Anspruch ist die Zeit, zu der das Token gültig wird (dargestellt als Epochenzeit). Dieser Wert ist normalerweise mit dem Ausstellungszeitpunkt des Tokens identisch. Ihre App sollte mit diesem Anspruch die Gültigkeit der Tokenlebensdauer überprüfen. |
@@ -82,7 +79,7 @@ Beachten Sie, dass die Ansprüche in ID-Token nicht in einer bestimmten Reihenfo
 | Codehash |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Ein Codehash ist nur in einem ID-Token enthalten, wenn das Token zusammen mit einem OAuth 2.0-Autorisierungscode ausgestellt wird. Mithilfe eines Codehashs kann die Authentizität eines Autorisierungscodes überprüft werden. Weitere Einzelheiten zum Ausführen dieser Validierung finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html).  |
 | Zugriffstokenhash |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Ein Zugriffstokenhash ist nur in einem ID-Token enthalten, wenn das Token zusammen mit einem OAuth 2.0-Zugriffstoken ausgestellt wird. Mithilfe des Zugriffstokenhashs kann die Authentizität eines Zugriffstokens überprüft werden. Weitere Einzelheiten zum Ausführen dieser Validierung finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html)  |
 | Nonce |`nonce` |`12345` |Eine Nonce ist eine Strategie zum Abwehren von Tokenwiedergabeangriffe. Ihre App kann eine Nonce in einer Autorisierungsanforderung mithilfe des `nonce`-Abfrageparameters angeben. Der in der Anforderung angegebene Wert wird nur im `nonce`-Anspruch eines ID-Tokens unverändert ausgegeben. Dadurch kann Ihre App den Wert anhand des Werts überprüfen, der in der Anforderung angegeben ist. Dabei wird die Sitzung der App einem bestimmten ID-Token zugeordnet. Ihre App sollte diese Überprüfung während des Überprüfungsvorgangs des ID-Tokens ausführen. |
-| Betreff |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |Dies ist der Prinzipal, für den das Token Informationen zusichert, z.B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. Weitere Informationen finden Sie unter [Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md). |
+| Antragsteller |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |Dies ist der Prinzipal, für den das Token Informationen zusichert, z.B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. Weitere Informationen finden Sie unter [Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md). |
 | Klassenreferenz des Anwendungskontexts |`acr` |Nicht zutreffend |Derzeit nicht verwendet, außer bei älteren Richtlinien. Weitere Informationen finden Sie unter [Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md). |
 | Framework-Vertrauensrichtlinie |`tfp` |`b2c_1_sign_in` |Dies ist der Name der Richtlinie, die zum Abrufen des ID-Tokens verwendet wurde. |
 | Authentifizierungszeit |`auth_time` |`1438535543` |Dieser Anspruch ist die Uhrzeit (dargestellt als Epochenzeit), zu dem der Benutzer seine Anmeldeinformationen zum letzten Mal eingegeben hat. |
@@ -149,7 +146,7 @@ Eine vollständige Liste mit Validierungen, die von Ihrer App ausgeführt werden
 ## <a name="token-lifetimes"></a>Tokengültigkeitsdauer
 Die folgenden Angaben zur Tokengültigkeitsdauer dienen zu Informationszwecken. Sie können beim Entwickeln und Debuggen von Apps hilfreich sein. Beachten Sie, dass beim Schreiben Ihrer Apps nicht davon ausgegangen werden darf, dass die Gültigkeitsdauer konstant bleibt. Sie können und werden sich ändern. Weitere Informationen finden Sie in Azure AD B2C unter [Anpassung der Tokenlebensdauer](active-directory-b2c-token-session-sso.md).
 
-| Tokenverschlüsselung | Gültigkeitsdauer | Beschreibung |
+| Tokenverschlüsselung | Gültigkeitsdauer | BESCHREIBUNG |
 | --- | --- | --- |
 | ID-Token |Eine Stunde |ID-Token sind in der Regel eine Stunde lang gültig. Ihre Web-App kann die gleiche Dauer für Sitzungen mit Benutzern verwenden (empfohlen). Sie können auch eine andere Sitzungslebensdauer wählen. Falls Ihre App ein neues ID-Token abrufen muss, muss sie lediglich eine neue Anmeldeanforderung an Azure AD senden. Wenn ein Benutzer eine gültige Browsersitzung für Azure AD nutzt, muss dieser Benutzer die Anmeldeinformationen unter Umständen nicht erneut eingeben. |
 | Aktualisierungstoken |Bis zu 14 Tage |Ein einzelnes Aktualisierungstoken ist maximal 14 Tage gültig. Ein Aktualisierungstoken kann jedoch jederzeit aus verschiedenen Gründen ungültig werden. Ihre App sollte weiterhin versuchen, ein Aktualisierungstoken zu verwenden, bis die Anforderung fehlschlägt oder bis es von Ihrer App durch ein neues Aktualisierungstoken ersetzt wird. Ein Aktualisierungstoken kann zudem ungültig werden, wenn der Benutzer das letzte Mal vor 90 Tagen seine Anmeldeinformationen eingegeben hat. |

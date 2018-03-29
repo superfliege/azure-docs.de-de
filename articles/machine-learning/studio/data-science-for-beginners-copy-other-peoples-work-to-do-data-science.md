@@ -1,11 +1,12 @@
 ---
-title: "Kopieren der Data Science-Beispiele von anderen – Azure Machine Learning | Microsoft-Dokumentation"
+title: Kopieren der Data Science-Beispiele von anderen – Azure Machine Learning | Microsoft-Dokumentation
 description: 'Branchengeheimnis von Data Science: Lassen Sie andere Ihre Arbeit erledigen. Rufen Sie Machine Learning-Beispiele aus dem Azure AI-Katalog ab.'
 keywords: Data Science-Beispiele,Machine Learning-Beispiel,Clusteringalgorithmus,Beispiel eines Clusteringalgorithmus
 services: machine-learning
 documentationcenter: na
-author: cjgronlund
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cjgronlund
 ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
-ms.author: cgronlun
-ms.openlocfilehash: 52edc2158e5e74fc544d03efbba2f7e29290e424
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: 764e7c61b5ef023608767dfe78f3aa76e4463f05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopieren der Arbeit anderer für Ihre Data Science
 ## <a name="video-5-data-science-for-beginners-series"></a>5. Video der Reihe „Data Science für Einsteiger“

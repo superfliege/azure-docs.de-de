@@ -1,24 +1,21 @@
 ---
 title: 'Azure Active Directory B2C: Grundlegendes zu benutzerdefinierten Richtlinien des Starter Packs | Microsoft-Dokumentation'
-description: Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien
+description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/25/2017
-ms.author: joroja
-ms.openlocfilehash: fccb6cfddc8629de7db0310340f07bffd1ff8a65
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 624a40b1e40db6ceac9c567926b3932449e7bf7e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Grundlegendes zu den benutzerdefinierten Azure AD B2C-Richtlinien des Starter Packs
 
@@ -50,13 +47,13 @@ Die verfügbaren Anspruchstypen sind unten aufgeführt.
 
 Die folgenden Ansprüche sind erforderlich, damit User Journeys richtig funktionieren:
 
-| Anspruchstyp | Beschreibung |
+| Anspruchstyp | BESCHREIBUNG |
 |-------------|-------------|
-| *UserId* | Benutzername |
+| *UserId* | Username |
 | *signInName* | Anmeldename |
 | *tenantId* | Mandantenbezeichner (ID) des Benutzerobjekts in Azure AD B2C Premium |
 | *objectId* | Objektbezeichner (ID) des Benutzerobjekts in Azure AD B2C Premium |
-| *password* | Kennwort |
+| *password* | Password |
 | *newPassword* | |
 | *reenterPassword* | |
 | *passwordPolicies* | Kennwortrichtlinien, die von Azure AD B2C Premium zum Bestimmen von Kennwortsicherheit, -ablauf usw. verwendet werden |
@@ -81,7 +78,7 @@ Die folgenden Ansprüche sind erforderlich, damit User Journeys richtig funktion
 
 Die folgenden Ansprüche sind erforderlich, um spezielle Parameter (z.B. einige Abfragezeichenfolgen-Parameter) an andere Anspruchsanbieter zu übergeben:
 
-| Anspruchstyp | Beschreibung |
+| Anspruchstyp | BESCHREIBUNG |
 |-------------|-------------|
 | *nux* | Spezieller Parameter, der zur Authentifizierung des lokalen Kontos an „login.microsoftonline.com“ übergeben wird |
 | *nca* | Spezieller Parameter, der zur Authentifizierung des lokalen Kontos an „login.microsoftonline.com“ übergeben wird |
@@ -98,7 +95,7 @@ Die folgenden Ansprüche sind erforderlich, um spezielle Parameter (z.B. einige 
 
 Bei den folgenden Ansprüchen handelt es sich um weitere Ansprüche, die von Benutzern erfasst, im Verzeichnis gespeichert und im Token gesendet werden können. Wie bereits erwähnt, können dieser Liste weitere Ansprüche hinzugefügt werden.
 
-| Anspruchstyp | Beschreibung |
+| Anspruchstyp | BESCHREIBUNG |
 |-------------|-------------|
 | *givenName* | Vorname des Benutzers (auch als Rufname bezeichnet) |
 | *surname* | Nachname des Benutzers (auch als Familienname bezeichnet) |
@@ -108,7 +105,7 @@ Bei den folgenden Ansprüchen handelt es sich um weitere Ansprüche, die von Ben
 
 Unten sind die verfügbaren Anspruchstransformationen aufgeführt.
 
-| Anspruchstransformation | Beschreibung |
+| Anspruchstransformation | BESCHREIBUNG |
 |----------------------|-------------|
 | *CreateOtherMailsFromEmail* | |
 | *CreateRandomUPNUserName* | |
@@ -121,7 +118,7 @@ Unten sind die verfügbaren Anspruchstransformationen aufgeführt.
 
 In diesem Abschnitt werden die Inhaltsdefinitionen beschrieben, die in der Richtlinie *B2C_1A_base* bereits deklariert sind. Auf diese Inhaltsdefinitionen kann in Ihren eigenen Richtlinien und in der Richtlinie *B2C_1A_base_extensions* verwiesen werden, und sie können je nach Bedarf außer Kraft gesetzt bzw. erweitert werden.
 
-| Anspruchsanbieter | Beschreibung |
+| Anspruchsanbieter | BESCHREIBUNG |
 |-----------------|-------------|
 | *Facebook* | |
 | *Anmeldung mit lokalem Konto* | |
@@ -140,19 +137,19 @@ In diesem Abschnitt sind die technischen Profile dargestellt, die in der Richtli
 
 ### <a name="technical-profiles-for-facebook"></a>Technische Profile für Facebook
 
-| Technisches Profil | Beschreibung |
+| Technisches Profil | BESCHREIBUNG |
 |-------------------|-------------|
 | *Facebook-OAUTH* | |
 
 ### <a name="technical-profiles-for-local-account-signin"></a>Technische Profile für die Anmeldung per lokalem Konto
 
-| Technisches Profil | Beschreibung |
+| Technisches Profil | BESCHREIBUNG |
 |-------------------|-------------|
 | *Login-NonInteractive* | |
 
 ### <a name="technical-profiles-for-phone-factor"></a>Technische Profile für PhoneFactor
 
-| Technisches Profil | Beschreibung |
+| Technisches Profil | BESCHREIBUNG |
 |-------------------|-------------|
 | *PhoneFactor-Input* | |
 | *PhoneFactor-InputOrVerify* | |
@@ -160,7 +157,7 @@ In diesem Abschnitt sind die technischen Profile dargestellt, die in der Richtli
 
 ### <a name="technical-profiles-for-azure-active-directory"></a>Technische Profile für Azure Active Directory
 
-| Technisches Profil | Beschreibung |
+| Technisches Profil | BESCHREIBUNG |
 |-------------------|-------------|
 | *AAD-Common* | Technisches Profil, das von anderen technischen AAD-xxx-Profilen eingebunden wird |
 | *AAD-UserWriteUsingAlternativeSecurityId* | Technisches Profil für Anmeldungen per sozialem Netzwerk |
@@ -175,20 +172,20 @@ In diesem Abschnitt sind die technischen Profile dargestellt, die in der Richtli
 
 ### <a name="technical-profiles-for-self-asserted"></a>Technische Profile für „Selbstbestätigt“
 
-| Technisches Profil | Beschreibung |
+| Technisches Profil | BESCHREIBUNG |
 |-------------------|-------------|
 | *SelfAsserted-Social* | |
 | *SelfAsserted-ProfileUpdate* | |
 
 ### <a name="technical-profiles-for-local-account"></a>Technische Profile für lokales Konto
 
-| Technisches Profil | Beschreibung |
+| Technisches Profil | BESCHREIBUNG |
 |-------------------|-------------|
 | *LocalAccountSignUpWithLogonEmail* | |
 
 ### <a name="technical-profiles-for-session-management"></a>Technische Profile für Sitzungsverwaltung
 
-| Technisches Profil | Beschreibung |
+| Technisches Profil | BESCHREIBUNG |
 |-------------------|-------------|
 | *SM-Noop* | |
 | *SM-AAD* | |
@@ -202,7 +199,7 @@ Derzeit werden für den Anspruchsanbieter vom Typ **TechnicalProfiles des Vertra
 
 ### <a name="technical-profiles-for-token-issuer"></a>Technische Profile für Tokenaussteller
 
-| Technisches Profil | Beschreibung |
+| Technisches Profil | BESCHREIBUNG |
 |-------------------|-------------|
 | *JwtIssuer* | |
 
@@ -210,7 +207,7 @@ Derzeit werden für den Anspruchsanbieter vom Typ **TechnicalProfiles des Vertra
 
 In diesem Abschnitt sind die User Journeys aufgeführt, die in der Richtlinie *B2C_1A_base* bereits deklariert sind. Auf diese User Journeys kann in Ihren eigenen Richtlinien und in der Richtlinie *B2C_1A_base_extensions* weiter verwiesen werden, und sie können je nach Bedarf außer Kraft gesetzt bzw. erweitert werden.
 
-| User Journey | Beschreibung |
+| User Journey | BESCHREIBUNG |
 |--------------|-------------|
 | *SignUp* | |
 | *SignIn* | |

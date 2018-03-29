@@ -3,24 +3,24 @@ title: Erstellen eines MEAN-Stacks auf einem virtuellen Linux-Computer in Azure 
 description: Erfahren Sie, wie Sie einen MEAN-Stack (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure erstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
-ms.author: davidmu
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1d74ead08dfb63276afb08bdcb7f4e3e3db5bfd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2bd89bf25f619caef07ae099232add55dbe0cda7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>Erstellen eines MEAN-Stacks (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure
 
@@ -327,7 +327,7 @@ In [MongoDB](http://www.mongodb.com) werden Daten in flexiblen, JSON-ähnlichen 
 
     ![Buchdatensatz](media/tutorial-mean/meanstack-init.png)
 
-3. Geben Sie Daten in den Textfeldern ein, und klicken Sie auf **Hinzufügen**. Beispiel:
+3. Geben Sie Daten in den Textfeldern ein, und klicken Sie auf **Hinzufügen**. Beispiel: 
 
     ![Hinzufügen des Buchdatensatzes](media/tutorial-mean/meanstack-add.png)
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
-ms.author: trinadhk
-ms.openlocfilehash: b7e9f45c61d2af1940be50a368b87cd35c85b1dd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: trinadhk, sogup
+ms.openlocfilehash: 6d214072bccb8b2b42828ee003dcf349985b4f43
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="upgrade-to-vm-backup-stack-v2"></a>Upgrade auf VM-Sicherungsstapel V2
 Das Upgrade auf VM-Sicherungsstapel V2 bietet die folgenden Featureverbesserungen:
@@ -49,7 +49,6 @@ Standardmäßig werden Momentaufnahmen sieben Tage lang beibehalten. So kann die
 * Dies ist ein unidirektionales Upgrade des VM-Sicherungsstapels. Deshalb werden alle zukünftige Sicherungen diesem Ablauf folgen. Aufgrund der **Aktivierung auf Abonnementebene gehen alle virtuellen Computer in diesen Ablauf ein**. Alle neuen Featureergänzungen basieren auf demselben Stapel. In zukünftigen Releases wird es möglich sein, dies auf Richtlinienebene zu steuern. 
 * Stellen Sie bei virtuellen Computern mit Premium-Datenträgern während der ersten Sicherung sicher, dass der Größe des virtuellen Computers entsprechender Speicherplatz im Speicherkonto verfügbar ist, bis die erste Sicherung abgeschlossen ist. 
 * Da Momentaufnahmen lokal gespeichert werden, um das Erstellen eines Wiederherstellungspunkts zu unterstützen und auch die Wiederherstellung zu beschleunigen, werden Ihnen während des Zeitraums von sieben Tagen die Speicherkosten für die Momentaufnahmen angezeigt.
-Für verwaltete Datenträger wird keine *Preissteigerung* durchgeführt, da restorePointCollections kostenlos sind. 
 * Wenn Sie eine Wiederherstellung von einem Momentaufnahmen-Wiederherstellungspunkt aus für eine Premium-VM durchführen, sehen Sie, das ein temporärer Speicherort verwendet wird, während der virtuelle Computer im Rahmen der Wiederherstellung erstellt wird. 
 
 ## <a name="how-to-upgrade"></a>Wie werden Upgrades durchgeführt?

@@ -5,8 +5,8 @@ services: load-balancer
 documentationcenter: na
 author: RamanDhillon
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: bc059221656a695bb43af0dca06df941ca77c73d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 560e2ed7cafd1018f4b64ac6d0e45134560082b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Beheben von Problemen mit Azure Load Balancer
 
@@ -54,7 +54,7 @@ Wenn die VM fehlerfrei ist, aber nicht auf den Test antwortet, könnte eine mög
 3. Wenn der Portstatus nicht als **EMPFANGSBEREIT** aufgeführt ist, konfigurieren Sie den richtigen Port. 
 4. Wählen Sie alternativ einen anderen Port aus, der als **EMPFANGSBEREIT** aufgeführt wird, und aktualisieren Sie die Load Balancer-Konfiguration entsprechend.              
 
-###<a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Ursache 3: Die Firewall oder eine Netzwerksicherheitsgruppe blockiert den Port auf den VMs des Load Balancer-Back-End-Pools  
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Ursache 3: Die Firewall oder eine Netzwerksicherheitsgruppe blockiert den Port auf den VMs des Load Balancer-Back-End-Pools  
 Wenn die Firewall auf der VM den Testport blockiert oder eine oder mehrere Netzwerksicherheitsgruppen, die für das Subnetz oder die VM konfiguriert sind, nicht zulassen, dass der Test den Port erreicht, kann die VM nicht auf den Integritätstest antworten.          
 
 **Überprüfung und Lösung**
@@ -103,7 +103,7 @@ Wenn eine VM nicht auf den Datenverkehr antwortet, kann dies daran liegen, dass 
 
 Wenn eine oder mehrere im Subnetz oder auf der VM konfigurierte Netzwerksicherheitsgruppen die Quell-IP oder den Port blockieren, kann die VM nicht antworten.
 
-* Listen Sie die Netzwerksicherheitsgruppen auf, die auf der Back-End-VM konfiguriert sind. Weitere Informationen finden Sie unter:
+* Listen Sie die Netzwerksicherheitsgruppen auf, die auf der Back-End-VM konfiguriert sind. Weitere Informationen finden Sie unter 
     -  [Verwalten von Netzwerksicherheitsgruppen über das Portal](../virtual-network/virtual-network-manage-nsg-arm-portal.md)
     -  [Verwalten von Netzwerksicherheitsgruppen mithilfe von PowerShell](../virtual-network/virtual-network-manage-nsg-arm-ps.md)
 * Überprüfen Sie Folgendes anhand der Liste von Netzwerksicherheitsgruppen:

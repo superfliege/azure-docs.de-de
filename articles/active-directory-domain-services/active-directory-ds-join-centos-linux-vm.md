@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: Einbinden eines virtuellen CentOS-Computers in eine verwaltete Domäne | Microsoft-Dokumentation"
+title: 'Azure Active Directory Domain Services: Einbinden eines virtuellen CentOS-Computers in eine verwaltete Domäne | Microsoft-Dokumentation'
 description: Einbinden eines virtuellen CentOS Linux-Computers in Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 9f3b6425f3c13080985fb168f46ea1f6be5d18ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f7095e82605d12221ba7beb0c48fd3eda75a2e7b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen CentOS Linux-Computers in eine verwaltete Domäne
 Dieser Artikel beschreibt, wie ein virtueller CentOS Linux-Computer einer durch Azure AD Domain Services verwalteten Domäne beitritt.
@@ -34,7 +34,7 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 
 ## <a name="provision-a-centos-linux-virtual-machine"></a>Bereitstellen eines virtuellen CentOS Linux-Computers
 Stellen Sie mithilfe einer der folgenden Methoden einen virtuellen CentOS-Computer in Azure bereit:
-* [Azure portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure-Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure-CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -133,7 +133,7 @@ Wenn der Computer erfolgreich in die verwaltete Domäne eingebunden wurde, sollt
 
 
 ## <a name="troubleshooting-domain-join"></a>Problembehandlung beim Domänenbeitritt
-Informationen finden Sie im Artikel [Problembehandlung beim Domänenbeitritt](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) .
+Informationen finden Sie im Artikel [Problembehandlung beim Domänenbeitritt](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) .
 
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](active-directory-ds-getting-started.md)

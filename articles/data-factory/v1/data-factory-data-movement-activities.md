@@ -1,11 +1,10 @@
 ---
-title: "Verschieben von Daten mit der Kopieraktivität | Microsoft Docs"
-description: "Informieren Sie sich über das Verschieben von Daten in Data Factory-Pipelines: Datenmigration zwischen Cloudspeichern sowie zwischen lokalen Speichern und Cloudspeichern. Verwenden der Kopieraktivität"
+title: Verschieben von Daten mit der Kopieraktivität | Microsoft Docs
+description: 'Informieren Sie sich über das Verschieben von Daten in Data Factory-Pipelines: Datenmigration zwischen Cloudspeichern sowie zwischen lokalen Speichern und Cloudspeichern. Verwenden der Kopieraktivität'
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
@@ -15,19 +14,19 @@ ms.topic: article
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dff87d41df2bdb5439785846c9653f2f0be2b40d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 09b35483b5ace1523c88576cfe37dfc313b93036
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-by-using-copy-activity"></a>Verschieben von Daten mit der Kopieraktivität
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-data-movement-activities.md)
+> * [Version 1: allgemein verfügbar](data-factory-data-movement-activities.md)
 > * [Version 2 – Vorschauversion](../copy-activity-overview.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy Activity in Azure Data Factory](../copy-activity-overview.md) (Kopieraktivität in Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy Activity in Azure Data Factory](../copy-activity-overview.md) (Kopieraktivität in Azure Data Factory).
 
 ## <a name="overview"></a>Übersicht
 In Azure Data Factory können Sie die Kopieraktivität verwenden, um Daten zwischen verschiedenen lokalen und Clouddatenspeichern zu kopieren. Nach dem Kopieren können die Daten weiter transformiert und analysiert werden. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen für die Verwendung für Business Intelligence (BI) und in Anwendungen verwenden.
@@ -96,30 +95,30 @@ Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Data F
 
 | Gebiet des Zieldatenspeichers | Region des Zieldatenspeichers | Verwendete Region für die Datenverschiebung |
 |:--- |:--- |:--- |
-| USA | USA (Ost) | USA, Osten |
-| &nbsp; | USA, Osten 2 | USA, Osten 2 |
-| &nbsp; | USA, Mitte | USA (Mitte) |
+| USA | USA (Ost) | USA (Ost) |
+| &nbsp; | USA, Osten 2 | USA (Ost) 2 |
+| &nbsp; | USA (Mitte) | USA (Mitte) |
 | &nbsp; | USA Nord Mitte | USA Nord Mitte |
-| &nbsp; | USA, Süden-Mitte | USA Süd Mitte |
+| &nbsp; | USA Süd Mitte | USA Süd Mitte |
 | &nbsp; | USA, Westen-Mitte | USA, Westen-Mitte |
-| &nbsp; | USA (West) | USA (West) |
+| &nbsp; | USA (Westen) | USA (Westen) |
 | &nbsp; | USA, Westen 2 | USA, Westen 2 |
 | Kanada | Kanada, Osten | Kanada, Mitte |
 | &nbsp; | Kanada, Mitte | Kanada, Mitte |
 | Brasilien | Brasilien Süd | Brasilien Süd |
-| Europa | Nordeuropa | Europa, Norden |
-| &nbsp; | Europa, Westen | Westeuropa |
+| Europa | Nordeuropa | Nordeuropa |
+| &nbsp; | Europa, Westen | Europa, Westen |
 | Vereinigtes Königreich | UK, Westen | UK, Süden |
 | &nbsp; | UK, Süden | UK, Süden |
-| Asien-Pazifik | Südostasien | Südostasien |
-| &nbsp; | Ostasien | Südostasien |
-| Australien | Australien (Osten) | Australien, Osten |
+| Asien-Pazifik | Südostasien | Asien, Südosten |
+| &nbsp; | Asien, Osten | Asien, Südosten |
+| Australien | Australien (Osten) | Australien (Osten) |
 | &nbsp; | Australien, Südosten | Australien, Südosten |
-| Indien | Indien (Mitte) | Indien (Mitte) |
-| &nbsp; | Indien, Westen | Indien (Mitte) |
-| &nbsp; | Indien, Süden | Indien (Mitte) |
-| Japan | Japan Ost | Japan Ost |
-| &nbsp; | Japan, Westen | Japan Ost |
+| Indien | Indien, Mitte | Indien, Mitte |
+| &nbsp; | Indien, Westen | Indien, Mitte |
+| &nbsp; | Indien (Süden) | Indien, Mitte |
+| Japan | Japan, Osten | Japan, Osten |
+| &nbsp; | Japan, Westen | Japan, Osten |
 | Korea | Korea, Mitte | Korea, Mitte |
 | &nbsp; | Korea, Süden | Korea, Mitte |
 
@@ -130,7 +129,7 @@ Alternativ können Sie unter den Typeigenschaften der Kopieraktivität (`typePro
 >
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Kopieren von Daten zwischen einem lokalen Datenspeicher und einem Clouddatenspeicher
-Wenn Daten zwischen lokalen Datenspeichern (oder virtuellen Azure-Computern/IaaS) und Cloudspeichern kopiert werden, wird die Datenverschiebung vom [Datenverwaltungsgateway](data-factory-data-management-gateway.md) auf einem lokalen oder einem virtuellen Computer durchgeführt. Die Daten fließen nicht durch den Dienst in der Cloud, es sei denn, Sie verwenden die Funktion des [gestaffelten Kopierens](data-factory-copy-activity-performance.md#staged-copy) . In diesem Fall fließen die Daten durch den Azure-Blobstagingspeicher, bevor sie in den Senkendatenspeicher geschrieben werden.
+Wenn Daten zwischen lokalen Datenspeichern (oder virtuellen Azure-Computern/IaaS) und Cloudspeichern kopiert werden, wird die Datenverschiebung vom [Datenverwaltungsgateway](data-factory-data-management-gateway.md) auf einem lokalen oder einem virtuellen Computer durchgeführt. Die Daten fließen nicht durch den Dienst in der Cloud, es sei denn, Sie verwenden die Funktion des [gestaffelten Kopierens](data-factory-copy-activity-performance.md#staged-copy) . In diesem Fall fließen die Daten durch Azure Blob Storage mit Staging, bevor sie in den Senkendatenspeicher geschrieben werden.
 
 ## <a name="create-a-pipeline-with-copy-activity"></a>Erstellen einer Pipeline mit einer Kopieraktivität
 Sie können eine Pipeline mit einer Kopieraktivität auf verschiedene Arten erstellen:

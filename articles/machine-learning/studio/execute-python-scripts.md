@@ -1,11 +1,12 @@
 ---
-title: "Ausführen von Python-Machine Learning-Skripts | Microsoft Docs"
-description: "Beschreibt die Entwurfsprinzipien, die der Unterstützung für Python-Skripts in Azure Machine Learning zugrunde liegen, sowie die grundlegenden Verwendungsszenarien, Funktionen und Einschränkungen."
-keywords: "maschinelles Lernen in Python,Pandas,Python Pandas,Python-Skripts,Ausführen von Python-Skripts"
+title: Ausführen von Python-Machine Learning-Skripts | Microsoft Docs
+description: Beschreibt die Entwurfsprinzipien, die der Unterstützung für Python-Skripts in Azure Machine Learning zugrunde liegen, sowie die grundlegenden Verwendungsszenarien, Funktionen und Einschränkungen.
+keywords: maschinelles Lernen in Python,Pandas,Python Pandas,Python-Skripts,Ausführen von Python-Skripts
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: ee9eb764-0d3e-4104-a797-19fc29345d39
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: c25f31ca72417672298657c4585184ad72db6c99
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 0efa2a7604b41b791ed3717b7f2b667b7181085d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Ausführen von Python-Machine Learning-Skripts in Azure Machine Learning Studio
 
@@ -58,7 +58,7 @@ Die primäre Schnittstelle für Python in Azure Machine Learning Studio wird dur
 
 ![Bild1](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
-![image2](./media/execute-python-scripts/embedded-machine-learning-python-script.png)
+![Bild2](./media/execute-python-scripts/embedded-machine-learning-python-script.png)
 
 Abbildung 1. Das **Execute Python Script** -Modul
 
@@ -77,7 +77,7 @@ Das [Execute Python Script][execute-python-script]-Modul in Azure ML Studio akze
 
 In diesem Abschnitt untersuchen wir einige der grundlegenden Anwendungsmöglichkeiten des [Execute Python Script][execute-python-script]-Moduls. Eingaben in das Python-Modul werden als Pandas-Datenrahmen verfügbar gemacht. Die Funktion muss einen einzigen Pandas-Datenrahmen zurückgeben, der in eine Python-[Sequenz](https://docs.python.org/2/c-api/sequence.html) wie z.B. ein Tupel, eine Liste oder ein NumPy-Array eingebettet ist. Das erste Element der Sequenz wird anschließend am ersten Ausgabeport des Moduls zurückgegeben. Dieses Schema wird in Abbildung 2 dargestellt.
 
-![Bild3](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
+![image3](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
 Abbildung 2. Zuordnung von Eingabeports zu Parametern und des Rückgabewerts zum Ausgabeport.
 

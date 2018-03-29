@@ -4,7 +4,7 @@ description: Eine Liste aller Artikel zum Erstellen von Dokumentdatenbanken mit 
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 82bec99a-ac2b-474e-b41f-d2fb296c8feb
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,15 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: mimig
-ms.openlocfilehash: 8faa8a08d4a5bc323951a594049002fc61eb56b8
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 0ad80ce15769cfe823925cf36bbd47f2ddadec21
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-sql-api-documentation"></a>Azure Cosmos DB: SQL-API-Dokumentation
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Dieser Artikel enthält Links zu allen Azure Cosmos DB-Inhalten, die für die SQL-API gelten.
 
@@ -34,7 +32,7 @@ Machen Sie sich zunächst mit den hier angegebenen Themen und Ressourcen vertrau
 - [Einführung in die SQL-API](sql-api-introduction.md)
 - [Hierarchisches Azure Cosmos DB-Ressourcenmodell und zentrale Konzepte](sql-api-resources.md)
 - Website: [Query Playground](https://www.documentdb.com/sql/demo) (Arbeiten mit Abfragen)
-- [Spickzettel zur SQL-Grammatik](sql-api-sql-query-cheat-sheet.md)
+- [Spickzettel zur SQL-Grammatik](query-cheat-sheet.md)
 
 ## <a name="quickstarts"></a>Schnellstarts
 

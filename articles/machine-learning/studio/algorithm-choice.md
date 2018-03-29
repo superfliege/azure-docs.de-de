@@ -1,12 +1,13 @@
 ---
-title: "Auswählen von Algorithmen für das maschinelle Lernen | Microsoft Docs"
-description: "Auswahl eines Azure Machine Learning-Algorithmus für überwachtes und unbeaufsichtigtes Lernen bei Clustering-, Klassifizierungs- oder Regressionsexperimenten."
+title: Auswählen von Algorithmen für das maschinelle Lernen | Microsoft Docs
+description: Auswahl eines Azure Machine Learning-Algorithmus für überwachtes und unbeaufsichtigtes Lernen bei Clustering-, Klassifizierungs- oder Regressionsexperimenten.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: pakalra
+ms.author: pakalra
+manager: cgronlun
 editor: cgronlun
-tags: 
+tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.devlang: na
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
-ms.author: garye
-ms.openlocfilehash: 1b30e4dbf20cac653c323720de779aa5f8edba68
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: e1c7030a5f0c6e13653b302fcb48e7d4efa232c7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Auswählen von Algorithmen für Microsoft Azure Machine Learning
 Die Antwort auf die Frage „Welchen Algorithmus für Machine Learning sollte ich verwenden?“ lautet immer „Kommt darauf an“. Es hängt von der Größe, Qualität und Art der Daten ab. Es hängt davon ab, was Sie mit der Antwort anfangen möchten. Es hängt davon ab, wie die mathematische Logik des Algorithmus in Anweisungen für den Computer übersetzt wurde, den Sie verwenden. Und es hängt davon ab, wie viel Zeit Sie haben. Selbst der erfahrenste Datenanalyst kann Ihnen nicht sagen, welcher Algorithmus die besten Ergebnisse liefert, bevor er ihn ausprobiert hat.
@@ -187,7 +187,7 @@ Support Vector Maschines (SVMs) finden die Grenze, die Klassen mit maximalem Abs
 
 ***Eine typische Normale Support Vector Machine-Klassengrenze maximiert den Abstand, der zwei Klassen trennt.***
 
-Ein weiteres Produkt von Microsoft Research, die [Two-Class Locally Deep SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) (zweiklassige lokal tiefe SVM), ist eine nicht lineare Variante der SVM, die den größten Teil der Geschwindigkeit und Speichereffizienz der linearen Version erhält. Sie eignet sich optimal für Fälle, in denen die Ergebnisse des linearen Ansatzes nicht genau genug sind. Die Entwickler haben sie schnell gehalten, indem sie das Problem in eine Reihe von kleineren linearen SVM-Problemen aufgeteilt haben. Ausführliche Informationen, wie sie das geschafft haben, finden Sie in der [vollständigen Beschreibung](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf) .
+Ein weiteres Produkt von Microsoft Research, die [Two-Class Locally Deep SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) (zweiklassige lokal tiefe SVM), ist eine nicht lineare Variante der SVM, die den größten Teil der Geschwindigkeit und Speichereffizienz der linearen Version erhält. Sie eignet sich optimal für Fälle, in denen die Ergebnisse des linearen Ansatzes nicht genau genug sind. Die Entwickler haben sie schnell gehalten, indem sie das Problem in eine Reihe von kleineren linearen SVM-Problemen aufgeteilt haben. Ausführliche Informationen, wie sie das geschafft haben, finden Sie in der [vollständigen Beschreibung](http://proceedings.mlr.press/v28/jose13.html) .
 
 Unter Verwendung einer raffinierten Erweiterung der nicht linearen SVMs zieht die [einklassige SVM](https://msdn.microsoft.com/library/azure/dn913103.aspx) eine Grenze, die das gesamte Dataset eng umreißt. Sie eignet sich gut für die Erkennung von Anomalien. Alle neuen Datenpunkte, die weit außerhalb dieser Grenze liegen, sind ungewöhnlich genug, um beachtenswert zu sein.
 

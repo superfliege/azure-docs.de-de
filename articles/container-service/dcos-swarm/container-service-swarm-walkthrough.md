@@ -1,6 +1,6 @@
 ---
-title: "Schnellstartanleitung: Azure Docker Swarm-Cluster für Linux"
-description: "Hier erfahren Sie, wie Sie in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle einen Docker Swarm-Cluster für Linux-Container erstellen."
+title: 'Schnellstartanleitung: Azure Docker Swarm-Cluster für Linux'
+description: Hier erfahren Sie, wie Sie in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle einen Docker Swarm-Cluster für Linux-Container erstellen.
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 691c09c8dfb5335aabb431d06bd687963fe4c488
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7bd781d2fd71c6075cb458b222a93953a22892b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-docker-swarm-cluster"></a>Bereitstellen eines Docker Swarm-Clusters
 

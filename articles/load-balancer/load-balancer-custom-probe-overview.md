@@ -15,15 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/8/2018
 ms.author: kumud
-ms.openlocfilehash: be0359889f48f2fe16104f2bee5d1c85ab883b34
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0aab72fdf48589a72707ae87f90af11f65f35088
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="understand-load-balancer-probes"></a>Grundlegendes zu Load Balancer-Tests
-
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Load Balancer nutzt Integritätstests, um zu bestimmen, welche Back-End-Poolinstanz neue Datenflüsse erhalten soll. Wenn ein Integritätstest fehlschlägt, stoppt Load Balancer das Senden von neuen Datenflüssen an die jeweilige fehlerhafte Instanz. Vorhandene Datenflüsse auf dieser Instanz sind hiervon nicht betroffen.  Wenn alle Tests für Back-End-Poolinstanzen ausgefallen sind, tritt für alle vorhandenen Datenflüsse auf allen Instanzen im Back-End-Pool eine Zeitüberschreitung auf.
 

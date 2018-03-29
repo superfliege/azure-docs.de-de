@@ -1,24 +1,24 @@
 ---
-title: "DNS Analytics-Lösung in Azure Log Analytics | Microsoft-Dokumentation"
-description: "Richten Sie die DNS Analytics-Lösung in Log Analytics ein, und verwenden Sie sie, um Erkenntnisse über die DNS-Infrastruktur hinsichtlich Sicherheit, Leistung und Betrieb zu sammeln."
+title: DNS Analytics-Lösung in Azure Log Analytics | Microsoft-Dokumentation
+description: Richten Sie die DNS Analytics-Lösung in Log Analytics ein, und verwenden Sie sie, um Erkenntnisse über die DNS-Infrastruktur hinsichtlich Sicherheit, Leistung und Betrieb zu sammeln.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 8ead058108f39eca8682eccc296760d4b756d336
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 6a59cf8b9444fe7cb197501c51d10dae81acb027
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -145,7 +145,6 @@ Mit den Informationen können Sie Folgendes identifizieren:
 
 **DDI Analytics-Beispielabfragen**. Enthält eine Liste der am häufigsten verwendeten Suchabfragen, mit denen unformatierte Analysedaten direkt abgerufen werden.
 
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Beispielabfragen](./media/log-analytics-dns/queries.png)
 
@@ -166,7 +165,7 @@ Sie können diese Abfragen als Ausgangspunkt für das Erstellen eigener Abfragen
 
 Auf der Protokollsucheseite können Sie eine Abfrage erstellen. Sie können die Suchergebnisse mit Facetsteuerelementen filtern. Sie können auch erweiterte Abfragen zum Transformieren, Filtern und Berichten für Ihre Ergebnisse erstellen. Beginnen Sie mit folgenden Abfragen:
 
-1. Geben Sie im **Feld für die Suchabfrage** `Type=DnsEvents` ein, um alle DNS-Ereignisse anzuzeigen, die von den DNS-Servern generiert wurden, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für alle Ereignisse im Zusammenhang mit Suchabfragen, dynamischen Registrierungen und Konfigurationsänderungen auf.
+1. Geben Sie im **Feld für die Suchabfrage** `DnsEvents` ein, um alle DNS-Ereignisse anzuzeigen, die von den DNS-Servern generiert wurden, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für alle Ereignisse im Zusammenhang mit Suchabfragen, dynamischen Registrierungen und Konfigurationsänderungen auf.
 
     ![DnsEvents-Protokollsuche](./media/log-analytics-dns/log-search-dnsevents.png)  
 
@@ -176,7 +175,7 @@ Auf der Protokollsucheseite können Sie eine Abfrage erstellen. Sie können die 
 
     c. Um die Protokolldaten für Konfigurationsänderungen anzuzeigen, wählen Sie auf der linken Seite im Facetsteuerelement **ConfigurationChange** als **Untertyp**-Filter aus. Eine Tabelle mit allen Konfigurationsänderungsereignissen für den ausgewählten Zeitraum wird angezeigt.
 
-2. Geben Sie im **Feld für die Suchabfrage** `Type=DnsInventory` ein, um alle DNS-Inventardaten für die DNS-Server anzuzeigen, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für DNS-Server, DNS-Zonen und Ressourceneinträge auf.
+2. Geben Sie im **Feld für die Suchabfrage** `DnsInventory` ein, um alle DNS-Inventardaten für die DNS-Server anzuzeigen, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für DNS-Server, DNS-Zonen und Ressourceneinträge auf.
 
     ![DnsInventory-Protokollsuche](./media/log-analytics-dns/log-search-dnsinventory.png)
 

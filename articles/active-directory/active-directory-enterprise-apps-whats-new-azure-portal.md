@@ -2,10 +2,10 @@
 title: Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory | Microsoft-Dokumentation
 description: Es wird beschrieben, welche Neuerungen es bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory gibt.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 949eae51c469205489153c271a7c20fcc843ad46
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8d1b24708380aeed6055912fcf3538f0e5319e2d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory 
 
@@ -147,7 +147,7 @@ Nachdem Sie viele neue Anwendungen hinzugefügt haben, kann es sein, dass Sie es
 1. Sie können im linken Navigationsmenü der Anwendung die Option **Self-Service** wählen und die Option **Allow users to request access to this application?** (Benutzern die Zugriffsanforderung für diese Anwendung erlauben?) auf **Ja** festlegen. 
 2. So können Sie konfigurieren, wer den Zugriff auf diese Anwendung genehmigen darf und welche Gruppe von Self-Service-Benutzern hinzugefügt wird. Wenn die Anwendung für das einmalige Anmelden per Kennwort konfiguriert ist, wird noch eine weitere Option angezeigt, mit der Sie optional zulassen können, dass die Genehmiger die Kennwörter der Anwendung verwalten.
 
-##<a name="feedback"></a>Feedback
+## <a name="feedback"></a>Feedback
 
 Wir hoffen, Ihnen gefällt die verbesserte Azure AD-Benutzeroberfläche. Es wäre schön, wenn Sie uns weiter Feedback senden würden! Feedback und Verbesserungsvorschläge können Sie uns im [Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal) über den Abschnitt **Verwaltungsportal** zukommen lassen.  Wir haben großen Spaß daran, jeden Tag neue Dinge zu entwickeln, und Ihr Feedback hilft uns, die nächsten Ziele anzugehen und zu definieren.
 

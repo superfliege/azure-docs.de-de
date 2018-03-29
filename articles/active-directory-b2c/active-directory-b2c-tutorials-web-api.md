@@ -1,19 +1,20 @@
 ---
-title: "Schützen einer ASP.NET-Web-API mithilfe von Azure Active Directory B2C (Tutorial)"
-description: "In diesem Tutorial erfahren Sie, wie Sie mit Active Directory B2C eine ASP.NET-Web-API schützen und sie über eine ASP.NET-Web-App aufrufen."
+title: Schützen einer ASP.NET-Web-API mithilfe von Azure Active Directory B2C (Tutorial)
+description: In diesem Tutorial erfahren Sie, wie Sie mit Active Directory B2C eine ASP.NET-Web-API schützen und sie über eine ASP.NET-Web-App aufrufen.
 services: active-directory-b2c
-author: PatAltimore
-ms.author: patricka
-ms.reviewer: saraford
+author: davidmu1
+manager: mtillman
+editor: ''
+ms.author: davidmu
 ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: 0e9f324cec0d242c013a461d8580abd4faa97c8d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f4e1c18f151a9c815258f01ea198d3d173d0b44e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-use-azure-active-directory-b2c-to-protect-an-aspnet-web-api"></a>Tutorial: Schützen einer ASP.NET-Web-API mithilfe von Azure Active Directory B2C
 
@@ -83,10 +84,10 @@ Fügen Sie folgende Einträge hinzu, um Bereiche für die API zu konfigurieren:
 
 ![In der Web-API definierte Bereiche](media/active-directory-b2c-tutorials-web-api/scopes-defined-in-web-api.png)
 
-| Einstellung      | Empfohlener Wert  | Beschreibung                                        |
+| Einstellung      | Empfohlener Wert  | BESCHREIBUNG                                        |
 | ------------ | ------- | -------------------------------------------------- |
-| **Bereich** | Hello.Read | Lesezugriff auf „hello“ |
-| **Bereich** | Hello.Write | Schreibzugriff auf „hello“ |
+| **Umfang** | Hello.Read | Lesezugriff auf „hello“ |
+| **Umfang** | Hello.Write | Schreibzugriff auf „hello“ |
 
 Mit den veröffentlichten Bereichen können einer Client-App Berechtigungen für die Web-API gewährt werden.
 

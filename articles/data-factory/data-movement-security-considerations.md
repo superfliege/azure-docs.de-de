@@ -4,8 +4,8 @@ description: Beschreibt die grundlegende Sicherheitsinfrastruktur, die von Daten
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 3c8215ab4a1759efef3c2c13a5ac44f6944b53d7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 56602e269a441f9541314424190da04be2c4add5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,9 +49,10 @@ In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenv
 - **Hybridszenario**: In diesem Szenario befindet sich entweder Ihre Quelle oder Ihr Ziel hinter einer Firewall oder in einem lokalen Unternehmensnetzwerk. Oder der Datenspeicher befindet sich in einem privaten oder virtuellen Netzwerk (meist die Quelle) und ist nicht öffentlich zugänglich. Zu diesem Szenario zählen auch Datenbankserver, die auf virtuellen Computern gehostet werden.
 
 ## <a name="cloud-scenarios"></a>Cloudszenarien
-### <a name="secure-data-store-credentials"></a>Schützen von Anmeldeinformationen für Datenspeicher
-- **Speichern von verschlüsselten Anmeldeinformationen im verwalteten Azure Data Factory-Speicher.** Data Factory schützt Ihre Anmeldeinformationen für den Datenspeicher dadurch, dass sie mit von Microsoft verwalteten Zertifikaten verschlüsselt werden. Diese Zertifikate werden alle zwei Jahre ausgetauscht (wozu Erneuerung der Zertifikate und Migration von Anmeldeinformationen gehören). Diese verschlüsselten Anmeldeinformationen werden sicher in einem von Azure Data Factory-Verwaltungsdienste verwalteten Azure Storage gespeichert. Weitere Informationen zur Azure Storage-Sicherheit finden Sie unter [Übersicht über die Sicherheit von Azure Storage](../security/security-storage-overview.md).
 
+### <a name="securing-data-store-credentials"></a>Schützen von Datenspeicher-Anmeldeinformationen
+
+- **Speichern von verschlüsselten Anmeldeinformationen im verwalteten Azure Data Factory-Speicher.** Data Factory schützt Ihre Anmeldeinformationen für den Datenspeicher dadurch, dass sie mit von Microsoft verwalteten Zertifikaten verschlüsselt werden. Diese Zertifikate werden alle zwei Jahre ausgetauscht (wozu Erneuerung der Zertifikate und Migration von Anmeldeinformationen gehören). Diese verschlüsselten Anmeldeinformationen werden sicher in einem von Azure Data Factory-Verwaltungsdienste verwalteten Azure Storage gespeichert. Weitere Informationen zur Azure Storage-Sicherheit finden Sie unter [Übersicht über die Sicherheit von Azure Storage](../security/security-storage-overview.md).
 - **Speichern von Anmeldeinformationen in Azure Key Vault.** Eine weitere Möglichkeit ist das Speichern der Anmeldeinformationen für den Datenspeicher in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Die Anmeldeinformationen werden dann von Data Factory beim Ausführen einer Aktivität abgerufen. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).
 
 ### <a name="data-encryption-in-transit"></a>Datenverschlüsselung während der Übertragung
@@ -85,9 +86,9 @@ Amazon Redshift unterstützt die Clusterverschlüsselung für ruhende Daten. Wei
 Salesforce unterstützt Shield Platform Encryption, die eine Verschlüsselung aller Dateien, Anlagen und benutzerdefinierten Felder ermöglicht. Weitere Informationen finden Sie unter [Grundlegendes zum OAuth-Webserver-Authentifizierungsfluss](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios"></a>Hybridszenario
-Hybridszenarien erfordern, dass die selbstgehostete Integration Runtime in einem lokalen Netzwerk oder einem virtuellen Netzwerk (Azure) oder innerhalb einer virtuellen Private Cloud (Amazon) installiert wird. Die selbstgehostete Integration Runtime muss auf die lokalen Datenspeicher zugreifen können. Weitere Informationen zur selbstgehosteten Integration Runtime finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime). 
+Hybridszenarien erfordern, dass die selbstgehostete Integration Runtime in einem lokalen Netzwerk oder einem virtuellen Netzwerk (Azure) oder innerhalb einer virtuellen Private Cloud (Amazon) installiert wird. Die selbstgehostete Integrationslaufzeit muss auf die lokalen Datenspeicher zugreifen können. Weitere Informationen zur selbstgehosteten Integration Runtime finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime). 
 
-![Kanäle der selbstgehosteten Integration Runtime](media/data-movement-security-considerations/data-management-gateway-channels.png)
+![Kanäle der selbstgehosteten Integrationslaufzeit](media/data-movement-security-considerations/data-management-gateway-channels.png)
 
 Der Befehlskanal ermöglicht Kommunikation zwischen Datenverschiebungsdiensten in Data Factory und der selbstgehosteten Integration Runtime. Die Kommunikation enthält die Informationen, die sich auf die Aktivität beziehen. Der Datenkanal wird dazu verwendet, Daten zwischen lokalen Datenspeichern und Clouddatenspeichern zu übertragen.    
 
@@ -144,7 +145,7 @@ Die folgende Tabelle enthält die Anforderungen für ausgehende Ports und die Do
 
 | Domänennamen                  | Ausgehende Ports | BESCHREIBUNG                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443, 80        | Erforderlich für die selbstgehostete Integration Runtime, um Verbindungen mit Datenverschiebungsdiensten in Data Factory herzustellen. |
+| `*.servicebus.windows.net`    | 443            | Erforderlich für die selbstgehostete Integration Runtime, um Verbindungen mit Datenverschiebungsdiensten in Data Factory herzustellen. |
 | `*.core.windows.net`          | 443            | Wird von der selbstgehosteten Integration Runtime verwendet, um Verbindungen mit dem Azure Storage-Konto herzustellen, wenn Sie das Feature [gestaffeltes Kopieren](copy-activity-performance.md#staged-copy) verwenden. |
 | `*.frontend.clouddatahub.net` | 443            | Erforderlich für die selbstgehostete Integration Runtime, um Verbindungen mit dem Azure Data Factory-Dienst herzustellen. |
 | `*.database.windows.net`      | 1433           | (Optional:) Erforderlich, wenn Sie von bzw. nach Azure SQL-Datenbank oder Azure SQL Data Warehouse kopieren. Verwenden Sie das Feature für gestaffeltes Kopieren, um Daten nach Azure SQL-Datenbank oder Azure SQL Data Warehouse zu kopieren, ohne den Port 1433 zu öffnen. |

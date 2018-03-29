@@ -16,6 +16,7 @@
     - name: Erstellen einer Datenbank – Azure PowerShell
       href: sql-database-get-started-powershell.md
     - name: Verbinden und abfragen
+      href: sql-database-connect-query.md
       items:
         - name: SSMS
           href: sql-database-connect-query-ssms.md

@@ -1,11 +1,12 @@
 ---
-title: "Infografik: Grundlagen des maschinellen Lernens – Algorithmusbeispiele | Microsoft Docs"
-description: "Eine einfach verständliche Übersicht über Grundlagen des maschinellen Lernens mit Algorithmusbeispielen. Die herunterladbare Infografik behandelt die meisten Fragen zu maschinellem Lernen."
-keywords: "Grundlagen des maschinellen Lernens,Algorithmusbeispiele,maschinelles Lernen für Einsteiger,Fragen zu maschinellem Lernen,verbreitete Algorithmen,Infografik zu Algorithmen"
+title: 'Infografik: Grundlagen des maschinellen Lernens – Algorithmusbeispiele | Microsoft Docs'
+description: Eine einfach verständliche Übersicht über Grundlagen des maschinellen Lernens mit Algorithmusbeispielen. Die herunterladbare Infografik behandelt die meisten Fragen zu maschinellem Lernen.
+keywords: Grundlagen des maschinellen Lernens,Algorithmusbeispiele,maschinelles Lernen für Einsteiger,Fragen zu maschinellem Lernen,verbreitete Algorithmen,Infografik zu Algorithmen
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: cf4e2308-9285-4adc-9f00-408e3ee7931b
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: garye
-ms.openlocfilehash: 8c392740eb0c06b7a3c47e07e5beb667b17117ae
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 4f07defd3df3a7933a69463729240d856f6282d4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Herunterladbare Infografik: Grundlagen des maschinellen Lernens mit Algorithmusbeispielen
 Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von Machine Learning herunter, um die gängigen Algorithmen für häufige Fragen zu Machine Learning zu identifizieren. Algorithmusbeispiele helfen Einsteigern in das Machine Learning zu verstehen, welche Algorithmen verwendet werden können und welche Einsatzgebiete es für sie gibt.

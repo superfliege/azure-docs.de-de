@@ -1,11 +1,11 @@
 ---
-title: "HTTP/2-Unterstützung in Azure CDN | Microsoft-Dokumentation"
-description: "Erhalten Sie Informationen zur HTTP/2- und CDN-Unterstützung."
+title: HTTP/2-Unterstützung in Azure CDN | Microsoft-Dokumentation
+description: Erhalten Sie Informationen zur HTTP/2- und CDN-Unterstützung.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: lichard
 manager: erikre
-editor: 
+editor: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
 ms.openlocfilehash: a58ab1165f3886484fb695170100422c2f1b0486
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="http2-support-in-azure-cdn"></a>HTTP/2-Unterstützung in Azure CDN
 

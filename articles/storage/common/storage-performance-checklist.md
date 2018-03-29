@@ -1,10 +1,10 @@
 ---
 title: Checkliste zu Leistung und Skalierbarkeit von Azure Storage | Microsoft Docs
-description: "Eine Checkliste mit bewährten Methoden für die Verwendung mit Azure Storage beim Entwickeln leistungsfähiger Anwendungen."
+description: Eine Checkliste mit bewährten Methoden für die Verwendung mit Azure Storage beim Entwickeln leistungsfähiger Anwendungen.
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 959d831b-a4fd-4634-a646-0d2c0c462ef8
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: tamram
-ms.openlocfilehash: 6f5a136d1be7a4bb4093baad820271770305b718
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: 945289a172270eea56625287baf437fd4b70c7f3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -34,7 +34,7 @@ Dieser Artikel unterteilt die bewährten Vorgehensweisen in Gruppen, die wie fol
 * Tabellen
 * Warteschlangen  
 
-| Vorgehensweise | Bereich | Kategorie | Frage |
+| Vorgehensweise | Bereich | Category (Kategorie) | Frage |
 | --- | --- | --- | --- |
 | &nbsp; | Alle Dienste |Skalierbarkeitsziele |[Ist Ihre Anwendung so konzipiert, dass die Skalierbarkeitsziele nicht überschritten werden?](#subheading1) |
 | &nbsp; | Alle Dienste |Skalierbarkeitsziele |[Dient Ihre Namenskonvention einem besseren Lastenausgleich?](#subheading47) |
@@ -82,7 +82,7 @@ Dieser Artikel unterteilt die bewährten Vorgehensweisen in Gruppen, die wie fol
 | &nbsp; | Warteschlangen |Massenabruf |[Rufen Sie mehrere Nachrichten mit einem einzigen „Get“-Vorgang ab?](#subheading42) |
 | &nbsp; | Warteschlangen |Abrufhäufigkeit |[Rufen Sie häufig genug ab, um die gefühlte Latenz der Anwendung zu reduzieren?](#subheading43) |
 | &nbsp; | Warteschlangen |Aktualisieren von Nachrichten |[Verwenden Sie UpdateMessage, um den Fortschritt bei der Nachrichtenverarbeitung zu speichern und so nicht die gesamten Nachrichten erneut verarbeiten zu müssen, falls ein Fehler auftritt?](#subheading44) |
-| &nbsp; | Warteschlangen |Architektur |[Verwenden Sie Warteschlangen, um die gesamte Anwendung besser skalierbar zu machen, indem Sie Arbeitsauslastungen mit langer Laufzeit aus dem kritischen Pfad heraushalten und unabhängig skalieren?](#subheading45) |
+| &nbsp; | Warteschlangen |Architecture |[Verwenden Sie Warteschlangen, um die gesamte Anwendung besser skalierbar zu machen, indem Sie Arbeitsauslastungen mit langer Laufzeit aus dem kritischen Pfad heraushalten und unabhängig skalieren?](#subheading45) |
 
 ## <a name="allservices"></a>Alle Dienste
 In diesem Abschnitt sind bewährte Vorgehensweisen für die Verwendung von allen Azure-Speicherdiensten (Blobs, Tabellen, Warteschlangen und Dateien) aufgelistet.  

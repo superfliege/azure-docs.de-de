@@ -1,23 +1,21 @@
 ---
-title: "Azure Active Directory B2C: „Angemeldet bleiben“ | Microsoft-Dokumentation"
-description: "Ein Thema, in dem veranschaulicht wird, wie „Angemeldet bleiben“ eingerichtet werden kann"
+title: 'Azure Active Directory B2C: „Angemeldet bleiben“ | Microsoft-Dokumentation'
+description: Ein Thema, in dem veranschaulicht wird, wie „Angemeldet bleiben“ eingerichtet werden kann
 services: active-directory-b2c
-documentationcenter: 
-author: vigunase
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-ms.assetid: 926e9711-71c0-49e8-b658-146ffb7386c0
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2016
-ms.author: vigunase
-ms.openlocfilehash: a3d78945f862d1ae12cec05da0cf0ea7df511f43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 073ba8eef7f2f42d1c308fb20d3bfdbfc8d321b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-enable-keep-me-signed-in-kmsi"></a>Azure Active Directory B2C: Aktivieren von „Angemeldet bleiben“  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -96,7 +94,7 @@ Fügen Sie die Anwendungs-IDs zur Datei mit den Erweiterungen hinzu (`TrustFrame
 
 1. Suchen Sie in der Erweiterungsdatei („TrustFrameworkExtensions.xml“) nach den Elementen `<TechnicalProfile Id="login-NonInteractive">` und `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`.
 
-2. Ersetzen Sie alle Instanzen von `IdentityExperienceFrameworkAppId` durch die Anwendungs-ID der Identity Experience Framework-Anwendung, wie unter [Erste Schritte](active-directory-b2c-get-started-custom.md) beschrieben. Beispiel:
+2. Ersetzen Sie alle Instanzen von `IdentityExperienceFrameworkAppId` durch die Anwendungs-ID der Identity Experience Framework-Anwendung, wie unter [Erste Schritte](active-directory-b2c-get-started-custom.md) beschrieben. Beispiel: 
 
    ```
    <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>

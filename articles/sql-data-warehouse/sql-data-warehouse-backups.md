@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL Data Warehouse-Sicherungen – Momentaufnahmen (georedundant) | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie integrierte SQL Data Warehouse-Datenbanksicherungen Ihnen ermöglichen, ein Azure SQL Data Warehouse auf einen Wiederherstellungspunkt in einer anderen geografischen Region wiederherzustellen."
+title: Azure SQL Data Warehouse-Sicherungen – Momentaufnahmen (georedundant) | Microsoft-Dokumentation
+description: Erfahren Sie, wie integrierte SQL Data Warehouse-Datenbanksicherungen Ihnen ermöglichen, ein Azure SQL Data Warehouse auf einen Wiederherstellungspunkt in einer anderen geografischen Region wiederherzustellen.
 services: sql-data-warehouse
-documentationcenter: 
+documentationcenter: ''
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: b5aff094-05b2-4578-acf3-ec456656febd
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: backup-restore
 ms.date: 10/23/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 159a1d34caba829750da33dbc4ad403fb21cd147
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="backup-and-restore-in-sql-data-warehouse"></a>Sicherung und Wiederherstellung in SQL Data Warehouse
 Dieser Artikel erläutert die Merkmale von Sicherungen in SQL Data Warehouse. Verwenden von Data Warehouse Sicherungen zum Wiederherstellen einer Datenbankmomentaufnahme der primären Region oder Wiederherstellen einer Geosicherung für Ihre geografisch gepaarte Region. 

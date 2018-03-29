@@ -10,15 +10,15 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: 8078591b1e2ad120190a23dd29800bd0f1ae33ea
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: fa263a4b6f41e2b31328f46b8d1341d0d74c9a85
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-cost-management-reports"></a>Verwenden von Cost Management-Berichten
 
-In diesem Artikel wird beschrieben, wie Sie verschiedene Cost Management-Berichte im Cloudyn-Portal verwenden. Die meisten Cloudyn-Berichte sind intuitiv und weisen ein einheitliches Erscheinungsbild auf. Eine Übersicht über Cloudyn-Berichte finden Sie unter [Grundlagen zu Kostenberichten](understading-cost-reports.md). In diesem Artikel werden zudem verschiedene in den meisten Berichten verwendete Optionen und Felder beschrieben.
+In diesem Artikel wird beschrieben, wie Sie verschiedene Cost Management-Berichte im Cloudyn-Portal verwenden. Die meisten Cloudyn-Berichte sind intuitiv und weisen ein einheitliches Erscheinungsbild auf. Eine Übersicht über Cloudyn-Berichte finden Sie unter [Grundlagen zu Kostenberichten](understanding-cost-reports.md). In diesem Artikel werden zudem verschiedene in den meisten Berichten verwendete Optionen und Felder beschrieben.
 
 ## <a name="cost-analysis-reports"></a>Berichte zur Kostenanalyse
 

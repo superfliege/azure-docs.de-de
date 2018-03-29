@@ -1,12 +1,12 @@
 ---
-title: "Azure ExpressRoute: Überprüfen der Konnektivität | Microsoft-Dokumentation"
-description: "Diese Seite enthält Anleitungen für die Problembehandlung und Überprüfung der lückenlosen Konnektivität einer ExpressRoute-Verbindung."
+title: 'Azure ExpressRoute: Überprüfen der Konnektivität | Microsoft-Dokumentation'
+description: Diese Seite enthält Anleitungen für die Problembehandlung und Überprüfung der lückenlosen Konnektivität einer ExpressRoute-Verbindung.
 documentationcenter: na
 services: expressroute
 author: rambk
 manager: tracsman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 74b6589a7e06570d978dfe40c5f5bf140e092cc6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5d01f2e402e4b793274761703ec3ca1ea3ff8164
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="verifying-expressroute-connectivity"></a>Überprüfen der ExpressRoute-Konnektivität
 Mit ExpressRoute wird ein lokales Netzwerk über eine private Verbindung, die über einen Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitert. ExpressRoute umfasst die drei folgenden separaten Netzwerkzonen:
@@ -68,7 +68,7 @@ Zum Überprüfen einer ExpressRoute-Verbindung gehören die folgenden Schritte (
 
 Es werden ständig weitere Überprüfungen hinzugefügt. Also lohnt es sich, diese Seite jeden Monat einmal aufzurufen!
 
-##<a name="validate-circuit-provisioning-and-state"></a>Überprüfen der Verbindungsbereitstellung bzw. des -zustands
+## <a name="validate-circuit-provisioning-and-state"></a>Überprüfen der Verbindungsbereitstellung bzw. des -zustands
 Unabhängig vom Konnektivitätsmodell müssen eine ExpressRoute-Verbindung erstellt und ein entsprechender Dienstschlüssel für die Verbindungsbereitstellung generiert werden. Beim Bereitstellen einer ExpressRoute-Verbindung werden redundante Layer 2-Verbindungen zwischen PE-MSEEs (4) und MSEEs (5) hergestellt. Weitere Informationen dazu, wie Sie eine ExpressRoute-Verbindung erstellen, ändern, bereitstellen und überprüfen, finden Sie im Artikel [Erstellen und Ändern einer ExpressRoute-Verbindung][CreateCircuit].
 
 >[!TIP]
@@ -76,7 +76,7 @@ Unabhängig vom Konnektivitätsmodell müssen eine ExpressRoute-Verbindung erste
 >
 >
 
-###<a name="verification-via-the-azure-portal"></a>Überprüfung über das Azure-Portal
+### <a name="verification-via-the-azure-portal"></a>Überprüfung über das Azure-Portal
 Im Azure-Portal können Sie den Status einer ExpressRoute-Verbindung überprüfen, indem Sie im Seitenleistenmenü auf der linken Seite ![2][2] und dann die ExpressRoute-Verbindung wählen. Wenn Sie eine ExpressRoute-Verbindung auswählen, die unter „Alle Ressourcen“ aufgeführt ist, wird das Blatt für die ExpressRoute-Verbindung geöffnet. In Abschnitt ![3][3] des Blatts sind die wichtigsten ExpressRoute-Informationen aufgeführt. Dies ist im folgenden Screenshot dargestellt:
 
 ![4][4]    
@@ -90,7 +90,7 @@ Damit eine ExpressRoute-Verbindung betriebsbereit ist, muss *Schaltkreisstatus* 
 >
 >
 
-###<a name="verification-via-powershell"></a>Überprüfung per PowerShell
+### <a name="verification-via-powershell"></a>Überprüfung per PowerShell
 Verwenden Sie den folgenden Befehl, um alle ExpressRoute-Verbindungen in einer Ressourcengruppe aufzulisten:
 
     Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
@@ -139,7 +139,7 @@ Achten Sie besonders auf die folgenden Felder, um zu überprüfen, ob eine Expre
 >
 >
 
-###<a name="verification-via-powershell-classic"></a>Überprüfung per PowerShell (klassisch)
+### <a name="verification-via-powershell-classic"></a>Überprüfung per PowerShell (klassisch)
 Verwenden Sie den folgenden Befehl, um alle ExpressRoute-Verbindungen eines Abonnements aufzulisten:
 
     Get-AzureDedicatedCircuit
@@ -167,10 +167,10 @@ Achten Sie besonders auf die folgenden Felder, um zu überprüfen, ob eine Expre
 >
 >
 
-##<a name="validate-peering-configuration"></a>Überprüfen der Peeringkonfiguration
+## <a name="validate-peering-configuration"></a>Überprüfen der Peeringkonfiguration
 Nachdem der Service Provider die Bereitstellung der ExpressRoute-Verbindung abgeschlossen hat, kann über die ExpressRoute-Verbindung zwischen MSEE-PRs (4) und MSEEs (5) eine Routingkonfiguration erstellt werden. Für jede ExpressRoute-Verbindung können ein, zwei oder drei Routingkontexte aktiviert werden: privates Azure-Peering (Datenverkehr zu privaten virtuellen Netzwerken in Azure), öffentliches Azure-Peering (Datenverkehr zu öffentlichen IP-Adressen in Azure) und Microsoft-Peering (Datenverkehr zu Office 365 und Dynamics 365). Weitere Informationen dazu, wie Sie die Routingkonfiguration erstellen und ändern, finden Sie im Artikel [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung][CreatePeering].
 
-###<a name="verification-via-the-azure-portal"></a>Überprüfung über das Azure-Portal
+### <a name="verification-via-the-azure-portal"></a>Überprüfung über das Azure-Portal
 
 >[!NOTE]
 >Wenn vom Dienstanbieter Layer 3 bereitgestellt wird und die Peerings im Portal leer sind, aktualisieren Sie die Verbindungskonfiguration über die Schaltfläche „Aktualisieren“ im Portal. Mit diesem Vorgang wird für Ihre Verbindung die richtige Routingkonfiguration angewendet. 
@@ -188,7 +188,7 @@ Im vorherigen Beispiel ist der Routingkontext für das private Azure-Peering akt
 >
 >
 
-###<a name="verification-via-powershell"></a>Überprüfung per PowerShell
+### <a name="verification-via-powershell"></a>Überprüfung per PowerShell
 Verwenden Sie die folgenden Befehle, um die Konfigurationsdetails für das private Azure-Peering zu erhalten:
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
@@ -364,7 +364,7 @@ Das folgende Beispiel zeigt die Antwort auf den Befehl für den Fall, dass kein 
 
     Route Table Info:
 
-##<a name="check-the-traffic-statistics"></a>Überprüfen der Datenverkehrsstatistiken
+## <a name="check-the-traffic-statistics"></a>Überprüfen der Datenverkehrsstatistiken
 Verwenden Sie den folgenden Befehl, um die Datenverkehrsstatistiken für den primären und sekundären Pfad – eingehende und ausgehende Byte – eines Peeringkontexts zu erhalten:
 
     Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private

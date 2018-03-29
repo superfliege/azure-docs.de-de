@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Hinzufügen eines Salesforce-SAML-Anbieters mithilfe von benutzerdefinierten Richtlinien | Microsoft-Dokumentation"
+title: 'Azure Active Directory B2C: Hinzufügen eines Salesforce-SAML-Anbieters mithilfe von benutzerdefinierten Richtlinien | Microsoft-Dokumentation'
 description: In diesem Artikel erfahren Sie, wie Sie in Azure Active Directory B2C benutzerdefinierte Richtlinien erstellen und verwalten.
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: d7f4143f-cd7c-4939-91a8-231a4104dc2c
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 06/11/2017
-ms.author: parakhj
-ms.openlocfilehash: 16f7c5708b479f18de17a612a733a2be6e97ad01
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 1ccf5c58eab9df9016224a91ddda952a05457e2a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-salesforce-accounts-via-saml"></a>Azure Active Directory B2C: Anmelden mit Salesforce-Konten per SAML
 
@@ -32,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie mit [benutzerdefinierter Richtlinien](ac
 
 Stellen Sie sicher, dass Sie alle Themen zu den [ersten Schritten mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md) in Azure Active Directory B2C (Azure AD B2C) abgeschlossen haben.
 
-Diese umfassen:
+Das umfasst:
 
 * Erstellen eines Azure AD B2C-Mandanten
 * Erstellen einer Azure AD B2C-Anwendung
@@ -117,7 +114,7 @@ Laden Sie das Signaturzertifikat in Ihren Azure AD B2C-Mandanten hoch:
     2. Geben Sie einen **Namen** ein (z.B. SAMLSigningCert). Dem Namen Ihres Schlüssels wird automatisch das Präfix *B2C_1A_* hinzugefügt.
     3. Um Ihr Zertifikat auszuwählen, wählen **upload file control** (Dateisteuerelement hochladen) aus. 
     4. Geben Sie das Kennwort des Zertifikats ein, das Sie im PowerShell-Skript festlegen.
-3. Klicken Sie auf **Erstellen**.
+3. Klicken Sie auf **Create**.
 4. Überprüfen Sie, ob Sie einen Schlüssel (z.B. B2C_1A_SAMLSigningCert) erstellt haben. Notieren Sie den vollständigen Namen (einschließlich *B2C_1A_*). Sie werden auf diesen Schlüssel später in der Richtlinie Bezug nehmen.
 
 ## <a name="create-the-salesforce-saml-claims-provider-in-your-base-policy"></a>Erstellen des Salesforce-SAML-Anspruchsanbieters in Ihrer Basisrichtlinie

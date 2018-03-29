@@ -1,11 +1,10 @@
 ---
-title: "Data Factory-Anwendungsfall – Produktempfehlungen"
+title: Data Factory-Anwendungsfall – Produktempfehlungen
 description: Informationen zu einem Anwendungsfall, der mithilfe von Azure Data Factory zusammen mit anderen Diensten implementiert wurde.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 04504d1e32243f752e488a24e04ec5ba73fbadc1
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 41948d8141d0f3c0e41b95f169bcec6c4b641106
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-case---product-recommendations"></a>Anwendungsfall – Produktempfehlungen
 Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden.  Auf der Seite [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) finden Sie Details zu dieser Suite. In diesem Dokument wird ein allgemeiner Anwendungsfall beschrieben, den Azure-Benutzer bereits mithilfe von Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert haben.
@@ -49,7 +48,7 @@ Alle Daten werden kombiniert und einem Produktempfehlungssystem hinzugefügt, um
 
 ![Anwendungsfalldiagramm](./media/data-factory-product-reco-usecase/diagram-1.png)
 
-Gigabytes an unformatierten Webprotokolldateien werden tagtäglich von der Website des Onlinehändlers als teilstrukturierte Daten erzeugt. Die unformatierten Webprotokolldateien sowie die Kunden- und Produktkataloginformationen werden regelmäßig in einem Azure-Blobspeicher erfasst. Dazu wird die global als Dienst bereitgestellte Datenverschiebung von Data Factory verwendet. Die unformatierten Protokolldateien für den jeweiligen Tag werden im Blobspeicher zur langfristigen Speicherung nach Jahr und Monat partitioniert.  Zum Partitionieren der unformatierten Protokolldateien im Blobspeicher sowie zum bedarfsgerechten Verarbeiten der erfassten Protokolle mithilfe von Hive- und Pig-Skripts wird [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) verwendet. Die partitionierten Webprotokolldaten werden anschließend verarbeitet, um die erforderlichen Eingaben für ein durch maschinelles Lernen gestütztes Empfehlungssystem zu extrahieren, das zum Erzeugen der personalisierten Produktempfehlungen dient.
+Gigabytes an unformatierten Webprotokolldateien werden tagtäglich von der Website des Onlinehändlers als teilstrukturierte Daten erzeugt. Die unformatierten Webprotokolldateien sowie die Kunden- und Produktkataloginformationen werden regelmäßig in einer Azure Blob Storage-Instanz erfasst. Dazu wird die global als Dienst bereitgestellte Datenverschiebung von Data Factory verwendet. Die unformatierten Protokolldateien für den jeweiligen Tag werden im Blobspeicher zur langfristigen Speicherung nach Jahr und Monat partitioniert.  Zum Partitionieren der unformatierten Protokolldateien im Blobspeicher sowie zum bedarfsgerechten Verarbeiten der erfassten Protokolle mithilfe von Hive- und Pig-Skripts wird [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) verwendet. Die partitionierten Webprotokolldaten werden anschließend verarbeitet, um die erforderlichen Eingaben für ein durch maschinelles Lernen gestütztes Empfehlungssystem zu extrahieren, das zum Erzeugen der personalisierten Produktempfehlungen dient.
 
 Das durch maschinelles Lernen gestützte Empfehlungssystem in diesem Beispiel ist eine Open-Source-Empfehlungsplattform mit maschinellem Lernen von [Apache Mahout](http://mahout.apache.org/).  In diesem Szenario kann ein beliebiges, auf [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) basierendes oder benutzerdefiniertes Modell verwendet werden.  Das Mahout-Modell dient zum Prognostizieren der Ähnlichkeit zwischen Artikeln auf der Website anhand allgemeiner Nutzungsmuster sowie zum Generieren personalisierter Empfehlungen auf der Grundlage des jeweiligen Benutzers.
 

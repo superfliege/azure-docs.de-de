@@ -2,10 +2,10 @@
 title: Inkrementelles Kopieren von Daten mithilfe von Azure Data Factory | Microsoft-Dokumentation
 description: In diesen Tutorials wird veranschaulicht, wie Sie Daten inkrementell aus einem Quelldatenspeicher in einen Zieldatenspeicher kopieren. Im ersten Tutorial werden Daten aus einer Tabelle kopiert.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: e7582b2ea209e608abce721ef0cd3555e5ccec93
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 7265e20bf89cc9dbc1c44e568e779f2d13f87685
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Inkrementelles Laden von Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher
 
@@ -30,7 +30,7 @@ In diesem Fall definieren Sie einen Grenzwert (Englisch: Watermark) in Ihrer Que
 
 Die folgenden Tutorials enthalten Schritt-für-Schritt-Anleitungen: 
 
-- [Inkrementelles Kopieren von Daten aus einer Tabelle in Azure SQL-Datenbank in einen Azure-Blobspeicher](tutorial-incremental-copy-powershell.md)
+- [Inkrementelles Kopieren von Daten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage](tutorial-incremental-copy-powershell.md)
 - [Inkrementelles Laden von mehreren SQL Server-Tabellen in Azure SQL-Datenbank](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 
@@ -49,4 +49,4 @@ Das folgende Tutorial enthält eine Schritt-für-Schritt-Anleitung: <br/>
 Fahren Sie mit dem folgenden Tutorial fort: 
 
 > [!div class="nextstepaction"]
->[Inkrementelles Kopieren von Daten aus einer Tabelle in Azure SQL-Datenbank in einen Azure-Blobspeicher](tutorial-incremental-copy-powershell.md)
+>[Inkrementelles Kopieren von Daten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage](tutorial-incremental-copy-powershell.md)
