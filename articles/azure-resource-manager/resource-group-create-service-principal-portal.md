@@ -1,5 +1,5 @@
 ---
-title: "Erstellen einer Identität für die Azure-App im Portal | Microsoft-Dokumentation"
+title: Erstellen einer Identität für die Azure-App im Portal | Microsoft-Dokumentation
 description: Beschreibt das Erstellen einer neuen Azure Active Directory-Anwendung und eines Dienstprinzipals, der mit der rollenbasierten Zugriffskontrolle in Azure Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
 services: azure-resource-manager
 documentationcenter: na
@@ -11,31 +11,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/16/2018
+ms.date: 03/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 504fbc20f11243ccd825eb69171cd0893782e611
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: c2b8498b2d32e2c3c7ed5dca3295ae6a98fa2676
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals
 
-Bei Verwendung einer Anwendung, die auf Ressourcen zugreifen oder diese ändern muss, müssen Sie eine Azure Active Directory-Anwendung (AD) einrichten und ihr die erforderlichen Berechtigungen zuweisen. Dieser Ansatz ist dem Ausführen der App mit Ihren Anmeldeinformationen aus folgenden Gründen vorzuziehen:
-
-* Sie können der App-Identität Berechtigungen zuweisen, die sich von Ihren eigenen Berechtigungen unterscheiden. In der Regel sind diese Berechtigungen genau auf die Aufgaben der App beschränkt.
-* Sie müssen keine Anmeldeinformationen für die App ändern, wenn sich Ihre Zuständigkeiten ändern. 
-* Sie können ein Zertifikat verwenden, um die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts zu automatisieren.
+Richten Sie eine Azure Active Directory-Anwendung (AD) ein, wenn Sie über Code verfügen, mit dem auf Ressourcen zugegriffen werden muss oder mit dem Änderungen dafür durchgeführt werden müssen. Sie weisen der AD-Anwendung die erforderlichen Berechtigungen zu. Dieser Ansatz ist dem Ausführen der App mit Ihren eigenen Anmeldeinformationen vorzuziehen, da Sie der App-Identität Berechtigungen zuweisen können, die sich von Ihren eigenen Berechtigungen unterscheiden. In der Regel sind diese Berechtigungen genau auf die Aufgaben der App beschränkt.
 
 In diesem Artikel erfahren Sie, wie diese Schritte über das Portal ausgeführt werden. Es konzentriert sich auf eine Anwendung mit nur einem Mandanten, die nur zur Ausführung in einer einzigen Organisation vorgesehen ist. Anwendungen mit nur einem Mandanten werden in der Regel für innerhalb Ihrer Organisation ausgeführte Branchenanwendungen verwendet.
+
+> [!IMPORTANT]
+> Anstatt einen Dienstprinzipal zu erstellen, sollten Sie die Verwendung der verwalteten Dienstidentität für Azure AD für Ihre Anwendungsidentität erwägen. Die verwaltete Dienstidentität für Azure AD (Azure AD MSI) ist ein öffentliches Vorschaufeature von Azure Active Directory, mit dem das Erstellen einer Identität für Code vereinfacht wird. Wenn Ihr Code unter einem Dienst ausgeführt wird, der Azure AD MSI unterstützt, und auf Ressourcen zugreift, die die Azure Active Directory-Authentifizierung unterstützen, ist Azure AD MSI für Sie die besser geeignete Option. Weitere Informationen zu Azure AD MSI, z.B. welche Dienste derzeit unterstützt werden, finden Sie unter [Verwaltete Dienstidentität für Azure-Ressourcen](../active-directory/managed-service-identity/overview.md).
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 
 Um diesen Artikel abzuschließen, müssen Sie über ausreichende Berechtigungen verfügen, um eine Anwendung bei Ihrem Azure AD-Mandanten zu registrieren, und die Anwendung einer Rolle in Ihrem Azure-Abonnement zuzuweisen. Stellen Sie sicher, dass Sie über die richtigen Berechtigungen für diese Schritte verfügen.
 
 ### <a name="check-azure-active-directory-permissions"></a>Überprüfen der Azure Active Directory-Berechtigungen
-
-1. Melden Sie sich über das [Azure-Portal](https://portal.azure.com) bei Ihrem Azure-Konto an.
 
 1. Wählen Sie **Azure Active Directory**.
 
@@ -49,21 +46,9 @@ Um diesen Artikel abzuschließen, müssen Sie über ausreichende Berechtigungen 
 
    ![App-Registrierungen anzeigen](./media/resource-group-create-service-principal-portal/view-app-registrations.png)
 
-1. Wenn die App-Registrierungseinstellung auf **Nein** festgelegt ist, können nur Administratorbenutzer Apps registrieren. Überprüfen Sie, ob Ihr Konto ein Administrator für den Azure AD-Mandanten ist. Wählen Sie aus den schnellen Aufgaben **Übersicht** und **Benutzer suchen** aus.
+1. Wenn die App-Registrierungseinstellung auf **Nein** festgelegt ist, können nur Administratorbenutzer Apps registrieren. Überprüfen Sie, ob Ihr Konto ein Administrator für den Azure AD-Mandanten ist. Wählen Sie **Übersicht**, und sehen Sie sich Ihre Benutzerinformationen an. Gehen Sie wie folgt vor, wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung (aus dem vorherigen Schritt) aber auf Administratoren begrenzt ist: Bitten Sie Ihren Administrator, Ihnen entweder eine Administratorrolle zuzuweisen oder es Benutzern zu erlauben, Apps zu registrieren.
 
-   ![Benutzer suchen](./media/resource-group-create-service-principal-portal/find-user.png)
-
-1. Suchen Sie nach Ihrem Konto, und wählen Sie es aus, wenn Sie es gefunden haben.
-
-   ![Benutzer durchsuchen](./media/resource-group-create-service-principal-portal/show-user.png)
-
-1. Wählen Sie für Ihr Konto **Verzeichnisrolle** aus.
-
-   ![Verzeichnisrolle](./media/resource-group-create-service-principal-portal/select-directory-role.png)
-
-1. Zeigen Sie Ihre zugeordnete Verzeichnisrolle in Azure AD an. Wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung (aus den vorherigen Schritten) aber auf Administratoren begrenzt ist, bitten Sie Ihren Administrator, Ihnen entweder eine Administratorrolle zuzuweisen oder Benutzern zu erlauben, Apps zu registrieren.
-
-   ![Rolle anzeigen](./media/resource-group-create-service-principal-portal/view-role.png)
+   ![Benutzer suchen](./media/resource-group-create-service-principal-portal/view-user-info.png)
 
 ### <a name="check-azure-subscription-permissions"></a>Überprüfen der Berechtigungen des Azure-Abonnements
 
@@ -71,23 +56,17 @@ Ihr Konto muss in Ihrem Azure-Abonnement über `Microsoft.Authorization/*/Write`
 
 So überprüfen Sie die Berechtigungen Ihres Abonnements
 
-1. Wenn Ihr Azure AD-Konto aus den vorherigen Schritten noch nicht angezeigt wird, wählen Sie im linken Bereich **Azure Active Directory** aus.
+1. Wählen Sie oben rechts Ihr Konto und dann die Option **Meine Berechtigungen**.
 
-1. Suchen Sie Ihr Azure AD-Konto. Wählen Sie aus den schnellen Aufgaben **Übersicht** und **Benutzer suchen** aus.
+   ![Auswählen von Benutzerberechtigungen](./media/resource-group-create-service-principal-portal/select-my-permissions.png)
 
-   ![Benutzer suchen](./media/resource-group-create-service-principal-portal/find-user.png)
+1. Wählen Sie in der Dropdownliste das Abonnement aus. Wählen Sie **Click here to view complete access details for this subscription** (Klicken Sie hier, um die vollständigen Zugriffsdetails für dieses Abonnement anzuzeigen).
 
-1. Suchen Sie nach Ihrem Konto, und wählen Sie es aus, wenn Sie es gefunden haben.
+   ![Benutzer suchen](./media/resource-group-create-service-principal-portal/view-details.png)
 
-   ![Benutzer durchsuchen](./media/resource-group-create-service-principal-portal/show-user.png)
+1. Zeigen Sie Ihre zugewiesenen Rollen an, und ermitteln Sie, ob Sie über die erforderlichen Berechtigungen verfügen, um einer Rolle eine AD-App zuzuweisen. Wenn dies nicht der Fall ist, bitten Sie Ihren Abonnementadministrator, Sie zur Rolle „Benutzerzugriffsadministrator“ hinzuzufügen. In der folgenden Abbildung wurde der Benutzer der Rolle „Besitzer“ zugeordnet. Dies bedeutet, dass dieser Benutzer über die erforderlichen Berechtigungen verfügt.
 
-1. Wählen Sie **Azure-Ressourcen** aus.
-
-   ![Ressourcen auswählen](./media/resource-group-create-service-principal-portal/select-azure-resources.png)
-
-1. Zeigen Sie Ihre zugewiesenen Rollen an, und ermitteln Sie, ob Sie über die erforderlichen Berechtigungen verfügen, um einer Rolle eine AD-App zuzuweisen. Wenn dies nicht der Fall ist, bitten Sie Ihren Abonnementadministrator, Sie zur Rolle „Benutzerzugriffsadministrator“ hinzuzufügen. In der folgenden Abbildung wurde der Benutzer für zwei Abonnements der Rolle „Besitzer“ zugeordnet, das bedeutet, dass dieser Benutzer über die erforderlichen Berechtigungen verfügt.
-
-   ![Berechtigungen anzeigen](./media/resource-group-create-service-principal-portal/view-assigned-roles.png)
+   ![Berechtigungen anzeigen](./media/resource-group-create-service-principal-portal/view-user-role.png)
 
 ## <a name="create-an-azure-active-directory-application"></a>Erstellen einer Azure Active Directory-Anwendung
 
@@ -104,7 +83,7 @@ So überprüfen Sie die Berechtigungen Ihres Abonnements
 
    ![App hinzufügen](./media/resource-group-create-service-principal-portal/select-add-app.png)
 
-1. Geben Sie einen Namen und eine URL für die Anwendung an. Wählen Sie als Typ für die zu erstellende Anwendung **Web-App/API** aus. Sie können keine Anmeldeinformationen für eine **native** Anwendung erstellen, daher funktioniert dieser Typ nicht für eine automatisierte Anwendung. Wählen Sie nach dem Festlegen der Werte **Erstellen** aus.
+1. Geben Sie einen Namen und eine URL für die Anwendung an. Wählen Sie als Typ für die zu erstellende Anwendung **Web-App/API** aus. Sie können keine Anmeldeinformationen für eine [native](../active-directory/active-directory-application-proxy-native-client.md) Anwendung erstellen. Daher funktioniert dieser Typ nicht für eine automatisierte Anwendung. Wählen Sie nach dem Festlegen der Werte **Erstellen** aus.
 
    ![Anwendung benennen](./media/resource-group-create-service-principal-portal/create-app.png)
 
@@ -121,6 +100,10 @@ Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung und 
 1. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie in Ihrem Anwendungscode. In einigen [Beispielanwendungen](#log-in-as-the-application) wird dieser Wert als „Client-ID“ bezeichnet.
 
    ![Client-ID](./media/resource-group-create-service-principal-portal/copy-app-id.png)
+
+1. Wählen Sie zum Generieren eines Authentifizierungsschlüssels die Option **Einstellungen**.
+
+   ![Auswählen von „Einstellungen“](./media/resource-group-create-service-principal-portal/select-settings.png)
 
 1. Wählen Sie zum Generieren eines Authentifizierungsschlüssels die Option **Schlüssel** aus.
 
@@ -181,19 +164,6 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
    ![Nach App suchen](./media/resource-group-create-service-principal-portal/search-app.png)
 
 1. Wählen Sie **Speichern** aus, um das Zuweisen der Rolle abzuschließen. Ihre Anwendung wird in der Liste der Benutzer angezeigt, die einer Rolle für diesen Kontext zugewiesen sind.
-
-## <a name="log-in-as-the-application"></a>Anmelden als Anwendung
-
-Die Anwendung wird jetzt in Azure Active Directory eingerichtet. Sie verfügen über eine ID und einen Schlüssel, um sich als Anwendung anzumelden. Die Anwendung ist einer Rolle zugewiesen, die die Ausführung bestimmter Aktionen ermöglicht. Informationen zum Anmelden als Anwendung über verschiedene Plattformen finden Sie hier:
-
-* [PowerShell](resource-group-authenticate-service-principal.md#provide-credentials-through-powershell)
-* [Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md)
-* [REST](/rest/api/#create-the-request)
-* [.NET](/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)
-* [Java](/java/azure/java-sdk-azure-authenticate)
-* [Node.js](/javascript/azure/node-sdk-azure-authenticate-principal?view=azure-node-latest)
-* [Python](/python/azure/python-sdk-azure-authenticate?view=azure-python)
-* [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Einrichten einer Anwendung mit mehreren Mandanten finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).

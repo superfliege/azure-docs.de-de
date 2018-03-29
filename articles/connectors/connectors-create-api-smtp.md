@@ -3,9 +3,9 @@ title: SMTP-Connector in Azure Logic Apps | Microsoft-Dokumentation
 description: Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine SMTP-Verbindung her, um E-Mails zu senden.
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 6544a8e81a1c84fbd09e60b3f06c5fd308a18dcf
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 9bf7c9b7c3e775ab03b071d13d792f4b2d8fb3e3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-smtp-connector"></a>Erste Schritte mit dem SMTP-Connector
 Stellen Sie eine SMTP-Verbindung her, um E-Mails zu senden.
@@ -37,13 +37,13 @@ Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zun
 ## <a name="use-an-smtp-trigger"></a>Verwenden eines SMTP-Triggers
 Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-Da SMTP über keinen eigenen Trigger verfügt, verwenden wir in diesem Beispiel den Trigger **Salesforce – Wenn ein Objekt erstellt wird**. Dieser Trigger wird aktiviert, wenn in Salesforce ein neues Objekt erstellt wird. In unserem Beispiel legen wir den Trigger so fest, dass über den SMTP-Connector bei jeder Erstellung eines Leads in Salesforce eine Aktion vom Typ *E-Mail senden* mit einer entsprechenden Benachrichtigung ausgelöst wird.
+In diesem Beispiel verfügt SMTP nicht über einen eigenen Trigger. Verwenden Sie daher den Salesforce-Trigger **Wenn ein Objekt erstellt wird**. Dieser Trigger wird aktiviert, wenn in Salesforce ein neues Objekt erstellt wird. In diesem Beispiel wird der Trigger so festgelegt, dass über den SMTP-Connector bei jeder Erstellung eines Leads in Salesforce eine Aktion vom Typ *E-Mail senden* mit einer entsprechenden Benachrichtigung ausgelöst wird.
 
 1. Geben Sie im Suchfeld des Designers für Logik-Apps die Zeichenfolge *Salesforce* ein, und wählen Sie anschließend den Trigger **Salesforce - Wenn ein Objekt erstellt wird** aus.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)  
 2. Das Steuerelement **Wenn ein Objekt erstellt wird** wird angezeigt.
    ![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)  
-3. Wählen Sie den **Objekttyp** und anschließend in der Objektliste die Option *Lead* aus. In diesem Schritt geben Sie an, dass Sie einen Trigger erstellen, der Ihre Logik-App benachrichtigt, wenn in Salesforce ein neuer Lead erstellt wird.  
+3. Wählen Sie den **Objekttyp** und anschließend in der Objektliste die Option *Lead* aus. In diesem Schritt erstellen Sie einen Trigger, mit dem Ihre Logik-App benachrichtigt wird, wenn in Salesforce ein neuer Lead erstellt wird.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger3.png)  
 4. Der Trigger wurde erstellt.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: d6a0b945bad36842142d16a4840c9c3d69e1564e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ee04fc3338dec7893f9f33322bd6b9af932199e7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights
 Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
@@ -113,8 +113,7 @@ Ihre Möglichkeiten:
 ## <a name="reporting-exceptions-explicitly"></a>Explizites Melden von Ausnahmen
 Am einfachsten ist es, in einem Ausnahmehandler einen Aufruf in TrackException() einzufügen.
 
-JavaScript
-
+```javascript
     try
     { ...
     }
@@ -124,9 +123,9 @@ JavaScript
         {Game: currentGame.Name,
          State: currentGame.State.ToString()});
     }
+```
 
-C#
-
+```csharp
     var telemetry = new TelemetryClient();
     ...
     try
@@ -144,9 +143,9 @@ C#
        // Send the exception telemetry:
        telemetry.TrackException(ex, properties, measurements);
     }
+```
 
-VB
-
+```VB
     Dim telemetry = New TelemetryClient
     ...
     Try
@@ -162,6 +161,7 @@ VB
       ' Send the exception telemetry:
       telemetry.TrackException(ex, properties, measurements)
     End Try
+```
 
 Die Eigenschaften und Messparameter sind optional, aber hilfreich zum [Filtern und Hinzufügen](app-insights-diagnostic-search.md) zusätzlicher Informationen. Wenn Sie z. B. eine Anwendung haben, die mehrere Spiele ausführen kann, können Sie alle im Zusammenhang mit einem bestimmten Spiel stehenden Ausnahmeberichte ermitteln. Sie können jedem Wörterbuch beliebig viele Elemente hinzufügen.
 
@@ -175,8 +175,7 @@ Für Webformulare kann das HTTP-Modul die Ausnahmen erfassen, wenn keine Umleitu
 
 Wenn jedoch aktive Umleitungen bestehen, fügen Sie der Funktion "Application_Error" in "Global.asax.cs" die folgenden Zeilen hinzu. (Fügen Sie eine Datei "Global.asax" hinzu, falls noch keine vorhanden ist.)
 
-*C#*
-
+```csharp
     void Application_Error(object sender, EventArgs e)
     {
       if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError  () != null)
@@ -186,11 +185,28 @@ Wenn jedoch aktive Umleitungen bestehen, fügen Sie der Funktion "Application_Er
          ai.TrackException(Server.GetLastError());
       }
     }
-
+```
 
 ## <a name="mvc"></a>MVC
+Ab Application Insights Web SDK Version 2.6 (beta3 und höher) sammelt Application Insights Ausnahmefehler automatisch, die in den MVC 5+-Controllermethoden ausgelöst werden. Wenn Sie bereits vorher einen benutzerdefinierten Handler zum Nachverfolgen dieser Ausnahmen hinzugefügt haben (wie in den folgenden Beispielen beschrieben), können Sie ihn entfernen, um eine doppelte Nachverfolgung von Ausnahmen zu verhindern.
+
+Es gibt eine Reihe von Fällen, die von den Ausnahmefiltern nicht verarbeitet werden können. Beispiel: 
+
+* Von Controllerkonstruktoren ausgelöste Ausnahmen.
+* Von Meldungshandlern ausgelöste Ausnahmen
+* Während des Routings ausgelöste Ausnahmen.
+* Während der Serialisierung von Antwortinhalten ausgelöste Ausnahmen.
+* Ausnahme, die während des Anwendungsstarts ausgelöst wird.
+* In Hintergrundaufgaben ausgelöste Ausnahme.
+
+Alle Ausnahmen die von der Anwendung *verarbeitet* werden, müssen weiterhin manuell nachverfolgt werden. Ausnahmefehler, die von Controllern ausgehen, führen normalerweise zu folgender Antwort: 500 „Interner Serverfehler“. Wenn eine Antwort dieser Art aufgrund einer behandelten Ausnahme (oder keiner Ausnahme) manuell erstellt wird, wird sie in der dazugehörigen Anforderungstelemetrie mit „`ResultCode` 500“ nachverfolgt. Mit dem Application Insights SDK kann die entsprechende Ausnahme aber nicht nachverfolgt werden.
+
+### <a name="prior-versions-support"></a>Unterstützung von früheren Versionen
+Wenn Sie MVC 4 (und früher) des Application Insights Web SDK 2.5 (und früher) verwenden, sind die folgenden Beispiele zum Nachverfolgen von Ausnahmen hilfreich.
+
 Wenn die [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx)-Konfiguration `Off` lautet, stehen für das zu erfassende [HTTP-Modul](https://msdn.microsoft.com/library/ms178468.aspx) Ausnahmen zur Verfügung. Lautet sie allerdings `RemoteOnly` (Standardeinstellung) oder `On`, wird die Ausnahme gelöscht und steht für die automatische Erfassung durch Application Insights nicht zur Verfügung. Diesen Umstand können Sie beheben, indem Sie die [System.Web.Mvc.HandleErrorAttribute-Klasse](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx) außer Kraft setzen und die außer Kraft gesetzte Klasse wie unten gezeigt für die verschiedenen MVC-Versionen anwenden ([GitHub-Quelle](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
+```csharp
     using System;
     using System.Web.Mvc;
     using Microsoft.ApplicationInsights;
@@ -215,22 +231,26 @@ Wenn die [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx)-Konfig
         }
       }
     }
+```
 
 #### <a name="mvc-2"></a>MVC 2
 Ersetzen Sie das HandleError-Attribut durch das neue Attribut in Ihren Controllern.
 
+```csharp
     namespace MVC2App.Controllers
     {
        [AiHandleError]
        public class HomeController : Controller
        {
     ...
+```
 
 [Beispiel](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
 Registrieren Sie `AiHandleErrorAttribute` als globalen Filter in "Global.asax.cs":
 
+```csharp
     public class MyMvcApplication : System.Web.HttpApplication
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -238,12 +258,14 @@ Registrieren Sie `AiHandleErrorAttribute` als globalen Filter in "Global.asax.cs
          filters.Add(new AiHandleErrorAttribute());
       }
      ...
+```
 
 [Beispiel](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4, MVC5
 Registrieren Sie "AiHandleErrorAttribute" als globalen Filter in "FilterConfig.cs":
 
+```csharp
     public class FilterConfig
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -252,12 +274,31 @@ Registrieren Sie "AiHandleErrorAttribute" als globalen Filter in "FilterConfig.c
         filters.Add(new AiHandleErrorAttribute());
       }
     }
+```
 
 [Beispiel](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
-## <a name="web-api-1x"></a>Web-API 1.x
+## <a name="web-api"></a>Web-API
+Ab Application Insights Web SDK Version 2.6 (beta3 und höher) sammelt Application Insights Ausnahmefehler, die in den Controllermethoden ausgelöst werden, für WebAPI 2+ automatisch. Wenn Sie bereits vorher einen benutzerdefinierten Handler zum Nachverfolgen dieser Ausnahmen hinzugefügt haben (wie in den folgenden Beispielen beschrieben), können Sie ihn entfernen, um eine doppelte Nachverfolgung von Ausnahmen zu verhindern.
+
+Es gibt eine Reihe von Fällen, die von den Ausnahmefiltern nicht verarbeitet werden können. Beispiel: 
+
+* Von Controllerkonstruktoren ausgelöste Ausnahmen.
+* Von Meldungshandlern ausgelöste Ausnahmen
+* Während des Routings ausgelöste Ausnahmen.
+* Während der Serialisierung von Antwortinhalten ausgelöste Ausnahmen.
+* Ausnahme, die während des Anwendungsstarts ausgelöst wird.
+* In Hintergrundaufgaben ausgelöste Ausnahme.
+
+Alle Ausnahmen die von der Anwendung *verarbeitet* werden, müssen weiterhin manuell nachverfolgt werden. Ausnahmefehler, die von Controllern ausgehen, führen normalerweise zu folgender Antwort: 500 „Interner Serverfehler“. Wenn eine Antwort dieser Art aufgrund einer behandelten Ausnahme (oder keiner Ausnahme) manuell erstellt wird, wird sie in einer dazugehörigen Anforderungstelemetrie mit „`ResultCode` 500“ nachverfolgt. Mit dem Application Insights SDK kann die entsprechende Ausnahme aber nicht nachverfolgt werden.
+
+### <a name="prior-versions-support"></a>Unterstützung von früheren Versionen
+Wenn Sie WebAPI 1 (und früher) des Application Insights Web SDK 2.5 (und früher) verwenden, sind die folgenden Beispiele zum Nachverfolgen von Ausnahmen hilfreich.
+
+#### <a name="web-api-1x"></a>Web-API 1.x
 Setzen Sie "System.Web.Http.Filters.ExceptionFilterAttribute" außer Kraft:
 
+```csharp
     using System.Web.Http.Filters;
     using Microsoft.ApplicationInsights;
 
@@ -276,9 +317,11 @@ Setzen Sie "System.Web.Http.Filters.ExceptionFilterAttribute" außer Kraft:
         }
       }
     }
+```
 
 Sie könnten dieses außer Kraft gesetzte Attribut bestimmten Controllern oder der globalen Filterkonfiguration in der WebApiConfig-Klasse hinzufügen:
 
+```csharp
     using System.Web.Http;
     using WebApi1.x.App_Start;
 
@@ -298,19 +341,14 @@ Sie könnten dieses außer Kraft gesetzte Attribut bestimmten Controllern oder d
         }
       }
     }
+```
 
 [Beispiel](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-Es gibt eine Reihe von Fällen, die von den Ausnahmefiltern nicht verarbeitet werden können. Beispiel: 
-
-* Von Controllerkonstruktoren ausgelöste Ausnahmen.
-* Von Meldungshandlern ausgelöste Ausnahmen
-* Während des Routings ausgelöste Ausnahmen.
-* Während der Serialisierung von Antwortinhalten ausgelöste Ausnahmen.
-
-## <a name="web-api-2x"></a>Web-API 2.x
+#### <a name="web-api-2x"></a>Web-API 2.x
 Fügen Sie eine Implementierung von IExceptionLogger hinzu:
 
+```csharp
     using System.Web.Http.ExceptionHandling;
     using Microsoft.ApplicationInsights;
 
@@ -329,9 +367,11 @@ Fügen Sie eine Implementierung von IExceptionLogger hinzu:
         }
       }
     }
+```
 
 Fügen Sie den Diensten in WebApiConfig Folgendes hinzu:
 
+```csharp
     using System.Web.Http;
     using System.Web.Http.ExceptionHandling;
     using ProductsAppPureWebAPI.App_Start;
@@ -355,7 +395,8 @@ Fügen Sie den Diensten in WebApiConfig Folgendes hinzu:
             config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger());
         }
       }
-  }
+     }
+```
 
 [Beispiel](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
@@ -367,6 +408,7 @@ Als Alternativen können Sie folgende Aktionen ausführen:
 ## <a name="wcf"></a>WCF
 Fügen Sie eine Klasse hinzu, die "Attribute" erweitert und "IErrorHandler" und "IServiceBehavior" implementiert.
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -416,7 +458,7 @@ Fügen Sie eine Klasse hinzu, die "Attribute" erweitert und "IErrorHandler" und 
       }
     }
 
-Fügen Sie das Attribut den Dienstimplementierungen hinzu:
+Add the attribute to the service implementations:
 
     namespace WcfService4
     {
@@ -424,6 +466,7 @@ Fügen Sie das Attribut den Dienstimplementierungen hinzu:
         public class Service1 : IService1
         {
          ...
+```
 
 [Beispiel](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 

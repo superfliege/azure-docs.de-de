@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights Snapshot-Debugger für .NET-Apps | Microsoft Docs"
-description: "Debugmomentaufnahmen werden automatisch beim Auslösen von Ausnahmen in .NET-Produktions-Apps erfasst."
+title: Azure Application Insights Snapshot-Debugger für .NET-Apps | Microsoft Docs
+description: Debugmomentaufnahmen werden automatisch beim Auslösen von Ausnahmen in .NET-Produktions-Apps erfasst.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: pharring
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8d6f2347e06e58ec2b506aa9eaf716b3f71f3a77
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 5a2b3dbce1d969eaa9937ad866fd055ae72e6529
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 
@@ -60,10 +60,20 @@ Die folgenden Umgebungen werden unterstützt:
         <MaximumSnapshotsRequired>3</MaximumSnapshotsRequired>
         <!-- The maximum number of problems that we can be tracking at any time. -->
         <MaximumCollectionPlanSize>50</MaximumCollectionPlanSize>
+        <!-- How often we reconnect to the stamp. The default value is 15 minutes.-->
+        <ReconnectInterval>00:15:00</ReconnectInterval>
         <!-- How often to reset problem counters. -->
-        <ProblemCounterResetInterval>06:00:00</ProblemCounterResetInterval>
+        <ProblemCounterResetInterval>24:00:00</ProblemCounterResetInterval>
+        <!-- The maximum number of snapshots allowed in ten minutes.The default value is 1. -->
+        <SnapshotsPerTenMinutesLimit>1</SnapshotsPerTenMinutesLimit>
         <!-- The maximum number of snapshots allowed per day. -->
-        <SnapshotsPerDayLimit>50</SnapshotsPerDayLimit>
+        <SnapshotsPerDayLimit>30</SnapshotsPerDayLimit>
+        <!-- Whether or not to collect snapshot in low IO priority thread. The default value is true. -->
+        <SnapshotInLowPriorityThread>true</SnapshotInLowPriorityThread>
+        <!-- Agree to send anonymous data to Microsoft to make this product better. -->
+        <ProvideAnonymousTelemetry>true</ProvideAnonymousTelemetry>
+        <!-- The limit on the number of failed requests to request snapshots before the telemetry processor is disabled. -->
+        <FailedRequestLimit>3</FailedRequestLimit>
         </Add>
     </TelemetryProcessors>
     ```
@@ -128,7 +138,17 @@ Die folgenden Umgebungen werden unterstützt:
        "InstrumentationKey": "<your instrumentation key>"
      },
      "SnapshotCollectorConfiguration": {
-       "IsEnabledInDeveloperMode": true
+       "IsEnabledInDeveloperMode": true,
+       "ThresholdForSnapshotting": 5,
+       "MaximumSnapshotsRequired": 3,
+       "MaximumCollectionPlanSize": 50,
+       "ReconnectInterval": "00:15:00",
+       "ProblemCounterResetInterval":"24:00:00",
+       "SnapshotsPerTenMinutesLimit": 1,
+       "SnapshotsPerDayLimit": 30,
+       "SnapshotInLowPriorityThread": true,
+       "ProvideAnonymousTelemetry": true,
+       "FailedRequestLimit": 3
      }
    }
    ```
@@ -226,7 +246,7 @@ Stellen Sie sicher, dass Sie den richtigen Instrumentierungsschlüssel in der ve
 
 ### <a name="check-the-uploader-logs"></a>Überprüfen der Uploaderprotokolle
 
-Nachdem eine Momentaufnahme erstellt wurde, wird eine Minidumpdatei (DMP) auf dem Datenträger erstellt. Diese Minidumpdatei sowie alle zugehörigen PDB-Dateien werden in einem separaten Uploadervorgang in den Speicher des Application Insights-Momentaufnahmedebuggers hochgeladen. Nachdem die Minidumpdatei erfolgreich hochgeladen wurde, wird sie vom Datenträger gelöscht. Die Protokolldateien für den Minidumpuploader werden auf dem Datenträger beibehalten. In einer App Service-Umgebung finden Sie diese Protokolle unter `D:\Home\LogFiles\Uploader_*.log`. Verwenden Sie die Verwaltungswebsite von Kudu für App Service, um nach diesen Protokolldateien zu suchen.
+Nachdem eine Momentaufnahme erstellt wurde, wird eine Minidumpdatei (DMP) auf dem Datenträger erstellt. Diese Minidumpdatei sowie alle zugehörigen PDB-Dateien werden in einem separaten Uploadervorgang in den Speicher des Application Insights-Momentaufnahmedebuggers hochgeladen. Nachdem die Minidumpdatei erfolgreich hochgeladen wurde, wird sie vom Datenträger gelöscht. Die Protokolldateien für den Uploader-Prozess werden auf dem Datenträger beibehalten. In einer App Service-Umgebung finden Sie diese Protokolle unter `D:\Home\LogFiles`. Verwenden Sie die Verwaltungswebsite von Kudu für App Service, um nach diesen Protokolldateien zu suchen.
 
 1. Öffnen Sie im Azure-Portal Ihre App Service-Anwendung.
 
@@ -235,25 +255,36 @@ Nachdem eine Momentaufnahme erstellt wurde, wird eine Minidumpdatei (DMP) auf de
 4. Wählen Sie im Dropdown-Listenfeld **Debugging-Konsole** die Option **CMD** aus.
 5. Klicken Sie auf **LogFiles**.
 
-Daraufhin sollte mindestens eine Datei mit einem Namen angezeigt werden, der mit `Uploader_` beginnt und die Erweiterung `.log` aufweist. Klicken Sie auf das entsprechende Symbol, um Protokolldateien herunterzuladen oder in einem Browser zu öffnen.
-Der Dateiname enthält den Computernamen. Wenn Ihre App Service-Instanz auf mehreren Computern gehostet wird, werden separate Protokolldateien für jeden Computer erstellt. Wenn der Uploader eine neue Minidumpdatei erkennt, wird diese in der Protokolldatei erfasst. Im Folgenden wird ein Beispiel für einen erfolgreichen Upload gezeigt:
+Daraufhin sollte mindestens eine Datei mit einem Namen angezeigt werden, der mit `Uploader_` oder `SnapshotUploader_` beginnt und die Erweiterung `.log` aufweist. Klicken Sie auf das entsprechende Symbol, um Protokolldateien herunterzuladen oder in einem Browser zu öffnen.
+Der Dateiname enthält ein eindeutiges Suffix, mit dem die App Service-Instanz identifiziert wird. Wenn Ihre App Service-Instanz auf mehreren Computern gehostet wird, werden separate Protokolldateien für jeden Computer erstellt. Wenn der Uploader eine neue Minidumpdatei erkennt, wird diese in der Protokolldatei erfasst. Hier ist ein Beispiel für eine erfolgreiche Momentaufnahme und einen Upload angegeben:
 
 ```
-MinidumpUploader.exe Information: 0 : Dump available 139e411a23934dc0b9ea08a626db16c5.dmp
-    DateTime=2017-05-25T14:25:08.0349846Z
-MinidumpUploader.exe Information: 0 : Uploading D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp, 329.12 MB
-    DateTime=2017-05-25T14:25:16.0145444Z
-MinidumpUploader.exe Information: 0 : Upload successful.
-    DateTime=2017-05-25T14:25:42.9164120Z
-MinidumpUploader.exe Information: 0 : Extracting PDB info from D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp.
-    DateTime=2017-05-25T14:25:42.9164120Z
-MinidumpUploader.exe Information: 0 : Matched 2 PDB(s) with local files.
-    DateTime=2017-05-25T14:25:44.2310982Z
-MinidumpUploader.exe Information: 0 : Stamp does not want any of our matched PDBs.
-    DateTime=2017-05-25T14:25:44.5435948Z
-MinidumpUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp
-    DateTime=2017-05-25T14:25:44.6095821Z
+SnapshotUploader.exe Information: 0 : Received Fork request ID 139e411a23934dc0b9ea08a626db16c5 from process 6368 (Low pri)
+    DateTime=2018-03-09T01:42:41.8571711Z
+SnapshotUploader.exe Information: 0 : Creating minidump from Fork request ID 139e411a23934dc0b9ea08a626db16c5 from process 6368 (Low pri)
+    DateTime=2018-03-09T01:42:41.8571711Z
+SnapshotUploader.exe Information: 0 : Dump placeholder file created: 139e411a23934dc0b9ea08a626db16c5.dm_
+    DateTime=2018-03-09T01:42:41.8728496Z
+SnapshotUploader.exe Information: 0 : Dump available 139e411a23934dc0b9ea08a626db16c5.dmp
+    DateTime=2018-03-09T01:42:45.7525022Z
+SnapshotUploader.exe Information: 0 : Successfully wrote minidump to D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp
+    DateTime=2018-03-09T01:42:45.7681360Z
+SnapshotUploader.exe Information: 0 : Uploading D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp, 214.42 MB (uncompressed)
+    DateTime=2018-03-09T01:42:45.7681360Z
+SnapshotUploader.exe Information: 0 : Upload successful. Compressed size 86.56 MB
+    DateTime=2018-03-09T01:42:59.6184651Z
+SnapshotUploader.exe Information: 0 : Extracting PDB info from D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp.
+    DateTime=2018-03-09T01:42:59.6184651Z
+SnapshotUploader.exe Information: 0 : Matched 2 PDB(s) with local files.
+    DateTime=2018-03-09T01:42:59.6809606Z
+SnapshotUploader.exe Information: 0 : Stamp does not want any of our matched PDBs.
+    DateTime=2018-03-09T01:42:59.8059929Z
+SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp
+    DateTime=2018-03-09T01:42:59.8530649Z
 ```
+
+> [!NOTE]
+> Das obige Beispiel stammt aus Version 1.2.0 des Microsoft.ApplicationInsights.SnapshotCollector-NuGet-Pakets. In früheren Versionen hatte der Uploader-Prozess die Bezeichnung `MinidumpUploader.exe`, und das Protokoll enthielt weniger Details.
 
 Im vorherigen Beispiel lautet der Instrumentierungsschlüssel `c12a605e73c44346a984e00000000000`. Dieser Wert sollte dem Instrumentierungsschlüssel für Ihre Anwendung entsprechen.
 Die Minidumpdatei ist einer Momentaufnahme mit der ID `139e411a23934dc0b9ea08a626db16c5` zugeordnet. Sie können diese ID später verwenden, um nach der zugehörigen Ausnahmetelemetrie in Application Insights Analytics zu suchen.
@@ -261,16 +292,14 @@ Die Minidumpdatei ist einer Momentaufnahme mit der ID `139e411a23934dc0b9ea08a62
 Der Uploader sucht alle 15 Minuten nach neuen PDB-Dateien. Hier sehen Sie ein Beispiel:
 
 ```
-MinidumpUploader.exe Information: 0 : PDB rescan requested.
-    DateTime=2017-05-25T15:11:38.8003886Z
-MinidumpUploader.exe Information: 0 : Scanning D:\home\site\wwwroot\ for local PDBs.
-    DateTime=2017-05-25T15:11:38.8003886Z
-MinidumpUploader.exe Information: 0 : Scanning D:\local\Temporary ASP.NET Files\root\a6554c94\e3ad6f22\assembly\dl3\81d5008b\00b93cc8_dec5d201 for local PDBs.
-    DateTime=2017-05-25T15:11:38.8160276Z
-MinidumpUploader.exe Information: 0 : Local PDB scan complete. Found 2 PDB(s).
-    DateTime=2017-05-25T15:11:38.8316450Z
-MinidumpUploader.exe Information: 0 : Deleted PDB scan marker D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\.pdbscan.
-    DateTime=2017-05-25T15:11:38.8316450Z
+SnapshotUploader.exe Information: 0 : PDB rescan requested.
+    DateTime=2018-03-09T01:47:19.4457768Z
+SnapshotUploader.exe Information: 0 : Scanning D:\home\site\wwwroot for local PDBs.
+    DateTime=2018-03-09T01:47:19.4457768Z
+SnapshotUploader.exe Information: 0 : Local PDB scan complete. Found 2 PDB(s).
+    DateTime=2018-03-09T01:47:19.4614027Z
+SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\6368.pdbscan
+    DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
 Bei Anwendungen, die _nicht_ in App Service gehostet werden, befinden sich die Uploaderprotokolle im selben Ordner wie die Minidumpdateien: `%TEMP%\Dumps\<ikey>` (`<ikey>` steht hierbei für Ihren Instrumentierungsschlüssel).
@@ -284,31 +313,48 @@ Wenn Ihre Anwendung beispielsweise 1 GB des gesamten Arbeitssatzes verwendet, so
 Führen Sie die folgenden Schritte aus, um Ihre Clouddienstrolle mit einer dedizierten lokalen Ressource für Momentaufnahmen zu konfigurieren.
 
 1. Fügen Sie Ihrem Clouddienst eine neue lokale Ressource hinzu, indem Sie die Cloud Service-Definitionsdatei (CSDF) bearbeiten. Im folgenden Beispiel wird eine Ressource namens `SnapshotStore` mit einer Größe von 5 GB definiert.
-```xml
+   ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
    </LocalResources>
-```
+   ```
 
-2. Ändern Sie die `OnStart`-Methode Ihrer Rolle, um eine Umgebungsvariable hinzuzufügen, die auf die lokale Ressource `SnapshotStore` zeigt.
-```csharp
+2. Ändern Sie den Startcode Ihrer Rolle, um eine Umgebungsvariable hinzuzufügen, die auf die lokale Ressource `SnapshotStore` zeigt. Für Workerrollen sollte der Code der `OnStart`-Methode Ihrer Rolle hinzugefügt werden:
+   ```csharp
    public override bool OnStart()
    {
        Environment.SetEnvironmentVariable("SNAPSHOTSTORE", RoleEnvironment.GetLocalResource("SnapshotStore").RootPath);
        return base.OnStart();
    }
-```
+   ```
+   Für Webrollen (ASP.NET) sollte der Code der `Application_Start`-Methode Ihrer Webanwendung hinzugefügt werden:
+   ```csharp
+   using Microsoft.WindowsAzure.ServiceRuntime;
+   using System;
+
+   namespace MyWebRoleApp
+   {
+       public class MyMvcApplication : System.Web.HttpApplication
+       {
+          protected void Application_Start()
+          {
+             Environment.SetEnvironmentVariable("SNAPSHOTSTORE", RoleEnvironment.GetLocalResource("SnapshotStore").RootPath);
+             // TODO: The rest of your application startup code
+          }
+       }
+   }
+   ```
 
 3. Aktualisieren Sie die Datei „ApplicationInsights.config“ Ihrer Rolle, um den von `SnapshotCollector` verwendeten Speicherort des temporären Ordners zu überschreiben.
-```xml
-  <TelemetryProcessors>
+   ```xml
+   <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
       <!-- Use the SnapshotStore local resource for snapshots -->
       <TempFolder>%SNAPSHOTSTORE%</TempFolder>
       <!-- Other SnapshotCollector configuration options -->
     </Add>
-  </TelemetryProcessors>
-```
+   </TelemetryProcessors>
+   ```
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Suchen nach Ausnahmen mit Momentaufnahmen über die Application Insights-Suche
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: Versionsveröffentlichungsverlauf | Microsoft-Dokumentation"
-description: "In diesem Artikel sind alle Versionen von Azure AD Connect und Azure AD Sync aufgeführt."
+title: 'Azure AD Connect: Versionsveröffentlichungsverlauf | Microsoft-Dokumentation'
+description: In diesem Artikel sind alle Versionen von Azure AD Connect und Azure AD Sync aufgeführt.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 81d08d3d3d08e9cc96b39cbdf2d639e939fdf3d4
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 0c6a0c43eb7d0187120c3264f1f439af66d73978
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Versionsveröffentlichungsverlauf
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -36,8 +36,19 @@ Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates e
 
 Download | [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771).
 
+## <a name="117500"></a>1.1.750.0
+Status: Veröffentlicht für ausgewählte Kunden. Dieses Release wird zurzeit an einen kleinen und zufällig ausgewählten Teil der AADConnect-Mandanten verteilt, die automatische Upgrades aktiviert haben. Wir werden diese Mandantengruppe in den kommenden Wochen erweitern, bis 100 % unserer Kunden mit automatischem Upgrade dieses Release erhalten haben. Anschließend wird der Build als allgemeiner Download unter dem oben angegebenen Downloadlink bereitgestellt.
+>[!NOTE]
+>Wenn das Upgrade auf diese neue Version abgeschlossen ist, wird automatisch ein vollständiger Synchronisierungs- und Importvorgang für den Azure AD-Connector und ein vollständiger Synchronisierungsvorgang für den AD-Connector ausgelöst. Da dies je nach Größe Ihrer Azure AD Connect-Umgebung einen längeren Zeitraum in Anspruch nehmen kann, sollten Sie sicherstellen, dass Sie die notwendigen Schritte zur Unterstützung dieses Vorgangs ausgeführt haben. Führen Sie das Upgrade andernfalls zu einem passenderen Zeitpunkt durch.
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+#### <a name="fixed-issues"></a>Behobene Probleme
+
+* Mit dem Set-ADSyncAutoUpgrade-Cmdlet wurde Autoupgrade bisher blockiert, wenn der Status des automatischen Upgrades „Angehalten“ lautete. Dies wurde geändert, sodass AutoUpgrade für zukünftige Builds nicht blockiert wird.
+
 ## <a name="117490"></a>1.1.749.0
-Status: Veröffentlicht für ausgewählte Kunden. Dieses Release wird zurzeit an einen kleinen und zufälligen Teil der AADConnect-Mandanten verteilt, die automatisches Upgrade aktiviert haben. Wir werden diese Mandantengruppe in den kommenden Wochen erweitern, bis 100 % unserer Kunden mit automatischem Upgrade dieses Release erhalten haben. Danach werden wir den Build für den allgemeinen Download unter dem oben genannten Downloadlink veröffentlichen (zurzeit geplant für Mitte März 2018).
+Status: für ausgewählte Kunden veröffentlicht
+
 >[!NOTE]
 >Wenn das Upgrade auf diese neue Version abgeschlossen ist, wird automatisch ein vollständiger Synchronisierungs- und Importvorgang für den Azure AD-Connector und ein vollständiger Synchronisierungsvorgang für den AD-Connector ausgelöst. Da dies je nach Größe Ihrer Azure AD Connect-Umgebung einen längeren Zeitraum in Anspruch nehmen kann, stellen Sie sicher, dass Sie die notwendigen Schritte unternommen haben, um diesen Vorgang zu unterstützen. Nehmen Sie das Upgrade andernfalls zu einem passenderen Zeitpunkt vor.
 
@@ -49,11 +60,11 @@ Status: Veröffentlicht für ausgewählte Kunden. Dieses Release wird zurzeit an
 
 * Es wurde ein Problem mit der Wiederherstellung nach einem SQL-Verbindungstimeout behoben.
 
-* Es wurde ein Problem behoben, bei dem Zertifikate mit SAN-Platzhaltern eine Voraussetzungsprüfung nicht bestanden.
+* Es wurde ein Problem behoben, bei dem Zertifikate mit SAN-Platzhaltern eine Voraussetzungsprüfung nicht bestanden haben.
 
 * Es wurde ein Problem behoben, das zu einem Absturz von „miiserver.exe“ während eines Azure AD-Connectorexports führte.
 
-* Es wurde ein Problem mit ungültigen Kennworteingabeversuchen behoben, die beim Ausführen des Azure AD Connect-Assistenten zum Ändern der Konfiguration auf dem Domänencontroller protokolliert wurden.
+* Es wurde ein Problem mit der versuchten Eingabe von ungültigen Kennwörtern behoben, die beim Ausführen des Azure AD Connect-Assistenten zum Ändern der Konfiguration auf dem Domänencontroller protokolliert wurden.
 
 
 #### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
@@ -223,7 +234,7 @@ Status: 19. Oktober 2017
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect-Synchronisierung
 >[!NOTE]
-> Hinweis: Der Synchronisierungsdienst verfügt über eine WMI-Schnittstelle, über die Sie Ihren eigenen benutzerdefinierten Scheduler entwickeln können. Diese Schnittstelle ist inzwischen veraltet und wird in zukünftigen Versionen von Azure AD Connect, die nach dem 30. Juni 2018 ausgeliefert werden, entfernt. Kunden, die den Synchronisierungszeitplan anpassen möchten, sollten den [integrierten Scheduler (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) verwenden.
+> Hinweis: Der Synchronisierungsdienst verfügt über eine WMI-Schnittstelle, über die Sie Ihren eigenen benutzerdefinierten Scheduler entwickeln können. Diese Schnittstelle ist inzwischen veraltet und wird in zukünftigen Versionen von Azure AD Connect, die nach dem 30. Juni 2018 ausgeliefert werden, entfernt. Kunden, die den Zeitplan für die Synchronisierung anpassen möchten, sollten den integrierten Scheduler (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) verwenden.
 
 #### <a name="fixed-issues"></a>Behobene Probleme
 * Wenn der Azure AD Connect-Assistent das erforderliche AD Connector-Konto zum Synchronisieren von Änderungen aus dem lokalen Active Directory erstellt, wird dem Konto die zum Lesen von PublicFolder-Objekten erforderliche Berechtigung nicht ordnungsgemäß zugewiesen. Dieses Problem betrifft die Expressinstallation und die benutzerdefinierte Installation. Das Problem wird mit dieser Änderung behoben.
@@ -787,8 +798,8 @@ Veröffentlichung: Februar 2016
 
 * [Automatic upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) für Kunden mit Expresseinstellungen.
 * Unterstützung für den globalen Administrator durch Verwenden von Azure Multi-Factor Authentication und Privileged Identity Management im Installations-Assistenten.
-  * Bei Verwendung von Multi-Factor Authentication muss Ihr Proxy Datenverkehr über „https://secure.aadcdn.microsoftonline-p.com“ zulassen.
-  * Außerdem müssen Sie „https://secure.aadcdn.microsoftonline-p.com“ in Ihre Liste vertrauenswürdiger Websites aufnehmen, um eine einwandfreie Funktionsweise von Multi-Factor Authentication sicherzustellen.
+  * Sie müssen für Ihren Proxy auch Datenverkehr an https://secure.aadcdn.microsoftonline-p.com zulassen, wenn Sie die Multi-Factor Authentication verwenden.
+  * Sie müssen https://secure.aadcdn.microsoftonline-p.com der Liste mit den vertrauenswürdigen Sites hinzufügen, damit die Multi-Factor Authentication richtig funktioniert.
 * Das Ändern der Anmeldemethode des Benutzers nach der Erstinstallation ist zulässig.
 * Lassen Sie im Installations-Assistenten das [Filtern von Domänen und Organisationseinheiten](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) zu. Dadurch wird außerdem das Herstellen einer Verbindung mit Gesamtstrukturen ermöglicht, in denen nicht alle Domänen verfügbar sind.
 * [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) ist in das Synchronisierungsmodul integriert.

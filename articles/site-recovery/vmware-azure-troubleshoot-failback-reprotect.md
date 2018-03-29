@@ -9,17 +9,17 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: rajanaki
-ms.openlocfilehash: 6dcecce78de3caaefb40cb3fe4853d5d550163b4
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 480c3524ad4fb8a8c6ea02f09b8d27f254da9b08
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-failback-from-azure-to-vmware"></a>Problembehandlung des Failbacks aus Azure auf VMware
 
-Dieser Artikel beschreibt, wie Sie Probleme behandeln, die auftreten können, wenn Sie für virtuelle Azure-Computer ein Failback auf Ihre lokale VMware-Infrastruktur nach einem Failover in Azure mit [Azure Site Recovery](site-recovery-overview.md) ausgeführt haben.
+Dieser Artikel beschreibt, wie Sie Probleme behandeln, die auftreten können, wenn Sie für virtuelle Azure-Computer ein Failback auf Ihre lokale VMware-Infrastruktur nach einem Failover in Azure mit [Azure Site Recovery](site-recovery-overview.md) durchgeführt haben.
 
-Ein Failback umfasst im Wesentlichen zwei Schritte. Nach dem Failover müssen Sie virtuelle Azure-Computer lokal erneut schützen, damit sie mit der Replikation beginnen. Der zweite Schritt besteht darin, ein Failover aus Azure auszuführen, um ein Failback auf Ihren lokalen Standort zu erreichen.
+Ein Failback umfasst im Wesentlichen zwei Schritte. Als ersten Schritt nach dem Failover müssen Sie virtuelle Azure-Computer lokal erneut schützen, damit sie mit der Replikation beginnen. Der zweite Schritt besteht darin, ein Failover aus Azure durchzuführen, um ein Failback auf Ihren lokalen Standort zu erreichen.
 
 ## <a name="troubleshoot-reprotection-errors"></a>Problembehandlung von Fehlern beim erneuten Schützen
 
@@ -31,32 +31,36 @@ In diesem Abschnitt werden häufig auftretende Fehler beim erneuten Schützen un
 
 Dieser Fehler tritt unter den folgenden Umständen auf:
 
-1. Der virtuelle Azure-Computer kann den lokalen Konfigurationsserver nicht erreichen. Der virtuelle Computer kann nicht ermittelt und beim Konfigurationsserver registriert werden.
-2. Der InMage Scout-Anwendungsdienst wird nach dem Failover nicht auf dem virtuellen Azure-Computer ausgeführt. Der Dienst ist für die Kommunikation mit dem lokalen Konfigurationsserver erforderlich.
+* Der virtuelle Azure-Computer kann den lokalen Konfigurationsserver nicht erreichen. Der virtuelle Computer kann nicht ermittelt und beim Konfigurationsserver registriert werden.
+* Der InMage Scout-Anwendungsdienst wird nach dem Failover nicht auf dem virtuellen Azure-Computer ausgeführt. Der Dienst ist für die Kommunikation mit dem lokalen Konfigurationsserver erforderlich.
 
 So lösen Sie dieses Problem:
 
-1. Überprüfen Sie, ob das Azure-VM-Netzwerk es dem virtuellen Azure-Computer ermöglicht, mit dem lokalen Konfigurationsserver zu kommunizieren. Richten Sie zu diesem Zweck ein Site-to-Site-VPN mit Ihrem lokalen Datencenter ein, oder konfigurieren Sie eine ExpressRoute-Verbindung mit privatem Peering für das virtuelle Netzwerk des virtuellen Azure-Computers.
-2. Wenn der virtuelle Computer mit dem lokalen Konfigurationsserver kommunizieren kann, melden Sie sich beim virtuellen Computer an, und überprüfen Sie den „InMage Scout-Anwendungsdienst“. Wenn Sie sehen, dass dieser nicht ausgeführt wird, starten Sie den Dienst manuell, und überprüfen Sie, ob der Starttyp des Diensts auf „Automatisch“ festgelegt ist.
+* Überprüfen Sie, ob das Azure-VM-Netzwerk es dem virtuellen Azure-Computer ermöglicht, mit dem lokalen Konfigurationsserver zu kommunizieren. Sie können ein Site-to-Site-VPN mit Ihrem lokalen Datencenter einrichten oder eine Azure ExpressRoute-Verbindung mit privatem Peering für das virtuelle Netzwerk des virtuellen Azure-Computers konfigurieren.
+* Wenn die VM mit dem lokalen Konfigurationsserver kommunizieren kann, können Sie sich an der VM anmelden. Überprüfen Sie anschließend den InMage Scout-Anwendungsdienst. Starten Sie den Dienst manuell, wenn Sie sehen, dass er nicht ausgeführt wird. Stellen Sie sicher, dass der Starttyp für den Dienst auf **Automatisch** festgelegt ist.
 
 ### <a name="error-code-78052"></a>Fehlercode 78052
 
 **Der Schutz konnte für den virtuellen Computer nicht abgeschlossen werden.**
 
-Dies kann passieren, wenn sich bereits ein virtueller Computer mit dem gleichen Namen auf dem Masterzielserver befindet, auf den das Failback stattfindet.
+Dieses Problem kann auftreten, wenn sich bereits ein virtueller Computer mit dem gleichen Namen auf dem Masterzielserver befindet, auf den das Failback stattfindet.
 
-Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
-1. Wählen Sie einen anderen Masterzielserver auf einem anderen Host aus, sodass der Computer beim erneuten Schützen auf einem anderen Host erstellt und der Namenskonflikt somit vermieden wird.
-2. Sie können das Masterziel auch mithilfe von vMotion auf einen anderen Host übertragen, auf dem der Namenskonflikt nicht auftritt. Wenn es sich bei dem vorhandenen virtuellen Computer um einen vereinzelten Computer handelt, benennen Sie ihn um, sodass der neue virtuelle Computer auf demselben ESXi-Host erstellt werden kann.
+So lösen Sie dieses Problem:
+
+* Wählen Sie einen anderen Masterzielserver auf einem anderen Host aus, sodass der Computer beim erneuten Schützen auf einem anderen Host erstellt und der Namenskonflikt somit vermieden wird.
+* Sie können auch vMotion verwenden, um das Masterziel auf einen anderen Host zu verschieben, für den es nicht zu einem Namenskonflikt kommt. Wenn es sich bei dem vorhandenen virtuellen Computer um einen vereinzelten Computer handelt, sollten Sie ihn umbenennen, damit der neue virtuelle Computer auf demselben ESXi-Host erstellt werden kann.
+
 
 ### <a name="error-code-78093"></a>Fehlercode 78093
 
 **Die VM wird nicht ausgeführt, reagiert nicht oder ist nicht erreichbar.**
 
-Um einen virtuellen Computer erneut schützen zu können, für den ein Failover ausgeführt wurde, muss der virtuelle Azure-Computer ausgeführt werden. Dies ist erforderlich, damit sich der Mobilitätsdienst beim Konfigurationsserver lokal registrieren und mit der Replikation beginnen kann, indem er mit dem Prozessserver kommuniziert. Wenn sich der Computer in einem falschen Netzwerk befindet oder nicht ausgeführt wird (also nicht reagiert oder heruntergefahren ist), kann der Konfigurationsserver den Mobilitätsdienst auf dem virtuellen Computer nicht erreichen und den Schutz nicht erneut aktivieren.
+So lösen Sie dieses Problem:
 
-1. Starten Sie den virtuellen Computer neu, damit er wieder mit der lokalen Umgebung kommunizieren kann.
-2. Starten Sie nach dem Neustart des virtuellen Azure-Computers den Auftrag für erneutes Schützen neu.
+Zum erneuten Schützen einer VM nach einem Failover muss die Azure-VM ausgeführt werden, damit der Mobilitätsdienst beim Konfigurationsserver lokal registriert wird und mit der Replikation beginnen kann, indem er mit dem Prozessserver kommuniziert. Wenn sich der Computer in einem falschen Netzwerk befindet oder nicht ausgeführt wird (also nicht reagiert oder heruntergefahren ist), kann der Konfigurationsserver den Mobilitätsdienst auf dem virtuellen Computer nicht erreichen und den Schutz nicht erneut aktivieren.
+
+* Starten Sie den virtuellen Computer neu, damit er wieder mit der lokalen Umgebung kommunizieren kann.
+* Starten Sie den Auftrag für erneutes Schützen nach dem Neustart des virtuellen Azure-Computers neu.
 
 ### <a name="error-code-8061"></a>Fehlercode 8061
 
@@ -71,9 +75,11 @@ In diesem Abschnitt werden häufige Fehler beschrieben, die beim Failback auftre
 
 ### <a name="error-code-8038"></a>Fehlercode 8038
 
-**Fehler beim Aktivieren des lokalen virtuellen Computers aufgrund des Fehlers**
+**Fehler beim Aktivieren des lokalen virtuellen Computers aufgrund des Fehlers.**
 
-Dies passiert, wenn der lokale virtuelle Computer auf einem Host aktiviert wird, auf dem nicht genügend Arbeitsspeicher verfügbar ist. So lösen Sie dieses Problem:
+Dieses Problem tritt auf, wenn der lokale virtuelle Computer auf einem Host aktiviert wird, auf dem nicht genügend Arbeitsspeicher verfügbar ist. 
 
-1. Stellen Sie mehr Speicher auf dem ESXi-Host bereit.
-2. Außerdem können Sie den virtuellen Computer mithilfe von vMotion zu einem anderen ESXi-Host migrieren, auf dem ausreichend Speicher zum Starten des virtuellen Computers zur Verfügung steht.
+So lösen Sie dieses Problem:
+
+* Stellen Sie mehr Speicher auf dem ESXi-Host bereit.
+* Außerdem können Sie den virtuellen Computer mithilfe von vMotion auf einen anderen ESXi-Host verschieben, auf dem ausreichend Speicher zum Starten des virtuellen Computers zur Verfügung steht.

@@ -13,29 +13,30 @@ ms.devlang: ''
 ms.topic: ''
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/06/2018
+ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: c7b3fa2b566ab02e7fb4a03055db83f1545895e8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b067dfd6d50b61614c2f3de2fa0e159cd645f9eb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peering virtueller Netzwerke mit PowerShell
 
-Sie können durch Peering virtueller Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen. Sobald ein Peering zwischen virtuellen Netzwerken eingerichtet wurde, können Ressourcen in beiden virtuellen Netzwerken untereinander mit der gleichen Latenz und Bandbreite kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. In diesem Artikel werden die Erstellung von virtuellen Netzwerken und das Peering zwischen diesen behandelt. Folgendes wird vermittelt:
+Sie können durch Peering virtueller Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen. Sobald ein Peering zwischen virtuellen Netzwerken eingerichtet wurde, können Ressourcen in beiden virtuellen Netzwerken untereinander mit der gleichen Latenz und Bandbreite kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen zweier virtueller Netzwerke
-> * Einrichten des Peerings zwischen virtuellen Netzwerken
-> * Testen des Peerings
+> * Herstellen einer Verbindung zwischen zwei virtuellen Netzwerken mit einem Peering virtueller Netzwerke
+> * Bereitstellen eines virtuellen Computers (VM) in jedem virtuellen Netzwerk
+> * Kommunikation zwischen VMs
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="create-virtual-networks"></a>Erstellen virtueller Netzwerke
 
@@ -90,8 +91,6 @@ $subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
 $virtualNetwork2 | Set-AzureRmVirtualNetwork
 ```
 
-Das Adresspräfix für das virtuelle Netzwerk *myVirtualNetwork2* überschneidet sich nicht mit dem Adresspräfix des virtuellen Netzwerks *myVirtualNetwork1*. Sie können kein Peering zwischen virtuellen Netzwerken mit sich überschneidenden Adresspräfixen erstellen.
-
 ## <a name="peer-virtual-networks"></a>Einrichten eines Peerings von virtuellen Netzwerken
 
 Richten Sie das Peering mit [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering) ein. Das folgende Beispiel legt ein Peering für *myVirtualNetwork1* mit *myVirtualNetwork2* fest.
@@ -123,19 +122,13 @@ Get-AzureRmVirtualNetworkPeering `
 
 Ressourcen in einem virtuellen Netzwerk können erst dann mit Ressourcen in anderen virtuellen Netzwerk kommunizieren, wenn **PeeringState** für die Peerings in beiden virtuellen Netzwerken den Wert *Verbunden* aufweist. 
 
-Peerings werden zwischen zwei virtuellen Netzwerken erstellt, sie sind jedoch nicht transitiv. Wenn Sie daher z.B. ein Peering zwischen *myVirtualNetwork2* und *myVirtualNetwork3* einrichten möchten, müssen Sie ein zusätzliches Peering zwischen den virtuellen Netzwerken *myVirtualNetwork2* und *myVirtualNetwork3* erstellen. Auch wenn ein Peering zwischen *myVirtualNetwork1* und *myVirtualNetwork2* besteht, können Ressourcen in *myVirtualNetwork1* auf Ressourcen in *myVirtualNetwork3* nur dann zugreifen, wenn auch ein Peering zwischen *myVirtualNetwork1* und *myVirtualNetwork3* besteht. 
+## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-Vor dem Einrichten eines Peerings zwischen virtuellen Produktionsnetzwerken wird empfohlen, sich gründlich mit der [Übersicht über Peering](virtual-network-peering-overview.md), der [Verwaltung von Peering](virtual-network-manage-peering.md) und den [Grenzwerten für virtuelle Netzwerke](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) vertraut zu machen. In diesem Artikel wird zwar ein Peering zwischen zwei virtuellen Netzwerken im selben Abonnement und am selben Standort veranschaulicht, Sie können jedoch auch ein Peering zwischen virtuellen Netzwerken in [unterschiedlichen Regionen](#register) und [verschiedenen Azure-Abonnements](create-peering-different-subscriptions.md#powershell) einrichten. Darüber hinaus können Sie [Hub-Spoke-Netzwerkentwürfe](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) mit Peering erstellen.
+Erstellen Sie eine VM in jedem virtuellen Netzwerk, damit in einem späteren Schritt die Kommunikation untereinander möglich ist.
 
-## <a name="test-peering"></a>Testen des Peerings
+### <a name="create-the-first-vm"></a>Erstellen des ersten virtuellen Computers
 
-Um die Netzwerkkommunikation zwischen virtuellen Computern in verschiedenen virtuellen Netzwerken durch Peering zu testen, stellen Sie in jedem Subnetz einen virtuellen Computer bereit und kommunizieren dann zwischen den virtuellen Computern. 
-
-### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
-
-Erstellen Sie in jedem virtuellen Netzwerk einen virtuellen Computer, damit Sie die private Kommunikation zwischen ihnen in einem späteren Schritt überprüfen können.
-
-Erstellen Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) einen virtuellen Computer. Im folgenden Beispiel wird ein virtueller Computer namens *myVm1* im virtuellen Netzwerk *myVirtualNetwork1* erstellt. Mit der Option `-AsJob` wird der virtuelle Computer im Hintergrund erstellt, sodass Sie mit dem nächsten Schritt fortfahren können. Geben Sie bei entsprechender Aufforderung den Benutzernamen und das Kennwort ein, mit denen Sie sich beim virtuellen Computer anmelden möchten.
+Erstellen Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) einen virtuellen Computer. Im folgenden Beispiel wird eine VM namens *myVm1* im virtuellen Netzwerk *myVirtualNetwork1* erstellt. Mit der Option `-AsJob` wird der virtuelle Computer im Hintergrund erstellt, sodass Sie mit dem nächsten Schritt fortfahren können. Geben Sie bei entsprechender Aufforderung den gewünschten Benutzernamen und das Kennwort für die Anmeldung an der VM ein.
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -148,9 +141,7 @@ New-AzureRmVm `
   -AsJob
 ```
 
-Azure weist automatisch 10.0.0.4 als private IP-Adresse des virtuellen Computers zu, da 10.0.0.4 die erste verfügbare IP-Adresse in *Subnet1* von *myVirtualNetwork1* ist. 
-
-Erstellen Sie einen virtuellen Computer im virtuellen Netzwerk *myVirtualNetwork2*.
+### <a name="create-the-second-vm"></a>Erstellen des zweiten virtuellen Computers
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -162,13 +153,11 @@ New-AzureRmVm `
   -Name "myVm2"
 ```
 
-Das Erstellen des virtuellen Computers dauert einige Minuten. Azure weist 10.1.0.4 als private IP-Adresse des virtuellen Computers zu, da 10.1.0.4 die erste verfügbare IP-Adresse im Subnetz *Subnet1* von *myVirtualNetwork2* ist. In der zurückgegebenen Ausgabe ist diese jedoch nicht enthalten. 
+Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie nicht mit späteren Schritten fort, bis Azure die VM erstellt und die Ausgabe an PowerShell zurückgegeben hat.
 
-Fahren Sie nicht mit späteren Schritten fort, bis Azure den virtuellen Computer erstellt und die Ausgabe an PowerShell zurückgegeben hat.
+## <a name="communicate-between-vms"></a>Kommunikation zwischen VMs
 
-### <a name="test-virtual-machine-communication"></a>Testen der Kommunikation zwischen virtuellen Computern
-
-Sie können über das Internet eine Verbindung mit der öffentlichen IP-Adresse eines virtuellen Computers herstellen. Geben Sie mit [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse eines virtuellen Computers zurück. Das folgende Beispiel gibt die öffentliche IP-Adresse des virtuellen Computers *myVm1* zurück:
+Sie können über das Internet eine Verbindung mit der öffentlichen IP-Adresse einer VM herstellen. Geben Sie mit [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse eines virtuellen Computers zurück. Das folgende Beispiel gibt die öffentliche IP-Adresse des virtuellen Computers *myVm1* zurück:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress `
@@ -182,31 +171,29 @@ Erstellen Sie mit dem folgenden Befehl auf Ihrem lokalen Computer eine Remotedes
 mstsc /v:<publicIpAddress>
 ```
 
-Eine RDP-Datei (Remotedesktopprotokoll) wird erstellt, auf Ihren Computer heruntergeladen und geöffnet. Geben Sie den Benutzernamen und das Kennwort ein. (Unter Umständen müssen Sie auf **Weitere Optionen** und dann auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.) Klicken Sie dann auf **OK**. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Klicken Sie auf **Ja** bzw. **Weiter**, um mit dem Herstellen der Verbindung fortzufahren.
+Eine RDP-Datei (Remotedesktopprotokoll) wird erstellt, auf Ihren Computer heruntergeladen und geöffnet. Geben Sie den Benutzernamen und das Kennwort ein. (Unter Umständen müssen Sie auf **Weitere Optionen** und dann auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen der VM eingegeben haben.) Klicken Sie anschließend auf **OK**. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Klicken Sie auf **Ja** bzw. **Weiter**, um mit dem Herstellen der Verbindung fortzufahren.
 
-Aktivieren Sie an einer Eingabeaufforderung Ping über die Windows-Firewall, damit Sie diesen virtuellen Computer in einem späteren Schritt von *myVm2* aus pingen können.
+Aktivieren Sie auf der VM *myVm1* das Internet Control Message-Protokoll (ICMP) für die Windows-Firewall, damit Sie diese VM in einem späteren Schritt mit PowerShell über *myVm2* per Ping erreichen können:
 
+```powershell
+New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 ```
-netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
-```
 
-In diesem Artikel wird für Testzwecke zwar Ping verwendet, das Zulassen von ICMP-Datenverkehr durch die Windows-Firewall wird jedoch für Produktionsbereitstellungen nicht empfohlen.
+In diesem Artikel wird Ping zwar für die Kommunikation zwischen VMs verwendet, aber das Zulassen des ICMP für die Windows-Firewall wird für Produktionsbereitstellungen nicht empfohlen.
 
-Um eine Verbindung mit dem virtuellen Computer *myVm2* herzustellen, geben Sie an einer Eingabeaufforderung auf dem virtuellen Computer *myVm1* den folgenden Befehl ein:
+Um eine Verbindung mit der VM *myVm2* herzustellen, geben Sie an einer Eingabeaufforderung auf der VM *myVm1* den folgenden Befehl ein:
 
 ```
 mstsc /v:10.1.0.4
 ```
 
-Da Sie Ping auf *myVm1* aktiviert haben, können Sie diesen virtuellen Computer nun über eine Eingabeaufforderung auf dem virtuellen Computer *myVm2* anhand der IP-Adresse pingen:
+Da Sie Ping auf *myVm1* aktiviert haben, können Sie diesen virtuellen Computer nun über eine Eingabeaufforderung auf der VM *myVm2* über die IP-Adresse per Ping erreichen:
 
 ```
 ping 10.0.0.4
 ```
 
-Sie erhalten vier Antworten. Wenn Sie anhand des Namens des virtuellen Computers (*myVm1*) anstatt der IP-Adresse pingen, tritt bei Ping ein Fehler auf, da *myVm1* ein unbekannter Hostname ist. Die Standardnamensauflösung von Azure funktioniert zwischen virtuellen Computern im selben virtuellen Netzwerk, jedoch nicht zwischen virtuellen Computern in verschiedenen virtuellen Netzwerken. Um Namen über verschiedene virtuelle Netzwerke hinweg aufzulösen, müssen Sie [einen eigenen DNS-Server bereitstellen](virtual-networks-name-resolution-for-vms-and-role-instances.md) oder [private Azure DNS-Domänen](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwenden.
-
-Trennen Sie Ihre RDP-Sitzungen auf *myVm1* und *myVm2*.
+Sie erhalten vier Antworten. Trennen Sie Ihre RDP-Sitzungen auf *myVm1* und *myVm2*.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -242,9 +229,9 @@ Das Peering von virtuellen Netzwerken in derselben Region befindet sich in der P
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie zwei Netzwerke durch Peering virtueller Netzwerke verbunden werden. Sie können über ein VPN [eine Verbindung zwischen Ihrem eigenen Computer und einem virtuellen Netzwerk herstellen](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und mit Ressourcen in einem virtuellen Netzwerk oder in durch Peering verbundenen virtuellen Netzwerken interagieren.
+In diesem Artikel haben Sie erfahren, wie zwei Netzwerke durch Peering virtueller Netzwerke verbunden werden. In diesem Artikel haben Sie erfahren, wie zwei Netzwerke desselben Azure-Standorts durch das Peering virtueller Netzwerke verbunden werden. Sie können auch virtuelle Netzwerke in [unterschiedlichen Regionen](#register) und [verschiedenen Azure-Abonnements](create-peering-different-subscriptions.md#portal) durch Peering verbinden und [Netzwerke vom Typ „Nabe und Speiche“](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) mit Peering erstellen. Vor dem Einrichten eines Peerings zwischen virtuellen Produktionsnetzwerken sollten Sie sich gründlich mit den Informationen unter [Übersicht über Peering](virtual-network-peering-overview.md), [Verwaltung von Peering](virtual-network-manage-peering.md) und [Grenzwerte für virtuelle Netzwerke](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) vertraut machen.
 
-Fahren Sie mit den Beispielen für wiederverwendbare Skripts fort, um viele der in den Artikeln zu virtuellen Netzwerken behandelten Aufgaben durchzuführen.
+Sie können über ein VPN [eine Verbindung zwischen Ihrem eigenen Computer und einem virtuellen Netzwerk herstellen](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und mit Ressourcen in einem virtuellen Netzwerk oder in durch Peering verbundenen virtuellen Netzwerken interagieren. Fahren Sie mit den Beispielen für wiederverwendbare Skripts fort, um viele der in den Artikeln zu virtuellen Netzwerken behandelten Aufgaben durchzuführen.
 
 > [!div class="nextstepaction"]
 > [Skriptbeispiele für virtuelle Netzwerke](../networking/powershell-samples.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

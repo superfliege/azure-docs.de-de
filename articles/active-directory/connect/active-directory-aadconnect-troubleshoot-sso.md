@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/12/2018
 ms.author: billmath
-ms.openlocfilehash: 6e81ea9f98733b1b7e0c9bf7466ac844a37b6046
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b383a081141d2fde90cfc574ec4b9ffb16940158
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problembehandlung beim nahtlosen einmaligen Anmelden mit Azure Active Directory
 
@@ -34,8 +34,9 @@ In diesem Artikel finden Sie Informationen zur Problembehandlung bei bekannten P
 - Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus.
 - Dies gilt auch für den Internet Explorer, wenn der erweiterte Schutzmodus aktiviert ist.
 - Das nahtlose einmalige Anmelden funktioniert nicht in mobilen Browsern unter iOS und Android.
+- Wenn ein Benutzer in Active Directory einer zu großen Zahl von Gruppen angehört, ist das Kerberos-Ticket des Benutzers wahrscheinlich zu groß für die Verarbeitung. Dies führt dazu, dass das nahtlose einmalige Anmelden nicht erfolgreich ist. Azure AD-HTTPS-Anforderungen können Header mit einer maximalen Größe von 16 KB enthalten. Kerberos-Tickets müssen dagegen deutlich kleiner sein, um andere Azure AD-Artefakte, z.B. Cookies, aufnehmen zu können. Wir empfehlen Ihnen, die Gruppenmitgliedschaften des Benutzers zu reduzieren und es erneut zu versuchen.
 - Wenn Sie 30 oder mehr Active Directory-Gesamtstrukturen synchronisieren, kann die nahtlose einmalige Anmeldung nicht mit Azure AD Connect aktiviert werden. Zur Problembehebung können Sie die Funktion auf Ihrem Mandanten [manuell aktivieren](#manual-reset-of-azure-ad-seamless-sso).
-- Wenn Sie die Dienst-URL von Azure AD (https://autologon.microsoftazuread-sso.com) statt zur Zone „Lokales Intranet“ zur Zone „Vertrauenswürdige Sites“ hinzufügen, *können sich Benutzer nicht anmelden*.
+- Wenn Sie die Dienst-URL von Azure AD (https://autologon.microsoftazuread-sso.com)) nicht der Zone „Lokales Intranet“ hinzufügen, sondern der Zone „Vertrauenswürdige Sites“, *können sich Benutzer nicht anmelden*.
 - Wenn die Verwendung des Verschlüsselungstyps **RC4_HMAC_MD5** für Kerberos in Ihren Active Directory-Einstellungen deaktiviert wird, tritt bei nahtlosem SSO ein Fehler auf. Stellen Sie im Gruppenrichtlinienverwaltungs-Editor sicher, dass der Richtlinienwert für **RC4_HMAC_MD5** unter **Computerkonfiguration > Windows-Einstellungen > Sicherheitseinstellungen > Lokale Richtlinien > Sicherheitsoptionen > „Netzwerksicherheit: Für Kerberos zulässige Verschlüsselungstypen konfigurieren“** aktiviert ist.
 
 ## <a name="check-status-of-feature"></a>Überprüfen des Status des Features
@@ -75,7 +76,7 @@ Verwenden Sie die folgende Checkliste zur Behebung von Problemen in Bezug auf di
 
 - Überprüfen Sie, ob die Funktion zum nahtlosen einmaligen Anmelden in Azure AD Connect aktiviert ist. Wenn Sie die Funktion (z.B. aufgrund eines blockierten Ports) nicht aktivieren können, vergewissern Sie sich, dass alle [Voraussetzungen](active-directory-aadconnect-sso-quick-start.md#step-1-check-the-prerequisites) erfüllt sind.
 - Wenn Sie für Ihren Mandanten sowohl [Azure AD Join](../active-directory-azureadjoin-overview.md) als auch nahtlose einmalige Anmeldung aktiviert haben, vergewissern Sie sich, dass das Problem nicht bei Azure AD Join liegt. Einmaliges Anmelden von Azure AD Join hat Vorrang vor der nahtlosen einmaligen Anmeldung, wenn das Gerät sowohl bei Azure AD registriert als auch Mitglied einer Domäne ist. Bei einmaligem Anmelden von Azure AD Join wird dem Benutzer eine Anmeldekachel mit dem Text „Mit Windows verbunden“ angezeigt.
-- Stellen Sie sicher, dass die Azure AD-URL (https://autologon.microsoftazuread-sso.com) Teil der Intranetzoneneinstellungen des Benutzers ist.
+- Stellen Sie sicher, dass die Azure AD-URL (https://autologon.microsoftazuread-sso.com) Teil der Zoneneinstellung „Intranet“ des Benutzers ist.
 - Stellen Sie sicher, dass das Unternehmensgerät mit der Active Directory-Domäne verknüpft ist.
 - Stellen Sie sicher, dass der Benutzer über ein Active Directory-Domänenkonto beim Gerät angemeldet ist.
 - Stellen Sie sicher, dass das Benutzerkonto aus einer Active Directory-Gesamtstruktur stammt, in der nahtloses einmaliges Anmelden eingerichtet wurde.

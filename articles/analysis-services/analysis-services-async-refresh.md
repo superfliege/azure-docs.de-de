@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: owend
-ms.openlocfilehash: 4c317736af30b4181fa975713258a41b42ed0da3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: bb3e50c3e481bcedc436b8382fb55d6402d058b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchrones Aktualisieren mit der REST-API
 Durch Verwendung einer Programmiersprache, die REST-Aufrufe unterstützt, können Sie asynchrone Datenaktualisierungsvorgänge in Ihren tabellarischen Azure Analysis Services-Modellen durchführen. Dies schließt die Synchronisierung von schreibgeschützten Replikaten für die horizontale Skalierung von Abfragen ein. 
@@ -36,7 +36,7 @@ Die Basis-URL weist das folgende Format auf:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Bei dem Modell mit dem Namen „AdventureWorks“ auf dem Server „myserver“ in der Azure-Region „USA, Westen“ lautet der Servername beispielsweise:
+Angenommen, Sie verwenden ein Modell mit dem Namen „AdventureWorks“ auf dem Server „myserver“ in der Azure-Region „USA, Westen“. Der Servername lautet:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -48,7 +48,7 @@ Die Basis-URL für diesen Servernamen lautet:
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/ 
 ```
 
-Durch Verwendung der Basis-URL können Ressourcen und Vorgänge wie folgt angefügt werden: 
+Durch Verwendung der Basis-URL können Ressourcen und Vorgänge mit den folgenden Parametern angefügt werden: 
 
 ![Asynchrone Aktualisierung](./media/analysis-services-async-refresh/aas-async-refresh-flow.png)
 
@@ -56,7 +56,7 @@ Durch Verwendung der Basis-URL können Ressourcen und Vorgänge wie folgt angef�
 - Alle Elemente, die mit **()** enden, sind als Funktion definiert.
 - Bei allen anderen Elementen handelt es sich um Ressourcen oder Objekte.
 
-Sie können beispielsweise das POST-Verb für die Refreshes-Sammlung verwenden, um einen Aktualisierungsvorgang auszuführen:
+Sie können beispielsweise das POST-Verb für die Refreshes-Sammlung verwenden, um einen Aktualisierungsvorgang durchzuführen:
 
 ```
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
@@ -104,7 +104,7 @@ Es müssen keine Parameter angegeben werden. Es wird jeweils der Standard angewe
 
 |NAME  |Typ  |BESCHREIBUNG  |Standard  |
 |---------|---------|---------|---------|
-|Typ     |  Enum       |  Der auszuführende Verarbeitungstyp. Die Typen werden an die TMSL-Typen des [refresh](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)-Befehls angepasst: full, clearValues, calculate, dataOnly, automatic, add und defragment.       |   automatic      |
+|Typ     |  Enum       |  Der auszuführende Verarbeitungstyp. Die Typen werden an die TMSL-Typen des [refresh-Befehls](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) angepasst: full, clearValues, calculate, dataOnly, automatic, add und defragment.       |   automatic      |
 |CommitMode     |  Enum       |  Legt fest, ob für Objekte ein Commit in Batches oder erst nach Abschluss ausgeführt wird. Folgende Modi sind verfügbar: default, transactional, partialBatch.  |  transactional       |
 |MaxParallelism     |   int      |  Dieser Wert legt die maximale Anzahl der Threads fest, für die Verarbeitungsbefehle parallel ausgeführt werden. Dieser Wert wird an die MaxParallelism-Eigenschaft angepasst, die im [Sequence-Befehl](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) (TMSL) oder mit anderen Methoden festgelegt werden kann.       | 10        |
 |RetryCount    |    int     |   Gibt an, wie oft der Vorgang wiederholt wird, bevor ein Fehler auftritt.      |     0    |
@@ -188,7 +188,7 @@ Verwenden Sie zum Überprüfen des Status eines Synchronisierungsvorgangs das GE
 }
 ```
 
-Mögliche Werte für „syncstate“:
+Werte für `syncstate`:
 
 - 0: Replikation. Datenbankdateien werden in einen Zielordner repliziert.
 - 1: Aktivierung. Die Datenbank wird für schreibgeschützte Serverinstanzen aktiviert.
@@ -228,7 +228,7 @@ Für diese Form der Authentifizierung muss eine Azure-Anwendung mit den zugewies
 
     ![Hinzufügen des API-Zugriffs](./media/analysis-services-async-refresh/aas-async-add.png)
 
-5.  Geben Sie in **Hiermit wählen Sie eine API aus** im Suchfeld **SQL Server Analysis Services** ein, und wählen Sie **Azure Analysis Services (SQL Server Analysis Services Azure)** aus.
+5.  Geben Sie unter **Select an API** (API auswählen) den Suchbegriff **Azure Analysis Services** in das Suchfeld ein, und wählen Sie dann das entsprechende Ergebnis aus.
 
     ![Auswählen der API](./media/analysis-services-async-refresh/aas-async-select-api.png)
 
@@ -242,7 +242,7 @@ Für diese Form der Authentifizierung muss eine Azure-Anwendung mit den zugewies
 
 #### <a name="service-principal"></a>Dienstprinzipal
 
-Im Blogbeitrag [Automation of Azure Analysis Services with Service Principals and PowerShell](https://azure.microsoft.com/blog/automation-of-azure-analysis-services-with-service-principals-and-powershell/) (Automatisieren von Azure Analysis Services mit Dienstprinzipalen und PowerShell) finden Sie Informationen zum Einrichten eines Dienstprinzipals und zum Zuweisen der erforderlichen Berechtigungen in Azure Analysis Services. Führen Sie nach den in diesem Blogbeitrag beschriebenen Schritten die folgenden weiteren Schritte aus:
+Weitere Informationen zum Einrichten eines Dienstprinzipals und Zuweisen der erforderlichen Berechtigungen in Azure finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md) und [Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md). Führen Sie nach Abschluss dieser Schritte die folgenden zusätzlichen Schritte aus:
 
 1.  Suchen Sie im Codebeispiel **string authority = …**, und ersetzen Sie **common** durch die Mandanten-ID Ihrer Organisation.
 2.  Fügen Sie eine Auskommentierung ein, bzw. heben Sie die Auskommentierung auf, damit die ClientCredential-Klasse zum Instanziieren des cred-Objekts verwendet wird. Stellen Sie sicher, dass auf die Werte \<App ID> und \<App Key> auf sichere Weise zugegriffen wird, oder verwenden Sie die zertifikatbasierte Authentifizierung für Dienstprinzipale.

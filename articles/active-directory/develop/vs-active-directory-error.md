@@ -1,99 +1,99 @@
 ---
-title: "Diagnostizieren von Fehlern mit dem Verbindungs-Assistenten für Azure Active Directory"
-description: "Der Verbindungs-Assistent für Active Directory hat einen inkompatiblen Authentifizierungstyp erkannt."
+title: Diagnostizieren von Fehlern mit dem verbundenen Dienst für Azure Active Directory
+description: Der verbundene Dienst für Active Directory hat einen inkompatiblen Authentifizierungstyp erkannt.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kraigb
-manager: mtillman
-editor: 
+manager: ghogen
+editor: ''
 ms.assetid: dd89ea63-4e45-4da1-9642-645b9309670a
 ms.service: active-directory
 ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2017
+ms.date: 03/12/2018
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: 186bb1ede11c869b1352906b7ebafe57025f4f09
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ab81c3385479a96fbfa7e68c4e81129ff327ed4b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="diagnosing-errors-with-the-azure-active-directory-connection-wizard"></a>Diagnostizieren von Fehlern mit dem Verbindungs-Assistenten für Azure Active Directory
-Beim Erkennen des vorherigen Authentifizierungscodes hat der Assistent einen nicht kompatiblen Authentifizierungstyp erkannt.   
+# <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnostizieren von Fehlern mit dem verbundenen Dienst für Azure Active Directory
 
-## <a name="what-is-being-checked"></a>Was wird überprüft?
-**Hinweis:** Um vorherigen Authentifizierungscode in einem Projekt ordnungsgemäß erkennen zu können, muss das Projekt erstellt werden.  Wenn dieser Fehler auftritt und in Ihrem Projekt kein vorheriger Authentifizierungscode enthalten ist, erstellen Sie Ihr Projekt neu, und versuchen Sie es nochmals.
+Beim Erkennen des vorherigen Authentifizierungscodes hat der verbundene Dienst für Azure Active Directory einen inkompatiblen Authentifizierungstyp erkannt.
 
-### <a name="project-types"></a>Projekttypen
-Der Assistent überprüft den Typ des Projekts, das Sie entwickeln, um die richtige Authentifizierungslogik in das Projekt einzufügen.  Wenn ein Controller im Projekt von `ApiController` abgeleitet wird, gilt das Projekt als WebAPI-Projekt.  Wenn alle Controller im Projekt von `MVC.Controller` abgeleitet werden, gilt das Projekt als MVC-Projekt.  Alles andere wird vom Assistenten nicht unterstützt.
+Um den vorherigen Authentifizierungscode in einem Projekt richtig erkennen zu können, muss das Projekt erstellt werden.  Wenn dieser Fehler auftritt und in Ihrem Projekt kein vorheriger Authentifizierungscode enthalten ist, erstellen Sie Ihr Projekt neu, und versuchen Sie es nochmals.
 
-### <a name="compatible-authentication-code"></a>Kompatibler Authentifizierungscode
-Der Assistent überprüft auch Authentifizierungseinstellungen, die zuvor mit dem Assistenten konfiguriert wurden oder mit dem Assistenten kompatibel sind.  Wenn alle Einstellungen vorhanden sind, gilt dies als eintrittsinvarianter Fall, und der Assistent wird geöffnet und zeigt die Einstellungen an.  Wenn nur einige der Einstellungen vorhanden sind, wird es als Fehlerfall betrachtet.
+## <a name="project-types"></a>Projekttypen
 
-In einem MVC-Projekt überprüft der Assistent die folgenden Einstellungen, die aus der vorherigen Verwendung des Assistenten resultieren:
+Der verbundene Dienst überprüft den Typ des Projekts, das Sie entwickeln, um die richtige Authentifizierungslogik in das Projekt einzufügen. Wenn ein Controller im Projekt von `ApiController` abgeleitet wird, gilt das Projekt als WebAPI-Projekt. Wenn alle Controller im Projekt von `MVC.Controller` abgeleitet werden, gilt das Projekt als MVC-Projekt. Der verbundene Dienst unterstützt keinen anderen Projekttyp.
+
+## <a name="compatible-authentication-code"></a>Kompatibler Authentifizierungscode
+
+Der verbundene Dienst überprüft auch Authentifizierungseinstellungen, die zuvor konfiguriert wurden oder mit dem Dienst kompatibel sind. Wenn alle Einstellungen vorhanden sind, gilt dies als eintrittsinvarianter Fall, und der verbundene Dienst wird geöffnet und zeigt die Einstellungen an.  Wenn nur einige der Einstellungen vorhanden sind, wird es als Fehlerfall betrachtet.
+
+In einem MVC-Projekt überprüft der verbundene Dienst die folgenden Einstellungen, die aus der vorherigen Verwendung des Diensts resultieren:
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
     <add key="ida:AADInstance" value="" />
     <add key="ida:PostLogoutRedirectUri" value="" />
 
-Außerdem überprüft der Assistent die folgenden Einstellungen in einem Web-API-Projekt, die aus der vorherigen Verwendung des Assistenten resultieren:
+Außerdem überprüft der verbundene Dienst die folgenden Einstellungen in einem Web-API-Projekt, die aus der vorherigen Verwendung des Diensts resultieren:
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
     <add key="ida:Audience" value="" />
 
-### <a name="incompatible-authentication-code"></a>Nicht kompatibler Authentifizierungscode
-Der Assistent versucht schließlich, Versionen von Authentifizierungscode zu erkennen, die mit früheren Versionen von Visual Studio konfiguriert wurden. Wenn Sie diesen Fehler erhalten, ist ein nicht kompatibler Authentifizierungstyp in Ihrem Projekt vorhanden. Der Assistent erkennt die folgenden Authentifizierungstypen aus früheren Versionen von Visual Studio:
+## <a name="incompatible-authentication-code"></a>Nicht kompatibler Authentifizierungscode
 
-* Windows-Authentifizierung 
-* Einzelne Benutzerkonten 
-* Organisationskonten 
+Abschließend versucht der verbundene Dienst, Versionen von Authentifizierungscode zu erkennen, die mit früheren Versionen von Visual Studio konfiguriert wurden. Wenn Sie diesen Fehler erhalten, ist ein nicht kompatibler Authentifizierungstyp in Ihrem Projekt vorhanden. Der verbundene Dienst erkennt die folgenden Authentifizierungstypen aus früheren Versionen von Visual Studio:
 
-Zum Erkennen der Windows-Authentifizierung in einem MVC-Projekt sucht der Assistent nach dem `authentication` -Element aus Ihrer Datei **web.config** .
+* Windows-Authentifizierung
+* Einzelne Benutzerkonten
+* Organisationskonten
 
-<pre>
-    &lt;configuration&gt;
-        &lt;system.web&gt;
-            <span style="background-color: yellow">&lt;authentication mode="Windows" /&gt;</span>
-        &lt;/system.web&gt;
-    &lt;/configuration&gt;
-</pre>
+Der verbundene Dienst sucht in Ihrer Datei `web.config` nach dem `authentication`-Element, um die Windows-Authentifizierung in einem MVC-Projekt zu erkennen.
 
-Zum Erkennen der Windows-Authentifizierung in einem Web-API-Projekt sucht der Assistent nach dem `IISExpressWindowsAuthentication` -Element aus der **CSPROJ** -Datei Ihres Projekts:
+```xml
+<configuration>
+    <system.web>
+        <span style="background-color: yellow"><authentication mode="Windows" /></span>
+    </system.web>
+</configuration>
+```
 
-<pre>
-    &lt;Project&gt;
-        &lt;PropertyGroup&gt;
-            <span style="background-color: yellow">&lt;IISExpressWindowsAuthentication&gt;enabled&lt;/IISExpressWindowsAuthentication&gt;</span>
-        &lt;/PropertyGroup>
-    &lt;/Project&gt;
-</pre>
+Zum Erkennen der Windows-Authentifizierung in einem Web-API-Projekt sucht der verbundene Dienst nach dem `IISExpressWindowsAuthentication`-Element in der `.csproj`-Datei Ihres Projekts:
 
-Zum Erkennen der Authentifizierung einzelner Benutzerkonten sucht der Assistent nach dem Paketelement aus Ihrer Datei **Packages.config** .
+```xml
+<Project>
+    <PropertyGroup>
+        <span style="background-color: yellow"><IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication></span>
+    </PropertyGroup>
+</Project>
+```
 
-<pre>
-    &lt;packages&gt;
-        <span style="background-color: yellow">&lt;package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /&gt;</span>
-    &lt;/packages&gt;
-</pre>
+Um die Authentifizierung „Einzelne Benutzerkonten“ zu erkennen, sucht der verbundene Dienst in der Datei `packages.config` nach dem Paketelement.
 
-Zum Erkennen der alten Form von Organisationskontoauthentifizierung sucht der Assistent nach dem folgenden Element aus der Datei **web.config**:
+```xml
+<packages>
+    <span style="background-color: yellow"><package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /></span>
+</packages>
+```
 
-<pre>
-    &lt;configuration&gt;
-        &lt;appSettings&gt;
-            <span style="background-color: yellow">&lt;add key="ida:Realm" value="***" /&gt;</span>
-        &lt;/appSettings&gt;
-    &lt;/configuration&gt;
-</pre>
+Zum Erkennen der alten Form der Organisationskontoauthentifizierung sucht der verbundene Dienst nach dem folgenden Element in der Datei `web.config`:
 
-Wenn Sie den Authentifizierungstyp ändern möchten, entfernen Sie den inkompatiblen Authentifizierungstyp, und führen Sie den Assistenten dann erneut aus.
+```xml
+<configuration>
+    <appSettings>
+        <span style="background-color: yellow"><add key="ida:Realm" value="***" /></span>
+    </appSettings>
+</configuration>
+```
+
+Sie können den Authentifizierungstyp ändern, indem Sie den inkompatiblen Authentifizierungstyp entfernen und versuchen, den verbundenen Dienst wieder hinzuzufügen.
 
 Weitere Informationen finden Sie unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
-
-#<a name="next-steps"></a>Nächste Schritte
-- [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md)

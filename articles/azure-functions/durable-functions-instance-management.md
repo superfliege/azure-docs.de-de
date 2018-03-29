@@ -1,12 +1,12 @@
 ---
-title: "Verwalten von Instanzen in Durable Functions – Azure"
-description: "Es wird beschrieben, wie Instanzen in der Erweiterung Durable Functions für Azure Functions verwaltet werden."
+title: Verwalten von Instanzen in Durable Functions – Azure
+description: Es wird beschrieben, wie Instanzen in der Erweiterung Durable Functions für Azure Functions verwaltet werden.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a938e5949896ad3bfa91903106d56ccdf827c725
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9cea9b18cd7434a34138d5cecad8a8fd7f10d2e5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Verwalten von Instanzen in Durable Functions (Azure Functions)
 
@@ -26,7 +26,9 @@ In [Durable Functions](durable-functions-overview.md) können Orchestrierungsins
 
 ## <a name="starting-instances"></a>Starten von Instanzen
 
-Die [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)-Methode im [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) startet eine neue Instanz einer Orchestratorfunktion. Instanzen dieser Klasse können mithilfe der `orchestrationClient`-Bindung abgerufen werden. Intern stellt diese Methode eine Nachricht in die Steuerwarteschlange, die dann den Start einer Funktion mit dem angegebenen Namen auslöst, der die `orchestrationTrigger`-Bindung verwendet.
+Die [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)-Methode im [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) startet eine neue Instanz einer Orchestratorfunktion. Instanzen dieser Klasse können mithilfe der `orchestrationClient`-Bindung abgerufen werden. Intern stellt diese Methode eine Nachricht in die Steuerwarteschlange, die dann den Start einer Funktion mit dem angegebenen Namen auslöst, der die `orchestrationTrigger`-Bindung verwendet. 
+
+Die Aufgabe ist abgeschlossen, wenn der Orchestrierungsprozess gestartet wird. Der Orchestrierungsprozess sollte innerhalb von 30 Sekunden gestartet werden. Wenn es länger dauert, wird eine `TimeoutException` ausgelöst. 
 
 Die Parameter für [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) lauten wie folgt:
 
@@ -68,7 +70,7 @@ module.exports = function (context, input) {
 
 ## <a name="querying-instances"></a>Abfragen von Instanzen
 
-Die [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_)-Methode für die [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-Klasse fragt den Status einer Orchestrierungsinstanz ab. Sie übernimmt eine `instanceId` als Parameter und gibt ein Objekt mit folgenden Eigenschaften zurück:
+Die [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_)-Methode für die [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-Klasse fragt den Status einer Orchestrierungsinstanz ab. Hierfür werden `instanceId` (erforderlich), `showHistory` (optional) und `showHistoryOutput` (optional) als Parameter verwendet. Wenn `showHistory` auf `true` festgelegt ist, enthält die Antwort den Ausführungsverlauf. Wenn `showHistoryOutput` auch auf `true` festgelegt ist, enthält der Ausführungsverlauf Aktivitätsausgaben. Die Methode gibt ein Objekt mit den folgenden Eigenschaften zurück:
 
 * **Name**: der Name der Orchestratorfunktion.
 * **InstanceId**: die Instanz-ID der Orchestrierung (muss mit der Eingabe `instanceId` identisch sein).
@@ -82,6 +84,7 @@ Die [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/a
     * **ContinuedAsNew**: Die Instanz hat sich selbst mit einem neuen Verlauf neu gestartet. Dies ist ein vorübergehender Status.
     * **Failed**: Bei der Instanz ist ein Fehler aufgetreten.
     * **Terminated**: Die Instanz wurde plötzlich beendet.
+* **History**: Der Ausführungsverlauf der Orchestrierung. Dieses Feld wird nur gefüllt, wenn `showHistory` auf `true` festgelegt ist.
     
 Diese Methode gibt `null` zurück, wenn die Instanz nicht vorhanden ist, oder ihre Ausführung noch nicht gestartet wurde.
 
@@ -145,6 +148,60 @@ public static Task Run(
 
 > [!WARNING]
 > Wenn keine Orchestrierungsinstanz mit der angegebenen *Instanz-ID* vorhanden ist, oder die Instanz nicht auf den angegebenen *Ereignisnamen* wartet, wird die Ereignisnachricht verworfen. Weitere Informationen zu diesem Verhalten finden Sie unter [Expected behavior when unexpected event is received?](https://github.com/Azure/azure-functions-durable-extension/issues/29) (Erwartetes Verhalten, wenn ein unerwartetes Ereignis empfangen wird?).
+
+## <a name="wait-for-orchestration-completion"></a>Warten auf den Abschluss der Orchestrierung
+
+Die [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-Klasse macht eine [WaitForCompletionOrCreateCheckStatusResponseAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_WaitForCompletionOrCreateCheckStatusResponseAsync_)-API verfügbar, die verwendet werden kann, um synchron die tatsächliche Ausgabe einer Orchestrierungsinstanz zu erhalten. Für die Methode wird ein Standardwert von 10 Sekunden für `timeout` und von 1 Sekunde für `retryInterval` verwendet, wenn nichts anderes festgelegt wird.  
+
+Hier ist ein Beispiel für eine HTTP-Triggerfunktion angegeben, mit dem die Nutzung dieser API veranschaulicht wird:
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
+
+Die Funktion kann mit der folgenden Zeile aufgerufen werden, indem eine Zeitlimit von 2 Sekunden und ein Wiederholungsintervall von 0,5 Sekunden verwendet wird:
+
+```bash
+    http POST http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5
+```
+
+Je nach Zeitraum, der zum Abrufen der Antwort aus der Orchestrierungsinstanz erforderlich ist, gibt es zwei Fälle:
+
+1. Die Orchestrierungsinstanzen werden innerhalb des definierten Zeitraums (hier: 2 Sekunden) abgeschlossen, und die Antwort ist die tatsächliche Orchestrierungsinstanzausgabe, die synchron bereitgestellt wird:
+
+    ```http
+        HTTP/1.1 200 OK
+        Content-Type: application/json; charset=utf-8
+        Date: Thu, 14 Dec 2017 06:14:29 GMT
+        Server: Microsoft-HTTPAPI/2.0
+        Transfer-Encoding: chunked
+
+        [
+            "Hello Tokyo!",
+            "Hello Seattle!",
+            "Hello London!"
+        ]
+    ```
+
+2. Die Orchestrierungsinstanzen können nicht innerhalb des definierten Zeitraums (hier: 2 Sekunden) abgeschlossen werden, und die Antwort ist die Standardantwort, die unter **Ermittlung der HTTP-API-URL** beschrieben ist:
+
+    ```http
+        HTTP/1.1 202 Accepted
+        Content-Type: application/json; charset=utf-8
+        Date: Thu, 14 Dec 2017 06:13:51 GMT
+        Location: http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}
+        Retry-After: 10
+        Server: Microsoft-HTTPAPI/2.0
+        Transfer-Encoding: chunked
+
+        {
+            "id": "d3b72dddefce4e758d92f4d411567177",
+            "sendEventPostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "statusQueryGetUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "terminatePostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
+        }
+    ```
+
+> [!NOTE]
+> Das Format der Webhook-URLs kann in Abhängigkeit davon variieren, welche Version des Azure Functions-Hosts Sie ausführen. Das obige Beispiel gilt für den Azure Functions 2.0-Host.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

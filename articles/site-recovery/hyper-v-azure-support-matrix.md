@@ -1,6 +1,6 @@
 ---
-title: "Unterstützungsmatrix für Hyper-V-Replikation in Azure | Microsoft-Dokumentation"
-description: "Fasst die unterstützten Komponenten und Anforderungen für die Hyper-V-Replikation in Azure mit Azure Site Recovery zusammen"
+title: Unterstützungsmatrix für Hyper-V-Replikation in Azure | Microsoft-Dokumentation
+description: Fasst die unterstützten Komponenten und Anforderungen für die Hyper-V-Replikation in Azure mit Azure Site Recovery zusammen
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,32 +8,32 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: 81983b9287a6b8073724f0cd973929f4b4677d4a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9078b56ae9c5582aa21201c168974eb6cc7a4ed6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Unterstützungsmatrix für die Hyper-V-Replikation in Azure
 
 
-Dieser Artikel beschreibt die unterstützten Komponenten und Einstellungen für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure mit dem Dienst [Azure Site Recovery](site-recovery-overview.md).
+In diesem Artikel werden die unterstützten Komponenten und Einstellungen für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure mit [Azure Site Recovery](site-recovery-overview.md) beschrieben.
 
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
 **Szenario** | **Details**
 --- | --- 
-**Hyper-V mit VMM** | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts durchführen, die im System Center Virtual Machine Manager-Fabric (VMM) ausgeführt werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.<br/><br/> Wenn Hyper-V-Hosts von VMM verwaltet werden, können Sie die Notfallwiederherstellung auch auf einem sekundären lokalen Standort ausführen. Weitere Informationen zu diesem Szenario finden Sie in [diesem Artikel](tutorial-vmm-to-vmm.md).
-**Hyper-V ohne VMM** | Sie können die Notfallwiederherstellung für Azure für virtuelle Computer auf Hyper-V-Hosts, die nicht von VMM verwaltet werden, ausführen.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen. 
+Hyper-V mit Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts durchführen, die im System Center Virtual Machine Manager-Fabric verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.<br/><br/> Wenn Hyper-V-Hosts mit Virtual Machine Manager verwaltet werden, können Sie auch die Notfallwiederherstellung an einem sekundären lokalen Standort durchführen. Weitere Informationen zu diesem Szenario finden Sie in [diesem Tutorial](tutorial-vmm-to-vmm.md).
+Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts ausführen, die nicht von Virtual Machine Manager verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen. 
 
 
 ## <a name="on-premises-servers"></a>Lokale Server
 
 **Server** | **Anforderungen** | **Details**
 --- | --- | ---
-**Hyper-V (ohne VMM)** | Windows Server 2016, Windows Server 2012 R2 mit den neuesten Updates. | Für die Konfiguration eines Hyper-V-Standorts in Site Recovery wird das Kombinieren von Hosts mit Windows Server 2016 und 2012 R2 nicht unterstützt.<br/><br/> Für virtuelle Computer auf einem Host unter Windows Server 2016 wird die Wiederherstellung an einem alternativen Standort nicht unterstützt.
-**Hyper-V (mit VMM)** | VMM 2016, VMM 2012 R2 | Wenn VMM verwendet wird, müssen Windows Server 2016-Hosts mit VMM 2016 verwaltet werden.<br/><br/> VMM-Clouds mit einer Mischung aus Windows Server 2016- und Windows Server 2012 R2-Hosts werden derzeit nicht unterstützt.<br/><br/> Umgebungen, die ein Upgrade eines vorhandenen VMM 2012 R2-Servers auf 2016 enthalten, werden nicht unterstützt.
+Hyper-V (Ausführung ohne Virtual Machine Manager) | Windows Server 2016, Windows Server 2012 R2 mit aktuellen Updates | Für die Konfiguration eines Hyper-V-Standorts in Site Recovery wird das Kombinieren von Hosts mit Windows Server 2016 und 2012 R2 nicht unterstützt.<br/><br/> Für virtuelle Computer auf einem Host unter Windows Server 2016 wird die Wiederherstellung an einem alternativen Standort nicht unterstützt.
+Hyper-V (Ausführung mit Virtual Machine Manager) | Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Wenn Virtual Machine Manager verwendet wird, sollten Windows Server 2016-Hosts in Virtual Machine Manager 2016 verwaltet werden.<br/><br/> Eine Virtual Machine Manager-Cloud mit einer Mischung aus Windows Server 2016- und Windows Server 2012 R2-Hosts wird derzeit nicht unterstützt.<br/><br/> Umgebungen, die ein Upgrade eines vorhandenen Virtual Machine Manager 2012 R2-Servers auf 2016 enthalten, werden nicht unterstützt.
 
 
 ## <a name="replicated-vms"></a>Replizierte VMs
@@ -51,13 +51,13 @@ Gastbetriebssystem | Alle [von Azure unterstützten](https://technet.microsoft.c
 
 ## <a name="hyper-v-network-configuration"></a>Hyper-V-Netzwerkkonfiguration
 
-**Komponente** | **Hyper-V mit VMM** | **Hyper-V ohne VMM**
+**Komponente** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
-Hostnetzwerk: NIC-Teambildung | Ja
+Hostnetzwerk: NIC-Teaming | Ja
 Hostnetzwerk: VLAN | Ja
 Hostnetzwerk: IPv4 | Ja
 Hostnetzwerk: IPv6 | Nein 
-Gast-VM-Netzwerk: NIC-Teambildung | Nein 
+Gast-VM-Netzwerk: NIC-Teaming | Nein 
 Gast-VM-Netzwerk: IPv4 | Ja
 Gast-VM-Netzwerk: IPv6 | Nein 
 Gast-VM-Netzwerk: statische IP-Adresse (Windows) | Ja
@@ -68,22 +68,22 @@ Gast-VM-Netzwerk: Multi-NIC | Ja
 
 ## <a name="azure-vm-network-configuration-after-failover"></a>Netzwerkkonfiguration für virtuellen Azure-Computer (nach Failover)
 
-**Komponente** | **Hyper-V mit VMM** | **Hyper-V ohne VMM**
+**Komponente** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
-ExpressRoute | Ja | Ja
+Azure ExpressRoute | Ja | Ja
 ILB | Ja | Ja
 ELB | Ja | Ja
-Traffic Manager | Ja | Ja
+Azure Traffic Manager | Ja | Ja
 Multi-NIC | Ja | Ja
 Reservierte IP | Ja | Ja
 IPv4 | Ja | Ja
 Quell-IP-Adresse beibehalten | Ja | Ja
-VNET-Dienstendpunkte<br/><br/> (Firewalls und virtuelle Netzwerke in Azure Storage) | Nein  | Nein 
+Azure Virtual Network-Dienstendpunkte<br/><br/> (Firewalls und virtuelle Netzwerke in Azure Storage) | Nein  | Nein 
 
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V-Hostspeicher
 
-**Speicher** | **Hyper-V mit VMM** | Hyper-V ohne VMM
+**Speicher** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | --- | ---
 NFS | Nicht verfügbar | Nicht verfügbar
 SMB 3.0 | Ja | Ja
@@ -92,7 +92,7 @@ Multipfad (MPIO). Getestet mit:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V-VM-Gastspeicher
 
-**Speicher** | **Hyper-V mit VMM** | Hyper-V ohne VMM
+**Speicher** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
 VMDK | Nicht verfügbar | Nicht verfügbar
 VHD/VHDX | Ja | Ja
@@ -106,35 +106,35 @@ RDM | Nicht verfügbar | Nicht verfügbar
 Datenträger > 1 TB | Ja, bis zu 4.095 GB | Ja, bis zu 4.095 GB
 Datenträger: 4K für logischen und physischen Sektor | Nicht unterstützt: 1./2. Generation | Nicht unterstützt: 1./2. Generation
 Datenträger: 4K für logischen, 512 Byte für physischen Sektor | Ja |  Ja
-Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM (logische Volumeverwaltung) | Ja | Ja
+Volume mit Stripesetdatenträger > 1 TB<br/><br/> Logische Volumeverwaltung (Logical Volume Management, LVM) | Ja | Ja
 Speicherplätze | Ja | Ja
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein  | Nein 
 Ausschließen von Datenträgern | Ja | Ja
 Multipfad (MPIO) | Ja | Ja
 
-## <a name="azure-storage"></a>Azure-Speicher
+## <a name="azure-storage"></a>Azure Storage
 
-**Komponente** | **Hyper-V mit VMM** | **Hyper-V ohne VMM**
+**Komponente** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
-LRS | Ja | Ja
-GRS | Ja | Ja
-RA-GRS | Ja | Ja
+Lokal redundanter Speicher | Ja | Ja
+Georedundanter Speicher | Ja | Ja
+Georedundanter Speicher mit Lesezugriff | Ja | Ja
 Speicherebene „Kalt“ | Nein  | Nein 
 Speicherebene „Heiß“| Nein  | Nein 
 Blockblobs | Nein  | Nein 
 Verschlüsselung ruhender Daten (SSE)| Ja | Ja
 Storage Premium | Ja | Ja
 Import-/Exportdienst | Nein  | Nein 
-VNET-Dienstendpunkte (Azure Storage-Firewalls und -VNETs) auf Ziel für Cachespeicherkonto für Replikationsdaten | Nein  | Nein 
+Dienstendpunkte virtueller Azure-Netzwerke (Azure Storage-Firewalls und -VNETs) auf Ziel für Cachespeicherkonto für Replikationsdaten | Nein  | Nein 
 
 
 ## <a name="azure-compute-features"></a>Azure-Computefeatures
 
-**Feature** | **Hyper-V mit VMM** | **Hyper-V ohne VMM**
+**Feature** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
 Verfügbarkeitsgruppen | Ja | Ja
 HUB | Ja | Ja  
-Verwaltete Datenträger | Ja, für Failover<br/><br/> Failback von verwalteten Datenträgern wird nicht unterstützt. | Ja, für Failover<br/><br/> Failback von verwalteten Datenträgern wird nicht unterstützt.
+Verwaltete Datenträger | Ja, für Failover.<br/><br/> Failback von verwalteten Datenträgern wird nicht unterstützt. | Ja, für Failover.<br/><br/> Failback von verwalteten Datenträgern wird nicht unterstützt.
 
 ## <a name="azure-vm-requirements"></a>Azure-VM-Anforderungen
 
@@ -142,23 +142,23 @@ Lokale virtuelle Computer, die Sie in Azure replizieren, müssen die in dieser T
 
 **Komponente** | **Anforderungen** | **Details**
 --- | --- | ---
-**Gastbetriebssystem** | Site Recovery unterstützt alle Betriebssysteme, die [von Azure unterstützt werden](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-**Architektur des Gastbetriebssystems** | 64 Bit | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-**Größe des Betriebssystemdatenträgers** | Bis zu 2.048 GB für VMs der 1. Generation.<br/><br/> Bis zu 300 GB für VMs der 2. Generation.  | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-**Anzahl von Betriebssystemdatenträgern** | 1 | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-**Anzahl von Datenträgern für Daten** | Maximal 16  | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-**Größe des VHD-Datenträgers** | Bis zu 4.095 GB | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-**Netzwerkadapter** | Es werden mehrere Adapter unterstützt. |
-**Freigegebene VHD** | Nicht unterstützt | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-**FC-Datenträger** | Nicht unterstützt | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-**Festplattenformat** | VHD  <br/><br/> VHDX | Site Recovery konvertiert VHDX automatisch in VHD, wenn Sie das Failover auf Azure anstoßen. Wenn Sie das Failover in den lokalen Speicher durchführen, wird für die virtuellen Computer weiterhin das VHDX-Format verwendet.
-**BitLocker** | Nicht unterstützt | BitLocker muss deaktiviert sein, bevor Sie die Replikation für einen virtuellen Computer aktivieren.
-**VM-Name** | Zwischen 1 und 63 Zeichen. Ist auf Buchstaben, Zahlen und Bindestriche beschränkt. Der VM-Name muss mit einem Buchstaben oder einer Zahl beginnen und enden. | Aktualisieren Sie den Wert in den VM-Eigenschaften in Site Recovery.
-**VM-Typ** | Generation 1<br/><br/> Generation 2: Windows | Zwei virtuelle Computer der Generation 2 mit einem Betriebssystem-Datenträger des Typs „Basic“ (mit einem oder zwei als VHDX formatierten Datenvolumes) und weniger als 300 GB Speicherplatz werden unterstützt.<br></br>Linux-VMs der Generation 2 werden nicht unterstützt. [Weitere Informationen](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)|
+Gastbetriebssystem | Site Recovery unterstützt alle Betriebssysteme, die [von Azure unterstützt werden](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Architektur des Gastbetriebssystems | 64 Bit | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB für VMs der 1. Generation.<br/><br/> Bis zu 300 GB für VMs der 2. Generation.  | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Anzahl von Betriebssystem-Datenträgern | 1 | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Anzahl von Datenträgern für Daten | Maximal 16  | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Größe des VHD-Datenträgers | Bis zu 4.095 GB | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Netzwerkadapter | Es werden mehrere Adapter unterstützt. |
+Freigegebene VHD | Nicht unterstützt | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Fiber-Channel-Datenträger | Nicht unterstützt | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Festplattenformat | VHD  <br/><br/> VHDX | Site Recovery konvertiert VHDX automatisch in VHD, wenn Sie das Failover auf Azure anstoßen. Wenn Sie ein Failback zum lokalen Speicher durchführen, wird für die virtuellen Computer weiterhin das VHDX-Format verwendet.
+BitLocker | Nicht unterstützt | BitLocker muss deaktiviert sein, bevor Sie die Replikation für einen virtuellen Computer aktivieren.
+Name des virtuellen Computers | Zwischen 1 und 63 Zeichen. Ist auf Buchstaben, Zahlen und Bindestriche beschränkt. Der VM-Name muss mit einem Buchstaben oder einer Zahl beginnen und enden. | Aktualisieren Sie den Wert in den VM-Eigenschaften in Site Recovery.
+VM-Typ | Generation 1<br/><br/> Generation 2 – Windows | Zwei virtuelle Computer der Generation 2 mit einem Betriebssystem-Datenträger des Typs „Basic“ (mit einem oder zwei als VHDX formatierten Datenvolumes) und weniger als 300 GB Speicherplatz werden unterstützt.<br></br>Linux-VMs der Generation 2 werden nicht unterstützt. [Weitere Informationen](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)|
 
 ## <a name="recovery-services-vault-actions"></a>Aktionen mit dem Recovery Services-Tresor
 
-**Aktion** |  **Hyper-V mit VMM** | **Hyper-V ohne VMM**
+**Aktion** |  **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | --- 
 Tresor über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  | Nein  
 Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  | Nein  
@@ -170,8 +170,8 @@ Damit Ihre Bereitstellung mit den Einstellungen in diesem Artikel kompatibel ist
 
 **Name** | **Beschreibung** | **Details**
 --- | --- | --- | --- | ---
-**Azure Site Recovery-Anbieter** | Koordiniert die Kommunikation zwischen lokalen Servern und Azure <br/><br/> Hyper-V mit VMM: auf VMM-Servern installiert<br/><br/> Hyper-V ohne VMM: auf Hyper-V-Hosts installiert| Neueste Version: 5.1.2700.1 (über das Portal verfügbar)<br/><br/> [Neueste Features und Fixes](https://aka.ms/latest_asr_updates)
-**Microsoft Azure Recovery Services-Agent (MARS)** | Koordiniert die Replikation zwischen Hyper-V-VMs und Azure<br/><br/> Installiert auf lokalen Hyper-V-Servern (mit oder ohne VMM) | Aktueller Agent über das Portal verfügbar
+Azure Site Recovery-Anbieter | Koordiniert die Kommunikation zwischen lokalen Servern und Azure <br/><br/> Hyper-V mit Virtual Machine Manager: Installation auf Virtual Machine Manager-Servern<br/><br/> Hyper-V ohne Virtual Machine Manager: Installation auf Hyper-V-Hosts| Aktuelle Version: 5.1.2700.1 (über das Azure-Portal verfügbar)<br/><br/> [Neueste Features und Fixes](https://aka.ms/latest_asr_updates)
+Microsoft Azure Recovery Services-Agent | Koordiniert die Replikation zwischen Hyper-V-VMs und Azure<br/><br/> Installation auf lokalen Hyper-V-Servern (mit oder ohne Virtual Machine Manager) | Aktueller Agent über das Portal verfügbar
 
 
 

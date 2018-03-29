@@ -1,8 +1,8 @@
 ---
-title: "Bewährte Methoden zur Verwendung von Azure Data Lake Store | Microsoft-Dokumentation"
-description: "Enthält eine Beschreibung der bewährten Methoden zur Datenerfassung, Datensicherheit und Leistung in Bezug auf die Verwendung von Azure Data Lake Store."
+title: Bewährte Methoden zur Verwendung von Azure Data Lake Store | Microsoft-Dokumentation
+description: Enthält eine Beschreibung der bewährten Methoden zur Datenerfassung, Datensicherheit und Leistung in Bezug auf die Verwendung von Azure Data Lake Store.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
 editor: cgronlun
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: d3a0dd70a03f97a9b6bfb243eda7cbd470b0c239
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c394142ba40fc580bdcec11430dcae2816fa9760
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="overview-of-azure-data-lake-store"></a>Übersicht über Azure Data Lake Store
+# <a name="best-practices-for-using-azure-data-lake-store"></a>Bewährte Methoden für die Verwendung von Azure Data Lake Store
 In diesem Artikel erfahren Sie mehr zu den bewährten Methoden und Aspekten in Bezug auf die Arbeit mit Azure Data Lake Store. Der Artikel enthält Informationen zu den Bereichen Sicherheit, Leistung, Resilienz und Überwachung für Data Lake Store. Vor der Einführung von Data Lake Store war die Arbeit mit wirklich großen Datenmengen (Big Data) in Diensten wie Azure HDInsight sehr komplex. Daten mussten per Sharding auf mehrere Blobspeicherkonten verteilt werden, um die Speicherung im Petabyte-Bereich und eine entsprechende optimale Leistung zu erzielen. Dank Data Lake Store gelten die meisten festen Grenzwerte im Hinblick auf die Größe und Leistung nicht mehr. In diesem Artikel werden aber trotzdem noch einige Aspekte beschrieben, damit Sie für Data Lake Store die bestmögliche Leistung erzielen können. 
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
@@ -139,7 +139,7 @@ Wenn das Senden von Data Lake Store-Protokollen nicht aktiviert ist, ermöglicht
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG 
 
-Nachdem diese Eigenschaft festgelegt wurde und die Knoten neu gestartet wurden, wird die Data Lake Store-Diagnose in die YARN-Protokolle auf den Knoten (/tmp/<user>/yarn.log) geschrieben, und wichtige Details wie Fehler oder die Drosselung (Fehlercode HTTP 429) können überwacht werden. Diese Informationen können auch in OMS überwacht werden (oder unter einem anderen Ziel, für das unter dem Data Lake Store-Konto auf dem Blatt [Diagnose](data-lake-store-diagnostic-logs.md) das Senden von Protokollen festgelegt ist). Es wird empfohlen, mindestens die clientseitige Protokollierung zu aktivieren oder die Protokollversandoption von Data Lake Store für die Sichtbarkeit von Vorgängen und das vereinfachte Debuggen zu nutzen.
+Nachdem die Eigenschaft festgelegt wurde und die Knoten neu gestartet wurden, wird die Data Lake Store-Diagnose in die YARN-Protokolle auf den Knoten (/tmp/<user>/yarn.log) geschrieben, und wichtige Details wie Fehler oder die Drosselung (Fehlercode HTTP 429) können überwacht werden. Diese Informationen können auch in OMS überwacht werden (oder unter einem anderen Ziel, für das unter dem Data Lake Store-Konto auf dem Blatt [Diagnose](data-lake-store-diagnostic-logs.md) das Senden von Protokollen festgelegt ist). Es wird empfohlen, mindestens die clientseitige Protokollierung zu aktivieren oder die Protokollversandoption von Data Lake Store für die Sichtbarkeit von Vorgängen und das vereinfachte Debuggen zu nutzen.
 
 ### <a name="run-synthetic-transactions"></a>Ausführen von synthetischen Transaktionen 
 
@@ -155,7 +155,7 @@ Bei IoT-Workloads können große Datenmengen im Datenspeicher landen, der überg
 
     {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/ 
 
-Die Zieltelemetrie für ein Flugzeugtriebwerk im Vereinigten Königreich kann beispielsweise wie folgt aussehen: 
+Die Zieltelemetrie für ein Flugzeugtriebwerk im Vereinigten Königreich kann beispielsweise wie die folgende Struktur aussehen: 
 
     UK/Planes/BA1293/Engine1/2017/08/11/12/ 
 
@@ -163,7 +163,7 @@ Es gibt einen wichtigen Grund dafür, das Datum am Ende der Ordnerstruktur anzuo
 
 ### <a name="batch-jobs-structure"></a>Struktur von Batchaufträgen 
 
-Ein häufiger allgemeiner Ansatz bei der Batchverarbeitung ist die Anordnung der Daten in einem Ordner vom Typ „Eingang“ (In). Nachdem die Daten verarbeitet wurden, werden die neuen Daten dann in einem Ordner vom Typ „Ausgang“ (Out) angeordnet, damit sie von nachgeschalteten Prozessen genutzt werden können. Dies ist manchmal bei Aufträgen der Fall, bei denen einzelne Dateien verarbeitet werden müssen und ggf. kein Massively Parallel Processing für große Datasets erforderlich ist. Wie bei der oben empfohlenen IoT-Struktur auch, verfügt eine gute Verzeichnisstruktur über übergeordnete Ordner für Dinge wie Region und Themen (z.B. Organisation, Produkt/Producer). Dies ist hilfreich beim Schützen der Daten Ihrer gesamten Organisation und eine Verbesserung der Verwaltung von Daten in Ihren Workloads. Berücksichtigen Sie in der Struktur auch Datum und Uhrzeit, um eine bessere Organisation, gefilterte Suchen, Sicherheit und Automatisierung der Verarbeitung zu ermöglichen. Der Granularitätsgrad für die Datumsstruktur wird durch das Intervall bestimmt, nach dem die Daten hochgeladen oder verarbeitet werden, z.B. stündlich, täglich oder auch monatlich. 
+Ein häufiger allgemeiner Ansatz bei der Batchverarbeitung ist die Anordnung der Daten in einem Ordner vom Typ „Eingang“ (In). Nachdem die Daten verarbeitet wurden, werden die neuen Daten dann in einem Ordner vom Typ „Ausgang“ (Out) angeordnet, damit sie von nachgeschalteten Prozessen genutzt werden können. Diese Verzeichnisstruktur wird manchmal bei Aufträgen verwendet, bei denen einzelne Dateien verarbeitet werden müssen und ggf. kein Massively Parallel Processing für große Datasets erforderlich ist. Wie bei der oben empfohlenen IoT-Struktur auch, verfügt eine gute Verzeichnisstruktur über übergeordnete Ordner für Dinge wie Region und Themen (z.B. Organisation, Produkt/Producer). Diese Struktur ist hilfreich beim Schützen der Daten Ihrer gesamten Organisation und eine Verbesserung der Verwaltung von Daten in Ihren Workloads. Berücksichtigen Sie in der Struktur auch Datum und Uhrzeit, um eine bessere Organisation, gefilterte Suchen, Sicherheit und Automatisierung der Verarbeitung zu ermöglichen. Der Granularitätsgrad für die Datumsstruktur wird durch das Intervall bestimmt, nach dem die Daten hochgeladen oder verarbeitet werden, z.B. stündlich, täglich oder auch monatlich. 
 
 Es kann vorkommen, dass die Dateiverarbeitung nicht erfolgreich ist, weil Daten beschädigt sind oder ein unerwartetes Format haben. In diesen Fällen kann für die Verzeichnisstruktur die Nutzung des Ordners **/bad** vorteilhaft sein, in den die Dateien zur weiteren Untersuchung verschoben werden können. Über den Batchauftrag können ggf. auch die Berichterstellung oder die Benachrichtigungsvorgänge für diese fehlerhaften Dateien (*bad* files) abgewickelt werden, um einen manuellen Eingriff zu ermöglichen. Erwägen Sie die Verwendung der folgenden Vorlagenstruktur: 
 
@@ -171,7 +171,7 @@ Es kann vorkommen, dass die Dateiverarbeitung nicht erfolgreich ist, weil Daten 
     {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/ 
     {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/ 
 
-Für ein Marketingunternehmen, das beispielsweise tägliche Datenextrakte aus Kundenupdates von seinen Kunden in Nordamerika erhält, kann dies vor und nach der Verarbeitung ggf. wie folgt aussehen: 
+Es kann beispielsweise sein, dass ein Marketingunternehmen tägliche Datenextrakte aus Kundenupdates von seinen Kunden in Nordamerika erhält. Vor und nach der Verarbeitung kann dies ggf. wie im folgenden Codeausschnitt aussehen: 
 
     NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv 
     NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv 

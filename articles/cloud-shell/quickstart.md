@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 03/12/2018
 ms.author: juluk
-ms.openlocfilehash: 3f605645e7a53f285cb7e508034ebab0daa0d335
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e48c54216c5c4ae8e53d4802aafce8883ee97c11
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Schnellstart für Bash in Azure Cloud Shell
 
@@ -28,53 +28,74 @@ Dieses Dokument erläutert die Verwendung von Bash in Azure Cloud Shell im [Azur
 > Ein Schnellstart zu [PowerShell in Azure Cloud Shell](quickstart-powershell.md) ist ebenfalls verfügbar.
 
 ## <a name="start-cloud-shell"></a>Starten von Cloud Shell
-1. Starten Sie **Cloud Shell** aus dem oberen Navigationsbereich im Azure-Portal. <br>
+1. Starten Sie **Cloud Shell** über den oberen Navigationsbereich im Azure-Portal. <br>
 ![](media/quickstart/shell-icon.png)
+
 2. Wählen Sie ein Abonnement aus, in dem ein Speicherkonto und eine Microsoft Azure Files-Freigabe erstellt werden sollen.
 3. Wählen Sie „Speicher erstellen“ aus.
 
 > [!TIP]
-> Sie werden in jeder Sitzung automatisch bei der Azure CLI 2.0 authentifiziert.
+> Sie werden in jeder Sitzung automatisch bei Azure CLI 2.0 authentifiziert.
 
 ### <a name="select-the-bash-environment"></a>Auswählen der Bash-Umgebung
-1. Klicken Sie auf der linken Seite des Shellfensters auf das Dropdownmenü für Umgebungen. <br>
+Stellen Sie sicher, dass auf der linken Seite des Shellfensters im Dropdownmenü für Umgebungen die Option `Bash` ausgewählt ist. <br>
 ![](media/quickstart/env-selector.png)
-2. Wählen Sie „Bash“ aus.
 
 ### <a name="set-your-subscription"></a>Festlegen des Abonnements
-1. Führen Sie die Abonnements auf, auf die Sie Zugriff haben: <br>
-`az account list`
+1. Führen Sie die Abonnements auf, auf die Sie Zugriff haben.
+```azurecli-interactive
+az account list
+```
+
 2. Legen Sie Ihr bevorzugtes Abonnement fest: <br>
-`az account set --subscription my-subscription-name`
+```azurecli-interactive
+az account set --subscription my-subscription-name`
+```
 
 > [!TIP]
 > Ihr Abonnement wird mithilfe von `/home/<user>/.azure/azureProfile.json` für künftige Sitzungen gespeichert.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-Erstellen Sie eine neue Ressourcengruppe in „USA, Westen“ namens „MyRG“: <br>
-`az group create -l westus -n MyRG` <br>
+Erstellen Sie in „USA, Westen“ eine neue Ressourcengruppe mit dem Namen „MyRG“.
+```azurecli-interactive
+az group create --location westus --name MyRG
+```
 
 ### <a name="create-a-linux-vm"></a>Erstellen eines virtuellen Linux-Computers
-Erstellen Sie einen virtuellen Ubuntu-Computer in Ihrer neuen Ressourcengruppe. Die Azure CLI 2.0 erstellt SSH-Schlüssel und richtet den virtuellen Computer damit ein. <br>
-`az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
+Erstellen Sie einen virtuellen Ubuntu-Computer in Ihrer neuen Ressourcengruppe. Azure CLI 2.0 erstellt SSH-Schlüssel und richtet den virtuellen Computer damit ein. <br>
+
+```azurecli-interactive
+az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
+```
 
 > [!NOTE]
-> Die öffentlichen und privaten Schlüssel, mit denen Ihr virtueller Computer authentifiziert wird, werden von der Azure CLI 2.0 standardmäßig in `/home/<user>/.ssh/id_rsa` und `/home/<user>/.ssh/id_rsa.pub` gespeichert. Der SSH-Ordner bleibt im 5 GB großen Image der angefügten Azure Files-Freigabe erhalten.
+> Durch die Verwendung von `--generate-ssh-keys` wird Azure CLI 2.0 angewiesen, auf Ihrer VM und im Verzeichnis `$Home` öffentliche und private Schlüssel zu erstellen und einzurichten. Standardmäßig befinden sich Schlüssel in der Cloud Shell unter `/home/<user>/.ssh/id_rsa` und `/home/<user>/.ssh/id_rsa.pub`. Ihr Ordner `.ssh` wird im 5-GB-Image Ihrer angefügten Dateifreigabe zur dauerhaften Aufbewahrung von `$Home` gespeichert.
 
 Ihr Benutzername auf diesem virtuellen Computer ist der Benutzername, der in Cloud Shell verwendet wird ($User@Azure:).
 
 ### <a name="ssh-into-your-linux-vm"></a>Herstellen einer SSH-Verbindung mit Ihrem virtuellen Linux-Computer
 1. Suchen Sie über die Suchleiste des Azure-Portals nach dem Namen Ihres virtuellen Computers.
-2. Klicken Sie auf „Verbinden“ und führen Sie `ssh username@ipaddress` aus.
-
+2. Klicken Sie auf „Verbinden“, um Ihren VM-Namen und die öffentliche IP-Adresse abzurufen. <br>
 ![](media/quickstart/sshcmd-copy.png)
+
+3. Stellen Sie mit dem Befehl `ssh` eine SSH-Verbindung mit Ihrer VM her.
+```
+ssh username@ipaddress
+```
 
 Nach dem Herstellen der SSH-Verbindung sollte der Willkommensbildschirm von Ubuntu angezeigt werden. <br>
 ![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Bereinigen 
-Löschen Sie Ihre Ressourcengruppe und alle darin befindlichen Ressourcen: <br>
-Führen Sie `az group delete -n MyRG` aus.
+1. Beenden Sie Ihre SSH-Sitzung.
+```azurecli-interactive
+exit
+```
+
+2. Löschen Sie Ihre Ressourcengruppe und alle darin befindlichen Ressourcen.
+```azurecli-interactive
+Run `az group delete -n MyRG`
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erfahren Sie mehr über das Beibehalten von Dateien für Bash in Cloud Shell](persisting-shell-storage.md) <br>

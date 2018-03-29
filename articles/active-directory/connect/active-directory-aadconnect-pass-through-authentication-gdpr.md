@@ -1,0 +1,107 @@
+---
+title: 'Azure AD Connect: Passthrough-Authentifizierung – Einhaltung der DSGVO | Microsoft-Dokumentation'
+description: In diesem Artikel geht es um die Azure AD-Passthrough-Authentifizierung (Azure Active Directory) und die Einhaltung der DSGVO.
+services: active-directory
+keywords: Passthrough-Authentifizierung mit Azure AD Connect, DSGVO, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
+documentationcenter: ''
+author: swkrish
+manager: mtillman
+ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/12/2018
+ms.author: billmath
+ms.custom: seohack1
+ms.openlocfilehash: 21874c961163e3efba45c2ee8557c03135987f95
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/16/2018
+---
+# <a name="azure-active-directory-pass-through-authentication-gdpr-compliance"></a>Azure Active Directory-Passthrough-Authentifizierung: Einhaltung der DSGVO
+
+## <a name="overview"></a>Übersicht
+
+Im Mai 2018 tritt ein europäisches Datenschutzgesetz – die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) – in Kraft. Die DSGVO enthält neue Vorschriften für Unternehmen, Regierungsbehörden, gemeinnützige Organisationen und andere Organisationen, die Menschen in der Europäischen Union (EU) Waren und Dienstleistungen anbieten oder Daten in Bezug auf EU-Bürger sammeln und analysieren. Die DSGVO gilt unabhängig von Ihrem Standort. 
+
+Ihnen stehen schon heute Microsoft-Produkte und -Dienste zur Verfügung, mit denen Sie die DSGVO erfüllen können. Weitere Informationen zur Microsoft-Datenschutzrichtlinie finden Sie im [Trust Center](https://www.microsoft.com/trustcenter).
+
+Mit der Azure AD-Passthrough-Authentifizierung werden die folgenden Protokolltypen erstellt, die EU II-Richtlinien umfassen können:
+
+- Azure AD Connect-Ablaufverfolgungsprotokoll-Dateien
+- Ablaufverfolgungsprotokoll-Dateien für Authentifizierungs-Agent
+- Windows-Ereignisprotokolldateien
+
+Die Einhaltung der DSGVO für die Passthrough-Authentifizierung kann auf zwei Arten erreicht werden:
+
+1.  Extrahieren von Daten für eine Person und Entfernen der Daten dieser Person aus Installationen auf Anforderung
+2.  Sicherstellen, dass keine Daten länger als 48 Stunden beibehalten werden
+
+Wir raten Ihnen dringend, die zweite Option zu verwenden, da diese einfacher zu implementieren und zu verwalten ist. Hier sind die Anleitungen für die einzelnen Protokolltypen angegeben:
+
+### <a name="delete-azure-ad-connect-trace-log-files"></a>Löschen von Azure AD Connect-Ablaufverfolgungsprotokoll-Dateien
+
+Überprüfen Sie den Inhalt des Ordners **%ProgramData%\AADConnect**, und löschen Sie den Inhalt des Ablaufverfolgungsprotokolls (**trace-\*.log**-Dateien) des Ordners innerhalb von 48 Stunden nach dem Installieren oder Aktualisieren von Azure AD Connect oder dem Ändern der Passthrough-Authentifizierungskonfiguration. Der Grund ist, dass mit dieser Aktion ggf. Daten erstellt werden, die unter die DSGVO fallen.
+
+>[!IMPORTANT]
+>Löschen Sie nicht die Datei **PersistedState.xml** in diesem Ordner, da diese Datei zum Verwalten des Zustands der vorherigen Installation von Azure AD Connect und nach einer Upgradeinstallation verwendet wird. Diese Datei enthält niemals Daten zu einer Person und sollte nie gelöscht werden.
+
+Sie können diese Ablaufverfolgungsprotokoll-Dateien entweder mit Windows-Explorer überprüfen und löschen, oder Sie können das folgende PowerShell-Skript verwenden, um die erforderlichen Aktionen durchzuführen:
+
+```
+$Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
+ 
+Foreach ($file in $Files) { 
+    {Remove-Item -Path $File -Force} 
+}
+```
+
+Speichern Sie das Skript in einer Datei mit der Erweiterung „.PS1“. Führen Sie dieses Skript je nach Bedarf aus.
+
+Weitere Informationen zu verwandten DSGVO-Anforderungen für Azure AD Connect finden Sie in [diesem Artikel](active-directory-aadconnect-gdpr.md).
+
+### <a name="delete-authentication-agent-event-logs"></a>Löschen der Ereignisprotokolle des Authentifizierungs-Agents
+
+Mit diesem Produkt können auch **Windows-Ereignisprotokolle** erstellt werden. Weitere Informationen finden Sie in [diesem Artikel](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
+
+Öffnen Sie zum Anzeigen von Protokollen zum Agent für die Passthrough-Authentifizierung die **Ereignisanzeige** auf dem Server, und sehen Sie unter **Anwendungs- und Dienstprotokolle\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** nach.
+
+### <a name="delete-authentication-agent-trace-log-files"></a>Löschen der Ablaufverfolgungsprotokoll-Dateien für den Authentifizierungs-Agent
+
+Es ist ratsam, den Inhalt von **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\** regelmäßig zu überprüfen und den Inhalt dieses Ordners alle 48 Stunden zu löschen. 
+
+>[!IMPORTANT]
+>Wenn der Authentifizierungs-Agent ausgeführt wird, ist es nicht möglich, die aktuelle Protokolldatei im Ordner zu löschen. Beenden Sie den Dienst, bevor Sie es erneut versuchen. Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) bereits konfiguriert haben.
+
+Sie können diese Dateien mithilfe von Windows-Explorer überprüfen und löschen, oder Sie können das folgende Skript verwenden, um die erforderlichen Aktionen durchzuführen:
+
+```
+$Files = ((Get-childitem -Path "$env:programdata\microsoft\azure ad connect authentication agent\trace" -Recurse).VersionInfo).FileName 
+ 
+Foreach ($file in $files) { 
+    {Remove-Item -Path $File -Force} 
+}
+```
+
+Führen Sie diese Schritte aus, um für das Skript die Ausführung nach jeweils 48 Stunden zu planen:
+
+1.  Speichern Sie das Skript in einer Datei mit der Erweiterung „.PS1“.
+2.  Öffnen Sie die **Systemsteuerung**, und klicken Sie auf **System und Sicherheit**.
+3.  Klicken Sie unter der Überschrift **Verwaltung** auf **Aufgaben planen**.
+4.  Klicken Sie im **Taskplaner** mit der rechten Maustaste auf **Aufgabenplanungsbibliothek**, und klicken Sie auf **Einfache Aufgabe erstellen...**.
+5.  Geben Sie den Namen für die neue Aufgabe ein, und klicken Sie auf **Weiter**.
+6.  Wählen Sie unter **Aufgabentrigger** die Option **Täglich**, und klicken Sie auf **Weiter**.
+7.  Legen Sie die Wiederholung auf zwei Tage fest, und klicken Sie auf **Weiter**.
+8.  Wählen Sie als Aktion **Programm starten** aus, und klicken Sie auf **Weiter**.
+9.  Geben Sie in das Feld für das Programm/Skript **PowerShell** und in das Feld **Argumente hinzufügen (optional)** den vollständigen Pfad zu dem zuvor erstellten Skript ein. Klicken Sie anschließend auf **Weiter**.
+10. Auf dem nächsten Bildschirm wird eine Zusammenfassung der Aufgabe angezeigt, die Sie erstellen möchten. Überprüfen Sie die Werte, und klicken Sie auf **Fertig stellen**, um die Aufgabe zu erstellen:
+ 
+### <a name="note-about-domain-controller-logs"></a>Hinweis zu Domänencontrollerprotokollen
+
+Wenn die Überwachungsprotokollierung aktiviert ist, kann dieses Produkt Sicherheitsprotokolle für Ihre Domänencontroller generieren. Weitere Informationen zum Konfigurieren von Überwachungsrichtlinien finden Sie in [diesem Artikel](https://technet.microsoft.com/library/dd277403.aspx).
+
+## <a name="next-steps"></a>Nächste Schritte
+- [**Problembehandlung**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) – Beheben von häufig auftretenden Problemen mit diesem Feature

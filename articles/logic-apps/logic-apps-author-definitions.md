@@ -1,42 +1,63 @@
 ---
-title: "Erstellen von Workflowdefinitionen für Logik-Apps per JSON-Code – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Hinzufügen von Parametern, Verarbeiten von Zeichenfolgen, Erstellen von Parameterzuordnungen und Abrufen von Daten mit Date-Funktionen"
+title: Erstellen, Bearbeiten oder Erweitern von JSON-Code für Logik-App-Definitionen – Azure Logic Apps | Microsoft-Dokumentation
+description: Erstellen und Anpassen von Logik-App-Definitionen in JSON
 author: ecfan
-manager: anneta
-editor: 
+manager: SyntaxC4
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: integration
+ms.workload: logic-apps
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.custom: H1Hack27Feb2017
-ms.date: 01/31/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: d05f7e34cbe670db6733c199e3420c810c304a84
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.date: 01/01/2018
+ms.author: estfan; LADocs
+ms.openlocfilehash: bde275eb75c97da2a99109484b46b599a5b2f871
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="build-on-your-logic-app-definition-with-json"></a>Erstellen Ihrer Workflowdefinitionen für Logik-Apps per JSON-Code
+# <a name="create-edit-or-customize-json-for-logic-app-definitions"></a>Erstellen, Bearbeiten oder Anpassen von JSON-Code für Logik-App-Definitionen
 
-Um erweiterte Aufgaben mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) auszuführen, können Sie die Codeansicht zum Bearbeiten Ihrer Logik-App-Definition verwenden, die einfache, deklarative JSON-Sprache verwendet. Falls Sie dies noch nicht getan haben, sollten Sie sich zuerst darüber informieren, wie Sie [Ihre erste Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md). Sehen Sie sich auch die [vollständige Referenz zur Definitionssprache für Workflows](http://aka.ms/logicappsdocs) an.
+Wenn Sie Enterprise Integration-Lösungen mit automatisierten Workflows in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen, verwenden die zugrunde liegenden Logik-App-Definitionen einfachen und deklarativen JSON-Code (JavaScript Object Notation) sowie das [Schema der Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) zur Beschreibung und Überprüfung der Definitionen. Diese Formate erleichtern Benutzern ohne umfassende Codekenntnisse das Lesen und Verständnis von Logik-App-Definitionen. Wenn Sie die Erstellung und Bereitstellung von Logik-Apps automatisieren möchten, können Sie Logik-App-Definitionen als [Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md) in [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-overview.md#template-deployment) einbinden. Zum Erstellen, Verwalten und Bereitstellen von Logik-Apps können Sie dann [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp), die [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) oder die [Azure Logic Apps-REST-APIs](https://docs.microsoft.com/rest/api/logic/) verwenden.
+
+Um mit Logik-App-Definitionen in JSON zu arbeiten, öffnen Sie im Azure-Portal oder in Visual Studio den Codeansichts-Editor, oder kopieren Sie die Definition in einen Editor Ihrer Wahl. Falls Sie noch nicht mit Logik-Apps gearbeitet haben, sollten Sie zunächst die Schnellstartanleitung zum [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) lesen.
 
 > [!NOTE]
-> Einige Funktionen von Azure Logic Apps, z.B. Parameter, stehen nur zur Verfügung, wenn Sie in der Codeansicht für die Definition der Logik-App arbeiten. Parameter erleichtern Ihnen das Wiederverwenden von Werten in der gesamten Logik-App. Wenn Sie z.B. dieselbe E-Mail-Adresse in verschiedenen Aktionen verwenden möchten, definieren Sie diese E-Mail-Adresse als Parameter.
+> Einige Funktionen von Azure Logic Apps (beispielsweise das Definieren von Parametern und mehreren Triggern in Logik-App-Definitionen) sind nicht im Designer für Logik-Apps, sondern nur in JSON verfügbar. Für diese Aufgaben müssen Sie daher in der Codeansicht oder einem anderen Editor arbeiten.
 
-## <a name="view-and-edit-your-logic-app-definitions-in-json"></a>Anzeigen und Bearbeiten Ihrer Logik-App-Definition in JSON
+## <a name="edit-json---azure-portal"></a>Bearbeiten von JSON-Code – Azure-Portal
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com "Azure-Portal") an.
+1. Melden Sie sich beim <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> an.
 
-2. Wählen Sie im Menü auf der linken Seite die Option **Weitere Dienste** aus. Wählen Sie unter **Enterprise Integration** die Option **Logik-Apps**. Speichern Sie Ihre Logik-App.
+2. Klicken Sie im Menü auf der linken Seite auf **Alle Dienste**. Suchen Sie mithilfe des Suchfelds nach „Logik-Apps“, und wählen Sie Ihre Logik-App dann in den Suchergebnissen aus.
 
-3. Wählen Sie im Logik-App-Menü unter **Entwicklungstools** die Option **Logik-App-Codeansicht** aus.
+3. Klicken Sie im Menü Ihrer Logik-App unter **Entwicklungstools** auf **Logik-App-Codeansicht**.
 
-   Das Codeansichtsfenster wird geöffnet und zeigt die Definition der Logik-App an.
+   Der Codeansichts-Editor wird geöffnet und zeigt die Definition der Logik-App im JSON-Format an.
+
+## <a name="edit-json---visual-studio"></a>Bearbeiten von JSON-Code – Visual Studio
+
+Bevor Sie die Definition Ihrer Logik-App in Visual Studio bearbeiten können, müssen Sie sicherstellen, dass [die erforderlichen Tools installiert](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites) sind. Informationen zum Erstellen einer Logik-App mit Visual Studio finden Sie unter [Schnellstart: Automatisieren von Aufgaben und Prozessen mit Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+
+In Visual Studio können Sie Logik-Apps öffnen, die direkt über das Azure-Portal oder als Azure Resource Manager-Projekte über Visual Studio erstellt und bereitgestellt wurden.
+
+1. Öffnen Sie die Visual Studio-Projektmappe oder das [Azure-Ressourcengruppenprojekt](../azure-resource-manager/resource-group-overview.md) mit der Logik-App.
+
+2. Suchen Sie nach der Definition Ihrer Logik-App, und öffnen Sie sie. Die Definition wird standardmäßig in einer [Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md#template-deployment) mit dem Namen **LogicApp.json** angezeigt. Sie können diese Vorlage für die Bereitstellung in verschiedenen Umgebungen anpassen.
+
+3. Öffnen Sie das Kontextmenü für Ihre Logik-App-Definition und Vorlage. Wählen Sie **Öffnen mit Logik-App-Designer** aus.
+
+   ![Öffnen der Logik-App in einer Visual Studio-Projektmappe](./media/logic-apps-author-definitions/open-logic-app-designer.png)
+
+4. Klicken Sie unten im Designer auf **Codeansicht**. 
+
+   Der Codeansichts-Editor wird geöffnet und zeigt die Definition der Logik-App im JSON-Format an.
+
+5. Um zur Designeransicht zurückzukehren, klicken Sie unten im Codeansichts-Editor auf **Entwurf**.
 
 ## <a name="parameters"></a>Parameter
 

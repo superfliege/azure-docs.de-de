@@ -1,24 +1,24 @@
 ---
 title: Referenzleitfaden zu den Ansicht-Designer-Teilen in Azure Log Analytics | Microsoft-Dokumentation
-description: "Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen in Ihrem Log Analytics-Arbeitsbereich anzeigen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen."
+description: Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen in Ihrem Log Analytics-Arbeitsbereich anzeigen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
-manager: jwhit
-editor: 
+manager: carmonm
+editor: ''
 ms.assetid: 5718d620-b96e-4d33-8616-e127ee9379c4
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 03/12/2018
 ms.author: bwren
-ms.openlocfilehash: 6fd19cce955e1f06c9b6f5a9ef5d85d9fd63c1c1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a2573eef3c90c1840c0d53b2f8aa2cfe2d3a7242
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungsteilen in Log Analytics
 Mit dem Ansicht-Designer in Azure Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen aus Ihrem Log Analytics-Arbeitsbereich darstellen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
@@ -28,21 +28,19 @@ Weitere Informationen zum Ansicht-Designer finden Sie hier:
 * [Ansicht-Designer](log-analytics-view-designer.md): Bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
 * [Kachelreferenz](log-analytics-view-designer-tiles.md): Dient als Referenz zu den Einstellungen für die einzelnen verfügbaren Kacheln in den benutzerdefinierten Ansichten.
 
->[!NOTE]
-> Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, müssen die Abfragen in allen Ansichten in der [neuen Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856078) geschrieben werden. Alle Ansichten, die vor dem Upgrade des Arbeitsbereichs erstellt wurden, werden automatisch konvertiert.
 
 Die verfügbaren Ansicht-Designer-Kacheltypen werden in der folgenden Tabelle beschrieben:
 
-| Ansichtstyp | Beschreibung |
+| Ansichtstyp | BESCHREIBUNG |
 |:--- |:--- |
 | [Liste der Abfragen](#list-of-queries-part) |Zeigt eine Liste der Protokollsuchabfragen an. Sie können einzelne Abfragen auswählen, um die Ergebnisse anzuzeigen. |
-| [Zahl und Liste](#number-amp-list-part) |Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
-| [Zwei Zahlen und Liste](#two-numbers-amp-list-part) |Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus getrennten Protokollsuchabfragen angeben. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
-| [Ringdiagramm und Liste](#donut-amp-list-part) |Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Der Ring stellt die Ergebnisse der ersten drei Datensätze grafisch dar. |
-| [Zwei Zeitachsen und Liste](#two-timelines-amp-list-part) |Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Säulendiagramme an. In einer Legende wird eine einzelne Zahl dargestellt, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Zahl und Liste](#number-and-list-part) |Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Zwei Zahlen und Liste](#two-numbers-and-list-part) |Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus getrennten Protokollsuchabfragen angeben. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Ringdiagramm und Liste](#donut-and-list-part) |Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Der Ring stellt die Ergebnisse der ersten drei Datensätze grafisch dar. |
+| [Zwei Zeitachsen und Liste](#two-timelines-and-list-part) |Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Säulendiagramme an. In einer Legende wird eine einzelne Zahl dargestellt, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
 | [Informationen](#information-part) |Die Kopfzeile zeigt statischen Text und einen optionalen Link. Die Liste zeigt mindestens ein Element mit einer statischen Kachel und Text. |
-| [Liniendiagramm, Legende und Liste](#line-chart-callout-amp-list-part) |Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf und eine Legende mit einem zusammengefassten Wert an. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
-| [Liniendiagramm und Liste](#line-chart-amp-list-part) |Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf an. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Liniendiagramm, Legende und Liste](#line-chart-callout-and-list-part) |Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf und eine Legende mit einem zusammengefassten Wert an. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Liniendiagramm und Liste](#line-chart-and-list-part) |Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf an. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
 | [Komponente mit Liniendiagrammstapel](#stack-of-line-charts-part) |Zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf an. |
 
 Die nächsten Abschnitte beschreiben die Kacheltypen und ihre Eigenschaften ausführlich.
@@ -52,7 +50,7 @@ Das Teil mit der Liste der Abfragen zeigt eine Liste der Protokollsuchabfragen a
 
 ![Ansicht der Liste der Abfragen](media/log-analytics-view-designer/view-list-queries.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Titel |Der Text, der im oberen Bereich der Ansicht angezeigt wird. |
@@ -68,7 +66,7 @@ Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus ei
 
 ![Ansicht der Liste der Abfragen](media/log-analytics-view-designer/view-number-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Der Text, der im oberen Bereich der Ansicht angezeigt wird. |
@@ -78,13 +76,14 @@ Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus ei
 | **Titel** | |
 | Legende |Der Text, der oben in der Kopfzeile angezeigt wird. |
 | Abfragen |Die Abfrage, die für die Kopfzeile ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** | |
 | Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die ersten beiden Eigenschaften für die ersten zehn Datensätze in den Ergebnissen werden angezeigt. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Balken werden automatisch basierend auf dem relativen Wert der numerischen Spalte erstellt.<br><br>Verwenden Sie den Befehl `Sort` in der Abfrage, um die Datensätze in der Liste zu sortieren. Sie können **Alle anzeigen** auswählen, um die Abfrage auszuführen und alle Datensätze zurückzugeben. |
 | Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
 | Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Farbe |Die Farbe der Balken oder Sparklines. |
 | Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
 | NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
 | Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
@@ -96,13 +95,15 @@ Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus getrennte
 
 ![Ansicht mit zwei Zahlen und Liste](media/log-analytics-view-designer/view-two-numbers-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Der Text, der im oberen Bereich der Ansicht angezeigt wird. |
 | Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
 | Symbol |Die Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
 | Symbol verwenden |Wählen Sie diesen Link, um das Symbol anzuzeigen. |
+| **Titelnavigation** | |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Titel** | |
 | Legende |Der Text, der oben in der Kopfzeile angezeigt wird. |
 | Abfragen |Die Abfrage, die für die Kopfzeile ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
@@ -113,7 +114,7 @@ Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus getrennte
 | Farbe |Die Farbe der Balken oder Sparklines. |
 | Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
 | NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
 | Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
@@ -125,7 +126,7 @@ Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollab
 
 ![Ansicht mit Ringdiagramm und Liste](media/log-analytics-view-designer/view-donut-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
@@ -137,6 +138,7 @@ Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollab
 | Untertitel |Der Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Ring** | |
 | Abfragen |Die Abfrage, die für das Ringdiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Ring** |**&gt; Mitte** |
 | Text |Der Text, der unter dem Wert innerhalb des Ringdiagramms angezeigt wird. |
 | Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie als Einzelwert zusammenzufassen.<ul><li>Summe: Addiert die Werte aller Datensätze.</li><li>Prozentsatz: Das Verhältnis der Datensätze, die von den Werten in **Vom Vorgang in der Mitte verwendete Ergebniswerte** zurückgegeben werden, von der Gesamtanzahl der Datensätze in der Abfrage.</li></ul> |
@@ -153,7 +155,7 @@ Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollab
 | Farbe |Die Farbe der Balken oder Sparklines. |
 | Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
 | NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
 | Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
@@ -165,13 +167,15 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 
 ![Ansicht mit zwei Zeitachsen und Liste](media/log-analytics-view-designer/view-two-timelines-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
 | Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
 | Symbol |Die Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
 | Symbol verwenden |Wählen Sie diesen Link, um das Symbol anzuzeigen. |
+| **Titelnavigation** | |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Erstes Diagramm<br>Zweites Diagramm** | |
 | Legende |Der Text, der unter der Legende für die erste Datenreihe angezeigt wird. |
 | Farbe |Die Farbe, die für die Säulen in der Reihe verwendet wird. |
@@ -183,7 +187,7 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 | Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Farbe |Die Farbe der Balken oder Sparklines. |
 | Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
 | NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
 | Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
@@ -195,7 +199,7 @@ Die Kopfzeile zeigt statischen Text und einen optionalen Link. Die Liste zeigt m
 
 ![Ansicht mit Informationen](media/log-analytics-view-designer/view-information.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
@@ -216,7 +220,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 
 ![Ansicht mit Liniendiagramm, Legende und Liste](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
@@ -228,6 +232,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Untertitel |Der Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Liniendiagramm** | |
 | Abfragen |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liniendiagramm** |**&gt; Legende** |
 | Legendentitel |Der Text, der über dem Legendenwert angezeigt wird. |
 | Reihenname |Eigenschaftswert für die Reihe, die für den Wert der Legende verwendet wird. Wenn keine Reihe angegeben wird, werden alle Datensätze der Abfrage verwendet. |
@@ -243,7 +248,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Farbe |Die Farbe der Balken oder Sparklines. |
 | Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
 | NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
 | Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
@@ -255,7 +260,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 
 ![Ansicht mit Liniendiagramm und Liste](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
@@ -267,6 +272,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Untertitel |Der Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Liniendiagramm** | |
 | Abfragen |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liniendiagramm** |**> Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
@@ -278,7 +284,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Farbe |Die Farbe der Balken oder Sparklines. |
 | Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
 | NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
 | Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
@@ -290,7 +296,7 @@ Der Liniendiagrammstapel zeigt drei separate Liniendiagramme mit mehreren Reihen
 
 ![Liniendiagrammstapel](media/log-analytics-view-designer/view-stack-line-charts.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
@@ -301,6 +307,7 @@ Der Liniendiagrammstapel zeigt drei separate Liniendiagramme mit mehreren Reihen
 | Untertitel |Der Text, der unter dem Titel oben im Diagramm angezeigt wird. |
 | **Diagramm 1<br>Diagramm 2<br>Diagramm 3** |**Liniendiagramm** |
 | Abfragen |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
+| Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Diagramm** |**> Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
@@ -314,17 +321,25 @@ Die Trennlinie für Name und Wert ist ein einstelliges Trennzeichen, um die Text
 
 Beispiel: Eine Eigenschaft namens *Standort* weist Werte wie *Redmond-Gebäude 41* und *Bellevue-Gebäude 12* auf. Sie können eine Bindestrich (-) als Trennlinie für Name und Wert festlegen und *Ort-Gebäude* als Namen angeben. Durch diesen Ansatz wird jeder Wert in die beiden Eigenschaften *Ort* und *Gebäude* gliedert.
 
-### <a name="navigation-query"></a>Navigationsabfrage
-Die Navigationsabfrage ist eine Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Verwenden Sie *{ausgewähltes Element}*, um die Syntax für das Element einzubinden, das der Benutzer ausgewählt hat.
+### <a name="click-through-navigation"></a>Click-through navigation (Navigation per Klick)
+Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, wenn Sie in einer Ansicht auf einen Header oder einen Listeneintrag klicken.  Hierdurch wird entweder eine Abfrage im [Portal für die Protokollsuche](log-analytics-log-search-portals.md#log-search) geöffnet oder eine andere Ansicht gestartet.
 
-Beispiel: Wenn die Abfrage eine Spalte namens *Computer* aufweist und die Navigationsabfrage *{ausgewähltes Element}* ist, wird eine Abfrage wie *Computer="MeinComputer"* ausgeführt, wenn der Benutzer einen Computer auswählt. Wenn die Navigationsabfrage *Type=Event {ausgewähltes Element}* ist, wird *Type=Event Computer="MeinComputer"* ausgeführt.
+In der folgenden Tabelle sind die Einstellungen für die Navigation per Klick beschrieben.
+
+| Einstellung           | Beschreibung |
+|:--|:--|
+| Protokollsuche (Automatisch) | Protokollsuche, die durchgeführt wird, wenn Sie ein Headerelement auswählen.  Dies ist die gleiche Protokollsuche, auf der das Element basiert.
+| Protokollsuche        | Die Protokollsuche, die durchgeführt wird, wenn Sie in einer Liste einen Eintrag auswählen.  Geben Sie die Abfrage im Feld **Navigationsabfrage** ein.   Verwenden Sie *{ausgewähltes Element}*, um die Syntax für das Element einzubinden, das der Benutzer ausgewählt hat.  Beispiel: Wenn die Abfrage eine Spalte namens *Computer* aufweist und die Navigationsabfrage *{ausgewähltes Element}* ist, wird eine Abfrage wie *Computer="MeinComputer"* ausgeführt, wenn der Benutzer einen Computer auswählt. Wenn die Navigationsabfrage *Type=Event {ausgewähltes Element}* ist, wird *Type=Event Computer="MeinComputer"* ausgeführt. |
+| Ansicht              | Die zu öffnende Ansicht, wenn Sie ein Headerelement oder einen Eintrag einer Liste auswählen.  Wählen Sie den Namen einer Ansicht Ihres Arbeitsbereichs im Feld **Ansichtsname** aus. |
+
+
 
 ### <a name="sparklines"></a>Sparklines
 Eine Sparkline ist ein kleines Liniendiagramm, das den Wert eines Listeneintrags im Lauf der Zeit veranschaulicht. Bei Visualisierungsteilen mit einer Liste können Sie auswählen, ob ein horizontaler Balken mit dem relativen Wert einer numerischen Spalte oder eine Sparkline mit dem Wert im Verlauf angezeigt werden soll.
 
 In der folgenden Tabelle sind Einstellungen für Sparklines beschrieben:
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. |
 | Vorgang |Wenn Sparklines aktiviert sind, ist dies der Vorgang, der für jede Eigenschaft in der Liste ausgeführt wird, um die Werte für die Sparkline zu berechnen.<ul><li>Letztes Beispiel: Der letzte Wert für die Reihe im Zeitintervall.</li><li>Max: Der Höchstwert für die Reihe im Zeitintervall.</li><li>Min: Der Mindestwert für die Reihe im Zeitintervall.</li><li>Summe: Die Summe der Werte für die Reihe im Zeitintervall.</li><li>Zusammenfassung: Verwendet den gleichen `measure`-Befehl wie die Abfrage in der Kopfzeile.</li></ul> |
@@ -338,10 +353,10 @@ Jeder Schwellenwertsatz verfügt über einen Schwellenwert mit dem Wert **Standa
 
 In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben:
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | Schwellenwerte aktivieren |Wählen Sie diesen Link, um ein Farbsymbol links von jedem Wert anzuzeigen. Das Symbol gibt die Integrität des Werts relativ zu den angegebenen Schwellenwerten an. |
-| Name |Der Name des Schwellenwerts |
+| NAME |Der Name des Schwellenwerts |
 | Schwellenwert |Der Wert für den Schwellenwert. Die Farbe der Integrität für jedes Listenelement ist auf die Farbe des höchsten Schwellenwerts festgelegt, den der Wert des Listenelements überschritten hat. Wenn keine Schwellenwerte überschritten werden, wird eine Standardfarbe verwendet. |
 | Farbe |Die Farbe, die den Schwellenwert angibt. |
 

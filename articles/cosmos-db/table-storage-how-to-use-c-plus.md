@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure Table Storage mit C++ | Microsoft-Dokumentation
+title: Verwenden von Azure Table Storage und Azure Cosmos DB mit C++ | Microsoft-Dokumentation
 description: Speichern Sie strukturierte Daten mit Azure Table Storage, einem NoSQL-Datenspeicher, in der Cloud.
 services: cosmos-db
 documentationcenter: .net
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/12/2018
 ms.author: mimig
-ms.openlocfilehash: a71098583af8722f2e191e0e665ac87ebd30f355
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 69d56c79320931419ff8d71373ec578af2dec921
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="how-to-use-azure-table-storage-with-c"></a>Verwenden von Azure Table Storage mit C++
+# <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Verwenden von Azure Table Storage und der Azure Cosmos DB-Tabellen-API mit C++
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>Übersicht
-In diesem Leitfaden wird gezeigt, wie häufige Szenarios mit dem Azure-Tabellenspeicherdienst ausgeführt werden. Die Beispiele sind in C++ geschrieben und greifen auf die [Azure-Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)zurück. Die behandelten Szenarios umfassen das **Erstellen und Löschen einer Tabelle** sowie das **Arbeiten mit Tabellenentitäten**.
+In diesem Leitfaden wird gezeigt, wie häufige Szenarien mit dem Azure-Tabellenspeicherdienst oder der Azure Cosmos DB-Tabellen-API ausgeführt werden. Die Beispiele sind in C++ geschrieben und greifen auf die [Azure-Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)zurück. Die behandelten Szenarios umfassen das **Erstellen und Löschen einer Tabelle** sowie das **Arbeiten mit Tabellenentitäten**.
 
 > [!NOTE]
 > Diese Anleitung gilt für die Azure Storage-Clientbibliothek für C++ in der Version 1.0.0 und höher. Die empfohlene Version ist Storage-Clientbibliothek 2.2.0, die über [NuGet](http://www.nuget.org/packages/wastorage) oder [GitHub](https://github.com/Azure/azure-storage-cpp/) verfügbar ist.
@@ -46,7 +46,7 @@ Zum Installieren der Azure-Speicherclientbibliothek für C++ können Sie die fol
   
      Installationspaket „wastorage“
 
-## <a name="configure-your-application-to-access-table-storage"></a>Konfigurieren Ihrer Anwendung für den Zugriff auf Tabellenspeicher
+## <a name="configure-access-to-the-table-client-library"></a>Konfigurieren des Zugriffs auf die Table-Clientbibliothek
 Fügen Sie folgende include-Anweisungen am Anfang der C++-Datei dort ein, wo Azure Storage-APIs auf Tabellen zugreifen sollen:  
 
 ```cpp
@@ -54,13 +54,24 @@ Fügen Sie folgende include-Anweisungen am Anfang der C++-Datei dort ein, wo Azu
 #include <was/table.h>
 ```
 
+Ein Azure Storage-Client oder Cosmos DB-Client verwendet eine Verbindungszeichenfolge zum Speichern von Endpunkten und Anmeldeinformationen für den Zugriff auf Datenverwaltungsdienste. Beim Ausführen einer Clientanwendung müssen Sie die Storage-Verbindungszeichenfolge oder die Azure Cosmos DB-Verbindungszeichenfolge im richtigen Format angeben.
+
 ## <a name="set-up-an-azure-storage-connection-string"></a>Einrichten einer Azure-Speicherverbindungszeichenfolge
-Ein Azure-Speicherclient verwendet eine Speicherverbindungszeichenfolge zum Speichern von Endpunkten und Anmeldeinformationen für den Zugriff auf Datenverwaltungsdienste. Beim Ausführen einer Clientanwendung müssen Sie die Speicherverbindungszeichenfolge im folgenden Format angeben. Verwenden Sie den Namen Ihres Speicherkontos und den Speicherzugriffsschlüssel für das Speicherkonto, das im [Azure-Portal](https://portal.azure.com) aufgeführt ist, als Werte für *AccountName* und *AccountKey*. Weitere Informationen über Speicherkonten und Zugriffsschlüssel finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md). Dieses Beispiel zeigt, wie Sie ein statisches Feld für die Verbindungszeichenfolge deklarieren:  
+ Verwenden Sie den Namen Ihres Storage-Kontos und den Zugriffsschlüssel für das Storage-Konto aus dem [Azure-Portal](https://portal.azure.com) als Werte für *AccountName* und *AccountKey*. Weitere Informationen zu Storage-Konten und Zugriffsschlüsseln finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md). Dieses Beispiel zeigt, wie Sie ein statisches Feld für die Azure Storage-Verbindungszeichenfolge deklarieren:  
 
 ```cpp
-// Define the connection string with your values.
+// Define the Storage connection string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
+
+## <a name="set-up-an-azure-cosmos-db-connection-string"></a>Einrichten einer Azure Cosmos DB-Verbindungszeichenfolge
+Verwenden Sie den Namen Ihres Azure Cosmos DB-Kontos, Ihren Primärschlüssel und den Endpunkt aus dem [Azure-Portal](https://portal.azure.com) für die Werte unter *Kontoname*, *Primärschlüssel* und *Endpunkt*. Dieses Beispiel zeigt, wie Sie ein statisches Feld für die Azure Cosmos DB-Verbindungszeichenfolge deklarieren:
+
+```cpp
+// Define the Azure Cosmos DB connection string with your values.
+const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_cosmos_db_account;AccountKey=your_cosmos_db_account_key;TableEndpoint=your_cosmos_db_endpoint"));
+```
+
 
 Zum Testen der Anwendung auf Ihrem lokalen Windows-basierten Computer können Sie den [Azure-Speicheremulator](../storage/common/storage-use-emulator.md) verwenden, der mit dem [Azure SDK](https://azure.microsoft.com/downloads/) installiert wird. Der Speicheremulator ist ein Dienstprogramm, das die in Azure verfügbaren BLOB-, Warteschlangen- und Tabellenspeicherdienste auf dem lokalen Entwicklungscomputer simuliert. Im folgenden Beispiel wird dargestellt, wie Sie ein statisches Feld zur Übergabe der Verbindungszeichenfolge an den lokalen Speicheremulator deklarieren:  
 
@@ -74,7 +85,7 @@ Klicken Sie zum Starten des Azure-Speicheremulators auf die Schaltfläche **Star
 In den folgenden Beispielen wird davon ausgegangen, dass Sie eine dieser zwei Methoden verwendet haben, um die Speicherverbindungszeichenfolge abzurufen.  
 
 ## <a name="retrieve-your-connection-string"></a>Abrufen der Verbindungszeichenfolge
-Sie können Ihre Speicherkontoinformationen mit der Klasse **cloud_storage_account** darstellen. Verwenden Sie zum Abrufen von Speicherkontoinformationen aus der Speicher-Verbindungszeichenfolge die parse-Methode.
+Sie können Ihre Speicherkontoinformationen mit der Klasse **cloud_storage_account** darstellen. Verwenden Sie zum Abrufen von Speicherkontoinformationen aus der Speicher-Verbindungszeichenfolge die **parse** -Methode.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -198,6 +209,9 @@ Beachten Sie im Zusammenhang mit Batchvorgängen Folgendes:
 ## <a name="retrieve-all-entities-in-a-partition"></a>Abrufen aller Entitäten einer Partition
 Verwenden Sie ein **table_query**-Objekt, um eine Tabelle für alle Entitäten in einer Partition abzurufen. Im folgenden Codebeispiel wird ein Filter für Entitäten erstellt, wobei "Smith" der Partitionsschlüssel ist. In diesem Beispiel werden die Felder der einzelnen Entitäten in den Abfrageergebnissen an die Konsole ausgegeben.  
 
+> [!NOTE]
+> Diese Methoden werden für C++ in Azure Cosmos DB derzeit nicht unterstützt.
+
 ```cpp
 // Retrieve the storage account from the connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -232,6 +246,9 @@ Die Abfrage in diesem Beispiel gibt alle Entitäten zurück, die den Filterkrite
 
 ## <a name="retrieve-a-range-of-entities-in-a-partition"></a>Abrufen eines Entitätsbereichs in einer Partition
 Wenn Sie nicht alle Entitäten in einer Partition abrufen möchten, können Sie einen Bereich angeben, indem Sie den Partitionsschlüsselfilter mit einem Zeilenschlüsselfilter kombinieren. Im folgenden Codebeispiel werden zwei Filter eingesetzt, um alle Entitäten in der Partition „Smith“ abzurufen, deren Zeilenschlüssel (Vorname) mit einem Buchstaben vor dem Buchstaben E im Alphabet beginnen. Danach werden die Abfrageergebnisse gedruckt.  
+
+> [!NOTE]
+> Diese Methoden werden für C++ in Azure Cosmos DB derzeit nicht unterstützt.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -436,23 +453,30 @@ azure::storage::cloud_table_client table_client = storage_account.create_cloud_t
 // Create a cloud table object for the table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Create an operation to retrieve the entity with partition key of "Smith" and row key of "Jeff".
-azure::storage::table_operation retrieve_operation = azure::storage::table_operation::retrieve_entity(U("Smith"), U("Jeff"));
-azure::storage::table_result retrieve_result = table.execute(retrieve_operation);
-
-// Create an operation to delete the entity.
-azure::storage::table_operation delete_operation = azure::storage::table_operation::delete_entity(retrieve_result.entity());
-
-// Submit the delete operation to the Table service.
-azure::storage::table_result delete_result = table.execute(delete_operation);
+// Delete the table if it exists
+if (table.delete_table_if_exists())
+    {
+        std::cout << "Table deleted!";
+    }
+    else
+    {
+        std::cout << "Table didn't exist";
+    }
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie sich nun mit den Grundlagen von Tabellenspeichern vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr über Azure Storage zu erfahren.  
+## <a name="troubleshooting"></a>Problembehandlung
+* Buildfehler in Visual Studio 2017 Community Edition
 
-* Beim [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
-* [Verwenden des BLOB-Speichers mit C++](../storage/blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [Verwenden des Warteschlangenspeichers mit C++](../storage/queues/storage-c-plus-plus-how-to-use-queues.md)
+  Wenn für Ihr Projekt aufgrund der Includedateien „storage_account.h“ und „table.h“ Buildfehler auftreten, sollten Sie den Compilerschalter **/permissive-** entfernen. 
+  - Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Eigenschaften**.
+  - Erweitern Sie im Dialogfeld **Eigenschaftenseiten** die Option **Konfigurationseigenschaften** und dann **C/C++**, und wählen Sie die Option **Sprache**.
+  - Legen Sie **Konformitätsmodus** auf **Nein** fest.
+   
+## <a name="next-steps"></a>Nächste Schritte
+Verwenden Sie diese Links, um weitere Informationen zu Azure Storage und der Tabellen-API in Azure Cosmos DB zu erhalten: 
+
+* [Einführung in die Tabellen-API von Azure Cosmos DB](table-introduction.md)
+* Beim [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * [Auflisten von Azure Storage-Ressourcen in C++](../storage/common/storage-c-plus-plus-enumeration.md)
 * [Referenz zur Speicherclientbibliothek für C++](http://azure.github.io/azure-storage-cpp)
 * [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)

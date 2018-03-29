@@ -1,34 +1,36 @@
 ---
-title: "Bereitstellen von Azure-Ressourcen für mehrere Abonnements und Ressourcengruppen | Microsoft-Dokumentation"
-description: "Hier wird gezeigt, wie während der Bereitstellung mehrere Azure-Abonnements und -Ressourcengruppen als Ziel festgelegt werden."
+title: Bereitstellen von Azure-Ressourcen für mehrere Abonnements und Ressourcengruppen | Microsoft-Dokumentation
+description: Hier wird gezeigt, wie während der Bereitstellung mehrere Azure-Abonnements und -Ressourcengruppen als Ziel festgelegt werden.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2018
+ms.date: 03/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 40b2d04fe829c51a58fb3bec1519a590a12cfdb8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 90cb87b3fe94b7b3b0eba1b261d29a1c8f4348d6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen
 
 In der Regel stellen Sie alle Ressourcen in der Vorlage als einzelne [Ressourcengruppe](resource-group-overview.md) bereit. Es gibt jedoch Szenarien, bei denen Sie eine Reihe von Ressourcen zwar gemeinsam, aber in verschiedenen Ressourcengruppen oder Abonnements bereitstellen möchten. Sie möchten beispielsweise den virtuellen Sicherungscomputer für Azure Site Recovery in einer separaten Ressourcengruppe und an einem separaten Standort bereitstellen. Resource Manager ermöglicht die Verwendung geschachtelter Vorlagen, um nicht das Abonnement und die Ressourcengruppe, die für die übergeordnete Vorlage verwendet werden, sondern andere Abonnements und Ressourcengruppen als Ziel festzulegen.
 
 > [!NOTE]
-> Sie können nur fünf Ressourcengruppen in einer Bereitstellung bereitstellen.
+> Sie können nur fünf Ressourcengruppen in einer Bereitstellung bereitstellen. Normalerweise bedeutet diese Einschränkung, dass Sie die Bereitstellung für eine Ressourcengruppe durchführen können, die für die übergeordnete Vorlage angegeben ist, sowie bis zu vier Ressourcengruppen in geschachtelten oder verknüpften Bereitstellungen. Wenn Ihre übergeordnete Vorlage aber nur geschachtelte oder verknüpfte Vorlagen enthält und selbst keine Ressourcen bereitstellt, können Sie bis zu fünf Ressourcengruppen in geschachtelte oder verknüpfte Bereitstellungen einbinden.
 
 ## <a name="specify-a-subscription-and-resource-group"></a>Angeben eines Abonnements und einer Ressourcengruppe
 
 Um eine andere Ressource als Ziel festzulegen, verwenden Sie eine geschachtelte oder verknüpfte Vorlage. Der Ressourcentyp `Microsoft.Resources/deployments` stellt Parameter für `subscriptionId` und `resourceGroup` bereit. Diese Eigenschaften ermöglichen Ihnen die Angabe eines anderen Abonnements und einer anderen Ressourcengruppe für die geschachtelte Bereitstellung. Alle Ressourcengruppen müssen vorhanden sein, bevor Sie die Bereitstellung ausführen. Ohne Angabe von Abonnement-ID oder Ressourcengruppe werden das Abonnement und die Ressourcengruppe aus der übergeordneten Vorlage verwendet.
+
+Das zum Bereitstellen der Vorlage verwendete Konto muss über Berechtigungen für die Bereitstellung unter der angegebenen Abonnement-ID verfügen. Wenn das angegebene Abonnement in einem anderen Azure Active Directory-Mandanten vorhanden ist, müssen Sie [Gastbenutzer aus einem anderen Verzeichnis hinzufügen](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
 Gehen Sie zum Angeben einer anderen Ressourcengruppe und eines Abonnements wie folgt vor:
 
@@ -175,7 +177,7 @@ Die folgenden Vorlagen veranschaulichen die Bereitstellungen von mehreren Ressou
 
 PowerShell: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in zwei Ressourcengruppen im **gleichen Abonnement** Folgendes:
 
-```powershell
+```azurepowershell-interactive
 $firstRG = "primarygroup"
 $secondRG = "secondarygroup"
 
@@ -192,7 +194,7 @@ New-AzureRmResourceGroupDeployment `
 
 PowerShell: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in **zwei Abonnements** Folgendes:
 
-```powershell
+```azurepowershell-interactive
 $firstRG = "primarygroup"
 $secondRG = "secondarygroup"
 
@@ -216,7 +218,7 @@ New-AzureRmResourceGroupDeployment `
 
 PowerShell: Verwenden Sie zum Testen, wie das **Ressourcengruppenobjekt** für die übergeordnete Vorlage, die Inlinevorlage und die verknüpfte Vorlage aufgelöst wird, Folgendes:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroup -Name parentGroup -Location southcentralus
 New-AzureRmResourceGroup -Name inlineGroup -Location southcentralus
 New-AzureRmResourceGroup -Name linkedGroup -Location southcentralus
@@ -224,6 +226,37 @@ New-AzureRmResourceGroup -Name linkedGroup -Location southcentralus
 New-AzureRmResourceGroupDeployment `
   -ResourceGroupName parentGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
+```
+
+Im vorherigen Beispiel werden sowohl **parentRG** als auch **inlineRG** in **parentGroup** aufgelöst. **linkedRG** wird in **linkedGroup** aufgelöst. Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
+
+```powershell
+ Name             Type                       Value
+ ===============  =========================  ==========
+ parentRG         Object                     {
+                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+                                               "name": "parentGroup",
+                                               "location": "southcentralus",
+                                               "properties": {
+                                                 "provisioningState": "Succeeded"
+                                               }
+                                             }
+ inlineRG         Object                     {
+                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+                                               "name": "parentGroup",
+                                               "location": "southcentralus",
+                                               "properties": {
+                                                 "provisioningState": "Succeeded"
+                                               }
+                                             }
+ linkedRG         Object                     {
+                                               "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
+                                               "name": "linkedGroup",
+                                               "location": "southcentralus",
+                                               "properties": {
+                                                 "provisioningState": "Succeeded"
+                                               }
+                                             }
 ```
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
@@ -276,6 +309,48 @@ az group deployment create \
   --name ExampleDeployment \
   --resource-group parentGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
+```
+
+Im vorherigen Beispiel werden sowohl **parentRG** als auch **inlineRG** in **parentGroup** aufgelöst. **linkedRG** wird in **linkedGroup** aufgelöst. Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
+
+```azurecli
+...
+"outputs": {
+  "inlineRG": {
+    "type": "Object",
+    "value": {
+      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+      "location": "southcentralus",
+      "name": "parentGroup",
+      "properties": {
+        "provisioningState": "Succeeded"
+      }
+    }
+  },
+  "linkedRG": {
+    "type": "Object",
+    "value": {
+      "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
+      "location": "southcentralus",
+      "name": "linkedGroup",
+      "properties": {
+        "provisioningState": "Succeeded"
+      }
+    }
+  },
+  "parentRG": {
+    "type": "Object",
+    "value": {
+      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+      "location": "southcentralus",
+      "name": "parentGroup",
+      "properties": {
+        "provisioningState": "Succeeded"
+      }
+    }
+  }
+},
+...
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
