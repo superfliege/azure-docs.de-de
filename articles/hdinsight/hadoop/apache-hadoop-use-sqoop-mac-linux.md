@@ -1,10 +1,10 @@
 ---
-title: "Apache Sqoop mit Hadoop – Azure HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr darüber, wie Sie mithilfe von Apache Sqoop Daten zwischen Hadoop unter HDInsight und einer Azure SQL-Datenbank importieren und exportieren."
+title: Apache Sqoop mit Hadoop – Azure HDInsight | Microsoft-Dokumentation
+description: Erfahren Sie mehr darüber, wie Sie mithilfe von Apache Sqoop Daten zwischen Hadoop unter HDInsight und einer Azure SQL-Datenbank importieren und exportieren.
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 tags: azure-portal
 keywords: Hadoop Sqoop, Sqoop
@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 03/26/2018
 ms.author: larryfr
-ms.openlocfilehash: a0a63c414bc68f5125b65e288d78fb546c376c04
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: f98345c012b8507818d0218fe43bc29badf0d4c8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Importieren und Exportieren von Daten zwischen Hadoop unter HDInsight und einer SQL-Datenbank mithilfe von Apache Sqoop
 
@@ -71,7 +71,7 @@ GO
 1. Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her. Der folgende Befehl stellt z.B. eine Verbindung zum primären Hauptknoten eines Clusters mit dem Namen `mycluster` her:
 
     ```bash
-    ssh CLUSTERNAME-ssh.azurehdinsight.net
+    ssh mycluster-ssh.azurehdinsight.net
     ```
 
     Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -168,7 +168,7 @@ Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unte
 
 * [Verwenden von Oozie mit HDInsight](../hdinsight-use-oozie.md): Verwenden der Sqoop-Aktion in einem Oozie-Workflow.
 * [Analysieren von Daten zu Flugverspätungen mit HDInsight](../hdinsight-analyze-flight-delay-data.md): Verwenden von Hive zur Analyse von Daten zu Flugverspätungen und Verwenden von Sqoop zum Exportieren von Daten in die SQL-Datenbank.
-* [Hochladen von Daten in HDInsight](../hdinsight-upload-data.md): Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob-Speicher.
+* [Hochladen von Daten in HDInsight:](../hdinsight-upload-data.md) Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob Storage.
 
 [hdinsight-versions]:  ../hdinsight-component-versioning.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

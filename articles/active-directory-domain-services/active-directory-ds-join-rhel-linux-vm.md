@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: Einbinden eines virtuellen Red Hat Enterprise Linux 7-Computers in eine verwaltete Domäne | Microsoft Docs"
-description: "Einbinden eines virtuellen Red Hat Enterprise Linux-Computers in Azure AD-Domänendienste"
+title: 'Azure Active Directory Domain Services: Einbinden eines virtuellen Red Hat Enterprise Linux 7-Computers in eine verwaltete Domäne | Microsoft Docs'
+description: Einbinden eines virtuellen Red Hat Enterprise Linux-Computers in Azure AD-Domänendienste
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: maheshu
-ms.openlocfilehash: 9046bdb5bd8ff21429c951cbe7120334bd000621
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b278f5c4c8c87590205aca13a50a82fe8712d909
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen Red Hat Enterprise Linux 7-Computers in eine verwaltete Domäne
 Dieser Artikel zeigt, wie ein virtueller Red Hat Enterprise Linux 7-Computer (RHEL) einer durch Azure AD-Domänendienste verwalteten Domäne beitritt.
@@ -34,7 +34,7 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>Bereitstellen eines virtuellen Red Hat Enterprise Linux-Computers
 Stellen Sie mithilfe einer der folgenden Methoden einen virtuellen Computer mit RHEL 7 in Azure bereit:
-* [Azure portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure-Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure-CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -133,7 +133,7 @@ Wenn der Computer erfolgreich in die verwaltete Domäne eingebunden wurde, sollt
 
 
 ## <a name="troubleshooting-domain-join"></a>Problembehandlung beim Domänenbeitritt
-Informationen finden Sie im Artikel [Problembehandlung beim Domänenbeitritt](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) .
+Informationen finden Sie im Artikel [Problembehandlung beim Domänenbeitritt](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) .
 
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](active-directory-ds-getting-started.md)

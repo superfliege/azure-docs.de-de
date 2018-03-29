@@ -1,11 +1,11 @@
 ---
-title: "Importieren und Exportieren von Azure IoT Hub-Geräteidentitäten | Microsoft Docs"
-description: "Erfahren Sie, wie Sie mithilfe des Azure IoT-Dienst-SDK Massenvorgänge zum Importieren und Exportieren von Geräteidentitäten auf die Identitätsregistrierung anwenden. Mit Importvorgängen können Sie Geräteidentitäten per Massenvorgang erstellen, aktualisieren und löschen."
+title: Importieren und Exportieren von Azure IoT Hub-Geräteidentitäten | Microsoft Docs
+description: Erfahren Sie, wie Sie mithilfe des Azure IoT-Dienst-SDK Massenvorgänge zum Importieren und Exportieren von Geräteidentitäten auf die Identitätsregistrierung anwenden. Mit Importvorgängen können Sie Geräteidentitäten per Massenvorgang erstellen, aktualisieren und löschen.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2ade1494-45ea-46a7-ade7-cf6e11ce62da
 ms.service: iot-hub
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 699237c68258243b5f654f5dc57e616e3a22177a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 74645f3fdece14790311592a0fdd4ce6570a5bae
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Massenverwaltung von IoT Hub-Geräteidentitäten
 
@@ -193,9 +193,6 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
   }
 }
 ```
-
-> [!NOTE]
-> Sie können auch die **GetDevicesAsync**-Methode der **RegistryManager**-Klasse verwenden, um eine Liste mit Ihren Geräten abzurufen. Bei diesem Ansatz gilt jedoch eine feste Obergrenze von 1000 für die Anzahl der Geräteobjekte, die zurückgegeben werden. Die **GetDevicesAsync** -Methode sollte nur in Entwicklungsszenarien zum Unterstützen des Debuggens verwendet werden und wird für Produktionsworkloads nicht empfohlen.
 
 ## <a name="import-devices"></a>Importieren von Geräten
 

@@ -1,8 +1,8 @@
 ---
-title: "Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen | Microsoft Docs"
-description: "Beispiele für Hive-Abfragen, mit denen Funktionen in den Daten erstellt werden, die in einem Azure HDInsight Hadoop-Cluster gespeichert sind."
+title: Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen | Microsoft Docs
+description: Beispiele für Hive-Abfragen, mit denen Funktionen in den Daten erstellt werden, die in einem Azure HDInsight Hadoop-Cluster gespeichert sind.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: hangzh;bradsev
-ms.openlocfilehash: d72e10332263fac0b0ca0f937d394d2832d88781
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.author: bradsev
+ms.openlocfilehash: f49eeee2dd26d54674b4619e6c986952718caa47
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen
 Dieses Dokument veranschaulicht, wie Features für Daten in einem Azure HDInsight Hadoop-Cluster mithilfe von Hive-Abfragen erstellt werden. Diese Hive-Abfragen verwenden eingebettete Hive-UDFs (User Defined Function, benutzerdefinierte Funktion), für die die Skripts bereitgestellt werden.

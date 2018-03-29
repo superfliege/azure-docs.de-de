@@ -1,8 +1,8 @@
 ---
-title: Verschieben von Daten in den und aus dem Azure-Blobspeicher | Microsoft Docs
-description: Verschieben von Daten in den und aus dem Azure-Blobspeicher
+title: Verschieben von Daten in und aus Azure Blob Storage | Microsoft-Dokumentation
+description: Verschieben von Daten in und aus Azure Blob Storage
 services: machine-learning,storage
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;sachouks
-ms.openlocfilehash: f282705b6d5d1f6867ea87737f19b5550054789a
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: 16988d7dd466eb0f893dc0b1f8fdc6511115d0a7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>Verschieben von Daten in und aus Azure Blob Storage
 [!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
@@ -36,7 +36,7 @@ Es hängt vom jeweiligen Szenario ab, welche Methode für Sie am besten geeignet
 
 Als Alternative können Sie [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) für folgende Zwecke verwenden: 
 
-* Erstellen und Planen einer Pipeline, die Daten aus Azure- Blobspeicher herunterlädt 
+* Erstellen und Planen einer Pipeline, die Daten aus Azure Blob Storage herunterlädt 
 * Übergeben dieser Daten an einen veröffentlichten Azure Machine Learning-Webdienst 
 * Abrufen der Predictive Analytics-Ergebnisse und 
 * Hochladen der Ergebnisse in den Speicher 

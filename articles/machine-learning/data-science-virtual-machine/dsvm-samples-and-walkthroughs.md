@@ -1,25 +1,25 @@
 ---
-title: "Beispiele und exemplarische Vorgehensweisen für die Data Science-VM – Azure | Microsoft-Dokumentation"
-description: "Beispiele und exemplarische Vorgehensweisen für die Data Science-VM."
-keywords: "Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science"
+title: Beispiele und exemplarische Vorgehensweisen für die Data Science-VM – Azure | Microsoft-Dokumentation
+description: Beispiele und exemplarische Vorgehensweisen für die Data Science-VM.
+keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: fb9a7e900c489b3d22594dfcb6e1faa736c3c490
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: gokuma
+ms.openlocfilehash: 6c5b5c8c9dbb03a2189eb5f1539499ace55e7dfc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>Beispiele auf Data Science-VMs (DSVMs)
 

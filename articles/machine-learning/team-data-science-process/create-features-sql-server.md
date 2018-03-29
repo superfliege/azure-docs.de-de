@@ -1,11 +1,11 @@
 ---
-title: "Erstellen von Features für Daten in SQL Server mithilfe von SQL und Python | Microsoft Docs"
+title: Erstellen von Features für Daten in SQL Server mithilfe von SQL und Python | Microsoft Docs
 description: Verarbeiten von Daten aus SQL Azure
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
-editor: 
+editor: ''
 ms.assetid: bf1f4a6c-7711-4456-beb7-35fdccd46a44
 ms.service: machine-learning
 ms.workload: data-services
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: df1e658d532dcb23fdf0aa14bfad59e98c8ff7a8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: bradsev
+ms.openlocfilehash: 5eaa7b5b30617cabedc7ed15a8fc7b174ecc68f2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Erstellen von Features für Daten in SQL Server mithilfe von SQL und Python
 Dieses Dokument veranschaulicht das Generieren von Features für Daten auf einem virtuellen SQL Server-Computer in Azure, die dazu beitragen, dass Algorithmen effizienter aus den Daten lernen können. Für diese Aufgabe können Sie SQL oder eine Programmiersprache wie Python verwenden. Beide Herangehensweisen werden hier vorgestellt.
@@ -120,5 +120,5 @@ Die [Pandas-Bibliothek](http://pandas.pydata.org/) in Python bietet eine Vielzah
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-Sie können nun mit dem Pandas-DataFrame arbeiten, wie unter [Erstellen von Features für Azure-Blobspeicherdaten mithilfe von Panda](create-features-blob.md)beschrieben.
+Sie können nun mit dem Pandas-DataFrame arbeiten, wie unter [Erstellen von Features für Azure Blob Storage-Daten mithilfe von Panda](create-features-blob.md) beschrieben.
 

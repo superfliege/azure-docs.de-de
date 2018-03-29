@@ -1,11 +1,11 @@
 ---
-title: "VM-Erweiterung für den Azure Network Watcher-Agent für Linux | Microsoft Docs"
+title: VM-Erweiterung für den Azure Network Watcher-Agent für Linux | Microsoft Docs
 description: Stellen Sie den Network Watcher-Agent mithilfe einer VM-Erweiterung auf einem virtuellen Linux-Computer bereit.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dennisg
 manager: amku
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5c81e94c-e127-4dd2-ae83-a236c4512345
 ms.service: virtual-machines-linux
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: fd160fc8cfc2e79ffa9492bb0ef4556bec5820d0
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a51566148eec88f707b524346afc59606196e4da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>VM-Erweiterung für den Network Watcher-Agent für Linux
 
 ## <a name="overview"></a>Übersicht
 
-[Azure Network Watcher](https://review.docs.microsoft.com/azure/network-watcher/) ist ein Dienst zur Überwachung, Diagnose und Analyse der Netzwerkleistung, der die Überwachung von Azure-Netzwerken ermöglicht. Die VM-Erweiterung für den Network Watcher-Agent ist eine Voraussetzung für einige der Network Watcher-Features auf virtuellen Azure-Computern. Dies schließt das Erfassen des Netzwerkdatenverkehrs bei Bedarf und andere erweiterte Funktionen ein.
+[Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/) ist ein Dienst zur Überwachung, Diagnose und Analyse der Netzwerkleistung, der die Überwachung von Azure-Netzwerken ermöglicht. Die VM-Erweiterung für den Network Watcher-Agent ist eine Voraussetzung für einige der Network Watcher-Features auf virtuellen Azure-Computern. Dies schließt das Erfassen des Netzwerkdatenverkehrs bei Bedarf und andere erweiterte Funktionen ein.
 
 Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen und Bereitstellungsoptionen für die VM-Erweiterung für den Network Watcher-Agent für Linux.
 
@@ -35,7 +35,7 @@ Dieses Dokument enthält ausführliche Informationen zu den unterstützten Platt
 
 Die VM-Erweiterung für den Network Watcher-Agent kann für folgende Linux-Distributionen ausgeführt werden:
 
-| Verteilung | Version |
+| Distribution | Version |
 |---|---|
 | Ubuntu | 16.04 LTS, 14.04 LTS und 12.04 LTS |
 | Debian | 7 und 8 |
@@ -75,11 +75,11 @@ Der folgende JSON-Code zeigt das Schema für die Network Watcher-Agent-Erweiteru
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| Name | Wert/Beispiel |
+| NAME | Wert/Beispiel |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | Herausgeber | Microsoft.Azure.NetworkWatcher |
-| Typ | NetworkWatcherAgentLinux |
+| type | NetworkWatcherAgentLinux |
 | typeHandlerVersion | 1.4 |
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen

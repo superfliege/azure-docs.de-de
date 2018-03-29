@@ -1,11 +1,11 @@
 ---
-title: "Wiederherstellen einer Azure Data Warehouse-Instanz – lokal und georedundant | Microsoft-Dokumentation"
-description: "Übersicht über die Wiederherstellungsoptionen zur Wiederherstellung einer Datenbank in Azure SQL Data Warehouse."
+title: Wiederherstellen einer Azure Data Warehouse-Instanz – lokal und georedundant | Microsoft-Dokumentation
+description: Übersicht über die Wiederherstellungsoptionen zur Wiederherstellung einer Datenbank in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
+editor: ''
 ms.assetid: 3e01c65c-6708-4fd7-82f5-4e1b5f61d304
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: backup-restore
 ms.date: 12/06/2017
 ms.author: barbkess
 ms.openlocfilehash: abf8f0b1005aec71812dc8ebfd12fe65250d7a0e
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="sql-data-warehouse-restore"></a>SQL Data Warehouse-Wiederherstellung
 > [!div class="op_single_selector"]

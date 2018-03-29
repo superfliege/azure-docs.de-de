@@ -1,23 +1,23 @@
 ---
-title: "Plattformen und Tools für Data Science-Teamprojekte – Azure | Microsoft-Dokumentation"
-description: "Hier finden Sie eine Liste mit verfügbaren Daten- und Analyseressourcen für Unternehmen, die den Team Data Science-Prozess als Standard einführen möchten, sowie weitere Informationen zu den Ressourcen."
-documentationcenter: 
+title: Plattformen und Tools für Data Science-Teamprojekte – Azure | Microsoft-Dokumentation
+description: Hier finden Sie eine Liste mit verfügbaren Daten- und Analyseressourcen für Unternehmen, die den Team Data Science-Prozess als Standard einführen möchten, sowie weitere Informationen zu den Ressourcen.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 3ec2eaaf4e8d54e7b1ea3d272c47eac96451f317
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 404e3dd106edf82f4f22e4c6a17987bd0bc51f65
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>Plattformen und Tools für Data Science-Teamprojekte
 
@@ -57,7 +57,7 @@ Informationen zur effizienten Ausführung einiger gängiger Data Science-Aufgabe
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark-Cluster
 
-Apache Spark ist ein Open-Source-Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Analyseanwendungen für große Datenmengen zu steigern. Das Spark-Verarbeitungsmodul ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank der In-Memory-Berechnungsfunktionen eignet sich Spark besonders für iterative Machine Learning-Algorithmen und für Graphberechnungen. Spark ist auch mit Azure Blob Storage (WASB) kompatibel, sodass Ihre vorhandenen, in Azure gespeicherten Daten problemlos mit Spark verarbeitet werden können.
+Apache Spark ist ein Open-Source-Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Analyseanwendungen für große Datenmengen zu steigern. Die Spark-Verarbeitungs-Engine ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank der In-Memory-Berechnungsfunktionen eignet sich Spark besonders für iterative Machine Learning-Algorithmen und für Graphberechnungen. Spark ist auch mit Azure Blob Storage (WASB) kompatibel, sodass Ihre vorhandenen, in Azure gespeicherten Daten problemlos mit Spark verarbeitet werden können.
 
 Wenn Sie einen Spark-Cluster in HDInsight erstellen, erstellen Sie damit Azure-Serverressourcen, für die Spark installiert und konfiguriert ist. Die Erstellung eines Spark-Clusters in HDInsight dauert etwa zehn Minuten. Speichern Sie die zu verarbeitenden Daten in Azure Blob Storage. Informationen zur Verwendung von Azure Blob Storage mit einem Cluster finden Sie unter [Verwenden von Azure Storage mit Azure HDInsight-Clustern](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 

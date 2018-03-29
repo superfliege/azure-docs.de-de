@@ -1,11 +1,12 @@
 ---
-title: "Azure Machine Learning-REST-API – Fehlercodes | Microsoft-Dokumentation"
-description: "Diese Fehlercodes können für den Vorgang eines Azure Machine Learning-Webdiensts zurückgegeben werden."
-keywords: 
+title: Azure Machine Learning-REST-API – Fehlercodes | Microsoft-Dokumentation
+description: Diese Fehlercodes können für den Vorgang eines Azure Machine Learning-Webdiensts zurückgegeben werden.
+keywords: ''
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.author: garye
-ms.openlocfilehash: 5cf7d5bb878f323e4e3559822dc745359e43608e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ba44b2a93bcd542db1350def2d0554c8c44233c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="machine-learning-rest-api-error-codes"></a>Machine Learning-REST-API – Fehlercodes
  
@@ -38,7 +38,7 @@ Diese Klasse von Fehlern bedeutet, dass ein angegebenes Argument ungültig war. 
 | BadVersionCall | Invalid version parameter was passed during the API call: {0}. (Während des API-Aufrufs wurde ein ungültiger Versionsparameter übergeben: {0}.) Check the API help page for passing the correct version and try again. (Ermitteln Sie auf der API-Hilfeseite die richtige Version, und wiederholen Sie den Vorgang.) |
 | BatchJobInputsNotSpecified | The following required input(s) were not specified with the request: {0}. (Die folgenden erforderlichen Eingaben wurden nicht mit der Anforderung angegeben: {0}.) Please ensure all input data is specified and try again. (Stellen Sie sicher, dass alle Eingabedaten angegeben sind, und wiederholen Sie den Vorgang.) |
 | BatchJobInputsTooManySpecified | The request specified more inputs than defined in the service. (In der Anforderung wurden mehr Eingaben angegeben, als im Dienst definiert sind.) List of accepted input(s): {0}. (Liste mit akzeptierten Eingaben: {0}.) Please ensure all input data is specified correctly and try again. (Stellen Sie sicher, dass alle Eingabedaten richtig angegeben wurden, und wiederholen Sie den Vorgang.) |
-| BlobNameTooLong | Azure blob storage path provided for diagnostic output is too long: {0}. (Der Azure-Blobspeicherpfad für die Diagnoseausgabe ist zu lang: {0}.) Shorten the path and try again. (Kürzen Sie den Pfad, und wiederholen Sie den Vorgang.) |
+| BlobNameTooLong | Azure blob storage path provided for diagnostic output is too long: {0}. (Der Azure Blob Storage-Pfad für die Diagnoseausgabe ist zu lang: {0}.) Shorten the path and try again. (Kürzen Sie den Pfad, und wiederholen Sie den Vorgang.) |
 | BlobNotFound | Unable to access the provided Azure blob - {0}. (Auf das angegebene Azure-Blob kann nicht zugegriffen werden – {0}.)  Azure error message: {1}. (Azure-Fehlermeldung: {1}.) |
 | ContainerIsEmpty | No Azure storage container name was provided. (Es wurde kein Azure-Speichercontainername angegeben.) Provide a valid container name and try again. (Geben Sie einen gültigen Containernamen an, und wiederholen Sie den Vorgang.) |
 | ContainerSegmentInvalid | Invalid container name. (Der Containername ist ungültig.) Provide a valid container name and try again. (Geben Sie einen gültigen Containernamen an, und wiederholen Sie den Vorgang.) |

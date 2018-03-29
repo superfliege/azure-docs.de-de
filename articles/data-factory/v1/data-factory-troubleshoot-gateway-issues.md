@@ -1,10 +1,9 @@
 ---
-title: "Problembehandlung für das Datenverwaltungsgateway | Microsoft-Dokumentation"
+title: Problembehandlung für das Datenverwaltungsgateway | Microsoft-Dokumentation
 description: Tipps zur Problembehandlung im Zusammenhang mit dem Datenverwaltungsgateway.
 services: data-factory
 author: nabhishek
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
@@ -14,19 +13,19 @@ ms.topic: article
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b3b34921168661089946b5c5dd9e6d489880733b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d82592bfda3eaf44d28f67b8bb6599aa4ae4bae7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
 Dieser Artikel enthält Informationen zur Problembehandlung bei der Verwendung des Datenverwaltungsgateways.
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die derzeit in der Vorschauversion verfügbar ist, finden Sie weitere Informationen unter [Selbstgehostete Integration Runtime in Version 2 von Data Factory](../create-self-hosted-integration-runtime.md).
+> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die derzeit in der Vorschauversion verfügbar ist, finden Sie weitere Informationen unter [Selbstgehostete Integration Runtime in Version 2 von Data Factory](../create-self-hosted-integration-runtime.md).
 
-Ausführliche Informationen zum Gateway finden Sie im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md). Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) finden Sie eine exemplarische Vorgehensweise zum Verschieben von Daten aus einer lokalen SQL Server-Datenbank in einen Microsoft Azure-Blobspeicher mithilfe des Gateways.
+Ausführliche Informationen zum Gateway finden Sie im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md). Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) finden Sie eine exemplarische Vorgehensweise zum Verschieben von Daten aus einer lokalen SQL Server-Datenbank in Microsoft Azure Blob Storage mithilfe des Gateways.
 
 ## <a name="failed-to-install-or-register-gateway"></a>Fehler beim Installieren oder Registrieren des Gateways
 ### <a name="1-problem"></a>1. Problem

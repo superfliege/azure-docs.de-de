@@ -1,19 +1,19 @@
 ---
-title: "Schnellstart für Azure IoT Edge + Linux | Microsoft-Dokumentation"
-description: "Testen von Azure IoT Edge durch Ausführen von Analysen für ein simuliertes Edgegerät"
+title: Schnellstart für Azure IoT Edge + Linux | Microsoft-Dokumentation
+description: Testen von Azure IoT Edge durch Ausführen von Analysen für ein simuliertes Edgegerät
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 827fe91c14a44cbaf8a9bb5921e5c9962d984414
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 750f09c91a086b22df5e7557e4b6fc6a763499e2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux- oder macOS-Gerät – Vorschau
 
@@ -76,7 +76,7 @@ sudo pip install -U azure-iot-edge-runtime-ctl
 
 Konfigurieren Sie die Runtime mit der Verbindungszeichenfolge für das IoT Edge-Gerät aus dem vorherigen Abschnitt:
 ```bash
-sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+sudo iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 Starten Sie die Runtime:

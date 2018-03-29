@@ -1,11 +1,11 @@
 ---
-title: "Service Fabric Reliable Actors – Übersicht | Microsoft Docs"
-description: "Einführung in das Programmiermodell Service Fabric Reliable Actors"
+title: Service Fabric Reliable Actors – Übersicht | Microsoft Docs
+description: Einführung in das Programmiermodell Service Fabric Reliable Actors
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7fdad07f-f2d6-4c74-804d-e0d56131f060
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 640e051a909b1b9457b20cbd507b418342297c6e
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 6a13ced8b1c49239d1ad5fb96775f43de9c3943e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Einführung in Service Fabric Reliable Actors
 Reliable Actors ist ein Service Fabric-Anwendungsframework, das auf dem Muster [Virtueller Akteur](http://research.microsoft.com/en-us/projects/orleans/) basiert. Die Reliable Actors-API bietet ein Singlethread-Programmiermodell, das auf der Skalierbarkeit und Zuverlässigkeit aufbaut, die Service Fabric gewährleistet.
@@ -40,7 +40,7 @@ In Service Fabric werden Akteure im Reliable Actors-Framework implementiert. Hie
 
 Jeder Akteur wird als Instanz eines Akteurtyps definiert (genau wie ein .NET-Objekt eine Instanz eines .NET-Typs darstellt). Beispielsweise kann es einen Actor-Typ geben, der die Funktionalität eines Rechners implementiert, und es kann viele Actors dieses Typs geben, die auf verschiedenen Knoten in einem Cluster verteilt sind. Jeder solche Actor wird durch eine Actor-ID eindeutig identifiziert.
 
-### <a name="actor-lifetime"></a>Actor-Lebensdauer
+## <a name="actor-lifetime"></a>Actor-Lebensdauer
 Service Fabric-Actors sind virtuell. Daher ist ihre Lebensdauer nicht an die Darstellung im Arbeitsspeicher gebunden. Sie brauchen daher nicht explizit erstellt oder zerstört zu werden. Die Reliable Actors-Laufzeit aktiviert automatisch einen Akteur, wenn sie zum ersten Mal eine Anforderung für diese Akteur-ID empfängt. Wenn ein Akteur für einen bestimmten Zeitraum nicht verwendet wird, erfasst die Reliable Actors-Laufzeit das In-Memory-Objekt in der Garbage Collection. Sie verwaltet außerdem Informationen zur Existenz des Actors, falls dieser später erneut aktiviert werden muss. Weitere Informationen finden Sie unter [Actor-Lebenszyklus, automatische Garbage Collection und manuelles Löschen](service-fabric-reliable-actors-lifecycle.md).
 
 Diese Abstraktion der Lebensdauer virtueller Akteure birgt infolge des Modells für virtuelle Akteure einige Nachteile, und die Reliable Actors-Implementierung weicht tatsächlich manchmal von diesem Modell ab.
@@ -49,7 +49,7 @@ Diese Abstraktion der Lebensdauer virtueller Akteure birgt infolge des Modells f
 * Durch den Aufruf einer Akteurmethode für eine Akteur-ID wird dieser Akteur aktiviert. Aus diesem Grund wird der Konstruktor von Akteurtypen implizit von der Laufzeit aufgerufen. Daher kann Clientcode keine Parameter an den Konstruktor des Akteurtyps übergeben, obwohl Parameter vom Dienst selbst an den Akteurkonstruktor übergeben werden können. Das führt dazu, dass Akteure unter Umständen mit einem teilweise initialisierten Zustand erstellt werden, wenn andere Methoden dafür aufgerufen werden, falls der Akteur Initialisierungsparameter vom Client anfordert. Es gibt keinen einzelnen Einstiegspunkt für die Aktivierung eines Akteurs auf dem Client.
 * Obwohl Reliable Actors Akteurobjekte implizit erstellt, haben Sie die Möglichkeit, einen Akteur und seinen Zustand explizit zu löschen.
 
-### <a name="distribution-and-failover"></a>Verteilung und Failover
+## <a name="distribution-and-failover"></a>Verteilung und Failover
 Um Skalierbarkeit und Zuverlässigkeit zu gewährleisten, verteilt Service Fabric Akteure im gesamten Cluster und migriert sie bei Bedarf automatisch von fehlerhaften zu fehlerfreien Knoten. Dies stellt eine Abstraktion einer [partitionierten, zustandsbehafteten Reliable Services-Instanz](service-fabric-concepts-partitioning.md)dar. Verteilung, Skalierbarkeit, Zuverlässigkeit und automatisches Failover werden aufgrund der Tatsache bereitgestellt, dass die Akteure in einer zustandsbehafteten Reliable Services-Instanz ausgeführt werden, die als *Actordienst*bezeichnet wird.
 
 Akteure werden auf die Partitionen des Actordiensts und diese Partitionen auf die Knoten in einem Service Fabric-Cluster verteilt. Jede Dienstpartition enthält einen Satz von Akteuren. Service Fabric verwaltet die Verteilung und das Failover für die Dienstpartitionen.
@@ -67,12 +67,12 @@ Das Akteurframework verwaltet für Sie die Einstellungen für das Partitionssche
 
 Weitere Informationen zur Partitionierung von Actordiensten finden Sie in den [Partitionierungskonzepten für Akteure](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
 
-### <a name="actor-communication"></a>Actor-Kommunikation
+## <a name="actor-communication"></a>Actor-Kommunikation
 Akteurinteraktionen werden in einer Schnittstelle definiert, die vom Akteur, der die Schnittstelle implementiert, und vom Client, der einen Proxy für einen Akteur über dieselbe Schnittstelle abruft, genutzt wird. Da diese Schnittstelle zum asynchronen Aufrufen von Akteurmethoden verwendet wird, muss jede Methode in der Schnittstelle einen Task zurückgeben.
 
 Methodenaufrufe und die entsprechenden Antworten führen letztendlich zu Netzwerkanforderungen im Cluster, daher müssen die Argumente und die Ergebnistypen der zurückgegebenen Tasks von der Plattform serialisierbar sein. Sie müssen vor allem [Datenvertrag-serialisierbar](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)sein.
 
-#### <a name="the-actor-proxy"></a>Actor-Proxy
+### <a name="the-actor-proxy"></a>Actor-Proxy
 Die Reliable Actors-Client-API ermöglicht die Kommunikation zwischen einer Actor-Instanz und einem Actor-Client. Für die Kommunikation mit einem Actor erstellt ein Client ein Actor-Proxy-Objekt, das die Actor-Schnittstelle implementiert. Der Client interagiert mit dem Actor , indem er Methoden auf dem Proxy-Objekt aufruft. Der Actor-Proxy kann für die Client-zu-Actor- sowie für die Actor-zu-Actor-Kommunikation verwendet werden.
 
 ```csharp
@@ -105,7 +105,7 @@ Die Klasse `ActorProxy`(C#) / `ActorProxyBase`(Java) auf dem Client nimmt die er
 * Die Nachrichtenübermittlung ist vom Typ „Beste Leistung“.
 * Akteure können doppelte Nachrichten vom selben Client empfangen.
 
-### <a name="concurrency"></a>Parallelität
+## <a name="concurrency"></a>Parallelität
 Die Reliable Actors-Laufzeit stellt ein einfaches Turn-basiertes Zugriffsmodell für den Zugriff auf Akteurmethoden bereit. Dies bedeutet, dass zu jedem beliebigen Zeitpunkt nur ein Thread innerhalb des Akteurobjektcodes aktiv sein kann. Der Turn-basierte Zugriff vereinfacht parallel ausgeführte Systeme, da keine Notwendigkeit für Synchronisierungsmechanismen für den Datenzugriff besteht. Das bedeutet auch, dass beim Entwurf dieser Systeme besonderes Augenmerk auf den Aspekt des Singlethread-Zugriffs der einzelnen Akteurinstanzen gelegt werden muss.
 
 * Eine einzelne Akteurinstanz kann nicht mehrere Anforderungen gleichzeitig verarbeiten. Eine Akteurinstanz kann einen Engpass beim Durchsatz verursachen, wenn von ihr die Verarbeitung paralleler Anforderungen erwartet wird.
@@ -113,7 +113,7 @@ Die Reliable Actors-Laufzeit stellt ein einfaches Turn-basiertes Zugriffsmodell 
 
 ![Reliable Actors-Kommunikation][3]
 
-#### <a name="turn-based-access"></a>Rundenbasierter Zugriff
+### <a name="turn-based-access"></a>Rundenbasierter Zugriff
 Ein Turn umfasst die vollständige Ausführung einer Akteurmethode als Antwort auf eine Anforderung von anderen Akteuren oder Clients oder die vollständige Ausführung eines [Timer-/Erinnerungs](service-fabric-reliable-actors-timers-reminders.md) -Rückrufs. Obwohl diese Methoden und Rückrufe asynchron sind, tritt keine Überschneidung mit der Actors-Laufzeit auf. Ein Turn muss vollständig abgeschlossen sein, bevor ein neuer Turn ausgeführt werden kann. Oder anders ausgedrückt: Ein aktuell ausgeführter Actor-Methoden- oder Timer-/Erinnerungs-Rückruf muss vollständig abgeschlossen sein, bevor ein neuer Methodenaufruf oder ein Rückruf ausgeführt werden kann. Eine Methode oder ein Rückruf wird als abgeschlossen betrachtet, wenn die Ausführung von der Methode oder dem Rückruf zurückgegeben wurde und die von der Methode oder dem Rückruf zurückgegebene Aufgabe abgeschlossen wurde. Es sollte hervorgehoben werden, dass Turn-basierte Parallelität selbst über verschiedene Methoden, Timer und Rückrufe hinweg eingehalten wird.
 
 Die Actors-Laufzeit erzwingt Turn-basierte Parallelität durch Einsetzen einer Sperre pro Actor am Anfang des Turns und Aufheben der Sperre am Ende des Turns. Turn-basierte Parallelität wird daher auf einer Pro-Actor-Basis und nicht für alle Actors erzwungen. Actor-Methoden und Timer-/Erinnerungs-Rückrufe können für unterschiedliche Actors gleichzeitig ausgeführt werden.
@@ -136,10 +136,10 @@ Einige wichtige Punkte sind zu beachten:
 * Die Ausführung von *Method1* für *ActorId1* überschneidet sich mit deren Ausführung für *ActorId2*. Der Grund dafür ist, dass Turn-basierte Parallelität nur innerhalb eines Actors und nicht Actor-übergreifend erzwungen wird.
 * Bei einigen Ausführungen von Methode/Rückruf wird der von der Methode/dem Rückruf zurückgegebene `Task`(C#) / `CompletableFuture`(Java) nach der Rückkehr der Methode abgeschlossen. Bei einigen anderen ist der asynchrone Vorgang bereits zum Zeitpunkt der Rückkehr der Methode/des Rückrufs abgeschlossen. In beiden Fällen wird die Sperre pro Akteur erst freigegeben, nachdem sowohl die Methode/der Rückruf als auch der asynchrone Vorgang abgeschlossen ist.
 
-#### <a name="reentrancy"></a>Eintrittsinvarianz
+### <a name="reentrancy"></a>Eintrittsinvarianz
 Die Actors-Laufzeit lässt standardmäßig Eintrittsinvarianz zu. Dies bedeutet: Wenn eine Akteurmethode von *Actor A* eine Methode auf *Actor B* aufruft, die wiederum eine andere Methode auf *Actor A* aufruft, wird die Ausführung dieser Methode erlaubt. Der Grund dafür ist, dass sie zum selben logischen Kontext der Aufrufkette gehört. Alle Timer- und Erinnerungs-Aufrufe beginnen mit dem neuen logischen Aufrufkontext. Weitere Details finden Sie unter [Reliable Actors-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md) .
 
-#### <a name="scope-of-concurrency-guarantees"></a>Umfang der Parallelitätsgarantien
+### <a name="scope-of-concurrency-guarantees"></a>Umfang der Parallelitätsgarantien
 Die Actors-Laufzeit bietet diese Parallelitätsgarantien in Situationen, in denen sie den Aufruf dieser Methoden steuert. Beispielsweise bietet sie diese Garantien für die Methodenaufrufe, die als Antwort auf eine Clientanforderung erfolgen, sowie für Timer- und Erinnerungsrückrufe. Wenn jedoch der Actor-Code diese Methoden außerhalb der von der Actors-Laufzeit bereitgestellten Mechanismen direkt aufruft, kann die Laufzeit keine Parallelitätsgarantien bieten. Wenn z. B. die Methode im Kontext eines Tasks aufgerufen wird, der nicht mit dem von den Actor-Methoden zurückgegebenen Task verknüpft ist, kann die Laufzeitumgebung keine Parallelitätsgarantien bieten. Auch wenn die Methode von einem Thread aufgerufen wird, den der Actor selbst erstellt, kann die Laufzeit keine Parallelitätsgarantien bieten. Zum Durchführen von Hintergrundoperationen sollten Akteure daher [Actor-Timer oder Actor-Erinnerungen](service-fabric-reliable-actors-timers-reminders.md) verwenden, bei denen die Turn-basierte Parallelität berücksichtigt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte

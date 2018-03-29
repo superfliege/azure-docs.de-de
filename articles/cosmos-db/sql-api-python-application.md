@@ -1,6 +1,6 @@
 ---
-title: "Python Flask-Webanwendungstutorial für Azure Cosmos DB | Microsoft-Dokumentation"
-description: "Datenbanktutorial zur Verwendung von Azure Cosmos DB zum Speichern von Daten aus einer in Azure gehosteten Python Flask-Webanwendung und zum Zugreifen auf diese Daten. Finden Sie Lösungen zur Anwendungsentwicklung."
+title: Python Flask-Webanwendungstutorial für Azure Cosmos DB | Microsoft-Dokumentation
+description: Datenbanktutorial zur Verwendung von Azure Cosmos DB zum Speichern von Daten aus einer in Azure gehosteten Python Flask-Webanwendung und zum Zugreifen auf diese Daten. Finden Sie Lösungen zur Anwendungsentwicklung.
 keywords: Anwendungsentwicklung, Python Flask, Python Webanwendung, Python Webentwicklung
 services: cosmos-db
 documentationcenter: python
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2150b91b5c8dd0326893497fe963fbe1d7cc59bd
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 333d34e2c7b07b1ec09d1375d4d05075ed7dde0d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Erstellen einer Python Flask-Webanwendung mithilfe von Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -30,8 +30,6 @@ ms.lasthandoff: 02/28/2018
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Cosmos DB Daten aus einer in Azure App Service gehosteten Python Flask-Web-Anwendung speichern und abrufen. Dieses Tutorial setzt gewisse Erfahrung mit der Verwendung von Python und Azure-Websites voraus.
 

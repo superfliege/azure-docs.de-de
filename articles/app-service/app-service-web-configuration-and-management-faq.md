@@ -1,11 +1,11 @@
 ---
-title: "Häufig gestellte Fragen zur Konfiguration von Azure-Web-Apps | Microsoft-Dokumentation"
-description: "Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Konfigurations- und Verwaltungsproblemen bei Azure App Service-Web-Apps."
+title: Häufig gestellte Fragen zur Konfiguration von Azure-Web-Apps | Microsoft-Dokumentation
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Konfigurations- und Verwaltungsproblemen bei Azure App Service-Web-Apps.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 92cbc36ac2a566cf5dfbb2f7b3347973bab5ee8c
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: efbed264babe0b192590380639cdc1c8861b4f38
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -69,7 +69,7 @@ So richten Sie die Serverzeitzone für Ihre Web-App ein
 2. Fügen Sie unter **App-Einstellungen** diese Einstellung hinzu:
     * Schlüssel = WEBSITE_TIME_ZONE
     * Wert = *Die gewünschte Zeitzone*
-3. Wählen Sie **Speichern** aus.
+3. Wählen Sie **Speichern**aus.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Warum misslingen meine fortlaufend ausgeführten WebJobs mitunter?
 
@@ -251,7 +251,7 @@ Weitere Informationen zu geplanten WebJobs finden Sie unter [Erstellen eines gep
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Wir führe ich Penetrationstests für meine App Service-App aus?
 
-Wenn Sie Penetrationstests ausführen möchten, [übermitteln Sie eine Anforderung](https://security-forms.azure.com/penetration-testing/terms).
+Wenn Sie Penetrationstests ausführen möchten, [übermitteln Sie eine Anforderung](https://portal.msrc.microsoft.com/en-us/engage/pentest).
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Wie konfiguriere ich einen benutzerdefinierten Domänennamen für eine Azure App Service-Web-App, die Traffic Manager verwendet?
 

@@ -1,8 +1,8 @@
 ---
 title: Data Science unter Verwendung von Scala und Spark in Azure | Microsoft Docs
-description: "Die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster."
+description: Die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;deguhath
-ms.openlocfilehash: 940911144993f30723ad395722742c81a4b0a71c
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: dbd68508d83936964d213d94d5a30c15548cbdfc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Data Science unter Verwendung von Scala und Spark in Azure
 Dieser Artikel zeigt Ihnen die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster. Sie werden durch die Aufgaben geführt, aus denen der [Data Science-Prozess](http://aka.ms/datascienceprocess)besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die im Artikel behandelten Modelle beinhalten logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen (Gradient-boosted Trees, GBTs) neben zwei häufig überwachten Machine Learning-Aufgaben:
@@ -26,13 +26,13 @@ Dieser Artikel zeigt Ihnen die Verwendung von Scala für überwachte Machine Lea
 * Regressionsproblem: Vorhersage des Trinkgeldbetrags ($) für eine Taxifahrt
 * Binäre Klassifizierung: Vorhersage für eine Taxifahrt, ob Trinkgeld gegeben wird oder nicht (1/0)
 
-Die Modellierung erfordert Training und Auswertung von Testdatasets und relevanten Genauigkeitsmetriken. In diesem Artikel erfahren Sie, wie diese Modelle in Azure-Blobspeicher gespeichert werden, und wie ihre Vorhersageleistung bewertet und ausgewertet wird. Dieser Artikel behandelt auch die fortgeschritteneren Themen, in denen es darum geht, Modelle mittels Kreuzvalidierung und Hyperparameter-Sweeping zu optimieren. Die verwendeten Daten sind eine Stichprobe des bei GitHub verfügbaren Datasets für Taxifahrten und Fahrpreise in New York aus dem Jahr 2013.
+Die Modellierung erfordert Training und Auswertung von Testdatasets und relevanten Genauigkeitsmetriken. In diesem Artikel erfahren Sie, wie diese Modelle in Azure Blob Storage gespeichert werden, und wie ihre Vorhersageleistung bewertet und ausgewertet wird. Dieser Artikel behandelt auch die fortgeschritteneren Themen, in denen es darum geht, Modelle mittels Kreuzvalidierung und Hyperparameter-Sweeping zu optimieren. Die verwendeten Daten sind eine Stichprobe des bei GitHub verfügbaren Datasets für Taxifahrten und Fahrpreise in New York aus dem Jahr 2013.
 
 [Scala](http://www.scala-lang.org/), eine Sprache auf der Basis von Java Virtual Machine, integriert objektorientierte und funktionale Sprachkonzepte. Es ist eine skalierbare Sprache, die sich gut für die verteilte Verarbeitung in der Cloud eignet und auf Azure Spark-Clustern ausgeführt wird.
 
-[Spark](http://spark.apache.org/) ist ein Open-Source-Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von Big Data zu steigern. Das Spark-Verarbeitungsmodul ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen bei Machine Learning und für Graphberechnungen. Das [spark.ml](http://spark.apache.org/docs/latest/ml-guide.html) -Paket bietet eine einheitliche Gruppe von auf Dataframes aufgesetzten High-Level-APIs, mit deren Hilfe Sie praktische Machine Learning-Pipelines erstellen und optimieren können. [MLlib](http://spark.apache.org/mllib/) ist die skalierbare Machine Learning-Bibliothek von Spark, die Modellierungsfunktionen in diese verteilte Umgebung einbringt.
+[Spark](http://spark.apache.org/) ist ein Open-Source-Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von Big Data zu steigern. Die Spark-Verarbeitungs-Engine ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen bei Machine Learning und für Graphberechnungen. Das [spark.ml](http://spark.apache.org/docs/latest/ml-guide.html) -Paket bietet eine einheitliche Gruppe von auf Dataframes aufgesetzten High-Level-APIs, mit deren Hilfe Sie praktische Machine Learning-Pipelines erstellen und optimieren können. [MLlib](http://spark.apache.org/mllib/) ist die skalierbare Machine Learning-Bibliothek von Spark, die Modellierungsfunktionen in diese verteilte Umgebung einbringt.
 
-[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) ist das in Azure gehostete Angebot für Open-Source-Spark. HDInsight Spark unterstützt darüber hinaus Jupyter Scala-Notebooks auf dem Spark-Cluster und kann interaktive Spark-SQL-Abfragen zum Transformieren, Filtern und Visualisieren von Daten ausführen, die in Azure-Blobs gespeichert sind. Die Scala-Codeausschnitte in diesem Artikel, die die Lösungen bereitstellen und die relevanten Plots zum Visualisieren der Daten zeigen, werden in Jupyter-Notebooks ausgeführt, die in den Spark-Clustern installiert sind. Die Modellierungsschritte in diesen Themen enthalten auch Code zum Trainieren, Evaluieren, Speichern und Nutzen jedes Modelltyps.
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) ist das in Azure gehostete Angebot für Open-Source-Spark. HDInsight Spark unterstützt darüber hinaus Jupyter Scala-Notebooks im Spark-Cluster und kann interaktive Spark-SQL-Abfragen zum Transformieren, Filtern und Visualisieren von Daten ausführen, die in Azure Blob Storage gespeichert sind. Die Scala-Codeausschnitte in diesem Artikel, die die Lösungen bereitstellen und die relevanten Plots zum Visualisieren der Daten zeigen, werden in Jupyter-Notebooks ausgeführt, die in den Spark-Clustern installiert sind. Die Modellierungsschritte in diesen Themen enthalten auch Code zum Trainieren, Evaluieren, Speichern und Nutzen jedes Modelltyps.
 
 Installationsschritte und Code in diesem Artikel sind für Azure HDInsight 3.4 Spark 1.6 vorgesehen. Der in diesem Artikel und im [Jupyter Scala-Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration%20Modeling%20and%20Scoring%20using%20Scala.ipynb) vorhandene Code ist jedoch generisch und sollte auf jedem Spark-Cluster funktionieren. Wenn Sie nicht HDInsight Spark verwenden, weichen Clustereinrichtung und Verwaltungsschritte möglicherweise geringfügig von dem ab, was in diesem Artikel gezeigt wird.
 
@@ -135,8 +135,8 @@ Der erste Schritt im Data Science-Prozess ist die Erfassung der Daten, die Sie a
 5. Registrieren Sie die Daten als temporäre Tabelle in SQLContext.
 6. Fragen Sie die Tabelle ab, und importieren Sie die Ergebnisse in einen Dataframe.
 
-### <a name="set-directory-paths-for-storage-locations-in-azure-blob-storage"></a>Festlegen von Verzeichnispfaden für Speicherorte im Azure-Blobspeicher
-Spark kann aus Azure-Blobspeicher lesen und darin schreiben. Sie können mit Spark beliebige Ihrer vorhandenen Daten verarbeiten und dann die Ergebnisse wieder im Blobspeicher speichern.
+### <a name="set-directory-paths-for-storage-locations-in-azure-blob-storage"></a>Festlegen von Verzeichnispfaden für Speicherorte in Azure Blob Storage
+Spark kann aus Azure Blob Storage lesen und darin schreiben. Sie können mit Spark beliebige Ihrer vorhandenen Daten verarbeiten und dann die Ergebnisse wieder im Blobspeicher speichern.
 
 Um Modelle oder Dateien im Blobspeicher zu speichern, müssen Sie den Pfad ordnungsgemäß angeben. Verweisen Sie mit einem Pfad, der mit `wasb:///`beginnt, auf den an den Spark-Cluster angefügten Standardcontainer. Verweisen Sie auf andere Speicherorte mit `wasb://`.
 
@@ -251,9 +251,9 @@ Fragen Sie als Nächstes die Tabelle nach Fahrpreis-, Fahrgast- und Trinkgelddat
 
 | fare_amount | passenger_count | tip_amount | tipped |
 | --- | --- | --- | --- |
-|        13,5 |1,0 |2,9 |1,0 |
-|        16,0 |2,0 |3.4 |1,0 |
-|        10,5 |2,0 |1,0 |1,0 |
+|        13,5 |1.0 |2,9 |1.0 |
+|        16,0 |2.0 |3.4 |1.0 |
+|        10,5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>Durchsuchen und Visualisieren von Daten
 Nachdem Sie die Daten in Spark eingebracht haben, besteht der nächste Schritt im Data Science-Prozess darin, durch Durchsuchen und Visualisieren eine tiefer gehende Einsicht in die Daten zu erhalten. In diesem Abschnitt untersuchen Sie die Taxi-Daten mithilfe von SQL-Abfragen. Importieren Sie dann die Ergebnisse in einen Dataframe, um die Zielvariablen und künftigen Features für die Sichtprüfung mithilfe des Jupyter-Features zur automatischen Visualisierung zu zeichnen.
@@ -291,7 +291,7 @@ Sie können mit Python-Code zeichnen, sobald der Dataframe im lokalen Kontext al
 
  Der Spark-Kernel visualisiert automatisch die Ausgabe der SQL-Abfragen (HiveQL), nachdem Sie den Code ausgeführt haben. Sie können zwischen verschiedenen Visualisierungstypen wählen:
 
-* Tabelle
+* Table
 * Kreisdiagramm
 * Liniendiagramm
 * Bereich
@@ -1106,5 +1106,5 @@ Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Scie
 
 [Exemplarische Vorgehensweisen für den Team Data Science-Prozess](walkthroughs.md) beschreibt andere exemplarische End-to-End-Vorgehensweisen, in denen die Schritte im Team Data Science-Prozess für bestimmte Szenarien veranschaulicht werden. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden.
 
-[Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](spark-model-consumption.md) zeigt Ihnen, wie Sie Scala-Code verwenden, um mit in Spark erstellten und im Azure-Blobspeicher gespeicherten Machine Learning-Modellen automatisch neue Datasets zu laden und zu bewerten. Sie können die dortigen Anweisungen befolgen und für eine automatisierte Nutzung einfach den Python-Code durch den Scala-Code in diesem Artikel ersetzen.
+[Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](spark-model-consumption.md) zeigt Ihnen, wie Sie Scala-Code verwenden, um mit in Spark erstellten und in Azure Blob Storage gespeicherten Machine Learning-Modellen automatisch neue Datasets zu laden und zu bewerten. Sie können die dortigen Anweisungen befolgen und für eine automatisierte Nutzung einfach den Python-Code durch den Scala-Code in diesem Artikel ersetzen.
 

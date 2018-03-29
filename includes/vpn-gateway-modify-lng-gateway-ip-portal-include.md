@@ -1,3 +1,19 @@
+---
+title: Includedatei
+description: Includedatei
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: a929149f115d716bf7f9d850abe5ba97bd5a8189
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/23/2018
+---
 ### <a name="gwipnoconnection"></a> So ändern Sie die IP-Adresse des lokalen Netzwerkgateways (ohne Gatewayverbindung)
 
 Ändern Sie das Gateway eines lokalen Netzwerks, für das keine Gatewayverbindung besteht, anhand des Beispiels. Bei dieser Gelegenheit können Sie auch die Adresspräfixe ändern.

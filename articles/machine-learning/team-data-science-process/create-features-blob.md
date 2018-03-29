@@ -1,8 +1,8 @@
 ---
-title: "Erstellen von Features für Azure-Blob-Speicherdaten mithilfe von Panda | Microsoft Docs"
-description: "Erstellen Sie Features für in einem Azure-Blob-Container gespeicherte Daten mithilfe des Panda-Python-Pakets."
+title: Erstellen von Features für Azure Blob Storage-Daten mithilfe von Panda | Microsoft-Dokumentation
+description: Erstellen Sie Features für in einem Azure-Blob-Container gespeicherte Daten mithilfe des Panda-Python-Pakets.
 services: machine-learning,storage
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: 7a2e64927f4afca87642fb4829166c5ec60dbc09
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: bradsev
+ms.openlocfilehash: a5a4b92f04fcb4683f792263f3477ecea4d7239e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Erstellen von Features für Azure-Blob-Speicherdaten mithilfe von Panda
+# <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Erstellen von Features für Azure Blob Storage-Daten mithilfe von Panda
 In diesem Dokument wird erläutert, wie Sie Features für in einem Azure-BLOB-Container gespeicherte Daten mithilfe des [Pandas](http://pandas.pydata.org/) -Python-Pakets erstellen. Nach der Beschreibung des Ladens der Daten in einen Panda-Datenrahmen wird erläutert, wie mithilfe von Python-Skripts mit Indikatorwerten und Klassifizierungsfeatures kategorische Features generiert werden.
 
 [!INCLUDE [cap-create-features-data-selector](../../../includes/cap-create-features-selector.md)]
@@ -28,7 +28,7 @@ In diesem Dokument wird erläutert, wie Sie Features für in einem Azure-BLOB-Co
 Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Dieser Task ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie ein Azure-Blobspeicherkonto erstellt und darin Ihre Daten gespeichert haben. Anweisungen zum Einrichten eines Kontos finden Sie unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
+In diesem Artikel wird davon ausgegangen, dass Sie ein Azure Blob Storage-Konto erstellt und darin Ihre Daten gespeichert haben. Anweisungen zum Einrichten eines Kontos finden Sie unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Laden der Daten in ein Pandas-DataFrame
 Um einen Datensatz zu erforschen und zu ändern, laden Sie ihn aus der Blobquelle in eine lokale Datei herunter. Laden Sie ihn dann in ein Pandas-DataFrame. Nachfolgend sehen Sie für dieses Verfahren erforderlichen Schritte:

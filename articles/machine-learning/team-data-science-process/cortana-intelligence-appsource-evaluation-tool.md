@@ -1,8 +1,8 @@
 ---
-title: "Lösungsauswertungstool für Cortana Intelligence | Microsoft-Dokumentation"
-description: "Im Folgenden werden alle Schritte beschrieben, die Sie als Microsoft-Partner beim Veröffentlichen Ihrer Cortana Intelligence-Lösung in AppSource durchlaufen müssen."
+title: Lösungsauswertungstool für Cortana Intelligence | Microsoft-Dokumentation
+description: Im Folgenden werden alle Schritte beschrieben, die Sie als Microsoft-Partner beim Veröffentlichen Ihrer Cortana Intelligence-Lösung in AppSource durchlaufen müssen.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
-ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: c9ea8164d5866662a7ed81672ee1ba776603b193
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: anupams
+ms.openlocfilehash: f678cb9819a2c03f97bcca5a2092160212779328
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Lösungsauswertungstool für Cortana Intelligence
 ## <a name="overview"></a>Übersicht
@@ -54,7 +54,7 @@ Wir verwenden diese Informationen, um besser zu verstehen, wie Ihre Lösung unte
 In diesem Fall ist unter „Erfassung“ jegliche Datenquelle zu verstehen, die zum Abrufen von Daten von außerhalb der Lösung oder von beliebigen Diensten außerhalb der Lösung zum Übertragen von Daten mithilfe von Push in die Lösung verwendet wird.
 
 ### <a name="consumption"></a>Nutzung
-In diesem Fall ist unter „Verbrauch“ jegliches Dataset zu verstehen, das zum direkten oder indirekten Übertragen von Daten mithilfe von Push an die Endbenutzer verwendet wird. Beispiel:
+In diesem Fall ist unter „Verbrauch“ jegliches Dataset zu verstehen, das zum direkten oder indirekten Übertragen von Daten mithilfe von Push an die Endbenutzer verwendet wird. Beispiel: 
 - Die Datasets, die in direkten Abfragen von PowerBI verwendet werden.
 - In WebApp abgefragte Datasets.
 

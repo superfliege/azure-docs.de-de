@@ -1,8 +1,8 @@
 ---
 title: Simulieren von Azure IoT Edge unter Windows | Microsoft-Dokumentation
-description: "Installieren der Azure IoT Edge-Laufzeit auf einem simulierten Gerät unter Windows und Bereitstellen des ersten Moduls"
+description: Installieren der Azure IoT Edge-Laufzeit auf einem simulierten Gerät unter Windows und Bereitstellen des ersten Moduls
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0207418cf71902ce9bc9d2911124d1d46889d893
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: ae974162a460289a34443879a9e78224684d94ed
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter Windows – Vorschau
 
@@ -24,12 +24,12 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Erstellen eines IoT Hubs
 2. Registrieren eines IoT Edge-Geräts
-3. Starten der IoT Edge-Laufzeit
+3. Starten der IoT Edge-Runtime
 4. Bereitstellen eines Moduls
 
 ![Aufbau des Tutorials][2]
 
-Das simulierte Gerät, das Sie in diesem Tutorial erstellen, dient zur Überwachung einer Windturbine und generiert Daten zu Temperatur, Luftfeuchtigkeit und Druck. Sie sind an diesen Daten interessiert, da die Turbinen je nach Wetterbedingungen mit unterschiedlicher Effizienz arbeiten. Die anderen Tutorials zu Azure IoT Edge bauen darauf auf und erläutern die Bereitstellung von Modulen, mit denen die Daten hinsichtlich geschäftlicher Erkenntnisse analysiert werden. 
+Das simulierte Gerät, das Sie in diesem Tutorial erstellen, dient zur Überwachung einer Windturbine und generiert Daten zu Temperatur, Luftfeuchtigkeit und Druck. Sie sind an diesen Daten interessiert, da die Turbinen je nach Wetterbedingungen mit unterschiedlicher Effizienz arbeiten. Die anderen Tutorials zu Azure IoT Edge bauen darauf auf und erläutern die Bereitstellung von Modulen, mit denen die Daten analysiert werden, um geschäftsrelevante Erkenntnisse zu gewinnen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -80,16 +80,16 @@ Registrieren Sie ein IoT Edge-Gerät bei Ihrem neu erstellten IoT Hub.
 Installieren und starten Sie die Azure IoT Edge-Laufzeit auf Ihrem Gerät. 
 ![Registrieren eines Geräts][5]
 
-Die IoT Edge-Laufzeit wird auf allen IoT Edge-Geräten bereitgestellt. Sie umfasst zwei Module. Der **IoT Edge-Agent** erleichtert die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät. Der **IoT Edge-Hub** verwaltet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub. Wenn Sie die Laufzeit auf dem neuen Gerät konfigurieren, wird zunächst nur der IoT Edge-Agent gestartet. Der IoT Edge-Hub wird später beim Bereitstellen eines Moduls verwendet. 
+Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie umfasst zwei Module. Der **IoT Edge-Agent** erleichtert die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät. Der **IoT Edge-Hub** verwaltet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub. Wenn Sie die Runtime auf dem neuen Gerät konfigurieren, wird zunächst nur der IoT Edge-Agent gestartet. Der IoT Edge-Hub wird später beim Bereitstellen eines Moduls verwendet. 
 
 
-Konfigurieren Sie die Laufzeit mit der Verbindungszeichenfolge für das IoT Edge-Gerät aus dem vorherigen Abschnitt.
+Konfigurieren Sie die Runtime mit der Verbindungszeichenfolge für das IoT Edge-Gerät aus dem vorherigen Abschnitt.
 
 ```cmd
-iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
-Starten Sie die Laufzeit.
+Starten Sie die Runtime.
 
 ```cmd
 iotedgectl start
@@ -101,7 +101,7 @@ iotedgectl start
 docker ps
 ```
 
-![Siehe edgeAgent in Docker](./media/tutorial-simulate-device-windows/docker-ps.png)
+![Edge-Agent in Docker](./media/tutorial-simulate-device-windows/docker-ps.png)
 
 ## <a name="deploy-a-module"></a>Bereitstellen eines Moduls
 
@@ -113,9 +113,9 @@ Verwalten Sie Ihr Azure IoT Edge-Gerät über die Cloud, um ein Modul bereitzust
 
 ## <a name="view-generated-data"></a>Anzeigen generierter Daten
 
-In diesem Tutorial haben Sie ein neues IoT Edge-Gerät erstellt und die IoT Edge-Laufzeit darauf installiert. Anschließend haben Sie das Azure-Portal verwendet, um mit einem Pushvorgang ein IoT Edge-Modul zur Ausführung auf dem Gerät zu übertragen, ohne Änderungen an dem Gerät selbst vornehmen zu müssen. In diesem Fall erstellt das mit einem Pushvorgang übertragene Modul Umgebungsdaten, die Sie für die Tutorials verwenden können. 
+In diesem Tutorial haben Sie ein neues IoT Edge-Gerät erstellt und die IoT Edge-Runtime darauf installiert. Anschließend haben Sie das Azure-Portal verwendet, um mit einem Pushvorgang ein IoT Edge-Modul zur Ausführung auf dem Gerät zu übertragen, ohne Änderungen an dem Gerät selbst vornehmen zu müssen. In diesem Fall erstellt das mit einem Pushvorgang übertragene Modul Umgebungsdaten, die Sie für die Tutorials verwenden können. 
 
-Öffnen Sie erneut die Eingabeaufforderung auf dem Computer, auf dem das simulierte Gerät ausgeführt wird. Vergewissern Sie sich, dass das über die Cloud bereitgestellte Modul auf dem IoT Edge-Gerät ausgeführt wird. 
+Öffnen Sie erneut eine Eingabeaufforderung auf dem Computer, auf dem das simulierte Gerät ausgeführt wird. Vergewissern Sie sich, dass das über die Cloud bereitgestellte Modul auf dem IoT Edge-Gerät ausgeführt wird. 
 
 ```cmd
 docker ps

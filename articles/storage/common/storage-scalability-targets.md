@@ -1,10 +1,10 @@
 ---
-title: "Skalierbarkeits- und Leistungsziele für Azure Storage | Microsoft Docs"
-description: "Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Storage, einschließlich Kapazität Anforderungsrate sowie eingehende und ausgehende Bandbreite für Standard- und Premium-Speicherkonten. Machen Sie sich mit den Leistungszielen für Partitionen in den einzelnen Azure Storage-Diensten vertraut."
+title: Skalierbarkeits- und Leistungsziele für Azure Storage | Microsoft Docs
+description: Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Storage, einschließlich Kapazität Anforderungsrate sowie eingehende und ausgehende Bandbreite für Standard- und Premium-Speicherkonten. Machen Sie sich mit den Leistungszielen für Partitionen in den einzelnen Azure Storage-Diensten vertraut.
 services: storage
 documentationcenter: na
-author: tamram
-manager: timlt
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: be721bd3-159f-40a1-88c1-96418537fe75
 ms.service: storage
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/24/2017
-ms.author: tamram
-ms.openlocfilehash: f62f2020d40e473886cb679cdfe1c164b95f7114
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: rogarana
+ms.openlocfilehash: e393bb9e7615b893699caf5a931ede5803046892
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -59,7 +59,7 @@ Weitere Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Fil
 ## <a name="azure-table-storage-scale-targets"></a>Skalierbarkeitsziele für Azure-Tabellen
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Speicher – Preisdetails](https://azure.microsoft.com/pricing/details/storage/)
 * [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md)
 * [Azure Storage-Replikation](../storage-redundancy.md)

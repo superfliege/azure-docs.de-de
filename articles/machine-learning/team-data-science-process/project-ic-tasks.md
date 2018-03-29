@@ -1,27 +1,27 @@
 ---
 title: Aufgaben einzelner Mitwirkender am Team Data Science-Prozess in Azure | Microsoft-Dokumentation
-description: "Überblick über die Aufgaben eines einzelnen Mitwirkenden an einem Data Science-Teamprojekt."
-documentationcenter: 
+description: Überblick über die Aufgaben eines einzelnen Mitwirkenden an einem Data Science-Teamprojekt.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: 526260c3f61a203fe2770a0c6d0d23d95916a2b7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: af60b188fe8db278297e1ece400bf4398e36094a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="individual-contributor-tasks"></a>Aufgaben einzelner Mitwirkender
 
-In diesem Thema werden die Aufgaben beschrieben, die ein einzelner Mitwirkender für sein Data Science-Team erfüllen muss. Ziel ist es, eine auf Zusammenarbeit ausgelegte Teamumgebung einzurichten, die gemäß dem [Team Data Science Process](overview.md) (TDSP) vereinheitlicht ist. Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und zugeordneten Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
+In diesem Thema werden die Aufgaben beschrieben, die ein einzelner Mitwirkender für sein Data Science-Team erfüllen muss. Ziel ist es, eine auf Zusammenarbeit ausgelegte Teamumgebung einzurichten, die gemäß dem [Team Data Science Process](overview.md) (TDSP) vereinheitlicht ist. Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und die dazugehörigen Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
 
 Die Aufgaben der einzelnen Mitwirkenden am Projekt (Data Scientists) zum Einrichten der TDSP-Umgebung für das Projekt sind nachstehend dargestellt: 
 
@@ -59,7 +59,7 @@ Die zweite Voraussetzung, das Repository **TeamUtilities**, ist je nachdem optio
 
 - Git muss auf Ihrem Computer installiert sein. Wenn Sie eine Data Science Virtual Machine (DSVM) verwenden, ist Git bereits installiert, sodass Sie gleich loslegen können. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.  
 - Bei Verwendung einer **Windows DSVM** muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei „README.md“ nach unten zum Abschnitt **Download and Install**, und klicken Sie auf den *neuesten Installer*. Dadurch gelangen Sie zur Seite mit dem neuesten Installer. Laden Sie den Installer mit der Erweiterung EXE herunter, und führen Sie ihn aus. 
-- Bei Verwendung einer **Linux DSVM** erstellen Sie auf Ihrer DSVM einen öffentlichen SSH-Schlüssel, den Sie dem VSTS-Server Ihrer Gruppe hinzufügen. Weitere Informationen zu SSH finden Sie im Anhang [Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
+- Bei Verwendung einer **Linux DSVM** erstellen Sie auf Ihrer DSVM einen öffentlichen SSH-Schlüssel, den Sie dem VSTS-Server Ihrer Gruppe hinzufügen. Weitere Informationen zu SSH finden Sie im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
 - Wenn Ihr Team- und/oder Projektleiter einen Azure-Dateispeicher eingerichtet hat, der für Ihre DSVM bereitgestellt werden soll, müssen Sie den Leiter um die Informationen zum Azure-Dateispeicher bitten. 
 
 ## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>Schritt 1 bis 3: Klonen von Gruppen-, Team- und Projektrepositorys auf den lokalen Computer

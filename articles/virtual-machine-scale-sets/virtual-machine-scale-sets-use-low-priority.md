@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: memccror
-ms.openlocfilehash: 9e4970ecc538caab537281931b89bfd57d994cfa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f25e4d1e3906a610e7c60e348f872a78d7db8fd3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>VMs mit niedriger Priorität in Skalierungsgruppen (Vorschau)
 
@@ -48,7 +48,7 @@ Zum Bereitstellen von VMs mit niedriger Priorität in Skalierungsgruppen können
 
 ## <a name="use-the-azure-cli-20"></a>Verwenden von Azure CLI 2.0
 
-Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird im [Artikel zum Einstieg](virtual-machine-scale-sets-create-cli.md) ausführlich beschrieben. Fügen Sie einfach den „--Priority“-Parameter dem CLI-Aufruf hinzu, und setzen Sie ihn auf *Low*, wie im folgenden Beispiel gezeigt:
+Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird im [Artikel zum Einstieg](quick-create-cli.md) ausführlich beschrieben. Fügen Sie einfach den „--Priority“-Parameter dem CLI-Aufruf hinzu, und setzen Sie ihn auf *Low*, wie im folgenden Beispiel gezeigt:
 
 ```azurecli
 az vmss create \
@@ -63,7 +63,7 @@ az vmss create \
 
 ## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
 
-Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird im [Artikel zum Einstieg](virtual-machine-scale-sets-create-powershell.md) ausführlich beschrieben.
+Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird im [Artikel zum Einstieg](quick-create-powershell.md) ausführlich beschrieben.
 Fügen Sie einfach den „--Priority“-Parameter [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) hinzu, und setzen Sie ihn auf *Low*, wie im folgenden Beispiel gezeigt:
 
 ```powershell
@@ -77,7 +77,7 @@ $vmssConfig = New-AzureRmVmssConfig `
 
 ## <a name="use-azure-resource-manager-templates"></a>Verwenden von Azure Resource Manager-Vorlagen
 
-Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird im Artikel zum Einstieg für [Linux](virtual-machine-scale-sets-create-template-linux.md) oder [Windows](virtual-machine-scale-sets-create-template-windows.md) ausführlich beschrieben. Fügen Sie die Eigenschaft „Priority“dem *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile*-Ressourcentyp in Ihrer Vorlage hinzu, und geben Sie *Low* als Wert an. Achten Sie darauf, dass Sie die API-Version *2017-10-30-preview* oder höher verwenden. 
+Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird im Artikel zum Einstieg für [Linux](quick-create-template-linux.md) oder [Windows](quick-create-template-windows.md) ausführlich beschrieben. Fügen Sie die Eigenschaft „Priority“dem *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile*-Ressourcentyp in Ihrer Vorlage hinzu, und geben Sie *Low* als Wert an. Achten Sie darauf, dass Sie die API-Version *2017-10-30-preview* oder höher verwenden. 
 
 Um die Entfernungsrichtlinie auf Löschen festzulegen, fügen Sie den Parameter „evictionPolicy“ hinzu, und setzen Sie ihn auf *delete*.
 

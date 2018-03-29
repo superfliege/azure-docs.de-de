@@ -1,12 +1,12 @@
 ---
-title: "Aktivieren der Verschlüsselung für Speicherkonten in Azure Security Center | Microsoft Docs"
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlungen in **Aktivieren der Verschlüsselung für Azure Storage-Konten** umsetzen."
+title: Aktivieren der Verschlüsselung für Speicherkonten in Azure Security Center | Microsoft Docs
+description: In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlungen in **Aktivieren der Verschlüsselung für Azure Storage-Konten** umsetzen.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2016
 ms.author: terrylan
-ms.openlocfilehash: b7b2e8a12cbab68da9c8fcc348e8e3c543607007
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82bb201c0b518d0b45e06a1eb25d54f60cb3e028
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>Aktivieren der Verschlüsselung für Azure Storage-Konten in Azure Security Center
 Azure Security Center empfiehlt eventuell die Aktivierung der Azure Storage Service Encryption für ruhende Daten.
@@ -27,7 +27,7 @@ Storage Service Encryption (SSE) verschlüsselt die Daten, wenn diese in Azure S
 
 
 > [!Note]
-> Nach der Aktivierung der Verschlüsselung werden nur neue Daten verschlüsselt. Alle vorhandenen Blobs in Ihrem Speicherkonto bleiben unverschlüsselt. Weitere Informationen zum Verschlüsseln vorhandener Blobs finden Sie unter [Storage Service Encryption – häufig gestellte Fragen](../storage/common/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest).
+> Nach der Aktivierung der Verschlüsselung werden nur neue Daten verschlüsselt. Alle vorhandenen Blobs in Ihrem Speicherkonto bleiben unverschlüsselt. Weitere Informationen zum Verschlüsseln vorhandener Blobs finden Sie unter [Storage Service Encryption – häufig gestellte Fragen](../storage/common/storage-service-encryption.md#faq-for-storage-service-encryption).
 >
 >
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Key Vault-Lösung in Log Analytics | Microsoft Docs"
-description: "Sie können die Azure Key Vault-Lösung in Log Analytics verwenden, um Azure Key Vault-Protokolle zu überprüfen."
+title: Azure Key Vault-Lösung in Log Analytics | Microsoft Docs
+description: Sie können die Azure Key Vault-Lösung in Log Analytics verwenden, um Azure Key Vault-Protokolle zu überprüfen.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 5e25e6d6-dd20-4528-9820-6e2958a40dae
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 651586e0846ffb22a23e64b73c2cc614980d9b92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c4b16ec11d1990de687014c5385314f0e0c602a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Azure Key Vault Analytics-Lösung in Log Analytics
 
@@ -74,7 +74,7 @@ Die folgende Tabelle enthält die Datensammlungsmethoden und andere Details dazu
 
 | Plattform | Direkt-Agent | System Center Operations Manager-Agent | Azure | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
-| Azure |  |  |&#8226; |  |  | Bei Ankunft |
+| Azure |  |  |&#8226; |  |  | Bei der Ankunft |
 
 ## <a name="use-azure-key-vault"></a>Verwenden von Azure Key Vault
 Zeigen Sie nach der [Installation der Lösung](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) die Key Vault-Daten an, indem Sie in Log Analytics auf der Seite **Übersicht** auf die Kachel **Azure Key Vault** klicken.
@@ -101,12 +101,12 @@ Nachdem Sie auf die Kachel **Übersicht** geklickt haben, können Sie Zusammenfa
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
 Die Azure Key Vault-Lösung analysiert Datensätze vom Typ **KeyVaults**, die aus den [AuditEvent-Protokollen](../key-vault/key-vault-logging.md) in Azure-Diagnose gesammelt wurden.  Eigenschaften für diese Datensätze finden Sie in der folgenden Tabelle:  
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Typ |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |IP-Adresse des Clients, der die Anforderung gestellt hat |
-| Kategorie | *AuditEvent* |
+| Category (Kategorie) | *AuditEvent* |
 | CorrelationId |Optionale GUID, die vom Client zum Korrelieren von clientseitigen Protokollen mit dienstseitigen Protokollen (Schlüsseltresor) übergeben werden kann |
 | DurationMs |Verarbeitungsdauer der REST-API-Anforderung in Millisekunden. Die Netzwerklatenz ist in diesem Zeitraum nicht enthalten, sodass die auf der Clientseite gemessene Zeit unter Umständen nicht mit diesem Zeitraum übereinstimmt. |
 | httpStatusCode_d |Der von der Anforderung zurückgegebene HTTP-Statuscode (beispielsweise *200*) |
@@ -137,7 +137,7 @@ So verwenden Sie die aktualisierte Lösung:
 2. Aktivieren Sie die Azure Key Vault-Lösung mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses.
 3. Aktualisieren Sie alle gespeicherten Abfragen, Dashboards oder Warnungen zur Verwendung des neuen Datentyps.
   + Typänderung: von KeyVaults zu AzureDiagnostics. Sie können ResourceType verwenden, um nach Key Vault-Protokollen zu filtern.
-  - Verwenden Sie `Type=AzureDiagnostics ResourceType=VAULTS` statt `Type=KeyVaults`.
+  - Verwenden Sie `AzureDiagnostics | where ResourceType'=="VAULTS"` statt `KeyVaults`.
   + Felder: (Bei Feldnamen wird zwischen Groß- und Kleinschreibung unterschieden.)
   - Ändern Sie für jedes Feld, dessen Name das Suffix \_s, \_d oder \_g enthält, das erste Zeichen in einen Kleinbuchstaben.
   - Für jedes Feld, dessen Name das Suffix \_o enthält, werden die Daten basierend auf den geschachtelten Feldnamen in einzelne Felder aufgeteilt. Der UPN des Aufrufers wird z.B. in einem Feld `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` gespeichert.

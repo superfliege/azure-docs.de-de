@@ -1,6 +1,6 @@
 ---
 title: Anmerkungen zu dieser Version von Azure ML Workbench (Sprint 0, Oktober 2017)
-description: "In diesem Dokument werden die Updates für die Version „Sprint 0“ von Azure ML detailliert beschrieben."
+description: In diesem Dokument werden die Updates für die Version „Sprint 0“ von Azure ML detailliert beschrieben.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 10/12/2017
 ms.openlocfilehash: 37e0a4461e8a0de631a6194a1eb8cc16b610954f
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-0---october-2017"></a>Sprint 0 – Oktober 2017 
 

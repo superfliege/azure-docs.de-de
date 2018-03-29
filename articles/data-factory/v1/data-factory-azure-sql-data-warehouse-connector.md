@@ -2,10 +2,9 @@
 title: Kopieren von Daten in/aus Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Erfahren Sie, wie Daten mithilfe von Azure Data Factory in und aus Azure SQL Data Warehouse kopiert werden.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: d90fa9bd-4b79-458a-8d40-e896835cfd4a
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 97782d1437f47a5ec403a98464d38961874d7575
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 709a178d99a34adb9c77086e55270fe41ed84551
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -59,7 +58,7 @@ Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
 1. Eine **Data Factory**. Eine Data Factory kann eine oder mehrere Pipelines enthalten. 
-2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus einem Azure-Blobspeicher in eine Azure SQL Data Warehouse-Instanz kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr Azure-Speicherkonto und die Azure SQL Data Warehouse-Instanz mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für Azure SQL Data Warehouse sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Diensts](#linked-service-properties). 
+2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus Azure Blob Storage in eine Azure SQL Data Warehouse-Instanz kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr Azure Storage-Konto und die Azure SQL Data Warehouse-Instanz mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für Azure SQL Data Warehouse sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Diensts](#linked-service-properties). 
 3. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um den Blobcontainer und den Ordner mit den Eingabedaten anzugeben. Und Sie erstellen ein weiteres Dataset zum Angeben der Tabelle in der Azure SQL Data Warehouse-Instanz, in der die aus dem Blobspeicher kopierten Daten enthalten sind. Informationen zu Dataset-Eigenschaften, die spezifisch für Azure SQL Data Warehouse sind, finden Sie im Abschnitt [Dataset-Eigenschaften](#dataset-properties).
 4. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im oben erwähnten Beispiel verwenden Sie „BlobSource“ als Quelle und „SqlDWSink“ als Senke für die Kopieraktivität. Wenn Sie einen Kopiervorgang von Azure SQL Data Warehouse zu Azure Blob Storage durchführen, verwenden Sie entsprechend „SqlDWSource“ und „BlobSink“ in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für Azure SQL Data Warehouse sind, finden Sie im Abschnitt [Eigenschaften der Kopieraktivität](#copy-activity-properties). Ausführliche Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke erhalten Sie, indem Sie im vorherigen Abschnitt auf den Link für Ihren Datenspeicher klicken.
 
@@ -198,7 +197,7 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
 1. Der **mit der Quelle verknüpfte Dienst** ist vom Typ **AzureStorage** oder **AzureDataLakeStore mit Dienstprinzipalauthentifizierung**.  
 2. Das **Eingabedataset** ist vom Typ **AzureBlob** oder **AzureDataLakeStore**, und der Formattyp unter den `type`-Eigenschaften lautet **OrcFormat**, **ParquetFormat** oder **TextFormat** mit folgenden Konfigurationen:
 
-   1. `rowDelimiter` muss gleich **\n** sein.
+   1. `rowDelimiter` muss **\n** sein.
    2. `nullValue` ist auf eine **leere Zeichenfolge** ("") festgelegt, oder `treatEmptyAsNull` ist auf **true** festgelegt.
    3. `encodingName` ist auf **utf-8** festgelegt. (Dies ist der **Standardwert**.)
    4. `escapeChar`, `quoteChar`, `firstRowAsHeader` und `skipLineCount` sind nicht angegeben.
@@ -226,7 +225,7 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
 5. In der zugehörigen Kopieraktivität wird `columnMapping` nicht verwendet.
 
 ### <a name="staged-copy-using-polybase"></a>gestaffeltes Kopieren mit PolyBase
-Falls Ihre Quelldaten die Kriterien aus dem vorherigen Abschnitt nicht erfüllen, können Sie die Daten über einen zwischengeschalteten Azure-Stagingblobspeicher kopieren (darf nicht Storage Premium sein). In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten automatisch durch, um die Datenformatanforderungen von PolyBase zu erfüllen. Laden Sie anschließend die Daten mithilfe von PolyBase in SQL Data Warehouse, und bereinigen Sie zumindest die temporären Daten im Blob Storage. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie ausführliche Informationen zur allgemeinen Funktionsweise des Kopierens von Daten über ein Azure-Stagingblob.
+Falls Ihre Quelldaten die Kriterien aus dem vorherigen Abschnitt nicht erfüllen, können Sie die Daten über einen zwischengeschalteten Azure Blob Storage mit Staging kopieren (darf nicht Storage Premium sein). In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten automatisch durch, um die Datenformatanforderungen von PolyBase zu erfüllen. Laden Sie anschließend die Daten mithilfe von PolyBase in SQL Data Warehouse, und bereinigen Sie zumindest die temporären Daten im Blob Storage. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie ausführliche Informationen zur allgemeinen Funktionsweise des Kopierens von Daten über ein Azure-Stagingblob.
 
 > [!NOTE]
 > Wenn Sie beim Kopieren von Daten aus einem lokalen Datenspeicher in Azure SQL Data Warehouse mithilfe von PolyBase und einem Stagingverfahren ein Datenverwaltungsgateway mit einer Version vor 2.4 verwenden, ist JRE (Java Runtime Environment) auf dem Gatewaycomputer erforderlich, mit dem die Quelldaten in das richtige Format transformiert werden. Es wird empfohlen, dass Sie Ihr Gateway auf die aktuelle Version aktualisieren, um eine solche Abhängigkeit zu vermeiden.
@@ -408,7 +407,7 @@ In dem Beispiel werden jede Stunde Zeitreihendaten (stündlich, täglich usw.) a
   }
 }
 ```
-**Mit Azure-Blobspeicher verknüpfter Dienst:**
+**Mit Azure Blob Storage verknüpfter Dienst:**
 
 ```JSON
 {
@@ -594,7 +593,7 @@ In dem Beispiel werden jede Stunde Zeitreihendaten (stündlich, täglich usw.) a
   }
 }
 ```
-**Mit Azure-Blobspeicher verknüpfter Dienst:**
+**Mit Azure Blob Storage verknüpfter Dienst:**
 
 ```JSON
 {

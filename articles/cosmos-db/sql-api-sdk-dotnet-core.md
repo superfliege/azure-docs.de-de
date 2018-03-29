@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c7981bc0388fee763396e68d6de3375a01178a7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5b367112c68574cc81d00e3d4b40b405d2d35131
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -35,8 +35,6 @@ ms.lasthandoff: 03/16/2018
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 <table>
 
@@ -57,12 +55,9 @@ ms.lasthandoff: 03/16/2018
 
 Die Features des Azure Cosmos DB .NET Core SDKs sind mit den Features der neuesten Version des [Azure Cosmos DB .NET SDKs](sql-api-sdk-dotnet.md) identisch.
 
-> [!NOTE] 
-> Das Azure Cosmos DB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Senden Sie eine E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com), um Informationen zum .NET Core SDK zu erhalten, mit dem UWP-Apps unterstützt werden.
-
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
 
-* Korrektur von „KeyNotFoundException“ für die plattformübergreifende Partitionsreihenfolge durch Abfragen in Ausnahmefällen.
+* Korrektur von KeyNotFoundException für die partitionsübergreifende Reihenfolge von Abfragen in Ausnahmefällen.
 * Korrektur eines Fehlers, bei dem ein JsonProperty-Attribut in der Select-Klausel für LINQ-Abfragen nicht berücksichtigt wurde.
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2

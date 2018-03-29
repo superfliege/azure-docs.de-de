@@ -1,11 +1,11 @@
 ---
 title: Diagnose beim Azure Service Fabric-Reverseproxy | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie die Anforderungsverarbeitung beim Reverseproxy überwachen und diagnostizieren."
+description: Erfahren Sie, wie Sie die Anforderungsverarbeitung beim Reverseproxy überwachen und diagnostizieren.
 services: service-fabric
 documentationcenter: .net
 author: kavyako
 manager: vipulm
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 1c62d2390709577bfde6225b783642fb55396a6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e645d86e4527cab1e650575c4d9a10dbd4b9de4e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Überwachen und Diagnostizieren der Anforderungsverarbeitung beim Reverseproxy
 
 Ab Version 5.7 von Service Fabric können Reverseproxyereignisse gesammelt werden. Die Ereignisse sind in zwei Kanälen verfügbar, einem nur mit Fehlerereignissen im Zusammenhang mit der Anforderungsverarbeitung beim Reverseproxy und einem zweiten mit ausführlichen Ereignissen mit Einträgen für erfolgreiche und fehlerhafte Anforderungen.
 
-Informationen zum Aktivieren der Ereignissammlung von diesen Kanälen in lokalen und Azure Service Fabric-Clustern finden Sie unter [Sammeln von Reverseproxyereignissen](service-fabric-diagnostics-event-aggregation-wad.md#collect-reverse-proxy-events).
+Informationen zum Aktivieren der Ereignissammlung von diesen Kanälen in lokalen und Azure Service Fabric-Clustern finden Sie unter [Sammeln von Reverseproxyereignissen](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
 
 ## <a name="troubleshoot-using-diagnostics-logs"></a>Problembehandlung mithilfe der Diagnoseprotokolle
 Hier sind einige Beispiele zum Interpretieren der allgemeinen Fehlerprotokolle, die auftreten können:

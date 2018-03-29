@@ -1,19 +1,19 @@
 ---
-title: "Schnellstartanleitung für Azure IoT Edge + Windows | Microsoft-Dokumentation"
-description: "Ausprobieren von Azure IoT Edge durch Ausführen von Analysen für ein simuliertes Edgegerät"
+title: Schnellstartanleitung für Azure IoT Edge + Windows | Microsoft-Dokumentation
+description: Ausprobieren von Azure IoT Edge durch Ausführen von Analysen für ein simuliertes Edgegerät
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 16d9431ec0a0425c8433557fe384864bb599bf1f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f9ad01d3194ee0f8be4c3b4321c83c4bb15ea55c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Schnellstartanleitung: Bereitstellen des ersten IoT Edge-Moduls aus dem Azure-Portal auf einem Windows-Gerät – Vorschau
 
@@ -79,7 +79,7 @@ Die IoT Edge-Laufzeit wird auf allen IoT Edge-Geräten bereitgestellt. Sie umfas
 Konfigurieren Sie die Laufzeit mit der Verbindungszeichenfolge für das IoT Edge-Gerät aus dem vorherigen Abschnitt.
 
 ```cmd
-iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 Starten Sie die Runtime.

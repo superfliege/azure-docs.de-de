@@ -1,6 +1,6 @@
 ---
-title: "Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten | Microsoft-Dokumentation"
-description: "Zustandsbehaftete Service Fabric-Dienste bieten zuverlässige Auflistungen, die Ihnen das Schreiben hochverfügbarer, skalierbarer Cloudanwendungen mit kurzer Latenz ermöglichen."
+title: Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten | Microsoft-Dokumentation
+description: Zustandsbehaftete Service Fabric-Dienste bieten zuverlässige Auflistungen, die Ihnen das Schreiben hochverfügbarer, skalierbarer Cloudanwendungen mit kurzer Latenz ermöglichen.
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: 0e89df79d2ff619343f914ce3a5ffe87b7bf25de
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: c6425f7642d9dbecafc6779184a2a5b0cc1a2cab
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten
 Reliable Collections ermöglichen es Ihnen, hoch verfügbare, skalierbare Cloudanwendungen mit geringer Latenz auf die gleiche Weise wie Anwendungen für einen einzelnen Computer zu schreiben. Die Klassen im Namespace **Microsoft.ServiceFabric.Data.Collections** stellen eine Reihe von Sammlungen bereit, die automatisch einen hochverfügbaren Zustand ermöglichen. Als Entwickler programmieren Sie lediglich die Reliable Collections-APIs. Reliable Collections verwalten anschließend den replizierten lokalen Zustand automatisch.
@@ -32,7 +32,7 @@ Der Hauptunterschied zwischen zuverlässigen Auflistungen und anderen Hochverfü
 
 Reliable Collections können als natürliche Weiterentwicklung der **System.Collections** -Klassen betrachtet werden: Der neue Satz von Auflistungen wurde für Cloudanwendungen und Umgebungen mit mehreren Computern konzipiert, ohne die Komplexität für den Entwickler zu erhöhen. Reliable Collections sind damit:
 
-* Repliziert: Zustandsänderungen werden für hohe Verfügbarkeit repliziert.
+* Repliziert: Zustandsänderungen werden für Hochverfügbarkeit repliziert.
 * Persistent gespeichert: Daten werden persistent auf Datenträgern gespeichert, um sie vor größeren Ausfällen (z. B. einem Stromausfall im Rechenzentrum) zu schützen.
 * Asynchron: APIs sind asynchron, um sicherzustellen, dass Threads bei einer E/A nicht blockiert werden.
 * Transaktional: APIs nutzen die Abstraktion von Transaktionen, damit Sie mehrere Reliable Collections auf einfache Weise in einem Dienst verwalten können.
@@ -57,7 +57,6 @@ Aktuell enthält **Microsoft.ServiceFabric.Data.Collections** drei Sammlungen:
 * [Reliable Collections – Richtlinien und Empfehlungen](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [Arbeiten mit Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Transaktionen und Sperren](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-* [Reliable State Manager und Reliable Collection – ausführliche Informationen](service-fabric-reliable-services-reliable-collections-internals.md)
 * Verwalten von Daten
   * [Sichern und Wiederherstellen](service-fabric-reliable-services-backup-restore.md)
   * [Notifications](service-fabric-reliable-services-notifications.md)
