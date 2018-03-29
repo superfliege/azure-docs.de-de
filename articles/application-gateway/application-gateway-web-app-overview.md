@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über mehrinstanzenfähige Back-Ends mit Azure Application Gateway | Microsoft-Dokumentation"
-description: "Diese Seite bietet eine Übersicht über die Application Gateway-Unterstützung für mehrinstanzenfähige Back-Ends."
+title: Übersicht über mehrinstanzenfähige Back-Ends mit Azure Application Gateway | Microsoft-Dokumentation
+description: Diese Seite bietet eine Übersicht über die Application Gateway-Unterstützung für mehrinstanzenfähige Back-Ends.
 documentationcenter: na
 services: application-gateway
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
-ms.openlocfilehash: d093af064bca46aa1f454b61b1099f47f61ccd33
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: f5ec916fcf45734ab85751e749bd6bb312f05b1a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Application Gateway-Unterstützung für mehrinstanzenfähige Back-Ends
 
@@ -32,7 +32,7 @@ Die Möglichkeit zum Angeben einer Hostüberschreibung wird in den HTTP-Einstell
 2. Ableiten des Hostnamens von der IP-Adresse oder dem FQDN der Back-End-Poolmitglieder: Die HTTP-Einstellungen enthalten auch eine Option zur Ableitung des Hostnamens vom FQDN eines Back-End-Poolmitglieds, sofern die Option zur Ableitung des Hostnamens von einem einzelnen Back-End-Pool-Mitglied konfiguriert ist. Bei Verwendung von End-to-End-SSL wird dieser Hostname vom FQDN abgeleitet und in der SNI-Erweiterung verwendet. Diese Funktion ermöglicht Szenarien, in denen ein Back-End-Pool mehrere mehrinstanzenfähige PaaS-Dienste (etwa Azure Web Apps) enthalten kann und der Hostheader der Anforderung für die einzelnen Mitglieder den vom entsprechenden FQDN abgeleiteten Hostnamen enthält.
 
 > [!NOTE]
-> In beiden Fällen gelten die Einstellungen nur für das Verhalten des Livedatenverkehrs und nicht für das Integritätstestverhalten. Benutzerdefinierte Tests unterstützen bereits das Angeben eines Hostheaders in der Testkonfiguration. Benutzerdefinierte Tests unterstützen nun auch die Ableitung des Hostheaderverhaltens von den aktuell konfigurierten HTTP-Einstellungen. Diese Konfiguration kann mithilfe des Parameters `PickHostNameFromback endAddress` in der Testkonfiguration angegeben werden. Für die Verwendung von End-to-End-Funktionen müssen sowohl die Test- als auch die HTTP-Einstellungen an die korrekte Konfiguration angepasst werden.
+> In beiden Fällen gelten die Einstellungen nur für das Verhalten des Livedatenverkehrs und nicht für das Integritätstestverhalten. Benutzerdefinierte Tests unterstützen bereits das Angeben eines Hostheaders in der Testkonfiguration. Benutzerdefinierte Tests unterstützen nun auch die Ableitung des Hostheaderverhaltens von den aktuell konfigurierten HTTP-Einstellungen. Diese Konfiguration kann mithilfe des Parameters `PickHostNameFromBackendHttpSettings` in der Testkonfiguration angegeben werden. Für die Verwendung von End-to-End-Funktionen müssen sowohl die Test- als auch die HTTP-Einstellungen an die korrekte Konfiguration angepasst werden.
 
 Mit dieser Funktion können Kunden die Optionen in den HTTP-Einstellungen und benutzerdefinierten Tests auf die entsprechende Konfiguration festlegen. Diese Einstellung wird dann mithilfe einer Regel an einen Listener und an einen Back-End-Pool gebunden.
 

@@ -1,11 +1,10 @@
 ---
 title: Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory | Microsoft Docs
-description: "Erfahren Sie, wie eine Azure-SSIS Integration Runtime erstellt wird, damit Sie das SSIS-Paket in der Azure-Cloud ausführen können."
+description: Erfahren Sie, wie eine Azure-SSIS Integration Runtime erstellt wird, damit Sie das SSIS-Paket in der Azure-Cloud ausführen können.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 879489dffbf713b5fadb72a58638e462938aaf26
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: dc4c690633d14163eddfa70e8417a645f95a0861
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory | Microsoft-Dokumentation
 In diesem Artikel werden die Schritte für die Bereitstellung einer Azure-SSIS-Integrationslaufzeit (Integration Runtime, IR) in Azure Data Factory beschrieben. Anschließend können Sie SQL Server Data Tools (SSDT) oder SQL Server Management Studio (SSMS) zum Bereitstellen von SQL Server Integration Services-Paketen (SSIS) für diese Runtime in Azure verwenden.
@@ -34,7 +33,7 @@ Im Tutorial [Bereitstellen von SQL Server Integration Services-Paketen in Azure]
 ## <a name="overview"></a>Übersicht
 Dieser Artikel zeigt verschiedene Methoden für die Bereitstellung einer Azure-SSIS IR auf:
 
-- [Azure portal](#azure-portal)
+- [Azure-Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
 - [Azure Resource Manager-Vorlage](#azure-resource-manager-template)
 

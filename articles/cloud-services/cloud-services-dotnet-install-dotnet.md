@@ -5,7 +5,7 @@ services: cloud-services
 documentationcenter: .net
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 8d1243dc-879c-4d1f-9ed0-eecd1f6a6653
 ms.service: cloud-services
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2017
 ms.author: adegeo
-ms.openlocfilehash: cc4b62bc554757e6e394b78334f52f45aa08efe8
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: fa41a18b31a255fa7cda90e33a948f5c6c65434f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Installieren von .NET in Rollen in Azure Cloud Services
 Dieser Artikel beschreibt die Installation von .NET Framework-Versionen, die nicht im Funktionsumfang des Azure-Gastbetriebssystems vorhanden sind. Sie können .NET im Gastbetriebssystem zum Konfigurieren Ihrer Clouddienstweb- und -workerrollen nutzen.
@@ -98,7 +98,7 @@ Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet w
     REM ***** To install .NET 4.6.1 set the variable netfx to "NDP461" *****
     REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" *****
     REM ***** To install .NET 4.7 set the variable netfx to "NDP47" *****
-    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP47" *****
+    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP471" *****
     set netfx="NDP471"
     
     REM ***** Set script start timestamp *****
@@ -196,7 +196,7 @@ Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet w
    ![Inhalte der Rolle mit allen Dateien][2]
 
 ## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Konfigurieren der Diagnose zur Übertragung der Startaufgabenprotokolle in Blobspeicher
-Zur Vereinfachung der Problembehandlung können Sie die Azure-Diagnose so konfigurieren, dass Protokolldateien, die vom Startskript oder .NET-Installer erstellt wurden, in Azure-Blobspeicher übertragen werden. Bei Wahl dieser Vorgehensweise können Sie die Protokolle anzeigen, indem Sie die Protokolldateien aus dem Blobspeicher herunterladen, anstatt sich per Remotedesktop bei der Rolle anzumelden.
+Zur Vereinfachung der Problembehandlung können Sie die Azure-Diagnose so konfigurieren, dass Protokolldateien, die vom Startskript oder .NET-Installer erstellt wurden, in Azure Blob Storage übertragen werden. Bei Wahl dieser Vorgehensweise können Sie die Protokolle anzeigen, indem Sie die Protokolldateien aus dem Blobspeicher herunterladen, anstatt sich per Remotedesktop bei der Rolle anzumelden.
 
 Öffnen Sie zur Konfiguration der Diagnose die Datei „diagnostics.wadcfgx“, und fügen Sie unter dem Knoten **Directories** folgenden Inhalt hinzu: 
 

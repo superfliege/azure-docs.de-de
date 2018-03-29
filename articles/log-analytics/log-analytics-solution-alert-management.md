@@ -1,8 +1,8 @@
 ---
-title: "Warnungsverwaltungslösung in Azure Log Analytics | Microsoft-Dokumentation"
-description: "Die Alert Management-Lösung in Log Analytics unterstützt Sie beim Analysieren aller Warnungen in Ihrer Umgebung.  Zusätzlich zur Konsolidierung von in Log Analytics generierten Warnungen werden Warnungen aus verbundenen Verwaltungsgruppen von System Center Operations Manager in Log Analytics importiert."
+title: Warnungsverwaltungslösung in Azure Log Analytics | Microsoft-Dokumentation
+description: Die Alert Management-Lösung in Log Analytics unterstützt Sie beim Analysieren aller Warnungen in Ihrer Umgebung.  Zusätzlich zur Konsolidierung von in Log Analytics generierten Warnungen werden Warnungen aus verbundenen Verwaltungsgruppen von System Center Operations Manager in Log Analytics importiert.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: c34916913915331020d9fc9789221f790b75a070
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 0d9028b821e4c488186143311c81bfa6d17908ff
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Warnungsverwaltungslösung in Azure Log Analytics
 
@@ -109,20 +109,6 @@ Die Lösung importiert Warnungen aus System Center Operations Manager, und es we
 Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Warnungsdatensätzen, die mit dieser Lösung erfasst wurden: 
 
 | Abfragen | BESCHREIBUNG |
-|:--- |:--- |
-| Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR |Kritische Warnungen, die innerhalb der letzten 24 Stunden ausgelöst wurden |
-| Type=Alert AlertSeverity=warning TimeRaised>NOW-24HOUR |Warnungen vom Typ „Warnung“, die innerhalb der letzten 24 Stunden ausgelöst wurden |
-| Type=Alert SourceSystem=OpsManager AlertState!=Closed TimeRaised>NOW-24HOUR &#124; measure count() as Count by SourceDisplayName |Quellen mit aktiven Warnungen, die während der letzten 24 Stunden ausgelöst wurden |
-| Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR AlertState!=Closed |Kritische Warnungen, die während der letzten 24 Stunden ausgelöst wurden und noch aktiv sind |
-| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-24HOUR AlertState=Closed |Warnungen, die während der letzten 24 Stunden ausgelöst wurden und jetzt geschlossen sind |
-| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY &#124; measure count() as Count by AlertSeverity |Warnungen, die während des letzten Tages ausgelöst wurden, gruppiert nach Schweregrad |
-| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY &#124; sort RepeatCount desc |Warnungen, die während des letzten Tages ausgelöst wurden, sortiert nach dem Wert der Wiederholungsanzahl |
-
-
->[!NOTE]
-> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die vorhergehenden Abfragen wie folgt geändert werden:
->
->| Abfragen | BESCHREIBUNG |
 |:---|:---|
 | Alert &#124; where SourceSystem == "OpsManager" and AlertSeverity == "error" and TimeRaised > ago(24h) |Kritische Warnungen, die innerhalb der letzten 24 Stunden ausgelöst wurden |
 | Alert &#124; where AlertSeverity == "warning" and TimeRaised > ago(24h) |Warnungen vom Typ „Warnung“, die innerhalb der letzten 24 Stunden ausgelöst wurden |
@@ -131,6 +117,7 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Warnungsdatens
 | Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(24h) and AlertState == "Closed" |Warnungen, die während der letzten 24 Stunden ausgelöst wurden und jetzt geschlossen sind |
 | Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(1d) &#124; summarize Count = count() by AlertSeverity |Warnungen, die während des letzten Tages ausgelöst wurden, gruppiert nach Schweregrad |
 | Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(1d) &#124; sort by RepeatCount desc |Warnungen, die während des letzten Tages ausgelöst wurden, sortiert nach dem Wert der Wiederholungsanzahl |
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,24 +1,21 @@
 ---
 title: 'Azure Active Directory B2C: Benutzerdefinierte Attribute | Microsoft Docs'
-description: "Informationen zur Verwendung von benutzerdefinierten Attributen in Azure Active Directory B2C zum Erfassen von Informationen über Ihre Kunden"
+description: Informationen zur Verwendung von benutzerdefinierten Attributen in Azure Active Directory B2C zum Erfassen von Informationen über Ihre Kunden
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 055ffb0a-197b-4716-8dad-1fd8a01e174f
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: 3e2c8b3ab223cf269129d7723c37d98c24f0653c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.author: davidmu
+ms.openlocfilehash: 6f285c10b7d8ff92c8568c42b6a78dc4ea9bcc74
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C: Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden
 Das Azure Active Directory (Azure AD) B2C-Verzeichnis bietet einen integrierten Satz von Informationen (Attributen): Vorname, Nachname, Ort, Postleitzahl und weitere Attribute. Allerdings hat jede kundenorientierte Anwendung eigene Anforderungen an die Attribute, die von Kunden erfasst werden sollen. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Attributen zu erweitern. Im [Azure-Portal](https://portal.azure.com/) können Sie benutzerdefinierte Attribute erstellen und wie unten dargestellt in den Registrierungsrichtlinien verwenden. Außerdem können Sie diese Attribute mit der [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md)lesen und schreiben.
@@ -32,7 +29,7 @@ Das Azure Active Directory (Azure AD) B2C-Verzeichnis bietet einen integrierten
 1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Klicken Sie auf **Benutzerattribute**.
 3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
-4. Geben Sie im Feld **Name** den Namen für das benutzerdefinierte Attribut (z.B. „ShoeSize“) und optional eine **Beschreibung** ein. Klicken Sie auf **Erstellen**.
+4. Geben Sie im Feld **Name** den Namen für das benutzerdefinierte Attribut (z.B. „ShoeSize“) und optional eine **Beschreibung** ein. Klicken Sie auf **Create**.
    
    > [!NOTE]
    > Nur die **Datentypen** „String“, „Boolean“ und „Int“ sind zurzeit verfügbar.
@@ -51,7 +48,7 @@ Das benutzerdefinierte Attribut steht jetzt in der Liste der **Benutzerattribute
 
 Mit dem Feature "Jetzt ausführen" für die Richtlinie können Sie die Benutzererfahrung überprüfen. „ShoeSize“ sollte jetzt in der Liste der Attribute angezeigt werden, die während der Registrierung von Kunden erfasst werden, sowie in dem Token, das zurück an die Anwendung gesendet wird.
 
-## <a name="notes"></a>Hinweise
+## <a name="notes"></a>Notizen
 * Zusammen mit Registrierungsrichtlinien können benutzerdefinierte Attribute auch in Registrierungs- oder Anmelderichtlinien sowie in Richtlinien für die Profilbearbeitung verwendet werden.
 * Die Einschränkung von benutzerdefinierten Attributen ist bekannt. Sie wird nur erstellt, wenn sie zum ersten Mal in einer Richtlinie verwendet wird und nicht, wenn Sie sie zur Liste der **Benutzerattribute**hinzufügen.
 

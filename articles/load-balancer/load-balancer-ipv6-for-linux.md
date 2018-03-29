@@ -1,12 +1,12 @@
 ---
-title: "Konfigurieren von DHCPv6 für virtuelle Linux-Computer | Microsoft-Dokumentation"
-description: "Vorgehensweise beim Konfigurieren von DHCPv6 für virtuelle Linux-Computer."
+title: Konfigurieren von DHCPv6 für virtuelle Linux-Computer | Microsoft-Dokumentation
+description: Vorgehensweise beim Konfigurieren von DHCPv6 für virtuelle Linux-Computer.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
-keywords: "IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT"
+editor: ''
+keywords: IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT
 ms.assetid: b32719b6-00e8-4cd0-ba7f-e60e8146084b
 ms.service: load-balancer
 ms.devlang: na
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: b46c2107dcfda5f02407e08daf08bd42d722dfda
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 6248ed2f55fb5bbcc2061af6ce1dedf2bd31ccad
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurieren von DHCPv6 für virtuelle Linux-Computer
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Bei einigen der Linux-VM-Images im Azure Marketplace ist DHCPv6 (Dynamic Host Configuration Protocol Version 6) nicht standardmäßig konfiguriert. Zur Unterstützung von IPv6 muss DHCPv6 in der von Ihnen verwendeten Distribution des Linux-Betriebssystems konfiguriert werden. Die verschiedenen Linux-Distributionen konfigurieren DHCPv6 auf unterschiedliche Weise, da sie verschiedene Pakete verwenden.
 

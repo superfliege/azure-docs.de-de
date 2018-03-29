@@ -1,24 +1,24 @@
 ---
-title: "Lösung für die Agent-Integritätsdiagnose in OMS | Microsoft-Dokumentation"
-description: "Dieser Artikel soll Ihnen einen besseren Einblick ermöglichen, wie Sie diese Lösung zum Überwachen der Integrität Ihrer Agents verwenden können, die Daten direkt an OMS oder System Center Operations Manager melden."
+title: Lösung für die Agent-Integritätsdiagnose in OMS | Microsoft-Dokumentation
+description: Dieser Artikel soll Ihnen einen besseren Einblick ermöglichen, wie Sie diese Lösung zum Überwachen der Integrität Ihrer Agents verwenden können, die Daten direkt an OMS oder System Center Operations Manager melden.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 939bf5ae6ee306008567ce62ddf8a6d1f05da60a
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: d7eb1550a21e66d4ae4cc4932b30a90956c60d1e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 #  <a name="agent-health-solution-in-oms"></a>Lösung für die Agent-Integritätsdiagnose in OMS
 Mit der Lösung für die Agent-Integritätsdiagnose in OMS können Sie für alle Agents, die ihre Daten direkt an den OMS-Arbeitsbereich oder eine mit OMS verbundene System Center Operations Manager-Verwaltungsgruppe melden, die Agents ermitteln, die nicht mehr reagieren und Betriebsdaten übermitteln.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
@@ -98,25 +98,6 @@ Jeder Agent, der Daten an einen Operations Manager-Verwaltungsserver meldet, sen
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Datensätze, die mit dieser Lösung erfasst wurden.
 
 | Abfragen | BESCHREIBUNG |
-| --- | --- |
-| Type=Heartbeat &#124; distinct Computer |Gesamtanzahl von Agents |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-24HOURS |Anzahl der nicht reagierenden Agents innerhalb der letzten 24 Stunden |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-15MINUTES |Anzahl der nicht reagierenden Agents innerhalb der letzten 15 Minuten |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer IN {Type=Heartbeat TimeGenerated>NOW-24HOURS &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |Computer im Onlinezustand (in den letzten 24 Stunden) |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer NOT IN {Type=Heartbeat TimeGenerated>NOW-30MINUTES &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |Gesamtzahl der Agents im Offlinezustand in den letzten 30 Minuten (innerhalb der letzten 24 Stunden) |
-| Type=Heartbeat &#124; measure countdistinct(Computer) by OSType |Abrufen eines Trends zur Anzahl von Agents in Abhängigkeit der Zeit nach Betriebssystemtyp|
-| Type=Heartbeat&#124;measure countdistinct(Computer) by OSType |Verteilung der Agents nach Betriebssystemtyp |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by Version |Verteilung der Agents nach Version |
-| Type=Heartbeat&#124;measure count() by Category |Verteilung der Agents nach Agent-Kategorie |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by ManagementGroupName | Verteilung nach Verwaltungsgruppe |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by RemoteIPCountry |Geografischer Standort der Agents |
-| Type=Heartbeat IsGatewayInstalled=true&#124;Distinct Computer |Anzahl von installierten OMS-Gateways |
-
-
->[!NOTE]
-> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../log-analytics/log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden.
->
->| Abfragen | BESCHREIBUNG |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Gesamtanzahl von Agents |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Anzahl der nicht reagierenden Agents innerhalb der letzten 24 Stunden |
@@ -130,6 +111,9 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Datensätze, d
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | Verteilung nach Verwaltungsgruppe |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |Geografischer Standort der Agents |
 | Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |Anzahl von installierten OMS-Gateways |
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

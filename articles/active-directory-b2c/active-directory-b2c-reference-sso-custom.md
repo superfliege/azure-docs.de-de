@@ -1,24 +1,21 @@
 ---
-title: "SSO-Sitzungsverwaltung mit benutzerdefinierten Richtlinien – Azure AD B2C | Microsoft-Dokumentation"
+title: SSO-Sitzungsverwaltung mit benutzerdefinierten Richtlinien – Azure AD B2C | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie SSO-Sitzungen mithilfe benutzerdefinierter Richtlinien in Azure AD B2C verwalten.
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 809f6000-2e52-43e4-995d-089d85747e1f
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: parja
-ms.openlocfilehash: 676b277ae3fbf4554838eee70c5d3e2d8e12c33d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 3d378d188d9acec06f37ca91e3c67e82fb31fc08
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Azure AD B2C: Einmaliges Anmelden (Single Sign-On, SSO) für Sitzungsverwaltung
 
@@ -30,7 +27,7 @@ Mithilfe von Azure AD B2C kann ein Administrator steuern, wie Azure AD B2C mit e
 
 Die SSO-Sitzungsverwaltung besteht aus zwei Teilen. Der erste Teil befasst sich mit den direkten Benutzerinteraktionen mit Azure AD B2C und der zweite Teil behandelt Benutzerinteraktionen mit externen Parteien, z. B. mit Facebook. Azure AD B2C setzt SSO-Sitzungen nicht außer Kraft oder umgeht diese, die von externen Parteien abgehalten werden. Stattdessen wird die Route über Azure AD B2C zur externen Partei „gespeichert“, wodurch vermieden wird, dass der Benutzer erneut aufgefordert werden muss, seinen Identitätsanbieter auszuwählen. Die ultimative SSO-Entscheidung verbleibt der externen Partei.
 
-## <a name="how-does-it-work"></a>Funktionsweise
+## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
 Die SSO-Sitzungsverwaltung verwendet dieselbe Semantik wie jedes andere technische Profil in benutzerdefinierten Richtlinien. Wenn ein Orchestrierungsschritt ausgeführt wird, wird das technische Profil, das dem Schritt zugeordnet ist, nach einem `UseTechnicalProfileForSessionManagement`-Verweis abgefragt. Falls vorhanden, wird der referenzierte SSO-Sitzungsanbieter überprüft, um festzustellen, ob der Benutzer ein Sitzungsteilnehmer ist. In diesem Fall wird der SSO-Sitzungsanbieter dazu verwendet, um die Sitzung wieder aufzufüllen. Wenn die Ausführung eines Orchestrierungsschritts abgeschlossen ist, wird entsprechend der Anbieter verwendet, um Informationen in der Sitzung zu speichern, wenn ein SSO-Sitzungsanbieter angegeben wurde.
 
@@ -96,7 +93,7 @@ Dieser Anbieter wird zum Verwalten der Azure AD B2C SAML-Sitzungen zwischen Apps
 
 Es gibt zwei Metadatenelemente im technischen Profil:
 
-| Element | Standardwert | Mögliche Werte | Beschreibung
+| Item | Standardwert | Mögliche Werte | BESCHREIBUNG
 | --- | --- | --- | --- |
 | IncludeSessionIndex | true | True/False | Gibt dem Anbieter an, dass der Sitzungsindex gespeichert werden soll. |
 | RegisterServiceProviders | true | True/False | Gibt an, dass der Anbieter alle SAML-Dienstanbieter registrieren soll, die eine Assertion ausgestellt haben. |

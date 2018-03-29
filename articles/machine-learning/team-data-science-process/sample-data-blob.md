@@ -1,8 +1,8 @@
 ---
 title: Datenstichproben in Azure Blob Storage | Microsoft Docs
-description: Datenstichproben im Azure-Blob-Speicher
+description: Datenstichproben in Azure Blob Storage
 services: machine-learning,storage
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: garye;bradsev
-ms.openlocfilehash: 1e5cf5da727b6720c936e43147beb8d87fb925cd
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: bradsev
+ms.openlocfilehash: fecff09b67f019a0d2b95d8ca33d16011b17b9ce
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="heading"></a>Datenstichproben im Azure-Blob-Speicher
-Dieses Dokument behandelt das Erstellen von Stichproben aus Daten im Azure Blob-Speicher durch programmgesteuertes Herunterladen, um dann mit Prozeduren in Python-Code Stichproben zu erstellen.
+Dieses Dokument behandelt das Erstellen von Stichproben aus Daten in Azure Blob Storage durch programmgesteuertes Herunterladen, um dann mit Prozeduren in Python-Code Stichproben zu erstellen.
 
 Das nachstehende **Menü** enthält Links zu Themen, die beschreiben, wie Datenstichproben aus verschiedenen Speicherumgebungen erstellt werden. 
 
@@ -33,7 +33,7 @@ Wenn das zu analysierende Dataset groß ist, sollten Sie in der Regel eine Kompr
 Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="download-and-down-sample-data"></a>Download und Downsampling von Daten 
-1. Laden Sie die Daten aus dem Azure-Blobspeicher mithilfe des Blobdiensts aus dem folgenden Python-Beispielcode herunter: 
+1. Laden Sie die Daten aus Azure Blob Storage mithilfe des Blobdiensts aus dem folgenden Python-Beispielcode herunter: 
    
         from azure.storage.blob import BlobService
         import tables

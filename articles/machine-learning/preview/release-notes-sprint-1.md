@@ -1,6 +1,6 @@
 ---
 title: Anmerkungen zu dieser Version von Azure ML Workbench (Sprint 1, November 2017)
-description: "In diesem Dokument werden die Aktualisierungen für die Version „Sprint 1“ von Azure ML detailliert beschrieben."
+description: In diesem Dokument werden die Aktualisierungen für die Version „Sprint 1“ von Azure ML detailliert beschrieben.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
 ms.openlocfilehash: a4945c77be5763ffeda328184149f712572937c0
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-1---november-2017"></a>Sprint 1 – November 2017 
 
@@ -130,8 +130,7 @@ Unten ist eine Liste mit detaillierten Aktualisierungen für jeden Komponentenbe
 - Beispielprojekt [_Klassifizieren von Iris_](./tutorial-classifying-iris-part-1.md):
     - `iris_pyspark.py` wird umbenannt in `iris_spark.py`.
     - `iris_score.py` wird umbenannt in `score_iris.py`.
-    - 
-            `iris.dprep` und `iris.dsource` wurden aktualisiert, um die neuesten Aktualisierungen für die Datenvorbereitungs-Engine widerzuspiegeln.
+    - `iris.dprep` und `iris.dsource` wurden aktualisiert, um die neuesten Aktualisierungen für die Datenvorbereitungs-Engine widerzuspiegeln.
     - Das Notebook `iris.ipynb` wurde geändert, damit es in einem HDInsight-Cluster funktioniert.
     - Der Ausführungsverlauf wurde in Zellen des Notebooks `iris.ipynb` aktiviert.
 - Für das Beispielprojekt [_Advanced Data Prep using Bike Share Data_](./tutorial-bikeshare-dataprep.md) (Erweiterte Datenaufbereitung mit Daten für Leihfahrräder) wurde der Schritt „Handle Error Value“ (Behandeln des Fehlerwerts) korrigiert.

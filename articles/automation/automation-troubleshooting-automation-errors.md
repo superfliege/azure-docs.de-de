@@ -1,26 +1,20 @@
 ---
 title: Problembehandlung bei allgemeinen Azure Automation-Problemen | Microsoft-Dokumentation
-description: "Dieser Artikel enthält Informationen zum Behandeln und Beheben von häufig auftretenden Azure Automation-Fehlern."
+description: Dieser Artikel enthält Informationen zum Behandeln und Beheben von häufig auftretenden Azure Automation-Fehlern.
 services: automation
-documentationcenter: 
+ms.service: automation
 author: georgewallace
-manager: stevenka
-editor: tysonn
+ms.author: gwallace
+ms.date: 03/16/2018
+ms.topic: article
+manager: carmonm
 tags: top-support-issue
 keywords: Automation-Fehler, Problembehandlung, Problem
-ms.assetid: 5f3cfe61-70b0-4e9c-b892-d02daaeee07d
-ms.service: automation
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/22/2017
-ms.author: sngun; v-reagie
-ms.openlocfilehash: 76a3096595d07916159b3a50da0793c653a490a0
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9764068dd7a1a499c61695f39bff726a8ea3aac9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Problembehandlung für allgemeine Probleme in Azure Automation 
 Dieser Artikel bietet Hilfe für die Problembehandlung häufiger Fehler, die in Azure Automation auftreten können, und enthält mögliche Lösungen zum Beheben dieser Fehler.
@@ -106,8 +100,7 @@ Dieser Artikel bietet Hilfe für die Problembehandlung häufiger Fehler, die in 
 ### <a name="scenario-cmdlet-not-recognized-when-executing-a-runbook"></a>Szenario: Cmdlet wird beim Ausführen eines Runbooks nicht erkannt
 **Fehler**: Für Ihren Runbookauftrag tritt der folgende Fehler auf: ``<cmdlet name>``„Die Benennung ``<cmdlet name>`` wurde nicht als Name eines Cmdlets, einer Funktion, einer Skriptdatei oder eines ausführbaren Programms erkannt.“
 
-
-            **Ursache des Fehlers:** Dieser Fehler wird verursacht, wenn die PowerShell-Engine das Cmdlet nicht findet, das Sie in Ihrem Runbook verwenden. Dies kann der Fall sein, weil das Modul mit dem Cmdlet unter dem Konto nicht vorhanden ist, ein Namenskonflikt mit einem Runbooknamen besteht oder das Cmdlet auch in einem anderen Modul vorhanden ist und Automation den Namen nicht auflösen kann.
+**Ursache des Fehlers:** Dieser Fehler wird verursacht, wenn die PowerShell-Engine das Cmdlet nicht findet, das Sie in Ihrem Runbook verwenden. Dies kann der Fall sein, weil das Modul mit dem Cmdlet unter dem Konto nicht vorhanden ist, ein Namenskonflikt mit einem Runbooknamen besteht oder das Cmdlet auch in einem anderen Modul vorhanden ist und Automation den Namen nicht auflösen kann.
 
 **Tipps zur Problembehandlung:** Sie können dieses Problem mithilfe einer der folgenden Lösungen beheben:  
 
