@@ -26,14 +26,20 @@
       items:
         - name: Speicherkontooptionen
           href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Planung für eine Azure Files-Bereitstellung
-          href: storage-files-planning.md
         - name: Bereitstellen von Azure Files
-          href: storage-files-deployment-guide.md
-        - name: Planung für die Bereitstellung einer Azure-Dateisynchronisierung
-          href: storage-sync-files-planning.md
-        - name: Bereitstellen einer Azure-Dateisynchronisierung
-          href: storage-sync-files-deployment-guide.md
+          items:
+            - name: Planung für eine Azure Files-Bereitstellung
+              href: storage-files-planning.md
+            - name: Bereitstellen von Azure Files
+              href: storage-files-deployment-guide.md
+        - name: Bereitstellen von Azure File Sync
+          items:
+            - name: Planung für die Bereitstellung einer Azure-Dateisynchronisierung
+              href: storage-sync-files-planning.md
+            - name: Bereitstellen einer Azure-Dateisynchronisierung
+              href: storage-sync-files-deployment-guide.md
+            - name: Proxy- und Firewalleinstellungen von Azure File Sync
+              href: storage-sync-files-firewall-and-proxy.md
         - name: Informationen zu Dateifreigaben-Momentaufnahmen
           href: storage-snapshots-files.md
         - name: Verwenden von Dateifreigaben-Momentaufnahmen

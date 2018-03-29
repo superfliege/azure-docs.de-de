@@ -419,6 +419,8 @@
           href: extensions-nwa.md
         - name: VMAccess-Erweiterung
           href: using-vmaccess-extension.md
+        - name: Beschränken der Erweiterungsinstallation
+          href: extensions-rmpolicy-howto-cli.md
     - name: Migrieren virtueller Computer
       items:
         - name: Migrieren von AWS und lokalen virtuellen Computern
@@ -458,6 +460,8 @@
           href: understand-vm-reboot.md
         - name: Startdiagnose
           href: boot-diagnostics.md
+        - name: Serielle Konsole
+          href: serial-console.md
         - name: Zugriff auf Anwendungen
           href: troubleshoot-app-connection.md
         - name: Fehler bei der Zuordnung

@@ -351,6 +351,8 @@
           href: extensions-diagnostics-template.md
         - name: Network Watcher-Agent
           href: extensions-nwa.md
+        - name: Beschränken der Erweiterungsinstallation
+          href: extensions-rmpolicy-howto-ps.md
     - name: Migrieren virtueller Computer
       items:
         - name: Migrieren von AWS und lokalen virtuellen Computern
@@ -396,6 +398,8 @@
           href: reset-network-interface.md
         - name: Startdiagnose
           href: boot-diagnostics.md
+        - name: Serielle Konsole
+          href: serial-console.md
         - name: Erstellen eines virtuellen Computers
           href: troubleshoot-deployment-new-vm.md
         - name: Bereitstellungsprobleme

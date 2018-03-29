@@ -1,15 +1,38 @@
-# [Dokumentation zu Virtual Machines Scale Sets](index.md)
+# [Dokumentation zu Virtual Machines Scale Sets](index.yml)
 
 # Übersicht
-## [Was sind Skalierungsgruppen für virtuelle Computer?](virtual-machine-scale-sets-overview.md)
+## [Was sind Skalierungsgruppen für virtuelle Computer?](overview.md)
 
-# Erste Schritte
-## [Erstellen im Azure-Portal](virtual-machine-scale-sets-create-portal.md)
-## [Erstellen mit der Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md)
-## [Erstellen mit Azure PowerShell](virtual-machine-scale-sets-create-powershell.md)
+# Schnellstarts
+## [Erstellen im Azure-Portal](quick-create-portal.md)
+## [Erstellen mit der Azure CLI 2.0](quick-create-cli.md)
+## [Erstellen mit Azure PowerShell](quick-create-powershell.md)
 ## Erstellen mit einer Vorlage
-### [Linux-Skalierungsgruppe](virtual-machine-scale-sets-create-template-linux.md)
-### [Windows-Skalierungsgruppe](virtual-machine-scale-sets-create-template-windows.md)
+### [Linux-Skalierungsgruppe](quick-create-template-linux.md)
+### [Windows-Skalierungsgruppe](quick-create-template-windows.md)
+
+# Tutorials
+## 1: Erstellen/Verwalten einer Skalierungsgruppe
+### [Azure CLI 2.0](tutorial-create-and-manage-cli.md)
+### [Azure PowerShell](tutorial-create-and-manage-powershell.md)
+## 2: Verwenden von Datenträgern
+### [Azure CLI 2.0](tutorial-use-disks-cli.md)
+### [Azure PowerShell](tutorial-use-disks-powershell.md)
+## 3: Verwenden eines benutzerdefinierten VM-Images
+### [Azure CLI 2.0](tutorial-use-custom-image-cli.md)
+### [Azure PowerShell](tutorial-use-custom-image-powershell.md)
+## 4: Bereitstellen von Apps in einer Skalierungsgruppe
+### [Azure CLI 2.0](tutorial-install-apps-cli.md)
+### [Azure PowerShell](tutorial-install-apps-powershell.md)
+### [Vorlage](tutorial-install-apps-template.md)
+## 5: Automatisches Skalieren einer Skalierungsgruppe
+### [Azure CLI 2.0](tutorial-autoscale-cli.md)
+### [Azure PowerShell](tutorial-autoscale-powershell.md)
+### [Vorlage](tutorial-autoscale-template.md)
+
+# Beispiele
+## [Azure CLI 2.0](cli-samples.md)
+## [PowerShell](powershell-samples.md)
 
 # Anleitung
 ## Planen und Entwerfen
@@ -24,12 +47,9 @@
 
 ## Bereitstellen
 ### [Erstellen mit Visual Studio](virtual-machine-scale-sets-vs-create.md)
-### [Skalierungsgruppe mit verwalteten Datenträgern](virtual-machine-scale-sets-managed-disks.md)
 ### [Verwenden von Verfügbarkeitszonen](virtual-machine-scale-sets-use-availability-zones.md)
 ### [Automatisches Skalieren einer Skalierungsgruppe](virtual-machine-scale-sets-autoscale-overview.md)
 #### [Verwenden des Azure-Portals](virtual-machine-scale-sets-autoscale-portal.md)
-#### [Verwenden von Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
-#### [Verwenden von Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
 #### [Erweiterte automatische Skalierung](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Anwendungen in Skalierungsgruppen](virtual-machine-scale-sets-deploy-app.md)
 ### [Verwenden von Datenträgern mit Skalierungsgruppen](virtual-machine-scale-sets-attached-disks.md)

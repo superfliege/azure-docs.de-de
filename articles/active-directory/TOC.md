@@ -77,8 +77,8 @@
 ## [Verwalten von Gruppen und Mitgliedern](active-directory-manage-groups.md)
 ### Verwalten von Gruppen
 #### [Azure-Portal](active-directory-groups-create-azure-portal.md)
-#### [Azure PowerShell – Azure Resource Manager-Modell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [Azure PowerShell – klassisches Bereitstellungsmodell](active-directory-accessmanagement-groups-settings-cmdlets.md)
+#### [Azure AD PowerShell für Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline (v1)](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [Verwalten von Gruppenmitgliedern](active-directory-groups-members-azure-portal.md)
 ### [Verwalten von Gruppenbesitzern](active-directory-accessmanagement-managing-group-owners.md)
 ### [Verwalten der Gruppenmitgliedschaft](active-directory-groups-membership-azure-portal.md)
