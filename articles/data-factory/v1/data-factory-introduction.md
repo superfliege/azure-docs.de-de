@@ -1,11 +1,10 @@
 ---
-title: "Einführung in Data Factory, einen Datenintegrationsdienst | Microsoft Docs"
+title: Einführung in Data Factory, einen Datenintegrationsdienst | Microsoft Docs
 description: 'Erfahren Sie, was Azure Data Factory ist: Ein cloudbasierter Datenintegrationsdienst, der das Verschieben und Transformieren von Daten orchestriert und automatisiert.'
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: bcd0535c689bfda02b3c100b4ae3ab8bacb932e3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 6747dc6ef482fecba7e9fb4fae5748de377051eb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +67,7 @@ Ohne Data Factory müssen Unternehmen benutzerdefinierte Komponenten für die Da
 
 Mit Data Factory können Sie die Kopieraktivität in einer Datenpipeline nutzen, um Daten sowohl aus lokalen als auch aus Cloud-Quelldatenspeichern zur weiteren Analyse in einen zentralen Datenspeicher in der Cloud zu verschieben. 
 
-Beispielsweise können Sie Daten in Azure Data Lake Store sammeln und später transformieren, indem Sie einen Azure Data Lake Analytics-Computedienst verwenden. Oder sammeln Sie Daten in einem Azure-Blobspeicher, und transformieren Sie sie später mit einem Azure HDInsight Hadoop-Cluster.
+Beispielsweise können Sie Daten in Azure Data Lake Store sammeln und später transformieren, indem Sie einen Azure Data Lake Analytics-Computedienst verwenden. Oder sammeln Sie Daten in Azure Blob Storage, und transformieren Sie sie später mit einem Azure HDInsight Hadoop-Cluster.
 
 ### <a name="transform-and-enrich"></a>Transformieren und Erweitern
 Wenn Daten in einem zentralen Datenspeicher in der Cloud gespeichert sind, können Sie sie mit Compute Services wie HDInsight Hadoop, Spark, Data Lake Analytics oder Machine Learning verarbeiten oder übertragen. Darauf folgt das Erstellen transformierter Daten nach einem verwaltbaren und gesteuerten Zeitplan, um Produktionsumgebungen mit vertrauenswürdigen Daten zu versorgen. 

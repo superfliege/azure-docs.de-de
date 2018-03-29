@@ -1,25 +1,25 @@
 ---
-title: "Bereitstellen einer Azure Service Fabric-Anwendung in einem Cluster über Visual Studio | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie über Visual Studio eine Anwendung in einem Cluster bereitstellen können."
+title: Bereitstellen einer Azure Service Fabric-Anwendung in einem Cluster über Visual Studio | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie über Visual Studio eine Anwendung in einem Cluster bereitstellen können.
 services: service-fabric
 documentationcenter: .net
 -author: mikkelhegn
 -manager: msfussell
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/21/2018
-ms.author: mikkelhegn
+ms.date: 02/23/2018
+ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 21c991a4e3f9ae19a4ad4a96427fdc1c91c55a1c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 1d8f8d903046f1d471f7abbe08a957b81522e391
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>Tutorial: Bereitstellen einer Anwendung in einem Service Fabric-Cluster in Azure
 Dieses Tutorial ist der zweite Teil einer Reihe und zeigt, wie Sie eine Azure Service Fabric-Anwendung direkt über Visual Studio in einem neuen Cluster in Azure bereitstellen.
@@ -27,7 +27,7 @@ Dieses Tutorial ist der zweite Teil einer Reihe und zeigt, wie Sie eine Azure Se
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines Clusters über Visual Studio
-> * Bereitstellen einer Anwendung in einem Remotecluster mithilfe von Visual Studio
+> * Bereitstellung einer Anwendung in einem Remotecluster mithilfe von Visual Studio
 
 
 In dieser Tutorialreihe lernen Sie Folgendes:
@@ -65,7 +65,6 @@ In diesem Tutorial erfahren Sie, wie Sie einen Cluster über Visual Studio erste
 > Viele Dienste verwenden den Reverseproxy, um miteinander zu kommunizieren. Bei Clustern, die über Visual Studio erstellt werden, sowie bei Partyclustern ist der Reverseproxy standardmäßig aktiviert.  Bei Verwendung eines bereits vorhandenen Clusters müssen Sie den [Reverseproxy im Cluster aktivieren](service-fabric-reverseproxy.md#setup-and-configuration).
 
 ### <a name="deploy-the-app-to-the-service-fabric-cluster"></a>Bereitstellen der App im Service Fabric-Cluster
-
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Anwendungsprojekt, und klicken Sie anschließend auf **Veröffentlichen**.
 
 2. Melden Sie sich unter Verwendung Ihres Azure-Kontos an, um auf Ihre Abonnements zugreifen zu können. Bei Verwendung eines Partyclusters ist dieser Schritt optional.

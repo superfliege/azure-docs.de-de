@@ -1,12 +1,12 @@
 ---
-title: "Erstellen eines öffentlichen Lastenausgleichs mit IPv6 – Azure CLI | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie einen öffentlichen Lastenausgleich mit IPv6 in Azure Resource Manager über die Azure-Befehlszeilenschnittstelle erstellen."
+title: Erstellen eines öffentlichen Lastenausgleichs mit IPv6 – Azure CLI | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie einen öffentlichen Lastenausgleich mit IPv6 in Azure Resource Manager über die Azure-Befehlszeilenschnittstelle erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
 tags: azure-resource-manager
-keywords: "IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT"
+keywords: IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT
 ms.assetid: a1957c9c-9c1d-423e-9d5c-d71449bc1f37
 ms.service: load-balancer
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3abd47460999f7b059469a58a59a3e297e88effb
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 62f22ccadfabd2f3d6906beb3c241703d4e6383f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-in-azure-resource-manager-by-using-azure-cli"></a>Erstellen eines öffentlichen Lastenausgleichs mit IPv6 in Azure Resource Manager über die Azure-Befehlszeilenschnittstelle
 
@@ -28,7 +28,6 @@ ms.lasthandoff: 12/08/2017
 > * [Azure-Befehlszeilenschnittstelle](load-balancer-ipv6-internet-cli.md)
 > * [Vorlage](load-balancer-ipv6-internet-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Lastenausgleichsmodule sorgen für Hochverfügbarkeit, indem sie eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer in einer Lastenausgleichsgruppe verteilen. Lastenausgleichsmodule können diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 

@@ -1,13 +1,13 @@
 ---
-title: "Bereitstellen eines Lastenausgleichs für den Internetzugriff mit IPv6 – Azure-Vorlage | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie IPv6-Unterstützung für Azure Load Balancer und virtuelle Computer mit Lastenausgleich bereitstellen."
+title: Bereitstellen eines Lastenausgleichs für den Internetzugriff mit IPv6 – Azure-Vorlage | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie IPv6-Unterstützung für Azure Load Balancer und virtuelle Computer mit Lastenausgleich bereitstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: "IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT"
+keywords: IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT
 ms.assetid: 2998e943-13fc-4ea9-a68c-875e53a08db3
 ms.service: load-balancer
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 90439d792eac618671a9de9938302d8930c986d8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 431b43979ac364d943c58c40b4199b7f30f9acf6
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bereitstellen einer Load Balancer-Lösung mit Internetzugriff über IPv6 mithilfe einer Vorlage
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 > * [Azure-Befehlszeilenschnittstelle](load-balancer-ipv6-internet-cli.md)
 > * [Vorlage](load-balancer-ipv6-internet-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Der Load Balancer sorgt für Hochverfügbarkeit, indem er eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer verteilt, die in einer Gruppe für den Lastenausgleich definiert wurden. Der Azure Load Balancer kann diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 
@@ -110,7 +110,7 @@ Eine Azure Resource Manager-Vorlage enthält mehrere Variablen und Parameter, di
 
 Die in diesem Artikel verwendete Beispielvorlage enthält die folgenden Variablen und Parameter:
 
-| Parameter/Variable | Hinweise |
+| Parameter/Variable | Notizen |
 | --- | --- |
 | adminUsername |Geben Sie den Namen des Administratorkontos an, das zum Anmelden an virtuellen Computern verwendet wird. |
 | adminPassword |Geben Sie das Kennwort für das Administratorkonto an, das zum Anmelden an virtuellen Computern verwendet wird. |

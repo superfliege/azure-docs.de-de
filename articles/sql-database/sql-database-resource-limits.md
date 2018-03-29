@@ -1,5 +1,5 @@
 ---
-title: Ressourceneinschränkungen für Azure SQL-Datenbanken | Microsoft-Dokumentation
+title: Ressourceneinschränkungen für Azure SQL-Datenbanken | Microsoft Docs
 description: Diese Seite beschreibt einige allgemeine Ressourceneinschränkungen für Azure SQL-Datenbanken.
 services: sql-database
 author: CarlRabeler
@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: ba192b6dba68f01af796a1099b064d6ec0bd3f1b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: fb9cb15e96c4098151d220c2bd47fbb7f299687c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Ressourceneinschränkungen für Azure SQL-Datenbank
 
@@ -113,7 +113,7 @@ Sie können die verfügbaren Ressourcen für einen Pool für elastische Datenban
 | Maximum | Wert |
 | :--- | :--- |
 | Datenbanken pro Server | 5.000 |
-| Anzahl von Servern pro Abonnement und Region | 21 |
+| Anzahl von Servern pro Abonnement und Region | 20 |
 |||
 
 > [!IMPORTANT]

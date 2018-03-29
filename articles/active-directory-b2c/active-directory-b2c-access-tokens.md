@@ -1,24 +1,21 @@
 ---
-title: "Anfordern von Zugriffstoken – Azure AD B2C | Microsoft-Dokumentation"
-description: "In diesem Artikel wird erläutert, wie eine Clientanwendung eingerichtet und ein Zugriffstoken abgerufen wird."
+title: Anfordern von Zugriffstoken – Azure AD B2C | Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, wie eine Clientanwendung eingerichtet und ein Zugriffstoken abgerufen wird.
 services: active-directory-b2c
 documentationcenter: android
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 1c75f17f-5ec5-493a-b906-f543b3b1ea66
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
-ms.author: parakhj
-ms.openlocfilehash: 9d2df39118741d4254f7b7fe4c419a00ceb4ba8e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: bd919543072a8d2bf5fb0ebba17e69ba2f467218
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Anfordern von Zugriffstokens
 
@@ -85,7 +82,7 @@ Bei der Anforderung eines Zugriffstokens muss die Clientanwendung die im **scope
 https://login.microsoftonline.com/<tenantName>.onmicrosoft.com/oauth2/v2.0/authorize?p=<yourPolicyId>&client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
-Um mehrere Berechtigungen in derselben Anforderung zu beziehen, können Sie mehrere durch Leerzeichen getrennte Einträge in einem einzelnen **scope**-Parameter hinzufügen. Beispiel:
+Um mehrere Berechtigungen in derselben Anforderung zu beziehen, können Sie mehrere durch Leerzeichen getrennte Einträge in einem einzelnen **scope**-Parameter hinzufügen. Beispiel: 
 
 URL dekodiert:
 
@@ -117,7 +114,7 @@ Wenn der `response_type`-Parameter in einer `/authorize`-Anforderung `token` ent
 
 In einem erfolgreich angewendeten **access\_token** (entweder vom Endpunkt `/authorize` oder `/token`) sind folgende Ansprüche vorhanden:
 
-| Name | Anspruch | Beschreibung |
+| NAME | Anspruch | BESCHREIBUNG |
 | --- | --- | --- |
 |Zielgruppe |`aud` |Die **Anwendungs-ID** der jeweiligen Ressource, auf die das Token Zugriff gewährt. |
 |Umfang |`scp` |Die Berechtigungen, die der Ressource erteilt werden. Mehrere erteilte Berechtigungen werden durch ein Leerzeichen voneinander getrennt. |

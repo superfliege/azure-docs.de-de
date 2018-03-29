@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über den relationalen Datenbankdienst Azure Database for PostgreSQL"
-description: "Bietet eine Übersicht über den relationalen Datenbankdienst Azure-Datenbank für PostgreSQL."
+title: Übersicht über den relationalen Datenbankdienst Azure Database for PostgreSQL
+description: Bietet eine Übersicht über den relationalen Datenbankdienst Azure-Datenbank für PostgreSQL.
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -10,15 +10,15 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 02/28/2018
-ms.openlocfilehash: ef7f710fb39c3745ff5a20a73cd4dc5c1fa1fece
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 766373f4b9390e576285db73d9e9e9942eb6624f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Was ist Azure-Datenbank für PostgreSQL?
 
-Azure Database for PostgreSQL ist ein relationaler, für Entwickler konzipierter Datenbankdienst in Microsoft Cloud, der auf der Communityversion des Open-Source-Datenbankmoduls [PostgreSQL](https://www.postgresql.org/) basiert. Dieser Dienst befindet sich in der öffentlichen Vorschau. Azure-Datenbank für PostgreSQL bietet Folgendes:
+Azure Database for PostgreSQL ist ein relationaler, für Entwickler konzipierter Datenbankdienst in Microsoft Cloud, der auf der Communityversion des Open-Source-Datenbankmoduls [PostgreSQL](https://www.postgresql.org/) basiert. Azure-Datenbank für PostgreSQL bietet Folgendes:
 
 - Integrierte Hochverfügbarkeit ohne zusätzliche Kosten
 - Vorhersagbare Leistung inklusive nutzungsbasierter Bezahlung
@@ -45,10 +45,10 @@ Für den Azure Database for PostgreSQL-Dienst sind drei Tarife verfügbar: „Ba
 Wie entscheiden Sie, wann Sie hoch- oder herunterskalieren? Mit den integrierten Überwachungs- und Warnungsfeatures von Azure. Mit diesen Tools können Sie abhängig von Ihrem aktuellen oder voraussichtlichen Leistungs- oder Speicherbedarf blitzschnell die Auswirkungen des zentralen Hoch- oder Herunterskalierens bewerten. Einzelheiten hierzu finden Sie unter [Warnungen](howto-alert-on-metric.md).
 
 ## <a name="keep-your-app-and-business-running"></a>Aufrechterhalten von App-Ausführung und Geschäftskontinuität
-Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rechenzentren stellt die in der Branche führende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel (SLA) von 99,99% (in der Vorschau nicht verfügbar) sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Mit jedem Azure-Datenbank für PostgreSQL-Server nutzen Sie die integrierte Sicherheit, die Fehlertoleranz und die Datensicherheit, die Sie andernfalls entwerfen oder kaufen, erstellen und verwalten müssten. In Azure Database for PostgreSQL bietet jeder Tarif einen umfassenden Satz von Features für Geschäftskontinuität sowie Optionen, die sicherstellen, dass alles reibungslos funktioniert. Über die [Point-in-Time-Wiederherstellung](howto-restore-server-portal.md) können Sie den früheren Status einer Datenbank für bis zu 35 Tage wiederherstellen. Ferner können Sie bei einem Ausfall des Rechenzentrums, in dem Ihre Datenbanken gehostet werden, Ihre Datenbanken aus georedundanten Kopien kürzlich durchgeführter Sicherungen wiederherstellen.
+Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rechenzentren stellt die branchenführende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel (SLA) von 99,99 % sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Mit jedem Azure-Datenbank für PostgreSQL-Server nutzen Sie die integrierte Sicherheit, die Fehlertoleranz und die Datensicherheit, die Sie andernfalls entwerfen oder kaufen, erstellen und verwalten müssten. In Azure Database for PostgreSQL bietet jeder Tarif einen umfassenden Satz von Features für Geschäftskontinuität sowie Optionen, die sicherstellen, dass alles reibungslos funktioniert. Über die [Point-in-Time-Wiederherstellung](howto-restore-server-portal.md) können Sie den früheren Status einer Datenbank für bis zu 35 Tage wiederherstellen. Ferner können Sie bei einem Ausfall des Rechenzentrums, in dem Ihre Datenbanken gehostet werden, Ihre Datenbanken aus georedundanten Kopien kürzlich durchgeführter Sicherungen wiederherstellen.
 
 ## <a name="secure-your-data"></a>Sichern der Daten
-Azure-Datenbank für PostgreSQL führt die Tradition der Datensicherheit von Azure-Datenbankdiensten fort – mit Features zum Einschränken des Zugriffs, zum Schützen ruhender und bewegter Daten und zum Überwachen von Aktivitäten. Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx).
+Azure-Datenbank für PostgreSQL führt die Tradition der Datensicherheit von Azure-Datenbankdiensten fort – mit Features zum Einschränken des Zugriffs, zum Schützen ruhender und bewegter Daten und zum Überwachen von Aktivitäten. Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/en-us/trustcenter/security).
 
 Die Azure-Datenbank für PostgreSQL-Dienst verwendet Speicherverschlüsselung für ruhende Daten. Daten (einschließlich Sicherungen) werden auf dem Datenträger verschlüsselt – mit Ausnahme von temporären Dateien, die im Rahmen von Abfragen erstellt werden. Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
 

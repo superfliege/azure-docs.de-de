@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e1f4cfb74d83cb23631e5a16a6e6f2dba98027ef
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7b8fe61731a9412c61152bc58e55deebb611d011
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Installieren des Azure Stack Development Kits (ASDK)
 Nachdem Sie den [ASDK-Hostcomputer vorbereitet](asdk-prepare-host.md) haben, kann das ASDK mit den folgenden Schritten in diesem Artikel im Image „CloudBuilder.vhdx“ bereitgestellt werden.
@@ -55,8 +55,10 @@ Die Schritte in diesem Artikel zeigen, wie das ASDK mit einer grafischen Benutze
     - **DHCP** (Standard): Der virtuelle Computer ruft die IP-Netzwerkkonfiguration vom DHCP-Server ab.
     - **Statisch**: Verwenden Sie diese Option nur, wenn per DHCP keine gültige IP-Adresse für Azure Stack zugewiesen werden kann. **Eine statische IP-Adresse muss mit der Länge der Subnetzmaske im CIDR-Format (z.B. 10.0.0.5/24) angegeben werden**.
     - Geben Sie eine gültige **Zeitserver-IP-Adresse** ein. In diesem Pflichtfeld wird der Zeitserver festgelegt, der vom Development Kit verwendet wird. Dieser Parameter muss als gültige Zeitserver-IP-Adresse angegeben werden. Servernamen werden nicht unterstützt.
+
       > [!TIP]
       > Besuchen Sie zum Ermitteln der IP-Adresse eines Zeitservers [pool.ntp.org](http:\\pool.ntp.org), oder pingen Sie „time.windows.com“. 
+
     - **Optional** legen Sie die folgenden Werte fest:
         - **VLAN-ID**: Legt die VLAN-ID fest. Verwenden Sie diese Option nur, wenn für Host und AzS-BGPNAT01 eine VLAN-ID für den Zugriff auf das physische Netzwerk (und das Internet) konfiguriert werden muss. 
         - **DNS-Weiterleitung**: Ein DNS-Server wird als Teil der Azure Stack-Bereitstellung erstellt. Damit Computer innerhalb der Lösung Namen außerhalb des Stamps auflösen können, stellen Sie Ihren vorhandenen Infrastruktur-DNS-Server bereit. Der DNS-Server innerhalb des Stamps leitet Auflösungsanforderungen, die unbekannte Namen betreffen, an diesen Server weiter.
@@ -88,10 +90,10 @@ Herzlichen Glückwunsch, Sie haben das ASDK erfolgreich installiert!
 
 Wenn die Bereitstellung aus irgendeinem Grund nicht erfolgreich ist, können Sie [erneut eine Bereitstellung](asdk-redeploy.md) durchführen oder die folgenden PowerShell-Befehle im selben PowerShell-Fenster mit erhöhten Rechten verwenden, um den Bereitstellungsvorgang ab dem letzten erfolgreichen Schritt neu zu starten:
 
-    ```powershell
-    cd C:\CloudDeployment\Setup
-    .\InstallAzureStackPOC.ps1 -Rerun
-    ```
+  ```powershell
+  cd C:\CloudDeployment\Setup
+  .\InstallAzureStackPOC.ps1 -Rerun
+  ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Konfiguration nach der Bereitstellung](asdk-post-deploy.md)

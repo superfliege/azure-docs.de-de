@@ -1,11 +1,11 @@
 ---
-title: "Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics | Microsoft-Dokumentation"
-description: "Erfassen Sie mit Event Hubs und Logik-Apps Daten aus dem Azure-Aktivitätsprotokoll, und senden Sie diese Daten an den Azure Log Analytics-Arbeitsbereich eines anderen Mandanten."
+title: Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics | Microsoft-Dokumentation
+description: Erfassen Sie mit Event Hubs und Logik-Apps Daten aus dem Azure-Aktivitätsprotokoll, und senden Sie diese Daten an den Azure Log Analytics-Arbeitsbereich eines anderen Mandanten.
 services: log-analytics, logic-apps, event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 89c62563b9772fa07d63a24b4aa20857b0143f85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 23e4b7c74e6dfb88ec6ec50d5b8ae6d8288223f3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics
 
@@ -113,7 +113,7 @@ Stellen Sie vor dem Erstellen der Logik-App sicher, dass Ihnen die folgenden Inf
 - ID des Log Analytics-Arbeitsbereichs
 - Gemeinsam verwendeter Schlüssel für Log Analytics
 
-Um Name und Verbindungszeichenfolge des Event Hubs abzurufen, führen Sie die unter [Überprüfen von Berechtigungen für Event Hub-Namespaces und Suchen nach der Verbindungszeichenfolge](../connectors/connectors-create-api-azure-event-hubs.md#check-event-hubs-namespace-permissions-and-find-the-connection-string) beschriebenen Schritte aus.
+Um Name und Verbindungszeichenfolge des Event Hubs abzurufen, führen Sie die unter [Überprüfen von Berechtigungen für Event Hub-Namespaces und Suchen nach der Verbindungszeichenfolge](../connectors/connectors-create-api-azure-event-hubs.md#connect-to-azure-event-hubs) beschriebenen Schritte aus.
 
 
 ### <a name="create-a-new-blank-logic-app"></a>Erstellen einer neuen leeren Logik-App

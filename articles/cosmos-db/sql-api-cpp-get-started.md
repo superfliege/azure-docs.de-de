@@ -1,11 +1,11 @@
 ---
-title: "C++-Tutorial für Azure Cosmos DB | Microsoft-Dokumentation"
-description: "C++-Tutorial, in dem Sie eine C++-Datenbank und eine Konsolenanwendung mit einem von Azure Cosmos DB unterstützten SDK für C++ erstellen. Azure Cosmos DB ist ein weltweit verfügbarer Datenbankdienst."
+title: C++-Tutorial für Azure Cosmos DB | Microsoft-Dokumentation
+description: C++-Tutorial, in dem Sie eine C++-Datenbank und eine Konsolenanwendung mit einem von Azure Cosmos DB unterstützten SDK für C++ erstellen. Azure Cosmos DB ist ein weltweit verfügbarer Datenbankdienst.
 services: cosmos-db
 documentationcenter: cpp
 author: asthana86
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: b8756b60-8d41-4231-ba4f-6cfcfe3b4bab
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 12/25/2016
 ms.author: aasthan
-ms.openlocfilehash: b1dc49a9da42aa3630618c8099a7994950b313b4
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 86bf4fbc683efde60765b14b379a2b88c77d3103
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-c-console-application-tutorial-for-the-sql-api"></a>Azure Cosmos DB: Tutorial zur C++-Konsolenanwendung für die SQL-API
 > [!div class="op_single_selector"]
@@ -30,8 +30,6 @@ ms.lasthandoff: 02/24/2018
 > * [C++](sql-api-cpp-get-started.md)
 >  
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 
 Willkommen beim C++-Tutorial für das SDK für C++, das von der SQL-API von Azure Cosmos DB unterstützt wird! Im Rahmen dieses Tutorials erstellen Sie eine Konsolenanwendung, mit der Azure Cosmos DB-Ressourcen (einschließlich einer C++-Datenbank) erstellt und abgefragt werden können.
 

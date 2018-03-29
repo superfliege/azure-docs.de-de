@@ -1,8 +1,8 @@
 ---
 title: 'Azure AD Connect: Benutzeranmeldung | Microsoft-Dokumentation'
-description: "Azure AD Connect-Benutzeranmeldung für benutzerdefinierte Einstellungen."
+description: Azure AD Connect-Benutzeranmeldung für benutzerdefinierte Einstellungen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 4670ec3cacd8d69a4ed59aa2bbbeb2e5c893f173
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6a6e83ad73f561cd8aa4fc629fb9b48449af6d0a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect-Optionen für die Benutzeranmeldung
 Mit Azure Active Directory Connect (Azure AD) können sich Ihre Benutzer sowohl bei Cloud- als auch bei lokalen Ressourcen mit denselben Kennwörtern anmelden. In diesem Artikel werden die wichtigsten Konzepte für jedes Identitätsmodell beschrieben, um Sie bei der Auswahl der Identität zu unterstützen, die Sie für die Registrierung für Azure AD verwenden möchten.
 
 Wenn Sie mit dem Azure AD-Identitätsmodell bereits vertraut sind und mehr über ein bestimmtes Modell erfahren möchten, finden Sie Informationen unter dem folgenden Link.
 
-* [Kennworthashsynchronisierung](#password-synchronization) mit [einmaliger Anmeldung (Single Sign-On, SSO)](active-directory-aadconnect-sso.md)
+* [Kennworthashsynchronisierung](#password-hash-synchronization) mit [einmaliger Anmeldung (Single Sign-On, SSO)](active-directory-aadconnect-sso.md)
 * [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md) mit [einmaliger Anmeldung (Single Sign-On, SSO)](active-directory-aadconnect-sso.md)
 * [Verbund-SSO (mit Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
 
@@ -54,7 +54,7 @@ Darüber hinaus können Sie auch das [nahtlose einmalige Anmelden](active-direct
 
 ![Kennworthashsynchronisierung](./media/active-directory-aadconnect-user-signin/passwordhash.png)
 
-Weitere Informationen finden Sie im Artikel [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md).
+Weitere Informationen finden Sie im Artikel [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-hash-synchronization.md).
 
 ### <a name="pass-through-authentication"></a>Passthrough-Authentifizierung
 Bei der Passthrough-Authentifizierung wird das Kennwort des Benutzers anhand des lokalen Active Directory-Controllers überprüft. Das Kennwort muss in Azure AD nicht hinterlegt sein. So können lokale Richtlinien, z.B. Einschränkungen der Anmeldestunden, während der Authentifizierung für Clouddienste ausgewertet werden.
@@ -64,7 +64,7 @@ Bei der Passthrough-Authentifizierung wird ein einfacher Agent auf einem in die 
 Darüber hinaus können Sie auch das einmalige Anmelden für Benutzer auf in die Domäne eingebundenen Computern aktivieren, die sich im Unternehmensnetzwerk befinden. Beim einmaligen Anmelden müssen aktivierte Benutzer nur einen Benutzernamen eingeben, um sicher auf die Cloudressourcen zuzugreifen.
 ![Passthrough-Authentifizierung](./media/active-directory-aadconnect-user-signin/pta.png)
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter 
 - [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md)
 - [Einmaliges Anmelden](active-directory-aadconnect-sso.md)
 
@@ -113,7 +113,7 @@ Die Azure AD-Anmeldung hängt davon ab, ob Azure AD das UPN-Suffix eines zu sync
 Azure AD Connect listet die UPN-Suffixe auf, die für die Domänen definiert sind, und versucht, diese mit einer benutzerdefinierten Domäne in Azure AD abzugleichen. Danach hilft Azure AD Connect Ihnen mit der entsprechenden Aktion, die ausgeführt werden muss.
 Die Azure AD-Anmeldeseite listet die UPN-Suffixe auf, die für das lokale Active Directory-Verzeichnis definiert wurden, und zeigt den entsprechenden Status für jedes Suffix. Mögliche Statuswerte:
 
-| Zustand | Beschreibung | Erforderliche Aktion |
+| State (Zustand) | BESCHREIBUNG | Erforderliche Aktion |
 |:--- |:--- |:--- |
 | Überprüft |Azure AD Connect hat eine übereinstimmende überprüfte Domäne in Azure AD festgestellt. Alle Benutzer dieser Domäne können sich mit ihren lokalen Anmeldeinformationen anmelden. |Es ist keine Aktion erforderlich. |
 | Nicht überprüft |Azure AD Connect hat eine übereinstimmende benutzerdefinierte Domäne in Azure AD gefunden, die allerdings nicht überprüft ist. Das UPN-Suffix der Benutzer dieser Domäne wird nach der Synchronisierung in das Standardsuffix „.onmicrosoft.com“ geändert, wenn die Domäne nicht überprüft wurde. | [Überprüfen der benutzerdefinierten Domäne in Azure AD](../add-custom-domain.md#verify-the-custom-domain-name-in-azure-ad) |
@@ -141,7 +141,7 @@ Es ist wichtig, die Beziehung zwischen den benutzerdefinierten Zustandswerten f�
 Nehmen wir für die folgenden Informationen einmal an, dass wir mit dem UPN-Suffix „contoso.com“ arbeiten, das zum Beispiel im lokalen Verzeichnis als Teil des UPN verwendet wird. Beispiel: user@contoso.com.
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Express-Einstellungen/Kennworthashsynchronisierung
-| Zustand | Auswirkung auf die Azure-Benutzeranmeldung |
+| State (Zustand) | Auswirkung auf die Azure-Benutzeranmeldung |
 |:---:|:--- |
 | Nicht hinzugefügt |In diesem Fall wurde keine benutzerdefinierte Domäne für „contoso.com“ im Azure AD-Verzeichnis hinzugefügt. Benutzer mit lokalem UPN und dem Suffix „@contoso.com“ können nicht ihren lokalen UPN zur Azure-Anmeldung verwenden. Sie müssen stattdessen einen neuen, von Azure AD bereitgestellten UPN verwenden, indem Sie das Suffix für das Azure AD-Standardverzeichnis hinzufügen. Wenn Sie beispielsweise Benutzer mit dem Azure AD-Verzeichnis „azurecontoso.onmicrosoft.com“ synchronisieren, erhält der lokale Benutzer user@contoso.com den UPN user@azurecontoso.onmicrosoft.com. |
 | Nicht überprüft |In diesem Fall wurde dem Azure AD-Verzeichnis die benutzerdefinierte Domäne „contoso.com“ hinzugefügt. Diese ist jedoch noch nicht überprüft. Wenn Sie mit der Synchronisierung von Benutzern fortfahren, ohne die Domäne zu überprüfen, weist Azure AD den Benutzern wie im Szenario „Nicht hinzugefügt“ neue UPNs zu. |
@@ -152,7 +152,7 @@ Sie können mit der Standarddomäne „.onmicrosoft.com“ in Azure AD oder eine
 
 Wenn Sie die Benutzeranmeldeoption **Verbund mit AD FS** ausgewählt haben, müssen Sie über eine benutzerdefinierte Domäne verfügen, um mit der Erstellung eines Verbunds in Azure AD fortzufahren. Im vorliegenden Fall bedeutet dies, dass wir dem Azure AD-Verzeichnis die benutzerdefinierte Domäne „contoso.com“ hinzufügen müssen.
 
-| Zustand | Auswirkung auf die Azure-Benutzeranmeldung |
+| State (Zustand) | Auswirkung auf die Azure-Benutzeranmeldung |
 |:---:|:--- |
 | Nicht hinzugefügt |In diesem Fall konnte Azure AD Connect im Azure AD-Verzeichnis keine übereinstimmende benutzerdefinierte Domäne für das UPN-Suffix „contoso.com“ finden. Sie müssen die benutzerdefinierte Domäne „contoso.com“ hinzufügen, wenn Benutzer sich mithilfe von AD FS mit ihren lokalen Benutzerprinzipalnamen (z.B. user@contoso.com) anmelden sollen. |
 | Nicht überprüft |In diesem Fall zeigt Azure AD Connect entsprechende Angaben an, damit Sie Ihre Domäne zu einem späteren Zeitpunkt überprüfen können. |

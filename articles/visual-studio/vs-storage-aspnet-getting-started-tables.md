@@ -1,11 +1,11 @@
 ---
 title: Erste Schritte mit Azure Table Storage und verbundenen Visual Studio-Diensten (ASP.NET) | Microsoft-Dokumentation
-description: "Erfahren Sie mehr über die ersten Schritte mit Azure Table Storage in einem ASP.NET-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
+description: Erfahren Sie mehr über die ersten Schritte mit Azure Table Storage in einem ASP.NET-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kraigb
 manager: ghogen
-editor: 
+editor: ''
 ms.assetid: af81a326-18f4-4449-bc0d-e96fba27c1f8
 ms.service: storage
 ms.workload: web
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: kraigb
-ms.openlocfilehash: 32a57e77bf6fe3cff88b9d6772ede9e6669ec75f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 646ff3a12d1b28f99376ea67af25f1b6858d675a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Table Storage und verbundenen Visual Studio-Diensten (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -29,7 +29,7 @@ Azure-Tabellenspeicher ermöglicht das Speichern großer Mengen von strukturiert
 
 In diesem Tutorial wird gezeigt, wie Sie ASP.NET-Code für einige häufig verwendete Szenarien mit Azure-Tabellenspeicherentitäten schreiben. Die behandelten Szenarien umfassen das Erstellen einer Tabelle sowie das Hinzufügen, Abfragen und Löschen von Tabellenentitäten. 
 
-##<a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure-Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account)
@@ -174,7 +174,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Tabelle erstellen:
   
     ![Tabelle erstellen](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
-    Wie bereits erwähnt, gibt die **CloudTable.CreateIfNotExists**-Methode nur dann **true** zurück, wenn die Tabelle nicht vorhanden ist und erstellt wird. Aus diesem Grund gibt die Methode **false** zurück, wenn Sie die App ausführen, wenn die Tabelle vorhanden ist. Um die App mehrere Male auszuführen, müssen Sie die Tabelle vor dem erneuten Ausführen der App löschen. Das Löschen der Tabelle kann mit der **CloudTable.Delete**-Methode durchgeführt werden. Sie können die Tabelle auch über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) oder den [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) löschen.  
+    Wie bereits erwähnt, gibt die **CloudTable.CreateIfNotExists**-Methode nur dann **true** zurück, wenn die Tabelle nicht vorhanden ist und erstellt wird. Aus diesem Grund gibt die Methode **false** zurück, wenn Sie die App ausführen, wenn die Tabelle vorhanden ist. Um die App mehrere Male auszuführen, müssen Sie die Tabelle vor dem erneuten Ausführen der App löschen. Das Löschen der Tabelle kann mit der **CloudTable.Delete**-Methode durchgeführt werden. Sie können die Tabelle auch über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) oder den [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) löschen.  
 
 ## <a name="add-an-entity-to-a-table"></a>Hinzufügen einer Entität zu einer Tabelle
 
@@ -276,7 +276,7 @@ Die Entitätsklasse *muss* einen öffentlichen parameterlosen Konstruktor deklar
   
     ![Hinzufügen einer Entität](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
-    Sie können anhand der Schritte im Abschnitt [Abrufen einer einzelnen Entität](#get-a-single-entity) überprüfen, ob die Entität hinzugefügt wurde. Sie können auch mit dem [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) alle Entitäten für Ihre Tabellen anzeigen.
+    Sie können anhand der Schritte im Abschnitt [Abrufen einer einzelnen Entität](#get-a-single-entity) überprüfen, ob die Entität hinzugefügt wurde. Sie können auch mit dem [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) alle Entitäten für Ihre Tabellen anzeigen.
 
 ## <a name="add-a-batch-of-entities-to-a-table"></a>Hinzufügen eines Entitätsbatchs zu einer Tabelle
 
@@ -396,7 +396,7 @@ Sie können nicht nur Entitäten [einzeln nacheinander einer Tabelle hinzufügen
   
     ![Hinzufügen von Entitäten](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
-    Sie können anhand der Schritte im Abschnitt [Abrufen einer einzelnen Entität](#get-a-single-entity) überprüfen, ob die Entität hinzugefügt wurde. Sie können auch mit dem [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) alle Entitäten für Ihre Tabellen anzeigen.
+    Sie können anhand der Schritte im Abschnitt [Abrufen einer einzelnen Entität](#get-a-single-entity) überprüfen, ob die Entität hinzugefügt wurde. Sie können auch mit dem [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) alle Entitäten für Ihre Tabellen anzeigen.
 
 ## <a name="get-a-single-entity"></a>Abrufen einer einzelnen Entität
 
@@ -711,5 +711,5 @@ Dieser Abschnitt zeigt das Löschen einer Entität aus einer Tabelle.
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in Azure finden Sie in den anderen Featureleitfäden.
 
-  * [Erste Schritte mit Azure-Blobspeicher und verbundenen Visual Studio-Diensten (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
+  * [Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
   * [Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten](../storage/vs-storage-aspnet-getting-started-queues.md)

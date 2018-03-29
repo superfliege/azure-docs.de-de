@@ -1,20 +1,20 @@
 ---
 title: Migrieren von lokalen Daten nach Azure Storage mithilfe von AzCopy | Microsoft-Dokumentation
-description: "Verwenden Sie AzCopy, um Daten zu oder von Blob-, Tabellen- und Dateiinhalten zu migrieren oder in oder aus diesen Daten zu kopieren. Migrieren Sie mühelos Daten aus Ihrem lokalen Speicher nach Azure Storage."
+description: Verwenden Sie AzCopy, um Daten zu oder von Blob-, Tabellen- und Dateiinhalten zu migrieren oder in oder aus diesen Daten zu kopieren. Migrieren Sie mühelos Daten aus Ihrem lokalen Speicher nach Azure Storage.
 services: storage
-author: ruthogunnnaike
+author: roygara
 manager: jeconnoc
 ms.service: storage
 ms.tgt_pltfrm: na
 ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
-ms.author: v-ruogun
-ms.openlocfilehash: 3dbfb935ac0b134e127a5dccb7bc76716c688e8a
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.author: rogarana
+ms.openlocfilehash: 1e7292cf4d647b38a6fe8ceb270ba161e548a537
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Migrieren von lokalen Daten zum Cloudspeicher mithilfe von AzCopy
 
@@ -150,7 +150,7 @@ Weitere Informationen zu Azure Storage und zu AzCopy finden Sie in den folgenden
 * [Übertragen von Daten mit AzCopy unter Windows](storage-use-azcopy.md) 
 * [Übertragen von Daten mit AzCopy unter Linux](storage-use-azcopy-linux.md) 
 * [Erstellen Sie ein Speicherkonto](../storage-create-storage-account.md)
-* [Verwalten von Blobs mit Speicher-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)  
+* [Verwalten von Blobs mit dem Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)  
 
 
 

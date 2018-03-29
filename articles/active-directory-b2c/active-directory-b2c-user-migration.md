@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Ansätze für die Benutzermigration"
-description: "Hier werden grundlegende und erweiterte Konzepte der Benutzermigration mithilfe der Graph-API (und optional mithilfe benutzerdefinierter Azure AD B2C-Richtlinien) erläutert."
+title: 'Azure Active Directory B2C: Ansätze für die Benutzermigration'
+description: Hier werden grundlegende und erweiterte Konzepte der Benutzermigration mithilfe der Graph-API (und optional mithilfe benutzerdefinierter Azure AD B2C-Richtlinien) erläutert.
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 10/04/2017
-ms.author: yoelh
-ms.openlocfilehash: 25023359e3f1eeb241f6f0e70bcb179aa32974af
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: be80ea534be6de4fad2b072cf531669f45eda527
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Benutzermigration
 Beim Migrieren Ihres Identitätsanbieters zu Azure Active Directory B2C (Azure AD B2C) müssen Sie unter Umständen auch das Benutzerkonto migrieren. In diesem Artikel wird erläutert, wie vorhandene Benutzerkonten von einem beliebigen Identitätsanbieter zu Azure AD B2C migriert werden. Der Artikel enthält keine verbindliche Anleitung, sondern beschreibt lediglich zwei der zahlreichen Möglichkeiten, die Ihnen zur Verfügung stehen. Der Entwickler ist jeweils dafür verantwortlich, dass ein Ansatz geeignet ist.
@@ -28,7 +25,7 @@ Mit Azure AD B2C können Sie Benutzer über die [Graph-API](https://docs.microso
 
 * **Prämigration**: Diese Methode trifft zu, wenn Sie entweder eindeutigen Zugriff auf die Anmeldeinformationen eines Benutzers haben (Benutzername und Kennwort) oder wenn die Anmeldeinformationen verschlüsselt sind und von Ihnen entschlüsselt werden können. Der Prozess der Prämigration umfasst das Lesen der Benutzer im alten Identitätsanbieter und das Erstellen neuer Konten im Azure AD B2C-Verzeichnis.
 
-* **Prämigration und Kennwortzurücksetzung**: Diese Methode ist geeignet, wenn auf das Kennwort eines Benutzers nicht zugegriffen werden kann. Beispiel:
+* **Prämigration und Kennwortzurücksetzung**: Diese Methode ist geeignet, wenn auf das Kennwort eines Benutzers nicht zugegriffen werden kann. Beispiel: 
     * Das Kennwort wird im HASH-Format gespeichert.
     * Das Kennwort wird in einem Identitätsanbieter gespeichert, auf den Sie nicht zugreifen können. Der alte Identitätsanbieter überprüft die Benutzeranmeldeinformationen durch das Aufrufen eines Webdiensts.
 
@@ -51,7 +48,7 @@ Um mit der Graph-API zu kommunizieren, benötigen Sie zuerst ein Dienstkonto mit
 
 Registrieren Sie zuerst Ihre Migrationsanwendung bei Azure AD. Erstellen Sie anschließend einen Anwendungsschlüssel (Anwendungsgeheimnis), und statten Sie die Anwendung mit Schreibberechtigungen aus.
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Wählen Sie Ihren Azure AD **B2C**-Mandanten aus, indem Sie oben rechts im Fenster Ihr Konto auswählen.
 
@@ -250,7 +247,7 @@ Gehen Sie wie folgt vor, um den Link zu Ihrer Richtlinie für die Kennwortzurüc
 > Sie müssen eine benutzerdefinierte Richtlinie verwenden, um den Benutzermigrationsstatus zu überprüfen und zu ändern. Weitere Informationen finden Sie unter [Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md).
 >
 
-Wenn sich Benutzer anmelden, ohne zuerst das Kennwort zu ändern, sollte von der Richtlinie eine Fehlermeldung angezeigt werden. Beispiel: 
+Wenn sich Benutzer anmelden, ohne zuerst das Kennwort zu ändern, sollte von der Richtlinie eine Fehlermeldung angezeigt werden. Beispiel:  
 >*Ihr Kennwort ist abgelaufen. Wählen Sie den Link „Kennwort zurücksetzen“, um es zurückzusetzen.* 
 
 Für diesen optionalen Schritt ist die Verwendung von benutzerdefinierten Azure AD B2C-Richtlinien erforderlich. Informationen hierzu finden Sie im Artikel [Azure Active Directory B2C: Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md).
