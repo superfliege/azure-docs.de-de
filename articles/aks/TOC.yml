@@ -59,6 +59,8 @@
       items:
         - name: Statische IP-Adresse
           href: static-ip.md
+        - name: Interner Lastenausgleich
+          href: internal-lb.md
         - name: Eingang und TLS
           href: ingress.md
     - name: Sicherheit und Authentifizierung
