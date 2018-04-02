@@ -45,7 +45,7 @@
 ### [Debuggen von SAML-basierten SSO](active-directory-saml-debugging.md)
 ### [SAML-Protokoll für einmaliges Anmelden](active-directory-single-sign-on-protocol-reference.md)
 ### [SAML-Protokoll für einmaliges Abmelden](active-directory-single-sign-out-protocol-reference.md)
-### [Erstellen eines Mandanten](active-directory-howto-tenant.md)
+## [Erstellen eines Mandanten](active-directory-howto-tenant.md)
 ## [Brandingrichtlinien](active-directory-branding-guidelines.md)
 ## Mobil- und Desktop-SSO
 ### [Aktivieren von SSO unter Android](active-directory-sso-android.md)
