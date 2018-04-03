@@ -1,0 +1,158 @@
+- name: CDN-Dokumentation
+  href: index.md
+- name: Übersicht
+  href: cdn-overview.md
+  items:
+    - name: Was ist Azure CDN?
+      href: ../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json
+- name: Erste Schritte
+  items:
+    - name: Aktivieren von Azure CDN
+      href: cdn-create-new-endpoint.md
+- name: Anleitung
+  items:
+    - name: Integrieren
+      items:
+        - name: Web-Apps
+          href: ../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json
+        - name: Cloud Services
+          href: cdn-cloud-service-with-cdn.md
+        - name: Speicher
+          items:
+            - name: Integrieren eines Speicherkontos
+              href: cdn-create-a-storage-account-with-cdn.md
+            - name: SAS-Speichersupport
+              href: cdn-sas-storage-support.md
+        - name: Cross-Origin Resource Sharing
+          href: cdn-cors.md
+        - name: Hinzufügen einer benutzerdefinierten Domäne zum CDN-Endpunkt
+          href: cdn-map-content-to-custom-domain.md
+        - name: Konfigurieren von HTTPS für eine benutzerdefinierte Domäne
+          href: cdn-custom-ssl.md
+    - name: Optimieren von Inhalten
+      items:
+        - name: Übersicht über die Optimierung
+          href: cdn-optimization-overview.md
+          items:
+            - name: Optimierung großer Dateien
+              href: cdn-large-file-optimization.md
+            - name: Medienstreaming-Optimierung
+              href: cdn-media-streaming-optimization.md
+            - name: Beschleunigung dynamischer Websites
+              href: cdn-dynamic-site-acceleration.md
+    - name: Verwalten
+      items:
+        - name: Verwalten mit Azure PowerShell
+          href: cdn-manage-powershell.md
+        - name: Einschränken des Zugriffs nach Land
+          href: cdn-restrict-access-by-country.md
+        - name: Verbessern der Leistung durch Komprimieren von Dateien
+          href: cdn-improve-performance.md
+        - name: Steuern des Zwischenspeicherverhaltens
+          items:
+            - name: Funktionsweise der Zwischenspeicherung
+              href: cdn-how-caching-works.md
+            - name: Steuern des Zwischenspeicherverhaltens mit Cacheregeln
+              href: cdn-caching-rules.md
+            - name: Zwischenspeichern von Inhalten nach Abfragezeichenfolgen
+              items:
+                - name: Standard-Tarif
+                  href: cdn-query-string.md
+                - name: Premium-Tarif
+                  href: cdn-query-string-premium.md
+            - name: Löschen von zwischengespeicherten Assets
+              href: cdn-purge-endpoint.md
+            - name: Vorabladen von zwischengespeicherten Assets
+              href: cdn-preload-endpoint.md
+        - name: Konfigurieren der Gültigkeitsdauer
+          items:
+            - name: Azure-Webinhalt
+              href: cdn-manage-expiration-of-cloud-service-content.md
+            - name: Azure Blob Storage
+              href: cdn-manage-expiration-of-blob-content.md
+        - name: Tokenauthentifizierung
+          href: cdn-token-auth.md
+        - name: Überwachen von Ressourcen
+          href: cdn-resource-health.md
+        - name: Überschreiben des Verhaltens mit Regeln
+          href: cdn-rules-engine.md
+        - name: Erhalten von Warnungen in Echtzeit
+          href: cdn-real-time-alerts.md
+        - name: HTTP/2-Unterstützung
+          href: cdn-http2.md
+    - name: Analysieren
+      items:
+        - name: Analysieren von Azure CDN-Verwendungsmustern
+          href: cdn-log-analysis.md
+          items:
+            - name: Azure-Diagnoseprotokolle
+              href: cdn-azure-diagnostic-logs.md
+            - name: Analysetools für Azure CDN aus Verizon
+              items:
+                - name: Kernberichte aus Verizon
+                  href: cdn-analyze-usage-patterns.md
+                - name: Benutzerdefinierte Berichte aus Verizon
+                  href: cdn-verizon-custom-reports.md
+            - name: Analysetools für Azure CDN Premium von Verizon
+              items:
+                - name: Generieren von erweiterten HTTP-Berichten
+                  href: cdn-advanced-http-reports.md
+                - name: Anzeigen von Echtzeitstatistiken
+                  href: cdn-real-time-stats.md
+                - name: Analysieren der Edgeknotenleistung
+                  href: cdn-edge-performance.md
+    - name: Entwickeln
+      items:
+        - name: .NET
+          href: cdn-app-dev-net.md
+        - name: Node.js
+          href: cdn-app-dev-node.md
+    - name: Problembehandlung
+      items:
+        - name: Status 404
+          href: cdn-troubleshoot-endpoint.md
+        - name: Dateikomprimierung
+          href: cdn-troubleshoot-compression.md
+- name: Verweis
+  items:
+    - name: Regel-Engine – Referenz
+      href: cdn-rules-engine-reference.md
+      items:
+        - name: Regel-Engine – Bedingte Ausdrücke
+          href: cdn-rules-engine-reference-conditional-expressions.md
+        - name: Übereinstimmungsbedingungen der Regel-Engine
+          href: cdn-rules-engine-reference-match-conditions.md
+        - name: Regel-Engine – Features
+          href: cdn-rules-engine-reference-features.md
+    - name: Codebeispiele
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cdn'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.cdn
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.cdn
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.cdn
+    - name: REST
+      href: /rest/api/cdn/
+- name: angeben
+  items:
+    - name: Azure CDN-POP-Standorte
+      items:
+        - name: POP-Standorte nach Region
+          href: cdn-pop-locations.md
+        - name: POP-Standorte nach Abkürzung
+          href: cdn-pop-abbreviations.md
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN-Forum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cdn/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=cdn'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-cdn'
+    - name: Videos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'

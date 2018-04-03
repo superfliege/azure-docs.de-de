@@ -1,24 +1,28 @@
 ---
-title: "Dokumentation für Azure Mobile Engagement – Tutorials, API-Referenz | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie Erkenntnisse zur Verwendung mobiler Apps und zur Benutzersegmentierung in Echtzeit gewinnen und wie Sie Pushbenachrichtigungen und In-App-Messaging in Abhängigkeit vom Kontext aktivieren."
+title: Dokumentation für Azure Mobile Engagement – Tutorials, API-Referenz | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Erkenntnisse zur Verwendung mobiler Apps und zur Benutzersegmentierung in Echtzeit gewinnen und wie Sie Pushbenachrichtigungen und In-App-Messaging in Abhängigkeit vom Kontext aktivieren.
 services: mobile-engagement
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: mobile-engagement
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5f682ba16b52b9a084505b8212c4b6f043bb94c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 874b40e0e1407be9f546c5a5f57cee2d1034a840
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="mobile-engagement-documentation"></a>Mobile Engagement-Dokumentation
+
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
 
 Hier erfahren Sie, wie Sie mithilfe von Mobile Engagement die Nutzung, Kundenbindung und Monetarisierung mobiler Apps verbessern. Anhand von Tutorials, SDKs und anderem Dokumentationsmaterial wird gezeigt, wie Sie Erkenntnisse zur App-Verwendung und zur Benutzersegmentierung in Echtzeit gewinnen und wie Sie Pushbenachrichtigungen und In-App-Messaging in Abhängigkeit vom Kontext aktivieren.
 
@@ -189,7 +193,7 @@ Hier erfahren Sie, wie Sie mithilfe von Mobile Engagement die Nutzung, Kundenbin
 
 ---
 
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">

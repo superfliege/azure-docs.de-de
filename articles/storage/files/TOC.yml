@@ -18,44 +18,56 @@
       href: storage-how-to-use-files-linux.md
     - name: Bereitstellen auf Mac
       href: storage-how-to-use-files-mac.md
-    - name: Verwalten mit dem Portal
+    - name: Verwalten mit dem Azure-Portal
       href: storage-how-to-use-files-portal.md
+    - name: Verwalten mit PowerShell
+      href: storage-how-to-use-files-powershell.md
+    - name: Verwalten mit der Azure CLI
+      href: storage-how-to-use-files-cli.md
+    - name: Verwalten mit Storage-Explorer
+      href: storage-how-to-use-files-storage-explorer.md
 - name: Anleitung
   items:
-    - name: Planen und Entwerfen
+    - name: Plan
       items:
-        - name: Speicherkontooptionen
+        - name: Planung für eine Azure Files-Bereitstellung
+          href: storage-files-planning.md
+        - name: Planung für die Bereitstellung einer Azure-Dateisynchronisierung
+          href: storage-sync-files-planning.md
+        - name: Grundlegendes zu Speicherkonten
           href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Bereitstellen von Azure Files
-          items:
-            - name: Planung für eine Azure Files-Bereitstellung
-              href: storage-files-planning.md
-            - name: Bereitstellen von Azure Files
-              href: storage-files-deployment-guide.md
-        - name: Bereitstellen von Azure File Sync
-          items:
-            - name: Planung für die Bereitstellung einer Azure-Dateisynchronisierung
-              href: storage-sync-files-planning.md
-            - name: Bereitstellen einer Azure-Dateisynchronisierung
-              href: storage-sync-files-deployment-guide.md
-            - name: Proxy- und Firewalleinstellungen von Azure File Sync
-              href: storage-sync-files-firewall-and-proxy.md
-        - name: Informationen zu Dateifreigaben-Momentaufnahmen
+        - name: Grundlegendes zu Dateifreigaben-Momentaufnahmen
           href: storage-snapshots-files.md
-        - name: Verwenden von Dateifreigaben-Momentaufnahmen
-          href: storage-how-to-use-files-snapshots.md
-        - name: Replikation
+        - name: Redundanzoptionen für Storage
           href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Skalierbarkeits- und Leistungsziele
           href: storage-files-scale-targets.md
-        - name: Checkliste zu Leistung und Skalierbarkeit
-          href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Parallelität
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Leitfäden zur Notfallwiederherstellung
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Versionshinweise zu Azure File Sync
+          href: storage-files-release-notes.md
+    - name: Bereitstellen
+      items:
+        - name: Bereitstellen von Azure Files
+          href: storage-files-deployment-guide.md
+        - name: Bereitstellen einer Azure-Dateisynchronisierung
+          href: storage-sync-files-deployment-guide.md
+        - name: Proxy- und Firewalleinstellungen von Azure File Sync
+          href: storage-sync-files-firewall-and-proxy.md
+    - name: Verwalten
+      items:
+        - name: Registrieren eines Servers bei der Azure-Dateisynchronisierung
+          href: storage-sync-files-server-registration.md
+        - name: Hinzufügen eines Azure-Dateisynchronisierungsserver-Endpunkts
+          href: storage-sync-files-server-endpoint.md
+        - name: 'PowerShell für China, Government und deutsche Clouds'
+          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Azure-Automatisierung
+          href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Entwickeln
       items:
+        - name: Verwalten von Nebenläufigkeit
+          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: .NET
           href: storage-dotnet-how-to-use-files.md
         - name: Java
@@ -72,26 +84,6 @@
               href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Konfigurieren von Verbindungszeichenfolgen
           href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Verwalten
-      items:
-        - name: PowerShell für Azure Files
-          href: storage-how-to-use-files-powershell.md
-        - name: PowerShell für Azure Storage
-          href: ../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 'PowerShell für China, Government und deutsche Clouds'
-          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure CLI 2.0
-          href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure-Befehlszeilenschnittstelle 1.0
-          href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Registrieren eines Servers bei der Azure-Dateisynchronisierung
-          href: storage-sync-files-server-registration.md
-        - name: Hinzufügen eines Azure-Dateisynchronisierungsserver-Endpunkts
-          href: storage-sync-files-server-endpoint.md
-        - name: Verwenden des Storage-Explorers mit Azure File Storage
-          href: ../../vs-azure-tools-storage-explorer-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure-Automatisierung
-          href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Schützen
       items:
         - name: Sicherheitsleitfaden
@@ -238,5 +230,3 @@
           href: 'https://github.com/Azure/azure-storage-ruby'
         - name: iOS
           href: 'https://github.com/Azure/azure-storage-ios'
-    - name: Versionshinweise zu Azure File Sync
-      href: storage-files-release-notes.md

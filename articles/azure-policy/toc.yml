@@ -25,6 +25,10 @@
   items:
     - name: Struktur von Azure Policy-Definitionen
       href: policy-definition.md
+- name: Anleitungen
+  items:
+    - name: Programmgesteuertes Erstellen von Richtlinien
+      href: policy-insights.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

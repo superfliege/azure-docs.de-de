@@ -37,8 +37,6 @@
           href: log-analytics-log-search-faq.md
     - name: Häufig gestellte Fragen zu Log Analytics
       href: log-analytics-faq.md
-    - name: Nutzung der Daten
-      href: log-analytics-usage.md
     - name: Datensicherheit
       href: log-analytics-data-security.md
     - name: Verwalten des Zugriffs
@@ -156,7 +154,11 @@
         - name: Agentverwaltung
           href: log-analytics-agent-manage.md
         - name: Verwalten der Arbeitsbereichskosten
-          href: log-analytics-manage-cost-storage.md
+          items:
+            - name: Datenvolume und Vermerkdauer
+              href: log-analytics-manage-cost-storage.md
+            - name: Überwachen der Nutzung
+              href: log-analytics-usage.md
         - name: Löschen eines Arbeitsbereichs
           href: log-analytics-manage-del-workspace.md
     - name: Problembehandlung
