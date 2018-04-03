@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric CLI – sfctl application | Microsoft-Dokumentation"
+title: Azure Service Fabric CLI – sfctl application | Microsoft-Dokumentation
 description: Beschreibt die sfctl application-Befehle der Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -255,7 +255,7 @@ Bereitstellung per Imagespeicher.
 | --application-type-build-path       | Gilt nur für Imagespeicher zur Bereitstellung. Der relative Pfad für das Anwendungspaket im Imagespeicher, der während des vorherigen Uploadvorgangs angegeben wurde. |
 | --application-type-name| Gilt nur für die Bereitstellung aus einem externen Speicher. Der Anwendungstypname stellt den Namen des Anwendungstyps im Anwendungsmanifest dar.|
 | --application-type-version| Gilt nur für die Bereitstellung aus einem externen Speicher. Die Anwendungstypversion stellt die Version des Anwendungstyps im Anwendungsmanifest dar.|
-| --external-provision| Der Speicherort, von dem das Anwendungspaket registriert oder bereitgestellt werden kann. Gibt an, dass die Bereitstellung über ein Anwendungspaket erfolgt, das zuvor in einen externen Speicher hochgeladen wurde. Das Anwendungspaket endet mit der Erweiterung „.sfpkg“.|
+| --external-provision| Der Speicherort, von dem das Anwendungspaket registriert oder bereitgestellt werden kann. Gibt an, dass die Bereitstellung über ein Anwendungspaket erfolgt, das zuvor in einen externen Speicher hochgeladen wurde. Das Anwendungspaket endet mit der Erweiterung *.sfpkg.|
 | --no-wait| Gibt an, ob die Bereitstellung asynchron erfolgen soll.  Bei Festlegung auf „true“ wird der Bereitstellungsvorgang beendet, wenn die Anforderung vom System akzeptiert wurde. Der Bereitstellungsvorgang wird dann ohne Zeitlimit fortgesetzt. Der Standardwert ist „false“. Bei großen Anwendungspaketen wird empfohlen, den Wert auf „true“ festzulegen.|
 | --timeout -t                      | Servertimeout in Sekunden.  Standardwert: 60.|
 
