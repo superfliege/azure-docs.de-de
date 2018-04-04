@@ -1,6 +1,6 @@
 ---
 title: Hosten von Reverse-DNS-Lookupzonen in Azure DNS | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie mit Azure DNS die Reverse-DNS-Lookupzonen für Ihre IP-Adressbereiche hosten."
+description: Erfahren Sie, wie Sie mit Azure DNS die Reverse-DNS-Lookupzonen für Ihre IP-Adressbereiche hosten.
 services: dns
 documentationcenter: na
 author: jtuliani

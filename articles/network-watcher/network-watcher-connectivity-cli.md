@@ -1,11 +1,11 @@
 ---
-title: "Problembehandlung für Verbindungen mit Azure Network Watcher – Azure CLI 2.0 | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe der Azure CLI 2.0 die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen."
+title: Problembehandlung für Verbindungen mit Azure Network Watcher – Azure CLI 2.0 | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI 2.0 die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article

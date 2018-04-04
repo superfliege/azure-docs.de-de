@@ -1,12 +1,12 @@
 ---
-title: "Konfigurationsschema für die Azure-Diagnoseerweiterung 1.3 und höher | Microsoft-Dokumentation"
-description: "Schemaversion 1.3 und höher für Azure-Diagnose wird als Komponente des Microsoft Azure SDK 2.4 und höher geliefert."
+title: Konfigurationsschema für die Azure-Diagnoseerweiterung 1.3 und höher | Microsoft-Dokumentation
+description: Schemaversion 1.3 und höher für Azure-Diagnose wird als Komponente des Microsoft Azure SDK 2.4 und höher geliefert.
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na

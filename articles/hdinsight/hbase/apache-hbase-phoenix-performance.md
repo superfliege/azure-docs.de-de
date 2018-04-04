@@ -1,13 +1,13 @@
 ---
 title: Leistung von Phoenix in Azure HDInsight | Microsoft-Dokumentation
-description: "Hier finden Sie bewährte Methoden zur Optimierung der Leistung von Phoenix."
+description: Hier finden Sie bewährte Methoden zur Optimierung der Leistung von Phoenix.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data

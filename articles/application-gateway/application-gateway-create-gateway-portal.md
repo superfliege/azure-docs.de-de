@@ -1,10 +1,10 @@
 ---
-title: "Erstellen eines Anwendungsgateways – Azure-Portal | Microsoft-Dokumentation"
+title: Erstellen eines Anwendungsgateways – Azure-Portal | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie im Azure-Portal ein Anwendungsgateway erstellen.
 services: application-gateway
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article

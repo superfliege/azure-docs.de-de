@@ -1,10 +1,10 @@
 ---
-title: "Erstellen eines Anwendungsgateways – Azure PowerShell | Microsoft-Dokumentation"
+title: Erstellen eines Anwendungsgateways – Azure PowerShell | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mit Azure PowerShell ein Anwendungsgateway erstellen.
 services: application-gateway
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: azurepowershell

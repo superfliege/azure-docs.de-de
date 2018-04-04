@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Azure Files mit AKS
-description: "Verwenden von Azure-Datenträgern mit AKS"
+description: Verwenden von Azure-Datenträgern mit AKS
 services: container-service
 author: neilpeterson
 manager: timlt

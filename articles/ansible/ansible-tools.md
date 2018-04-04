@@ -1,6 +1,6 @@
 ---
-title: "Tools für die Verwendung von Ansible mit Azure"
-description: "Installieren und Verwenden individueller Tools für Ansible mit Azure"
+title: Tools für die Verwendung von Ansible mit Azure
+description: Installieren und Verwenden individueller Tools für Ansible mit Azure
 ms.service: ansible
 keywords: Ansible, Azure, DevOps, Tools, VS Code, Visual Studio Code, Erweiterung
 author: tomarcher

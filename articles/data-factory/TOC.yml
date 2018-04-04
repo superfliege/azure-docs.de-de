@@ -118,6 +118,8 @@
   items:
     - name: Visuelles Erstellen von Data Factorys
       href: author-visually.md
+    - name: Continuous Integration und Continuous Deployment
+      href: continuous-integration-deployment.md
     - name: Kopieren von Daten
       items:
         - name: Kopieren von Daten mit der Copy-Aktivität

@@ -2,10 +2,10 @@
 title: Nachrichtensequenzierung und -zeitstempel mit Azure Service Bus | Microsoft-Dokumentation
 description: Beibehalten der Service Bus-Nachrichtensequenz und der Reihenfolge mit Zeitstempeln
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na

@@ -1,5 +1,5 @@
 ---
-title: "Erstellen eines Anwendungsgateways mit einer VM-Skalierungsgruppe – Azure PowerShell | Microsoft-Dokumentation"
+title: Erstellen eines Anwendungsgateways mit einer VM-Skalierungsgruppe – Azure PowerShell | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie unter Verwendung von Azure PowerShell ein Anwendungsgateway mit einer VM-Skalierungsgruppe erstellen.
 services: application-gateway
 author: davidmu1

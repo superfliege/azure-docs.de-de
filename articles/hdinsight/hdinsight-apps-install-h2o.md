@@ -1,13 +1,13 @@
 ---
-title: "Installieren einer veröffentlichten Anwendung – H2O Sparkling Water – Azure HDInsight | Microsoft-Dokumentation"
+title: Installieren einer veröffentlichten Anwendung – H2O Sparkling Water – Azure HDInsight | Microsoft-Dokumentation
 description: Installieren und verwenden Sie die Hadoop-Drittanbieteranwendung H2O Sparkling Water.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na

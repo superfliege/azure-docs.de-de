@@ -1,13 +1,13 @@
 ---
-title: "Einrichten von Sicherung und Replikation für HBase und Phoenix – Azure HDInsight | Microsoft-Dokumentation"
-description: "Richten Sie die Sicherung und Replikation für HBase und Phoenix ein."
+title: Einrichten von Sicherung und Replikation für HBase und Phoenix – Azure HDInsight | Microsoft-Dokumentation
+description: Richten Sie die Sicherung und Replikation für HBase und Phoenix ein.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data

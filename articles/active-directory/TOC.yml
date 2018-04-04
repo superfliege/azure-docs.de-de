@@ -5,12 +5,18 @@
 - name: 'Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)'
   href: role-based-access-control-what-is.md
   items:
-    - name: Verwalten von Zugriffszuweisungen
+    - name: Verwalten von Rollenzuweisungen
       items:
         - name: Nach Benutzer
           href: role-based-access-control-manage-assignments.md
         - name: Nach Ressource
           href: role-based-access-control-configure.md
+        - name: Mit der Azure-Befehlszeilenschnittstelle
+          href: role-based-access-control-manage-access-azure-cli.md
+        - name: Mit PowerShell
+          href: role-based-access-control-manage-access-powershell.md
+        - name: Mit REST
+          href: role-based-access-control-manage-access-rest.md
     - name: Integrierte Rollen
       href: role-based-access-built-in-roles.md
     - name: Benutzerdefinierte Rollen
@@ -19,14 +25,6 @@
       href: role-based-access-control-create-custom-roles-for-internal-external-users.md
     - name: Berichterstellung
       href: role-based-access-control-access-change-history-report.md
-    - name: Weitere Methoden zum Verwalten von Rollen
-      items:
-        - name: Mit der Azure-Befehlszeilenschnittstelle
-          href: role-based-access-control-manage-access-azure-cli.md
-        - name: Mit PowerShell
-          href: role-based-access-control-manage-access-powershell.md
-        - name: Mit REST
-          href: role-based-access-control-manage-access-rest.md
     - name: Erhöhen des Mandantenadministratorzugriffs
       href: role-based-access-control-tenant-admin-access.md
     - name: Problembehandlung

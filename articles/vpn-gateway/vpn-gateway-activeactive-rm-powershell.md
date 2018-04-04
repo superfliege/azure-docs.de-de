@@ -1,11 +1,11 @@
 ---
-title: "Konfigurieren von Aktiv/Aktiv-S2S-VPN-Verbindungen für VPN Gateways: Azure Resource Manager: PowerShell | Microsoft-Dokumentation"
+title: 'Konfigurieren von Aktiv/Aktiv-S2S-VPN-Verbindungen für VPN Gateways: Azure Resource Manager: PowerShell | Microsoft-Dokumentation'
 description: In diesem Artikel wird die Konfiguration von Aktiv/Aktiv-Verbindungen mit Azure VPN Gateways mithilfe von Azure Resource Manager und PowerShell beschrieben.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway

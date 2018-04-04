@@ -1,13 +1,13 @@
 ---
-title: "Überwachen von HBase mit der Operations Management Suite (OMS) – Azure HDInsight HBase | Microsoft-Dokumentation"
-description: "Verwenden Sie die OMS und Azure Log Analytics zur Überwachung von HDInsight HBase-Clustern."
+title: Überwachen von HBase mit der Operations Management Suite (OMS) – Azure HDInsight HBase | Microsoft-Dokumentation
+description: Verwenden Sie die OMS und Azure Log Analytics zur Überwachung von HDInsight HBase-Clustern.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data
