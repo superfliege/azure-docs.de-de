@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>Verwendung von Azure CDN mit CORS
 ## <a name="what-is-cors"></a>Was ist CORS?
@@ -35,7 +35,7 @@ Es gibt zwei Arten von CORS-Anforderungen: *einfache Anforderungen* und *komplex
 
 2. Der Server reagiert kann wie folgt reagieren:
 
-   * Mit einem **Access-Control-Allow-Origin**-Header in der Antwort, der die zulässige Ursprungswebsites angibt. Beispiel:
+   * Mit einem **Access-Control-Allow-Origin**-Header in der Antwort, der die zulässige Ursprungswebsites angibt. Beispiel: 
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
@@ -67,7 +67,7 @@ Die beste Möglichkeit ist die Verwendung von **Azure CDN Premium von Verizon**,
 
 Sie müssen [eine Regel erstellen](cdn-rules-engine.md) , um den **Ursprungsheader** in der Anforderung zu überprüfen.  Wenn es sich hierbei um einen gültigen Ursprung handelt, legt Ihre Regel den **Access-Control-Allow-Origin** -Header mit dem in der Anforderung bereitgestellten Ursprung fest.  Wenn der im **Ursprungsheader** angegebene Ursprung nicht zulässig ist, sollte Ihre Regel den **Access-Control-Allow-Origin**-Header auslassen, der den Browser dazu bringt, die Anforderung abzulehnen. 
 
-Es gibt zwei Möglichkeiten, dies mit dem Regelmodul zu tun.  In beiden Fällen wird der **Access-Control-Allow-Origin** -Header des Ursprungsservers der Datei ignoriert und das CDN-Regelmodul verwaltet komplett die zulässigen CORS-Ursprünge.
+Es gibt zwei Möglichkeiten, dies mit der Regel-Engine zu tun.  In beiden Fällen wird der **Access-Control-Allow-Origin**-Header des Ursprungsservers der Datei ignoriert und die CDN-Regel-Engine verwaltet komplett die zulässigen CORS-Ursprünge.
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Ein regulärer Ausdruck mit allen gültigen Ursprüngen
 In diesem Fall erstellen Sie einen regulären Ausdruck, der alle Ursprünge enthält, die Sie zulassen möchten: 
@@ -75,7 +75,8 @@ In diesem Fall erstellen Sie einen regulären Ausdruck, der alle Ursprünge enth
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Azure CDN von Verizon** verwendet [Perl Compatible Regular Expressions](http://pcre.org/) als Modul für reguläre Ausdrücke.  Sie können ein Tool wie [Regular Expressions 101](https://regex101.com/) verwenden, um Ihre regulären Ausdrücke zu überprüfen.  Beachten Sie, dass das Zeichen „/“ in regulären Ausdrücken zulässig ist und nicht mit Escapezeichen versehen werden muss. Dieses Zeichen in Escapezeichen zu setzen ist jedoch die beste Methode und wird von einigen RegEx-Validierern erwartet.
+> 
+            **Azure CDN von Verizon** verwendet [Perl Compatible Regular Expressions](http://pcre.org/) als Engine für reguläre Ausdrücke.  Sie können ein Tool wie [Regular Expressions 101](https://regex101.com/) verwenden, um Ihre regulären Ausdrücke zu überprüfen.  Beachten Sie, dass das Zeichen „/“ in regulären Ausdrücken zulässig ist und nicht mit Escapezeichen versehen werden muss. Dieses Zeichen in Escapezeichen zu setzen ist jedoch die beste Methode und wird von einigen RegEx-Validierern erwartet.
 > 
 > 
 
@@ -84,12 +85,12 @@ Wenn der reguläre Ausdruck übereinstimmt, ersetzt Ihre Regel den **Access-Cont
 ![Beispiel für Regeln mit regulären Ausdruck](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>Anforderungsheader-Regel für jeden Ursprung
-Statt reguläre Ausdrücke können Sie stattdessen eine separate Regel für jeden Ursprung erstellen, den sie zulassen möchten. Verwenden Sie dazu die [Übereinstimmungsbedingung](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1) des **Request Header**-Platzhalters. Wie bei der Methode des regulären Ausdrucks legt das Regelmodul allein die CORS-Header fest. 
+Statt reguläre Ausdrücke können Sie stattdessen eine separate Regel für jeden Ursprung erstellen, den sie zulassen möchten. Verwenden Sie dazu die [Übereinstimmungsbedingung](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1) des **Request Header**-Platzhalters. Wie bei der Methode des regulären Ausdrucks legt die Regel-Engine allein die CORS-Header fest. 
 
 ![Beispiel für Regeln ohne regulären Ausdruck](./media/cdn-cors/cdn-cors-no-regex.png)
 
 > [!TIP]
-> Im obigen Beispiel weist die Verwendung des Platzhalterzeichens „*“ das Regelmodul an, sowohl HTTP als auch HTTPS abzugleichen.
+> Im obigen Beispiel weist die Verwendung des Platzhalterzeichens „*“ die Regel-Engine an, sowohl HTTP als auch HTTPS abzugleichen.
 > 
 > 
 

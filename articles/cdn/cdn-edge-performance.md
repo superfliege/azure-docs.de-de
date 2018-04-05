@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: ad285b4e2226c85859acb22ba214cc44c77c08e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analysieren der Leistung von Edgeknoten in Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -83,11 +83,11 @@ Zweck dieser Metriken ist es festzustellen, ob die Cache-Effizienz verbessert we
   * Senkung der Betriebskosten
 * Schnellere Datenübermittlung, da mehr Anforderungen direkt vom CDN erfüllt werden.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | Cache Efficiency |Gibt den Prozentsatz der übertragenen Daten an, die aus dem Cache bereitgestellt wurden. Diese Metrik misst, ob eine im Cache zwischengespeicherte Version des angeforderten Inhalts dem Anfordernden (bzw. Webbrowser) direkt vom CDN (von Edgeservern) bereitgestellt wurde. |
 | Hit Rate |Gibt den Prozentsatz der Anforderungen an, die mithilfe des Caches erfüllt wurden. Diese Metrik misst, ob eine im Cache zwischengespeicherte Version des angeforderten Inhalts dem Anfordernden (bzw. Webbrowser) direkt vom CDN (von Edgeservern) bereitgestellt wurde. |
-| % of Remote Bytes - No Cache Config |Gibt den Prozentsatz des Datenverkehrs von Ursprungsservern zum CDN (Edgeserver) an, der als Folge des Features „Bypass Cache“ (HTTP-Regelmodul) nicht zwischengespeichert wird. |
+| % of Remote Bytes - No Cache Config |Gibt den Prozentsatz des Datenverkehrs von Ursprungsservern zum CDN (Edgeserver) an, der als Folge des Features „Bypass Cache“ (HTTP-Regel-Engine) nicht zwischengespeichert wird. |
 | % of Remote Bytes - Expired Cache |Gibt den Prozentsatz des Datenverkehrs von Ursprungsservern zum CDN (Edgeserver) als Folge der erneuten Überprüfung veralteter Inhalte an. |
 
 #### <a name="usage-metrics"></a>Nutzungsmetriken
@@ -101,7 +101,7 @@ Zweck dieser Metriken ist das Ermöglichen von Einblicken in die folgenden koste
 > 
 > 
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | Ave Bytes Out |Gibt die durchschnittliche Anzahl von Bytes an, die für jede Anforderung dem Anfordernden (z. B. Webbrowser) aus dem CDN (von Edgeservern) bereitgestellt wurde. |
 | No Cache Config Byte Rate |Gibt den Prozentsatz des Datenverkehrs vom CDN (Edgeserver) zum Anfordernden (z. B. Webbrowser) an, der als Folge des Features „Bypass Cache“ nicht zwischengespeichert wird. |
@@ -113,7 +113,7 @@ Zweck dieser Metriken ist das Ermöglichen von Einblicken in die folgenden koste
 #### <a name="performance-metrics"></a>Leistungsmetriken
 Diese Metriken dient zum Nachverfolgen der CDN-Gesamtleistung für den Datenverkehr.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | Transfer Rate |Gibt die durchschnittliche Rate an, mit der Inhalte aus dem CDN an den Anfordernden übertragen wurden. |
 | Duration |Gibt die durchschnittliche Zeit in Millisekunden an, die das Übermitteln eines Assets an einen Anfordernden (z. B. Webbrowser) gedauert hat. |
@@ -125,7 +125,7 @@ Diese Metriken dient zum Nachverfolgen der CDN-Gesamtleistung für den Datenverk
 #### <a name="secure-traffic-metrics"></a>Metriken zu geschütztem Datenverkehr
 Diese Metriken dient zum Nachverfolgen der CDN-Leistung für HTTPS-Datenverkehr.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | Secure Cache Efficiency |Gibt den Prozentsatz von für HTTPS-Anforderungen übertragenen Daten an, die mithilfe des Caches erfüllt wurden. Diese Metrik misst, ob eine im Cache zwischengespeicherte Version des angeforderten Inhalts direkt vom CDN (von Edgeservern) dem Anfordernden (bzw. Webbrowser) über HTTPS bereitgestellt wurde. |
 | Secure Transfer Rate |Gibt die durchschnittliche Rate an, mit der Inhalte vom CDN (von Edgeservern) an den Anfordernden (z. B. Webserver) über HTTPS übertragen wurden. |
@@ -146,7 +146,7 @@ Jeder Bericht in diesem Modul enthält ein Diagramm und Statistiken zu Bandbreit
    
     Der Bildschirm mit Edge Performance Analytics-Berichten wird angezeigt.
 
-| Bericht | Beschreibung |
+| Bericht | BESCHREIBUNG |
 | --- | --- |
 | Tägliche Zusammenfassung |Ermöglicht das Prüfen täglicher Datenverkehrstrends über einen bestimmten Zeitraum. Jeder Balken in diesem Diagramm stellt ein bestimmtes Datum dar. Die Größe des Balkens gibt die Gesamtanzahl der Treffer an diesem Datum an. |
 | Stündliche Zusammenfassung |Ermöglicht das Prüfen stündlicher Datenverkehrstrends über einen bestimmten Zeitraum. Jeder Balken in diesem Diagramm stellt eine bestimmte Stunde an einem bestimmten Datum dar. Die Größe des Balkens gibt die Gesamtanzahl der Treffer in dieser Stunde an. |
@@ -185,6 +185,7 @@ Jeder Bericht in diesem Modul enthält ein Diagramm und Statistiken zu Bandbreit
 ## <a name="see-also"></a>Weitere Informationen
 * [Übersicht über das Azure CDN](cdn-overview.md)
 * [Echtzeitstatistiken in Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
+* 
+            [Überschreiben des HTTP-Standardverhaltens mithilfe der Regel-Engine](cdn-rules-engine.md)
 * [Erweiterte HTTP-Berichte](cdn-advanced-http-reports.md)
 

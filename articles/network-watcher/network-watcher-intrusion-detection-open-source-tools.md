@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Durchführen der Erkennung von Netzwerkangriffen mit Network Watcher und Open Source-Tools
 
 Paketerfassungen sind eine wichtige Komponente zum Implementieren von Systemen zur Erkennung von Netzwerkangriffen (Intrusion Detection Systems, IDS) und Durchführen der Sicherheitsüberwachung für Netzwerke (Network Security Monitoring, NSM). Es gibt mehrere Open Source-Tools für den IDS-Bereich, mit denen Paketerfassungen verarbeitet werden können und nach Signaturen von möglichen Netzwerkangriffen und schädlichen Aktivitäten gesucht werden kann. Mit den von Network Watcher bereitgestellten Paketerfassungen können Sie Ihr Netzwerk im Hinblick auf schädliche Eindringversuche oder Sicherheitsrisiken analysieren.
 
-Ein Open Source-Tool dieser Art ist Suricata. Es handelt sich um ein IDS-Modul, bei dem Regelsätze zum Überwachen von Netzwerkdatenverkehr verwendet und Warnungen ausgelöst werden, wenn verdächtige Ereignisse eintreten. Suricata verfügt über ein Multithread-Modul, mit dem Analysen des Netzwerkdatenverkehrs mit erhöhter Geschwindigkeit und Effizienz durchgeführt werden können. Weitere Details zu Suricata und seinen Funktionen finden Sie auf der entsprechenden Website unter „https://suricata-ids.org/“.
+Ein Open Source-Tool dieser Art ist Suricata. Es handelt sich um eine IDS-Engine, bei der Regelsätze zum Überwachen von Netzwerkdatenverkehr verwendet und Warnungen ausgelöst werden, wenn verdächtige Ereignisse eintreten. Suricata verfügt über eine Multithread-Engine, mit der Analysen des Netzwerkdatenverkehrs mit erhöhter Geschwindigkeit und Effizienz durchgeführt werden können. Weitere Details zu Suricata und seinen Funktionen finden Sie auf der entsprechenden Website unter „https://suricata-ids.org/“.
 
 ## <a name="scenario"></a>Szenario
 

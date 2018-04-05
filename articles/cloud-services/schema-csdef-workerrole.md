@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Services-Definition WorkerRole-Schema | Microsoft-Dokumentation
+title: "Azure Cloud Services – Definition WorkerRole-Schema | Microsoft-Dokumentation"
 ms.custom: 
 ms.date: 04/14/2015
 ms.prod: azure
@@ -9,15 +9,15 @@ ms.suite:
 ms.tgt_pltfrm: 
 ms.topic: reference
 ms.assetid: 41cd46bc-c479-43fa-96e5-d6c83e4e6d89
-caps.latest.revision: "55"
+caps.latest.revision: 
 author: thraka
 ms.author: adegeo
 manager: timlt
 ms.openlocfilehash: 0171c7254db5855f0eccd19ae9938249d8966edd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services-Definition – WorkerRole-Schema
 Die Azure-Workerrolle ist eine Rolle, die für die generalisierte Entwicklung nützlich ist und die Hintergrundverarbeitung für eine Webrolle durchführen kann.
@@ -91,7 +91,7 @@ Die Dienstdefinitionsdatei enthält die unten angegebenen Elemente, die in den f
 
 [ConfigurationSettings](#ConfigurationSettings)
 
-[Setting](#Setting)
+[Einstellung](#Setting)
 
 [LocalResources](#LocalResources)
 
@@ -119,9 +119,9 @@ Die Dienstdefinitionsdatei enthält die unten angegebenen Elemente, die in den f
 
 [Import](#Import)
 
-[Runtime](#Runtime)
+[Laufzeit](#Runtime)
 
-[Environment](#Environment)
+[Umgebung](#Environment)
 
 [EntryPoint](#EntryPoint)
 
@@ -133,26 +133,26 @@ Die Dienstdefinitionsdatei enthält die unten angegebenen Elemente, die in den f
 
 [RoleInstanceValue](#RoleInstanceValue)
 
-[Startup](#Startup)
+[Starten](#Startup)
 
 [Task](#Task)
 
 [Contents](#Contents)
 
-[Content](#Content)
+[Inhalt](#Content)
 
 [SourceDirectory](#SourceDirectory)
 
 ##  <a name="WorkerRole"></a>WorkerRole
 Das `WorkerRole`-Element beschreibt eine Rolle, die für die generalisierte Entwicklung nützlich ist und die Hintergrundverarbeitung für eine Webrolle durchführen kann. Ein Dienst kann null oder mehr Workerrollen enthalten.
 
-In der folgenden Tabelle werden die Attribute des `WorkerRole`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `WorkerRole` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|Name|string|Erforderlich. Der Name für die Workerrolle. Der Name der Rolle muss eindeutig sein.|
-|enableNativeCodeExecution|Boolescher Wert|Optional. Der Standardwert ist `true`. Die native Codeausführung und die volle Vertrauenswürdigkeit sind standardmäßig aktiviert. Legen Sie dieses Attribut auf `false` fest, um die native Codeausführung für die Workerrolle zu deaktivieren und stattdessen Azure-Teilvertrauenswürdigkeit zu verwenden.|
-|vmsize|string|Optional. Legen Sie diesen Wert fest, um die Größe des virtuellen Computers zu ändern, der dieser Rolle zugeordnet ist. Standardwert: `Small`. Eine Liste mit den möglichen VM-Größen und den dazugehörigen Attributen finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).|
+|name|Zeichenfolge|Erforderlich. Der Name für die Workerrolle. Der Name der Rolle muss eindeutig sein.|
+|enableNativeCodeExecution|boolean|Optional. Der Standardwert ist `true`. Die native Codeausführung und die volle Vertrauenswürdigkeit sind standardmäßig aktiviert. Legen Sie dieses Attribut auf `false` fest, um die native Codeausführung für die Workerrolle zu deaktivieren und stattdessen Azure-Teilvertrauenswürdigkeit zu verwenden.|
+|vmsize|Zeichenfolge|Optional. Legen Sie diesen Wert fest, um die Größe des virtuellen Computers zu ändern, der dieser Rolle zugeordnet ist. Standardwert: `Small`. Eine Liste mit den möglichen VM-Größen und den dazugehörigen Attributen finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).|
 
 ##  <a name="ConfigurationSettings"></a>ConfigurationSettings
 Das `ConfigurationSettings`-Element beschreibt die Sammlung mit Konfigurationseinstellungen für eine Workerrolle. Dies ist das übergeordnete Element des `Setting`-Elements.
@@ -160,11 +160,11 @@ Das `ConfigurationSettings`-Element beschreibt die Sammlung mit Konfigurationsei
 ##  <a name="Setting"></a>Setting
 Das `Setting`-Element beschreibt ein Name-Wert-Paar, mit dem eine Konfigurationseinstellung für die Instanz einer Rolle angegeben wird.
 
-In der folgenden Tabelle sind die Attribute des `Setting`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `Setting` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|Name|string|Erforderlich. Ein eindeutiger Name für die Konfigurationseinstellung.|
+|name|Zeichenfolge|Erforderlich. Ein eindeutiger Name für die Konfigurationseinstellung.|
 
 Die Konfigurationseinstellungen für eine Rolle umfassen Name-Wert-Paare, die in der Dienstdefinitionsdatei deklariert und in der Dienstkonfigurationsdatei festgelegt werden.
 
@@ -177,12 +177,12 @@ Mit dem `LocalStorage`-Element wird eine lokale Speicherressource identifiziert,
 > [!NOTE]
 >  Das `LocalStorage`-Element kann als untergeordnetes Element des `WorkerRole`-Elements verwendet werden, um die Kompatibilität mit früheren Versionen des Azure SDK zu unterstützen.
 
-In der folgenden Tabelle sind die Attribute des `LocalStorage`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `LocalStorage` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|Name|string|Erforderlich. Ein eindeutiger Name für den lokalen Speicher.|
-|cleanOnRoleRecycle|Boolescher Wert|Optional. Gibt an, ob der lokale Speicher bereinigt werden soll, wenn die Rolle neu gestartet wird. Der Standardwert ist `true`.|
+|name|Zeichenfolge|Erforderlich. Ein eindeutiger Name für den lokalen Speicher.|
+|cleanOnRoleRecycle|boolean|Optional. Gibt an, ob der lokale Speicher bereinigt werden soll, wenn die Rolle neu gestartet wird. Der Standardwert ist `true`.|
 |sizeInMb|int|Optional. Die gewünschte Speicherplatzmenge in MB, die für den lokalen Speicher zugeordnet wird. Wenn nichts angegeben ist, wird standardmäßig Speicherplatz mit einer Größe von 100 MB zugeordnet. Die Mindestmenge an Speicherplatz, die zugeordnet werden kann, beträgt 1 MB.<br /><br /> Die maximale Größe der lokalen Ressourcen richtet sich nach der VM-Größe. Weitere Informationen finden Sie unter [Größen virtueller Computer und Azure-Clouddienste](cloud-services-sizes-specs.md).|
 
 Der Name des Verzeichnisses, der der lokalen Speicherressource zugeordnet ist, entspricht dem Wert, der für das Namensattribut angegeben wird.
@@ -200,27 +200,27 @@ Das `InputEndpoint`-Element beschreibt einen externen Endpunkt für eine Workerr
 
 Sie können mehrere Endpunkte definieren, bei denen es sich um eine Kombination aus HTTP-, HTTPS-, UDP- und TCP-Endpunkten handelt. Sie können eine beliebige Portnummer angeben, die Sie für einen Eingabeendpunkt auswählen, aber die angegebenen Portnummern für die einzelnen Rollen im Dienst müssen eindeutig sein. Wenn Sie beispielsweise angeben, dass eine Workerrolle Port 80 für HTTP und Port 443 für HTTPS verwendet, können Sie anschließend ggf. angeben, dass eine zweite Workerrolle Port 8080 für HTTP und Port 8043 für HTTPS verwendet.
 
-In der folgenden Tabelle sind die Attribute des `InputEndpoint`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `InputEndpoint` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|Name|string|Erforderlich. Ein eindeutiger Name für den externen Endpunkt.|
-|protocol|string|Erforderlich. Das Transportprotokoll für den externen Endpunkt. Für eine Workerrolle lauten die möglichen Werte `HTTP`, `HTTPS`, `UDP` oder `TCP`.|
+|name|Zeichenfolge|Erforderlich. Ein eindeutiger Name für den externen Endpunkt.|
+|protocol|Zeichenfolge|Erforderlich. Das Transportprotokoll für den externen Endpunkt. Für eine Workerrolle lauten die möglichen Werte `HTTP`, `HTTPS`, `UDP` oder `TCP`.|
 |port|int|Erforderlich. Der Port für den externen Endpunkt. Sie können eine beliebige Portnummer angeben, die Sie auswählen, aber die angegebenen Portnummern für die einzelnen Rollen im Dienst müssen eindeutig sein.<br /><br /> Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).|
-|Zertifikat|string|Für einen HTTPS-Endpunkt erforderlich. Der Name eines Zertifikats, das durch ein `Certificate`-Element definiert wird.|
+|Zertifikat|Zeichenfolge|Für einen HTTPS-Endpunkt erforderlich. Der Name eines Zertifikats, das durch ein `Certificate`-Element definiert wird.|
 |localPort|int|Optional. Gibt einen Port an, der für interne Verbindungen am Endpunkt verwendet wird. Mit dem `localPort`-Attribut wird der externe Port auf dem Endpunkt einem internen Port auf einer Rolle zugeordnet. Dies ist nützlich, wenn eine Rolle mit einer internen Komponente über einen Port kommunizieren muss, der sich von dem Port unterscheidet, der extern verfügbar gemacht wird.<br /><br /> Wenn nichts angegeben ist, entspricht der Wert von `localPort` dem Wert des `port`-Attributs. Legen Sie den Wert von `localPort` auf „*“ fest, um automatisch einen nicht zugeordneten Port zuzuweisen, der mit der Runtime-API ermittelbar ist.<br /><br /> Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).<br /><br /> Das `localPort`-Attribut ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.|
-|ignoreRoleInstanceStatus|Boolescher Wert|Optional. Wenn der Wert dieses Attributs auf `true` festgelegt ist, wird der Status eines Diensts ignoriert, und der Endpunkt wird vom Lastenausgleich nicht entfernt. Das Festlegen dieses Werts auf `true` ist hilfreich, um stark ausgelastete Instanzen eines Diensts zu debuggen. Standardwert: `false`. **Hinweis:** Ein Endpunkt kann auch dann weiterhin Datenverkehr empfangen, wenn sich die Rolle nicht im Status „Bereit“ befindet.|
-|loadBalancerProbe|string|Optional. Der Name des Lastenausgleichstests, der dem Eingabeendpunkt zugeordnet ist. Weitere Informationen finden Sie unter [LoadBalancerProbe-Schema](schema-csdef-loadbalancerprobe.md).|
+|ignoreRoleInstanceStatus|boolean|Optional. Wenn der Wert dieses Attributs auf `true` festgelegt ist, wird der Status eines Diensts ignoriert, und der Endpunkt wird vom Lastenausgleich nicht entfernt. Das Festlegen dieses Werts auf `true` ist hilfreich, um stark ausgelastete Instanzen eines Diensts zu debuggen. Standardwert: `false`. **Hinweis:** Ein Endpunkt kann auch dann weiterhin Datenverkehr empfangen, wenn sich die Rolle nicht im Status „Bereit“ befindet.|
+|loadBalancerProbe|Zeichenfolge|Optional. Der Name des Lastenausgleichstests, der dem Eingabeendpunkt zugeordnet ist. Weitere Informationen finden Sie unter [LoadBalancerProbe-Schema](schema-csdef-loadbalancerprobe.md).|
 
 ##  <a name="InternalEndpoint"></a>InternalEndpoint
 Das `InternalEndpoint`-Element beschreibt einen internen Endpunkt für eine Workerrolle. Eine interner Endpunkt ist nur für andere Rolleninstanzen verfügbar, die innerhalb des Diensts ausgeführt werden. Er ist nicht für Clients außerhalb des Diensts verfügbar. Eine Workerrolle kann bis zu fünf interne HTTP-, UDP- oder TCP-Endpunkte haben.
 
-In der folgenden Tabelle sind die Attribute des `InternalEndpoint`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `InternalEndpoint` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|Name|string|Erforderlich. Ein eindeutiger Name für den internen Endpunkt.|
-|protocol|string|Erforderlich. Das Transportprotokoll für den internen Endpunkt. Mögliche Werte sind `HTTP`, `TCP`, `UDP` oder `ANY`.<br /><br /> Mit dem Wert `ANY` wird angegeben, dass alle Protokolle und alle Ports zulässig sind.|
+|name|Zeichenfolge|Erforderlich. Ein eindeutiger Name für den internen Endpunkt.|
+|protocol|Zeichenfolge|Erforderlich. Das Transportprotokoll für den internen Endpunkt. Mögliche Werte sind `HTTP`, `TCP`, `UDP` oder `ANY`.<br /><br /> Mit dem Wert `ANY` wird angegeben, dass alle Protokolle und alle Ports zulässig sind.|
 |port|int|Optional. Der Port, der für interne Verbindungen mit Lastenausgleich auf dem Endpunkt verwendet wird. Für einen Endpunkt mit Lastenausgleich werden zwei Ports verwendet. Der Port für die öffentliche IP-Adresse und der Port für die private IP-Adresse. Normalerweise wird hierfür der gleiche Port verwendet, aber Sie können auch unterschiedliche Ports verwenden.<br /><br /> Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).<br /><br /> Das `Port`-Attribut ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.|
 
 ##  <a name="InstanceInputEndpoint"></a>InstanceInputEndpoint
@@ -228,13 +228,13 @@ Das `InstanceInputEndpoint`-Element beschreibt einen Instanz-Eingabeendpunkt fü
 
 Das `InstanceInputEndpoint`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.7 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `InstanceInputEndpoint`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `InstanceInputEndpoint` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|Name|string|Erforderlich. Ein eindeutiger Name für den Endpunkt.|
+|name|Zeichenfolge|Erforderlich. Ein eindeutiger Name für den Endpunkt.|
 |localPort|int|Erforderlich. Gibt den internen Port an, auf den alle Rolleninstanzen lauschen, um eingehenden Datenverkehr zu empfangen, der vom Lastenausgleich weitergeleitet wird. Mögliche Werte liegen zwischen 1 und 65.535 (einschließlich).|
-|protocol|string|Erforderlich. Das Transportprotokoll für den internen Endpunkt. Mögliche Werte sind `udp` oder `tcp`. Verwenden Sie `tcp` für HTTP/HTTPS-basierten Datenverkehr.|
+|protocol|Zeichenfolge|Erforderlich. Das Transportprotokoll für den internen Endpunkt. Mögliche Werte sind `udp` oder `tcp`. Verwenden Sie `tcp` für HTTP/HTTPS-basierten Datenverkehr.|
 
 ##  <a name="AllocatePublicPortFrom"></a>AllocatePublicPortFrom
 Das `AllocatePublicPortFrom`-Element beschreibt den öffentlichen Portbereich, der von externen Kunden verwendet werden kann, um auf die einzelnen Instanz-Eingabeendpunkte zuzugreifen. Die öffentliche Portnummer (VIP) wird aus diesem Bereich zugeordnet und während der Bereitstellung und Aktualisierung des Mandanten den individuellen Rolleninstanzendpunkten zugewiesen. Dies ist das übergeordnete Element des `FixedPortRange`-Elements.
@@ -246,9 +246,9 @@ Das `FixedPort`-Element gibt den Port für den internen Endpunkt an, um auf dem 
 
 Das `FixedPort`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `FixedPort`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `FixedPort` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
 |port|int|Erforderlich. Der Port für den internen Endpunkt. Dies hat die gleiche Wirkung wie das Festlegen des Minimums und Maximums von `FixedPortRange` auf denselben Port.<br /><br /> Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).|
 
@@ -260,12 +260,12 @@ Das `FixedPortRange`-Element gibt den Bereich der Ports an, die dem internen End
 
 Das `FixedPortRange`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `FixedPortRange`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `FixedPortRange` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|min|int|Erforderlich. Der niedrigste Port im Bereich. Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).|
-|max|string|Erforderlich. Der höchste Port im Bereich. Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).|
+|Min|int|Erforderlich. Der niedrigste Port im Bereich. Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).|
+|max|Zeichenfolge|Erforderlich. Der höchste Port im Bereich. Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).|
 
 ##  <a name="Certificates"></a>Certificates
 Das `Certificates`-Element beschreibt die Sammlung mit Zertifikaten für eine Workerrolle. Dies ist das übergeordnete Element des `Certificate`-Elements. Eine Rolle kann über beliebig viele zugeordnete Zertifikate verfügen. Weitere Informationen zur Verwendung des Certificate-Elements finden Sie unter [Ändern der Definitions- und Konfigurationsdateien für den Dienst](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files).
@@ -273,14 +273,14 @@ Das `Certificates`-Element beschreibt die Sammlung mit Zertifikaten für eine Wo
 ##  <a name="Certificate"></a>Certificate
 Das `Certificate`-Element beschreibt ein Zertifikat, das einer Workerrolle zugeordnet ist.
 
-In der folgenden Tabelle sind die Attribute des `Certificate`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `Certificate` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|Name|string|Erforderlich. Ein Name für dieses Zertifikat, mit dem darauf verwiesen wird, wenn es einem `InputEndpoint`-HTTPS-Element zugeordnet ist.|
-|storeLocation|string|Erforderlich. Der Speicherort des Zertifikatspeichers, in dem sich dieses Zertifikat auf dem lokalen Computer befinden kann. Mögliche Werte sind `CurrentUser` und `LocalMachine`.|
-|storeName|string|Erforderlich. Der Name des Zertifikatspeichers, in dem sich dieses Zertifikat auf dem lokalen Computer befindet. Mögliche Werte sind die Namen `My`, `Root`, `CA`, `Trust`, `Disallowed`, `TrustedPeople`, `TrustedPublisher`, `AuthRoot` und `AddressBook` von integrierten Speichern oder der Name eines beliebigen benutzerdefinierten Speichers. Wenn der Name eines benutzerdefinierten Speichers angegeben wird, wird der Speicher automatisch erstellt.|
-|permissionLevel|string|Optional. Gibt die Zugriffsberechtigungen an, die für die Rollenprozesse gewährt werden. Geben Sie die Berechtigung `elevated` an, wenn nur Prozesse mit erhöhten Rechten auf den privaten Schlüssel zugreifen sollen. Mit der Berechtigung `limitedOrElevated` können alle Rollenprozesse auf den privaten Schlüssel zugreifen. Mögliche Werte sind `limitedOrElevated` oder `elevated`. Standardwert: `limitedOrElevated`.|
+|name|Zeichenfolge|Erforderlich. Ein Name für dieses Zertifikat, mit dem darauf verwiesen wird, wenn es einem `InputEndpoint`-HTTPS-Element zugeordnet ist.|
+|storeLocation|Zeichenfolge|Erforderlich. Der Speicherort des Zertifikatspeichers, in dem sich dieses Zertifikat auf dem lokalen Computer befinden kann. Mögliche Werte sind `CurrentUser` und `LocalMachine`.|
+|storeName|Zeichenfolge|Erforderlich. Der Name des Zertifikatspeichers, in dem sich dieses Zertifikat auf dem lokalen Computer befindet. Mögliche Werte sind die Namen `My`, `Root`, `CA`, `Trust`, `Disallowed`, `TrustedPeople`, `TrustedPublisher`, `AuthRoot` und `AddressBook` von integrierten Speichern oder der Name eines beliebigen benutzerdefinierten Speichers. Wenn der Name eines benutzerdefinierten Speichers angegeben wird, wird der Speicher automatisch erstellt.|
+|permissionLevel|Zeichenfolge|Optional. Gibt die Zugriffsberechtigungen an, die für die Rollenprozesse gewährt werden. Geben Sie die Berechtigung `elevated` an, wenn nur Prozesse mit erhöhten Rechten auf den privaten Schlüssel zugreifen sollen. Mit der Berechtigung `limitedOrElevated` können alle Rollenprozesse auf den privaten Schlüssel zugreifen. Mögliche Werte sind `limitedOrElevated` oder `elevated`. Standardwert: `limitedOrElevated`.|
 
 ##  <a name="Imports"></a>Imports
 Das `Imports`-Element beschreibt eine Sammlung mit Importmodulen für eine Workerrolle, mit denen Komponenten dem Gastbetriebssystem hinzugefügt werden. Dies ist das übergeordnete Element des `Import`-Elements. Dieses Element ist optional, und eine Rolle kann nur einen Laufzeitblock haben.
@@ -292,11 +292,11 @@ Das `Import`-Element gibt ein Modul zum Hinzufügen zum Gastbetriebssystem an.
 
 Das `Import`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `Import`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `Import` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|moduleName|string|Erforderlich. Der Name des zu importierenden Moduls. Gültige Importmodule sind:<br /><br /> -   RemoteAccess<br />-   RemoteForwarder<br />-   Diagnostics<br /><br /> Mit den Modulen RemoteAccess und RemoteForwarder können Sie Ihre Rolleninstanz für Remotedesktopverbindungen konfigurieren. Weitere Informationen finden Sie unter [Aktivieren einer Remotedesktopverbindung](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Das Modul Diagnostics ermöglicht Ihnen das Sammeln von Diagnosedaten für eine Rolleninstanz.|
+|moduleName|Zeichenfolge|Erforderlich. Der Name des zu importierenden Moduls. Gültige Importmodule sind:<br /><br /> -   RemoteAccess<br />-   RemoteForwarder<br />-   Diagnostics<br /><br /> Mit den Modulen RemoteAccess und RemoteForwarder können Sie Ihre Rolleninstanz für Remotedesktopverbindungen konfigurieren. Weitere Informationen finden Sie unter [Aktivieren einer Remotedesktopverbindung](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Das Modul Diagnostics ermöglicht Ihnen das Sammeln von Diagnosedaten für eine Rolleninstanz.|
 
 ##  <a name="Runtime"></a>Runtime
 Das `Runtime`-Element beschreibt eine Sammlung mit Umgebungsvariableneinstellungen für eine Workerrolle, mit denen die Laufzeitumgebung des Azure-Hostprozesses gesteuert wird. Dies ist das übergeordnete Element des `Environment`-Elements. Dieses Element ist optional, und eine Rolle kann nur einen Laufzeitblock haben.
@@ -305,9 +305,9 @@ Das `Runtime`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder h�
 
 In der folgenden Tabelle sind die Attribute des `Runtime`-Elements beschrieben:
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|executionContext|string|Optional. Gibt den Kontext an, in dem der Rollenprozess gestartet wird. Der Standardkontext ist `limited`.<br /><br /> -   `limited`: Der Prozess wird ohne Administratorrechte gestartet.<br />-   `elevated`: Der Prozess wird mit Administratorrechten gestartet.|
+|executionContext|Zeichenfolge|Optional. Gibt den Kontext an, in dem der Rollenprozess gestartet wird. Der Standardkontext ist `limited`.<br /><br /> -   `limited`: Der Prozess wird ohne Administratorrechte gestartet.<br />-   `elevated`: Der Prozess wird mit Administratorrechten gestartet.|
 
 ##  <a name="Environment"></a>Environment
 Das `Environment`-Element beschreibt eine Sammlung mit Umgebungsvariableneinstellungen für eine Workerrolle. Dies ist das übergeordnete Element des `Variable`-Elements. Für eine Rolle kann eine beliebige Anzahl von Umgebungsvariablen festgelegt werden.
@@ -319,19 +319,19 @@ Das `Variable`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder h
 
 In der folgenden Tabelle sind die Attribute des `Variable`-Elements beschrieben:
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|Name|string|Erforderlich. Der Name der festzulegenden Umgebungsvariablen.|
-|value|string|Optional. Der Wert, der für die Umgebungsvariable festgelegt werden soll. Sie müssen entweder ein Wertattribut oder ein `RoleInstanceValue`-Element einbinden.|
+|name|Zeichenfolge|Erforderlich. Der Name der festzulegenden Umgebungsvariablen.|
+|value|Zeichenfolge|Optional. Der Wert, der für die Umgebungsvariable festgelegt werden soll. Sie müssen entweder ein Wertattribut oder ein `RoleInstanceValue`-Element einbinden.|
 
 ##  <a name="RoleInstanceValue"></a>RoleInstanceValue
 Das `RoleInstanceValue`-Element gibt den xPath an, über den der Wert der Variablen abgerufen wird.
 
-In der folgenden Tabelle sind die Attribute des `RoleInstanceValue`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `RoleInstanceValue` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|xpath|string|Optional. Pfad zum Speicherort der Bereitstellungseinstellungen für die Instanz. Weitere Informationen finden Sie unter [Verfügbarmachen von Rollenkonfigurationseinstellungen als Umgebungsvariable mit XPath](cloud-services-role-config-xpath.md).<br /><br /> Sie müssen entweder ein Wertattribut oder ein `RoleInstanceValue`-Element einbinden.|
+|xpath|Zeichenfolge|Optional. Pfad zum Speicherort der Bereitstellungseinstellungen für die Instanz. Weitere Informationen finden Sie unter [Verfügbarmachen von Rollenkonfigurationseinstellungen als Umgebungsvariable mit XPath](cloud-services-role-config-xpath.md).<br /><br /> Sie müssen entweder ein Wertattribut oder ein `RoleInstanceValue`-Element einbinden.|
 
 ##  <a name="EntryPoint"></a>EntryPoint
 Das `EntryPoint`-Element gibt den Einstiegspunkt für eine Rolle an. Dies ist das übergeordnete Element des `NetFxEntryPoint`-Elements. Diese Elemente ermöglichen Ihnen das Angeben einer anderen Anwendung als der Standarddatei „WaWorkerHost.exe“ als Rolleneinstiegspunkt.
@@ -344,12 +344,12 @@ Das `NetFxEntryPoint`-Element gibt das Programm an, das für eine Rolle ausgefü
 > [!NOTE]
 >  Das `NetFxEntryPoint`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.5 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `NetFxEntryPoint`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `NetFxEntryPoint` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|assemblyName|string|Erforderlich. Der Pfad und Dateiname der Assembly, die den Einstiegspunkt enthält. Der Pfad ist relativ zum Ordner **\\%ROLEROOT%\Approot**. (Geben Sie **\\%ROLEROOT%\Approot** in `commandLine` nicht an, da dies bereits vorausgesetzt wird.) **%ROLEROOT%** ist eine von Azure verwaltete Umgebungsvariable, die den Speicherort des Stammordners für Ihre Rolle darstellt. Der Ordner **\\%ROLEROOT%\Approot** stellt den Anwendungsordner für Ihre Rolle dar.|
-|targetFrameworkVersion|string|Erforderlich. Die .NET Framework-Version, unter der die Assembly erstellt wurde. Beispiel: `targetFrameworkVersion="v4.0"`.|
+|assemblyName|Zeichenfolge|Erforderlich. Der Pfad und Dateiname der Assembly, die den Einstiegspunkt enthält. Der Pfad ist relativ zum Ordner **\\%ROLEROOT%\Approot**. (Geben Sie **\\%ROLEROOT%\Approot** in `commandLine` nicht an, da dies bereits vorausgesetzt wird.) **%ROLEROOT%** ist eine von Azure verwaltete Umgebungsvariable, die den Speicherort des Stammordners für Ihre Rolle darstellt. Der Ordner **\\%ROLEROOT%\Approot** stellt den Anwendungsordner für Ihre Rolle dar.|
+|targetFrameworkVersion|Zeichenfolge|Erforderlich. Die .NET Framework-Version, unter der die Assembly erstellt wurde. Beispiel: `targetFrameworkVersion="v4.0"`.|
 
 ##  <a name="ProgramEntryPoint"></a>ProgramEntryPoint
 Das `ProgramEntryPoint`-Element gibt das Programm an, das für eine Rolle ausgeführt werden soll. Mit dem `ProgramEntryPoint`-Element können Sie einen Programmeinstiegspunkt angeben, der nicht auf einer .NET-Assembly basiert.
@@ -357,19 +357,19 @@ Das `ProgramEntryPoint`-Element gibt das Programm an, das für eine Rolle ausgef
 > [!NOTE]
 >  Das `ProgramEntryPoint`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.5 oder höher verwendet wird.
 
-In der folgenden Tabelle werden die Attribute des `ProgramEntryPoint`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `ProgramEntryPoint` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|commandLine|string|Erforderlich. Der Pfad, Dateiname und alle Befehlszeilenargumente des auszuführenden Programms. Der Pfad ist relativ zum Ordner **%ROLEROOT%\Approot**. (Geben Sie **%ROLEROOT%\Approot** in commandLine nicht an, da dies bereits vorausgesetzt wird.) **%ROLEROOT%** ist eine von Azure verwaltete Umgebungsvariable, die den Speicherort des Stammordners für Ihre Rolle darstellt. Der Ordner **%ROLEROOT%\Approot** stellt den Anwendungsordner für Ihre Rolle dar.<br /><br /> Wenn das Programm endet, wird die Rolle recycelt. Im Allgemeinen sollten Sie das Programm also so festlegen, dass es weiter ausgeführt und nicht nur zum Durchführen einer begrenzten Aufgabe gestartet wird.|
-|setReadyOnProcessStart|Boolescher Wert|Erforderlich. Gibt an, ob die Rolleninstanz darauf wartet, dass vom Befehlszeilenprogramm das Signal zum erfolgten Start bereitgestellt wird. Dieser Wert muss hier auf `true` festgelegt werden. Das Festlegen des Werts auf `false` ist für die spätere Nutzung reserviert.|
+|commandLine|Zeichenfolge|Erforderlich. Der Pfad, Dateiname und alle Befehlszeilenargumente des auszuführenden Programms. Der Pfad ist relativ zum Ordner **%ROLEROOT%\Approot**. (Geben Sie **%ROLEROOT%\Approot** in commandLine nicht an, da dies bereits vorausgesetzt wird.) **%ROLEROOT%** ist eine von Azure verwaltete Umgebungsvariable, die den Speicherort des Stammordners für Ihre Rolle darstellt. Der Ordner **%ROLEROOT%\Approot** stellt den Anwendungsordner für Ihre Rolle dar.<br /><br /> Wenn das Programm endet, wird die Rolle recycelt. Im Allgemeinen sollten Sie das Programm also so festlegen, dass es weiter ausgeführt und nicht nur zum Durchführen einer begrenzten Aufgabe gestartet wird.|
+|setReadyOnProcessStart|boolean|Erforderlich. Gibt an, ob die Rolleninstanz darauf wartet, dass vom Befehlszeilenprogramm das Signal zum erfolgten Start bereitgestellt wird. Dieser Wert muss hier auf `true` festgelegt werden. Das Festlegen des Werts auf `false` ist für die spätere Nutzung reserviert.|
 
 ##  <a name="Startup"></a>Startup
 Das `Startup`-Element beschreibt eine Sammlung mit Aufgaben, die ausgeführt werden, wenn die Rolle gestartet wird. Dies kann das übergeordnete Element des `Variable`-Elements sein. Weitere Informationen zur Verwendung der Rollenstartaufgaben finden Sie unter [Konfigurieren und Ausführen von Startaufgaben für einen Clouddienst](cloud-services-startup-tasks.md). Dieses Element ist optional, und eine Rolle kann nur einen Startblock haben.
 
 In der folgenden Tabelle sind die Attribute des `Startup`-Elements beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
 |priority|int|Nur zur internen Verwendung.|
 
@@ -378,13 +378,13 @@ Das `Task`-Element gibt Startaufgaben an, die ausgeführt werden, wenn die Rolle
 
 Das `Task`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `Task`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `Task` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|commandLine|string|Erforderlich. Ein Skript, z.B. eine CMD-Datei, das die auszuführenden Befehle enthält. Startbefehls- und Batchdateien müssen im ANSI-Format gespeichert werden. Dateiformate, bei denen am Anfang der Datei eine Bytereihenfolge-Marke festgelegt wird, werden nicht richtig verarbeitet.|
-|executionContext|string|Gibt den Kontext an, in dem das Skript ausgeführt wird.<br /><br /> -   `limited` [Standard]: Die Ausführung erfolgt mit den gleichen Rechten wie für die Rolle, die den Prozess hostet.<br />-   `elevated`: Die Ausführung erfolgt mit Administratorrechten.|
-|taskType|string|Gibt das Ausführungsverhalten des Befehls an.<br /><br /> -   `simple` [Standard]: Das System wartet, bis die Aufgabe beendet wird (exit), bevor andere Aufgaben gestartet werden.<br />-   `background`: Das System wartet nicht auf die Beendigung der Aufgabe.<br />-   `foreground`: Ähnelt „background“, aber die Rolle wird erst neu gestartet, nachdem alle Aufgaben im Vordergrund beendet wurden.|
+|commandLine|Zeichenfolge|Erforderlich. Ein Skript, z.B. eine CMD-Datei, das die auszuführenden Befehle enthält. Startbefehls- und Batchdateien müssen im ANSI-Format gespeichert werden. Dateiformate, bei denen am Anfang der Datei eine Bytereihenfolge-Marke festgelegt wird, werden nicht richtig verarbeitet.|
+|executionContext|Zeichenfolge|Gibt den Kontext an, in dem das Skript ausgeführt wird.<br /><br /> -   `limited` [Standard]: Die Ausführung erfolgt mit den gleichen Rechten wie für die Rolle, die den Prozess hostet.<br />-   `elevated`: Die Ausführung erfolgt mit Administratorrechten.|
+|taskType|Zeichenfolge|Gibt das Ausführungsverhalten des Befehls an.<br /><br /> -   `simple` [Standard]: Das System wartet, bis die Aufgabe beendet wird (exit), bevor andere Aufgaben gestartet werden.<br />-   `background`: Das System wartet nicht auf die Beendigung der Aufgabe.<br />-   `foreground`: Ähnelt „background“, aber die Rolle wird erst neu gestartet, nachdem alle Aufgaben im Vordergrund beendet wurden.|
 
 ##  <a name="Contents"></a>Contents
 Das `Contents`-Element beschreibt die Sammlung mit dem Inhalt einer Workerrolle. Dies ist das übergeordnete Element des `Content`-Elements.
@@ -396,11 +396,11 @@ Das `Content`-Element definiert den Quellspeicherort des Inhalts, der auf den vi
 
 Das `Content`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.5 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `Content`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `Content` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|Ziel|string|Erforderlich. Der Speicherort des virtuellen Azure-Computers, auf dem der Inhalt angeordnet wird. Dieser Speicherort ist relativ zum Ordner **%ROLEROOT%\Approot**.|
+|Ziel|Zeichenfolge|Erforderlich. Der Speicherort des virtuellen Azure-Computers, auf dem der Inhalt angeordnet wird. Dieser Speicherort ist relativ zum Ordner **%ROLEROOT%\Approot**.|
 
 Dies ist das übergeordnete Element des `SourceDirectory`-Elements.
 
@@ -409,11 +409,11 @@ Das `SourceDirectory`-Element definiert das lokale Verzeichnis, aus dem der Inha
 
 Das `SourceDirectory`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.5 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `SourceDirectory`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `SourceDirectory` beschrieben.
 
-| Attribut | Typ | Beschreibung |
+| Attribut | Typ | BESCHREIBUNG |
 | --------- | ---- | ----------- |
-|path|string|Erforderlich. Der relative oder absolute Pfad eines lokalen Verzeichnisses, dessen Inhalte auf den virtuellen Azure-Computer kopiert werden sollen. Die Erweiterung von Umgebungsvariablen im Verzeichnispfad wird unterstützt.|
+|path|Zeichenfolge|Erforderlich. Der relative oder absolute Pfad eines lokalen Verzeichnisses, dessen Inhalte auf den virtuellen Azure-Computer kopiert werden sollen. Die Erweiterung von Umgebungsvariablen im Verzeichnispfad wird unterstützt.|
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 [Clouddienst-Definitionsschema (klassisch)](schema-csdef-file.md)

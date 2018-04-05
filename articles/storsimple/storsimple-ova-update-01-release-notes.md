@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: c4ccde9635b3874864baa9d4d262ff5ddcf2a425
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>Versionsanmerkungen zu Update 0.2 und Update 0.1 für das StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht
@@ -36,7 +36,7 @@ Update 0.2 entspricht Softwareversion **10.0.10280.0**. Update 0.1 entspricht Ve
 ## <a name="issues-fixed-in-the-update-02"></a>In Update 0.2 behobene Probleme
 Update 0.2 enthält alle Änderungen aus Update 0.1 sowie zusätzlich den in der folgenden Tabelle beschriebenen Fix:
 
-| Funktion | Problem |
+| Feature | Problem |
 | --- | --- |
 | Aktualisierungen |In der letzten Version wurden Updates im klassischen Azure-Portal nicht automatisch erkannt, und Sie mussten die lokale Webbenutzeroberfläche verwenden, um Updates zu installieren. Dieses Problem wurde in dieser Version behoben. Nach der Installation von Update 0.2 können Sie zukünftige Updates im klassischen Azure-Portal installieren. |
 
@@ -53,7 +53,7 @@ Update 0.1 enthält folgende Fehlerbehebungen und Verbesserungen:
 ## <a name="issues-fixed-in-the-update-01"></a>In Update 0.1 behobene Probleme
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser Version behoben wurden:
 
-| Nein. | Funktion | Problem |
+| Nein. | Feature | Problem |
 | --- | --- | --- |
 | 1 |VMDK |In bestimmten VMware-Versionen wurde der Betriebssystemdatenträger als spärlich betrachtet, was Warnungen sowie die Störung des regulären Betriebs zur Folge hatte. Dies wurde in dieser Version behoben. |
 | 2 |iSCSI-Server |In der letzten Version musste der Benutzer für jede aktivierte Netzwerkschnittstelle des virtuellen StorSimple-Geräts ein Gateway angeben. Dieses Verhalten wurde in dieser Version geändert, sodass der Benutzer nun mindestens ein Gateway für alle aktivierten Netzwerkschnittstellen konfigurieren muss. |
@@ -64,7 +64,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser V
 ## <a name="known-issues-in-the-update-01"></a>Bekannte Probleme in Update 0.1
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für StorSimple Virtual Array sowie die Probleme aus früheren Versionsinformationen. **Die Probleme aus den aktuellen Versionshinweisen sind mit einem Sternchen gekennzeichnet. Nahezu alle Probleme in dieser Liste stammen aus der GA-Version von StorSimple Virtual Array.**
 
-| Nein. | Funktion | Problem | Problemumgehung/Kommentare |
+| Nein. | Feature | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
 | **1.** |Aktualisierungen |In der Vorabversion erstellte virtuellen Geräte können nicht auf eine unterstützte Version für allgemeine Verfügbarkeit aktualisiert werden. |Für diese virtuellen Geräte muss mithilfe eines Notfallwiederherstellungs-Workflows ein Failover für die allgemein verfügbare Version ausgeführt werden. |
 | **2.** |Bereitgestellter Datenträger |Nachdem Sie einen Datenträger mit einer bestimmten angegebenen Größe bereitgestellt und das entsprechende virtuelle StorSimple-Gerät erstellt haben, darf der Datenträger nicht erweitert oder verkleinert werden. Ein entsprechender Versuch führt zum Verlust aller Daten auf den lokalen Ebenen des Geräts. | |

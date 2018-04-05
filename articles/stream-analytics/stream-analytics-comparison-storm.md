@@ -1,12 +1,11 @@
 ---
 title: 'Analyseplattformen: Vergleich von Apache Storm mit Stream Analytics | Microsoft Docs'
-description: "Hier finden Sie anhand eines Vergleichs von Apache Storm mit Stream Analytics Hilfe beim Auswählen einer Cloudanalyseplattform. Lernen Sie die Funktionen und Unterschiede kennen."
+description: Hier finden Sie anhand eines Vergleichs von Apache Storm mit Stream Analytics Hilfe beim Auswählen einer Cloudanalyseplattform. Lernen Sie die Funktionen und Unterschiede kennen.
 keywords: Analyseplattform, Analyseplattformen, Cloudanalyseplattform, Storm-Vergleich
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: b9aac017-9866-4d0a-b98f-6f03881e9339
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/27/2017
-ms.author: samacha
-ms.openlocfilehash: 97044cb5d7b0b3fcb3b85328df618a265bc59b61
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 48599c362c5db50ebec3acd0aaa4359439edb00b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>Auswählen einer Stream Analytics-Plattform: Vergleich von Apache Storm und Azure Stream Analytics
 Azure umfasst mehrere Lösungen zum Analysieren von Streamingdaten: [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) und [Apache Storm in Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-storm/). Beide Analyseplattformen verfügen über die Vorteile einer PaaS-Lösung. Für die Plattformen gelten aber einige erhebliche Unterschiede bei den Funktionen sowie in Bezug auf die Konfiguration und Verwaltung. 
@@ -33,7 +32,7 @@ In diesem Artikel werden die Features nebeneinander gestellt und verglichen, dam
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong></strong>
+                    <strong> </strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -87,12 +86,12 @@ Ja </p>
             </td>
             <td width="204" valign="top">
                 <p>
-Keine Azure Stream Analytics ist ein Azure-Dienst.
+None (Keine): Azure Stream Analytics ist ein Azure-Dienst.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-Keine Apache Storm ist ein Azure-Dienst.
+None (Keine): Apache Storm ist ein Azure-Dienst.
                 </p>
             </td>
         </tr>
@@ -145,7 +144,7 @@ Weitere Informationen finden Sie unter <a href="http://azure.microsoft.com/prici
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong></strong>
+                    <strong> </strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -254,7 +253,7 @@ Ja. Benutzer können benutzerdefinierten Code in C#, Java oder einer beliebigen 
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong></strong>
+                    <strong> </strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -275,7 +274,7 @@ Ja. Benutzer können benutzerdefinierten Code in C#, Java oder einer beliebigen 
                 </p>
             </td>
             <td width="204" valign="top">
-                <p>Azure Event Hubs und Azure-Blobspeicher.
+                <p>Azure Event Hubs und Azure Blob Storage.
                 </p>
             </td>
             <td width="246" valign="top">
@@ -308,12 +307,12 @@ Benutzer können mit benutzerdefiniertem Code beliebige Formate implementieren.
             </td>
             <td width="204" valign="top">
                 <p>
-Ein Streamingauftrag kann über mehrere Ausgaben verfügen. Unterstützte Ausgaben sind Azure Event Hubs, Azure-Blobspeicher, Azure-Tabellenspeicher, Azure SQL-Datenbank und Power BI.
+Ein Streamingauftrag kann über mehrere Ausgaben verfügen. Unterstützte Ausgaben sind Azure Event Hubs, Azure Blob Storage, Azure Table Storage, Azure SQL-Datenbank und Power BI.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-Storm unterstützt in einer Topologie viele Ausgaben, und jede Ausgabe kann eine benutzerdefinierte Logik für die Downstreamverarbeitung aufweisen. Storm enthält Connectors für Power BI, Azure Event Hubs, Azure-Blobspeicher, Azure Cosmos DB, SQL und HBase. Benutzer können zusätzliche Connectors erstellen, indem sie benutzerdefinierten Code verwenden.    
+Storm unterstützt in einer Topologie viele Ausgaben, und jede Ausgabe kann eine benutzerdefinierte Logik für die Downstreamverarbeitung aufweisen. Storm enthält Connectors für Power BI, Azure Event Hubs, Azure Blob Storage, Azure Cosmos DB, SQL und HBase. Benutzer können zusätzliche Connectors erstellen, indem sie benutzerdefinierten Code verwenden.    
                 </p>
             </td>
         </tr>
@@ -344,7 +343,7 @@ Benutzer können ein beliebiges Datencodierungsformat implementieren, indem sie 
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong></strong>
+                    <strong> </strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -492,7 +491,7 @@ Apache Storm ist eine fehlertolerante Streamingplattform. Aber der Benutzer ist 
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong></strong>
+                    <strong> </strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -531,7 +530,7 @@ Benutzer müssen die Logik zum Behandeln dieses Szenarios implementieren.
             </td>
             <td width="204" valign="top">
                 <p>
-Die Referenzdaten sind im Azure-Blobspeicher mit einem maximalen In-Memory-Cache von 100 MB verfügbar. Referenzdaten werden vom Dienst aktualisiert.
+Die Referenzdaten sind in Azure Blob Storage mit einem maximalen In-Memory-Cache von 100 MB verfügbar. Referenzdaten werden vom Dienst aktualisiert.
                 </p>
             </td>
             <td width="246" valign="top">

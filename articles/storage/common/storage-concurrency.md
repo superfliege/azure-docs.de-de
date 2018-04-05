@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.openlocfilehash: 937cca66a0af0674b868e6a87681adbea330e91c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Verwalten von Nebenläufigkeit Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -90,15 +90,15 @@ Die folgende Tabelle gibt eine Übersicht über die Containervorgänge, die bedi
 
 | Vorgang | Gibt Container-ETag-Wert zurück | Akzeptiert bedingte Header |
 |:--- |:--- |:--- |
-| Create Container |Ja |Nein |
-| Get Container Properties |Ja |Nein |
-| Get Container Metadata |Ja |Nein |
+| Create Container |Ja |Nein  |
+| Get Container Properties |Ja |Nein  |
+| Get Container Metadata |Ja |Nein  |
 | Set Container Metadata |Ja |Ja |
-| Get Container ACL |Ja |Nein |
+| Get Container ACL |Ja |Nein  |
 | Set Container ACL |Ja |Ja (*) |
-| Delete Container |Nein |Ja |
+| Delete Container |Nein  |Ja |
 | Lease Container |Ja |Ja |
-| List Blobs |Nein |Nein |
+| List Blobs |Nein  |Nein  |
 
 (*) Die von SetContainerACL definierten Berechtigungen werden zwischengespeichert, und die Verteilung der Aktualisierungen dieser Berechtigungen dauert 30 Sekunden. Während dieser Zeitspanne kann die Konsistenz der Aktualisierungen nicht garantiert werden.  
 
@@ -115,11 +115,11 @@ Die folgende Tabelle gibt einen Überblick über die Blob-Vorgänge, die bedingt
 | Lease Blob (*) |Ja |Ja |
 | Snapshot Blob |Ja |Ja |
 | Kopieren von Blobs |Ja |Ja (für Quell- und Ziel-Blob) |
-| Abort Copy Blob |Nein |Nein |
-| Delete Blob |Nein |Ja |
-| Put Block |Nein |Nein |
+| Abort Copy Blob |Nein  |Nein  |
+| Delete Blob |Nein  |Ja |
+| Put Block |Nein  |Nein  |
 | Put Block List |Ja |Ja |
-| Get Block List |Ja |Nein |
+| Get Block List |Ja |Nein  |
 | Put Page |Ja |Ja |
 | Get Page Ranges |Ja |Ja |
 
@@ -193,7 +193,7 @@ Zur Verwaltung der pessimistischen Nebenläufigkeit können die folgenden Contai
 * Set Container ACL
 * Lease Container  
 
-Weitere Informationen finden Sie unter:  
+Weitere Informationen finden Sie unter   
 
 * [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](http://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Lease Container](http://msdn.microsoft.com/library/azure/jj159103.aspx)
@@ -241,19 +241,19 @@ Die folgende Tabelle gibt eine Übersicht darüber, wie ETag-Werte in den Tabell
 
 | Vorgang | Gibt ETag-Wert zurück | Erfordert If-Match-Anforderungsheader |
 |:--- |:--- |:--- |
-| Entitäten abfragen |Ja |Nein |
-| Entität einfügen |Ja |Nein |
+| Entitäten abfragen |Ja |Nein  |
+| Entität einfügen |Ja |Nein  |
 | Entität aktualisieren |Ja |Ja |
 | Entität zusammenführen |Ja |Ja |
-| Entität löschen |Nein |Ja |
-| Entität einfügen oder ersetzen |Ja |Nein |
-| Entität einfügen oder zusammenführen |Ja |Nein |
+| Entität löschen |Nein  |Ja |
+| Entität einfügen oder ersetzen |Ja |Nein  |
+| Entität einfügen oder zusammenführen |Ja |Nein  |
 
 Bei den Vorgängen **Entität einfügen oder ersetzen** und **Entität einfügen oder zusammenführen** werden *keine* Nebenläufigkeitsprüfungen durchgeführt, da hierbei kein ETag-Wert an den Tabellenspeicherdienst gesendet wird.  
 
 Bei der Entwicklung skalierbarer Anwendung sollten Entwickler grundsätzlich auf die optimistische Nebenläufigkeit zurückgreifen. Wenn pessimistische Sperren erforderlich sind, können Entwickler beim Zugriff auf Tabelle u. a. folgendes Verfahren anwenden: Jeder Tabelle wird ein bestimmtes Blob zugewiesen, und es kann versucht werden, eine Lease für das Blob zu erhalten, bevor die Tabelle bearbeitet wird. Bei diesem Verfahren muss die Anwendung nicht sicherstellen, dass Datenzugriffspfade die Lease vor der Bearbeitung der Tabelle abrufen. Beachten Sie außerdem, dass die Mindestzeit für Leases 15 Sekunden beträgt, was bei der Skalierbarkeit sorgfältig zu beachten ist.  
 
-Weitere Informationen finden Sie unter:  
+Weitere Informationen finden Sie unter   
 
 * [Vorgänge für Entitäten](http://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -262,7 +262,7 @@ Ein Szenario, in dem Nebenläufigkeit ein Problem im Warteschlangendienst darste
 
 Der Warteschlangendienst unterstützt weder die optimistische noch die pessimistische Nebenläufigkeit. Aus diesem Grund müssen Clients, die aus einer Warteschlange abgerufene Nachrichten verarbeiten, sicherstellen, dass die Nachrichten auf eine idempotente Weise verarbeitet werden. Für Aktualisierungsvorgänge wie SetQueueServiceProperties, SetQueueMetaData, SetQueueACL und UpdateMessage wird die Strategie "Letzter Schreiber gewinnt" verwendet.  
 
-Weitere Informationen finden Sie unter:  
+Weitere Informationen finden Sie unter   
 
 * [REST-API des Warteschlangendiensts](http://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Get Messages](http://msdn.microsoft.com/library/azure/dd179474.aspx)  
@@ -272,7 +272,7 @@ Der Zugriff auf den Dateidienst kann unter Verwendung zweier unterschiedlicher P
 
 Wenn ein SMB-Client eine Datei zum Löschen öffnet, markiert er die Datei als zum Löschen ausstehend, bis alle übrigen offenen SMB-Client-Handles für die betreffende Datei geschlossen sind. Wenn eine Datei als zum Löschen ausstehend markiert ist, geben alle REST-Vorgänge für diese Datei den Statuscode 409 (Konflikt) mit dem Fehlercode SMBDeletePending zurück. Der Statuscode 404 (Nicht gefunden) wird nicht zurückgegeben, da der SMB-Client das Kennzeichen für einen ausstehenden Löschvorgang entfernen kann, bevor die Datei geschlossen wird. Mit anderen Worten, der Statuscode 404 (Nicht gefunden) ist nur zu erwarten, wenn die Datei entfernt wurde. Wenn sich eine Datei im Status eines ausstehenden SMB-Löschvorgangs befindet, ist sie nicht in den Ergebnissen von Dateiauflistungen enthalten. Beachten Sie außerdem, dass die REST-Vorgänge „Datei löschen“ und „Verzeichnis löschen“ atomisch committet werden und nicht zum Status eines ausstehenden Löschvorgangs führen.  
 
-Weitere Informationen finden Sie unter:  
+Weitere Informationen finden Sie unter   
 
 * [Verwalten von Dateisperren](http://msdn.microsoft.com/library/azure/dn194265.aspx)  
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fdb8009e3dbca1037cae61ec8627f73190a8263d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b908e8877162a6a1d9292616a1704c1c528e1725
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Überwachen und Aktualisieren eines virtuellen Windows-Computers mit Azure PowerShell
 
@@ -36,6 +36,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Anzeigen von Metriken des virtuellen Computers
 > * Erstellen einer Warnung
 > * Verwalten von Windows-Updates
+> * Überwachungsänderungen und Inventur
 > * Einrichten der erweiterten Überwachung
 
 Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
@@ -274,6 +275,7 @@ In diesem Tutorial haben Sie virtuelle Computer mit Azure Security Center konfig
 > * Anzeigen von Metriken des virtuellen Computers
 > * Erstellen einer Warnung
 > * Verwalten von Windows-Updates
+> * Überwachungsänderungen und Inventur
 > * Einrichten der erweiterten Überwachung
 
 Im nächsten Tutorial erhalten Sie Informationen zu Azure Security Center.

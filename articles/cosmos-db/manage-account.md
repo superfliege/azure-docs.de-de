@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: kirillg
 ms.openlocfilehash: e5820cb17cfbaa15f10f24881f02a37aec617267
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>Verwalten eines Azure Cosmos DB-Kontos
 Erfahren Sie, wie Sie globale Konsistenz festlegen, mit Schlüsseln arbeiten und ein Azure Cosmos DB-Konto im Azure-Portal löschen.
@@ -84,7 +84,7 @@ Führen Sie zum Abrufen der Verbindungszeichenfolge folgende Schritte aus:
 2. Klicken Sie im Ressourcenmenü auf **Schlüssel** (bzw. auf **Verbindungszeichenfolge** für MongoDB-API-Konten).
 3. Klicken Sie neben dem Feld für die **primäre Verbindungszeichenfolge** oder **sekundäre Verbindungszeichenfolge** auf die Schaltfläche **Kopieren**. 
 
-Bei Verwendung der Verbindungszeichenfolge im [Azure Cosmos DB-Datenbank-Migrationstool](import-data.md) fügen Sie den Datenbanknamen am Ende der Verbindungszeichenfolge an. `AccountEndpoint=< >;AccountKey=< >;Database=< >`.
+Bei Verwendung der Verbindungszeichenfolge im [Azure Cosmos DB-Datenbank-Migrationstool](import-data.md) fügen Sie den Datenbanknamen am Ende der Verbindungszeichenfolge an. `AccountEndpoint=< >;AccountKey=< >;Database=< >`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
 
 ## <a id="delete"></a>: Löschen eines Azure Cosmos DB-Kontos
 Wenn Sie ein nicht mehr verwendetes Azure Cosmos DB-Konto aus dem Azure-Portal entfernen möchten, klicken Sie mit der rechten Maustaste auf den Kontonamen, und klicken Sie anschließend auf **Konto löschen**.

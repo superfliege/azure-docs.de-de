@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: cb85971d6d3d4dade69b9dc04e070c67341533a5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Ausfüllen bestimmter Felder für eine benutzerdefiniert entwickelte Anwendung
 
@@ -36,16 +36,16 @@ Dieser Artikel bietet eine kurze Beschreibung aller verfügbaren Felder im Regis
 ## <a name="fields-in-the-application-registration-form"></a>Felder im Registrierungsformular für Anwendungen
 
 
-| Feld            | Beschreibung                                                                              |
+| Feld            | BESCHREIBUNG                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Name             | Der Namen der Anwendung. Dieser sollte mindestens vier Zeichen umfassen.                |
+| NAME             | Der Namen der Anwendung. Dieser sollte mindestens vier Zeichen umfassen.                |
 | Anwendungstyp | **Web-App/Web-API**: Eine Anwendung, die eine Web-App, eine Web-API oder beides repräsentiert. 
 | |**Nativ**: Eine Anwendung, die auf dem Gerät oder Computer eines Benutzers installiert werden kann.           |
 | Anmelde-URL      | Die URL, unter der sich Benutzer bei Ihrer Anwendung anmelden können.                                  |
 
 Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im Azure-Portal registriert und Sie werden auf die Anwendungsseite weitergeleitet. Mit der Schaltfläche **Einstellungen** im Bereich der Anwendung öffnen Sie die Einstellungsseite, die weitere Felder enthält, mit denen Sie Ihre Anwendung anpassen können. Die folgende Tabelle beschreibt alle Felder auf der Einstellungsseite. Beachten Sie, dass Ihnen möglicherweise nur ein Teil dieser Felder angezeigt wird, je nachdem, ob Sie eine Webanwendung oder eine native Anwendung erstellt haben.
 
-| Feld           | Beschreibung                                                                                                                                                                                                                                                                                                     |
+| Feld           | BESCHREIBUNG                                                                                                                                                                                                                                                                                                     |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Anwendungs-ID  | Wenn Sie eine Anwendung registrieren, weist Azure AD Ihrer Anwendung eine Anwendungs-ID zu. Die Anwendungs-ID kann verwendet werden, um Ihre Anwendung in Authentifizierungsanforderungen bei Azure AD eindeutig zu identifizieren und um auf Ressourcen wie die Graph-API zuzugreifen.                                                          |
 | App-ID-URI      | Hierbei sollte es sich um einen eindeutigen URI handeln, üblicherweise in der Form **https://&lt;Mandantenname\_&gt;/&lt;Anwendungsname\_&gt;.** Dieser URI wird während der Autorisierungsgewährung als eindeutiger Bezeichner verwendet, um die Ressource anzugeben, für die das Token ausgestellt werden soll. Er wird auch zum „aud“-Anspruch im ausgestellten Zugriffstoken. |

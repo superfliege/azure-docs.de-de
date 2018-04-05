@@ -3,7 +3,7 @@
 | Cachegröße |530 GB |
 | Datenbanken |64 |
 | Max. Anzahl verbundener Clients |40.000 |
-| Redis Cache-Replikate (für hohe Verfügbarkeit) |1 |
+| Redis Cache-Replikate (für Hochverfügbarkeit) |1 |
 | Shards in einem Premium-Cache mit Clustering |10 |
 
 Die erhältliche Größe und die Konfigurationsbeschränkungen von Azure Redis Cache unterscheiden sich je nach Tarif. Die Tarife und die damit verbundenen Größen finden Sie unter [Azure Redis Cache-Preise](https://azure.microsoft.com/pricing/details/cache/).

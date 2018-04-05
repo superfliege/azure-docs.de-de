@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus
 > [!IMPORTANT] 
@@ -47,7 +47,7 @@ In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Ser
 2. Klicken Sie im linken Bereich auf **Virtuelle Computer** .
    
     ![Virtuelle Microsoft Azure-Computer](./media/virtual-machines-windows-classic-ps-sql-report/IC660124.gif)
-3. Klicken Sie auf **Neu**.
+3. Klicken Sie auf **New**.
    
     ![Schaltfläche Neu](./media/virtual-machines-windows-classic-ps-sql-report/IC692019.gif)
 4. Klicken Sie auf **Aus Katalog**.
@@ -120,7 +120,7 @@ Bei der Bereitstellung des virtuellen Computer wurde auf ihm ein selbstsignierte
    
    1. Wählen Sie im Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Abhängig von Ihrer Browserkonfiguration werden Sie möglicherweise aufgefordert, eine RDP-Datei zum Herstellen einer Verbindung mit dem virtuellen Computer zu speichern.
       
-       ![Verbindung mit virtuellem Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) Verwenden Sie den Namen des virtuellen Computers, den Benutzernamen und das Kennwort, die Sie bei der Erstellung des virtuellen Computers konfiguriert haben. 
+       ![Verbindung mit virtuellem Azure-Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) Verwenden Sie den Namen des virtuellen Computers, den Benutzernamen und das Kennwort, die Sie bei der Erstellung des virtuellen Computers konfiguriert haben. 
       
        Beispielsweise ist im folgenden Image der Name des virtuellen Computers **ssrsnativecloud** und der Benutzername **testuser**.
       
@@ -156,7 +156,7 @@ Wenn Sie das Windows PowerShell-Skript verwenden möchten, um den Berichtsserver
 
 1. Wählen Sie im Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Abhängig von Ihrer Browserkonfiguration werden Sie möglicherweise aufgefordert, eine RDP-Datei zum Herstellen einer Verbindung mit dem virtuellen Computer zu speichern.
    
-    ![Verbindung mit virtuellem Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) Verwenden Sie den Namen des virtuellen Computers, den Benutzernamen und das Kennwort, die Sie bei der Erstellung des virtuellen Computers konfiguriert haben. 
+    ![Verbindung mit virtuellem Azure-Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) Verwenden Sie den Namen des virtuellen Computers, den Benutzernamen und das Kennwort, die Sie bei der Erstellung des virtuellen Computers konfiguriert haben. 
    
     Beispielsweise ist im folgenden Image der Name des virtuellen Computers **ssrsnativecloud** und der Benutzername **testuser**.
    
@@ -290,7 +290,7 @@ Wenn Sie ein Windows PowerShell-Skript verwenden möchten, um den Berichtsserver
 
 1. Wählen Sie im Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Abhängig von Ihrer Browserkonfiguration werden Sie möglicherweise aufgefordert, eine RDP-Datei zum Herstellen einer Verbindung mit dem virtuellen Computer zu speichern.
    
-    ![Verbindung mit virtuellem Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) Verwenden Sie den Namen des virtuellen Computers, den Benutzernamen und das Kennwort, die Sie bei der Erstellung des virtuellen Computers konfiguriert haben. 
+    ![Verbindung mit virtuellem Azure-Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) Verwenden Sie den Namen des virtuellen Computers, den Benutzernamen und das Kennwort, die Sie bei der Erstellung des virtuellen Computers konfiguriert haben. 
    
     Beispielsweise ist im folgenden Image der Name des virtuellen Computers **ssrsnativecloud** und der Benutzername **testuser**.
    
@@ -498,7 +498,7 @@ Wenn Sie nicht das PowerShell-Skript ausführen möchten, um den Berichtsserver 
 
 1. Wählen Sie im Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Verwenden Sie den Benutzernamen und das Kennwort, den bzw. das Sie bei der Erstellung des virtuellen Computers konfiguriert haben.
    
-    ![Verbindung mit virtuellem Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif)
+    ![Verbindung mit virtuellem Azure-Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif)
 2. Führen Sie Windows Update aus, und installieren Sie die Updates auf dem virtuellen Computer. Ist ein Neustart des virtuellen Computers erforderlich, starten Sie den virtuellen Computer neu, und stellen Sie aus dem Azure-Portal wieder eine Verbindung mit dem virtuellen Computer her.
 3. Geben Sie über das Startmenü auf dem virtuellen Computer **Reporting Services** ein, und öffnen Sie den **Konfigurations-Manager für Reporting Services**.
 4. Übernehmen Sie die Standardwerte für **Servername** und **Berichtsserverinstanz**. Klicken Sie auf **Verbinden**.
@@ -565,7 +565,7 @@ Damit Sie sich vergewissern können, dass die grundlegenden Berichtsserverfunkti
         https://ssrsnativecloud.cloudapp.net/ReportServer
 
 ## <a name="create-users-and-assign-roles"></a>Erstellen von Benutzern und Zuweisen von Rollen
-Nach dem Konfigurieren und Überprüfen des Berichtsservers besteht eine der üblichen administrativen Aufgaben darin, Benutzer zu erstellen und diesen Reporting Services-Rollen zuzuweisen. Weitere Informationen finden Sie unter den folgenden Links:
+Nach dem Konfigurieren und Überprüfen des Berichtsservers besteht eine der üblichen administrativen Aufgaben darin, Benutzer zu erstellen und diesen Reporting Services-Rollen zuzuweisen. Weitere Informationen finden Sie unter 
 
 * [Erstellen eines lokalen Benutzerkontos](https://technet.microsoft.com/library/cc770642.aspx)
 * [Gewähren von Benutzerzugriff auf einen Berichtsserver (Berichts-Manager)](https://msdn.microsoft.com/library/ms156034.aspx))
@@ -583,7 +583,7 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
      Weitere Informationen finden Sie unter [Installation, Deinstallation und Unterstützung des Berichts-Generators](https://technet.microsoft.com/library/dd207038.aspx).
 * **SQL Server Data Tools: virtueller Computer:** Wenn Sie den virtuellen Computer mit SQL Server 2012 erstellt haben, ist SQL Server Data Tools auf dem virtuellen Computer installiert. Mit dieser Sammlung von Tools können **Berichtsserverprojekte** und Berichte auf dem virtuellen Computer erstellt werden. SQL Server Data Tools kann die Berichte im Berichtsserver auf dem virtuellen Computer veröffentlichen.
   
-    Wenn Sie den virtuellen Computer mit SQLServer 2014 erstellt haben, können Sie SQL Server Data Tools - Business Intelligence für Visual Studio installieren. Weitere Informationen finden Sie unter den folgenden Links:
+    Wenn Sie den virtuellen Computer mit SQLServer 2014 erstellt haben, können Sie SQL Server Data Tools - Business Intelligence für Visual Studio installieren. Weitere Informationen finden Sie unter 
   
   * [Microsoft SQL Server Data Tools - Business Intelligence für Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)
   * [Microsoft SQL Server Data Tools - Business Intelligence für Visual Studio 2012](https://www.microsoft.com/download/details.aspx?id=36843)
@@ -598,7 +598,7 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
 > Um die Kosten für Ihre virtuellen Azure-Computer zu minimieren, fahren Sie die virtuellen Computer über das Azure-Portal herunter, wenn diese nicht verwendet werden. Wenn Sie einen virtuellen Computer über dessen Windows-Energieoptionen herunterfahren, werden Ihnen weiterhin dieselben Kosten für den virtuellen Computer in Rechnung gestellt. Wenn Sie die Kosten verringern möchten, müssen Sie den virtuellen Computer im Azure-Portal herunterfahren. Wenn Sie den virtuellen Computer nicht mehr benötigen, sollten Sie den virtuellen Computer und die zugehörigen VHD-Dateien löschen, um Speicherkosten zu vermeiden. Weitere Informationen finden Sie im Abschnitt „FAQ“ unter [Virtual Machine – Preisdetails](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
 ## <a name="more-information"></a>Weitere Informationen
-### <a name="resources"></a>Ressourcen
+### <a name="resources"></a>angeben
 * Ähnliche Inhalte hinsichtlich einer Einzelserver-Bereitstellung von SQL Server Business Intelligence und SharePoint 2013 finden Sie unter [Verwenden von PowerShell zum Erstellen eines virtuellen Azure-Computers mit SQL Server BI und SharePoint 2013](https://msdn.microsoft.com/library/azure/dn385843.aspx).
 * Ähnliche Inhalte hinsichtlich einer Multiserver-Bereitstellung von SQL Server Business Intelligence und SharePoint 2013 finden Sie unter [Bereitstellen von SQL Server Business Intelligence auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/dn321998.aspx).
 * Allgemeine Informationen hinsichtlich Bereitstellungen von SQL Server Business Intelligence auf virtuellen Azure-Computern finden Sie unter [SQL Server Business Intelligence auf virtuellen Azure-Computern](virtual-machines-windows-classic-ps-sql-bi.md).
