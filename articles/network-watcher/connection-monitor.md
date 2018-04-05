@@ -1,11 +1,11 @@
 ---
-title: "Überwachen von Netzwerkverbindungen mit Azure Network Watcher – Azure-Portal | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Netzwerkkonnektivität mit Azure Network Watcher mithilfe des Azure-Portals überprüfen."
+title: Überwachen von Netzwerkverbindungen mit Azure Network Watcher – Azure-Portal | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Netzwerkkonnektivität mit Azure Network Watcher mithilfe des Azure-Portals überprüfen.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2018
 ms.author: jdial
-ms.openlocfilehash: beaa458d727a05eccf496933deb3c998828868cd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c7d98350dc8f66ebd4097f22b44dcbbe2653b25d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>Überwachen von Netzwerkverbindungen mit Azure Network Watcher mithilfe des Azure-Portals
 
-Erfahren Sie, wie Sie den Verbindungsmonitor verwenden, um die Netzwerkkonnektivität zwischen einem virtuellen Azure-Computer und einer IP-Adresse zu überwachen. Die IP-Adresse kann einer anderen Azure-Ressource oder einer Internet- oder lokalen Ressource zugewiesen sein.
+Erfahren Sie, wie Sie den Verbindungsmonitor verwenden, um die Netzwerkkonnektivität zwischen einem virtuellen Azure-Computer und einer IP-Adresse zu überwachen. Der Verbindungsmonitor bietet Überwachung auf Verbindungsebene. Eine Verbindung ist definiert als eine Kombination aus Quell- und Ziel-IP-Adresse und -Port. Ein Verbindungsmonitor ermöglicht Szenarien wie die Überwachung der Konnektivität von einem virtuellen Computer in einem virtuellen Netzwerk zu einem virtuellen Computer mit SQL Server im gleichen oder einem anderen virtuellen Netzwerk über Port 1433. Ein Verbindungsmonitor bietet Ihnen eine Verbindungslatenz als Azure Monitor-Metrik, die alle 60 Sekunden aufgezeichnet wird. Zudem bietet er Ihnen eine Hop-by-Hop-Topologie, und es werden Konfigurationsprobleme identifiziert, die sich auf Ihre Verbindung auswirken.
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,25 +38,30 @@ Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
 
 ## <a name="create-a-connection-monitor"></a>Erstellen eines Verbindungsmonitors
 
+Die folgenden Schritte ermöglichen die Verbindungsüberwachung zu einem virtuellen Zielcomputer über die Ports 80 und 1433:
+
 1. Wählen Sie im Portal auf der linken Seite **Weitere Dienste** aus.
 2. Beginnen Sie mit der Eingabe von *Network Watcher*. Wählen Sie **Network Watcher** aus, wenn der Begriff in den Suchergebnissen angezeigt wird.
 3. Wählen Sie unter **Überwachung** die Option **Verbindungsmonitor (Vorschau)** aus. Features, die sich in der Vorschauversion befinden, weisen nicht die gleiche Zuverlässigkeit oder regionale Verfügbarkeit auf wie bereits allgemein verfügbare Features.
 4. Wählen Sie **+ Hinzufügen**.
-5. Geben Sie die entsprechenden Informationen zu der Verbindung, die Sie überwachen möchten, ein, oder wählen Sie sie aus, und wählen Sie dann **Hinzufügen** aus. In diesem Beispiel wird eine Verbindung zwischen den virtuellen Computern *myVmSource* und *myVmDestination* über Port 80 überwacht.
-    
-    |  Einstellung                                 |  Wert               |
-    |  -------------------------------------   |  ------------------- |
-    |  NAME                                    |  myConnectionMonitor |
-    |  Virtueller Ausgangscomputer                  |  myVmSource          |
-    |  Quellport                             |                      |
-    |  Ziel – wählen Sie einen virtuellen Computer aus.   |  myVmDestination     |
-    |  Zielport                        |  80                  |
+5. Geben Sie die Informationen zu der Verbindung, die Sie überwachen möchten, ein, oder wählen Sie sie aus, und wählen Sie dann **Hinzufügen** aus. Im Bild zum folgenden Beispiel wird die Verbindung zwischen den virtuellen Computern *MultiTierApp0* und *Database0* überwacht:
 
-6. Die Überwachung beginnt. Der Verbindungsmonitor führt alle 60 Sekunden einen Test aus.
-7. Der Verbindungsmonitor zeigt die durchschnittliche Roundtripzeit und den Prozentsatz der nicht erfolgreichen Tests an. Sie können die Überwachungsdaten in einem Raster oder in einem Diagramm anzeigen.
+    ![Hinzufügen eines Verbindungsmonitors](./media/connection-monitor/add-connection-monitor.png)
+
+    Die Überwachung beginnt. Der Verbindungsmonitor führt alle 60 Sekunden einen Test aus.
+
+## <a name="view-connection-monitoring"></a>Anzeigen der Verbindungsüberwachung
+
+1. Führen Sie die in [Erstellen eines Verbindungsmonitors](#create-a-connection-monitor) beschriebenen Schritte 1 bis 3 aus, um die Verbindungsüberwachung anzuzeigen.
+2. Das folgende Bild zeigt die Details für die AppToDB(80)-Verbindung. Der **Status** ist erreichbar. Die **Diagrammansicht** zeigt **Durchschnittliche Roundtrip-Zeit** und **Fehlerhafte Tests in Prozent**. Das Diagramm liefert Hop-by-Hop-Informationen und zeigt, dass es keine Probleme mit Auswirkungen auf die Erreichbarkeit des Ziels gibt.
+
+    ![Anzeigen des Verbindungsmonitors](./media/connection-monitor/view-connection-monitor.png)
+
+3. Beim Betrachten des *AppToDB(1433)*-Monitors, wie in der folgenden Abbildung gezeigt, sehen Sie, dass der Status für die gleichen virtuellen Quell- und Zielcomputer über Port 1433 nicht erreichbar ist. Die **Rasteransicht** in diesem Szenario liefert die Hop-by-Hop-Informationen und sich auf die Erreichbarkeit auswirkende Probleme. In diesem Fall blockiert eine NSG-Regel den gesamten Datenverkehr für Port 1433 beim zweiten Hop.
+
+    ![Anzeigen des Verbindungsmonitors](./media/connection-monitor/view-connection-monitor-2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden Sie unter [Erstellen einer durch Warnungen ausgelösten Paketerfassung](network-watcher-alert-triggered-packet-capture.md).
-
 - Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](network-watcher-check-ip-flow-verify-portal.md), um zu ermitteln, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.

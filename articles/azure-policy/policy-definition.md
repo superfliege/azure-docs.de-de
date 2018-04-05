@@ -1,19 +1,19 @@
 ---
 title: Struktur von Azure Policy-Definitionen | Microsoft-Dokumentation
-description: "Beschreibt, wie die Definition von Ressourcenrichtlinien von Azure Policy verwendet wird, um Konventionen für Ressourcen in Ihrer Organisation einzurichten, indem beschrieben wird, wann die Richtlinie erzwungen wird, und welche Aktionen durchzuführen sind."
+description: Beschreibt, wie die Definition von Ressourcenrichtlinien von Azure Policy verwendet wird, um Konventionen für Ressourcen in Ihrer Organisation einzurichten, indem beschrieben wird, wann die Richtlinie erzwungen wird, und welche Aktionen durchzuführen sind.
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
-ms.custom: 
-ms.openlocfilehash: ffff4a663b64342142f42a662905a290044e2dfb
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.custom: ''
+ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -70,7 +70,9 @@ Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtlinie ausge
 * `all`: Ressourcengruppen und alle Ressourcentypen werden ausgewertet. 
 * `indexed`: Nur Ressourcentypen, die Tags und Speicherort unterstützen, werden ausgewertet.
 
-Es wird empfohlen, **mode** auf `all` zu setzen. Alle über das Portal erstellten Richtliniendefinitionen verwenden für „mode“ die Option `all`. Wenn Sie PowerShell oder die Azure CLI verwenden, müssen Sie den **mode**-Parameter angeben und auf `all` setzen. 
+Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle über das Portal erstellten Richtliniendefinitionen verwenden für „mode“ die Option `all`. Wenn Sie PowerShell oder Azure CLI verwenden, müssen Sie den **mode**-Parameter manuell angeben.
+
+`indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Die einzige Ausnahme hierbei ist **Ressourcengruppen**. Richtlinien zum Erzwingen von Speicherort oder Tags einer Ressourcengruppe sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroup` abzielen. Ein Beispiel finden Sie unter [Ressourcengruppen-Tags erzwingen](scripts/enforce-tag-rg.md).
 
 ## <a name="parameters"></a>Parameter
 
@@ -126,7 +128,7 @@ Im **Then**-Block definieren Sie die Wirkung, die eintritt, wenn die **If**-Bedi
     <condition> | <logical operator>
   },
   "then": {
-    "effect": "deny | audit | append"
+    "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
   }
 }
 ```
@@ -165,16 +167,22 @@ Logische Operatoren können geschachtelt werden. Das folgende Beispiel zeigt ein
 Eine Bedingung überprüft, ob ein **Feld** bestimmte Kriterien erfüllt. Folgende Bedingungen werden unterstützt:
 
 * `"equals": "value"`
+* `"notEquals": "value"`
 * `"like": "value"`
+* `"notLike": "value"`
 * `"match": "value"`
+* `"notMatch": "value"`
 * `"contains": "value"`
+* `"notContains": "value"`
 * `"in": ["value1","value2"]`
+* `"notIn": ["value1","value2"]`
 * `"containsKey": "keyName"`
+* `"notContainsKey": "keyName"`
 * `"exists": "bool"`
 
-Bei Verwendung der Bedingung **like** können Sie im Wert einen Platzhalter (*) angeben.
+Bei Verwendung der Bedingungen **like** und **notLike** können Sie im Wert einen Platzhalter (*) angeben.
 
-Geben Sie bei Verwendung der **match**-Bedingung für eine Ziffer `#`, für einen Buchstaben `?` und für ein Zeichen das gewünschte Zeichen ein. Beispiele finden Sie unter [Approved VM images (Genehmigte VM-Images)](scripts/allowed-custom-images.md).
+Geben Sie bei Verwendung der Bedingungen **match** und **notMatch** für eine Ziffer `#`, für einen Buchstaben `?` und für ein Zeichen das gewünschte Zeichen ein. Beispiele finden Sie unter [Approved VM images (Genehmigte VM-Images)](scripts/allowed-custom-images.md).
 
 ### <a name="fields"></a>Felder
 Bedingungen werden mithilfe von Feldern gebildet. Ein Feld stellt Eigenschaften in der Anforderungsnutzlast einer Ressource dar, mit der der Zustand der Ressource beschrieben wird.  
@@ -182,12 +190,28 @@ Bedingungen werden mithilfe von Feldern gebildet. Ein Feld stellt Eigenschaften 
 Folgende Felder werden unterstützt:
 
 * `name`
+* `fullName`
+  * Gibt den vollständigen Namen der Ressource zurück, einschließlich aller übergeordneten Elemente (z.B. „myServer/myDatabase“).
 * `kind`
 * `type`
 * `location`
 * `tags`
-* `tags.*`
+* `tags.tagName`
+* `tags[tagName]`
+  * Diese Klammersyntax unterstützt Tagnamen, die Punkte enthalten.
 * Eigenschaftenaliase – Eine Liste finden Sie unter [Aliase](#aliases).
+
+### <a name="alternative-accessors"></a>Alternative Accessoren
+**field** ist der primäre Accessor, der in Richtlinienregeln verwendet wird. Er prüft direkt die auszuwertende Ressource. Die Richtlinie unterstützt jedoch auch einen anderen Accessor: **source**.
+
+```json
+"source": "action",
+"equals": "Microsoft.Compute/virtualMachines/write"
+```
+
+**source** unterstützt nur den Wert **action**. „action“ gibt die Autorisierungsaktion der Anforderung zurück, die ausgewertet wird. Autorisierungsaktionen werden im Autorisierungsabschnitt im [Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-activity-log-schema.md) angezeigt.
+
+Wenn die Richtlinie vorhandene Ressourcen im Hintergrund auswertet, wird **action** auf eine `/write`-Autorisierungsaktion für den Typ der Ressource gesetzt.
 
 ### <a name="effect"></a>Wirkung
 Die Richtlinie unterstützt die folgenden Arten von Effekten:
@@ -212,7 +236,7 @@ Für **append**müssen Sie die folgenden Details angeben:
 
 Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein.
 
-Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein einer untergeordneten Ressource auswerten und eine Regel anwenden, wenn diese Ressource nicht vorhanden ist. Sie können z.B. verlangen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird.
+Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein einer zugehörigen Ressource auswerten und eine Regel anwenden, wenn diese Ressource nicht vorhanden ist. Sie können z.B. erforderlich machen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird.
 Ein Beispiel für das Überwachen, wenn keine VM-Erweiterung bereitgestellt wird, finden Sie unter [Audit if extension does not exist (Überwachen bei nicht vorhandener Erweiterung)](scripts/audit-ext-not-exist.md).
 
 

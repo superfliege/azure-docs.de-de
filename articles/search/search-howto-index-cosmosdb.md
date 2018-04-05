@@ -1,78 +1,80 @@
 ---
-title: "Indizieren einer Azure Cosmos DB SQL API-Datenquelle für Azure Search | Microsoft-Dokumentation"
-description: In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Indexer mit einer Azure Cosmos DB SQL API-Datenquelle erstellen.
+title: Indizieren einer Azure Cosmos DB-Datenquelle für Azure Search | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Indexer mit einer Azure Cosmos DB-Datenquelle erstellen.
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: search
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: search
-ms.date: 01/08/2018
+ms.date: 03/23/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: e449f13adcd1a3651e1cac852b23f21d0227038a
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 165402f5147224cd355f0ae14642069a3de58f19
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Verbinden von Cosmos DB mit Azure Search mithilfe von Indexern
-
-[Azure Cosmos DB](../cosmos-db/introduction.md) ist eine global verteilte Datenbank von Microsoft mit mehreren Modellen. Mit seiner [SQL-API](../cosmos-db/sql-api-introduction.md) stellt Azure Cosmos DB umfassende und vertraute SQL-Abfragefunktionen mit einheitlich kurzen Wartezeiten für schemalose JSON-Daten bereit. Azure Search und die SQL-API sind nahtlos integriert. Sie können JSON-Dokumente direkt per Pull in einen Azure Search-Index einfügen. Verwenden Sie dazu einen [Azure Search-Indexer](search-indexer-overview.md), der speziell für Azure Cosmos DB SQL API entwickelt wurde. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
-> * Konfigurieren Sie Azure Search für die Verwendung einer Azure Cosmos DB SQL API-Datenbank als Datenquelle. Geben Sie optional eine Abfrage an, um eine Teilmenge auswählen.
+> * Konfigurieren Sie den [Azure Search-Indexer](search-indexer-overview.md), der eine Azure Cosmos DB-Sammlung als Datenquelle verwendet.
 > * Erstellen Sie einen Suchindex mit JSON-kompatiblen Datentypen.
 > * Konfigurieren Sie einen Indexer für eine bedarfsgesteuerte und wiederholte Indizierung.
 > * Aktualisieren Sie den Index schrittweise basierend auf Änderungen an den zugrunde liegenden Daten.
 
 > [!NOTE]
-> Azure Cosmos DB SQL API ist die nächste Generation von DocumentDB. Obwohl der Produktname geändert wurde, ist die `documentdb`-Syntax in den Azure Search-Indexern immer noch aus Gründen der Abwärtskompatibilität sowohl in den Azure Search-APIs als auch auf den Portalseiten vorhanden. Wenn Sie Indexer konfigurieren, stellen Sie sicher, dass Sie die `documentdb`-Syntax wie in diesem Artikel beschrieben angeben.
+> Azure Cosmos DB ist die nächste Generation von DocumentDB. Obwohl der Produktname geändert wurde, ist die `documentdb`-Syntax in den Azure Search-Indexern immer noch aus Gründen der Abwärtskompatibilität sowohl in den Azure Search-APIs als auch auf den Portalseiten vorhanden. Wenn Sie Indexer konfigurieren, stellen Sie sicher, dass Sie die `documentdb`-Syntax wie in diesem Artikel beschrieben angeben.
+
+Im folgenden Video veranschaulicht Azure Cosmos DB-Programm-Manager Andrew Liu das Hinzufügen eines Azure Search-Indexes zu einem Azure Cosmos DB-Container.
+
+>[!VIDEO https://www.youtube.com/embed/OyoYu1Wzk4w]
 
 <a name="supportedAPIs"></a>
-
 ## <a name="supported-api-types"></a>Unterstützte API-Typen
 
-Obwohl Azure Cosmos DB eine Vielzahl von Datenmodellen und APIs unterstützt, erstreckt sich die Indexer-Unterstützung nur auf die SQL-API. 
+Obwohl Azure Cosmos DB eine Vielzahl von Datenmodellen und APIs unterstützt, erstreckt sich die Produktionsunterstützung des Azure Search-Indexers nur auf die SQL-API. Die Unterstützung der MongoDB-API ist derzeit als öffentliche Vorschau verfügbar.  
 
-Unterstützung für zusätzliche APIs ist in Kürze verfügbar. Um uns zu helfen, Prioritäten zu setzen, welche zuerst unterstützt werden sollen, werfen Sie einen Blick auf die User Voice-Website:
+Unterstützung für zusätzliche APIs ist in Kürze verfügbar. Um uns zu helfen, Prioritäten zu setzen, welche zuerst unterstützt werden sollen, stimmen Sie bitte auf der User Voice-Website ab:
 
 * [Unterstützung für Tabellen-API-Datenquellen](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab)
 * [Unterstützung für Graph-API-Datenquellen](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4)
-* [Unterstützung für MongoDB-API-Datenquellen](https://feedback.azure.com/forums/263029-azure-search/suggestions/18861421-documentdb-indexer-should-be-able-to-index-mongodb)
 * [Unterstützung für Apache Cassandra-API-Datenquellen](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Einrichten eines Azure Cosmos DB-Indexers benötigen Sie einen [Azure Search-Dienst](search-create-service-portal.md). Erstellen Sie außerdem einen Index, eine Datenquelle und schließlich den Indexer. Sie können diese Objekte mit dem [Portal](search-import-data-portal.md), dem [.NET SDK](/dotnet/api/microsoft.azure.search) oder der [REST-API](/rest/api/searchservice/) für alle Nicht-.NET-Sprachen erstellen. 
-
-Wenn Sie sich für das Portal entscheiden, führt Sie der [Datenimport-Assistent](search-import-data-portal.md) durch die Erstellung aller dieser Ressourcen samt Index.
-
-> [!TIP]
-> Starten Sie über das Azure Cosmos DB-Dashboard den **Datenimport-Assistenten**, um die Indizierung für diese Datenquelle zu vereinfachen. Navigieren Sie im linken Navigationsbereich zu **Sammlungen** > **Azure Search hinzufügen**, um mit dem Vorgang zu beginnen.
+Zusätzlich zu einem Cosmos DB-Konto benötigen Sie einen [Azure Search-Dienst](search-create-service-portal.md). 
 
 <a name="Concepts"></a>
-
 ## <a name="azure-search-indexer-concepts"></a>Azure Search Indexer-Konzepte
-Azure Search unterstützt die Erstellung und Verwaltung von Datenquellen (einschließlich Azure Cosmos DB SQL API) und von Indexern, die für diese Datenquellen ausgeführt werden.
 
 Eine **Datenquelle** gibt die zu indizierenden Daten, Anmeldeinformationen und Richtlinien für das Bestimmen von Änderungen in den Daten an (z.B. geänderte oder gelöschte Dokumente in Ihrer Sammlung). Die Datenquelle wird als unabhängige Ressource definiert, sodass sie von mehreren Indexern verwendet werden kann.
 
 Ein **Indexer** beschreibt, wie die Daten von der Datenquelle in einen Zielsuchindex fließen. Ein Indexer ermöglicht folgende Vorgänge:
 
 * Eine einmalige Kopie der Daten zum Auffüllen eines Indexes ausführen.
-* Einen Index mit Änderungen an der Datenquelle nach einem Zeitplan synchronisieren. Der Zeitplan ist Teil der Indexer-Definition.
+* Einen Index mit Änderungen an der Datenquelle nach einem Zeitplan synchronisieren.
 * Bedarfs-Updates für einen Index je nach Notwendigkeit abrufen.
 
-<a name="CreateDataSource"></a>
+Zum Einrichten eines Azure Cosmos DB-Indexers benötigen Sie einen Index, eine Datenquelle und schließlich den Indexer. Sie können diese Objekte mit dem [Portal](search-import-data-portal.md), dem [.NET SDK](/dotnet/api/microsoft.azure.search) oder der [REST-API](/rest/api/searchservice/) erstellen. 
 
+Dieser Artikel beschreibt die Verwendung der REST-API. Wenn Sie sich für das Portal entscheiden, führt Sie der [Datenimport-Assistent](search-import-data-portal.md) durch die Erstellung aller dieser Ressourcen samt Index.
+
+> [!TIP]
+> Starten Sie über das Azure Cosmos DB-Dashboard den **Datenimport-Assistenten**, um die Indizierung für diese Datenquelle zu vereinfachen. Navigieren Sie im linken Navigationsbereich zu **Sammlungen** > **Azure Search hinzufügen**, um mit dem Vorgang zu beginnen.
+
+> [!NOTE] 
+> Derzeit können Sie die **MongoDB**-Datenquellen mit dem Azure-Portal oder der .NET SDK erstellen oder bearbeiten. Allerdings **können** Sie den Ausführungsverlauf des MongoDB-Indexers im Portal überwachen.  
+
+<a name="CreateDataSource"></a>
 ## <a name="step-1-create-a-data-source"></a>Schritt 1: Erstellen einer Datenquelle
 Führen Sie einen POST aus, um eine Datenquelle zu erstellen:
 
@@ -84,9 +86,9 @@ Führen Sie einen POST aus, um eine Datenquelle zu erstellen:
         "name": "mydocdbdatasource",
         "type": "documentdb",
         "credentials": {
-            "connectionString": "AccountEndpoint=https://myDocDbEndpoint.documents.azure.com;AccountKey=myDocDbAuthKey;Database=myDocDbDatabaseId"
+            "connectionString": "AccountEndpoint=https://myCosmosDbEndpoint.documents.azure.com;AccountKey=myCosmosDbAuthKey;Database=myCosmosDbDatabaseId"
         },
-        "container": { "name": "myDocDbCollectionId", "query": null },
+        "container": { "name": "myCollection", "query": null },
         "dataChangeDetectionPolicy": {
             "@odata.type": "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
             "highWaterMarkColumnName": "_ts"
@@ -99,16 +101,19 @@ Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Fe
 * **type**: Muss `documentdb` lauten.
 * **Anmeldeinformationen**:
   
-  * **ConnectionString**: Erforderlich. Geben Sie die Verbindungsinformationen für Ihre Azure Cosmos DB-Datenbank im folgenden Format an: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`
+  * **ConnectionString**: Erforderlich. Geben Sie die Verbindungsinformationen zu Ihrer Azure Cosmos DB-Datenbank im folgenden Format an: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`. Fügen Sie für MongoDB-Sammlungen **ApiKind=MongoDB** der Verbindungszeichenfolge hinzu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDB` 
 * **Container**:
   
   * **Name**: Erforderlich. Geben Sie die ID der zu indizierenden Datenbanksammlung an.
-  * **Abfrage**: Optional. Sie können eine Abfrage spezifizieren, um ein beliebiges JSON-Dokument in ein Flatfile-Schema zu reduzieren, welches Azure Search indizieren kann.
+  * **Abfrage**: Optional. Sie können eine Abfrage spezifizieren, um ein beliebiges JSON-Dokument in ein Flatfile-Schema zu reduzieren, welches Azure Search indizieren kann. Abfragen werden für MongoDB-Sammlungen nicht unterstützt. 
 * **dataChangeDetectionPolicy**: Empfohlen. Weitere Informationen finden Sie im Abschnitt [Indizieren von geänderten Dokumenten](#DataChangeDetectionPolicy).
 * **dataDeletionDetectionPolicy**: Optional. Weitere Informationen finden Sie im Abschnitt [Indizieren von gelöschten Dokumenten](#DataDeletionDetectionPolicy).
 
 ### <a name="using-queries-to-shape-indexed-data"></a>Verwenden von Abfragen zum Formen indizierter Daten
 Sie können eine SQL-Abfrage angeben, um geschachtelte Eigenschaften oder Arrays zu vereinfachen, JSON-Eigenschaften zu projizieren und die zu indizierenden Daten zu filtern. 
+
+> [!WARNING]
+> Benutzerdefinierte Abfragen werden für **MongoDB**-Sammlungen nicht unterstützt: Der `container.query`-Parameter muss auf NULL festgelegt oder nicht angegeben werden. Wenn Sie eine benutzerdefinierte Abfrage verwenden möchten, informieren Sie uns auf [User Voice](https://feedback.azure.com/forums/263029-azure-search).
 
 Beispieldokument:
 
@@ -170,9 +175,9 @@ Anhand des folgenden Beispiels wird ein Index mit einer ID und einem Beschreibun
 Stellen Sie sicher, dass das Schema des Ziel-Indexes mit dem Schema der JSON-Quelldokumente oder mit der Ausgabe Ihrer benutzerdefinierten Abfrageprojektion kompatibel ist.
 
 > [!NOTE]
-> Für partitionierte Sammlungen ist der Standarddokumentschlüssel die Azure Cosmos DB-Eigenschaft `_rid`, die in Azure Search in `rid` umbenannt wird. Darüber hinaus enthalten die `_rid`-Werte von Azure Cosmos DB Zeichen, die in Azure Search-Schlüsseln ungültig sind. Deshalb sind die `_rid`-Werte Base64-codiert.
+> Für partitionierte Sammlungen ist der Standarddokumentschlüssel die Eigenschaft `_rid` von Azure Cosmos DB, die Azure Search automatisch in `rid` umbenennt, da Feldnamen nicht mit einem Unterstrich beginnen dürfen. Darüber hinaus enthalten die `_rid`-Werte von Azure Cosmos DB Zeichen, die in Azure Search-Schlüsseln ungültig sind. Deshalb sind die `_rid`-Werte Base64-codiert.
 > 
-> 
+> Für MongoDB-Sammlungen benennt Azure Search die `_id`-Eigenschaft automatisch in `doc_id` um.  
 
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>Zuordnung zwischen JSON-Datentypen und Azure Search-Datentypen
 | JSON-Datentyp | Kompatible Feldtypen im Zielindex |
@@ -320,7 +325,7 @@ Im folgenden Beispiel wird eine Datenquelle mit einer Richtlinie zum vorläufige
     }
 
 ## <a name="NextSteps"></a>Nächste Schritte
-Glückwunsch! Sie haben gelernt, wie Sie Azure Cosmos DB mit Azure Search integrieren können, indem Sie einen Indexer verwenden, um Dokumente in einem SQL-Datenmodell zu durchforsten und hochzuladen.
+Glückwunsch! Sie wissen nun, wie Azure Cosmos DB mit dem Indexer in Azure Search integriert wird.
 
 * Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Seite über den Azure Cosmos DB-Dienst](https://azure.microsoft.com/services/cosmos-db/).
 * Weitere Informationen zu Azure Search finden Sie auf der [Seite des Search-Diensts](https://azure.microsoft.com/services/search/).

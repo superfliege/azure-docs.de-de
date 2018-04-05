@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über Hochverfügbarkeitsports in Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über Hochverfügbarkeitsports, die auf einem internen Load Balancer einen Lastenausgleich vornehmen."
+title: Übersicht über Hochverfügbarkeitsports in Azure | Microsoft-Dokumentation
+description: Erfahren Sie mehr über Hochverfügbarkeitsports, die auf einem internen Load Balancer einen Lastenausgleich vornehmen.
 services: load-balancer
 documentationcenter: na
-author: rdhillon
-manager: timlt
-editor: 
+author: KumudD
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
 ms.service: load-balancer
@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/26/2017
+ms.date: 03/21/2017
 ms.author: kumud
-ms.openlocfilehash: 46e284d1636988390f3533d93bfd07399f45dc92
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 09c51441d393de5d801e7a4c259b711a527349d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="high-availability-ports-overview"></a>Übersicht über Hochverfügbarkeitsports
 
-Azure Load Balancer Standard unterstützt Sie beim gleichzeitigen Lastenausgleich von TCP- und UDP-Datenflüssen an allen Ports, wenn Sie einen internen Load Balancer verwenden. 
+Azure Standard Load Balancer unterstützt Sie beim gleichzeitigen Lastenausgleich von TCP- und UDP-Datenflüssen an allen Ports, wenn Sie einen internen Load Balancer verwenden. 
 
->[!NOTE]
-> Das Feature für Hochverfügbarkeitsports (HA) ist derzeit als Vorschauversion mit Load Balancer Standard verfügbar. Während der Previewphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Registrieren Sie sich für die Load Balancer Standard-Vorschauversion, damit Sie Hochverfügbarkeitsports mit Load Balancer Standard-Ressourcen verwenden können. Befolgen Sie auch die Hinweise zur Registrierung für die Load Balancer [Standard-Vorschauversion](https://aka.ms/lbpreview#preview-sign-up).
-
-Eine Regel für Hochverfügbarkeitsports ist eine Variante einer Lastenausgleichsregel, die für eine interne Load Balancer Standard-Instanz konfiguriert wurde. Sie können Ihre Verwendung von Load Balancer vereinfachen, indem Sie eine einzelne Lastenausgleichsregel für den Lastenausgleich aller TCP- und UDP-Datenflüsse bereitstellen, die an allen Ports eines internen Load Balancer Standard eingehen. Die Entscheidung über den Lastenausgleich erfolgt pro Datenfluss. Dies basiert auf der folgenden Verbindung, die sich aus einem fünfteiligen Tupel zusammensetzt: Quell-IP-Adresse, Quellport, Ziel-IP-Adresse, Zielport und Protokoll.
+Eine Regel für Hochverfügbarkeitsports ist eine Variante einer Lastenausgleichsregel, die für eine interne Standard Load Balancer-Instanz konfiguriert wurde. Sie können Ihre Verwendung von Load Balancer vereinfachen, indem Sie eine einzelne Lastenausgleichsregel für den Lastenausgleich aller TCP- und UDP-Datenflüsse bereitstellen, die an allen Ports eines internen Standard Load Balancer eingehen. Die Entscheidung über den Lastenausgleich erfolgt pro Datenfluss. Dies basiert auf der folgenden Verbindung, die sich aus einem fünfteiligen Tupel zusammensetzt: Quell-IP-Adresse, Quellport, Ziel-IP-Adresse, Zielport und Protokoll.
 
 Das Feature für Hochverfügbarkeitsports unterstützt Sie bei wichtigen Szenarien, z. B. Hochverfügbarkeit und Skalierung für virtuelle Netzwerkgeräte in virtuellen Netzwerken. Es kann auch hilfreich sein, wenn für eine große Anzahl von Ports ein Lastenausgleich vorgenommen werden muss. 
 
@@ -44,11 +41,11 @@ Sie können diese Ziele erreichen, indem Sie einfach NVA-Instanzen zum Back-End-
 
 Hochverfügbarkeitsports bieten mehrere Vorteile für NVA-Hochverfügbarkeitsszenarien:
 - Schnelles Failover auf fehlerfreie Instanzen mit Integritätstests pro Instanz
-- Höhere Leistung mit horizontalem Hochskalieren auf *n* aktive Instanzen
+- Höhere Leistung mit horizontaler Skalierung auf *n* aktive Instanzen
 - Szenarien mit *n* aktiven sowie aktiven und passiven Instanzen
 - Komplexe Lösungen wie Apache ZooKeeper-Knoten für die Überwachung von Geräten werden überflüssig
 
-Das folgende Diagramm zeigt eine Nabe-zu-Speiche-Bereitstellung eines virtuellen Netzwerks. Die Speichen erzwingen das Tunneling für ihren Datenverkehr zum virtuellen Nabennetzwerk und über das virtuelle Netzwerkgerät, bevor der vertrauenswürdige Bereich verlassen wird. Die virtuellen Netzwerkgeräte befinden sich hinter einem internen Load Balancer Standard mit einer Konfiguration für die Hochverfügbarkeitsports. Der gesamte Datenverkehr kann entsprechend verarbeitet und weitergeleitet werden.
+Das folgende Diagramm zeigt eine Nabe-zu-Speiche-Bereitstellung eines virtuellen Netzwerks. Die Speichen erzwingen das Tunneling für ihren Datenverkehr zum virtuellen Nabennetzwerk und über das virtuelle Netzwerkgerät, bevor der vertrauenswürdige Bereich verlassen wird. Die virtuellen Netzwerkgeräte befinden sich hinter einem internen Standard Load Balancer mit einer Konfiguration für die Hochverfügbarkeitsports. Der gesamte Datenverkehr kann entsprechend verarbeitet und weitergeleitet werden.
 
 ![Diagramm eines virtuellen Nabe-zu-Speiche-Netzwerks mit virtuellen Netzwerkgeräten, die im Hochverfügbarkeitsmodus bereitgestellt wurden](./media/load-balancer-ha-ports-overview/nvaha.png)
 
@@ -57,34 +54,56 @@ Das folgende Diagramm zeigt eine Nabe-zu-Speiche-Bereitstellung eines virtuellen
 
 ### <a name="load-balancing-large-numbers-of-ports"></a>Lastenausgleich für eine große Anzahl von Ports
 
-Sie können Hochverfügbarkeitsports auch für Anwendungen verwenden, in denen ein Lastenausgleich für eine große Anzahl von Ports erforderlich ist. Sie können diese Szenarien vereinfachen, indem Sie einen internen [Load Balancer Standard](https://aka.ms/lbpreview) mit Hochverfügbarkeitsports verwenden. Eine einzelne Lastenausgleichsregel ersetzt mehrere einzelne Lastenausgleichsregeln, die jeweils für einen Port verwendet wurden.
+Sie können Hochverfügbarkeitsports auch für Anwendungen verwenden, in denen ein Lastenausgleich für eine große Anzahl von Ports erforderlich ist. Sie können diese Szenarien vereinfachen, indem Sie einen internen [Standard Load Balancer](load-balancer-standard-overview.md) mit Hochverfügbarkeitsports verwenden. Eine einzelne Lastenausgleichsregel ersetzt mehrere einzelne Lastenausgleichsregeln, die jeweils für einen Port verwendet wurden.
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-Das Feature für Hochverfügbarkeitsports ist in den [gleichen Regionen wie Load Balancer Standard verfügbar](https://aka.ms/lbpreview#region-availability).  
+Das Feature für Hochverfügbarkeitsports ist in allen Azure-Regionen weltweit verfügbar.
 
-## <a name="preview-sign-up"></a>Registrierung für die Vorschauversion
+## <a name="supported-configurations"></a>Unterstützte Konfigurationen
 
-Für die Teilnahme an der Vorschauversion des Features für Hochverfügbarkeitsports in Load Balancer Standard registrieren Sie Ihr Abonnement für die [Vorschauversion von Load Balancer Standard](https://aka.ms/lbpreview#preview-sign-up). Sie können für die Registrierung entweder Azure CLI 2.0 oder PowerShell verwenden.
+### <a name="one-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>Eine einzige Non-Floating-IP-Konfiguration (kein Direct Server Return) für Hochverfügbarkeitsports auf dem internen Standard Load Balancer
+
+Dies ist eine Basiskonfiguration für Hochverfügbarkeitsports. Die folgende Konfiguration ermöglicht es Ihnen, Lastenausgleich mit Hochverfügbarkeitsports für eine einzigen Front-End-IP-Adresse zu konfigurieren:
+- Aktivieren Sie bei der Konfiguration von Standard Load Balancer das Kontrollkästchen **HA-Ports** in der Load Balancer-Regelkonfiguration. 
+- Stellen Sie sicher, dass **Floating IP** auf **Deaktiviert** gesetzt ist.
+
+Diese Konfiguration erlaubt keine andere Regelkonfiguration für den Lastenausgleich auf der aktuellen Load Balancer-Ressource sowie keine andere interne Load Balancer-Ressourcenkonfiguration für die angegebene Gruppe von Back-End-Instanzen.
+
+Sie können jedoch zusätzlich zu dieser HA-Portregel einen öffentlichen Standard Load Balancer für die Back-End-Instanzen konfigurieren.
+
+## <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>Eine einzige Floating-IP-Konfiguration (Direct Server Return) für Hochverfügbarkeitsports auf dem internen Standard Load Balancer
+
+Sie können Load Balancer auch so konfigurieren, dass eine Lastenausgleichsregel mit **HA-Port** mit einem einzigen Front-End verwendet und **Floating IP** auf **Aktiviert** gesetzt wird. 
+
+Diese Konfiguration ermöglicht es Ihnen, weitere Lastenausgleichsregeln für Floating IPs und/oder einen öffentlichen Load Balancer hinzuzufügen. Es ist jedoch nicht möglich, zusätzlich zu dieser Konfiguration eine Lastenausgleichskonfiguration für HA-Ports mit Non-Floating IPs zu verwenden.
+
+## <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>Mehrere HA-Portkonfigurationen auf der internen Standard Load Balancer-Instanz
+
+Wenn Ihr Szenario erfordert, dass Sie mehrere Front-Ends mit Hochverfügbarkeitsports für den gleichen Back-End-Pool konfigurieren, können Sie dies wie folgt erreichen: 
+- Konfigurieren Sie mehrere private Front-End-IP-Adressen für eine einzige interne Standard Load Balancer-Ressource.
+- Konfigurieren Sie mehrere Lastenausgleichsregeln, wobei jede Regel eine einzige eindeutige Front-End-IP-Adresse hat.
+- Wählen Sie die Option **HA-Ports**, und setzen Sie für alle Lastenausgleichsregeln die Option **Floating IP** auf **Aktiviert**.
+
+## <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>Interner Load Balancer mit Hochverfügbarkeitsports und öffentlicher Load Balancer auf denselben Back-End-Instanzen
+
+Sie können **eine** öffentliche Standard Load Balancer-Ressource für die Back-End-Ressourcen zusammen mit einem einzigen internen Standard Load Balancer mit Hochverfügbarkeitsports konfigurieren.
 
 >[!NOTE]
->Die Registrierung kann bis zu einer Stunde dauern.
+>Diese Funktion ist jetzt über die Azure Resource Manager-Vorlagen verfügbar, nicht aber über das Azure-Portal.
 
 ## <a name="limitations"></a>Einschränkungen
 
-Nachfolgend sind die unterstützten Konfigurationen oder Ausnahmen für das Feature für Hochverfügbarkeitsports aufgeführt:
+- HA-Portskonfiguration ist nur für den internen Load Balancer verfügbar, nicht für einen öffentlichen Load Balancer.
 
-- Eine einzelne Front-End-IP-Konfiguration kann nur eine einzelne DSR-Lastenausgleichsregel (Direct Server Return – Floating IP in Azure) mit Hochverfügbarkeitsports oder eine einzelne Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports enthalten, niemals beides gleichzeitig.
-- Eine einzelne Netzwerkschnittstellen-IP-Konfiguration kann nur eine Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports aufweisen. Sie können für diese IP-Konfiguration keine anderen Regeln konfigurieren.
-- Eine IP-Konfiguration einer einzelnen Netzwerkschnittstelle kann mindestens eine DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports aufweisen, vorausgesetzt, dass alle ihre jeweiligen Front-End-IP-Konfigurationen eindeutig sind.
-- Wenn alle Lastenausgleichsregeln Hochverfügbarkeitsports (nur DSR) aufweisen, können gleichzeitig zwei (oder mehr) Load Balancer-Regeln, die auf denselben Back-End-Pool verweisen, vorhanden sein. Dasselbe gilt, wenn alle Regeln Nicht-Hochverfügbarkeitsports (DSR und Nicht-DSR) aufweisen. Wenn Hochverfügbarkeitsport- und Nicht-Hochverfügbarkeitsportregeln kombiniert wurden, können zwei dieser Lastenausgleichsregeln jedoch nicht gleichzeitig vorhanden sein.
+- Eine Kombination aus einer Lastenausgleichsregel mit und einer ohne Hochverfügbarkeitsports wird nicht unterstützt.
+
 - Das Feature für Hochverfügbarkeitsports ist für IPv6 nicht verfügbar.
-- Flowsymmetrie für NVA-Szenarien wird nur mit einer einzelnen NIC unterstützt. Sehen Sie sich die Beschreibung und das Diagramm unter [Virtuelle Netzwerkgeräte](#nva) an. 
 
+- Flowsymmetrie für NVA-Szenarien wird nur mit einer einzelnen NIC unterstützt. Sehen Sie sich die Beschreibung und das Diagramm unter [Virtuelle Netzwerkgeräte](#nva) an. Sollte für Ihre Szenario ein Ziel-NAT in Frage kommt, können Sie dies verwenden, um sicherzustellen, dass der interne Load Balancer den ausgehenden Datenverkehr an dieselbe NVA sendet.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren von Hochverfügbarkeitsports auf einem internen Load Balancer Standard-Modul](load-balancer-configure-ha-ports.md)
-- [Erfahren Sie mehr über die Load Balancer Standard-Vorschau](https://aka.ms/lbpreview)
-
+- [Konfigurieren von Hochverfügbarkeitsports für einen internen Standard Load Balancer](load-balancer-configure-ha-ports.md)
+- [Übersicht über Standard Load Balancer](load-balancer-standard-overview.md)

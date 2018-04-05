@@ -1,6 +1,6 @@
 ---
-title: "Stichprobenerstellung für Telemetriedaten in Azure Application Insights | Microsoft-Dokumentation"
-description: "So behalten Sie die Kontrolle über die Menge an erfassten Telemetriedaten."
+title: Stichprobenerstellung für Telemetriedaten in Azure Application Insights | Microsoft-Dokumentation
+description: So behalten Sie die Kontrolle über die Menge an erfassten Telemetriedaten.
 services: application-insights
 documentationcenter: windows
 author: vgorbenko
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1f6c58b219a5fb040048d0075644102f5f0c5323
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 300b9b7786c17972c5c48df7e5b6d28491adc095
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -30,7 +30,7 @@ Die Stichprobenerstellung reduziert Datenverkehr und Datenkosten und unterstütz
 ## <a name="in-brief"></a>Kurz gesagt:
 * Bei der Stichprobenerstellung wird ein Datensatz von *n* Datensätzen beibehalten, und der Rest wird verworfen. Beispielsweise wird eines von fünf Ereignissen beibehalten – das ergibt einen Stichproben-Prozentsatz von 20%. 
 * Die Stichprobenerstellung wird automatisch durchgeführt, wenn Ihre Anwendung sehr viele Telemetriedaten in ASP.NET-Webserver-Apps sendet.
-* Sie können die Stichprobenerstellung auch manuell festlegen. Dazu verwenden Sie entweder die Preisübersichtsseite im Portal oder Sie nutzen die CONFIG-Datei im ASP.NET-SDK, um den Netzwerkdatenverkehr zu reduzieren.
+* Sie können die Stichprobenerstellung auch manuell festlegen. Dazu verwenden Sie entweder die Preisübersichtsseite im Portal, oder Sie nutzen die CONFIG-Datei im ASP.NET-SDK bzw. die Datei „ApplicationInsights.xml“ im Java-SDK, um auch den Netzwerkdatenverkehr zu reduzieren.
 * Wenn Sie benutzerdefinierte Ereignisse protokollieren und sicherstellen möchten, dass ein Satz von Ereignissen gemeinsam beibehalten oder verworfen wird, müssen Sie sicherstellen, dass alle Einzelereignisse den gleichen Wert für „OperationId“ haben.
 * Der Stichprobenteiler *n* wird in jedem Datensatz in der Eigenschaft `itemCount` gemeldet, die in der Suche unter dem Anzeigenamen „Anforderungsanzahl“ oder „Ereignisanzahl“ angezeigt wird. Wenn keine Stichprobenerstellung aktiv ist, `itemCount==1`.
 * Wenn Sie Analytics-Abfragen schreiben, sollten Sie die [Stichprobenerstellung berücksichtigen](app-insights-analytics-tour.md#counting-sampled-data). Insbesondere sollten Sie nicht einfach nur Datensätze zählen, sondern stattdessen `summarize sum(itemCount)`verwenden.
@@ -39,7 +39,7 @@ Die Stichprobenerstellung reduziert Datenverkehr und Datenkosten und unterstütz
 Es gibt drei alternative Methoden zur Stichprobenerstellung:
 
 * **Adaptive Stichprobenerstellung** : Hierbei wird die Menge der Telemetriedaten, die vom SDK in Ihrer ASP.NET-App gesendet wird, automatisch angepasst. Ab der SDK-Version 2.0.0-beta3 ist diese Methode die Standardmethode für die Stichprobenerstellung. Die adaptive Stichprobenerstellung ist derzeit nur für serverseitige Telemetriedaten von ASP.NET verfügbar. 
-* **Stichprobenerstellung mit festem Prozentsatz** : Verringert die Menge an Telemetriedaten, die von Ihrem ASP.NET-Server und von den Benutzerbrowsern gesendet wird. Sie legen den Prozentsatz fest. Client und Server synchronisieren ihre Stichprobenerstellung, sodass Sie in der Suche zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
+* **Stichprobenerstellung mit festem Prozentsatz** : Verringert die Menge an Telemetriedaten, die von Ihrem ASP.NET- oder Java-Server und von den Benutzerbrowsern gesendet wird. Sie legen den Prozentsatz fest. Client und Server synchronisieren ihre Stichprobenerstellung, sodass Sie in der Suche zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
 * **Erfassungs-Stichprobenerstellung** funktioniert im Azure-Portal. Bei dieser Methode werden einige Telemetriedaten, die von Ihrer App eingehen, mit der von Ihnen angegebenen Stichprobenerstellungsrate verworfen. Die Methode verringert zwar nicht den von Ihrer App gesendeten Telemetriedatenverkehr, trägt aber zur Einhaltung Ihres monatlichen Kontingents bei. Der Hauptvorteil der Erfassungs-Stichprobenerstellung besteht darin, dass die Stichprobenerstellungsrate ohne erneute Bereitstellung Ihrer App festgelegt werden kann und einheitlich für alle Server und Clients funktioniert. 
 
 Während die Stichprobenerstellung mit adaptivem oder festem Prozentsatz aktiv ist, wird die Erfassungs-Stichprobenerstellung deaktiviert.
@@ -194,14 +194,14 @@ Für den Prozentsatz der Stichprobenerstellung wählen Sie einen Prozentsatz, de
 
 Wenn Sie auch auf dem Server die Stichprobenerstellung mit festem Prozentsatz aktivieren, wird die Stichprobenerstellung zwischen Client und Server synchronisiert, sodass Sie in Search zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
 
-## <a name="fixed-rate-sampling-for-aspnet-web-sites"></a>Stichprobenerstellung mit festem Prozentsatz für ASP.NET-Websites
+## <a name="fixed-rate-sampling-for-aspnet-and-java-web-sites"></a>Stichprobenerstellung mit festem Prozentsatz für ASP.NET- und Java-Websites
 Bei der Stichprobenerstellung mit festem Prozentsatz wird der Datenverkehr verringert, der von Ihren Webservern und Webbrowsern gesendet wird. Im Gegensatz zur adaptiven Stichprobenerstellung werden die Telemetriedaten nach einem von Ihnen festgelegten Prozentsatz verringert. Darüber hinaus wird die Stichprobenerstellung für Client und Server synchronisiert, sodass zugehörige Elemente beibehalten werden. Wenn Sie also beispielsweise eine Seitenansicht in Search betrachten, können Sie die dazugehörige Anforderung ermitteln.
 
 Der Stichprobenalgorithmus behält zugehörige Elemente bei. Für jedes HTTP-Anforderungsereignis werden die Anforderung selbst und die dazugehörigen Ereignisse entweder gemeinsam verworfen oder übermittelt. 
 
 Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderungen und Ausnahmen mit einem Faktor multipliziert, um die Stichprobenrate zu kompensieren und annähernd korrekte Werte zu erhalten.
 
-### <a name="configuring-fixed-rate-sampling"></a>Konfigurieren der Stichprobenerstellung mit festem Prozentsatz ###
+### <a name="configuring-fixed-rate-sampling-in-aspnet"></a>Konfigurieren der Stichprobenerstellung mit festem Prozentsatz in ASP.NET ###
 
 1. **Aktualisieren Sie die NuGet-Pakete Ihres Projekts** auf die neueste *Vorabversion* von Application Insights. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, klicken Sie auf „NuGet-Pakete verwalten“, aktivieren Sie das Kontrollkästchen **Vorabversion einschließen**, und suchen Sie nach „Microsoft.ApplicationInsights.Web“. 
 2. **Deaktivieren Sie die adaptive Stichprobenerstellung**: Entfernen Sie in [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) den `AdaptiveSamplingTelemetryProcessor` Knoten, oder kommentieren Sie ihn aus.
@@ -218,7 +218,7 @@ Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderu
 
     ```
 
-1. **Aktivieren Sie das Modul für die Stichprobenerstellung mit festem Prozentsatz.** Fügen Sie in [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)diesen Codeausschnitt hinzu:
+3. **Aktivieren Sie das Modul für die Stichprobenerstellung mit festem Prozentsatz.** Fügen Sie in [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)diesen Codeausschnitt hinzu:
    
     ```XML
    
@@ -232,6 +232,36 @@ Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderu
     </TelemetryProcessors>
    
     ```
+
+### <a name="configuring-fixed-rate-sampling-in-java"></a>Konfigurieren der Stichprobenerstellung mit festem Prozentsatz in Java ###
+
+1. Herunterladen und Konfigurieren Ihrer Webanwendung mit dem aktuellen [Application Insights-Java-SDK](app-insights-java-get-started.md)
+
+2. **Aktivieren Sie das Modul für die Stichprobenerstellung mit festem Prozentsatz** durch Hinzufügen des folgenden Codeausschnitts zur ApplicationInsights.xml-Datei.
+
+```XML
+    <TelemetryProcessors>
+        <BuiltInProcessors>
+            <Processor type = "FixedRateSamplingTelemetryProcessor">
+                <!-- Set a percentage close to 100/N where N is an integer. -->
+                <!-- E.g. 50 (=100/2), 33.33 (=100/3), 25 (=100/4), 20, 1 (=100/100), 0.1 (=100/1000) -->
+                <Add name = "SamplingPercentage" value = "50" />
+            </Processor>
+        </BuilrInProcessors>
+    <TelemetryProcessors/>
+```
+
+3. Sie können bestimmte Telemetriedatentypen mithilfe der folgenden Tags innerhalb des Processor-Tags FixedRateSamplingTelemetryProcessor in die Stichprobenerstellung einschließen oder von ihr ausschließen.
+```XML
+    <ExcludedTypes>
+        <ExcludedType>Request</ExcludedType>
+    </ExcludedTypes>
+
+    <IncludedTypes>
+        <IncludedType>Exception</IncludedType>
+    </IncludedTypes>
+```
+Folgende Telemetriedatentypen können in die Stichprobenerstellung eingeschlossen oder von ihr ausgeschlossen werden: Dependency, Event, Exception, PageView, Request und Trace.
 
 > [!NOTE]
 > Für den Prozentsatz der Stichprobenerstellung wählen Sie einen Prozentsatz, der sich als Bruch darstellen lässt (100/N, wobei N eine Ganzzahl ist).  Andere Werte werden bei der Stichprobenerstellung gegenwärtig nicht unterstützt.
@@ -264,6 +294,8 @@ Anstatt den Stichprobenerstellungsparameter in der CONFIG-Datei festzulegen, kö
 ## <a name="when-to-use-sampling"></a>Wann sollten Sie die Stichprobenerstellung nutzen?
 Die adaptive Stichprobenerstellung ist automatisch aktiviert, wenn Sie das ASP.NET-SDK ab Version 2.0.0-beta3 verwenden. Unabhängig von der verwendeten SDK-Version können Sie die Erfassungs-Stichprobenerstellung aktivieren, um Application Insights die Stichprobenerstellung für die gesammelten Daten zu ermöglichen.
 
+Standardmäßig ist keine Stichprobenerstellung im Java-SDK aktiviert. Derzeit wird nur Stichprobenerstellung mit festem Prozentsatz unterstützt. Adaptive Stichprobenerstellung wird im Java-SDK nicht unterstützt.
+
 Für die meisten kleinen und mittelgroßen Anwendungen ist im Allgemeinen keine Stichprobenerstellung erforderlich. Die nützlichsten Diagnoseinformationen und präzisesten Statistiken werden abgerufen, indem Sie Daten zu sämtlichen Benutzeraktivitäten erfassen. 
 
 Die Hauptvorteile von Stichproben sind:
@@ -276,12 +308,12 @@ Die Hauptvorteile von Stichproben sind:
 **Verwenden Sie die Erfassungs-Stichprobenerstellung in folgenden Fällen:**
 
 * Sie überschreiten häufig Ihr monatlichen Kontingents für Telemetriedaten.
-* Sie verwenden eine SDK-Version, die eine Stichprobenerstellung nicht unterstützt – beispielsweise das Java-SDK oder eine ASP.NET-Version vor Version 2.
+* Sie verwenden eine SDK-Version, die keine Stichprobenerstellung unterstützt – beispielsweise frühere ASP.NET-Versionen als 2.
 * Sie empfangen große Mengen an Telemetriedaten von den Webbrowsern Ihrer Benutzer.
 
 **Verwenden Sie die Stichprobenerstellung mit festem Prozentsatz unter folgenden Bedingungen:**
 
-* Sie verwenden das Application Insights-SDK für ASP.NET-Webdienste der Version 2.0.0 oder höher.
+* Sie verwenden das Application Insights-SDK für ASP.NET-Webdienste Version 2.0.0 oder höher bzw. Java-SDK v2.0.1 oder höher, und
 * Sie möchten die Stichprobenerstellung zwischen Client und Server synchronisieren, sodass Sie beim Untersuchen von Ereignissen in der [Suche](app-insights-diagnostic-search.md) zwischen verwandten Ereignissen auf dem Client und dem Server navigieren können, z.B. zwischen Seitenaufrufen und HTTP-Anforderungen.
 * Sie sind sich sicher, welcher Stichproben-Prozentsatz für Ihre App angemessen ist. Er sollte hoch genug sein, um genaue Metriken zu erhalten, aber so tief liegen, dass Sie Ihr Tarifkontingent und die Drosselungslimits einhalten. 
 
@@ -299,7 +331,7 @@ Verwenden Sie etwa folgende [Analytics-Abfrage](app-insights-analytics.md) , um 
 In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Datensätze an, die der Datensatz darstellt (Anzahl zuvor verworfener Datensätze + 1). 
 
 ## <a name="how-does-sampling-work"></a>Wie funktioniert die Stichprobenerstellung?
-Stichprobenerstellung mit festem Prozentsatz und adaptive Stichprobenerstellung sind ein Feature des SDK in ASP.NET, Version 2.0.0 oder höher. Die Erfassungs-Stichprobenerstellung ist ein Feature des Application Insights-Diensts und kann ausgeführt werden, wenn das SDK keine Stichprobenerstellung ausführt. 
+Feature Stichprobenerstellung mit festem Prozentsatz im ASP.NET-SDK ab Version 2.0.0 und Java-SDK ab Version 2.0.1. Adaptive Stichprobenerstellung ist ein Feature des SDK in ASP.NET, Version 2.0.0 oder höher. Die Erfassungs-Stichprobenerstellung ist ein Feature des Application Insights-Diensts und kann ausgeführt werden, wenn das SDK keine Stichprobenerstellung ausführt. 
 
 Der Stichprobenerstellungs-Algorithmus entscheidet, welche Telemetriedaten verworfen, und welche beibehalten werden (sowohl im SDK als auch im Application Insights-Dienst). Diese Entscheidung im Hinblick auf die Stichprobenerstellung wird basierend auf verschiedenen Regeln getroffen, mit denen sichergestellt wird, dass alle zusammenhängenden Datenpunkte intakt bleiben. Dadurch sind die in Application Insights durchgeführten Diagnosen auch bei einer geringeren Datenmenge zuverlässig und ermöglichen es Ihnen, die erforderlichen Maßnahmen zu ergreifen. Wenn Ihre App beispielsweise zusätzliche Telemetrieelemente für eine Anforderung sendet, bei der ein Fehler aufgetreten ist (z. B. Ausnahmen und Ablaufverfolgungen, die für diese Anforderung protokolliert wurden), werden diese Anforderung und andere Telemetriedaten bei der Stichprobenerstellung nicht getrennt. Die Daten werden entweder vollständig beibehalten oder vollständig verworfen. Wenn Sie die Anforderungsdetails in Application Insights anzeigen, wird die Anforderung folglich immer mit den zugehörigen Telemetrieelementen angezeigt. 
 
@@ -350,8 +382,9 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 
 *Auf welchen Plattformen kann ich die Stichprobenerstellung verwenden?*
 
-* Die Erfassungs-Stichprobenerstellung kann automatisch für alle Telemetriedaten oberhalb eines bestimmten Volumens auftreten, wenn das SDK keine Stichprobenerstellung ausführt. Dies würde z. B. funktionieren, wenn Ihre App einen Java-Server verwendet, oder wenn Sie eine ältere Version des ASP.NET-SDK verwenden.
+* Die Erfassungs-Stichprobenerstellung kann automatisch für alle Telemetriedaten oberhalb eines bestimmten Volumens auftreten, wenn das SDK keine Stichprobenerstellung ausführt. Dies würde z. B. funktionieren, wenn Sie eine ältere Version des ASP.NET-SDK oder frühere Version des Java-SDK (1.0.10 oder früher) verwenden.
 * Bei Verwendung von ASP.NET-SDK, Version 2.0.0 und höher (gehostet in Azure oder auf Ihrem eigenen Server), erhalten Sie standardmäßig adaptive Stichprobenerstellung, aber Sie können, wie oben beschrieben, zu festem Prozentsatz wechseln. Bei Stichprobenerstellung mit festem Prozentsatz wird das Browser-SDK automatisch mit stichprobenbezogenen Ereignissen synchronisiert. 
+* Wenn Sie Java-SDK Version 2.0.1 oder höher verwenden, können Sie „ApplicationInsights.xml“ konfigurieren, um die Stichprobenerstellung mit festem Prozentsatz zu aktivieren. Stichprobenerstellung ist standardmäßig deaktiviert. Bei Stichprobenerstellung mit festem Prozentsatz wird das Browser-SDK automatisch mit stichprobenbezogenen Ereignissen synchronisiert.
 
 *Es gibt einige seltene Ereignisse, die ich immer untersuchen möchte. Wie bekomme ich sie durch das Stichprobenmodul?*
 

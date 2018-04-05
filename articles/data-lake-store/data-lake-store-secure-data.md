@@ -1,8 +1,8 @@
 ---
-title: "Schützen von Daten, die im Azure Data Lake Store gespeichert sind | Microsoft Docs"
-description: "Informationen zum Schützen von Daten im Azure Data Lake-Speicher mithilfe von Gruppen und Zugriffssteuerungslisten"
+title: Schützen von Daten, die im Azure Data Lake Store gespeichert sind | Microsoft Docs
+description: Informationen zum Schützen von Daten im Azure Data Lake-Speicher mithilfe von Gruppen und Zugriffssteuerungslisten
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: aa71a1cc48449c6ef48365b301bf9e297c0597ae
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 4d926ee08da593e590aa77a2ca09d8d1e1f6bb46
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Schützen von Daten, die im Azure Data Lake-Speicher gespeichert sind
-Das Schützen von Daten im Azure Data Lake-Speicher ist ein Ansatz, der drei Schritte umfasst.
+Das Schützen von Daten im Azure Data Lake-Speicher ist ein Ansatz, der drei Schritte umfasst.  Die rollenbasierte Zugriffssteuerung (RBAC) sowie die Zugriffssteuerungslisten (ACLs) müssen so festgelegt werden, dass der Zugriff auf Daten für Benutzer und Sicherheitsgruppen vollständig aktiviert ist.
 
 1. Beginnen Sie, indem Sie in Azure Active Directory (AAD) Sicherheitsgruppen erstellen. Diese Sicherheitsgruppen werden verwendet, um die rollenbasierte Zugriffssteuerung im Azure-Portal zu implementieren. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Microsoft Azure](../active-directory/role-based-access-control-configure.md).
 2. Weisen Sie die AAD-Sicherheitsgruppen dem Azure Data Lake-Speicherkonto zu. Hiermit werden der Zugriff auf das Data Lake-Speicherkonto über das Portal und die Verwaltungsvorgänge über das Portal oder APIs gesteuert.
@@ -54,67 +54,66 @@ Eine Anleitung zum Erstellen von AAD-Sicherheitsgruppen und zum Hinzufügen von 
 ## <a name="assign-users-or-security-groups-to-azure-data-lake-store-accounts"></a>Zuweisen von Benutzern oder Sicherheitsgruppen zu Azure Data Lake-Speicherkonten
 Wenn Sie Benutzer oder Sicherheitsgruppen Azure Data Lake-Speicherkonten zuweisen, steuern Sie den Zugriff auf die Verwaltungsvorgänge des Kontos, indem Sie das Azure-Portal und die Azure Resource Manager-APIs verwenden. 
 
-1. Öffnen Sie ein Azure Data Lake-Speicherkonto. Klicken Sie im linken Bereich auf **Durchsuchen** und dann auf **Data Lake Store**. Klicken Sie anschließend auf dem Blatt „Data Lake Store“ auf den Namen des Kontos, dem Sie einen Benutzer oder eine Sicherheitsgruppe zuordnen möchten.
+1. Öffnen Sie ein Azure Data Lake-Speicherkonto. Klicken Sie im linken Bereich auf **Alle Ressourcen** und dann auf dem Blatt „Alle Ressourcen“ auf den Namen des Kontos, dem Sie einen Benutzer oder eine Sicherheitsgruppe zuweisen möchten.
 
-2. Klicken Sie in Ihrem Data Lake Store-Konto auf dem Blatt mit den Einstellungen auf **Zugriffssteuerung (IAM)**. Auf dem Blatt wird standardmäßig die Gruppe **Abonnement-Administratoren** als Besitzer aufgeführt.
+2. Klicken Sie auf dem Blatt Ihres Data Lake Store-Kontos auf **Zugriffssteuerung (IAM)**. Auf dem Blatt werden standardmäßig die Abonnementbesitzer als Besitzer aufgeführt.
    
     ![Zuweisen einer Sicherheitsgruppe zum Azure Data Lake Store-Konto](./media/data-lake-store-secure-data/adl.select.user.icon.png "Zuweisen einer Sicherheitsgruppe zum Azure Data Lake Store-Konto")
 
-    Es gibt zwei Wege zum Hinzufügen einer Gruppe und Zuweisen der relevanten Rollen:
-   
-    * Hinzufügen eines Benutzers/einer Gruppe zum Konto und anschließendes Zuweisen einer Rolle oder
-    * Hinzufügen einer Rolle und anschließendes Zuweisen von Benutzern/Gruppen zur Rolle
-     
-    In diesem Abschnitt untersuchen wir den ersten Ansatz, also das Hinzufügen einer Gruppe und anschließende Zuweisen von Rollen. Sie können ähnliche Schritte ausführen, um zuerst eine Rolle auszuwählen und dieser Rolle dann Gruppen zuzuweisen.
-4. Klicken Sie auf dem Blatt **Benutzer** auf **Hinzufügen**, um das Blatt **Zugriff hinzufügen** zu öffnen. Klicken Sie auf dem Blatt **Zugriff hinzufügen** auf **Rolle auswählen**, und wählen Sie dann eine Rolle für den Benutzer bzw. die Gruppe aus.
+3. Klicken Sie auf dem Blatt **Zugriffssteuerung (IAM)** auf **Hinzufügen**, um das Blatt **Berechtigungen hinzufügen** zu öffnen. Wählen Sie auf dem Blatt **Berechtigungen hinzufügen** eine **Rolle** für den Benutzer bzw. die Gruppe aus. Suchen Sie nach der Sicherheitsgruppe, die Sie zuvor in Azure Active Directory erstellt haben, und wählen Sie sie aus. Wenn Sie über viele Benutzer und Gruppen verfügen, in denen Sie suchen können, können Sie das Textfeld **Auswählen** zum Filtern nach dem Gruppennamen verwenden. 
    
     ![Hinzufügen einer Rolle für den Benutzer](./media/data-lake-store-secure-data/adl.add.user.1.png "Hinzufügen einer Rolle für den Benutzer")
    
-    Mit der Rolle **Besitzer** und **Mitwirkender** wird Zugriff auf viele verschiedene Verwaltungsfunktionen des Data Lake-Kontos gewährt. Für Benutzer, die mit Daten im Data Lake interagieren, können Sie diese Rollen der Rolle **Leser** hinzufügen. Der Umfang dieser Rollen ist auf die Verwaltungsvorgänge beschränkt, die sich auf das Azure Data Lake-Speicherkonto beziehen.
+    Mit der Rolle **Besitzer** und **Mitwirkender** wird Zugriff auf viele verschiedene Verwaltungsfunktionen des Data Lake-Kontos gewährt. Benutzer, die mit Daten im Data Lake interagieren, aber dennoch Informationen zur Kontoverwaltung anzeigen müssen, können Sie der Rolle **Leser** hinzufügen. Der Umfang dieser Rollen ist auf die Verwaltungsvorgänge beschränkt, die sich auf das Azure Data Lake-Speicherkonto beziehen.
    
-    Für Datenvorgänge wird mithilfe von individuellen Dateisystemberechtigungen definiert, was Benutzer tun können. Aus diesem Grund kann ein Benutzer mit der Rolle „Leser“ nur Verwaltungseinstellungen anzeigen, die dem Konto zugeordnet sind. Potenziell kann er aber basierend auf den zugewiesenen Dateisystemberechtigungen Daten lesen und schreiben. Die Dateisystemberechtigungen des Data Lake Store sind unter [Zuweisen von Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake Store-Dateisystem](#filepermissions) beschrieben.
-5. Klicken Sie auf dem Blatt **Zugriff hinzufügen** auf **Benutzer hinzufügen**, um das Blatt **Benutzer hinzufügen** zu öffnen. Suchen Sie auf diesem Blatt nach der Sicherheitsgruppe, die Sie in Azure Active Directory bereits erstellt haben. Wenn Sie über viele Gruppen verfügen, in denen Sie suchen können, können Sie das Textfeld oben zum Filtern nach dem Gruppennamen verwenden. Klicken Sie auf **Auswählen**.
+    Für Datenvorgänge wird mithilfe von individuellen Dateisystemberechtigungen definiert, welche Möglichkeiten Benutzer haben. Aus diesem Grund kann ein Benutzer mit der Rolle „Leser“ nur Verwaltungseinstellungen anzeigen, die dem Konto zugeordnet sind. Potenziell kann er aber basierend auf den zugewiesenen Dateisystemberechtigungen Daten lesen und schreiben. Die Dateisystemberechtigungen des Data Lake Store sind unter [Zuweisen von Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake Store-Dateisystem](#filepermissions) beschrieben.
+
+    > [!IMPORTANT]
+    > Nur in der Rolle **Besitzer** wird der Dateisystemzugriff automatisch aktiviert. Für alle anderen Rollen wie **Mitwirkender** oder **Leser** sind Zugriffssteuerungslisten erforderlich, um die Ebenen des Zugriffs auf Ordner und Dateien zu aktivieren.  Die Rolle **Besitzer** umfasst Administratorrechte für Dateien und Ordner, die über Zugriffssteuerungslisten nicht überschrieben werden können. Weitere Informationen zum Zuordnen von RBAC-Richtlinien zum Datenzugriff finden Sie unter [RBAC für die Kontoverwaltung](data-lake-store-security-overview.md#rbac-for-account-management).
+
+4. Wenn Sie eine Gruppe oder einen Benutzer hinzufügen möchten, die bzw. der auf dem Blatt **Berechtigungen hinzufügen** nicht aufgeführt ist, können Sie sie einladen, indem Sie die entsprechende E-Mail-Adresse im Textfeld **Auswählen** eingeben und sie dann in der Liste auswählen.
    
     ![Hinzufügen einer Sicherheitsgruppe](./media/data-lake-store-secure-data/adl.add.user.2.png "Hinzufügen einer Sicherheitsgruppe")
    
-    Falls Sie eine nicht aufgeführte Gruppe bzw. einen Benutzer hinzufügen möchten, können Sie über das Symbol **Einladen** eine Einladung erstellen und die E-Mail-Adresse für den Benutzer bzw. die Gruppe angeben.
-6. Klicken Sie auf **OK**. Die Sicherheitsgruppe sollte wie unten dargestellt hinzugefügt werden.
+5. Klicken Sie auf **Speichern**. Die Sicherheitsgruppe sollte wie unten dargestellt hinzugefügt werden.
    
     ![Sicherheitsgruppe hinzugefügt](./media/data-lake-store-secure-data/adl.add.user.3.png "Sicherheitsgruppe hinzugefügt")
 
-7. Der Benutzer bzw. die Sicherheitsgruppe verfügt jetzt über Zugriff auf den Azure Data Lake-Speicher. Wenn Sie bestimmten Benutzern Zugriff gewähren möchten, können Sie sie der Sicherheitsgruppe hinzufügen. Wenn Sie den Zugriff für einen Benutzer widerrufen möchten, können Sie sie auch aus der Sicherheitsgruppe entfernen. Sie können einem Konto auch mehrere Sicherheitsgruppen zuweisen. 
+6. Der Benutzer bzw. die Sicherheitsgruppe verfügt jetzt über Zugriff auf den Azure Data Lake-Speicher. Wenn Sie bestimmten Benutzern Zugriff gewähren möchten, können Sie sie der Sicherheitsgruppe hinzufügen. Wenn Sie den Zugriff für einen Benutzer widerrufen möchten, können Sie sie auch aus der Sicherheitsgruppe entfernen. Sie können einem Konto auch mehrere Sicherheitsgruppen zuweisen. 
 
-## <a name="filepermissions"></a>Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake-Speicher-Dateisystem
+## <a name="filepermissions"></a>Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake Store-Dateisystem
 Indem Sie dem Azure Data Lake-Dateisystem Benutzer oder Sicherheitsgruppen zuweisen, legen Sie die Zugriffssteuerung für die im Azure Data Lake-Speicher gespeicherten Daten fest.
 
 1. Klicken Sie auf dem Blatt Ihres Data Lake-Speicherkontos auf **Daten-Explorer**.
    
-    ![Erstellen von Verzeichnissen im Data Lake Store-Konto](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Erstellen von Verzeichnissen im Data Lake Store-Konto")
-2. Klicken Sie auf dem Blatt **Daten-Explorer** auf die Datei oder den Ordner, für die bzw. den Sie die Zugriffssteuerungsliste konfigurieren möchten, und klicken Sie dann auf **Zugriff**. Um einer Datei eine Zugriffssteuerungsliste hinzuzufügen, müssen Sie auf dem Blatt **Dateivorschau** auf **Zugriff** klicken.
+    ![Anzeigen von Daten über Daten-Explorer](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Anzeigen von Daten über Daten-Explorer")
+2. Klicken Sie auf dem Blatt **Daten-Explorer** auf den Ordner, für den Sie die Zugriffssteuerungsliste konfigurieren möchten, und klicken Sie dann auf **Zugriff**. Um einer Datei Zugriffssteuerungslisten zuzuweisen, müssen Sie zunächst auf die Datei klicken, um sie in der Vorschau anzuzeigen, und dann auf dem Blatt **Dateivorschau** auf **Zugriff** klicken.
    
     ![Festlegen von Zugriffssteuerungslisten für das Data Lake-Dateisystem](./media/data-lake-store-secure-data/adl.acl.1.png "Festlegen von Zugriffssteuerungslisten für das Data Lake-Dateisystem")
-3. Auf dem Blatt **Zugriff** sind der Standardzugriff und der benutzerdefinierte Zugriff aufgeführt, die dem Stamm bereits zugewiesen wurden. Klicken Sie auf das Symbol **Hinzufügen** , um Zugriffssteuerungslisten auf benutzerdefinierter Ebene hinzuzufügen.
+3. Auf dem Blatt **Zugriff** sind die Besitzer und zugewiesenen Berechtigungen aufgeführt, die dem Stamm bereits zugewiesen wurden. Klicken Sie auf das Symbol **Hinzufügen**, um zusätzliche Zugriffs-ACLs hinzuzufügen.
+    > [!IMPORTANT]
+    > Durch Festlegen von Zugriffsberechtigungen für eine einzelne Datei wird einem Benutzer oder einer Gruppe nicht zwingend der Zugriff auf diese Datei gewährt. Der zugewiesene Benutzer bzw. die zugewiesene Gruppe muss Zugriff auf den Pfad zu der Datei haben. Weitere Informationen und Beispiele finden Sie unter [Allgemeine Szenarien im Zusammenhang mit Berechtigungen](data-lake-store-access-control.md#common-scenarios-related-to-permissions).
    
     ![Auflisten von Standardzugriff und benutzerdefiniertem Zugriff](./media/data-lake-store-secure-data/adl.acl.2.png "Auflisten von Standardzugriff und benutzerdefiniertem Zugriff")
    
-   * **Standardzugriff** handelt es sich um den Zugriff im UNIX-Stil, bei dem Sie Lesen, Schreiben und Ausführen (read, write, execute (rwx)) für drei unterschiedliche Benutzerklassen angeben: Besitzer, Gruppe und Sonstiges.
-   * **benutzerdefinierte Zugriff** entspricht den POSIX-Zugriffssteuerungslisten, bei denen Sie Berechtigungen nicht nur für den Besitzer oder die Gruppe der Datei, sondern für speziell benannte Benutzer oder Gruppen festlegen können. 
+   * **Besitzer** und **Beliebige andere Person** bieten Zugriff im UNIX-Stil, bei dem Sie Lesen, Schreiben und Ausführen (read, write, execute – rwx) für drei unterschiedliche Benutzerklassen angeben: Besitzer, Gruppe und andere.
+   * **Zugewiesene Berechtigungen** entspricht den POSIX-Zugriffssteuerungslisten, bei denen Sie Berechtigungen nicht nur für den Besitzer oder die Gruppe der Datei, sondern für speziell benannte Benutzer oder Gruppen festlegen können. 
      
      Weitere Informationen finden Sie unter [HDFS-Zugriffssteuerungslisten](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)(in englischer Sprache). Weitere Informationen zur Implementierung von ACLs in Data Lake Store finden Sie unter [Zugriffssteuerung in Data Lake Store](data-lake-store-access-control.md).
-4. Klicken Sie auf das Symbol **Hinzufügen**, um das Blatt **Benutzerdefinierten Zugriff hinzufügen** zu öffnen. Klicken Sie auf diesem Blatt auf **Benutzer oder Gruppe auswählen**, und suchen Sie dann auf dem Blatt **Benutzer oder Gruppe auswählen** nach der Sicherheitsgruppe, die Sie zuvor in Azure Active Directory erstellt haben. Wenn Sie über viele Gruppen verfügen, in denen Sie suchen können, können Sie das Textfeld oben zum Filtern nach dem Gruppennamen verwenden. Klicken Sie auf die Gruppe, die Sie hinzufügen möchten, und klicken Sie dann auf **Auswählen**.
+4. Klicken Sie auf das Symbol **Hinzufügen**, um das Blatt **Berechtigungen zuweisen** zu öffnen. Klicken Sie auf diesem Blatt auf **Benutzer oder Gruppe auswählen**, und suchen Sie dann auf dem Blatt **Benutzer oder Gruppe auswählen** nach der Sicherheitsgruppe, die Sie zuvor in Azure Active Directory erstellt haben. Wenn Sie über viele Gruppen verfügen, in denen Sie suchen können, können Sie das Textfeld oben zum Filtern nach dem Gruppennamen verwenden. Klicken Sie auf die Gruppe, die Sie hinzufügen möchten, und klicken Sie dann auf **Auswählen**.
    
     ![Hinzufügen einer Gruppe](./media/data-lake-store-secure-data/adl.acl.3.png "Hinzufügen einer Gruppe")
-5. Klicken Sie auf **Berechtigungen auswählen**, wählen Sie die Berechtigungen aus, und legen Sie fest, ob die Berechtigungen als Standard-ACL und/oder Zugriffs-ACL zugewiesen werden sollen. Klicken Sie auf **OK**.
+5. Klicken Sie auf **Berechtigungen auswählen**, wählen Sie die Berechtigungen aus, und legen Sie fest, ob die Berechtigungen rekursiv angewendet werden sollen und ob sie als Zugriffs-ACL und/oder Standard-ACL zugewiesen werden sollen. Klicken Sie auf **OK**.
    
     ![Zuweisen von Berechtigungen zu einer Gruppe](./media/data-lake-store-secure-data/adl.acl.4.png "Zuweisen von Berechtigungen zu einer Gruppe")
    
     Weitere Informationen zu Berechtigungen in Data Lake Store und zu Standard- und Zugriffs-ACLs finden Sie unter [Zugriffssteuerung in Data Lake Store](data-lake-store-access-control.md).
-6. Klicken Sie auf dem Blatt **Benutzerdefinierten Zugriff hinzufügen** auf **OK**. Die neu hinzugefügte Gruppe mit den zugeordneten Berechtigungen wird jetzt auf dem Blatt **Zugriff** aufgelistet.
+6. Nach dem Klicken auf **OK** auf dem Blatt **Berechtigungen auswählen** werden die neu hinzugefügte Gruppe und die zugehörigen Berechtigungen auf dem Blatt **Zugriff** aufgeführt.
    
     ![Zuweisen von Berechtigungen zu einer Gruppe](./media/data-lake-store-secure-data/adl.acl.5.png "Zuweisen von Berechtigungen zu einer Gruppe")
    
    > [!IMPORTANT]
-   > In der aktuellen Version können unter **Benutzerdefinierter Zugriff**nur neun Einträge vorhanden sein. Wenn Sie mehr als neun Benutzer hinzufügen möchten, sollten Sie Sicherheitsgruppen erstellen, die Benutzer den Sicherheitsgruppen hinzufügen und für das Data Lake-Speicherkonto den Zugriff auf diese Sicherheitsgruppen gewähren.
+   > Im aktuellen Release können Sie bis zu 28 Einträge unter **Zugewiesene Berechtigungen** hinzufügen. Wenn Sie mehr als 28 Benutzer hinzufügen möchten, sollten Sie Sicherheitsgruppen erstellen, die Benutzer den Sicherheitsgruppen hinzufügen und für das Data Lake Store-Konto den Zugriff auf diese Sicherheitsgruppen gewähren.
    > 
    > 
 7. Falls erforderlich, können Sie die Zugriffsberechtigungen auch ändern, nachdem Sie die Gruppe hinzugefügt haben. Deaktivieren oder aktivieren Sie das Kontrollkästchen für jeden Berechtigungstyp (Lesen, Schreiben, Ausführen) in Abhängigkeit davon, ob Sie die Berechtigung für die Sicherheitsgruppe entfernen oder zuweisen möchten. Klicken Sie auf **Speichern**, um die Änderungen zu speichern, oder auf **Verwerfen**, um die Änderungen rückgängig zu machen.
@@ -125,15 +124,14 @@ Mit dem Azure Data Lake-Speicher können Sie den Zugriff auf Ihren Datenspeicher
 ![Firewall-Einstellungen und IP-Zugriff](./media/data-lake-store-secure-data/firewall-ip-access.png "Firewalleinstellungen und IP-Adresse")
 
 ## <a name="remove-security-groups-for-an-azure-data-lake-store-account"></a>Entfernen von Sicherheitsgruppen für ein Azure Data Lake-Speicherkonto
-Wenn Sie Sicherheitsgruppen aus Azure Data Lake-Speicherkonten entfernen, ändern Sie lediglich den Zugriff auf die Verwaltungsvorgänge des Kontos, indem Sie das Azure-Portal und die Azure Resource Manager-APIs verwenden.
+Wenn Sie Sicherheitsgruppen aus Azure Data Lake-Speicherkonten entfernen, ändern Sie lediglich den Zugriff auf die Verwaltungsvorgänge des Kontos, indem Sie das Azure-Portal und die Azure Resource Manager-APIs verwenden.  
 
-1. Klicken Sie auf dem Blatt Ihres Data Lake Store-Kontos auf **Einstellungen**. Klicken Sie auf dem Blatt **Einstellungen** auf **Benutzer**.
+Der Zugriff auf Daten ist unverändert und wird weiterhin über die ACLs verwaltet.  Eine Ausnahme bilden Benutzer oder Gruppen in der Rolle „Besitzer“.  Benutzer oder Gruppen, die aus der Rolle „Besitzer“ entfernt wurden, sind keine Administratoren mehr, und ihr Zugriff beschränkt sich auf den Zugriff auf ACL-Einstellungen. 
+
+1. Klicken Sie auf dem Blatt Ihres Data Lake Store-Kontos auf **Zugriffssteuerung (IAM)**. 
    
     ![Zuweisen einer Sicherheitsgruppe zum Azure Data Lake-Konto](./media/data-lake-store-secure-data/adl.select.user.icon.png "Zuweisen einer Sicherheitsgruppe zum Azure Data Lake-Konto")
-2. Klicken Sie auf dem Blatt **Benutzer** auf die Sicherheitsgruppe, die Sie entfernen möchten.
-   
-    ![Zu entfernende Sicherheitsgruppe](./media/data-lake-store-secure-data/adl.add.user.3.png "Zu entfernende Sicherheitsgruppe")
-3. Klicken Sie auf dem Blatt für die Sicherheitsgruppe auf **Entfernen**.
+2. Klicken Sie auf dem Blatt **Zugriffssteuerung (IAM)** auf die Sicherheitsgruppe, die Sie entfernen möchten. Klicken Sie auf **Entfernen**.
    
     ![Sicherheitsgruppe entfernt](./media/data-lake-store-secure-data/adl.remove.group.png "Sicherheitsgruppe entfernt")
 
@@ -143,10 +141,10 @@ Wenn Sie Zugriffssteuerungslisten von Sicherheitsgruppen aus dem Azure Data Lake
 1. Klicken Sie auf dem Blatt Ihres Data Lake-Speicherkontos auf **Daten-Explorer**.
    
     ![Erstellen von Verzeichnissen im Data Lake-Konto](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Erstellen von Verzeichnissen im Data Lake-Konto")
-2. Klicken Sie auf dem Blatt **Daten-Explorer** auf die Datei oder den Ordner, für die bzw. den Sie die Zugriffssteuerungsliste entfernen möchten, und klicken Sie dann auf das symbol **Zugriff**. Um eine Zugriffssteuerungsliste für eine Datei zu entfernen, müssen Sie auf dem Blatt **Dateivorschau** auf **Zugriff** klicken.
+2. Klicken Sie auf dem Blatt **Daten-Explorer** auf den Ordner, für den Sie die Zugriffssteuerungsliste entfernen möchten, und klicken Sie dann auf **Zugriff**. Um Zugriffssteuerungslisten für eine Datei zu entfernen, müssen Sie zunächst auf die Datei klicken, um sie in der Vorschau anzuzeigen, und dann auf dem Blatt **Dateivorschau** auf **Zugriff** klicken. 
    
     ![Festlegen von Zugriffssteuerungslisten für das Data Lake-Dateisystem](./media/data-lake-store-secure-data/adl.acl.1.png "Festlegen von Zugriffssteuerungslisten für das Data Lake-Dateisystem")
-3. Klicken Sie auf dem Blatt **Zugriff** im Abschnitt **Benutzerdefinierter Zugriff** auf die Sicherheitsgruppe, die Sie entfernen möchten. Klicken Sie auf dem Blatt **Benutzerdefinierter Zugriff** auf **Entfernen** und dann auf **OK**.
+3. Klicken Sie auf dem Blatt **Zugriff** auf die Sicherheitsgruppe, die Sie entfernen möchten. Klicken Sie auf dem Blatt **Zugriffsdetails** auf **Entfernen**.
    
     ![Zuweisen von Berechtigungen zu einer Gruppe](./media/data-lake-store-secure-data/adl.remove.acl.png "Zuweisen von Berechtigungen zu einer Gruppe")
 

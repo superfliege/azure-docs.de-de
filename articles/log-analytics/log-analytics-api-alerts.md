@@ -1,8 +1,8 @@
 ---
 title: Verwenden der OMS-Log Analytics-Warnungs-REST-API
-description: "Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics, einer Komponente der Operations Management Suite (OMS), erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge."
+description: Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics, einer Komponente der Operations Management Suite (OMS), erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ce72ffef4394bf3bbe39fa420c4fcaa965ae35c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ed0ac6e2041ef503470f7317a5736deecd1d2b8f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API
 Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Operations Management Suite (OMS) erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
@@ -33,7 +33,7 @@ Derzeit können Warnungen nur mit einer gespeicherten Suche in Log Analytics ers
 Eine gespeicherte Suche kann über einen oder mehrere Zeitpläne verfügen. Der Zeitplan definiert, wie oft die Suche durchgeführt wird und welches Zeitintervall für die Identifizierung der Kriterien verwendet wird.
 Die Zeitplaneigenschaften sind in der folgenden Tabelle aufgeführt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Intervall |Wie oft die Suche durchgeführt wird. Dieser Wert wird in Minuten gemessen. |
 | QueryTimeSpan |Das Zeitintervall, in dem die Kriterien ausgewertet werden. Der Wert muss größer oder gleich dem Intervall sein. Dieser Wert wird in Minuten gemessen. |
@@ -90,15 +90,19 @@ Verwenden Sie die Delete-Methode mit einer Zeitplan-ID, um einen Zeitplan zu lö
 ## <a name="actions"></a>Actions
 Ein Zeitplan kann mehrere Aktionen umfassen. Mit einer Aktion können ein oder mehrere durchzuführende Prozesse definiert werden, z.B. das Senden einer E-Mail oder das Starten eines Runbooks. Es kann auch ein Schwellenwert definiert werden, der bestimmt, wann die Ergebnisse einer Suche eine Übereinstimmung mit Kriterien ergeben.  Mit einigen Aktionen wird beides definiert, sodass die Prozesse durchgeführt werden, wenn der Schwellenwert erreicht ist.
 
-Die Eigenschaften aller Aktionen sind in der folgenden Tabelle aufgeführt.  Unterschiedliche Arten von Warnungen verfügen über unterschiedliche Eigenschaften, die unten beschrieben sind.
+Die Eigenschaften aller Aktionen sind in der folgenden Tabelle aufgeführt.  Unterschiedliche Arten von Warnungen verfügen über unterschiedliche Eigenschaften, die weiter unten beschrieben sind.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Typ |Der Typ der Aktion.  Derzeit sind die möglichen Werte „Warnung“ und „Webhook“. |
-| Name |Der Anzeigename für die Warnung. |
+| NAME |Der Anzeigename für die Warnung. |
 | Version |Die verwendete API-Version.  Dieser Wert sollte derzeit immer 1 lauten. |
 
 ### <a name="retrieving-actions"></a>Abrufen von Aktionen
+
+> [!NOTE]
+> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+
 Verwenden Sie die Get-Methode, um alle Aktionen für einen Zeitplan abzurufen.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
@@ -118,6 +122,10 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID für die gleiche 
 Das Anforderungsformat zum Erstellen einer neuen Aktion variiert je nach Aktivitätstyp. Beispiele hierzu finden Sie in den Abschnitten unten.
 
 ### <a name="deleting-actions"></a>Löschen von Aktionen
+
+> [!NOTE]
+> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+
 Verwenden Sie die Delete-Methode mit der Aktions-ID, um eine Aktion zu löschen.
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
@@ -125,18 +133,25 @@ Verwenden Sie die Delete-Methode mit der Aktions-ID, um eine Aktion zu löschen.
 ### <a name="alert-actions"></a>Warnungsaktionen
 Ein Zeitplan sollte nur über genau eine Warnungsaktion verfügen.  Warnungsaktionen weisen einen oder mehrere Abschnitte auf, die in der folgenden Tabelle aufgeführt sind.  Jeder Abschnitt wird unten ausführlicher beschrieben.
 
-| Abschnitt | Beschreibung |
-|:--- |:--- |
-| Schwellenwert |Kriterien für den Zeitpunkt der Ausführung einer Aktion. |
-| EmailNotification |Senden von E-Mails an mehrere Empfänger. |
-| Korrektur |Starten Sie ein Runbook in Azure Automation, um zu versuchen, das identifizierte Problem zu beheben. |
+| Abschnitt | BESCHREIBUNG | Verwendung |
+|:--- |:--- |:--- |
+| Schwellenwert |Kriterien für den Zeitpunkt der Ausführung einer Aktion.| Für jede Warnung vor oder nach der Erweiterung auf Azure erforderlich. |
+| Severity |Bezeichnung zum Klassifizieren einer Warnung bei Auslösung.| Für jede Warnung vor oder nach der Erweiterung auf Azure erforderlich. |
+| Aktionsgruppen |IDs von Azure-Aktionsgruppen, in denen erforderliche Aktionen angegeben sind, z.B. E-Mails, SMS, Sprachanrufe, Webhooks, Automation-Runbooks, ITSM-Connectors usw.| Erforderlich, nachdem Warnungen auf Azure erweitert wurden|
+| Anpassen von Aktionen|Ändern der Standardausgabe für ausgewählte Aktionen der Aktionsgruppe| Optional für jede Warnung, kann verwendet werden, nachdem Warnungen auf Azure erweitert wurden. |
+| EmailNotification |Senden von E-Mails an mehrere Empfänger. | Nicht erforderlich, wenn Warnungen auf Azure erweitert werden|
+| Wiederherstellung |Starten Sie ein Runbook in Azure Automation, um zu versuchen, das identifizierte Problem zu beheben. |Nicht erforderlich, wenn Warnungen auf Azure erweitert werden|
+| Webhookaktionen | Pushen von Daten von Warnungen zum gewünschten Dienst als JSON |Nicht erforderlich, wenn Warnungen auf Azure erweitert werden|
+
+> [!NOTE]
+> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
 
 #### <a name="thresholds"></a>Schwellenwerte
 Eine Warnungsaktion sollte nur über genau einen Schwellenwert verfügen.  Wenn die Ergebnisse einer gespeicherten Suche mit dem Schwellenwert in einer Aktion übereinstimmen, die der Suche zugeordnet ist, werden alle anderen Prozesse in dieser Aktion ausgeführt.  Eine Aktion kann einen Schwellenwert auch nur zu dem Zweck enthalten, dass sie mit Aktionen eines anderen Typs verwendet werden kann, die keine Schwellenwerte aufweisen.
 
 Die Eigenschaften von Schwellenwerten sind in der folgenden Tabelle aufgeführt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Operator |Operator für den Schwellenwertvergleich. <br> gt = Greater Than (Größer als) <br> lt = Less Than (Kleiner als) |
 | Wert |Der Wert für den Schwellenwert. |
@@ -166,14 +181,155 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine Schwelle
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
+#### <a name="severity"></a>Severity
+Mit Log Analytics können Sie Ihre Warnungen zur einfacheren Verwaltung und Selektierung in Kategorien klassifizieren. Der definierte Schweregrad der Warnung lautet: „Information“, „Warnung“ oder „Kritisch“. Diese sind der normalisierten Schweregradskala von Azure-Warnungen folgendermaßen zugeordnet:
+
+|Log Analytics-Schweregrad  |Azure-Warnungsschweregrad  |
+|---------|---------|
+|Kritisch |Schweregrad 0|
+|Warnung |Schweregrad 1|
+|Information | Schweregrad 2|
+
+Unten ist eine Beispielantwort für eine Aktion angegeben, die nur einen Schwellenwert und einen Schweregrad aufweist. 
+
+    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+    "properties": {
+        "Type": "Alert",
+        "Name": "My threshold action",
+        "Threshold": {
+            "Operator": "gt",
+            "Value": 10
+        },
+        "Severity": "critical",
+        "Version": 1    }
+
+Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine neue Aktion für einen Zeitplan mit Schweregrad zu erstellen.  
+
+    $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+
+Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine Schweregradaktion für einen Zeitplan zu ändern.  Der Hauptteil der Anforderung muss das ETag der Aktion enthalten.
+
+    $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+
+#### <a name="action-groups"></a>Aktionsgruppen
+Alle Warnungen in Azure verwenden Aktionsgruppen als Standardmechanismus für die Behandlung von Aktionen. Mit Aktionsgruppen können Sie Ihre Aktionen einmal angeben und die Aktionsgruppe dann mehreren Warnungen zuordnen. Dies gilt für sämtliche Bereiche in Azure, sodass Sie dieselbe Aktion nicht mehrmals deklarieren müssen. Aktionsgruppen unterstützen mehrere Aktionen – einschließlich E-Mails, SMS, Sprachanrufen, ITSM-Verbindungen, Automation-Runbooks, Webhook-URIs und anderen. 
+
+Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Runbook-Automatisierungsdetails und weitere Aktionen müssen zuerst in einer Aktivitätsgruppe definiert werden, bevor eine Warnung erstellt werden kann. Es ist möglich, im Portal [Aktionsgruppen aus Azure Monitor zu erstellen](../monitoring-and-diagnostics/monitoring-action-groups.md) oder die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) zu verwenden.
+
+Um eine Zuordnung einer Aktionsgruppe zu einer Warnung hinzuzufügen, geben Sie die eindeutige Azure Resource Manager-ID der Aktionsgruppe in der Warnungsdefinition an. Im Folgenden finden Sie eine Beispieldarstellung:
+
+     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+      "properties": {
+        "Type": "Alert",
+        "Name": "test-alert",
+        "Description": "I need to put a descriptio here",
+        "Threshold": {
+          "Operator": "gt",
+          "Value": 12
+        },
+        "AzNsNotification": {
+          "GroupIds": [
+            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+          ]
+        },
+        "Severity": "critical",
+        "Version": 1
+      },
+
+Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine bereits vorhandene Aktionsgruppe für einen Zeitplan zuzuordnen.  Im Folgenden finden eine Beispieldarstellung der Nutzung.
+
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
+Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine zugeordnete Aktionsgruppe für einen Zeitplan zu ändern.  Der Hauptteil der Anforderung muss das ETag der Aktion enthalten.
+
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
+#### <a name="customize-actions"></a>Anpassen von Aktionen
+Standardmäßig gilt für Aktionen eine Standardvorlage und ein Standardformat für Benachrichtigungen. Benutzer können jedoch einige Aktionen anpassen, auch wenn sie durch Aktionsgruppen gesteuert werden. Derzeit ist die Anpassung für E-Mail-Betreff und Webhook-Nutzlast möglich.
+
+##### <a name="customize-e-mail-subject-for-action-group"></a>Anpassen des E-Mail-Betreffs für Aktionsgruppen
+Der Standard-E-Mail-Betreff für Warnungen lautet: „Alert Notification <AlertName> for <WorkspaceName>“. Dies kann jedoch angepasst werden, sodass Sie bestimmte Wörter oder Tags angeben können, mit denen Sie ohne Aufwand Filterregeln in Ihrem Posteingang einsetzen können. Die Details des angepassten E-Mail-Headers müssen mit den Details zur Aktionsgruppe gesendet werden, wie im Beispiel unten dargestellt.
+
+     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+      "properties": {
+        "Type": "Alert",
+        "Name": "test-alert",
+        "Description": "I need to put a descriptio here",
+        "Threshold": {
+          "Operator": "gt",
+          "Value": 12
+        },
+        "AzNsNotification": {
+          "GroupIds": [
+            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+          ]
+          "CustomEmailSubject": "Azure Alert fired"
+        },
+        "Severity": "critical",
+        "Version": 1
+      },
+
+Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine bereits vorhandene angepasste Aktionsgruppe für einen Zeitplan zuzuordnen.  Im Folgenden finden eine Beispieldarstellung der Nutzung.
+
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
+Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine zugeordnete Aktionsgruppe für einen Zeitplan zu ändern.  Der Hauptteil der Anforderung muss das ETag der Aktion enthalten.
+
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
+##### <a name="customize-webhook-payload-for-action-group"></a>Anpassen einer Webhook-Nutzlast für eine Aktionsgruppe
+Der über Aktionsgruppen gesendete Webhook für Log Analytics weist standardmäßig eine feste Struktur auf. Die JSON-Nutzlast kann jedoch durch Verwendung bestimmter unterstützter Variablen angepasst werden, um die Anforderungen des Webhook-Endpunkts zu erfüllen. Weitere Informationen finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md). 
+
+Die Details des angepassten Webhooks müssen mit den Details zur Aktionsgruppe gesendet werden. Sie werden auf alle in der Aktionsgruppe angegebenen Webhook-URIs angewendet, wie im Beispiel unten dargestellt.
+
+     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+      "properties": {
+        "Type": "Alert",
+        "Name": "test-alert",
+        "Description": "I need to put a descriptio here",
+        "Threshold": {
+          "Operator": "gt",
+          "Value": 12
+        },
+        "AzNsNotification": {
+          "GroupIds": [
+            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+          ]
+          "CustomWebhookPayload": "{\"field1\":\"value1\",\"field2\":\"value2\"}",
+          "CustomEmailSubject": "Azure Alert fired"
+        },
+        "Severity": "critical",
+        "Version": 1
+      },
+
+Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine bereits vorhandene angepasste Aktionsgruppe für einen Zeitplan zuzuordnen.  Im Folgenden finden eine Beispieldarstellung der Nutzung.
+
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
+Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine zugeordnete Aktionsgruppe für einen Zeitplan zu ändern.  Der Hauptteil der Anforderung muss das ETag der Aktion enthalten.
+
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
 #### <a name="email-notification"></a>E-Mail-Benachrichtigung
 Per E-Mail-Benachrichtigung werden E-Mails an einen oder mehrere Empfänger gesendet.  Sie enthalten die Eigenschaften, die in der folgenden Tabelle angegeben sind.
 
-| Eigenschaft | Beschreibung |
+> [!NOTE]
+> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie E-Mail-Benachrichtigungen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+   
+
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Recipients |Liste mit den E-Mail-Adressen |
-| Betreff |E-Mail-Betreff |
-| Anhang |Anlagen werden derzeit nicht unterstützt. Der Wert lautet also immer „Keine“. |
+| Antragsteller |E-Mail-Betreff |
+| Anhang |Anlagen werden derzeit nicht unterstützt. Der Wert lautet daher immer „Keine“. |
 
 Unten ist eine Beispielantwort für eine E-Mail-Benachrichtigungsaktion mit einem Schwellenwert angegeben.  
 
@@ -209,9 +365,12 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine E-Mail-A
 #### <a name="remediation-actions"></a>Aktionen zur Problembehebung
 Bei Behebungen wird ein Runbook in Azure Automation gestartet, mit dem versucht wird, das von der Warnung identifizierte Problem zu korrigieren.  Sie müssen einen Webhook für das Runbook erstellen, das in der Aktion für die Problembehebung verwendet wird, und anschließend den URI in der WebhookUri-Eigenschaft angeben.  Wenn Sie diese Aktion mit der OMS-Konsole erstellen, wird automatisch ein neuer Webhook für das Runbook erstellt.
 
+> [!NOTE]
+> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie die Wartung mithilfe von Runbooks nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+
 Behebungen enthalten die Eigenschaften, die in der folgenden Tabelle angegeben sind.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | RunbookName |Der Name des Runbooks. Er muss mit einem veröffentlichten Runbook im Automation-Konto übereinstimmen, das in der Automation-Lösung in Ihrem OMS-Arbeitsbereich konfiguriert ist. |
 | WebhookUri |Der URI des Webhooks. |
@@ -262,17 +421,14 @@ Unten ist ein vollständiges Beispiel zur Erstellung einer neuen E-Mail-Benachri
     $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Severity':'Warning', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
     armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/actions/$actionId/?api-version=2015-03-20 $emailJson
 
-### <a name="webhook-actions"></a>Webhookaktionen
+#### <a name="webhook-actions"></a>Webhookaktionen
 Bei Webhookaktionen wird ein Prozess gestartet, indem eine URL aufgerufen und optional eine zu sendende Nutzlast bereitgestellt wird.  Diese Aktionen sind mit Aktionen zur Problembehebung vergleichbar. Sie sind aber für Webhooks bestimmt, mit denen andere Prozesse als Azure Automation-Runbooks aufgerufen werden können.  Außerdem verfügen sie über die zusätzliche Option zum Angeben einer Nutzlast, die für den Remoteprozess bereitgestellt wird.
 
-Webhookaktionen verfügen nicht über einen Schwellenwert, sondern sollten stattdessen einem Zeitplan hinzugefügt werden, der über eine Warnungsaktion mit Schwellenwert verfügt.  Sie können mehrere Webhookaktionen hinzufügen, die alle ausgeführt werden, wenn der Schwellenwert erreicht wird.
+> [!NOTE]
+> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie Webhooks nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
 
-Webhookaktionen enthalten die Eigenschaften, die in der folgenden Tabelle angegeben sind.
 
-| Eigenschaft | Beschreibung |
-|:--- |:--- |
-| WebhookUri |E-Mail-Betreff |
-| CustomPayload |Benutzerdefinierte Nutzlast, die an den Webhook gesendet wird.  Das Format hängt davon ab, was vom Webhook erwartet wird. |
+Webhookaktionen verfügen nicht über einen Schwellenwert, sondern sollten stattdessen einem Zeitplan hinzugefügt werden, der über eine Warnungsaktion mit Schwellenwert verfügt.  
 
 Unten sind eine Beispielantwort für eine Webhookaktion und eine zugeordnete Warnungsaktion mit einem Schwellenwert angegeben.
 
@@ -306,7 +462,7 @@ Unten sind eine Beispielantwort für eine Webhookaktion und eine zugeordnete War
         ]
     }
 
-#### <a name="create-or-edit-a-webhook-action"></a>Erstellen oder Bearbeiten einer Webhookaktion
+##### <a name="create-or-edit-a-webhook-action"></a>Erstellen oder Bearbeiten einer Webhookaktion
 Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine neue Webhookaktion für einen Zeitplan zu erstellen.  Im folgenden Beispiel werden eine Webhookaktion und eine Warnungsaktion mit einem Schwellenwert erstellt, damit der Webhook ausgelöst wird, wenn die Ergebnisse der gespeicherten Suche den Schwellenwert überschreiten.
 
     $thresholdAction = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
@@ -320,6 +476,8 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine Webhooka
     $webhookAction = "{'etag': 'W/\"datetime'2016-02-26T20%3A25%3A00.6862124Z'\"','properties': {'Type': 'Webhook', 'Name': 'My Webhook", 'WebhookUri': 'https://oaaswebhookdf.cloudapp.net/webhooks?token=VrkYTKlhk%2fc%2bKBP', 'CustomPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}', 'Version': 1 }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mywebhookaction?api-version=2015-03-20 $webhookAction
 
+
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [REST-API zum Durchführen von Protokollsuchen](log-analytics-log-search-api.md) in Log Analytics.
+* Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](../monitoring-and-diagnostics/monitor-alerts-unified-log.md).
 

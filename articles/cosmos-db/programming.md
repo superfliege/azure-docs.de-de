@@ -1,9 +1,9 @@
 ---
-title: "Serverseitige JavaScript-Programmierung für Azure Cosmos DB | Microsoft-Dokumentation"
+title: Serverseitige JavaScript-Programmierung für Azure Cosmos DB | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Cosmos DB dazu verwenden, gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen in JavaScript zu schreiben. Erhalten Sie Tipps zur Datenbankprogrammierung und mehr.
 keywords: Datenbanktrigger, gespeicherte Prozedur, Datenbankprogramm, sproc, Azure, Microsoft Azure
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: aliuy
 manager: jhubbard
 editor: mimig
@@ -13,24 +13,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: d8438d126c1f994e51871e80bb11610ec95b0814
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 2b55307c3122513b414c3f90a6a36d230f3459c2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB-serverseitige Programmierung : gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+Erfahren Sie, wie Entwickler dank der in die Azure Cosmos DB-Sprache integrierten transaktionalen Ausführung von JavaScript **gespeicherte Prozeduren**, **Trigger** und **benutzerdefinierte Funktionen** (User Defined Functions, UDFs) in nativem [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/)-JavaScript schreiben können. Durch diese Javascript-Integration können Sie für ein Datenbankprogramm Anwendungslogik schreiben, die direkt auf den Partitionen des Datenbankspeichers bereitgestellt und ausgeführt werden kann. 
 
-Erfahren Sie, wie Entwickler dank der in die Azure Cosmos DB-Sprache integrierten transaktionalen Ausführung von JavaScript **gespeicherte Prozeduren**, **Trigger** und **benutzerdefinierte Funktionen** (User Defined Functions, UDFs) in nativem [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/)-JavaScript erstellen können. Dadurch können Sie für ein Datenbankprogramm Anwendungslogik schreiben, die direkt auf den Partitionen des Datenbankspeichers bereitgestellt und ausgeführt werden kann. 
+Für den Beginn empfiehlt sich folgendes Video, in dem Andrew Liu das serverseitige Datenbankprogrammiermodell von Azure Cosmos DB vorstellt. 
 
-Für den Beginn empfiehlt sich folgendes Video, in dem Andrew Liu das serverseitige Datenbankprogrammiermodell von Cosmos DB kurz vorstellt. 
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Demo-A-Quick-Intro-to-Azure-DocumentDBs-Server-Side-Javascript/player]
-> 
+> [!VIDEO https://www.youtube.com/embed/s0cXdHNlVI0]
+>
 > 
 
 Kehren Sie dann zurück zu diesem Artikel, in dem Sie die Antworten auf die folgenden Fragen erfahren:  
@@ -46,14 +44,14 @@ Kehren Sie dann zurück zu diesem Artikel, in dem Sie die Antworten auf die folg
 Dieser Ansatz von *„JavaScript als modernes T-SQL“* befreit die Anwendungsentwickler von der Komplexität durch nicht übereinstimmende Systeme und objektrelationale Zuordnungstechnologien. Er hat auch eine Reihe spezifischer Vorteile, die zum Erstellen funktionsreicher Anwendungen genutzt werden können:  
 
 * **Prozedurale Logik:** JavaScript bietet als Programmiersprache auf höherer Ebene eine umfangreiche und vertraute Benutzeroberfläche zur Darstellung der Geschäftslogik. Sie können komplexe Abfolgen von Vorgängen mit direkterem Zugriff auf die Daten ausführen.
-* **Atomarische Transaktionen:** Cosmos DB gewährleistet, dass die innerhalb einer einzelnen gespeicherten Prozedur oder in einem Trigger ausgeführten Datenbankvorgänge atomarisch sind. Dadurch kann eine Anwendung zusammengehörige Vorgänge in einem einzelnen Batch kombinieren, damit entweder alle Vorgänge oder keiner dieser Vorgänge erfolgreich ausgeführt werden kann. 
+* **Atomarische Transaktionen:** Cosmos DB gewährleistet, dass die innerhalb einer einzelnen gespeicherten Prozedur oder in einem Trigger ausgeführten Datenbankvorgänge atomarisch sind. Durch diese atomarische Funktionalität kann eine Anwendung zusammengehörige Vorgänge in einem einzelnen Batch kombinieren, damit entweder alle Vorgänge oder keiner dieser Vorgänge erfolgreich ausgeführt werden kann. 
 * **Leistung:** Die Tatsache, dass JSON an sich dem JavaScript-Sprachsystem zugeordnet ist und auch die Basiseinheit für die Speicherung in Cosmos DB darstellt, ermöglicht eine Reihe von Optimierungen wie die bequeme Realisierung von JSON-Dokumenten im Pufferpool und deren bedarfsgesteuerte Bereitstellung für den ausführenden Code. Es gibt weitere Leistungsvorteile, die der Übertragung der Geschäftslogik auf die Datenbank zugeordnet sind:
   
   * Batchverarbeitung – Entwickler können Vorgänge wie Einlagen gruppieren und dann zusammen übermitteln. Der Aufwand für die Latenz des Netzwerkdatenverkehrs und der erhöhte Speicheraufwand beim Erstellen separater Transaktionen werden erheblich verringert. 
   * Vorkompilierung – Cosmos DB führt für gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen (UDFs) Vorkompilierungen durch, um den Aufwand der JavaScript-Kompilierung für die einzelnen Aufrufe zu vermeiden. Der Mehraufwand für die Erstellung des Bytecodes für die prozedurale Logik wird auf ein Minimum gesenkt.
   * Sequenzierung – Viele Vorgänge benötigen einen Nebeneffekt (Auslöser oder Trigger), der möglicherweise die Ausführung eines oder vieler sekundärer Speichervorgänge einbezieht. Dies ist abgesehen von der der Atomarität effektiver, wenn der Vorgang auf den Server verlagert wird. 
-* **Kapselung:** Die Geschäftslogik kann mithilfe gespeicherter Prozeduren an einem Ort zusammengefasst werden. Das hat zwei Vorteile:
-  * Es wird eine Abstraktionsschicht über den Rohdaten hinzugefügt, die es Datenarchitekten gestattet, ihre Anwendungen unabhängig von den Daten zu entwickeln. Dies ist aufgrund der komplizierten Annahmen, die bei der direkten Behandlung der Daten zur Anwendung hinzugefügt werden müssen, insbesondere bei schemafreien Daten von Vorteil.  
+* **Kapselung:** Die Geschäftslogik kann mithilfe gespeicherter Prozeduren an einem Ort zusammengefasst werden, was zwei Vorteile mit sich bringt:
+  * Es wird eine Abstraktionsschicht über den Rohdaten hinzugefügt, die es Datenarchitekten gestattet, ihre Anwendungen unabhängig von den Daten zu entwickeln. Diese Abstraktionsschicht ist aufgrund der komplizierten Annahmen, die bei der direkten Behandlung der Daten zur Anwendung hinzugefügt werden müssen, bei schemafreien Daten von Vorteil.  
   * Durch diese Abstraktion können Unternehmen ihre Daten schützen, indem sie den Zugriff über die Scripts optimieren.  
 
 Die Erstellung und Ausführung von Datenbanktriggern, gespeicherten Prozeduren und benutzerdefinierten Abfrageoperatoren wird über das [Azure-Portal](https://portal.azure.com), die [REST-API](/rest/api/documentdb/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) und [Client-SDKs](sql-api-sdk-dotnet.md) auf vielen Plattformen unterstützt. Hierzu zählen unter anderem .NET, Node.js und JavaScript.
@@ -88,7 +86,7 @@ Gespeicherte Prozeduren werden pro Sammlung registriert und können auf beliebig
         });
 
 
-Nachdem die gespeicherte Prozedur registriert wurde, können wir sie für die Sammlung ausführen und die an den Client zurückgegebenen Ergebnisse lesen. 
+Nachdem die gespeicherte Prozedur registriert wurde, können Sie sie für die Collection ausführen und die an den Client zurückgegebenen Ergebnisse lesen. 
 
     // execute the stored procedure
     client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld')
@@ -153,10 +151,10 @@ Im obigen Beispiel löst der Rückruf einen Fehler aus, wenn der Vorgang fehlsch
 
 Beachten Sie, dass diese gespeicherte Prozedur modifiziert werden kann, um ein Array von Dokumenttexten als Eingabe zu übernehmen und alle während der Ausführung derselben gespeicherten Prozedur zu erstellen, anstatt mehrere Netzwerkanforderungen zu verwenden, um sie jeweils einzeln zu erstellen. Auf diese Weise kann eine effiziente Massenimportfunktion für Cosmos DB implementiert werden (dies wird später in diesem Lernprogramm besprochen).   
 
-Das beschriebene Beispiel hat die Verwendung gespeicherter Prozeduren veranschaulicht. Trigger und benutzerdefinierte Funktionen (UDFs) werden später in diesem Lernprogramm behandelt.
+Das beschriebene Beispiel hat die Verwendung gespeicherter Prozeduren veranschaulicht. Trigger und benutzerdefinierte Funktionen (UDFs) werden später in diesem Tutorial behandelt.
 
 ## <a name="database-program-transactions"></a>Datenbankprogrammtransaktionen
-Eine Transaktion in einer typischen Datenbank kann als Folge von Vorgängen definiert werden, die als einzelne logische Arbeitseinheit ausgeführt wird. Jede Transaktion bietet **ACID-Garantien**. ACID (Atomicity, Consistency, Isolation, Durability) ist ein bekanntes Akronym, das für vier Eigenschaften steht: Atomarität, Konsistenz, Isolation und Dauerhaftigkeit.  
+Eine Transaktion in einer typischen Datenbank kann als Folge von Vorgängen definiert werden, die als einzelne logische Arbeitseinheit ausgeführt wird. Jede Transaktion bietet **ACID-Garantien**. ACID (Atomicity, Consistency, Isolation, Durability) ist ein bekanntes Akronym, das für vier Eigenschaften steht: Unteilbarkeit, Konsistenz, Isolation und Dauerhaftigkeit.  
 
 Die Atomarität gewährleistet kurz gesagt, dass alle innerhalb einer Transaktion ausgeführten Vorgänge als einzelne Einheit betrachtet werden, in der entweder alle oder kein Vorgang ausgeführt wird. Die Konsistenz stellt sicher, dass die Daten zwischen den Transaktionen immer einen geeigneten internen Status aufweisen. Die Isolation sorgt dafür, dass es keine Konflikte zwischen zwei Transaktionen gibt. Im Allgemeinen stellen die meisten kommerziellen Systeme mehrere Isolationsebenen bereit, die auf Basis der Anforderungen der Anwendung genutzt werden können. Die Dauerhaftigkeit stellt sicher, dass jede an die Datenbank übergebene Änderung immer vorhanden ist.   
 
@@ -238,7 +236,7 @@ Wenn von dem Skript eine Ausnahme weitergegeben wird, führt die JavaScript-Lauf
 Gespeicherte Prozeduren und Trigger werden immer für das primäre Replikat des Azure Cosmos DB-Containers ausgeführt. Dadurch wird sichergestellt, dass innerhalb von gespeicherten Prozeduren erfolgte Lesevorgänge eine hohe Konsistenz bieten. Abfragen, die benutzerdefinierte Funktionen verwenden, können mit dem primären oder einem beliebigen sekundären Replikat ausgeführt werden. Es wird jedoch durch die Auswahl des geeigneten Replikats sichergestellt, dass die geforderte Konsistenz erreicht wird.
 
 ## <a name="bounded-execution"></a>Gebundene Ausführung
-Alle Cosmos DB-Vorgänge müssen innerhalb der vom Server angegebenen Anforderungstimeoutdauer abgeschlossen werden. Diese Einschränkung gilt auch für JavaScript-Funktionen (gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen). Wenn ein Vorgang nicht innerhalb dieser Frist abgeschlossen werden kann, wird für die Transaktion ein Rollback ausgeführt. JavaScript-Funktionen müssen innerhalb der Frist abgeschlossen sein oder ein auf der Fortdauer basierendes Modell implementieren, um die Ausführung zusammenzufassen oder fortzuführen.  
+Alle Cosmos DB-Vorgänge müssen innerhalb der vom Server angegebenen Anforderungstimeoutdauer abgeschlossen werden. Diese Einschränkung gilt auch für JavaScript-Funktionen (gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen). Wenn ein Vorgang nicht innerhalb dieser Frist abgeschlossen werden kann, wird für die Transaktion ein Rollback ausgeführt. JavaScript-Funktionen müssen innerhalb der Frist abgeschlossen sein oder ein auf der Fortführung basierendes Modell implementieren, um die Ausführung zusammenzufassen oder fortzuführen.  
 
 Um die Entwicklung gespeicherter Prozeduren und Trigger zur Behandlung von Zeitlimits zu vereinfachen, geben alle Funktionen unter dem Sammlungsobjekt (zum Erstellen, Lesen, Ersetzen und Löschen von Dokumenten und Anhängen) einen booleschen Wert zurück, der angibt, ob dieser Vorgang abgeschlossen wird. Wenn dieser Wert "false" ist, weist dies darauf hin, dass das Zeitlimit in Kürze abläuft und die Prozedur die Ausführung beenden muss.  Vorgänge, die vor dem ersten nicht angenommenen Speichervorgang in die Warteschlange gestellt wurden, werden garantiert abgeschlossen, wenn die gespeicherte Prozedur rechtzeitig abgeschlossen wird und keine weiteren Anforderungen in die Warteschlange stellt.  
 
@@ -561,7 +559,7 @@ Bei der Verwendung innerhalb von Prädikat- und/oder Selektorfunktionen werden d
 
 Die folgenden JavaScript-Konstrukte werden nicht für Azure Cosmos DB-Indizes optimiert:
 
-* Ablaufsteuerung (z. B. if, for, while)
+* Ablaufsteuerung (z.B. wenn, für, während)
 * Funktionsaufrufe
 
 Weitere Informationen finden Sie in unseren [serverseitigen JSDocs](http://azure.github.io/azure-documentdb-js-server/).
@@ -624,7 +622,7 @@ Das folgende Codebeispiel zeigt, wie die JavaScript-Abfrage-API im Kontext einer
 ## <a name="sql-to-javascript-cheat-sheet"></a>Cheat Sheet für SQL und Javascript
 In der folgenden Tabelle sind verschiedene SQL-Abfragen und die entsprechenden JavaScript-Abfragen aufgeführt.
 
-Wie bei SQL-Abfragen muss bei Key-Eigenschaften von Dokumenten (z. B. `doc.id`) die Groß-/Kleinschreibung beachtet werden.
+Wie bei SQL-Abfragen muss bei Key-Eigenschaften von Dokumenten (z.B. `doc.id`) die Groß-/Kleinschreibung beachtet werden.
 
 |SQL| JavaScript-Abfrage-API|Description unten|
 |---|---|---|
@@ -654,7 +652,7 @@ Gespeicherte Prozeduren und Trigger werden bei JavaScript in einer Sandkastenlö
 Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen (UDFs) werden implizit in das Bytecodeformat vorkompiliert, um den Kompilierungsaufwand zum Zeitpunkt des jeweiligen Skriptaufrufs zu vermeiden. Dadurch wird sichergestellt, dass gespeicherte Prozeduren schnell aufgerufen werden können und kompakt sind.
 
 ## <a name="client-sdk-support"></a>Client-SDK-Unterstützung
-Zusätzlich zur Azure Cosmos DB-API für [Node.js](sql-api-sdk-node.md) verfügt Azure Cosmos DB über SDKs zu [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](http://azure.github.io/azure-documentdb-js/) und [Python](sql-api-sdk-python.md) für die SQL-API. Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen können jedem dieser SDKs erstellt und ausgeführt werden. Das folgende Beispiel zeigt, wie eine gespeicherte Prozedur mithilfe des .NET-Clients erstellt und ausgeführt wird. Beachten Sie, wie die .NET-Typen als JSON an die gespeicherte Prozedur übergeben und eingelesen werden.
+Zusätzlich zur Azure Cosmos DB-API für [Node.js](sql-api-sdk-node.md) verfügt Azure Cosmos DB über SDKs zu [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](http://azure.github.io/azure-documentdb-js/) und [Python](sql-api-sdk-python.md) für die SQL-API. Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen können mit jedem dieser SDKs erstellt und ausgeführt werden. Das folgende Beispiel zeigt, wie eine gespeicherte Prozedur mithilfe des .NET-Clients erstellt und ausgeführt wird. Beachten Sie, wie die .NET-Typen als JSON an die gespeicherte Prozedur übergeben und eingelesen werden.
 
     var markAntiquesSproc = new StoredProcedure
     {
@@ -726,7 +724,7 @@ Das nachfolgende Beispiel veranschaulicht die Erstellung einer benutzerdefiniert
     }
 
 ## <a name="rest-api"></a>REST-API
-Alle Azure Cosmos DB-Vorgänge können RESTful-basiert ausgeführt werden. Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen können mithilfe von HTTP POST unter einer Sammlung registriert werden. Nachfolgend sehen Sie ein Beispiel für die Registrierung einer gespeicherten Prozedur:
+Alle Azure Cosmos DB-Vorgänge können RESTful-basiert ausgeführt werden. Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen können mithilfe von HTTP POST unter einer Collection registriert werden. Nachfolgend sehen Sie ein Beispiel für die Registrierung einer gespeicherten Prozedur:
 
     POST https://<url>/sprocs/ HTTP/1.1
     authorization: <<auth>>
@@ -793,12 +791,12 @@ Trigger können im Gegensatz zu gespeicherten Prozeduren nicht direkt ausgeführ
     }
 
 
-Hier wird der mit der Anforderung auszuführende vorangestellte Trigger im Header "x-ms-documentdb-pre-trigger-include" angegeben. Entsprechend werden alle nachgestellten Trigger im Header "x-ms-documentdb-post-trigger-include" angegeben. Beachten Sie, dass sowohl vorangestellte als auch nachgestellte Trigger für eine bestimmte Anforderung angegeben werden können.
+Hier wird der mit der Anforderung auszuführende vorangestellte Trigger im Header "x-ms-documentdb-pre-trigger-include" angegeben. Entsprechend werden alle nachgestellten Trigger im Header "x-ms-documentdb-post-trigger-include" angegeben. Es können sowohl vorangestellte als auch nachgestellte Trigger für eine bestimmte Anforderung angegeben werden.
 
 ## <a name="sample-code"></a>Beispielcode
 Weitere Beispiele für serverseitigen Code (einschließlich [Massenlöschung](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js) und [Aktualisierung](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)) finden Sie in unserem [GitHub-Repository](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples).
 
-Möchten Sie Ihre fantastische gespeicherte Prozedur freigeben? Bitte senden Sie uns eine Pull-Anforderung! 
+Möchten Sie Ihre fantastische gespeicherte Prozedur freigeben? Senden Sie uns eine Pull-Anforderung! 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sobald Sie eine oder mehrere gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen erstellt haben, können Sie sie laden und im Azure-Portal mit dem Daten-Explorer anzeigen.
