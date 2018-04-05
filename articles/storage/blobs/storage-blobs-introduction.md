@@ -1,30 +1,31 @@
 ---
-title: "Einführung in Azure Blob Storage | Microsoft-Dokumentation"
-description: "Einführung in Azure Blob Storage"
+title: 'Einführung in Blob Storage: Objektspeicher in Azure | Microsoft-Dokumentation'
+description: Azure Blob Storage dient zum Speichern großer Mengen unstrukturierter Objektdaten wie etwa Text- und Binärdaten. Ihre Anwendungen können über PowerShell oder über die Azure-Befehlszeilenschnittstelle, über Code mittels Azure Storage-Clientbibliotheken oder über REST auf Objekte in Blob Storage zugreifen.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: overview
-ms.date: 09/28/2017
+ms.date: 03/27/2018
 ms.author: tamram
-ms.openlocfilehash: aabc10b1c1c501e4fa0eb31835c2818cfb8942c6
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0fff0032ec2452413bcd1df3175634b14a64208f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-blob-storage"></a>Einführung in Blob Storage
 
-Azure Blob Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Objektdaten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Sie können Blob Storage verwenden, um Daten öffentlich auf der ganzen Welt zur Verfügung zu stellen oder um Anwendungsdaten privat zu speichern.
+Azure Blob Storage ist Microsofts Cloudspeicherlösung für Datenobjekte. In Blob Storage können große Mengen unstrukturierter Objektdaten wie etwa Text- und Binärdaten gespeichert werden. Über HTTP oder HTTPS kann von überall auf der Welt auf die Daten in Blob Storage zugegriffen werden. Sie können Blob Storage verwenden, um Daten öffentlich auf der ganzen Welt zur Verfügung zu stellen oder um Anwendungsdaten privat zu speichern.
 
 BLOB-Speicherungen werden hauptsächlich für folgende Zwecke verwendet:
 
 * Speichern von Bildern oder Dokumenten direkt auf einem Browser
 * Speichern von Dateien für verteilten Zugriff
 * Video- und Audio-Streaming
-* Speichern von Daten für Sicherung und Wiederherstellung, Notfallwiederherstellung und Archivierung
+* Speicherung für Sicherung und Wiederherstellung, Notfallwiederherstellung und Archivierung
 * Speicherung von Daten für Analysen durch einen lokalen oder von Azure gehosteten Dienst
+* Speicherung virtueller Festplatten für die Verwendung mit Azure Virtual Machines
 
 ## <a name="blob-service-concepts"></a>Konzepte des Blob-Diensts
 

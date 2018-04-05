@@ -1,8 +1,8 @@
 ---
-title: "Häufig gestellte Fragen zu Azure Active Directory Connect Health – Azure | Microsoft-Dokumentation"
-description: "Dieses FAQ-Dokument beantwortet Fragen zu Azure AD Connect Health. Dazu gehören Fragen zur Verwendung des Diensts, einschließlich Abrechnungsmodell, Funktionen, Einschränkungen und Unterstützung."
+title: Häufig gestellte Fragen zu Azure Active Directory Connect Health – Azure | Microsoft-Dokumentation
+description: Dieses FAQ-Dokument beantwortet Fragen zu Azure AD Connect Health. Dazu gehören Fragen zur Verwendung des Diensts, einschließlich Abrechnungsmodell, Funktionen, Einschränkungen und Unterstützung.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 312980ded8fad84f2ea4a41078597dd3a6cb8ca7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: b4c977b54c87276bd4b168bc56e70f3b918e6634
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -175,6 +175,9 @@ CheckForMS17-010
 
 ```
 
+**F: Warum zeigt das PowerShell-Cmdlet <i>Get-MsolDirSyncProvisioningError</i> weniger Synchronisierungsfehler im Ergebnis an?**
+
+<i>Get-MsolDirSyncProvisioningError</i> gibt nur Bereitstellungsfehler vom Typ „DirSync“ zurück. Außerdem zeigt das Connect Health-Portal auch andere Synchronisierungsfehlertypen wie beispielsweise Exportfehler an. Dies ist mit dem Azure AD Connect-Deltaergebnis konsistent. Lesen Sie mehr zu [Azure AD Connect-Synchronisierungsfehlern](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
 
 
 ## <a name="related-links"></a>Verwandte Links

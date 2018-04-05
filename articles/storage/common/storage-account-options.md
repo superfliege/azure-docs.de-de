@@ -1,6 +1,6 @@
 ---
-title: "Optionen für Azure Storage-Konten | Microsoft-Dokumentation"
-description: "Enthält eine Beschreibung der Optionen zur Verwendung von Azure Storage."
+title: Optionen für Azure Storage-Konten | Microsoft-Dokumentation
+description: Enthält eine Beschreibung der Optionen zur Verwendung von Azure Storage.
 services: storage
 author: jirwin
 manager: jwillis
@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: 2c69519b865169b477950bc8fa659d5ad9081bbf
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 75d1580df5e36b2c88939fde9077c5a1948f6348
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-storage-account-options"></a>Optionen für Azure Storage-Konten
 
@@ -218,7 +218,7 @@ Um Ihre vorhandenen Speicherkonten zu überwachen und diese Daten zu sammeln, k�
 Weitere Informationen finden Sie unter [Informationen zu Metriken der Speicheranalyse](https://msdn.microsoft.com/library/azure/hh343258.aspx) und [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
 > [!NOTE]
-> Blob-Speicherkonten machen den Tabellenspeicherdienst-Endpunkt nur zum Speichern und Zugreifen auf die Metrikdaten für das Konto verfügbar. ZRS-Konten (zonenredundanter Speicher) unterstützen das Sammeln von Metrikdaten, während dies für ZRS Classic-Konten nicht der Fall ist. Weitere Informationen zu ZRS finden Sie unter [Zonenredundanter Speicher](storage-redundancy.md#zone-redundant-storage). 
+> Blob-Speicherkonten machen den Tabellenspeicherdienst-Endpunkt nur zum Speichern und Zugreifen auf die Metrikdaten für das Konto verfügbar. 
 
 Zur Überwachung des Speicherbedarfs für den Blobspeicher müssen Sie die Kapazitätsmetriken aktivieren.
 Wenn dies aktiviert ist, werden täglich Kapazitätsdaten für den Blob-Dienst eines Speicherkontos aufgezeichnet. Sie werden als Tabelleneintrag aufgezeichnet, der in die Tabelle *$MetricsCapacityBlob* desselben Speicherkontos geschrieben wird.

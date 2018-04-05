@@ -1,11 +1,11 @@
 ---
-title: Erste Schritte mit Azure-Blobspeicher und verbundenen Visual Studio-Diensten (ASP.NET) | Microsoft-Dokumentation
-description: "Erfahren Sie etwas über die ersten Schritte mit Azure-Blobspeicher in einem ASP.NET-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
+title: Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET) | Microsoft-Dokumentation
+description: Erfahren Sie etwas über die ersten Schritte mit Azure Blob Storage in einem ASP.NET-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben.
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: b3497055-bef8-4c95-8567-181556b50d95
 ms.service: storage
 ms.workload: web
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: kraig
-ms.openlocfilehash: cb406e528568dafd1e142943f5273ad58e550609
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.author: ghogen
+ms.openlocfilehash: 657eff077f9a72bad97e8bea3ad3efc0da1420d5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure-Blobspeicher und verbundenen Visual Studio-Diensten (ASP.NET)
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET)
 
 > [!div class="op_single_selector"]
 > - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
 > - [ASP.NET Core](./vs-storage-aspnet-core-getting-started-blobs.md)
 
-Der Azure-Blobspeicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte oder Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+Azure Blob Storage ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte oder Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
 
 In diesem Tutorial wird gezeigt, wie Sie ASP.NET-Code für einige häufige Szenarien schreiben, die Blobspeicher verwenden. Zu den Szenarien zählen das Erstellen eines Blobcontainers sowie das Hochladen, Auflisten, Herunterladen und Löschen von Blobs.
 
@@ -165,7 +165,7 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer erstellen:
     <li>@Html.ActionLink("Create blob container", "CreateBlobContainer", "Blobs")</li>
     ```
 
-1. Führen Sie die Anwendung aus, und wählen Sie **Blobcontainer erstellen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+1. Führen Sie die Anwendung aus, und wählen Sie **Blobcontainer erstellen** aus, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
   
     ![Screenshot vom Erstellen eines Blobcontainers](./media/vs-storage-aspnet-getting-started-blobs/create-blob-container-results.png)
 

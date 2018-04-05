@@ -1,8 +1,8 @@
 ---
 title: Bereitstellen von Azure-Funktionen mit Azure IoT Edge | Microsoft-Dokumentation
-description: "Bereitstellen einer Azure-Funktion als Modul auf einem Edge-Gerät"
+description: Bereitstellen einer Azure-Funktion als Modul auf einem Edge-Gerät
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: v-jamebr
@@ -10,11 +10,11 @@ ms.date: 11/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1dfe46d307a076ae02362c4bba292602001ed915
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: a43ae8f28fc32b61fb5db985ffae98f093293798
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Bereitstellen einer Azure-Funktion als IoT Edge-Modul – Vorschau
 Mithilfe von Azure Functions können Sie Code bereitstellen, mit dem Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert wird. Dieses Tutorial führt Sie durch die Erstellung und Bereitstellung einer Azure-Funktion, die Sensordaten des simulierten IoT Edge-Geräts filtert, das Sie im Tutorial zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Windows][lnk-tutorial1-win] oder [Linux][lnk-tutorial1-lin] erstellt haben. In diesem Tutorial lernen Sie Folgendes:     
@@ -125,7 +125,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
     }
    ```
 
-11. Speichern Sie die Datei.
+11. Speichern Sie die Datei .
 
 ## <a name="publish-a-docker-image"></a>Veröffentlichen eines Docker-Image
 
@@ -141,7 +141,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
    docker login -u <username> -p <password> <Login server>
    ```
         
-   Zur Ermittlung von Benutzername, Kennwort und die Anmeldeserver für diesen Befehl wechseln Sie zum [Azure-Portal](https://portal.azure.com). Klicken Sie unter **Alle Ressourcen** auf die Kachel Ihrer Azure-Containerregistrierung, um deren Eigenschaften zu öffnen. Klicken Sie dann auf **Zugriffsschlüssel**. Kopieren Sie die Werte der Felder **Benutzername**, **Kennwort** und **Anmeldeserver**. 
+   Zur Ermittlung von Benutzername, Kennwort und die Anmeldeserver für diesen Befehl wechseln Sie zum [Azure-Portal] (https://portal.azure.com)). Klicken Sie unter **Alle Ressourcen** auf die Kachel Ihrer Azure-Containerregistrierung, um deren Eigenschaften zu öffnen. Klicken Sie dann auf **Zugriffsschlüssel**. Kopieren Sie die Werte der Felder **Benutzername**, **Kennwort** und **Anmeldeserver**. 
 
 3. Pushen Sie das Image in Ihr Docker-Repository. Wählen Sie **Ansicht** > **Befehlspalette...** aus, und suchen Sie **Edge: Push IoT Edge module Docker image** (Edge: Docker-Image für IoT Edge-Modul pushen).
 4. Geben Sie im Popuptextfeld denselben Imagenamen ein, den Sie in Schritt 1.d verwendet haben.
@@ -174,10 +174,9 @@ Fügen Sie die Anmeldeinformationen für Ihre Registrierung zur Edge-Runtime auf
 1. Fügen Sie das Modul **filterFunction** hinzu.
     1. Wählen Sie erneut **IoT Edge-Modul hinzufügen** aus.
     2. Geben Sie im Feld **Name** die Zeichenfolge `filterFunction` ein.
-    3. Geben Sie im Feld **Image** die Imageadresse ein, z.B. `<docker registry address>/filterfunction:latest`.
+    3. Geben Sie im Feld **Image-URI** die Imageadresse ein, z.B. `<your container registry address>/filtermodule:0.0.1-amd64`. Die vollständige Image-Adresse kann im vorherigen Abschnitt gefunden werden.
     74. Klicken Sie auf **Speichern**.
 2. Klicken Sie auf **Weiter**.
-
 3. Kopieren Sie im Schritt **Routen angeben** den folgenden JSON-Code in das Textfeld. Die erste Route transportiert Nachrichten vom Temperatursensor über den Endpunkt „input1“ zum Filtermodul. Die zweite Route transportiert Nachrichten vom Filtermodul an IoT Hub. In dieser Route ist `$upstream` ein spezieller Empfänger, der Edge Hub anweist, Nachrichten an IoT Hub zu senden. 
 
     ```json
@@ -190,7 +189,6 @@ Fügen Sie die Anmeldeinformationen für Ihre Registrierung zur Edge-Runtime auf
     ```
 
 4. Klicken Sie auf **Weiter**.
-
 5. Klicken Sie im Schritt **Vorlage überprüfen** auf **Senden**. 
 6. Kehren Sie zur Seite mit den IoT Edge-Gerätedetails zurück, und klicken Sie auf **Aktualisieren**. Es sollte nun angezeigt werden, dass das neue **filterfunction**-Modul zusammen mit dem **tempSensor**-Modul und der **IoT Edge-Runtime** ausgeführt wird. 
 

@@ -1,24 +1,24 @@
 ---
 title: Bereitstellen von .NET-Apps in einem Container in Azure Service Fabric | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie eine .NET-App in Visual Studio in einem Docker-Container packen. Diese neue „Container“-App wird dann in einem Service Fabric-Cluster bereitgestellt."
+description: Erfahren Sie, wie Sie eine .NET-App in Visual Studio in einem Docker-Container packen. Diese neue „Container“-App wird dann in einem Service Fabric-Cluster bereitgestellt.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2017
+ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: cd1c3b063132ae549bfbf1e059667c5056c91046
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 11bb34939e5fa3699973051664e85f9ef2147ff7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
 
@@ -49,13 +49,6 @@ Service Fabric-Anwendungen werden auf einem Cluster ausgeführt, einem durch ein
 Sie besitzen einen in Azure ausgeführten Service Fabric-Cluster und können nun eine Containeranwendung erstellen und bereitstellen. Um die Ausführung unserer Anwendung in einem Container zu starten, müssen wir **Docker-Unterstützung** zum Projekt in Visual Studio hinzufügen. Wenn Sie **Docker-Unterstützung** zur Anwendung hinzufügen, geschieht Folgendes: Zuerst wird dem Projekt eine _Dockerfile_-Datei hinzugefügt. Diese neue Datei beschreibt, wie das Containerimage erstellt werden soll. Zweitens wird ein neues _docker-compose_-Projekt zur Projektmappe hinzugefügt. Das neue Projekt enthält einige docker-compose-Dateien. Mit docker-compose-Dateien kann beschrieben werden, wie der Container ausgeführt wird.
 
 Hier finden Sie weitere Informationen zum Arbeiten mit [Visual Studio-Containertools][link-visualstudio-container-tools].
-
->[!NOTE]
->Wenn Sie Windows-Containerimages zum ersten Mal auf Ihrem Computer ausführen, müssen die Basisimages für Ihre Container von Docker CE per Pull abgerufen werden. Die in diesem Tutorial verwendeten Images haben eine Größe von 14 GB. Fahren Sie fort, und führen Sie den folgenden Terminalbefehl aus, um die Basisimages per Pull abzurufen:
->```cmd
->docker pull microsoft/mssql-server-windows-developer
->docker pull microsoft/aspnet:4.6.2
->```
 
 ### <a name="add-docker-support"></a>Hinzufügen der Docker-Unterstützung
 
@@ -205,7 +198,7 @@ Klicken Sie auf **OK**.
    >Die Erstellung der Containerimages dauert ca. 15 Minuten.
    >Bei der ersten Bereitstellung im Service Fabric-Cluster werden die grundlegenden Windows Server Core-Containerimages heruntergeladen. Der Download dauert weitere 5 bis 10 Minuten.
 
-Browsen Sie über die URL des Clusters zu der Anwendung Fabrikam Call Center, z.B. *http://mycluster.westeurope.cloudapp.azure.com*.
+Wechseln Sie über die URL des Clusters zur Fabrikam Call Center-Anwendung, z.B. *http://mycluster.westeurope.cloudapp.azure.com*.
 
 Nachdem Sie nun die Anwendung in Container gepackt und die Fabrikam Call Center-Projektmappe bereitgestellt haben, können Sie das [Azure-Portal][link-azure-portal] öffnen und die Ausführung der Anwenung in Service Fabric anzeigen. Um die Anwendung zu testen, öffnen Sie einen Webbrowser, und navigieren Sie zur URL des Service Fabric-Clusters.
 

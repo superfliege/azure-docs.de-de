@@ -141,13 +141,15 @@
       href: sql-data-warehouse-troubleshoot.md
 - name: Anleitungen
   items:
-    - name: Features des Diensts
+    - name: Upgrade
+      href: upgrade-to-latest-generation.md
+    - name: 'Restore '
       items:
-        - name: Wiederherstellen eines Data Warehouse – Portal
+        - name: Portal
           href: sql-data-warehouse-restore-database-portal.md
-        - name: Wiederherstellen eines Data Warehouse – PowerShell
+        - name: PowerShell
           href: sql-data-warehouse-restore-database-powershell.md
-        - name: Wiederherstellen eines Data Warehouse – REST-API
+        - name: REST-API
           href: sql-data-warehouse-restore-database-rest-api.md
     - name: Sicherheit
       items:

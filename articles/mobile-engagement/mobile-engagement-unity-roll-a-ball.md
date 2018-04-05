@@ -1,11 +1,11 @@
 ---
-title: "Unity-Tutorial für ein Roll-a-Ball-Spiel"
-description: "Schritte zum Erstellen des klassischen Unity Roll-a-Ball-Spiels, das Voraussetzung für alle Mobile Engagement Unity-Tutorials ist."
+title: Unity-Tutorial für ein Roll-a-Ball-Spiel
+description: Schritte zum Erstellen des klassischen Unity Roll-a-Ball-Spiels, das Voraussetzung für alle Mobile Engagement Unity-Tutorials ist.
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0afd0eca-f74a-43aa-bba8-436a0265c312
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52d5962645b1408fdba61ec1bf4e4f682b80905b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a id="unity-roll-a-ball"></a>Erstellen eines Unity Roll-a-Ball-Spiels
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Dieses Tutorial zeigt die wichtigsten Schritte für ein leicht abgewandeltes [Tutorial für ein Unity Roll-a-Ball-Spiel](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial). Dieses Beispielspiel besteht aus einem sphärischen „Player-Objekt“, das vom Benutzer der App gesteuert wird. Ziel des Spiels ist es, sammelbare Objekte zu „sammeln“, indem das Player-Objekt gegen diese Objekte stößt. Für dieses Tutorial werden Grundkenntnisse im Umgang mit der Unity-Editor-Umgebung vorausgesetzt. Sehen Sie sich bei Problemen das vollständige Tutorial an. 
 
 ### <a name="setting-up-the-game"></a>Einrichten des Spiels

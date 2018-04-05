@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/12/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c77812db85c3b6730fce9af3f634821b44508687
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: aec2126369f45a89050dbd8b2d3cae7e00ccb8ed
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-use-azure-iot-sdks"></a>Verstehen und Verwenden von Azure IoT SDKs
 
@@ -32,6 +32,8 @@ Es gibt drei Kategorien von Software Development Kits (SDKs) für die Arbeit mit
 * **Azure IoT-Edge** ermöglicht Ihnen, Gateways für Geräte zu erstellen, die nicht eines der unterstützten Protokolle verwenden. Gateways können auch Nachrichten in Edge verarbeiten.
 
 SDKs dienen zur Unterstützung mehrerer Programmiersprachen.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT-Geräte-SDKs
 

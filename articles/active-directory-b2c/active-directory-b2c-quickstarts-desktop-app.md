@@ -1,22 +1,21 @@
 ---
-title: "Testen einer Azure AD B2C-fähigen Desktop-App"
-description: "Schnellstart zum Testen einer ASP.NET-Desktop-App (Beispiel-App), für die Azure Active Directory B2C zum Bereitstellen einer Benutzeranmeldung genutzt wird."
+title: Testen einer Azure AD B2C-fähigen Desktop-App
+description: Schnellstart zum Testen einer ASP.NET-Desktop-App (Beispiel-App), für die Azure Active Directory B2C zum Bereitstellen einer Benutzeranmeldung genutzt wird.
 services: active-directory-b2c
-author: PatAltimore
+author: davidmu1
 manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
-ms.author: patricka
-ms.openlocfilehash: 18c378f82255df3a999703bc319d551af4b2705c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: davidmu
+ms.openlocfilehash: 8726a5816623d42deb495aa062ef82f1f95b76b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-desktop-app"></a>Schnellstart: Testen einer Azure AD B2C-fähigen Desktop-App
 
@@ -55,7 +54,7 @@ In der Beispielanwendung werden mehrere Registrierungsoptionen unterstützt, z.B
 
 ### <a name="sign-up-using-a-social-identity-provider"></a>Registrieren mit einem sozialen Netzwerk als Identitätsanbieter
 
-Azure AD B2C zeigt eine benutzerdefinierte Anmeldeseite für eine fiktive Marke „Wingtip Toys“ für die Beispiel-Web-App an. 
+Azure AD B2C zeigt für die Beispiel-Web-App eine benutzerdefinierte Anmeldeseite für die fiktive Marke „Wingtip Toys“ an. 
 
 1. Um sich mit einem Social Media-Konto als Identitätsanbieter zu registrieren, klicken Sie auf die Schaltfläche des Identitätsanbieters, den Sie verwenden möchten. 
 
@@ -91,7 +90,7 @@ Azure Active Directory B2C bietet Funktionen, mit denen Benutzer ihre Profile ak
 
 ## <a name="access-a-protected-web-api-resource"></a>Zugreifen auf eine geschützte Web-API-Ressource
 
-Klicken Sie auf **Call API** (API aufrufen), um eine Anforderung an die per Azure AD B2C geschützte Ressource „https://fabrikamb2chello.azurewebsites.net/hello“ zu übermitteln. 
+Klicken Sie auf **Call API** (API aufrufen), um eine Anforderung an die per Azure AD B2C geschützte Ressource https://fabrikamb2chello.azurewebsites.net/hello zu übermitteln. 
 
 ![API aufrufen](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 

@@ -1,13 +1,13 @@
 ---
 title: Effektives Sichern virtueller Azure-Computer | Microsoft-Dokumentation
-description: "Dieses Tutorial enthält Informationen zum Sichern mehrerer virtueller Azure-Computer in einem Recovery Services-Tresor."
+description: Dieses Tutorial enthält Informationen zum Sichern mehrerer virtueller Azure-Computer in einem Recovery Services-Tresor.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 keywords: Sicherung virtueller Computer; Sichern virtueller Computer; Sicherung und Notfallwiederherstellung
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 09/06/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: mvc
-ms.openlocfilehash: 01609c00c6f0585eff4843932b9eb7a090a59c19
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 62cc623dc3130119c5ec803933012c5545d703e5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="back-up-azure-virtual-machines-in-azure-at-scale"></a>Effektives Sichern virtueller Azure-Computer in Azure
 
@@ -46,7 +46,7 @@ Erstellen Sie mithilfe des Cmdlets **New-AzureRmRecoveryServicesVault** einen Re
 New-AzureRmRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
 ```
 
-Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das zur Sicherung verwendete Recovery Services-Tresorobjekt in einer Variablen gespeichert werden. Verwenden Sie dann **Set-AzureRmRecoveryServicesBackupProperties**, um die Option **-BackupStorageRedundancy** auf [Georedundanter Speicher (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) festzulegen. 
+Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das zur Sicherung verwendete Recovery Services-Tresorobjekt in einer Variablen gespeichert werden. Verwenden Sie dann **Set-AzureRmRecoveryServicesBackupProperties**, um die Option **-BackupStorageRedundancy** auf [Georedundanter Speicher (GRS)](../storage/common/storage-redundancy-grs.md) festzulegen. 
 
 ```powershell
 $vault1 = Get-AzureRmRecoveryServicesVault –Name myRSVault

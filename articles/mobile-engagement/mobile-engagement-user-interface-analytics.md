@@ -1,11 +1,11 @@
 ---
-title: "Benutzeroberfläche von Azure Mobile Engagement - Analyse"
+title: Benutzeroberfläche von Azure Mobile Engagement - Analyse
 description: Informationen zum Analysieren von Verlaufsdaten zu Ihrer Anwendung mithilfe von Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6b2533ac-b8ec-4e35-872c-d563895bdc0c
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ad05676919d6c254d60fd010c3f589f663c4745d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fceae1ffff40fc525170121181e21726fe2bd3f7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-analyze-historical-data-about-your-application"></a>Gewusst wie: Analysieren von Verlaufsdaten zu Ihrer Anwendung
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 In diesem Artikel wird die Registerkarte **ANALYSE** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das **Mobile Engagement** -Portal, um Ihre mobilen Apps zu überwachen und zu verwalten. Beachten Sie, dass Sie zur Verwendung des Portals zuerst ein **Azure Mobile Engagement** -Konto erstellen müssen.
 
 Der Abschnitt "Analyse" der Benutzeroberfläche enthält basierend auf Verlaufsdaten zusammengefasste Informationen zu Ihren Anwendungen, die alle 24 Stunden aktualisiert werden. Die Informationen werden auf verschiedenen Dashboards angezeigt, die aus Linien-/Balken-/Kreisdiagrammen, Rastern und Karten bestehen. Die Daten können auch als CSV-Dateien heruntergeladen werden. Die meisten dieser Informationen sind im Abschnitt "Überwachen" der Benutzeroberfläche in Echtzeit verfügbar. Ein Zugriff ist auch über die Analytics-API möglich.

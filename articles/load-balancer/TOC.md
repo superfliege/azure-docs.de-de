@@ -20,13 +20,19 @@
 
 # Anleitung
 
+## [Erstellen eines zonenredundanten öffentlichen Load Balancers im Standard-Tarif](load-balancer-get-started-internet-az-portal.md)
+### [Erstellen eines zonenredundanten öffentlichen Load Balancers im Standard-Tarif (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
+### [Erstellen eines zonenredundanten öffentlichen Load Balancers im Standard-Tarif (CLI)](load-balancer-get-started-internet-az-cli.md)
+## [Erstellen eines zonalen öffentlichen Load Balancers im Standard-Tarif](load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+### [Erstellen eines zonalen öffentlichen Load Balancers im Standard-Tarif (PowerShell)](load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+### [Erstellen eines zonalen öffentlichen Load Balancers im Standard-Tarif (CLI)](load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+## [Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg](load-balancer-standard-public-availability-zones-portal.md)
+###  [Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg (CLI)](load-balancer-standard-public-zone-redundant-cli.md)
+##  [Lastenausgleich für virtuelle Computer innerhalb einer Zone (CLI)](load-balancer-standard-public-zonal-cli.md)   
+## [Einrichten eines Load Balancers im Tarif „Basic“ (Vorlage)](load-balancer-get-started-internet-arm-template.md)
 ## [Erstellen des öffentlichen Lastenausgleichs mit IPv6](load-balancer-ipv6-internet-ps.md)
 ### [Erstellen des öffentlichen Lastenausgleichs mit IPv6 (CLI)](load-balancer-ipv6-internet-cli.md)
 ### [Erstellen des öffentlichen Lastenausgleichs mit IPv6 (Vorlage)](load-balancer-ipv6-internet-template.md)
-## [Erstellen eines Standards für einen zonenredundanten öffentlichen Lastenausgleich](load-balancer-get-started-internet-az-portal.md)
-### [Erstellen eines Standards für einen zonenredundanten öffentlichen Lastenausgleich (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
-### [Erstellen eines Standards für einen zonenredundanten öffentlichen Lastenausgleich (CLI)](load-balancer-get-started-internet-az-cli.md)
-## [Einrichten eines Load Balancers im Tarif „Basic“ (Vorlage)](load-balancer-get-started-internet-arm-template.md)
 ## [Konfigurieren des internen Lastenausgleichs](load-balancer-get-started-ilb-arm-portal.md)
 ### [Konfigurieren des internen Lastenausgleichs (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
 ### [Konfigurieren des internen Lastenausgleichs (CLI)](load-balancer-get-started-ilb-arm-cli.md)

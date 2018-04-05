@@ -1,24 +1,23 @@
 ---
-title: "Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen | Microsoft Docs"
-description: "Durchführen erweiterter Abfragemechanismen mit benutzerdefinierten JavaScript-Funktionen"
+title: Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen | Microsoft Docs
+description: Durchführen erweiterter Abfragemechanismen mit benutzerdefinierten JavaScript-Funktionen
 keywords: JavaScript, benutzerdefinierte Funktionen, UDF
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: e8c1c784a598416b478d1430258201053185fdee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: f2b14029ebea7f9cf1fa74a384ecbb72b08b7ad6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-functions"></a>Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen
 Azure Stream Analytics unterstützt benutzerdefinierte Funktionen, die in JavaScript geschrieben sind. Die umfassenden **String**-, **RegExp**-, **Math**-, **Array**- und **Date**-Methoden von JavaScript vereinfachen die Erstellung von komplexen Datentransformationen mit Stream Analytics-Aufträgen.
@@ -87,9 +86,9 @@ Es gibt Unterschiede zwischen den Typen, die in der Stream Analytics-Abfragespra
 Stream Analytics | JavaScript
 --- | ---
 bigint | Number (in JavaScript können nur ganze Zahlen bis genau 2^53 dargestellt werden)
-DateTime | Date (JavaScript unterstützt nur Millisekunden)
-double | NUMBER
-nvarchar(MAX) | string
+Datetime | Date (JavaScript unterstützt nur Millisekunden)
+double | Number
+nvarchar(MAX) | Zeichenfolge
 Datensatz | Objekt
 Array | Array
 NULL | Null
@@ -100,9 +99,9 @@ Konvertierungen von JavaScript zu Stream Analytics:
 
 JavaScript | Stream Analytics
 --- | ---
-NUMBER | bigint (wenn die Zahl gerundet ist und zwischen long.MinValue und long.MaxValue liegt, andernfalls double)
-Datum | DateTime
-String | nvarchar(MAX)
+Number | bigint (wenn die Zahl gerundet ist und zwischen long.MinValue und long.MaxValue liegt, andernfalls double)
+Datum | Datetime
+Zeichenfolge | nvarchar(MAX)
 Objekt | Datensatz
 Array | Array
 Null, Undefined | NULL

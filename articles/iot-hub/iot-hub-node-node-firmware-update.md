@@ -1,11 +1,11 @@
 ---
-title: "Gerätefirmwareupdate mit Azure IoT Hub (Node) | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe der Geräteverwaltung in Azure IoT Hub ein Gerätefirmwareupdate initiieren. Sie verwenden die Azure IoT SDKs für Node.js, um eine simulierte Geräte-App und eine Dienst-App zu implementieren, die das Firmwareupdate auslöst."
+title: Gerätefirmwareupdate mit Azure IoT Hub (Node) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe der Geräteverwaltung in Azure IoT Hub ein Gerätefirmwareupdate initiieren. Sie verwenden die Azure IoT SDKs für Node.js, um eine simulierte Geräte-App und eine Dienst-App zu implementieren, die das Firmwareupdate auslöst.
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 70b84258-bc9f-43b1-b7cf-de1bb715f2cf
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,16 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2017
 ms.author: juanpere
-ms.openlocfilehash: e169367592b25ea45c3d1017937316a3b3b538b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e8ef556793534c9eb8300ee262a4b134960f862a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-nodenode"></a>Initiieren eines Gerätefirmwareupdates mithilfe der Geräteverwaltung (Node/Node)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 Im Tutorial [Get started with device management][lnk-dm-getstarted] (Erste Schritte mit der Geräteverwaltung) wurde erläutert, wie Sie mit einem [Gerätezwilling][lnk-devtwin] und [direkten Methoden][lnk-c2dmethod] Grundtypen für den Remoteneustart eines Geräts verwenden können. In diesem Tutorial werden dieselben IoT Hub-Grundtypen verwendet. Sie erhalten Hilfestellung dazu, wie Sie ein simuliertes End-to-End-Firmwareupdate durchführen.  Dieses Muster wird in der Firmwareupdateimplementierung für das Intel Edison-Gerätebeispiel verwendet.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 

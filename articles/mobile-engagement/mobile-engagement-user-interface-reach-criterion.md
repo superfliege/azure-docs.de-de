@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement – Benutzeroberfläche – Reichweitenkriterium"
-description: "Erfahren Sie, wie Sie die Zielgruppenadressierung anhand bestimmter Kriterien von Azure Mobile Engagement verwenden können, um Pushkampagnen an eine Teilmenge der Benutzer versenden"
+title: Azure Mobile Engagement – Benutzeroberfläche – Reichweitenkriterium
+description: Erfahren Sie, wie Sie die Zielgruppenadressierung anhand bestimmter Kriterien von Azure Mobile Engagement verwenden können, um Pushkampagnen an eine Teilmenge der Benutzer versenden
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a4ed03a0-55b1-4dd8-b0bd-c475005afb66
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 803b44721d0ab1ac7b5a8074e18857fc57adb724
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2adf473c6acea0f128eb14e2616748ff29d5d762
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>Zielgruppenadressierung anhand bestimmter Kriterien zur Versendung von Pushkampagnen an eine Teilmenge der Benutzer
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Die Zielgruppenadressierung anhand spezifischer Kriterien mithilfe der neuen Schaltfläche "Neue Kriterien" ist eines der leistungsstärksten Konzepte in Azure Mobile Engagement. Denn Sie können relevante Pushbenachrichtigungen senden, auf die die Kunden reagieren, anstatt Empfänger mit Spam zu belästigen. Sie können Ihre Zielgruppe basierend auf Standardkriterien einschränken und Pushvorgänge simulieren, um zu bestimmen, wie viele Personen die Benachrichtigung erhalten sollen.
 
 **Weitere Informationen:**
@@ -62,7 +66,7 @@ Angenommen, Sie möchten eine Ankündigung per Push nur an die Benutzer verteile
 * Netzwerktyp: Netzwerktyp
 * Gebietsschema: Gebietsschema
 * Bildschirmgröße: Bildschirmgröße
-* **Standort**      
+* **Location**      
 * Letzter bekannter Bereich: Land, Region, Ort
 * Echtzeit-Geofencing: Liste der POIs (Name, Aktionen), kreisförmiger POIs (Name, Breite, Länge, Radius in Metern)
 * **Feedback zur Reichweite**     

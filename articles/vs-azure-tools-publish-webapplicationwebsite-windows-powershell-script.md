@@ -1,11 +1,11 @@
 ---
 title: Publish-WebApplicationWebSite (Windows PowerShell-Skript) | Microsoft Docs
-description: "Informationen zum Veröffentlichen eines Webprojekts auf einer Azure-Website. Dieses Skript erstellt die erforderlichen Ressourcen in Ihrem Azure-Abonnement, wenn sie noch nicht vorhanden sind."
+description: Informationen zum Veröffentlichen eines Webprojekts auf einer Azure-Website. Dieses Skript erstellt die erforderlichen Ressourcen in Ihrem Azure-Abonnement, wenn sie noch nicht vorhanden sind.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 63cfaa2d-f04d-40dc-8677-345385c278d5
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 07d21b7ce6cd8aee1cff704d316e7a2ca8c00437
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: aaa1f679b0368b0ca93305fe867a63f3971a788c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="publish-webapplicationwebsite-windows-powershell-script"></a>Publish-WebApplicationWebSite (Windows PowerShell-Skript)
 ## <a name="syntax"></a>Syntax
@@ -38,10 +38,10 @@ Der Pfad zur JSON-Konfigurationsdatei, in der die Details der Bereitstellung bes
 
 | Parameter | Standardwert |
 | --- | --- |
-| Aliase |(Keine) |
-| Erforderlich |true |
+| Aliase |none |
+| Erforderlich? |true |
 | Position |benannt |
-| Standardwert |(Keine) |
+| Standardwert |none |
 | Pipelineeingabe akzeptieren? |false |
 | Platzhalterzeichen akzeptieren? |false |
 
@@ -50,10 +50,10 @@ Der Name des Azure-Abonnements, in dem Sie die Website erstellen möchten.
 
 | Parameter | Standardwert |
 | --- | --- |
-| Aliase |(Keine) |
-| Erforderlich |false |
+| Aliase |none |
+| Erforderlich? |false |
 | Position |benannt |
-| Standardwert |(Keine) |
+| Standardwert |none |
 | Pipelineeingabe akzeptieren? |false |
 | Platzhalterzeichen akzeptieren? |false |
 
@@ -62,10 +62,10 @@ Der Pfad zum Webbereitstellungspaket für die Veröffentlichung auf der Website.
 
 | Parameter | Standardwert |
 | --- | --- |
-| Aliase |(Keine) |
-| Erforderlich |false |
+| Aliase |none |
+| Erforderlich? |false |
 | Position |benannt |
-| Standardwert |(Keine) |
+| Standardwert |none |
 | Pipelineeingabe akzeptieren? |false |
 | Platzhalterzeichen akzeptieren? |false |
 
@@ -74,10 +74,10 @@ Der Benutzername und das Kennwort für die SQL-Datenbank in Azure.
 
 | Parameter | Standardwert |
 | --- | --- |
-| Aliase |(Keine) |
-| Erforderlich |false |
+| Aliase |none |
+| Erforderlich? |false |
 | Position |benannt |
-| Standardwert |(Keine) |
+| Standardwert |none |
 | Pipelineeingabe akzeptieren? |false |
 | Platzhalterzeichen akzeptieren? |false |
 
@@ -86,14 +86,14 @@ Falls "true", werden Nachrichten vom Skript in den Ausgabedatenstrom ausgegeben.
 
 | Parameter | Standardwert |
 | --- | --- |
-| Aliase |(Keine) |
-| Erforderlich |false |
+| Aliase |none |
+| Erforderlich? |false |
 | Position |benannt |
 | Standardwert |false |
 | Pipelineeingabe akzeptieren? |false |
 | Platzhalterzeichen akzeptieren? |false |
 
-## <a name="remarks"></a>Hinweise
+## <a name="remarks"></a>Anmerkungen
 Eine ausführliche Erläuterung der Verwendung des Skripts zum Erstellen von Entwicklungs- und Testumgebungen finden Sie unter [Verwenden von Windows PowerShell-Skripts zum Veröffentlichen in Entwicklungs- und Testumgebungen](vs-azure-tools-publishing-using-powershell-scripts.md).
 
 In der JSON-Konfigurationsdatei sind die Details angegeben, was bereitgestellt werden muss. Dazu zählen die Informationen, die Sie beim Erstellen des Projekts angegeben haben, z. B. den Namen und Benutzernamen für die Website. Sie umfassen auch die bereitzustellende Datenbank, sofern vorhanden. Der folgende Code zeigt ein Beispiel einer JSON-Konfigurationsdatei:

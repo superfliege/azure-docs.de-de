@@ -1,62 +1,66 @@
 ---
-title: "Tutorial für Azure Container Instances – Bereitstellungs-App"
-description: "Tutorial für Azure Container Instances (Teil 3 von 3) – Bereitstellen der Anwendung"
+title: Tutorial für Azure Container Instances – Bereitstellungs-App
+description: Tutorial für Azure Container Instances (Teil 3 von 3) – Bereitstellen der Anwendung
 services: container-instances
-author: seanmck
+author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 02/22/2018
-ms.author: seanmck
+ms.date: 03/21/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 0532d255b271b2155ae3115f8f96c4cbb53916e4
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 29d7114f288f7387d0c7cd5c6afe2eaaa7a8c560
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-a-container-to-azure-container-instances"></a>Bereitstellen eines Containers für Azure Container Instances
+# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>Tutorial: Bereitstellen eines Containers in Azure Container Instances
 
-Dies ist das letzte Tutorial einer dreiteiligen Reihe. In den vorhergehenden Teilen der Reihe wurde [ein Containerimage erstellt](container-instances-tutorial-prepare-app.md) und [mithilfe von Push an eine Azure Container Registry-Instanz übermittelt](container-instances-tutorial-prepare-acr.md). Zum Abschluss der Tutorialreihe wird der Container in diesem Tutorial für Azure Container Instances bereitgestellt.
+Dies ist das letzte Tutorial einer dreiteiligen Reihe. In den vorhergehenden Teilen der Reihe wurde [ein Containerimage erstellt](container-instances-tutorial-prepare-app.md) und [mithilfe von Push an eine Azure Container Registry-Instanz übermittelt](container-instances-tutorial-prepare-acr.md). Zum Abschluss der Reihe wird der Container in diesem Tutorial für Azure Container Instances bereitgestellt.
 
-In diesem Tutorial haben Sie Folgendes durchgeführt:
+In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
-> * Bereitstellen des Containers aus der Azure Container Registry-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
-> * Anzeigen der Anwendung im Browser
-> * Anzeigen der Containerprotokolle
+> * Bereitstellen des Containers aus Azure Container Registry in Azure Container Instances
+> * Anzeigen der ausgeführten Anwendung im Browser
+> * Anzeigen der Protokolle des Containers
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie mindestens Version 2.0.27 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0][azure-cli-install].
-
-Für dieses Tutorial ist eine lokal installierte Docker-Entwicklungsumgebung erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac-][docker-mac], [Windows-][docker-windows] oder [Linux-][docker-linux]System konfiguriert werden kann.
-
-Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der einzelnen Schritte dieses Tutorials erforderlich sind. Die Azure-Befehlszeilenschnittstelle und die Docker-Entwicklungsumgebung müssen zur Absolvierung dieses Tutorials auf Ihrem lokalen Computer installiert sein.
+[!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
 ## <a name="deploy-the-container-using-the-azure-cli"></a>Bereitstellen des Containers mithilfe der Azure-Befehlszeilenschnittstelle
 
-Mithilfe der Azure-Befehlszeilenschnittstelle kann ein Container mit einem einzelnen Befehl in Azure Container Instances bereitgestellt werden. Da das Containerimage in der privaten Azure Container Registry gehostet wird, müssen Sie die erforderlichen Anmeldeinformationen einschließen, um darauf zugreifen zu können. Rufen Sie die Anmeldeinformationen mit den folgenden Azure-CLI-Befehlen ab.
+In diesem Abschnitt verwenden Sie die Azure CLI zum Bereitstellen des Images, das im [ersten Tutorial](container-instances-tutorial-prepare-app.md) erstellt und im [zweiten Tutorial](container-instances-tutorial-prepare-acr.md) per Pushvorgang in die Azure Container Registry übertragen wurde. Arbeiten Sie diese Tutorials durch, bevor Sie fortfahren.
 
-Anmeldeserver für die Containerregistrierung (durch den Namen Ihrer Registrierung ersetzen):
+### <a name="get-registry-credentials"></a>Abrufen von Registrierungsanmeldeinformationen
+
+Beim Bereitstellen eines Images, das in einer privaten Containerregistrierung gehostet wird (wie im [zweiten Tutorial](container-instances-tutorial-prepare-acr.md)), müssen Sie die Anmeldeinformationen der Registrierung angeben.
+
+Rufen Sie zuerst den vollständigen Namen des Anmeldeservers für die Containerregistrierung ab (ersetzen Sie `<acrName>` durch den Namen Ihrer Registrierung):
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
 ```
 
-Kennwort der Containerregistrierung:
+Rufen Sie als Nächstes das Kennwort der Containerregistrierung ab:
 
 ```azurecli
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-Ihre Anwendung muss [vorab vorbereitet werden][prepare-app]. Führen Sie zum Bereitstellen des Containerimages aus der Containerregistrierung mit einer Ressourcenanforderung von einem CPU-Kern und 1 GB Speicher den Befehl [az container create][az-container-create] aus. Ersetzen Sie `<acrLoginServer>` und `<acrPassword>` durch die Werte, die Sie mit den beiden vorhergehenden Befehlen abgerufen haben. Ersetzen Sie `<acrName>` durch den Namen der Containerregistrierung. Sie können `aci-tutorial-app` auch durch den Namen ersetzen, den Sie der neuen Anwendung geben möchten.
+### <a name="deploy-container"></a>Bereitstellen des Containers
+
+Verwenden Sie nun den Befehl [az container create][az-container-create], um den Container bereitzustellen. Ersetzen Sie `<acrLoginServer>` und `<acrPassword>` durch die Werte, die Sie mit den beiden vorhergehenden Befehlen abgerufen haben. Ersetzen Sie `<acrName>` durch den Namen Ihrer Containerregistrierung.
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
 ```
 
-Innerhalb weniger Sekunden sollten Sie eine erste Antwort vom Azure Resource Manager erhalten. Der Wert `--dns-name-label` muss innerhalb der Azure-Region, in der Sie die Containerinstanz erstellen, eindeutig sein. Aktualisieren Sie den Wert im vorherigen Beispiel, wenn Sie beim Ausführen des Befehls eine Fehlermeldung bezüglich der **DNS-Namensbezeichnung** erhalten.
+Innerhalb weniger Sekunden sollten Sie eine erste Antwort von Azure erhalten. Der Wert `--dns-name-label` muss innerhalb der Azure-Region, in der Sie die Containerinstanz erstellen, eindeutig sein. Ändern Sie den Wert im vorherigen Befehl, wenn Sie beim Ausführen des Befehls eine Fehlermeldung bezüglich der **DNS-Namensbezeichnung** erhalten.
+
+### <a name="verify-deployment-progress"></a>Überprüfen des Bereitstellungsstatus
 
 Verwenden Sie zum Anzeigen des Bereitstellungsstatus den Befehl [az container show][az-container-show]:
 
@@ -74,7 +78,11 @@ Wenn die Bereitstellung erfolgreich war, zeigen Sie mit dem Befehl [az container
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Beispielausgabe: `"aci-demo.eastus.azurecontainer.io"`
+Beispiel: 
+```console
+$ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
+"aci-demo.eastus.azurecontainer.io"
+```
 
 Navigieren Sie zum Anzeigen der ausgeführten Anwendung in Ihrem bevorzugten Browser zum angezeigten DNS-Namen:
 
@@ -86,12 +94,13 @@ Sie können auch die Protokollausgabe des Containers anzeigen:
 az container logs --resource-group myResourceGroup --name aci-tutorial-app
 ```
 
-Ausgabe:
+Beispielausgabe:
 
 ```bash
+$ az container logs --resource-group myResourceGroup --name aci-tutorial-app
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
-::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://13.88.176.27/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
@@ -104,12 +113,17 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Ihre Container in Azure Container Instances bereitgestellt. Die folgenden Schritte wurden durchgeführt:
+In diesem Tutorial haben Sie Ihren Container in Azure Container Instances bereitgestellt. Die folgenden Schritte wurden durchgeführt:
 
 > [!div class="checklist"]
 > * Bereitstellen des Containers aus der Azure Container Registry-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
 > * Anzeigen der Anwendung im Browser
 > * Anzeigen der Containerprotokolle
+
+Nachdem Sie sich mit den Grundlagen vertraut gemacht haben, können Sie sich jetzt eingehender über Azure Container Instances informieren, z.B. über die Funktionsweise von Containergruppen:
+
+> [!div class="nextstepaction"]
+> [Containergruppen in Azure Container Instances](container-instances-container-groups.md)
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png

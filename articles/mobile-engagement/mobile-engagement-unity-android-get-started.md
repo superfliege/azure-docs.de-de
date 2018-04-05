@@ -1,11 +1,11 @@
 ---
-title: "Erste Schritte mit Azure Mobile Engagement für eine Unity Android-Bereitstellung"
-description: "Erfahren Sie mehr über die Verwendung von Azure Mobile Engagement mit Analysefunktionen und Pushbenachrichtigungen für Unity-Apps, die auf iOS-Geräten bereitgestellt werden."
+title: Erste Schritte mit Azure Mobile Engagement für eine Unity Android-Bereitstellung
+description: Erfahren Sie mehr über die Verwendung von Azure Mobile Engagement mit Analysefunktionen und Pushbenachrichtigungen für Unity-Apps, die auf iOS-Geräten bereitgestellt werden.
 services: mobile-engagement
 documentationcenter: unity
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d5f0ef79-be00-4cec-97a5-a0b2fdaa380e
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: bf0b758159d475b4ed7eadb84227e4824e11ba86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd126fc656fc00667c4c09298409f920ab8160fc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-unity-android-deployment"></a>Erste Schritte mit Azure Mobile Engagement für eine Unity Android-Bereitstellung
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die Nutzung Ihrer App nachvollziehen und Pushbenachrichtigungen an segmentierte Benutzer einer Unity-Anwendung senden, wenn Sie die Bereitstellung für ein Android-Gerät durchführen.
@@ -33,7 +37,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 * Google Android SDK
 
 > [!NOTE]
-> Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-android-get-started).
+> Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-android-get-started).
 > 
 > 
 
@@ -108,7 +112,7 @@ Stellen Sie sicher, dass das Android-SDK auf Ihrem Computer installiert ist, bev
 1. Öffnen Sie die **EngagementConfiguration**-Skriptdatei im SDK-Ordner, und aktualisieren Sie **ANDROID\_GOOGLE\_NUMBER** mit der **Google-Projektnummer**, die Sie zuvor über das Google Cloud Developer-Portal abgerufen haben. Da dies ein Zeichenfolgenwert ist, muss er in doppelte Anführungszeichen gesetzt werden. 
    
     ![][75]
-2. Speichern Sie die Datei. 
+2. Speichern Sie die Datei . 
 3. Führen Sie **Datei > Engagement > Android-Manifest generieren** aus. Dies ist das Plug-In, das vom Mobile Engagement SDK hinzugefügt wird. Wenn Sie darauf klicken, werden die Projekteinstellungen automatisch aktualisiert. 
    
     ![][74]

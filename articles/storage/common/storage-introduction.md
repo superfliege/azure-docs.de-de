@@ -1,6 +1,6 @@
 ---
-title: "Einführung in Azure Storage | Microsoft-Dokumentation"
-description: "Einführung in Azure Storage, den Datenspeicher von Microsoft in der Cloud."
+title: Einführung in Azure Storage | Microsoft-Dokumentation
+description: Einführung in Azure Storage, den Datenspeicher von Microsoft in der Cloud.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: 799636d0a702407be06bbe8cebae552b34d860db
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: eb68993924bff8605fc244f438a686f0142c4762
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Einführung in Microsoft Azure Storage
 
@@ -131,7 +131,7 @@ Für die Storage-Dienste stehen zwei grundlegende Verschlüsselungsarten zur Ver
 
 Azure Storage Service Encryption (SSE) für ruhende Daten unterstützt Sie dabei, Ihre Daten zu schützen, um die Sicherheits- und Complianceverpflichtungen Ihrer Organisation zu erfüllen. Mit diesem Feature verschlüsselt Azure Storage Ihre Daten automatisch, bevor sie im Speicher abgelegt werden, und entschlüsselt sie vor dem Abrufen. Verschlüsselung, Entschlüsselung und Schlüsselverwaltung sind für Benutzer vollständig transparent.
 
-SSE verschlüsselt Daten automatisch auf allen Leistungsstufen (Standard und Premium), in allen Bereitstellungsmodellen (Azure Resource Manager und klassisch) und allen Azure Storage-Diensten (Blob, Queue, Table und File). SSE hat keine Auswirkungen auf die Leistung von Azure Storage.
+SSE verschlüsselt die Daten automatisch in allen Leistungsebenen (Standard oder Premium), allen Bereitstellungsmodellen (Azure Resource Manager und Classic) sowie allen Azure Storage-Diensten (Blob, Queue, Table und File). SSE hat keine Auswirkungen auf die Leistung von Azure Storage.
 
 Weitere Informationen zur SSE-Verschlüsselung für ruhende Daten finden Sie unter [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md).
 

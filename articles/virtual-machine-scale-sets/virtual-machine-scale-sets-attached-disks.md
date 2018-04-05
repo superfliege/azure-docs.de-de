@@ -1,11 +1,11 @@
 ---
-title: "Skalierungsgruppen für an virtuelle Azure-Computer angefügte Datenträger | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie angefügte Datenträger mit VM-Skalierungsgruppen verwenden."
+title: Skalierungsgruppen für an virtuelle Azure-Computer angefügte Datenträger | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie angefügte Datenträger mit VM-Skalierungsgruppen verwenden.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -15,52 +15,27 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: 52ea7e35b941d5b1e45f39203757e4a3644cc9a5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ec11a2d66530129fb61d97681e6882b887c8654c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-VM-Skalierungsgruppen und angefügte Datenträger
-[Skalierungsgruppen für virtuelle Azure-Computer](/azure/virtual-machine-scale-sets/) unterstützen jetzt virtuelle Computer mit angefügten Datenträgern. Datenträger können im Speicherprofil für die Skalierungsgruppen definiert werden, die mit Azure Managed Disks erstellt wurden. Bisher waren das Betriebssystemlaufwerk und die temporären Laufwerke die einzigen Optionen für direkt angefügten Speicher für virtuelle Computer.
+Zur Erweiterung des verfügbaren Speicherplatzes unterstützen [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) VM-Instanzen mit angefügten Datenträgern. Datenträger können einer Skalierungsgruppe beim Erstellen der Skalierungsgruppe oder zu einem späteren Zeitpunkt hinzugefügt werden.
 
 > [!NOTE]
->  Wenn Sie eine Skalierungsgruppe mit definierten angefügten Datenträgern erstellen, müssen Sie die Datenträger weiterhin in einem virtuellen Computer bereitstellen und formatieren, damit Sie sie verwenden können (wie es auch bei eigenständigen virtuellen Azure-Computern der Fall ist). Eine einfache Möglichkeit ist die Verwendung einer benutzerdefinierten Skripterweiterung, die ein Standardskript aufruft, um alle Datenträger auf einem virtuellen Computer zu partitionieren und zu formatieren.
+>  Wenn Sie eine Skalierungsgruppe mit angefügten Datenträgern erstellen, müssen Sie die Datenträger über einen virtuellen Computer einbinden und formatieren, um sie verwenden zu können – genau wie bei eigenständigen virtuellen Azure-Computern. Eine einfache Möglichkeit ist die Verwendung einer benutzerdefinierten Skripterweiterung, die ein Skript aufruft, um alle Datenträger auf einem virtuellen Computer zu partitionieren und zu formatieren. Beispiele hierzu finden Sie unter [Azure CLI 2.0](tutorial-use-disks-cli.md#prepare-the-data-disks) bzw. unter [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks).
 
-## <a name="create-a-scale-set-with-attached-data-disks"></a>Erstellen von Skalierungsgruppen mit angefügten Datenträgern
-Eine einfache Möglichkeit zum Erstellen einer Skalierungsgruppe mit angefügten Datenträgern ist der Befehl [az vmss create](/cli/azure/vmss#az_vmss_create). Im folgenden Beispiel werden eine Azure-Ressourcengruppe und eine VM-Skalierungsgruppe mit zehn virtuellen Ubuntu-Computern erstellt, von denen jeder über zwei angefügte Datenträger mit 50 bzw. 100 GB verfügt.
 
-```bash
-az group create -l southcentralus -n dsktest
-az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
-```
+## <a name="create-and-manage-disks-in-a-scale-set"></a>Erstellen und Verwalten von Datenträgern in einer Skalierungsgruppe
+Ausführliche Informationen zum Erstellen einer Skalierungsgruppe mit angefügten Datenträgern, zum Vorbereiten und Formatieren sowie zum Hinzufügen und Entfernen von Datenträgern finden Sie in den folgenden Tutorials:
 
-Der Befehl [az vmss create](/cli/azure/vmss#az_vmss_create) verwendet standardmäßig bestimmte Konfigurationswerte, wenn Sie diese nicht angeben. Sie können die verfügbaren Optionen, die überschrieben werden können, folgendermaßen anzeigen:
+- [Azure CLI 2.0](tutorial-use-disks-cli.md)
+- [Azure PowerShell](tutorial-use-disks-powershell.md)
 
-```bash
-az vmss create --help
-```
+Im weiteren Verlauf dieses Artikels werden bestimmte Verwendungsfälle behandelt – beispielsweise Service Fabric-Cluster, die Datenträger benötigen, oder das Anfügen vorhandener Datenträger mit Inhalt an eine Skalierungsgruppe.
 
-Eine weitere Möglichkeit zum Erstellen einer Skalierungsgruppe mit angefügten Datenträgern besteht darin, eine Skalierungsgruppe in einer Azure Resource Manager-Vorlage, einschließlich eines Abschnitts _dataDisks_ im _storageProfile_, zu definieren und die Vorlage bereitzustellen. Die Datenträger mit 50 GB und 100 GB im vorherigen Beispiel werden wie in der folgenden Beispielvorlage definiert:
-
-```json
-"dataDisks": [
-    {
-    "lun": 1,
-    "createOption": "Empty",
-    "caching": "ReadOnly",
-    "diskSizeGB": 50
-    },
-    {
-    "lun": 2,
-    "createOption": "Empty",
-    "caching": "ReadOnly",
-    "diskSizeGB": 100
-    }
-]
-```
-
-Ein vollständiges Beispiel für eine Skalierungsgruppenvorlage mit einem angefügten Datenträger, die Sie direkt bereitstellen können, finden Sie hier: [https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data](https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data).
 
 ## <a name="create-a-service-fabric-cluster-with-attached-data-disks"></a>Erstellen eines Service Fabric-Clusters mit angefügten Datenträgern
 Jedem [Knotentyp](../service-fabric/service-fabric-cluster-nodetypes.md) in einem in Azure ausgeführten [Service Fabric](/azure/service-fabric)-Cluster liegt eine VM-Skalierungsgruppe zugrunde.  Mit einer Azure Resource Manager-Vorlage können Sie Datenträger an die Skalierungsgruppen anfügen, aus denen sich der Service Fabric-Cluster zusammensetzt. Sie können eine [vorhandene Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates) als Ausgangspunkt verwenden. Fügen Sie in der Vorlage im Speicherprofil (_storageProfile_) der Ressourcen vom Typ _Microsoft.Compute/virtualMachineScaleSets_ einen Abschnitt namens _dataDisks_ ein, und stellen Sie die Vorlage bereit. Im folgenden Beispiel wird ein Datenträger mit einer Kapazität von 128 GB angefügt:
@@ -115,56 +90,6 @@ Fügen Sie Folgendes hinzu, um die Datenträger in einem Linux-Cluster automatis
 }
 ```
 
-## <a name="adding-a-data-disk-to-an-existing-scale-set"></a>Hinzufügen eines Datenträgers zu einer vorhandenen Skalierungsgruppe
-> [!NOTE]
->  Sie können nur Datenträger an eine Skalierungsgruppe anfügen, die mit [Azure Managed Disks](./virtual-machine-scale-sets-managed-disks.md) erstellt wurde.
-
-Sie können einen Datenträger zu einer VM-Skalierungsgruppe mithilfe des Azure CLI-Befehls _az vmss disk attach_ hinzufügen. Legen Sie eine LUN fest, die noch nicht verwendet wird. Im folgenden CLI-Beispiel wird ein Laufwerk mit 50 GB zu LUN 3 hinzugefügt:
-
-```bash
-az vmss disk attach -g dsktest -n dskvmss --size-gb 50 --lun 3
-```
-
-Im folgenden PowerShell-Beispiel wird ein Laufwerk mit 50 GB zu LUN 3 hinzugefügt:
-
-```powershell
-$vmss = Get-AzureRmVmss -ResourceGroupName myvmssrg -VMScaleSetName myvmss
-$vmss = Add-AzureRmVmssDataDisk -VirtualMachineScaleSet $vmss -Lun 3 -Caching 'ReadWrite' -CreateOption Empty -DiskSizeGB 50 -StorageAccountType StandardLRS
-Update-AzureRmVmss -ResourceGroupName myvmssrg -Name myvmss -VirtualMachineScaleSet $vmss
-```
-
-> [!NOTE]
-> Verschiedene VM-Größen haben verschiedene Grenzwerte in Bezug auf die Anzahl der angefügten Laufwerke, die sie unterstützen. Lesen Sie vor dem Hinzufügen eines neuen Datenträgers die Informationen unter [Größen für virtuelle Computer in Azure](../virtual-machines/windows/sizes.md).
-
-Sie können einen Datenträger auch hinzufügen, indem Sie der Eigenschaft _dataDisks_ im _storageProfile_ einer Skalierungsgruppendefinition einen neuen Eintrag hinzufügen und die Änderung übernehmen. Im [Azure-Ressourcen-Explorer](https://resources.azure.com/) finden Sie eine vorhandene Skalierungsgruppendefinition, mit der Sie dies testen können. Klicken Sie auf _Bearbeiten_, und fügen Sie der Liste der Datenträger einen neuen Datenträger hinzu, wie im folgenden Beispiel gezeigt:
-
-```json
-"dataDisks": [
-    {
-    "lun": 1,
-    "createOption": "Empty",
-    "caching": "ReadOnly",
-    "diskSizeGB": 50
-    },
-    {
-    "lun": 2,
-    "createOption": "Empty",
-    "caching": "ReadOnly",
-    "diskSizeGB": 100
-    },
-    {
-    "lun": 3,
-    "createOption": "Empty",
-    "caching": "ReadOnly",
-    "diskSizeGB": 20
-    }          
-]
-```
-
-Wählen Sie dann _PUT_, um die Änderungen für Ihre Skalierungsgruppe zu übernehmen. Dieses Beispiel funktioniert nur, wenn Sie eine VM-Größe nutzen, die mehr als zwei angefügte Datenträger unterstützt.
-
-> [!NOTE]
-> Wenn Sie an einer Skalierungsgruppendefinition Änderungen vornehmen, indem Sie z.B. einen Datenträger hinzufügen oder entfernen, wird diese Änderungen für alle neu erstellten virtuellen Computer übernommen, für vorhandene virtuelle Computer jedoch nur, wenn für die Eigenschaft _upgradePolicy_ „Automatisch“ festgelegt ist. Wenn hierfür „Manuell“ festgelegt wurde, müssen Sie das neue Modell manuell auf vorhandene virtuelle Computer anwenden. Dies ist im Portal mithilfe des PowerShell-Befehls _Update-AzureRmVmssInstance_ oder mithilfe des CLI-Befehls _az vmss update-instances_ möglich.
 
 ## <a name="adding-pre-populated-data-disks-to-an-existent-scale-set"></a>Hinzufügen von vorab aufgefüllten Datenträgern zu einer vorhandenen Skalierungsgruppe 
 > Wenn Sie Datenträger zu einem vorhandenen Skalierungsgruppenmodell hinzufügen, wird der Datenträger standardmäßig immer leer erstellt. (Dieses Szenario umfasst auch neue von der Skalierungsgruppe erstellte Instanzen.) Das Verhalten ist darin begründet, dass die Skalierungsgruppendefinition einen leeren Datenträger enthält. Wählen Sie eine der folgenden beiden Optionen, um vorab aufgefüllte Datenträger für eine vorhandene Skalierungsgruppe zu erstellen:
@@ -176,12 +101,6 @@ Wählen Sie dann _PUT_, um die Änderungen für Ihre Skalierungsgruppe zu übern
 
 > Der Benutzer muss den virtuellen Instanz 0-Computer mit den erforderlichen Daten erfassen und dann diese VHD für die Imagedefinition verwenden.
 
-## <a name="removing-a-data-disk-from-a-scale-set"></a>Entfernen eines Datenträgers aus einer Skalierungsgruppe
-Sie können einen Datenträger aus einer VM-Skalierungsgruppe mithilfe des Azure CLI-Befehls _az vmss disk detach_ entfernen. Mit dem folgenden Befehl wird beispielsweise der für LUN 2 definierte Datenträger entfernt:
-```bash
-az vmss disk detach -g dsktest -n dskvmss --lun 2
-```  
-Sie können einen Datenträger auch aus einer Skalierungsgruppe entfernen, indem Sie einen Eintrag aus der Eigenschaft _dataDisks_ im _storageProfile_ entfernen und die Änderung übernehmen. 
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
 Unterstützung für Azure Managed Disks und Skalierungsgruppen, die an Datenträger angefügt sind, ist über die API-Version [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) oder höher der Microsoft.Compute-API verfügbar.

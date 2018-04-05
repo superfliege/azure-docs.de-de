@@ -1,11 +1,11 @@
 ---
 title: Integration von Cloud Cruiser und der Microsoft Azure-Abrechnungs-API | Microsoft-Dokumentation
-description: "Enthält eine einzigartige Sicht auf den Microsoft Azure-Abrechnungspartner Cloud Cruiser und dessen Umgebungen mit Integration der Azure-Abrechnungs-APIs in das Produkt.  Dies ist besonders hilfreich für Azure- und Cloud Cruiser-Kunden, die an der Verwendung bzw. am Testen von Cloud Cruiser für Microsoft Azure Pack interessiert sind."
-services: 
-documentationcenter: 
-author: BryanLa
+description: Enthält eine einzigartige Sicht auf den Microsoft Azure-Abrechnungspartner Cloud Cruiser und dessen Umgebungen mit Integration der Azure-Abrechnungs-APIs in das Produkt.  Dies ist besonders hilfreich für Azure- und Cloud Cruiser-Kunden, die an der Verwendung bzw. am Testen von Cloud Cruiser für Microsoft Azure Pack interessiert sind.
+services: ''
+documentationcenter: ''
+author: tonguyen
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: b65128cf-5d4d-4cbd-b81e-d3dceab44271
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
 ms.author: mobandyo;sirishap;bryanla
-ms.openlocfilehash: 7d66cac98afa72c807f597403b1e2bd278e45cec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ddb81078e8019284c0481d4ea8d72253d3f0a5a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Integration von Cloud Cruiser und Microsoft Azure-Abrechnungs-API
 In diesem Artikel wird beschrieben, wie die mit den neuen Microsoft Azure-Abrechnungs-APIs gesammelten Informationen in Cloud Cruiser für die Simulation und Analyse von Workflowkosten verwendet werden können.
@@ -50,7 +50,7 @@ Cloud Cruiser kann die Informationen der RateCard-API auf unterschiedliche Weise
 Um diesen Anwendungsfall zu demonstrieren, stellen wir uns eine Workload vor, bei der mehrere Instanzen unter Microsoft Azure Pack (WAP) ausgeführt werden. Das Ziel besteht darin, diese Workload unter Azure zu simulieren und die Kosten für eine Migration dieser Art zu schätzen. Zum Erstellen dieser Simulation müssen zwei Hauptaufgaben durchgeführt werden:
 
 1. **Importieren und Verarbeiten der von der RateCard-API erfassten Dienstinformationen.** Diese Aufgabe wird auch in den Arbeitsmappen durchgeführt, in denen die per RateCard-API extrahierten Daten transformiert und in einer neuen Gebührenübersicht veröffentlicht werden. Diese neue Gebührenübersicht wird in den Simulationen zum Schätzen der Azure-Preise verwendet.
-2. **Normalisieren der WAP-Dienste und Azure-Dienste für IaaS.** Standardmäßig basieren WAP-Dienste auf einzelnen Ressourcen (CPU, Arbeitsspeichergröße, Datenträgergröße usw.), während Azure-Dienste auf der Instanzgröße basieren (A0, A1, A2 usw.). Diese erste Aufgabe kann vom ETL-Modul (als Arbeitsmappen bezeichnet) von Cloud Cruiser durchgeführt werden, wobei diese Ressourcen analog zu Azure-Instanzdiensten für Instanzgrößen gebündelt werden können.
+2. **Normalisieren der WAP-Dienste und Azure-Dienste für IaaS.** Standardmäßig basieren WAP-Dienste auf einzelnen Ressourcen (CPU, Arbeitsspeichergröße, Datenträgergröße usw.), während Azure-Dienste auf der Instanzgröße basieren (A0, A1, A2 usw.). Diese erste Aufgabe kann von der ETL-Engine (als Arbeitsmappen bezeichnet) von Cloud Cruiser durchgeführt werden, wobei diese Ressourcen analog zu Azure-Instanzdiensten für Instanzgrößen gebündelt werden können.
 
 ### <a name="import-data-from-the-ratecard-api"></a>Importieren von Daten aus der RateCard-API
 Cloud Cruiser-Arbeitsmappen sind eine Möglichkeit, Informationen aus der RateCard-API auf automatisierte Weise zu erfassen und zu verarbeiten.  Mit ETL-Arbeitsmappen (Extrahieren-Transformieren-Laden) können Sie die Sammlung, Transformation und Veröffentlichung von Daten in der Cloud Cruiser-Datenbank konfigurieren.

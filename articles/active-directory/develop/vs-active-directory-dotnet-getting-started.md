@@ -3,8 +3,8 @@ title: Erste Schritte mit Azure AD in Visual Studio-.NET-MVC-Projekten | Microso
 description: Erfahren Sie etwas über die ersten Schritte mit Azure Active Directory in .NET MVC-Projekten nach dem Herstellen einer Verbindung oder dem Erstellen einer Azure AD-Instanz mithilfe von verbundenen Visual Studio-Diensten.
 services: active-directory
 documentationcenter: ''
-author: kraigb
-manager: ghogen
+author: ghogen
+manager: douge
 editor: ''
 ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: kraigb
+ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: 07fa4655d9e7ad74cae33391d55c7c9be1d446a6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5ad919be46cf771f50b646207090c19de5248eb6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Erste Schritte mit Azure Active Directory (ASP.NET MVC-Projekte)
 

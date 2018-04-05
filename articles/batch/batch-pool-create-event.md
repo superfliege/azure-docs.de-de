@@ -2,21 +2,21 @@
 title: 'Azure Batch: Poolerstellungsereignis | Microsoft-Dokumentation'
 description: Referenz zum Batch-Poolerstellungsereignis.
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: tamram
-ms.openlocfilehash: 67edaa55d7ccd00d4aebb309f11bcf95486e87fa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: bf7dfc2600c3d94faeb8d03561f6f2b30a0ee2d2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="pool-create-event"></a>Poolerstellungsereignis
 
@@ -46,54 +46,54 @@ ms.lasthandoff: 10/11/2017
 }
 ```
 
-|Element|Typ|Hinweise|
+|Element|Typ|Notizen|
 |-------------|----------|-----------|
-|id|String|Die ID des Pools.|
-|displayName|String|Der Anzeigename des Pools.|
-|vmSize|String|Die Größe der virtuellen Computer im Pool. Alle virtuellen Computer in einem Pool haben die gleiche Größe. <br/><br/> Informationen zu den verfügbaren Größen von virtuellen Computern für Cloud Services-Pools (Pools, die mit der „CloudServiceConfiguration“-Eigenschaft erstellt wurden) finden Sie unter [Größen für Cloud Services](http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Der Azure Batch-Dienst unterstützt alle Cloud Services-VM-Größen mit Ausnahme von `ExtraSmall`.<br/><br/> Informationen zu verfügbaren VM-Größen für Pools, die Images aus Virtual Machines Marketplace verwenden (Pools, die mit der „VirtualMachineConfiguration“-Eigenschaft erstellt wurden), finden Sie unter [Größen für virtuelle Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) oder [Größen für virtuelle Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows). Batch unterstützt alle Größen von Azure-VMs mit Ausnahme von `STANDARD_A0` und Größen mit Storage Premium (Serien `STANDARD_GS`, `STANDARD_DS` und `STANDARD_DSV2`).|
+|id|Zeichenfolge|Die ID des Pools.|
+|displayName|Zeichenfolge|Der Anzeigename des Pools.|
+|vmSize|Zeichenfolge|Die Größe der virtuellen Computer im Pool. Alle virtuellen Computer in einem Pool haben die gleiche Größe. <br/><br/> Informationen zu den verfügbaren Größen von virtuellen Computern für Cloud Services-Pools (Pools, die mit der „CloudServiceConfiguration“-Eigenschaft erstellt wurden) finden Sie unter [Größen für Cloud Services](http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Der Azure Batch-Dienst unterstützt alle Cloud Services-VM-Größen mit Ausnahme von `ExtraSmall`.<br/><br/> Informationen zu verfügbaren VM-Größen für Pools, die Images aus Virtual Machines Marketplace verwenden (Pools, die mit der „VirtualMachineConfiguration“-Eigenschaft erstellt wurden), finden Sie unter [Größen für virtuelle Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) oder [Größen für virtuelle Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows). Batch unterstützt alle Größen von Azure-VMs mit Ausnahme von `STANDARD_A0` und Größen mit Storage Premium (Serien `STANDARD_GS`, `STANDARD_DS` und `STANDARD_DSV2`).|
 |[cloudServiceConfiguration](#bk_csconf)|Komplexer Typ|Die Clouddienstkonfiguration des Pools.|
 |[virtualMachineConfiguration](#bk_vmconf)|Komplexer Typ|Die VM-Konfiguration des Pools.|
 |[networkConfiguration](#bk_netconf)|Komplexer Typ|Die Netzwerkkonfiguration des Pools.|
-|resizeTimeout|Time|Das Timeout für die Zuweisung von Computeknoten zum Pool, das für den letzten Größenänderungsvorgang für den Pool angegeben wird.  (Die anfängliche Größe bei der Poolerstellung zählt als eine Größenänderung.)|
+|resizeTimeout|Zeit|Das Timeout für die Zuweisung von Computeknoten zum Pool, das für den letzten Größenänderungsvorgang für den Pool angegeben wird.  (Die anfängliche Größe bei der Poolerstellung zählt als eine Größenänderung.)|
 |targetDedicated|Int32|Die Anzahl der Computeknoten, die für den Pool angefordert werden.|
 |enableAutoScale|Bool|Gibt an, ob die Poolgröße mit der Zeit automatisch angepasst wird.|
 |enableInterNodeCommunication|Bool|Gibt an, ob der Pool für eine direkte Kommunikation zwischen Knoten eingerichtet ist.|
 |isAutoPool|Bool|Gibt an, ob der Pool über den AutoPool-Mechanismus eines Auftrags erstellt wurde.|
 |maxTasksPerNode|Int32|Die maximale Anzahl von Tasks, die gleichzeitig auf einem einzelnen Computeknoten im Pool ausgeführt werden können.|
-|vmFillType|String|Definiert, wie vom Batch-Dienst Tasks zwischen den Computeknoten im Pool verteilt werden. Gültige Werte sind „Spread“ oder „Pack“.|
+|vmFillType|Zeichenfolge|Definiert, wie vom Batch-Dienst Tasks zwischen den Computeknoten im Pool verteilt werden. Gültige Werte sind „Spread“ oder „Pack“.|
 
 ###  <a name="bk_csconf"></a> cloudServiceConfiguration
 
-|Elementname|Typ|Hinweise|
+|Elementname|Typ|Notizen|
 |------------------|----------|-----------|
-|osFamily|String|Die Azure-Gastbetriebssystemfamilie, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Mögliche Werte:<br /><br /> **2**: Betriebssystemfamilie 2, gleichbedeutend mit Windows Server 2008 R2 SP1.<br /><br /> **3**: Betriebssystemfamilie 3, gleichbedeutend mit Windows Server 2012.<br /><br /> **4**: Betriebssystemfamilie 4, gleichbedeutend mit Windows Server 2012 R2.<br /><br /> Weitere Informationen finden Sie unter [Azure-Gastbetriebssystemversionen](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
-|targetOSVersion|String|Die Azure-Gastbetriebssystemversion, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Der Standardwert ist **\***, der die aktuelle Betriebssystemversion für die angegebene Familie angibt.<br /><br /> Andere zulässige Werte finden Sie unter [Azure-Gastbetriebssystemversionen](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|osFamily|Zeichenfolge|Die Azure-Gastbetriebssystemfamilie, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Mögliche Werte:<br /><br /> **2**: Betriebssystemfamilie 2, gleichbedeutend mit Windows Server 2008 R2 SP1.<br /><br /> **3**: Betriebssystemfamilie 3, gleichbedeutend mit Windows Server 2012.<br /><br /> **4**: Betriebssystemfamilie 4, gleichbedeutend mit Windows Server 2012 R2.<br /><br /> Weitere Informationen finden Sie unter [Azure-Gastbetriebssystemversionen](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|targetOSVersion|Zeichenfolge|Die Azure-Gastbetriebssystemversion, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Der Standardwert ist **\***, der die aktuelle Betriebssystemversion für die angegebene Familie angibt.<br /><br /> Andere zulässige Werte finden Sie unter [Azure-Gastbetriebssystemversionen](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 
 ###  <a name="bk_vmconf"></a> virtualMachineConfiguration
 
-|Elementname|Typ|Hinweise|
+|Elementname|Typ|Notizen|
 |------------------|----------|-----------|
 |[imageReference](#bk_imgref)|Komplexer Typ|Gibt Informationen zur Plattform oder das zu verwendende Marketplace-Image an.|
-|nodeAgentSKUId|String|Die SKU des Batch-Knoten-Agents, die auf dem Computeknoten bereitgestellt ist.|
+|nodeAgentSKUId|Zeichenfolge|Die SKU des Batch-Knoten-Agents, die auf dem Computeknoten bereitgestellt ist.|
 |[windowsConfiguration](#bk_winconf)|Komplexer Typ|Gibt die Einstellungen des Windows-Betriebssystems auf dem virtuellen Computer an. Diese Eigenschaft darf nicht angegeben werden, wenn „ImageReference“ auf ein Linux-Betriebssystemimage verweist.|
 
 ###  <a name="bk_imgref"></a> imageReference
 
-|Elementname|Typ|Hinweise|
+|Elementname|Typ|Notizen|
 |------------------|----------|-----------|
-|Herausgeber|String|Gibt den Herausgeber des Images an.|
-|offer|String|Das Angebot des Images.|
-|sku|String|Die SKU des Images.|
-|Version|String|Die Version des Images.|
+|Herausgeber|Zeichenfolge|Gibt den Herausgeber des Images an.|
+|offer|Zeichenfolge|Das Angebot des Images.|
+|sku|Zeichenfolge|Die SKU des Images.|
+|Version|Zeichenfolge|Die Version des Images.|
 
 ###  <a name="bk_winconf"></a> windowsConfiguration
 
-|Elementname|Typ|Hinweise|
+|Elementname|Typ|Notizen|
 |------------------|----------|-----------|
-|enableAutomaticUpdates|Boolean|Gibt an, ob der virtuelle Computer für automatische Updates aktiviert ist. Wenn diese Eigenschaft nicht angegeben wird, ist der Standardwert TRUE.|
+|enableAutomaticUpdates|Boolescher Wert|Gibt an, ob der virtuelle Computer für automatische Updates aktiviert ist. Wenn diese Eigenschaft nicht angegeben wird, ist der Standardwert TRUE.|
 
 ###  <a name="bk_netconf"></a> networkConfiguration
 
-|Elementname|Typ|Hinweise|
+|Elementname|Typ|Notizen|
 |------------------|--------------|----------|
-|subnetId|String|Gibt den Ressourcenbezeichner des Subnetzes an, in dem die Computeknoten des Pools erstellt werden.|
+|subnetId|Zeichenfolge|Gibt den Ressourcenbezeichner des Subnetzes an, in dem die Computeknoten des Pools erstellt werden.|

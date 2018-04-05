@@ -1,26 +1,26 @@
 ---
 title: Erstellen einer Entwicklungspipeline in Azure mit Jenkins | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie in Azure einen virtuellen Computer von Jenkins erstellen können, der bei jedem Codecommit Pullvorgänge aus GitHub durchführt und einen neuen Docker-Container zum Ausführen Ihrer Anwendung erstellt."
+description: Erfahren Sie, wie Sie in Azure einen virtuellen Computer von Jenkins erstellen können, der bei jedem Codecommit Pullvorgänge aus GitHub durchführt und einen neuen Docker-Container zum Ausführen Ihrer Anwendung erstellt.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/15/2017
+ms.date: 03/27/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8a595ead7da8dfa5544903bd698bfdff40555eb9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9250e40c491257b554333f4606cbf0b476d8db21
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>So erstellen Sie in Azure eine Entwicklungsinfrastruktur auf einem virtuellen Linux-Computer mit Jenkins, GitHub und Docker
 Sie können zum Automatisieren der Erstellungs- und Testphase der Anwendungsentwicklung eine Pipeline für Continuous Integration und Deployment (CI/CD) verwenden. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline auf einer Azure-VM und erfahren, wie Sie:
@@ -64,7 +64,6 @@ runcmd:
   - curl -sSL https://get.docker.com/ | sh
   - usermod -aG docker azureuser
   - usermod -aG docker jenkins
-  - touch /var/lib/jenkins/jenkins.install.InstallUtil.lastExecVersion
   - service jenkins restart
 ```
 
@@ -118,10 +117,13 @@ Sollte die Datei noch nicht verfügbar sein, warten Sie noch einige Minuten, bis
 
 Öffnen Sie anschließend einen Webbrowser, und gehen Sie zu `http://<publicIps>:8080`. Schließen Sie das anfängliche Jenkins-Setup wie folgt ab:
 
-- Geben Sie den Benutzernamen **admin** und dann das *initialAdminPassword* ein, das Sie im vorherigen Schritt von der VM abgerufen haben.
-- Wählen Sie **Manage Jenkins** (Jenkins verwalten) und dann **Manage plugins** (Plug-Ins verwalten) aus.
-- Wählen Sie **Available** (Verfügbar) aus, und suchen Sie im Textfeld oben nach *GitHub*. Aktivieren Sie das Kontrollkästchen für *GitHub plugin*, und wählen Sie dann **Download now and install after restart** (Jetzt herunterladen und nach Neustart installieren) aus.
-- Aktivieren Sie das Kontrollkästchen **Restart Jenkins when installation is complete and no jobs are running** (Jenkins neu starten, wenn die Installation abgeschlossen ist und keine Aufträge ausgeführt werden), und warten Sie, bis die Plug-In-Installation abgeschlossen ist.
+- Wählen Sie **Select plugins to install** (Zu installierende Plug-Ins auswählen).
+- Suchen Sie im Textfeld im oberen Bereich nach *GitHub*. Aktivieren Sie das Kontrollkästchen für *GitHub*, und klicken Sie anschließend auf **Installieren**.
+- Erstellen Sie den ersten Administratorbenutzer. Geben Sie einen Benutzernamen (beispielsweise **admin**) und anschließend ein sicheres Kennwort ein. Geben Sie abschließend einen vollständigen Namen und eine E-Mail-Adresse an.
+- Klicken Sie auf **Speichern und Beenden**.
+- Klicken Sie auf **Start using Jenkins** (Jenkins verwenden), sobald Jenkins bereit ist.
+  - Sollte in Ihrem Browser beim Start von Jenkins eine leere Seite angezeigt werden, starten Sie den Jenkins-Dienst neu. Geben Sie in Ihrer SSH-Sitzung `sudo service jenkins restart` ein, und aktualisieren Sie anschließend Ihren Webbrowser.
+- Melden Sie sich mit dem erstellten Benutzernamen und Kennwort bei Jenkins an.
 
 
 ## <a name="create-github-webhook"></a>Erstellen eines GitHub-Webhooks
@@ -139,13 +141,13 @@ Erstellen eines Webhooks in der von Ihnen erstellten Verzweigung:
 
 
 ## <a name="create-jenkins-job"></a>Erstellen eines Jenkins-Auftrags
-Erstellen Sie einen Jenkins-Auftrag, damit Jenkins auf ein Ereignis in GitHub, wie z.B. das Entwickeln von Code, reagieren kann. 
+Erstellen Sie einen Jenkins-Auftrag, damit Jenkins auf ein Ereignis in GitHub, wie z.B. das Entwickeln von Code, reagieren kann. Verwenden Sie die URLs für Ihre eigene GitHub-Verzweigung.
 
 Klicken Sie auf Ihrer Jenkins-Website auf der Startseite auf **Create new jobs** (Neue Aufträge erstellen):
 
 - Geben Sie *HelloWorld* als den Namen des Auftrags ein. Wählen Sie **Freestyle Project** und anschließend **OK** aus.
-- Wählen Sie im Bereich **Allgemein** das Projekt **GitHub** aus, und geben Sie die URL Ihres verzweigten Repositorys ein. Eine derartige URL kann z.B. so aussehen: *https://github.com/iainfoulds/nodejs-docs-hello-world*
-- Wählen Sie im Bereich **Quellcodeverwaltung** **Git** aus, und geben Sie die *git*-URL Ihres verzweigten Repositorys ein. Eine derartige URL kann z.B. so aussehen: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*
+- Wählen Sie im Abschnitt **Allgemein** die Option für **GitHub-Projekt** aus, und geben Sie die URL Ihres verzweigten Repositorys ein (beispielsweise *https://github.com/iainfoulds/nodejs-docs-hello-world*).
+- Wählen Sie im Bereich **Quellcodeverwaltung** die Option **Git** aus, und geben Sie die URL vom Typ *.git* Ihres verzweigten Repositorys ein. Beispiel: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*
 - Wählen Sie im Bereich **Build Triggers** (Trigger erstellen) die Option **GitHub hook trigger for GITScm polling** (GitHub-Hooktrigger für GITScm-Abruf) aus.
 - Wählen Sie im Abschnitt **Build** die Option **Buildschritt hinzufügen** aus. Wählen Sie **Execute shell** (Shell ausführen) aus, und geben Sie dann `echo "Testing"` im Befehlsfenster ein.
 - Wählen Sie unten auf der Auftragsseite **Speichern** aus.

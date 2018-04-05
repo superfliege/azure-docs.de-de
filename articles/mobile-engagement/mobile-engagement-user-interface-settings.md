@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement – Benutzeroberfläche - Einstellungen"
+title: Azure Mobile Engagement – Benutzeroberfläche - Einstellungen
 description: Informationen zum Verwalten der globalen Einstellungen Ihrer Anwendung mithilfe von Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 858f4cb4-14de-4bb5-826f-28cadbfc928b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31df9f151febcb7e5f0f2cd4a83053b3aac416a3
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-global-settings-of-your-application"></a>Verwaltung der globalen Einstellungen Ihrer Anwendung
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Die verfügbaren Optionen im Menü **Einstellungen** für eine Anwendung variieren abhängig von der Plattform der Anwendung und den Berechtigungen, die Sie der Anwendung erteilt haben. Dazu zählen: Details, Projekte, Systemeigener Push, Pushgeschwindigkeit, Tag (App-Info) und Kommerzieller Druck. Die Menüoption „Tag“ (App-Info) im Abschnitt „Einstellungen“ kann von der Anwendung (mithilfe des SDK) oder von Ihrem Back-End (mithilfe der Device-API) verwaltet werden. 
 
 > [!NOTE]
@@ -64,7 +68,7 @@ Um systemeigenen Push mit dem Windows-Pushbenachrichtigungsdienst zu aktivieren,
 ### <a name="google-cloud-messaging-for-android-gcm"></a>Google Cloud Messaging (GCM) für Android
 Um systemeigenen Push über GCM zu aktivieren, müssen Sie den Anweisungen von Google folgen. Dann müssen einen "Server::Simple"-API-Schlüssel einfügen, der ohne IP-Einschränkungen konfiguriert ist. Erfordert Integration mit dem SDK für Android ab Version 1.12.0.
 
-Weitere Informationen finden Sie unter: 
+Weitere Informationen finden Sie unter  
 
 * [SDK-Dokumentation – Android – Integrieren von GCM][Link 5]
 * [Google Developer-Handbuch für GCM](http://developer.android.com/guide/google/gcm/gs.html)
@@ -72,7 +76,7 @@ Weitere Informationen finden Sie unter:
 ### <a name="amazon-device-messaging-for-android-adm"></a>Amazon Device Messaging (ADM) für Android
 Zum Aktivieren von systemeigenem Push mit ADM müssen Sie Amazon-<OAuth credentials> angeben, bestehend aus einer Client-ID und einem Clientschlüssel (erfordert die Integration mit dem SDK für Android ab Version 2.1.0).
 
-Weitere Informationen finden Sie unter: 
+Weitere Informationen finden Sie unter  
 
 * [SDK-Dokumentation – Android – Integrieren von ADM][Link 5]
 * [Amazon Developer-ADM-Dokumentation](https://developer.amazon.com/sdk/adm/credentials.html#Getting)
@@ -90,7 +94,7 @@ Zeigt die aktuelle Pushgeschwindigkeit Ihrer Anwendung und ermöglicht Ihnen, di
 ## <a name="commercial-pressure"></a>Kommerzieller Druck
 ![settings12][57]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Konzepte][Link 6]
 * [Handbuch zur Problembehandlung – Dienst][Link 24]
 

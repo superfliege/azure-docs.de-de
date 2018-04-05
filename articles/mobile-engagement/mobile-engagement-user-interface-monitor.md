@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement - Benutzeroberfläche – Überwachen"
-description: "Informationen zum Überwachen von Echtzeitdaten zu Ihrer Anwendung mithilfe von Azure Mobile Engagement"
+title: Azure Mobile Engagement - Benutzeroberfläche – Überwachen
+description: Informationen zum Überwachen von Echtzeitdaten zu Ihrer Anwendung mithilfe von Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b91ad89a-b89d-4377-abb0-cc2d16a2836d
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 5f8a02e35db93585e0fe46d77b3ad18b94c99597
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b370a5db1acee37ce234f5ec3f004be20719cfea
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-monitor-real-time-data-about-your-application"></a>Gewusst wie: Überwachen von Echtzeitdaten zu Ihrer Anwendung
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 In diesem Artikel wird die Registerkarte **ÜBERWACHEN** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das **Mobile Engagement** -Portal, um Ihre mobilen Apps zu überwachen und zu verwalten. Beachten Sie, dass Sie zur Verwendung des Portals zuerst ein **Azure Mobile Engagement** -Konto erstellen müssen. 
 
 Der Abschnitt „Überwachen“ der Benutzeroberfläche enthält Informationen für Echtzeitanalysen und ermöglicht das Festlegen von Warnungen, wenn Schwellenwerte für die meisten der Informationen erreicht werden, die auch im Abschnitt [ANALYSE](mobile-engagement-user-interface-analytics.md) der Benutzeroberfläche verfügbar sind. Der Abschnitt **Glossar** im Thema [Konzepte](http://go.microsoft.com/fwlink/?LinkId=525555) enthält die Definitionen der Begriffe und Abkürzungen für Analyse und Überwachung. Beispiele: aktiver Benutzer, neuer Benutzer, vermerkter Benutzer, Sitzung, Benutzerpfaddiagramm, Benutzerzuordnung, Nachverfolgungs-URLs, Trends, Aktivität, Ereignis, Auftrag, Fehler, zusätzliche Informationen, Absturz und App-Info.

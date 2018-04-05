@@ -1,8 +1,8 @@
 ---
-title: "Überwachen eines Azure Storage-Kontos | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie ein Speicherkonto in Azure mithilfe des Azure-Portals überwacht wird."
+title: Überwachen eines Azure Storage-Kontos | Microsoft-Dokumentation
+description: Erfahren Sie, wie ein Speicherkonto in Azure mithilfe des Azure-Portals überwacht wird.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tamram
-ms.openlocfilehash: 20cb425b64bfba06d64b3c6c41f9ef496395ad8e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ffc7d46bbfa4db47a47e416c395efdfc451cadc1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 
@@ -28,8 +28,6 @@ ms.lasthandoff: 01/24/2018
 > Für die Untersuchung von Überwachungsdaten im Azure-Portal fallen Kosten an. Weitere Informationen finden Sie unter [Speicheranalyse und Speicheranalysekosten](/rest/api/storageservices/Storage-Analytics-and-Billing).
 >
 > Azure Files unterstützt derzeit Storage Analytics-Metriken, allerdings noch keine Protokollierung.
->
-> Speicherkonten vom Replikationstyp zonenredundanter Speicher (ZRS) unterstützen Metriken und Protokollierungen. Die vorherigen ZRS-Konten, die in „ZRS Classic“ umbenannt wurden, bieten keine Unterstützung für Metriken oder Protokollierungen. Weitere Informationen zu ZRS finden Sie unter [Zonenredundanter Speicher](storage-redundancy.md#zone-redundant-storage). 
 > 
 > Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](../storage-monitoring-diagnosing-troubleshooting.md).
 >
@@ -150,7 +148,7 @@ Sie können Azure Storage anweisen, Diagnoseprotokolle für Lese-, Schreib- und 
     ![Konfigurieren Sie die Protokollierung im Azure-Portal.](./media/storage-monitor-storage-account/stg-enable-logging-01.png)
 1. Klicken Sie auf **Speichern**.
 
-Die Diagnoseprotokolle werden in einem Blob-Container namens $logs in Ihren Speicherkonto gespeichert. Sie können die Protokolldaten über einen Speicher-Explorer wie den [Microsoft Speicher-Explorer](http://storageexplorer.com) oder programmgesteuert mit der Speicherclientbibliothek oder PowerShell anzeigen.
+Die Diagnoseprotokolle werden in einem Blob-Container namens $logs in Ihren Speicherkonto gespeichert. Sie können die Protokolldaten über einen Storage-Explorer wie den [Microsoft Storage-Explorer](http://storageexplorer.com) oder programmgesteuert mit der Speicherclientbibliothek oder PowerShell anzeigen.
 
 Informationen zum Zugreifen auf den Container $logs finden Sie unter [Enabling Storage Logging and Accessing Log Data](/rest/api/storageservices/enabling-storage-logging-and-accessing-log-data) (Aktivieren der Speicherprotokolierung und Zugreifen auf Protokolldaten).
 

@@ -1,6 +1,6 @@
 ---
-title: "Einführung in die Web Application Firewall (WAF) für Azure Application Gateway | Microsoft-Dokumentation"
-description: "Diese Seite enthält eine Übersicht über die Web Application Firewall (WAF) für Application Gateway."
+title: Einführung in die Web Application Firewall (WAF) für Azure Application Gateway | Microsoft-Dokumentation
+description: Diese Seite enthält eine Übersicht über die Web Application Firewall (WAF) für Application Gateway.
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
-ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3945436a369f624ccb1d862b9623b8cfb1ed376
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="web-application-firewall-waf"></a>Web Application Firewall (WAF)
 
@@ -44,7 +44,7 @@ Application Gateway und Web Application Firewall bieten folgende zentrale Vortei
 
 * Überwachen Sie Ihre Webanwendung zum Schutz vor Angriffen mithilfe eines WAF-Echtzeitprotokolls. Dieses Protokoll ist in [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) integriert und dient zum Nachverfolgen von WAF-Warnungen und -protokollen sowie zum Überwachen von Trends.
 
-* Die WAF wird demnächst in Azure Security Center integriert. Mit Azure Security Center können Sie sich an einem zentralen Ort über den Sicherheitsstatus sämtlicher Azure-Ressourcen informieren.
+* WAF lässt sich in Azure Security Center integrieren. Mit Azure Security Center können Sie sich an einem zentralen Ort über den Sicherheitsstatus sämtlicher Azure-Ressourcen informieren.
 
 ### <a name="customization"></a>Anpassung
 
@@ -72,7 +72,7 @@ Application Gateway unterstützt zwei Regelsätze: CRS 3.0 und CRS 2.2.9. Bei di
 
 Version 3.0 des Kernregelsatzes umfasst 13 Regelgruppen, wie in der folgenden Tabelle zu sehen. Jede dieser Regelgruppen enthält mehrere deaktivierbare Regeln.
 
-|Regelgruppe|Beschreibung|
+|Regelgruppe|BESCHREIBUNG|
 |---|---|
 |**[REQUEST-910-IP-REPUTATION](application-gateway-crs-rulegroups-rules.md#crs910)**|Enthält Regeln zum Schutz vor bekannten Spammern oder schädlichen Aktivitäten.|
 |**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|Enthält Regeln zum Sperren von Methoden (PUT, PATCH< ..).|
@@ -92,7 +92,7 @@ Version 3.0 des Kernregelsatzes umfasst 13 Regelgruppen, wie in der folgenden Ta
 
 Version 2.2.9 des Kernregelsatzes umfasst zehn Regelgruppen, wie in der folgenden Tabelle zu sehen. Jede dieser Regelgruppen enthält mehrere deaktivierbare Regeln.
 
-|Regelgruppe|Beschreibung|
+|Regelgruppe|BESCHREIBUNG|
 |---|---|
 |**[crs_20_protocol_violations](application-gateway-crs-rulegroups-rules.md#crs20)**|Enthält Regeln zum Schutz vor Protokollverletzungen (etwa durch ungültige Zeichen, GET mit einem Anforderungstext und Ähnliches).|
 |**[crs_21_protocol_anomalies](application-gateway-crs-rulegroups-rules.md#crs21)**|Enthält Regeln zum Schutz vor falschen Headerinformationen.|
@@ -114,7 +114,7 @@ Die Application Gateway-WAF kann für die Ausführung in den folgenden beiden Mo
 
 ### <a name="application-gateway-waf-reports"></a>WAF-Überwachung
 
-Die Integrität Ihres Anwendungsgateways sollte unbedingt überwacht werden. Die Überwachung der Integrität Ihrer Web Application Firewall und der durch sie geschützten Anwendungen wird mittels Protokollierung und Integration in Azure Monitor, Azure Security Center (demnächst verfügbar) und Log Analytics erreicht.
+Die Integrität Ihres Anwendungsgateways sollte unbedingt überwacht werden. Die Überwachung der Integrität Ihrer Web Application Firewall und der durch sie geschützten Anwendungen wird mittels Protokollierung und Integration in Azure Monitor, Azure Security Center und Log Analytics erreicht.
 
 ![Diagnose](./media/application-gateway-web-application-firewall-overview/diagnostics.png)
 
@@ -124,7 +124,7 @@ Jedes Anwendungsgatewayprotokoll ist in [Azure Monitor](../monitoring-and-diagno
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../security-center/security-center-intro.md) unterstützt Sie beim Verhindern, Erkennen und Beheben von Bedrohungen durch größere Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Das Anwendungsgateway ist jetzt [in Azure Security Center integriert](application-gateway-integration-security-center.md). Azure Security Center scannt die Umgebung, um ungeschützte Webanwendungen zu ermitteln. Es kann jetzt eine WAF für das Anwendungsgateway empfohlen werden, um diese ungeschützten Ressourcen zu schützen. Sie können die WAF für das Anwendungsgateway direkt aus dem Azure Security Center erstellen.  Diese WAF-Instanzen sind in Azure Security Center integriert und senden Warnungen und Integritätsinformationen für die Berichtserstellung zurück an Azure Security Center.
+[Azure Security Center](../security-center/security-center-intro.md) unterstützt Sie beim Verhindern, Erkennen und Beheben von Bedrohungen durch größere Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Das Anwendungsgateway [lässt sich in Azure Security Center integrieren](application-gateway-integration-security-center.md). Azure Security Center scannt die Umgebung, um ungeschützte Webanwendungen zu ermitteln. Es kann jetzt eine WAF für das Anwendungsgateway empfohlen werden, um diese ungeschützten Ressourcen zu schützen. Sie können die WAF für das Anwendungsgateway direkt aus dem Azure Security Center erstellen.  Diese WAF-Instanzen sind in Azure Security Center integriert und senden Warnungen und Integritätsinformationen für die Berichtserstellung zurück an Azure Security Center.
 
 ![Abbildung 1](./media/application-gateway-web-application-firewall-overview/figure1.png)
 

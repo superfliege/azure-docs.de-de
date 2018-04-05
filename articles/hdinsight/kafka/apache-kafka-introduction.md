@@ -1,8 +1,8 @@
 ---
-title: "Einführung in Apache Kafka in HDInsight – Azure | Microsoft-Dokumentation"
-description: "Informationen zu Apache Kafka in HDInsight: Es wird beschrieben, worum es sich handelt, welche Funktion erfüllt wird und wo Sie Beispiele und Informationen zu den ersten Schritten finden."
+title: Einführung in Apache Kafka in HDInsight – Azure | Microsoft-Dokumentation
+description: 'Informationen zu Apache Kafka in HDInsight: Es wird beschrieben, worum es sich handelt, welche Funktion erfüllt wird und wo Sie Beispiele und Informationen zu den ersten Schritten finden.'
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 35dc83dea7dc1310852437cd7eede32cfa890e8f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4a4f2c6734de211cd20ee4b9f6815bdefefb25bc
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introducing-apache-kafka-on-hdinsight"></a>Einführung in Apache Kafka in HDInsight
 
@@ -31,7 +31,7 @@ Kafka in HDInsight umfasst die folgenden Features:
 
 * __Vereinbarung zum Servicelevel (SLA) mit 99,9 % Verfügbarkeit von Kafka__: Weitere Informationen finden Sie im Dokument [SLA für HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
-* __Fehlertoleranz und Rackinformationen__: Kafka basiert auf einem Konzept mit einem eindimensionalen Rack, das in bestimmten Umgebungen gut funktioniert. Doch in Umgebungen wie Azure ist ein Rack in zwei Dimensionen unterteilt – in Updatedomänen (UDs) und Fehlerdomänen (FDs). Microsoft stellt Tools bereit, mit denen sichergestellt werden kann, dass für Kafka-Partitionen und -Replikate in Bezug auf die UDs und FDs ein Ausgleich erzielt wird. 
+* __Fehlertoleranz__: Kafka basiert auf einem Konzept mit einem eindimensionalen Rack, das in bestimmten Umgebungen gut funktioniert. Doch in Umgebungen wie Azure ist ein Rack in zwei Dimensionen unterteilt – in Updatedomänen (UDs) und Fehlerdomänen (FDs). Microsoft stellt Tools bereit, mit denen für Kafka-Partitionen und -Replikate in Bezug auf die UDs und FDs ein Ausgleich erzielt werden kann. 
 
     Weitere Informationen finden Sie unter [Hohe Verfügbarkeit Ihrer Daten mit Apache Kafka in HDInsight](apache-kafka-high-availability.md).
 

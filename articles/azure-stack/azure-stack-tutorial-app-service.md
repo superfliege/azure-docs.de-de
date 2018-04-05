@@ -1,29 +1,28 @@
 ---
-title: "Verfügbarmachen von Web- und API-Apps für Ihre Azure Stack-Benutzer | Microsoft-Dokumentation"
-description: "Tutorial zum Installieren des App Service-Ressourcenanbieters und zum Erstellen von Angeboten, die es Ihren Azure Stack-Benutzern ermöglichen, Web- und API-Apps zu erstellen"
+title: Verfügbarmachen von Web- und API-Apps für Ihre Azure Stack-Benutzer | Microsoft-Dokumentation
+description: Tutorial zum Installieren des App Service-Ressourcenanbieters und zum Erstellen von Angeboten, die es Ihren Azure Stack-Benutzern ermöglichen, Web- und API-Apps zu erstellen
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 7/03/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2018
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 5978706f2cab69c83a49bfd0e15ae904a38c7bab
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: e2f15ca3a46af51ab6228e772298c51ad33fd49c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Verfügbarmachen von Web- und API-Apps für Ihre Azure Stack-Benutzer
-
 Als Azure Stack-Cloudadministrator können Sie Angebote erstellen, die es Ihren Benutzern (Mandanten) ermöglichen, Azure Functions und Web- und API-Anwendungen zu erstellen. Die Bereitstellung des Zugriffs auf diese bedarfsgesteuerten, cloudbasierten Apps für Ihre Benutzer spart diesen Zeit und Ressourcen. Für die Einrichtung führen Sie folgende Aktionen durch:
 
 > [!div class="checklist"]
@@ -58,7 +57,7 @@ Sie können beispielsweise ein Angebot erstellen, das es Benutzern ermöglicht, 
 Da Sie den App Service-Ressourcenanbieter nun bereitgestellt und ein Angebot erstellt haben, können Sie sich nun als Benutzer anmelden, das Angebot abonnieren und eine App erstellen. In diesem Beispiel wird ein DNN-System für die Verwaltung von Plattforminhalten erstellt. Erstellen Sie zuerst eine SQL-Datenbank und dann die DNN-Web-App.
 
 ### <a name="subscribe-to-the-offer"></a>Abonnieren des Angebots
-1. Melden Sie sich im Azure Stack-Portal (https://portal.local.azurestack.external) als Mandant an.
+1. Melden Sie sich als Mandant beim Azure Stack-Portal (https://portal.local.azurestack.external)) an.
 2. Klicken Sie auf **Abonnement erwerben**, und geben Sie **TestAppServiceSubscription** unter **Anzeigename** > **Angebot auswählen** > **TestAppServiceOffer** > **Erstellen** ein.
 
 ### <a name="create-a-sql-database"></a>Erstellen einer SQL-Datenbank

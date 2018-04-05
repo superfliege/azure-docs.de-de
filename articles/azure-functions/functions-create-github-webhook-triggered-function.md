@@ -1,26 +1,26 @@
 ---
-title: "Erstellen einer Funktion in Azure, die durch einen GitHub-Webhook ausgelöst wird | Microsoft-Dokumentation"
+title: Erstellen einer Funktion in Azure, die durch einen GitHub-Webhook ausgelöst wird | Microsoft-Dokumentation
 description: Erstellen Sie mithilfe von Azure Functions eine serverlose Funktion, die durch einen GitHub-Webhook aufgerufen wird.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 36ef34b8-3729-4940-86d2-cb8e176fcc06
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 03/28/2018
 ms.author: glenga
-ms.custom: mvc
-ms.openlocfilehash: 98632c3276e7d9cccf29d05b903c2fac62a7d68e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.custom: mvc, cc996988-fb4f-47
+ms.openlocfilehash: 05ad567e407a6506222acdb66ab38c4cfab76e4b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>Erstellen einer Funktion, die durch einen GitHub-Webhook ausgelöst wird
 
@@ -32,8 +32,6 @@ Erfahren Sie, wie Sie eine Funktion erstellen können, die von einer HTTP-Webhoo
 
 + Ein GitHub-Konto mit mindestens einem Projekt.
 + Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
 ## <a name="create-an-azure-function-app"></a>Erstellen einer Azure Function-App
 
@@ -69,11 +67,15 @@ Erstellen Sie als Nächstes einen Webhook in Ihrem GitHub-Repository.
 
 1. Navigieren Sie in GitHub zu einem Repository, das Sie besitzen. Sie können auch ein anderes Repository verwenden, das Sie verzweigt haben. Verwenden Sie <https://github.com/Azure-Samples/functions-quickstart>, wenn Sie ein Repository forken müssen.
 
-1. Klicken Sie auf **Einstellungen** > **Webhooks** > **Webhook hinzufügen**.
+2. Wählen Sie **Einstellungen** > **Optionen**, und stellen Sie sicher, dass **Probleme** unter **Funktionen** aktiviert ist.
+
+   ![„Probleme“ aktivieren](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook.png)
+
+1. Wählen Sie in den **Einstellungen** die Option **Webhooks** > **Webhook hinzufügen**.
 
     ![Hinzufügen eines GitHub-Webhooks](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-2.png)
 
-1. Verwenden Sie die in der Tabelle angegebenen Einstellungen, und klicken Sie anschließend auf **Webhook hinzufügen**.
+1. Verwenden Sie die in der folgenden Tabelle angegebenen Einstellungen, und klicken Sie anschließend auf **Webhook hinzufügen**:
 
     ![Hinzufügen der Webhook-URL und Festlegen des Geheimnisses](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-3.png)
 

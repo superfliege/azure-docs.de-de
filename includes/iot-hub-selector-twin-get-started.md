@@ -7,6 +7,8 @@
 
 Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metadaten, Konfigurationen und Bedingungen) gespeichert werden. Von IoT Hub wird für jedes Gerät, das eine Verbindung herstellt, dauerhaft ein Gerätezwilling gespeichert.
 
+[!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
+
 Verwenden Sie Gerätezwillinge für Folgendes:
 
 * Speichern von Gerätemetadaten von Ihrem Lösungs-Back-End
@@ -14,8 +16,7 @@ Verwenden Sie Gerätezwillinge für Folgendes:
 * Synchronisieren des Zustands von Workflows mit langer Ausführungsdauer (z.B. Firmware- und Konfigurationsupdates) zwischen einer Geräte-App und einer Back-End-App
 * Abfragen von Metadaten, Konfiguration oder Status des Geräts
 
-> [!NOTE]
-> Gerätezwillinge sind für die Synchronisierung und zum Abfragen von Gerätekonfigurationen und -bedingungen ausgelegt. Weitere Informationen dazu, wann Sie Gerätezwillinge verwenden sollten, finden Sie unter [Grundlegendes zu Gerätezwillingen][lnk-twins].
+Gerätezwillinge sind für die Synchronisierung und zum Abfragen von Gerätekonfigurationen und -bedingungen ausgelegt. Weitere Informationen dazu, wann Sie Gerätezwillinge verwenden sollten, finden Sie unter [Grundlegendes zu Gerätezwillingen][lnk-twins].
 
 Gerätezwillinge werden in einem IoT Hub gespeichert und enthalten Folgendes:
 

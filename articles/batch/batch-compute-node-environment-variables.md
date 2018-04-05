@@ -1,22 +1,22 @@
 ---
-title: "Umgebungsvariablen für Azure Batch-Computeknoten | Microsoft-Dokumentation"
-description: "Referenz zu Umgebungsvariablen für Computeknoten für Azure Batch-Analysen."
+title: Umgebungsvariablen für Azure Batch-Computeknoten | Microsoft-Dokumentation
+description: Referenz zu Umgebungsvariablen für Computeknoten für Azure Batch-Analysen.
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 05/05/2017
-ms.author: tamram
-ms.openlocfilehash: 29f642754430957e77ef68946f721f8e15dba065
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: ca8d6a6484cd1f145e7d807681bf2d012f2399e0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-batch-compute-node-environment-variables"></a>Umgebungsvariablen für Azure Batch-Computeknoten
 Der [Azure Batch-Dienst](https://azure.microsoft.com/services/batch/) legt die folgenden Umgebungsvariablen für Computeknoten fest. Sie können auf diese Umgebungsvariablen in Taskbefehlszeilen sowie in den Programmen und Skripts verweisen, die über die Befehlszeilen ausgeführt werden.
@@ -37,7 +37,7 @@ Die von Tasks auf Computeknoten angewendeten Befehlszeilen können nicht unter e
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 
-| Variablenname                     | Beschreibung                                                              | Verfügbarkeit | Beispiel |
+| Variablenname                     | BESCHREIBUNG                                                              | Verfügbarkeit | Beispiel |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Der Name des Batch-Kontos, zu dem der Task gehört.                  | Alle Tasks.   | mybatchaccount |
 | AZ_BATCH_CERTIFICATES_DIR       | Ein Verzeichnis im [Taskarbeitsverzeichnis][files_dirs], in dem Zertifikate für Linux-Computeknoten gespeichert werden. Beachten Sie, die diese Umgebungsvariable nicht für Windows-Computeknoten gilt.                                                  | Alle Tasks.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |

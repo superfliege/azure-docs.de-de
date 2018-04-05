@@ -1,26 +1,26 @@
 ---
-title: "Erstellen einer durch Azure Cosmos DB ausgelösten Funktion| Microsoft-Dokumentation"
-description: "Erstellen Sie mithilfe von Azure Functions eine serverlose Funktion, die aufgerufen wird, wenn in Azure Cosmos DB Daten einer Datenbank hinzugefügt werden."
+title: Erstellen einer durch Azure Cosmos DB ausgelösten Funktion| Microsoft-Dokumentation
+description: Erstellen Sie mithilfe von Azure Functions eine serverlose Funktion, die aufgerufen wird, wenn in Azure Cosmos DB Daten einer Datenbank hinzugefügt werden.
 services: azure-functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.service: functions; cosmos-db
 ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/07/2017
+ms.date: 03/27/2018
 ms.author: glenga
-ms.custom: 
-ms.openlocfilehash: 9ee3eddda53052c47f2cecff80f971f5eadac414
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: cc996988-fb4f-47
+ms.openlocfilehash: 60836bd88335dc5c58423bad94b6a95e9782c474
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Erstellen einer durch Azure Cosmos DB ausgelösten Funktion
 
@@ -33,8 +33,6 @@ Informationen zum Erstellen einer Funktion, die ausgelöst wird, wenn in Azure C
 Für dieses Tutorial benötigen Sie Folgendes:
 
 + Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
 ## <a name="create-an-azure-function-app"></a>Erstellen einer Azure Function-App
 
@@ -74,7 +72,7 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
     | Einstellung      | Empfohlener Wert  | BESCHREIBUNG                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | Name der Datenbank | Eindeutige ID für die Azure Cosmos DB-Datenbank  |
-    | **API** | SQL (DocumentDB) | In diesem Thema wird die Dokumentdatenbank-API verwendet.  |
+    | **API** | SQL | In diesem Thema wird die SQL-API verwendet.  |
     | **Abonnement** | Azure-Abonnement | Das Abonnement, unter dem dieses neue Cosmos DB-Konto erstellt wird  |
     | **Ressourcengruppe** | myResourceGroup |  Verwenden Sie die vorhandene Ressourcengruppe, die Ihre Funktions-App enthält. |
     | **Location**  | Europa, Westen | Wählen Sie einen Standort in der Nähe Ihrer Funktions-App oder in der Nähe anderer Apps aus, die die gespeicherten Dokumente verwenden.  |

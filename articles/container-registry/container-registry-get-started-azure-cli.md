@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: db1fb3deec4b70a9341753a59910aeb0e002bca0
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8426d395d294144135c1c11593ecaf7fdc5bee69
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="create-a-container-registry-using-the-azure-cli"></a>Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle
+# <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Schnellstart: Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle
 
 Azure Container Registry ist ein verwalteter Docker-Containerregistrierungsdienst zum Speichern privater Docker-Containerimages. Diese Anleitung enthält ausführliche Informationen zum Erstellen einer Azure Container Registry-Instanz mit der Azure CLI, Übertragen eines Containerimages per Pushvorgang in die Registrierung und Bereitstellen des Containers aus Ihrer Registrierung in Azure Container Instances (ACI).
 
@@ -158,7 +158,7 @@ Führen Sie den folgenden Befehl aus, um Ihr Containerimage mit einem CPU-Kern u
 az container create --resource-group myResourceGroup --name acr-quickstart --image <acrLoginServer>/aci-helloworld:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
 ```
 
-Sie sollten von Azure Resource Manager eine erste Antwort mit Details zu Ihrem Container erhalten. Wiederholen Sie den Befehl [az container show][az-container-show], um den Status Ihres Containers zu überwachen und seine Ausführung zu verfolgen. Dieser Vorgang sollte weniger als eine Minute dauern.
+Sie sollten von Azure Resource Manager eine erste Antwort mit Details zu Ihrem Container erhalten. Wiederholen Sie den Befehl [az container show][az-container-show], um den Status Ihres Containers zu überwachen und seine Ausführung zu verfolgen. Dieser Vorgang dauert normalerweise weniger als eine Minute.
 
 ```azurecli
 az container show --resource-group myResourceGroup --name acr-quickstart --query instanceView.state

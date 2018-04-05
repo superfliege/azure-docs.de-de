@@ -1,6 +1,6 @@
 ---
-title: "Überwachen und Empfangen von Benachrichtigungen zu wichtigen Aktionen im Azure-Abonnement | Microsoft-Dokumentation"
-description: "Verschaffen Sie sich einen Überblick über den Verlauf der Ressourcenverwaltung, die Dienstintegrität und andere Abonnementaktivitäten im Aktivitätsprotokoll, und verwenden Sie dann eine Aktivitätsprotokollwarnung, um eine E-Mail-Benachrichtigung zu erhalten, wenn ein Vorgang mit weitreichenden Berechtigungen in Ihrem Abonnement durchgeführt wird."
+title: Überwachen und Empfangen von Benachrichtigungen zu wichtigen Aktionen im Azure-Abonnement | Microsoft-Dokumentation
+description: Verschaffen Sie sich einen Überblick über den Verlauf der Ressourcenverwaltung, die Dienstintegrität und andere Abonnementaktivitäten im Aktivitätsprotokoll, und verwenden Sie dann eine Aktivitätsprotokollwarnung, um eine E-Mail-Benachrichtigung zu erhalten, wenn ein Vorgang mit weitreichenden Berechtigungen in Ihrem Abonnement durchgeführt wird.
 author: johnkemnetz
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: b0a79f46788dc7efb588110dc50805c45c373a49
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dd04cd9c8074d49df168b32840d12901da83c834
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Überwachen und Empfangen von Benachrichtigungen zu wichtigen Aktionen im Azure-Abonnement
 
@@ -74,7 +74,7 @@ Klicken Sie auf die Registerkarte **JSON**, um die gesamten Ereignisdetails anzu
 
 5. Wählen Sie unter **Warnung über** die Aktionsgruppe **Neu** aus, und geben Sie einen **Namen** und einen **Kurznamen** für die Aktionsgruppe an. Die Aktionsgruppe definiert die Gruppe von Aktionen, die durchgeführt wurde, als die Warnung aktiviert wurde (sofern die Kriterien auf ein neues Ereignis zutreffen).
 
-6. Fügen Sie unter **Aktionen** eine oder mehrere Aktionen hinzu, indem Sie einen **Namen** für die Aktion, den **Aktionstyp** (z.B. E-Mail oder SMS) und **Details** zum jeweiligen Aktionstyp (z.B. eine Webhook-URL, eine E-Mail-Adresse oder eine Telefonnummer für den SMS-Versand) angeben.
+6. Fügen Sie unter **Aktionen** mindestens eine Aktion hinzu, indem Sie unter **Name** einen Namen für die Aktion, unter **Aktionstyp** den Aktionstyp (beispielsweise „E-Mail“, „SMS“ oder „Webhook“) und unter **Details** Details zum jeweiligen Aktionstyp (beispielsweise eine Webhook-URL, eine E-Mail-Adresse oder eine Telefonnummer für den SMS-Versand) angeben.
 
     ![Erstellen einer Netzwerksicherheitsgruppe im Portal](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-alert-actions.png)
 
@@ -83,7 +83,7 @@ Klicken Sie auf die Registerkarte **JSON**, um die gesamten Ereignisdetails anzu
 ## <a name="test-the-activity-log-alert"></a>Testen der Aktivitätsprotokollwarnung
 
 > [!NOTE]
-> Es dauert ungefähr 10 Minuten, bis eine Aktivitätsprotokollwarnung endgültig aktiviert ist. Bei neuen Ereignissen, die auftreten, bevor die Aktivitätsprotokollwarnung endgültig aktiviert ist, werden keine Benachrichtigungen generiert.
+> Eine Aktivitätsprotokollwarnung ist nach etwa fünf Minuten vollständig aktiviert. Bei neuen Ereignissen, die auftreten, bevor die Aktivitätsprotokollwarnung endgültig aktiviert ist, werden keine Benachrichtigungen generiert.
 >
 >
 

@@ -1,5 +1,5 @@
 ---
-title: "Problembehandlung für Azure Storage mit Diagnose und Message Analyzer | Microsoft-Dokumentation"
+title: Problembehandlung für Azure Storage mit Diagnose und Message Analyzer | Microsoft-Dokumentation
 description: Ein Lernprogramm zur End-to-End-Problembehandlung mit Azure-Speicheranalyse, AzCopy und Microsoft Message Analyzer
 services: storage
 documentationcenter: dotnet
@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.openlocfilehash: ee0e4671c31e97816576735b7bd2ee2f1629323e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 324370ae18627a1985e6a40aec11ee2fa871e93b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure Storage-Metriken und -Protokollierung sowie AzCopy und Message Analyzer
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -36,9 +36,6 @@ Um Probleme in Clientanwendungen mit Microsoft Azure-Speicher zu beheben, könne
   * **Speichermetriken** zeichnet Transaktions- und Kapazitätsmetriken für das Speicherkonto auf. Mithilfe von Metriken können Sie die Leistung Ihrer Anwendung anhand einer Vielzahl verschiedener Messwerte bestimmen. Weitere Informationen zu den Arten der von der Speicheranalyse erfassten Metriken finden Sie unter [Schema der Tabellen für Speicheranalysemetriken](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) .
   * **Speicherprotokollierung** erfasst jede Anfrage an die Azure-Speicherdienste in einem serverseitigen Protokoll. Das Protokoll erfasst ausführliche Daten für jede Anfrage, einschließlich des ausgeführten Vorgangs, des Status des Vorgangs und der Latenzinformationen. Weitere Informationen zu den Anfrage- und Antwortdaten, die von der Speicheranalyse in die Protokolle geschrieben werden, finden Sie unter [Protokollformat der Speicheranalyse](/rest/api/storageservices/Storage-Analytics-Log-Format) .
 
-> [!NOTE]
-> Speicherkonten vom Replikationstyp zonenredundanter Speicher (ZRS) unterstützen Metriken und Protokollierungen. ZRS Classic-Konten unterstützen weder Metriken noch Protokollierungen. Weitere Informationen zu ZRS finden Sie unter [Zonenredundanter Speicher](storage-redundancy.md#zone-redundant-storage). 
-
 * **Azure-Portal**. Sie können die Protokollierung und Metriken für das Speicherkonto im [Azure-Portal](https://portal.azure.com) konfigurieren. Sie können auch Diagramme und Grafiken anzeigen, die darstellen, welche Leistung die Anwendung über einen gewissen Zeitraum hinweg erbringt, und Warnungen konfigurieren, die Sie benachrichtigen, wenn die Leistung bezüglich einer bestimmten Metrik von den Erwartungen abweicht.
   
     Informationen zum Konfigurieren der Überwachung im Azure-Portal finden Sie unter [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md).
@@ -55,7 +52,7 @@ In diesem Szenario gehen wir davon aus, dass es sich bei Werten unter 100 % um e
 Nachdem wir in unserem Beispielszenario eingerichtet haben, dass die Metrik für die prozentuale Erfolgsrate unter 100 % liegt, untersuchen wir die Protokolle, um die Fehler zu finden, die mit diesen Metriken zusammenhängen, und nutzen sie, um die Ursache der geringeren prozentualen Erfolgsrate zu finden. Insbesondere konzentrieren wir uns auf Fehler im Bereich von 400. Daraufhin untersuchen wir Fehler 404 (Nicht gefunden) genauer.
 
 ### <a name="some-causes-of-400-range-errors"></a>Einige Ursachen von Fehlern im Bereich von 400
-Die Beispiele unten zeigen Stichproben einiger Fehler im Bereich von 400 für Anfragen an den Azure-Blobspeicher sowie ihre möglichen Ursachen. Jeder dieser Fehler sowie Fehler im Bereich von 300 und 500 können die geringere prozentuale Erfolgsrate verursachen.
+Die Beispiele unten zeigen Stichproben einiger Fehler im Bereich von 400 für Anfragen an Azure Blob Storage sowie ihre möglichen Ursachen. Jeder dieser Fehler sowie Fehler im Bereich von 300 und 500 können die geringere prozentuale Erfolgsrate verursachen.
 
 Beachten Sie, dass die folgenden Listen nicht vollständig sind. Informationen zu allgemeinen Azure-Speicherfehlern und Fehlern der einzelnen Speicherdienste finden Sie unter [Status- und Fehlercodes](http://msdn.microsoft.com/library/azure/dd179382.aspx) auf MSDN.
 

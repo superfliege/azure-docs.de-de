@@ -1,24 +1,24 @@
 ---
-title: "Verschlüsselung in Azure Data Lake Store | Microsoft-Dokumentation"
-description: "Mit der Verschlüsselung in Azure Data Lake Store können Sie Ihre Daten schützen, Sicherheitsrichtlinien für Unternehmen implementieren und gesetzliche Vorschriften einhalten. Dieser Artikel enthält eine Übersicht über das Design und behandelt einige technische Aspekte der Implementierung."
+title: Verschlüsselung in Azure Data Lake Store | Microsoft-Dokumentation
+description: Mit der Verschlüsselung in Azure Data Lake Store können Sie Ihre Daten schützen, Sicherheitsrichtlinien für Unternehmen implementieren und gesetzliche Vorschriften einhalten. Dieser Artikel enthält eine Übersicht über das Design und behandelt einige technische Aspekte der Implementierung.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: esung22
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/31/2018
+ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: 4df0ce3d705361f20fa003929fed6a019f8b2f5e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 53d5f413f58cea7bc8eab081d46eff2ab83e7ecb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Datenverschlüsselung in Azure Data Lake Store
 
@@ -106,7 +106,7 @@ Das folgende Diagramm veranschaulicht dieses Konzepte:
 4.  Speichern Sie den verschlüsselten Datenblock im persistenten Speicher.
 
 > [!NOTE] 
-> Im Hinblick auf die Leistung wird der DEK unverschlüsselt für kurze Zeit im Arbeitsspeicher zwischengespeichert und anschließend sofort gelöscht. Auf einem persistenten Medium wird er vor dem Speichern immer durch den MEK verschlüsselt.
+> Der DEK wird immer durch den MEK verschlüsselt und entweder auf einem persistenten Medium gespeichert oder im Arbeitsspeicher zwischengespeichert.
 
 ## <a name="key-rotation"></a>Schlüsselrotation
 

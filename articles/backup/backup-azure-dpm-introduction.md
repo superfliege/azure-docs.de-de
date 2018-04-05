@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: 0e547a5991c0ce00344eff6d6b77edb0e34bd62c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 05917705264965afda873fb32a28b70e4da87aa3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit DPM
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Durch die Sicherung von DPM-Servern in Azure ergeben sich folgende Geschäftsvor
 ## <a name="prerequisites"></a>Voraussetzungen
 Bereiten Sie Azure Backup wie folgt zum Sichern von DPM-Daten vor:
 
-1. **Erstellen eines Recovery Services-Tresors**: Erstellen Sie einen Tresor im Azure-Portal.
+1. **Erstellen eines Recovery Services-Tresors** : Erstellen Sie einen Tresor im Azure-Portal.
 2. **Herunterladen von Tresoranmeldeinformationen**: Laden Sie die Anmeldeinformationen herunter, die Sie zum Registrieren des DPM-Servers beim Recovery Services-Tresor verwenden.
 3. **Installieren des Azure Backup-Agent**: Installieren Sie den Agent auf jedem DPM-Server.
 4. **Registrieren des Servers**: Registrieren Sie den DPM-Server beim Recovery Services-Tresor.
@@ -94,7 +94,7 @@ So erstellen Sie einen Recovery Services-Tresor:
    Nachdem der Tresor erstellt wurde, wird er im Portal geöffnet.
 
 ### <a name="set-storage-replication"></a>Festlegen der Speicherreplikation
-Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihre primäre Sicherung handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy.md#geo-redundant-storage) und [lokal redundanten](../storage/common/storage-redundancy.md#locally-redundant-storage) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
+Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihre primäre Sicherung handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy-grs.md) und [lokal redundanten](../storage/common/storage-redundancy-lrs.md) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
 

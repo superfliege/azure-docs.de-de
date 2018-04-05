@@ -1,79 +1,114 @@
 ---
-title: "Verwalten von Azure Files über das Azure-Portal | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie Azure Files über das Azure-Portal verwalten."
+title: Verwalten von Azure-Dateifreigaben mit dem Azure-Portal
+description: Es wird beschrieben, wie Sie Azure Files über das Azure-Portal verwalten.
 services: storage
-documentationcenter: 
-author: RenaShahMSFT
-manager: aungoo
-editor: tysonn
-ms.assetid: 
+documentationcenter: ''
+author: wmgries
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
-ms.author: renash
-ms.openlocfilehash: e56f8bf1057a8bc2cfcde841f69022104bafff27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 03/26/2018
+ms.author: wgries
+ms.openlocfilehash: 588d260bb939c8f6439ca66828296ea455f1524a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="how-to-use-azure-files-from-the-azure-portal"></a>Verwenden von Azure Files über das Azure-Portal
-Das [Azure-Portal](https://portal.azure.com) bietet eine Benutzeroberfläche für die Verwaltung von Azure Files. Sie können in Ihrem Webbrowser die folgenden Aktionen ausführen:
+# <a name="managing-azure-file-shares-with-the-azure-portal"></a>Verwalten von Azure-Dateifreigaben mit dem Azure-Portal 
+[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können unter Windows, Linux und macOS bereitgestellt werden. In dieser Anleitung werden die Grundlagen der Arbeit mit Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com/) Schritt für Schritt beschrieben. In diesem Artikel werden folgende Themen erläutert:
 
-* Erstellen einer Dateifreigabe
-* Hoch- und Herunterladen von Dateien für die Dateifreigabe
-* Überwachen der tatsächlichen Nutzung der einzelnen Dateifreigaben
-* Anpassen des Kontingents für die Dateifreigabegröße
-* Kopieren der zu verwendenden Einbindebefehle, um die Dateifreigabe über einen Windows- oder Linux-Client einzubinden
+> [!div class="checklist"]
+> * Erstellen einer Ressourcengruppe und eines Speicherkontos
+> * Erstellen einer Azure-Dateifreigabe 
+> * Erstellen eines Verzeichnisses
+> * Hochladen einer Datei 
+> * Herunterladen einer Datei
+> * Erstellen und Verwenden einer Freigabemomentaufnahme
 
-## <a name="create-file-share"></a>Erstellen einer Dateifreigabe
-1. Melden Sie sich beim Azure-Portal an.
-2. Klicken Sie im Navigationsbereich auf **Speicherkonten** oder **Speicherkonten (klassisch)**.
-    
-    ![Screenshot, der das Erstellen einer Dateifreigabe im Portal veranschaulicht](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share1.png)
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-3. Wählen Sie Ihr Speicherkonto aus.
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
+[!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
 
-    ![Screenshot, der das Erstellen einer Dateifreigabe im Portal veranschaulicht](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share2.png)
+## <a name="create-a-file-share"></a>Erstellen einer Dateifreigabe
+Gehen Sie wie folgt vor, um eine Dateifreigabe zu erstellen:
 
-4. Wählen Sie den Dienst „Dateien“.
+1. Wählen Sie im Dashboard das Speicherkonto aus.
+2. Wählen Sie auf der Speicherkontoseite im Abschnitt **Dienste** die Option **Dateien**.
+    ![Screenshot: Abschnitt „Dienste“ des Speicherkontos, Auswahl des Diensts „Dateien“](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-    ![Screenshot, der das Erstellen einer Dateifreigabe im Portal veranschaulicht](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share3.png)
+3. Klicken Sie im Menü oben auf der Seite **Dateidienst** auf **+ Dateifreigabe**. Die Seite **Neue Dateifreigabe** wird angezeigt.
+4. Geben Sie unter **Name** den Namen *myshare* ein.
+5. Klicken Sie auf **OK**, um die Azure-Dateifreigabe zu erstellen.
 
-5. Klicken Sie auf „Dateifreigaben“, und folgen Sie dem Link, um Ihre erste Dateifreigabe zu erstellen.
+## <a name="manipulating-the-contents-of-the-azure-file-share"></a>Bearbeiten des Inhalts der Azure-Dateifreigabe
+Nachdem Sie nun eine Azure-Dateifreigabe erstellt haben, können Sie die Dateifreigabe mit SMB unter [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) oder [macOS](storage-how-to-use-files-mac.md) bereitstellen. Alternativ hierzu können Sie Ihre Azure-Dateifreigabe mit dem Azure-Portal ändern. Alle Anforderungen über das Azure-Portal werden mit der Datei-REST-API durchgeführt, sodass Sie Dateien und Verzeichnisse ohne SMB-Zugriff erstellen, ändern und löschen können.
 
-    ![Screenshot, der das Erstellen einer Dateifreigabe im Portal veranschaulicht](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share4.png)
+### <a name="create-directory"></a>Erstellen eines Verzeichnisses
+Gehen Sie wie folgt vor, um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen:
 
-6. Geben Sie den Namen und die Größe der Dateifreigabe (bis zu 5.120 GB) ein, um Ihre erste Dateifreigabe zu erstellen. Sobald die Dateifreigabe erstellt wurde, können Sie sie von einem beliebigen Dateisystem aus einbinden, das SMB 2.1 oder SMB 3.0 unterstützt. Sie können für die Dateifreigabe auf **Kontingent** klicken und die Größe der Datei auf bis zu 5.120 GB festlegen. Verwenden Sie zum Ermitteln der Speicherkosten, die bei Verwendung von Azure Files zu erwarten sind, den [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/).
+1. Wählen Sie auf der Seite **Dateidienst** die Dateifreigabe **myshare** aus. Die Seite für Ihre Dateifreigabe wird geöffnet.
+2. Wählen Sie im Menü oben auf der Seite die Option **+ Verzeichnis hinzufügen**. Die Seite **Neues Verzeichnis** wird angezeigt.
+3. Geben Sie *myDirectory* ein, und klicken Sie anschließend auf **OK**.
 
-    ![Screenshot, der das Erstellen einer Dateifreigabe im Portal veranschaulicht](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share5.png)
+### <a name="upload-a-file"></a>Hochladen einer Datei 
+Um das Hochladen einer Datei demonstrieren zu können, müssen Sie zuerst eine Datei erstellen oder auswählen, die hochgeladen werden kann. Hierfür können Sie die von Ihnen bevorzugte Vorgehensweise verwenden. Gehen Sie wie folgt vor, nachdem Sie die gewünschte Datei zum Hochladen ausgewählt haben:
 
-## <a name="upload-and-download-files"></a>Hochladen und Herunterladen von Dateien
-1. Wählen Sie eine bereits erstellte Dateifreigabe aus.
+1. Klicken Sie auf das Verzeichnis **myDirectory**. Das Panel **myDirectory** wird geöffnet.
+2. Klicken Sie oben im Menü auf **Hochladen**. Das Panel **Dateien hochladen** wird geöffnet.  
+    ![Screenshot: Panel zum Hochladen von Dateien](media/storage-how-to-use-files-portal/upload-file-1.png)
 
-    ![Screenshot, der das Hoch- und Herunterladen von Dateien über das Portal veranschaulicht](./media/storage-how-to-use-files-portal/use-files-portal-upload-file1.png)
+3. Klicken Sie auf das Ordnersymbol, um ein Fenster zu öffnen, in dem Sie Ihre lokalen Dateien durchsuchen können. 
+4. Wählen Sie eine Datei aus, und klicken Sie anschließend auf **Öffnen**. 
+5. Überprüfen Sie auf der Seite **Dateien hochladen** den Dateinamen, und klicken Sie anschließend auf **Hochladen**.
+6. Nach Abschluss des Vorgangs sollte die Datei in der Liste auf der Seite **myDirectory** angezeigt werden.
 
-2. Klicken Sie auf **Hochladen** , um die Benutzeroberfläche zum Hochladen von Dateien zu öffnen.
+### <a name="download-a-file"></a>Herunterladen einer Datei
+Sie können eine Kopie der hochgeladenen Datei herunterladen, indem Sie mit der rechten Maustaste auf die Datei klicken. Nachdem Sie auf die Schaltfläche zum Herunterladen geklickt haben, richtet sich die genaue Vorgehensweise nach dem verwendeten Betriebssystem und Browser.
 
-    ![Screenshot, der das Hochladen von Dateien über das Portal veranschaulicht](./media/storage-how-to-use-files-portal/use-files-portal-upload-file2.png)
+## <a name="create-and-modify-share-snapshots"></a>Erstellen und Ändern von Freigabemomentaufnahmen
+Eine weitere nützliche Aufgabe, die Sie mit einer Azure-Dateifreigabe durchführen können, ist die Erstellung von Freigabemomentaufnahmen. Mit einer Momentaufnahme wird für eine Azure-Dateifreigabe ein bestimmter Zeitpunkt beibehalten. Freigabemomentaufnahmen ähneln Betriebssystemtechnologien, mit denen Sie unter Umständen bereits vertraut sind:
+- [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee923636) für Windows-Dateisysteme wie NTFS und ReFS
+- Momentaufnahmen vom Typ [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) für Linux-Systeme
+- Momentaufnahmen vom Typ [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) für macOS 
 
-## <a name="connect-to-file-share"></a>Herstellen einer Verbindung mit der Dateifreigabe
--  Klicken Sie auf **Verbinden**, um die Befehlszeile zum Bereitstellen der Dateifreigabe aus Windows und Linux zu erhalten. Für Linux-Benutzer stehen unter [Verwenden von Azure Files mit Linux](../storage-how-to-use-files-linux.md) weitere Einbindeanweisungen für andere Linux-Distributionen zur Verfügung.
+Gehen Sie wie folgt vor, um eine Freigabemomentaufnahme zu erstellen:
 
-    ![Screenshot, der das Bereitstellen der Dateifreigabe veranschaulicht](./media/storage-how-to-use-files-portal/use-files-portal-connect.png)
--  Sie können die Befehle zum Einbinden der Dateifreigabe unter Windows oder Linux kopieren und sie über Ihren virtuellen Azure-Computer oder über Ihren lokalen Computer ausführen.
+1. Öffnen Sie die Seite für die Dateifreigabe, indem Sie das Speicherkonto in Ihrem Dashboard unter **Dateien** > **myshare** öffnen. 
+2. Klicken Sie auf der Seite für die Dateifreigabe im obersten Menü auf die Schaltfläche **Momentaufnahme**, und wählen Sie anschließend die Option **Momentaufnahme erstellen**.  
+    ![Screenshot: Schaltfläche „Momentaufnahme erstellen“](media/storage-how-to-use-files-portal/create-snapshot-1.png)
 
-    ![Screenshot mit den Einbindebefehlen für Windows und Linux](./media/storage-how-to-use-files-portal/use-files-portal-show-mount-commands.png)
+### <a name="list-and-browse-share-snapshots"></a>Auflisten und Durchsuchen von Freigabemomentaufnahmen
+Nachdem die Momentaufnahme erstellt wurde, können Sie erneut auf **Momentaufnahme** klicken und dann **Momentaufnahmen anzeigen** wählen, um die Momentaufnahmen für die Freigabe aufzulisten. Im sich ergebenden Bereich werden die Momentaufnahmen für diese Freigabe angezeigt. Klicken Sie auf eine Freigabemomentaufnahme, um sie zu durchsuchen.
 
-**Tipp:**  
-Klicken Sie zum Ermitteln des Speicherkonto-Zugriffsschlüssels für die Einbindung am unteren Rand der Verbindungsseite auf **Zugriffsschlüssel für dieses Speicherkonto anzeigen** am unteren Rand der Seite "Verbinden".
+### <a name="restore-from-a-share-snapshot"></a>Wiederherstellen von einer Freigabemomentaufnahme
+Wir müssen zuerst eine Datei aus der aktiven Azure-Dateifreigabe löschen, um demonstrieren zu können, wie eine Datei aus einer Freigabemomentaufnahme wiederhergestellt wird. Navigieren Sie zum Ordner *myDirectory*, klicken Sie mit der rechten Maustaste auf die hochgeladene Datei, und klicken Sie dann auf **Löschen**. Stellen Sie diese Datei anschließend aus der Freigabemomentaufnahme wieder her:
 
-## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zu Azure Files erhalten Sie über diese Links.
+1. Klicken Sie im obersten Menü auf **Momentaufnahmen**, und wählen Sie die Option **Momentaufnahmen anzeigen**. 
+2. Wenn Sie auf die zuvor erstellte Momentaufnahme klicken, wird der Inhalt auf einer neuen Seite geöffnet. 
+3. Wenn Sie in der Momentaufnahme auf **myDirectory** klicken, sollte die gelöschte Datei angezeigt werden. 
+4. Klicken Sie mit der rechten Maustaste auf die gelöschte Datei, und wählen Sie **Wiederherstellen**.
+5. Es wird ein Popupelement angezeigt, in dem Sie zwischen dem Wiederherstellen der Datei als Kopie und dem Überschreiben der Originaldatei wählen können. Da wir die Originaldatei gelöscht haben, können wir **Originaldatei überschreiben** wählen, um für die Datei den Zustand vor dem Löschen wiederherzustellen. Klicken Sie auf **OK**, um die Datei auf der Azure-Dateifreigabe wiederherzustellen.  
+    ![Screenshot: Dialogfeld „Datei wiederherstellen“](media/storage-how-to-use-files-portal/restore-snapshot-1.png)
 
-* [Häufig gestellte Fragen](../storage-files-faq.md)
-* [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Windows)      
-* [Troubleshoot Azure File storage problems in Linux](storage-troubleshoot-linux-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Linux)    
+6. Nachdem die Wiederherstellung der Datei abgeschlossen ist, können Sie die Seite für die Momentaufnahme schließen und zurück zu **myshare** > **myDirectory** navigieren. Die Datei sollte sich wieder am ursprünglichen Platz befinden.
+
+### <a name="delete-a-share-snapshot"></a>Löschen einer Freigabemomentaufnahme
+[Navigieren Sie zur Liste mit den Freigabemomentaufnahmen](#list-and-browse-a-share-snapshot), um eine Freigabemomentaufnahme zu löschen. Klicken Sie auf das Kontrollkästchen neben dem Namen der Freigabemomentaufnahme, und wählen Sie die Schaltfläche **Löschen**.
+
+![Screenshot: Löschen einer Freigabemomentaufnahme](media/storage-how-to-use-files-portal/delete-snapshot-1.png)
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+[!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
+
+## <a name="next-steps"></a>Nächste Schritte
+- [Verwalten von Dateifreigaben mit Azure PowerShell](storage-how-to-use-files-powershell.md)
+- [Verwalten von Dateifreigaben mit der Azure CLI](storage-how-to-use-files-cli.md)
+- [Verwalten von Dateifreigaben mit Azure Storage-Explorer](storage-how-to-use-files-storage-explorer.md)
+- [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)

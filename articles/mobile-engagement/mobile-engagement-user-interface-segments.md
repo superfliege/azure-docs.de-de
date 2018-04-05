@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement – Benutzeroberfläche - Segmente"
+title: Azure Mobile Engagement – Benutzeroberfläche - Segmente
 description: Erfahren Sie, wie Sie Segmente von Benutzern mithilfe von Azure Mobile Engagement erstellen und verwalten
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6a4f2205-4a3c-406e-a04f-5e6f2a36653f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 087f4a1fef420abe9669f8dfe2b84c7a847ce263
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53c5b1b672a0d7212a3d298c3e411a9cc6ac0807
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-manage-segments-of-users-to-identify-usage-patterns"></a>Erstellen und Verwalten von Segmenten von Benutzern zur Identifikation von Verwendungsmustern
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 In diesem Artikel wird die Registerkarte **SEGMENTE** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das **Mobile Engagement** -Portal, um Ihre mobilen Apps zu überwachen und zu verwalten.
 
 Der Abschnitt "Segmente" der Benutzeroberfläche ermöglicht Ihnen das Segmentieren Ihrer Benutzer basierend auf den verschiedenen Verhalten und Analysen, die Sie von der Anwendung und auch über die Segments-API erhalten können. Segmente werden erstmals 24 Stunden nach ihrer Erstellung berechnet und dann alle 24 Stunden basierend auf den neuesten Analyseinformationen neu berechnet. Sobald ein Segment berechnet ist, zeigt es jeden Tag ein Diagramm vom Typ "Tag-zu-Tag-Verlauf" an.
@@ -107,7 +111,7 @@ Wenn Sie Ihr Kriterium eingerichtet haben, wird es im Trichter "Segment" angezei
 Da ein Segment auf Analysedaten basiert, werden Segmente einmal pro Tag berechnet.
 Bei diesem Beispiel stimmen 47,7 % der Endbenutzer mit dem Kriterium überein. Dies sollten die Benutzer mit einer guten Erfahrung sein, die Ihnen wahrscheinlich eine höhere Bewertung geben, wenn Sie Ihnen eine Pushbenachrichtigung mit einer Bitte zur Bewertung Ihrer App im Store senden.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Konzepte][Link 6]
 * [Handbuch zur Problembehandlung – Dienst][Link 24]
 

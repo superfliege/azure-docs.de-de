@@ -1,23 +1,23 @@
 ---
-title: "Azure Container Instances-Tutorial – Vorbereiten Ihrer App"
-description: "Tutorial für Azure Container Instances (Teil 1 von 3) – Vorbereiten einer App für die Breitstellung in Azure Container Instances"
+title: Azure Container Instances-Tutorial – Vorbereiten Ihrer App
+description: Tutorial für Azure Container Instances (Teil 1 von 3) – Vorbereiten einer App für die Breitstellung in Azure Container Instances
 services: container-instances
-author: seanmck
+author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 01/02/2018
-ms.author: seanmck
+ms.date: 03/21/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 5012412ec642a04102836274caea253635376efb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 134cc6ea84a5851755c757cbcf20130bf890575c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-container-for-deployment-to-azure-container-instances"></a>Erstellen von Containern für die Bereitstellung in Azure Container Instances
+# <a name="tutorial-create-container-for-deployment-to-azure-container-instances"></a>Tutorial: Erstellen von Containern für die Bereitstellung in Azure Container Instances
 
-Azure Container Instances ermöglicht die Bereitstellung von Docker-Containern in der Azure-Infrastruktur ohne Bereitstellung virtueller Computer oder Einführung eines übergeordneten Diensts. In diesem Tutorial erstellen Sie eine kleine Webanwendung in Node.js und verpacken sie in einem Container, der mithilfe von Azure Container Instances ausgeführt werden kann.
+Azure Container Instances ermöglicht die Bereitstellung von Docker-Containern in der Azure-Infrastruktur ohne Bereitstellung virtueller Computer oder Einführung eines übergeordneten Diensts. In diesem Tutorial verpacken Sie eine kleine Node.js-Webanwendung in einem Containerimage, das mit Azure Container Instances ausgeführt werden kann.
 
 Dieser Artikel ist der erste Teil der Reihe und umfasst Folgendes:
 
@@ -26,33 +26,29 @@ Dieser Artikel ist der erste Teil der Reihe und umfasst Folgendes:
 > * Erstellen eines Containerimages aus der Anwendungsquelle
 > * Testen der Images in einer lokalen Docker-Umgebung
 
-In späteren Tutorials laden Sie eigene Images in eine Azure Container Registry-Instanz hoch und stellen sie in Azure Container Instances bereit.
+Im zweiten und dritten Tutorialteil laden Sie eigene Images in Azure Container Registry hoch und stellen sie in Azure Container Instances bereit.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie mindestens Version 2.0.23 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0][azure-cli-install].
-
-In diesem Tutorial wird vorausgesetzt, dass zentrale Docker-Begriffe wie Container und Containerimages sowie grundlegende `docker`-Befehle bekannt sind. Eine Einführung in die Grundlagen der Container finden Sie bei Bedarf unter [Get started with Docker][docker-get-started] (Erste Schritte mit Docker).
-
-Für dieses Tutorial ist eine lokal installierte Docker-Entwicklungsumgebung erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac-][docker-mac], [Windows-][docker-windows] oder [Linux-][docker-linux]System konfiguriert werden kann.
-
-Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der einzelnen Schritte dieses Tutorials erforderlich sind. Die Azure-Befehlszeilenschnittstelle und die Docker-Entwicklungsumgebung müssen zur Absolvierung dieses Tutorials auf Ihrem lokalen Computer installiert sein.
+[!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
 ## <a name="get-application-code"></a>Abrufen von Anwendungscode
 
-Das Beispiel in diesem Tutorial enthält eine einfache, in [Node.js][nodejs] erstellte Webanwendung. Die App stellt eine statische HTML-Seite bereit und sieht wie folgt aus:
+Die Beispielanwendung in diesem Tutorial ist eine einfache Web-App, die in [Node.js][nodejs] erstellt wird. Die Anwendung dient als statische HTML-Seite und sieht in etwa wie im folgenden Screenshot aus:
 
 ![Tutorial-App im Browser][aci-tutorial-app]
 
-Laden Sie das Beispiel mithilfe von „git“ herunter:
+Verwenden Sie Git, um das Repository der Beispielanwendung zu klonen:
 
 ```bash
 git clone https://github.com/Azure-Samples/aci-helloworld.git
 ```
 
+Sie können das [ZIP-Archiv auch direkt von GitHub herunterladen][aci-helloworld-zip].
+
 ## <a name="build-the-container-image"></a>Erstellen des Containerimages
 
-Die Dockerfile-Datei aus dem Beispielrepository zeigt, wie der Container erstellt wird. Ausgangspunkt ist ein [offizielles Node.js-Image][docker-hub-nodeimage] auf der Grundlage von [Alpine Linux][alpine-linux] (einer kleinen Distribution, die sich gut für Container eignet). Anschließend werden die Anwendungsdateien in den Container kopiert und Abhängigkeiten mithilfe des Knotenpaket-Managers installiert, bevor schließlich die Anwendung gestartet wird.
+Die Dockerfile in der Beispielanwendung veranschaulicht, wie der Container erstellt wird. Ausgangspunkt ist ein [offizielles Node.js-Image][docker-hub-nodeimage] auf der Grundlage von [Alpine Linux][alpine-linux] (einer kleinen Distribution, die sich gut für Container eignet). Anschließend werden die Anwendungsdateien in den Container kopiert und Abhängigkeiten mithilfe des Knotenpaket-Managers installiert, bevor schließlich die Anwendung gestartet wird.
 
 ```Dockerfile
 FROM node:8.9.3-alpine
@@ -71,7 +67,8 @@ docker build ./aci-helloworld -t aci-tutorial-app
 
 Die Ausgabe des Befehls [docker build][docker-build] ähnelt dem folgenden (zur besseren Lesbarkeit gekürzten) Beispiel:
 
-```bash
+```console
+$ docker build ./aci-helloworld -t aci-tutorial-app
 Sending build context to Docker daemon  119.3kB
 Step 1/6 : FROM node:8.9.3-alpine
 8.9.3-alpine: Pulling from library/node
@@ -96,44 +93,53 @@ Verwenden Sie den Befehl [docker images][docker-images], um das erstellte Image 
 docker images
 ```
 
-Ausgabe:
+Ihr neu erstelltes Image sollte in der Liste angezeigt werden:
 
-```bash
-REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
+```console
+$ docker images
+REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
+aci-tutorial-app    latest    5c745774dfa9    39 seconds ago    68.1 MB
 ```
 
 ## <a name="run-the-container-locally"></a>Lokales Ausführen des Containers
 
-Bevor Sie den Container für Azure Container Instances bereitstellen, führen Sie ihn lokal aus, um sich zu vergewissern, dass er funktioniert. Mit dem Switch `-d` können Sie den Container im Hintergrund ausführen, und mit `-p` können Sie einen beliebigen Port auf Ihrem Computer dem Port 80 des Containers zuordnen.
+Verwenden Sie vor dem Bereitstellen des Containers in Azure Container Instances den Befehl [docker run][docker-run], um ihn lokal auszuführen und sich zu vergewissern, dass dies funktioniert. Mit dem Switch `-d` können Sie den Container im Hintergrund ausführen, und mit `-p` können Sie einen beliebigen Port auf Ihrem Computer dem Port 80 des Containers zuordnen.
 
 ```bash
 docker run -d -p 8080:80 aci-tutorial-app
 ```
 
-Rufen Sie im Browser „http://localhost: 8080“ auf, um sich zu vergewissern, dass der Container ausgeführt wird.
+In der Ausgabe des Befehls `docker run` wird die ID des ausgeführten Containers angezeigt, wenn der Befehl erfolgreich war:
+
+```console
+$ docker run -d -p 8080:80 aci-tutorial-app
+a2e3e4435db58ab0c664ce521854c2e1a1bda88c9cf2fcff46aedf48df86cccf
+```
+
+Navigieren Sie in Ihrem Browser jetzt zu „http://localhost:8080“, um sicherzustellen, dass der Container ausgeführt wird. Es wird eine Webseite angezeigt, die in etwa wie folgt aussieht:
 
 ![Lokales Ausführen der App im Browser][aci-tutorial-app-local]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie ein Containerimage erstellt, das in Azure Container Instances bereitgestellt werden kann. Die folgenden Schritte wurden durchgeführt:
+In diesem Tutorial haben Sie ein Containerimage erstellt, das in Azure Container Instances bereitgestellt werden kann, und sich vergewissert, dass die lokale Ausführung möglich ist. Bisher haben Sie Folgendes durchgeführt:
 
 > [!div class="checklist"]
-> * Anwendungsquelle von GitHub wurde geklont.
-> * Containerimages aus der Anwendungsquelle wurden erstellt.
-> * Container wurde lokal getestet.
+> * Klonen der Anwendungsquelle von GitHub
+> * Erstellen eines Containerimages aus der Anwendungsquelle
+> * Lokales Testen des Containers
 
-Wechseln Sie zum nächsten Tutorial, und erfahren Sie, wie Containerimages in einer Azure Container Registry gespeichert werden.
+Fahren Sie mit dem nächsten Tutorial der Reihe fort, um sich über das Speichern Ihres Containerimages in Azure Container Registry zu informieren:
 
 > [!div class="nextstepaction"]
-> [Übertragen von Images zu Azure Container Registry mithilfe von Push](./container-instances-tutorial-prepare-acr.md)
+> [Übertragen des Images an Azure Container Registry per Pushvorgang](container-instances-tutorial-prepare-acr.md)
 
 <!--- IMAGES --->
 [aci-tutorial-app]:./media/container-instances-quickstart/aci-app-browser.png
 [aci-tutorial-app-local]: ./media/container-instances-tutorial-prepare-app/aci-app-browser-local.png
 
 <!-- LINKS - External -->
+[aci-helloworld-zip]: https://github.com/Azure-Samples/aci-helloworld/archive/master.zip
 [alpine-linux]: https://alpinelinux.org/
 [docker-build]: https://docs.docker.com/engine/reference/commandline/build/
 [docker-get-started]: https://docs.docker.com/get-started/
@@ -143,6 +149,7 @@ Wechseln Sie zum nächsten Tutorial, und erfahren Sie, wie Containerimages in ei
 [docker-login]: https://docs.docker.com/engine/reference/commandline/login/
 [docker-mac]: https://docs.docker.com/docker-for-mac/
 [docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-run]: https://docs.docker.com/engine/reference/commandline/run/
 [docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 [nodejs]: http://nodejs.org

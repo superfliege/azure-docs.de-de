@@ -1,23 +1,23 @@
 ---
 title: Sichern von Azure Files in Azure
-description: "Dieser Artikel enthält ausführliche Informationen zum Sichern und Wiederherstellen von Azure-Dateifreigaben sowie Informationen zu Verwaltungsaufgaben."
+description: Dieser Artikel enthält ausführliche Informationen zum Sichern und Wiederherstellen von Azure-Dateifreigaben sowie Informationen zu Verwaltungsaufgaben.
 services: backup
-keywords: "Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen."
+keywords: Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen.
 author: markgalioto
 ms.author: markgal
-ms.date: 2/21/2018
+ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: b9bf1582aa1c1b8878b8426f60a18282598eb2b9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: ba457daca030d3219fe32177b0b5f8b5565ff544
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
+# <a name="back-up-azure-file-shares-preview"></a>Sichern von Azure-Dateifreigaben (Vorschauversion)
 
-In diesem Artikel wird erläutert, wie Sie [Azure-Dateifreigaben](../storage/files/storage-files-introduction.md) sichern.
+In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) in Azure sichern und wiederherstellen.
 
 In diesem Artikel lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -30,6 +30,16 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um eine Azure-Dateifreigabe sichern zu können, muss sie sich unter einem der [unterstützten Speicherkontotypen](troubleshoot-azure-files.md#preview-boundaries) befinden. Sobald Sie dies überprüft haben, können Sie Ihre Dateifreigaben schützen.
+
+## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Einschränkungen beim Sichern von Azure-Dateifreigaben während der Vorschauphase
+Die Azure Files-Sicherung befindet sich in der Vorschauphase. Während der Vorschauphase sind folgende Einschränkungen zu beachten:
+- Dateifreigaben können nicht in Speicherkonten mit einer Replikation vom Typ [ZRS](../storage/common/storage-redundancy.md#zone-redundant-storage) (zonenredundanter Speicher) oder [RA-GRS](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) geschützt werden.
+- Dateifreigaben können nicht in Speicherkonten mit aktivierten virtuellen Netzwerken geschützt werden.
+- Für den Schutz von Azure Files steht keine PowerShell- oder Befehlszeilenoption zur Verfügung.
+- Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
+- Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
+- Verwenden Sie [Ressourcensperren](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.
+- Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten bzw. zu Wiederherstellungsfehlern führen. 
 
 ## <a name="configuring-azure-file-shares-backup"></a>Konfigurieren der Sicherung von Azure-Dateifreigaben
 

@@ -1,8 +1,8 @@
 ---
-title: "Ausführen eines Databricks-Notebooks mit der Databricks-Notebook-Aktivität in Azure Data Factory"
-description: "Es wird beschrieben, wie Sie die Databricks-Notebook-Aktivität in einer Azure Data Factory-Instanz verwenden können, um ein Databricks-Notebook für den Cluster mit den Databricks-Aufträgen ausführen können."
+title: Ausführen eines Databricks-Notebooks mit der Databricks-Notebook-Aktivität in Azure Data Factory
+description: Hier erfahren Sie, wie Sie die Databricks-Notebook-Aktivität in einer Azure Data Factory-Instanz verwenden, um ein Databricks-Notebook für den Cluster mit den Databricks-Aufträgen auszuführen.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
 manager: craigg
 ms.service: data-factory
@@ -13,31 +13,31 @@ ms.topic: get-started-article
 ms.date: 3/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: d1dcec26529c747a209dd10fcefbbadaa40365a3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7a90906f0bb41b0ced368e9010e0c8a4981f038c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Ausführen eines Databricks-Notebooks mit der Databricks-Notebook-Aktivität in Azure Data Factory
 
-In diesem Tutorial verwenden Sie das Azure-Portal, um eine Azure Data Factory-Pipeline zu erstellen, bei der ein Databricks-Notebook für den Cluster mit den Databricks-Aufträgen ausgeführt wird. Außerdem werden die Azure Data Factory-Parameter während der Ausführung an das Databricks-Notebook übergeben.
+In diesem Tutorial verwenden Sie das Azure-Portal, um eine Azure Data Factory-Pipeline zu erstellen, die ein Databricks-Notebook für den Cluster mit den Databricks-Aufträgen ausführt. Außerdem übergibt sie während der Ausführung Azure Data Factory-Parameter an das Databricks-Notebook.
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
-  - Erstellen einer Data Factory.
+  - Erstellen einer Data Factory
 
-  - Erstellen Sie eine Pipeline, für die die Databricks-Notebook-Aktivität verwendet wird.
+  - Erstellen einer Pipeline mit Databricks-Notebook-Aktivität
 
   - Auslösen einer Pipelineausführung
 
-  - Überwachen der Pipelineausführung.
+  - Überwachen der Pipelineausführung
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-  - **Azure Databricks-Arbeitsbereich** [Erstellen Sie einen Databricks-Arbeitsbereich](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal), oder verwenden Sie einen vorhandenen Arbeitsbereich. Sie erstellen ein Python-Notebook in Ihrem Azure Databricks-Arbeitsbereich. Anschließend führen Sie das Notebook aus und übergeben mit Azure Data Factory Parameter dafür.
+  - **Azure Databricks-Arbeitsbereich:** [Erstellen Sie einen Databricks-Arbeitsbereich](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal), oder verwenden Sie einen vorhandenen Arbeitsbereich. Sie erstellen ein Python-Notebook in Ihrem Azure Databricks-Arbeitsbereich. Anschließend führen Sie das Notebook aus und übergeben Parameter mit Azure Data Factory.
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
@@ -149,7 +149,7 @@ In diesem Abschnitt erstellen Sie einen verknüpften Databricks-Dienst. Dieser v
 
           ![Erstellen eines neuen Ordners](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       3. [Erstellen Sie ein neues Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), und geben Sie ihm den Namen **mynotebook**. Klicken Sie im Ordner **adftutorial** auf **Erstellen**.
+       3. [Erstellen Sie ein neues Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python) namens **mynotebook** im Ordner **adftutorial**,**** und klicken Sie anschließend auf **Erstellen**.
 
           ![Erstellen eines neuen Notebooks](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 

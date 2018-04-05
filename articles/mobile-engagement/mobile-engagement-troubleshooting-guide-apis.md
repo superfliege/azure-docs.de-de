@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement – Handbuch zur Problembehandlung – APIs"
-description: "Handbücher zur Problembehandlung für Azure Mobile Engagement – APIs"
+title: Azure Mobile Engagement – Handbuch zur Problembehandlung – APIs
+description: Handbücher zur Problembehandlung für Azure Mobile Engagement – APIs
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3efc8a52-2b74-4917-b887-815ae8277474
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: piyushjo
-ms.openlocfilehash: a7ae0a83046f2d67b790f672dcd3ae261987357a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cda11c8d2f1d147a807083c5479d2b2cda65462c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-api-issues"></a>Handbuch zur Problembehandlung bei APIs
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administratoren über die APIs mit Azure Mobile Engagement interagieren.
 
 ## <a name="syntax-issues"></a>Syntaxfehler
@@ -75,7 +79,7 @@ Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administ
         503        Analytics not available yet (the requested information is not computed yet for an application).
         504        The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [API-Dokumentation – detaillierte Fehlerinformationen zu jeder API][Link 4]
 
 ## <a name="silent-failures"></a>Verborgene ("stille") Fehler

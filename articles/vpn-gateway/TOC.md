@@ -6,8 +6,10 @@
 ## [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # Erste Schritte
-## [Erstellen eines routenbasierten VPN-Gateways – Azure-Portal](create-routebased-vpn-gateway-portal.md)
-## [Erstellen eines routenbasierten VPN-Gateways – PowerShell](create-routebased-vpn-gateway-powershell.md)
+## Erstellen eines routenbasierten VPN-Gateways
+### [Azure-Portal](create-routebased-vpn-gateway-portal.md)
+### [Azure PowerShell](create-routebased-vpn-gateway-powershell.md)
+### [Azure-CLI](create-routebased-vpn-gateway-cli.md)
 
 # Konzepte
 ## [Planung und Entwurf für VPN Gateway](vpn-gateway-plan-design.md)
@@ -86,13 +88,16 @@
 ### [Beispiel: Cisco ASA-Gerät (IKEv2/kein BGP)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## [Migrieren vom klassischen Modell zum Resource Manager-Modell](vpn-gateway-classic-resource-manager-migration.md)
 ## [Problembehandlung](vpn-gateway-troubleshoot.md)
-### [Überprüfen des VPN-Durchsatzes an ein VNET](vpn-gateway-validate-throughput-to-vnet.md)
 ### [Von der Community vorgeschlagene VPN- oder Firewallgeräteeinstellungen](vpn-gateway-third-party-settings.md)
-### [Point-to-Site-Verbindungsprobleme](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-#### [Point-to-Site-Verbindungsprobleme – Mac OS X-VPN-Client](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
-### [Site-to-Site-Verbindungsprobleme](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
-#### [Site-to-Site-Verbindung wird zeitweilig getrennt](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [Konfigurieren und Überprüfen von VNET- oder VPN-Verbindungen](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
+### [Überprüfen des VPN-Durchsatzes an ein VNET](vpn-gateway-validate-throughput-to-vnet.md)
+### Point-to-Site-Verbindungsprobleme
+#### [Point-to-Site-Verbindungsprobleme](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+#### [Point-to-Site-Verbindungsprobleme – Mac OS X-VPN-Client](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+### Site-to-Site-Verbindungsprobleme
+#### [Site-to-Site-Verbindungsprobleme](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
+#### [Site-to-Site-Verbindung wird zeitweilig getrennt](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
+
 
 # Verweis
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)

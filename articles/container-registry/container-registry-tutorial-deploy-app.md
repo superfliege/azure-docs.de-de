@@ -1,5 +1,5 @@
 ---
-title: "Azure Container Registry-Tutorial: Bereitstellen einer Web-App über Azure Container Registry"
+title: 'Azure Container Registry-Tutorial: Bereitstellen einer Web-App über Azure Container Registry'
 description: Stellen Sie eine Linux-basierte Web-App unter Verwendung eines Containerimages aus einer georeplizierten Azure-Containerregistrierung bereit. Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe.
 services: container-registry
 author: mmacy
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: d775a17cb8069a7521788d850d7d52b92cc67526
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 51aa3c6fc56e974fc1729a1d2fe35c889adf35e2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="deploy-web-app-from-azure-container-registry"></a>Bereitstellen einer Web-App über Azure Container Registry
+# <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Tutorial: Bereitstellen einer Web-App über Azure Container Registry
 
 Dies ist der zweite Teil eines dreiteiligen Tutorials. In [Teil 1](container-registry-tutorial-prepare-registry.md) wurde eine private georeplizierte Containerregistrierung erstellt. Außerdem wurde ein quellcodebasiertes Containerimage erstellt und mithilfe von Push an die Registrierung übertragen. In diesem Artikel stellen Sie den Container in zwei Web-App-Instanzen in zwei verschiedenen Azure-Regionen bereit, um von der Netzwerknähe der georeplizierten Registrierung zu profitieren.
 

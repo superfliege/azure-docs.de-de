@@ -707,7 +707,7 @@ Wenn Sie Ihre HLS-Inhalte mit AES-128 verschlüsseln möchten, können Sie wahlw
 > [!NOTE]
 > Zum Konvertieren Ihrer Inhalte in HLS müssen Sie zunächst Ihre Inhalte in Smooth Streaming konvertieren bzw. codieren.
 > Damit HLS-Inhalte mit AES verschlüsselt werden, müssen Sie zudem sicherstellen, dass die folgenden Eigenschaften in der Datei "MediaPackager_SmoothToHLS.xml" festgelegt sind. Legen Sie die "encrypt"-Eigenschaft auf "true" fest, und legen Sie die Werte "key" und "keyuri" so fest, dass sie auf Ihren Authentifizierungs- oder Autorisierungsserver verweisen.
-> Media Services erstellt eine Schlüsseldatei und legt sie im Medienobjektcontainer ab. Sie müssen die Datei /asset-containerguid/\*.key auf Ihren Server kopieren (oder Ihre eigene Schlüsseldatei erstellen) und die *.key Datei anschließend im Medienobjektcontainer löschen.
+> Media Services erstellt eine Schlüsseldatei und legt sie im Medienobjektcontainer ab. Sie müssen die Datei /asset-containerguid/\*.key auf Ihren Server kopieren (oder Ihre eigene Schlüsseldatei erstellen) und die \*.key Datei anschließend im Medienobjektcontainer löschen.
 > 
 > 
 

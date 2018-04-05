@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/09/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 13d36e6861a30473e6cb5d54d94a3c23a1e4cc59
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: fe171000f83c27f23972569b93e351340f4426ad
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>Erstellen eines virtuellen Netzwerks über PowerShell
 
@@ -159,4 +159,4 @@ In diesem Artikel haben Sie ein virtuelles Standardnetzwerk und zwei virtuelle C
 Standardmäßig erlaubt Azure uneingeschränkte private Kommunikation zwischen virtuellen Computern. Über das Internet sind mit virtuellen Windows-Computern jedoch nur Remotedesktopverbindungen in eingehender Richtung zugelassen. Informationen zum Zulassen und Beschränken verschiedener Arten von Netzwerkkommunikation zwischen virtuellen Computern finden Sie im nächsten Tutorial.
 
 > [!div class="nextstepaction"]
-> [Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal](virtual-networks-create-nsg-arm-ps.md)
+> [Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal](tutorial-filter-network-traffic.md)

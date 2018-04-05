@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 02d7c3f587a4cbfb11fc3b6863f75ca30b4d6c51
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f34fabc95d5b56edc6e37c323bebf60bd98c8b90
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Umstellen von öffentlichem Peering auf Microsoft-Peering
 
@@ -27,8 +27,6 @@ ExpressRoute unterstützt die Verwendung von Microsoft-Peering und Routenfiltern
 
 Dieser Artikel erklärt, wie Sie ohne Ausfallzeiten von einer öffentlichen Peeringkonfiguration auf Microsoft-Peering umsteigen. Weitere Informationen zu Routingdomänen und Peerings finden Sie unter [ExpressRoute-Verbindungen und Routingdomänen](expressroute-circuit-peerings.md).
 
-> [!IMPORTANT]
-> Für die Verwendung von Microsoft-Peering müssen Sie über das ExpressRoute Premium-Add-On verfügen. Weitere Informationen zum Premium-Add-On finden Sie in den [häufig gestellten Fragen zu ExpressRoute](expressroute-faqs.md#expressroute-premium).
 
 ## <a name="before"></a>Voraussetzungen
 

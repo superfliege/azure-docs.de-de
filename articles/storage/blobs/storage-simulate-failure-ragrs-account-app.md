@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 57296d828156184aa36532cd649fbec0c81b5e27
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0e7ab68075fbce729d3905375acce0dace22c483
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Simulieren eines Fehlers bei Zugriff auf redundanten Speicher mit Lesezugriff
 
-Dieses Tutorial ist der zweite Teil einer Reihe.  In diesem Tutorial können Sie entweder [Fiddler](#simulate-a-failure-with-fiddler) oder [Statisches Routing](#simulate-a-failure-with-an-invalid-static-route) verwenden, um für Anforderungen an den primären Endpunkt Ihres Speicherkontos vom Typ [Georedundanter Speicher mit Lesezugriff](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) Fehler zu simulieren und zu erreichen, dass die Anwendung vom sekundären Endpunkt liest.
+Dieses Tutorial ist der zweite Teil einer Reihe.  In diesem Tutorial können Sie entweder [Fiddler](#simulate-a-failure-with-fiddler) oder [Statisches Routing](#simulate-a-failure-with-an-invalid-static-route) verwenden, um für Anforderungen an den primären Endpunkt Ihres Speicherkontos vom Typ [Georedundanter Speicher mit Lesezugriff](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) Fehler zu simulieren und zu erreichen, dass die Anwendung vom sekundären Endpunkt liest.
 
 ![Szenario-App](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
@@ -117,7 +117,7 @@ Drücken Sie anschließend zum Fortsetzen der Anwendung **eine Taste**. Die Anwe
 
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Simulieren eines Fehlers mit einer ungültigen statischen Route 
-Sie können eine ungültige statische Route für alle Anforderungen an den primären Endpunkt Ihres Speicherkontos vom Typ [Georedundanter Speicher mit Lesezugriff](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) erstellen. In diesem Tutorial wird der lokale Host als Gateway für das Weiterleiten von Anforderungen an das Speicherkonto verwendet. Die Nutzung des lokalen Hosts als Gateway bewirkt, dass für alle Anforderungen an den primären Endpunkt Ihres Speicherkontos eine Schleife zurück zum Host erfolgt. Dies führt schließlich zu einem Fehler. Führen Sie die folgenden Schritte aus, um einen Fehler zu simulieren und die Wiederherstellung des primären Endpunkts mit einer ungültigen statischen Route durchzuführen. 
+Sie können eine ungültige statische Route für alle Anforderungen an den primären Endpunkt Ihres Speicherkontos vom Typ [Georedundanter Speicher mit Lesezugriff](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) erstellen. In diesem Tutorial wird der lokale Host als Gateway für das Weiterleiten von Anforderungen an das Speicherkonto verwendet. Die Nutzung des lokalen Hosts als Gateway bewirkt, dass für alle Anforderungen an den primären Endpunkt Ihres Speicherkontos eine Schleife zurück zum Host erfolgt. Dies führt schließlich zu einem Fehler. Führen Sie die folgenden Schritte aus, um einen Fehler zu simulieren und die Wiederherstellung des primären Endpunkts mit einer ungültigen statischen Route durchzuführen. 
 
 ### <a name="start-and-pause-the-application"></a>Starten und Anhalten der Anwendung
 

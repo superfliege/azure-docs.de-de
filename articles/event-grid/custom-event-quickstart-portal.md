@@ -1,85 +1,118 @@
 ---
-title: "Benutzerdefinierte Ereignisse für Azure Event Grid mit dem Azure-Portal | Microsoft-Dokumentation"
-description: "Verwenden Sie Azure Event Grid und PowerShell, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren."
+title: Benutzerdefinierte Ereignisse für Azure Event Grid mit dem Azure-Portal | Microsoft-Dokumentation
+description: Verwenden Sie Azure Event Grid und PowerShell, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren.
 services: event-grid
-keywords: 
+keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 01/30/2018
+ms.date: 03/23/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: f37d496d43bb24c51d6e1c11b77d9ceba48b7b23
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f1185c0b2d5d320cd712642f422408348bee7a37
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit dem Azure Portal und Event Grid
 
-Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel erstellen Sie über das Azure-Portal ein benutzerdefiniertes Thema, abonnieren dieses Thema und lösen das Ereignis aus, um das Ergebnis anzuzeigen. Ereignisse werden üblicherweise an einen Endpunkt gesendet, der auf das Ereignis reagiert (beispielsweise ein Webhook oder eine Azure-Funktion). Der Einfachheit halber senden wir die Ereignisse in diesem Artikel allerdings an eine URL, die die Nachrichten lediglich sammelt. Sie erstellen diese URL mithilfe von Drittanbietertools entweder über [RequestBin](https://requestb.in/) oder [Hookbin](https://hookbin.com/).
-
->[!NOTE]
->**RequestBin** und **Hookbin** sind nicht für hohen Durchsatz konzipiert. Die Verwendung dieser Tools dient lediglich zur Veranschaulichung. Wenn Sie gleichzeitig mehrere Ereignisse pushen, werden möglicherweise nicht alle Ereignisse im Tool angezeigt.
-
-Nach Abschluss des Vorgangs sehen Sie, dass die Ereignisdaten an einen Endpunkt gesendet wurden.
-
-![Ereignisdaten](./media/custom-event-quickstart-portal/request-result.png)
+Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel erstellen Sie über das Azure-Portal ein benutzerdefiniertes Thema, abonnieren dieses Thema und lösen das Ereignis aus, um das Ergebnis anzuzeigen. Sie senden das Ereignis an eine Azure-Funktion, mit der die Ereignisdaten protokolliert werden. Nach Abschluss des Vorgangs sehen Sie, dass die Ereignisdaten an einen Endpunkt gesendet und protokolliert wurden.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-
-Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe platziert werden. Die Azure-Ressourcengruppe ist eine logische Sammlung, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
-
-1. Klicken Sie im linken Navigationsbereich auf **Ressourcengruppen**. Klicken Sie anschließend auf **Hinzufügen**.
-
-   ![Ressourcengruppe erstellen](./media/custom-event-quickstart-portal/create-resource-group.png)
-
-1. Legen Sie den Namen der Ressourcengruppe auf *gridResourceGroup* und den Standort auf *westus2* fest. Klicken Sie auf **Erstellen**.
-
-   ![Angeben von Ressourcengruppenwerten](./media/custom-event-quickstart-portal/provide-resource-group-values.png)
-
 ## <a name="create-a-custom-topic"></a>Erstellen eines benutzerdefinierten Themas
 
-Ein Thema bietet einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse. 
+Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse. 
 
-1. Klicken Sie zum Erstellen eines Themas in der Ressourcengruppe auf **Alle Dienste**, und suchen Sie nach *Event Grid*. Wählen Sie die Option **Event Grid-Themen** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-   ![Erstellen eines Event Grid-Themas](./media/custom-event-quickstart-portal/create-event-grid-topic.png)
+1. Wählen Sie zum Erstellen eines benutzerdefinierten Themas die Option **Ressource erstellen**. 
 
-1. Wählen Sie **Hinzufügen**.
+   ![Erstellen einer Ressource](./media/custom-event-quickstart-portal/create-resource.png)
 
-   ![Hinzufügen eines Event Grid-Themas](./media/custom-event-quickstart-portal/add-topic.png)
+1. Suchen Sie nach *Event Grid-Thema*, und wählen Sie diese Option aus den verfügbaren Optionen aus.
 
-1. Geben Sie einen Namen für das Thema an. Der Name des Themas muss eindeutig sein, da er durch einen DNS-Eintrag dargestellt wird. Wählen Sie eine der [unterstützten Regionen](overview.md) aus. Wählen Sie die Ressourcengruppe aus, die Sie zuvor erstellt haben. Klicken Sie auf **Erstellen**.
+   ![Suchen nach dem Event Grid-Thema](./media/custom-event-quickstart-portal/search-event-grid.png)
 
-   ![Angeben von Werten für das Event Grid-Thema](./media/custom-event-quickstart-portal/provide-topic-values.png)
+1. Klicken Sie auf **Erstellen**.
 
-1. Klicken Sie nach Erstellung des Themas auf **Aktualisieren**, damit das Thema angezeigt wird.
+   ![Starten von Schritten](./media/custom-event-quickstart-portal/select-create.png)
 
-   ![Anzeigen des Event Grid-Themas](./media/custom-event-quickstart-portal/see-topic.png)
+1. Geben Sie einen eindeutigen Namen für das benutzerdefinierte Thema an. Der Name des Themas muss eindeutig sein, da er durch einen DNS-Eintrag dargestellt wird. Verwenden Sie nicht den Namen, der in der Abbildung zu sehen ist. Erstellen Sie stattdessen einen eigenen Namen. Wählen Sie eine der [unterstützten Regionen](overview.md) aus. Geben Sie einen Namen für die Ressourcengruppe an. Klicken Sie auf **Erstellen**.
 
-## <a name="create-a-message-endpoint"></a>Erstellen eines Nachrichtenendpunkts
+   ![Angeben von Werten für das Event Grid-Thema](./media/custom-event-quickstart-portal/create-custom-topic.png)
 
-Vor dem Abonnieren des Themas erstellen wir zunächst den Endpunkt für die Ereignisnachricht. Wir schreiben allerdings keinen Code, um eine Reaktion auf das Ereignis auszulösen, sondern erstellen einen Endpunkt, der die Nachrichten sammelt, damit Sie sie anzeigen können. RequestBin und Hookbin sind Open-Source-Drittanbietertools, mit denen Sie einen Endpunkt erstellen und Anforderungen anzeigen können, die an ihn gesendet werden. Klicken Sie in [RequestBin](https://requestb.in/) auf **Create a RequestBin** (RequestBin erstellen), oder klicken Sie in [Hookbin](https://hookbin.com/) auf **Create New Endpoint** (Neuen Endpunkt erstellen).  Kopieren Sie die Bin-URL. Sie wird zum Abonnieren des Themas benötigt.
+1. Nachdem das benutzerdefinierte Thema erstellt wurde, erhalten Sie eine entsprechende Benachrichtigung.
+
+   ![Benachrichtigung über die erfolgreiche Erstellung](./media/custom-event-quickstart-portal/success-notification.png)
+
+   Falls die Bereitstellung nicht erfolgreich war, können Sie die Ursache des Fehlers ermitteln. Wählen Sie **Fehler bei der Bereitstellung**.
+
+   ![Wählen von „Fehler bei der Bereitstellung“](./media/custom-event-quickstart-portal/select-failed.png)
+
+   Wählen Sie die Fehlermeldung aus.
+
+   ![Wählen von „Fehler bei der Bereitstellung“](./media/custom-event-quickstart-portal/failed-details.png)
+
+   In der folgenden Abbildung ist eine Bereitstellung dargestellt, die fehlgeschlagen ist, weil der Name für das benutzerdefinierte Thema bereits verwendet wird. Wenn dieser Fehler angezeigt wird, sollten Sie versuchen, die Bereitstellung mit einem anderen Namen erneut durchzuführen.
+
+   ![Namenskonflikt](./media/custom-event-quickstart-portal/name-conflict.png)
+
+## <a name="create-an-azure-function"></a>Erstellen einer Azure Function
+
+Vor dem Abonnieren des Themas erstellen wir zunächst den Endpunkt für die Ereignisnachricht. In diesem Artikel verwenden Sie Azure Functions, um eine Funktions-App für den Endpunkt zu erstellen.
+
+1. Wählen Sie zum Erstellen einer Funktion die Option **Ressource erstellen**.
+
+   ![Erstellen einer Ressource](./media/custom-event-quickstart-portal/create-resource-small.png)
+
+1. Wählen Sie **Compute** und dann **Funktionen-App**.
+
+   ![Erstellen einer Funktion](./media/custom-event-quickstart-portal/create-function.png)
+
+1. Geben Sie einen eindeutigen Namen für die Azure-Funktion an. Verwenden Sie nicht den Namen, der in der Abbildung zu sehen ist. Wählen Sie die Ressourcengruppe aus, die Sie in diesem Artikel erstellt haben. Verwenden Sie als Hostingplan die Option **Verbrauchstarif**. Verwenden Sie das vorgeschlagene neue Speicherkonto. Wählen Sie nach dem Angeben der Werte die Option **Erstellen**.
+
+   ![Angeben von Funktionswerten](./media/custom-event-quickstart-portal/provide-function-values.png)
+
+1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressource wechseln**.
+
+   ![Zu Ressource wechseln](./media/custom-event-quickstart-portal/go-to-resource.png)
+
+1. Wählen Sie neben **Funktionen** das Pluszeichen (**+**).
+
+   ![Hinzufügen einer Funktion](./media/custom-event-quickstart-portal/add-function.png)
+
+1. Wählen Sie aus den verfügbaren Optionen die Option **Benutzerdefinierte Funktion**.
+
+   ![Benutzerdefinierte Funktion](./media/custom-event-quickstart-portal/select-custom-function.png)
+
+1. Scrollen Sie nach unten bis zu **Event Grid-Trigger**. Wählen Sie **C#**.
+
+   ![Auswählen des Event Grid-Triggers](./media/custom-event-quickstart-portal/select-event-grid-trigger.png)
+
+1. Übernehmen Sie die Standardwerte, und wählen Sie **Erstellen**.
+
+   ![Neue Funktion](./media/custom-event-quickstart-portal/new-function.png)
+
+Die Funktion ist jetzt bereit zum Empfangen von Ereignissen.
 
 ## <a name="subscribe-to-a-topic"></a>Abonnieren eines Themas
 
-Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten. 
+Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten und wohin diese gesendet werden sollen.
 
-1. Klicken Sie zum Erstellen eines Event Grid-Abonnements erneut auf **Alle Dienste**, und suchen Sie nach *Event Grid*. Wählen Sie die Option **Event Grid-Abonnements** aus.
+1. Wählen Sie in Ihrer Azure-Funktion die Option **Event Grid-Abonnement hinzufügen**.
 
-   ![Erstellen eines Event Grid-Abonnements](./media/custom-event-quickstart-portal/create-subscription.png)
+   ![Hinzufügen eines Event Grid-Abonnements](./media/custom-event-quickstart-portal/add-event-grid-subscription.png)
 
-1. Klicken Sie auf **+ Ereignisabonnement**.
+1. Geben Sie Werte für das Abonnement an. Wählen Sie als Thementyp die Option **Event Grid-Themen**. Wählen Sie als Abonnement und Ressourcengruppe das Abonnement und die Ressourcengruppe aus, die Sie beim Erstellen Ihres benutzerdefinierten Themas verwendet haben. Wählen Sie beispielsweise den Namen Ihres benutzerdefinierten Themas aus. Für den Abonnentenendpunkt ist die URL für die Funktion bereits angegeben.
 
-   ![Hinzufügen eines Event Grid-Abonnements](./media/custom-event-quickstart-portal/add-subscription.png)
+   ![Angeben der Abonnementwerte](./media/custom-event-quickstart-portal/provide-subscription-values.png)
 
-1. Geben Sie einen eindeutigen Namen für Ihr Ereignisabonnement an. Wählen Sie für den Thementyp die Option **Event Grid-Themen** aus. Wählen Sie für diese Instanz das benutzerdefinierte Thema aus, das Sie erstellt haben. Geben Sie als Endpunkt für die Ereignisbenachrichtigung die URL aus RequestBin oder Hookbin an. Klicken Sie nach Angabe der Werte auf **OK**.
+1. Öffnen Sie vor dem Auslösen des Ereignisses die Protokolle für die Funktion, damit Sie die Ereignisdaten sehen, wenn diese gesendet werden. Wählen Sie unten in Ihrer Azure-Funktion die Option **Protokolle**.
 
-   ![Angeben von Werten für das Event Grid-Abonnement](./media/custom-event-quickstart-portal/provide-subscription-values.png)
+   ![Auswählen von „Protokolle“](./media/custom-event-quickstart-portal/select-logs.png)
 
-Als Nächstes lösen wir ein Ereignis aus, um zu sehen, wie Event Grid die Nachricht an Ihren Endpunkt weiterleitet. Verwenden Sie zur Vereinfachung dieses Artikels Cloud Shell, um Beispielereignisdaten an das Thema zu senden. Üblicherweise werden die Ereignisdaten von einer Anwendung oder einem Azure-Dienst gesendet.
+Als Nächstes lösen wir ein Ereignis aus, um zu sehen, wie Event Grid die Nachricht an Ihren Endpunkt weiterleitet. Verwenden Sie zur Vereinfachung dieses Artikels Cloud Shell, um Beispielereignisdaten an das benutzerdefinierte Thema zu senden. Üblicherweise werden die Ereignisdaten von einer Anwendung oder einem Azure-Dienst gesendet.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -88,8 +121,8 @@ Als Nächstes lösen wir ein Ereignis aus, um zu sehen, wie Event Grid die Nachr
 Zunächst rufen wir die URL und den Schlüssel für das Thema ab. Verwenden Sie Ihren Themennamen für `<topic_name>`.
 
 ```azurecli-interactive
-endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query "endpoint" --output tsv)
-key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
+endpoint=$(az eventgrid topic show --name <topic_name> -g myResourceGroup --query "endpoint" --output tsv)
+key=$(az eventgrid topic key list --name <topic_name> -g myResourceGroup --query "key1" --output tsv)
 ```
 
 Im folgenden Beispiel werden Beispielereignisdaten abgerufen:
@@ -98,41 +131,27 @@ Im folgenden Beispiel werden Beispielereignisdaten abgerufen:
 body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
 ```
 
-Mithilfe von `echo "$body"` können Sie das vollständige Ereignis anzeigen. Bei dem `data`-Element des JSON-Codes handelt es sich um die Nutzlast Ihres Ereignisses. Für dieses Feld kann ein beliebiger wohlgeformter JSON-Code verwendet werden. Sie können auch das Betrefffeld zur erweiterten Weiterleitung und Filterung verwenden.
+Verwenden Sie `echo "$body"`, um das vollständige Ereignis anzuzeigen. Bei dem `data`-Element des JSON-Codes handelt es sich um die Nutzlast Ihres Ereignisses. Für dieses Feld kann ein beliebiger wohlgeformter JSON-Code verwendet werden. Sie können auch das Betrefffeld zur erweiterten Weiterleitung und Filterung verwenden.
 
-CURL ist ein Hilfsprogramm zum Ausführen von HTTP-Anforderungen. In diesem Artikel wird CURL verwendet, um ein Ereignis an das Thema zu senden. 
+CURL ist ein Hilfsprogramm zum Senden von HTTP-Anforderungen. In diesem Artikel wird CURL verwendet, um ein Ereignis an das benutzerdefinierte Thema zu senden. 
 
 ```azurecli-interactive
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpunkt gesendet, den Sie beim Abonnieren konfiguriert haben. Browsen Sie zur zuvor erstellten Endpunkt-URL. Oder klicken Sie im geöffneten Browser auf die Option zum Aktualisieren. Das soeben gesendete Ereignis wird angezeigt.
+Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpunkt gesendet, den Sie beim Abonnieren konfiguriert haben. Sehen Sie sich die Protokolle an, um die Ereignisdaten anzuzeigen.
 
-```json
-[{
-  "id": "1807",
-  "eventType": "recordInserted",
-  "subject": "myapp/vehicles/motorcycles",
-  "eventTime": "2017-08-10T21:03:07+00:00",
-  "data": {
-    "make": "Ducati",
-    "model": "Monster"
-  },
-  "dataVersion": "1.0",
-  "metadataVersion": "1",
-  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
-}]
-```
+![Anzeigen von Protokollen](./media/custom-event-quickstart-portal/view-log-entry.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie dieses Ereignis weiterverwenden möchten, überspringen Sie die Bereinigung der in diesem Artikel erstellten Ressourcen. Löschen Sie andernfalls die in diesem Artikel erstellten Ressourcen.
+Wenn Sie dieses Ereignis weiterverwenden möchten, können Sie die Bereinigung der in diesem Artikel erstellten Ressourcen überspringen. Löschen Sie andernfalls die Ressourcen, die Sie in diesem Artikel erstellt haben.
 
 Wählen Sie die Ressourcengruppe aus, und klicken Sie auf **Ressourcengruppe löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben gelernt, wie Sie Themen und Ereignisabonnements erstellen. Nun können Sie sich ausführlicher darüber informieren, welche Möglichkeiten Event Grid bietet:
+Sie haben gelernt, wie Sie benutzerdefinierte Themen und Ereignisabonnements erstellen. Nun können Sie sich ausführlicher darüber informieren, welche Möglichkeiten Event Grid bietet:
 
 - [An introduction to Azure Event Grid](overview.md) (Einführung in Azure Event Grid)
 - [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)

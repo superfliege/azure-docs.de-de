@@ -1,13 +1,13 @@
 ---
 title: Zusammenfassen mehrerer Azure AD-Instanzen zu einem Verbund mit einer einzelnen AD FS-Instanz | Microsoft-Dokumentation
 description: In diesem Dokument erfahren Sie, wie mehrere Azure AD-Instanzen mit einer einzelnen AD FS-Instanz zu einem Verbund zusammenfassen.
-keywords: "Verbund erstellen, ADFS, AD FS, mehrere Mandanten, einzelne AD FS-Instanz, eine ADFS-Instanz, Verbund mit mehreren Mandanten, ADFS mit mehreren Gesamtstrukturen, AAD Connect, Verbund, mandantenübergreifender Verbund"
+keywords: Verbund erstellen, ADFS, AD FS, mehrere Mandanten, einzelne AD FS-Instanz, eine ADFS-Instanz, Verbund mit mehreren Mandanten, ADFS mit mehreren Gesamtstrukturen, AAD Connect, Verbund, mandantenübergreifender Verbund
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
-ms.openlocfilehash: dcdf9d0539e71a2b1e9fd12f4b97e6c1e8653c79
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c55a4232c54308c5d000cfefc2c7dca2800b462c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS
+# <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS
 
 Mehrere Gesamtstrukturen können in einer einzelnen hochverfügbaren AD FS-Farm zu einem Verbund zusammengefasst werden, sofern zwischen ihnen eine bidirektionale Vertrauensstellung eingerichtet ist. Die Gesamtstrukturen können der gleichen Azure Active Directory-Instanz entsprechen, müssen aber nicht. In diesem Artikel erfahren Sie, wie Sie einen Verbund zwischen einer einzelnen AD FS-Bereitstellung und mehreren Gesamtstrukturen konfigurieren, die mit unterschiedlichen Azure AD-Instanzen synchronisiert werden.
 
@@ -33,25 +33,25 @@ Mehrere Gesamtstrukturen können in einer einzelnen hochverfügbaren AD FS-Farm 
 > [!NOTE]
 > In diesem Szenario kann der Verbund nicht mithilfe von Azure AD Connect konfiguriert werden, da Azure AD Connect zum Konfigurieren des Verbunds von Domänen in einer einzelnen Azure AD-Instanz verwendet wird.
 
-##<a name="steps-for-federating-ad-fs-with-multiple-azure-ad"></a>Schritte zum Erstellen eines Verbunds mit AD FS und mehreren Azure AD-Instanzen
+## <a name="steps-for-federating-ad-fs-with-multiple-azure-ad"></a>Schritte zum Erstellen eines Verbunds mit AD FS und mehreren Azure AD-Instanzen
 
 Angenommen, eine Domäne namens „contoso.com“ ist in „contoso.onmicrosoft.com“ (Azure Active Directory) bereits Teil eines Verbunds mit der lokalen AD FS-Instanz, die in der lokalen Active Directory-Umgebung „contoso.com“ installiert ist. „fabrikam.com“ ist eine Domäne in „fabrikam.onmicrosoft.com“ (Azure Active Directory).
 
-##<a name="step-1-establish-a-two-way-trust"></a>Schritt 1: Einrichten einer bidirektionale Vertrauensstellung
+## <a name="step-1-establish-a-two-way-trust"></a>Schritt 1: Einrichten einer bidirektionale Vertrauensstellung
  
 Damit AD FS in „contoso.com“ Benutzer in „fabrikam.com“ authentifizieren kann, ist zwischen „contoso.com“ und „fabrikam.com“ eine bidirektionale Vertrauensstellung erforderlich. Eine Anleitung zum Erstellen der bidirektionalen Vertrauensstellung finden Sie in [diesem Artikel](https://technet.microsoft.com/library/cc816590.aspx).
  
-##<a name="step-2-modify-contosocom-federation-settings"></a>Schritt 2: Ändern der Verbundeinstellungen für „contoso.com“ 
+## <a name="step-2-modify-contosocom-federation-settings"></a>Schritt 2: Ändern der Verbundeinstellungen für „contoso.com“ 
  
-Für den Verbund zwischen einer einzelnen Domäne und AD FS ist der Standardaussteller „http://ADFSServiceFQDN/adfs/services/trust“ festgelegt (Beispiel: http://fs.contoso.com/adfs/services/trust). Azure Active Directory benötigt für jede Verbunddomäne einen eindeutigen Aussteller. Da die gleiche AD FS-Instanz zwei Domänen zu einem Verbund zusammenfasst, muss der Ausstellerwert so angepasst werden, dass er für jede Domäne eindeutig ist, die AD FS mit Azure Active Directory zu einem Verbund zusammenfasst. 
+Für den Verbund zwischen einer einzelnen Domäne und AD FS ist der Standardaussteller http://ADFSServiceFQDN/adfs/services/trust festgelegt (Beispiel: http://fs.contoso.com/adfs/services/trust). Azure Active Directory benötigt für jede Verbunddomäne einen eindeutigen Aussteller. Da die gleiche AD FS-Instanz zwei Domänen zu einem Verbund zusammenfasst, muss der Ausstellerwert so angepasst werden, dass er für jede Domäne eindeutig ist, die AD FS mit Azure Active Directory zu einem Verbund zusammenfasst. 
  
 Öffnen Sie auf dem AD FS-Server Azure AD PowerShell, und führen Sie die folgenden Schritte aus:
  
 Stellen Sie mit „Connect-MsolService“ eine Verbindung mit der Azure Active Directory-Instanz her, die die Domäne „contoso.com“ enthält. Aktualisieren Sie mit „Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain“ die Verbundeinstellungen für „contoso.com“.
  
-Der Aussteller in der Domänenverbundeinstellung wird in „http://contoso.com/adfs/services/trust“ geändert, und für die Vertrauensstellung der vertrauenden Seite von Azure AD wird eine Ausstellungsanspruchsregel hinzugefügt, um auf der Grundlage des UPN-Suffixes den korrekten issuerId-Wert auszugeben.
+Der Aussteller in der Domänenverbundeinstellung wird in http://contoso.com/adfs/services/trust geändert, und für die Vertrauensstellung der vertrauenden Seite von Azure AD wird eine Ausstellungsanspruchsregel hinzugefügt, um auf der Grundlage des UPN-Suffixes den korrekten issuerId-Wert auszugeben.
  
-##<a name="step-3-federate-fabrikamcom-with-ad-fs"></a>Schritt 3: Erstellen eines Verbunds mit „fabrikam.com“ und AD FS
+## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>Schritt 3: Erstellen eines Verbunds mit „fabrikam.com“ und AD FS
  
 Gehen Sie in der Azure AD PowerShell-Sitzung wie folgt vor: Stellen Sie eine Verbindung mit der Azure Active Directory-Instanz her, die die Domäne „fabrikam.com“ enthält.
 

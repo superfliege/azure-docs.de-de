@@ -1,8 +1,8 @@
 ---
-title: "Übersicht über die Zugriffssteuerung in Data Lake Store | Microsoft-Dokumentation"
+title: Übersicht über die Zugriffssteuerung in Data Lake Store | Microsoft-Dokumentation
 description: Grundlegende Informationen zur Funktionsweise der Zugriffssteuerung in Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ec0d1fa9c422dbe4958c5d5f0b7a6e093aeb32da
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Zugriffssteuerung in Azure Data Lake Store
 
@@ -124,15 +124,15 @@ Im Folgenden sind einige allgemeine Szenarien aufgeführt, die veranschaulichen,
 
 ## <a name="viewing-permissions-in-the-azure-portal"></a>Anzeigen der Berechtigungen im Azure-Portal
 
-Klicken Sie auf dem Blatt **Daten-Explorer** des Data Lake Store-Kontos auf **Zugriff**, um die ACLs für eine Datei oder einen Ordner anzuzeigen. Klicken Sie auf **Zugriff**, um die ACLs für den Ordner **catalog** unter dem Konto **mydatastore** anzuzeigen.
+Klicken Sie auf dem Blatt **Daten-Explorer** des Data Lake Store-Kontos auf **Zugriff**, um die ACLs für die jeweilige Datei bzw. den Ordner im Daten-Explorer anzuzeigen. Klicken Sie auf **Zugriff**, um die ACLs für den Ordner **catalog** unter dem Konto **mydatastore** anzuzeigen.
 
 ![Data Lake Store-ACLs](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
 
-Auf diesem Blatt enthält der obere Bereich eine Übersicht über Ihre Berechtigungen. (Im Screenshot hat der Benutzer den Namen Bob.) Darunter sind die Zugriffsberechtigungen angegeben. Klicken Sie anschließend auf dem Blatt **Zugriff** auf **Einfache Ansicht**, um zu einer einfacheren Darstellung zu wechseln.
+Auf diesem Blatt werden im oberen Bereich die Besitzerberechtigungen angezeigt. (Im Screenshot hat der Besitzer den Namen Bob.) Danach werden die zugewiesenen Zugriffssteuerungslisten für den Zugriff angezeigt. 
 
 ![Data Lake Store-ACLs](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
 
-Klicken Sie auf **Erweiterte Ansicht**, um die erweiterte Ansicht mit Standard-ACLs, Maske und „Superuser“ (Administrator) anzuzeigen.
+Klicken Sie auf **Erweiterte Ansicht**, um die erweiterte Ansicht mit Standard-ACLs, Maske und einer Beschreibung der „Superuser“ (Administratoren) anzuzeigen.  Auf diesem Blatt können Sie auch den Zugriff und die Standard-ACLs für untergeordnete Dateien und Ordner basierend auf den Berechtigungen des aktuellen Ordners rekursiv festlegen.
 
 ![Data Lake Store-ACLs](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
@@ -164,7 +164,7 @@ Der Benutzer, der das Element erstellt hat, ist automatisch der zuständige Benu
 * Er kann die zuständige Gruppe einer Datei ändern, für die er als Besitzer fungiert, solange der zuständige Benutzer auch der Zielgruppe angehört.
 
 > [!NOTE]
-> Der zuständige Benutzer einer anderen Datei, die sich im Besitz eines Benutzers befindet, kann vom zuständigen Benutzer *nicht* geändert werden. Nur Administratoren können den zuständigen Benutzer einer Datei oder eines Ordners ändern.
+> Der Besitzer kann einen anderen Besitzer einer Datei oder eines Ordners *nicht* ändern. Nur Administratoren können den zuständigen Benutzer einer Datei oder eines Ordners ändern.
 >
 >
 
@@ -177,9 +177,14 @@ Bei Erstellung eines neuen Dateisystemelements weist Data Lake Store der zustän
 * **1. Fall**: Der Stammordner „/“. Dieser Ordner wird erstellt, wenn ein Data Lake Store-Konto erstellt wird. In diesem Fall wird die zuständige Gruppe auf den Benutzer festgelegt, der das Konto erstellt hat.
 * **2. Fall** (jeder andere Fall): Beim Erstellen eines neuen Elements wird die zuständige Gruppe aus dem übergeordneten Ordner kopiert.
 
+Andernfalls verhält sich die zuständige Gruppe ähnlich wie zugewiesene Berechtigungen für andere Benutzer oder Gruppen.
+
 Die zuständige Gruppe kann von folgenden Benutzern geändert werden:
 * Beliebiger Administrator
 * Zuständiger Benutzer, sofern er auch der Zielgruppe angehört
+
+> [!NOTE]
+> Die zuständige Gruppe kann die ACLs einer Datei oder eines Ordners *nicht* ändern.
 
 ## <a name="access-check-algorithm"></a>Algorithmus für die Zugriffsüberprüfung
 
@@ -209,7 +214,7 @@ Hier sehen Sie, wo die Maske für eine Datei oder einen Ordner im Azure-Portal a
 ![Data Lake Store-ACLs](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
 
 > [!NOTE]
-> Bei einem neuen Data Lake Store-Konto wird die Maske für die Zugriffs- und die Standard-ACL des Stammordners („/“) standardmäßig auf „RWX“ festgelegt.
+> Bei einem neuen Data Lake Store-Konto wird die Maske für die Zugriffs-ACL des Stammordners („/“) standardmäßig auf „RWX“ festgelegt.
 >
 >
 
@@ -261,7 +266,7 @@ Das Sticky Bit ist ein erweitertes Feature eines POSIX-Dateisystems. Im Kontext 
 
 Die folgende Tabelle veranschaulicht die Funktionsweise des Sticky Bits in Data Lake Store:
 
-| Benutzergruppe         | File    | Ordner |
+| Benutzergruppe         | Datei    | Ordner |
 |--------------------|---------|-------------------------|
 | Sticky Bit **AUS** | Keine Auswirkungen   | Keine Auswirkungen.           |
 | Sticky Bit **EIN**  | Keine Auswirkungen   | Sorgt dafür, dass nur **Administratoren** und der **zuständige Benutzer** eines untergeordneten Elements dieses Element löschen oder umbenennen können.               |
@@ -308,7 +313,7 @@ Eine GUID wird angezeigt, wenn der Benutzer in Azure AD nicht mehr vorhanden ist
 
 ### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Unterstützt Data Lake Store die Vererbung von ACLs?
 
-Nein.
+Nein, aber Standard-ACLs können zum Festlegen von ACLs für untergeordnete Dateien und Ordner verwendet werden, die unter dem übergeordneten Ordner neu erstellt wurden.  
 
 ### <a name="what-is-the-difference-between-mask-and-umask"></a>Was ist der Unterschied zwischen „mask“ und „umask“?
 
@@ -317,7 +322,7 @@ Nein.
 | Die **mask** -Eigenschaft steht für jede Datei und jeden Ordner zur Verfügung. | **umask** ist eine Eigenschaft des Data Lake Store-Kontos. Data Lake Store enthält also nur ein einzelnes umask-Element.    |
 | Die mask-Eigenschaft für eine Datei oder einen Ordner kann vom zuständigen Benutzer oder von der zuständigen Gruppe einer Datei oder aber vom Administrator geändert werden. | Die umask-Eigenschaft kann von keinem Benutzer geändert werden – auch nicht von einem Administrator. Hierbei handelt es sich um einen unveränderlichen, konstanten Wert.|
 | Mithilfe der mask-Eigenschaft wird im Rahmen des Zugriffsüberprüfungsalgorithmus zur Laufzeit bestimmt, ob ein Benutzer zum Ausführen eines Vorgangs für eine Datei oder einen Ordner berechtigt ist. Die Rolle der Maske besteht in der Erstellung „effektiver Berechtigungen“ zum Zeitpunkt der Zugriffsüberprüfung. | „umask“ wird bei der Zugriffsüberprüfung überhaupt nicht verwendet. Mithilfe von „umask“ wird die Zugriffs-ACL neuer untergeordneter Elemente eines Ordners bestimmt. |
-| Die Maske ist ein 3-Bit-RWX-Wert, der zum Zeitpunkt der Zugriffsüberprüfung auf den benannten Benutzer, die benannte Gruppe und den zuständigen Benutzer angewendet wird.| Bei „umask“ handelt es sich um einen 9-Bit-Wert für den zuständigen Benutzer, die zuständige Gruppe und **andere Benutzer** eines neuen untergeordneten Elements.|
+| Die Maske ist ein 3-Bit-RWX-Wert, der zum Zeitpunkt der Zugriffsüberprüfung auf den benannten Benutzer, die zuständige Gruppe und die benannte Gruppe angewendet wird.| Bei „umask“ handelt es sich um einen 9-Bit-Wert für den zuständigen Benutzer, die zuständige Gruppe und **andere Benutzer** eines neuen untergeordneten Elements.|
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Wo finde ich weitere Informationen zum POSIX-Zugriffssteuerungsmodell?
 

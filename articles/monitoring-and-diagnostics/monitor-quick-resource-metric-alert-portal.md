@@ -1,6 +1,6 @@
 ---
-title: "Erhalten einer Benachrichtigung, wenn ein Metrikwert eine Bedingung erfüllt | Microsoft Docs"
-description: "Ein Schnellstartleitfaden für Benutzer, die eine Metrik für eine Logik-App erstellen möchten"
+title: Erhalten einer Benachrichtigung, wenn ein Metrikwert eine Bedingung erfüllt | Microsoft Docs
+description: Ein Schnellstartleitfaden für Benutzer, die eine Metrik für eine Logik-App erstellen möchten
 author: anirudhcavale
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 3c1a6271d0cb2157cb23f1dd4193eadba2c1679b
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 0bbb7d7036c18675a64171a8bbf5c7fa46d53336
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Erhalten einer Benachrichtigung, wenn ein Metrikwert eine Bedingung erfüllt
 
@@ -34,20 +34,20 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Suchen Sie nach **Logik-App**, und wählen Sie diese Option aus. Klicken Sie auf die Schaltfläche **Erstellen** .
 
-3. Geben Sie die in der folgenden Abbildung gezeigten Logik-App-Informationen ein.  Verwenden Sie den Standardort. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**.  Klicken Sie auf **Erstellen**, wenn Sie fertig sind. 
+3. Geben Sie den Namen „myLogicApp“ und die Ressourcengruppe „myResourceGroup“ ein. Verwenden Sie Ihr Abonnement.  Verwenden Sie den Standardort. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**.  Klicken Sie auf **Erstellen**, wenn Sie fertig sind. 
 
-    ![Eingeben grundlegender Informationen zu Ihrer Logik-App im Portal](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
+    ![Eingeben grundlegender Informationen zu Ihrer Logik-App im Portal](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
 
 
 4. Die Logik-App sollte an Ihr Dashboard angeheftet werden. Navigieren Sie zu der Logik-App, indem Sie darauf klicken.
 
 5. Wählen Sie im Bereich „Logik-App“ die Option **Logik-App-Designer** aus.
 
-     ![Erstellter Serientrigger im Logik-App-Designer im Bereich „Portal“](./media/monitoring-quick-resource-metric-alert-portal/logic-app-designer.png)  
+     ![Erstellter Serientrigger im Logik-App-Designer im Bereich „Portal“](./media/monitor-quick-resource-metric-alert-portal/logic-app-designer.png)  
 
 6. Richten Sie Werte wie in der folgenden Abbildung dargestellt ein.
 
-    ![Konfigurieren des Logik-App-Triggers im Bereich „Portal“](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-triggers.png)zu erstellen und zu verwalten. 
+    ![Konfigurieren des Logik-App-Triggers im Bereich „Portal“](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-triggers.png)zu erstellen und zu verwalten. 
 
 7. Wählen Sie im Designer den Trigger **Serie** aus.
 
@@ -75,7 +75,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 5. Jetzt sollte ein Diagramm angezeigt werden, das die Gesamtzahl der Ausführungen angibt, die Ihre Logik-App in der letzten Stunde gestartet hat. Sollten keine zu sehen sein, vergewissern Sie sich, dass seit dem letzten Schritt mindestens fünf Minuten vergangen sind. Aktualisieren Sie dann Ihren Browser. 
 
-    ![Zeichnen eines Metrikdiagramms für die Logik-App-Ressource](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
+    ![Zeichnen eines Metrikdiagramms für die Logik-App-Ressource](./media/monitor-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
 
 ## <a name="create-a-metric-alert-for-your-logic-app"></a>Hinzufügen einer Metrikwarnung für Ihre Logik-App
 
@@ -87,7 +87,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 4. Geben Sie schließlich unter **Zusätzliche Administrator-E-Mail-Adressen** Ihre E-Mail-Adresse ein. Diese Warnung stellt sicher, dass Sie eine E-Mail erhalten, wenn für Ihre Logik-App innerhalb eines Zeitraums von 5 Minuten mehr als 10 fehlerhafte Ausführungen aufgetreten sind.
 
-    ![Konfigurieren der Logik-App-Warnung im Bereich „Portal“](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metrics-alert-portal.png)
+    ![Konfigurieren der Logik-App-Warnung im Bereich „Portal“](./media/monitor-quick-resource-metric-alert-portal/logic-app-metrics-alert-portal.png)
 
 ## <a name="receive-metric-alert-notifications-for-your-logic-app"></a>Empfangen von Metrikwarnbenachrichtigungen für Ihre Logik-App
 1. Nach kurzer Zeit sollten Sie eine E-Mail von „Microsoft Azure Alerts“ erhalten, um Sie zu informieren, dass die Warnung „aktiviert wurde“.

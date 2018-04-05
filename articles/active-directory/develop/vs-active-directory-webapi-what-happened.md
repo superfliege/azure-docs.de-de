@@ -3,8 +3,8 @@ title: Änderungen an einem WebAPI-Projekt, die vorgenommen werden, wenn Sie ein
 description: Beschreibt, was mit dem WebAPI-Projekt geschieht, wenn Sie mithilfe von Visual Studio eine Verbindung mit Azure AD herstellen.
 services: active-directory
 documentationcenter: ''
-author: kraigb
-manager: ghogen
+author: ghogen
+manager: douge
 editor: ''
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: kraigb
+ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: 140f555d28c4d5a923b9c255d8e61d7aea9bb23f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fc6506ccb7b4c9b7fa43a378df47094de92c73b6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem WebAPI-Projekt passiert (verbundener Visual Studio-Dienst für Azure Active Directory)?
 
@@ -33,7 +33,7 @@ Informationen zur Verwendung des verbundenen Diensts finden Sie unter [Erste Sch
 
 ## <a name="added-references"></a>Hinzugefügte Verweise
 
-Betrifft die *.NET-Projektdateiverweise und `packages.config` (NuGet-Verweise).
+Betrifft die Projektdatei (.NET-Verweise) und `packages.config` (NuGet-Verweise).
 
 | Typ | Verweis |
 | --- | --- |
@@ -70,9 +70,9 @@ Die folgenden Verweise werden entfernt (nur ASP.NET 4-Projekte, wie in Visual St
 
 ## <a name="project-file-changes"></a>Änderungen an der Projektdatei
 
-- Die Eigenschaft `IISExpressSSLPort` wird auf eine eindeutige Nummer festgelegt.
-- Die Eigenschaft `WebProject_DirectoryAccessLevelKey` wird auf 0 oder 1 festgelegt, wenn Sie die Option **Verzeichnisdaten lesen** ausgewählt haben.
-- Die Eigenschaft `IISUrl` wird auf `https://localhost:<port>/` festgelegt (dabei entspricht `<port>` dem Wert `IISExpressSSLPort`).
+- Die `IISExpressSSLPort`-Eigenschaft wird auf eine eindeutige Zahl festgelegt.
+- Die `WebProject_DirectoryAccessLevelKey`-Eigenschaft wird auf 0 festgelegt, oder auf 1, wenn Sie die Option **Verzeichnisdaten lesen** ausgewählt haben.
+- Die `IISUrl`-Eigenschaft wird auf `https://localhost:<port>/` festgelegt (dabei entspricht `<port>` dem Wert `IISExpressSSLPort`).
 
 ## <a name="webconfig-or-appconfig-changes"></a>Änderungen an „web.config“ oder „app.config“
 
@@ -124,8 +124,8 @@ Wenn Sie den verbundenen Dienst hinzufügen, sichert Visual Studio 2015 geänder
 
 ## <a name="changes-on-azure"></a>Änderungen in Azure
 
-- Eine Azure AD-Anwendung wird in der Domäne erstellt, die Sie beim Hinzufügen des verbundenen Diensts ausgewählt haben.
-- Die App wird aktualisiert, sodass sie die Berechtigung **Verzeichnisdaten lesen** enthält, sofern diese Option ausgewählt wurde.
+- Eine Azure AD-Anwendung wurde in der Domäne erstellt, die Sie beim Hinzufügen des verbundenen Diensts ausgewählt haben.
+- Die App wurde aktualisiert, damit sie die Berechtigung **Verzeichnisdaten lesen** enthält, sofern diese Option ausgewählt wurde.
 
 [Weitere Informationen zu Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
 

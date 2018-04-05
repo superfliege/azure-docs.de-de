@@ -5,7 +5,7 @@ services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a31ca1d6-856f-4aec-898a-07969ae5f7ec
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9311e998e67d8d0d56da68fc9460df32ce7ce5a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8472af2ac72a1976871970963851be775b19859b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-reach-sdk-integration"></a>Windows Universal-Apps Reach SDK-Integration
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Bevor Sie dieser Anleitung folgen, müssen Sie das unter [Integration des Windows Universal Engagement-SDK](mobile-engagement-windows-store-integrate-engagement.md) beschriebene Integrationsverfahren befolgen.
 
 ## <a name="embed-the-engagement-reach-sdk-into-your-windows-universal-project"></a>Einbetten des Engagement Reach-SDK in das Windows Universal-Projekt
@@ -137,7 +141,7 @@ Reach sucht auf Ihren Seiten nach den beiden `WebView` -Elementen, die für die 
     </Grid>
 
 
-In diesem Beispiel werden die `WebView` -Elemente gestreckt, damit sie in ihren Container passen, der automatisch bei Bildschirmdrehung oder Fenstergrößenänderung ihre Größe ändert.
+In diesem Beispiel wird für die `WebView`-Elemente Stretching durchgeführt, damit sie in ihren Container passen, der automatisch bei Bildschirmdrehung oder Fenstergrößenänderung ihre Größe ändert.
 
 > [!WARNING]
 > Es ist wichtig, die gleiche Benennung `engagement_notification_content` und `engagement_announcement_content` für die `WebView`-Elemente beizubehalten. Reach identifiziert sie anhand ihres Namens. 

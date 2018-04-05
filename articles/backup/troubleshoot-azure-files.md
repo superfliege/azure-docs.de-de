@@ -1,30 +1,29 @@
 ---
 title: Behandeln von Problemen mit der Azure Files-Sicherung
-description: "Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz von Azure Files (Dateifreigaben) in Azure."
+description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 services: backup
 ms.service: backup
-keywords: "Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen."
+keywords: Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen.
 author: markgalioto
 ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 3bc259245df86406e23418bac598c8b1e062d512
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c803118ccdafa8db0e8f8ddee608f60311f65e05
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>Behandeln von Problemen beim Sichern von Azure Files
-
 Die folgende Tabelle enthält Problembehandlungsinformationen für Probleme und Fehler, die bei der Verwendung der Azure Files-Sicherung auftreten können.
 
 ## <a name="preview-boundaries"></a>Einschränkungen der Vorschauversion
 Die Azure Files-Sicherung befindet sich in der Vorschauphase. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
-- Schützen von Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy.md#zone-redundant-storage) (zonenredundanter Speicher) oder [RA-GRS](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff)
-- Schützen von Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken
-- Sichern von Azure Files mithilfe von PowerShell oder über die Befehlszeilenschnittstelle
+- Schützen von Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy.md#zone-redundant-storage) (zonenredundanter Speicher) oder [RA-GRS](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff)
+- Schützen von Azure-Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken
+- Sichern von Azure-Dateifreigaben mithilfe von PowerShell oder über die Befehlszeilenschnittstelle
 
 ### <a name="limitations"></a>Einschränkungen
 - Die maximale Anzahl von geplanten Sicherungen pro Tag beträgt 1.
@@ -65,5 +64,5 @@ Die folgende Tabelle bezieht sich auf die Konfiguration der Sicherung:
 
 ## <a name="see-also"></a>Siehe auch
 Weitere Informationen zum Sichern von Azure-Dateifreigaben finden Sie in den folgenden Artikeln:
-- [Back up Azure File shares](backup-azure-files.md) (Sichern von Azure-Dateifreigaben)
-- [Questions about backing up Azure Files](backup-azure-files-faq.md) (Fragen zum Sichern von Azure Files)
+- [Sichern von Azure-Dateifreigaben](backup-azure-files.md)
+- [Fragen zum Sichern von Azure Files](backup-azure-files-faq.md)

@@ -1,11 +1,11 @@
 ---
 title: Verwenden der Engagement-API unter Android
-description: "Neuestes Android SDK – Verwenden der Engagement-API unter Android"
+description: Neuestes Android SDK – Verwenden der Engagement-API unter Android
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 09b62659-82ae-4a55-8784-fca0b6b22eaf
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: d353cd2fe47c54a0282cc5bb1b22b4a56e0cd82c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79d0652be227dd6703a35d31409cf8e0d9c59519
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-android"></a>Verwenden der Engagement-API unter Android
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Dieses Dokument ergänzt das Dokument [Erweiterte Berichterstellungsoptionen für Android für Azure Mobile Engagement SDK](mobile-engagement-android-advanced-reporting.md). Es bietet tiefergehende Details zur Verwendung der Engagement-API, um Ihre Anwendungsstatistik zu melden.
 
 Bedenken Sie, dass die einfachste Methode darin besteht, dass Ihre `Activity`-Unterklassen von der entsprechenden `EngagementActivity`-Klasse erben, wenn Engagement lediglich die Sitzungen, Aktivitäten, Abstürze und technischen Informationen Ihrer Anwendung melden soll.
@@ -237,7 +241,7 @@ Diese Daten können strukturiert werden. Sie verwenden die „Bundle“-Klasse v
             extras.putString("ref_click", "http://foobar.com/blog");
             EngagementAgent.getInstance(context).sendEvent("video_clicked", extras);
 
-### <a name="limits"></a>Grenzen
+### <a name="limits"></a>Einschränkungen
 #### <a name="keys"></a>Schlüssel
 Jeder Schlüssel in `Bundle` muss mit dem folgenden regulären Ausdruck übereinstimmen:
 
@@ -267,7 +271,7 @@ Hier folgt ein Codebeispiel zum Senden von Geschlecht und Geburtstag des Benutze
             appInfo.putString("expiration", "2016-12-07"); // December 7th 2016
             EngagementAgent.getInstance(context).sendAppInfo(appInfo);
 
-### <a name="limits"></a>Grenzen
+### <a name="limits"></a>Einschränkungen
 #### <a name="keys"></a>Schlüssel
 Jeder Schlüssel in `Bundle` muss mit dem folgenden regulären Ausdruck übereinstimmen:
 

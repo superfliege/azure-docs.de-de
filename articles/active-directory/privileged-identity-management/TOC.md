@@ -2,7 +2,7 @@
 ## [Schützen des privilegierten Zugriffs](active-directory-securing-privileged-access.md)
 ## [Was ist Azure AD PIM?](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Rollen](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [PIM für Azure-Ressourcen (Vorschauversion)](azure-pim-resource-rbac.md)
+## [PIM für Azure-Ressourcen](azure-pim-resource-rbac.md)
 ## [Genehmigungsworkflows in Privileged Identity Management](azure-ad-pim-approval-workflow.md)
 
 # Erste Schritte
@@ -24,12 +24,12 @@
 ### [Anfordern von MFA](../active-directory-privileged-identity-management-how-to-require-mfa.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ### [Verwenden des Überwachungsprotokolls](../active-directory-privileged-identity-management-how-to-use-audit-log.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 
 # Verwandte Themen
 ## [Azure Active Directory](/azure/active-directory/)
 ## [Rollenbasierte Zugriffssteuerung](../role-based-access-control-what-is.md)
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

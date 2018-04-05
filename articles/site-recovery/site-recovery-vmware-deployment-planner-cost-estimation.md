@@ -1,12 +1,12 @@
 ---
-title: "Azure Site Recovery Deployment Planner für „VMware zu Azure“ | Microsoft-Dokumentation"
+title: Azure Site Recovery Deployment Planner für „VMware zu Azure“ | Microsoft-Dokumentation
 description: Dies ist ein Leitfaden zum Azure Site Recovery Deployment Planner.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: 63963804b81aa57e914e18fa474963a3830d04d5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 337217e66fe4d3780af197911a0e72c6f936e411
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation  
 
@@ -110,7 +110,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 * Each DR drill duration (Days) (Dauer einzelner DR-Drills (Tage)) 
 * OS Type (Betriebssystemtyp)
 * Datenredundanz 
-* Azure-Vorteil bei Hybridnutzung
+* Azure-Hybridvorteil
 
 3.  Sie können auf alle VMs der Tabelle den gleichen Wert anwenden, indem Sie für „Number of DR drills in a year“, „Each DR drill duration (Days)“, „Data redundancy“ und „Azure Hybrid Use Benefit“ auf die Schaltfläche „Apply to all“ (Auf alle anwenden) klicken.
 
@@ -136,7 +136,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 **Data redundancy** (Datenredundanz): Dies kann einer der folgenden Werte sein: „Locally redundant storage (LRS)“ (Lokal redundanter Speicher), „Geo-redundant storage (GRS)“ (Georedundanter Speicher) oder „Read-access geo-redundant storage (RA-GRS)“ (Georedundanter Speicher mit Lesezugriff). LRS ist die Standardeinstellung. Sie können den Typ basierend auf Ihrem Speicherkonto für bestimmte VMs ändern, oder Sie können den neuen Typ auf alle VMs anwenden, indem Sie den Typ in obersten Zeile ändern und auf die Schaltfläche „Apply to all“ (Auf alle anwenden) klicken.  Die Speicherkosten für die Replikation werden basierend auf dem Preis für die Datenredundanz berechnet, die Sie ausgewählt haben. 
 
-**Azure Hybrid Use Benefit** (Azure-Hybridvorteil): Sie können den Azure-Vorteil bei Hybridnutzung auf Windows-VMs anwenden, falls zutreffend.  Die Standardeinstellung ist „Ja“. Sie können die Einstellung für bestimmte VMs ändern oder alle VMs aktualisieren, indem Sie auf die Schaltfläche „Auf alle anwenden“ klicken.
+**Azure-Hybridvorteil**: Sie können den Azure-Hybridvorteil auf virtuelle Windows-Computer anwenden, falls zutreffend.  Die Standardeinstellung ist „Ja“. Sie können die Einstellung für bestimmte VMs ändern oder alle VMs aktualisieren, indem Sie auf die Schaltfläche „Auf alle anwenden“ klicken.
 
 **Total Azure consumption** (Azure-Gesamtverbrauch): Umfasst Compute-, Speicher- und Azure Site Recovery-Lizenzkosten für Ihre Notfallwiederherstellung. Basierend auf Ihrer Auswahl werden die Kosten entweder monatlich oder jährlich angezeigt.
 

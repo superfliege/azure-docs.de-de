@@ -1,11 +1,11 @@
 ---
 title: Verwenden der Engagement-API auf iOS
-description: "Neuestes iOS-SDK – Verwenden der Engagement-API auf iOS"
+description: Neuestes iOS-SDK – Verwenden der Engagement-API auf iOS
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1fb4509e-3804-46c1-949f-1cf727f91f9f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 189a3029449a3161da2a20f940b77a5bb63bd1ef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-ios"></a>Verwenden der Engagement-API auf iOS
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Dieses Dokument ist ein Add-On zum Dokument "So integrieren Sie Engagement auf iOS". Es bietet detaillierte Informationen zur Verwendung der Engagement-API zur Bereitstellung von Anwendungsstatistiken.
 
 Beachten Sie Folgendes: Wenn Sie über Engagement nur Berichte zu Anwendungssitzungen, Aktivitäten, Abstürzen und technischen Informationen bereitstellen möchten, ist es am einfachsten, für alle benutzerdefinierten `UIViewController`-Objekte eine Vererbung aus den entsprechenden `EngagementViewController`-Klassen zu konfigurieren.
@@ -224,7 +228,7 @@ Zusätzliche Daten können `arrays(NSArray, NSMutableArray)`, `numbers(NSNumber 
     [extras setObject:@"http://foobar.com/blog" forKey:@"ref_click"];
     [[EngagementAgent shared] sendEvent:@"video_clicked" extras:extras];
 
-### <a name="limits"></a>Grenzen
+### <a name="limits"></a>Einschränkungen
 #### <a name="keys"></a>Schlüssel
 Jeder Schlüssel in `NSDictionary` muss mit dem folgenden regulären Ausdruck übereinstimmen:
 
@@ -253,7 +257,7 @@ Wie bei den zusätzlichen Daten zu Ereignissen wird die `NSDictionary`-Klasse zu
     [appInfo setObject:@"1983-12-07" forKey:@"birthdate"]; // December 7th 1983
     [[EngagementAgent shared] sendAppInfo:appInfo];
 
-### <a name="limits"></a>Grenzen
+### <a name="limits"></a>Einschränkungen
 #### <a name="keys"></a>Schlüssel
 Jeder Schlüssel in `NSDictionary` muss mit dem folgenden regulären Ausdruck übereinstimmen:
 

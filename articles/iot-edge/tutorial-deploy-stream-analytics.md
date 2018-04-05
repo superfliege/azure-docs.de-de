@@ -1,19 +1,19 @@
 ---
 title: Bereitstellen von Azure Stream Analytics mit Azure IoT Edge | Microsoft-Dokumentation
-description: "Bereitstellen von Azure Stream Analytics als Modul für ein Edge-Gerät"
+description: Bereitstellen von Azure Stream Analytics als Modul für ein Edge-Gerät
 services: iot-edge
-keywords: 
-author: msebolt
+keywords: ''
+author: kgremban
 manager: timlt
-ms.author: v-masebo
+ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f40fb81fc03e796b906db12bf3bf6904b27b46eb
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: c94652017216bd9c8ff319e0b19fa3597c75e81c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Bereitstellen von Azure Stream Analytics als IoT Edge-Modul – Vorschau
 
@@ -124,7 +124,7 @@ Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als A
     HAVING Avg(machine.temperature) > 70
     ```
 
-10. Wählen Sie **Speichern** aus.
+10. Wählen Sie **Speichern**aus.
 
 ## <a name="deploy-the-job"></a>Bereitstellen des Auftrags
 
@@ -143,7 +143,7 @@ Sie können den Azure Stream Analytics-Auftrag jetzt auf Ihrem IoT Edge-Gerät b
 
    d. Behalten Sie die restlichen Einstellungen unverändert bei.
    
-   e. Wählen Sie **Speichern** aus.
+   e. Wählen Sie **Speichern**aus.
 
 3. Klicken Sie zum Hinzufügen des Azure Stream Analytics Edge-Auftrags auf **Import Azure Stream Analytics IoT Edge Module** (Azure Stream Analytics-IoT Edge-Modul importieren).
 

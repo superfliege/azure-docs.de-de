@@ -43,11 +43,12 @@
 ## Verwenden des MXChip IoT DevKit
 ### [Übersetzen von Sprachnachrichten mit Azure Cognitive Services](iot-hub-arduino-iot-devkit-az3166-translator.md)
 ### [Abrufen einer Twitter-Meldung mit Azure Functions](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+### [Überwachen des magnetischen Sensors und Senden von E-Mail-Benachrichtigungen mit Azure Functions](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
 # Anleitungen
 ## Plan
 ### [Vergleichen von IoT Hub und Event Hubs](iot-hub-compare-event-hubs.md)
-### [Skalieren Ihrer Lösung](iot-hub-scaling.md)
+### [Wählen des passenden Tarifs](iot-hub-scaling.md)
 ### [Hochverfügbarkeit und Notfallwiederherstellung](iot-hub-ha-dr.md)
 ### [Unterstützung zusätzlicher Protokolle](iot-hub-protocol-gateway.md)
 ### [Vergleichen von Nachrichten- und Ereignisrouting](iot-hub-event-grid-routing-comparison.md)
@@ -147,6 +148,7 @@
 ### [Überwachen per Diagnose](iot-hub-monitor-resource-health.md)
 #### [Migrieren zu Diagnoseeinstellungen](iot-hub-migrate-to-diagnostics-settings.md)
 #### [Vorgangsüberwachung](iot-hub-operations-monitoring.md)
+### [Upgrade eines IoT Hubs](iot-hub-upgrade.md)
 ### [Nutzungsmetriken](iot-hub-metrics.md)
 ### [Massenverwaltung von IoT-Geräten](iot-hub-bulk-identity-mgmt.md)
 ### [Konfigurieren der IP-Filterung](iot-hub-ip-filtering.md)

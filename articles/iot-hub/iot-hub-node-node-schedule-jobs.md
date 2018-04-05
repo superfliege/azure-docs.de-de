@@ -1,11 +1,11 @@
 ---
-title: "Planen von Aufträgen mit Azure IoT Hub (Node) | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie einen Azure IoT Hub-Auftrag planen, um eine direkte Methode auf mehreren Geräten aufzurufen. Sie verwenden die Azure IoT SDKs für Node.js, um die simulierten Geräte-Apps und eine Dienst-App für die Auftragsausführung zu implementieren."
+title: Planen von Aufträgen mit Azure IoT Hub (Node) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie einen Azure IoT Hub-Auftrag planen, um eine direkte Methode auf mehreren Geräten aufzurufen. Sie verwenden die Azure IoT SDKs für Node.js, um die simulierten Geräte-Apps und eine Dienst-App für die Auftragsausführung zu implementieren.
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/06/2017
 ms.author: juanpere
-ms.openlocfilehash: e607f5db8b4f2a974cb172d4581dadefe7851275
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: e7e724de68e7078782e90a3f2eda9f7261638ea5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>Planen und Übertragen von Aufträgen (Node)
 
@@ -37,6 +37,8 @@ Weitere Informationen zu diesen Funktionen finden Sie in den folgenden Artikeln:
 * Gerätezwilling und -eigenschaften: [Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)][lnk-get-started-twin] und [Tutorial: Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-props]
 * Direkte Methoden: [Verstehen und Aufrufen direkter Methoden von IoT Hub][lnk-dev-methods] und [Verwenden direkter Methoden auf Ihrem IoT-Gerät mit Node.js][lnk-c2d-methods]
 
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 * Erstellen einer simulierten Node.js-Geräte-App mit einer direkten Methode, um die Verwendung der **lockDoor**-Funktion zu ermöglichen, die vom Lösungs-Back-End aufgerufen werden kann
@@ -44,7 +46,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Apps:
 
-**simDevice.js**: Stellt mit der Geräteidentität eine Verbindung mit Ihrem IoT-Hub her und empfängt eine direkte **lockDoor**-Methode.
+**simDevice.js**: Stellt mit der Geräteidentität eine Verbindung mit Ihrem IoT Hub her und empfängt eine direkte **lockDoor**-Methode.
 
 **scheduleJobService.js**: Ruft eine direkte Methode in der simulierten Geräte-App auf und aktualisiert die gewünschten Eigenschaften des Gerätezwillings per Auftrag.
 

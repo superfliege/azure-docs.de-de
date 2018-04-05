@@ -1,6 +1,6 @@
 ---
-title: "Überwachen von Zugriffsprotokollen, Leistungsprotokollen, Back-End-Integrität und Metriken für Application Gateway | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Zugriffs- und Leistungsprotokolle für Application Gateway aktivieren und verwalten."
+title: Überwachen von Zugriffsprotokollen, Leistungsprotokollen, Back-End-Integrität und Metriken für Application Gateway | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Zugriffs- und Leistungsprotokolle für Application Gateway aktivieren und verwalten.
 services: application-gateway
 documentationcenter: na
 author: amitsriva
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2017
+ms.date: 3/23/2018
 ms.author: amitsriva
-ms.openlocfilehash: 12c252340b82aba5ee69b12db83353750782e7c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 885ae8b97175cac4cd29793eb0a935e81d54d0e4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway
 
@@ -27,7 +27,7 @@ Mit Azure Application Gateway können Sie Ressourcen auf die folgenden Arten üb
 
 * [Back-End-Integrität](#back-end-health): Application Gateway bietet über das Azure-Portal sowie mithilfe von PowerShell die Möglichkeit zur Überwachung der Integrität der Server in den Back-End-Pools. Sie können die Integrität der Back-End-Pools auch über die Leistungsdiagnoseprotokolle ermitteln.
 
-* [Protokolle](#diagnostic-logs): Protokolle ermöglichen das Speichern und Nutzen von Leistungs-, Zugriffs- und anderen Daten einer Ressource zu Überwachungszwecken.
+* [Protokolle](#diagnostic-logging): Protokolle ermöglichen das Speichern und Nutzen von Leistungs-, Zugriffs- und anderen Daten einer Ressource zu Überwachungszwecken.
 
 * [Metriken](#metrics): Application Gateway verfügt derzeit über eine Metrik. Mit dieser Metrik wird der Durchsatz des Anwendungsgateways in Bytes pro Sekunde gemessen.
 
@@ -152,9 +152,9 @@ Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressou
 
    ![Starten des Konfigurationsprozesses][2]
 
-4. Wählen Sie einen vorhandenen OMS-Arbeitsbereich (Operations Management Suite) aus, oder erstellen Sie einen neuen. In diesem Beispiel wird ein vorhandener Arbeitsbereich verwendet.
+4. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen neuen. In diesem Beispiel wird ein vorhandener Arbeitsbereich verwendet.
 
-   ![Optionen für OMS-Arbeitsbereiche][3]
+   ![Optionen für Log Analytics-Arbeitsbereiche][3]
 
 5. Überprüfen Sie die Einstellungen, und klicken Sie auf **Speichern**.
 
@@ -169,14 +169,14 @@ Das Aktivitätsprotokoll wird von Azure standardmäßig generiert. Die Protokoll
 Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Jeder Application Gateway-Zugriff wird wie im folgenden Beispiel im JSON-Format protokolliert:
 
 
-|Wert  |Beschreibung  |
+|Wert  |BESCHREIBUNG  |
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
 |clientIP     | Ursprungs-IP für die Anforderung        |
 |clientPort     | Ursprungsport für die Anforderung       |
 |httpMethod     | Von der Anforderung verwendete HTTP-Methode       |
 |requestUri     | URI der empfangenen Anforderung        |
-|RequestQuery     | **Server-Routed**: Back-End-Poolinstanz, an die die Anforderung gesendet wurde. </br> **X-AzureApplicationGateway-LOG-ID**: Korrelations-ID, die für die Anforderung verwendet wurde. Kann für die Behandlung von Datenverkehrsproblemen auf den Back-End-Servern verwendet werden. </br>**SERVER-STATUS**: HTTP-Antwortcode, den Application Gateway vom Back-End empfangen hat.       |
+|RequestQuery     | **Server-Routed**: Back-End-Poolinstanz, an die die Anforderung gesendet wurde.</br>**X-AzureApplicationGateway-LOG-ID**: Korrelations-ID, die für die Anforderung verwendet wurde. Kann für die Behandlung von Datenverkehrsproblemen auf den Back-End-Servern verwendet werden. </br>**SERVER-STATUS**: HTTP-Antwortcode, den Application Gateway vom Back-End empfangen hat.       |
 |UserAgent     | Benutzer-Agent aus dem HTTP-Anforderungsheader        |
 |httpStatus     | HTTP-Statuscode, der vom Application Gateway an den Client zurückgegeben wurde       |
 |httpVersion     | HTTP-Version der Anforderung        |
@@ -213,7 +213,7 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
 Das Leistungsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die Daten für das Leistungsprotokoll werden in Intervallen von einer Minute generiert. Die folgenden Daten werden protokolliert:
 
 
-|Wert  |Beschreibung  |
+|Wert  |BESCHREIBUNG  |
 |---------|---------|
 |instanceId     |  Application Gateway-Instanz, für die Leistungsdaten generiert werden. Für ein Anwendungsgateway mit mehreren Instanzen ist eine Zeile pro Instanz vorhanden.        |
 |healthyHostCount     | Anzahl von fehlerfreien Hosts im Back-End-Pool        |
@@ -250,7 +250,7 @@ Das Leistungsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gat
 Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgateway gemäß den obigen Schritten aktiviert haben. Für dieses Protokoll muss zudem die Web Application Firewall auf einem Anwendungsgateway konfiguriert sein. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die folgenden Daten werden protokolliert:
 
 
-|Wert  |Beschreibung  |
+|Wert  |BESCHREIBUNG  |
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, für die Firewalldaten generiert werden. Für ein Anwendungsgateway mit mehreren Instanzen ist eine Zeile pro Instanz vorhanden.         |
 |clientIp     |   Ursprungs-IP für die Anforderung      |
@@ -259,7 +259,7 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
 |ruleSetType     | Regelsatztyp: Der verfügbare Wert ist OWASP.        |
 |ruleSetVersion     | Verwendete Regelsatzversion. Verfügbare Werte sind 2.2.9 und 3.0.     |
 |ruleId     | Regel-ID des auslösenden Ereignisses        |
-|message     | Benutzerfreundliche Meldung für das auslösende Ereignis. Weitere Details im Abschnitt „Details“.        |
+|Message:     | Benutzerfreundliche Meldung für das auslösende Ereignis. Weitere Details im Abschnitt „Details“.        |
 |action     |  Aktion, die für die Anforderung durchgeführt wird. Verfügbare Werte sind „Blocked“ und „Allowed“.      |
 |site     | Standort, für den das Protokoll generiert wurde. Derzeit ist nur „Global“ aufgeführt, da Regeln global sind.|
 |details     | Details zum auslösenden Ereignis        |
@@ -316,13 +316,25 @@ Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON
 
 ## <a name="metrics"></a>Metriken
 
-Metriken sind ein Feature für bestimmte Azure-Ressourcen, damit Sie die Leistungsindikatoren im Portal anzeigen können. Für Application Gateway ist derzeit eine Metrik verfügbar. Dies ist die Metrik für den Durchsatz, die Sie im Portal anzeigen können. Navigieren Sie zu einem Anwendungsgateway, und klicken Sie auf **Metriken**. Wählen Sie im Abschnitt **Verfügbare Metriken** den Durchsatz aus, um die Werte anzuzeigen. Die folgende Abbildung enthält ein Beispiel mit den Filtern, die Sie zum Anzeigen der Daten in verschiedenen Zeiträumen verwenden können.
+Metriken sind ein Feature für bestimmte Azure-Ressourcen, damit Sie die Leistungsindikatoren im Portal anzeigen können. Für Application Gateway werden folgende Metriken unterstützt:
 
-![Ansicht „Metrik“ mit Filtern][5]
+- Aktuelle Verbindungen
+- Anforderungsfehler
+- Anzahl von fehlerfreien Hosts
+- Antwortstatus
+- Throughput
+- Anzahl von Anforderungen
+- Anzahl von fehlerhaften Hosts
+
+Navigieren Sie zu einem Anwendungsgateway, und klicken Sie unter **Überwachung** auf **Metriken**. Um die verfügbaren Werte anzuzeigen, wählen Sie die Dropdownliste **METRIK** aus.
+
+In der folgenden Abbildung sehen Sie ein Beispiel mit drei Metriken für die letzten 30 Minuten:
+
+[![](media/application-gateway-diagnostics/figure5.png "Metrikanzeige")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 Eine aktuelle Liste mit Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
-### <a name="alert-rules"></a>Warnungsregeln
+### <a name="alert-rules"></a>Warnregeln
 
 Sie können Warnungsregeln basierend auf Metriken für eine Ressource starten. Eine Warnung kann beispielsweise einen Webhook aufrufen oder eine E-Mail an einen Administrator senden, wenn der Durchsatz des Anwendungsgateways für einen angegebenen Zeitraum oberhalb oder unterhalb eines Schwellenwerts bzw. genau auf einem Schwellenwert liegt.
 
@@ -336,7 +348,7 @@ Im folgenden Beispiel wird schrittweise die Erstellung einer Warnungsregel besch
 
    * Wählen Sie in der Auswahl unter **Bedingung** einen von vier Werten aus: **Größer als**, **Größer oder gleich**, **Kleiner als** oder **Kleiner oder gleich**.
 
-   * Wählen Sie unter **Period** (Zeitraum) einen Zeitraum zwischen fünf Minuten und sechs Stunden aus.
+   * Wählen Sie unter **Zeitraum** einen Zeitraum zwischen fünf Minuten und sechs Stunden aus.
 
    * Wenn Sie **E-Mail-Besitzer, Mitwirkende und Leser** wählen, kann die E-Mail-Adresse dynamisch basierend auf den Benutzern festgelegt werden, die auf diese Ressource zugreifen können. Andernfalls können Sie im Feld **Weitere Administrator-E-Mail(s)** eine durch Kommas getrennte Liste mit Benutzern angeben.
 

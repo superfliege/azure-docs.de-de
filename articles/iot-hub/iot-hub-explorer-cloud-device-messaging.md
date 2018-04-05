@@ -1,12 +1,12 @@
 ---
-title: "Verwalten von Azure IoT Hub-Nachrichten zwischen Cloud und Geräten mit iothub-explorer | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie in Azure IoT Hub mit dem CLI-Tool „iothub-explorer“ Gerät-zu-Cloud-Nachrichten (Device to Cloud, D2C) überwachen und Cloud-zu-Gerät-Nachrichten (Cloud to Device, C2D) senden."
+title: Verwalten von Azure IoT Hub-Nachrichten zwischen Cloud und Geräten mit iothub-explorer | Microsoft-Dokumentation
+description: Erfahren Sie, wie in Azure IoT Hub mit dem CLI-Tool „iothub-explorer“ Gerät-zu-Cloud-Nachrichten (Device to Cloud, D2C) überwachen und Cloud-zu-Gerät-Nachrichten (Cloud to Device, C2D) senden.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "iothub-explorer, Cloud-zu-Gerät-Messaging, IoT Hub Cloud-zu-Gerät, Cloud-zu-Gerät-Nachrichten"
+tags: ''
+keywords: iothub-explorer, Cloud-zu-Gerät-Messaging, IoT Hub Cloud-zu-Gerät, Cloud-zu-Gerät-Nachrichten
 ms.assetid: 04521658-35d3-4503-ae48-51d6ad3c62cc
 ms.service: iot-hub
 ms.devlang: arduino
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: xshi
-ms.openlocfilehash: 30151b7bdc544bc36e959cc3528d37897198fc7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e74c08849ae2f98d3189c0cd3d340874ea085ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Verwenden von iothub-explorer zum Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 [iothub-explorer](https://github.com/azure/iothub-explorer) bietet eine übersichtliche Anzahl von Befehlen zum Vereinfachen der IoT Hub-Verwaltung. Der Schwerpunkt dieses Tutorials liegt auf dem Verwenden von iothub-explorer zum Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="what-you-will-learn"></a>Lernziele
 
@@ -38,7 +40,7 @@ Sie erfahren, wie Sie mit iothub-explorer Gerät-zu-Cloud-Nachrichten überwache
 - Überwachen von Gerät-zu-Cloud-Nachrichten mit iothub-explorer
 - Senden von Cloud-zu-Gerät-Nachrichten mit iothub-explorer
 
-## <a name="what-you-need"></a>Erforderliches Element
+## <a name="what-you-need"></a>Voraussetzungen
 
 - Abschluss des Tutorials [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md), in dem die folgenden Anforderungen behandelt werden:
   - Ein aktives Azure-Abonnement.

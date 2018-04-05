@@ -1,6 +1,6 @@
 ---
-title: "Tutorial für Kubernetes in Azure – Überwachen von Kubernetes"
-description: "AKS-Tutorial – Überwachen von Kubernetes mit Microsoft Operations Management Suite (OMS)"
+title: Tutorial für Kubernetes in Azure – Überwachen von Kubernetes
+description: 'AKS-Tutorial: Überwachen von Kubernetes mit Azure Log Analytics'
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 227601858dbe07e6cb774a2d24878ddca05aaf56
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 86ae0c5ab302c49fa58df887d9dffef6cec31708
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="monitor-azure-container-service-aks"></a>Überwachen von Azure Container Service (AKS)
+# <a name="tutorial-monitor-azure-container-service-aks"></a>Tutorial: Überwachen von Azure Container Service (AKS)
 
 Die Überwachung des Kubernetes-Clusters und der Kubernetes-Container ist vor allem dann entscheidend, wenn Sie einen umfangreichen Produktionscluster mit mehreren Anwendungen verwalten.
 
@@ -40,11 +40,11 @@ Klicken Sie im Azure-Portal auf **Ressource erstellen**, und suchen Sie nach `Co
 
 ![Hinzufügen der Lösung](./media/container-service-tutorial-kubernetes-monitor/add-solution.png)
 
-Erstellen Sie einen neuen OMS-Arbeitsbereich, oder wählen Sie einen vorhandenen aus. Das OMS-Arbeitsbereichsformular unterstützt Sie bei diesem Vorgang.
+Erstellen Sie einen neuen Log Analytics-Arbeitsbereich, oder wählen Sie einen bereits vorhandenen Arbeitsbereich aus. Das Log Analytics-Arbeitsbereichsformular unterstützt Sie bei diesem Vorgang.
 
-Aktivieren Sie beim Erstellen des Arbeitsbereichs das Kontrollkästchen **	An das Dashboard anheften**, damit Informationen leicht abrufbar sind.
+Aktivieren Sie beim Erstellen des Arbeitsbereichs das Kontrollkästchen **An das Dashboard anheften**, damit Informationen leicht abrufbar sind.
 
-![OMS-Arbeitsbereich](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
+![Log Analytics-Arbeitsbereich](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
 
 Wählen Sie dann die Option **OK**. Klicken Sie nach Abschluss der Überprüfung auf **Erstellen**, um die Containerüberwachungslösung zu erstellen.
 
@@ -58,7 +58,7 @@ Klicken Sie zum Abrufen dieser Werte auf den **OMS-Arbeitsbereich** im linken Me
 
 ## <a name="create-kubernetes-secret"></a>Erstellen eines Kubernetes-Geheimnisses
 
-Speichern Sie die OMS-Arbeitsbereichseinstellungen mit dem Befehl [kubectl create secret][kubectl-create-secret] in einem Kubernetes-Geheimnis namens `omsagent-secret`. Aktualisieren `WORKSPACE_ID` mit der ID Ihres OMS-Arbeitsbereichs und `WORKSPACE_KEY` mit dem Arbeitsbereichsschlüssel.
+Speichern Sie die Log Analytics-Arbeitsbereichseinstellungen mit dem Befehl [kubectl create secret][kubectl-create-secret] in einem Kubernetes-Geheimnis namens `omsagent-secret`. Aktualisieren Sie `WORKSPACE_ID` mit der ID Ihres Log Analytics-Arbeitsbereichs und `WORKSPACE_KEY` mit dem Arbeitsbereichsschlüssel.
 
 ```console
 kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
@@ -154,7 +154,7 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR 
 omsagent   3         3         3         3            3           beta.kubernetes.io/os=linux   8m
 ```
 
-Nachdem die Agents ausgeführt werden, dauert es einige Minuten, bis die Daten in der OMS erfasst und verarbeitet werden.
+Wenn die Agents ausgeführt werden, dauert es einige Minuten, bis die Daten von Log Analytics erfasst und verarbeitet wurden.
 
 ## <a name="access-monitoring-data"></a>Zugreifen auf Überwachungsdaten
 
@@ -166,7 +166,7 @@ Ausführliche Anweisungen zum Abfragen und Analysieren von Überwachungsdaten fi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Ihren Kubernetes-Cluster mit der OMS überwacht. Sie haben folgende Aufgaben ausgeführt:
+In diesem Tutorial haben Sie Ihren Kubernetes-Cluster mit Log Analytics überwacht. Sie haben folgende Aufgaben ausgeführt:
 
 > [!div class="checklist"]
 > * Konfigurieren der Containerüberwachungslösung

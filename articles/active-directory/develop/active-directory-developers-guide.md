@@ -1,10 +1,10 @@
 ---
-title: "Azure Active Directory für Entwickler | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält eine Übersicht über die Anmeldung bei Geschäfts-, Schul- oder Unikonten von Microsoft mit Azure Active Directory."
+title: Azure Active Directory für Entwickler | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Übersicht über die Anmeldung bei Geschäfts-, Schul- oder Unikonten von Microsoft mit Azure Active Directory.
 services: active-directory
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.devlang: na
@@ -14,14 +14,17 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: e1f9fbf6cb80065ea796e2d53d09f48fe57b207b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8d70f36c5e434a26fce4d6b4bd1ddefc22234ab5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory für Entwickler
-Azure Active Directory (Azure AD) ist ein Cloudidentitätsdienst, mit dem Entwickler eine sichere Anmeldung aller Benutzer umsetzen können, die über ein Geschäfts-, Schul- oder Unikonto von Microsoft verfügen. In dieser Dokumentation erfahren Sie, wie Sie Ihrer Anwendung Azure AD-Unterstützung mit branchenüblichen Authentifizierungsprotokollen (OAuth2.0 und OpenID Connect) hinzufügen.
+Azure Active Directory (Azure AD) ist ein Cloudidentitätsdienst, mit dem Entwickler Apps erstellen können, die Benutzern mit einem Geschäfts-, Schul- oder Unikonto von Microsoft die sichere Anmeldung ermöglichen. Azure AD unterstützt sowohl Entwickler, die Branchen-Apps mit einem einzelnen Mandanten erstellen, als auch Entwickler, die mehrinstanzenfähige Apps erstellen möchten. Zusätzlich zur einfachen Anmeldung ermöglicht Azure AD Apps auch das Aufrufen von Microsoft-APIs, z.B. [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/concepts/overview), und von benutzerdefinierten APIs, die basierend auf der Azure AD-Plattform erstellt werden.  In dieser Dokumentation erfahren Sie, wie Sie Ihrer Anwendung Azure AD-Unterstützung mit branchenüblichen Authentifizierungsprotokollen wie OAuth2.0 und OpenID Connect hinzufügen. 
+
+> [!NOTE]
+> Auf dieser Seite geht es hauptsächlich um den Azure AD v1-Endpunkt, der nur Geschäfts-, Schul- oder Unikonten von Microsoft unterstützt. Wenn Sie die Anmeldung für Endverbraucher- oder persönliche Microsoft-Konten durchführen möchten, helfen Ihnen die Informationen zum [Azure AD v2.0-Endpunkt](active-directory-appmodel-v2-overview.md) weiter. Mit dem Azure AD v2.0-Endpunkt wird eine einheitliche Entwickleroberfläche für Apps bereitgestellt, für die sowohl Benutzer mit Azure AD-Konten (Geschäfts-, Schul- und Unikonten) als auch mit persönlichen Microsoft-Konten angemeldet werden sollen. 
 
 | | |
 | --- | --- |
@@ -29,7 +32,7 @@ Azure Active Directory (Azure AD) ist ein Cloudidentitätsdienst, mit dem Entwic
 |[Anwendungsarten](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Eine Übersicht über die von Azure AD unterstützten Authentifizierungsszenarien. |                                
                                                                               
 ## <a name="get-started"></a>Erste Schritte
-In den folgenden Einrichtungsanleitungen wird Schritt für Schritt die Anmeldung von Azure Active Directory-Benutzern unter Verwendung der Authentifizierungsbibliotheken von Microsoft beschrieben.
+In den folgenden Anleitungen wird Schritt für Schritt die Erstellung einer App auf Ihrer bevorzugten Plattform mit dem ADAL SDK (Azure Active Directory Library) beschrieben. Informationen zur Verwendung der Microsoft Authentication Library (MSAL) finden Sie in der Dokumentation zum [Azure AD v2.0-Endpunkt](active-directory-appmodel-v2-overview.md).
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -40,7 +43,7 @@ In den folgenden Einrichtungsanleitungen wird Schritt für Schritt die Anmeldung
 | <center>![Dienst-zu-Dienst](./media/active-directory-developers-guide/Service_App.png)<br />Dienst-zu-Dienst</center> | [Übersicht](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)|  |
 
 ## <a name="how-to-guides"></a>Anleitungen
-In den folgenden Anleitungen erfahren Sie, wie Sie mit Azure AD häufig anfallende Aufgaben erledigen.
+In den folgenden Anleitungen wird die Vorgehensweise für einige häufige Aufgaben in Azure AD beschrieben.
 
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
@@ -58,10 +61,6 @@ Die folgenden Artikel enthalten ausführliche Informationen zu APIs, Protokollme
 | [Codebeispiele](active-directory-code-samples.md)                                  | Eine Liste mit allen Azure AD-Codebeispielen. |
 | [Glossar](active-directory-dev-glossary.md)                                      | Begriffe und Definitionen von Wörtern, die in dieser Dokumentation verwendet werden. |
 | [Weitere Referenzthemen](active-directory-developers-guide-index.md#reference)| Eine Liste mit verfügbaren Referenzthemen für Azure AD.   |
-
-
-> [!NOTE]
-> Wenn Sie die Anmeldung mit persönlichen Microsoft-Konten durchführen möchten, empfiehlt sich unter Umständen die Verwendung des [Azure AD v2.0-Endpunkts](active-directory-appmodel-v2-overview.md). Der Azure AD v2.0-Endpunkt wird für die Zusammenführung von persönlichen Microsoft-Konten und Microsoft-Geschäftskonten (aus Azure AD) in einem gemeinsamen Authentifizierungssystem genutzt.
 
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

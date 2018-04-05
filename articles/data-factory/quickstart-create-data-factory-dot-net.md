@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 01/22/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 7e3fd12b2157d28c5d61bfa8d5fb69a00557a1f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5b7af290a5e5c45d3f64ccb50586db0811dd592
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Erstellen einer Data Factory und Pipeline mit dem .NET SDK
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -102,12 +102,12 @@ In der exemplarischen Vorgehensweise in diesem Artikel wird Visual Studio 2017 v
 Laden Sie das [Azure .NET SDK](http://azure.microsoft.com/downloads/) auf Ihren Computer herunter, und installieren Sie es.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Erstellen einer Anwendung in Azure Active Directory
-Befolgen Sie zum Ausführen der folgenden Aufgaben die Anweisungen in [diesem Artikel](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application): 
+Führen Sie anhand der Anleitungen aus den Abschnitten [dieses Artikels](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) folgende Aufgaben aus: 
 
 1. **Erstellen Sie eine Azure Active Directory-Anwendung.** Erstellen Sie eine Anwendung in Azure Active Directory, die die .NET-Anwendung darstellt, die Sie in diesem Tutorial erstellen. Als Anmelde-URL können Sie wie in diesem Artikel gezeigt eine Platzhalter-URL (`https://contoso.org/exampleapp`) angeben.
-2. Rufen Sie die **Anwendungs-ID** und den **Authentifizierungsschlüssel**** anhand der Anweisungen im Abschnitt **Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels** im genannten Artikel ab. Notieren Sie sich diese Werte, da Sie sie später in diesem Tutorial benötigen. 
-3. Rufen Sie die **Mandanten-ID** anhand der Anweisungen im Abschnitt **Abrufen der Mandanten-ID** im genannten Artikel ab. Notieren Sie sich diesen Wert. 
-4. Weisen Sie die Anwendung der Rolle **Mitwirkender** auf Abonnementebene zu, damit die Anwendung Data Factorys im Abonnement erstellen kann. Befolgen Sie die Anweisungen im Abschnitt **Zuweisen einer Anwendung zur Rolle** im genannten Artikel. 
+2. Rufen Sie die **Anwendungs-ID** und den **Authentifizierungsschlüssel** ab, und notieren Sie sich die Werte zur späteren Verwendung in diesem Tutorial. 
+3. Rufen Sie die **Mandanten-ID** ab, und notieren Sie sich den Wert zur späteren Verwendung in diesem Tutorial.
+4. Weisen Sie die Anwendung der Rolle **Mitwirkender** auf Abonnementebene zu, damit die Anwendung Data Factorys im Abonnement erstellen kann.
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
 

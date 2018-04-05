@@ -1,21 +1,21 @@
 ---
-title: "Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie das Azure-SDK verwenden, um große Mengen von Zufallsdaten parallel in ein Azure Storage-Konto hochzuladen."
+title: Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie das Azure-SDK verwenden, um große Mengen von Zufallsdaten parallel in ein Azure Storage-Konto hochzuladen.
 services: storage
-author: tamram
+author: roygara
 manager: jeconnoc
 ms.service: storage
 ms.workload: web
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/20/2018
-ms.author: tamram
+ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 39a48007bdcd055df4529074a67b5b8a6db2d8b4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 668700cf3ff3d1a90f9639129ef2953ddca016f1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto
 
@@ -73,7 +73,7 @@ Zusätzlich zum Festlegen der Thread- und der Verbindungsgrenzwerte werden die [
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| Die Einstellung bewirkt, dass der Blob beim Hochladen in Blöcke aufgeteilt wird. Soll die höchste Leistung erzielt werden, muss dieser Wert gleich dem Achtfachen der Anzahl von Kernen sein. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| Diese Eigenschaft deaktiviert die Überprüfung des MD5-Hashs des hochgeladenen Inhalts. Die Deaktivierung der MD5-Überprüfung führt zu einer schnelleren Übertragung. Die Gültigkeit oder Integrität der übertragenen Dateien wird jedoch nicht bestätigt.   |
-|[StorBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Diese Eigenschaft bestimmt, ob ein MD5-Hash berechnet und mit der Datei gespeichert wird.   |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Diese Eigenschaft bestimmt, ob ein MD5-Hash berechnet und mit der Datei gespeichert wird.   |
 | [RetryPolicy](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.retrypolicy?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_RetryPolicy)| 2-Sekunden-Backoff mit max. 10 Wiederhol. |Bestimmt die Wiederholungsrichtlinie von Anforderungen. Nach einem Verbindungsfehler erfolgt eine Wiederholung. In diesem Beispiel wird eine [ExponentialRetry](/dotnet/api/microsoft.windowsazure.storage.retrypolicies.exponentialretry?view=azure-dotnet)-Richtlinie mit einem Backoff von 2 Sekunden und maximal 10 Wiederholungen konfiguriert. Diese Einstellung ist wichtig, wenn Ihre Anwendung den [Blobspeicher-Skalierbarkeitszielen](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets) nahekommt.  |
 
 Der `UploadFilesAsync`-Task ist im folgenden Beispiel dargestellt:

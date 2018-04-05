@@ -1,11 +1,11 @@
 ---
 title: Verwenden des Azure-Portals zum Erstellen einer Data Factory-Pipeline | Microsoft-Dokumentation
-description: "Dieses Tutorial enthält detaillierte Anweisungen zur Erstellung einer Data Factory mit Pipeline mithilfe des Azure-Portals. Die Pipeline kopiert mit der Copy-Aktivität Daten aus Azure Blob Storage in eine SQL-Datenbank."
+description: Dieses Tutorial enthält detaillierte Anweisungen zur Erstellung einer Data Factory mit Pipeline mithilfe des Azure-Portals. Die Pipeline kopiert mit der Copy-Aktivität Daten aus Azure Blob Storage in eine SQL-Datenbank.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 116832175a4b7e4497c9005be7841cb56c1d235b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 34c78a114c1d106c400a94941aa113153383e206
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von Azure Data Factory
 In diesem Tutorial erstellen Sie eine Data Factory über die Azure Data Factory-Benutzeroberfläche (User Interface, UI). Die Pipeline in dieser Data Factory kopiert Daten aus Azure Blob Storage in eine SQL-Datenbank. Das Konfigurationsmuster in diesem Tutorial gilt für Kopiervorgänge aus einem dateibasierten Datenspeicher in einen relationalen Datenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -303,7 +303,7 @@ Sie können vor dem Veröffentlichen von Artefakten (verknüpfte Dienste, Datase
     ![Anzeigen von Benachrichtigungen](./media/tutorial-copy-data-portal/show-notifications.png)
 
 ## <a name="configure-code-repository"></a>Konfigurieren des Coderepositorys
-Sie können den mit Ihren Data Factory-Artefakten verknüpften Code in einem Visual Studio Team Services-Coderepository veröffentlichen. In diesem Schritt erstellen Sie das Coderepository. 
+Sie können den mit Ihren Data Factory-Artefakten verknüpften Code in einem Visual Studio Team Services-Coderepository veröffentlichen. In diesem Schritt erstellen Sie das Coderepository.  Weitere Informationen zur visuellen Erstellung mit VSTS-Integration finden Sie unter [Erstellen mit VSTS Git-Integration](author-visually.md#author-with-vsts-git-integration).
 
 Wenn Sie das Visual Studio Team Services-Coderepository nicht verwenden möchten, können Sie diesen Schritt überspringen. Sie können die Veröffentlichung in Data Factory wie im vorherigen Schritt fortsetzen. 
 

@@ -1,11 +1,11 @@
 ---
-title: "Grundlegendes zu Azure IoT Hub-Gerätezwillingen | Microsoft-Dokumentation"
-description: "Entwicklerhandbuch: Verwenden Sie Gerätezwillinge zum Synchronisieren von Status und Daten zwischen IoT Hub und Ihren Geräten."
+title: Grundlegendes zu Azure IoT Hub-Gerätezwillingen | Microsoft-Dokumentation
+description: 'Entwicklerhandbuch: Verwenden Sie Gerätezwillinge zum Synchronisieren von Status und Daten zwischen IoT Hub und Ihren Geräten.'
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 8a3da072-a5bf-46e5-8de4-24cdbb2a03fa
 ms.service: iot-hub
 ms.devlang: multiple
@@ -15,16 +15,19 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5bf2d24d0d5eadfea5ec8fd239a115c05a54fe99
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 01e94298aa3691d5bce33a12745b54fd398c7ad3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
-*Gerätezwillinge* sind JSON-Dokumente, in denen Gerätestatusinformationen gespeichert werden, einschließlich Metadaten, Konfigurationen und Bedingungen. Azure IoT Hub pflegt einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden. Dieser Artikel beschreibt Folgendes:
+*Gerätezwillinge* sind JSON-Dokumente, in denen Gerätestatusinformationen gespeichert werden, einschließlich Metadaten, Konfigurationen und Bedingungen. Azure IoT Hub pflegt einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden. 
 
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+
+Dieser Artikel beschreibt Folgendes:
 
 * Die Struktur des Gerätezwillings: *Tags*, *gewünschte Eigenschaften* und *gemeldete Eigenschaften*.
 * Die Vorgänge, die Geräte-Apps und Back-Ends auf Gerätezwillingen ausführen können

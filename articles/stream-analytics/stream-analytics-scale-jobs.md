@@ -1,12 +1,11 @@
 ---
-title: "Skalieren von Stream Analytics-Aufträgen zur Erhöhung des Durchsatzes | Microsoft Docs"
-description: "Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfiguration von Eingabepartitionen, Optimierung der Abfragedefinition und Einstellung von Auftrags-Streaming-Einheiten skalieren."
-keywords: "Datenstreaming, Datenströme verarbeiten, Analysen optimieren"
+title: Skalieren von Stream Analytics-Aufträgen zur Erhöhung des Durchsatzes | Microsoft Docs
+description: Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfiguration von Eingabepartitionen, Optimierung der Abfragedefinition und Einstellung von Auftrags-Streaming-Einheiten skalieren.
+keywords: Datenstreaming, Datenströme verarbeiten, Analysen optimieren
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JSeb225
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: 781a3b71c35cb48e40202e3b1acc8edbbaf865c4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2e0487a9e4cd6346312c6817ef2768556cba72ba
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="scale-azure-stream-analytics-jobs-to-increase--throughput"></a>Skalieren von Azure Stream Analytics-Aufträgen zur Erhöhung des Durchsatzes
 In diesem Artikel erfahren Sie, wie Sie eine Stream Analytics-Abfrage zur Steigerung des Durchsatzes für Stream Analytics-Aufträge optimieren. Im folgenden Leitfaden wird erläutert, wie Sie Ihren Auftrag zur Verarbeitung höherer Lasten skalieren und von einer größeren Menge an Systemressourcen (z.B. Bandbreite, CPU-Ressourcen, Arbeitsspeicher) profitieren können.
@@ -35,8 +34,8 @@ Wenn Ihre Abfrage prinzipiell über alle Eingabepartitionen hinweg vollständig 
 3.  Führen Sie Ihre Abfrage mit **6 SUs** (d.h. der Gesamtkapazität eines einzelnen Computeknotens) aus, um den maximal erreichbaren Durchsatz zu messen, und messen Sie bei Verwendung von **GROUP BY** die Anzahl der Gruppen (Kardinalität), die der Auftrag verarbeiten kann. Zu den allgemeinen Symptomen, die bei Erreichen der Systemressourcenlimits durch den Auftrag auftreten, zählen Folgende:
     - Die Metrik „Speichereinheitnutzung in %“ liegt bei über 80 %. Dies weist auf eine hohe Speicherauslastung hin. Die Faktoren, die zur Erhöhung dieser Metrik beitragen, werden [hier](stream-analytics-streaming-unit-consumption.md) beschrieben. 
     -   Der Ausgabezeitstempel liegt gegenüber der Gesamtbetrachtungszeit im Rückstand. Je nach Abfragelogik kann der Ausgabezeitstempel eine Logikabweichung von der Gesamtbetrachtungszeit aufweisen. Diese sollten jedoch in ungefähr derselben Geschwindigkeit verlaufen. Wenn der Ausgabezeitstempel immer weiter zurückfällt, weist dies auf eine Überlastung des Systems hin. Dies kann die Folge einer Drosselung nachgeschalteter Ausgabesenken oder einer hohen CPU-Auslastung sein. Zurzeit stellen wir nicht die Metrik „CPU-Auslastung“ bereit, sodass es schwierig sein kann, zwischen beiden Ursachen zu differenzieren.
-        - Wenn das Problem auf eine Drosselung der Senke zurückzuführen ist, müssen Sie möglicherweise die Anzahl der Ausgabepartitionen erhöhen (und auch die der Eingabepartitionen, damit der Auftrag vollständig parallelisierbar bleibt), oder die Ressourcenmenge der Senke erhöhen (z.B. die Anzahl der Anforderungseinheiten für CosmosDB).
-    - Das Auftragsdiagramm enthält für jede Eingabe eine Backlogereignismetrik pro Partition. Wenn die Backlogereignismetrik weiter steigt, ist dies auch ein Indikator dafür, dass die Systemressource eingeschränkt ist (entweder aufgrund einer Drosselung der Ausgabesenke oder einer hohen CPU).
+        - Wenn das Problem auf eine Drosselung der Senke zurückzuführen ist, müssen Sie möglicherweise die Anzahl der Ausgabepartitionen (und auch die der Eingabepartitionen, damit der Auftrag vollständig parallelisierbar bleibt) oder aber die Ressourcenmenge der Senke erhöhen (z.B. die Anzahl der Anforderungseinheiten für CosmosDB).
+    - Das Auftragsdiagramm enthält für jede Eingabe eine Backlogereignismetrik pro Partition. Wenn die Backlogereignismetrik weiter steigt, ist dies auch ein Indikator dafür, dass die Systemressource eingeschränkt ist (entweder aufgrund einer Drosselung der Ausgabesenke oder einer hohen CPU-Auslastung).
 4.  Sobald Sie die Grenzen dessen, was ein Auftrag mit 6 SUs erreichen kann, bestimmt haben, können Sie die Verarbeitungskapazität des Auftrags linear extrapolieren, je mehr SUs Sie hinzufügen. Dies gilt jedoch nur unter der Voraussetzung, dass keine Datenschiefe vorliegt, die dazu führt, dass bestimmte Partitionen einen überaus hohen Datendurchsatz aufweisen.
 >[!Note]
 > Wählen Sie die richtige Anzahl von Streamingeinheiten: Da Stream Analytics für jede hinzugefügte Gruppe aus 6 SUs einen Verarbeitungsknoten erstellt, wird empfohlen, die Anzahl der Eingabepartitionen durch die Anzahl der Knoten zu teilen, damit die Partitionen gleichmäßig auf die Knoten aufgeteilt werden können.
@@ -68,7 +67,7 @@ In der obigen Abfrage zählen Sie die Anzahl der Fahrzeuge pro Mautstation pro P
 Weisen Sie nach der Partitionierung für jede Partition des Schritts bis zu 6 SUs zu, wobei jede Partition maximal 6 SUs aufweisen kann. Jede Partition kann somit auf einen eigenen Verarbeitungsknoten platziert werden.
 
 > [!Note]
-> Wenn Ihre Abfrage nicht partitioniert werden kann, kann der Durchsatz nicht immer durch Hinzufügen zusätzlicher SUs in einer Abfrage mit mehreren Schritten verbessert werden. Eine Möglichkeit zur Leistungssteigerung besteht darin, die Anzahl der anfänglichen Schritten mithilfe des lokalen bzw. globalen Aggregatmusters zu verringern, wie in Schritt 5 oben beschrieben wurde.
+> Wenn Ihre Abfrage nicht partitioniert werden kann, kann der Durchsatz nicht immer durch Hinzufügen zusätzlicher SUs in einer Abfrage mit mehreren Schritten verbessert werden. Eine Möglichkeit zur Leistungssteigerung besteht darin, die Anzahl der anfänglichen Schritte mithilfe des lokalen bzw. globalen Aggregatmusters zu verringern, wie in Schritt 5 oben beschrieben wurde.
 
 ## <a name="case-3---you-are-running-lots-of-independent-queries-in-a-job"></a>Fall 3: Sie führen eine Vielzahl von unabhängigen Abfragen in einem Auftrag aus.
 In bestimmten Anwendungsfällen mit ISVs ist es kosteneffizienter, Daten von mehreren Mandanten in einem einzigen Auftrag zu verarbeiten. So können durch die Verwendung separater Eingaben und Ausgaben für jeden Mandanten mehrere (z.B. 20) unabhängige Abfragen in einem einzigen Auftrag ausgeführt werden. Es wird davon ausgegangen, dass die Last der einzelnen Unterabfragen relativ gering ist. In diesem Fall können Sie folgende Schritte durchführen:

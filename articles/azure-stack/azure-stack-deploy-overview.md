@@ -2,39 +2,77 @@
 title: Evaluieren des Azure Stack Development Kit | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie das Azure Stack Development Kit zu Evaluierungszwecken bereitstellen.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.custom: mvc
-ms.openlocfilehash: 4ad2e0a91e2fd5023417722fc0a1a6fae93960d0
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 1deabcf64b3fbf3cbc89232c340a8882cd2591e8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-evaluate-the-azure-stack-development-kit"></a>Schnellstart: Evaluieren des Azure Stack Development Kit
+Das [Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) ist eine Test- und Entwicklungsumgebung, die sie zum Evaluieren und Demonstrieren von Azure Stack-Funktionen und -Diensten bereitstellen können. Um das ASDK verwenden zu können, müssen Sie zunächst die Hardware des Hostcomputers vorbereiten und anschließend einige Skripts ausführen. (Die Installation dauert mehrere Stunden.) Anschließend können Sie sich beim Administrator- und Benutzerportal anmelden und Azure Stack verwenden.
 
-*Gilt für: Azure Stack Development Kit*
+## <a name="prerequisites"></a>Voraussetzungen 
+Vor der Installation des ASDKs müssen Sie zunächst den Computer vorbereiten, der das Development Kit hostet (der Development Kit-Host). Der Development Kit-Host muss die Mindestanforderungen für Hardware, Software und Netzwerk erfüllen. 
 
-Das [Azure Stack Development Kit](azure-stack-poc.md) ist eine Test- und Entwicklungsumgebung, die sie zum Evaluieren und Demonstrieren von Azure Stack-Funktionen und -Diensten bereitstellen können. Um sie einsatzbereit zu machen, müssen Sie die Umgebungshardware vorbereiten und einige Skripts ausführen (dies nimmt mehrere Stunden in Anspruch). Anschließend können Sie sich bei den Administrator- und Benutzerportalen anmelden, um Azure Stack zu verwalten und Angebote zu testen. 
+Außerdem müssen Sie sich entscheiden, ob Sie Azure Active Directory (Azure AD) oder Active Directory-Verbunddienste (AD FS) als Identitätsanbieter für Ihre Bereitstellung verwenden möchten. 
 
-1. [**Planen Sie die Hardware, Software und das Netzwerk**](azure-stack-deploy.md). Der Computer, der das Development Kit hostet (der Development Kit-Host) muss die Hardware-, Software- und Netzwerkanforderungen erfüllen. Sie müssen auch zwischen der Verwendung von Azure Active Directory oder Active Directory-Verbunddienste (AD FS) wählen. Achten Sie darauf, diese Voraussetzungen vor dem Beginn der Bereitstellung zu erfüllen, damit der Installationsvorgang reibungslos ausgeführt wird. 
+Wichtig: Die Hardware des Development Kit-Hosts muss die Mindestanforderungen erfüllen, und die Entscheidung hinsichtlich der Identitätslösung muss vor der Bereitstellung getroffen werden, um eine reibungslose Installation zu gewährleisten. 
 
-2. [**Laden Sie das Bereitstellungspaket herunter und extrahieren Sie es**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit). Sie können das Bereitstellungspaket auf den Development Kit-Host oder einen anderen Computer herunterladen. Die extrahierten Bereitstellungsdateien belegen bis zu 60 GB freien Speicherplatz auf dem Datenträger, durch die Verwendung eines anderen Computers lassen sich also die Hardwareanforderungen an den Development Kit-Host reduzieren.
+Die Überlegungen zur Bereitstellungsplanung für das ASDK finden Sie **[hier](.\asdk\asdk-deploy-considerations.md)**.
 
-3. [**Bereiten Sie den Development Kit Host**](azure-stack-run-powershell-script.md) mithilfe des Installationsprogramms vor. Nach diesem Schritt startet der Development Kit-Host „Cloudbuilder.vhdx“ (eine virtuelle Festplatte mit startbarem Betriebssystem und den Azure Stack-Installationsdateien).
+> [!TIP]
+> Mit dem [Tool zur Überprüfung von Bereitstellungsanforderungen für Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) können Sie sich nach der Installation des Betriebssystems auf dem Development Kit-Hostcomputer vergewissern, dass die Hardware die Anforderungen erfüllt.
 
-4. [**Stellen Sie das Development Kit**](azure-stack-run-powershell-script.md) auf dem Development Kit-Host bereit.
+## <a name="download-and-extract-the-deployment-package"></a>Herunterladen und Extrahieren des Bereitstellungspakets
+Nachdem Sie sich vergewissert haben, dass Ihr Development Kit-Hostcomputer die Mindestanforderungen für die ASDK-Installation erfüllt, können Sie im nächsten Schritt das ASDK-Bereitstellungspaket herunterladen und extrahieren. Das Bereitstellungspaket enthält die Datei „Cloudbuilder.vhdx“. Hierbei handelt es sich um eine virtuelle Festplatte mit startbarem Betriebssystem und den Azure Stack-Installationsdateien.
 
-5. Wenn Azure Active Directory für Ihre Azure Stack-Bereitstellung verwendet wird, müssen Sie [Azure Stack bei Azure registrieren](azure-stack-register.md), damit Sie [Azure Marketplace-Elemente](azure-stack-download-azure-marketplace-item.md) in Azure Stack herunterladen können.
+Sie können das Bereitstellungspaket auf den Development Kit-Host oder auf einen anderen Computer herunterladen. Die extrahierten Bereitstellungsdateien belegen bis zu 60 GB freien Speicherplatz auf dem Datenträger, durch die Verwendung eines anderen Computers lassen sich also die Hardwareanforderungen an den Development Kit-Host reduzieren.
 
-Nach Abschluss dieser Schritte verfügen Sie über eine Development Kit-Umgebung mit Administrator- und Benutzerportalen. Als Nächstes können Sie [eine Verbindung mit dem Portal herstellen und sich anmelden](azure-stack-connect-azure-stack.md). Dann können Sie mit der Bereitstellung von Ressourcenanbietern, dem Erstellen von [Angeboten](azure-stack-key-features.md#regions-services-plans-offers-and-subscriptions) und dem Auffüllen von Azure Stack [Marketplace](azure-stack-marketplace.md) beginnen.
+**[Download and extract the Azure Stack Development Kit (ASDK)](.\asdk\asdk-download.md)** (Herunterladen und Extrahieren des Azure Stack Development Kits)
+
+## <a name="prepare-the-development-kit-host-computer"></a>Vorbereiten des Development Kit-Hostcomputers
+Bevor Sie das ASDK auf dem Hostcomputer installieren können, muss zunächst die Umgebung vorbereitet und das System für den Start von einer VHD konfiguriert werden. Nach der Vorbereitung des Development Kit-Hostcomputers startet der Computer von der Festplatte des virtuellen Computers (CloudBuilder.vhdx), und Sie können mit der ASDK Bereitstellung beginnen.
+
+**[Prepare the ASDK host computer](.\asdk\asdk-prepare-host.md)** (Vorbereiten des ASDK-Hostcomputers)
+
+## <a name="install-the-asdk-on-the-host-computer"></a>Installieren des ASDKs auf dem Hostcomputer
+Nach der Vorbereitung des Development Kit-Hostcomputers kann das ASDK im Image „CloudBuilder.vhdx“ bereitgestellt werden. Das ASDK kann über eine grafische Benutzeroberfläche (GUI) bereitgestellt werden. Laden Sie hierzu das PowerShell-Skript „asdk-installer.ps1“ herunter, und führen Sie es aus. Die Bereitstellung kann aber auch vollständig über die [Befehlszeile](.\asdk\asdk-deploy-powershell.md) erfolgen. 
+
+> [!NOTE]
+> Optional: Nachdem der Hostcomputer mit „CloudBuilder.vhdx“ gestartet wurde, können Sie *vor* der ASDK-Installation [Azure Stack-Telemetrieeinstellungen](.\asdk\asdk-telemetry.md#set-telemetry-level-in-the-windows-registry) konfigurieren.
+
+
+**[Install the Azure Stack Development Kit (ASDK)](.\asdk\asdk-install.md)** (Installieren des Azure Stack Development Kits (ASDK))
+
+## <a name="perform-post-deployment-configurations"></a>Durchführen der Konfigurationsschritte nach der Bereitstellung
+Nach der ASDK-Installation empfiehlt es sich, einige Überprüfungen und Konfigurationsänderungen durchzuführen. Sie können mit dem Cmdlet „test-AzureStack“ überprüfen, ob die Installation erfolgreich war, und Azure Stack PowerShell sowie GitHub-Tools installieren. 
+
+Nach Bereitstellungen, für die Azure AD verwendet wird, müssen Sie sowohl das Azure Stack-Administratorportal als auch das Mandantenportal aktivieren. Mit dieser Aktivierung wird die Zustimmung erteilt, dass dem Azure Stack-Portal und Azure Resource Manager die richtigen Berechtigungen (auf der Zustimmungsseite aufgeführt) für alle Benutzer des Verzeichnisses gewährt werden können.
+
+Darüber hinaus sollten Sie die Kennwortablaufrichtlinie zurücksetzen, um sicherzustellen, dass das Kennwort für den Development Kit-Host nicht vor dem Ende des Evaluierungszeitraums abläuft.
+
+> [!NOTE]
+> Optional können Sie [Azure Stack-Telemetrieeinstellungen](.\asdk\asdk-telemetry.md#enable-or-disable-telemetry-after-deployment) auch *nach* der ASDK-Installation konfigurieren.
+
+**[Post ASDK installation configuration tasks](.\asdk\asdk-post-deploy.md)** (Aufgaben nach der ASDK-Bereitstellung)
+
+## <a name="register-with-azure"></a>Registrieren bei Azure
+Sie müssen Azure Stack bei Azure registrieren, um [Azure Marketplace-Elemente in Azure Stack herunterladen](.\asdk\asdk-marketplace-item.md) zu können.
+
+**[Register Azure Stack with Azure](.\asdk\asdk-register.md)** (Registrieren von Azure Stack bei Azure)
+
+## <a name="next-steps"></a>Nächste Schritte
+Glückwunsch! Nach Abschluss dieser Schritte verfügen Sie über eine Development Kit-Umgebung mit [Administratorportal](https://adminportal.local.azurestack.external) und [Benutzerportal](https://portal.local.azurestack.external). 

@@ -1,11 +1,11 @@
 ---
-title: "Transformieren und Schützen Ihrer API mit Azure API Management | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Ihre API mithilfe von Richtlinien für Kontingente und Drosselung (Beschränken der Aufrufhäufigkeit) schützen."
+title: Transformieren und Schützen Ihrer API mit Azure API Management | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihre API mithilfe von Richtlinien für Kontingente und Drosselung (Beschränken der Aufrufhäufigkeit) schützen.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 772f3828d85c54e7b8bb44c857e555175b7444cc
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: fb56b8489b086b724df9f3c9179f2c3265cd05a7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-and-protect-your-api"></a>Transformieren und Schützen Ihrer API 
 
@@ -74,8 +74,8 @@ So zeigen Sie die ursprüngliche Antwort an
 6. Klicken Sie im Fenster **Ausgehende Verarbeitung** auf das Dreieck (neben dem Stift).
 7. Klicken Sie auf **Code-Editor**.
     
-     ![Bearbeiten der Richtlinie](./media/set-edit-policies/set-edit-policies01.png)
-9. Positionieren Sie den Cursor im **<outbound>**-Element.
+     ![Richtlinie bearbeiten](./media/set-edit-policies/set-edit-policies01.png)
+9. Positionieren Sie den Cursor im **&lt;outbound&gt;**-Element.
 10. Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** zweimal auf **+ HTTP-Header festlegen** (um zwei Richtlinienausschnitte einzufügen).
 
     ![Richtlinien](./media/transform-api/transform-api.png)
@@ -111,9 +111,9 @@ So zeigen Sie die ursprüngliche Antwort an
 5. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
 6. Klicken Sie im Fenster **Ausgehende Verarbeitung** auf das Dreieck (neben dem Stift).
 7. Klicken Sie auf **Code-Editor**.
-8. Positionieren Sie den Cursor im **<outbound>**-Element.
+8. Positionieren Sie den Cursor im **&lt;outbound&gt;**-Element.
 9. Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** auf **+ Zeichenfolge im Text suchen und ersetzen**.
-10. Ändern Sie Ihren **<find-and-replace**-Code (im Element **<outbound>**) ab, um die URL durch eine URL zu Ihrem APIM-Gateway zu ersetzen. Beispiel:
+10. Ändern Sie Ihren **<find-and-replace**-Code (im Element **<outbound>**) ab, um die URL durch eine URL zu Ihrem APIM-Gateway zu ersetzen. Beispiel: 
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -128,7 +128,7 @@ In diesem Abschnitt wird gezeigt, wie Sie Ihre Back-End-API schützen, indem Sie
 5. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
 6. Klicken Sie im Fenster **Eingehende Verarbeitung** auf das Dreieck (neben dem Stift).
 7. Klicken Sie auf **Code-Editor**.
-8. Positionieren Sie den Cursor im **<inbound>**-Element.
+8. Positionieren Sie den Cursor im **&lt;inbound&gt;**-Element.
 9. Klicken Sie im rechten Fenster unter **Richtlinien für die Zugriffsbeschränkung** auf **+ Aufrufrate pro Schlüssel einschränken**.
 10. Ändern Sie Ihren **<rate-limit-by-key**-Code (im **<inbound>**-Element) folgendermaßen ab:
 

@@ -1,6 +1,6 @@
 ---
-title: "Tutorial für Azure Container Service – Aktualisieren einer Anwendung"
-description: "Tutorial für Azure Container Service – Aktualisieren einer Anwendung"
+title: Tutorial für Azure Container Service – Aktualisieren einer Anwendung
+description: Tutorial für Azure Container Service – Aktualisieren einer Anwendung
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5f22bb3ac378bc9b1ff94db486d6ea6053c64514
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 87de0f23a00b035b12bac6cf655781961b1fb9e5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="update-an-application-in-kubernetes"></a>Aktualisieren einer Anwendung in Kubernetes
 
@@ -29,7 +29,7 @@ In diesem Tutorial – Teil 6 von 7 – wird die Azure Voting-Beispiel-App aktua
 > * Übertragen des Containerimages in Azure Container Registry per Push
 > * Bereitstellen des aktualisierten Containerimages
 
-In nachfolgenden Tutorials wird die Operations Management Suite für die Überwachung des Kubernetes-Clusters konfiguriert.
+In nachfolgenden Tutorials wird Log Analytics für die Überwachung des Kubernetes-Clusters konfiguriert.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -71,7 +71,7 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>Lokales Testen der Anwendung
 
-Navigieren Sie zu http://localhost:8080, um die aktualisierte Anwendung anzuzeigen.
+Wechseln Sie zu http://localhost:8080, um die aktualisierte Anwendung anzuzeigen.
 
 ![Abbildung: Kubernetes-Cluster in Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
@@ -166,7 +166,7 @@ In diesem Tutorial haben Sie eine Anwendung aktualisiert und diese Aktualisierun
 > * Übertragen des Containerimages in Azure Container Registry per Push
 > * Bereitstellen der aktualisierten Anwendung
 
-Im nächsten Tutorial erfahren Sie, wie Sie Kubernetes mit der Operations Management Suite überwachen.
+Im nächsten Tutorial erfahren Sie, wie Sie Kubernetes mit Log Analytics überwachen.
 
 > [!div class="nextstepaction"]
-> [Überwachen von Kubernetes mit OMS](./container-service-tutorial-kubernetes-monitor.md)
+> [Überwachen von Kubernetes mit Log Analytics](./container-service-tutorial-kubernetes-monitor.md)

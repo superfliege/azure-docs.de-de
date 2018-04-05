@@ -1,12 +1,12 @@
 ---
 title: 'Azure Cosmos DB-Entwurfsmuster: Social Media Apps | Microsoft-Dokumentation'
-description: "Erfahren Sie mehr über ein Entwurfsmuster für soziale Netzwerke durch die Nutzung des flexiblen Speichers von Azure Cosmos DB und anderen Azure-Diensten."
+description: Erfahren Sie mehr über ein Entwurfsmuster für soziale Netzwerke durch die Nutzung des flexiblen Speichers von Azure Cosmos DB und anderen Azure-Diensten.
 keywords: Social Media Apps
 services: cosmos-db
 author: ealsur
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 2dbf83a7-512a-4993-bf1b-ea7d72e095d9
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.openlocfilehash: c89b2db6d5a80f184ca98ef757605272d385a81c
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: d223187ab1f8338c57e6aa32903ea9b762393ab5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 Da wir in einer hochgradig vernetzten Welt leben, werden wir irgendwann Teil **sozialer Netzwerke**. Wir verwenden diese Netzwerke, um mit Freunden, Kollegen und der Familie in Kontakt zu bleiben oder auch, um das, was uns bewegt, mit Menschen mit den gleichen Interessen zu teilen.
 
-Als Ingenieure oder Entwickler, haben Sie sich möglicherweise gefragt, wie diese Netzwerke unsere Daten speichern und verknüpfen. Möglicherweise wurden Sie sogar bereits mit dem Entwurf und der Erstellung eines neuen sozialen Netzwerks für einen bestimmten Nischenmarkt beauftragt. Spätestens dann stellt sich die große Frage: Wie werden all diese Daten gespeichert?
+Als Ingenieur oder Entwickler haben Sie sich möglicherweise gefragt, wie diese Netzwerke unsere Daten speichern und verknüpfen. Möglicherweise wurden Sie sogar bereits mit dem Entwurf und der Erstellung eines neuen sozialen Netzwerks für einen bestimmten Nischenmarkt beauftragt. Spätestens dann stellt sich die große Frage: Wie werden all diese Daten gespeichert?
 
 Nehmen wir an, dass wir ein nagelneues soziales Netzwerk erschaffen, in dem unsere Benutzer Artikel mit den dazugehörigen Medien wie Bilder, Videos oder sogar Musik posten können. Die Benutzer sollen Beiträge darüber hinaus kommentieren und durch Punktvergabe bewerten können. Über einen Feed auf der Hauptseite sollen Benutzer Beiträge lesen und mit ihnen interagieren können. Das klingt (anfänglich) nicht unbedingt komplex, der Einfachheit halber hören wir aber an dieser Stelle auf. (Wir könnten uns weiter mit von Beziehungen beeinflussten, benutzerdefinierten Feeds beschäftigen, aber das geht über das Ziel dieses Artikels hinaus).
 
@@ -229,7 +229,7 @@ Cosmos DB unterstützt ohne Konfiguration [dynamische Partitionierung](https://a
 
 Ein erwähnenswerter interessanter Punkt ist, dass Cosmos DB Ihre Abfragen (einschließlich [Aggregaten](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) transparent über alle Ihre Partitionen ausführt; bei wachsendem Datenbestand brauchen Sie keinerlei Logik hinzuzufügen.
 
-Im Lauf der Zeit werden der Datenverkehr und der Ressourcenverbrauch (in [RUs](request-units.md) (Request Units, Anforderungseinheiten) gemessen) irgendwann zunehmen. Mit wachsender Benutzerbasis erfolgen mehr Lese- und Schreibvorgänge, und Ihre Benutzer werden mehr Inhalte erstellen und lesen; die Möglichkeit zum **Skalieren des Durchsatzes** ist essenziell. Das Erhöhen Ihrer RUs ist sehr einfach, es kann mit einigen Klicks im Azure-Portal oder durch [Ausgeben von Befehlen über die API](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer) erfolgen.
+Im Lauf der Zeit werden der Datenverkehr und der Ressourcenverbrauch (in [RUs](request-units.md) (Request Units, Anforderungseinheiten) gemessen) irgendwann zunehmen. Mit wachsender Benutzerbasis erfolgen mehr Lese- und Schreibvorgänge, und Ihre Benutzer werden mehr Inhalte erstellen und lesen; die Möglichkeit zum **Skalieren des Durchsatzes** ist essenziell. Das Erhöhen Ihrer RUs ist sehr einfach, es kann mit einigen Klicks im Azure-Portal oder durch [Ausgeben von Befehlen über die API](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer) erfolgen.
 
 ![Vertikales Skalieren und Definieren eines Partitionsschlüssels](./media/social-media-apps/social-media-apps-scaling.png)
 

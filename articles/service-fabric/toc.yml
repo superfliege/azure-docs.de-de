@@ -317,10 +317,6 @@
               href: service-fabric-deploy-multiple-apps.md
         - name: Erstellen eines Containerdiensts
           items:
-            - name: Verwenden eines Zertifikats in einem Container
-              href: service-fabric-securing-containers.md
-            - name: Einrichten von gMSA für Windows-Container
-              href: service-fabric-setup-gmsa-for-windows-containers.md
             - name: Docker Compose (Vorschau)
               href: service-fabric-docker-compose.md
             - name: Ressourcenkontrolle für Container und Dienste
@@ -383,22 +379,30 @@
               href: service-fabric-reliable-actors-fabrictransportsettings.md
             - name: Konfigurieren von „ReliableDictionaryActorStateProvider“
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
-        - name: Migrieren alter Java-Anwendungen für die Unterstützung von Maven
-          href: service-fabric-migrate-old-javaapp-to-use-maven.md
-        - name: Konfigurieren eines Reverseproxys für eine sichere Kommunikation
-          href: service-fabric-reverseproxy-configure-secure-communication.md
         - name: Erstellen eines ASP.NET Core-Diensts
           href: service-fabric-add-a-web-frontend.md
         - name: Konfigurieren der Sicherheit
           items:
             - name: Verwalten von Anwendungsgeheimnissen
               href: service-fabric-application-secret-management.md
+            - name: Konfigurieren eines Reverseproxys für eine sichere Kommunikation
+              href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: Ausführen eines Dienststartskripts als lokales Benutzerkonto oder Systemkonto
               href: service-fabric-run-script-at-service-startup.md
             - name: Ausführen eines Diensts als lokales Benutzerkonto oder Systemkonto
               href: service-fabric-application-runas-security.md
             - name: Zuweisen einer Sicherheitszugriffsrichtlinie für Endpunkte
               href: service-fabric-assign-policy-to-endpoint.md
+            - name: Ausführen eines Diensts als AD-Benutzer oder -Gruppe
+              href: service-fabric-run-service-as-ad-user-or-group.md
+            - name: Ausführen eines Diensts als gruppenverwaltetes Dienstkonto
+              href: service-fabric-run-service-as-gmsa.md
+            - name: Verwenden eines Zertifikats in einem Container
+              href: service-fabric-securing-containers.md
+            - name: Einrichten von gMSA für Windows-Container
+              href: service-fabric-setup-gmsa-for-windows-containers.md
+        - name: Migrieren alter Java-Anwendungen für die Unterstützung von Maven
+          href: service-fabric-migrate-old-javaapp-to-use-maven.md
     - name: Arbeiten in einer Windows-/VS-Entwicklungsumgebung
       items:
         - name: Verwalten von Anwendungen in Visual Studio
@@ -501,8 +505,6 @@
               href: service-fabric-cluster-upgrade.md
             - name: Festlegen der Zugriffssteuerung
               href: service-fabric-cluster-security-roles.md
-            - name: Konfigurieren
-              href: service-fabric-cluster-fabric-settings.md
             - name: Öffnen eines Ports im Lastenausgleichsmodul
               href: create-load-balancer-rule.md
             - name: Verwalten von Clusterzertifikaten
@@ -525,14 +527,8 @@
                   href: service-fabric-cluster-standalone-package-contents.md
             - name: Skalieren
               href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: Konfigurieren der Sicherheit
-              items:
-                - name: Festlegen der Zugriffssteuerung
-                  href: service-fabric-cluster-security-roles.md
-                - name: Ausführen eines Diensts als AD-Benutzer oder -Gruppe
-                  href: service-fabric-run-service-as-ad-user-or-group.md
-                - name: Ausführen eines Diensts als gruppenverwaltetes Dienstkonto
-                  href: service-fabric-run-service-as-gmsa.md
+            - name: Festlegen der Zugriffssteuerung
+              href: service-fabric-cluster-security-roles.md
             - name: Konfigurieren
               href: service-fabric-cluster-manifest.md
             - name: Upgrade
@@ -614,6 +610,8 @@
       href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
     - name: REST
       href: /rest/api/servicefabric
+    - name: Konfigurieren von Clustereinstellungen und der Fabric-Upgraderichtlinie
+      href: service-fabric-cluster-fabric-settings.md
     - name: XML-Schema des Dienstmodells
       href: service-fabric-service-model-schema.md
     - name: Umgebungsvariablen

@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices"
-description: "Leitfaden mit ersten Schritten für Azure Mobile Engagement und Best Practices für den Einstieg"
+title: Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices
+description: Leitfaden mit ersten Schritten für Azure Mobile Engagement und Best Practices für den Einstieg
 services: mobile-engagement
 documentationcenter: mobile
 author: wesmc7777
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: dfce1183-6398-466e-aa7e-ed702fb52818
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf9dc5febeae27473d2adb8a024536b945bb9d13
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 ## <a name="overview"></a>Übersicht
 **Der Bildschirm mobiler Geräte ist sehr unübersichtlich:** Im Jahr 2013 wurde in einer Studie festgestellt, dass auf mobilen Geräten durchschnittlich 27 Anwendungen installiert waren. Benutzer verbringen in der Regel 30 Stunden pro Monat mit ihre Apps. Ein Großteil dieser Zeit wurde für soziale Netzwerke und Spiele aufgewendet (ca. 20 Stunden). Im Jahr 2014 konnten Benutzer auf dem Android-Markt zwischen ca. 1,5 Millionen Anwendungen wählen. Im Apple Store waren ca. 1,2 Millionen Apps enthalten. Die Verwendung der mobilen Apps nimmt weiterhin zu, und die Entwickler konkurrieren auf diesem wachsender Markt. 
 
@@ -248,7 +252,7 @@ Aufträge werden verwendet, um Aktionen zu melden, die eine Dauer aufweisen. Bei
 * Dauer des Einkaufs
 * Anzeige eines Videos
 
-###### <a name="errors"></a>Fehler
+###### <a name="errors"></a>Errors
 Fehler werden verwendet, um von der App erkannte Probleme zu melden. Dazu gehören falsche Benutzeraktionen oder API-Aufruffehler.
 
 ###### <a name="application-information"></a>Anwendungsinformationen

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: tamram
-ms.openlocfilehash: 66406ed327f496dce7e77bb9ff650e0eec44bbdd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3c313025917bba06675d3b2d844a6740fab89fbc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Vorgehensweise beim Ausfall von Azure Storage
 Bei Microsoft arbeiten wir hart, um sicherzustellen, dass unsere Dienste immer verfügbar sind. Aufgrund höherer Gewalt können ungeplante Dienstausfälle in einer Region oder auch mehreren Regionen auftreten. Damit Sie mit diesen seltenen Vorkommen umgehen können, stellen wir Ihnen den folgenden allgemeinen Leitfaden für Azure Storage-Dienste zur Verfügung.
@@ -42,10 +42,10 @@ Wenn eine oder mehrere Storage-Dienste in einer Region oder in mehreren Regionen
 In diesem Fall ist keine weitere Aktion erforderlich. Wir arbeiten intensiv daran, die Verfügbarkeit des Azure-Diensts wiederherzustellen. Sie können den Dienststatus auf unserem [Azure Service Health Dashboard](https://azure.microsoft.com/status/)überwachen.
 
 ### <a name="option-2-copy-data-from-secondary"></a>Option 2: Kopieren von Daten von der sekundären Region
-Wenn Sie [Read-Access Geo-Redundant-Speicher (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (empfohlen) für Ihre Speicherkonten ausgewählt haben, verfügen Sie über Lesezugriff auf Ihre Daten in der sekundären Region. Sie können Tools wie [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md) und [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) verwenden, um Daten aus der sekundären Region in ein anderes Speicherkonto oder in eine nicht betroffene Region zu kopieren. Anschließend können Sie Ihre Anwendungen jeweils für Lese- und Schreibverfügbarkeit auf dieses Speicherkonto verweisen.
+Wenn Sie [Read-Access Geo-Redundant-Speicher (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (empfohlen) für Ihre Speicherkonten ausgewählt haben, verfügen Sie über Lesezugriff auf Ihre Daten in der sekundären Region. Sie können Tools wie [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md) und [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) verwenden, um Daten aus der sekundären Region in ein anderes Speicherkonto oder in eine nicht betroffene Region zu kopieren. Anschließend können Sie Ihre Anwendungen jeweils für Lese- und Schreibverfügbarkeit auf dieses Speicherkonto verweisen.
 
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Was bei einem Storage-Failover zu erwarten ist
-Wenn Sie [Georedundanter Speicher (GRS)](storage-redundancy.md#geo-redundant-storage) oder [Read-Access Geo-Redundant-Speicher (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (empfohlen) ausgewählt haben, wird Azure Storage Ihre Daten dauerhaft in zwei Regionen (primär und sekundär) beibehalten. In beiden Regionen unterhält Azure Storage ständig mehrere Replikate Ihrer Daten.
+Wenn Sie [Georedundanter Speicher (GRS)](storage-redundancy-grs.md) oder [Read-Access Geo-Redundant-Speicher (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (empfohlen) ausgewählt haben, wird Azure Storage Ihre Daten dauerhaft in zwei Regionen (primär und sekundär) beibehalten. In beiden Regionen unterhält Azure Storage ständig mehrere Replikate Ihrer Daten.
 
 Wenn ein regionaler Notfall die primäre Region betrifft, versuchen wir zunächst, den Dienst in dieser Region wiederherzustellen. Abhängig von der Art des Notfalls und seinen Auswirkungen, ist es uns in seltenen Fällen nicht möglich, die primäre Region wiederherzustellen. Zu diesem Zeitpunkt werden wir ein Geofailover durchführen. Die regionsübergreifende Datenreplikation ist ein asynchroner Prozess, der eine Verzögerung mit sich bringen kann. Es ist daher möglich, dass Änderungen, die noch nicht in die sekundäre Region repliziert wurden, möglicherweise verlorengehen. Sie können die [„letzte Synchronisierungszeit“ Ihres Speicherkontos](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) abfragen, um Informationen zu Ihrem Replikationsstatus zu erhalten.
 

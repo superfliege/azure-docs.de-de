@@ -1,26 +1,26 @@
 ---
 title: Was ist Azure Stack? | Microsoft-Dokumentation
-description: "Azure Stack ermöglicht die Ausführung von Azure-Diensten in Ihrem Datencenter."
+description: Azure Stack ermöglicht die Ausführung von Azure-Diensten in Ihrem Datencenter.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: d9e6aee1-4cba-4df5-b5a3-6f38da9627a3
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/21/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: 68d1e1752f934e61bbb60c0c934a80b564896a36
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 863c1ec562cd71af0df69ccc0547e16d02c7ee82
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-azure-stack"></a>Was ist Azure Stack?
 
@@ -30,15 +30,15 @@ Microsoft Azure Stack ist eine Hybrid Cloud-Plattform, mit der Sie Azure-Dienste
 Integrierte Azure Stack-Systeme werden im Rahmen einer Partnerschaft zwischen Microsoft und [Hardwarepartnern](https://azure.microsoft.com/overview/azure-stack/integrated-systems/) angeboten. Dadurch entsteht eine ausgewogene Lösung mit cloudbasierten Innovationen und komfortabler Verwaltung.  Bei Azure Stack handelt es sich um ein integriertes System mit Hardware und Software. Somit bietet die Plattform genau das richtige Maß an Flexibilität und Kontrolle bei gleichzeitiger Bereitstellung von cloudbasierten Innovationen.  Integrierte Azure Stack-Systeme haben eine Größe von vier bis zwölf Knoten, und der Support wird vom Hardwarepartner und von Microsoft gemeinsam bereitgestellt.  Mit integrierten Azure Stack-Systemen ermöglichen Sie neue Szenarien für Ihre Produktionsworkloads.    
 
 ## <a name="azure-stack-development-kit"></a>Azure Stack Development Kit
-Microsoft Azure Stack Development Kit ist eine Einzelknotenbereitstellung von Azure Stack, mit der Sie Azure Stack auswerten und näher kennenlernen können.  Sie können auch Azure Stack Development Kit als Entwicklerumgebung verwenden, in der Sie anhand von mit Azure konsistenten APIs und Tools Entwicklungsarbeiten durchführen können.  Azure Stack Development Kit ist nicht für die Verwendung als Produktionsumgebung konzipiert.
+[Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) von Microsoft ist eine Einzelknotenbereitstellung von Azure Stack, mit der Sie Azure Stack evaluieren und kennenlernen können.  Sie können das ASDK auch für Entwicklungsarbeiten mit APIs und Tools verwenden, die mit Azure konsistent sind. Das ASDK ist nicht für die Verwendung in einer Produktionsumgebung vorgesehen.
 
-Für das Azure Stack Development Kit gelten die folgenden Einschränkungen:
-* Das Azure Stack Development Kit ist einem einzigen Azure Active Directory- oder AD FS-Identitätsanbieter (Active Directory Federation Services, Active Directory-Verbunddienste) zugeordnet. Sie können mehrere Benutzer in diesem Verzeichnis erstellen und jedem Benutzer Abonnements zuweisen.
+Für das ASDK gelten folgende Einschränkungen:
+* Das ASDK wird einem einzelnen Identitätsanbieter zugeordnet. Dabei handelt es sich entweder um Azure Active Directory (Azure AD) oder um Active Directory-Verbunddienste (Active Directory Federation Services, AD FS). Sie können mehrere Benutzer in diesem Verzeichnis erstellen und jedem Benutzer Abonnements zuweisen.
 * Da alle Komponenten auf einem einzigen Computer bereitgestellt werden, stehen für Mandantenressourcen nur begrenzte physische Ressourcen zur Verfügung. Diese Konfiguration ist nicht für die Beurteilung von Skalierung oder Leistung vorgesehen.
 * Netzwerkszenarios sind aufgrund der Anforderungen an einen einzelnen Host mit einer NIC beschränkt.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Wichtige Features und Konzepte](azure-stack-key-features.md)
 
-[Azure Stack: Eine Erweiterung von Azure (pdf)](https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/)
+[Azure Stack: Eine Erweiterung von Azure (PDF)](https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/)
 

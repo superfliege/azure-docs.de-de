@@ -1,11 +1,11 @@
 ---
 title: Azure Mobile Engagement Web SDK-APIs| Microsoft Docs
-description: "Die neuesten Updates und Verfahren für das Web SDK für Azure Mobile Engagement"
+description: Die neuesten Updates und Verfahren für das Web SDK für Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8a87d5ac-d8b7-4a0d-bdee-414dbcc561b2
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: 54c22ce6a03e382b1bbde102bccc97deec249b30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d2ae75b384b60d0383c1682a00a4fc0d19d0f43
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>Verwenden der Azure Mobile Engagement-API in einer Webanwendung
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Dieses Dokument ist ein Zusatz für das Dokument über die Vorgehensweise zum [Integrieren von Azure Mobile Engagement in eine Webanwendung](mobile-engagement-web-integrate-engagement.md). Es enthält ausführlichere Informationen dazu, wie Sie mithilfe der Azure Mobile Engagement-API Ihre Anwendungsstatistik melden können.
 
 Die Azure Mobile Engagement-API wird vom `engagement.agent` -Objekt bereitgestellt. Das standardmäßige Alias des Azure Mobile Engagement Web SDK lautet `engagement`. Die Definition dieses Alias kann über die SDK-Konfiguration geändert werden.
@@ -169,7 +173,7 @@ Bei diesen Daten kann es sich um ein beliebiges JSON-Objekt (aber nicht um ein A
     var extras = {"video_id": 123, "ref_click": "http://foobar.com/blog"};
     engagement.agent.sendEvent("video_clicked", extras);
 
-### <a name="limits"></a>Grenzen
+### <a name="limits"></a>Einschränkungen
 Für zusätzliche Parameter geltende Grenzwerte betreffen reguläre Ausdrücke für Schlüssel, Werttypen und Größe.
 
 #### <a name="keys"></a>Schlüssel
@@ -199,7 +203,7 @@ Hier sehen Sie ein Codebeispiel für die Übermittlung von Geschlecht und Geburt
     var appInfos = {"birthdate":"1983-12-07","gender":"female"};
     engagement.agent.sendAppInfo(appInfos);
 
-### <a name="limits"></a>Grenzen
+### <a name="limits"></a>Einschränkungen
 Für Anwendungsinformationen geltende Grenzwerte betreffen reguläre Ausdrücke für Schlüssel und die Größe.
 
 #### <a name="keys"></a>Schlüssel

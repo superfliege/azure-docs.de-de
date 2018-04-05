@@ -1,11 +1,11 @@
 ---
-title: "Upgradeverfahren für das Azure Mobile Engagement Web SDK | Microsoft Docs"
-description: "Die neuesten Updates und Verfahren für das Web SDK für Azure Mobile Engagement"
+title: Upgradeverfahren für das Azure Mobile Engagement Web SDK | Microsoft Docs
+description: Die neuesten Updates und Verfahren für das Web SDK für Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a20529b4-ec8d-4503-8ae9-09b5f0846d5b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: afa8037dcb7a53042fa606e2c4014b442d4be326
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42f78b5e6bfa028f3a798f6cb6c0dee3f17b3ebe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-web-sdk-upgrade-procedures"></a>Upgradeverfahren für das Azure Mobile Engagement Web SDK
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Wenn Sie bereits eine frühere Version des Azure Mobile Engagement Web SDK in Ihre Webanwendung integriert haben, müssen Sie bei einem Upgrade des SDK die folgenden Punkte beachten.
 
 Wenn Sie mehrere Versionen des Mobile Engagement Web SDK übersprungen haben, müssen Sie während des Upgrades ggf. mehrere Verfahren ausführen. Wenn Sie beispielsweise von 1.4.0 zu 1.6.0 migrieren, führen Sie erst die Verfahren für das Upgrade von 1.4.0 auf 1.5.0 durch. Führen Sie anschließend die Verfahren für das Upgrade von 1.5.0 auf 1.6.0 durch.

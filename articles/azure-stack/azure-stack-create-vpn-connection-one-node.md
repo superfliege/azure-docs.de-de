@@ -1,11 +1,11 @@
 ---
 title: Erstellen einer Site-to-Site-VPN-Verbindung zwischen zwei virtuellen Netzwerken in unterschiedlichen Azure Stack Development Kit-Umgebungen | Microsoft-Dokumentation
-description: "Schrittweise Anleitung für Cloudadministratoren zum Erstellen einer Site-to-Site-VPN-Verbindung zwischen zwei Azure Stack Development Kit-Umgebungen mit jeweils einem Knoten."
+description: Schrittweise Anleitung für Cloudadministratoren zum Erstellen einer Site-to-Site-VPN-Verbindung zwischen zwei Azure Stack Development Kit-Umgebungen mit jeweils einem Knoten.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: brenduns
 ms.reviewer: scottnap
-ms.openlocfilehash: 886d56169c5500c9175b7ddc43edfc29c5142fbb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8bb10be63ef31ebe6241c15a79dafe71923a4cf7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Erstellen einer Site-to-Site-VPN-Verbindung zwischen zwei virtuellen Netzwerken in unterschiedlichen Azure Stack Development Kit-Umgebungen
 ## <a name="overview"></a>Übersicht
@@ -33,7 +33,7 @@ Das folgende Diagramm zeigt die fertige Verbindungskonfiguration:
 ### <a name="before-you-begin"></a>Voraussetzungen
 Vergewissern Sie sich zum Durchführen der Verbindungskonfiguration zunächst, dass Sie über folgende Elemente verfügen:
 
-* Zwei Server, die die Hardwareanforderungen für das Azure Stack Development Kit erfüllen, die von den [Azure Stack-Bereitstellungsvoraussetzungen](azure-stack-deploy.md) definiert werden. Stellen Sie außerdem sicher, dass die anderen im [Artikel](azure-stack-deploy.md) genannten Voraussetzungen ebenfalls erfüllt sind.
+* Zwei Server und andere erforderliche Komponenten, welche die in [Schnellstart: Evaluieren des Azure Stack Development Kit](azure-stack-deploy-overview.md) beschriebenen Hardware-Anforderungen des Azure Stack Development Kits erfüllen. 
 * Das [Bereitstellungspaket für das Azure Stack Development Kit](https://azure.microsoft.com/en-us/overview/azure-stack/try/).
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Bereitstellen der Azure Stack Development Kit-Umgebungen

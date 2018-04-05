@@ -1,11 +1,11 @@
 ---
-title: "Vergleich von Azure Mobile Engagement mit anderen ähnlichen Azure-Diensten"
-description: "Vergleich von Azure Mobile Engagement mit anderen ähnlichen Azure-Diensten – HockeyApp, AppInsights, Notification Hubs"
+title: Vergleich von Azure Mobile Engagement mit anderen ähnlichen Azure-Diensten
+description: Vergleich von Azure Mobile Engagement mit anderen ähnlichen Azure-Diensten – HockeyApp, AppInsights, Notification Hubs
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1f114775-3a9a-4dd4-8d59-b10d1da9a68b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 7df2eb9ecebe3313dad9c15171552a084787f6b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57be3b235c5f439741155a70df7ddbe8a80906f2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="comparing-azure-mobile-engagement-with-other-similar-azure-services"></a>Vergleich von Azure Mobile Engagement mit anderen ähnlichen Azure-Diensten
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Die Liste der Dienste, die von Microsoft Azure angeboten werden, wächst ständig, und vielleicht fragen Sie sich manchmal, was Azure Mobile Engagement von einem anderen Dienst unterscheidet, von dem Sie gerade gelesen oder gehört haben. Dieser Artikel soll der Verwirrung ein Ende setzen, damit Sie gezielt Azure Mobile Engagement auswählen können, wenn dieser Dienst für Ihre Zwecke am besten geeignet ist. 
 
 Azure Mobile Engagement ist ein Dienst, der sich speziell an **digitale Vermarkter/CMOs** wendet, jedoch von jedem **Besitzer oder Herausgeber einer mobilen App** verwendet werden kann, der die Nutzung, Beibehaltung und Monetarisierung seiner mobilen Apps steigern möchte. 

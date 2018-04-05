@@ -1,12 +1,12 @@
 ---
 title: Was ist Azure Backup? | Microsoft-Dokumentation
-description: "Mithilfe von Azure Backup können Sie Daten und Workloads auf Windows Server-Computern, Windows-Arbeitsstationen, System Center DPM-Servern und virtuellen Azure-Computern sichern und wiederherstellen."
+description: Mithilfe von Azure Backup können Sie Daten und Workloads auf Windows Server-Computern, Windows-Arbeitsstationen, System Center DPM-Servern und virtuellen Azure-Computern sichern und wiederherstellen.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "Sichern und Wiederherstellen; Wiederherstellungsdienste; Sicherungslösungen"
+editor: ''
+keywords: Sichern und Wiederherstellen; Wiederherstellungsdienste; Sicherungslösungen
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: mvc
-ms.openlocfilehash: 600c4a29d7d7daabbbf6d1825671d109ea499c4b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 00ed2a64c672e1d2ae9a0037905a544b6c4424b7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
@@ -34,7 +34,7 @@ Herkömmliche Sicherungslösungen haben sich dahingehend entwickelt, dass die Cl
 
 **Unbegrenzte Skalierung**: Für Azure Backup wird die Leistungsstärke und unbegrenzte Skalierung der Azure-Cloud genutzt, um eine hohe Verfügbarkeit sicherzustellen – ohne Wartungs- oder Überwachungsaufwand. Sie können Warnungen einrichten, um Informationen zu Ereignissen bereitzustellen, aber Sie müssen sich nicht um die hohe Verfügbarkeit für Ihre Daten in der Cloud kümmern.
 
-**Mehrere Speicheroptionen**: Ein Aspekt der hohen Verfügbarkeit ist die Speicherreplikation. Azure Backup bietet zwei Arten der Replikation: mit [lokal redundantem Speicher](../storage/common/storage-redundancy.md#locally-redundant-storage) und mit [georedundantem Speicher](../storage/common/storage-redundancy.md#geo-redundant-storage). Wählen Sie die Sicherungsspeicheroption aus, die zu Ihren Anforderungen passt:
+**Mehrere Speicheroptionen**: Ein Aspekt der hohen Verfügbarkeit ist die Speicherreplikation. Azure Backup bietet zwei Arten der Replikation: mit [lokal redundantem Speicher](../storage/common/storage-redundancy-lrs.md) und mit [georedundantem Speicher](../storage/common/storage-redundancy-grs.md). Wählen Sie die Sicherungsspeicheroption aus, die zu Ihren Anforderungen passt:
 
 * Lokal redundanter Speicher (Locally Redundant Storage, LRS) repliziert Ihre Daten dreimal in einer Speicherskalierungseinheit in einem Datencenter. (Es werden also drei Kopien Ihrer Daten erstellt.) Alle Kopien der Daten befinden sich in derselben Region. LRS ist eine kostengünstige Möglichkeit, um Daten vor lokalen Hardwarefehlern zu schützen.
 
@@ -219,7 +219,7 @@ Allgemeine Beispiele für geschützte Instanzen sind virtuelle Computer, Anwendu
 
 
 ## <a name="what-is-a-recovery-services-vault"></a>Was ist ein Recovery Services-Tresor?
-Ein Recovery Services-Tresor ist eine Onlinespeicherentität in Azure, die zum Speichern von Daten wie Sicherungskopien, Wiederherstellungspunkten und Sicherungsrichtlinien verwendet wird. Sie können Recovery Services-Tresore zum Speichern von Sicherungsdaten für Azure-Dienste sowie lokale Server und Arbeitsstationen verwenden. Recovery Services-Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand. Innerhalb jedes Azure-Abonnements können Sie bis zu 25 Recovery Services-Tresore pro Azure-Region erstellen. In Bezug auf die Speicherung der Daten sind nicht alle Regionen gleich. Informationen zu Regionspaaren sowie weitere Überlegungen zum Speicher finden Sie unter [Azure Storage-Replikation](../storage/common/storage-redundancy.md#geo-redundant-storage).
+Ein Recovery Services-Tresor ist eine Onlinespeicherentität in Azure, die zum Speichern von Daten wie Sicherungskopien, Wiederherstellungspunkten und Sicherungsrichtlinien verwendet wird. Sie können Recovery Services-Tresore zum Speichern von Sicherungsdaten für Azure-Dienste sowie lokale Server und Arbeitsstationen verwenden. Recovery Services-Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand. Innerhalb jedes Azure-Abonnements können Sie bis zu 25 Recovery Services-Tresore pro Azure-Region erstellen. In Bezug auf die Speicherung der Daten sind nicht alle Regionen gleich. Informationen zu Regionspaaren sowie weitere Überlegungen zum Speicher finden Sie unter [Azure Storage-Replikation](../storage/common/storage-redundancy-grs.md).
 
 Sicherungstresore, die auf Azure Service Manager basieren, waren die erste Version eines Tresors. Recovery Services-Tresore, die um die Azure Resource Manager-Modellfunktionen ergänzt wurden, sind die zweite Version. Eine vollständige Beschreibung der Funktionsunterschiede finden Sie im [Übersichtsartikel zu Recovery Services-Tresoren](backup-azure-recovery-services-vault-overview.md). Sie können keine Backup-Tresore mehr erstellen, und für alle vorhandenen Backup-Tresore wurde ein Upgrade auf Recovery Services-Tresore ausgeführt. Sie können zum Verwalten der Tresore, für die ein Upgrade auf Recovery Services-Tresore ausgeführt wurde, das Azure-Portal verwenden.
 

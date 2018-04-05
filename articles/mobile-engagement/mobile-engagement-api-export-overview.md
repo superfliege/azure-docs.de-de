@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über die Mobile Engagement-Export-API"
-description: "Erfahren Sie die Grundlagen zum Exportieren der Rohdaten, die von den Geräten Ihrer Benutzer generiert werden. So können Sie diese Daten in Ihren eigenen Tools nutzen."
+title: Übersicht über die Mobile Engagement-Export-API
+description: Erfahren Sie die Grundlagen zum Exportieren der Rohdaten, die von den Geräten Ihrer Benutzer generiert werden. So können Sie diese Daten in Ihren eigenen Tools nutzen.
 services: mobile-engagement
 documentationcenter: mobile
 author: kpiteira
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9380d47b-d7fa-4d4c-888f-97e6482196bb
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 04/26/2016
 ms.author: kapiteir
-ms.openlocfilehash: 346e0e480ff84ee849f135a7605d27df9e32f966
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1dc8a34abf84be3d7f59d41c36d90c2a67e5d32
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="mobile-engagement-export-api-overview"></a>Übersicht über die Mobile Engagement-Export-API
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 ## <a name="introduction"></a>Einführung
 In diesem Dokument erfahren Sie die Grundlagen zum Exportieren der Rohdaten, die von den Geräten Ihrer Benutzer generiert werden. So können Sie diese Daten in Ihren eigenen Tools nutzen.
 
@@ -32,7 +36,7 @@ Für den Export der Rohdaten aus Mobile Engagement ist Folgendes erforderlich:
 * Azure Storage-Konto
 
 > [!NOTE]
-> Zumindest während der Entwicklungsphase empfehlen wir auch den hervorragenden [Microsoft Azure Storage Explorer](http://storageexplorer.com/), da er eine benutzerfreundliche Oberfläche für die Interaktion mit Azure Storage bietet.
+> Zumindest während der Entwicklungsphase empfehlen wir auch den hervorragenden [Microsoft Azure Storage-Explorer](http://storageexplorer.com/), da er eine benutzerfreundliche Oberfläche für die Interaktion mit Azure Storage bietet.
 > 
 > 
 
@@ -45,7 +49,7 @@ Die beiden wichtigsten Exporttypen sind:
 
 In der folgenden Tabelle werden alle möglichen Exporte ausführlich beschrieben:
 
-| Exporttyp | Datentyp | Beschreibung |
+| Exporttyp | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | Momentaufnahme |Push |Generiert einen Export von Feedbacks zu Pushkampagnen pro Geräte-ID/Benutzer-ID |
 | Momentaufnahme |Tag |Generiert einen Export der den einzelnen Geräten zugeordneten Tags (App-Info) |
@@ -54,9 +58,9 @@ In der folgenden Tabelle werden alle möglichen Exporte ausführlich beschrieben
 | Verlaufsdaten |Aktivität |Generiert einen Export aller Aktivitäten für die einzelnen Geräte während eines bestimmten Zeitraums |
 | Verlaufsdaten |Ereignis |Generiert einen Export aller Aktivitäten für die einzelnen Geräte während eines bestimmten Zeitraums |
 | Verlaufsdaten |Job |Generiert einen Export aller Aufträge für die einzelnen Geräte während eines bestimmten Zeitraums |
-| Verlaufsdaten |Fehler |Generiert einen Export aller Fehler für die einzelnen Geräte während eines bestimmten Zeitraums |
+| Verlaufsdaten |Error |Generiert einen Export aller Fehler für die einzelnen Geräte während eines bestimmten Zeitraums |
 
-## <a name="how-does-it-work"></a>Wie funktioniert Application Insights?
+## <a name="how-does-it-work"></a>Wie funktioniert dies?
 Exporte sind Tasks mit langer Ausführungsdauer, die möglicherweise große Datenmengen erzeugen. Aus diesem Grund können sie nicht aufgerufen werden, um sofort eine Datei zum Download zurückzugeben.
 Zum Exportieren von Daten aus Mobile Engagement müssen Sie per API einen **Exportauftrag** erstellen, in dem Sie in der Regel Folgendes angeben:
 

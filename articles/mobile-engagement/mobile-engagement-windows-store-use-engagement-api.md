@@ -5,7 +5,7 @@ services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: bb501fca-9cfe-4495-81df-b5efd6e0137b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 75fc134a5535e6113331470cf61df9c06eb8e2ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f8f211764646bc53319f435d74a16a026329039
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-universal"></a>Verwenden der Engagement-API auf der universellen Windows-Plattform
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Dieses Dokument ist ein Zusatz zu dem Dokument [Integration von Engagement in die universelle Windows-Plattform](mobile-engagement-windows-store-integrate-engagement.md): Es bietet tiefergehende Details zur Verwendung der Engagement-API zur Ausgabe von Anwendungsstatistiken.
 
 Beachten Sie: Wenn Engagement nur die Sitzungsaktivitäten der Anwendung, Abstürze und technische Informationen melden soll, ist es am einfachsten, wenn alle `Page`-Unterklassen von der `EngagementPage`-Klasse erben.
@@ -41,7 +45,7 @@ Eine *Aktivität* ist normalerweise einer Seite der Anwendung zugeordnet, d.h. d
 
 ## <a name="reporting-activities"></a>Berichterstellung für Aktivitäten
 ### <a name="user-starts-a-new-activity"></a>Benutzer startet eine neue Aktivität
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void StartActivity(string name, Dictionary<object, object> extras = null)
 
 Sie müssen jedes Mal `StartActivity()` aufrufen, wenn sich die Benutzeraktivität ändert. Der erste Aufruf dieser Funktion startet eine neue Benutzersitzung.
@@ -55,7 +59,7 @@ Sie müssen jedes Mal `StartActivity()` aufrufen, wenn sich die Benutzeraktivit�
             EngagementAgent.Instance.StartActivity("main", new Dictionary<object, object>() {{"example", "data"}});
 
 ### <a name="user-ends-his-current-activity"></a>Der Benutzer beendet seine aktuelle Aktivität
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void EndActivity()
 
 Damit werden die Aktivität und die Sitzung beendet. Sie sollten diese Methode nur dann aufrufen, wenn Sie sich wirklich sicher sind.
@@ -65,7 +69,7 @@ Damit werden die Aktivität und die Sitzung beendet. Sie sollten diese Methode n
 
 ## <a name="reporting-jobs"></a>Berichterstellung für Aufträge
 ### <a name="start-a-job"></a>Starten eines Auftrags
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void StartJob(string name, Dictionary<object, object> extras = null)
 
 Sie können den Auftrag verwenden, um bestimmte Aufgaben eine Zeit lang nachzuverfolgen.
@@ -81,7 +85,7 @@ Sie können den Auftrag verwenden, um bestimmte Aufgaben eine Zeit lang nachzuve
             EngagementAgent.Instance.StartJob("uploadData", extras);
 
 ### <a name="end-a-job"></a>Beenden eines Auftrags
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void EndJob(string name)
 
 Sobald eine Aufgabe, die von einem Auftrag nachverfolgt wird, beendet ist, sollten Sie die EndJob-Methode für diesen Auftrag aufrufen, indem Sie den Auftragsnamen angeben.
@@ -100,7 +104,7 @@ Es gibt drei Arten von Ereignissen:
 * Auftragsereignisse
 
 ### <a name="standalone-events"></a>Eigenständige Ereignisse
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void SendEvent(string name, Dictionary<object, object> extras = null)
 
 Eigenständige Ereignisse können außerhalb des Kontexts einer Sitzung auftreten.
@@ -109,7 +113,7 @@ Eigenständige Ereignisse können außerhalb des Kontexts einer Sitzung auftrete
             EngagementAgent.Instance.SendEvent("event", extra);
 
 ### <a name="session-events"></a>Sitzungsereignisse
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void SendSessionEvent(string name, Dictionary<object, object> extras = null)
 
 Sitzungsereignisse werden normalerweise verwendet, um die Aktionen eines Benutzers während seiner Sitzung zu melden.
@@ -130,7 +134,7 @@ Sitzungsereignisse werden normalerweise verwendet, um die Aktionen eines Benutze
             EngagementAgent.Instance.SendSessionEvent("sessionEvent", extras);
 
 ### <a name="job-events"></a>Auftragsereignisse
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void SendJobEvent(string eventName, string jobName, Dictionary<object, object> extras = null)
 
 Auftragsereignisse werden normalerweise verwendet, um die Aktionen eines Benutzers während eines Auftrags zu melden.
@@ -146,7 +150,7 @@ Es gibt drei Fehlertypen:
 * Auftragsfehler
 
 ### <a name="standalone-errors"></a>Eigenständige Fehler
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void SendError(string name, Dictionary<object, object> extras = null)
 
 Im Gegensatz zu Sitzungsfehlern können eigenständige Fehler außerhalb des Kontexts einer Sitzung auftreten.
@@ -155,7 +159,7 @@ Im Gegensatz zu Sitzungsfehlern können eigenständige Fehler außerhalb des Kon
             EngagementAgent.Instance.SendError("errorName", extras);
 
 ### <a name="session-errors"></a>Sitzungsfehler
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void SendSessionError(string name, Dictionary<object, object> extras = null)
 
 Sitzungsfehler werden normalerweise zum Melden der Fehler verwendet, die Auswirkungen auf den Benutzer während seiner Sitzung haben.
@@ -164,7 +168,7 @@ Sitzungsfehler werden normalerweise zum Melden der Fehler verwendet, die Auswirk
             EngagementAgent.Instance.SendSessionError("errorName", extra);
 
 ### <a name="job-errors"></a>Auftragsfehler
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void SendJobError(string errorName, string jobName, Dictionary<object, object> extras = null)
 
 Fehler können mit einem ausgeführten Auftrag in Zusammenhang stehen anstatt mit der aktuellen Benutzersitzung.
@@ -176,7 +180,7 @@ Fehler können mit einem ausgeführten Auftrag in Zusammenhang stehen anstatt mi
 Der Agent stellt zwei Methoden für den Umgang mit Abstürzen zur Verfügung.
 
 ### <a name="send-an-exception"></a>Senden einer Ausnahme
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void SendCrash(Exception e, bool terminateSession = false)
 
 #### <a name="example"></a>Beispiel
@@ -191,7 +195,7 @@ Sie können auch einen optionalen Parameter zum Beenden der Engagement-Sitzung z
 Wenn Sie dies tun, werden die Sitzung und die Aufträge direkt nach dem Senden des Absturzes geschlossen.
 
 ### <a name="send-an-unhandled-exception"></a>Senden Sie eine nicht behandelte Ausnahme
-#### <a name="reference"></a>Referenz
+#### <a name="reference"></a>Verweis
             void SendCrash(Exception e)
 
 Engagement bietet auch eine Methode, um unbehandelte Ausnahmen zu senden, wenn der automatische **Absturz**-Bericht von Engagement **DEAKTIVIERT** ist. Dies ist besonders bei Verwendung in der Anwendung UnhandledException-Ereignishandler nützlich.
@@ -270,7 +274,7 @@ Fügen Sie anschließend eine `Person` -Instanz zu einem Extra hinzu.
 > 
 > 
 
-### <a name="limits"></a>Grenzen
+### <a name="limits"></a>Einschränkungen
 #### <a name="keys"></a>Schlüssel
 Jeder Schlüssel in dem Objekt muss mit dem folgenden regulären Ausdruck übereinstimmen:
 
@@ -282,7 +286,7 @@ Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben beginnen müssen, 
 Extras sind beschränkt auf **1024** Zeichen pro Aufruf.
 
 ## <a name="reporting-application-information"></a>Informationen zur Berichterstellung für Anwendungen
-### <a name="reference"></a>Referenz
+### <a name="reference"></a>Verweis
             void SendAppInfo(Dictionary<object, object> appInfos)
 
 Sie können Nachverfolgungsinformationen (oder beliebige andere anwendungsspezifische Informationen) manuell mithilfe der SendAppInfo()-Funktion melden.
@@ -298,7 +302,7 @@ Beachten Sie, dass diese Daten inkrementell gesendet werden können: Nur der let
 
             EngagementAgent.Instance.SendAppInfo(appInfo);
 
-### <a name="limits"></a>Grenzen
+### <a name="limits"></a>Einschränkungen
 #### <a name="keys"></a>Schlüssel
 Jeder Schlüssel in dem Objekt muss mit dem folgenden regulären Ausdruck übereinstimmen:
 

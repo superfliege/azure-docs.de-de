@@ -1,6 +1,6 @@
 ---
 title: Erstellen der ersten Funktion in Azure mit Java und Maven | Microsoft-Dokumentation
-description: "Erstellen und veröffentlichen Sie mit Java und Maven eine einfache durch HTTP ausgelöste Funktion in Azure."
+description: Erstellen und veröffentlichen Sie mit Java und Maven eine einfache durch HTTP ausgelöste Funktion in Azure.
 services: functions
 documentationcenter: na
 author: rloutlaw
@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c0984075cd8e372cce09ea100378dcd4e8cddabe
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 81d9d8790a750f34133f3f00dafc15c56185d7b1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Erstellen der ersten Funktion mit Java und Maven (Vorschau)
 
@@ -34,18 +34,25 @@ In diesem Schnellstart wird erläutert, wie Sie mit Maven ein Projekt für eine 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Funktionen-App mit Java zu entwickeln, muss Folgendes installiert sein:
 
--  [.NET Core](https://www.microsoft.com/net/core), neueste Version
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/), Version 8.
--  [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure)
 -  [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
--  [Node.js](https://nodejs.org/download/), Version 8.6 oder höher
+-  [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT] 
 > Damit Sie diesen Schnellstart durchführen können, muss die Umgebungsvariable JAVA_HOME auf den Installationsspeicherort des JDK festgelegt sein.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Installieren von Azure Functions Core Tools
 
-Die [Azure Functions Core-Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) bieten eine lokale Entwicklungsumgebung zum Schreiben, Ausführen und Debuggen von Azure Functions. Installieren Sie die Tools mit dem Paket-Manager [npm](https://www.npmjs.com/), der im Leistungsumfang von [Node.js](https://nodejs.org/) inbegriffen ist.
+Die [Azure Functions Core-Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) bieten eine lokale Entwicklungsumgebung zum Schreiben, Ausführen und Debuggen von Azure Functions. 
+
+Suchen Sie für die Installation im Abschnitt [Installieren](https://github.com/azure/azure-functions-core-tools#installing) nach den Anweisungen für das gewünschte Betriebssystem (Windows, Linux oder Mac).
+
+Sie können die Installation auch manuell mit [npm](https://www.npmjs.com/) (in [Node.js](https://nodejs.org/) enthalten) durchführen, nachdem Sie folgende erforderliche Komponenten installiert haben:
+
+-  [.NET Core](https://www.microsoft.com/net/core), neueste Version
+-  [Node.js](https://nodejs.org/download/), Version 8.6 oder höher
+
+Führen Sie Folgendes aus, um mit einer npm-basierten Installation fortzufahren:
 
 ```
 npm install -g azure-functions-core-tools@core
@@ -185,6 +192,4 @@ Sie haben eine Java-Funktionen-App mit einem einfachen HTTP-Trigger erstellt und
 - Weitere Informationen zum Entwickeln von Java-Funktionen finden Sie im [Azure Functions-Java-Entwicklerhandbuch](functions-reference-java.md).
 - Fügen Sie mit `azure-functions:add` als Maven-Ziel zusätzliche Funktionen mit verschiedenen Triggern zu Ihrem Projekt hinzu.
 - Debuggen Sie Funktionen lokal mit Visual Studio Code. Nachdem Sie das [Java-Erweiterungspaket](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) installiert und mit Ihrem Functions-Projekt in Visual Studio Code geöffnet haben, [fügen Sie den Debugger an Port 5005 an](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations). Legen Sie anschließend einen Breakpoint im Editor fest, und lösen Sie Ihre Funktion aus, während sie lokal ausgeführt wird: ![Debuggen von Funktionen in Visual Studio Code](media/functions-create-java-maven/vscode-debug.png)
-
-
-
+- Debuggen Sie Funktionen remote mit Visual Studio Code. Eine entsprechende Anleitung finden Sie in der Dokumentation zum [Schreiben serverloser Java-Anwendungen](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).

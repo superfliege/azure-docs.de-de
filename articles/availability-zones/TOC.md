@@ -25,9 +25,15 @@
 ### Lastenausgleichsmodul
 #### [Was ist der Load Balancer?](../load-balancer/load-balancer-standard-overview.md)
 #### [Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md)
-#### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit dem Azure-Portal](../load-balancer/load-balancer-get-started-internet-az-portal.md)
-#### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit PowerShell](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
-#### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit CLI](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+
+#### [Erstellen eines zonenredundanten öffentlichen Load Balancers im Standard-Tarif](../load-balancer/load-balancer-get-started-internet-az-portal.md)
+##### [Erstellen eines zonenredundanten öffentlichen Load Balancers im Standard-Tarif (PowerShell)](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
+##### [Erstellen eines zonenredundanten öffentlichen Load Balancers im Standard-Tarif (CLI)](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+#### [Erstellen eines zonalen öffentlichen Load Balancers im Standard-Tarif](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+##### [Erstellen eines zonalen öffentlichen Load Balancers im Standard-Tarif (PowerShell)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+##### [Erstellen eines zonalen öffentlichen Load Balancers im Standard-Tarif (CLI)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+#### [Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg](../load-balancer/load-balancer-standard-public-availability-zones-portal.md)
+##### [Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg mit Azure (CLI)](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 
 ### [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
@@ -35,7 +41,7 @@
 #### [Verfügbarkeitszonen mit SQL-Datenbank](../sql-database/sql-database-high-availability.md#availability-zones)
 
 ### Speicher
-#### [Zonenredundanter Speicher](../storage/common/storage-redundancy.md#zone-redundant-storage)
+#### [Zonenredundanter Speicher](../storage/common/storage-redundancy-zrs.md)
 
 # Notfallwiederherstellung
 ## [Verwenden von Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)

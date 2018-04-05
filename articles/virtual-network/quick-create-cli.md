@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/09/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 46fec48720c817072ce838dd2e4c07725be5a7fe
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d07f06a1a70c859544c3b1ceb6146dc11e4d10aa
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle
 
@@ -129,4 +129,4 @@ In diesem Artikel haben Sie ein virtuelles Standardnetzwerk und zwei virtuelle C
 Standardmäßig erlaubt Azure uneingeschränkte private Kommunikation zwischen virtuellen Computern. Über das Internet sind mit virtuellen Linux-Computern jedoch nur SSH-Sitzungen in eingehender Richtung zugelassen. Informationen zum Zulassen und Beschränken verschiedener Arten von Netzwerkkommunikation zwischen virtuellen Computern finden Sie im nächsten Tutorial.
 
 > [!div class="nextstepaction"]
-> [Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal](virtual-networks-create-nsg-arm-cli.md)
+> [Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal](tutorial-filter-network-traffic-cli.md)

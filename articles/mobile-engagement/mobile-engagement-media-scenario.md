@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement-Implementierung für Medien-App"
+title: Azure Mobile Engagement-Implementierung für Medien-App
 description: Medien-App-Szenario zum Implementieren von Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 48201cc8-4e04-485c-a8dc-d6406d23f3ed
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c1591c3e436981e621830916cf0cdc4b7f395d7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e5d4585b47a4ca26b81b7168aa499f25722415a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-media-app"></a>Implementieren von Mobile Engagement per Medien-App
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 ## <a name="overview"></a>Übersicht
 Peter ist Manager für mobile Projekte bei einem großen Medienunternehmen. Er hat vor Kurzem eine neue App eingeführt, die über sehr hohe Downloadzahlen verfügt. Er hat seine Ziele in Bezug auf die Downloadzahlen erreicht, aber der Return On Investment (ROI) pro Benutzer erfüllt seine Anforderungen nicht. 
 

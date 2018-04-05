@@ -1,8 +1,8 @@
 ---
 title: Verwenden von Azure AD Connect Health mit Synchronisierung | Microsoft-Dokumentation
-description: "Auf dieser Seite zu Azure AD Connect Health wird erläutert, wie eine Überwachung mit Azure AD Connect für die Synchronisierung durchgeführt wird."
+description: Auf dieser Seite zu Azure AD Connect Health wird erläutert, wie eine Überwachung mit Azure AD Connect für die Synchronisierung durchgeführt wird.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 821d4bd7e6b526ad826caf005456edf8235291b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cff8be88e23d57545a9926df366289c6ba264886
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Überwachen der Azure AD Connect-Synchronisierung mit Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung von Azure AD Connect (Sync) mithilfe von Azure AD Connect Health.  Informationen zum Überwachen von AD FS mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](active-directory-aadconnect-health-adfs.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
@@ -78,16 +78,17 @@ Mit diesem Feature kann ein Bericht zu Synchronisierungsfehlern erstellt werden,
 ### <a name="categorization-of-errors"></a>Kategorisierung von Fehlern
 Im Bericht werden die vorhandenen Synchronisierungsfehler nach den folgenden Kategorien unterteilt:
 
-| Kategorie | Beschreibung |
+| Category (Kategorie) | BESCHREIBUNG |
 | --- | --- |
 | Doppeltes Attribut |Fehler beim Versuch von Azure AD Connect, Objekte mit doppelten Werten von einem oder mehreren Attributen in Azure AD zu erstellen oder zu aktualisieren, die in einem Mandanten eindeutig sein müssen, z.B. proxyAddresses, UserPrincipalName. |
 | Datenkonflikt |Fehler, wenn beim Soft Match-Vorgang für Objekte keine Übereinstimmung erzielt werden kann und dies zu Synchronisierungsfehlern führt. |
 | Fehler bei der Datenüberprüfung |Fehler aufgrund von ungültigen Daten, z.B. nicht unterstützten Zeichen in kritischen Attributen wie UserPrincipalName, und Formatfehler, die die Überprüfung vor dem Schreiben in Azure AD nicht bestehen. |
+| Änderung der Verbunddomäne | Fehler, wenn Konten eine andere verbundene Domäne verwenden. |
 | Großes Attribut |Fehler, wenn mindestens ein Attribut größer als die zulässige Größe, Länge oder Anzahl ist. |
-| Sonstige |Alle anderen Fehler, die nicht in die obigen Kategorien passen. Diese Kategorie wird basierend auf dem Feedback in Unterkategorien unterteilt. |
+| Andere |Alle anderen Fehler, die nicht in die obigen Kategorien passen. Diese Kategorie wird basierend auf dem Feedback in Unterkategorien unterteilt. |
 
 ![Zusammenfassung des Synchronisierungsfehlerberichts](./media/active-directory-aadconnect-health-sync/errorreport01.png)
-![Kategorien des Synchronisierungsfehlerberichts](./media/active-directory-aadconnect-health-sync/errorreport02.png)
+![Kategorien des Synchronisierungsfehlerberichts](./media/active-directory-aadconnect-health-sync/SyncErrorByTypes.PNG)
 
 ### <a name="list-of-objects-with-error-per-category"></a>Liste der Objekte mit Fehler nach Kategorie
 Für die einzelnen Kategorien können Sie jeweils die Liste mit den Objekten anzeigen, die den Fehler in der Kategorie aufweisen.

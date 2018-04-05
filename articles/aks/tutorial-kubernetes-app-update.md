@@ -1,6 +1,6 @@
 ---
-title: "Tutorial zu Kubernetes in Azure – Aktualisieren einer Anwendung"
-description: "AKS-Tutorial – Aktualisieren einer Anwendung"
+title: Tutorial zu Kubernetes in Azure – Aktualisieren einer Anwendung
+description: AKS-Tutorial – Aktualisieren einer Anwendung
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 82a6b6580fbe69b11fdb8a47e2ca09c19b341bbc
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 97a7e0b8e33042739ccea9a086642d9019c15e5b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="update-an-application-in-azure-container-service-aks"></a>Aktualisieren einer Anwendung in Azure Container Service (AKS)
+# <a name="tutorial-update-an-application-in-azure-container-service-aks"></a>Tutorial: Aktualisieren einer Anwendung in Azure Container Service (AKS)
 
 Nach der Bereitstellung einer Anwendung in Kubernetes kann diese durch Angeben eines neuen Containerimages oder einer neuen Imageversion aktualisiert werden. Dabei wird das Update gestaffelt bereitgestellt, sodass jeweils nur ein Teil der Bereitstellung aktualisiert wird. Durch diese Art des Updates kann die Anwendung während des Updates weiterhin ausgeführt werden. Darüber hinaus wird ein Rollbackmechanismus bereitgestellt, falls ein Fehler bei der Bereitstellung auftritt. 
 
@@ -27,7 +27,7 @@ In diesem Tutorial – Teil 6 von 8 – wird die Azure Voting-Beispiel-App aktua
 > * Übertragen des Containerimages in Azure Container Registry per Push
 > * Bereitstellen des aktualisierten Containerimages
 
-In nachfolgenden Tutorials wird die Operations Management Suite für die Überwachung des Kubernetes-Clusters konfiguriert.
+In nachfolgenden Tutorials wird Log Analytics für die Überwachung des Kubernetes-Clusters konfiguriert.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -89,7 +89,7 @@ Verwenden Sie [docker tag][docker-tag], um das Image zu kennzeichnen. Ersetzen S
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-Verwenden Sie [docker push][docker-push], um das Image in Ihre Registrierung hochzuladen. Ersetzen Sie `<acrLoginServer>` durch den Namen des Azure Container Registry-Anmeldeservers.
+Verwenden Sie [docker push][docker-push], um das Image in Ihre Registrierung hochzuladen. Ersetzen Sie `<acrLoginServer>` durch den Namen des Azure Container Registry-Anmeldeservers. Sollten bei Pushvorgängen an die ACR-Registrierung Probleme auftreten, vergewissern Sie sich, dass Sie den Befehl [az acr login][az-acr-login] ausgeführt haben.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -164,7 +164,7 @@ In diesem Tutorial haben Sie eine Anwendung aktualisiert und diese Aktualisierun
 > * Übertragen des Containerimages in Azure Container Registry per Push
 > * Bereitstellen der aktualisierten Anwendung
 
-Im nächsten Tutorial erfahren Sie, wie Sie Kubernetes mit der Operations Management Suite überwachen.
+Im nächsten Tutorial erfahren Sie, wie Sie Kubernetes mit Log Analytics überwachen.
 
 > [!div class="nextstepaction"]
 > [Überwachen von Kubernetes mit Log Analytics][aks-tutorial-monitor]
@@ -179,3 +179,4 @@ Im nächsten Tutorial erfahren Sie, wie Sie Kubernetes mit der Operations Manage
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md
+[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login

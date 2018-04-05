@@ -1,11 +1,12 @@
 ---
-title: "Häufig gestellte Fragen zu Azure Machine Learning (FAQs) | Microsoft-Dokumentation"
-description: "Einführung in Azure Machine Learning: häufig gestellte Fragen (FAQ) zu Abrechnung, Funktionen und Einschränkungen von Clouddiensten für die optimierte Vorhersagemodellierung."
-keywords: "Einführung in maschinelles Lernen,Vorhersagemodellierung,was ist maschinelles Lernen"
+title: Häufig gestellte Fragen zu Azure Machine Learning (FAQs) | Microsoft-Dokumentation
+description: 'Einführung in Azure Machine Learning: häufig gestellte Fragen (FAQ) zu Abrechnung, Funktionen und Einschränkungen von Clouddiensten für die optimierte Vorhersagemodellierung.'
+keywords: Einführung in maschinelles Lernen,Vorhersagemodellierung,was ist maschinelles Lernen
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: paulettm
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.author: garye
-ms.openlocfilehash: b162d7534eff0d1f79808fc86bacf92dbfc2f84a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: ceec69ee822e118adfa3825620a31575109894ea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Häufig gestellte Fragen zu Azure Machine Learning: Abrechnung, Funktionen, Einschränkungen und Support
 Hier sind einige häufig gestellte Fragen (FAQs) und die entsprechenden Antworten zu Azure Machine Learning aufgeführt. Bei Azure Machine Learning handelt es sich um einen Clouddienst zum Entwickeln von Vorhersagemodellen und Operationalisieren von Lösungen mithilfe von Webdiensten. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -219,7 +219,7 @@ Informationen hierzu finden Sie unter [Einschränkungen für Azure-Abonnements](
 ### <a name="use"></a>Verwenden Sie
 **Wann sollte ich mein Vorhersagemodell als Stapelausführungsdienst oder als Anfrage-Antwort-Dienst ausführen?**
 
-Der Anfrage-Antwort-Dienst (Request Response Service, RRS) ist ein hoch skalierbarer Webdienst mit niedriger Latenz, der eine Schnittstelle für zustandslose Modelle bereitstellt, die in der Experimentumgebung erstellt und bereitgestellt wurden. Der Stapelausführungsdienst (Batch Execution Service, BES) dient zur asynchronen Bewertung eines Stapels von Datensätzen. Die Eingabe für BES gleicht der für RRS verwendeten Dateneingabe. BES liest im Gegensatz zu RRS einen Block von Einträgen aus einer Vielzahl von Quellen, z.B. Azure-Blobspeicher, Azure-Tabellenspeicher, Azure SQL-Datenbank, HDInsight (Hive-Abfrage) und HTTP-Quellen. Weitere Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md).
+Der Anfrage-Antwort-Dienst (Request Response Service, RRS) ist ein hoch skalierbarer Webdienst mit niedriger Latenz, der eine Schnittstelle für zustandslose Modelle bereitstellt, die in der Experimentumgebung erstellt und bereitgestellt wurden. Der Stapelausführungsdienst (Batch Execution Service, BES) dient zur asynchronen Bewertung eines Stapels von Datensätzen. Die Eingabe für BES gleicht der für RRS verwendeten Dateneingabe. BES liest im Gegensatz zu RRS einen Block von Einträgen aus einer Vielzahl von Quellen, z.B. Azure Blob Storage, Azure Table Storage, Azure SQL-Datenbank, HDInsight (Hive-Abfrage) und HTTP-Quellen. Weitere Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md).
 
 **Wie aktualisiere ich das Modell für den bereitgestellten Webdienst?**
 
@@ -234,7 +234,7 @@ Nachdem Sie ein Vorhersagemodell bereitgestellt haben, können Sie es über das 
 
 **Kann ich die Ausgabe meines RRS/BES an einer Stelle einsehen?**
 
-Für RRS wird das Ergebnis normalerweise in der Antwort des Webdiensts ausgegeben. Sie können es auch in den Azure-Blobspeicher schreiben. Bei BES wird die Ausgabe standardmäßig in ein Blob geschrieben. Sie können die Ausgabe außerdem mit dem Modul zum [Exportieren von Daten][export-data] in eine Datenbank oder Tabelle schreiben.
+Für RRS wird das Ergebnis normalerweise in der Antwort des Webdiensts ausgegeben. Sie können es auch in Azure Blob Storage schreiben. Bei BES wird die Ausgabe standardmäßig in ein Blob geschrieben. Sie können die Ausgabe außerdem mit dem Modul zum [Exportieren von Daten][export-data] in eine Datenbank oder Tabelle schreiben.
 
 **Können Webdienste nur aus Modellen erstellt werden, die in Machine Learning Studio erstellt wurden?**
 
@@ -251,11 +251,11 @@ Derzeit wird der Standardendpunkt mit 20 gleichzeitigen RRS-Anforderungen pro En
 
 **Werden R-Aufträge auf die Knoten verteilt?**
 
-Nr.  
+Nein.  
 
 **Wie viele Daten kann ich für das Training verwenden?**
 
-Module in Machine Learning Studio unterstützen in normalen Anwendungsfällen DataSets bis zu einer Größe von 10 GB an dichten numerischen Daten. Wenn für ein Modul mehr als eine Eingabe verwendet wird, beträgt die Gesamtgröße für alle Eingaben 10 GB. Sie können über Hive- oder Azure SQL-Datenbankabfragen oder per Vorverarbeitung durch Module vom Typ [Lernen durch Anzahl][counts] auch Teile größerer Datasets übernehmen.  
+Module in Machine Learning Studio unterstützen in normalen Anwendungsfällen Datasets bis zu einer Größe von 10 GB an dichten numerischen Daten. Wenn für ein Modul mehr als eine Eingabe verwendet wird, beträgt die Gesamtgröße für alle Eingaben 10 GB. Sie können über Hive- oder Azure SQL-Datenbankabfragen oder per Vorverarbeitung durch Module vom Typ [Lernen durch Anzahl][counts] auch Teile größerer Datasets übernehmen.  
 
 Die folgenden Typen von Daten können während der Featurenormalisierung in größere Datasets erweitert werden und sind auf weniger als 10 GB beschränkt:
 
@@ -435,8 +435,8 @@ Wir empfehlen Ihnen, mit dem Tarif Standard S1 zu beginnen und die Nutzung Ihres
 
 Die neuen Abrechnungspläne sind in den drei Produktionsregionen verfügbar, in denen wir die neuen Webdienste unterstützen:
 
-* USA (Mitte/Süden)
-* Westeuropa
+* USA Süd Mitte
+* Europa, Westen
 * Südostasien
 
 **Ich verfüge über Webdienste in mehreren Regionen. Benötige ich einen Plan für jede Region?**
@@ -548,7 +548,7 @@ Der Machine Learning-Dienst ist ein mehrinstanzenfähiger Dienst. Die eigentlich
 ### <a name="guest-access"></a>Gastzugriff
 **Was umfasst der Gastzugriff für Azure Machine Learning Studio?**
 
-Über den Gastzugriff können Sie Azure Machine Learning Studio in begrenztem Umfang testen. Sie können die Umgebung kostenlos und ohne Authentifizierung nutzen, um in Azure Machine Learning Studio Experimente zu erstellen und auszuführen. Gastsitzungen sind nicht persistent (können nicht gespeichert werden) und auf acht Stunden begrenzt. Außerdem werden R und Python nicht unterstützt, es können keine Staging-APIs verwendet werden, und sowohl die Größe von Datasets als auch die Speicherkapazität sind beschränkt. Im Gegensatz dazu haben Benutzer, die sich mit einem Microsoft-Konto anmelden, vollen Zugriff auf den oben beschriebenen Funktionsumfang von Machine Learning Studio im Free-Tarif, der einen persistenten Arbeitsbereich und umfangreichere Optionen bietet. Wenn Sie Machine Learning kostenlos nutzen möchten, können Sie unter [https://studio.azureml.net](https://studio.azureml.net) einfach auf **Getting started** klicken und dann entweder den **Gastzugriff** oder die Anmeldung über ein Microsoft-Konto wählen.
+Über den Gastzugriff können Sie Azure Machine Learning Studio in begrenztem Umfang testen. Sie können die Umgebung kostenlos und ohne Authentifizierung nutzen, um in Azure Machine Learning Studio Experimente zu erstellen und auszuführen. Gastsitzungen sind nicht persistent (können nicht gespeichert werden) und auf acht Stunden begrenzt. Außerdem werden R und Python nicht unterstützt, es können keine Staging-APIs verwendet werden, und sowohl die Größe von Datasets als auch die Speicherkapazität sind beschränkt. Im Gegensatz dazu haben Benutzer, die sich mit einem Microsoft-Konto anmelden, vollen Zugriff auf den oben beschriebenen Funktionsumfang von Machine Learning Studio im Free-Tarif, der einen persistenten Arbeitsbereich und umfangreichere Optionen bietet. Wenn Sie Machine Learning kostenlos nutzen möchten, können Sie unter [https://studio.azureml.net](https://studio.azureml.net) einfach auf **Erste Schritte** klicken und dann entweder den **Gastzugriff** oder die Anmeldung über ein Microsoft-Konto wählen.
 
 <!-- Module References -->
 [image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/

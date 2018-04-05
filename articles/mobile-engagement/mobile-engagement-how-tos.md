@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement - Benutzeroberfläche - Vorgehensweise Reach"
-description: "Übersicht über die Benutzeroberfläche von Azure Mobile Engagement"
+title: Azure Mobile Engagement - Benutzeroberfläche - Vorgehensweise Reach
+description: Übersicht über die Benutzeroberfläche von Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 30af87e6-c816-4cce-8609-6cbd3e83de14
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 33a0a9d0c399cb7f0a791c4c16dde2e2d62364ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c536d378023ee4a9675bb2d67262fb485c8052b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-get-started-using-and-managing-pushes-to-reach-out-to-your-end-users"></a>Erste Schritte bei der  Verwendung und Verwaltung von Push-Vorgängen, um Ihre Endbenutzern zu erreichen.
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Sobald das SDK vollständig in Ihrer App integriert ist, können Sie erste Schritte mit dem Abschnitt „Reichweite“ der Benutzeroberfläche machen, um Pushbenachrichtigungen an die Benutzer Ihrer App zu senden.  
 
 ## <a name="do-your-first-push-notification-campaign"></a>Ausführen der ersten Pushbenachrichtigungskampagne

@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement-Implementierung für Spiele-App"
+title: Azure Mobile Engagement-Implementierung für Spiele-App
 description: Spiele-App-Szenario zum Implementieren von Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2cafc044-4902-4058-8037-49399bf6bf7f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0ca35a3d634db8eb5c63afacba046a35b8a3e7ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96e827b57e804cc91798859bc906e49046decede
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-gaming-app"></a>Implementieren von Mobile Engagement mit Spiele-App
 ## <a name="overview"></a>Übersicht
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Ein Gaming-Startup hat eine neue Rollenspiel-/Strategiespiel-App rund ums Angeln veröffentlicht. Das Spiel ist seit sechs Monate erhältlich. Das Spiel ist ein großer Erfolg und wurde Millionen Mal heruntergeladen. Die Beibehaltungsdauer ist im Vergleich zu anderen Spiele-Apps von Startups sehr hoch. Bei der vierteljährlichem Besprechung vereinbarten die Beteiligten, dass der durchschnittliche Umsatz pro Benutzer (ARPU) erhöht werden müsse. Premium-Pakete im Spiel sind als Sonderangebote verfügbar. Mit diesen Spielpaketen können Benutzer die Darstellung und Leistung ihrer Angelschnüre und Köder oder ihrer Ausrüstung im Spiel aktualisieren. Die Verkaufszahlen für Pakete sind jedoch sehr niedrig. Daher entscheiden sie sich dafür, zuerst die Kundenzufriedenheit mit einem Analysetool zu analysieren und dann ein Engagementprogramm mit erweiterter Segmentierung zu entwickeln, um die Verkaufszahlen zu erhöhen.
 
 Auf der Grundlage des [Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices](mobile-engagement-getting-started-best-practices.md) entwickeln sie eine Engagementstrategie.

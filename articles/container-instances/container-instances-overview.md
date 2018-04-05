@@ -1,41 +1,41 @@
 ---
-title: "Übersicht über Azure Container Instances"
+title: Übersicht über Azure Container Instances
 description: Grundlegende Informationen zu Azure Container Instances
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: overview
-ms.date: 01/02/2018
+ms.date: 03/23/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 01e539856adbdcf02dc4e49087a3ab71b328db5a
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: d6e0637974d8076fc610d7154ad507f4e7af0cfa
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
-Container entwickeln sich mehr und mehr zum bevorzugten Instrument für das Packen, Bereitstellen und Verwalten von Cloudanwendungen. Mit Azure Container Instances lassen sich Container in Azure besonders schnell und einfach ausführen, ohne dass Sie dazu virtuelle Computer bereitstellen oder einen übergeordneten Dienst einführen müssen.
+Container entwickeln sich mehr und mehr zum bevorzugten Instrument für das Packen, Bereitstellen und Verwalten von Cloudanwendungen. Mit Azure Container Instances lassen sich Container in Azure besonders schnell und einfach ausführen, ohne dass Sie dazu virtuelle Computer verwalten oder einen übergeordneten Dienst einführen müssen.
 
 Azure Container Instances ist eine großartige Lösung für jedes Szenario, das für die Verwendung isolierter Container geeignet ist. Hierzu zählen unter anderem einfache Anwendungen, Aufgabenautomatisierung und Erstellungsaufträge. Für Szenarien, die eine umfassende Containerorchestrierung erfordern (etwa für die containerübergreifende Dienstermittlung, automatische Skalierung und koordinierte Anwendungsupgrades), empfehlen wir [Azure Container Service](../aks/index.yml) (AKS).
 
 ## <a name="fast-startup-times"></a>Schneller Start
 
-Container bieten im Vergleich zu virtuellen Computern bedeutende Vorteile beim Start. Mit Azure Container Instances können Sie in Azure in Sekundenschnelle einen Container starten, ohne virtuelle Computer bereitstellen und verwalten zu müssen.
+Container bieten im Vergleich zu virtuellen Computern bedeutende Vorteile beim Start. Azure Container Instances kann in Sekundenschnelle Container in Azure starten, ohne virtuelle Computer bereitstellen und verwalten zu müssen.
 
 ## <a name="hypervisor-level-security"></a>Sicherheit auf Hypervisor-Ebene
 
-In der Vergangenheit verfügten Container zwar über Anwendungsabhängigkeitsisolierung und Ressourcenkontrolle, galten aber nicht als ausreichend gehärtet, um in einer gefährlichen Umgebung mit mehreren Mandanten verwendet werden zu können. Mit Azure Container Instances ist Ihre Anwendung in einem Container isoliert – genau wie bei einem virtuellen Computer.
+In der Vergangenheit verfügten Container zwar über Anwendungsabhängigkeitsisolierung und Ressourcenkontrolle, galten aber nicht als ausreichend gehärtet, um in einer gefährlichen Umgebung mit mehreren Mandanten verwendet werden zu können. Azure Container Instances gewährleistet, dass Ihre Anwendung in einem Container isoliert ist – genau wie bei einem virtuellen Computer.
 
 ## <a name="custom-sizes"></a>Benutzerdefinierte Größen
 
-Container sind in der Regel für die Ausführung einer einzelnen Anwendung optimiert. Die genauen Anforderungen dieser Anwendungen können sich jedoch erheblich voneinander unterscheiden. Mit Azure Container Instances können Sie exakt die Menge an CPU-Kernen und Arbeitsspeicher anfordern, die Sie benötigen. Die sekundengenaue Abrechnung erfolgt auf der Grundlage Ihrer Anforderung, sodass Sie Ihre Ausgaben sehr genau auf der Grundlage Ihres Bedarfs optimieren können.
+Container sind in der Regel für die Ausführung einer einzelnen Anwendung optimiert. Die genauen Anforderungen dieser Anwendungen können sich jedoch erheblich voneinander unterscheiden. Azure Container Instances ermöglicht exakte Angaben für CPU-Kerne und Arbeitsspeicher und bietet dadurch eine optimale Auslastung. Dank sekundengenauer Abrechnung können Sie Ihre Ausgaben auf der Grundlage Ihres tatsächlichen Bedarfs präzise optimieren.
 
 ## <a name="public-ip-connectivity"></a>Öffentliche IP-Konnektivität
 
-Mit Azure Container Instances können Sie Ihre Container über eine öffentliche IP-Adresse direkt im Internet verfügbar machen. Die Netzwerkfunktionen werden in Zukunft noch erweitert, um die Integration in virtuelle Netzwerke, Load Balancer und andere zentrale Komponenten der Azure-Netzwerkinfrastruktur zu ermöglichen.
+Mit Azure Container Instances können Sie Ihre Container direkt über eine öffentliche IP-Adresse und eine DNS-Namensbezeichnung im Internet verfügbar machen. Die Netzwerkfunktionen werden in Zukunft noch erweitert, um die Integration in virtuelle Netzwerke, Load Balancer und andere zentrale Komponenten der Azure-Netzwerkinfrastruktur zu ermöglichen.
 
 ## <a name="persistent-storage"></a>Permanenter Speicher
 
@@ -43,13 +43,13 @@ Dank der Möglichkeit zur direkten [Einbindung von Azure Files-Freigaben](contai
 
 ## <a name="linux-and-windows-containers"></a>Linux- und Windows-Container
 
-Mit Azure Container Instances können Sie sowohl Windows- als auch Linux-Container mit der gleichen API planen. Geben Sie einfach den BS-Typ an, wenn Sie Ihre [Containergruppen](container-instances-container-groups.md) erstellen.
+Azure Container Instances kann sowohl Windows- als auch Linux-Container mit der gleichen API planen. Geben Sie einfach den BS-Typ an, wenn Sie Ihre [Containergruppen](container-instances-container-groups.md) erstellen.
 
-Einige Features sind momentan auf Linux-Container beschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
+Einige Features sind momentan auf Linux-Container beschränkt. Bis zur Erreichung der Featureparität für Windows-Container finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
 
 ## <a name="co-scheduled-groups"></a>Gemeinsam geplante Gruppen
 
-Azure Container Instances unterstützt die Planung von [Gruppen mit mehreren Containern](container-instances-container-groups.md) mit gemeinsamem Hostcomputer, lokalem Netzwerk, Speicher und Lebenszyklus. Dadurch können Sie Ihre Hauptanwendung mit anderen (unterstützenden) Anwendungen kombinieren (etwa mit der Protokollierung).
+Azure Container Instances unterstützt die Planung von [Gruppen mit mehreren Containern](container-instances-container-groups.md) mit gemeinsamem Hostcomputer, lokalem Netzwerk, Speicher und Lebenszyklus. Dadurch können Sie Ihren Hauptanwendungscontainer mit anderen unterstützenden Rollencontainern (beispielsweise Protokollierungs-Sidecars) kombinieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

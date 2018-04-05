@@ -20,8 +20,6 @@
 
     ![Das Blatt „Neues Konto“ für Azure Cosmos DB](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-2.png)
 
-4. Die Kontoerstellung dauert einige Minuten. Während der Erstellung des Kontos zeigt das Portal auf der rechten Seite die Kachel **Azure Cosmos DB bereitstellen** an. Möglicherweise müssen Sie auf dem Dashboard nach rechts scrollen, um die Kachel anzuzeigen. Am oberen Bildschirmrand wird auch eine Statusanzeige angezeigt. Sie können den Status beider Bereiche beobachten.
+4. Die Kontoerstellung dauert einige Minuten. Warten Sie, bis das Portal die Seite **Herzlichen Glückwunsch! Ihr Azure Cosmos DB-Konto wurde erstellt** anzeigt.
 
-    ![Der Bereich „Benachrichtigungen“ im Azure-Portal](./media/cosmos-db-create-dbaccount-graph/deploying-cosmos-db.png)
-
-    Nach der Erstellung des Kontos wird die Seite **Herzlichen Glückwunsch! Ihr Azure Cosmos DB-Konto wurde erstellt** angezeigt. 
+    ![Der Bereich „Benachrichtigungen“ im Azure-Portal](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-graph-created.png)

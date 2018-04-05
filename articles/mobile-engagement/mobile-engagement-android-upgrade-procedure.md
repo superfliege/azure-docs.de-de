@@ -1,11 +1,11 @@
 ---
 title: Integration des Azure Mobile Engagement Android SDKs
-description: "Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement"
+description: Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 11618586-c709-49ca-bcd8-745323ff1af6
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1f047f93fa8bc852b28c86e91d0c007a94fb4299
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77047cb1dc39fa3c05f58550ceea74e78396157f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="upgrade-procedures"></a>Upgrade-Verfahren
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Wenn Sie bereits eine ältere Version unseres SDK in Ihrer Anwendung integriert haben, müssen Sie die folgenden Punkte beim Aktualisieren des SDK beachten.
 
 Möglicherweise müssen Sie mehrere Verfahren befolgen, wenn Sie mehrere Versionen des SDK übersprungen haben. Wenn Sie beispielsweise von 1.4.0 zu 1.6.0 migrieren, müssen Sie zunächst den Vorgang „von 1.4.0 zu 1.5.0“ ausführen und anschließend den Vorgang „1.5.0 zu 1.6.0“.
@@ -141,7 +145,7 @@ Sie müssen dies hinzufügen, damit diese Kampagnen in 4.0.0 verwendet werden k�
       </intent-filter>
     </activity>
 
-### <a name="resources"></a>Ressourcen
+### <a name="resources"></a>angeben
 Betten Sie die neue `res/layout/engagement_loading.xml` -Datei in Ihr Projekt ein.
 
 ## <a name="from-240-to-300"></a>Von 2.4.0 zu 3.0.0
@@ -391,7 +395,7 @@ Beachten Sie, dass die Deklaration Ihrer Implementierung des Übertragungsempfä
 
             protected void onDeviceMessageReceived(android.content.Context context, java.lang.String deviceId, java.lang.String payload)
 
-und
+and
 
             protected void onXMPPMessageReceived(android.content.Context context, android.os.Bundle message)
 
@@ -399,7 +403,7 @@ löschen Sie dann alle Aufrufe von **EngagementAgent** für:
 
             sendMessageToDevice(java.lang.String deviceId, java.lang.String payload, java.lang.String packageName)
 
-und
+and
 
             sendXMPPMessage(android.os.Bundle msg)
 

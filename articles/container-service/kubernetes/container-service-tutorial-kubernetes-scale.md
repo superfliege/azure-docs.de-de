@@ -1,6 +1,6 @@
 ---
-title: "Tutorial für Azure Container Service – Skalieren einer Anwendung"
-description: "Tutorial für Azure Container Service – Skalieren einer Anwendung"
+title: Tutorial für Azure Container Service – Skalieren einer Anwendung
+description: Tutorial für Azure Container Service – Skalieren einer Anwendung
 services: container-service
 author: dlepow
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 36c5586f79cf127ec069fd3c6ef95dd073fdbdb6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ea64f9c52dc89dc8eb75a39afbb087a5127505f1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Skalieren von Kubernetes-Pods und der Kubernetes-Infrastruktur
 
@@ -28,7 +28,7 @@ In diesem Tutorial – Teil 5 von 7 – skalieren Sie die Pods in der App horizo
 > * Konfigurieren der automatischen Skalierung von Pods, die das Front-End einer App ausführen
 > * Skalieren der Kubernetes-Azure-Agent-Knoten
 
-In den nachfolgenden Tutorials wird die Azure Voting-Anwendung aktualisiert. Zudem wird die Operations Management Suite für die Überwachung des Kubernetes-Clusters konfiguriert.
+In den nachfolgenden Tutorials wird die Azure Voting-Anwendung aktualisiert. Zudem wird Log Analytics für die Überwachung des Kubernetes-Clusters konfiguriert.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

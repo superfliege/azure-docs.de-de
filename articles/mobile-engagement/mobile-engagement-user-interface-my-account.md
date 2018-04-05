@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement - Benutzeroberfläche – Mein Konto"
-description: "Erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement Ihr Konto-Profil verwalten und Geräte testen"
+title: Azure Mobile Engagement - Benutzeroberfläche – Mein Konto
+description: Erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement Ihr Konto-Profil verwalten und Geräte testen
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 22832678-3959-4b8c-9fb2-f2ff5974e5d1
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4e463e973dcfa1faa7b08e4738192161980b3aa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89ef4f97a03ab0334f5474fb5b0ad2fd44f23518
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-your-account-profile-and-test-devices"></a>Verwalten Ihres Konto-Profils und Testen der Geräte
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 In diesem Artikel wird die **Startseite** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das **Mobile Engagement** -Portal, um Ihre mobilen Apps zu überwachen und zu verwalten. 
 
 Klicken Sie oben auf der Seite auf Ihr Konto, um zur Seite **Mein Konto** zu gelangen.

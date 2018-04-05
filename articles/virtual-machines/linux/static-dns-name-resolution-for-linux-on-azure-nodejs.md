@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: v-livech
-ms.openlocfilehash: e73e780123f4582c9fa78975324e7904c85f87be
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6072374cd7a37df6d7cc75479e24996dff3ee667
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="using-internal-dns-for-vm-name-resolution-on-azure"></a>Verwenden von internen DNS-Namen für die VM-Namensauflösung in Azure
 
@@ -105,7 +105,7 @@ azure network vnet create myVNet \
 
 ## <a name="create-the-nsg"></a>Erstellen der NSG
 
-Das Subnetz wird hinter einer vorhandene Netzwerksicherheitsgruppe aufgebaut. Deshalb erstellen wir die NSG vor dem Subnetz.  Azure-NSGs sind gleichwertig mit einer Firewall auf der Netzwerkebene.  Weitere Informationen zu Azure-NSGs finden Sie unter [Erstellen von NSGs in der Azure-CLI](../../virtual-network/virtual-networks-create-nsg-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Das Subnetz wird hinter einer vorhandene Netzwerksicherheitsgruppe aufgebaut. Deshalb erstellen wir die NSG vor dem Subnetz.  Azure-NSGs sind gleichwertig mit einer Firewall auf der Netzwerkebene.  Weitere Informationen zu Azure-NSGs finden Sie unter [Erstellen von NSGs in der Azure-CLI](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ```azurecli
 azure network nsg create myNSG \

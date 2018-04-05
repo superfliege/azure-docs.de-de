@@ -1,11 +1,11 @@
 ---
-title: "Windows Universal Apps SDK – Upgrade-Verfahren"
-description: "Windows Universal Apps SDK-Upgrade-Verfahren für Azure Mobile Engagement"
+title: Windows Universal Apps SDK – Upgrade-Verfahren
+description: Windows Universal Apps SDK-Upgrade-Verfahren für Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4c898175-2cd6-43db-b350-bb408332f24d
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 2bd2329026057a4a23295880d0d304e4e8effd1c
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: a9d6cbcdf353f7eea991c344c3efe65378abe336
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-sdk-upgrade-procedures"></a>Windows Universal Apps SDK – Upgrade-Verfahren
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Wenn Sie bereits eine ältere Version von Engagement in Ihre Anwendung integriert haben, müssen Sie die folgenden Punkte beim Aktualisieren des SDK beachten.
 
 Möglicherweise müssen Sie mehrere Verfahren befolgen, wenn Sie mehrere Versionen des SDK übersprungen haben. Wenn Sie beispielsweise von 0.10.1 zu 0.11.0 migrieren, müssen Sie zunächst den Vorgang "von 0.9.0 zu 0.10.1" ausführen und anschließend den Vorgang "0.10.1 zu 0.11.0".
@@ -32,7 +36,7 @@ Vom SDK produzierte Konsolenprotokolle können jetzt aktiviert/deaktiviert/gefil
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
-### <a name="resources"></a>Ressourcen
+### <a name="resources"></a>angeben
 Das Reach-Overlay wurde verbessert. Es ist Teil der SDK-NuGet-Paket-Ressourcen.
 
 Während der Aktualisierung auf die neue Version des SDKs können Sie auswählen, ob Sie vorhandene Dateien aus dem Overlayordner von Ihren Ressourcen beibehalten möchten oder nicht:
@@ -46,11 +50,11 @@ Während der Aktualisierung auf die neue Version des SDKs können Sie auswählen
 > 
 
 ## <a name="from-320-to-330"></a>Von 3.2.0 zu 3.3.0
-### <a name="resources"></a>Ressourcen
+### <a name="resources"></a>angeben
 Dieser Schritt betrifft nur angepasste Ressourcen. Wenn Sie die Ressourcen, die vom SDK (Html, Bilder, Überlagerung) bereitgestellt werden, angepasst haben, müssen Sie diese vor dem Upgrade sichern und Ihre Anpassungen erneut auf die aktualisierten Ressourcen anwenden.
 
 ## <a name="from-310-to-320"></a>Von 3.1.0 zu 3.2.0
-### <a name="resources"></a>Ressourcen
+### <a name="resources"></a>angeben
 Dieser Schritt betrifft nur angepasste Ressourcen. Wenn Sie die Ressourcen, die vom SDK (Html, Bilder, Überlagerung) bereitgestellt werden, angepasst haben, müssen Sie diese vor dem Upgrade sichern und Ihre Anpassungen erneut auf die aktualisierten Ressourcen anwenden.
 
 ### <a name="webview-integration"></a>Webansicht-Integration
@@ -169,7 +173,7 @@ Und in der zugehörigen CS-Datei:
     }
 
 ## <a name="from-200-to-300"></a>Von 2.0.0 zu 3.0.0
-### <a name="resources"></a>Ressourcen
+### <a name="resources"></a>angeben
 Dieser Schritt betrifft nur angepasste Ressourcen. Wenn Sie die Ressourcen, die vom SDK (Html, Bilder, Überlagerung) bereitgestellt werden, angepasst haben, müssen Sie diese vor dem Upgrade sichern und Ihre Anpassungen erneut auf die aktualisierten Ressourcen anwenden.
 
 ## <a name="from-111-to-200"></a>Von 1.1.1 zu 2.0.0

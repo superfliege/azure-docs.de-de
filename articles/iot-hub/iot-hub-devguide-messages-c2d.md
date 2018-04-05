@@ -13,15 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: d265d35c7d5a394afa0e59f40ff1a5741e0ec35c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 670cf45a48ca4b72576cedddd4678c0d569401cd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Senden von C2D-Nachrichten von IoT Hub
 
 Für das Senden von unidirektionalen Benachrichtigungen von Ihrem Lösungs-Back-End an die Geräte-App senden Sie C2D-Nachrichten von Ihrer IoT Hub-Instanz an Ihr Gerät. Eine Erläuterung anderer C2D-Optionen, die von IoT Hub unterstützt werden, finden Sie im [Leitfaden zur C2D-Kommunikation][lnk-c2d-guidance].
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Sie senden Cloud-zu-Gerät-Nachrichten (Cloud-to-Device, C2D) über einen dienstseitigen Endpunkt (**/messages/devicebound**). Ein Gerät empfängt die Nachrichten dann über einen gerätespezifischen Endpunkt (**/devices/{Geräte-ID}/messages/devicebound**).
 
@@ -83,7 +85,7 @@ Wenn **Ack** auf **Voll** festgelegt ist und Sie keine Feedbacknachricht erhalte
 
 Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Feedback in Form von Nachrichten über einen dienstseitigen Endpunkt (**/messages/servicebound/feedback**). Die Semantik für den Empfang von Feedback entspricht der Semantik für C2D-Nachrichten. Nachrichtenfeedback wird nach Möglichkeit in einer einzigen Nachricht zusammengefasst, die das folgende Format aufweist:
 
-| Eigenschaft     | Beschreibung |
+| Eigenschaft     | BESCHREIBUNG |
 | ------------ | ----------- |
 | EnqueuedTime | Zeitstempel, der angibt, wann die Feedbacknachricht vom Hub empfangen wurde. |
 | UserId       | `{iot hub name}` |
@@ -91,7 +93,7 @@ Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Fee
 
 Der Nachrichtenkörper ist ein serialisiertes JSON-Array aus Datensätzen, von denen jeder die folgenden Eigenschaften aufweist:
 
-| Eigenschaft           | Beschreibung |
+| Eigenschaft           | BESCHREIBUNG |
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Zeitstempel, der den Zeitpunkt des Nachrichtenergebnisses angibt. (Beispiel: Der Hub hat die Feedbacknachricht empfangen, oder die ursprüngliche Nachricht ist abgelaufen.) |
 | OriginalMessageId  | **MessageId** der C2D-Nachricht, auf die sich das Feedback bezieht. |

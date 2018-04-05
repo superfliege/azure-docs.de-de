@@ -1,11 +1,11 @@
 ---
-title: "Erste Schritte mit PowerShell für Azure Batch | Microsoft-Dokumentation"
-description: "Schnelle Einführung in die Azure PowerShell-Cmdlets zum Verwalten von Batch-Ressourcen."
+title: Erste Schritte mit PowerShell für Azure Batch | Microsoft-Dokumentation
+description: Schnelle Einführung in die Azure PowerShell-Cmdlets zum Verwalten von Batch-Ressourcen.
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: 
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: f9ad62c5-27bf-4e6b-a5bf-c5f5914e6199
 ms.service: batch
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e33be6ed658e00250ea1e80cd7da4d348fb18296
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6767257a540e4f29bb5445a718ad65a31e1f373e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Verwalten von Batch-Ressourcen mit PowerShell-Cmdlets
 
@@ -42,11 +42,11 @@ Führen Sie Folgendes durch, um Azure PowerShell zum Verwalten Ihrer Batch-Resso
 
 ## <a name="manage-batch-accounts-and-keys"></a>Verwalten von Batch-Konten und Schlüsseln
 ### <a name="create-a-batch-account"></a>Erstellen eines Batch-Kontos
-**New-AzureRmBatchAccount** erstellt ein Batch-Konto in einer angegebenen Ressourcengruppe. Falls Sie noch nicht über eine Ressourcengruppe verfügen, können Sie eine erstellen, indem Sie das [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)-Cmdlet ausführen. Geben Sie eine Azure-Region im Parameter **Standort** an, z.B. „USA, Mitte“. Beispiel:
+**New-AzureRmBatchAccount** erstellt ein Batch-Konto in einer angegebenen Ressourcengruppe. Falls Sie noch nicht über eine Ressourcengruppe verfügen, können Sie eine erstellen, indem Sie das [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)-Cmdlet ausführen. Geben Sie eine Azure-Region im Parameter **Standort** an, z.B. „USA, Mitte“. Beispiel: 
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
-Erstellen Sie anschließend ein Batch-Konto in der Ressourcengruppe, und geben Sie einen Namen für das Konto in <*account_name*> und den Speicherort und Namen der Ressourcengruppe an. Die Erstellung des Batch-Kontos kann einige Zeit dauern. Zum Beispiel:
+Erstellen Sie anschließend ein Batch-Konto in der Ressourcengruppe, und geben Sie einen Namen für das Konto in <*account_name*> und den Speicherort und Namen der Ressourcengruppe an. Die Erstellung des Batch-Kontos kann einige Zeit dauern. Beispiel: 
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
 
@@ -75,7 +75,7 @@ Erstellen Sie anschließend ein Batch-Konto in der Ressourcengruppe, und geben S
 > 
 
 ### <a name="delete-a-batch-account"></a>Löschen eines Batch-Kontos
-**Remove-AzureRmBatchAccount** löscht ein Batch-Konto. Zum Beispiel:
+**Remove-AzureRmBatchAccount** löscht ein Batch-Konto. Beispiel: 
 
     Remove-AzureRmBatchAccount -AccountName <account_name>
 
@@ -134,7 +134,7 @@ Eine Alternative zu einem OData-Filter stellt die Verwendung des **Id** -Paramet
 Der **Id** -Parameter unterstützt ausschließlich die Suche nach der vollständigen ID, jedoch keine Platzhalter oder Filter im OData-Format.
 
 ### <a name="use-the-maxcount-parameter"></a>Verwenden des MaxCount-Parameters
-Jedes Cmdlet gibt standardmäßig bis zu 1.000 Objekte zurück. Wenn dieser Grenzwert erreicht ist, können Sie entweder den Filter weiter eingrenzen, sodass weniger Objekte zurückgegeben werden, oder mit dem **MaxCount** -Parameter explizit einen maximalen Wert festlegen. Zum Beispiel:
+Jedes Cmdlet gibt standardmäßig bis zu 1.000 Objekte zurück. Wenn dieser Grenzwert erreicht ist, können Sie entweder den Filter weiter eingrenzen, sodass weniger Objekte zurückgegeben werden, oder mit dem **MaxCount** -Parameter explizit einen maximalen Wert festlegen. Beispiel: 
 
     Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 

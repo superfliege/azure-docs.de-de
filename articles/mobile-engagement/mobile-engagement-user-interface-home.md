@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement - Benutzeroberfläche – Startseite"
+title: Azure Mobile Engagement - Benutzeroberfläche – Startseite
 description: Erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement Ihre vorhandene Anwendung und vorhandene Projekte verwalten
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: aff578d2-40f6-43e4-b0ea-7d2674cb28a1
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0f15cb975f57f6f5cab12d5118ff50a6fab14388
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0379e51a30927af88367fc687d8f8ce66eb827f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-your-existing-application-and-projects"></a>Verwalten der vorhandenen Anwendung und Projekte
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 In diesem Artikel wird die **Startseite** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das **Mobile Engagement** -Portal, um Ihre mobilen Apps zu überwachen und zu verwalten. Beachten Sie, dass Sie zur Verwendung des Portals zuerst ein **Azure Mobile Engagement** -Konto erstellen müssen. 
 
 Um zur Startseite zu gelangen, klicken Sie links oben auf der Seite auf **Startseite** . Sie enthält die Liste aller Ihrer Anwendungen, die Teil der ausgewählten Sammlung sind. Auf dieser Seite sehen Sie nur eine kurze Übersicht über Ihre Anwendungen.
@@ -42,7 +46,7 @@ Die Übersicht über Ihre Anwendungen umfasst unter anderem Folgendes:
 * **Sitzungen:**Eine Sitzung ist eine Verwendung der Anwendung durch einen Benutzer, die vom Starten bis zum Beenden der Anwendung durch den Benutzer reicht.
 * **Sitzungstrends:**Entwicklung der Sitzungen in den letzten zwei Wochen.
 
-Sobald Sie auf eine Anwendung klicken, können Sie Ihre Apps über die Benutzeroberfläche überwachen und verwalten . Beispiel:    
+Sobald Sie auf eine Anwendung klicken, können Sie Ihre Apps über die Benutzeroberfläche überwachen und verwalten . Beispiel:     
 
 * [Überwachen von Echtzeitdaten zu Ihrer Anwendung](mobile-engagement-user-interface-monitor.md)
 * [Analysieren von Verlaufsdaten zu Ihrer Anwendung](mobile-engagement-user-interface-analytics.md)

@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e82b1364593ff70ed87efcaa24c135277002904
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ad8ed320a8dd91ea83dbaf71e2e9514b4df4cdb5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Überwachen von AD FS mithilfe von Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung Ihrer AD FS-Infrastruktur mit Azure AD Connect Health. Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
@@ -126,14 +126,14 @@ Außerdem ist es möglich, dass von einer einzelnen IP-Adresse versucht wird, me
 - Herunterladbare Berichte für Offlineanalyse und Integration in andere Systeme per Automatisierung
 
 > [!NOTE]
-> Für die Verwendung dieses Berichts muss die AD FS-Überwachung aktiviert sein. Weitere Informationen finden Sie unter [Aktivieren der Überwachung für AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs).
->
->
+> Für die Verwendung dieses Berichts muss die AD FS-Überwachung aktiviert sein. Weitere Informationen finden Sie unter [Aktivieren der Überwachung für AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
+> Zugriff auf die Vorschauversion erhalten nur globale Administratoren und [Benutzer mit Leseberechtigung für Sicherheitsfunktionen](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#security-reader).  
+> 
 
 ### <a name="what-is-in-the-report"></a>Inhalt des Berichts
 Jeder Eintrag im Bericht über riskante IP-Adressen enthält aggregierte Informationen zu fehlgeschlagenen AD FS-Anmeldeaktivitäten, für die der angegebene Schwellenwert überschritten wurde. Folgende Informationen werden angegeben: ![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health-adfs/report4a.png)
 
-| Berichtselement | Beschreibung |
+| Berichtselement | BESCHREIBUNG |
 | ------- | ----------- |
 | Zeitstempel | Zeigt den Zeitstempel basierend auf der lokalen Zeit im Azure-Portal an, wenn das Erkennungszeitfenster beginnt.<br /> Alle täglichen Ereignisse werden um Mitternacht (UTC) generiert. <br />Für stündliche Ereignisse wird der Zeitstempel auf den Anfang der Stunde gerundet. Sie finden die Startzeit der ersten Aktivität unter „firstAuditTimestamp“ in der exportierten Datei. |
 | Triggertyp | Zeigt den Typ des Erkennungszeitfensters an. Die Triggertypen der Aggregation sind „Pro Stunde“ und „Pro Tag“. Dies ist hilfreich beim Erkennen eines Brute-Force-Angriffs mit hoher Häufigkeit gegenüber einem langsamen Angriff, bei dem sich die Versuche auf den gesamten Tag verteilen. |
@@ -158,7 +158,7 @@ Im Berichtseintrag unten ist beispielsweise angegeben, dass für die IP-Adresse 
 ### <a name="download-risky-ip-report"></a>Herunterladen des Berichts über riskante IP-Adressen
 Mit der Funktion zum **Herunterladen** kann der gesamte Bericht über riskante IP-Adressen der letzten 30 Tage aus dem Connect Health-Portal kopiert werden. Das Exportergebnis enthält alle fehlgeschlagenen AD FS-Anmeldeaktivitäten jedes Erkennungszeitfensters, damit Sie den Filtervorgang nach dem Export anpassen können. Zusätzlich zu den hervorgehobenen Aggregationen im Portal werden im Exportergebnis auch weitere Details zu fehlgeschlagenen Anmeldeaktivitäten pro IP-Adresse angezeigt:
 
-|  Berichtselement  |  Beschreibung  | 
+|  Berichtselement  |  BESCHREIBUNG  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | Zeigt den ersten Zeitstempel für den Zeitpunkt an, zu dem die fehlgeschlagenen Aktivitäten während des Erkennungszeitfensters begonnen haben.  | 
 | lastAuditTimestamp | Zeigt den letzten Zeitstempel für den Zeitpunkt an, zu dem die fehlgeschlagenen Aktivitäten während des Erkennungszeitfensters geendet haben.  | 
@@ -173,7 +173,7 @@ Der Schwellenwert für Warnungen kann über die „Schwellenwerteinstellungen“
 
 ![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health-adfs/report4d.png)
 
-| Schwellenwertelement | Beschreibung |
+| Schwellenwertelement | BESCHREIBUNG |
 | --- | --- |
 | (Benutzername/Kennwort ungültig + Extranetsperre)/Tag  | Schwellenwerteinstellung zum Melden der Aktivität und Auslösen der Warnungsbenachrichtigung, wenn die Anzahl von „Falsches Kennwort“ zusammen mit der Anzahl von Extranetsperren den Schwellenwert pro **Tag** überschreitet. |
 | (Benutzername/Kennwort ungültig + Extranetsperre)/Stunde | Schwellenwerteinstellung zum Melden der Aktivität und Auslösen der Warnungsbenachrichtigung, wenn die Anzahl von „Falsches Kennwort“ zusammen mit der Anzahl von Extranetsperren den Schwellenwert pro **Stunde** überschreitet. |

@@ -6,7 +6,7 @@ documentationcenter: na
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 5134fab447f1d1842369aeda4ebc1948a5d78262
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 5d6d81678d1b3c63b52b34e79979d06fdc981ad0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und in Windows Server eingebunden werden. Dieser Artikel zeigt drei verschiedene Methoden zum Einbinden einer Azure-Dateifreigabe unter Windows: über die Benutzeroberfläche des Explorers, mithilfe von PowerShell und über die Eingabeaufforderung. 
@@ -35,8 +35,8 @@ Sie können Azure-Dateifreigaben unter einer Windows-Installation einbinden, die
 | Windows 8.1            | SMB 3.0     | Ja                   | Ja                  |
 | Windows Server 2012 R2 | SMB 3.0     | Ja                   | Ja                  |
 | Windows Server 2012    | SMB 3.0     | Ja                   | Ja                  |
-| Windows 7              | SMB 2.1     | Ja                   | Nein                   |
-| Windows Server 2008 R2 | SMB 2.1     | Ja                   | Nein                   |
+| Windows 7              | SMB 2.1     | Ja                   | Nein                    |
+| Windows Server 2008 R2 | SMB 2.1     | Ja                   | Nein                    |
 
 <sup>1</sup>Windows Server Version 1709.  
 <sup>2</sup>Windows 10, Versionen 1507, 1607, 1703 und 1709.
@@ -50,6 +50,31 @@ Sie können Azure-Dateifreigaben unter einer Windows-Installation einbinden, die
 * **Speicherkontoschlüssel:** Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den primären (oder sekundären) Speicherschlüssel. SAS-Schlüssel können derzeit nicht zum Einbinden verwendet werden.
 
 * **Sicherstellen, dass Port 445 geöffnet ist:** Azure Files verwendet das SMB-Protokoll. SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.
+
+## <a name="persisting-connections-across-reboots"></a>Beibehalten von Verbindungen nach einem Neustart
+### <a name="cmdkey"></a>CmdKey
+Die einfachste Methode zur Einrichtung einer dauerhaften Verbindung besteht darin, Ihre Speicherkonto-Anmeldeinformationen mithilfe des CmdKey-Befehlszeilentools in Windows zu speichern. Das folgende Befehlszeilenbeispiel speichert Ihre Speicherkonto-Anmeldeinformationen auf Ihrem virtuellen Computer:
+```
+C:\>cmdkey /add:<yourstorageaccountname>.file.core.windows.net /user:<domainname>\<yourstorageaccountname> /pass:<YourStorageAccountKeyWhichEndsIn==>
+```
+> [!Note]
+> Der Domänenname lautet hier „AZURE“.
+
+Mit CmdKey können Sie auch die damit gespeicherten Anmeldeinformationen auflisten:
+
+```
+C:\>cmdkey /list
+```
+Die Ausgabe sieht wie folgt aus:
+
+```
+Currently stored credentials:
+
+Target: Domain:target=<yourstorageaccountname>.file.core.windows.net
+Type: Domain Password
+User: AZURE\<yourstorageaccountname>
+```
+Nach dem Speichern der Anmeldeinformationen müssen sie beim Herstellen der Verbindung mit Ihrer Freigabe nicht mehr angegeben werden. Stattdessen können Sie die Verbindung ganz ohne Angabe von Anmeldeinformationen herstellen.
 
 ## <a name="mount-the-azure-file-share-with-file-explorer"></a>Einbinden der Azure-Dateifreigabe über den Explorer
 > [!Note]  
@@ -123,12 +148,12 @@ Sie können Azure-Dateifreigaben unter einer Windows-Installation einbinden, die
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Azure Files erhalten Sie über diese Links.
 
-* [Häufig gestellte Fragen](../storage-files-faq.md)
+* [HÄUFIG GESTELLTE FRAGEN](../storage-files-faq.md)
 * [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Windows)      
 
 ### <a name="conceptual-articles-and-videos"></a>Konzeptionelle Artikel und Videos
 * [Azure Files: a frictionless cloud SMB file system for Windows and Linux (Azure Files: ein reibungsloses Cloud-SMB-Dateisystem für Windows und Linux)](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Verwenden von Azure Files mit Linux](../storage-how-to-use-files-linux.md)
+* [How to use Azure Files with Linux (Verwenden von Azure Files mit Linux)](../storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-azure-files"></a>Toolunterstützung für Azure Files
 * [Verwenden von AzCopy mit Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
@@ -142,6 +167,6 @@ Weitere Informationen zu Azure Files erhalten Sie über diese Links.
 * [Einführung in den Microsoft Azure-Dateidienst](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [Migrating Data to Microsoft Azure Files](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/) (Migrieren von Daten zu Microsoft Azure Files)
 
-### <a name="reference"></a>Referenz
+### <a name="reference"></a>Verweis
 * [Referenz zur Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [Referenz zur REST-API des Dateidiensts](http://msdn.microsoft.com/library/azure/dn167006.aspx)

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a48c1bb246e3e8659aada614d39fdc608e5bc8d8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fe78289938e752731ff2e830fb62ad210e12111e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>Partitionieren in Azure Cosmos DB mithilfe der SQL-API
 
@@ -78,7 +78,7 @@ In der SQL-API geben Sie die Partitionsschlüsseldefinition in Form eines JSON-P
 Sehen wir uns an, wie sich die Auswahl der Partitionsschlüssel auf die Leistung Ihrer Anwendung auswirkt.
 
 ## <a name="working-with-the-azure-cosmos-db-sdks"></a>Arbeiten mit den Azure Cosmos DB-SDKs
-Azure Cosmos DB bietet nun zusätzliche Unterstützung für die automatische Partitionierung durch [REST-API-Version 2015-12-16](/rest/api/documentdb/). Um partitionierte Container erstellen zu können, müssen Sie die SDK-Versionen 1.6.0 oder neuer in einer der unterstützten SDK Plattformen (.NET, Node.js, Java, Python, MongoDB) herunterladen. 
+Azure Cosmos DB bietet nun zusätzliche Unterstützung für die automatische Partitionierung durch [REST-API-Version 2015-12-16](/rest/api/cosmos-db/). Um partitionierte Container erstellen zu können, müssen Sie die SDK-Versionen 1.6.0 oder neuer in einer der unterstützten SDK Plattformen (.NET, Node.js, Java, Python, MongoDB) herunterladen. 
 
 ### <a name="creating-containers"></a>Erstellen von Containern
 Das folgende Beispiel zeigt einen Ausschnitt für .NET, zum Erstellen eines Containers, um Gerätetelemetriedaten von 20.000 Anforderungseinheiten pro Durchsatzsekunde zu speichern. Das SDK legt den Wert für „OfferThroughput“ fest (der wiederum den Anforderungsheader `x-ms-offer-throughput` in der REST-API festlegt). Hier legen wir `/deviceId` als Partitionsschlüssel fest. Die Wahl des Partitionsschlüssels wird zusammen mit dem Rest der Metadaten des Containers wie Name und Indizierungsrichtlinie gespeichert.
@@ -225,6 +225,6 @@ Im nächsten Abschnitt untersuchen wir, wie partitionierte Container aus Contain
 In diesem Artikel wurde eine Übersicht über die Partitionierung von Azure Cosmos DB-Containern mit der SQL-API bereitgestellt. Eine Übersicht über Konzepte und bewährte Methoden für die Partitionierung mit einer beliebigen Azure Cosmos DB-API finden Sie auch unter [Partitionieren und horizontales Skalieren](../cosmos-db/partition-data.md). 
 
 * Nutzen Sie Azure Cosmos DB, um Skalierungs- und Leistungstests durchzuführen. Ein Beispiel finden Sie unter [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-testing.md).
-* Erste Schritte bei der Codierung mit den [SDKs](sql-api-sdk-dotnet.md) oder der [REST-API](/rest/api/documentdb/)
+* Erste Schritte bei der Codierung mit den [SDKs](sql-api-sdk-dotnet.md) oder der [REST-API](/rest/api/cosmos-db/)
 * Erfahren Sie mehr über den [bereitgestellten Durchsatz in Azure Cosmos DB](request-units.md).
 

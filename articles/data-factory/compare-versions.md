@@ -2,10 +2,9 @@
 title: Vergleich der Azure Data Factory-Versionen 1 und 2 | Microsoft-Dokumentation
 description: In diesem Artikel wird Azure Data Factory V1 mit Azure Data Factory V2 verglichen.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: kromerm
-manager: jhubbard
-editor: spelluru
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/24/2018
 ms.author: makromer
-ms.openlocfilehash: 673bc4e0d1609e445e3d18e7cf516ad532be4bc2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9aed1e903b5af3e5bcf53987ba80c1dcdb06f202
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Vergleich von Azure Data Factory V1 und V2
 In diesem Artikel wird Azure Data Factory V2 mit V1 verglichen. Eine Einführung in V1 finden Sie unter [Einführung in Azure Data Factory](v1/data-factory-introduction.md). Eine Einführung in V2 finden Sie [hier](introduction.md).
@@ -28,7 +27,7 @@ In der folgenden Tabelle werden die Funktionen von V1 und V2 verglichen.
 | Feature | Version 1 | Version 2 | 
 | ------- | --------- | --------- | 
 | Datasets | Eine benannte Ansicht mit Daten, in der auf die Daten verwiesen wird, die Sie in Ihren Aktivitäten als Ein- und Ausgabe verwenden möchten. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Ein Azure Blob-Dataset gibt beispielsweise den Blobcontainer und -ordner in Azure Blob Storage an, aus dem die Aktivität die Daten lesen soll.<br/><br/>Mit **Verfügbarkeit** wird das Modell für die Aufteilung in Verarbeitungsfenster für das Dataset (beispielsweise stündlich, täglich usw.) definiert. | Datasets sind in V2 identisch. Sie müssen aber keine **Verfügbarkeits**zeitpläne für die Datasets definieren. Sie können eine Triggerressource definieren, mit der Pipelines über ein Taktplaner-Paradigma geplant werden können. Weitere Informationen finden Sie unter [Trigger](concepts-pipeline-execution-triggers.md#triggers) und [Datasets](concepts-datasets-linked-services.md). | 
-| Verknüpfte Dienste | Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. | Verknüpfte Dienste haben sich im Vergleich zu Data Factory V1 nicht verändert, verfügen aber über eine neue **connectVia**-Eigenschaft für die Nutzung der Data Factory V2 Integration Runtime-Computeumgebung. Weitere Informationen finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md) sowie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties). |
+| Verknüpfte Dienste | Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. | Verknüpfte Dienste haben sich im Vergleich zu Data Factory V1 nicht verändert, verfügen aber über eine neue **connectVia**-Eigenschaft für die Nutzung der Data Factory V2 Integration Runtime-Computeumgebung. Weitere Informationen finden Sie unter [Integration Runtime in Azure Data Factory](concepts-integration-runtime.md) sowie unter [Eigenschaften des verknüpften Diensts für Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties). |
 | Pipelines | Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Zur Planung und Ausführung von Pipelines werden „startTime“, „endTime“ und „isPaused“ verwendet. | Bei Pipelines handelt es sich um Gruppen von Aktivitäten, die für Daten durchgeführt werden. Die Zeitplanung von Aktivitäten in der Pipeline wurde aber in neue Triggerressourcen unterteilt. Sie können sich Pipelines in Data Factory V2 eher als „Workfloweinheiten“ vorstellen, die Sie separat über Trigger planen. <br/><br/>Pipelines verfügen in Data Factory V2 nicht über „Fenster“ für die zeitabhängige Ausführung. Die Konzepte startTime, endTime und isPaused aus Data Factory V1 sind in Data Factory V2 nicht mehr vorhanden. Weitere Informationen finden Sie unter [Pipelineausführung und Trigger in Azure Data Factory](concepts-pipeline-execution-triggers.md) und [Pipelines und Aktivitäten in Azure Data Factory](concepts-pipelines-activities.md). |
 | Aktivitäten | Mit Aktivitäten werden Aktionen definiert, die Sie auf Ihre Daten in einer Pipeline anwenden. Aktivitäten für die Datenverschiebung (Kopieraktivität) und Datentransformation (z.B. Hive, Pig und MapReduce) werden unterstützt. | In Data Factory V2 sind Aktivitäten weiterhin definierte Aktionen in einer Pipeline. In V2 werden neue [Aktivitäten für die Ablaufsteuerung](concepts-pipelines-activities.md#control-activities) eingeführt. Sie verwenden diese Aktivitäten in einer Ablaufsteuerung (für Schleifen und Verzweigungen). Aktivitäten für die Datenverschiebung und Datentransformation, die in V1 unterstützt wurden, werden auch in V2 unterstützt. Sie können Transformationsaktivitäten definieren, ohne Datasets in V2 zu verwenden. |
 | Hybriddatenverschiebung und Aktivitätsverteilung | Das [Datenverwaltungsgateway](v1/data-factory-data-management-gateway.md) wird nun als Integration Runtime bezeichnet und hat das Verschieben von Daten zwischen dem lokalen Standort und der Cloud unterstützt.| Das Datenverwaltungsgateway wird jetzt als selbstgehostete Integrationslaufzeit bezeichnet. Die Funktionen sind die gleichen wie in V1. <br/><br/> Die Azure-SSIS Integration Runtime in V2 unterstützt auch das Bereitstellung und Ausführen von SSIS-Paketen (SQL Server Integration Services) in der Cloud. Weitere Informationen finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).|
@@ -112,7 +111,7 @@ In V1 implementieren Sie den Code einer (benutzerdefinierten) DotNet-Aktivität,
 
 In einer benutzerdefinierten Aktivität von V2 müssen Sie keine .NET-Schnittstelle implementieren. Sie können Befehle, Skripts und Ihren eigenen benutzerdefinierten, als ausführbare Datei kompilierten Code direkt ausführen. 
 
-Weitere Informationen finden Sie unter [Unterschied zwischen einer benutzerdefinierten Aktivität in Azure Data Factory V2 und einer (benutzerdefinierten) DotNet-Aktivität in Azure Data Factory V1](transform-data-using-dotnet-custom-activity.md#difference-between-custom-activity-in-azure-data-factory-v2-and-custom-dotnet-activity-in-azure-data-factory-v1).
+Weitere Informationen finden Sie unter [Unterschied zwischen einer benutzerdefinierten Aktivität in Azure Data Factory V2 und einer (benutzerdefinierten) DotNet-Aktivität in Azure Data Factory V1](transform-data-using-dotnet-custom-activity.md#compare-v2-v1).
 
 ## <a name="sdks"></a>SDKs
  Data Factory V2 bietet einen umfangreicheren Satz von SDKs für die Erstellung, Verwaltung und Überwachung von Pipelines.
@@ -138,6 +137,13 @@ Die für V2 aktualisierten SDKs sind nicht mit V1-Clients kompatibel.
 | Python SDK | [Ja](quickstart-create-data-factory-python.md) | Nein  |
 | Resource Manager-Vorlage | [Ja](quickstart-create-data-factory-resource-manager-template.md) | [Ja](data-factory-build-your-first-pipeline-using-arm.md) | 
 
+## <a name="roles-and-permissions"></a>Rollen und Berechtigungen
+
+Bei der Erstellung und Verwaltung untergeordneter Ressourcen für eine Data Factory v2-Instanz ist Folgendes zu beachten:
+
+-   Mit der Rolle „Mitwirkender“ der Data Factory-Version 1 können keine v2-Ressourcen erstellt und verwaltet werden.
+-   Die standardmäßige ARM-Rolle „Mitwirkender“, die für die Data Factory-Ressource erstellt wird, reicht zum Erstellen und Verwalten untergeordneter Ressourcen für eine Data Factory v2-Instanz aus, die mit PowerShell oder den SDKs bereitgestellt wurde. Sie reicht nicht aus, um untergeordnete Ressourcen für eine Data Factory v2-Instanz zu erstellen und zu verwalten, die über das Azure-Portal oder per ARM-Vorlagenbereitstellung bereitgestellt wurde.
+-   Zur Erstellung und Verwaltung untergeordneter Ressourcen für eine Data Factory v2-Instanz, die über das Azure-Portal oder per ARM-Vorlagenbereitstellung bereitgestellt wurde, müssen Sie auf der Ressourcengruppen- oder auf der Abonnementebene Mitglied der Rolle „Automation-Auftragsoperator“ sein. Ihre Organisation kann auch eine benutzerdefinierte Rolle mit „Microsoft.Resources/deployments/*“ in der Aktionenliste erstellen, wie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md) beschrieben.
 
 ## <a name="monitoring-experience"></a>Benutzeroberfläche für die Überwachung
 In V2 können Sie Data Factorys auch unterstützen, indem Sie [Azure Monitor](monitor-using-azure-monitor.md) verwenden. Die neuen PowerShell-Cmdlets unterstützen die Überwachung von [Integrationslaufzeiten](monitor-integration-runtime.md). Sowohl V1 als auch V2 unterstützen die visuelle Überwachung unter Verwendung einer Überwachungsanwendung, die über das Azure-Portal gestartet werden kann.

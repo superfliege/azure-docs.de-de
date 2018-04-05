@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 14018db3cbe34c9eca9048ceaf376ff3a06a4353
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6a106ba59f09ffc20f8461c5267ae06695df4cd0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Nahtlose einmalige Anmeldung mit Azure Active Directory
 
@@ -28,7 +28,7 @@ Die nahtlose einmalige Anmeldung mit Azure Active Directory (nahtlose SSO mit Az
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) oder [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md) kombiniert werden.
+Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-hash-synchronization.md) oder [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md) kombiniert werden.
 
 ![Nahtloses einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso1.png)
 
@@ -42,7 +42,7 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](act
   - Benutzer müssen nicht ständig ihr Kennwort eingeben.
 - *Einfache Bereitstellung und Verwaltung*
   - Keine zusätzlichen lokalen Komponenten erforderlich.
-  - Funktioniert mit jedem Verfahren für die Cloudauthentifizierung: [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) oder [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md).
+  - Funktioniert mit jedem Verfahren für die Cloudauthentifizierung: [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-hash-synchronization.md) oder [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md).
   - Kann mithilfe einer Gruppenrichtlinie für einige oder alle Benutzer eingeführt werden.
   - Registrieren Sie Geräte ohne Windows 10 bei Azure AD, ohne dass eine AD FS-Infrastruktur erforderlich ist. Für diese Funktion benötigen Sie Version 2.1 oder höher des [Clients für die Arbeitsplatzeinbindung](https://www.microsoft.com/download/details.aspx?id=53554).
 
@@ -50,7 +50,8 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](act
 
 - Beim Anmeldebenutzernamen kann es sich entweder um den lokalen Standard-Benutzernamen (`userPrincipalName`) handeln oder um ein anderes Attribut (`Alternate ID`), das in Azure AD Connect konfiguriert ist. Beide Anwendungsfälle funktionieren, weil die nahtloses SSO den `securityIdentifier`-Anspruch im Kerberos-Ticket verwendet, um die entsprechenden Benutzerobjekte in Azure AD zu suchen.
 - Die nahtlose SSO ist eine opportunistische Funktion. Tritt aus irgendeinem Grund ein Fehler auf, wird die reguläre Benutzeranmeldung durchgeführt, d.h. Benutzer müssen ihr Kennwort auf der Anmeldeseite eingeben.
-- Leitet eine Anwendung die Parameter `domain_hint` (OpenID Connect) oder `whr` (SAML) in der Azure AD-Anmeldeanforderung oder einen `login_hint`-Parameter weiter, werden Benutzer automatisch ohne Eingabe von Benutzername oder Kennwort angemeldet.
+- Leitet eine Anwendung (z.B. https://myapps.microsoft.com/contoso.com) die Parameter `domain_hint` (OpenID Connect) oder `whr` (SAML) – die Ihren Mandanten identifizieren, oder den Parameter `login_hint`, der den Benutzer identifiziert, in der Azure AD-Anmeldeanforderung weiter, werden Benutzer automatisch ohne Eingabe von Benutzername oder Kennwort angemeldet.
+- Benutzer genießen auch dann eine Anmeldung ohne Benutzereingriff, wenn eine Anwendung (z.B. https://contoso.sharepoint.com) Anmeldeanforderungen an Mandantenendpunkte von Azure AD – d.h. https://login.microsoftonline.com/contoso.com/<..> oder https://login.microsoftonline.com/<tenant_ID>/<..> – anstelle des allgemeinem Azure AD-Endpunkts (https://login.microsoftonline.com/common/<...>) sendet.
 - Die Abmeldung wird unterstützt. Dadurch können Benutzer ein anderes Azure AD-Konto für die Anmeldung auswählen, anstatt mit der nahtlosen einmaligen Anmeldung automatisch angemeldet zu werden.
 - Office 365-Clients (ab 16.0.8730.xxxx) werden mit einem nicht interaktiven Ablauf unterstützt.
 - Kann über Azure AD Connect aktiviert werden

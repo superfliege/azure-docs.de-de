@@ -1,6 +1,6 @@
 ---
-title: "Schnellstartanleitung: Erstellen einer privaten Docker-Registrierung in Azure über das Azure-Portal"
-description: "Hier lernen Sie, wie Sie ganz schnell eine private Docker-Containerregistrierung über das Azure-Portal erstellen."
+title: 'Schnellstartanleitung: Erstellen einer privaten Docker-Registrierung in Azure über das Azure-Portal'
+description: Hier lernen Sie, wie Sie ganz schnell eine private Docker-Containerregistrierung über das Azure-Portal erstellen.
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: db112f7f8f486093509a86f9781c30133925c25f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7ea0ae9c0c071a08c9ff99587cd8c5dc8034fe69
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="create-a-container-registry-using-the-azure-portal"></a>Erstellen einer Containerregistrierung mit dem Azure-Portal
+# <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>Schnellstart: Erstellen einer Containerregistrierung mit dem Azure-Portal
 
 Eine Azure Container Registry-Instanz ist eine private Docker-Registrierung in Azure, in der Sie Ihre privaten Docker-Containerimages speichern und verwalten können. In dieser Schnellstartanleitung erstellen Sie eine Containerregistrierung mit dem Azure-Portal, übertragen ein Containerimage per Pushvorgang in die Registrierung und stellen den Container abschließend aus Ihrer Registrierung in Azure Container Instances (ACI) bereit.
 
@@ -23,7 +23,7 @@ Diese Schnellstartanleitung setzt eine lokale Docker-Installation voraus. Für D
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter „https://portal.azure.com“ am Azure-Portal an.
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure-Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“ für Blobs | Microsoft-Dokumentation"
-description: "Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“ für Azure-Speicherkonten."
+title: Azure-Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“ für Blobs | Microsoft-Dokumentation
+description: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“ für Azure-Speicherkonten.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kuhussai
 manager: jwillis
-editor: 
+editor: ''
 ms.assetid: eb33ed4f-1b17-4fd6-82e2-8d5372800eef
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: 2adb301f1d047c7762a35880da6e6094a5afbd75
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c62f3a92e6199f6467556054c9f58c20b6ceba2c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“
 
@@ -79,7 +79,7 @@ Ein Konto kann Blobs aus allen drei Speicherebenen enthalten. Blobs, denen keine
 
 ### <a name="blob-level-tiering-billing"></a>Abrechnung für das Blobebenentiering
 
-Wenn ein Blob in „Cool“-Richtung verschoben wird (Hot->Cool, Hot->Archiv oder Cool->Archiv), wird der Vorgang als Schreibvorgang auf die Zielebene berechnet, und es gelten die Gebühren der Zielebene für Schreibvorgänge (pro 10.000) und das Schreiben von Daten (pro GB). Wenn ein Blob in „Hot“-Richtung verschoben wird (Archiv->Cool, Archiv->Hot oder Cool->Hot), wird der Vorgang als Lesevorgang aus der Quellebene berechnet, und es gelten die Gebühren der Quellebene für Lesevorgänge (pro 10.000) und den Datenabruf (pro GB).
+Wenn ein Blob in eine „kältere“ Ebene verschoben wird (von „Hot“ zu „Cool“, von „Hot“ zu „Archiv“ oder von „Cool“ zu „Archiv“), wird der Vorgang als Schreibvorgang der Zielebene berechnet, und es gelten die Zielebenengebühren für Schreibvorgänge (pro 10.000) und das Schreiben von Daten (pro GB). Wenn ein Blob in eine „wärmere“ Ebene verschoben wird (von „Archiv“ zu „Cool“, von „Archiv“ zu „Hot“ oder von „Cool“ zu „Hot“), wird der Vorgang als Lesevorgang aus der Quellebene berechnet, und es gelten die Quellebenengebühren für Lesevorgänge (pro 10.000) und Datenabruf (pro GB).
 
 Wenn Sie für die Kontoebene von „Hot“ zu „Cool“ wechseln, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs ohne festgelegte Ebene nur für GPv2-Konten berechnet. Für Blob Storage-Konten fallen hierfür keine Gebühren an. Ihnen werden sowohl Gebühren für Lesevorgänge (pro 10.000) als auch für den Datenabruf (pro GB) berechnet, wenn Sie für Ihr Blob Storage- oder GPv2-Konto von „Cool“ zu „Hot“ wechseln. Für alle Blobs, die aus der Ebene „Cool“ oder „Archiv“ verschoben werden, können auch Gebühren für das frühe Löschen anfallen.
 

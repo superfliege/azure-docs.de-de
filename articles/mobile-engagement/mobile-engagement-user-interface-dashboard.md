@@ -1,11 +1,11 @@
 ---
-title: "Benutzeroberfläche von Azure Mobile Engagement – Dashboard"
-description: "Informationen zum Überwachen und Verwalten von Datendiagrammen zu Ihrer Anwendung mithilfe von Azure Mobile Engagement"
+title: Benutzeroberfläche von Azure Mobile Engagement – Dashboard
+description: Informationen zum Überwachen und Verwalten von Datendiagrammen zu Ihrer Anwendung mithilfe von Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 72d5965e-8e79-48a3-9e63-0b66b7457d3c
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: eaf5a2f9fdfcec33e8b4e2ddf77505980cd37c5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d941b9858b964e11308061bae9e6dbc5e2fda767
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-view-and-manage-charts-of-data-about-your-application"></a>Anzeigen und Verwalten von Datendiagrammen zu Ihrer Anwendung
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Der Abschnitt "Dashboard" der Benutzeroberfläche erlaubt Kunden das Erstellen angepasster Diagramme, indem zeitsparend genau die gewünschten Informationen bereitgestellt werden, ohne dass diese im Abschnitt "Analyse" gesucht werden müssen. Ein Dashboard zeigt Trends der Anwendung und die Anzahl aktiver Benutzer für die verschiedenen Versionen der Anwendung über einen bestimmten Zeitraum (Stunde/Tag/Woche/Monat/benutzerdefiniert). Die gezeigten Trends basieren auf den letzten sieben Tagen.
 
 ### <a name="see-also"></a>Weitere Informationen
