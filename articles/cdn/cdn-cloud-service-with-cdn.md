@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f131eb021d85766f12b0fb6cb8b5a07f965f9c97
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="intro"></a> Integrieren eines Clouddiensts in Azure CDN
 Ein Clouddienst kann in Azure CDN integriert werden, um beliebige Inhalte vom Speicherort des Clouddiensts zur Verfügung zu stellen. Dieser Ansatz bietet die folgenden Vorteile:
@@ -138,7 +138,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten.  Jedes Profil enthält mind
    > 
 
 ## <a name="test-the-cdn-endpoint"></a>Testen des CDN-Endpunkts
-Wenn der Veröffentlichungsstatus **Abgeschlossen** lautet, öffnen Sie ein Browserfenster, und navigieren Sie zu **http://<cdnName>*.azureedge.net/Content/bootstrap.css**. In meinem Setup lautet diese URL:
+Wenn der Veröffentlichungsstatus wird **abgeschlossen**, öffnen Sie ein Browserfenster, und navigieren Sie zu **http://<cdnName>*.azureedge.net/Content/bootstrap.css**. In meinem Setup lautet diese URL:
 
     http://camservice.azureedge.net/Content/bootstrap.css
 
@@ -146,18 +146,18 @@ Dies entspricht der folgenden Ursprungs-URL am CDN-Endpunkt:
 
     http://camcdnservice.cloudapp.net/Content/bootstrap.css
 
-Wenn Sie zu **http://*&lt;CDN-Name>*.azureedge.net/Content/bootstrap.css** navigieren, werden Sie je nach Browser zum Herunterladen oder Öffnen der Datei „bootstrap.css“ aufgefordert, die von der veröffentlichten Web-App bereitgestellt wurde.
+Wenn Sie zu navigieren, **http://*&lt;CdnName >*.azureedge.net/Content/bootstrap.css**, abhängig von Ihrem Browser werden Sie aufgefordert, herunterladen oder öffnen die bootstrap.css, die stammen von der veröffentlichten Webanwendung.
 
 ![](media/cdn-cloud-service-with-cdn/cdn-1-browser-access.PNG)
 
-Auf die gleiche Weise können Sie direkt von Ihrem CDN-Endpunkt aus auf jede öffentlich zugreifbare URL unter **http://*&lt;Dienstname>*.cloudapp.net/** zugreifen. Beispiel: 
+Auf ähnliche Weise erreichen Sie, dass alle öffentlich zugänglichen-URL auf **http://*&lt;ServiceName >*.cloudapp.net/**, gerade aus dem CDN-Endpunkt. Beispiel: 
 
 * Eine JS-Datei im Pfad "/Script"
 * Jede Inhaltsdatei im Pfad "/Content"
 * Jede Controlleraktion
 * Sofern die Abfragezeichenfolge für den CDN-Endpunkt aktiviert ist, jede URL mit Abfragezeichenfolgen
 
-Mit der vorstehenden Konfiguration können Sie den gesamten Clouddienst von **http://*&lt;cdnName>*.azureedge.net/** aus hosten. Wenn ich zu **http://camservice.azureedge.net/** navigiere, erhalte ich das Aktionsergebnis von Startseite/Index.
+Hosten Sie tatsächlich mit der obigen Konfiguration der gesamten Cloud-Dienst von **http://*&lt;CdnName >*.azureedge.net/**. Wenn ich zu **http://camservice.azureedge.net/** navigiere, erhalte ich das Aktionsergebnis von Startseite/Index.
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 
@@ -325,7 +325,7 @@ Führen Sie die vorstehenden Schritte aus, um diese Controlleraktion einzurichte
             <br />
             <input class="btn" type="submit" value="Generate meme" />
         </form>
-5. Veröffentlichen Sie den Clouddienst erneut, und navigieren Sie in Ihrem Browser zu **http://*&lt;<Dienstname>*.cloudapp.net/MemeGenerator/Index**.
+5. Veröffentlichen Sie den Cloud-Dienst erneut, und navigieren Sie zu **http://*&lt;ServiceName >*.cloudapp.net/MemeGenerator/Index** in Ihrem Browser.
 
 Wenn Sie die Formularwerte an `/MemeGenerator/Index` übermitteln, gibt die `Index_Post`-Aktionsmethode eine Link zur `Show`-Aktionsmethode mit der betreffenden Eingabe-ID zurück. Wenn Sie auf den Link klicken, erhalten Sie den folgenden Code:  
 

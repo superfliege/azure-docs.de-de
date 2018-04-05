@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
 ms.openlocfilehash: b1878c181a77ac6d54654fc55228907743243c45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple als Sicherungsziel mit NetBackup
 
@@ -70,7 +70,7 @@ StorSimple nutzt ein automatisches Tiering zwischen dem lokalen Gerät, das mit 
 StorSimple bietet folgende Vorteile:
 
 -   Eindeutige Algorithmen für Deduplizierung und Komprimierung, die dank Cloud ein nie dagewesenes Deduplizierungslevel erreichen
--   Hohe Verfügbarkeit
+-   Hochverfügbarkeit
 -   Georeplikation durch Nutzen der Azure-Georeplikation
 -   Azure-Integration
 -   Datenverschlüsselung in der Cloud
@@ -100,7 +100,7 @@ Die folgenden Tabellen enthalten Informationen zu verschiedenen Gerätemodellen 
 | Sicherungsszenario  | Lokale Speicherkapazität  | Cloudspeicherkapazität  |
 |---|---|---|
 | Primäre Sicherung  | Aktuelle Sicherungen im lokalen Speicher für eine schnelle Wiederherstellung zum Erfüllen der RPO-Vorgabe (Recovery Point Objective) | Sicherungsverlauf (RPO) passt in Cloudkapazität |
-| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | –  |
+| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | N/V  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple als primäres Sicherungsziel
 
@@ -325,7 +325,7 @@ Bei der folgenden Sequenz wird vorausgesetzt, dass NetBackup und der Zielhost ge
 
     ![NetBackup-Verwaltungskonsole, Richtlinientyp auswählen](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5.  Wählen Sie Ihren Host aus, aktivieren Sie das Kontrollkästchen **Detect client operating system** (Clientbetriebssystem ermitteln), und klicken Sie dann auf **Add** (Hinzufügen). Wählen Sie **Weiter**.
+5.  Wählen Sie Ihren Host aus, aktivieren Sie das Kontrollkästchen **Detect client operating system** (Clientbetriebssystem ermitteln), und klicken Sie dann auf **Add** (Hinzufügen). Klicken Sie auf **Weiter**.
 
     ![NetBackup-Verwaltungskonsole, Clients in einer neuen Richtlinie auflisten](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -493,7 +493,7 @@ Der folgende Abschnitt zeigt, wie Sie ein kurzes Skript schreiben, um StorSimple
 
 ![Diagramm zum Sicherungslebenszyklus](./media/storsimple-configure-backup-target-using-netbackup/backuplifecycle.png)
 
-### <a name="requirements"></a>Anforderungen
+### <a name="requirements"></a>Requirements (Anforderungen)
 
 -   Der Server, auf dem das Skript ausgeführt wird, muss auf Azure-Cloudressourcen zugreifen können.
 -   Das Benutzerkonto muss über die notwendigen Berechtigungen verfügen.
@@ -524,7 +524,7 @@ Wiederherstellungen aus einem StorSimple-Gerät funktionieren ähnlich wie Wiede
 
 Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folgenden Tabelle sind häufige Notfallwiederherstellungsszenarien aufgeführt.
 
-| Szenario | Auswirkung | Wiederherstellung | Hinweise |
+| Szenario | Auswirkung | Wiederherstellung | Notizen |
 |---|---|---|---|
 | Ausfall eines StorSimple-Geräts | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Ersetzen Sie das ausgefallene Gerät, und führen Sie die [Schritte für StorSimple-Failover und -Notfallwiederherstellung](storsimple-device-failover-disaster-recovery.md) durch. | Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitssätze mit Daten aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. Dieses erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Dies kann ein sehr zeitaufwendiger Prozess sein. |
 | Ausfall des NetBackup-Servers | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Erstellen Sie den Sicherungsserver neu, und führen Sie eine Datenbankwiederherstellung durch. | Sie können den NetBackup-Server am Notfallwiederherstellungsstandort neu erstellen oder wiederherstellen. Stellen Sie die Datenbank auf den jüngsten Zeitpunkt wieder her. Wenn die wiederhergestellte NetBackup-Datenbank nicht mit Ihren jüngsten Sicherungsaufträgen synchron ist, ist eine Indizierung und Katalogisierung erforderlich. Das erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Damit wird diese Aufgabe noch zeitaufwendiger. |

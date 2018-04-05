@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
 ms.openlocfilehash: 0b2e66cd40c1b49832b865e5bf59edcf78996eb8
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Funktionsweise der Volltextsuche in Azure Search
 
@@ -289,7 +289,7 @@ Für das Feld **description** sieht der Index wie folgt aus:
 | shore | 2
 | spacious | 1
 | the | 1, 2
-| to | 1
+| in: | 1
 | view | 1, 2, 3
 | walking | 1
 | with | 3
@@ -363,7 +363,7 @@ In einem Beispiel ist dargestellt, warum dies wichtig ist. Platzhaltersuchen mit
 Es gibt zwei Möglichkeiten, wie Sie Relevanzbewertungen in Azure Search optimieren können:
 
 1. Mit **Bewertungsprofilen** werden Dokumente in der Rangfolgenliste der Ergebnisse basierend auf einer Gruppe von Regeln höhergestuft. In unserem Beispiel können wir Dokumente, für die sich Übereinstimmungen im Feld „title“ ergeben, als relevanter als Dokumente einstufen, für die sich Übereinstimmungen im Feld „description“ ergeben. Wenn unser Index über ein Preisfeld für jedes Hotel verfügen würde, könnten wir zusätzlich Dokumente mit einem niedrigeren Preis höherstufen. Lesen Sie die weiteren Informationen zum [Hinzufügen von Bewertungsprofilen zu einem Suchindex](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index).
-2. Beim **Term Boosting** („Begriffsverstärkung“, nur in der vollständigen Lucene-Abfragesyntax verfügbar) wird der Verstärkungsoperator `^` bereitgestellt, der auf alle Teile der Abfragestruktur angewendet werden kann. In unserem Beispiel könnten wir – anstatt nach dem Präfix *air-condition*\* – auch entweder nach dem exakten Begriff *air-condition* oder dem Präfix suchen. Dokumente, für die sich eine Übereinstimmung mit dem exakten Begriff ergibt, werden dann höher eingestuft, indem die Begriffsabfrage verstärkt wird: *air-condition^2||air-condition**. [Hier finden Sie weitere Informationen zum „Term Boosting“](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. Beim **Term Boosting** („Begriffsverstärkung“, nur in der vollständigen Lucene-Abfragesyntax verfügbar) wird der Verstärkungsoperator `^` bereitgestellt, der auf alle Teile der Abfragestruktur angewendet werden kann. In unserem Beispiel, anstatt auf das Präfix suchen *air-condition*\*, eine konnte suchen Sie nach einer exakten Begriff *air-condition* oder das Präfix, aber die Dokumente, die nach dem genauen Begriff entsprechen sind durch Anwenden von Boost abzufragende Begriff höher eingestuft: * Air-Bedingung ^ 2 || AIR-Condition **. [Hier finden Sie weitere Informationen zum „Term Boosting“](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Durchführen von Bewertungen in einem verteilten Index
@@ -376,7 +376,7 @@ Im Allgemeinen ist die Dokumentbewertung nicht das am besten geeignete Attribut 
 
 ## <a name="conclusion"></a>Zusammenfassung
 
-Aufgrund des Erfolgs von Internetsuchmaschinen sind die Erwartungen in Bezug auf die Volltextsuche für private Daten gestiegen. Für nahezu alle Arten von Suchoberflächen erwarten wir mittlerweile, dass das Modul unsere Absicht erkennt – auch bei falsch geschriebenen oder unvollständigen Suchbegriffen. Wir erwarten vielleicht sogar Übereinstimmungen anhand von ähnlichen Begriffen oder Synonymen, die wir gar nicht angegeben haben.
+Aufgrund des Erfolgs von Internetsuchmaschinen sind die Erwartungen in Bezug auf die Volltextsuche für private Daten gestiegen. Für nahezu alle Arten von Suchoberflächen erwarten wir mittlerweile, dass die Suchmaschine unsere Absicht erkennt – auch bei falsch geschriebenen oder unvollständigen Suchbegriffen. Wir erwarten vielleicht sogar Übereinstimmungen anhand von ähnlichen Begriffen oder Synonymen, die wir gar nicht angegeben haben.
 
 Aus technischer Sicht ist die Volltextsuche hochkomplex und erfordert eine anspruchsvolle linguistische Analyse und einen systematischen Verarbeitungsansatz, bei dem Abfrageausdrücke herausgefiltert, erweitert und transformiert werden, um die relevanten Ergebnisse zu liefern. Diese komplexen Anforderungen sind mit vielen Faktoren verbunden, die sich auf das Ergebnis einer Abfrage auswirken können. Aus diesem Grund ist es sinnvoll, Zeit für die Einarbeitung in die Details der Volltextsuche zu investieren. Mit diesem Wissen ergeben sich für Sie nützliche Vorteile bei der Analyse von unerwarteten Ergebnissen.  
 

@@ -1,25 +1,24 @@
 ---
 title: Leitfaden zur Behandlung von Problemen bei Azure Stream Analytics | Microsoft-Dokumentation
-description: "Informationen zur Behandlung von Problemen in Bezug auf Stream Analytics-Aufträge"
+description: Informationen zur Behandlung von Problemen in Bezug auf Stream Analytics-Aufträge
 keywords: Leitfaden zur Problembehandlung
-documentationcenter: 
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: dcff312e4a282b15e76ea32aadb1981a496a2446
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 87e8b99cb2774966ce22c76e1afed6a754749e9d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-azure-stream-analytics"></a>Leitfaden zur Behandlung von Problemen bei Azure Stream Analytics
 
@@ -78,7 +77,7 @@ Um optimale Ergebnisse bei der Behandlung von Problemen in Bezug auf Stream Anal
 
 9. Überprüfen Sie die Ausgaben:
     - Wenn der Auftragsstatus *Wird ausgeführt* lautet, können Sie abhängig von der in der Abfrage festgelegten Dauer die Ausgabe in der Senkendatenquelle sehen.
-    - Wenn Sie keine Ausgaben eines bestimmten Ausgabetyps sehen können, leiten Sie diese an einen weniger komplexen Ausgabetyp um (z.B. einen Azure Blob). Überprüfen Sie mithilfe des Speicher-Explorer, ob die Ausgabe angezeigt werden kann. Überprüfen Sie darüber hinaus, ob Einschränkungsgrenzwerte bei der Ausgabe den Empfang von Daten verhindern.
+    - Wenn Sie keine Ausgaben eines bestimmten Ausgabetyps sehen können, leiten Sie diese an einen weniger komplexen Ausgabetyp um (z.B. einen Azure Blob). Überprüfen Sie mithilfe des Storage-Explorers, ob die Ausgabe angezeigt werden kann. Überprüfen Sie darüber hinaus, ob Einschränkungsgrenzwerte bei der Ausgabe den Empfang von Daten verhindern.
 
 10. Verwenden Sie die Datenflussanalyse mit Auftragsdiagrammmetriken:
     - Verwenden Sie [Auftragsdiagramm mit Metriken](stream-analytics-job-diagram-with-metrics.md), um den Datenfluss zu analysieren und Probleme festzustellen.

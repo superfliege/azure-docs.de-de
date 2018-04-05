@@ -1,11 +1,11 @@
 ---
-title: "Vorbereiten der Veröffentlichung und Bereitstellung eines Clouddiensts in Visual Studio | Microsoft-Dokumentation"
+title: Vorbereiten der Veröffentlichung und Bereitstellung eines Clouddiensts in Visual Studio | Microsoft-Dokumentation
 description: Lernen Sie die Verfahren zum Einrichten von Cloud- und Speicherkontodiensten und zum Konfigurieren Ihrer Azure-Anwendung kennen.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 92ee2f9e-ec49-4c7a-900d-620abe5e9d8a
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/10/2017
-ms.author: kraigb
-ms.openlocfilehash: 5b2043ada193e5a08957656e153b58a61e7eba9e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.author: ghogen
+ms.openlocfilehash: 8a7d6f114bfa10170cdfe7126e01a35b02affd20
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="prepare-to-publish-or-deploy-a-cloud-service-from-visual-studio"></a>Vorbereiten der Veröffentlichung und Bereitstellung eines Clouddiensts in Visual Studio
 
@@ -40,12 +40,12 @@ Ein Clouddienst führt Ihre Rollen in der Azure-Umgebung aus. Sie können einen 
 
 ### <a name="create-a-cloud-service-through-the-azure-portal"></a>Erstellen eines Clouddiensts über das Azure-Portal
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Wählen Sie links auf der Seite die Option **Clouddienste (klassisch)**.
 1. Wählen Sie **+ Hinzufügen**, und geben Sie die erforderlichen Informationen an (DNS-Name, Abonnement, Ressourcengruppe und Standort). Es ist hier nicht erforderlich, ein Paket hochzuladen, da Sie dies später in Visual Studio durchführen.
 1. Wählen Sie **Erstellen**, um den Prozess abzuschließen.
 
-## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Ein Speicherkonto bietet Zugriff auf die Blob-, Warteschlangen- und Tabellendienste. Sie können ein Speicherkonto in Visual Studio oder über das [Azure-Portal](https://portal.azure.com/) erstellen.
 
@@ -59,7 +59,7 @@ Ein Speicherkonto bietet Zugriff auf die Blob-, Warteschlangen- und Tabellendien
 
 ### <a name="create-a-storage-account-through-the-azure-portal"></a>Erstellen eines Speicherkontos über das Azure-Portal
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Wählen Sie oben links die Option **+ Neu**.
 1. Wählen Sie unter „Azure Marketplace“ die Option **Speicher** und auf der rechten Seite dann **Speicherkonto – Blob, Datei, Tabelle, Warteschlange**.
 1. Geben Sie die erforderlichen Informationen an (Name, Bereitstellungsmodell usw.).

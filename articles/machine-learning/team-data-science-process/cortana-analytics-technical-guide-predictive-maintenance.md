@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
 ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technische Anleitung für die Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen
 
@@ -71,7 +71,7 @@ Führen Sie (von Azure Data Factory orchestrierte) [Hive](http://blogs.msdn.com/
 Treffen Sie mithilfe des (von Azure Data Factory orchestrierten) [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)-Diensts basierend auf den erhaltenen Daten Vorhersagen über die Restlebensdauer eines bestimmten Flugzeugtriebwerks. 
 
 ## <a name="data-publishing"></a>Veröffentlichung der Daten
-### <a name="azure-sql-database"></a>Azure SQL-Datenbank
+### <a name="azure-sql-database"></a>Azure SQL-Datenbank
 Mit dem [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)-Dienst speichern Sie die von Azure Machine Learning empfangenen Vorhersagen, die dann im [Power BI](https://powerbi.microsoft.com)-Dashboard genutzt werden.
 
 ## <a name="data-consumption"></a>Nutzung der Daten
@@ -143,7 +143,7 @@ Zu den enthaltenen Aktivitäten zählen:
 Diese [Pipeline](../../data-factory/v1/data-factory-create-pipelines.md) enthält eine einzige Aktivität: eine [Kopieraktivität](https://msdn.microsoft.com/library/azure/dn835035.aspx), die die Ergebnisse des [Azure Machine Learning](#azure-machine-learning)-Experiments aus ***MLScoringPipeline*** in die bei der Installation der Lösungsvorlage bereitgestellte [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) verschiebt.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Das für diese Lösungsvorlage verwendete [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) -Experiment gibt die Restlebensdauer (Remaining Useful Life, RUL) für ein Flugzeugtriebwerk an. Dieses Experiment ist von dem hier genutzten Dataset abhängig und muss für die von Ihnen eingebrachten Daten angepasst oder ersetzt werden.
+Das für diese Lösungsvorlage verwendete [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)-Experiment gibt die Restlebensdauer (Remaining Useful Life, RUL) für ein Flugzeugtriebwerk an. Dieses Experiment ist von dem hier genutzten Dataset abhängig und muss für die von Ihnen eingebrachten Daten angepasst oder ersetzt werden.
 
 Informationen zum Erstellen des Azure Machine Learning-Experiments finden Sie unter [Vorbeugende Wartung: Schritt 1 von 3, Datenvorbereitung und Featureentwicklung](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
 
@@ -153,7 +153,7 @@ Nach dem Start des Daten-Generators füllt sich die Pipeline mit Daten, und die 
 1. Einer der Stream Analytics-Aufträge schreibt die unformatierten eingehenden Daten in Blobspeicher. Wenn Sie auf dem Bildschirm, auf dem Sie die Lösung erfolgreich bereitgestellt haben, auf die Komponente Blob Storage und anschließend im rechten Bereich auf „Öffnen“ klicken, gelangen Sie zum [Azure-Portal](https://portal.azure.com/). Klicken Sie dort auf „Blobs“. Im nächsten Bereich sehen Sie eine Liste mit Containern. Klicken Sie auf **maintenancesadata**. Im nächsten Bereich befindet sich der Ordner **rawdata**. Innerhalb des Ordners „rawdata“ befinden sich Ordner mit Namen wie „hour=17“ und „hour=18“. Das Vorhandensein dieser Ordner zeigt an, dass die unformatierten Daten auf Ihrem Computer erstellt und im Blobspeicher gespeichert wurden. In diesen Ordnern sollten CSV-Dateien mit Größen in MB angezeigt werden.
 2. Der letzte Schritt der Pipeline ist das Schreiben von Daten (z. B. Prognosen aus Machine Learning) in die SQL-Datenbank. Möglicherweise müssen Sie bis zu drei Stunden warten, bis die Daten in Azure SQL-Datenbank angezeigt werden. Die Menge der in Ihrer SQL-Datenbank verfügbaren Daten kann unter anderem über das [Azure-Portal](https://portal.azure.com/) überwacht werden. Suchen Sie im linken Bereich nach SQL-DATENBANKEN ![SQL-Symbol](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png), und klicken Sie darauf. Suchen Sie Ihre Datenbank **pmaintenancedb**, und klicken Sie darauf. Klicken Sie auf der nächsten Seite unten auf VERWALTEN.
    
-    ![Symbol „Verwalten“](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png).
+    ![Symbol „Verwalten“](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)zu erstellen und zu verwalten.
    
     Hier können Sie auf „Neue Abfrage“ klicken und dann die Anzahl der Zeilen (z. B. „select count(*)“ aus PMResult) abfragen. Wenn Ihre Datenbank wächst, nimmt auch die Anzahl der Zeilen in der Tabelle zu.
 

@@ -1,11 +1,11 @@
 ---
 title: Konfigurieren Ihres Azure-Projekts mit mehreren Dienstkonfigurationen | Microsoft Docs
-description: "Erfahren Sie, wie Sie ein Azure-Clouddienstprojekt konfigurieren, indem Sie die Dateien „ServiceDefinition.csdef“, „ServiceConfiguration.Local.cscfg“ und „ServiceConfiguration.Cloud.cscfg“ ändern."
+description: Erfahren Sie, wie Sie ein Azure-Clouddienstprojekt konfigurieren, indem Sie die Dateien „ServiceDefinition.csdef“, „ServiceConfiguration.Local.cscfg“ und „ServiceConfiguration.Cloud.cscfg“ ändern.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: a4fb79ed-384f-4183-9f74-5cac257206b9
 ms.service: multiple
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2017
-ms.author: kraigb
-ms.openlocfilehash: 8125ef36f730b745d63c39493f48d14a5a33d76c
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.author: ghogen
+ms.openlocfilehash: 919568922ada2d842233ade029a54d474b4a1a0e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>Konfigurieren Ihres Azure-Projekts in Visual Studio zur Verwendung mehrerer Dienstkonfigurationen
 
@@ -54,7 +54,7 @@ Die Option **HTTPS-Endpunkt** ist nur verfügbar, wenn Sie bereits einen HTTPS-E
 
 Wenn Sie bereits einen HTTPS-Endpunkt hinzugefügt haben, ist die Option „HTTPS-Endpunkt“ standardmäßig aktiviert. Visual Studio startet nun beim Start des Debugvorgangs neben dem Browser für den HTTP-Endpunkt einen Browser für diesen Endpunkt, vorausgesetzt dass beide Startoptionen aktiviert sind.
 
-### <a name="diagnostics"></a>Diagnostics
+### <a name="diagnostics"></a>Diagnose
 
 Die Diagnosefunktion ist standardmäßig für die Webrolle aktiviert. Das Azure-Clouddienstprojekt und Speicherkonto wurden auf die Verwendung des lokalen Speicheremulators festgelegt. Wenn die Bereitstellung in Azure erfolgen soll, klicken Sie auf die Generatorschaltfläche (**…**), um stattdessen Azure-Speicher zu verwenden. Sie können die Diagnosedaten entweder bei Bedarf oder in automatisch geplanten Intervallen an das Speicherkonto übertragen. Weitere Informationen zur Azure-Diagnose erhalten Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services/cloud-services-dotnet-diagnostics.md).
 

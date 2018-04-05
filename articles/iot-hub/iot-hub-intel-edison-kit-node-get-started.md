@@ -17,10 +17,10 @@ ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5a31efba704045196b5563f7bc467c773bea7805
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-nodejs"></a>Verbinden von Intel Edison mit Azure IoT Hub (Node.js)
 
@@ -46,9 +46,9 @@ Verbinden Sie Intel Edison mit einem von Ihnen erstellten IoT Hub. Führen Sie a
 * Erfassen von Sensordaten durch Ausführen einer Beispielanwendung auf Edison
 * Senden von Sensordaten an Ihren IoT Hub
 
-## <a name="what-you-need"></a>Erforderliches Element
+## <a name="what-you-need"></a>Voraussetzungen
 
-![Erforderliches Element](media/iot-hub-intel-edison-kit-node-get-started/0_kit.png)
+![Voraussetzungen](media/iot-hub-intel-edison-kit-node-get-started/0_kit.png)
 
 * Intel Edison-Platine
 * Arduino-Erweiterungsplatine

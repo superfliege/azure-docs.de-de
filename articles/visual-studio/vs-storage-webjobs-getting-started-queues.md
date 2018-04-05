@@ -1,11 +1,11 @@
 ---
 title: Erste Schritte mit Queue Storage und verbundenen Visual Studio-Diensten (WebJob-Projekte) | Microsoft Docs
-description: "Erste Schritte mit Azure-Warteschlangenspeicher in einem WebJob-Projekt nach dem Herstellen einer Verbindung mit einem Speicherkonto mithilfe von verbundenen Visual Studio-Diensten."
+description: Erste Schritte mit Azure-Warteschlangenspeicher in einem WebJob-Projekt nach dem Herstellen einer Verbindung mit einem Speicherkonto mithilfe von verbundenen Visual Studio-Diensten.
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: kraigb
-ms.openlocfilehash: efd2f1e471f67396d35f11f2eb1044a8afa469af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 52c089d2657d61ee42730a00def060dec74439fc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten (WebJob-Projekte)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -258,7 +258,7 @@ Im folgenden Beispiel werden **Stream** -Objekte zum Lesen und Schreiben von Blo
             blobInput.CopyTo(blobOutput, 4096);
         }
 
-Der Attributkonstruktor **Blob** verwendet den Parameter **blobPath**, der den Container und den Blobnamen angibt. Weitere Informationen zu diesem Platzhalter finden Sie unter [Verwenden von Azure-Blobspeicher mit dem WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
+Der Attributkonstruktor **Blob** verwendet den Parameter **blobPath**, der den Container und den Blobnamen angibt. Weitere Informationen zu diesem Platzhalter finden Sie unter [Verwenden von Azure Blob Storage mit dem WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
 Wenn das Attribut ein **Stream**-Objekt anpasst, gibt ein anderer Konstruktorparameter den Modus **FileAccess** als Lesen, Schreiben oder Lesen/Schreiben an.
 

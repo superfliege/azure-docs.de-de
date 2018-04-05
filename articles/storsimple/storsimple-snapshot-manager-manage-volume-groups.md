@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: 6067a88cd42d29c3d2f4b74580095424de77561e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Verwenden des StorSimple Snapshot Manager zum Erstellen und Verwalten von Volumegruppen
 ## <a name="overview"></a>Übersicht
@@ -47,9 +47,9 @@ Alle diese Aktionen stehen auch im Bereich **Aktionen** zur Verfügung.
 ## <a name="view-volume-groups"></a>Anzeigen von Volumegruppen
 Wenn Sie auf den Knoten **Volumegruppen** klicken, werden im Bereich **Ergebnisse** je nach den ausgewählten Spalten die folgenden Informationen über jede Volumegruppe angezeigt. (Die Spalten im Bereich **Ergebnis** sind konfigurierbar. (Klicken Sie mit der rechten Maustaste auf den Knoten **Volumes**, und wählen Sie **Ansicht** und dann **Spalten hinzufügen/entfernen** aus.)
 
-| Ergebnisspalte | Beschreibung |
+| Ergebnisspalte | BESCHREIBUNG |
 |:--- |:--- |
-| Name |Die Spalte **Name** enthält den Namen der Volumegruppe. |
+| NAME |Die Spalte **Name** enthält den Namen der Volumegruppe. |
 | Anwendung |Die Spalte **Anwendungen** zeigt die Anzahl der VSS-Writer an, die zurzeit auf dem Windows-Host installiert sind und ausgeführt werden. |
 | Aktiviert |Die Spalte **Ausgewählt** zeigt die Anzahl der Volumes in der Volumegruppe an. Eine Null (0) gibt an, dass den Volumes in der Volumegruppe keine Anwendung zugeordnet ist. |
 | Importiert |Die Spalte **Importiert** zeigt die Anzahl der importierten Volumes an. Bei Festlegung auf **True** gibt diese Spalte an, dass eine Volumegruppe aus dem Azure-Portal importiert und nicht im StorSimple Snapshot Manager erstellt wurde. |

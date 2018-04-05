@@ -2,11 +2,10 @@
 title: Verwenden von Continuous Integration und Continuous Deployment mithilfe der Stream Analytics Visual Studio-Tools | Microsoft-Dokumentation
 description: Tutorial zum Einrichten von Continuous Integration und Continuous Deployment mithilfe der Stream Analytics Visual Studio-Tools
 keywords: Visual Studio, NuGet, DevOps, CI/CD
-documentationcenter: 
+documentationcenter: ''
 services: stream-analytics
 author: su-jie
-manager: 
-editor: 
+manager: ''
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 9/27/2017
 ms.author: sujie
-ms.openlocfilehash: 0fdc7bd1a98e147bf6c7f7c290f03a878c83a1a9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 14bb15f19b517b55281959f0de970e3f5e0d360b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-stream-analytics-visual-studio-tools-to-set-up-a-continuous-integration-and-deployment-process"></a>Einrichten von Continuous Integration und Continuous Deployment mithilfe der Stream Analytics Visual Studio-Tools
 In diesem Tutorial erfahren Sie, wie Sie Continuous Integration und Continuous Deployment mithilfe der Azure Stream Analytics Visual Studio-Tools einrichten.

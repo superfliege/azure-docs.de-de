@@ -1,13 +1,13 @@
 ---
 title: Filtern von Netzwerkdatenverkehr mit Azure-Netzwerk- und Anwendungssicherheitsgruppen (Vorschau) | Microsoft-Dokumentation
-description: "Erfahren Sie mehr über das Erstellen von Netzwerk- und Anwendungssicherheitsgruppen (Vorschau), um die Arten des Netzwerkdatenverkehrs von und zu virtuellen Computern zu beschränken."
+description: Erfahren Sie mehr über das Erstellen von Netzwerk- und Anwendungssicherheitsgruppen (Vorschau), um die Arten des Netzwerkdatenverkehrs von und zu virtuellen Computern zu beschränken.
 services: virtual-network
-documentationcenter: 
+documentationcenter: ''
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: jdial
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: ac9a1a8c59a26393d32f9c543e630c302b7ced9d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/31/2018
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>Filtern von Netzwerkdatenverkehr mit Netzwerken und Anwendungssicherheitsgruppen (Vorschau)
 

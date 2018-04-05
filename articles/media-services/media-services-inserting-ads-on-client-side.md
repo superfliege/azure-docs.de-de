@@ -1,11 +1,11 @@
 ---
-title: "Einfügen von Anzeigen auf Clientseite | Microsoft Docs"
-description: "In diesem Thema wird gezeigt, wie Anzeigen auf Clientseite eingefügt werden."
+title: Einfügen von Anzeigen auf Clientseite | Microsoft Docs
+description: In diesem Thema wird gezeigt, wie Anzeigen auf Clientseite eingefügt werden.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 65c9c747-128e-497e-afe0-3f92d2bf7972
 ms.service: media-services
 ms.workload: media
@@ -404,7 +404,7 @@ In diesem Beispiel wird "AdSchedulerPlugin" verwendet, um zu definieren, wann ei
     </mmppf:MediaPlayer>
 ```
 
-Weitere Informationen zu "AdSchedulerPlugin" finden Sie unter [Advertising in the Player Framework on Windows 8 and Windows Phone 8](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
+Weitere Informationen zu "AdSchedulerPlugin" finden Sie unter [Ankündigen im Player Framework für Windows 8 und Windows Phone 8](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
 ### <a name="adschedulingpage"></a>AdSchedulingPage
 In diesem Beispiel wird ebenfalls "AdSchedulerPlugin" verwendet. Geplant werden drei Werbeeinblendungen: eine Pre-Roll-, eine Mid-Roll- und eine Post-Roll-Werbeeinblendung. Der URI für die VAST-Datei für die einzelnen Werbeeinblendungen wird in einem <RemoteAdSource>-Element angegeben.

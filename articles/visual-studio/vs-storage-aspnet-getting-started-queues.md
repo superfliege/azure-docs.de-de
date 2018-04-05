@@ -1,11 +1,11 @@
 ---
 title: Erste Schritte mit Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET) | Microsoft-Dokumentation
-description: "Erfahren Sie mehr über die ersten Schritte mit Azure Queue Storage in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
+description: Erfahren Sie mehr über die ersten Schritte mit Azure Queue Storage in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben.
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 94ca3413-5497-433f-abbe-836f83a9de72
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/23/2016
-ms.author: kraigb
-ms.openlocfilehash: 4687e5dfce72583728068c176d86d100313badf6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 89baa741dcd916b70514f9703255b9e6d01c689b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -141,7 +141,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Warteschlange erstellen:
   
     ![Erstellen einer Warteschlange](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
-    Wie bereits erwähnt, gibt die **CloudQueue.CreateIfNotExists**-Methode nur dann **true** zurück, wenn die Warteschlange nicht vorhanden ist und erstellt wird. Aus diesem Grund gibt die Methode **false** zurück, wenn Sie die App ausführen, wenn die Warteschlange vorhanden ist. Um die App mehrere Male auszuführen, müssen Sie die Warteschlange vor dem erneuten Ausführen der App löschen. Das Löschen der Warteschlange kann mit der **CloudQueue.Delete**-Methode durchgeführt werden. Sie können die Warteschlange auch über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) oder den [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) löschen.  
+    Wie bereits erwähnt, gibt die **CloudQueue.CreateIfNotExists**-Methode nur dann **true** zurück, wenn die Warteschlange nicht vorhanden ist und erstellt wird. Aus diesem Grund gibt die Methode **false** zurück, wenn Sie die App ausführen, wenn die Warteschlange vorhanden ist. Um die App mehrere Male auszuführen, müssen Sie die Warteschlange vor dem erneuten Ausführen der App löschen. Das Löschen der Warteschlange kann mit der **CloudQueue.Delete**-Methode durchgeführt werden. Sie können die Warteschlange auch über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) oder den [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) löschen.  
 
 ## <a name="add-a-message-to-a-queue"></a>Hinzufügen von Nachrichten zu einer Warteschlange
 
@@ -577,5 +577,5 @@ Dieser Abschnitt zeigt das Löschen einer Warteschlange.
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in Azure finden Sie in den anderen Featureleitfäden.
 
-  * [Erste Schritte mit Azure-Blobspeicher und verbundenen Visual Studio-Diensten (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
+  * [Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
   * [Erste Schritte mit Tabellenspeicher und verbundenen Visual Studio-Diensten (ASP.NET)](vs-storage-aspnet-getting-started-tables.md)

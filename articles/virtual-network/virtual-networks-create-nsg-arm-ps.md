@@ -1,5 +1,5 @@
 ---
-title: "Erstellen von Netzwerksicherheitsgruppen – Azure PowerShell | Microsoft-Dokumentation"
+title: Erstellen von Netzwerksicherheitsgruppen – Azure PowerShell | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Netzwerksicherheitsgruppen mithilfe von PowerShell erstellen und bereitstellen.
 services: virtual-network
 documentationcenter: na
@@ -17,10 +17,10 @@ ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 26fe67b43d63c6685d8ae7644dd7df6931a4d2a5
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/31/2018
 ---
 # <a name="create-network-security-groups-using-powershell"></a>Erstellen von Netzwerksicherheitsgruppen mithilfe von PowerShell
 

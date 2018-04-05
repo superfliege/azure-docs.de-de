@@ -3,9 +3,9 @@ title: Publish-WebApplicationVM | Microsoft Docs
 description: Erfahren Sie, wie eine Webanwendung auf einem virtuellen Computer bereitgestellt wird. Dieses Skript erstellt die erforderlichen Ressourcen in Ihrem Azure-Abonnement, wenn sie noch nicht vorhanden sind.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: de4cec95-f73f-44d9-babd-9f47f2633cdb
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 2738fc1dff50a177a227ae2c7719bd9a192d82ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 49778b00dc9b1f6a8a11de5e3575599957b753fe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publish-WebApplicationWebSite (Windows PowerShell-Skript)
 Stellt eine Webanwendung auf einem virtuellen Computer bereit. Das Skript erstellt die erforderlichen Ressourcen in Ihrem Azure-Abonnement, wenn sie noch nicht vorhanden sind.
@@ -37,20 +37,20 @@ Publish-WebApplicationVM
 ### <a name="configuration"></a>Konfiguration
 Der Pfad zur JSON-Konfigurationsdatei, in der die Details der Bereitstellung beschrieben sind.
 
-| Aliase | (Keine) |
+| Aliase | none |
 | --- | --- |
-| Erforderlich |true |
+| Erforderlich? |true |
 | Position |benannt |
-| Standardwert |(Keine) |
+| Standardwert |none |
 | Pipelineeingabe akzeptieren? |false |
 | Platzhalterzeichen akzeptieren? |false |
 
 ### <a name="subscriptionname"></a>SubscriptionName
 Der Name des Azure-Abonnements, in dem Sie den virtuellen Computer erstellen möchten.
 
-| Aliase | (Keine) |
+| Aliase | none |
 | --- | --- |
-| Erforderlich |false |
+| Erforderlich? |false |
 | Position |benannt |
 | Standardwert |Verwendet das erste Abonnement in der Abonnementdatei. |
 | Pipelineeingabe akzeptieren? |false |
@@ -59,20 +59,20 @@ Der Name des Azure-Abonnements, in dem Sie den virtuellen Computer erstellen mö
 ### <a name="webdeploypackage"></a>WebDeployPackage
 Der Pfad zum Webbereitstellungspaket für die Veröffentlichung auf dem virtuellen Computer. Sie können dieses Paket in Visual Studio mithilfe des Assistenten "Web veröffentlichen" erstellen. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen eines Webbereitstellungspakets in Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx).
 
-| Aliase | (Keine) |
+| Aliase | none |
 | --- | --- |
-| Erforderlich |false |
+| Erforderlich? |false |
 | Position |benannt |
-| Standardwert |(Keine) |
+| Standardwert |none |
 | Pipelineeingabe akzeptieren? |false |
 | Platzhalterzeichen akzeptieren? |false |
 
 ### <a name="allowuntrusted"></a>AllowUntrusted
 Bei „true“ können Zertifikate verwendet werden, die nicht von einer vertrauenswürdigen Zertifizierungsstelle signiert sind.
 
-| Aliase | (Keine) |
+| Aliase | none |
 | --- | --- |
-| Erforderlich |false |
+| Erforderlich? |false |
 | Position |benannt |
 | Standardwert |false |
 | Pipelineeingabe akzeptieren? |false |
@@ -81,37 +81,37 @@ Bei „true“ können Zertifikate verwendet werden, die nicht von einer vertrau
 ### <a name="vmpassword"></a>VMPassword
 Die Anmeldeinformationen für das Konto des virtuellen Computers. Beispiel: -VMPassword @{Name = "admin"; Password = "password"}
 
-| Aliase | (Keine) |
+| Aliase | none |
 | --- | --- |
-| Erforderlich |false |
+| Erforderlich? |false |
 | Position |benannt |
-| Standardwert |(Keine) |
+| Standardwert |none |
 | Pipelineeingabe akzeptieren? |false |
 | Platzhalterzeichen akzeptieren? |false |
 
 ### <a name="databaseserverpassword"></a>DatabaseServerPassword
 Die Anmeldeinformationen für die SQL-Datenbank in Azure. Beispiel: -DatabaseServerPassword @{Name = "admin"; Password = "password"}
 
-| Aliase | (Keine) |
+| Aliase | none |
 | --- | --- |
-| Erforderlich |false |
+| Erforderlich? |false |
 | Position |benannt |
-| Standardwert |(Keine) |
+| Standardwert |none |
 | Pipelineeingabe akzeptieren? |false |
 | Platzhalterzeichen akzeptieren? |false |
 
 ### <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
 Falls "true", werden Nachrichten vom Skript in den Ausgabedatenstrom ausgegeben.
 
-| Aliase | (Keine) |
+| Aliase | none |
 | --- | --- |
-| Erforderlich |false |
+| Erforderlich? |false |
 | Position |benannt |
 | Standardwert |false |
 | Pipelineeingabe akzeptieren? |false |
 | Platzhalterzeichen akzeptieren? |false |
 
-## <a name="remarks"></a>Hinweise
+## <a name="remarks"></a>Anmerkungen
 Eine ausführliche Erläuterung der Verwendung des Skripts zum Erstellen von Entwicklungs- und Testumgebungen finden Sie unter [Verwenden von Windows PowerShell-Skripts zum Veröffentlichen in Entwicklungs- und Testumgebungen](vs-azure-tools-publishing-using-powershell-scripts.md).
 
 In der JSON-Konfigurationsdatei sind die Details angegeben, was bereitgestellt werden muss. Dazu zählen die Informationen, die Sie beim Erstellen des Projekts angegeben haben, z. B. der Name, die Affinitätsgruppe, das VHD-Image und die Größe des virtuellen Computers. Dazu zählen außerdem die Endpunkte auf dem virtuellen Computer, die Datenbanken, die bereitgestellt werden sollen, und Webbereitstellungsparameter. Der folgende Code zeigt ein Beispiel einer JSON-Konfigurationsdatei:

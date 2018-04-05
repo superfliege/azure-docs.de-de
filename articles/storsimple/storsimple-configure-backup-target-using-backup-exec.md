@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
 ms.openlocfilehash: a28b46e10bbdd5331cc665fad3f80523b3aa8a58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple als Sicherungsziel mit Backup Exec
 
@@ -70,7 +70,7 @@ StorSimple nutzt ein automatisches Tiering zwischen dem lokalen Gerät, das mit 
 StorSimple bietet folgende Vorteile:
 
 -   Eindeutige Algorithmen für Deduplizierung und Komprimierung, die dank Cloud ein nie dagewesenes Deduplizierungslevel erreichen
--   Hohe Verfügbarkeit
+-   Hochverfügbarkeit
 -   Georeplikation durch Nutzen der Azure-Georeplikation
 -   Azure-Integration
 -   Datenverschlüsselung in der Cloud
@@ -100,7 +100,7 @@ Die folgenden Tabellen enthalten Informationen zu verschiedenen Gerätemodellen 
 | Sicherungsszenario  | Lokale Speicherkapazität  | Cloudspeicherkapazität  |
 |---|---|---|
 | Primäre Sicherung  | Aktuelle Sicherungen im lokalen Speicher für eine schnelle Wiederherstellung zum Erfüllen der RPO-Vorgabe (Recovery Point Objective) | Sicherungsverlauf (RPO) passt in Cloudkapazität |
-| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | –  |
+| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | N/V  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple als primäres Sicherungsziel
 
@@ -272,7 +272,7 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 
     ![Backup Exec-Verwaltungskonsole, Seite zum Auswählen des Speichers](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  Geben Sie einen aussagekräftigen Namen wie z.B. **Samstag, vollständig** und eine Beschreibung ein. Wählen Sie **Weiter**.
+3.  Geben Sie einen aussagekräftigen Namen wie z.B. **Samstag, vollständig** und eine Beschreibung ein. Klicken Sie auf **Weiter**.
 
     ![Backup Exec-Verwaltungskonsole, Seite zur Eingabe von Name und Beschreibung](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
@@ -435,7 +435,7 @@ Der folgende Abschnitt zeigt, wie Sie ein kurzes Skript schreiben, um StorSimple
 
 ![Diagramm zum Sicherungslebenszyklus](./media/storsimple-configure-backup-target-using-backup-exec/backuplifecycle.png)
 
-### <a name="requirements"></a>Anforderungen
+### <a name="requirements"></a>Requirements (Anforderungen)
 
 -   Der Server, auf dem das Skript ausgeführt wird, muss auf Azure-Cloudressourcen zugreifen können.
 -   Das Benutzerkonto muss über die notwendigen Berechtigungen verfügen.
@@ -468,7 +468,7 @@ Wiederherstellungen aus einem StorSimple-Gerät funktionieren ähnlich wie Wiede
 
 Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folgenden Tabelle sind häufige Notfallwiederherstellungsszenarien aufgeführt.
 
-| Szenario | Auswirkung | Wiederherstellung | Hinweise |
+| Szenario | Auswirkung | Wiederherstellung | Notizen |
 |---|---|---|---|
 | Ausfall eines StorSimple-Geräts | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Ersetzen Sie das ausgefallene Gerät, und führen Sie die [Schritte für StorSimple-Failover und -Notfallwiederherstellung](storsimple-device-failover-disaster-recovery.md) durch. | Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitssätze mit Daten aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. Dieses erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Dies kann ein sehr zeitaufwendiger Prozess sein. |
 | Ausfall des Backup Exec-Servers | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Erstellen Sie den Sicherungsserver neu, und führen Sie eine Datenbankwiederherstellung durch, wie unter [How to do a manual Backup and Restore of Backup Exec (BEDB) database](http://www.veritas.com/docs/000041083) (Manuelles Sichern und Wiederherstellen der Backup Exec-Datenbank [BEDB]) beschrieben. | Sie können den Backup Exec-Server am Notfallwiederherstellungsstandort neu erstellen oder wiederherstellen. Stellen Sie die Datenbank auf den jüngsten Zeitpunkt wieder her. Wenn die wiederhergestellte Backup Exec-Datenbank nicht mit Ihren jüngsten Sicherungsaufträgen synchron ist, ist eine Indizierung und Katalogisierung erforderlich. Das erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Damit wird diese Aufgabe noch zeitaufwendiger. |

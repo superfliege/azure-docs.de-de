@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste
 Ab Version 2013-08-15 unterstützen die Azure Storage-Dienste Cross-Origin Resource Sharing (CORS) für die Blob-, Tabellen-, Warteschlangen- und Dateidienste. CORS ist eine HTTP-Funktion, die einer Webanwendung in einer Domäne den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Webbrowser implementieren eine Sicherheitseinschränkung, die als [Same-Origin-Richtlinie](http://www.w3.org/Security/wiki/Same_Origin_Policy) (Richtlinie desselben Ursprungs) bezeichnet wird und verhindert, dass eine Webseite APIs in einer anderen Domäne aufruft. CORS bietet eine sichere Methode, einer Domäne (der Ursprungsdomäne) das Aufrufen von APIs in einer anderen Domäne zu ermöglichen. Informationen zu CORS finden Sie in der [CORS-Spezifikation](http://www.w3.org/TR/cors/).
@@ -86,7 +86,7 @@ Für CORS-Regeln gelten die folgenden Einschränkungen:
 * Die Länge eines zulässigen Headers oder Ursprungs bzw. eines verfügbar gemachten Headers sollte maximal 256 Zeichen betragen.
 * Zulässige und verfügbar gemachte Header können in folgender Form vorkommen:
   * Literale Header, bei denen der genaue Headername angegeben ist, z.B. **x-ms-meta-processed**. In der Anforderung können maximal 64 literale Header angegeben werden.
-  * Header mit Präfix, bei denen ein Präfix des Headers angegeben ist, z.B. **x-ms-meta-data***. Wird auf diese Weise ein Präfix angegeben, sind alle Header zulässig bzw. werden alle Header verfügbar gemacht, die mit dem angegebenen Präfix beginnen. In der Anforderung können maximal zwei Header mit Präfix angegeben werden.
+  * Header mit Präfix, bei denen ein Präfix des Headers, z. B. angegeben ist ** X-ms-Meta-Data ***. Wird auf diese Weise ein Präfix angegeben, sind alle Header zulässig bzw. werden alle Header verfügbar gemacht, die mit dem angegebenen Präfix beginnen. In der Anforderung können maximal zwei Header mit Präfix angegeben werden.
 * Die Methoden (oder HTTP-Verben), die im **AllowedMethods** -Element angegeben sind, müssen den Methoden entsprechen, die von Azure Storage-Dienst-APIs unterstützt werden. Unterstützte Methoden sind DELETE, GET, HEAD, MERGE, POST, OPTIONS und PUT.
 
 ## <a name="understanding-cors-rule-evaluation-logic"></a>Grundlagen zur Auswertungslogik für CORS-Regeln
@@ -131,7 +131,7 @@ Im folgenden Beispiel wird ein partieller Anforderungstext für einen Vorgang an
 
 Betrachten Sie als Nächstes die folgenden CORS-Anforderungen:
 
-| Request |  |  | Antwort |  |
+| Anforderung |  |  | response |  |
 | --- | --- | --- | --- | --- |
 | **Methode** |**Ursprung** |**Anforderungsheader** |**Regelübereinstimmung** |**Ergebnis** |
 | **PUT** |http://www.contoso.com |x-ms-blob-content-type |Erste Regel |Erfolgreich |
@@ -165,16 +165,16 @@ Bei Anforderungen, die andere Methoden als GET/HEAD verwenden, wird der Vary-Hea
 
 Der folgenden Tabelle können Sie entnehmen, wie Azure Storage in den oben beschriebenen Fällen auf GET-/HEAD-Anforderungen antwortet:
 
-| Request | Kontoeinstellung und Ergebnis der Regelauswertung |  |  | Antwort |  |  |
+| Anforderung | Kontoeinstellung und Ergebnis der Regelauswertung |  |  | response |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Origin-Header für Anforderung vorhanden** |**CORS-Regel(n) für den Dienst angegeben** |**Abgleichsregel vorhanden, die alle Ursprungsdomänen zulässt (*)** |**Abgleichsregel für genaue Übereinstimmung mit Ursprungsdomäne vorhanden** |**Antwort enthält Vary-Header, der auf "Origin" festgelegt ist** |**Antwort enthält „Access-Control-Allowed-Origin“: "*"** |**Antwort enthält Access-Control-Exposed-Header** |
-| Nein |Nein |Nein |Nein |Nein |Nein |Nein |
-| Nein |Ja |Nein |Nein |Ja |Nein |Nein |
-| Nein |Ja |Ja |Nein |Nein |Ja |Ja |
-| Ja |Nein |Nein |Nein |Nein |Nein |Nein |
+| **Origin-Header für Anforderung vorhanden** |**CORS-Regel(n) für den Dienst angegeben** |**Abgleichsregel vorhanden, die alle origins(*) ermöglicht.** |**Abgleichsregel für genaue Übereinstimmung mit Ursprungsdomäne vorhanden** |**Antwort enthält Vary-Header, der auf "Origin" festgelegt ist** |**Antwort enthält Access-Control-Allowed-Origin: "*"** |**Antwort enthält Access-Control-Exposed-Header** |
+| Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |
+| Nein  |Ja |Nein  |Nein  |Ja |Nein  |Nein  |
+| Nein  |Ja |Ja |Nein  |Nein  |Ja |Ja |
+| Ja |Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |
 | Ja |Ja |Nein |Ja |Ja |Nein |Ja |
-| Ja |Ja |Nein |Nein |Ja |Nein |Nein |
-| Ja |Ja |Ja |Nein |Nein |Ja |Ja |
+| Ja |Ja |Nein  |Nein  |Ja |Nein  |Nein  |
+| Ja |Ja |Ja |Nein  |Nein  |Ja |Ja |
 
 ## <a name="billing-for-cors-requests"></a>Abrechnung von CORS-Anforderungen
 Erfolgreiche Preflightanforderungen werden in Rechnung gestellt, wenn Sie CORS für einen der Speicherdienste in Ihrem Konto aktiviert haben (durch Aufrufen von [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx), [Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx) oder [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)). Um die Gebühren zu minimieren, sollten Sie das **MaxAgeInSeconds** -Element in den CORS-Regeln auf einen hohen Wert festlegen, sodass die Anforderung vom Benutzer-Agent zwischengespeichert wird.

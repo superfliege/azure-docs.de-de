@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: a92d2ed1686765a54812ff82066bc30c1d48848d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c0ba9934afef6cb4d546e315c271cc19b6d3fa02
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
 
@@ -138,7 +138,7 @@ Die von der Abfrage zurückgegebenen Schlüsselantwortheader umfassen Folgendes:
 | `x-ms-documentdb-query-metrics` | Die Abfragestatistik für die Ausführung. Dies ist eine durch Trennzeichen getrennte Zeichenfolge, die Statistiken zum Zeitaufwand in den verschiedenen Phasen der Abfrageausführung enthält. Dieser Wert wird zurückgegeben, wenn `x-ms-documentdb-populatequerymetrics` auf `True` festgelegt ist. | 
 | `x-ms-request-charge` | Die Anzahl der von der Abfrage genutzten [Anforderungseinheiten](request-units.md). | 
 
-Weitere Informationen über die REST-API-Anforderungsheader und -Optionen finden Sie unter [Abfragen von Ressourcen mithilfe der REST-API](https://docs.microsoft.com/rest/api/documentdb/querying-documentdb-resources-using-the-rest-api).
+Weitere Informationen über die REST-API-Anforderungsheader und -Optionen finden Sie unter [Abfragen von Ressourcen mithilfe der REST-API](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
 
 ## <a name="best-practices-for-query-performance"></a>Bewährte Methoden für die Abfrageleistung
 Im Folgenden werden die gängigsten Faktoren vorgestellt, die sich auf die Abfrageleistung von Azure Cosmos DB auswirken. Die einzelnen Themen in diesem Artikel werden im Detail erläutert.

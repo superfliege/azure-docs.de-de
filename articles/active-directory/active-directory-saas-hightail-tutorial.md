@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
 ms.openlocfilehash: 2333a56cd9369cb66c4944304472462d2f2f7511
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Tutorial: Azure Active Directory-Integration in Hightail
 
@@ -47,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Hightail aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -63,11 +63,11 @@ Zum Konfigurieren der Integration von Hightail in Azure AD müssen Sie Hightail 
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie im Suchfeld als Suchbegriff **Hightail**ein.
 
@@ -86,10 +86,10 @@ Weisen Sie in Hightail den Wert für **Benutzername** in Azure AD als Wert für 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Hightail müssen Sie die folgenden Schritte ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines Hightail-Testbenutzers](#creating-a-hightail-test-user)**, um ein Pendant von Britta Simon in Hightail zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -100,15 +100,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Hightail** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_samlbase.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Hightail** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url.png)
 
      Geben Sie im Textfeld **Antwort-URL** folgende URL ein: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
 
@@ -117,7 +117,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Führen Sie im Abschnitt **Domäne und URLs für Hightail** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url1.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url1.png)
 
     a. Klicken Sie auf **Erweiterte URL-Einstellungen anzeigen**.
 
@@ -125,26 +125,26 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_certificate.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_certificate.png) 
 
 5. Die Hightail-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute auf der Registerkarte **Attribut** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_attribute.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_attribute.png) 
 
 6. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
     | Attributname | Attributwert |
     | ------------------- | -------------------- |
-    | Vorname | user.givenname |
+    | FirstName | user.givenname |
     | Nachname | user.surname |
     | E-Mail | user.mail |    
     | UserIdentity | user.mail |
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_officespace_04.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_officespace_04.png)
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_officespace_05.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_officespace_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -156,11 +156,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_general_400.png)
 
 8. Klicken Sie im Abschnitt **Hightail-Konfiguration** auf **Hightail konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_configure.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_configure.png) 
 
     >[!NOTE] 
     >Bevor Sie das einmalige Anmelden für die Hightail-App konfigurieren, lassen Sie Ihre E-Mail-Domäne über das Hightail-Team zur Whitelist hinzufügen, damit alle Benutzer, die diese Domäne verwenden, das einmalige Anmelden nutzen können.
@@ -170,23 +170,23 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     a. Klicken Sie im Menü im oberen Bildschirmbereich auf die Registerkarte **Konto**, und wählen Sie **SAML konfigurieren** aus.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_001.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_001.png) 
 
     b. Aktivieren Sie das Kontrollkästchen **SAML-Authentifizierung aktivieren**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_002.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_002.png) 
 
     c. Öffnen Sie das Base64-codierte Zertifikat im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **SAML-Tokensignaturzertifikat** ein.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_003.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_003.png) 
 
     d. Fügen Sie in das Textfeld **SAML-Autorität (Identitätsanbieter)** den Wert der **SAML-Dienst-URL für einmalige Anmeldung** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_004.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_004.png)
 
     e. Wenn die Anwendung im **IDP-initiierten Modus** konfiguriert werden soll, wählen Sie **IdP-initiierte (Identitätsanbieter) Anmeldung** aus. Wenn der **SP-initiierte Modus** konfiguriert werden soll, wählen Sie **SP-initiierte (Dienstanbieter) Anmeldung** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_006.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_006.png)
 
     f. Kopieren Sie die SAML-Verbraucher-URL für Ihre Instanz, und fügen Sie sie im Azure-Portal in das Textfeld **Antwort-URL** im Abschnitt **Domäne und URLs für Hightail** ein.
     
@@ -225,7 +225,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="creating-a-hightail-test-user"></a>Erstellen eines Hightail-Testbenutzers
 
@@ -250,7 +250,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Hightail**aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_app.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -268,7 +268,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Hightail“ klicken, sollten Sie automatisch bei Ihrer Hightail-Anwendung angemeldet werden.
 

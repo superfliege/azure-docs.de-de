@@ -1,12 +1,12 @@
 ---
-title: "Hinzufügen von Dateneingaben zu Stream Analytics-Aufträgen | Microsoft Docs"
-description: "Erfahren Sie, wie Sie eine Datenquelle als Streamingdateneingabe aus Event Hubs oder als Verweisdaten aus Blobspeicher mit Ihrem Stream Analytics-Auftrag verknüpfen."
+title: Hinzufügen von Dateneingaben zu Stream Analytics-Aufträgen | Microsoft Docs
+description: Erfahren Sie, wie Sie eine Datenquelle als Streamingdateneingabe aus Event Hubs oder als Verweisdaten aus Blobspeicher mit Ihrem Stream Analytics-Auftrag verknüpfen.
 keywords: Dateneingabe, Streamingdaten
-documentationcenter: 
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: 
+author: jseb225
+manager: ryanw
+editor: ''
 ms.assetid: 9e59bd24-2a80-4ecb-b6b2-309a07c70bcd
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 7a4eb8642a0496e126b79724b4048bae7cc15a68
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: jeanb
+ms.openlocfilehash: 441cc2d1c6d2cdc6ce4bbd14306ec8ae71c38c55
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Hinzufügen einer Streamingdateneingabe oder von Verweisdaten zu einem Stream Analytics-Auftrag
 Erfahren Sie, wie Sie eine Datenquelle als Streamingdateneingabe aus Event Hubs oder als Verweisdaten aus dem Blobspeicher mit Ihrem Stream Analytics-Auftrag verknüpfen.
@@ -31,8 +31,8 @@ Dieser Artikel ist ein Schritt im [Stream Analytics-Lernpfad](/documentation/lea
 ## <a name="data-input-streaming-data-and-reference-data"></a>Dateneingabe: Streamen von Daten und Referenzdaten
 Es gibt zwei unterschiedliche Eingabetypen in Stream Analytics: Datenströme und Verweisdaten.
 
-* **Datenströme**: Stream Analytics-Aufträge müssen mindestens eine Datenstromeingabe enthalten, die vom Auftrag genutzt und umgewandelt werden soll. Azure-BLOB-Speicher und Azure Event Hubs werden als Datenstrom-Eingabequellen unterstützt. Azure Event Hubs werden verwendet, um Ereignisströme von verbundenen Geräten, Diensten und Anwendungen zu erfassen. Azure-Blobspeicher kann als eine Eingabequelle für das Erfassen von Massendaten als Strom verwendet werden.  
-* **Verweisdaten**: Stream Analytics unterstützt einen zweiten zusätzlichen Eingabetyp, der als „Verweisdaten“ bezeichnet wird.  Im Gegensatz zu Daten in Bewegung sind diese Daten statisch oder ändern sich nur langsam.  In der Regel werden Sie zum Durchführen von Suchen und Korrelationen mit Datenströmen verwendet, um einen umfangreicheren Datensatz zu erstellen.  Azure-BLOB-Speicher ist derzeit die einzige unterstützte Eingabequelle für Verweisdaten.  
+* **Datenströme**: Stream Analytics-Aufträge müssen mindestens eine Datenstromeingabe enthalten, die vom Auftrag genutzt und umgewandelt werden soll. Azure Blob Storage und Azure Event Hubs werden als Datenstrom-Eingabequellen unterstützt. Azure Event Hubs werden verwendet, um Ereignisströme von verbundenen Geräten, Diensten und Anwendungen zu erfassen. Azure Blob Storage kann als eine Eingabequelle für das Erfassen von Massendaten als Strom verwendet werden.  
+* **Verweisdaten**: Stream Analytics unterstützt einen zweiten zusätzlichen Eingabetyp, der als „Verweisdaten“ bezeichnet wird.  Im Gegensatz zu Daten in Bewegung sind diese Daten statisch oder ändern sich nur langsam.  In der Regel werden Sie zum Durchführen von Suchen und Korrelationen mit Datenströmen verwendet, um einen umfangreicheren Datensatz zu erstellen.  Azure Blob Storage ist derzeit die einzige unterstützte Eingabequelle für Verweisdaten.  
 
 So fügen Sie Ihrem Stream Analytics-Auftrag eine Eingabe hinzu:
 

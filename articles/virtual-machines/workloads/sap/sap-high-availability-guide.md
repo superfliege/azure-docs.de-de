@@ -1,5 +1,5 @@
 ---
-title: "Hohe Verfügbarkeit von Azure Virtual Machines für SAP NetWeaver | Microsoft-Dokumentation"
+title: "Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver | Microsoft-Dokumentation"
 description: "Handbuch zum Thema „Hohe Verfügbarkeit“ für SAP NetWeaver auf virtuellen Azure-Computern"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -18,12 +18,12 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d00db895ffcf9ba9a51e3df2dae5d33c0277dd6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Hohe Verfügbarkeit von Azure Virtual Machines für SAP NetWeaver
+# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -179,7 +179,7 @@ In diesen Artikeln werden SAP-Bereitstellungen in Azure behandelt:
 * [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide] (Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver)
 * [Azure Virtual Machines deployment for SAP NetWeaver][deployment-guide] (Azure Virtual Machines – Bereitstellung für SAP NetWeaver)
 * [Azure Virtual Machines DBMS deployment for SAP NetWeaver][dbms-guide] (Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver)
-* [Hohe Verfügbarkeit von Azure Virtual Machines für SAP NetWeaver (dieses Handbuch)][sap-ha-guide]
+* [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver (dieses Handbuch)][sap-ha-guide]
 
 > [!NOTE]
 > Sofern möglich, wird ein Link zum entsprechenden SAP-Installationshandbuch bereitgestellt (siehe [SAP-Installationshandbücher][sap-installation-guides]). Wenn Sie Informationen zu den Voraussetzungen und zum Installationsvorgang benötigen, sollten Sie die SAP NetWeaver-Installationshandbücher sorgfältig lesen. Dieser Artikel behandelt nur die spezifischen Aufgaben für SAP NetWeaver-basierte Systeme, die Sie mit Azure Virtual Machines verwenden können.
@@ -253,7 +253,7 @@ _**Abbildung 1:** Beispiel für eine Windows Server-Failoverclusterkonfiguration
 Abbildung 1 zeigt auch einen Cluster mit zwei Knoten und freigegebenem Speicher. In einem lokalen Cluster mit freigegebenem Speicher erkennen alle Knoten im Cluster den freigegebenen Speicher. Mithilfe eines Sperrmechanismus werden die Daten vor Beschädigung geschützt. Alle Knoten können erkennen, wenn ein anderer Knoten ausfällt. Wenn ein Knoten ausfällt, übernehmen die restlichen den Besitz der Speicherressourcen und stellen die Verfügbarkeit der Dienste sicher.
 
 > [!NOTE]
-> Sie benötigen bei einigen DBMS-Anwendungen wie SQL Server für eine hohe Verfügbarkeit keine freigegebenen Datenträger. SQL Server Always On führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
+> Sie benötigen bei einigen DBMS-Anwendungen wie SQL Server für Hochverfügbarkeit keine freigegebenen Datenträger. SQL Server Always On führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
 >
 >
 
@@ -289,7 +289,7 @@ Weitere Informationen zu [SIOS DataKeeper](http://us.sios.com/products/datakeepe
 _**Abbildung 3:** Windows Server-Failoverclusteringkonfiguration in Azure mit SIOS DataKeeper_
 
 > [!NOTE]
-> Sie benötigen bei einigen DBMS-Produkten wie SQL Server für eine hohe Verfügbarkeit keine freigegebenen Datenträger. SQL Server Always On führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
+> Sie benötigen bei einigen DBMS-Produkten wie SQL Server für Hochverfügbarkeit keine freigegebenen Datenträger. SQL Server Always On führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
 >
 >
 
@@ -300,7 +300,7 @@ Sie müssen den internen Load Balancer in der Ressourcengruppe bereitstellen, di
 Die Clients können über den virtuellen Hostnamen eine Verbindung herstellen. Der DNS-Server löst die IP-Adresse des Clusters auf. Der interne Load Balancer übernimmt die Weiterleitung an den aktiven Knoten des Clusters.
 
 ## <a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a> Hohe Verfügbarkeit von SAP NetWeaver in Azure Infrastructure-as-a-Service (IaaS)
-Um hohe Verfügbarkeit für SAP-Anwendungen zu erreichen, z.B. für SAP-Softwarekomponenten, müssen Sie die folgenden Komponenten schützen:
+Um Hochverfügbarkeit für SAP-Anwendungen zu erreichen, z.B. für SAP-Softwarekomponenten, müssen Sie die folgenden Komponenten schützen:
 
 * SAP-Anwendungsserverinstanz
 * SAP ASCS/SCS-Instanz
@@ -309,7 +309,7 @@ Um hohe Verfügbarkeit für SAP-Anwendungen zu erreichen, z.B. für SAP-Software
 Weitere Informationen zum Schützen von SAP-Komponenten in Szenarien mit hoher Verfügbarkeit finden Sie unter [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide-11] (Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver).
 
 ### <a name="93faa747-907e-440a-b00a-1ae0a89b1c0e"></a> Hohe Verfügbarkeit für SAP-Anwendungsserver
-Für die SAP-Anwendungsserver und -Dialoginstanzen ist meist keine spezielle hoch verfügbare Lösung erforderlich. Sie erreichen hohe Verfügbarkeit durch Redundanz und indem Sie mehrere Dialoginstanzen in verschiedenen Instanzen von virtuellen Azure-Computern konfigurieren. Es müssen mindestens zwei SAP-Anwendungsinstanzen auf zwei Instanzen von virtuellen Azure-Computern installiert sein.
+Für die SAP-Anwendungsserver und -Dialoginstanzen ist meist keine spezielle hoch verfügbare Lösung erforderlich. Sie erreichen Hochverfügbarkeit durch Redundanz und durch Konfiguration mehrerer Dialoginstanzen in verschiedenen Instanzen von virtuellen Azure-Computern. Es müssen mindestens zwei SAP-Anwendungsinstanzen auf zwei Instanzen von virtuellen Azure-Computern installiert sein.
 
 ![Abbildung 4: Hohe Verfügbarkeit für SAP-Anwendungsserver][sap-ha-guide-figure-2000]
 
@@ -739,10 +739,10 @@ Legen Sie die IP-Adresse des Lastenausgleichs **pr1-lb-dbms** auf die IP-Adresse
 
 Wenn Sie andere Nummern für die SAP ASCS- oder SCS-Instanzen verwenden möchten, müssen Sie die Namen und Werte der entsprechenden Ports in der Standardeinstellung ändern.
 
-1.  Wählen Sie im Azure-Portal **<*SID*>-lb-ascs load balancer** > **Lastenausgleichsregeln** aus.
+1.  Wählen Sie im Azure-Portal  **< *SID*> - lb - Ascs Lastenausgleichsmodul** > **Lastenausgleich Regeln laden**.
 2.  Ändern Sie für alle zur SAP ASCS- oder SCS-Instanz gehörenden Lastenausgleichsregeln die folgenden Werte:
 
-  * Name
+  * NAME
   * Port
   * Back-End-Port
 
@@ -1134,7 +1134,7 @@ Das Installieren von SAP mit einer ASCS/SCS-Instanz mit hoher Verfügbarkeit umf
 1.  Erstellen Sie im Windows-DNS-Manager einen DNS-Eintrag für den virtuellen Hostnamen der ASCS/SCS-Instanz.
 
   > [!IMPORTANT]
-  > Die IP-Adresse, die Sie dem virtuellen Hostnamen der ASCS/SCS-Instanz zuweisen, muss mit der IP-Adresse identisch sein, die Sie dem Azure Load Balancer zugeordnet haben (**<*SID*>-lb-ascs**).  
+  > Die IP-Adresse, die Sie in den virtuellen Hostnamen der ASCS/SCS-Instanz zuweisen, muss die IP-Adresse, die Azure-Lastenausgleich zugewiesen identisch sein (**<*SID*> - lb - Ascs**).  
   >
   >
 
@@ -1212,7 +1212,7 @@ So fügen Sie einen Testport hinzu
 
   Die Portnummer ist in Azure Resource Manager-Vorlagen für SAP definiert. Sie können die Portnummer in PowerShell zuweisen.
 
-  Führen Sie das folgende PowerShell-Skript aus, um einen neuen ProbePort-Wert für die Clusterressource **SAP <*SID*> IP** festzulegen. Aktualisieren Sie die PowerShell-Variablen für Ihre Umgebung. Nach dem Ausführen des Skripts werden Sie aufgefordert, die SAP-Clustergruppe neu zu starten, um die Änderungen zu aktivieren.
+  Festzulegende einen neuen ProbePort-Wert für die **SAP <*SID*> IP** Clusterressource, führen Sie das folgende PowerShell-Skript. Aktualisieren Sie die PowerShell-Variablen für Ihre Umgebung. Nach dem Ausführen des Skripts werden Sie aufgefordert, die SAP-Clustergruppe neu zu starten, um die Änderungen zu aktivieren.
 
   ```PowerShell
   $SAPSID = "PR1"      # SAP <SID>
@@ -1270,7 +1270,7 @@ So fügen Sie einen Testport hinzu
   }
   ```
 
-  Nachdem Sie die Clusterrolle **SAP <*SID*>** online geschaltet haben, überprüfen Sie, ob **ProbePort** auf den neuen Wert festgelegt wurde.
+  Nach dem Onlineschalten der **SAP <*SID* >**  cluster die Rolle "online", überprüfen Sie, ob **ProbePort** auf den neuen Wert festgelegt ist.
 
   ```PowerShell
   $SAPSID = "PR1"     # SAP <SID>

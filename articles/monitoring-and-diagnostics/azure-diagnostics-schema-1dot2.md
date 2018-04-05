@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
 ms.openlocfilehash: 1e9cc6d0950945df8c4fba74d8e1f6196be224f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Konfigurationsschema für die Azure-Diagnose 1.2
 > [!NOTE]
@@ -100,7 +100,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="publicconfig-element"></a>PublicConfig-Element  
  Hierbei handelt es sich um das Element der obersten Ebene der Diagnosekonfigurationsdatei. In der folgenden Tabelle werden die Elemente der Konfigurationsdatei beschrieben:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**WadCfg**|Erforderlich. Konfigurationseinstellungen für die Telemetriedaten, die gesammelt werden|  
 |**StorageAccount**|Der Name des Azure Storage-Kontos zum Speichern der Daten. Dieser kann auch als Parameter angegeben werden, wenn das Cmdlet „Set-AzureServiceDiagnosticsExtension“ ausgeführt wird.|  
@@ -109,21 +109,21 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="wadcfg-element"></a>WadCFG-Element  
 Definiert Konfigurationseinstellungen für die Telemetriedaten, die gesammelt werden. Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**DiagnosticMonitorConfiguration**|Erforderlich. Optionale Attribute sind:<br /><br /> -                     **overallQuotaInMB**: Der maximale lokale Speicherplatz, der von den verschiedenen Typen von Diagnosedaten genutzt werden kann, die von der Azure-Diagnose erfasst werden. Die Standardeinstellung lautet 5.120 MB.<br /><br /> -                     **useProxyServer**: Konfigurieren Sie die Azure-Diagnose, um die Proxyservereinstellungen den IE-Einstellungen entsprechend zu verwenden.|  
 |**CrashDumps**|Aktivieren Sie die Sammlung der Absturzabbilder. Optionale Attribute sind:<br /><br /> -                     **containerName**: Der Name des Blobcontainers in Ihrem Azure Storage-Konto, der zum Speichern der Absturzbilder verwendet wird<br /><br /> -                     **crashDumpType**: Konfiguriert die Azure-Diagnose für die Erfassung von kleinen oder vollständigen Absturzabbildern<br /><br /> -                     **directoryQuotaPercentage**: Konfiguriert den Prozentsatz von **overallQuotaInMB**, der für Absturzabbilder auf dem virtuellen Computer reserviert werden soll|  
-|**DiagnosticInfrastructureLogs**|Aktivieren Sie die Sammlung der Protokolle, die von der Azure-Diagnose generiert wurde. Die Protokolle der Diagnoseinfrastruktur sind hilfreich für die Problembehandlung des Diagnosesystems selbst. Optionale Attribute:<br /><br /> -                     **scheduledTransferLogLevelFilter**: Konfiguriert den minimalen Schweregrad der erfassten Protokolle.<br /><br /> -                     **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
-|**Directories**|Ermöglicht das Sammeln der Inhalte eines Verzeichnisses, der IIS-Zugriffsfehlerprotokolle und/oder der IIS-Protokolle. Optionales Attribut:<br /><br /> **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet) Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
+|**DiagnosticInfrastructureLogs**|Aktivieren Sie die Sammlung der Protokolle, die von der Azure-Diagnose generiert wurde. Die Protokolle der Diagnoseinfrastruktur sind hilfreich für die Problembehandlung des Diagnosesystems selbst. Optionale Attribute sind:<br /><br /> -                     **scheduledTransferLogLevelFilter**: Konfiguriert den minimalen Schweregrad der erfassten Protokolle.<br /><br /> -                     **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
+|**Directories**|Ermöglicht das Sammeln der Inhalte eines Verzeichnisses, der IIS-Zugriffsfehlerprotokolle und/oder der IIS-Protokolle. Optionales Attribut:<br /><br /> **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
 |**EtwProviders**|Konfiguriert die Erfassung der ETW-Ereignisse von EventSource und/oder der ETW-Manifest-basierten Anbieter|  
 |**Metriken**|Dieses Element ermöglicht Ihnen das Generieren einer Leistungsindikatortabelle, die für schnelle Abfragen optimiert ist. Jeder Leistungsindikator, der im **PerformanceCounters**-Element definiert ist, wird in der Metriktabelle zusätzlich zur Leistungsindikatortabelle gespeichert. Erforderliches Attribut:<br /><br /> **resourceId**: Dies ist die Ressourcen-ID des virtuellen Computers, auf dem Sie die Azure-Diagnose bereitstellen. Rufen Sie **resourceID** im [Azure-Portal](https://portal.azure.com) ab. Wählen Sie **Durchsuchen** -> **Ressourcengruppen** -> **<Name\>** aus. Klicken Sie auf die Kachel **Eigenschaften**, und kopieren Sie den Wert aus dem Feld **ID**.|  
-|**PerformanceCounters**|Ermöglicht das Sammeln von Leistungsindikatoren. Optionales Attribut:<br /><br /> **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet) Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
-|**WindowsEventLog**|Ermöglicht das Sammeln von Windows-Ereignisprotokollen. Optionales Attribut:<br /><br /> **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet) Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
+|**PerformanceCounters**|Ermöglicht das Sammeln von Leistungsindikatoren. Optionales Attribut:<br /><br /> **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
+|**WindowsEventLog**|Ermöglicht das Sammeln von Windows-Ereignisprotokollen. Optionales Attribut:<br /><br /> **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
 
 ## <a name="crashdumps-element"></a>CrashDumps-Element  
  Aktiviert die Sammlung der Absturzabbilder Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**CrashDumpConfiguration**|Erforderlich. Erforderliches Attribut:<br /><br /> **processName**: Der Name des Prozesses, für den die Azure-Diagnose ein Absturzabbild erfassen soll|  
 |**crashDumpType**|Konfiguriert die Azure-Diagnose für die Erfassung von kleinen oder vollständigen Absturzabbildern|  
@@ -132,7 +132,7 @@ Definiert Konfigurationseinstellungen für die Telemetriedaten, die gesammelt we
 ## <a name="directories-element"></a>Directories-Element  
  Ermöglicht das Sammeln der Inhalte eines Verzeichnisses, der IIS-Zugriffsfehlerprotokolle und/oder der IIS-Protokolle. Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**DataSources**|Eine Liste der zu überwachenden Verzeichnisse|  
 |**FailedRequestLogs**|Das Einbeziehen dieses Elements in die Konfiguration ermöglicht die Erfassung der Protokolle zu fehlgeschlagenen Anfragen an die IIS-Website oder -Anwendung. Zur Aktivierung müssen Sie auch die Verfolgungsoptionen in **Web.config** unter **system.WebServer** festlegen.|  
@@ -141,14 +141,14 @@ Definiert Konfigurationseinstellungen für die Telemetriedaten, die gesammelt we
 ## <a name="datasources-element"></a>DataSources-Element  
  Eine Liste der zu überwachenden Verzeichnisse Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**DirectoryConfiguration**|Erforderlich. Erforderliches Attribut:<br /><br /> **containerName**: Der Name des Blobcontainers in Ihrem Azure Storage-Konto, der zum Speichern der Protokolldateien verwendet wird|  
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration-Element  
  **DirectoryConfiguration** kann das Element **Absolute** oder **LocalResource** enthalten, aber nicht beide. Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**Absolute**|Der absolute Pfad zum Verzeichnis, das überwacht werden soll Die folgenden Attribute sind erforderlich:<br /><br /> -                     **Path**: Der absolute Pfad zum Verzeichnis, das überwacht werden soll<br /><br /> -                      **expandEnvironment**: Konfiguriert, ob die Umgebungsvariablen im Pfad erweitert werden.|  
 |**LocalResource**|Der Pfad in Relation zu einer lokalen Ressource, die überwacht werden soll. Erforderliche Attribute:<br /><br /> -                     **Name**: Die lokale Ressource, die das zu überwachende Verzeichnis enthält<br /><br /> -                     **relativePath**: Der Pfad in Relation zum Namen, der das zu überwachende Verzeichnis enthält|  
@@ -156,15 +156,15 @@ Definiert Konfigurationseinstellungen für die Telemetriedaten, die gesammelt we
 ## <a name="etwproviders-element"></a>EtwProviders-Element  
  Konfiguriert die Erfassung der ETW-Ereignisse von EventSource und/oder der ETW-Manifest-basierten Anbieter Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute:<br /><br /> -                     **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> -                     **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet) Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
-|**EtwManifestProviderConfiguration**|Erforderliches Attribut:<br /><br /> **provider**: Die GUID des Ereignisanbieters<br /><br /> Optionale Attribute:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> -                     **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet) Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
+|**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute sind:<br /><br /> -                     **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> -                     **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet) Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
+|**EtwManifestProviderConfiguration**|Erforderliches Attribut:<br /><br /> **provider**: Die GUID des Ereignisanbieters<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> -                     **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet) Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration-Element  
  Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**DefaultEvents**|Optionales Attribut:<br /><br /> **eventDestination**: Der Name der Tabelle zum Speichern der Ereignisse|  
 |**Event**|Erforderliches Attribut:<br /><br /> **id**: Die ID des Ereignisses<br /><br /> Optionales Attribut:<br /><br /> **eventDestination**: Der Name der Tabelle zum Speichern der Ereignisse|  
@@ -172,7 +172,7 @@ Definiert Konfigurationseinstellungen für die Telemetriedaten, die gesammelt we
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration-Element  
  Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**DefaultEvents**|Optionales Attribut:<br /><br /> **eventDestination**: Der Name der Tabelle zum Speichern der Ereignisse|  
 |**Event**|Erforderliches Attribut:<br /><br /> **id**: Die ID des Ereignisses<br /><br /> Optionales Attribut:<br /><br /> **eventDestination**: Der Name der Tabelle zum Speichern der Ereignisse|  
@@ -180,27 +180,27 @@ Definiert Konfigurationseinstellungen für die Telemetriedaten, die gesammelt we
 ## <a name="metrics-element"></a>Metrics-Element  
  Ermöglicht Ihnen das Generieren einer Leistungsindikatortabelle, die für schnelle Abfragen optimiert ist. Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**MetricAggregation**|Erforderliches Attribut:<br /><br /> **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet) Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters-Element  
  Ermöglicht das Sammeln von Leistungsindikatoren. Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**PerformanceCounterConfiguration**|Die folgenden Attribute sind erforderlich:<br /><br /> -                     **counterSpecifier**: Der Name des Leistungsindikators Beispiel: `\Processor(_Total)\% Processor Time`. Führen Sie zum Abrufen einer Liste der Leistungsindikatoren auf Ihrem Host den Befehl `typeperf` aus.<br /><br /> -                     **sampleRate**: Gibt an, wie oft Stichproben für den Indikator erstellt werden.<br /><br /> Optionales Attribut:<br /><br /> **unit**: Die Maßeinheit des Indikators|  
 
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration-Element  
  Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**Anmerkung**|Erforderliches Attribut:<br /><br /> **displayName**: Der Anzeigename für den Indikator<br /><br /> Optionales Attribut:<br /><br /> **locale**: Das Gebietsschema, das bei der Anzeige des Indikatornamens verwendet werden soll|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog-Element  
  Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
-|**DataSource**|Die Windows-Ereignisprotokolle, die erfasst werden sollen. Erforderliches Attribut:<br /><br /> **name**: Die XPath-Abfrage, die die zu erfassenden Windows-Ereignisse beschreibt. Beispiel:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Zum Erfassen aller Ereignisse geben Sie „*“ ein.|
+|**DataSource**|Die Windows-Ereignisprotokolle, die erfasst werden sollen. Erforderliches Attribut:<br /><br /> **name**: Die XPath-Abfrage, die die zu erfassenden Windows-Ereignisse beschreibt. Beispiel: <br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Zum Erfassen aller Ereignisse geben Sie „*“ ein.|

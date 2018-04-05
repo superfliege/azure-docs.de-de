@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
 ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 Es gibt verschiedene Tools in Microsoft Azure, um Daten den Sicherheits- und Konformitätsanforderungen Ihres Unternehmens entsprechend zu schützen. In diesem Artikel geht es um folgende Themen:
@@ -55,7 +55,7 @@ Wie bereits beschrieben, ist das Ziel der Verschlüsselung ruhender Daten die Ve
 
 ![Komponenten](./media/azure-security-encryption-atrest/azure-security-encryption-atrest-fig1.png)
 
-### <a name="azure-key-vault"></a>Azure-Schlüsseltresor
+### <a name="azure-key-vault"></a>Azure Key Vault
 
 Der Speicherort der Verschlüsselungsschlüssel und der Zugriffssteuerung dieser Schlüssel ist für das Modell der Verschlüsselung ruhender Daten wesentlich. Die Schlüssel müssen stark gesichert aber dennoch von angegebenen Benutzern verwaltbar sein. Darüber hinaus müssen spezifische Dienste darauf zugreifen können. Azure Key Vault ist die für Azure-Dienste empfohlene Schlüsselspeicherlösung. Es bietet eine dienstübergeifende Verwaltungserfahrung. Schlüssel werden in Schlüsseltresoren gespeichert und verwaltet. Der Zugriff auf diesen Schlüsseltresor kann Benutzern und Diensten gewährt werden. Azure Key Vault unterstützt das Erstellen von Schlüsseln durch Kunden und das Importieren von Kundenschlüsseln für den Gebrauch in von Kunden verwalteten Verschlüsselungsschlüsselszenarios.
 
@@ -105,7 +105,7 @@ Die in Azure unterstützten Verschlüsselungsmodelle können in zwei Hauptgruppe
 
 Als Clientverschlüsselungsmodell wird eine Verschlüsselung bezeichnet, die außerhalb des Ressourcenanbieters oder außerhalb von Azure von der Dienst- oder der aufrufenden Anwendung durchgeführt wird. Die Verschlüsselung kann von der Dienstanwendung in Azure durchgeführt werden oder von einer Anwendung, die im Rechenzentrum des Kunden ausgeführt wird. In beiden Fällen erhält der Azure-Ressourcenanbieter einen verschlüsselten Datenblob, ohne die Daten entschlüsseln oder auf die Verschlüsselungsschlüssel zugreifen zu können, wenn Sie dieses Verschlüsselungsmodell einsetzen. In diesem Modell erfolgt die Schlüsselverwaltung über den aufrufenden Dienst bzw. die aufrufende Anwendung und ist für den Azure-Dienst nicht transparent.
 
-![Client-](./media/azure-security-encryption-atrest/azure-security-encryption-atrest-fig2.png)
+![Client](./media/azure-security-encryption-atrest/azure-security-encryption-atrest-fig2.png)
 
 ### <a name="server-side-encryption-model"></a>Serverseitiges Verschlüsselungsmodell
 

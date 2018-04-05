@@ -1,11 +1,11 @@
 ---
-title: "Erstellen von Filterzeichenfolgen für den Tabellen-Designer | Microsoft Docs"
-description: "Erstellen von Filterzeichenfolgen für den Tabellen-Designer"
+title: Erstellen von Filterzeichenfolgen für den Tabellen-Designer | Microsoft Docs
+description: Erstellen von Filterzeichenfolgen für den Tabellen-Designer
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: a1a10ea1-687a-4ee1-a952-6b24c2fe1a22
 ms.service: storage
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: kraigb
-ms.openlocfilehash: 069224d84462b4955912ce1462a65298a5acc04a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 722052e351062efba85eb143b2ea7bd0136002a0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>Erstellen von Filterzeichenfolgen für den Tabellen-Designer
 ## <a name="overview"></a>Übersicht
@@ -29,7 +29,7 @@ Die WCF Data Services basieren auf dem [Open Data Protocol](http://go.microsoft.
 ## <a name="comparison-operators"></a>Vergleichsoperatoren
 Die folgenden logischen Operatoren werden für alle Eigenschaftentypen unterstützt:
 
-| Logischer Operator | Beschreibung | Filterzeichenfolge (Beispiel) |
+| Logischer Operator | BESCHREIBUNG | Filterzeichenfolge (Beispiel) |
 | --- | --- | --- |
 | eq |Gleich |Ort eq 'Redmond' |
 | gt |Größer als |Preis gt 20 |
@@ -37,7 +37,7 @@ Die folgenden logischen Operatoren werden für alle Eigenschaftentypen unterstü
 | lt |Kleiner als  |Preis lt 20 |
 | le |Kleiner oder gleich  |Preis le 100 |
 | ne |Ungleich |Ort ne 'London' |
-| und |und |Preis le 200 and Preis gt 3,5 |
+| and |und |Preis le 200 and Preis gt 3,5 |
 | oder |oder |Preis le 3,5 or Preis gt 200 |
 | not |not |not isAvailable |
 

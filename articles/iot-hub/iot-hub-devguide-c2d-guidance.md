@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub – C2D-Optionen (Cloud-zu-Gerät) | Microsoft Docs"
-description: "Entwicklerhandbuch – Leitfaden, der angibt, wann direkte Methoden, gewünschte Eigenschaften von Gerätezwillingen oder C2D-Nachrichten für C2D-Kommunikationen verwendet werden sollen."
+title: Azure IoT Hub – C2D-Optionen (Cloud-zu-Gerät) | Microsoft Docs
+description: Entwicklerhandbuch – Leitfaden, der angibt, wann direkte Methoden, gewünschte Eigenschaften von Gerätezwillingen oder C2D-Nachrichten für C2D-Kommunikationen verwendet werden sollen.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1ac90923-1edf-4134-bbd4-77fee9b68d24
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: dc8256022aca37823245ecb9a9326240f1c449c2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 144bd8e0a954e54cf17fb88105759d0e000454fb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Leitfaden zur C2D-Kommunikation
 IoT Hub bietet drei Optionen für Geräte-Apps, um Funktionen einer Back-End-App verfügbar zu machen:
@@ -26,6 +26,8 @@ IoT Hub bietet drei Optionen für Geräte-Apps, um Funktionen einer Back-End-App
 * [Direkte Methoden][lnk-methods] für Kommunikation, die eine sofortige Bestätigung des Ergebnisses erfordert. Direkte Methoden werden häufig für die interaktive Steuerung von Geräten verwendet, beispielsweise zum Einschalten eines Lüfters.
 * [Gewünschte Eigenschaften von Gerätezwillingen][lnk-twins] für Befehle mit langer Ausführungszeit, die das Gerät in einen bestimmten gewünschten Zustand versetzen sollen. Legen Sie das Telemetriesendeintervall z.B. auf 30 Minuten fest.
 * [Cloud-zu-Gerät-Nachrichten (Cloud-to-Device, C2D)][lnk-c2d] zum Senden unidirektionaler Benachrichtigungen an die Geräte-App
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Hier finden Sie einen detaillierten Vergleich verschiedener Optionen für die C2D-Kommunikation.
 

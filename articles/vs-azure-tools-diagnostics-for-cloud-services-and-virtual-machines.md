@@ -1,11 +1,11 @@
 ---
-title: "Einrichten der Diagnose für Azure Cloud Services und virtuelle Azure-Computer | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über das Einrichten der Diagnose für das Debuggen von Azure-Clouddiensten und virtuellen Azure-Computern (VMs) in Visual Studio."
+title: Einrichten der Diagnose für Azure Cloud Services und virtuelle Azure-Computer | Microsoft-Dokumentation
+description: Erfahren Sie mehr über das Einrichten der Diagnose für das Debuggen von Azure-Clouddiensten und virtuellen Azure-Computern (VMs) in Visual Studio.
 services: visual-studio-online
 documentationcenter: na
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: e70cd7b4-6298-43aa-adea-6fd618414c26
 ms.service: multiple
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: f00771d89749e7507d7f303f366fe63f537900ff
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 34c667b0a594682e4d099e7bff64bfdb336b850b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Einrichten der Diagnose für Azure Cloud Services und virtuelle Azure-Computer
 Wenn Sie Probleme bei einem Azure-Clouddienst oder virtuellen Azure-Computer beheben müssen, können Sie Visual Studio verwenden, um Azure-Diagnose leichter einzurichten. Die Diagnose erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und den virtuellen Computerinstanzen, auf denen der Clouddienst ausgeführt wird. Die Diagnosedaten werden in ein Speicherkonto Ihrer Wahl übertragen. Weitere Informationen zur Diagnoseprotokollierung in Azure finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](app-service/web-sites-enable-diagnostic-log.md).
@@ -216,7 +216,7 @@ Nachdem Sie die Diagnosedaten für einen Clouddienst oder einen virtuellen Compu
     Öffnen Sie im Cloud-Explorer oder Server-Explorer das Speicherkonto, das der Bereitstellung zugeordnet ist.
 3. Öffnen Sie die Diagnosetabellen im Tabellenviewer, und überprüfen Sie die erfassten Daten. Für IIS-Protokolle und benutzerdefinierte Protokolle können Sie einen Blobcontainer öffnen. Die folgende Tabelle listet die Tabellen oder Blobcontainer auf, die die Daten für die verschiedenen Protokolldateien enthalten. Zusätzlich zu den Daten für diese Protokolldatei enthalten die Tabelleneinträge **EventTickCount**, **DeploymentId**, **Role** und **RoleInstance**, mit denen Sie identifizieren können, welcher virtuelle Computer und welche Rolle die Daten generiert hat und wann. 
    
-   | Diagnosedaten | Beschreibung | Standort |
+   | Diagnosedaten | BESCHREIBUNG | Speicherort |
    | --- | --- | --- |
    | Anwendungsprotokolle |Protokolle, die Ihr Code durch den Aufruf von Methoden der **System.Diagnostics.Trace**-Klasse generiert. |WADLogsTable |
    | Ereignisprotokolle |Daten aus den Windows-Ereignisprotokollen auf den virtuellen Computern Windows speichert Informationen in diesen Protokollen, aber Anwendungen und Dienste verwenden diese ebenfalls, um Fehler zu melden oder Informationen zu protokollieren. |WADWindowsEventLogsTable |

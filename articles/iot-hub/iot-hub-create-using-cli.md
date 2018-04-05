@@ -1,12 +1,12 @@
 ---
 title: Erstellen eines IoT Hubs mit der Azure CLI (az.py) | Microsoft-Dokumentation
-description: "Erstellen eines Azure IoT Hubs mithilfe der plattformübergreifenden Azure CLI 2.0 (az.py)"
+description: Erstellen eines Azure IoT Hubs mithilfe der plattformübergreifenden Azure CLI 2.0 (az.py)
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: azurecli
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 161089159999a4a63a39b059e69a08b7a9297445
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: c89ecc31754d355d6469d54dcd45e1cc2ef106f0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli-20"></a>Erstellen eines IoT Hubs mit der Azure CLI 2.0
 
@@ -88,7 +88,6 @@ Verwenden Sie die Azure CLI zum Erstellen einer Ressourcengruppe, und fügen Sie
 
 > [!NOTE]
 > Mit dem vorherigen Befehl wird ein kostenpflichtiger IoT Hub im S1-Tarif erstellt. Weitere Informationen finden Sie unter [Azure IoT Hub – Preise][lnk-iot-pricing].
->
 >
 
 ## <a name="remove-an-iot-hub"></a>Entfernen eines IoT Hubs

@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
 ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Skalieren der lokalen Ausführung und Tests von U-SQL mit Azure Data Lake U-SQL SDK
 
@@ -68,7 +68,7 @@ Sie können einen relativen Pfad und einen lokalen absoluten Pfad in U-SQL-Skrip
 
 Bei der lokalen Ausführung des U-SQL-Skripts wird während der Kompilierung ein Arbeitsverzeichnis unter dem aktuellen Startverzeichnis erstellt. Zusätzlich zu den Ausgaben der Kompilierung werden auch die erforderlichen Runtime-Dateien für die lokale Ausführung als Schattenkopien in das Arbeitsverzeichnis aufgenommen. Der Stammordner des Arbeitsverzeichnisses heißt „ScopeWorkDir“. Folgende Dateien sind im Arbeitsverzeichnis enthalten:
 
-|Verzeichnis/Datei|Verzeichnis/Datei|Verzeichnis/Datei|Definition|Beschreibung|
+|Verzeichnis/Datei|Verzeichnis/Datei|Verzeichnis/Datei|Definition|BESCHREIBUNG|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Die Hashzeichenfolge der Runtime-Version|Schattenkopie der Runtime-Dateien, die für die lokale Ausführung benötigt werden|
 | |Script_66AE4909AA0ED06C| |Skriptname und Hashzeichenfolge des Skriptpfads|Ausgaben der Kompilierung und Protokollierung der Ausführungsschritte|
@@ -142,7 +142,7 @@ Der Befehl **run** wird verwendet, um das Skript zu kompilieren und dann die kom
 Im Folgenden sind optionale Argumente für **run** aufgeführt:
 
 
-|Argument|Standardwert|Beschreibung|
+|Argument|Standardwert|BESCHREIBUNG|
 |--------|-------------|-----------|
 |-CodeBehind|False|Das Skript verfügt über eine CS-CodeBehind-Datei|
 |-CppSDK| |CppSDK-Verzeichnis|
@@ -174,7 +174,7 @@ Der Befehl **compile** wird verwendet, um ein U-SQL-Skript in ausführbare Datei
 Im Folgenden sind optionale Argumente für **compile** aufgeführt:
 
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 |--------|-----------|
 | -CodeBehind [Standardwert 'False']|Das Skript verfügt über eine CS-CodeBehind-Datei|
 | -CppSDK [Standardwert '']|CppSDK-Verzeichnis|
@@ -212,7 +212,7 @@ Der Befehl **execute** wird zum Ausführen von kompilierten Ergebnissen verwende
 
 Im Folgenden sind optionale Argumente für **execute** aufgeführt:
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 |--------|-----------|
 |-DataRoot [Standardwert '']|Stammordner für die Ausführung von Metadaten. Der Standardwert ist die Umgebungsvariable **LOCALRUN_DATAROOT**.|
 |-MessageOut [Standardwert '']|Sichern von Meldungen der Konsole in einer Datei.|
@@ -337,39 +337,39 @@ Im folgenden finden Sie Beispielcode für den Test des U-SQL-Skripts. Für das T
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|-Parameter enthalten.|Typ|Beschreibung|
+|Parameter|Typ|BESCHREIBUNG|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|für ausgehende Nachrichten, für die Verwendung von „Console“ auf NULL festgelegt|
 
-**Eigenschaften**
+**Properties**
 
-|Eigenschaft|Typ|Beschreibung|
+|Eigenschaft|Typ|BESCHREIBUNG|
 |--------|----|-----------|
-|AlgebraPath|string|Der Pfad zur Algebradatei (die Algebradatei ist eines der Kompilierungsergebnisse)|
-|CodeBehindReferences|string|Wenn sich im Skript zusätzlicher Code hinter Verweisen befindet, geben Sie die Pfade mit „;“ getrennt an|
-|CppSdkDir|string|CppSDK-Verzeichnis|
-|CurrentDir|string|Aktuelles Verzeichnis|
-|DataRoot|string|Stammpfad der Daten|
-|DebuggerMailPath|string|Der Pfad zum Debugger-Mailslot|
+|AlgebraPath|Zeichenfolge|Der Pfad zur Algebradatei (die Algebradatei ist eines der Kompilierungsergebnisse)|
+|CodeBehindReferences|Zeichenfolge|Wenn sich im Skript zusätzlicher Code hinter Verweisen befindet, geben Sie die Pfade mit „;“ getrennt an|
+|CppSdkDir|Zeichenfolge|CppSDK-Verzeichnis|
+|CurrentDir|Zeichenfolge|Aktuelles Verzeichnis|
+|DataRoot|Zeichenfolge|Stammpfad der Daten|
+|DebuggerMailPath|Zeichenfolge|Der Pfad zum Debugger-Mailslot|
 |GenerateUdoRedirect|bool|Gibt an, ob eine Konfiguration zum Überschreiben der Umleitung beim Laden von Assemblys generiert werden soll|
 |HasCodeBehind|bool|Wenn sich hinter dem Skript Code befindet|
-|InputDir|string|Verzeichnis für Eingabedaten|
-|MessagePath|string|Dateipfad zum Sichern der Nachrichten|
-|OutputDir|string|Verzeichnis für Ausgabedaten|
+|InputDir|Zeichenfolge|Verzeichnis für Eingabedaten|
+|MessagePath|Zeichenfolge|Dateipfad zum Sichern der Nachrichten|
+|OutputDir|Zeichenfolge|Verzeichnis für Ausgabedaten|
 |Parallelität|int|Parallelität zur Ausführung der Algebra|
 |ParentPid|int|PID des übergeordneten Elements auf dem der Dienst das Beenden, Einstellen auf 0 oder Negativ zum Ignorieren überwacht|
-|ResultPath|string|Dateipfad zum Sichern der Ergebnisse|
-|RuntimeDir|string|Runtime-Verzeichnis|
-|scriptPath|string|Hier finden Sie das Skript|
+|ResultPath|Zeichenfolge|Dateipfad zum Sichern der Ergebnisse|
+|RuntimeDir|Zeichenfolge|Runtime-Verzeichnis|
+|scriptPath|Zeichenfolge|Hier finden Sie das Skript|
 |shallow|bool|Flache Kompilierung oder nicht|
-|TempDir|string|Temp-Verzeichnis|
-|UseDataBase|string|Geben Sie die Datenbank an, die für die temporäre Assemblyregistrierung von CodeBehind verwendet wird, standardmäßig „master“|
-|WorkDir|string|Bevorzugtes Arbeitsverzeichnis|
+|TempDir|Zeichenfolge|Temp-Verzeichnis|
+|UseDataBase|Zeichenfolge|Geben Sie die Datenbank an, die für die temporäre Assemblyregistrierung von CodeBehind verwendet wird, standardmäßig „master“|
+|WorkDir|Zeichenfolge|Bevorzugtes Arbeitsverzeichnis|
 
 
 **Methode**
 
-|Methode|Beschreibung|return|-Parameter enthalten.|
+|Methode|BESCHREIBUNG|return|Parameter|
 |------|-----------|------|---------|
 |public bool DoCompile()|Kompilieren des U-SQL-Skripts|Im Erfolgsfall TRUE| |
 |public bool DoExec()|Ausführen des kompilierten Ergebnisses|Im Erfolgsfall TRUE| |

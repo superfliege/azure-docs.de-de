@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: b6aacc536e589a2036aba5a0784a4ba71641a59e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0-Metadatenunterstützung in Azure Functions (Vorschauversion)
 Metadatenunterstützung für OpenAPI 2.0 (ehemals Swagger) in Azure Functions ist eine Vorschaufunktion, mit der Sie eine OpenAPI 2.0-Definition in einer Funktions-App schreiben können. Diese Datei kann dann mit der Funktions-App gehostet werden.
@@ -42,7 +42,7 @@ Schrittweise Anweisungen finden Sie im [Erste-Schritte-Tutorial](./functions-api
 
 ### <a name="templates"></a>Verfügbare Vorlagen
 
-|Name| Beschreibung |
+|NAME| BESCHREIBUNG |
 |:-----|:-----|
 |Generated Definition|Eine OpenAPI-Definition mit sämtlichen Informationen, die aus den vorhandenen Metadaten den Funktion abgeleitet werden können.|
 

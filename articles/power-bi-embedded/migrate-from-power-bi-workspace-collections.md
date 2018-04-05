@@ -15,10 +15,10 @@ ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
 ms.openlocfilehash: 069f31c8213bd0d8586f7ca50e543acfdad8a2b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>Migrieren von Power BI-Arbeitsbereichssammlungsinhalten zu Power BI Embedded
 
@@ -193,4 +193,4 @@ In den Power BI-Arbeitsbereichssammlungen sind einige Löschvorgänge erforderli
 
 Herzlichen Glückwunsch. Ihre Anwendung wurde nun zu Power BI Embedded migriert. Informationen zum Einbetten von Power BI-Dashboards, -Berichten und -DataSets finden Sie unter [Einbetten von Power BI-Dashboards, -Berichten und -Kacheln](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/).
 
-Weitere Fragen? [Fragen Sie die Power BI-Community](http://community.powerbi.com/).
+Weitere Fragen? [Fragen Sie die Power BI-Community](http://community.powerbi.com/)

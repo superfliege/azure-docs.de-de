@@ -1,6 +1,6 @@
 ---
 title: Erweiterte Autoskalierung mit Azure Virtual Machines | Microsoft-Dokumentation
-description: Hier werden Resource Manager und VM-Skalierungsgruppen mit mehreren Regeln und Profilen verwendet, die mit Skalierungsaktionen E-Mails senden und Webhook-URLs aufrufen.
+description: Hier werden Resource Manager und VM Scale Sets mit mehreren Regeln und Profilen verwendet, die mit Skalierungsaktionen E-Mails senden und Webhook-URLs aufrufen.
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 02/22/2016
 ms.author: ancav
 ms.openlocfilehash: 80955535c8d863cd3d8d1b77e2ab8bc016b6d9f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen
+# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets
 Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
 
 > [!NOTE]
-> Zwar werden in dieser exemplarischen Vorgehensweise die Schritte für VM-Skalierungsgruppen erläutert, die Informationen gelten aber auch für die automatische Skalierung von [Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [App Service-Web-Apps](https://azure.microsoft.com/services/app-service/web/).
+> Zwar werden in dieser exemplarischen Vorgehensweise die Schritte für VM Scale Sets erläutert, die Informationen gelten aber auch für die automatische Skalierung von [Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [App Service-Web-Apps](https://azure.microsoft.com/services/app-service/web/).
 > Wenn Sie eine einfache Einstellung für horizontales Herunterskalieren/Hochskalieren für eine VM-Skalierungsgruppe konfigurieren möchten, die auf einer einfachen Leistungsmetrik wie CPU basiert, finden Sie in den Dokumenten zu [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) und [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) weitere Informationen.
 >
 >
@@ -41,7 +41,7 @@ In dieser exemplarischen Vorgehensweise verwenden wir den [Azure-Ressourcen-Expl
 
 3. Sie können nun basierend auf dem Zeitplan oder bestimmten Anforderungen weitere Profile und Regeln hinzufügen. Wir erstellen eine Einstellung für die automatische Skalierung mit drei Profilen. Weitere Informationen zu Profilen und Regeln bei der automatischen Skalierung finden Sie unter [Empfohlene Methoden für die automatische Skalierung](insights-autoscale-best-practices.md).  
 
-    | Profile und Regeln | Beschreibung |
+    | Profile und Regeln | BESCHREIBUNG |
     |--- | --- |
     | **Profil** |**Basierend auf Leistung/Metrik** |
     | Regel |Anzahl von Service Bus-Warteschlangennachrichten > x |
@@ -59,7 +59,7 @@ In dieser exemplarischen Vorgehensweise verwenden wir den [Azure-Ressourcen-Expl
     * **Sondertermine:** Ich habe ein Profil vom Typ „Tag der Produkteinführung“ hinzugefügt. Ich plane für bestimmte Tage im Voraus, damit meine Anwendung die Last bewältigen kann, die durch Marketingankündigungen und die Einführung neuer Produkte verursacht wird.*
     * *Die letzten zwei Profile können auch andere auf Leistungsmetriken basierende Regeln umfassen. In diesem Fall werden jedoch stattdessen die auf Leistungsmetriken basierenden Standardregeln verwendet. Regeln sind für sich wiederholende und datumsbasierte Profile optional.*
 
-    Die Profil- und Regelpriorisierung des Moduls für die automatische Skalierung wird auch im Artikel [Empfohlene Methoden für die automatische Skalierung](insights-autoscale-best-practices.md) erläutert.
+    Die Profil- und Regelpriorisierung der Engine für die automatische Skalierung wird auch im Artikel [Empfohlene Methoden für die automatische Skalierung](insights-autoscale-best-practices.md) erläutert.
     Eine Liste mit gängigen Metriken für die automatische Skalierung finden Sie unter [Allgemeine Metriken für die automatische Skalierung](insights-autoscale-common-metrics.md).
 
 5. Stellen Sie sicher, dass Sie sich im Ressourcen-Explorer im Modus **Lesen/Schreiben** befinden.

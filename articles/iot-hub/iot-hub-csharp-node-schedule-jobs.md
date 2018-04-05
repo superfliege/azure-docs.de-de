@@ -1,11 +1,11 @@
 ---
-title: "Planen von Aufträgen mit Azure IoT Hub (.NET/Node) | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie einen Azure IoT Hub-Auftrag planen, um eine direkte Methode auf mehreren Geräten aufzurufen. Sie verwenden das Azure IoT-Geräte-SDK für Node.js, um die simulierten Geräte-Apps zu implementieren, und das Azure IoT-Dienst-SDK für .NET, um eine Dienst-App für die Auftragsausführung zu implementieren."
+title: Planen von Aufträgen mit Azure IoT Hub (.NET/Node) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie einen Azure IoT Hub-Auftrag planen, um eine direkte Methode auf mehreren Geräten aufzurufen. Sie verwenden das Azure IoT-Geräte-SDK für Node.js, um die simulierten Geräte-Apps zu implementieren, und das Azure IoT-Dienst-SDK für .NET, um eine Dienst-App für die Auftragsausführung zu implementieren.
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: juanpere
-ms.openlocfilehash: 3efe4612c6d628e070ba6e99808f79f61ead426e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 360daf918051ce901a81f96d1873dc90af238e19
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-and-broadcast-jobs-netnodejs"></a>Planen und Übertragen von Aufträgen für (.NET/Node.js)
 
@@ -36,6 +36,8 @@ Weitere Informationen zu diesen Funktionen finden Sie unter:
 
 * Gerätezwilling und -eigenschaften: [Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)][lnk-get-started-twin] und [Tutorial: Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-props]
 * Direkte Methoden: [IoT Hub-Entwicklerhandbuch – direkte Methoden][lnk-dev-methods] und [Tutorial: Verwenden von direkten Methoden][lnk-c2d-methods]
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 

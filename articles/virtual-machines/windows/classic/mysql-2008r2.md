@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
 ms.openlocfilehash: e4135f96027cc25e1e0a149857ace1672570fc4b
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>Installieren von MySQL auf einem virtuellen Computer mit Windows Server 2016, der mit dem klassischen Bereitstellungsmodell erstellt wurde
 [MySQL](https://www.mysql.com) ist eine beliebte Open-Source-SQL-Datenbank. In diesem Tutorial erfahren Sie, wie Sie die **Communityversion von MySQL 5.7.18** als MySQL-Server auf einem virtuellen Computer mit **Windows Server 2016** installieren und ausführen. Ihre Erfahrung ist möglicherweise für andere Versionen von MySQL oder Windows Server unterschiedlich.
@@ -38,7 +38,7 @@ Nachdem der virtuelle Computer erstellt wurde, können Sie optional einen Datent
 
 Befolgen Sie die Anweisungen zum Anfügen eines leeren Datenträgers unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer](../attach-managed-disk-portal.md). Legen Sie die Hostcacheeinstellung auf **Keine** oder **Schreibgeschützt** fest.
 
-## <a name="log-on-to-the-virtual-machine"></a>Melden Sie sich beim virtuellen Computer an.
+## <a name="log-on-to-the-virtual-machine"></a>Anmelden beim virtuellen Computer
 Als Nächstes [melden Sie sich am virtuellen Computer an](./connect-logon.md) , sodass Sie MySQL installieren können.
 
 ## <a name="install-and-run-mysql-community-server-on-the-virtual-machine"></a>Installieren und Ausführen von MySQL Community Server auf dem virtuellen Computer
@@ -109,7 +109,7 @@ Um eine Windows-Firewallregel hinzuzufügen, die MySQL-Datenverkehr aus dem Inte
 Zum Testen der Remoteverbindung mit dem virtuellen Azure-Computer, auf dem der MySQL-Serverdienst ausgeführt wird, müssen Sie den DNS-Namen des Clouddiensts mit dem virtuellen Computer angeben.
 
 1. Klicken Sie im Azure-Portal auf **Virtuelle Computer (klassisch)**, auf den Namen des virtuellen MySQL-Servercomputers und dann auf **Übersicht**.
-2. Notieren Sie den Wert für **DNS-Name** auf dem Dashboard. Beispiel:
+2. Notieren Sie den Wert für **DNS-Name** auf dem Dashboard. Beispiel: 
 
    ![](media/mysql-2008r2/MySQL_DNSName.png)
 3. Führen Sie den folgenden Befehl zur Anmeldung als MySQL-Benutzer aus, von einem lokalen Computer, der MySQL oder den MySQL-Client ausführt.

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.openlocfilehash: 10f4b6ec29c2d9539fa7fe61c96581755e630822
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung
 ## <a name="overview"></a>Übersicht
@@ -76,7 +76,7 @@ Zum StorSimple-Gerät gehören SSDs und HDDs sowie Unterstützung für Clusterin
 * Hardwareüberwachung
 * NVRAM (Non-Volatile Random Access Memory), der Informationen speichert, selbst wenn die Stromzufuhr unterbrochen wird
 * Clusterfähiges Aktualisieren für die Verwaltung von Softwareupdates auf Servern in einem Failovercluster, damit die Updates nur minimale oder keine Auswirkungen auf die Dienstverfügbarkeit haben
-* Einen Clusterdienst, der wie ein Back-End-Cluster funktioniert und hohe Verfügbarkeit bereitstellt sowie negative Auswirkungen verringert, die ggf. auftreten können, wenn ein HDD oder SSD ausfällt oder offline geschaltet wird
+* Einen Clusterdienst, der wie ein Back-End-Cluster funktioniert und Hochverfügbarkeit bereitstellt sowie negative Auswirkungen verringert, die ggf. auftreten können, wenn ein HDD oder SSD ausfällt oder offline geschaltet wird
 
 Es ist nur ein Controller gleichzeitig aktiv. Wenn der aktive Controller ausfällt, wird automatisch der zweite Controller aktiviert.
 
@@ -186,7 +186,7 @@ Daten werden nur aus der Cloud gelöscht, wenn keine Verweise auf diese Daten vo
 
 
 ### <a name="thin-provisioning"></a>Schlanke Speicherzuweisung
-Schlanke Speicherzuweisung ist eine Virtualisierungstechnologie, bei der der verfügbare Speicher die physischen Ressourcen zu überschreiten scheint. Anstatt ausreichend Speicher im Voraus zu reservieren, verwendet StorSimple die schlanke Bereitstellung, um nur eben genug Speicher zum Erfüllen der aktuellen Anforderungen zuzuweisen. Die Elastizität von Cloudspeicher ermöglicht diesen Ansatz, weil StorSimple den Cloudspeicher vergrößern oder verkleinern kann, um sich ändernde Anforderungen zu erfüllen.
+Die Bereitstellung nach Bedarf ist eine Virtualisierungstechnologie, bei der der verfügbare Speicher scheinbar die physischen Ressourcen überschreitet. Anstatt ausreichend Speicher im Voraus zu reservieren, verwendet StorSimple die schlanke Bereitstellung, um nur eben genug Speicher zum Erfüllen der aktuellen Anforderungen zuzuweisen. Die Elastizität von Cloudspeicher ermöglicht diesen Ansatz, weil StorSimple den Cloudspeicher vergrößern oder verkleinern kann, um sich ändernde Anforderungen zu erfüllen.
 
 > [!NOTE]
 > Lokale Volumes werden nicht mit schlanker Speicherzuweisung bereitgestellt. Der für ein rein lokales Volume reservierte Speicher wird in seiner Gesamtheit bereitgestellt, wenn das Volume erstellt wird.
@@ -254,7 +254,7 @@ Im Folgenden finden Sie eine Liste von Software, die mit StorSimple zum Erstelle
 Vor dem Bereitstellen Ihrer Microsoft Azure StorSimple-Projektmappe, empfehlen wir, sich mit den folgenden Begriffen und Definitionen vertraut zu machen.
 
 ### <a name="key-terms-and-definitions"></a>Wichtige Begriffe und Definitionen
-| Begriff (Akronym oder Abkürzung) | Beschreibung |
+| Begriff (Akronym oder Abkürzung) | BESCHREIBUNG |
 | --- | --- |
 | Zugriffssteuerungsdatensätze (Access Control Record, ACR) |Ein Datensatz, der einem Volume auf dem Microsoft Azure StorSimple-Gerät zugeordnet ist, durch den festgelegt wird, welche Hosts eine Verbindung mit diesem herstellen können. Die Feststellung basiert auf den qualifizierten iSCSI-Namen (IQN) der Hosts (im ACR enthalten), die eine Verbindung mit dem StorSimple-Gerät herstellen. |
 | AES-256 |Ein erweiterter 256-Bit-Verschlüsselungsalgorithmus (Advanced Encryption Standard, AES) zum Verschlüsseln von Daten, die aus der und in die Cloud verschoben werden. |

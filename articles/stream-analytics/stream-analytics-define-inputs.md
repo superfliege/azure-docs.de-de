@@ -1,12 +1,11 @@
 ---
 title: 'Datenverbindung: Datenstromeingaben aus einem Ereignisstrom | Microsoft Docs'
-description: "Erfahren Sie, wie eine „Eingaben“ genannte Datenverbindung mit Stream Analytics eingerichtet wird. Eingaben umfassen einen Datenstrom von Ereignissen und Verweisdaten."
+description: Erfahren Sie, wie eine „Eingaben“ genannte Datenverbindung mit Stream Analytics eingerichtet wird. Eingaben umfassen einen Datenstrom von Ereignissen und Verweisdaten.
 keywords: Datenstrom, Datenverbindung, Ereignisstrom
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-editor: cgronlun
 ms.assetid: 8155823c-9dd8-4a6b-8393-34452d299b68
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/11/2017
 ms.author: sngun
-ms.openlocfilehash: e8b55269e861dc010c911491d52973b674dd50ca
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 0ddc3187e9fc0664838dd07f781f4d7e2e4a7fe0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Datenverbindung: Erfahren Sie mehr über Datenstromeingaben aus Ereignissen in Stream Analytics
 Bei der Datenverbindung mit einem Stream Analytics-Auftrag handelt es sich um einen Datenstrom von Ereignissen aus einer Datenquelle, die als *Eingabe* des Auftrags bezeichnet wird. Stream Analytics bietet eine hervorragende Integration in Datenstromquellen von Azure wie [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) und [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/). Diese Eingabequellen können aus demselben Azure-Abonnement wie dem Ihres Analyseauftrags oder aus einem anderen Abonnement stammen.
@@ -31,7 +30,7 @@ Werden Daten mithilfe von Push an eine Datenquelle übertragen, werden sie vom S
 Ein Datenstrom ist eine ungebundene Abfolge von Ereignissen im Verlauf der Zeit. Stream Analytics-Aufträge müssen mindestens eine Datenstromeingabe enthalten. Event Hubs, IoT Hubs und Blob Storage werden als Datenstrom-Eingabequellen unterstützt. Event Hubs werden verwendet, um Ereignisdatenströme von verschiedenen Geräten und Diensten zu erfassen. Bei diesen Datenströmen kann es sich beispielsweise um Aktivitätsfeeds sozialer Medien, Börseninformationen oder Daten von Sensoren handeln. IoT Hubs sind für die Sammlung von Daten von verbundenen Geräten in IoT-Szenarien (Internet der Dinge) optimiert.  Blob Storage kann als Eingabequelle für die Erfassung von Massendaten als Datenstrom (z.B. Protokolldateien) verwendet werden.  
 
 ### <a name="reference-data"></a>Verweisdaten
-Stream Analytics unterstützt auch Eingaben wie *Verweisdaten*. Dies sind Hilfsdaten, die entweder statisch sind oder sich langsam ändern. Sie werden normalerweise für die Durchführung von Korrelationen und Suchvorgängen verwendet. Beispielsweise können Sie Daten in der Datenstromeingabe mit den Daten in den Verweisdaten verknüpfen – ähnlich wie bei einer SQL-Verknüpfung zum Suchen statischer Werte. Azure-BLOB-Speicher ist derzeit die einzige unterstützte Eingabequelle für Verweisdaten. Blobs für Verweisdatenquellen sind auf eine Größe von 100 MB beschränkt.
+Stream Analytics unterstützt auch Eingaben wie *Verweisdaten*. Dies sind Hilfsdaten, die entweder statisch sind oder sich langsam ändern. Sie werden normalerweise für die Durchführung von Korrelationen und Suchvorgängen verwendet. Beispielsweise können Sie Daten in der Datenstromeingabe mit den Daten in den Verweisdaten verknüpfen – ähnlich wie bei einer SQL-Verknüpfung zum Suchen statischer Werte. Azure Blob Storage ist derzeit die einzige unterstützte Eingabequelle für Verweisdaten. Blobs für Verweisdatenquellen sind auf eine Größe von 100 MB beschränkt.
 
 Informationen zum Erstellen von Verweisdateneingaben finden Sie unter [Verwenden von Verweisdaten](stream-analytics-use-reference-data.md).  
 
@@ -53,7 +52,7 @@ Sie sollten für jede Event Hub-Eingabe in Stream Analytics eine eigene Consumer
 ### <a name="configure-an-event-hub-as-a-data-stream-input"></a>Konfigurieren von Event Hubs als Datenstromeingabe
 In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf dem Blatt **Neue Eingabe** erläutert, wenn Sie einen Event Hub als Eingabe konfigurieren.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | **Eingabealias** |Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen. |
 | **Service Bus-Namespace** |Ein Azure Service Bus-Namespace, der ein Container für einen Satz von Messagingentitäten ist. Sie haben bei der Erstellung einer neuen Event Hub-Instanz auch einen Service Bus-Namespace erstellt. |
@@ -66,7 +65,7 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf dem Blatt **N
 
 Wenn Ihre Daten aus einem Event Hub stammen, haben Sie Zugriff auf folgende Metadatenfelder in Ihrer Stream Analytics-Abfrage:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | **EventProcessedUtcTime** |Das Datum und die Uhrzeit der Verarbeitung des Ereignisses durch Stream Analytics. |
 | **EventEnqueuedUtcTime** |Das Datum und die Uhrzeit des Ereignisempfangs durch die Event Hubs. |
@@ -102,7 +101,7 @@ Sie sollten für jede IoT Hub-Eingabe in Stream Analytics eine eigene Consumergr
 ### <a name="configure-an-iot-hub-as-a-data-stream-input"></a>Konfigurieren von IoT Hub als Datenstromeingabe
 In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf dem Blatt **Neue Eingabe** erläutert, wenn Sie IoT Hub als Eingabe konfigurieren.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | **Eingabealias** |Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen.|
 | **IoT Hub** |Der Name von IoT Hub, der als Eingabe verwendet wird. |
@@ -116,7 +115,7 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf dem Blatt **N
 
 Wenn Ihre Daten aus IoT Hub stammen, haben Sie Zugriff auf folgende Metadatenfelder in Ihrer Stream Analytics-Abfrage:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | **EventProcessedUtcTime** |Das Datum und die Uhrzeit der Verarbeitung des Ereignisses. |
 | **EventEnqueuedUtcTime** |Das Datum und die Uhrzeit, an dem das Ereignis durch IoT Hub empfangen wurde. |
@@ -144,7 +143,7 @@ Eingaben im CSV-Format *müssen* über eine Kopfzeile verfügen, um Felder für 
 
 In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf dem Blatt **Neue Eingabe** erläutert, wenn Sie Blob Storage als Eingabe konfigurieren.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | **Eingabealias** | Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen. |
 | **Speicherkonto** | Der Name des Speicherkontos an, in dem sich die Blobdateien befinden. |
@@ -159,7 +158,7 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf dem Blatt **N
 
 Wenn Ihre Daten aus einer Blob Storage-Quelle stammen, haben Sie Zugriff auf folgende Metadatenfelder in Ihrer Stream Analytics-Abfrage:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | **BlobName** |Der Name des Eingabe-Blobs, aus dem das Ereignis stammt. |
 | **EventProcessedUtcTime** |Das Datum und die Uhrzeit der Verarbeitung des Ereignisses durch Stream Analytics. |

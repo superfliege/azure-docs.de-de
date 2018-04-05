@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
 ms.openlocfilehash: cc1c7a3f77af76c451bb6e97a081a01c119333b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als Sicherungsziel mit Veeam
 
@@ -72,7 +72,7 @@ StorSimple nutzt ein automatisches Tiering zwischen dem lokalen Gerät, das mit 
 StorSimple bietet folgende Vorteile:
 
 -   Eindeutige Algorithmen für Deduplizierung und Komprimierung, die dank Cloud ein nie dagewesenes Deduplizierungslevel erreichen
--   Hohe Verfügbarkeit
+-   Hochverfügbarkeit
 -   Georeplikation durch Nutzen der Azure-Georeplikation
 -   Azure-Integration
 -   Datenverschlüsselung in der Cloud
@@ -103,7 +103,7 @@ Die folgenden Tabellen enthalten Informationen zu verschiedenen Gerätemodellen 
 | Sicherungsszenario  | Lokale Speicherkapazität  | Cloudspeicherkapazität  |
 |---|---|---|
 | Primäre Sicherung  | Aktuelle Sicherungen im lokalen Speicher für eine schnelle Wiederherstellung zum Erfüllen der RPO-Vorgabe (Recovery Point Objective) | Sicherungsverlauf (RPO) passt in Cloudkapazität |
-| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | –  |
+| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | N/V  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple als primäres Sicherungsziel
 
@@ -274,11 +274,11 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 
     ![Veeam-Verwaltungskonsole, Seite mit Sicherungsrepositorys](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  Geben Sie im Dialogfeld **New Backup Repository** (Neues Sicherungsrepository) einen Namen und eine Beschreibung für das Repository ein. Wählen Sie **Weiter**.
+2.  Geben Sie im Dialogfeld **New Backup Repository** (Neues Sicherungsrepository) einen Namen und eine Beschreibung für das Repository ein. Klicken Sie auf **Weiter**.
 
     ![Veeam-Verwaltungskonsole, Seite zum Eingeben von Name und Beschreibung](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  Wählen Sie als Typ die Option **Microsoft Windows server** (Microsoft Windows-Server). Wählen Sie den Veeam-Server aus. Wählen Sie **Weiter**.
+3.  Wählen Sie als Typ die Option **Microsoft Windows server** (Microsoft Windows-Server). Wählen Sie den Veeam-Server aus. Klicken Sie auf **Weiter**.
 
     ![Veeam-Verwaltungskonsole, Bildschirm zur Auswahl des Speicherrepositorytyps](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
@@ -291,7 +291,7 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 
     ![Veeam-Verwaltungskonsole, Einstellungen für Speicherkompatibilität](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  Aktivieren Sie im Dialogfeld **New Backup Repository** (Neues Sicherungsrepository) das Kontrollkästchen **Enable vPower NFS service on the mount server (recommended)** (vPower NFS-Dienst auf dem Bereitstellungsserver aktivieren (empfohlen)). Wählen Sie **Weiter**.
+6.  Aktivieren Sie im Dialogfeld **New Backup Repository** (Neues Sicherungsrepository) das Kontrollkästchen **Enable vPower NFS service on the mount server (recommended)** (vPower NFS-Dienst auf dem Bereitstellungsserver aktivieren (empfohlen)). Klicken Sie auf **Weiter**.
 
     ![Veeam-Verwaltungskonsole, Seite mit Sicherungsrepositorys](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
@@ -456,7 +456,7 @@ Der folgende Abschnitt zeigt, wie Sie ein kurzes Skript schreiben, um StorSimple
 
 ![Diagramm zum Sicherungslebenszyklus](./media/storsimple-configure-backup-target-using-veeam/backuplifecycle.png)
 
-### <a name="requirements"></a>Anforderungen
+### <a name="requirements"></a>Requirements (Anforderungen)
 
 -   Der Server, auf dem das Skript ausgeführt wird, muss auf Azure-Cloudressourcen zugreifen können.
 -   Das Benutzerkonto muss über die notwendigen Berechtigungen verfügen.
@@ -497,7 +497,7 @@ Mit Veeam erhalten Sie eine schnelle, genau definierte Wiederherstellung auf Dat
 
 Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folgenden Tabelle sind häufige Notfallwiederherstellungsszenarien aufgeführt.
 
-| Szenario | Auswirkung | Wiederherstellung | Hinweise |
+| Szenario | Auswirkung | Wiederherstellung | Notizen |
 |---|---|---|---|
 | Ausfall eines StorSimple-Geräts | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Ersetzen Sie das ausgefallene Gerät, und führen Sie die [Schritte für StorSimple-Failover und -Notfallwiederherstellung](storsimple-device-failover-disaster-recovery.md) durch. | Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitssätze mit Daten aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. Dieses erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Dies kann ein sehr zeitaufwändiger Prozess sein. |
 | Ausfall des Veeam-Servers | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Erstellen Sie den Sicherungsserver neu, und führen Sie eine Datenbankwiederherstellung durch, wie im [Veeam Help Center (Technical Documentation)](https://www.veeam.com/documentation-guides-datasheets.html) (Veeam Help Center (Technische Dokumentation)) beschrieben.  | Sie können den Veeam-Server am Notfallwiederherstellungsstandort neu erstellen oder wiederherstellen. Stellen Sie die Datenbank auf den jüngsten Zeitpunkt wieder her. Wenn die wiederhergestellte Veeam-Datenbank nicht mit Ihren jüngsten Sicherungsaufträgen synchron ist, ist eine Indizierung und Katalogisierung erforderlich. Das erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Damit wird diese Aufgabe noch zeitaufwendiger. |

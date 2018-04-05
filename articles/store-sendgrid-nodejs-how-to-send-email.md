@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Senden von E-Mails mit SendGrid aus Node.js
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem E-Mail-Dienst SendGrid in Azure. Die Beispiele sind in C# geschrieben und verwenden die Node.js-API. Die behandelten Szenarien umfassen das **Erstellen einer E-Mail**, **Senden einer E-Mail**, **Hinzufügen von Anhängen**, **Verwenden von Filtern** und **Aktualisieren von Eigenschaften**. Weitere Informationen zu SendGrid und zum Senden von E-Mails erhalten Sie im Abschnitt [Nächste Schritte](#next-steps) .
@@ -60,7 +60,7 @@ Wenn Sie eine E-Mail-Nachricht mithilfe des SendGrid-Moduls senden möchten, mü
         text: 'This is a sample email message.'
     });
 
-Sie können auch eine HTML-Nachricht für Clients festlegen, bei denen dies durch Einstellung der HTML-Eigenschaft unterstützt wird. Beispiel:
+Sie können auch eine HTML-Nachricht für Clients festlegen, bei denen dies durch Einstellung der HTML-Eigenschaft unterstützt wird. Beispiel: 
 
     html: This is a sample <b>HTML<b> email message.
 
@@ -78,7 +78,7 @@ Nach der Erstellung einer E-Mail mithilfe der E-Mail-Funktion können Sie diese 
     });
 
 > [!NOTE]
-> Während die Beispiele oben die Übergabe eines E-Mail-Objekts und den Aufruf der Rückruf-Funktion zeigen, können Sie die Sende-Funktion auch direkt durch Festlegung der E-Mail-Eigenschaften aufrufen. Beispiel:  
+> Während die Beispiele oben die Übergabe eines E-Mail-Objekts und den Aufruf der Rückruf-Funktion zeigen, können Sie die Sende-Funktion auch direkt durch Festlegung der E-Mail-Eigenschaften aufrufen. Beispiel:   
 > 
 > `````
 > sendgrid.send({
@@ -161,7 +161,7 @@ Die folgenden Beispiele veranschaulichen die Filter für die Fußzeile und die K
     sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>Aktualisieren von E-Mail-Eigenschaften
-Einige E-Mail-Eigenschaften können mit **set*Property*** überschrieben oder mit **add*Property*** angefügt werden. Sie können z. B. zusätzliche Empfänger hinzufügen:
+Einige e-Mail-Eigenschaften können überschrieben werden, mithilfe von **festgelegt * Eigenschaft*** oder angefügt, mit **hinzufügen*Eigenschaft ***. Sie können z. B. zusätzliche Empfänger hinzufügen:
 
     email.addTo('jeff@contoso.com');
 

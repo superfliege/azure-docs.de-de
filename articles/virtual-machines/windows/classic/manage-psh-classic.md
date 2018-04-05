@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
 ms.openlocfilehash: 88ab031778957f20dd42955c2c1311d731e2f588
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>Verwalten Ihrer virtuellen Computer mithilfe von Azure PowerShell
 > [!IMPORTANT] 
