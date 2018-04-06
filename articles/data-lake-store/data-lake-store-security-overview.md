@@ -1,8 +1,8 @@
 ---
-title: "Übersicht über die Sicherheit in Data Lake Store | Microsoft Docs"
-description: "Es wird beschrieben, warum Azure Data Lake Store ein Big-Data-Speicher mit erhöhter Sicherheit ist."
+title: Übersicht über die Sicherheit in Data Lake Store | Microsoft Docs
+description: Es wird beschrieben, warum Azure Data Lake Store ein Big-Data-Speicher mit erhöhter Sicherheit ist.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: e3df23e8803d8b34cc4178f8047d0fe2172d04be
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 65319df8db339b1c124be47f27a841bbd7141921
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Sicherheit im Azure Data Lake-Speicher
 Viele Unternehmen nutzen Big-Data-Analysen zur Gewinnung von Unternehmenseinblicken, um fundierte Entscheidungen treffen zu können. Ein Unternehmen verfügt unter Umständen über eine komplexe und regulierte Umgebung mit einer wachsenden Zahl von unterschiedlichen Benutzern. Unternehmen müssen sicherstellen, dass wichtige Geschäftsdaten sicherer gespeichert werden und dass einzelnen Benutzern die richtige Zugriffsebene gewährt wird. Azure Data Lake Store ist so konzipiert, dass diese Sicherheitsanforderungen besser erfüllt werden können. In diesem Artikel werden die Sicherheitsfunktionen von Data Lake Store beschrieben, z.B.:
@@ -46,7 +46,7 @@ Nachdem ein Benutzer per Azure Active Directory authentifiziert wurde, damit der
 * POSIX-ACL für den Zugriff auf die Daten im Store
 
 ### <a name="rbac-for-account-management"></a>RBAC für die Kontoverwaltung
-Für Data Lake Store werden standardmäßig vier grundlegende Rollen definiert. Diese Rollen ermöglichen unterschiedliche Vorgänge für ein Data Lake Store-Konto über das Azure-Portal, PowerShell-Cmdlets und REST-APIs. Mit den Rollen „Besitzer“ und „Mitwirkender“ können verschiedene Verwaltungsfunktionen für das Konto durchgeführt werden. Sie können die Rolle „Leser“ Benutzern zuweisen, die nur mit Daten interagieren.
+Für Data Lake Store werden standardmäßig vier grundlegende Rollen definiert. Diese Rollen ermöglichen unterschiedliche Vorgänge für ein Data Lake Store-Konto über das Azure-Portal, PowerShell-Cmdlets und REST-APIs. Mit den Rollen „Besitzer“ und „Mitwirkender“ können verschiedene Verwaltungsfunktionen für das Konto durchgeführt werden. Sie können die Rolle „Leser“ Benutzern zuweisen, die nur Kontoverwaltungsdaten anzeigen.
 
 ![RBAC-Rollen](./media/data-lake-store-security-overview/rbac-roles.png "RBAC-Rollen")
 
@@ -65,9 +65,9 @@ Eine Anleitung finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen 
 ### <a name="using-acls-for-operations-on-file-systems"></a>Verwenden von ACLs für Vorgänge in Dateisystemen
 Data Lake Store ist ein hierarchisches Dateisystem, wie beispielsweise Hadoop Distributed File System (HDFS), und unterstützt [POSIX-ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Es steuert die Berechtigungen Lesen, Schreiben und Ausführen (read (r), write (w) und execute (x)) für Ressourcen für die Rolle „Besitzer“, für die Gruppe „Besitzer“ und für andere Benutzer und Gruppen. In Data Lake Store können ACLs für Stammordner, Unterordner und einzelne Dateien aktiviert werden. Weitere Informationen zur Funktionsweise von ACLs im Kontext von Data Lake Store finden Sie unter [Zugriffssteuerung in Data Lake Store](data-lake-store-access-control.md).
 
-Es wird empfohlen, mit [Sicherheitsgruppen](../active-directory/active-directory-groups-create-azure-portal.md)ACLs für mehrere Benutzer zu definieren. Fügen Sie Benutzer einer Sicherheitsgruppe hinzu, und weisen Sie dieser Sicherheitsgruppe dann die ACLs für eine Datei oder einen Ordner zu. Dies ist hilfreich, wenn Sie benutzerdefinierten Zugriff gewähren möchten, da Sie hierfür nur maximal neun Einträge hinzufügen können. Weitere Informationen dazu, wie Sie in Data Lake Store gespeicherte Daten mit Azure Active Directory-Sicherheitsgruppen besser schützen können, finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake-Speicher-Dateisystem](data-lake-store-secure-data.md#filepermissions).
+Es wird empfohlen, mit [Sicherheitsgruppen](../active-directory/active-directory-groups-create-azure-portal.md)ACLs für mehrere Benutzer zu definieren. Fügen Sie Benutzer einer Sicherheitsgruppe hinzu, und weisen Sie dieser Sicherheitsgruppe dann die ACLs für eine Datei oder einen Ordner zu. Dies ist hilfreich, wenn Sie zugewiesene Berechtigungen angeben möchten, weil bei zugewiesenen Berechtigungen eine Beschränkung auf maximal 28 Einträge besteht. Weitere Informationen dazu, wie Sie in Data Lake Store gespeicherte Daten mit Azure Active Directory-Sicherheitsgruppen besser schützen können, finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake-Speicher-Dateisystem](data-lake-store-secure-data.md#filepermissions).
 
-![Auflisten von Standardzugriff und benutzerdefiniertem Zugriff](./media/data-lake-store-security-overview/adl.acl.2.png "Auflisten von Standardzugriff und benutzerdefiniertem Zugriff")
+![Auflisten von Zugriffsberechtigungen](./media/data-lake-store-security-overview/adl.acl.2.png "Auflisten von Zugriffsberechtigungen")
 
 ## <a name="network-isolation"></a>Netzwerkisolation
 Verwenden Sie Data Lake Store, damit Sie den Zugriff auf Ihren Datenspeicher auf Netzwerkebene besser steuern können. Sie können Firewalls einrichten und einen IP-Adressbereich für Ihre vertrauenswürdigen Clients definieren. Mit einem IP-Adressbereich können nur Clients, die über eine IP-Adresse innerhalb des definierten Bereichs verfügen, eine Verbindung mit Data Lake Store herstellen.
@@ -83,30 +83,30 @@ Data Lake Store bietet auch eine Verschlüsselung für Daten, die im Konto gespe
 
 Für die Schlüsselverwaltung bietet Data Lake Store zwei Modi zur Verwaltung Ihrer Master-Verschlüsselungsschlüssel (Master Encryption Keys, MEKs), die zum Entschlüsseln von Daten erforderlich sind, die im Data Lake Store gespeichert sind. Sie können die MEKs entweder von Data Lake Store für sich verwalten lassen, oder Sie verwenden das Azure Key Vault-Konto und bleiben im Besitz der MEKs. Beim Erstellen eines Data Lake Store-Kontos geben Sie die Art der Schlüsselverwaltung an. Weitere Informationen zum Bereitstellen einer verschlüsselungsbezogenen Konfiguration finden Sie unter [Erste Schritte mit Azure Data Lake Store im Azure-Portal](data-lake-store-get-started-portal.md).
 
-## <a name="auditing-and-diagnostic-logs"></a>Überwachungs- und Diagnoseprotokolle
-Sie können Überwachungs- oder Diagnoseprotokolle verwenden. Dies richtet sich jeweils danach, ob Sie Protokolle für verwaltungsbezogene Aktivitäten oder datenbezogene Aktivitäten benötigen.
+## <a name="activity-and-diagnostic-logs"></a>Aktivitäts- und Diagnoseprotokolle
+Sie können Aktivitäts- oder Diagnoseprotokolle verwenden. Dies richtet sich jeweils danach, ob Sie Protokolle für kontoverwaltungsbezogene Aktivitäten oder datenbezogene Aktivitäten benötigen.
 
-* Für verwaltungsbezogene Aktivitäten werden Azure Resource Manager-APIs verwendet. Sie tauchen im Azure-Portal in Form von Überwachungsprotokollen auf.
+* Für kontoverwaltungsbezogene Aktivitäten werden Azure Resource Manager-APIs verwendet. Sie tauchen im Azure-Portal in Form von Aktivitätsprotokollen auf.
 * Für datenbezogene Aktivitäten werden die WebHDFS-REST-APIs verwendet. Sie tauchen im Azure-Portal in Form von Diagnoseprotokollen auf.
 
-### <a name="auditing-logs"></a>Überwachungsprotokolle
-Zur Einhaltung von Vorschriften benötigt eine Organisation unter Umständen geeignete Überwachungspfade, falls bestimmte Vorfälle genauer untersucht werden müssen. Data Lake Store verfügt über integrierte Überwachungsfunktionen, und alle Aktivitäten der Kontoverwaltung werden protokolliert.
+### <a name="activity-log"></a>Aktivitätsprotokoll
+Zur Einhaltung von Vorschriften benötigt eine Organisation unter Umständen geeignete Überwachungspfade von Kontoverwaltungsaktivitäten, falls bestimmte Vorfälle genauer untersucht werden müssen. Data Lake Store verfügt über integrierte Überwachungsfunktionen, und alle Aktivitäten der Kontoverwaltung werden protokolliert.
 
-Zeigen Sie für Überwachungspfade der Kontoverwaltung die Spalten an, die Sie protokollieren möchten, und wählen Sie sie aus. Sie können die Überwachungsprotokolle auch in Azure Storage exportieren.
+Zeigen Sie für Überwachungspfade der Kontoverwaltung die Spalten an, die Sie protokollieren möchten, und wählen Sie sie aus. Sie können die Aktivitätsprotokolle auch in Azure Storage exportieren.
 
-![Überwachungsprotokolle](./media/data-lake-store-security-overview/audit-logs.png "Überwachungsprotokolle")
+![Aktivitätsprotokoll](./media/data-lake-store-security-overview/activity-logs.png "Aktivitätsprotokoll")
 
-### <a name="diagnostic-logs"></a>Diagnoseprotokolle
-Sie können Datenzugriff-Überwachungspfade im Azure-Portal (in den Diagnoseeinstellungen) festlegen und ein Azure Blob Storage-Konto erstellen, unter dem die Protokolle gespeichert werden.
+Weitere Informationen zur Verwendung von Aktivitätsprotokollen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/resource-group-audit.md).
+
+### <a name="diagnostics-logs"></a>Diagnoseprotokolle
+Sie können die Überwachung des Datenzugriffs und die Diagnoseprotokollierung im Azure-Portal aktivieren und die Protokolle an ein Azure Blob Storage-Konto, einen Event Hub oder Log Analytics senden.
 
 ![Diagnoseprotokolle](./media/data-lake-store-security-overview/diagnostic-logs.png "Diagnoseprotokolle")
-
-Nachdem Sie die Diagnoseeinstellungen konfiguriert haben, können Sie die Protokolle auf der Registerkarte **Diagnoseprotokolle** anzeigen.
 
 Weitere Informationen zum Arbeiten mit Diagnoseprotokollen in Azure Data Lake Store finden Sie unter [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](data-lake-store-diagnostic-logs.md).
 
 ## <a name="summary"></a>Zusammenfassung
-Unternehmenskunden wünschen sich eine Cloudplattform für die Datenanalyse, die sicher und einfach zu verwenden ist. Azure Data Lake Store wurde für die bessere Erfüllung dieser Anforderungen per Identitätsverwaltung und Authentifizierung mithilfe der Azure Active Directory-Integration, ACL-basierter Autorisierung, Netzwerkisolation, Verschlüsselung von Daten während der Übertragung und im ruhenden Zustand (in zukünftigen Versionen verfügbar) sowie Überwachung konzipiert.
+Unternehmenskunden wünschen sich eine Cloudplattform für die Datenanalyse, die sicher und einfach zu verwenden ist. Azure Data Lake Store wurde für die bessere Erfüllung dieser Anforderungen per Identitätsverwaltung und Authentifizierung mithilfe der Azure Active Directory-Integration, ACL-basierter Autorisierung, Netzwerkisolation, Verschlüsselung von Daten während der Übertragung und im ruhenden Zustand sowie Überwachung konzipiert.
 
 Wenn Sie neue Features für Data Lake Store wünschen, können Sie uns Ihr Feedback im [UserVoice-Forum zu Data Lake Store](https://feedback.azure.com/forums/327234-data-lake)senden.
 

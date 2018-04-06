@@ -1,47 +1,62 @@
 ---
-title: "Überwachung auf Azure Service Fabric-Plattformebene | Microsoft-Dokumentation"
-description: "In diesem Artikel erfahren Sie mehr über Ereignisse und Protokolle auf Plattformebene, die zum Überwachen und Diagnostizieren von Azure Service Fabric-Clustern verwendet werden."
+title: Überwachung auf Azure Service Fabric-Plattformebene | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie mehr über Ereignisse und Protokolle auf Plattformebene, die zum Überwachen und Diagnostizieren von Azure Service Fabric-Clustern verwendet werden.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/20/2017
+ms.date: 03/19/2018
 ms.author: dekapur
-ms.openlocfilehash: 8452b5ae733b21254b0beecaec44a968897ae491
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 46ba7b6e638fafa512d4a3f291c49acc1ddf02e4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="platform-level-event-and-log-generation"></a>Ereignis- und Protokollgenerierung auf Plattformebene
-
-## <a name="monitoring-the-cluster"></a>Überwachen des Clusters
+# <a name="monitoring-the-cluster-and-platform"></a>Überwachen des Clusters und der Plattform
 
 Die Überwachung auf Plattformebene ist wichtig, um festzustellen, ob sich Ihre Hardware und Ihr Cluster erwartungsgemäß verhalten. Durch Service Fabric können Anwendungen bei Hardwareausfällen weiter ausgeführt werden. Sie müssen aber nach wie vor diagnostizieren, ob ein Fehler in einer Anwendung oder in der zugrunde liegenden Infrastruktur auftritt. Zudem sollten Sie zur besseren Kapazitätsplanung Ihre Cluster überwachen, um besser entscheiden zu können, ob Hardware hinzugefügt oder entfernt werden soll.
 
 Service Fabric stellt die folgenden Protokollkanäle vorkonfiguriert bereit:
-* Betriebskanal: von Service Fabric und im Cluster ausgeführten Vorgänge auf höchster Ebene, einschließlich Ereignissen für einen gestarteten Knoten, eine neu bereitgestellte Anwendung oder ein Rollback für ein Upgrade usw.
-* Betriebskanal – ausführlich: Integritätsberichte und Entscheidungen zum Lastenausgleich
-* Daten- und Messagingkanal: wichtige Protokolle und im Messaging- (derzeit nur ReverseProxy) und Datenpfad (Reliable Services-Modelle) generierte Ereignisse
-* Daten- und Messagingkanal – ausführlich: Kanal mit Details zu allen weniger wichtigen Protokollen von Daten und Messaging im Cluster (dieser Kanal enthält sehr viele Ereignisse)   
+
+* **Operational** (Betrieb)  
+Von Service Fabric und im Cluster ausgeführte Vorgänge auf höchster Ebene, einschließlich Ereignissen für einen gestarteten Knoten, eine neu bereitgestellte Anwendung oder ein Rollback für ein Upgrade usw.
+
+* **Operational – detailed** (Betrieb – ausführlich)  
+Integritätsberichte und Entscheidungen in Bezug auf den Lastenausgleich.
+
+* **Data & Messaging** (Daten und Messaging)  
+Wichtige Protokolle und im Messaging- (derzeit nur ReverseProxy) und Datenpfad (Reliable Services-Modelle) generierte Ereignisse.
+
+* **Data & Messaging – detailed** (Daten und Messaging – ausführlich)  
+Kanal mit Details zu allen weniger wichtigen Protokollen von Daten und Messaging im Cluster (dieser Kanal enthält sehr viele Ereignisse).
 
 Zusätzlich stehen zwei strukturierte EventSource-Kanäle als auch Protokolle bereit, die zu Supportzwecken gesammelt werden.
-* [Reliable Services-Ereignisse](service-fabric-reliable-services-diagnostics.md): spezifische Ereignisse für das Programmierungsmodell
-* [Reliable Actors-Ereignisse](service-fabric-reliable-actors-diagnostics.md): spezifische Ereignisse für das Programmierungsmodell und Leistungsindikatoren
-* Supportprotokolle: Systemprotokolle, die von Service Fabric nur für unseren Support generiert werden
+
+* [Reliable Services-Ereignisse](service-fabric-reliable-services-diagnostics.md)  
+Auf das Programmiermodell bezogene Ereignisse.
+
+* [Reliable Actors-Ereignisse](service-fabric-reliable-actors-diagnostics.md)  
+Auf das Programmiermodell bezogene Ereignisse und Leistungsindikatoren.
+
+* Supportprotokolle  
+Systemprotokolle, die von Service Fabric nur für unseren Support generiert werden.
 
 Über diese verschiedenen Kanäle wird der Großteil der empfohlenen Protokollierung auf Plattformebene abgewickelt. Um die Protokollierung auf Plattformebene zu verbessern, sollten Sie sich einen besseren Überblick über das Integritätsmodell verschaffen und benutzerdefinierte Integritätsberichte hinzufügen. Fügen Sie außerdem benutzerdefinierte **Leistungsindikatoren** hinzu, um herauszufinden, welche Auswirkungen sich für Ihre Dienste und Anwendungen im Cluster in Echtzeit ergeben.
 
-### <a name="azure-service-fabric-health-and-load-reporting"></a>Integritäts- und Auslastungsberichte für Azure Service Fabric
+Um diese Protokolle nutzen zu können, wird dringend empfohlen, die „Diagnose“ bei der Clustererstellung zu aktivieren. Durch Aktivieren der Diagnose kann die Microsoft Azure-Diagnose bei der Bereitstellung des Clusters Betriebs-, Reliable Services- und Reliable Actors-Kanäle bestätigen und die Daten speichern, wie unter [Aggregieren von Ereignissen mit der Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md) ausführlich erläutert wird.
+
+## <a name="azure-service-fabric-health-and-load-reporting"></a>Integritäts- und Auslastungsberichte für Azure Service Fabric
 
 Service Fabric weist ein eigenes Integritätsmodell auf, das in diesen Artikeln ausführlich beschrieben wird:
+
 - [Einführung in die Service Fabric-Integritätsüberwachung](service-fabric-health-introduction.md)
 - [Melden und Überprüfen der Dienstintegrität](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 - [Hinzufügen von benutzerdefinierten Service Fabric-Integritätsberichten](service-fabric-report-health.md)
@@ -58,44 +73,9 @@ Mit Metriken können Sie auch Erkenntnisse zur Leistung Ihres Diensts gewinnen. 
 
 Alle Informationen, mit denen die Integrität und Leistung Ihrer Anwendung angegeben wird, sind Kandidaten für Metriken und Integritätsberichte. Ein CPU-Leistungsindikator kann darauf hinweisen, wie ausgelastet der Knoten ist. Er informiert Sie aber nicht unbedingt darüber, ob ein bestimmter Dienst fehlerfrei ist, da ggf. mehrere Dienste auf einem einzelnen Knoten ausgeführt werden können. Aber mit Metriken wie „RPS“, „Verarbeitete Elemente“ und „Anforderungswartezeit“ kann die Integrität eines bestimmten Diensts angegeben werden.
 
-Verwenden Sie Code wie diesen, um die Integrität zu melden:
-
-  ```csharp
-    if (!result.HasValue)
-    {
-        HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
-        this.Partition.ReportInstanceHealth(healthInformation);
-    }
-  ```
-
-Verwenden Sie Code wie diesen, um eine Metrik zu melden:
-
-  ```csharp
-    this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
-  ```
-
-### <a name="service-fabric-support-logs"></a>Service Fabric-Supportprotokolle
+## <a name="service-fabric-support-logs"></a>Service Fabric-Supportprotokolle
 
 Wenn Sie vom Microsoft-Support Hilfe zu Ihrem Azure Service Fabric-Cluster benötigen, sind fast immer Supportprotokolle erforderlich. Wenn Ihr Cluster in Azure gehostet wird, werden Supportprotokolle beim Erstellen eines Clusters automatisch konfiguriert und gesammelt. Die Protokolle werden in einem dedizierten Speicherkonto in der Ressourcengruppe des Clusters gespeichert. Das Speicherkonto hat keinen feststehenden Namen, aber im Konto werden Blobcontainer und -tabellen angezeigt, deren Namen mit *fabric* beginnen. Informationen zum Einrichten von Protokollsammlungen für einen eigenständigen Cluster finden Sie unter [Erstellen und Verwalten eines eigenständigen Azure Service Fabric-Clusters](service-fabric-cluster-creation-for-windows-server.md) und [Konfigurationseinstellungen für eigenständige Windows-Cluster](service-fabric-cluster-manifest.md). Für eigenständige Service Fabric-Instanzen sollten die Protokolle an eine lokale Dateifreigabe gesendet werden. Sie **benötigen** diese Protokolle für den Support, allerdings sind sie für Personen außerhalb des Microsoft-Supportteams nicht nützlich.
-
-## <a name="enabling-diagnostics-for-a-cluster"></a>Aktivieren der Diagnose für einen Cluster
-
-Um diese Protokolle nutzen zu können, wird dringend empfohlen, die „Diagnose“ bei der Clustererstellung zu aktivieren. Durch Aktivieren der Diagnose kann die Microsoft Azure-Diagnose bei der Bereitstellung des Clusters Betriebs-, Reliable Services- und Reliable Actors-Kanäle bestätigen und die Daten speichern, wie unter [Aggregieren von Ereignissen mit der Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md) ausführlich erläutert wird.
-
-Wie oben zu sehen, gibt es außerdem ein optionales Feld für das Hinzufügen eines Instrumentierungsschlüssels von Application Insights (AI). Wenn Sie AI für eine Ereignisanalyse verwenden (weitere Informationen finden Sie unter [Ereignisanalyse mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)), fügen Sie hier den instrumentationKey für die AppInsights-Ressource (GUID) ein.
-
-
-Wenn Sie Container in Ihrem Cluster bereitstellen, aktivieren Sie WAD zum Abrufen von Docker-Statistiken, indem Sie sie zu Ihrer Konfiguration unter „WadCfg > DiagnosticMonitorConfiguration“ hinzufügen:
-
-```json
-"DockerSources": {
-    "Stats": {
-        "enabled": true,
-        "sampleRate": "PT1M"
-    }
-},
-
-```
 
 ## <a name="measuring-performance"></a>Messen der Leistung
 
@@ -105,9 +85,11 @@ Eine Liste der Leistungsindikatordaten, die bei der Verwendung von Service Fabri
 
 Im Folgenden werden zwei allgemeine Verfahren vorgestellt, mit denen Sie die Sammlung von Leistungsdaten für Ihren Cluster einrichten können:
 
-* Mithilfe eines Agents: Dies ist die bevorzugte Methode zur Sammlung von Leistungsdaten von einem Computer, da Agents in der Regel über eine Liste möglicher Leistungsmetriken verfügen, die gesammelt werden können. Zudem ist es ein relativ einfacher Vorgang, um die zu sammelnden oder zu ändernden Metriken auszuwählen. Lesen Sie die Artikel [Vorgehensweise zum Konfigurieren der OMS für Service Fabric](service-fabric-diagnostics-event-analysis-oms.md) und [Einrichten des Windows-Agents für die OMS](../log-analytics/log-analytics-windows-agent.md), um mehr über den OMS-Agent zu erfahren. Dabei handelt es sich um einen Überwachungs-Agent, der Leistungsdaten für Cluster-VMs und bereitgestellte Container abrufen kann.
+* **Verwendung eines Agents**  
+Dies ist die bevorzugte Methode zur Sammlung von Leistungsdaten von einem Computer, da Agents in der Regel über eine Liste möglicher Leistungsmetriken verfügen, die gesammelt werden können. Zudem ist es ein relativ einfacher Vorgang, um die zu sammelnden oder zu ändernden Metriken auszuwählen. Lesen Sie die Artikel [Vorgehensweise zum Konfigurieren der OMS für Service Fabric](service-fabric-diagnostics-event-analysis-oms.md) und [Einrichten des Windows-Agents für die OMS](../log-analytics/log-analytics-windows-agent.md), um mehr über den OMS-Agent zu erfahren. Dabei handelt es sich um einen Überwachungs-Agent, der Leistungsdaten für Cluster-VMs und bereitgestellte Container abrufen kann.
 
-* Konfigurieren von Diagnosen zum Schreiben von Leistungsindikatoren in eine Tabelle: Für Cluster in Azure bedeutet dies, dass die Konfiguration der Azure-Diagnose geändert wird, um die entsprechenden Leistungsindikatoren von den VMs in Ihrem Cluster abzurufen, und dass diese aktiviert wird, um bei der Bereitstellung von Containern Docker-Statistiken abzurufen. Weitere Informationen zum Einrichten der Sammlung von Leistungsindikatoren finden Sie unter [Konfigurieren von Leistungsindikatoren in WAD](service-fabric-diagnostics-event-aggregation-wad.md).
+* **Konfigurieren der Diagnose zum Schreiben von Leistungsindikatoren in eine Tabelle**  
+Für Cluster in Azure bedeutet dies, dass die Konfiguration der Azure-Diagnose geändert wird, um die entsprechenden Leistungsindikatoren von den VMs in Ihrem Cluster abzurufen, und dass diese aktiviert wird, um bei der Bereitstellung von Containern Docker-Statistiken abzurufen. Weitere Informationen zum Einrichten der Sammlung von Leistungsindikatoren finden Sie unter [Konfigurieren von Leistungsindikatoren in WAD](service-fabric-diagnostics-event-aggregation-wad.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

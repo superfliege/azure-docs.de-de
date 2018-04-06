@@ -1,11 +1,12 @@
 ---
-title: "Schnellstart-Tutorial für die Sprache R für Machine Learning | Microsoft Docs"
-description: "Verwenden Sie dieses Lernprogramm für die Programmierung in R, um einen schnellen Einstieg in die Verwendung der Sprache R mit Azure Machine Learning Studio zum Erstellen von Vorhersagelösungen zu erhalten."
+title: Schnellstart-Tutorial für die Sprache R für Machine Learning | Microsoft Docs
+description: Verwenden Sie dieses Lernprogramm für die Programmierung in R, um einen schnellen Einstieg in die Verwendung der Sprache R mit Azure Machine Learning Studio zum Erstellen von Vorhersagelösungen zu erhalten.
 keywords: Schnellstart,Sprache R,Programmiersprache R,R-Programmierungs-Lernprogramm
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.author: garye
-ms.openlocfilehash: 40cc3728d1361b9304896bf0cc4ceed439291d45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 231d505e91fc036b30344e2fd9971db8ba2fdf05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Schnellstart-Lernprogramm für die Programmiersprache R für Azure Machine Learning
 
@@ -39,7 +39,7 @@ Zeitreihendaten sind Daten, deren Werte einen Zeitindex besitzen. Der Zeitindex 
 
 In diesem Schnellstarthandbuch arbeiten wir mit kalifornischen Milchproduktions- und -preisdaten. Diese Daten umfassen monatliche Informationen zur Produktion mehrerer Milcherzeugnisse sowie zum Preis von Milchfett, einem Vergleichsrohstoff.
 
-Die in diesem Artikel verwendeten Daten können zusammen mit R-Skripts [hier][download] heruntergeladen werden. Diese Daten wurden ursprünglich aus Informationen synthetisiert, die von der University of Wisconsin unter "http://future.aae.wisc.edu/tab/production.html" zur Verfügung gestellt werden.
+Die in diesem Artikel verwendeten Daten können zusammen mit R-Skripts [hier][download] heruntergeladen werden. Diese Daten wurden ursprünglich aus Informationen zusammengestellt, die von der University of Wisconsin unter http://future.aae.wisc.edu/tab/production.html verfügbar sind.
 
 ### <a name="organization"></a>Organisation
 Wir werden mehrere Schritte durchlaufen, in denen Sie erfahren, wie Sie in der Azure Machine Learning-Umgebung R-Code zur Analyse und Datenbearbeitung erstellen, testen und ausführen.  
@@ -123,11 +123,11 @@ Wenn Sie die letzte Zeile des Codes im Moment noch nicht verstehen, lesen Sie tr
 ### <a name="introduction-to-rstudio"></a>Einführung in RStudio
 RStudio ist eine weit verbreitete IDE für R. Wir verwenden RStudio zum Bearbeiten, Testen und Debuggen einiger R-Codeabschnitte, die in diesem Schnellstarthandbuch verwendet werden. Nachdem der R-Code getestet wurde und bereit ist, schneiden Sie ihn einfach im RStudio-Editor aus und fügen ihn in ein [Execute R Script][execute-r-script]-Modul in Machine Learning Studio ein.  
 
-Wenn die Programmiersprache R nicht auf Ihrem Desktopcomputer installiert ist, sollten Sie die Installation jetzt durchführen. Kostenlose Downloads der Open Source-Sprache R sind im CRAN (Comprehensive R Archive Network) unter [http://www.r-project.org/](http://www.r-project.org/)verfügbar. Es stehen dort Downloads für Windows, Mac OS und Linux/UNIX zur Verfügung. Wählen Sie einen Spiegelserver in Ihrer Nähe aus, und befolgen Sie die Downloadanweisungen. Zusätzlich finden Sie im CRAN eine Fülle von nützlichen Analyse- und Datenbearbeitungspaketen.
+Wenn die Programmiersprache R nicht auf Ihrem Desktopcomputer installiert ist, sollten Sie die Installation jetzt durchführen. Kostenlose Downloads der Open Source-Sprache R sind im CRAN (Comprehensive R Archive Network) unter [http://www.r-project.org/](http://www.r-project.org/) verfügbar. Es stehen dort Downloads für Windows, Mac OS und Linux/UNIX zur Verfügung. Wählen Sie einen Spiegelserver in Ihrer Nähe aus, und befolgen Sie die Downloadanweisungen. Zusätzlich finden Sie im CRAN eine Fülle von nützlichen Analyse- und Datenbearbeitungspaketen.
 
-Wenn Sie noch keine Erfahrungen mit RStudio haben, sollten Sie die Desktopversion herunterladen und installieren. Sie finden die RStudio-Downloads für Windows, Mac OS und Linux/UNIX unter „http://www.rstudio.com/products/RStudio/“. Befolgen Sie die bereitgestellten Anweisungen zum Installieren von RStudio auf Ihrem Desktopcomputer.  
+Wenn Sie noch keine Erfahrungen mit RStudio haben, sollten Sie die Desktopversion herunterladen und installieren. Die RStudio-Downloads für Windows, Mac OS und Linux/UNIX finden Sie unter http://www.rstudio.com/products/RStudio/. Befolgen Sie die bereitgestellten Anweisungen zum Installieren von RStudio auf Ihrem Desktopcomputer.  
 
-Ein Einführungslernprogramm zu RStudio finden Sie unter „https://support.rstudio.com/hc/sections/200107586-Using-RStudio“.
+Eine Tutorialeinführung in RStudio finden Sie unter https://support.rstudio.com/hc/sections/200107586-Using-RStudio.
 
 Einige zusätzliche Informationen zur Verwendung von RStudio finden Sie in [Anhang A][appendixa].  
 
@@ -1213,42 +1213,42 @@ RStudio ist sehr gut dokumentiert, weshalb ich in diesem Anhang einige Links zu 
 
 1. Erstellen von Projekten
    
-   Sie können Ihren R-Code mit RStudio in Projekten organisieren. Die Dokumentation zur Verwendung von Projekten finden Sie unter „https://support.rstudio.com/hc/articles/200526207-Using-Projects“.
+   Sie können Ihren R-Code mit RStudio in Projekten organisieren. Die Dokumentation, in der Projekte verwendet werden, finden Sie unter https://support.rstudio.com/hc/articles/200526207-Using-Projects.
    
    Ich empfehle Ihnen, diese Anweisungen zu befolgen und ein Projekt für die R-Codebeispiele in diesem Dokument zu erstellen.  
 2. Bearbeiten und Ausführen von R-Code
    
-   RStudio bietet eine integrierte Umgebung zum Bearbeiten und Ausführen von R-Code. Die Dokumentation hierzu finden Sie unter „https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code“.
+   RStudio bietet eine integrierte Umgebung zum Bearbeiten und Ausführen von R-Code. Die Dokumentation finden Sie unter https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code.
 3. Debuggen
    
-   RStudio enthält leistungsfähige Debugfunktionen. Die Dokumentation zu diesen Funktionen finden Sie unter „https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio“.
+   RStudio enthält leistungsfähige Debugfunktionen. Die Dokumentation zu diesen Features finden Sie unter https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio.
    
-   Die Problembehandlungsfunktionen für Haltepunkte (breakpoints) finden Sie unter „https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting“.
+   Die Features zur Problembehandlung von Breakpoints sind unter https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting dokumentiert.
 
 ## <a id="appendixb"></a>ANHANG B – Weitere Informationen
 Dieses Lernprogramm für die Programmierung in R behandelt die Grundlagen der Sprache R mit Azure Machine Learning Studio. Wenn Sie nicht mit R vertraut sind, finden Sie zwei Einführungen im CRAN.
 
-* "R for Beginners", von Emmanuel Paradis, ist ein guter Ausgangspunkt unter "http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf".  
-* "An Introduction to R" von W. N. Venables et. al. geht ein wenig mehr in die Tiefe; zu finden unter „http://cran.r-project.org/doc/manuals/R-intro.html“.
+* Die Informationen zu „R for Beginners“ (R für Anfänger) von Emmanuel Paradis unter http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf sind ein guter Einstieg.  
+* "An Introduction to R" von W. N. Venables et. al. unter http://cran.r-project.org/doc/manuals/R-intro.html enthält etwas eingehendere Informationen.
 
 Es gibt viele Bücher zu R, die Ihnen beim Einstieg helfen können. Hier finden Sie ein paar, die ich nützlich finde:
 
 * "The Art of R Programming: A Tour of Statistical Software Design" von Norman Matloff ist eine ausgezeichnete Einführung in die Programmierung in R.  
 * Das "R Cookbook" von Paul Teetor bietet einen Problem-Lösung-Ansatz für die Verwendung von R.  
-* "R in Action" von Robert Kabacoff ist eine weitere nützliche Einführung. Die begleitende Website „Quick R“ ist eine nützliche Ressource unter „http://www.statmethods.net/“.
-* „R Inferno“ von Patrick Burns ist ein erstaunlich humorvolles Buch, das sich mit einer Reihe von verzwickten und komplizierten Themen beschäftigt, die bei der Programmierung in R vorkommen können. Das Buch ist unter „http://www.burns-stat.com/documents/books/the-r-inferno/“ kostenlos erhältlich.
-* Wenn Sie eine gründliche Erörterung komplexerer Themen in R benötigen, werfen Sie einen Blick in das Buch „Advanced R“ von Hadley Wickham. Die Onlineversion dieses Buchs ist kostenlos erhältlich unter "http://adv-r.had.co.nz/".
+* "R in Action" von Robert Kabacoff ist eine weitere nützliche Einführung. Die begleitende Website zu „Quick R“ unter http://www.statmethods.net/ ist eine nützliche Ressource.
+* „R Inferno“ von Patrick Burns ist ein erstaunlich humorvolles Buch, das sich mit einer Reihe von verzwickten und komplizierten Themen beschäftigt, die bei der Programmierung in R vorkommen können. Das Buch ist unter http://www.burns-stat.com/documents/books/the-r-inferno/ kostenlos erhältlich.
+* Wenn Sie eine gründliche Erörterung komplexerer Themen in R benötigen, werfen Sie einen Blick in das Buch „Advanced R“ von Hadley Wickham. Die Onlineversion dieses Buchs ist kostenlos erhältlich unter http://adv-r.had.co.nz/.
 
-Einen Katalog mit R-Zeitreihenpaketen finden Sie in "CRAN Task View: Time Series Analysis" unter „http://cran.r-project.org/web/views/TimeSeries.html“. Informationen zu speziellen Zeitreihen-Objektpaketen finden Sie in der Dokumentation für das jeweilige Paket.
+Ein Katalog mit R-Zeitreihenpaketen finden Sie in der CRAN-Aufgabenansicht für die Zeitreihenanalyse unter http://cran.r-project.org/web/views/TimeSeries.html. Informationen zu speziellen Zeitreihen-Objektpaketen finden Sie in der Dokumentation für das jeweilige Paket.
 
 Das Buch "Introductory Time Series with R" von Paul Cowpertwait und Andrew Metcalfe bietet eine Einführung in die Verwendung von R für Zeitreihenanalysen. Außerdem gibt es noch jede Menge theoretische Texte, in denen Sie R-Beispiele finden können.
 
 Einige weitere nützliche Internetressourcen:
 
-* DataCamp: DataCamp unterrichtet R bequem über den Browser mit Videolektionen und Codierungsübungen. Es gibt interaktive Lernprogramme zu den neuesten R-Techniken und -Paketen. Nutzen Sie das kostenlose interaktive R-Tutorial unter „https://www.datacamp.com/courses/introduction-to-r“.
-* Leitfaden für die ersten Schritte mit R von Programiz: https://www.programiz.com/r-programming
-* Ein R-Schnelltutorial von Kelly Black von der Clarkson University unter „http://www.cyclismo.org/tutorial/R/“.
-* Unter „http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html“ finden Sie über 60 R-Ressourcen.
+* DataCamp: DataCamp unterrichtet R bequem über den Browser mit Videolektionen und Codierungsübungen. Es gibt interaktive Lernprogramme zu den neuesten R-Techniken und -Paketen. Arbeiten Sie das kostenlose interaktive R-Tutorial unter https://www.datacamp.com/courses/introduction-to-r durch.
+* Lesen Sie den Leitfaden zu den ersten Schritten mit R von Programiz unter https://www.programiz.com/r-programming.
+* Arbeiten Sie das kompakte R-Tutorial von Kelly Black von der Clarkson University unter http://www.cyclismo.org/tutorial/R/ durch.
+* Unter http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html sind mehr als 60 R-Ressourcen aufgeführt.
 
 <!--Image references-->
 [1]: ./media/r-quickstart/fig1.png

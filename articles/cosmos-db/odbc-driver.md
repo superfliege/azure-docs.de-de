@@ -1,25 +1,25 @@
 ---
 title: Herstellen einer Azure Cosmos DB-Verbindung mit BI-Analysetools | Microsoft-Dokumentation
-description: "Es wird beschrieben, wie Sie den Azure Cosmos DB-ODBC-Treiber zum Erstellen von Tabellen und Ansichten verwenden, damit normalisierte Daten in BI- und Datenanalysesoftware angezeigt werden können."
+description: Es wird beschrieben, wie Sie den Azure Cosmos DB-ODBC-Treiber zum Erstellen von Tabellen und Ansichten verwenden, damit normalisierte Daten in BI- und Datenanalysesoftware angezeigt werden können.
 keywords: ODBC, ODBC-Treiber
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 9967f4e5-4b71-4cd7-8324-221a8c789e6b
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 03/22/2018
 ms.author: mimig
-ms.openlocfilehash: 3892f698ec2b0b45f71dc38491687897559821ba
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 445acafeef67027712826f644afaa1784569b30d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 
@@ -30,7 +30,7 @@ Der Azure Cosmos DB-ODBC-Treiber ist ODBC 3.8-konform und unterstützt die ANSI 
 ## <a name="why-do-i-need-to-normalize-my-data"></a>Warum muss ich meine Daten normalisieren?
 Azure Cosmos DB ist eine schemalose Datenbank und ermöglicht daher die schnelle Entwicklung von Apps. Anwendungen können ihr Datenmodell spontan durchlaufen und sind nicht auf ein striktes Schema beschränkt. Eine einzelne Azure Cosmos DB-Datenbank kann JSON-Dokumente mit unterschiedlichen Strukturen enthalten. Dies ist eine gute Voraussetzung für die schnelle Anwendungsentwicklung. Aber wenn Sie Daten analysieren und mit Datenanalyse- und BI-Tools Berichte dazu erstellen möchten, müssen die Daten häufig vereinfacht und an ein bestimmtes Schema angepasst werden.
 
-An dieser Stelle kommt der ODBC-Treiber ins Spiel. Mit dem ODBC-Treiber können Sie Daten in Azure Cosmos DB jetzt in Tabellen und Ansichten renormalisieren, die Ihre Anforderungen an die Datenanalyse und Berichterstellung erfüllen. Die renormalisierten Schemas haben keinerlei Auswirkung auf die zugrunde liegenden Daten, und die Entwickler sind nicht auf ihre Nutzung beschränkt. Sie ermöglichen ihnen lediglich das Nutzen von ODBC-konformen Tools zum Zugreifen auf die Daten. Ihre Azure Cosmos DB-Datenbank ist dann nicht mehr nur das Lieblingstool Ihres Entwicklungsteams, sondern auch die Datenanalysten werden sie zu schätzen wissen.
+An dieser Stelle kommt der ODBC-Treiber ins Spiel. Mit dem ODBC-Treiber können Sie Daten in Azure Cosmos DB jetzt in Tabellen und Ansichten renormalisieren, die Ihre Anforderungen an die Datenanalyse und Berichterstellung erfüllen. Die renormalisierten Schemas haben keinerlei Auswirkung auf die zugrunde liegenden Daten, und die Entwickler sind nicht auf ihre Nutzung beschränkt. Sie ermöglichen ihnen das Nutzen von ODBC-konformen Tools zum Zugreifen auf die Daten. Ihre Azure Cosmos DB-Datenbank ist dann nicht mehr nur das Lieblingstool Ihres Entwicklungsteams, sondern auch die Datenanalysten werden sie zu schätzen wissen.
 
 Nun wenden wir uns dem ODBC-Treiber zu.
 
@@ -53,7 +53,7 @@ Nun wenden wir uns dem ODBC-Treiber zu.
 
 ## <a id="connect"></a>Schritt 2: Herstellen einer Verbindung mit Ihrer Azure Cosmos DB-Datenbank
 
-1. Klicken Sie nach dem [Installieren des Azure Cosmos DB ODBC-Treibers](#install) im Fenster **ODBC-Datenquellenadministrator** auf **Hinzufügen**. Sie können einen Benutzer- oder System-DSN erstellen. In diesem Beispiel erstellen wir einen Benutzer-DSN.
+1. Klicken Sie nach dem [Installieren des Azure Cosmos DB ODBC-Treibers](#install) im Fenster **ODBC-Datenquellenadministrator** auf **Hinzufügen**. Sie können einen Benutzer- oder System-DSN erstellen. In diesem Beispiel erstellen Sie einen Benutzer-DSN.
 2. Wählen Sie im Fenster **Neue Datenquelle erstellen** die Option **Microsoft Azure Cosmos DB ODBC-Treiber**, und klicken Sie dann auf **Fertig stellen**.
 3. Geben Sie im Fenster für **Azure Cosmos DB ODBC-Treiber – DSN-Setup** Folgendes ein: 
 
@@ -71,7 +71,7 @@ Nun wenden wir uns dem ODBC-Treiber zu.
     - **Schemadatei**: Hier haben Sie verschiedene Optionen.
         - Wenn Sie diesen Eintrag unverändert (leer) lassen, scannt der Treiber die erste Seite der Daten für alle Sammlungen, um jeweils das Schema für die Sammlung zu ermitteln. Dies wird als Sammlungszuordnung bezeichnet. Ohne definierte Schemadatei muss der Treiber den Scanvorgang bei jeder Treibersitzung durchführen. Dies kann zu einer längeren Startdauer für Anwendungen führen, die den DSN nutzen. Es ist ratsam, für einen DSN immer eine Schemadatei zuzuordnen.
         - Falls Sie bereits über eine Schemadatei verfügen (ggf. mit dem [Schema-Editor](#schema-editor) erstellt), können Sie auf **Durchsuchen** klicken, zur Datei navigieren und dann auf **Speichern** und auf **OK** klicken.
-        - Wenn Sie ein neues Schema erstellen möchten, klicken Sie auf **OK** und anschließend im Hauptfenster auf **Schema-Editor**. Fahren Sie dann mit den Informationen im [Schema-Editor](#schema-editor) fort. Achten Sie beim Erstellen der neuen Schemadatei darauf, zurück zum Fenster **Erweiterte Optionen** zu wechseln, um die neu erstellte Schemadatei einzufügen.
+        - Wenn Sie ein neues Schema erstellen möchten, klicken Sie auf **OK** und anschließend im Hauptfenster auf **Schema-Editor**. Fahren Sie dann mit den Informationen im [Schema-Editor](#schema-editor) fort. Achten Sie nach dem Erstellen der neuen Schemadatei darauf, zurück zum Fenster **Erweiterte Optionen** zu wechseln, um die neu erstellte Schemadatei einzufügen.
 
 6. Nachdem Sie die Schritte im Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) ausgeführt und das Fenster geschlossen haben, wird der neue Benutzer-DSN auf der Registerkarte „Benutzer-DSN“ hinzugefügt.
 
@@ -114,10 +114,60 @@ Mit den folgenden Schritten wird ein Schema für die Daten in einer oder mehrere
 4. Klicken Sie auf **OK**. 
 5. Klicken Sie im Fenster **Schema-Editor** auf **Sample** (Beispiel), nachdem Sie die Zuordnungsdefinitionen für die Sammlungen, für die das Sampling durchgeführt werden soll, erstellt haben.
      Sie können für jede Spalte SQL-Spaltenname, SQL-Typ, SQL-Länge (falls zutreffend), Staffelung (falls zutreffend), Genauigkeit (falls zutreffend) und „Nullable“ angeben bzw. ändern.
-    - Sie können **Hide Column** (Spalte ausblenden) auf **true** (wahr) festlegen, wenn Sie diese Spalte aus den Abfrageergebnissen ausschließen möchten. Spalten mit der Einstellung „Hide Column = true“ werden nicht für die Auswahl und Projektion zurückgegeben, sind aber weiterhin Teil des Schemas. Beispielsweise können Sie alle für das Azure Cosmos DB-System erforderlichen Eigenschaften ausblenden, die mit „_“ beginnen.
+    - Sie können **Hide Column** (Spalte ausblenden) auf **true** (wahr) festlegen, wenn Sie diese Spalte aus den Abfrageergebnissen ausschließen möchten. Spalten mit der Einstellung „Hide Column = true“ werden nicht für die Auswahl und Projektion zurückgegeben, sind aber weiterhin Teil des Schemas. Beispielsweise können Sie alle für das Azure Cosmos DB-System erforderlichen Eigenschaften ausblenden, die mit `_` beginnen.
     - Die Spalte **id** ist das einzige Feld, das nicht ausgeblendet werden kann, da es als Primärschlüssel im normalisierten Schema verwendet wird. 
 6. Klicken Sie nach dem Definieren des Schemas auf **Datei** | **Speichern**, navigieren Sie zum Verzeichnis, in dem das Schema gespeichert werden soll, und klicken Sie dann auf **Speichern**.
 7. Klicken Sie im angezeigten Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) auf **Erweiterte Optionen**. Navigieren Sie dann im Feld **Schemadatei** zur gespeicherten Schemadatei, und klicken Sie auf **OK**. Klicken Sie erneut auf **OK**, um den DSN zu speichern. Das von Ihnen erstellte Schema wird unter dem DSN gespeichert. 
+
+## <a name="optional-set-up-linked-server-connection"></a>(Optional) Einrichten einer Verbindungsserver-Verbindung
+
+Sie können Azure Cosmos DB über SQL Server Management Studio (SSMS) abfragen, indem Sie eine Verbindungsserver-Verbindung einrichten.
+
+1. Erstellen Sie eine Systemdatenquelle, wie unter [Schritt 2](#connect) beschrieben (beispielsweise mit dem Namen `SDS Name`).
+2. [Installieren Sie SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+3. Erstellen Sie im SSMS-Abfrage-Editor das Verbindungsserverobjekt `DEMOCOSMOS` für die Datenquelle, indem Sie die folgenden Befehle verwenden. Ersetzen Sie `DEMOCOSMOS` durch den Namen für Ihren Verbindungsserver und `SDS Name` durch den Namen Ihrer Systemdatenquelle.
+
+    ```sql
+    USE [master]
+    GO
+    
+    EXEC master.dbo.sp_addlinkedserver @server = N'DEMOCOSMOS', @srvproduct=N'', @provider=N'MSDASQL', @datasrc=N'SDS Name'
+    
+    EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DEMOCOSMOS', @useself=N'False', @locallogin=NULL, @rmtuser=NULL, @rmtpassword=NULL
+    
+    GO
+    ```
+    
+Aktualisieren Sie die Liste mit den Verbindungsservern, um den Namen des neuen Verbindungsservers anzuzeigen.
+
+![Verbindungsserver in SSMS](./media/odbc-driver/odbc-driver-linked-server-ssms.png)
+
+### <a name="query-linked-database"></a>Abfragen der verknüpften Datenbank
+
+Geben Sie eine SSMS-Abfrage ein, um die verknüpfte Datenbank abzufragen. In diesem Beispiel wird mit der Abfrage eine Auswahl aus der Tabelle in der Sammlung `customers` getroffen:
+
+```sql
+SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
+```
+
+Führen Sie die Abfrage aus. Das Ergebnis sollte in etwa wie folgt aussehen:
+
+```
+attachments/  1507476156    521 Bassett Avenue, Wikieup, Missouri, 5422   "2602bc56-0000-0000-0000-59da42bc0000"   2015-02-06T05:32:32 +05:00 f1ca3044f17149f3bc61f7b9c78a26df
+attachments/  1507476156    167 Nassau Street, Tuskahoma, Illinois, 5998   "2602bd56-0000-0000-0000-59da42bc0000"   2015-06-16T08:54:17 +04:00 f75f949ea8de466a9ef2bdb7ce065ac8
+attachments/  1507476156    885 Strong Place, Cassel, Montana, 2069       "2602be56-0000-0000-0000-59da42bc0000"   2015-03-20T07:21:47 +04:00 ef0365fb40c04bb6a3ffc4bc77c905fd
+attachments/  1507476156    515 Barwell Terrace, Defiance, Tennessee, 6439     "2602c056-0000-0000-0000-59da42bc0000"   2014-10-16T06:49:04 +04:00      e913fe543490432f871bc42019663518
+attachments/  1507476156    570 Ruby Street, Spokane, Idaho, 9025       "2602c156-0000-0000-0000-59da42bc0000"   2014-10-30T05:49:33 +04:00 e53072057d314bc9b36c89a8350048f3
+```
+
+> [!NOTE]
+> Der Cosmos DB-Verbindungsserver unterstützt keine vierteiligen Namen. Es wird ein Fehler zurückgegeben, der der folgenden Meldung ähnelt:
+
+```
+Msg 7312, Level 16, State 1, Line 44
+
+Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server "DEMOCOSMOS". A four-part name was supplied, but the provider does not expose the necessary interfaces to use a catalog or schema.
+``` 
 
 ## <a name="optional-creating-views"></a>(Optional) Erstellen von Ansichten
 Im Rahmen des Samplingprozesses können Sie Ansichten definieren und erstellen. Diese Ansichten entsprechen SQL-Ansichten. Sie sind schreibgeschützt und auf die Auswahl und Projektionen der definierten Azure Cosmos DB-SQL beschränkt. 

@@ -1,28 +1,28 @@
 ---
-title: "Azure Monitoring-REST-API – exemplarische Vorgehensweise | Microsoft-Dokumentation"
-description: "Informationen zum Authentifizieren von Anforderungen und Verwenden der Azure Monitor-REST-API, um verfügbare Metrikdefinitionen und Metrikwerte abzurufen."
+title: Azure Monitoring-REST-API – exemplarische Vorgehensweise | Microsoft-Dokumentation
+description: Informationen zum Authentifizieren von Anforderungen und Verwenden der Azure Monitor-REST-API, um verfügbare Metrikdefinitionen und Metrikwerte abzurufen.
 author: mcollier
-manager: 
-editor: 
+manager: ''
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 565e6a88-3131-4a48-8b82-3effc9a3d5c6
 ms.service: monitoring-and-diagnostics
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
-ms.search.region: 
-ms.search.scope: 
-ms.search.validFrom: 
-ms.dyn365.ops.version: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
+ms.search.region: ''
+ms.search.scope: ''
+ms.search.validFrom: ''
+ms.dyn365.ops.version: ''
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 03/19/2018
 ms.author: mcollier
-ms.openlocfilehash: 357a63c65a4f6864dca259aad8a76f83681cd501
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a5119cf7291db4fd2d2ffaf00ef098cfe336e645
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Exemplarische Vorgehensweise für die Azure Monitoring-REST-API
 In diesem Artikel erfahren Sie, wie Sie die Authentifizierungen so durchführen, dass Ihr Code die [REST-API-Referenz für Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx)nutzen kann.         
@@ -34,7 +34,7 @@ Außer dem Arbeiten mit verschiedenen Metrikdatenpunkten können Sie mit der Mon
 ## <a name="authenticating-azure-monitor-requests"></a>Authentifizieren von Azure Monitor-Anforderungen
 Zunächst muss die Anforderung authentifiziert werden.
 
-Alle für die Azure Monitor-API ausgeführten Aufgaben verwenden das Azure Resource Manager-Authentifizierungsmodell. Daher müssen alle Anforderungen mithilfe von Azure Active Directory (Azure AD) authentifiziert werden. Ein Ansatz für die Authentifizierung der Clientanwendung ist die Erstellung eines Azure AD-Dienstprinzipals und das Abrufen des Authentifizierungstokens (JWT). Das folgende Beispielskript zeigt, wie ein Azure AD-Dienstprinzipal mithilfe von PowerShell erstellt werden kann. Eine ausführlichere Anleitung finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-password). Es ist außerdem möglich, [einen Dienstprinzipal über das Azure-Portal zu erstellen](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Alle für die Azure Monitor-API ausgeführten Aufgaben verwenden das Azure Resource Manager-Authentifizierungsmodell. Daher müssen alle Anforderungen mithilfe von Azure Active Directory (Azure AD) authentifiziert werden. Ein Ansatz für die Authentifizierung der Clientanwendung ist die Erstellung eines Azure AD-Dienstprinzipals und das Abrufen des Authentifizierungstokens (JWT). Das folgende Beispielskript zeigt, wie ein Azure AD-Dienstprinzipal mithilfe von PowerShell erstellt werden kann. Eine ausführlichere Anleitung finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). Es ist außerdem möglich, [einen Dienstprinzipal über das Azure-Portal zu erstellen](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
 ```PowerShell
 $subscriptionId = "{azure-subscription-id}"
@@ -97,12 +97,12 @@ Verwenden Sie die [Azure Monitor-REST-API für Metrikdefinitionen](https://docs.
 
 **Methode**: GET
 
-**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourceName*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
 
 Für das Abrufen von Metrikdefinitionen für ein Azure Storage-Konto würde die Anforderung folgendermaßen aussehen:
 
 ```PowerShell
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/microsoft.insights/metricDefinitions?api-version=2017-05-01-preview"
+$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metricDefinitions?api-version=2018-01-01"
 
 Invoke-RestMethod -Uri $request `
                   -Headers $authHeader `
@@ -112,7 +112,7 @@ Invoke-RestMethod -Uri $request `
 
 ```
 > [!NOTE]
-> Zum Abrufen der Metrikdefinitionen mithilfe der REST-API der Azure Monitor-Metriken verwenden Sie die API-Version „2017-05-01-preview“.
+> Zum Abrufen der Metrikdefinitionen mithilfe der REST-API der Azure Monitor-Metriken verwenden Sie die API-Version „2018-01-01“.
 >
 >
 
@@ -122,8 +122,9 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel: (Beachten Sie, da
 {
     "value": [
         {
-            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/microsoft.insights/metricdefinitions/UsedCapacity",
-            "resourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage",
+            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metricdefinitions/UsedCapacity",
+            "resourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage",
+            "namespace": "Microsoft.Storage/storageAccounts",
             "category": "Capacity",
             "name": {
                 "value": "UsedCapacity",
@@ -132,20 +133,35 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel: (Beachten Sie, da
             "isDimensionRequired": false,
             "unit": "Bytes",
             "primaryAggregationType": "Average",
+            "supportedAggregationTypes": [
+                "Total",
+                "Average",
+                "Minimum",
+                "Maximum"
+            ],
             "metricAvailabilities": [
                 {
-                    "timeGrain": "PT1M",
-                    "retention": "P30D"
+                    "timeGrain": "PT1H",
+                    "retention": "P93D"
                 },
                 {
-                    "timeGrain": "PT1H",
-                    "retention": "P30D"
+                    "timeGrain": "PT6H",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT12H",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "P1D",
+                    "retention": "P93D"
                 }
             ]
         },
         {
-            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/microsoft.insights/metricdefinitions/Transactions",
-            "resourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage",
+            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metricdefinitions/Transactions",
+            "resourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage",
+            "namespace": "Microsoft.Storage/storageAccounts",
             "category": "Transaction",
             "name": {
                 "value": "Transactions",
@@ -154,14 +170,41 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel: (Beachten Sie, da
             "isDimensionRequired": false,
             "unit": "Count",
             "primaryAggregationType": "Total",
+            "supportedAggregationTypes": [
+                "Total"
+            ],
             "metricAvailabilities": [
                 {
                     "timeGrain": "PT1M",
-                    "retention": "P30D"
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT5M",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT15M",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT30M",
+                    "retention": "P93D"
                 },
                 {
                     "timeGrain": "PT1H",
-                    "retention": "P30D"
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT6H",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT12H",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "P1D",
+                    "retention": "P93D"
                 }
             ],
             "dimensions": [
@@ -185,22 +228,24 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel: (Beachten Sie, da
 ```
 
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>Abrufen der Dimensionswerte (mehrdimensionale API)
-Nachdem die verfügbaren Metrikdefinitionen bekannt sind, gibt es möglicherweise einige Metriken mit Dimensionen. Bevor Sie die Metrik abfragen, sollten Sie den Bereich der Werte einer Dimension ermitteln. Basierend auf diesen Dimensionswerten können Sie dann die Metriken filtern oder segmentieren, die auf Dimensionswerten basieren, während Sie Metriken abfragen. Für sämtliche Filteranforderungen verwenden Sie den Metriknamen „value“ (nicht „localizedValue“; z.B. zum Abrufen der Metrikdatenpunkte „CpuTime“ und „Requests“). Werden keine Filter verwendet, wird die Standardmetrik zurückgegeben.
+Nachdem die verfügbaren Metrikdefinitionen bekannt sind, gibt es möglicherweise einige Metriken mit Dimensionen. Bevor Sie die Metrik abfragen, sollten Sie den Bereich der Werte einer Dimension ermitteln. Basierend auf diesen Dimensionswerten können Sie dann die Metriken filtern oder segmentieren, die auf Dimensionswerten basieren, während Sie Metriken abfragen.  Verwenden Sie die [Azure Monitor-REST-API für Metriken](https://docs.microsoft.com/rest/api/monitor/metrics), um dies zu erreichen.
+
+Verwenden Sie den Metriknamen „value“ (nicht „localizedValue“) für sämtliche Filteranforderungen. Werden keine Filter verwendet, wird die Standardmetrik zurückgegeben. Bei Verwendung dieser API kann nur eine Dimension über einen Platzhalterfilter verfügen.
 
 > [!NOTE]
-> Zum Abrufen der Dimensionswerte mithilfe der Azure Monitor-REST-API verwenden Sie die API-Version „2017-05-01-preview“.
+> Zum Abrufen der Dimensionswerte mithilfe der Azure Monitor-REST-API verwenden Sie die API-Version „2018-01-01“.
 >
 >
 
 **Methode**: GET
 
-**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metric=*{metric}*&amp;timespan=*{starttime/endtime}*&amp;$filter=*{filter}*&amp;resultType=metadata&amp;api-version=*{apiVersion}*
+**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metric=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&resultType=metadata&api-version=*{apiVersion}*
 
-Zum Abrufen der Liste potenzieller Werte der Dimension „API-Namen“ für die Metrik „Transaktionen“ während eines angegebenen Zeitbereichs würde die Anforderung beispielsweise folgendermaßen aussehen:
+Die Anforderung zum Abrufen der Liste mit Dimensionswerten, die für die Dimension „API Name“ für die Metrik „Transactions“ ausgegeben wurden (wobei für den angegebenen Zeitraum „GeoType = Primary“ gilt), würde die Anforderung beispielsweise wie folgt lauten:
 
 ```PowerShell
-$filter = "APIName eq '*'"
-$request = "https://management.azure.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/microsoft.insights/metrics?metric=Transactions&timespan=2017-09-01T00:00:00Z/2017-09-10T00:00:00Z&resultType=metadata&$filter=${filter}&api-version=2017-05-01-preview"
+$filter = "APIName eq '*' and GeoType eq 'Primary'"
+$request = "https://management.azure.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T00:00:00Z/2018-03-02T00:00:00Z&resultType=metadata&$filter=${filter}&api-version=2018-01-01"
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
@@ -211,10 +256,10 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel:
 
 ```JSON
 {
-  "timespan": "2017-09-01T00:00:00Z/2017-09-10T00:00:00Z",
+  "timespan": "2018-03-01T00:00:00Z/2018-03-02T00:00:00Z",
   "value": [
     {
-      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/Microsoft.Insights/metrics/Transactions",
+      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/Microsoft.Insights/metrics/Transactions",
       "type": "Microsoft.Insights/metrics",
       "name": {
         "value": "Transactions",
@@ -244,52 +289,34 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel:
             }
           ]
         },
-        {
-          "metadatavalues": [
-            {
-              "name": {
-                "value": "apiname",
-                "localizedValue": "apiname"
-              },
-              "value": "PutPage"
-            }
-          ]
-        },
-        {
-          "metadatavalues": [
-            {
-              "name": {
-                "value": "apiname",
-                "localizedValue": "apiname"
-              },
-              "value": "Unknown"
-            }
-          ]
-        },
         ...
       ]    
     }
-  ]
+  ],
+  "namespace": "Microsoft.Storage/storageAccounts",
+  "resourceregion": "eastus"
 }
 ```
 
 ## <a name="retrieve-metric-values-multi-dimensional-api"></a>Abrufen von Metrikwerten (mehrdimensionale API)
-Sobald die verfügbaren Metrikdefinitionen und alle möglichen Dimensionswerte bekannt sind, können die entsprechenden Metrikwerte abgerufen werden. Verwenden Sie den Metriknamen „value“ (nicht „localizedValue“) für sämtliche Filteranforderungen. Wenn keine Dimensionsfilter angegeben werden, wird die zurückgesetzte aggregierte Metrik zurückgegeben.
+Sobald die verfügbaren Metrikdefinitionen und alle möglichen Dimensionswerte bekannt sind, können die entsprechenden Metrikwerte abgerufen werden.  Verwenden Sie die [Azure Monitor-REST-API für Metriken](https://docs.microsoft.com/rest/api/monitor/metrics), um dies zu erreichen.
+
+Verwenden Sie den Metriknamen „value“ (nicht „localizedValue“) für sämtliche Filteranforderungen. Wenn keine Dimensionsfilter angegeben werden, wird die zurückgesetzte aggregierte Metrik zurückgegeben. Wenn eine Metrik mehrere Zeitreihen zurückgibt, können Sie die Abfrageparameter „Top“ und „OrderBy“ verwenden, um eine eingeschränkte sortierte Liste mit Zeitreihen zurückzugeben.
 
 > [!NOTE]
-> Zum Abrufen der mehrdimensionalen Metrikwerte mithilfe der Azure Monitor-REST-API verwenden Sie die API-Version „2017-05-01-preview“.
+> Zum Abrufen der mehrdimensionalen Metrikwerte mithilfe der Azure Monitor-REST-API verwenden Sie die API-Version „2018-01-01“.
 >
 >
 
 **Methode**: GET
 
-**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metric=*{metric}*&amp;timespan=*{starttime/endtime}*&amp;$filter=*{filter}*&amp;interval=*{timeGrain}*&amp;aggregation=*{aggreation}*&amp;api-version=*{apiVersion}*
+**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metric=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&interval=*{timeGrain}*&aggregation=*{aggreation}*&api-version=*{apiVersion}*
 
-Zum Abrufen der Metrikwerte der Speichermetrik „Transaktionen“ für alle Transaktionen zum API-Namen „GetBlobProperties“ während eines Zeitraums von fünf Minuten würde die Anfrage beispielsweise folgendermaßen aussehen:
+Die Anforderung zum Abrufen der drei zuerst aufgeführten APIs in absteigender Reihenfolge in Bezug auf die Anzahl von „Transactions“ während eines Zeitraums von fünf Minuten, wobei „GeoType = Primary“ gilt, würde beispielsweise wie folgt lauten:
 
 ```PowerShell
-$filter = "APIName eq 'GetBlobProperties'"
-$request = "https://management.azure.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/microsoft.insights/metrics?metric=Transactions&timespan=2017-09-19T02:00:00Z/2017-09-19T02:05:00Z&$filter=${filter}&interval=PT1M&aggregation=Count&api-version=2017-05-01-preview"
+$filter = "APIName eq '*' and GeoType eq 'Primary'"
+$request = "https://management.azure.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T02:00:00Z/2018-03-01T02:05:00Z&$filter=${filter}&interval=PT1M&aggregation=Total&top=3&orderby=Total desc&api-version=2018-01-01"
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
@@ -301,11 +328,11 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel:
 ```JSON
 {
   "cost": 0,
-  "timespan": "2017-09-19T02:00:00Z/2017-09-19T02:05:00Z",
+  "timespan": "2018-03-01T02:00:00Z/2018-03-01T02:05:00Z",
   "interval": "PT1M",
   "value": [
     {
-      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/Microsoft.Insights/metrics/Transactions",
+      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/Microsoft.Insights/metrics/Transactions",
       "type": "Microsoft.Insights/metrics",
       "name": {
         "value": "Transactions",
@@ -326,29 +353,32 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel:
           "data": [
             {
               "timeStamp": "2017-09-19T02:00:00Z",
-              "count": 2.0
+              "total": 2
             },
             {
               "timeStamp": "2017-09-19T02:01:00Z",
-              "count": 1.0
+              "total": 1
             },
             {
               "timeStamp": "2017-09-19T02:02:00Z",
-              "count": 3.0
+              "total": 3
             },
             {
               "timeStamp": "2017-09-19T02:03:00Z",
-              "count": 7.0
+              "total": 7
             },
             {
               "timeStamp": "2017-09-19T02:04:00Z",
-              "count": 2.0
+              "total": 2
             }
           ]
-        }
+        },
+        ...
       ]
     }
-  ]
+  ],
+  "namespace": "Microsoft.Storage/storageAccounts",
+  "resourceregion": "eastus"
 }
 ```
 
@@ -427,7 +457,7 @@ Sobald die verfügbaren Metrikdefinitionen bekannt sind, können die entsprechen
 
 **Methode**: GET
 
-**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&amp;api-version=*{apiVersion}*
+**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*
 
 Um zum Beispiel RunsSucceeded-Metrikdatenpunkte für einen bestimmten Zeitraum und ein Aggregationsintervall von einer Stunde abzurufen, sähe die Anforderung wie folgt aus:
 

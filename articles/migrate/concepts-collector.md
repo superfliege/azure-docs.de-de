@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 49f3d5ba55a9c1abfcd6dcb50058ed7a001a2eec
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ea2367a6e1facfbe6a36cb145e258491a1c99517
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="collector-appliance"></a>Collectorappliance
 
@@ -172,6 +172,15 @@ Die folgende Tabelle enthält die erfassten Leistungsindikatoren sowie die Bewer
 Der Collector ermittelt nur die Computerdaten und sendet sie an das Projekt. Das Projekt kann zusätzliche Zeit in Anspruch nehmen, bis die ermittelten Daten im Portal angezeigt werden und Sie mit dem Erstellen einer Bewertung beginnen können.
 
 Je nach Anzahl der virtuellen Computer im ausgewählten Bereich dauert das Senden der statischen Metadaten an das Projekt bis zu 15 Minuten. Sobald die statischen Metadaten im Portal verfügbar sind, können Sie die Liste der Computer im Portal anzeigen und mit der Gruppenerstellung beginnen. Eine Bewertung kann erst erstellt werden, wenn der Auftrag abgeschlossen ist und das Projekt die Daten verarbeitet hat. Nachdem der Sammlungsauftrag auf dem Collector abgeschlossen ist, kann es bis zu einer Stunde dauern, bis die Leistungsdaten im Portal verfügbar sind. Die Dauer hängt von der Anzahl der virtuellen Computer im ausgewählten Bereich ab.
+
+## <a name="locking-down-the-collector-appliance"></a>Sperren der Collectorappliance
+Wir empfehlen Ihnen, für die Collectorappliance fortlaufende Windows-Updates auszuführen. Wenn ein Collector 45 Tage lang nicht aktualisiert wird, beginnt der Collector mit dem automatischen Herunterfahren des Computers. Wenn eine Ermittlung ausgeführt wird, wird der Computer auch dann nicht ausgeschaltet, wenn die 45 Tage überschritten wurden. Nachdem der Ermittlungsauftrag abgeschlossen wurde, wird der Computer ausgeschaltet. Wenn Sie den Collector länger als 45 Tage verwenden, empfehlen wir Ihnen, den Computer durch die Ausführung von Windows-Updates stets auf dem neuesten Stand zu halten.
+
+Außerdem ist es ratsam, die folgenden Schritte auszuführen, um Ihre Appliance zu schützen:
+1. Teilen Sie Administratorkennwörter nicht unbefugten Personen mit, und verlieren Sie sie nicht.
+2. Fahren Sie die Appliance herunter, wenn Sie sie nicht verwenden.
+3. Ordnen Sie die Appliance in einem geschützten Netzwerk an.
+4. Löschen Sie die Instanz der Appliance, nachdem der Migrationsvorgang abgeschlossen wurde. Achten Sie auch darauf, die Sicherungsdateien der Datenträger (VMDKs) zu löschen, da darauf unter Umständen vCenter-Anmeldeinformationen zwischengespeichert werden.
 
 ## <a name="how-to-upgrade-collector"></a>Gewusst wie: Durchführen eines Upgrades für den Collector
 

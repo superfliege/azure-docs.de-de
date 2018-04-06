@@ -1,5 +1,5 @@
 ---
-title: "SQL Server-Failoverclusterinstanz – Azure Virtual Machines | Microsoft-Dokumentation"
+title: SQL Server-Failoverclusterinstanz – Azure Virtual Machines | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie auf Azure Virtual Machines eine SQL Server-Failoverclusterinstanz erstellen.
 services: virtual-machines
 documentationCenter: na
@@ -14,13 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/26/2017
+ms.date: 13/22/2018
 ms.author: mikeray
-ms.openlocfilehash: 8c957b1f2b4466ba68d81885fb014ad4026a47d2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: faa849fc53aa15a47e850a20531c4fa30544f750
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -46,6 +46,18 @@ In der obigen Abbildung ist Folgendes zu sehen:
 Ausführliche Informationen zu S2D finden Sie unter [„Direkte Speicherplätze“ in Windows Server 2016 Datacenter Edition \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
 
 S2D unterstützt zwei Arten von Architekturen: „konvergent“ und „hyperkonvergent“. Die Architektur in diesem Dokument ist hyperkonvergent. In einer hyperkonvergenten Infrastruktur wird der Speicher auf denselben Servern angeordnet, auf denen die gruppierte Anwendung gehostet wird. In dieser Architektur befindet sich der Speicher auf dem SQL Server-FCI-Knoten.
+
+## <a name="licensing-and-pricing"></a>Lizenzierung und Preise
+
+Auf Azure Virtual Machines können Sie SQL Server lizenzieren, indem Sie VM-Images vom Typ „Nutzungsbasierte Bezahlung“ (Pay-As-You-Go, PAYG) oder „Verwendung Ihrer eigenen Lizenz“ (Bring-Your-Own-License, BYOL) verwenden. Der gewählte Imagetyp bestimmt, wie Ihnen die Gebühren berechnet werden.
+
+Bei der PAYG-Lizenzierung fallen für eine Failoverclusterinstanz (FCI) von SQL Server auf Azure Virtual Machines Gebühren für alle FCI-Knoten an, einschließlich der passiven Knoten. Weitere Informationen finden Sie unter [Virtuelle SQL Server Enterprise-Computer – Preise](http://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
+
+Kunden mit Enterprise Agreement und Software Assurance verfügen über das Recht, für jeden aktiven Knoten einen kostenlosen passiven FCI-Knoten zu verwenden. Verwenden Sie zum Nutzen dieses Vorteils in Azure VM-Images vom Typ „BYOL“, und verwenden Sie dann sowohl auf den aktiven als auch auf den passiven Knoten der FCI dieselbe Lizenz. Weitere Informationen finden Sie unter [Enterprise Agreement](http://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
+
+Einen Vergleich der PAYG- und BYOL-Lizenzierung für SQL Server auf Azure Virtual Machines finden Sie unter [Erste Schritte mit virtuellen SQL-Computern](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
+
+Umfassende Informationen zur Lizenzierung von SQL Server finden Sie unter [Preise](http://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
 ### <a name="example-azure-template"></a>Beispiel für Azure-Vorlage
 
@@ -123,7 +135,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
 
    Wählen Sie das richtige Image für die gewünschte Bezahlung für die SQL Server-Lizenz:
 
-   - **Lizenzierung mit nutzungsbasierter Bezahlung**: Der Minutenpreis für diese Images enthält die SQL Server-Lizenzierung:
+   - **Lizenzierung mit nutzungsbasierter Bezahlung**: Der Sekundenpreis für diese Images enthält die SQL Server-Lizenzierung:
       - **SQL Server 2016 Enterprise unter Windows Server Datacenter 2016**
       - **SQL Server 2016 Standard unter Windows Server Datacenter 2016**
       - **SQL Server 2016 Developer unter Windows Server Datacenter 2016**
@@ -222,16 +234,13 @@ Führen Sie die folgenden Schritte auf einem der beiden virtuellen Computer aus,
 1. Klicken Sie in **Server-Manager** auf **Tools** und dann auf **Failovercluster-Manager**.
 1. Klicken Sie im **Failovercluster-Manager** auf **Aktion** und dann auf **Konfiguration überprüfen...**.
 1. Klicken Sie auf **Weiter**.
-
 1. Geben Sie unter **Server oder Cluster auswählen** den Namen der beiden virtuellen Computer ein.
 1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen**. Klicken Sie auf **Weiter**.
-
 1. Schließen Sie unter **Testauswahl** alle Tests mit Ausnahme von **Speicher** ein. Sehen Sie sich die folgende Abbildung an:
 
    ![Durchführen von Validierungstests](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
 1. Klicken Sie auf **Weiter**.
-
 1. Klicken Sie unter **Bestätigung** auf **Weiter**.
 
 Mit dem **Konfigurationsüberprüfungs-Assistenten** werden die Validierungstests durchgeführt.
@@ -269,7 +278,7 @@ Ein Cloudzeuge ist eine neue Art von Clusterquorumzeuge, der in einem Azure Stor
 
 1. Speichern Sie die Zugriffsschlüssel und die Container-URL.
 
-1. Konfigurieren Sie den Failovercluster-Quorumzeugen. Siehe [Konfigurieren des Quorumzeugen auf der Benutzeroberfläche].(http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)
+1. Konfigurieren Sie den Failovercluster-Quorumzeugen. Informationen hierzu finden Sie auf der Benutzeroberfläche unter [Cloudzeugen als Quorumzeugen konfigurieren](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
 
 ### <a name="add-storage"></a>Hinzufügen von Speicher
 

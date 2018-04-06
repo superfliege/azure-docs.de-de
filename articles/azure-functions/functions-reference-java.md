@@ -1,6 +1,6 @@
 ---
 title: Java-Entwicklerreferenz zu Azure Functions | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln können."
+description: Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln können.
 services: functions
 documentationcenter: na
 author: rloutlaw
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: 09a48d61cb27b4db0778295565d167a0688cc99f
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 71576e65d20d7e8cb7f5ff1c5f19c82439bb6807
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 > [!div class="op_single_selector"]
@@ -325,9 +325,33 @@ public class Function {
 }
 ```
 
+## <a name="environment-variables"></a>Umgebungsvariablen
+
+Häufig ist es hilfreich, aus Sicherheitsgründen geheime Informationen aus Quellcode zu extrahieren. Auf diese Weise kann Code im Quellcoderepository veröffentlicht werden, ohne dass Anmeldeinformationen versehentlich für andere Entwickler offengelegt werden. Dies kann leicht erreicht werden, indem Sie Umgebungsvariablen verwenden, und zwar sowohl beim lokalen Ausführen von Azure Functions als auch beim Bereitstellen Ihrer Funktionen in Azure.
+
+Zum einfachen Festlegen von Umgebungsvariablen bei der lokalen Ausführung von Azure Functions können Sie diese Variablen der Datei „local.settings.json“ hinzufügen. Falls diese Datei im Stammverzeichnis Ihres Funktionsprojekts nicht vorhanden ist, können Sie sie erstellen. Die Datei sollte wie folgt aussehen:
+
+```xml
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "AzureWebJobsDashboard": ""
+  }
+}
+```
+
+Jede Schlüssel-Wert-Zuordnung in der Zuordnung `values` wird zur Laufzeit als Umgebungsvariable verfügbar gemacht. Sie können darauf zugreifen, indem Sie `System.getenv("<keyname>")` aufrufen (Beispiel: `System.getenv("AzureWebJobsStorage")`). Das Hinzufügen von zusätzlichen Schlüssel-Wert-Paaren ist akzeptabel und eine empfohlene Vorgehensweise.
+
+> [!NOTE]
+> Überlegen Sie bei diesem Ansatz, ob die Datei „local.settings.json“ der ignore-Datei Ihres Repositorys hinzugefügt werden sollte, damit dafür kein Commit erfolgt.
+
+Da Ihr Code jetzt von diesen Umgebungsvariablen abhängig ist, können Sie sich am Azure-Portal anmelden, um die gleichen Schlüssel-Wert-Paare in den Einstellungen Ihrer Funktionen-App festzulegen. Das Ziel hierbei ist, dass Ihr Code unabhängig davon, ob Sie lokale Tests durchführen oder ob der Code in Azure bereitgestellt wird, auf die gleiche Weise funktioniert.
+
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 * [Bewährte Methoden für Azure Functions](functions-best-practices.md)
 * [Azure Functions developer reference (Azure Functions-Entwicklerreferenz) (Azure Functions-Entwicklerreferenz)](functions-reference.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
+* [Remote Debug Java Azure Functions with Visual Studio Code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) (Remotedebuggen von Java Azure Functions mit Visual Studio Code)

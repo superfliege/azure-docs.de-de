@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f4ca7004432d28233888483424164456b008e992
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: fd59b6b3f51adb538e774bc5bb089880ca22e97e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>Unternehmensintegration mit XML-Transformationen
 ## <a name="overview"></a>Übersicht
@@ -64,6 +64,7 @@ An diesem Punkt ist das Einrichten der Zuordnung abgeschlossen. In einer realen 
 
 Sie können jetzt Ihre Transformation testen, indem Sie eine Anforderung an den HTTP-Endpunkt stellen.  
 
+
 ## <a name="features-and-use-cases"></a>Features und Anwendungsfälle
 * Die in einer Zuordnung erstellte Transformation kann einfach sein, beispielsweise das Kopieren eines Namen und einer Adresse aus einem Dokument in ein anderes. Oder Sie können mithilfe der standardmäßigen Zuordnungsvorgänge komplexere Transformationen erstellen.  
 * Mehrere Zuordnungsvorgänge oder Funktionen sind verfügbar, einschließlich Zeichenfolgen, Datum-Uhrzeit-Funktionen usw.  
@@ -73,11 +74,49 @@ Sie können jetzt Ihre Transformation testen, indem Sie eine Anforderung an den 
 * Hochladen vorhandener Zuordnungen  
 * Unterstützung für das XML-Format.
 
-## <a name="adanced-features"></a>Erweiterte Funktionen
-Auf die folgenden Funktionen kann nur über die Codeansicht zugegriffen werden.
+## <a name="advanced-features"></a>Erweiterte Funktionen
+
+### <a name="reference-assembly-or-custom-code-from-maps"></a>Referenzassembly oder benutzerdefinierter Code aus Zuordnungen 
+Die Transformationsaktion unterstützt auch Zuordnungen oder Transformationen mit Verweis auf eine externe Assembly. Diese Funktion ermöglicht Aufrufe von benutzerdefiniertem .NET-Code direkt aus XSLT-Zuordnungen. Hier sind die Voraussetzungen für die Verwendung von Assemblys in Zuordnungen angegeben.
+
+* Die Zuordnung und die in der Zuordnung referenzierte Assembly müssen [in das Integrationskonto hochgeladen werden](./logic-apps-enterprise-integration-maps.md). 
+
+  > [!NOTE]
+  > Die Zuordnung und Assembly müssen in einer bestimmten Reihenfolge hochgeladen werden. Sie müssen die Assembly hochladen, bevor Sie den Upload für die Zuordnung durchführen, in der auf die Assembly verwiesen wird.
+
+* Außerdem muss die Zuordnung über die folgenden Attribute und einen CDATA-Abschnitt verfügen, der den Aufruf des Assemblycodes enthält:
+
+    * **name** ist der Name der benutzerdefinierten Assembly.
+    * **namespace** ist der Namespace in Ihrer Assembly, der den benutzerdefinierten Code enthält.
+
+  Dieses Beispiel enthält eine Zuordnung, in der auf eine Assembly mit dem Namen „XslUtilitiesLib“ verwiesen und die `circumreference`-Methode der Assembly aufgerufen wird.
+
+  ````xml
+  <?xml version="1.0" encoding="UTF-8"?>
+  <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:my-scripts">
+  <msxsl:script language="C#" implements-prefix="user">
+    <msxsl:assembly name="XsltHelperLib"/>
+    <msxsl:using namespace="XsltHelpers"/>
+    <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
+  </msxsl:script>
+  <xsl:template match="data">
+     <circles>
+        <xsl:for-each select="circle">
+            <circle>
+                <xsl:copy-of select="node()"/>
+                    <circumference>
+                        <xsl:value-of select="user:circumference(radius)"/>
+                    </circumference>
+            </circle>
+        </xsl:for-each>
+     </circles>
+    </xsl:template>
+    </xsl:stylesheet>
+  ````
+
 
 ### <a name="byte-order-mark"></a>Bytereihenfolge-Marke
-Die Antwort der Transformation beginnt standardmäßig mit der Bytereihenfolge-Marke (BOM). Wenn Sie diese Funktion deaktivieren möchten, geben Sie `disableByteOrderMark` für die Eigenschaft `transformOptions` an:
+Die Antwort der Transformation beginnt standardmäßig mit der Bytereihenfolge-Marke (BOM). Sie können auf diese Funktionalität nur zugreifen, wenn Sie im Codeansicht-Editor arbeiten. Wenn Sie diese Funktion deaktivieren möchten, geben Sie `disableByteOrderMark` für die Eigenschaft `transformOptions` an:
 
 ````json
 "Transform_XML": {
@@ -94,6 +133,10 @@ Die Antwort der Transformation beginnt standardmäßig mit der Bytereihenfolge-M
     "type": "Xslt"
 }
 ````
+
+
+
+
 
 ## <a name="learn-more"></a>Weitere Informationen
 * [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  

@@ -2,23 +2,23 @@
 title: Erstellen einer VM auf der Grundlage eines verwalteten Images in Azure | Microsoft-Dokumentation
 description: Erstellen Sie einen virtuellen Windows-Computer auf der Grundlage eines generalisierten verwalteten Images mit Azure PowerShell oder dem Azure-Portal im Resource Manager-Bereitstellungsmodell.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 03/27/2017
 ms.author: cynthn
-ms.openlocfilehash: d8986c71fd0300af385750af898d620e6d3e1f24
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 1d543bd9590664e74cff70cf55e8f7bd42f2c6f0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Erstellen eines virtuellen Computers aus einem verwalteten Image
 
@@ -40,175 +40,29 @@ Sie müssen bereits [ein verwaltetes VM-Image erstellt](capture-image-resource.m
 
 ## <a name="use-powershell"></a>Verwenden von PowerShell
 
-### <a name="prerequisites"></a>Voraussetzungen
+Sie können PowerShell verwenden, um eine VM aus einem Image zu erstellen, indem Sie den vereinfachten Parametersatz für das [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm)-Cmdlet verwenden. Das Image muss sich in derselben Ressourcengruppe befinden, in der Sie die VM erstellen möchten.
 
-Stellen Sie sicher, dass Sie die neueste Version des AzureRM.Compute- und des AzureRM.Network PowerShell-Moduls verwenden. Öffnen Sie eine PowerShell-Eingabeaufforderung als Administrator, und führen Sie zur Installation den folgenden Befehl aus:
+Für dieses Beispiel ist mindestens Version 5.6.0 des AzureRM-Moduls erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+
+Für den vereinfachten Parametersatz für New-AzureRmVm müssen Sie lediglich einen Namen, eine Ressourcengruppe und einen Imagenamen angeben, um eine VM aus einem Image zu erstellen. Es wird aber der Wert des Parameters **-Name** als Name für alle Ressourcen verwendet, die automatisch erstellt werden. In diesem Beispiel geben wir für die einzelnen Ressourcen ausführlichere Namen an, aber sie werden automatisch vom Cmdlet erstellt. Sie können Ressourcen, z.B. das virtuelle Netzwerk, auch im Voraus erstellen und den Namen an das Cmdlet übergeben. Im Cmdlet werden die vorhandenen Ressourcen verwendet, wenn sie anhand des Namens gefunden werden können.
+
+Im folgenden Beispiel wird eine VM mit dem Namen *myVMFromImage* in der Ressourcengruppe *myResourceGroup* aus dem Image *myImage* erstellt. 
+
 
 ```azurepowershell-interactive
-Install-Module AzureRM.Compute,AzureRM.Network
-```
-Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](/powershell/azure/overview).
-
-
-
-### <a name="collect-information-about-the-image"></a>Sammeln von Informationen zu dem Image
-
-Zunächst müssen wir grundlegende Informationen zum Image erfassen und eine Variable für das Image erstellen. In diesem Beispiel wird ein verwaltetes VM-Image mit dem Namen **myImage** verwendet, das sich in der Ressourcengruppe **myResourceGroup** in der Region **USA, Westen-Mitte** befindet. 
-
-```azurepowershell-interactive
-$rgName = "myResourceGroup"
-$location = "West Central US"
-$imageName = "myImage"
-$image = Get-AzureRMImage -ImageName $imageName -ResourceGroupName $rgName
-```
-
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-Erstellen Sie das VNet und das Subnetz des [virtuellen Netzwerks](../../virtual-network/virtual-networks-overview.md).
-
-Erstellen Sie das Subnetz. Mit diesem Beispielbefehl wird ein Subnetz namens **mySubnet** mit dem Adresspräfix **10.0.0.0/24** erstellt.  
-   
-```azurepowershell-interactive
-$subnetName = "mySubnet"
-$singleSubnet = New-AzureRmVirtualNetworkSubnetConfig `
-    -Name $subnetName -AddressPrefix 10.0.0.0/24
-```
-
-Erstellen des virtuellen Netzwerks Im folgenden Beispiel wird ein virtuelles Netzwerk namens **myVnet** mit dem Adresspräfix **10.0.0.0/16** erstellt.  
-   
-```azurepowershell-interactive
-$vnetName = "myVnet"
-$vnet = New-AzureRmVirtualNetwork `
-    -Name $vnetName `
-    -ResourceGroupName $rgName `
-    -Location $location `
-    -AddressPrefix 10.0.0.0/16 `
-    -Subnet $singleSubnet
-```    
-
-### <a name="create-a-public-ip-address-and-network-interface"></a>Erstellen einer öffentlichen IP-Adresse und einer Netzwerkschnittstelle
-
-Sie benötigen eine [öffentliche IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) und eine Netzwerkschnittstelle, um die Kommunikation mit dem virtuellen Computer im virtuellen Netzwerk zu ermöglichen.
-
-Erstellen einer öffentlichen IP-Adresse Dieses Beispiel erstellt eine öffentliche IP-Adresse mit dem Namen **myPip**. 
-   
-```azurepowershell-interactive
-$ipName = "myPip"
-$pip = New-AzureRmPublicIpAddress `
-    -Name $ipName `
-    -ResourceGroupName $rgName `
-    -Location $location `
-    -AllocationMethod Dynamic
-```
-       
-Erstellen der NIC Dieses Beispiel erstellt eine NIC mit dem Namen **myNic**. 
-   
-```azurepowershell-interactive
-$nicName = "myNic"
-$nic = New-AzureRmNetworkInterface `
-    -Name $nicName `
-    -ResourceGroupName $rgName `
-    -Location $location `
-    -SubnetId $vnet.Subnets[0].Id `
-    -PublicIpAddressId $pip.Id
-```
-
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Erstellen einer Netzwerksicherheitsgruppe und einer RDP-Regel
-
-Damit Sie sich über RDP bei Ihrem virtuellen Computer anmelden können, benötigen Sie eine Netzwerksicherheitsregel (Network Security Rule, NSG), die RDP-Zugriff auf Port 3389 zulässt. 
-
-Dieses Beispiel erstellt eine NSG namens **myNsg**, das eine Regel namens **myRdpRule** enthält, die RDP-Datenverkehr über Port 3389 zulässt. Weitere Informationen zu NSGs finden Sie unter [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe von PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-```azurepowershell-interactive
-$nsgName = "myNsg"
-$ruleName = "myRdpRule"
-$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name $ruleName -Description "Allow RDP" `
-    -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 `
-    -SourceAddressPrefix Internet -SourcePortRange * `
-    -DestinationAddressPrefix * -DestinationPortRange 3389
-
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $location `
-    -Name $nsgName -SecurityRules $rdpRule
+New-AzureRmVm `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myVMfromImage" `
+    -ImageName "myImage" `
+    -Location "East US" `
+    -VirtualNetworkName "myImageVnet" `
+    -SubnetName "myImageSubnet" `
+    -SecurityGroupName "myImageNSG" `
+    -PublicIpAddressName "myImagePIP" `
+    -OpenPorts 3389
 ```
 
 
-### <a name="create-a-variable-for-the-virtual-network"></a>Erstellen einer Variablen für das virtuelle Netzwerk
-
-Erstellen einer Variablen für das abgeschlossene virtuelle Netzwerk 
-
-```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
-
-```
-
-### <a name="get-the-credentials-for-the-vm"></a>Abrufen der Anmeldeinformationen für die VM
-
-Mit dem folgenden Cmdlet wird ein Fenster geöffnet, in dem Sie einen neuen Benutzernamen und ein Kennwort als lokales Administratorkonto für den Remotezugriff auf die VM eingeben. 
-
-```azurepowershell-interactive
-$cred = Get-Credential
-```
-
-### <a name="set-variables-for-the-vm-name-computer-name-and-the-size-of-the-vm"></a>Festlegen von Variablen für den VM-Namen, Computernamen und die VM-Größe
-
-Erstellen Sie Variablen für den VM- und Computernamen. In diesem Beispiel wird der VM-Name als **myVM** und der Name des Computers als **myComputer** festgelegt.
-
-```azurepowershell-interactive
-$vmName = "myVM"
-$computerName = "myComputer"
-```
-
-Legen Sie die Größe des virtuellen Computers fest. In diesem Beispiel wird eine VM der Größe **Standard_DS1_v2** erstellt. Weitere Informationen finden Sie in der Dokumentation zu den [VM-Größen](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-
-```azurepowershell-interactive
-$vmSize = "Standard_DS1_v2"
-```
-
-Fügen Sie der VM-Konfiguration den VM-Namen und die VM-Größe hinzu.
-
-```azurepowershell-interactive
-$vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
-```
-
-### <a name="set-the-vm-image-as-source-image-for-the-new-vm"></a>Festlegen des VM-Images als Quellimage für die neue VM
-
-Legen Sie das Quellimage mithilfe der ID des verwalteten VM-Images fest.
-
-```azurepowershell-interactive
-$vm = Set-AzureRmVMSourceImage -VM $vm -Id $image.Id
-```
-
-### <a name="set-the-os-configuration-and-add-the-nic"></a>Legen Sie die Betriebssystemkonfiguration fest, und fügen Sie die Netzwerkkarte hinzu.
-
-Geben Sie den Speichertyp (PremiumLRS oder StandardLRS) und die Größe des Betriebssystem-Datenträgers ein. Bei diesem Beispiel wird der Kontotyp auf **PremiumLRS**, die Datenträgergröße auf **128GB** und das Datenträgercaching auf **ReadWrite** festgelegt.
-
-```azurepowershell-interactive
-$vm = Set-AzureRmVMOSDisk -VM $vm  `
-    -StorageAccountType PremiumLRS `
-    -DiskSizeInGB 128 `
-    -CreateOption FromImage `
-    -Caching ReadWrite
-
-$vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $computerName `
--Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-
-$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
-```
-
-### <a name="create-the-vm"></a>Erstellen des virtuellen Computers
-
-Erstellen Sie die neue VM mithilfe der Konfiguration, die Sie erstellt und in der Variablen **$vm** gespeichert haben.
-
-```azurepowershell-interactive
-New-AzureRmVM -VM $vm -ResourceGroupName $rgName -Location $location
-```
-
-### <a name="verify-that-the-vm-was-created"></a>Stellen Sie sicher, dass der virtuelle Computer erstellt wurde
-Anschließend müsste der neu erstellte virtuelle Computer im [Azure-Portal](https://portal.azure.com) unter **Durchsuchen** > **Virtuelle Computer** angezeigt werden. Alternativ können Sie ihn auch mit den folgenden PowerShell-Befehlen anzeigen:
-
-```azurepowershell-interactive
-$vmList = Get-AzureRmVM -ResourceGroupName $rgName
-$vmList.Name
-```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Verwalten Ihres neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

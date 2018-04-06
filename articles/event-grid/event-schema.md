@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid-Ereignisschema
-description: "Beschreibt die Eigenschaften, die mit Azure Event Grid für Ereignisse bereitgestellt werden."
+description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Ereignisse bereitgestellt werden.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/22/2018
 ms.author: babanisa
-ms.openlocfilehash: 9d1f0eed28a1c1c6776ddba89480adcedfc599a5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7af0e1cc8ae36774ef1cebf1bada6477888860d0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-Ereignisschema
 
@@ -97,7 +97,11 @@ Weitere Informationen zu den Eigenschaften im Datenobjekt finden Sie in der Erei
 * [IoT Hub](event-schema-iot-hub.md)
 * [Ressourcengruppen (Verwaltungsvorgänge)](event-schema-resource-groups.md)
 
-Für benutzerdefinierte Themen bestimmt der Ereignisherausgeber das Datenobjekt. Die Daten der obersten Ebene müssen die gleichen Felder wie über Standardressourcen definierte Ereignisse enthalten. Beim Veröffentlichen von Ereignissen in benutzerdefinierten Themen sollten Sie erwägen, den Betreff zur Unterstützung der Weiterleitung und Filterung zu modellieren.
+Für benutzerdefinierte Themen bestimmt der Ereignisherausgeber das Datenobjekt. Die Daten der obersten Ebene müssen die gleichen Felder wie über Standardressourcen definierte Ereignisse enthalten.
+
+Erstellen Sie beim Veröffentlichen von Ereignissen für benutzerdefinierte Themen Betreffinformationen für Ihre Ereignisse, an denen Abonnenten leicht erkennen können, ob Interesse am Ereignis besteht. Abonnenten verwenden den Betreff zum Filtern und Weiterleiten von Ereignissen. Erwägen Sie, den Pfad zum Ereignisort anzugeben, damit Abonnenten nach Segmenten dieses Pfads filtern können. Mit dem Pfad können Abonnenten Ereignisse speziell oder allgemein filtern. Wenn Sie beispielsweise einen Pfad mit drei Segmenten im Betreff angeben, z.B. `/A/B/C`, können Abonnenten nach dem ersten Segment `/A` filtern, um eine umfassendere Gruppe von Ereignissen angezeigt zu bekommen. Diese Abonnenten erhalten Ereignisse mit Betreffinformationen wie `/A/B/C` oder `/A/D/E`. Andere Abonnenten können nach `/A/B` filtern, um eine eingeschränktere Gruppe mit Ereignissen zu erhalten.
+
+Es kann auch sein, dass Ihr Betreff weitere Details zu den Vorkommnissen enthalten muss. Mit dem Publisher **Speicherkonten** wird beispielsweise der Betreff `/blobServices/default/containers/<container-name>/blobs/<file>` angegeben, wenn einem Container eine Datei hinzugefügt wird. Ein Abonnent kann nach dem Pfad `/blobServices/default/containers/testcontainer` filtern, um alle Ereignisse für diesen Container abzurufen, aber nicht für andere Container des Speicherkontos. Außerdem kann ein Abonnent nach dem Suffix `.txt` filtern oder es für die Weiterleitung verwenden, um nur mit Textdateien zu arbeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

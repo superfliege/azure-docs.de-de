@@ -1,24 +1,24 @@
 ---
-title: "Azure Traffic Manager – Häufig gestellte Fragen (FAQs) | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Traffic Manager"
+title: Azure Traffic Manager – Häufig gestellte Fragen (FAQs) | Microsoft-Dokumentation
+description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Traffic Manager
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2018
+ms.date: 03/18/2018
 ms.author: kumud
-ms.openlocfilehash: 09fd133ec72f7ebbbcb45f652855e7640656a0ca
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: d9db669ab905fb51390f6ca80736af4cde13d902
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -123,9 +123,6 @@ Ja, nur die API-Version 2017-03-01 und höhere Versionen unterstützen den geogr
 
 ## <a name="real-user-measurements"></a>Benutzer-Realmessungen
 
->[!NOTE]
->Das Feature „Benutzer-Realmessungen“ in Traffic Manager befindet sich in der öffentlichen Vorschauphase (Public Preview) und ist unter Umständen nicht so verfügbar und zuverlässig wie Features in Versionen mit allgemeiner Verfügbarkeit. Das Feature wird nicht unterstützt, bietet möglicherweise eingeschränkte Funktionen und ist vielleicht nicht an allen Azure-Standorten verfügbar. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite mit den [Azure Traffic Manager-Updates](https://azure.microsoft.com/updates/?product=traffic-manager).
-
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Welche Vorteile hat die Verwendung von Benutzer-Realmessungen?
 Wenn Sie die Routingmethode „Leistung“ verwenden, wählt Traffic Manager für Ihre Endbenutzer die beste Azure-Region aus, mit der eine Verbindung hergestellt werden kann. Hierzu werden die Quell-IP und das EDNS-Clientsubnetz (falls übergeben) untersucht und mit den Intelligence-Daten zur Netzwerklatenz des Diensts abgeglichen. Mithilfe von Benutzer-Realmessungen wird dies für Ihre Endbenutzer verbessert, indem deren Erfahrungen zu dieser Latenztabelle einen Beitrag leisten. Außerdem wird sichergestellt, dass diese Tabelle in adäquater Weise die Endbenutzernetzwerke widerspiegelt, aus denen die Endbenutzer Verbindungen mit Azure herstellen. Dies führt zu einer höheren Genauigkeit beim Routing für Ihre Endbenutzer.
 
@@ -140,7 +137,8 @@ Nein. Sie müssen sie nur einmal pro Abonnement aktivieren. Alle gemessenen und 
 
 ### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Wie deaktiviere ich Benutzer-Realmessungen für mein Abonnement?
 Sie können die Berechnung von Gebühren für Benutzer-Realmessungen beenden, wenn Sie aufhören, über Ihre Clientanwendung Latenzmessungen zu sammeln und einzusenden. Wenn JavaScript-Code für die Messung beispielsweise in Webseiten eingebettet ist, können Sie die Nutzung dieses Features beenden, indem Sie den JavaScript-Code entfernen oder das Aufrufen beim Rendern der Seite deaktivieren.
-Eine weitere Möglichkeit zum Deaktivieren von Benutzer-Realmessungen ist das Löschen Ihres Schlüssels. Wenn Sie die Deaktivierung durchführen, werden alle Messungen verworfen, die über diesen Schlüssel an Traffic Manager gesendet werden.
+
+Sie können Benutzer-Realmessungen auch deaktivieren, indem Sie Ihren Schlüssel löschen. Wenn Sie den Schlüssel löschen, werden alle Messungen verworfen, die über diesen Schlüssel an Traffic Manager gesendet werden.
 
 ### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Kann ich Benutzer-Realmessungen mit anderen Anwendungen als Webseiten nutzen?
 Ja. Benutzer-Realmessungen sind so konzipiert, dass Daten erfasst werden können, die über unterschiedliche Arten von Endbenutzerclients gesammelt werden. Diese häufig gestellten Fragen werden aktualisiert, wenn neue Arten von Clientanwendungen unterstützt werden.
@@ -155,7 +153,7 @@ Nein. Vor dem Aufrufen des Skripts kommt es nicht zu einer programmierten Verzö
 Nein. Bei jedem Aufruf wird mit dem Skript für Benutzer-Realmessungen eine Gruppe von sechs Azure-Regionen gemessen, die vom Dienst bestimmt wird. Diese Gruppe ändert sich zwischen den einzelnen Aufrufen, und wenn eine große Zahl dieser Aufrufe erfolgt, werden durch die Messungen unterschiedliche Azure-Regionen abgedeckt.
 
 ### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Kann ich die Anzahl von durchgeführten Messungen auf einen bestimmten Wert beschränken?
-Der JavaScript-Code für die Messung ist in Ihre Webseite eingebettet, und Sie haben die vollständige Kontrolle darüber, wann Sie den Vorgang starten und beenden. Solange der Traffic Manager-Dienst eine Anforderung zum Messen einer Liste mit Azure-Regionen erhält, wird eine Gruppe von Regionen zurückgegeben. Beachten Sie auch, dass Ihnen während der Vorschauphase keine Messungen, die an Traffic Manager gemeldet werden, berechnet werden.
+Der JavaScript-Code für die Messung ist in Ihre Webseite eingebettet, und Sie haben die vollständige Kontrolle darüber, wann Sie den Vorgang starten und beenden. Solange der Traffic Manager-Dienst eine Anforderung zum Messen einer Liste mit Azure-Regionen erhält, wird eine Gruppe von Regionen zurückgegeben.
 
 ### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Kann ich die Messungen, die von meiner Clientanwendung durchgeführt werden, als Teil der Benutzer-Realmessungen anzeigen?
 Da die Messlogik über Ihre Clientanwendung ausgeführt wird, haben Sie die vollständige Kontrolle über die Abläufe, also auch über die Anzeige der Latenzmessungen. Traffic Manager stellt keine Aggregatansicht der Messungen bereit, die über den mit Ihrem Abonnement verknüpften Schlüssel eingehen.
@@ -186,9 +184,6 @@ Wie schon in der vorherigen Antwort erwähnt: Die serverseitigen Komponenten von
 
 ## <a name="traffic-view"></a>Datenverkehrsansicht
 
->[!NOTE]
->Das Feature „Datenverkehrsansicht“ in Traffic Manager befindet sich in der öffentlichen Vorschauphase (Public Preview) und ist unter Umständen nicht so verfügbar und zuverlässig wie Features in Versionen mit allgemeiner Verfügbarkeit. Das Feature wird nicht unterstützt, bietet möglicherweise eingeschränkte Funktionen und ist vielleicht nicht an allen Azure-Standorten verfügbar. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite mit den [Azure Traffic Manager-Updates](https://azure.microsoft.com/updates/?product=traffic-manager).
-
 ### <a name="what-does-traffic-view-do"></a>Wozu dient die Datenverkehrsansicht?
 Die Datenverkehrsansicht ist ein Feature von Traffic Manager, mit dem Sie mehr Informationen zu Ihren Benutzern und zur Benutzerfreundlichkeit erhalten. Mithilfe der Abfragen von Traffic Manager und den Tabellen mit den Intelligence-Daten zur Netzwerklatenz, die vom Dienst gepflegt werden, werden folgende Informationen für Sie bereitgestellt:
 - Die Regionen, aus denen Ihre Benutzer eine Verbindung mit Ihren Endpunkten in Azure herstellen.
@@ -196,7 +191,7 @@ Die Datenverkehrsansicht ist ein Feature von Traffic Manager, mit dem Sie mehr I
 - Die Azure-Regionen, an die die Benutzer weitergeleitet werden.
 - Die Latenzdaten der Benutzer für diese Azure-Regionen.
 
-Diese Informationen können Sie im Portal in einer Tabellenansicht nutzen und außerdem als Rohdaten herunterladen.
+Diese Informationen können Sie im Portal in geografischen Kartenüberlagerungen und Tabellenansichten nutzen und außerdem als Rohdaten herunterladen.
 
 ### <a name="how-can-i-benefit-from-using-traffic-view"></a>Welche Vorteile ergeben sich für mich durch die Verwendung der Datenverkehrsansicht?
 
@@ -208,7 +203,7 @@ Azure Monitor kann genutzt werden, um den Datenverkehr, der von Ihrem Profil und
 
 ### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Werden für die Datenverkehrsansicht EDNS-Clientsubnetz-Informationen verwendet?
 
-Von der Datenverkehrsansicht werden beim Erstellen der Ausgabe keine EDNS-Clientsubnetz-Informationen verwendet. Sie nutzt die IP-Adresse des lokalen DNS-Resolvers Ihrer Benutzer, um die Gruppierung durchzuführen.
+In den von Azure Traffic Manager bereitgestellten DNS-Abfragen werden ECS-Informationen berücksichtigt, um die Genauigkeit des Routings zu erhöhen. Beim Erstellen des Datasets, in dem angezeigt wird, von wo aus Benutzer eine Verbindung herstellen, nutzt die Datenverkehrsansicht aber nur die IP-Adresse der DNS-Auflösung.
 
 ### <a name="how-many-days-of-data-does-traffic-view-use"></a>Wie viele Tage mit Daten werden von der Datenverkehrsansicht genutzt?
 
@@ -219,15 +214,18 @@ Die Datenverkehrsansicht erstellt ihre Ausgabe, indem die Daten der letzten sieb
 Bei Verwendung von externen Endpunkten, die außerhalb von Azure-Regionen gehostet werden, in einem Traffic Manager-Profil können Sie die Zuordnung zu einer Azure-Region wählen, die dann quasi als Proxy für die Latenzmerkmale dient (dies ist erforderlich, wenn Sie die Routingmethode „Leistung“ verwenden). Wenn diese Zuordnung zu einer Azure-Region vorhanden ist, werden beim Erstellen der Ausgabe für die Datenverkehrsansicht die Latenzmetriken dieser Azure-Region genutzt. Falls keine Azure-Region angegeben ist, sind die Latenzinformationen in den Daten für diese externen Endpunkte leer.
 
 ### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Muss ich die Datenverkehrsansicht für jedes Profil meines Abonnements aktivieren?
-Während der Vorschauphase wird die Datenverkehrsansicht auf Abonnementebene aktiviert und ist für alle Traffic Manager-Profile des Abonnements verfügbar.
 
-### <a name="how-can-i-turn-off-traffic-view"></a>Wie kann ich die Datenverkehrsansicht deaktivieren?
-Während der Vorschauphase ist es erforderlich, dass Sie ein Supportticket erstellen, um die Datenverkehrsansicht für Ihr Abonnement zu deaktivieren.
+Während des Vorschauzeitraums wurde die Datenverkehrsansicht auf einer Abonnementebene aktiviert. Im Rahmen der vorgenommenen Verbesserungen vor der allgemeinen Verfügbarkeit können Sie die Datenverkehrsansicht jetzt auf einer Profilebene aktivieren, um für die Aktivierung dieses Features eine feinere Abstimmung zu ermöglichen. Standardmäßig ist die Datenverkehrsansicht für ein Profil deaktiviert.
+
+>[!NOTE]
+>Wenn Sie die Datenverkehrsansicht während des Vorschauzeitraums auf einer Abonnementebene aktiviert haben, müssen Sie sie für die einzelnen Profile dieses Abonnements jetzt erneut aktivieren.
+ 
+### <a name="how-can-i-turn-off-traffic-view"></a>Wie kann ich die Datenverkehrsansicht deaktivieren? 
+Sie können die Datenverkehrsansicht für alle Profile über das Portal oder die REST-API deaktivieren. 
 
 ### <a name="how-does-traffic-view-billing-work"></a>Wie funktioniert die Abrechnung für die Datenverkehrsansicht?
 
 Die Preise für die Datenverkehrsansicht basieren auf der Anzahl von Datenpunkten, die zum Erstellen der Ausgabe verwendet werden. Derzeit werden als Datentyp nur die Abfragen unterstützt, die von Ihrem Profil empfangen werden. Außerdem wird Ihnen nur die Verarbeitung berechnet, die durchgeführt wurde, als Sie die Datenverkehrsansicht aktiviert hatten. Dies bedeutet Folgendes: Wenn Sie die Datenverkehrsansicht während eines Monats einige Zeit aktivieren und dann wieder deaktivieren, werden nur die Datenpunkte, die bei aktiviertem Feature verarbeitet wurden, zur Abrechnung herangezogen.
-Während der Vorschauphase werden Ihnen für die Nutzung der Datenverkehrsansicht keine Gebühren berechnet.
 
 ## <a name="traffic-manager-endpoints"></a>Traffic Manager-Endpunkte
 

@@ -1,6 +1,6 @@
 ---
 title: Informationen zur Azure Service Fabric-Terminologie | Microsoft-Dokumentation
-description: "Eine Terminologieübersicht über Service Fabric. Erläutert wichtige Terminologiekonzepte und Begriffe, die in der weiteren Dokumentation verwendet werden."
+description: Eine Terminologieübersicht über Service Fabric. Erläutert wichtige Terminologiekonzepte und Begriffe, die in der weiteren Dokumentation verwendet werden.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/18/2017
+ms.date: 03/26/2018
 ms.author: ryanwi
-ms.openlocfilehash: dc7e536ce40bf95e1950e1e44844cd8fe26ea1a1
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: bd57b6344baef3bdf97c850564ae2d3afa9c811e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-terminology-overview"></a>Übersicht über Service Fabric-Terminologie
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. In diesem Artikel wird die von Service Fabric verwendete Terminologie erläutert, damit Sie die in der Dokumentation verwendeten Begriffe verstehen.
@@ -89,12 +89,22 @@ Weitere Informationen zum Bereitstellen von Anwendungen an den Imagespeicherdien
    - Er orchestriert Anwendungs- und Clusterupgrades.
    - Er interagiert mit anderen Systemkomponenten.
 
+**Reparatur-Manager-Dienst**: Dies ist ein optionaler Systemdienst, mit dem Reparaturaktionen in einem Cluster auf sichere, automatisierbare und transparente Weise durchgeführt werden können. Der Reparatur-Manager wird für folgende Zwecke verwendet:
+   - Azure-Wartungsreparaturen in Azure Service Fabric-Clustern mit der [Dauerhaftigkeitsstufe „Silver“ und „Gold“](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)
+   - Reparaturaktionen für die [Anwendung für die Patchorchestrierung](service-fabric-patch-orchestration-application.md)
+
 ## <a name="built-in-programming-models"></a>Integrierte Programmiermodelle
-Zum Erstellen von Service Fabric-Diensten stehen .NET Framework-Programmiermodelle zur Verfügung:
+Zum Erstellen von Service Fabric-Diensten stehen .NET Framework- und Java-Programmiermodelle zur Verfügung:
 
 **Reliable Services:** Eine API zum Erstellen zustandsloser und zustandsbehafteter Dienste. Zustandsbehaftete Dienste speichern ihren Zustand in zuverlässigen Sammlungen (z.B. in einem Wörterbuch oder einer Warteschlange). Sie können auch verschiedene Kommunikationsstapel verknüpfen, z.B. Web-API und Windows Communication Foundation (WCF).
 
 **Reliable Actors**: Eine API zum Erstellen zustandsloser und zustandsbehafteter Objekte über das Programmiermodell mit virtuellen Actors. Dieses Modell ist bei zahlreichen unabhängigen Berechnungs- oder Zustandseinheiten nützlich. Dieses Modell verwendet ein rundenbasiertes Threadingmodell. Daher sollten Sie Code vermeiden, der andere Actors oder Dienste aufruft, weil ein einzelner Actor andere eingehende Anforderungen erst verarbeiten kann, wenn alle ausgehenden Anforderungen abgeschlossen sind.
+
+Sie können auch Ihre vorhandenen Anwendungen unter Service Fabric ausführen:
+
+**Container**: Service Fabric unterstützt die Bereitstellung von Docker-Containern in Linux- und Windows Server-Containern unter Windows Server 2016 zusammen mit der Unterstützung für den Hyper-V-Isolationsmodus. Im Service Fabric- [Anwendungsmodell](service-fabric-application-model.md)stellt ein Container einen Anwendungshost dar, in dem mehrere Dienstreplikate angeordnet werden. Service Fabric kann alle Container ausführen, und das Szenario ähnelt dem Gastanwendungsszenario, bei dem eine vorhandene Anwendung in einem Container verpackt wird. Darüber hinaus können Sie [Service Fabric-Dienste innerhalb von Containern](service-fabric-services-inside-containers.md) ausführen.
+
+**Ausführbare Gastanwendungsdateien**: Sie können jede Art von Code, z.B. Node.js, Java oder C++, in Azure Service Fabric als Dienst ausführen. In Service Fabric wird auf diese Diensttypen als ausführbare Gastanwendungsdateien verwiesen, die als zustandslose Dienste behandelt werden. Vorteile der Ausführung einer ausführbaren Gastanwendungsdatei in einem Service Fabric-Cluster sind beispielsweise Hochverfügbarkeit, Systemüberwachung, Anwendungslebenszyklusverwaltung, hohe Dichte und Ermittelbarkeit.
 
 Weitere Informationen finden Sie im Artikel [Auswählen eines Frameworks für den Dienst](service-fabric-choose-framework.md) .
 
