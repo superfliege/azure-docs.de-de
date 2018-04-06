@@ -1,31 +1,31 @@
 ---
-title: "Azure Service Fabric: Einrichten der Überwachung mit dem OMS-Agent | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie den OMS-Agent zur Überwachung von Containern und Leistungsindikatoren für Ihre Azure Service Fabric-Cluster einrichten."
+title: 'Azure Service Fabric: Einrichten der Überwachung mit dem OMS-Agent | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie den OMS-Agent zur Überwachung von Containern und Leistungsindikatoren für Ihre Azure Service Fabric-Cluster einrichten.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/31/2017
+ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: 095db20e7d22bd517337f24fc9a81b84988d1465
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 4b0845cbb25d160b53b483641e242422c98029ee
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="add-the-oms-agent-to-a-cluster"></a>Hinzufügen des OMS-Agents zu einem Cluster
 
-Dieser Artikel beschreibt, wie Sie Ihrem Cluster den OMS-Agent als VM-Skalierungsgruppenerweiterung hinzufügen und mit Ihrem vorhandenen OMS Log Analytics-Arbeitsbereich verbinden. Dies ermöglicht die Erfassung von Diagnosedaten zu Containern, Anwendungen und zur Leistungsüberwachung. Durch Hinzufügen als Erweiterung stellt Azure Resource Manager sicher, dass der Agent auf jedem Knoten installiert wird – auch beim Skalieren des Clusters.
+Dieser Artikel beschreibt, wie Sie Ihrem Cluster den OMS-Agent als VM-Skalierungsgruppenerweiterung hinzufügen und mit Ihrem vorhandenen Azure Log Analytics-Arbeitsbereich verbinden. Dies ermöglicht die Erfassung von Diagnosedaten zu Containern, Anwendungen und zur Leistungsüberwachung. Durch Hinzufügen als Erweiterung stellt Azure Resource Manager sicher, dass der Agent auf jedem Knoten installiert wird – auch beim Skalieren des Clusters.
 
 > [!NOTE]
-> In diesem Artikel wird davon ausgegangen, dass Sie bereits einen OMS Log Analytics-Arbeitsbereich eingerichtet haben. Lesen Sie andernfalls unter [Set up OMS Log Analytics for a cluster](service-fabric-diagnostics-oms-setup.md) (Einrichten von OMS Log Analytics für einen Cluster) weiter.
+> In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Azure Log Analytics-Arbeitsbereich eingerichtet haben. Fahren Sie andernfalls mit [Einrichten von Operations Management Suite Log Analytics für einen Cluster](service-fabric-diagnostics-oms-setup.md) fort.
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Hinzufügen der Agent-Erweiterung über die Azure-Befehlszeilenschnittstelle
 
@@ -33,9 +33,9 @@ Den OMS-Agent fügen Sie Ihrem Cluster am besten über die VM-Skalierungsgruppen
 
 1. Vergewissern Sie sich nach dem Anfordern Ihrer Cloud Shell, dass Sie in dem Abonnement arbeiten, in dem sich auch Ihre Ressource befindet. Verwenden Sie für diese Überprüfung `az account show`, und vergewissern Sie sich, dass der Wert für „name“ dem Namen des Abonnements Ihres Clusters entspricht.
 
-2. Navigieren Sie im Portal zu der Ressourcengruppe, in der sich Ihr OMS-Arbeitsbereich befindet. Klicken Sie auf die Log Analytics-Ressource (der Ressourcentyp ist „Log Analytics“). Scrollen Sie anschließend im Navigationsbereich auf der rechten Seite nach unten, und klicken Sie auf **Eigenschaften**.
+2. Navigieren Sie im Portal zu der Ressourcengruppe, in der sich Ihr Log Analytics-Arbeitsbereich befindet. Klicken Sie auf die Log Analytics-Ressource (der Ressourcentyp ist „Log Analytics“). Scrollen Sie anschließend im Navigationsbereich auf der rechten Seite nach unten, und klicken Sie auf **Eigenschaften**.
 
-    ![OMS-Eigenschaftenseite](media/service-fabric-diagnostics-oms-agent/oms-properties.png)
+    ![Eigenschaftenseite von Log Analytics](media/service-fabric-diagnostics-oms-agent/oms-properties.png)
 
     Notieren Sie sich den Wert von `workspaceId`. 
 
@@ -59,6 +59,12 @@ Den OMS-Agent fügen Sie Ihrem Cluster am besten über die VM-Skalierungsgruppen
 
     ![OMS-Agent-CLI-Befehl](media/service-fabric-diagnostics-oms-agent/cli-command.png)
  
+5. Führen Sie den Befehl aus, um diese Konfiguration für Ihre bereits vorhandenen VM-Instanzen zu übernehmen:  
+
+    ```sh
+    az vmss update-instances
+    ```
+
     Das Hinzufügen des Agents zu Ihren Knoten sollte in weniger als 15 Minuten erfolgreich abgeschlossen sein. Mit der `az vmss extension list`-API können Sie überprüfen, ob die Agents hinzugefügt wurden:
 
     ```sh
@@ -67,11 +73,11 @@ Den OMS-Agent fügen Sie Ihrem Cluster am besten über die VM-Skalierungsgruppen
 
 ## <a name="add-the-agent-via-the-resource-manager-template"></a>Hinzufügen des Agents über die Resource Manager-Vorlage
 
-Resource Manager-Beispielvorlagen zum Bereitstellen eines OMS Log Analytics-Arbeitsbereichs sowie zum Hinzufügen eines Agents zu den einzelnen Knoten stehen für [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) und [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) zur Verfügung.
+Resource Manager-Beispielvorlagen zum Bereitstellen eines Azure Log Analytics-Arbeitsbereichs sowie zum Hinzufügen eines Agents zu den einzelnen Knoten stehen für [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) und [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) zur Verfügung.
 
 Sie können diese Vorlage herunterladen und anpassen, um einen Cluster bereitzustellen, der Ihre Anforderungen am besten erfüllt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfassen Sie relevante [Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md). Wenn Sie den OMS-Agent für die Erfassung bestimmter Leistungsindikatoren konfigurieren möchten, wechseln Sie zum OMS-Portal. (Einen entsprechenden Link finden Sie am oberen Rand der OMS Log Analytics-Ressource.) Klicken Sie dann auf **Start > Einstellungen > Daten > Windows-Leistungsindikatoren** oder **Linux-Leistungsindikatoren**, und wählen Sie die zu erfassenden Leistungsindikatoren aus.
-* Konfigurieren Sie die OMS für die Einrichtung von [automatisierten Warnungen](../log-analytics/log-analytics-alerts.md) bei der Erkennung und Diagnose.
+* Erfassen Sie relevante [Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md). Lesen Sie zum Konfigurieren des OMS-Agents für das Erfassen von bestimmten Leistungsindikatoren [Konfigurieren von Datenquellen](../log-analytics/log-analytics-data-sources.md#configuring-data-sources).
+* Konfigurieren Sie Log Analytics für die Einrichtung von [automatisierten Warnungen](../log-analytics/log-analytics-alerts.md) bei der Erkennung und Diagnose.

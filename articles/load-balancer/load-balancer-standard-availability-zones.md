@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 61e0e7cf960d7eb2294bc294ec1eec9d80428a81
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer Standard und Verfügbarkeitszonen
 
 Azure Load Balancer Standard-SKU unterstützt [Verfügbarkeitszonen](../availability-zones/az-overview.md)-Szenarios. Mehrere neue Konzepte sind mit Load Balancer Standard verfügbar, die Ihnen das Optimieren der Verfügbarkeit in Ihrem End-to-End-Szenario durch die Ausrichtung von Ressourcen an Zonen sowie deren Verteilung über Zonen ermöglichen.  In [Verfügbarkeitszonen](../availability-zones/az-overview.md) erfahren Sie, was Verfügbarkeitszonen sind, welche Regionen derzeit Verfügbarkeitszonen unterstützen, und Sie erhalten Informationen über Konzepte und Produkte, die im Zusammenhang stehen. Verfügbarkeitszonen und Load Balancer Standard bilden eine umfassende und flexible Featuregruppe, die viele unterschiedliche Szenarios erstellen kann.  Lesen Sie dieses Dokument, um diese [Konzepte](#concepts) und die [Entwurfsanleitung](#design) für das grundlegende Szenario zu verstehen.
 
 >[!NOTE]
-> Die Load Balancer Standard-SKU ist zurzeit als Preview verfügbar. Während der Previewphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Verwenden Sie die allgemein verfügbare [Load Balancer Basic-SKU](load-balancer-overview.md) für Ihre Produktionsdienste. Zur Verwendung der [Verfügbarkeitszonen (Vorschau)](https://aka.ms/availabilityzones) mit dieser Vorschau ist zusätzlich zur Registrierung für Load Balancer [Standard (Vorschau)](#preview-sign-up) eine [separate Registrierung](https://aka.ms/availabilityzones) erforderlich.
+>Weitere verwandte Themen finden Sie unter [Vorschauversion für Verfügbarkeitszonen](https://aka.ms/availabilityzones). 
 
 ## <a name="concepts"></a> Auf den Load Balancer angewendete Verfügbarkeitszonenkonzepte
 
@@ -151,7 +151,7 @@ Wenn Sie vorhandene Resource Manager-Vorlagen in Ihrer Konfiguration verwenden, 
 
 Zonenübergreifender Lastenausgleich ist die Fähigkeit des Load Balancers, einen Back-End-Endpunkt in einer beliebigen Zone zu erreichen, und unabhängig vom Front-End und seiner Zonalität.
 
-Wenn Sie Ihre Bereitstellung an einer einzelnen Zone ausrichten und dort zusichern möchten, richten Sie zonale Front-End- und zonale Back-End-Ressourcen an derselben Zone aus. Es ist keine weitere Aktion erforderlich.
+Wenn Sie Ihre Bereitstellung innerhalb einer einzelnen Zone ausrichten und garantieren möchten, richten Sie zonale Front-End- und zonale Back-End-Ressourcen an derselben Zone aus. Es ist keine weitere Aktion erforderlich.
 
 ### <a name="backend"></a>Back-End
 
@@ -210,7 +210,7 @@ Zonenredundanz kann eine zonenagnostische und zugleich resistente Option mit ein
 
 „Zonal“ kann eine explizite Zusicherung für eine Zone bieten, die von der Integrität der Zone abhängig ist. Das Zuordnen einer zonalen IP-Adresse oder eines zonalen Load Balancer-Front-Ends kann ein wünschenswertes oder geeignetes Attribut sein, insbesondere wenn Ihre angefügte Ressource ein zonaler virtueller Computer in der gleichen Zone ist.  Vielleicht erfordert die Anwendung auch explizite Kenntnisse darüber, in welcher Zone sich eine Ressource befindet, und Sie möchten explizit über die Verfügbarkeit in separaten Zonen nachdenken.  Sie können wählen, mehrere zonale Front-Ends für einen End-to-End-Dienst über Zonen verteilt verfügbar zu machen (d.h. pro Zone zonale Front-Ends für mehrere zonale VM-Skalierungsgruppen).  Wenn Ihre zonalen Front-Ends öffentliche IP-Adressen sind, können Sie diese mehreren zonale Front-Ends zum Verfügbarmachen des Diensts mit [Traffic Manager](../traffic-manager/traffic-manager-overview.md) verwenden.  Sie können mit mehreren zonalen Front-Ends auch pro Zone mit Überwachungslösungen von Drittanbietern Einblicke in Integrität und Leistung erzielen und den gesamten Dienst mit einem zonenredundanten Front-End verfügbar machen. Sie sollten zonale Ressourcen nur mit zonalen Front-Ends bedienen, die an derselben Zone ausgerichtet sind, und potenziell schädliche zonenübergreifende Szenarios für zonale Ressourcen vermeiden.  Zonale Ressourcen sind nur in Regionen vorhanden, in denen Verfügbarkeitszonen vorhanden sind.
 
-Ohne Kenntnis des End-to-End-Diensts gibt es keine Faustregel, dass eine Wahl besser als die andere ist.
+Ohne Kenntnis der Dienstarchitektur lässt sich nicht sagen, welche Option die bessere Wahl ist.
 
 ## <a name="limitations"></a>Einschränkungen
 

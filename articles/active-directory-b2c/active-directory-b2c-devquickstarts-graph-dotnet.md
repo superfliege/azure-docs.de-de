@@ -1,24 +1,21 @@
 ---
-title: "Verwenden von Graph-API – Azure AD B2C | Microsoft-Dokumentation"
-description: "Aufrufen der Graph-API für einen B2C-Mandanten durch Verwenden einer Anwendungsidentität zum Automatisieren des Prozesses."
+title: Verwenden von Graph-API – Azure AD B2C | Microsoft-Dokumentation
+description: Aufrufen der Graph-API für einen B2C-Mandanten durch Verwenden einer Anwendungsidentität zum Automatisieren des Prozesses.
 services: active-directory-b2c
 documentationcenter: .net
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: f9904516-d9f7-43b1-ae4f-e4d9eb1c67a0
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
-ms.author: parakhj
-ms.openlocfilehash: aee051946c90c686959066ac14798f807e7b91b0
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.author: davidmu
+ms.openlocfilehash: ff3aa44a4e2513f4d3e5ac2eed84715b8fe9b004
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
@@ -48,7 +45,7 @@ Nachdem Sie über einen B2C-Mandanten verfügen, müssen Sie Ihre Anwendung übe
 3. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, und klicken Sie auf **App-Registrierungen** und dann auf **Hinzufügen**.
 4. Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung. 
     1. Wählen Sie **Web-App/API** als Anwendungstyp aus.    
-    2. Geben Sie **einen beliebigen Umleitungs-URI** (z.B. https://B2CGraphAPI) an, da dieser für dieses Beispiel nicht relevant ist.  
+    2. Geben Sie eine **beliebige Anmelde-URL** an (z.B. https://B2CGraphAPI), da dies für dieses Beispiel nicht relevant ist).  
 5. Die Anwendung wird jetzt in der Liste der Anwendungen angezeigt. Klicken Sie darauf, um die **Anwendungs-ID** (auch als Client-ID bezeichnet) abzurufen. Kopieren Sie sie, da Sie sie in einem späteren Abschnitt benötigen.
 6. Klicken Sie im Menü „Einstellungen“ auf **Schlüssel**, und fügen Sie einen neuen Schlüssel hinzu (auch als Clientgeheimnis bezeichnet). Kopieren Sie ihn ebenfalls für die Verwendung in einem späteren Abschnitt.
 

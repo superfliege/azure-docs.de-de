@@ -1,12 +1,12 @@
 ---
-title: "Verwenden von Azure Functions zum Ausführen eines Datenbank-Bereinigungstasks| Microsoft-Dokumentation"
-description: "Verwenden Sie Azure Functions, um eine Aufgabe zu planen, die eine Verbindung mit Azure SQL-Datenbank herstellt, um regelmäßig Zeilen zu bereinigen."
+title: Verwenden von Azure Functions zum Ausführen eines Datenbank-Bereinigungstasks| Microsoft-Dokumentation
+description: Verwenden Sie Azure Functions, um eine Aufgabe zu planen, die eine Verbindung mit Azure SQL-Datenbank herstellt, um regelmäßig Zeilen zu bereinigen.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: functions
 ms.devlang: multiple
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: 9d8261a22f5ea9ce61bcdc79d24a6c054597039b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 2947fc6da0c4559e81cf97255b8375b020e0b657
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
-In diesem Thema wird gezeigt, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, der Zeilen in einer Tabelle in einer Azure SQL-Datenbank-Instanz bereinigt. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Timertrigger im Azure-Portal erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
+In diesem Thema wird gezeigt, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, der Zeilen in einer Tabelle in einer Azure SQL-Datenbank-Instanz bereinigt. Die neue C#-Skriptfunktion wird basierend auf einer vordefinierten Vorlage für einen Timertrigger im Azure-Portal erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
 
 Damit Ihre Funktion einzelne Vorgänge wie das Erstellen, Lesen, Aktualisieren und Löschen in einer Mobile Apps-Tabelle verarbeiten kann, sollten Sie stattdessen die [Mobile Apps-Bindungen](functions-bindings-mobile-apps.md) verwenden.
 
@@ -40,7 +40,7 @@ Sie müssen die Verbindungszeichenfolge für die Datenbank abrufen, die Sie in [
  
 3. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
 
-4. Wählen Sie **Datenbank-Verbindungszeichenfolgen anzeigen** aus, und kopieren Sie die vollständige **ADO.NET**-Verbindungszeichenfolge.
+4. Wählen Sie **Datenbank-Verbindungszeichenfolgen anzeigen** aus, und kopieren Sie die vollständige **ADO.NET**-Verbindungszeichenfolge. 
 
     ![Kopieren Sie die ADO.NET-Verbindungszeichenfolge.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -70,14 +70,16 @@ Nun können Sie den C#-Funktionscode hinzufügen, der eine Verbindung mit Ihrer 
 
 ## <a name="update-your-function-code"></a>Aktualisieren Ihres Funktionscodes
 
-1. Wählen Sie in Ihrer Funktions-App die timer-trigger-Funktion aus.
+1. Wählen Sie im Portal in Ihrer Funktions-App die Funktion mit Timertrigger aus.
  
-3. Fügen Sie die folgenden Assemblyverweise am Anfang des vorhandenen Funktionscodes hinzu:
+3. Fügen Sie am Anfang des vorhandenen C#-Skriptfunktionscodes die folgenden Assemblyverweise hinzu:
 
     ```cs
     #r "System.Configuration"
     #r "System.Data"
     ```
+    >[!NOTE]
+    >Beim Code in diesen Beispielen handelt es sich um C#-Skripts aus dem Portal. Wenn Sie eine vorkompilierte C#-Funktion lokal entwickeln, müssen Sie stattdessen Verweise auf diese Assemblys in Ihrem lokalen Projekt hinzufügen.  
 
 3. Fügen Sie der Funktion die folgenden `using` -Anweisungen hinzu:
     ```cs
@@ -122,7 +124,7 @@ Informieren Sie sich als Nächstes darüber, wie Sie Functions mit Logic Apps f�
 
 Weitere Informationen zu Functions finden Sie in den folgenden Themen:
 
-* [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
+* [Azure Functions developer reference (Azure Functions-Entwicklerreferenz) (Azure Functions-Entwicklerreferenz)](functions-reference.md)  
   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
 * [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen  

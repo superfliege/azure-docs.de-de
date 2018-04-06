@@ -1,6 +1,6 @@
 ---
 title: Migrieren von VMs zu Azure Storage Premium | Microsoft-Dokumentation
-description: "Migrieren Sie Ihre vorhandenen virtuellen Computer zu Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden."
+description: Migrieren Sie Ihre vorhandenen virtuellen Computer zu Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden.
 services: storage
 documentationcenter: na
 author: yuemlu
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.openlocfilehash: 36ff73d36c752fb342dcfff2360b4f6f7013740e
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrieren zu Azure Storage Premium (Nicht verwaltete Datenträger)
 
@@ -163,7 +163,7 @@ Erstellen Sie ein Speicherkonto für die Verwaltung Ihrer virtuellen Festplatten
 Für Datenträger können Sie auswählen, dass einige in einem Standardspeicherkonto verbleiben (z.B. Datenträger, auf die weniger zugegriffen wird). Wir empfehlen jedoch ausdrücklich, alle Daten für Produktionsworkloads in Storage Premium zu verschieben.
 
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>Schritt 3: Kopieren der VHD mit AzCopy oder mit PowerShell
-Sie müssen Ihren Containerpfad und Speicherkontoschlüssel kennen, um eine dieser beiden Optionen nutzen zu können. Den Containerpfad und Speicherkontoschlüssel finden Sie hier: **Azure-Portal** > **Speicher**. Die Container-URL lautet beispielsweise „https://myaccount.blob.core.windows.net/meincontainer/“.
+Sie müssen Ihren Containerpfad und Speicherkontoschlüssel kennen, um eine dieser beiden Optionen nutzen zu können. Den Containerpfad und Speicherkontoschlüssel finden Sie hier: **Azure-Portal** > **Speicher**. Die Container-URL würde z.B. wie folgt lauten: https://myaccount.blob.core.windows.net/mycontainer/.
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Option 1: Kopieren einer VHD mit AzCopy (asynchrone Kopie)
 Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. Je nach Größe der virtuellen Festplatten kann dies einige Zeit in Anspruch nehmen. Denken Sie daran, die Eingangs-/Ausgangsgrenzen des Speicherkontos bei Verwendung dieser Option zu überprüfen. Ausführliche Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md) .
@@ -257,7 +257,7 @@ Nachdem Sie Ihre VHD in das lokale Verzeichnis verschoben haben, können Sie die
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Ein Beispiel-<Uri> lautet: ***https://storagesample.blob.core.windows.net/meincontainer/blob1.vhd***. Ein Beispiel für <FileInfo> ist ***C:\Pfad\zu\upload.vhd***.
+Ein Beispiel für <Uri> ist ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***. Ein Beispiel für <FileInfo> ist ***C:\Pfad\zu\upload.vhd***.
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Option 2: Verwenden von AzCopy zum Hochladen der VHD-Datei
 Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. Je nach Größe der virtuellen Festplatten kann dies einige Zeit in Anspruch nehmen. Denken Sie daran, die Eingangs-/Ausgangsgrenzen des Speicherkontos bei Verwendung dieser Option zu überprüfen. Ausführliche Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md) .

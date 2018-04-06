@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 68454d3f3880df82ca895d1c5f140ebdb6030e77
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6c6422bc2b13c0c40e48dabf0470c821b13e7851
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="acquire-an-access-token-for-a-vm-user-assigned-managed-service-identity-msi"></a>Abrufen eines Zugriffstokens für eine durch den Benutzer zugewiesenen verwalteten Dienstidentität (Managed Service Identity, MSI) für eine VM
 
@@ -42,7 +42,9 @@ Eine Clientanwendung kann ein [App-exklusives Zugriffstoken](~/articles/active-d
 | [Abrufen eines Tokens über cURL](#get-a-token-using-curl) | Beispiel zur Verwendung des MSI-REST-Endpunkts über einen Bash/cURL-Client |
 | [Behandlung bei Tokenablauf](#handling-token-expiration) | Anleitung zur Behandlung abgelaufener Zugriffstoken |
 | [Fehlerbehandlung](#error-handling) | Anleitung zur Behandlung von vom MSI-Tokenendpunkt zurückgegebenen HTTP-Fehlern |
+| [Leitfaden zur Drosselung](#throttling-guidance) | Leitfaden für den Umgang mit der Drosselung des MSI-Tokenendpunkts |
 | [Ressourcen-IDs für Azure-Dienste](#resource-ids-for-azure-services) | Abrufen von Ressourcen-IDs für unterstützte Azure-Dienste |
+
 
 ## <a name="get-a-token-using-http"></a>Abrufen eines Tokens über HTTP 
 
@@ -60,7 +62,7 @@ Beispielanforderung mit dem MSI-VM-Erweiterungsendpunkt (wird in Kürze als vera
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
 ```
 
-| Element | Beschreibung |
+| Element | BESCHREIBUNG |
 | ------- | ----------- |
 | `GET` | Das HTTP-Verb, mit dem angegeben wird, dass Sie Daten vom Endpunkt abrufen möchten. In diesem Fall ist dies ein OAuth-Zugriffstoken. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Der MSI-Endpunkt für den Instanzmetadatendienst. |
@@ -164,6 +166,16 @@ In diesem Abschnitt sind die möglichen Fehlerantworten aufgeführt. Der Status 
 |           | unsupported_response_type | Der Autorisierungsserver unterstützt das Abrufen eines Zugriffstokens mit dieser Methode nicht. |  |
 |           | invalid_scope | Der angeforderte Bereich ist ungültig, unbekannt oder falsch formatiert. |  |
 | 500 Interner Serverfehler | unknown | Beim Abrufen des Tokens aus Active Directory ist ein Fehler aufgetreten. Details finden Sie in den Protokollen unter *\<Dateipfad\>*. | Überprüfen Sie, ob die MSI auf dem virtuellen Computer aktiviert wurde. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren einer VM-MSI (Managed Service Identity, verwaltete Dienstidentität) über das Azure-Portal](msi-qs-configure-portal-windows-vm.md).<br><br>Überprüfen Sie zudem, ob Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Dies gilt vor allem für den Ressourcen-URI, der in der Abfragezeichenfolge angegeben ist. Unter „Beispiel für Anforderung“ im Abschnitt [Abrufen eines Tokens über HTTP](#get-a-token-using-http) finden Sie ein Beispiel, und unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](msi-overview.md#azure-services-that-support-azure-ad-authentication) finden Sie eine Liste mit Diensten und den dazugehörigen Ressourcen-IDs.
+
+## <a name="throttling-guidance"></a>Leitfaden zur Drosselung 
+
+Drosselungsgrenzwerte gelten für die Anzahl von Aufrufen, die an den MSI-IMDS-Endpunkt gerichtet werden. Wird der Drosselungsschwellenwert überschritten, schränkt der MSI-IMDS-Endpunkt alle weiteren Anforderungen ein, während die Drosselung aktiv ist. Während dieser Zeit gibt der MSI-IMDS-Endpunkt den HTTP-Statuscode 429 (zu viele Anforderungen) zurück, und die Anforderungen sind nicht erfolgreich. 
+
+Empfohlene Wiederholungsstrategie: 
+
+| **Wiederholungsstrategie** | **Einstellungen** | **Werte** | **So funktioniert's** |
+| --- | --- | --- | --- |
+|ExponentialBackoff |Anzahl der Wiederholungen<br />Min. Backoff<br />Max. Backoff<br />Delta-Backoff<br />Erster schneller Wiederholungsversuch |5<br />0 Sek.<br />60 Sekunden<br />2 Sek<br />false |Versuch 1 – Verzögerung 0 Sek.<br />Versuch 2 – Verzögerung ca. 2 Sek.<br />Versuch 3 – Verzögerung ca. 6 Sek.<br />Versuch 4 – Verzögerung ca. 14 Sek.<br />Versuch 5 – Verzögerung ca. 30 Sek. |
 
 ## <a name="resource-ids-for-azure-services"></a>Ressourcen-IDs für Azure-Dienste
 

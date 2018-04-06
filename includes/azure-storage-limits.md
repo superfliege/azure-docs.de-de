@@ -4,9 +4,9 @@
 | Maximale Speicherkontokapazität | 500 TiB<sup>2</sup> |
 | Maximale Anzahl an Blob-Containern, Blobs, Dateifreigaben, Tabellen, Warteschlangen, Entitäten oder Meldungen pro Speicherkonto | Keine Begrenzung |
 | Maximale Anforderungsrate pro Speicherkonto | 20.000 Anforderungen pro Sekunde<sup>2</sup> |
-| Max. Eingang<sup>3</sup> pro Speicherkonto (US-Regionen) | 10 GBit/s bei aktiviertem GRS/ZRS<sup>4</sup>, 20 GBit/s für LRS<sup>2</sup> |
+| Max. Eingang<sup>3</sup> pro Speicherkonto (US-Regionen) | 10 GBit/s bei aktiviertem RA-GRS/ZRS<sup>4</sup>, 20 GBit/s für LRS<sup>2</sup> |
 | Max. Ausgang<sup>3</sup> pro Speicherkonto (US-Regionen) | 20 GBit/s bei aktiviertem RA-GRS/GRS/ZRS<sup>4</sup>, 30 GBit/s für LRS<sup>2</sup> |
-| Max. Eingang<sup>3</sup> pro Speicherkonto (US-fremde Regionen) | 5 GBit/s bei aktiviertem GRS/ZRS<sup>4</sup>, 10 GBit/s für LRS<sup>2</sup> |
+| Max. Eingang<sup>3</sup> pro Speicherkonto (US-fremde Regionen) | 5 GBit/s bei aktiviertem RA-GRS/ZRS<sup>4</sup>, 10 GBit/s für LRS<sup>2</sup> |
 | Max. Ausgang<sup>3</sup> pro Speicherkonto (US-fremde Regionen) | 10 GBit/s bei aktiviertem RA-GRS/GRS/ZRS<sup>4</sup>, 15 GBit/s für LRS<sup>2</sup> |
 
 <sup>1</sup> Dies umfasst sowohl Standard- als auch Premium-Speicherkonten. Wenn Sie mehr als 200 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen. 

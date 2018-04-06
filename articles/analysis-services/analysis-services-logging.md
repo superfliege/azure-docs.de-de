@@ -1,31 +1,31 @@
 ---
-title: "Diagnoseprotokollierung für Azure Analysis Services | Microsoft-Dokumentation"
-description: "Informationen zum Einrichten der Diagnoseprotokollierung für Azure Analysis Services."
+title: Diagnoseprotokollierung für Azure Analysis Services | Microsoft-Dokumentation
+description: Informationen zum Einrichten der Diagnoseprotokollierung für Azure Analysis Services.
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: cadd47d2e5f490f82846ea562803fcd60f5405a7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 20e2e76e8df9421ee97671000f9557f5db34f1b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="setup-diagnostic-logging"></a>Einrichten der Diagnoseprotokollierung
 
-Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jeder Analysis Services-Lösung. Mit [Diagnoseprotokollen auf Azure-Ressourcenebene](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) können Sie Protokolle überwachen und an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, diese in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Log Analytics](https://azure.microsoft.com/services/log-analytics/), einem Bestandteil der [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite), exportieren. 
+Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jeder Analysis Services-Lösung. Mit [Diagnoseprotokollen auf Azure-Ressourcenebene](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) können Sie Protokolle überwachen und an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, diese in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Log Analytics](https://azure.microsoft.com/services/log-analytics/), einem Dienst von [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite), exportieren. 
 
-![Diagnoseprotokollierung in Storage, Event Hubs oder Operations Management Suite mithilfe von Log Analytics](./media/analysis-services-logging/aas-logging-overview.png)
+![Diagnoseprotokollierung für Storage, Event Hubs oder Log Analytics](./media/analysis-services-logging/aas-logging-overview.png)
 
 
 ## <a name="whats-logged"></a>Protokollierte Daten
@@ -171,7 +171,7 @@ Klicken Sie unter **Typ**, auf **AzureDiagnostics** und dann auf **Übernehmen**
 
 Wenn Sie auf **EventClass\_s** oder einen der Ereignisnamen klicken, wird in Log Analytics eine Abfrage erstellt. Speichern Sie die Abfragen, um sie zu einem späteren Zeitpunkt wiederverwenden zu können.
 
-Testen Sie auch die Operations Management Suite, die eine Website mit erweiterter Abfrage, Dashboards und Warnfunktionen für Log Analytics-Daten umfasst.
+Testen Sie auch Log Analytics, das eine Website mit erweiterter Abfrage, Dashboards und Warnfunktionen für gesammelte Daten umfasst.
 
 ### <a name="queries"></a>Abfragen
 

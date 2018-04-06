@@ -1,6 +1,6 @@
 ---
-title: "Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer | Microsoft-Dokumentation"
-description: "Dieser Artikel bietet eine Übersicht über Microsoft Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer."
+title: Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer | Microsoft-Dokumentation
+description: Dieser Artikel bietet eine Übersicht über Microsoft Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer.
 services: security
 documentationcenter: na
 author: DevTiw
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 03/13/2018
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: cc609d7c7b28fc4aef6eb1e25ee46fd77edd4102
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 73212a231d11136854115922df423a7cb5b08f05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer
 Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel stellen wir Ihnen die neue Technologie „Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer“ vor, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. Der Artikel enthält eine ausführliche Anleitung zur Verwendung der Funktionen einer Azure-Datenträgerverschlüsselung, z.B. die unterstützten Szenarien und die Benutzeroberflächen.
@@ -172,7 +172,7 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
   > [!NOTE]
   > Wenn Ihre Sicherheitsrichtlinie den Zugriff von virtuellen Azure-Computern auf das Internet beschränkt, können Sie den obigen URI auflösen und eine spezielle Regel konfigurieren, um ausgehende Verbindungen mit den IP-Adressen zuzulassen.
   >
-  >Konfigurieren von und Zugreifen auf Azure Key Vault hinter einer Firewall (https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall)
+  >Informationen zum Konfigurieren von Azure Key Vault hinter einer Firewall sowie zum Zugreifen auf Azure Key Vault hinter einer Firewall finden Sie hier: https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall)
 
 * Verwenden Sie die neueste Version des Azure PowerShell-SDK, um Azure Disk Encryption zu konfigurieren. Laden Sie die neueste Version von [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) herunter.
 
@@ -193,7 +193,7 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
 * Um die Datenträgerverschlüsselung mithilfe der Azure-CLI zu konfigurieren, benötigen Sie [dieses Bash-Skript](https://github.com/ejarvi/ade-cli-getting-started).
 * Wenn Sie mit Azure Disk Encryption verschlüsselte virtuelle Computer mit dem Azure Backup-Dienst sichern und wiederherstellen möchten, verschlüsseln Sie Ihre VMs mithilfe der Azure Disk Encryption-Schlüsselkonfiguration. Der Azure Backup-Dienst unterstützt verschlüsselte virtuelle Computer mit und ohne KEK-Konfiguration. Siehe [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup-Verschlüsselung](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
 
-* Beachten Sie beim Verschlüsseln eines Volumes mit Linux-Betriebssystem, dass derzeit am Ende des Prozesses ein VM-Neustart erforderlich ist. Der Neustart kann per Portal, PowerShell oder CLI durchgeführt werden.   Zum Nachverfolgen des Verschlüsselungsstatus können Sie regelmäßig die Statusmeldung abfragen, die von „Get-AzureRmVMDiskEncryptionStatus“ (https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) zurückgegeben wird.  Nach Abschluss der Verschlüsselung wird dies in der Statusmeldung angegeben, die von diesem Befehl zurückgegeben wird.  Beispiel: „ProgressMessage: OS disk successfully encrypted, please reboot the VM“ (ProgressMessage: Verschlüsselung des Betriebssystemdatenträgers erfolgreich, VM neu starten). Die VM kann dann neu gestartet und verwendet werden.  
+* Beachten Sie beim Verschlüsseln eines Volumes mit Linux-Betriebssystem, dass derzeit am Ende des Prozesses ein VM-Neustart erforderlich ist. Der Neustart kann per Portal, PowerShell oder CLI durchgeführt werden.   Fragen Sie zum Nachverfolgen des Status der Verschlüsselung in regelmäßigen Abständen die von „Get-AzureRmVMDiskEncryptionStatus“ (https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) zurückgegebene Statusmeldung ab.  Der Abschluss der Verschlüsselung wird in der Statusmeldung angegeben, die von diesem Befehl zurückgegeben wird. Beispiel: „ProgressMessage: OS disk successfully encrypted, please reboot the VM“ (ProgressMessage: Verschlüsselung des Betriebssystemdatenträgers erfolgreich, VM neu starten). Die VM kann dann neu gestartet und verwendet werden.  
 
 * In Azure Disk Encryption für Linux müssen Datenträger vor der Verschlüsselung über ein bereitgestelltes Dateisystem verfügen.
 
@@ -224,25 +224,25 @@ Verwenden Sie das folgende PowerShell-Cmdlet, um eine Azure AD-Anwendung zu erst
 ##### <a name="setting-up-the-azure-ad-client-id-and-secret-from-the-azure-portal"></a>Einrichten der Azure AD-Client-ID und des geheimen Azure AD-Clientschlüssels über das Azure-Portal
 Sie können die Azure AD-Client-ID und den zugehörigen geheimen Clientschlüssel im Azure-Portal einrichten. Führen Sie hierzu die folgenden Schritte aus:
 
-1. Klicken Sie auf die Registerkarte **Active Directory**.
+1. Klicken Sie auf **Alle Dienste > Azure Active Directory**.
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig3.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-service.png)
 
-2. Klicken Sie auf **Anwendung hinzufügen**, und geben Sie den Anwendungsnamen ein.
+2. Klicken Sie auf **App-Registrierungen > Registrierung einer neuen Anwendung**.
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig4.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-app-registration.png)
 
-3. Klicken Sie auf die Pfeilschaltfläche, und konfigurieren Sie die Anwendungseigenschaften.
+3. Geben Sie die angeforderten Informationen an, und erstellen Sie die Anwendung:
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig5.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-create-app.png)
 
-4. Klicken Sie unten links auf das Häkchen, um den Vorgang abzuschließen. Die Seite für die Anwendungskonfiguration wird geöffnet, auf der die Azure AD-Client-ID unten links angezeigt wird.
+4. Wählen Sie die neu erstellte Anwendung aus, um ihre Eigenschaften (einschließlich der Anwendungs-ID) anzuzeigen.  Klicken Sie zum Erstellen eines Schlüssels für die Anwendung auf **Einstellungen > Schlüssel**, fügen Sie eine Beschreibung und ein Ablaufdatum für den Schlüssel hinzu, und klicken Sie anschließend auf **Speichern**
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig6.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-create-pw.png)
 
-5. Speichern Sie das Azure AD-Clientgeheimnis, indem Sie auf die Schaltfläche **Speichern** klicken. Das Azure AD-Clientgeheimnis wird im Textfeld für die Schlüssel angezeigt. Sorgen Sie für eine sichere Aufbewahrung.
+5. Kopieren Sie den generierten Geheimniswert, und bewahren Sie ihn sicher auf.
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig7.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-save-pw.png)
 
 
 ##### <a name="use-an-existing-application"></a>Verwenden einer vorhandenen Anwendung
@@ -698,15 +698,15 @@ Auf Linux-VMs wird die Erweiterung „AzureDiskEncryptionForLinux“ verwendet.
 
 ### <a name="enable-encryption-on-pre-encrypted-iaas-vm-with-azure-managed-disk"></a>Aktivieren der Verschlüsselung auf vorverschlüsselten IaaS-VMs mit verwalteten Azure-Datenträgern
 Nutzen Sie die ARM-Vorlage für verwaltete Azure-Datenträger zum Erstellen einer verschlüsselten VM anhand einer vorverschlüsselten VHD mithilfe der ARM-Vorlage unter   
-[Create a new encrypted managed disk from a pre-encrypted VHD/storage blob] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk) (Erstellen eines verwalteten Datenträgers aus einer vorverschlüsselten VHD bzw. einem Speicherblob)
+[Erstellen eines neuen verschlüsselten, verwalteten Datenträgers auf der Grundlage einer vorverschlüsselten VHD/eines Speicherblobs] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
 
 ### <a name="enable-encryption-on-a-new-linux-iaas-vm-with-azure-managed-disk"></a>Aktivieren der Verschlüsselung auf neuen Linux-IaaS-VMs mit verwalteten Azure-Datenträgern
-Nutzen Sie die ARM-Vorlage für verwaltete Azure-Datenträger zum Erstellen einer neuen verschlüsselten Linux-IaaS-VM mithilfe der ARM-Vorlage unter   
-[Deployment of RHEL 7.2 with full disk encryption] (https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel) (Bereitstellen von RHEL 7.2 mit vollständiger Datenträgerverschlüsselung)
+Nutzen Sie die ARM-Vorlage für verwaltete Azure-Datenträger zum Erstellen einer neuen verschlüsselten Windows-IaaS-VM mithilfe der ARM-Vorlage unter   
+[Bereitstellung von RHEL 7.2 mit vollständiger Datenträgerverschlüsselung] (https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
 
 ### <a name="enable-encryption-on-a-new-windows-iaas-vm-with-azure-managed-disk"></a>Aktivieren der Verschlüsselung auf neuen Windows-IaaS-VMs mit verwalteten Azure-Datenträgern
  Nutzen Sie die ARM-Vorlage für verwaltete Azure-Datenträger zum Erstellen einer neuen verschlüsselten Windows-IaaS-VM mithilfe der ARM-Vorlage unter   
- [Create a new encrypted Windows IaaS Managed Disk VM from gallery image] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks) (Erstellen einer neuen verschlüsselten Windows-IaaS-VM mit einem verwalteten Datenträger aus einem Katalogimage)
+ [Erstellen eines neuen verschlüsselten virtuellen Windows-IaaS-Computers mit verwaltetem Datenträger auf der Grundlage eines Katalogimages] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
 
   > [!NOTE]
   >Es ist obligatorisch, außerhalb von Azure Disk Encryption und vor der Aktivierung von Azure Disk Encryption eine Momentaufnahme bzw. Sicherung einer VM zu erstellen, die auf einem verwalteten Datenträger basiert.  Sie können über das Portal eine Momentaufnahme des verwalteten Datenträgers erstellen oder Azure Backup verwenden.  Mit Sicherungen ist dafür gesorgt, dass eine Wiederherstellungsoption verfügbar ist, falls während der Verschlüsselung ein unerwarteter Fehler auftritt.  Nach der Erstellung einer Sicherung kann das Set-AzureRmVMDiskEncryptionExtension-Cmdlet verwendet werden, um verwaltete Datenträger durch das Angeben des Parameters „-skipVmBackup“ zu verschlüsseln.  Dieser Befehl führt für VMs, die auf verwalteten Datenträgern basieren, zu einem Fehler, bis eine Sicherung erstellt und dieser Parameter angegeben wurde.    

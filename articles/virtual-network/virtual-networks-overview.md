@@ -1,11 +1,11 @@
 ---
 title: Virtuelles Azure-Netzwerk | Microsoft-Dokumentation
-description: "Enthält Informationen zu den Konzepten und Features des virtuellen Azure-Netzwerks (Azure Virtual Network)."
+description: Enthält Informationen zu den Konzepten und Features des virtuellen Azure-Netzwerks (Azure Virtual Network).
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 9633de4b-a867-4ddf-be3c-a332edf02e24
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/1/2018
 ms.author: jdial
-ms.openlocfilehash: fadc1994cd930df36387a5bfb302c00d66f74fad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 8d02afcc590482fdca4705ac582d85bb985dd3c2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
@@ -32,7 +32,7 @@ Azure Virtual Network bietet die folgenden allgemeinen Funktionen:
 - **[Virtuelle Netzwerkkonnektivität:](#connect-vnets)** Virtuelle Netzwerke können miteinander verbunden sein. Somit wird ermöglicht, dass Ressourcen in einem beliebigen virtuellen Netzwerk mit Ressourcen in einem beliebigen anderen virtuellen Netzwerk kommunizieren.
 - **[Lokale Konnektivität:](#connect-on-premises)** Ein virtuelles Netzwerk kann mit einem lokalen Netzwerk verbunden werden, wodurch Ressourcen in die Lage versetzt werden, miteinander zu kommunizieren.
 - **[Filtern von Datenverkehr:](#filtering)** Sie können Netzwerkdatenverkehr zu und von Ressourcen in einem virtuellen Netzwerk nach Quell-IP-Adresse und -Port, Ziel-IP-Adresse und -Port und Protokoll filtern.
-- **[Routing:](#routing)** Sie können das Standardrouting von Azure optional außer Kraft setzen, indem Sie Ihre eigenen Routen konfigurieren oder BGP-Routen über ein Netzwerkgateway verbreiten.
+- **[Routing:](#routing)** Sie können das Standardrouting von Azure optional außer Kraft setzen, indem Sie Ihre eigenen Routen konfigurieren oder Border Gateway Protocol-Routen (BGP) über ein Netzwerkgateway verbreiten.
 
 ## <a name = "isolation"></a>Netzwerkisolation und -segmentierung
 

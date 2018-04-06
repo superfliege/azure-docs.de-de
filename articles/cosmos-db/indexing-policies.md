@@ -1,10 +1,10 @@
 ---
-title: "Indizierungsrichtlinien für Azure Cosmos DB | Microsoft-Dokumentation"
-description: "Erhalten Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB. In diesem Artikel wird das Konfigurieren und Ändern der Indizierungsrichtlinie zur automatischen Indizierung und zur Steigerung der Leistung erläutert."
+title: Indizierungsrichtlinien für Azure Cosmos DB | Microsoft-Dokumentation
+description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB. In diesem Artikel wird das Konfigurieren und Ändern der Indizierungsrichtlinie zur automatischen Indizierung und zur Steigerung der Leistung erläutert.
 keywords: Funktionsweise von Indizierung, automatische Indizierung, Indizierungsdatenbank
 services: cosmos-db
-documentationcenter: 
-author: arramac
+documentationcenter: ''
+author: rafats
 manager: jhubbard
 editor: monicar
 ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
@@ -13,19 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 08/17/2017
-ms.author: arramac
-ms.openlocfilehash: b09f5323f0378721412baade9be9926ebd0c171e
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 03/26/2018
+ms.author: rafats
+ms.openlocfilehash: 5610c5fdc6a04f9ef13d2e4592f0d7e5d8eba30c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Unterstützen von Indexdaten durch Azure Cosmos DB
 
 Standardmäßig werden alle Azure Cosmos DB-Daten indiziert. Zahlreiche Kunden lassen zwar gerne alle Aspekte der Indizierung von Azure Cosmos DB automatisch verwalten, aber Sie können in Azure Cosmos DB auch eine benutzerdefinierte *Indizierungsrichtlinie* für Sammlungen während der Erstellung angeben. Indizierungsrichtlinien in Azure Cosmos DB sind flexibler und leistungsfähiger als sekundäre Indizes, die auf anderen Datenbankplattformen angeboten werden. In Azure Cosmos DB können Sie die Form des Index entwerfen und anpassen, ohne Einbußen bei der Schemaflexibilität hinnehmen zu müssen. 
 
 Um zu erfahren, wie die Indizierung in Azure Cosmos DB funktioniert, müssen Sie unbedingt verstehen, dass Sie beim Verwalten der Indizierungsrichtlinie differenzierte Kompromisse zwischen dem Indexspeicheraufwand, dem Schreib- und Abfragedurchsatz und der Abfragekonsistenz eingehen können.  
+
+Im folgenden Video zeigt Azure Cosmos DB-Programm-Manager Andrew Liu die Azure Cosmos DB-Funktionen zur automatischen Indizierung, und wie Sie die Indizierungsrichtlinie auf Ihrem Azure Cosmos DB-Container optimieren und konfigurieren können. 
+
+>[!VIDEO https://www.youtube.com/embed/uFu2D-GscG0]
 
 In diesem Artikel befassen wir uns eingehend mit Azure Cosmos DB-Indizierungsrichtlinien, der Anpassung von Indizierungsrichtlinien und den zugehörigen Vor- und Nachteilen. 
 
@@ -362,7 +366,7 @@ Am 7. Juli 2015 wurde mit der REST-API-Version 2015-06-03 eine Änderung im Sche
 Die folgenden Änderungen wurden in die JSON-Spezifikation implementiert:
 
 * Die Indizierungsrichtlinie unterstützt Bereichsindizes für Zeichenfolgen.
-* Jeder Pfad kann mehrere Indexdefinitionen aufweisen, und zwar eine für jeden Datentyp. It can have one for each data type.
+* Jeder Pfad kann mehrere Indexdefinitionen aufweisen. Er kann eine für jeden Datentyp aufweisen.
 * Die Indizierungsgenauigkeit unterstützt 1 bis 8 bei Zahlen und 1 bis 100 bei Zeichenfolgen sowie den Wert „-1“ (maximale Genauigkeit).
 * Pfadsegmente erfordern für die einzelnen Pfade keine doppelten Anführungszeichen als Escapezeichen. Sie können beispielsweise einen Pfad für **/title/?** hinzufügen, statt **/"title"/?** zu verwenden.
 * Der Stammpfad für "alle Pfade" kann als **/\*** dargestellt werden (zusätzlich zu **/**).

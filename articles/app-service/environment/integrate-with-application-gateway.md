@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: ccompy
-ms.openlocfilehash: d56eab79c3b3f6b37dc39d8e4bea0d5b7759631a
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c64b686d7a9016b3834096ebc88179db8972098f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-an-application-gateway"></a>Integrieren Ihrer ILB-App Service-Umgebung in ein Application Gateway #
 
-Die [Azure App Service-Umgebung für PowerApps](./intro.md) ist eine Bereitstellung von Azure App Service in einem Subnetz im virtuellen Azure-Netzwerk eines Kunden. Sie kann für den App-Zugriff über einen öffentlichen oder privaten Endpunkt bereitgestellt werden. Die Bereitstellung der App Service-Umgebung mit einem privaten Endpunkt (d.h. mit einem internen Lastenausgleich) wird als ILB-App Service-Umgebung bezeichnet.  
+Die [Azure App Service-Umgebung](./intro.md) ist eine Bereitstellung von Azure App Service in einem Subnetz im virtuellen Azure-Netzwerk eines Kunden. Sie kann für den App-Zugriff über einen öffentlichen oder privaten Endpunkt bereitgestellt werden. Die Bereitstellung der App Service-Umgebung mit einem privaten Endpunkt (d.h. mit einem internen Lastenausgleich) wird als ILB-App Service-Umgebung bezeichnet.  
 
 Azure Application Gateway ist eine virtuelle Anwendung, die Lastenausgleich in Schicht 7, SSL-Abladung und WAF-Schutz (Web Application Firewall) bietet. Es kann eine öffentliche IP-Adresse überwachen und Datenverkehr an Ihren Anwendungsendpunkt routen. 
 

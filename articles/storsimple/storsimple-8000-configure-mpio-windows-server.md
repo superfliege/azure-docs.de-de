@@ -1,30 +1,30 @@
 ---
-title: "Konfigurieren von MPIO für Ihr StorSimple-Gerät | Microsoft Docs"
-description: "Beschreibt, wie Sie Multipfad-E/A für Ihr StorSimple-Gerät konfigurieren, das mit einem Host unter Windows Server 2012 R2 verbunden ist."
+title: Konfigurieren von MPIO für Ihr StorSimple-Gerät | Microsoft Docs
+description: Beschreibt, wie Sie Multipfad-E/A für Ihr StorSimple-Gerät konfigurieren, das mit einem Host unter Windows Server 2012 R2 verbunden ist.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/05/2017
+ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 9fe3fa3a2df63d111de742ecb48b1469aad543cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f2b094604f486d283574f4669fcad6f72bd4431
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Konfigurieren von Multipfad-E/A für Ihr StorSimple-Gerät
 
 In diesem Tutorial werden die Schritte zum Installieren und Verwenden von MPIO (Multipath I/O, Multipfad-E/A) auf einem Host unter Windows Server 2012 R2 beschrieben, der mit einem physischen StorSimple-Gerät verbunden ist. Die Anleitung in diesem Artikel gilt nur für physische Geräte der StorSimple 8000-Serie. MPIO wird von StorSimple Cloud Appliances derzeit nicht unterstützt.
 
-Microsoft hat Unterstützung für die Multipfad-E/A-Funktion (Multipath I/O, MPIO) in Windows Server integriert, um Ihnen beim Erstellen hoch verfügbarer, fehlertoleranter SAN-Konfigurationen zu helfen. MPIO verwendet redundante physische Pfadkomponenten (Adapter, Kabel und Switches), um logische Pfade zwischen dem Server und dem Speichergerät zu erstellen. Wenn bei einer Komponente ein Fehler auftritt, durch den ein logischer Pfad fehlschlägt, verwendet die Multipfad-Logik einen anderen Pfad für E/A, sodass Anwendungen weiterhin auf ihre Daten zugreifen können. Darüber hinaus kann MPIO abhängig von Ihrer Konfiguration auch die Leistung durch ein Umverteilen der Lasten auf alle Pfade verbessern. Weitere Informationen finden Sie unter [Multipfad-E/A (Übersicht)](https://technet.microsoft.com/library/cc725907.aspx "Multipfad-E/A (Übersicht) and features").
+Windows Server unterstützt das MPIO-Feature (Multipath I/O, Multipfad-E/A), um Sie bei der Erstellung hochverfügbarer, fehlertoleranter iSCSI-Netzwerkkonfigurationen zu unterstützen. MPIO verwendet redundante physische Pfadkomponenten (Adapter, Kabel und Switches), um logische Pfade zwischen dem Server und dem Speichergerät zu erstellen. Wenn bei einer Komponente ein Fehler auftritt, durch den ein logischer Pfad fehlschlägt, verwendet die Multipfad-Logik einen anderen Pfad für E/A, sodass Anwendungen weiterhin auf ihre Daten zugreifen können. Darüber hinaus kann MPIO abhängig von Ihrer Konfiguration auch die Leistung durch ein Umverteilen der Lasten auf alle Pfade verbessern. Weitere Informationen finden Sie unter [Multipfad-E/A (Übersicht)](https://technet.microsoft.com/library/cc725907.aspx "Multipfad-E/A (Übersicht) and features").
 
 Für eine hohe Verfügbarkeit Ihrer StorSimple-Lösung sollte MPIO auf dem StorSimple-Gerät konfiguriert werden. Wenn MPIO auf den Hostservern unter Windows Server 2012 R2 installiert ist, können die Server den Ausfall einer Verknüpfung, des Netzwerks oder einer Schnittstelle tolerieren.
 
@@ -37,7 +37,7 @@ Führen Sie die folgenden Schritte aus, um MPIO auf Ihrem StorSimple-Gerät zu k
 * Schritt 1: Installieren von MPIO auf dem Windows Server-Host
 * Schritt 2: Konfigurieren von MPIO für StorSimple-Volumes
 * Schritt 3: Bereitstellen von StorSimple-Volumes auf dem Host
-* Schritt 4: Konfigurieren von MPIO für hohe Verfügbarkeit und Lastenausgleich
+* Schritt 4: Konfigurieren von MPIO für Hochverfügbarkeit und Lastenausgleich
 
 Jeder der vorherigen Schritte wird in den folgenden Abschnitten erläutert.
 
@@ -58,11 +58,9 @@ Gehen Sie folgendermaßen vor, um dieses Feature auf Ihrem Windows Server-Host z
    
    1. Klicken Sie auf der Seite **Voraussetzungen** auf **Weiter**.
    2. Akzeptieren Sie auf der Seite **Auswählen des Installationstyps** die Standardeinstellung **Rollenbasierte oder featurebasierte Installation**. Klicken Sie auf **Weiter**.
-
    
        ![Hinzufügen von Rollen und Features – Assistent 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
    3. Wählen Sie auf der Seite **Zielserver auswählen** die Option **Einen Server aus Serverpool auswählen** aus. Ihr Hostserver sollte automatisch ermittelt werden. Klicken Sie auf **Weiter**.
-
    4. Klicken Sie auf der Seite **Serverrollen auswählen** auf **Weiter**.
    5. Wählen Sie auf der Seite **Auswählen von Features** die Option **Multipfad-E/A** aus, und klicken Sie dann auf **Weiter**.
    
@@ -149,18 +147,18 @@ Nachdem MPIO unter Windows Server konfiguriert wurde, können auf dem StorSimple
 > **Ändern Sie die Standardparameter nicht.**
 
 
-## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>Schritt 4: Konfigurieren von MPIO für hohe Verfügbarkeit und Lastenausgleich
+## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>Schritt 4: Konfigurieren von MPIO für Hochverfügbarkeit und Lastenausgleich
 
-Für auf Multipfad basierende hohe Verfügbarkeit und Lastenausgleich müssen mehrere Sitzungen manuell hinzugefügt werden, um die verschiedenen verfügbaren Pfade zu deklarieren. Wenn beispielsweise der Host und das Gerät jeweils zwei Schnittstellen haben, die mit dem SAN verbunden sind, benötigen Sie vier Sitzungen, die mit den richtigen Pfadpermutationen konfiguriert sein müssen (wenn sich jede DATA- und Host-Schnittstelle in einem anderen IP-Subnetz befindet und nicht routingfähig ist, sind nur zwei Sitzungen erforderlich).
+Für auf Multipfad basierende Hochverfügbarkeit und den Lastenausgleich müssen mehrere Sitzungen manuell hinzugefügt werden, um die verschiedenen verfügbaren Pfade zu deklarieren. Wenn beispielsweise der Host und das Gerät jeweils zwei Schnittstellen haben, die mit dem iSCSI-Netzwerk verbunden sind, benötigen Sie vier Sitzungen, die mit den richtigen Pfadpermutationen konfiguriert sein müssen. (Wenn sich jede DATA- und Host-Schnittstelle in einem anderen IP-Subnetz befindet und nicht routingfähig ist, sind nur zwei Sitzungen erforderlich.)
 
 **Es wird empfohlen, dass Sie über mindestens acht aktive parallele Sitzungen zwischen dem Gerät und dem Anwendungshost verfügen.** Dies kann erreicht werden, indem vier Netzwerkschnittstellen auf dem Windows Server-System aktiviert werden. Verwenden Sie physische Netzwerkschnittstellen oder virtuelle Schnittstellen über Netzwerkvirtualisierungstechnologien auf der Hardware- oder Betriebssystemebene auf Ihrem Windows Server-Host. Bei zwei Netzwerkschnittstellen auf dem Gerät würde diese Konfiguration acht aktive Sitzungen ergeben. Diese Konfiguration trägt zur Optimierung des Geräte- und Clouddurchsatzes bei.
 
 > [!IMPORTANT]
-> **Es wird nicht empfohlen, 1-GbE- und 10-GbE-Netzwerkschnittstellen zu mischen. Bei Verwendung von zwei Netzwerkschnittstellen müssen beide denselben Typ haben.**
+> **Es wird nicht empfohlen, 1-GbE- und 10-GbE-Netzwerkschnittstellen zu mischen. Bei Verwendung von zwei Netzwerkschnittstellen müssen beide vom gleichen Typ sein.**
 
 Das folgende Verfahren beschreibt, wie Sitzungen hinzugefügt werden, wenn ein StorSimple-Gerät mit zwei Netzwerkschnittstellen mit einem Host mit zwei Netzwerkschnittstellen verbunden ist. Damit verfügen Sie lediglich über vier aktive Sitzungen. Führen Sie die gleichen Schritte für ein StorSimple-Gerät mit zwei Netzwerkschnittstellen aus, das mit einem Host mit vier Netzwerkschnittstellen verbunden ist. Sie müssen dann anstelle der hier beschriebenen vier Sitzungen acht Sitzungen konfigurieren.
 
-### <a name="to-configure-mpio-for-high-availability-and-load-balancing"></a>So konfigurieren Sie MPIO für hohe Verfügbarkeit und Lastenausgleich
+### <a name="to-configure-mpio-for-high-availability-and-load-balancing"></a>So konfigurieren Sie MPIO für Hochverfügbarkeit und Lastenausgleich
 
 1. Führen Sie eine Ermittlung des Ziels aus: Klicken Sie im Dialogfeld **Eigenschaften des iSCSI-Initiators** auf der Registerkarte **Erkennung** auf **Portal ermitteln**.
 2. Geben Sie im Dialogfeld **Mit Ziel verbinden** die IP-Adresse einer Netzwerkschnittstelle des Geräts ein.
@@ -174,15 +172,15 @@ Das folgende Verfahren beschreibt, wie Sitzungen hinzugefügt werden, wenn ein S
 6. Gehen Sie im Dialogfeld **Erweiterte Einstellungen** folgendermaßen vor:
    
    1. Wählen Sie in der Dropdownliste **Lokaler Adapter** die Option **Microsoft iSCSI-Initiator** aus.
-   2. Wählen Sie die IP-Adresse des Hosts in der Dropdownliste **Initiator-IP** aus.
-   3. Wählen Sie die IP-Adresse für die Datenschnittstelle, die auf dem Gerät aktiviert ist, in der Dropdownliste **Zielportal-IP** aus.
+   2. Wählen Sie in der Dropdownliste **Initiator-IP** die IP-Adresse aus, die der ersten Schnittstelle auf dem Host entspricht (iSCSI-Schnittstelle).
+   3. Wählen Sie in der Dropdownliste **Zielportal-IP** die IP-Adresse für die erste auf dem Gerät aktivierte Datenschnittstelle aus.
    4. Klicken Sie auf **OK** , um zum Dialogfeld "Eigenschaften des iSCSI-Initiators" zurückzukehren.
 7. Klicken Sie auf **Eigenschaften** und dann im Dialogfeld **Eigenschaften** auf **Sitzung hinzufügen**.
 8. Aktivieren Sie im Dialogfeld **Mit Ziel verbinden** das Kontrollkästchen **Multipfad aktivieren**, und klicken Sie dann auf **Erweitert**.
 9. Gehen Sie im Dialogfeld **Erweiterte Einstellungen** folgendermaßen vor:
    
    1. Wählen Sie in der Dropdownliste **Lokaler Adapter** die Option **Microsoft iSCSI-Initiator** aus.
-   2. Wählen Sie die IP-Adresse, die der zweiten Datenschnittstelle auf dem Host entspricht, in der Dropdownliste **Initiator-IP** aus.
+   2. Wählen Sie in der Dropdownliste **Initiator-IP** die IP-Adresse aus, die der zweiten iSCSI-Schnittstelle auf dem Host entspricht.
    3. Wählen Sie die IP-Adresse für die zweite Datenschnittstelle, die auf dem Gerät aktiviert ist, in der Dropdownliste **Zielportal-IP** aus.
    4. Klicken Sie auf **OK**, um zum Dialogfeld **Eigenschaften des iSCSI-Initiators** zurückzukehren. Sie haben dem Ziel damit eine zweite Sitzung hinzugefügt.
 10. Wiederholen Sie die Schritte 8 bis 10, um dem Ziel weitere Sitzungen (Pfade) hinzuzufügen. Mit zwei Schnittstellen auf dem Host und zwei Schnittstellen auf dem Gerät können Sie insgesamt vier Sitzungen hinzufügen.

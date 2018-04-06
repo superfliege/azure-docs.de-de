@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2018
+ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: a86fc568a0c7f4ada0b853cda8a7b2e06ed7dfcb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: db472345bacda916f1b1664ed7803978ab235a2a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen 
 
@@ -24,15 +24,13 @@ Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglich
 
 Das Feature für Verwaltungsgruppen ist in einer öffentlichen Vorschauversion verfügbar. Um mit der Verwendung von Verwaltungsgruppen zu beginnen, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und suchen Sie nach **Verwaltungsgruppen** im Abschnitt **Alle Dienste**. 
 
-Azure Policy wird für Verwaltungsgruppen in der Public Preview noch nicht unterstützt. Dies folgt in den kommenden Wochen.  
-
 Beispielsweise können Sie eine Richtlinie auf eine Verwaltungsgruppe anwenden, die die verfügbaren Regionen zum Erstellen virtueller Computer beschränkt. Diese Richtlinie wird auf alle Verwaltungsgruppen, Abonnements und Ressourcen in dieser Verwaltungsgruppe angewendet, sodass virtuelle Computer nur in dieser Region erstellt werden können.
 
 ## <a name="hierarchy-of-management-groups-and-subscriptions"></a>Hierarchie von Verwaltungsgruppen und Abonnements 
 
 Sie können eine flexible Struktur von Verwaltungsgruppen und Abonnements aufbauen, um Ihre Ressourcen für die einheitliche Richtlinien- und Zugriffsverwaltung in einer Hierarchie zu organisieren. Das folgende Diagramm zeigt eine Beispielhierarchie, die aus Verwaltungsgruppen und Abonnements besteht, die nach Abteilung organisiert sind.    
 
-![Hierarchie](media/management-groups/MG_overview.png)
+![Struktur](media/management-groups/MG_overview.png)
 
 Indem Sie eine Hierarchie erstellen, die nach Abteilungen gruppiert ist, können Sie Rollen der [rollenbasierten Zugriffssteuerung (RBAC) in Azure](../active-directory/role-based-access-control-what-is.md) zuweisen, die entsprechend den Abteilungen in dieser Verwaltungsgruppe *erben*. Mithilfe von Verwaltungsgruppen können Sie die Workload und das Risiko von Fehlern verringern, indem Sie die Rolle nur einmal zuweisen müssen. 
 
@@ -42,6 +40,14 @@ Indem Sie eine Hierarchie erstellen, die nach Abteilungen gruppiert ist, können
     - Dieser Grenzwert schließt nicht die Stammebene oder die Abonnementebene ein.
 - Jede Verwaltungsgruppe kann nur ein übergeordnetes Element unterstützen.
 - Jede Verwaltungsgruppe kann mehrere untergeordnete Elemente besitzen. 
+
+### <a name="preview-subscription-visibility-limitation"></a>Eingeschränkte Sichtbarkeit von Abonnements in der Vorschauversion 
+Zurzeit weist die Vorschauversion die Einschränkung auf, dass keine Abonnements angezeigt werden können, deren Zugriff Sie geerbt haben. Der Zugriff wird an das Abonnement vererbt, der Azure Resource Manager kann jedoch vererbte Zugriffe noch nicht berücksichtigen.  
+
+Wenn Sie Informationen zum Abonnement mithilfe der REST-API abrufen, werden Details zurückgegeben, da Sie zwar Zugriff auf die Abonnements haben, diese jedoch weder im Azure-Portal noch in Azure PowerShell angezeigt werden. 
+
+An der Lösung dieses Problem wird zurzeit gearbeitet. Noch vor der Ankündigung der allgemeinen Verfügbarkeit von Verwaltungsgruppen wird eine Lösung bereitgestellt.  
+
 
 ## <a name="root-management-group-for-each-directory"></a>Stammverwaltungsgruppe für jedes Verzeichnis
 

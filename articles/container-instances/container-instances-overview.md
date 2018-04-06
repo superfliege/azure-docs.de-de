@@ -6,14 +6,14 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: overview
-ms.date: 03/23/2018
+ms.date: 03/29/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: d6e0637974d8076fc610d7154ad507f4e7af0cfa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e10d4046f543fbcc479421f4ca8f10221abc806f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -25,6 +25,10 @@ Azure Container Instances ist eine großartige Lösung für jedes Szenario, das 
 
 Container bieten im Vergleich zu virtuellen Computern bedeutende Vorteile beim Start. Azure Container Instances kann in Sekundenschnelle Container in Azure starten, ohne virtuelle Computer bereitstellen und verwalten zu müssen.
 
+## <a name="public-ip-connectivity-and-dns-name"></a>Öffentliche IP-Konnektivität und DNS-Name
+
+Mit Azure Container Instances können Sie Ihre Container direkt über eine öffentliche IP-Adresse und einen vollqualifizierten Domainnamen (FQDN) im Internet verfügbar machen. Beim Erstellen einer Containerinstanz können Sie eine benutzerdefinierte DNS-Namensbezeichnung angeben, sodass Ihre Anwendung unter „*customlabel*.*azureregion*.azurecontainer.io“ erreichbar ist.
+
 ## <a name="hypervisor-level-security"></a>Sicherheit auf Hypervisor-Ebene
 
 In der Vergangenheit verfügten Container zwar über Anwendungsabhängigkeitsisolierung und Ressourcenkontrolle, galten aber nicht als ausreichend gehärtet, um in einer gefährlichen Umgebung mit mehreren Mandanten verwendet werden zu können. Azure Container Instances gewährleistet, dass Ihre Anwendung in einem Container isoliert ist – genau wie bei einem virtuellen Computer.
@@ -32,10 +36,6 @@ In der Vergangenheit verfügten Container zwar über Anwendungsabhängigkeitsiso
 ## <a name="custom-sizes"></a>Benutzerdefinierte Größen
 
 Container sind in der Regel für die Ausführung einer einzelnen Anwendung optimiert. Die genauen Anforderungen dieser Anwendungen können sich jedoch erheblich voneinander unterscheiden. Azure Container Instances ermöglicht exakte Angaben für CPU-Kerne und Arbeitsspeicher und bietet dadurch eine optimale Auslastung. Dank sekundengenauer Abrechnung können Sie Ihre Ausgaben auf der Grundlage Ihres tatsächlichen Bedarfs präzise optimieren.
-
-## <a name="public-ip-connectivity"></a>Öffentliche IP-Konnektivität
-
-Mit Azure Container Instances können Sie Ihre Container direkt über eine öffentliche IP-Adresse und eine DNS-Namensbezeichnung im Internet verfügbar machen. Die Netzwerkfunktionen werden in Zukunft noch erweitert, um die Integration in virtuelle Netzwerke, Load Balancer und andere zentrale Komponenten der Azure-Netzwerkinfrastruktur zu ermöglichen.
 
 ## <a name="persistent-storage"></a>Permanenter Speicher
 
@@ -53,4 +53,7 @@ Azure Container Instances unterstützt die Planung von [Gruppen mit mehreren Con
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Stellen Sie mit einem einzelnen Befehl einen Container in Azure bereit. Eine entsprechende Anleitung finden Sie in unserem [Schnellstarthandbuch](container-instances-quickstart.md).
+Stellen Sie mit einem einzelnen Befehl einen Container in Azure bereit. Eine entsprechende Anleitung finden Sie in unserem Schnellstarthandbuch:
+
+> [!div class="nextstepaction"]
+> [Schnellstartanleitung: Erstellen Ihres ersten Containers in Azure Container Instances](container-instances-quickstart.md)

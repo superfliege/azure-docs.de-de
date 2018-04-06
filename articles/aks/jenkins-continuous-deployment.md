@@ -1,19 +1,19 @@
 ---
-title: "Continuous Deployment mit Jenkins über Kubernetes in Azure Container Service"
-description: "Automatisieren eines Continuous Deployment-Prozesses mit Jenkins zum Bereitstellen und Aktualisieren einer Container-App über Kubernetes in Azure Container Service"
+title: Continuous Deployment mit Jenkins über Kubernetes in Azure Container Service
+description: Automatisieren eines Continuous Deployment-Prozesses mit Jenkins zum Bereitstellen und Aktualisieren einer Container-App über Kubernetes in Azure Container Service
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1293fda45602203570a0f7f75481f67bdcb6edf3
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8238e0f55b88e4fa207357630aa4228250c33249
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Continuous Deployment mit Jenkins und Azure Container Service
 
@@ -161,6 +161,20 @@ Enter the following to Unlock Jenkins:
 667e24bba78f4de6b51d330ad89ec6c6
 ```
 
+Wenn beim Anmelden bei Jenkins Probleme auftreten, erstellen Sie eine SSH-Sitzung mit der Jenkins-VM, und starten Sie den Jenkins-Dienst neu. Die IP-Adresse des virtuellen Computers ist dieselbe Adresse, die vom Buildskript bereitgestellt wurde. Der VM-Administratorbenutzername lautet `azureuser`.
+
+```bash
+ssh azureuser@52.166.118.64
+```
+
+Starten Sie den Jenkins-Dienst neu.
+
+```bash
+sudo service jenkins restart
+```
+
+Aktualisieren Sie Ihren Browser, und das Anmeldeformular von Jenkins sollte angezeigt werden.
+
 ## <a name="jenkins-environment-variables"></a>Jenkins-Umgebungsvariablen
 
 Eine Jenkins-Umgebungsvariable wird verwendet, um den Namen des ACR-Anmeldeservers (Azure Container Registry) zu speichern. Auf diese Variable wird während der Ausführung eines Jenkins-Continuous Deployment-Auftrags verwiesen.
@@ -262,7 +276,7 @@ Nachdem der Prozess abgeschlossen ist, können Sie unter „build history“ auf
 Hängen Sie als Nächstes das Anwendungsrepository an den Jenkins-Buildserver an, damit bei jedem Commit ein neuer Buildvorgang ausgelöst wird.
 
 1. Navigieren Sie zum geforkten GitHub-Repository.
-2. Wählen Sie **Settings** und anschließend auf der linken Seite **Integrations & Services** aus.
+2. Wählen Sie **Einstellungen** und anschließend **Integrations & Services** (Integrationen und Dienste) auf der linken Seite aus.
 3. Wählen Sie die Option **Add Service**, geben Sie im Filterfeld `Jenkins (GitHub plugin)` ein, und wählen Sie das Plug-In aus.
 4. Geben Sie als Jenkins-Hook-URL `http://<publicIp:8080>/github-webhook/` ein, wobei `publicIp` die IP-Adresse des Jenkins-Servers ist. Stellen Sie sicher, dass Sie den nachgestellten Schrägstrich (/) hinzufügen.
 5. Wählen Sie „Add service“.

@@ -1,6 +1,6 @@
 ---
-title: "Beschränkungen in Azure Database for MySQL"
-description: "Dieser Artikel beschreibt die Einschränkungen in Azure Database for MySQL, z.B. die Anzahl der Verbindungs- und Speichermoduloptionen."
+title: Beschränkungen in Azure Database for MySQL
+description: Dieser Artikel beschreibt die Einschränkungen in Azure Database for MySQL, z.B. die Anzahl der Verbindungs- und Speichermoduloptionen.
 services: mysql
 author: kamathsun
 ms.author: sukamat
@@ -8,42 +8,41 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 85e57170c1cbd977d2de6e7e614916333c79e047
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 2fa69182b4238cfd19fcc9571e4327512e9528c1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Beschränkungen in Azure Database for MySQL
-Der Azure-Datenbank für MySQL-Dienst ist in der öffentlichen Vorschau verfügbar. In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben. Sehen Sie sich auch die [allgemeinen Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) an, die für die MySQL-Datenbank-Engine gelten.
+In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben. Sehen Sie sich auch die [allgemeinen Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) an, die für die MySQL-Datenbank-Engine gelten.
 
 ## <a name="service-tier-maximums"></a>Maximalwerte der Diensttarife
 Azure Database for MySQL weist mehrere Diensttarife auf, aus denen Sie bei der Erstellung eines Servers wählen können. Weitere Informationen finden Sie unter [Optionen und Leistung von Azure Database for MySQL: Übersicht über die verfügbaren Funktionen in den einzelnen Tarifen](concepts-pricing-tiers.md).  
 
-In jedem Diensttarif ist eine maximale Anzahl von Verbindungen, Computeeinheiten und Speicherkapazitäten in der Vorschauphase verfügbar. Es gelten folgende Maximalwerte: 
+In jedem Diensttarif ist eine maximale Anzahl von Verbindungen, Compute-Einheiten und Speicherkapazitäten verfügbar. Es gelten folgende Maximalwerte: 
 
-|**Tarif**| **Computegeneration**|**Virtuelle Kerne**| **Max. Anzahl von Verbindungen**|
+|**Tarif**| **Computegeneration**|**vCore(s)**| **Max. Anzahl von Verbindungen**|
 |---|---|---|---|
 |Basic| Gen 4| 1| 50|
 |Basic| Gen 4| 2| 100|
 |Basic| Gen 5| 1| 50|
 |Basic| Gen 5| 2| 100|
-|Universell| Gen 4| 2| 200|
-|Universell| Gen 4| 4| 400|
-|Universell| Gen 4| 8| 800|
-|Universell| Gen 4| 16| 1600|
-|Universell| Gen 4| 32| 3200|
-|Universell| Gen 5| 2| 200|
-|Universell| Gen 5| 4| 400|
-|Universell| Gen 5| 8| 800|
-|Universell| Gen 5| 16| 1600|
-|Universell| Gen 5| 32| 3200|
+|Allgemeiner Zweck| Gen 4| 2| 300|
+|Allgemeiner Zweck| Gen 4| 4| 625|
+|Allgemeiner Zweck| Gen 4| 8| 1250|
+|Allgemeiner Zweck| Gen 4| 16| 2500|
+|Allgemeiner Zweck| Gen 4| 32| 5.000|
+|Allgemeiner Zweck| Gen 5| 2| 300|
+|Allgemeiner Zweck| Gen 5| 4| 625|
+|Allgemeiner Zweck| Gen 5| 8| 1250|
+|Allgemeiner Zweck| Gen 5| 16| 2500|
+|Allgemeiner Zweck| Gen 5| 32| 5.000|
 |Arbeitsspeicheroptimiert| Gen 5| 2| 600|
 |Arbeitsspeicheroptimiert| Gen 5| 4| 1250|
 |Arbeitsspeicheroptimiert| Gen 5| 8| 2500|
 |Arbeitsspeicheroptimiert| Gen 5| 16| 5.000|
-|Arbeitsspeicheroptimiert| Gen 5| 32| 10000| 
 
 Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgende Fehlermeldung angezeigt:
 > FEHLER 1040 (08004): Zu viele Verbindungen
@@ -74,7 +73,7 @@ Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgen
 ### <a name="unsupported"></a>Nicht unterstützt
 - SELECT ... INTO OUTFILE
 
-## <a name="preview-functional-limitations"></a>Funktionale Beschränkungen der Vorschau
+## <a name="functional-limitations"></a>Funktionale Beschränkungen
 
 ### <a name="scale-operations"></a>Skalierungsvorgänge
 - Die dynamische Skalierung von Servern über verschiedene Tarife hinweg wird zurzeit nicht unterstützt. Wechsel zwischen den Tarifen „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“ werden also nicht unterstützt.

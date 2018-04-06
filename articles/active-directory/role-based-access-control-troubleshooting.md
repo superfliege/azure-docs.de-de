@@ -1,6 +1,6 @@
 ---
 title: Beheben von Problemen bei der rollenbasierten Zugriffssteuerung in Azure (RBAC) | Microsoft-Dokumentation
-description: "Hilfe bei Problemen oder Fragen zu Ressourcen für die rollenbasierte Zugriffsteuerung."
+description: Hilfe bei Problemen oder Fragen zu Ressourcen für die rollenbasierte Zugriffsteuerung.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2018
+ms.date: 03/19/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: seohack1
-ms.openlocfilehash: c2589aabce86f848fa1aa3e25b3f78be180c5525
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 766ff118638538520c8f17694b32f35dbe6d1025
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-azure-role-based-access-control"></a>Beheben von Problemen bei der rollenbasierten Zugriffssteuerung in Azure 
 
-In diesem Dokument werden häufig gestellte Fragen über bestimmte Zugriffsrechte, die mit Rollen erteilt werden, beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können. Diese drei Rollen decken alle Ressourcentypen ab:
+In diesem Artikel werden häufig gestellte Fragen über bestimmte Zugriffsrechte, die mit Rollen erteilt werden, beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können. Diese drei Rollen decken alle Ressourcentypen ab:
 
 * Owner (Besitzer)  
 * Mitwirkender  
@@ -31,7 +31,7 @@ In diesem Dokument werden häufig gestellte Fragen über bestimmte Zugriffsrecht
 
 Sowohl Besitzer als auch Mitwirkende haben Vollzugriff auf alle Verwaltungsfunktionen, Mitwirkende können jedoch anderen Benutzern oder Gruppen keinen Zugriff gewähren. Die Leserolle werden wir aufgrund ihrer umfassenden Eigenschaften ausführlicher beschreiben. Ausführliche Informationen zum Gewähren von Zugriff finden Sie im Artikel zu den ersten Schritten mit der [rollenbasierten Zugriffssteuerung](role-based-access-control-configure.md) .
 
-## <a name="app-service-workloads"></a>App Service-Workloads
+## <a name="app-service"></a>App Service
 ### <a name="write-access-capabilities"></a>Schreibzugriff
 Wenn Sie einem Benutzer schreibgeschützten Zugriff für eine einzelne Web-App gewähren, sind einige Features deaktiviert, von denen Sie das unter Umständen nicht erwartet haben. Die folgenden Verwaltungsfunktionen erfordern **Schreibzugriff** auf eine Web-App (entweder als Mitwirkender oder Besitzer) und stehen nicht zur Verfügung, wenn der Benutzer nur über Lesezugriff für die Web-App verfügt.
 
@@ -69,7 +69,14 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcen
 * Application Insights-Komponenten  
 * Webtests  
 
-## <a name="virtual-machine-workloads"></a>Workloads virtueller Computer
+## <a name="azure-functions"></a>Azure-Funktionen
+Einige Funktionen von [Azure Functions](../azure-functions/functions-overview.md) erfordern Schreibzugriff. Wenn einem Benutzer beispielsweise die Leserolle zugewiesen ist, können Sie nicht die Funktionen in einer Funktions-App anzeigen. Im Portal wird **(Kein Zugriff)** angezeigt.
+
+![Funktions-Apps ohne Zugriff](./media/role-based-access-control-troubleshooting/functionapps-noaccess.png)
+
+Ein Leser kann auf die Registerkarte **Plattformfeatures** und dann auf **Alle Einstellungen** klicken, um einige Einstellungen im Zusammenhang mit einer Funktions-App (ähnlich wie bei einer Web-App) anzuzeigen, kann diese Einstellungen jedoch nicht ändern.
+
+## <a name="virtual-machine"></a>Virtueller Computer
 Ähnlich wie bei Web-Apps erfordern einige Funktionen auf dem Blatt "Virtueller Computer" Schreibzugriff auf den virtuellen Computer oder auf andere Ressourcen in der Ressourcengruppe.
 
 Virtuelle Computer stehen in Verbindung mit Domänennamen, virtuellen Netzwerken, Speicherkonten und Warnungsregeln.

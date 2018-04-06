@@ -1,24 +1,21 @@
 ---
-title: "Erweiterungs-App – Azure AD B2C | Microsoft-Dokumentation"
+title: Erweiterungs-App – Azure AD B2C | Microsoft-Dokumentation
 description: Wiederherstellen der b2c-extensions-app
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: f0392e32-0771-473c-a799-81438ca2bcff
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 9/06/2017
-ms.author: parja
-ms.openlocfilehash: 450a7a5051cdbd6a3c8105a06fd3ebae10d5388e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: davidmu
+ms.openlocfilehash: c07aba797118af2cc8283509944eda8b41d499b3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Erweiterungs-App
 
@@ -39,7 +36,7 @@ So überprüfen Sie das Vorhandensein der b2c-extensions-app
 
 Wenn Sie die b2c-extensions-app versehentlich gelöscht haben, haben Sie 30 Tage Zeit, sie wiederherzustellen. Sie können die App mithilfe der Graph-API wiederherstellen:
 
-1. Rufen Sie [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) auf.
+1. Navigieren Sie zu [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
 1. Melden Sie sich bei der Website als globaler Administrator für das Azure AD B2C-Verzeichnis an, für das die gelöschte App wiederhergestellt werden soll. Dieser globale Administrator muss eine E-Mail-Adresse besitzen, die etwa wie folgt aussieht: `username@{yourTenant}.onmicrosoft.com`.
 1. Verwenden Sie eine HTTP-GET-Methode für die URL `https://graph.windows.net/myorganization/deletedApplications` mit dem Wert „1.6“ für „api-version“. Bei diesem Vorgang werden alle Anwendungen aufgelistet, die in den letzten 30 Tagen gelöscht wurden.
 1. Suchen Sie nach der Anwendung, indem Sie in der Liste nach einem Namen beginnend mit „b2c-extension-app“ suchen, und kopieren Sie den zugehörigen Eigenschaftswert `objectid`.

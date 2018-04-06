@@ -1,8 +1,8 @@
 ---
-title: "Übersicht über Data Science mit Spark in Azure HDInsight | Microsoft Docs"
+title: Übersicht über Data Science mit Spark in Azure HDInsight | Microsoft Docs
 description: Das Spark MLlib-Toolkit bringt wesentliche Machine Learning-Modellierungsfunktionen in die verteilte HDInsight-Umgebung ein.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: e1c4a507214b9686154fc8311121b56f42f5cd40
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: bradsev
+ms.openlocfilehash: a12e2f1af945c8186067b791c4e96a52eb23f52f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Übersicht über Data Science mit Spark in Azure HDInsight
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/08/2017
 Diese Sammlung von Themen zeigt, wie mit HDInsight Spark allgemeine Data Science-Aufgaben wie Datenerfassung, Featureentwicklung, Modellierung und Modellauswertung durchgeführt werden können. Die verwendeten Daten sind eine Stichprobe des Datasets für Taxifahrten und Fahrpreise in New York aus dem Jahr 2013. Die erstellten Modelle umfassen logistische und lineare Regression, Random Forests und Gradient-Boosted-Strukturen. In den Themen wird auch gezeigt, wie diese Modelle in Azure Blob Storage (WASB) gespeichert werden und wie ihre Vorhersageleistung bewertet und ausgewertet wird. Fortgeschrittenere Themen behandeln das Trainieren von Modellen mithilfe von Kreuzvalidierung und Hyper-Parameter-Sweeping. Dieses Übersichtsthema enthält außerdem Themen, in denen beschrieben wird, wie Sie den Spark-Cluster einrichten, den Sie zum Ausführen der Schritte in den bereitgestellten exemplarischen Vorgehensweisen benötigen. 
 
 ## <a name="spark-and-mllib"></a>Spark und MLlib
-[Spark](http://spark.apache.org/) ist ein Open-Source-Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von Big Data zu steigern. Das Spark-Verarbeitungsmodul ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen beim maschinellen Lernen und für Graphberechnungen. [MLlib](http://spark.apache.org/mllib/) ist die skalierbare Bibliothek für maschinelles Lernen von Spark, die algorithmische Modellierungsfunktionen in diese verteilte Umgebung bereitstellt. 
+[Spark](http://spark.apache.org/) ist ein Open-Source-Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von Big Data zu steigern. Die Spark-Verarbeitungs-Engine ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen beim maschinellen Lernen und für Graphberechnungen. [MLlib](http://spark.apache.org/mllib/) ist die skalierbare Bibliothek für maschinelles Lernen von Spark, die algorithmische Modellierungsfunktionen in diese verteilte Umgebung bereitstellt. 
 
 ## <a name="hdinsight-spark"></a>HDInsight Spark
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) ist das in Azure gehostete Angebot für Open-Source-Spark. Darüber hinaus unterstützt der Spark-Cluster **Jupyter-PySpark-Notebooks**. Außerdem kann er interaktive Spark-SQL-Abfragen zum Transformieren, Filtern und Visualisieren von in Azure-Blobs (WASB) gespeicherten Daten ausführen. PySpark ist die Python-API für Spark. Die Codeausschnitte, die die Lösungen bereitstellen und die relevanten Plots zum Visualisieren der Daten zeigen, werden in Jupyter-Notebooks in den Spark-Clustern ausgeführt. Die Modellierungsschritte in diesen Themen enthalten auch Code zum Trainieren, Evaluieren, Speichern und Nutzen jedes Modelltyps. 
@@ -149,7 +149,7 @@ Sie können das Jupyter-Notebook über das Azure-Portal starten. Suchen Sie Ihre
 
 ![Cluster-Dashboards](./media/spark-overview/spark-jupyter-on-portal.png)
 
-Sie können auch zu ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** navigieren, um auf die Jupyter Notebooks zuzugreifen. Ersetzen Sie das Element CLUSTERNAME in dieser URL durch den Namen Ihres eigenen Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Notebooks zuzugreifen.
+Für den Zugriff auf die Jupyter-Notebooks können Sie auch zu ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** navigieren. Ersetzen Sie das Element CLUSTERNAME in dieser URL durch den Namen Ihres eigenen Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Notebooks zuzugreifen.
 
 ![Durchsuchen von Jupyter-Notebooks](./media/spark-overview/spark-jupyter-notebook.png)
 

@@ -1,11 +1,11 @@
 ---
 title: Registrieren von Hostnamen mithilfe von dynamischem DNS
-description: "Hier wird erläutert, wie Sie Dynamic DNS einrichten, um Hostnamen in Ihren eigenen DNS-Servern zu registrieren."
+description: Hier wird erläutert, wie Sie Dynamic DNS einrichten, um Hostnamen in Ihren eigenen DNS-Servern zu registrieren.
 services: dns
 documentationcenter: na
 author: GarethBradshawMSFT
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c315961a-fa33-45cf-82b9-4551e70d32dd
 ms.service: dns
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: garbrad
-ms.openlocfilehash: 440a062e5fff73526b2d77d7d0a7c52ca72a66f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d62c40bfc909915fa222db12413634aa7ce7158
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Registrieren von Hostnamen mithilfe von dynamischem DNS auf Ihrem eigenen DNS-Server
 [Azure bietet eine Namensauflösung](virtual-networks-name-resolution-for-vms-and-role-instances.md) für virtuelle Maschinen (VMs) und Rolleninstanzen. Wenn Ihre Namensauflösung jedoch mehr leisten muss, als die Azure-Namensauflösung ermöglicht, können Sie eigene DNS-Server bereitstellen. Auf diese Weise können Sie eine maßgeschneiderte DNS-Lösung für Ihre speziellen Anforderungen erstellen. Beispielsweise kann es vorkommen, dass Sie eine DNS-Lösung für den Zugriff auf Ihren lokalen Active Directory-Domänencontroller benötigen.
@@ -26,14 +26,14 @@ ms.lasthandoff: 10/11/2017
 Wenn Ihre benutzerdefinierten DNS-Server als virtuelle Azure-Computer gehostet werden, können Sie Abfragen des Hostnamens für das gleiche VNET in Azure zum Auflösen von Hostnamen weiterleiten. Wenn Sie nicht auf diese Weise vorgehen möchten, können Sie die Hostnamen Ihrer virtuellen Computer über Dynamic DNS in Ihrem DNS-Server registrieren.  Azure verfügt nicht über die Mittel (z. B. Anmeldeinformationen), um Einträge direkt in Ihren DNS-Servern zu erstellen. Daher sind meist andere Vorkehrungen erforderlich. Hier sind einige allgemeinen Szenarien mit Alternativen angegeben.
 
 ## <a name="windows-clients"></a>Windows-Clients
-Nicht per Beitritt in eine Domäne eingebundene Windows-Clients versuchen beim Starten oder bei IP-Adressänderungen, ungesicherte DDNS-Aktualisierungen (Dynamic DNS, dynamisches DNS) vorzunehmen. Der DNS-Name besteht aus dem Hostnamen und dem primären DNS-Suffix. In Azure wird das primäre DNS-Suffix leer gelassen, Sie können es jedoch im virtuellen Computer über die [Benutzeroberfläche](https://technet.microsoft.com/library/cc794784.aspx) oder durch [Automatisierung](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix) festlegen.
+Nicht per Beitritt in eine Domäne eingebundene Windows-Clients versuchen beim Starten oder bei IP-Adressänderungen, ungesicherte DDNS-Aktualisierungen (Dynamic DNS, dynamisches DNS) vorzunehmen. Der DNS-Name besteht aus dem Hostnamen und dem primären DNS-Suffix. In Azure wird das primäre DNS-Suffix leer gelassen, Sie können es jedoch im virtuellen Computer über die [Benutzeroberfläche](https://technet.microsoft.com/library/cc794784.aspx) oder durch [Automatisierung wie hier erläutert](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix) festlegen.
 
 Per Beitritt in die Domäne eingebundene Windows-Clients registrieren ihre IP-Adressen mithilfe von sicherem Dynamic DNS beim Domänencontroller. Während des Domänenbeitritts wird das primäre DNS-Suffix auf dem Client festgelegt, und die Vertrauensstellung wird erstellt und verwaltet.
 
 ## <a name="linux-clients"></a>Linux-Clients
 Linux-Clients registrieren sich beim Start in der Regel nicht selbst beim DNS-Server. Es wird davon ausgegangen, dass der DHCP-Server dies übernimmt. Die DHCP-Server von Azure verfügen weder über die Funktion noch über die Anmeldeinformationen, um Datensätze im DNS-Server zu registrieren.  Sie können ein Tool namens *nsupdate* verwenden, das im Bind-Paket enthalten ist, um Dynamic DNS-Updates zu senden. Da das Dynamic DNS-Protokoll standardisiert ist, können Sie *nsupdate* auch dann verwenden, wenn Sie Bind nicht auf dem DNS-Server nutzen.
 
-Sie können die vom DHCP-Client bereitgestellten Hooks verwenden, um den Hostnameneintrag im DNS-Server zu erstellen und zu verwalten. Während des DHCP-Zyklus führt der Client die Skripts in */etc/dhcp/dhclient-exit-hooks.d/*aus. Diese Vorgehensweise kann genutzt werden, um die neue IP-Adresse mit *nsupdate*zu registrieren. Beispiel:
+Sie können die vom DHCP-Client bereitgestellten Hooks verwenden, um den Hostnameneintrag im DNS-Server zu erstellen und zu verwalten. Während des DHCP-Zyklus führt der Client die Skripts in */etc/dhcp/dhclient-exit-hooks.d/*aus. Diese Vorgehensweise kann genutzt werden, um die neue IP-Adresse mit *nsupdate*zu registrieren. Beispiel: 
 
         #!/bin/sh
         requireddomain=mydomain.local

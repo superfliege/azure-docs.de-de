@@ -1,24 +1,24 @@
 ---
-title: Behandeln von Problemen beim lokalen Service Fabric-Clustersetup | Microsoft Docs
-description: "Dieser Artikel enthält eine Reihe von Vorschlägen für die Problembehandlung Ihres lokalen Entwicklungsclusters."
+title: Behandeln von Problemen beim Einrichten des lokalen Azure Service Fabric-Clusters | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Reihe von Vorschlägen für die Problembehandlung Ihres lokalen Entwicklungsclusters.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 97f4feaa-bba0-47af-8fdd-07f811fe2202
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/07/2017
-ms.author: mikkelhegn
-ms.openlocfilehash: aa393f884b564cee81fcf75cc2eff895efea9471
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/23/2018
+ms.author: mikhegn
+ms.openlocfilehash: 6879a24df434d5bf69c9ba14aa00cdc9cd67df57
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Problembehandlung beim Einrichten des Clusters für die lokale Entwicklung
 Wenn beim Interagieren mit Ihrem lokalen Azure Service Fabric Entwicklungscluster ein Problem auftritt, sind bei der Lösung unter Umständen die folgenden Vorschläge hilfreich.
@@ -26,7 +26,7 @@ Wenn beim Interagieren mit Ihrem lokalen Azure Service Fabric Entwicklungscluste
 ## <a name="cluster-setup-failures"></a>Fehler bei der Clustereinrichtung
 ### <a name="cannot-clean-up-service-fabric-logs"></a>Bereinigen von Service Fabric-Protokollen nicht möglich
 #### <a name="problem"></a>Problem
-Während der Ausführung des DevClusterSetup-Skripts wird ein Fehler der folgenden Art angezeigt:
+Beim Ausführen des DevClusterSetup-Skripts tritt der folgende Fehler auf:
 
     Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
     At line:1 char:1 + .\DevClusterSetup.ps1
@@ -36,20 +36,9 @@ Während der Ausführung des DevClusterSetup-Skripts wird ein Fehler der folgend
 
 
 #### <a name="solution"></a>Lösung
-Schließen Sie das aktuelle PowerShell-Fenster, und öffnen Sie ein neues PowerShell-Fenster als Administrator. Nun sollte es möglich sein, das Skript auszuführen.
+Schließen Sie das aktuelle PowerShell-Fenster, und öffnen Sie ein neues PowerShell-Fenster als Administrator. Nun kann das Skript erfolgreich ausgeführt werden.
 
 ## <a name="cluster-connection-failures"></a>Clusterverbindungsfehler
-### <a name="service-fabric-powershell-cmdlets-are-not-recognized-in-azure-powershell"></a>Service Fabric-PowerShell-Cmdlets werden in Azure PowerShell nicht erkannt.
-#### <a name="problem"></a>Problem
-Wenn Sie versuchen, die Service Fabric-PowerShell-Cmdlets auszuführen, z.B. `Connect-ServiceFabricCluster` in einem Azure PowerShell-Fenster, scheitert der Vorgang mit der Fehlermeldung, dass das Cmdlet nicht erkannt wird. Der Grund dafür ist, Azure PowerShell die 32-Bit-Version von Windows PowerShell (gilt auch für 64-Bit-Betriebssystemversionen) verwendet, während die Service Fabric-Cmdlets nur in 64-Bit-Umgebungen ausgeführt werden.
-
-#### <a name="solution"></a>Lösung
-Führen Sie Service Fabric-Cmdlets immer direkt über Windows PowerShell aus.
-
-> [!NOTE]
-> Die neueste Version von Azure PowerShell erstellt keine spezielle Tastenkombination, daher sollte dieses Problem nicht mehr auftreten.
-> 
-> 
 
 ### <a name="type-initialization-exception"></a>Ausnahme bei der Typinitialisierung
 #### <a name="problem"></a>Problem
@@ -70,14 +59,14 @@ Für einen Aufruf von Connect-ServiceFabricCluster tritt ein Fehler der folgende
     + FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
 
 #### <a name="solution"></a>Lösung
-Schließen Sie das aktuelle PowerShell-Fenster, und öffnen Sie ein neues PowerShell-Fenster als Administrator. Nun sollte es möglich sein, die Verbindung herzustellen.
+Schließen Sie das aktuelle PowerShell-Fenster, und öffnen Sie ein neues PowerShell-Fenster als Administrator.
 
 ### <a name="fabric-connection-denied-exception"></a>Ausnahme „Fabric-Verbindung verweigert“
 #### <a name="problem"></a>Problem
 Beim Debuggen von Visual Studio erhalten Sie einen FabricConnectionDeniedException-Fehler.
 
 #### <a name="solution"></a>Lösung
-Dieser Fehler tritt gewöhnlich beim Versuch auf, einen Diensthostprozess manuell zu starten, anstatt der Service Fabric-Laufzeit das Starten zu überlassen.
+Dieser Fehler tritt in der Regel auf, wenn Sie versuchen, einen Diensthostprozess manuell zu starten.
 
 Stellen Sie sicher, dass in Ihrer Projektmappe keine Dienstprojekte als Startprojekte festgelegt sind. Nur Service Fabric-Anwendungsprojekte sollten als Startprojekte festgelegt werden.
 

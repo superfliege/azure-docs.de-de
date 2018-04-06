@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 733a396117a58d8dc51e55614e503853f13141c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c43973a7e5070676fc0f32a4c8923d57a479f884
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -91,7 +91,7 @@ Eine **Einheit für Clouddatenverschiebungen** (Data Movement Unit, DMU) ist ein
 | Kopieren von Daten zwischen dateibasierten Speichern | Zwischen 4 und 32, abhängig von der Anzahl und Größe der Dateien. |
 | Alle anderen Kopierszenarios | 4 |
 
-Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss beschrieben einen Wert für die **cloudDataMovementUnits** -Eigenschaft angeben. Die **zulässigen Werte** für die Eigenschaft **cloudDataMovementUnits** sind: 2, 4, 8, 16, 32. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
+Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss beschrieben einen Wert für die **cloudDataMovementUnits** -Eigenschaft angeben. Als **zulässige Werte** für die Eigenschaft **cloudDataMovementUnits** können Werte **bis 256** angegeben werden. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
 
 Sie können die tatsächlich verwendeten Einheiten der Clouddatenverschiebungen für jede Kopierausführung in der Kopieraktivitätsausgabe anzeigen, wenn Sie eine Aktivitätsausführung überwachen. Weitere Informationen finden Sie unter [Copy activity monitoring (Überwachung der Kopieraktivität)](copy-activity-overview.md#monitoring).
 
@@ -133,11 +133,14 @@ Für jede Kopieraktivitätsausführung ermittelt Data Factory die Anzahl paralle
 
 | Kopierszenario | Standardanzahl der vom Dienst ermittelten parallelen Kopien |
 | --- | --- |
-| Kopieren von Daten zwischen dateibasierten Speichern |Zwischen 1 und 64. Dies ist abhängig von der Größe der Dateien und der Anzahl von Einheiten für Clouddatenverschiebungen (DMUs), die zum Kopieren von Daten zwischen zwei Clouddatenspeichern verwendet werden, oder von der physischen Konfiguration des Computers der selbstgehosteten Integration Runtime-Infrastruktur. |
+| Kopieren von Daten zwischen dateibasierten Speichern |Dies ist abhängig von der Größe der Dateien und der Anzahl von Einheiten für Clouddatenverschiebungen (DMUs), die zum Kopieren von Daten zwischen zwei Clouddatenspeichern verwendet werden, oder von der physischen Konfiguration des Computers der selbstgehosteten Integration Runtime-Infrastruktur. |
 | Kopieren von Daten aus einem beliebigen Quelldatenspeicher im Azure-Tabellenspeicher |4 |
 | Alle anderen Kopierszenarios |1 |
 
-In der Regel sollten Sie mit dem Standardverhalten den besten Durchsatz erzielen. Sie können den Standardwert jedoch überschreiben und einen Wert für die **parallelCopies** -Eigenschaft angeben, um die Auslastung der Computer zu steuern, auf denen Ihre Datenspeicher gehostet werden, oder um die Kopierleistung zu optimieren. Der Wert muss eine ganze Zahl größer als oder gleich 1 sein. Zur Laufzeit verwendet die Kopieraktivität maximal den von Ihnen festgelegten Wert, um eine optimale Leistung zu erzielen.
+[!TIP]
+> Beim Kopieren von Daten zwischen dateibasierten Speichern bietet das Standardverhalten (automatische Bestimmung) in der Regel den bestmöglichen Durchsatz. 
+
+Sie können den Standardwert jedoch überschreiben und einen Wert für die Eigenschaft **parallelCopies** angeben, um die Last für die Computer zu steuern, auf denen Ihre Datenspeicher gehostet werden, oder um die Kopierleistung zu optimieren. Der Wert muss eine ganze Zahl größer als oder gleich 1 sein. Zur Laufzeit verwendet die Kopieraktivität maximal den von Ihnen festgelegten Wert, um eine optimale Leistung zu erzielen.
 
 ```json
 "activities":[

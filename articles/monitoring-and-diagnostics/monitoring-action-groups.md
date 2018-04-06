@@ -3,22 +3,22 @@ title: Erstellen und Verwalten von Aktionsgruppen im Azure-Portal | Microsoft-Do
 description: Erfahren Sie, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 author: dkamstra
 manager: chrad
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 03/12/2018
 ms.author: dukek
-ms.openlocfilehash: 772b9c2b9532bd2cc37ad89db92545297eecd903
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a7f8697b7a92de1c19ceb65fadbcd7e4186e83f7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
@@ -29,7 +29,7 @@ Sie können eine Liste von Aktionen mit Aktionsgruppen konfigurieren. Diese Grup
 Eine Aktivitätsgruppe kann bis zu zehn Aktionen jedes Aktionstyps enthalten. Jede Aktion besteht aus den folgenden Eigenschaften:
 
 * **Name:** ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.  
-* **Aktionstyp**: eine SMS senden, eine E-Mail senden, einen Webhook aufrufen, Daten an ein ITSM-Tool senden, eine Azure-App aufrufen oder ein Automation-Runbook ausführen.
+* **Aktionstyp**: einen Sprachanruf oder eine SMS senden, eine E-Mail senden, einen Webhook aufrufen, Daten an ein ITSM-Tool senden, eine Azure-App aufrufen oder ein Automation-Runbook ausführen.
 * **Details**: Die entsprechende Telefonnummer oder E-Mail-Adresse, die entsprechenden Details zur ITSM-Verbindung oder der entsprechende Webhook-URI.
 
 Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konfigurierung von Aktionsgruppen finden Sie unter [Aktionsgruppen-Resource Manager-Vorlagen](monitoring-create-action-group-with-resource-manager-template.md).
@@ -56,7 +56,7 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 
     a. **Name**: Geben Sie einen eindeutigen Bezeichner für diese Aktion an.
 
-    b. **Aktionstyp**: Wählen Sie E-Mail, SMS, Azure-App, Webhook, ITSM oder Automation-Runbook aus.
+    b. **Aktionstyp**: Wählen Sie E-Mail/SMS/Push/Sprachanruf, Webhook, ITSM oder Automation-Runbook aus.
 
     c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook an. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt.
 

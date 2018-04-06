@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 03/21/2018
 ms.author: jodebrui
-ms.openlocfilehash: 107df78f0ec6ce924785f5027958ee66f2a86c7c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 442c860a13e2af1d5398fb30a6069a0e3764ee64
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in SQL-Datenbank
 
@@ -104,7 +104,7 @@ Bei Verwendung von nicht gruppierten Columnstore-Indizes wird die Basistabelle w
 
 Es gibt nie Inkompatibilitäten oder andere Probleme, wenn Sie auf einen höheren Tarif heraufstufen, z.B. von Standard auf Premium. Es steigen nur die verfügbaren Funktionen und Ressourcen.
 
-Ein Downgrade des Tarifs kann sich jedoch nachteilig auf Ihre Datenbank auswirken. Die Auswirkung ist besonders deutlich, wenn Sie von Premium zu Standard oder Basic herabstufen und Ihre Datenbank In-Memory-OLTP-Objekte enthält. Speicheroptimierte Tabellen und Columnstore-Indizes sind nach dem Downgrade nicht mehr verfügbar (auch wenn sie sichtbar bleiben). Die gleichen Aspekte gelten, wenn Sie den Tarif eines Pools für elastische Datenbanken herabstufen oder mit einer Datenbank mit In-Memory-Technologien zu einem Pool für elastische Datenbanken im Tarif Standard oder Basic wechseln.
+Ein Downgrade des Tarifs kann sich jedoch nachteilig auf Ihre Datenbank auswirken. Die Auswirkung ist besonders deutlich, wenn Sie von Premium zu Standard oder Basic herabstufen und Ihre Datenbank In-Memory-OLTP-Objekte enthält. Speicheroptimierte Tabellen sind nach dem Downgrade nicht mehr verfügbar (auch wenn sie sichtbar bleiben). Die gleichen Aspekte gelten, wenn Sie den Tarif eines Pools für elastische Datenbanken herabstufen oder mit einer Datenbank mit In-Memory-Technologien zu einem Pool für elastische Datenbanken im Tarif Standard oder Basic wechseln.
 
 ### <a name="in-memory-oltp"></a>In-Memory-OLTP
 
@@ -130,11 +130,11 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="columnstore-indexes"></a>ColumnStore-Indizes
 
-*Downgrade auf Basic oder Standard:* Columnstore-Indizes werden nur im Tarif Premium unterstützt, nicht in den Tarifen Standard oder Basic. Nach dem Herabstufen Ihrer Datenbank auf Standard oder Basic ist der Columnstore-Index nicht mehr verfügbar. Das System verwaltet den Columnstore-Index, nutzt den Index jedoch nie. Wenn Sie später wieder auf Premium heraufstufen, kann der Columnstore-Index sofort wieder genutzt werden.
+*Downgrade auf Basic oder Standard:* Columnstore-Indizes werden nur im Tarif Premium und Standard – S3 und höher – unterstützt, nicht im Tarif Basic. Nach dem Herabstufen Ihrer Datenbank auf einen nicht unterstützten Tarif bzw. auf eine nicht unterstützte Ebene ist der Columnstore-Index nicht mehr verfügbar. Das System verwaltet den Columnstore-Index, nutzt den Index jedoch nie. Wenn Sie später wieder auf einen unterstützten Tarif bzw. auf eine unterstützte Ebene heraufstufen, kann der Columnstore-Index sofort wieder genutzt werden.
 
-Wenn Sie über einen **gruppierten** Columnstore-Index verfügen, ist die gesamte Tabelle nach dem Tarifdowngrade nicht mehr verfügbar. Aus diesem Grund wird empfohlen, alle *gruppierten* Columnstore-Indizes vor dem Herabstufen Ihrer Datenbank unter den Premium-Tarif zu löschen.
+Wenn Sie über einen **gruppierten** Columnstore-Index verfügen, ist die gesamte Tabelle nach dem Downgrade nicht mehr verfügbar. Aus diesem Grund wird empfohlen, alle *gruppierten* Columnstore-Indizes vor dem Herabstufen Ihrer Datenbank auf einen nicht unterstützten Tarif bzw. auf eine nicht unterstützte Ebene zu löschen.
 
-*Herabstufen auf einen niedrigeren Premium-Tarif:* Dieses Downgrade ist erfolgreich, wenn die ganze Datenbank in die maximale Datenbankgröße des Zieltarifs oder des verfügbaren Speichers im Pool für elastische Datenbanken passt. Es gibt keine spezifische Auswirkungen aus den Columnstore-Indizes.
+*Herabstufen auf einen niedrigeren unterstützten Tarif bzw. eine niedrigere unterstützte Ebene*: Dieses Downgrade ist erfolgreich, wenn die ganze Datenbank in die maximale Datenbankgröße des Zieltarifs oder des verfügbaren Speichers im Pool für elastische Datenbanken passt. Es gibt keine spezifische Auswirkungen aus den Columnstore-Indizes.
 
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>

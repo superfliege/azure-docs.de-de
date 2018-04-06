@@ -1,8 +1,8 @@
 ---
-title: "Entwickeln von Skriptaktionen mit Linux-basiertem HDInsight – Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Bash-Skripts verwenden, um Linux-basierte HDInsight-Cluster anzupassen. Das HDInsight-Feature „Skriptaktionen“ ermöglicht es Ihnen, Skripts während oder nach der Clustererstellung auszuführen. Skripts können verwendet werden, um die Konfigurationseinstellungen von Clustern zu ändern oder um zusätzliche Software zu installieren."
+title: Entwickeln von Skriptaktionen mit Linux-basiertem HDInsight – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Bash-Skripts verwenden, um Linux-basierte HDInsight-Cluster anzupassen. Das HDInsight-Feature „Skriptaktionen“ ermöglicht es Ihnen, Skripts während oder nach der Clustererstellung auszuführen. Skripts können verwendet werden, um die Konfigurationseinstellungen von Clustern zu ändern oder um zusätzliche Software zu installieren.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: larryfr
-ms.openlocfilehash: ddf5db3e61633c45e388e161e165637521803094
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5074345533f0fdb0c72bf319646ad614632d1940
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
 
@@ -54,7 +54,7 @@ Wenn Sie ein benutzerdefiniertes Skript für einen HDInsight-Cluster entwickeln,
 * [Verwenden vorkompilierter Ressourcen](#bPS4)
 * [Sicherstellen, dass das Clusteranpassungsskript idempotent ist](#bPS3)
 * [Sicherstellen der Hochverfügbarkeit der Clusterarchitektur](#bPS5)
-* [Konfigurieren benutzerdefinierter Komponenten zur Verwendung von Azure-Blobspeicher](#bPS6)
+* [Konfigurieren benutzerdefinierter Komponenten zur Verwendung von Azure Blob Storage](#bPS6)
 * [Schreiben von Informationen in STDOUT und STDERR](#bPS7)
 * [Speichern von Dateien im ASCII-Format mit LF-Zeilenenden](#bps8)
 * [Verwenden von Wiederholungsversuchlogik zum Wiederherstellen bei vorübergehenden Fehlern](#bps9)
@@ -103,7 +103,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-Sie finden das vollständige Skript, in dem diese Codeausschnitte enthalten sind, unter „https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh“.
+Das vollständige Skript mit diesen Codeausschnitten finden Sie unter https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.
 
 Informationen zur Version von Ubuntu, die von HDInsight verwendet wird, finden Sie im Dokument [HDInsight-Komponentenversion](hdinsight-component-versioning.md).
 
@@ -221,7 +221,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helpermethods"></a>Hilfsmethoden für benutzerdefinierte Skripts
 
-Hilfsmethoden für Skriptaktionen sind Hilfsprogramme, die Sie zum Schreiben von benutzerdefinierten Skripts verwenden können. Diese Methoden sind im Skript [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) enthalten. Verwenden Sie Folgendes, um sie herunterzuladen und als Teil Ihres Skripts zu verwenden:
+Hilfsmethoden für Skriptaktionen sind Hilfsprogramme, die Sie zum Schreiben von benutzerdefinierten Skripts verwenden können. Diese Methoden sind in im Skript [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) enthalten. Verwenden Sie Folgendes, um sie herunterzuladen und als Teil Ihres Skripts zu verwenden:
 
 ```bash
 # Import the helper method module.

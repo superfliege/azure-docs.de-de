@@ -1,11 +1,11 @@
 ---
 title: Service Fabric-Anwendungsupgrade | Microsoft Docs
-description: "Dieser Artikel bietet eine Einführung in das Upgrade einer Service Fabric-Anwendung, einschließlich Wahl des Upgrademodus und der Durchführung der Integritätsüberprüfungen."
+description: Dieser Artikel bietet eine Einführung in das Upgrade einer Service Fabric-Anwendung, einschließlich Wahl des Upgrademodus und der Durchführung der Integritätsüberprüfungen.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 765931d8a888432e0cc77ff86d597b6e2a029a2a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 60bbd75496b6e835a76edb4251aac6ea249187b3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric-Anwendungsupgrade
 Eine Azure Service Fabric Anwendung ist eine Sammlung von Diensten. Während eines Upgrades vergleicht Service Fabric das neue [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) mit der vorherigen Version und ermittelt, welche Dienste in der Anwendung aktualisiert werden müssen. Service Fabric vergleicht die Versionsnummern in den Dienstmanifesten mit den Versionsnummern in der vorherigen Version. Wenn sich ein Dienst nicht geändert hat, wird er nicht aktualisiert.
@@ -57,6 +57,13 @@ Wenn ein Anwendungsupgrade zurückgesetzt wird, werden die Standarddienstparamet
 
 > [!TIP]
 > Die Clusterkonfigurationseinstellung [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) muss auf *true* festgelegt werden, damit die Regeln 2) und 3) oben (Aktualisieren und Löschen von Standarddiensten) gelten. Dieses Feature wird ab Service Fabric Version 5.5 unterstützt.
+
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Aktualisieren von mehreren Anwendungen mit HTTPS-Endpunkten
+Sie müssen darauf achten, nicht **denselben Port** für verschiedene Instanzen der gleichen Anwendung zu verwenden, wenn Sie HTTP**S** verwenden. Der Grund ist, dass Service Fabric das Zertifikat für eine der Anwendungsinstanzen nicht aktualisieren kann. Wenn beispielsweise sowohl Anwendung 1 als auch Anwendung 2 ihr Zertifikat 1 auf Zertifikat 2 aktualisieren möchten. Wenn das Upgrade erfolgt, könnte Service Fabric möglicherweise die Zertifikat-1-Registrierung mit http.sys bereinigt haben, obwohl die andere Anwendung es immer noch verwendet. Um dies zu verhindern, erkennt Service Fabric, dass bereits eine andere Anwendungsinstanz auf dem Port mit dem Zertifikat registriert ist (aufgrund von http.sys) und der Vorgang schlägt fehl.
+
+Da Service Fabric das Aktualisieren von zwei verschiedenen Diensten mit **dem gleichen Port** in verschiedenen Anwendungsinstanzen nicht unterstützt. Mit anderen Worten: Sie können das gleiche Zertifikat nicht für verschiedene Dienste auf demselben Port verwenden. Falls Sie ein gemeinsam genutztes Zertifikat auf demselben Port benötigen, müssen Sie sicherstellen, dass die Dienste auf unterschiedlichen Computern mit Platzierungseinschränkungen platziert werden. Oder verwenden Sie nach Möglichkeit, für jeden Dienst in jeder Anwendungsinstanz, dynamische Ports von Service Fabric. 
+
+Eine Fehlermeldung wird Sie darauf hingewiesen, wenn ein Upgrade mit HTTPS ausfällt: „Der Windows-HTTP-Server-API unterstützt mehrere Zertifikate für Anwendungen mit einem gemeinsamen Port nicht.“
 
 ## <a name="application-upgrade-flowchart"></a>Flussdiagramm eines Anwendungsupgrades
 Das Flussdiagramm unter diesem Absatz kann Ihnen dabei helfen, den Upgradevorgang einer Service Fabric-Anwendung zu verstehen. Im Speziellen ist hier schematisch dargestellt, wie die Timeouts, z.B. *HealthCheckStableDuration*, *HealthCheckRetryTimeout* und *UpgradeHealthCheckInterval*, beim Steuern helfen, wenn das Upgrade in einer Updatedomäne als erfolgreich oder fehlgeschlagen gilt.

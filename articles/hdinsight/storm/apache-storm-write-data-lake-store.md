@@ -1,6 +1,6 @@
 ---
-title: "Apache Storm-Schreibzugriff auf Storage/Data Lake Store – Azure HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mit Apache Storm in den HDFS-kompatiblen Speicher für HDInsight schreiben. Azure Storage bzw. Azure Data Lake Store bietet den HDFS-kompatiblen Speicher für HDInsight. In diesem Dokument und dem dazugehörigen Beispiel wird veranschaulicht, wie die Komponente HdfsBolt zum Schreiben in den standardmäßigen Speicher von Storm auf einem HDInsight-Cluster verwendet werden kann."
+title: Apache Storm-Schreibzugriff auf Storage/Data Lake Store – Azure HDInsight | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mit Apache Storm in den HDFS-kompatiblen Speicher für HDInsight schreiben. Azure Storage bzw. Azure Data Lake Store bietet den HDFS-kompatiblen Speicher für HDInsight. In diesem Dokument und dem dazugehörigen Beispiel wird veranschaulicht, wie die Komponente HdfsBolt zum Schreiben in den standardmäßigen Speicher von Storm auf einem HDInsight-Cluster verwendet werden kann.
 services: hdinsight
 documentationcenter: na
 author: Blackmist
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 908a1130171cc091b4d95d4532cc3bb95edb44f9
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 2310894e7257d0ddb919406a8f297089189a9484
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Schreiben in HDFS aus Apache Storm auf HDInsight
 
@@ -30,9 +30,9 @@ Erfahren Sie, wie Sie mit Storm Daten in den von Apache Storm auf HDInsight verw
 
 ## <a name="get-the-code"></a>Abrufen des Codes
 
-Das Projekt mit dieser Topologie steht unter [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store)als Download bereit.
+Das Projekt mit dieser Topologie steht unter [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) als Download zur Verfügung.
 
-Um dieses Projekt zu kompilieren, benötigen Sie die folgende Konfiguration für Ihre Entwicklungsumgebung:
+Zum Kompilieren dieses Projekts benötigen Sie die folgende Konfiguration für Ihre Entwicklungsumgebung:
 
 * [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) oder höher HDInsight 3.5 oder höher erfordert Java 8.
 
@@ -148,7 +148,7 @@ Informationen zum Verwenden dieses Skripts mit Ihrem Cluster finden Sie im Dokum
 
 ## <a name="build-and-package-the-topology"></a>Erstellen und Packen der Topologie
 
-1. Laden Sie das Beispielprojekt von [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) in Ihre Entwicklungsumgebung herunter.
+1. Laden Sie das Beispielprojekt unter [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) in Ihre Entwicklungsumgebung herunter.
 
 2. Ändern Sie über eine Eingabeaufforderung, ein Terminal oder eine Shellsitzung Verzeichnisse in das Stammverzeichnis des heruntergeladenen Projekts. Erstellen und packen Sie die Topologie mit folgendem Befehl:
    

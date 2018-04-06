@@ -1,24 +1,24 @@
 ---
-title: "Häufig gestellte Fragen zu Log Analytics | Microsoft Docs"
-description: "Antworten auf häufig gestellte Fragen zum Azure Log Analytics-Dienst."
+title: Häufig gestellte Fragen zu Log Analytics | Microsoft Docs
+description: Antworten auf häufig gestellte Fragen zum Azure Log Analytics-Dienst.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 03/21/2018
 ms.author: magoedte
-ms.openlocfilehash: 0b27386cd0f9f3ae50314b8c5d7708aea3e3d028
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 398a62cbba952f35f29c1b1f411a6d5b901d2973
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Azure. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -27,7 +27,7 @@ Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log An
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>F: Verwendet Log Analytics denselben Agent wie das Azure Security Center?
 
-A: Seit Anfang Juni 2017 verwendet Azure Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Plattformmigration des Azure Security Center – FAQs](../security-center/security-center-platform-migration-faq.md).
+A. Seit Anfang Juni 2017 verwendet Azure Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Plattformmigration des Azure Security Center – FAQs](../security-center/security-center-platform-migration-faq.md).
 
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>F: Welche Überprüfungen werden von den AD- und SQL-Bewertungslösungen durchgeführt?
 
@@ -51,19 +51,21 @@ A: Nein. Log Analytics ist ein skalierbarer Clouddienst, der große Datenmengen 
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>F: Wie behebe ich das Problem, wenn Log Analytics keine Daten mehr erfasst?
 
-A: Wenn Sie den kostenlosen Tarif nutzen und an einem Tag mehr als 500 MB Daten gesendet haben, wird die Datensammlung für den Rest des Tages beendet. Das Erreichen des Tageslimits ist häufig die Ursache dafür, dass Log Analytics die Datensammlung beendet oder Daten scheinbar fehlen.
+A: Wenn Sie den kostenlosen Tarif nutzen und an einem Tag mehr als 500 MB Daten gesendet haben, wird die Datensammlung für den Rest des Tages beendet. Das Erreichen des Tageslimits ist häufig die Ursache dafür, dass Log Analytics die Datensammlung beendet oder Daten scheinbar fehlen.  
 
-Log Analytics erstellt ein Ereignis vom Typ *Operation*, wenn die Datensammlung beginnt und endet. 
+Log Analytics erstellt ein Ereignis vom Typ *Heartbeat* und kann verwendet werden, um zu ermitteln, ob die Datensammlung beendet wurde. 
 
-Führen Sie die folgende Abfrage in der Suche aus, um zu überprüfen, ob Sie das Tageslimit erreichen und Daten fehlen: `Type=Operation OperationCategory="Data Collection Status"`
+Führen Sie die folgende Abfrage in der Suche aus, um zu überprüfen, ob Sie das Tageslimit erreichen und Daten fehlen: `Heartbeat | summarize max(TimeGenerated)`
 
-Wenn die Datensammlung endet, hat *OperationStatus* den Wert **Warnung**. Wenn die Datensammlung beginnt, hat *OperationStatus* den Wert **Erfolgreich**. 
+Führen Sie zum Überprüfen eines bestimmten Computers die folgende Abfrage aus: `Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
+
+Wenn die Datensammlung beendet wird, werden je nach gewähltem Zeitbereich keine zurückgegebenen Datensätze angezeigt.   
 
 Die folgende Tabelle beschreibt die Gründe, warum die Datensammlung endet, und eine empfohlene Aktion zum Fortsetzen der Datensammlung:
 
 | Grund für Beenden der Datensammlung                       | Aktion zum Fortsetzen der Datensammlung |
 | -------------------------------------------------- | ----------------  |
-| Tageslimit für kostenlose Daten erreicht<sup>1</sup>       | Warten Sie, bis am folgenden Tag die Sammlung automatisch neu startet, oder<br> Wechseln Sie zu einem kostenpflichtigen Tarif |
+| Limit für kostenlose Daten erreicht<sup>1</sup>       | Warten Sie, bis die Sammlung im Folgemonat automatisch neu gestartet wird. Oder:<br> Wechseln Sie zu einem kostenpflichtigen Tarif |
 | Das Azure-Abonnement befindet sich aus folgendem Grund in einem angehaltenen Zustand: <br> Kostenlose Testversion endete <br> Azure Pass ist abgelaufen <br> Monatliches Ausgabenlimit ist erreicht (z.B. in einem MSDN- oder Visual Studio-Abonnement)                          | Konvertieren in ein kostenpflichtiges Abonnement <br> Konvertieren in ein kostenpflichtiges Abonnement <br> Limit entfernen oder warten, bis das Limit zurückgesetzt wird |
 
 <sup>1</sup> Wenn Ihr Arbeitsbereich im kostenlosen Tarif liegt, können Sie täglich nur 500 MB an Daten an den Dienst senden. Wenn Sie das Tageslimit erreichen, wird die Datensammlung bis zum nächsten Tag angehalten. Daten, die gesendet werden, während die Datensammlung angehalten ist, werden nicht indiziert und stehen nicht für die Suche zur Verfügung. Bei Fortsetzung der Datensammlung erfolgt nur die Verarbeitung neu gesendeter Daten. 
@@ -77,35 +79,34 @@ A: Führen Sie die Schritte unter [Erstellen einer Warnungsregel](log-analytics-
 Legen Sie beim Erstellen der Warnung für das Beenden der Datensammlung Folgendes fest:
 - **Name** auf *Datensammlung beendet*
 - **Schweregrad** auf *Warnung*
-- **Suchabfrage** auf `Type=Operation OperationCategory="Data Collection Status" OperationStatus=Warning`
-- **Zeitfenster** auf *2 Stunden*
-- **Warnungshäufigkeit** auf eine Stunde, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
+- **Suchabfrage** auf `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+- **Zeitfenster** auf *30 Minuten*
+- **Warnungshäufigkeit** auf alle *zehn* Minuten
 - **Warnung generieren basierend auf** auf *Anzahl von Ergebnissen*
 - **Anzahl von Ergebnissen** auf *Größer als 0*
 
-Führen Sie die Schritte aus, die unter [Hinzufügen von Aktionen zu Warnungsregeln](log-analytics-alerts-actions.md) beschrieben sind, um eine E-Mail-, Webhook- oder Runbookaktion für die Warnungsregel zu konfigurieren.
-
+Diese Warnung wird nur ausgelöst, wenn die Abfrage Ergebnisse zurückgibt und der Heartbeat für mehr als 15 Minuten ausbleibt.  Führen Sie die Schritte aus, die unter [Hinzufügen von Aktionen zu Warnungsregeln](log-analytics-alerts-actions.md) beschrieben sind, um eine E-Mail-, Webhook- oder Runbookaktion für die Warnungsregel zu konfigurieren.
 
 ## <a name="configuration"></a>Konfiguration
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>F: Kann ich den Namen der Tabelle bzw. des Blobcontainers zum Einlesen von Daten aus Azure-Diagnose (WAD) ändern?
 
-A: Nein, derzeit ist es nicht möglich, aus beliebigen Tabellen oder Containern im Azure-Speicher zu lesen.
+A. Nein, derzeit ist es nicht möglich, aus beliebigen Tabellen oder Containern im Azure-Speicher zu lesen.
 
 ### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>F: Welche IP-Adressen verwendet der Log Analytics-Dienst? Wie stelle ich sicher, dass meine Firewall nur Datenverkehr zum Log Analytics-Dienst zulässt?
 
-A: Der Log Analytics-Dienst basiert auf Azure. Log Analytics-IP-Adressen finden Sie in den [Microsoft Azure Datacenter IP Ranges](http://www.microsoft.com/download/details.aspx?id=41653) (Microsoft Azure-Rechenzentrum-IP-Adressbereiche).
+A. Der Log Analytics-Dienst basiert auf Azure. Log Analytics-IP-Adressen finden Sie in den [Microsoft Azure Datacenter IP Ranges](http://www.microsoft.com/download/details.aspx?id=41653) (Microsoft Azure-Rechenzentrum-IP-Adressbereiche).
 
 Sobald Dienstbereitstellungen erfolgen, ändern sich die tatsächlichen IP-Adressen des Log Analytics-Diensts. Die DNS-Namen, die Ihre Firewall passieren dürfen, sind unter [Konfigurieren von Proxy- und Firewalleinstellungen in Log Analytics](log-analytics-proxy-firewall.md)dokumentiert.
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>F: Ich verwende ExpressRoute für die Verbindung mit Azure. Wird für meinen Log Analytics-Datenverkehr meine ExpressRoute-Verbindung verwendet?
 
-A: Die verschiedenen Typen von ExpressRoute-Datenverkehr werden in der [ExpressRoute-Dokumentation](../expressroute/expressroute-faqs.md#supported-services) beschrieben.
+A. Die verschiedenen Typen von ExpressRoute-Datenverkehr werden in der [ExpressRoute-Dokumentation](../expressroute/expressroute-faqs.md#supported-services) beschrieben.
 
 Für Datenverkehr zu Log Analytics wird eine ExpressRoute-Verbindung mit öffentlichem Peering verwendet.
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>F: Gibt es eine einfache Möglichkeit zum Verschieben eines vorhandenen Log Analytics-Arbeitsbereichs in einen anderen Log Analytics-Arbeitsbereich bzw. ein anderes Azure-Abonnement?
 
-A: Mit dem Cmdlet `Move-AzureRmResource` können Sie einen Log Analytics-Arbeitsbereich sowie ein Automation-Konto aus einem Azure-Abonnement in ein anderes verschieben. Weitere Informationen finden Sie unter [Move-AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx).
+A. Mit dem Cmdlet `Move-AzureRmResource` können Sie einen Log Analytics-Arbeitsbereich sowie ein Automation-Konto aus einem Azure-Abonnement in ein anderes verschieben. Weitere Informationen finden Sie unter [Move-AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx).
 
 Diese Änderung kann auch im Azure-Portal erfolgen.
 
@@ -139,19 +140,19 @@ Stellen Sie sicher, dass Sie in beiden Azure-Abonnements über Berechtigungen ve
 
 ## <a name="agent-data"></a>Agent-Daten
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>F: Wie viele Daten kann ich über den Agent an Log Analytics senden? Gibt es eine maximale Datenmenge pro Kunde?
-A: Im Tarif Free gilt eine tägliche Obergrenze von 500 MB pro Arbeitsbereich. Die Tarife Standard und Premium sehen keine Begrenzung der Datenmenge vor, die hochgeladen werden kann. Als Clouddienst ist Log Analytics so ausgelegt, dass ein automatisches Hochskalieren erfolgt, um das vom Kunden eingehende Datenvolumen zu bewältigen, selbst wenn es sich um mehrere Terabytes pro Tag handelt.
+A. Im Tarif Free gilt eine tägliche Obergrenze von 500 MB pro Arbeitsbereich. Die Tarife Standard und Premium sehen keine Begrenzung der Datenmenge vor, die hochgeladen werden kann. Als Clouddienst ist Log Analytics so ausgelegt, dass ein automatisches Hochskalieren erfolgt, um das vom Kunden eingehende Datenvolumen zu bewältigen, selbst wenn es sich um mehrere Terabytes pro Tag handelt.
 
-Der Log Analytics-Agent ist auf einen kleinen Speicherbedarf ausgelegt. Einer unserer Kunden hat einen Blog zu den Tests verfasst, die sein Unternehmen mit unserem Agent ausgeführt hat – so beeindruckt war er. Das Datenvolumen variiert basierend auf den Lösungen, die Sie aktivieren. Ausführliche Informationen zum Datenvolumen und die Aufschlüsselung nach Lösung finden Sie auf der Seite [Verwendung](log-analytics-usage.md).
+Der Log Analytics-Agent ist auf einen kleinen Speicherbedarf ausgelegt. Das Datenvolumen variiert basierend auf den Lösungen, die Sie aktivieren. Ausführliche Informationen zum Datenvolumen sowie eine Aufschlüsselung nach Lösung finden Sie auf der Seite [Verwendung](log-analytics-usage.md).
 
-Weitere Informationen finden Sie in einem [Kundenblog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) zum geringen Speicherbedarf des OMS-Agents.
+Weitere Informationen finden Sie in einem [Kundenblog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) zur Kompaktheit des OMS-Agents.
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>F: Wie viel Netzwerkbandbreite nutzt der Microsoft-Verwaltungs-Agent (MMA) beim Senden von Daten an Log Analytics?
 
-A: Die Bandbreite hängt von der gesendeten Datenmenge ab. Daten werden komprimiert, bevor sie über das Netzwerk gesendet werden.
+A. Die Bandbreite hängt von der gesendeten Datenmenge ab. Daten werden komprimiert, bevor sie über das Netzwerk gesendet werden.
 
 ### <a name="q-how-much-data-is-sent-per-agent"></a>F: Wie viele Daten werden pro Agent gesendet?
 
-A: Die pro Agent gesendete Datenmenge hängt von Folgendem ab:
+A. Die pro Agent gesendete Datenmenge hängt von Folgendem ab:
 
 * Den Lösungen, die Sie aktiviert haben
 * Der Anzahl der Protokolle und Leistungsindikatoren, die gesammelt werden

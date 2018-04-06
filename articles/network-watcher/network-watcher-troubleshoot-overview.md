@@ -1,11 +1,11 @@
 ---
-title: "Einführung in die Problembehandlung bei Ressourcen in Azure Network Watcher | Microsoft Docs"
-description: "Diese Seite enthält eine Übersicht über die Network Watcher-Funktionen zur Problembehandlung bei Ressourcen."
+title: Einführung in die Problembehandlung bei Ressourcen in Azure Network Watcher | Microsoft Docs
+description: Diese Seite enthält eine Übersicht über die Network Watcher-Funktionen zur Problembehandlung bei Ressourcen.
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
 ms.service: network-watcher
 ms.devlang: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: a37c92e1aa58184ed29185742ec727c120fe593f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 646caa5e4aacd58377c0a2b5985a69277d00cec3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Einführung in die Problembehandlung bei Ressourcen in Azure Network Watcher
 
-Virtual Network-Gateways stellen die Konnektivität zwischen lokalen Ressourcen und anderen virtuellen Netzwerken in Azure bereit. Die Überwachung dieser Gateways und ihrer Verbindungen ist wichtig, damit die Kommunikation nicht unterbrochen wird. Network Watcher bietet Funktionen zur Problembehandlung bei Virtual Network-Gateways und -Verbindungen. Diese können über das Portal, PowerShell, die CLI oder die REST-API aufgerufen werden. Bei Aufruf untersucht Network Watcher die Integrität des Virtual Network-Gateways oder der Verbindung und gibt die Ergebnisse zurück. Diese Anforderung ist eine lange andauernde Transaktion. Die Ergebnisse werden zurückgegeben, sobald die Diagnose abgeschlossen ist.
+Virtual Network-Gateways stellen die Konnektivität zwischen lokalen Ressourcen und anderen virtuellen Netzwerken in Azure bereit. Die Überwachung der Gateways und ihrer Verbindungen ist wichtig, damit die Kommunikation nicht unterbrochen wird. Network Watcher bietet Funktionen zur Problembehandlung bei Gateways und Verbindungen. Diese können über Portal, PowerShell, Azure CLI oder REST-API aufgerufen werden. Bei Aufruf untersucht Network Watcher die Integrität des Gateways oder der Verbindung und gibt die Ergebnisse zurück. Die Anforderung ist eine lange andauernde Transaktion. Die Ergebnisse werden zurückgegeben, sobald die Diagnose abgeschlossen ist.
 
 ![Portal][2]
 
@@ -51,14 +51,14 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 | Fehlertyp | Grund | Protokoll|
 |---|---|---|
 | NoFault | Es wurde kein Fehler erkannt. |Ja|
-| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein|
-| PlannedMaintenance |  Die Gatewayinstanz wird zurzeit gewartet.  |Nein|
-| UserDrivenUpdate | Es wird ein Benutzerupdate des Geräts durchgeführt. Dies könnte z.B. eine Größenänderung sein. | Nein |
-| VipUnResponsive | Die primäre Instanz des Gateways ist nicht erreichbar. Dies tritt auf, wenn beim Integritätstest ein Fehler auftritt. | Nein |
-| PlatformInActive | Es ist ein Problem mit der Plattform aufgetreten. | Nein|
-| ServiceNotRunning | Der zugrunde liegende Dienst wird nicht ausgeführt. | Nein|
-| NoConnectionsFoundForGateway | Es gibt keine Verbindungen auf dem Gateway. Dies ist nur eine Warnung.| Nein|
-| ConnectionsNotConnected | Es sind keine Verbindungen vorhanden. Dies ist nur eine Warnung.| Ja|
+| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |
+| PlannedMaintenance |  Die Gatewayinstanz wird zurzeit gewartet.  |Nein |
+| UserDrivenUpdate | Dieser Fehler tritt auf, wenn ein Benutzerupdate des Geräts durchgeführt wird. Das Update könnte z.B. eine Größenänderung sein. | Nein  |
+| VipUnResponsive | Dieser Fehler tritt auf, wenn die primäre Instanz des Gateways aufgrund eines Integritätstestfehlers nicht erreicht werden kann. | Nein  |
+| PlatformInActive | Es ist ein Problem mit der Plattform aufgetreten. | Nein |
+| ServiceNotRunning | Der zugrunde liegende Dienst wird nicht ausgeführt. | Nein |
+| NoConnectionsFoundForGateway | Es gibt keine Verbindungen auf dem Gateway. Dieser Fehler ist nur eine Warnung.| Nein |
+| ConnectionsNotConnected | Es sind keine Verbindungen vorhanden. Dieser Fehler ist nur eine Warnung.| Ja|
 | GatewayCPUUsageExceeded | Die aktuelle CPU-Auslastung auf dem Gateway liegt über 95 %. | Ja |
 
 ### <a name="connection"></a>Verbindung
@@ -66,12 +66,12 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 | Fehlertyp | Grund | Protokoll|
 |---|---|---|
 | NoFault | Es wurde kein Fehler erkannt. |Ja|
-| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein|
-| PlannedMaintenance | Die Gatewayinstanz wird zurzeit gewartet.  |Nein|
-| UserDrivenUpdate | Es wird ein Benutzerupdate des Geräts durchgeführt. Dies könnte z.B. eine Größenänderung sein.  | Nein |
-| VipUnResponsive | Die primäre Instanz des Gateways ist nicht erreichbar. Dies tritt auf, wenn beim Integritätstest ein Fehler auftritt. | Nein |
-| ConnectionEntityNotFound | Die Verbindungskonfiguration fehlt. | Nein |
-| ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein|
+| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |
+| PlannedMaintenance | Die Gatewayinstanz wird zurzeit gewartet.  |Nein |
+| UserDrivenUpdate | Dieser Fehler tritt auf, wenn ein Benutzerupdate des Geräts durchgeführt wird. Das Update könnte z.B. eine Größenänderung sein.  | Nein  |
+| VipUnResponsive | Dieser Fehler tritt auf, wenn die primäre Instanz des Gateways aufgrund eines Integritätstestfehlers nicht erreicht werden kann. | Nein  |
+| ConnectionEntityNotFound | Die Verbindungskonfiguration fehlt. | Nein  |
+| ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein |
 | ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | Ja |
 | ConnectionMarkedStandy | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| Ja|
 | Authentifizierung | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
@@ -81,13 +81,13 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 
 ## <a name="supported-gateway-types"></a>Unterstützte Gatewaytypen
 
-In der folgenden Liste sind die Gateways und Verbindungen aufgeführt, die von der Network Watcher-Problembehandlung unterstützt werden.
+In der folgenden Tabelle sind die Gateways und Verbindungen aufgelistet, die von der Network Watcher-Problembehandlung unterstützt werden:
+
 |  |  |
 |---------|---------|
 |**Gatewaytypen**   |         |
 |VPN      | Unterstützt        |
 |ExpressRoute | Nicht unterstützt |
-|HyperNet | Nicht unterstützt|
 |**VPN-Typen** | |
 |Routenbasiert | Unterstützt|
 |Richtlinienbasiert | Nicht unterstützt|
@@ -95,7 +95,6 @@ In der folgenden Liste sind die Gateways und Verbindungen aufgeführt, die von d
 |IPsec| Unterstützt|
 |Vnet2Vnet| Unterstützt|
 |ExpressRoute| Nicht unterstützt|
-|HyperNet| Nicht unterstützt|
 |VPNClient| Nicht unterstützt|
 
 ## <a name="log-files"></a>Protokolldateien
@@ -107,7 +106,7 @@ Nach Abschluss der Problembehandlung werden die Protokolldateien zur Ressourcenp
 > [!NOTE]
 > In einigen Fällen wird nur eine Teilmenge der Protokolldateien in den Speicher geschrieben.
 
-Anweisungen zum Herunterladen von Dateien von Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Speicher-Explorer. Weitere Informationen zum Speicher-Explorer finden Sie unter [Speicher-Explorer](http://storageexplorer.com/).
+Anweisungen zum Herunterladen von Dateien von Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter [Storage-Explorer](http://storageexplorer.com/).
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
@@ -151,7 +150,7 @@ Error: On-prem device sent invalid payload.
 
 Die Protokolldatei **Scrubbed-wfpdiag.txt** enthält das WFP-Protokoll. Dieses Protokoll enthält die verloren gegangenen Pakete und die IKE-/AuthIP-Fehler.
 
-Das folgende Beispiel zeigt den Inhalt der Datei „Scrubbed-wfpdiag.txt“. In diesem Beispiel war der gemeinsam verwendete Schlüssel einer Verbindung falsch. Dies erkennt man in der drittletzten Zeile. Das folgende Beispiel ist ein Ausschnitt aus dem vollständigen Protokoll, da das Protokoll je nach Problem sehr lang werden kann.
+Das folgende Beispiel zeigt den Inhalt der Datei „Scrubbed-wfpdiag.txt“. In diesem Beispiel war der gemeinsam verwendete Schlüssel einer Verbindung falsch. Dies ist in der drittletzten Zeile zu erkennen. Das folgende Beispiel ist ein Ausschnitt aus dem vollständigen Protokoll, da das Protokoll je nach Problem sehr lang werden kann.
 
 ```
 ...

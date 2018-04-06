@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Dynamisches Anpassen der Azure AD B2C-Benutzeroberfläche (UI) mithilfe von benutzerdefinierten Richtlinien"
-description: "Unterstützung mehrerer Brandingdarstellungen mit HTML5/CSS-Inhalt, der sich zur Laufzeit dynamisch ändert."
+title: 'Azure Active Directory B2C: Dynamisches Anpassen der Azure AD B2C-Benutzeroberfläche (UI) mithilfe von benutzerdefinierten Richtlinien'
+description: Unterstützung mehrerer Brandingdarstellungen mit HTML5/CSS-Inhalt, der sich zur Laufzeit dynamisch ändert.
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 09/20/2017
-ms.author: yoelh
-ms.openlocfilehash: 3a2310ae6266709df6677c55f11b15239c0425a2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: davidmu
+ms.openlocfilehash: d8aaf0ef8cefdc0cb1c4ff3dec656d31c32f664f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien
 Mithilfe von benutzerdefinierten Azure Active Directory B2C-Richtlinien (Azure AD B2C) können Sie einen Parameter in einer Abfragezeichenfolge senden. Durch Übergeben des Parameters an Ihren HTML-Endpunkt können Sie den Seiteninhalt dynamisch ändern. Sie können z.B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. 
@@ -181,7 +178,7 @@ Suchen Sie das `<img>`-Element, das den `ID`-Wert *background_background_image* 
     * Geben Sie die URLs ein, von denen JavaScript-Aufrufe ausgehen können sollen.
     * Geben Sie ein Sternchen (*) ein, um anzugeben, dass alle Ursprungsdomänen akzeptiert werden.
 
-4. Wählen Sie **Speichern** aus.
+4. Wählen Sie **Speichern**aus.
 
     ![Fenster „CORS“](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS3.png)
 

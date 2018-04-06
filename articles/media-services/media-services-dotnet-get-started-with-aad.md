@@ -2,22 +2,22 @@
 title: Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API mit .NET | Microsoft-Dokumentation
 description: In diesem Thema wird gezeigt, wie die Azure Active Directory (Azure AD)-Authentifizierung verwendet wird, um auf die Azure Media Services (AMS)-API mit .NET zuzugreifen.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: a9355200a05a3aa1b494b76977d38ddc42bfe179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8817bb0da526769470e96b63b9c80620309757bf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API mit .NET
 
@@ -36,7 +36,7 @@ Bei Verwendung der Azure AD-Authentifizierung mit Azure Media Services können S
 - Die **Dienstprinzipalauthentifizierung** dient der Authentifizierung eines Diensts. Anwendungen, für die diese Authentifizierungsmethode normalerweise verwendet wird, sind Apps, die Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge wie Web-Apps, Funktions-Apps, Logik-Apps, APIs oder Microservices ausführen.
 
 >[!IMPORTANT]
->Derzeit unterstützt Azure Media Services ein Azure Access Control Service-Authentifizierungsmodell. Die Access Control-Authentifizierung gilt aber ab dem 1. Juni 2018 als veraltet. Es wird empfohlen, möglichst bald zu einem Azure Active Directory-Authentifizierungsmodell zu migrieren.
+>Derzeit unterstützt Azure Media Services ein Azure Access Control Service-Authentifizierungsmodell. Die Access Control-Authentifizierung gilt aber ab dem 22. Juni 2018 als veraltet. Es wird empfohlen, möglichst bald zu einem Azure Active Directory-Authentifizierungsmodell zu migrieren.
 
 ## <a name="get-an-azure-ad-access-token"></a>Anfordern eines Azure AD-Zugriffstokens
 

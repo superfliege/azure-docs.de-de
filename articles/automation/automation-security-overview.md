@@ -1,26 +1,20 @@
 ---
-title: "Einführung in die Authentifizierung in Azure Automation | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält eine Übersicht über die Automation-Sicherheit und die unterschiedlichen Authentifizierungsmethoden, die für Automation-Konten in Azure Automation verfügbar sind."
-services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
+title: Einführung in die Authentifizierung in Azure Automation
+description: Dieser Artikel enthält eine Übersicht über die Automation-Sicherheit und die unterschiedlichen Authentifizierungsmethoden, die für Automation-Konten in Azure Automation verfügbar sind.
 keywords: Automation-Sicherheit, sicher Automation; Automation-Authentifizierung
-ms.assetid: 4a6bc2f5-c5a2-4dfb-b10d-7950d750dee8
+services: automation
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/19/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/01/2017
-ms.author: magoedte
+manager: carmonm
 ROBOTS: NOINDEX
-ms.openlocfilehash: 99882c1ff7517beec2ca827c63620f773d7d07c3
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4280c0de3f5c38aa8a72bad391544b03116e26c9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Einführen in die Authentifizierung in Azure Automation  
 Mit Azure Automation können Sie Aufgaben für Ressourcen in Azure, lokal und mit anderen Cloudanbietern, z.B. Amazon Web Services (AWS), automatisieren.  Damit ein Runbook die erforderlichen Aktionen ausführen kann, muss es über Berechtigungen für den sicheren Zugriff auf die Ressourcen mit den geringstmöglichen Rechten im Abonnement verfügen.

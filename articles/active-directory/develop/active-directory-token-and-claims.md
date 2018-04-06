@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/07/2017
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ca8a34c0a29ffad21e6384feac055d7a292311a5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8f9eb95f49e0d2bd01d9ead7eda7d13288bfd573
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD-Tokenreferenz
 Azure Active Directory (Azure AD) stellt bei der Verarbeitung der einzelnen Authentifizierungsflüsse verschiedene Arten von Sicherheitstoken aus. In diesem Dokument sind das Format, die Sicherheitsmerkmale und der Inhalt aller Tokentypen beschrieben.
@@ -321,3 +321,4 @@ Neben Ansprüchen enthält das Token eine Versionsnummer in **ver** und **appida
 ## <a name="related-content"></a>Verwandte Inhalte
 * In den [Richtlinienvorgängen](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) und der [Richtlinienentität](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity) von Azure AD Graph finden Sie weitere Informationen zur Verwaltung der Richtlinie für die Tokengültigkeitsdauer über die Azure AD Graph-API.
 * Weitere Informationen und Beispiele zur Verwaltung von Richtlinien über PowerShell-Cmdlets finden Sie unter [Konfigurierbare Tokengültigkeitsdauer in Azure AD](../active-directory-configurable-token-lifetimes.md). 
+* Fügen Sie den Token für Ihre Anwendung [benutzerdefinierte und optionale](active-directory-optional-claims.md) Ansprüche hinzu. 

@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Konfiguration für WeChat | Microsoft-Dokumentation"
-description: "Bereitstellen von Registrierung und Anmeldung für Kunden mit WeChat-Konten in mit Azure Active Directory B2C geschützten Anwendungen."
+title: 'Azure Active Directory B2C: Konfiguration für WeChat | Microsoft-Dokumentation'
+description: Bereitstellen von Registrierung und Anmeldung für Kunden mit WeChat-Konten in mit Azure Active Directory B2C geschützten Anwendungen.
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: d2424c66-ba68-4d82-847e-d137683527b0
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2017
-ms.author: parakhj
-ms.openlocfilehash: 1cc1de1926edd28d09a3779da9595ef22491d0d9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: ca12c84042f92dafff67dc10ce6b56b77c0456eb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-wechat-accounts"></a>Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit WeChat-Konten
 
@@ -32,16 +29,16 @@ Um WeChat als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwe
 
 ### <a name="register-a-wechat-application"></a>Registrieren einer WeChat-Anwendung
 
-1. Rufen Sie [https://open.weixin.qq.com/](https://open.weixin.qq.com/) auf, und melden Sie sich an.
+1. Navigieren Sie zu [https://open.weixin.qq.com/](https://open.weixin.qq.com/), und melden Sie sich an.
 2. Klicken Sie auf **管理中心** (Management Center).
 3. Führen Sie die erforderlichen Schritte zum Registrieren einer neuen Anwendung aus.
 4. Geben Sie unter **授权回调域** (Rückruf-URL) `https://login.microsoftonline.com/te/{tenant_name}/oauth2/authresp` ein. Wenn Ihr `tenant_name` beispielsweise „contoso.onmicrosoft.com“ lautet, legen Sie die URL auf `https://login.microsoftonline.com/te/contoso.onmicrosoft.com/oauth2/authresp` fest.
 5. Suchen und kopieren Sie die **APP-ID** und den **ANWENDUNGSSCHLÜSSEL**. Diese werden später benötigt.
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>Konfigurieren von WeChat als Identitätsanbieter in Ihrem Mandanten
-1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) .
+1. Führen Sie diese Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Klicken Sie auf dem B2C-Featureblatt auf **Identitätsanbieter**.
-3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
+3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
 4. Geben Sie als **Name** einen aussagekräftigen Namen für die Konfiguration des Identitätsanbieters ein. Geben Sie z.B. „WeChat“ ein.
 5. Klicken Sie auf **Identitätsanbietertyp**, wählen Sie **WeChat** aus, und klicken Sie auf **OK**.
 6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**.

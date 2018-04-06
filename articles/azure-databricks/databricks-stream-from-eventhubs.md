@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/23/2018
+ms.date: 03/27/2018
 ms.author: alehall
-ms.openlocfilehash: 94b09b824becc8a67adf4edfd2d4b44496a6169c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c43edc6673c42a8b69bfa296e288e77adee4d0af
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Tutorial: Streamen von Daten an Azure Databricks unter Verwendung von Event Hubs
 
@@ -243,7 +243,7 @@ Fügen Sie im Notebook **SendTweetsToEventHub** den folgenden Code ein, und erse
     // Closing connection to the Event Hub
     eventHubClient.get().close()
 
-Drücken Sie**UMSCHALT+EINGABE**, um das Notebook auszuführen. Die Ausgabe sieht in etwa wie im folgenden Codeausschnitt aus. Jedes Ereignis der Ausgabe ist ein Tweet, der in Event Hubs erfasst wird und den Begriff „Azure“ enthält.
+Drücken Sie **UMSCHALT+EINGABE**, um das Notebook auszuführen. Die Ausgabe sieht in etwa wie im folgenden Codeausschnitt aus. Jedes Ereignis der Ausgabe ist ein Tweet, der in Event Hubs erfasst wird und den Begriff „Azure“ enthält.
 
     Sent event: @Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence
 
@@ -356,7 +356,7 @@ Die Ausgabe sieht nun in etwa wie im folgenden Codeausschnitt aus:
     ...
     ...
 
-Das ist alles! Sie haben mit Azure Databricks erfolgreich und nahezu in Echtzeit Daten an Azure Event Hubs gestreamt. Anschließend haben Sie die Streamdaten mithilfe des Event Hubs-Connectors für Apache Spark verarbeitet.
+Das ist alles! Sie haben mit Azure Databricks erfolgreich und nahezu in Echtzeit Daten an Azure Event Hubs gestreamt. Anschließend haben Sie die Streamdaten mithilfe des Event Hubs-Connectors für Apache Spark verarbeitet. Weitere Informationen zur Verwendung des Event Hubs-Connectors für Spark finden Sie in der [Connector-Dokumentation](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

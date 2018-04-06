@@ -1,8 +1,8 @@
 ---
-title: "Debuggen von benutzerdefiniertem C#-Code für fehlerhafte Azure Data Lake-U-SQL-Aufträge | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie U-SQL-Vertexfehler mit Azure Data Lake Tools für Visual Studio debuggen."
+title: Debuggen von benutzerdefiniertem C#-Code für fehlerhafte Azure Data Lake-U-SQL-Aufträge | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie U-SQL-Vertexfehler mit Azure Data Lake Tools für Visual Studio debuggen.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/31/2017
 ms.author: yanacai
-ms.openlocfilehash: 739d46753729b70a24dbd3d6e2d78f8513e143e6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b614583079347c2634f8d03531517d1d32c75132
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debuggen von benutzerdefiniertem C#-Code für fehlerhafte U-SQL-Aufträge
 
@@ -41,7 +41,7 @@ Wenn Sie in Azure Data Lake Tools für Visual Studio einen fehlerhaften Auftrag 
 
 1. Klicken Sie auf **Herunterladen** , um alle erforderlichen Ressourcen und Eingabedatenströme herunterzuladen. Sollte der Downloadvorgang nicht abgeschlossen werden, klicken Sie auf **Wiederholen**.
 
-2. Klicken Sie nach Abschluss des Downloadvorgangs auf **Öffnen**, um eine lokale Debugumgebung zu generieren. Es wird automatisch eine neue Visual Studio-Instanz mit einer Debugprojektmappe erstellt und geöffnet.
+2. Klicken Sie nach Abschluss des Downloadvorgangs auf **Öffnen**, um eine lokale Debugumgebung zu generieren. Eine neue Debugprojektmappe wird geöffnet, und wenn Sie die vorhandene Projektmappe in Visual Studio geöffnet haben, achten Sie bitte darauf, sie vor dem Debuggen zu speichern und zu schließen.
 
 ![Azure Data Lake Analytics, Debuggen von U-SQL-Aufträgen mit Visual Studio, Herunterladen von Vertexdaten](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 

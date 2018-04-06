@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/27/2018
 ms.author: shlo
-ms.openlocfilehash: f55e85bb424f4f5973fd6d633b6adf9fbca4d0ef
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7d6abb72fca71c213f9810784581a9af2dafb3a2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
 Mit der Lookupaktivität können Sie einen Datensatz, einen Tabellennamen oder einen Wert in einer externen Quelle lesen oder suchen. Auf die Ausgabe kann durch nachfolgende Aktivitäten verwiesen werden. 
@@ -30,12 +30,23 @@ Die Lookupaktivität ist nützlich, wenn Sie eine Liste von Dateien, Datensätze
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
 Die folgenden Datenquellen werden derzeit für die Lookupaktivität unterstützt:
-- JSON-Datei in Azure Blob Storage
-- JSON-Datei in Dateisystem
-- Azure SQL-Datenbank (aus einer Abfrage konvertierte JSON-Daten)
-- Azure SQL Data Warehouse (aus einer Abfrage konvertierte JSON-Daten)
-- SQL Server (aus einer Abfrage konvertierte JSON-Daten)
-- Azure Table Storage (aus einer Abfrage konvertierte JSON-Daten)
+
+- Amazon Redshift
+- Azure Blob Storage
+- Azure Cosmos DB
+- Azure Data Lake Store
+- Azure-Dateispeicher
+- Azure SQL-Datenbank
+- Azure SQL Data Warehouse
+- Azure-Tabellenspeicher
+- Dynamics 365
+- Dynamics CRM
+- Dateisystem
+- PostgreSQL
+- Salesforce
+- Salesforce Service Cloud
+- SFTP
+- SQL Server
 
 Von der Lookup-Aktivität werden maximal **5.000** Zeilen mit einer Größe von bis zu **10 MB** zurückgegeben.
 
@@ -62,9 +73,14 @@ Von der Lookup-Aktivität werden maximal **5.000** Zeilen mit einer Größe von 
 ## <a name="type-properties"></a>Typeigenschaften
 NAME | BESCHREIBUNG | Typ | Erforderlich?
 ---- | ----------- | ---- | --------
-dataset | Enthält die Datasetreferenz für die Lookupaktivität. Derzeit werden folgende Datasettypen unterstützt:<ul><li>`AzureBlobDataset` für [Azure Blob Storage](connector-azure-blob-storage.md#dataset-properties) als Quelle</li><li>`FileShareDataset` für [Dateisystem](connector-file-system.md#dataset-properties) als Quelle</li><li>`AzureSqlTableDataset` für [Azure SQL-Datenbank](connector-azure-sql-database.md#dataset-properties) oder [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#dataset-properties) als Quelle</li><li>`SqlServerTable` für [SQL Server](connector-sql-server.md#dataset-properties) als Quelle</li><li>`AzureTableDataset` für [Azure Table Storage](connector-azure-table-storage.md#dataset-properties) als Quelle</li> | Schlüssel-Wert-Paar | Ja
+dataset | Enthält die Datasetreferenz für die Lookupaktivität. Details finden Sie in den entsprechenden Connectorartikeln im Abschnitt „Dataset-Eigenschaften“. | Schlüssel-Wert-Paar | Ja
 Quelle | Enthält spezifische Quelleneigenschaften für das Dataset, identisch mit der Quelle der Kopieraktivität. Details finden Sie in jedem entsprechenden Connectorartikel im Abschnitt „Eigenschaften der Kopieraktivität“. | Schlüssel-Wert-Paar | Ja
 firstRowOnly | Gibt an, ob nur die erste Zeile oder alle Zeilen zurückgegeben werden sollen. | Boolescher Wert | Nein. Der Standardwert ist `true`.
+
+Beachten Sie folgende Punkte:
+
+1. Eine Quellspalte mit dem Typ „ByteArray“ wird nicht unterstützt.
+2. In der Datasetdefinition wird keine Struktur unterstützt. Bei Textformatdateien können Sie den Spaltennamen in der Kopfzeile angeben.
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Verwenden des Ergebnisses der Lookupaktivität in einer nachfolgenden Aktivität
 

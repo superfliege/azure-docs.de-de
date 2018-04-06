@@ -5,8 +5,8 @@ services: advisor
 documentationcenter: NA
 author: manbeenkohli
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.openlocfilehash: 5a7864597e50294c8e1227cbab7a3be73dde0a7f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: cd64515beabec43a5209d62dccf2b55b21702c16
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-started-with-azure-advisor"></a>Erste Schritte mit Azure Advisor
 
@@ -35,10 +35,7 @@ Erfahren Sie, wie Sie über das Azure-Portal auf den Advisor zugreifen, und wie 
 
 4. Das Advisor-Dashboard zeigt eine Zusammenfassung Ihrer Empfehlungen für alle ausgewählten Abonnements an.  Sie können mithilfe der Abonnementfilter-Dropdownliste die Abonnements auswählen, für die Empfehlungen angezeigt werden sollen.
 
-5. Um Empfehlungen zu einer bestimmten Kategorie zu erhalten, klicken Sie auf eine dieser Registerkarten: **Hochverfügbarkeit**, **Sicherheit**, **Leistung** oder **Kosten**.
- 
-> [!NOTE]
-> Um den Azure Advisor mit einem Abonnement zu verwenden, muss ein *Besitzer* eines Abonnements das Ratgeber-Dashboard neu aufrufen.  Bei dieser Aktion wird das Abonnement beim Advisor registriert.  Ab diesem Punkt kann jeder *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements auf die Advisor-Empfehlungen für das Abonnement zugreifen.  
+5. Um Empfehlungen zu einer bestimmten Kategorie zu erhalten, klicken Sie auf eine dieser Registerkarten: **Hochverfügbarkeit**, **Sicherheit**, **Leistung** oder **Kosten**. 
 
   ![Azure Advisor-Dashboard](./media/advisor-overview/advisor-dashboard.png)
 

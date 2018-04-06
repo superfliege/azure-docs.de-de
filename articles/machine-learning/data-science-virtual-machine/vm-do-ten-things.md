@@ -3,7 +3,7 @@ title: Zehn Dinge, die Sie mit der Data Science Virtual Machine in Azure machen 
 description: Führen Sie verschiedene Durchsuchungen von Daten und Modellierungsaufgaben auf der Data Science Virtual Machine aus.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: gokuma;weig;bradsev
-ms.openlocfilehash: 71745260f45c5a5c150fdd3eac4e9a8221b8bce4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gokuma
+ms.openlocfilehash: f11aff2231a5ae6a58d5c9a3f53379a6849d226a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können
 
@@ -814,7 +814,7 @@ Sobald Sie die Daten importiert haben, können Sie in Jupyter das Notebook *Docu
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8. Erstellen von Berichten und Dashboard mit Power BI Desktop
 Sie können die Volcano JSON-Datei aus dem vorherigen Cosmos DB-Beispiel in Power BI visualisieren, um visuelle Einblicke in die Daten zu erhalten. Eine ausführliche Anleitung finden Sie im [Power BI-Artikel](../../cosmos-db/powerbi-visualize.md). Die allgemeinen Schritte sind folgende:
 
-1. Öffnen Sie Power BI Desktop, und führen Sie „Get Data“ aus. Geben Sie die URL an: https://cahandson.blob.core.windows.net/samples/volcano.json
+1. Öffnen Sie Power BI Desktop, und führen Sie „Get Data“ aus. Geben Sie die URL wie folgt an: https://cahandson.blob.core.windows.net/samples/volcano.json
 2. Sie sollten die JSON-Datensätze in einer importierten Liste sehen.
 3. Konvertieren Sie die Liste in eine Tabelle, damit Power BI damit arbeiten kann.
 4. Erweitern Sie die Spalten durch Klicken auf das Erweiterungssymbol (das Symbol „Pfeil nach links und Pfeil nach rechts“ auf der rechten Seite der Spalte).

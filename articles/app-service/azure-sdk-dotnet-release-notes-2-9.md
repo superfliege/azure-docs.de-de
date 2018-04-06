@@ -1,10 +1,10 @@
 ---
-title: "Versionshinweise zu Azure SDK für .NET 2.9"
-description: "Versionshinweise zu Azure SDK für .NET 2.9"
+title: Versionshinweise zu Azure SDK für .NET 2.9
+description: Versionshinweise zu Azure SDK für .NET 2.9
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
-editor: 
+editor: ''
 ms.assetid: c83d815b-fc19-4260-821e-7d2a7206dffc
 ms.service: app-service
 ms.devlang: multiple
@@ -14,10 +14,10 @@ ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
 ms.openlocfilehash: a62268cee0750c544703fb4c3f7e91238e26b872
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Versionshinweise zu Azure SDK für .NET 2.9
 
@@ -31,7 +31,7 @@ Mit dieser Version wurden keine grundlegenden Änderungen für Azure SDK 2.9 ein
 
 ### <a name="visual-studio-2017-release-candidate"></a>Visual Studio 2017 Release Candidate
 
-- In Visual Studio 2017 RC ist diese Version des Azure SDK für .NET in die Azure-Workload integriert. Alle Tools, die Sie für die Azure-Entwicklung benötigen, sind in Zukunft Teil von Visual Studio 2017 RC. Für Visual Studio 2015 und Visual Studio 2013 ist das SDK weiterhin per WebPI verfügbar. Versionen von Azure SDK für .NET werden für Visual Studio 2013 nicht mehr fortgeführt, nachdem Visual Studio 2017 als fertiges Produkt veröffentlicht wurde. Unter diesem Link können Sie Visual Studio 2017 RC herunterladen: https://www.visualstudio.com/vs/visual-studio-2017-rc/
+- In Visual Studio 2017 RC ist diese Version des Azure SDK für .NET in die Azure-Workload integriert. Alle Tools, die Sie für die Azure-Entwicklung benötigen, sind in Zukunft Teil von Visual Studio 2017 RC. Für Visual Studio 2015 und Visual Studio 2013 ist das SDK weiterhin per WebPI verfügbar. Versionen von Azure SDK für .NET werden für Visual Studio 2013 nicht mehr fortgeführt, nachdem Visual Studio 2017 als fertiges Produkt veröffentlicht wurde. Klicken Sie zum Herunterladen von Visual Studio 2017 RC auf den folgenden Link: https://www.visualstudio.com/vs/visual-studio-2017-rc/
 
 ### <a name="azure-diagnostics"></a>Azure-Diagnose
 

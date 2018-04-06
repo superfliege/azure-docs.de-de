@@ -1,6 +1,6 @@
 ---
 title: IoT-Dienste von Azure Deutschland | Microsoft-Dokumentation
-description: "Ihr Einstiegspunkt in die IoT Suite für Azure Deutschland"
+description: Ihr Einstiegspunkt in die IoT Suite für Azure Deutschland
 services: germany
 cloud: na
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.openlocfilehash: c15c084592b57b074e339cad7ac8c3197375542d
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-germany-iot-services"></a>IoT-Dienste von Azure Deutschland
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/22/2018
 Alle Dienste der Azure IoT Suite sowie IoT Hub, Stream Analysis und Event Hub sind in Azure Deutschland verfügbar. 
 
 ### <a name="variations"></a>Abweichungen
-Die Homepage für die Azure IoT Suite in Azure Deutschland unterscheidet sich von der Seite in der globalen Azure-Umgebung. Besuchen Sie die Seite [http://www.azureiotsuite.de](http://www.azureiotsuite.de), und befolgen Sie die Anweisungen. 
+Die Homepage für die Azure IoT Suite in Azure Deutschland unterscheidet sich von der Seite in der globalen Azure-Umgebung. Verwenden Sie [http://www.azureiotsuite.de](http://www.azureiotsuite.de), und befolgen Sie die Anweisungen. 
 
 ## <a name="preconfigured-solutions"></a>Vorkonfigurierte Lösungen
 Es empfiehlt sich, mit einer der folgenden vorkonfigurierten Lösungen zu beginnen. 

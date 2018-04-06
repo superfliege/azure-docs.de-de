@@ -1,11 +1,11 @@
 ---
 title: Erste Schritte mit Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET Core) | Microsoft-Dokumentation
-description: "Informieren Sie sich über die ersten Schritte mit Azure Blob Storage in einem ASP.NET Core-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten ein Speicherkonto erstellt haben."
+description: Informieren Sie sich über die ersten Schritte mit Azure Blob Storage in einem ASP.NET Core-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten ein Speicherkonto erstellt haben.
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 094b596a-c92c-40c4-a0f5-86407ae79672
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
-ms.author: kraigb
-ms.openlocfilehash: afd73bd0fd041a53fbe31aa3a5c23b3e27d7a9ec
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.author: ghogen
+ms.openlocfilehash: b63f1f5c129029450d3c719297a9e7ea432f1564
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET Core)
 
@@ -26,9 +26,9 @@ ms.lasthandoff: 11/28/2017
 
 Dieser Artikel beschreibt die ersten Schritte beim Verwenden von Azure Blob Storage in Visual Studio, nachdem Sie über das Visual Studio-Feature **Verbundene Dienste** in einem ASP.NET Core-Projekt ein Azure Storage-Konto erstellt oder darauf verwiesen haben. Beim Vorgang für **Verbundene Dienste** werden die entsprechenden NuGet-Pakete installiert, um auf Azure Storage in Ihrem Projekt zuzugreifen, und die Verbindungszeichenfolge für das Speicherkonto wird in Ihren Konfigurationsdateien des Projekts hinzugefügt. (Allgemeine Informationen zu Azure Storage finden Sie in der [Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/).)
 
-Die BLOB-Speicherung in Azure ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Ein einzelner BLOB kann eine beliebige Größe aufweisen. BLOBs können Bilder, Audio- und Videodateien, Rohdaten und Dokumentdateien enthalten. In diesem Artikel werden die ersten Schritte mit dem Blob Storage beschrieben, nachdem Sie über das Visual Studio-Feature **Verbundene Dienste** ein Azure Storage-Konto in einem ASP.NET Core-Projekt erstellt haben.
+Azure Blob Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Ein einzelner BLOB kann eine beliebige Größe aufweisen. BLOBs können Bilder, Audio- und Videodateien, Rohdaten und Dokumentdateien enthalten. In diesem Artikel werden die ersten Schritte mit dem Blob Storage beschrieben, nachdem Sie über das Visual Studio-Feature **Verbundene Dienste** ein Azure Storage-Konto in einem ASP.NET Core-Projekt erstellt haben.
 
-Dateien werden in Ordnern gespeichert, Speicher-BLOBs analog dazu in Containern. Nachdem Sie ein Blob erstellt haben, erstellen Sie darin mindestens einen Container. Beispielsweise können Sie in einem Blob mit dem Namen „Notizbuch“ Container mit dem Namen „Bilder“ erstellen, um Bilder zu speichern, und einen anderen Container mit dem Namen „Audio“, um Audiodateien zu speichern. Nachdem Sie die Container erstellt haben, können Sie einzelne Dateien in die Container hochladen. Weitere Informationen zum programmgesteuerten Bearbeiten von Blobs finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) .
+Dateien werden in Ordnern gespeichert, Speicher-BLOBs analog dazu in Containern. Nachdem Sie ein Blob erstellt haben, erstellen Sie darin mindestens einen Container. Beispielsweise können Sie in einem Blob mit dem Namen „Notizbuch“ Container mit dem Namen „Bilder“ erstellen, um Bilder zu speichern, und einen anderen Container mit dem Namen „Audio“, um Audiodateien zu speichern. Nachdem Sie die Container erstellt haben, können Sie einzelne Dateien in die Container hochladen. Weitere Informationen zum programmgesteuerten Bearbeiten von Blobs finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
 Einige Azure Storage-APIs sind asynchron, und im Code in diesem Artikel wird vorausgesetzt, dass asynchrone Methoden verwendet werden. Weitere Informationen finden Sie unter [Asynchrone Programmierung](https://docs.microsoft.com/dotnet/csharp/async).
 
@@ -141,7 +141,7 @@ do
 } while (token != null);
 ```
 
-Unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container) sind weitere Möglichkeiten zum Auflisten des Inhalts eines Blobcontainers beschrieben.
+Weitere Möglichkeiten zum Auflisten des Inhalts eines Blobcontainers finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container).
 
 ## <a name="download-a-blob"></a>Herunterladen eines Blobs
 
@@ -158,9 +158,9 @@ using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 }
 ```
 
-Unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs) sind weitere Möglichkeiten zum Speichern von Blobs als Dateien beschrieben.
+Weitere Möglichkeiten zum Speichern von Blobs als Dateien finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs).
 
-## <a name="delete-a-blob"></a>Löschen eines Blobs
+## <a name="delete-a-blob"></a>Löschen eines BLOBs
 
 Rufen Sie zum Löschen eines Blobs zuerst einen Verweis auf das Blob ab, und rufen Sie anschließend die `DeleteAsync`-Methode auf:
 

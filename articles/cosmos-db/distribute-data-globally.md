@@ -1,24 +1,24 @@
 ---
 title: Globale Verteilung von Daten mit Azure Cosmos DB | Microsoft-Dokumentation
-description: "Erfahren Sie mehr über weltweite Georeplikation, Failover und Datenwiederherstellungen mithilfe der globalen Datenbanken von Azure Cosmos DB, einem global verwalteten Datenbankdienst, der mehrere Modelle unterstützt."
+description: Erfahren Sie mehr über weltweite Georeplikation, Failover und Datenwiederherstellungen mithilfe der globalen Datenbanken von Azure Cosmos DB, einem global verwalteten Datenbankdienst, der mehrere Modelle unterstützt.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ba5ad0cc-aa1f-4f40-aee9-3364af070725
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 03/26/2018
 ms.author: arramac
-ms.openlocfilehash: 0be81802996f27a4c063e4e728a3c95ad757bea0
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 567f035bdb293353090ee107f8d24da845e15154
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Wie werden Daten mit Azure Cosmos DB global verteilt?
 Azure ist ubiquitär: Es ist in über 30 geografischen Regionen auf der ganzen Welt präsent und breitet sich kontinuierlich weiter aus. Die weltweite Präsenz von Azure ermöglicht den Entwicklern unter anderem die problemlose Erstellung, Bereitstellung und Verwaltung global verteilter Anwendungen. 
@@ -36,7 +36,12 @@ Dank der sofort einsatzbereiten globalen Verteilung von Azure Cosmos DB müssen 
 Dieser Artikel enthält eine Übersicht über die Azure Cosmos DB-Funktionen für die globale Verteilung. Außerdem beschreiben wir hier das einzigartige Konzept von Azure Cosmos DB für die Bereitstellung umfassender SLAs. 
 
 ## <a id="EnableGlobalDistribution"></a>Aktivieren der sofort einsatzbereiten globalen Verteilung
-Folgende Funktionen von Azure Cosmos DB ermöglichen die problemlose Erstellung weltweit skalierbarer Anwendungen. Diese Funktionen stehen über die ressourcenanbieterbasierten [REST-APIs](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) von Azure Cosmos DB sowie über das Azure-Portal zur Verfügung.
+Folgende Funktionen von Azure Cosmos DB ermöglichen die problemlose Erstellung weltweit skalierbarer Anwendungen. Diese Funktionen stehen über die ressourcenanbieterbasierten [REST-APIs](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/) von Azure Cosmos DB sowie über das Azure-Portal zur Verfügung.
+
+Im folgenden Video zeigt Azure Cosmos DB-Programm-Manager Andrew Liu die sofort verwendbaren globalen Verteilungsfeatures.
+
+> [!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
+>
 
 ### <a id="RegionalPresence"></a>Ubiquitäre regionale Präsenz 
 Es werden stetig [neue Regionen](https://azure.microsoft.com/regions/) online geschaltet, um die geografische Präsenz von Azure zu erweitern. Azure Cosmos DB ist standardmäßig in allen neuen Azure-Regionen verfügbar. Dadurch können Sie Ihrem Azure Cosmos DB-Datenbankkonto eine geografische Region zuordnen, sobald die neue Azure-Region den Betrieb aufnimmt.
@@ -91,7 +96,7 @@ Azure Cosmos DB ermöglicht die Interaktion mit der Datenbank über logische (re
 Informationen zum Konfigurieren der Leseeinstellungen für die [SQL-API](../cosmos-db/tutorial-global-distribution-sql-api.md), [Graph-API](../cosmos-db/tutorial-global-distribution-graph.md), [Tabellen-API](../cosmos-db/tutorial-global-distribution-table.md) und [MongoDB-API](../cosmos-db/tutorial-global-distribution-mongodb.md) finden Sie in den entsprechenden verlinkten Artikeln.
 
 ### <a id="TransparentSchemaMigration"></a>Transparente und konsistente Migration von Datenbankschemas und Indizes 
-Azure Cosmos DB ist vollkommen [schemaunabhängig](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf). Dank des einzigartigen Designs des Datenbankmoduls kann die Lösung automatisch und synchron sämtliche erfasste Daten indizieren, ohne dass Sie dafür ein Schema oder sekundäre Indizes bereitstellen müssen. Dadurch können Sie Ihre global verteilte Anwendung schnell durchlaufen, ohne sich Gedanken über die Migration von Datenbankschemas oder Indizes zu machen oder mehrstufige Anwendungsrollouts mit Schemaänderungen zu koordinieren. Azure Cosmos DB garantiert, dass Änderungen, die Sie explizit an Indizierungsrichtlinien vornehmen, keine Beeinträchtigung der Leistung oder Verfügbarkeit zur Folge haben.  
+Azure Cosmos DB ist vollkommen [schemaunabhängig](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf). Dank des einzigartigen Designs der Datenbank-Engine kann die Lösung automatisch und synchron sämtliche erfasste Daten indizieren, ohne dass Sie dafür ein Schema oder sekundäre Indizes bereitstellen müssen. Dadurch können Sie Ihre global verteilte Anwendung schnell durchlaufen, ohne sich Gedanken über die Migration von Datenbankschemas oder Indizes zu machen oder mehrstufige Anwendungsrollouts mit Schemaänderungen zu koordinieren. Azure Cosmos DB garantiert, dass Änderungen, die Sie explizit an Indizierungsrichtlinien vornehmen, keine Beeinträchtigung der Leistung oder Verfügbarkeit zur Folge haben.  
 
 ### <a id="ComprehensiveSLAs"></a>Umfassende, über bloße Hochverfügbarkeit hinausgehende SLAs
 Als global verteilter Datenbankdienst bietet Azure Cosmos DB eine klar definierte SLA für **Datenverlust**, **Verfügbarkeit**, **Latenz bei P99**, **Durchsatz** und **Konsistenz** für die gesamte Datenbank – unabhängig davon, wie viele Regionen der Datenbank zugeordnet sind.  

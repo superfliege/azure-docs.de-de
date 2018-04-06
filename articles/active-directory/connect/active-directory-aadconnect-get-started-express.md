@@ -2,7 +2,6 @@
 title: 'Azure AD Connect: Erste Schritte mit Expresseinstellungen | Microsoft Docs'
 description: Informationen zum Herunterladen, Installieren und Ausführen des Setup-Assistenten für Azure AD Connect.
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -12,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/21/2018
+ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: 46fc01bfd7fada529ff1416e8ad46d2ea34792bd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 024736ed76e9b268e85db3ecc62b853d6c276fbf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Erste Schritte mit Azure AD Connect mit Expresseinstellungen
-Die **Expresseinstellungen** von Azure AD Connect werden verwendet, wenn Sie eine Topologie mit einer einzelnen Gesamtstruktur und die [Kennwortsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) für die Authentifizierung verwenden. **Expresseinstellungen** sind die Standardoption und werden für die häufigsten Bereitstellungsszenarien verwendet. Mit nur wenigen Klicks können Sie Ihr lokales Verzeichnis auf die Cloud erweitern.
+Die **Expresseinstellungen** von Azure AD Connect werden verwendet, wenn Sie eine Topologie mit einer einzelnen Gesamtstruktur und die [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-hash-synchronization.md) für die Authentifizierung verwenden. **Expresseinstellungen** sind die Standardoption und werden für die häufigsten Bereitstellungsszenarien verwendet. Mit nur wenigen Klicks können Sie Ihr lokales Verzeichnis auf die Cloud erweitern.
 
 Vor dem Installieren von Azure AD Connect müssen Sie [Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771) herunterladen und die unter [Azure AD Connect: Hardware und Voraussetzungen](active-directory-aadconnect-prerequisites.md) beschriebenen vorbereitenden Schritte ausführen.
 

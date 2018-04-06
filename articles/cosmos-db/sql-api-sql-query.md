@@ -1,9 +1,9 @@
 ---
-title: "SQL-Abfragen für Azure Cosmos DB | Microsoft-Dokumentation"
-description: "Informationen zu SQL-Syntax, Datenbankkonzepten und SQL-Abfragen für Azure Cosmos DB. SQL kann als JSON-Abfragesprache in Azure Cosmos DB verwendet werden."
+title: SQL-Abfragen für Azure Cosmos DB | Microsoft-Dokumentation
+description: Informationen zu SQL-Syntax, Datenbankkonzepten und SQL-Abfragen für Azure Cosmos DB. SQL kann als JSON-Abfragesprache in Azure Cosmos DB verwendet werden.
 keywords: SQL-Syntax, SQL-Abfrage, SQL-Abfragen, JSON-Abfragesprache, Datenbankkonzepte und SQL-Abfragen, Aggregatfunktionen
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: LalithaMV
 manager: jhubbard
 editor: monicar
@@ -13,17 +13,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: 8425c9eae1bb7b50edec1d36d4e7c80b49b243ac
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a79b1a97909a38b4bfba06186db875d0c0c25f03
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>SQL-Abfragen für Azure Cosmos DB
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Microsoft Azure Cosmos DB unterstützt Dokumentabfragen mit SQL (Structured Query Language) als JSON-Abfragesprache in SQL-API-Konten. Azure Cosmos DB funktioniert ohne Schema. Die direkte Integration des JSON-Datenmodells in die Datenbank-Engine ermöglicht eine automatische Indizierung von JSON-Dokumenten ohne explizite Schemas oder die Erstellung sekundärer Indizes.
 
@@ -34,11 +32,17 @@ Bei der Entwicklung der Abfragesprache für Cosmos DB hatten wir zwei Hauptziele
 
 Diese Funktionen sind unserer Ansicht nach der Schlüssel zur Minimierung der Reibung zwischen Anwendung und Datenbank und sind entscheidend für die Produktivität von Entwicklern.
 
-Für den Einstieg empfiehlt sich folgendes Video, in dem Aravind Ramachandran die Abfragefunktionen von Cosmos DB veranschaulicht. Testen Sie außerdem unseren [Query Playground](http://www.documentdb.com/sql/demo), in dem Sie Cosmos DB ausprobieren und SQL-Abfragen für unser Dataset ausführen können.
+Für den Einstieg empfiehlt sich folgendes Video, in dem Azure Cosmos DB-Programmleiter Andrew Liu die Abfragefunktionen von Azure Cosmos DB vorführt und den onlinebasierten [Query Playground](http://www.documentdb.com/sql/demo) vorstellt, in dem Sie Azure Cosmos DB ausprobieren und SQL-Abfragen für unser Dataset ausführen können, wie in dem Video gezeigt.
 
-> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/DataExposedQueryingDocumentDB/player]
-> 
-> 
+> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
+>
+>
+
+Komplexere Abfragetechniken werden im folgenden Video vorgeführt:
+
+> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
+>
+>
 
 Kehren Sie anschließend zu diesem Artikel zurück. Dort werden im Rahmen eines SQL-Abfragetutorials zunächst einige einfache JSON-Dokumente und SQL-Befehle behandelt.
 

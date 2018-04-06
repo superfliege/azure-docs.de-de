@@ -1,8 +1,8 @@
 ---
-title: "Leitfaden zur Notfallwiederherstellung für Azure Data Lake Store | Microsoft-Dokumentation"
-description: "Leitfaden zur Notfallwiederherstellung für Azure Data Lake Store"
+title: Leitfaden zur Notfallwiederherstellung für Azure Data Lake Store | Microsoft-Dokumentation
+description: Leitfaden zur Notfallwiederherstellung für Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: d76f756e7a6fe77886f0d4e00ab8b23273b4e09d
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9a2705a2372ea4f2fbea1e27bf675679dfda28f8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Leitfaden zur Notfallwiederherstellung für Daten in Data Lake Store
 
-Die Daten in Ihrem Azure Data Lake Store-Konto sind über automatisierte Replikate vor vorübergehenden Hardwareausfällen innerhalb einer Region geschützt. So wird für Dauerhaftigkeit und Hochverfügbarkeit gesorgt, und die Vereinbarung zum Servicelevel (SLA) für Azure Data Lake Store wird erfüllt. In diesem Artikel wird beschrieben, wie Sie Ihre Daten weiter vor selten auftretenden regionsweiten Ausfällen oder dem versehentlichen Löschen schützen.
+Azure Data Lake Store bietet lokal redundanten Speicher (Locally-Redundant Storage, LRS). Die Daten in Ihrem Azure Data Lake Store-Konto sind darum über automatisierte Replikate vor vorübergehenden Hardwareausfällen innerhalb einer Region geschützt. So wird für Dauerhaftigkeit und Hochverfügbarkeit gesorgt, und die Vereinbarung zum Servicelevel (SLA) für Azure Data Lake Store wird erfüllt. In diesem Artikel wird beschrieben, wie Sie Ihre Daten weiter vor selten auftretenden regionsweiten Ausfällen oder dem versehentlichen Löschen schützen.
 
 ## <a name="disaster-recovery-guidance"></a>Leitfäden zur Notfallwiederherstellung
-Es ist wichtig für jeden Kunden, den eigenen Notfallwiederherstellungsplan zu erstellen. Weitere Informationen zum Erstellen eines Notfallwiederherstellungsplans finden Sie in der Azure-Dokumentation weiter unten. Hier sind einige Ressourcen angegeben, die beim Erstellen Ihres eigenen Plans hilfreich sind.
+Es ist wichtig für jeden Kunden, den eigenen Notfallwiederherstellungsplan zu erstellen. Lesen Sie die Informationen in diesem Artikel, um Ihren Wiederherstellungsplan zu erstellen. Hier sind einige Ressourcen angegeben, die beim Erstellen Ihres eigenen Plans hilfreich sind.
 
 * [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Technischer Leitfaden zur Resilienz in Azure](../resiliency/resiliency-technical-guidance.md)

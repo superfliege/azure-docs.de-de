@@ -1,21 +1,20 @@
 ---
-title: "Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis – Azure-Portal | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mit dem Azure-Portal Routingregeln auf URL-Pfadbasis für ein Anwendungsgateway und eine VM-Skalierungsgruppe erstellen."
+title: Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis – Azure-Portal
+description: Hier erfahren Sie, wie Sie mit dem Azure-Portal Routingregeln auf URL-Pfadbasis für ein Anwendungsgateway und eine VM-Skalierungsgruppe erstellen.
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: vhorne
+manager: jpconnock
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: 62063c42ab15a071a4500417a5d8adf6bfeac97f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.date: 3/26/2018
+ms.author: victorh
+ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit pfadbasierten Routingregeln mithilfe des Azure-Portals
 
@@ -154,13 +153,13 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
 
     ![Notieren der öffentlichen IP-Adresse des Anwendungsgateways](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Beispiel: http://http://40.121.222.19.
+2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Z.B. http://http://40.121.222.19.
 
     ![Testen der Basis-URL im Anwendungsgateway](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
-3. Ändern Sie die URL in http://&lt;ip-address&gt;:8080/video/test.htm, und ersetzen Sie &lt;ip-address&gt; durch Ihre IP-Adresse. Die Ausgabe sollte in etwa wie folgt aussehen:
+3. Ändern Sie die URL in http://&lt;ip-address&gt;:8080/images/test.htm, und ersetzen Sie &lt;ip-address&gt; durch Ihre IP-Adresse. Die Ausgabe sollte in etwa wie folgt aussehen:
 
-    ![Testen der URL für Bilder im Anwendungsgateway](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
+    ![Testen der Images-URL im Anwendungsgateway](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 
 4. Ändern Sie die URL in http://&lt;ip-address&gt;:8080/video/test.htm, und ersetzen Sie &lt;ip-address&gt; durch Ihre IP-Adresse. Die Ausgabe sollte in etwa wie folgt aussehen:
 

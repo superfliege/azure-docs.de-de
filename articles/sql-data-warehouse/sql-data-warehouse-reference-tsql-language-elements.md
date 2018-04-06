@@ -1,11 +1,11 @@
 ---
-title: "Transact-SQL-Sprachelemente für SQL Data Warehouse | Microsoft Docs"
-description: "Eine Liste mit Links zu Referenzinhalten für die Transact-SQL-Sprachelemente für SQL Data Warehouse."
+title: Transact-SQL-Sprachelemente für SQL Data Warehouse | Microsoft Docs
+description: Eine Liste mit Links zu Referenzinhalten für die Transact-SQL-Sprachelemente für SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ea0b9a3e-e489-458e-addc-cc153e5cc158
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: 7a20cd8f3c2f304d12a49755dbe6e04f9b1d36df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd9dc070c817a7276369a9be7126b0d48dc9e4eb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="language-elements"></a>Sprachelemente
 ## <a name="core-elements"></a>Kernelemente
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 * [| = (Bitweises OR EQUALS)](https://msdn.microsoft.com/library/cc627409.aspx)
 * [&amp;= (Bitweises AND EQUALS)](https://msdn.microsoft.com/library/cc627427.aspx)
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funktionen
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -279,11 +279,5 @@ ms.lasthandoff: 10/11/2017
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Referenzinformationen finden Sie unter [SQL Data Warehouse-Referenz – Übersicht][SQL Data Warehouse reference overview].
+Weitere TSQL-Verweise finden Sie unter [Transact-SQL-Themen](sql-data-warehouse-reference-tsql-statements.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[SQL Data Warehouse reference overview]: sql-data-warehouse-overview-reference.md
-
-<!--MSDN references-->

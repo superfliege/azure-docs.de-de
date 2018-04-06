@@ -1,17 +1,17 @@
 ---
-title: "Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten | Microsoft-Dokumentation"
-description: "Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten"
+title: Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten | Microsoft-Dokumentation
+description: Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten
 author: ganganarayanan
 ms.author: gangan
-ms.date: 1/18/2017
+ms.date: 3/15/2018
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: c22a6dde0067385a1bf8d889cc76178bb44dd0ac
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: a42fa8e4e8dae140db4fcc8977bda335455b97a1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="resource-manager-vcpu-quota-increase-requests"></a>Anforderungen zur Erhöhung von Resource Manager-vCPU-Kontingenten
 
@@ -19,26 +19,27 @@ Resource Manager-vCPU-Kontingente werden auf Regionsebene und auf der Ebene der 
 Weitere Informationen zur Erzwingung von Kontingenten finden Sie auf der Seite [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](http://aka.ms/quotalimits).
 Auf der Seite [Virtuelle Windows-Computer – Preise](http://aka.ms/pricingcompute) können Sie die Kosten und die Leistung vergleichen und sich ausführlicher über SKU-Familien informieren.
 
-Wenn Sie eine Erhöhung anfordern möchten, erstellen Sie im Azure-Portal ([https://portal.azure.com](https://portal.azure.com)) eine kontingentbezogene Supportanfrage für vCPUs.
+Wenn Sie eine Erhöhung anfordern möchten, erstellen Sie im Azure-Portal [https://portal.azure.com](https://portal.azure.com) eine kontingentbezogene Supportanfrage für vCPUs.
 
 > [!NOTE]
 > Informationen zum Erstellen einer Supportanfrage im Azure-Portal finden Sie [hier](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
-1. Wählen Sie auf der Seite für neue Supportanfragen den Problemtyp „Kontingent“ und den Kontingenttyp „Kerne“ aus.
+1. Wählen Sie **Abonnements**.
 
-    ![Blatt für die Kontingentgrundeinstellungen](./media/resource-manager-core-quotas-request/Basics-blade.png)
+   ![Abonnements](./media/resource-manager-core-quotas-request/subscriptions.png)
 
-2. Wählen Sie als Bereitstellungsmodell die Option „Resource Manager“ und anschließend einen Speicherort aus.
+2. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
 
-    ![Blatt für das Kontingentproblem](./media/resource-manager-core-quotas-request/Problem-step.png)
+   ![Wählen Sie das Abonnement aus.](./media/resource-manager-core-quotas-request/select-subscription.png)
 
-3. Wählen Sie die SKU-Familien aus, für die eine Erhöhung erforderlich ist.
+3. Wählen Sie **Nutzung + Kontingente** aus.
 
-    ![Ausgewählte SKU-Serie](./media/resource-manager-core-quotas-request/SKU-selected.png)
+   ![Auswählen von „Nutzung + Kontingente“](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
 
-4. Geben Sie die gewünschten Grenzwerte für das Abonnement ein.
+4. Klicken Sie in der Ecke oben rechts auf **Erhöhung anfordern**.
 
-    ![Neue SKU-Kontingentanforderung](./media/resource-manager-core-quotas-request/SKU-new-quota.png)
+   ![Anfordern einer Erhöhung](./media/resource-manager-core-quotas-request/request-increase.png)
 
-- Wenn Sie eine Zeile entfernen möchten, deaktivieren Sie die SKU über die Dropdownliste für die SKU-Familie, oder klicken Sie auf das X-Symbol.
-Nachdem Sie die gewünschten Kontingente für die einzelnen SKU-Familien eingegeben haben, klicken Sie auf der Problemschrittseite auf „Weiter“, um die Erstellung der Supportanfrage fortzusetzen.
+5. Wählen Sie **Kerne** als Kontingenttyp aus. 
+
+   ![Ausfüllen des Formulars](./media/resource-manager-core-quotas-request/forms.png)

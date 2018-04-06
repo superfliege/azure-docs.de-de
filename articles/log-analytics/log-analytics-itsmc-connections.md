@@ -1,10 +1,10 @@
 ---
-title: "Unterstützte Verbindungen mit IT Service Management Connector in Azure Log Analytics | Microsoft-Dokumentation"
-description: "Dieser Artikel bietet Informationen dazu, wie Sie Ihre ITSM-Produkte bzw. -Dienste mit dem IT Service Management-Connector (ITSMC) in OMS Log Analytics verbinden, um die ITSM-Arbeitselemente zentral zu überwachen und zu verwalten."
-documentationcenter: 
+title: Unterstützte Verbindungen mit IT Service Management Connector in Azure Log Analytics | Microsoft-Dokumentation
+description: Dieser Artikel bietet Informationen dazu, wie Sie Ihre ITSM-Produkte bzw. -Dienste mit dem IT Service Management-Connector (ITSMC) in OMS Log Analytics verbinden, um die ITSM-Arbeitselemente zentral zu überwachen und zu verwalten.
+documentationcenter: ''
 author: JYOTHIRMAISURI
 manager: riyazp
-editor: 
+editor: ''
 ms.assetid: 8231b7ce-d67f-4237-afbf-465e2e397105
 ms.service: log-analytics
 ms.workload: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: e0cae844e8b7f3eab68ed02dbcd17f4d1cebfd25
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 35d04fabc66ede309fe91969c5bec3131a282afb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector
 Dieser Artikel bietet Informationen dazu, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt bzw. -Dienst und dem ITSM-Connector (ITSMC) in Log Analytics konfigurieren, um Arbeitselemente zentral zu verwalten. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](log-analytics-itsmc-overview.md).
@@ -271,13 +271,7 @@ Sobald der Benutzer erfolgreich erstellt wurde, wechselt der Status von **Check 
 
 > [!NOTE]
 
-> So ermöglichen Sie einem Benutzer das Erstellen von **Warnungen** und **Ereignissen** in ServiceNow über Azure:
-
-> - Stellen Sie sicher, dass in Ihrer ServiceNow-Instanz das Ereignisverwaltungsmodul installiert ist.
-
-> - Fügen Sie dem Integrationsbenutzer die folgenden Rollen hinzu:
->      - evt_mgmt_integration
->      - evt_mgmt_operator  
+> Der ITSM-Connector kann Vorfälle an ServiceNow senden, ohne dass andere Module auf Ihrer ServiceNow-Instanz installiert sind. Wenn Sie das EventManagement-Modul in Ihrer ServiceNow-Instanz verwenden und Ereignisse oder Warnungen mit dem Connector in ServiceNow erstellen möchten, fügen Sie dem Integrationsbenutzer die folgenden Rollen hinzu: – evt_mgmt_integration – evt_mgmt_operator  
 
 
 ## <a name="connect-provance-to-it-service-management-connector-in-azure"></a>Verbinden von Provance mit dem ITSM-Connector in Azure

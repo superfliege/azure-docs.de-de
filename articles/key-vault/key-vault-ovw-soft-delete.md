@@ -1,16 +1,16 @@
 ---
-ms.assetid: 
-title: "Vorläufiges Löschen in Azure Key Vault | Microsoft Docs"
+ms.assetid: ''
+title: Vorläufiges Löschen in Azure Key Vault | Microsoft Docs
 ms.service: key-vault
 author: lleonard-msft
 ms.author: alleonar
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: 01357e4fdb9b6f27e9baf5f5c8e4c7d6b582ad35
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 6a3573cf31418309a31126b2a0c6a43ea2e0c745
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 
@@ -67,6 +67,13 @@ Sofern ein Schlüsseltresor oder Key Vault-Objekt nicht wiederhergestellt wird, 
 Das endgültige Löschen eines Schlüsseltresors kann über einen POST-Vorgang für die Proxyressource erfolgen und erfordert spezielle Berechtigungen. Im Allgemeinen kann nur der Besitzer des Abonnements einen Schlüsseltresor endgültig löschen. Der POST-Vorgang löst die sofortige Löschung dieses Tresors aus, die nicht rückgängig gemacht werden kann. 
 
 Eine Ausnahme davon besteht, wenn das Azure-Abonnement als *nicht löschbar* markiert wurde. In diesem Fall kann der eigentliche Löschvorgang nur vom Dienst ausgeführt werden, und dies erfolgt als geplanter Prozess. 
+
+### <a name="billing-implications"></a>Hinweise zur Gebührenberechnung
+
+Im Allgemeinen gilt: Wenn sich ein Objekt (ein Schlüsseltresor oder ein Schlüssel/Geheimnis) im gelöschten Zustand befindet, sind nur zwei Vorgänge möglich: Bereinigen und Wiederherstellen. Alle anderen Vorgänge sind nicht erfolgreich. Das Objekt ist zwar vorhanden, es können jedoch keine Vorgänge dafür ausgeführt werden. Dadurch findet keine Nutzung statt, und es erfolgt auch keine Abrechnung. Es gelten allerdings folgende Ausnahmen:
+
+- Bereinigungs- und Wiederherstellungsaktionen gelten als normale Schlüsseltresorvorgänge und werden entsprechend in Rechnung gestellt.
+- Wenn es sich bei dem Objekt um einen HSM-Schlüssel handelt, fällt pro Schlüsselversion und Monat die Gebühr für durch den HSM geschützte Schlüssel an, sofern in den letzten 30 Tagen eine Schlüsselversion verwendet wurde. Danach gilt: Da sich das Objekt im gelöschten Zustand befindet, können keine Vorgänge dafür ausgeführt werden, und es fallen somit auch keine Gebühren an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

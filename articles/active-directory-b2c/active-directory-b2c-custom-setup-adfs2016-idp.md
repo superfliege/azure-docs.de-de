@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien"
-description: "Ein „Gewusst wie“-Artikel zum Einrichten von AD FS 2016 mit SAML-Protokoll und benutzerdefinierten Richtlinien"
+title: 'Azure Active Directory B2C: Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien'
+description: Ein „Gewusst wie“-Artikel zum Einrichten von AD FS 2016 mit SAML-Protokoll und benutzerdefinierten Richtlinien
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: 22b360aec8878925ebe8d2c67c76d275a42ca7a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: af102bbc3bc7608fe641db19f4af8c760907a564
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
 
@@ -63,7 +60,7 @@ Mitgliedschaft in **Administratoren** oder Entsprechendem auf dem lokalen Comput
 7.  Aktivieren Sie auf der Seite **URL konfigurieren** das Kontrollkästchen **Unterstützung für das SAML 2.0 WebSSO-Protokoll aktivieren**. Geben Sie unter **URL des SAML 2.0-Diensts für einmaliges Anmelden der vertrauenden Seite:** die Security Assertion Markup Language-Dienstendpunkt-URL (SAML) für diese Vertrauensstellung der vertrauenden Seite ein, und klicken Sie dann auf **Weiter**.  Fügen Sie für **URL des SAML 2.0-Diensts für einmaliges Anmelden der vertrauenden Seite:** die URL `https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/{policy}` ein. Ersetzen Sie „{Tenant}“ durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“) und „{policy}“ durch den Namen Ihrer Erweiterungsrichtlinie (z.B. B2C_1A_TrustFrameworkExtensions).
     > [!IMPORTANT]
     >Vom Richtliniennamen – in diesem Fall `B2C_1A_TrustFrameworkExtensions` – erbt die signup_or_signin-Richtlinie.
-    >Die URL kann zum Beispiel lauten:   „https://login.microsoftonline.com/te/**contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**“.
+    >Die URL kann zum Beispiel wie folgt lauten:   https://login.microsoftonline.com/te/**contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
 
     ![URL des SAML 2.0-Diensts für einmaliges Anmelden](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-6.png)
 8. Geben Sie auf der Seite **Konfigurieren von Bezeichnern** die gleiche URL wie im vorherigen Schritt an, klicken Sie auf **Hinzufügen**, um sie der Liste hinzuzufügen, und dann auf **Weiter**.

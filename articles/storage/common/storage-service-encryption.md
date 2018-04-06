@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: d9df2218acc218a796e502fa4e3b94573af86ca8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1963d011462255d45de327ec17b7fad564d87654
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption für ruhende Daten
 
@@ -52,7 +52,7 @@ A: Storage Service Encryption ist standardmäßig für alle vorhandenen Resource
 
 **F: Wie verschlüssle ich die Daten in einem Resource Manager-Speicherkonto?**
 
-A: Storage Service Encryption ist standardmäßig für alle Speicherkonten (klassisch und Resource Manager) aktiviert. Vorhandene Daten werden jedoch nicht verschlüsselt. Um vorhandene Daten zu verschlüsseln, können Sie sie unter einem anderen Namen oder in einen anderen Container kopieren und anschließend die nicht verschlüsselten Versionen entfernen. 
+A: Storage Service Encryption wird standardmäßig für alle vorhandenen Speicherkonten (Resource Manager und klassisch) aktiviert. Alle bereits im Speicherkonto vorhandenen Dateien, die vor der Aktivierung der Verschlüsselung erstellt wurden, werden nachträglich durch einen im Hintergrund ausgeführten Verschlüsselungsprozess verschlüsselt.
 
 **F: Kann ich mithilfe von Azure PowerShell und der Azure CLI Speicherkonten erstellen, für die Storage Service Encryption aktiviert ist?**
 

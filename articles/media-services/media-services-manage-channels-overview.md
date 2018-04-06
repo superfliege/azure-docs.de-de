@@ -1,26 +1,30 @@
 ---
-title: "Übersicht über Livestreaming mit Azure Media Services | Microsoft Docs"
-description: "Dieses Thema bietet eine Übersicht über das Livestreaming mit Azure Media Services."
+title: Übersicht über Livestreaming mit Azure Media Services | Microsoft Docs
+description: Dieses Thema bietet eine Übersicht über das Livestreaming mit Azure Media Services.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 6f500f25129470a679c75cae6cd1abc9d71b72a7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 451513c364978348eba922f5cf42b6e6c79f8700
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Übersicht über Livestreaming mit Azure Media Services
+
+> [!NOTE]
+> Ab dem 12. Mai 2018 unterstützen Livekanäle nicht mehr das Erfassungsprotokoll zum RTP/MPEG-2-Transportdatenstrom. Migrieren Sie von Erfassungsprotokollen für RTP/MPEG-2 zu Erfassungsprotokollen für RTMP oder fragmentiertem MP4 (Smooth Streaming).
+
 ## <a name="overview"></a>Übersicht
 Beim Bereitstellen von Livestreamingereignissen mit Azure Media Services sind häufig die folgenden Komponenten beteiligt:
 
@@ -44,7 +48,7 @@ In Azure Media Services verarbeiten die **Kanäle**, **Programme** und **Streami
 
 Ein **Kanal** stellt eine Pipeline zum Verarbeiten von Livestreaming-Inhalten dar. Ein Kanal kann Live-Eingabedatenströme auf folgende Arten empfangen:
 
-* Von einem lokalen Liveencoder wird Mehrfachbitraten-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den für **Pass-Through** konfigurierten Kanal gesendet. Bei der **Pass-Through-Übertragung** durchlaufen die erfassten Datenströme die **Kanäle** ohne weitere Verarbeitung. Sie können die folgenden Liveencoder verwenden, von denen Smooth Streaming mit Mehrfachbitrate ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Transcoder für Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für Live Encoding konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Von einem lokalen Liveencoder wird Mehrfachbitraten-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den für **Pass-Through** konfigurierten Kanal gesendet. Bei der **Pass-Through-Übertragung** durchlaufen die erfassten Datenströme die **Kanäle** ohne weitere Verarbeitung. Sie können die folgenden Liveencoder verwenden, von denen Smooth Streaming mit Mehrfachbitrate ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Transcoder für Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
   > [!NOTE]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings, wenn mehrere Ereignisse über einen längeren Zeitraum gestreamt werden und Sie bereits in lokale Encoder investiert haben. Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/media-services/) .
@@ -62,18 +66,18 @@ Die folgende Tabelle enthält eine Anleitung für den Vergleich der beiden von M
 
 | Feature | Pass-Through-Kanal | Standardkanal |
 | --- | --- | --- |
-| Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein |Ja |
+| Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |Ja |
 | Maximale Auflösung, Anzahl der Ebenen |1080p, 8 Ebenen, 60 fps oder mehr |720p, 6 Ebenen, 30 fps |
 | Eingabeprotokolle |RTMP, Smooth Streaming |RTMP, Smooth Streaming und RTP |
 | Preis |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“. |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximale Laufzeit |Rund um die Uhr |8 Stunden |
-| Unterstützung für das Einfügen von Slates |Nein |Ja |
-| Unterstützung für Werbeeinblendungen |Nein |Ja |
+| Unterstützung für das Einfügen von Slates |Nein  |Ja |
+| Unterstützung für Werbeeinblendungen |Nein  |Ja |
 | Pass-Through-CEA-608/708-Untertitel |Ja |Ja |
 | Möglichkeit zum Wiederherstellen nach kurzen Unterbrechungen im Beitrag |Ja |Nein (Kanal beginnt Slating nach 6 Sekunden ohne Dateneingabe) |
 | Unterstützung für nicht einheitliche Eingabe-GOPs |Ja |Nein, Eingabe muss aus festen 2-Sekunden-GOPs bestehen |
 | Unterstützung für Eingaben mit variable Bildwiederholrate |Ja |Nein, Eingabe muss eine feste Bildfrequenz aufweisen.<br/>Kleinere Abweichungen, beispielsweise bei Szenen mit viel Bewegung, werden toleriert. Der Encoder kann aber nicht bis auf 10 Frames pro Sekunde zurückfallen. |
-| Automatische Abschaltung der Kanäle, wenn der Eingabefeed verloren geht |Nein |Nach 12 Stunden, wenn kein Programm ausgeführt wird |
+| Automatische Abschaltung der Kanäle, wenn der Eingabefeed verloren geht |Nein  |Nach 12 Stunden, wenn kein Programm ausgeführt wird |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen (Pass-Through)
 Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die am **Pass-Through-Workflow** beteiligt sind:
@@ -87,7 +91,7 @@ Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die in Lives
 
 ![Liveworkflow](./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png)
 
-Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
+Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Live Encoding mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
 ## <a name="description-of-a-channel-and-its-related-components"></a>Beschreibung von Kanälen und zugehörigen Komponenten
 ### <a name="channel"></a>Kanal
@@ -134,9 +138,9 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 | Kanalstatus | Portal-UI-Indikatoren | Werden Gebühren berechnet? |
 | --- | --- | --- |
 | Wird gestartet |Wird gestartet |Nein (Übergangsstatus) |
-| Wird ausgeführt |Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein laufendes Programm) |JA |
+| Wird ausgeführt |Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein ausgeführtes Programm) |JA |
 | Wird beendet |Wird beendet |Nein (Übergangsstatus) |
-| Stopped |Stopped |Nein |
+| Beendet |Beendet |Nein  |
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

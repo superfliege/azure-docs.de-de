@@ -1,7 +1,7 @@
 ---
 title: Überblick über Metriken in Microsoft Azure | Microsoft-Dokumentation
 description: Überblick über Metriken und ihre Verwendung in Microsoft Azure
-author: johnkemnetz
+author: anirudhcavale
 manager: orenr
 editor: ''
 services: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: johnkem
-ms.openlocfilehash: 4a78236f9c6945bb982466b59690b221f35a1804
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.date: 03/19/2018
+ms.author: ancav
+ms.openlocfilehash: 88020b27403f06ab8f1c0a1c45b798db02f517f5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Überblick über Metriken in Microsoft Azure
 In diesem Artikel wird beschrieben, was Metriken in Microsoft Azure sind, welche Vorteile sie haben und wie Sie mit deren Nutzung beginnen.  
@@ -38,9 +38,9 @@ Metriken sind eine wertvolle Quelle für Telemetriedaten, mit denen Sie folgende
 ## <a name="what-are-the-characteristics-of-metrics"></a>Was sind die Merkmale von Metriken?
 Metriken weisen folgende Merkmale auf:
 
-* Sämtliche Metriken werden im **1-Minuten-Takt** erfasst. Jede Minute erhalten Sie von Ihrer Ressource einen Metrikwert, der Ihnen einen Überblick über den Zustand und die Integrität Ihrer Ressource nahezu in Echtzeit bietet.
+* Alle Metriken haben **eine Frequenz von einer Minute** (sofern nicht in der Definition einer Metrik anders angegeben). Jede Minute erhalten Sie von Ihrer Ressource einen Metrikwert, der Ihnen einen Überblick über den Zustand und die Integrität Ihrer Ressource nahezu in Echtzeit bietet.
 * Metriken sind **sofort verfügbar**. Sie müssen sie nicht aktivieren oder zusätzliche Diagnosen einrichten.
-* Sie haben **30 Tage lang Zugriff auf den Verlauf** jeder Metrik. Sie können schnell den aktuellen und monatlichen Trend für die Leistung oder Integrität Ihrer Ressource überblicken.
+* Sie können für jede Metrik auf einen **Verlauf von 93 Tagen** zugreifen. Sie können schnell den aktuellen und monatlichen Trend für die Leistung oder Integrität Ihrer Ressource überblicken.
 * Einige Metriken können über Attribute für Name/Wert-Paare verfügen, die als **Dimensionen** bezeichnet werden. Dadurch können Sie eine Metrik auf sinnvollere Weise weiter segmentieren und untersuchen.
 
 Weitere Funktionen:
@@ -93,7 +93,7 @@ Auf Azure-Metriken kann über Azure Monitor-APIs zugegriffen werden. Es gibt zwe
 * Verwenden Sie die [Azure Monitor-REST-API für Metriken](https://docs.microsoft.com/rest/api/monitor/metrics), um die tatsächlichen Metrikdaten zu segmentieren, zu filtern und auf diese zuzugreifen.
 
 > [!NOTE]
-> In diesem Artikel geht es um die Metriken, die über die [neue API für Metriken](https://docs.microsoft.com/rest/api/monitor/) für Azure-Ressourcen abgerufen werden können. Die API-Version für die neuen Metrikdefinitionen und Metrik-APIs lautet 2017-05-01-preview. Auf die Legacy-Metrikdefinitionen und -Metriken kann über die API-Version 2014-04-01 zugegriffen werden.
+> In diesem Artikel geht es um die Metriken, die über die [neue API für Metriken](https://docs.microsoft.com/rest/api/monitor/) für Azure-Ressourcen abgerufen werden können. Die API-Version für die neuen Metrikdefinitionen und Metrik-APIs lautet 2018-01-01. Auf die Legacy-Metrikdefinitionen und -Metriken kann über die API-Version 2014-04-01 zugegriffen werden.
 >
 >
 

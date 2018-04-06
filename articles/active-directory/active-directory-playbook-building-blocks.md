@@ -1,12 +1,12 @@
 ---
 title: Bausteine eines Azure Active Directory-PoC-Playbooks | Microsoft-Dokumentation
-description: "Untersuchen und schnelles Implementieren von Szenarien mit Identitäts- und Zugriffsverwaltung"
+description: Untersuchen und schnelles Implementieren von Szenarien mit Identitäts- und Zugriffsverwaltung
 services: active-directory
 keywords: Azure Active Directory, Playbook, Proof of Concept, PoC
-documentationcenter: 
+documentationcenter: ''
 author: dstefanMSFT
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: b37ca3c6ca528551ef09a90159e92fd31e0fabf2
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 1efb8d89b0a78dcf88c60c2e8cd3b968a725e8b9
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -40,8 +40,8 @@ Diese Voraussetzungen gelten für Azure AD Premium-PoC in jedem Fall.
 
 | Voraussetzung | angeben |
 | --- | --- |
-| Definierter Azure AD-Mandant mit gültigem Azure-Abonnement | [Einrichten eines Azure Active Directory-Mandanten](active-directory-howto-tenant.md)<br/>**Hinweis:** Wenn Sie bereits über eine Umgebung mit Azure AD Premium-Lizenzen verfügen, können Sie unter https://aka.ms/accessaad ein Abonnement ohne Obergrenze abschließen. <br/>Weitere Informationen finden Sie unter: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ und https://technet.microsoft.com/library/dn832618.aspx |
-| Definierte und überprüfte Domäne | [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Hinweis:** Einige Workloads wie Power BI können einen Azure AD-Mandanten unbemerkt bereitgestellt haben. Um festzustellen, ob eine bestimmte Domäne einem Mandanten zugeordnet ist, navigieren Sie zu https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Bei Erfolg ist die Domäne bereits einem Mandanten zugeordnet. Dann ist möglicherweise eine Übernahme nötig. Wenn dies der Fall ist, hilft Microsoft Ihnen gerne weiter. Weitere Informationen zu den Übernahmeoptionen finden Sie unter: [Was ist die Self-Service-Registrierung für Azure?](active-directory-self-service-signup.md) |
+| Definierter Azure AD-Mandant mit gültigem Azure-Abonnement | [Einrichten eines Azure Active Directory-Mandanten](active-directory-howto-tenant.md)<br/>**Hinweis:** Wenn Sie bereits über eine Umgebung mit Azure AD Premium-Lizenzen verfügen, können Sie unter https://aka.ms/accessaad ein Abonnement ohne Obergrenze abschließen. <br/>Weitere Informationen finden Sie unter https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ sowie unter https://technet.microsoft.com/library/dn832618.aspx. |
+| Definierte und überprüfte Domäne | [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Hinweis:** Einige Workloads wie Power BI können einen Azure AD-Mandanten unbemerkt bereitgestellt haben. Navigieren Sie zu https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration, um zu prüfen, ob eine bestimmte Domäne einem Mandanten zugeordnet ist. Bei Erfolg ist die Domäne bereits einem Mandanten zugeordnet. Dann ist möglicherweise eine Übernahme nötig. Wenn dies der Fall ist, hilft Microsoft Ihnen gerne weiter. Weitere Informationen zu den Übernahmeoptionen finden Sie unter: [Was ist die Self-Service-Registrierung für Azure?](active-directory-self-service-signup.md) |
 | Aktivierte Testversion von Azure AD Premium oder EMS | [Azure Active Directory Premium einen Monat lang gratis](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | PoC-Benutzern zugewiesene Azure AD Premium- oder EMS-Lizenzen | [Lizenzieren von sich selbst und Ihrer Benutzer in Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |
 | Anmeldeinformationen eines globalen Azure AD-Administrators | [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md) |
@@ -71,7 +71,7 @@ Geschätzter Zeitaufwand: 60 Minuten für unter 1.000 PoC-Benutzer
 
 ### <a name="considerations"></a>Überlegungen
 
-1. Die Überlegungen zur Sicherheit der Kennworthashsynchronisierung [finden Sie hier](./connect/active-directory-aadconnectsync-implement-password-synchronization.md).  Wenn die Kennworthashsynchronisierung für Pilotbenutzer keine Option ist, können Sie diese Alternativen in Betracht ziehen:
+1. Die Überlegungen zur Sicherheit der Kennworthashsynchronisierung [finden Sie hier](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).  Wenn die Kennworthashsynchronisierung für Pilotbenutzer keine Option ist, können Sie diese Alternativen in Betracht ziehen:
    * Erstellen Sie Testbenutzer in der Produktionsdomäne. Stellen Sie sicher, dass kein anderes Konto synchronisiert wird.
    * Migrieren Sie zu einer UAT-Umgebung.
 2.  Wenn Sie im Verbund arbeiten möchten, sollten Sie die Kosten einer Verbundlösung in Verbindung mit einem lokalen Identitätsanbieter, die nach dem PoC entstehen, kennen und mit den erstrebten Vorteilen abwiegen:
@@ -138,7 +138,7 @@ Geschätzter Zeitaufwand: 60 Minuten
 
 | Voraussetzung | angeben |
 | --- | --- |
-| Testumgebung für die SaaS-Anwendung ist verfügbar. In diesem Handbuch verwendet wir ServiceNow als Beispiel.<br/>Es wird dringend empfohlen, eine Testinstanz zu verwenden, um Unstimmigkeiten beim Navigieren mit der vorhandenen Datenqualität und den Zuordnungen zu minimieren. | Testinstanz aufsetzen: https://developer.servicenow.com/app.do#!/home |
+| Testumgebung für die SaaS-Anwendung ist verfügbar. In diesem Handbuch verwendet wir ServiceNow als Beispiel.<br/>Es wird dringend empfohlen, eine Testinstanz zu verwenden, um Unstimmigkeiten beim Navigieren mit der vorhandenen Datenqualität und den Zuordnungen zu minimieren. | Navigieren Sie zu https://developer.servicenow.com/app.do#!/home, um den Prozess zur Beschaffung einer Testinstanz zu starten. |
 | Administratorzugriff auf die Verwaltungskonsole für ServiceNow | [Tutorial: Azure Active Directory-Integration mit ServiceNow](active-directory-saas-servicenow-tutorial.md) |
 | Zielbenutzer, denen Sie die Anwendung zuweisen können. Es wird empfohlen, die PoC-Benutzer in einer Sicherheitsgruppe zusammenzufassen. <br/>Wenn die Erstellung der Gruppe nicht möglich ist, weisen Sie die Benutzer für den PoC direkt der Anwendung zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
 
@@ -156,7 +156,7 @@ Geschätzter Zeitaufwand: 60 Minuten
 | Führen Sie die Anweisungen zum Konfigurieren von ServiceNow aus. |  |
 | Aktivieren Sie auf dem Blatt „Bereitstellung“ der ServiceNow-App die Bereitstellungsform „Automatisch“. | [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im neuen Azure-Portal](active-directory-enterprise-apps-manage-provisioning.md) |
 | Warten Sie einige Minuten, während die Bereitstellung abgeschlossen wird.  In der Zwischenzeit können Sie die Bereitstellungsberichte überprüfen. |  |
-| Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer (Zugriff erforderlich) an. | [Was ist der Zugriffsbereich?](active-directory-saas-access-panel-introduction.md) |
+| Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer mit Zugriff an. | [Was ist der Zugriffsbereich?](active-directory-saas-access-panel-introduction.md) |
 | Klicken Sie auf die Kachel für die Anwendung, die gerade erstellt wurde. Bestätigen Sie den Zugriff. |  |
 | Optional: Überprüfen Sie die Nutzungsberichte der Anwendung. Hinweis: Die Zugriffe werden in den Berichten erst nach einer gewissen Wartezeit angezeigt. | [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal: Nutzung von verwalteten Anwendungen](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md) |
 
@@ -186,7 +186,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 | Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
 | Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
 | Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
-| Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer (Zugriff erforderlich) an. |  |
+| Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer mit Zugriff an. |  |
 | Klicken Sie auf die Kachel für die Anwendung, die gerade erstellt wurde. | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Eingeben der Anwendungsanmeldeinformationen | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Schließen Sie den Browser, und wiederholen Sie den Anmeldevorgang. Zu diesem Zeitpunkt sollte der Benutzer die Anwendung direkt öffnen können. |  |
@@ -209,7 +209,7 @@ Geschätzter Zeitaufwand: 30 Minuten
 | Voraussetzung | angeben |
 | --- | --- |
 | Halten Sie die Liste der Zielanwendungen und die genauen Anmelde-URLs bereit. Als Beispiel können Sie Twitter verwenden. | [Twitter auf Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Registrieren bei Twitter](https://twitter.com/signup?lang=en) |
-| Freigegebene Anmeldeinformationen für diese SaaS-Anwendung. | [Gemeinsame Nutzung von Konten mit Azure AD](active-directory-sharing-accounts.md)<br/>[Automatisierte Azure AD-Kennwortrollover für Facebook, Twitter und LinkedIn ab sofort in der Vorschau! – Enterprise Mobility and Security Blog] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
+| Freigegebene Anmeldeinformationen für diese SaaS-Anwendung. | [Gemeinsame Nutzung von Konten mit Azure AD](active-directory-sharing-accounts.md)<br/>[Automatisierte Azure AD-Kennwortrollover für Facebook, Twitter und LinkedIn ab sofort in der Vorschau! – Enterprise Mobility and Security Blog] (Blog zu Enterprise Mobility + Security) (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
 | Anmeldeinformationen für mindestens zwei Teammitglieder, die auf das gleiche Konto zugreifen werden. Sie müssen einer Sicherheitsgruppe angehören. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
 | Lokaler Administratorzugriff auf einen Computer zum Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer, Chrome oder Firefox | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
@@ -443,7 +443,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 | Die PoC-Benutzer sind der Anwendung bereits zugewiesen. |  |
 | Anmeldeinformationen für den POC-Benutzer sind verfügbar. |  |
 | Der POC-Benutzer ist für MFA registriert. Verwenden Sie ein Telefon mit gutem Empfang. | https://aka.ms/ssprsetup |
-| Gerät im internen Netzwerk Die IP-Adresse ist Teil des internen Adressraums. | IP-Adresse ermitteln: https://www.bing.com/search?q=what%27s+my+ip |
+| Gerät im internen Netzwerk Die IP-Adresse ist Teil des internen Adressraums. | Ermitteln Sie Ihre IP-Adresse: https://www.bing.com/search?q=what%27s+my+ip |
 | Gerät im externen Netzwerk (z.B. ein Telefon im Mobilnetzwerk des Telefonanbieters) |  |
 
 ### <a name="steps"></a>Schritte
@@ -476,9 +476,9 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 | Schritt | angeben |
 | --- | --- |
-| Melden Sie sich unter https://portal.azure.com als ein globaler Administrator (GA) an, und führen Sie den Bootstrap-Vorgang für das Blatt „PIM“ durch. Für den globalen Administrator, der diesen Schritt ausführt, erfolgt das Seeding als Sicherheitsadministrator.  Nennen wir diesen Akteur „GA1“. | [Verwenden des Sicherheits-Assistenten in Azure AD Privileged Identity Management](active-directory-privileged-identity-management-security-wizard.md) |
+| Melden Sie sich unter https://portal.azure.com als globaler Administrator (GA) an, und führen Sie den Bootstrap-Vorgang für das Blatt „PIM“ durch. Für den globalen Administrator, der diesen Schritt ausführt, erfolgt das Seeding als Sicherheitsadministrator.  Nennen wir diesen Akteur „GA1“. | [Verwenden des Sicherheits-Assistenten in Azure AD Privileged Identity Management](active-directory-privileged-identity-management-security-wizard.md) |
 | Bestimmen Sie den globalen Administrator, und ändern Sie seine Rolle von „Permanent“ in „Berechtigt“. Dabei sollte es sich der Übersichtlichkeit halber um einen anderen Administrator als den in Schritt 1 handeln. Nennen wir diesen Akteur „GA2“. | [Azure AD Privileged Identity Management: Hinzufügen oder Entfernen einer Benutzerrolle](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[Was ist Azure AD Privileged Identity Management?: Konfigurieren der Rollenaktivierungseinstellungen](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
-| Melden Sie sich jetzt als GA2 unter https://portal.azure.com an, und versuchen Sie, die „Benutzereinstellungen“ zu ändern. Hinweis: Einige Optionen sind abgeblendet. | |
+| Melden Sie sich jetzt unter https://portal.azure.com als GA2 an, und versuchen Sie, Benutzereinstellungen zu ändern. Hinweis: Einige Optionen sind abgeblendet. | |
 | Navigieren Sie in der gleichen Sitzung wie in Schritt 3 auf einer neuen Registerkarte zu https://portal.azure.com, und fügen Sie das Blatt „PIM“ zum Dashboard hinzu. | [Aktivieren oder Deaktivieren von Rollen in Azure AD Privileged Identity Management: Hinzufügen der Anwendung Privileged Identity Management](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
 | Fordern Sie die Aktivierung der Rolle „Globaler Administrator“ an. | [Aktivieren oder Deaktivieren von Rollen in Azure AD Privileged Identity Management: Aktivieren einer Rolle](active-directory-privileged-identity-management-how-to-activate-role.md#activate-a-role) |
 | Hinweis: Wenn GA2 nicht für Azure MFA registriert wurde, muss dies jetzt nachgeholt werden. |  |
@@ -508,7 +508,7 @@ Geschätzter Zeitaufwand: 20 Minuten
 | Öffnen Sie den Tor-Browser. | [Herunterladen des Tor-Browsers](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Melden Sie sich unter https://myapps.microsoft.com mit dem PoC-Benutzerkonto an. | [Azure Active Directory Identity Protection-Playbook: Simulieren von Risikoereignissen](active-directory-identityprotection-playbook.md#simulating-risk-events) |
 | Warten Sie 5 bis 7 Minuten. |  |
-| Melden Sie sich als globaler Administrator unter https://portal.azure.com an, und öffnen Sie das Blatt „Schutz der Identität“ (Identity Protection). | https://aka.ms/aadipgetstarted |
+| Melden Sie sich unter https://portal.azure.com als globaler Administrator an, und öffnen Sie das Blatt „Identity Protection“. | https://aka.ms/aadipgetstarted |
 | Öffnen Sie das Blatt „Risikoereignisse“. Unter „Anmeldungen von anonymen IP-Adressen“ sollten Sie einen Eintrag sehen.  | [Azure Active Directory Identity Protection-Playbook: Simulieren von Risikoereignissen](active-directory-identityprotection-playbook.md#simulating-risk-events) |
 
 ### <a name="considerations"></a>Überlegungen
@@ -532,7 +532,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 | Schritt | angeben |
 | --- | --- |
-| Melden Sie sich als globaler Administrator unter https://portal.azure.com an, und öffnen Sie das Blatt „Schutz der Identität“ (Identity Protection). | https://aka.ms/aadipgetstarted |
+| Melden Sie sich unter https://portal.azure.com als globaler Administrator an, und öffnen Sie das Blatt „Identity Protection“. | https://aka.ms/aadipgetstarted |
 | Aktivieren Sie eine Richtlinie zum Anmelderisiko:<br/>- Zugewiesen zu: PoC-Benutzer<br/>- Bedingungen: Anmelderisiko mittel oder höher (die Anmeldung von einem anonymen Standort aus wird als mittleres Risiko aufgefasst)<br/>- Steuerelemente: Anfordern von MFA | [Azure Active Directory Identity Protection-Playbook: Anmelderisiko](active-directory-identityprotection-playbook.md) |
 | Öffnen Sie den Tor-Browser. | [Herunterladen des Tor-Browsers](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Melden Sie sich unter https://myapps.microsoft.com mit dem PoC-Benutzerkonto an. |  |

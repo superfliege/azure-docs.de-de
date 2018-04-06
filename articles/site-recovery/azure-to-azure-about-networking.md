@@ -1,18 +1,18 @@
 ---
-title: "Netzwerkkonzepte für die Notfallwiederherstellung zwischen Azure-Standorten mithilfe von Azure Site Recovery | Microsoft-Dokumentation"
-description: "Bietet eine Übersicht über die Netzwerkkonzepte für die Replikation von Azure-VMs mithilfe von Azure Site Recovery."
+title: Netzwerkkonzepte für die Notfallwiederherstellung zwischen Azure-Standorten mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+description: Bietet eine Übersicht über die Netzwerkkonzepte für die Replikation von Azure-VMs mithilfe von Azure Site Recovery.
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/26/2018
 ms.author: sujayt
-ms.openlocfilehash: 5ce85761df4e0ad62c22a829f67464a3145fd827
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 48be55632d9c1bece3f1a6e4f9ac12a68f9cb7ab
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Netzwerkkonzepte für die Replikation zwischen Azure-Standorten
 
@@ -154,9 +154,10 @@ Befolgen Sie die folgenden Richtlinien für Verbindungen zwischen dem Zielstando
 ### <a name="expressroute-configuration"></a>ExpressRoute-Konfiguration
 Befolgen Sie die folgenden Best Practices für die ExpressRoute-Konfiguration:
 
-- Sie müssen eine ExpressRoute-Verbindung in den Quell- und Zielregionen herstellen. Dann müssen Sie eine Verbindung zwischen Folgendem herstellen:
-  - Dem virtuellen Quellnetzwerk und der ExpressRoute-Verbindung.
-  - Dem virtuellen Zielnetzwerk und der ExpressRoute-Verbindung.
+- Erstellen Sie eine ExpressRoute-Verbindung in der Quell- und Zielregion. Dann müssen Sie eine Verbindung zwischen Folgendem herstellen:
+    - Virtuelles Quellnetzwerk und lokales Netzwerk (über die ExpressRoute-Verbindung in der Quellregion)
+    - Virtuelles Zielnetzwerk und lokales Netzwerk (über die ExpressRoute-Verbindung in der Zielregion)
+
 
 - Im Rahmen des ExpressRoute-Standards können Sie Verbindungen in derselben geopolitischen Region erstellen. Für die Erstellung von ExpressRoute-Verbindungen in verschiedenen geopolitischen Regionen ist Azure ExpressRoute Premium erforderlich. Hierfür werden zusätzliche Kosten erhoben. (Wenn Sie bereits ExpressRoute Premium verwenden, fallen keine zusätzlichen Kosten an.) Weitere Informationen finden Sie im [Dokument zu ExpressRoute-Standorten](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) und [ExpressRoute-Preisen](https://azure.microsoft.com/pricing/details/expressroute/).
 

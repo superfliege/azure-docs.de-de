@@ -1,6 +1,6 @@
 ---
 title: Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen in Azure | Microsoft-Dokumentation
-description: "Lastenausgleich in Konfigurationen mit primären und sekundären IP-Adressen"
+description: Lastenausgleich in Konfigurationen mit primären und sekundären IP-Adressen
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 02388162ac4d2d86255c0a65d8b94253047f3983
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fcd9ff8b726b5dc3e0d447bc384dbcc7cc1a4e88
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mithilfe des Azure-Portals
 
@@ -27,7 +27,6 @@ ms.lasthandoff: 02/21/2018
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](load-balancer-multiple-ip-cli.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 In diesem Artikel wird veranschaulicht, wie Sie Azure Load Balancer mit mehreren IP-Adressen auf einer sekundären Netzwerkschnittstellenkarte (Network Interface Card, NIC) verwenden. Dieses Szenario ist im folgenden Diagramm dargestellt:
 

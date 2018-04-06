@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 5d6d81678d1b3c63b52b34e79979d06fdc981ad0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8905b708101e78691c14168edf7afd659afa92a4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und in Windows Server eingebunden werden. Dieser Artikel zeigt drei verschiedene Methoden zum Einbinden einer Azure-Dateifreigabe unter Windows: über die Benutzeroberfläche des Explorers, mithilfe von PowerShell und über die Eingabeaufforderung. 
@@ -86,7 +86,7 @@ Nach dem Speichern der Anmeldeinformationen müssen sie beim Herstellen der Verb
     
     ![Screenshot des Dropdownmenüs „Netzlaufwerk verbinden“](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. **Kopieren Sie im Azure-Portal den UNC-Pfad aus dem Bereich „Verbinden“:** Falls Sie nicht genau wissen, wie Sie diese Information finden, lesen Sie [hier](storage-how-to-use-files-portal.md#connect-to-file-share) weiter.
+3. **Kopieren Sie den UNC-Pfad aus dem Bereich „Verbinden“ im Azure-Portal.** 
 
     ![UNC-Pfad aus dem Verbindungsbereich von Azure Files](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 

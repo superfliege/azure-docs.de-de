@@ -1,24 +1,24 @@
 ---
 title: Grundlegendes zur Sicherheit von Azure IoT Hub | Microsoft-Dokumentation
-description: "Entwicklerhandbuch: Steuern des Zugriffs auf IoT Hub für Geräte-Apps und Back-End-Apps. Enthält Informationen zu Sicherheitstoken und zur Unterstützung von X.509-Zertifikaten."
+description: 'Entwicklerhandbuch: Steuern des Zugriffs auf IoT Hub für Geräte-Apps und Back-End-Apps. Enthält Informationen zu Sicherheitstoken und zur Unterstützung von X.509-Zertifikaten.'
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 45631e70-865b-4e06-bb1d-aae1175a52ba
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: 4f75c5725046fb5e0348c405092edcc65c2d8129
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e7e45a6af0857520eec27263281a0f0a43b30013
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -206,12 +206,12 @@ public static string generateSasToken(string resourceUri, string key, string pol
     TimeSpan fromEpochStart = DateTime.UtcNow - new DateTime(1970, 1, 1);
     string expiry = Convert.ToString((int)fromEpochStart.TotalSeconds + expiryInSeconds);
 
-    string stringToSign = WebUtility.UrlEncode(resourceUri).ToLower() + "\n" + expiry;
+    string stringToSign = WebUtility.UrlEncode(resourceUri) + "\n" + expiry;
 
     HMACSHA256 hmac = new HMACSHA256(Convert.FromBase64String(key));
     string signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
 
-    string token = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}", WebUtility.UrlEncode(resourceUri).ToLower(), WebUtility.UrlEncode(signature), expiry);
+    string token = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}", WebUtility.UrlEncode(resourceUri), WebUtility.UrlEncode(signature), expiry);
 
     if (!String.IsNullOrEmpty(policyName))
     {
@@ -338,13 +338,17 @@ Das Ergebnis, das Lesezugriff für alle Geräteidentitäten gewähren würde, w�
 
 ## <a name="supported-x509-certificates"></a>Unterstützte X.509-Zertifikate
 
-Sie können ein beliebiges X.509-Zertifikat zum Authentifizieren eines Geräts bei IoT Hub verwenden. Die Zertifikate umfassen:
+Sie können ein X.509-Zertifikat verwenden, um ein Gerät bei IoT Hub zu authentifizieren. Laden Sie hierzu entweder einen Zertifikatfingerabdruck oder eine Zertifizierungsstelle (Certificate Authority, CA) in Azure IoT Hub hoch. Bei der Authentifizierung mittels Zertifikatfingerabdruck wird nur überprüft, ob der verwendete Fingerabdruck dem konfigurierten Fingerabdruck entspricht. Bei der Authentifizierung per Zertifizierungsstelle wird die Vertrauenskette überprüft. 
 
-* **Ein vorhandenes X.509-Zertifikat**. Einem Gerät ist möglicherweise bereits ein X.509-Zertifikat zugeordnet. Das Gerät kann dieses Zertifikat für die Authentifizierung bei IoT Hub verwenden.
-* **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat**. Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können dafür Tools wie etwa [OpenSSL][lnk-openssl] und das Windows-Hilfsprogramm [SelfSignedCertificate][lnk-selfsigned] verwenden.
-* **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat**. Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und bei IoT Hub zu authentifizieren. IoT Hub überprüft lediglich, ob der verwendete Fingerabdruck dem konfigurierten Fingerabdruck entspricht. Die Zertifikatkette wird dagegen nicht überprüft.
+Unterstützte Zertifikate:
+
+* **Ein vorhandenes X.509-Zertifikat**. Einem Gerät ist möglicherweise bereits ein X.509-Zertifikat zugeordnet. Das Gerät kann dieses Zertifikat für die Authentifizierung bei IoT Hub verwenden. Diese Option ist sowohl für die Authentifizierung per Fingerabdruck als auch für die Authentifizierung per Zertifizierungsstelle geeignet. 
+* **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat**. Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und bei IoT Hub zu authentifizieren. Diese Option ist sowohl für die Authentifizierung per Fingerabdruck als auch für die Authentifizierung per Zertifizierungsstelle geeignet.
+* **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat**. Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können dafür Tools wie etwa [OpenSSL][lnk-openssl] und das Windows-Hilfsprogramm [SelfSignedCertificate][lnk-selfsigned] verwenden. Diese Option kann nur für die Authentifizierung per Fingerabdruck verwendet werden. 
 
 Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides.
+
+Weitere Informationen zur Authentifizierung per Zertifizierungsstelle finden Sie unter [Konzeptgrundlagen der X.509-Zertifizierungsstellenzertifikate in der IoT-Branche](iot-hub-x509ca-concept.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Registrieren eines X.509-Zertifikats für ein Gerät
 
@@ -354,10 +358,7 @@ Das [Azure IoT-Dienst-SDK für C#][lnk-service-sdk] (mindestens Version 1.0.8) u
 
 Die **RegistryManager** -Klasse stellt eine programmgesteuerte Methode zum Registrieren eines Geräts bereit. Insbesondere die Methoden **AddDeviceAsync** und **UpdateDeviceAsync** ermöglichen Ihnen die Registrierung und Aktualisierung eines Geräts in der IoT Hub-Identitätsregistrierung. Diese beiden Methoden nutzen eine **Device** -Instanz als Eingabe. Die **Device**-Klasse enthält eine **Authentication**-Eigenschaft, die Ihnen die Angabe primärer und sekundärer X.509-Zertifikatfingerabdrücke ermöglicht. Der Fingerabdruck stellt einen SHA-1-Hash des X.509-Zertifikats dar (gespeichert mithilfe binärer DER-Codierung). Sie haben die Möglichkeit, einen primären Fingerabdruck oder einen sekundären Fingerabdruck oder beides anzugeben. Primäre und sekundäre Fingerabdrücke werden unterstützt, um Szenarien mit Zertifikat-Rollover zu behandeln.
 
-> [!NOTE]
-> IoT Hub benötigt oder speichert nicht das gesamte X.509-Zertifikat, sondern nur den Fingerabdruck.
-
-Hier sehen Sie einen C\#-Beispielcodeausschnitt zum Registrieren eines Geräts mithilfe eines X.509-Zertifikats:
+Hier sehen Sie einen C\#-Beispielcodeausschnitt für die Registrierung eines Geräts mithilfe eines X.509-Zertifikatfingerabdrucks:
 
 ```csharp
 var device = new Device(deviceId)

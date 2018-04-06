@@ -1,6 +1,6 @@
 ---
-title: "DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure"
-description: "Namensauflösungsszenarien für virtuelle Linux-Computer in Azure IaaS, einschließlich bereitgestellter DNS-Dienste, hybridem externen DNS und Bring Your Own DNS-Server (Verwenden eines eigenen DNS-Servers)."
+title: DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure
+description: Namensauflösungsszenarien für virtuelle Linux-Computer in Azure IaaS, einschließlich bereitgestellter DNS-Dienste, hybridem externen DNS und Bring Your Own DNS-Server (Verwenden eines eigenen DNS-Servers).
 services: virtual-machines
 documentationcenter: na
 author: RicksterCDN
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: cc06ee9305b4d3034154a0825c1aea53fe446f80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a445de3e1bfbeb2cd2e5674418688d6bb610a3c2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure
 Azure stellt die DNS-Namensauflösung standardmäßig für alle in einem einzelnen virtuellen Netzwerk enthaltenen virtuellen Computer bereit. Sie können Ihre eigene Lösung für die DNS-Namensauflösung implementieren, indem Sie auf Ihren in Azure gehosteten virtuellen Computern Ihre eigenen DNS-Dienste konfigurieren. Die folgenden Szenarien sollten Ihnen dabei helfen, situationsabhängig die jeweils am besten geeignete Lösung zu wählen.
@@ -112,7 +112,7 @@ Die Datei „resolv.conf“ wird automatisch generiert und darf nicht bearbeitet
 2. Führen Sie „netconfig update“ zum Aktualisieren aus.
 
 **CentOS von Rogue Wave Software (früher OpenLogic)** (verwendet NetworkManager)
-1. Fügen Sie „echo "options timeout:1 attempts:5"“ zu „/etc/NetworkManager/dispatcher.d/11-dhclient“ hinzu.
+1. Fügen Sie „RES_OPTIONS="timeout:1 attempts:5"“ zu „/etc/sysconfig/network“ hinzu.
 2. Führen Sie „service network restart“ zum Aktualisieren aus.
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>Namensauflösung mithilfe eines eigenen DNS-Servers

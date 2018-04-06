@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: asgang
-ms.openlocfilehash: 17cd6a931563c7d33576749453d742aca253526b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 48d84f59a80ea14c2b40821d886fc410c7e3f2c3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 
@@ -112,15 +112,15 @@ Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
     Beispiel: Wenn ein Quellcomputer zwei Netzwerkkarten besitzt und der Zielcomputer aufgrund seiner Größe vier Netzwerkkarten unterstützt, erhält der Zielcomputer zwei Netzwerkkarten. Falls der Quellcomputer dagegen zwei Netzwerkkarten besitzt und der Zielcomputer aufgrund seiner Größe nur eine Karte unterstützt, erhält der Zielcomputer nur eine Karte.
     - Wenn der virtuelle Computer über mehrere Netzwerkkarten verfügt, werden alle mit dem gleichen Netzwerk verbunden. Außerdem wird die erste, die in der Liste angezeigt wird, zur *Standardnetzwerkkarte* des virtuellen Azure-Computers.
 
-### <a name="azure-hybrid-use-benefit"></a>Azure-Vorteil bei Hybridnutzung
+### <a name="azure-hybrid-benefit"></a>Azure-Hybridvorteil
 
-Microsoft Software Assurance-Kunden können den Azure-Hybridnutzungsvorteil nutzen, um Lizenzierungskosten für Windows Server-Computer zu sparen, die nach Azure migriert werden, oder Azure für die Notfallwiederherstellung zu nutzen. Wenn Sie zur Nutzung des Azure-Hybridnutzungsvorteils berechtigt sind, können Sie festlegen, dass dieser Vorteil dem virtuellen Computer zugewiesen wird, der bei einem Failover von Azure Site Recovery erstellt wird. Gehen Sie dazu folgendermaßen vor:
+Microsoft Software Assurance-Kunden können den Azure-Hybridvorteil nutzen, um Lizenzierungskosten für Windows Server-Computer zu sparen, die nach Azure migriert werden, oder um Azure für die Notfallwiederherstellung zu verwenden. Wenn Sie zur Nutzung des Azure-Hybridvorteils berechtigt sind, können Sie angeben, dass dieser Vorteil dem virtuellen Computer zugewiesen werden soll, der bei einem Failover von Azure Site Recovery erstellt wird. Gehen Sie dazu folgendermaßen vor:
 - Navigieren Sie zum Abschnitt „Compute- und Netzwerkeigenschaften“ des replizierten virtuellen Computers.
-- Beantworten Sie die Frage, ob Sie eine Windows Server-Lizenz besitzen, die Sie zur Nutzung des Azure-Hybridnutzungsvorteils berechtigt.
-- Aktivieren Sie für den Computer, der bei einem Failover erstellt wird, das Kontrollkästchen „Ich bestätige, dass ich eine berechtigte Windows Server-Lizenz mit Software Assurance für die Anwendung dieses Hybridnutzungsvorteils besitze.“.
+- Beantworten Sie die Frage, ob Sie eine Windows Server-Lizenz besitzen, die Sie zur Nutzung des Azure-Hybridvorteils berechtigt.
+- Bestätigen Sie durch Aktivieren des entsprechenden Kontrollkästchens für den Computer, der bei einem Failover erstellt wird, dass Sie über eine berechtigte Windows Server-Lizenz mit Software Assurance für die Nutzung des Azure-Hybridvorteils verfügen.
 - Speichern Sie die Einstellungen für den replizierten Computer.
 
-Weitere Informationen finden Sie auf der Seite zum [Azure-Hybridnutzungsvorteil](https://aka.ms/azure-hybrid-use-benefit-pricing).
+Weitere Informationen zum Azure-Hybridvorteil finden Sie [hier](https://aka.ms/azure-hybrid-benefit-pricing).
 
 ## <a name="common-issues"></a>Häufige Probleme
 

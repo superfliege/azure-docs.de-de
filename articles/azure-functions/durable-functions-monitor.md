@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 617b33a9f860ce3b06ff560de22824037eab8332
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7e520429e5f5e219e05a77eb4ca18d0d6b6b3977
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Überwachungsszenario in Durable Functions – Beispiel einer Wetterbeobachtungsstation
 
@@ -26,8 +26,8 @@ Das Monitormuster bezieht sich auf einen flexiblen *wiederkehrenden* Prozess in 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Befolgen Sie die Anweisungen unter [Install Durable Functions](durable-functions-install.md) (Installieren von Durable Functions), um das Beispiel einzurichten.
-* In diesem Artikel wird vorausgesetzt, dass Sie das [Hello Sequence](durable-functions-sequence.md)-Beispiel bereits Schritt für Schritt durchgegangen sind.
+* [Sie haben Durable Functions installiert](durable-functions-install.md).
+* Sie haben die exemplarische Vorgehensweise [Hello Sequence](durable-functions-sequence.md) durchgeführt.
 
 ## <a name="scenario-overview"></a>Übersicht über das Szenario
 
@@ -64,7 +64,7 @@ In diesem Artikel werden die folgenden Funktionen in der Beispiel-App beschriebe
 * `E3_GetIsClear`: Eine Aktivitätsfunktion, die die aktuellen Wetterbedingungen an einem Ort beobachtet.
 * `E3_SendGoodWeatherAlert`: Eine Aktivitätsfunktion, die eine SMS-Nachricht über Twilio sendet.
 
-In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, die für die Entwicklung im Azure-Portal verwendet werden. Der Code für die Visual Studio-Entwicklung ist am Ende des Artikels angegeben.
+In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, die für C#-Skripts verwendet werden. Der Code für die Visual Studio-Entwicklung ist am Ende des Artikels angegeben.
  
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Die Orchestrierung der Wetterbeobachtung (Beispielcode für Visual Studio Code und Azure-Portal)
 

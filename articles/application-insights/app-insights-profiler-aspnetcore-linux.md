@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2d7405baee84b53311f01e748ca7975147c107d8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 63a7ceacffe1ee33227d3a8272dda7de7b3b1135
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profilerstellung für ASP.NET Core-Azure Linux-Web-Apps mit Application Insights Profiler
 
@@ -143,6 +143,18 @@ Eine Ausgabe ähnlich der folgenden wird angezeigt:
 5. Navigieren Sie zum Application Insights-Leistungsbereich im Azure-Portal. Sie sehen, dass Profilerablaufverfolgungen in der unteren rechten Ecke verfügbar sind.
 
     ![Ablaufverfolgungen anzeigen](./media/app-insights-profiler-aspnetcore-linux/view-traces.png)
+
+## <a name="known-issues"></a>Bekannte Probleme
+
+### <a name="enable-button-in-profiler-configuration-pane-does-not-work"></a>Fehler beim Verwenden der Schaltfläche „Aktivieren“ im Bereich zur Profiler-Konfiguration
+**Wenn Sie Ihre App mit App Services unter Linux hosten, müssen Sie Profiler nicht erneut im App Insights-Portal im Bereich „Leistung“ aktivieren. Für die Aktivierung von Profiler muss lediglich das NuGet-Paket im Projekt einbezogen und App Insights iKey in den App-Einstellungen festgelegt werden**.
+
+Wenn Sie dem Aktivierungsworkflow [App Insights-Profiler für Windows](./app-insights-profiler.md) folgend im Bereich zur Profiler-Konfiguration auf **Aktivieren** klicken, wird eine Fehlermeldung angezeigt, da durch Betätigen der Schaltfläche versucht wird, die Windows-Version des Profiler-Agents in der Linux-Umgebung zu installieren.
+
+Wir arbeiten an der Lösung dieses aktivierungsbezogenen Problems.
+
+![Sie müssen Profiler nicht erneut im Leistungsbereich aktivieren, damit Profiler in App Services unter Linux funktioniert.](./media/app-insights-profiler-aspnetcore-linux/issue-enable-profiler.png)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Gehen Sie bei Verwendung benutzerdefinierter, von App Services gehosteter Container gemäß der Anleitung unter [Enable Service Profiler for containerized ASP.NET Core application](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) (Aktivieren von Service Profiler für die containerbasierte ASP.NET Core-Anwendung) vor, um App Insights Profiler zu aktivieren.

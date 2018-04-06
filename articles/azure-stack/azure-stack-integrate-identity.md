@@ -1,20 +1,20 @@
 ---
-title: "Azure Stack-Datencenterintegration: Identität"
+title: 'Azure Stack-Datencenterintegration: Identität'
 description: Erfahren Sie, wie Sie Azure Stack AD FS in AD FS des Datencenters integrieren.
 services: azure-stack
 author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
-ms.openlocfilehash: 9e71707f13a14cb4cd0bc9cc7cd7d13dd7bb38e5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+keywords: ''
+ms.openlocfilehash: 3180b24454fc49a34a40bdf2873fad1d56173e3d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
 Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. Die Bereitstellung mithilfe von AD FS wird auch als „Bereitstellen von Azure Stack im getrennten Modus“ bezeichnet.
@@ -118,7 +118,7 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
 |Parameter|BESCHREIBUNG|Beispiel|
 |---------|---------|---------|
 |CustomAdfsName|Der Name des Anspruchsanbieters.<cr>Er wird wie hier angegeben auf der AD FS-Startseite angezeigt.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|Verbundmetadatenlink|https://AD01.contoso.com/FederationMetadata/2007-06/FederationMetadata.Xml|
+|CustomAD<br>FSFederationMetadataEndpointUri|Verbundmetadatenlink|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Auslösen der Automatisierung zum Konfigurieren der Anspruchsanbieter-Vertrauensstellung in Azure Stack
@@ -157,7 +157,7 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
 |Parameter|BESCHREIBUNG|Beispiel|
 |---------|---------|---------|
 |CustomAdfsName|Der Name der Anspruchsanbieter-Vertrauensstellung. Er wird wie hier angegeben auf der AD FS-Startseite angezeigt.|Contoso|
-|CustomADFSFederationMetadataFile|Verbundmetadatendatei|https://AD01.contoso.com/FederationMetadata/2007-06/FederationMetadata.Xml|
+|CustomADFSFederationMetadataFile|Verbundmetadatendatei|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
 
 ### <a name="create-federation-metadata-file"></a>Erstellen der Verbundmetadatendatei
 
@@ -334,4 +334,4 @@ Wenn für eines der Cmdlets ein Fehler auftritt, können Sie zusätzliche Protok
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Registrieren von Azure Stack](azure-stack-registration.md)
+[Integrieren einer externen Überwachungslösung in Azure Stack](azure-stack-integrate-monitor.md)

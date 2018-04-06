@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: 6a46a05539a7211fbc2a3a9f6ec45a28f5c64039
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 085ce90311d4d89b365f7fe51a95c00c1a734196
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Lösungsvorlage „Analyse von Telemetriedaten für Fahrzeuge“ – Anweisungen zur Einrichtung des Power BI-Dashboards
 Dieses Menü bietet Links zu den Kapiteln in diesem Playbook: 
@@ -308,7 +308,7 @@ Sie haben den Echtzeitbericht „Vehicles Requiring Maintenance“ (Fahrzeuge, f
 
     ![Bereiche „Details“, „Legende“, „Achse“ und „Größe“](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4hh.png)
 
-25. Ändern Sie den **Titel** des Diagramms in **Average of fuel, Average of engineTemperature, and Count of vin by Model and Model** (Durchschnittlicher Verbrauch, durchschnittliche Motortemperatur und Anzahl der Fahrzeugnummern nach Modell und Modell).
+25. Ändern Sie den **Titel** des Diagramms in **Average of fuel, Average of engineTemperature, and Count of vin by Model and Model** (Durchschnittlicher Verbrauch, durchschnittliche Motortemperatur und Anzahl der Fahrzeugnummern nach Modell).
 
     ![Titel des Punktdiagramms](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ii.png)
 

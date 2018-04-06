@@ -1,6 +1,6 @@
 ---
 title: Migrieren der MySQL-Datenbank mithilfe von Sicherungen und Wiederherstellungen auf Azure Database for MySQL
-description: "In diesem Artikel werden zwei Möglichkeiten zum Sichern und Wiederherstellen von Datenbanken in Ihrer Azure-Datenbank für MySQL beschrieben, indem Tools wie mysqldump, MySQL Workbench und PHPMyAdmin genutzt werden."
+description: In diesem Artikel werden zwei Möglichkeiten zum Sichern und Wiederherstellen von Datenbanken in Ihrer Azure-Datenbank für MySQL beschrieben, indem Tools wie mysqldump, MySQL Workbench und PHPMyAdmin genutzt werden.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 0c5a6b6d971d434a52bf80da6b34d7f6949589bc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: ef35ee881923c69d41b79fd6cb8464c695c614f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen
 In diesem Artikel werden zwei allgemeine Verfahren zum Sichern und Wiederherstellen von Datenbanken in Azure-Datenbank für MySQL beschrieben
@@ -87,10 +87,12 @@ $ mysqldump -u root -p --all-databases > alldb_backup.sql
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>Erstellen einer Datenbank auf dem Azure-Datenbank für MySQL-Zielserver
 Erstellen Sie eine leere Datenbank auf dem Azure-Datenbank für MySQL-Zielserver, zu dem Sie die Daten migrieren möchten. Verwenden Sie ein Tool wie MySQL Workbench, Toad oder Navicat zum Erstellen der Datenbank. Die Datenbank kann denselben Namen aufweisen wie die Datenbank, die die Sicherungsdaten enthält, oder Sie können eine Datenbank mit einem anderen Namen erstellen.
 
-Ermitteln Sie zum Herstellen der Verbindung die Verbindungsinformationen auf der Seite „Eigenschaften“ in Azure-Datenbank für MySQL.
-![Ermitteln der Verbindungsinformationen im Azure-Portal](./media/concepts-migrate-dump-restore/1_server-properties-name-login.png)
+Ermitteln Sie zum Herstellen der Verbindung die Verbindungsinformationen in der **Übersicht** Ihrer Azure Database for MySQL-Instanz.
+
+![Ermitteln der Verbindungsinformationen im Azure-Portal](./media/concepts-migrate-dump-restore/1_server-overview-name-login.png)
 
 Fügen Sie die Verbindungsinformationen in MySQL-Workbench hinzu.
+
 ![MySQL Workbench-Verbindungszeichenfolge](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
 

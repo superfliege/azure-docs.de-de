@@ -4,7 +4,7 @@ description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-E
 author: shawntabrizi
 services: service-health
 documentationcenter: service-health
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-health
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 625718ab82443c897d1b15c2eac51dea3d0dfeb4
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 867a8c0b478df9d2b7690b8b914ded7c42558583
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-service-health-alerts-with-servicenow"></a>Konfigurieren von Service Health-Warnungen mit ServiceNow
 
@@ -192,7 +192,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
     HEADERS     Content-Type: application/json
 
-    BODY        <Service Health payload>
+    BODY        <service health payload>
     ```
 3. Sie sollten eine `200 OK`-Antwort mit der Meldung „Incident created“ (Vorfall erstellt) erhalten.
 

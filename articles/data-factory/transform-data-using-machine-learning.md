@@ -1,11 +1,11 @@
 ---
-title: "Erstellen von Datenpipelines für die Vorhersage mithilfe von Azure Data Factory | Microsoft Docs"
-description: "Erfahren Sie, wie Sie eine Vorhersagepipeline mithilfe der Azure Machine Learning-Batchausführungsaktivität in Azure Data Factory erstellen."
+title: Erstellen von Datenpipelines für die Vorhersage mithilfe von Azure Data Factory | Microsoft Docs
+description: Erfahren Sie, wie Sie eine Vorhersagepipeline mithilfe der Azure Machine Learning-Batchausführungsaktivität in Azure Data Factory erstellen.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: fa493a6d7b4cf775f64b87c1d5cc21ff4a138609
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: bd72fd957948e77df6ffb0b310c590132c663235
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,11 +71,11 @@ Sie können einen mit verknüpften **Azure Machine Learning**-Dienst erstellen, 
 
 Im Artikel zu [von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md) finden Sie Beschreibungen der Eigenschaften in der JSON-Definition. 
 
-Azure Machine Learning unterstützt für Ihr Vorhersageexperiment sowohl klassische als auch neue Webdienste. Sie können denjenigen wählen, den Sie in Data Factory verwenden möchten. Um die Informationen zur Erstellung des verknüpften Azure Machine Learning-Diensts zu erhalten, besuchen Sie „https://services.azureml.net“. Hier sind alle Ihre neuen und klassischen Webdienste aufgelistet. Klicken Sie auf den Webdienst, auf den Sie zugreifen möchten, und klicken Sie auf die Seite **Consume**. Kopieren Sie **Primary Key** für die **apiKey**-Eigenschaft und **Batch Requests** für die **mlEndpoint**-Eigenschaft. 
+Azure Machine Learning unterstützt für Ihr Vorhersageexperiment sowohl klassische als auch neue Webdienste. Sie können denjenigen wählen, den Sie in Data Factory verwenden möchten. Um die Informationen zur Erstellung des verknüpften Azure Machine Learning-Diensts zu erhalten, besuchen Sie https://services.azureml.net. Hier sind alle Ihre neuen und klassischen Webdienste aufgelistet. Klicken Sie auf den Webdienst, auf den Sie zugreifen möchten, und klicken Sie auf die Seite **Consume**. Kopieren Sie **Primary Key** für die **apiKey**-Eigenschaft und **Batch Requests** für die **mlEndpoint**-Eigenschaft. 
 
 ![Azure Machine Learning-Webdienste](./media/transform-data-using-machine-learning/web-services.png)
 
-##<a name="azure-machine-learning-batch-execution-activity"></a>Azure Machine Learning-Batchausführungsaktivität
+## <a name="azure-machine-learning-batch-execution-activity"></a>Azure Machine Learning-Batchausführungsaktivität
 
 Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausführungsaktivität. Die Aktivitätsdefinition verwendet einen Verweis auf den zuvor erstellten mit Azure Machine Learning verknüpften Dienst. 
 
@@ -143,7 +143,7 @@ Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausf
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Szenario 1: Experimente mit Eingaben/Ausgaben für den Webdienst, die auf Daten in Azure Blob Storage verweisen
 
-In diesem Szenario werden mit dem Azure Machine Learning-Webdienst anhand der Daten aus einer Datei eines Azure-Blob-Speichers Vorhersagen erstellt und die Vorhersageergebnisse im Blob-Speicher gespeichert. Das folgende JSON-Skript definiert eine Data Factory-Pipeline mit einer AzureMLBatchExecution-Aktivität. Auf die Eingabe- und Ausgabedaten in Azure Blob Storage wird über ein Paar aus „LinkedName“ und „FilePath“ verwiesen. In dem Beispiel des verknüpften Diensts sind die Ein- und Ausgaben unterschiedlich. Sie können verschiedene verknüpfte Dienste für alle Ihre Ein- und Ausgaben verwenden. Data Factory ist in der Lage, die richtigen Dateien auszuwählen und an den Azure ML-Webdienst zu senden. 
+In diesem Szenario werden mit dem Azure Machine Learning-Webdienst anhand der Daten aus einer Datei in Azure Blob Storage Vorhersagen erstellt und die Vorhersageergebnisse in Blob Storage gespeichert. Das folgende JSON-Skript definiert eine Data Factory-Pipeline mit einer AzureMLBatchExecution-Aktivität. Auf die Eingabe- und Ausgabedaten in Azure Blob Storage wird über ein Paar aus „LinkedName“ und „FilePath“ verwiesen. In dem Beispiel des verknüpften Diensts sind die Ein- und Ausgaben unterschiedlich. Sie können verschiedene verknüpfte Dienste für alle Ihre Ein- und Ausgaben verwenden. Data Factory ist in der Lage, die richtigen Dateien auszuwählen und an den Azure ML-Webdienst zu senden. 
 
 > [!IMPORTANT]
 > In Ihrem Azure ML-Experiment haben Eingabe- und Ausgabeports von Webdiensten und globale Parameter Standardnamen („input1“, „input2“), die Sie anpassen können. Die Namen, die Sie für die Einstellungen webServiceInputs, webServiceOutputs und globalParameters verwenden, müssen den Namen in den Experimenten genau entsprechen. Sie können die Beispiel-Anforderungsnutzlast auf der Hilfeseite für die Batchausführung für Ihren Azure ML-Endpunkt anzeigen, um die erwartete Zuordnung zu überprüfen.

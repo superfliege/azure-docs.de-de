@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights – häufig gestellte Fragen | Microsoft-Dokumentation"
-description: "Häufig gestellte Fragen zu Application Insights."
+title: Azure Application Insights – häufig gestellte Fragen | Microsoft-Dokumentation
+description: Häufig gestellte Fragen zu Application Insights.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: ed10b364a809c519fe9fe49e019df22598b8c04e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 721799703923339d397113fc278cdeb6c6dbb88f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Häufig gestellte Fragen
 
@@ -121,7 +121,7 @@ Aus anderen Quellen, sofern Sie sie konfigurieren:
 * [Azure-Diagnose](app-insights-azure-diagnostics.md)
 * [Docker-Container](app-insights-docker.md)
 * [In Analytics importierte Tabellen](app-insights-analytics-import.md)
-* [OMS (Log Analytics)](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
+* [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
 * [Logstash](app-insights-analytics-import.md)
 
 ## <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kann ich Telemetriedaten filtern oder ändern?
@@ -250,7 +250,7 @@ Hier sind zwei Methoden:
 
 ### <a name="firewall-door"></a>Tür in der Firewall
 
-Lassen Sie zu, dass Ihr Webserver Telemetriedaten an unsere Endpunkte https://dc.services.visualstudio.com:443 und https://rt.services.visualstudio.com:443 sendet. 
+Ermöglichen Sie Ihrem Webserver das Senden von Telemetriedaten an unsere Endpunkte https://dc.services.visualstudio.com:443 und https://rt.services.visualstudio.com:443. 
 
 ### <a name="proxy"></a>Proxy
 
@@ -262,7 +262,7 @@ Leiten Sie Datenverkehr von Ihrem Server zu einem Gateway im Intranet weiter, in
 </TelemetryChannel>
 ```
 
-Ihr Gateway leitet dann den Datenverkehr an https://dc.services.visualstudio.com:443/v2/track weiter.
+Ihr Gateway sollte den Datenverkehr an https://dc.services.visualstudio.com:443/v2/track weiterleiten.
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Kann ich auf einem Intranetserver Verfügbarkeitswebtests ausführen?
 

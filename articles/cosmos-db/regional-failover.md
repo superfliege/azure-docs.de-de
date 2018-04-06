@@ -1,25 +1,25 @@
 ---
 title: Regionale Failover in Azure Cosmos DB | Microsoft-Dokumentation
-description: "Erfahren Sie etwas über die Funktionsweise von manuellen und automatischen Failovern in Azure Cosmos DB."
+description: Erfahren Sie etwas über die Funktionsweise von manuellen und automatischen Failovern in Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 446e2580-ff49-4485-8e53-ae34e08d997f
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2017
+ms.date: 03/27/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a8b32440ce3ec6cd2da7aaccf218a94e0ee3e77
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8da3e2c970ab1e60e3396cb0aaeaba64dba1713c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatische regionale Failover für die Geschäftskontinuität in Azure Cosmos DB
 Azure Cosmos DB vereinfacht die globale Verteilung von Daten, indem es vollständig verwaltete [Datenbankkonten in mehreren Regionen](distribute-data-globally.md) bietet, die für eine sorgfältig austarierte Balance zwischen Konsistenz, Verfügbarkeit und Leistung mit den entsprechenden Garantien sorgen. Cosmos DB-Konten bieten Hochverfügbarkeit, Latenzen im einstelligen Millisekundenbereich, mehrere [klar abgegrenzte Konsistenzebenen](consistency-levels.md), transparentes regionales Failover mit Multihosting-APIs sowie die Fähigkeit, Durchsatz und Speicher für alle Konten weltweit flexibel zu skalieren. 
@@ -30,9 +30,10 @@ Azure Cosmos DB unterstützt sowohl explizite als auch richtlinienbasiere Failov
 * Wie erfolgen automatische Failover in Cosmos DB, und was passiert, wenn ein Rechenzentrum ausfällt?
 * Wie können Sie manuelle Failover in Anwendungsarchitekturen verwenden?
 
-Informationen zu regionalen Failovern erhalten Sie auch in diesem Azure Friday-Video mit Scott Hanselman und Karthik Raman, dem Principal Engineering Manager.
+Sie erhalten auch Informationen über regionale Failover in diesem Video von Azure Cosmos DB-Programm-Manager Andrew Liu, das die globalen Verteilungsfeatures einschließlich regionaler Failover zeigt.
 
->[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
+>[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
+>
 
 ## <a id="ConfigureMultiRegionApplications"></a>Konfigurieren von Anwendungen für mehrere Regionen
 Bevor wir uns mit Failovermodi beschäftigen, sehen wir uns an, wie Sie eine Anwendung so konfigurieren, dass diese von der Verfügbarkeit in mehreren Regionen profitiert und im bei einem regionalen Failover nicht ausfällt.

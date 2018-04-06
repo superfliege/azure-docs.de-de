@@ -1,12 +1,12 @@
 ---
 title: Azure-Diagnoseprotokolle | Microsoft-Dokumentation
-description: "Kunden können die Protokollanalyse für Azure CDN aktivieren."
+description: Kunden können die Protokollanalyse für Azure CDN aktivieren.
 services: cdn
-documentationcenter: 
-author: 
-manager: 
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ''
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: 7bb4eebc80d1c0fdcb9fb5d0f6bb7aeeeb3cb08d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f9711f9cfaab1ef22da220a773689c95b1103970
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 
@@ -48,7 +48,7 @@ Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Erfassen und Nutz
 
 Führen Sie die folgenden Schritte aus, um die Protokollierung mit der CDN-Basisanalyse zu aktivieren:
 
-Melden Sie sich auf dem [Azure-Portal](http://portal.azure.com)an. Wenn Sie CDN für Ihren Workflow nicht bereits aktiviert haben, sollten Sie [Azure CDN vor dem Fortfahren aktivieren](cdn-create-new-endpoint.md).
+Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an. Wenn Sie CDN für Ihren Workflow nicht bereits aktiviert haben, sollten Sie [Azure CDN vor dem Fortfahren aktivieren](cdn-create-new-endpoint.md).
 
 1. Navigieren Sie im Portal zum **CDN-Profil**.
 2. Wählen Sie ein CDN-Profil und dann den CDN-Endpunkt aus, für den Sie die **Diagnoseprotokolle** aktivieren möchten.
@@ -109,7 +109,7 @@ Weitere Informationen zu Protokolldatenverzögerungen finden Sie unter [Protokol
 
 Das folgende Beispiel zeigt, wie Sie Diagnoseprotokolle über die Azure PowerShell-Cmdlets aktivieren:
 
-###<a name="enabling-diagnostic-logs-in-a-storage-account"></a>Aktivieren von Diagnoseprotokollen in einem Speicherkonto
+### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>Aktivieren von Diagnoseprotokollen in einem Speicherkonto
 
 Melden Sie sich zuerst an, und wählen Sie ein Abonnement aus:
 
@@ -135,10 +135,10 @@ Verwenden Sie diesen Befehl, um Diagnoseprotokolle in einem OMS-Arbeitsbereich z
 ## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Nutzen von Diagnoseprotokollen aus Azure Storage
 In diesem Abschnitt werden das Schema der CDN-Basisanalyse und die Organisation innerhalb eines Azure-Speicherkontos beschrieben, und er enthält Beispielcode zum Herunterladen der Protokolle in einer CSV-Datei.
 
-### <a name="using-microsoft-azure-storage-explorer"></a>Verwenden des Microsoft Azure-Speicher-Explorers
-Bevor Sie im Azure Storage-Konto auf die Basisanalysedaten zugreifen können, benötigen Sie zuerst ein Tool zum Zugreifen auf den Inhalt in einem Speicherkonto. Auf dem Markt sind verschiedene Tools erhältlich, aber wir empfehlen Ihnen die Verwendung des Microsoft Azure-Speicher-Explorers. Informationen zum Herunterladen des Tools finden Sie unter [Azure-Speicher-Explorer](http://storageexplorer.com/). Konfigurieren Sie nach dem Herunterladen und Installieren der Software die Verwendung desselben Azure-Speicherkontos, das als Ziel für die CDN-Diagnoseprotokolle konfiguriert wurde.
+### <a name="using-microsoft-azure-storage-explorer"></a>Verwenden des Microsoft Azure Storage-Explorers
+Bevor Sie im Azure Storage-Konto auf die Basisanalysedaten zugreifen können, benötigen Sie zuerst ein Tool zum Zugreifen auf den Inhalt in einem Speicherkonto. Auf dem Markt sind verschiedene Tools erhältlich, aber wir empfehlen Ihnen die Verwendung des Microsoft Azure Storage-Explorers. Informationen zum Herunterladen des Tools finden Sie unter [Azure Storage-Explorer](http://storageexplorer.com/). Konfigurieren Sie nach dem Herunterladen und Installieren der Software die Verwendung desselben Azure-Speicherkontos, das als Ziel für die CDN-Diagnoseprotokolle konfiguriert wurde.
 
-1.  Öffnen Sie den **Microsoft Azure-Speicher-Explorer**.
+1.  Öffnen Sie den **Microsoft Azure Storage-Explorer**.
 2.  Ermitteln Sie das Speicherkonto.
 3.  Navigieren Sie zum Knoten **Blobcontainer** unter diesem Speicherkonto, und erweitern Sie ihn.
 4.  Wählen Sie den Container mit dem Namen **insights-logs-coreanalytics** aus, und doppelklicken Sie darauf.
@@ -150,7 +150,7 @@ Bevor Sie im Azure Storage-Konto auf die Basisanalysedaten zugreifen können, be
 > [!NOTE]
 > **Format des Blobpfads**
 > 
-> Basisanalyseprotokolle werden stündlich generiert. Die Daten werden gesammelt und als JSON-Nutzlast in einem einzelnen Azure-Blob gespeichert. Da das Speicher-Explorer-Tool den Schrägstrich (/) als Verzeichnistrennzeichen interpretiert und die Hierarchie anzeigt, wird der Pfad zum Azure-Blob so angezeigt, als gäbe es eine hierarchische Struktur, und stellt den Blobnamen dar. Für den Namen des Blobs wird die folgende Benennungskonvention verwendet: 
+> Basisanalyseprotokolle werden stündlich generiert. Die Daten werden gesammelt und als JSON-Nutzlast in einem einzelnen Azure-Blob gespeichert. Da das Storage-Explorer-Tool den Schrägstrich (/) als Verzeichnistrennzeichen interpretiert und die Hierarchie anzeigt, wird der Pfad zum Azure-Blob so angezeigt, als gäbe es eine hierarchische Struktur, und stellt den Blobnamen dar. Für den Namen des Blobs wird die folgende Benennungskonvention verwendet: 
     
     resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json
 
@@ -173,7 +173,7 @@ Um den Zugriff auf Basisanalysen zu erleichtern, wird Beispielcode für ein Tool
 
 Sie können das Tool wie folgt verwenden:
 
-1.  Nutzen Sie den GitHub-Link: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ).
+1.  Nutzen Sie den GitHub-Link: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
 2.  Laden Sie den Code herunter.
 3.  Befolgen Sie die Anleitung zum Kompilieren und Konfigurieren.
 4.  Führen Sie das Tool aus.
@@ -288,7 +288,7 @@ Wir bieten derzeit nur Basisanalyseprotokolle an, die Metriken mit HTTP-Antworts
 Die folgende Tabelle enthält eine Liste mit den Metriken, die in den Basisanalyseprotokollen verfügbar sind. Nicht alle Metriken sind für alle Anbieter verfügbar, aber die Unterschiede sind nur minimal. Außerdem ist in der folgenden Tabelle auch angegeben, ob eine Metrik für einen Anbieter verfügbar ist. Beachten Sie, dass die Metriken nur für die CDN-Endpunkte zur Verfügung stehen, für die Datenverkehr anfällt.
 
 
-|Metrik                     | Beschreibung   | Verizon  | Akamai 
+|Metrik                     | BESCHREIBUNG   | Verizon  | Akamai 
 |---------------------------|---------------|---|---|
 | RequestCountTotal         |Gesamtzahl von Anforderungstreffern während dieses Zeitraums| Ja  |Ja   |
 | RequestCountHttpStatus2xx |Anzahl aller Anforderungen, die zum HTTP-Code 2xx geführt haben (z.B. 200, 202)              | Ja  |Ja   |
@@ -296,27 +296,27 @@ Die folgende Tabelle enthält eine Liste mit den Metriken, die in den Basisanaly
 | RequestCountHttpStatus4xx |Anzahl aller Anforderungen, die zum HTTP-Code 4xx geführt haben (z.B. 400, 404)               | Ja   |Ja   |
 | RequestCountHttpStatus5xx | Anzahl aller Anforderungen, die zum HTTP-Code 5xx geführt haben (z.B. 500, 504)              | Ja  |Ja   |
 | RequestCountHttpStatusOthers |  Anzahl aller anderen HTTP-Codes (außerhalb des Bereichs von 2xx bis 5xx) | Ja  |Ja   |
-| RequestCountHttpStatus200 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 200 geführt haben              |Nein   |Ja   |
-| RequestCountHttpStatus206 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 206 geführt haben              |Nein   |Ja   |
-| RequestCountHttpStatus302 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 302 geführt haben              |Nein   |Ja   |
-| RequestCountHttpStatus304 |  Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 304 geführt haben             |Nein   |Ja   |
-| RequestCountHttpStatus404 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 404 geführt haben              |Nein   |Ja   |
-| RequestCountCacheHit |Anzahl aller Anforderungen, die zu einem Cachetreffer geführt haben. Das Objekt wurde direkt vom POP für den Client bereitgestellt.               | Ja  |Nein   |
-| RequestCountCacheMiss | Anzahl aller Anforderungen, die zu einem Cachefehler geführt haben. Dies bedeutet, dass das Objekt nicht auf dem POP gefunden wurde, der die geringste Entfernung zum Client aufweist, und daher vom Ursprungsserver abgerufen wurde.              |Ja   | Nein  |
-| RequestCountCacheNoCache | Anzahl aller Anforderungen eines Objekts, die aufgrund einer Benutzerkonfiguration im Edgebereich nicht zwischengespeichert wurden.              |Ja   | Nein  |
-| RequestCountCacheUncacheable | Anzahl aller Anforderungen von Objekten, für die durch die Header „Cache-Control“ und „Expires“ das Zwischenspeichern verhindert wird. Mit diesen Headern wird angegeben, dass keine Zwischenspeicherung auf einem POP oder durch den HTTP-Client erfolgen soll.                |Ja   |Nein   |
-| RequestCountCacheOthers | Anzahl aller Anforderungen mit einem Cachestatus, der durch die obigen Metriken nicht abgedeckt ist              |Ja   | Nein  |
+| RequestCountHttpStatus200 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 200 geführt haben              |Nein    |Ja   |
+| RequestCountHttpStatus206 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 206 geführt haben              |Nein    |Ja   |
+| RequestCountHttpStatus302 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 302 geführt haben              |Nein    |Ja   |
+| RequestCountHttpStatus304 |  Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 304 geführt haben             |Nein    |Ja   |
+| RequestCountHttpStatus404 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 404 geführt haben              |Nein    |Ja   |
+| RequestCountCacheHit |Anzahl aller Anforderungen, die zu einem Cachetreffer geführt haben. Das Objekt wurde direkt vom POP für den Client bereitgestellt.               | Ja  |Nein    |
+| RequestCountCacheMiss | Anzahl aller Anforderungen, die zu einem Cachefehler geführt haben. Dies bedeutet, dass das Objekt nicht auf dem POP gefunden wurde, der die geringste Entfernung zum Client aufweist, und daher vom Ursprungsserver abgerufen wurde.              |Ja   | Nein   |
+| RequestCountCacheNoCache | Anzahl aller Anforderungen eines Objekts, die aufgrund einer Benutzerkonfiguration im Edgebereich nicht zwischengespeichert wurden.              |Ja   | Nein   |
+| RequestCountCacheUncacheable | Anzahl aller Anforderungen von Objekten, für die durch die Header „Cache-Control“ und „Expires“ das Zwischenspeichern verhindert wird. Mit diesen Headern wird angegeben, dass keine Zwischenspeicherung auf einem POP oder durch den HTTP-Client erfolgen soll.                |Ja   |Nein    |
+| RequestCountCacheOthers | Anzahl aller Anforderungen mit einem Cachestatus, der durch die obigen Metriken nicht abgedeckt ist              |Ja   | Nein   |
 | EgressTotal | Datenübertragung in ausgehender Richtung in GB              |Ja   |Ja   |
-| EgressHttpStatus2xx | Datenübertragung in ausgehender Richtung* für Antworten mit dem HTTP-Statuscode 2xx in GB            |Ja   |Nein   |
-| EgressHttpStatus3xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 3xx in GB              |Ja   |Nein   |
-| EgressHttpStatus4xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 4xx in GB               |Ja   | Nein  |
-| EgressHttpStatus5xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 5xx in GB               |Ja   |  Nein |
-| EgressHttpStatusOthers | Datenübertragung in ausgehender Richtung für Antworten mit anderen HTTP-Statuscodes in GB                |Ja   |Nein   |
-| EgressCacheHit |  Datenübertragung in ausgehender Richtung für Antworten, die direkt aus dem CDN-Cache auf den CDN-POPs/-Edges bereitgestellt wurden  |Ja   |  Nein |
-| EgressCacheMiss | Datenübertragung in ausgehender Richtung für Antworten, die nicht auf dem nächstgelegenen POP-Server gefunden und daher vom Ursprungsserver abgerufen wurden              |Ja   |  Nein |
-| EgressCacheNoCache | Datenübertragung in ausgehender Richtung für Objekte, die aufgrund einer Benutzerkonfiguration im Edgebereich nicht zwischengespeichert wurden                |Ja   |Nein   |
-| EgressCacheUncacheable | Datenübertragung in ausgehender Richtung für Objekte, für die durch den Header „Cache-Control“ bzw. „Expires“ das Zwischenspeichern verhindert wird. Mit diesen Headern wird angegeben, dass keine Zwischenspeicherung auf einem POP oder durch den HTTP-Client erfolgen soll.                   |Ja   | Nein  |
-| EgressCacheOthers |  Datenübertragungen in ausgehender Richtung für andere Cacheszenarien             |Ja   | Nein  |
+| EgressHttpStatus2xx | Datenübertragung in ausgehender Richtung* für Antworten mit dem HTTP-Statuscode 2xx in GB            |Ja   |Nein    |
+| EgressHttpStatus3xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 3xx in GB              |Ja   |Nein    |
+| EgressHttpStatus4xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 4xx in GB               |Ja   | Nein   |
+| EgressHttpStatus5xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 5xx in GB               |Ja   |  Nein  |
+| EgressHttpStatusOthers | Datenübertragung in ausgehender Richtung für Antworten mit anderen HTTP-Statuscodes in GB                |Ja   |Nein    |
+| EgressCacheHit |  Datenübertragung in ausgehender Richtung für Antworten, die direkt aus dem CDN-Cache auf den CDN-POPs/-Edges bereitgestellt wurden  |Ja   |  Nein  |
+| EgressCacheMiss | Datenübertragung in ausgehender Richtung für Antworten, die nicht auf dem nächstgelegenen POP-Server gefunden und daher vom Ursprungsserver abgerufen wurden              |Ja   |  Nein  |
+| EgressCacheNoCache | Datenübertragung in ausgehender Richtung für Objekte, die aufgrund einer Benutzerkonfiguration im Edgebereich nicht zwischengespeichert wurden                |Ja   |Nein    |
+| EgressCacheUncacheable | Datenübertragung in ausgehender Richtung für Objekte, für die durch den Header „Cache-Control“ bzw. „Expires“ das Zwischenspeichern verhindert wird. Mit diesen Headern wird angegeben, dass keine Zwischenspeicherung auf einem POP oder durch den HTTP-Client erfolgen soll.                   |Ja   | Nein   |
+| EgressCacheOthers |  Datenübertragungen in ausgehender Richtung für andere Cacheszenarien             |Ja   | Nein   |
 
 *Datenübertragung in ausgehender Richtung bezieht sich hier auf Datenverkehr, der von CDN-POP-Servern auf dem Client bereitgestellt wird.
 

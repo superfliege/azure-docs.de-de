@@ -1,12 +1,12 @@
 ---
 title: Keine RDP-Verbindung mit einem virtuellen Windows-Computer in Azure | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Probleme beim Herstellen einer Remotedesktopverbindung mit Ihrem virtuellen Windows-Computer in Azure behandeln.
-keywords: "Remotedesktop-Fehler,Remotedesktop-Verbindungsfehler,Verbindung mit virtuellem Computer nicht möglich,Remotedesktop-Problembehandlung"
+keywords: Remotedesktop-Fehler,Remotedesktop-Verbindungsfehler,Verbindung mit virtuellem Computer nicht möglich,Remotedesktop-Problembehandlung
 services: virtual-machines-windows
-documentationcenter: 
-author: genlin
+documentationcenter: ''
+author: danielsollondon
 manager: timlt
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 0d740f8e-98b8-4e55-bb02-520f604f5b18
 ms.service: virtual-machines-windows
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
-ms.author: genli
-ms.openlocfilehash: 4731a34d143d402372aaff7c03f95dbf0bb508a4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.date: 03/23/2018
+ms.author: danis
+ms.openlocfilehash: e2b792743f1b4ba458cff111ab6dd888b0c26d93
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer
 Eine Verbindung über das Remotedesktopprotokoll (RDP) mit Ihrem Windows-basierten virtuellen Azure-Computer (VM, Virtual Machine) kann aus verschiedenen Gründen fehlschlagen, sodass Sie nicht auf Ihren virtuellen Computer zugreifen können. Das Problem kann mit dem Remotedesktopdienst auf dem virtuellen Computer, der Netzwerkverbindung oder dem Remotedesktopclient auf Ihrem Hostcomputer zusammenhängen. Dieser Artikel führt Sie durch einige der am häufigsten verwendeten Methoden, um die RDP-Verbindungsprobleme zu beheben. 
@@ -77,7 +77,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Ressourcenintegrität**. Fehlerfreie virtuelle Computer haben den Status **Verfügbar**:
    
     ![Überprüfen der Ressourcenintegrität des virtuellen Computers im Azure-Portal](./media/troubleshoot-rdp-connection/check-resource-health.png)
-6. **Setzen Sie die Benutzeranmeldeinformationen zurück.** In diesem Problembehandlungsschritt wird das Kennwort für ein lokales Administratorkonto zurückgesetzt, falls Sie unsicher sind oder die Anmeldeinformationen vergessen haben.
+6. **Setzen Sie die Benutzeranmeldeinformationen zurück.** In diesem Problembehandlungsschritt wird das Kennwort für ein lokales Administratorkonto zurückgesetzt, falls Sie unsicher sind oder die Anmeldeinformationen vergessen haben.  Sobald Sie sich beim virtuellen Computer angemeldet haben, müssen Sie das Kennwort für diesen Benutzer zurücksetzen.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Kennwort zurücksetzen**. Vergewissern Sie sich, dass der **Modus** auf **Kennwort zurücksetzen** festgelegt ist, und geben Sie anschließend Ihren Benutzernamen und ein neues Kennwort ein. Klicken Sie abschließend auf die Schaltfläche **Aktualisieren**:
    
@@ -207,7 +207,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Ressourcenintegrität**. Fehlerfreie virtuelle Computer haben den Status **Verfügbar**:
    
     ![Überprüfen der Ressourcenintegrität des virtuellen Computers im Azure-Portal](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
-5. **Setzen Sie die Benutzeranmeldeinformationen zurück.** In diesem Problembehandlungsschritt wird das Kennwort des lokalen Administratorkontos zurückgesetzt, das Sie angeben, falls Sie sich bei den Anmeldeinformationen unsicher sind oder die Anmeldeinformationen vergessen haben.
+5. **Setzen Sie die Benutzeranmeldeinformationen zurück.** In diesem Problembehandlungsschritt wird das Kennwort des lokalen Administratorkontos zurückgesetzt, das Sie angeben, falls Sie sich bei den Anmeldeinformationen unsicher sind oder die Anmeldeinformationen vergessen haben.  Sobald Sie sich beim virtuellen Computer angemeldet haben, müssen Sie das Kennwort für diesen Benutzer zurücksetzen.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Kennwort zurücksetzen**. Geben Sie Ihren Benutzernamen und ein neues Kennwort ein. Klicken Sie abschließend auf die Schaltfläche **Speichern**:
    

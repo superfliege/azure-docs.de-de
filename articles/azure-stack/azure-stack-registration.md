@@ -12,76 +12,72 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/26/2018
 ms.author: jeffgilb
-ms.reviewer: wfayed
-ms.openlocfilehash: 27bd44f936e19890526c0834e14084647dcec086
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.reviewer: avishwan
+ms.openlocfilehash: 1dc3d9a96b9b27927cc8cc66b5e80987fba4f8ea
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrieren von Azure Stack in Azure
-Sie können Azure Stack in Azure registrieren, um Marketplace-Elemente aus Azure herunterzuladen und das Senden von Berichten zu Geschäftsdaten an Microsoft einzurichten. Nach dem Registrieren von Azure Stack wird die Nutzung an Azure Commerce übermittelt. Dies wird im Abonnement angezeigt, das Sie zur Registrierung verwendet haben.
+Wenn Sie [Azure Stack](azure-stack-poc.md) bei Azure registrieren, können Sie Marketplace-Elemente aus Azure herunterladen und das Senden von Berichten zu Geschäftsdaten an Microsoft einrichten. Nach der Registrierung von Azure Stack wird die Nutzung an Azure Commerce gemeldet und kann unter dem für die Registrierung verwendeten Abonnement angezeigt werden. 
 
 > [!IMPORTANT]
 > Die Registrierung ist obligatorisch, wenn Sie das nutzungsbasierte Abrechnungsmodell wählen. Andernfalls verstoßen Sie gegen die Lizenzbedingungen der Azure Stack-Bereitstellung, da die Nutzung nicht gemeldet wird.
 
-## <a name="before-you-register-azure-stack-with-azure"></a>Vor der Registrierung von Azure Stack in Azure
+## <a name="prerequisites"></a>Voraussetzungen
 Vor der Registrierung von Azure Stack in Azure müssen Sie folgende Bedingungen erfüllen:
 
 - Sie müssen über eine Abonnement-ID eines Azure-Abonnements verfügen. Die ID erhalten Sie, indem Sie sich bei Azure anmelden und auf **Weitere Dienste** > **Abonnements** und dann auf das Abonnement klicken, das Sie verwenden möchten. Unter **Zusammenfassung** sehen Sie nun die Abonnement-ID. 
 
   > [!NOTE]
-  > Abonnements der Government-Clouds von China, Deutschland und den USA werden aktuell nicht unterstützt. 
+  > Cloudabonnements für China, Deutschland und US Government werden derzeit nicht unterstützt. 
 
 - Sie müssen über den Benutzernamen und das Kennwort eines Kontos verfügen, das der Besitzer eines Abonnements ist (Konten mit MSA/2FA werden unterstützt)
-- *Ab der Azure Stack-Updateversion 1712 (180106.1) nicht erforderlich*: Das Azure AD für das Azure-Abonnement. Dieses Verzeichnis können Sie in Azure finden, indem Sie mit der Maus auf Ihr Profilbild zeigen, das sich in der oberen rechten Ecke im Azure-Portal befindet. 
-- Sie müssen den Azure Stack-Ressourcenanbieter registriert haben (weitere Informationen finden Sie weiter unten im Abschnitt „Registrieren des Azure Stack-Ressourcenanbieters“).
+- Sie müssen den Azure Stack-Ressourcenanbieter registriert haben. (Weitere Informationen finden Sie weiter unten im Abschnitt „Registrieren des Azure Stack-Ressourcenanbieters“.)
 
 Wenn Ihr Azure-Abonnement diese Anforderungen nicht erfüllt, können Sie [hier kostenlos ein neues Azure-Konto erstellen](https://azure.microsoft.com/free/?b=17.06). Durch das Registrieren von Azure Stack fallen keine zusätzlichen Kosten in Ihrem Azure-Abonnement an.
 
 ### <a name="bkmk_powershell"></a>Installieren von PowerShell für Azure Stack
-Sie müssen die neueste Version von PowerShell für Azure Stack verwenden, um das System bei Azure zu registrieren.
+Für die Registrierung bei Azure muss die neueste Version von PowerShell für Azure Stack verwendet werden.
 
 Falls noch nicht geschehen, [installieren Sie PowerShell für Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install). 
 
 ### <a name="bkmk_tools"></a>Herunterladen der Azure Stack-Tools
 Das GitHub-Repository mit den Azure Stack-Tools enthält PowerShell-Module, die Azure Stack-Funktionalität einschließlich Registrierungsfunktionalität unterstützen. Während des Registrierungsprozesses müssen Sie das PowerShell-Modul „RegisterWithAzure.psm1“ importieren und verwenden, das sich im Repository mit den Azure Stack Tools befindet, um Ihre Azure Stack-Instanz bei Azure zu registrieren. 
 
-```powershell
-# Change directory to the root directory. 
-cd \
-
-# Download the tools archive.
-  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
-  invoke-webrequest `
-  https://github.com/Azure/AzureStack-Tools/archive/master.zip `
-  -OutFile master.zip
-
-# Expand the downloaded files.
-  expand-archive master.zip `
-  -DestinationPath . `
-  -Force
-
-# Change to the tools directory.
-  cd AzureStack-Tools-master
-```
+Um sicherzustellen, dass Sie die neueste Version verwenden, sollten Sie vor der Registrierung bei Azure alle vorhandenen Versionen der Azure Stack-Tools löschen und [die neueste Version von GitHub herunterladen](azure-stack-powershell-download.md).
 
 ## <a name="register-azure-stack-in-connected-environments"></a>Registrieren von Azure Stack in mit Azure verbundenen Umgebungen
 In mit Azure verbundenen Umgebungen kann auf das Internet und Azure zugegriffen werden. Für diese Umgebungen müssen Sie den Azure Stack-Ressourcenanbieter bei Azure registrieren und dann Ihr Abrechnungsmodell konfigurieren.
 
+> [!NOTE]
+> Alle diese Schritte müssen von einem Computer ausgeführt werden, der Zugriff auf den privilegierten Endpunkt hat. 
+
 ### <a name="register-the-azure-stack-resource-provider"></a>Registrieren des Azure Stack-Ressourcenanbieters
-Um den Azure Stack-Ressourcenanbieter bei Azure zu registrieren, starten Sie PowerShell ISE als Administrator, und verwenden Sie die folgenden PowerShell-Befehle. Diese Befehle fordern Sie zu Folgenden auf:
-- Anmelden als Besitzer des zu verwendenden Azure-Abonnements und Festlegen des Parameters `EnvironmentName` auf **AzureCloud**.
+Um den Azure Stack-Ressourcenanbieter bei Azure zu registrieren, starten Sie PowerShell ISE als Administrator, und verwenden Sie die folgenden PowerShell-Befehle. Diese Befehle fordern Sie zu Folgendem auf:
+- Anmelden als Besitzer des zu verwendenden Azure-Abonnements und Festlegen des Parameters **EnvironmentName** auf **AzureCloud**.
 - Registrieren des Azure-Ressourcenanbieters **Microsoft.AzureStack**.
 
-Führen Sie diesen PowerShell-Befehl aus:
+1. Fügen Sie das Azure-Konto hinzu, das zum Registrieren von Azure Stack verwendet wird. Führen Sie zum Hinzufügen des Kontos das Cmdlet **Add-AzureRmAccount** aus. Sie werden aufgefordert, Ihre Anmeldeinformationen für das Konto des globalen Azure-Administrators einzugeben. Je nach Konfiguration Ihres Kontos müssen Sie möglicherweise die zweistufige Authentifizierung verwenden.
 
-```powershell
-Login-AzureRmAccount -EnvironmentName "AzureCloud"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack 
-```
+   ```Powershell
+      Add-AzureRmAccount -EnvironmentName AzureCloud
+   ```
+
+2. Wenn Sie über mehrere Abonnements verfügen, führen Sie den folgenden Befehl aus, um das zu verwendende Abonnement auszuwählen:  
+
+   ```powershell
+      Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
+   ```
+
+3. Führen Sie den folgenden Befehl zum Registrieren des Azure Stack-Ressourcenanbieters in Ihrem Azure-Abonnement aus:
+
+   ```Powershell
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
+   ```
 
 ### <a name="register-azure-stack-with-azure-using-the-pay-as-you-use-billing-model"></a>Registrieren von Azure Stack bei Azure unter Verwendung des nutzungsbasierten Abrechnungsmodells
 Befolgen Sie diese Schritte zum Registrieren von Azure Stack bei Azure unter Verwendung des nutzungsbasierten Abrechnungsmodells.
@@ -99,16 +95,16 @@ Führen Sie diesen PowerShell-Befehl aus:
 
 ```powershell
 $AzureContext = Get-AzureRmContext
-$CloudAdminCred = Get-Credential -UserName <Azure subscription owner>  -Message "Enter the cloud domain credentials to access the privileged endpoint"
+$CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials>  -Message "Enter the credentials to access the privileged endpoint"
 Set-AzsRegistration `
     -CloudAdminCredential $CloudAdminCred `
     -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
     -BillingModel PayAsYouUse
 ```
 
-|Parameter|BESCHREIBUNG|
+|Parameter|Beschreibung|
 |-----|-----|
-|CloudAdminCredential|PowerShell-Objekt, das Anmeldeinformationen (Benutzername und Kennwort) für den Besitzer des Azure-Abonnements enthält.|
+|CloudAdminCredential|PowerShell-Objekt mit Anmeldeinformationen (Benutzername und Kennwort) für den Zugriff auf den privilegierten Endpunkt.|
 |PrivilegedEndpoint|Eine vorkonfigurierte Remote-PowerShell-Konsole, die Ihnen Funktionen wie die Protokollsammlung und andere Aufgaben nach der Bereitstellung zur Verfügung stellt. Weitere Informationen finden Sie im Artikel [Verwenden des privilegierten Endpunkts](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint#access-the-privileged-endpoint).|
 |BillingModel|Das Abrechnungsmodell, das von Ihrem Abonnement verwendet wird. Zulässige Werte für diesen Parameter sind „Capacity“, „PayAsYouUse“ und „Development“.|
 
@@ -118,7 +114,7 @@ Befolgen Sie die gleichen Anweisungen wie bei der Registrierung mit dem nutzungs
 Führen Sie diesen PowerShell-Befehl aus:
 ```powershell
 $AzureContext = Get-AzureRmContext
-$CloudAdminCred = Get-Credential -UserName <Azure subscription owner>  -Message "Enter the cloud domain credentials to access the privileged endpoint"
+$CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials>  -Message "Enter the credentials to access the privileged endpoint"
 Set-AzsRegistration `
     -CloudAdminCredential $CloudAdminCred `
     -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
@@ -197,22 +193,6 @@ Wenn Sie das Abrechnungsmodell oder die Syndikationsfeatures für Ihre Installat
 ```powershell
 Set-AzsRegistration -CloudAdminCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse
 ```
-
-## <a name="remove-a-registered-resource"></a>Entfernen einer registrierten Ressource
-Wenn Sie eine Registrierung entfernen möchten, müssen Sie das Cmdlet **UnRegister-AzsEnvironment** verwenden und entweder den Namen der Registrierungsressource oder das Registrierungstoken übergeben, das Sie für **Register-AzsEnvironment** verwendet haben.
-
-So entfernen Sie eine Registrierung unter Verwendung eines Ressourcennamens
-
-```Powershell    
-UnRegister-AzsEnvironment -RegistrationName "*Name of the registration resource*"
-```
-So entfernen Sie eine Registrierung unter Verwendung eines Registrierungstokens
-
-```Powershell
-$registrationToken = "*Your copied registration token*"
-UnRegister-AzsEnvironment -RegistrationToken $registrationToken
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Integration der externen Überwachung](azure-stack-integrate-monitor.md)
+[Herunterladen von Marketplace-Elementen von Azure in Azure Stack](azure-stack-download-azure-marketplace-item.md)

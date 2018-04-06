@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2018
+ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 7a307a598bd71369615b30476d387c06f473c397
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ec13109173f89b53e32f903febcec13c7f38c574
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="outbound-connections-classic"></a>Ausgehende Verbindungen (klassisch)
 
@@ -60,7 +60,7 @@ Der [Algorithmus zum Reservieren von kurzlebigen Ports](#ephemeralports) für di
 
 In diesem Szenario ist der VM eine öffentliche IP-Adresse auf Instanzebene (Instance Level Public IP, ILPIP) zugewiesen. Bei ausgehenden Verbindungen spielt es keine Rolle, ob die VM einen Endpunkt mit Lastenausgleich aufweist. Dieses Szenario hat Vorrang vor den anderen Szenarien. Wenn eine öffentliche IP-Adresse auf Instanzebene (ILPIP) verwendet wird, nutzt die VM die ILPIP für alle ausgehenden Datenflüsse.  
 
-Es wird keine Portmaskierung (PAT) verwendet, und für den virtuellen Computer sind alle kurzlebigen Ports verfügbar.
+Eine öffentliche IP-Adresse, die einem virtuellen Computer zugewiesen ist, ist eine 1:1-Beziehung (keine 1:n-Beziehung) und wird als zustandslose 1:1-NAT implementiert.  Es wird keine Portmaskierung (PAT) verwendet, und für den virtuellen Computer sind alle kurzlebigen Ports verfügbar.
 
 Wenn Ihre Anwendung viele ausgehende Datenflüsse initiiert und es zu einer Überlastung der SNAT-Ports kommt, sollten Sie das [Zuweisen einer öffentlichen IP-Adresse auf Instanzebene erwägen, um SNAT-Engpässe zu entschärfen](#assignilpip). Lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust) ganz durch.
 
@@ -123,6 +123,18 @@ Von einer Größenänderung Ihrer Bereitstellung können einige der eingerichtet
 
 Wenn sich die Größe der Bereitstellung reduziert und der Übergang auf eine niedrigere Ebene erfolgt, nimmt die Anzahl der verfügbaren SNAT-Ports zu. In diesem Fall sind vorhandene zugeordnete SNAT-Ports und die entsprechenden Datenflüsse nicht betroffen.
 
+SNAT-Portzuordnungen gelten speziell für das jeweilige IP-Transportprotokoll (TCP und UDP werden separat verwaltet) und werden unter den folgenden Bedingungen freigegeben:
+
+### <a name="tcp-snat-port-release"></a>TCP-SNAT-Portfreigabe
+
+- Wenn Server und Client FIN/ACK senden, wird der SNAT-Port nach 240 Sekunden freigegeben.
+- Tritt ein RST auf, wird der SNAT-Port nach 15 Sekunden freigegeben.
+- Leerlauftimeout wurde erreicht.
+
+### <a name="udp-snat-port-release"></a>UDP-SNAT Portfreigabe
+
+- Leerlauftimeout wurde erreicht.
+
 ## <a name="problemsolving"></a> Problembehebung 
 
 Dieser Abschnitt soll dazu beitragen, die SNAT-Überlastung und andere Szenarien, die bei ausgehenden Verbindungen in Azure auftreten können, zu verringern.
@@ -170,3 +182,4 @@ Mit dem Befehl „nslookup“ können Sie eine DNS-Abfrage für den Namen „myi
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über in Resource Manager-Bereitstellungen verwendeten [Load Balancer](load-balancer-overview.md).
+- Informieren Sie sich ausführlicher über verfügbare Szenarien mit [ausgehender Verbindung](load-balancer-outbound-connections.md) in Resource Manager-Bereitstellungen.

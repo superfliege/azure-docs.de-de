@@ -6,13 +6,13 @@ author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: 19090bb69d7165c1e904450dc93b925e23e44782
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c5a61941bab2aa49cd8205e0a07dd2b5f7378ce9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Upgrade einer klassischen Containerregistrierung
 
@@ -29,14 +29,16 @@ Verwaltete Registrierungen bieten Folgendes:
 * [Georeplikation](container-registry-geo-replication.md)
 * [Webhooks](container-registry-webhook.md)
 
-Die klassische Registrierung ist vor allem von einem Speicherkonto abhängig, das von Azure automatisch beim Erstellen der Registrierung bereitgestellt wurde. Basic-, Standard- und Premium-SKUs verwenden hingegen *verwalteten Speicher*. Dies bedeutet, dass Azure den Speicher für Ihre Images für Sie transparent verwaltet – und dafür wird kein separates Speicherkonto in Ihrem Abonnement erstellt.
+Die klassische Registrierung ist vor allem von dem Speicherkonto abhängig, das von Azure automatisch beim Erstellen der Registrierung bereitgestellt wird. Im Gegensatz dazu nutzen die Basic-, Standard- und Premium-SKUs die [erweiterten Speicherfeatures](container-registry-storage.md) von Azure und bieten eine transparente Speicherung Ihrer Images. In Ihrem eigenen Abonnement wird kein separates Speicherkonto erstellt.
 
 Ein Speicher mit verwalteter Registrierung bietet folgende Vorteile:
 
-* Containerimages werden [im Ruhezustand verschlüsselt](../storage/common/storage-service-encryption.md).
-* Images werden mit einem [georedundanten Speicher](../storage/common/storage-redundancy.md#geo-redundant-storage) gespeichert, sodass die Sicherung Ihrer Images durch die Replikation in mehreren Regionen gewährleistet ist.
+* Containerimages werden [im Ruhezustand verschlüsselt](container-registry-storage.md#encryption-at-rest).
+* Images werden mit einem [georedundanten Speicher](container-registry-storage.md#geo-redundant-storage) gespeichert, sodass die Sicherung Ihrer Images durch die Replikation in mehreren Regionen gewährleistet ist.
 * Die Möglichkeit, [zwischen SKUs zu wechseln](container-registry-skus.md#changing-skus), um mit einer höheren SKU einen höheren Durchsatz zu ermöglichen. Jede SKU von ACR erfüllt Ihre Bedürfnisse beim Durchsatz Ihrem Bedarf entsprechend.
 * Ein einheitliches Sicherheitsmodell für die Registrierung und den zugehörigen Speicher sorgt für eine vereinfachte Rechteverwaltung. Sie verwalten die Berechtigungen nur für die Containerregistrierung und müssen sich nicht auch noch um Berechtigungen für ein separates Speicherkonto kümmern.
+
+Weitere Details zur Speicherung von Images in ACR finden Sie unter [Container image storage in Azure Container Registry](container-registry-storage.md) (Speichern von Containerimages in Azure Container Registry).
 
 ## <a name="migration-considerations"></a>Überlegungen zur Migration
 

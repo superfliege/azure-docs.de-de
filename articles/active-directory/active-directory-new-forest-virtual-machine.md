@@ -1,12 +1,12 @@
 ---
 title: Installieren einer Active Directory-Gesamtstruktur in einem virtuellen Azure-Netzwerk | Microsoft-Dokumentation
-description: "Ein Tutorial, in dem erläutert wird, wie Sie eine neue Active Directory-Gesamtstruktur auf einem virtuellen Computer (VM) in einem virtuellen Azure-Netzwerk erstellen."
+description: Ein Tutorial, in dem erläutert wird, wie Sie eine neue Active Directory-Gesamtstruktur auf einem virtuellen Computer (VM) in einem virtuellen Azure-Netzwerk erstellen.
 services: active-directory, virtual-network
 keywords: 'Virtuelle Active Directory-Maschine, Active Directory-Gesamtstruktur installieren, Azure Active Directory-Videos '
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
-tags: 
+tags: ''
 ms.assetid: eb7170d0-266a-4caa-adce-1855589d65d1
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
 ms.author: joflore
-ms.openlocfilehash: c98082b7d839490410132f19fdbf653c61d7165c
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 0b98b475f49847589398ca743fc3ac3b8bcbb381
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>Installieren einer neuen Active Directory-Gesamtstruktur auf einem virtuellen Azure-Netzwerk
 In diesem Artikel wird das Erstellen einer neuen Windows Server-basierten Active Directory-Umgebung auf einem virtuellen Computer (Virtual Machine, VM) in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) beschrieben. In diesem Fall ist das virtuelle Azure-Netzwerk nicht mit einem lokalen Netzwerk verbunden.
@@ -31,7 +31,7 @@ Folgende Artikel könnten für Sie ebenfalls von Interesse sein:
 * Weitere Anleitungen zu den Konzepten für die Installation von Active Directory-Domänendiensten (AD DS) auf einem virtuellen Azure-Netzwerk finden Sie unter [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Computern in Microsoft Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
 ## <a name="scenario-diagram"></a>Szenario (Diagramm)
-In diesem Szenario müssen externe Benutzer auf Anwendungen zugreifen, die auf in die Domäne eingebundenen Servern ausgeführt werden. Die virtuellen Computer, auf denen die Anwendungsserver ausgeführt werden, und die virtuellen Computer, auf denen Domänencontroller ausgeführt werden, werden in einem virtuellen Azure-Netzwerk in einem eigenen Clouddienst ausgeführt. Sie sind auch zur Verbesserung der Fehlertoleranz in einer Verfügbarkeitsgruppe enthalten.
+In diesem Szenario müssen externe Benutzer auf Anwendungen zugreifen, die auf in die Domäne eingebundenen Servern ausgeführt werden. Die VMs, auf denen die Anwendungsserver ausgeführt werden, und die VMs, auf denen Domänencontroller ausgeführt werden, werden in einem virtuellen Azure-Netzwerk in einem eigenen Clouddienst ausgeführt. Sie sind auch zur Verbesserung der Fehlertoleranz in einer Verfügbarkeitsgruppe enthalten.
 
 ![Active Directory-Gesamtstruktur auf einem virtuellen Computer in Azure Virtual Network ][1] 7
 

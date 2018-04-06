@@ -1,47 +1,31 @@
 ---
-title: Verwalten von Geheimnissen in Service Fabric-Anwendungen | Microsoft-Dokumentation
-description: "In diesem Artikel wird beschrieben, wie geheime Werte in einer Service Fabric-Anwendung geschützt werden."
+title: Verwalten von Azure Service Fabric-Anwendungsgeheimnissen | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie geheime Werte in einer Service Fabric-Anwendung schützen.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
+ms.date: 03/21/2018
 ms.author: vturecek
-ms.openlocfilehash: bb40f841c6c2671621624e0599a5f3a36a36ab26
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 931667509a9aa5e898cd01ad26ff046e30acd3fe
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="managing-secrets-in-service-fabric-applications"></a>Verwalten von geheimen Daten in Service Fabric-Anwendungen
+# <a name="manage-secrets-in-service-fabric-applications"></a>Verwalten von Geheimnissen in Service Fabric-Anwendungen
 In diesem Leitfaden werden die Schritte zum Verwalten von Geheimnissen in einer Service Fabric-Anwendung beschrieben. Geheimnisse beinhalten jegliche Art von vertraulichen Informationen (z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die nicht als Nur-Text verarbeitet werden sollen).
 
-In diesem Leitfaden wird Azure Key Vault für die Verwaltung von Schlüsseln und Geheimnissen verwendet. Die *Verwendung* von Geheimnissen in einer Anwendung ist jedoch cloudplattformunabhängig, sodass Anwendungen auf einem Cluster bereitgestellt werden können, der an einem beliebigen Standort gehostet wird. 
+[Azure Key Vault][key-vault-get-started] wird als sicherer Speicherort für Zertifikate sowie zum Installieren von Zertifikaten auf Service Fabric-Clustern in Azure verwendet. Wenn die Bereitstellung nicht in Azure erfolgt, muss Key Vault nicht zum Verwalten von Geheimnissen in Service Fabric-Anwendungen eingesetzt werden. Die *Verwendung* von Geheimnissen in einer Anwendung ist jedoch cloudplattformunabhängig, sodass Anwendungen auf einem Cluster bereitgestellt werden können, der an einem beliebigen Standort gehostet wird. 
 
-## <a name="overview"></a>Übersicht
-Es wird empfohlen, Dienstkonfigurationseinstellungen über [Dienstkonfigurationspakete][config-package] zu verwalten. Konfigurationspakete verfügen über eine Versionsangabe und können über parallele Upgrades aktualisiert werden. Außerdem kann die Integrität überprüft und ein automatischer Rollback durchgeführt werden. Dies wird der globalen Konfiguration vorgezogen, da die Wahrscheinlichkeit eines globalen Dienstausfalls verringert wird. Verschlüsselte Geheimnisse stellen keine Ausnahme dar. Service Fabric verfügt über integrierte Features zum Verschlüsseln und Entschlüsseln von Werten in der Konfigurationspaketdatei „Settings.xml“ mithilfe der Zertifikatverschlüsselung.
-
-Das Diagramm unten zeigt den grundlegenden Ablauf bei der Verwaltung von Geheimnissen in einer Service Fabric-Anwendung:
-
-![Übersicht über die Verwaltung von Geheimnissen][overview]
-
-Dieser Vorgang besteht im Wesentlichen aus vier Schritten:
-
-1. Abrufen eines Datenverschlüsselungszertifikats
-2. Installieren des Zertifikats in Ihrem Cluster
-3. Verschlüsseln von Geheimnissen bei der Bereitstellung einer Anwendung mit dem Zertifikat und Einfügen dieser Geheimnisse in die Konfigurationsdatei „Settings.xml“ des Diensts
-4. Lesen der verschlüsselten Werte aus der Datei „Settings.xml“, indem diese mit demselben Verschlüsselungszertifikat entschlüsselt werden 
-
-[Azure Key Vault][key-vault-get-started] wird als sicherer Speicherort für Zertifikate sowie zum Installieren von Zertifikaten auf Service Fabric-Clustern in Azure verwendet. Wenn die Bereitstellung nicht in Azure erfolgt, muss Key Vault nicht zum Verwalten von Geheimnissen in Service Fabric-Anwendungen eingesetzt werden.
-
-## <a name="data-encipherment-certificate"></a>Datenverschlüsselungszertifikat
+## <a name="obtain-a-data-encipherment-certificate"></a>Abrufen eines Datenverschlüsselungszertifikats
 Ein Datenverschlüsselungszertifikat wird ausschließlich für die Verschlüsselung und Entschlüsselung von Konfigurationswerten in der Datei „Settings.xml“ eines Diensts und nicht für die Authentifizierung oder das Signieren des Verschlüsselungstexts verwendet. Das Zertifikat muss die folgenden Anforderungen erfüllen:
 
 * Das Zertifikat muss einen privaten Schlüssel enthalten.
@@ -58,7 +42,7 @@ Ein Datenverschlüsselungszertifikat wird ausschließlich für die Verschlüssel
 Dieses Zertifikat muss auf jedem Knoten innerhalb des Clusters installiert werden. Es wird zur Laufzeit zum Entschlüsseln von Werten verwendet, die in der Datei „Settings.xml“ eines Diensts gespeichert sind. Anweisungen zum Einrichten finden Sie unter [Erstellen eines Clusters mithilfe von Azure Resource Manager][service-fabric-cluster-creation-via-arm]. 
 
 ## <a name="encrypt-application-secrets"></a>Verschlüsseln von Geheimnissen in Anwendungen
-Das Service Fabric-SDK verfügt über integrierte Funktionen zum Verschlüsseln und Entschlüsseln von Geheimnissen. Geheime Werte können bei der Erstellung verschlüsselt und programmgesteuert im Dienstcode entschlüsselt und gelesen werden. 
+Verschlüsseln Sie Geheimniswerte beim Bereitstellen einer Anwendung mit dem Zertifikat, und fügen Sie sie in die Konfigurationsdatei „Settings.xml“ des Diensts ein. Das Service Fabric-SDK verfügt über integrierte Funktionen zum Verschlüsseln und Entschlüsseln von Geheimnissen. Geheime Werte können bei der Erstellung verschlüsselt und programmgesteuert im Dienstcode entschlüsselt und gelesen werden. 
 
 Der folgende PowerShell-Befehl wird zum Verschlüsseln eines geheimen Werts verwendet. Mit diesem Befehl wird nur der Wert verschlüsselt. Der Verschlüsselungstext wird **nicht** verschlüsselt. Zum Erstellen des Chiffretexts für geheime Werte muss das Verschlüsselungszertifikat verwendet werden, das auf Ihrem Cluster installiert ist:
 
@@ -66,7 +50,7 @@ Der folgende PowerShell-Befehl wird zum Verschlüsseln eines geheimen Werts verw
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-Die resultierende Base64-Zeichenfolge enthält sowohl den Chiffretext des geheimen Werts als auch Informationen zum Zertifikat, das für die Verschlüsselung verwendet wurde.  Die Base64-codierte Zeichenfolge kann in einen Parameter Ihrer Konfigurationsdatei „Settings.xml“ eingefügt werden, wobei das Attribut `IsEncrypted` auf `true` festgelegt wird:
+Die resultierende Base64-codierte Zeichenfolge enthält sowohl den geheimen Chiffretext als auch Informationen zu dem Zertifikat, das für die Verschlüsselung verwendet wurde.  Die Base64-codierte Zeichenfolge kann in einen Parameter Ihrer Konfigurationsdatei „Settings.xml“ eingefügt werden, wobei das Attribut `IsEncrypted` auf `true` festgelegt wird:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -140,7 +124,7 @@ await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescript
 ```
 
 ## <a name="decrypt-secrets-from-service-code"></a>Entschlüsseln von Geheimnissen aus dem Dienstcode
-Dienste in Service Fabric werden unter Windows standardmäßig unter dem Konto NETZWERKDIENST ausgeführt und können ohne weitere Einrichtungsschritte nicht auf Zertifikate zugreifen, die auf dem Knoten installiert sind.
+Sie können verschlüsselte Werte aus der Datei „Settings.xml“ lesen, indem Sie sie mit dem Verschlüsselungszertifikat entschlüsseln, das auch zur Verschlüsselung des Geheimnisses verwendet wurde. Dienste in Service Fabric werden unter Windows standardmäßig unter dem Konto NETZWERKDIENST ausgeführt und können ohne weitere Einrichtungsschritte nicht auf Zertifikate zugreifen, die auf dem Knoten installiert sind.
 
 Bei Verwendung eines Datenverschlüsselungszertifikats müssen Sie sicherstellen, dass NETZWERKDIENST bzw. das Benutzerkonto, unter dem der Dienst ausgeführt wird, auf den privaten Schlüssel des Zertifikats zugreifen kann. Bei entsprechender Konfiguration gewährt Service Fabric automatisch Zugriff für Ihren Dienst. Diese Konfiguration kann in der Datei „ApplicationManifest.xml“ vorgenommen werden, indem Sie Benutzer und Sicherheitsrichtlinien für Zertifikate definieren. Im folgenden Beispiel erhält das Konto NETZWERKDIENST Lesezugriff auf ein Zertifikat, das durch seinen Fingerabdruck definiert ist:
 
@@ -176,7 +160,7 @@ SecureString mySecretValue = configPackage.Settings.Sections["MySettings"].Param
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum [Ausführen von Anwendungen mit unterschiedlichen Sicherheitsberechtigungen](service-fabric-application-runas-security.md)
+Erfahren Sie mehr über [Anwendungs- und Dienstsicherheit](service-fabric-application-and-service-security.md).
 
 <!-- Links -->
 [key-vault-get-started]:../key-vault/key-vault-get-started.md

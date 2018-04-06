@@ -1,9 +1,9 @@
 ---
-title: "Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure"
+title: Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure
 description: Erfahren Sie, wie Sie Azure WebJobs mithilfe von Visual Studio in Azure App Service entwickeln und bereitstellen.
 services: app-service
-documentationcenter: 
-author: ggailey777
+documentationcenter: ''
+author: tdykstra
 manager: erikre
 editor: jimbe
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 8793485f2f1967e8c14ef335f14f81c9b946f974
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: babe190c0865f5be4aeecb40ca48b52673c6920e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service
 
@@ -29,7 +29,7 @@ In diesem Thema wird erläutert, wie Sie Visual Studio zum Bereitstellen eines K
 Wenn mithilfe von Visual Studio ein webauftragsfähiges Konsolenanwendungsprojekt bereitgestellt wird, werden zwei Aufgaben ausgeführt:
 
 * Laufzeitdateien werden in den entsprechenden Ordner der Web-App (*App_Data/jobs/continuous* für fortlaufende WebJobs, *App_Data/jobs/triggered* für geplante und bedarfsabhängige WebJobs) kopiert.
-* [Azure Scheduler-Aufträge](#scheduler) für Webaufträge, die für die Ausführung zu bestimmten Zeiten geplant sind, werden eingerichtet. (Dies ist für fortlaufende Webaufträge nicht erforderlich.)
+* Es werden [Azure Scheduler-Aufträge](https://docs.microsoft.com/azure/scheduler/) für WebJobs eingerichtet, die für die Ausführung zu bestimmten Zeiten geplant sind. (Dies ist für fortlaufende Webaufträge nicht erforderlich.)
 
 Einem webauftragsfähigen Projekt werden die folgenden Elemente hinzugefügt:
 

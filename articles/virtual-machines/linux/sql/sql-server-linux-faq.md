@@ -1,8 +1,8 @@
 ---
-title: "SQL Server auf virtuellen Linux-Computern in Azure – FAQ | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Ausführung von SQL Server auf virtuellen Linux-Computern in Azure."
+title: SQL Server auf virtuellen Linux-Computern in Azure – FAQ | Microsoft-Dokumentation
+description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Ausführung von SQL Server auf virtuellen Linux-Computern in Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: jhubbard
 tags: azure-service-management
@@ -12,11 +12,11 @@ ms.topic: troubleshooting
 ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: jroth
-ms.openlocfilehash: 8b556b01aa47aeb3588138dfa61e517c00dc44dc
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 56a0629249cdb5f0f098d2b7b6d36b3fbb215009
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Linux-Computern in Azure
 
@@ -71,13 +71,17 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Kann ich einen virtuellen Computer so ändern, dass meine eigene SQL Server-Lizenz verwendet wird, wenn er mithilfe eines der Katalogimages mit nutzungsbasierter Bezahlung erstellt wurde?**
 
-   Nein. Der Wechsel von der Lizenzierung mit minutenbasierter Bezahlung zur Nutzung der eigenen Lizenz ist nicht möglich. Sie müssen eine neue Linux-VM erstellen, SQL Server installieren und Ihre Daten migrieren. Weitere Details zu BYOL finden Sie in der vorherigen Frage.
+   Nein. Von der Lizenzierung mit sekundengenauer Abrechnung kann nicht zur Verwendung einer eigenen Lizenz gewechselt werden. Sie müssen eine neue Linux-VM erstellen, SQL Server installieren und Ihre Daten migrieren. Weitere Details zu BYOL finden Sie in der vorherigen Frage.
 
 ## <a name="administration"></a>Verwaltung
 
 1. **Kann ich einen virtuellen Linux-Computer mit SQL Server mithilfe von SQL Server Management Studio (SSMS) verwalten?**
 
    Ja, SSMS ist derzeit jedoch ein Tool nur für Windows. Sie müssen eine Remoteverbindung über einen Windows-Computer herstellen, um SSMS für virtuelle Linux-Computer mit SQL Server zu verwenden. Mit dem neuen Tool [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) können lokal unter Linux zahlreiche administrative Aufgaben durchgeführt werden. Die Vorschauversion eines plattformübergreifenden Datenbankverwaltungstools finden Sie unter [SQL Server Operations Studio (Vorschauversion)](https://docs.microsoft.com/sql/sql-operations-studio/what-is).
+
+1. **Kann ich SQL Server vollständig von einer SQL-VM entfernen?**
+
+   Ja, die Abrechnung basiert jedoch weiterhin auf Ihrer SQL-VM, wie in den [Preisinformationen für virtuelle Azure-Computer mit SQL Server](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json) beschrieben. Wenn Sie SQL Server nicht mehr benötigen, können Sie einen neuen virtuellen Computer bereitstellen und die Daten und Anwendungen zu diesem neuen virtuellen Computer migrieren. Anschließend können Sie den virtuellen SQL Server-Computer entfernen.
 
 ## <a name="updating-and-patching"></a>Aktualisieren und Patchen
 
@@ -91,7 +95,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
    Derzeit leider nicht. Für AlwaysOn-Verfügbarkeitsgruppen und Failoverclustering wird eine Clusteringlösung unter Linux benötigt, z.B. Pacemaker. Die unterstützten Linux-Distributionen für SQL Server unterstützen keine Add-Ons für Hochverfügbarkeit in der Cloud.
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 
 **Virtuelle Linux-Computer:**
 

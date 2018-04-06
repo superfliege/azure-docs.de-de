@@ -15,16 +15,13 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: b773ddc5da12f92960ef3378decac8569dac9ab9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 958b1757dd773f8c46185b13c84f766ce4f827ee
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Wichtige Features und Konzepte in Azure Stack
-
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
-
 Wenn Sie mit Microsoft Azure Stack noch nicht vertraut sind, können diese Begriffe und Featurebeschreibungen möglicherweise hilfreich sein.
 
 ## <a name="personas"></a>Personas
@@ -165,5 +162,5 @@ In der Entwicklung befindliche Builds bieten die folgenden Vorteile:
 - Weitere Verbesserungen
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Voraussetzungen für die Azure Stack-Bereitstellung](azure-stack-deploy.md)
+[Bewerten des Azure Stack Development Kits](azure-stack-deploy-overview.md)
 

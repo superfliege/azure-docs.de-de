@@ -9,15 +9,14 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: ba457daca030d3219fe32177b0b5f8b5565ff544
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3eab85aa4f7fde190a93239fc396cb9c04c2396c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="back-up-azure-file-shares-preview"></a>Sichern von Azure-Dateifreigaben (Vorschauversion)
-
-In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) in Azure sichern und wiederherstellen.
+# <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
+In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) sichern und wiederherstellen.
 
 In diesem Artikel lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -32,17 +31,16 @@ In diesem Artikel lernen Sie Folgendes:
 Um eine Azure-Dateifreigabe sichern zu können, muss sie sich unter einem der [unterstützten Speicherkontotypen](troubleshoot-azure-files.md#preview-boundaries) befinden. Sobald Sie dies überprüft haben, können Sie Ihre Dateifreigaben schützen.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Einschränkungen beim Sichern von Azure-Dateifreigaben während der Vorschauphase
-Die Azure Files-Sicherung befindet sich in der Vorschauphase. Während der Vorschauphase sind folgende Einschränkungen zu beachten:
-- Dateifreigaben können nicht in Speicherkonten mit einer Replikation vom Typ [ZRS](../storage/common/storage-redundancy.md#zone-redundant-storage) (zonenredundanter Speicher) oder [RA-GRS](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) geschützt werden.
-- Dateifreigaben können nicht in Speicherkonten mit aktivierten virtuellen Netzwerken geschützt werden.
+Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Während der Vorschauphase sind folgende Einschränkungen zu beachten:
+- Azure-Dateifreigaben können nicht in Speicherkonten mit einer Replikation vom Typ [ZRS](../storage/common/storage-redundancy.md#zone-redundant-storage) (zonenredundanter Speicher) oder [RA-GRS](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) geschützt werden.
+- Azure-Dateifreigaben können nicht in Speicherkonten mit aktivierten virtuellen Netzwerken geschützt werden.
 - Für den Schutz von Azure Files steht keine PowerShell- oder Befehlszeilenoption zur Verfügung.
 - Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
 - Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
 - Verwenden Sie [Ressourcensperren](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.
 - Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten bzw. zu Wiederherstellungsfehlern führen. 
 
-## <a name="configuring-azure-file-shares-backup"></a>Konfigurieren der Sicherung von Azure-Dateifreigaben
-
+## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurieren der Sicherung für eine Azure-Dateifreigabe
 Alle Sicherungsdaten werden in Recovery Services-Tresoren gespeichert. In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine Azure-Dateifreigabe eingerichtet haben. So sichern Sie Ihre Azure-Dateifreigabe
 
 1. Erstellen Sie einen Recovery Services-Tresor in der Region, in der sich auch die Dateifreigabe befindet. Wenn Sie bereits einen Tresor besitzen, öffnen Sie die Seite „Übersicht“ des Tresors, und klicken Sie auf **Sicherung**.
@@ -57,7 +55,7 @@ Alle Sicherungsdaten werden in Recovery Services-Tresoren gespeichert. In diesem
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/set-backup-goal.png)
 
-    Wenn der Tresor der Azure-Dateifreigabe zugeordnet wurde, wird das Menü „Sicherung“ geöffnet und fordert Sie zur Auswahl eines Speicherkontos auf. Im Menü werden alle unterstützten Speicherkonten in der Region des Tresors angezeigt, die noch keinem Recovery Services-Tresor zugeordnet sind.
+    Wenn der Tresor der Azure-Dateifreigabe zugeordnet wurde, wird das Menü „Sicherung“ geöffnet, und Sie werden zur Auswahl eines Speicherkontos aufgefordert. Im Menü werden alle unterstützten Speicherkonten in der Region des Tresors angezeigt, die noch keinem Recovery Services-Tresor zugeordnet sind.
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/list-of-storage-accounts.png)
 
@@ -127,7 +125,7 @@ So öffnen Sie die Seite **Sicherungsaufträge**
 
 ### <a name="create-a-new-policy"></a>Erstellen einer neuen Richtlinie
 
-Sie können im Recovery Services-Tresor über **Sicherungsrichtlinien** eine neue Richtlinie zum Sichern von Azure-Dateifreigaben erstellen. Alle beim Konfigurieren der Sicherung für Dateifreigaben erstellten Richtlinien werden mit dem Richtlinientyp „Azure-Dateifreigabe“ angezeigt.
+Sie können im Recovery Services-Tresor über **Sicherungsrichtlinien** eine neue Richtlinie zum Sichern von Azure-Dateifreigaben erstellen. Alle beim Konfigurieren der Dateifreigabensicherung erstellten Richtlinien werden mit dem Richtlinientyp „Azure-Dateifreigabe“ angezeigt.
 
 So zeigen Sie die vorhandenen Sicherungsrichtlinien an
 
@@ -167,7 +165,7 @@ So beenden Sie den Schutz für eine Azure-Dateifreigabe
 
 3. Wählen Sie in der Liste der Sicherungselemente (Azure Storage (Azure Files)) das Sicherungselement aus, für das der Schutz beendet werden soll.
 
-4. Klicken Sie in den Azure-Dateifreigabeelementen auf das Menü **Meer** und dann auf **Sicherung beenden**. 
+4. Klicken Sie in den Azure-Dateifreigabeelementen auf das Menü **Mehr** und dann auf **Sicherung beenden**. 
 
    ![Klicken auf ein Element, um ein weiteres Menü zu öffnen](./media/backup-file-shares/stop-backup.png)
 
@@ -191,5 +189,5 @@ Beim folgenden Verfahren wird davon ausgegangen, dass der Sicherungsauftrag für
 
 ## <a name="see-also"></a>Siehe auch
 Weitere Informationen zu Azure-Dateifreigaben finden Sie in den folgenden Artikeln:
-- [Questions about backing up Azure Files](backup-azure-files-faq.md) (Fragen zum Sichern von Azure Files)
+- [Fragen zum Sichern von Azure Files](backup-azure-files-faq.md)
 - [Problembehandlung beim Sichern von Azure-Dateifreigaben](troubleshoot-azure-files.md)

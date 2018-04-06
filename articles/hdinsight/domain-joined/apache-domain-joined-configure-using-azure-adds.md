@@ -12,24 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/10/2017
+ms.date: 03/20/2018
 ms.author: bhanupr
-ms.openlocfilehash: a0156915c329dfad1424cfd1f10a6ebb27c56acc
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ae7ccaf3d167176a1fc6015e84b0eb023da945d5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure Active Directory Domain Services
 
 In die Domäne eingebundene Cluster stellen Sicherheitsfunktionen für Unternehmen mit zahlreichen Benutzern auf HDInsight bereit. In die Domäne eingebundene HDInsight-Cluster sind mit Active Directory-Domänen verbunden, sodass Domänenbenutzer ihre Domänenanmeldeinformationen zum Authentifizieren beim Cluster verwenden und Big Data-Aufträge ausführen können. 
 
-Es gibt zwei Möglichkeiten, einen Domänencontroller so einzurichten, dass ein in die Domäne eingebundener HDInsight-Cluster eine Verbindung mit Folgendem herstellen kann:
-
-- Azure Active Directory Domain Services (Azure AD DS)
-- Active Directory-Domänencontroller auf Azure IaaS-VMs
-
 In diesem Artikel erfahren Sie, wie Sie in die Domäne eingebundene HDInsight-Cluster mit Azure Active Directory Domain Services einrichten und konfigurieren.
+
+> [!NOTE]
+> Active Directory auf Azure IaaS-VMs wird nicht mehr unterstützt.
 
 ## <a name="create-azure-adds"></a>Erstellen von Azure AD DS
 

@@ -8,24 +8,27 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 8b16545bd1a3afa138c22ac6ab01b139a9e636a8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 03/22/2018
+ms.openlocfilehash: cfebdbe7485f0ffaa15828803d72c2a3f97c118d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Unterstützte Azure-Datenbank für MySQL-Serverversionen
 Azure Database for MySQL wurde basierend auf [MySQL Community Edition](https://www.mysql.com/products/community/) mithilfe der InnoDB-Engine entwickelt.  Azure Database for MySQL unterstützt derzeit die folgenden Versionen:
 
-## <a name="mysql-version-5635"></a>MySQL Version 5.6.35
-Weitere Informationen zu Verbesserungen und Fehlerbehebungen in MySQL 5.6.35 finden Sie in der [Dokumentation zu MySQL](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-35.html).
+## <a name="mysql-version-5638"></a>MySQL Version 5.6.38
+Weitere Informationen zu Verbesserungen und Fehlerbehebungen in MySQL 5.6.38 finden Sie in der [Dokumentation zu MySQL](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-38.html).
 
-## <a name="mysql-version-5718"></a>MySQL Version 5.7.18
-Informationen zu Verbesserungen und Fehlerbehebungen in MySQL 5.7.18 finden Sie in der [Dokumentation zu MySQL](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-18.html).
+## <a name="mysql-version-5720"></a>MySQL Version 5.7.20
+Informationen zu Verbesserungen und Fehlerbehebungen in MySQL 5.7.20 finden Sie in der [Dokumentation zu MySQL](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-20.htmll).
+
+> [!NOTE]
+> Im Dienst wird ein Gateway verwendet, um die Verbindungen an die Serverinstanzen umzuleiten. Sobald die Verbindung hergestellt ist, zeigt der MySQL-Client die im Gateway festgelegte Version von MySQL an, nicht die tatsächliche Version, die auf Ihrer MySQL-Serverinstanz ausgeführt wird. Um die Version Ihrer MySQL-Serverinstanz zu ermitteln, geben Sie den `SELECT VERSION();`-Befehl an der MySQL-Eingabeaufforderung ein. 
 
 ## <a name="managing-updates-and-upgrades"></a>Verwalten von Updates und Upgrades
-Das Patchen von Updates zu Nebenversionen wird von Azure-Datenbank für MySQL automatisch verwaltet. Hauptversionsupgrades, beispielsweise das Upgrade von MySQL 5.6 auf MySQL 5.7, werden nicht unterstützt.
+Das Patchen von Updates zu Nebenversionen wird vom Dienst automatisch verwaltet. Upgrades von Hauptversionen werden nicht unterstützt (ausgenommen Upgrade von MySQL 5.6 auf MySQL 5.7).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

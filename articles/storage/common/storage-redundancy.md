@@ -1,6 +1,6 @@
 ---
 title: Datenreplikation in Azure Storage | Microsoft-Dokumentation
-description: "Die Daten in Ihrem Microsoft Azure Storage-Konto werden stets repliziert, um Beständigkeit und Hochverfügbarkeit sicherzustellen. Die Redundanzoptionen umfassen den lokal redundanten Speicher (LRS), den zonenredundanten Speicher (ZRS), den georedundanten Speicher (GRS) und den georedundanten Speicher mit Lesezugriff (RA-GRS)."
+description: Die Daten in Ihrem Microsoft Azure Storage-Konto werden stets repliziert, um Beständigkeit und Hochverfügbarkeit sicherzustellen. Die Redundanzoptionen umfassen den lokal redundanten Speicher (LRS), den zonenredundanten Speicher (ZRS), den georedundanten Speicher (GRS) und den georedundanten Speicher mit Lesezugriff (RA-GRS).
 services: storage
 author: tamram
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 18d0e8bc6cc1559f9ae1a1a4457aa85d2a206597
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 600b66af3b7da24c5a40d09d5cdf76f2d5be67ac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-storage-replication"></a>Azure Storage-Replikation
 
@@ -30,7 +30,7 @@ Wenn Sie ein Speicherkonto erstellen, können Sie eine der folgenden Replikation
 * [Georedundanter Speicher (GRS)](#geo-redundant-storage)
 * [Georedundanter Speicher mit Lesezugriff (RA-GRS)](#read-access-geo-redundant-storage)
 
-Georedundanter Speicher mit Lesezugriff (RA-GRS) ist die Standardoption bei der Erstellung eines Speicherkontos.
+Lokaler redundanter Speicher (LRS) ist die Standardoption bei der Erstellung eines Speicherkontos.
 
 Die folgende Tabelle bietet einen schnellen Überblick über die Unterschiede zwischen LRS, ZRS, GRS und RA-GRS. In den nachfolgenden Abschnitten dieses Artikels werden die einzelnen Replikationstypen ausführlicher behandelt.
 

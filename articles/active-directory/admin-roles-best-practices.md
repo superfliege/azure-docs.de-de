@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 166171dc8d8d694ef253ed6809c53b54577535e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 98665ab215c98ea60273ce3aae2757cf20817a90
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -156,7 +156,7 @@ Stellen Sie sicher, dass alle Benutzer sich mindestens einmal in den letzten 90 
 
 #### <a name="turn-on-password-synchronization"></a>Aktivieren der Kennwortsynchronisierung
 
-Die Kennwortsynchronisierung ist ein Feature zum Synchronisieren von Hashes von Benutzerkennwörtern aus einer lokalen Active Directory-Instanz nach einer cloudbasierten Azure Active Directory-Instanz (Azure AD). Auch wenn Sie den Verbund mit Active Directory-Verbunddiensten (Active Directory Federation Services, AD FS) oder anderen Identitätsanbietern verwenden möchten, können Sie die Kennwortsynchronisierung optional als eine Sicherung für den Fall einrichten, dass bei Ihrer lokalen Infrastruktur – z.B. AD- oder AD FS-Server – ein Fehler auftritt oder sie vorübergehend nicht verfügbar ist. Dies ermöglicht Benutzern, sich bei dem Dienst mit dem gleichen Kennwort anzumelden, das sie zur Anmeldung bei Ihrer lokalen AD-Instanz verwenden. Außerdem ermöglicht es Identity Protection das Erkennen gefährdeter Anmeldeinformationen durch Vergleichen ihrer Kennworthashes mit Kennwörtern, die bekanntermaßen gefährdet sind, wenn ein Benutzer dieselbe E-Mail-Adresse und dasselbe Kennwort bei anderen Diensten genutzt hat, die nicht mit Azure AD verbunden sind.  Weitere Informationen finden Sie unter [Implementieren der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung](./connect/active-directory-aadconnectsync-implement-password-synchronization.md).
+Die Kennwortsynchronisierung ist ein Feature zum Synchronisieren von Hashes von Benutzerkennwörtern aus einer lokalen Active Directory-Instanz nach einer cloudbasierten Azure Active Directory-Instanz (Azure AD). Auch wenn Sie den Verbund mit Active Directory-Verbunddiensten (Active Directory Federation Services, AD FS) oder anderen Identitätsanbietern verwenden möchten, können Sie die Kennwortsynchronisierung optional als eine Sicherung für den Fall einrichten, dass bei Ihrer lokalen Infrastruktur – z.B. AD- oder AD FS-Server – ein Fehler auftritt oder sie vorübergehend nicht verfügbar ist. Dies ermöglicht Benutzern, sich bei dem Dienst mit dem gleichen Kennwort anzumelden, das sie zur Anmeldung bei Ihrer lokalen AD-Instanz verwenden. Außerdem ermöglicht es Identity Protection das Erkennen gefährdeter Anmeldeinformationen durch Vergleichen ihrer Kennworthashes mit Kennwörtern, die bekanntermaßen gefährdet sind, wenn ein Benutzer dieselbe E-Mail-Adresse und dasselbe Kennwort bei anderen Diensten genutzt hat, die nicht mit Azure AD verbunden sind.  Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Fordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) sowohl für Benutzer in allen privilegierten Rollen als auch für Benutzer mit hoher Gefährdung
 

@@ -1,11 +1,11 @@
 ---
-title: "Grenzwerte und Konfiguration – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Dienstlimits und Konfigurationswerte für Azure Logic Apps"
+title: Grenzwerte und Konfiguration – Azure Logic Apps | Microsoft-Dokumentation
+description: Dienstlimits und Konfigurationswerte für Azure Logic Apps
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 54a35607e107a09188373cc5f71bb3068b4c6bab
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 740a31f4b5e0ffe9fe2ae04d3dac51cf25ab3055
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps-Grenzwerte und -Konfiguration
 
@@ -86,7 +86,7 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App-Instanz:
 
 | NAME | Begrenzung | Notizen | 
 | ----- | ----- | ----- | 
-| Aktionsausführungen pro 5 Minuten | 100.000 | Um das Limit auf 300.000 zu erhöhen, führen Sie eine Logik-App im `High Througput`-Modus aus. Um den Modus mit hohem Durchsatz zu konfigurieren, legen Sie unter der `runtimeConfiguration` der Workflowressource die `operationOptions`-Eigenschaft auf `OptimizedForHighThroughput` fest. <p>**Hinweis**: Beachten Sie, dass sich dieser Modus für den hohen Durchsatz in der Vorschauphase befindet. Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. | 
+| Aktionsausführungen pro 5 Minuten | 100.000 | Um das Limit auf 300.000 zu erhöhen, führen Sie eine Logik-App im `High Throughput`-Modus aus. Um den Modus mit hohem Durchsatz zu konfigurieren, legen Sie unter der `runtimeConfiguration` der Workflowressource die `operationOptions`-Eigenschaft auf `OptimizedForHighThroughput` fest. <p>**Hinweis**: Beachten Sie, dass sich dieser Modus für den hohen Durchsatz in der Vorschauphase befindet. Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. | 
 | Gleichzeitige ausgehende Aufrufe für Aktionen | ca. 2.500 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
 | Endpunkt zur Laufzeit: Gleichzeitige eingehende Aufrufe |ca. 1.000 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
 | Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten  | 60.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 

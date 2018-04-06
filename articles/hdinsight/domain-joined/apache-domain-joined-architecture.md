@@ -1,8 +1,8 @@
 ---
-title: "In die Domäne eingebundene Azure HDInsight-Architektur | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie für HDInsight eine Einbindung in die Domäne planen."
+title: In die Domäne eingebundene Azure HDInsight-Architektur | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie für HDInsight eine Einbindung in die Domäne planen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bhanupr
 manager: jhubbard
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/14/2017
+ms.date: 03/20/2018
 ms.author: bprakash
-ms.openlocfilehash: 5285199d22528ed6b9fa3b7dbc85e382e7b28569
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b4f79388e45e24dc906a3a03dc0c0e51df52160d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Planen von in die Azure-Domäne eingebundenen Hadoop-Clustern in HDInsight
 
@@ -47,16 +47,14 @@ Der folgende Screenshot zeigt eine in contoso.com erstellte OE. Einige der Diens
 
 ![In die Domäne eingebundene HDInsight-Cluster (OE)](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png)zu erstellen und zu verwalten.
 
-### <a name="two-ways-of-bringing-your-own-active-directory-domain-controllers"></a>Zwei Möglichkeiten für den Einsatz von eigenen Active Directory-Domänencontrollern
-
-Es gibt zwei Möglichkeiten, wie Sie mit Active Directory-Domänencontrollern in die Domäne eingebundene HDInsight-Cluster erstellen können. 
+### <a name="the-way-of-bringing-your-own-active-directory-domain-controllers"></a>Möglichkeit für den Einsatz von eigenen Active Directory-Domänencontrollern
 
 - **Azure Active Directory Domain Services**: Dieser Dienst stellt eine verwaltete Active Directory-Domäne bereit, die vollständig mit Windows Server Active Directory kompatibel ist. Microsoft übernimmt die Verwaltung, das Patchen und das Überwachen der AD-Domäne. Sie können Ihren Cluster bereitstellen, ohne sich Sorgen um die Verwaltung von Domänencontrollern zu machen. Benutzer, Gruppen und Kennwörter werden über Azure Active Directory synchronisiert, sodass Benutzer sich beim Cluster mit ihren Unternehmensanmeldeinformationen anmelden können. Weitere Informationen finden Sie unter [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
 
-- **Active Directory auf Azure IaaS-VMs**: Bei dieser Option übernehmen Sie die Bereitstellung und Verwaltung Ihrer eigenen Windows Server Active Directory-Domäne auf Azure IaaS-VMs. Weitere Informationen finden Sie unter [Konfigurieren einer in die Domäne eingebundenen Sandboxumgebung](./apache-domain-joined-configure.md).
+> [!NOTE]
+> Active Directory auf Azure IaaS-VMs wird nicht mehr unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Konfigurieren eines in die Domäne eingebundenen HDInsight-Clusters finden Sie unter [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](apache-domain-joined-configure.md).
 * Informationen zum Verwalten von in die Domäne eingebundenen HDInsight-Clustern finden Sie unter [Verwalten von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](apache-domain-joined-manage.md).
 * Informationen zum Konfigurieren von Hive-Richtlinien und zum Ausführen von Hive-Abfragen finden Sie unter [Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung (Vorschau)](apache-domain-joined-run-hive.md).
 * Informationen zum Ausführen von Hive-Abfragen mit SSH für in die Domäne eingebundene HDInsight-Cluster finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).

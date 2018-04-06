@@ -1,8 +1,8 @@
 ---
-title: "Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory | Microsoft-Dokumentation"
-description: "Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory."
+title: Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory | Microsoft-Dokumentation
+description: Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 03/20/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ecf77a614922ef58cdfb2b2c8174f66e01ea9b46
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0d21a8848222c4b09723e22d2d51ec43b2154553
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory 
 
@@ -88,10 +88,10 @@ Wenn die Hybrideinbindung in Azure AD nicht erfolgreich war, enthält das Dialog
     
     2. „Autoworkplace.exe“ kann sich aus irgendeinem Grund nicht unbeaufsichtigt bei Azure AD oder AD FS authentifizieren. Einige mögliche Gründe: Probleme bei ausgehenden Netzwerkverbindungen mit Azure AD-URLs (überprüfen Sie die Voraussetzungen) oder MFA ist für den Benutzer aktiviert/konfiguriert, aber WIAORMUTLIAUTHN ist auf dem Verbundserver nicht konfiguriert (überprüfen Sie die Konfigurationsschritte). Eine weitere Möglichkeit ist, dass die Seite der Startbereichsermittlung (Home Realm Discovery, HRD) auf eine Benutzerinteraktion wartet, wodurch „Autoworkplace.exe“ daran gehindert wird, unbeaufsichtigt ein Token abzurufen.
     
-    3. Wenn die Organisation das nahtlose einmalige Anmelden von Azure AD verwendet, sind die folgenden URLs in den IE-Intraneteinstellungen des Geräts nicht vorhanden:
+    3. Wenn die Organisation das nahtlose einmalige Anmelden von Azure AD verwendet, ist die folgende URL in den IE-Intraneteinstellungen des Geräts nicht vorhanden:
     
        - https://autologon.microsoftazuread-sso.com
-       - https://aadg.windows.net.nsatc.net
+
     
        Die Einstellung „Aktualisierungen der Statusleiste per Skript zulassen“ muss für die Intranetzone aktiviert sein.
 

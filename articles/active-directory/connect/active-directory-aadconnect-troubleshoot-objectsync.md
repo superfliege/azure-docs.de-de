@@ -1,8 +1,8 @@
 ---
 title: 'Azure AD Connect: Beheben von Fehlern bei der Objektsynchronisierung | Microsoft-Dokumentation'
-description: "Dieses Thema enthält Schritte zum Beheben von Problemen bei der Objektsynchronisierung mithilfe der Aufgaben zur Problembehandlung."
+description: Dieses Thema enthält Schritte zum Beheben von Problemen bei der Objektsynchronisierung mithilfe der Aufgaben zur Problembehandlung.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 10ebe039b9d266d15696b397b9cdef9bc7ec2a10
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 54ae18b9a802fe078d307f4d36400adf806b233f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Beheben von Problemen bei der Objektsynchronisierung mit der Azure AD Connect-Synchronisierung
 Dieses Dokument enthält Schritte zum Beheben von Problemen bei der Objektsynchronisierung mithilfe der Aufgaben zur Problembehandlung.
 
 ## <a name="troubleshooting-task"></a>Aufgaben zur Problembehandlung
-Verwenden Sie für die Bereitstellung von Azure Active Directory (AAD) Connect mit Version <verison> oder höher die Problembehandlungsaufgabe im Assistenten, um Probleme bei der Objektsynchronisierung zu beheben. Für frühere Versionen führen Sie die Problembehandlung manuell wie [hier](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) beschrieben aus.
+Verwenden Sie für die Bereitstellung von Azure Active Directory (AAD) Connect mit Version 1.1.749.0 oder höher den Problembehandlungstask im Assistenten, um Probleme bei der Objektsynchronisierung zu beheben. Für frühere Versionen führen Sie die Problembehandlung manuell wie [hier](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) beschrieben aus.
 
 ### <a name="run-the-troubleshooting-task-in-the-wizard"></a>Ausführen der Problembehandlungsaufgabe im Assistenten
 Um die Aufgabe zur Problembehandlung im Assistenten auszuführen, führen Sie die folgenden Schritte aus:

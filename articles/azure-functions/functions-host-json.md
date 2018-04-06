@@ -1,12 +1,12 @@
 ---
-title: "host.json-Referenz für Azure Functions"
-description: "Referenzdokumentation für die host.json-Datei von Azure Functions."
+title: host.json-Referenz für Azure Functions
+description: Referenzdokumentation für die host.json-Datei von Azure Functions.
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 6b5a8c81b1e3e45c85ea84a46054b6a38a886c5b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 577c45edc832288943a7eeefe27c7a189a61b7b0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>host.json-Referenz für Azure Functions
 
-Die Metadatendatei *host.json* enthält globale Konfigurationsoptionen, die sich auf alle Funktionen einer Funktionen-App auswirken. In diesem Artikel werden die verfügbaren Einstellungen aufgelistet. Das JSON-Schema befindet sich unter „http://json.schemastore.org/host“.
+Die Metadatendatei *host.json* enthält globale Konfigurationsoptionen, die sich auf alle Funktionen einer Funktionen-App auswirken. In diesem Artikel werden die verfügbaren Einstellungen aufgelistet. Das JSON-Schema finden Sie unter http://json.schemastore.org/host.
 
 Es gibt andere globale Konfigurationsoptionen in [App-Einstellungen](functions-app-settings.md) und in der Datei [local.settings.json](functions-run-local.md#local-settings-file).
 
@@ -201,6 +201,9 @@ Konfigurationseinstellungen für [HTTP-Trigger und -Bindungen](functions-binding
 ## <a name="id"></a>id
 
 Die eindeutige ID für einen Auftragshost. Die kann eine GUID in Kleinbuchstaben mit entfernten Bindestrichen sein. Dies ist für die lokale Ausführung erforderlich. Beim Ausführen in Azure Functions wird eine ID automatisch generiert, wenn `id` ausgelassen wird.
+
+Wenn Sie ein Speicherkonto für mehrere Funktions-Apps verwenden, stellen Sie sicher, dass jede Funktions-App einen anderen Wert für `id` aufweist. Sie können die `id`-Eigenschaft auslassen oder `id` für jede Funktions-App manuell auf einen anderen Wert festlegen. Der Trigger mit Timer verwendet eine Speichersperre, um sicherzustellen, dass nur eine Timerinstanz vorhanden ist, wenn eine Funktions-App auf mehrere Instanzen horizontal hochskaliert wird. Wenn zwei Funktions-Apps denselben `id`-Wert aufweisen und beide einen Trigger mit Timer verwenden, wird nur ein Timer ausgeführt.
+
 
 ```json
 {

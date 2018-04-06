@@ -1,12 +1,12 @@
 ---
-title: "Einführung in Azure Advisor | Microsoft Docs"
+title: Einführung in Azure Advisor | Microsoft Docs
 description: Nutzen Sie Azure Advisor, um Ihre Azure-Bereitstellungen zu optimieren.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: a4096b11a828cf6676aa22b11c4dd4d75f3b0286
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0aa97a7557706f0b704d4e31a84e9d356d1ad087
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Einführung in Azure Advisor
 
@@ -43,9 +43,6 @@ Auf dem Advisor-Dashboard werden personalisierte Empfehlungen für alle Ihre Abo
 
   ![Typen von Advisor-Empfehlungen](./media/advisor-overview/advisor-dashboard.png)
 
-> [!NOTE]
-> Um den Azure Advisor mit einem Abonnement zu verwenden, muss ein *Besitzer* eines Abonnements das Ratgeber-Dashboard neu aufrufen.  Bei dieser Aktion wird das Abonnement beim Advisor registriert.  Ab diesem Punkt kann jeder *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements auf die Advisor-Empfehlungen für das Abonnement zugreifen. 
-
 Sie können auf eine Kategorie klicken, um die Liste der Empfehlungen innerhalb dieser Kategorie anzuzeigen, und eine Empfehlung auswählen, um weitere Informationen zu erhalten.  Sie lernen außerdem Aktionen kennen, die Sie ausführen können, um eine Chance zu nutzen oder ein Problem zu beheben.
 
 ![Kategorie der Advisor-Empfehlungen](./media/advisor-overview/advisor-ha-category-example.png) 
@@ -62,12 +59,12 @@ Der Zugriff auf Advisor erfolgt im [Azure-Portal](https://aka.ms/azureadvisordas
 Sie können die Advisor-Empfehlungen auch auf der VM-Ressourcenbenutzeroberfläche anzeigen. Wählen Sie einen virtuellen Computer aus, und wechseln Sie dann zu den Advisor-Empfehlungen im Menü. 
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Welche Berechtigungen benötige ich für den Zugriff auf Advisor?
-
-Um Advisor-Empfehlungen für ein Abonnement zu erhalten, müssen Sie Ihr Abonnement zunächst beim Advisor registrieren. Ein Abonnement wird registriert, wenn ein *Besitzer* das Advisor-Dashboard aufruft. Dies ist ein einmaliger Vorgang. Sobald ein Abonnement registriert wurde, können *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements auf die Advisor-Empfehlungen zugreifen.
+ 
+Sie können als *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements auf die Advisor-Empfehlungen zugreifen.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Für welche Ressourcen bietet Advisor Empfehlungen?
 
-Der Advisor bietet Empfehlungen für virtuelle Computer, Verfügbarkeitsgruppen, Anwendungsgateways, App Services, SQL-Server, SQL-Datenbanken und Redis Cache.
+Der Advisor bietet Empfehlungen für virtuelle Computer, Verfügbarkeitsgruppen, Anwendungsgateways, App Services, SQL-Server und Redis Cache.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Kann ich eine Empfehlung zurückstellen oder verwerfen?
 

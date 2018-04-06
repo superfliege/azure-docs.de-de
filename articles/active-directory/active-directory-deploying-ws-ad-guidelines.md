@@ -1,24 +1,24 @@
 ---
-title: "Richtlinien für die Bereitstellung von Windows Server Active Directory in Azure Virtual Machines | Microsoft-Dokumentation"
-description: "Wenn Sie wissen, wie Sie die AD Domain Services und AD-Verbunddienste lokal bereitstellen, können Sie sich darüber informieren, wie diese auf Azure Virtual Machines funktionieren."
+title: Richtlinien für die Bereitstellung von Windows Server Active Directory in Azure Virtual Machines | Microsoft-Dokumentation
+description: Wenn Sie wissen, wie Sie die AD Domain Services und AD-Verbunddienste lokal bereitstellen, können Sie sich darüber informieren, wie diese auf Azure Virtual Machines funktionieren.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 04df4c46-e6b6-4754-960a-57b823d617fa
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/26/2017
+ms.date: 03/20/2018
 ms.author: femila
-ms.openlocfilehash: 7a56876dfa545d273807444b105de3645dd79d34
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c2d58e056cdb285be51d259492e11e6ae37b253e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern
 In diesem Artikel werden die wichtigen Unterschiede zwischen der lokalen Bereitstellung von Windows Server Active Directory Domain Services (AD DS) und den Active Directory-Verbunddiensten (AD FS) und der Bereitstellung auf virtuellen Microsoft Azure-Computern beschrieben.
@@ -71,8 +71,10 @@ Ein Demovideo und eine Liste mit Schritt-für-Schritt-Tutorials, z. B. [Konfigur
 > 
 > 
 
-### <a name="static-ip-addresses-must-be-configured-with-azure-powershell"></a>Statische IP-Adressen müssen mit Azure PowerShell konfiguriert werden.
-Dynamische Adressen werden standardmäßig zugewiesen, aber verwenden Sie das Set-AzureStaticVNetIP-Cmdlet, um stattdessen eine statische IP-Adresse zuzuweisen. Hiermit wird eine statische IP-Adresse festgelegt, die die Dienstreparatur und das Herunterfahren und den Neustart der VM übersteht. Weitere Informationen finden Sie unter [Static Internal IP Address for Virtual Machines](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)(Statische interne IP-Adresse für Virtual Machines).
+### <a name="static-ip-addresses-can-be-configured-with-azure-powershell"></a>Statische IP-Adressen können mit Azure PowerShell konfiguriert werden.
+Standardmäßig werden dynamische Adressen zugewiesen. Verwenden Sie jedoch das Cmdlet „Set-AzureStaticVNetIP“, wenn Sie stattdessen eine statische IP-Adresse zuweisen möchten. Mit diesem Cmdlet wird eine statische IP-Adresse festgelegt, die die Dienstreparatur und das Herunterfahren und den Neustart der VM übersteht. Weitere Informationen finden Sie unter [Static Internal IP Address for Virtual Machines](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)(Statische interne IP-Adresse für Virtual Machines). Sie können auch eine statische IP-Adresse konfigurieren und Ihre VM im Azure-Portal erstellen, wie unten erläutert wird. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse über das Azure-Portal](../virtual-network/virtual-network-deploy-static-pip-arm-portal.md).
+
+![Screenshot vom Schritt zum Hinzufügen der statischen IP-Adresse bei der Erstellung einer VM](media/active-directory-deploying-ws-ad-guidelines/static-ip.png)
 
 ## <a name="BKMK_Glossary"></a>Begriffe und Definitionen
 Unten ist eine nicht erschöpfende Liste mit Begriffen für verschiedene Azure-Technologien angegeben, die in diesem Artikel erwähnt werden.
@@ -408,7 +410,7 @@ Sie müssen auswählen, ob Sie schreibgeschützte oder beschreibbare DCs bereits
 
 Für Azure gilt das Risiko in Bezug auf die physische Sicherheit nicht wie bei einer Zweigniederlassung, aber RODCs sind ggf. trotzdem kostengünstiger, da die enthaltenen Features für diese Umgebungen gut geeignet sind, wenn auch aus anderen Gründen. Beispielsweise verfügen RODCs nicht über eine ausgehende Replikation und können geheime Schlüssel (Kennwörter) selektiv auffüllen. Ein Nachteil ist, dass das Fehlen dieser geheimen Schlüssel unter Umständen dazu führt, dass diese Angaben von bedarfsgesteuertem ausgehendem Datenverkehr überprüft werden müssen, wenn ein Benutzer oder Computer authentifiziert wird. Geheime Schlüssel können aber selektiv vorab aufgefüllt und zwischengespeichert werden.
 
-RODCs haben im Zusammenhang mit HBI- und PII-Aspekten einen weiteren Vorteil, da Sie Attribute, die sensible Daten enthalten, dem Attributsatz mit RODC-Filter (FAS) hinzufügen können. Bei FAS handelt es sich um einen anpassbaren Satz von Attributen, die nicht zu RODCs repliziert werden. Sie können den FAS als Schutzmechanismus verwenden, falls Sie PII oder HBI nicht unter Azure speichern dürfen oder möchten. Weitere Informationen finden Sie unter [RODC Filtered Attribute Set[(https://technet.microsoft.com/library/cc753459)] (Attributsatz mit RODC-Filter).
+RODCs haben im Zusammenhang mit HBI- und PII-Aspekten einen weiteren Vorteil, da Sie Attribute, die sensible Daten enthalten, dem Attributsatz mit RODC-Filter (FAS) hinzufügen können. Bei FAS handelt es sich um einen anpassbaren Satz von Attributen, die nicht zu RODCs repliziert werden. Sie können den FAS als Schutzmechanismus verwenden, falls Sie PII oder HBI nicht unter Azure speichern dürfen oder möchten. Weitere Informationen finden Sie unter [Attributsatz mit RODC-Filter[(https://technet.microsoft.com/library/cc753459)].
 
 Stellen Sie sicher, dass Anwendungen mit den RODCs kompatibel sind, die Sie verwenden möchten. Viele für Windows Server Active Directory geeignete Anwendungen funktionieren gut mit RODCs, aber bei einigen Anwendungen kann die Leistung unzureichend sein, oder es können Fehler auftreten, wenn kein Zugriff auf einen beschreibbaren DC besteht. Weitere Informationen finden Sie unter [Anwendungskompatibilität mit Domänencontrollern ohne Schreibzugriff](https://technet.microsoft.com/library/cc755190).
 

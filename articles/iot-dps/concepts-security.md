@@ -1,22 +1,22 @@
 ---
 title: Sicherheitskonzepte beim Azure IoT Hub Device Provisioning-Dienst | Microsoft-Dokumentation
-description: "Beschreibt Konzepte der Sicherheitsbereitstellung, die speziell für Geräte mit dem Device Provisioning-Dienst und IoT Hub gelten"
+description: Beschreibt Konzepte der Sicherheitsbereitstellung, die speziell für Geräte mit dem Device Provisioning-Dienst und IoT Hub gelten
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 03/27/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ab2bfff571af659552eef8117de041ca6367ce56
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 5e35a802349bd85b50a13a3d9a7e0c78945937bd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Sicherheitskonzepte beim IoT Hub Device Provisioning-Dienst 
 
@@ -31,7 +31,7 @@ Der Nachweismechanismus ist die Methode für das Überprüfen der Identität ein
 
 Der Device Provisioning-Dienst unterstützt zwei Arten von Nachweisen:
 * **X.509-Zertifikate** – basierend auf dem Standardauthentifizierungsablauf für X.509-Zertifikate.
-* **SAS-Token** – basierend auf einer Nonce Herausforderung mit dem TPM-Standard für Schlüssel. Dies erfordert keine physische TPM-Instanz auf dem Gerät. Der Dienst erwartet für den Nachweis jedoch den Endorsement Key gemäß [TPM-Spezifikation](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Trusted Platform Module (TPM)** – basierend auf einer Nonce-Abfrage mit dem TPM-Standard für Schlüssel zum Bereitstellen eines signierten SAS-Tokens (Shared Access Signature). Dies erfordert keine physische TPM-Instanz auf dem Gerät. Der Dienst erwartet für den Nachweis jedoch den Endorsement Key gemäß [TPM-Spezifikation](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
 
 ## <a name="hardware-security-module"></a>Hardwaresicherheitsmodul
 
@@ -42,7 +42,7 @@ Das Hardwaresicherheitsmodul (HSM) dient der sicheren, hardwarebasierten Speiche
 
 Gerätegeheimnisse können auch in Software (Arbeitsspeicher) gespeichert werden. Dies gilt jedoch im Vergleich zu einem HSM als die weniger sichere Speicherform.
 
-## <a name="trusted-platform-module-tpm"></a>Trusted Platform Module (TPM)
+## <a name="trusted-platform-module"></a>Trusted Platform Module
 
 TPM kann sich auf einen Standard zum sicheren Speichern von Schlüsseln, mit denen die Plattform authentifiziert wird, oder auf die E/A-Schnittstelle beziehen, die für die Interaktion mit den Modulen zum Implementieren des Standards verwendet wird. TPMs können als diskrete Hardware, integrierte Hardware, firmwarebasiert oder softwarebasiert vorhanden sein. Erfahren Sie mehr über [TPMs und TPM-Nachweis](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Der Device Provisioning-Dienst unterstützt nur TPM 2.0.
 
@@ -76,10 +76,10 @@ Das untergeordnete Zertifikat bzw. Zertifikat für die endgültige Entität iden
 
 Der Bereitstellungsdienst macht zwei Arten von Registrierungseinträgen verfügbar, mit denen Sie den Zugriff auf Geräte steuern können, die den X.509-Nachweismechanismus verwenden:  
 
-- [Individuelle Registrierung](./concepts-service.md#individual-enrollment): Diese Einträge werden mit dem Gerätezertifikat konfiguriert, das einem bestimmten Gerät zugeordnet ist. Diese Einträge steuern die Registrierung für bestimmte Geräte.
-- [Registrierungsgruppe](./concepts-service.md#enrollment-group): Diese Einträge sind einem bestimmten Zertifizierungsstellen-Zwischenzertifikat oder -Stammzertifikat zugeordnet. Diese Einträge steuern die Registrierung für alle Geräte, die in ihrer Zertifikatkette über ein Zertifizierungsstellen-Zwischenzertifikat oder -Stammzertifikat verfügen. 
+- [Individuelle Registrierung](./concepts-service.md#individual-enrollment): Diese Einträge werden mit dem Gerätezertifikat konfiguriert, das einem bestimmten Gerät zugeordnet ist. Diese Einträge steuern Registrierungen für bestimmte Geräte.
+- [Registrierungsgruppe](./concepts-service.md#enrollment-group): Diese Einträge sind einem bestimmten Zertifizierungsstellen-Zwischenzertifikat oder -Stammzertifikat zugeordnet. Diese Einträge steuern die Registrierungen für alle Geräte, die in ihrer Zertifikatkette über ein Zertifizierungsstellen-Zwischenzertifikat oder -Stammzertifikat verfügen. 
 
-Wenn ein Gerät eine Verbindung mit dem Bereitstellungsdienst herstellt, räumt der Dienst spezifischeren Registrierungseinträge eine höhere Priorität ein als weniger spezifischen Registrierungseinträgen. Wenn also für das Gerät ein individueller Registrierungseintrag vorliegt, wendet der Bereitstellungsdienst diesen Eintrag an. Wenn keine individuelle Registrierung für das Gerät vorliegt und eine Registrierungsgruppe für das erste Zwischenzertifikat in der Zertifikatkette des Geräts vorhanden ist, wendet der Dienst diesen Eintrag an. Dies wird in der gesamten Kette bis hin zum Stammzertifikat fortgesetzt. Der Dienst wendet den ersten anwendbaren Eintrag an, den er findet. Dabei gilt Folgendes:
+Wenn ein Gerät eine Verbindung mit dem Bereitstellungsdienst herstellt, räumt der Dienst spezifischeren Registrierungseinträge eine höhere Priorität ein als weniger spezifischen Registrierungseinträgen. Wenn also für das Gerät ein individueller Registrierungseintrag vorliegt, wendet der Bereitstellungsdienst diesen Eintrag an. Wenn keine individuelle Registrierung für das Gerät vorliegt und eine Registrierungsgruppe für das erste Zwischenzertifikat in der Zertifikatkette des Geräts vorhanden ist, wendet der Dienst diesen Eintrag an. Dies wird in der gesamten Kette bis zum Stammzertifikat fortgesetzt. Der Dienst wendet den ersten anwendbaren Eintrag an, den er findet. Dabei gilt Folgendes:
 
 - Wenn der erste gefundene Registrierungseintrag aktiviert ist, stellt der Dienst das Gerät bereit.
 - Wenn der erste gefundene Registrierungseintrag deaktiviert ist, stellt der Dienst das Gerät nicht bereit.  

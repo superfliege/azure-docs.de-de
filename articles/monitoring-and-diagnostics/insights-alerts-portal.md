@@ -1,9 +1,9 @@
 ---
-title: "Erstellen von Warnungen für Azure-Dienste – Azure-Portal | Microsoft-Dokumentation"
-description: "E-Mails, Benachrichtigungen oder Automatisierung werden ausgelöst und URLs (Webhooks) von Websites aufgerufen, wenn die von Ihnen angegebenen Bedingungen erfüllt sind."
+title: Erstellen von Warnungen für Azure-Dienste – Azure-Portal | Microsoft-Dokumentation
+description: E-Mails, Benachrichtigungen oder Automatisierung werden ausgelöst und URLs (Webhooks) von Websites aufgerufen, wenn die von Ihnen angegebenen Bedingungen erfüllt sind.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
@@ -14,27 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-ms.openlocfilehash: 3e09c145d35665ec1c2467b60f06191ac51a5c16
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 4acf1f549a6c901fb0b772c4591f1f35d61365ad
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal
+# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Erstellen klassischer Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal
 > [!div class="op_single_selector"]
 > * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
-> * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](insights-alerts-command-line-interface.md)
+> * [Befehlszeilenschnittstelle (CLI)](insights-alerts-command-line-interface.md)
 >
 >
 
 ## <a name="overview"></a>Übersicht
+
+> [!NOTE]
+> In diesem Artikel erfahren Sie, wie Sie ältere Metrikwarnungen erstellen. Azure Monitor unterstützt jetzt neuere, bessere Metrikwarnungen. Diese Warnungen ermöglichen die Überwachung mehrerer Metriken sowie Warnungen für dimensionale Metriken. Erfahren Sie mehr über [Metrikwarnungen, die nahezu in Echtzeit stattfinden](monitoring-near-real-time-metric-alerts.md).
+>
+>
+
 In diesem Artikel erfahren Sie, wie Sie Metrikwarnungen über das Azure-Portal einrichten können. 
 
 Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services oder von Ereignissen, die bei diesen auftreten, eine Warnung empfangen.
 
 * **Metrikwerte** : Die Warnung wird ausgelöst, wenn der Wert einer angegebenen Metrik einen von Ihnen festgelegten Schwellenwert in beliebiger Richtung überschreitet. Das Auslösen erfolgt sowohl, wenn die Bedingung erstmals erfüllt wird, als auch danach, wenn diese Bedingung nicht mehr erfüllt wird.    
-* **Aktivitätsprotokollereignisse**: Eine Warnung kann für *jedes* Ereignis oder nur dann ausgelöst werden, wenn bestimmte Ereignisse auftreten. Erfahren Sie mehr über [Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts.md).
+* **Aktivitätsprotokollereignisse**: Eine Warnung kann für *jedes* Ereignis oder nur dann ausgelöst werden, wenn ein bestimmtes Ereignis auftritt. Erfahren Sie mehr über [Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts.md).
 
 Sie können konfigurieren, dass bei einer Metrikwarnung Folgendes erfolgt, wenn sie ausgelöst wird:
 
@@ -42,11 +48,6 @@ Sie können konfigurieren, dass bei einer Metrikwarnung Folgendes erfolgt, wenn 
 * Senden von E-Mal an weitere von Ihnen angegebene Adressen
 * Aufrufen eines Webhooks
 * Starten der Ausführung eines Azure-Runbooks (nur über das Azure-Portal)
-
-> [!NOTE]
-> Azure Monitor unterstützt nun in der öffentlichen Vorschau Metrikwarnungen, die nahezu in Echtzeit stattfinden. Diese verwenden Aktionsgruppen. Erfahren Sie mehr über [Metrikwarnungen, die nahezu in Echtzeit stattfinden](monitoring-near-real-time-metric-alerts.md).
->
->
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Metrikwarnregeln und Abrufen zugehöriger Informationen:
 
@@ -58,11 +59,11 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Metrikwarnregeln und Abr
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik mit dem Azure-Portal
 1. Suchen Sie im [Portal](https://portal.azure.com/)die Ressource, die Sie überwachen möchten, und wählen Sie sie aus.
 
-2. Wählen Sie im Abschnitt ÜBERWACHUNG **Warnungen** oder **Warnungsregeln** aus. Text und Symbol können je nach Ressource geringfügig variieren.  
+2. Wählen Sie im Abschnitt „ÜBERWACHUNG“ die Option **Warnungen (klassisch)** aus. Text und Symbol können je nach Ressource geringfügig variieren. **Warnungen (klassisch)** ist möglicherweise auch unter **Warnungen** oder **Warnungsregeln** zu finden.
 
     ![Überwachung](./media/insights-alerts-portal/AlertRulesButton.png)
 
-3. Wählen Sie den Befehl **Warnung hinzufügen** aus, und füllen Sie die Felder aus.
+3. Wählen Sie den Befehl **Metrikwarnung hinzufügen** aus, und füllen Sie die Felder aus.
 
     ![Warnung hinzufügen](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 
@@ -91,7 +92,7 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über die Azure-Überwachung](monitoring-overview.md) , einschließlich der Typen von Informationen, die Sie sammeln und überwachen können.
-* Erfahren Sie mehr über die neuen [Metrikwarnungen, die nahezu in Echtzeit stattfinden (Vorschau)](monitoring-near-real-time-metric-alerts.md).
+* Informieren Sie sich ausführlicher über die [neueren Metrikwarnungen](monitoring-near-real-time-metric-alerts.md).
 * Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](insights-webhooks-alerts.md).
 * Erfahren Sie mehr über das [Konfigurieren von Warnungen zu Aktivitätsprotokollereignissen](monitoring-activity-log-alerts.md).
 * Erfahren Sie mehr zu [Azure Automation-Runbooks](../automation/automation-starting-a-runbook.md).

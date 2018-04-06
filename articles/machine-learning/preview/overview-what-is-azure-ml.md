@@ -1,6 +1,6 @@
 ---
 title: Was ist Azure Machine Learning? | Microsoft-Dokumentation
-description: Enthält eine Übersicht über Machine Learning-Experimentieren und die Modellverwaltung. Hierbei handelt es sich um eine integrierte End-to-End-Data Science-Lösung für Data Science-Profis, mit der erweiterte Analyseanwendungen für die Cloud entwickelt und für Experimente genutzt und bereitgestellt werden.
+description: Es werden grundlegende Machine Learning-Konzepte für die Cloud und die Nutzungsmöglichkeiten beschrieben, und Sie erhalten Definitionen von Machine Learning-Begriffen. Enthält eine Übersicht über Azure Machine Learning. Hierbei handelt es sich um eine integrierte End-to-End-Data Science-Lösung für Data Science-Profis, mit der erweiterte Analyseanwendungen für die Cloud entwickelt und für Experimente genutzt und bereitgestellt werden.
 services: machine-learning
 author: mwinkle
 ms.author: mwinkle
@@ -9,14 +9,19 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: get-started-article
 ms.date: 09/21/2017
-ms.openlocfilehash: e5716e3fc519c48aaea3ec17939d11008a1b1fd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8a92f42ecee926042e9e0662f6b0bd9438024248
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
+# <a name="what-is-machine-learning"></a>Was ist Machine Learning?
 
+Machine Learning ist ein Data Science-Verfahren, mit dem Computer aus vorhandenen Daten lernen können, um zukünftiges Verhalten, Ergebnisse und Trends vorherzusagen. Mithilfe von Machine Learning lernen Computer, ohne explizit programmiert worden zu sein.
+
+Dank solcher Vorhersagen oder Prognosen aus Machine Learning können Apps und Geräte „intelligenter“ werden. Wenn Sie online einkaufen, trägt maschinelles Lernen dazu bei, dass Ihnen anhand der gekauften Produkte weitere Produkte empfohlen werden, die Ihnen gefallen könnten. Wenn Ihre Kreditkarte verwendet wird, vergleichen Machine Learning-Prozesse die Transaktion mit einer Transaktionsdatenbank und helfen bei der Betrugserkennung. Wenn ein automatischer Staubsauger ein Zimmer saugt, wird anhand von Machine Learning-Prozessen entschieden, ob die Arbeit erledigt ist.
+
+## <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 Azure Machine Learning ist eine integrierte End-to-End-Lösung für Data Science und Advanced Analytics. Data Scientists können sie nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
 
 Die wichtigsten Komponenten von Azure Machine Learning sind:
@@ -29,6 +34,7 @@ Die wichtigsten Komponenten von Azure Machine Learning sind:
 Zusammen stellen diese Anwendungen und Dienste eine Hilfe dar, mit der Sie die Entwicklung und Bereitstellung Ihrer Data Science-Projekte erheblich beschleunigen können. 
 
 ![Azure Machine Learning-Konzepte](media/overview-what-is-azure-ml/aml-concepts.png)
+
 
 ## <a name="open-source-compatible"></a>Open-Source-Kompatibilität
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: e4b7113f27e5e15d69dfdd1efd13e255ef4a8ab7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Übereinstimmungsbedingungen der Azure CDN-Regel-Engine 
 Dieser Artikel enthält ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen für die [Regel-Engine](cdn-rules-engine.md) des Azure Content Delivery Network (CDN).
@@ -534,7 +534,7 @@ Wichtige Informationen:
     - CDN-URL: http:\//wpc.0001.&lt;Domäne&gt;/800001/CustomerOrigin/path/asset.htm
     
     - Edge-CNAME-URL: http:\//&lt;Endpunkt&gt;.azureedge.net/path/asset.htm
-
+    
     Weitere Informationen:
     - Benutzerdefinierte Domäne: https:\//my.domain.com/path/asset.htm
     
@@ -640,21 +640,21 @@ Wichtige Informationen:
     Die folgenden Werte sind für die Option **Relativ zu** verfügbar:
      - **Stamm**: Gibt an, dass der URL-Vergleichspunkt direkt nach dem CDN-Hostnamen beginnt.
 
-       Beispiel: http:\//wpc.0001.&lt;Domain&gt;/**800001/myorigin/myfolder/index.htm**
+       Beispiel: http:\//wpc.0001.&lt;Domäne&gt;/**800001/myorigin/myfolder/index.htm**
 
      - **Ursprung**: Gibt an, dass der URL-Vergleichspunkt nach dem Inhaltszugriffspunkt (z.B. /000001 oder /800001/myorigin) beginnt. Da der CNAME „\*.azureedge.net“ standardmäßig relativ zum Ursprungsverzeichnis des Verizon CDN-Hostnamens erstellt wird, sollten Azure CDN-Benutzer den Wert **Ursprung** verwenden. 
 
        Beispiel: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
 
-     Diese URL verweist auf den folgenden Verizon CDN-Hostnamen: http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/**myfolder/index.htm**
+     Diese URL verweist auf den folgenden Verizon CDN-Hostnamen: http:\//wpc.0001.&lt;Domäne&gt;/800001/myorigin/**myfolder/index.htm**
 
 - Vor einem URL-Vergleich wird eine Edge-CNAME-URL in eine CDN-URL umgeschrieben.
 
-   Beispielsweise verweisen die beiden folgenden URLs auf dasselbe Objekt und verfügen daher über den gleichen URL-Pfad:
+    Beispielsweise verweisen die beiden folgenden URLs auf dasselbe Objekt und verfügen daher über den gleichen URL-Pfad:
     - CDN-URL: http:\//wpc.0001.&lt;Domäne&gt;/800001/CustomerOrigin/path/asset.htm
     - Edge-CNAME-URL: http:\//&lt;Endpunkt&gt;.azureedge.net/path/asset.htm
-
-   Weitere Informationen:
+    
+    Weitere Informationen:
     
     - URL-Pfad (relativ zum Stamm): /800001/CustomerOrigin/path/asset.htm
    
@@ -681,13 +681,13 @@ Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter d
 Wichtige Informationen:
 - Vor einem URL-Vergleich wird eine Edge-CNAME-URL in eine CDN-URL umgeschrieben. 
  
-   Beispielsweise verweisen hier beide URLs auf dasselbe Objekt und verfügen daher über den gleichen URL-Pfad.
+    Beispielsweise verweisen hier beide URLs auf dasselbe Objekt und verfügen daher über den gleichen URL-Pfad.
 
      - CDN-URL: http:\//wpc.0001.&lt;Domäne&gt;/800001/CustomerOrigin/path/asset.htm
 
      - Edge-CNAME-URL: http:\//my.domain.com/path/asset.htm
-
-   Weitere Informationen:
+    
+    Weitere Informationen:
     
      - URL-Pfad: /800001/CustomerOrigin/path/asset.htm
 
@@ -715,21 +715,21 @@ Wichtige Informationen:
    Für diese Option können die folgenden Werte verwendet werden:
      - **Stamm**: Gibt an, dass der URL-Vergleichspunkt direkt nach dem CDN-Hostnamen beginnt.
 
-       Beispiel: http:\//wpc.0001.&lt;Domain&gt;/**800001/myorigin/myfolder/index.htm**
+       Beispiel: http:\//wpc.0001.&lt;Domäne&gt;/**800001/myorigin/myfolder/index.htm**
 
      - **Ursprung**: Gibt an, dass der URL-Vergleichspunkt nach dem Inhaltszugriffspunkt (z.B. /000001 oder /800001/myorigin) beginnt. Da der CNAME „\*.azureedge.net“ standardmäßig relativ zum Ursprungsverzeichnis des Verizon CDN-Hostnamens erstellt wird, sollten Azure CDN-Benutzer den Wert **Ursprung** verwenden. 
 
        Beispiel: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
 
-     Diese URL verweist auf den folgenden Verizon CDN-Hostnamen: http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/**myfolder/index.htm**
+     Diese URL verweist auf den folgenden Verizon CDN-Hostnamen: http:\//wpc.0001.&lt;Domäne&gt;/800001/myorigin/**myfolder/index.htm**
 
 - Vor einem URL-Vergleich wird eine Edge-CNAME-URL in eine CDN-URL umgeschrieben.
 
-   Beispielsweise verweisen die beiden folgenden URLs auf dasselbe Objekt und verfügen daher über den gleichen URL-Pfad:
+    Beispielsweise verweisen die beiden folgenden URLs auf dasselbe Objekt und verfügen daher über den gleichen URL-Pfad:
      - CDN-URL: http://wpc.0001.&lt;Domäne&gt;/800001/CustomerOrigin/path/asset.htm
      - Edge-CNAME-URL: http:\//&lt;Endpunkt&gt;.azureedge.net/path/asset.htm
-
-   Weitere Informationen:
+    
+    Weitere Informationen:
     
      - URL-Pfad (relativ zum Stamm): /800001/CustomerOrigin/path/asset.htm
     
@@ -737,7 +737,7 @@ Wichtige Informationen:
     
 - Sie können mehrere URL-Pfade angeben, indem Sie sie durch ein einzelnes Leerzeichen voneinander trennen.
 
-   Beispiel: /marketing/asset.\* /sales/\*.htm
+   Beispiel: /marketing/asset.* /sales/*.htm
 
 - Abfragezeichenfolgen in der URL werden ignoriert.
     
@@ -867,11 +867,11 @@ Wichtige Informationen:
 #### <a name="sample-scenarios"></a>Beispielszenarien
 Im folgenden Beispiel wird veranschaulicht, wie diese Option in bestimmten Situationen funktioniert:
 
-NAME      | Wert |  Ergebnis
-----------|-------|--------
-Benutzer      | Joe   | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL „?user=joe“ lautet.
-Benutzer      | *     | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL den Parameter „User“ enthält.
-Email Joe | *     | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL einen Email-Parameter enthält, der mit „Joe“ beginnt.
+NAME  | Wert |  Ergebnis
+------|-------|--------
+Benutzer  | Joe   | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL „?user=joe“ lautet.
+Benutzer  | *     | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL den Parameter „User“ enthält.
+E-Mail | Joe\* | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL einen Email-Parameter enthält, der mit „Joe“ beginnt.
 
 [Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -908,7 +908,7 @@ Wichtige Informationen:
    Wert | Interpretiert als 
    ------|---------------
    \\+    | +
-   \\\+   | \\+
+   \\\\+   | \\+
 
 - Aufgrund der Art und Weise, in der Cacheeinstellungen nachverfolgt werden, ist diese Übereinstimmungsbedingung mit den folgenden Features nicht kompatibel:
    - Complete Cache Fill

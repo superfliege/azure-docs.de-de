@@ -1,10 +1,11 @@
 ---
 title: 'Schritt 2: Hochladen von Daten in ein Machine Learning-Experiment | Microsoft Docs'
-description: "Exemplarische Vorgehensweise zur Entwicklung einer Vorhersagelösung – Schritt 2: Hochladen gespeicherter öffentlicher Daten in Azure Machine Learning Studio."
+description: 'Exemplarische Vorgehensweise zur Entwicklung einer Vorhersagelösung – Schritt 2: Hochladen gespeicherter öffentlicher Daten in Azure Machine Learning Studio.'
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 9f4bc52e-9919-4dea-90ea-5cf7cc506d85
 ms.service: machine-learning
@@ -12,13 +13,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2017
-ms.author: garye
-ms.openlocfilehash: 469c94f6115f99bc4cf067e9c8f0e55c64990358
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f482b1273f83f5ae5bb4f1e64609767ee0c5fe32
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-experiment"></a>Anleitung Schritt 2: Hochladen vorhandener Daten in ein Azure Machine Learning-Experiment
 Dies ist der zweite Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung mit Azure Machine Learning](walkthrough-develop-predictive-solution.md)
@@ -66,7 +65,7 @@ In beiden Fällen haben wir eine durch Kommas getrennte Version der Daten in der
 ## <a name="upload-the-dataset-to-machine-learning-studio"></a>Hochladen des DataSets in Machine Learning Studio
 Nach dem Konvertieren der Daten in das CSV-Format müssen Sie sie in Machine Learning Studio hochladen. 
 
-1. Öffnen Sie die Startseite von Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net)). 
+1. Öffnen Sie die Startseite von Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)). 
 
 2. Klicken Sie im Fenster oben links auf das ![Menü][1], klicken Sie auf **Azure Machine Learning**, wählen Sie **Studio** aus, und melden Sie sich an.
 

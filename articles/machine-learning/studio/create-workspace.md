@@ -1,22 +1,21 @@
 ---
 title: Erstellen eines Machine Learning Studio-Arbeitsbereichs | Microsoft Dokumentation
-description: "Erstellen eines Arbeitsbereichs für Azure Machine Learning Studio"
+description: Erstellen eines Arbeitsbereichs für Azure Machine Learning Studio
 services: machine-learning
-author: garyericson
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: garye
-ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview
-ms.openlocfilehash: 7aad885b1643ddeb25e5d00a151005b8444315fa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8da10e474c62868ca109a44e7c66dc11ee62b6de
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Erstellen und Freigeben eines Azure Machine Learning-Arbeitsbereichs
 Dieses Menü enthält Links zu Themen, in denen das Einrichten der verschiedenen Data Science-Umgebungen, die vom Cortana-Analyseprozess (CAP) verwendet werden, beschrieben wird.
@@ -46,11 +45,11 @@ Um Azure Machine Learning Studio verwenden zu können, benötigen Sie einen Mach
 
     ![Erstellen eines neuen Arbeitsbereichs](./media/create-workspace/create-new-workspace.png)
 
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Create**.
 
 Nachdem der Arbeitsbereich bereitgestellt wurde, können Sie ihn in Machine Learning Studio öffnen.
 
-1. Wechseln Sie zu Machine Learning Studio unter [https://studio.azureml.net/](https://studio.azureml.net/).
+1. Navigieren Sie zu Machine Learning Studio unter [https://studio.azureml.net/](https://studio.azureml.net/).
 
 2. Wählen Sie Ihren Arbeitsbereich in der oberen rechten Ecke aus.
 
@@ -77,7 +76,7 @@ Sobald ein Machine Learning-Arbeitsbereich erstellt wurde, können Sie Benutzer 
 
 ### <a name="to-share-a-workspace"></a>So geben Sie einen Arbeitsbereich frei
 
-1. Melden Sie sich unter [https://studio.azureml.net/Home](https://studio.azureml.net/Home) bei Machine Learning Studio an.
+1. Melden Sie sich bei Azure Machine Learning Studio unter [https://studio.azureml.net/Home](https://studio.azureml.net/Home) an.
 
 2. Klicken Sie im linken Bereich auf **EINSTELLUNGEN**.
 

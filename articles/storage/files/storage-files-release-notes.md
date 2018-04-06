@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: wgries
-ms.openlocfilehash: b42287580078b4391ddbc5b8ff2835131c64236d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bb7fa68809341b5132d551ff1cab187bd4d7eeac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Versionshinweise zum Azure File Sync-Agent (Vorschauversion)
 Mit Azure File Sync können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -93,11 +93,12 @@ Folgende Elemente werden nicht synchronisiert, aber der restliche Systembetrieb 
 - Ein Serverendpunkt kann sich nicht auf dem Systemvolume befinden. Beispielsweise ist „C:\MyFolder“ nur dann ein akzeptabler Pfad, wenn „C:\MyFolder“ ein Bereitstellungspunkt ist.
 - Failoverclustering wird nur mit Clusterdatenträgern, aber nicht mit freigegebenen Clustervolumes (Cluster Shared Volumes, CSVs) unterstützt.
 - Ein Serverendpunkt kann nicht geschachtelt werden. Er kann auf demselben Volume parallel zu einem anderen Endpunkt vorhanden sein (Koexistenz).
-- Das gleichzeitige Löschen einer großen Zahl von Verzeichnissen (mehr als 10.000) von einem Server kann zu Synchronisierungsfehlern führen. Löschen Sie Verzeichnisse in Gruppen von weniger als 10.000. Stellen Sie sicher, dass die Löschvorgänge erfolgreich synchronisiert werden, bevor Sie die nächste Gruppe löschen.
 - Mit dieser Version wird Unterstützung für den Synchronisierungsstamm am Stamm eines Volumes hinzugefügt.
 - Speichern Sie keine Betriebssystem- oder Anwendungsauslagerungsdatei, die sich innerhalb eines Serverendpunkts befindet.
 - Änderung in dieser Version: Es wurden neue Ereignisse zum Nachverfolgen der Gesamtlaufzeit für Cloudtiering (Ereignis-ID 9016), zum Nachverfolgen des Uploadfortschritts beim Synchronisieren (Ereignis-ID 9302) und zum Nachverfolgen von Dateien hinzugefügt, die nicht synchronisiert wurden (Ereignis-ID 9900).
-- Änderung in dieser Version: Die Leistung der schnellen DR-Namespacesynchronisierung wurde erheblich verbessert.
+- Verbessert in diesem Release: 
+- Die Leistung der schnellen DR-Namespacesynchronisierung wurde erheblich verbessert.
+- Löschen einer großen Anzahl von Verzeichnissen (mehr als 10.000) muss nicht in Batches mit v2* durchgeführt werden.
  
 ### <a name="cloud-tiering"></a>Cloudtiering
 - Änderung im Vergleich zur Vorgängerversion: Das Tiering für neue Dateien erfolgt gemäß der Tieringrichtlinieneinstellung innerhalb einer Stunde (vorher: 32 Stunden). Mit dem zur Verfügung gestellten PowerShell-Cmdlet können Sie das Tiering bedarfsgesteuert durchführen. Sie können das Cmdlet verwenden, um das Tiering effizienter zu evaluieren, da Sie nicht auf den Hintergrundprozess warten müssen.

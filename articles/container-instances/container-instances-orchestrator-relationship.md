@@ -6,20 +6,20 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/23/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 4954dcb4cb03407b85ad35aec94920e39644844b
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 79dcb4be49791e84efa99b36b1c0a0d474a372f4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances und Containerorchestratoren
 
-Aufgrund ihrer kleinen Größe und Anwendungsorientierung sind Container gut für agile Delivery-Umgebungen und auf Microservice basierende Architekturen geeignet. Die Automatisierung und Verwaltung einer großen Anzahl von Containern und deren Interaktion wird als *Orchestrierung* bezeichnet. Zu den beliebten Containerorchestratoren zählen Kubernetes, DC/OS und Docker Swarm, die alle in [Azure Container Service](https://docs.microsoft.com/azure/container-service/) verfügbar sind.
+Aufgrund ihrer kleinen Größe und Anwendungsorientierung sind Container gut für agile Delivery-Umgebungen und auf Microservice basierende Architekturen geeignet. Die Automatisierung und Verwaltung einer großen Anzahl von Containern und deren Interaktion wird als *Orchestrierung* bezeichnet. Beliebte Containerorchestratoren sind Kubernetes, DC/OS und Docker Swarm.
 
-Azure Container Instances bietet einige der grundlegenden Planungsfunktionen von Orchestrierungsplattformen, aber nicht die höherwertigen Dienste solcher Plattformen, und kann als Ergänzung dazu dienen. In diesem Artikel werden die Funktionen von Azure Container Instances beschrieben und wie vollständige Containerorchestratoren damit interagieren können.
+Azure Container Instances bietet einige grundlegende Planungsfunktionen für Orchestrierungsplattformen. Azure Container Instances unterstützt zwar nicht die höherwertigen Dienste, die diese Plattformen bieten, kann jedoch ergänzend genutzt werden. In diesem Artikel werden die Funktionen von Azure Container Instances beschrieben und wie vollständige Containerorchestratoren damit interagieren können.
 
 ## <a name="traditional-orchestration"></a>Herkömmliche Orchestrierung
 
@@ -31,14 +31,14 @@ Die Standarddefinition der Orchestrierung umfasst die folgenden Aufgaben:
 - **Failover**: Verfolgt nach, was auf jedem Computer ausgeführt wird, und plant Container von Computern mit Fehlern auf intakte Knoten um.
 - **Skalierung**: Fügt Containerinstanzen nach Bedarf manuell oder automatisch hinzu oder entfernt sie.
 - **Netzwerk**: Bietet ein Überlagerungsnetzwerk für die Koordinierung der Kommunikation von Containern in mehreren Hostcomputer.
-- **Dienstermittlung**: Ermöglicht, dass sich Container automatisch finden, auch wenn sie den Hostcomputer wechseln oder die IP-Adresse ändern.
+- **Diensterkennung**: Ermöglicht, dass sich Container automatisch finden, auch wenn sie den Hostcomputer wechseln oder die IP-Adresse ändern.
 - **Koordinierte Anwendungsupgrades**: Verwaltet Containerupgrades zur Vermeidung von Ausfallzeiten der Anwendung und ermöglicht Rollbacks, falls etwas schief geht.
 
 ## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Orchestrierung mit Azure Container Instances: Ein mehrstufiger Ansatz
 
 Azure Container Instances ermöglicht einen mehrstufigen Ansatz für die Orchestrierung, bietet alle Planungs- und Verwaltungsfunktionen für das Ausführen eines einzelnen Containers, und lässt außerdem zu, dass Orchestrierungsplattformen Aufgaben mit mehreren Containern verwalten.
 
-Da die gesamte zugrundeliegende Infrastruktur von Container Instances von Azure verwaltet wird, muss sich eine Orchestrierungsplattform nicht darum kümmern, einen geeigneten Hostcomputer zu finden, auf dem ein einzelner Container ausgeführt werden kann. Die Flexibilität der Cloud stellt sicher, dass immer einer verfügbar ist. Stattdessen kann sich der Orchestrator auf die Aufgaben konzentrieren, die die Entwicklung von Architekturen mit mehreren Containern vereinfachen, darunter das Skalieren und Koordinieren von Upgrades.
+Da die zugrundeliegende Infrastruktur von Container Instances von Azure verwaltet wird, muss sich eine Orchestrierungsplattform nicht darum kümmern, einen geeigneten Hostcomputer zu finden, auf dem ein einzelner Container ausgeführt werden kann. Die Flexibilität der Cloud stellt sicher, dass immer einer verfügbar ist. Stattdessen kann sich der Orchestrator auf die Aufgaben konzentrieren, die die Entwicklung von Architekturen mit mehreren Containern vereinfachen, darunter das Skalieren und Koordinieren von Upgrades.
 
 ## <a name="potential-scenarios"></a>Mögliche Szenarios
 
@@ -50,7 +50,9 @@ Aufgrund des schnellen Starts und der sekundengenauen Abrechnung bietet eine aus
 
 ### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>Kombination aus Container Instances und Containern in Virtual Machines
 
-Für stabile Workloads mit langer Ausführungszeit ist es normalerweise günstiger, Container in einem Cluster dedizierter virtueller Computer auszuführen als dieselben Container mit Container Instances auszuführen. Allerdings bietet Container Instances eine tolle Lösung für die schnelle Erweiterung oder Verringerung Ihrer Gesamtkapazität, um auf unerwartete oder vorübergehende Spitzen bei der Auslastung zu reagieren. Anstatt die Anzahl der virtuellen Maschinen in Ihrem Cluster horizontal zu skalieren und dann zusätzliche Container auf diesen Computern bereitzustellen, kann der Orchestrator einfach mithilfe von Container Instances zusätzliche Container einplanen und wieder entfernen, wenn sie nicht mehr benötigt werden.
+Für stabile Workloads mit langer Ausführungszeit ist es normalerweise günstiger, Container in einem Cluster dedizierter virtueller Computer zu orchestrieren als dieselben Container mit Azure Container Instances auszuführen. Allerdings bietet Container Instances eine tolle Lösung für die schnelle Erweiterung oder Verringerung Ihrer Gesamtkapazität, um auf unerwartete oder vorübergehende Spitzen bei der Auslastung zu reagieren.
+
+Anstatt die Anzahl der virtuellen Computer in Ihrem Cluster horizontal hochzuskalieren und dann zusätzliche Container auf diesen Computern bereitzustellen, kann der Orchestrator einfach in Azure Container Instances zusätzliche Container einplanen und wieder entfernen, wenn sie nicht mehr benötigt werden.
 
 ## <a name="sample-implementation-azure-container-instances-connector-for-kubernetes"></a>Beispiel für die Implementierung: Azure Container Instances-Connector für Kubernetes
 
@@ -58,9 +60,7 @@ Um zu zeigen, wie Containerorchestrierungsplattformen in Azure Container Instanc
 
 Der Connector für Kubernetes imitiert das [Kubelet][kubelet-doc], indem er sich als Knoten mit unbegrenzter Kapazität registriert und die Erstellung von [Pods][pod-doc] als Containergruppen in Azure Container Instances erledigt.
 
-<!-- ![ACI Connector for Kubernetes][aci-connector-k8s-gif] -->
-
-Connectors für andere Orchestratoren könnten auf ähnliche Weise gebaut und in Plattformgrundtypen integriert werden, um die Leistung der Orchestrator-API mit der Geschwindigkeit und einfachen Verwaltung von Containern in Azure Container Instances zu kombinieren.
+Connectors für andere Orchestratoren könnten auf ähnliche Weise erstellt und in Plattformprimitiven integriert werden, um die Leistung der Orchestrator-API mit der Geschwindigkeit und einfachen Verwaltung von Containern in Azure Container Instances zu kombinieren.
 
 > [!WARNING]
 > Der ACI-Connector für Kubernetes ist *experimentell* und sollte nicht in der Produktion verwendet werden.
@@ -70,7 +70,6 @@ Connectors für andere Orchestratoren könnten auf ähnliche Weise gebaut und in
 Erstellen Sie Ihren ersten Container mit Azure Container Instances mithilfe der [Schnellstartanleitung](container-instances-quickstart.md).
 
 <!-- IMAGES -->
-[aci-connector-k8s-gif]: ./media/container-instances-orchestrator-relationship/aci-connector-k8s.gif
 
 <!-- LINKS -->
 [aci-connector-k8s]: https://github.com/virtual-kubelet/virtual-kubelet/tree/master/providers/azure

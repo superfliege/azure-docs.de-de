@@ -1,6 +1,6 @@
 ---
 title: 'Transformieren von XML mit XSLT-Zuordnungen: Azure-Logik-Apps | Microsoft-Dokumentation'
-description: "Informationen zum Hinzufügen von XSLT-Zuordnungen zum Transformieren von XML-Daten mit Azure Logic Apps und dem Enterprise Integration Pack"
+description: Informationen zum Hinzufügen von XSLT-Zuordnungen zum Transformieren von XML-Daten mit Azure Logic Apps und dem Enterprise Integration Pack
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4445a84a6c6425110e7d705019a28b5cc5447046
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b4d626028eed09e9ce6a45fa8fa69859c082da7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="add-maps-for-xml-data-transform"></a>Hinzufügen von Zuordnungen für die XML-Datentransformation
 
@@ -28,9 +28,13 @@ Für die Unternehmensintegration werden Zuordnungen verwendet, um XML-Daten in a
 
 Angenommen, Sie erhalten regelmäßig B2B-Aufträge oder -Rechnungen von einem Kunden, der das Format JJMMTT für Datumsangaben verwendet. In Ihrer Organisation wird das Datum allerdings im Format TTMMJJJJ gespeichert. Mithilfe einer Zuordnung können das Datumsformat JJMMTT in das Format TTMMJJJJ *transformieren* , ehe die Auftrags- oder Rechnungsdetails in Ihrer Kundendatenbank gespeichert werden.
 
+
 ## <a name="how-do-i-create-a-map"></a>Wie erstelle ich eine Zuordnung?
 
 Das [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack") für Visual Studio 2015 ermöglicht Ihnen die Erstellung von BizTalk Integration-Projekten. Sie können eine Integration Map-Datei erstellen, mit deren Hilfe Sie Elemente visuell zwischen zwei XML-Schemadateien zuordnen können. Nachdem Sie dieses Projekt erstellt haben, verfügen Sie über ein XSLT-Dokument.
+
+Wenn die Zuordnung einen Verweis auf eine externe Assembly enthält, muss beides in das Integrationskonto hochgeladen werden. Die Elemente müssen in einer bestimmten Reihenfolge hochgeladen werden: Laden Sie zuerst die Assembly und dann die Zuordnung hoch, die auf die Assembly verweist.
+
 
 ## <a name="how-do-i-add-a-map"></a>Wie füge ich eine Zuordnung hinzu?
 
@@ -50,7 +54,7 @@ Das [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md 
 
     ![](./media/logic-apps-enterprise-integration-maps/map-1.png)
 
-5. Wählen Sie auf dem geöffneten Blatt „Zuordnungen“ **Hinzufügen** aus.
+5. Klicken Sie auf der Seite „Zuordnungen“ auf **Hinzufügen**.
 
     ![](./media/logic-apps-enterprise-integration-maps/map-2.png)  
 
@@ -62,6 +66,19 @@ Das [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md 
 
     ![](./media/logic-apps-enterprise-integration-maps/map-4.png)
 
+
+## <a name="how-do-i-add-an-assembly"></a>Wie füge ich eine Assembly hinzu?
+Öffnen Sie das Integrationskonto, in das Sie die Assembly hochladen möchten.
+
+1. Klicken Sie auf die Kachel **Assemblys**.
+
+    ![integrationaccount-assembly-tile](./media/logic-apps-enterprise-integration-maps/assemblytile.png)
+
+2. Klicken Sie auf der Seite „Assemblys“ auf **Hinzufügen**. Geben Sie unter **Name** einen Namen für Ihre Assembly ein. Klicken Sie zum Hochladen der Assemblydatei rechts neben dem Textfeld **Assembly** auf das Ordnersymbol. Klicken Sie nach dem Hochladevorgang auf **OK**.
+
+    ![add-assembly](./media/logic-apps-enterprise-integration-maps/assemblyfile.png)
+
+
 ## <a name="how-do-i-edit-a-map"></a>Wie bearbeite ich eine Zuordnung?
 
 Sie müssen eine neue Zuordnungsdatei mit den gewünschten Änderungen hochladen. Zunächst können Sie die Zuordnung zum Bearbeiten herunterladen.
@@ -70,9 +87,9 @@ Gehen Sie wie folgt vor, um eine neue Zuordnung hochzuladen, die eine vorhandene
 
 1. Wählen Sie die Kachel **Zuordnungen** aus.
 
-2. Wählen Sie auf dem geöffneten Blatt „Zuordnungen“ die Zuordnung aus, die Sie bearbeiten möchten.
+2. Wählen Sie auf der Seite „Zuordnungen“ die Zuordnung aus, die Sie bearbeiten möchten.
 
-3. Wählen Sie auf dem Blatt **Zuordnungen** den Befehl **Aktualisieren** aus.
+3. Klicken Sie auf der Seite **Zuordnungen** auf **Aktualisieren**.
 
     ![](./media/logic-apps-enterprise-integration-maps/edit-1.png)
 
@@ -84,7 +101,7 @@ Gehen Sie wie folgt vor, um eine neue Zuordnung hochzuladen, die eine vorhandene
 
 1. Wählen Sie die Kachel **Zuordnungen** aus.
 
-2. Wählen Sie auf dem geöffneten Blatt „Zuordnungen“ die Zuordnung aus, die Sie löschen möchten.
+2. Wählen Sie auf der Seite „Zuordnungen“ die Zuordnung aus, die Sie löschen möchten.
 
 3. Wählen Sie **Löschen** aus.
 

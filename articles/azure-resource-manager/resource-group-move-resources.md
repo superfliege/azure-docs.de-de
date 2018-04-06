@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4709ee707aa67c8de531b2b3e0b58dbed5c2667b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 94f11504597c127d505d103a417c3d78744d99d1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -87,6 +87,11 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
   az provider register --namespace Microsoft.Batch
   ```
 
+4. Das Konto, das die Ressourcen verschiebt, muss mindestens über folgende Berechtigungen verfügen:
+
+   * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** für die Quellressourcengruppe.
+   * **Microsoft.Resources/subscriptions/resourceGroups/write** für die Zielressourcengruppe.
+
 ## <a name="when-to-call-support"></a>Kontaktaufnahme mit dem Support
 
 Sie können die meisten Ressourcen mithilfe der in diesem Artikel gezeigten Self-Service-Vorgänge verschieben. Verwenden Sie die Self-Service-Vorgänge für Folgendes:
@@ -105,6 +110,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 
 * API Management
 * App Service-Apps (Web-Apps) – siehe [App Service-Einschränkungen](#app-service-limitations)
+* App Service-Zertifikate
 * Application Insights
 * Automation
 * Azure Cosmos DB
@@ -193,7 +199,9 @@ Ein virtuelles Netzwerk kann nicht in ein anderes Abonnement verschoben werden, 
 
 ## <a name="app-service-limitations"></a>App Service-Einschränkungen
 
-Die Einschränkungen beim Verschieben von App Service-Ressourcen unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben.
+Die Einschränkungen beim Verschieben von App Service-Ressourcen unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben. 
+
+Die in diesen Abschnitten beschriebenen Einschränkungen gelten für hochgeladene Zertifikate (nicht für App Service-Zertifikate). App Service-Zertifikate können ohne Einschränkungen in eine neue Ressourcengruppe oder in ein neues Abonnement verschoben werden. Wenn Sie über mehrere Web-Apps verfügen, die das gleiche App Service-Zertifikat verwenden, verschieben Sie zuerst die Web-Apps und dann das Zertifikat.
 
 ### <a name="moving-within-the-same-subscription"></a>Verschieben innerhalb desselben Abonnements
 

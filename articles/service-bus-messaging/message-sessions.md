@@ -2,10 +2,10 @@
 title: Azure Service Bus-Nachrichtensitzungen | Microsoft-Dokumentation
 description: Informationen zum Verarbeiten von Sequenzen von Azure Service Bus-Nachrichten mithilfe von Sitzungen.
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: sethm
-ms.openlocfilehash: 7a594e5951f6e90c9151fbaf231675d6ed091d1f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 551432cd13c16fdd5423c46ed9c6f740353808f8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Nachrichtensitzungen: FIFO (First In, First Out) 
 
@@ -53,13 +53,7 @@ Die Sperre wird aufgehoben, wenn **Close** oder **CloseAsync** aufgerufen werden
 
 Wenn mehrere gleichzeitige Empfänger auf die Warteschlange zugreifen, werden die zu einer bestimmten Sitzung gehörenden Nachrichten an den spezifischen Empfänger gesendet, der gerade die Sperre für diese Sitzung hält. Mit diesem Vorgang erfolgt für einen verschachtelten Nachrichtendatenstrom, der sich in einer Warteschlange oder einem Abonnement befindet, ein ordnungsgemäßes Demultiplexing an verschiedene Empfänger. Diese Empfänger können sich auch auf verschiedenen Clientcomputern befinden, da die Sperrverwaltung in Service Bus auf Dienstseite erfolgt.
 
-Eine Warteschlange ist jedoch noch immer eine Warteschlange, d.h. es erfolgt kein Direktzugriff. Wenn mehrere gleichzeitige Empfänger darauf warten, bestimmte Sitzungen zu akzeptieren, oder auf Nachrichten von bestimmten Sitzungen warten, und eine Nachricht am Anfang einer Warteschlange zu einer Sitzung gehört, die noch kein Empfänger für sich beansprucht hat, werden Zustellungen zurückgestellt, bis ein Sitzungsempfänger diese Sitzung beansprucht.
-
-Die vorhergehende Abbildung zeigt drei gleichzeitige Sitzungsempfänger, die alle aktiv Nachrichten aus der Warteschlange entnehmen müssen, damit jeder Empfänger Fortschritte macht. Die vorhergehende Sitzung mit `SessionId` = 4 hat keinen aktiven, besitzenden Client, d.h. es werden solange keine Nachrichten zugestellt, bis diese Nachricht von einem neu erstellten, besitzenden Sitzungsempfänger entnommen wurde.
-
-Obwohl das anscheinend eine Beschränkung darstellt, kann ein einzelner Empfängerprozess viele gleichzeitige Sitzungen problemlos handhaben, besonders wenn sie mit streng asynchronem Code geschrieben wurden. Das Jonglieren mehrerer Dutzend gleichzeitiger Sitzungen erfolgt praktisch automatisch mit dem Rückrufmodell.
-
-Die Strategie für die Behandlung vieler gleichzeitiger Sitzungen, bei der jede Sitzung nur sporadisch Nachrichten empfängt, besteht darin, dass der Handler die Sitzung nach einer gewissen Ruhezeit abbricht und die Verarbeitung wieder aufnimmt, sobald die Sitzung als nächste Sitzung akzeptiert wird.
+Die vorherige Abbildung zeigt drei gleichzeitige Sitzungsempfänger. Eine Sitzung mit `SessionId` = 4 verfügt über keinen aktiven, besitzenden Client, was bedeutet, dass von dieser bestimmten Sitzung keine Nachrichten übermittelt werden. Eine Sitzung fungiert in vielerlei Hinsicht wie eine untergeordnete Warteschlange.
 
 Die vom Sitzungsempfänger gehaltene Sitzungssperre ist ein Schirm für die Nachrichtensperren, die vom *peek-lock*-Abstimmungsmodus verwendet werden. Ein Empfänger darf nicht gleichzeitig zwei Nachrichten aufweisen, denn die Nachrichten müssen nacheinander verarbeitet werden. Eine neue Nachricht kann nur dann abgerufen werden, sobald die vorherige Nachricht abgeschlossen oder nicht zugestellt wurde. Das Abbrechen einer Nachricht bewirkt, dass dieselbe Nachricht beim nächsten Empfangsvorgang erneut abgearbeitet wird.
 

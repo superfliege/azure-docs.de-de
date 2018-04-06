@@ -1,8 +1,8 @@
 ---
-title: "Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung – Azure | Microsoft-Dokumentation"
+title: Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung – Azure | Microsoft-Dokumentation
 description: 'Inhalt:'
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: saurinsh
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.openlocfilehash: 35a74ffb6a30fe2ae7db686be5b6774800ce37b1
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 919a0a45c4c8c94b19ed1d602ed20df0afabd09a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung
 Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive konfigurieren. In diesem Artikel erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Hive-Beispieltabelle „hivesampletable“ einzuschränken. Die Hive-Beispieltabelle „hivesampletable“ ist in HDInsight-Clustern enthalten. Nach dem Konfigurieren der Richtlinien stellen Sie unter Verwendung von Excel und ODBC-Treiber eine Verbindung mit Hive-Tabellen in HDInsight her.
@@ -45,10 +45,10 @@ Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive konfigurieren. In
     Ranger kann derzeit nur mit Yarn und Hive verwendet werden.
 
 ## <a name="create-domain-users"></a>Erstellen von Domänenbenutzern
-In [Configure Domain-joined HDInsight clusters (Preview)](apache-domain-joined-configure.md#optional-create-ad-users-and-groups) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]) haben Sie „hiveuser1“ und „hiveuser2“ erstellt. Diese beiden Benutzerkonten werden in diesem Tutorial verwendet.
+Unter [Erstellen eines in die Domäne eingebundenen HDInsight-Clusters](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster) finden Sie Informationen zum Erstellen von „hiveruser1“ und „hiveuser2“. Diese beiden Benutzerkonten werden in diesem Tutorial verwendet.
 
 ## <a name="create-ranger-policies"></a>Erstellen von Ranger-Richtlinien
-In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf „hivesampletable“. Sie erteilen für bestimmte Spaltengruppen die Berechtigung „Auswählen“. Beide Benutzer wurden in [Configure Domain-joined HDInsight clusters (Preview)](apache-domain-joined-configure.md#optional-create-ad-users-and-groups) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]) erstellt.  Im nächsten Abschnitt testen Sie die beiden Richtlinien in Excel.
+In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf „hivesampletable“. Sie erteilen für bestimmte Spaltengruppen die Berechtigung „Auswählen“. Beide Benutzer wurden mit [Erstellen eines in die Domäne eingebundenen HDInsight-Clusters](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster) erstellt. Im nächsten Abschnitt testen Sie die beiden Richtlinien in Excel.
 
 **So erstellen Sie Ranger-Richtlinien**
 

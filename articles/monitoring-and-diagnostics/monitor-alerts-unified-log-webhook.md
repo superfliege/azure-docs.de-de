@@ -1,12 +1,12 @@
 ---
-title: "Webhookaktionen für Protokollwarnungen in Azure Alerts (Vorschauversion) | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie eine Protokollwarnungsregel mit Log Analytics oder Application Insights per Pushvorgang Daten als HTTP-Webhook überträgt, und es werden Details zu den verschiedenen möglichen Anpassungen erläutert."
+title: Webhookaktionen für Protokollwarnungen in Azure-Warnungen | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie eine Protokollwarnungsregel mit Log Analytics oder Application Insights per Pushvorgang Daten als HTTP-Webhook überträgt, und es werden Details zu den verschiedenen möglichen Anpassungen erläutert.
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/2/2018
 ms.author: vinagara
-ms.openlocfilehash: 5852eb099f6620656aa69e5085447c2a8b4e0c01
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9d2bc934424ff7a31b65ad6c03624ff02ee2a6f3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
-Wenn eine [Warnung in Azure (Vorschauversion) erstellt wird](monitor-alerts-unified-usage.md), haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung einer oder mehrerer Aktionen zu konfigurieren](monitoring-action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
+Wenn eine [Warnung in Azure erstellt](monitor-alerts-unified-usage.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](monitoring-action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
 
 
 ## <a name="webhook-actions"></a>Webhookaktionen
@@ -33,7 +33,7 @@ Für Webhookaktionen sind die in der folgenden Tabelle aufgeführten Eigenschaft
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Webhook-URL |Die URL des Webhooks. |
-| Benutzerdefinierte JSON-Nutzlast |Benutzerdefinierte Nutzlast zum Senden mit dem Webhook, wenn diese Option während der Warnungserstellung ausgewählt wird. Ausführliche Informationen finden Sie im Artikel zum [Verwalten von Warnungen mithilfe von Azure Alerts (Vorschauversion)](monitor-alerts-unified-usage.md) |
+| Benutzerdefinierte JSON-Nutzlast |Benutzerdefinierte Nutzlast zum Senden mit dem Webhook, wenn diese Option während der Warnungserstellung ausgewählt wird. Ausführliche Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor – Warnungen (Vorschauversion)](monitor-alerts-unified-usage.md). |
 
 > [!NOTE]
 > Die Schaltfläche „Testwebhook“ neben der Option *Benutzerdefinierte JSON-Nutzlast für Webhook einschließen* für die Protokollwarnung löst einen Pseudoaufruf zum Testen der Webhook-URL aus. Es sind keine tatsächlichen Daten enthalten, und der Vorgang ist für ein JSON-Schema für Protokollwarnungen repräsentativ. 
@@ -157,6 +157,8 @@ Im Folgenden sehen Sie eine Beispielnutzlast für einen Standardwebhook *ohne be
     }
     }
 
+> [!NOTE]
+> Protokollwarnungen für Application Insights befinden sich derzeit in der öffentlichen Vorschauphase; Funktionen und Benutzererfahrung können sich also noch ändern.
 
 #### <a name="log-alert-with-custom-json-payload"></a>Protokollwarnung mit benutzerdefinierter JSON-Nutzlast
 Sie können beispielsweise Folgendes verwenden, um eine benutzerdefinierte Nutzlast zu erstellen, die nur den Warnungsnamen und die Suchergebnisse enthält: 
@@ -194,7 +196,7 @@ Im Folgenden sehen Sie eine Beispielnutzlast für eine benutzerdefinierte Webhoo
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [Protokollwarnungen auf der Azure-Oberfläche „Warnungen (Vorschauversion)“](monitor-alerts-unified-log.md).
+- Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](monitor-alerts-unified-log.md).
 - Erstellen und Verwalten von [Aktionsgruppen in Azure](monitoring-action-groups.md)
 - Weitere Informationen zu [Application Insights](../application-insights/app-insights-analytics.md)
 - Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-overview.md). 

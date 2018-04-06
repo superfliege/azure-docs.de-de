@@ -1,24 +1,24 @@
 ---
-title: "Serverloses Datenbank-Computing – Azure Functions und Azure Cosmos DB| Microsoft-Dokumentation"
+title: Serverloses Datenbank-Computing – Azure Functions und Azure Cosmos DB| Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Cosmos DB und Azure Functions ereignisgesteuerte, serverlose Computing-Apps erstellen.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: 297f8929ec11b37a2cbbfb79bb442da75b4368a8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 39155a2407efa0cc13236a1bbbbcd292daac86b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Serverloses Datenbank-Computing mithilfe von Azure Functions
 
@@ -113,12 +113,16 @@ Da die Funktion in allen diesen Anwendungsfällen die App selbst entkoppelt hat,
 
 ## <a name="tooling"></a>Tools
 
-Die native Integration zwischen Azure Cosmos DB und Azure Functions ist im Azure-Portal verfügbar.
+Die native Integration zwischen Azure Cosmos DB und Azure Functions ist im Azure-Portal und in Visual Studio 2017 verfügbar.
 * Im Azure Functions-Portal können Sie einen Azure Cosmos DB-Trigger erstellen. Schnellstart-Anweisungen finden Sie unter [Erstellen eines Azure Cosmos DB-Triggers im Azure-Portal](https://aka.ms/cosmosdbtriggerportalfunc) ![Erstellen eines Azure Cosmos DB-Triggers im Azure Functions-Portal](./media/serverless-computing-database/azure-function-cosmos-db-trigger.png) 
 * Im Azure Functions-Portal können Sie auch anderen Typen von Triggern Azure Cosmos DB-Eingabebindungen und -Ausgabebindungen hinzufügen. Schnellstart-Anweisungen finden Sie unter [Speichern von unstrukturierten Daten mit Azure Functions und Cosmos DB](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md).
     ![Erstellen eines Azure Cosmos DB-Triggers im Azure Functions-Portal](./media/serverless-computing-database/function-portal-input-binding.png)
 *   Im Azure Cosmos DB-Portal können Sie einer vorhandenen Azure-Funktionen-App in derselben Ressourcengruppe einen Azure Cosmos DB-Trigger hinzufügen.
     ![Erstellen eines Azure Cosmos DB-Triggers im Azure Functions-Portal](./media/serverless-computing-database/cosmos-db-portal.png)
+* In Visual Studio 2017 können Sie einen Azure Cosmos DB-Trigger mithilfe der integrierten Vorlage erstellen:
+
+    >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
+
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>Was spricht für die Integration von Azure Functions beim serverlosen Computing?
 

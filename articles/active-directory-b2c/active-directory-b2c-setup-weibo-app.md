@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Konfiguration für Weibo | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie Registrierung und Anmeldung für Kunden mit Weibo-Konten in Ihren mit Azure Active Directory B2C gesicherten Anwendungen bereitstellen."
+title: 'Azure Active Directory B2C: Konfiguration für Weibo | Microsoft-Dokumentation'
+description: Es wird beschrieben, wie Sie Registrierung und Anmeldung für Kunden mit Weibo-Konten in Ihren mit Azure Active Directory B2C gesicherten Anwendungen bereitstellen.
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 1860de34-94cb-4ceb-851e-102f930f7230
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2017
-ms.author: parakhj
-ms.openlocfilehash: 320d7c57035d3b3ecdb4e03d80141a58cf429461
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: f2a7b6992e54f9804057f21e10ba68a9a723c6a0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-weibo-accounts"></a>Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit Weibo-Konten
 
@@ -28,7 +25,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="create-a-weibo-application"></a>Erstellen einer Weibo-Anwendung
 
-Um Weibo als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Weibo-Anwendung erstellen und die entsprechenden Parameter bereitstellen. Sie benötigen dazu ein Weibo-Konto. Wenn Sie kein Konto besitzen, können Sie dieses unter folgendem Link erstellen: [http://weibo.com/signup/signup.php?lang=en-us](http://weibo.com/signup/signup.php?lang=en-us).
+Um Weibo als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Weibo-Anwendung erstellen und die entsprechenden Parameter bereitstellen. Sie benötigen dazu ein Weibo-Konto. Wenn Sie keines haben, können Sie unter [http://weibo.com/signup/signup.php?lang=en-us](http://weibo.com/signup/signup.php?lang=en-us) eines erstellen.
 
 ### <a name="register-for-the-weibo-developer-program"></a>Registrieren beim Weibo-Entwicklerprogramm
 
@@ -54,9 +51,9 @@ Um Weibo als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwe
 10. Klicken Sie auf **提交** (Absenden).  
 
 ## <a name="configure-weibo-as-an-identity-provider-in-your-tenant"></a>Konfigurieren von Weibo als Identitätsanbieter in Ihrem Mandanten
-1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) .
+1. Führen Sie diese Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Klicken Sie auf dem B2C-Featureblatt auf **Identitätsanbieter**.
-3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
+3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
 4. Geben Sie als **Name** einen aussagekräftigen Namen für die Konfiguration des Identitätsanbieters ein. Geben Sie z.B. „Weibo“ ein.
 5. Klicken Sie auf **Identitätsanbietertyp**, wählen Sie **Weibo** und klicken Sie auf **OK**.
 6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**.

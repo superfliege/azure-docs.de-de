@@ -1,8 +1,8 @@
 ---
-title: "Anwendungsübersicht in Azure Application Insights | Microsoft-Dokumentation"
-description: "Überwachen von komplexen Anwendungstopologien mit der Anwendungsübersicht"
+title: Anwendungszuordnung in Azure Application Insights | Microsoft-Dokumentation
+description: Überwachen von komplexen Anwendungstopologien mit der Anwendungsübersicht
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3bbed59bf93eab5e729fbdd3ccae04599ac47081
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 4b95cd947cd977208dee32d18fbc6a1fb099ff3b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren von verteilten Anwendungen
 Mit der Anwendungsübersicht können Sie Leistungsengpässe oder Fehlerhotspots in allen Komponenten Ihrer verteilten Anwendung erkennen. Jeder Knoten in der Übersicht repräsentiert eine Anwendungskomponente bzw. deren Abhängigkeiten und weist einen Key Performance Indicator (KPI) zur Integrität und einen Warnungsstatus auf. Für jede Komponente können Sie detailliertere Diagnosen anzeigen, z.B. für Application Insights-Ereignisse. Wenn Ihre App Azure-Dienste nutzt, können Sie auch Azure-Diagnosedaten anzeigen, z.B. SQL Database Advisor-Empfehlungen.

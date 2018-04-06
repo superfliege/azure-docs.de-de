@@ -1,12 +1,12 @@
 ---
-title: "Überwachung und Problembehandlung in Azure Site Recovery | Microsoft-Dokumentation"
-description: "Überwachung und Problembehandlung bei Replikationsproblemen und Vorgängen in Azure Site Recovery mithilfe des Portals"
+title: Überwachung und Problembehandlung in Azure Site Recovery | Microsoft-Dokumentation
+description: Überwachung und Problembehandlung bei Replikationsproblemen und Vorgängen in Azure Site Recovery mithilfe des Portals
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: bsiva
 manager: abhemraj
 editor: raynew
-ms.assetid: 
+ms.assetid: ''
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 02/22/2018
 ms.author: bsiva
-ms.openlocfilehash: bb453f6c16440fae8a12cc1c4890a473ce541f45
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b357a3231dac6dfa54cb02fe921baf771c0880f4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitoring-and-troubleshooting-azure-site-recovery"></a>Überwachung und Problembehandlung in Azure Site Recovery
 
@@ -145,7 +145,7 @@ Eine auf den Kontext eines einzelnen replizierenden Computers beschränkte Infra
 **A.** Das Feature Infrastrukturansicht ist nur für virtuelle Computer verfügbar, die in Azure replizieren. Das Feature ist derzeit nicht für virtuelle Computer verfügbar, die zwischen lokalen Standorten replizieren.
 
 **F.** Warum unterscheidet sich die Anzahl der virtuellen Computer in der Tresorinfrastrukturansicht von der Gesamtzahl, die im Ringdiagramm der replizierten Elemente angezeigt wird?</br>
-**A.** Die Tresorinfrastrukturansicht ist nach Replikationsszenarien begrenzt. Nur virtuelle Computer, die am aktuell ausgewählten Replikationsszenario beteiligt sind, werden in die Anzahl der virtuellen Computer einbezogen, die in der Infrastrukturansicht enthalten sind. Außerdem werden für das ausgewählte Szenario nur virtuelle Computer, die zurzeit zum Replizieren in Azure konfiguriert sind, in die Anzahl von virtuellen Computern einbezogen, die in der Infrastrukturansicht enthalten sind (z.B.: virtuelle Computer, für die ein Failover ausgeführt wurde, virtuelle Computer, die zurück zu einem lokalen Standort replizieren, sind in der Infrastrukturansicht nicht enthalten).
+**A.** Die Tresorinfrastrukturansicht ist nach Replikationsszenarien begrenzt. Nur virtuelle Computer, die am aktuell ausgewählten Replikationsszenario beteiligt sind, werden in die Anzahl der virtuellen Computer einbezogen, die in der Infrastrukturansicht enthalten sind. Außerdem werden für das ausgewählte Szenario nur virtuelle Computer, die zurzeit zum Replizieren in Azure konfiguriert sind, in die Anzahl von virtuellen Computern einbezogen, die in der Infrastrukturansicht enthalten sind (Beispiel: virtuelle Computer, für die ein Failover ausgeführt wurde, virtuelle Computer, die zurück zu einem lokalen Standort replizieren, sind in der Infrastrukturansicht nicht enthalten).
 
 **F.** Warum unterscheidet sich die Anzahl der replizierten Elemente im Zusammenfassungsfach auf der Übersichtsseite von der Gesamtzahl der auf dem Dashboard im Ringdiagramm angezeigten replizierten Elemente?</br>
 **A.** Nur die virtuellen Computer, für die die erste Replikation abgeschlossen wurde, sind in der im Zusammenfassungsfach angezeigten Anzahl enthalten. Das Ringdiagramm der replizierten Elemente enthält insgesamt alle virtuellen Computer im Tresor, einschließlich der Server, für die die erste Replikation gerade ausgeführt wird.

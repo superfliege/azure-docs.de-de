@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 08/22/2017
 ms.author: denlee
-ms.openlocfilehash: 8507b772c537ac50bd40367fbde260a8d72375ca
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 816ea6e575759186973e23c6adfccd389c6920d9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Erstellen einer Java-Webanwendung mithilfe von Azure Cosmos DB und der SQL-API
 > [!div class="op_single_selector"]
@@ -29,8 +29,6 @@ ms.lasthandoff: 12/18/2017
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 In diesem Tutorial zur Java-Webanwendung erfahren Sie, wie Sie den [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)-Dienst verwenden, um Daten einer in Azure App Service-Web-Apps gehosteten Java-Anwendung zu speichern und abzurufen. In diesem Thema lernen Sie Folgendes:
 
@@ -739,7 +737,7 @@ Alle Beispiele in diesem Tutorial befinden sich im Projekt [todo](https://github
 3. Klicken in Eclipse im Menü **Datei** auf **Importieren**.
 4. Klicken Sie im Fenster **Importieren** auf **Git**, dann auf **Projekte aus Git** und schließlich auf **Weiter**.
 5. Klicken Sie auf dem Bildschirm **Repositoryquelle auswählen** auf **URI klonen**.
-6. Geben Sie auf dem Bildschirm **Source Git Repository** in das Feld **URI** den Text „https://github.com/Azure-Samples/java-todo-app.git“ ein, und klicken Sie dann auf **Weiter**.
+6. Geben Sie im Bildschirm **Source Git Repository (Quell-Git-Repository)** im Feld **URI** „https://github.com/Azure-Samples/java-todo-app.git“ ein, und klicken Sie auf **Next (Weiter)**.
 7. Stellen Sie auf dem Bildschirm **Verzweigungsauswahl** sicher, dass **Master** ausgewählt ist, und klicken Sie dann auf **Weiter**.
 8. Klicken Sie auf dem Bildschirm **Lokales Ziel** auf **Durchsuchen**, um einen Ordner auszuwählen, in den das Repository kopiert werden kann, und klicken Sie dann auf **Weiter**.
 9. Stellen Sie auf dem Bildschirm **Assistent zum Importieren von Projekten auswählen** sicher, dass **Vorhandene Projekte importieren** ausgewählt ist, und klicken Sie dann auf **Weiter**.
@@ -754,6 +752,6 @@ Alle Beispiele in diesem Tutorial befinden sich im Projekt [todo](https://github
 18. Klicken Sie auf der Registerkarte **Server** am unteren Bildschirmrand mit der rechten Maustaste auf **Tomcat v7.0 Server auf Localhost**, und klicken Sie dann auf **Hinzufügen und Entfernen**.
 19. Verschieben Sie im Fenster **Hinzufügen und Entfernen** **azure-documentdb-java-sample** in das Feld **Konfiguriert**, und klicken Sie dann auf **Fertig stellen**.
 20. Klicken Sie auf der Registerkarte **Server** mit der rechten Maustaste auf den **Server mit Tomcat v7.0 auf Localhost**, und klicken Sie dann auf **Neu starten**.
-21. Navigieren Sie in einem Browser zu http://localhost:8080/azure-documentdb-java-sample/, um beginnen Sie, Ihrer Aufgabenliste Aufgaben hinzuzufügen. Beachten Sie, dass Sie, wenn Sie die Standardwerte für den Port geändert haben, 8080 auf den Wert von Ihnen ausgewählten Wert ändern müssen.
+21. Wechseln Sie in einem Browser zu http://localhost:8080/azure-documentdb-java-sample/, und beginnen Sie mit den Hinzufügungen zu Ihrer Aufgabenliste. Beachten Sie, dass Sie, wenn Sie die Standardwerte für den Port geändert haben, 8080 auf den Wert von Ihnen ausgewählten Wert ändern müssen.
 22. Informationen zum Bereitstellen Ihres Projekts auf einer Azure-Website finden Sie unter [Schritt 6: Bereitstellen der Anwendung auf Azure-Websites](#Deploy).
 

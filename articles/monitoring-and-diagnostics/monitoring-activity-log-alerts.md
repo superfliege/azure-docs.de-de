@@ -1,33 +1,32 @@
 ---
-title: "Erstellen von Aktivitätsprotokollwarnungen | Microsoft-Dokumentation"
-description: "Lassen Sie sich per SMS, Webhook und E-Mail benachrichtigen, wenn bestimmte Ereignisse im Aktivitätsprotokoll auftreten."
+title: Erstellen klassischer Aktivitätsprotokollwarnungen | Microsoft-Dokumentation
+description: Lassen Sie sich per SMS, Webhook und E-Mail benachrichtigen, wenn bestimmte Ereignisse im Aktivitätsprotokoll auftreten.
 author: johnkemnetz
-manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 03/18/2017
 ms.author: johnkem
-ms.openlocfilehash: c8a2ce3ca90895262e77c3895867d29c9d3530a2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e0d92fcd6d3cbd50a2bcb8166b27b11bc86aad83
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-activity-log-alerts"></a>Erstellen von Aktivitätsprotokollwarnungen
+# <a name="create-activity-log-alerts-classic"></a>Erstellen von Aktivitätsprotokollwarnungen (klassisch)
 
 ## <a name="overview"></a>Übersicht
 Aktivitätsprotokollwarnungen sind Warnungen, die aktiviert werden, wenn ein neues Aktivitätsprotokollereignis auftritt, das die in der Warnung angegebenen Bedingungen erfüllt. Als Azure-Ressourcen können sie mit einer Azure Resource Manager-Vorlage erstellt werden. Sie können auch im Azure-Portal erstellt, aktualisiert oder gelöscht werden. In diesem Artikel werden die Konzepte erläutert, auf denen Aktivitätsprotokollwarnungen basieren. Dann erfahren Sie, wie Sie im Azure-Portal Warnungen zu Aktivitätsprotokollereignissen einrichten können.
 
 > [!NOTE]
 
->  [Warnungen (Vorschau)](monitoring-overview-unified-alerts.md) bieten zurzeit eine erweiterte Benutzeroberfläche für die Erstellung und Verwaltung von Aktivitätsprotokollen.  [Weitere Informationen](monitoring-activity-log-alerts-new-experience.md)
+>  Dieses Verfahren wurde durch die neuen [Warnungen](monitoring-overview-unified-alerts.md) ersetzt. Dieser Artikel wird als Referenz für die ältere Lösung bereitgestellt. [Weitere Informationen](monitoring-activity-log-alerts-new-experience.md)
 
 Normalerweise erstellen Sie Aktivitätsprotokollwarnungen, um Benachrichtigungen zu empfangen, wenn Folgendes geschieht:
 
@@ -59,11 +58,11 @@ Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalte
 
 Weitere Informationen zu Dienstintegritätsbenachrichtigungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](monitoring-activity-log-alerts-on-service-notifications.md).
 
-## <a name="create-an-alert-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>Erstellen einer Warnung zu einem Aktivitätsprotokollereignis mit einer neuen Aktionsgruppe im Azure-Portal
+## <a name="create-an-alert-classic-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>Erstellen einer Warnung (klassisch) für ein Aktivitätsprotokollereignis mit einer neuen Aktionsgruppe über das Azure-Portal
 1. Wählen Sie im [Portal](https://portal.azure.com) die Option **Überwachen**.
 
     ![Der Dienst „Überwachen“](./media/monitoring-activity-log-alerts/home-monitor.png)
-2. Wählen Sie im Abschnitt **Aktivitätsprotokoll** die Option **Warnungen**.
+2. Wählen Sie im Abschnitt **Aktivitätsprotokoll** die Option **Warnungen (klassisch)** aus.
 
     ![Die Registerkarte „Warnungen“](./media/monitoring-activity-log-alerts/alerts-blades.png)
 3. Wählen Sie **Aktivitätsprotokollwarnung hinzufügen**, und füllen Sie die Felder aus.

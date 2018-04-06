@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 193003cef0aed464596e913c0df86e6123292b9f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e484dac645ff2e5867d2e652c389a9950e8bac12
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 Azure führt regelmäßig Updates durch, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur für virtuelle Computer zu verbessern. Diese Updates reichen von Patches für Softwarekomponenten in der Hostumgebung (wie etwa Betriebssystem, Hypervisor und diverse auf dem Host bereitgestellte Agents) über Upgrades für Netzwerkkomponenten bis hin zur Außerbetriebsetzung von Hardware. Die meisten dieser Updates werden ohne Auswirkungen auf die gehosteten virtuellen Computer durchgeführt. Es gibt jedoch Ausnahmen:
 
-- Wenn die Wartung keinen Neustart erfordert, verwendet Azure eine direkte Migration, um den virtuellen Computer anzuhalten, während der Host aktualisiert wird.
+- Wenn ein Update ohne Neustart möglich ist, verwendet Azure eine Wartung mit Speicherbeibehaltung, um den virtuellen Computer anzuhalten, während der Host aktualisiert oder der virtuelle Computer vollständig auf einen bereits aktualisierten Host verschoben wird.
 
 - Wenn die Wartung einen Neustart erfordert, werden Sie in einer Benachrichtigung über den geplanten Wartungstermin informiert. In diesen Fällen erhalten Sie auch ein Zeitfenster, in dem Sie die Wartung zu einem für Sie günstigen Zeitpunkt selbst starten können.
 
@@ -26,13 +26,13 @@ Auf einem virtuellen Computer ausgeführte Anwendungen können Informationen zu 
 
 Weitere Informationen zum Verwalten der geplanten Wartung finden Sie unter „Behandlung von Benachrichtigungen der geplanten Wartung“ für [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) oder [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
-## <a name="in-place-vm-migration"></a>Direkte Migration virtueller Computer
+## <a name="memory-preserving-maintenance"></a>Wartung mit Speicherbeibehaltung
 
-Wenn Updates keinen vollständigen Neustart erfordern, wird eine direkte Livemigration verwendet. Während des Updates wird der virtuelle Computer für etwa 30 Sekunden angehalten. Dabei bleibt der Speicher im Arbeitsspeicher erhalten, während in der Hostumgebung die erforderlichen Updates und Patches angewendet werden. Danach wird die Ausführung des virtuellen Computers fortgesetzt, und die Uhr des virtuellen Computers wird automatisch synchronisiert.
+Wenn Updates keinen vollständigen Neustart erfordern, werden Wartungsmechanismen mit Speicherbeibehaltung verwendet, um die Auswirkungen auf den virtuellen Computer möglichst gering zu halten. Der virtuelle Computer wird für etwa 30 Sekunden angehalten. Dabei bleibt der Speicher im Arbeitsspeicher erhalten, während in der Hostumgebung die erforderlichen Updates und Patches angewendet werden. Alternativ wird der virtuelle Computer auf einen bereits aktualisierten Host verschoben. Danach wird die Ausführung des virtuellen Computers fortgesetzt, und die Uhr des virtuellen Computers wird automatisch synchronisiert. 
 
 Für virtuelle Computer in Verfügbarkeitsgruppen werden Updatedomänen einzeln nacheinander aktualisiert. Alle virtuellen Computer in einer Updatedomäne (UD) werden angehalten, aktualisiert und fortgesetzt, bevor die geplante Wartung mit der nächsten UD fortfährt.
 
-Einige Anwendungen werden durch Updates dieser Art unter Umständen beeinträchtigt. Anwendungen, die Ereignisse in Echtzeit verarbeiten (beispielsweise Medienstreaming oder Transcodierung), sowie Szenarien mit hohem Netzwerkdurchsatz können unter Umständen keine 30-sekündige Pause tolerieren. <!-- sooooo, what should they do? --> 
+Einige Anwendungen werden durch Updates dieser Art unter Umständen beeinträchtigt. Anwendungen, die Ereignisse in Echtzeit verarbeiten (beispielsweise Medienstreaming oder Transcodierung), sowie Szenarien mit hohem Netzwerkdurchsatz können unter Umständen keine 30-sekündige Pause tolerieren. <!-- sooooo, what should they do? --> Falls der virtuelle Computer auf einen anderen Host verschoben wird, ist einige Minuten vor dem Anhalten des virtuellen Computers bei einigen sensiblen Workloads unter Umständen eine geringfügige Leistungsbeeinträchtigung feststellbar. 
 
 
 ## <a name="maintenance-requiring-a-reboot"></a>Wartungsmaßnahmen, die einen Neustart erfordern
@@ -46,6 +46,8 @@ Wenn Sie die Self-Service-Wartung starten, wird Ihr virtueller Computer auf eine
 Sollte im Rahmen der Self-Service-Wartung ein Fehler auftreten, wird der Vorgang beendet. In diesem Fall wird der virtuelle Computer nicht aktualisiert und aus der Iteration der geplanten Wartung entfernt. Sie werden zu einem späteren Zeitpunkt mit einem neuen Zeitplan kontaktiert und erhalten erneut die Möglichkeit, eine Self-Service-Wartung durchzuführen. 
 
 Nach Ablauf des Self-Service-Zeitfensters beginnt das **Zeitfenster für die geplante Wartung**. Innerhalb dieses Zeitfensters können Sie zwar weiterhin das Wartungszeitfenster abfragen, die Wartung aber nicht mehr selbst starten.
+
+Weitere Informationen zur Verwaltung von Wartungen mit erforderlichem Neustart finden Sie unter „Behandlung von Benachrichtigungen der geplanten Wartung“ für [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) oder [Windows](../articles/virtual-machines/windows/maintenance-notifications.md). 
 
 ## <a name="availability-considerations-during-planned-maintenance"></a>Überlegungen zur Verfügbarkeit während einer geplanten Wartung 
 

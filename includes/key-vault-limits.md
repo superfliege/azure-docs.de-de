@@ -5,6 +5,10 @@ Schlüsseltransaktionen (Max. Transaktionen innerhalb von 10 Sekunden pro Tresor
 |RSA 2048 Bit|5|1000|10|2000|
 |RSA 3072 Bit|5|250|10|500|
 |RSA 4096 Bit|5|125|10|250|
+|ECC P-256|5|1000|10|2000|
+|ECC P-384|5|1000|10|2000|
+|ECC P-521|5|1000|10|2000|
+|ECC SECP256K1|5|1000|10|2000|
 |
 
 Geheimnisse, Schlüssel für verwaltete Speicherkonten und Tresortransaktionen:

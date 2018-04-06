@@ -1,9 +1,9 @@
 ---
 title: Unterstützung für Gremlin in Azure Cosmos DB | Microsoft-Dokumentation
-description: Informationen über die Gremlin-Sprache von Apache TinkerPop, die verfügbaren Funktionen und Schritte in Azure Cosmos DB
+description: Informieren Sie sich über die Sprache Gremlin von Apache TinkerPop. Erfahren Sie, welche Features und Schritte in Azure Cosmos DB verfügbar sind.
 services: cosmos-db
 documentationcenter: ''
-author: luisbosquez
+author: LuisBosquez
 manager: jhubbard
 editor: ''
 tags: ''
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: b32838dfaf83ea3acfb7125322bb99124370bd8e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 453e11c31a01b6ce8e77deda89725ecd53fd2db9
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Unterstützung für Gremlin-Diagramme in Azure Cosmos DB
 Azure Cosmos DB unterstützt die Graph-Traversalsprache [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) von [Apache Tinkerpop](http://tinkerpop.apache.org). Dabei handelt es sich um eine Graph-API zur Erstellung von Diagrammentitäten und zur Durchführung von Diagrammabfragen. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
@@ -35,10 +35,10 @@ Anhand eines Beispieldiagramms wird erläutert, wie Abfragen in Gremlin ausgedr�
 
 Dieses Diagramm weist folgende Vertex-Typen (in Gremlin als „Bezeichnung“ bezeichnet) auf:
 
-- Personen: Das Diagramm enthält die drei Personen „Robin“, „Thomas“ und „Ben“.
-- Interessen: In diesem Beispiel liegen ihre Interessen bei Football-Spielen.
-- Geräte: Dies sind die von den Personen verwendeten Geräte.
-- Betriebssysteme: Dies sind die Betriebssysteme, die auf den Geräten ausgeführt werden.
+- Personen: Das Diagramm enthält drei Personen: Robin, Thomas und Ben.
+- Interessen: In diesem Beispiel interessieren sie sich für Football.
+- Geräte: Die von den Personen verwendeten Geräte.
+- Betriebssysteme: Die Betriebssysteme auf den Geräten.
 
 Die Beziehungen zwischen diesen Entitäten werden anhand von folgenden Edgetypen/Bezeichnungen dargestellt:
 
@@ -165,45 +165,45 @@ Gremlin-Vorgänge funktionieren nahtlos in Diagrammdaten, die sich über mehrere
 ## <a name="gremlin-steps"></a>Gremlin-Schritte
 Sehen wir uns nun die Gremlin-Schritte an, die von Azure Cosmos DB unterstützt werden. Eine vollständige Referenz zu Gremlin finden Sie in der [TinkerPop-Referenz](http://tinkerpop.apache.org/docs/current/reference).
 
-| Schritt | BESCHREIBUNG | Dokumentation zu TinkerPop 3.2 | Notizen |
-| --- | --- | --- | --- |
-| `addE` | Fügt einen Edge zwischen zwei Vertices hinzu | [addE-Schritt](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) | |
-| `addV` | Fügt einen Vertex zum Diagramm hinzu | [addV-Schritt](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) | |
-| `and` | Stellt sicher, dass alle Traversierungen einen Wert zurückgeben | [and-Schritt](http://tinkerpop.apache.org/docs/current/reference/#and-step) | |
-| `as` | Ein Schrittmodulator für die Zuweisung einer Variable zur Ausgabe eines Schritts | [as-Schritt](http://tinkerpop.apache.org/docs/current/reference/#as-step) | |
-| `by` | Ein mit `group` und `order` verwendeter Schrittmodulator | [by-Schritt](http://tinkerpop.apache.org/docs/current/reference/#by-step) | |
-| `coalesce` | Gibt die erste Traversierung, die ein Ergebnis zurückgibt, zurück | [coalesce-Schritt](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) | |
-| `constant` | Gibt einen konstanten Wert zurück. Wird mit `coalesce` verwendet.| [constant-Schritt](http://tinkerpop.apache.org/docs/current/reference/#constant-step) | |
-| `count` | Gibt die Anzahl aus der Traversierung zurück | [count-Schritt](http://tinkerpop.apache.org/docs/current/reference/#count-step) | |
-| `dedup` | Gibt die Werte mit entfernten Duplikaten zurück | [dedup-Schritt](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) | |
-| `drop` | Löscht die Werte (Vertex/Edge) | [drop-Schritt](http://tinkerpop.apache.org/docs/current/reference/#drop-step) | |
-| `fold` | Fungiert als Grenze, die Ergebnisse berechnet und zusammenfasst| [fold-Schritt](http://tinkerpop.apache.org/docs/current/reference/#fold-step) | |
-| `group` | Gruppiert die Werte basierend auf den angegebenen Bezeichnungen| [group-Schritt](http://tinkerpop.apache.org/docs/current/reference/#group-step) | |
-| `has` | Wird zum Filtern von Eigenschaften, Vertices und Edges verwendet. Unterstützt die Varianten `hasLabel`, `hasId`, `hasNot` und `has`. | [has-Schritt](http://tinkerpop.apache.org/docs/current/reference/#has-step) | |
-| `inject` | Fügt Werte in einen Stream ein| [inject-Schritt](http://tinkerpop.apache.org/docs/current/reference/#inject-step) | |
-| `is` | Dient zur Ausführung eines Filters mithilfe eines booleschen Ausdrucks | [is-Schritt](http://tinkerpop.apache.org/docs/current/reference/#is-step) | |
-| `limit` | Dient zur Beschränkung der Anzahl der Elemente in der Traversierung| [limit-Schritt](http://tinkerpop.apache.org/docs/current/reference/#limit-step) | |
-| `local` | Umschließt lokal einen Abschnitt einer Traversierung, ähnlich wie bei einer Unterabfrage | [local-Schritt](http://tinkerpop.apache.org/docs/current/reference/#local-step) | |
-| `not` | Dient zur Negierung eines Filters | [not-Schritt](http://tinkerpop.apache.org/docs/current/reference/#not-step) | |
-| `optional` | Gibt das Ergebnis der angegebenen Traversierung zurück, wenn diese ein anderes Ergebnis als das vom aufrufenden Element zurückgegebene Ergebnis liefert | [optional-Schritt](http://tinkerpop.apache.org/docs/current/reference/#optional-step) | |
-| `or` | Stellt sicher, dass mindestens einer der Traversierungen einen Wert zurückgibt | [or-Schritt](http://tinkerpop.apache.org/docs/current/reference/#or-step) | |
-| `order` | Gibt die Ergebnisse in der angegebenen Sortierreihenfolge zurück | [order-Schritt](http://tinkerpop.apache.org/docs/current/reference/#order-step) | |
-| `path` | Gibt den vollständigen Pfad der Traversierung zurück | [path-Schritt](http://tinkerpop.apache.org/docs/current/reference/#path-step) | |
-| `project` | Projiziert die Eigenschaften als Karte | [project-Schritt](http://tinkerpop.apache.org/docs/current/reference/#project-step) | |
-| `properties` | Gibt die Eigenschaften für die angegebenen Bezeichnungen zurück | [properties-Schritt](http://tinkerpop.apache.org/docs/current/reference/#properties-step) | |
-| `range` | Filtert auf den angegebenen Wertebereich| [range-Schritt](http://tinkerpop.apache.org/docs/current/reference/#range-step) | |
-| `repeat` | Wiederholt den Schritt für die angegebene Anzahl von Versuchen. Wird für die Ausführung als Schleife verwendet. | [repeat-Schritt](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) | |
-| `sample` | Wird zum Testen von Ergebnissen aus der Traversierung verwendet | [sample-Schritt](http://tinkerpop.apache.org/docs/current/reference/#sample-step) | |
+| Schritt | BESCHREIBUNG | Dokumentation zu TinkerPop 3.2 |
+| --- | --- | --- |
+| `addE` | Fügt einen Edge zwischen zwei Vertices hinzu | [addE-Schritt](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
+| `addV` | Fügt einen Vertex zum Diagramm hinzu | [addV-Schritt](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
+| `and` | Stellt sicher, dass alle Traversierungen einen Wert zurückgeben | [and-Schritt](http://tinkerpop.apache.org/docs/current/reference/#and-step) |
+| `as` | Ein Schrittmodulator für die Zuweisung einer Variable zur Ausgabe eines Schritts | [as-Schritt](http://tinkerpop.apache.org/docs/current/reference/#as-step) |
+| `by` | Ein mit `group` und `order` verwendeter Schrittmodulator | [by-Schritt](http://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `coalesce` | Gibt die erste Traversierung, die ein Ergebnis zurückgibt, zurück | [coalesce-Schritt](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
+| `constant` | Gibt einen konstanten Wert zurück. Wird mit `coalesce` verwendet.| [constant-Schritt](http://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `count` | Gibt die Anzahl aus der Traversierung zurück | [count-Schritt](http://tinkerpop.apache.org/docs/current/reference/#count-step) |
+| `dedup` | Gibt die Werte mit entfernten Duplikaten zurück | [dedup-Schritt](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
+| `drop` | Löscht die Werte (Vertex/Edge) | [drop-Schritt](http://tinkerpop.apache.org/docs/current/reference/#drop-step) |
+| `fold` | Fungiert als Grenze, die Ergebnisse berechnet und zusammenfasst| [fold-Schritt](http://tinkerpop.apache.org/docs/current/reference/#fold-step) |
+| `group` | Gruppiert die Werte basierend auf den angegebenen Bezeichnungen| [group-Schritt](http://tinkerpop.apache.org/docs/current/reference/#group-step) |
+| `has` | Wird zum Filtern von Eigenschaften, Vertices und Edges verwendet. Unterstützt die Varianten `hasLabel`, `hasId`, `hasNot` und `has`. | [has-Schritt](http://tinkerpop.apache.org/docs/current/reference/#has-step) |
+| `inject` | Fügt Werte in einen Stream ein| [inject-Schritt](http://tinkerpop.apache.org/docs/current/reference/#inject-step) |
+| `is` | Dient zur Ausführung eines Filters mithilfe eines booleschen Ausdrucks | [is-Schritt](http://tinkerpop.apache.org/docs/current/reference/#is-step) |
+| `limit` | Dient zur Beschränkung der Anzahl der Elemente in der Traversierung| [limit-Schritt](http://tinkerpop.apache.org/docs/current/reference/#limit-step) |
+| `local` | Umschließt lokal einen Abschnitt einer Traversierung, ähnlich wie bei einer Unterabfrage | [local-Schritt](http://tinkerpop.apache.org/docs/current/reference/#local-step) |
+| `not` | Dient zur Negierung eines Filters | [not-Schritt](http://tinkerpop.apache.org/docs/current/reference/#not-step) |
+| `optional` | Gibt das Ergebnis der angegebenen Traversierung zurück, wenn diese ein anderes Ergebnis als das vom aufrufenden Element zurückgegebene Ergebnis liefert | [optional-Schritt](http://tinkerpop.apache.org/docs/current/reference/#optional-step) |
+| `or` | Stellt sicher, dass mindestens einer der Traversierungen einen Wert zurückgibt | [or-Schritt](http://tinkerpop.apache.org/docs/current/reference/#or-step) |
+| `order` | Gibt die Ergebnisse in der angegebenen Sortierreihenfolge zurück | [order-Schritt](http://tinkerpop.apache.org/docs/current/reference/#order-step) |
+| `path` | Gibt den vollständigen Pfad der Traversierung zurück | [path-Schritt](http://tinkerpop.apache.org/docs/current/reference/#path-step) |
+| `project` | Projiziert die Eigenschaften als Karte | [project-Schritt](http://tinkerpop.apache.org/docs/current/reference/#project-step) |
+| `properties` | Gibt die Eigenschaften für die angegebenen Bezeichnungen zurück | [properties-Schritt](http://tinkerpop.apache.org/docs/current/reference/#properties-step) |
+| `range` | Filtert auf den angegebenen Wertebereich| [range-Schritt](http://tinkerpop.apache.org/docs/current/reference/#range-step) |
+| `repeat` | Wiederholt den Schritt für die angegebene Anzahl von Versuchen. Wird für die Ausführung als Schleife verwendet. | [repeat-Schritt](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
+| `sample` | Wird zum Testen von Ergebnissen aus der Traversierung verwendet | [sample-Schritt](http://tinkerpop.apache.org/docs/current/reference/#sample-step) |
 | `select` | Wird zum Projizieren von Ergebnissen aus der Traversierung verwendet |  [select-Schritt](http://tinkerpop.apache.org/docs/current/reference/#select-step) | |
-| `store` | Wird für nicht blockierende Aggregate aus der Traversierung verwendet | [store-Schritt](http://tinkerpop.apache.org/docs/current/reference/#store-step) | |
-| `tree` | Aggregiert Pfade aus einem Vertex in einer Struktur | [tree-Schritt](http://tinkerpop.apache.org/docs/current/reference/#tree-step) | |
-| `unfold` | Löst einen Iterator als Schritt auf| [unfold-Schritt](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) | |
-| `union` | Führt Ergebnisse aus mehreren Traversierungen zusammen| [union-Schritt](http://tinkerpop.apache.org/docs/current/reference/#union-step) | |
-| `V` | Enthält die erforderlichen Schritte für Traversierungen zwischen Vertices und Edges: `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV` und `otherV` für | [vertex-Schritte](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) | |
-| `where` | Wird zum Filtern von Ergebnissen aus der Traversierung verwendet. Unterstützt die Operatoren `eq`, `neq`, `lt`, `lte`, `gt`, `gte` und `between`.  | [where-Schritt](http://tinkerpop.apache.org/docs/current/reference/#where-step) | |
+| `store` | Wird für nicht blockierende Aggregate aus der Traversierung verwendet | [store-Schritt](http://tinkerpop.apache.org/docs/current/reference/#store-step) |
+| `tree` | Aggregiert Pfade aus einem Vertex in einer Struktur | [tree-Schritt](http://tinkerpop.apache.org/docs/current/reference/#tree-step) |
+| `unfold` | Löst einen Iterator als Schritt auf| [unfold-Schritt](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
+| `union` | Führt Ergebnisse aus mehreren Traversierungen zusammen| [union-Schritt](http://tinkerpop.apache.org/docs/current/reference/#union-step) |
+| `V` | Enthält die erforderlichen Schritte für Traversierungen zwischen Vertices und Edges: `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV` und `otherV` für | [vertex-Schritte](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
+| `where` | Wird zum Filtern von Ergebnissen aus der Traversierung verwendet. Unterstützt die Operatoren `eq`, `neq`, `lt`, `lte`, `gt`, `gte` und `between`.  | [where-Schritt](http://tinkerpop.apache.org/docs/current/reference/#where-step) |
 
-Die für Schreibvorgänge optimierte Engine von Azure Cosmos DB unterstützt standardmäßig die automatische Indizierung aller Eigenschaften in Vertices und Edges. Daher werden Abfragen mit Filtern, Bereichsabfragen, Sortierungen oder Aggregate von Eigenschaften über den Index verarbeitet und effizient übermittelt. Weitere Informationen zur Indizierung in Azure Cosmos DB finden Sie in unserem Dokument unter [Schemagnostische Indizierung](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
+Die von Azure Cosmos DB bereitgestellte, für Schreibvorgänge optimierte Engine unterstützt standardmäßig die automatische Indizierung aller Eigenschaften in Vertices und Edges. Daher werden Abfragen mit Filtern, Bereichsabfragen, Sortierungen oder Aggregate von Eigenschaften über den Index verarbeitet und effizient übermittelt. Weitere Informationen zur Indizierung in Azure Cosmos DB finden Sie in unserem Dokument unter [Schemagnostische Indizierung](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erste Schritte zum Erstellen einer Diagrammanwendung [mithilfe unserer SDKs](create-graph-dotnet.md) 
-* Informationen über die [Diagrammunterstützung von Azure Cosmos DB](graph-introduction.md)
+* Informieren Sie sich ausführlicher über die [Diagrammunterstützung](graph-introduction.md) in Azure Cosmos DB.

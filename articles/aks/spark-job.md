@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 9d57f572ba159191f5b634b5ea604563ac2f7801
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3991312d7f7609bb0a206ccc0ecc67123ebec469
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Ausführen von Apache Spark-Aufträgen in ACS
 
@@ -33,7 +33,7 @@ Sie benötigen Folgendes, um die Schritte in diesem Artikel ausführen zu könne
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
 Spark dient zur Verarbeitung von umfangreichen Daten und erfordert die Größenanpassung von Kubernetes-Knoten gemäß den Spark-Ressourcenanforderungen. Wir empfehlen eine Mindestgröße von `Standard_D3_v2` für Azure Container Service-Knoten (ACS).
- 
+
 Wenn Sie einen ACS-Cluster benötigen, der diese Empfehlung zu den Mindestanforderungen erfüllt, führen Sie die folgenden Befehle aus.
 
 Erstellen Sie eine Ressourcengruppe für den Cluster.
@@ -58,12 +58,12 @@ Wenn Sie Azure Container Registry (ACR) zum Speichern von Containerimages verwen
 
 ## <a name="build-the-spark-source"></a>Erstellen der Spark-Quelle
 
-Vor der Ausführung von Spark-Aufträgen in einem ACS-Cluster müssen Sie den Spark-Quellcode erstellen und in einem Containerimage packen. Die Spark-Quelle umfasst Skripts, die zur Durchführung dieses Vorgangs verwendet werden können. 
+Vor der Ausführung von Spark-Aufträgen in einem ACS-Cluster müssen Sie den Spark-Quellcode erstellen und in einem Containerimage packen. Die Spark-Quelle umfasst Skripts, die zur Durchführung dieses Vorgangs verwendet werden können.
 
 Klonen Sie das Spark-Projektrepository auf Ihrem Entwicklungssystem.
 
 ```bash
-git clone https://github.com/apache/spark
+git clone -b branch-2.3 https://github.com/apache/spark
 ```
 
 Ändern Sie es in das Verzeichnis des geklonten Repositorys, und speichern Sie den Pfad der Spark-Quelle in einer Variablen.
@@ -73,7 +73,7 @@ cd spark
 sparkdir=$(pwd)
 ```
 
-Wenn Sie mehrere JDK-Versionen installiert haben, legen Sie `JAVA_HOME` fest, um Version 8 für die aktuelle Sitzung zu verwenden. 
+Wenn Sie mehrere JDK-Versionen installiert haben, legen Sie `JAVA_HOME` fest, um Version 8 für die aktuelle Sitzung zu verwenden.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
@@ -85,16 +85,21 @@ Führen Sie den folgenden Befehl zum Erstellen des Spark-Quellcodes mit Kubernet
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-Der folgende Befehl erstellt die Spark-Containerimages und überträgt diese auf eine Containerimageregistrierung. Ersetzen Sie `registry.example.com` durch den Namen Ihrer Containerregistrierung. Wenn Sie Docker Hub verwenden, ist dieser Wert der Name der Registrierung. Wenn Sie Azure Container Registry (ACR) verwenden, ist dieser Wert der Name des ACR-Anmeldeservers.
+Die folgenden Befehle erstellen die Spark-Containerimages und übertragen diese auf eine Containerimageregistrierung. Ersetzen Sie `registry.example.com` mit dem Namen Ihrer Containerregistrierung und `v1` mit dem Tag, das Sie verwenden möchten. Wenn Sie Docker Hub verwenden, ist dieser Wert der Name der Registrierung. Wenn Sie Azure Container Registry (ACR) verwenden, ist dieser Wert der Name des ACR-Anmeldeservers.
 
 ```bash
-./bin/docker-image-tool.sh -r registry.example.com -t v1 build
+REGISTRY_NAME=registry.example.com
+REGISTRY_TAG=v1
+```
+
+```bash
+./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG build
 ```
 
 Übertragen Sie ein Image mithilfe von Push an Ihre Containerimageregistrierung.
 
 ```bash
-./bin/docker-image-tool.sh -r registry.example.com -t v1 push
+./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG push
 ```
 
 ## <a name="prepare-a-spark-job"></a>Vorbereiten eines Spark-Auftrags
@@ -196,18 +201,10 @@ Die Variable `jarUrl` enthält nun den öffentlich zugänglichen Pfad zur JAR-Da
 
 ## <a name="submit-a-spark-job"></a>Übermitteln eines Spark-Auftrags
 
-Vor der Übermittlung des Spark-Auftrags benötigen Sie die Kubernetes-API-Serveradresse. Verwenden Sie den Befehl `kubectl cluster-info`, um diese Adresse abzurufen.
-
-Ermitteln Sie die URL, unter der der Kubernetes-API-Server ausgeführt wird.
+Starten Sie Kube-Proxy in einer separaten Befehlszeile mit folgendem Code.
 
 ```bash
-kubectl cluster-info
-```
-
-Notieren Sie sich die Adresse und den Port.
-
-```bash
-Kubernetes master is running at https://<your api server>:443
+kubectl proxy
 ```
 
 Navigieren Sie zurück zum Stammverzeichnis des Spark-Repositorys.
@@ -216,18 +213,16 @@ Navigieren Sie zurück zum Stammverzeichnis des Spark-Repositorys.
 cd $sparkdir
 ```
 
-Übermitteln Sie den Auftrag mithilfe von `spark-submit`. 
-
-Ersetzen Sie den Wert `<kubernetes-api-server>` durch Ihre API-Serveradresse und den Port. Ersetzen Sie `<spark-image>` durch den Namen Ihres Containerimage im Format `<your container registry name>/spark:<tag>`.
+Übermitteln Sie den Auftrag mithilfe von `spark-submit`.
 
 ```bash
 ./bin/spark-submit \
-  --master k8s://https://<k8s-apiserver-host>:<k8s-apiserver-port> \
+  --master k8s://http://127.0.0.1:8001 \
   --deploy-mode cluster \
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
-  --conf spark.kubernetes.container.image=<spark-image> \
+  --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```
 
@@ -315,6 +310,9 @@ Bei der Ausführung des Auftrags kann anstelle der Remote-JAR-URL das `local://`
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```
+
+> [!WARNING]
+> Aus der Spark-[Dokumentation][spark-docs]: „The Kubernetes scheduler is currently experimental. In future versions, there may be behavioral changes around configuration, container images and entrypoints.“ (Der Kubernetes-Planer ist derzeit experimentell. Zukünftige Versionen könnten Verhaltensänderungen bezüglich Konfiguration, Containerimages und Einstiegspunkten aufweisen.)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

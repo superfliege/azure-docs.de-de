@@ -1,24 +1,24 @@
 ---
-title: Verwalten Ihrer Anwendungen in Visual Studio | Microsoft Docs
-description: Verwenden Sie Visual Studio zum Erstellen, Entwickeln, Packen, Bereitstellen und Debuggen Ihrer Service Fabric-Anwendungen und -Dienste.
+title: Verwalten Ihrer Azure Servic Fabric-Anwendungen in Visual Studio | Microsoft-Dokumentation
+description: Verwenden Sie Visual Studio zum Erstellen, Entwickeln, Packen, Bereitstellen und Debuggen Ihrer Azure Service Fabric-Anwendungen und -Dienste.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/07/2017
-ms.author: mikkelhegn
-ms.openlocfilehash: 81814ef07cfab06855b3bfbf0eb6ef51b8dfce4f
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.date: 03/26/2018
+ms.author: mikhegn
+ms.openlocfilehash: 5c5c3dc20996fbbdee9f9ed61eb3b09e4b274d92
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Verwenden von Visual Studio zum Vereinfachen des Schreibens und Verwaltens Ihrer Service Fabric-Anwendung
 Sie können Ihre Azure Service Fabric-Anwendungen und -Dienste in Visual Studio verwalten. Sobald Sie die [Einrichtung Ihrer Entwicklungsumgebung](service-fabric-get-started.md)abgeschlossen haben, können Sie mit Visual Studio Service Fabric-Anwendungen erstellen, Dienste hinzufügen und Anwendungen packen, registrieren und im lokalen Entwicklungscluster bereitstellen.
@@ -32,7 +32,7 @@ Beim Bereitstellen einer Anwendung werden die folgenden Schritte standardmäßig
 4. Entfernen ausgeführter Anwendungsinstanzen
 5. Erstellen einer Anwendungsinstanz
 
-Sie können in Visual Studio **F5** drücken, um die Anwendung bereitzustellen und den Debugger an alle Anwendungsinstanzen anzufügen. Mit **STRG+F5** können Sie eine Anwendung ohne Debuggen bereitstellen oder sie mithilfe des Veröffentlichungsprofils in einem lokalen bzw. Remotecluster veröffentlichen. 
+Sie können in Visual Studio **F5** drücken, um die Anwendung bereitzustellen und den Debugger an alle Anwendungsinstanzen anzufügen. Mit **STRG+F5** können Sie eine Anwendung ohne Debuggen bereitstellen oder sie mithilfe des Veröffentlichungsprofils in einem lokalen bzw. Remotecluster veröffentlichen.
 
 ### <a name="application-debug-mode"></a>Debugmodus für die Anwendung
 Visual Studio stellt eine Eigenschaft mit dem Namen **Anwendungsdebugmodus** bereit, die steuert, wie Visual Studio Anwendungsbereitstellungen im Rahmen des Debuggens behandeln soll.
@@ -45,7 +45,7 @@ Visual Studio stellt eine Eigenschaft mit dem Namen **Anwendungsdebugmodus** ber
 
 #### <a name="application-debug-modes"></a>Anwendungsdebugmodi
 
-1. **Anwendung aktualisieren** Dieser Modus ermöglicht das schnelle Ändern und Debuggen Ihres Codes und unterstützt die Bearbeitung statischer Webdateien beim Debuggen. Dieser Modus funktioniert nur, wenn sich Ihr lokales Entwicklungscluster im [1-Knoten-Modus](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode) befindet.
+1. **Anwendung aktualisieren** Dieser Modus ermöglicht das schnelle Ändern und Debuggen Ihres Codes und unterstützt die Bearbeitung statischer Webdateien beim Debuggen. Dieser Modus funktioniert nur, wenn sich Ihr lokales Entwicklungscluster im [1-Knoten-Modus] befindet. Hierbei handelt es sich um den standardmäßigen Debugmodus für die Anwendung.(/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
 2. **Anwendung entfernen** bewirkt, dass die Anwendung entfernt wird, wenn die Debugsitzung endet.
 3. **Automatisches Upgrade** Die Anwendung wird weiter ausgeführt, nachdem die Debugsitzung beendet wurde. Die nächste Debugsitzung behandelt die Bereitstellung als Upgrade. Beim Upgradevorgang werden alle Daten beibehalten, die Sie in einer vorherigen Debugsitzung eingegeben haben.
 4. **Anwendung beibehalten** Die Anwendung wird weiter im Cluster ausgeführt, nachdem die Debugsitzung beendet wurde. Zu Beginn der nächsten Debugsitzung wird die Anwendung entfernt.
@@ -53,7 +53,7 @@ Visual Studio stellt eine Eigenschaft mit dem Namen **Anwendungsdebugmodus** ber
 Beim **Automatischen Upgrade** werden Daten beibehalten, wenn die Anwendungsupgradefunktionen von Service Fabric angewendet werden. Weitere Informationen zum Upgrade von Anwendungen sowie zur Durchführung eines Upgrades in der Praxis finden Sie unter [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md).
 
 ## <a name="add-a-service-to-your-service-fabric-application"></a>Fügen Sie der Service Fabric-Anwendung einen Dienst hinzu.
-Sie können der Anwendung neue Dienste hinzufügen, um den Funktionsumfang der Anwendung zu erweitern.  Um sicherzustellen, dass der Dienst in das Anwendungspaket aufgenommen wird, fügen Sie den Dienst über das Menüelement **Neuer Fabric-Dienst** hinzu.
+Sie können der Anwendung neue Dienste hinzufügen, um den Funktionsumfang der Anwendung zu erweitern. Um sicherzustellen, dass der Dienst in das Anwendungspaket aufgenommen wird, fügen Sie den Dienst über das Menüelement **Neuer Fabric-Dienst** hinzu.
 
 ![Hinzufügen eines neuen Service Fabric-Diensts][newservice]
 

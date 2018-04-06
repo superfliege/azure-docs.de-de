@@ -1,8 +1,8 @@
 ---
 title: Grundlegendes zu Warnungen in Azure Log Analytics | Microsoft-Dokumentation
-description: "Mit Warnungen in Log Analytics werden wichtige Informationen in Ihrem OMS-Repository identifiziert, und Sie können proaktiv über Probleme informiert werden oder Aktionen aufrufen, um zu versuchen, die Probleme zu beheben.  In diesem Artikel werden die verschiedenen Arten von Warnungsregeln und ihre Definition beschrieben."
+description: Mit Warnungen in Log Analytics werden wichtige Informationen in Ihrem OMS-Repository identifiziert, und Sie können proaktiv über Probleme informiert werden oder Aktionen aufrufen, um zu versuchen, die Probleme zu beheben.  In diesem Artikel werden die verschiedenen Arten von Warnungsregeln und ihre Definition beschrieben.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/05/2018
 ms.author: bwren
-ms.openlocfilehash: 07e8312d5e113eeb9016dcc832b1cf66f8001c5f
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: ece2e7eeb53aebbb18bce4bb34e03307b0aea74c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>Grundlegendes zu Warnungen in Log Analytics
 
@@ -102,7 +102,7 @@ Falls beispielsweise eine Warnung erfolgen soll, wenn der Prozessor zu mehr als 
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
-Falls eine Warnung erfolgen soll, wenn der Prozessor innerhalb eines bestimmten Zeitfensters im Schnitt zu mehr als 90 Prozent ausgelastet ist, können Sie wie im folgenden Beispiel eine Abfrage mit dem [measure-Befehl](log-analytics-search-reference.md#commands) verwenden und dabei den Schwellenwert für die Warnungsregel auf **Größer als 0** festlegen:
+Falls eine Warnung erfolgen soll, wenn der Prozessor innerhalb eines bestimmten Zeitfensters im Schnitt zu mehr als 90 Prozent ausgelastet ist, können Sie wie im folgenden Beispiel eine Abfrage mit dem Befehl `measure` verwenden und dabei den Schwellenwert für die Warnungsregel auf **Größer als 0** festlegen.
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
@@ -119,7 +119,7 @@ Falls eine Warnung erfolgen soll, wenn der Prozessor innerhalb eines bestimmten 
 Warnungsregeln des Typs **Metrische Maßeinheit** erzeugen eine Warnung für jedes Objekt in einer Abfrage mit einem Wert, der einen angegebenen Schwellenwert überschreitet.  Sie weisen gegenüber Warnungsregeln des Typs **Anzahl von Ergebnissen** die folgenden Unterschiede auf.
 
 #### <a name="log-search"></a>Protokollsuche
-Während Sie für eine Warnungsregel des Typs **Anzahl von Ergebnissen** eine beliebige Abfrage verwenden können, gelten für die Abfrage für eine Wartungsregel des Typs „Metrische Maßeinheit“ bestimmte Anforderungen.  Sie muss den Befehl [Measure](log-analytics-search-reference.md#commands) enthalten, um die Ergebnisse anhand eines bestimmten Felds zu gruppieren. Dieser Befehl muss die folgenden Elemente enthalten.
+Während Sie für eine Warnungsregel des Typs **Anzahl von Ergebnissen** eine beliebige Abfrage verwenden können, gelten für die Abfrage für eine Wartungsregel des Typs „Metrische Maßeinheit“ bestimmte Anforderungen.  Sie muss den Befehl `measure` enthalten, um die Ergebnisse anhand eines bestimmten Felds zu gruppieren. Dieser Befehl muss die folgenden Elemente enthalten.
 
 - **Aggregatfunktion**.  Bestimmt die zu erfolgende Berechnung und möglicherweise ein numerisches zu aggregierendes Feld.  Beispielsweise gibt **count()** die Anzahl der Datensätze in der Abfrage zurück, während **avg(CounterValue)** den Durchschnitt des Felds „CounterValue“ in diesem Intervall zurückgibt.
 - **Gruppierungsfeld**.  Ein Datensatz mit einem aggregierten Wert wird für jede Instanz dieses Felds erstellt, und für jede kann eine Warnung generiert werden.  Wenn Sie beispielsweise eine Warnung für jeden Computer generieren möchten, wählen Sie **Computer**.   
@@ -132,10 +132,10 @@ Der Schwellenwert für Warnungsregeln des Typs „Metrische Maßeinheit“ wird 
 Angenommen, Sie wünschen sich eine Warnung, wenn ein beliebiger Computer binnen 30 Minuten dreimal die Prozessornutzung von 90 % überschreitet.  Dazu erstellen Sie eine Warnungsregel mit den folgenden Details.  
 
 **Abfrage:** Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer Interval 5minute<br>
-**Zeitfenster:** 30 Minuten<br>
+**Zeitfenster**: 30 Minuten<br>
 **Warnungshäufigkeit:** 5 Minuten<br>
 **Aggregatwert:** Größer als 90<br>
-**Warnung auslösen basierend auf:** Gesamtanzahl der Verstöße größer als 5<br>
+**Warnung auslösen basierend auf**: Gesamtanzahl der Verstöße größer als 5<br>
 
 Die Abfrage ermittelt einen Durchschnittswert für jeden Computer in 5-Minuten-Intervallen.  Diese Abfrage wird alle 5 Minuten für die in den letzten 30 Minuten gesammelten Daten ausgeführt.  Nachstehend sehen Sie Beispieldaten für drei Computer.
 

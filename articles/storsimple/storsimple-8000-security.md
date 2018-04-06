@@ -1,24 +1,24 @@
 ---
-title: "Sicherheit für die StorSimple 8000-Serie | Microsoft-Dokumentation"
-description: "In diesem Abschnitt werden die Sicherheits- und Datenschutzfunktionen zum Schutz Ihres StorSimple-Diensts und -Geräts sowie Ihrer lokalen Daten und Daten in der Cloud beschrieben."
+title: Sicherheit für die StorSimple 8000-Serie | Microsoft-Dokumentation
+description: In diesem Abschnitt werden die Sicherheits- und Datenschutzfunktionen zum Schutz Ihres StorSimple-Diensts und -Geräts sowie Ihrer lokalen Daten und Daten in der Cloud beschrieben.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/23/2018
+ms.date: 03/27/2018
 ms.author: alkohli
-ms.openlocfilehash: c14927f82ca01320206ccec83216777b7d1b8708
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: ee0534ab8bc3400854ddf550df9ca2f395f8d80d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple-Sicherheit und -Datenschutz
 
@@ -267,6 +267,20 @@ Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsof
 **F:** Was geschieht, wenn Microsoft von einer Behörde aufgefordert wird, meine Daten offenzulegen?
 
 **A:** Da alle Daten im Dienst verschlüsselt werden und der private Schlüssel im Gerät verbleibt, muss die Behörde die Daten direkt vom Kunden anfordern.
+
+## <a name="gdpr-compliance"></a>Einhaltung der DSGVO
+
+Die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält zahlreiche Bestimmungen für die Sammlung, Speicherung und Verwendung persönlicher Informationen. Die Regeln der DSGVO gelten für Unternehmen, Regierungsbehörden und andere Organisationen, die in der EU tätig sind und Daten sammeln/analysieren, die mit EU-Bürgern zusammenhängen. 
+
+Der StorSimple-Geräte-Manager für die physische und die virtuelle Serie ist DSGVO-konform. Es gibt zwei wichtige Instanzen, in denen persönliche Informationen gesammelt und im Dienst angezeigt werden:
+
+- Benutzereinstellungen für Warnungen, in denen die E-Mail-Adresse von Benutzern konfiguriert wird. Diese Informationen können vom Administrator angezeigt und gelöscht werden. Dies gilt sowohl für die StorSimple 8000-Serie als auch für StorSimple Virtual Arrays.
+ * Wenn Sie die Einstellungen für die StorSimple 8000-Serie anzeigen und löschen möchten, gehen Sie gemäß der Anleitung unter [Anzeigen und Verwalten von StorSimple-Warnungen](storsimple-8000-manage-alerts.md#configure-alert-settings) vor.
+ * Wenn Sie die Einstellungen für ein StorSimple Virtual Array anzeigen und löschen möchten, gehen Sie gemäß der Anleitung unter [Anzeigen und Verwalten von StorSimple-Warnungen](storsimple-virtual-array-manage-alerts.md#configure-alert-settings) vor.
+- Benutzer, die auf die Daten auf den Freigaben zugreifen können. Eine Liste mit Benutzern, die auf die Freigabedaten zugreifen können, kann angezeigt werden. Die Liste wird zusammen mit den Freigaben gelöscht. Dies gilt nur für StorSimple Virtual Arrays.
+ * Eine Anleitung zum Anzeigen der Liste mit den Benutzern, die auf eine Freigabe zugreifen können, sowie zum Löschen einer Freigabe finden Sie unter [Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Freigaben auf dem StorSimple Virtual Array](storsimple-virtual-array-manage-shares.md).
+
+Weitere Informationen finden Sie im [Trust Center](https://www.microsoft.com/trustcenter) in der Microsoft-Datenschutzrichtlinie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

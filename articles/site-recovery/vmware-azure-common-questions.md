@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: raynew
-ms.openlocfilehash: 7e556bff2e9ebdd1efc969660cc8b4a33f3adcdb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 345b73db423c6e12b56bb3308f7700917a372dda
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -48,6 +48,13 @@ Wenn Sie ein Abonnementadminstrator sind, besitzen Sie die erforderlichen Replik
 
 ### <a name="what-do-i-need-on-premises"></a>Was benötige ich lokal?
 Lokal benötigen Sie Site Recovery-Komponenten, die auf einer einzelnen VMware-VM installiert sind. Sie benötigen auch eine VMware-Infrastruktur mit mindestens einem ESXi-Host, und wir empfehlen einen vCenter-Server. Darüber hinaus benötigen Sie mindestens eine zu replizierende VMware-VM. [Erfahren Sie mehr](vmware-azure-architecture.md) über die VMware-zu-Azure-Architektur.
+
+Der lokale Konfigurationsserver kann mit einer der beiden folgenden Methoden bereitgestellt werden.
+
+1. Stellen Sie ihn mithilfe einer VM-Vorlage bereit, in der der Konfigurationsserver vorinstalliert ist. Weitere Informationen finden Sie [hier](vmware-azure-tutorial.md#download-the-vm-template).
+2. Stellen Sie ihn über das Setup auf einem Windows Server 2016-Computer Ihrer Wahl bereit. Weitere Informationen finden Sie [hier](physical-azure-disaster-recovery.md#set-up-the-source-environment).
+
+Wählen Sie zum Ermitteln der ersten Schritte zum Bereitstellen des Konfigurationsservers auf Ihren eigenen Windows Server-Computern im Schutzziel der Schutzaktivierung **In Azure > Nicht virtualisiert/Andere** aus.
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Zu welchem Speicher werden lokale virtuelle Computer repliziert?
 Daten werden zu Azure-Speicher repliziert. Wenn Sie ein Failover zu Azure ausführen, erstellt Site Recovery automatisch Azure-VMs aus dem Speicherkonto.

@@ -1,8 +1,8 @@
 ---
-title: "Erstellen einer IoT-Lösung mithilfe von Stream Analytics | Microsoft Docs"
-description: "Enthält ein Tutorial zu den ersten Schritten für die Stream Analytics-IoT-Lösung für ein Mauthäuschen-Szenario."
-keywords: "IoT-Lösung, Fensterfunktionen"
-documentationcenter: 
+title: Erstellen einer IoT-Lösung mithilfe von Stream Analytics | Microsoft Docs
+description: Enthält ein Tutorial zu den ersten Schritten für die Stream Analytics-IoT-Lösung für ein Mauthäuschen-Szenario.
+keywords: IoT-Lösung, Fensterfunktionen
+documentationcenter: ''
 services: stream-analytics
 author: SnehaGunda
 manager: kfile
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/12/2018
+ms.date: 03/21/2018
 ms.author: sngun
-ms.openlocfilehash: cc84a34a410a750ddf2acb8f19b3bb809d269098
-ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
+ms.openlocfilehash: 6ee2c1c4b1255b462f2974c111e626d62608de5c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Erstellen einer IoT-Lösung mithilfe von Stream Analytics
 
@@ -41,8 +41,7 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 * Visual Studio 2017, 2015 oder die kostenlose [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 * [Ein Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/)
 * Administratorrechte auf dem Computer
-* Download von [TollApp.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) aus dem Microsoft Download Center
-* Optional: Quellcode für den TollApp-Ereignisgenerator in [GitHub](https://aka.ms/azure-stream-analytics-toll-source)
+* Laden Sie den Quellcode für die TollApp-Sensordatenanalyse aus dem [azure-stream-analytics-GitHub-Repository](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) herunter. Dieses Repository enthält Beispieldaten und Abfragen, die Sie in den nächsten Abschnitten verwenden. 
 
 ## <a name="scenario-introduction-hello-toll"></a>Einführung in das Szenario: „Hallo, Maut!“
 Eine Mautstation ist eine bekannte Einrichtung. Es gibt sie auf vielen Autobahnen und an Brücken und Tunneln auf der ganzen Welt. Jede Mautstation umfasst mehrere Mauthäuschen. An Häuschen mit manueller Bezahlung halten Sie an und entrichten den Mautbetrag bei der zuständigen Person. Bei Häuschen mit automatisierter Bezahlung wird mit einem Sensor oben auf dem Häuschen eine RFID-Karte abgetastet, die an der Windschutzscheibe Ihres Fahrzeugs angebracht ist, während Sie das Mauthäuschen passieren. Es ist einfach, die Durchfahrt von Fahrzeugen durch diese Mautstellen als einen Strom von Ereignissen zu visualisieren, über den interessante Vorgänge ausgeführt werden können.
@@ -173,7 +172,7 @@ Sie sehen ein anderes Fenster, das etwa wie im folgenden Screenshot aussieht. Di
 
 ![Screenshot zum „Senden von Event Hub-Daten“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image7.png)
 
-Nun sollten alle Ihre Ressourcen im Azure-Portal angezeigt werden. Navigieren Sie zu <https://portal.azure.com>, und melden Sie sich mit Ihren Anmeldeinformationen an. Beachten Sie, dass einige Funktionen derzeit das klassische Portal verwenden. Diese Schritte werden eindeutig angegeben.
+Nun sollten alle Ihre Ressourcen im Azure-Portal angezeigt werden. Gehen Sie zu <https://portal.azure.com>, und melden Sie sich mit Ihren Kontoanmeldeinformationen an. Beachten Sie, dass einige Funktionen derzeit das klassische Portal verwenden. Diese Schritte werden eindeutig angegeben.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 

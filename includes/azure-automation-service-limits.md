@@ -7,4 +7,4 @@
 | Auftrag-Laufzeit – Free-Tarif |500 Minuten pro Abonnement pro Kalendermonat |
 | Maximaler Arbeitsspeicher für einen Auftrag |400 MB |
 | Maximale Anzahl von Netzwerksockets, die pro Auftrag zulässig sind |1000 |
-
+| Maximale Anzahl von Automation-Konten in einem Abonnement |Keine Begrenzung |

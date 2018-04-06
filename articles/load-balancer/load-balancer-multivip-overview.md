@@ -1,34 +1,32 @@
 ---
-title: "Mehrere Front-Ends für Azure Load Balancer | Microsoft-Dokumentation"
-description: "Übersicht über die Verwendung mehrerer Front-Ends in Azure Load Balancer"
+title: Mehrere Front-Ends für Azure Load Balancer | Microsoft-Dokumentation
+description: Übersicht über die Verwendung mehrerer Front-Ends in Azure Load Balancer
 services: load-balancer
 documentationcenter: na
 author: chkuhtz
 manager: narayan
-editor: 
+editor: ''
 ms.assetid: 748e50cd-3087-4c2e-a9e1-ac0ecce4f869
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/22/2018
 ms.author: chkuhtz
-ms.openlocfilehash: e4c77f3b9bd53df632a433532376eb859969a036
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: cf8fa396e0518e1c847225dfc1d8f91c3421bd11
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Mehrere Front-Ends für Azure Load Balancer
-
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Mit Azure Load Balancer können Sie für Dienste an mehreren Ports, mehreren IP-Adressen oder beidem einen Lastenausgleich vornehmen. Sie können öffentliche und interne Load Balancer-Definitionen verwenden, um einen Lastenausgleich für Datenflüsse innerhalb einer VM-Gruppe durchzuführen.
 
 Dieser Artikel beschreibt die Grundlagen dieser Funktion, wichtige Konzepte und Einschränkungen. Wenn Sie Dienste mit einer IP-Adresse verfügbar machen möchten, finden Sie vereinfachte Anweisungen für öffentliche Load Balancer-Konfigurationen [hier](load-balancer-get-started-internet-portal.md) und für interne Load Balancer-Konfigurationen [hier](load-balancer-get-started-ilb-arm-portal.md). Mehrere Front-Ends können einer Konfiguration mit einem einzelnen Front-End inkrementell hinzugefügt werden. Mit den Konzepten in diesem Artikel können Sie eine vereinfachte Konfiguration jederzeit erweitern.
 
-Wenn Sie einen Azure Load Balancer definieren, sind eine Front-End- und eine Back-End-Konfiguration über Regeln verbunden. Mit dem Integritätstest, auf den von der Regel verwiesen wird, wird bestimmt, wie neue Datenflüsse an einen Knoten im Back-End-Pool gesendet werden. Das Front-End wird durch eine Front-End-IP-Konfiguration (bzw. VIP) definiert. Dabei handelt es sich um ein aus 3 Tupel bestehend aus einer IP-Adresse (öffentlich oder intern), einem Transportprotokoll (UDP oder TCP) und einer Portnummer von der Lastenausgleichsregel. Eine DIP ist eine IP-Adresse einer virtuellen Azure-NIC, die einer VM im Back-End-Pool zugeordnet ist.
+Wenn Sie einen Azure Load Balancer definieren, sind eine Front-End- und eine Back-End-Pool-Konfiguration über Regeln verbunden. Mit dem Integritätstest, auf den von der Regel verwiesen wird, wird bestimmt, wie neue Datenflüsse an einen Knoten im Back-End-Pool gesendet werden. Das Front-End (bzw. VIP) wird durch eine aus 3 Tupeln bestehende IP-Adresse (öffentlich oder intern), ein Transportprotokoll (UDP oder TCP) und eine Portnummer von der Lastenausgleichsregel definiert. Der Back-End-Pool ist eine Sammlung von VM-IP-Konfigurationen (Teil der NIC-Ressource), die auf den Load Balancer-Back-End-Pool verweisen.
 
 Die folgende Tabelle enthält einige Beispielkonfigurationen des Front-Ends:
 
@@ -134,6 +132,10 @@ Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigu
 ## <a name="limitations"></a>Einschränkungen
 
 * Konfigurationen mit mehreren Front-Ends werden nur für IaaS-VMs unterstützt.
-* Bei der Floating IP-Regel muss die Anwendung die DIP für ausgehende Datenflüsse verwenden. Wenn Ihre Anwendung an die Front-End-IP-Adresse gebunden ist, die an der Loopbackschnittstelle im Gastbetriebssystem konfiguriert ist, ist die SNAT nicht verfügbar, um den ausgehenden Datenfluss umzuschreiben, und beim Datenfluss tritt ein Fehler auf.
+* Bei der Floating IP-Regel muss die Anwendung die primäre IP-Konfiguration für ausgehende Datenflüsse verwenden. Wenn Ihre Anwendung an die Front-End-IP-Adresse gebunden ist, die an der Loopbackschnittstelle im Gastbetriebssystem konfiguriert ist, ist die Azure-SNAT nicht verfügbar, um den ausgehenden Datenfluss umzuschreiben, und beim Datenfluss tritt ein Fehler auf.
 * Öffentliche IP-Adressen haben Auswirkungen auf die Abrechnung. Weitere Informationen finden Sie unter [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * Es gelten Grenzwerte für Abonnements. Weitere Informationen finden Sie unter [Einschränkungen für Dienste](../azure-subscription-service-limits.md#networking-limits) .
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Lesen Sie [Ausgehende Verbindungen in Azure](load-balancer-outbound-connections.md), um die Auswirkung mehrerer Front-Ends auf das Verhalten ausgehender Verbindungen zu verstehen.

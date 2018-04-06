@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Konfiguration für QQ | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie Registrierung und Anmeldung für Kunden mit QQ-Konten in Ihren mit Azure Active Directory B2C gesicherten Anwendungen bereitstellen."
+title: 'Azure Active Directory B2C: Konfiguration für QQ | Microsoft-Dokumentation'
+description: Es wird beschrieben, wie Sie Registrierung und Anmeldung für Kunden mit QQ-Konten in Ihren mit Azure Active Directory B2C gesicherten Anwendungen bereitstellen.
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 18c2cf94-8004-4de1-81c2-e45be65ce12d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2017
-ms.author: parakhj
-ms.openlocfilehash: d4cc26d4f206baf9137feae0825b1f9fa5a7c8d6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 12daed5f90e2b073a7520c061f18761baaed5c03
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-qq-accounts"></a>Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit QQ-Konten
 
@@ -28,7 +25,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="create-a-qq-application"></a>Erstellen einer QQ-Anwendung
 
-Um QQ als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine QQ-Anwendung erstellen und die entsprechenden Parameter bereitstellen. Sie benötigen dazu ein QQ-Konto. Wenn Sie kein Konto besitzen, können Sie dieses unter folgendem Link erstellen: [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033).
+Um QQ als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine QQ-Anwendung erstellen und die entsprechenden Parameter bereitstellen. Sie benötigen dazu ein QQ-Konto. Wenn Sie keines haben, können Sie unter [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) eines erstellen.
 
 ### <a name="register-for-the-qq-developer-program"></a>Registrieren beim QQ-Entwicklerprogramm
 
@@ -43,7 +40,7 @@ Um QQ als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwende
 
 ### <a name="register-a-qq-application"></a>Registrieren einer QQ-Anwendung
 
-1. Rufen Sie die Seite [https://connect.qq.com/index.html](https://connect.qq.com/index.html) auf.
+1. Navigieren Sie zu [https://connect.qq.com/index.html](https://connect.qq.com/index.html).
 2. Klicken Sie auf **应用管理** (App-Verwaltung).
 3. Klicken Sie auf **创建应用** (App erstellen).
 4. Geben Sie die erforderlichen App-Informationen ein.
@@ -57,9 +54,9 @@ Um QQ als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwende
 12. Kopieren Sie im oberen Bereich der Seite die **APP-ID** und den **APP-SCHLÜSSEL**.
 
 ## <a name="configure-qq-as-an-identity-provider-in-your-tenant"></a>Konfigurieren von QQ als Identitätsanbieter in Ihrem Mandanten
-1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) .
+1. Führen Sie diese Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Klicken Sie auf dem B2C-Featureblatt auf **Identitätsanbieter**.
-3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
+3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
 4. Geben Sie als **Name** einen aussagekräftigen Namen für die Konfiguration des Identitätsanbieters ein. Geben Sie z.B. „QQ“ ein.
 5. Klicken Sie auf **Identitätsanbietertyp**, wählen Sie **QQ** und klicken Sie auf **OK**.
 6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**.

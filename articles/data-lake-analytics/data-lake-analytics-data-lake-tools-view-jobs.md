@@ -1,8 +1,8 @@
 ---
-title: "Verwenden des Auftragsbrowsers und der Auftragsansicht für Azure Data Lake Analytics-Aufträge | Microsoft Docs"
-description: "Erfahren Sie, wie Sie den Auftragsbrowser und die Auftragsansicht für Azure Data Lake Analytics-Aufträge verwenden. "
+title: Verwenden des Auftragsbrowsers und der Auftragsansicht für Azure Data Lake Analytics-Aufträge | Microsoft Docs
+description: 'Erfahren Sie, wie Sie den Auftragsbrowser und die Auftragsansicht für Azure Data Lake Analytics-Aufträge verwenden. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/02/2017
 ms.author: jgao
-ms.openlocfilehash: 8f1729f84a4fde2a56427a41b356d6263818519e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc9048566dd58733cd86aac0f9836763fa095843
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Verwenden des Auftragsbrowsers und der Auftragsansicht für Azure Data Lake Analytics-Aufträge
 Der Dienst Azure Data Lake Analytics archiviert die übermittelten Aufträge in einem [Abfragespeicher](#query-store). In diesem Artikel erfahren Sie, wie Sie den Auftragsbrowser und die Auftragsansicht in Azure Data Lake-Tools für Visual Studio verwenden, um die Verlaufsinformationen zu Aufträgen zu suchen. 
@@ -164,7 +164,7 @@ Unter „Job Detail“ (Auftragsdetails) werden die detaillierten Informationen 
 * Skript
   
     Das U-SQL-Skript des Auftrags wird im Abfragespeicher gespeichert. Sie können das ursprüngliche U-SQL-Skript anzeigen und es erneut senden, falls erforderlich.
-* Ressourcen
+* angeben
   
     Sie finden die Auftragskompilierungsausgaben im Abfragespeicher unter „Resources“ gespeichert. Hier Sie finden z.B. „algebra.xml“, womit das Auftragsdiagramm angezeigt wird, die von Ihnen registrierten Assemblys usw.
 * Scheitelpunktausführungsansicht

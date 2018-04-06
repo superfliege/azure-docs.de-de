@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 03/14/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 2167754d832eb9be3add9875a8189780e1785988
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2748b078586c27a7625c8e48172048d7a574a4d7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>Schnellstart: Bereitstellen eines Azure Container Service-Clusters (AKS)
 
@@ -29,7 +29,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="enabling-aks-preview"></a>Aktivieren der AKS-Vorschau
 
-Stellen Sie mithilfe des Befehls `az provider register` sicher, dass die erforderlichen Azure-Dienstanbieter aktiviert sind. 
+Stellen Sie mithilfe des Befehls `az provider register` sicher, dass die erforderlichen Azure-Dienstanbieter aktiviert sind.
 
 ```azurecli-interactive
 az provider register -n Microsoft.Network
@@ -80,7 +80,7 @@ Nach einigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werde
 
 Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeilenclient [kubectl][kubectl].
 
-Wenn Sie Azure Cloud Shell verwenden, ist „kubectl“ bereits installiert. Wenn Sie ihn lokal installieren möchten, verwenden Sie den Befehl [az aks install-cli][az-aks-install-cli].
+Wenn Sie Azure Cloud Shell verwenden, ist „kubectl“ bereits installiert. Verwenden Sie für die lokale Installation den Befehl [az aks install-cli][az-aks-install-cli].
 
 
 ```azurecli
@@ -236,7 +236,7 @@ In dieser Schnellstartanleitung haben Sie einen Kubernetes-Cluster und eine Anwe
 Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispiel vom Code bis zur Bereitstellung finden Sie im Kubernetes-Clustertutorial.
 
 > [!div class="nextstepaction"]
-> [AKS-Tutorial][aks-tutorial]:
+> [AKS-Tutorial][aks-tutorial]
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
@@ -250,7 +250,7 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 [az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az_aks_browse
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
-[az aks install-cli]: /cli/azure/aks?view=azure-cli-latest#az_aks_install_cli
+[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az_aks_install_cli
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli

@@ -1,11 +1,11 @@
 ---
 title: Reliable Actors-Zustandsverwaltung | Microsoft Docs
-description: "Hier wird beschrieben, wie der Reliable Actors-Zustand für Hochverfügbarkeit verwaltet, persistent gespeichert und repliziert wird."
+description: Hier wird beschrieben, wie der Reliable Actors-Zustand für Hochverfügbarkeit verwaltet, persistent gespeichert und repliziert wird.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: f196b2e54efc5ecbbd93e48e1f115edb99e5c858
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d5d38e7fa80db3484c397d9840bbc6092e4f18bb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors-Zustandsverwaltung
 Reliable Actors sind Singlethread-Objekte, die sich zum Kapseln von Logik und Zustand eignen. Da Akteure unter Reliable Services ausgeführt werden, können Sie den Zustand zuverlässig beibehalten, indem sie die gleichen Persistenz- und Replikationsmechanismen verwenden. Daher verlieren Akteure ihren Zustand nicht nach Fehlern, bei der Reaktivierung nach einer Garbage Collection oder beim Verschieben zwischen Knoten in einem Cluster aufgrund von Ressourcenausgleich oder Upgrades.
@@ -111,299 +111,7 @@ Schlüssel des Zustands-Managers müssen Zeichenfolgen sein. Werte sind generisc
 
 Der Zustands-Manager macht allgemeine Wörterbuchmethoden zum Verwalten des Zustands verfügbar. Diese ähneln den Methoden in Reliable Dictionary.
 
-## <a name="accessing-state"></a>Zugreifen auf den Zustand
-Auf den Zustand kann nach Schlüssel über den Zustands-Manager zugegriffen werden. Alle Zustands-Manager-Methoden sind asynchron, da sie u.U. Datenträger-E/A erfordern, wenn Akteure über einen persistenten Zustand verfügen. Beim ersten Zugriff werden Zustandsobjekte im Arbeitsspeicher zwischengespeichert. Bei wiederholten Zugriffsvorgängen wird direkt aus dem Speicher auf Objekte zugegriffen, und die Rückgabe erfolgt synchron, ohne dass dabei Datenträger-E/A entstehen oder Aufwand für den asynchronen Kontextwechsel anfällt. In den folgenden Fällen wird ein Zustandsobjekt aus dem Cache entfernt:
-
-* Eine Akteurmethode löst nach dem Abrufen eines Objekts aus dem Zustands-Manager eine nicht behandelte Ausnahme aus.
-* Ein Akteur wird entweder nach seiner Deaktivierung oder nach einem Fehler wieder aktiviert.
-* Der Zustandsanbieter lagert den Zustand an den Datenträger aus. Dieses Verhalten hängt von der Implementierung des Zustandsanbieters ab. Der Standardzustandsanbieter für die Einstellung `Persisted` weist dieses Verhalten auf.
-
-Der Zustand kann mit einem *Get*-Standardvorgang abgerufen werden, der `KeyNotFoundException`(C#) oder `NoSuchElementException`(Java) auslöst, wenn kein Eintrag für den Schlüssel vorhanden ist:
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task<int> GetCountAsync()
-    {
-        return this.StateManager.GetStateAsync<int>("MyState");
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture<Integer> getCountAsync()
-    {
-        return this.stateManager().getStateAsync("MyState");
-    }
-}
-```
-
-Der Zustand kann auch mit einer *TryGet*-Methode abgerufen werden, die keine Ausnahme auslöst, wenn kein Eintrag für einen Schlüssel vorhanden ist:
-
-```csharp
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public async Task<int> GetCountAsync()
-    {
-        ConditionalValue<int> result = await this.StateManager.TryGetStateAsync<int>("MyState");
-        if (result.HasValue)
-        {
-            return result.Value;
-        }
-
-        return 0;
-    }
-}
-```
-```Java
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture<Integer> getCountAsync()
-    {
-        return this.stateManager().<Integer>tryGetStateAsync("MyState").thenApply(result -> {
-            if (result.hasValue()) {
-                return result.getValue();
-            } else {
-                return 0;
-            });
-    }
-}
-```
-
-## <a name="saving-state"></a>Speichern des Zustands
-Mit den Abrufmethoden des Zustands-Managers wird ein Verweis auf ein Objekt im lokalen Speicher zurückgegeben. Eine Änderung dieses Objekts im lokalen Speicher bewirkt nicht, dass es dauerhaft gespeichert wird. Wenn ein Objekt vom Zustands-Manager abgerufen und geändert wird, muss es wieder in den Zustands-Manager eingefügt werden, damit es dauerhaft gespeichert wird.
-
-Der Zustand kann über eine nicht bedingte *Set`dictionary["key"] = value`-Methode eingefügt werden. Dies entspricht der Syntax* :
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task SetCountAsync(int value)
-    {
-        return this.StateManager.SetStateAsync<int>("MyState", value);
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture setCountAsync(int value)
-    {
-        return this.stateManager().setStateAsync("MyState", value);
-    }
-}
-```
-
-Sie können den Zustand mithilfe einer *Add*-Methode hinzufügen. Diese Methode löst `InvalidOperationException`(C#) oder `IllegalStateException`(Java) aus, wenn sie versucht, einen Schlüssel hinzuzufügen, die bereits vorhanden ist.
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task AddCountAsync(int value)
-    {
-        return this.StateManager.AddStateAsync<int>("MyState", value);
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture addCountAsync(int value)
-    {
-        return this.stateManager().addOrUpdateStateAsync("MyState", value, (key, old_value) -> old_value + value);
-    }
-}
-```
-
-Sie können den Zustand auch mithilfe einer *TryAdd*-Methode hinzufügen. Diese Methode löst keine Ausnahme aus, wenn sie versucht, einen Schlüssel hinzuzufügen, die bereits vorhanden ist.
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public async Task AddCountAsync(int value)
-    {
-        bool result = await this.StateManager.TryAddStateAsync<int>("MyState", value);
-
-        if (result)
-        {
-            // Added successfully!
-        }
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture addCountAsync(int value)
-    {
-        return this.stateManager().tryAddStateAsync("MyState", value).thenApply((result)->{
-            if(result)
-            {
-                // Added successfully!
-            }
-        });
-    }
-}
-```
-
-Am Ende einer Akteurmethode speichert der Zustands-Manager automatisch alle Werte, die in einem Einfüge- oder Aktualisierungsvorgang hinzugefügt oder geändert wurden. Je nach verwendeten Einstellungen kann ein Speichervorgang das persistente Speichern auf Datenträgern und die Replikation beinhalten. Werte, die nicht geändert wurden, werden nicht persistent gespeichert oder repliziert. Wenn keine Werte geändert wurden, geschieht beim Speichervorgang nichts. Tritt beim Speichern ein Fehler auf, wird der geänderte Zustand verworfen und der Ursprungszustand wieder geladen.
-
-Der Zustand kann durch Aufrufen der `SaveStateAsync`-Methode für die Akteurbasis auch manuell gespeichert werden:
-
-```csharp
-async Task IMyActor.SetCountAsync(int count)
-{
-    await this.StateManager.AddOrUpdateStateAsync("count", count, (key, value) => count > value ? count : value);
-
-    await this.SaveStateAsync();
-}
-```
-```Java
-interface MyActor {
-    CompletableFuture setCountAsync(int count)
-    {
-        this.stateManager().addOrUpdateStateAsync("count", count, (key, value) -> count > value ? count : value).thenApply();
-
-        this.stateManager().saveStateAsync().thenApply();
-    }
-}
-```
-
-## <a name="removing-state"></a>Entfernen des Zustands
-Der Zustand kann durch Aufrufen der *Remove*-Methode dauerhaft aus dem Zustands-Manager eines Akteurs entfernt werden. Diese Methode löst `KeyNotFoundException`(C#) oder `NoSuchElementException`(Java) aus, wenn sie versucht, einen Schlüssel zu entfernen, die nicht vorhanden ist.
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task RemoveCountAsync()
-    {
-        return this.StateManager.RemoveStateAsync("MyState");
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture removeCountAsync()
-    {
-        return this.stateManager().removeStateAsync("MyState");
-    }
-}
-```
-
-Sie können den Zustand mithilfe der *TryRemove*-Methode auch permanent entfernen. Diese Methode löst keine Ausnahme aus, wenn sie versucht, einen Schlüssel zu entfernen, der nicht vorhanden ist.
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public async Task RemoveCountAsync()
-    {
-        bool result = await this.StateManager.TryRemoveStateAsync("MyState");
-
-        if (result)
-        {
-            // State removed!
-        }
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture removeCountAsync()
-    {
-        return this.stateManager().tryRemoveStateAsync("MyState").thenApply((result)->{
-            if(result)
-            {
-                // State removed!
-            }
-        });
-    }
-}
-```
+Beispiele für die Verwaltung von Actorzuständen finden Sie unter [Zugreifen auf die Zustände sowie Speichern und Entfernen der Zustände von Reliable Actors](service-fabric-reliable-actors-access-save-remove-state.md).
 
 ## <a name="best-practices"></a>Bewährte Methoden
 Hier finden einige empfohlene Vorgehensweisen und Tipps zur Problembehandlung für die Verwaltung des Akteurzustands.
@@ -412,7 +120,7 @@ Hier finden einige empfohlene Vorgehensweisen und Tipps zur Problembehandlung f�
 Dies ist besonders wichtig für die Leistung und Ressourcennutzung Ihrer Anwendung. Bei jedem Schreibvorgang im „benannten Zustand“ eines Akteurs bzw. einer Aktualisierung davon, wird der gesamte, diesem „benannten Zustand“ entsprechende Wert serialisiert und über das Netzwerk an die sekundären Replikate gesendet.  Die sekundären Replikate schreiben ihn auf die lokale Festplatte und senden die Antwort zurück an das primäre Replikat. Wenn das primäre Replikat Bestätigungen von einem Quorum von sekundären Replikaten empfängt, schreibt es den Zustand auf seine lokale Festplatte. Nehmen wir beispielsweise an, dass der Wert eine Klasse mit 20 Membern und einer Größe von 1 MB ist. Auch wenn nur einer der Klassenmember mit einer Größe von 1 KB geändert wurde, bezahlen Sie letztendlich die Kosten der Serialisierung sowie der Netzwerk- und Datenträger-Schreibvorgänge für die Gesamtgröße von 1 MB. Wenn der Wert eine Auflistung (z.B. eine Liste, ein Array oder Wörterbuch) ist, fallen ebenso die Kosten für die vollständige Auflistung an, wenn Sie einen der zugehörigen Member ändern. Die StateManager-Schnittstelle der Akteurklasse ist wie ein Wörterbuch. Zusätzlich zu diesem Wörterbuch müssen Sie immer die Datenstruktur modellieren, die den Akteurzustand darstellt.
  
 ### <a name="correctly-manage-the-actors-life-cycle"></a>Vorschriftsmäßige Verwaltung des Akteur-Lebenszyklus
-Sie benötigen eindeutige Richtlinien zum Verwalten der Zustandsgröße in jeder Partition eines Akteurdiensts. Ihr Akteurdienst muss eine feste Anzahl von Akteuren aufweisen und diese soweit möglich wiederverwenden. Wenn Sie laufend neue Akteure erstellen, müssen Sie diese löschen, nachdem sie ihren Zweck erfüllt haben. Das Akteur-Framework speichert einige Metadaten zu jedem vorhandenen Akteur. Beim Löschen des gesamten Zustands eines Akteurs werden dessen Metadaten nicht entfernt. Sie müssen den Akteur löschen (siehe [Löschen von Akteuren und deren Zuständen](service-fabric-reliable-actors-lifecycle.md#deleting-actors-and-their-state)), um alle im System dazu gespeicherten Informationen zu entfernen. Als eine zusätzliche Überprüfung sollten Sie den Akteurdienst bisweilen abfragen (siehe [Aufzählen von Akteuren](service-fabric-reliable-actors-platform.md)), um sicherzustellen, dass die Anzahl von Akteuren innerhalb des erwarteten Bereichs liegt.
+Sie benötigen eindeutige Richtlinien zum Verwalten der Zustandsgröße in jeder Partition eines Akteurdiensts. Ihr Akteurdienst muss eine feste Anzahl von Akteuren aufweisen und diese soweit möglich wiederverwenden. Wenn Sie laufend neue Akteure erstellen, müssen Sie diese löschen, nachdem sie ihren Zweck erfüllt haben. Das Akteur-Framework speichert einige Metadaten zu jedem vorhandenen Akteur. Beim Löschen des gesamten Zustands eines Akteurs werden dessen Metadaten nicht entfernt. Sie müssen den Akteur löschen (siehe [Löschen von Akteuren und deren Zuständen](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)), um alle im System dazu gespeicherten Informationen zu entfernen. Als eine zusätzliche Überprüfung sollten Sie den Akteurdienst bisweilen abfragen (siehe [Aufzählen von Akteuren](service-fabric-reliable-actors-platform.md)), um sicherzustellen, dass die Anzahl von Akteuren innerhalb des erwarteten Bereichs liegt.
  
 Sollten Sie jemals feststellen, dass die Größe der Datenbankdatei eines Akteurdiensts die erwartete Größe überschreitet, stellen Sie sicher, dass die hier angegebenen Richtlinien eingehalten werden. Wenn Sie diese Richtlinien einhalten und die dennoch Probleme mit der Größe der Datenbankdatei auftreten, [öffnen Sie ein Supportticket](service-fabric-support.md) beim Produktteam, um Hilfe zu erhalten.
 

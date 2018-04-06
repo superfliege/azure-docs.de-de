@@ -1,21 +1,5 @@
----
-title: 'Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe der Azure CLI'
-description: In diesem Tutorial wird veranschaulicht, wie Sie Ihren ersten Azure Database for PostgreSQL-Server mit der Azure CLI erstellen, konfigurieren und abfragen.
-services: postgresql
-author: rachel-msft
-ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
-ms.service: postgresql
-ms.custom: mvc
-ms.devlang: azure-cli
-ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 56425ec7ccb1d6629b82db6683a02a57ab9999b4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+-- title: „Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe der Azure CLI“ description: In diesem Tutorial erfahren Sie, wie Sie Ihren ersten Azure Database for PostgreSQL-Server mithilfe der Azure CLI erstellen, konfigurieren und abfragen.
+services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 03/20/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe der Azure CLI 
 In diesem Tutorial verwenden Sie die Azure CLI (Befehlszeilenschnittstelle) und andere Hilfsprogramme, um zu lernen, wie Sie Folgendes ausführen:
@@ -61,11 +45,11 @@ Die JSON-Ausgabe sollte Folgendes enthalten:
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.3"
+    "version": "0.0.4"
 }
 ```
 
-Wird Version 0.0.3 nicht zurückgegeben, führen Sie den folgenden Befehl aus, um die Erweiterung zu aktualisieren: 
+Wird Version 0.0.4 nicht zurückgegeben, führen Sie den folgenden Befehl aus, um die Erweiterung zu aktualisieren: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```
@@ -149,7 +133,7 @@ psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<db
   Mit dem folgenden Befehl wird beispielsweise mit den Zugriffsanmeldeinformationen eine Verbindung mit der Standarddatenbank **postgres** auf Ihrem PostgreSQL-Server **mydemoserver.postgres.database.azure.com** hergestellt. Geben Sie das `<server_admin_password>` ein, das Sie bei der Aufforderung zur Kennworteingabe ausgewählt haben.
   
   ```azurecli-interactive
-psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver ---dbname=postgres
+psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
 ```
 
 2.  Sobald Sie mit dem Server verbunden sind, erstellen Sie an der Eingabeaufforderung eine leere Datenbank:

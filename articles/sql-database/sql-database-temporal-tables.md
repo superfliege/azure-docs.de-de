@@ -3,17 +3,17 @@ title: Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank | Micro
 description: Lernen Sie die ersten Schritte mit temporalen Tabellen in der Azure SQL-Datenbank.
 services: sql-database
 author: bonova
+ms.date: 03/21/2018
 manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 01/10/2017
 ms.author: bonova
-ms.openlocfilehash: 8e76d78e402d2cdc58ca26767c55c413f83226d9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0299d52396549baf8ea7e5eb7145585c7b5900a6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank
 Temporale Tabellen sind eine neue Programmierfunktion der Azure SQL-Datenbank, mit der Sie den vollständigen Verlauf von Änderungen in Ihren Daten ohne benutzerdefinierte Codierung nachverfolgen und analysieren können. Temporale Tabellen enthalten Daten, die eng mit dem zeitlichen Kontext verbunden sind, sodass gespeicherte Fakten nur im angegebenen Zeitraum als gültig interpretiert werden können. Diese Eigenschaft von temporalen Tabellen ermöglicht eine effiziente zeitbasierte Analyse und Einblicke in die Datenentwicklung.
@@ -64,7 +64,7 @@ Wenn Sie eine temporale Tabelle mit Systemversionsverwaltung erstellen, wird die
 In diesem Fall soll über einen längeren Datenverlauf hinweg und mit größeren Datasets eine zeitbasierte Trendanalyse ausgeführt werden, darum wird als Speicher für die Verlaufstabelle ein gruppierter Columnstore-Index gewählt. Ein gruppierter Columnstore bietet sehr gute Komprimierung und Leistung für analytische Abfragen. Temporale Tabellen geben Ihnen die Flexibilität zum vollständig unabhängigen Konfigurieren von Indizes für aktuelle und temporalen Tabellen. 
 
 > [!NOTE]
-> Columnstore-Indizes sind nur im Premium-Tarif verfügbar.
+> Columnstore-Indizes sind in der Premium-Ebene und in der Standardebene, in S3 und höher verfügbar.
 >
 
 Das folgende Skript zeigt, wie der Standardindex für die Verlaufstabelle in den gruppierten Columnstore geändert werden kann:

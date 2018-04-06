@@ -1,6 +1,6 @@
 ---
-title: Protokollwarnungen in Azure Monitor – Warnungen (Vorschauversion) | Microsoft-Dokumentation
-description: E-Mails, Benachrichtigungen oder Automatisierung werden ausgelöst und URLs (Webhooks) von Websites aufgerufen, wenn die von Ihnen angegebenen komplexen Abfragebedingungen für Azure-Warnungen (Vorschauversion) erfüllt sind.
+title: Protokollwarnungen in Azure Monitor – Warnungen | Microsoft-Dokumentation
+description: Lösen Sie E-Mails, Benachrichtigungen, den Aufruf von Website-URLs (Webhooks) oder eine Automatisierung aus, wenn die von Ihnen angegebenen komplexen Abfragebedingungen für Azure-Warnungen erfüllt sind.
 author: msvijayn
 manager: kmadnani1
 editor: ''
@@ -12,35 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/17/2018
 ms.author: vinagara
-ms.openlocfilehash: 0cee8bf77e0facc12159b823152b8859ce5cedd8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5928bbcec08d6ba4ac0b0d03b66fa4bfc8f5e3d7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Protokollwarnungen in Azure Monitor – Warnungen (Vorschauversion)
-Dieser Artikel enthält Details zur Funktionsweise von Warnungsregeln in Analytics-Abfragen auf der Azure-Oberfläche „Warnungen (Vorschauversion)“ und beschreibt die Unterschiede verschiedener Arten von Protokollwarnungsregeln. Details zu Metrikwarnungen, die Protokolle verwenden, finden Sie unter [Metrikwarnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md).
+# <a name="log-alerts-in-azure-monitor---alerts"></a>Protokollwarnungen in Azure Monitor – Warnungen 
+Dieser Artikel enthält Details zur Funktionsweise von Warnungsregeln aus Analytics-Abfragen in Azure-Warnungen und beschreibt die Unterschiede verschiedener Arten von Protokollwarnungsregeln. Details zu Metrikwarnungen, die Protokolle verwenden, finden Sie unter [Metrikwarnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md).
 
-Derzeit unterstützen Azure-Warnungen (Vorschau) Protokollwarnungen zu Abfragen von [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) und [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events).
+Derzeit unterstützen Azure-Warnungen Protokollwarnungen zu Abfragen von [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) und [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events).
 
 > [!WARNING]
 
-> Protokollwarnungen in Azure-Warnungen (Vorschau) unterstützen derzeit keine arbeitsbereichs- oder App-übergreifenden Abfragen.
+> Protokollwarnungen in Azure-Warnungen unterstützen derzeit keine arbeitsbereichs- oder App-übergreifenden Abfragen. Protokollwarnungen für Application Insights befinden sich in der öffentlichen Vorschauphase; Funktionen und Benutzererfahrung können sich also noch ändern.
 
-Benutzer können ihre Abfragen zudem in der Analytics-Plattform ihrer Wahl in Azure optimieren und anschließend *die Abfrage speichern, um sie in Warnungen (Vorschau) zu importieren*. Vorgehensweise:
+Benutzer können ihre Abfragen zudem in der Analytics-Plattform ihrer Wahl in Azure optimieren und anschließend *die Abfrage speichern, um sie in Warnungen zu importieren*. Vorgehensweise:
 - Für Application Insights: Überprüfen Sie die Abfrage und ihre Ergebnisse im Analytics-Portal. Speichern Sie sie dann unter einem eindeutigen Namen in *Freigegebene Abfragen*.
 - Für Log Analytics: Überprüfen Sie die Abfrage und ihre Ergebnisse in der Protokollsuche. Speichern Sie sie dann unter einem eindeutigen Namen in einer beliebigen Kategorie.
 
-Die gespeicherte Warnung wird daraufhin beim [Erstellen einer Protokollwarnung in Warnungen (Vorschau)](monitor-alerts-unified-usage.md) als Signaltyp **Protokoll (gespeicherte Abfrage)** aufgelistet, wie im folgenden Beispiel zu sehen: ![In Warnungen importierte gespeicherte Abfrage](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
+Die gespeicherte Warnung wird daraufhin beim [Erstellen einer Protokollwarnung in Warnungen](monitor-alerts-unified-usage.md) als Signaltyp **Protokoll (gespeicherte Abfrage)** aufgelistet, wie im folgenden Beispiel zu sehen: ![In Warnungen importierte gespeicherte Abfrage](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
 
 > [!NOTE]
 > Die Verwendung von **Protokoll (gespeicherte Abfrage)** hat einen Import in Warnungen zur Folge. Das bedeutet, dass jegliche Änderung, die danach in Analytics vorgenommen wird, in den gespeicherten Warnungsregeln nicht berücksichtigt wird (und umgekehrt).
 
 ## <a name="log-alert-rules"></a>Protokollwarnungsregeln
 
-Warnungen werden von Azure-Warnungen (Vorschauversion) erstellt, um in regelmäßigen Abständen automatisch Protokollabfragen auszuführen.  Wenn die Ergebnisse der Protokollabfrage bestimmte Kriterien erfüllen, wird ein Warnungsdatensatz erstellt. Die Regel kann dann automatisch Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess wie das Senden von Daten an eine externe Anwendung mit [JSON-basiertem Webhook](monitor-alerts-unified-log-webhook.md) unter Verwendung von [Aktionsgruppen](monitoring-action-groups.md) aufzurufen. Verschiedene Typen von Warnungsregeln verwenden für diese Analyse unterschiedliche Logik.
+Warnungen werden von Azure-Warnungen erstellt, um in regelmäßigen Abständen automatisch Protokollabfragen auszuführen.  Wenn die Ergebnisse der Protokollabfrage bestimmte Kriterien erfüllen, wird ein Warnungsdatensatz erstellt. Die Regel kann dann automatisch Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess wie das Senden von Daten an eine externe Anwendung mit [JSON-basiertem Webhook](monitor-alerts-unified-log-webhook.md) unter Verwendung von [Aktionsgruppen](monitoring-action-groups.md) aufzurufen. Verschiedene Typen von Warnungsregeln verwenden für diese Analyse unterschiedliche Logik.
 
 Warnungsregeln werden anhand der folgenden Details definiert:
 
@@ -118,7 +118,7 @@ Bei diesem Beispiel werden separate Warnungen für srv02 und srv03 erstellt, da 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Machen Sie sich mit [Webhookaktionen für Protokollwarnungen](monitor-alerts-unified-log-webhook.md) vertraut.
-* [Verschaffen Sie sich einen Überblick über Azure-Warnungen (Vorschauversion).](monitoring-overview-unified-alerts.md)
-* Erfahren Sie mehr über die [Verwendung von Azure-Warnungen (Vorschauversion).](monitor-alerts-unified-usage.md)
+* [Verschaffen Sie sich einen Überblick über Azure-Warnungen.](monitoring-overview-unified-alerts.md)
+* Erfahren Sie mehr über die [Verwendung von Azure-Warnungen](monitor-alerts-unified-usage.md).
 * Weitere Informationen zu [Application Insights](../application-insights/app-insights-analytics.md)
 * Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-overview.md).    

@@ -1,6 +1,6 @@
 ---
-title: "Reverse-DNS für Azure-Dienste | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Reverse-DNS-Lookups für in Azure gehostete Dienste konfigurieren."
+title: Reverse-DNS für Azure-Dienste | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Reverse-DNS-Lookups für in Azure gehostete Dienste konfigurieren.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: kumud
-ms.openlocfilehash: 0c5d12e9d6b5ddbee2a930e4e537b8180b7a9c7b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: bba2d75ed760a6e4eef2caacb0bb5924680b1f4b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurieren von Reverse-DNS für in Azure gehostete Dienste
 
@@ -245,7 +245,7 @@ Nein. Azure unterstützt derzeit Reverse-DNS nur für öffentliche IPv4-IP-Adres
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Kann ich aus Azure Compute Services heraus E-Mails an externe Domänen senden?
 
-Nein. [Azure Compute Services unterstützt das Senden von E-Mails an externe Domänen nicht.](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/)
+Ob es technisch möglich ist, E-Mails direkt aus einer Azure-Bereitstellung heraus zu senden, hängt vom Abonnementtyp ab. Unabhängig davon empfiehlt Microsoft für den Versand ausgehender E-Mails die Verwendung vertrauenswürdiger E-Mail-Relaydienste. Ausführlichere Informationen finden Sie unter [Enhanced Azure Security for sending Emails – November 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/) (Verbesserte Azure-Sicherheit beim Senden von E-Mails – Update vom November 2017).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,13 +1,13 @@
 ---
-title: "Hochverfügbarkeit für Hadoop – Azure HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie HDInsight-Cluster durch die Verwendung eines zusätzlichen Hauptknotens eine höhere Zuverlässigkeit und Verfügbarkeit bieten. Sie erfahren, wie dies Hadoop-Dienste wie Ambari und Hive beeinflusst, und wie eine Verbindung mit jedem Hauptknoten über SSH hergestellt wird."
+title: Hochverfügbarkeit für Hadoop – Azure HDInsight | Microsoft-Dokumentation
+description: Erfahren Sie, wie HDInsight-Cluster durch die Verwendung eines zusätzlichen Hauptknotens eine höhere Zuverlässigkeit und Verfügbarkeit bieten. Sie erfahren, wie dies Hadoop-Dienste wie Ambari und Hive beeinflusst, und wie eine Verbindung mit jedem Hauptknoten über SSH hergestellt wird.
 services: hdinsight
 editor: cgronlun
-manager: jhubbard
+manager: cgronlun
 author: Blackmist
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
-keywords: "Hochverfügbarkeit, Hadoop"
+keywords: Hochverfügbarkeit, Hadoop
 ms.assetid: 99c9f59c-cf6b-4529-99d1-bf060435e8d4
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/08/2018
+ms.date: 03/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 0822502bcd3e2b0d20f718a158d6db489a650bde
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 556aedf5ce822d681caf1373ed7d51999bd439b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
 
@@ -112,7 +112,7 @@ Um den Status von Diensten zu überprüfen, die auf den Hauptknoten ausgeführt 
 
 ### <a name="ambari-web-ui"></a>Ambari-Webbenutzeroberfläche
 
-Öffnen Sie die Ambari-Webbenutzeroberfläche über https://CLUSTERNAME.azurehdinsight.net. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters. Wenn Sie dazu aufgefordert werden, geben Sie die HTTP-Anmeldeinformationen für Ihren Cluster ein. Der standardmäßige HTTP-Benutzername ist **admin** , und das Kennwort ist das Kennwort, das Sie beim Erstellen des Clusters eingegeben haben.
+Die Ambari-Webbenutzeroberfläche kann unter https://CLUSTERNAME.azurehdinsight.net angezeigt werden. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters. Wenn Sie dazu aufgefordert werden, geben Sie die HTTP-Anmeldeinformationen für Ihren Cluster ein. Der standardmäßige HTTP-Benutzername ist **admin** , und das Kennwort ist das Kennwort, das Sie beim Erstellen des Clusters eingegeben haben.
 
 Die installierten Dienste werden im linken Bereich der Ambari-Seite aufgelistet.
 

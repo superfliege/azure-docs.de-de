@@ -9,15 +9,15 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/22/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 3bf224edea9e6da0d0eadb6fb6a409248de3d0e3
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 33e3305288edc3990ed88b39c819293a8adc2dfe
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>LinkedIn-Kontoverbindungen für Microsoft-Apps und -Dienste
 In diesem Artikel erfahren Sie, wie Sie LinkedIn-Kontoverbindungen für Ihren Mandanten im Administrationscenter von Azure Active Directory (Azure AD) verwalten. 
@@ -56,7 +56,7 @@ Die Funktionen der LinkedIn-Kontoverbindungen sind standardmäßig für Ihren ge
 ### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>Aktivieren oder Deaktivieren der LinkedIn-Kontoverbindungen für die Office 2016-Apps Ihrer Organisation mithilfe einer Gruppenrichtlinie
 
 1. Laden Sie die [Dateien mit den administrativen Vorlagen für Office 2016 (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030) herunter.
-2. Extrahieren Sie die **ADMX**-Dateien, und kopieren Sie sie in Ihr **zentrales Repository**.
+2. Extrahieren Sie die **ADMX**-Dateien, und kopieren Sie sie in Ihren zentralen Speicher.
 3. Öffnen Sie die Gruppenrichtlinienverwaltung.
 4. Erstellen Sie ein Gruppenrichtlinienobjekt mit folgender Einstellung: **Benutzerkonfiguration** > **Administrative Vorlagen** > **Microsoft Office 2016** > **Verschiedenes** > **LinkedIn-Integration zulassen**.
 5. Wählen Sie **Aktiviert** oder **Deaktiviert** aus.

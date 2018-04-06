@@ -1,11 +1,12 @@
 ---
 title: Verwenden der linearen Regression in Machine Learning | Microsoft Docs
 description: Ein Vergleich von Modellen zur linearen Regression in Excel und in Azure Machine Learning Studio
-metakeywords: 
+metakeywords: ''
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: kbaroni;garye
-ms.openlocfilehash: 218f2b141e3551180a2152570f99fdb427980dd7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ea5a2720542217d3bb6a0a2b1309312fb74a953
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-linear-regression-in-azure-machine-learning"></a>Verwenden der linearen Regression in Azure Machine Learning
 > *Kate Baroni* und *Ben Boatman* sind Enterprise Solution Architects im Microsoft Data Insights Center of Excellence. In diesem Artikel beschreiben die beiden ihre Erfahrungen beim Migrieren einer vorhandenen Regressionsanalysesuite zu einer cloudbasierten Lösung mit Azure Machine Learning. 
@@ -137,12 +137,12 @@ Wir haben auch festgestellt, dass es ratsam ist, [Filter-Based Feature Selection
 
 Die Möglichkeit, die Vorhersageanalytik für Prognosen aus Machine Learning auch in Excel nutzen zu können, sorgt durch die Verfügbarkeit auf verschiedenen Systemen für einen erheblich breiteren Nutzerkreis im Unternehmen. 
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 Im Folgenden finden Sie einige Ressourcen für Ihre Arbeit mit Regression: 
 
-* Regression in Excel. Falls Sie in Excel noch nicht mit Regressionstechniken gearbeitet haben, erleichtert folgende Anleitung den Einstieg: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
+* Regression in Excel. Sie haben noch nie versucht, eine Regression in Excel durchzuführen? Dieses Tutorial vereinfacht sie: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
 * Regression im Vergleich zu Vorhersagen. Tyler Chessman hat einen Blog-Artikel mit einer leicht verständlichen Beschreibung von linearer Regression für Anfänger verfasst, in dem er den Gebrauch von Zeitreihen zu Prognosezwecken erläutert. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* Ordinary Least Squares Linear Regression: Schwachstellen, Probleme und Stolperfallen. Eine Einführung und Erörterung der Regression: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* Ordinary Least Squares Linear Regression: Schwachstellen, Probleme und Stolperfallen. Einführung und Erläuterung der Regression: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
 [2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png

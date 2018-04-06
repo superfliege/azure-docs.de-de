@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/20/2018
 ms.author: jroth
-ms.openlocfilehash: 3103ca2c659e40fd945b597ed4671fe96daf1905
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a275df84ce784147b5fd4f09afe4995417affffd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Preisinformationen für virtuelle Azure-Computer mit SQL Server
 
@@ -63,7 +63,7 @@ Es gibt zwei Möglichkeiten, für die Lizenzierung dieser SQL Server-Editionen z
 
 ### <a name="pay-per-usage"></a>Nutzungsbasierte Bezahlung
 
-Die **Bezahlung für SQL Server-Lizenzen je nach Nutzung** bedeutet, dass die minutenbasierten Kosten für die Ausführung des virtuellen Azure-Computers die Kosten für die SQL Server-Lizenz einschließen. Die Preise für die verschiedenen SQL-Server-Editionen (Web, Standard, Enterprise) finden Sie auf der [Preisseite für virtuelle Azure-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Die Kosten sind für alle SQL Server-Versionen (2012 SP3 bis 2017) gleich. Ebenso wie bei der SQL Server-Lizenzierung im Allgemeinen richten sich die Lizenzierungskosten pro Minute nach der Anzahl der VM-Kerne.
+Die **Bezahlung für SQL Server-Lizenzen je nach Nutzung** bedeutet, dass die sekundenbasierten Kosten für die Ausführung des virtuellen Azure-Computers die Kosten für die SQL Server-Lizenz einschließen. Die Preise für die verschiedenen SQL-Server-Editionen (Web, Standard, Enterprise) finden Sie auf der [Preisseite für virtuelle Azure-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Die Kosten sind für alle SQL Server-Versionen (2012 SP3 bis 2017) gleich. Ebenso wie bei der SQL Server-Lizenzierung im Allgemeinen richten sich die Lizenzierungskosten pro Sekunde nach der Anzahl der VM-Kerne.
 
 Die nutzungsbasierte Bezahlung der SQL Server-Lizenzierung empfiehlt sich in folgenden Fällen:
 
@@ -113,7 +113,7 @@ Um einen virtuellen Azure-Computer mit SQL Server 2016 mit einem dieser BYOL-Ima
 > Informieren Sie uns innerhalb von 10 Tagen, wie viele SQL Server-Lizenzen Sie in Azure verwenden werden. Unter den Links zu den oben genannten Images finden Sie Anweisungen dazu.
 
 > [!NOTE]
-> Es ist nicht möglich, das Lizenzierungsmodell einer SQL Server-VM mit minutenbasierter Bezahlung zu ändern und eine eigene Lizenz zu verwenden. In diesem Fall müssen Sie einen neuen virtuellen BYOL-Computer erstellen und die Datenbanken zu diesem neuen virtuellen Computer migrieren. 
+> Es ist nicht möglich, das Lizenzierungsmodell einer SQL Server-VM mit sekundenbasierter Bezahlung zu ändern und eine eigene Lizenz zu verwenden. In diesem Fall müssen Sie einen neuen virtuellen BYOL-Computer erstellen und die Datenbanken zu diesem neuen virtuellen Computer migrieren. 
 
 ## <a name="avoid-unnecessary-costs"></a>Vermeiden unnötiger Kosten
 

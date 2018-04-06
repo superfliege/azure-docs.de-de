@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/02/2017
+ms.date: 03/15/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 68de6295b84385f54eaadd6d24e8309a32fae9ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7c58b4ebd840aca555b52a03cf44ace311b64e3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
-Azure Active Directory ermöglicht einer Anwendung, ihre eigenen Anmeldeinformationen für die Authentifizierung z.B. im Flow zum Erteilen der OAuth 2.0-Clientanmeldeinformationen ([v1](active-directory-protocols-oauth-service-to-service.md) [v2](active-directory-v2-protocols-oauth-client-creds.md)) und den Im-Auftrag-von-Flow ([v1](active-directory-protocols-oauth-on-behalf-of.md) [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)) zu verwenden.
+Mit Azure Active Directory kann eine Anwendung ihre eigenen Anmeldeinformationen für die Authentifizierung verwenden – beispielsweise im Ablauf zur Gewährung von OAuth 2.0-Clientanmeldeinformationen ([v1](active-directory-protocols-oauth-service-to-service.md), [v2](active-directory-v2-protocols-oauth-client-creds.md)) und im Ablauf vom Typ „Im Auftrag von“ ([v1](active-directory-protocols-oauth-on-behalf-of.md), [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)).
 Eine verwendbare Form von Anmeldeinformationen ist eine JWT-Assertion (JSON Web Token), die mit einem der Anwendung zugehörigen Zertifikat signiert ist.
 
 ## <a name="format-of-the-assertion"></a>Format der Assertion
-Für die Berechnung der Assertion empfiehlt sich die Verwendung einer der zahlreichen [JSON Web Token](https://jwt.io/)-Bibliotheken in der Sprache Ihrer Wahl. Das Token enthält folgende Informationen:
+Für die Berechnung der Assertion empfiehlt sich die Verwendung einer der zahlreichen [JSON Web Token](https://jwt.ms/)-Bibliotheken in der Sprache Ihrer Wahl. Das Token enthält folgende Informationen:
 
 #### <a name="header"></a>Header
 
@@ -85,7 +85,14 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ### <a name="register-your-certificate-with-azure-ad"></a>Registrieren Ihres Zertifikats bei Azure AD
 
-Sie müssen das Anwendungsmanifest bearbeiten, um die Zertifikatanmeldeinformationen der Clientanwendung in Azure AD zuzuordnen.
+Über das Azure-Portal können Sie die Zertifikatanmeldeinformationen in Azure AD mit der Clientanwendung verknüpfen. Dazu haben Sie folgende Möglichkeiten:
+
+**Hochladen der Zertifikatsdatei**
+
+Klicken Sie in der Azure-App-Registrierung für die Clientanwendung auf **Einstellungen**, auf **Schlüssel** und anschließend auf **Öffentlichen Schlüssel hochladen**. Wählen Sie die Zertifikatsdatei aus, die Sie hochladen möchten, und klicken Sie auf **Speichern**. Daraufhin wird das Zertifikat hochgeladen, und der Fingerabdruck, das Startdatum und der Ablaufzeitpunkt werden angezeigt. 
+
+**Aktualisieren des Anwendungsmanifests**
+
 Wenn Sie über ein Zertifikat verfügen, berechnen Sie Folgendes:
 
 - `$base64Thumbprint`: Die base64-Codierung des Zertifikathashs.

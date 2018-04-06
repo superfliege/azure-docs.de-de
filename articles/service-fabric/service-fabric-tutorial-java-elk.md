@@ -143,7 +143,7 @@ Sie können für dieses Tutorial eine vorkonfigurierte ELK-Umgebung verwenden un
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. Rufen Sie unter **http://<IP-Adresse des Servers>** Ihr Kibana-Dashboard auf, und geben Sie den Benutzernamen und das Kennwort für Kibana ein. Wenn Sie das ELK-Image in Azure verwendet haben, lautet der Standardbenutzername „User“, und als Kennwort wird das bei der **Startdiagnose** abgerufene Kennwort verwendet. 
+8. Rufen Sie unter **http://SERVER-IP** Ihr Kibana-Dashboard auf, und geben Sie den Benutzernamen und das Kennwort für Kibana ein. Wenn Sie das ELK-Image in Azure verwendet haben, lautet der Standardbenutzername „User“, und als Kennwort wird das bei der **Startdiagnose** abgerufene Kennwort verwendet. 
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)    
 

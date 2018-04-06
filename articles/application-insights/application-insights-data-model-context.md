@@ -1,5 +1,5 @@
 ---
-title: "Azure Application Insights-Telemetriedatenmodell – Telemetriekontext | Microsoft-Dokumentation"
+title: Azure Application Insights-Telemetriedatenmodell – Telemetriekontext | Microsoft-Dokumentation
 description: 'Application Insights-Datenmodell: Telemetriekontext'
 services: application-insights
 documentationcenter: .net
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: sergkanz
 ms.openlocfilehash: 942a4bc09e632438e4a85280d723c72c4b09a015
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetriekontext: Application Insights-Datenmodell
 
@@ -120,7 +120,7 @@ Max. Länge: 256
 
 ## <a name="internal-sdk-version"></a>Intern: SDK-Version
 
-SDK-Version. Informationen finden Sie unter https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification.
+SDK-Version. Weitere Informationen finden Sie unter https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification.
 
 Max. Länge: 64
 

@@ -1,9 +1,9 @@
 ---
 title: Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor | Microsoft Docs
-description: "Erfahren Sie mehr über die Verwendung der vordefinierten Rollen und Berechtigungen in Azure Monitor, um den Zugriff auf Überwachungsressourcen zu beschränken."
+description: Erfahren Sie mehr über die Verwendung der vordefinierten Rollen und Berechtigungen in Azure Monitor, um den Zugriff auf Überwachungsressourcen zu beschränken.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 2686e53b-72f0-4312-bcd3-3dc1b4a9b912
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: f8767073bb7a6723088bb2727346d23ec8872cd1
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 81f083b799e359f69605de22c30d3adc4480e44b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
 Viele Teams müssen den Zugriff auf Überwachungsdaten und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken. Dieser Artikel beschreibt, wie Sie schnell eine integrierte RBAC-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
@@ -30,6 +30,7 @@ Die in Azure Monitor integrierten Rollen unterstützen Sie dabei, den Zugriff au
 Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überwachungsdaten in einem Abonnement anzeigen, aber keine Ressourcen ändern oder Einstellungen im Zusammenhang mit der Ressourcenüberwachung bearbeiten. Diese Rolle eignet sich für Benutzer in einer Organisation, beispielsweise Support- oder Betriebstechniker, die folgende Aufgaben erfüllen müssen:
 
 * Anzeigen von Überwachungsdashboards im Portal und Erstellen ihrer eigenen privaten Überwachungsdashboards.
+* Anzeigen von in [Azure-Warnungen](monitoring-overview-unified-alerts.md) definierten Warnungsregeln
 * Abfragen von Metriken über die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-Cmdlets](insights-powershell-samples.md) oder die [plattformübergreifende Befehlszeilenschnittstelle](insights-cli-samples.md).
 * Abfragen des Aktivitätsprotokolls über das Portal, die Azure Monitor-REST-API, PowerShell-Cmdlets oder die plattformübergreifende Befehlszeilenschnittstelle.
 * Anzeigen der [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) für eine Ressource.
@@ -55,7 +56,7 @@ Personen, denen die Rolle für Überwachungsmitwirkende zugewiesen wird, können
 * Veröffentlichen von Überwachungsdashboards als freigegebenes Dashboard.
 * Festlegen von [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) für eine Ressource.*
 * Festlegen des [Protokollprofils](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) für ein Abonnement.*
-* Festlegen von Warnaktivitäten und -einstellungen.
+* Festlegen der Aktivität und der Einstellungen für Warnungsregeln über [Azure-Warnungen](monitoring-overview-unified-alerts.md).
 * Erstellen von Application Insights-Webtests und -Komponenten.
 * Auflisten gemeinsam verwendeter Arbeitsbereichsschlüssel aus Log Analytics
 * Aktivieren oder Deaktivieren von Intelligence Packs zu Log Analytics
@@ -76,20 +77,22 @@ Wenn die oben genannten vordefinierten Rollen nicht den genauen Anforderungen Ih
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |Lesen/Schreiben/Löschen einer Aktionsgruppe |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Aktivitätsprotokollwarnungen |
-| Microsoft.Insights/AlertRules/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Warnungsregeln (Metrikwarnungen) |
+| Microsoft.Insights/AlertRules/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Warnungsregeln (aus klassischen Warnungen). |
 | Microsoft.Insights/AlertRules/Incidents/Read |Auflisten von Incidents (Verlauf der ausgelösten Warnungsregel) für Warnungsregeln. Dies gilt nur für das Portal. |
 | Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Einstellungen für die automatische Skalierung. |
 | Microsoft.Insights/DiagnosticSettings/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Diagnoseeinstellungen. |
-| Microsoft.Insights/EventCategories/Read |Aufzählen aller im Aktivitätsprotokoll möglichen Kategorien Wird vom Azure-Portal verwendet |
+| Microsoft.Insights/EventCategories/Read |Aufzählen aller im Aktivitätsprotokoll möglichen Kategorien Wird vom Azure-Portal verwendet. |
 | Microsoft.Insights/eventtypes/digestevents/Read |Diese Berechtigung ist für Benutzer notwendig, die über das Portal auf Aktivitätsprotokolle zugreifen müssen. |
 | Microsoft.Insights/eventtypes/values/Read |Auflisten von Aktivitätsprotokollereignissen (Verwaltungsereignissen) in einem Abonnement. Diese Berechtigung gilt sowohl für den programmgesteuerten als auch für den Portalzugriff auf das Aktivitätsprotokoll. |
 | Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | Lesen/Schreiben/Löschen von Diagnoseeinstellungen für Netzwerkflussprotokolle |
 | Microsoft.Insights/LogDefinitions/Read |Diese Berechtigung ist für Benutzer notwendig, die über das Portal auf Aktivitätsprotokolle zugreifen müssen. |
 | Microsoft.Insights/LogProfiles/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Protokollprofilen (Streamen von Aktivitätsprotokollen an ein Ereignishub- oder Speicherkonto) |
-| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Metrikwarnungen in nahezu Echtzeit (öffentliche Vorschauversion) |
+| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Metrikwarnungen (nahezu in Echtzeit) |
 | Microsoft.Insights/MetricDefinitions/Read |Lesen von Metrikdefinitionen (Liste der verfügbaren Metriktypen für eine Ressource). |
 | Microsoft.Insights/Metrics/Read |Lesen von Metriken für eine Ressource. |
 | Microsoft.Insights/Register/Action |Registrieren des Azure Monitor-Ressourcenanbieters |
+| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Protokollwarnungen für Application Insights. |
+
 
 
 > [!NOTE]
@@ -118,9 +121,9 @@ New-AzureRmRoleDefinition -Role $role
 2. Diagnoseprotokolle, die von einer Ressource ausgegeben werden.
 3. Metriken, die von Ressourcen ausgegeben werden.
 
-Alle drei Datentypen können in einem Speicherkonto gespeichert oder an Event Hub gestreamt werden. Bei beidem handelt es sich um allgemeine Azure-Ressourcen. Weil es sich um allgemeine Ressourcen handelt, sind das Erstellen, das Löschen und der Zugriff darauf privilegierte Vorgänge, die normalerweise einem Administrator vorbehalten sind. Wir empfehlen, die folgenden Methoden für überwachungsbezogene Ressourcen anzuwenden, um Missbrauch zu verhindern:
+Alle drei Datentypen können in einem Speicherkonto gespeichert oder an Event Hub gestreamt werden. Bei beidem handelt es sich um allgemeine Azure-Ressourcen. Da es sich um allgemeine Ressourcen handelt, sind Erstellung, Löschung und der Zugriff darauf privilegierte Vorgänge, die einem Administrator vorbehalten sind. Wir empfehlen, die folgenden Methoden für überwachungsbezogene Ressourcen anzuwenden, um Missbrauch zu verhindern:
 
-* Verwenden Sie ein einzelnes dediziertes Speicherkonto für die Überwachung von Daten. Wenn Sie Überwachungsdaten auf mehrere Speicherkonten aufteilen müssen, nutzen Sie niemals ein Speicherkonto sowohl für Überwachungs- als auch für Nicht-Überwachungsdaten, da Personen, die nur auf Überwachungsdaten zugreifen müssen (z.B. eine Drittanbieter-SIEM-Lösung), dadurch unbeabsichtigterweise Zugriff auf Nicht-Überwachungsdaten erhalten.
+* Verwenden Sie ein einzelnes dediziertes Speicherkonto für die Überwachung von Daten. Wenn Sie Überwachungsdaten auf mehrere Speicherkonten aufteilen müssen, nutzen Sie niemals ein Speicherkonto sowohl für Überwachungsdaten als auch für überwachungsfremde Daten, da Lösungen, die nur auf Überwachungsdaten zugreifen müssen (beispielsweise eine Drittanbieter-SIEM-Lösung), dadurch unbeabsichtigterweise Zugriff auf überwachungsfremde Daten erhalten.
 * Verwenden Sie aus demselben Grund einen einzelnen dedizierten Service Bus- oder Event Hub-Namespace über alle Diagnoseeinstellungen hinweg.
 * Schränken Sie den Zugriff auf überwachungsbezogene Speicherkonten oder Event Hubs ein, indem Sie sie in einer separaten Ressourcengruppe verwalten, und verwenden Sie [Bereiche](../active-directory/role-based-access-control-what-is.md#basics-of-access-management-in-azure) für Ihre Überwachungsrollen, um den Zugriff ausschließlich auf diese Ressourcengruppe zu beschränken.
 * Erteilen Sie niemals die ListKeys-Berechtigung für Speicherkonten oder Event Hubs im Abonnementbereich, wenn ein Benutzer nur auf Überwachungsdaten zugreifen muss. Erteilen Sie dem Benutzer diese Berechtigungen stattdessen im Ressourcen- oder Ressourcengruppenbereich (wenn Sie eine dedizierte Überwachungsressourcengruppe verwenden).

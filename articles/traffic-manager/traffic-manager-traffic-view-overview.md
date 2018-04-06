@@ -1,31 +1,28 @@
 ---
 title: Datenverkehrsansicht in Azure Traffic Manager | Microsoft-Dokumentation
-description: "Einführung in die Traffic Manager-Datenverkehrsansicht"
+description: Einführung in die Traffic Manager-Datenverkehrsansicht
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 11/11/2017
+ms.date: 03/16/2018
 ms.author: kumud
-ms.custom: 
-ms.openlocfilehash: 6b4378cb293824702dd52dcdeb86619f957b83ea
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.custom: ''
+ms.openlocfilehash: 7ce51017fdee92e5589c06b398c9650930d5436d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager-Datenverkehrsansicht
-
->[!NOTE]
->Das Feature „Datenverkehrsansicht“ in Traffic Manager befindet sich in der öffentlichen Vorschauphase (Public Preview) und ist unter Umständen nicht so verfügbar und zuverlässig wie Features in Versionen mit allgemeiner Verfügbarkeit. Das Feature wird nicht unterstützt, bietet möglicherweise eingeschränkte Funktionen und ist vielleicht nicht an allen Azure-Standorten verfügbar. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite mit den [Azure Traffic Manager-Updates](https://azure.microsoft.com/updates/?product=traffic-manager).
 
 Traffic Manager stellt Ihnen ein Routing auf DNS-Ebene zur Verfügung, sodass Ihre Endbenutzer auf Grundlage der Routingmethode, die Sie beim Erstellen des Profils angegeben haben, an fehlerfreie Endpunkte weitergeleitet werden. Die Datenverkehrsansicht bietet Traffic Manager einen Überblick über Ihre Benutzergruppen (auf Granularitätsebene des DNS-Resolvers) und deren Datenverkehrsmuster. Wenn Sie die Datenverkehrsansicht aktivieren, werden diese Informationen verarbeitet, um Ihnen verwertbare Erkenntnisse zu liefern. 
 
@@ -43,7 +40,7 @@ Grundlage der Datenverkehrsansicht ist das Vergleichen der in den letzten sieben
 Im nächsten Schritt korreliert Traffic Manager die Benutzergruppenregion mit der Azure-Regionskarte mithilfe der Informationen in den Tabellen mit den Netzwerkwartezeiten. Diese werden für verschiedene Endbenutzernetzwerke verwaltet, um die durchschnittliche Wartezeit für Benutzer aus diesen Regionen zu ermitteln, wenn eine Verbindung mit Azure-Regionen hergestellt wird. Alle diese Berechnungen werden dann kombiniert, und zwar pro lokaler IP-Adressebene des DNS-Resolvers, bevor sie Ihnen angezeigt werden. Sie können die Informationen auf verschiedene Weise nutzen.
 
 >[!NOTE]
->Die in der Datenverkehrsansicht beschriebene Wartezeit ist eine repräsentative Wartezeit zwischen dem Endbenutzer und den Azure-Regionen, mit denen eine Verbindung hergestellt wurde, und nicht die Wartezeit von DNS-Lookup.
+>Die in der Datenverkehrsansicht beschriebene Wartezeit ist eine repräsentative Wartezeit zwischen dem Endbenutzer und den Azure-Regionen, mit denen eine Verbindung hergestellt wurde, und nicht die Wartezeit von DNS-Lookup. Die Datenverkehrsansicht liefert eine bestmögliche Schätzung der Wartezeit zwischen der lokalen DNS-Auflösung und der Azure-Region, an die die Abfrage weitergeleitet wurde. Sollten nicht genügend Daten zur Verfügung stehen, wird für die Wartezeit ein Nullwert zurückgegeben. 
 
 ## <a name="visual-overview"></a>Visuelle Übersicht
 
@@ -61,12 +58,12 @@ Wenn Sie auf den Standort eines DNS-Resolvers auf der Karte zeigen, wird Folgend
 
 ### <a name="endpoint-information"></a>Endpunktinformationen
 
-Die Azure-Regionen, in denen sich die Endpunkte befinden, werden als blaue Punkte auf der Karte angezeigt. Klicken Sie auf einen beliebigen Endpunkt, um die verschiedenen Standorte anzuzeigen (basierend auf dem verwendeten DNS-Resolver), von denen Datenverkehr an diesen Endpunkt weitergeleitet wurde. Die Verbindungen werden als Linie zwischen dem Endpunkt und dem Standort des DNS-Resolvers angezeigt, und die Farbe entspricht der repräsentativen Wartezeit zwischen diesen beiden. Darüber hinaus sehen Sie den Namen des Endpunkts, die Azure-Region, in der er ausgeführt wird, und das Gesamtvolumen der Anforderungen, die von diesem Traffic Manager-Profil hierhin weitergeleitet wurden.
+Die Azure-Regionen, in denen sich die Endpunkte befinden, werden als blaue Punkte auf der Karte angezeigt. Externe Endpunkte ohne zugeordnete Azure-Region werden am oberen Rand der Karte angezeigt. Klicken Sie auf einen beliebigen Endpunkt, um die verschiedenen Standorte anzuzeigen (basierend auf dem verwendeten DNS-Resolver), von denen Datenverkehr an diesen Endpunkt weitergeleitet wurde. Die Verbindungen werden als Linie zwischen dem Endpunkt und dem Standort des DNS-Resolvers angezeigt, und die Farbe entspricht der repräsentativen Wartezeit zwischen diesen beiden. Darüber hinaus sehen Sie den Namen des Endpunkts, die Azure-Region, in der er ausgeführt wird, und das Gesamtvolumen der Anforderungen, die von diesem Traffic Manager-Profil hierhin weitergeleitet wurden.
 
 
 ## <a name="tabular-listing-and-raw-data-download"></a>Tabellarische Auflistung und Rohdatendownload
 
-Sie können die Daten der Datenverkehrsansicht in einem tabellarischen Format im Azure-Portal anzeigen. Es ist ein Eintrag für jede Kombination aus DNS-Resolver-IP-Adresse und Endpunkt vorhanden, der Folgendes umfasst: den geografischen Standort des DNS-Resolvers (wenn verfügbar), den Namen der Azure-Region, in der sich der Endpunkt befindet, das Anforderungsvolumen im Zusammenhang mit diesem DNS-Resolver und die repräsentative Wartezeit im Zusammenhang mit Endbenutzern, die diesen DNS verwenden (wenn verfügbar). Sie können die Daten der Datenverkehrsansicht auch als CSV-Datei herunterladen, die dann als Teil eines gewünschten Analyseworkflows verwendet werden kann.
+Sie können die Daten der Datenverkehrsansicht in einem tabellarischen Format im Azure-Portal anzeigen. Für jede Kombination aus IP-Adresse der DNS-Auflösung und Endpunkt steht ein Eintrag mit Folgendem zur Verfügung: IP-Adresse der DNS-Auflösung, Name und geografischer Standort der Azure-Region, in der sich der Endpunkt befindet (sofern vorhanden), Anforderungsvolumen im Zusammenhang mit dieser DNS-Auflösung für diesen Endpunkt und repräsentative Wartezeit für Endbenutzer, die diesen DNS verwenden (sofern verfügbar). Sie können die Daten der Datenverkehrsansicht auch als CSV-Datei herunterladen, die dann als Teil eines gewünschten Analyseworkflows verwendet werden kann.
 
 ## <a name="billing"></a>Abrechnung
 
@@ -77,5 +74,5 @@ Wenn Sie die Datenverkehrsansicht verwenden, erfolgt die Abrechnung anhand der A
 
 - Informieren Sie sich über die [Funktionsweise von Traffic Manager](traffic-manager-overview.md)
 - Informieren Sie sich über die von Traffic Manager unterstützten [Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md) .
-- Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-create-profile.md)
+- Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](traffic-manager-create-profile.md)
 

@@ -1,6 +1,6 @@
 ---
-title: "Verwalten von DNS-Zonen in Azure DNS – Azure CLI 2.0 | Microsoft-Dokumentation"
-description: "Sie können DNS-Zonen mithilfe der Azure CLI 2.0 verwalten. In diesem Artikel erfahren Sie, wie Sie DNS-Zonen in Azure DNS aktualisieren, löschen und erstellen."
+title: Verwalten von DNS-Zonen in Azure DNS – Azure CLI 2.0 | Microsoft-Dokumentation
+description: Sie können DNS-Zonen mithilfe der Azure CLI 2.0 verwalten. In diesem Artikel erfahren Sie, wie Sie DNS-Zonen in Azure DNS aktualisieren, löschen und erstellen.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: kumud
-ms.openlocfilehash: 2042d9c2864a4f8da474e0df38882414bfe3417e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d384f8867ddfd28acaf78a47a7d32729e87c5580
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Verwalten von DNS-Zonen in Azure DNS mithilfe von Azure CLI 2.0
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 12/21/2017
 
 
 In diesem Leitfaden erfahren Sie, wie Sie Ihre DNS-Zonen mithilfe der plattformübergreifenden, für Windows, Mac und Linux verfügbaren Azure-Befehlszeilenschnittstelle verwalten. Sie können Ihre DNS-Zonen auch mithilfe von [Azure PowerShell](dns-operations-dnszones.md) oder über das Azure-Portal verwalten.
+
+Dieses Handbuch befasst sich insbesondere mit öffentlichen DNS-Zonen. Informationen zur Verwendung von Azure CLI zum Verwalten von privaten Zonen in Azure DNS finden Sie unter [Erste Schritte mit Azure DNS Private Zones mithilfe von Azure CLI 2.0](private-dns-getstarted-cli.md).
 
 ## <a name="introduction"></a>Einführung
 
@@ -45,7 +47,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 ### <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
 
-Öffnen Sie ein Konsolenfenster, und authentifizieren Sie sich mit Ihren Anmeldeinformationen. Weitere Informationen finden Sie unter „Anmelden bei Azure über die Azure-Befehlszeilenschnittstelle (CLI)“.
+Öffnen Sie ein Konsolenfenster, und authentifizieren Sie sich mit Ihren Anmeldeinformationen. Weitere Informationen finden Sie unter [Log in to Azure from the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest) (Anmelden bei Azure über die Azure-CLI).
 
 ```
 az login
@@ -65,9 +67,15 @@ Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
 az account set --subscription "subscription name"
 ```
 
+### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Optional: Installieren und Verwenden des Features „Azure DNS Private Zones“ (Öffentliche Vorschauversion)
+Das Feature „Azure DNS Private Zones“ ist als öffentliche Vorschauversion über eine Erweiterung der Azure CLI verfügbar. Installieren der Azure CLI-Erweiterung „dns“ 
+```
+az extension add --name dns
+``` 
+
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Da alle DNS-Ressourcen global und nicht regional sind, hat die Auswahl des Speicherorts für die Ressourcengruppe jedoch keine Auswirkungen auf Azure DNS.
+Der Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Da alle DNS-Ressourcen global und nicht regional sind, hat die Auswahl des Speicherorts für die Ressourcengruppe jedoch keine Auswirkungen auf Azure DNS.
 
 Dieser Schritt kann übersprungen werden, wenn Sie eine vorhandene Ressourcengruppe verwenden.
 
@@ -77,7 +85,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Hilfe
 
-Alle CLI 2.0-Befehle im Zusammenhang mit Azure DNS beginnen mit `az network dns`. Für jeden Befehl ist eine Hilfe verfügbar, die mit der Option `--help` (Kurzform: `-h`) angezeigt werden kann.  Beispiel:
+Alle CLI 2.0-Befehle im Zusammenhang mit Azure DNS beginnen mit `az network dns`. Für jeden Befehl ist eine Hilfe verfügbar, die mit der Option `--help` (Kurzform: `-h`) angezeigt werden kann.  Beispiel: 
 
 ```azurecli
 az network dns --help

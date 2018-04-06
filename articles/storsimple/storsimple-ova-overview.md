@@ -1,24 +1,24 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array – Übersicht | Microsoft-Dokumentation"
-description: "Enthält eine Beschreibung von StorSimple Virtual Array. Hierbei handelt es sich um eine integrierte Speicherlösung, mit der Speicheraufgaben zwischen einem lokalen virtuellen Array und dem Microsoft Azure-Cloudspeicher verwaltet werden."
+title: Microsoft Azure StorSimple Virtual Array – Übersicht | Microsoft-Dokumentation
+description: Enthält eine Beschreibung von StorSimple Virtual Array. Hierbei handelt es sich um eine integrierte Speicherlösung, mit der Speicheraufgaben zwischen einem lokalen virtuellen Array und dem Microsoft Azure-Cloudspeicher verwaltet werden.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/16/2017
+ms.date: 03/28/2018
 ms.author: alkohli
-ms.openlocfilehash: b9a5797751fa970c569c93e5efe300d4d74319ce
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: db06614ebd7dee4b0a320737ea8f575b3a3be70f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Einführung in das StorSimple Virtual Array
 
@@ -84,7 +84,7 @@ Das StorSimple Virtual Array eignet sich am besten für selten genutzte Daten. Z
 
 Wenn mehrere Benutzer gleichzeitig auf das virtuelle Array zugreifen, teilen sich alle die gleiche Verbindung mit Azure. Dies wirkt sich negativ auf die Leistung aus. Es gibt keine garantierte Leistung pro Benutzer, und das Gerät verarbeitet die einzelne Anforderungen in der Reihenfolge, in der sie eingehen.
 
-Das StorSimple Virtual Array eignet sich nicht für Workloads, die eine hohe Verfügbarkeit erfordern. Das virtuelle Array ist ein Gerät mit einem einzelnen Knoten, bei dem es zu Ausfällen kommt, wenn Softwareupdates installiert werden. Administratoren sollten pro Jahr drei bis vier Wartungsfenster mit jeweils 30 Minuten einplanen.
+Das StorSimple Virtual Array eignet sich nicht für Workloads, die Hochverfügbarkeit erfordern. Das virtuelle Array ist ein Gerät mit einem einzelnen Knoten, bei dem es zu Ausfällen kommt, wenn Softwareupdates installiert werden. Administratoren sollten pro Jahr drei bis vier Wartungsfenster mit jeweils 30 Minuten einplanen.
 
 ## <a name="workflows"></a>Workflows
 
@@ -205,6 +205,15 @@ StorSimple arbeitet mit Deduplizierung und Datenkomprimierung, um die Speicheran
 ### <a name="scheduled-and-on-demand-backups"></a>Geplante und bedarfsgesteuerte Sicherungen
 
 Mit StorSimple-Features zum Schutz der Daten können Sie bedarfsgesteuerte Sicherungen erstellen. Außerdem wird mit einem standardmäßigen Sicherungszeitplan dafür gesorgt, dass die Daten täglich gesichert werden. Sicherungen werden in Form von inkrementellen Momentaufnahmen erstellt, die in der Cloud gespeichert werden. Momentaufnahmen, bei denen nur die Änderungen seit der letzten Sicherung aufgezeichnet werden, können schnell erstellt und wiederhergestellt werden. Diese Momentaufnahmen können bei Wiederherstellungen im Notfall extrem wichtig sein, da sie sekundäre Speichersysteme (z. B. Backup auf Bandlaufwerken) ersetzen und es Ihnen ermöglichen, Daten bei Bedarf in Ihrem Rechenzentrum oder an anderen Standorten wiederherzustellen.
+
+## <a name="gdpr-compliance"></a>Einhaltung der DSGVO
+Die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält zahlreiche Bestimmungen für die Sammlung, Speicherung und Verwendung persönlicher Informationen. Die Regeln der DSGVO gelten für Unternehmen, Regierungsbehörden und andere Organisationen, die in der EU tätig sind und Daten sammeln/analysieren, die mit EU-Bürgern zusammenhängen.
+
+Der StorSimple-Geräte-Manager für die virtuelle Serie ist DSGVO-konform. Es gibt zwei wichtige Instanzen, in denen persönliche Informationen gesammelt und im Dienst angezeigt werden:
+ - Benutzereinstellungen für Warnungen, in denen die E-Mail-Adressen von Benutzern konfiguriert werden. Diese Informationen können vom Administrator gelöscht werden. 
+ - Benutzer, die auf die Daten auf den Freigaben zugreifen können. Eine Liste mit Benutzern, die auf die Freigabedaten zugreifen können, kann exportiert werden. Die Liste wird zusammen mit den Freigaben gelöscht.
+
+Weitere Informationen finden Sie im [Trust Center in der Microsoft-Datenschutzrichtlinie](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

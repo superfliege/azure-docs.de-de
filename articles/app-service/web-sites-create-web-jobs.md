@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 3652e0171e0c6a53c16fb5b5fde20df9ed2ab7c7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f41cc83bfb18146e46e7d8501318acd68ce9c421
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Ausführen von Hintergrundaufgaben mit WebJobs in Azure App Service
 
@@ -170,15 +170,7 @@ when making changes in one don't forget the other two.
 
 ## <a name="cron-expressions"></a>CRON-Ausdrücke
 
-Ein [CRON-Ausdruck](https://en.wikipedia.org/wiki/Cron) besteht aus sechs Feldern: `{second} {minute} {hour} {day} {month} {day of the week}`.  Hier einige Beispiele:
-
-* Alle 15 Minuten: `0 */15 * * * *`
-* Einmal pro Stunde (d.h., wenn die Minutenzahl 0 ist): `0 0 * * * *` 
-* Jede Stunde von 9:00 bis 17:00 Uhr: `0 0 9-17 * * *` 
-* Täglich um 9:30 Uhr: `0 30 9 * * *`
-* An jedem Werktag um 9:30 Uhr: `0 30 9 * * 1-5`
-
-Sie können den CRON-Ausdruck im Portal eingeben oder eine `settings.job`-Datei im Stammverzeichnis Ihrer WebJob-*ZIP*-Datei einschließen, wie im folgenden Beispiel gezeigt wird:
+Sie können einen [CRON-Ausdruck](../azure-functions/functions-bindings-timer.md#cron-expressions) im Portal eingeben oder eine `settings.job`-Datei im Stammverzeichnis Ihrer WebJob-*ZIP*-Datei einschließen, wie im folgenden Beispiel gezeigt wird:
 
 ```json
 {

@@ -1,9 +1,9 @@
 ---
-title: "Erstellen von Warnungen für Azure-Dienste – plattformübergreifende Befehlszeilenschnittstelle | Microsoft-Dokumentation"
-description: "E-Mails, Benachrichtigungen oder Automatisierung werden ausgelöst und URLs (Webhooks) von Websites aufgerufen, wenn die von Ihnen angegebenen Bedingungen erfüllt sind."
+title: Erstellen von Warnungen für Azure-Dienste – plattformübergreifende Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: E-Mails, Benachrichtigungen oder Automatisierung werden ausgelöst und URLs (Webhooks) von Websites aufgerufen, wenn die von Ihnen angegebenen Bedingungen erfüllt sind.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 5c6a2d27-7dcc-4f89-8752-9bb31b05ff35
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: 92246a8da73a244a1c9a924bed55711d71a20fd8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cf93c95a37c9c32333727059317e05cfcc252905
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – plattformübergreifende Befehlszeilenschnittstelle
+# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Erstellen von klassischen Metrikwarnungen in Azure Monitor für Azure-Dienste – plattformübergreifende Befehlszeilenschnittstelle
 > [!div class="op_single_selector"]
 > * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -29,6 +29,11 @@ ms.lasthandoff: 12/21/2017
 >
 
 ## <a name="overview"></a>Übersicht
+> [!NOTE]
+> In diesem Artikel wird beschrieben, wie ältere Metrikwarnungen erstellt werden. Azure Monitor unterstützt jetzt [neuere, bessere Metrikwarnungen](monitoring-near-real-time-metric-alerts.md). Diese Warnungen können mehrere Metriken überwachen und ermöglichen die Warnung bei dimensionalen Metriken. CLI-Unterstützung für neuere Metrikwarnungen wird bald verfügbar sein.
+>
+>
+
 In diesem Artikel erfahren Sie, wie Sie Azure-Metrikwarnungen mit der plattformübergreifenden Befehlszeilenschnittstelle (CLI) einrichten können.
 
 > [!NOTE]
@@ -55,7 +60,7 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Metrikwarnregeln und Abr
 * [Befehlszeilenschnittstelle (CLI)](insights-alerts-command-line-interface.md)
 * [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-Sie können stets Hilfe zu Befehlen erhalten, indem Sie einen Befehl eingeben und am Ende „-help“ hinzufügen. Beispiel:
+Sie können stets Hilfe zu Befehlen erhalten, indem Sie einen Befehl eingeben und am Ende „-help“ hinzufügen. Beispiel: 
 
     ```console
     azure insights alerts -help

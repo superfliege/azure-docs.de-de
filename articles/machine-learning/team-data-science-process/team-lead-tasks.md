@@ -1,23 +1,23 @@
 ---
 title: Aufgaben des Teamleiters eines Team Data Science-Prozesses - Azure | Microsoft-Dokumentation
-description: "In diesem Artikel erhalten Sie einen Überblick über die Aufgaben des Teamleiters eines Data Science-Teamprojekts."
-documentationcenter: 
+description: In diesem Artikel erhalten Sie einen Überblick über die Aufgaben des Teamleiters eines Data Science-Teamprojekts.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: 58e8bfeb547fbcd7f472fbed50073b1ca3176b72
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 85589dfd60a32a28cecf427a7f5668dc36f8f5f2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="team-lead-tasks"></a>Aufgaben des Teamleiters
 
@@ -208,7 +208,7 @@ Nach dem Klonen werden die zwei Verzeichnisse **MyTeamProjectTemplate** (D3) und
 
 Führen Sie zum Kopieren des Inhalts des lokalen Ordners **GroupProjectTemplate** (D1) in das lokale Verzeichnis **MyTeamProjectTemplate** (D3) eines der folgenden Shellskripts aus: 
 
-####<a name="from-the-powershell-command-line-for-windows"></a>Von der PowerShell-Befehlszeile für Windows        
+#### <a name="from-the-powershell-command-line-for-windows"></a>Von der PowerShell-Befehlszeile für Windows       
 
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
     .\tdsp_local_copy_win.ps1 2
@@ -216,7 +216,7 @@ Führen Sie zum Kopieren des Inhalts des lokalen Ordners **GroupProjectTemplate*
     
 ![16](./media/team-lead-tasks/team-leads-16-local_copy_team_lead_new.png)
 
-####<a name="from-the-linux-shell-for-the-linux-dsvm"></a>Von der Linux-Shell für den **Linux-DSVM**
+#### <a name="from-the-linux-shell-for-the-linux-dsvm"></a>Von der Linux-Shell für den **Linux-DSVM**
     
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
     bash tdsp_local_copy_linux.sh 2
@@ -388,7 +388,7 @@ Vergewissern Sie sich, dass ein neues Laufwerk „F“ erfolgreich auf dem Compu
 
 **Manuelles Eingeben von Azure File Storage-Informationen:** Wenn Sie die Azure File Storage-Informationen nicht in einer Textdatei gespeichert haben, können Sie die Anweisungen im folgenden Bildschirm befolgen und die erforderlichen Informationen zu Abonnement, Speicherkonto und Azure File Storage einzugeben:
 
-- Geben Sie **n** ein.
+- Eingabe **n**.
 - Wählen Sie den Index für den Namen des Abonnements aus, unter dem der Azure File Storage im vorherigen Schritt erstellt wurde:
 
     ![41](./media/team-lead-tasks/team-leads-41-attach-s5-linux.png)

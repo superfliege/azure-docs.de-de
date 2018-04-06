@@ -1,25 +1,21 @@
 ---
-title: "Authentifizierung, Registrierung, Kennwortzurücksetzung, ASP.NET, Azure Active Directory B2C"
-description: "Erfahren Sie, wie Sie eine Webanwendung mit Registrierung/Anmeldung, Profilbearbeitung und Kennwortzurücksetzung mithilfe von Azure Active Directory B2C erstellen."
+title: Authentifizierung, Registrierung, Kennwortzurücksetzung, ASP.NET, Azure Active Directory B2C
+description: Erfahren Sie, wie Sie eine Webanwendung mit Registrierung/Anmeldung, Profilbearbeitung und Kennwortzurücksetzung mithilfe von Azure Active Directory B2C erstellen.
 services: active-directory-b2c
 documentationcenter: .net
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: barbaraselden
-ms.assetid: 30261336-d7a5-4a6d-8c1a-7943ad76ed25
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
-ms.author: parakhj
-ms.custom: seohack1
-ms.openlocfilehash: ffc46f4348a2ac3cae51c859a24c609756a710fe
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.author: davidmu
+ms.openlocfilehash: f7b7cce84f8ff7be14120568e710432be639ce8e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Erstellen Sie mithilfe von Azure Active Directory B2C eine ASP.NET-Web-App mit Registrierung, Anmeldung, Profilbearbeitung und Kennwortzurücksetzung.
 
@@ -97,7 +93,7 @@ Unser Beispiel ist so konfiguriert, dass die Richtlinien und die Client-ID unser
 * `ida:ResetPasswordPolicyId` durch den Namen der Richtlinie für „Kennwort zurücksetzen“
 
 ## <a name="launch-the-app"></a>Starten der App
-Starten Sie die App aus Visual Studio heraus. Navigieren Sie zur Registerkarte „Aufgabenliste“, und beachten Sie, dass der URl wie folgt lautet: „https://login.microsoftonline.com/*Name_Ihres_Mandanten*/oauth2/v2.0/authorize?p=*Ihre_Registrierungsrichtlinie*&client_id=*Ihre_Client_ID*...“
+Starten Sie die App aus Visual Studio heraus. Navigieren Sie zur Registerkarte „Aufgabenliste“, und beachten Sie, dass der URl wie folgt lautet: https://login.microsoftonline.com/*Name_Ihres_Mandanten*/oauth2/v2.0/authorize?p=*Name_Ihrer_Registrierunsrichtlinie*&client_id=*Ihre_Client-ID*.....
 
 Registrieren Sie sich mit Ihrer E-Mail-Adresse oder einem Benutzernamen für die App. Melden Sie sich ab und dann erneut an, und bearbeiten Sie das Profil, oder setzen Sie das Kennwort zurück. Melden Sie sich ab, und melden Sie sich als ein anderer Benutzer an. 
 

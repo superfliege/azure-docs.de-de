@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über den Lebenszyklus von Actor-basierten Azure-Microservices | Microsoft-Dokumentation"
-description: "Erläutert den Service Fabric Reliable Actor-Lebenszyklus, Garbage Collection und das manuelle Löschen von Actors und ihren Zuständen"
+title: Übersicht über den Lebenszyklus von Actor-basierten Azure-Microservices | Microsoft-Dokumentation
+description: Erläutert den Service Fabric Reliable Actor-Lebenszyklus, Garbage Collection und das manuelle Löschen von Actors und ihren Zuständen
 services: service-fabric
 documentationcenter: .net
 author: amanbha
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: dd45acd75e1cf263029c869d88c87b28f56d50cc
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4abb1ea6e5c79a5280d6ca4ad96070603b81793a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Actor-Lebenszyklus, automatische Garbage Collection und manuelles Löschen
 Ein Actor wird aktiviert, wenn zum ersten Mal eine seiner Methoden aufgerufen wird. Ein Actor wird deaktiviert (Garbage Collection durch die Actors-Laufzeit), wenn er innerhalb eines konfigurierbaren Zeitraums nicht verwendet wird. Ein Actor und sein Zustand können jederzeit auch manuell gelöscht werden.
@@ -112,37 +112,8 @@ Das Beispiel zeigt die Auswirkung von Actor-Methodenaufrufen, Erinnerungen und T
 
 Für einen Actor wird nie eine Garbage Collection durchgeführt, während er eine seiner Methoden ausführt, unabhängig davon, wie viel Zeit die Ausführung dieser Methode beansprucht. Wie bereits erwähnt, verhindert die Ausführung von Actor-Schnittstellenmethoden und Erinnerungs-Rückrufen die Durchführung der Garbage Collection, indem die Leerlaufzeit des Actors auf 0 zurückgesetzt wird. Durch die Ausführung von Timer-Rückrufen wird die Leerlaufzeit nicht auf 0 zurückgesetzt. Allerdings wird die Garbage Collection des Actors verzögert, bis der Timer-Rückruf abgeschlossen ist.
 
-## <a name="deleting-actors-and-their-state"></a>Löschen von Actors und deren Zustände
-Eine Garbage Collection von deaktivierten Actors bereinigt nur das Actor-Objekt, entfernt jedoch keine Daten, die im Zustands-Manager eines Actors gespeichert sind. Wenn ein Actor wieder aktiviert wird, werden ihm seine Daten durch den Zustands-Manager wieder zur Verfügung gestellt. In Fällen, in denen Actors Daten im Zustands-Manager speichern, dann deaktiviert aber nie wieder aktiviert werden, kann die Bereinigung Ihrer Daten nötig sein.
-
-Der [Actordienst](service-fabric-reliable-actors-platform.md) bietet auch eine Funktion zum Löschen von Actors über einen Remoteanrufer:
-
-```csharp
-ActorId actorToDelete = new ActorId(id);
-
-IActorService myActorServiceProxy = ActorServiceProxy.Create(
-    new Uri("fabric:/MyApp/MyService"), actorToDelete);
-
-await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
-```
-```Java
-ActorId actorToDelete = new ActorId(id);
-
-ActorService myActorServiceProxy = ActorServiceProxy.create(
-    new Uri("fabric:/MyApp/MyService"), actorToDelete);
-
-myActorServiceProxy.deleteActorAsync(actorToDelete);
-```
-
-Das Löschen eines Actors hat die folgenden Auswirkungen, abhängig davon, ob der Actor derzeit aktiv ist oder nicht:
-
-* **Aktiver Actor**
-  * Der Actor wird aus der Liste der aktiven Actors entfernt und deaktiviert.
-  * Sein Zustand wird dauerhaft gelöscht.
-* **Inaktiver Actor**
-  * Sein Zustand wird dauerhaft gelöscht.
-
-Beachten Sie, dass ein Actor für sich selbst durch eine seiner Methoden „delete“ aufrufen kann. Der Actor kann nämlich während einer Ausführung innerhalb eines Actor-Aufrufkontexts, in dem die Laufzeit eine Sperre um den Actor-Aufruf erhalten hat, um den Singlethread-Zugang zu erzwingen, nicht gelöscht werden.
+## <a name="manually-deleting-actors-and-their-state"></a>Manuelles Löschen von Actors und deren Zuständen
+Eine Garbage Collection von deaktivierten Actors bereinigt nur das Actor-Objekt, entfernt jedoch keine Daten, die im Zustands-Manager eines Actors gespeichert sind. Wenn ein Actor wieder aktiviert wird, werden ihm seine Daten durch den Zustands-Manager wieder zur Verfügung gestellt. In Fällen, in denen Actors Daten im Zustands-Manager speichern, dann deaktiviert aber nie wieder aktiviert werden, kann die Bereinigung Ihrer Daten nötig sein.  Beispiele zum Löschen von Actors finden Sie unter [Löschen zuverlässiger Actors und ihrer Zustände](service-fabric-reliable-actors-delete-actors.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Actor-Timer und -Erinnerungen](service-fabric-reliable-actors-timers-reminders.md)

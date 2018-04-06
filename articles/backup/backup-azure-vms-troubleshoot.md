@@ -2,10 +2,10 @@
 title: Behandeln von Sicherheitsfehlern bei virtuellen Azure-Computern | Microsoft-Dokumentation
 description: Fehlerbehandlung bei der Sicherung und Wiederherstellung virtueller Azure-Computer
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: 
+editor: ''
 ms.assetid: 73214212-57a4-4b57-a2e2-eaf9d7fde67f
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -13,38 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/21/2018
-ms.author: trinadhk;markgal;jpallavi;
-ms.openlocfilehash: d8840d2561e6102fe1679c36e981de6614b84d54
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.author: trinadhk;markgal;jpallavi;sogup
+ms.openlocfilehash: 89535fc22faccfb184d9b56a6138337877957829
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Problembehandlung bei der Sicherung virtueller Azure-Computer
 Sie können die Problembehandlung für Fehler, die beim Verwenden von Azure Backup auftreten, mit den Informationen in der unten angegebenen Tabelle durchführen.
 
-## <a name="backup"></a>Backup 
-
-### <a name="error-the-specified-disk-configuration-is-not-supported"></a>Fehler: Die angegebene Datenträgerkonfiguration wird nicht unterstützt.
-
-> [!NOTE]
-> Es gibt eine private Vorschauversion zur Unterstützung von Sicherungen für virtuelle Computer mit Datenträgern, die größer sind als 1 TB. Einzelheiten entnehmen Sie dem Dokument für die [private Vorschauversion für die Unterstützung von Sicherungen virtueller Computer mit großen Datenträgern](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
->
->
-
-Azure Backup unterstützt derzeit keine Datenträgergrößen, die [größer als 1.023 GB](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm) sind. 
-- Wenn Sie Datenträger haben, die größer als 1 TB sind, [fügen Sie neue Datenträger an](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal), welche kleiner als 1 TB sind. <br>
-- Kopieren Sie anschließend die Daten von dem Datenträger, der größer als 1 TB ist, in die neu erstellten Datenträger mit einer Größe unter 1 TB. <br>
-- Stellen Sie sicher, dass alle Daten kopiert wurden, und entfernen Sie die Datenträger, die größer als 1 TB sind.
-- Initiieren Sie die Sicherung.
-
 | Fehlerdetails | Problemumgehung |
 | --- | --- |
-| Der Vorgang konnte nicht ausgeführt werden, da der virtuelle Computer nicht mehr vorhanden ist. - Beenden des Schutzes für virtuelle Computer ohne Löschen der Sicherungsdaten. Weitere Informationen finden Sie unter „http://go.microsoft.com/fwlink/?LinkId=808124“. |Dies tritt auf, wenn der primäre virtuelle Computer gelöscht wurde, die Sicherungsrichtlinie jedoch weiterhin einen virtuellen Computer für die Sicherung sucht. Gehen Sie wie folgt vor, um diesen Fehler zu beheben:  <ol><li> Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen [Clouddienstname] neu,<br>(ODER)</li><li> Beenden Sie den Schutz für den virtuellen Computer mit oder ohne die Sicherheitsdaten zu löschen. [Weitere Informationen](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
-| Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer. Stellen Sie sicher, dass der virtuelle Computer auf das Netzwerk zugreifen kann. Damit die Momentaufnahme erfolgreich erstellt werden kann, setzen Sie entweder die IP-Bereiche des Azure-Rechenzentrums auf eine Whitelist, oder richten Sie einen Proxyserver für den Netzwerkzugriff ein. Weitere Informationen finden Sie unter http://go.microsoft.com/fwlink/?LinkId=800034. Wenn Sie bereits einen Proxyserver verwenden, stellen Sie sicher, dass die Einstellungen des Proxyservers korrekt konfiguriert sind. | Dieser Fehler wird ausgelöst, wenn Sie die ausgehende Internetkonnektivität auf dem virtuellen Computer verweigern. Internetkonnektivität ist erforderlich, damit die VM-Momentaufnahmenerweiterung eine Momentaufnahme des zugrunde liegenden Datenträgers des virtuellen Computers erstellen kann. [Erfahren Sie mehr](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine) zum Beheben von Momentaufnahmenfehlern, die auf blockierten Netzwerkzugriff zurückzuführen sind. |
+| Der Vorgang konnte nicht ausgeführt werden, da der virtuelle Computer nicht mehr vorhanden ist. - Beenden des Schutzes für virtuelle Computer ohne Löschen der Sicherungsdaten. Weitere Informationen finden Sie unter http://go.microsoft.com/fwlink/?LinkId=808124. |Dies tritt auf, wenn der primäre virtuelle Computer gelöscht wurde, die Sicherungsrichtlinie jedoch weiterhin einen virtuellen Computer für die Sicherung sucht. Gehen Sie wie folgt vor, um diesen Fehler zu beheben:  <ol><li> Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen [Clouddienstname] neu,<br>(ODER)</li><li> Beenden Sie den Schutz für den virtuellen Computer mit oder ohne die Sicherheitsdaten zu löschen. [Weitere Informationen](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
+| Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer. Stellen Sie sicher, dass der virtuelle Computer auf das Netzwerk zugreifen kann. Damit die Momentaufnahme erfolgreich erstellt werden kann, setzen Sie entweder die IP-Bereiche des Azure-Rechenzentrums auf eine Whitelist, oder richten Sie einen Proxyserver für den Netzwerkzugriff ein. Nähere Informationen finden Sie unter http://go.microsoft.com/fwlink/?LinkId=800034. Wenn Sie bereits einen Proxyserver verwenden, stellen Sie sicher, dass die Einstellungen des Proxyservers korrekt konfiguriert sind. | Dieser Fehler wird ausgelöst, wenn Sie die ausgehende Internetkonnektivität auf dem virtuellen Computer verweigern. Internetkonnektivität ist erforderlich, damit die VM-Momentaufnahmenerweiterung eine Momentaufnahme des zugrunde liegenden Datenträgers des virtuellen Computers erstellen kann. [Erfahren Sie mehr](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine) zum Beheben von Momentaufnahmenfehlern, die auf blockierten Netzwerkzugriff zurückzuführen sind. |
 | Der VM-Agent kann nicht mit dem Azure Backup-Dienst kommunizieren. Stellen Sie sicher, dass die VM über Netzwerkkonnektivität verfügt, und dass der neueste VM-Agent ausgeführt wird. Weitere Informationen finden Sie unter http://go.microsoft.com/fwlink/?LinkId=800034. |Dieser Fehler wird ausgelöst, wenn ein Problem mit dem VM-Agent besteht oder der Netzwerkzugriff auf die Azure-Infrastruktur blockiert ist. [Erfahren Sie mehr](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup) über das Debuggen von Problemen mit VM-Momentaufnahmen.<br> Wenn der VM-Agent keine Probleme verursacht, starten Sie den virtuellen Computer neu. Gelegentlich kann ein falscher Status des virtuellen Computers Probleme verursachen. Durch einen Neustart des virtuellen Computers wird der Status zurückgesetzt. |
 | VM befindet sich im Zustand „Fehler bei der Bereitstellung“. Starten Sie den virtuellen Computer neu, und stellen Sie sicher, dass der virtuelle Computer sich für die Sicherung im Zustand „Wird ausgeführt“ oder „Ausgeschaltet“ befindet. | Dieser Fehler tritt auf, wenn einer der Erweiterungenfehler zu dem VM-Zustand „Fehler bei der Bereitstellung“ führt. Prüfen Sie in der Liste der Erweiterungen, ob eine fehlerhafte Erweiterung vorliegt, entfernen Sie sie ggf., und wiederholen Sie den Neustart des virtuellen Computers. Wenn alle Erweiterungen ausgeführt werden, überprüfen Sie, ob der VM-Agent-Dienst ausgeführt wird. Wenn dies nicht der Fall ist, starten Sie den VM-Agent-Dienst neu. | 
-| Fehler beim VMSnapshot-Erweiterungsvorgang für verwaltete Datenträger. Führen Sie den Sicherungsvorgang erneut durch. Wenn sich das Problem wiederholt, befolgen Sie die Anweisungen unter http://go.microsoft.com/fwlink/?LinkId=800034. Wenn der Fehler weiterhin auftritt, wenden Sie sich an den Microsoft-Support. | Dieser Fehler tritt auf, wenn der Azure Backup-Dienst keine Momentaufnahme auslösen kann. [Erfahren Sie mehr](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vmsnapshot-extension-operation-failed) über das Debuggen von Problemen mit VM-Momentaufnahmen. |
+| Fehler beim VMSnapshot-Erweiterungsvorgang für verwaltete Datenträger. Führen Sie den Sicherungsvorgang erneut durch. Wenn das Problem wiederholt auftritt, befolgen Sie die Anweisungen unter http://go.microsoft.com/fwlink/?LinkId=800034. Wenn der Fehler weiterhin auftritt, wenden Sie sich an den Microsoft-Support. | Dieser Fehler tritt auf, wenn der Azure Backup-Dienst keine Momentaufnahme auslösen kann. [Erfahren Sie mehr](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vmsnapshot-extension-operation-failed) über das Debuggen von Problemen mit VM-Momentaufnahmen. |
 | Die Momentaufnahme des virtuellen Computers konnte nicht kopiert werden, weil das Speicherkonto nicht über genügend freien Speicherplatz verfügt. Stellen Sie sicher, dass das Speicherkonto über genügend freien Speicherplatz für die Daten auf den Premium-Speicherdatenträgern verfügt, die an den virtuellen Computer angefügt sind. | Bei virtuellen Premium-Computern kopieren wir die Momentaufnahme in das Speicherkonto. Dies soll sicherstellen, dass der Sicherungsverwaltungs-Datenverkehr, der die Momentaufnahme beeinflusst, nicht die Anzahl der IOPS begrenzt, die der Anwendung zur Verfügung stehen, die Premium-Datenträger verwendet. Microsoft empfiehlt Ihnen, nur 50 % des gesamten Speicherplatzes des Kontos zuzuordnen, sodass der Azure Backup-Dienst die Momentaufnahme in das Speicherkonto kopieren und Daten von diesem Kopierspeicherort in das Speicherkonto des Tresors übertragen kann. | 
 | Der Vorgang kann nicht ausgeführt werden, da der VM-Agent nicht reagiert |Dieser Fehler wird ausgelöst, wenn ein Problem mit dem VM-Agent besteht oder der Netzwerkzugriff auf die Azure-Infrastruktur blockiert ist. Überprüfen Sie für Windows-VMs den VM-Agent-Dienststatus unter Dienste, und sehen Sie nach, ob der Agent in der Systemsteuerung unter Programme angezeigt wird. Versuchen Sie, das Programm aus der Systemsteuerung zu entfernen, und installieren Sie den Agenten erneut, wie [unten](#vm-agent) erwähnt. Lösen Sie nach der erneuten Installation des Agenten eine Ad-hoc-Sicherung zur Überprüfung aus. |
 | Fehler beim Vorgang für die Recovery Services-Erweiterung. – Please make sure that latest virtual machine agent is present on the virtual machine and agent service is running. (Stellen Sie sicher, dass der aktuelle VM-Agent auf dem virtuellen Computer vorhanden ist und der Agent-Dienst ausgeführt wird.) Wiederholen Sie den Sicherungsvorgang. Sollte ein Fehler auftreten, wenden Sie sich an den Microsoft-Support. |Dieser Fehler wird ausgelöst, wenn ein VM-Agent nicht mehr aktuell ist. Informationen zum Aktualisieren des VM-Agents finden Sie unter „Aktualisieren des VM-Agents“. |

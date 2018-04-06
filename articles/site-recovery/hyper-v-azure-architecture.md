@@ -1,16 +1,16 @@
 ---
 title: Architektur der Hyper-V-zu-Azure-Replikation in Azure Site Recovery | Microsoft-Dokumentation
-description: "Dieser Artikel bietet einen Überblick über die Komponenten und Architektur, die beim Replizieren von lokalen virtuellen Hyper-V-Computern (ohne VMM) in Azure mit dem Azure Site Recovery-Dienst verwendet werden."
+description: Dieser Artikel bietet einen Überblick über die Komponenten und Architektur, die beim Replizieren von lokalen virtuellen Hyper-V-Computern (ohne VMM) in Azure mit dem Azure Site Recovery-Dienst verwendet werden.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 03/194/2018
 ms.author: raynew
-ms.openlocfilehash: dd3dcf325ed5a628c98ac63683440e1796aa8c3f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 978d290287a4ff8875eea7e93f003c78e7177dae
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="hyper-v-to-azure-replication-architecture"></a>Architektur der Replikation von Hyper-V in Azure
 
@@ -28,7 +28,7 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 **Komponente** | **Anforderung** | **Details**
 --- | --- | ---
 **Azure** | Ein Azure-Abonnement, ein Azure-Speicherkonto und ein Azure-Netzwerk | Replizierte Daten von lokalen VM-Workloads werden im Speicherkonto gespeichert. Azure-VMs werden mit den replizierten Workloaddaten erstellt, wenn ein Failover an Ihrem lokalen Standort auftritt.<br/><br/> Für die Azure-VMs wird eine Verbindung mit dem virtuellen Azure-Netzwerk hergestellt, wenn diese erstellt werden.
-**Hyper-V** | Während der Bereitstellung von Site Recovery sammeln Sie Hyper-V-Hosts und -Cluster in Hyper-V-Standorten. Sie installieren den Azure Site Recovery-Anbieter und den Recovery Services-Agent auf jedem Hyper-V-Computer. | Der Anbieter orchestriert die Replikation mit Site Recovery über das Internet. Der Recovery Services-Agent verarbeitet die Datenreplikation.<br/><br/> Sowohl die Kommunikation vom Anbieter als auch vom Agent ist sicher und verschlüsselt. Die replizierten Daten im Azure-Speicher werden ebenfalls verschlüsselt.
+**Hyper-V** | Während der Bereitstellung von Site Recovery sammeln Sie Hyper-V-Hosts und -Cluster in Hyper-V-Standorten. Sie installieren den Azure Site Recovery-Anbieter und den Recovery Services-Agent auf jedem eigenständigen Hyper-V-Host bzw. jedem Hyper-V-Clusterknoten. | Der Anbieter orchestriert die Replikation mit Site Recovery über das Internet. Der Recovery Services-Agent verarbeitet die Datenreplikation.<br/><br/> Sowohl die Kommunikation vom Anbieter als auch vom Agent ist sicher und verschlüsselt. Die replizierten Daten im Azure-Speicher werden ebenfalls verschlüsselt.
 **Virtuelle Hyper-V-Computer** | Eine oder mehrere VMs, die in Hyper-V ausgeführt werden | Auf virtuellen Computern muss nichts explizit installiert werden.
 
 
@@ -46,7 +46,7 @@ Die folgende Tabelle und Grafik bieten eine Übersicht der Komponenten, die für
 --- | --- | ---
 **Azure** | Ein Azure-Abonnement, ein Azure-Speicherkonto und ein Azure-Netzwerk | Replizierte Daten von lokalen VM-Workloads werden im Speicherkonto gespeichert. Azure-VMs werden mit den replizierten Daten erstellt, wenn ein Failover an Ihrem lokalen Standort auftritt.<br/><br/> Für die Azure-VMs wird eine Verbindung mit dem virtuellen Azure-Netzwerk hergestellt, wenn diese erstellt werden.
 **VMM-Server** | Der VMM-Server verfügt über mindestens eine Cloud mit Hyper-V-Hosts. | Auf dem VMM-Server installieren Sie den Site Recovery-Anbieter, um die Replikation mit Site Recovery zu orchestrieren. Außerdem registrieren Sie den Server im Recovery Services-Tresor.
-**Hyper-V-Host** | Mindestens ein von VMM verwalteter Hyper-V-Host/-Cluster. |  Sie installieren den Recovery Services-Agent auf jedem Host oder Clustermitglied.
+**Hyper-V-Host** | Mindestens ein von VMM verwalteter Hyper-V-Host/-Cluster. |  Sie installieren den Recovery Services-Agent auf jedem Hyper-V-Host bzw. Clusterknoten.
 **Virtuelle Hyper-V-Computer** | Mindestens ein virtueller Computer, der auf einem Hyper-V-Hostserver ausgeführt wird. | Auf virtuellen Computern muss nichts explizit installiert werden.
 **Netzwerk** | Eingerichtetes logisches Netzwerk und VM-Netzwerk auf dem VMM-Server. Das VM-Netzwerk sollte mit einem logischen Netzwerk verbunden sein, das der Cloud zugeordnet ist. | VM-Netzwerke sind virtuellen Azure-Netzwerken zugeordnet. Wenn Azure-VMs nach einem Failover erstellt werden, werden Sie dem Azure-Netzwerk hinzugefügt, welches dem VM-Netzwerk zugeordnet ist.
 

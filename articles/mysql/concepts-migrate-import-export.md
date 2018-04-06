@@ -1,6 +1,6 @@
 ---
 title: Importieren und Exportieren in bzw. aus Azure Database for MySQL
-description: "In diesem Artikel werden gängige Möglichkeiten zum Importieren von Datenbanken in bzw. Exportieren von Datenbanken aus Azure-Datenbank für MySQL mithilfe von Tools wie MySQL Workbench erläutert."
+description: In diesem Artikel werden gängige Möglichkeiten zum Importieren von Datenbanken in bzw. Exportieren von Datenbanken aus Azure-Datenbank für MySQL mithilfe von Tools wie MySQL Workbench erläutert.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: f15811cd44e405ee33d9ba3d565c2982e71a80c0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 74b8c6afc5167225414f467f76f08c0e53bbade5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrieren der MySQL-Datenbank durch Import und Export
 In diesem Artikel werden zwei gängige Vorgehensweisen beim Importieren von Daten zu bzw. Exportieren von Daten von einem Server für Azure-Datenbank für MySQL mithilfe von MySQL Workbench erläutert. 
@@ -33,9 +33,9 @@ Bei der Migration auf Azure-Datenbank für MySQL müssen Sie Ihre Import- und Ex
 ## <a name="create-a-database-on-the-azure-database-for-mysql-server"></a>Erstellen einer Datenbank auf dem Server für Azure-Datenbank für MySQL
 Erstellen Sie eine leere Datenbank auf dem Server für Azure-Datenbank für MySQL, zu dem Sie die Daten migrieren möchten. Verwenden Sie ein Tool wie MySQL Workbench, Toad oder Navicat zum Erstellen der Datenbank. Die Datenbank kann denselben Namen aufweisen wie die Datenbank, die die Sicherungsdaten enthält, Sie können aber auch eine Datenbank mit einem anderen Namen erstellen.
 
-Ermitteln Sie zum Herstellen der Verbindung die Verbindungsinformationen im Bereich **Eigenschaften** in Azure-Datenbank für MySQL.
+Ermitteln Sie zum Herstellen der Verbindung die Verbindungsinformationen in der **Übersicht** Ihrer Azure Database for MySQL-Instanz.
 
-![Ermitteln der Verbindungsinformationen im Azure-Portal](./media/concepts-migrate-import-export/1_server-properties-name-login.png)
+![Ermitteln der Verbindungsinformationen im Azure-Portal](./media/concepts-migrate-import-export/1_server-overview-name-login.png)
 
 Fügen Sie die Verbindungsinformationen in MySQL Workbench hinzu.
 

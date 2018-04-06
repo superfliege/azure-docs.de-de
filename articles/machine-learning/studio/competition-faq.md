@@ -1,10 +1,11 @@
 ---
-title: "Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen | Microsoft Docs"
-description: "Häufig gestellte Fragen zu Microsoft Cortana Intelligence-Wettbewerben."
+title: Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen | Microsoft Docs
+description: Häufig gestellte Fragen zu Microsoft Cortana Intelligence-Wettbewerben.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: hning86
-manager: jhubbard
+ms.author: haining
+manager: mwinkle
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: haining;garye
-ms.openlocfilehash: f7c839a8471dc54daebc47d0bb5a450358f5250d
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: db6fb6cd6c500ffe4537b57a968ef3b8792bcad6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen
 **Was sind Cortana Intelligence-Wettbewerbe?**
@@ -35,7 +35,7 @@ Allgemeine Fragen können Sie im [Microsoft Azure Machine Learning-Forum](https:
 
 **Wie kann ich an einem Wettbewerb teilnehmen?**
 
-Greifen Sie im [Azure AI-Katalog](https://gallery.cortanaintelligence.com/) auf die Homepage mit den [Competitions](https://gallery.cortanaintelligence.com/competitions) (Wettbewerben) zu, oder besuchen Sie [http://aka.ms/CIComp](http://aka.ms/CIComp). Auf der Startseite sind alle aktuellen Wettbewerbe aufgeführt. Auf der Anmeldeseite jedes Wettbewerbs finden Sie genaue Anweisungen und Teilnahmeregeln, Preise und die Dauer des Wettbewerbs.
+Greifen Sie in [Azure AI Gallery](https://gallery.cortanaintelligence.com/) auf die Homepage mit den [Wettbewerben](https://gallery.cortanaintelligence.com/competitions) zu, oder besuchen Sie [http://aka.ms/CIComp](http://aka.ms/CIComp). Auf der Startseite sind alle aktuellen Wettbewerbe aufgeführt. Auf der Anmeldeseite jedes Wettbewerbs finden Sie genaue Anweisungen und Teilnahmeregeln, Preise und die Dauer des Wettbewerbs.
 
 1. Suchen Sie nach dem Wettbewerb, an dem Sie teilnehmen möchten, lesen Sie sich alle Anweisungen durch, und sehen Sie sich das Videotutorial an. Klicken Sie anschließend auf die Schaltfläche **Enter Competition** (Am Wettbewerb teilnehmen), um das Starterexperiment in Ihren vorhandenen Azure Machine Learning-Arbeitsbereich zu kopieren. Wenn Sie noch keinen Zugriff auf einen Arbeitsbereich haben, müssen Sie vorab einen erstellen. Führen Sie das Starterexperiment aus und beobachten Sie die Leistungsmetrik. Nutzen Sie anschließend Ihre Kreativität, um die Leistung des Modells zu verbessern. Sie werden wahrscheinlich den Großteil Ihrer Zeit für diesen Schritt aufwenden.   
 

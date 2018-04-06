@@ -1,11 +1,11 @@
 ---
-title: "Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure | Microsoft Docs"
+title: Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure | Microsoft Docs
 description: Wichtige Aspekte beim Planen der Sicherung virtueller Computer in Azure
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 keywords: Sichern virtueller Computer, Sichern von VMs
 ms.assetid: 19d2cf82-1f60-43e1-b089-9238042887a9
 ms.service: backup
@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/18/2017
+ms.date: 3/23/2018
 ms.author: markgal;trinadhk
-ms.openlocfilehash: 66b64c803dfea6a1e4c7795d10e4b4ba064f1cf7
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 47d5da880f47831274fe05817ac9c488464d3096
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure
 Dieser Artikel enthält leistungs- und ressourcenbezogene Vorschläge, um Ihnen bei der Planung Ihrer Sicherungsinfrastruktur für virtuelle Computer helfen. Darüber hinaus werden in diesem Artikel zentrale Aspekte des Backup-Diensts definiert, die für Ihre Architektur sowie für die Kapazitäts- und Zeitplanung entscheidend sein können. Wenn Sie [Ihre Umgebung vorbereitet](backup-azure-arm-vms-prepare.md) haben, ist die Planung der nächste Schritt, bevor Sie mit dem [Sichern Ihrer virtuellen Computer](backup-azure-arm-vms.md) beginnen. Weitere Informationen zu virtuellen Azure-Computern finden Sie in der [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
@@ -37,8 +37,8 @@ Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt u
 
 > [!NOTE]
 > 1. Während des Sicherungsvorgangs berücksichtigt Azure Backup nicht den temporären Datenträger, der an den virtuellen Computer angefügt ist. Weitere Informationen finden Sie im Blogbeitrag zur [temporären Speicherung](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/).
-> 2. Da Azure Backup eine Momentaufnahme auf Speicherebene erstellt und diese Momentaufnahme in den Tresor überträgt, ändern Sie die Speicherkontoschlüssel erst nach Abschluss des Sicherungsauftrags.
-> 3. Bei virtuellen Premium-Computern kopieren wir die Momentaufnahme in das Speicherkonto. Dadurch wird sichergestellt, dass dem Azure Backup-Dienst ausreichend IOPS für die Übertragung von Daten in den Tresor zur Verfügung stehen. Diese zusätzliche Kopie des Speichers wird gemäß der zugeteilten VM-Größe in Rechnung gestellt. 
+> 2. Azure Backup erstellt eine Momentaufnahme auf Speicherebene und überträgt diese Momentaufnahme in den Tresor – ändern Sie die Speicherkontoschlüssel erst nach Abschluss des Sicherungsauftrags.
+> 3. Für Premium-VMs kopiert Azure Backup die Momentaufnahme in das Speicherkonto. Dadurch wird sichergestellt, dass der Backup-Dienst ausreichend IOPS für die Übertragung von Daten in den Tresor nutzt. Diese zusätzliche Kopie des Speichers wird gemäß der zugeteilten VM-Größe in Rechnung gestellt. 
 >
 
 ### <a name="data-consistency"></a>Datenkonsistenz
@@ -125,24 +125,24 @@ Berücksichtigen Sie beim Konfigurieren von Sicherungen für virtuelle Computer 
 Azure Backup verschlüsselt die Daten während des Sicherungsvorgangs nicht. Sie können jedoch die Daten auf dem virtuellen Computer verschlüsseln und dann die geschützten Daten nahtlos sichern (erfahren Sie mehr über das [Sichern verschlüsselter Daten](backup-azure-vms-encryption.md)).
 
 ## <a name="calculating-the-cost-of-protected-instances"></a>Berechnen der Kosten von geschützten Instanzen
-Für virtuelle Azure-Computer, die über Azure Backup gesichert werden, gelten die [Azure Backup-Preise](https://azure.microsoft.com/pricing/details/backup/). Die Berechnung der geschützten Instanzen basiert auf der *tatsächlichen* Größe des virtuellen Computers (also auf der Summe aller Daten auf dem virtuellen Computer – mit Ausnahme des „Ressourcendatenträgers“).
+Für virtuelle Azure-Computer, die über Azure Backup gesichert werden, gelten die [Azure Backup-Preise](https://azure.microsoft.com/pricing/details/backup/). Die Berechnung der geschützten Instanzen basiert auf der *tatsächlichen* Größe des virtuellen Computers (also auf der Summe aller Daten auf dem virtuellen Computer – mit Ausnahme des temporären Speichers).
 
-Die Kosten der Sicherung virtueller Computer basieren *nicht* auf der maximal unterstützten Größe für jeden an den virtuellen Computer angefügten Datenträger. Die Kosten basieren auf der tatsächlichen Menge der Daten, die auf dem Datenträger gespeichert sind. Gleichermaßen basiert die Abrechnung der Sicherungsspeicherung auf der Menge der in Azure Backup gespeicherten Daten, d.h. auf der Summe der tatsächlichen Daten an jedem Wiederherstellungspunkt.
+Die Kosten der Sicherung virtueller Computer basieren nicht auf der maximal unterstützten Größe für jeden an den virtuellen Computer angefügten Datenträger. Die Kosten basieren auf der tatsächlichen Menge der Daten, die auf dem Datenträger gespeichert sind. Gleichermaßen basiert die Abrechnung der Sicherungsspeicherung auf der Menge der in Azure Backup gespeicherten Daten, d.h. auf der Summe der tatsächlichen Daten an jedem Wiederherstellungspunkt.
 
 Beispiel: virtueller Computer mit A2-Standardgröße und zwei zusätzlichen Datenträgern mit einer maximalen Größe von jeweils 1 TB. In der folgenden Tabelle sind die auf jedem Datenträger tatsächlich gespeicherten Daten aufgeführt:
 
 | Datenträgertyp | Max. Größe | Tatsächliche Daten |
-| --- | --- | --- |
+| --------- | -------- | ----------- |
 | Betriebssystem-Datenträger |1023 GB |17 GB |
-| Lokaler Datenträger/Ressourcendatenträger |135 GB |5 GB (bei der Sicherung nicht enthalten) |
+| Lokaler Datenträger / temporärer Datenträger |135 GB |5 GB (bei der Sicherung nicht enthalten) |
 | Datenträger 1 |1023 GB |30 GB |
 | Datenträger 2 |1023 GB |0 GB |
 
-Die *tatsächliche* Größe des virtuellen Computers in diesem Fall ist 17 GB + 30 GB + 0 GB = 47 GB. Diese Größe der geschützten Instanz (47 GB) wird zur Basis für die monatliche Rechnung. Mit zunehmender Datenmenge auf dem virtuellen Computer ändert sich entsprechend auch die Größe der geschützten Instanz, die für die Abrechnung verwendet wird.
+Die tatsächliche Größe des virtuellen Computers in diesem Fall ist 17GB + 30GB + 0GB = 47GB. Diese Größe der geschützten Instanz (47 GB) wird zur Basis für die monatliche Rechnung. Mit zunehmender Datenmenge auf dem virtuellen Computer ändert sich entsprechend auch die Größe der geschützten Instanz, die für die Abrechnung verwendet wird.
 
-Die Abrechnung erfolgt erst nach dem erfolgreichen Abschluss der ersten Sicherung. Zu diesem Zeitpunkt beginnt die Abrechnung für die Speicherung und die geschützten Instanzen. Die Abrechnung erfolgt so lange, wie *Sicherungsdaten für den virtuellen Computer in einem Tresor gespeichert* werden. Wenn Sie den Schutz des virtuellen Computers beenden, aber VM-Sicherungsdaten in einem Tresor vorhanden sind, wird die Abrechnung fortgesetzt.
+Die Abrechnung erfolgt erst nach dem erfolgreichen Abschluss der ersten Sicherung. Zu diesem Zeitpunkt beginnt die Abrechnung für die Speicherung und die geschützten Instanzen. Die Abrechnung erfolgt so lange, wie Sicherungsdaten für den virtuellen Computer in einem Tresor gespeichert werden. Wenn Sie den Schutz des virtuellen Computers beenden, aber VM-Sicherungsdaten in einem Tresor vorhanden sind, wird die Abrechnung fortgesetzt.
 
-Die Abrechnung für einen bestimmten virtuellen Computer endet erst, wenn der Schutz beendet wird *und* alle Sicherungsdaten gelöscht werden. Wenn der Schutz beendet wird und es keine aktiven Sicherungsaufträge gibt, wird die Größe der letzten erfolgreichen VM-Sicherung zur Größe der geschützten Instanz für die monatliche Rechnung.
+Die Abrechnung für einen bestimmten virtuellen Computer endet erst, wenn der Schutz beendet wird und alle Sicherungsdaten gelöscht werden. Wenn der Schutz beendet wird und es keine aktiven Sicherungsaufträge gibt, wird die Größe der letzten erfolgreichen VM-Sicherung zur Größe der geschützten Instanz für die monatliche Rechnung.
 
 ## <a name="questions"></a>Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).

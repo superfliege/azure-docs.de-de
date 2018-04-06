@@ -1,24 +1,24 @@
 ---
-title: "Ausführen von MPI-Anwendungen mithilfe von Tasks mit mehreren Instanzen – Azure Batch | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie MPI-Anwendungen (Message Passing Interface) mithilfe des Tasktyps mit mehreren Instanzen in Azure Batch ausgeführt werden."
+title: Ausführen von MPI-Anwendungen mithilfe von Tasks mit mehreren Instanzen – Azure Batch | Microsoft-Dokumentation
+description: Erfahren Sie, wie MPI-Anwendungen (Message Passing Interface) mithilfe des Tasktyps mit mehreren Instanzen in Azure Batch ausgeführt werden.
 services: batch
-documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: 5/22/2017
-ms.author: tamram
+ms.tgt_pltfrm: ''
+ms.date: 5/22/2017
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01da017587aed7c0f2415786fdcbf6f64024cbe3
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 0fb5ea21c6403369cbcb60df58c0f70a57a61d4e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Verwenden von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Batch
 
@@ -49,6 +49,10 @@ Wenn Sie einen Task mit Einstellungen für mehrere Instanzen an einen Auftrag ü
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Anforderungen für Tasks mit mehreren Instanzen
 Tasks mit mehreren Instanzen erfordern einen Pool, in dem die **Kommunikation zwischen Knoten** aktiviert und die **gleichzeitige Ausführung von Tasks deaktiviert** ist. Legen Sie die Eigenschaft [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) auf 1 fest, um das gleichzeitige Ausführen von Tasks zu deaktivieren.
+
+> [!NOTE]
+> Batch [begrenzt](batch-quota-limit.md#other-limits) die Größe eines Pools, für den Kommunikation zwischen den Knoten aktiviert wurde.
+
 
 In diesem Codeausschnitt wird veranschaulicht, wie ein Pool für Tasks mit mehreren Instanzen mithilfe der Batch-Bibliothek für .NET erstellt wird.
 
@@ -107,8 +111,7 @@ Suchen Sie in den folgenden Artikeln nach den Größen, für die „RDMA-fähig�
   * [Größen für virtuelle Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> Zum Nutzen von RDMA auf [Linux-Computeknoten](batch-linux-nodes.md) müssen Sie **Intel MPI** auf den Knoten verwenden. Weitere Informationen zu CloudServiceConfiguration- und VirtualMachineConfiguration-Pools finden Sie im Pool-Abschnitt der [Übersicht über Azure Batch-Features](batch-api-basics.md).
->
+> Zum Nutzen von RDMA auf [Linux-Computeknoten](batch-linux-nodes.md) müssen Sie **Intel MPI** auf den Knoten verwenden. 
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>Erstellen eines Tasks mit mehreren Instanzen mithilfe von Batch .NET

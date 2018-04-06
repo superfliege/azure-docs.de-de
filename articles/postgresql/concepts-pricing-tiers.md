@@ -8,21 +8,21 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: ee75af9b1d7b77799fe02d87da257ff73bc567e6
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 21f8eb795aa1675e2bbd5284f88b39c76ad59228
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL – Tarife
 
 Ein Azure Database for PostgreSQL-Server kann basierend auf drei unterschiedlichen Tarifen erstellt werden: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Die Tarife unterscheiden sich anhand der bereitstellbaren Menge an Rechenleistung in V-Kernen, des Arbeitsspeichers pro V-Kern und der zum Speichern der Daten verwendeten Speichertechnologie. Alle Ressourcen werden auf der PostgreSQL-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
 
-|    | **Basic** | **Allgemein** | **Arbeitsspeicheroptimiert** |
+|    | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Computegeneration | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
-| V-Kerne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16, 32 |
+| V-Kerne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Arbeitsspeicher pro V-Kern | 1x | 2x Basic | 2x Allgemein |
 | Speichergröße | 5 GB bis 1 TB | 5 GB bis 1 TB | 5 GB bis 1 TB |
 | Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
@@ -33,14 +33,39 @@ Die folgende Tabelle kann als Ausgangspunkt für die Auswahl eines Tarifs verwen
 | Tarif | Zielworkloads |
 |:-------------|:-----------------|
 | Basic | Workloads mit geringen Anforderungen an Rechen- und E/A-Leistung. Beispiele hierfür sind Server, die für die Entwicklung, für Tests oder für kleine, selten verwendete Anwendungen verwendet werden. |
-| Allgemein | Geeignet für die meisten Unternehmensworkloads mit gängigen Compute- und Arbeitsspeicheranforderungen und skalierbarem E/A-Durchsatz. Beispiele hierfür sind Server zum Hosten von Web-Apps und mobilen Apps sowie andere Unternehmensanwendungen.|
+| Allgemeiner Zweck | Geeignet für die meisten Unternehmensworkloads mit gängigen Compute- und Arbeitsspeicheranforderungen und skalierbarem E/A-Durchsatz. Beispiele hierfür sind Server zum Hosten von Web-Apps und mobilen Apps sowie andere Unternehmensanwendungen.|
 | Arbeitsspeicheroptimiert | Geeignet für Hochleistungs-Datenbankworkloads, für die In-Memory-Leistung erforderlich ist, um eine schnellere Transaktionsverarbeitung und höhere Parallelität zu erzielen. Beispiele hierfür sind Server für die Verarbeitung von Echtzeitdaten und Hochleistungs-Apps für Transaktionen oder Analysen.|
 
 Nachdem Sie einen Server erstellt haben, kann die Anzahl von V-Kernen innerhalb weniger Sekunden erhöht oder verringert werden. Außerdem haben Sie die Möglichkeit, die Speichermenge einzeln zu erhöhen und den Aufbewahrungszeitraum für Sicherungen zu erhöhen oder zu verringern, ohne dass es für die Anwendung zu Ausfallzeiten kommt. Ausführlichere Informationen finden Sie unten im Abschnitt zur Skalierung.
 
 ## <a name="compute-generations-vcores-and-memory"></a>Computegenerationen, V-Kerne und Arbeitsspeicher
 
-Computeressourcen werden in Form von V-Kernen bereitgestellt und repräsentieren die logische CPU der zugrunde liegenden Hardware. Derzeit können Sie zwischen zwei Computegenerationen (Gen 4 und Gen 5) wählen. Logische CPUs der Generation 4 basieren auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) 2,4 GHz. Logische CPUs der Generation 5 basieren auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz.
+Computeressourcen werden in Form von V-Kernen bereitgestellt und repräsentieren die logische CPU der zugrunde liegenden Hardware. Derzeit können Sie zwischen zwei Computegenerationen (Gen 4 und Gen 5) wählen. Logische CPUs der Generation 4 basieren auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) 2,4 GHz. Logische CPUs der Generation 5 basieren auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz. Gen 4 und 5 Gen stehen in den folgenden Regionen zur Verfügung („X“ steht für verfügbar): 
+
+| **Azure-Region** | **Generation 4** | **Generation 5** |
+|:---|:----------:|:--------------------:|
+| USA (Mitte) |  | X |
+| USA (Ost) | X | X |
+| USA (Ost) 2 | X |  |
+| USA Nord Mitte | X |  |
+| USA Süd Mitte | X |  |
+| USA (Westen) | X | X |
+| USA, Westen 2 |  | X |
+| Kanada, Mitte | X | X |
+| Kanada, Osten | X | X |
+| Brasilien Süd | X |  |
+| Nordeuropa | X | X |
+| Europa, Westen | X | X |
+| UK, Westen |  | X |
+| UK, Süden |  | X |
+| Asien, Osten | X |  |
+| Asien, Südosten | X |  |
+| Australien (Osten) |  | X |
+| Indien, Mitte | X |  |
+| Indien, Westen | X |  |
+| Japan, Osten | X |  |
+| Japan, Westen | X |  |
+| Korea, Süden |  | X |
 
 Je nach Tarif wird jeder V-Kern mit einer bestimmten Menge an Speicher bereitgestellt. Wenn Sie die Anzahl von V-Kernen für Ihren Server erhöhen oder verringern, wird der Speicher proportional dazu ebenfalls erhöht oder verringert. Im Tarif „Allgemein“ erhalten Sie im Vergleich zum Tarif „Basic“ die doppelte Menge an Speicher pro V-Kern. Im Tarif „Arbeitsspeicheroptimiert“ erhalten Sie im Vergleich zum Tarif „Allgemein“ die doppelte Menge an Speicher.
 
@@ -48,7 +73,7 @@ Je nach Tarif wird jeder V-Kern mit einer bestimmten Menge an Speicher bereitges
 
 Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die für Ihren Azure Database for PostgreSQL-Server zur Verfügung steht. Der Speicher wird für die Datenbankdateien, temporären Dateien, Transaktionsprotokolle und PostgreSQL-Serverprotokolle verwendet. Außerdem wird durch die Gesamtmenge an bereitgestelltem Speicher die E/A-Kapazität Ihres Servers definiert:
 
-|    | **Basic** | **Allgemein** | **Arbeitsspeicheroptimiert** |
+|    | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
 | Speichergröße | 5 GB bis 1 TB | 5 GB bis 1 TB | 5 GB bis 1 TB |
@@ -73,7 +98,7 @@ Das Skalieren des Speichers und das Ändern der Aufbewahrungsdauer für Sicherun
 
 ## <a name="pricing"></a>Preise
 
-Aktuelle Preisinformationen finden Sie auf der [Seite mit den Preisen](https://azure.microsoft.com/pricing/details/PostgreSQL/). Informationen zu den Kosten der gewünschten Konfiguration können Sie im [Azure-Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) anzeigen. Die monatlichen Kosten für die von Ihnen ausgewählten Optionen werden auf der Registerkarte **Tarif** angegeben. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie den Azure-Preisrechner verwenden, um einen geschätzten Preis zu erhalten. Besuchen Sie die Website des [Azure-Preisrechners](https://azure.microsoft.com/pricing/calculator/), klicken Sie auf **Elemente hinzufügen**, erweitern Sie die Kategorie **Datenbanken**, und wählen Sie **Azure Database for PostgreSQL** aus, um die Optionen anzupassen.
+Aktuelle Preisinformationen finden Sie auf der [Seite mit den Preisen](https://azure.microsoft.com/pricing/details/PostgreSQL/). Informationen zu den Kosten der gewünschten Konfiguration können Sie im [Azure-Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) anzeigen. Die monatlichen Kosten für die von Ihnen ausgewählten Optionen werden auf der Registerkarte **Tarif** angegeben. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie den Azure-Preisrechner verwenden, um einen geschätzten Preis zu erhalten. Besuchen Sie die Website des [Azure-Preisrechners](https://azure.microsoft.com/pricing/calculator/), klicken Sie auf **Elemente hinzufügen**, erweitern Sie die Kategorie **Datenbanken**, und wählen Sie **Azure-Datenbank für PostgreSQL** aus, um die Optionen anzupassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

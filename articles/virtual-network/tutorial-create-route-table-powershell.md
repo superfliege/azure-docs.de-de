@@ -1,5 +1,5 @@
 ---
-title: Weiterleiten von Netzwerkdatenverkehr – PowerShell | Microsoft-Dokumentation
+title: Weiterleiten von Netzwerkdatenverkehr – Azure PowerShell | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie mithilfe von PowerShell Netzwerkdatenverkehr mit einer Routingtabelle weitergeleitet wird.
 services: virtual-network
 documentationcenter: virtual-network
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 49c7b6158beee9d47ecd224e6a0750310d2b68c0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7be6aa58c6779150d3e79893e6e179d08611567
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Weiterleiten von Netzwerkdatenverkehr über eine Routingtabelle mithilfe von PowerShell
 
@@ -242,7 +242,7 @@ Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des vir
 In einem späteren Schritt wird das Routing mithilfe des Befehls „tracert.exe“ getestet. Tracert verwendet das Internet Control Message Protokoll (ICMP), das über die Windows-Firewall verweigert wird. Aktivieren Sie das ICMP für die Windows-Firewall, indem Sie den folgenden PowerShell-Befehl eingeben:
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule ???DisplayName ???Allow ICMPv4-In??? ???Protocol ICMPv4
 ```
 
 In diesem Artikel wird zwar Tracert verwendet, das Zulassen des ICMP-Datenverkehrs durch die Windows-Firewall wird jedoch nicht für Produktionsbereitstellungen empfohlen.
@@ -272,7 +272,7 @@ mstsc /v:myVmPublic
 Aktivieren Sie das ICMP für die Windows-Firewall, indem Sie den folgenden PowerShell-Befehl eingeben:
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule ???DisplayName ???Allow ICMPv4-In??? ???Protocol ICMPv4
 ```
 
 Testen Sie mit dem folgenden PowerShell-Befehl die Weiterleitung von Netzwerkdatenverkehr von der *myVmPublic*-VM zur *myVmPrivate*-VM:
@@ -332,4 +332,4 @@ In diesem Artikel haben Sie eine Routingtabelle erstellt und einem Subnetz zugeo
 Sie können zwar in einem virtuellen Netzwerk viele Azure-Ressourcen bereitstellen, für einige Azure-PaaS-Dienste können jedoch keine Ressourcen in einem virtuellen Netzwerk bereitgestellt werden. Allerdings können Sie den Zugriff auf die Ressourcen einiger Azure-PaaS-Dienste nach wie vor auf den Datenverkehr nur eines Subnetzes eines virtuellen Netzwerks beschränken. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Netzwerkzugriff auf Azure-PaaS-Ressourcen beschränken.
 
 > [!div class="nextstepaction"]
-> [Beschränken des Netzwerkzugriffs auf PaaS-Ressourcen](virtual-network-service-endpoints-configure.md#azure-powershell)
+> [Beschränken des Netzwerkzugriffs auf PaaS-Ressourcen](tutorial-restrict-network-access-to-resources-powershell.md)

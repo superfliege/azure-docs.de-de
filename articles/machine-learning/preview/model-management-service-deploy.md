@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/03/2018
-ms.openlocfilehash: 7b481fb3287b8ee2c22e5f25f8cf1935eed05428
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 5211fa29af1d8cba17049b69974189990d30f34a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>Bereitstellen eines Machine Learning-Modells als Webdienst
 
@@ -22,10 +22,17 @@ Die Azure Machine Learning-Modellverwaltung bietet Schnittstellen zum Bereitstel
 
 In diesem Dokument werden die Schritte zum Bereitstellen Ihrer Modelle als Webdienste mithilfe der CLI (Befehlszeilenschnittstelle) der Azure Machine Learning-Modellverwaltung beschrieben.
 
+## <a name="what-you-need-to-get-started"></a>Voraussetzungen
+
+Um diesen Leitfaden bestmöglich zu nutzen, sollten Sie als Mitwirkender Zugriff auf ein Azure-Abonnement oder eine Ressourcengruppe haben, in dem bzw. der Sie Ihre Modelle bereitstellen können.
+Die CLI ist in Azure Machine Learning Workbench und [Azure DSVMs](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) (Data Science Virtual Machines) vorinstalliert.  Sie kann auch als eigenständiges Paket installiert werden.
+
+Darüber hinaus müssen ein Modellverwaltungskonto und die Bereitstellungumgebung bereits eingerichtet sein.  Weitere Informationen zum Einrichten Ihres Modellverwaltungskontos und der Umgebung für die lokale und Clusterbereitstellung finden Sie unter [Konfiguration der Modellverwaltung](deployment-setup-configuration.md).
+
 ## <a name="deploying-web-services"></a>Bereitstellen von Webdiensten
 Mithilfe der CLIs können Sie Webdienste zur Ausführung auf dem lokalen Computer oder in einem Cluster bereitstellen.
 
-Es wird empfohlen, mit einer lokalen Bereitstellung anzufangen. Sie überprüfen zunächst, ob Ihr Modell und Code funktionieren. Anschließend stellen Sie den Webdienst in einem Cluster zur Nutzung in der Produktionsumgebung bereit. Weitere Informationen zum Einrichten der Umgebung für die Bereitstellung im Cluster finden Sie unter [Konfiguration der Modellverwaltung](deployment-setup-configuration.md). 
+Es wird empfohlen, mit einer lokalen Bereitstellung anzufangen. Sie überprüfen zunächst, ob Ihr Modell und Code funktionieren. Anschließend stellen Sie den Webdienst in einem Cluster zur Nutzung in der Produktionsumgebung bereit.
 
 Es folgen die Schritte zur Bereitstellung:
 1. Verwenden eines gespeicherten, trainierten Machine Learning-Modells
@@ -49,7 +56,8 @@ saved_model = pickle.dumps(clf)
 ```
 
 ### <a name="2-create-a-schemajson-file"></a>2. Erstellen der Datei „schema.json“
-Dieser Schritt ist optional. 
+
+Die Schemagenerierung ist zwar optional, doch sollten Sie unbedingt zur besseren Behandlung das Format der Anforderungs- und Eingabevariablen definieren.
 
 Erstellen Sie ein Schema zum automatischen Überprüfen der Ein- und Ausgabe Ihres Webdiensts. Die CLIs nutzen das Schema auch zum Generieren eines Swagger-Dokuments für Ihren Webdienst.
 
@@ -77,6 +85,13 @@ Im folgenden Beispiel wird ein Pandas-Datenrahmen verwendet:
 
 ```python
 inputs = {"input_df": SampleDefinition(DataTypes.PANDAS, yourinputdataframe)}
+generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
+```
+
+Im folgenden Beispiel wird ein generisches JSON-Format verwendet:
+
+```python
+inputs = {"input_json": SampleDefinition(DataTypes.STANDARD, yourinputjson)}
 generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
 ```
 
@@ -147,10 +162,13 @@ Sie können ein Image erstellen, nachdem Sie sein Manifest zuvor erstellt zu hab
 az ml image create -n [image name] --manifest-id [the manifest ID]
 ```
 
-Oder Sie können das Manifest und das Image mit einem einzigen Befehl erstellen. 
+>[!NOTE] 
+>Sie können auch mit einem einzelnen Befehl Modellregistrierung, Manifest und Modellerstellung ausführen. Geben Sie „-h“ mit dem Befehl „create“ an, um mehr zu erfahren.
+
+Als Alternative steht ein einzelner Befehl zur Verfügung, mit dem wie folgt in einem Schritt das Registrieren eines Modells, Erstellen eines Manifests und Erstellen eines Images (jedoch noch nicht Erstellen und Bereitstellen des Webdiensts) durchgeführt werden.
 
 ```
-az ml image create -n [image name] --model-file [model file or folder path] -f [code file, e.g. the score.py file] -r [the runtime eg.g. spark-py which is the Docker container image base]
+az ml image create -n [image name] --model-file [model file or folder path] -f [code file, e.g. the score.py file] -r [the runtime e.g. spark-py which is the Docker container image base]
 ```
 
 >[!NOTE]
@@ -165,7 +183,14 @@ az ml service create realtime --image-id <image id> -n <service name>
 ```
 
 >[!NOTE] 
->Sie können auch einen einzelnen Befehl verwenden, um die vorherigen vier Schritte auszuführen. Geben Sie „-h“ mit dem Befehl „create“ an, um mehr zu erfahren.
+>Sie können auch einen einzelnen Befehl verwenden, um alle vorherigen vier Schritte auszuführen. Geben Sie „-h“ mit dem Befehl „create“ an, um mehr zu erfahren.
+
+Als Alternative steht ein einzelner Befehl zur Verfügung, mit dem wie folgt in einem Schritt das Registrieren eines Modells, Erstellen eines Manifests, Erstellen eines Images sowie Erstellen und Bereitstellen des Webdiensts durchgeführt werden.
+
+```azurecli
+az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
+```
+
 
 ### <a name="8-test-the-service"></a>8. Testen des Diensts
 Geben Sie den folgenden Befehl an, um Informationen zum Aufrufen des Diensts zu erhalten:

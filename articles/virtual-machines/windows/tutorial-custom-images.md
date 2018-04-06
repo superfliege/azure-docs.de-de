@@ -4,23 +4,23 @@ description: 'Tutorial: Erstellen eines benutzerdefinierten VM-Images mithilfe v
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 12/07/2017
+ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7001e5df235d65c531b9102f879bde9693c4f853
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 443f47b98ea063c6fe1f0b3517c00b6cf3692161
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-custom-image-of-an-azure-vm-using-powershell"></a>Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mithilfe von PowerShell
 
@@ -33,13 +33,16 @@ Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch 
 > * Liste aller Images in Ihrem Abonnement
 > * Löschen eines Images
 
-Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 In den folgenden Schritten wird erläutert, wie Sie eine vorhandene VM in ein wiederverwendbares benutzerdefiniertes Image umwandeln, mit dem Sie neue VM-Instanzen erstellen können.
 
 Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein. Gegebenenfalls können Sie mit diesem [Beispielskript](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) einen virtuellen Computer erstellen. Ersetzen Sie beim Durcharbeiten des Tutorials bei Bedarf den Namen der Ressourcengruppe und des virtuellen Computers.
+
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.6.0 des AzureRM-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
 ## <a name="prepare-vm"></a>Vorbereiten der VM
 
@@ -62,13 +65,13 @@ Um ein Image zu erstellen, muss die Zuordnung des virtuellen Computers aufgehobe
 
 Heben Sie die Zuordnung des virtuellen Computers mit [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) auf.
 
-```powershell
+```azurepowershell-interactive
 Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM -Force
 ```
 
 Legen Sie den Status des virtuellen Computers mithilfe von [Set-AzureRmVm](/powershell/module/azurerm.compute/set-azurermvm) auf `-Generalized` fest. 
    
-```powershell
+```azurepowershell-interactive
 Set-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM -Generalized
 ```
 
@@ -79,100 +82,41 @@ Nun können Sie ein Image des virtuellen Computers mit [New-AzureRmImageConfig](
 
 Rufen Sie den virtuellen Computer ab. 
 
-```powershell
+```azurepowershell-interactive
 $vm = Get-AzureRmVM -Name myVM -ResourceGroupName myResourceGroup
 ```
 
 Erstellen Sie die Imagekonfiguration.
 
-```powershell
+```azurepowershell-interactive
 $image = New-AzureRmImageConfig -Location EastUS -SourceVirtualMachineId $vm.ID 
 ```
 
 Erstellen Sie das Image.
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmImage -Image $image -ImageName myImage -ResourceGroupName myResourceGroup
 ``` 
 
  
 ## <a name="create-vms-from-the-image"></a>Erstellen von VMs anhand des Images
 
-Nachdem Sie ein Image erstellt haben, können Sie anhand des Images eine oder mehrere neue VMs erstellen. Das Erstellen einer VM anhand eines benutzerdefinierten Images ist vergleichbar mit dem Erstellen einer VM mithilfe eines Marketplace-Images. Wenn Sie ein Marketplace-Image verwenden, müssen Sie Informationen zum Image, zu dessen Anbieter, zum Angebot, zur SKU und Version bereitstellen. Bei einem benutzerdefinierten Image müssen Sie nur die ID der benutzerdefinierten Imageressource bereitstellen. 
+Nachdem Sie ein Image erstellt haben, können Sie anhand des Images eine oder mehrere neue VMs erstellen. Das Erstellen einer VM anhand eines benutzerdefinierten Images ist vergleichbar mit dem Erstellen einer VM mithilfe eines Marketplace-Images. Wenn Sie ein Marketplace-Image verwenden, müssen Sie Informationen zum Image, zu dessen Anbieter, zum Angebot, zur SKU und Version bereitstellen. Mit dem vereinfachten Parametersatz für das Cmdlet [New-AzureRMVM]() müssen Sie nur den Namen des benutzerdefinierten Images angeben – vorausgesetzt, es befindet sich in der gleichen Ressourcengruppe. 
 
-Im folgenden Skript erstellen wir die Variable *$image* zum Speichern von Informationen zum benutzerdefinierten Image mithilfe von [Get-AzureRmImage](/powershell/module/azurerm.compute/get-azurermimage). Dann verwenden wir [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) und geben die ID mithilfe der Variablen *$image* an, die wir zuvor erstellt haben. 
-
-Das Skript erstellt einen virtuellen Computer mit dem Namen *MyVMfromImage* anhand unseres benutzerdefinierten Images in einer neuen Ressourcengruppe namens *MyResourceGroupFromImage* in der Region *USA, Westen*.
+Dieses Beispiel erstellt auf der Grundlage von *myImage* einen virtuellen Computer namens *myVMfromImage* in *myResourceGroup*.
 
 
-```powershell
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
-
-New-AzureRmResourceGroup -Name myResourceGroupFromImage -Location EastUS
-
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
-    -Name mySubnet `
-    -AddressPrefix 192.168.1.0/24
-
-$vnet = New-AzureRmVirtualNetwork `
-    -ResourceGroupName myResourceGroupFromImage `
-    -Location EastUS `
-    -Name MYvNET `
-    -AddressPrefix 192.168.0.0/16 `
-    -Subnet $subnetConfig
-
-$pip = New-AzureRmPublicIpAddress `
-    -ResourceGroupName myResourceGroupFromImage `
-    -Location EastUS `
-    -Name "mypublicdns$(Get-Random)" `
-    -AllocationMethod Static `
-    -IdleTimeoutInMinutes 4
-
-  $nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig `
-    -Name myNetworkSecurityGroupRuleRDP `
-    -Protocol Tcp `
-    -Direction Inbound `
-    -Priority 1000 `
-    -SourceAddressPrefix * `
-    -SourcePortRange * `
-    -DestinationAddressPrefix * `
-    -DestinationPortRange 3389 `
-    -Access Allow
-
-  $nsg = New-AzureRmNetworkSecurityGroup `
-    -ResourceGroupName myResourceGroupFromImage `
-    -Location EastUS `
-    -Name myNetworkSecurityGroup `
-    -SecurityRules $nsgRuleRDP
-
-$nic = New-AzureRmNetworkInterface `
-    -Name myNic `
-    -ResourceGroupName myResourceGroupFromImage `
-    -Location EastUS `
-    -SubnetId $vnet.Subnets[0].Id `
-    -PublicIpAddressId $pip.Id `
-    -NetworkSecurityGroupId $nsg.Id
-
-$vmConfig = New-AzureRmVMConfig `
-    -VMName myVMfromImage `
-    -VMSize Standard_D1 | Set-AzureRmVMOperatingSystem -Windows `
-        -ComputerName myComputer `
-        -Credential $cred 
-
-# Here is where we create a variable to store information about the image 
-$image = Get-AzureRmImage `
-    -ImageName myImage `
-    -ResourceGroupName myResourceGroup
-
-# Here is where we specify that we want to create the VM from and image and provide the image ID
-$vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -Id $image.Id
-
-$vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
-
-New-AzureRmVM `
-    -ResourceGroupName myResourceGroupFromImage `
-    -Location EastUS `
-    -VM $vmConfig
+```azurepowershell-interactive
+New-AzureRmVm `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myVMfromImage" `
+    -ImageName "myImage" `
+    -Location "East US" `
+    -VirtualNetworkName "myImageVnet" `
+    -SubnetName "myImageSubnet" `
+    -SecurityGroupName "myImageNSG" `
+    -PublicIpAddressName "myImagePIP" `
+    -OpenPorts 3389
 ```
 
 ## <a name="image-management"></a>Verwaltung von Images 
@@ -181,14 +125,14 @@ Hier sind einige Beispiele für allgemeine Aufgaben der Imageverwaltung und ihre
 
 Auflisten aller Images nach Namen.
 
-```powershell
+```azurepowershell-interactive
 $images = Find-AzureRMResource -ResourceType Microsoft.Compute/images 
 $images.name
 ```
 
 Löschen eines Images. Dieses Beispiel löscht das Image mit dem Namen *myOldImage* aus *myResourceGroup*.
 
-```powershell
+```azurepowershell-interactive
 Remove-AzureRmImage `
     -ImageName myOldImage `
     -ResourceGroupName myResourceGroup

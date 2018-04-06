@@ -1,8 +1,8 @@
 ---
-title: "Anpassen von HDInsight-Clustern mit Skriptaktionen – Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mit Skriptaktionen Linux-basierten HDInsight-Clustern benutzerdefinierte Komponenten hinzufügen. Bei Skriptaktionen handelt es sich um Bash-Skripts. Sie können zum Anpassen der Clusterkonfiguration oder zum Hinzufügen zusätzlicher Dienste und Hilfsprogramme wie Hue, Solr oder R verwendet werden."
+title: Anpassen von HDInsight-Clustern mit Skriptaktionen – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mit Skriptaktionen Linux-basierten HDInsight-Clustern benutzerdefinierte Komponenten hinzufügen. Bei Skriptaktionen handelt es sich um Bash-Skripts. Sie können zum Anpassen der Clusterkonfiguration oder zum Hinzufügen zusätzlicher Dienste und Hilfsprogramme wie Hue, Solr oder R verwendet werden.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 42bf760b793f3c035a766c4d39524e03c1cbe6ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: bc8078a1681b8977a0748f633df02beb2f2bdc8a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
 
@@ -160,13 +160,13 @@ HDInsight verfügt über Skripts zum Installieren der folgenden Komponenten auf 
 
 | NAME | Skript |
 | --- | --- |
-| **Hinzufügen eines Azure Storage-Kontos** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh. Siehe [Hinzufügen von zusätzlichem Speicher zu einem HDInsight-Cluster](hdinsight-hadoop-add-storage.md). |
-| **Installieren von Hue** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Siehe [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md). |
-| **Installieren von Presto** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh. Weitere Informationen finden Sie unter [Installieren und Verwenden von Presto in HDInsight-Clustern](hdinsight-hadoop-install-presto.md). |
-| **Installieren von Solr** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh. Siehe [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md). |
-| **Installieren von Giraph** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh. Siehe [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md). |
-| **Vorabladen von Hive-Bibliotheken** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh. Weitere Informationen finden Sie unter [Hinzufügen von Hive-Bibliotheken zu HDInsight-Clustern](hdinsight-hadoop-add-hive-libraries.md). |
-| **Installieren oder Aktualisieren von Mono** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash. Weitere Informationen finden Sie unter [Installieren oder Aktualisieren von Mono in HDInsight](hdinsight-hadoop-install-mono.md). |
+| **Hinzufügen eines Azure Storage-Kontos** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Hinzufügen von zusätzlichem Speicher zu einem HDInsight-Cluster](hdinsight-hadoop-add-storage.md). |
+| **Installieren von Hue** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md). |
+| **Installieren von Presto** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Weitere Informationen finden Sie unter [Installieren und Verwenden von Presto in HDInsight-Clustern](hdinsight-hadoop-install-presto.md). |
+| **Installieren von Solr** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md). |
+| **Installieren von Giraph** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md). |
+| **Vorabladen von Hive-Bibliotheken** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Weitere Informationen finden Sie unter [Hinzufügen von Hive-Bibliotheken zu HDInsight-Clustern](hdinsight-hadoop-add-hive-libraries.md). |
+| **Installieren oder Aktualisieren von Mono** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Weitere Informationen finden Sie unter [Installieren oder Aktualisieren von Mono in HDInsight](hdinsight-hadoop-install-mono.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Verwenden einer Skriptaktion während der Clustererstellung
 
@@ -214,13 +214,15 @@ Skriptaktionen können mit Azure Resource Manager-Vorlagen verwendet werden. Ein
 
 In diesem Beispiel wird die Skriptaktion mit dem folgenden Code hinzugefügt:
 
-    "scriptActions": [
-        {
-            "name": "setenvironmentvariable",
-            "uri": "[parameters('scriptActionUri')]",
-            "parameters": "headnode"
-        }
-    ]
+```json
+"scriptActions": [
+    {
+        "name": "setenvironmentvariable",
+        "uri": "[parameters('scriptActionUri')]",
+        "parameters": "headnode"
+    }
+]
+```
 
 Weitere Informationen zum Bereitstellen einer Vorlage finden Sie in den folgenden Dokumenten:
 
@@ -305,15 +307,21 @@ Stellen Sie vor dem Fortfahren sicher, dass die Azure-CLI installiert und konfig
 
 1. Wechseln Sie mit dem folgenden Befehl an der Befehlszeile in den Azure Resource Manager-Modus:
 
-        azure config mode arm
+    ```bash
+    azure config mode arm
+    ```
 
 2. Führen Sie den folgenden Befehl aus, um sich bei Ihrem Azure-Abonnement zu authentifizieren.
 
-        azure login
+    ```bash
+    azure login
+    ```
 
 3. Verwenden Sie den folgenden Befehl, um eine Skriptaktion auf einen ausgeführten Cluster anzuwenden:
 
-        azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
+    ```bash
+    azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
+    ```
 
     Wenn Sie die Parameter für diesen Befehl weglassen, werden Sie zur Angabe der Parameter aufgefordert. Wenn das mit `-u` angegebene Skript Parameter akzeptiert, können Sie diese mit dem Parameter `-p` angeben.
 
@@ -337,7 +345,7 @@ Weitere Informationen finden Sie unter [Ausführen von Skriptaktionen in einem a
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-hdinsight-net-sdk"></a>Anwenden einer Skriptaktion auf einen ausgeführten Cluster über das HDInsight .NET SDK
 
-Ein Beispiel für die Verwendung des .NET SDK zum Anwenden von Skripts auf einen Cluster finden Sie unter [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
+Ein Beispiel für die Anwendung von Skripts auf einen Cluster mithilfe des .NET SDKs finden Sie unter [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
 ## <a name="view-history-promote-and-demote-script-actions"></a>Anzeigen des Verlaufs und Höherstufen und Herunterstufen von Skriptaktionen
 
@@ -396,7 +404,7 @@ Im folgenden Beispielskript wird veranschaulicht, wie die Cmdlets zuerst zum Hö
 
 ### <a name="using-the-hdinsight-net-sdk"></a>Verwenden des HDInsight .NET SDK
 
-Ein Beispiel für die Verwendung des .NET SDK zum Abrufen des Skriptverlaufs aus einem Cluster sowie zum Höherstufen oder Herabstufen von Skripts finden Sie unter [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
+Ein Beispiel für die Verwendung des .NET SDKs zum Abrufen des Skriptverlaufs aus einem Cluster sowie zum Höherstufen oder Herabstufen von Skripts finden Sie unter [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
 > [!NOTE]
 > Dieses Beispiel veranschaulicht auch die Installation einer HDInsight-Anwendung mit dem .NET SDK.
@@ -413,7 +421,7 @@ Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügb
 > [!WARNING]
 > Mit dem HDInsight-Cluster bereitgestellte Komponenten werden vollständig unterstützt. Der Microsoft-Support unterstützt Sie beim Isolieren und Beheben von Problemen im Zusammenhang mit diesen Komponenten.
 >
-> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Der Microsoft-Support kann das Problem möglicherweise beheben, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), [z. B. Hadoop](http://hadoop.apache.org/).
+> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Der Microsoft-Support kann das Problem möglicherweise beheben, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z.B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), z.B. [Hadoop](http://hadoop.apache.org/).
 
 Der HDInsight-Dienst bietet mehrere Möglichkeiten, benutzerdefinierte Komponenten zu verwenden. Unabhängig davon, wie die Komponente verwendet wird oder im Cluster installiert ist, gilt der gleiche Supportumfang. Die folgende Liste enthält die am häufigsten genutzten Möglichkeiten für die Verwendung von benutzerdefinierten Komponenten in HDInsight-Clustern:
 
@@ -429,7 +437,7 @@ Der HDInsight-Dienst bietet mehrere Möglichkeiten, benutzerdefinierte Komponent
 
 ### <a name="using-the-ambari-web-ui"></a>Mithilfe der Ambari-Webbenutzeroberfläche
 
-1. Navigieren Sie in Ihrem Browser zu „https://CLUSTERNAME.azurehdinsight.net“. Ersetzen Sie CLUSTERNAME durch den Namen Ihres HDInsight-Clusters.
+1. Navigieren Sie in Ihrem Browser zu https://CLUSTERNAME.azurehdinsight.net. Ersetzen Sie CLUSTERNAME durch den Namen Ihres HDInsight-Clusters.
 
     Geben Sie bei der entsprechenden Aufforderung den Namen (admin) und das Kennwort des Administratorkontos für den Cluster ein. Möglicherweise müssen Sie die Administratoranmeldeinformationen in einem Webformular erneut eingeben.
 
@@ -493,7 +501,7 @@ __Ursache__: Dieser Fehler tritt auf, wenn Sie den Python Azure Storage-Client a
 
 __Lösung__: Um diesen Fehler zu beheben, stellen Sie manuell mit `ssh` eine Verbindung zu jedem Clusterknoten her, und installieren Sie mit folgendem Befehl die richtige Storage-Clientversion:
 
-```
+```bash
 sudo pip install azure-storage==0.20.0
 ```
 

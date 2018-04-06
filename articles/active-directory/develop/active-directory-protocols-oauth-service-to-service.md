@@ -1,11 +1,11 @@
 ---
-title: "Dienst-zu-Dienst-Authentifizierung für Azure AD mit OAuth 2.0 | Microsoft Docs"
-description: "In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Fluss zum Gewähren von OAuth 2.0-Clientanmeldeinformationen verwenden."
+title: Dienst-zu-Dienst-Authentifizierung für Azure AD mit OAuth 2.0 | Microsoft Docs
+description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Fluss zum Gewähren von OAuth 2.0-Clientanmeldeinformationen verwenden.
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: ad2118130ec36aed1561db763946104501eb0f32
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da657fb6072c0655e47623c58e7051e8dd462049
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Dienst-zu-Dienst-Aufrufe mit Clientanmeldeinformationen (freigegebenes Geheimnis oder Zertifikat)
 Beim Fluss zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein *vertraulicher Client*) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines anderen Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website. Für ein höheres Maß an Sicherheit kann der aufrufende Dienst anstelle eines gemeinsamen Geheimnisses auch ein Zertifikat als Anmeldeinformationen verwenden.
@@ -50,15 +50,15 @@ Es sind zwei Fälle denkbar – je nachdem, ob die Clientanwendung durch ein gem
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
-| Parameter |  | Beschreibung |
+| Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| grant_type |erforderlich |Gibt den angeforderten Gewährungstyp an. In einem Fluss zur Gewährung von Clientanmeldeinformationen muss der Wert **client_credentials** lauten. |
-| client_id |erforderlich |Gibt die Azure AD-Client-ID des aufrufenden Webdiensts an. Klicken Sie zum Ermitteln der Client-ID der aufrufenden Anwendung im [Azure-Portal](https://portal.azure.com) auf **Active Directory**, wechseln Sie das Verzeichnis, und klicken Sie anschließend auf die Anwendung. Die Client-ID (client_id) ist die *Anwendungs-ID*. |
-| client_secret |erforderlich |Geben Sie einen Schlüssel ein, der für den aufrufenden Webdienst oder für die aufrufende Daemon-Anwendung in Azure AD registriert ist. Klicken Sie zum Erstellen eines Schlüssels im Azure-Portal auf **Active Directory**, wechseln Sie das Verzeichnis, und klicken Sie auf die Anwendung. Klicken Sie anschließend auf **Einstellungen** > **Schlüssel**, und fügen Sie einen Schlüssel hinzu.|
-| resource |erforderlich |Geben Sie den App-ID-URI des empfangenden Webdiensts ein. Klicken Sie zum Ermitteln des App-ID-URI im Azure-Portal auf **Active Directory**, wechseln Sie das Verzeichnis, klicken Sie auf die Dienstanwendung, und klicken Sie anschließend auf **Einstellungen** > **Eigenschaften**. |
+| grant_type |required |Gibt den angeforderten Gewährungstyp an. In einem Fluss zur Gewährung von Clientanmeldeinformationen muss der Wert **client_credentials** lauten. |
+| client_id |required |Gibt die Azure AD-Client-ID des aufrufenden Webdiensts an. Klicken Sie zum Ermitteln der Client-ID der aufrufenden Anwendung im [Azure-Portal](https://portal.azure.com) auf **Azure Active Directory**, auf **App-Registrierungen** und auf die Anwendung. Die Client-ID (client_id) ist die *Anwendungs-ID*. |
+| client_secret |required |Geben Sie einen Schlüssel ein, der für den aufrufenden Webdienst oder für die aufrufende Daemon-Anwendung in Azure AD registriert ist. Klicken Sie zum Erstellen eines Schlüssels im Azure-Portal auf **Azure Active Directory**, auf **App-Registrierungen** und auf die Anwendung. Klicken Sie anschließend auf **Einstellungen**, auf **Schlüssel**, und fügen Sie einen Schlüssel hinzu.|
+| resource |required |Geben Sie den App-ID-URI des empfangenden Webdiensts ein. Klicken Sie zum Ermitteln des App-ID-URI im Azure-Portal auf **Azure Active Directory**, auf **App-Registrierungen**, auf die Dienstanwendung und anschließend auf **Einstellungen** und **Eigenschaften**. |
 
 #### <a name="example"></a>Beispiel
-Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für den Webdienst „https://service.contoso.com/“ angefordert. Mit der `client_id` wird der Webdienst identifiziert, der das Zugriffstoken anfordert.
+Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für den Webdienst https://service.contoso.com/ angefordert. Mit der `client_id` wird der Webdienst identifiziert, der das Zugriffstoken anfordert.
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1
@@ -71,18 +71,18 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
-| Parameter |  | Beschreibung |
+| Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| grant_type |erforderlich |Gibt den angeforderten Antworttyp an. In einem Fluss zur Gewährung von Clientanmeldeinformationen muss der Wert **client_credentials** lauten. |
-| client_id |erforderlich |Gibt die Azure AD-Client-ID des aufrufenden Webdiensts an. Klicken Sie zum Ermitteln der Client-ID der aufrufenden Anwendung im [Azure-Portal](https://portal.azure.com) auf **Active Directory**, wechseln Sie das Verzeichnis, und klicken Sie anschließend auf die Anwendung. Die Client-ID (client_id) ist die *Anwendungs-ID*. |
-| client_assertion_type |erforderlich |Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
-| client_assertion |erforderlich | Eine Assertion (JSON Web Token), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
-| resource | erforderlich |Geben Sie den App-ID-URI des empfangenden Webdiensts ein. Klicken Sie zum Ermitteln des App-ID-URI im Azure-Portal nacheinander auf **Active Directory**, auf das Verzeichnis, auf die Anwendung und anschließend auf **Konfigurieren**. |
+| grant_type |required |Gibt den angeforderten Antworttyp an. In einem Fluss zur Gewährung von Clientanmeldeinformationen muss der Wert **client_credentials** lauten. |
+| client_id |required |Gibt die Azure AD-Client-ID des aufrufenden Webdiensts an. Klicken Sie zum Ermitteln der Client-ID der aufrufenden Anwendung im [Azure-Portal](https://portal.azure.com) auf **Azure Active Directory**, auf **App-Registrierungen** und auf die Anwendung. Die Client-ID (client_id) ist die *Anwendungs-ID*. |
+| client_assertion_type |required |Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
+| client_assertion |required | Eine Assertion (JSON Web Token), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
+| resource | required |Geben Sie den App-ID-URI des empfangenden Webdiensts ein. Klicken Sie zum Ermitteln des App-ID-URI im Azure-Portal auf **Azure Active Directory**, auf **App-Registrierungen**, auf die Dienstanwendung und anschließend auf **Einstellungen** und **Eigenschaften**. |
 
 Beachten Sie, dass die Parameter nahezu identisch mit den Parametern der Anforderung mit dem gemeinsamen geheimen Schlüssel sind. Einziger Unterschied: Anstelle des Parameters „client_secret“ werden die beiden Parameter „client_assertion_type“ und „client_assertion“ verwendet.
 
 #### <a name="example"></a>Beispiel
-Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für den Webdienst „https://service.contoso.com/“ mit einem Zertifikat angefordert. Mit der `client_id` wird der Webdienst identifiziert, der das Zugriffstoken anfordert.
+Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für den Webdienst https://service.contoso.com/ mit einem Zertifikat angefordert. Mit der `client_id` wird der Webdienst identifiziert, der das Zugriffstoken anfordert.
 
 ```
 POST /<tenant_id>/oauth2/token HTTP/1.1
@@ -96,7 +96,7 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 
 Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | access_token |Das angeforderte Zugriffstoken. Der aufrufende Webdienst kann dieses Token verwenden, um die Authentifizierung für den empfangenden Webdienst durchzuführen. |
 | token_type |Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt)(OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)). |

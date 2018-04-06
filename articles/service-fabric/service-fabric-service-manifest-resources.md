@@ -1,11 +1,11 @@
 ---
 title: Angeben von Service Fabric-Dienstendpunkten | Microsoft Docs
-description: "Gewusst wie: Beschreiben von Endpunktressourcen in einem Dienstmanifest, einschließlich der Einrichtung von HTTPS-Endpunkten"
+description: 'Gewusst wie: Beschreiben von Endpunktressourcen in einem Dienstmanifest, einschließlich der Einrichtung von HTTPS-Endpunkten'
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: da36cbdb-6531-4dae-88e8-a311ab71520d
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 6fa425829e8da294c8db3d64c3d8fd202c74375a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a028471871754c2b9c3981ec13f5788643675a77
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Angeben von Ressourcen in einem Dienstmanifest
 ## <a name="overview"></a>Übersicht
@@ -154,7 +154,7 @@ Für Linux-Cluster wird für den **MY**-Speicher standardmäßig der Ordner **/v
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>Außerkraftsetzen von Endpunkten in „ServiceManifest.xml“
 
-Fügen Sie dem Anwendungsmanifest einen Abschnitt vom Typ „ResourceOverrides“ hinzu, der dem Abschnitt „ConfigOverrides“ gleichgestellt ist. In diesem Abschnitt können Sie die Außerkraftsetzung für den Abschnitt „Endpoints“ im Ressourcenabschnitt des Dienstmanifests angeben.
+Fügen Sie dem Anwendungsmanifest einen Abschnitt vom Typ „ResourceOverrides“ hinzu, der dem Abschnitt „ConfigOverrides“ gleichgestellt ist. In diesem Abschnitt können Sie die Außerkraftsetzung für den Abschnitt „Endpoints“ im Ressourcenabschnitt des Dienstmanifests angeben. Das Überschreiben von Endpunkten wird in Runtime 5.7.217/SDK 2.7.217 und höher unterstützt.
 
 Wenn Sie „EndPoint“ im Dienstmanifest mithilfe von „ApplicationParameters“ außer Kraft setzen möchten, ändern Sie das Anwendungsmanifest wie folgt:
 

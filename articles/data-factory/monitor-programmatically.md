@@ -1,11 +1,11 @@
 ---
-title: "Programmgesteuertes Überwachen einer Azure Data Factory | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mithilfe verschiedener Software Development Kits (SDKs) eine Pipeline in einer Data Factory überwachen können."
+title: Programmgesteuertes Überwachen einer Azure Data Factory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe verschiedener Software Development Kits (SDKs) eine Pipeline in einer Data Factory überwachen können.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,17 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 95934de9b84270ff112489a7b67f622dad609970
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 87e69349245c5f67e23022e3a45ed798400e6a2c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programmgesteuertes Überwachen einer Azure Data Factory
 In diesem Artikel wird beschrieben, wie Sie mithilfe verschiedener Software Development Kits (SDKs) eine Pipeline in einer Data Factory überwachen können. 
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts in der allgemein verfügbaren Version (GA) verwenden, lesen Sie den Artikel [Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell](v1/data-factory-monitor-manage-pipelines.md).
+
+## <a name="data-range"></a>Datenbereich
+
+Data Factory speichert nur Pipelineausführungsdaten 45 Tage lang. Wenn Sie Daten zu Data Factory-Pipelineausführungen programmgesteuert abfragen (z.B. mit dem PowerShell-Befehl `Get-AzureRmDataFactoryV2PipelineRun`), gibt es keine maximalen Datumsangaben für die optionalen Parameter `LastUpdatedAfter` und `LastUpdatedBefore`. Wenn Sie jedoch beispielsweise Daten zum vergangenen Jahr abfragen, gibt die Abfrage keinen Fehler zurück, sondern nur die Pipelineausführungsdaten der letzten 45 Tage.
+
+Wenn Sie Pipelineausführungsdaten länger als 45 Tage beibehalten möchten, richten Sie mit [Azure Monitor](monitor-using-azure-monitor.md) eine eigene Diagnoseprotokollierung ein.
 
 ## <a name="net"></a>.NET
 Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen einer Pipeline mit dem .NET SDK finden Sie unter [Erstellen einer Data Factory und Pipeline mit dem .NET SDK](quickstart-create-data-factory-dot-net.md).

@@ -1,24 +1,24 @@
 ---
 title: Installieren von Azure AD Connect mit delegierten SQL-Administratorberechtigungen | Microsoft-Dokumentation
-description: "In diesem Thema wird ein Update für Azure AD Connect beschrieben, das die Installation mit einem Konto ermöglicht, das lediglich über SQL-dbo-Berechtigungen verfügt."
-documentationcenter: 
+description: In diesem Thema wird ein Update für Azure AD Connect beschrieben, das die Installation mit einem Konto ermöglicht, das lediglich über SQL-dbo-Berechtigungen verfügt.
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.reviewer: jparsons
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: c2d77c37f2f65c9a7db1fd5c4010fc43bcbc7ebf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2686bdef9c25f4540f9b2a21594b18cbe0404e08
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Installieren von Azure AD Connect mit delegierten SQL-Administratorberechtigungen
 Vor dem neuesten Azure AD Connect-Build wurde das Delegieren von Administratorrechten bei der Bereitstellung von Konfigurationen, die SQL erforderten, nicht unterstützt.  Benutzer, die Azure AD Connect installieren wollten, benötigten Serveradministratorberechtigungen („SA“) auf dem SQL-Server.
@@ -51,6 +51,8 @@ Gehen Sie zum Out-of-Band-Bereitstellen der Datenbank und Installieren von Azure
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 Nachdem die Datenbank bereitgestellt wurde, kann der Azure AD Connect-Administrator die lokale Synchronisierung nach Bedarf installieren und konfigurieren.  
+
+Das **/UseExistingDatabase**-Flag ist erforderlich, wenn eine vorab erstellte Datenbank verwendet wird.  Es wird nicht nur in Wiederherstellungsszenarien verwendet.
 
 Zusätzlich zur Unterstützung von Neuinstallationen von Azure AD Connect ermöglicht dieses Feature auch die Delegation bei jedem Szenario mit dem Flag **/UseExistingDatabase**.  Weitere Informationen zum Installieren von Azure AD Connect mit einer vorhandenen Datenbank finden Sie unter [Installieren von Azure AD Connect mithilfe einer vorhandenen ADSync-Datenbank](active-directory-aadconnect-existing-database.md).
 

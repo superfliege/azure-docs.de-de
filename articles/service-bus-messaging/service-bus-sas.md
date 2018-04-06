@@ -1,12 +1,12 @@
 ---
 title: Azure Service Bus-Zugriffssteuerung mit Shared Access Signatures | Microsoft-Dokumentation
-description: "Übersicht über Service Bus-Zugriffssteuerung mithilfe von Shared Access Signatures, Informationen zur SAS-Autorisierung mit Azure Service Bus."
+description: Übersicht über Service Bus-Zugriffssteuerung mithilfe von Shared Access Signatures, Informationen zur SAS-Autorisierung mit Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: sethm;clemensv
-ms.openlocfilehash: f6bb77ad6df09e36419b24b24924dac7ecd79065
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 21e9e0a20842e365e40b71ac96888e7cd2056e52
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus-Zugriffssteuerung mit Shared Access Signatures
 
@@ -273,6 +273,7 @@ Die folgende Tabelle zeigt die Zugriffsrechte, die für verschiedene Vorgänge f
 | Platzieren einer Nachricht in die Warteschlange für unzustellbare Nachrichten |Lauschen |Beliebige gültige Warteschlangenadresse |
 | Abrufen des einer Nachrichtenwarteschlangensitzung zugeordneten Status |Lauschen |Beliebige gültige Warteschlangenadresse |
 | Festlegen des einer Nachrichtenwarteschlangensitzung zugeordneten Status |Lauschen |Beliebige gültige Warteschlangenadresse |
+| Planen einer Nachricht für spätere Zustellung, beispielsweise [ScheduleMessageAsync()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Lauschen | Beliebige gültige Warteschlangenadresse
 | **Thema** | | |
 | Erstellen eines Themas |Verwalten |Jede Namespaceadresse |
 | Löschen eines Themas |Verwalten |Beliebige gültige Themenadresse |

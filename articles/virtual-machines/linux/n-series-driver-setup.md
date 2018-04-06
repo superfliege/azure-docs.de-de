@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d353adcafed02832243277118da8480e54544ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d97afd2b5dccca64db2df7cb0d4f110987642cfb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux
 
-Installieren Sie unterstützte NVIDIA-Grafiktreiber, um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie unter Linux nutzen zu können. In diesem Artikel werden die Treiberinstallationsschritte beschrieben, die Sie nach der Bereitstellung eines virtuellen Computers der N-Serie ausführen müssen. Informationen zur Einrichtung von Treibern stehen auch für [Windows-VMs](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zur Verfügung.
+Um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie unter Linux nutzen zu können, müssen NVIDIA-Grafiktreiber installiert werden. In diesem Artikel werden die Treiberinstallationsschritte beschrieben, die Sie nach der Bereitstellung eines virtuellen Computers der N-Serie ausführen müssen. Informationen zur Einrichtung von Treibern stehen auch für [Windows-VMs](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zur Verfügung.
 
 Informationen zu Spezifikationen von virtuellen Computern der N-Serie, Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [GPU-optimierte Größen von virtuellen Linux-Computern](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
@@ -32,15 +32,12 @@ Informationen zu Spezifikationen von virtuellen Computern der N-Serie, Speicherk
 
 ## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>Installieren von CUDA-Treibern für virtuelle Computer der NC-, NCv2-, NCv3- und ND-Serie
 
-Hier werden Schritte zum Installieren von NVIDIA-Treibern auf virtuellen Computern der N-Serie über das NVIDIA CUDA Toolkit beschrieben. 
+Hier werden Schritte zum Installieren von CUDA-Treibern auf virtuellen Computern der N-Serie über das NVIDIA CUDA Toolkit beschrieben. 
+
 
 C- und C++-Entwickler können optional das vollständige Toolkit zum Erstellen GPU-beschleunigter Anwendungen installieren. Weitere Informationen finden Sie im [CUDA-Installationshandbuch](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
-> [!NOTE]
-> Die hier bereitgestellten Links zum Herunterladen der CUDA-Treiber sind zum Zeitpunkt der Veröffentlichung aktuell. Die aktuellsten CUDA-Treiber finden Sie auf der [NVIDIA](https://developer.nvidia.com/cuda-zone)-Website.
->
-
-Um das CUDA-Toolkit installieren zu können, stellen Sie eine SSH-Verbindung mit jeder VM her. Führen Sie den folgenden Befehl aus, um sicherzustellen, dass das System über eine CUDA-fähige GPU verfügt:
+Stellen Sie zum Installieren von CUDA-Treibern eine SSH-Verbindung mit den einzelnen virtuellen Computern her. Führen Sie den folgenden Befehl aus, um sicherzustellen, dass das System über eine CUDA-fähige GPU verfügt:
 
 ```bash
 lspci | grep -i NVIDIA
@@ -162,16 +159,13 @@ RDMA-Netzwerkkonnektivität kann auf virtuellen Computern der N-Serie (z.B. NC24
 
 ### <a name="distributions"></a>Verteilungen
 
-Stellen Sie RDMA-fähige VMs der N-Serie über ein Image im Azure Marketplace bereit, das RDMA-Konnektivität auf VMs der N-Serie unterstützt:
+Stellen Sie RDMA-fähige VMs der N-Serie über eines der Images aus dem Azure Marketplace bereit, das RDMA-Konnektivität für VMs der N-Serie unterstützt:
   
 * **Ubuntu 16.04 LTS**: Konfigurieren Sie RDMA-Treiber auf der VM, und registrieren Sie sich bei Intel, um Intel MPI herunterzuladen:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-> [!NOTE]
-> CentOS-basierte HPC-Images werden für die RDMA-Konnektivität auf VMs der N-Serie derzeit nicht empfohlen. RDMA wird auf dem neuesten CentOS 7.4-Kernel mit Unterstützung von NVIDIA-GPUs nicht unterstützt.
-> 
-
+* **7.4 HPC (CentOS-basiert)**: Auf der VM sind RDMA-Treiber und Intel MPI 5.1 installiert.
 
 ## <a name="install-grid-drivers-for-nv-series-vms"></a>Installieren von GRID-Treibern für virtuelle Computer der NV-Serie
 
@@ -321,10 +315,10 @@ EndSection
  
 Aktualisieren Sie darüber hinaus Ihren `"Screen"`-Abschnitt, um dieses Gerät zu verwenden.
  
-Die Bus-ID ergibt sich durch die Ausführung von
+Die dezimale Bus-ID kann durch Ausführen von Folgendem ermittelt werden:
 
 ```bash
-/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1
+echo $((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
 ```
  
 Die Bus-ID kann sich ändern, wenn ein virtueller Computer neu zugewiesen oder neu gestartet wird. Wenn ein virtueller Computer neu gestartet wird, müssen Sie daher in der X11-Konfiguration zum Aktualisieren der Bus-ID ein Skript verwenden. Beispiel: 

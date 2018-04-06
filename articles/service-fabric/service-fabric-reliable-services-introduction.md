@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider;
-ms.openlocfilehash: 1cbc116a8d595cfea0e87cd17b556e005f276774
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 66e3939a59f09650ce76488c38eb46699ab9f63f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="reliable-services-overview"></a>Übersicht über Reliable Services
 Azure Service Fabric vereinfacht das Schreiben und Verwalten zustandsloser und zustandsbehafteter Dienste (Reliable Services). Dieses Thema behandelt Folgendes:
@@ -111,5 +111,5 @@ Wenn einer der folgenden Punkte auf Ihre Anwendungsdienstanforderungen zutrifft,
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
-* [Erweiterte Verwendung von Reliable Services](service-fabric-reliable-services-advanced-usage.md)
+* [Zuverlässige Auflistungen](service-fabric-reliable-services-reliable-collections.md)
 * [Das Reliable Actors-Programmiermodell](service-fabric-reliable-actors-introduction.md)

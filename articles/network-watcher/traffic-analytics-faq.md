@@ -1,6 +1,6 @@
 ---
-title: Häufig gestellte Fragen zu Azure Traffic Analytics | Microsoft-Dokumentation
-description: Hier finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Traffic Analytics.
+title: Häufig gestellte Fragen zu Azure-Datenverkehrsanalysen | Microsoft-Dokumentation
+description: Hier finden Sie Antworten auf einige der am häufigsten gestellten Fragen zu Datenverkehrsanalysen.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: fd97e0ca7615691c537dcb1dc18643627046742d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 01d5150bff8642a1a3fe9b7ac063923916f191c0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
+# <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Datenverkehrsanalysen
 
-1.  Welche Voraussetzungen müssen zur Verwendung von Traffic Analytics erfüllt sein?
+1.  Welche Voraussetzungen müssen zur Verwendung von Datenverkehrsanalysen erfüllt sein?
 
     Für Traffic Analytics gelten die folgenden Voraussetzungen:
 
@@ -29,10 +29,22 @@ ms.lasthandoff: 03/09/2018
     - Für die zu überwachenden Netzwerksicherheitsgruppen aktivierte NSG-Datenflussprotokolle
     - Ein Azure Storage-Konto zum Speichern von unformatierte Datenflussprotokollen
     - Ein Log Analytics (OMS)-Arbeitsbereich mit Lese- und Schreibzugriff
+    - Ihrem Konto müssen folgende Aktionen für den Anbieter „Microsoft.Network“ zugewiesen werden:
 
-2.  In welchen Azure-Regionen ist Traffic Analytics verfügbar?
+        - Microsoft.Network/applicationGateways/read
+        - Microsoft.Network/connections/read
+        - Microsoft.Network/loadBalancers/read 
+        - Microsoft.Network/localNetworkGateways/read 
+        - Microsoft.Network/networkInterfaces/read 
+        - Microsoft.Network/networkSecurityGroups/read 
+        - Microsoft.Network/publicIPAddresses/read
+        - Microsoft.Network/routeTables/read
+        - Microsoft.Network/virtualNetworkGateways/read 
+        - Microsoft.Network/virtualNetworks/read
 
-    Als Vorschauversion können Sie Traffic Analytics für Netzwerksicherheitsgruppen in einer der folgenden **unterstützten Regionen** verwenden: USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Norden-Mitte; USA, Süden-Mitte; USA, Mitte; USA, Westen; USA, Westen 2; Europa, Westen; Europa, Norden; Vereinigtes Königreich, Westen; Vereinigtes Königreich, Süden; Australien, Osten; Australien, Südosten. Der Log Analytics-Arbeitsbereich muss in einer der folgenden Regionen vorhanden sein: USA, Westen-Mitte; USA, Osten; Europa, Westen; Australien, Südosten; Vereinigtes Königreich, Süden.
+2.  In welchen Azure-Regionen sind Datenverkehrsanalysen verfügbar?
+
+    Während der Vorschauphase können Sie Datenverkehrsanalysen für Netzwerksicherheitsgruppen in folgenden **unterstützten Regionen** verwenden: „USA, Westen-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Mitte“, „USA, Westen“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Australien, Osten“, „Australien, Südosten“. Der Log Analytics-Arbeitsbereich muss in einer der folgenden Regionen vorhanden sein: USA, Westen-Mitte; USA, Osten; Europa, Westen; Australien, Südosten; Vereinigtes Königreich, Süden.
 
 3.  Können sich die Netzwerksicherheitsgruppen, für die ich Datenflussprotokolle aktiviere, in anderen Regionen befinden als mein OMS-Arbeitsbereich?
 
@@ -54,7 +66,7 @@ ms.lasthandoff: 03/09/2018
 
     Nein. Sie können unformatierte Protokolle in jedem beliebigen Storage-Konto speichern, in dem eine Netzwerksicherheitsgruppe für Datenflussprotokolle aktiviert ist, jedoch müssen sich sowohl das Storage-Konto als auch die unformatierten Protokolle im selben Abonnement und in derselben Region befinden.
 
-8.  Wenn mir bei der Konfiguration einer Netzwerksicherheitsgruppe für Traffic Analytics der Fehler „Nicht gefunden“ angezeigt wird, wie kann ich ihn beheben?
+8.  Wie kann ich den Fehler „Nicht gefunden“ beheben, wenn mir dieser beim Konfigurieren einer Netzwerksicherheitsgruppe für Datenverkehrsanalysen angezeigt wird?
 
     Wählen Sie eine unterstützte Region aus, die in Frage 2 aufgelistet ist. Wenn Sie eine nicht unterstützte Region auswählen, erhalten Sie die Fehlermeldung „Nicht gefunden“.
 
@@ -83,7 +95,7 @@ ms.lasthandoff: 03/09/2018
 12.  Ich erhalte die folgende Meldung: „1) Ihre NSG-Datenflussprotokolle werden zum ersten Mal analysiert. Dieser Vorgang kann 20 bis 30 Minuten in Anspruch nehmen. Schauen Sie später wieder vorbei. 2) Wenn der oben genannte Schritt nicht funktioniert und sich Ihr Arbeitsbereich unter der SKU „Free“ befindet, überprüfen Sie hier die Nutzung Ihres Arbeitsbereichs, um das Kontingent zu prüfen, oder suchen Sie in den häufig gestellten Fragen nach weiteren Informationen.“ Wie behebe ich dieses Problem?
 
         Es gibt folgende Gründe für diese Fehlermeldung:
-        - Traffic Analytics wurde möglicherweise erst kürzlich aktiviert und aggregiert gerade eine ausreichende Datenmenge, um aussagekräftige Erkenntnisse zu gewinnen, bevor Berichte erstellt werden können. In diesem Fall versuchen Sie es in 30 Minuten noch einmal.
+        - Datenverkehrsanalysen wurden möglicherweise erst kürzlich aktiviert und aggregieren gerade eine ausreichende Datenmenge, um aussagekräftige Erkenntnisse zu gewinnen, bevor Berichte erstellt werden können. In diesem Fall versuchen Sie es in 30 Minuten noch einmal.
         - Ihr OMS-Arbeitsbereich befindet sich unter der SKU „Free“ und hat die Kontingentgrenzen überschritten. In diesem Fall kann es erforderlich sein, einen Arbeitsbereich in einer SKU mit größerer Kapazität zu verwenden.
     
         Wenn das Problem weiterhin auftritt, wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
@@ -92,9 +104,9 @@ ms.lasthandoff: 03/09/2018
 
         Sie sehen die Ressourceninformationen im Dashboard, aber es gibt keine datenflussbezogenen Statistiken. Es dürfen keine Daten, da keine Kommunikationsdatenflüsse zwischen den Ressourcen stattfindet. Warten Sie 60 Minuten, und überprüfen Sie dann den Status erneut. Wenn Sie sicher sind, dass es Kommunikationsdatenflüsse zwischen Ressourcen gibt, dann wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-14.  Was kostet Traffic Analytics?
+14.  Was kosten Datenverkehrsanalysen?
 
-        Solange Traffic Analytics als öffentliche Vorschauversion erhältlich ist, entstehen keine Kosten. Die Generierung von NSG-Datenflussprotokollen und die Speicherung von Daten in einem OMS-Arbeitsbereich sind entsprechend der veröffentlichen Preise kostenpflichtig.
+        Bei Datenverkehrsanalysen werden die Erweiterung reduzierter Protokolle sowie die Speicherung der erweiterten Protokolle in einem Log Analytics-Arbeitsbereich gemessen. Während der Vorschauphase fallen bei Datenverkehrsanalysen keine Gebühren für die Erweiterung der reduzierten Protokolle an. Die Speicherung von Daten in einem Arbeitsbereich wird jedoch nach den veröffentlichten Tarifen abgerechnet. Diese Antwort wird aktualisiert, sobald die Preise für Datenverkehrsanalysen verfügbar sind.
 
 15.  Wie kann ich mit einer Tastatur in der Kartenansicht navigieren?
 

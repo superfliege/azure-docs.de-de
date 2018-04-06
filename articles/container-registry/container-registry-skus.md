@@ -1,18 +1,18 @@
 ---
 title: Azure Container Registry-SKUs
-description: "Vergleich der verschiedenen in Azure Container Registry verfügbaren Dienstebenen."
+description: Vergleich der verschiedenen in Azure Container Registry verfügbaren Dienstebenen.
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: 15179fa3e3567f92a5eae69ba9a684addc3138dd
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c9b8e072b5ccd89c27d9c46407e472d6bf1e1e84
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-container-registry-skus"></a>Azure Container Registry-SKUs
 
@@ -37,11 +37,11 @@ Die Basic-, Standard- und Premium-SKUs werden zusammenfassend als *verwaltete* R
 
 ### <a name="managed-basic-standard-premium"></a>Verwaltet (Basic, Standard, Premium)
 
-Verwaltete Registrierungen werden von einem durch Azure verwalteten Azure Storage-Konto gesichert. Das Speicherkonto, in dem die Images gespeichert werden, wird also nicht in Ihrem Azure-Abonnement angezeigt. Es gibt mehrere Vorteile, die sich aus der Verwendung einer der verwalteten Registrierungs-SKUs ergeben, die ausführlich in [Aktualisieren einer klassischen Registrierung][container-registry-upgrade] beschrieben werden. Der Schwerpunkt dieses Artikels liegt auf den verwalteten Registrierungs-SKUs und den Möglichkeiten, die sie bieten.
+Imagespeicher, die vollständig von Azure verwaltet werden, sind insbesondere für verwaltete Registrierungen von Vorteil. Ein Speicherkonto, in dem die Images gespeichert werden, wird also nicht in Ihrem Azure-Abonnement angezeigt. Es gibt mehrere Vorteile, die sich aus der Verwendung einer der verwalteten Registrierungs-SKUs ergeben, die ausführlich unter [Speichern von Containerimages in Azure Container Registry][container-registry-storage] beschrieben werden. Der Schwerpunkt dieses Artikels liegt auf den verwalteten Registrierungs-SKUs und den Möglichkeiten, die sie bieten.
 
 ### <a name="unmanaged-classic"></a>Nicht verwaltet (klassisch)
 
-Klassische Registrierungen werden als „nicht verwaltet“ bezeichnet, da sich das Speicherkonto, das eine klassische Registrierung unterstützt, in *Ihrem* Azure-Abonnement befindet. Daher sind Sie selbst für die Verwaltung des Speicherkontos verantwortlich, in dem Ihre Containerimages gespeichert sind. Bei nicht verwalteten Registrierungen ist ein bedarfsgerechter Wechsel zwischen SKUs nicht möglich (außer bei einem [Upgrade][container-registry-upgrade] auf eine verwaltete Registrierung), und einige Funktionen der verwalteten Registrierungen sind nicht verfügbar (z.B. Containerimagelöschung, [Georeplikation][container-registry-geo-replication] und [Webhooks][container-registry-webhook]).
+Klassische Registrierungen werden als „nicht verwaltet“ bezeichnet, da sich das Speicherkonto, das eine klassische Registrierung unterstützt, in *Ihrem* Azure-Abonnement befindet. Daher sind Sie selbst für die Verwaltung des Speicherkontos verantwortlich, in dem Ihre Containerimages gespeichert sind. Bei nicht verwalteten Registrierungen ist ein bedarfsgerechter Wechsel zwischen SKUs nicht möglich (außer bei einem [Upgrade][container-registry-upgrade] auf eine verwaltete Registrierung), und einige Features der verwalteten Registrierungen sind nicht verfügbar (z.B. Containerimagelöschung, [Georeplikation][container-registry-geo-replication] und [Webhooks][container-registry-webhook]).
 
 Weitere Informationen zum Durchführen eines Upgrades von einer klassischen Registrierung auf eine der verwalteten SKUs finden Sie unter [Aktualisieren einer klassischen Registrierung][container-registry-upgrade].
 
@@ -103,4 +103,5 @@ Unter [ACR UserVoice][container-registry-uservoice] können Sie neue Featurevors
 [az-acr-update]: /cli/azure/acr#az_acr_update
 [container-registry-geo-replication]: container-registry-geo-replication.md
 [container-registry-upgrade]: container-registry-upgrade.md
+[container-registry-storage]: container-registry-storage.md
 [container-registry-webhook]: container-registry-webhook.md

@@ -1,8 +1,8 @@
 ---
 title: Simulieren von Azure IoT Edge unter Linux | Microsoft-Dokumentation
-description: "Installieren der Azure IoT Edge-Runtime auf einem simulierten Gerät unter Linux und Bereitstellen des ersten Moduls"
+description: Installieren der Azure IoT Edge-Runtime auf einem simulierten Gerät unter Linux und Bereitstellen des ersten Moduls
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 55770c92f5d5959e83066b425bc6ccf2b9dcc62e
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 65a3f6d71c0c0d92f703a5d48760dd348c726ba4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux-or-macos---preview"></a>Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter Linux oder macOS – Vorschau
 
@@ -37,6 +37,11 @@ Dieses Tutorial verwendet Ihren Computer oder Ihren virtuellen Computer wie ein 
 
 * Python pip zum Installieren der IoT Edge-Runtime.
    * Linux: `sudo apt-get install python-pip`.
+     * _Beachten Sie, dass Sie in bestimmten Distributionen (z.B. Raspbian) möglicherweise auch bestimmte Pip-Pakete aktualisieren und zusätzliche Abhängigkeiten installieren müssen:_
+     ```
+     sudo pip install --upgrade setuptools pip
+     sudo apt-get install python2.7-dev libffi-dev libssl-dev
+     ```
    * macOS: `sudo easy_install pip`.
 * Docker zum Ausführen des IoT Edge-Moduls
    * [Installieren Sie Docker für Linux][lnk-docker-ubuntu], und stellen Sie sicher, dass das Programm ausgeführt wird. 
@@ -70,7 +75,7 @@ sudo pip install -U azure-iot-edge-runtime-ctl
 
 Konfigurieren Sie die Runtime mit der Verbindungszeichenfolge für das IoT Edge-Gerät aus dem vorherigen Abschnitt:
 ```cmd
-sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+sudo iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 Starten Sie die Runtime:

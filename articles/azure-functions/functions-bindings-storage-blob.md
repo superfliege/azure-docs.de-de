@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 221a049ae37cc6934d04e90b6b8035e2a020e811
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bf2c4a12d1344ec17ce9688e1c7192f57104dc7b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob Storage-Bindungen für Azure Functions
 
@@ -233,12 +233,12 @@ In C#- und C#-Skripts können Sie die folgenden Parametertypen für das auslöse
 * `string`
 * `Byte[]`
 * Ein als JSON serialisierbares POCO
-* `ICloudBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
-* `CloudBlockBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
-* `CloudPageBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
-* `CloudAppendBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
+* `ICloudBlob`<sup>1</sup>
+* `CloudBlockBlob`<sup>1</sup>
+* `CloudPageBlob`<sup>1</sup>
+* `CloudAppendBlob`<sup>1</sup>
 
-Wie angemerkt muss für einige dieser Typen in *function.json* die Bindungsrichtung `inout` angegeben werden. Diese Richtung wird vom Standard-Editor im Azure-Portal nicht unterstützt, sodass Sie den erweiterten Editor verwenden müssen.
+<sup>1</sup> Erfordert die inout-Bindung `direction` in *function.json* oder `FileAccess.ReadWrite` in einer C#-Klassenbibliothek.
 
 Eine Bindung mit `string`, `Byte[]` oder POCO wird nur bei kleinen Blobs empfohlen, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden. Weitere Informationen finden Sie unter [Nebenläufigkeit und Arbeitsspeichernutzung](#trigger---concurrency-and-memory-usage) weiter unten in diesem Artikel.
 
@@ -374,7 +374,6 @@ public static void Run(
     TraceWriter log)
 {
     log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
-
 }
 ```        
 
@@ -534,12 +533,12 @@ In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Blobeing
 * `Byte[]`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
-* `ICloudBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
-* `CloudBlockBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
-* `CloudPageBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
-* `CloudAppendBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
+* `ICloudBlob`<sup>1</sup>
+* `CloudBlockBlob`<sup>1</sup>
+* `CloudPageBlob`<sup>1</sup>
+* `CloudAppendBlob`<sup>1</sup>
 
-Wie angemerkt muss für einige dieser Typen in *function.json* die Bindungsrichtung `inout` angegeben werden. Diese Richtung wird vom Standard-Editor im Azure-Portal nicht unterstützt, sodass Sie den erweiterten Editor verwenden müssen.
+<sup>1</sup> Erfordert die inout-Bindung `direction` in *function.json* oder `FileAccess.ReadWrite` in einer C#-Klassenbibliothek.
 
 Eine Bindung mit `string` oder `Byte[]` wird nur bei kleinen Blobs empfohlen, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden. Weitere Informationen finden Sie unter [Nebenläufigkeit und Arbeitsspeichernutzung](#trigger---concurrency-and-memory-usage) weiter oben in diesem Artikel.
 
@@ -737,21 +736,23 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="output---usage"></a>Ausgabe: Verwendung
 
-In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Blobausgabebindung verwenden:
+In C#- und C#-Skript können Sie sich an die folgenden Typen binden, um Blobs zu schreiben:
 
 * `TextWriter`
 * `out string`
 * `out Byte[]`
 * `CloudBlobStream`
 * `Stream`
-* `CloudBlobContainer`
+* `CloudBlobContainer`<sup>1</sup>
 * `CloudBlobDirectory`
-* `ICloudBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
-* `CloudBlockBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
-* `CloudPageBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
-* `CloudAppendBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
+* `ICloudBlob`<sup>2</sup>
+* `CloudBlockBlob`<sup>2</sup>
+* `CloudPageBlob`<sup>2</sup>
+* `CloudAppendBlob`<sup>2</sup>
 
-Wie angemerkt muss für einige dieser Typen in *function.json* die Bindungsrichtung `inout` angegeben werden. Diese Richtung wird vom Standard-Editor im Azure-Portal nicht unterstützt, sodass Sie den erweiterten Editor verwenden müssen.
+<sup>1</sup> Erfordert die in-Bindung `direction` in *function.json* oder `FileAccess.Read` in einer C#-Klassenbibliothek.
+
+<sup>2</sup> Erfordert die inout-Bindung `direction` in *function.json* oder `FileAccess.ReadWrite` in einer C#-Klassenbibliothek.
 
 In asynchronen Funktionen verwenden Sie den Rückgabewert oder `IAsyncCollector` anstelle eines `out`-Parameters.
 

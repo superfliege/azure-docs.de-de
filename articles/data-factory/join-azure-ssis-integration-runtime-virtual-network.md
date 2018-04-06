@@ -4,8 +4,7 @@ description: Erfahren Sie, wie Sie die Azure-SSIS-Integrationslaufzeit mit einem
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 4f1100b7e4fa2250baf282b53ef83c5f1aaa1c0e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: cdda3fbe2aff40e26c6086e87ef3e05670c3419f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk
 Verknüpfen Sie in folgenden Szenarien Ihre Azure SSIS-Integration Runtime (IR) mit einem virtuellen Azure-Netzwerk: 
@@ -52,7 +51,7 @@ Folgende wichtige Punkte sind zu beachten:
 - Wenn ein virtuelles Azure Resource Manager-Netzwerk an einem anderen Standort als Ihre Azure SSIS-IR mit Ihrem lokalen Netzwerk verbunden ist, können Sie zuerst ein [virtuelles Azure Resource Manager-Netzwerk](../virtual-network/quick-create-portal.md##create-a-virtual-network) erstellen, in das dann die Azure SSIS-IR eingebunden werden kann. Konfigurieren Sie dann eine Verbindung zwischen den virtuellen Azure Resource Manager-Netzwerken. Alternativ können Sie auch ein [klassisches virtuelles Netzwerk](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) für die Verknüpfung Ihrer Azure SSIS-IR erstellen. Konfigurieren Sie dann eine [Verbindung zwischen dem klassischen virtuellen Netzwerk und dem virtuellen Azure Resource Manager-Netzwerk](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
 ## <a name="domain-name-services-server"></a>Domain Name Service-Server 
-Wenn Sie einen eigenen DNS-Server (Domain Name Service) in einem virtuellen Netzwerk verwenden müssen, mit dem Ihre Azure SSIS-Integration Runtime verknüpft ist, befolgen Sie die Anleitung, um [sicherzustellen, dass die Knoten Ihrer Azure SSIS-Integration Runtime im virtuellen Netzwerk Azure-Endpunkte auflösen können](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
+Wenn Sie Ihren eigenen DNS-Server (Domain Name Services) in einem virtuellen Netzwerk verwenden müssen, dem auch Ihre Azure-SSIS-Integration Runtime angehört, gehen Sie gemäß der Anleitung im Abschnitt „Namensauflösung mithilfe eines eigenen DNS-Servers“ des Artikels [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) vor.
 
 ## <a name="network-security-group"></a>Netzwerksicherheitsgruppe
 Wenn Sie eine Netzwerksicherheitsgruppe (NSG) in einem virtuellen Netzwerk implementieren müssen, mit dem Ihre Azure SSIS-Integration Runtime verknüpft ist, lassen Sie den eingehenden/ausgehenden Datenverkehr über die folgenden Ports zu:

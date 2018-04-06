@@ -1,11 +1,11 @@
 ---
-title: "Überwachen von Data Factorys mit Azure Monitor | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Data Factory-Pipelines mit Azure Monitor überwachen können, indem Sie Diagnoseprotokolle mit Informationen aus Azure Data Factory aktivieren."
+title: Überwachen von Data Factorys mit Azure Monitor | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Data Factory-Pipelines mit Azure Monitor überwachen können, indem Sie Diagnoseprotokolle mit Informationen aus Azure Data Factory aktivieren.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: cae3c797171c3904f100ae3cdec47a31b06d3b31
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8ab2e7cdc8472be9c0800eea5bef9322b0ed87f2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Überwachen von Data Factorys mit Azure Monitor  
 Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachung stellt Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
@@ -103,7 +103,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 } 
 ```
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | Typ | Beschreibung |
 | --- | --- | --- |
 | storageAccountId |Zeichenfolge | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
 | serviceBusRuleId |Zeichenfolge | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID hat dieses Format: {Service Bus-Ressourcen-ID}/authorizationrules/{Schlüsselname}.|
@@ -230,7 +230,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-Weitere Informationen hier](https://msdn.microsoft.com/de-de/library/azure/dn931932.aspx)
+Weitere Informationen finden Sie hier.](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
 
 ## <a name="schema-of-logs--events"></a>Schema von Protokollen und Ereignissen
 
@@ -381,7 +381,7 @@ Weitere Informationen hier](https://msdn.microsoft.com/de-de/library/azure/dn931
 |Start| Zeichenfolge | Beginn der Triggerauslösung im Zeitraum, UTC-Format | `2017-06-26T20:55:29.5007959Z`|
 |status| Zeichenfolge | Endstatus, der angibt, ob der Trigger erfolgreich ausgelöst wurde („Succeeded“ oder „Failed“) | `Succeeded`|
 
-### <a name="metrics"></a>Metriken
+## <a name="metrics"></a>Metriken
 
 Mit Azure Monitor können Sie Telemetriedaten verwenden, um sich einen Überblick über Leistung und Integrität Ihrer Workloads in Azure zu verschaffen. Die wichtigsten Typen von Telemetriedaten sind Metriken (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen ausgegeben werden. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese Metriken für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen.
 
@@ -396,7 +396,52 @@ ADFV2 gibt die folgenden Metriken aus.
 | TriggerSucceededRuns | Metriken zu erfolgreichen Triggerausführungen  | Count    | Gesamt                | Insgesamt erfolgreiche Triggerausführungen in einem Zeitfenster von einer Minute   |
 | TriggerFailedRuns    | Metriken zu fehlerhaften Triggerausführungen     | Count    | Gesamt                | Insgesamt fehlerhafte Triggerausführungen in einem Zeitfenster von einer Minute      |
 
-Befolgen Sie für den Zugriff auf die Metriken die Anweisungen in diesem Artikel: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+Eine Anleitung für den Zugriff auf die Metriken finden Sie im folgenden Artikel: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+
+## <a name="alerts"></a>Alerts
+
+Sie können Warnungen auf der Grundlage unterstützter Metriken in Data Factory auslösen. Klicken Sie auf der Data Factory-Seite **Überwachen** auf die Schaltfläche **Warnungen**.
+
+![Option „Warnungen“](media/monitor-using-azure-monitor/alerts_image1.png)
+
+Dadurch gelangen Sie auf die Seite **Warnungen**.
+
+![Seite „Warnungen“](media/monitor-using-azure-monitor/alerts_image2.png)
+
+Sie können sich auch beim Azure-Portal anmelden und auf **Überwachen &gt; Warnungen** klicken, um direkt auf die Seite **Warnungen** zu gelangen.
+
+![Warnungen im Portalmenü](media/monitor-using-azure-monitor/alerts_image3.png)
+
+### <a name="create-alerts"></a>Erstellen von Warnungen
+
+1.  Klicken Sie auf **+ Neue Warnungsregel**, um eine neue Warnung zu erstellen.
+
+    ![Neue Warnungsregel](media/monitor-using-azure-monitor/alerts_image4.png)
+
+2.  Definieren Sie die **Warnungsbedingung**.
+
+    > [!NOTE]
+    > Achten Sie darauf, dass unter **Nach Ressourcentyp filtern** die Option **Alle** ausgewählt ist.
+
+    ![Warnungsbedingung, Bildschirm 1 von 3](media/monitor-using-azure-monitor/alerts_image5.png)
+
+    ![Warnungsbedingung, Bildschirm 2 von 3](media/monitor-using-azure-monitor/alerts_image6.png)
+
+    ![Warnungsbedingung, Bildschirm 3 von 3](media/monitor-using-azure-monitor/alerts_image7.png)
+
+3.  Definieren Sie die **Warnungsdetails**.
+
+    ![Warnungsdetails](media/monitor-using-azure-monitor/alerts_image8.png)
+
+4.  Definieren Sie die **Aktionsgruppe**.
+
+    ![Aktionsgruppe, Bildschirm 1 von 4](media/monitor-using-azure-monitor/alerts_image9.png)
+
+    ![Aktionsgruppe, Bildschirm 2 von 4](media/monitor-using-azure-monitor/alerts_image10.png)
+
+    ![Aktionsgruppe, Bildschirm 3 von 4](media/monitor-using-azure-monitor/alerts_image11.png)
+
+    ![Aktionsgruppe, Bildschirm 4 von 4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Im Artikel [Programmgesteuertes Überwachen und Verwalten von Pipelines](monitor-programmatically.md) erfahren Sie mehr zum Überwachen und Verwalten von Pipelines. 

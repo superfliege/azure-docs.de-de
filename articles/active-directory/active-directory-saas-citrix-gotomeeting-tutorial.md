@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 4826dee82e62ffac70d7ca3d6dcfe005129de764
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d26b78fb5be96e979fb7b375acf6e907d858b706
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>Tutorial: Azure Active Directory-Integration mit GoToMeeting
 
@@ -108,77 +108,32 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Informationen zur Domäne und zu den URLs für GoToMeeting](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_url.png)
 
-    Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://login.citrixonline.com/saml/sp`.
+    Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://authentication.logmeininc.com/saml/sp`.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+4. Klicken Sie auf **Erweiterte URL-Konfiguration anzeigen**, und konfigurieren Sie die folgenden URLs.
 
-    ![Downloadlink für das Zertifikat](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_certificate.png) 
-
+    **Anmelde-URL** (dieses Feld leer lassen)
+    
+    **Antwort-URL**: `https://authentication.logmeininc.com/saml/acs`
+    
+    **RelayState**:
+    
+    - Verwenden Sie für die GoToMeeting-App `https://global.gotomeeting.com`.
+    
+    - Verwenden Sie für GoToTraining `https://global.gototraining.com`.
+    
+    - Verwenden Sie für GoToWebinar `https://global.gotowebinar.com`. 
+    
+    - Verwenden Sie für GoToAssist `https://app.gotoassist.com`.
+    
 5. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-gotomeeting-tutorial/tutorial_general_400.png)
 
-6. Zum Generieren der **Metadaten**-URL führen Sie die folgenden Schritte aus:
+6. Melden Sie sich in einem anderen Browserfenster bei [GoToMeeting Organization Center](https://organization.logmeininc.com/) an. Sie werden aufgefordert, zu bestätigen, dass der IdP aktualisiert wurde.
 
-    a. Klicken Sie auf **App-Registrierungen**.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appregistrations.png)
-   
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpointicon.png)
+7. Aktivieren Sie das Kontrollkästchen „Mein Identitätsanbieter wurde mit der neuen Domäne aktualisiert“. Wenn Sie fertig sind, klicken Sie auf **Fertig**.
 
-    c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpoint.png)
-     
-    d. Kehren Sie nun zur Eigenschaftenseite von **GoToMeeting** zurück, kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**, und fügen Sie sie in Editor ein.
- 
-    ![Configure Single Sign-On](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
-
-7. Klicken Sie im Abschnitt **GoToMeeting-Konfiguration** auf **GoToMeeting konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
-
-    ![GoToMeeting-Konfiguration](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_configure.png) 
-
-8. Melden Sie sich in einem anderen Browserfenster bei [GoToMeeting Organization Center](https://organization.logmeininc.com/) an.
-
-9. Auf der Registerkarte **Identitätsanbieter** können Sie die Azure-Einstellungen konfigurieren, indem Sie entweder die generierte **Metadaten-URL** oder die heruntergeladene **Metadatendatei** oder **Manuell** angeben.
-
-10. Führen Sie für **Metadaten-URL** die folgenden Schritte aus:
-
-    ![GoToMeeting-Konfiguration](./media/active-directory-saas-gotomeeting-tutorial/config1.png)
-
-    a. Wählen Sie unter **How would you like to configure your SAML IDP?** (Wie soll Ihr SAML-Identitätsanbieter konfiguriert werden?) in der Dropdownliste die Option **Automatische** aus.
-
-    b. Fügen Sie die **Metadaten-URL**, die Sie in den vorherigen Schritten generiert haben, im Textfeld **Metadaten-URL** ein.
-
-    c. Klicken Sie auf **Speichern**.
-
-11. Führen Sie für **Metadatendatei** die folgenden Schritte aus:
-
-    ![GoToMeeting-Konfiguration](./media/active-directory-saas-gotomeeting-tutorial/config2.png)
-
-    a. Wählen Sie unter **How would you like to configure your SAML IDP?** (Wie soll Ihr SAML-Identitätsanbieter konfiguriert werden?) in der Dropdownliste die Option **Upload SAML metadata file** (SAML-Metadatendatei hochladen) aus.
-
-    b. Klicken Sie auf **Upload metadata file** (Metadatendatei hochladen), um die heruntergeladene Metadatendatei hochzuladen.
-
-    c. Klicken Sie auf **Speichern**.
-
-12. Führen Sie für **Manuell** die folgenden Schritte aus:
-
-    ![GoToMeeting-Konfiguration](./media/active-directory-saas-gotomeeting-tutorial/config3.png)
-
-    a.  Fügen Sie in das Textfeld **Sign-in page URL** (URL der Anmeldeseite) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    b.  Fügen Sie in das Textfeld **Sign-out page URL** (URL der Abmeldeseite) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    c.  Fügen Sie im Textfeld **Entitäts-ID des Identitätsanbieters** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    d. Extrahieren Sie das X509Certificate aus der heruntergeladenen Metadatendatei, und laden Sie dieses Zertifikat hoch, indem Sie auf **Zertifikat hochladen** klicken.
-
-    e. Klicken Sie auf **Speichern**.
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).

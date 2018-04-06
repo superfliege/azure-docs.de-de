@@ -6,14 +6,14 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8deb78ba108aafc3297e6b96d6d88d0c56c60afd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d26fe28d301cf563dc6bdb3d9e17903dea3e73fc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hochverfügbarkeit und Azure SQL-Datenbank
 Seit der Einführung des PaaS-Angebots von Azure SQL-Datenbank hat Microsoft seinen Kunden zugesichert, Hochverfügbarkeit (High Availability, HA) direkt in den Dienst zu integrieren. So sind auf Kundenseite weder Maßnahmen oder Entscheidungen rund um HA erforderlich, noch muss spezielle Logik implementiert werden. Microsoft bietet Kunden eine Vereinbarung zum Servicelevel (SLA) und behält die vollständige Kontrolle über die Konfiguration und den Betrieb des Hochverfügbarkeitssystems. Die SLA zur Hochverfügbarkeit gilt für eine SQL-Datenbank in einer Region und bietet keinen Schutz vor Totalausfällen einer Region aufgrund von Faktoren, die außerhalb der Kontrolle von Microsoft liegen (z.B. Naturkatastrophen, Kriege, Terroranschläge, Aufstände, staatliche Maßnahmen, Netzwerk- oder Geräteausfälle außerhalb der Rechenzentren von Microsoft, u.a. am Kundenstandort oder zwischen dem Kundenstandort und dem Microsoft-Rechenzentrum).
@@ -46,7 +46,7 @@ Hauptvorteile:
 
 ## <a name="data-redundancy"></a>Datenredundanz
 
-Die Hochverfügbarkeitslösung in SQL-Datenbank basiert auf [Always On](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)-Technologie von SQL Server und sorgt dafür, dass diese mit minimalen Unterschieden sowohl für LS- als auch für RS-Datenbanken funktioniert. In LS-Konfigurationen soll Always On Persistenz gewährleisten und in RS-Konfigurationen für Verfügbarkeit sorgen (niedrige RTO). 
+Die Hochverfügbarkeitslösung in SQL-Datenbank basiert auf [Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)-Technologie von SQL Server und sorgt dafür, dass diese mit minimalen Unterschieden sowohl für LS- als auch für RS-Datenbanken funktioniert. In LS-Konfigurationen soll die Always On-Verfügbarkeitsgruppen-Technologie Persistenz gewährleisten und in RS-Konfigurationen für Verfügbarkeit sorgen (niedrige RTO). 
 
 ## <a name="local-storage-configuration"></a>Konfiguration mit lokalem Speicher
 

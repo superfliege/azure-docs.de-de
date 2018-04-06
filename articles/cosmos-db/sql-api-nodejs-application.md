@@ -1,5 +1,5 @@
 ---
-title: "Erstellen einer Node.js-Web-App für Azure Cosmos DB | Microsoft-Dokumentation"
+title: Erstellen einer Node.js-Web-App für Azure Cosmos DB | Microsoft-Dokumentation
 description: In diesem Node.js-Tutorial wird beschrieben, wie Sie mit Microsoft Azure Cosmos DB Daten aus einer in Azure-Websites gehosteten Node.js Express-Webanwendung speichern und darauf zugreifen.
 keywords: Anwendungsentwicklung, Datenbanktutorial, node.js erlernen, node.js-Tutorial
 services: cosmos-db
@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/23/2018
 ms.author: mimig
-ms.openlocfilehash: 441f352555f40c0467df4c466d58ac35e32f9e61
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: ad6e335c562e52d7e2336dd1f29e5c159fe46589
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="_Toc395783175"></a>Erstellen einer Node.js-Webanwendung mithilfe von Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -29,8 +29,6 @@ ms.lasthandoff: 02/14/2018
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 In diesem Node.js-Tutorial erfahren Sie, wie Sie mithilfe von Azure Cosmos DB und der SQL-API Daten aus einer in Azure Websites gehosteten Node.js Express-Anwendung speichern und abrufen. Sie erstellen eine einfache webbasierte Anwendung zur Aufgabenverwaltung (eine To-Do-Anwendung), mit der Sie Aufgaben erstellen, abrufen und durchführen können. Die Aufgaben werden als JSON-Dokumente in Azure Cosmos DB gespeichert. Dieses Lernprogramm führt Sie durch die einzelnen Schritte zur Erstellung und Bereitstellung der App und erläutert die Vorgänge in den einzelnen Ausschnitten.
 
@@ -76,7 +74,7 @@ Nun erfahren Sie, wie Sie ein einfaches "Hello World"-Node.js-Projekt mithilfe d
 5. Führen Sie die neue Anwendung aus.
    
         npm start
-6. Sie können die neue Anwendung anzeigen, indem Sie in Ihrem Browser zu [http://localhost:3000](http://localhost:3000) navigieren.
+6. Sie können die neue Anwendung anzeigen, indem Sie in Ihrem Browser zu „[http://localhost:3000](http://localhost:3000)“ navigieren.
    
     ![Kennenlernen von Node.js - Screenshot der "Hello World"-Anwendung in einem Browserfenster](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
@@ -154,7 +152,7 @@ Dies ist für die anfängliche Einrichtung und Konfiguration erforderlich. Jetzt
 
     ```nodejs
     let DocumentDBClient = require('documentdb').DocumentClient;
-    let docdbUtils = require('./docdbUtils');
+    let docdbUtils = require('./cosmosdb-manager.js');
     ```
 7. Anschließend fügen Sie Code hinzu, um das Task-Objekt zu definieren und zu exportieren. Dieser ist verantwortlich für das Initialisieren des Task-Objekts und für das Einrichten der Datenbank und der Dokumentenauflistung, die wir verwenden werden.  
 
@@ -411,7 +409,7 @@ Dies ist für die anfängliche Einrichtung und Konfiguration erforderlich. Jetzt
 6. Speichern und schließen Sie abschließend die Datei **app.js**. Wir sind fast fertig.
 
 ## <a name="_Toc395783181"></a>Schritt 5: Erstellen einer Benutzeroberfläche
-Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den Benutzern die eigentliche Interaktion mit unserer Anwendung zu ermöglichen. Die von uns erstellte Express-Anwendung verwendet **Jade** als Anzeige-Engine. Weitere Informationen zu Jade finden Sie unter [http://jade-lang.com/](http://jade-lang.com/).
+Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den Benutzern die eigentliche Interaktion mit unserer Anwendung zu ermöglichen. Die von uns erstellte Express-Anwendung verwendet **Jade** als Anzeige-Engine. Weitere Informationen zu Jade finden Sie unter „[http://jade-lang.com/](http://jade-lang.com/)“.
 
 1. Die Datei **layout.jade** im Verzeichnis **views** dient als globale Vorlage für andere **.jade**-Dateien. In diesem Schritt werden Sie sie modifizieren, um [Twitter Bootstrap](https://github.com/twbs/bootstrap)zu verwenden, ein Toolkit zum mühelosen Gestalten ansprechender Websites. 
 2. Öffnen Sie die Datei **layout.jade**, die sich im Ordner **views** befindet, und ersetzen Sie die Inhalte durch Folgendes:

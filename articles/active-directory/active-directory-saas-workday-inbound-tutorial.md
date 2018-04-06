@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 976d7e7cb304a24f235e51952ce04826776e2789
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -397,9 +397,9 @@ Führen Sie nach der Installation des Agents die folgenden PowerShell-Befehle zu
 
 **Befehl 1**
 
-> cd C:\\Program Files\\Microsoft Azure Active Directory Synchronization Agent\\Modules\\AADSyncAgent
+> cd "C:\Programme\Microsoft Azure AD Connect Provisioning Agent\Modules\AADSyncAgent" Agent\\Modules\\AADSyncAgent
 
-> import-module AADSyncAgent.psd1
+> Import-Module "C:\Programme\Microsoft Azure AD Connect Provisioning Agent\Modules\AADSyncAgent\AADSyncAgent.psd1"
 
 **Befehl 2**
 
@@ -416,6 +416,9 @@ Führen Sie nach der Installation des Agents die folgenden PowerShell-Befehle zu
 
 >[!IMPORTANT]
 >Es gibt derzeit ein bekanntes Problem, das dazu führt, dass globale Administratoranmeldeinformationen bei Verwendung einer benutzerdefinierten Domäne nicht funktionieren (Beispiel: admin@contoso.com). Erstellen und verwenden Sie zur Umgehung dieses Problems ein globales Administratorkonto mit einer onmicrosoft.com-Domäne (Beispiel: admin@contoso.onmicrosoft.com).
+
+>[!IMPORTANT]
+>Es gibt derzeit ein bekanntes Problem, das dazu führt, dass globale Administratoranmeldeinformationen bei aktivierter mehrstufiger Authentifizierung nicht funktionieren. Deaktivieren Sie zur Umgehung dieses Problems die mehrstufige Authentifizierung für den globalen Administrator.
 
 
 **Befehl 4**

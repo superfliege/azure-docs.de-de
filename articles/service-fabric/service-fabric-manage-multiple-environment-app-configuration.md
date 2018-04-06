@@ -1,24 +1,24 @@
 ---
-title: "Verwalten von Anwendungen für mehrere Umgebungen in Azure Service Fabric | Microsoft-Dokumentation"
-description: "Azure Service Fabric-Anwendungen können in Clustern ausgeführt werden, die eine Größe von einem Computer bis zu Tausenden von Computern aufweisen. In einigen Fällen möchten Sie die Anwendung für diese verschiedenen Umgebungen unterschiedlich konfigurieren. In diesem Artikel wird beschrieben, wie unterschiedliche Anwendungsparameter pro Umgebung definiert werden."
+title: Verwalten von Anwendungen für mehrere Umgebungen in Azure Service Fabric | Microsoft-Dokumentation
+description: Azure Service Fabric-Anwendungen können in Clustern ausgeführt werden, die eine Größe von einem Computer bis zu Tausenden von Computern aufweisen. In einigen Fällen möchten Sie die Anwendung für diese verschiedenen Umgebungen unterschiedlich konfigurieren. In diesem Artikel wird beschrieben, wie unterschiedliche Anwendungsparameter pro Umgebung definiert werden.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
-editor: 
+editor: ''
 ms.assetid: f406eac9-7271-4c37-a0d3-0a2957b60537
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/09/2017
+ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 6bc986236d50106485dce151f1f74622f56400c5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a3d0770d3b9c8702dbe4dac86f86030bea4090c0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Verwalten von Anwendungen für mehrere Umgebungen
 
@@ -41,7 +41,7 @@ Die Konfiguration, die Sie bereitstellen, kann in zwei Kategorien unterteilt wer
 
 > [!NOTE]
 > Nicht alle Attribute in der Manifestdatei der Anwendung oder des Diensts unterstützen Parameter.
-> In solchen Fällen müssen Sie die Zeichenfolgen im Rahmen des Bereitstellungsworkflows ersetzen. In Visual Studio Team Services können Sie eine Erweiterung wie „Replace Tokens“ (Token ersetzen; https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens) verwenden. In Jenkins könnten Sie auch eine Skriptaufgabe ausführen, um die Werte zu ersetzen.
+> In solchen Fällen müssen Sie die Zeichenfolgen im Rahmen des Bereitstellungsworkflows ersetzen. In Visual Studio Team Services können Sie eine Erweiterung wie „Replace Tokens: https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens“ verwenden. In Jenkins könnten Sie auch eine Skriptaufgabe ausführen, um die Werte zu ersetzen.
 >
 
 ## <a name="specifying-parameters-during-application-creation"></a>Angeben von Parametern während der Anwendungserstellung

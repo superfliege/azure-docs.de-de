@@ -15,17 +15,17 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: 669a11368ed6ccec041701e691323a2bb2cac56a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 99c4c15893d1318be13781558fb7ed35203bd971
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Dokumentdatenbank mit Java und dem Azure-Portal
 
 Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Mit Azure Cosmos DB können Sie verwaltete Dokument-, Tabellen- und Diagrammdatenbanken erstellen und abfragen.
 
-In dieser Schnellstartanleitung wird mithilfe der Tools des Azure-Portals für Azure Cosmos DB eine Dokumentdatenbank erstellt. Darüber hinaus erfahren Sie hier, wie Sie unter Verwendung der [SQL-Java-API](sql-api-sdk-java.md) schnell eine Java-Konsolen-App erstellen. Die Anweisungen in dieser Schnellstartanleitung gelten für alle Betriebssysteme, unter denen Java ausgeführt werden kann. Nach Abschluss dieser Schnellstartanleitung können Sie Dokumentdatenbankressourcen sowohl über die Benutzeroberfläche als auch programmgesteuert erstellen und ändern.
+In dieser Schnellstartanleitung wird mithilfe der Tools des Azure-Portals für die [SQL-API](sql-api-introduction.md) von Azure Cosmos DB eine Dokumentdatenbank erstellt. Darüber hinaus erfahren Sie hier, wie Sie unter Verwendung der [SQL-Java-API](sql-api-sdk-java.md) schnell eine Java-Konsolen-App erstellen. Die Anweisungen in dieser Schnellstartanleitung gelten für alle Betriebssysteme, unter denen Java ausgeführt werden kann. Nach Abschluss dieser Schnellstartanleitung können Sie Dokumentdatenbankressourcen sowohl über die Benutzeroberfläche als auch programmgesteuert erstellen und ändern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

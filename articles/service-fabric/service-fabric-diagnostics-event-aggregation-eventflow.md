@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric-Ereignisaggregation mit EventFlow | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Ereignisse unter Verwendung von EventFlow zur Überwachung und Diagnose von Azure Service Fabric-Clustern aggregieren und sammeln."
+description: Erfahren Sie, wie Sie Ereignisse unter Verwendung von EventFlow zur Überwachung und Diagnose von Azure Service Fabric-Clustern aggregieren und sammeln.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: fd4c28c2317356cbc6e3fd4d46a10509c029d530
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 37cae133dda2f274a83db1df37e798c5da58c539
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Ereignisaggregation und -sammlung mithilfe von EventFlow
 

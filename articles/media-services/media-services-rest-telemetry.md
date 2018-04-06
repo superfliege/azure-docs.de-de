@@ -2,10 +2,10 @@
 title: Konfigurieren von Azure Media Services-Telemetrie mit REST | Microsoft Docs
 description: In diesem Artikel erfahren Sie, wie Sie die Azure Media Services-Telemetrie mit REST-API verwenden.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 7d785c6eb9a9e16ae4853cded3c7c142080c7a09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abd093a0b8408e9dcffd4eb9765a767f78fd6fc1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurieren von Azure Media Services-Telemetrie mit REST
 
@@ -33,7 +33,7 @@ In diesem Thema werden folgende Schritte beschrieben:
 - Abrufen der Benachrichtigungsendpunkte
 - Erstellen eines Benachrichtigungsendpunkts für die Überwachung. 
 
-    Um einen Benachrichtigungsendpunkt zu erstellen, legen Sie EndPointType auf AzureTable (2) fest und EndPointAddress auf die Speichertabelle (z.B. https://telemetryvalidationstore.table.core.windows.net/).
+    Um einen Benachrichtigungsendpunkt zu erstellen, legen Sie EndPointType auf AzureTable (2) fest und endPointAddress auf die Speichertabelle (z.B. https://telemetryvalidationstore.table.core.windows.net/).
   
 - Abrufen der Überwachungskonfigurationen
 
@@ -45,7 +45,7 @@ In diesem Thema werden folgende Schritte beschrieben:
  
 ## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Abrufen des Speicherkontos, das einem Media Services-Konto zugeordnet ist
 
-###<a name="request"></a>Anforderung
+### <a name="request"></a>Anforderung
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
     x-ms-version: 2.13
@@ -73,7 +73,7 @@ In diesem Thema werden folgende Schritte beschrieben:
 
 ## <a name="get-the-notification-endpoints"></a>Abrufen der Benachrichtigungsendpunkte
 
-###<a name="request"></a>Anforderung
+### <a name="request"></a>Anforderung
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.13
@@ -83,7 +83,7 @@ In diesem Thema werden folgende Schritte beschrieben:
     Authorization: (redacted)
     Host: wamsbnp1clus001rest-hs.cloudapp.net
     
-###<a name="response"></a>Antwort
+### <a name="response"></a>response
     HTTP/1.1 200 OK
     Cache-Control: no-cache
     Content-Length: 20
@@ -106,7 +106,7 @@ In diesem Thema werden folgende Schritte beschrieben:
  
 ## <a name="create-a-notification-endpoint-for-monitoring"></a>Erstellen eines Benachrichtigungsendpunkts für die Überwachung
 
-###<a name="request"></a>Anforderung
+### <a name="request"></a>Anforderung
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.13
@@ -125,9 +125,9 @@ In diesem Thema werden folgende Schritte beschrieben:
     }
 
 >[!NOTE]
->Vergessen Sie nicht den Wert „https://telemetryvalidationstore.table.core.windows.net“ in Ihr Speicherkonto zu ändern.
+>Vergessen Sie nicht, den Wert „https://telemetryvalidationstore.table.core.windows.net“ in Ihr Speicherkonto zu ändern.
 
-###<a name="response"></a>Antwort
+### <a name="response"></a>response
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -158,7 +158,7 @@ In diesem Thema werden folgende Schritte beschrieben:
     Authorization: (redacted)
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-###<a name="response"></a>Antwort
+### <a name="response"></a>response
     
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -200,7 +200,7 @@ In diesem Thema werden folgende Schritte beschrieben:
        ]
     }
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -221,7 +221,7 @@ In diesem Thema werden folgende Schritte beschrieben:
 
 ## <a name="stop-telemetry"></a>Telemetrie beenden
 
-###<a name="request"></a>Anforderung
+### <a name="request"></a>Anforderung
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
     x-ms-version: 2.13

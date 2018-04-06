@@ -1,24 +1,24 @@
 ---
-title: "Funktionsverkettung in Durable Functions – Azure"
-description: "Es wird beschrieben, wie Sie ein Durable Functions-Beispiel mit einer Funktionssequenz ausführen."
+title: Funktionsverkettung in Durable Functions – Azure
+description: Es wird beschrieben, wie Sie ein Durable Functions-Beispiel mit einer Funktionssequenz ausführen.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9ba1cdc5c72e04802d29794fa6cb40a29cc1d353
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 0020f19e00f3365c4a0d80ebb67aeeedd7fe76df
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funktionsverkettung in Durable Functions – „Hello Sequence“-Beispiel
 
@@ -26,7 +26,7 @@ Bei der Funktionsverkettung geht es um das Muster für die Ausführung einer Fun
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Befolgen Sie die Anweisungen unter [Install Durable Functions](durable-functions-install.md) (Installieren von Durable Functions), um das Beispiel einzurichten.
+* [Installieren Sie langlebige Funktionen](durable-functions-install.md).
 
 ## <a name="the-functions"></a>Die Funktionen
 
@@ -35,7 +35,7 @@ In diesem Artikel werden die folgenden Funktionen in der Beispiel-App beschriebe
 * `E1_HelloSequence`: Eine Orchestratorfunktion, mit der `E1_SayHello` in einer Sequenz mehrfach aufgerufen wird. Die Ausgaben der `E1_SayHello`-Aufrufe werden gespeichert, und die Ergebnisse werden aufgezeichnet.
 * `E1_SayHello`: Eine Aktivitätsfunktion, mit der einer Zeichenfolge das Wort „Hello“ vorangestellt wird.
 
-In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, die für die Entwicklung im Azure-Portal verwendet werden. Der Code für die Visual Studio-Entwicklung ist am Ende des Artikels angegeben.
+In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, die für C#-Skripts verwendet werden. Der Code für die Visual Studio-Entwicklung ist am Ende des Artikels angegeben.
  
 ## <a name="functionjson-file"></a>Datei „function.json“
 

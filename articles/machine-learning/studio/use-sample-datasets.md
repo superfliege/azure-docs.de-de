@@ -1,10 +1,11 @@
 ---
 title: Verwenden von Beispieldatasets in Machine Learning Studio | Microsoft-Dokumentation
-description: "Enthält Beschreibungen der Datasets, die in Beispielmodellen von Machine Learning Studio verwendet werden. Sie können diese Beispieldatasets für Experimente verwenden."
+description: Enthält Beschreibungen der Datasets, die in Beispielmodellen von Machine Learning Studio verwendet werden. Sie können diese Beispieldatasets für Experimente verwenden.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
 ms.service: machine-learning
@@ -13,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.author: garye
-ms.openlocfilehash: 3339d3b3bab2c0ce210950c178ef03fc6c0ecab9
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 38f31220b7cf4624367d872df152ef9e1304e841
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
 
 Beim Erstellen eines neuen Arbeitsbereichs in Azure Machine Learning ist eine Reihe von Beispieldatasets und -experimenten standardmäßig enthalten. Viele dieser Beispieldatasets werden von den Beispielmodellen im [Azure AI-Katalog](http://gallery.cortanaintelligence.com/) verwendet. Andere sind als Beispiele für verschiedene Arten von Daten vorhanden, die normalerweise für Machine Learning verwendet werden.
 
-Einige dieser Datasets sind im Azure-Blobspeicher verfügbar. Für diese Datasets enthält die folgende Tabelle einen direkten Link. Sie können die Datasets mithilfe des Moduls [Import Data][import-data] in Ihren Experimenten nutzen.
+Einige dieser Datasets sind in Azure Blob Storage verfügbar. Für diese Datasets enthält die folgende Tabelle einen direkten Link. Sie können die Datasets mithilfe des Moduls [Import Data][import-data] in Ihren Experimenten nutzen.
 
 Die restlichen dieser Beispieldatasets sind in Ihrem Arbeitsbereich unter **Saved Datasets** verfügbar. Sie finden dies in der Modulpalette links vom Experimentbereich in Machine Learning Studio.
 Sie können alle diese DataSets für Ihre eigenen Experimente verwenden, indem Sie sie auf Ihren Experimentcanvas ziehen.
@@ -190,7 +190,7 @@ Datensätze zu Ankunft und Abflug von Flügen innerhalb der USA von Oktober 2011
 <p></p>
 <b>Verwendung:</b> Vorhersage von Verspätungen im Flugverkehr. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> vom US Dept. of Transportation <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&amp;DB_Short_Name=On-Time</a>.
+<b>Verwandte Untersuchung:</b> vom US Dept. of Transportation <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>.
   </td>
 </tr>
 
@@ -306,7 +306,7 @@ Die Stahlsorten folgen einem festgelegten Standard, der von SAE und anderen Orga
 <p></p>
 <b>Zugrunde liegende Untersuchungen:</b> Sterling, D. und Buntine, W. (NA). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science 
 <p></p>
-Ein nützliches Handbuch zu Stahlsorten finden Sie hier: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
+Ein nützliches Handbuch zu den Stahlsorten finden Sie hier: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
@@ -387,7 +387,7 @@ Merkmale von Schulungsbeispielen im Reuters-Nachrichtendataset RCV1 V2. Das Data
   <td>
 Dataset von KDD Cup 1999 Knowledge Discovery and Data Mining Tools Competition (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).
 <p></p>
-Das Dataset wurde heruntergeladen und im Azure-Blobspeicher abgelegt (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) und enthält Trainings- und Testdatasets. Das Trainingsdataset enthält ca. 126.000 Zeilen und 43 Spalten, inklusive der Bezeichnungen. Drei Spalten sind Teil der Bezeichnungsinformationen, und 40 Spalten, die aus numerischen und Zeichenfolgen-/Kategoriefeatures bestehen, sind zum Trainieren des Modells verfügbar. Die Testdaten enthalten ca. 22.500 Testbeispiele, die die gleichen 43 Spalten wie die Schulungsdaten enthalten.
+Das Dataset wurde heruntergeladen und in Azure Blob Storage abgelegt (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>). Es enthält Trainings- und Testdatasets. Das Trainingsdataset enthält ca. 126.000 Zeilen und 43 Spalten, inklusive der Bezeichnungen. Drei Spalten sind Teil der Bezeichnungsinformationen, und 40 Spalten, die aus numerischen und Zeichenfolgen-/Kategoriefeatures bestehen, sind zum Trainieren des Modells verfügbar. Die Testdaten enthalten ca. 22.500 Testbeispiele, die die gleichen 43 Spalten wie die Schulungsdaten enthalten.
   </td>
 </tr>
 
@@ -403,7 +403,7 @@ Themenzuweisungen für Nachrichtenartikel im Reuters-Nachrichtendataset RCV1-V2 
   <td>
 Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">Schülerleistungsbewertung</a>). Die verwendeten Daten stammen aus dem Trainingssatz „Algebra_2008_2009“ (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Dataset des KDD Cup 2010 – Educational Data Mining Challenge. Sie finden das Dataset unter <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> oder <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a>.
 <p></p>
-Das Dataset wurde in Azure-Blobspeicher heruntergeladen und gespeichert (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>). Es enthält Protokolldateien aus einem Tutorensystem für Schüler. Die bereitgestellten Funktionen umfassen eine Problem-ID und eine zugehörige Kurzbeschreibung, die Schüler-ID, einen Zeitstempel und die Anzahl der Versuche, bevor das Problem vom Schüler ordnungsgemäß gelöst wurde. Das ursprüngliche Dataset umfasst 8,9 Millionen Datensätze. Dieses Dataset wurde auf die ersten 100.000 Zeilen reduziert. Das DataSet umfasst 23 durch Tabulatoren getrennte Spalten mit verschiedenen Typen: numerisch, kategorisch und Zeitstempel.
+Das Dataset wurde in Azure Blob Storage heruntergeladen und gespeichert (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>). Es enthält Protokolldateien aus einem Tutorensystem für Schüler. Die bereitgestellten Funktionen umfassen eine Problem-ID und eine zugehörige Kurzbeschreibung, die Schüler-ID, einen Zeitstempel und die Anzahl der Versuche, bevor das Problem vom Schüler ordnungsgemäß gelöst wurde. Das ursprüngliche Dataset umfasst 8,9 Millionen Datensätze. Dieses Dataset wurde auf die ersten 100.000 Zeilen reduziert. Das DataSet umfasst 23 durch Tabulatoren getrennte Spalten mit verschiedenen Typen: numerisch, kategorisch und Zeitstempel.
   </td>
 </tr>
 

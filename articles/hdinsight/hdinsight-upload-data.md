@@ -1,9 +1,9 @@
 ---
-title: "Hochladen von Daten für Hadoop-Aufträge in HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Daten für Hadoop-Aufträge in HDInsight mithilfe der Azure-Befehlszeilenschnittstelle, Azure-Speicher-Explorer, Azure PowerShell, der Hadoop-Befehlszeile oder Sqoop hochladen und abrufen können."
+title: Hochladen von Daten für Hadoop-Aufträge in HDInsight | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Daten für Hadoop-Aufträge in HDInsight mithilfe der Azure-Befehlszeilenschnittstelle, Azure Storage-Explorer, Azure PowerShell, der Hadoop-Befehlszeile oder Sqoop hochladen und abrufen können.
 keywords: ETL Hadoop, Importieren von Daten in Hadoop, Laden von Daten in Hadoop
 services: hdinsight,storage
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: cfe1b6bee9bc1f093b239f8f4acc523e47ad5d1a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ddb6291cdff7e2b65f54e89196c2b07dd6e4aaff
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hochladen von Daten für Hadoop-Aufträge in HDInsight
 
@@ -176,7 +176,7 @@ oder
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
-Eine Liste weiterer Hadoop-Befehle für die Arbeit mit Dateien finden Sie unter [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Eine Liste mit weiteren Hadoop-Befehlen, die für Dateien verwendet werden können, finden Sie unter [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html).
 
 > [!WARNING]
 > In HBase-Clustern beträgt die standardmäßige Blockgröße beim Schreiben von Daten 256 KB. Bei Verwendung von HBase-APIs oder REST-APIs funktioniert dies einwandfrei. Die Nutzung der Befehle `hadoop` oder `hdfs dfs` zum Schreiben von Daten mit einem Umfang von mehr als ca. 12 GB führt allerdings zu einem Fehler. Weitere Informationen finden Sie im Abschnitt [Speicherausnahme beim Schreiben in ein Blob](#storageexception) dieses Artikels.
@@ -188,22 +188,22 @@ Es gibt auch einige Anwendungen, die eine grafische Benutzeroberfläche für die
 
 | Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Microsoft Visual Studio-Tools für HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources) |✔ |✔ |✔ |
-| [Azure-Speicher-Explorer](http://storageexplorer.com/) |✔ |✔ |✔ |
+| [Microsoft Visual Studio-Tools für HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
+| [Azure Storage-Explorer](http://storageexplorer.com/) |✔ |✔ |✔ |
 | [Cloud Storage Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | |✔ |
 | [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | |✔ |
 | [Azure Explorer](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
 #### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio-Tools für HDInsight
-Weitere Informationen finden Sie unter [Navigieren durch die verknüpften Ressourcen](hadoop/apache-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources).
+Weitere Informationen finden Sie unter [Navigieren durch die verknüpften Ressourcen](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources).
 
 #### <a id="storageexplorer"></a>Azure-Speicher-Explorer
-*Azure-Speicher-Explorer* ist ein hilfreiches Tool zum Prüfen und Ändern der Daten in BLOBs. Dieses kostenlose Open Source-Tool kann von [http://storageexplorer.com/](http://storageexplorer.com/)heruntergeladen werden. Der Quellcode ist über diesen Link ebenfalls verfügbar.
+*Azure Storage-Explorer* ist ein hilfreiches Tool zum Prüfen und Ändern der Daten in Blobs. Dieses kostenlose Open Source-Tool kann unter [http://storageexplorer.com/](http://storageexplorer.com/) heruntergeladen werden. Der Quellcode ist über diesen Link ebenfalls verfügbar.
 
 Bevor Sie das Tool verwenden können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen. Anweisungen zum Abrufen dieser Informationen finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos][azure-create-storage-account] im Abschnitt „Verwalten von Speicherzugriffsschlüsseln“. Dort wird erläutert, wie Sie Speicherzugriffsschlüssel anzeigen, kopieren und erneut generieren.
 
-1. Führen Sie den Azure-Speicher-Explorer aus. Wenn Sie den Speicher-Explorer erstmals ausführen, werden Sie zur Eingabe des **Speicherkontonamens** und **Speicherkontoschlüssels** aufgefordert. Wenn Sie den Speicher-Explorer zuvor bereits ausgeführt haben, wählen Sie die Schaltfläche **Hinzufügen** aus, um einen neuen Speicherkontonamen und -schlüssel hinzuzufügen.
+1. Führen Sie den Azure Storage-Explorer aus. Wenn Sie den Storage-Explorer erstmals ausführen, werden Sie zur Eingabe des **Speicherkontonamens** und **Speicherkontoschlüssels** aufgefordert. Wenn Sie den Speicher-Explorer zuvor bereits ausgeführt haben, wählen Sie die Schaltfläche **Hinzufügen** aus, um einen neuen Speicherkontonamen und -schlüssel hinzuzufügen.
 
     Geben Sie den Namen und Schlüssel für das vom HDInsight-Cluster verwendete Speicherkonto ein, und wählen Sie dann **SPEICHERN UND ÖFFNEN** aus.
 
@@ -280,7 +280,7 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 Sie können auch den Wert von `fs.azure.write.request.size` mithilfe von Ambari global erhöhen. Die folgenden Schritte können verwendet werden, um den Wert in der Ambari-Webbenutzeroberfläche zu ändern:
 
-1. Öffnen Sie in Ihrem Browser die Ambari-Webbenutzeroberfläche für den Cluster. Die Adresse lautet „https://CLUSTERNAME.azurehdinsight.net“, wobei **CLUSTERNAME** den Namen des Clusters angibt.
+1. Öffnen Sie in Ihrem Browser die Ambari-Webbenutzeroberfläche für den Cluster. Diese befindet sich unter https://CLUSTERNAME.azurehdinsight.net, wobei **CLUSTERNAME** der Name Ihres Clusters ist.
 
     Geben Sie bei entsprechender Aufforderung den Namen und das Kennwort des Administrators für den Cluster ein.
 2. Wählen Sie auf der linken Bildschirmseite **HDFS** und dann die Registerkarte **Configs** aus.

@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/20/2018
 ms.author: nitinme
-ms.openlocfilehash: 38a33056ccd908b43319125b3fe517988b1507c6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bf0bfa052c8cd7589af40972fda1e1802b4d1acb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Versionshinweise zu Hadoop-Komponenten in Azure HDInsight
 
@@ -29,13 +29,14 @@ Dieser Artikel enthält Informationen zu den **neuesten** Versionsupdates für A
 > [!IMPORTANT]
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie im Artikel zur [HDInsight-Versionsverwaltung](hdinsight-component-versioning.md).
 
-## <a name="notes-for-03082018---release-of-spark-22-on-hdinsight-36"></a>Hinweise für den 08.03.2018 – Veröffentlichung von Spark 2.2 in HDInsight 3.6
+## <a name="notes-for-03202018---release-of-spark-22-on-hdinsight-36"></a>Hinweise für den 20.03.2018 – Veröffentlichung von Spark 2.2 in HDInsight 3.6
 
 - Spark 2.2.0 verbessert die Stabilität für Spark Core, SQL und ML und bietet strukturiertes Streaming in der allgemein verfügbaren Version. Spark 2.2.0 ist nun in HDInsight 3.6 verfügbar.
 
+
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>Hinweise für die HDInsight-Version vom 01.08.2017
 
-| Titel | Beschreibung | Betroffenen Bereich  | Clustertyp  | 
+| Titel | BESCHREIBUNG | Betroffenen Bereich  | Clustertyp  | 
 | --- | --- | --- | --- | --- |
 | Veröffentlichung von Microsoft R Server 9.1 in HDInsight |HDInsight unterstützt nun das Bereitstellen von R Server 9.1-Clustern in HDInsight. Weitere Informationen zu Microsoft R Server 9.1 finden Sie in [diesem Blog](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/). |Dienst |R Server |
 | HDInsight 3.6 enthält jetzt neuere Versionen des Hadoop-Stapels.|<ul><li>Eine detaillierte Liste der aktualisierten Versionen finden Sie unter [Verfügbare Hadoop-Komponenten in verschiedenen Versionen von HDInsight](hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions).</li><li>Eine Liste mit Fehlern, die in den neuesten Versionen des Hadoop-Stapels behoben wurden, finden Sie unter [Apache Patch Information](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html) (Apache-Patchinformationen).</li><li>Eine Liste mit Breaking Changes zwischen HDP 2.6.1 (jetzt in HDInsight 3.6 verfügbar) finden Sie unter [https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html).</li><li>Eine Liste mit bekannten Probleme in HDP 2.6.1 finden Sie unter [Bekannte Probleme](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html).</li></ul> |Dienst |Alle |N/V |

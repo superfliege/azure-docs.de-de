@@ -1,29 +1,26 @@
 ---
-title: "Azure Active Directory B2C: Konfiguration für Twitter | Microsoft-Dokumentation"
-description: "Bereitstellen von Registrierung und Anmeldung für Kunden mit Twitter-Konten in mit Azure Active Directory B2C geschützten Anwendungen."
+title: 'Azure Active Directory B2C: Konfiguration für Twitter | Microsoft-Dokumentation'
+description: Bereitstellen von Registrierung und Anmeldung für Kunden mit Twitter-Konten in mit Azure Active Directory B2C geschützten Anwendungen.
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 579a6841-9329-45b8-a351-da4315a6634e
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 4/06/2017
-ms.author: parakhj
-ms.openlocfilehash: 4dbc70d866a728a63102bd169a124bd26990aeb2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: davidmu
+ms.openlocfilehash: ee2d82f8c90b88a898428973a1febaa21034a14f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts"></a>Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit Twitter-Konten
 
 ## <a name="create-a-twitter-application"></a>Erstellen einer Twitter-Anwendung
-Um Twitter als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Twitter-Anwendung erstellen und die entsprechenden Parameter bereitstellen. Sie benötigen dazu ein Twitter-Entwicklerkonto. Wenn Sie über kein Konto verfügen, können Sie unter [https://dev.twitter.com/](https://dev.twitter.com/) ein Konto erstellen.
+Um Twitter als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Twitter-Anwendung erstellen und die entsprechenden Parameter bereitstellen. Sie benötigen dazu ein Twitter-Entwicklerkonto. Wenn Sie keins besitzen, können Sie unter [https://dev.twitter.com/](https://dev.twitter.com/) eines erstellen.
 
 1. Wechseln Sie zur [Website für Twitter-Entwickler](https://dev.twitter.com/), und melden Sie sich mit Ihren Anmeldeinformationen an.
 2. Klicken Sie unter **Tools & Support** auf **My Apps** und dann auf **Create New App**. 

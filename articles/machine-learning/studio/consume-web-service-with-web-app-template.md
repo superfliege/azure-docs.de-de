@@ -3,9 +3,10 @@ title: Verwenden eines Machine Learning-Webdiensts mithilfe einer Web-App-Vorlag
 description: Verwenden Sie eine Web-App-Vorlage in Azure Marketplace, um einen Vorhersagewebdienst in Azure Machine Learning zu nutzen.
 keywords: Webdienst, Operationalisierung, REST-API, Machine Learning
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: raymondl
-ms.openlocfilehash: f7efa647fa6afc247509cd4a52066c0459f75ca3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 81b89a1f8a053fd3b1d0d6a0a1bcc5c67d2ba728
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Verwenden eines Azure Machine Learning-Webdiensts mithilfe einer Web-App-Vorlage
 
@@ -77,7 +77,7 @@ Führen Sie die folgenden Schritte aus, um die RRS-Web-App-Vorlage zu verwenden 
 2. Klicken Sie auf **Neu**, navigieren Sie zu **Azure ML-Anforderung-/Antwort-Dienst-Web-App**, und wählen Sie dann **Erstellen** aus. 
 3. Im Bereich **Erstellen**:
    
-   * Geben Sie Ihrer Web-App einen eindeutigen Namen. Die URL der Web-App besteht aus diesem Namen gefolgt von **.azurewebsites.net**. Ein Beispiel ist **http://carprediction.azurewebsites.net**.
+   * Geben Sie Ihrer Web-App einen eindeutigen Namen. Die URL der Web-App besteht aus diesem Namen gefolgt von **.azurewebsites.net**. Beispiel: **http://carprediction.azurewebsites.net**.
    * Wählen Sie das Azure-Abonnement und die Dienste aus, mit denen der Webdienst ausgeführt wird.
    * Klicken Sie auf **Erstellen**.
      
@@ -99,7 +99,7 @@ Führen Sie die folgenden Schritte aus, um die RRS-Web-App-Vorlage zu verwenden 
 
 7. Auf der Startseite können Sie Werte eingeben, die an den Webdienst gesendet werden. Klicken Sie abschließend auf **Senden**. Das Ergebnis wird dann zurückgegeben.
 
-Wenn Sie zur Seite **Konfiguration** zurückkehren möchten, wechseln Sie zur Seite **setting.aspx** der Web-App. Wechseln Sie beispielsweise zum **http://carprediction.azurewebsites.net/setting.aspx**. Sie werden aufgefordert, den API-Schlüssel erneut einzugeben. Sie benötigen diesen, um auf die Seite zuzugreifen und die Einstellungen zu aktualisieren.
+Wenn Sie zur Seite **Konfiguration** zurückkehren möchten, wechseln Sie zur Seite **setting.aspx** der Web-App. Wechseln Sie z.B. zu **http://carprediction.azurewebsites.net/setting.aspx**. Sie werden aufgefordert, den API-Schlüssel erneut einzugeben. Sie benötigen diesen, um auf die Seite zuzugreifen und die Einstellungen zu aktualisieren.
 
 Sie können die Web-App im Azure-Portal wie andere Web-Apps beenden, neu starten oder löschen. Solange sie ausgeführt wird, können Sie zur Webadresse der Startseite wechseln und neue Werte eingeben.
 

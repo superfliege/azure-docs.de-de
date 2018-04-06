@@ -1,11 +1,11 @@
 ---
 title: Azure Service Fabric Reliable Services-Lebenszyklus | Microsoft-Dokumentation
-description: "Erfahren Sie etwas über die Lebenszyklusereignisse in Service Fabric Reliable Services."
+description: Erfahren Sie etwas über die Lebenszyklusereignisse in Service Fabric Reliable Services.
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
 manager: timlt
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa;
-ms.openlocfilehash: ad4228ade68f4494e5be0454643752e742c1cc81
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 4270bf0b8002b5328241c6d31f399511fc38274e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services-Lebenszyklus
 > [!div class="op_single_selector"]
@@ -65,11 +65,11 @@ Beim Herunterfahren eines zustandslosen Diensts wird dasselbe Muster in umgekehr
 1. Diese Ereignisse treten parallel auf:
     - Alle geöffneten Listener werden geschlossen. `CommunicationListener.closeAsync()` wird für jeden Listener aufgerufen.
     - Das an `runAsync()` übergebene Abbruchtoken wird verworfen. Es wird überprüft, ob die `isCancelled`-Eigenschaft des Abbruchtokens `true` zurückgibt und ob die `throwIfCancellationRequested`-Methode eine Ausnahme vom Typ `CancellationException` auslöst.
-2. Nach Abschluss von `closeAsync()` für die einzelnen Listener und nach Abschluss von `runAsync()` wird die `StatelessService.onCloseAsync()`-Methode des Diensts aufgerufen (sofern vorhanden). Auch dies ist keine allgemeine Außerkraftsetzung.
+2. Nach Abschluss von `closeAsync()` für die einzelnen Listener und nach Abschluss von `runAsync()` wird die `StatelessService.onCloseAsync()`-Methode des Diensts aufgerufen (sofern vorhanden). Auch hier handelt es sich nicht um eine gängige Überschreibung. Die Methode kann jedoch verwendet werden, um Ressourcen sicher zu schließen, die Hintergrundverarbeitung anzuhalten, das Speichern des externen Zustands zu beenden oder bestehende Verbindungen zu trennen.
 3. Nach Abschluss von `StatelessService.onCloseAsync()` wird das Dienstobjekt zerstört.
 
 ## <a name="stateful-service-startup"></a>Start zustandsbehafteter Dienste
-Zustandsbehaftete Dienste befolgen mit wenigen Änderungen ein ähnliches Muster wie zustandslose Dienste. Beim Starten eines zustandsbehafteten Diensts lautet die Reihenfolge der Ereignisse wie folgt:
+Zustandsbehaftete Dienste befolgen mit wenigen Änderungen ein ähnliches Muster wie zustandslose Dienste.  Beim Starten eines zustandsbehafteten Diensts lautet die Reihenfolge der Ereignisse wie folgt:
 
 1. Der Dienst wird erstellt.
 2. `StatefulServiceBase.onOpenAsync()` wird aufgerufen. Dieser Aufruf wird normalerweise nicht im Dienst außer Kraft gesetzt.
@@ -127,15 +127,14 @@ Von Service Fabric ausgelöste Ausnahmen sind permanent [(`FabricException`)](ht
 Ein wichtiger Bestandteil der Tests und Prüfungen von Reliable Services ist die Behandlung von Ausnahmen, die auf die Verwendung von `ReliableCollections` in Verbindung mit Dienstlebenszyklusereignissen zurückzuführen sind. Es wird empfohlen, den Dienst immer unter Last auszuführen. Sie sollten vor der Bereitstellung in der Produktion auch Upgrades und [Chaostests](service-fabric-controlled-chaos.md) ausführen. Mit diesen einfachen Schritten können Sie sicherstellen, dass Ihr Dienst ordnungsgemäß implementiert ist und Lebenszyklusereignisse korrekt behandelt.
 
 ## <a name="notes-on-service-lifecycle"></a>Hinweise zum Dienstlebenszyklus
-* Sowohl die `runAsync()`-Methode als auch die `createServiceInstanceListeners/createServiceReplicaListeners`-Aufrufe sind optional. Ein Dienst kann über eine dieser Varianten, beide oder keine von beiden verfügen. Wenn der Dienst beispielsweise alle Vorgänge infolge von Benutzeraufrufen ausführt, muss `runAsync()` nicht implementiert werden. Nur die Kommunikationslistener und der zugehörige Code sind erforderlich. 
-
-  Ebenso ist das Erstellen und Zurückgeben von Kommunikationsüberwachungen optional. Der Dienst muss möglicherweise nur Hintergrundverarbeitung ausführen, daher muss er nur `runAsync()` implementieren.
+* Sowohl die `runAsync()`-Methode als auch die `createServiceInstanceListeners/createServiceReplicaListeners`-Aufrufe sind optional. Ein Dienst kann über eine dieser Varianten, beide oder keine von beiden verfügen. Wenn der Dienst beispielsweise alle Vorgänge infolge von Benutzeraufrufen ausführt, muss `runAsync()` nicht implementiert werden. Nur die Kommunikationslistener und der zugehörige Code sind erforderlich.  Ebenso ist das Erstellen und Zurückgeben von Kommunikationsüberwachungen optional. Der Dienst muss möglicherweise nur Hintergrundverarbeitung ausführen, daher muss er nur `runAsync()` implementieren.
 * Ein Dienst kann `runAsync()` erfolgreich abschließen und dann zurückkehren. Dies wird nicht als Fehlerbedingung angesehen. Es stellt die Hintergrundverarbeitung des Diensts während des Abschlusses dar. Für zustandsbehaftete Reliable Services wird `runAsync()` erneut aufgerufen, wenn der Dienst vom primären Replikat tiefer gestuft und dann wieder auf das primäre Replikat höher gestuft wird.
 * Wenn ein Dienst die Ausführung von `runAsync()` mit einer unerwarteten Ausnahme beendet, ist dies ein Fehler. Das Dienstobjekt wird heruntergefahren, und ein Integritätsfehler wird gemeldet.
 * Zwar gibt es keine zeitliche Begrenzung für die Rückkehr von diesen Methoden, Sie verlieren jedoch sofort die Möglichkeit zum Schreiben. Daher können Sie Ihre eigentlichen Arbeiten nicht abschließen. Es wird empfohlen, sie so schnell wie möglich nach dem Empfang der Abbruchanforderung zurückzugeben. Wenn der Dienst nicht in einem angemessenen Zeitraum auf diese API-Aufrufe reagiert, kann Service Fabric das Beenden des Diensts erzwingen. Dies geschieht normalerweise nur während Anwendungsupgrades oder beim Löschen eines Diensts. Das Timeout beträgt standardmäßig 15 Minuten.
-* Fehler im `onCloseAsync()`-Pfad führen zu einem Aufruf von `onAbort()`. Dadurch erhält der Dienst eine letzte Gelegenheit zum Bereinigen und Freigeben aller beanspruchten Ressourcen.
+* Fehler im `onCloseAsync()`-Pfad führen zu einem Aufruf von `onAbort()`. Dadurch erhält der Dienst eine letzte Gelegenheit zum Bereinigen und Freigeben aller beanspruchten Ressourcen. Diese Methode wird im Allgemeinen verwendet, wenn auf dem Knoten ein dauerhafter Fehler erkannt wird oder Service Fabric den Lebenszyklus der Dienstinstanz aufgrund von internen Fehlern nicht zuverlässig verwalten kann.
+* `OnChangeRoleAsync()` wird immer dann aufgerufen, wenn das Replikat des zustandsbehafteten Diensts die Rolle wechselt und beispielsweise ein primäres oder sekundäres Replikat wird. Primäre Replikate erhalten Schreibstatus (mit Erlaubnis zum Erstellen und Schreiben in Reliable Collections). Sekundäre Replikate erhalten Lesestatus (können nur aus vorhandenen Reliable Collections lesen). Die meisten Aufgaben in einem zustandsbehafteten Dienst werden im primären Replikat ausgeführt. Sekundäre Replikate können schreibgeschützte Überprüfungen durchführen, Berichte generieren und Data Mining oder andere schreibgeschützte Aufträge ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Reliable Services](service-fabric-reliable-services-introduction.md)
 * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start-java.md)
-* [Erweiterte Verwendung von Reliable Services](service-fabric-reliable-services-advanced-usage.md)
+

@@ -3,6 +3,6 @@ Mit Data Lake Analytics wird die Komplexität bei der Verwaltung verteilter Infr
 | **Ressource** | **Standardlimit** | **Kommentare** |
 | --- | --- | --- |
 | Maximale Anzahl gleichzeitiger Aufträge |20 | |
-| Maximale Anzahl von Analytics-Einheiten (AUs) pro Konto |250 | Verwenden Sie eine beliebige Kombination von bis zu 250 AUs über 20 Aufträge. |
+| Maximale Anzahl von Analytics-Einheiten (AUs) pro Konto |250 | Verwenden Sie eine beliebige Kombination von bis zu 250 AUs über 20 Aufträge.  Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an den Microsoft-Support. |
 | Maximale Skriptgröße für die Auftragsübermittlung | 3 MB | |
-
+| Maximale Anzahl von ADLA-Konten pro Region und Abonnement | 5 | Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an den Microsoft-Support. |

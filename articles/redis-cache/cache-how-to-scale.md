@@ -2,10 +2,10 @@
 title: 'Gewusst wie: Skalieren von Azure Redis Cache | Microsoft Docs'
 description: Erfahren Sie, wie Sie Azure Redis Cache-Instanzen skalieren
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 350db214-3b7c-4877-bd43-fef6df2db96c
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: b0a9208681b164fe7be33bf9ef5f635358284ba3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9ef988ccdcca921c0285bf983125483a38a07678
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Skalieren von Azure Redis Cache
 Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Nach dem Erstellen des Caches können Sie Größe und Tarif des Caches skalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. In diesem Artikel wird erläutert, wie Sie Ihren Cache im Azure-Portal mithilfe von Tools wie Azure PowerShell und der Azure-Befehlszeilenschnittstelle skalieren.
@@ -111,6 +111,7 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierun
 * [Gehen während der Skalierung Daten aus dem Cache verloren?](#will-i-lose-data-from-my-cache-during-scaling)
 * [Hat die Skalierung Auswirkungen auf meine benutzerdefinierte Einstellung für Datenbanken?](#is-my-custom-databases-setting-affected-during-scaling)
 * [Ist der Cache während der Skalierung verfügbar?](#will-my-cache-be-available-during-scaling)
+* [Warum kann bei konfigurierter geografischer Replikation meinen Cache nicht skalieren oder die Shards in einem Cluster nicht ändern?](#scaling-limitations-with-geo-relication)
 * [Nicht unterstützte Vorgänge](#operations-that-are-not-supported)
 * [Wie lange dauert die Skalierung?](#how-long-does-scaling-take)
 * [Woher weiß ich, dass die Skalierung abgeschlossen ist?](#how-can-i-tell-when-scaling-is-complete)
@@ -119,7 +120,7 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierun
 * Eine Skalierung von einem **Premium**-Cache auf die niedrigeren Tarife **Basic** oder **Standard** ist nicht möglich.
 * Eine Skalierung von einem bestimmten **Premium** -Cachetarif zu einem anderen ist jedoch möglich.
 * Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Skalieren Sie zunächst in einem ersten Skalierungsvorgang von **Basic** auf **Standard** und dann in einem nachfolgenden Skalierungsvorgang von **Standard** auf **Premium**.
-* Wenn Sie beim Erstellen des **Premium** -Caches die Clusterunterstützung aktiviert haben, können Sie die [Clustergröße ändern](cache-how-to-premium-clustering.md#cluster-size). Wenn der Cache ohne aktiviertes Clustering erstellt wurde, können Sie das Clustering nicht zu einem späteren Zeitpunkt konfigurieren.
+* Wenn Sie beim Erstellen des **Premium** -Caches die Clusterunterstützung aktiviert haben, können Sie die [Clustergröße ändern](cache-how-to-premium-clustering.md#cluster-size). Wenn der Cache ohne aktiviertes Clustering erstellt wurde, können Sie das Clustering zu einem späteren Zeitpunkt konfigurieren.
   
   Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-clustering.md).
 
@@ -151,6 +152,12 @@ Für Caches der Tarife „Standard“ und „Premium“ gilt zwar eine SLA (Serv
 * **Standard**- und **Premium**-Caches bleiben während des Skalierungsvorgangs verfügbar. Es können jedoch Verbindungsunterbrechungen während der Skalierung von Standard- und Premium-Caches und auch während der Skalierung von Basic- auf Standard-Caches auftreten. Diese Verbindungsunterbrechungen sollten voraussichtlich kurz sein, und die Redis-Clients sollten in der Lage sein, ihre Verbindung sofort erneut herzustellen.
 * **Basic**-Caches sind während der Skalierung auf eine andere Größe offline. Basic-Caches bleiben bei einer Skalierung von **Basic** auf **Standard** verfügbar, es können aber kurze Verbindungsunterbrechungen auftreten. Wenn Verbindungsunterbrechungen auftreten, sollten die Redis-Clients in der Lage sein, ihre Verbindung sofort erneut herzustellen.
 
+
+### <a name="scaling-limitations-with-geo-relication"></a>Skalierungseinschränkungen bei Verwendung der Georeplikation
+
+Wenn Sie zwischen zwei Caches eine Verknüpfung für die Georeplikation hinzugefügt haben, können Sie keine Skalierungsvorgänge mehr initiieren oder die Anzahl von Shards in einem Cluster ändern. Wenn Sie diese Befehle verwenden möchten, müssen Sie zuerst die Verknüpfung für den Cache aufheben. Weitere Informationen finden Sie unter [Vorgehensweise zum Konfigurieren der Georeplikation für Azure Redis Cache](cache-how-to-geo-replication.md).
+
+
 ### <a name="operations-that-are-not-supported"></a>Nicht unterstützte Vorgänge
 * Sie können keine Skalierung von einem höheren Tarif auf einen niedrigeren Tarif vornehmen.
   * Eine Skalierung von einem **Premium**-Cache auf einen niedrigeren **Standard**- oder **Basic**-Cache ist nicht möglich.
@@ -160,6 +167,7 @@ Für Caches der Tarife „Standard“ und „Premium“ gilt zwar eine SLA (Serv
 * Von einer größeren Größe kann nicht auf **C0 (250 MB)** herunterskaliert werden.
 
 Wenn bei einem Skalierungsvorgang ein Fehler auftritt, versucht der Dienst, den Vorgang rückgängig zu machen, und der Cache wird auf die ursprüngliche Größe zurückgesetzt.
+
 
 ### <a name="how-long-does-scaling-take"></a>Wie lange dauert die Skalierung?
 Die Skalierung dauert ca. 20 Minuten, je nachdem, wie viele Daten sich im Cache befinden.

@@ -1,6 +1,6 @@
 ---
-title: "Pushübertragung eines Docker-Images an eine private Azure-Registrierung"
-description: "Push- und Pullübertragung von Docker-Images an eine private Containerregistrierung in Azure mit der Docker CLI"
+title: Pushübertragung eines Docker-Images an eine private Azure-Registrierung
+description: Push- und Pullübertragung von Docker-Images an eine private Containerregistrierung in Azure mit der Docker CLI
 services: container-registry
 author: stevelas
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21d1abfbb49eaeae654a600d35ab350b96a12fd3
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 8fc04ec77a101e08bfde22df76e845b87f8c316e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Pushübertragung des ersten Images an eine private Containerregistrierung mit der Docker CLI
 
@@ -123,4 +123,8 @@ az acr repository delete --name myregistry --repository samples/nginx --tag late
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich mit den Grundlagen vertraut gemacht haben, können Sie mit der Verwendung Ihrer Registrierung beginnen! Beispielsweise können Sie Containerimages aus Ihrer Registrierung in einem [Azure Container Service](../aks/tutorial-kubernetes-prepare-app.md)-Cluster (AKS) bereitstellen.
+Nachdem Sie sich mit den Grundlagen vertraut gemacht haben, können Sie mit der Verwendung Ihrer Registrierung beginnen! Stellen Sie Containerimages aus Ihrer Registrierung bereit:
+
+* [Azure Container Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
+* [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
+* [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 03/23/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 8a52d80f32f822691be862d566c17c84efc73c26
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2b42840bc1053e9574e7c8ab1c68611c3b2bc7df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Erstellen attributbasierter Regeln für dynamische Gruppenmitgliedschaft in Azure Active Directory
 In Azure Active Directory (Azure AD) können Sie erweiterte Regeln für die Aktivierung von komplexen, attributbasierten dynamischen Mitgliedschaften für Gruppen erstellen. In diesem Artikel werden Attribute und Syntax zum Erstellen der Regeln für dynamische Mitgliedschaft für Benutzer oder Geräte erläutert.
@@ -74,7 +74,7 @@ Eine vollständige Liste der unterstützten Parameter und Ausdrucksregeloperator
 Die Gesamtlänge des Texts der erweiterten Regel darf 2048 Zeichen nicht überschreiten.
 
 > [!NOTE]
-> Bei Vorgängen mit Zeichenfolgen und regulären Ausdrücken wird die Groß- und Kleinschreibung nicht beachtet. Sie können auch NULL-Prüfungen durchführen, indem Sie *null* als Konstante verwenden. Beispiel: user.department -eq *null*.
+> Bei Vorgängen mit Zeichenfolgen und regulären Ausdrücken wird die Groß- und Kleinschreibung nicht beachtet. Sie können auch NULL-Prüfungen durchführen, indem Sie *null* als Konstante verwenden. Beispiel: user.department -eq *$null*.
 > Zeichenfolgen mit Anführungszeichen (") sollten mit einem Escapezeichen (') maskiert werden. Beispiel: user.department -eq \`"Sales".
 
 ## <a name="supported-expression-rule-operators"></a>Unterstützte Ausdrucksregeloperatoren
@@ -106,11 +106,11 @@ Alle Operatoren werden unten nach Rangfolge von niedrig nach hoch aufgeführt. O
 Alle Operatoren können mit oder ohne vorangestellten Bindestrich verwendet werden. Klammern sind nur erforderlich, wenn die Rangfolge nicht Ihren Anforderungen entspricht.
 Beispiel: 
 ```
-   user.department –eq "Marketing" –and user.country –eq "US"
+   user.department -eq "Marketing" -and user.country -eq "US"
 ```
 entspricht:
 ```
-   (user.department –eq "Marketing") –and (user.country –eq "US")
+   (user.department -eq "Marketing") -and (user.country -eq "US")
 ```
 ## <a name="using-the--in-and--notin-operators"></a>Mithilfe der Operatoren „-In“ und „-notIn“
 
@@ -160,32 +160,32 @@ Zulässige Operatoren
 
 | Eigenschaften | Zulässige Werte | Verwendung |
 | --- | --- | --- |
-| city |Jeder string-Wert oder *null* |(user.city -eq "value") |
-| country |Jeder string-Wert oder *null* |(user.country -eq "value") |
-| companyName | Jeder string-Wert oder *null* | (user.companyName -eq "value") |
-| department |Jeder string-Wert oder *null* |(user.department -eq "value") |
+| city |Jeder string-Wert oder *$null* |(user.city -eq "value") |
+| country |Jeder string-Wert oder *$null* |(user.country -eq "value") |
+| companyName | Jeder string-Wert oder *$null* | (user.companyName -eq "value") |
+| department |Jeder string-Wert oder *$null* |(user.department -eq "value") |
 | displayName |Jeder string-Wert. |(user.displayName -eq "value") |
-| employeeId |Jeder string-Wert. |(user.employeeId -eq "value")<br>(user.employeeId -ne *null*) |
-| facsimileTelephoneNumber |Jeder string-Wert oder *null* |(user.facsimileTelephoneNumber -eq "value") |
-| givenName |Jeder string-Wert oder *null* |(user.givenName -eq "value") |
-| jobTitle |Jeder string-Wert oder *null* |(user.jobTitle -eq "value") |
-| mail |Jeder string-Wert oder *null* (SMTP-Adresse des Benutzers) |(user.mail -eq "value") |
+| employeeId |Jeder string-Wert. |(user.employeeId -eq "value")<br>(user.employeeId -ne *$null*) |
+| facsimileTelephoneNumber |Jeder string-Wert oder *$null* |(user.facsimileTelephoneNumber -eq "value") |
+| givenName |Jeder string-Wert oder *$null* |(user.givenName -eq "value") |
+| jobTitle |Jeder string-Wert oder *$null* |(user.jobTitle -eq "value") |
+| mail |Jeder string-Wert oder *$null* (SMTP-Adresse des Benutzers) |(user.mail -eq "value") |
 | mailNickName |Jeder string-Wert (E-Mail-Alias des Benutzers) |(user.mailNickName -eq "value") |
-| mobile |Jeder string-Wert oder *null* |(user.mobile -eq "value") |
+| mobile |Jeder string-Wert oder *$null* |(user.mobile -eq "value") |
 | objectId |GUID des Benutzerobjekts. |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Lokale Sicherheits-ID (SID) für Benutzer, deren Daten von einem lokalen Standort in die Cloud synchronisiert wurden. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |Jeder string-Wert oder *null* |(user.physicalDeliveryOfficeName -eq "value") |
-| postalCode |Jeder string-Wert oder *null* |(user.postalCode -eq "value") |
+| physicalDeliveryOfficeName |Jeder string-Wert oder *$null* |(user.physicalDeliveryOfficeName -eq "value") |
+| postalCode |Jeder string-Wert oder *$null* |(user.postalCode -eq "value") |
 | preferredLanguage |ISO 639-1 code |(user.preferredLanguage -eq "en-US") |
-| sipProxyAddress |Jeder string-Wert oder *null* |(user.sipProxyAddress -eq "value") |
-| state |Jeder string-Wert oder *null* |(user.state -eq "value") |
-| streetAddress |Jeder string-Wert oder *null* |(user.streetAddress -eq "value") |
-| surname |Jeder string-Wert oder *null* |(user.surname -eq "value") |
-| telephoneNumber |Jeder string-Wert oder *null* |(user.telephoneNumber -eq "value") |
+| sipProxyAddress |Jeder string-Wert oder *$null* |(user.sipProxyAddress -eq "value") |
+| state |Jeder string-Wert oder *$null* |(user.state -eq "value") |
+| streetAddress |Jeder string-Wert oder *$null* |(user.streetAddress -eq "value") |
+| surname |Jeder string-Wert oder *$null* |(user.surname -eq "value") |
+| telephoneNumber |Jeder string-Wert oder *$null* |(user.telephoneNumber -eq "value") |
 | usageLocation |Aus zwei Buchstaben bestehender Ländercode. |(user.usageLocation -eq "US") |
 | userPrincipalName |Jeder string-Wert. |(user.userPrincipalName -eq "alias@domain") |
-| userType |member-Gast *null* |(user.userType -eq "Member") |
+| userType |member-Gast *$null* |(user.userType -eq "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschaften vom Typ "string collection"
 Zulässige Operatoren
@@ -230,7 +230,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 Zum Angeben eines NULL-Werts in einer Regel können Sie den Wert *null* verwenden. Achten Sie darauf, keine Anführungszeichen um das Wort *null* zu verwenden – andernfalls werden diese als literaler Zeichenfolgenwert interpretiert. Die richtige Referenzierung des NULL-Werts erfolgt auf diese Weise:
 ```
-   user.mail –ne null
+   user.mail –ne $null
 ```
 
 ## <a name="extension-attributes-and-custom-attributes"></a>Erweiterungsattribute und benutzerdefinierte Attribute

@@ -1,8 +1,8 @@
 ---
-title: "Artikelindex für die Anwendungsverwaltung in Azure Active Directory | Microsoft Azure"
-description: "Erfahren Sie, wie Sie das Ablaufdatum für Verbundzertifikate anpassen und Zertifikate erneuern, die in Kürze ablaufen."
+title: Artikelindex für die Anwendungsverwaltung in Azure Active Directory | Microsoft Azure
+description: Erfahren Sie, wie Sie das Ablaufdatum für Verbundzertifikate anpassen und Zertifikate erneuern, die in Kürze ablaufen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 5321b8e4-2afa-4dfe-8d53-4add7abb5ec8
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: ccbe48e4c7fdb25e003aedc048194e041865710e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: ffb8e822644ba8f0bccc3e81edc4da6085ff3ec7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Artikelindex für die Anwendungsverwaltung in Azure Active Directory
 Diese Seite enthält eine umfassende Liste aller Dokumente, die über die verschiedenen anwendungsbezogenen Funktionen in Azure Active Directory (Azure AD) geschrieben wurden.
@@ -43,7 +43,7 @@ Dieser Abschnitt bietet schnellen Zugriff auf relevante Anweisungen zur Problemb
 | Einmalige Verbundanmeldung |[Problembehandlung bei SAML-basiertem einmaligem Anmelden](active-directory-saml-debugging.md) |
 | Kennwortbasiertes einmaliges Anmelden |[Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
 | Anwendungsproxy |[Handbuch zur Problembehandlung beim App-Proxy](active-directory-application-proxy-troubleshoot.md) |
-| Einmaliges Anmelden zwischen lokalem AD und Azure AD |[Problembehandlung bei der Kennwortsynchronisierung](connect/active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)<br /><br />[Problembehandlung beim Kennwortrückschreiben](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| Einmaliges Anmelden zwischen lokalem AD und Azure AD |[Problembehandlung bei der Kennworthashsynchronisierung](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Problembehandlung beim Kennwortrückschreiben](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Dynamische Gruppenmitgliedschaften |[Problembehandlung bei dynamischen Mitgliedschaften in Gruppen](active-directory-accessmanagement-troubleshooting.md) |
 
 ## <a name="single-sign-on-sso"></a>Einmaliges Anmelden (Single Sign-On, SSO)
@@ -95,7 +95,7 @@ Wenn Ihr Unternehmen eine lokale Version von Windows Server Active Directory par
 |:---:| --- |
 | Eine Übersicht über die Optionen für das einmalige Anmelden in Azure AD Connect sowie Informationen zur Verwaltung von Hybridumgebungen |[Azure AD Connect-Optionen für die Benutzeranmeldung](active-directory-aadconnect-user-signin.md) |
 | Allgemeine Richtlinien für die Verwaltung von Umgebungen mit lokalem Active Directory und Azure Active Directory |[Überlegungen zum Entwurf der Azure AD-Hybrididentität](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md) |
-| Anleitung zur Verwendung der Kennwortsynchronisierung zum Aktivieren von SSO |[Implementieren der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md)<br /><br />[Troubleshoot Password Synchronization (Problembehandlung bei der Kennwortsynchronisierung)](https://support.microsoft.com/en-us/kb/2855271) |
+| Anleitung zur Verwendung der Kennwortsynchronisierung zum Aktivieren von SSO |[Implementieren der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Troubleshoot Password Synchronization (Problembehandlung bei der Kennwortsynchronisierung)](https://support.microsoft.com/en-us/kb/2855271) |
 | Anleitung zur Verwendung des Kennwortrückschreibens zum Aktivieren von SSO |[Erste Schritte mit der Kennwortverwaltung](active-directory-passwords-getting-started.md)<br /><br />[Problembehandlung beim Kennwortrückschreiben](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Anleitung zur Verwendung externer Identitätsanbieter zum Aktivieren von SSO |[Liste der kompatiblen externen Identitätsanbieter zum Aktivieren der einmaligen Anmeldung](https://aka.ms/ssoproviders) |
 | Genießen der Vorteile des einmaligen Anmeldens über Azure AD Join für Windows 10-Benutzer |[Erweitern von Cloudfunktionen auf Windows 10-Geräte über Azure Active Directory Join](active-directory-azureadjoin-overview.md) |

@@ -1,6 +1,6 @@
 ---
-title: "Leistungsüberwachung für Java-Web-Apps in Azure Application Insights | Microsoft-Dokumentation"
-description: "Erweiterte Leistungs- und Nutzungsüberwachung Ihrer Java-Website mit Application Insights."
+title: Leistungsüberwachung für Java-Web-Apps in Azure Application Insights | Microsoft-Dokumentation
+description: Erweiterte Leistungs- und Nutzungsüberwachung Ihrer Java-Website mit Application Insights.
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: ecfcf7a3b3698435f98b74474d0ca7223ab2b46c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b327e7f062cdf3e6b1b34a9540461dcb18caf21c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="monitor-dependencies-exceptions-and-execution-times-in-java-web-apps"></a>Überwachen von Abhängigkeiten, Ausnahmen und Ausführungszeiten in Java-Web-Apps
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Überwachen von Abhängigkeiten, abgefangene Ausnahmen und Methodenausführungszeiten in Java-Web-Apps
 
 
 Wenn Sie [Ihre Java-Web-App mit Application Insights instrumentiert haben][java], können Sie den Java-Agent ohne Codeänderungen verwenden, um detailliertere Informationen zu erhalten:
 
 * **Abhängigkeiten** : Daten über Aufrufe der Anwendung an andere Komponenten, einschließlich:
-  * **REST-Aufrufe** über „HttpClient“, „OkHttp“ und „RestTemplate“ (Spring).
-  * **Redis** -Aufrufe über den Jedis-Client. Wenn der Aufruf länger als zehn Sekunden dauert, ruft der Agent auch die Argumente des Aufrufs ab.
-  * **[JDBC-Aufrufe:](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB oder Apache Derby DB. Aufrufe von "executeBatch" werden unterstützt. Für MySQL und PostgreSQL gilt: Wenn der Aufruf länger als zehn Sekunden dauert, wird der Abfrageplan gemeldet.
-* **Abgefangene Ausnahmen** : Daten zu Ausnahmen, die vom Code verarbeitet werden.
-* **Methodenausführungszeit** : Daten über die Zeit, die zum Ausführen bestimmter Methoden benötigt wird.
+  * **REST-Aufrufe** über „HttpClient“, „OkHttp“ und „RestTemplate“ (Spring) werden erfasst.
+  * **Redis-Aufrufe** über den Jedis-Client werden erfasst.
+  * **[JDBC-Aufrufe:](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** MySQL-, SQL Server- and Oracle DB-Befehle werden automatisch erfasst. Für MySQL gilt: Wenn der Aufruf länger als zehn Sekunden dauert, wird der Abfrageplan gemeldet.
+* **Abgefangene Ausnahmen:** Informationen zu Ausnahmen, die von Ihrem Code behandelt werden.
+* **Methodenausführungszeit:** Informationen zur Ausführungsdauer bestimmter Methoden.
 
 Um den Java-Agent zu verwenden, installieren Sie ihn auf Ihrem Server. Ihre Web-Apps müssen mit dem [Application Insights Java SDK][java] instrumentiert werden. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Installieren des Application Insights-Agents für Java
-1. Laden Sie auf dem Computer, auf dem Ihr Java-Server ausgeführt wird, [den Agent herunter](https://aka.ms/aijavasdk).
+1. Laden Sie auf dem Computer, auf dem Ihr Java-Server ausgeführt wird, [den Agent herunter](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Die Version des heruntergeladenen Agents muss der Version der Core- und Webpakete des Application Insights Java SDKs entsprechen.
 2. Bearbeiten Sie das Startskript des Anwendungsservers, und fügen Sie die folgende JVM hinzu:
    
     `javaagent:`*Vollständiger Pfad der JAR-Datei des Agents*

@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Hilfsprogramm für die Anpassung der Seiten-UI | Microsoft Docs"
-description: "Ein Hilfsprogramm, mit dem das Anpassungsfeature für die Seiten-UI in Azure Active Directory B2C veranschaulicht werden kann"
+title: 'Azure Active Directory B2C: Hilfsprogramm für die Anpassung der Seiten-UI | Microsoft Docs'
+description: Ein Hilfsprogramm, mit dem das Anpassungsfeature für die Seiten-UI in Azure Active Directory B2C veranschaulicht werden kann
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: ae935d52-3520-4a94-b66e-b35bb40e7514
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: swkrish
-ms.openlocfilehash: a9ccdea64213d564b271699afe28f5ae6db0a71a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: f898c626d52b1a4e7df72284190749f4481999ad
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C: Ein Hilfsprogramm, mit dem das Anpassungsfeature für die Seitenbenutzeroberfläche (UI) veranschaulicht werden kann
 Dies ist ein Begleitartikel zum [Hauptartikel zur Anpassung der Benutzeroberfläche](active-directory-b2c-reference-ui-customization.md) in Azure Active Directory (Azure AD) B2C. In den folgenden Schritten wird beschrieben, wie Sie das Feature zum Anpassen der Seiten-UI verwenden. Zu diesem Zweck haben wir HTML- und CSS-Beispielinhalte bereitgestellt.
@@ -39,7 +36,7 @@ Sie müssen das [Registrieren einer Anwendung](active-directory-b2c-app-registra
 ## <a name="customize-your-policy"></a>Anpassen der Richtlinie
 Um das Aussehen und Verhalten Ihrer Richtlinie anzupassen, müssen Sie zuerst HTML- und CSS-Dateien anhand der speziellen Konventionen von Azure AD B2C erstellen. Anschließend können Sie Ihre statischen Inhalte an einen öffentlich zugänglichen Speicherort hochladen, damit von Azure AD B2C darauf zugegriffen werden kann. Dies kann ein eigener dedizierter Webserver, Azure Blob Storage, Azure Content Delivery Network oder ein anderer Hostinganbieter für statische Ressourcen sein. Die einzigen Voraussetzungen sind, dass Ihre Inhalte per HTTPS zugänglich sind und dass darauf per CORS zugegriffen werden kann. Nachdem Sie Ihre statischen Inhalte im Web verfügbar gemacht haben, können Sie die Richtlinie so ändern, dass sie auf diesen Speicherort verweist. Anschließend können Sie die Inhalte für Ihre Kunden bereitstellen. Im [Hauptartikel zur Anpassung der Benutzeroberfläche](active-directory-b2c-reference-ui-customization.md) wird ausführlich beschrieben, wie das Azure AD B2C-Feature für die Anpassung funktioniert.
 
-Für dieses Lernprogramm haben wir bereits einige Beispielinhalte erstellt und auf einem Azure-BLOB-Speicher gehostet. Die Beispielinhalte umfassen eine sehr einfache Anpassung des Designs unseres fiktiven Unternehmens „Wingtip Toys“. Gehen Sie folgendermaßen vor, um dies für Ihre eigene Richtlinie auszuprobieren:
+Für dieses Tutorial haben wir bereits einige Beispielinhalte erstellt und in Azure Blob Storage gehostet. Die Beispielinhalte umfassen eine sehr einfache Anpassung des Designs unseres fiktiven Unternehmens „Wingtip Toys“. Gehen Sie folgendermaßen vor, um dies für Ihre eigene Richtlinie auszuprobieren:
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) bei Ihrem Mandanten an, und navigieren Sie zum Blatt mit den B2C-Funktionen.
 2. Klicken Sie auf **Registrierungs- oder Anmelderichtlinien**, und klicken Sie dann auf Ihre Richtlinie (z.B. „b2c\_1\_sign\_up\_sign\_in“).
@@ -52,13 +49,13 @@ Für dieses Lernprogramm haben wir bereits einige Beispielinhalte erstellt und a
 
 Nun können Sie Ihre angepasste Richtlinie ausprobieren. Sie können eine eigene Anwendung oder die Anwendung „Azure AD B2C Playground“ verwenden. Alternativ dazu können Sie aber auch auf dem Blatt für die Richtlinie einfach auf den Befehl **Jetzt ausführen** klicken. Wählen Sie Ihre Anwendung im Dropdownfeld aus, und wählen Sie den entsprechenden Umleitungs-URI. Klicken Sie auf die Schaltfläche **Jetzt ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können die Benutzeroberfläche mit dem neuen Inhalt für die Registrierung bei Ihrer Anwendung verwenden.
 
-## <a name="upload-the-sample-content-to-azure-blob-storage"></a>Hochladen der Beispielinhalte in den Azure-BLOB-Speicher
-Wenn Sie den Azure-BLOB-Speicher zum Hosten Ihrer Beispielinhalte verwenden möchten, können Sie ein eigenes Speicherkonto erstellen und unser B2C-Hilfstool zum Hochladen Ihrer Dateien nutzen.
+## <a name="upload-the-sample-content-to-azure-blob-storage"></a>Hochladen der Beispielinhalte in Azure Blob Storage
+Wenn Sie Azure Blob Storage zum Hosten Ihrer Beispielinhalte verwenden möchten, können Sie ein eigenes Speicherkonto erstellen und unser B2C-Hilfstool zum Hochladen Ihrer Dateien nutzen.
 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie auf **+ Neu** > **Daten und Speicher** > **Speicherkonto**. Sie benötigen ein Azure-Abonnement, um ein Azure-Blobspeicherkonto zu erstellen. Sie können sich auf der [Azure-Website](https://azure.microsoft.com/pricing/free-trial/)für eine kostenlose Testversion registrieren.
-3. Geben Sie einen **Namen** für das Speicherkonto an (z.B. „contoso“), und treffen Sie eine geeignete Auswahl für **Tarif**, **Ressourcengruppe** und **Abonnement**. Stellen Sie sicher, dass die Option **An Startmenü anheften** aktiviert ist. Klicken Sie auf **Erstellen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Klicken Sie auf **+ Neu** > **Daten und Speicher** > **Speicherkonto**. Sie benötigen ein Azure-Abonnement, um ein Azure Blob Storage-Konto zu erstellen. Sie können sich auf der [Azure-Website](https://azure.microsoft.com/pricing/free-trial/)für eine kostenlose Testversion registrieren.
+3. Geben Sie einen **Namen** für das Speicherkonto an (z.B. „contoso“), und treffen Sie eine geeignete Auswahl für **Tarif**, **Ressourcengruppe** und **Abonnement**. Stellen Sie sicher, dass die Option **An Startmenü anheften** aktiviert ist. Klicken Sie auf **Create**.
 4. Wechseln Sie zurück zum Startmenü, und klicken Sie auf das Speicherkonto, das Sie gerade erstellt haben.
 5. Klicken Sie im Abschnitt **Zusammenfassung** auf **Container** und dann auf **+ Hinzufügen**.
 6. Geben Sie einen **Namen** für den Container an (z.B. „b2c“), und wählen Sie als **Zugriffstyp** die Einstellung **Blob** aus. Klicken Sie auf **OK**.
