@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über den Lebenszyklus von Azure Service Fabric Reliable Services | Microsoft-Dokumentation"
+title: Übersicht über den Lebenszyklus von Azure Service Fabric Reliable Services | Microsoft-Dokumentation
 description: Informationen zu den verschiedenen Lebenszyklusereignissen in Service Fabric Reliable Services
 services: Service-Fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
 editor: vturecek;
-ms.assetid: 
+ms.assetid: ''
 ms.service: Service-Fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ebfe23ea1e07e7578e8bd352a482ecb1016829de
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9cb017997c528c987403186097599a721ee591bc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Übersicht über den Lebenszyklus von Reliable Services
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Der Lebenszyklus eines zustandslosen Diensts ist einfach. So sieht die Reihenfol
 2. Gleichzeitig geschehen zwei Dinge:
     - `StatelessService.CreateServiceInstanceListeners()` wird aufgerufen, und alle zurückgegebenen Listener werden geöffnet. `ICommunicationListener.OpenAsync()` wird für jeden Listener aufgerufen.
     - Die Methode `StatelessService.RunAsync()` des Diensts wird aufgerufen.
-3. Die Methode `StatelessService.OnOpenAsync()` des Diensts wird aufgerufen (sofern vorhanden). Dieser Aufruf ist eine ungewöhnliche Außerkraftsetzung, aber verfügbar.
+3. Die Methode `StatelessService.OnOpenAsync()` des Diensts wird aufgerufen (sofern vorhanden). Dieser Aufruf ist eine ungewöhnliche Außerkraftsetzung, aber verfügbar. Erweiterte Serviceinitialisierungsaufgaben können zu diesem Zeitpunkt gestartet werden.
 
 Beachten Sie, dass es keine Reihenfolge zwischen den Aufrufen zum Erstellen und Öffnen der Listener und **RunAsync** gibt. Die Listener können vor dem Start von **RunAsync** geöffnet werden. Sie können **RunAsync** allerdings auch aufrufen, bevor die Kommunikationslistener geöffnet oder überhaupt erstellt wurden. Wenn eine Synchronisierung erforderlich ist, wird diese dem Implementierer als Übung überlassen. Hier sind einige gängige Lösungen:
 
@@ -63,7 +63,7 @@ Beim Herunterfahren eines zustandslosen Diensts wird dasselbe Muster in umgekehr
 1. Gleichzeitig:
     - Alle geöffneten Listener werden geschlossen. `ICommunicationListener.CloseAsync()` wird für jeden Listener aufgerufen.
     - Das an `RunAsync()` übergebene Abbruchtoken wird abgebrochen. Eine Überprüfung der Eigenschaft `IsCancellationRequested` des Abbruchtokens gibt „true“ zurück, und die Methode `ThrowIfCancellationRequested` des Tokens löst eine Ausnahme vom Typ `OperationCanceledException` aus, sofern sie aufgerufen wird.
-2. Nach Abschluss von `CloseAsync()` für die einzelnen Listener und nach Abschluss von `RunAsync()` wird die Methode `StatelessService.OnCloseAsync()` des Diensts aufgerufen (sofern vorhanden). Die Außerkraftsetzung von `StatelessService.OnCloseAsync()` ist nicht üblich.
+2. Nach Abschluss von `CloseAsync()` für die einzelnen Listener und nach Abschluss von `RunAsync()` wird die Methode `StatelessService.OnCloseAsync()` des Diensts aufgerufen (sofern vorhanden).  „OnCloseAsync“ wird aufgerufen, wenn die Instanz des zustandslosen Diensts ordnungsgemäß beendet wird. Dies kann der Fall sein, wenn Code für den Dienst aktualisiert, die Dienstinstanz aufgrund des Lastenausgleichs verschoben oder ein vorübergehender Fehler erkannt wird. Es ist nicht üblich, `StatelessService.OnCloseAsync()` außer Kraft zu setzen. Die Methode kann jedoch verwendet werden, um Ressourcen sicher zu schließen, die Hintergrundverarbeitung anzuhalten, das Speichern des externen Status zu beenden oder bestehende Verbindungen zu deaktivieren.
 3. Nach Abschluss von `StatelessService.OnCloseAsync()` wird das Dienstobjekt zerstört.
 
 ## <a name="stateful-service-startup"></a>Start zustandsbehafteter Dienste
@@ -128,10 +128,10 @@ Die Behandlung von Ausnahmen, die auf die Verwendung von `ReliableCollections` i
   - Ein Dienst kann `RunAsync()` erfolgreich abschließen und dann zurückkehren. Der Abschluss ist keine Fehlerbedingung. Der Abschluss von `RunAsync()` gibt an, dass die Hintergrundaufgaben des Diensts abgeschlossen sind. Bei zustandsbehafteten zuverlässigen Diensten wird `RunAsync()` erneut aufgerufen, wenn das Replikat vom primären Replikat zum sekundären Replikat tiefer gestuft und dann wieder zum primären Replikat höher gestuft wird.
   - Wenn ein Dienst die Ausführung von `RunAsync()` mit einer unerwarteten Ausnahme beendet, liegt ein Fehler vor. Das Dienstobjekt wird heruntergefahren, und ein Integritätsfehler wird gemeldet.
   - Zwar gibt es keine zeitliche Begrenzung für die Rückgabe dieser Methoden, aber Sie verlieren sofort die Möglichkeit zum Schreiben in zuverlässige Sammlungen und können daher Ihre eigentlichen Arbeiten nicht abschließen. Es wird empfohlen, dass Sie sie so schnell wie möglich nach dem Empfang der Abbruchanforderung zurückgeben. Wenn der Dienst nicht in einem angemessenen Zeitraum auf diese API-Aufrufe reagiert, kann Service Fabric das Beenden des Diensts erzwingen. Dies geschieht normalerweise nur während Anwendungsupgrades oder beim Löschen eines Diensts. Das Timeout beträgt standardmäßig 15 Minuten.
-  - Fehler im `OnCloseAsync()`-Pfad führen zu einem Aufruf von `OnAbort()`. So erhält der Dienst eine letzte Gelegenheit zum Bereinigen und Freigeben aller beanspruchten Ressourcen.
+  - Fehler im `OnCloseAsync()`-Pfad führen zu einem Aufruf von `OnAbort()`. So erhält der Dienst eine letzte Gelegenheit zum Bereinigen und Freigeben aller beanspruchten Ressourcen. Diese Methode wird im Allgemeinen verwendet, wenn auf dem Knoten ein dauerhafter Fehler erkannt wird oder Service Fabric den Lebenszyklus der Dienstinstanz aufgrund von internen Fehlern nicht zuverlässig verwalten kann.
+  - `OnChangeRoleAsync()` wird immer dann aufgerufen, wenn das Replikat des zustandsbehafteten Diensts die Rolle wechselt und beispielsweise ein primäres oder sekundäres Replikat wird. Primäre Replikate erhalten Schreibstatus (mit Erlaubnis zum Erstellen und Schreiben in Reliable Collections). Sekundäre Replikate erhalten Lesestatus (können nur aus vorhandenen Reliable Collections lesen). Die meisten Aufgaben in einem zustandsbehafteten Dienst werden im primären Replikat ausgeführt. Sekundäre Replikate können schreibgeschützte Überprüfungen durchführen, Berichte generieren und Data Mining oder andere schreibgeschützte Aufträge ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einführung in Reliable Services](service-fabric-reliable-services-introduction.md)
 - [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
-- [Erweiterte Verwendung von Reliable Services](service-fabric-reliable-services-advanced-usage.md)
 - [Replikate und Instanzen](service-fabric-concepts-replica-lifecycle.md)

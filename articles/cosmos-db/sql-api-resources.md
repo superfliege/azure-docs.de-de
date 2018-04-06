@@ -1,9 +1,9 @@
 ---
 title: Ressourcenmodell und Konzepte von Azure Cosmos DB | Microsoft-Dokumentation
-description: "Erfahren Sie mehr zum hierarchischen Modell von Azure Cosmos DB für Datenbanken, Sammlungen, benutzerdefinierte Funktion, Dokumente, Berechtigungen zum Verwalten von Ressourcen und mehr."
+description: Erfahren Sie mehr zum hierarchischen Modell von Azure Cosmos DB für Datenbanken, Sammlungen, benutzerdefinierte Funktion, Dokumente, Berechtigungen zum Verwalten von Ressourcen und mehr.
 keywords: Hierarchisches Modell, CosmosDB, Azure, Microsoft Azure
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: rafats
 manager: jhubbard
 ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
@@ -12,18 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a88f17a658987e1ff3ae0e0f38d6551c3acee1da
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: f64d79cd3929a279c7e279e74b0b21d163c0fa45
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Hierarchisches Azure Cosmos DB-Ressourcenmodell und zentrale Konzepte
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Die in Azure Cosmos DB verwalteten Datenbankentitäten werden als **Ressourcen** bezeichnet. Jede Ressource wird durch einen logischen URI eindeutig identifiziert. Sie können über standardmäßige HTTP-Verben, Anforderungs-/Antwortheader und Statuscodes mit den Ressourcen interagieren. 
 
@@ -34,6 +32,12 @@ In diesem Artikel werden die folgenden Fragen beantwortet:
 * Wie adressiere ich eine Ressource?
 * Wie arbeite ich mit Sammlungen?
 * Wie arbeite ich mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen?
+
+Im folgenden Video erläutert Azure Cosmos DB-Programmleiter Andrew Liu das Azure Cosmos DB-Ressourcenmodell. 
+
+> [!VIDEO https://www.youtube.com/embed/luWFgTP0IL4]
+>
+>
 
 ## <a name="hierarchical-resource-model"></a>Hierarchisches Ressourcenmodell
 Wie die folgende Abbildung veranschaulicht, besteht das hierarchische **Ressourcenmodell** von Azure Cosmos DB aus Gruppen von Ressourcen, die unter einem Datenbankkonto angeordnet sind und jeweils über einen logischen und beständigen URI adressiert werden können. Eine Ressourcengruppe wird in diesem Dokument als **Feed** bezeichnet. 
@@ -132,7 +136,7 @@ Die REST-APIs unterstützen die Adressierung von Ressourcen und das Weiterleiten
 ## <a name="database-accounts"></a>Datenbankkonten
 Sie können mithilfe Ihres Azure-Abonnements ein oder mehrere Cosmos DB-Datenbankkonten bereitstellen.
 
-Im Azure-Portal unter können Sie unter [http://portal.azure.com/](https://portal.azure.com/) Cosmos DB-Datenbankkonten erstellen und verwalten. Das Erstellen und Verwalten eines Datenbankkontos erfordert Administratorzugriff und kann nur unter Ihrem Azure-Abonnement ausgeführt werden. 
+Im Azure-Portal unter [http://portal.azure.com/](https://portal.azure.com/) können Sie Cosmos DB-Datenbankkonten erstellen und verwalten. Das Erstellen und Verwalten eines Datenbankkontos erfordert Administratorzugriff und kann nur unter Ihrem Azure-Abonnement ausgeführt werden. 
 
 ### <a name="database-account-properties"></a>Eigenschaften von Datenbankkonten
 Sie können die folgenden Eigenschaften im Rahmen der Bereitstellung und Verwaltung eines Datenbankkontos konfigurieren und lesen:  
@@ -200,7 +204,7 @@ Die Dokumente in einer Sammlung können beliebige Schemas aufweisen, und Sie kö
 2. Eine Teilmenge von relationalen Vorgängen, einschließlich der Kompositionen, Filter, Projektionen, Aggregaten und Selbstverknüpfungen. 
 3. Rein auf JavaScript basierende UDFs, die mit (1) und (2) funktionieren.  
 
-Das Abfragemodell von Azure Cosmos DB zielt darauf ab, ein ausgewogenes Verhältnis zwischen Funktionalität, Effizienz und Einfachheit zu schaffen. Das Datenbankmodul von Azure Cosmos DB kompiliert nativ die SQL-Abfrageanweisungen und führt sie aus. Sie können eine Sammlung mithilfe der [REST-APIs](/rest/api/documentdb/) oder eines der [Client-SDKs](sql-api-sdk-dotnet.md) abfragen. Das .NET-SDK verfügt über einen LINQ-Anbieter.
+Das Abfragemodell von Azure Cosmos DB zielt darauf ab, ein ausgewogenes Verhältnis zwischen Funktionalität, Effizienz und Einfachheit zu schaffen. Die Datenbank-Engine von Azure Cosmos DB kompiliert nativ die SQL-Abfrageanweisungen und führt sie aus. Sie können eine Sammlung mithilfe der [REST-APIs](/rest/api/documentdb/) oder eines der [Client-SDKs](sql-api-sdk-dotnet.md) abfragen. Das .NET-SDK verfügt über einen LINQ-Anbieter.
 
 > [!TIP]
 > Im [Query Playground](https://www.documentdb.com/sql/demo) können Sie die SQL-API testen und SQL-Abfragen für unser Dataset ausführen.
@@ -213,14 +217,14 @@ Datenbanktransaktionen bieten ein sicheres und berechenbares Programmiermodell z
 * Die (nicht transaktionale) Anwendungsprogrammiersprache (z. B. JavaScript, Python, C#, Java usw.)
 * T-SQL, die transaktionale Programmiersprache, die intern von der Datenbank ausgeführt wird
 
-Aufgrund seiner direkt im Datenbankmodul verankerten starken Bindung an JavaScript und JSON bietet Azure Cosmos DB ein intuitives Programmiermodell zur Ausführung von JavaScript-basierter Anwendungslogik, die über gespeicherte Prozeduren und Trigger direkt in den Sammlungen erfolgt. Dies ermöglicht Folgendes:
+Aufgrund seiner direkt in der Datenbank-Engine verankerten starken Bindung an JavaScript und JSON bietet Azure Cosmos DB ein intuitives Programmiermodell zur Ausführung von JavaScript-basierter Anwendungslogik, die über gespeicherte Prozeduren und Trigger direkt in den Sammlungen erfolgt. Dies ermöglicht Folgendes:
 
-* Effiziente Implementierung der Nebenläufigkeitssteuerung, Wiederherstellung und automatischen Indizierung der JSON-Objektdiagramme direkt im Datenbankmodul
+* Effiziente Implementierung der Nebenläufigkeitssteuerung, Wiederherstellung und automatischen Indizierung der JSON-Objektdiagramme direkt in der Datenbank-Engine
 * Natürliches Ausdrücken des Steuerungsablaufs, der Festlegung von Variablen, der Zuweisung und der Integration von Grundtypen zur Ausnahmeverarbeitung direkt mit Datenbanktransaktionen (im Sinne der JavaScript-Programmiersprache)
 
 Die auf Sammlungsebene registrierte JavaScript-Logik kann dann Datenbankvorgänge für die Dokumente der angegebenen Sammlung auslösen. Die auf JavaScript basierten gespeicherten Prozeduren und Trigger von Azure Cosmos DB werden implizit in eine umgebende ACID-Transaktion eingefasst, die die Momentaufnahmeisolation zwischen den Dokumenten in einer Sammlung einbezieht. Während des Ausführungsverlaufs wird die gesamte Transaktion abgebrochen, wenn JavaScript eine Ausnahme auslöst. Das sich ergebende Programmiermodell ist sehr einfach, aber dennoch leistungsstark. JavaScript-Entwickler erhalten ein "beständiges" Programmiermodell, während sie weiterhin ihre vertrauten Sprachkonstruktr und Bibliotheksstammfunktionen verwenden können.   
 
-Die Möglichkeit zur direkten Ausführung von JavaScript innerhalb des Datenbankmoduls im gleichen Adressraum wie der Pufferpool gestattet die leistungsfähige und transaktionale Ausführung von Datenbankvorgängen für die Dokumente einer Sammlung. Des Weiteren werden alle Impedanzabweichungen zwischen den Typsystemen von Anwendung und Datenbank aufgrund der starken Bindung des Cosmos DB-Datenbankmoduls an JSON und JavaScript beseitigt.   
+Die Möglichkeit zur direkten Ausführung von JavaScript innerhalb der Datenbank-Engine im gleichen Adressraum wie der Pufferpool gestattet die leistungsfähige und transaktionale Ausführung von Datenbankvorgängen für die Dokumente einer Sammlung. Des Weiteren werden alle Impedanzabweichungen zwischen den Typsystemen von Anwendung und Datenbank aufgrund der starken Bindung der Cosmos DB-Datenbank-Engine an JSON und JavaScript beseitigt.   
 
 Nach der Erstellung einer Sammlung können Sie gespeicherte Prozeduren, Trigger und UDFs für eine Sammlung registrieren. Verwenden Sie dazu die [REST-APIs](/rest/api/documentdb/) oder eines der [Client-SDKs](sql-api-sdk-dotnet.md). Im Anschluss an die Registrierung können Sie sie referenzieren und ausführen. Betrachten Sie die folgende gespeicherte Prozedur, die vollständig in JavaScript geschrieben ist. Der folgende Code verwendet zwei Argumente (Buchtitel und Autorenname), erstellt ein neues Dokument, führt Abfragen für ein Dokument aus, um dieses dann zu aktualisieren – alles innerhalb einer impliziten ACID-Transaktion. Die gesamte Transaktion wird an einem beliebigen Punkt der Ausführung abgebrochen, wenn eine JavaScript-Ausnahme ausgelöst wird.
 
@@ -278,7 +282,7 @@ Gespeicherte Prozeduren und Trigger interagieren über ein klar definiertes Obje
 Sammlungen können in der SQL-API mithilfe der [REST-APIs](/rest/api/documentdb/) oder eines der [Client-SDKs](sql-api-sdk-dotnet.md) problemlos erstellt, gelöscht, gelesen oder aufgezählt werden. Die SQL-API bietet für das Lesen oder Abfragen der Metadaten einer Sammlung immer eine hohe Konsistenz. Das Löschen einer Sammlung stellt automatisch sicher, dass Sie nicht auf die darin enthaltenen Dokumente, Anhänge, gespeicherten Prozeduren, Trigger und benutzerdefinierten Funktionen zugreifen können.   
 
 ## <a name="stored-procedures-triggers-and-user-defined-functions-udf"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
-Wie im vorigen Abschnitt beschrieben, können Sie eine Anwendungslogik erstellen, die direkt innerhalb einer Transaktion im Datenbankmodul ausgeführt wird. Die Anwendungslogik kann vollständig in JavaScript geschrieben und als gespeicherte Prozedur, Trigger oder benutzerdefinierte Funktion (UDF) gestaltet werden. Der JavaScript-Code innerhalb einer gespeicherten Prozedur oder eines Triggers kann Dokumente in eine Sammlung einfügen, sie dort ersetzen, löschen, lesen oder abfragen. Auf der anderen Seite kann der JavaScript-Code in einer UDF keine Dokumente einfügen, ersetzen oder löschen. UDFs listen die Dokumente des Resultsets einer Abfrage auf und erzeugen ein anderes Resultset. Für die Mehrinstanzenfähigkeit erzwingt Azure Cosmos DB eine strikte, auf Reservierung basierende Ressourcenkontrolle. Jede gespeicherte Prozedur, jeder Trigger oder jede benutzerdefinierte Funktion erhält für die Erledigung ihrer bzw. seiner Aufgaben einen festgelegten Anteil an den Betriebssystemressourcen. Zudem können gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen (UDFs) keine Verknüpfungen mit externen JavaScript-Bibliotheken herstellen und werden gesperrt, wenn sie den ihnen zugeordnete Ressourcenanteil überschreiten. Sie können gespeicherte Prozeduren, Trigger oder UDFs mithilfe der REST-APIs für eine Sammlung registrieren oder die Registrierung aufheben.  Während der Registrierung werden eine gespeicherte Prozedur, ein Trigger oder eine benutzerdefinierte Funktion vorkompiliert und als Bytecode gespeichert, der später ausgeführt wird. Der folgende Abschnitt veranschaulicht, wie Sie eine gespeicherte Prozedur, einen Trigger und eine UDF mithilfe des Azure Cosmos DB-JavaScript-SDK registrieren und ausführen und die Registrierung wieder aufheben. Das JavaScript-SDK ist ein einfacher Wrapper für die [REST-APIs](/rest/api/documentdb/). 
+Wie im vorigen Abschnitt beschrieben, können Sie eine Anwendungslogik erstellen, die direkt innerhalb einer Transaktion in der Datenbank-Engine ausgeführt wird. Die Anwendungslogik kann vollständig in JavaScript geschrieben und als gespeicherte Prozedur, Trigger oder benutzerdefinierte Funktion (UDF) gestaltet werden. Der JavaScript-Code innerhalb einer gespeicherten Prozedur oder eines Triggers kann Dokumente in eine Sammlung einfügen, sie dort ersetzen, löschen, lesen oder abfragen. Auf der anderen Seite kann der JavaScript-Code in einer UDF keine Dokumente einfügen, ersetzen oder löschen. UDFs listen die Dokumente des Resultsets einer Abfrage auf und erzeugen ein anderes Resultset. Für die Mehrinstanzenfähigkeit erzwingt Azure Cosmos DB eine strikte, auf Reservierung basierende Ressourcenkontrolle. Jede gespeicherte Prozedur, jeder Trigger oder jede benutzerdefinierte Funktion erhält für die Erledigung ihrer bzw. seiner Aufgaben einen festgelegten Anteil an den Betriebssystemressourcen. Zudem können gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen (UDFs) keine Verknüpfungen mit externen JavaScript-Bibliotheken herstellen und werden gesperrt, wenn sie den ihnen zugeordnete Ressourcenanteil überschreiten. Sie können gespeicherte Prozeduren, Trigger oder UDFs mithilfe der REST-APIs für eine Sammlung registrieren oder die Registrierung aufheben.  Während der Registrierung werden eine gespeicherte Prozedur, ein Trigger oder eine benutzerdefinierte Funktion vorkompiliert und als Bytecode gespeichert, der später ausgeführt wird. Der folgende Abschnitt veranschaulicht, wie Sie eine gespeicherte Prozedur, einen Trigger und eine UDF mithilfe des Azure Cosmos DB-JavaScript-SDK registrieren und ausführen und die Registrierung wieder aufheben. Das JavaScript-SDK ist ein einfacher Wrapper für die [REST-APIs](/rest/api/documentdb/). 
 
 ### <a name="registering-a-stored-procedure"></a>Registrieren einer gespeicherten Prozedur
 Die Registrierung einer gespeicherten Prozedur erstellt eine neue gespeicherte Prozedurressource für eine Sammlung über HTTP POST.  

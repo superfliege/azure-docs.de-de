@@ -1,11 +1,11 @@
 ---
 title: Erste Schritte mit Azure AD AngularJS | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie eine einseitige AngularJS-Anwendung erstellt wird, die für die Anmeldung in Azure AD integriert wird und über OAuth per Azure AD geschützte APIs aufruft."
+description: Hier erfahren Sie, wie eine einseitige AngularJS-Anwendung erstellt wird, die für die Anmeldung in Azure AD integriert wird und über OAuth per Azure AD geschützte APIs aufruft.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: jmprieur
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 51734f5b39e9ca8af65048f2a7efd5c61cd53204
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2f78a6b17a512ab54ffab4554ccc0f3f1486f27a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-angularjs-getting-started"></a>Azure AD AngularJS – Erste Schritte
 
@@ -52,13 +52,13 @@ Sie müssen die App zuerst in Ihrem Azure AD-Mandanten registrieren, um damit Be
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue Webanwendung und/oder Web-API.
   * **Name**: Beschreibt die Anwendung für Benutzer.
-  * Der **Umleitungs-URI** gibt den Speicherort an, an dem Azure AD die Token zurückgibt. Der Standardspeicherort für dieses Beispiel lautet `https://localhost:44326/`.
+  * Die **Anmelde-URL** gibt den Speicherort an, an dem Azure AD Token zurückgibt. Der Standardspeicherort für dieses Beispiel lautet `https://localhost:44326/`.
 6. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu.  Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Registerkarte „Anwendung“ kopieren.
 7. Für „adal.js“ wird der implizite OAuth-Fluss genutzt, um mit Azure AD zu kommunizieren. Sie müssen den impliziten Fluss für Ihre Anwendung aktivieren:
   1. Klicken Sie auf die Anwendung, und wählen Sie **Manifest**, um den Inline-Manifest-Editor zu öffnen.
   2. Suchen Sie die `oauth2AllowImplicitFlow`-Eigenschaft. Legen Sie den Wert der Eigenschaft auf `true`fest.
   3. Klicken Sie auf **Speichern**, um das Manifest zu speichern.
-8. Erteilen Sie in Ihrem gesamten Mandanten Berechtigungen für Ihre Anwendung. Wechseln Sie zu **Einstellungen** > **Eigenschaften** > **Erforderliche Berechtigungen**, und klicken Sie auf der oberen Leiste auf die Schaltfläche **Berechtigungen erteilen**. Klicken Sie auf **Ja**, um zu bestätigen.
+8. Erteilen Sie in Ihrem gesamten Mandanten Berechtigungen für Ihre Anwendung. Wechseln Sie zu **Einstellungen** > **Erforderliche Berechtigungen**, und klicken Sie auf der oberen Leiste auf die Schaltfläche **Berechtigungen erteilen**. Klicken Sie auf **Ja**, um zu bestätigen.
 
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Schritt 2: Installieren von ADAL und Konfigurieren der einseitigen Anwendung
 Nachdem Sie nun eine Anwendung in Azure AD erstellt haben, können Sie „adal.js“ installieren und Ihren identitätsbezogenen Code schreiben.
@@ -143,7 +143,7 @@ Die obigen Angaben beschreiben die erforderlichen Mindestvoraussetzungen zum Ers
     ...
     ```
 
-* In manchen Fällen möchten Sie überprüfen, ob der Benutzer angemeldet ist. Sie können auch das `userInfo`-Objekt verwenden, um diese Informationen zu sammeln.  In `index.html` können Sie beispielsweise je nach Authentifizierungsstatus entweder die Schaltfläche **Anmelden** oder **Abmelden** anzeigen:
+* In manchen Fällen möchten Sie überprüfen, ob der Benutzer angemeldet ist. Sie können auch das `userInfo` -Objekt verwenden, um diese Informationen zu sammeln.  In `index.html` können Sie beispielsweise je nach Authentifizierungsstatus entweder die Schaltfläche **Anmelden** oder **Abmelden** anzeigen:
 
     ```js
     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>

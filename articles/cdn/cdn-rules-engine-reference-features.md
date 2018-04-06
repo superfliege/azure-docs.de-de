@@ -1,11 +1,11 @@
 ---
 title: Features der Azure CDN-Regel-Engine | Microsoft-Dokumentation
-description: "Referenzdokumentation zu den Übereinstimmungsbedingungen und Features der Azure CDN-Regel-Engine."
+description: Referenzdokumentation zu den Übereinstimmungsbedingungen und Features der Azure CDN-Regel-Engine.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 949b957716af2d7dfd704b4fca48afb78d0fed1e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9f1a9343a657e076e94f6aa59fd03128ef488ac9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Features der Azure CDN-Regel-Engine
 Dieser Artikel bietet ausführliche Beschreibungen der verfügbaren Features für das Azure CDN-[Regelmodul](cdn-rules-engine.md) (Content Delivery Network).
@@ -46,32 +46,32 @@ Diese Features dienen zum Anpassen des Zeitpunkts und der Art der Zwischenspeich
 NAME | Zweck
 -----|--------
 [Bandwidth Parameters](#bandwidth-parameters) | Bestimmt, ob Parameter zur Bandbreitenbeschränkung (beispielsweise „ec_rate“ und „ec_prebuf“) aktiv sind.
-[Bandwidth Throttling](#bandwidth-throttling) | Schränkt die Bandbreite für die Antwort ein, die von den Edgeservern bereitgestellt wird.
+[Bandwidth Throttling](#bandwidth-throttling) | Drosselt die Bandbreite für die Antwort, die vom POP (Point of Presence) bereitgestellt wird.
 [Bypass Cache](#bypass-cache) | Bestimmt, ob die Anforderung das Zwischenspeichern umgehen soll.
-[Cache-Control Header Treatment](#cache-control-header-treatment) | Steuert die Generierung von `Cache-Control`-Headern durch den Edgeserver, wenn das Feature „External Max-Age“ aktiv ist.
+[Cache-Control Header Treatment](#cache-control-header-treatment) | Steuert die Generierung von `Cache-Control`-Headern durch den POP, wenn das Feature „External Max-Age“ aktiv ist.
 [Cache-Key Query String](#cache-key-query-string) | Bestimmt, ob der Cacheschlüssel Abfragezeichenfolgenparameter, die einer Anforderung zugeordnet sind, ein- oder ausschließt.
 [Cache-Key Rewrite](#cache-key-rewrite) | Schreibt den einer Anforderung zugeordneten Cacheschlüssel neu.
-[Complete Cache Fill](#complete-cache-fill) | Bestimmt, was passiert, wenn eine Anforderung in einem teilweisen Cachefehler auf einem Edgeserver resultiert.
+[Complete Cache Fill](#complete-cache-fill) | Bestimmt, was passiert, wenn eine Anforderung in einem teilweisen Cachefehler auf einem POP resultiert.
 [Compress File Types](#compress-file-types) | Definiert die Dateiformate für die Dateien, die auf dem Server komprimiert werden.
-[Default Internal Max-Age](#default-internal-max-age) | Bestimmt das Standardintervall für maximales Alter für die erneute Überprüfung des Caches von Edge- und Ursprungsserver.
-[Expires Header Treatment](#expires-header-treatment) | Steuert die Generierung von `Expires`-Headern durch einen Edgeserver, wenn das Feature „External Max-Age“ aktiv ist.
-[External Max-Age](#external-max-age) | Bestimmt das „max-age“-Intervall für die erneute Überprüfung des Caches von Browser und Edgeserver.
-[Force Internal Max-Age](#force-internal-max-age) | Bestimmt das „max-age“-Intervall für die erneute Überprüfung des Caches von Edge- und Ursprungsserver.
+[Default Internal Max-Age](#default-internal-max-age) | Bestimmt das max-age-Standardintervall für die erneute Überprüfung des Caches von POP und Ursprungsserver.
+[Expires Header Treatment](#expires-header-treatment) | Steuert die Generierung von `Expires`-Headern durch einen POP, wenn das Feature „External Max-Age“ aktiv ist.
+[External Max-Age](#external-max-age) | Bestimmt das max-age-Intervall für die erneute Überprüfung des Caches von Browser und POP.
+[Force Internal Max-Age](#force-internal-max-age) | Bestimmt das max-age-Intervall für die erneute Überprüfung des Caches von POP und Ursprungsserver.
 [H.264 Support (HTTP Progressive Download)](#h264-support-http-progressive-download) | Bestimmt die Typen von H.264-Dateiformaten, die zum Streamen von Inhalten verwendet werden können.
 [Honor No-Cache Request](#honor-no-cache-request) | Bestimmt, ob „no-cache“-Anforderungen eines HTTP-Clients an den Ursprungsserver weitergeleitet werden.
 [Ignore Origin No-Cache](#ignore-origin-no-cache) | Bestimmt, ob das CDN bestimmte Direktiven ignoriert, die von einem Ursprungsserver bereitgestellt werden.
 [Ignore Unsatisfiable Ranges](#ignore-unsatisfiable-ranges) | Bestimmt die Antwort, die an Clients zurückgegeben wird, wenn eine Anforderung den Statuscode „416: Angeforderter Bereich nicht erfüllbar“ generiert.
-[Internal Max-Stale](#internal-max-stale) | Steuert, wie lange nach Überschreiten der normalen Ablaufzeit ein Cacheobjekt von einem Edgeserver bereitgestellt werden kann, wenn der Edgeserver das Cacheobjekt nicht im Abgleich mit dem Ursprungsserver erneut überprüfen kann.
+[Internal Max-Stale](#internal-max-stale) | Steuert, wie lange nach Überschreiten der normalen Ablaufzeit ein zwischengespeichertes Asset von einem POP bereitgestellt werden kann, wenn der POP das zwischengespeicherte Asset nicht im Abgleich mit dem Ursprungsserver erneut überprüfen kann.
 [Partial Cache Sharing](#partial-cache-sharing) | Bestimmt, ob eine Anforderung teilweise zwischengespeicherte Inhalte erstellen kann.
 [Prevalidate Cached Content](#prevalidate-cached-content) | Bestimmt, ob zwischengespeicherte Inhalte für eine frühzeitige erneute Überprüfung in Frage kommen, ehe ihre Gültigkeitsdauer abläuft.
-[Refresh Zero-Byte Cache Files](#refresh-zero-byte-cache-files) | Bestimmt, wie eine Anforderung eines HTTP-Clients eines Cacheobjekts mit 0 Byte von den Edgeservern verarbeitet wird.
+[Refresh Zero-Byte Cache Files](#refresh-zero-byte-cache-files) | Bestimmt, wie eine Anforderung eines HTTP-Clients eines Cacheassets mit 0 Byte von den POPs verarbeitet wird.
 [Set Cacheable Status Codes](#set-cacheable-status-codes) | Definiert die Gruppe von Statuscodes, die in zwischengespeicherten Inhalten resultieren können.
 [Stale Content Delivery on Error](#stale-content-delivery-on-error) | Bestimmt, ob abgelaufene zwischengespeicherte Inhalte übermittelt werden, wenn während der erneuten Überprüfung des Caches ein Fehler auftritt oder der angeforderte Inhalt vom Kundenursprungsserver abgerufen wird.
-[Stale While Revalidate](#stale-while-revalidate) | Verbessert die Leistung, indem den Edgeservern erlaubt wird, dem Anfordernden einen veralteten Client bereitzustellen, während die erneute Überprüfung erfolgt.
+[Stale While Revalidate](#stale-while-revalidate) | Verbessert die Leistung, indem den POPs erlaubt wird, dem Anfordernden einen veralteten Client bereitzustellen, während die erneute Überprüfung erfolgt.
 
 ## <a name="comment-feature"></a>Kommentarfeatures
 
-Diese Funktion dient zum Bereitstellen zusätzlicher Informationen innerhalb einer Regel.
+Dieses Feature dient zum Bereitstellen zusätzlicher Informationen innerhalb einer Regel.
 
 NAME | Zweck
 -----|--------
@@ -110,7 +110,7 @@ Name | Purpose
 Edge Optimizer | Determines whether Edge Optimizer can be applied to a request.
 Edge Optimizer – Instantiate Configuration | Instantiates or activates the Edge Optimizer configuration associated with a site.
 
-###Edge Optimizer
+### Edge Optimizer
 **Purpose:** Determines whether Edge Optimizer can be applied to a request.
 
 If this feature has been enabled, then the following criteria must also be met before the request will be processed by Edge Optimizer:
@@ -128,7 +128,7 @@ Disabled|Restores the default behavior. The default behavior is to deliver conte
 **Default Behavior:** Disabled
  
 
-###Edge Optimizer - Instantiate Configuration
+### Edge Optimizer - Instantiate Configuration
 **Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
 
 This feature requires the ADN platform and the Edge Optimizer feature.
@@ -146,12 +146,12 @@ If the desired site does not appear in the list, then you should edit its config
 
 ## <a name="origin-features"></a>Ursprungsfeatures
 
-Diese Funktionen dienen zum Steuern, wie das CDN mit einem Ursprungsserver kommuniziert.
+Diese Features dienen zum Steuern, wie das CDN mit einem Ursprungsserver kommuniziert.
 
 NAME | Zweck
 -----|--------
 [Maximum Keep-Alive Requests](#maximum-keep-alive-requests) | Definiert die maximale Anzahl von Anforderungen für eine „Keep Alive“-Verbindung, bevor diese geschlossen wird.
-[Proxy Special Headers](#proxy-special-headers) | Definiert die CDN-spezifischen Anforderungsheader, die von einem Edgeserver an einen Ursprungsserver weitergeleitet werden.
+[Proxy Special Headers](#proxy-special-headers) | Definiert die CDN-spezifischen Anforderungsheader, die von einem POP an einen Ursprungsserver weitergeleitet werden.
 
 
 ## <a name="specialty-features"></a>Spezielle Features
@@ -201,8 +201,8 @@ Parameter zur Bandbreiteneinschränkung legen fest, ob die Datenübertragungsrat
 
 Wert|Ergebnis
 --|--
-Aktiviert|Erlaubt den Edgeservern, die Anforderungen der Bandbreitendrosselung zu berücksichtigen.
-Deaktiviert|Veranlasst die Edgeserver, Parameter zur Bandbreitendrosselung zu ignorieren. Der angeforderte Inhalt wird normal (also ohne Bandbreiteneinschränkung) verarbeitet.
+Aktiviert|Erlaubt den POPs, die Anforderungen der Bandbreitendrosselung zu berücksichtigen.
+Deaktiviert|Veranlasst die POPs, Parameter zur Bandbreitendrosselung zu ignorieren. Der angeforderte Inhalt wird normal (also ohne Bandbreiteneinschränkung) verarbeitet.
 
 **Standardverhalten:** Aktiviert.
  
@@ -212,14 +212,14 @@ Deaktiviert|Veranlasst die Edgeserver, Parameter zur Bandbreitendrosselung zu ig
 
 ---
 ### <a name="bandwidth-throttling"></a>Bandwidth Throttling
-**Zweck:** Drosselt die Bandbreite für die Antwort, die von den Edgeservern bereitgestellt wird.
+**Zweck:** Drosselt die Bandbreite für die Antwort, die von den POPs bereitgestellt wird.
 
 Beide der folgenden Optionen müssen definiert werden, um die Bandbreitendrosselung ordnungsgemäß einzurichten.
 
 Option|BESCHREIBUNG
 --|--
 Kbytes per second|Legen Sie diese Option auf die maximale Bandbreite (KB pro Sekunde) fest, die zum Übermitteln der Antwort verwendet werden kann.
-Prebuf seconds|Legen Sie diese Option auf die Anzahl von Sekunden fest, die die Edgeserver warten sollen, bis die Bandbreite gedrosselt wird. Der Zweck dieses Zeitraums mit uneingeschränkter Bandbreite besteht darin zu verhindern, dass bei einem Media Player aufgrund der Bandbreitendrosselung die Wiedergabe stottert oder Pufferprobleme auftreten.
+Prebuf seconds|Legen Sie diese Option auf die Anzahl von Sekunden fest, die die POPs warten sollen, bis die Bandbreite gedrosselt wird. Der Zweck dieses Zeitraums mit uneingeschränkter Bandbreite besteht darin zu verhindern, dass bei einem Media Player aufgrund der Bandbreitendrosselung die Wiedergabe stottert oder Pufferprobleme auftreten.
 
 **Standardverhalten:** Deaktiviert.
 
@@ -233,8 +233,8 @@ Prebuf seconds|Legen Sie diese Option auf die Anzahl von Sekunden fest, die die 
 
 Wert|Ergebnis
 --|--
-Aktiviert|Hiermit gehen alle Anforderungen auch dann an den Ursprungsserver, wenn der Inhalt vorher auf Edgeservern zwischengespeichert wurde.
-Deaktiviert|Hiermit werden Assets entsprechend der in den Antwortheadern definierten Cacherichtlinie von den Edgeservern zwischengespeichert.
+Aktiviert|Hiermit gehen alle Anforderungen auch dann an den Ursprungsserver, wenn der Inhalt vorher auf POPs zwischengespeichert wurde.
+Deaktiviert|Hiermit werden Assets entsprechend der in den Antwortheadern definierten Cacherichtlinie von den POPs zwischengespeichert.
 
 **Standardverhalten:**
 
@@ -289,7 +289,7 @@ Wichtige Informationen:
 
 ---
 ### <a name="cache-control-header-treatment"></a>Cache-Control Header Treatment
-**Zweck:** Steuert die Generierung von `Cache-Control`-Headern durch den Edgeserver, wenn das Feature „External Max-Age“ aktiv ist.
+**Zweck:** Steuert die Generierung von `Cache-Control`-Headern durch den POP, wenn das Feature „External Max-Age“ aktiv ist.
 
 Die einfachste Möglichkeit zum Erreichen dieser Art der Konfiguration besteht darin, die Features „External Max-Age“ und „Cache-Control Header Treatment“ in derselben Anweisung zu verwenden.
 
@@ -415,9 +415,9 @@ Wichtige Informationen:
 
 ---
 ### <a name="complete-cache-fill"></a>Complete Cache Fill
-**Zweck:** Legt fest, was passiert, wenn eine Anforderung zu einem Teilcachefehler auf einem Edgeserver führt.
+**Zweck:** Bestimmt, was passiert, wenn eine Anforderung in einem teilweisen Cachefehler auf einem POP resultiert.
 
-Ein Teilcachefehler beschreibt den Cachestatus für ein Asset, das nicht vollständig auf einen Edgeserver heruntergeladen wurde. Wenn ein Asset nur teilweise auf einem Edgeserver zwischengespeichert wird, wird die nächste Anforderung für dieses Asset wieder an den Ursprungsserver weitergeleitet.
+Ein Teilcachefehler beschreibt den Cachestatus für ein Asset, das nicht vollständig auf einen POP heruntergeladen wurde. Wenn ein Asset nur teilweise auf einem POP zwischengespeichert wird, wird die nächste Anforderung für dieses Asset wieder an den Ursprungsserver weitergeleitet.
 <!---
 This feature is not available for the ADN platform. The typical traffic on this platform consists of relatively small assets. The size of the assets served through these platforms helps mitigate the effects of partial cache misses, since the next request will typically result in the asset being cached on that POP.
 
@@ -430,8 +430,8 @@ Aufgrund der Art und Weise, in der Cacheeinstellungen nachverfolgt werden, kann 
 
 Wert|Ergebnis
 --|--
-Aktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird der Edgeserver gezwungen, einen Hintergrundabruf des Assets vom Ursprungsserver zu initiieren. Anschließend befindet sich das Asset im lokalen Cache des Edgeservers.
-Deaktiviert|Verhindert, dass ein Edgeserver einen Hintergrundabruf des Assets ausführt. Das Ergebnis: Die nächste Anforderung für das Objekt aus der betreffenden Region führt dazu, dass ein Edgeserver es vom Kundenursprungsserver anfordert.
+Aktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird der POP gezwungen, einen Hintergrundabruf des Assets vom Ursprungsserver zu initiieren. Anschließend befindet sich das Asset im lokalen Cache des POP.
+Deaktiviert|Verhindert, dass ein POP einen Hintergrundabruf des Assets ausführt. Das Ergebnis: Die nächste Anforderung für das Asset aus der betreffenden Region führt dazu, dass ein POP es vom Kundenursprungsserver anfordert.
 
 **Standardverhalten:** Aktiviert.
 
@@ -523,14 +523,14 @@ Deaktiviert|Der „X-EC-Debug Response Header“ wird aus der Antwort ausgeschlo
 
 ---
 ### <a name="default-internal-max-age"></a>Default Internal Max-Age
-**Zweck:** Legt das Standardintervall für max-age für eine erneute Cacheüberprüfung vom Edgeserver zum Ursprungsserver fest. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein Edgeserver prüft, ob ein zwischengespeichertes Asset mit dem auf dem Ursprungsserver gespeicherten Asset übereinstimmt.
+**Zweck:** Bestimmt das max-age-Standardintervall für die erneute Überprüfung des Caches von POP und Ursprungsserver. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein POP prüft, ob ein zwischengespeichertes Asset mit dem auf dem Ursprungsserver gespeicherten Asset übereinstimmt.
 
 Wichtige Informationen:
 
 - Diese Aktion findet nur für Antworten von einem Ursprungsserver statt, der im `Cache-Control`- oder `Expires`-Header keinen max-age-Hinweis zugewiesen hat.
 - Diese Aktion findet nicht für Medienobjekte statt, die als nicht zwischenspeicherbar eingestuft werden.
-- Diese Aktion wirkt sich nicht auf erneute Cacheüberprüfungen vom Browser zum Edgeservercache aus. Diese Arten von erneuten Überprüfungen werden durch den an den Browser gesendeten `Cache-Control`- oder `Expires`-Header festgelegt, der mit dem Feature „External Max-Age“ angepasst werden kann.
-- Die Ergebnisse dieser Aktion haben keine erkennbaren Auswirkungen auf die Antwortheader und den von Edgeservern für Ihren Inhalt zurückgegebenen Inhalt. Sie können sich jedoch möglicherweise auf die Menge an Datenverkehr für die erneute Überprüfung auswirken, der von den Edgeservern an Ihren Ursprungsserver gesendet wird.
+- Diese Aktion wirkt sich nicht auf erneute Cacheüberprüfungen vom Browser zum POP aus. Diese Arten von erneuten Überprüfungen werden durch den an den Browser gesendeten `Cache-Control`- oder `Expires`-Header festgelegt, der mit dem Feature „External Max-Age“ angepasst werden kann.
+- Die Ergebnisse dieser Aktion haben keine erkennbaren Auswirkungen auf die Antwortheader und den von POPs für Ihren Inhalt zurückgegebenen Inhalt. Sie können sich jedoch möglicherweise auf die Menge an Datenverkehr für die erneute Überprüfung auswirken, der von den POPs an Ihren Ursprungsserver gesendet wird.
 - Konfigurieren Sie dieses Feature folgendermaßen:
     - Wählen Sie den Statuscode aus, für den ein interner Standardwert für max-age angewendet werden kann.
     - Geben Sie einen ganzzahligen Wert an, und wählen Sie dann die gewünschte Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden). Dieser Wert definiert das interne Standardintervall für max-age.
@@ -571,7 +571,7 @@ Deaktiviert| Stellt das Standardverhalten wieder her. Standardmäßig wird dem U
 
 ---
 ### <a name="expires-header-treatment"></a>Expires Header Treatment
-**Zweck:** Steuert die Generierung von `Expires`-Headern durch einen Edgeserver, wenn das Feature „External Max-Age“ aktiv ist.
+**Zweck:** Steuert die Generierung von `Expires`-Headern durch einen POP, wenn das Feature „External Max-Age“ aktiv ist.
 
 Die einfachste Möglichkeit zum Erreichen dieser Art der Konfiguration besteht darin, die Features „External Max-Age“ und „Expires Header Treatment“ in derselben Anweisung zu verwenden.
 
@@ -590,15 +590,15 @@ Remove (Entfernen)| Stellt sicher, dass in der Headerantwort kein `Expires`-Head
 
 ---
 ### <a name="external-max-age"></a>External Max-Age
-**Zweck:** Legt das max-age-Intervall für die erneute Cacheüberprüfung vom Browser zum Edgeserver fest. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein Browser nach einer neuen Version eines Assets von einem Edgeserver suchen kann.
+**Zweck:** Bestimmt das max-age-Intervall für die erneute Überprüfung des Caches von Browser und POP. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein Browser nach einer neuen Version eines Assets von einem POP suchen kann.
 
-Durch Aktivieren dieses Features werden die `Cache-Control: max-age`- und `Expires`-Header von den Edgeservern generiert und an den HTTP-Client gesendet. Standardmäßig werden die vom Ursprungsserver erstellten Header durch diese Header überschrieben. Allerdings können die Features „Cache-Control Header Treatment“ und „Expires Header Treatment“ verwendet werden, um dieses Verhalten zu ändern.
+Durch Aktivieren dieses Features werden die `Cache-Control: max-age`- und `Expires`-Header von den POPs generiert und an den HTTP-Client gesendet. Standardmäßig werden die vom Ursprungsserver erstellten Header durch diese Header überschrieben. Allerdings können die Features „Cache-Control Header Treatment“ und „Expires Header Treatment“ verwendet werden, um dieses Verhalten zu ändern.
 
 Wichtige Informationen:
 
-- Diese Aktion wirkt sich nicht auf erneute Cacheüberprüfungen vom Edgeserver zum Ursprungsserver aus. Diese Arten von erneuten Überprüfungen werden durch die vom Ursprungsserver empfangenen `Cache-Control`-und `Expires`-Header festgelegt und können mit den Features „Default Internal Max-Age“ und „Force Internal Max-Age“ angepasst werden.
+- Diese Aktion wirkt sich nicht auf erneute Cacheüberprüfungen vom POP zum Ursprungsserver aus. Diese Arten von erneuten Überprüfungen werden durch die vom Ursprungsserver empfangenen `Cache-Control`-und `Expires`-Header festgelegt und können mit den Features „Default Internal Max-Age“ und „Force Internal Max-Age“ angepasst werden.
 - Konfigurieren Sie dieses Feature, indem Sie einen ganzzahligen Wert angeben und die gewünschte Zeiteinheit auswählen (beispielsweise Sekunden, Minuten oder Stunden).
-- Wenn Sie dieses Feature auf einen negativen Wert festlegen, senden die Edgeserver mit jeder Antwort an den Browser den Wert `Cache-Control: no-cache` und eine `Expires`-Zeit, die in der Vergangenheit liegt. Auch wenn ein HTTP-Client die Antwort nicht zwischenspeichert, können die Edgeserver die Antwort vom Ursprungsserver trotz dieser Einstellung zwischenspeichern.
+- Wenn Sie dieses Feature auf einen negativen Wert festlegen, senden die POPs mit jeder Antwort an den Browser den Wert `Cache-Control: no-cache` und eine `Expires`-Zeit, die in der Vergangenheit liegt. Auch wenn ein HTTP-Client die Antwort nicht zwischenspeichert, können die POPs die Antwort vom Ursprungsserver trotz dieser Einstellung zwischenspeichern.
 - Durch Festlegen der Zeiteinheit auf „Off“ wird dieses Feature deaktiviert. Die mit der Antwort des Ursprungsservers zwischengespeicherten `Cache-Control`- und `Expires`-Header werden an den Browser weitergegeben.
 
 **Standardverhalten:** Off
@@ -628,13 +628,13 @@ Deaktiviert|Anforderungen werden nicht umgeleitet.
 
 ---
 ### <a name="force-internal-max-age"></a>Force Internal Max-Age
-**Zweck:** Legt das max-age-Intervall für die erneute Cacheüberprüfung vom Edgeserver zum Ursprungsserver fest. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein Edgeserver prüfen kann, ob ein zwischengespeichertes Asset mit dem auf dem Ursprungsserver gespeicherten Asset übereinstimmt.
+**Zweck:** Bestimmt das max-age-Intervall für die erneute Überprüfung des Caches von POP und Ursprungsserver. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein POP prüfen kann, ob ein zwischengespeichertes Asset mit dem auf dem Ursprungsserver gespeicherten Asset übereinstimmt.
 
 Wichtige Informationen:
 
 - Durch dieses Feature wird das max-age-Intervall überschrieben, das im von einem Ursprungsserver generierten `Cache-Control`- oder `Expires`-Header definiert ist.
-- Dieses Feature wirkt sich nicht auf erneute Cacheüberprüfungen vom Browser zum Edgeservercache aus. Diese Arten von erneuten Überprüfungen werden durch den an den Browser gesendeten `Cache-Control`- oder `Expires`-Header festgelegt.
-- Diese Funktion hat keine erkennbare Auswirkungen auf die Antwort, die durch einen Edgeserver an die anfordernde Person übermittelt wird. Allerdings kann sie sich auf die Menge des Datenverkehrs auswirken, der für die erneute Überprüfung von den Edgeservern an den Ursprungsserver gesendet wird.
+- Dieses Feature wirkt sich nicht auf erneute Cacheüberprüfungen vom Browser zum POP aus. Diese Arten von erneuten Überprüfungen werden durch den an den Browser gesendeten `Cache-Control`- oder `Expires`-Header festgelegt.
+- Dieses Feature hat keine erkennbare Auswirkungen auf die Antwort, die durch einen POP an die anfordernde Person übermittelt wird. Allerdings kann sie sich auf die Menge des Datenverkehrs auswirken, der für die erneute Überprüfung von den POPs an den Ursprungsserver gesendet wird.
 - Konfigurieren Sie dieses Feature folgendermaßen:
     - Wählen Sie den Statuscode aus, für den ein interner max-age-Wert angewendet werden kann.
     - Geben Sie einen ganzzahligen Wert an, und wählen Sie die gewünschte Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden). Dieser Wert definiert das max-age-Intervall der Anforderung.
@@ -678,7 +678,7 @@ Eine no-cache-Anforderung erfolgt, wenn der HTTP-Client in der HTTP-Anforderung 
 
 Wert|Ergebnis
 --|--
-Aktiviert|Ermöglicht das Weiterleiten von no-cache-Anforderungen eines HTTP-Clients an den Ursprungsserver. Der Ursprungsserver gibt die Antwortheader und den Text über den Edgeserver an den HTTP-Client zurück.
+Aktiviert|Ermöglicht das Weiterleiten von no-cache-Anforderungen eines HTTP-Clients an den Ursprungsserver. Der Ursprungsserver gibt die Antwortheader und den Text über den POP an den HTTP-Client zurück.
 Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird verhindert, dass no-cache-Anforderungen an den Ursprungsserver weitergeleitet werden.
 
 Für den gesamten Produktionsdatenverkehr wird dringend empfohlen, dieses Feature in seinem Standardzustand (deaktiviert) zu belassen. Andernfalls werden die Ursprungsserver nicht vor Endbenutzern, die beim Aktualisieren von Webseiten versehentlich viele no-cache-Anforderungen auslösen können, oder vor den zahlreichen beliebten Media Playern geschützt, die so codiert sind, dass bei jeder Videoanforderung ein no-cache-Header mitgesendet wird. Trotzdem kann es von Vorteil sein, diese Funktion auf bestimmte nicht produktive Staging- oder Testverzeichnisse anzuwenden, damit neuer Inhalt bei Bedarf vom Ursprungsserver abgerufen werden kann.
@@ -724,11 +724,11 @@ Wichtige Informationen:
 ### <a name="ignore-unsatisfiable-ranges"></a>Ignore Unsatisfiable Ranges 
 **Zweck:** Legt die Antwort fest, die an Clients zurückgegeben wird, wenn eine Anforderung den Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ generiert.
 
-Standardmäßig wird dieser Statuscode zurückgegeben, wenn die angegebene byte-range-Anforderung durch einen Edgeserver nicht erfüllt werden kann und kein If-Range-Anforderungsheaderfeld angegeben wurde.
+Standardmäßig wird dieser Statuscode zurückgegeben, wenn die angegebene byte-range-Anforderung durch einen POP nicht erfüllt werden kann und kein If-Range-Anforderungsheaderfeld angegeben wurde.
 
 Wert|Ergebnis
 -|-
-Aktiviert|Verhindert, dass die Edgeserver eine ungültige byte-range-Anforderung mit dem Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ beantwortet. Stattdessen übermitteln die Server das angeforderte Objekt und geben „200 – OK“ an den Client zurück.
+Aktiviert|Verhindert, dass die POPs eine ungültige byte-range-Anforderung mit dem Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ beantwortet. Stattdessen übermitteln die Server das angeforderte Objekt und geben „200 – OK“ an den Client zurück.
 Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird der Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ berücksichtigt.
 
 **Standardverhalten:** Deaktiviert.
@@ -739,15 +739,15 @@ Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird der St
 
 ---
 ### <a name="internal-max-stale"></a>Internal Max-Stale
-**Zweck:** Steuert, wie lange nach Überschreiten der normalen Ablaufzeit ein Cacheasset von einem Edgeserver bedient werden kann, wenn der Edgeserver das zwischengespeicherte Asset nicht anhand des Ursprungsservers erneut überprüfen kann.
+**Zweck:** Steuert, wie lange nach Überschreiten der normalen Ablaufzeit ein zwischengespeichertes Asset von einem POP bereitgestellt werden kann, wenn der POP das zwischengespeicherte Asset nicht im Abgleich mit dem Ursprungsserver erneut überprüfen kann.
 
-Normalerweise sendet der Edgeserver bei Ablauf der max-age-Zeit eines Assets eine Anforderung zur erneuten Überprüfung an den Ursprungsserver. Der Ursprungsserver antwortet entweder mit „304 – Nicht geändert“, um dem Edgeserver eine neue Lease für das zwischengespeicherte Asset zu geben, oder mit „200 – OK“, um dem Edgeserver eine aktualisierte Version des zwischengespeicherten Assets bereitzustellen.
+Normalerweise sendet der POP bei Ablauf der max-age-Zeit eines Assets eine Anforderung zur erneuten Überprüfung an den Ursprungsserver. Der Ursprungsserver antwortet entweder mit „304 – Nicht geändert“, um dem POP eine neue Lease für das zwischengespeicherte Asset zu geben, oder mit „200 – OK“, um dem POP eine aktualisierte Version des zwischengespeicherten Assets bereitzustellen.
 
-Wenn der Edgeserver bei dem Versuch einer solchen erneuten Überprüfung keine Verbindung mit dem Ursprungsserver herstellen kann, steuert dieses Feature „Internal Max-Stale“, ob und wie lange der Edgeserver das jetzt veraltete Asset noch bedienen darf.
+Wenn der POP bei dem Versuch einer solchen erneuten Überprüfung keine Verbindung mit dem Ursprungsserver herstellen kann, steuert dieses Feature „Internal Max-Stale“, ob und wie lange der POP das jetzt veraltete Asset noch bedienen darf.
 
-Beachten Sie, dass dieses Zeitintervall mit Ablauf des max-age-Werts des Assets beginnt, nicht bei Eintritt der fehlerhaften erneuten Überprüfung. Daher entspricht der maximale Zeitraum, während dessen ein Asset ohne erfolgreiche erneute Überprüfung bedient werden kann, der Zeitspanne, die durch die Kombination von max-age und max-stale angegeben wird. Wenn ein Objekt beispielsweise um 9:00 Uhr mit einem max-age-Wert von 30 Minuten und einem max-stale-Wert von 15 Minuten zwischengespeichert wurde, führt ein fehlerhafter Versuch zur erneuten Überprüfung um 9:44 Uhr dazu, dass ein Endbenutzer das veraltete zwischengespeicherte Objekt erhält, während ein fehlerhafter Versuch zur erneuten Überprüfung um 9:46 Uhr dazu führt, dass der Endbenutzer den Statuscode „504 – Gatewaytimeout“ empfängt.
+Beachten Sie, dass dieses Zeitintervall mit Ablauf des max-age-Werts des Assets beginnt, nicht bei Eintritt der fehlerhaften erneuten Überprüfung. Daher entspricht der maximale Zeitraum, während dessen ein Asset ohne erfolgreiche erneute Überprüfung bedient werden kann, der Zeitspanne, die durch die Kombination von max-age und max-stale angegeben wird. Wenn ein Objekt beispielsweise um 9:00 Uhr mit einem max-age-Wert von 30 Minuten und einem max-stale-Wert von 15 Minuten zwischengespeichert wurde, führt ein fehlerhafter Versuch zur erneuten Überprüfung um 9:44 Uhr dazu, dass ein Endbenutzer das veraltete zwischengespeicherte Asset erhält, während ein fehlerhafter Versuch zur erneuten Überprüfung um 9:46 Uhr dazu führt, dass der Endbenutzer den Statuscode „504 – Gatewaytimeout“ empfängt.
 
-Jeder für dieses Feature konfigurierte Wert wird durch die `Cache-Control: must-revalidate`- oder `Cache-Control: proxy-revalidate`-Header ersetzt, die vom Ursprungsserver empfangen werden. Wenn einer dieser Header beim ersten Zwischenspeichern eines Assets vom Ursprungsserver empfangen wird, bedient der Edgeserver kein veraltetes zwischengespeichertes Asset. Wenn der Edgeserver in einem solchen Fall bei Ablauf des max-age-Intervalls für das Objekt die erneute Überprüfung mit dem Ursprung nicht durchführen kann, gibt der Edgeserver einen Fehler vom Typ „504 – Gatewaytimeout“ zurück.
+Jeder für dieses Feature konfigurierte Wert wird durch die `Cache-Control: must-revalidate`- oder `Cache-Control: proxy-revalidate`-Header ersetzt, die vom Ursprungsserver empfangen werden. Wenn einer dieser Header beim ersten Zwischenspeichern eines Assets vom Ursprungsserver empfangen wird, bedient der POP kein veraltetes zwischengespeichertes Asset. Wenn der POP in einem solchen Fall bei Ablauf des max-age-Intervalls für das Asset die erneute Überprüfung mit dem Ursprung nicht durchführen kann, gibt der POP einen Fehler vom Typ „504 – Gatewaytimeout“ zurück.
 
 Wichtige Informationen:
 
@@ -816,10 +816,8 @@ Für einen Anforderungsheader kann eine der folgenden Aktionen ausgeführt werde
 
 Option|BESCHREIBUNG|Beispiel
 -|-|-
-Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Anforderungsheaders hinzugefügt.|**Wert des Anforderungsheaders (Client):**Wert1 <br/> 
-            **Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert1Wert2
-Überschreiben|Der Wert des Anforderungsheaders wird auf den angegebenen Wert festgelegt.|**Wert des Anforderungsheaders (Client):**Wert1 <br/>
-            **Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert2 <br/>
+Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Anforderungsheaders hinzugefügt.|**Wert des Anforderungsheaders (Client):**Wert1 <br/> **Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert1Wert2
+Überschreiben|Der Wert des Anforderungsheaders wird auf den angegebenen Wert festgelegt.|**Wert des Anforderungsheaders (Client):**Wert1 <br/>**Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert2 <br/>
 Löschen|Löscht den angegebenen Anforderungsheader.|**Wert des Anforderungsheaders (Client):**Wert1 <br/> **Konfiguration von „Modify Client Request Header“:** Der betreffende Anforderungsheader wird gelöscht. <br/>**Ergebnis:** Der angegebene Anforderungsheader wird nicht an den Ursprungsserver weitergeleitet.
 
 Wichtige Informationen:
@@ -830,7 +828,7 @@ Wichtige Informationen:
     - CACHE-CONTROL
     - cachE-Control
 - Headernamen dürfen nur alphanumerische Zeichen, Bindestriche und Unterstriche enthalten.
-- Durch das Löschen eines Headers wird verhindert, dass er von den Edgeservern an einen Ursprungsserver weitergeleitet wird.
+- Durch das Löschen eines Headers wird verhindert, dass er von den POPs an einen Ursprungsserver weitergeleitet wird.
 - Die folgenden Header sind reserviert und können nicht von diesem Feature geändert werden:
     - forwarded
     - host
@@ -850,16 +848,14 @@ Jede Antwort enthält einen Satz von Antwortheadern, die sie beschreiben. Diese 
 - Anfügen oder Überschreiben des Werts, der einem Antwortheader zugewiesen ist. Wenn der angegebene Antwortheader nicht vorhanden ist, wird er der Antwort durch dieses Feature hinzugefügt.
 - Löschen eines Antwortheaders aus der Antwort.
 
-Standardmäßig werden Werte für Antwortheader durch einen Ursprungsserver und durch die Edgeserver definiert.
+Standardmäßig werden Werte für Antwortheader durch einen Ursprungsserver und durch die POPs definiert.
 
 Für einen Antwortheader kann eine der folgenden Aktionen ausgeführt werden:
 
 Option|BESCHREIBUNG|Beispiel
 -|-|-
-Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Antwortheaders hinzugefügt.|**Wert des Antwortheaders (Client):**Wert1 <br/> 
-            **Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert1Wert2
-Überschreiben|Der Wert des Antwortheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):**Wert1 <br/>
-            **Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert2 <br/>
+Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Antwortheaders hinzugefügt.|**Wert des Antwortheaders (Client):**Wert1 <br/> **Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert1Wert2
+Überschreiben|Der Wert des Antwortheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):**Wert1 <br/>**Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert2 <br/>
 Löschen|Löscht den angegebenen Antwortheader.|**Wert des Antwortheaders (Client):** Wert1 <br/> **Konfiguration von „Modify Client Response Header“:** Der betreffende Antwortheader wird gelöscht. <br/>**Ergebnis:** Der angegebene Antwortheader wird nicht an die anfordernde Person weitergeleitet.
 
 Wichtige Informationen:
@@ -926,7 +922,7 @@ Wichtige Informationen:
 
 ---
 ### <a name="proxy-special-headers"></a>Proxy Special Headers
-**Zweck:** Definiert den Satz von CDN-spezifischen Anforderungsheadern, der von einem Edgeserver an einen Ursprungsserver weitergeleitet wird.
+**Zweck:** Definiert den Satz von CDN-spezifischen Anforderungsheadern, der von einem POP an einen Ursprungsserver weitergeleitet wird.
 
 Wichtige Informationen:
 
@@ -941,15 +937,15 @@ Wichtige Informationen:
 
 ---
 ### <a name="refresh-zero-byte-cache-files"></a>Refresh Zero-Byte Cache Files
-**Zweck:** Legt fest, wie die Anforderung eines HTTP-Clients für ein Cacheobjekt mit 0 Byte von den Edgeservern verarbeitet wird.
+**Zweck:** Bestimmt, wie eine Anforderung eines HTTP-Clients eines Cacheassets mit 0 Byte von den POPs verarbeitet wird.
 
 Gültige Werte sind:
 
 Wert|Ergebnis
 --|--
-Aktiviert|Führt dazu, dass der Edgeserver das Objekt erneut vom Ursprungsserver abruft.
+Aktiviert|Führt dazu, dass der POP das Asset erneut vom Ursprungsserver abruft.
 Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig werden gültige Cacheassets auf Anforderung bedient.
-Dieses Feature ist für eine korrekte Zwischenspeicherung und Inhaltsübermittlung nicht erforderlich, aber möglicherweise als Problemumgehung hilfreich. Dynamische Inhaltsgeneratoren auf Ursprungsservern können beispielsweise dazu führen, dass versehentlich 0-Byte-Antworten an die Edgeserver gesendet werden. Diese Typen von Antworten werden in der Regel durch die Edgeserver zwischengespeichert. Wenn Sie wissen, dass eine 0-Byte-Antwort nie eine gültige Antwort 
+Dieses Feature ist für eine korrekte Zwischenspeicherung und Inhaltsübermittlung nicht erforderlich, aber möglicherweise als Problemumgehung hilfreich. Dynamische Inhaltsgeneratoren auf Ursprungsservern können beispielsweise dazu führen, dass versehentlich 0-Byte-Antworten an die POPs gesendet werden. Diese Typen von Antworten werden in der Regel durch die POPs zwischengespeichert. Wenn Sie wissen, dass eine 0-Byte-Antwort nie eine gültige Antwort 
 
 für solche Inhalte ist, kann dieses Feature verhindern, dass diese Arten von Assets von Ihren Clients bedient werden.
 
@@ -1020,12 +1016,12 @@ Deaktiviert|Der Fehler des Ursprungsservers wird an die anfordernde Person weite
 
 ---
 ### <a name="stale-while-revalidate"></a>Stale While Revalidate
-**Zweck:** Verbessert die Leistung, indem den Edgeservern erlaubt wird, der anfordernden Person veraltete Inhalte bereitzustellen, während die erneute Überprüfung erfolgt.
+**Zweck:** Verbessert die Leistung, indem den POPs erlaubt wird, der anfordernden Person veraltete Inhalte bereitzustellen, während die erneute Überprüfung erfolgt.
 
 Wichtige Informationen:
 
 - Das Verhalten dieses Features hängt von der ausgewählten Zeiteinheit ab.
-    - **Time Unit:** Geben Sie einen Zeitraum an, und wählen Sie die Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden), um die Übermittlung veralteter Inhalte zu ermöglichen. Dieser Setuptyp ermöglicht dem CDN, die Zeitdauer zu verlängern, während der Inhalte übermittelt werden können, bevor eine Überprüfung gemäß der folgenden Formel erforderlich ist:**TTL** + **Stale While Revalidate Time** 
+    - **Time Unit:** Geben Sie einen Zeitraum an, und wählen Sie die Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden), um die Übermittlung veralteter Inhalte zu ermöglichen. Dieser Setuptyp ermöglicht dem CDN, die Zeitdauer zu verlängern, während der Inhalte übermittelt werden können, bevor eine Überprüfung gemäß der folgenden Formel erforderlich ist: **TTL** + **Stale While Revalidate Time** 
     - **Off:** Wählen Sie „Off“, um eine erneute Überprüfung anzufordern, bevor eine Anforderung von veralteten Inhalten verarbeitet werden darf.
         - Geben Sie keine Zeitspanne an, weil sie nicht anwendbar ist und ignoriert wird.
 
@@ -1113,7 +1109,7 @@ Gültige Werte sind:
 
 Wert|Ergebnis
 ---|----
-Aktiviert|Bewirkt, dass der Edgeserver Groß- und Kleinschreibung beim Vergleichen von URLs für Parameter der tokenbasierten Authentifizierung ignoriert.
+Aktiviert|Bewirkt, dass der POP Groß- und Kleinschreibung beim Vergleichen von URLs für Parameter der tokenbasierten Authentifizierung ignoriert.
 Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird bei URL-Vergleichen für die Tokenauthentifizierung die Groß-/Kleinschreibung beachtet.
 
 **Standardverhalten:** Deaktiviert.
@@ -1153,7 +1149,7 @@ Option|BESCHREIBUNG
 -|-
 Code|Wählen Sie den Antwortcode aus, der an die anfordernde Person zurückgegeben wird.
 Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dies ist der Abschnitt „/XXXX/“ und Ihr Endpunktname. <br/> **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
-Ziel| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- HTTP-Variablen <br/> Fügen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert anhand der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/> 
+Ziel| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- HTTP-Variablen <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/> 
 Es wird dringend empfohlen, eine absolute URL zu verwenden. Bei Verwendung einer relativen URL werden CDN-URLs möglicherweise an einen ungültigen Pfad umgeleitet.
 
 **Beispielszenario**
@@ -1173,7 +1169,7 @@ Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![](.
         - Anforderungs-URL (nach der Umleitung): http://cdn.mydomain.com/resources/widgets.pdf  
     - Beispielszenario 2: 
         - Beispielanforderung (Edge-CNAME-URL): http://marketing.mydomain.com/brochures/widgets.pdf 
-        - Anforderungs-URL (nach der Umleitung): http://cdn.mydomain.com/resources/widgets.pdf
+        - Anforderungs-URL (nach der Umleitung): http://cdn.mydomain.com/resources/widgets.pdf  Beispielszenario
     - Beispielszenario 3: 
         - Beispielanforderung (Edge-CNAME-URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
         - Anforderungs-URL (nach der Umleitung): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
@@ -1195,8 +1191,8 @@ Wichtige Informationen:
 Option|BESCHREIBUNG
 -|-
  Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/>     - **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dies ist der Abschnitt „/XXXX/“ und Ihr Endpunktname. <br/> - **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen. 
- Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - HTTP-Variablen <br/> <br/> Fügen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert anhand der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. 
- Dieses Feature ermöglicht den Edgeservern das Umschreiben der URL, ohne dass eine herkömmliche Umleitung ausgeführt werden muss. Dies bedeutet, dass die anfordernde Person den gleichen Antwortcode erhält, den sie auch bei Anforderung der umgeschriebenen URL erhalten hätte.
+ Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - HTTP-Variablen <br/> <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. 
+ Dieses Feature ermöglicht den POPs das Umschreiben der URL, ohne dass eine herkömmliche Umleitung ausgeführt werden muss. Dies bedeutet, dass die anfordernde Person den gleichen Antwortcode erhält, den sie auch bei Anforderung der umgeschriebenen URL erhalten hätte.
 
 **Beispielszenario 1**
 

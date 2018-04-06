@@ -1,24 +1,19 @@
 ---
-title: "Einrichten von IP-Adressen für das Verbinden mit Azure nach einem Failover mit Azure Site Recovery | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie IP-Adressen für die Verbindung mit Azure-VMs nach einem Failover von lokalen Computern mit Azure Site Recovery einrichten."
+title: Einrichten von IP-Adressen für das Verbinden mit Azure nach einem Failover mit Azure Site Recovery | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie IP-Adressen für die Verbindung mit Azure-VMs nach einem Failover von lokalen Computern mit Azure Site Recovery einrichten.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: carmonm
-editor: 
-ms.assetid: f02cdbea-0940-48bf-9fa5-f38d9e584fae
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 02/27/2018
+ms.date: 03/24/2018
 ms.author: manayar
-ms.openlocfilehash: b9aeaf1dc6d471ba993dd470403ba60ce68153fc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: e74ad30ea8c4be994c1c67735ee91ef8c033b9b3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Einrichten von IP-Adressen für Verbindungen mit Azure nach einem Failover
 
@@ -49,9 +44,9 @@ Site Recovery bietet die Möglichkeit, feste IP-Adressen beizubehalten, wenn ein
 
 ### <a name="failover-example"></a>Beispiel für ein Failover
 
-Sehen wir uns mithilfe eines fiktiven Unternehmen, Woodgrove Bank, ein Beispiel für ein Failover zu Azure an.
+Sehen wir uns mithilfe des fiktiven Unternehmens Woodgrove Bank ein Beispiel für ein Failover auf Azure an.
 
-- Woodgrove Bank hostet die Business-Apps an einem lokalen Standort. Sie hosten ihre mobilen Apps in Azure.
+- Woodgrove Bank hostet die Geschäftsanwendungen an einem lokalen Standort. Sie hosten ihre mobilen Apps in Azure.
 - Es ist eine Standort-zu-Standort-VPN-Konnektivität zwischen deren lokalen Edgenetzwerk und dem virtuellen Azure-Netzwerk vorhanden. Aufgrund dieser VPN-Konnektivität erscheint das virtuelle Netzwerk in Azure als Erweiterung des lokalen Netzwerks.
 - Woodgrove möchte die lokalen Workloads in Azure mit Site Recovery replizieren.
  - Woodgrove verfügt über Apps, die von hartcodierten IP-Adressen abhängig sind, daher müssen die IP-Adressen der Apps nach einem Failover zu Azure beibehalten werden.

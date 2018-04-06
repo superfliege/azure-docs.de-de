@@ -1,12 +1,12 @@
 ---
-title: "IoT DevKit in der Cloud – Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub | Microsoft-Dokumentation"
-description: "In diesem Tutorial erfahren Sie, wie der Status von Sensoren auf IoT DevKit AZ3166 zur Überwachung und Visualisierung an Azure IoT Suite gesendet wird."
+title: 'IoT DevKit in der Cloud: Verbinden von MXChip IoT DevKit mit Azure IoT Hub | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie der Status von Sensoren auf IoT DevKit AZ3166 zur Überwachung und Visualisierung an Azure IoT Suite gesendet wird.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: liydu
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: b43061f5af3e836ba3f0b37eb11b351a769890be
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 92efd0970bcf516c4210f831a0c2f23b3ee7b5d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="connect-iot-devkit-az3166-to-azure-iot-suite-for-remote-monitoring"></a>Verbinden von IoT DevKit AZ3166 mit Azure IoT Suite zur Remoteüberwachung
+# <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>Verbinden von MXChip IoT DevKit mit Azure IoT Suite zur Remoteüberwachung
 
 In diesem Tutorial erfahren Sie, wie Sie eine Beispiel-App auf dem DevKit ausführen, um Sensordaten an die Azure IoT Suite zu senden.
 
@@ -42,7 +42,7 @@ Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie sich m
 
 1. Wechseln Sie zur [Azure IoT Suite-Website](https://www.azureiotsuite.com/), und klicken Sie auf **Neue Lösung erstellen**.
   ![Auswählen des Azure IoT Suite-Typs](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
-  > [!NOTE]
+  > [!WARNING]
   > Standardmäßig wird mit diesem Beispiel nach dem Erstellen einer IoT Suite ein S2 IoT Hub erstellt. Wenn dieser IoT Hub nicht für eine große Anzahl von Geräten verwendet wird, wird dringend empfohlen, ein Downgrade von S2 auf S1 durchzuführen und die IoT Suite zu löschen, damit auch der zugehörige IoT Hub gelöscht werden kann, wenn Sie ihn nicht mehr benötigen. 
 
 2. Wählen Sie **Remoteüberwachung** aus.

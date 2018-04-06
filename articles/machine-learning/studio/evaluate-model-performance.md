@@ -1,10 +1,11 @@
 ---
 title: Auswerten der Modellleistung in Azure Machine Learning | Microsoft Docs
-description: "Erläutert, wie die Modellleistung in Azure Machine Learning ausgewertet wird."
+description: Erläutert, wie die Modellleistung in Azure Machine Learning ausgewertet wird.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: 48ce4584f7270d78b1d09b848bfdd305d03012b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bf065d8e91bd4ebb4cc3932c0525cb091b26b38
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Auswerten der Modellleistung in Azure Machine Learning
 Dieser Artikel veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird, und erläutert die für diese Aufgabe verfügbaren Metriken. Es werden drei häufig eingesetzte Szenarios des beaufsichtigten Lernens vorgestellt: 
@@ -43,7 +43,7 @@ Alternativ können Sie mithilfe der Kreuzvalidierung automatisch mehrere Trainin
 In den folgenden Abschnitten werden einfache Regressions- und Klassifizierungsmodelle erstellt, und deren Leistung wird evaluiert. Dazu werden die beiden Module [Evaluate Model][evaluate-model] und [Cross-Validate Model][cross-validate-model] verwendet.
 
 ## <a name="evaluating-a-regression-model"></a>Auswerten eines Regressionsmodells
-Angenommen, wir möchten den Preis eines Fahrzeugs anhand seiner Eigenschaften wie z. B. Abmessungen, Pferdestärke, Motorisierung usw. vorhersagen. Dies ist ein typischer Regressionsfall, bei dem die Zielvariable (*price*) ein beständiger Zahlenwert ist. Dazu kann ein einfaches lineares Regressionsmodell angepasst werden, das mit den Eigenschaftenwerten eines bestimmten Fahrzeugs den Preis des Fahrzeugs vorhersagen kann. Mit diesem Regressionsmodell kann das gleiche Dataset bewertet werden, das für das Training verwendet wurde. Wenn die vorhergesagten Preise für alle Fahrzeuge vorliegen, kann die Leistung des Modells ausgewertet werden, indem wir uns ansehen, inwieweit die Vorhersagen im Durchschnitt von den tatsächlichen Preisen abweichen. Zur Veranschaulichung verwenden wir das im Abschnitt **Saved Datasets** in Azure Machine Learning Studio bereitgestellte Dataset *Automobile price data (Raw)*.
+Angenommen, wir möchten den Preis eines Fahrzeugs anhand seiner Eigenschaften wie z.B. Abmessungen, Pferdestärke, Motorisierung usw. vorhersagen. Dies ist ein typischer Regressionsfall, bei dem die Zielvariable (*price*) ein beständiger Zahlenwert ist. Dazu kann ein einfaches lineares Regressionsmodell angepasst werden, das mit den Eigenschaftenwerten eines bestimmten Fahrzeugs den Preis des Fahrzeugs vorhersagen kann. Mit diesem Regressionsmodell kann das gleiche Dataset bewertet werden, das für das Training verwendet wurde. Wenn die vorhergesagten Preise für alle Fahrzeuge vorliegen, kann die Leistung des Modells ausgewertet werden, indem wir uns ansehen, inwieweit die Vorhersagen im Durchschnitt von den tatsächlichen Preisen abweichen. Zur Veranschaulichung verwenden wir das im Abschnitt **Saved Datasets** in Azure Machine Learning Studio bereitgestellte Dataset *Automobile price data (Raw)*.
 
 ### <a name="creating-the-experiment"></a>Erstellen des Experiments
 Fügen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio die folgenden Module hinzu:
@@ -151,7 +151,7 @@ Verbinden Sie die Ports wie unten in Abbildung 10 dargestellt.
 
 Legen Sie den Index der Spalte „Label“ des Moduls [Train Model][train-model] auf „5“ fest. Das Dataset verfügt über keinen Header, wir wissen jedoch, dass sich die Klassenbezeichner in der fünften Spalte befinden.
 
-Klicken Sie auf das Modul [Import Data][import-data], und legen Sie die Eigenschaft *Data source* auf *Web URL via HTTP* und die *URL* auf „http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data“ fest.
+Klicken Sie auf das Modul [Import Data][import-data], und legen Sie die Eigenschaft *Data Source* auf *Web URL via HTTP* und die *URL* auf http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data fest.
 
 Legen Sie im Modul [Split Data][split] den Anteil der Fälle fest, die für das Training verwendet werden sollen (beispielsweise 0,7).
 

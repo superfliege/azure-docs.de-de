@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/06/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: f53a8641a50a6c968a6ba7b841e0e8f938b5d9f6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 830f9c76d9d1bf11692fa9f2f5c49cbecdb69f25
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Schützen eines Dateiservers mit Azure Site Recovery 
 
@@ -48,7 +48,7 @@ Im obigen Diagramm sind mehrere als Mitglieder bezeichnete Dateiserver aktiv an 
 
     * Sie können diesen Ansatz verwenden, wenn die Konfigurationen Ihrer VMs nicht von Site Recovery unterstützt werden. Ein Beispiel ist ein freigegebener Clusterdatenträger, der manchmal in Dateiserverumgebungen gemeinsam verwendet wird. DFSR funktioniert auch gut in Umgebungen mit geringer Bandbreite und mittlerer Änderungsrate. Hierbei müssen Sie die zusätzlichen Kosten der Nutzung einer Azure-VM, die immer ausgeführt wird, berücksichtigen. 
 
-* **Verwenden von Azure File Sync zum Replizieren der Dateien**: Wenn Sie die Nutzung der Cloud planen oder bereits eine Azure-VM einsetzen, können Sie File Sync verwenden. File Sync bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)-Protokoll (SMB) – ein Protokoll nach Industriestandard – zugegriffen werden kann. Azure-Dateifreigaben können dann gleichzeitig von Cloud- oder lokalen Bereitstellungen von Windows, Linux und macOS eingebunden werden. 
+* **Verwenden von Azure File Sync zum Replizieren der Dateien:** Wenn Sie die Nutzung der Cloud planen oder bereits eine Azure-VM einsetzen, können Sie Azure File Sync verwenden. Azure File Sync bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)-Protokoll (SMB) – ein Protokoll nach Industriestandard – zugegriffen werden kann. Azure-Dateifreigaben können dann gleichzeitig über Cloudbereitstellungen oder lokale Bereitstellungen von Windows, Linux und macOS eingebunden werden. 
 
 Das folgende Diagramm hilft Ihnen beim Festlegen der Strategie für Ihre Dateiserverumgebung.
 

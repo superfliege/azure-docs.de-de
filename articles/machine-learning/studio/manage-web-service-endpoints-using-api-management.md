@@ -1,12 +1,13 @@
 ---
 title: Erfahren Sie, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten | Microsoft Docs
-description: "Diese Leitfaden zeigt, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten."
+description: Diese Leitfaden zeigt, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten.
 keywords: Maschinelles Lernen,API Management
 services: machine-learning
-documentationcenter: 
-author: roalexan
-manager: jhubbard
-editor: 
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
+editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
 ms.workload: data-services
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: roalexan
-ms.openlocfilehash: b2c9f53de1abd2aea5fabbefecc5bbb144148a7b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: fe916df286b0e50430464b3f2f8837b898abb827
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>Erfahren Sie, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten
 ## <a name="overview"></a>Übersicht
@@ -42,15 +42,15 @@ Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 
 Sie können Ihren Azure Machine Learning-Webdienst mit einer API Management-Instanz verwalten.
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **+ Ressource erstellen**.
 3. Geben Sie im Suchfeld „API Management“ ein, und wählen Sie dann die Ressource „API Management“ aus.
-4. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Create**.
 5. Der Wert **Name** wird verwendet, um eine eindeutige URL zu erstellen (in diesem Beispiel „demoazureml“).
 6. Wählen Sie **Abonnement**, **Ressourcengruppe** und **Region** für Ihre Dienstinstanz aus.
 7. Geben Sie einen Wert für **Name der Organisation** ein (in diesem Beispiel „demoazureml“).
 8. Geben Sie unter **Administrator-E-Mail** Ihre Adresse ein. Diese E-Mail-Adresse wird für Benachrichtigungen des API Management-Systems verwendet.
-9. Klicken Sie auf **Erstellen**.
+9. Klicken Sie auf **Create**.
 
 Es kann bis zu 30 Minuten dauern, bis ein neuer Dienst erstellt wird.
 
@@ -173,7 +173,7 @@ Nach dem Aufruf der Operation zeigt das Entwicklerportal die **Angeforderte URL*
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>Anhang A – Erstellen und Testen eines einfachen Azure ML-Webdiensts
 ### <a name="creating-the-experiment"></a>Erstellen des Experiments
-Im Folgenden finden Sie die Schritte, die zum Erstellen eines einfachen Azure ML-Experiments und zum Bereitstellen des Experiments als Webdienst erforderlich sind. Der Webdienst akzeptiert als Eingabe eine Spalte mit beliebigem Text und gibt einen Satz von Features zurück, die als Ganzzahlen dargestellt werden. Beispiel:
+Im Folgenden finden Sie die Schritte, die zum Erstellen eines einfachen Azure ML-Experiments und zum Bereitstellen des Experiments als Webdienst erforderlich sind. Der Webdienst akzeptiert als Eingabe eine Spalte mit beliebigem Text und gibt einen Satz von Features zurück, die als Ganzzahlen dargestellt werden. Beispiel: 
 
 | Text | Text im Hashformat |
 | --- | --- |

@@ -1,27 +1,28 @@
 ---
 title: Verwalten von Verweisdaten in einer Azure Time Series Insights-Umgebung mithilfe von C# | Microsoft-Dokumentation
-description: "Dieser Artikel beschreibt, wie Sie Verweisdaten für eine Azure Time Series Insights-Umgebung verwalten, indem Sie eine in der .NET-Sprache C# (C-Sharp) geschriebene benutzerdefinierte Anwendung erstellen."
+description: Dieser Artikel beschreibt, wie Sie Verweisdaten für eine Azure Time Series Insights-Umgebung verwalten, indem Sie eine in der .NET-Sprache C# (C-Sharp) geschriebene benutzerdefinierte Anwendung erstellen.
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
 ms.author: venkatja
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/21/2017
-ms.openlocfilehash: b08b6af7abccb550884adc6cc90d180cfcadb2af
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.date: 03/23/2018
+ms.openlocfilehash: 61375ae3b304959d5cda37c4ce0364d566d576a5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Verwalten von Verweisdaten für eine Azure Time Series Insights-Umgebung mithilfe von C#
 
-Dieses Thema beschreibt den C#-Beispielcode, den Sie kompilieren können, um Verweisdaten für eine Azure Time Series Insights-Umgebung zu verwalten.
+Dieser Artikel beschreibt ein C#-Beispielprojekt, das Sie kompilieren können, um Verweisdaten für eine Azure Time Series Insights-Umgebung zu verwalten.
 
+## <a name="prerequistes"></a>Voraussetzungen
 Führen Sie vor dem Kompilieren und Ausführen des Beispielcodes die folgenden Schritte aus:
 1. [Erstellen Sie ein Verweisdataset](time-series-insights-add-reference-data-set.md).
 
@@ -30,6 +31,11 @@ Führen Sie vor dem Kompilieren und Ausführen des Beispielcodes die folgenden S
    Informationen zum Einrichten nicht interaktiver Anwendungen finden Sie unter [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md).
 
 3. Ersetzen Sie am Anfang des Beispielcodes die durch **#DUMMY#** markierten Beispielkonstanten. 
+
+Diesen Beispielcode finden Sie auch unter [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights).
+
+## <a name="project-references"></a>Projektverweise
+Fügen Sie die NuGet-Pakete `Microsoft.IdentityModel.Clients.ActiveDirectory` und `Newtonsoft.Json` für dieses Beispiel hinzu. 
 
 ## <a name="c-sample-code"></a>C#-Beispielcode 
 ```csharp

@@ -1,12 +1,12 @@
 ---
 title: Problembehebung bei Storm mit Azure HDInsight | Microsoft-Dokumentation
-description: "Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit Apache Storm und Azure HDInsight."
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit Apache Storm und Azure HDInsight.
 keywords: Azure HDInsight, Storm, FAQ, Problembehandlungshandbuch, allgemeine Probleme
 services: Azure HDInsight
 documentationcenter: na
 author: raviperi
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 74E51183-3EF4-4C67-AA60-6E12FAC999B5
 ms.service: multiple
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: raviperi
-ms.openlocfilehash: c0295af2e71d891d07dad7012b7a27402c375178
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6ee408b32650fe0f0e0b66294896756732a2ca5b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Problembehandlung bei Storm mit Azure HDInsight
 
@@ -71,7 +71,7 @@ Der Exportbefehl schreibt die Metadaten in einem Pfad im Apache Hadoop Distribut
     ```
 
 #### <a name="import-offset-metadata"></a>Importieren von Offsetmetadaten
-1. Stellen Sie per SSH eine Verbindung mit dem ZooKeeper-Cluster im Cluster her, von dem aus der Prüfpunktoffset exportiert werden muss.
+1. Stellen Sie per SSH eine Verbindung mit dem ZooKeeper-Cluster im Cluster her, von dem aus der Prüfpunktoffset importiert werden muss.
 2. Führen Sie (nach der Aktualisierung der HDP-Versionszeichenfolge) den folgenden Befehl aus, um ZooKeeper-Offsetdaten aus dem HDFS-Pfad „/stormmetadta/zkdata“ in den Zookeeper-Server im Zielcluster zu importieren:
 
     ```apache
@@ -79,7 +79,7 @@ Der Exportbefehl schreibt die Metadaten in einem Pfad im Apache Hadoop Distribut
     ```
    
 #### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Löschen von Offsetplatten, damit Topologien entweder vom Anfang oder einem vom Benutzer gewählten Zeitstempel an mit der Verarbeitung von Daten beginnen können
-1. Stellen Sie per SSH eine Verbindung mit dem ZooKeeper-Cluster im Cluster her, von dem aus der Prüfpunktoffset exportiert werden muss.
+1. Stellen Sie per SSH eine Verbindung mit dem ZooKeeper-Cluster im Cluster her, von dem aus der Prüfpunktoffset gelöscht werden muss.
 2. Führen Sie (nach der Aktualisierung der HDP-Versionszeichenfolge) den folgenden Befehl aus, um alle Zookeeper-Offsetdaten im aktuellen Cluster zu löschen:
 
     ```apache
@@ -152,5 +152,5 @@ Die Worker Log4J-Konfiguration wird aus „usr/hdp/\<HDP-Version\>/storm/log4j2/
  
 Beispiele: /usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml, /usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml
 
-### <a name="see-also"></a>Weitere Informationen
+### <a name="see-also"></a>Siehe auch
 [Beheben von Problemen mit Azure HDInsight](../../hdinsight/hdinsight-troubleshoot-guide.md)

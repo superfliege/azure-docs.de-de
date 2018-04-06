@@ -1,11 +1,11 @@
 ---
-title: "Häufig gestellte Fragen zu Azure DNS | Microsoft-Dokumentation"
-description: "Häufig gestellte Fragen zu Azure DNS"
+title: Häufig gestellte Fragen zu Azure DNS | Microsoft-Dokumentation
+description: Häufig gestellte Fragen zu Azure DNS
 services: dns
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: dns
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2017
 ms.author: kumud
-ms.openlocfilehash: a8cff450730d05970398989ceb3e8585aefd6771
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: f07f914ccf8ea6df216e3f571e38d7628b2d7fb6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-dns-faq"></a>Häufig gestellte Fragen zu Azure DNS
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/21/2017
 
 Das Domain Name System (DNS) ist für die Übersetzung (oder Auflösung) eines Website- oder Dienstnamens in die IP-Adresse verantwortlich. Azure DNS ist ein Hostingdienst für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt. Durch das Hosten Ihrer Domänen in Azure können Sie Ihre DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs, Tools und Abrechnung wie für die anderen Azure-Dienste verwalten.
 
-DNS-Domänen in Azure DNS werden im globalen Azure-Netzwerk von DNS-Servern gehostet. Wir verwenden Anycast-Netzwerke, sodass jede DNS-Abfrage vom nächsten verfügbaren DNS-Server beantwortet wird. Damit wird eine schnelle Leistung und hohe Verfügbarkeit für Ihre Domäne sichergestellt.
+DNS-Domänen in Azure DNS werden im globalen Azure-Netzwerk von DNS-Servern gehostet. Hierzu werden Anycast-Netzwerke verwendet, sodass jede DNS-Abfrage vom nächsten verfügbaren DNS-Server beantwortet wird. Azure DNS bietet sowohl schnelle Leistung als auch Hochverfügbarkeit für Ihre Domäne.
 
 Der Azure DNS-Dienst basiert auf Azure Resource Manager. Daher profitiert er von Resource Manager-Funktionen, wie z.B. die rollenbasierte Zugriffskontrolle, Überwachungsprotokolle und Ressourcensperren. Ihren Domänen und Einträge können über das Azure-Portal, Azure PowerShell-Cmdlets und die plattformübergreifende Azure-Befehlszeilenschnittstelle verwaltet werden. Anwendungen, die eine automatische DNS-Verwaltung erfordern, können über die REST-API und SDKs mit dem Dienst zusammenarbeiten.
 
@@ -39,7 +39,7 @@ Weitere Informationen finden Sie auf der [Seite mit den Preisen von Azure DNS](h
 
 ### <a name="what-is-the-sla-for-azure-dns"></a>Wie lautet die Vereinbarung zum Servicelevel (SLA) für Azure DNS?
 
-Für gültige DNS-Anforderungen garantieren wir, dass in 99,99 % der Fälle eine Antwort von mindestens einem Azure DNS-Namenserver empfangen wird.
+Azure garantiert für gültige DNS-Anforderungen, dass in 99,99 % der Fälle eine Antwort von mindestens einem Azure DNS-Namenserver empfangen wird.
 
 Weitere Informationen finden Sie auf der [Seite mit der SLA für Azure DNS](https://azure.microsoft.com/support/legal/sla/dns).
 
@@ -47,7 +47,7 @@ Weitere Informationen finden Sie auf der [Seite mit der SLA für Azure DNS](http
 
 Eine Domäne ist ein eindeutiger Name im Domain Name System, z.B. „contoso.com“.
 
-Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Beispiel: Die Domäne „contoso.com“ kann eine Reihe von DNS-Einträgen wie „mail.contoso.com“ (für einen E-Mail-Server) und „www.contoso.com“ (für eine Website) enthalten. Diese würden in der DNS-Zone „contoso.com“ gehostet werden.
+Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Beispiel: Die Domäne „contoso.com“ kann eine Reihe von DNS-Einträgen wie „mail.contoso.com“ (für einen E-Mail-Server) und „www.contoso.com“ (für eine Website) enthalten. Diese Einträge würden in der DNS-Zone „contoso.com“ gehostet werden.
 
 Ein Domänenname ist *nur ein Name*, während eine DNS-Zone eine Datenressource ist, die die DNS-Einträge für einen Domänennamen enthält. Azure DNS ermöglicht es Ihnen, eine DNS-Zone zu hosten und die DNS-Einträge für eine Domäne in Azure zu verwalten. Darüber hinaus stellt der Dienst DNS-Namenserver bereit, um DNS-Abfragen aus dem Internet zu beantworten.
 
@@ -63,7 +63,7 @@ Sie müssen einen Domänennamen erwerben, wenn Sie Ihre DNS-Zone in der globalen
 
 ### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Unterstützt Azure DNS die Weiterleitung von Datenverkehr oder Endpunktfailover auf Basis von DNS?
 
-Die Weiterleitung von Datenverkehr und Endpunktfailover auf Basis von DNS werden von Azure Traffic Manager bereitgestellt. Dies ist ein separater Azure-Dienst, der zusammen mit Azure DNS verwendet werden kann. Weitere Informationen finden Sie in der [Traffic Manager-Übersicht](../traffic-manager/traffic-manager-overview.md).
+Die Weiterleitung von Datenverkehr und Endpunktfailover auf Basis von DNS werden von Azure Traffic Manager bereitgestellt. Azure Traffic Manager ist ein separater Azure-Dienst, der zusammen mit Azure DNS verwendet werden kann. Weitere Informationen finden Sie in der [Traffic Manager-Übersicht](../traffic-manager/traffic-manager-overview.md).
 
 Azure DNS unterstützt nur das Hosten von „statischen“ DNS-Domänen, in denen jede DNS-Abfrage für einen bestimmten DNS-Eintrag immer die gleiche DNS-Antwort erhält.
 
@@ -71,30 +71,25 @@ Azure DNS unterstützt nur das Hosten von „statischen“ DNS-Domänen, in dene
 
 Nein. Azure DNS unterstützt derzeit nicht den Kauf von Domänennamen. Wenn Sie Domänen erwerben möchten, müssen Sie eine von einem Drittanbieter angebotene Registrierungsstelle für Domänennamen verwenden. Die Registrierungsstelle erhebt in der Regel eine geringe jährliche Gebühr. Die Domänen können dann in Azure DNS für die Verwaltung von DNS-Einträgen gehostet werden. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md) .
 
-Dies ist ein Feature, das wir in unserem Backlog nachverfolgen. Sie können auf unserer Feedbackwebsite [Ihre Unterstützung für dieses Feature registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
-
-### <a name="does-azure-dns-support-private-domains"></a>Unterstützt Azure DNS „private“ Domänen?
-Unterstützung für „private“ Domänen wird mithilfe privater DNS-Zonen implementiert.  Dieses Feature ist derzeit als Vorschau verfügbar.  Private DNS-Zonen werden mit den gleichen Tools wie Azure DNS-Zonen mit Internetverbindung verwaltet, aber sie können nur innerhalb der von Ihnen angegebenen virtuellen Netzwerke aufgelöst werden.  Weitere Informationen finden Sie in der [Übersicht](private-dns-overview.md).
-
-Informationen zu anderen internen DNS-Optionen in Azure finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+Der Domänenkauf ist ein Feature, das im Azure-Backlog nachverfolgt wird. Sie können auf der Feedbackwebsite [Ihre Unterstützung für dieses Feature registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
 
 ### <a name="does-azure-dns-support-dnssec"></a>Unterstützt Azure DNS DNSSEC?
 
 Nein. Azure DNS unterstützt derzeit DNSSEC nicht.
 
-Dies ist ein Feature, das wir in unserem Backlog nachverfolgen. Sie können auf unserer Feedbackwebsite [Ihre Unterstützung für dieses Feature registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support).
+DNSSEC ist ein Feature, das im Azure DNS-Backlog nachverfolgt wird. Sie können auf der Feedbackwebsite [Ihre Unterstützung für dieses Feature registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support).
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Unterstützt Azure DNS Zonenübertragungen (AXFR/IXFR)?
 
 Nein. Azure DNS unterstützt derzeit Zonenübertragungen nicht. DNS-Zonen können [mithilfe der Azure CLI in Azure DNS importiert werden](dns-import-export.md). DNS-Einträge lassen sich dann über das [Azure DNS-Verwaltungsportal](dns-operations-recordsets-portal.md), unsere [REST-API](https://docs.microsoft.com/powershell/module/azurerm.dns), das [SDK](dns-sdk.md), [PowerShell-Cmdlets](dns-operations-recordsets.md) oder das [CLI-Tool](dns-operations-recordsets-cli.md) verwalten.
 
-Dies ist ein Feature, das wir in unserem Backlog nachverfolgen. Sie können auf unserer Feedbackwebsite [Ihre Unterstützung für dieses Feature registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
+Die Zonenübertragung ist ein Feature, das im Azure DNS-Backlog nachverfolgt wird. Sie können auf der Feedbackwebsite [Ihre Unterstützung für dieses Feature registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
 
 ### <a name="does-azure-dns-support-url-redirects"></a>Unterstützt Azure DNS URL-Umleitungen?
 
 Nein. Dienste für URL-Umleitungen sind eigentlich keine DNS-Dienste – sie arbeiten auf der HTTP-Ebene, statt auf der DNS-Ebene. Bei einigen DNS-Anbietern gehört ein Dienst für URL-Umleitungen zum Gesamtangebot. Dies wird derzeit von Azure DNS nicht unterstützt.
 
-Dieses Feature wird in unseren Backlog nachverfolgt. Sie können auf unserer Feedbackwebsite [Ihre Unterstützung für dieses Feature registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
+Das Feature zur URL-Umleitung wird im Azure DNS-Backlog nachverfolgt. Sie können auf der Feedbackwebsite [Ihre Unterstützung für dieses Feature registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
 
 ## <a name="using-azure-dns"></a>Verwenden von Azure DNS
 
@@ -102,11 +97,11 @@ Dieses Feature wird in unseren Backlog nachverfolgt. Sie können auf unserer Fee
 
 Ja. Azure DNS unterstützt das gemeinsame Hosten von Domänen mit anderen DNS-Diensten.
 
-Dazu müssen Sie die NS-Einträge für die Domäne (die steuern, welche Anbieter DNS-Abfragen für die Domäne erhalten) so ändern, dass sie auf die Namenserver für beide Anbieter verweisen. Diese NS-Einträge müssen an drei Stellen geändert werden: in Azure DNS, beim anderen Anbieter und in der übergeordneten Zone (wird in der Regel über die Domänennamen-Registrierungsstelle konfiguriert). Weitere Informationen zur DNS-Delegierung finden Sie unter [Delegieren von Domänen](dns-domain-delegation.md).
+Dazu müssen Sie die NS-Einträge für die Domäne (die steuern, welche Anbieter DNS-Abfragen für die Domäne erhalten) so ändern, dass sie auf die Namenserver für beide Anbieter verweisen. Sie können diese NS-Einträge an drei Stellen ändern: in Azure DNS, beim anderen Anbieter und in der übergeordneten Zone (wird in der Regel über die Domänennamen-Registrierungsstelle konfiguriert). Weitere Informationen zur DNS-Delegierung finden Sie unter [Delegieren von Domänen](dns-domain-delegation.md).
 
-Darüber hinaus müssen Sie sicherstellen, dass die DNS-Einträge für die Domäne zwischen beiden DNS-Anbietern synchron sind. Azure DNS unterstützt derzeit DNS-Zonenübertragungen nicht. Sie müssen DNS-Einträge über das [Azure DNS-Verwaltungsportal](dns-operations-recordsets-portal.md), unsere [REST-API](https://docs.microsoft.com/powershell/module/azurerm.dns), das [SDK](dns-sdk.md), [PowerShell-Cmdlets](dns-operations-recordsets.md) oder das [CLI-Tool](dns-operations-recordsets-cli.md) synchronisieren.
+Darüber hinaus müssen Sie sicherstellen, dass die DNS-Einträge für die Domäne zwischen beiden DNS-Anbietern synchron sind. Azure DNS unterstützt derzeit DNS-Zonenübertragungen nicht. DNS-Einträge müssen über das [Azure DNS-Verwaltungsportal](dns-operations-recordsets-portal.md), die [REST-API](https://docs.microsoft.com/powershell/module/azurerm.dns), das [SDK](dns-sdk.md), [PowerShell-Cmdlets](dns-operations-recordsets.md) oder das [CLI-Tool](dns-operations-recordsets-cli.md) synchronisiert werden.
 
-### <a name="do-i-have-to-delegate-my-domain-to-all-4-azure-dns-name-servers"></a>Muss ich meine Domäne an alle vier Azure DNS-Namenserver delegieren?
+### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Muss ich meine Domäne an alle vier Azure DNS-Namenserver delegieren?
 
 Ja. Azure DNS weist jeder DNS-Zone vier Namenserver zu. Dies dient der Isolierung von Fehlern und einer verbesserten Stabilität. Zur Qualifikation für die Azure DNS-SLA müssen Sie Ihre Domäne an alle vier Namenserver delegieren.
 
@@ -140,9 +135,9 @@ Weitere Informationen finden Sie unter [Schützen von DNS-Zonen und -Einträgen]
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
-### <a name="do-azure-dns-nameservers-resolve-over-ipv6-"></a>Wird bei Azure DNS-Namenservern über IPv6 aufgelöst? 
+### <a name="do-azure-dns-nameservers-resolve-over-ipv6"></a>Wird bei Azure DNS-Namenservern über IPv6 aufgelöst? 
 
-Ja. Azure DNS-Namenserver basieren auf beiden Protokollen (besitzen sowohl IPv4- als auch IPv6-Adressen). Zum Ermitteln der IPv6-Adresse für die Azure DNS-Namenserver, die Ihrer DNS-Zone zugewiesen sind, können Sie ein Tool wie „nslookup“ verwenden (z. B. `nslookup -q=aaaa <Azure DNS Nameserver>`).
+Ja. Azure DNS-Namenserver basieren auf beiden Protokollen (besitzen sowohl IPv4- als auch IPv6-Adressen). Zum Ermitteln der IPv6-Adresse für die Azure DNS-Namenserver, die Ihrer DNS-Zone zugewiesen sind, können Sie ein Tool wie „nslookup“ verwenden (z.B. `nslookup -q=aaaa <Azure DNS Nameserver>`).
 
 ### <a name="how-do-i-set-up-an-international-domain-name-idn-in-azure-dns"></a>Wie richte ich einen internationalen Domänennamen (IDN) in Azure DNS ein?
 
@@ -150,12 +145,77 @@ Internationale Domänennamen (IDNs) funktionieren durch die Codierung der einzel
 
 Sie können internationale Domänennamen (IDNs) in Azure DNS konfigurieren, indem Sie zunächst den Zonennamen oder den Namen des Ressourceneintragssatzes in Punycode konvertieren. Azure DNS unterstützt die integrierte Konvertierung in/aus Punycode gegenwärtig nicht.
 
+## <a name="private-dns"></a>Privates DNS
+
+[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+
+### <a name="does-azure-dns-support-private-domains"></a>Unterstützt Azure DNS „private“ Domänen?
+Unterstützung für „private“ Domänen wird mithilfe des Features für private Zonen implementiert.  Dieses Feature ist derzeit in der Public Preview-Version verfügbar.  Private Zonen werden mit den gleichen Tools wie Azure DNS-Zonen mit Internetverbindung verwaltet, aber sie können nur innerhalb der von Ihnen angegebenen virtuellen Netzwerke aufgelöst werden.  Weitere Informationen finden Sie in der [Übersicht](private-dns-overview.md).
+
+Derzeit werden private Zonen im Azure-Portal nicht unterstützt. 
+
+Informationen zu anderen internen DNS-Optionen in Azure finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+
+### <a name="what-is-the-difference-between-registration-virtual-network-and-resolution-virtual-network-in-the-context-of-private-zones"></a>Was ist der Unterschied zwischen einem virtuellen Registrierungsnetzwerk und einem virtuellen Auflösungsnetzwerk im Kontext von privaten Zonen? 
+Sie können virtuelle Netzwerke auf zwei Arten mit einer privaten DNS-Zone verknüpfen: als ein virtuelles Registrierungsnetzwerk oder als ein virtuelles Auflösungsnetzwerk. In beiden Fällen können virtuelle Computer im virtuellen Netzwerk eine erfolgreiche Auflösung anhand von Einträgen in der privaten Zone vornehmen. Wenn Sie ein virtuelles Netzwerk als ein virtuelles Registrierungsnetzwerk angeben, registriert Azure automatisch (dynamische Registrierung) DNS-Einträge in der Zone für die virtuellen Computer im virtuellen Netzwerk. Darüber hinaus wird beim Löschen eines virtuellen Computers in einem virtuellen Registrierungsnetzwerk von Azure automatisch auch der entsprechende DNS-Eintrag aus der verknüpften privaten Zone entfernt. 
+
+### <a name="will-azure-dns-private-zones-work-across-azure-regions"></a>Funktioniert Azure DNS Private Zones übergreifend in allen Azure-Regionen?
+Ja. Private Zonen werden für die DNS-Auflösung zwischen virtuellen Netzwerken in allen Azure-Regionen auch ohne explizites Peering der virtuellen Netzwerke unterstützt, solange alle virtuellen Netzwerke als virtuelle Lösungsnetzwerke für die private Zone angegeben sind. Kunden benötigen möglicherweise ein Peering der virtuellen Netzwerke, damit der TCP/HTTP-Datenverkehr von einer Region zu einer anderen weitergeleitet werden kann. 
+
+### <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Ist für private Zonen eine Verbindung mit dem Internet aus virtuellen Netzwerken erforderlich?
+Nein. Private Zonen werden in Verbindung mit virtuellen Netzwerken verwendet und ermöglichen Kunden die Verwaltung von Domänen für virtuelle Computer oder andere Ressourcen innerhalb und übergreifend für virtuelle Netzwerke. Für die Namensauflösung ist keine Internetverbindung erforderlich. 
+
+### <a name="can-the-same-private-zone-be-used-for-multiple-virtual-networks-for-resolution"></a>Kann die gleiche private Zone für mehrere virtuelle Netzwerke zur Auflösung verwendet werden? 
+Ja. Kunden können einer einzelnen privaten Zone bis zu zehn virtuelle Auflösungsnetzwerke zuordnen.
+
+### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Kann ein virtuelles Netzwerk, das zu einem anderen Abonnement gehört, einer privaten Zone als virtuelles Auflösungsnetzwerk hinzugefügt werden? 
+Ja, solange der Benutzer über Schreibberechtigung sowohl für die virtuellen Netzwerke als auch die private DNS-Zone verfügt. Beachten Sie, dass die Schreibberechtigung mehreren RBAC-Rollen zugeordnet sein kann. Beispielsweise weist die RBAC-Rolle „Mitwirkender von klassischem Netzwerk“ Schreibberechtigungen für virtuelle Netzwerke auf. Weitere Informationen zu RBAC-Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md).
+
+### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>Werden die automatisch registrierten DNS-Einträge virtueller Computer in einer privaten Zone automatisch gelöscht, wenn die virtuellen Computer vom Kunden gelöscht werden?
+Ja. Wenn Sie einen virtuellen Computer innerhalb eines virtuellen Registrierungsnetzwerks löschen, löschen wir automatisch die DNS-Einträge, die in der Zone aufgrund der Tatsache registriert wurden, dass es sich um ein virtuelles Registrierungsnetzwerk handelt. 
+
+### <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-registration-virtual-network-be-deleted-manually"></a>Kann ein automatisch registrierter Eintrag für einen virtuellen Computer in einer privaten Zone (von einem virtuellen Registrierungsnetzwerk) manuell gelöscht werden? 
+Nein. Derzeit können die DNS-Einträge virtueller Computer, die in einer privaten Zone von einem virtuellen Registrierungsnetzwerk automatisch registriert werden, von Kunden nicht angezeigt oder bearbeitet werden. Sie können jedoch solche automatisch registrierten DNS-Einträge durch einen manuell erstellten DNS-Eintrag in der Zone ersetzen (überschreiben). Informationen dazu finden Sie in der folgenden Frage und Antwort zu diesem Thema.
+
+### <a name="what-happens-when-we-attempt-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-registration-virtual-network"></a>Was geschieht bei dem Versuch, einen neuen DNS-Eintrag manuell in einer privaten Zone zu erstellen, die den gleichen Hostnamen wie ein (automatisch registrierter) vorhandener virtueller Computer in einem virtuellen Registrierungsnetzwerk aufweist? 
+Wenn Sie versuchen, manuell einen neuen DNS-Eintrag in einer privaten Zone zu erstellen, die den gleichen Hostnamen wie ein vorhandener (automatisch registrierter) virtueller Computer in einem virtuellen Registrierungsnetzwerk aufweist, wird dem neuen DNS-Eintrag gestattet, den automatisch registrierten Eintrag für den virtuellen Computer zu überschreiben. Darüber hinaus wird bei dem anschließenden Versuch, diesen manuell erstellten DNS-Eintrag aus der Zone zu löschen, der Löschvorgang erfolgreich ausgeführt, und die automatische Registrierung erfolgt erneut (der DNS-Eintrag wird in der Zone automatisch neu erstellt), sofern der virtuelle Computer noch vorhanden ist und ihm eine private IP-Adresse angefügt ist. 
+
+### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone--would-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-as-well"></a>Was geschieht, wenn wir die Verknüpfung eines virtuellen Registrierungsnetzwerks mit einer privaten Zone aufheben? Würden auch die automatisch registrierten Einträge virtueller Computer vom virtuellen Netzwerk aus der Zone entfernt werden?
+Ja. Wenn Sie die Verknüpfung eines virtuellen Registrierungsnetzwerks mit einer privaten Zone aufheben (die DNS-Zone aktualisieren, um das zugeordnete virtuelle Registrierungsnetzwerk zu entfernen), entfernt Azure alle automatisch registrierten Einträge virtueller Computer aus der Zone. 
+
+### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-that-is-linked-to-a-private-zone--do-we-have-to-manually-update-the-private-zone-to-un-link-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>Was geschieht, wenn wir ein virtuelles Registrierungsnetzwerk (oder Auflösungsnetzwerk) löschen, das mit einer privaten Zone verknüpft ist? Müssen wir die private Zone manuell aktualisieren, um die Verknüpfung des virtuellen Netzwerks mit der Zone als virtuelles Registrierungsnetzwerk (oder Auflösungsnetzwerk) aufzuheben?
+Ja. Wenn Sie ein virtuelles Registrierungsnetzwerk (oder Auflösungsnetzwerk) löschen, ohne zuerst die Verknüpfung mit einer privaten Zone aufzuheben, ermöglicht Azure einen erfolgreichen Löschvorgang, doch wird die Verknüpfung des virtuellen Netzwerks mit der privaten Zone (falls vorhanden) nicht automatisch aufgehoben. Sie müssen die Verknüpfung des virtuellen Netzwerks mit der privaten Zone manuell aufheben. Aus diesem Grund wird empfohlen, zuerst die Verknüpfung Ihres virtuellen Netzwerks mit Ihrer privaten Zone aufzuheben, bevor Sie es löschen.
+
+### <a name="would-dns-resolution-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>Würde die DNS-Auflösung mithilfe des Standard-FQDN (internal.cloudapp.net) auch funktionieren, wenn eine private Zone (z.B. „contoso.local“) mit einem virtuellen Netzwerk verknüpft ist? 
+Ja. Das Feature für private Zonen ersetzt nicht die DNS-Standardauflösungen mithilfe der von Azure bereitgestellten Zone „internal.cloudapp.net“, sondern wird als eine zusätzliche Funktion oder Erweiterung angeboten. In beiden Fällen (bei Verwendung der von Azure bereitgestellten Zone „internal.cloudapp.net“ oder Ihrer eigenen privaten Zone) wird empfohlen, den FQDN der Zone zu verwenden, anhand der Auflösungen vorgenommen werden sollen. 
+
+### <a name="would-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Würde das DNS-Suffix auf virtuellen Computern in einem verknüpften virtuellen Netzwerk in das der privaten Zone geändert? 
+Nein. Derzeit wird weiterhin das von Azure bereitgestellte Standardsuffix (*.internal.cloudapp.net) als DNS-Suffix auf den virtuellen Computern in Ihrem verknüpften virtuellen Netzwerk verwendet. Sie können jedoch dieses DNS-Suffix auf Ihren virtuellen Computern manuell in das der privaten Zone ändern. 
+
+### <a name="are-there-any-limitations-for-private-zones-during-this-preview"></a>Gibt es Einschränkungen für private Zonen während dieser Preview-Phase?
+Ja. Während der Public Preview-Phase gelten die folgenden Einschränkungen:
+* Ein virtuelles Registrierungsnetzwerk pro privater Zone.
+* Bis zu zehn virtuelle Auflösungsnetzwerke pro privater Zone.
+* Ein bestimmtes virtuelles Netzwerk kann nur mit einer privaten Zone als ein virtuelles Registrierungsnetzwerk verknüpft werden.
+* Ein bestimmtes virtuelles Netzwerk kann mit bis zu zehn privaten Zonen als ein virtuelles Auflösungsnetzwerk verknüpft werden.
+* Wenn ein virtuelles Registrierungsnetzwerk angegeben wird, können die DNS-Einträge für die virtuellen Computer aus diesem virtuellen Netzwerk, die für die private Zone registriert sind, nicht über Powershell/CLI/APIs angezeigt oder abgerufen werden, doch werden die Einträge der virtuellen Computer registriert und erfolgreich aufgelöst.
+* Reverse-DNS funktioniert nur für den privaten IP-Bereich im virtuellen Registrierungsnetzwerk.
+* Reverse-DNS für eine private IP-Adresse, die nicht in der privaten Zone registriert ist (z.B. eine private IP-Adresse für einen virtuellen Computer in einem virtuellen Netzwerk, das als ein virtuelles Auflösungsnetzwerk mit einer privaten Zone verknüpft ist), gibt „internal.cloudapp.net“ als DNS-Suffix zurück, doch kann dieses Suffix nicht aufgelöst werden.   
+* Das virtuelle Netzwerk muss leer sein (d.h. keine virtuellen Computer mit angefügter NIC) bei der anfänglichen (d.h. erstmaligen) Verknüpfung mit einer privaten Zone als virtuelles Registrierungs- oder Auflösungsnetzwerk. Das virtuelle Netzwerk braucht jedoch dann für zukünftige Verknüpfungen mit anderen privaten Zonen als virtuelles Registrierungs- oder Auflösungsnetzwerk nicht leer zu sein. 
+* Derzeit wird die bedingte Weiterleitung nicht unterstützt, z.B. für eine Auflösung zwischen Azure und lokalen Netzwerken. Eine Dokumentation dazu, wie Kunden dieses Szenario mithilfe anderer Mechanismen umsetzen können, finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+
+### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Gibt es Kontingente oder Grenzwerte in Bezug auf Zonen oder Einträge für private Zonen?
+Es gibt für private Zonen keine gesonderten Grenzwerte bezüglich der Anzahl zulässiger Zonen pro Abonnement oder der Anzahl von Eintragssätzen pro Zone. Sowohl für öffentliche als auch private Zonen gelten die allgemeinen DNS-Grenzwerte, die [hier](../azure-subscription-service-limits.md#dns-limits) beschrieben sind.
+
+### <a name="is-there-portal-support-for-private-zones"></a>Besteht Portalunterstützung für private Zonen?
+Private Zonen, die bereits über Mechanismen außerhalb des Portals (API/PowerShell/CLI/SDKs) erstellt wurden, werden im Azure-Portal angezeigt, doch können Kunden keine neuen privaten Zonen erstellen oder Zuordnungen zu virtuellen Netzwerken verwalten. Darüber hinaus sind für virtuelle Netzwerke, die als virtuelle Registrierungsnetzwerke zugeordnet werden, die automatisch registrierten Einträge für virtuelle Computer vom Portal aus nicht sichtbar. 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Weitere Informationen zu Azure DNS](dns-overview.md)
 <br>
-[Using Azure DNS for private domains](private-dns-overview.md)
- (Verwenden von Azure DNS für private Domänen)<br>
+[Verwenden von Azure DNS für private Domänen](private-dns-overview.md)
+<br>
 [Weitere Informationen zu DNS-Zonen und -Einträgen](dns-zones-records.md)
 <br>
 [Erste Schritte mit Azure DNS](dns-getstarted-portal.md)

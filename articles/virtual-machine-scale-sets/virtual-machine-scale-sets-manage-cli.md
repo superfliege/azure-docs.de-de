@@ -1,13 +1,13 @@
 ---
 title: Verwalten von VM-Skalierungsgruppen mit der Azure CLI 2.0 | Microsoft-Dokumentation
-description: "Gängige Azure CLI 2.0-Befehle für die Verwaltung von VM-Skalierungsgruppen (etwa zum Starten und Beenden einer Instanz oder zum Ändern der Kapazität der Skalierungsgruppe)."
+description: Gängige Azure CLI 2.0-Befehle für die Verwaltung von VM-Skalierungsgruppen (etwa zum Starten und Beenden einer Instanz oder zum Ändern der Kapazität der Skalierungsgruppe).
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: a484cf6734ff663a852be1a46e2b2ca2f75bb17d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1afb43b65203406a7d49b0e3f641bc22d164a4a9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Verwalten einer VM-Skalierungsgruppe mit der Azure CLI 2.0
 Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. In diesem Artikel werden einige der gängigen Azure CLI 2.0-Befehle behandelt, mit denen Sie diese Aufgaben durchführen können.
 
-Für diese Verwaltungsaufgaben benötigen Sie den neuesten Build der Azure CLI 2.0. Informationen zum Installieren und Verwenden der neuesten Version finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli). Bei Bedarf können Sie [eine VM-Skalierungsgruppe über das Azure-Portal erstellen](virtual-machine-scale-sets-create-portal.md).
+Für diese Verwaltungsaufgaben benötigen Sie die aktuelle Azure CLI 2.0. Weitere Informationen finden Sie unter [Installieren der Azure CLI 2.0](/cli/azure/install-azure-cli). Bei Bedarf können Sie [eine VM-Skalierungsgruppe mit der Azure CLI 2.0 erstellen](quick-create-cli.md).
 
 
 ## <a name="view-information-about-a-scale-set"></a>Anzeigen von Informationen zu einer Skalierungsgruppe

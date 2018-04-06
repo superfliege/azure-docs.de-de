@@ -16,17 +16,57 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 52be84b73e70a02c43ef71917dc272060d82b42d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4dd908908877a222c708c9b2ab6255ab9a4b414a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
 Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppen in Azure.
 
-## <a name="autoscale"></a>Automatische Skalierung
+## <a name="top-frequently-asked-questions-for-scale-sets"></a>Die am häufigsten gestellten Fragen zu Skalierungsgruppen
+**F.** Wie viele virtuelle Computer können in einer Skalierungsgruppe enthalten sein?
+
+**A.** Eine Skalierungsgruppe kann zwischen 0 und 1.000 virtuelle Computer (Plattformimages) bzw. 0 bis 300 virtuelle Computer (benutzerdefinierte Images) enthalten. 
+
+**F.** Werden Datenträger in Skalierungsgruppen unterstützt?
+
+**A.** Ja. Für eine Skalierungsgruppe kann eine Konfiguration für angefügte Datenträger definiert werden, die für alle virtuellen Computer der Gruppe gilt. Weitere Informationen finden Sie unter [Azure-VM-Skalierungsgruppen und angefügte Datenträger](virtual-machine-scale-sets-attached-disks.md). Beispiele für andere Optionen zum Speichern von Daten:
+
+* Azure-Dateien (SMB-freigegebene Laufwerke)
+* Betriebssystemlaufwerk
+* Temporäres Laufwerk (lokal; nicht durch Azure Storage gesichert)
+* Azure-Datendienst (z.B. Azure-Tabellen, Azure-Blobs)
+* Externer Datendienst (z.B. Remotedatenbank)
+
+**F.** In welchen Azure-Regionen werden Skalierungsgruppen unterstützt?
+
+**A.** Alle Regionen unterstützen Skalierungsgruppen.
+
+**F.** Wie erstelle ich eine Skalierungsgruppe mit einem benutzerdefinierten Image?
+
+**A.** Erstellen Sie einen verwalteten Datenträger auf der Grundlage Ihrer VHD mit benutzerdefiniertem Image, und verweisen Sie in Ihrer Skalierungsgruppenvorlage darauf. Ein entsprechendes Beispiel finden Sie [hier](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os).
+
+**F.** Welche virtuellen Computer werden entfernt, wenn ich meine Kapazität für Skalierungsgruppen von 20 auf 15 verringere?
+
+**A.** Die Entfernung der virtuellen Computer aus den Skalierungsgruppen erfolgt gleichmäßig über Update- und Fehlerdomänen hinweg, um die Verfügbarkeit zu maximieren. Die virtuellen Computer mit den höchsten IDs werden zuerst entfernt.
+
+**F.** Was passiert, wenn ich dann die Kapazität von 15 auf 18 erhöhe?
+
+**A.** Wenn Sie die Kapazität auf 18 erhöhen, werden drei neue VMs erstellt. Die VM-Instanz-ID wird jeweils ausgehend vom vorherigen höchsten Wert erhöht (Beispiel: 20, 21, 22). Virtuelle Computer werden über Fehler- und Updatedomänen hinweg gleichmäßig verteilt.
+
+**F.** Kann ich bei Verwendung mehrerer Erweiterungen in einer Skalierungsgruppe eine Ausführungsreihenfolge erzwingen?
+
+**A.** Nicht direkt. Bei der customScript-Erweiterung kann das Skript jedoch auf den Abschluss einer anderen Erweiterung warten. Weitere Informationen zur Erweiterungssequenzierung finden Sie im Blogbeitrag [Extension Sequencing in Azure VM Scale Sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) (Erweiterungssequenzierung in Azure-VM-Skalierungsgruppen).
+
+**F.** Funktionieren Skalierungsgruppen mit Azure-Verfügbarkeitsgruppen?
+
+**A.** Ja. Eine Skalierungsgruppe ist eine implizite Verfügbarkeitsgruppe mit fünf Fehlerdomänen und fünf Updatedomänen. Skalierungsgruppen mit mehr als 100 virtuellen Computern gelten über mehrere *Platzierungsgruppen* hinweg, die wiederum mehreren Verfügbarkeitsgruppen entsprechen. Weitere Informationen zu Platzierungsgruppen finden Sie unter [Verwenden umfangreicher VM-Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md). Eine Verfügbarkeitsgruppe mit virtuellen Computern kann sich im gleichen virtuellen Netzwerk befinden wie eine Skalierungsgruppe mit virtuellen Computern. Oftmals werden virtuelle Steuerknotencomputer (für die häufig eine eindeutige Konfiguration erforderlich ist) in einer Verfügbarkeitsgruppe und Datenknoten in der Skalierungsgruppe platziert.
+
+
+## <a name="autoscale"></a>Autoscale
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Was sind die bewährten Methoden für die automatische Skalierung in Azure?
 
@@ -558,7 +598,7 @@ Um eine VM-Skalierungsgruppe mit einer benutzerdefinierten DNS-Konfiguration zu 
 
 ### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>Wie kann ich eine Skalierungsgruppe so konfigurieren, dass sie jeder VM eine öffentliche IP-Adresse zuordnet?
 
-Um eine VM-Skalierungsgruppe zu erstellen, die jeder VM eine öffentliche IP-Adresse zuweist, stellen Sie sicher, dass die API-Version der Ressource „Microsoft.Compute/virtualMAchineScaleSets“ „2017-03-30“ ist, und fügen Sie ein _Publicipaddressconfiguration_-JSON-Paket im „ipConfigurations“-Abschnitt der Skalierungsgruppe hinzu. Beispiel:
+Um eine VM-Skalierungsgruppe zu erstellen, die jeder VM eine öffentliche IP-Adresse zuweist, stellen Sie sicher, dass die API-Version der Ressource „Microsoft.Compute/virtualMachineScaleSets“ „2017-03-30“ ist, und fügen Sie ein _publicipaddressconfiguration_-JSON-Paket im Abschnitt „ipConfigurations“ der Skalierungsgruppe hinzu. Beispiel:
 
 ```json
     "publicipaddressconfiguration": {
@@ -694,7 +734,7 @@ Wenn Sie Informationen zu den Eigenschaften für die einzelnen virtuellen Comput
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>Kann ich unterschiedliche Erweiterungsargumente an verschiedene virtuelle Computer in einer VM-Skalierungsgruppe übergeben?
 
-Nein. Es ist nicht möglich, unterschiedliche Erweiterungsargumente an verschiedene virtuelle Computer in einer VM-Skalierungsgruppe zu übergeben. Erweiterungen können aber unter Berücksichtigung der eindeutigen Eigenschaften des ausführenden virtuellen Computers (beispielsweise des Computernamens) aktiv werden. Darüber hinaus können Erweiterungen Instanzmetadaten von „http://169.254.169.254“ abfragen, um weitere Informationen zu dem virtuellen Computer zu erhalten.
+Nein. Es ist nicht möglich, unterschiedliche Erweiterungsargumente an verschiedene virtuelle Computer in einer VM-Skalierungsgruppe zu übergeben. Erweiterungen können aber unter Berücksichtigung der eindeutigen Eigenschaften des ausführenden virtuellen Computers (beispielsweise des Computernamens) aktiv werden. Darüber hinaus können Erweiterungen Instanzmetadaten von http://169.254.169.254 abfragen, um weitere Informationen zu dem virtuellen Computer zu erhalten.
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Warum gibt es Lücken zwischen den Namen der virtuellen Computer meiner VM-Skalierungsgruppe und den IDs virtueller Computer? Beispiel: 0, 1, 3...
 

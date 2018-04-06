@@ -42,7 +42,7 @@ Nein.
 
 **Gelten für Kunden, die verwaltete Datenträger verwenden, Einschränkungen bei der Skalierung?**
 
-Managed Disks beseitigt die Grenzwerte im Zusammenhang mit Speicherkonten. Die Anzahl verwalteter Datenträger pro Abonnement ist allerdings standardmäßig auf 2000 beschränkt. Wenden Sie sich an den Support, um diese Zahl zu erhöhen.
+Managed Disks beseitigt die Grenzwerte im Zusammenhang mit Speicherkonten. Der Grenzwert (gleichzeitig auch der Standardgrenzwert) liegt jedoch bei 10.000 verwalteten Datenträgern pro Region und Datenträgertyp für ein Abonnement.
 
 **Kann ich eine inkrementelle Momentaufnahme eines verwalteten Datenträgers erstellen?**
 

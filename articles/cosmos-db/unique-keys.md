@@ -1,25 +1,25 @@
 ---
-title: "Eindeutige Schlüssel in Azure Cosmos DB | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie eindeutige Schlüssel in der Azure Cosmos DB-Datenbank verwendet werden."
+title: Eindeutige Schlüssel in Azure Cosmos DB | Microsoft-Dokumentation
+description: Erfahren Sie, wie eindeutige Schlüssel in der Azure Cosmos DB-Datenbank verwendet werden.
 services: cosmos-db
-keywords: "Einschränkung auf eindeutige Schlüssel, Verstoß gegen Einschränkung auf eindeutige Schlüssel"
+keywords: Einschränkung auf eindeutige Schlüssel, Verstoß gegen Einschränkung auf eindeutige Schlüssel
 author: rafats
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b15d5041-22dd-491e-a8d5-a3d18fa6517d
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 03/21/2018
 ms.author: rafats
-ms.openlocfilehash: c530b34edf9bfa0651b7b114dcf7e8add0d906ed
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 0c80ee13298c2c749c5f7eb7e55d1d77a8d6a34e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Eindeutige Schlüssel in Azure Cosmos DB
 
@@ -58,7 +58,7 @@ Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt w
 
 Jeder eindeutige Schlüssel kann höchstens 16 Pfadwerte (z. B. „/firstName“, „/lastName“, „/address/zipCode“ usw.) enthalten. 
 
-Jede Richtlinie für eindeutige Schlüssel kann höchstens 10 Einschränkungen auf eindeutige Schlüssel oder Kombinationen enthalten. Das vorherige Beispiel, in dem Vorname, Nachname und E-Mail-Adresse verwendet werden, ist also nur eine Einschränkung und verwendet drei der 16 verfügbaren möglichen Pfade. 
+Jede Richtlinie für eindeutige Schlüssel darf höchstens zehn Einschränkungen auf eindeutige Schlüssel oder Kombinationen enthalten, und die kombinierten Pfade für alle Eigenschaften eindeutiger Indizes dürfen 60 Zeichen nicht überschreiten. Das vorherige Beispiel, in dem Vorname, Nachname und E-Mail-Adresse verwendet werden, ist also nur eine Einschränkung und verwendet drei der 16 verfügbaren möglichen Pfade. 
 
 Gebühren für Anforderungseinheiten für das Erstellen, Aktualisieren und Löschen eines Elements sind geringfügig höher, wenn eine Richtlinie für eindeutige Schlüssel für den Container gilt. 
 

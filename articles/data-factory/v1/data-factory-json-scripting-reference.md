@@ -4,7 +4,7 @@ description: Stellt JSON-Schemas für Data Factory-Entitäten bereit.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
+manager: craigg
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 519a762e5f89533f4425d38e4a1ca76d8e3dd40f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 198fa15b7ee8cce6781e6a2575844a9666185be9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -499,7 +499,7 @@ Legen Sie beim Kopieren von Daten aus einer Azure Blob Storage-Instanz den **Que
 | --- | --- | --- | --- |
 | recursive |Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. |True (Standardwert), False |Nein  |
 
-#### <a name="example-blobsource"></a>Beispiel: BlobSource**
+#### <a name="example-blobsource"></a>Beispiel: **BlobSource**
 ```json
 {
     "name": "SamplePipeline",
@@ -3325,8 +3325,8 @@ Sie können ein lokales Dateisystem mithilfe eines verknüpften Diensts vom Typ 
 #### <a name="sample-folder-path-definitions"></a>Beispieldefinitionen für Ordnerpfad 
 | Szenario | Host in der Definition des verknüpften Diensts | folderPath in der Datasetdefinition |
 | --- | --- | --- |
-| Lokaler Ordner auf dem Datenverwaltungsgateway-Computer:  <br/><br/>Beispiele: D:\\\* oder D:\Ordner\Unterordner\\\* |D:\\\\ (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/> localhost (für ältere Versionen als Datenverwaltungsgateway 2.0) |.\\\\ oder Ordner\\\\Unterordner (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/>D:\\\\ oder D:\\\\Ordner\\\\Unterordner (für Gatewayversionen unter 2.0) |
-| Freigegebener Remoteordner: <br/><br/>Beispiele: \\\\MeinServer\\Freigabe\\\* oder \\\\MeinServer\\Freigabe\\Ordner\\Unterordner\\\* |\\\\\\\\MeinServer\\\\Freigabe |.\\\\ oder Ordner\\\\Unterordner |
+| Lokaler Ordner auf dem Datenverwaltungsgateway-Computer:  <br/><br/>Beispiele: D:\\\* oder D:\Ordner\Unterordner\\* |D:\\\\ (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/> localhost (für ältere Versionen als Datenverwaltungsgateway 2.0) |.\\\\ oder Ordner\\\\Unterordner (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/>D:\\\\ oder D:\\\\Ordner\\\\Unterordner (für Gatewayversionen unter 2.0) |
+| Freigegebener Remoteordner: <br/><br/>Beispiele: \\\\MeinServer\\Freigabe\\\* oder \\\\MeinServer\\Freigabe\\Ordner\\Unterordner\\* |\\\\\\\\MeinServer\\\\Freigabe |.\\\\ oder Ordner\\\\Unterordner |
 
 
 #### <a name="example-using-username-and-password-in-plain-text"></a>Beispiel: Mit "username" und "password" im Nur-Text-Format
@@ -3898,7 +3898,7 @@ Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `
 }
 ```
 
-#### <a name="example-basic-authentication-with-encrypted-credential"></a>Beispiel: Standardauthentifizierung mit verschlüsselten Anmeldeinformationen**
+#### <a name="example-basic-authentication-with-encrypted-credential"></a>Beispiel: **Standardauthentifizierung mit verschlüsselten Anmeldeinformationen**
 
 ```json
 {
@@ -3919,7 +3919,7 @@ Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `
 }
 ```
 
-#### <a name="using-ssh-public-key-authentication"></a>Verwenden von Authentifizierung mit öffentlichem SSH-Schlüssel:**
+#### <a name="using-ssh-public-key-authentication"></a>**Verwenden von Authentifizierung mit öffentlichem SSH-Schlüssel:**
 
 Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `SshPublicKey` fest, und geben Sie über die im letzten Abschnitt beschriebenen allgemeinen Eigenschaften des SFTP-Connectors hinaus die folgenden Eigenschaften an:
 
@@ -3949,7 +3949,7 @@ Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `
 }
 ```
 
-#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>Beispiel: SshPublicKey-Authentifizierung unter Verwendung des Inhalts des privaten Schlüssels**
+#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>Beispiel: **SshPublicKey-Authentifizierung unter Verwendung des Inhalts des privaten Schlüssels**
 
 ```json
 {
@@ -4591,7 +4591,7 @@ Legen Sie zum Definieren eines verknüpften Salesforce-Diensts den **Typ** des v
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br><br> - Die Standard-URL lautet „https://login.salesforce.com“. <br> - Geben Sie zum Kopieren von Daten aus der Sandbox die URL „https://test.salesforce.com“ an. <br> - Geben Sie zum Kopieren von Daten aus der benutzerdefinierten Domäne z.B. „https://[Domäne].my.salesforce.com“ an. |Nein  |
+| environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br><br> – Der Standardwert ist „https://login.salesforce.com“. <br> – Um Daten aus einer Sandbox zu kopieren, geben Sie „https://test.salesforce.com“ an. <br> - Geben Sie zum Kopieren von Daten aus der benutzerdefinierten Domäne z.B. „https://[Domäne].my.salesforce.com“ an. |Nein  |
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja |
 | securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Zurücksetzen Ihres Sicherheitstokens](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). |Ja |

@@ -1,22 +1,22 @@
 ---
-title: "Gerätekonzepte bei der Azure-Gerätebereitstellung | Microsoft-Dokumentation"
-description: "Beschreibt Konzepte der Gerätebereitstellung, die speziell für Geräte mit dem Device Provisioning-Dienst und IoT Hub gelten"
+title: Gerätekonzepte bei der Azure-Gerätebereitstellung | Microsoft-Dokumentation
+description: Beschreibt Konzepte der Gerätebereitstellung, die speziell für Geräte mit dem Device Provisioning-Dienst und IoT Hub gelten
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
 ms.date: 09/05/2017
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 5297bc57729d9e983d63244c71eb21995cf73f0e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5482801461e2afea33d65d559723116f37a35d1f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Konzepte für Geräte mit dem IoT Hub Device Provisioning-Dienst
 
@@ -32,8 +32,8 @@ Der Nachweismechanismus ist die Methode für das Überprüfen der Identität ein
 > IoT Hub verwendet das „Authentifizierungsschema“ für ein ähnliches Konzept in diesem Dienst.
 
 Der Device Provisioning-Dienst unterstützt zwei Arten von Nachweisen:
-* **X.509-Zertifikate** – basierend auf dem Standardauthentifizierungsablauf für X.509-Zertifikate
-* **SAS-Token** – basierend auf einer Nonce Herausforderung mit dem TPM-Standard für Schlüssel. Dies erfordert keine physische TPM-Instanz auf dem Gerät. Der Dienst erwartet für den Nachweis jedoch den Endorsement Key gemäß [TPM-Spezifikation](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **X.509-Zertifikate** – basierend auf dem Standardauthentifizierungsablauf für X.509-Zertifikate.
+* **Trusted Platform Module (TPM)** – basierend auf einer Nonce-Herausforderung mit dem TPM-Standard für Schlüssel zum Bereitstellen eines signierten SAS-Tokens (Shared Access Signature). Dies erfordert keine physische TPM-Instanz auf dem Gerät. Der Dienst erwartet für den Nachweis jedoch den Endorsement Key gemäß [TPM-Spezifikation](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
 
 ## <a name="hardware-security-module"></a>Hardwaresicherheitsmodul
 

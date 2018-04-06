@@ -2,10 +2,10 @@
 title: 'Data Factory-Tutorial: erste Datenpipeline | Microsoft Docs'
 description: In diesem Azure Data Factory-Tutorial erfahren Sie, wie Sie eine Data Factory erstellen und planen, die Daten unter Verwendung eines Hive-Skripts in einem Hadoop-Cluster verarbeitet.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 374eebfe35207f6e5264159dcb72abddc6de4598
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2fc9c0a823f48446f98fe9686242b8500462427b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Tutorial: Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters
 > [!div class="op_single_selector"]
@@ -85,8 +85,8 @@ Bevor Sie mit diesem Tutorial beginnen, müssen folgende Voraussetzungen erfüll
 
 1. **Azure-Abonnement** – Wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein kostenloses Testversionskonto einrichten. Im Artikel [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) erfahren Sie, wie Sie ein kostenloses Testkonto erhalten.
 2. **Azure Storage** – Sie benötigen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account) . Notieren Sie sich nach Erstellung des Speicherkontos den **Kontonamen** und den **Zugriffsschlüssel**. Siehe [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](../../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys).
-3. Laden Sie die Hive-Abfragedatei (**HQL**) herunter, und sehen Sie sie durch. Sie finden sie unter [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Diese Abfrage transformiert die Eingabedaten in Ausgabedaten. 
-4. Laden Sie die Beispieleingabedatei (**input.log**) herunter, und sehen Sie sie durch: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
+3. Laden Sie die Hive-Abfragedatei (**HQL**) unter [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) herunter, und überprüfen Sie sie. Diese Abfrage transformiert die Eingabedaten in Ausgabedaten. 
+4. Laden Sie die Beispieleingabedatei (**input.log**) unter [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) herunter, und überprüfen Sie sie.
 5. Erstellen Sie einen Blobcontainer namens **adfgetstarted** in Azure Blob Storage. 
 6. Laden Sie im Container **adfgetstarted** die Datei **partitionweblogs.hql** in den Ordner **script** hoch. Verwenden Sie Tools wie etwa den [Microsoft Azure Storage-Explorer](http://storageexplorer.com/). 
 7. Laden Sie im Container **adfgetstarted** die Datei **input.log** in den Ordner **inputdata** hoch. 

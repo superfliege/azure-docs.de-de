@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: lakasa
-ms.openlocfilehash: 1360d8bb0911c424747209c69b830fc1ee461798
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 04688f943ac9eba27ca193aa2054c69b6a94547d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault
 
@@ -111,11 +111,11 @@ Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -
 
 ### <a name="step-5-copy-data-to-storage-account"></a>Schritt 5: Kopieren von Daten in das Speicherkonto
 
-Informationen dazu, wie Sie Daten zum Verschlüsseln in das neue Speicherkonto übertragen, finden Sie in Schritt 3 des Artikels [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md#step-3-copy-data-to-storage-account).
+Übertragen von Daten in das neue Speicherkonto zur Verschlüsselung. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md#faq-for-storage-service-encryption).
 
 ### <a name="step-6-query-the-status-of-the-encrypted-data"></a>Schritt 6: Abfragen des Status der verschlüsselten Daten
 
-Informationen dazu, wie den Status der verschlüsselten Daten abfragen, finden Sie in Schritt 4 des Artikels [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md#step-4-query-the-status-of-the-encrypted-data).
+Abfragen des Status der verschlüsselten Daten
 
 ## <a name="faq-for-sse-with-customer-managed-keys"></a>Häufig gestellte Fragen zu SSE mit von Kunden verwalteten Schlüsseln
 

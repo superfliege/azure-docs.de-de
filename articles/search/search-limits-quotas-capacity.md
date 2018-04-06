@@ -1,11 +1,11 @@
 ---
-title: "Grenzwerte für den Azure Search-Dienst | Microsoft Docs"
-description: "Grenzwerte für den Dienst, die bei der Kapazitätsplanung verwendet werden, sowie Höchstwerte für Anforderungen und Antworten für Azure Search."
+title: Grenzwerte für den Azure Search-Dienst | Microsoft Docs
+description: Grenzwerte für den Dienst, die bei der Kapazitätsplanung verwendet werden, sowie Höchstwerte für Anforderungen und Antworten für Azure Search.
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-portal
 ms.assetid: 857a8606-c1bf-48f1-8758-8032bbe220ad
 ms.service: search
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/09/2017
+ms.date: 03/26/2018
 ms.author: heidist
-ms.openlocfilehash: 3deb0ff81114c840798c5927ad7311d7e603813d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fb2234e79e8deb98a94068f31a40c8f0b415d7ba
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic** oder **Standard** erfolgt.
@@ -32,30 +32,35 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und a
 > Ein Dienst wird für einen bestimmten Tarif bereitgestellt. Das Wechseln von Tarifen, um die Kapazität zu erhöhen, umfasst die Bereitstellung eines neuen Diensts (es gibt kein direktes Upgrade). Weitere Informationen finden Sie unter [Auswählen einer SKU oder eines Tarifs](search-sku-tier.md). Weitere Informationen zum Anpassen der Kapazität in einem Dienst, den Sie bereits bereitgestellt haben, finden Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in Azure Search](search-capacity-planning.md).
 >
 
-## <a name="per-subscription-limits"></a>Nach Grenzwerten für Abonnements
+## <a name="subscription-limits"></a>Grenzwerte für Abonnements
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
 
-## <a name="per-service-limits"></a>Nach Dienstbeschränkungen
+## <a name="service-limits"></a>Diensteinschränkungen
 [!INCLUDE [azure-search-limits-per-service](../../includes/azure-search-limits-per-service.md)]
 
-## <a name="per-index-limits"></a>Nach Indexlimits
-Es gibt eine 1:1-Entsprechung zwischen Grenzwerten für Indizes und Grenzwerten für Indexer. Bei einem Grenzwert von 200 Indizes beträgt die maximale Zahl von Indexern für den gleichen Dienst auch 200.
+## <a name="index-limits"></a>Indexgrenzwerte
 
 | Ressource | Kostenlos | Basic | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
-| Index: maximale Anzahl von Feldern pro Index |1000 |100 <sup>1</sup> |1000 |1000 |1000 |1000 |
-| Index: maximale Anzahl von Bewertungsprofilen pro Index |100 |100 |100 |100 |100 |100 |
-| Index: maximale Anzahl von Funktionen pro Profil |8 |8 |8 |8 |8 |8 |
-| Indexer: maximale Indizierungslast pro Aufruf |10.000 Dokumente |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |– <sup>2</sup> |
-| Indexer: maximale Ausführungszeit | 1–3 Minuten<sup>3</sup> |24 Stunden |24 Stunden |24 Stunden |24 Stunden |– <sup>2</sup> |
-| Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |– <sup>2</sup> |
-| Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4 Millionen |4 Millionen |4 Millionen |– <sup>2</sup> |
+| Maximale Anzahl von Feldern pro Index |1000 |100 <sup>1</sup> |1000 |1000 |1000 |1000 |
+| Maximale Anzahl von Bewertungsprofilen pro Index |100 |100 |100 |100 |100 |100 |
+| Maximale Anzahl von Funktionen pro Profil |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> Der Basic-Tarif ist die einzige SKU mit einem unteren Grenzwert von 100 Feldern pro Index.
 
-<sup>2</sup> S3 HD unterstützt derzeit keine Indexer. Wenden Sie sich an den Azure-Support, wenn Sie diese Funktion dringend benötigen.
+## <a name="indexer-limits"></a>Indexergrenzwerte
 
-<sup>3</sup> Die maximale Indexerausführungszeit im Free-Tarif beträgt 3 Minuten für Blobquellen und 1 Minute für alle anderen Datenquellen.
+| Ressource | Kostenlos | Basic | S1 | S2 | S3 | S3 HD |
+| --- | --- | --- | --- | --- | --- | --- |
+| Maximale Indizierungslast pro Aufruf |10.000 Dokumente |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |N/V <sup>1</sup> |
+| Maximale Ausführungszeit | 1-3 Minuten <sup>2</sup> |24 Stunden |24 Stunden |24 Stunden |24 Stunden |N/V <sup>1</sup> |
+| Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |N/V <sup>1</sup> |
+| Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4 Millionen |4 Millionen |4 Millionen |N/V <sup>1</sup> |
+
+<sup>1</sup> S3 HD unterstützt derzeit keine Indexer. Wenden Sie sich an den Azure-Support, wenn Sie diese Funktion dringend benötigen.
+
+<sup>2</sup> Die maximale Indexerausführungszeit im Free-Tarif beträgt drei Minuten für Blobquellen und eine Minute für alle anderen Datenquellen.
+
 
 ## <a name="document-size-limits"></a>Dokumentgrößenlimits
 | Ressource | Kostenlos | Basic | S1 | S2 | S3 | S3 HD |

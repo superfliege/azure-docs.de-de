@@ -1,11 +1,11 @@
 ---
-title: "Arbeiten mit dem Node.js Back-End Server SDK für Mobile Apps | Microsoft-Dokumentation"
-description: "Informationen zum Arbeiten mit dem Node.js Back-End Server SDK für mobile Azure App Service-Apps."
+title: Arbeiten mit dem Node.js Back-End Server SDK für Mobile Apps | Microsoft-Dokumentation
+description: Informationen zum Arbeiten mit dem Node.js Back-End Server SDK für mobile Azure App Service-Apps.
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: elamalani
 manager: elamalani
-editor: 
+editor: ''
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bd423d6fb62b2ace16832f665c8834b4aea7e26f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 335186deccaa82b9a8d262d62dd8ce5d620446b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Verwenden des Node.js SDK für Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -119,7 +119,7 @@ Für Visual Studio 2015 ist eine Erweiterung zum Entwickeln der Node.js-Anwendu
         app.use(mobile);
 
    Speichern Sie die Datei .
-10. Führen Sie die Anwendung entweder lokal aus (die API wird unter http://localhost:3000 bereitgestellt), oder veröffentlichen Sie sie in Azure.
+10. Führen Sie die Anwendung entweder lokal aus (die API wird unter http://localhost:3000) bereitgestellt), oder veröffentlichen Sie sie in Azure.
 
 ### <a name="create-node-backend-portal"></a>Erstellen eines Node.js-Back-Ends mithilfe des Azure-Portals
 Sie können ein Mobile Apps-Back-End direkt im [Azure-Portal] erstellen. Sie können entweder die folgenden Schritte ausführen oder anhand der Anweisungen im Tutorial [Erstellen einer mobilen App](app-service-mobile-ios-get-started.md) einen Client und einen Server erstellen. Das Tutorial enthält eine vereinfachte Version dieser Anweisungen und eignet sich am besten für Proof of Concept-Projekte.
@@ -135,7 +135,7 @@ Wenn Sie im Portalbereich **Schnellstart** ein Node.js-Mobile Apps-Back-End erst
 Beim folgenden Verfahren wird ein Git-Repository verwendet, um den Schnellstart-Projektcode herunterzuladen:
 
 1. Installieren Sie Git, falls Sie dies noch nicht getan haben. Die erforderlichen Schritte zum Installieren von Git variieren je nach Betriebssystem. Informationen zu betriebssystemspezifischen Distributionen und zur Installation finden Sie unter [Installieren von Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
-2. Führen Sie die Schritte unter [Aktivieren des App Service-App-Repositorys](../app-service/app-service-deploy-local-git.md#Step3) aus, um das Git-Repository für Ihre Back-End-Website zu aktivieren. Notieren Sie sich den Benutzernamen und das Kennwort der Bereitstellung.
+2. Lesen Sie die Informationen unter [Lokale Git-Bereitstellung in Azure App Service](../app-service/app-service-deploy-local-git.md#prepare-your-repository), um das Git-Repository für Ihre Back-End-Website zu aktivieren. Notieren Sie sich den Benutzernamen und das Kennwort der Bereitstellung.
 3. Notieren Sie sich die Einstellung für die **Git-Klon-URL** im Bereich für Ihr Mobile App-Back-End.
 4. Führen Sie den Befehl `git clone` mit der Git-Klon-URL aus. Geben Sie bei entsprechender Aufforderung Ihr Kennwort ein, wie im folgenden Beispiel gezeigt:
 
@@ -156,7 +156,7 @@ Microsoft Azure bietet viele Verfahren zum Veröffentlichen Ihres Mobile Apps-No
 Azure App Service bietet spezielle Hinweise für Node.js-Anwendungen, die Sie vor dem Veröffentlichen des Back-Ends lesen sollten:
 
 * [Angeben der Node-Version]
-* [Verwenden von Node-Modulen]
+* Vorgehensweise: [Verwenden von Node.js-Modulen]
 
 ### <a name="howto-enable-homepage"></a>Aktivieren einer Startseite für Ihre Anwendung
 Viele Anwendungen sind eine Kombination aus Web-Apps und mobilen Apps. Sie können das ExpressJS-Framework verwenden, um diese beiden Aspekte zu kombinieren. In manchen Fällen möchten Sie jedoch vielleicht nur eine Mobilschnittstelle implementieren. Es ist hilfreich, eine Startseite einzurichten, um sicherzustellen, dass der App-Dienst betriebsbereit ist und ausgeführt wird. Sie können entweder Ihre eigene Startseite bereitstellen oder eine temporäre Startseite aktivieren. Zum Aktivieren einer temporären Startseite verwenden Sie folgenden Code, um Mobile Apps zu instanziieren:
@@ -809,7 +809,7 @@ Das Mobile Apps SDK ermöglicht über das request-Objekt Zugriff auf den gesamte
     api.get.access = 'authenticated';
     module.exports = api;
 
-## <a name="Debugging"></a>Debuggen, einfache Tabellen und einfache APIs
+## <a name="Debugging"></a>Debuggen, Easy Tables und Easy APIs
 ### <a name="howto-diagnostic-logs"></a>Debuggen, Diagnose und Problembehandlung bei Mobile Apps
 Azure App Service stellt mehrere Debugging- und Problembehandlungsverfahren für Node.js-Anwendungen bereit.
 Folgende Artikel helfen Ihnen beim Einstieg in die Problembehandlung Ihres Node.js Mobile Apps-Back-Ends:
@@ -821,7 +821,7 @@ Folgende Artikel helfen Ihnen beim Einstieg in die Problembehandlung Ihres Node.
 Node.js-Anwendungen haben Zugriff auf viele Tools für die Diagnoseprotokollierung. Intern nutzt das Mobile Apps Node.js SDK [Winston] für die Diagnoseprotokollierung. Die Protokollierung wird automatisch aktiviert, wenn Sie den Debugmodus aktivieren oder die App-Einstellung `MS_DebugMode` im [Azure-Portal] auf „true“ festlegen. Generierte Protokolle werden im [Azure-Portal] in den Diagnoseprotokollen angezeigt.
 
 ### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>Verwenden von einfachen Tabellen im Azure-Portal
-Mit einfachen Tabellen können Sie Tabellen direkt im Portal erstellen und damit arbeiten. Sie können Datasets im CSV-Format in einfache Tabellen hochladen. Beachten Sie, dass Sie keine Namen von Eigenschaften (in Ihrem CSV-Dataset) verwenden können, die mit den Namen von Systemeigenschaften des Mobile Apps-Back-Ends in Konflikt stehen. Es handelt sich dabei um folgende Namen von Systemeigenschaften:
+Mit einfachen Tabellen können Sie Tabellen direkt im Portal erstellen und damit arbeiten. Sie können Datasets im CSV-Format in Easy Tables hochladen. Beachten Sie, dass Sie keine Namen von Eigenschaften (in Ihrem CSV-Dataset) verwenden können, die mit den Namen von Systemeigenschaften des Mobile Apps-Back-Ends in Konflikt stehen. Es handelt sich dabei um folgende Namen von Systemeigenschaften:
 * createdAt
 * updatedAt
 * deleted
@@ -829,7 +829,7 @@ Mit einfachen Tabellen können Sie Tabellen direkt im Portal erstellen und damit
 
 Sie können mit dem App Service-Editor sogar Tabellenvorgänge bearbeiten. Wenn Sie in den Einstellungen für die Back-End-Website **Einfache Tabellen** auswählen, können Sie eine Tabelle hinzufügen, ändern oder löschen. Sie sehen auch, dass Daten in der Tabelle enthalten sind.
 
-![Verwenden von einfachen Tabellen](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-tables.png)
+![Verwenden von Easy Tables](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-tables.png)
 
 Die folgenden Befehle stehen in der Befehlsleiste einer Tabelle zur Verfügung:
 
@@ -846,7 +846,7 @@ Sie können einfache APIs verwenden, um benutzerdefinierte APIs direkt im Portal
 
 Wenn Sie in den Einstellungen für die Back-End-Website auf **Einfache APIs** klicken, können Sie einen benutzerdefinierten API-Endpunkt hinzufügen, ändern oder löschen.
 
-![Verwenden von einfachen APIs](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-apis.png)
+![Verwenden von Easy APIs](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-apis.png)
 
 Im Portal können Sie die Zugriffsberechtigungen für eine HTTP-Aktion ändern, die API-Skriptdatei im App Service-Editor bearbeiten oder die Streamingprotokolle anzeigen.
 
@@ -886,7 +886,7 @@ Durch Verwendung des Azure-Portals können Sie Ihre Node.js-Back-End-Skriptdatei
 [Aktivieren der Diagnoseprotokollierung in Azure App Service]: ../app-service/web-sites-enable-diagnostic-log.md
 [Problembehandlung für Azure App Service in Visual Studio]: ../app-service/web-sites-dotnet-troubleshoot-visual-studio.md
 [Angeben der Node-Version]: ../nodejs-specify-node-version-azure-apps.md
-[Verwenden von Node-Modulen]: ../nodejs-use-node-modules-azure-apps.md
+[Verwenden von Node.js-Modulen]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
 [Express]: http://expressjs.com/

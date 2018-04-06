@@ -1,12 +1,12 @@
 ---
-title: "Bewährte Methoden für Azure Operational Security | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält bewährte Methoden für Azure Operational Security."
+title: Bewährte Methoden für Azure Operational Security | Microsoft-Dokumentation
+description: Dieser Artikel enthält bewährte Methoden für Azure Operational Security.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: db9840817d92b4f2f63009d30dbd554666d53dbe
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb7e0df046ecc2ffcd3fa59ac53edf36095933c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Azure Operational Security bezieht sich auf die Dienste, Steuerelemente und Features, die für Benutzer zum Schützen ihrer Daten, Anwendungen und anderen Ressourcen in Microsoft Azure zur Verfügung stehen. Azure Operational Security basiert auf einem Framework, das die über verschiedene für Microsoft einzigartige Funktionen erworbenen Kenntnisse einbezieht, einschließlich Microsoft Security Development Lifecycle (SDL), dem Microsoft Security Response Center-Programm und den umfassenden Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.
@@ -167,10 +167,10 @@ Weitere Informationen zum Konfigurieren und Aktivieren von Network Watcher finde
 Dies sind einige Verfahren aus der Liste der Azure DevOps-Verfahren in diesem Microsoft Cloud-Bereich, die Unternehmen und Teams produktiver und effizienter machen.
 
 -   **Infrastruktur als Code (IaC):** „Infrastruktur als Code“ ist ein Satz von Techniken und Methoden, die für IT-Experten die tägliche Erstellung und Verwaltung einer modularen Infrastruktur vereinfachen. IT-Experten können damit ihre moderne Serverumgebung so erstellen und verwalten, wie Softwareentwickler Anwendungscode erstellen und verwalten. Für Azure ermöglicht [Azure Resource Manager]( https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) die Bereitstellung Ihrer Anwendungen mit einer deklarativen Vorlage. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung während jeder Phase des Anwendungslebenszyklus wiederholt bereitzustellen.
--   **Continuous Integration und Continuous Deployment:** Sie können Ihre Teamprojekte in Visual Studio Online so konfigurieren, dass sie [automatisch erstellt und in Azure-Web-Apps oder -Clouddiensten bereitgestellt](https://www.visualstudio.com/docs/build/overview) werden. VSO stellt die Binärdateien nach der Durchführung eines Builds in Azure nach jedem Einchecken von Code automatisch bereit. Der hier beschriebene Prozess der Paketerstellung entspricht dem Befehl „Paket“ in Visual Studio, und die Veröffentlichungsschritte entsprechen dem Befehl „Veröffentlichen“ in Visual Studio.
+-   **Continuous Integration und Continuous Deployment:** Sie können Ihre Teamprojekte in Visual Studio Team Services (VSTS) so konfigurieren, dass sie [automatisch erstellt und in Azure-Web-Apps oder -Clouddiensten bereitgestellt](https://www.visualstudio.com/docs/build/overview) werden. VSTS stellt die Binärdateien nach der Durchführung eines Builds in Azure nach jedem Einchecken von Code automatisch bereit. Der hier beschriebene Prozess der Paketerstellung entspricht dem Befehl „Paket“ in Visual Studio, und die Veröffentlichungsschritte entsprechen dem Befehl „Veröffentlichen“ in Visual Studio.
 -   **Release Management:** Visual Studio [Release Management](https://msdn.microsoft.com/library/vs/alm/release/overview) ist eine hervorragende Lösung für die Automatisierung einer mehrstufigen Bereitstellung und die Verwaltung des Releaseprozesses. Erstellen Sie verwaltete Continuous Deployment-Pipelines für schnelle, einfache und häufige Releases. Mit Release Management können wir große Teile des Releaseprozesses automatisieren und vordefinierte Genehmigungsworkflows einrichten. Stellen Sie lokal und in der Cloud bereit, und führen Sie nach Bedarf Erweiterungen und Anpassungen durch.
 -   **App-Leistungsüberwachung:** Erkennen und lösen Sie Probleme, und verbessern Sie Ihre Anwendungen kontinuierlich. Diagnostizieren Sie schnell alle Probleme in Ihrer Liveanwendung. Verstehen Sie, wie sie von den Benutzern verwendet wird. Zur Konfiguration werden einfach JS-Code und ein webconfig-Eintrag hinzugefügt, und Sie sehen die Ergebnisse innerhalb von Minuten mit allen Details im Portal. Mit [App Insights](https://azure.microsoft.com/documentation/articles/app-insights-start-monitoring-app-health-usage/) können Unternehmen Probleme schneller erkennen und lösen.
--   **Auslastungstests und automatische Skalierung:** Wir können Leistungsprobleme in unserer App finden, um die Bereitstellungsqualität zu verbessern und um sicherzustellen, dass unsere App immer verfügbar ist, damit wir allen Unternehmensbedürfnissen gerecht werden. Stellen Sie sicher, dass Ihre App den Datenverkehr für die nächste Produkteinführung oder Marketingkampagne bewältigen kann. Beginnen Sie mit Visual Studio Online im Handumdrehen mit der Ausführung von cloudbasierten [Auslastungstests](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing).
+-   **Auslastungstests und automatische Skalierung:** Wir können Leistungsprobleme in unserer App finden, um die Bereitstellungsqualität zu verbessern und um sicherzustellen, dass unsere App immer verfügbar ist, damit wir allen Unternehmensbedürfnissen gerecht werden. Stellen Sie sicher, dass Ihre App den Datenverkehr für die nächste Produkteinführung oder Marketingkampagne bewältigen kann. Beginnen Sie mit VSTS im Handumdrehen mit der Ausführung von cloudbasierten [Auslastungstests](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Azure Operational Security](https://docs.microsoft.com/azure/security/azure-operational-security).

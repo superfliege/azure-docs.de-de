@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 309415a68308943f638195303ceb236569519472
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a578a732efa3d2b91240ef0f4c02670aea8e547f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Tutorial: Azure Active Directory-Integration mit SAP Cloud Platform
 
@@ -51,7 +51,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von SAP Cloud Platform über den Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -153,9 +153,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/tutorial_general_400.png)
 
-6. Melden Sie sich in einem anderen Webbrowserfenster unter `https://account.<landscape host>.ondemand.com/cockpit` (Beispiel: https://account.hanatrial.ondemand.com/cockpit) beim SAP Cloud Platform-Cockpit an.
+6. Melden Sie sich in einem anderen Webbrowserfenster unter `https://account.<landscape host>.ondemand.com/cockpit` (Beispiel: https://account.hanatrial.ondemand.com/cockpit)) beim SAP Cloud Platform-Cockpit an.
 
 7. Klicken Sie auf die Registerkarte **Vertrauen** .
    
@@ -165,7 +165,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Verwalten von Vertrauensstellungen](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/ic793931.png "Verwalten von Vertrauensstellungen")
    
-    a. Klicken Sie auf **Bearbeiten**.
+    a. Klicken Sie auf **Edit**.
 
     b. Wählen Sie als **Konfigurationstyp** die Option **Benutzerdefiniert**.
 
@@ -228,7 +228,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
     c. Die Namen und Werte für das im Screenshot gezeigte **Prinzipal Attribut** ist abhängig davon, wie die Anwendung entwickelt wird. Es ist möglich, dass die Anwendung andere Zuordnungen erfordert.
 
-###<a name="assertion-based-groups"></a>Assertion-Gruppen
+### <a name="assertion-based-groups"></a>Assertion-Gruppen
 
 Als optionalen Schritt können Sie Assertion-Gruppen für Ihren Azure Active Directory-Identitätsanbieter konfigurieren.
 
@@ -239,7 +239,7 @@ Beispiel: Wenn die Assertion das Attribut „*contract=temporary*“ enthält, k
 Verwenden Sie Assertion-basierte Gruppen, wenn Sie Anwendungsrollen in Ihrem SAP Cloud Platform-Konto gleichzeitig viele Benutzer zuweisen möchten. Wenn Sie nur einen einzelnen Benutzer oder eine geringe Anzahl von Benutzern bestimmten Rollen zuweisen möchten, empfiehlt es sich, diese direkt im SAP Cloud Platform-Cockpit auf der Registerkarte **Autorisierungen** zuzuweisen.
 
 > [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -272,7 +272,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-sap-cloud-platform-test-user"></a>Erstellen eines SAP Cloud Plattform-Testbenutzers
 
@@ -328,7 +328,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „SAP Cloud Platform“ klicken, sollten Sie automatisch bei Ihrer SAP Cloud Platform-Anwendung angemeldet werden.
 

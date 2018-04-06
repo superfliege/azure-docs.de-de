@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 33e0d1d54a533d68ac08f223e1a41e65c7b301a4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b038052776cad63030ca8a48a43b4b579ce6c83a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
@@ -444,6 +444,30 @@ Beachten Sie folgende Punkte:
 * Komplexe Datentypen werden nicht unterstützt (STRUCT, MAP, LIST, UNION).
 * Für die ORC-Datei stehen drei [mit der Komprimierung zusammenhängende Optionen](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)zur Verfügung: NONE, ZLIB, SNAPPY. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine ORC-Datei wählt Data Factory hingegen ZLIB (Standardeinstellung für ORC). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
 
+### <a name="data-type-mapping-for-orc-files"></a>Datentypzuordnung für ORC-Dateien
+
+| Data Factory-Zwischendatentyp | ORC-Typen |
+|:--- |:--- |
+| Boolescher Wert | Boolescher Wert |
+| SByte | Byte |
+| Byte | Schnellstart |
+| Int16 | Schnellstart |
+| UInt16 | int |
+| Int32 | int |
+| UInt32 | Long |
+| Int64 | Long |
+| UInt64 | Zeichenfolge |
+| Single | Float |
+| Double | Double |
+| DECIMAL | DECIMAL |
+| Zeichenfolge | Zeichenfolge |
+| Datetime | Zeitstempel |
+| DateTimeOffset | Zeitstempel |
+| Zeitraum | Zeitstempel |
+| ByteArray | Binär |
+| Guid | Zeichenfolge |
+| Char | Char(1) |
+
 ## <a name="parquet-format"></a>Parquet-Format
 
 Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten, legen Sie für die `format` `type`-Eigenschaft **OrcFormat** fest. Sie müssen im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:
@@ -463,6 +487,31 @@ Beachten Sie folgende Punkte:
 
 * Komplexe Datentypen werden nicht unterstützt (MAP, LIST).
 * Für die Parquet-Datei stehen die folgenden mit der Komprimierung zusammenhängenden Optionen zur Verfügung: NONE, SNAPPY, GZIP und LZO. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine Parquet-Datei wählt Data Factory hingegen SNAPPY (Standardeinstellung für das Parquet-Format). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
+
+### <a name="data-type-mapping-for-parquet-files"></a>Datentypzuordnung für Parquet-Dateien
+
+| Data Factory-Zwischendatentyp | Primitiver Parquet-Typ | Ursprünglicher Parquet-Typ (Deserialisieren) | Ursprünglicher Parquet-Typ (Serialisieren) |
+|:--- |:--- |:--- |:--- |
+| Boolescher Wert | Boolescher Wert | N/V | N/V |
+| SByte | Int32 | Int8 | Int8 |
+| Byte | Int32 | UInt8 | Int16 |
+| Int16 | Int32 | Int16 | Int16 |
+| UInt16 | Int32 | UInt16 | Int32 |
+| Int32 | Int32 | Int32 | Int32 |
+| UInt32 | Int64 | UInt32 | Int64 |
+| Int64 | Int64 | Int64 | Int64 |
+| UInt64 | Int64/binär | UInt64 | DECIMAL |
+| Single | Float | N/V | N/V |
+| Double | Double | N/V | N/V |
+| DECIMAL | Binär | DECIMAL | DECIMAL |
+| Zeichenfolge | Binär | Utf8 | Utf8 |
+| Datetime | Int96 | N/V | N/V |
+| Zeitraum | Int96 | N/V | N/V |
+| DateTimeOffset | Int96 | N/V | N/V |
+| ByteArray | Binär | N/V | N/V |
+| Guid | Binär | Utf8 | Utf8 |
+| Char | Binär | Utf8 | Utf8 |
+| CharArray | Nicht unterstützt | N/V | N/V |
 
 ## <a name="compression-support"></a>Unterstützung für die Komprimierung
 

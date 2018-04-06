@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit der Azure-Protokollintegration | Microsoft Docs
-description: "Hier erfahren Sie, wie Sie den Azure-Protokollintegrationsdienst installieren und Protokolle aus Azure Storage sowie Azure-Überwachungsprotokolle und Azure Security Center-Warnungen integrieren."
+title: Erste Schritte mit Azure Log Integration | Microsoft Docs
+description: Erfahren Sie, wie Sie den Azure Log Integration-Dienst installieren und Protokolle aus Azure Storage sowie Azure-Überwachungsprotokolle und Azure Security Center-Warnungen integrieren.
 services: security
 documentationcenter: na
 author: Barclayn
@@ -15,61 +15,52 @@ ums.workload: na
 ms.date: 02/20/2018
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 4555216950811960ccb42241bcade5ec892a77ce
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3e229c4db44fc3c8d16aa2bd0a014fb1acc64a5e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure-Protokollintegration mit Azure-Diagnoseprotokollierung und Windows-Ereignisweiterleitung
+# <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration mit Azure-Diagnoseprotokollierung und Windows-Ereignisweiterleitung
 
-Azure Log Integration (AzLog) bietet Kunden eine Alternative, falls kein [Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md)-Connector für ihren SIEM-Anbieter verfügbar ist. Azure Log Integration macht Azure-Protokolle für Ihr SIEM verfügbar und ermöglicht es Ihnen, ein einheitliches Sicherheits-Dashboard für alle Ihre Ressourcen zu erstellen.
+Azure Log Integration bietet Kunden eine Alternative, falls kein [Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md)-Connector für ihren SIEM-Anbieter (Security Incident and Event Management) verfügbar ist. Azure Log Integration macht Azure-Protokolle für Ihr SIEM verfügbar, damit Sie ein einheitliches Sicherheitsdashboard für alle Ihre Ressourcen erstellen können.
 
->[!NOTE]
->Weitere Informationen zu Azure Monitor finden Sie unter [Erste Schritte mit Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md). Weitere Informationen zum Status eines Azure Monitor-Connectors erhalten Sie bei Ihrem SIEM-Anbieter.
+> [!NOTE]
+> Weitere Informationen zu Azure Monitor finden Sie unter [Erste Schritte mit Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md). Um weitere Informationen zum Status eines Azure Monitor-Connectors zu erhalten, wenden Sie sich an den SIEM-Anbieter.
 
->[!IMPORTANT]
->Wenn Ihr Hauptinteresse das Erfassen von Protokollen für virtuelle Computer ist, wird dies von den Lösungen der meisten SIEM-Anbieter abgedeckt. Der Connector des SIEM-Anbieters sollte immer die bevorzugte Alternative sein.
+> [!IMPORTANT]
+> Wenn Ihr Hauptinteresse das Erfassen von Protokollen für virtuelle Computer ist, wird diese Option von den Lösungen der meisten SIEM-Anbieter abgedeckt. Das Verwenden des Connectors des SIEM-Anbieters ist immer die bevorzugte Alternative.
 
-Dieser Artikel hilft Ihnen bei den ersten Schritten mit Azure Log Integration, indem er sich auf die Installation des AzLog-Diensts und die Integration des Diensts in die Azure-Diagnose konzentriert. Der Azure-Protokollintegrationsdienst ist dann in der Lage, Protokollinformationen von Windows-Ereignissen aus dem Windows-Sicherheitsereigniskanal von virtuellen Computern zu erfassen, die in Azure IaaS bereitgestellt werden. Dies ist der „Ereignisweiterleitung“ ähnlich, die Sie möglicherweise lokal verwendet haben.
+Dieser Artikel unterstützt Sie bei den ersten Schritten mit Azure Log Integration. Sein Schwerpunkt liegt auf dem Azure Log Integration-Dienst und dem Integrieren des Diensts in die Azure-Diagnose. Der Azure Log Integration-Dienst erfasst dann Protokollinformationen von Windows-Ereignissen aus dem Windows-Sicherheitsereigniskanal von virtuellen Computern, die in Azure IaaS (Infrastructure-as-a-Service) bereitgestellt werden. Dies ähnelt der *Ereignisweiterleitung*, die Sie möglicherweise lokal verwenden.
 
->[!NOTE]
->Die Möglichkeit, die Ausgabe von Azure Log Integration in SIEM einzubinden, wird von SIEM selbst bereitgestellt. Weitere Informationen finden Sie im Artikel zur [Integration von Azure Log Integration in das lokale SIEM](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/).
+> [!NOTE]
+> Die Integration der Ausgabe von Azure Log Integration mit einem SIEM erfolgt durch das SIEM selbst. Weitere Informationen finden Sie unter [Integration von Azure Log Integration in das lokale SIEM](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/).
 
-Der Azure Log Integration-Dienst wird auf einem physischen oder virtuellen Computer ausgeführt, der Windows Server 2008 R2 oder höher als Betriebssystem verwendet (vorzugsweise Windows Server 2012 R2 oder Windows Server 2016).
+Der Azure Log Integration-Dienst wird auf einem physischen oder virtuellen Computer mit Windows Server 2008 R2 oder höher ausgeführt (Windows Server 2016 oder Windows Server 2012 R2 wird bevorzugt).
 
-Der physische Computer kann lokal ausgeführt werden (oder an einem Hostingstandort). Wenn Sie den Azure-Protokollintegrationsdienst auf einem virtuellen Computer ausführen, kann sich dieser virtuelle Computer an einem lokalen Standort oder in einer öffentlichen Cloud wie Microsoft Azure befinden.
+Ein physischer Computer kann lokal oder an einem Hostingstandort ausgeführt werden. Wenn Sie den Azure Log Integration-Dienst auf einem virtuellen Computer ausführen, kann sich der virtuelle Computer an einem lokalen Standort oder in einer öffentlichen Cloud (z.B. in Microsoft Azure) befinden.
 
-Der physische oder virtuelle Computer, der den Azure-Protokollintegrationsdienst ausführt, erfordert Netzwerkverbindungen mit der öffentlichen Azure-Cloud. Die Schritte in diesem Artikel enthalten Details zur Konfiguration.
+Der physische oder virtuelle Computer, der den Azure Log Integration-Dienst ausführt, erfordert Netzwerkverbindungen mit der öffentlichen Azure-Cloud. Dieser Artikel enthält Details zu der erforderlichen Konfiguration.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Installation von AzLog erfordert mindestens die folgenden Elemente:
+Für die Installation von Azure Log Integration sind mindestens die folgenden Elemente erforderlich:
 
-* Ein **Azure-Abonnement**. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/)registrieren.
-* Ein **Speicherkonto**, das für die Azure-Diagnoseprotokollierung verwendet werden kann (Sie können ein vorkonfiguriertes Speicherkonto verwenden oder ein neues erstellen – weiter unten in diesem Artikel wird gezeigt, wie das Speicherkonto konfiguriert wird).
+* Ein **Azure-Abonnement**. Wenn Sie keines besitzen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/)registrieren.
+* Ein **Speicherkonto**, das für die Windows Azure-Diagnoseprotokollierung (WAD) verwendet werden kann. Sie können ein vorkonfiguriertes Speicherkonto auswählen oder ein neues Speicherkonto erstellen. Später in diesem Artikel wird beschrieben, wie das Speicherkonto konfiguriert wird.
 
-  >[!NOTE]
-  Je nach Szenario ist möglicherweise kein Speicherkonto erforderlich. Für das in diesem Artikel beschriebene Azure-Diagnose-Szenario ist eines erforderlich.
+  > [!NOTE]
+  > Je nach Szenario ist möglicherweise kein Speicherkonto erforderlich. Für das in diesem Artikel beschriebene Azure-Diagnoseszenario ist ein Speicherkonto erforderlich.
 
-* **Zwei Systeme**: Ein Computer, der den Azure Log Integration-Dienst ausführt, und ein Computer, der überwacht wird und dessen Protokollinformationen an den Computer mit dem AzLog-Dienst gesendet werden.
-   * Ein zu überwachender Computer – dies ist ein virtueller Computer, der als [virtueller Azure-Computer](../virtual-machines/virtual-machines-windows-overview.md) ausführt wird.
-   * Einen Computer, auf dem der Azure Log Integration-Dienst ausgeführt wird. Dieser Computer erfasst alle Protokollinformationen, die später in Ihr SIEM importiert werden.
-    * Dieses System kann sich an einem lokalen Standort oder in Microsoft Azure befinden.  
-    * Es muss eine x64-Version von Windows Server 2008 R2 SP1 oder höher ausgeführt werden und .NET 4.5.1 installiert sein. Sie können die installierte .NET-Version ermitteln, indem Sie den Artikel [Gewusst wie: Feststellen, welche Versionen von .NET Framework installiert sind](https://msdn.microsoft.com/library/hh925568) lesen.  
-    Es muss eine Verbindung mit dem Azure-Speicherkonto vorhanden sein, das für die Azure-Diagnoseprotokollierung verwendet wird. Anweisungen zum Bestätigen dieser Konnektivität werden später in diesem Artikel bereitgestellt.
+* **Zwei Systeme**: 
+  * Ein Computer, der den Azure Log Integration-Dienst ausführt. Dieser Computer erfasst alle Protokollinformationen, die später in Ihr SIEM importiert werden. Für dieses System gilt:
+    * Es kann sich an einem lokalen Standort befinden oder in Microsoft Azure gehostet werden.  
+    * Es muss eine x64-Version von Windows Server 2008 R2 SP1 oder höher ausführen und über eine Installation von .NET 4.5.1 verfügen. Sie können die installierte .NET-Version wie unter [Feststellen, welche Versionen von .NET-Framework installiert sind](https://msdn.microsoft.com/library/hh925568) beschrieben ermitteln.  
+    * Es muss eine Verbindung mit dem Azure Storage-Konto herstellen können, das für die Azure-Diagnoseprotokollierung verwendet wird. Später in diesem Artikel wird beschrieben, wie die Verbindung konfiguriert wird.
+  * Ein zu überwachender Computer. Dies ist ein virtueller Computer, der als [virtueller Azure-Computer](../virtual-machines/virtual-machines-windows-overview.md) ausführt wird. Die Protokollierungsinformationen von diesem Computer werden an den Computer mit dem Azure Log Integration-Dienst gesendet.
 
-* Ein **Speicherkonto**, das für die Windows Azure-Diagnoseprotokollierung verwendet werden kann. Sie können ein vorkonfiguriertes Speicherkonto auswählen oder ein neues erstellen. Sie konfigurieren das Speicherkonto weiter unten in diesem Artikel.
-  >[!NOTE]
-  Je nach Szenario ist möglicherweise kein Speicherkonto erforderlich. Für das in diesem Artikel beschriebene Azure-Diagnose-Szenario ist eines erforderlich.
-* **Zwei Systeme**: Ein Computer, der den Azure Log Integration-Dienst ausführt, und ein Computer, der überwacht wird und dessen Protokollinformationen an den Computer mit dem Azlog-Dienst gesendet werden.
-   * Ein zu überwachender Computer – dies ist ein virtueller Computer, der als [virtueller Azure-Computer](../virtual-machines/virtual-machines-windows-overview.md) ausführt wird.
-   * Ein Computer, auf dem der Azure Log Integration-Dienst ausgeführt wird. Dieser Computer erfasst alle Protokollinformationen, die später in Ihr SIEM importiert werden.
-    * Dieses System kann sich an einem lokalen Standort oder in Microsoft Azure befinden.  
-    * Es muss eine x64-Version von Windows Server 2008 R2 SP1 oder höher ausgeführt werden und .NET 4.5.1 installiert sein. Sie können die installierte .NET-Version ermitteln, indem Sie den Artikel [Gewusst wie: Feststellen, welche Versionen von .NET Framework installiert sind](https://msdn.microsoft.com/library/hh925568) lesen.  
-    Es muss eine Verbindung mit dem Azure-Speicherkonto vorhanden sein, das für die Azure-Diagnoseprotokollierung verwendet wird. Wie Sie diese Konnektivität bestätigen, wird weiter unten in diesem Artikel beschrieben.
+Eine kurze Demonstration des Vorgangs zum Erstellen eines virtuellen Computers mit dem Azure-Portal finden Sie im folgenden Video:<br /><br />
 
-Eine kurze Demonstration des Vorgangs zum Erstellen eines virtuellen Computers mit dem Azure-Portal finden Sie im folgenden Video.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Create-a-Virtual-Machine/player]
 
@@ -77,143 +68,151 @@ Eine kurze Demonstration des Vorgangs zum Erstellen eines virtuellen Computers m
 
 Beim Testen können Sie ein beliebiges System verwenden, das die Mindestanforderungen für das Betriebssystem erfüllt. Für eine Produktionsumgebung kann es die Auslastung erforderlich machen, zentrales oder horizontales Hochskalieren einzuplanen.
 
-Sie können mehrere Instanzen des Azure Log Integration-Diensts ausführen. Dies ist auf eine Instanz pro physischem oder virtuellem Computer beschränkt. Zudem können Sie für Speicherkonten der Azure-Diagnose einen Lastenausgleich für Windows (WAD) durchführen und die Anzahl von Abonnements, die für die Instanzen bereitgestellt werden, muss auf Ihrer Kapazität basieren.
-
->[!NOTE]
->Zurzeit liegen keine spezifischen Empfehlungen dazu vor, wann Instanzen von Azure Log Integration-Computern (d.h. Computer, auf denen der Azure Log Integration-Dienst ausgeführt wird) oder Speicherkonten bzw. Abonnements horizontal hochskaliert werden müssen. Die Entscheidungen hinsichtlich der Skalierung sollten auf Ihren Beobachtungen zur Leistung in den einzelnen Bereichen basieren.
-
-Wenn das Ereignisvolumen entsprechend hoch ist, können Sie mehrere Instanzen des Azure Log Integration-Diensts ausführen (eine Instanz pro physischem oder virtuellem Computer). Darüber hinaus können Sie einen Lastenausgleich für Azure-Diagnosespeicherkonten für Windows (WAD) ausführen.
-
-Sie haben auch die Möglichkeit, den Azure-Protokollintegrationsdienst zentral hochzuskalieren, um die Leistung zu verbessern. Die folgenden Leistungsmetriken können Ihnen dabei helfen, die Größe von Computern zu bestimmen, die Sie dafür auswählen, den Azure-Protokollintegrationsdienst auszuführen:
-
-* Auf einem Computer mit acht Prozessoren (Kernen) kann eine einzelne AzLog Integrator-Instanz pro Tag etwa 24 Millionen Ereignisse (rund eine Million pro Stunde) verarbeiten.
-* Auf einem Computer mit vier Prozessoren (Kernen) kann eine einzelne AzLog Integrator-Instanz pro Tag etwa 1,5 Millionen Ereignisse (rund 62.500 pro Stunde) verarbeiten.
-
-## <a name="install-azure-log-integration"></a>Installieren der Azure-Protokollintegration
-
-Sie müssen die Installationsdatei für die [Azure-Protokollintegration](https://www.microsoft.com/download/details.aspx?id=53324) herunterladen, um die Azure-Protokollintegration installieren zu können. Führen Sie die Setuproutine aus, und entscheiden Sie dann, ob Sie Telemetriedaten an Microsoft senden möchten.  
-
-![Installationsbildschirm mit aktiviertem Kontrollkästchen für Telemetrie](./media/security-azure-log-integration-get-started/telemetry.png)
+Sie können mehrere Instanzen des Azure Log Integration-Diensts ausführen. Sie können jedoch nur eine Instanz des Diensts pro physischem oder virtuellem Computer ausführen. Darüber hinaus können Sie Lastenausgleich für Azure-Diagnosespeicherkonten für WAD ausführen. Die Anzahl der Abonnements für die Instanzen richtet sich nach Ihrer Kapazität.
 
 > [!NOTE]
-> Es wird empfohlen, dass Sie Microsoft das Sammeln von Telemetriedaten gestatten. Sie können die Erfassung von Telemetriedaten ausschalten, indem Sie diese Option deaktivieren.
+> Zurzeit liegen keine spezifischen Empfehlungen dazu vor, wann Instanzen von Azure Log Integration-Computern (d.h. Computer, auf denen der Azure Log Integration-Dienst ausgeführt wird) oder Speicherkonten bzw. Abonnements horizontal hochskaliert werden müssen. Die Entscheidungen hinsichtlich der Skalierung sollten auf Ihren Beobachtungen zur Leistung in den einzelnen Bereichen basieren.
+
+Sie haben auch die Möglichkeit, den Azure Log Integration-Dienst zentral hochzuskalieren, um die Leistung zu verbessern. Die folgenden Leistungsmetriken können Ihnen dabei helfen, die Größe von Computern zu bestimmen, die Sie dafür auswählen, den Azure Log Integration-Dienst auszuführen:
+
+* Auf einem Computer mit acht Prozessoren (Kernen) kann eine einzelne Azure Log Integration-Instanz pro Tag etwa 24 Millionen Ereignisse (rund eine Million Ereignisse pro Stunde) verarbeiten.
+* Auf einem Computer mit vier Prozessoren (Kernen) kann eine einzelne Azure Log Integration-Instanz pro Tag etwa 1,5 Millionen Ereignisse (rund 62.500 Ereignisse pro Stunde) verarbeiten.
+
+## <a name="install-azure-log-integration"></a>Installieren von Azure Log Integration
+
+Laden Sie die Installationsdatei für [Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324) herunter, um Azure Log Integration zu installieren. Schließen Sie den Setupvorgang ab. Wählen Sie aus, ob Sie Microsoft Telemetrieinformationen zur Verfügung stellen möchten.
+
+Der Azure Log Integration-Dienst erfasst Telemetriedaten des Computers, auf dem er installiert ist.  
+
+Die erfassten Telemetriedaten beinhalten Folgendes:
+
+* Ausnahmen, die während der Ausführung von Azure Log Integration auftreten.
+* Metriken zu der Anzahl von verarbeiteten Abfragen und Ereignissen.
+* Statistiken zur Verwendung von Azlog.exe-Befehlszeilenoptionen. 
+
+> [!NOTE]
+> Es wird empfohlen, dass Sie Microsoft das Sammeln von Telemetriedaten gestatten. Sie können die Erfassung von Telemetriedaten deaktivieren, indem Sie das Kontrollkästchen **Microsoft das Erfassen von Telemetriedaten erlauben** deaktivieren.
 >
 
+![Screenshot des Installationsbereichs mit aktiviertem Kontrollkästchen für Telemetrie](./media/security-azure-log-integration-get-started/telemetry.png)
 
-Der Dienst „Azure-Protokollintegration“ sammelt Telemetriedaten des Computers, auf dem er installiert ist.  
 
-Folgende Telemetriedaten werden erfasst:
+Der Installationsvorgang wird im folgenden Video behandelt:<br /><br />
 
-* Ausnahmen, die während der Ausführung der Azure-Protokollintegration auftreten
-* Metriken zu der Anzahl von verarbeiteten Abfragen und Ereignissen
-* Statistiken zur Verwendung von Azlog.exe-Befehlszeilenoptionen
-
-Der Installationsvorgang wird im folgenden Video behandelt.
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Install-Azure-Log-Integration/player]
-
-
 
 ## <a name="post-installation-and-validation-steps"></a>Schritte nach der Installation und zur Validierung
 
-Nach Abschluss der grundlegenden Setuproutine sind Sie bereit, die auf die Installation folgenden Schritte sowie die Validierungsschritte auszuführen:
+Nach Abschluss des grundlegenden Setups sind Sie bereit, die auf die Installation folgenden Schritte sowie die Validierungsschritte auszuführen:
 
-1. Öffnen Sie ein PowerShell-Fenster mit erhöhten Rechten, und navigieren Sie zu **C:\Programme\Microsoft Azure Log Integration**.
-2. Der erste Schritt, den Sie ausführen müssen, ist das Abrufen der importierten AzLog-Cmdlets. Sie können dies durch Ausführen des Skripts **LoadAzlogModule.ps1** erreichen (beachten Sie den „\“ im folgenden Befehl). Geben Sie **.\LoadAzlogModule.ps1** ein, und drücken Sie die **EINGABETASTE**. Es sollte jetzt etwas angezeigt werden, das der folgenden Abbildung ähnelt. </br></br>
-![Installationsbildschirm mit aktiviertem Kontrollkästchen für Telemetrie](./media/security-azure-log-integration-get-started/loaded-modules.png) </br></br>
-3. Jetzt müssen Sie „AzLog“ konfigurieren, um eine bestimmte Azure-Umgebung zu verwenden. Eine „Azure-Umgebung“ ist der „Typ“ des Rechenzentrums für die Azure-Cloud, mit dem Sie arbeiten möchten. Obwohl es zu diesem Zeitpunkt mehrere Azure-Umgebungen gibt, sind die relevanten Optionen derzeit entweder **AzureCloud** oder **AzureUSGovernment**.   Stellen Sie in Ihrer PowerShell-Umgebung mit erhöhten Rechten sicher, dass Sie sich in **C:\Programme\Microsoft Azure Log Integration\** befinden. </br></br>
-    Führen Sie dort den folgenden Befehl aus: </br>
-    ``Set-AzlogAzureEnvironment -Name AzureCloud`` (für Azure Commercial)
+1. Starten Sie PowerShell als Administrator. Navigieren Sie dann zu „C:\Programme\Microsoft Azure Log Integration“.
+2. Importieren Sie die Azure Log Integration-Cmdlets. Um die Cmdlets zu importieren, führen Sie das Skript `LoadAzlogModule.ps1` aus. Geben Sie `.\LoadAzlogModule.ps1` ein, und drücken Sie dann die EINGABETASTE (beachten Sie die Verwendung von **.\\** in diesem Befehl). Es sollte jetzt etwas angezeigt werden, das der folgenden Abbildung ähnelt:
 
-      >[!NOTE]
-      >Wenn der Befehl erfolgreich ausgeführt wird, erhalten Sie kein Feedback.  Wenn Sie die Azure-Cloud der US-Regierung verwenden möchten, würden Sie **AzureUSGovernment** (für die -Name-Variable) verwenden. Andere Azure-Clouds werden zu diesem Zeitpunkt nicht unterstützt.  
-4. Bevor Sie ein System überwachen können, benötigen Sie den Namen des Speicherkontos, das für die Azure-Diagnose verwendet wird.  Navigieren Sie im Azure-Portal zu **Virtuelle Computer**, und suchen Sie nach dem virtuellen Computer, den Sie überwachen. Wählen Sie im Abschnitt **Eigenschaften** die Option **Diagnoseeinstellungen** aus.  Klicken Sie auf **Agent**, und notieren Sie sich den angegebenen Namen des Speicherkontos. Dieser Kontoname ist in einem späteren Schritt erforderlich.
+  ![Screenshot der Ausgabe des LoadAzlogModule.ps1-Befehls](./media/security-azure-log-integration-get-started/loaded-modules.png)
+3. Im nächsten Schritt müssen Sie Azure Log Integration konfigurieren, um eine bestimmte Azure-Umgebung zu verwenden. Eine *Azure-Umgebung* ist der Typ des Datencenters für die Azure-Cloud, mit dem Sie arbeiten möchten. Obwohl es zu diesem Zeitpunkt mehrere Azure-Umgebungen gibt, sind die relevanten Optionen zurzeit entweder **AzureCloud** oder **AzureUSGovernment**. Führen Sie PowerShell als Administrator aus, und stellen Sie sicher, dass Sie sich in „C:\Programme\Microsoft Azure Log Integration\“ befinden. Führen Sie dann den folgenden Befehl aus:
 
-    ![Azure-Diagnoseeinstellungen](./media/security-azure-log-integration-get-started/storage-account-large.png) </br></br>
+  `Set-AzlogAzureEnvironment -Name AzureCloud` (für **AzureCloud**)
+  
+  Wenn Sie die Azure-Cloud der US-Regierung verwenden möchten, würden Sie **AzureUSGovernment** für die Variable **-Name** verwenden. Andere Azure-Clouds werden zurzeit nicht unterstützt.  
 
-    ![Azure-Diagnoseeinstellungen](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
+  > [!NOTE]
+  > Sie erhalten keine Rückmeldung, wenn der Befehl erfolgreich war. 
 
-     >[!NOTE]
-     >Wenn die Überwachung während der Erstellung des virtuellen Computers nicht aktiviert wurde, erhalten Sie die Möglichkeit, sie zu aktivieren (wie oben gezeigt).
+4. Bevor Sie ein System überwachen können, benötigen Sie den Namen des Speicherkontos, das für die Azure-Diagnose verwendet wird. Navigieren Sie im Azure-Portal zu **Virtuelle Computer**. Suchen Sie nach dem virtuellen Computer, den Sie überwachen. Wählen Sie im Abschnitt **Eigenschaften** die Option **Diagnoseeinstellungen** aus.  Wählen Sie dann **Agent** aus. Notieren Sie sich den angegebenen Namen des Speicherkontos. Dieser Kontoname ist in einem späteren Schritt erforderlich.
 
-5. Jetzt wenden wir uns wieder dem Computer für die Azure-Protokollintegration zu. Wir müssen überprüfen, ob Sie auf dem System, auf dem Sie die Azure-Protokollintegration installiert haben, über die Verbindung zum Speicherkonto verfügen. Der Computer, auf dem der Azure Log Integration-Dienst ausgeführt wird, benötigt Zugriff auf das Speicherkonto, um gemäß der Konfiguration auf den einzelnen überwachten Systemen von der Azure-Diagnose protokollierte Informationen abzurufen.  
-    a. Sie können den Azure Storage-Explorer [hier](http://storageexplorer.com/) herunterladen.
-   b. Führen Sie die Setuproutine durch. c. Nach Abschluss der Installation klicken Sie auf **Weiter**, und lassen Sie das Kontrollkästchen **Microsoft Azure Storage-Explorer starten** aktiviert.  
-    d. Melden Sie sich bei Azure an.
-   e. Überprüfen Sie, ob das Speicherkonto angezeigt wird, das Sie für Azure-Diagnose konfiguriert haben. 
-        ![Speicherkonten](./media/security-azure-log-integration-get-started/storage-account.jpg) </br></br>
-6. Beachten Sie, dass unter den Speicherkonten einige Optionen vorhanden sind. Eine dieser Optionen ist **Tabellen**. Unter **Tabellen** sollte eine Option mit der Bezeichnung **WADWindowsEventLogsTable** angezeigt werden. </br></br>
+  ![Screenshot des Bereichs „Azure-Diagnoseeinstellungen“](./media/security-azure-log-integration-get-started/storage-account-large.png) 
 
- Wenn die Überwachung während der Erstellung des virtuellen Computers nicht aktiviert wurde, erhalten Sie die Möglichkeit, sie zu aktivieren (wie oben gezeigt).
-7. Jetzt wenden wir uns wieder dem Computer für die Azure-Protokollintegration zu. Wir müssen überprüfen, ob Sie auf dem System, auf dem Sie die Azure-Protokollintegration installiert haben, über die Verbindung zum Speicherkonto verfügen. Der physische oder virtuelle Computer, auf dem der Azure-Protokollintegrationsdienst ausgeführt wird, benötigt Zugriff auf das Speicherkonto, um gemäß der Konfiguration auf den einzelnen überwachten Systemen von der Azure-Diagnose protokollierte Informationen abzurufen.  
-  1. Sie können den Azure Storage-Explorer [hier](http://storageexplorer.com/) herunterladen.
-  2. Führen Sie die Setuproutine durch.
-  3. Nach Abschluss der Installation klicken Sie auf **Weiter**, und lassen Sie das Kontrollkästchen **Microsoft Azure Storage-Explorer starten** aktiviert.  
+  ![Screenshot der Schaltfläche „Überwachung auf Gastebene aktivieren“](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
+
+  > [!NOTE]
+  > Wenn die Überwachung beim Erstellen des virtuellen Computers nicht aktiviert war, können Sie sie wie in der vorherigen Abbildung gezeigt aktivieren.
+
+5. Wechseln Sie nun zurück auf den Azure Log Integration-Computer. Bestätigen Sie auf dem System, auf dem Sie Azure Log Integration installiert haben, dass Sie über eine Verbindung mit dem Speicherkonto verfügen. Der Computer, auf dem der Azure Log Integration-Dienst ausgeführt wird, benötigt Zugriff auf das Speicherkonto, um auf den einzelnen überwachten Systemen von der Azure-Diagnose protokollierte Informationen abzurufen. So überprüfen Sie die Konnektivität: 
+  1. [Laden Sie Azure Storage-Explorer herunter](http://storageexplorer.com/).
+  2. Schließen Sie das Setup ab.
+  3. Wenn die Installation abgeschlossen ist, wählen Sie **Weiter** aus. Lassen Sie das Kontrollkästchen **Microsoft Azure Storage-Explorer starten** aktiviert.  
   4. Melden Sie sich bei Azure an.
-  5. Überprüfen Sie, ob das Speicherkonto angezeigt wird, das Sie für Azure-Diagnose konfiguriert haben.  
-  6. Beachten Sie, dass unter den Speicherkonten einige Optionen vorhanden sind. Eine dieser Optionen ist **Tabellen**. Unter **Tabellen** sollte eine Option mit der Bezeichnung **WADWindowsEventLogsTable** angezeigt werden. </br></br>
-   ![Speicherkonten](./media/security-azure-log-integration-get-started/storage-explorer.png) 
+  5. Überprüfen Sie, ob das Speicherkonto angezeigt wird, das Sie für die Azure-Diagnose konfiguriert haben: 
 
-## <a name="integrate-azure-diagnostic-logging"></a>Integrieren der Azure-Diagnoseprotokollierung
+    ![Screenshot des Speicherkontos in Storage-Explorer](./media/security-azure-log-integration-get-started/storage-explorer.png)
 
-In diesem Schritt konfigurieren Sie den Computer, auf dem der Azure-Protokollintegrationsdienst ausgeführt wird, um eine Verbindung mit dem Speicherkonto herzustellen, das die Protokolldateien enthält.
-Zum Abschließen dieses Schritts sind einige Dinge vorab erforderlich.  
-* **FriendlyNameForSource**: Dies ist ein Anzeigename, den Sie auf das Speicherkonto anwenden können, dass Sie für den virtuellen Computer zum Speichern der Informationen von der Azure-Diagnose konfiguriert haben.
-* **StorageAccountName**: Dies ist der Name des Speicherkontos, das Sie beim Konfigurieren der Azure-Diagnose angegeben haben.  
-* **StorageKey**: Dies ist der Speicherschlüssel für das Speicherkonto, in dem die Azure-Diagnoseinformationen für diesen virtuellen Computer gespeichert werden.  
+  6. Einige Optionen werden unter den Speicherkonten angezeigt. Unter **Tabellen** sollte eine Tabelle mit der Bezeichnung **WADWindowsEventLogsTable** angezeigt werden.
 
-Führen Sie die folgenden Schritte aus, um den Speicherschlüssel zu erhalten:
- 1. Navigieren Sie zum [Azure-Portal](http://portal.azure.com).
- 2. Klicken Sie im Navigationsbereich der Azure-Konsole auf **Alle Dienste**.
-  3. Geben Sie **Speicher** in das Textfeld **Filter** ein. Klicken Sie auf **Speicherkonten**.
-
-       ![Screenshot, der Speicherkonten in „Alle Dienste“ zeigt](./media/security-azure-log-integration-get-started/filter.png)
- 4. Es wird eine Liste der Speicherkonten angezeigt. Doppelklicken Sie auf das Konto, das Sie dem Protokollspeicher zugewiesen haben.
-
-       ![Liste der Speicherkonten](./media/security-azure-log-integration-get-started/storage-accounts.png)
- 5. Klicken Sie im Abschnitt **Einstellungen** auf **Zugriffsschlüssel**.
-
-      ![Zugriffsschlüssel](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
- 6. Kopieren Sie **Schlüssel1**, und speichern Sie ihn an einem sicheren Ort, auf den Sie im nächsten Schritt zugreifen können.
-
-       ![Zwei Zugriffsschlüssel](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
- 7. Öffnen Sie auf dem Server, auf dem Sie die Azure-Protokollintegration installiert haben, ein Eingabeaufforderungsfenster mit erhöhten Rechten (beachten Sie, dass wir hier ein Eingabeaufforderungsfenster mit erhöhten Rechten verwenden, keine PowerShell-Konsole mit erhöhten Rechten).
- 8. Navigieren Sie zu **C:\Programme\Microsoft Azure Log Integration**
- 9. Führen Sie ``Azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey> `` aus. </br> Beispiel: ``Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==``. Soll in der Ereignis-XML die Abonnement-ID angezeigt werden, fügen Sie am Ende des Anzeigenamens die Abonnement-ID an: ``Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`` oder beispielsweise .``Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==``
-
->[!NOTE]
->Warten Sie bis zu 60 Minuten, und sehen Sie sich dann die aus dem Speicherkonto abgerufenen Ereignisse an. Öffnen Sie hierzu **Ereignisanzeige > Windows-Protokolle > Weitergeleitete Ereignisse** im AzLog Integrator.
-
-Im folgenden Video werden die oben beschriebenen Schritte gezeigt.
-
->[!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Enable-Diagnostics-and-Storage/player]
+  Wenn die Überwachung beim Erstellen des virtuellen Computers nicht aktiviert war, können Sie sie wie weiter oben beschrieben aktivieren.
 
 
-## <a name="what-if-data-is-not-showing-up-in-the-forwarded-events-folder"></a>Was, wenn im Ordner „Weitergeleitete Ereignisse“ keine Daten angezeigt werden?
-Sollten im Ordner **Weitergeleitete Ereignisse** nach einer Stunde immer noch keine Daten angezeigt werden, gehen Sie wie folgt vor:
+## <a name="integrate-azure-diagnostics-logging"></a>Integrieren der Azure-Diagnoseprotokollierung
 
-1. Überprüfen Sie den Computer, auf dem der Azure-Protokollintegrationsdienst ausgeführt wird, und vergewissern Sie sich, dass er auf Azure zugreifen kann. Öffnen Sie zum Testen der Konnektivität das [Azure-Portal](http://portal.azure.com) über den Browser.
-2. Vergewissern Sie sich, dass das Benutzerkonto **AzLog** über Schreibberechtigungen für den Ordner **users\Azlog** verfügt.
-  <ol type="a">
-   <li>Öffnen Sie **Windows-Explorer** .</li>
-  <li> Navigieren Sie zu **c:\users** .</li>
-  <li> Klicken Sie mit der rechten Maustaste auf **c:\users\Azlog** .</li>
-  <li> Klicken Sie auf **Sicherheit**  .</li>
-  <li> Klicken Sie auf **NT Service\Azlog**, und überprüfen Sie die Berechtigungen für das Konto. Wenn das Konto auf dieser Registerkarte fehlt oder die entsprechenden Berechtigungen aktuell nicht angezeigt werden, können Sie dem Konto auf dieser Registerkarte die erforderlichen Rechte erteilen.</li>
-  </ol>
-3. Vergewissern Sie sich, dass das Speicherkonto, das mithilfe des Befehls **Azlog source add** hinzugefügt wurde, beim Ausführen des Befehls **Azlog source list** aufgeführt wird.
-4. Überprüfen Sie unter **Ereignisanzeige > Windows-Protokolle > Anwendung**, ob von der Azure-Protokollintegration möglicherweise Fehler gemeldet wurden.
+In diesem Schritt konfigurieren Sie den Computer, auf dem der Azure Log Integration-Dienst ausgeführt wird, um eine Verbindung mit dem Speicherkonto herzustellen, das die Protokolldateien enthält.
+
+Zum Abschließen dieses Schritts sind einige Angaben erforderlich:  
+* **FriendlyNameForSource**: Ein Anzeigename, den Sie auf das Speicherkonto anwenden können, das Sie für den virtuellen Computer zum Speichern der Informationen aus der Azure-Diagnose konfiguriert haben.
+* **StorageAccountName**: Der Name des Speicherkontos, das Sie beim Konfigurieren der Azure-Diagnose angegeben haben.  
+* **StorageKey**: Der Speicherschlüssel für das Speicherkonto, in dem die Azure-Diagnoseinformationen für diesen virtuellen Computer gespeichert werden.  
+
+Führen Sie die folgenden Schritte aus, um den Speicherschlüssel abzurufen:
+1. Öffnen Sie das [Azure-Portal](http://portal.azure.com).
+2. Wählen Sie im Navigationsbereich **Alle Dienste** aus.
+3. Geben Sie **Speicher** in das Feld **Filter** ein. Wählen Sie dann **Speicherkonten** aus.
+
+  ![Screenshot, der Speicherkonten in „Alle Dienste“ zeigt](./media/security-azure-log-integration-get-started/filter.png)
+
+4. Es wird eine Liste aller Speicherkonten angezeigt. Doppelklicken Sie auf das Konto, das Sie zum Protokollieren des Speichers zugewiesen haben.
+
+  ![Screenshot, der eine Liste der Speicherkonten zeigt](./media/security-azure-log-integration-get-started/storage-accounts.png)
+
+5. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
+
+  ![Screenshot, der die Option „Zugriffsschlüssel“ im Menü zeigt](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
+
+6. Kopieren Sie **Schlüssel1**, und speichern Sie ihn dann an einem sicheren Ort, auf den Sie im nächsten Schritt zugreifen können.
+7. Öffnen Sie auf dem Server, auf dem Sie Azure Log Integration installiert haben, als Administrator ein Eingabeaufforderungsfenster. (Stellen Sie sicher, dass Sie als Administrator ein Eingabeaufforderungsfenster öffnen und nicht PowerShell).
+8. Navigieren Sie zu „C:\Programme\Microsoft Azure Log Integration“.
+9. Führen Sie den folgenden Befehl aus: `Azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey>`.
+ 
+  Beispiel:
+  
+  `Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
+
+  Wenn die Abonnement-ID im Ereignis-XML angezeigt werden soll, fügen Sie am Ende des Anzeigenamens die Abonnement-ID an:
+
+  `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
+  
+  Beispiel: 
+  
+  `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
+
+> [!NOTE]
+> Warten Sie bis zu 60 Minuten, und sehen Sie sich dann die aus dem Speicherkonto abgerufenen Ereignisse an. Wählen Sie zum Anzeigen der Ereignisse in Azure Log Integration **Ereignisanzeige** > **Windows-Protokolle** > **weitergeleitete Ereignisse** aus.
+
+Im folgenden Video werden die oben beschriebenen Schritte behandelt:<br /><br />
+
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Enable-Diagnostics-and-Storage/player]
 
 
-Wenn während der Installation und Konfiguration Probleme auftreten, öffnen Sie eine [Supportanfrage](../azure-supportability/how-to-create-azure-support-request.md), und wählen Sie **Protokollintegration** als den Dienst aus, für den Sie Support anfordern.
+## <a name="if-data-isnt-showing-up-in-the-forwarded-events-folder"></a>Wie ist vorzugehen, wenn im Ordner „Weitergeleitete Ereignisse“ keine Daten angezeigt werden?
+Sollten im Ordner „Weitergeleitete Ereignisse“ nach einer Stunde immer noch keine Daten angezeigt werden, führen Sie die folgenden Schritte aus:
 
-Eine weitere Supportoption ist das [MSDN-Forum für die Azure-Protokollintegration](https://social.msdn.microsoft.com/Forums/home?forum=AzureLogIntegration). Hier kann sich die Community gegenseitig mit Fragen, Antworten, Tipps und Tricks zur optimalen Verwendung der Azure-Protokollintegration unterstützen. Darüber hinaus überwacht das Azure Log Integration-Team dieses Forum und bietet nach Möglichkeit Hilfe an.
+1. Überprüfen Sie den Computer, der den Azure Log Integration-Dienst ausführt. Vergewissern Sie sich, dass er auf Azure zugreifen kann. Versuchen Sie in einem Browser, zum [Azure-Portal](http://portal.azure.com) zu navigieren, um die Konnektivität zu testen.
+2. Vergewissern Sie sich, dass das Benutzerkonto „Azlog“ über Schreibberechtigung für den Ordner „users\Azlog“ verfügt.
+  1. Öffnen Sie den Datei-Explorer.
+  2. Navigieren Sie zu „C:\Benutzer“.
+  3. Klicken Sie mit der rechten Maustaste auf „C:\Benutzer\Azlog“.
+  4. Wählen Sie **Sicherheit** aus.
+  5. Wählen Sie **NT Service\Azlog** aus. Überprüfen Sie die Berechtigungen für das Konto. Wenn das Konto auf dieser Registerkarte fehlt oder die entsprechenden Berechtigungen nicht angezeigt werden, können Sie dem Konto auf dieser Registerkarte die erforderlichen Berechtigungen erteilen.
+3. Wenn Sie den Befehl `Azlog source list` ausführen, stellen Sie sicher, dass das Speicherkonto, das im Befehl `Azlog source add` hinzugefügt wurde, in der Ausgabe aufgeführt wird.
+4. Überprüfen Sie unter **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**, ob von Azure Log Integration möglicherweise Fehler gemeldet wurden.
+
+Wenn während der Installation und Konfiguration Probleme auftreten, können Sie eine [Supportanfrage](../azure-supportability/how-to-create-azure-support-request.md) erstellen. Wählen Sie für diesen Dienst die Option **Protokollintegration** aus.
+
+Eine weitere Supportoption ist das [MSDN-Forum für Azure Log Integration](https://social.msdn.microsoft.com/Forums/home?forum=AzureLogIntegration). Im MSDN-Forum kann die Community Unterstützung bieten, indem sie Fragen beantwortet und Tipps und Tricks zur optimalen Nutzung von Azure Log Integration weitergibt. Das Azure Log Integration-Team überwacht dieses Forum ebenfalls. Die Mitglieder dieses Teams helfen, wann immer sie können.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Azure-Protokollintegration finden Sie in folgenden Dokumenten:
+Weitere Informationen zu Azure Log Integration finden Sie in den folgenden Artikeln:
 
-* [Microsoft Azure Log Integration for Azure logs (Microsoft Azure-Protokoll-Integration für Azure-Protokolle)](https://www.microsoft.com/download/details.aspx?id=53324): Download Center für Details, Systemanforderungen und Installationsanweisungen für die Azure-Protokollintegration.
-* [Introduction to Azure log integration](security-azure-log-integration-overview.md) (Einführung in die Azure-Protokollintegration): Dieses Dokument stellt die Azure-Protokollintegration, die wichtigsten Funktionen sowie die Funktionsweise vor.
-* [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird. Dies ist die derzeit geltende Empfehlung für die Konfiguration von SIEM-Komponenten. Holen Sie zunächst weitere Informationen bei Ihrem SIEM-Hersteller ein.
-* [Azure log Integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) (Häufig gestellte Fragen zur Azure-Protokollintegration): Hier finden Sie Antworten auf häufig gestellte Fragen zur Azure-Protokollintegration.
-* [Integrieren von Security Center-Warnungen mithilfe der Azure-Protokollintegration](../security-center/security-center-integrating-alerts-with-log-integration.md): In diesem Dokument erfahren Sie, wie Sie Azure Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Aktivitätsprotokollen erfasste Sicherheitsereignisse virtueller Computer mit Ihrer Protokollanalyse- oder SIEM-Lösung synchronisieren.
-* [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) (Neue Features für Azure-Diagnose und Azure-Überwachungsprotokolle): In diesem Blogbeitrag werden Azure-Überwachungsprotokolle und andere Features vorgestellt, mit denen Sie sich einen Einblick in die Vorgänge Ihrer Azure-Ressourcen verschaffen können.
+* [Microsoft Azure Log Integration for Azure logs](https://www.microsoft.com/download/details.aspx?id=53324) (Microsoft Azure Log Integration für Azure-Protokolle, in englischer Sprache). Diese Seite im Download Center bietet Details, Systemanforderungen und Installationsanweisungen für Azure Log Integration.
+* [Einführung in Azure Log Integration](security-azure-log-integration-overview.md). Dieser Artikel stellt Azure Log Integration, die wichtigsten Funktionen sowie die Funktionsweise vor.
+* [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner, in englischer Sprache). In diesem Blogbeitrag erfahren Sie, wie Azure Log Integration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird. Er beschreibt unsere zurzeit geltende Empfehlung für die Konfiguration von SIEM-Komponenten. Holen Sie weitere Informationen bei Ihrem SIEM-Hersteller ein.
+* [Azure-Protokollintegration: Häufig gestellte Fragen (FAQ)](security-azure-log-integration-faq.md). In diesen häufig gestellten Fragen finden Sie Antworten zu Azure Log Integration.
+* [Integrieren von Azure Security Center-Warnungen mithilfe von Azure Log Integration](../security-center/security-center-integrating-alerts-with-log-integration.md). Dieser Artikel zeigt Ihnen, wie Sie Security Center-Warnungen und Sicherheitsereignisse für virtuelle Computer synchronisieren, die von der Azure-Diagnose und Azure-Aktivitätsprotokollen erfasst werden. Sie synchronisieren die Protokolle mit Azure Log Analytics oder Ihrer SIEM Lösung.
+* [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) (Neue Features für die Azure-Diagnose und Azure-Überwachungsprotokolle, in englischer Sprache). In diesem Blogbeitrag werden Azure-Überwachungsprotokolle und andere Features vorgestellt, mit denen Sie sich einen Einblick in die Vorgänge Ihrer Azure-Ressourcen verschaffen können.

@@ -1,11 +1,11 @@
 ---
-title: "Administratorübernahme eines nicht verwalteten Verzeichnisses oder Schattenmandanten in Azure Active Directory | Microsoft-Dokumentation"
-description: "Vorgehensweise bei der Übernahme eines DNS-Domänennamens in einem nicht verwalteten Verzeichnis (Schattenmandant) in Azure Active Directory"
+title: Administratorübernahme eines nicht verwalteten Verzeichnisses oder Schattenmandanten in Azure Active Directory | Microsoft-Dokumentation
+description: Vorgehensweise bei der Übernahme eines DNS-Domänennamens in einem nicht verwalteten Verzeichnis (Schattenmandant) in Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b9f01876-29d1-4ab8-8b74-04d43d532f4b
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: f18e5883fca9291eb1447c1eebfe0883936fe84f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 16f5c515231f486e3576b95a0d103d2fa34842ff
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 In diesem Artikel wird beschrieben, wie ein DNS-Domänenname in einem nicht verwalteten Verzeichnis in Azure Active Directory (Azure AD) übernommen wird. Wenn sich ein Self-Service-Benutzer für einen Clouddienst registriert, der Azure AD verwendet, wird er auf der Grundlage seiner E-Mail-Domäne einem nicht verwalteten Azure AD-Verzeichnis hinzugefügt. Weitere Informationen zur Self-Service- oder „viralen“ Registrierung für einen Dienst finden Sie im Artikel zu der Frage, [was die Self-Service-Registrierung für Azure Active Directory ist]().
@@ -38,7 +38,7 @@ Einige Produkte, die SharePoint und OneDrive enthalten, z.B. Office 365, unterst
 
 1. Erstellen Sie einen Benutzerkontext im nicht verwalteten Mandanten, z.B. über eine Registrierung bei Power BI. Genau dies tun Sie in diesem Beispiel.
 
-2. Öffnen Sie die [Power BI-Website](https://powerbi.com), und klicken Sie auf **Start Free** (Kostenlos starten). Geben Sie ein Benutzerkonto ein, das den Domänennamen für die Organisation verwendet, z.B. `admin@fourthcoffee.xyz`. Nachdem Sie den Prüfcode eingegeben haben, suchen Sie in Ihren E-Mails nach dem Bestätigungscode.
+2. Öffnen Sie die [Power BI-Website](https://powerbi.com), und klicken Sie auf **Kostenloser Einstieg**. Geben Sie ein Benutzerkonto ein, das den Domänennamen für die Organisation verwendet, z.B. `admin@fourthcoffee.xyz`. Nachdem Sie den Prüfcode eingegeben haben, suchen Sie in Ihren E-Mails nach dem Bestätigungscode.
 
 3. Wählen Sie in der Bestätigungs-E-Mail von Power BI **Yes, that's me** (Ja, das bin ich) aus.
 
@@ -76,7 +76,7 @@ Wenn Sie die vorherigen Schritte abgeschlossen haben, sind Sie jetzt der globale
 
 ## <a name="external-admin-takeover"></a>Externe Administratorübernahme
 
-Wenn Sie bereits einen Mandanten mit Azure-Diensten oder Office 365 verwalten, können Sie keinen benutzerdefinierten Domänennamen hinzufügen, wenn er bereits in einem anderen Azure AD-Mandanten bestätigt wurde. Sie haben jedoch die Möglichkeit, aus Ihrem verwalteten Mandanten in Azure AD einen nicht verwalteten Mandanten als externe Administratorübernahme zu übernehmen. Die allgemeine Vorgehensweise wird im Artikel [Schnellstart: Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](add-custom-domain.md) erklärt.
+Wenn Sie bereits einen Mandanten mit Azure-Diensten oder Office 365 verwalten, können Sie keinen benutzerdefinierten Domänennamen hinzufügen, wenn er bereits in einem anderen Azure AD-Mandanten bestätigt wurde. Sie haben jedoch die Möglichkeit, aus Ihrem verwalteten Mandanten in Azure AD einen nicht verwalteten Mandanten im Zuge einer externen Administratorübernahme zu übernehmen. Die allgemeine Vorgehensweise wird im Artikel [Schnellstart: Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](add-custom-domain.md) erklärt.
 
 Wenn Sie die Inhaberschaft des Domänennamens bestätigt haben, entfernt Azure AD den Domänennamen aus dem nicht verwalteten Mandanten und verschiebt ihn in Ihren bestehenden Mandanten. Eine externe Administratorübernahme eines nicht verwalteten Verzeichnisses erfordert denselben DNS-TXT-Bestätigungsvorgang wie eine interne Administratorübernahme. Der Unterschied besteht darin, dass Folgendes zusammen mit dem Domänennamen verschoben wird:
 
@@ -113,7 +113,7 @@ Diese Cmdlets werden im [PowerShell-Beispiel](#powershell-example) verwendet.
 Cmdlet | Verwendung 
 ------- | -------
 `connect-msolservice` | Wenn Sie dazu aufgefordert werden, melden Sie sich bei Ihrem verwalteten Mandanten an.
-`get-msoldomain` | Zeigt die dem aktuellen Mandanten zugeordneten Domänennamen an
+`get-msoldomain` | Zeigt die dem aktuellen Mandanten zugeordneten Domänennamen an.
 `new-msoldomain –name <domainname>` | Fügt dem Mandanten den Domänennamen als „Unverified“ (Nicht bestätigt) hinzu (DNS-Bestätigung wurde noch nicht ausgeführt).
 `get-msoldomain` | Der Domänenname befindet sich nun in der Liste der Ihrem verwalteten Mandanten zugeordneten Domänennamen, wird jedoch als **Unverified** aufgeführt.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Stellt Informationen bereit, die in den neuen DNS-TXT-Eintrag für die Domäne eingegeben werden müssen (MS=xxxxx). Die Bestätigung erfolgt möglicherweise nicht sofort, da es einige Zeit braucht, bis der TXT-Eintrag übernommen wird. Warten Sie also einfach einige Minuten, bevor Sie die Option **-ForceTakeover** in Betracht ziehen. 

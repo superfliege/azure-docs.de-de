@@ -1,3 +1,19 @@
+---
+title: Includedatei
+description: Includedatei
+services: data-factory
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 03/27/2018
+ms.author: jingwang
+ms.custom: include file
+ms.openlocfilehash: e68e87bb19b8c64cf06c03831b22cf43d773efde
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/29/2018
+---
 Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimits, um sicherzustellen, dass Kundenabonnements vor anderen Arbeitslasten geschützt sind. Viele der Limits können problemlos für Ihr Abonnement bis zum maximalen Limit angehoben werden, indem Sie sich an den Support wenden.
 
 ### <a name="version-2"></a>Version 2
@@ -15,7 +31,7 @@ Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimi
 | Max. Parameter pro Pipeline | 20 | 30 |
 | Bytes pro Objekt für Pipelineobjekte<sup>1</sup> | 200 KB | 200 KB |
 | Bytes pro Objekt für DataSets und Objekte für verknüpfte Dienste<sup>1</sup> | 100 KB | 2000 KB |
-| Einheiten für Clouddatenverschiebungen<sup>3</sup> | 32 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Einheiten für Clouddatenverschiebungen<sup>3</sup> | 256 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Anzahl der Wiederholungsversuche für Ausführungen von Pipelineaktivitäten | 1 Tag (Timeout) | 1 Tag (Timeout) |
 | Schreiben von API-Aufrufen | 2500/h<br/><br/> Dieser Grenzwert wird von Azure Resource Manager, nicht von Azure Data Factory vorgegeben. | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Lesen von API-Aufrufen | 12.500/h<br/><br/> Dieser Grenzwert wird von Azure Resource Manager, nicht von Azure Data Factory vorgegeben. | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
@@ -39,7 +55,7 @@ Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimi
 
 <sup>2</sup> Bedarfsgesteuerte HDInsight-Kerne werden über das Abonnement zugewiesen, das die Data Factory enthält. Daher ist das obige Limit das von der Data Factory erzwungene Kernlimit für bedarfsgesteuerte HDInsight-Kerne und unterscheidet sich vom Kernlimit, das für Ihr Azure-Abonnement gilt.
 
-<sup>3</sup> Die Einheit für Clouddatenverschiebungen wird in einem Cloud-zu-Cloud-Kopiervorgang verwendet. Sie ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Data Factory. Durch die Nutzung von weitere DMUs für einige Szenarien können Sie einen höheren Durchsatz erreichen. Weitere Informationen finden Sie unter [Einheiten für Clouddatenverschiebungen](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units).
+<sup>3</sup> Die Einheit für Clouddatenverschiebungen wird in einem Cloud-zu-Cloud-Kopiervorgang verwendet. Sie ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Data Factory. Durch die Nutzung von weitere DMUs für einige Szenarien können Sie einen höheren Durchsatz erreichen. Details finden Sie im „Handbuch zur Leistung und Optimierung der Kopieraktivität“ für [Version 2](../articles/data-factory/copy-activity-performance.md#cloud-data-movement-units) und [Version 1](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units) von Data Factory.
 
 <sup>4</sup> Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory die folgenden Datenintegrationsfunktionen für verschiedene Netzwerkumgebungen bereitstellt: Verschieben von Daten, Auslagern von Aktivitäten in Computedienste, Ausführen von SSIS-Paketen. Weitere Informationen finden Sie unter [Übersicht über die Integration Runtime](../articles/data-factory/concepts-integration-runtime.md).
 

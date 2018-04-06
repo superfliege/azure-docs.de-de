@@ -5,7 +5,7 @@ services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: 2f09e545-ec94-4d89-b96c-14783cc9d7a9
 ms.service: storage
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: c23b87cca66df0834a31494be7d8657ff9f2a865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 98a1016f78587b4139041f140634b98fa47edfd1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>Verwalten von Azure Blob Storage-Ressourcen mit dem Storage-Explorer (Vorschau)
 ## <a name="overview"></a>Übersicht
@@ -41,7 +41,7 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer im Storage-
 3. Klicken Sie mit der rechten Maustaste auf **Blobcontainer**, und wählen Sie im Kontextmenü die Option **Blobcontainer erstellen** aus.
 
    ![Kontextmenü „Blobcontainer erstellen“][0]
-4. Unter dem Ordner **Blobcontainer** wird ein Textfeld angezeigt. Geben Sie den Namen für den Blobcontainer ein. Eine Liste mit den Regeln und Einschränkungen für die Benennung von Blobcontainern finden Sie unter [Benennungsregeln für Container](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container).
+4. Unter dem Ordner **Blobcontainer** wird ein Textfeld angezeigt. Geben Sie den Namen für den Blobcontainer ein. Informationen zu Regeln und Einschränkungen für die Benennung von Blobcontainern finden Sie unter [Erstellen des Containers und Festlegen von Berechtigungen](storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions).
 
    ![Textfeld „Blobcontainer erstellen“][1]
 5. Drücken Sie die **EINGABETASTE**, wenn Sie mit dem Erstellen des Blobcontainers fertig sind, oder drücken Sie **ESC**, um den Vorgang abzubrechen. Nach der erfolgreichen Erstellung des Blobcontainers wird er im Ordner **Blobcontainer** für das ausgewählte Speicherkonto angezeigt.
@@ -174,7 +174,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
      2. Wählen Sie im Dialogfeld **Dateien hochladen** rechts neben dem Feld **Dateien** die Schaltfläche mit den Auslassungspunkten (**…**) aus, um die hochzuladenden Dateien auszuwählen.
 
         ![Dateien hochladen – Optionen][16]
-     3. Geben Sie als Typ **Blob-Typ**an. Im Artikel [Erste Schritte mit Azure Blob Storage mit .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) werden die Unterschiede zwischen den verschiedenen Blobtypen erläutert.
+     3. Geben Sie als Typ **Blob-Typ**an. Weitere Informationen finden Sie unter [Erstellen des Containers und Festlegen von Berechtigungen](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container).
      4. Optional können Sie einen Zielordner angeben, in den die ausgewählten Dateien hochgeladen werden. Falls der Zielordner noch nicht vorhanden ist, wird er erstellt.
      5. Wählen Sie die Option **Hochladen**.
    * **Hochladen eines Ordners in einen Blobcontainer**
@@ -185,7 +185,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
      2. Klicken Sie im Dialogfeld **Uploadordner** rechts vom Textfeld **Ordner** auf die Schaltfläche mit den Auslassungszeichen (**…**), um den Ordner auszuwählen, dessen Inhalt Sie hochladen möchten.
 
         ![Upload folder (Ordner hochladen) – Optionen][18]
-     3. Geben Sie als Typ **Blob-Typ**an. Im Artikel [Erste Schritte mit Azure Blob Storage mit .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) werden die Unterschiede zwischen den verschiedenen Blobtypen erläutert.
+     3. Geben Sie als Typ **Blob-Typ**an. Weitere Informationen finden Sie unter [Erstellen des Containers und Festlegen von Berechtigungen](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container).
      4. Optional können Sie einen Zielordner angeben, in den der Inhalt des ausgewählten Ordners hochgeladen wird. Falls der Zielordner noch nicht vorhanden ist, wird er erstellt.
      5. Wählen Sie die Option **Hochladen**.
    * **Herunterladen eines Blobs auf den lokalen Computer**

@@ -1,24 +1,24 @@
 ---
-title: "Konfigurieren von Redis-Clustern für Azure Redis Cache vom Typ „Premium“ | Microsoft Docs"
-description: "Erfahren Sie, wie Sie das Redis-Clustering für Azure Redis Cache-Instanzen im Premium-Tarif erstellen und verwalten."
+title: Konfigurieren von Redis-Clustern für Azure Redis Cache vom Typ „Premium“ | Microsoft Docs
+description: Erfahren Sie, wie Sie das Redis-Clustering für Azure Redis Cache-Instanzen im Premium-Tarif erstellen und verwalten.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
 ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 03/26/2018
 ms.author: wesmc
-ms.openlocfilehash: 16281cca4e4bc95e145317365d42382ab11fde93
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 4af6545058ab0031d7cd1b38618b6d80204f83b9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>Konfigurieren von Redis-Clustern für Azure Redis Cache vom Typ "Premium"
 Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. In diesem Artikel wird erläutert, wie Cluster in einer Azure Redis Cache-Instanz vom Typ "Premium" konfiguriert werden.
@@ -33,7 +33,7 @@ Azure Redis Cache umfasst Redis Cluster entsprechend der [Implementierung in Red
 * Höherer Durchsatz: Der Durchsatz steigt linear, wenn Sie die Anzahl der Shards erhöht. 
 * Höhere Speichergröße: Die Speichergröße erhöht sich linear, wenn Sie die Anzahl der Shards erhöht.  
 
-Ausführliche Informationen zu Größe, Durchsatz und Bandbreite von Premium-Caches finden Sie unter [Welches Redis Cache-Angebot und welche Redis Cache-Größe sollte ich verwenden?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
+Clustering erhöht nicht die Anzahl von Verbindungen, die für einen gruppierten Cache verfügbar sind. Ausführliche Informationen zu Größe, Durchsatz und Bandbreite von Premium-Caches finden Sie unter [Welches Redis Cache-Angebot und welche Redis Cache-Größe sollte ich verwenden?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
 In Azure wird Redis Cluster als Modell aus primärem Cache und Replikatcache angeboten, in dem jeder Shard über ein Paar aus primärem Cache und Replikatcache mit Replikation verfügt und die Replikation mit dem Azure Redis Cache-Dienst verwaltet wird. 
 
@@ -75,6 +75,8 @@ Klicken Sie zum Ändern der Clustergröße auf einem ausgeführten Premium-Cache
 ![Redis-Clustergröße][redis-cache-redis-cluster-size]
 
 Um die Clustergröße zu ändern, verwenden Sie den Schieberegler, oder geben Sie im Textfeld **Shardanzahl** eine Zahl zwischen 1 und 10 ein, und klicken Sie zum Speichern auf **OK**.
+
+Wenn Sie den Cluster vergrößern, erhöht sich der maximale Durchsatz, und der Cache vergrößert sich. Die Vergrößerung des Clusters führt nicht zu einer Erhöhung der maximalen Anzahl der für Clients verfügbaren Verbindungen.
 
 > [!NOTE]
 > Bei der Skalierung eines Clusters wird der Befehl [MIGRATE](https://redis.io/commands/migrate) ausgeführt, bei dem es sich um einen Befehl mit hohen Kosten handelt, daher sollten Sie erwägen, den Vorgang in der Nebenzeit auszuführen. Während der Migration wird bei der Serverlast ein Spitzenwert angezeigt. Das Skalieren eines Clusters ist ein langer Prozess und die benötigte Zeit hängt von der Anzahl der Schlüssel und der Größe der Werte ab, die diesen Schlüsseln zugeordnet sind.
@@ -132,7 +134,7 @@ Zum gegenwärtigen Zeitpunkt unterstützen nicht alle Clients das Redis-Clusteri
 Sie können eine Verbindung mit dem Cache mit den gleichen [Endpunkten](cache-configure.md#properties), [Ports](cache-configure.md#properties) und [Schlüsseln](cache-configure.md#access-keys) herstellen, die Sie auch für einen Cache verwenden, bei dem das Clustering nicht aktiviert ist. Redis verwaltet das Clustering auf dem Back-End, sodass es nicht über Ihren Client verwaltet werden muss.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Kann ich direkt eine Verbindung mit den einzelnen Shards des Caches herstellen?
-Dies wird offiziell nicht unterstützt. Allerdings besteht jeder Shard aus einem Paar aus primärem Cache und Replikatcache, die zusammen als Cacheinstanz bezeichnet werden. Mit dem Hilfsprogramm redis-cli in der [unstable](http://redis.io/download) -Verzweigung des Redis-Repositorys auf GitHub können Sie eine Verbindung mit diesen Cacheinstanzen herstellen. Diese Version implementiert grundlegende Unterstützung, wenn sie mit dem Switch `-c` gestartet wird. Weitere Informationen finden Sie im [Redis Cluster-Tutorial](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) unter [Playing with the cluster](http://redis.io) (Ausprobieren des Clusters) auf [http://redis.io](http://redis.io/topics/cluster-tutorial).
+Dies wird offiziell nicht unterstützt. Allerdings besteht jeder Shard aus einem Paar aus primärem Cache und Replikatcache, die zusammen als Cacheinstanz bezeichnet werden. Mit dem Hilfsprogramm redis-cli in der [unstable](http://redis.io/download) -Verzweigung des Redis-Repositorys auf GitHub können Sie eine Verbindung mit diesen Cacheinstanzen herstellen. Diese Version implementiert grundlegende Unterstützung, wenn sie mit dem Switch `-c` gestartet wird. Weitere Informationen finden Sie im [Redis Cluster-Tutorial](http://redis.io/topics/cluster-tutorial) unter [Playing with the cluster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) (Ausprobieren des Clusters) auf [http://redis.io](http://redis.io).
 
 Ohne SSL verwenden Sie die folgenden Befehle.
 
