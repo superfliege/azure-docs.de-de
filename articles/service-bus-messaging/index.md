@@ -1,22 +1,22 @@
 ---
 title: Service Bus-Messaging-Dokumentation
-description: "Hier erfahren Sie, wie Sie Messaging für die übergreifende Vernetzung von Anwendungen und Diensten in lokalen und cloudbasierten Umgebungen einrichten."
-services: service-bus
-author: czeumault
-manager: carolz
+description: Hier erfahren Sie, wie Sie Messaging für die übergreifende Vernetzung von Anwendungen und Diensten in lokalen und cloudbasierten Umgebungen einrichten.
+services: service-bus-messaging
+author: sethmanheim
+manager: timlt
 layout: LandingPage
-ms.assetid: 
-ms.service: service-bus
+ms.assetid: ''
+ms.service: service-bus-messaging
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 03/14/2017
-ms.author: carolz
-ms.openlocfilehash: 733d2fd848e100525cb7f50f9831f52d5d473863
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/02/2018
+ms.author: sethm
+ms.openlocfilehash: cafe8d0687260362347600f05ef090c7cb95ea82
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="service-bus-messaging-documentation"></a>Service Bus-Messaging-Dokumentation
 Der Messagingdienst bietet eine zuverlässige Informationsübermittlung als Broker- oder Drittanbieter-Kommunikationsmechanismus.
@@ -80,7 +80,7 @@ Der Messagingdienst bietet eine zuverlässige Informationsübermittlung als Brok
 
 ---
 
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -126,8 +126,8 @@ Der Messagingdienst bietet eine zuverlässige Informationsübermittlung als Brok
                 <div class="card">
                     <div class="cardText">
                         <h3>ANDERE</h3>
-                        <p><a href="service-bus-messaging-exceptions.md">Exceptions</a></p>
-                        <p><a href="service-bus-quotas.md">Kontingente</a></p>
+                        <p><a href="service-bus-messaging-exceptions.md">Ausnahmen</a></p>
+                        <p><a href="service-bus-quotas.md">Quotas</a></p>
                         <p><a href="service-bus-messaging-sql-filter.md">SQLFilter-Syntax</a></p>
                         <p><a href="service-bus-messaging-sql-rule-action.md">SQLRuleAction-Syntax</a></p>
                    </div>
