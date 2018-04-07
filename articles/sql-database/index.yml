@@ -3,24 +3,24 @@ documentType: LandingData
 title: Dokumentation zu Azure SQL-Datenbank
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: "Dokumentation für Azure SQL-Datenbank – Tutorials, API-Referenz"
+  title: Dokumentation für Azure SQL-Datenbank – Tutorials, API-Referenz
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
-  author: czeumault
-  manager: carolz
+  author: CarlRabeler
+  manager: carigg
   ms.service: sql-database
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: landing-page
-  ms.date: 05/03/2017
-  ms.author: carolz
-  ms.openlocfilehash: 4acc092e4c6006263dda31ab2a54038e60e57651
-  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+  ms.date: 04/01/2018
+  ms.author: carlrab
+  ms.openlocfilehash: b7888a2bece1a9b601c3629deb1c1dd1fc5cbbe3
+  ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/16/2018
+  ms.lasthandoff: 04/06/2018
 abstract:
-  description: "Azure SQL-Datenbank ist eine relationale, auf der Microsoft SQL Server-Engine basierende Database-as-a-Service-Lösung. SQL-Datenbank ist eine zuverlässige und sichere Hochleistungsdatenbank, mit der Sie datengesteuerte Anwendungen und Websites in der Programmiersprache Ihrer Wahl erstellen können, ohne dass eine Infrastruktur verwaltet werden muss. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie SQL-Datenbank verwenden."
+  description: Azure SQL-Datenbank ist eine relationale, auf der Microsoft SQL Server-Engine basierende Database-as-a-Service-Lösung. SQL-Datenbank ist eine zuverlässige und sichere Hochleistungsdatenbank, mit der Sie datengesteuerte Anwendungen und Websites in der Programmiersprache Ihrer Wahl erstellen können, ohne dass eine Infrastruktur verwaltet werden muss. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie SQL-Datenbank verwenden.
   aside:
     image:
       alt: 
@@ -31,10 +31,10 @@ abstract:
     href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
     width: 250
 sections:
-- title: "Fünfminütige Schnellstarts"
+- title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
-    text: "Erfahren Sie, wie Sie eine SQL-Datenbank erstellen, sie mit SQL Management Studio verwalten und sie für die Entwicklung in C#, Java, Python, Node.js und Ruby nutzen:"
+    text: 'Erfahren Sie, wie Sie eine SQL-Datenbank erstellen, sie mit SQL Management Studio verwalten und sie für die Entwicklung in C#, Java, Python, Node.js und Ruby nutzen:'
   - type: list
     style: icon48
     items:
@@ -50,14 +50,14 @@ sections:
         src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
       text: Azure PowerShell
       href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-powershell
-- title: "Schritt-für-Schritt-Tutorials"
+- title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
     text: Informationen zum Erstellen, Verwalten und Migrieren von Datenbanken mithilfe der SQL-Datenbank
   - type: list
     style: ordered
     items:
-    - html: "Erstellen und Entwerfen des Schemas für eine neue SQL-Datenbank per <a href=\"/azure/sql-database/sql-database-design-first-database\">SSMS</a> oder <a href=\"/azure/sql-database/sql-database-design-first-database-csharp\">.NET</a>"
+    - html: Erstellen und Entwerfen des Schemas für eine neue SQL-Datenbank per <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> oder <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
     - html: <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Migrieren einer vorhandenen SQL Server-Datenbank zur Verwendung von Azure SQL-Datenbank</a>
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">Sichern Ihrer SQL-Datenbank</a>
     - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">Implementieren einer geografisch verteilten Datenbank</a>

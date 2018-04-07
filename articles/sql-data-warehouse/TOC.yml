@@ -178,7 +178,7 @@
         - name: Redgate
           href: sql-data-warehouse-load-with-redgate.md
         - name: SSIS
-          href: sql-data-warehouse-load-from-sql-server-with-integration-services.md
+          href: /sql/integration-services/load-data-to-sql-data-warehouse
     - name: Integrieren
       items:
         - name: Elastische Abfrage für SQL-Datenbank
