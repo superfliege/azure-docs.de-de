@@ -72,8 +72,12 @@
       href: sql-database-managed-instance.md
     - name: Dienstebenen
       href: sql-database-service-tiers.md
-    - name: Ressourceneinschränkungen
-      href: sql-database-resource-limits.md
+    - name: Horizontale Leseskalierung
+      href: sql-database-read-scale-out.md
+    - name: DTU-basierte Ressourceneinschränkungen
+      href: sql-database-dtu-resource-limits.md
+    - name: V-Kern-basierte Ressourceneinschränkungen
+      href: sql-database-vcore-resource-limits.md
     - name: Einzeldatenbanken
       href: sql-database-single-database-resources.md
     - name: Pools für elastische Datenbanken
@@ -126,7 +130,7 @@
           href: sql-database-business-continuity.md
         - name: Datenbanksicherungen
           href: sql-database-automated-backups.md
-        - name: Sicherungsaufbewahrung
+        - name: Langfristiges Aufbewahren von Sicherungen
           href: sql-database-long-term-retention.md
         - name: Failovergruppen
           href: sql-database-geo-replication-overview.md
@@ -306,10 +310,12 @@
           href: sql-database-vnet-service-endpoint-rule-powershell.md
     - name: Geschäftskontinuität
       items:
-        - name: Konfigurieren eines Tresors – Sicherungen
-          href: sql-database-long-term-backup-retention-configure.md
         - name: Georeplikation – Portal
           href: sql-database-geo-replication-portal.md
+        - name: 'Konfigurieren der langfristigen Sicherungsaufbewahrung: SQL-Speicher'
+          href: sql-database-long-term-backup-retention-configure.md
+        - name: 'Konfigurieren der langfristigen Sicherungsaufbewahrung: Azure-Tresor'
+          href: sql-database-long-term-backup-retention-configure-vault.md
     - name: Laden und Verschieben von Daten
       items:
         - name: Laden von Daten mit BCP

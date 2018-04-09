@@ -37,37 +37,49 @@
           href: how-to-use-vm-sign-in.md
         - name: Verwendung mit Azure-SDKs
           href: how-to-use-vm-sdk.md
-    - name: Zugreifen auf Azure Data Lake Store per VM-MSI
+    - name: Verwenden einer verwalteten Identität mit Windows-VMs/-VMSS
       items:
-        - name: Von einem virtuellen Windows-Computer
+        - name: Zugreifen auf Azure Data Lake Store
           href: tutorial-windows-vm-access-datalake.md
-        - name: Von einem virtuellen Linux-Computer
-          href: tutorial-linux-vm-access-datalake.md
-    - name: Zugreifen auf Azure Resource Manager per VM-MSI
-      items:
-        - name: Von einem virtuellen Windows-Computer
+        - name: Zugreifen auf Azure Resource Manager
           href: tutorial-windows-vm-access-arm.md
-        - name: Von einem virtuellen Linux-Computer
-          href: tutorial-linux-vm-access-arm.md
-    - name: Zugreifen auf Azure SQL per VM-MSI
-      items:
-        - name: Von einem virtuellen Windows-Computer
+        - name: Zugreifen auf Azure SQL
           href: tutorial-windows-vm-access-sql.md
-    - name: Zugreifen auf Azure-Speicher per VM-MSI
-      items:
-        - name: Von einem virtuellen Windows-Computer mithilfe eines Zugriffsschlüssels
+        - name: Zugreifen auf Azure Storage mithilfe eines Zugriffsschlüssels
           href: tutorial-windows-vm-access-storage.md
-        - name: Von einem virtuellen Windows-Computer mithilfe einer SAS
+        - name: Zugreifen auf Azure Storage mithilfe einer SAS
           href: tutorial-windows-vm-access-storage-sas.md
-        - name: Von einem virtuellen Linux-Computer mithilfe eines Zugriffsschlüssels
-          href: tutorial-linux-vm-access-storage.md
-        - name: Von einem virtuellen Linux-Computer mithilfe einer SAS
-          href: tutorial-linux-vm-access-storage-sas.md
-    - name: Verwenden einer VM-MSI für den Zugriff auf Azure Key Vault
-      items:
-        - name: Von einem virtuellen Windows-Computer
+        - name: Zugreifen auf Azure Key Vault
           href: tutorial-windows-vm-access-nonaad.md
-        - name: Von einem virtuellen Linux-Computer
+    - name: Verwenden einer verwalteten Identität mit Linux-VMs/-VMSS
+      items:
+        - name: Zugreifen auf Azure Data Lake Store
+          href: tutorial-linux-vm-access-datalake.md
+        - name: Zugreifen auf Azure Resource Manager
+          href: tutorial-linux-vm-access-arm.md
+        - name: Zugreifen auf Azure Storage mithilfe eines Zugriffsschlüssels
+          href: tutorial-linux-vm-access-storage.md
+        - name: Zugreifen auf Azure Storage mithilfe einer SAS
+          href: tutorial-linux-vm-access-storage-sas.md
+        - name: Zugreifen auf Azure Key Vault
           href: tutorial-linux-vm-access-nonaad.md
     - name: Häufig gestellte Fragen und bekannte Probleme
       href: known-issues.md
+    - name: Verweis
+      items:
+        - name: Befehlszeilenschnittstelle (CLI)
+          href: /cli/azure/identity
+        - name: PowerShell
+          href: '/powershell/module/azurerm.managedserviceidentity#managed_service_identity'
+        - name: .NET
+          href: '/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet'
+        - name: Java
+          href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
+        - name: Python
+          href: /python/api/azure.mgmt.msi
+        - name: Ruby
+          href: 'https://rubygems.org/gems/azure_mgmt_msi'
+        - name: Node.js
+          href: /javascript/api/ms-rest-azure
+        - name: Go
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi'

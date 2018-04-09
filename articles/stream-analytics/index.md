@@ -1,26 +1,23 @@
 ---
-title: "Dokumentation für Azure Stream Analytics – Tutorials, API-Referenz | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie IoT-Analysen in der Cloud mit vollständig verwalteter Ereignisverarbeitung durchführen. Analysieren Sie Daten von Anwendungen, Sensoren, Geräten und mehr in Echtzeit."
+title: Dokumentation für Azure Stream Analytics – Tutorials, API-Referenz
+description: Hier erfahren Sie, wie Sie IoT-Analysen in der Cloud mit vollständig verwalteter Ereignisverarbeitung durchführen. Analysieren Sie Daten von Anwendungen, Sensoren, Geräten und mehr in Echtzeit.
 services: stream-analytics
-author: czeumault
-manager: carolz
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
 layout: LandingPage
-ms.assetid: 
 ms.service: stream-analytics
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/23/2017
-ms.author: carolz
-ms.openlocfilehash: 5bc0f813ac9ba8fa0960f2802d5482e31d772daf
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: bb305fa038a59c5e385e0cce7eed07c3a2693634
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-analytics-documentation"></a>Stream Analytics-Dokumentation
 
-Hier erfahren Sie, wie Sie mit Stream Analytics (einen vollständig verwalteten Ereignisverarbeitungsmodul) IoT-Analysen in der Cloud ausführen. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie unter anderem Daten von Anwendungen, Sensoren und Geräten sowie aus sozialen Medien in Echtzeit analysieren. 
+Hier erfahren Sie, wie Sie mit Stream Analytics (eine vollständig verwalteten Ereignisverarbeitungs-Engine) IoT-Analysen in der Cloud ausführen. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie unter anderem Daten von Anwendungen, Sensoren und Geräten sowie aus sozialen Medien in Echtzeit analysieren. 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -135,7 +132,7 @@ Hier erfahren Sie, wie Sie mit Stream Analytics (einen vollständig verwalteten 
 
 ---
 
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">

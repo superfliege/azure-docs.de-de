@@ -15,6 +15,8 @@
       maintainContext: true
 - name: Tutorials
   items:
+    - name: Bereitstellungsslots für Terraform- und Azure-Anbieter
+      href: terraform-slot-walkthru.md
     - name: Erstellen eines virtuellen Terraform-Computers mit MSI-Aktivierung
       href: terraform-vm-msi.md
     - name: Erstellen eines VM-Clusters mit Terraform-Modulen

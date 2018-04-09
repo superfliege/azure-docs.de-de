@@ -29,6 +29,8 @@
       href: render-coverage.md
     - name: Abgedeckter Routingbereich
       href: routing-coverage.md
+    - name: Unterstützte Sprachen
+      href: supported-languages.md
 - name: Anleitungen
   items:
     - name: Verwalten von Konten und Schlüsseln

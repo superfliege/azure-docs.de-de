@@ -155,14 +155,10 @@
           href: backup-client-automation.md
     - name: "Azure\_SQL-Datenbank"
       items:
-        - name: Konfigurieren der langfristigen Sicherungsaufbewahrung
-          href: ../sql-database/sql-database-configure-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Anzeigen von Sicherungen in einem Recovery Services-Tresor
-          href: ../sql-database/sql-database-view-backups-in-vault.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Wiederherstellen langfristig aufbewahrter Sicherungen
-          href: ../sql-database/sql-database-restore-from-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Löschen von langfristigen Azure SQL-Sicherungen
-          href: ../sql-database/sql-database-long-term-retention-delete.md?toc=%2fazure%2fbackup%2ftoc.json
+        - name: 'Konfigurieren und Wiederherstellen von Sicherungen für SQL-Datenbank: SQL-Speicher'
+          href: ../sql-database/sql-database-long-term-backup-retention-configure.md?toc=%2fazure%2fbackup%2ftoc.json
+        - name: 'Konfigurieren und Wiederherstellen von Sicherungen für SQL-Datenbank: Recovery Services-Tresor'
+          href: ../sql-database/sql-database-long-term-backup-retention-configure-vault.md?toc=%2fazure%2fbackup%2ftoc.json
     - name: Windows Server
       items:
         - name: Sichern von Windows Server-Dateien und -Ordnern

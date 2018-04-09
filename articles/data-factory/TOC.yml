@@ -122,6 +122,8 @@
           href: author-visually.md
         - name: Continuous Integration und Continuous Deployment
           href: continuous-integration-deployment.md
+        - name: Iteratives Entwickeln und Debuggen
+          href: iterative-development-debugging.md
     - name: Kopieren von Daten
       items:
         - name: Kopieren von Daten mit der Copy-Aktivität

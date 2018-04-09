@@ -53,6 +53,8 @@
       href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Überwachen der Ereignisbereitstellung
       href: monitor-event-delivery.md
+    - name: Abfragen von Ereignisabonnements
+      href: query-event-subscriptions.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
