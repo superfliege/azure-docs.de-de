@@ -1,26 +1,25 @@
 ---
 title: Azure Active Directory-Nutzungsbedingungen | Microsoft-Dokumentation
-description: "Mit den Azure AD-Nutzungsbedingungen können Sie und Ihr Unternehmen Nutzungsbedingungen für Benutzer von Azure AD-Diensten angeben."
+description: Mit den Azure AD-Nutzungsbedingungen können Sie und Ihr Unternehmen Nutzungsbedingungen für Benutzer von Azure AD-Diensten angeben.
 services: active-directory
-documentationcenter: 
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/06/2018
+ms.date: 03/29/2018
 ms.author: billmath
-ms.openlocfilehash: e29e842a54d286e19d23c1c91c08d55933a0eada
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 208a65c09b13acad62c9b6d8e55b6050041c9f5d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="azure-active-directory-terms-of-use-feature-preview"></a>Nutzungsbedingungsfeature (Vorschauversion) für Azure Active Directory
+# <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen.  Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen.
 
 Der Inhalt von Azure AD Nutzungsbedingungen wird im PDF-Format bereitgestellt.   Das PDF-Format kann für beliebige Inhalte verwendet werden – etwa für vorhandene Vertragsdokumente, sodass Sie bei der Benutzeranmeldung die Zustimmung von Endbenutzern einholen können.  Die Nutzungsbedingungen können für Anwendungen oder Benutzergruppen verwendet werden (oder für unterschiedliche Zwecke, falls Sie über mehrere Nutzungsbedingungen verfügen).
@@ -50,15 +49,15 @@ Führen Sie zum Konfigurieren der Azure AD-Nutzungsbedingungen die folgenden Sch
 Gehen Sie nach Fertigstellung Ihrer Nutzungsbedingungen wie folgt vor, um sie hinzuzufügen.
 
 ### <a name="to-add-terms-of-use"></a>So fügen Sie Nutzungsbedingungen hinzu
-1. Navigieren Sie zum Dashboard ([https://aka.ms/catou](https://aka.ms/catou)).
+1. Navigieren Sie zum Dashboard unter [https://aka.ms/catou](https://aka.ms/catou).
 2. Klicken Sie auf "Hinzufügen".</br>
 ![Hinzufügen von Nutzungsbedingungen](media/active-directory-tou/tou12.png)
 3. Geben Sie unter **Name** einen Namen für die Nutzungsbedingungen ein.
-4. Geben Sie unter **Anzeigename** einen Anzeigenamen ein.  Diese Überschrift wird Benutzern bei der Anmeldung angezeigt.
+4. Geben Sie unter **Anzeigename** einen Anzeigenamen ein.  Die Überschrift wird Benutzern bei der Anmeldung angezeigt.
 5.  **Navigieren**Sie zur PDF-Datei mit den fertig gestellten Nutzungsbedingungen, und wählen Sie sie aus.  Wir empfehlen den Schriftgrad 24.
 6. **Wählen** Sie eine Sprache für die Nutzungsbedingungen.  Die Sprachoption ermöglicht das Hochladen mehrerer Nutzungsbedingungen in verschiedenen Sprachen.  Die Version der Nutzungsbedingungen, die einem Endbenutzer angezeigt wird, basiert auf den Browsereinstellungen.
 7. Aktivieren oder deaktivieren Sie **Benutzer müssen die Nutzungsbedingungen erweitern**.  Wenn diese Option aktiviert ist, müssen Endbenutzer die Nutzungsbedingungen anzeigen, bevor sie sie akzeptieren.
-8. Im Abschnitt **Bedingter Zugriff** können Sie die hochgeladenen Nutzungsbedingungen mithilfe einer Vorlage oder einer benutzerdefinierten Richtlinie für den bedingten Zugriff **erzwingen**.  Benutzerdefinierte Richtlinien für den bedingten Zugriff ermöglichen präzise Nutzungsbedingungen bis hin zu einer spezifischen Cloudanwendung oder Benutzergruppe.  Weitere Informationen finden Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md).
+8. Unter **Bedingter Zugriff** können Sie die hochgeladenen Nutzungsbedingungen durch Auswahl einer Vorlage in der Dropdownliste oder mithilfe einer benutzerdefinierten Richtlinie für den bedingten Zugriff **erzwingen**.  Benutzerdefinierte Richtlinien für den bedingten Zugriff ermöglichen präzise Nutzungsbedingungen bis hin zu einer spezifischen Cloudanwendung oder Benutzergruppe.  Weitere Informationen finden Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md).
 9. Klicken Sie auf **Create**.
 10. Nach dem Auswählen einer benutzerdefinierten Vorlage für bedingten Zugriff wird ein neuer Bildschirm angezeigt, auf dem Sie die Richtlinie für den bedingten Zugriff anpassen können.
 11. Ihre neuen Nutzungsbedingungen werden angezeigt.</br>
@@ -69,22 +68,38 @@ Gehen Sie nach Fertigstellung Ihrer Nutzungsbedingungen wie folgt vor, um sie hi
 Veraltete Nutzungsbedingungen können wie folgt entfernt oder gelöscht werden:
 
 ### <a name="to-delete-terms-of-use"></a>So löschen Sie die Nutzungsbedingungen
-1. Navigieren Sie zum Dashboard ([https://aka.ms/catou](https://aka.ms/catou)).
+1. Navigieren Sie zum Dashboard unter [https://aka.ms/catou](https://aka.ms/catou).
 2. Wählen Sie die Nutzungsbedingungen aus, die Sie entfernen möchten.
 3. Klicken Sie auf **Löschen**.
 4. Ihre neuen Nutzungsbedingungen werden nicht mehr angezeigt.
 
 
+## <a name="viewing-current-user-status"></a>Anzeigen des aktuellen Benutzerstatus
+Sie sehen, dass für die Nutzungsbedingungen eine Zahl für die Benutzer angezeigt wird, die die Bedingungen akzeptiert und abgelehnt haben.
+
+![Überwachungsereignis](media/active-directory-tou/tou15.png)
+
+Sie können auf die Zahl unter **Akzeptiert** oder **Abgelehnt** klicken, um den aktuellen Status von Benutzern anzuzeigen.
+
+![Überwachungsereignis](media/active-directory-tou/tou16.png)
+
 ## <a name="audit-terms-of-use"></a>Überwachen von Nutzungsbedingungen
-Azure AD-Nutzungsbedingungen bieten eine benutzerfreundliche Überwachung, mit der Sie ermitteln können, wer Ihre Nutzungsbedingungen akzeptiert hat und wann.  Gehen Sie wie folgt vor, um mit der Überwachung zu beginnen:
+Wenn Sie Verlaufsdaten zur Annahme bzw. Ablehnung der Nutzungsbedingungen und nicht nur den aktuellen Status anzeigen möchten, können Sie die benutzerfreundliche Überwachungsfunktion der Azure AD-Nutzungsbedingungen verwenden.  Mit dieser Überwachungsfunktion können Sie anzeigen, wer die Nutzungsbedingungen wann akzeptiert hat.  
+
+Es gibt zwei Verwendungsmöglichkeiten für die Überwachung, abhängig davon, welche Aktion Sie gerade ausführen möchten.  
+
+
+Gehen Sie wie folgt vor, um mit der Überwachung zu beginnen:
 
 ### <a name="to-audit-terms-of-use"></a>So überwachen Sie die Nutzungsbedingungen
-1. Navigieren Sie zum Dashboard ([https://aka.ms/catou](https://aka.ms/catou)).
-2. Klicken Sie auf „Überwachungsereignis“.</br>
+1. Navigieren Sie zum Dashboard unter [https://aka.ms/catou](https://aka.ms/catou).
+2. Klicken Sie auf „Überwachungsprotokolle anzeigen“.</br>
 ![Überwachungsereignis](media/active-directory-tou/tou8.png)
 3.  Die Informationen auf dem Bildschirm mit den Azure AD-Überwachungsprotokollen können mithilfe der bereitgestellten Dropdownlisten nach bestimmten Überwachungsprotokollinformationen gefiltert werden.
 ![Überwachungsereignis](media/active-directory-tou/tou9.png)
 4.  Die Informationen können auch in eine CSV-Datei heruntergeladen und lokal verwendet werden.
+
+## 
 
 ## <a name="what-users-see"></a>Anzeige für Benutzer
 Wenn Nutzungsbedingungen erstellt und erzwungen wurden, wird den betroffenen Benutzern Folgendes angezeigt.  Diese Bildschirme werden bei der Anmeldung angezeigt.
@@ -94,7 +109,7 @@ Wenn Nutzungsbedingungen erstellt und erzwungen wurden, wird den betroffenen Ben
 ![Überwachungsereignis](media/active-directory-tou/tou11.png)
 
 ### <a name="review-terms-of-use"></a>Überprüfen der Nutzungsbedingungen
-Benutzer können die akzeptierten Nutzungsbedingungen überprüfen und anzeigen.  Hierfür können sie folgendes Verfahren verwenden:
+Benutzer können die akzeptierten Nutzungsbedingungen überprüfen und anzeigen.  Gehen Sie wie folgt vor, um die Nutzungsbedingungen zu überprüfen:
 
 1. Navigieren Sie zu [https://myapps.microsoft.com](https://myapps.microsoft.com), und melden Sie sich an.
 2. Klicken Sie in der rechten oberen Ecke auf Ihren Namen, und wählen Sie in der Dropdownliste die Option **Profil** aus.
@@ -109,11 +124,12 @@ Benutzer können die akzeptierten Nutzungsbedingungen überprüfen und anzeigen.
 ## <a name="additional-information"></a>Zusätzliche Informationen
 Folgende Informationen können bei der Verwendung von Nutzungsbedingungen hilfreich sein.
 
-Betroffene Benutzer müssen sich zur Erfüllung einer neuen Richtlinie ab- und wieder anmelden, wenn Folgendes zutrifft:
- - Für eine Nutzungsbedingung wird eine Richtlinie für den bedingten Zugriff aktiviert. Oder:
- - Eine zweite Nutzungsbedingung wird erstellt.
-
-Der Grund: Richtlinien für den bedingten Zugriff werden sofort wirksam. In diesem Fall werden dem Administrator Cloud- oder Azure AD-Tokenprobleme angezeigt. Der Administrator muss sich ab- und wieder anmelden, um die neue Richtlinie zu erfüllen.
+>[!IMPORTANT]
+> Betroffene Benutzer müssen sich zur Erfüllung einer neuen Richtlinie ab- und wieder anmelden, wenn Folgendes zutrifft:
+> - Für eine Nutzungsbedingung wird eine Richtlinie für den bedingten Zugriff aktiviert. Oder:
+> - Eine zweite Nutzungsbedingung wird erstellt.
+>
+>Richtlinien für den bedingten Zugriff werden sofort wirksam. In diesem Fall werden dem Administrator Cloud- oder Azure AD-Tokenprobleme angezeigt. Der Administrator muss sich ab- und wieder anmelden, um die neue Richtlinie zu erfüllen.
 
 
 
@@ -122,7 +138,7 @@ Der Grund: Richtlinien für den bedingten Zugriff werden sofort wirksam. In dies
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 **F: Wie sehe ich, wann/ob ein Benutzer Nutzungsbedingungen akzeptiert hat?**</br>
-A: Ein Benutzer, der die Nutzungsbedingungen akzeptiert, wird in das Überwachungsprotokoll geschrieben. Sie können das Azure AD-Überwachungsprotokoll nach den Ergebnissen durchsuchen.  
+A: Klicken Sie einfach neben Ihren Nutzungsbedingungen auf die Zahl unter „Akzeptiert“.  Weitere Informationen finden Sie unter [Anzeigen des aktuellen Benutzerstatus](#viewing-current-user-status).  Ein Benutzer, der die Nutzungsbedingungen akzeptiert, wird außerdem in das Überwachungsprotokoll geschrieben. Sie können das Azure AD-Überwachungsprotokoll nach den Ergebnissen durchsuchen.  
 
 **F: Müssen Benutzer die Nutzungsbedingungen erneut akzeptieren, wenn diese geändert werden?**</br>
 A: Ja. Wenn ein Administrator die Nutzungsbedingungen ändert, müssen sie erneut akzeptiert werden.

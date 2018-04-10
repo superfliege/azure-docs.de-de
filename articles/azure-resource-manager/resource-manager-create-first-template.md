@@ -1,8 +1,8 @@
 ---
 title: Erstellen Ihrer ersten Azure Resource Manager-Vorlage | Microsoft-Dokumentation
-description: "Enthält eine Schritt-für-Schritt-Anleitung für die Erstellung Ihrer ersten Azure Resource Manager-Vorlage. Es wird beschrieben, wie Sie den Vorlagenverweis für ein Speicherkonto zum Erstellen der Vorlage verwenden."
+description: Enthält eine Schritt-für-Schritt-Anleitung für die Erstellung Ihrer ersten Azure Resource Manager-Vorlage. Es wird beschrieben, wie Sie den Vorlagenverweis für ein Speicherkonto zum Erstellen der Vorlage verwenden.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -10,14 +10,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/02/2017
+ms.date: 03/30/2018
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.openlocfilehash: 7d20469aaf2dfdd7a5f3650983b59152de837837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: adf7d6ad04b9c341eac2172e09da3cb1f044aa62
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage
 In diesem Thema werden die einzelnen Schritte zum Erstellen Ihrer ersten Azure Resource Manager-Vorlage beschrieben. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager](resource-group-overview.md). Wenn Sie über vorhandene Ressourcen verfügen und eine Vorlage für diese Ressourcen verwenden möchten, helfen Ihnen die Informationen unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md) weiter.
@@ -28,6 +28,7 @@ Zum Erstellen und Überarbeiten von Vorlagen benötigen Sie einen JSON-Editor. [
 
 * Visual Studio Code. Kann bei Bedarf über [https://code.visualstudio.com/](https://code.visualstudio.com/) installiert werden.
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+* Lokale Installation von [Azure PowerShell](/powershell/azure/install-azurerm-ps) oder der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli). Für dieses Tutorial wird eine lokale Installation benötigt, da Ihre Vorlage als lokale Datei gespeichert wird. Wenn Sie Cloud Shell verwenden möchten, müssen Sie [Ihre Vorlage in ein Speicherkonto laden](resource-group-template-deploy-cli.md#deploy-template-from-cloud-shell).
 
 ## <a name="create-template"></a>Erstellen der Vorlage
 
@@ -92,24 +93,6 @@ Nun können Sie die Vorlage bereitstellen. Verwenden Sie PowerShell oder die Azu
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file azuredeploy.json
    ```
-
-Nach Abschluss der Bereitstellung befindet sich Ihr Speicherkonto in der Ressourcengruppe.
-
-[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
-
-Verwenden Sie für die Azure CLI die folgenden Befehle:
-
-```azurecli-interactive
-az group create --name examplegroup --location "South Central US"
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
-```
-
-Derzeit ist PowerShell in der Cloud Shell als Vorschauversion verfügbar. Verwenden Sie für PowerShell die folgenden Befehle:
-
-```powershell
-New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile $home\CloudDrive\templates\azuredeploy.json
-```
 
 Nach Abschluss der Bereitstellung befindet sich Ihr Speicherkonto in der Ressourcengruppe.
 
@@ -244,12 +227,6 @@ Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
 ```
 
-Laden Sie für Cloud Shell die geänderte Vorlage in die Dateifreigabe hoch. Überschreiben Sie die vorhandene Datei. Verwenden Sie dann den folgenden Befehl:
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
-```
-
 ## <a name="use-autocomplete"></a>Verwenden von AutoVervollständigen
 
 Bisher hat die Arbeit an der Vorlage nur das Kopieren und Einfügen von JSON-Code aus diesem Artikel umfasst. Beim Entwickeln Ihrer eigenen Vorlagen möchten Sie dagegen die Eigenschaften und Werte ermitteln und angeben, die für den Ressourcentyp verfügbar sind. VS Code liest das Schema für den Ressourcentyp und schlägt Eigenschaften und Werte vor. Navigieren Sie zum Anzeigen der AutoVervollständigen-Funktion zum properties-Element Ihrer Vorlage, und fügen Sie eine neue Zeile hinzu. Geben Sie ein Anführungszeichen ein. Sie sehen, dass von VS Code sofort Namen vorgeschlagen werden, die im properties-Element verfügbar sind.
@@ -377,12 +354,6 @@ Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 
 ```azurecli
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageNamePrefix=storesecure
-```
-
-Laden Sie für Cloud Shell die geänderte Vorlage in die Dateifreigabe hoch. Überschreiben Sie die vorhandene Datei. Verwenden Sie dann den folgenden Befehl:
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageNamePrefix=storesecure
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

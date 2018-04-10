@@ -1,27 +1,27 @@
 ---
 title: Analysieren der Datennutzung in Log Analytics | Microsoft Docs
-description: "Verwenden Sie das Dashboard „Nutzung“ in Log Analytics, um anzuzeigen, wie viele Daten an den Log Analytics-Dienst gesendet werden, und per Problembehandlung zu ermitteln, warum große Datenmengen gesendet werden."
+description: Beurteilen Sie anhand des Log Analytics-Dashboards für Nutzung und geschätzte Kosten, wie viele Daten an Log Analytics gesendet werden, und ermitteln Sie mögliche Ursachen für unvorhergesehene Zunahmen.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2018
+ms.date: 03/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d6baa6b46290c7a332f5cf780c7f70680fb6a2c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
-Log Analytics enthält Informationen zur Menge der gesammelten Daten, zu den Systemen, die die Daten gesendet haben und zu den unterschiedlichen Arten von gesendeten Daten.  Verwenden Sie das Dashboard zur **Log Analytics-Nutzung**, um anzuzeigen, welche Datenmenge an den Log Analytics-Dienst gesendet wird. Im Dashboard ist angegeben, wie viele Daten von jeder Lösung gesammelt werden und wie viele Daten von den Computern gesendet werden.
+Log Analytics enthält Informationen zur Menge der gesammelten Daten, zu den Quellen, die die Daten gesendet haben, und zu den unterschiedlichen Arten gesendeter Daten.  Die Datennutzung können Sie mithilfe des Dashboards **Protokollanalysenutzung** überprüfen und analysieren. Im Dashboard ist angegeben, wie viele Daten von jeder Lösung gesammelt werden und wie viele Daten von den Computern gesendet werden.
 
 ## <a name="understand-the-usage-dashboard"></a>Grundlagen des Dashboards „Nutzung“
 Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen angezeigt:
@@ -41,20 +41,17 @@ Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen an
     - Zeit zum Erfassen und Indizieren von Daten  
 - Liste der Abfragen
 
-![Dashboard „Nutzung“](./media/log-analytics-usage/usage-dashboard01.png)
+![Dashboard für Nutzung und geschätzte Kosten](./media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
+)
 
 ### <a name="to-work-with-usage-data"></a>So arbeiten Sie mit Nutzungsdaten
-1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com) an, sofern Sie noch nicht angemeldet sind.
-2. Klicken Sie auf **Alle Dienste**, und geben Sie in der Liste mit den Ressourcen die Zeichenfolge **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Log Analytics**.  
-    ![Azure-Hub](./media/log-analytics-usage/hub.png)
-3. Im Dashboard **Log Analytics** wird eine Liste mit Ihren Arbeitsbereichen angezeigt. Wählen Sie einen Arbeitsbereich aus.
-4. Klicken Sie im Dashboard *Arbeitsbereich* auf **Log Analytics Usage** (Log Analytics-Nutzung).
-5. Klicken Sie im Log Analytics-Dashboard zur **Nutzung** auf **Zeit: Letzte 24 Stunden**, um das Zeitintervall zu ändern.  
-    ![Zeitintervall](./media/log-analytics-usage/time.png)
-6. Zeigen Sie die Blätter mit der Nutzungskategorie an, auf denen die für Sie interessanten Bereiche enthalten sind. Wählen Sie ein Blatt aus, und klicken Sie darin dann auf ein Element, um für die [Protokollsuche](log-analytics-log-searches.md) mehr Details anzuzeigen.  
-    ![Blatt mit Beispieldaten zur Nutzung](./media/log-analytics-usage/blade.png)
-7. Überprüfen Sie im Dashboard „Protokollsuche“ die Ergebnisse, die für die Suche ausgegeben werden.  
-    ![Beispiel zur Nutzung für die Protokollsuche](./media/log-analytics-usage/usage-log-search.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.<br><br> ![Azure-Portal](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+3. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche einen Arbeitsbereich aus.
+4. Wählen Sie in der Liste im linken Bereich die Option **Nutzung und geschätzte Kosten** aus.
+5. Auf dem Dashboard für **Nutzung und geschätzte Kosten** können Sie den Zeitraum anpassen. Klicken Sie dazu auf **Zeit: Letzte 24 Stunden**, und ändern Sie das Zeitintervall.<br><br> ![Zeitintervall](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
+6. Zeigen Sie die Blätter mit der Nutzungskategorie an, auf denen die für Sie interessanten Bereiche enthalten sind. Wählen Sie ein Blatt aus, und klicken Sie darin dann auf ein Element, um für die [Protokollsuche](log-analytics-log-searches.md) mehr Details anzuzeigen.<br><br> ![Beispiel-KPI für die Datennutzung](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+7. Überprüfen Sie im Dashboard „Protokollsuche“ die Ergebnisse, die für die Suche ausgegeben werden.<br><br> ![Beispiel zur Nutzung für die Protokollsuche](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Erstellen einer Warnung für den Fall, dass die Datensammlung höher als erwartet ist
 In diesem Abschnitt wird beschrieben, wie Sie eine Warnung erstellen, wenn Folgendes gilt:

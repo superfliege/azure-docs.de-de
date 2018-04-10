@@ -1,25 +1,25 @@
 ---
-title: "Sammeln von Daten über virtuelle Azure-Computer | Microsoft-Dokumentation"
+title: Sammeln von Daten über virtuelle Azure-Computer | Microsoft-Dokumentation
 description: Informationen zum Aktivieren der OMS-Agent-VM-Erweiterung und Aktivieren der Sammlung von Daten von Ihren Azure-VMs mit Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/04/2018
+ms.date: 03/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: be43701f96a71ad5cd9239c4ec7b3eea7fd6db21
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ff610c4efa9db16ca8a1e151b36e0e08dfe30d69
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Sammeln von Daten über virtuelle Azure-Computer
 [Azure Log Analytics](log-analytics-overview.md) kann Daten direkt von Ihren virtuellen Azure-Computern und anderen Ressourcen in Ihrer Umgebung zur detaillierten Analyse und Korrelation in einem einzelnen Repository sammeln.  Dieser Schnellstart zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihren Azure-Linux- oder Windows-VMs konfigurieren und sammeln.  
@@ -27,22 +27,27 @@ ms.lasthandoff: 02/21/2018
 Dieser Schnellstart setzt voraus, dass Sie über einen virtuellen Azure-Computer verfügen. Wenn nicht, können Sie mit unseren VM-Schnellstarts [eine Windows-VM erstellen](../virtual-machines/windows/quick-create-portal.md) oder [eine Linux-VM erstellen](../virtual-machines/linux/quick-create-cli.md).
 
 ## <a name="log-in-to-azure-portal"></a>Anmelden beim Azure-Portal
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an. 
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an. 
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.<br> ![Azure portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.<br> ![Azure-Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
 2. Klicken Sie auf **Erstellen**, und wählen Sie anschließend Optionen für die folgenden Elemente aus:
 
   * Geben Sie einen Namen für den neuen **OMS-Arbeitsbereich** ein, wie z.B. *DefaultLAWorkspace*. 
   * Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
   * Wählen Sie für **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, die einen oder mehrere virtuelle Azure-Computer enthält.  
   * Wählen Sie den **Speicherort** für die Bereitstellung Ihrer virtuellen Computer aus.  Weitere Informationen finden Sie auf der Seite zur [Verfügbarkeit von Log Analytics in den einzelnen Regionen](https://azure.microsoft.com/regions/services/).
-  * In Log Analytics können Sie zwischen drei verschiedenen **Tarifen** wählen, aber wählen Sie für diesen Schnellstart den **kostenlosen** Tarif.  Weitere Informationen zu den einzelnen Tarifen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
+  * Wenn Sie einen Arbeitsbereich in einem neuen Abonnement erstellen, das nach dem 2. April 2018 erstellt wurde, wird automatisch der Tarif *Pro GB* verwendet. In diesem Fall ist keine Tarifauswahloption verfügbar.  Wenn Sie einen Arbeitsbereich für ein Abonnement erstellen, das vor dem 2. April erstellt oder mit einer vorhandenen EA-Registrierung verknüpft wurde, können Sie zwischen drei Tarifen wählen.  In dieser Schnellstartanleitung verwenden wir den Free-Tarif.  Weitere Informationen zu den einzelnen Tarifen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
+  
+        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
 
-        ![Create Log Analytics resource blade](./media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-01.png)<br>  
 3. Klicken Sie nach dem Bereitstellen der erforderlichen Informationen im Bereich **OMS-Arbeitsbereich** auf **OK**.  
 
 Die Informationen werden überprüft, und der Arbeitsbereich wird erstellt. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. 
+
+>[!NOTE]
+>Wenn Sie einen neuen Arbeitsbereich erstellen und mit einem Abonnement verknüpfen, das nach dem 2. April 2018 erstellt wurde, wird automatisch der Tarif *PerGB2018* verwendet.  Dieser Tarif beinhaltet ein kostenloses monatliches Datenvolumen von 5 GB für Application Insights- und Log Analytics-Ressourcen. Weitere Informationen zum Preismodell finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
+>
 
 ## <a name="enable-the-log-analytics-vm-extension"></a>Aktivieren der Log Analytics-VM-Erweiterung
 Für bereits in Azure bereitgestellte Windows- und Linux-VMs installieren Sie den Log Analytics-Agent mit Log Analytics-VM-Erweiterung.  Die Verwendung der Erweiterung vereinfacht den Installationsvorgang. Außerdem wird der Agent zum Senden von Daten an den angegebenen Log Analytics-Arbeitsbereich automatisch konfiguriert. Der Agent wird auch automatisch aktualisiert, damit Sie immer über die neuesten Features und Fixes verfügen.
@@ -53,7 +58,7 @@ Für bereits in Azure bereitgestellte Windows- und Linux-VMs installieren Sie de
 Falls Sie einen Arbeitsbereich in einer Azure Government-Cloud erstellt haben, fällt Ihnen im Portal am oberen Rand der Log Analytics-Ressourcenseite unter Umständen ein Banner auf, das Sie zu einem Upgrade einlädt.  Das Upgrade ist im Rahmen dieses Schnellstarts nicht erforderlich.<br>
 
 ![Log Analytics-Upgradehinweis im Azure-Portal](media/log-analytics-quick-collect-azurevm/log-analytics-portal-upgradebanner.png)zu erstellen und zu verwalten.    
-1. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
+1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 2. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche den zuvor erstellten *DefaultLAWorkspace*.
 3. Klicken Sie im linken Menü unter „Arbeitsbereichsdatenquellen“ auf **Virtuelle Computer**.  
 4. Wählen Sie in der Liste **Virtuelle Computer** einen virtuellen Computer aus, auf dem Sie den Agent installieren möchten. Beachten Sie, dass der **OMS-Verbindungsstatus** für den virtuellen Computer **Nicht verbunden** lautet.

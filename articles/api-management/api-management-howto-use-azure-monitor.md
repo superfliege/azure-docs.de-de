@@ -1,11 +1,11 @@
 ---
-title: "Überwachen von veröffentlichten APIs in Azure API Management | Microsoft-Dokumentation"
-description: "In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie Ihre API in API Management überwachen."
+title: Überwachen von veröffentlichten APIs in Azure API Management | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie Ihre API in API Management überwachen.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 445723242a76dcef4a6b137439728235d5d6e32a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 93cbcf91af4ecf9425ed43ade400a0c82cea72d8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -44,29 +44,6 @@ Im folgenden Video wird die Überwachung von API Management mithilfe von Azure M
 + Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
-
-## <a name="diagnostic-logs"></a>Anzeigen von Aktivitätsprotokollen
-
-Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre API Management-Dienste ausgeführt wurden. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für Ihre API Management-Dienste durchgeführt wurden. 
-
-> [!NOTE]
-> Aktivitätsprotokolle enthalten keine Lesevorgänge (GET) oder Vorgänge, die im Azure-Portal oder mithilfe der ursprünglichen Management-APIs durchgeführt wurden.
-
-Sie können in Ihrem API Management-Dienst auf Aktivitätsprotokolle oder in Azure Monitor auf Protokolle all Ihrer Azure-Ressourcen zugreifen. 
-
-So zeigen Sie Aktivitätsprotokolle an:
-
-1. Wählen Sie Ihre APIM-Dienstinstanz aus.
-2. Klicken Sie auf **Aktivitätsprotokoll**.
-
-## <a name="view-diagnostic-logs"></a>Anzeigen von Diagnoseprotokollen
-
-Diagnoseprotokolle bieten umfassende Informationen zu Vorgängen und Fehlern, die zur Überwachung und Problembehandlung relevant sind. Diagnoseprotokolle unterscheiden sich von Aktivitätsprotokollen. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure-Ressourcen ausgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
-
-So greifen Sie auf Diagnoseprotokolle zu:
-
-1. Wählen Sie Ihre APIM-Dienstinstanz aus.
-2. Klicken Sie auf **Diagnoseprotokoll**.
 
 ## <a name="view-metrics-of-your-apis"></a>Anzeigen von Metriken Ihrer API
 
@@ -109,6 +86,118 @@ So konfigurieren Sie Warnungen:
     > Die Warnungsregel kann bei Auslösung auch einen Webhook oder eine Azure-Logik-App aufrufen.
 
     ![set-up-alert](./media/api-management-azure-monitor/set-up-alert.png)
+
+## <a name="activity-logs"></a>Aktivitätsprotokolle
+
+Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre API Management-Dienste ausgeführt wurden. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für Ihre API Management-Dienste durchgeführt wurden. 
+
+> [!NOTE]
+> Aktivitätsprotokolle enthalten keine Lesevorgänge (GET) oder Vorgänge, die im Azure-Portal oder mithilfe der ursprünglichen Management-APIs durchgeführt wurden.
+
+Sie können in Ihrem API Management-Dienst auf Aktivitätsprotokolle oder in Azure Monitor auf Protokolle all Ihrer Azure-Ressourcen zugreifen. 
+
+So zeigen Sie Aktivitätsprotokolle an:
+
+1. Wählen Sie Ihre APIM-Dienstinstanz aus.
+2. Klicken Sie auf **Aktivitätsprotokoll**.
+
+## <a name="diagnostic-logs"></a>Diagnoseprotokolle
+
+Diagnoseprotokolle bieten umfassende Informationen zu Vorgängen und Fehlern, die zur Überwachung und Problembehandlung relevant sind. Diagnoseprotokolle unterscheiden sich von Aktivitätsprotokollen. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure-Ressourcen ausgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
+
+So konfigurieren Sie Diagnoseprotokolle:
+
+1. Wählen Sie Ihre APIM-Dienstinstanz aus.
+2. Klicken Sie auf **Diagnoseprotokoll**.
+3. Klicken Sie auf **Diagnose aktivieren**. Sie können Diagnoseprotokolle zusammen mit Metriken in einem Speicherkonto archivieren, an einen Event Hub streamen oder an Log Analytics senden. 
+
+API Management bietet derzeit Diagnoseprotokolle (stündlich erfasst) zu einzelnen API-Anforderungen, bei denen jeder Eintrag das folgende Schema aufweist:
+
+```json
+{  
+    "isRequestSuccess" : "",
+    "time": "",   
+    "operationName": "",      
+    "category": "",   
+    "durationMs": ,   
+    "callerIpAddress": "",   
+    "correlationId": "",   
+    "location": "",      
+    "httpStatusCodeCategory": "",      
+    "resourceId": "",      
+    "properties": {   
+        "method": "", 
+        "url": "", 
+        "clientProtocol": "", 
+        "responseCode": , 
+        "backendMethod": "", 
+        "backendUrl": "", 
+        "backendResponseCode": ,
+        "backendProtocol": "",  
+        "requestSize": , 
+        "responseSize": , 
+        "cache": "", 
+        "cacheTime": "", 
+        "backendTime": , 
+        "clientTime": , 
+        "apiId": "",
+        "operationId": "", 
+        "productId": "", 
+        "userId": "", 
+        "apimSubscriptionId": "", 
+        "backendId": "",
+        "lastError": { 
+            "elapsed" : "", 
+            "source" : "", 
+            "scope" : "", 
+            "section" : "" ,
+            "reason" : "", 
+            "message" : ""
+        } 
+    }      
+}  
+```
+
+| Eigenschaft  | Typ | BESCHREIBUNG |
+| ------------- | ------------- | ------------- |
+| isRequestSuccess | boolean | „True“, wenn die HTTP-Anforderung mit einem Antwortstatuscode im Bereich 2xx oder 3xx abgeschlossen wird |
+| time | date-time | Zeitstempel des Eingangs der HTTP-Anforderung beim Gateway |
+| operationName | Zeichenfolge | Konstanter Wert „Microsoft.ApiManagement/GatewayLogs“ |
+| category | Zeichenfolge | Konstanter Wert „GatewayLogs“ |
+| durationMs | integer | Anzahl von Millisekunden zwischen dem Zeitpunkt, zu dem das Gateway die Anforderung empfangen hat, und dem Zeitpunkt, zu dem die Antwort vollständig gesendet wurde |
+| callerIpAddress | Zeichenfolge | IP-Adresse des unmittelbaren Gateway-Aufrufers (kann auch ein Zwischenaufrufer sein) |
+| correlationId | Zeichenfolge | Von API Management zugewiesene eindeutige HTTP-Anforderungs-ID |
+| location | Zeichenfolge | Name der Azure-Region, in der sich das Gateway befindet, das die Anforderung verarbeitet hat |
+| httpStatusCodeCategory | Zeichenfolge | Kategorie des HTTP-Anforderungsstatuscode: Erfolgreich (301 oder darunter, 304 oder 307), Nicht autorisiert (401, 403, 429), Erroneous (Fehler) (400, zwischen 500 und 600), Other (Sonstiges) |
+| Ressourcen-ID | Zeichenfolge | ID der API Management-Ressource: /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> |
+| Eigenschaften | object | Eigenschaften der aktuellen Anforderung |
+| method | Zeichenfolge | HTTP-Methode der eingehenden Anforderung |
+| URL | Zeichenfolge | URL der eingehenden Anforderung |
+| clientProtocol | Zeichenfolge | HTTP-Protokollversion der eingehenden Anforderung |
+| responseCode | integer | Statuscode der an einen Client gesendeten HTTP-Antwort |
+| backendMethod | Zeichenfolge | HTTP-Methode der an ein Back-End gesendeten Anforderung |
+| backendUrl | Zeichenfolge | URL der an ein Back-End gesendeten Anforderung |
+| backendResponseCode | integer | Code der von einem Back-End empfangenen HTTP-Antwort |
+| backendProtocol | Zeichenfolge | HTTP-Protokollversion der an ein Back-End gesendeten Anforderung | 
+| requestSize | integer | Anzahl der Bytes, die von einem Client während der Anforderungsverarbeitung empfangen werden | 
+| responseSize | integer | Anzahl der Bytes, die während der Anforderungsverarbeitung an einen Client gesendet werden | 
+| cache | Zeichenfolge | Status der API Management-Cachenutzung bei der Anforderungsverarbeitung (d.h. Treffer, Fehler, Keiner) | 
+| cacheTime | integer | Anzahl von Millisekunden für alle API Management-Cache-E/A-Vorgänge (Verbindungsherstellung, Senden und Empfangen von Bytes) | 
+| backendTime | integer | Anzahl von Millisekunden für alle Back-End-E/A-Vorgänge (Verbindungsherstellung, Senden und Empfangen von Bytes) | 
+| clientTime | integer | Anzahl von Millisekunden für alle Client-E/A-Vorgänge (Verbindungsherstellung, Senden und Empfangen von Bytes) | 
+| apiId | Zeichenfolge | API-Entitätsbezeichner für die aktuelle Anforderung | 
+| operationId | Zeichenfolge | Vorgangsentitätsbezeichner für die aktuelle Anforderung | 
+| productId | Zeichenfolge | Produktentitätsbezeichner für die aktuelle Anforderung | 
+| userId | Zeichenfolge | Benutzerentitätsbezeichner für die aktuelle Anforderung | 
+| apimSubscriptionId | Zeichenfolge | Abonnemententitätsbezeichner für die aktuelle Anforderung | 
+| backendId | Zeichenfolge | Back-End-Entitätsbezeichner für die aktuelle Anforderung | 
+| LastError | object | Letzter Anforderungsverarbeitungsfehler | 
+| elapsed | integer | Anzahl der Millisekunden, die zwischen dem Eingehen der Anforderung beim Gateway und dem Auftreten des Fehlers vergangen sind | 
+| Quelle | Zeichenfolge | Der Fehler wurde durch den Namen der Richtlinie oder die Verarbeitung des internen Handlers verursacht. | 
+| scope | Zeichenfolge | Der Fehler wurde durch den Bereich des Richtliniendokuments verursacht, das die Richtlinie enthält. | 
+| section | Zeichenfolge | Der Fehler wurde durch den Abschnitt des Richtliniendokuments verursacht, der die Richtlinie enthält. | 
+| reason | Zeichenfolge | Fehlerursache | 
+| Message: | Zeichenfolge | Fehlermeldung | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

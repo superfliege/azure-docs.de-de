@@ -1,32 +1,32 @@
 ---
-title: "Erstellen eines virtuellen Windows-Computers in einer Zone – Azure PowerShell | Microsoft-Dokumentation"
-description: "Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit Azure PowerShell"
+title: Erstellen eines virtuellen Windows-Computers in einer Zone – Azure PowerShell | Microsoft-Dokumentation
+description: Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: tysonn
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 03/27/2018
 ms.author: danlep
-ms.custom: 
-ms.openlocfilehash: ada47536dbd736386a4efc76249f4ff3a1cfd527
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.custom: ''
+ms.openlocfilehash: 4b6ae95d9b8f7cc4924ea89a743cf9878c7dd79a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit PowerShell
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell einen virtuellen Azure-Computer unter Windows Server 2016 in einer Azure-Verfügbarkeitszone erstellen. Eine [Verfügbarkeitszone](../../availability-zones/az-overview.md) ist eine physisch separate Zone in einer Azure-Region. Verwenden Sie Verfügbarkeitszonen, um Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Datencenters zu schützen.
 
-[!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
+Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in einer [unterstützten Azure-Region](../../availability-zones/az-overview.md#regions-that-support-availability-zones) erstellt werden.
 
 Vergewissern Sie sich, dass das aktuelle Azure PowerShell-Modul installiert ist. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
@@ -50,7 +50,7 @@ Get-AzureRmComputeResourceSku | where {$_.Locations.Contains("eastus2")};
 Die Ausgabe ähnelt dem folgenden verkürzten Beispiel, in dem die Verfügbarkeitszonen aufgeführt werden, in denen die einzelnen VM-Größen verfügbar sind:
 
 ```powershell
-ResourceType                Name  Location      Zones
+ResourceType                Name  Location      Zones   [...]
 ------------                ----  --------      -----
 virtualMachines  Standard_DS1_v2   eastus2  {1, 2, 3}
 virtualMachines  Standard_DS2_v2   eastus2  {1, 2, 3}
@@ -68,16 +68,16 @@ virtualMachines   Standard_E4_v3   eastus2  {1, 2, 3}
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
-Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus2* erstellt. „USA, Osten 2“ ist eine der Azure-Regionen, die Verfügbarkeitszonen in der Vorschauversion unterstützen.
+Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus2* erstellt. 
 
 ```powershell
-New-AzureRmResourceGroup -Name myResourceGroup -Location eastus2
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS2
 ```
 
 ## <a name="create-networking-resources"></a>Erstellen von Netzwerkressourcen
 
 ### <a name="create-a-virtual-network-subnet-and-a-public-ip-address"></a>Erstellen eines virtuelles Netzwerks, eines Subnetzes und einer öffentlichen IP-Adresse 
-Diese Ressourcen dienen dazu, dem virtuellen Computer Netzwerkkonnektivität bereitzustellen und ihn mit dem Internet zu verbinden. Erstellen Sie die IP-Adresse in einer Verfügbarkeitszone (*2* in diesem Beispiel). Um den virtuellen Computer in einer Verfügbarkeitszone zu erstellen (wird in einem späteren Schritt gezeigt), geben Sie die gleiche Zone an wie bei der Erstellung der IP-Adresse.
+Diese Ressourcen dienen dazu, dem virtuellen Computer Netzwerkkonnektivität bereitzustellen und ihn mit dem Internet zu verbinden. Erstellen Sie die IP-Adresse in einer Verfügbarkeitszone (*2* in diesem Beispiel). In einem späteren Schritt erstellen Sie den virtuellen Computer in der gleichen Zone, die auch zum Erstellen der IP-Adresse verwendet wurde.
 
 ```powershell
 # Create a subnet configuration
@@ -85,7 +85,7 @@ $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPre
 
 # Create a virtual network
 $vnet = New-AzureRmVirtualNetwork -ResourceGroupName myResourceGroup -Location eastus2 `
-    -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+    -Name myVNet -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
 
 # Create a public IP address in an availability zone and specify a DNS name
 $pip = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup -Location eastus2 -Zone 2 `
@@ -122,7 +122,7 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName myResourceGrou
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Erstellen Sie eine VM-Konfiguration. Diese Konfiguration umfasst die beim Bereitstellen der VM verwendeten Einstellungen, z.B. ein Image des virtuellen Computers, Größe und Authentifizierungskonfiguration. Die Größe *Standard_DS1_v2* in diesem Beispiel wird in der Vorschauversion von Verfügbarkeitszonen unterstützt. Diese Konfiguration gibt auch die Verfügbarkeitszone an, die Sie beim Erstellen der IP-Adresse festgelegt haben. Wenn Sie diesen Schritt ausführen, werden Sie aufgefordert, Anmeldeinformationen einzugeben. Die Werte, die Sie eingeben, werden als Benutzername und Kennwort für den virtuellen Computer konfiguriert.
+Erstellen Sie eine VM-Konfiguration. Diese Konfiguration umfasst die beim Bereitstellen der VM verwendeten Einstellungen, z.B. ein Image des virtuellen Computers, Größe und Authentifizierungskonfiguration. Die in diesem Beispiel verwendete Größe *Standard_DS1_v2* wird in Verfügbarkeitszonen unterstützt. Diese Konfiguration gibt auch die Verfügbarkeitszone an, die Sie beim Erstellen der IP-Adresse festgelegt haben. Wenn Sie diesen Schritt ausführen, werden Sie aufgefordert, Anmeldeinformationen einzugeben. Die Werte, die Sie eingeben, werden als Benutzername und Kennwort für den virtuellen Computer konfiguriert.
 
 ```powershell
 # Define a credential object
@@ -141,9 +141,9 @@ Erstellen Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurerm
 New-AzureRmVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
 ```
 
-## <a name="zone-for-ip-address-and-managed-disk"></a>Zone für IP-Adresse und verwalteten Datenträger
+## <a name="confirm-zone-for-managed-disk"></a>Bestätigen der Zone für den verwalteten Datenträger
 
-Sie haben die IP-Adressressource des virtuellen Computers in der gleichen Verfügbarkeitszone erstellt wie den virtuellen Computer. Die verwaltete Datenträgerressource für den virtuellen Computer wird ebenfalls in der gleichen Verfügbarkeitszone erstellt. Dies kann mit [Get-AzureRmDisk](/powershell/module/azurerm.compute/get-azurermdisk) überprüft werden:
+Sie haben die IP-Adressressource des virtuellen Computers in der gleichen Verfügbarkeitszone erstellt wie den virtuellen Computer. Die verwaltete Datenträgerressource für den virtuellen Computer wird in der gleichen Verfügbarkeitszone erstellt. Dies kann mit [Get-AzureRmDisk](/powershell/module/azurerm.compute/get-azurermdisk) überprüft werden:
 
 ```powershell
 Get-AzureRmDisk -ResourceGroupName myResourceGroup
@@ -154,9 +154,9 @@ Die Ausgabe zeigt, dass sich der verwaltete Datenträger in der gleichen Verfüg
 ```powershell
 ResourceGroupName  : myResourceGroup
 AccountType        : PremiumLRS
-OwnerId            : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
+OwnerId            : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.
                      Compute/virtualMachines/myVM
-ManagedBy          : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
+ManagedBy          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx//resourceGroups/myResourceGroup/providers/Microsoft.
                      Compute/virtualMachines/myVM
 Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
 Zones              : {2}
@@ -166,15 +166,13 @@ CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
 DiskSizeGB         : 127
 EncryptionSettings :
 ProvisioningState  : Succeeded
-Id                 : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
+Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.
                      Compute/disks/myVM_OsDisk_1_bd921920bb0a4650becfc2d830000000
 Name               : myVM_OsDisk_1_bd921920bb0a4650becfc2d830000000
 Type               : Microsoft.Compute/disks
 Location           : eastus2
 Tags               : {}
 ```
-
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte

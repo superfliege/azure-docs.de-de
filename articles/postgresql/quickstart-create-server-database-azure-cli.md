@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 14007bff572f5ecf71b4595dcab8f24d9cf2d17e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9b92e00f7082921586e8b8d8461ddf718ca30aeb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Schnellstart: Erstellen einer Azure Database for PostgreSQL-Instanz per Azure CLI
 Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. Dieser Schnellstart veranschaulicht das Erstellen einer Azure-Datenbank für PostgreSQL-Server in einer [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) mithilfe der Azure-CLI.
@@ -58,11 +58,11 @@ Die JSON-Ausgabe sollte Folgendes enthalten:
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.4"
+    "version": "0.0.5"
 }
 ```
 
-Wird Version 0.0.4 nicht zurückgegeben, führen Sie den folgenden Befehl aus, um die Erweiterung zu aktualisieren: 
+Wird Version 0.0.5 nicht zurückgegeben, führen Sie den folgenden Befehl aus, um die Erweiterung zu aktualisieren: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```

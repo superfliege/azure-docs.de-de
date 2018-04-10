@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Web-Apps in App Service ausführen, indem Sie
 services: app-service\web
 documentationcenter: ''
 author: rmcmurray
-manager: routlaw
+manager: mbaldwin
 editor: ''
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -12,18 +12,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/08/2017
+ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e63f8706e28a5d34cc9774cbaecde31415a4b48e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Erstellen Ihrer ersten Java-Web-App in Azure
 
 [Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching. Dieser Schnellstart veranschaulicht die Bereitstellung einer Java-Web-App in App Service über die [Eclipse-IDE für Java EE-Entwickler](http://www.eclipse.org/).
+
+> [!NOTE]
+>
+> Die Schritte in dieser Schnellstartanleitung zeigen, wie Sie mithilfe der Eclipse-IDE eine Java-Web-App für App Service veröffentlichen. Sie können aber auch die Ultimate Edition oder die Community Edition von IntelliJ IDEA verwenden. Weitere Informationen finden Sie unter [Erstellen einer „Hello World“-Web-App für Azure mit IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app).
+>
 
 Wenn Sie diesen Schnellstart abgeschlossen haben, entspricht Ihre Anwendung bei der Anzeige in einem Webbrowser etwa der folgenden Abbildung:
 
@@ -37,6 +42,11 @@ Für diesen Schnellstart müssen Sie Folgendes installieren:
 
 * Die kostenlose <a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse-IDE für Java EE-Entwickler</a>. In diesem Schnellstart wird Eclipse Neon verwendet.
 * Das <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Azure-Toolkit für Eclipse</a>.
+
+> [!NOTE]
+>
+> Für die Schritte in dieser Schnellstartanleitung müssen Sie sich unter Verwendung des Azure-Toolkits für Eclipse bei Ihrem Azure-Konto anmelden. Eine entsprechende Anleitung finden Sie [hier](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions).
+>
 
 ## <a name="create-a-dynamic-web-project-in-eclipse"></a>Erstellen eines dynamischen Webprojekts in Eclipse
 
@@ -74,15 +84,20 @@ Ersetzen Sie in der Datei „index.jsp“ das `<body></body>`-Element durch folg
 
 Speichern Sie die Änderungen.
 
+> [!NOTE]
+>
+> Sollte die erste Zeile einen Fehler enthalten, der auf eine fehlende Java-Servlet-Klasse verweist, können Sie diesen ignorieren.
+> 
+> ![Unbedenklicher Java-Servlet-Fehler](./media/app-service-web-get-started-java/java-servlet-benign-error.png)
+>
+
 ## <a name="publish-the-web-app-to-azure"></a>Veröffentlichen der Web-App in Azure
 
-Klicken Sie im Project Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie dann **Azure** > **Publish as Azure Web App** (Als Azure-Web-App veröffentlichen) aus.
+Klicken Sie im Projektexplorer mit der rechten Maustaste auf Ihr Projekt, und wählen Sie dann **Azure** > **Publish as Azure Web App** (Als Azure-Web-App veröffentlichen) aus.
 
 ![Kontextmenü „Publish as Azure Web App“ (Als Azure-Web-App veröffentlichen)](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
-Behalten Sie im Dialogfeld **Azure Sign In** (Azure-Anmeldung) die Option **Interactive** (Interaktiv) bei, und wählen Sie dann **Sign in** (Anmelden) aus.
-
-Befolgen Sie die Anweisungen zur Anmeldung.
+Sollte das**** Azure-Anmeldedialogfeld angezeigt werden, gehen Sie wie in der [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions) beschrieben vor, um Ihre Anmeldeinformationen einzugeben.
 
 ### <a name="deploy-web-app-dialog-box"></a>Dialogfeld „Deploy Web App“ (Web-App bereitstellen)
 
@@ -100,8 +115,8 @@ Das Dialogfeld **Create App Service** (App Service erstellen) wird mit Standardw
 
 Im Dialogfeld **Create App Service** (App Service erstellen):
 
-* Behalten Sie den generierten Namen für die Web-App bei. Dieser Name muss innerhalb von Azure eindeutig sein. Der Name ist Teil der URL-Adresse für die Web-App. Wenn die Web-App beispielsweise den Namen **MyJavaWebApp** trägt, lautet die URL *myjavawebapp.azurewebsites.net*.
-* Behalten Sie den Standardwebcontainer bei.
+* Geben Sie einen eindeutigen Namen für Ihre Web-App ein, oder behalten Sie den generierten Namen bei. Dieser Name muss innerhalb von Azure eindeutig sein. Der Name ist Teil der URL-Adresse für die Web-App. Wenn die Web-App beispielsweise den Namen **MyJavaWebApp** trägt, lautet die URL *myjavawebapp.azurewebsites.net*.
+* Behalten Sie für diese Schnellstartanleitung den Standardwebcontainer bei.
 * Wählen Sie ein Azure-Abonnement aus.
 * Auf der Registerkarte **App service plan** (App Service-Plan):
 
@@ -187,7 +202,7 @@ Wählen Sie im linken Menü die Option **Ressourcengruppen** aus.
 
 Wählen Sie die Ressourcengruppe aus. Auf der Seite werden die Ressourcen angezeigt, die Sie in diesem Schnellstart erstellt haben.
 
-![Ressourcengruppe „myResourceGroup“](media/app-service-web-get-started-java/rg2.png)
+![Ressourcengruppe](media/app-service-web-get-started-java/rg2.png)
 
 Wählen Sie die Web-App (**webapp-170602193915** in der vorherigen Abbildung) aus.
 

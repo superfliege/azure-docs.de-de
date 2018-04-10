@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/16/2018
+ms.date: 03/29/2018
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 7c51a2a1cace89305b971d5fb0f56c360cbf93cb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f47d250bbe6689e19dda5042b335ff1812a790d4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der MongoDB-API
 
@@ -30,6 +30,10 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 
 > [!div class="checklist"]
 > * Abfragen von Daten mit MongoDB
+
+Sehen Sie sich zur Einführung das folgende Video zu MongoDB-Abfragen mit Azure Cosmos DB-Programmleiter Andy Hoh an:
+
+>[!VIDEO https://www.youtube.com/tVk8S7lFWMA]
 
 ## <a name="sample-document"></a>Beispieldokument
 
@@ -148,7 +152,7 @@ Die nächste Abfrage gibt alle Kinder in der Familie zurück.
 
 ## <a id="examplequery3"></a> Beispielabfrage 3 
 
-Die nächste Abfrage gibt alle Familien zurück, die registriert sind. 
+Die nächste Abfrage gibt alle registrierten Familien zurück. 
 
 **Abfrage**
     
@@ -157,7 +161,7 @@ Die nächste Abfrage gibt alle Familien zurück, die registriert sind.
 
 ## <a id="examplequery4"></a> Beispielabfrage 4
 
-Die nächste Abfrage gibt alle Familien zurück, die nicht registriert sind. 
+Die nächste Abfrage gibt alle nicht registrierten Familien zurück. 
 
 **Abfrage**
     
@@ -201,7 +205,7 @@ Die nächste Abfrage gibt alle Familien zurück, die nicht registriert sind.
 
 ## <a id="examplequery5"></a> Beispielabfrage 5
 
-Die nächste Abfrage gibt alle Familien zurück, die nicht registriert sind und im Staat NY leben. 
+Die nächste Abfrage gibt alle nicht registrierten Familien im Bundesstaat NY zurück. 
 
 **Abfrage**
     
@@ -300,7 +304,7 @@ Die nächste Abfrage gibt alle Familien zurück, wo das Kinderarray die Größe 
 
 **Ergebnisse**
 
-Es werden keine Ergebnisse zurückgegeben, da nicht mehr als 2 Kinder vorhanden sind. Nur wenn der Parameter 2 ist, ist diese Abfrage erfolgreich und gibt das vollständige Dokument zurück.
+Da keine Familien mit mehr als zwei Kindern vorhanden sind, werden keine Ergebnisse zurückgegeben. Nur wenn der Parameter 2 ist, ist diese Abfrage erfolgreich und gibt das vollständige Dokument zurück.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

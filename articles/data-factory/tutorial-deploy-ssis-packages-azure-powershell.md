@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: f9487067ae77fbb261fb683ddd15207670f9576f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: aab864696be7121be049ce4e907b10431a7b63cb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure-with-powershell"></a>Bereitstellen von SQL Server Integration Services-Paketen in Azure mit PowerShell
 In diesem Tutorial werden die Schritte für die Bereitstellung einer Azure-SSIS-Integrationslaufzeit (Integration Runtime, IR) in Azure Data Factory beschrieben. Anschließend können Sie SQL Server Data Tools (SSDT) oder SQL Server Management Studio (SSMS) zum Bereitstellen von SQL Server Integration Services-Paketen (SSIS) für diese Runtime in Azure verwenden. In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -83,7 +83,7 @@ $AzureSSISMaxParallelExecutionsPerNode = 2
 $SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
 $SSISDBServerAdminUserName = "<Azure SQL server - user name>"
 $SSISDBServerAdminPassword = "<Azure SQL server - user password>"
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (private preview)
+# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S0, S1, S2, S3, etc.>" 
 ```
@@ -246,7 +246,7 @@ $AzureSSISMaxParallelExecutionsPerNode = 2
 $SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
 $SSISDBServerAdminUserName = "<Azure SQL server - user name>"
 $SSISDBServerAdminPassword = "<Azure SQL server - user password>"
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (private preview)
+# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S0, S1, S2, S3, etc.>" 
 
@@ -300,7 +300,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 ```
 
 ## <a name="join-azure-ssis-ir-to-a-vnet"></a>Verknüpfen einer Azure-SSIS-IR mit einem VNET
-Wenn Sie eine verwaltete Azure SQL-Datenbank-Instanz (private Vorschauversion) verwenden, um den SQL Server Integration Services-Katalog (SSIS) in einem virtuellen Netzwerk (VNET) zu hosten, müssen Sie diesem virtuellen Netzwerk auch die Azure-SSIS-IR hinzufügen. Mit Azure Data Factory Version 2 (Vorschauversion) können Sie eine Azure-SSIS-Integrationslaufzeit mit einem VNET verknüpfen. Weitere Informationen finden Sie unter [Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk](join-azure-ssis-integration-runtime-virtual-network.md).
+Wenn Sie eine verwaltete Azure SQL-Datenbank-Instanz (Vorschauversion) verwenden, um den SQL Server Integration Services-Katalog (SSIS) in einem virtuellen Netzwerk (VNET) zu hosten, müssen Sie diesem virtuellen Netzwerk auch die Azure-SSIS-IR hinzufügen. Mit Azure Data Factory Version 2 (Vorschauversion) können Sie eine Azure-SSIS-Integrationslaufzeit mit einem VNET verknüpfen. Weitere Informationen finden Sie unter [Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk](join-azure-ssis-integration-runtime-virtual-network.md).
 
 Ein vollständiges Skript zum Erstellen einer Azure-SSIS-Laufzeit, die mit einem VNET verknüpft wird, finden Sie unter [Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory | Microsoft-Dokumentation](create-azure-ssis-integration-runtime.md).
 

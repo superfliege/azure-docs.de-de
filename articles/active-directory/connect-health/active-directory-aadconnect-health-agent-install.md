@@ -1,8 +1,8 @@
 ---
 title: Installieren des Azure AD Connect Health-Agents | Microsoft Docs
-description: "Auf dieser Seite zu Azure AD Connect Health wird die Installation des Agents für AD FS und für die Synchronisierung beschrieben."
+description: Auf dieser Seite zu Azure AD Connect Health wird die Installation des Agents für AD FS und für die Synchronisierung beschrieben.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 85a12cbfdad4a1b8fbc7c3e3ea15b91c5267d7c8
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 5a0dadb86b6bdcbf8fc9ba38d09a2bfc9f8ec341
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Installieren des Azure AD Connect Health-Agents
 In diesem Dokument werden Sie durch die Installation und Konfiguration der Azure AD Connect Health-Agents geleitet. Sie können die Agents [hier](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent)herunterladen.
@@ -136,7 +136,7 @@ Um mithilfe der Nutzungsanalyse Daten zu sammeln und zu analysieren, benötigt d
 9. Aktivieren Sie die Kontrollkästchen **Erfolgreiche Überprüfungen und Fehlerüberprüfungen**, und klicken Sie anschließend auf **OK**. Diese sollten standardmäßig aktiviert sein.
 10. Öffnen Sie ein PowerShell-Fenster, und führen Sie den folgenden Befehl aus: ```Set-AdfsProperties -AuditLevel Verbose```.
 
-Standardmäßig ist die Überwachungsebene „basic“ aktiviert. Weitere Informationen zur AD FS-Überwachungserweiterung unter Windows Server 2016 finden Sie [hier](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-fs/operations/auditing-enhancements-to-ad-fs-in-windows-server-2016).
+Standardmäßig ist die Überwachungsebene „basic“ aktiviert. Weitere Informationen zur AD FS-Überwachungserweiterung unter Windows Server 2016 finden Sie [hier](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/auditing-enhancements-to-ad-fs-in-windows-server-2016).
 
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>So ermitteln Sie die AD FS-Überwachungsprotokolle
@@ -144,6 +144,8 @@ Standardmäßig ist die Überwachungsebene „basic“ aktiviert. Weitere Inform
 2. Wechseln Sie zu "Windows-Protokolle", und wählen Sie **Sicherheit**aus.
 3. Klicken Sie auf der rechten Seite auf **Aktuelle Protokolle filtern**.
 4. Wählen Sie unter "Ereignisquelle" die **AD FS-Überwachung**aus.
+
+    Unter [diesem Link](active-directory-aadconnect-health-faq.md#operations-questions) finden Sie einige häufig gestellte Fragen zu Überwachungsprotokollen.
 
 ![AD FS-Überwachungsprotokolle](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
 

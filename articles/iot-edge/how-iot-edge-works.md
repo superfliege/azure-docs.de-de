@@ -1,29 +1,32 @@
 ---
 title: Was ist Azure IoT Edge? | Microsoft-Dokumentation
-description: "Übersicht über den Azure IoT Edge-Dienst"
+description: Übersicht über den Azure IoT Edge-Dienst
 services: iot-Edge
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
 editor: chipalost
-ms.assetid: 
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 04/01/2018
 ms.author: kgremban
-ms.custom: 
-ms.openlocfilehash: 5f69041572729d1458a22a855128639056d61586
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.custom: ''
+ms.openlocfilehash: 9071caedd9ab3b63527c2c0bdab38db2efadb17c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>Was ist Azure IoT Edge? – Vorschauversion
 
 Azure IoT Edge verschiebt Cloudanalysen und benutzerdefinierte Geschäftslogik auf Geräte, damit sich Ihre Organisation auf geschäftliche Erkenntnisse konzentrieren kann und sich nicht mit der Datenverwaltung befassen muss. Ermöglichen Sie für Ihre Lösung das richtige Skalieren, indem Sie Ihre IoT-Software konfigurieren und auf Geräten über Standardcontainer bereitstellen und alles über die Cloud überwachen.
+
+>[!NOTE]
+>Azure IoT Edge ist nur im Standard-Tarif von IoT Hub verfügbar. Weitere Informationen zu den Tarifen „Basic“ und „Standard“ finden Sie unter [Choose the right IoT Hub tier for your solution](../iot-hub/iot-hub-scaling.md) (Wählen des passenden IoT Hub-Tarifs für Ihre Lösung).
 
 Analysen (Analytics) sind die Grundlage des geschäftlichen Nutzens von IoT-Lösungen, aber nicht alle Analysen müssen sich in der Cloud befinden. Wenn Sie möchten, dass ein Gerät so schnell wie möglich auf Notfälle reagiert, können Sie die Anomalieerkennung auf dem Gerät selbst durchführen. Ebenso können Sie die Datenbereinigung und -aggregierung lokal durchführen, falls Sie die Bandbreitenkosten reduzieren und die Übertragung von Rohdaten im Terabyte-Bereich vermeiden möchten. Anschließend können Sie die Erkenntnisse in die Cloud senden. 
 

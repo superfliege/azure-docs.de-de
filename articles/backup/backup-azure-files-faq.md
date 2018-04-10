@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: backup
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 850d4d1e2ef6a13fcd8a072e6da210d558c7769b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8093275ec9e9cce6d9a765bf1bfc434fecdb6ea7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -29,8 +29,14 @@ Während der Vorschauphase unterstützt die Sicherung für Azure-Dateifreigaben 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>Warum werden beim Konfigurieren der Sicherung einige Azure-Dateifreigaben im Speicherkonto nicht angezeigt? <br/>
 Überprüfen Sie, ob die Azure-Dateifreigabe bereits in demselben Recovery Services-Tresor geschützt wird oder vor Kurzem gelöscht wurde.
 
-### <a name="why-cant-i-protect-file-shares-connected-to-a-sync-group-in-azure-file-sync-br"></a>Warum kann ich keine Dateifreigaben löschen, die mit einer Synchronisierungsgruppe in Azure File Sync verbunden sind? <br/>
-Die Schutzfunktion für Azure-Dateifreigaben, die mit Synchronisierungsgruppen verbunden sind, ist als eingeschränkte Vorschau verfügbar. Schreiben Sie unter Angabe Ihrer Abonnement-ID an [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), um Zugriff anzufordern. 
+### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync-br"></a>Kann ich Dateifreigaben schützen, die mit einer Synchronisierungsgruppe in Azure Files Sync verbunden sind? <br/>
+Ja. Die Schutzfunktion für Azure-Dateifreigaben, die mit Synchronisierungsgruppen verbunden sind, ist aktiviert und Teil einer öffentlichen Vorschauversion.
+
+### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Beim Sichern von Dateifreigaben habe ich auf ein Speicherkonto geklickt, um die darin enthaltenen Dateifreigaben zu ermitteln. Ich habe sie jedoch nicht geschützt. Wie schütze ich diese Dateifreigaben mit einem anderen Tresor?
+Wenn Sie beim Sichern ein Speicherkonto auswählen, um die darin enthaltenen Dateifreigaben zu ermitteln, wird das Speicherkonto bei dem Tresor registriert, über den der Vorgang ausgeführt wird. Falls Sie die Dateifreigaben bei einem anderen Tresor registrieren möchten, [heben Sie die Registrierung des ausgewählten Speicherkontos bei diesem Tresor auf](troubleshoot-azure-files.md#configuring-backup).
+
+### <a name="can-i-change-the-vault-to-which-i-backup-my-file-shares"></a>Kann ich den Tresor ändern, in dem ich meine Dateifreigaben sichere?
+Ja. Sie müssen jedoch im verknüpften Tresor den [Schutz beenden](backup-azure-files.md#stop-protecting-an-azure-file-share), [die Registrierung dieses Speicherkontos aufheben](troubleshoot-azure-files.md#configuring-backup) und es dann über einen anderen Tresor schützen.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>An welchen geografischen Standorten kann ich Azure-Dateifreigaben sichern? <br/>
 Die Sicherung für Azure-Dateifreigaben befindet sich derzeit in der Vorschauphase und ist nur an folgenden geografischen Standorten verfügbar: 
@@ -43,7 +49,11 @@ Die Sicherung für Azure-Dateifreigaben befindet sich derzeit in der Vorschaupha
 -   Australien, Osten (AE) 
 -   USA, Osten (EUS)
 -   USA, Osten 2 (EUS2)
+- Japan, Osten (JPE)
+- Japan, Westen (JPW)
 -   Indien, Mitte (INC) 
+- Indien, Süden (INS)
+- Korea, Süden (KRS)
 -   USA, Norden-Mitte (NCUS) 
 -   Europa, Norden (NE) 
 -   USA, Süden-Mitte (SCUS) 
@@ -58,7 +68,10 @@ Die Sicherung für Azure-Dateifreigaben befindet sich derzeit in der Vorschaupha
 Schreiben Sie an [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), wenn Sie die Version an einem bestimmten geografischen Standort verwenden müssen, der oben nicht aufgeführt ist.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vaultbr"></a>Wie viele Azure-Dateifreigaben kann ich in einem Tresor schützen?<br/>
-Während der Vorschauphase können Sie Azure-Dateifreigaben aus bis zu 25 Speicherkonten pro Tresor schützen. Sie können auch bis zu 200 Azure-Dateifreigaben in einem einzelnen Tresor schützen. 
+Während der Vorschauphase können Sie Azure-Dateifreigaben aus bis zu 25 Speicherkonten pro Tresor schützen. Sie können auch bis zu 200 Azure-Dateifreigaben in einem einzelnen Tresor schützen.
+
+### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Kann ich zwei verschiedene Dateifreigaben im gleichen Speicherkonto in verschiedenen Tresoren schützen?
+Nein. Alle Dateifreigaben in einem Speicherkonto können nur durch denselben Tresor geschützt werden.
 
 ## <a name="backup"></a>Sicherung
 
@@ -68,10 +81,10 @@ Für eine Dateifreigabe können jeweils bis zu 200 Momentaufnahmen vorhanden sei
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>Nach dem Aktivieren von virtuellen Netzwerken in meinem Speicherkonto ist beim Sichern der Dateifreigaben im Konto ein Fehler aufgetreten. Warum?
 Für die Sicherung für Azure-Dateifreigaben werden keine Speicherkonten unterstützt, für die virtuelle Netzwerke aktiviert sind. Deaktivieren Sie virtuelle Netzwerke in Speicherkonten, um erfolgreiche Sicherungen zu ermöglichen. 
 
-## <a name="restore"></a>Wiederherstellung
+## <a name="restore"></a>Restore 
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>Kann die Wiederherstellung auf der Grundlage einer gelöschten Azure-Dateifreigabe erfolgen? <br/>
-Beim Löschen einer Azure-Dateifreigabe wird die Liste mit den Sicherungen angezeigt, die ebenfalls gelöscht werden, und Sie werden zum Bestätigen aufgefordert. Eine gelöschte Azure-Dateifreigabe kann nicht wiederhergestellt werden.
+Beim Löschen einer Azure-Dateifreigabe wird die Liste mit den Sicherungen angezeigt, die gelöscht werden, und Sie werden zum Bestätigen aufgefordert. Eine gelöschte Azure-Dateifreigabe kann nicht wiederhergestellt werden.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share-br"></a>Kann ich Sicherungen wiederherstellen, wenn ich den Schutz für eine Azure-Dateifreigabe beendet habe? <br/>
 Ja. Wenn Sie beim Beenden des Schutzes die Option **Sicherungsdaten beibehalten** ausgewählt haben, können Sie alle vorhandenen Wiederherstellungspunkte wiederherstellen.
@@ -85,7 +98,7 @@ Auf alle von Azure Backup erstellten Momentaufnahmen kann im Portal, über Power
 Mit Sicherungen für Azure-Dateifreigaben können Sie Ihre täglichen Sicherungen maximal 120 Tage lang aufbewahren.
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>Was passiert, wenn ich die Sicherungsrichtlinie für eine Azure-Dateifreigabe ändere? <br/>
-Wenn eine neue Richtlinie auf Dateifreigaben angewendet wird, werden der Zeitplan und die Aufbewahrung der neuen Richtlinie beachtet. Bei einer Ausweitung der Aufbewahrung werden bereits vorhandene Wiederherstellungspunkte markiert, um sie gemäß der neuen Richtlinie aufzubewahren. Bei einer Verkürzung der Aufbewahrung werden sie zum Löschen im Rahmen der nächsten Bereinigung markiert und demgemäß gelöscht.
+Wenn eine neue Richtlinie auf Dateifreigaben angewendet wird, werden der Zeitplan und die Aufbewahrung der neuen Richtlinie beachtet. Bei einer Ausweitung der Aufbewahrung werden bereits vorhandene Wiederherstellungspunkte markiert, um sie gemäß der neuen Richtlinie aufzubewahren. Bei einer Verkürzung der Aufbewahrung werden sie im Rahmen der nächsten Bereinigung gelöscht.
 
 ## <a name="see-also"></a>Weitere Informationen
 Diese Informationen beziehen sich nur auf das Sichern von Azure Files. Wenn Sie weitere Informationen zu anderen Bereichen von Azure Backup benötigen, sehen Sie sich die folgenden Artikel mit häufig gestellten Fragen zu Backup an:

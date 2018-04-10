@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/08/2018
+ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 23e4b7c74e6dfb88ec6ec50d5b8ae6d8288223f3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 434cbdca42e4287a0f3d7e3960bc0baa373bc358
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics
 
@@ -324,15 +324,15 @@ Um ausführliche Informationen zu den einzelnen Schritten anzuzeigen, klicken Si
 ## <a name="step-5---view-azure-activity-log-in-log-analytics"></a>Schritt 5: Anzeigen des Azure-Aktivitätsprotokolls in Log Analytics
 Zuletzt überprüfen Sie den Log Analytics-Arbeitsbereich, um sicherzustellen, dass die Daten erwartungsgemäß erfasst werden.
 
-1. Wählen Sie im Azure-Portal **Log Analytics** aus.
-2. Wählen Sie Ihren Arbeitsbereich und dann die Kachel **Protokollsuche** aus.
-3. Geben Sie in der Suchabfrageleiste `AzureActivity_CL` ein, und klicken Sie auf die Schaltfläche „Suchen“. Wenn Sie das benutzerdefinierte Protokoll nicht *AzureActivity* genannt haben, geben Sie den von Ihnen ausgewählten Namen ein, und fügen Sie `_CL` an.
+1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
+2. Wählen Sie in der Liste mit den Log Analytics-Arbeitsbereichen Ihren Arbeitsbereich aus.
+3.  Klicken Sie auf die Kachel **Protokollsuche** und im Bereich „Protokollsuche“ auf den Abfragefeldtyp `AzureActivity_CL`, und drücken Sie dann auf EINGABE, oder klicken Sie auf die Suchschaltfläche rechts neben dem Abfragefeld. Wenn Sie das benutzerdefinierte Protokoll nicht *AzureActivity* genannt haben, geben Sie den von Ihnen ausgewählten Namen ein, und fügen Sie `_CL` an.
 
 >[!NOTE]
 > Bei einem neuen benutzerdefinierten Protokoll, das zum ersten Mal an Log Analytics gesendet wird, kann es bis zu einer Stunde dauern, bis das Protokoll durchsucht werden kann.
 
 >[!NOTE]
-> Die Aktivitätsprotokolle werden in eine benutzerdefinierte Tabelle geschrieben und nicht wie unter [Lösung für Aktivitätsprotokolle](./log-analytics-activity.md) beschrieben angezeigt.
+> Die Aktivitätsprotokolle werden in eine benutzerdefinierte Tabelle geschrieben und nicht in der [Lösung für Aktivitätsprotokolle](./log-analytics-activity.md) angezeigt.
 
 
 ![Testen der Logik-App](media/log-analytics-activity-logs-subscriptions/log-analytics-results.png)

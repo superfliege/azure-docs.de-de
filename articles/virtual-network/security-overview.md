@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über Azure-Netzwerksicherheit | Microsoft-Dokumentation"
-description: "Enthält Informationen zu den Sicherheitsoptionen zum Steuern des Netzwerkdatenverkehr-Flusses zwischen Azure-Ressourcen."
+title: Übersicht über Azure-Netzwerksicherheit | Microsoft-Dokumentation
+description: Enthält Informationen zu den Sicherheitsoptionen zum Steuern des Netzwerkdatenverkehr-Flusses zwischen Azure-Ressourcen.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: fbf0556cc47bc08a71fcf050b43c2dbbe5d27184
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 950c64ea1ea2edc072650a9f63a6d21ad369c496
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="network-security"></a>Netzwerksicherheit
 
@@ -128,7 +128,7 @@ Sie können die Standardregeln nicht entfernen, aber Sie können sie außer Kraf
 
 ## <a name="application-security-groups"></a>Anwendungssicherheitsgruppen
 
-Mit Anwendungssicherheitsgruppen können Sie die Netzwerksicherheit als natürliche Erweiterung einer Anwendungsstruktur konfigurieren und virtuelle Computer gruppieren und basierend auf diesen Gruppen Netzwerksicherheitsrichtlinien definieren. Dieses Feature ermöglicht Ihnen die bedarfsabhängige Wiederverwendung Ihrer Sicherheitsrichtlinie, ohne dass Sie explizite IP-Adressen manuell warten müssen. Die Plattform übernimmt die komplexe Verarbeitung von expliziten IP-Adressen und mehreren Regelsätzen, damit Sie sich auf Ihre Geschäftslogik konzentrieren können.
+Mit Anwendungssicherheitsgruppen können Sie die Netzwerksicherheit als natürliche Erweiterung einer Anwendungsstruktur konfigurieren und virtuelle Computer gruppieren sowie auf der Grundlage dieser Gruppen Netzwerksicherheitsrichtlinien definieren. Dieses Feature ermöglicht Ihnen die bedarfsabhängige Wiederverwendung Ihrer Sicherheitsrichtlinie, ohne dass Sie explizite IP-Adressen manuell warten müssen. Die Plattform übernimmt die komplexe Verarbeitung von expliziten IP-Adressen und mehreren Regelsätzen, damit Sie sich auf Ihre Geschäftslogik konzentrieren können.
 
 Sie können eine Anwendungssicherheitsgruppe in einer Sicherheitsregel als Quelle und Ziel angeben. Nachdem Sie Ihre Sicherheitsrichtlinie definiert haben, können Sie virtuelle Computer erstellen und die Netzwerkschnittstellen auf dem virtuellen Computer einer Anwendungssicherheitsgruppe zuweisen. Die Richtlinie wird in Abhängigkeit davon angewendet, ob eine Netzwerkschnittstelle eines virtuellen Computers Mitglied der Anwendungssicherheitsgruppe ist. Im folgenden Beispiel wird veranschaulicht, wie Sie eine Anwendungssicherheitsgruppe für alle Webserver in Ihrem Abonnement nutzen können:
 
@@ -141,7 +141,7 @@ Wenn Sie andere Regeln erstellen und andere Anwendungssicherheitsgruppen als Zie
  
 Informationen zu den Grenzwerten beim Erstellen von Anwendungssicherheitsgruppen und zum Angeben in Sicherheitsregeln finden Sie unter [Einschränkungen bei Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-Anwendungssicherheitsgruppen sind als Vorschauversion verfügbar. Features, die sich in der Vorschauphase befinden, weisen nicht den gleichen Grad an Verfügbarkeit und Zuverlässigkeit wie bereits allgemein verfügbare Features auf. Vor der Verwendung von Anwendungssicherheitsgruppen müssen Sie diese entsprechend registrieren, indem Sie die Schritte 1 bis 5 in den Azure- bzw. PowerShell-Abschnitten unter [Filtern von Netzwerkdatenverkehr mit Netzwerken und Anwendungssicherheitsgruppen (Vorschau)](create-network-security-group-preview.md) ausführen. Für Anwendungssicherheitsgruppen gelten folgende Einschränkungen:
+Für Anwendungssicherheitsgruppen gelten folgende Einschränkungen:
 
 -   Alle Netzwerkschnittstellen innerhalb einer Anwendungssicherheitsgruppe müssen sich im gleichen virtuellen Netzwerk befinden. Einer Anwendungssicherheitsgruppe können keine Netzwerkschnittstellen aus verschiedenen virtuellen Netzwerken hinzugefügt werden. Das virtuelle Netzwerk, in dem sich die erste Netzwerkschnittstelle befindet, die der Anwendungssicherheitsgruppe zugewiesen wurde, definiert das virtuelle Netzwerk, in dem sich alle später zugewiesenen Netzwerkschnittstellen befinden müssen.
 - Wenn Sie Anwendungssicherheitsgruppen als Quelle und Ziel in einer Sicherheitsregel angeben, müssen sich die Netzwerkschnittstellen in beiden Anwendungssicherheitsgruppen im gleichen virtuellen Netzwerk befinden. Wenn also beispielsweise ASG1 Netzwerkschnittstellen aus VNet1 und ASG2 Netzwerkschnittstellen aus VNet2 enthält, kann ASG1 nicht als Quelle und ASG2 nicht als Ziel in einer Regel zugewiesen werden, da sich alle Netzwerkschnittstellen in VNet1 befinden müssen.
@@ -157,7 +157,7 @@ Anwendungssicherheitsgruppen sind als Vorschauversion verfügbar. Features, die 
   Wenn Sie Ihr Azure-Abonnement vor dem 15. November 2017 erstellt haben, können Sie nicht nur die SMTP-Relaydienste nutzen, sondern auch E-Mails direkt über TCP-Port 25 senden. Falls Sie Ihr Abonnement nach dem 15. November 2017 erstellt haben, ist es unter Umständen nicht möglich, E-Mails direkt über Port 25 zu senden. Das Verhalten der ausgehenden Kommunikation über Port 25 hängt wie folgt vom Typ Ihres Abonnements ab:
 
      - **Enterprise Agreement**: Die Kommunikation in ausgehender Richtung über Port 25 ist zulässig. Sie können ausgehende E-Mails direkt von virtuellen Computern an externe E-Mail-Anbieter senden, ohne dass Einschränkungen der Azure Platform bestehen. 
-     - **Nutzungsbasierte Bezahlung:** Die Kommunikation in ausgehender Richtung über Port 25 wird für alle Ressourcen blockiert. Wenn Sie E-Mails von einem virtuellen Computer direkt an externe E-Mail-Anbieter senden müssen (ohne authentifiziertes SMTP-Relay), können Sie die Aufhebung der Einschränkung anfordern. Anfragen dieser Art werden von Microsoft geprüft und erst nach Durchführung von Betrugsprüfungen ggf. genehmigt. Erstellen Sie hierzu eine Supportanfrage mit einem Problemtyp der Art *Technisch*, *Konnektivität virtueller Netzwerke*, *E-Mail senden nicht möglich (SMTP/Port 25)*. Fügen Sie in die Supportanfrage Details dazu ein, warum für Ihr Abonnement das direkte Senden von E-Mails an E-Mail-Anbieter erforderlich ist, anstatt ein authentifiziertes SMTP-Relay zu verwenden. Wenn für Ihr Abonnement eine Ausnahmeregelung gewährt wird, können nur virtuelle Computer, die nach dem Startdatum der Ausnahmeregelung erstellt wurden, in ausgehender Richtung über Port 25 kommunizieren.
+     - **Nutzungsbasierte Bezahlung:** Die Kommunikation in ausgehender Richtung über Port 25 wird für alle Ressourcen blockiert. Wenn Sie E-Mails von einem virtuellen Computer direkt an externe E-Mail-Anbieter senden müssen (ohne authentifiziertes SMTP-Relay), können Sie die Aufhebung der Einschränkung anfordern. Anfragen dieser Art werden von Microsoft geprüft und erst nach Durchführung von Betrugsprüfungen genehmigt. Erstellen Sie hierzu eine Supportanfrage mit einem Problemtyp der Art *Technisch*, *Konnektivität virtueller Netzwerke*, *E-Mail senden nicht möglich (SMTP/Port 25)*. Fügen Sie in die Supportanfrage Details dazu ein, warum für Ihr Abonnement das direkte Senden von E-Mails an E-Mail-Anbieter erforderlich ist, anstatt ein authentifiziertes SMTP-Relay zu verwenden. Wenn für Ihr Abonnement eine Ausnahmeregelung gewährt wird, können nur virtuelle Computer, die nach dem Startdatum der Ausnahmeregelung erstellt wurden, in ausgehender Richtung über Port 25 kommunizieren.
      - **Cloud-Dienstanbieter (CSP), MSDN, Azure Pass, Azure in Open, Education, BizSpark und kostenlose Testversion**: Die Kommunikation in ausgehender Richtung über Port 25 wird für alle Ressourcen blockiert. Es können keine Anfragen zur Beseitigung der Einschränkungen gesendet werden, da keine Ausnahmen gewährt werden. Wenn Sie über Ihren virtuellen Computer E-Mails senden müssen, müssen Sie einen SMTP-Relaydienst verwenden.
 
   Wenn für Sie in Azure das Senden von E-Mails über Port 25 zugelassen wird, kann von Microsoft nicht garantiert werden, dass E-Mail-Anbieter eingehende E-Mails von Ihrem virtuellen Computer akzeptieren. Falls ein bestimmter Anbieter E-Mails von Ihrem virtuellen Computer ablehnt, müssen Sie sich direkt an den Anbieter wenden, um Probleme mit der Nachrichtenzustellung oder Spamfilterung zu beheben, oder einen authentifizierten SMTP-Relaydienst verwenden. 
@@ -165,5 +165,4 @@ Anwendungssicherheitsgruppen sind als Vorschauversion verfügbar. Features, die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Arbeiten Sie das Tutorial [Erstellen einer Netzwerksicherheitsgruppe](virtual-networks-create-nsg-arm-pportal.md) durch.
-* Arbeiten Sie das Tutorial [Create a network security group with application security groups](create-network-security-group-preview.md) (Erstellen einer Netzwerksicherheitsgruppe mit Anwendungssicherheitsgruppen) durch.
+* [Erstellen einer Netzwerksicherheitsgruppe](tutorial-filter-network-traffic.md)

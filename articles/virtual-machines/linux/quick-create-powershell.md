@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 10/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 40abc884a898dc16ae4d785c13d3e926fb30e432
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1d477bfe42cebbc35db4fd40aa5bc3de4829c49b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-powershell"></a>Erstellen eines virtuellen Linux-Computers mit PowerShell
 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für diesen Schnellstart ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
-Abschließend müssen Sie noch einen öffentlichen SSH-Schlüssel mit dem Namen *id_rsa.pub* im *.ssh*-Verzeichnis Ihres Windows-Benutzerprofils speichern. Ausführliche Informationen zum Erstellen von SSH-Schlüsseln für Azure finden Sie unter [Erstellen eines öffentlich-privaten SSH-Schlüsselpaars für virtuelle Linux-Computer](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Abschließend müssen Sie noch einen öffentlichen SSH-Schlüssel mit dem Namen *id_rsa.pub* im *.ssh*-Verzeichnis Ihres Windows-Benutzerprofils speichern. Ausführliche Informationen zum Erstellen und Verwenden von SSH-Schlüsseln finden Sie unter [Erstellen eines öffentlich-privaten SSH-Schlüsselpaars für virtuelle Linux-Computer](ssh-from-windows.md).
 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure

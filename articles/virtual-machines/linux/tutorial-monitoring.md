@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9ffd36da535a2e5ac4a355f429394dc4209348b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d5fb239ffd6a957cbb088bf4843819e2c886cee8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Überwachen und Aktualisieren eines virtuellen Linux-Computers in Azure
 
@@ -34,24 +34,24 @@ Um sicherzustellen, dass die virtuellen Computer (VMs) in Azure ordnungsgemäß 
 > * Anzeigen von Metriken des virtuellen Computers
 > * Erstellen von Benachrichtigungen basierend auf Diagnosemetriken
 > * Verwalten von Paketupdates
+> * Überwachen von Änderungen und Bestand
 > * Einrichten der erweiterten Überwachung
-
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="create-vm"></a>Erstellen eines virtuellen Computers
 
 Um die Diagnose und die Metriken in Aktion anzuzeigen, benötigen Sie einen virtuellen Computer. Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Das folgende Beispiel erstellt die Ressourcengruppe *myResourceGroupMonitor* am Standort *eastus*.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
 Jetzt können Sie mit [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) einen virtuellen Computer erstellen. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* erstellt:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroupMonitor \
   --name myVM \
@@ -64,9 +64,9 @@ az vm create \
 
 Wenn virtuelle Linux-Computer starten, erfasst die Startdiagnoseerweiterung die Startausgabe und speichert sie in Azure Storage. Diese Daten können zum Beheben von Startproblemen bei virtuellen Computern verwendet werden. Die Startdiagnose wird nicht automatisch aktiviert, wenn Sie eine Linux-VM mithilfe der Azure-Befehlszeilenschnittstelle erstellen.
 
-Vor dem Aktivieren der Startdiagnose muss ein Speicherkonto zum Speichern der Startprotokolle erstellt werden. Speicherkonten benötigen einen global eindeutigen Namen, der zwischen 3 und 24 Zeichen lang sein muss und nur Ziffern und Kleinbuchstaben enthalten darf. Sie erstellen ein Speicherkonto mit dem Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create). In diesem Beispiel wird eine zufällige Zeichenfolge verwendet, um einen eindeutigen Speicherkontonamen zu erstellen. 
+Vor dem Aktivieren der Startdiagnose muss ein Speicherkonto zum Speichern der Startprotokolle erstellt werden. Speicherkonten benötigen einen global eindeutigen Namen, der zwischen 3 und 24 Zeichen lang sein muss und nur Ziffern und Kleinbuchstaben enthalten darf. Sie erstellen ein Speicherkonto mit dem Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create). In diesem Beispiel wird eine zufällige Zeichenfolge verwendet, um einen eindeutigen Speicherkontonamen zu erstellen.
 
-```azurecli-interactive 
+```azurecli-interactive
 storageacct=mydiagdata$RANDOM
 
 az storage account create \
@@ -78,40 +78,38 @@ az storage account create \
 
 Bei der Aktivierung der Startdiagnose wird der URI zum Blob Storage-Container benötigt. Der folgende Befehl fragt das Speicherkonto ab, um diesen URI zurückzugeben. Der URI-Wert wird in der Variable *bloburi* gespeichert, die im nächsten Schritt verwendet wird.
 
-```azurecli-interactive 
+```azurecli-interactive
 bloburi=$(az storage account show --resource-group myResourceGroupMonitor --name $storageacct --query 'primaryEndpoints.blob' -o tsv)
 ```
 
 Aktivieren Sie nun die Startdiagnose mit [az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable). Der `--storage`-Wert ist der Blob-URI, der im vorherigen Schritt erfasst wurde.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm boot-diagnostics enable \
   --resource-group myResourceGroupMonitor \
   --name myVM \
   --storage $bloburi
 ```
 
-
 ## <a name="view-boot-diagnostics"></a>Anzeigen der Startdiagnose
 
 Wenn die Startdiagnose aktiviert ist, werden bei jedem Beenden und Starten des virtuellen Computers Informationen zum Startvorgang in eine Protokolldatei geschrieben. Heben Sie in diesem Beispiel zunächst die Zuordnung des virtuellen Computers mit dem Befehl [az vm deallocate](/cli/azure/vm#az_vm_deallocate) wie folgt auf:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupMonitor --name myVM
 ```
 
 Starten Sie nun den virtuellen Computer mit dem Befehl [az vm start]( /cli/azure/vm#az_vm_stop) wie folgt:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm start --resource-group myResourceGroupMonitor --name myVM
 ```
 
 Sie erhalten die Startdiagnosedaten für *myVM* mithilfe des Befehls [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log) wie folgt:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --name myVM
 ```
-
 
 ## <a name="view-host-metrics"></a>Anzeigen von Hostmetriken
 
@@ -121,7 +119,6 @@ Eine Linux-VM verfügt über einen dedizierten Host in Azure, mit dem sie intera
 1. Um die Leistung der Host-VM anzuzeigen, klicken Sie dem Blatt der VM auf **Metriken**, und wählen Sie dann eine der *[Host]*-Metriken unter **Verfügbare Metriken** aus.
 
     ![Anzeigen von Hostmetriken](./media/tutorial-monitoring/monitor-host-metrics.png)
-
 
 ## <a name="install-diagnostics-extension"></a>Installieren der Diagnoseerweiterung
 
@@ -139,7 +136,6 @@ Die grundlegenden Hostmetriken sind direkt verfügbar. Wenn Sie aber detailliert
 
     ![Anzeigen von Diagnosemetriken](./media/tutorial-monitoring/enable-diagnostics-extension.png)
 
-
 ## <a name="view-vm-metrics"></a>Anzeigen von Metriken des virtuellen Computers
 
 Sie können die VM-Metriken auf die gleiche Weise anzeigen, wie Sie die Metriken zur Host-VM angezeigt haben:
@@ -149,7 +145,6 @@ Sie können die VM-Metriken auf die gleiche Weise anzeigen, wie Sie die Metriken
 
     ![Anzeigen von Metriken des virtuellen Computers](./media/tutorial-monitoring/monitor-vm-metrics.png)
 
-
 ## <a name="create-alerts"></a>Erstellen von Warnungen
 
 Sie können Warnungen auf Grundlage von bestimmten Leistungsmetriken erstellen. Warnungen können für Benachrichtigungen verwendet werden, wenn z.B. die durchschnittliche CPU-Auslastung einen bestimmten Schwellenwert überschreitet oder wenn der verfügbare freie Speicherplatz unter einen bestimmten Wert fällt. Warnungen werden im Azure-Portal angezeigt oder können per E-Mail gesendet werden. Sie können auch als Reaktion auf die generierten Warnungen Azure Automation-Runbooks oder Azure Logic Apps auslösen.
@@ -158,81 +153,88 @@ Das folgende Beispiel erstellt eine Warnung für die durchschnittliche CPU-Ausla
 
 1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroup** und dann in der Ressourcenliste **myVM** aus.
 2. Klicken Sie auf dem Blatt des virtuellen Computers auf **Warnungsregeln** und dann am oberen Rand des Warnungsblatts auf **Metrikwarnung hinzufügen**.
-4. Geben Sie einen **Namen** für die Warnung ein, z.B. *myAlertRule*.
-5. Um eine Warnung auszulösen, wenn der CPU-Prozentsatz 1.0 für fünf Minuten überschreitet, belassen Sie alle anderen Standardeinstellungen ausgewählt.
-6. Aktivieren Sie optional das Kontrollkästchen *E-Mail-Besitzer, Mitwirkende und Leser*, um E-Mail-Benachrichtigungen zu senden. Als Standardaktion wird im Portal eine Benachrichtigung angezeigt.
-7. Klicken Sie auf die Schaltfläche **OK**.
+3. Geben Sie einen **Namen** für die Warnung ein, z.B. *myAlertRule*.
+4. Um eine Warnung auszulösen, wenn der CPU-Prozentsatz 1.0 für fünf Minuten überschreitet, belassen Sie alle anderen Standardeinstellungen ausgewählt.
+5. Aktivieren Sie optional das Kontrollkästchen *E-Mail-Besitzer, Mitwirkende und Leser*, um E-Mail-Benachrichtigungen zu senden. Als Standardaktion wird im Portal eine Benachrichtigung angezeigt.
+6. Klicken Sie auf die Schaltfläche **OK**.
 
 ## <a name="manage-package-updates"></a>Verwalten von Paketupdates
 
-Mithilfe der Updateverwaltung können Sie Paketupdates und Patches für Ihre Azure-Linux-VMs verwalten. Direkt von Ihrem virtuellen Computer aus können Sie schnell den Status der verfügbaren Updates bewerten, die Installation der erforderlichen Updates planen und Bereitstellungsergebnisse, überprüfen, um sicherzustellen, dass Updates erfolgreich auf den virtuellen Computer angewendet wurden.
+Mithilfe der Updateverwaltung können Sie Updates und Patches für Ihre Linux-basierten Azure-VMs verwalten.
+Direkt von Ihrem virtuellen Computer aus können Sie schnell den Status der verfügbaren Updates bewerten, die Installation der erforderlichen Updates planen und Bereitstellungsergebnisse überprüfen, um sicherzustellen, dass Updates erfolgreich auf den virtuellen Computer angewendet wurden.
 
-Informationen zur Preisgestaltung finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
+Informationen zu den Preisen finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/) unter „Updateverwaltung“.
 
-### <a name="enable-update-management-preview"></a>Aktivieren der Updateverwaltung (Vorschau)
+### <a name="enable-update-management"></a>Aktivieren der Updateverwaltung
 
-Aktivieren der Updateverwaltung für Ihre VM
+So aktivieren Sie die Updateverwaltung für Ihre VM
 
-1. Wählen Sie auf der linken Seite des Bildschirms **Virtuelle Computer**.
-1. Wählen Sie einen virtuellen Computer in der Liste aus.
-1. Klicken Sie auf dem VM-Bildschirm im Abschnitt **Vorgänge** auf **Updateverwaltung**. Der Bildschirm **Updateverwaltung aktivieren** wird geöffnet.
+1. Wählen Sie auf der linken Seite des Bildschirms **Virtuelle Computer** aus.
+2. Wählen Sie einen virtuellen Computer in der Liste aus.
+3. Klicken Sie auf dem VM-Bildschirm im Abschnitt **Vorgänge** auf **Updateverwaltung**. Der Bildschirm **Updateverwaltung aktivieren** wird geöffnet.
 
-Eine Überprüfung wird ausgeführt, um festzustellen, ob die Updateverwaltung für diesen virtuellen Computer aktiviert ist. Die Überprüfung umfasst Prüfungen für einen Log Analytics-Arbeitsbereich und ein verknüpftes Automation-Konto, und ob die Lösung im Arbeitsbereich vorhanden ist.
+Eine Überprüfung wird ausgeführt, um festzustellen, ob die Updateverwaltung für diesen virtuellen Computer aktiviert ist.
+Die Überprüfung umfasst Prüfungen für einen Log Analytics-Arbeitsbereich und ein verknüpftes Automation-Konto, und ob die Lösung im Arbeitsbereich vorhanden ist.
 
-Mit einem Log Analytics-Arbeitsbereich werden Daten gesammelt, die von Features und Diensten wie der Updateverwaltung generiert werden. Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen. Um weitere Aktionen auf virtuellen Computern auszuführen, die Updates erfordern, können Sie mit Azure Automation Skripts für virtuelle Computer ausführen, um z.B. Updates herunterzuladen und anzuwenden.
+Mit einem [Log Analytics](../../log-analytics/log-analytics-overview.md)-Arbeitsbereich werden Daten gesammelt, die von Features und Diensten wie der Updateverwaltung generiert werden.
+Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
+Um weitere Aktionen auf virtuellen Computern auszuführen, die Updates erfordern, können Sie mit Azure Automation Runbooks für virtuelle Computer ausführen, z.B. um Updates herunterzuladen und anzuwenden.
 
-Der Überprüfungsprozess prüft auch, ob der virtuelle Computer mit dem Microsoft Monitoring Agent (MMA) und Hybrid Worker bereitgestellt wird. Dieser Agent wird verwendet, um mit dem virtuellen Computer zu kommunizieren und Informationen zum Updatestatus abzurufen. 
+Der Überprüfungsprozess prüft auch, ob der virtuelle Computer mit dem Microsoft Monitoring Agent (MMA) und Automation Hybrid Runbook Worker bereitgestellt wird.
+Dieser Agent wird verwendet, um mit dem virtuellen Computer zu kommunizieren und Informationen zum Updatestatus abzurufen.
 
-Wenn diese Voraussetzungen nicht erfüllt sind, wird ein Banner angezeigt, das Ihnen die Möglichkeit bietet, die Lösung zu aktivieren.
+Wählen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto aus, und klicken Sie auf **Aktivieren**, um die Lösung zu aktivieren. Es dauert ungefähr 15 Minuten, bis die Lösung aktiviert ist.
 
-![Integriertes Banner zur Konfiguration der Updateverwaltung](./media/tutorial-monitoring/manage-updates-onboard-solution-banner.png)
-
-Klicken Sie auf das Banner, um die Lösung zu aktivieren. Wenn bei der Überprüfung festgestellt wird, dass eine der folgenden Voraussetzungen fehlt, wird sie automatisch hinzugefügt:
+Wenn beim Onboarding festgestellt wird, dass eine der folgenden Voraussetzungen fehlt, wird sie automatisch hinzugefügt:
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md)-Arbeitsbereich
 * [Automation](../../automation/automation-offering-get-started.md)
 * Ein [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) ist auf dem virtuellen Computer aktiviert.
 
-Der Bildschirm **Updateverwaltung aktivieren** wird geöffnet. Konfigurieren Sie die Einstellungen, und klicken Sie auf **Aktivieren**.
+Der Bildschirm **Updateverwaltung** wird geöffnet. Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen.
 
 ![Aktivieren der Updateverwaltungslösung](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
-Das Aktivieren der Lösung kann bis zu 15 Minuten dauern, und während dieser Zeit sollten Sie das Browserfenster nicht schließen. Nachdem die Lösung aktiviert wurde, fließen Informationen zu fehlenden Updates vom Paketmanager auf dem virtuellen Computer zu Log Analytics.
-Es kann zwischen 30 Minuten und 6 Stunden dauern, bis die Daten für die Analyse verfügbar sind.
+Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Während dieses Zeitraums sollten Sie das Browserfenster nicht schließen. Nachdem die Lösung aktiviert wurde, werden Informationen zu fehlenden Updates auf dem virtuellen Computer an Log Analytics übermittelt. Es kann zwischen 30 Minuten und 6 Stunden dauern, bis die Daten für die Analyse verfügbar sind.
 
 ### <a name="view-update-assessment"></a>Anzeigen der Updatebewertung
 
-Sobald die Lösung **Updateverwaltung** aktiviert ist, wird der Bildschirm **Updateverwaltung** angezeigt. Auf der Registerkarte **Fehlende Updates** wird eine Liste der fehlenden Updates angezeigt.
+Sobald die **Updateverwaltung** aktiviert ist, wird der Bildschirm **Updateverwaltung** angezeigt. Nach Abschluss der Bewertung von Updates wird auf der Registerkarte **Fehlende Updates** eine Liste mit den entsprechenden Updates angezeigt.
 
-![Anzeigen des Updatestatus](./media/tutorial-monitoring/manage-updates-view-status-linux.png)
+ ![Anzeigen des Updatestatus](./media/tutorial-monitoring/manage-updates-view-status-linux.png)
 
 ### <a name="schedule-an-update-deployment"></a>Planen einer Updatebereitstellung
 
-Planen Sie zum Installieren von Updates eine Bereitstellung, die Ihrem Releasezeitplan und Wartungsfenster entspricht.
+Planen Sie zum Installieren von Updates eine Bereitstellung, die Ihrem Releasezeitplan und Wartungsfenster entspricht. Sie können auswählen, welche Updatetypen in die Bereitstellung eingeschlossen werden sollen. Beispielsweise können Sie kritische oder Sicherheitsupdates einschließen und Updaterollups ausschließen.
 
 Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicken Sie auf **Updatebereitstellung planen** am oberen Rand des Bildschirms **Updateverwaltung**. Geben Sie auf dem Bildschirm **Neue Updatebereitstellung** die folgenden Informationen ein:
 
-* **Name**: eindeutiger Name zum Identifizieren der Updatebereitstellung.
-* **Auszuschließende Updates**: Wählen Sie diese Option, um die Namen von Paketen einzugeben, die vom Update ausgeschlossen werden sollen.
-* **Zeitplaneinstellungen**: Sie können entweder Standarddatum und Standarduhrzeit (30 Minuten nach der aktuellen Zeit) akzeptieren oder einen anderen Zeitpunkt angeben. Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Klicken Sie unter „Wiederholung“ auf die Option „Wiederholt“, um einen sich wiederholenden Zeitplan einzurichten.
+* **Name:** Geben Sie einen eindeutigen Namen zur Identifizierung der Updatebereitstellung an.
+* **Updateklassifizierung:** Wählen Sie die Softwareklassen aus, die in die Updatebereitstellung eingeschlossen werden sollen. Es gibt die folgenden Klassifizierungstypen:
+  * Kritische Updates und Sicherheitsupdates
+  * Andere Updates
+* **Auszuschließende Updates**: Sie können eine Liste mit Paketnamen angeben, die bei der Updatebereitstellung übersprungen werden sollen. In Paketnamen können Platzhalter verwendet werden (beispielsweise \*kernal\*).
+
+  ![Bildschirm für Updatezeitplan-Einstellungen](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
+
+* **Zeitplaneinstellungen**: Sie können entweder Standarddatum und Standarduhrzeit (30 Minuten nach der aktuellen Zeit) akzeptieren oder einen anderen Zeitpunkt angeben.
+  Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Klicken Sie unter „Wiederholung“ auf die Option „Wiederholt“, um einen sich wiederholenden Zeitplan einzurichten.
 
   ![Bildschirm für Updatezeitplan-Einstellungen](./media/tutorial-monitoring/manage-updates-schedule-linux.png)
 
-* **Wartungsfenster (Minuten)**: Geben Sie den Zeitraum an, in dem die Updatebereitstellung stattfinden soll.  So wird sichergestellt, dass Änderungen in dem von Ihnen festgelegten Wartungsfenster ausgeführt werden. 
+* **Wartungsfenster (Minuten):** Geben Sie den Zeitraum an, in dem die Updatebereitstellung stattfinden soll. So wird sichergestellt, dass Änderungen in dem von Ihnen festgelegten Wartungsfenster ausgeführt werden.
 
-Nachdem Sie die Konfiguration des Zeitplans abgeschlossen haben, klicken Sie auf die Schaltfläche **Erstellen**, sodass Sie zum Statusdashboard zurückkehren.
+Nachdem Sie die Konfiguration des Zeitplans abgeschlossen haben, klicken Sie auf die Schaltfläche **Erstellen**. Sie kehren damit zum Statusdashboard zurück.
 Beachten Sie, dass die Tabelle **Geplant** den von Ihnen erstellten Bereitstellungszeitplan anzeigt.
 
 > [!WARNING]
-> Der virtuelle Computer wird nach Installation der Updates automatisch neu gestartet, wenn ausreichend Zeit im Wartungsfenster vorhanden ist.
-
-Die Updateverwaltung verwendet den auf Ihrem virtuellen Computer vorhandenen Paket-Manager, um Pakete zu installieren.
+> Für Updates, die einen Neustart erfordern, wird der virtuelle Computer automatisch neu gestartet.
 
 ### <a name="view-results-of-an-update-deployment"></a>Anzeigen der Ergebnisse einer Updatebereitstellung
 
 Nach dem Start der geplanten Bereitstellung sehen Sie den Status der Bereitstellung auf der Registerkarte **Updatebereitstellungen** auf dem Bildschirm **Updateverwaltung**.
-Wenn sie aktuell ausgeführt wird, wird der Status **Vorgang wird ausgeführt** angezeigt. Nach erfolgreichem Abschluss ändert sich die Anzeige in **Erfolgreich**.
-Wenn bei einem oder mehreren Updates in der Bereitstellung ein Fehler auftritt, wird der Status **Fehler** angezeigt.
+Wenn sie aktuell ausgeführt wird, wird der Status **Vorgang wird ausgeführt** angezeigt. Nach erfolgreichem Abschluss ändert sich der Status in **Erfolgreich**.
+Wenn bei einem oder mehreren Updates in der Bereitstellung ein Fehler auftritt, wird der Status **Der Vorgang ist teilweise fehlgeschlagen** angezeigt.
 Klicken Sie auf die abgeschlossene Updatebereitstellung, um das Dashboard für diese Updatebereitstellung anzuzeigen.
 
 ![Updatebereitstellungs-Statusdashboard für bestimmte Bereitstellung](./media/tutorial-monitoring/manage-updates-view-results.png)
@@ -240,9 +242,9 @@ Klicken Sie auf die abgeschlossene Updatebereitstellung, um das Dashboard für d
 Die Kachel **Updateergebnisse** enthält eine Zusammenfassung der Gesamtzahl der Updates und die Ergebnisse der Bereitstellung auf dem virtuellen Computer.
 Die Tabelle rechts enthält eine detaillierte Analyse der einzelnen Updates und die Installationsergebnisse, wobei jeweils einer der folgenden Werte infrage kommt:
 
-* **Kein Versuch erfolgt**: Das Update wurde nicht installiert, da aufgrund des definierten Wartungsfensters nicht genügend Zeit zur Verfügung stand.
-* **Erfolgreich**: Das Update wurde erfolgreich heruntergeladen und auf dem virtuellen Computer installiert.
-* **Fehler**: Das Update konnte nicht heruntergeladen oder nicht auf dem virtuellen Computer installiert werden.
+* **Kein Versuch erfolgt:** Das Update wurde nicht installiert, da aufgrund des definierten Wartungsfensters nicht genügend Zeit zur Verfügung stand.
+* **Erfolgreich:** Das Update wurde erfolgreich ausgeführt.
+* **Fehler:** Bei der Aktualisierung ist ein Fehler aufgetreten.
 
 Klicken Sie auf **Alle Protokolle**, um alle von der Bereitstellung erstellten Protokolleinträge anzuzeigen.
 
@@ -250,13 +252,55 @@ Klicken Sie auf die Kachel **Ausgabe**, um den Auftragsdatenstrom des Runbooks a
 
 Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern aus der Bereitstellung anzuzeigen.
 
-## <a name="advanced-monitoring"></a>Erweiterte Überwachung 
+## <a name="monitor-changes-and-inventory"></a>Überwachen von Änderungen und Bestand
 
-Mithilfe der [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) können Sie eine noch umfassendere Überwachung Ihrer virtuellen Computer umsetzen. Wenn Sie dies noch nicht getan haben, können Sie sich für eine [kostenlose Testversion](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-trial) von Operations Management Suite registrieren.
+Sie können die Bestandsinformationen für Software, Dateien, Linux-Daemons, Windows-Dienste und Windows-Registrierungsschlüssel auf Ihren Computern sammeln und anzeigen. Durch das Nachverfolgen der Konfigurationen Ihrer Computer können Sie betriebsbezogene Problem in Ihrer Umgebung erkennen und ein besseres Verständnis des Zustands Ihrer Computer entwickeln.
 
-Wenn Sie auf das OMS-Portal zugreifen, finden Sie den Arbeitsbereichsschlüssel und die Arbeitsbereichs-ID auf dem Blatt „Einstellungen“. Ersetzen Sie <workspace-key> und <workspace-id> durch die Werten aus Ihrem OMS-Arbeitsbereich, und verwenden Sie dann **az vm extension set**, um dem virtuellen Computer die OMS-Erweiterung hinzuzufügen:
+### <a name="enable-change-and-inventory-management"></a>Aktivieren der Änderungs- und Bestandsverwaltung
 
-```azurecli-interactive 
+So aktivieren Sie die Änderungs- und Bestandsverwaltung für Ihren virtuellen Computer:
+
+1. Wählen Sie auf der linken Seite des Bildschirms die Option **Virtuelle Computer**.
+2. Wählen Sie einen virtuellen Computer in der Liste aus.
+3. Klicken Sie auf dem Bildschirm des virtuellen Computers im Abschnitt **Vorgänge** auf **Bestand** oder **Änderungsnachverfolgung**. Der Bildschirm **Änderungsnachverfolgung und Bestand aktivieren** wird geöffnet.
+
+Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen. Die Lösungen sind zwar im Menü getrennt, es handelt sich jedoch um dieselbe Lösung. Wenn Sie eine der Lösungen aktivieren, wird automatisch auch die andere Lösung für Ihren virtuellen Computer aktiviert.
+
+![Aktivieren der Änderungs- und Bestandsnachverfolgung](./media/tutorial-monitoring/manage-inventory-enable.png)
+
+Nach Aktivierung der Lösung kann es einige Zeit dauern, bis der Bestand auf dem virtuellen Computer erfasst wurde und Daten angezeigt werden.
+
+### <a name="track-changes"></a>Nachverfolgen von Änderungen
+
+Klicken Sie auf Ihrem virtuellen Computer unter **VORGÄNGE** auf **Änderungsnachverfolgung**. Klicken Sie auf **Einstellungen bearbeiten**. Daraufhin wird die Seite **Änderungsnachverfolgung** angezeigt. Wählen Sie die Art der Einstellung aus, die Sie nachverfolgen möchten, und klicken Sie dann zum Konfigurieren der Einstellungen auf **+ Hinzufügen**. Die verfügbare Option für Linux ist **Linux-Dateien**.
+
+Ausführliche Informationen zur Änderungsnachverfolgung finden Sie unter [Problembehandlung für Änderungen in Ihrer Umgebung](../../automation/automation-tutorial-troubleshoot-changes.md).
+
+### <a name="view-inventory"></a>Anzeigen des Bestands
+
+Klicken Sie auf Ihrem virtuellen Computer unter **VORGÄNGE** auf **Bestand**. Auf der Registerkarte **Software** wird eine Tabellenliste mit der gefundenen Software angezeigt. Die allgemeinen Details zu den einzelnen Softwaredatensätzen können in der Tabelle angezeigt werden. Zu diesen Details zählen Softwarename, Version, Herausgeber und der Zeitpunkt der letzten Aktualisierung.
+
+![Anzeigen des Bestands](./media/tutorial-monitoring/inventory-view-results.png)
+
+### <a name="monitor-activity-logs-and-changes"></a>Überwachen von Aktivitätsprotokollen und Änderungen
+
+Wählen Sie auf Ihrer VM auf der Seite **Änderungsnachverfolgung** die Option **Aktivitätsprotokollverbindung verwalten**. Mit diesem Vorgang wird die Seite **Azure-Aktivitätsprotokoll** geöffnet. Wählen Sie **Verbinden**, um die Änderungsnachverfolgung mit der Azure-Aktivität für Ihre VM zu verbinden.
+
+Navigieren Sie bei aktivierter Einstellung auf die Seite **Übersicht** Ihrer VM, und wählen Sie **Beenden**, um die VM zu beenden. Wählen Sie nach der entsprechenden Aufforderung **Ja**, um die VM zu beenden. Wählen Sie nach der Aufhebung der Zuordnung die Option **Starten**, um die VM neu zu starten.
+
+Beim Beenden und Starten einer VM wird im Aktivitätsprotokoll dazu ein Ereignis protokolliert. Navigieren Sie zurück zur Seite **Änderungsnachverfolgung**. Wählen Sie unten auf der Seite die Registerkarte **Ereignisse**. Nach kurzer Wartezeit werden die Ereignisse im Diagramm und in der Tabelle angezeigt. Durch Klicken auf die einzelnen Ereignisse können Sie ausführliche Informationen anzeigen.
+
+![Anzeigen von Änderungen im Aktivitätsprotokoll](./media/tutorial-monitoring/manage-activitylog-view-results.png)
+
+Im Diagramm werden Änderungen angezeigt, die im Laufe der Zeit durchgeführt wurden. Nachdem Sie eine Aktivitätsprotokollverbindung hinzugefügt haben, werden oben im Liniendiagramm Azure-Aktivitätsprotokollereignisse angezeigt. Jede Zeile mit Balkendiagrammen steht für einen eigenen Änderungstyp, der nachverfolgt werden kann. Bei diesen Typen handelt es sich um Linux-Daemons, -Dateien und -Software. Auf der Registerkarte mit den Änderungen werden die Details für die angezeigten Änderungen der Visualisierung in absteigender Reihenfolge ihres Auftretens aufgeführt (neueste zuerst).
+
+## <a name="advanced-monitoring"></a>Erweiterte Überwachung
+
+Sie können die erweiterte Überwachung Ihres virtuellen Computers mit Lösungen von [Azure Automation](../../automation/automation-intro.md) wie Updateverwaltung sowie Änderungs- und Bestandsverwaltung durchführen.
+
+Wenn Sie Zugriff auf den Log Analytics-Arbeitsbereich haben, finden Sie den Arbeitsbereichsschlüssel und die Arbeitsbereich-ID, indem Sie unter **EINSTELLUNGEN** auf **Erweiterte Einstellungen** klicken. Ersetzen Sie \<workspace-key\> und \<workspace-id\> durch die Werte aus Ihrem Log Analytics-Arbeitsbereich, und verwenden Sie dann **az vm extension set**, um dem virtuellen Computer die Erweiterung hinzuzufügen:
+
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroupMonitor \
   --vm-name myVM \
@@ -267,7 +311,7 @@ az vm extension set \
   --settings '{"workspaceId": "<workspace-id>"}'
 ```
 
-Auf dem Blatt „Protokollsuche“ im OMS-Portal sehen Sie *myVM* wie in der folgenden Abbildung dargestellt:
+Nach wenigen Minuten sollte der neue virtuelle Computer im Log Analytics-Arbeitsbereich angezeigt werden.
 
 ![OMS-Blatt](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
@@ -283,6 +327,7 @@ In diesem Tutorial haben Sie Updates für einen virtuellen Computer konfiguriert
 > * Anzeigen von Metriken des virtuellen Computers
 > * Erstellen von Benachrichtigungen basierend auf Diagnosemetriken
 > * Verwalten von Paketupdates
+> * Überwachen von Änderungen und Bestand
 > * Einrichten der erweiterten Überwachung
 
 Im nächsten Tutorial erhalten Sie Informationen zu Azure Security Center.

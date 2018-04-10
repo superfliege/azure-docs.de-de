@@ -8,11 +8,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: c2a52a387860de640e290746b25c164090819654
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 19629f383bdab19a2541ca33dd2937574c2ced17
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>Tutorial: Authentifizieren von Benutzern mit Azure Active Directory B2C in einer ASP.NET-Web-App
 
@@ -66,7 +66,7 @@ Notieren Sie sich den Wert der **Anwendungsclient-ID**. Die ID identifiziert die
 
 ### <a name="create-a-client-password"></a>Erstellen eines Clientkennworts
 
-Azure AD B2C verwendet die OAuth2-Autorisierung für [Clientanwendungen](../active-directory/develop/active-directory-dev-glossary.md#client-application). Web-Apps sind [vertrauliche Clients](../active-directory/develop/active-directory-dev-glossary.md#web-client) und benötigen ein Clientgeheimnis (Kennwort). Die Anwendungsclient-ID und das Clientgeheimnis werden verwendet, wenn sich die Web-App bei Azure Active Directory authentifiziert. 
+Azure AD B2C verwendet die OAuth2-Autorisierung für [Clientanwendungen](../active-directory/develop/active-directory-dev-glossary.md#client-application). Web-Apps sind [vertrauliche Clients](../active-directory/develop/active-directory-dev-glossary.md#web-client) und erfordern eine Client-ID oder Anwendungs-ID und ein Clientgeheimnis, ein Clientkennwort oder einen Anwendungsschlüssel.
 
 1. Klicken Sie auf der Seite „Schlüssel“ für die registrierte Web-App auf **Schlüssel generieren**.
 
@@ -109,7 +109,7 @@ Erstellen Sie eine **Richtlinie zur Profilbearbeitung**, um Benutzern das eigens
 
     | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | SiPe | Geben Sie einen **Namen** für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **b2c_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **b2c_1_SiPe** verwendet. | 
+    | **Name** | SiPe | Geben Sie einen **Namen**für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **b2c_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **b2c_1_SiPe** verwendet. | 
     | **Identitätsanbieter** | Anmeldung mit lokalem Konto | Der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
     | **Profilattribute** | „Anzeigename“ und „Postleitzahl“ | Wählen Sie Attribute aus, die Benutzer bei der Profilbearbeitung ändern können. |
     | **Anwendungsansprüche** | „Anzeigename“, „Postleitzahl“, „User is new“ (Benutzer ist neu), „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/active-directory-dev-glossary.md#claim) aus, die nach erfolgreicher Profilbearbeitung im [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) enthalten sein sollen. |
@@ -126,7 +126,7 @@ Wenn Sie in Ihrer Anwendung das Zurücksetzen des Kennworts ermöglichen möchte
 
     | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | SSPR | Geben Sie einen **Namen**für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **b2c_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **b2c_1_SSPR** verwendet. | 
+    | **Name** | SSPR | Geben Sie einen **Namen** für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **b2c_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **b2c_1_SSPR** verwendet. | 
     | **Identitätsanbieter** | Kennwort mittels E-Mail-Adresse zurücksetzen | Dies ist der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
     | **Anwendungsansprüche** | User's Object ID (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/active-directory-dev-glossary.md#claim) aus, die nach erfolgreicher Kennwortzurücksetzung im [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) enthalten sein sollen. |
 
@@ -150,7 +150,7 @@ Die Beispielprojektmappe enthält zwei Projekte:
 
 **Web-API-Beispiel-App (TaskService):** Web-API, die die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste unterstützt. Die Web-API wird per Azure AD B2C geschützt und von der Web-App aufgerufen.
 
-Die App muss geändert werden, um die App-Registrierung in Ihrem Mandanten zu verwenden. Außerdem müssen die von Ihnen erstellten Richtlinien konfiguriert werden. Die Beispiel-Web-App definiert die Konfigurationswerte als App-Einstellungen in der Datei „Web.config“. Gehen Sie zum Ändern der App-Einstellungen wie folgt vor:
+Sie müssen die App ändern, sodass die App-Registrierung in Ihrem Mandanten verwendet wird. Sie beinhaltet die Client-ID oder Anwendungs-ID und das Clientkennwort oder den Anwendungsschlüssel. Außerdem müssen die von Ihnen erstellten Richtlinien konfiguriert werden. Die Beispiel-Web-App definiert die Konfigurationswerte als App-Einstellungen in der Datei „Web.config“. Gehen Sie zum Ändern der App-Einstellungen wie folgt vor:
 
 1. Öffnen Sie die Projektmappe **B2C-WebAPI-DotNet** in Visual Studio.
 
@@ -161,7 +161,7 @@ Die App muss geändert werden, um die App-Registrierung in Ihrem Mandanten zu ve
     
     <add key="ida:ClientId" value="The Application ID for your web app registered in your tenant" />
     
-    <add key="ida:ClientSecret" value="Client password (client secret)" />
+    <add key="ida:ClientSecret" value="Client password (client secret or app key)" />
     ```
 3. Aktualisieren Sie die Richtlinieneinstellungen mit dem Namen, der bei der Richtlinienerstellung generiert wurde.
 

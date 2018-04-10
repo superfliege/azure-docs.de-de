@@ -5,32 +5,32 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 03/28/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e81e083b012c4cc29f2d6c09f8254025d712a97c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8803aada61ae58f1e221767aeb382f7d74c63eb4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 ### <a name="noconnection"></a>So ändern Sie die IP-Adresspräfixe eines Gateways des lokalen Netzwerks: Keine Gatewayverbindung
 
 So fügen Sie weitere Adresspräfixe hinzu:
 
-```powershell
-$local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
+```azurepowershell-interactive
+$local = Get-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
 Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
--AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
+-AddressPrefix @('10.101.0.0/24','10.101.1.0/24','10.101.2.0/24')
 ```
 
 So entfernen Sie Adresspräfixe:<br>
-Lassen Sie die Präfixe weg, die Sie nicht mehr benötigen. In diesem Beispiel wird das Präfix „20.0.0.0/24“ (aus dem vorherigen Beispiel) nicht mehr benötigt. Daher wird das lokale Netzwerkgateway aktualisiert und das Präfix weggelassen.
+Lassen Sie die Präfixe weg, die Sie nicht mehr benötigen. In diesem Beispiel wird das Präfix „10.101.2.0/24“ (aus dem vorherigen Beispiel) nicht mehr benötigt. Daher wird das Gateway für lokale Netzwerke aktualisiert und das Präfix weggelassen.
 
-```powershell
-$local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
+```azurepowershell-interactive
+$local = Get-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
 Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
--AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
+-AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
 ```
 
 ### <a name="withconnection"></a>So ändern Sie die IP-Adresspräfixe eines Gateways des lokalen Netzwerks: Vorhandene Gatewayverbindung
@@ -40,36 +40,36 @@ Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, wenn eine
 
 1. Entfernen Sie die Verbindung.
 
-  ```powershell
-  Remove-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName
+  ```azurepowershell-interactive
+  Remove-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
   ```
 2. Ändern Sie die IP-Adresspräfixe für das lokale Netzwerkgateway.
    
   Legen Sie die Variable für das lokale Netzwerkgateway (LocalNetworkGateway) fest.
 
-  ```powershell
-  $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName
+  ```azurepowershell-interactive
+  $local = Get-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
   ```
    
   Ändern Sie die Präfixe.
    
-  ```powershell
+  ```azurepowershell-interactive
   Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
-  -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
+  -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
   ```
 3. Erstellen Sie die Verbindung. In diesem Beispiel konfigurieren wir einen IPsec-Verbindungstyp. Verwenden Sie beim erneuten Erstellen der Verbindung den für Ihre Konfiguration angegebenen Verbindungstyp. Weitere Verbindungstypen finden Sie auf der Seite [PowerShell-Cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) .
    
   Legen Sie die Variable für das virtuelle Netzwerkgateway (VirtualNetworkGateway) fest.
 
-  ```powershell
-  $gateway1 = Get-AzureRmVirtualNetworkGateway -Name RMGateway  -ResourceGroupName MyRGName
+  ```azurepowershell-interactive
+  $gateway1 = Get-AzureRmVirtualNetworkGateway -Name VNet1GW  -ResourceGroupName TestRG1
   ```
    
   Erstellen Sie die Verbindung. In diesem Beispiel wird die in Schritt 2 festgelegte Variable „$local“ verwendet.
 
-  ```powershell
-  New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `
-  -ResourceGroupName MyRGName -Location 'West US' `
+  ```azurepowershell-interactive
+  New-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 `
+  -ResourceGroupName TestRG1 -Location 'East US' `
   -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
   -ConnectionType IPsec `
   -RoutingWeight 10 -SharedKey 'abc123'

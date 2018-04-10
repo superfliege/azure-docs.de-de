@@ -1,13 +1,13 @@
 ---
 title: 'PowerShell-Beispiel: Synchronisierung zwischen mehreren Azure SQL-Datenbanken | Microsoft-Dokumentation'
-description: "Azure PowerShell-Beispielskript zum Synchronisieren zwischen mehreren Azure SQL-­Datenbanken"
+description: Azure PowerShell-Beispielskript zum Synchronisieren zwischen mehreren Azure SQL-­Datenbanken
 services: sql-database
 documentationcenter: sql-database
 author: jognanay
 manager: craigg
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: load & move data, mvc
 ms.devlang: PowerShell
@@ -17,15 +17,15 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: 23446e4156daca3903f15e538e2c47e63fcbf673
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8a6dbf6e8cdd2fe066c11cc14ae587912873f7e4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren SQL-­Datenbanken
  
-Dieses PowerShell-Beispiel konfiguriert die Datensynchronisierung zwischen mehreren Azure SQL-­Datenbanken.
+Dieses PowerShell-Beispiel konfiguriert die Datensynchronisierung (Vorschauversion) zwischen mehreren Azure SQL-­Datenbanken.
 
 Für dieses Beispiel ist das Azure PowerShell-Modul Version 4.2 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
  

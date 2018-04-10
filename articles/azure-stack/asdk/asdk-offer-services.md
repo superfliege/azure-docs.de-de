@@ -13,14 +13,14 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/16/2018
+ms.date: 03/27/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 083b5e20b89f22cb8e523926858fe9ffb1441319
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 8bcc2f3077e79ff83ac2e90db0bb0fa53ae83adc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-offer-azure-stack-iaas-services"></a>Tutorial: Anbieten von Azure Stack-IaaS-Diensten
 Als Azure Stack-Cloudadministrator können Sie Angebote erstellen, die von Ihren Benutzern (ggf. auch als Mandanten bezeichnet) abonniert werden können. Mit ihrem Abonnement können Benutzer dann Azure Stack-Dienste nutzen.
@@ -105,21 +105,31 @@ Angebote müssen öffentlich sein, damit sie Benutzern angezeigt werden, die ein
 
 Angebote können Folgendes sein:
 - **Öffentlich:** Für alle Benutzer sichtbar.
-- **Privat:** Nur für die Cloudadministratoren sichtbar. Dies ist hilfreich beim Entwerfen des Plans oder Angebots oder wenn der Cloudadministrator jedes Abonnement für Benutzer erstellen möchte.
+- **Privat:** nur für die Cloudadministratoren sichtbar. Dies ist hilfreich beim Entwerfen des Plans oder Angebots oder wenn der Cloudadministrator jedes Abonnement für Benutzer erstellen möchte.
 - **Außer Betrieb:**für neue Abonnenten geschlossen. Der Cloudadministrator kann mit dem Status „Außer Betrieb“ zukünftige Abonnements verhindern und derzeitige Abonnenten unverändert lassen.
 
 > [!TIP]
 > Änderungen am Angebot sind für Benutzer nicht sofort sichtbar. Um die Änderungen zu sehen, müssen sich Benutzer möglicherweise abmelden und erneut beim [Benutzerportal](https://portal.local.azurestack.external) anmelden, damit das neue Angebot angezeigt wird.
 
 So konfigurieren Sie das neue Angebot als öffentliches Angebot: 
+   - Version 1803 und höher: 
+     1. Klicken Sie im Dashboardmenü auf **Angebote** und dann auf das von Ihnen erstellte Angebot.
 
-1. Klicken Sie im Dashboardmenü auf **Angebote** und dann auf das von Ihnen erstellte Angebot.
+     2. Klicken Sie auf **Status der Barrierefreiheit** und dann auf **Öffentlich**.
 
-2. Klicken Sie auf **Status ändern** und dann auf **Öffentlich**.
+        ![Ändern des Status](media/asdk-offer-services/change-state.png)
 
-   ![Status „Öffentlich“](media/asdk-offer-services/set-public.png)
+     3. Das Angebot ist nun im Azure Stack-Benutzerportal verfügbar.
 
-3. Das Angebot ist nun im Azure Stack-Benutzerportal verfügbar.
+
+   - Vor Version 1803:  
+     1. Klicken Sie im Dashboardmenü auf **Angebote** und dann auf das von Ihnen erstellte Angebot.
+
+     2. Klicken Sie auf **Status ändern** und dann auf **Öffentlich**.
+
+        ![Status „Öffentlich“](media/asdk-offer-services/set-public.png)
+
+     3. Das Angebot ist nun im Azure Stack-Benutzerportal verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

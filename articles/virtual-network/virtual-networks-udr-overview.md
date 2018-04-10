@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 34fdf45094fae8e751d6b3e5c57d5b4df2e78200
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 014c9ea34f35e915c6c4eac5a96c55201549e18a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -130,9 +130,11 @@ Wenn Datenverkehr in ausgehender Richtung aus einem Subnetz gesendet wird, wähl
 Wenn mehrere Routen das gleiche Präfix enthalten, wählt Azure den Routentyp nach den folgenden Prioritätsregeln aus:
 
 1. Benutzerdefinierte Route
-2. Eine Systemroute mit dem Hop-Typ *Virtuelles Netzwerk*, *VNET-Peering* oder *VirtualNetworkServiceEndpoint*.
 2. BGP-Route
-3. Eine Systemroute mit einem anderen Hop-Typ als *Virtuelles Netzwerk*, *VNET-Peering* oder *VirtualNetworkServiceEndpoint*.
+3. Systemroute
+
+> [!NOTE]
+> Systemrouten für Datenverkehr im Zusammenhang mit virtuellen Netzwerken, virtuellen Netzwerken über Peerings oder Dienstendpunkte im virtuellen Netzwerk sind die bevorzugten Routen, auch wenn BGP-Routen spezifischer sind.
 
 Eine Routentabelle enthält beispielsweise die folgenden Routen:
 

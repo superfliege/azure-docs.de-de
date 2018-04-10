@@ -1,6 +1,6 @@
 ---
 title: Herstellen von Hochverfügbarkeit für Anwendungsdaten in Azure | Microsoft-Dokumentation
-description: Verwenden von georedundantem Speicher mit Lesezugriff zur Herstellung von Hochverfügbarkeit für Anwendungsdaten
+description: Verwenden von georedundantem Speicher mit Lesezugriff, um Ihre Anwendungsdaten hoch verfügbar zu machen
 services: storage
 author: tamram
 manager: jeconnoc
@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: ce72c1a68c1dbe5cede33dd42adc1b002a81326e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6226fea5001d19a6f0e1f6700d90ea2b9481d43c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Herstellen von Hochverfügbarkeit für Anwendungsdaten mit Azure Storage
 
-Dieses Tutorial ist Teil einer Reihe, in der veranschaulicht wird, wie Sie Ihre Anwendungsdaten in Azure hoch verfügbar machen. Am Ende des Tutorials werden Sie über eine Konsolenanwendung verfügen, mit der Sie ein Blob in ein RA-GRS-Speicherkonto ([read-access geo-redundant storage, georedundanter Speicher mit Lesezugriff](../common/storage-redundancy.md#read-access-geo-redundant-storage)) hochladen bzw. von diesem abrufen können. RA-GRS funktioniert durch die Replikation von Transaktionen von der primären zur sekundären Region. Dieser Replikationsprozess garantiert, dass die Daten in der sekundären Region letztendlich konsistent sind. Für die Anwendung wird das Muster [Trennschalter](/azure/architecture/patterns/circuit-breaker) (Circuit Breaker) verwendet, um den Endpunkt zu ermitteln, mit dem eine Verbindung hergestellt werden soll. Die Anwendung verbindet sich mit dem sekundären Endpunkt, wenn ein Fehler simuliert wird.
+Dieses Tutorial ist Teil einer Reihe, in der veranschaulicht wird, wie Sie Ihre Anwendungsdaten in Azure hoch verfügbar machen. Am Ende des Tutorials werden Sie über eine Konsolenanwendung verfügen, mit der Sie ein Blob in ein RA-GRS-Speicherkonto ([read-access geo-redundant storage, georedundanter Speicher mit Lesezugriff](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) hochladen bzw. von diesem abrufen können. RA-GRS funktioniert durch die Replikation von Transaktionen von der primären zur sekundären Region. Dieser Replikationsprozess garantiert, dass die Daten in der sekundären Region letztendlich konsistent sind. Für die Anwendung wird das Muster [Trennschalter](/azure/architecture/patterns/circuit-breaker) (Circuit Breaker) verwendet, um den Endpunkt zu ermitteln, mit dem eine Verbindung hergestellt werden soll. Die Anwendung verbindet sich mit dem sekundären Endpunkt, wenn ein Fehler simuliert wird.
 
 Im ersten Teil der Serie lernen Sie Folgendes:
 

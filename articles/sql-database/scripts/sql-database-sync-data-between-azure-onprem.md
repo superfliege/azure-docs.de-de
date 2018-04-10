@@ -1,13 +1,13 @@
 ---
 title: PowerShell-Beispielsynchronisierung zwischen SQL-Datenbank und lokalem SQL Server | Microsoft-Dokumentation
-description: "Azure PowerShell-Beispielskript für die Synchronisierung zwischen einer Azure SQL-Datenbank-Instanz und einer lokalen SQL Server-Datenbank"
+description: Azure PowerShell-Beispielskript für die Synchronisierung zwischen einer Azure SQL-Datenbank-Instanz und einer lokalen SQL Server-Datenbank
 services: sql-database
 documentationcenter: sql-database
 author: jognanay
 manager: craigg
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: load & move data, mvc
 ms.devlang: PowerShell
@@ -17,15 +17,15 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: a29c8c7fbd583b45849be6fcab046c578dbbb98a
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 31be6bc80b147e106066c064903c6eb9e1900e12
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Verwenden von PowerShell zum Synchronisieren zwischen einer SQL-Datenbank und einer lokalen SQL Server-Datenbank
 
-Dieses PowerShell-Beispiel konfiguriert Data Sync für die Synchronisierung zwischen einer Azure SQL-Datenbank-Instanz und einem lokalen SQL-Server. 
+Dieses PowerShell-Beispiel konfiguriert Data Sync (Vorschauversion) für die Synchronisierung zwischen einer Azure SQL-Datenbank-Instanz und einer lokalen SQL Server-Datenbank. 
 
 Für dieses Beispiel ist das Azure PowerShell-Modul Version 4.2 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
  
@@ -371,7 +371,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmSqlSyncAgent](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgent) |  Erstellt einen neuen Synchronisierungs-Agent |
 | [New-AzureRmSqlSyncAgentKey](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgentKey) |  Generiert den Agent-Schlüssel, der dem Synchronisierungs-Agent zugeordnet ist |

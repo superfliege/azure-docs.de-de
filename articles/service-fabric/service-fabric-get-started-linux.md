@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c98a5e742356e24cee9e9d1414121faabac03084
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9123519217e87494316c1dc6b7f90da1b30ba392
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -28,17 +28,25 @@ ms.lasthandoff: 03/28/2018
 >
 >  
 
-Zur Bereitstellung und Ausführung von [Azure Service Fabric-Anwendungen](service-fabric-application-model.md) auf Ihrem Linux-Entwicklungscomputer müssen Sie die Laufzeit und das allgemeine SDK installieren. Darüber hinaus können Sie auch optionale SDKs für die Java- und .NET Core-Entwicklung installieren.
+Zur Bereitstellung und Ausführung von [Azure Service Fabric-Anwendungen](service-fabric-application-model.md) auf Ihrem Linux-Entwicklungscomputer müssen Sie die Laufzeit und das allgemeine SDK installieren. Darüber hinaus können Sie auch optionale SDKs für die Java- und .NET Core-Entwicklung installieren. 
 
-> [!NOTE]
-> Die Service Fabric-Laufzeit und das SDK können nicht unter dem Windows-Subsystem für Linux installiert werden. Die Azure Service Fabric-Befehlszeilenschnittstelle (Command-Line Interface, CLI), mit der Sie Service Fabric-Entitäten verwalten können, die an anderen Orten in der Cloud oder lokal gehostet werden, wird jedoch unterstützt. Informationen zum Installieren der Befehlszeilenschnittstelle finden Sie unter [Azure Service Fabric CLI](./service-fabric-cli.md).
->
+Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie eine native Installation unter Linux durchführen oder das Service Fabric-One-Box-Containerimage (`microsoft/service-fabric-onebox`) verwenden. 
+
+Die Service Fabric-Laufzeit und das SDK können nicht unter dem Windows-Subsystem für Linux installiert werden. Die Azure Service Fabric-Befehlszeilenschnittstelle (Command-Line Interface, CLI), mit der Sie Service Fabric-Entitäten verwalten können, die an anderen Orten in der Cloud oder lokal gehostet werden, wird jedoch unterstützt. Informationen zum Installieren der Befehlszeilenschnittstelle finden Sie unter [Azure Service Fabric CLI](./service-fabric-cli.md).
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
+* Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+    * Ubuntu 16.04 (`Xenial Xerus`)
+
+* Vergewissern Sie sich, dass das Paket `apt-transport-https` installiert ist:
+
+      ```bash
+      sudo apt-get install apt-transport-https
+      ```
+
 
 ## <a name="installation-methods"></a>Installationsmethoden
 
