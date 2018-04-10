@@ -1,6 +1,6 @@
 ---
-title: "Clientseitige Verschlüsselung mit Java für Microsoft Azure Storage | Microsoft Docs"
-description: "Die Azure Storage-Clientbibliothek für Java bietet Unterstützung für die clientseitige Verschlüsselung und die Integration in den Azure-Schlüsseltresor. Dies bietet eine maximale Sicherheit für Ihre Azure Storage-Anwendungen."
+title: Clientseitige Verschlüsselung mit Java für Microsoft Azure Storage | Microsoft Docs
+description: Die Azure Storage-Clientbibliothek für Java bietet Unterstützung für die clientseitige Verschlüsselung und die Integration in den Azure-Schlüsseltresor. Dies bietet eine maximale Sicherheit für Ihre Azure Storage-Anwendungen.
 services: storage
 documentationcenter: java
 author: lakasa
@@ -61,7 +61,7 @@ Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initia
 
 Beim Herunterladen eines verschlüsselten Blobs wird der Inhalt des gesamten Blobs mit den **download*/openInputStream**-Hilfsmethoden abgerufen. Der umschlossene CEK wird entpackt und zusammen mit dem IV (in diesem Fall als Blobmetadaten gespeichert) verwendet, um die entschlüsselten Daten an die Benutzer zurückzugeben.
 
-Beim Herunterladen eines beliebigen Bereichs (**downloadRange***-Methoden) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die verwendet werden können, um den angeforderten Bereich erfolgreich zu entschlüsseln.  
+Beim Herunterladen eines beliebigen Bereichs (**downloadRange**\*-Methoden) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die verwendet werden können, um den angeforderten Bereich erfolgreich zu entschlüsseln.  
 
 Alle Blobtypen (Blockblobs, Seitenblobs und Anfügeblobs) können mit diesem Schema verschlüsselt/entschlüsselt werden.
 
