@@ -45,6 +45,7 @@
 ### [Abrufen einer Twitter-Meldung mit Azure Functions](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 ### [Senden von Nachrichten an einen MQTT-Server mit Eclipse Paho-APIs](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 ### [Überwachen des magnetischen Sensors und Senden von E-Mail-Benachrichtigungen mit Azure Functions](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
+### [Steuern der RGB-LED des MXChip IoT DevKit mithilfe von Azure-Gerätezwillingen](iot-hub-arduino-iot-devkit-az3166-devkit-state.md)
 
 # Anleitungen
 ## Plan
@@ -173,7 +174,7 @@
 ## [Java (Dienst)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (Geräte)](/java/api/com.microsoft.azure.sdk.iot.device)
 ## [Node.js (Geräte)](https://docs.microsoft.com/javascript/api/azure-iot-device/)
-## [Node.js (Dienst)](https://docs.microsoft.com/javascript/api/azure-iothub)
+## [Node.js (Dienst)](https://docs.microsoft.com/javascript/api/azure-iothub/)
 ## [C-Geräte-SDK](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (Ressourcenanbieter)](https://docs.microsoft.com/rest/api/iothub/iothubresource)

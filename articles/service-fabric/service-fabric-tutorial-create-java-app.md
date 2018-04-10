@@ -548,7 +548,7 @@ Das Gerüst für den zustandslosen Front-End-Dienst und den Back-End-Dienst wird
 
     ![Erstellen des Pakets „VotingRPC“](./media/service-fabric-tutorial-create-java-app/createvotingrpcpackage.png)
 
-3. Erstellen Sie unter *Voting/VotingRPC/src/rpcmethods* eine Datei mit dem Namen *VotingRPC.java*, und fügen Sie Folgendes in diese Datei**** ein. 
+3. Erstellen Sie unter *Voting/VotingRPC/src/rpcmethods* eine Datei mit dem Namen *VotingRPC.java*, und fügen Sie Folgendes in **diese Datei** ein. 
 
     ```java
     package rpcmethods; 
