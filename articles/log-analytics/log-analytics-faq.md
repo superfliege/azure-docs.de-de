@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zu Log Analytics | Microsoft Docs
+title: Häufig gestellte Fragen zu Log Analytics | Microsoft-Dokumentation
 description: Antworten auf häufig gestellte Fragen zum Azure Log Analytics-Dienst.
 services: log-analytics
 documentationcenter: ''
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 398a62cbba952f35f29c1b1f411a6d5b901d2973
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 22da58df653b31c46145ebbbd1f6f6a26b0e9f29
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Azure. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -51,7 +51,7 @@ A: Nein. Log Analytics ist ein skalierbarer Clouddienst, der große Datenmengen 
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>F: Wie behebe ich das Problem, wenn Log Analytics keine Daten mehr erfasst?
 
-A: Wenn Sie den kostenlosen Tarif nutzen und an einem Tag mehr als 500 MB Daten gesendet haben, wird die Datensammlung für den Rest des Tages beendet. Das Erreichen des Tageslimits ist häufig die Ursache dafür, dass Log Analytics die Datensammlung beendet oder Daten scheinbar fehlen.  
+F: Für ein Abonnement und einen Arbeitsbereich, die vor dem 2. April 2018 erstellt wurden und sich im Tarif *Free* befinden, wird die Datensammlung für den Rest des Tages eingestellt, wenn mehr als 500 MB an einem Tag gesendet wurden. Das Erreichen des Tageslimits ist häufig die Ursache dafür, dass Log Analytics die Datensammlung beendet oder Daten scheinbar fehlen.  
 
 Log Analytics erstellt ein Ereignis vom Typ *Heartbeat* und kann verwendet werden, um zu ermitteln, ob die Datensammlung beendet wurde. 
 
@@ -68,7 +68,7 @@ Die folgende Tabelle beschreibt die Gründe, warum die Datensammlung endet, und 
 | Limit für kostenlose Daten erreicht<sup>1</sup>       | Warten Sie, bis die Sammlung im Folgemonat automatisch neu gestartet wird. Oder:<br> Wechseln Sie zu einem kostenpflichtigen Tarif |
 | Das Azure-Abonnement befindet sich aus folgendem Grund in einem angehaltenen Zustand: <br> Kostenlose Testversion endete <br> Azure Pass ist abgelaufen <br> Monatliches Ausgabenlimit ist erreicht (z.B. in einem MSDN- oder Visual Studio-Abonnement)                          | Konvertieren in ein kostenpflichtiges Abonnement <br> Konvertieren in ein kostenpflichtiges Abonnement <br> Limit entfernen oder warten, bis das Limit zurückgesetzt wird |
 
-<sup>1</sup> Wenn Ihr Arbeitsbereich im kostenlosen Tarif liegt, können Sie täglich nur 500 MB an Daten an den Dienst senden. Wenn Sie das Tageslimit erreichen, wird die Datensammlung bis zum nächsten Tag angehalten. Daten, die gesendet werden, während die Datensammlung angehalten ist, werden nicht indiziert und stehen nicht für die Suche zur Verfügung. Bei Fortsetzung der Datensammlung erfolgt nur die Verarbeitung neu gesendeter Daten. 
+<sup>1</sup> Wenn Ihr Arbeitsbereich im Tarif *Free* liegt, können Sie täglich nur 500 MB an Daten an den Dienst senden. Wenn Sie das Tageslimit erreichen, wird die Datensammlung bis zum nächsten Tag angehalten. Daten, die gesendet werden, während die Datensammlung angehalten ist, werden nicht indiziert und stehen nicht für die Suche zur Verfügung. Bei Fortsetzung der Datensammlung erfolgt nur die Verarbeitung neu gesendeter Daten. 
 
 Log Analytics orientiert sich an der UTC-Zeit, und jeder Tag beginnt um Mitternacht. Wenn der Arbeitsbereich das Tageslimit erreicht, wird die Verarbeitung während der ersten Stunde des nächsten UTC-Tages fortgesetzt.
 
@@ -96,7 +96,7 @@ A. Nein, derzeit ist es nicht möglich, aus beliebigen Tabellen oder Containern 
 
 A. Der Log Analytics-Dienst basiert auf Azure. Log Analytics-IP-Adressen finden Sie in den [Microsoft Azure Datacenter IP Ranges](http://www.microsoft.com/download/details.aspx?id=41653) (Microsoft Azure-Rechenzentrum-IP-Adressbereiche).
 
-Sobald Dienstbereitstellungen erfolgen, ändern sich die tatsächlichen IP-Adressen des Log Analytics-Diensts. Die DNS-Namen, die Ihre Firewall passieren dürfen, sind unter [Konfigurieren von Proxy- und Firewalleinstellungen in Log Analytics](log-analytics-proxy-firewall.md)dokumentiert.
+Sobald Dienstbereitstellungen erfolgen, ändern sich die tatsächlichen IP-Adressen des Log Analytics-Diensts. Die für Ihre Firewall zugelassenen DNS-Namen sind in den [Systemanforderungen](log-analytics-concept-hybrid.md#prerequisites) dokumentiert.
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>F: Ich verwende ExpressRoute für die Verbindung mit Azure. Wird für meinen Log Analytics-Datenverkehr meine ExpressRoute-Verbindung verwendet?
 
@@ -144,7 +144,7 @@ A. Im Tarif Free gilt eine tägliche Obergrenze von 500 MB pro Arbeitsbereich. D
 
 Der Log Analytics-Agent ist auf einen kleinen Speicherbedarf ausgelegt. Das Datenvolumen variiert basierend auf den Lösungen, die Sie aktivieren. Ausführliche Informationen zum Datenvolumen sowie eine Aufschlüsselung nach Lösung finden Sie auf der Seite [Verwendung](log-analytics-usage.md).
 
-Weitere Informationen finden Sie in einem [Kundenblog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) zur Kompaktheit des OMS-Agents.
+Weitere Informationen finden Sie in einem [Kundenblog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html), in dem die Ergebnisse nach Auswertung der Ressourcennutzung (Speicherbedarf) des OMS-Agents angezeigt werden.
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>F: Wie viel Netzwerkbandbreite nutzt der Microsoft-Verwaltungs-Agent (MMA) beim Senden von Daten an Log Analytics?
 

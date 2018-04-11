@@ -1,13 +1,13 @@
 ---
-title: "Informationen zu Benutzertoken für die Azure AD B2B-Zusammenarbeit | Microsoft-Dokumentation"
-description: "Referenz für Benutzertoken für die Azure Active Directory B2B-Zusammenarbeit"
+title: Informationen zu Benutzertoken für die Azure AD B2B-Zusammenarbeit | Microsoft-Dokumentation
+description: Referenz für Benutzertoken für die Azure Active Directory B2B-Zusammenarbeit
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
@@ -16,15 +16,15 @@ ms.workload: identity
 ms.date: 05/25/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 6afa7d01282d6c35b042ad69fcdcb5714c92de10
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c4f152aa4da9fcbe07179414aa8dc69f8633bb6b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Informationen zu Benutzertoken für die Azure AD B2B-Zusammenarbeit
 
-Wenn Sie wissen möchten, wie das Token für B2B-Zusammenarbeitsbenutzer aussieht: Hier finden Sie die Bearertokendetails und Tokeninhalte für einen Azure Active Directory-Gast (Azure AD) und einen Gast mit Microsoft-Konto im Ressourcenmandanten (für die Mandanten-ID 04dcc6ab-388a-4559-b527-fbec656300ea). Sie können [https://jwt.io/](https://jwt.io/) oder [http://calebb.net](http://calebb.net/) verwenden, um die JSON Web Token (JWT)-Inhalte anzuzeigen.
+Wenn Sie wissen möchten, wie das Token für B2B-Zusammenarbeitsbenutzer aussieht: Hier finden Sie die Bearertokendetails und Tokeninhalte für einen Azure Active Directory-Gast (Azure AD) und einen Gast mit Microsoft-Konto im Ressourcenmandanten (für die Mandanten-ID 04dcc6ab-388a-4559-b527-fbec656300ea). Um den Inhalt des JSON-Webtokens (JWT) anzuzeigen, verwenden Sie [https://jwt.io/](https://jwt.io/) oder [https://jwt.ms/](https://jwt.ms/).
 
 ## <a name="azure-ad-guest-token"></a>Azure AD-Gasttoken
 ```

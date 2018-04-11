@@ -1,8 +1,8 @@
 ---
 title: Automatisieren von Azure Application Insights mit PowerShell | Microsoft-Dokumentation
-description: "Automatisieren Sie die Ressourcen-, Warnungs- und Verfügbarkeitstesterstellung in PowerShell mithilfe einer Azure Resource Manager-Vorlage."
+description: Automatisieren Sie die Ressourcen-, Warnungs- und Verfügbarkeitstesterstellung in PowerShell mithilfe einer Azure Resource Manager-Vorlage.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: f4f9d1558d2ef9dc5e1b7b248ad5bc8753f59cf9
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 46ba4ce992640e8a6d171ab839dd7cdb24e0b404
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Erstellen von Application Insights-Ressourcen mithilfe von PowerShell
 Dieser Artikel beschreibt, wie Sie die Erstellung und Aktualisierung von [Application Insights](app-insights-overview.md)-Ressourcen mit der Azure-Ressourcenverwaltung automatisieren können. Dies kann z. B. als Teil eines Buildvorgangs erfolgen. Zusammen mit der grundlegenden Application Insights-Ressource können Sie [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) erstellen, [Warnungen](app-insights-alerts.md) einrichten, das [Preisschema](app-insights-pricing.md) festlegen und andere Azure-Ressourcen erstellen.
@@ -204,7 +204,7 @@ Gehen Sie wie folgt vor, um mit der obigen Vorlage eine App-Ressource mit dem En
 * Wenn Sie nur den Standardtarif „Basic“ verwenden möchten, können Sie die Ressource CurrentBillingFeatures aus der Vorlage löschen.
 * Wenn Sie den Tarif nach dem Erstellen der Komponentenressource wechseln möchten, können Sie eine Vorlage verwenden, in der die Ressource „microsoft.insights/components“ ausgelassen wird. Lassen Sie zudem den Knoten `dependsOn` aus der Abrechnungsressource aus. 
 
-Um den aktualisierten Tarif zu prüfen, betrachten Sie das Blatt „Features und Preise“ im Browser. **Aktualisieren Sie die Browseransicht**, um sicherzustellen, dass der aktuelle Status wiedergegeben wird.
+Um den aktualisierten Tarif zu prüfen, betrachten Sie das Blatt **Nutzung und geschätzte Kosten** im Browser. **Aktualisieren Sie die Browseransicht**, um sicherzustellen, dass der aktuelle Status wiedergegeben wird.
 
 
 

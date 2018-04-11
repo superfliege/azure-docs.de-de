@@ -1,12 +1,12 @@
 ---
-title: Steuern des Verhaltens beim Zwischenspeichern im Azure Content Delivery Network mit Cacheregeln | Microsoft-Dokumentation
-description: "Anhand von CDN-Cacheregeln können Sie das Standardverhalten bei Cacheablauf sowohl global als auch mit Bedingungen (z.B. URL-Pfad und Dateierweiterungen) festlegen oder ändern."
+title: Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln | Microsoft-Dokumentation
+description: Anhand von CDN-Cacheregeln können Sie das Standardverhalten bei Cacheablauf sowohl global als auch mit Bedingungen (z.B. URL-Pfad und Dateierweiterungen) festlegen oder ändern.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: 2a94ba5cb9f026f66bc1f3b379f00b291a2299c9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 735978a0986b2b16b4f96faca78c06d798915002
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="control-azure-content-delivery-network-caching-behavior-with-caching-rules"></a>Steuern des Verhaltens beim Zwischenspeichern im Azure Content Delivery Network mit Cacheregeln
+# <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln
 
 > [!NOTE] 
-> Cacheregeln sind nur für das **Azure CDN von Verizon Standard** und das **Azure CDN von Akamai Standard** verfügbar. Beim **Azure CDN von Verizon Premium** können Sie das [Azure CDN-Regelmodul](cdn-rules-engine.md) im **Verwaltungsportal** verwenden, um von ähnlichen Funktionen zu profitieren.
+> Cacheregeln sind nur für das **Azure CDN von Verizon Standard** und das **Azure CDN von Akamai Standard** verfügbar. Beim **Azure CDN von Verizon Premium** können Sie die [Azure CDN-Regel-Engine](cdn-rules-engine.md) im **Verwaltungsportal** verwenden, um von ähnlichen Funktionen zu profitieren.
  
-Azure Content Delivery Network bietet zwei Möglichkeiten, um zu steuern, wie Ihre Dateien zwischengespeichert werden: 
+Azure Content Delivery Network (CDN) bietet zwei Möglichkeiten, um zu steuern, wie Ihre Dateien zwischengespeichert werden: 
 
 - Cacheregeln: In diesem Artikel wird beschrieben, wie Sie anhand von CDN-Cacheregeln (Content Delivery Network) das Standardverhalten bei Cacheablauf sowohl global als auch mit benutzerdefinierten Bedingungen (z.B. URL-Pfad und Dateierweiterungen) festlegen oder ändern können. Azure CDN bietet zwei Arten von Cacheregeln:
    - Globale Cacheregeln: Sie können für jeden Endpunkt in Ihrem Profil eine globale Cacheregel festlegen, die sich auf alle Anforderungen an den Endpunkt auswirkt. Die globale Cacheregel überschreibt alle HTTP-Header mit Cacheanweisungen, sofern solche festgelegt wurden.
@@ -35,16 +35,16 @@ Azure Content Delivery Network bietet zwei Möglichkeiten, um zu steuern, wie Ih
 
 Informationen zum Standardverhalten beim Zwischenspeichern und die Header mit Cacheanweisungen finden Sie unter [Funktionsweise der Zwischenspeicherung](cdn-how-caching-works.md).
 
-## <a name="tutorial"></a>Lernprogramm:
+## <a name="tutorial"></a>Tutorial
 
 So legen Sie CDN-Cacheregeln fest
 
 1. Öffnen Sie das Azure-Portal, und wählen Sie ein CDN-Profil sowie einen Endpunkt aus.
-2. Klicken Sie im linken Bereich unter „Einstellungen“ auf **Cacheregeln**.
+2. Wählen Sie im linken Bereich unter „Einstellungen“ die Option **Cacheregeln** aus.
 
    ![Schaltfläche für CDN-Cacheregeln](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
-1. Erstellen Sie wie folgt eine globale Cacheregel:
+3. Erstellen Sie wie folgt eine globale Cacheregel:
    1. Legen Sie unter **Globale Cacheregeln** die Option **Verhalten für das Zwischenspeichern von Abfragezeichenfolgen** auf **Abfragezeichenfolgen ignorieren** fest.
    2. Legen Sie **Verhalten beim Zwischenspeichern** auf **Bei Fehlen festlegen**.
        
@@ -62,10 +62,11 @@ So legen Sie CDN-Cacheregeln fest
 
     ![Benutzerdefinierte Cacheregeln](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 
+    
 > [!NOTE] 
 > Bei Dateien, die vor einer Regeländerung zwischengespeichert werden, wird die Cachedauereinstellung des Ursprungs beibehalten. Um die Cachedauer zurückzusetzen, müssen Sie [die Datei bereinigen](cdn-purge-endpoint.md). Bei Endpunkten vom **Azure CDN von Verizon** kann es bis zu 90 Minuten dauern, bis die Cacheregeln wirksam werden.
 
-## <a name="reference"></a>Referenz
+## <a name="reference"></a>Verweis
 
 ### <a name="caching-behavior-settings"></a>Einstellungen für das Verhalten beim Zwischenspeichern
 Für globale und benutzerdefinierte Cacheregeln können Sie die folgenden Einstellungen für **Verhalten beim Zwischenspeichern** festlegen:

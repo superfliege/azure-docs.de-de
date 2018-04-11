@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: cshoe
-ms.openlocfilehash: e0a398075b01b3c3750a33a9dd74b5ad1c0f71fd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 73353d3b27b65298d804a138b33cdf2de23726fe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 
@@ -357,7 +357,7 @@ Dieses Feature stellt sicher, dass alle Daten auf den Datenträgern Ihrer virtue
 
 #### <a name="iaas-vms-and-their-vhd-files"></a>IaaS-VMs und ihre zugehörigen VHD-Dateien
 
-Für Datenträger, die von IaaS-VMs verwendet werden, sollten Sie Azure Disk Encryption verwenden. Beim Erstellen eines virtuellen Computers mit einem Image aus Azure Marketplace wird eine [flache Kopie](https://en.wikipedia.org/wiki/Object_copying) in Ihrem Azure Storage-Speicherkonto ausgeführt, und er wird auch dann nicht verschlüsselt, wenn Sie SSE aktiviert haben. SSE beginnt mit der Datenverschlüsselung, sobald der virtuelle Computer erstellt wurde und das Image aktualisiert wird. Aus diesem Grund sollten Sie Azure Disk Encryption auf VMs verwenden, die aus Images in Azure Marketplace erstellt werden, wenn sie vollständig verschlüsselt werden sollen.
+Für Datenträger, die von IaaS-VMs verwendet werden, sollten Sie Azure Disk Encryption verwenden. Beim Erstellen eines virtuellen Computers mit nicht verwalteten Datenträgern mithilfe eines Images aus dem Azure Marketplace wird eine [flache Kopie](https://en.wikipedia.org/wiki/Object_copying) in Ihrem Azure Storage-Speicherkonto ausgeführt, und er wird auch dann nicht verschlüsselt, wenn Sie SSE aktiviert haben. SSE beginnt mit der Datenverschlüsselung, sobald der virtuelle Computer erstellt wurde und das Image aktualisiert wird. Aus diesem Grund sollten Sie Azure Disk Encryption auf VMs mit nicht verwalteten Datenträgern verwenden, die mit Images aus dem Azure Marketplace erstellt werden, wenn sie vollständig verschlüsselt werden sollen. Wenn Sie einen virtuellen Computer mit verwalteten Datenträgern erstellen, verschlüsselt SSE alle Daten standardmäßig mit plattformverwalteten Schlüsseln. 
 
 Wenn Sie eine lokale, bereits verschlüsselte VM in Azure einbringen, können Sie die Verschlüsselungsschlüssel in Azure Key Vault hochladen und für diese VM weiterhin die lokale Verschlüsselung verwenden. Azure Disk Encryption ist für dieses Szenario aktiviert.
 

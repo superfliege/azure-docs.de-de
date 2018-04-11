@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: a18718aba3ef7f70caa541c6eb56311082d02bed
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Beheben von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -27,7 +27,7 @@ Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Der VM-Agent kann nicht mit Azure Backup kommunizieren
+## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>VM-Agent kann nicht mit Azure Backup kommunizieren
 
 Fehlermeldung: „VM Agent unable to communicate with Azure Backup“ (VM-Agent kann nicht mit Azure Backup kommunizieren)
 
@@ -78,21 +78,6 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Ursache 4: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Ursache 5: [Die Sicherungserweiterung kann nicht aktualisiert oder geladen werden](#the-backup-extension-fails-to-update-or-load)**  
 **Ursache 6: [Der Sicherungsdienst ist aufgrund einer Ressourcengruppensperre nicht berechtigt, die alten Wiederherstellungspunkte zu löschen](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
-
-## <a name="disk-configuration-is-not-supported"></a>Datenträgerkonfiguration wird nicht unterstützt
-
-Fehlermeldung: „The specified Disk configuration is not supported“ (Die angegebene Datenträgerkonfiguration wird nicht unterstützt)
-
-> [!NOTE]
-> Es gibt eine private Vorschauversion zur Unterstützung von Sicherungen für virtuelle Computer mit Datenträgern, die größer sind als 1 TB. Einzelheiten finden Sie unter [Instant recovery point and large disk support for Azure Backup](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a) (Unterstützung für sofortige Wiederherstellungspunkte und große Datenträger für Azure Backup).
->
->
-
-Azure Backup unterstützt derzeit keine Datenträger, die [größer als 1.023 GB](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm) sind. Wenn Sie über Datenträger mit mehr als 1 TB verfügen, gehen Sie folgendermaßen vor:  
-1. [Fügen Sie neue Datenträger an](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal), die kleiner sind als 1 TB.  
-2. Kopieren Sie die Daten von Datenträgern mit mehr als 1 TB auf die neu erstellten Datenträger mit weniger als 1 TB.  
-3. Stellen Sie sicher, dass alle Daten kopiert wurden. Entfernen Sie danach die Datenträger mit mehr als 1 TB.  
-4. Initiieren Sie die Sicherung.
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen
 

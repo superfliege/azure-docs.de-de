@@ -1,29 +1,24 @@
 ---
-title: "Entwerfen von ELT-Prozessen für Azure SQL Data Warehouse | Microsoft-Dokumentation"
-description: "Kombinieren Sie Verfahren zum Verschieben von Daten zu Azure und Laden von Daten in SQL Data Warehouse, um einen ELT-Prozess (Extrahieren, Laden und Transformieren) für Azure SQL Data Warehouse zu entwerfen."
+title: Entwerfen von ELT- anstelle von ETL-Prozessen für Azure SQL Data Warehouse | Microsoft-Dokumentation
+description: Entwerfen Sie einen Extrahieren, Transformieren und Laden (ETL)- anstelle eines ETL-Prozesses zum Herunterladen von Daten oder für Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
-ms.assetid: 2253bf46-cf72-4de7-85ce-f267494d55fa
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 12/12/2017
-ms.author: cakarst;barbkess
-ms.openlocfilehash: e94dca69c77c46034e318205279be5188e1371f5
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.topic: conceptual
+ms.component: design
+ms.date: 03/28/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: c27ad843c9ee9beed871dcc03254cb1266f6ebe2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Entwerfen von ELT-Prozessen für Azure SQL Data Warehouse
 
-Kombinieren Sie die Verfahren zum Verschieben von Daten in Azure Storage und Laden von Daten in SQL Data Warehouse, um einen ELT-Prozess (Extrahieren, Laden und Transformieren) für Azure SQL Data Warehouse zu entwerfen. In diesem Artikel werden die Verfahren vorgestellt, die das Laden mit PolyBase unterstützen. Anschließend wird ein ELT-Prozess entwickelt, bei dem PolyBase mit T-SQL verwendet wird, um Daten aus Azure Storage in SQL Data Warehouse zu laden.
+Entwerfen Sie einen Extrahieren, Transformieren und Laden (ETL)- anstelle eines Extrahieren, Transformieren und Laden (ETL)-Prozesses zum Herunterladen von Daten in Azure SQL Data Warehouse. In diesem Artikel werden Möglichkeiten zum Entwerfen eines ELT-Prozesses beschrieben, der Daten in ein Azure Data Warehouse verschiebt.
 
 ## <a name="what-is-elt"></a>Was ist ELT?
 

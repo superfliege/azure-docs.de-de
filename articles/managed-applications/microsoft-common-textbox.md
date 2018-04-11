@@ -1,6 +1,6 @@
 ---
-title: "Benutzeroberflächenelement „TextBox“ in verwalteten Azure-Anwendungen | Microsoft-Dokumentation"
-description: "Hier wird das Benutzeroberflächenelement „Microsoft.Common.TextBox“ für verwaltete Azure-Anwendungen beschrieben."
+title: Benutzeroberflächenelement TextBox in Azure | Microsoft-Dokumentation
+description: Hier wird das Benutzeroberflächenelement Microsoft.Common.TextBox für das Azure-Portal beschrieben.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: d3fae42ae202fe720761382e1020fa8bd8c62b44
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: daee95c177ecddfea1cf7d6d162906fcc86938b4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.TextBox UI“
-Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden kann. Dieses Element verwenden Sie beim [Erstellen einer verwalteten Azure-Anwendung](publish-service-catalog-app.md).
+Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden kann.
 
 ## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
 ![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
@@ -31,8 +31,8 @@ Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden k
   "name": "element1",
   "type": "Microsoft.Common.TextBox",
   "label": "Some text box",
-  "defaultValue": "foobar",
-  "toolTip": "Halp!",
+  "defaultValue": "my value",
+  "toolTip": "Use only allowed characters",
   "constraints": {
     "required": true,
     "regex": "^[a-z0-9A-Z]{1,30}$",
@@ -55,6 +55,5 @@ Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden k
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Azure-Anwendungen](overview.md).
 * Eine Einführung zum Erstellen von Benutzeroberflächendefinitionen finden Sie unter [Erste Schritte mit „CreateUiDefinition“](create-uidefinition-overview.md).
 * Eine Beschreibung der allgemeinen Eigenschaften in Benutzeroberflächenelementen finden Sie unter [CreateUiDefinition-Elemente](create-uidefinition-elements.md).

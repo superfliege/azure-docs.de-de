@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: b29429e1efe46aef8263bed5edb3daeffdf41122
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4eeff0d89fa8a73b8f7f4b73fb5bfb85cda26184
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher aus. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
 
@@ -95,14 +95,13 @@ ACU: 210 - 250
 
 ACU: 210 - 250
 
-| Größe              | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
-|-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1_v2    | 1         | 3,5         | 50             | 3000/46/23                                           | 4/4 x 500                         | 2/750                 |
-| Standard_D2_v2    | 2         | 7           | 100            | 6000/93/46                                           | 8/8 x 500                         | 2/1500                     |
-| Standard_D3_v2    | 4         | 14          | 200            | 12000/187/93                                         | 16/16 x 500                         | 4/3000                     |
-| Standard_D4_v2    | 8         | 28          | 400            | 24000/375/187                                        | 32/32 x 500                       | 8/6000                     |
-| Standard_D5_v2    | 16        | 56          | 800            | 48000/750/375                                        | 64/64 x 500                       | 8 / 12000  |
-
+| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_D1_v2 |1 |3,5 |4 |50 |3000/46/23 |4/4 x 500 |2/750 |
+| Standard_D2_v2 |2 |7 |8 |100 |6000/93/46 |8/8 x 500 |2/1500 |
+| Standard_D3_v2 |4 |14 |16 |200 |12000/187/93 |16/16 x 500 |4/3000 |
+| Standard_D4_v2 |8 |28 |32 |400 |24000/375/187  |32/32 x 500 |8/6000 |
+| Standard_D5_v2 |16 |56 |64 |800 |48000/750/375 |64/64 x 500 |8 / 12000 |
 
 <br>
 
@@ -136,6 +135,8 @@ ACU: 160
 ## <a name="av2-series"></a>Av2-Serie
 
 ACU: 100
+
+
 
 | Größe            | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
@@ -185,3 +186,6 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 |A2\Basic_A2|2|3,5 GB|2| 60 GB|4|4 x 300|
 |A3\Basic_A3|4|7 GB|2| 120 GB |8|4 x 300|
 |A4\Basic_A4|8|14 GB|2| 240 GB |16|16 x 300|
+
+
+Beachten Sie, dass die Anzahl von Datenträgern für klassische virtuelle Computer kleiner sein kann als die Anzahl von Datenträgern für virtuelle Azure Resource Manager-Computer.

@@ -1,32 +1,32 @@
 ---
-title: "Richtlinieneinstellungen für Gruppennamen für Office 365-Gruppen in Azure Active Directory (Vorschau) | Microsoft-Dokumentation"
-description: "Einrichten des Ablaufs für Office 365-Gruppen in Azure Active Directory (Vorschau)"
+title: Richtlinieneinstellungen für Gruppennamen für Office 365-Gruppen in Azure Active Directory (Vorschau) | Microsoft-Dokumentation
+description: Einrichten des Ablaufs für Office 365-Gruppen in Azure Active Directory (Vorschau)
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: michael.tillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/29/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: cc3ea7f81a924f3f4baa6fd2866c4e552b7c160e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c21706a591d0e1aa00279edf7a5534ada95fd8c1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory (Vorschau)
 
 Um einheitliche Benennungskonventionen für Office 365-Gruppen zu erzwingen, die von Ihren Benutzern erstellt oder bearbeitet werden, richten Sie eine Gruppenbenennungsrichtlinie für Ihre Mandanten in Azure Active Directory (Azure AD) ein. Beispielsweise können Sie mithilfe der Benennungsrichtlinie die Funktion einer Gruppe, die Mitgliedschaft, die geografische Region oder den Ersteller der Gruppe kommunizieren. Sie können mit der Benennungsrichtlinie auch die Kategorisierung von Gruppen im Adressbuch unterstützen. Es ist auch möglich, die Richtlinie zu verwenden, um bestimmte Wörter in Gruppennamen und Aliasen zu verhindern.
 
 > [!IMPORTANT]
-> Die Nutzung der Vorschau der Benennungsrichtlinie für Office 365-Gruppen erfordert Azure Active Directory Premium P1-Lizenzen für jeden eindeutigen Benutzer, der Mitglied einer oder mehrerer Office 365-Gruppen ist.
+> Die Nutzung der Vorschau der Benennungsrichtlinie für Office 365-Gruppen erfordert Azure Active Directory Premium P1-Lizenzen oder Azure AD Basic EDU-Lizenzen für jeden eindeutigen Benutzer, der Mitglied einer oder mehrerer Office 365-Gruppen ist.
 
 Die Benennungsrichtlinie wird bei der Erstellung oder Bearbeitung von Gruppen aller Workloads (z.B. Outlook, Microsoft Teams, SharePoint, Exchange oder Planner) angewendet. Sie wird sowohl auf Gruppennamen als auch auf Gruppenaliase angewendet. Wenn Sie Ihre Benennungsrichtlinie in Azure AD einrichten und bereits über eine Benennungsrichtlinie für Exchange-Gruppen verfügen, wird die Azure AD-Benennungsrichtlinie angewendet.
 

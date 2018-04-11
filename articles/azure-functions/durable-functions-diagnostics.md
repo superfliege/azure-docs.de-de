@@ -1,12 +1,12 @@
 ---
-title: "Diagnose in Durable Functions – Azure"
-description: "Es wird beschrieben, wie Sie mit der Erweiterung „Durable Functions“ für Azure Functions Probleme diagnostizieren."
+title: Diagnose in Durable Functions – Azure
+description: Es wird beschrieben, wie Sie mit der Erweiterung „Durable Functions“ für Azure Functions Probleme diagnostizieren.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 5ebab8660dfe21984e1a7f9a1cb925aea60de213
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2fc1c87a0eee9e822ffc997f67320ed23dd5916
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnose in Durable Functions (Azure Functions)
 
@@ -50,6 +50,7 @@ Jedes Lebenszyklusereignis einer Orchestrierungsinstanz bewirkt, dass in Applica
 * **reason**: Zusätzliche Daten zum Nachverfolgungsereignis. Wenn eine Instanz beispielsweise auf eine externe Ereignisbenachrichtigung wartet, wird in diesem Feld der Name des Ereignisses angegeben, auf das gewartet wird. Wenn eine Funktion fehlgeschlagen ist, sind hier die Fehlerdetails enthalten.
 * **isReplay**: Boolescher Wert, der angibt, ob das Nachverfolgungsereignis für die wiedergegebene Ausführung bestimmt ist.
 * **extensionVersion**: Die Version der Erweiterung „Durable Task“. Dies ist besonders wichtig, wenn mögliche Fehler der Erweiterung gemeldet werden. Instanzen mit langer Ausführungsdauer melden unter Umständen mehrere Versionen, wenn während der Ausführung ein Update durchgeführt wird. 
+* **sequenceNumber**: Ausführungssequenznummer für ein Ereignis. In Kombination mit dem Zeitstempel können die Ereignisse dadurch nach Ausführungszeit sortiert werden. *Beachten Sie, dass diese Zahl auf null zurückgesetzt wird, wenn der Host neu gestartet wird, während die Instanz ausgeführt wird. Daher ist es wichtig, immer zuerst nach dem Zeitstempel zu sortieren, dann nach „sequenceNumber“.*
 
 Der Ausführlichkeitsgrad der Nachverfolgung von Daten, die für Application Insights ausgegeben werden, kann im Abschnitt `logger` der Datei `host.json` konfiguriert werden.
 
@@ -72,11 +73,11 @@ Standardmäßig werden alle Nachverfolgungsereignisse ausgegeben. Die Datenmenge
 
 ### <a name="single-instance-query"></a>Abfrage für einzelne Instanzen
 
-Mit der folgenden Abfrage werden Verlaufsdaten für die Nachverfolgung einer Einzelinstanz der [Hello Sequence](durable-functions-sequence.md)-Funktionsorchestrierung angezeigt. Sie wurde mit der [Application Insights Query Language (AIQL)](https://docs.loganalytics.io/docs/Language-Reference) geschrieben. Die Wiedergabeausführung wird herausgefiltert, sodass nur der *logische* Ausführungspfad angezeigt wird.
+Mit der folgenden Abfrage werden Verlaufsdaten für die Nachverfolgung einer Einzelinstanz der [Hello Sequence](durable-functions-sequence.md)-Funktionsorchestrierung angezeigt. Sie wurde mit der [Application Insights Query Language (AIQL)](https://docs.loganalytics.io/docs/Language-Reference) geschrieben. Die Wiedergabeausführung wird herausgefiltert, sodass nur der *logische* Ausführungspfad angezeigt wird. Ereignisse können angeordnet werden, indem nach `timestamp` und `sequenceNumber` sortiert wird, wie in der folgenden Abfrage gezeigt: 
 
 ```AIQL
-let targetInstanceId = "bf71335b26564016a93860491aa50c7f";
-let start = datetime(2017-09-29T00:00:00);
+let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
+let start = datetime(2018-03-25T09:20:00);
 traces
 | where timestamp > start and timestamp < start + 30m
 | where customDimensions.Category == "Host.Triggers.DurableTask"
@@ -84,16 +85,17 @@ traces
 | extend instanceId = customDimensions["prop__instanceId"]
 | extend state = customDimensions["prop__state"]
 | extend isReplay = tobool(tolower(customDimensions["prop__isReplay"]))
+| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"]) 
 | where isReplay == false
 | where instanceId == targetInstanceId
-| project timestamp, functionName, state, instanceId, appName = cloud_RoleName
+| sort by timestamp asc, sequenceNumber asc
+| project timestamp, functionName, state, instanceId, sequenceNumber, appName = cloud_RoleName
 ```
-Das Ergebnis ist eine Liste mit Nachverfolgungsereignissen, für die der Ausführungspfad der Orchestrierung angezeigt wird, z.B. alle Aktivitätsfunktionen.
 
-![Application Insights-Abfrage](media/durable-functions-diagnostics/app-insights-single-instance-query.png)
+Das Ergebnis ist eine Liste mit Nachverfolgungsereignissen, die den Ausführungspfad der Orchestrierung anzeigt, z.B. alle Aktivitätsfunktionen, in aufsteigender Reihenfolge nach Ausführungszeit sortiert.
 
-> [!NOTE]
-> Einige dieser Nachverfolgungsereignisse sind aufgrund der fehlenden Genauigkeit in der Spalte `timestamp` unter Umständen fehlerhaft. Dies wird auf GitHub als [Issue #71](https://github.com/Azure/azure-functions-durable-extension/issues/71) (Problem 71) nachverfolgt.
+![Application Insights-Abfrage](media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+
 
 ### <a name="instance-summary-query"></a>Instanz-Zusammenfassungsabfrage
 
@@ -200,7 +202,7 @@ Durable Functions speichert den Status standardmäßig in Azure Storage. Dies be
 Dies ist hilfreich beim Debuggen, da Sie genau sehen, in welchem Zustand sich eine Orchestrierung befindet. Nachrichten in den Warteschlangen können ebenfalls untersucht werden, um zu ermitteln, welche Arbeitsschritte ausstehen (oder ggf. hängen).
 
 > [!WARNING]
-> Es ist zwar bequem, den Ausführungsverlauf im Tabellenspeicher angezeigt zu bekommen, aber Sie sollten es vermeiden, Abhängigkeiten von dieser Tabelle einzurichten. Dies kann sich ggf. ändern, wenn die Erweiterung „Durable Functions“ weiterentwickelt wird.
+> Es ist zwar bequem, den Ausführungsverlauf im Tabellenspeicher angezeigt zu bekommen, aber Sie sollten es vermeiden, Abhängigkeiten von dieser Tabelle einzurichten. Dies kann sich im Rahmen der Weiterentwicklung der Erweiterung Durable Functions ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 -- title: „Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe der Azure CLI“ description: In diesem Tutorial erfahren Sie, wie Sie Ihren ersten Azure Database for PostgreSQL-Server mithilfe der Azure CLI erstellen, konfigurieren und abfragen.
-services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 03/20/2018
+services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 04/01/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe der Azure CLI 
 In diesem Tutorial verwenden Sie die Azure CLI (Befehlszeilenschnittstelle) und andere Hilfsprogramme, um zu lernen, wie Sie Folgendes ausführen:
@@ -45,11 +45,11 @@ Die JSON-Ausgabe sollte Folgendes enthalten:
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.4"
+    "version": "0.0.5"
 }
 ```
 
-Wird Version 0.0.4 nicht zurückgegeben, führen Sie den folgenden Befehl aus, um die Erweiterung zu aktualisieren: 
+Wird Version 0.0.5 nicht zurückgegeben, führen Sie den folgenden Befehl aus, um die Erweiterung zu aktualisieren: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```

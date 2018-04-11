@@ -1,24 +1,18 @@
 ---
-title: "Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger"
-description: "In diesem Artikel erfahren Sie, wie Sie Daten auf unterschiedliche Weise in Azure speichern und darauf zugreifen können. So wird Ihnen die Entscheidung erleichtert, welche Technologie Sie verwenden sollten."
+title: Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger
+description: In diesem Artikel erfahren Sie, wie Sie Daten auf unterschiedliche Weise in Azure speichern und darauf zugreifen können. So wird Ihnen die Entscheidung erleichtert, welche Technologie Sie verwenden sollten.
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 03/28/2018
 ms.author: tamram
-ms.openlocfilehash: b9c7913d1e95693a5ec72b24cf020928d67f0133
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ded0884ff83cc214d78f65fed8cefa646f11d952
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger
 
@@ -47,9 +41,9 @@ In der folgenden Tabelle wird Azure Files mit Azure-Blobs verglichen.
 |Endpunkte|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |Verzeichnisse|Flacher Namespace|Echte Verzeichnisobjekte|  
 |Beachtung von Groß-/Kleinschreibung bei Namen|Groß-/Kleinschreibung beachten|Keine Beachtung von Groß-/Kleinschreibung, aber die Schreibweise wird beibehalten|  
-|Capacity|Container mit bis zu 500 TB|5 TB Dateifreigaben|  
-|Throughput|Bis zu 60 MB/s pro Blockblob|Bis zu 60 MB/s pro Freigabe|  
-|Objektgröße|Bis zu 200 GB/Blockblob|Bis zu 1 TB/Datei|  
+|Capacity|Container mit bis zu 500 TiB|5 TiB Dateifreigaben|  
+|Throughput|Bis zu 60 MiB/s pro Blockblob|Bis zu 60 MiB/s pro Freigabe|  
+|Objektgröße|Bis zu ungefähr 4,75 TiB pro Blockblob|Bis zu 1 TiB pro Datei|  
 |Berechnete Kapazität|Basierend auf geschriebenen Bytes|Basierend auf der Dateigröße|  
 |Clientbibliotheken|Mehrere Sprachen|Mehrere Sprachen|  
   
@@ -68,9 +62,9 @@ In der folgenden Tabelle wird Azure Files mit Azure-Datenträger verglichen.
 |Authentifizierung|Integriert|Wird mit „net use“ eingerichtet|  
 |Cleanup|Automatisch|Manuell|  
 |Zugriff mithilfe von REST|Auf Dateien auf dem virtuellen Datenträger kann nicht zugegriffen werden.|Auf Dateien, die in einer Freigabe gespeicherte sind, kann zugegriffen werden.|  
-|Max. Größe|4-TB-Datenträger|5-TB-Dateifreigabe und eine 1 TB große Datei innerhalb der Freigabe|  
+|Max. Größe|4-TiB-Datenträger|5-TiB-Dateifreigabe und eine 1-TiB-Datei innerhalb der Freigabe|  
 |Max. 8 KB IOPS|500 IOPS|1.000 IOPS|  
-|Throughput|Bis zu 60 MB/s pro Datenträger|Bis zu 60 MB/s pro Dateifreigabe|  
+|Throughput|Bis zu 60 MiB/s pro Datenträger|Bis zu 60 MiB/s pro Dateifreigabe|  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

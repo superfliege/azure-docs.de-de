@@ -1,25 +1,25 @@
 ---
-title: "Einstieg in die Erstellung von Batch-Lösungen mit Visual Studio-Projektvorlagen – Azure | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Visual Studio-Projektvorlagen Sie beim Implementieren und Ausführen von rechenintensiven Workloads in Azure Batch unterstützen können."
+title: Erstellen von Batch-Lösungen mit Visual Studio-Vorlagen – Azure | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Visual Studio-Projektvorlagen Sie beim Implementieren und Ausführen von rechenintensiven Workloads in Azure Batch unterstützen können.
 services: batch
 documentationcenter: .net
-author: fayora
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da77ce827c65deb18d9d84ce5cf768d89788e205
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5241c62e8b423b20477fc72c87303daf3d4ab43c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Verwenden von Visual Studio-Vorlagen für den schnellen Einstieg in Batch-Lösungen
 
@@ -190,7 +190,7 @@ Exitcodes und Ausnahmen bilden einen Mechanismus, mit dem das Ergebnis der Ausf�
 
 Eine Auftrags-Manager-Aufgabe, die mit der Auftrags-Manager-Vorlage implementiert wird, kann drei mögliche Exitcodes zurückgeben:
 
-| Code | Beschreibung |
+| Code | BESCHREIBUNG |
 | --- | --- |
 | 0 |Der Auftrags-Manager wurde erfolgreich abgeschlossen. Der Code der Auftragsteilung wurde bis zum Ende ausgeführt, und alle Aufgaben wurden dem Auftrag hinzugefügt. |
 | 1 |Die Auftrags-Manager-Aufgabe ist mit einer Ausnahme in einem „erwarteten“ Teil des Programms fehlgeschlagen. Die Ausnahme wurde in eine JobManagerException mit Diagnoseinformationen übersetzt und enthält nach Möglichkeit Vorschläge zur Behebung des Fehlers. |
@@ -368,7 +368,7 @@ Exitcodes und Ausnahmen bilden einen Mechanismus, mit dem das Ergebnis der Ausf�
 
 Eine Aufgabenprozessoraufgabe, die mit der Aufgabenprozessorvorlage implementiert wird, kann drei mögliche Exitcodes zurückgeben:
 
-| Code | Beschreibung |
+| Code | BESCHREIBUNG |
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |Der Aufgabenprozessor wurde bis zum Ende ausgeführt. Beachten Sie, dass dies nicht heißt, dass das aufgerufene Programm erfolgreich war. Es bedeutet lediglich, dass es vom Aufgabenprozessor erfolgreich aufgerufen wurde und alle Schritte der Nachverarbeitung ohne Ausnahmen durchgeführt wurden. Die Bedeutung des Exitcodes richtet sich nach dem aufgerufenen Programm. Normalerweise bedeutet der Exitcode 0, dass das Programm erfolgreich war, und alle anderen Exitcodes bedeuten, dass die Ausführung nicht erfolgreich war. |
 | 1 |Der Aufgabenprozessor ist mit einer Ausnahme in einem „erwarteten“ Teil des Programms fehlgeschlagen. Die Ausnahme wurde in eine `TaskProcessorException` mit Diagnoseinformationen übersetzt und enthält nach Möglichkeit Vorschläge für die Behebung des Fehlers. |
@@ -384,7 +384,7 @@ Alle Informationen, die von Ausnahmen zurückgegeben werden, werden in die Datei
 ### <a name="client-considerations"></a>Clientaspekte
 **Speicheranmeldeinformationen**
 
-Wenn Ihr Aufgabenprozessor Azure-Blobspeicher zum dauerhaften Speichern von Ausgaben verwendet (z.B. Nutzung der Hilfsbibliothek mit Dateikonventionen), benötigt er *entweder* Zugriff auf die Cloudspeicherkonto-Anmeldeinformationen *oder* eine Blobcontainer-URL mit einer Shared Access Signature (SAS). Die Vorlage umfasst die Unterstützung zum Bereitstellen von Anmeldeinformationen über allgemeine Umgebungsvariablen. Der Client kann die Speicheranmeldeinformationen wie folgt übergeben:
+Wenn Ihr Aufgabenprozessor Azure Blob Storage zum dauerhaften Speichern von Ausgaben verwendet (z.B. Nutzung der Hilfsbibliothek mit Dateikonventionen), benötigt er *entweder* Zugriff auf die Cloudspeicherkonto-Anmeldeinformationen *oder* eine Blobcontainer-URL mit einer Shared Access Signature (SAS). Die Vorlage umfasst die Unterstützung zum Bereitstellen von Anmeldeinformationen über allgemeine Umgebungsvariablen. Der Client kann die Speicheranmeldeinformationen wie folgt übergeben:
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {

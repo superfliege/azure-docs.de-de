@@ -1,6 +1,6 @@
 ---
-title: "Benutzeroberflächenelement „OptionsGroup“ in verwalteten Azure-Anwendungen | Microsoft-Dokumentation"
-description: "Hier wird das Benutzeroberflächenelement „Microsoft.Common.OptionsGroup“ für verwaltete Azure-Anwendungen beschrieben."
+title: Benutzeroberflächenelement „OptionsGroup“ in Azure | Microsoft-Dokumentation
+description: Hier wird das Benutzeroberflächenelement „Microsoft.Common.OptionsGroup“ für das Azure-Portal beschrieben.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0ba820176e0231437e878922cb508cd3b97d46c3
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 4b2ce987e311a12e3833fcc1dbae2b48b40135ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.OptionsGroup“
-Ein Auswahlsteuerelement mit einer Zeile der verfügbaren Optionen. Dieses Element verwenden Sie beim [Erstellen einer verwalteten Azure-Anwendung](publish-service-catalog-app.md).
+Ein Auswahlsteuerelement mit einer Zeile der verfügbaren Optionen.
 
 ## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
 ![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
@@ -31,17 +31,17 @@ Ein Auswahlsteuerelement mit einer Zeile der verfügbaren Optionen. Dieses Eleme
   "name": "element1",
   "type": "Microsoft.Common.OptionsGroup",
   "label": "Some options group",
-  "defaultValue": "Foo",
+  "defaultValue": "my value",
   "toolTip": "",
   "constraints": {
     "allowedValues": [
       {
-        "label": "Foo",
-        "value": "Bar"
+        "label": "Value one",
+        "value": "one"
       },
       {
-        "label": "Baz",
-        "value": "Qux"
+        "label": "Value two",
+        "value": "two"
       }
     ]
   },
@@ -61,6 +61,5 @@ Ein Auswahlsteuerelement mit einer Zeile der verfügbaren Optionen. Dieses Eleme
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Azure-Anwendungen](overview.md).
 * Eine Einführung zum Erstellen von Benutzeroberflächendefinitionen finden Sie unter [Erste Schritte mit „CreateUiDefinition“](create-uidefinition-overview.md).
 * Eine Beschreibung der allgemeinen Eigenschaften in Benutzeroberflächenelementen finden Sie unter [CreateUiDefinition-Elemente](create-uidefinition-elements.md).

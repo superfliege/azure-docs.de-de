@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: d1a605ae5c0ea598ba507de0b21a841333df79ef
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7cd16d64d18b4cdcb710f68c55a8251904acda86
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Beheben von Problemen bei einer ungültigen Konfiguration des Dienstprinzipals für verwaltete Domänen
 
@@ -93,7 +93,7 @@ Gehen Sie folgendermaßen vor, wenn ein Dienstprinzipal mit der ID ```d87dcbc6-a
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Warnung AADDS105: Die Kennwortsynchronisierungsanwendung ist veraltet.
 
-**Warnmeldung:** The service principal with the application ID “d87dcbc6-a371-462e-88e3-28ad15ec4e64” was deleted and then recreated. This service principal manages another service principal and an application that are used for password synchronization. The managed service principal and/or application was not authorized under the newly created service principal so they cannot be managed by our service. This means that the newly created service principal will be unable to update the old managed applications and synchronization of passwords will be affected. (Der Dienstprinzipal mit der Anwendungs-ID „d87dcbc6-a371-462e-88e3-28ad15ec4e64“ wurde gelöscht und dann neu erstellt. Der verwaltete Dienstprinzipal und/oder die Anwendung sind/ist unter dem neu erstellten Dienstprinzipal nicht autorisiert und können/kann daher nicht von unserem Dienst verwaltet werden. Das führt dazu, dass der neu erstellte Dienstprinzipal die alten verwalteten Anwendungen nicht aktualisieren kann und die Synchronisierung von Kennwörtern beeinträchtigt wird.)
+**Warnmeldung:** The service principal with the application ID “d87dcbc6-a371-462e-88e3-28ad15ec4e64” was deleted and then recreated. Die Wiederherstellung hinterlässt inkonsistente Berechtigungen für Azure AD Domain Services-Ressourcen, die für Ihre verwaltete Domäne benötigt werden. Die Synchronisierung von Kennwörtern in Ihrer verwalteten Domäne kann beeinträchtigt werden.
 
 
 **Lösung:** Sie benötigen Azure AD PowerShell, um diese Schritte auszuführen. Weitere Informationen zum Installieren von Azure AD PowerShell finden Sie [in diesem Artikel](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).

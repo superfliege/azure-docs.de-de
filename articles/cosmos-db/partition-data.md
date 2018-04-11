@@ -1,33 +1,33 @@
 ---
 title: Partitionierung und horizontale Skalierung in Azure Cosmos DB | Microsoft-Dokumentation
-description: "Erfahren Sie, wie die Partitionierung in Azure Cosmos DB funktioniert, wie Partitionierung und Partitionsschlüssel konfiguriert werden und wie Sie den richtigen Partitionsschlüssel für Ihre Anwendung auswählen."
+description: Erfahren Sie, wie die Partitionierung in Azure Cosmos DB funktioniert, wie Partitionierung und Partitionsschlüssel konfiguriert werden und wie Sie den richtigen Partitionsschlüssel für Ihre Anwendung auswählen.
 services: cosmos-db
 author: arramac
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: cac9a8cd-b5a3-4827-8505-d40bb61b2416
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 03/30/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0032a00883cedfe754e14293dc13a1009f6dd3a0
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 149d2ba5108fb49741203fbe5c50add6c0d523ae
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partitionieren und Skalieren in Azure Cosmos DB
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ist ein weltweit verteilter Datenbankdienst mit mehreren Modellen, der Ihnen helfen soll, eine schnelle und vorhersagbare Leistung zu erzielen. Er wird nahtlos zusammen mit Ihrer Anwendung skaliert, während diese wächst. Dieser Artikel bietet eine Übersicht darüber, wie die Partitionierung für alle Datenmodelle in Azure Cosmos DB funktioniert. Außerdem wird beschrieben, wie Sie Azure Cosmos DB-Container zum effektiven Skalieren Ihrer Anwendungen konfigurieren können.
 
-Partitionierung und Partitionsschlüssel werden im folgenden Azure Friday-Video mit Scott Hanselman und Shireesh Thota (Azure Cosmos DB Principal Engineering Manager) behandelt:
+Partitionierung und Partitionsschlüssel werden in diesem Video mit Azure Cosmos DB-Programm-Manager Andrew Liu behandelt:
 
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-DocumentDB-Elastic-Scale-Partitioning/player]
+> [!VIDEO https://www.youtube.com/embed/SS6WrQ-HJ30]
 > 
 
 ## <a name="partitioning-in-azure-cosmos-db"></a>Partitionierung in Azure Cosmos DB

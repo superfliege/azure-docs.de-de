@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 300b9b7786c17972c5c48df7e5b6d28491adc095
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d0614e2eae0f60068e69b7a4687fc62fbe082c64
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -30,7 +30,7 @@ Die Stichprobenerstellung reduziert Datenverkehr und Datenkosten und unterstütz
 ## <a name="in-brief"></a>Kurz gesagt:
 * Bei der Stichprobenerstellung wird ein Datensatz von *n* Datensätzen beibehalten, und der Rest wird verworfen. Beispielsweise wird eines von fünf Ereignissen beibehalten – das ergibt einen Stichproben-Prozentsatz von 20%. 
 * Die Stichprobenerstellung wird automatisch durchgeführt, wenn Ihre Anwendung sehr viele Telemetriedaten in ASP.NET-Webserver-Apps sendet.
-* Sie können die Stichprobenerstellung auch manuell festlegen. Dazu verwenden Sie entweder die Preisübersichtsseite im Portal, oder Sie nutzen die CONFIG-Datei im ASP.NET-SDK bzw. die Datei „ApplicationInsights.xml“ im Java-SDK, um auch den Netzwerkdatenverkehr zu reduzieren.
+* Sie können die Stichprobenerstellung auch manuell festlegen. Dazu verwenden Sie entweder die Seite „Nutzung und geschätzte Kosten“ im Portal, oder Sie nutzen die CONFIG-Datei im ASP.NET-SDK bzw. die Datei „ApplicationInsights.xml“ im Java-SDK, um auch den Netzwerkdatenverkehr zu reduzieren.
 * Wenn Sie benutzerdefinierte Ereignisse protokollieren und sicherstellen möchten, dass ein Satz von Ereignissen gemeinsam beibehalten oder verworfen wird, müssen Sie sicherstellen, dass alle Einzelereignisse den gleichen Wert für „OperationId“ haben.
 * Der Stichprobenteiler *n* wird in jedem Datensatz in der Eigenschaft `itemCount` gemeldet, die in der Suche unter dem Anzeigenamen „Anforderungsanzahl“ oder „Ereignisanzahl“ angezeigt wird. Wenn keine Stichprobenerstellung aktiv ist, `itemCount==1`.
 * Wenn Sie Analytics-Abfragen schreiben, sollten Sie die [Stichprobenerstellung berücksichtigen](app-insights-analytics-tour.md#counting-sampled-data). Insbesondere sollten Sie nicht einfach nur Datensätze zählen, sondern stattdessen `summarize sum(itemCount)`verwenden.
@@ -49,7 +49,7 @@ Diese Form der Stichprobenerstellung arbeitet an dem Punkt, an dem die Telemetri
 
 Verwenden Sie diese Art der Stichprobenerstellung, wenn Ihre App häufig das monatliche Kontingent überschreitet und Sie keine der SDK-basierten Formen der Stichprobenerstellung verwenden können. 
 
-Legen Sie den Prozentsatz bzw. die Rate für die Stichprobenerstellung auf dem Blatt „Kontingente und Preise“ fest:
+Legen Sie die Samplingrate auf der Seite „Nutzung und geschätzte Kosten“ fest:
 
 ![Klicken Sie auf dem Blatt zur Anwendungsübersicht auf „Einstellungen“ > „Kontingent“ > „Stichproben“. Wählen Sie anschließend eine Stichprobenrate aus, und klicken Sie auf „Aktualisieren“.](./media/app-insights-sampling/04.png)
 

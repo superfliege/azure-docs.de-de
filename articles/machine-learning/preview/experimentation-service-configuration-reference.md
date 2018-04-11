@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 75b55b45c355f585fd73bdc1d97bc6adbbc4e9a0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6cec039034f0650d017eb14de584939bb3191223
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning-Experimentieren-Dienst – Konfigurationsdateien
 
@@ -149,6 +149,8 @@ Die Datei _\<Computezielname>.compute_ gibt Verbindungs- und Konfigurationsinfor
 **NativeSharedDirectory**: Diese Eigenschaft gibt das Basisverzeichnis (z.B.: _~/.azureml/share/_) an, in dem Dateien gespeichert werden können, um auf mehreren Ausführungen auf dem gleichen Computeziel freigegeben werden zu können. Wenn diese Einstellung für die Ausführung auf einem Docker-Container verwendet wird, muss _SharedVolumes_ auf TRUE festgelegt werden. Andernfalls schlägt die Ausführung fehl.
 
 **userManagedEnvironment**: Diese Eigenschaft gibt an, ob dieses Computeziel direkt vom Benutzer oder über den Experimentieren-Dienst verwaltet wird.  
+
+**pythonLocation**: Diese Eigenschaft gibt den Speicherort der Python-Laufzeit an, die das Programm des Benutzers auf dem Computeziel ausführen soll. 
 
 ### <a name="run-configuration-namerunconfig"></a>\<Name der Lauftzeitkonfigurationsdatei> runconfig
 _\<Ausführungskonfigurationsname>.runconfig_ gibt das Experimentausführungsverhalten von Azure ML an. Sie können verschiedene Ausführungsverhaltensweisen konfigurieren, etwa die Überwachung des Ausführungsverlaufs oder das zu verwendende Computeziel usw. Die Namen der Laufzeitkonfigurationsdateien werden zum Auffüllen der Dropdownliste des Ausführungskontexts in der Azure ML Workbench-Desktopanwendung verwendet.

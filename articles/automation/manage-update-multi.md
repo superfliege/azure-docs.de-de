@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 29ab87b6afe31b7bbb40ef7d743e209f86811c9d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c227af1afa95243390152918a6b81015dbaceaeb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -61,7 +61,7 @@ Windows-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Wi
 
 Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.
 
-Diese Lösung unterstützt keinen OMS-Agent für Linux, der zur Berichterstattung an mehrere Operations Management Suite-Arbeitsbereiche konfiguriert ist.
+Diese Lösung bietet keine Unterstützung für einen OMS-Agent für Linux, der für die Berichterstattung an mehrere Log Analytics-Arbeitsbereiche konfiguriert ist.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Aktivieren der Updateverwaltung für virtuelle Azure-Computer
 
@@ -176,5 +176,5 @@ Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern bei der Be
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Updateverwaltung – einschließlich der Protokolle, Ausgabe und Fehler – finden Sie unter [Lösung für die Updateverwaltung in OMS](../operations-management-suite/oms-solution-update-management.md).
+* Weitere Informationen zur Updateverwaltung – einschließlich der Protokolle, Ausgabe und Fehler – finden Sie unter [Lösung für die Updateverwaltung in Azure](../operations-management-suite/oms-solution-update-management.md).
 

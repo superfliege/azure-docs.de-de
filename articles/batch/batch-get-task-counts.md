@@ -1,18 +1,18 @@
 ---
-title: "Überwachen des Auftragsstatus durch das Zählen von Tasks nach Status – Azure Batch | Microsoft-Dokumentation"
-description: "Überwachen Sie den Status eines Auftrags, indem Sie den Vorgang zum Abrufen der Taskanzahl (Get Task Counts) aufrufen, um die Tasks für einen Auftrag zu zählen. Sie können Zahlen zu den aktiven, ausgeführten und abgeschlossenen Tasks sowie zu den erfolgreichen und fehlgeschlagenen Tasks abrufen."
+title: Überwachen des Auftragsstatus durch das Zählen von Tasks nach Status – Azure Batch | Microsoft-Dokumentation
+description: Überwachen Sie den Status eines Auftrags, indem Sie den Vorgang zum Abrufen der Taskanzahl (Get Task Counts) aufrufen, um die Tasks für einen Auftrag zu zählen. Sie können Zahlen zu den aktiven, ausgeführten und abgeschlossenen Tasks sowie zu den erfolgreichen und fehlgeschlagenen Tasks abrufen.
 services: batch
-author: tamram
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: tamram
-ms.openlocfilehash: ceff59d7063b60a1344a47489d3d73e0e8ee07df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: bc112ed5b481560362962d6b550d336de6b3d9b4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="count-tasks-by-state-to-monitor-a-jobs-progress-preview"></a>Zählen von Tasks nach Status zur Überwachung des Auftragsstatus (Vorschauversion)
 
@@ -31,7 +31,7 @@ Mit dem Vorgang „Get Task Counts“ (Taskanzahl abrufen) werden Tasks wie folg
 - Ein Task wird als **Ausgeführt** gezählt, wenn er einem Computeknoten zugewiesen, aber noch nicht abgeschlossen wurde. Ein Task wird als **Ausgeführt** gezählt, wenn sein Status entweder `preparing` oder `running` lautet. Dies wird mit dem Vorgang [Get information about a task][rest_get_task] (Informationen zu einem Task abrufen) angegeben.
 - Ein Task wird als **Abgeschlossen** gezählt, wenn er nicht mehr für die Ausführung ansteht. Ein als **Abgeschlossen** gezählter Task wurde in der Regel entweder erfolgreich abgeschlossen oder war nicht erfolgreich und hat das Wiederholungslimit ausgeschöpft. 
 
-Mit dem Vorgang „Get Task Counts“ (Taskanzahl abrufen) wird auch gemeldet, wie viele Tasks erfolgreich waren oder fehlgeschlagen sind. Batch ermittelt, ob ein Task erfolgreich war oder nicht, indem die **result** -Eigenschaft der [executionInfo](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo) -Eigenschaft überprüft wird:
+Mit dem Vorgang „Get Task Counts“ (Taskanzahl abrufen) wird auch gemeldet, wie viele Tasks erfolgreich waren oder fehlgeschlagen sind. Batch bestimmt, ob ein Task erfolgreich oder fehlerhaft war, indem die **result**-Eigenschaft der [executionInfo][https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo]-Eigenschaft überprüft wird:
 
     - Ein Task wird als **Erfolgreich** gezählt, wenn das Ergebnis der Taskausführung `success` lautet.
     - Ein Task wird als **Fehlgeschlagen** gezählt, wenn das Ergebnis der Taskausführung `failure` lautet.

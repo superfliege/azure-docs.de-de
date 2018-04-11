@@ -1,26 +1,26 @@
 ---
-title: "Firewallunterstützung und IP-Access Control in Azure Cosmos DB | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie IP-Access Control-Richtlinien für die Firewallunterstützung in Azure Cosmos DB-Datenbankkonten verwendet werden."
-keywords: "IP-Access Control, Firewallunterstützung"
+title: Firewallunterstützung und IP-Access Control in Azure Cosmos DB | Microsoft-Dokumentation
+description: Erfahren Sie, wie IP-Access Control-Richtlinien für die Firewallunterstützung in Azure Cosmos DB-Datenbankkonten verwendet werden.
+keywords: IP-Access Control, Firewallunterstützung
 services: cosmos-db
-author: shahankur11
+author: mimig1
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: c1b9ede0-ed93-411a-ac9a-62c113a8e887
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2018
-ms.author: ankshah
-ms.openlocfilehash: 85f5e0e076f92afc79ed8f4ce652bb0f31923113
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 03/30/2018
+ms.author: mimig
+ms.openlocfilehash: 5b70f77d49651e2873428fc7798fff3770b7a095
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB-Firewallunterstützung
 Zum Sichern von in einem Azure Cosmos DB-Datenbankkonto gespeicherten Daten bietet Azure Cosmos DB Unterstützung für ein auf einem Geheimnis basierendes [Autorisierungsmodell](https://msdn.microsoft.com/library/azure/dn783368.aspx), das einen starken hashbasierten Nachrichtenauthentifizierungscode (HMAC) nutzt. Azure Cosmos DB unterstützt nun neben dem auf einem Geheimnis basierenden Autorisierungsmodell durch Richtlinien gesteuerte IP-basierte Access Control für die eingehende Firewallunterstützung. Dieses Modell ähnelt den Firewallregeln eines herkömmlichen Datenbanksystems und bietet zusätzliche Sicherheit für das Azure Cosmos DB-Datenbankkonto. Mit diesem Modell können Sie nun ein Azure Cosmos DB-Datenbankkonto so konfigurieren, dass es nur über eine genehmigte Gruppe von Computern und/oder Clouddiensten zugänglich ist. Für den Zugriff auf Azure Cosmos DB-Ressourcen über diese genehmigten Gruppen von Computern und Diensten muss der Aufrufer weiterhin ein gültiges Autorisierungstoken vorlegen.
@@ -31,15 +31,13 @@ Standardmäßig ist ein Azure Cosmos DB-Datenbankkonto über das öffentliche In
 ![Abbildung zum Verbindungsprozess für die IP-basierte Access Control](./media/firewall-support/firewall-support-flow.png)
 
 ## <a id="configure-ip-policy"></a> Konfigurieren der IP-Access Control-Richtlinie
-Die IP-Zugriffssteuerungsrichtlinie kann im Azure-Portal oder programmgesteuert über die [Azure-Befehlszeilenschnittstelle](cli-samples.md), über [Azure PowerShell](powershell-samples.md) oder über die [REST-API](/rest/api/documentdb/) durch Aktualisieren der Eigenschaft **ipRangeFilter** festgelegt werden. 
+Die IP-Zugriffssteuerungsrichtlinie kann im Azure-Portal oder programmgesteuert über die [Azure-Befehlszeilenschnittstelle](cli-samples.md), über [Azure PowerShell](powershell-samples.md) oder über die [REST-API](/rest/api/cosmos-db/) durch Aktualisieren der Eigenschaft **ipRangeFilter** festgelegt werden. 
 
-Um die IP-Zugriffssteuerungsrichtlinie im Azure-Portal festzulegen, wechseln Sie zur Seite des Azure Cosmos DB-Kontos, klicken Sie im Navigationsmenü auf **Firewall**, und legen Sie den Wert für **IP-Zugriffssteuerung zulassen** auf **EIN** fest. 
+Um die IP-Zugriffssteuerungsrichtlinie im Azure-Portal festzulegen, wechseln Sie zur Seite des Azure Cosmos DB-Kontos, klicken Sie im Navigationsmenü auf **Firewall**, und ändern Sie den Wert für **IP-Zugriffssteuerung zulassen** in **Ausgewählte Netzwerke**. Klicken Sie dann auf **Speichern**. 
 
 ![Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal](./media/firewall-support/azure-portal-firewall.png)
 
-Nach dem Aktivieren der IP-Zugriffssteuerung können Sie im Portal mithilfe von Schaltern den Zugriff auf das Azure-Portal, auf andere Azure-Dienste und auf die aktuelle IP-Adresse aktivieren. Weitere Informationen zu diesen Schaltern finden Sie in den folgenden Abschnitten.
-
-![Screenshot: Konfigurieren von Firewalleinstellungen im Azure-Portal](./media/firewall-support/azure-portal-firewall-configure.png)
+Nach dem Aktivieren der IP-Zugriffssteuerung können Sie im Portal IP-Adressen und -Bereiche sowie Schalter angeben, um den Zugriff auf andere Azure-Dienste und auf das Azure-Portal zu ermöglichen. Weitere Informationen zu diesen Schaltern finden Sie in den folgenden Abschnitten.
 
 > [!NOTE]
 > Durch Aktivieren einer IP-Access Control-Richtlinie für Ihr Azure Cosmos DB-Datenbankkonto wird der Zugriff auf das Azure Cosmos DB-Datenbankkonto von Computern außerhalb der konfigurierten Liste der zulässigen IP-Adressbereiche blockiert. Aufgrund dieses Modells wird auch das Durchsuchen der Vorgänge auf Datenebene über das Portal blockiert, um die Integrität der Access Control sicherzustellen.
@@ -55,12 +53,14 @@ Wenn Sie eine IP-Zugriffssteuerungsrichtlinie programmgesteuert aktivieren, müs
 |China|139.217.8.252|
 |US Gov|52.244.48.71|
 
-Legen Sie zum Aktivieren des Zugriffs auf das Azure-Portal über das Azure-Portal den Wert für **Zugriff auf Azure-Portal zulassen** auf **EIN** fest. (Der Wert für **IP-Zugriffssteuerung zulassen** muss auf **EIN** festgelegt sein, damit der Wert **Zugriff auf Azure-Portal zulassen** angezeigt wird und geändert werden kann.)
+Zugriff auf das Azure-Portal ist standardmäßig aktiviert, wenn Sie die Firewall-Einstellung im Azure-Portal in **Ausgewählte Netzwerke** ändern. 
 
 ![Screenshot: Aktivieren des Zugriffs auf das Azure-Portal](./media/firewall-support/enable-azure-portal.png)
 
 ## <a name="connections-from-other-azure-paas-services"></a>Verbindungen über andere Azure-PaaS-Dienste 
-In Azure werden PaaS-Dienste wie Azure Stream Analytics, Azure Functions und Azure App Service in Verbindung mit Azure Cosmos DB verwendet. Wenn Sie den Zugriff auf das Azure Cosmos DB-Datenbankkonto über diese Dienste aktivieren möchten, deren IP-Adressen nicht unmittelbar zur Verfügung stehen, fügen Sie die IP-Adresse 0.0.0.0 programmgesteuert der Liste mit den zulässigen IP-Adressen für Ihr Azure Cosmos DB-Datenbankkonto hinzu, oder legen Sie im Azure-Portal den Wert für **Zugriff auf Azure-Dienste erlauben** auf „EIN“ fest. (Der Wert für **IP-Zugriffssteuerung zulassen** muss auf **EIN** festgelegt sein, damit der Wert **Zugriff auf Azure-Portal zulassen** angezeigt wird und geändert werden kann.) Dadurch wird sichergestellt, dass Azure-PaaS-Dienste auf ein Azure Cosmos DB-Konto zugreifen können. 
+In Azure werden PaaS-Dienste wie Azure Stream Analytics, Azure Functions und Azure App Service in Verbindung mit Azure Cosmos DB verwendet. Um den Zugriff auf ein Azure Cosmos DB-Datenbankkonto über diese Art von Diensten zu ermöglichen, deren IP-Adresse nicht sofort verfügbar ist, fügen Sie die IP-Adresse „0.0.0.0“ der Liste der zulässigen IP-Adressen hinzu, die dem Azure Cosmos DB-Datenbankkonto programmgesteuert zugeordnet ist. 
+
+Zugriff auf andere Azure-Dienste ist standardmäßig aktiviert, wenn Sie die Firewall-Einstellung im Azure-Portal in **Ausgewählte Netzwerke** ändern. 
 
 ![Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal](./media/firewall-support/enable-azure-services.png)
 
@@ -68,10 +68,12 @@ In Azure werden PaaS-Dienste wie Azure Stream Analytics, Azure Functions und Azu
 
 Um die Entwicklung zu vereinfachen, unterstützt das Azure-Portal Sie dabei, die IP-Adresse Ihres Clientcomputers zu ermitteln und der Zulassungsliste hinzuzufügen, sodass auf Ihrem Computer ausgeführte Apps auf das Azure Cosmos DB-Konto zugreifen können. Die Client-IP-Adresse wird hier so ermittelt, wie sie im Portal zu sehen ist. Es kann sich um die Client-IP-Adresse Ihres Computers handeln, aber auch um die IP-Adresse Ihres Netzwerkgateways. Vergessen Sie nicht, diese Adresse vor dem Übergang in die Produktion zu entfernen.
 
+Um die aktuelle IP-Adresse zu aktivieren, wählen Sie **Meine aktuelle IP hinzufügen** aus. Dadurch wird die aktuelle IP-Adresse zur Liste der IP-Adressen hinzugefügt. Klicken Sie dann auf **Speichern**.
+
 ![Screenshot: Konfigurieren der Firewalleinstellungen für die aktuelle IP-Adresse](./media/firewall-support/enable-current-ip.png)
 
 ## <a name="connections-from-cloud-services"></a>Verbindungen über Clouddienste
-In Azure ist es üblich, dass Clouddienste Servicelogik der mittleren Ebene mithilfe von Azure Cosmos DB hosten. Um den Zugriff auf ein Azure Cosmos DB-Datenbankkonto über einen Clouddienst zu ermöglichen, muss die öffentliche IP-Adresse des Clouddiensts der Liste der zulässigen IP-Adressen, die dem Azure Cosmos DB-Datenbankkonto zugeordnet ist, durch [Konfigurieren der IP-Access Control-Richtlinie](#configure-ip-policy) hinzugefügt werden.  Dadurch wird sichergestellt, dass alle Rolleninstanzen von Clouddiensten Zugriff auf das Azure Cosmos DB-Datenbankkonto haben. Sie können die IP-Adressen für Ihre Clouddienste im Azure-Portal abrufen (siehe dazu den folgenden Screenshot).
+In Azure ist es üblich, dass Clouddienste Servicelogik der mittleren Ebene mithilfe von Azure Cosmos DB hosten. Um den Zugriff auf ein Azure Cosmos DB-Datenbankkonto über einen Clouddienst zu ermöglichen, muss die öffentliche IP-Adresse des Clouddiensts der Liste der zulässigen IP-Adressen, die dem Azure Cosmos DB-Datenbankkonto zugeordnet ist, durch [Konfigurieren der IP-Access Control-Richtlinie](#configure-ip-policy) hinzugefügt werden. Dadurch wird sichergestellt, dass alle Rolleninstanzen von Clouddiensten Zugriff auf das Azure Cosmos DB-Datenbankkonto haben. Sie können die IP-Adressen für Ihre Clouddienste im Azure-Portal abrufen (siehe dazu den folgenden Screenshot).
 
 ![Screenshot mit der öffentlichen IP-Adresse für einen Clouddienst im Azure-Portal](./media/firewall-support/public-ip-addresses.png)
 
@@ -91,7 +93,7 @@ Wenn Sie über einen Computer im Internet auf ein Azure Cosmos DB-Datenbankkonto
 ### <a name="portal-operations"></a>Portalvorgänge
 Durch Aktivieren einer IP-Access Control-Richtlinie für Ihr Azure Cosmos DB-Datenbankkonto wird der Zugriff auf das Azure Cosmos DB-Datenbankkonto von Computern außerhalb der konfigurierten Liste der zulässigen IP-Adressbereiche blockiert. Wenn Sie also Vorgänge auf Portaldatenebene wie das Durchsuchen von Sammlungen und das Abfragen von Dokumenten ermöglichen möchten, müssen Sie den Zugriff durch das Azure-Portal auf der Seite **Firewall** im Portal explizit zulassen. 
 
-![Screenshot: Zulassen des Zugriffs auf das Azure-Portal](./media/firewall-support/enable-azure-portal.png)
+![Screenshot: Zulassen des Zugriffs auf das Azure-Portal](./media/firewall-support/azure-portal-firewall.png)
 
 ### <a name="sdk--rest-api"></a>SDK und REST-API
 Aus Sicherheitsgründen wird beim Zugriff über das SDK oder die REST-API von Computern, die in der Zulassungsliste nicht enthalten sind, die generische Antwort „404 Nicht gefunden“ ohne weitere Einzelheiten zurückgegeben. Überprüfen Sie die Liste der zulässigen IP-Adressen, die für Ihr Azure Cosmos DB-Datenbankkonto konfiguriert ist, um sicherzustellen, dass die passende Richtlinienkonfiguration für das Azure Cosmos DB-Datenbankkonto angewendet wird.

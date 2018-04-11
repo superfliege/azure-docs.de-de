@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement – Benutzeroberfläche – Reichweiteninhalt"
-description: "Erfahren Sie, wie Sie den eindeutigen Inhalt der verschiedenen Kampagnenarten für Pushbenachrichtigungen in Azure Mobile Engagement verwalten"
+title: Azure Mobile Engagement – Benutzeroberfläche – Reichweiteninhalt
+description: Erfahren Sie, wie Sie den eindeutigen Inhalt der verschiedenen Kampagnenarten für Pushbenachrichtigungen in Azure Mobile Engagement verwalten
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: add64f06-43c9-475c-8722-51cd00bb844b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 982cc66ffe98aa6dff8fe290cc1c2d4bad03c9ac
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>Verwaltung des eindeutigen Inhalts der verschiedenen Kampagnenarten für Pushbenachrichtigungen
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 Im Abschnitt "Inhalt" einer neuen Reichweitenkampagne können Sie den Inhalt Ihrer Ankündigungen, Umfragen, Datenpushes und Kacheln (nur Windows Phone) ändern. Die Einstellung "Inhalt" von Pushkampagnen ist spezifisch für den Typ der Kampagne. 
 
 ### <a name="content-types"></a>Inhaltstypen:
@@ -37,7 +41,7 @@ Im Abschnitt "Inhalt" einer neuen Reichweitenkampagne können Sie den Inhalt Ihr
 * Textankündigung: Dies ist eine Benachrichtigung, die den Benutzer auffordert, einen Blick auf eine Textansicht zu werfen.
 * Web-Ankündigung: Dies ist eine Benachrichtigung, die den Benutzer auffordert, einen Blick auf eine Webansicht zu werfen.
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [Reichweite – Anleitungen – Ankündigungen][Link 3] 
 
 ### <a name="about-web-view-announcements"></a>Informationen zu Ankündigungen von Webansichten:
@@ -56,7 +60,7 @@ Jedes Vorkommen des Musters {deviceid} wird automatisch durch die Kennung des Ge
 * **Android + iOS-Aktionen**
   * Öffnen einer Webseite
   * http://\[web-site-domain\] 
-  * Beispiel: http://www.azure.com
+  * Beispiel:http://www.azure.com
   * Senden einer E-Mail
   * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
   * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&amp;body=Good%20stuff!
@@ -76,11 +80,11 @@ Jedes Vorkommen des Musters {deviceid} wird automatisch durch die Kennung des Ge
 * **Aktionen nur für iOS**
   * Herunterladen einer Anwendung aus dem App Store
   * http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8 
-  * Beispiel: http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
+  * Beispiel:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
   * Windows-Aktionen
   * Öffnen einer Webseite
   * http://\[web-site-domain\] 
-  * Beispiel: http://www.azure.com
+  * Beispiel:http://www.azure.com
   * Senden einer E-Mail
   * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
   * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&amp;body=Good%20stuff!
@@ -109,7 +113,7 @@ Jedes Vorkommen des Musters {deviceid} wird automatisch durch die Kennung des Ge
 ### <a name="define-the-texts-of-your-announcement"></a>Festlegen der Texte Ihrer Ankündigung
 Füllen Sie den Titel, Inhalt und die Schaltflächentexte Ihrer Ankündigung aus. Sie können eine Zielgruppe einer künftigen Kampagne basierend auf dem Feedback zur Reichweite dazu adressieren, wie Benutzer auf diese Kampagne geantwortet haben. Die Zielgruppenadressierung kann basieren auf dem Feedback, dass diese Kampagne einfach nur per Push übertragen, beantwortet, umgesetzt oder beendet wurde.
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
 
 ## <a name="content-of-polls"></a>Inhalt von Umfragen

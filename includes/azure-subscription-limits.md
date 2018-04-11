@@ -1,8 +1,24 @@
+---
+title: Includedatei
+description: Includedatei
+services: billing
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 03/30/2018
+ms.author: jroth
+ms.custom: include file
+ms.openlocfilehash: 99766ca4cc9d77927030f81cff6bb9c009874f89
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/03/2018
+---
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Prozessorkerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) <sup>1</sup> |20 |10.000 |
 | [Co-Administratoren](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement |200 |200 |
-| [Speicherkonten](../articles/storage/common/storage-create-storage-account.md) pro Abonnement<sup>2</sup> |200 |250 |
+| [Speicherkonten](../articles/storage/common/storage-create-storage-account.md) pro Region und Abonnement<sup>2</sup> |200 |250 |
 | [Clouddienste](../articles/cloud-services/cloud-services-choose-me.md) pro Abonnement |20 |200 |
 | [Lokale Netzwerke](http://msdn.microsoft.com/library/jj157100.aspx) pro Abonnement |10 |500 |
 | SQL-Datenbankserver pro Abonnement |6 |150 |
@@ -14,5 +30,5 @@
 
 <sup>1</sup> Zusätzliche kleine Instanzen zählen als ganzer Prozessorkern im Sinn des Limits, obwohl nur ein Teil eines Kerns verwendet wird.
 
-<sup>2</sup>Dies umfasst sowohl Standard- als auch Premium-Speicherkonten. Wenn Sie mehr als 200 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen. 
+<sup>2</sup> Das Speicherkontolimit umfasst sowohl Standard- als auch Premium-Speicherkonten. Wenn Sie mehr als 200 Speicherkonten in einer einzigen benötigen, senden Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen. 
 

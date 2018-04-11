@@ -3,7 +3,7 @@ title: Erstellen eines IoT Hubs mit der Azure-Befehlszeilenschnittstelle (azure.
 description: Erstellen eines Azure IoT Hubs mithilfe der plattformübergreifenden Azure-Befehlszeilenschnittstelle (azure.js).
 services: iot-hub
 documentationcenter: .net
-author: BeatriceOltean
+author: kgremban
 manager: timlt
 editor: ''
 ms.assetid: 46a17831-650c-41d9-b228-445c5bb423d3
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
-ms.author: boltean
-ms.openlocfilehash: 7ad0efeeacbdb5dd0185c6336e9bf0e4d7937c99
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/01/2018
+ms.author: kgremban
+ms.openlocfilehash: 7e761ba66f4b28dd7cc59dc8998c23810dd2b7d1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Erstellen eines IoT Hubs mit der Azure-Befehlszeilenschnittstelle
 
@@ -90,8 +90,8 @@ azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u
 * **resource-group**. Der Name der Ressourcengruppe. Beim Format wird die Groß-/Kleinschreibung beachtet. Es können alphanumerische Zeichen, Unterstriche und Bindestriche verwendet werden. Die Länge ist auf 1 bis 64 Zeichen beschränkt.
 * **name**. Der Name der zu erstellenden IoT Hub-Instanz. Die Groß-/Kleinschreibung wird nicht beachtet. Sie können alphanumerische Zeichen und Bindestriche verwenden. Die Angabe muss zwischen drei und 50 Zeichen lang sein.
 * **location**. Der Standort (Azure-Region/Datencenter) für die Bereitstellung der IoT Hub-Instanz.
-* **sku-name**. Der Name der SKU, einer der folgenden: [F1, S1, S2, S3]. Die aktuelle vollständige Liste finden Sie in der Preisübersicht für IoT Hub.
-* **units**. Die Anzahl der bereitgestellten Einheiten. Bereich: F1 [1-1]; S1, S2 [1-200]; S3 [1-10]. Die IoT Hub-Einheiten basieren auf der Gesamtzahl von Nachrichten und der Anzahl von Geräten, die Sie verbinden möchten.
+* **sku-name**. Der Name der SKU, einer der folgenden: [F1, S1, S2, S3]. Weitere Informationen zu jeder SKU finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/). Aktuell sind die Basic-Tarife nur über das Portal verfügbar. 
+* **units**. Die Anzahl der bereitgestellten Einheiten. Weitere Informationen zu Grenzwerte für Einheiten finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 

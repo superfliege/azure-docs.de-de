@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 92189eba7df49aa45adaee7ee3c93c8972b5594b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 018893a2124f1ab9c98e0728bc90ad0a69cf471f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Tutorial: Azure Active Directory-Integration mit Amazon Web Services (AWS)
 
@@ -146,7 +146,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 8. Melden Sie sich in einem anderen Browserfenster bei der Unternehmenswebsite von Amazon Web Services (AWS) als Administrator an.
 
-9. Klicken Sie auf die **Startseite der Konsole**.
+9. Klicken Sie auf **AWS Home**.
    
     ![Einmaliges Anmelden konfigurieren – Startseite][11]
 
@@ -174,65 +174,53 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     ![Einmaliges Anmelden konfigurieren – Überprüfen][15]
 
-14. Klicken Sie auf **Rollen**, und klicken Sie dann auf **Neue Rolle erstellen**. 
+14. Klicken Sie auf **Rollen**, und klicken Sie dann auf **Rolle erstellen**. 
     
     ![Einmaliges Anmelden konfigurieren – Rollen][16]
 
-15. Führen Sie im Dialogfeld **Rollennamen festlegen** die folgenden Schritte aus: 
-    
-    ![Einmaliges Anmelden konfigurieren – Name][17] 
-
-    a. Geben Sie im Textfeld **Rollenname** einen Rollennamen ein (zum Beispiel: *TestUser*). 
-
-    b. Klicken Sie auf **Nächster Schritt**.
-
-16. Führen Sie im Dialogfeld **Rollentyp auswählen** die folgenden Schritte aus: 
-    
-    ![Einmaliges Anmelden konfigurieren – Rollentyp][18] 
-
-    a. Wählen Sie **Rolle für Identitätsanbieterzugriff**aus. 
-
-    b. Klicken Sie im Abschnitt **Zugriff mit einmaliger Webanmeldung für SAML-Anbieter gewähren** auf **Auswählen**.
-
-17. Führen Sie im Dialogfeld **Vertrauensstellung herstellen** die folgenden Schritte aus:  
+15. Führen Sie auf der Seite **Rolle erstellen** die folgenden Schritte aus:  
     
     ![Einmaliges Anmelden konfigurieren – Vertrauensstellung][19] 
 
-    a. Wählen Sie als SAML-Anbieter den zuvor erstellten SAML-Anbieter aus (zum Beispiel: *WAAD*). 
+    a. Wählen Sie **SAML 2.0-Verbund** unter **Typ der vertrauenswürdige Entität auswählen**.
+
+    b. Wählen Sie unter **SAML 2.0-Anbieterabschnitt auswählen** den **SAML-Anbieter** aus, den Sie zuvor erstellt haben (Beispiel: *WAAD*).
+
+    c. Wählen Sie **Programmgesteuerten und AWS Management Console-Zugriff zulassen** aus.
   
-    b. Klicken Sie auf **Nächster Schritt**.
+    d. Klicken Sie auf **Weiter: Berechtigungen**.
 
-18. Klicken Sie im Dialogfeld **Vertrauenswürdigkeit der Rolle überprüfen** auf **Nächster Schritt**. 
-    
-    ![Einmaliges Anmelden konfigurieren – Vertrauenswürdigkeit der Rolle][32]
-
-19. Klicken Sie im Dialogfeld **Richtlinie anhängen** auf **Nächster Schritt**.  
+16. Klicken Sie im Dialogfeld **Berechtigungsrichtlinien anfügen** auf **Weiter: Überprüfen**.  
     
     ![Einmaliges Anmelden konfigurieren – Richtlinie][33]
 
-20. Führen Sie im Dialogfeld **Überprüfung** die folgenden Schritte aus:   
+17. Führen Sie im Dialogfeld **Überprüfung** die folgenden Schritte aus:   
     
     ![Einmaliges Anmelden konfigurieren – Überprüfung][34] 
+
+    a. Geben Sie im Textfeld **Rollenname** Ihren Rollennamen ein.
+
+    b. Geben Sie im Textfeld **Rollenbeschreibung** die Beschreibung ein.
 
     a. Klicken Sie auf **Rolle erstellen**.
 
     b. Erstellen Sie so viele Rollen, wie Sie benötigen, und ordnen Sie diese dem Identitätsanbieter zu.
 
-21. Verwenden Sie die Anmeldeinformationen des AWS-Dienstkontos, um die Rollen aus dem AWS-Konto in der Azure AD-Benutzerbereitstellung abzurufen. Öffnen Sie hierzu die Startseite der AWS-Konsole.
+18. Verwenden Sie die Anmeldeinformationen des AWS-Dienstkontos, um die Rollen aus dem AWS-Konto in der Azure AD-Benutzerbereitstellung abzurufen. Öffnen Sie hierzu die Startseite der AWS-Konsole.
 
-22. Klicken Sie auf **Services (Dienste)** -> **Security, Identity & Compliance (Sicherheit, Identität und Konformität)** -> **IAM**.
+19. Klicken Sie auf **Services** (Dienste) -> **Security, Identity & Compliance** (Sicherheit, Identität und Konformität) -> **IAM**.
 
     ![Rollen aus AWS-Konto abrufen](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole1.png)
 
-23. Wählen Sie im IAM-Abschnitt die Registerkarte **Policies** (Richtlinien) aus.
+20. Wählen Sie im IAM-Abschnitt die Registerkarte **Policies** (Richtlinien) aus.
 
     ![Rollen aus AWS-Konto abrufen](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole2.png)
 
-24. Erstellen Sie eine neue Richtlinie, indem Sie auf **Create policy** (Richtlinie erstellen) klicken.
+21. Erstellen Sie durch Klicken auf **Richtlinie erstellen** eine neue Richtlinie, um die Rollen in Azure AD-Benutzerbereitstellung vom AWS-Konto abzuholen.
 
     ![Neue Richtlinie erstellen](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole3.png)
- 
-25. Erstellen Sie anhand der folgenden Schritte eine eigene Richtlinie, um alle Rollen aus AWS-Konten abzurufen:
+
+22. Erstellen Sie anhand der folgenden Schritte eine eigene Richtlinie, um alle Rollen aus AWS-Konten abzurufen:
 
     ![Neue Richtlinie erstellen](./media/active-directory-saas-amazon-web-service-tutorial/policy1.png)
 
@@ -272,7 +260,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Neue Richtlinie definieren](./media/active-directory-saas-amazon-web-service-tutorial/policy5.png)
 
-26. Führen Sie zum Festlegen der **neuen Richtlinie** die folgenden Schritte aus:
+23. Führen Sie zum Festlegen der **neuen Richtlinie** die folgenden Schritte aus:
 
     ![Neue Richtlinie definieren](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
 
@@ -281,8 +269,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     b. Sie können für die Richtlinie Text in **Description** (Beschreibung) angeben, da hierfür **This policy will allow to fetch the roles from AWS accounts** (Diese Richtlinie erlaubt das Abrufen der Rollen aus AWS) gilt.
     
     c. Klicken Sie auf die Schaltfläche **Richtlinie erstellen**.
-        
-27. Erstellen Sie ein neues Benutzerkonto im AWS-IAM-Dienst, indem Sie die folgenden Schritte ausführen:
+
+24. Führen Sie im Dialogfeld **Überprüfung** die folgenden Schritte aus:   
+    
+    ![Einmaliges Anmelden konfigurieren – Überprüfung][34] 
+
+    a. Klicken Sie auf **Rolle erstellen**.
+
+    b. Erstellen Sie so viele Rollen, wie Sie benötigen, und ordnen Sie diese dem Identitätsanbieter zu.
+
+
+25. Erstellen Sie ein neues Benutzerkonto im AWS-IAM-Dienst, indem Sie die folgenden Schritte ausführen:
 
     a. Klicken Sie im Navigationsmenü der AWS-IAM-Konsole auf **Users** (Benutzer).
 
@@ -302,7 +299,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     * Klicken Sie in der unteren rechten Ecke auf die Schaltfläche **Next Permissions** (Nächste Berechtigungen).
 
-28. Nun erstellen Sie eine neue Richtlinie für diesen Benutzer, indem Sie die folgenden Schritte ausführen:
+26. Nun erstellen Sie eine neue Richtlinie für diesen Benutzer, indem Sie die folgenden Schritte ausführen:
 
     ![Benutzer hinzufügen](./media/active-directory-saas-amazon-web-service-tutorial/adduser2.png)
     
@@ -312,7 +309,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     c. Wählen Sie die **Richtlinie** aus, und klicken Sie dann auf die Schaltfläche **Next: Review** (Weiter: Überprüfung).
 
-29. Überprüfen Sie die Richtlinie für den angefügten Benutzer, indem Sie folgende Schritte ausführen:
+27. Überprüfen Sie die Richtlinie für den angefügten Benutzer, indem Sie folgende Schritte ausführen:
 
     ![Benutzer hinzufügen](./media/active-directory-saas-amazon-web-service-tutorial/adduser3.png)
     
@@ -320,7 +317,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     b. Klicken Sie in der unteren rechten Ecke auf die Schaltfläche **Create user** (Benutzer erstellen), um den Benutzer zu erstellen.
 
-30. Laden Sie die Anmeldeinformationen eines Benutzers herunter, indem Sie die folgenden Schritte ausführen:
+28. Laden Sie die Anmeldeinformationen eines Benutzers herunter, indem Sie die folgenden Schritte ausführen:
 
     ![Benutzer hinzufügen](./media/active-directory-saas-amazon-web-service-tutorial/adduser4.png)
     
@@ -330,11 +327,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     c. Klicken Sie unten auf die Schaltfläche **Close** (Schließen).
 
-31. Navigieren Sie im Azure AD-Verwaltungsportal in der Amazon Web Services-App zum Abschnitt **User Provisioning** (Benutzerbereitstellung).
+29. Navigieren Sie im Azure AD-Verwaltungsportal in der Amazon Web Services-App zum Abschnitt **User Provisioning** (Benutzerbereitstellung).
 
     ![Benutzer hinzufügen](./media/active-directory-saas-amazon-web-service-tutorial/provisioning.png)
 
-32. Geben Sie den **Zugriffsschlüssel** und den **geheimen Zugriffsschlüssel** in das Feld **Client Secret** (Geheimer Clientschlüssel) bzw. **Secret Token** (Geheimes Token) ein.
+30. Geben Sie den **Zugriffsschlüssel** und den **geheimen Zugriffsschlüssel** in das Feld **Client Secret** (Geheimer Clientschlüssel) bzw. **Secret Token** (Geheimes Token) ein.
 
     ![Benutzer hinzufügen](./media/active-directory-saas-amazon-web-service-tutorial/provisioning1.png)
     
@@ -346,13 +343,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     d. Speichern Sie die Einstellung, indem Sie oben auf die Schaltfläche **Save** (Speichern) klicken.
  
-33. Stellen Sie nun sicher, dass Sie im Abschnitt „Settings“ (Einstellungen) die Option „Provisioning Status“ (Bereitstellungsstatus) über den Schalter **On** (Ein) aktivieren, und klicken Sie dann oben auf die Schaltfläche **Save** (Speichern).
+31. Stellen Sie nun sicher, dass Sie im Abschnitt „Settings“ (Einstellungen) die Option „Provisioning Status“ (Bereitstellungsstatus) über den Schalter **On** (Ein) aktivieren, und klicken Sie dann oben auf die Schaltfläche **Save** (Speichern).
 
     ![Benutzer hinzufügen](./media/active-directory-saas-amazon-web-service-tutorial/provisioning2.png)
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

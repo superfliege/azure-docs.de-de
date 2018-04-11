@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 88020b27403f06ab8f1c0a1c45b798db02f517f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4598267e92716529774f42d22ab7c47d944d4495
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Überblick über Metriken in Microsoft Azure
 In diesem Artikel wird beschrieben, was Metriken in Microsoft Azure sind, welche Vorteile sie haben und wie Sie mit deren Nutzung beginnen.  
@@ -116,7 +116,7 @@ Metrikwarnungen: Diese können Sie per E-Mail benachrichtigen oder einen Webhook
 
  ![Metriken und Warnungsregeln in Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
-Warnungen nahezu in Echtzeit (Vorschau): Diese können mehrere Metriken und Schwellenwerte für eine Ressource überwachen und Sie dann über eine [Aktionsgruppe](/monitoring-action-groups.md) benachrichtigen. Weitere Informationen zu [Metrikwarnungen, die nahezu in Echtzeit stattfinden, finden Sie hier](https://aka.ms/azuremonitor/near-real-time-alerts).
+Neuere Metrikwarnungen können mehrere Metriken und Schwellenwerte für eine Ressource überwachen und Sie dann über eine [Aktionsgruppe](/monitoring-action-groups.md) benachrichtigen. Weitere Informationen zu neueren Warnungen finden Sie [hier](https://aka.ms/azuremonitor/near-real-time-alerts).
 
 
 ### <a name="autoscale-your-azure-resources"></a>Automatische Skalierung Ihrer Azure-Ressourcen

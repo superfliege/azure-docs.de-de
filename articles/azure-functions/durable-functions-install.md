@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3451f268e78df6efa5e3fc489b88415349efe169
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3a83ed5f7dba3e4d68204a2c9dffb4459cadfef9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Installieren der Erweiterung Durable Functions und Beispiele (Azure Functions)
 
 Die Erweiterung [Durable Functions ](durable-functions-overview.md) für Azure Functions finden Sie im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). In diesem Artikel werden das Installieren des Pakets und eine Reihe von Beispielen für die folgenden Entwicklungsumgebungen gezeigt:
 
 * Visual Studio 2017 (empfohlen) 
-
+* Visual Studio Code
 * Azure-Portal
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017
@@ -48,11 +48,7 @@ Visual Studio bietet derzeit die beste Lösung für das Entwickeln von Apps, die
 Befolgen Sie die gleichen Anweisungen wie für den Start mit dem Beispiel, aber führen Sie die folgenden Schritte aus, statt die *ZIP*-Datei herunterzuladen:
 
 1. Erstellen Sie ein Funktionen-App-Projekt.
-2. Fügen Sie den folgenden NuGet-Paketverweis Ihrer *CSPROJ*-Datei hinzu:
-
-   ```xml
-   <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="1.0.0-beta" />
-   ```
+2. Suchen Sie mit *NuGet-Pakete verwalten* nach der folgenden NuGet-Paketreferenz, und fügen Sie sie dem Projekt hinzu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.1.0-beta2 (Aktivieren Sie *Vorabversion einschließen*, um nach diesem Paket zu suchen.)
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -129,6 +125,8 @@ Falls gewünscht, können Sie das Azure-Portal für die Entwicklung von Durable 
 1. Erstellen Sie eine neue Funktionen-App unter [functions.azure.com](https://functions.azure.com/signin).
 
 2. Konfigurieren Sie die Funktionen-App für die [Verwendung der 2.0-Laufzeitversion ](set-runtime-version.md).
+
+   Die Durable Functions-Erweiterung funktioniert sowohl mit der 1.X-Runtime als auch mit der 2.0-Runtime, aber die Azure Portal-Vorlagen sind nur für die 2.0-Runtime verfügbar.
 
 3. Erstellen Sie eine neue Funktion, indem Sie **Eigene benutzerdefinierte Funktion erstellen** auswählen.
 

@@ -1,12 +1,12 @@
 ---
 title: Beschleunigung dynamischer Websites durch das Azure CDN
-description: Deep-Dive-Analysen durch Beschleunigung dynamischer Websites
+description: Azure CDN unterstützt die Optimierung zur Beschleunigung dynamischer Websites (Dynamic Site Acceleration, DSA) für Dateien mit dynamischen Inhalten.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
 manager: akucer
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli
-ms.openlocfilehash: 713f00f432095b7a8a19996fb7bdb7e5f8d79b63
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d105c88105512df4a9f8d999f64ad001b5d54917
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Beschleunigung dynamischer Websites durch das Azure CDN
 
@@ -29,9 +29,9 @@ Zu den Standardfunktionen eines CDN (Content Delivery Network) zählt die Mögli
 Das **Azure CDN von Akamai** und das **Azure CDN von Verizon** ermöglichen beide während der Erstellung des Endpunkts über das Menü **Optimiert für** eine DSA-Optimierung.
 
 > [!Important]
-> Nur beim **Azure CDN von Akamai**-Profilen dürfen Sie nach deren Erstellung die Optimierung eines CDN-Endpunkts ändern.
+> Bei **Azure CDN von Akamai**-Profilen dürfen Sie nach deren Erstellung die Optimierung eines CDN-Endpunkts ändern.
 >   
-> Beim **Azure CDN von Verizon**-Profilen ist es nicht möglich, nach deren Erstellung die Optimierung eines CDN-Endpunkts zu ändern.
+> Bei **Azure CDN von Verizon**-Profilen können Sie nach deren Erstellung die Optimierung eines CDN-Endpunkts nicht ändern.
 
 ## <a name="configuring-cdn-endpoint-to-accelerate-delivery-of-dynamic-files"></a>Konfigurieren von CDN-Endpunkten zur Beschleunigung der Übermittlung dynamischer Dateien
 
@@ -104,7 +104,7 @@ Das Transmission Control-Protokoll (TCP) ist das Standardprotokoll der Internetp
 
 Der *langsame Start von TCP* ist ein Algorithmus des Transmission Control-Protokolls (TCP), der eine Netzwerküberlastung verhindert, indem die Menge der über das Netzwerk gesendeten Daten beschränkt wird. Er beginnt mit kleinen Überlastungsfenstergrößen zwischen Absender und Empfänger, bis der Höchstwert erreicht oder ein Paketverlust erkannt wird.
 
- Sowohl das **Azure CDN von Akamai** als auch das **Azure CDN von Verizon** beseitigen langsame TCP-Starts durch die folgenden drei Schritte:
+ Sowohl das **Azure CDN von Akamai**-Profil als auch das **Azure CDN von Verizon**-Profil beseitigen langsame TCP-Starts durch die folgenden drei Schritte:
 
 1. Die Integritäts- und Bandbreitenüberwachung wird eingesetzt, um die Bandbreite von Verbindungen zwischen PoP-Edgeservern zu messen.
     
@@ -152,19 +152,32 @@ Für die DSA ist die Zwischenspeicherung im CDN standardmäßig deaktiviert. Die
 
 Wenn Sie über eine Website mit einer Mischung aus statischen und dynamischen Ressourcen verfügen, erzielen Sie die beste Leistung, indem Sie sich für einen Hybridansatz entscheiden. 
 
-Beim **Azure CDN von Verizon Premium**-Profilen können Sie das Zwischenspeichern für bestimmte Fälle mithilfe der [Regel-Engine](cdn-rules-engine.md) für DSA-Endpunkte aktivieren. Alle Regeln, die erstellt werden, betreffen nur die für die DSA optimierten Endpunkte Ihres Profils. 
+Sie können das Zwischenspeichern für das **Azure CDN Standard von Verizon**-Profil und das **Azure CDN Standard von Akamai**-Profil für bestimmte DSA-Endpunkte aktivieren, indem Sie [Cacheregeln](cdn-caching-rules.md) verwenden.
 
-So greifen Sie auf die Regel-Engine für DSA-Endpunkte zu
+So greifen Sie auf Cacheregeln zu
+
+1. Wählen Sie auf der Seite **CDN-Profil** unter „Einstellungen“ die Option **Cacheregeln**.  
+    
+    ![Schaltfläche für CDN-Cacheregeln](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
+
+    Die Seite **Cacheregeln** wird geöffnet.
+
+2. Erstellen Sie eine globale oder benutzerdefinierte Cacheregel, um das Zwischenspeichern für den DSA-Endpunkt zu aktivieren. 
+
+Bei **Azure CDN Premium von Verizon**-Profilen können Sie das Zwischenspeichern für bestimmte DSA-Endpunkte mithilfe der [Regel-Engine](cdn-rules-engine.md) aktivieren. Alle Regeln, die erstellt werden, betreffen nur die für die DSA optimierten Endpunkte Ihres Profils. 
+
+So greifen Sie auf die Regel-Engine zu
     
 1. Klicken Sie auf der Seite **CDN-Profil** auf **Verwalten**.  
     
-    ![Verwaltungsschaltfläche für CDN-Profile](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![Verwaltungsschaltfläche für CDN-Profile](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     Das CDN-Verwaltungsportal wird geöffnet.
 
 2. Wählen Sie im CDN-Verwaltungsportal **ADN** und dann **Regel-Engine** aus. 
 
-    ![Regel-Engine für die DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
+    ![Regel-Engine für die DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
+
 
 
 Alternativ können Sie zwei CDN-Endpunkte verwenden: Ein mit der DSA optimierter Endpunkt zur Bereitstellung von dynamischen Ressourcen und ein anderer mit einem statischen Optimierungstyp, z.B. allgemeine Webbereitstellung, für die Bereitstellung von zwischenspeicherbaren Ressourcen. Ändern Sie Ihre Webseiten-URLs so, dass eine direkte Verknüpfung mit der Ressource für den CDN-Endpunkt hergestellt wird, den Sie verwenden möchten. 

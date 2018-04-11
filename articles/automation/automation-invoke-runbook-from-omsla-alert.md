@@ -1,6 +1,6 @@
 ---
 title: Aufrufen eines Azure Automation-Runbooks über eine Log Analytics-Warnung
-description: In diesem Artikel erfahren Sie, wie Sie ein Automation-Runbook über eine Log Analytics-Warnung in Operations Management Suite aufrufen.
+description: In diesem Artikel erfahren Sie, wie Sie ein Automation-Runbook über eine Log Analytics-Warnung in Azure aufrufen.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3f95d6b9385b252bce05f19b38ae38f11e88a88c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2a0e497535f783cbffc21004331ccd2a50ab8eef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Aufrufen eines Azure Automation-Runbooks über eine Log Analytics-Warnung
 
@@ -23,11 +23,11 @@ Eine Warnung kann beispielsweise auf eine längere Prozessorauslastungsspitze hi
 Runbooks können in der Warnungskonfiguration auf zwei Arten aufgerufen werden:
 
 * Verwenden eines Webhooks
-   * Falls Ihr Operations Management Suite-Arbeitsbereich nicht mit einem Automation-Konto verknüpft ist, ist nur diese Option verfügbar.
-   * Falls Sie bereits ein Automation-Konto mit einem Operations Management Suite-Arbeitsbereich verknüpft haben, steht diese Option auch weiterhin zur Verfügung.  
+   * Falls Ihr Log Analytics-Arbeitsbereich nicht mit einem Automation-Konto verknüpft ist, ist dies die einzige verfügbare Option.
+   * Falls Sie bereits ein Automation-Konto mit einem Log Analytics-Arbeitsbereich verknüpft haben, steht diese Option auch weiterhin zur Verfügung.  
 
 * Direktes Auswählen eines Runbooks
-   * Diese Option ist nur verfügbar, wenn der Operations Management Suite-Arbeitsbereich mit einem Automation-Konto verknüpft ist.
+   * Diese Option ist nur verfügbar, wenn der Log Analytics-Arbeitsbereich mit einem Automation-Konto verknüpft ist.
 
 ## <a name="calling-a-runbook-by-using-a-webhook"></a>Aufrufen eines Runbooks unter Verwendung eines Webhooks
 
@@ -35,7 +35,7 @@ Mit einem Webhook können Sie ein bestimmtes Runbook in Azure Automation über e
 
 ## <a name="calling-a-runbook-directly"></a>Direktes Aufrufen eines Runbooks
 
-Sie können das Angebot „Automation & Control“ in Ihrem Operations Management Suite-Arbeitsbereich installieren und konfigurieren. Beim Konfigurieren der Runbook-Aktionen für die Warnung können Sie in der Dropdownliste **Runbook auswählen** alle Runbooks anzeigen und das spezifische Runbook auswählen, das als Reaktion auf die Warnung ausgeführt werden soll. Das ausgewählte Runbook kann in einem Azure-Arbeitsbereich oder für einen Hybrid Runbook Worker ausgeführt werden. 
+Sie können das Angebot „Automation & Control“ in Ihrem Log Analytics-Arbeitsbereich installieren und konfigurieren. Beim Konfigurieren der Runbook-Aktionen für die Warnung können Sie in der Dropdownliste **Runbook auswählen** alle Runbooks anzeigen und das spezifische Runbook auswählen, das als Reaktion auf die Warnung ausgeführt werden soll. Das ausgewählte Runbook kann in einem Azure-Arbeitsbereich oder für einen Hybrid Runbook Worker ausgeführt werden. 
 
 Nachdem Sie die Warnung unter Verwendung der Runbookoption erstellt haben, wird für das Runbook ein Webhook erstellt. Den Webhook können Sie anzeigen, indem Sie unter dem Automation-Konto den Webhook-Bereich des ausgewählten Runbooks öffnen. 
 
@@ -90,7 +90,7 @@ $SearchResult.SvcDisplayName_CF
 
 Wenn der Dienst beendet wird, erkennt die Warnungsregel in Log Analytics eine Übereinstimmung, löst das Runbook aus und sendet den Warnungskontext an das Runbook. Das Runbook überprüft, ob der Dienst beendet wurde. Ist dies der Fall, versucht das Runbook, den Dienst neu zu starten. Anschließend überprüft es, ob der Dienst ordnungsgemäß gestartet wurde, und zeigt die Ergebnisse an.     
 
-Alternativ können Sie die Warnungsregel mit einer Webhookaktion konfigurieren, wenn Sie Ihr Automation-Konto nicht mit Ihrem Operations Management Suite-Arbeitsbereich verknüpft haben. Die Webhookaktion löst das Runbook aus. Außerdem konfiguriert sie das Runbook so, dass es die JSON-Zeichenfolge konvertiert und nach **SearchResult** filtert (wie weiter oben beschrieben).    
+Alternativ können Sie die Warnungsregel mit einer Webhookaktion konfigurieren, wenn Sie Ihr Automation-Konto nicht mit Ihrem Log Analytics-Arbeitsbereich verknüpft haben. Die Webhookaktion löst das Runbook aus. Außerdem konfiguriert sie das Runbook so, dass es die JSON-Zeichenfolge konvertiert und nach **SearchResult** filtert (wie weiter oben beschrieben).    
 
 >[!NOTE]
 > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../log-analytics/log-analytics-log-search-upgrade.md) durchgeführt wurde, hat sich die Webhooknutzlast geändert. Details des Formats werden unter [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) beschrieben.

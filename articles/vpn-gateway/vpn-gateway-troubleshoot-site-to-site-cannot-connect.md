@@ -1,24 +1,24 @@
 ---
 title: 'Problembehandlung: Azure-Site-to-Site-VPN-Verbindung kann nicht hergestellt werden | Microsoft-Dokumentation'
-description: "In diesem Artikel erfahren Sie, was Sie tun können, wenn die Site-to-Site-VPN-Verbindung plötzlich getrennt wird und nicht mehr hergestellt werden kann."
+description: In diesem Artikel erfahren Sie, was Sie tun können, wenn die Site-to-Site-VPN-Verbindung plötzlich getrennt wird und nicht mehr hergestellt werden kann.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2017
+ms.date: 03/29/2018
 ms.author: genli
-ms.openlocfilehash: 96a1705d651b9a2d17a466b9c43721bec7b4972c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 3e590df66f84cd88ba7ba251373c14a44a94ca77
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Problembehandlung: Azure-Site-to-Site-VPN-Verbindung kann nicht hergestellt werden und reagiert nicht mehr
 
@@ -92,7 +92,9 @@ Suchen und Entfernen Sie benutzerdefiniertes routing (UDR) oder Netzwerksicherhe
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>Schritt 7. Überprüfen des Azure-Gatewayintegritätstests
 
-1. Wechseln Sie zum Integritätstest.
+1. Öffnen Sie den Integritätstest, indem Sie zu der folgenden URL wechseln:
+
+    `https://<YourVirtualNetworkGatewayIP>:8081/healthprobe`
 
 2. Klicken Sie sich durch die Zertifikatswarnung.
 3. Wenn Sie eine Antwort erhalten, wird das VPN-Gateway als integer betrachtet. Wenn Sie keine Antwort erhalten, ist das Gateway möglicherweise nicht fehlerfrei, oder auf dem Gatewaysubnetz ist eine NSG vorhanden, die das Problem verursacht. Der folgende Text ist eine Beispielantwort:

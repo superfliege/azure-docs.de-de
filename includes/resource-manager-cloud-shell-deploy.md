@@ -1,6 +1,6 @@
 ## <a name="deploy-template-from-cloud-shell"></a>Bereitstellen der Vorlage über Cloud Shell
 
-Sie können Ihre Vorlage mithilfe von [Cloud Shell](../articles/cloud-shell/overview.md) bereitstellen. Die Vorlage muss allerdings zuerst in die Dateifreigabe für Ihre Cloud Shell-Instanz geladen werden. Für den Fall, dass Sie Cloud Shell noch nicht verwendet haben, finden Sie unter [Übersicht über Azure Cloud Shell (Vorschau)](../articles/cloud-shell/overview.md) Informationen zum Einrichten von Cloud Shell.
+Sie können Ihre Vorlage mithilfe von [Cloud Shell](../articles/cloud-shell/overview.md) bereitstellen. Zuerst müssen Sie die Vorlage aber in das Speicherkonto für Ihre Cloud Shell-Instanz laden. Für den Fall, dass Sie Cloud Shell noch nicht verwendet haben, finden Sie unter [Übersicht über Azure Cloud Shell (Vorschau)](../articles/cloud-shell/overview.md) Informationen zum Einrichten von Cloud Shell.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
@@ -12,33 +12,37 @@ Sie können Ihre Vorlage mithilfe von [Cloud Shell](../articles/cloud-shell/over
 
    ![Auswählen des Speicherkontos](./media/resource-manager-cloud-shell-deploy/select-storage.png)
 
-1. Wählen Sie **Dateien** aus.
+1. Wählen Sie **Blobs**aus.
 
-   ![Auswählen von Dateien](./media/resource-manager-cloud-shell-deploy/select-files.png)
+   ![Auswählen von Blobs](./media/resource-manager-cloud-shell-deploy/select-blobs.png)
 
-1. Wählen Sie die Dateifreigabe für Cloud Shell aus. Namensmuster: `cs-<user>-<domain>-com-<uniqueGuid>`.
+1. Wählen Sie **+ Container** aus.
 
-   ![Auswählen der Dateifreigabe](./media/resource-manager-cloud-shell-deploy/select-file-share.png)
+   ![Hinzufügen eines Containers](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. Wählen Sie **Verzeichnis hinzufügen** aus.
+1. Geben Sie einen Namen und eine Zugriffsebene für Ihren Container ein. Die Beispielvorlage in diesem Artikel enthält keine vertraulichen Informationen, Sie können also anonymen Lesezugriff zulassen. Klicken Sie auf **OK**.
 
-   ![Hinzufügen des Verzeichnisses](./media/resource-manager-cloud-shell-deploy/select-add-directory.png)
+   ![Angeben von Containerwerten](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
-1. Nennen Sie es **templates**, und wählen Sie **OK** aus.
+1. Wählen Sie den erstellten Container aus.
 
-   ![Benennen des Verzeichnisses](./media/resource-manager-cloud-shell-deploy/name-templates.png)
-
-1. Wählen Sie Ihr neues Verzeichnis aus.
-
-   ![Auswählen des Verzeichnisses](./media/resource-manager-cloud-shell-deploy/select-templates.png)
+   ![Auswählen des neuen Containers](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
 1. Wählen Sie die Option **Hochladen**.
 
-   ![Auswählen von „Hochladen“](./media/resource-manager-cloud-shell-deploy/select-upload.png)
+   ![Blob hochladen](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 
 1. Suchen Sie Ihre Vorlage, und laden Sie sie hoch.
 
-   ![Hochladen der Datei](./media/resource-manager-cloud-shell-deploy/upload-files.png)
+   ![Hochladen der Datei](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
+
+1. Wählen Sie die Vorlage aus, nachdem sie hochgeladen wurde.
+
+   ![Auswählen der neuen Vorlage](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
+
+1. Kopieren Sie die URL.
+
+   ![Kopieren der URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Öffnen Sie die Eingabeaufforderung.
 

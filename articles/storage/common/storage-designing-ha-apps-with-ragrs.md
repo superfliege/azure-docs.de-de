@@ -1,6 +1,6 @@
 ---
-title: "Entwerfen von hochverfügbaren Anwendungen mit georedundantem Azure Storage mit Lesezugriff (RA-GRS) | Microsoft Docs"
-description: "Verwenden Sie Azure-RA-GRS-Speicher, um eine hochverfügbare Anwendung so flexibel zu gestalten, dass sie Ausfälle verarbeiten kann."
+title: Entwerfen von hochverfügbaren Anwendungen mit georedundantem Azure Storage mit Lesezugriff (RA-GRS) | Microsoft Docs
+description: Verwenden Sie Azure-RA-GRS-Speicher, um eine hochverfügbare Anwendung so flexibel zu gestalten, dass sie Ausfälle verarbeiten kann.
 services: storage
 documentationcenter: .net
 author: tamram
@@ -12,28 +12,26 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/21/2018
 ms.author: tamram
-ms.openlocfilehash: fe7c6d1f2530b43ac7b10c5b6b0723452452a97a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: f7f3f2d99e5582a1bcb672cc176258dfff9c3217
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS
 
 Ein Feature von cloudbasierten Infrastrukturen wie Azure Storage ist, dass sie eine hochverfügbare Plattform zum Hosten von Anwendungen bereitstellen. Entwickler von cloudbasierten Anwendungen müssen genau überlegen, wie sie diese Plattform zum Bereitstellen hochverfügbarer Anwendungen für ihre Benutzer verwenden. Dieser Artikel konzentriert sich darauf, wie Entwickler georedundanten Speicher mit Lesezugriff (Read Access Geo-Redundant Storage, RA-GRS) verwenden können, um die hohe Verfügbarkeit ihrer Azure Storage-Anwendungen sicherzustellen.
 
-Azure Storage bietet vier Auswahlmöglichkeiten für die Redundanz der Daten in Ihrem Speicherkonto:
-
-- LRS (Locally Redundant Storage, lokal redundanter Speicher)
-- ZRS (Zone Redundant Storage, zonenredundanter Speicher) 
-- GRS (Geo-Redundant Storage, georedundanter Speicher)
-- RA-GRS (Read Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff). 
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
 Der Schwerpunkt dieses Artikels liegt auf GRS und RA-GRS. Bei GRS werden drei Kopien Ihrer Daten in der primären Region gespeichert, die Sie beim Einrichten des Speicherkontos ausgewählt haben. Drei weitere Kopien werden asynchron in einer sekundären Region verwaltet, die von Azure festgelegt wird. RA-GRS ist abgesehen davon, dass Sie über Lesezugriff auf die sekundäre Kopie verfügen, identisch mit GRS. Weitere Informationen zu den verschiedenen Azure Storage-Redundanzoptionen finden Sie unter [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/storage-redundancy). Im Artikel über Replikation sind auch Kombinationen der primären und sekundären Regionen aufgeführt.
 
 Der Artikel enthält Codeausschnitte sowie am Ende einen Link zu einem vollständigen Beispiel, das Sie herunterladen und ausführen können.
+
+> [!NOTE]
+> Azure Storage unterstützt ab sofort zonenredundante Speicher (ZRS) für die Erstellung von hochverfügbaren Anwendungen. ZRS bieten eine einfache Lösung für die Redundanzanforderungen zahlreicher Anwendungen. ZRS bieten Schutz vor Hardwareausfällen oder schwerwiegenden Notfällen, die sich auf ein einzelnes Rechenzentrum auswirken. Weitere Informationen finden Sie unter [Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen](storage-redundancy-zrs.md).
 
 ## <a name="key-features-of-ra-grs"></a>Wichtige Features von RA-GRS
 

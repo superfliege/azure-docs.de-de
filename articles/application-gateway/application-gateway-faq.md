@@ -1,24 +1,19 @@
 ---
-title: Häufig gestellte Fragen zu Azure Application Gateway | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zu Azure Application Gateway
 description: Diese Seite enthält Antworten auf häufig gestellte Fragen zu Azure Application Gateway.
-documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: d54ee7ec-4d6b-4db7-8a17-6513fda7e392
+author: vhorne
+manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
-ms.author: davidmu
-ms.openlocfilehash: 5b400b373577fc38fe108a74eb8bad936a82be0c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 3/29/2018
+ms.author: victorh
+ms.openlocfilehash: b4b627d16414ea7e4553a18e6620fba60e95ec91
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -38,7 +33,19 @@ Application Gateway ist ein Lastenausgleich auf Ebene 7, was bedeutet, dass es n
 
 **F: Welche Protokolle werden von Application Gateway unterstützt?**
 
-Application Gateway unterstützt HTTP, HTTPS und WebSocket.
+Application Gateway unterstützt HTTP, HTTPS, HTTP/2 und WebSocket.
+
+**F: Wie unterstützt Application Gateway HTTP/2?**
+
+Die Unterstützung des HTTP/2-Protokolls ist nur für Clients verfügbar, die mit Application Gateway-Listenern verbunden sind. Die Kommunikation mit Back-End-Serverpools erfolgt über HTTP/1.1. 
+
+Die HTTP/2-Unterstützung ist standardmäßig deaktiviert. Das folgende Beispiel eines Azure PowerShell-Codeausschnitts zeigt, wie Sie sie aktivieren:
+
+```
+$gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
+$gw.EnableHttp2 = $true
+Set-AzureRmApplicationGateway -ApplicationGateway $gw
+```
 
 **F: Welche Ressourcen werden derzeit als Teil des Back-End-Pools unterstützt?**
 
@@ -314,7 +321,7 @@ Für Application Gateway sind Überwachungsprotokolle verfügbar. Klicken Sie im
 
 **F: Kann ich mit Application Gateway Warnungen einrichten?**
 
-Ja, Application Gateway unterstützt Warnungen. Warnungen werden anhand von Metriken konfiguriert.  Application Gateway verfügt derzeit über die Metrik „Durchsatz“, mit der Warnungen konfiguriert werden können. Weitere Informationen zu Warnungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Ja, Application Gateway unterstützt Warnungen. Warnungen werden anhand von Metriken konfiguriert. Application Gateway verfügt derzeit über die Metrik „Durchsatz“, mit der Warnungen konfiguriert werden können. Weitere Informationen zu Warnungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
 **F: Die Back-End-Integrität gibt den Status „Unbekannt“ zurück. Was kann die Ursache sein?**
 

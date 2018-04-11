@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights-Unterstützung für mehrere Komponenten, Microservices und Container | Microsoft-Dokumentation"
-description: "Überwachen der Leistung und Nutzung von Apps, die aus mehreren Komponenten oder Rollen bestehen"
+title: Azure Application Insights-Unterstützung für mehrere Komponenten, Microservices und Container | Microsoft-Dokumentation
+description: Überwachen der Leistung und Nutzung von Apps, die aus mehreren Komponenten oder Rollen bestehen
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 046661bf7903b4e5ea528282ad5170901a45b35c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9b03aff140eec5b355383447f0a815220d6408e3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Überwachen von Anwendungen mit mehreren Komponenten mit Application Insights (Vorschau)
 
@@ -42,7 +42,7 @@ Um eine Anwendungszuordnung mit mehreren Komponenten zu erhalten, müssen Sie fo
 
 * **Installieren Sie die aktuelle Vorabversion** des Application Insights-Pakets in jeder Komponente der Anwendung. 
 * **Verwenden Sie eine einzelne Application Insights-Ressource** für alle Komponenten Ihrer Anwendung.
-* **Aktivieren Sie die Anwendungszuordnung mit mehreren Rollen** auf dem Blatt „Vorschauversionen“.
+* **Aktivieren Sie die Verbundanwendungsübersicht** auf dem Blatt „Vorschauversionen“.
 
 Konfigurieren Sie jede Komponente Ihrer Anwendung mit der entsprechenden Methode für den jeweiligen Typ. ([ASP.NET](app-insights-asp-net.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), [JavaScript](app-insights-javascript.md)).
 
@@ -73,9 +73,9 @@ Aktualisieren oder installieren Sie die Application Insights-Pakete im Projekt z
 ![Kopieren des Instrumentierungsschlüssels in die CONFIG-Datei](./media/app-insights-monitor-multi-role-apps/copy-instrumentation-key.png)
 
 
-### <a name="3-enable-multi-role-application-map"></a>3. Aktivieren der Anwendungszuordnung mit mehreren Rollen
+### <a name="3-enable-composite-application-map"></a>3. Aktivieren der Verbundanwendungsübersicht
 
-Öffnen Sie im Azure-Portal die Ressource für Ihre Anwendung. Aktivieren Sie auf dem Blatt „Vorschauversionen“ die *Anwendungszuordnung mit mehreren Rollen*.
+Öffnen Sie im Azure-Portal die Ressource für Ihre Anwendung. Klicken Sie unter der Unterüberschrift „KONFIGURIEREN“ auf „Vorschauversionen“, um das Blatt „Vorschauversionen“ zu öffnen. Aktivieren Sie auf dem Blatt „Vorschauversionen“ die Option *Verbundanwendungsübersicht*.
 
 ### <a name="4-enable-docker-metrics-optional"></a>4. Aktivieren von Docker-Metriken (optional) 
 

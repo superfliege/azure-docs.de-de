@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 03/28/2018
 ms.author: robb
-ms.openlocfilehash: 03026ee8bedd5277b2bb6cf28dabafabf207b0ae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8f7df424b27e6899821a9bdd2f1d8397a0de35a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Erstellen von klassischen Metrikwarnungen in Azure Monitor für Azure-Dienste – PowerShell
 > [!div class="op_single_selector"]
@@ -31,18 +31,18 @@ ms.lasthandoff: 03/23/2018
 ## <a name="overview"></a>Übersicht
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie ältere Metrikwarnungen erstellt werden. Azure Monitor unterstützt jetzt [neuere, bessere Metrikwarnungen](monitoring-near-real-time-metric-alerts.md). Diese Warnungen können mehrere Metriken überwachen und ermöglichen die Warnung bei dimensionalen Metriken. Powershell-Unterstützung für neuere Metrikwarnungen wird bald verfügbar sein.
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt jetzt [neuere, bessere Metrikwarnungen](monitoring-near-real-time-metric-alerts.md). Diese Warnungen können mehrere Metriken überwachen und ermöglichen die Warnung bei dimensionalen Metriken. Powershell-Unterstützung für neuere Metrikwarnungen wird bald verfügbar sein.
 >
 >
 
-In diesem Artikel erfahren Sie, wie Sie Azure-Metrikwarnungen mit PowerShell einrichten können.  
+In diesem Artikel erfahren Sie, wie Sie klassische Azure-Metrikwarnungen mit PowerShell einrichten können.  
 
 Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services oder von Ereignissen, die bei diesen auftreten, eine Warnung empfangen.
 
 * **Metrikwerte** : Die Warnung wird ausgelöst, wenn der Wert einer angegebenen Metrik einen von Ihnen festgelegten Schwellenwert in beliebiger Richtung überschreitet. Das Auslösen erfolgt sowohl, wenn die Bedingung erstmals erfüllt wird, als auch danach, wenn diese Bedingung nicht mehr erfüllt wird.    
 * **Aktivitätsprotokollereignisse**: Eine Warnung kann für *jedes* Ereignis oder nur dann ausgelöst werden, wenn ein bestimmtes Ereignis auftritt. [Klicken Sie hier](monitoring-activity-log-alerts.md), um weitere Informationen zu Aktivitätsprotokollwarnungen zu erhalten.
 
-Sie können konfigurieren, dass bei einer Metrikwarnung Folgendes erfolgt, wenn sie ausgelöst wird:
+Sie können konfigurieren, dass bei einer klassischen Metrikwarnung Folgendes erfolgt, wenn sie ausgelöst wird:
 
 * Senden von E-Mail-Benachrichtigungen an den Dienstadministrator und Co-Administratoren
 * Senden von E-Mal an weitere von Ihnen angegebene Adressen
@@ -135,8 +135,8 @@ Um weitere Informationen zu erhalten, geben Sie ```Get-Help``` und dann den Powe
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über die Azure-Überwachung](monitoring-overview.md) , einschließlich der Typen von Informationen, die Sie sammeln und überwachen können.
-* Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](insights-webhooks-alerts.md).
-* Erfahren Sie mehr über das [Konfigurieren von Warnungen zu Aktivitätsprotokollereignissen](monitoring-activity-log-alerts.md).
+* Weitere Informationen zum [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](insights-webhooks-alerts.md).
+* Weitere Informationen zum [Erstellen von Aktivitätsprotokollwarnungen (klassisch)](monitoring-activity-log-alerts.md).
 * Erfahren Sie mehr zu [Azure Automation-Runbooks](../automation/automation-starting-a-runbook.md).
 * Verschaffen Sie sich einen [Überblick über das Sammeln von Diagnoseprotokollen](monitoring-overview-of-diagnostic-logs.md) , um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
 * Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.

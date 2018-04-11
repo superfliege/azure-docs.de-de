@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: e2b6651f0d341567f1d02d0ca16b8f445e3d26f4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4259715fbb062bfb170509c928b5a1ad898ea394
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -228,11 +228,7 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
 
 Einige Anwendungen wie Office 2010 oder frühere Versionen und Apple Mail unterstützen die zweistufige Überprüfung nicht. Diese Anwendungen sind nicht für die Annahme einer zweiten Überprüfung konfiguriert. Um diese Anwendungen zu verwenden, können Sie das Feature für _App-Kennwörter_ nutzen. Sie können anstelle des herkömmlichen Kennworts ein App-Kennwort verwenden, sodass eine Anwendung die zweistufige Überprüfung umgehen und weiter ausgeführt werden kann.
 
->[!NOTE]
->Moderne Authentifizierung für Microsoft Office 2013-Clients und neuere Clients
-> 
->Office 2013-Clients (einschließlich Outlook) und neuere Clients unterstützen moderne Authentifizierungsprotokolle und können für die zweistufige Überprüfung aktiviert werden. Nach der Aktivierung sind für diese Clients keine App-Kennwörter erforderlich. Weitere Informationen finden Sie unter [Office 2013 modern authentication public preview announced](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)(Öffentliche Preview für moderne Authentifizierung in Office 2013).
->
+Die moderne Authentifizierung für Microsoft Office 2013-Clients und neuere Clients wird unterstützt. Office 2013-Clients (einschließlich Outlook) unterstützen moderne Authentifizierungsprotokolle und können für die zweistufige Überprüfung aktiviert werden. Nach der Aktivierung sind für diese Clients keine App-Kennwörter erforderlich.
 
 ### <a name="considerations-about-app-passwords"></a>Informationen zu App-Kennwörtern
 

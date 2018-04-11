@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 3caa3d2b8640c83f1001aeac3b0a5e9ada143183
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2c05407d761a8848f9e032aa219960cd7ea6fa93
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-protect-an-api-using-oauth-20-with-azure-active-directory-and-api-management"></a>So schützen Sie eine API über OAuth 2.0 mit Azure Active Directory und API Management
 
@@ -181,9 +181,9 @@ Klicken Sie auf **Senden**. Danach sollten Sie die API erfolgreich aufrufen kön
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>Konfigurieren einer JWT-Überprüfungsrichtlinie zur Vorautorisierung von Anforderungen
 
-Wenn ein Benutzer an diesem Punkt versucht, aus der Entwicklerkonsole einen Aufruf auszuführen, wird er aufgefordert, sich anzumelden, und die Entwicklerkonsole erhält im Namen des Benutzers ein Zugriffstoken. Alles funktioniert erwartungsgemäß. Was aber passiert, wenn jemand die API ohne Token oder mit einem ungültigen Token aufruft? Sie können beispielsweise den `Authorization`-Header löschen und werden feststellen, dass Sie die API weiterhin aufrufen können. Dies liegt daran, dass APIM das Zugriffstoken an diesem Punkt nicht überprüft. APIM übergibt den `Auhtorization`-Header an die Back-End-API.
+Wenn ein Benutzer an diesem Punkt versucht, aus der Entwicklerkonsole einen Aufruf auszuführen, wird er aufgefordert, sich anzumelden, und die Entwicklerkonsole erhält im Namen des Benutzers ein Zugriffstoken. Alles funktioniert erwartungsgemäß. Was aber passiert, wenn jemand die API ohne Token oder mit einem ungültigen Token aufruft? Sie können beispielsweise den `Authorization`-Header löschen und werden feststellen, dass Sie die API weiterhin aufrufen können. Dies liegt daran, dass APIM das Zugriffstoken an diesem Punkt nicht überprüft. APIM übergibt den `Auhtorization`-Header einfach an die Back-End-API.
 
-Sie können die Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) verwenden, um Anforderungen in APIM vorab zu autorisieren, indem die Zugriffstoken für jede eingehende Anforderung überprüft werden. Wenn eine Anforderung kein gültiges Token hat, wird sie von API Management blockiert, und sie wird nicht an das Back-End übergeben. Sie können die folgende Richtlinie zu `Echo API` hinzufügen. 
+Sie können die Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) verwenden, um Anforderungen in APIM vorab zu autorisieren, indem die Zugriffstoken für jede eingehende Anforderung überprüft werden. Wenn eine Anforderung kein gültiges Token hat, wird sie von API Management blockiert, und sie wird nicht an das Back-End übergeben. Wir können z.B. die folgende Richtlinie zum Richtlinienabschnitt `<inbound>` von `Echo API` hinzufügen. Sie überprüft den „Audience“-Anspruch in einem Zugriffstoken und gibt eine Fehlermeldung zurück, wenn das Token nicht gültig ist. Informationen zum Konfigurieren von Richtlinien finden Sie unter [How to set or edit Azure API Management policies](set-edit-policies.md) (Festlegen oder Bearbeiten von Azure API Management-Richtlinien).
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -196,7 +196,12 @@ Sie können die Richtlinie [JWT überprüfen](api-management-access-restriction-
 </validate-jwt>
 ```
 
+## <a name="build-an-application-to-call-the-api"></a>Erstellen einer Anwendung zum Aufrufen der API
+
+In diesem Handbuch wird die Entwicklerkonsole in APIM als Beispielclientanwendung verwendet, um die durch OAuth 2.0 geschützte `Echo API` aufzurufen. Weitere Informationen zum Erstellen einer Anwendung und zum Implementieren des OAuth 2.0-Datenflusses finden Sie unter [Azure Active Directory-Codebeispiele](../active-directory/develop/active-directory-code-samples.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
+* Weitere Informationen zu [Azure Active Directory und OAuth 2.0](../active-directory/develop/active-directory-authentication-scenarios.md)
 * Hier finden Sie weitere [Videos](https://azure.microsoft.com/documentation/videos/index/?services=api-management) zu API Management.
 * Weitere Methoden zum Sichern Ihres Back-End-Diensts finden Sie unter [Gegenseitige Zertifikatauthentifizierung](api-management-howto-mutual-certificates.md).
 

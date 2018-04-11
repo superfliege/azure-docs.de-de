@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 3a5d1e897d8ffe063ecf9277bef346c8b7c5092b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f4410932f00f8505ae5a894caa002e1223196d95
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-load-balancer-overview"></a>Übersicht über Azure Load Balancer
 
@@ -142,7 +142,7 @@ Die folgende Abbildung zeigt einen Endpunkt für Webdatenverkehr mit Lastenausgl
 
 ![Beispiel für öffentlichen Lastenausgleich](./media/load-balancer-overview/IC727496.png)
 
-**Abbildung 1: Vornehmen eines Lastenausgleichs für Webdatenverkehr mit einem öffentlichen Load Balancer**
+*Abbildung 1: Vornehmen eines Lastenausgleichs für Webdatenverkehr mit einem öffentlichen Load Balancer*
 
 Wenn Internetclients Webseitenanfragen über den TCP-Port 80 an die öffentliche IP-Adresse einer Web-App senden, verteilt der Azure Load Balancer diese Anfragen auf die drei virtuellen Computer in der Lastenausgleichsgruppe. Weitere Informationen zu Lastenausgleichsalgorithmen finden Sie auf der [Übersichtsseite zum Lastenausgleich](load-balancer-overview.md#load-balancer-features).
 
@@ -161,7 +161,7 @@ Ein interner Load Balancer ermöglicht die folgenden Arten von Lastenausgleich:
 
 ![Beispiel für internen Load Balancer](./media/load-balancer-overview/IC744147.png)
 
-**Abbildung 2: Durchführen eines Lastenausgleichs für mehrschichtige Anwendungen mit öffentlichem und internem Load Balancer**
+*Abbildung: Durchführen eines Lastenausgleichs für mehrschichtige Anwendungen mit öffentlichem und internem Load Balancer*
 
 ## <a name="pricing"></a>Preise
 Standard Load Balancer ist ein Produkt, das auf Basis einer Reihe von konfigurierten Lastenausgleichsregeln und aller verarbeiteten eingehenden und ausgehenden Daten in Rechnung gestellt wird. Informationen zu den Standard Load Balancer-Preisen finden Sie auf der Seite [Load Balancer – Preise](https://azure.microsoft.com/pricing/details/load-balancer/).

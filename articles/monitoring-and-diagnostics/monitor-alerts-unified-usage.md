@@ -1,5 +1,5 @@
 ---
-title: Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor – Warnungen (Vorschauversion) | Microsoft-Dokumentation
+title: Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor | Microsoft-Dokumentation
 description: Verwenden Sie die neue einheitliche Oberfläche für Azure-Warnungen, um über eine zentrale Oberfläche Metrik- und Protokollwarnungsregeln zu erstellen, anzuzeigen und zu verwalten.
 author: msvijayn
 manager: kmadnani1
@@ -14,31 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: b6b6bfee5b9e9036a6d7ff17ff1a8d4de542bbd3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: fdb3ebe3820191a642c4503851b04dd5fc5e6048
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor – Warnungen (Vorschauversion)
+# <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor  
 
 ## <a name="overview"></a>Übersicht
-In diesem Artikel wird erläutert, wie Sie im Azure-Portal mithilfe der neuen Oberfläche „Warnungen (Vorschauversion)“ Warnungen einrichten. Die Definition einer Warnungsregel setzt sich aus drei Teilen zusammen:
+In diesem Artikel wird erläutert, wie Sie im Azure-Portal mithilfe der neuen Oberfläche „Warnungen“ Warnungen einrichten. Die Definition einer Warnungsregel setzt sich aus drei Teilen zusammen:
 - Ziel: Eine bestimmte zu überwachende Azure-Ressource
 - Kriterien: Eine bestimmte Bedingung oder Logik, die beim Vorkommen in einem Signal eine Aktion auslösen soll
 - Aktion: Eine bestimmte Form der Kontaktaufnahme, die an einen Empfänger einer Benachrichtigung (z.B. E-Mail, SMS oder Webhook) gesendet wird.
 
-Bei der Oberfläche „Warnungen (Vorschauversion)“ wird die Bezeichnung **Protokollwarnungen** verwendet, um basierend auf [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) oder [Azure Application Insights](../application-insights/app-insights-analytics.md) Warnungen zu beschreiben, bei denen das Signal eine benutzerdefinierte Abfrage darstellt. Die Metrikwarnungsfunktion, die in der bereits bestehenden Warnungsoberfläche als [Metrikwarnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md) bezeichnet wird, lautet bei der Oberfläche „Warnungen (Vorschauversion)“ **Metrikwarnungen**. Einige Ressourcentypen bei *Metrikwarnungen* stellen für bestimmte Azure-Ressourcen [mehrdimensionale Metriken](monitoring-metric-charts.md) bereit, weshalb Warnungen für derartige Ressourcen durch zusätzliche Filter für Dimensionen spezifischer gestaltet werden können. Diese Warnungen werden als **mehrdimensionale Metrikwarnungen** bezeichnet.
-Die Oberfläche „Warnungen (Vorschauversion)“ von Azure bietet außerdem eine einheitliche Ansicht für all Ihre Warnungsregeln und die Möglichkeit, diese über eine einzige Oberfläche zentral zu verwalten. Auch nicht aufgelöste Warnungen werden angezeigt. Weitere Informationen zur Funktionalität finden Sie unter [Azure-Warnungen (Vorschauversion) – Übersicht](monitoring-overview-unified-alerts.md).
+Die Oberfläche „Warnungen“ von Azure bietet außerdem eine einheitliche Ansicht für all Ihre Warnungsregeln und die Möglichkeit, diese über eine einzige Oberfläche zentral zu verwalten. Auch nicht aufgelöste Warnungen werden angezeigt. Weitere Informationen zur Funktionalität finden Sie unter [Azure-Warnungen – Übersicht](monitoring-overview-unified-alerts.md).
+
+Bei der Oberfläche „Warnungen“ wird die Benennung **Protokollwarnungen** verwendet, um basierend auf [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) oder [Application Insights](../application-insights/app-insights-analytics.md) Warnungen zu beschreiben, bei denen das Signal eine benutzerdefinierte Abfrage darstellt. Die [neue Metrikwarnungsfunktion](monitoring-near-real-time-metric-alerts.md) stellt Warnungen zu [mehrdimensionalen Metriken](monitoring-metric-charts.md) für bestimmte Azure-Ressourcen bereit. Die Warnungen für eine solche Ressource können zusätzlicher Filter für Dimensionen verwenden, bei denen **Warnungen zu mehrdimensionalen Metriken** erstellt werden.
+
 
 > [!NOTE]
-> Die Azure-Oberfläche „Warnungen (Vorschauversion)“ bietet zwar eine neue und verbesserte Oberfläche für die Erstellung von Warnungen in Azure, aber die vorhandene Oberfläche [Azure-Warnungen](monitoring-overview-alerts.md) steht nach wie vor für die Verwendung zur Verfügung.
+> Die Azure-Oberfläche „Warnungen“ bietet zwar eine neue und verbesserte Oberfläche für die Erstellung von Warnungen in Azure, aber die vorhandene Oberfläche [Warnungen (klassisch)](monitoring-overview-alerts.md) steht nach wie vor für die Verwendung zur Verfügung.
 >
 
-Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „Warnungen (Vorschauversion)“ erläutert.
+Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „Warnungen“ erläutert.
 
 ## <a name="create-an-alert-rule-with-the-azure-portal"></a>Erstellen einer Warnungsregel mit dem Azure-Portal
-1. Wählen Sie im [Portal](https://portal.azure.com/) die Option **Monitor** und im Abschnitt „MONITOR“ dann **Warnungen (Vorschauversion)** aus.  
+1. Wählen Sie im [Portal](https://portal.azure.com/) die Option **Monitor** und im Abschnitt „MONITOR“ dann **Warnungen** aus.  
     ![Überwachung](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
 
 2. Wählen Sie die Schaltfläche **Neue Warnungsregel** aus, um eine neue Warnung in Azure zu erstellen.
@@ -48,7 +50,7 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
     ![Erstellen einer Regel](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
 
-4.  Definieren Sie die Warnungsbedingung, indem Sie auf den Link **Ressource auswählen** klicken und dann durch Auswahl einer Ressource das Ziel angeben. Filtern Sie entsprechend, indem Sie die erforderlichen Optionen *Abonnement*, *Ressourcentyp* und schließlich *Ressource* auswählen.
+4.  Definieren Sie die Warnungsbedingung, indem Sie auf den Link **Ressource auswählen** klicken und dann durch Auswahl einer Ressource das Ziel angeben. Filtern Sie, indem Sie die Optionen *Abonnement*, *Ressourcentyp* und schließlich die erforderliche Option *Ressource* auswählen.
 
     >[!NOTE]
 
@@ -56,14 +58,14 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
     ![Auswählen einer Ressource](./media/monitor-alerts-unified/Alert-SelectResource.png)
 
- Da die Azure-Oberfläche „Warnungen“ (Vorschauversion) die Erstellung von verschiedenen Arten von Warnungen über eine zentrale Oberfläche ermöglicht, wählen Sie basierend auf dem gewünschten Warnungstyp den nächsten Schritt aus:
+ Über die Benutzeroberfläche können Sie verschiedene Typen von Warnungen an einem zentralen Ort erstellen. Wählen Sie je nach Typ der gewünschten Warnung den folgenden Schritt aus:
 
     - Führen Sie bei **Metrikwarnungen** die Schritte 5 bis 7 durch, und fahren Sie dann direkt mit Schritt 11 fort.
     - Fahren Sie bei **Protokollwarnungen** mit Schritt 8 fort.
 
     > [!NOTE]
 
-    > Der Dienst für einheitliche Warnungen (Vorschauversion) unterstützt ebenfalls Aktivitätsprotokollwarnungen. [Weitere Informationen](monitoring-activity-log-alerts-new-experience.md)
+    > Warnungen für Aktivitätsprotokolle werden ebenfalls unterstützt, jedoch nur in der Vorschauversion. [Weitere Informationen](monitoring-activity-log-alerts-new-experience.md)
 
 5. *Metrikwarnungen*: Stellen Sie sicher, dass **Ressourcentyp** mit dem Signaltyp **Metrik** ausgewählt ist. Klicken Sie nach dem Auswählen der entsprechenden **Ressource** auf die Schaltfläche *Fertig*, um zu „Warnung erstellen“ zurückzukehren. Verwenden Sie als Nächstes die Schaltfläche **Kriterien hinzufügen**, um für die zuvor ausgewählte Ressource das jeweilige Signal aus der Liste von Signaloptionen, den entsprechenden Überwachungsdienst und den aufgeführten Typ auszuwählen.
 
@@ -77,7 +79,13 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
     ![Konfigurieren der Signallogik für Metriken](./media/monitor-alerts-unified/AlertsPreviewCriteria.png)
 
-7. *Metrikwarnungen*: Wenn es sich beim Signal um eine Metrik handelt, kann das Warnungsfenster nach verschiedenen Datenpunkten oder Dimensionen für die genannte Azure-Ressource gefiltert werden. Ähnlich wie bei Metrikwarnungen kann die Visualisierung des Signalverlaufs durch Auswahl der Dauer aus der Dropdownliste **Verlauf anzeigen** ausgewählt werden. Darüber hinaus können für die ausgewählte Metrik Dimensionen zum Filtern nach erforderlichen Zeitreihen ausgewählt werden. Die Auswahl von Dimensionen (bis zu fünf Optionen) ist optional. Die **Warnungslogik** kann aus den angezeigten Optionen „Bedingung“, „Aggregation“ und schließlich „Schwellenwert“ ausgewählt werden. Die Bedingung wird als Vorschauversion der angegebenen Logik zusammen mit dem Signalverlauf in der Visualisierung angezeigt, wodurch dargestellt wird, wann die Warnung in der Vergangenheit ausgelöst wurde. Geben Sie schließlich an, für welchen Zeitraum eine Warnung auf die angegebene Bedingung prüfen soll. Legen Sie hierfür den **Zeitraum** und die **Häufigkeit** fest, wie oft eine Warnung ausgeführt werden soll.
+7. *Metrikwarnungen*: Wenn es sich beim Signal um eine Metrik handelt, kann das Warnungsfenster nach verschiedenen Datenpunkten oder Dimensionen für die genannte Azure-Ressource gefiltert werden. 
+
+    a. Wählen Sie eine Dauer aus der Dropdownliste **Verlauf anzeigen** aus, um einen anderen Zeitraum zu visualisieren. Sie können für die unterstützten Metriken Dimensionen zum Filtern nach Zeitreihen auswählen. Die Auswahl von Dimensionen (bis zu fünf Optionen) ist optional. 
+
+    b. Die **Warnungslogik** kann aus den angezeigten Optionen *Bedingung*, *Aggregation* und *Schwellenwert* ausgewählt werden. Die Bedingung wird als Vorschauversion der angegebenen Logik zusammen mit dem Signalverlauf in der Visualisierung angezeigt, wodurch dargestellt wird, wann die Warnung in der Vergangenheit ausgelöst wurde. 
+
+    c. Wählen Sie für die Angabe der Zeitdauer **Zeitraum** sowie die **Häufigkeit** aus, mit der eine Warnung ausgeführt werden soll.
 
     ![Konfigurieren der Signallogik für mehrdimensionale Metriken](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
@@ -87,7 +95,7 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
    > [!NOTE]
 
-   > Über die Listen von „Warnungen (Vorschauversion)“ kann eine Analytics-Abfrage als Signaltyp **Log (Saved Query)** (Protokoll (gespeicherte Abfrage)) importiert werden. Dies ist in der obigen Abbildung dargestellt. Benutzer können Ihre Abfrage so in Analytics verfeinern und zur zukünftigen Nutzung in Warnungen speichern. Weitere Informationen zum Speichern von Abfragen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md) oder [Was ist Log Analytics?](../log-analytics/log-analytics-overview.md). 
+   > Über die Listen von „Warnungen“ kann eine Analyseabfrage als Signaltyp **Protokoll (gespeicherte Abfrage)** importiert werden. Dies ist in der obigen Abbildung dargestellt. Benutzer können Ihre Abfrage so in Analytics verfeinern und zur zukünftigen Nutzung in Warnungen speichern. Weitere Informationen zum Speichern von Abfragen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md) oder [Was ist Log Analytics?](../log-analytics/log-analytics-overview.md). 
 
 9.  *Protokollwarnungen*: Wenn Sie diese Option ausgewählt haben, können im Feld **Suchabfrage** Abfragen für Warnungen angegeben werden. Ist die Abfragesyntax falsch, wird eine Fehlermeldung in ROT angezeigt. Wenn die Abfragesyntax korrekt ist, werden für die angegebene Abfrage Referenzverlaufsdaten als Diagramm angezeigt. Dabei besteht die Möglichkeit, das Zeitfenster von den letzten sechs Stunden bis zur letzten Woche anzupassen.
 
@@ -107,7 +115,7 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
    - *Metrische Maßeinheit*: Eine Warnung wird erstellt, wenn die einzelnen *aggregierten Werte* in den Ergebnissen den angegebenen Schwellenwert überschreiten und *nach dem ausgewählten Wert gruppiert* werden. Die Anzahl von Sicherheitsverletzungen für eine Warnung ist die Anzahl der Häufigkeit, mit der im ausgewählten Zeitraum der Schwellenwert überschritten wird. Sie können „Sicherheitsverletzungen gesamt“ für eine beliebige Kombination aus Verletzungen in den Ergebnissen angeben oder „Aufeinanderfolgende Sicherheitsverletzungen“, um vorauszusetzen, dass die Sicherheitsverletzungen in aufeinanderfolgenden Stichproben auftreten müssen. Erfahren Sie mehr über [Protokollwarnungen und die zugehörigen Typen](monitor-alerts-unified-log.md).
 
     > [!TIP]
-    > Derzeit können Protokollsuchwarnungen auf der Oberfläche „Warnungen (Vorschauversion)“ für *Zeitraum* und *Häufigkeit* einen benutzerdefinierten Wert in Minute(n) enthalten. Die Werte können sich von 5 Minuten auf 1440 Minuten, d.h. 24 Stunden, erstrecken. Wenn der Warnungszeitraum z.B. drei Stunden betragen soll, konvertieren Sie diesen vor der Verwendung in Minuten (d.h. 180 Minuten).
+    > Derzeit können Protokollsuchwarnungen auf der Oberfläche „Warnungen“ für *Zeitraum* und *Häufigkeit* einen benutzerdefinierten Wert in Minute(n) enthalten. Die Werte können sich von 5 Minuten auf 1440 Minuten, d.h. 24 Stunden, erstrecken. Wenn der Warnungszeitraum z.B. drei Stunden betragen soll, konvertieren Sie diesen vor der Verwendung in Minuten (d.h. 180 Minuten).
 
 11. Legen Sie im zweiten Schritt einen Namen für ihre Warnung im Feld **Name der Warnungsregel** fest, und geben Sie eine **Beschreibung** mit Einzelheiten zur Warnung sowie den **Schweregrad** über die angegebenen Optionen an. Diese Details werden in allen Warnungs-E-Mails bzw. Benachrichtigungen wiederverwendet oder mithilfe von Push von Azure Monitor übertragen. Darüber hinaus kann der Benutzer durch Umschalten der Option **Regel beim Erstellen aktivieren** festlegen, dass die Warnungsregel bei der Erstellung sofort aktiviert werden soll.
 
@@ -126,7 +134,7 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
         ![Aktionsüberschreibungen für Protokollwarnungen](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 
-13. Wenn alle Felder gültig sind und mit einem grünen Häkchen versehen sind, kann auf die Schaltfläche **Warnungsregel erstellen** geklickt werden, wodurch eine Warnung in Azure Monitor unter „Warnungen (Vorschauversion)“ erstellt wird. Alle Warnungen können über das Dashboard „Warnungen (Vorschauversion)“ angezeigt werden.
+13. Wenn alle Felder gültig sind und mit einem grünen Häkchen versehen sind, kann auf die Schaltfläche **Warnungsregel erstellen** geklickt werden, wodurch eine Warnung in Azure Monitor unter „Warnungen“ erstellt wird. Alle Warnungen können über das Dashboard „Warnungen“ angezeigt werden.
 
     ![Regelerstellung](./media/monitor-alerts-unified/AlertsPreviewCreate.png)
 
@@ -134,9 +142,9 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
 ## <a name="view-your-alerts-in-azure-portal"></a>Anzeigen von Warnungen im Azure-Portal
 
-1. Wählen Sie im [Portal](https://portal.azure.com/) die Option **Monitor** und im Abschnitt „MONITOR“ dann **Warnungen (Vorschauversion)** aus.  
+1. Wählen Sie im [Portal](https://portal.azure.com/) die Option **Monitor** und im Abschnitt „MONITOR“ dann **Warnungen** aus.  
 
-2. Das **Dashboard „Warnungen (Vorschauversion)“** wird angezeigt, auf dem alle Azure-Warnungen vereinheitlicht und auf einem zentralen ![Warnungsdashboard](./media/monitoring-overview-unified/alerts-preview-overview.png) angezeigt werden.
+2. Das **Dashboard „Warnungen“** wird angezeigt. Darauf werden alle Azure-Warnungen vereinheitlicht und auf einem zentralen ![Warnungsdashboard](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png) angezeigt.
 3. Das Dashboard zeigt auf einem Blick folgende Elemente (von oben links nach rechts), auf die durch Klicken eine ausführliche Auflistung angezeigt wird:
     - *Ausgelöste Warnungen*: Die gegenwärtige Anzahl von Warnungen, die die Logik erfüllt haben und den Zustand „Ausgelöst“ aufweisen
     - *Warnungsregeln gesamt*: Die Anzahl der erstellten Warnungsregeln und auf niedrigster Textebene die Anzahl der derzeit aktivierten Regeln
@@ -144,10 +152,10 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 5. Zur Unterstützung bei der Suche nach bestimmten Warnungen können zusätzlich die Dropdownoptionen verwendet werden, um nach bestimmten Kriterien (*Abonnement, Ressourcengruppe und/oder Ressource*) zu filtern. Für nicht aufgelöste Warnungen ist zudem die Option *Warnungen filtern* verfügbar, um entsprechend des angegebenen Schlüsselworts über *Name, Warnungskriterien, Ressourcengruppe und Zielressource* nach bestimmten übereinstimmenden Warnungen zu suchen.
 
 ## <a name="managing-your-alerts-in-azure-portal"></a>Verwalten von Warnungen im Azure-Portal
-1. Wählen Sie im [Portal](https://portal.azure.com/) die Option **Monitor** und im Abschnitt „MONITOR“ dann **Warnungen (Vorschauversion)** aus.  
+1. Wählen Sie im [Portal](https://portal.azure.com/) die Option **Monitor** und im Abschnitt „MONITOR“ dann **Warnungen** aus.  
 2. Wählen Sie in der oberen Leiste die Schaltfläche **Regeln verwalten** aus, um zum Abschnitt „Regelverwaltung“ zu navigieren, wobei alle erstellten Warnungsregeln sowie deaktivierte Warnungen aufgeführt sind.
 3. Bei bestimmten Warnungsregeln können die Dropdownfilter im oberen Bereich verwendet werden, die die Eingrenzung von Warnungsregeln nach bestimmten Kriterien (*Abonnement, Ressourcengruppen und/oder Ressource*) ermöglichen. Neben der Verwendung des als *Warnungen filtern* gekennzeichneten Suchbereichs oberhalb der Liste der Warnungsregeln kann ein Schlüsselwort angegeben werden, das entsprechend *Warnungsname, Bedingung und Zielressource* ausschließlich Abgleichsregeln anzeigt.
-   ![Verwaltung von Warnungsregeln](./media/monitoring-overview-unified/alerts-preview-rules.png)
+   ![Verwaltung von Warnungsregeln](./media/monitoring-alerts-unified-usage/alerts-preview-rules.png)
 4. Klicken Sie zum Anzeigen oder Ändern bestimmter Warnungsregeln auf den jeweiligen Namen, der als anklickbarer Link angezeigt wird.
 5. Die definierte Warnung wird mit einer dreiteiligen Struktur angezeigt: 1) Warnungsbedingung, 2) Warnungsdetails, 3) Aktionsgruppe. Durch Klicken auf **Zielkriterien** können Sie die Warnungslogik ändern oder ein neues Kriterium hinzufügen, nachdem Sie die vorherige Logik über das Papierkorbsymbol gelöscht haben. Auf ähnliche Weise können im Abschnitt „Warnungsdetails“ **Beschreibung** und **Schweregrad** geändert werden. Die Aktionsgruppe kann dahingehend geändert werden, dass sie mit der Warnung verknüpft wird, oder mit der Schaltfläche **Neue Aktionsgruppe** kann eine neue Aktionsgruppe erstellt werden.
 
@@ -157,7 +165,7 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die neuen [Metrikwarnungen, die nahezu in Echtzeit stattfinden (Vorschau)](monitoring-near-real-time-metric-alerts.md).
+- Erfahren Sie mehr über die neuen [Metrikwarnungen, die nahezu in Echtzeit stattfinden](monitoring-near-real-time-metric-alerts.md).
 - Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
-- Erfahren Sie mehr über [Protokollwarnungen auf der Azure-Oberfläche „Warnungen (Vorschauversion)“](monitor-alerts-unified-log.md).
+- Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](monitor-alerts-unified-log.md).
 - [Erfahren Sie mehr über Aktivitätsprotokollwarnungen auf der Oberfläche „Warnungen (Vorschau)“.](monitoring-activity-log-alerts-new-experience.md)

@@ -1,11 +1,11 @@
 ---
-title: "Verwalten von Flowprotokollen für Netzwerksicherheitsgruppen mit Azure Network Watcher | Microsoft-Dokumentation"
-description: "Auf dieser Seite wird erläutert, wie Flowprotokolle für Netzwerksicherheitsgruppen in Azure Network Watcher verwaltet werden."
+title: Verwalten von Flowprotokollen für Netzwerksicherheitsgruppen mit Azure Network Watcher | Microsoft-Dokumentation
+description: Auf dieser Seite wird erläutert, wie Flowprotokolle für Netzwerksicherheitsgruppen in Azure Network Watcher verwaltet werden.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 633543aba99f5c09b14a9e4b11adf59ca04d0fe5
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cb41781c5ac8fb759cecea01402c08dd716bf7d7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-network-security-group-flow-logs-in-the-azure-portal"></a>Verwalten von Flowprotokollen für Netzwerksicherheitsgruppen über das Azure-Portal
 
@@ -38,7 +38,10 @@ Flowprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature,
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist.
+Um die Schritte in diesem Artikel ausführen zu können, benötigen Sie folgende Ressourcen:
+
+- Einen Network Watcher. Wie Sie einen Network Watcher erstellen, erfahren Sie unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md).
+- Eine Ressourcengruppe mit einer gültigen VM. Falls Sie noch nicht über einen virtuellen Computer verfügen, informieren Sie sich über das Erstellen eines virtuellen [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)- oder [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)-Computers.
 
 ## <a name="register-insights-provider"></a>Registrieren von Insights-Anbietern
 
@@ -68,7 +71,7 @@ Wählen Sie in der Liste eine Netzwerksicherheitsgruppe aus.
 
 ### <a name="step-3"></a>Schritt 3 
 
-Legen Sie auf dem Blatt **Flowprotokolleinstellungen** den Status auf **Ein** fest, und konfigurieren Sie ein Speicherkonto.  Wenn Sie fertig sind, wählen Sie **OK**. Wählen Sie dann **Speichern**.
+Legen Sie auf dem Blatt **Flowprotokolleinstellungen** den Status auf **Ein** fest, und konfigurieren Sie ein Speicherkonto. Wählen Sie ein vorhandenes Speicherkonto aus, für das **Alle Netzwerke** (Standard) unter **Firewalls und virtuelle Netzwerken** in **EINSTELLUNGEN** für das Speicherkonto ausgewählt ist. Nachdem Sie ein Speicherkonto ausgewählt haben, wählen Sie **OK**, und wählen Sie dann **Speichern**.
 
 ![Übersicht zu Flowprotokollen][3]
 

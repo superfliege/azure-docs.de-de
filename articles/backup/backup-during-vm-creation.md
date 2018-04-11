@@ -2,28 +2,28 @@
 title: Aktivieren der Sicherung virtueller Azure-Computer beim Erstellen | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie im Rahmen des Erstellungsprozesses die Sicherung virtueller Azure-Computer aktivieren.
 services: backup, virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup, virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: 4041fc555fe4b61d10f84236dcae5156c6282fd3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: e16714eee697d9dc8102b5f29d9639d650517562
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="enable-backup-during-azure-virtual-machine-creation"></a>Aktivieren der Sicherung während der Erstellung virtueller Azure-Computer 
 
 Der Azure Backup-Dienst stellt eine Schnittstelle zum Erstellen und Konfigurieren von Sicherungen in der Cloud bereit. Schützen Sie Ihre Daten, indem Sie in regelmäßigen Abständen Sicherungen (so genannte Wiederherstellungspunkte) erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in georedundanten Recovery-Tresoren gespeichert werden können. In diesem Artikel erfahren Sie, wie Sie die Sicherung während der Erstellung eines virtuellen Computers (Virtual Machine, VM) über das Azure-Portal aktivieren.  
 
-## <a name="log-in-to-azure"></a>Anmelden bei Azure 
+## <a name="log-in-to-azure"></a>Anmelden an Azure 
 
 Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Portal](http://portal.azure.com) an.
  
@@ -57,6 +57,10 @@ Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Por
 ## <a name="initiate-a-backup-after-creating-the-vm"></a>Initiieren einer Sicherung nach dem Erstellen des virtuellen Computers 
 
 Auch wenn die Sicherungsrichtlinie erstellt wurde, empfiehlt es sich, eine erste Sicherung zu erstellen. Klicken Sie nach Abschluss der VM-Erstellungsvorlage unter der Einstellung **Vorgänge** im linken Menü auf **Sicherung**, um die Sicherungsdetails für den virtuellen Computer anzuzeigen. Hier können Sie eine bedarfsgesteuerte Sicherung auslösen, einen vollständigen virtuellen Computer oder alle Datenträger wiederherstellen, Dateien aus einer VM-Sicherung wiederherstellen oder die dem virtuellen Computer zugeordnete Sicherungsrichtlinie ändern.  
+
+## <a name="using-a-resource-manager-template-to-deploy-a-protected-vm"></a>Bereitstellen einer geschützten VM mithilfe einer Resource Manager-Vorlage
+
+Die vorherigen Schritte erklären, wie Sie über das Azure-Portal einen virtuellen Computer erstellen und ihn in einem Recovery Services-Tresor schützen. Wenn Sie einen oder mehrere virtuelle Computer schnell bereitstellen und in einem Recovery Services-Tresor schützen möchten, finden Sie Informationen in der Vorlage zum [Bereitstellen einer Windows-VM und Aktivieren der Sicherung](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen 
 

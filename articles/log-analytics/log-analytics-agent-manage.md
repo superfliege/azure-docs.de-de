@@ -1,24 +1,24 @@
 ---
 title: Verwalten des Azure Log Analytics-Agents | Microsoft Dokumentation
-description: "In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Microsoft Monitoring Agents (MMA) ausführen, der auf einem Computer bereitgestellt wird."
+description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Microsoft Monitoring Agents (MMA) ausführen, der auf einem Computer bereitgestellt wird.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
+ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 2e4daebf18d5edeba92bc14d5a4f699fbd2d94ce
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5ff4f79a607143683b37726f1c02a6057dc6b9b0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Verwalten und Warten des Log Analytics-Agents für Windows und Linux
 
@@ -69,6 +69,34 @@ $mma.ReloadConfiguration()
 >[!NOTE]
 >Wenn Sie bereits die Befehlszeile oder Skripts zum Installieren oder Konfigurieren des Agents verwendet haben, sollten Sie wissen, dass `EnableAzureOperationalInsights` durch `AddCloudWorkspace` und `RemoveCloudWorkspace` ersetzt wurde.
 >
+
+### <a name="linux-agent"></a>Linux-Agent
+Die folgenden Schritte veranschaulichen, wie Sie den Linux-Agent neu konfigurieren, wenn Sie sich entscheiden, ihn mit einem anderen Arbeitsbereich zu registrieren, oder einen Arbeitsbereich aus seiner Konfiguration entfernen möchten.  
+
+1.  Um sicherzustellen, dass er bei einem Arbeitsbereich registriert ist, führen Sie den folgenden Befehl aus.
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
+
+    Es sollte ein Status ähnlich dem folgenden zurückgegeben werden: 
+
+    `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
+
+    Es ist wichtig, dass der Status auch zeigt, dass der Agent ausgeführt wird, da andernfalls die folgenden Schritte zum Neukonfigurieren des Agents nicht erfolgreich abgeschlossen werden.  
+
+2. Wenn er bereits mit einem Arbeitsbereich registriert ist, entfernen Sie den registrierten Arbeitsbereich mit dem folgenden Befehl.  Falls er noch nicht registriert ist, fahren Sie mit dem nächsten Schritt fort.
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -X`  
+    
+3. Führen Sie zur Registrierung mit einem anderen Arbeitsbereich den Befehl `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]` aus. 
+4. Führen Sie den Befehl aus, um sicherzustellen, dass Ihre Änderungen Auswirkungen haben.
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
+
+    Es sollte ein Status ähnlich dem folgenden zurückgegeben werden: 
+
+    `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
+
+Der Agent-Dienst muss nicht neu gestartet werden, damit die Änderungen wirksam werden.
 
 ## <a name="update-proxy-settings"></a>Aktualisieren der Proxyeinstellungen 
 Um den Agent so zu konfigurieren, dass er mit dem Dienst nach der Bereitstellung über einen Proxyserver oder ein [OMS-Gateway](log-analytics-oms-gateway.md) kommuniziert, verwenden Sie eine der folgenden Methoden, um diese Aufgabe zu erledigen.

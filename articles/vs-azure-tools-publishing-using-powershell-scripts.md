@@ -1,11 +1,11 @@
 ---
-title: "Veröffentlichen in Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts | Microsoft Docs"
-description: "Erhalten Sie Informationen zum Veröffentlichen für Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts in Visual Studio."
+title: Veröffentlichen in Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts | Microsoft Docs
+description: Erhalten Sie Informationen zum Veröffentlichen für Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts in Visual Studio.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 5fff1301-5469-4d97-be88-c85c30f837c1
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 4e9409aac836a60e7ea01261840c084ff09e954e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.author: ghogen
+ms.openlocfilehash: 58d1c8398e626544a7b02198ec0431203aedcc81
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Veröffentlichung in Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts
 
@@ -251,7 +251,7 @@ Wenn Sie den Buildvorgang Ihres Projekts automatisieren möchten, fügen Sie Cod
         #Write a function to build and package your web application
     ```
 
-    Verwenden Sie zum Erstellen Ihrer Webanwendung „MsBuild.exe“. Hilfe finden Sie in der MSBuild-Befehlszeilenreferenz unter: [http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339).
+    Verwenden Sie zum Erstellen Ihrer Webanwendung „MsBuild.exe“. Hilfreiche Informationen finden Sie in der MSBuild-Befehlszeilenreferenz unter: [http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
 
     ```powershell
     Write-VerboseWithTime 'Build-WebDeployPackage: Start'
@@ -311,7 +311,7 @@ Wenn Sie Hilfe zu Funktionen abrufen möchten, können Sie an der Windows PowerS
 
 **AzureWebAppPublishModule**
 
-| Funktionsname | Beschreibung |
+| Funktionsname | BESCHREIBUNG |
 | --- | --- |
 | Add-AzureSQLDatabase |Erstellt eine neue Azure SQL-Datenbank. |
 | Add-AzureSQLDatabases |Erstellt Azure SQL-Datenbanken aus Werten in der JSON-Konfigurationsdatei, die von Visual Studio generiert wird |
@@ -340,7 +340,7 @@ Wenn Sie Hilfe zu Funktionen abrufen möchten, können Sie an der Windows PowerS
 
 **Publish-WebApplication**
 
-| Funktionsname | Beschreibung |
+| Funktionsname | BESCHREIBUNG |
 | --- | --- |
 | New-AzureWebApplicationEnvironment |Erstellt Azure-Ressourcen, z. B. eine Website oder einen virtuellen Computer. |
 | New-WebDeployPackage |Diese Funktion ist nicht implementiert. Sie können Befehle in dieser Funktion hinzufügen, um Ihr Projekt zu erstellen. |

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 13/22/2018
 ms.author: mikeray
-ms.openlocfilehash: faa849fc53aa15a47e850a20531c4fa30544f750
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 425310f50cebc920a71090d2017dca2a6c135991
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -375,27 +375,13 @@ So erstellen Sie den Lastenausgleich
 
 1. Wechseln Sie zurück zur Azure-Ressourcengruppe mit den virtuellen Computern, und suchen Sie nach dem neuen Lastenausgleich. Es kann sein, dass Sie hierfür die Ansicht mit der Ressourcengruppe aktualisieren müssen. Klicken Sie auf den Lastenausgleich.
 
-1. Klicken Sie auf dem Blatt mit dem Lastenausgleich auf **Back-End-Pools**.
+1. Klicken Sie auf **Back-End-Pools** und dann auf **+ Hinzufügen**, um einen Back-End-Pool hinzuzufügen.
 
-1. Klicken Sie auf **+ Hinzufügen**, um einen Back-End-Pool hinzuzufügen.
+1. Ordnen Sie den Back-End-Pool mit der Verfügbarkeitsgruppe zu, die die VMs enthält.
 
-1. Geben Sie einen Namen für den Back-End-Pool ein.
+1. Aktivieren Sie unter **Zielnetzwerk-IP-Konfigurationen** die Option **VIRTUELLER COMPUTER**, und wählen Sie die virtuellen Computer aus, die als Clusterknoten eingeschlossen werden. Schließen Sie dabei alle virtuellen Computer ein, die die FCI hosten. 
 
-1. Klicken Sie auf **Virtuellen Computer hinzufügen**.
-
-1. Klicken Sie auf dem Blatt **Virtuelle Computer auswählen** auf **Verfügbarkeitsgruppe auswählen**.
-
-1. Wählen Sie die Verfügbarkeitsgruppe aus, in der Sie die virtuellen SQL Server-Computer angeordnet haben.
-
-1. Klicken Sie auf dem Blatt **Choose virtual machines** (Virtuelle Computer auswählen) auf **Choose the virtual machines** (Virtuelle Computer auswählen).
-
-   Das Azure-Portal sollte wie in der folgenden Abbildung aussehen:
-
-   ![CreateLoadBalancerBackEnd](./media/virtual-machines-windows-portal-sql-create-failover-cluster/33-load-balancer-back-end.png)
-
-1. Klicken Sie auf dem Blatt **Choose virtual machines** (Virtuelle Computer auswählen) auf **Auswählen**.
-
-1. Klicken Sie zweimal auf **OK** .
+1. Klicken Sie auf **OK**, um den Back-End-Pool zu erstellen.
 
 ### <a name="configure-a-load-balancer-health-probe"></a>Konfigurieren eines Integritätstests für den Lastenausgleich
 

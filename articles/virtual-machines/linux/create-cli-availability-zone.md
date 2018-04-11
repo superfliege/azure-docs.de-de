@@ -1,32 +1,32 @@
 ---
 title: Erstellen eines virtuellen Linux-Computers in einer Zone mit der Azure CLI | Microsoft-Dokumentation
-description: "Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit der Azure CLI"
+description: Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit der Azure CLI
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 03/27/2018
 ms.author: danlep
-ms.custom: 
-ms.openlocfilehash: e31eb02fda7ade027225c428c5b15804ebc6f182
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: cfc3fbf5432108222ee7941d92d78e49d3eaed78
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit der Azure CLI
 
 In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Linux-Computers in einer Azure-Verfügbarkeitszone mithilfe der Azure CLI erläutert. Eine [Verfügbarkeitszone](../../availability-zones/az-overview.md) ist eine physisch separate Zone in einer Azure-Region. Verwenden Sie Verfügbarkeitszonen, um Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Datencenters zu schützen.
 
-[!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
+Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in einer [unterstützten Azure-Region](../../availability-zones/az-overview.md#regions-that-support-availability-zones) erstellt werden.
 
 Achten Sie darauf, dass Sie die neueste Version [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sind.
 
@@ -43,19 +43,19 @@ az vm list-skus --location eastus2 --output table
 Die Ausgabe ähnelt dem folgenden verkürzten Beispiel, in dem die Verfügbarkeitszonen aufgeführt werden, in denen die einzelnen VM-Größen verfügbar sind:
 
 ```azurecli
-ResourceType      Locations  Name               Tier       Size     Zones
-----------------  ---------  -----------------  ---------  -------  -------
-virtualMachines   eastus2    Standard_DS1_v2    Standard   DS1_v2   1,2,3
-virtualMachines   eastus2    Standard_DS2_v2    Standard   DS2_v2   1,2,3
+ResourceType      Locations  Name               [...]    Tier       Size     Zones
+----------------  ---------  -----------------           ---------  -------  -------
+virtualMachines   eastus2    Standard_DS1_v2             Standard   DS1_v2   1,2,3
+virtualMachines   eastus2    Standard_DS2_v2             Standard   DS2_v2   1,2,3
 [...]
-virtualMachines   eastus2    Standard_F1s       Standard   F1s      1,2,3
-virtualMachines   eastus2    Standard_F2s       Standard   F2s      1,2,3
+virtualMachines   eastus2    Standard_F1s                Standard   F1s      1,2,3
+virtualMachines   eastus2    Standard_F2s                Standard   F2s      1,2,3
 [...]
-virtualMachines   eastus2    Standard_D2s_v3    Standard   D2_v3    1,2,3
-virtualMachines   eastus2    Standard_D4s_v3    Standard   D4_v3    1,2,3
+virtualMachines   eastus2    Standard_D2s_v3             Standard   D2_v3    1,2,3
+virtualMachines   eastus2    Standard_D4s_v3             Standard   D4_v3    1,2,3
 [...]
-virtualMachines   eastus2    Standard_E2_v3     Standard   E2_v3    1,2,3
-virtualMachines   eastus2    Standard_E4_v3     Standard   E4_v3    1,2,3
+virtualMachines   eastus2    Standard_E2_v3              Standard   E2_v3    1,2,3
+virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2,3
 ```
 
 
@@ -63,9 +63,9 @@ virtualMachines   eastus2    Standard_E4_v3     Standard   E4_v3    1,2,3
 
 Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe.  
 
-Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupVM* in der Region *eastus2* erstellt. „USA, Osten 2“ ist eine der Azure-Regionen, die Verfügbarkeitszonen in der Vorschauversion unterstützen.
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupVM* in der Region *eastus2* erstellt. „USA, Osten 2“ ist eine der Azure-Regionen, die Verfügbarkeitszonen unterstützen.
 
-```azurecli-interactive 
+```azurecli 
 az group create --name myResourceGroupVM --location eastus2
 ```
 
@@ -75,7 +75,7 @@ Die Ressourcengruppe wird beim Erstellen oder Ändern eines virtuellen Computers
 
 Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. 
 
-Beim Erstellen eines virtuellen Computers stehen mehrere Optionen zur Verfügung, z.B. Betriebssystemimage, Festlegen der Datenträgergröße und Administratoranmeldeinformationen. In diesem Beispiel wird ein virtueller Computer mit dem Namen *myVM* erstellt, auf dem Ubuntu Server ausgeführt wird. Der virtuelle Computer wird in der Verfügbarkeitszone *1* erstellt. Standardmäßig wird der virtuelle Computer mit der Größe *Standard_DS1_v2* erstellt. Diese Größe wird in der Vorschauversion der Verfügbarkeitszonen unterstützt.
+Beim Erstellen eines virtuellen Computers stehen mehrere Optionen zur Verfügung, z.B. Betriebssystemimage, Festlegen der Datenträgergröße und Administratoranmeldeinformationen. In diesem Beispiel wird ein virtueller Computer mit dem Namen *myVM* erstellt, auf dem Ubuntu Server ausgeführt wird. Der virtuelle Computer wird in der Verfügbarkeitszone *1* erstellt. Standardmäßig wird der virtuelle Computer mit der Größe *Standard_DS1_v2* erstellt.
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys --zone 1
@@ -83,10 +83,10 @@ az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --
 
 Die Erstellung der VM kann einige Minuten dauern. Nach der Erstellung des virtuellen Computers gibt die Azure-Befehlszeilenschnittstelle Informationen zu dem virtuellen Computer aus. Notieren Sie sich den Wert `zones`. Er gibt die Verfügbarkeitszone an, in der der virtuelle Computer ausgeführt wird. 
 
-```azurecli-interactive 
+```azurecli 
 {
   "fqdns": "",
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
   "location": "eastus2",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
@@ -97,34 +97,81 @@ Die Erstellung der VM kann einige Minuten dauern. Nach der Erstellung des virtue
 }
 ```
 
-## <a name="zone-for-ip-address-and-managed-disk"></a>Zone für IP-Adresse und verwalteten Datenträger
+## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>Bestätigen der Zone für verwalteten Datenträger und IP-Adresse
 
-Bei der Bereitstellung des virtuellen Computers in einer Verfügbarkeitszone werden die Ressourcen für IP-Adresse und verwaltete Datenträger in der gleichen Verfügbarkeitszone bereitgestellt. Die folgenden Beispiele rufen Informationen zu diesen Ressourcen ab.
+Bei der Bereitstellung des virtuellen Computers in einer Verfügbarkeitszone wird in der gleichen Verfügbarkeitszone ein verwalteter Datenträger bereitgestellt. Standardmäßig wird in dieser Zone ebenfalls eine öffentliche IP-Adresse erstellt. Die folgenden Beispiele rufen Informationen zu diesen Ressourcen ab.
 
-Verwenden Sie zuerst den Befehl [az vm list-ip-addresses](/cli/azure/vm#az_vm_list_ip_addresses), um den Namen der öffentlichen IP-Adresse in *myVM* zurückzugeben. In diesem Beispiel wird der Name in einer Variablen gespeichert, die in einem späteren Schritt verwendet wird.
+Um sicherzustellen, dass der verwaltete Datenträger des virtuellen Computers sich in der Verfügbarkeitszone befindet, verwenden Sie den Befehl [az vm show](/cli/azure/vm#az_vm_show), um die Datenträger-ID zurückzugeben. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert, die in einem späteren Schritt verwendet wird. 
 
 ```azurecli-interactive
+osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
+```
+Nun können Sie Informationen zum verwalteten Datenträger abrufen:
+
+```azurecli-interactive
+az disk show --resource-group myResourceGroupVM --name $osdiskname
+```
+
+Die Ausgabe zeigt, dass sich der verwaltete Datenträger in der gleichen Verfügbarkeitszone befindet wie der virtuelle Computer:
+
+```azurecli
+{
+  "creationData": {
+    "createOption": "FromImage",
+    "imageReference": {
+      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/16.04-LTS/Versions/latest",
+      "lun": null
+    },
+    "sourceResourceId": null,
+    "sourceUri": null,
+    "storageAccountId": null
+  },
+  "diskSizeGb": 30,
+  "encryptionSettings": null,
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/disks/osdisk_761c570dab",
+  "location": "eastus2",
+  "managedBy": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
+  "name": "myVM_osdisk_761c570dab",
+  "osType": "Linux",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroupVM",
+  "sku": {
+    "name": "Premium_LRS",
+    "tier": "Premium"
+  },
+  "tags": {},
+  "timeCreated": "2018-03-05T22:16:06.892752+00:00",
+  "type": "Microsoft.Compute/disks",
+  "zones": [
+    "1"
+  ]
+}
+```
+
+Verwenden Sie den Befehl [az vm list-ip-addresses](/cli/azure/vm#az_vm_list_ip_addresses), um den Namen der öffentlichen IP-Adresse in *myVM* zurückzugeben. In diesem Beispiel wird der Name in einer Variablen gespeichert, die in einem späteren Schritt verwendet wird.
+
+```azurecli
 ipaddressname=$(az vm list-ip-addresses -g myResourceGroupVM -n myVM --query "[].virtualMachine.network.publicIpAddresses[].name" -o tsv)
 ```
 
 Nun können Sie Informationen zur IP-Adresse abrufen:
 
-```azurecli-interactive
+```azurecli
 az network public-ip show --resource-group myResourceGroupVM --name $ipaddressname
 ```
 
 Die Ausgabe zeigt, dass sich die IP-Adresse in derselben Verfügbarkeitszone wie der virtuelle Computer befindet:
 
-```azurecli-interactive
+```azurecli
 {
   "dnsSettings": null,
   "etag": "W/\"b7ad25eb-3191-4c8f-9cec-c5e4a3a37d35\"",
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Network/publicIPAddresses/myVMPublicIP",
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Network/publicIPAddresses/myVMPublicIP",
   "idleTimeoutInMinutes": 4,
   "ipAddress": "52.174.34.95",
   "ipConfiguration": {
     "etag": null,
-    "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM",
+    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM",
     "name": null,
     "privateIpAddress": null,
     "privateIpAllocationMethod": null,
@@ -147,55 +194,6 @@ Die Ausgabe zeigt, dass sich die IP-Adresse in derselben Verfügbarkeitszone wie
   ]
 }
 ```
-
-Stellen Sie außerdem sicher, dass sich der verwaltete Datenträger des virtuellen Computers in der Verfügbarkeitszone befindet. Rufen Sie die Datenträger-ID mit dem Befehl [az vm show](/cli/azure/vm#az_vm_show) ab. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert, die in einem späteren Schritt verwendet wird. 
-
-```azurecli-interactive
-osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
-```
-Nun können Sie Informationen zum verwalteten Datenträger abrufen:
-
-```azurecli-interactive
-az disk show --resource-group myResourceGroupVM --name $osdiskname
-```
-
-Die Ausgabe zeigt, dass sich der verwaltete Datenträger in der gleichen Verfügbarkeitszone befindet wie der virtuelle Computer:
-
-```azurecli-interactive
-{
-  "creationData": {
-    "createOption": "FromImage",
-    "imageReference": {
-      "id": "/Subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/Providers/Microsoft.Compute/Locations/westeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/16.04-LTS/Versions/latest",
-      "lun": null
-    },
-    "sourceResourceId": null,
-    "sourceUri": null,
-    "storageAccountId": null
-  },
-  "diskSizeGb": 30,
-  "encryptionSettings": null,
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/disks/osdisk_761c570dab",
-  "location": "eastus2",
-  "managedBy": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
-  "name": "osdisk_761c570dab",
-  "osType": "Linux",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroupVM",
-  "sku": {
-    "name": "Premium_LRS",
-    "tier": "Premium"
-  },
-  "tags": {},
-  "timeCreated": "2017-09-05T22:16:06.892752+00:00",
-  "type": "Microsoft.Compute/disks",
-  "zones": [
-    "1"
-  ]
-}
-```
- 
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

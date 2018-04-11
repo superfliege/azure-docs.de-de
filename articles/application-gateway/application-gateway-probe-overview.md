@@ -1,25 +1,23 @@
 ---
-title: "Übersicht über die Systemüberwachung für Azure Application Gateway | Microsoft Docs"
-description: "Weitere Informationen zu den Überwachungsfunktionen in Azure Application Gateway"
+title: Übersicht über die Systemüberwachung für Azure Application Gateway
+description: Weitere Informationen zu den Überwachungsfunktionen in Azure Application Gateway
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
 tags: azure-resource-manager
-ms.assetid: 7eeba328-bb2d-4d3e-bdac-7552e7900b7f
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
-ms.author: davidmu
-ms.openlocfilehash: 83a0b1be1aba48146aa1aaedb36ad9d9d23f17d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 3/30/2018
+ms.author: victorh
+ms.openlocfilehash: 2f62f01c1178f9529eb46051f088affccc5279a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Systemüberwachung des Application Gateways – Übersicht
 
@@ -40,9 +38,28 @@ Beispiel: Sie konfigurieren Ihr Application Gateway für die Verwendung der Back
 
 Wenn die Standardüberprüfung für Server A fehlschlägt, entfernt das Application Gateway sie aus dem Back-End-Pool, und der Netzwerkdatenverkehr an diesen Server wird angehalten. Die Standardüberprüfung führt weiterhin alle 30 Sekunden eine Überprüfung für Server A aus. Wenn Server A erfolgreich auf eine Anforderung einer standardmäßigen Integritätsüberprüfung antwortet, wird er dem Back-End-Pool wieder als fehlerfrei hinzugefügt, und der Datenverkehr an den Server startet erneut.
 
+### <a name="probe-matching"></a>Testabgleich
+
+Standardmäßig gilt eine HTTP(S)-Antwort mit dem Statuscode 200 als fehlerfrei. Benutzerdefinierte Integritätstests unterstützen außerdem zwei Abgleichskriterien. Abgleichskriterien können verwendet werden, um optional die Standardinterpretation einer fehlerfreien Antwort zu ändern.
+
+Abgleichskriterien: 
+
+- **Abgleich des Statuscodes der HTTP-Antwort**: Testabgleichskriterium zum Akzeptieren der vom Benutzer angegebenen HTTP-Antwortcodes oder -Antwortcodebereiche. Einzelne kommagetrennte Antwortstatuscodes und ein Bereich von Statuscodes werden unterstützt.
+- **Abgleich des HTTP-Antworttexts**: Testabgleichskriterium, das den HTTP-Antworttext heranzieht und ihn mit einer vom Benutzer angegebenen Zeichenfolge abgleicht. Beim Abgleich wird lediglich auf das Vorhandensein der vom Benutzer angegebenen Zeichenfolge im Antworttext geachtet, es ist kein Abgleich mit einem vollständigen regulären Ausdruck.
+
+Abgleichskriterien können mithilfe des Cmdlets `New-AzureRmApplicationGatewayProbeHealthResponseMatch` angegeben werden.
+
+Beispiel: 
+
+```
+$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
+$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
+```
+Nachdem Sie die Abgleichskriterien angegeben haben, können sie der Testkonfiguration mit einem `-Match`-Parameter in PowerShell angefügt werden.
+
 ### <a name="default-health-probe-settings"></a>Einstellungen für die standardmäßige Integritätsüberprüfung
 
-| Überprüfungseigenschaft | Wert | Beschreibung |
+| Überprüfungseigenschaft | Wert | BESCHREIBUNG |
 | --- | --- | --- |
 | Überprüfungs-URL |http://127.0.0.1:\<Port\>/ |URL-Pfad |
 | Intervall |30 |Überprüfungsintervall in Sekunden |
@@ -52,7 +69,7 @@ Wenn die Standardüberprüfung für Server A fehlschlägt, entfernt das Applica
 > [!NOTE]
 > Dieser Port stimmt mit dem Port in den HTTP-Einstellungen des Back-Ends überein.
 
-Der Standardtest untersucht nur „http://127.0.0.1:\<Port\>“, um den Integritätsstatus zu bestimmen. Wenn Sie die Integritätsüberprüfung für eine benutzerdefinierte URL konfigurieren oder andere Einstellungen ändern möchten, müssen Sie benutzerdefinierte Überprüfungen wie in den folgenden Schritten beschrieben verwenden:
+Der Standardtest untersucht nur http://127.0.0.1:\<Port\>, um den Integritätsstatus zu bestimmen. Wenn Sie die Integritätsüberprüfung für eine benutzerdefinierte URL konfigurieren oder andere Einstellungen ändern möchten, müssen Sie benutzerdefinierte Überprüfungen wie in den folgenden Schritten beschrieben verwenden:
 
 ## <a name="custom-health-probe"></a>Benutzerdefinierte Integritätsüberprüfung
 
@@ -62,12 +79,12 @@ Benutzerdefinierte Überprüfungen ermöglichen Ihnen eine präzisere Kontrolle 
 
 Die folgende Tabelle enthält Definitionen der Eigenschaften eines benutzerdefinierten Integritätstests.
 
-| Überprüfungseigenschaft | Beschreibung |
+| Überprüfungseigenschaft | BESCHREIBUNG |
 | --- | --- |
-| Name |Name der Überprüfung. Dieser Name wird verwendet, um in den Back-End-HTTP-Einstellungen auf die Überprüfung zu verweisen. |
-| Protocol |Das zum Senden der Überprüfung verwendete Protokoll. Für die Überprüfung wird das in den HTTP-Einstellungen des Back-Ends festgelegte Protokoll verwendet. |
+| NAME |Name der Überprüfung. Dieser Name wird verwendet, um in den Back-End-HTTP-Einstellungen auf die Überprüfung zu verweisen. |
+| Protokoll |Das zum Senden der Überprüfung verwendete Protokoll. Für die Überprüfung wird das in den HTTP-Einstellungen des Back-Ends festgelegte Protokoll verwendet. |
 | Host |Hostname zum Senden der Überprüfung Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie 127.0.0.1. Dieser Wert entspricht nicht dem Hostnamen des virtuellen Computers. |
-| Pfad |Relativer Pfad der Überprüfung. Der gültige Pfad beginnt mit „/“. |
+| path |Relativer Pfad der Überprüfung. Der gültige Pfad beginnt mit „/“. |
 | Intervall |Überprüfungsintervall in Sekunden Dieser Wert ist das Zeitintervall zwischen zwei aufeinanderfolgenden Überprüfungen. |
 | Zeitüberschreitung |Zeitüberschreitung der Überprüfung in Sekunden. Die Überprüfung wird als fehlerhaft markiert, wenn innerhalb des Zeitraums für die Zeitüberschreitung keine gültige Antwort empfangen wird.  |
 | Fehlerhafter Schwellenwert |Anzahl der Wiederholungsversuche der Überprüfung Der Back-End-Server wird als außer Betrieb markiert, nachdem die Anzahl der aufeinanderfolgenden fehlgeschlagenen Überprüfungen den fehlerhaften Schwellenwert erreicht. |

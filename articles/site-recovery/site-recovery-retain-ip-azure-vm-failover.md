@@ -1,12 +1,12 @@
 ---
-title: "Beibehalten von IP-Adressen beim Durchführen eines Failovers von virtuellen Azure-Computern in eine andere Azure-Region | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie IP-Adressen für Failoverszenarien von Azure zu Azure mit Azure Site Recovery beibehalten."
+title: Beibehalten von IP-Adressen beim Durchführen eines Failovers von virtuellen Azure-Computern in eine andere Azure-Region | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie IP-Adressen für Failoverszenarien von Azure zu Azure mit Azure Site Recovery beibehalten.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 15f87ba87d90cee765f52d3188796bc1ff7b8a35
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8e128e057e45f6966067ebaaf039d9b14349d926
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Beibehaltung von IP-Adressen für das Failover von virtuellen Azure-Computern
 
@@ -84,11 +84,7 @@ Das obige Beispiel für ein isoliertes Failover kann auf mehr Anwendungen und Ne
 
 ### <a name="further-considerations"></a>Weitere Aspekte
 
-Für VPN-Gateways werden öffentliche IP-Adressen und Gatewayhops verwendet, um Verbindungen herzustellen. Falls Sie keine öffentlichen IP-Adressen verwenden bzw. zusätzliche Hops vermeiden möchten, können Sie jetzt das globale VNet-Peering verwenden, um virtuelle Netzwerke über Azure-Regionen hinweg zu verknüpfen.
-
-Dieses Feature befindet sich derzeit in der öffentlichen Vorschauphase und wird auf weitere Supportregionen erweitert, um die direkte Konnektivität von VM zu VM ohne Einbeziehung des öffentlichen Internets oder zusätzlicher Hops zu ermöglichen.
-
-Weitere Informationen finden Sie in der [Dokumentation zum Peering](../virtual-network/tutorial-connect-virtual-networks-portal.md#register) und unter [Preise](https://azure.microsoft.com/pricing/details/virtual-network/).
+Für VPN-Gateways werden öffentliche IP-Adressen und Gatewayhops verwendet, um Verbindungen herzustellen. Falls Sie keine öffentlichen IP-Adressen verwenden bzw. zusätzliche Hops vermeiden möchten, können Sie jetzt das [Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md) in Azure verwenden, um virtuelle Netzwerke mittels Peering über [unterstützte Azure-Regionen](../virtual-network/virtual-network-manage-peering.md#cross-region) hinweg zu verknüpfen.
 
 ## <a name="on-premises-to-azure-connectivity"></a>Konnektivität vom lokalen Standort mit Azure
 

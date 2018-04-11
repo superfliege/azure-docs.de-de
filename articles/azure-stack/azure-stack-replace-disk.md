@@ -1,28 +1,28 @@
 ---
-title: "Ersetzen eines physischen Datenträgers in Azure Stack | Microsoft-Dokumentation"
-description: "Skizziert das Ersetzen eines physischen Datenträgers in Azure Stack."
+title: Ersetzen eines physischen Datenträgers in Azure Stack | Microsoft-Dokumentation
+description: Skizziert das Ersetzen eines physischen Datenträgers in Azure Stack.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: a95617a8dd2a8f296164c672e2b4b2628574ce5a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f168c005c729ae75a5369b80b3dc5eab03ee0243
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Ersetzen eines physischen Datenträgers in Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Dieser Artikel beschreibt das allgemeine Verfahren, um einen physischen Datenträger in Azure Stack zu ersetzen. Wenn ein physischer Datenträger ausfällt, sollten Sie ihn so bald wie möglich ersetzen.
 
@@ -40,6 +40,9 @@ Wenn Sie die Warnung öffnen, informiert Sie die Warnungsbeschreibung über den 
  ## <a name="replace-the-disk"></a>Austausch des Datenträgers
 
 Befolgen Sie die FRU-Anweisungen des OEM-Hardwareanbieters beim tatsächlichen Austausch des Datenträgers.
+
+> [!note]
+> Ersetzen Sie Datenträger immer nur für einen Skalierungseinheitknoten zurzeit. Warten Sie, bis der Auftrag zur Reparatur des virtuellen Datenträgers abgeschlossen ist, bevor Sie mit dem nächsten Skalierungseinheitknoten fortfahren.
 
 Um die Verwendung eines nicht unterstützten Datenträgers in einem integrierten System zu verhindern, blockiert das System Datenträger, die von Ihrem Anbieter nicht unterstützt werden. Wenn Sie versuchen, einen nicht unterstützten Datenträger zu verwenden, teilt Ihnen eine neue Warnung mit, dass ein Datenträger aufgrund eines nicht unterstützten Modells oder nicht unterstützter Firmware isoliert wurde.
 

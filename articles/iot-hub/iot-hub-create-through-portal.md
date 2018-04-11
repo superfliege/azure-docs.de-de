@@ -1,24 +1,24 @@
 ---
-title: "Erstellen eines IoT Hubs über das Azure-Portal | Microsoft Docs"
-description: "Erstellen, Verwalten und Löschen von Azure IoT Hubs über das Azure-Portal. Enthält Informationen zu Tarifen, Skalierung, Sicherheit und die Messagingkonfiguration."
+title: Erstellen eines IoT Hubs über das Azure-Portal | Microsoft Docs
+description: Erstellen, Verwalten und Löschen von Azure IoT Hubs über das Azure-Portal. Enthält Informationen zu Tarifen, Skalierung, Sicherheit und die Messagingkonfiguration.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0909cd2b-4c1e-49e0-b68a-75532caf0a6a
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ac1a52355ffa5354bebe3b98fdb75783bcd57697
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 6ffde076caff6217bf6255c9294eca63d3e39b85
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Erstellen eines IoT Hubs über das Portal
 
@@ -53,18 +53,9 @@ Um einen IoT Hub zu erstellen, müssen Sie einen Namen für den IoT Hub festlege
 
 ### <a name="choose-the-pricing-tier"></a>Auswählen des Tarifs
 
-Sie können zwischen vier Tarifen wählen: **Free**, **Standard 1**, **Standard 2** und **Standard S3**. Mit dem Free-Tarif können nur 500 Geräte mit dem IoT Hub verbunden sein, und bis zu 8.000 Nachrichten pro Tag sind möglich.
+Ihnen stehen abhängig davon, wie viele Features Sie wünschen, und wie viele Nachrichten Sie über Ihre Lösung pro Tag senden möchten, mehrere Tarife zur Auswahl. Der kostenlose Tarif ist für Test und Bewertung vorgesehen. Damit kann für 500 Geräte eine Verbindung mit dem IoT Hub hergestellt werden, und bis zu 8.000 Nachrichten pro Tag sind möglich. Jedes Azure-Abonnement kann einen IoT Hub im kostenlosen Tarif erstellen. 
 
-**Standard S1**: Verwenden Sie die S1-Edition für IoT-Lösungen mit einer großen Anzahl von Geräten, die jeweils kleine Datenmengen generieren. Mit jeder S1-Einheit können bis zu 400.000 Nachrichten pro Tag (auf allen verbundenen Geräten) übermittelt werden.
-
-**Standard S2**: Verwenden Sie die S2-Edition für IoT-Lösungen, in denen Geräte große Datenmengen generieren. Mit jeder Einheit der Edition S2 können bis zu 6 Millionen Nachrichten pro Tag zwischen allen verbundenen Geräten übermittelt werden.
-
-**Standard S3**: Die S3-Edition eignet sich für IoT-Lösungen, die große Datenmengen generieren. Mit jeder Einheit der Edition S3 können bis zu 300 Millionen Nachrichten pro Tag zwischen allen verbundenen Geräten übermittelt werden.
-
-![][4]
-
-> [!NOTE]
-> IoT Hub bietet pro Azure-Abonnement nur einen Hub im Tarif „Free“.
+Einzelheiten zu den anderen Tarifoptionen finden Sie unter [Skalieren einer IoT Hub-Lösung](iot-hub-scaling.md).
 
 ### <a name="iot-hub-units"></a>IoT Hub-Einheiten
 
@@ -153,17 +144,6 @@ Klicken Sie auf **Routen**, um zu verwalten, wie IoT Hub Ihre D2C-Nachrichten se
 Sie können Ihrem IoT-Hub Routen hinzufügen, indem Sie am oberen Rand des Blatts **Routen*** auf **Hinzufügen** klicken, die erforderlichen Informationen eingeben und auf **OK** klicken. Ihre Route wird dann auf dem Hauptblatt **Routen** aufgeführt. Sie können eine Route bearbeiten, indem Sie in der Liste der Routen darauf klicken. Um eine Route zu aktivieren, klicken sie in der Liste der Routen darauf, und legen Sie den Schalter **Aktiviert** auf **Aus** fest. Um die Änderung zu speichern, klicken Sie am unteren Rand des Blatts auf **OK**.
 
 ![][15]
-
-## <a name="pricing-and-scale"></a>Preise und Skalierung
-
-Die Preise eines vorhandenen IoT Hubs können mit folgenden Ausnahmen über die Einstellungen **Preise** geändert werden:
-
-* In der aktuellen Implementierung kann ein IOT Hub mit Free-SKU nicht in eine der kostenpflichtigen SKUs geändert werden oder umgekehrt.
-* Im Azure-Abonnement kann nur ein IoT Hub des Free-Tarifs enthalten sein.
-
-![][12]
-
-Sie können nur dann von einer höheren zu einer niedrigeren Ebene wechseln, wenn die Anzahl der an diesem Tag gesendeten Nachrichten das Kontingent der unteren Ebene überschreitet. Überschreitet die Anzahl der Nachrichten pro Tag beispielsweise 400.000, kann der Tarif für den IoT Hub nicht geändert werden. Wenn Sie jedoch zum Tarif S1 wechseln, wird der IoT Hub für diesen Tag gedrosselt.
 
 ## <a name="delete-the-iot-hub"></a>Löschen des IoT Hubs
 

@@ -1,12 +1,12 @@
 ---
 title: Funktionsweise der Zwischenspeicherung | Microsoft-Dokumentation
-description: "Unter Zwischenspeichern versteht man das lokale Speichern von Daten, damit zukünftige Anforderungen für diese Daten schneller aufgerufen werden können."
+description: Unter Zwischenspeichern versteht man das lokale Speichern von Daten, um im Fall einer erneuten Anforderung dieser Daten schneller darauf zugreifen zu können.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: 284b4bcbeafc422a2ed91cec00a5b5b83bb37b7b
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 26a0478f8713cb3584045f59c181c0a38331ea97
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-caching-works"></a>Funktionsweise der Zwischenspeicherung
 
@@ -26,7 +26,7 @@ Dieser Artikel enthält einen Überblick über allgemeine Konzepte zum Zwischens
 
 ## <a name="introduction-to-caching"></a>Einführung zum Zwischenspeichern
 
-Unter Zwischenspeichern versteht man das lokale Speichern von Daten, damit zukünftige Anforderungen für diese Daten schneller aufgerufen werden können. Bei dem am häufigsten verwendeten Cachetyp, dem Webbrowsercache, speichert ein Webbrowser Kopien von statischen Daten lokal auf einer lokalen Festplatte. Durch das Zwischenspeichern kann der Webbrowser verhindern, dass mehrere Roundtrips zum Server ausgeführt werden, und stattdessen lokal auf diese Daten zugreifen, wodurch Zeit und Ressourcen gespart werden. Das Zwischenspeichern ist besonders für die lokale Verwaltung kleiner, statischer Daten (z.B. statischen Bildern, CSS-Dateien und JavaScript-Dateien) geeignet.
+Unter Zwischenspeichern versteht man das lokale Speichern von Daten, um im Fall einer erneuten Anforderung dieser Daten schneller darauf zugreifen zu können. Bei dem am häufigsten verwendeten Cachetyp, dem Webbrowsercache, speichert ein Webbrowser Kopien von statischen Daten auf einer lokalen Festplatte. Durch das Zwischenspeichern kann der Webbrowser verhindern, dass mehrere Roundtrips zum Server ausgeführt werden, und stattdessen lokal auf diese Daten zugreifen, wodurch Zeit und Ressourcen gespart werden. Das Zwischenspeichern ist besonders für die lokale Verwaltung kleiner, statischer Daten (z.B. statischen Bildern, CSS-Dateien und JavaScript-Dateien) geeignet.
 
 Gleichermaßen wird die Funktion zum Zwischenspeichern von einem Content Delivery Network auf Edgeservern in der Nähe des Benutzers verwendet, um zu vermeiden, dass Anforderungen zum Ursprung zurückkehren, und die Latenzen für Endbenutzer zu verringern. Im Gegensatz zu einem Webbrowsercache, der nur für einen einzelnen Benutzer verwendet wird, verfügt das CDN über einen freigegebenen Cache. In einem freigegebenen CDN-Cache kann auf eine von einem Benutzer angeforderte Datei später von anderen Benutzern zugegriffen werden, was die Anzahl der Anforderungen an den Ursprungsserver stark reduziert.
 
@@ -43,7 +43,7 @@ Die einzelnen Caches stellen in der Regel die Aktualität ihrer eigenen Ressourc
 
 ### <a name="resource-freshness"></a>Ressourcenaktualität
 
-Da eine zwischengespeicherte Ressource möglicherweise veraltet sein kann (im Vergleich zu der entsprechenden Ressource auf dem Ursprungsserver), ist es wichtig, dass Mechanismen zum Zwischenspeichern kontrollieren, wann der Inhalt aktualisiert wird. Um Zeit und Bandbreitenkapazitäten zu sparen, wird eine zwischengespeicherte Ressource nicht mit der Version auf dem Ursprungsserver abgeglichen, wenn auf diesen zugegriffen wird. Solange eine zwischengespeicherte Ressource als aktuell gilt, wird stattdessen davon ausgegangen, dass es sich bei dieser um die neueste Version handelt, und sie wird direkt an den Client gesendet. Eine zwischengespeicherte Ressource gilt als aktuell, wenn diese neuer ist als der durch eine Cacheeinstellung definierte Zeitraum. Wenn ein Browser beispielsweise eine Webseite neu lädt, stellt er sicher, dass jede zwischengespeicherte Ressource auf Ihrer Festplatte aktuell ist und lädt diese. Wenn die Ressource nicht aktuell ist (d.h. veraltet), wird eine aktuelle Kopie vom Server geladen.
+Da eine zwischengespeicherte Ressource möglicherweise veraltet sein kann (im Vergleich zu der entsprechenden Ressource auf dem Ursprungsserver), ist es wichtig, dass Mechanismen zum Zwischenspeichern kontrollieren, wann der Inhalt aktualisiert wird. Um Zeit und Bandbreitenkapazitäten zu sparen, wird eine zwischengespeicherte Ressource nicht mit der Version auf dem Ursprungsserver abgeglichen, wenn auf diesen zugegriffen wird. Solange eine zwischengespeicherte Ressource als aktuell gilt, wird stattdessen davon ausgegangen, dass es sich bei dieser um die neueste Version handelt, und sie wird direkt an den Client gesendet. Eine zwischengespeicherte Ressource gilt als aktuell, wenn diese neuer ist als der durch eine Cacheeinstellung definierte Zeitraum. Wenn ein Browser beispielsweise eine Webseite neu lädt, stellt er sicher, dass jede zwischengespeicherte Ressource auf Ihrer Festplatte aktuell ist, und lädt diese. Wenn die Ressource nicht aktuell ist (d.h. veraltet), wird eine aktuelle Kopie vom Server geladen.
 
 ### <a name="validation"></a>Überprüfen
 
@@ -51,41 +51,40 @@ Wenn eine Ressource als veraltet gilt, wird der Ursprungsserver aufgefordert, di
 
 ### <a name="cdn-caching"></a>CDN-Caches
 
-Die Zwischenspeicherung ist für die Funktionsweise eines CDN von zentraler Bedeutung, um die Bereitstellung zu beschleunigen und die Auslastung des Ursprungsserver im Hinblick auf statische Ressourcen wie Bilder, Schriften und Videos zu reduzieren. Bei CDN-Caches werden statische Ressourcen selektiv auf strategisch platzierten Servern gespeichert, die sich näher an einem Benutzer befinden und folgende Vorteile bieten:
+Die Zwischenspeicherung ist für die Funktionsweise eines CDN von zentraler Bedeutung, um die Bereitstellung zu beschleunigen und die Auslastung des Ursprungsservers im Hinblick auf statische Ressourcen wie Bilder, Schriften und Videos zu reduzieren. Bei CDN-Caches werden statische Ressourcen selektiv auf strategisch platzierten Servern gespeichert, die sich näher an einem Benutzer befinden und folgende Vorteile bieten:
 
 - Da der Großteil des Webdatenverkehrs statisch ist (z.B. Bilder, Schriften und Videos), reduzieren CDN-Caches die Netzwerklatenzen, indem sie Inhalte näher an den Benutzer verlagern und so die Entfernung der Datenübertragung verringern.
 
 - Durch die Auslagerung von Aufgaben in ein CDN können der Netzwerkdatenverkehr und die Auslastung des Ursprungsservers durch Zwischenspeicherung reduziert werden. Hierdurch werden der Kosten- und Ressourcenaufwand für die Anwendung selbst bei einer großen Benutzeranzahl reduziert.
 
-Ähnlich wie bei der Implementierung der Zwischenspeicherung in einem Webbrowser können Sie durch Senden von Headern mit Cacheanweisungen steuern, wie das Zwischenspeichern in einem CDN durchgeführt wird. Header mit Cacheanweisungen sind HTTP-Header, die üblicherweise vom Ursprungsserver hinzugefügt werden. Obwohl die meisten dieser Header ursprünglich für die Zwischenspeicherung in Clientbrowsern konzipiert wurden, werden sie nun auch von sämtlichen Zwischencaches wie CDNs verwendet. 
+Ähnlich wie bei der Implementierung der Zwischenspeicherung in einem Webbrowser können Sie durch Senden von Headern mit Cacheanweisungen steuern, wie das Zwischenspeichern in einem CDN durchgeführt wird. Header mit Cacheanweisungen sind HTTP-Header, die üblicherweise vom Ursprungsserver hinzugefügt werden. Obwohl die meisten dieser Header ursprünglich für die Zwischenspeicherung in Clientbrowsern konzipiert wurden, werden sie nun auch von sämtlichen Caches zwischen Server und Browser – also auch von CDNs – verwendet. 
 
 Zum Definieren der Cacheaktualität können zwei Header verwendet werden: `Cache-Control` und `Expires`. `Cache-Control` ist neuer und hat gegenüber `Expires` Vorrang, wenn beide vorhanden sind. Es gibt auch zwei Arten von Headern, die zur Überprüfung verwendet werden (sogenannte Validierungssteuerelemente): `ETag` und `Last-Modified`. `ETag` ist neuer und hat gegenüber `Last-Modified` Vorrang, wenn beide definiert sind.  
 
 ## <a name="cache-directive-headers"></a>Header mit Cacheanweisungen
 
 > [!IMPORTANT]
-> Standardmäßig ignoriert ein für die DSA optimierter Azure CDN-Endpunkt Header mit Cacheanweisungen und umgeht die Zwischenspeicherung. Durch CDN-Cacheregeln zum Aktivieren der Zwischenspeicherung können Sie festlegen, wie ein Azure CDN-Endpunkt diese Header behandelt. Weitere Informationen finden Sie unter [Steuern des Verhaltens beim Zwischenspeichern im Azure CDN mit Cacheregeln](cdn-caching-rules.md).
+> Standardmäßig ignoriert ein für die DSA optimierter Azure CDN-Endpunkt Header mit Cacheanweisungen und umgeht die Zwischenspeicherung. Für **Azure CDN von Verizon**- und **Azure CDN von Akamai**-Standardprofilen können Sie anpassen, wie ein Azure CDN-Endpunkt diese Header behandelt, indem Sie das Zwischenspeichern mit [CDN-Cacheregeln](cdn-caching-rules.md) aktivieren. Nur für **Azure CDN von Verizon Premium**-Profilen verwenden Sie das [Regelmodul](cdn-rules-engine.md), um das Zwischenspeichern zu aktivieren.
 
-Das Azure CDN unterstützt die folgenden HTTP-Header mit Cacheanweisungen, die die Cachedauer und die -freigabe definieren: 
+Azure CDN unterstützt die folgenden HTTP-Header mit Cacheanweisungen, die die Cachedauer und die -freigabe definieren.
 
-`Cache-Control`
+**Cache-Control:**
 - Es wurde in HTTP 1.1 eingeführt, um Webpublishern eine größere Kontrolle über ihre Inhalte zu ermöglichen und die Beschränkungen des `Expires`-Headers zu umgehen.
 - Überschreibt den `Expires`-Header, wenn beide sowie `Cache-Control` definiert sind.
-- Bei Verwendung in einem Anforderungsheader wird `Cache-Control` vom Azure CDN standardmäßig ignoriert.
-- Bei Verwendung in einem Antwortheader unterstützt Azure CDN je nach Produkt die folgenden `Cache-Control`-Anweisungen: 
-   - **Azure CDN von Verizon**: Unterstützt alle `Cache-Control`-Anweisungen. 
-   - **Azure CDN von Akamai**: Unterstützt nur die folgenden `Cache-Control`-Anweisungen, während alle anderen ignoriert werden: 
-      - `max-age`: Ein Cache kann den Inhalt für einen in Sekunden angegebenen Zeitraum speichern. Beispiel: `Cache-Control: max-age=5`. Diese Anweisung gibt den maximalen Zeitraum an, in dem ein Inhalt als aktuell gilt.
-      - `no-cache`: Wenn Sie den Inhalt im Cache speichern, überprüfen Sie diesen vor jeder Bereitstellung aus dem Cache. Entspricht `Cache-Control: max-age=0`.
-      - `no-store`: Speichern Sie den Inhalt niemals im Cache. Entfernen Sie Inhalte, wenn sie zuvor gespeichert wurden.
+- Bei Verwendung in einer HTTP-Anforderung wird `Cache-Control` von Azure CDN standardmäßig ignoriert.
+- **Azure CDN von Verizon**-Profilen unterstützt bei Verwendung in einer HTTP-Antwort alle `Cache-Control`-Anweisungen.
+- **Azure CDN von Akamai**-Profilen unterstützt bei Verwendung in einer HTTP-Antwort nur die folgenden Anweisungen; alle anderen werden ignoriert:
+   - `max-age`: Ein Cache kann den Inhalt für einen in Sekunden angegebenen Zeitraum speichern. Beispiel: `Cache-Control: max-age=5`. Diese Anweisung gibt den maximalen Zeitraum an, in dem ein Inhalt als aktuell gilt.
+   - `no-cache`: Wenn Sie den Inhalt im Cache speichern, überprüfen Sie diesen vor jeder Bereitstellung aus dem Cache. Entspricht `Cache-Control: max-age=0`.
+   - `no-store`: Speichern Sie den Inhalt niemals im Cache. Entfernen Sie Inhalte, wenn sie zuvor gespeichert wurden.
 
-`Expires`
+**Expires:**
 - Die in HTTP 1.0 eingeführten Legacyheader werden zur Bereitstellung von Abwärtskompatibilität unterstützt.
 - Verwendet eine datumsbasierte Ablaufzeit mit sekundengenauer Genauigkeit. 
 - Ähnlich wie `Cache-Control: max-age`.
 - Wird verwendet, wenn `Cache-Control` nicht vorhanden ist.
 
-`Pragma`
+**Pragma:**
    - Wird standardmäßig nicht vom Azure-CDN berücksichtigt.
    - Die in HTTP 1.0 eingeführten Legacyheader werden zur Bereitstellung von Abwärtskompatibilität unterstützt.
    - Wird als Clientanforderungsheader mit der folgenden Anweisung verwendet: `no-cache`. Diese Anweisung weist den Server dazu an, eine neue Version der Ressource zu übermitteln.
@@ -93,23 +92,23 @@ Das Azure CDN unterstützt die folgenden HTTP-Header mit Cacheanweisungen, die d
 
 ## <a name="validators"></a>Validierungssteuerelemente
 
-Wenn der Cache veraltet ist, werden Validierungssteuerelemente des HTTP-Caches verwendet, um die zwischengespeicherte Version einer Datei mit der Version auf dem Ursprungsserver abzugleichen. Das **Azure CDN von Verizon** unterstützt standardmäßig sowohl ETag- als auch Last-Modified-Validierungssteuerelemente, wohingegen das **Azure CDN von Akamai** standardmäßig nur Last-Modified-Validierungssteuerelemente unterstützt.
+Wenn der Cache veraltet ist, werden Validierungssteuerelemente des HTTP-Caches verwendet, um die zwischengespeicherte Version einer Datei mit der Version auf dem Ursprungsserver abzugleichen. **Azure CDN von Verizon** unterstützt standardmäßig sowohl `ETag`- als auch `Last-Modified`-Validierungssteuerelemente, wohingegen **Azure CDN von Akamai** standardmäßig nur `Last-Modified`-Validierungssteuerelemente unterstützt.
 
-`ETag`
+**ETag:**
 - Das **Azure CDN von Verizon** verwendet standardmäßig `ETag`, was beim **Azure CDN von Akamai** nicht der Fall ist.
 - `ETag` definiert eine Zeichenfolge, die für jede Datei und Dateiversion eindeutig ist. Beispiel: `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
 - Es wurde in HTTP 1.1 eingeführt und ist neuer als `Last-Modified`. Ist nützlich, wenn die Ermittelung des Datums der letzten Änderung schwierig ist.
 - Unterstützt sowohl eine sichere als auch eine unsichere Überprüfung, wobei das Azure CDN jedoch nur eine sichere Überprüfung unterstützt. Für eine sichere Überprüfung müssen die beiden Ressourcendarstellungen Byte für Byte identisch sein. 
 - Ein Cache überprüft eine Datei mit `ETag`, indem er einen `If-None-Match`-Header mit einem oder mehreren `ETag`-Validierungssteuerelementen in der Anforderung sendet. Beispiel: `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Wenn die Serverversion mit einem `ETag`-Validierungssteuerelement in der Liste übereinstimmt, wird der Statuscode 304 (Nicht geändert) in der Antwort gesendet. Wenn die Version unterschiedlich ist, antwortet der Server mit dem Statuscode 200 (OK) und der aktualisierten Ressource.
 
-`Last-Modified`
-- Nur beim **Azure CDN von Verizon** wird das Last-Modified-Validierungssteuerelement verwendet, wenn das ETag nicht Teil der HTTP-Antwort ist. 
+**Last-Modified:**
+- Nur bei **Azure CDN von Verizon** wird das `Last-Modified`-Validierungssteuerelement verwendet, wenn `ETag` nicht Teil der HTTP-Antwort ist. 
 - Gibt das Datum und die Uhrzeit an, an dem der Ursprungsserver festgestellt hat, dass die Ressource zuletzt geändert wurde. Beispiel: `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
 - Ein Cache überprüft eine Datei mit `Last-Modified`, indem er einen `If-Modified-Since`-Header mit Datum und Uhrzeit in der Anforderung sendet. Der Ursprungsserver gleicht dieses Datum mit dem `Last-Modified`-Header der aktuellen Ressource ab. Wenn die Ressource seit dem angegebenen Zeitpunkt nicht geändert wurde, gibt der Server in seiner Antwort den Statuscode 304 (Nicht geändert) zurück. Wenn die Ressource geändert wurde, gibt der Server den Statuscode 200 (OK) und die aktualisierte Ressource zurück.
 
 ## <a name="determining-which-files-can-be-cached"></a>Ermitteln der zwischenspeicherbaren Dateien
 
-Nicht alle Ressourcen können zwischengespeichert werden. Die folgende Tabelle zeigt, welche Ressourcen abhängig von der Art der HTTP-Antwort zwischengespeichert werden können. Mit HTTP-Antworten bereitgestellte Ressourcen, die nicht alle Bedingungen erfüllen, können nicht zwischengespeichert werden. Nur beim **Azure CDN von Verizon Premium** können Sie mithilfe der Regel-Engine einige dieser Bedingungen anpassen.
+Nicht alle Ressourcen können zwischengespeichert werden. Die folgende Tabelle zeigt, welche Ressourcen abhängig von der Art der HTTP-Antwort zwischengespeichert werden können. Mit HTTP-Antworten bereitgestellte Ressourcen, die nicht alle Bedingungen erfüllen, können nicht zwischengespeichert werden. Nur bei **Azure CDN von Verizon Premium** können Sie mithilfe des Regelmoduls einige dieser Bedingungen anpassen.
 
 |                   | Azure CDN von Verizon | Azure CDN von Akamai            |
 |------------------ |------------------------|----------------------------------|
@@ -121,9 +120,9 @@ Nicht alle Ressourcen können zwischengespeichert werden. Die folgende Tabelle z
 
 In der folgenden Tabelle wird das Standardverhalten beim Zwischenspeichern bei den Azure CDN-Produkten und deren Optimierungen beschrieben.
 
-|                    | Verizon – Allgemeine Webbereitstellung | Verizon – DSA | Akamai – Allgemeine Webbereitstellung | Akamai – DSA | Akamai – Download großer Dateien | Akamai – Allgemeines oder VoD-Medienstreaming |
+|                    | Verizon: Allgemeine Webbereitstellung | Verizon: DSA | Akamai: Allgemeine Webbereitstellung | Akamai: DSA | Akamai: Download großer Dateien | Akamai: Allgemeines oder VoD-Medienstreaming |
 |--------------------|--------|------|-----|----|-----|-----|
-| **Berücksichtigung des Ursprungs**   | Ja    | Nein    | Ja | Nein  | Ja | Ja |
+| **Berücksichtigung des Ursprungs**   | Ja    | Nein   | Ja | Nein | Ja | Ja |
 | **CDN-Cachedauer** | 7 Tage | Keine | 7 Tage | Keine | 1 Tag | 1 Jahr |
 
 **Berücksichtigung des Ursprungs**: Gibt an, ob die [unterstützten Header mit Cacheanweisungen](#http-cache-directive-headers) berücksichtigt werden sollen, wenn sie in der HTTP-Antwort des Ursprungsservers enthalten sind.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: cf93c95a37c9c32333727059317e05cfcc252905
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9ea7da35acefc139625e71904c8aa1b01b87e4df
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Erstellen von klassischen Metrikwarnungen in Azure Monitor für Azure-Dienste – plattformübergreifende Befehlszeilenschnittstelle
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="overview"></a>Übersicht
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie ältere Metrikwarnungen erstellt werden. Azure Monitor unterstützt jetzt [neuere, bessere Metrikwarnungen](monitoring-near-real-time-metric-alerts.md). Diese Warnungen können mehrere Metriken überwachen und ermöglichen die Warnung bei dimensionalen Metriken. CLI-Unterstützung für neuere Metrikwarnungen wird bald verfügbar sein.
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt jetzt [neuere, bessere Metrikwarnungen](monitoring-near-real-time-metric-alerts.md). Diese Warnungen können mehrere Metriken überwachen und ermöglichen die Warnung bei dimensionalen Metriken. CLI-Unterstützung für neuere Metrikwarnungen wird bald verfügbar sein.
 >
 >
 
-In diesem Artikel erfahren Sie, wie Sie Azure-Metrikwarnungen mit der plattformübergreifenden Befehlszeilenschnittstelle (CLI) einrichten können.
+In diesem Artikel erfahren Sie, wie Sie klassische Azure-Metrikwarnungen mit der plattformübergreifenden Befehlszeilenschnittstelle (CLI) einrichten können.
 
 > [!NOTE]
 > Azure Monitor ist der neue Name für den Dienst, der bis 25. September 2016 als „Azure Insights“ bezeichnet wurde. Die Namespaces und somit die folgenden Befehle enthalten jedoch weiterhin den Bezeichner „insights“.
@@ -46,14 +46,14 @@ Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services
 * **Metrikwerte** : Die Warnung wird ausgelöst, wenn der Wert einer angegebenen Metrik einen von Ihnen festgelegten Schwellenwert in beliebiger Richtung überschreitet. Das Auslösen erfolgt sowohl, wenn die Bedingung erstmals erfüllt wird, als auch danach, wenn diese Bedingung nicht mehr erfüllt wird.    
 * **Aktivitätsprotokollereignisse**: Eine Warnung kann für *jedes* Ereignis oder nur dann ausgelöst werden, wenn ein bestimmtes Ereignis auftritt. [Klicken Sie hier](monitoring-activity-log-alerts.md), um weitere Informationen zu Aktivitätsprotokollwarnungen zu erhalten.
 
-Sie können konfigurieren, dass bei einer Metrikwarnung Folgendes erfolgt, wenn sie ausgelöst wird:
+Sie können konfigurieren, dass bei einer klassischen Metrikwarnung Folgendes erfolgt, wenn sie ausgelöst wird:
 
 * Senden von E-Mail-Benachrichtigungen an den Dienstadministrator und Co-Administratoren
 * Senden von E-Mal an weitere von Ihnen angegebene Adressen
 * Aufrufen eines Webhooks
 * Starten der Ausführung eines Azure-Runbooks (derzeit nur über das Azure-Portal)
 
-Sie haben folgende Möglichkeiten zum Konfigurieren von Metrikwarnregeln und Abrufen zugehöriger Informationen:
+Sie haben folgende Möglichkeiten zum Konfigurieren von klassischen Metrikwarnregeln und Abrufen zugehöriger Informationen:
 
 * [Azure-Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
@@ -112,7 +112,7 @@ Sie können stets Hilfe zu Befehlen erhalten, indem Sie einen Befehl eingeben un
     azure insights alerts rule metric set myrule eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
 
     ```
-5. Um einen Webhook zu erstellen oder eine E-Mail zu senden, wenn eine Metrikwarnung ausgelöst wird, müssen Sie zunächst die E-Mail und/oder Webhooks erstellen. Erstellen Sie dann die Regel unmittelbar danach. Über die CLI können Sie bereits erstellten Regeln keine Webhooks oder E-Mails zuordnen.
+5. Um einen Webhook zu erstellen oder eine E-Mail zu senden, wenn eine klassische Metrikwarnung ausgelöst wird, müssen Sie zunächst die E-Mail und/oder Webhooks erstellen. Erstellen Sie dann die Regel unmittelbar danach. Über die CLI können Sie bereits erstellten Regeln keine Webhooks oder E-Mails zuordnen.
 
     ```console
     azure insights alerts actions email create --customEmails myemail@contoso.com

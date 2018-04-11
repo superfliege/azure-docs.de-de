@@ -1,11 +1,11 @@
 ---
 title: Erfassen eines Image einer Linux-VM in Azure mit CLI 2.0 | Microsoft-Dokumentation
-description: "Erfassen Sie ein Image von einer Azure-VM, das für Massenbereitstellungen mit Azure CLI 2.0 verwendet werden soll."
+description: Erfassen Sie ein Image von einer Azure-VM, das für Massenbereitstellungen mit Azure CLI 2.0 verwendet werden soll.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 08/22/2018
 ms.author: cynthn
-ms.openlocfilehash: 15ad240ea9b635cd7995bfae403a93e0b392850a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: e83319b8b4ace495a4301dd850cea27633115426
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD
 
@@ -89,6 +89,8 @@ Verwenden Sie die Azure CLI 2.0, um die VM als generalisiert zu kennzeichnen und
    
    > [!NOTE]
    > Das Image wird in derselben Ressourcengruppe wie der virtuelle Quellcomputer erstellt. Sie können aus diesem Image virtuelle Computer in einer beliebigen Ressourcengruppe in Ihrem Abonnement erstellen. Angesichts der Verwaltung können Sie eine spezifische Ressourcengruppe für die VM-Ressourcen und Images erstellen.
+   >
+   > Wenn Sie das Image in Speicher mit Zonenresilienz speichern möchten, müssen Sie es in einer Region erstellen, die [Verfügbarkeitszonen](../../availability-zones/az-overview.md) unterstützt, und den `--zone-resilient true`-Parameter einbeziehen.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>Schritt 3: Bereitstellen eines virtuellen Computers anhand des erfassten Images
 Erstellen Sie aus dem erstellten Image einen virtuellen Computer mit [az vm create](/cli/azure/vm#az_vm_create). Im folgenden Beispiel wird eine VM namens *myVMDeployed* anhand des Image *myImage* erstellt:

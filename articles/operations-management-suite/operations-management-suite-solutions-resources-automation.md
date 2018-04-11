@@ -1,8 +1,8 @@
 ---
-title: "Azure Automation-Ressourcen in OMS-Lösungen | Microsoft-Dokumentation"
-description: "Lösungen in der OMS enthalten üblicherweise Runbooks in Azure Automation zum Automatisieren von Prozessen, wie z.B. das Sammeln und Verarbeiten von Überwachungsdaten.  Dieser Artikel beschreibt, wie Sie Runbooks und dazugehörige Ressourcen in eine Lösung integrieren können."
+title: Azure Automation-Ressourcen in Verwaltungslösungen | Microsoft-Dokumentation
+description: Verwaltungslösungen enthalten üblicherweise Runbooks in Azure Automation zum Automatisieren von Prozessen, wie z.B. das Sammeln und Verarbeiten von Überwachungsdaten.  Dieser Artikel beschreibt, wie Sie Runbooks und dazugehörige Ressourcen in eine Lösung integrieren können.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1097b1ddd2e8f2fae0ffc809aee63be5c2ed4cb1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5750cd1147ec861ea38ff2ebc9ce481d256c1959
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>Hinzufügen von Azure Automation-Ressourcen zu einer OMS-Verwaltungslösung (Vorschau)
+# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Hinzufügen von Azure Automation-Ressourcen zu einer Verwaltungslösung (Vorschau)
 > [!NOTE]
-> Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen in der OMS, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.   
+> Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.   
 
 
-[Verwaltungslösungen in OMS](operations-management-suite-solutions.md) enthalten üblicherweise Runbooks in Azure Automation zum Automatisieren von Prozessen, wie z.B. das Sammeln und Verarbeiten von Überwachungsdaten.  Zusätzlich zu Runbooks beinhalten Automation-Konten Assets, wie z.B. Variablen und Zeitpläne, die die Runbooks unterstützen, die in der Lösung verwendet werden.  Dieser Artikel beschreibt, wie Sie Runbooks und dazugehörige Ressourcen in eine Lösung integrieren können.
+[Verwaltungslösungen](operations-management-suite-solutions.md) enthalten üblicherweise Runbooks in Azure Automation zum Automatisieren von Prozessen, wie z.B. das Sammeln und Verarbeiten von Überwachungsdaten.  Zusätzlich zu Runbooks beinhalten Automation-Konten Assets, wie z.B. Variablen und Zeitpläne, die die Runbooks unterstützen, die in der Lösung verwendet werden.  Dieser Artikel beschreibt, wie Sie Runbooks und dazugehörige Ressourcen in eine Lösung integrieren können.
 
 > [!NOTE]
-> Die Beispiele in diesem Artikel verwenden Parameter und Variablen, die entweder erforderlich sind oder für Verwaltungslösungen gelten und unter [Creating management solutions in Operations Management Suite (OMS) (Erstellen von Verwaltungslösungen in der Operations Management Suite (OMS))](operations-management-suite-solutions-creating.md) beschrieben sind. 
+> Die Beispiele in diesem Artikel verwenden Parameter und Variablen, die entweder erforderlich sind oder für Verwaltungslösungen gelten und unter [Entwerfen und Erstellen einer Verwaltungslösung in Azure](operations-management-suite-solutions-creating.md) beschrieben sind. 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -40,7 +40,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits mit den folgenden Inf
 - [Erstellen von Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>Automation-Konto
-Alle Ressourcen in Azure Automation befinden sich einem [Automation-Konto](../automation/automation-security-overview.md#automation-account-overview).  Wie unter [OMS workspace and Automation account (OMS-Arbeitsbereich und Automation-Konto)](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) beschrieben, ist das Automation-Konto nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung bestehen.  Ist es nicht verfügbar, schlägt die Installation der Lösung fehl.
+Alle Ressourcen in Azure Automation befinden sich einem [Automation-Konto](../automation/automation-security-overview.md#automation-account-overview).  Wie unter [Log Analytics workspace and Automation account](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) (Log Analytics-Arbeitsbereich und Automation-Konto) beschrieben, ist das Automation-Konto nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung bestehen.  Ist es nicht verfügbar, schlägt die Installation der Lösung fehl.
 
 Im Namen jeder Automation-Ressource ist der Name des Automation-Kontos enthalten.  Dafür sorgt,wie in diesem Beispiel eines Runbooks zu sehen, der Parameter **accountName** in der Lösung.
 
@@ -118,7 +118,7 @@ Die Eigenschaften für Automatisierungsaufträge werden in der folgenden Tabelle
 
 Der Auftrag umfasst das Senden des Runbook-Namens und aller Parameterwerte an das Runbook.  Der Auftrag sollte von dem Runbook [abhängen](operations-management-suite-solutions-solution-file.md#resources), von dem er gestartet wird, da das Runbook vor dem Auftrag erstellt werden muss.  Wenn Sie über mehrere Runbooks verfügen, die gestartet werden sollen, können Sie die Reihenfolge festlegen, indem ein Auftrag von allen anderen Aufträgen abhängt, die zuerst ausgeführt werden sollen.
 
-Der Name einer Auftragsressource muss eine GUID enthalten, die in der Regel von einem Parameter zugeordnet wird.  Weitere Informationen zu GUID-Parametern finden Sie unter [Creating management solutions in Operations Management Suite (OMS) (Erstellen von Verwaltungslösungen in der Operations Management Suite (OMS))](operations-management-suite-solutions-solution-file.md#parameters).  
+Der Name einer Auftragsressource muss eine GUID enthalten, die in der Regel von einem Parameter zugeordnet wird.  Weitere Informationen zu GUID-Parametern finden Sie unter [Erstellen einer Verwaltungslösungsdatei in Azure](operations-management-suite-solutions-solution-file.md#parameters).  
 
 
 ## <a name="certificates"></a>Zertifikate

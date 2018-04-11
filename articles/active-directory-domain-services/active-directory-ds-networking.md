@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: eee7905db4faedef3217118e8d491e2cb019fa30
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a56413490decc928ff2643213084155ae469871c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Netzwerkaspekte für die Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Auswählen eines virtuellen Azure-Netzwerks
@@ -73,7 +73,7 @@ Die folgenden Ports werden für Azure AD Domain Services benötigt, um Ihre verw
 **Port 443 (Synchronisierung mit Azure AD)**
 * Wird zum Synchronisieren Ihres Azure AD-Verzeichnisses mit Ihrer verwalteten Domäne verwendet.
 * Der Zugriff auf diesen Port muss in Ihrer NSG zugelassen werden. Ohne Zugriff auf diesen Port ist Ihre verwaltete Domäne nicht mit Ihrem Azure AD-Verzeichnis synchron. Benutzer können sich unter Umständen nicht anmelden, da Kennwortänderungen nicht mit Ihrer verwalteten Domäne synchronisiert werden.
-* Der eingehende Zugriff auf diesen Port kann auf IP-Adressen aus dem Azure-IP-Adressbereich beschränkt werden.
+* Der eingehende Zugriff auf diesen Port kann auf IP-Adressen aus dem Azure-IP-Adressbereich beschränkt werden. Beachten Sie, dass der Azure-IP-Adressbereich ein anderer Bereich ist als der in der folgenden Regel dargestellte PowerShell-Bereich.
 
 **Port 5986 (PowerShell-Remoting)**
 * Dient zum Ausführen von Verwaltungsaufgaben mithilfe von PowerShell-Remoting in Ihrer verwalteten Domäne.

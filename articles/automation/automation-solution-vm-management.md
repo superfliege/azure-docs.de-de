@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: da2d95bc100a6160282c93682ad76f7ee881e105
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2838d8fd53d4e2e564bb7784cb5489e9a167d5bb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation (Vorschauversion)
 
@@ -55,7 +55,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
 
 1. Die Seite **Lösung hinzufügen** wird angezeigt. Sie werden aufgefordert, die Lösung vor dem Importieren in Ihr Automation-Abonnement zu konfigurieren.
    ![Seite „Lösung hinzufügen“ der VM-Verwaltung](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
-1. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Arbeitsbereich** aus. Wählen Sie einen OMS-Arbeitsbereich aus, der mit demselben Azure-Abonnement verknüpft ist, unter dem sich das Automation-Konto befindet. Wählen Sie die Option **Neuen Arbeitsbereich erstellen**, wenn kein Arbeitsbereich vorhanden ist. Führen Sie auf der Seite **OMS-Arbeitsbereich** die folgenden Schritte aus:
+1. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Arbeitsbereich** aus. Wählen Sie einen Log Analytics-Arbeitsbereich aus, der mit demselben Azure-Abonnement verknüpft ist, unter dem sich das Automation-Konto befindet. Wählen Sie die Option **Neuen Arbeitsbereich erstellen**, wenn kein Arbeitsbereich vorhanden ist. Führen Sie auf der Seite **OMS-Arbeitsbereich** die folgenden Schritte aus:
    * Geben Sie einen Namen für den neuen **OMS-Arbeitsbereich** an.
    * Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
    * Unter **Ressourcengruppe** können Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen.
@@ -63,13 +63,13 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    * Wählen Sie einen **Tarif**aus. Die Lösung ist in zwei Tarifen verfügbar: **Free** und **Pro Knoten (OMS)**. Beim Tarif „Free“ gelten Beschränkungen für die Datenmenge, die pro Tag erfasst werden kann, die Aufbewahrungsdauer und die Laufzeit von Runbookaufträgen in Minuten. Für den Tarif „Pro Knoten“ gilt keine Beschränkung für die täglich erfasste Datenmenge.
 
         > [!NOTE]
-        > Der kostenpflichtige Tarif pro GB (Standalone) wird zwar als Option angezeigt, ist aber nicht verfügbar. Wenn Sie diesen Tarif auswählen und mit der Erstellung der Lösung in Ihrem Abonnement fortfahren, tritt ein Fehler auf. Dies wird behoben sein, wenn die Lösung offiziell veröffentlicht wird. Bei dieser Lösung werden nur Automation-Auftragsminuten und die Protokollerfassung genutzt. Ihrer Umgebung werden keine weiteren OMS-Knoten hinzugefügt.
+        > Der kostenpflichtige Tarif pro GB (Standalone) wird zwar als Option angezeigt, ist aber nicht verfügbar. Wenn Sie diesen Tarif auswählen und mit der Erstellung der Lösung in Ihrem Abonnement fortfahren, tritt ein Fehler auf. Dies wird behoben sein, wenn die Lösung offiziell veröffentlicht wird. Bei dieser Lösung werden nur Automation-Auftragsminuten und die Protokollerfassung genutzt. Ihrer Umgebung werden keine weiteren Knoten hinzugefügt.
 
 1. Klicken Sie nach dem Angeben der erforderlichen Informationen auf der Seite **OMS-Arbeitsbereich** auf **Erstellen**. Sie können den Status unter **Benachrichtigungen** über das Menü nachverfolgen, und nach Abschluss des Vorgangs gelangen Sie zurück zur Seite **Lösung hinzufügen**.
-1. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Automation-Konto** aus. Wenn Sie einen neuen OMS-Arbeitsbereich erstellen, müssen Sie auch ein dazugehöriges neues Automation-Konto erstellen. Wählen Sie die Option **Automation-Konto erstellen** aus, und geben Sie auf der Seite **Automation-Konto hinzufügen** Folgendes an:
+1. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Automation-Konto** aus. Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, müssen Sie auch ein dazugehöriges neues Automation-Konto erstellen. Wählen Sie die Option **Automation-Konto erstellen** aus, und geben Sie auf der Seite **Automation-Konto hinzufügen** Folgendes an:
    * Geben Sie im Feld **Name** den Namen des Automation-Kontos ein.
 
-    Alle anderen Optionen werden basierend auf dem OMS-Arbeitsbereich automatisch aufgefüllt. Diese Optionen können nicht geändert werden. Ein ausführendes Azure-Konto ist die Standardmethode für die Authentifizierung von Runbooks in dieser Lösung. Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und das Automation-Konto wird erstellt. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
+    Alle anderen Optionen werden basierend auf dem Log Analytics-Arbeitsbereich automatisch aufgefüllt. Diese Optionen können nicht geändert werden. Ein ausführendes Azure-Konto ist die Standardmethode für die Authentifizierung von Runbooks in dieser Lösung. Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und das Automation-Konto wird erstellt. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
 1. Wählen Sie abschließend auf der Seite **Lösung hinzufügen**die Option **Konfiguration** aus. Die Seite **Parameter** wird angezeigt.
 
@@ -230,7 +230,7 @@ Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappend
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
 
-Automation erstellt zwei Arten von Datensätzen im OMS-Repository: Auftragsprotokolle und Auftragsdatenströme.
+Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich: Auftragsprotokolle und Auftragsdatenströme.
 
 ### <a name="job-logs"></a>Auftragsprotokolle
 

@@ -1,6 +1,6 @@
 ---
-title: "Benutzeroberflächenelement „VirtualNetworkCombo“ in verwalteten Azure-Anwendungen | Microsoft-Dokumentation"
-description: "Hier wird das Benutzeroberflächenelement „Microsoft.Network.VirtualNetworkCombo“ für verwaltete Azure-Anwendungen beschrieben."
+title: Benutzeroberflächenelement VirtualNetworkCombo in Azure | Microsoft-Dokumentation
+description: Hier wird das Benutzeroberflächenelement Microsoft.Network.VirtualNetworkCombo für das Azure-Portal beschrieben.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: c17ef740dcc709b5b344c4e60ef997a948b2e5de
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 38202b3b669a162f1cdbe88663d050d8d791c964
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Benutzeroberflächenelement „Microsoft.Network.VirtualNetworkCombo“
-Eine Gruppe von Steuerelementen zum Auswählen eines neuen oder vorhandenen virtuellen Netzwerks. Dieses Element verwenden Sie beim [Erstellen einer verwalteten Azure-Anwendung](publish-service-catalog-app.md).
+Eine Gruppe von Steuerelementen zum Auswählen eines neuen oder vorhandenen virtuellen Netzwerks.
 
 ## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
 ![Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo.png)
@@ -115,6 +115,5 @@ Der Standardwert ist **0**. Um sicherzustellen, dass die verfügbaren Adressen z
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Azure-Anwendungen](overview.md).
 * Eine Einführung zum Erstellen von Benutzeroberflächendefinitionen finden Sie unter [Erste Schritte mit „CreateUiDefinition“](create-uidefinition-overview.md).
 * Eine Beschreibung der allgemeinen Eigenschaften in Benutzeroberflächenelementen finden Sie unter [CreateUiDefinition-Elemente](create-uidefinition-elements.md).

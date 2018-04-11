@@ -1,30 +1,30 @@
 ---
-title: "Übersicht über RBAC in Azure PIM | Microsoft-Dokumentation"
-description: "Verschaffen Sie sich einen Überblick über das RBAC-Feature in PIM (einschließlich Terminologie und Benachrichtigungen)."
+title: Übersicht über RBAC in Azure PIM | Microsoft-Dokumentation
+description: Verschaffen Sie sich einen Überblick über das RBAC-Feature in PIM (einschließlich Terminologie und Benachrichtigungen).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/19/2017
-ms.author: barclayn
-ms.openlocfilehash: 19715f800e7d8d40336d8e9fa3bf8073795dce5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 03/30/2018
+ms.author: billmath
+ms.openlocfilehash: 87d349933a8daeaf8b7a4487612ad62dd2b9efc2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="pim-for-azure-resources-preview"></a>PIM für Azure-Ressourcen (Vorschauversion)
+# <a name="pim-for-azure-resources"></a>PIM für Azure-Ressourcen
 
-Mit Azure Active Directory Privileged Identity Management (PIM) können Sie nun den Zugriff auf Azure-Ressourcen (Vorschauversion) innerhalb Ihrer Organisation verwalten, steuern und überwachen. Dies schließt Abonnements, Ressourcengruppen und sogar virtuelle Computer ein. Alle Ressourcen im Azure-Portal, die die Azure-Funktion für die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) nutzen, können sowohl von den großartigen Sicherheits- und Lebenszyklusverwaltungsfunktionen profitieren, die Azure AD PIM zu bieten hat, als auch von einigen neuen Features, die in Kürze für Azure AD-Rollen eingeführt werden. 
+Mit Azure Active Directory Privileged Identity Management (PIM) können Sie nun den Zugriff auf Azure-Ressourcen innerhalb Ihrer Organisation verwalten, steuern und überwachen. Dies schließt Abonnements, Ressourcengruppen und sogar virtuelle Computer ein. Alle Ressourcen im Azure-Portal, die die Azure-Funktion für die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) nutzen, können sowohl von den großartigen Sicherheits- und Lebenszyklusverwaltungsfunktionen profitieren, die Azure AD PIM zu bieten hat, als auch von einigen neuen Features, die in Kürze für Azure AD-Rollen eingeführt werden. 
 
-## <a name="pim-for-azure-resources-preview-helps-resource-administrators"></a>Unterstützung von Ressourcenadministratoren durch PIM für Azure-Ressourcen (Vorschauversion)
+## <a name="pim-for-azure-resources-helps-resource-administrators"></a>Unterstützung von Ressourcenadministratoren durch PIM für Azure-Ressourcen
 
 - Sehen Sie, welchen Benutzern und Gruppen Rollen für die von Ihnen verwalteten Azure-Ressourcen zugewiesen sind.
 - Aktivieren Sie bedarfsgesteuerten Just-In-Time-Zugriff zur Verwaltung von Ressourcen wie Abonnements und Ressourcengruppen
@@ -36,7 +36,7 @@ Mit Azure Active Directory Privileged Identity Management (PIM) können Sie nun 
 
 Azure AD PIM kann sowohl die integrierten Azure-Ressourcenrollen als auch benutzerdefinierte (RBAC-)Rollen verwalten. Beispiele:
 
-- Besitzer
+- Owner (Besitzer)
 - Benutzerzugriffsadministrator
 - Mitwirkender
 - Sicherheitsadministrator
@@ -49,15 +49,15 @@ Benutzer oder Mitglieder von Gruppen, die der Rolle „Besitzer“ oder „Benut
 
 Mit PIM können Sie über den Aufgabenabschnitt des linken Navigationsmenüs komfortabel Rollen aktivieren sowie ausstehende Aktivierungen/Anforderungen, ausstehende Genehmigungen (für [Azure AD-Verzeichnisrollen](azure-ad-pim-approval-workflow.md)) und Überprüfungen mit ausstehender Antwort anzeigen.
 
-Wenn Sie von der Übersicht aus auf eines der Elemente im Aufgabenmenü zugreifen, enthält die daraufhin angezeigte Ansicht sowohl Ergebnisse für Azure AD-Verzeichnisrollen als auch Ergebnisse für Azure-Ressourcenrollen (Vorschauversion). 
+Wenn Sie von der Übersicht aus auf eines der Elemente im Aufgabenmenü zugreifen, enthält die daraufhin angezeigte Ansicht sowohl Ergebnisse für Azure AD-Verzeichnisrollen als auch Ergebnisse für Azure-Ressourcenrollen. 
 
 ![](media/azure-pim-resource-rbac/role-settings-details.png)
 
-Unter „My roles“ (Meine Rollen) befindet sich eine Liste mit Ihren aktiven und geeigneten Rollenzuweisungen für Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen (Vorschauversion).
+Unter „My roles“ (Meine Rollen) befindet sich eine Liste mit Ihren aktiven und geeigneten Rollenzuweisungen für Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen.
 
 ## <a name="activate-roles"></a>Aktivieren von Rollen
 
-Zur Aktivierung von Rollen für Azure-Ressourcen (Vorschauversion) wird eine neue Umgebung eingeführt, in der geeignete Rollenmitglieder die Aktivierung für einen späteren Zeitpunkt planen und eine bestimmte Aktivierungsdauer auswählen können, die innerhalb des (von Administratoren konfigurierten) Bereichs liegt. Erfahren Sie mehr über das [Aktivieren von Azure AD-Rollen](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Zur Aktivierung von Rollen für Azure-Ressourcen wird eine neue Umgebung eingeführt, in der geeignete Rollenmitglieder die Aktivierung für einen späteren Zeitpunkt planen und eine bestimmte Aktivierungsdauer auswählen können, die innerhalb des (von Administratoren konfigurierten) Bereichs liegt. Erfahren Sie mehr über das [Aktivieren von Azure AD-Rollen](../active-directory-privileged-identity-management-how-to-activate-role.md).
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
@@ -73,7 +73,7 @@ Wenn die Aktivierung für einen späteren Zeitpunkt geplant wurde, wird die auss
 
 ## <a name="discover-and-manage-azure-resources"></a>Ermitteln und Verwalten von Azure-Ressourcen
 
-Wählen Sie auf der Verwaltungsregisterkarte des linken Navigationsmenüs die Option für Azure-Ressourcen (Vorschauversion) aus, um Rollen für eine Azure-Ressource zu suchen und zu verwalten. Suchen Sie mithilfe der Filter oder der Suchleiste am oberen Seitenrand nach einer Ressource.
+Wählen Sie auf der Verwaltungsregisterkarte des linken Navigationsmenüs die Option für Azure-Ressourcen aus, um Rollen für eine Azure-Ressource zu suchen und zu verwalten. Suchen Sie mithilfe der Filter oder der Suchleiste am oberen Seitenrand nach einer Ressource.
 
 ![](media/azure-pim-resource-rbac/azure-resources.png)
 

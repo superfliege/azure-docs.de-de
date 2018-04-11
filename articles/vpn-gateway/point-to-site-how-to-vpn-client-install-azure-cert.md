@@ -1,25 +1,25 @@
 ---
 title: Installieren eines P2S-Clientzertifikats | Azure
-description: "Installieren eines Mac- oder Windows-Clientzertifikats für P2S-Zertifikatauthentifizierung (Point-to-Site)."
+description: Installieren eines Mac- oder Windows-Clientzertifikats für P2S-Zertifikatauthentifizierung (Point-to-Site).
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager, azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 04/02/2018
 ms.author: cherylmc
-ms.openlocfilehash: de98201b65f5531f334aded1056f622cecb6e190
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: bf2788fff64ab8b3a5ccf75b8a80f2bd5aba5151
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="install-a-client-certificate-for-point-to-site-azure-certificate-authentication-connections"></a>Installieren eines Clientzertifikats für Point-to-Site-Verbindungen mit Azure-Zertifikatauthentifizierung
 
@@ -29,17 +29,13 @@ Alle Clients, die mithilfe der P2S-Azure-Zertifikatauthentifizierung eine Verbin
 
 Sie können ein Clientzertifikat mithilfe eines Stammzertifikats, das mit einer Lösung einer Unternehmenszertifizierungsstelle generiert wurde, oder mithilfe eines selbstsignierten Zertifikats erstellen. Die entsprechenden Schritte finden Sie in den Anweisungen für [PowerShell](vpn-gateway-certificates-point-to-site.md) oder [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md). Exportieren Sie Clientzertifikate nach ihrer Erstellung als PFX-Dateien. Achten Sie darauf, beim Exportieren die gesamte Zertifikatkette aufzunehmen.
 
-## <a name="installwin"></a>Installieren eines Zertifikats auf Windows-Clients
+## <a name="installwin"></a>Zertifikat installieren – Windows
 
 [!INCLUDE [Install on Windows](../../includes/vpn-gateway-certificates-install-client-cert-include.md)]
 
-## <a name="installmac"></a>Installieren eines Zertifikats auf Mac-Clients
+## <a name="installmac"></a>Zertifikat installieren – Mac
 
 Mac-VPN-Clients werden nur für das Resource Manager-Bereitstellungsmodell unterstützt. Für das klassische Bereitstellungsmodell werden sie nicht unterstützt.
-
-> [!NOTE]
->  IKEv2 befindet sich derzeit in der Vorschauphase.
->
 
 [!INCLUDE [Install on Mac](../../includes/vpn-gateway-certificates-install-mac-client-cert-include.md)]
 
@@ -47,6 +43,6 @@ Mac-VPN-Clients werden nur für das Resource Manager-Bereitstellungsmodell unter
 
 Fahren Sie mit den Schritten für die P2S-Konfiguration fort.
 
-* [Azure portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+* [Azure-Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 * [Azure-Portal (klassisch)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)

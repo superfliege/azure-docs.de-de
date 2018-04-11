@@ -1,25 +1,22 @@
 ---
-title: Überwachen von Zugriffsprotokollen, Leistungsprotokollen, Back-End-Integrität und Metriken für Application Gateway | Microsoft-Dokumentation
+title: Überwachen von Zugriffsprotokollen, Leistungsprotokollen, Back-End-Integrität und Metriken für Application Gateway
 description: Erfahren Sie, wie Sie Zugriffs- und Leistungsprotokolle für Application Gateway aktivieren und verwalten.
 services: application-gateway
-documentationcenter: na
 author: amitsriva
 manager: rossort
-editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 300628b8-8e3d-40ab-b294-3ecc5e48ef98
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 4/2/2018
 ms.author: amitsriva
-ms.openlocfilehash: 885ae8b97175cac4cd29793eb0a935e81d54d0e4
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 982ae712320cb390b1822de6a7a3980ebfb6251e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway
 
@@ -29,7 +26,7 @@ Mit Azure Application Gateway können Sie Ressourcen auf die folgenden Arten üb
 
 * [Protokolle](#diagnostic-logging): Protokolle ermöglichen das Speichern und Nutzen von Leistungs-, Zugriffs- und anderen Daten einer Ressource zu Überwachungszwecken.
 
-* [Metriken](#metrics): Application Gateway verfügt derzeit über eine Metrik. Mit dieser Metrik wird der Durchsatz des Anwendungsgateways in Bytes pro Sekunde gemessen.
+* [Metriken](#metrics): Application Gateway verfügt derzeit über sieben Metriken, um Leistungsindikatoren anzuzeigen.
 
 ## <a name="back-end-health"></a>Back-End-Integrität
 
@@ -318,13 +315,22 @@ Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON
 
 Metriken sind ein Feature für bestimmte Azure-Ressourcen, damit Sie die Leistungsindikatoren im Portal anzeigen können. Für Application Gateway werden folgende Metriken unterstützt:
 
-- Aktuelle Verbindungen
-- Anforderungsfehler
-- Anzahl von fehlerfreien Hosts
-- Antwortstatus
-- Throughput
-- Anzahl von Anforderungen
-- Anzahl von fehlerhaften Hosts
+- **Aktuelle Verbindungen**
+- **Anforderungsfehler**
+- **Anzahl von fehlerfreien Hosts**
+
+   Sie können auf Back-End-Pool-Basis filtern, um fehlerfreie/fehlerhafte Hosts in einem bestimmten Back-End-Pool anzuzeigen.
+
+
+- **Antwortstatus**
+
+   Die Antwortstatuscode-Verteilung kann weiter kategorisiert werden, um Antworten in 2xx-, 3xx-, 4xx- und 5xx-Kategorien anzuzeigen.
+
+- **Durchsatz**
+- **Anforderungen insgesamt**
+- **Anzahl von fehlerhaften Hosts**
+
+   Sie können auf Back-End-Pool-Basis filtern, um fehlerfreie/fehlerhafte Hosts in einem bestimmten Back-End-Pool anzuzeigen.
 
 Navigieren Sie zu einem Anwendungsgateway, und klicken Sie unter **Überwachung** auf **Metriken**. Um die verfügbaren Werte anzuzeigen, wählen Sie die Dropdownliste **METRIK** aus.
 

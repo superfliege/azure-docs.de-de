@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e426f2b90e3ac3ac6bcb9825c7848c76e52a1021
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a7891e5bedb6e2ad3cba4780d38fc479d7b0bf4e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -119,7 +119,7 @@ Heartbeat
 
 Auf einem Windows-Computer können Sie Folgendes überprüfen, um für den Agent die Log Analytics-Konnektivität zu bestätigen:
 
-1.  Öffnen Sie in der Systemsteuerung den Microsoft Monitoring Agent. Auf der Registerkarte **Azure Log Analytics (OMS)** wird vom Agent folgende Meldung angezeigt: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Operations Management Suite service** (Für den Microsoft Monitoring Agent wurde die Verbindung mit dem Microsoft Operations Management Suite-Dienst erfolgreich hergestellt).   
+1.  Öffnen Sie in der Systemsteuerung den Microsoft Monitoring Agent. Auf der Registerkarte **Azure Log Analytics** wird vom Agent folgende Meldung angezeigt: **The Microsoft Monitoring Agent has successfully connected to Log Analytics** (Für den Microsoft Monitoring Agent wurde die Verbindung mit Log Analytics erfolgreich hergestellt).   
 2.  Öffnen Sie das Windows-Ereignisprotokoll, navigieren Sie zu **Anwendungs- und Dienstprotokolle\Operations Manager**, und suchen Sie nach der Ereignis-ID 3000 und 5002 (Service Connector-Quellinstanz). Mit diesen Ereignissen wird angegeben, dass für den Computer die Registrierung beim Log Analytics-Arbeitsbereich und die Konfiguration durchgeführt wurden.  
 
 Falls der Agent nicht mit Log Analytics kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, sollten Sie für die Firewall bzw. den Proxyserver die Richtigkeit der Konfiguration sicherstellen, indem Sie die Informationen zur [Netzwerkkonfiguration für Windows-Agent](../log-analytics/log-analytics-agent-windows.md) bzw. die Informationen zur [Netzwerkkonfiguration für Linux-Agent](../log-analytics/log-analytics-agent-linux.md) durchgehen.
@@ -131,7 +131,7 @@ Falls der Agent nicht mit Log Analytics kommunizieren kann und für die Kommunik
 
 Für neu hinzugefügte Linux-Agents wird der Status **Aktualisiert** angezeigt, nachdem eine Bewertung durchgeführt wurde. Dieser Vorgang kann bis zu sechs Stunden dauern.
 
-Wenn Sie bestätigen möchten, dass eine Operations Manager-Verwaltungsgruppe mit Log Analytics kommuniziert, helfen Ihnen die Informationen unter [Überprüfen der Operations Manager-Integration für OMS](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms) weiter.
+Wenn Sie bestätigen möchten, dass eine Operations Manager-Verwaltungsgruppe mit Log Analytics kommuniziert, helfen Ihnen die Informationen unter [Überprüfen der Operations Manager-Integration für Log Analytics](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms) weiter.
 
 ## <a name="data-collection"></a>Datensammlung
 
@@ -173,7 +173,7 @@ Klicken Sie auf **Fehlende Updates**, um eine Liste der Updates anzuzeigen, die 
 
 ## <a name="viewing-update-deployments"></a>Anzeigen von Updatebereitstellungen
 
-Klicken Sie auf **Updatebereitstellungen**, um die Liste mit den vorhandenen Updatebereitstellungen anzuzeigen. Wenn Sie in der Liste auf eine Updatebereitstellung klicken, wird die Seite **Updatebereitstellungsausführung** für diese Updatebereitstellung geöffnet.
+Klicken Sie auf die Registerkarte **Bereitstellung aktualisieren**, um die Liste mit den vorhandenen Updatebereitstellungen anzuzeigen. Wenn Sie in der Tabelle auf eine Updatebereitstellung klicken, wird die Seite **Updatebereitstellungsausführung** für diese Updatebereitstellung geöffnet.
 
 ![Übersicht über Ergebnisse der Updatebereitstellung](./media/automation-update-management/update-deployment-run.png)
 
@@ -186,7 +186,7 @@ Erstellen Sie eine neue Updatebereitstellung, indem Sie auf die Schaltfläche **
 | NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
 |Betriebssystem| Linux oder Windows|
 | Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus |
-|Updateklassifizierung|Wählen Sie alle benötigten Updateklassifizierungen aus|
+|Updateklassifizierungen|Wählen Sie alle benötigten Updateklassifizierungen aus|
 |Auszuschließende Updates|Geben Sie alle auszuschließenden KBs ohne das Präfix "KB" ein|
 |Zeitplaneinstellungen|Wählen Sie den Startzeitpunkt aus, und geben Sie unter „Wiederholung“ entweder „Einmal“ oder „Serie“ an|
 | Wartungsfenster |Festgelegte Minutenanzahl für Updates Der Wert darf nicht weniger als 30 Minuten und nicht mehr als 6 Stunden betragen |
@@ -213,7 +213,7 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Updatedatensä
 
 Kunden, die in System Center Configuration Manager investiert haben, um PCs, Server und Mobilgeräte zu verwalten, profitieren auch von der Leistungsstärke und dem Funktionsumfang dieser Lösung bei der Verwaltung von Softwareupdates im Rahmen des Softwareupdateverwaltungs-Zyklus.
 
-Wie Sie die OMS-Updateverwaltungslösung in System Center Configuration Manager integrieren, erfahren Sie unter [Integrieren von System Center Configuration Manager und OMS-Updateverwaltung](oms-solution-updatemgmt-sccmintegration.md).
+Wie Sie die Verwaltungslösung in System Center Configuration Manager integrieren, erfahren Sie unter [Integrieren von System Center Configuration Manager und Updateverwaltung](oms-solution-updatemgmt-sccmintegration.md).
 
 ## <a name="patching-linux-machines"></a>Patchen von Linux-Computern
 

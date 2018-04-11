@@ -12,31 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 03/30/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 2b42840bc1053e9574e7c8ab1c68611c3b2bc7df
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a4ed9ddabe19406fa694992f29cf529b491438c0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Erstellen attributbasierter Regeln für dynamische Gruppenmitgliedschaft in Azure Active Directory
-In Azure Active Directory (Azure AD) können Sie erweiterte Regeln für die Aktivierung von komplexen, attributbasierten dynamischen Mitgliedschaften für Gruppen erstellen. In diesem Artikel werden Attribute und Syntax zum Erstellen der Regeln für dynamische Mitgliedschaft für Benutzer oder Geräte erläutert.
+In Azure Active Directory (Azure AD) können Sie erweiterte Regeln für die Aktivierung von komplexen, attributbasierten dynamischen Mitgliedschaften für Gruppen erstellen. In diesem Artikel werden Attribute und Syntax zum Erstellen der Regeln für dynamische Mitgliedschaft für Benutzer oder Geräte erläutert. Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten.
 
 Wenn sich Attribute eines Benutzers oder Geräts ändern, bewertet das System alle dynamischen Gruppenregel in einem Verzeichnis, um zu ermitteln, ob die Änderung irgendwelche Vorgänge zum Hinzufügen oder Löschen von Gruppen auslöst. Falls ein Benutzer oder Gerät wird als Mitglied zu einer Gruppe hinzugefügt, wenn eine Regel dieser Gruppe erfüllt wird. Wenn sie diese Regel nicht mehr erfüllen, werden sie entfernt.
 
 > [!NOTE]
-> Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten.
->
 > Diese Funktion erfordert für jeden Benutzer, der mindestens einer dynamischen Gruppe hinzugefügt wurde, eine Azure AD Premium P1-Lizenz. Es ist nicht obligatorisch, tatsächlich Benutzern Lizenzen zuzuweisen, damit sie Mitglieder in dynamischen Gruppen werden, aber Sie benötigen die Mindestanzahl von Lizenzen im Mandanten, um alle solche Benutzer abzudecken. Beispiel: Wenn Sie über insgesamt 1.000 eindeutige Benutzer in allen dynamischen Gruppen Ihres Mandanten verfügen, benötigen Sie mindestens 1.000 Lizenzen für Azure AD Premium P1 oder höher, um die Lizenzanforderung zu erfüllen.
 >
 > Sie können zwar eine dynamische Gruppe für Geräte oder Benutzer erstellen, jedoch können Sie keine Regel erstellen, die sowohl Benutzer- als auch Geräteobjekte enthält.
 > 
 > Derzeit ist es nicht möglich, eine Gerätegruppe basierend auf den Attributen der zuständigen Benutzer zu erstellen. Die Regeln für die Gerätemitgliedschaft können nur auf unmittelbare Attribute von Geräteobjekten im Verzeichnis verweisen.
-> 
-> Microsoft Teams unterstützt noch keine dynamische Gruppenmitgliedschaft. Den Fehler können Sie in den Protokollen im Zusammenhang mit „Cannot migrate Dynamic membership group“ (Die dynamische Mitgliedschaftsgruppe kann nicht migriert werden.) validieren.
 
 ## <a name="to-create-an-advanced-rule"></a>Erstellen einer erweiterten Regel
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) über ein Konto an, das als globaler Administrator oder Benutzerkontoadministrator konfiguriert ist.
@@ -74,7 +70,7 @@ Eine vollständige Liste der unterstützten Parameter und Ausdrucksregeloperator
 Die Gesamtlänge des Texts der erweiterten Regel darf 2048 Zeichen nicht überschreiten.
 
 > [!NOTE]
-> Bei Vorgängen mit Zeichenfolgen und regulären Ausdrücken wird die Groß- und Kleinschreibung nicht beachtet. Sie können auch NULL-Prüfungen durchführen, indem Sie *null* als Konstante verwenden. Beispiel: user.department -eq *$null*.
+> Bei Vorgängen mit Zeichenfolgen und regulären Ausdrücken wird die Groß- und Kleinschreibung nicht beachtet. Sie können auch NULL-Prüfungen durchführen, indem Sie *null* als Konstante verwenden. Beispiel: user.department -eq *null*.
 > Zeichenfolgen mit Anführungszeichen (") sollten mit einem Escapezeichen (') maskiert werden. Beispiel: user.department -eq \`"Sales".
 
 ## <a name="supported-expression-rule-operators"></a>Unterstützte Ausdrucksregeloperatoren
@@ -106,11 +102,11 @@ Alle Operatoren werden unten nach Rangfolge von niedrig nach hoch aufgeführt. O
 Alle Operatoren können mit oder ohne vorangestellten Bindestrich verwendet werden. Klammern sind nur erforderlich, wenn die Rangfolge nicht Ihren Anforderungen entspricht.
 Beispiel: 
 ```
-   user.department -eq "Marketing" -and user.country -eq "US"
+   user.department –eq "Marketing" –and user.country –eq "US"
 ```
 entspricht:
 ```
-   (user.department -eq "Marketing") -and (user.country -eq "US")
+   (user.department –eq "Marketing") –and (user.country –eq "US")
 ```
 ## <a name="using-the--in-and--notin-operators"></a>Mithilfe der Operatoren „-In“ und „-notIn“
 
@@ -160,32 +156,32 @@ Zulässige Operatoren
 
 | Eigenschaften | Zulässige Werte | Verwendung |
 | --- | --- | --- |
-| city |Jeder string-Wert oder *$null* |(user.city -eq "value") |
-| country |Jeder string-Wert oder *$null* |(user.country -eq "value") |
-| companyName | Jeder string-Wert oder *$null* | (user.companyName -eq "value") |
-| department |Jeder string-Wert oder *$null* |(user.department -eq "value") |
+| city |Jeder string-Wert oder *null* |(user.city -eq "value") |
+| country |Jeder string-Wert oder *null* |(user.country -eq "value") |
+| companyName | Jeder string-Wert oder *null* | (user.companyName -eq "value") |
+| department |Jeder string-Wert oder *null* |(user.department -eq "value") |
 | displayName |Jeder string-Wert. |(user.displayName -eq "value") |
-| employeeId |Jeder string-Wert. |(user.employeeId -eq "value")<br>(user.employeeId -ne *$null*) |
-| facsimileTelephoneNumber |Jeder string-Wert oder *$null* |(user.facsimileTelephoneNumber -eq "value") |
-| givenName |Jeder string-Wert oder *$null* |(user.givenName -eq "value") |
-| jobTitle |Jeder string-Wert oder *$null* |(user.jobTitle -eq "value") |
-| mail |Jeder string-Wert oder *$null* (SMTP-Adresse des Benutzers) |(user.mail -eq "value") |
+| employeeId |Jeder string-Wert. |(user.employeeId -eq "value")<br>(user.employeeId -ne *null*) |
+| facsimileTelephoneNumber |Jeder string-Wert oder *null* |(user.facsimileTelephoneNumber -eq "value") |
+| givenName |Jeder string-Wert oder *null* |(user.givenName -eq "value") |
+| jobTitle |Jeder string-Wert oder *null* |(user.jobTitle -eq "value") |
+| mail |Jeder string-Wert oder *null* (SMTP-Adresse des Benutzers) |(user.mail -eq "value") |
 | mailNickName |Jeder string-Wert (E-Mail-Alias des Benutzers) |(user.mailNickName -eq "value") |
-| mobile |Jeder string-Wert oder *$null* |(user.mobile -eq "value") |
+| mobile |Jeder string-Wert oder *null* |(user.mobile -eq "value") |
 | objectId |GUID des Benutzerobjekts. |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Lokale Sicherheits-ID (SID) für Benutzer, deren Daten von einem lokalen Standort in die Cloud synchronisiert wurden. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |Jeder string-Wert oder *$null* |(user.physicalDeliveryOfficeName -eq "value") |
-| postalCode |Jeder string-Wert oder *$null* |(user.postalCode -eq "value") |
+| physicalDeliveryOfficeName |Jeder string-Wert oder *null* |(user.physicalDeliveryOfficeName -eq "value") |
+| postalCode |Jeder string-Wert oder *null* |(user.postalCode -eq "value") |
 | preferredLanguage |ISO 639-1 code |(user.preferredLanguage -eq "en-US") |
-| sipProxyAddress |Jeder string-Wert oder *$null* |(user.sipProxyAddress -eq "value") |
-| state |Jeder string-Wert oder *$null* |(user.state -eq "value") |
-| streetAddress |Jeder string-Wert oder *$null* |(user.streetAddress -eq "value") |
-| surname |Jeder string-Wert oder *$null* |(user.surname -eq "value") |
-| telephoneNumber |Jeder string-Wert oder *$null* |(user.telephoneNumber -eq "value") |
+| sipProxyAddress |Jeder string-Wert oder *null* |(user.sipProxyAddress -eq "value") |
+| state |Jeder string-Wert oder *null* |(user.state -eq "value") |
+| streetAddress |Jeder string-Wert oder *null* |(user.streetAddress -eq "value") |
+| surname |Jeder string-Wert oder *null* |(user.surname -eq "value") |
+| telephoneNumber |Jeder string-Wert oder *null* |(user.telephoneNumber -eq "value") |
 | usageLocation |Aus zwei Buchstaben bestehender Ländercode. |(user.usageLocation -eq "US") |
 | userPrincipalName |Jeder string-Wert. |(user.userPrincipalName -eq "alias@domain") |
-| userType |member-Gast *$null* |(user.userType -eq "Member") |
+| userType |member-Gast *null* |(user.userType -eq "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschaften vom Typ "string collection"
 Zulässige Operatoren
@@ -228,7 +224,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 ## <a name="use-of-null-values"></a>Verwenden von NULL-Werten
 
-Zum Angeben eines NULL-Werts in einer Regel können Sie den Wert *null* verwenden. Achten Sie darauf, keine Anführungszeichen um das Wort *null* zu verwenden – andernfalls werden diese als literaler Zeichenfolgenwert interpretiert. Die richtige Referenzierung des NULL-Werts erfolgt auf diese Weise:
+Zum Angeben eines NULL-Werts in einer Regel können Sie den Wert *null* verwenden. Achten Sie darauf, keine Anführungszeichen um das Wort *null* zu verwenden – andernfalls werden diese als literaler Zeichenfolgenwert interpretiert. Der -not-Operator kann nicht als Vergleichsoperator für NULL verwendet werden. Wenn Sie ihn verwenden, erhalten Sie eine Fehlermeldung, egal ob Sie „null“ oder „$null“ verwenden. Verwenden Sie stattdessen „-eq“ oder „-ne“. Die richtige Referenzierung des NULL-Werts erfolgt auf diese Weise:
 ```
    user.mail –ne $null
 ```
@@ -254,13 +250,14 @@ Sie können eine Gruppe erstellen, die alle einem Manager direkt unterstellten M
 > [!NOTE]
 > 1. Damit diese Regel funktioniert, stellen Sie sicher, dass die Eigenschaft **Manager ID** (Manager-ID) für die Benutzer in Ihrem Mandanten korrekt festgelegt ist. Sie können den aktuellen Wert für einen Benutzer in deren **Registerkarte „Profil“** überprüfen.
 > 2. Diese Regel gilt nur für **direct** (direkt) unterstellte Mitarbeiter. Es ist derzeit nicht möglich, eine Gruppe für eine geschachtelte Hierarchie zu erstellen, wie zum Beispiel eine Gruppe, die direkt unterstellte Mitarbeiter und deren unterstellte Mitarbeiter enthält.
+> 3. Diese Regel kann nicht mit anderen erweiterten Regeln kombiniert werden.
 
 **To configure the group** (Konfigurieren der Gruppe)
 
 1. Führen Sie die Schritte 1 bis 5 im Abschnitt [To create the advanced rule (Erstellen einer erweiterten Regel)](#to-create-the-advanced-rule), aus, und wählen Sie als **Membership type** (Mitgliedschaftstyp) die Option **Dynamic User** (Dynamischer Benutzer) aus.
 2. Geben Sie auf dem Blatt **Regeln für dynamische Mitgliedschaft** die Regel mit der folgenden Syntax ein:
 
-    *Direct Reports for "{obectID_of_manager}"* (Direkt unterstellte Mitarbeiter für „{obectID_of_manager}“)
+    *Direct Reports for "{objectID_of_manager}"* (Direkt unterstellte Mitarbeiter für „{objectID_of_manager}“)
 
     Beispiel für eine gültige Regel:
 ```
@@ -295,19 +292,43 @@ Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaf
 ## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>Ändern der dynamischen Mitgliedschaft in statisch (und umgekehrt)
 Sie können ändern, wie die Mitgliedschaft in einer Gruppe verwaltet wird. Dies ist hilfreich, wenn Sie im System den gleichen Gruppennamen und die dazugehörige ID beibehalten möchten, damit alle vorhandenen Verweise auf die Gruppe weiterhin gültig sind. Wenn eine neue Gruppe erstellt wird, müssen diese Verweise aktualisiert werden.
 
-Das Azure-Portal wird derzeit aktualisiert, um diese Funktionalität zu unterstützen. In der Zwischenzeit können Sie PowerShell-Cmdlets verwenden, wie unten dargestellt.
+Wir haben das Azure AD Admin Center um Unterstützung für diese Funktionalität erweitert. Nun können Kunden entweder über Azure AD Admin Center oder PowerShell-Cmdlets vorhandene Gruppen aus der dynamischen Mitgliedschaft in zugewiesene Mitgliedschaft umwandeln und umgekehrt, wie unten dargestellt.
 
 > [!WARNING]
 > Wenn Sie eine vorhandene statische Gruppe in eine dynamische Gruppe ändern, werden alle vorhandenen Mitglieder aus der Gruppe entfernt, und anschließend wird die Mitgliedsschaftsregel verarbeitet, um neue Mitglieder hinzuzufügen. Wenn die Gruppe verwendet wird, um den Zugriff auf Apps oder Ressourcen zu steuern, haben die ursprünglichen Mitglieder unter Umständen erst wieder Zugriff, wenn die Mitgliedsschaftsregel vollständig verarbeitet wurde.
 >
-> Es ist empfehlenswert, die neue Mitgliedsschaftsregel vorher zu testen, um sicherzustellen, dass sich die neue Mitgliedschaft in der Gruppe wie erwartet verhält.
+> Sie sollten die neue Mitgliedsschaftsregel vorher testen, um sicherzustellen, dass sich die neue Mitgliedschaft in der Gruppe wie erwartet verhält.
 
-**Verwenden von PowerShell zum Ändern der Mitgliedschaftsverwaltung für eine Gruppe**
+### <a name="using-azure-ad-admin-center-to-change-membership-management-on-a-group"></a>Verwenden von Azure AD Admin Center zum Ändern der Mitgliedschaftsverwaltung für eine Gruppe 
+
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) über ein Konto an, das als globaler Administrator oder Benutzerkontoadministrator in Ihrem Mandanten konfiguriert ist.
+2. Wählen Sie **Gruppen** aus.
+3. Öffnen Sie in der Liste **Alle Gruppen** die Gruppe, die Sie ändern möchten.
+4. Wählen Sie **Eigenschaften** aus.
+5. Wählen Sie auf der Seite **Eigenschaften** für die Gruppe einen **Mitgliedschaftstyp** aus, je nach gewünschtem Mitgliedschaftstyp „Zugewiesen (statisch)“, „Dynamischer Benutzer“ oder „Dynamisches Gerät“. Für die dynamische Mitgliedschaft können Sie im Regel-Generator Optionen für eine einfache Regel auswählen oder selbst eine erweiterte Regel schreiben. 
+
+Die folgenden Schritte sind ein Beispiel für die Änderung der Mitgliedschaft einer Gruppe von Benutzern von statisch zu dynamisch. 
+
+1. Wählen Sie auf der Seite **Eigenschaften** für Ihre ausgewählte Gruppe den **Mitgliedschaftstyp** **Dynamischer Benutzer** aus, und wählen Sie dann in dem Dialogfeld, in dem die Änderungen der Gruppenmitgliedschaft erläutert werden, zum Fortfahren die Option „Ja“ aus. 
+  
+   ![Mitgliedschaftstyp „Dynamischer Benutzer“ auswählen](./media/active-directory-groups-dynamic-membership-azure-portal/select-group-to-convert.png)
+  
+2. Wählen Sie **Dynamische Abfrage hinzufügen** aus, und geben Sie dann die Regel an.
+  
+   ![Regel eingeben](./media/active-directory-groups-dynamic-membership-azure-portal/enter-rule.png)
+  
+3. Wählen Sie nach dem Erstellen der Regel unten auf der Seite **Abfrage hinzufügen** aus.
+4. Wählen Sie für die Gruppe **Speichern** auf der Seite **Eigenschaften** aus, um die Änderungen zu speichern. Der **Mitgliedschaftstyp** der Gruppe wird sofort in der Gruppenliste aktualisiert.
+
+> [!TIP]
+> Wenn die eingegebene erweiterte Regel falsch war, kann dies zu Fehlern bei der Gruppenkonvertierung führen. Oben rechts im Portal wird eine Benachrichtigung angezeigt, die erläutert, warum die Regel nicht vom System angenommen werden konnte. Lesen Sie sie sorgfältig, um zu erfahren, wie die Regel angepasst werden kann, damit sie gültig ist.
+
+### <a name="using-powershell-to-change-membership-management-on-a-group"></a>Verwenden von PowerShell zum Ändern der Mitgliedschaftsverwaltung für eine Gruppe
 
 > [!NOTE]
-> Zum Ändern der Eigenschaften dynamischer Gruppen müssen Sie Cmdlets aus **der Vorschauversion von** [Azure AD PowerShell Version 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) verwenden. Sie können die Vorschauversion von [hier](https://www.powershellgallery.com/packages/AzureADPreview) installieren.
+> Zum Ändern der Eigenschaften dynamischer Gruppen müssen Sie Cmdlets aus **der Vorschauversion von** [Azure AD PowerShell Version 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) verwenden. Sie können die Vorschau aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureADPreview) installieren.
 
-Hier folgt ein Beispiel für Funktionen, die die Verwaltung der Mitgliedschaft für eine vorhandene Gruppe wechseln. Beachten Sie, dass darauf geachtet wird, die GroupTypes-Eigenschaft ordnungsgemäß zu ändern und alle Werte zu erhalten, die dort möglicherweise vorhanden sind und keine Beziehung zur dynamischen Mitgliedschaft aufweisen.
+Hier folgt ein Beispiel für Funktionen, die die Verwaltung der Mitgliedschaft für eine vorhandene Gruppe wechseln. In diesem Beispiel wird darauf geachtet, dass die GroupTypes-Eigenschaft ordnungsgemäß geändert wird und alle Werte erhalten bleiben, die dort vorhanden sind und keine Beziehung zur dynamischen Mitgliedschaft aufweisen.
 
 ```
 #The moniker for dynamic groups as used in the GroupTypes property of a group object

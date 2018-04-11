@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 77c48a22f974e027b4e8858d5e38018bbf5bb54f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights für ASP.NET Core
 
@@ -95,7 +95,7 @@ Sie können Ihre App starten und manuell auf verschiedene Links klicken, um Date
 
 1. Führen Sie Ihre App aus, indem Sie auf IIS Express klicken: ![Screenshot: IIS Express-Symbol in Visual Studio](./media/app-insights-asp-net-core/0012-iis-express.png)
 
-2. Kopieren Sie die URL aus der Adressleiste des Browsers. Die URL hat folgendes Format: http://localhost:{beliebige Portnummer}
+2. Kopieren Sie die URL aus der Adressleiste des Browsers. Sie liegt im Format „http://localhost:{random Portnummer}“ vor.
 
    ![Screenshot: URL in der Browseradressleiste](./media/app-insights-asp-net-core/0013-copy-url.png)
 
@@ -159,7 +159,7 @@ Lesen Sie sich die angezeigten Bestätigungsaufforderungen durch, und stimmen Si
    ```
      ![Screenshot: Codeänderung in „_ViewImports.cshtml“](./media/app-insights-asp-net-core/00018-view-imports.png)
 
-3. Fügen Sie in **Layout.cshtml** die folgende Zeile vor dem Tag ``</head>`` (und vor jedem anderen Skript) hinzu.
+3. Fügen Sie in **_Layout.cshtml** die folgende Zeile vor dem Tag ``</head>`` (und vor jedem anderen Skript) hinzu.
 
     ```C#
     @Html.Raw(snippet.FullScript)

@@ -1,5 +1,5 @@
 ---
-title: "Häufig gestellte Fragen zur Azure Storage-Migration | Microsoft-Dokumentation"
+title: Häufig gestellte Fragen zur Azure Storage-Migration | Microsoft-Dokumentation
 description: Antworten auf allgemeine Fragen zum Migrieren von Azure Storage
 services: storage
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/16/2017
 ms.author: genli
-ms.openlocfilehash: 362614d28cf62bd288d8aff10539c81381474955
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 89d1a4767c240c7e4fedb9d7ac47d6d4fb0aa737
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Häufig gestellte Fragen zur Azure Storage-Migration
 
@@ -168,7 +168,7 @@ Verwenden Sie AzCopy zum Herunterladen der Daten. Weitere Informationen finden S
 
 **Wie ändere ich für ein Speicherkonto den sekundären Standort in die Region „Europa“?**
 
-Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das Konto aus. Die sekundäre Region wird basierend auf der primären Region ausgewählt und kann nicht geändert werden. Weitere Informationen finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
+Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das Konto aus. Die sekundäre Region wird basierend auf der primären Region ausgewählt und kann nicht geändert werden. Weitere Informationen finden Sie unter [Georedundanter Speicher (GRS): Regionsübergreifende Replikation für Azure Storage](storage-redundancy.md).
 
 **Wo finde ich weitere Informationen zu Azure Storage Service Encryption (SSE)?**  
   
@@ -284,7 +284,7 @@ So gewähren Sie anderen Personen Zugriff auf die Speicherressourcen:
 
     - **SAS-Token**: Greifen Sie von einem Endpunkt mithilfe eines SAS-Tokens auf Daten zu. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](storage-dotnet-shared-access-signature-part-1.md).
 
-**Wie verwende ich eine benutzerdefinierte HTTPS-Domäne mit meinem Speicherkonto? Wie kann ich beispielsweise „https://mystorageaccountname.blob.core.windows.net/images/image.gif“ als „https://www.contoso.com/images/image.gif“ anzeigen?**
+**Wie verwende ich eine benutzerdefinierte HTTPS-Domäne mit meinem Speicherkonto? Wie erreiche ich beispielsweise, dass „https://mystorageaccountname.blob.core.windows.net/images/image.gif“ als „https://www.contoso.com/images/image.gif“ angezeigt wird?**
 
 SSL wird für Speicherkonten mit benutzerdefinierten Domänen derzeit nicht unterstützt.
 Sie können jedoch benutzerdefinierte Domänen ohne HTTPS verwenden. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](../blobs/storage-custom-domain-name.md).

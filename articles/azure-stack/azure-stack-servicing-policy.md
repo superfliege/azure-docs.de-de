@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/02/2018
 ms.author: mabrigg
-ms.openlocfilehash: f495ca12e7cdb1bf61f09bd2d4a8a21654745d8a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2c10dcf185c62f3672be80ad2e3d049eae82fe6b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack-Wartungsrichtlinie
 Dieser Artikel beschreibt die Wartungsrichtlinie für integrierte Azure Stack-Systeme, und was Sie tun müssen, um den unterstützten Zustand Ihres Systems aufrechtzuerhalten. 
@@ -41,10 +41,11 @@ Die folgenden Benennungskonventionen eines Microsoft-Updatepakets erleichtern Ih
 Beispielsweise könnte ein am 15. Juni 2017 veröffentlichtes Microsoft-Softwareupdate die Versionsnummer „1.0.170615.1“ haben.
 
 ## <a name="keep-your-system-under-support"></a>Halten Sie den Support für Ihr System aufrecht
+Um weiterhin Support zu erhalten, muss Ihre Azure Stack-Bereitstellung auf dem aktuellen Stand bleiben. Die Richtlinie für das Aufschieben von Updates ist, dass Support für Azure Stack nur bestehen bleibt, wenn die zuletzt veröffentlichte Updateversion oder eine der beiden vorherigen wesentlichen Updateversionen ausgeführt wird.  Hotfixes werden nicht als wesentliche Updateversionen angesehen.  Wenn in Ihrer Azure Stack-Cloud *mehr als zwei Updates* fehlen, wird sie als nicht kompatibel betrachtet und muss zumindest auf die unterstützte Mindestversion aktualisiert werden, um Support zu erhalten. 
 
-Um Support für Ihr System zu erhalten, müssen Sie Ihren Azure Stack innerhalb eines bestimmten Zeitintervalls auf aktuellem Stand halten. Unsere Richtlinie für den Aufschub der Microsoft-Softwareupdates sind drei Monate. Wenn Ihr System mehr als drei Monate veraltet ist, ist die Konformität nicht mehr gegeben. Sie müssen das System mindestens auf die niedrigste unterstützte Version aktualisieren, um Support zu erhalten. 
+Beispiel: Wenn die neueste verfügbare Updateversion 1805 ist und die beiden vorherigen Updatepakete die Versionen 1804 und 1803 waren, besteht für 1803 und 1804 Support. Allerdings gibt es für 1802 keinen Support. Die Richtlinie gilt, wenn es für einen oder zwei Monate kein Release gab. Beispiel: Wenn die aktuelle Version 1805 ist und es keine Version 1804 gab, besteht für die vorherigen beiden Updatepakete 1803 und 1802 weiterhin Support.
 
-Microsoft-Softwareupdatepakete sind nicht kumulativ und setzen das vorherige Updatepaket voraus. Wenn Sie eines oder mehrere Updates aufschieben möchten, berücksichtigen Sie die gesamte Laufzeit, wenn Sie auf die neueste Version aktualisieren möchten.
+Microsoft-Softwareupdatepakete sind nicht kumulativ und setzen das vorherige Updatepaket voraus. Wenn Sie eines oder mehrere Updates aufschieben möchten, berücksichtigen Sie die gesamte Laufzeit, wenn Sie auf die neueste Version aktualisieren möchten. 
 
 Die folgende Tabelle zeigt Beispiele für Updatepaketreleases, deren Voraussetzungen und die unterstützte Mindestversion, die Ihr System aufweisen muss, um Support zu erhalten. Die Tabelle basiert auf dem ersten Release der integrierten Azure Stack-Systeme (Build 1708) mit dem ersten Updatepaketrelease (1709) im September 2017. 
 
@@ -53,11 +54,12 @@ Die folgende Tabelle zeigt Beispiele für Updatepaketreleases, deren Voraussetzu
 | 1710 | 1709 | N/V |
 | 1711 | 1710 | 1709 |
 | 1.712 | 1711 | 1710 |
-| 1802 | 1801 | 1.712 |
-| 1803 | 1802 | 1801 |
+| 1802 | 1.712 | 1711 |
+| 1803 | 1802 | 1.712 |
 | 1804 | 1803 | 1802 |
 | 1805 | 1804 | 1803 |
 | | | 
+In der obigen Tabelle ist keine Version 1801 vorhanden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

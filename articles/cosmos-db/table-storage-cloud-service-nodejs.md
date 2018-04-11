@@ -1,6 +1,6 @@
 ---
 title: 'Azure Table Storage: Erstellen einer Node.js-Webanwendung | Microsoft-Dokumentation'
-description: "Ein Lernprogramm, das auf dem Lernprogramm Web App mit Express basiert und Azure-Speicherdienste sowie das Azure-Modul hinzufügt."
+description: Ein Lernprogramm, das auf dem Lernprogramm Web App mit Express basiert und Azure-Speicherdienste sowie das Azure-Modul hinzufügt.
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/29/2018
 ms.author: mimig
-ms.openlocfilehash: 9acd197c26e6365e396fd8f6321d764bba7bbb6c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: b63f6b3be2e4576b304c1a73ff326a937815b27e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-table-storage-nodejs-web-application"></a>Azure Table Storage: Node.js-Webanwendung
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="overview"></a>Übersicht
 In diesem Tutorial erweitern Sie die Anwendung aus dem Tutorial [Node.js-Webanwendung mit Express], indem Sie die Microsoft Azure-Clientbibliotheken für Node.js für die Arbeit mit Datenverwaltungsdiensten verwenden. Sie erweitern Ihre Anwendung und erstellen eine webbasierte Anwendung mit Aufgabenlisten, die Sie in Azure bereitstellen können. Mit Aufgabenlisten können Benutzer Aufgaben abrufen, neue Aufgaben erstellen und Aufgaben als abgeschlossen markieren.
 
-Die Aufgaben werden im Azure-Speicher gespeichert. Der Azure-Speicher bietet einen unstrukturierten Datenspeicher, der gleichzeitig fehlertolerant und hochverfügbar ist. Azure Storage umfasst verschiedene Datenstrukturen, in denen Sie Daten speichern und darauf zugreifen können. Sie können die Speicherdienste über die APIs verwenden, die im Azure SDK für Node.js enthalten sind, oder über die REST-APIs. Weitere Informationen finden Sie unter [Speichern und Zugreifen auf Daten in Azure].
+Die Aufgaben werden in Azure Storage oder Azure Cosmos DB gespeichert. Azure Storage und Azure Cosmos DB bieten einen unstrukturierten Datenspeicher, der gleichzeitig fehlertolerant und hochverfügbar ist. Azure Storage und Azure Cosmos DB umfassen verschiedene Datenstrukturen, in denen Sie Daten speichern und darauf zugreifen können. Sie können die Speicher- und Azure Cosmos DB-Dienste über die APIs verwenden, die im Azure SDK für Node.js enthalten sind, oder über die REST-APIs. Weitere Informationen finden Sie unter [Speichern und Zugreifen auf Daten in Azure].
 
 In diesem Tutorial wird davon ausgegangen, dass Sie die [Node.js-Webanwendung] und [Node.js mit Express][Node.js-Webanwendung mit Express] bereits durchlaufen haben.
 
@@ -40,7 +40,7 @@ Der folgende Screenshot zeigt die fertige Anwendung:
 ![Die abgeschlossene Webseite in Internet Explorer](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
 
 ## <a name="setting-storage-credentials-in-webconfig"></a>Einstellen der Speicher-Anmeldeinformationen in Web.Config
-Sie müssen die Speicheranmeldeinformationen übergeben, um auf Azure Storage zugreifen zu können. Dies erfolgt über die Anwendungseinstellungen in „web.config“.
+Sie müssen die Speicheranmeldeinformationen übergeben, um auf Azure Storage oder Azure Cosmos DB zugreifen zu können. Dies erfolgt über die Anwendungseinstellungen in „web.config“.
 Diese Einstellungen in „web.config“ werden als Umgebungsvariablen an Node übergeben und anschließend vom Azure SDK gelesen.
 
 > [!NOTE]
@@ -144,7 +144,7 @@ In diesem Abschnitt erweitern Sie die durch den Befehl **express** erstellte Gru
     Task.prototype = {
       find: function(query, callback) {
         self = this;
-        self.storageClient.queryEntities(query, function entitiesQueried(error, result) {
+        self.storageClient.queryEntities(this.tablename, query, null, null, function entitiesQueried(error, result) {
           if(error) {
             callback(error);
           } else {
@@ -181,7 +181,7 @@ In diesem Abschnitt erweitern Sie die durch den Befehl **express** erstellte Gru
             callback(error);
           }
           entity.completed._ = true;
-          self.storageClient.updateEntity(self.tableName, entity, function entityUpdated(error) {
+          self.storageClient.replaceEntity(self.tableName, entity, function entityUpdated(error) {
             if(error) {
               callback(error);
             }
@@ -215,7 +215,7 @@ In diesem Abschnitt erweitern Sie die durch den Befehl **express** erstellte Gru
     TaskList.prototype = {
       showTasks: function(req, res) {
         self = this;
-        var query = azure.TableQuery()
+        var query = new azure.TableQuery()
           .where('completed eq ?', false);
         self.task.find(query, function itemsFound(error, items) {
           res.render('index',{title: 'My ToDo List ', tasks: items});
@@ -224,7 +224,10 @@ In diesem Abschnitt erweitern Sie die durch den Befehl **express** erstellte Gru
 
       addTask: function(req,res) {
         var self = this
-        var item = req.body.item;
+        var item = {
+            name: req.body.name, 
+            category: req.body.category
+        };
         self.task.addItem(item, function itemAdded(error) {
           if(error) {
             throw error;
@@ -307,7 +310,7 @@ In diesem Abschnitt erweitern Sie die durch den Befehl **express** erstellte Gru
             td Category
             td Date
             td Complete
-          if tasks != []
+          if tasks == []
             tr
               td
           else
@@ -325,9 +328,9 @@ In diesem Abschnitt erweitern Sie die durch den Befehl **express** erstellte Gru
       hr
       form.well(action="/addtask", method="post")
         label Item Name:
-        input(name="item[name]", type="textbox")
+        input(name="name", type="textbox")
         label Item Category:
-        input(name="item[category]", type="textbox")
+        input(name="category", type="textbox")
         br
         button.btn(type="submit") Add item
     ```
@@ -414,7 +417,7 @@ In den folgenden Schritten erfahren Sie, wie Sie die Anwendung beenden und lösc
    Das Löschen des Diensts kann einige Minuten dauern. Nachdem der Dienst gelöscht wurde, erhalten Sie eine entsprechende Nachricht.
 
 [Node.js-Webanwendung mit Express]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
-[Speichern und Zugreifen auf Daten in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+[Speichern und Zugreifen auf Daten in Azure]: https://docs.microsoft.com/azure/storage/
 [Node.js-Webanwendung]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
 
 

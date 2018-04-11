@@ -1,8 +1,8 @@
 ---
-title: "Ansichten in Verwaltungslösungen der Operations Management Suite (OMS) | Microsoft Docs"
-description: "Verwaltungslösungen in der Operations Management Suite (OMS) enthalten in der Regel eine oder mehrere Ansichten zum Visualisieren von Daten.  Dieser Artikel beschreibt die Vorgehensweise beim Exportieren einer Ansicht, die vom Ansicht-Designer erstellt und in einer Verwaltungslösung eingeschlossen wurde. "
+title: Ansichten in Verwaltungslösungen | Microsoft-Dokumentation
+description: 'Verwaltungslösungen enthalten in der Regel eine oder mehrere Ansichten zum Visualisieren von Daten.  Dieser Artikel beschreibt die Vorgehensweise beim Exportieren einer Ansicht, die vom Ansicht-Designer erstellt und in einer Verwaltungslösung eingeschlossen wurde. '
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: c103ee748446c4819b7925af04d90c22225a21a3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: b44763fe67b1c70c0b6ecdff73c32d8bb4fab3a4
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Ansichten in Verwaltungslösungen der Operations Management Suite (OMS) (Preview)
+# <a name="views-in-management-solutions-preview"></a>Ansichten in Verwaltungslösungen (Vorschau)
 > [!NOTE]
-> Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen in der OMS, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.    
->
->
+> Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.    
 
-[Verwaltungslösungen in der Operations Management Suite (OMS)](operations-management-suite-solutions.md) enthalten in der Regel eine oder mehrere Ansichten zum Visualisieren von Daten.  Dieser Artikel beschreibt die Vorgehensweise beim Exportieren einer Ansicht, die vom [Ansicht-Designer](../log-analytics/log-analytics-view-designer.md) erstellt und in einer Verwaltungslösung eingeschlossen wurde.  
+
+[Verwaltungslösungen](operations-management-suite-solutions.md) enthalten in der Regel eine oder mehrere Ansichten zum Visualisieren von Daten.  Dieser Artikel beschreibt die Vorgehensweise beim Exportieren einer Ansicht, die vom [Ansicht-Designer](../log-analytics/log-analytics-view-designer.md) erstellt und in einer Verwaltungslösung eingeschlossen wurde.  
 
 > [!NOTE]
-> Die Beispiele in diesem Artikel verwenden Parameter und Variablen, die entweder erforderlich sind oder für Verwaltungslösungen gelten und unter [Creating management solutions in Operations Management Suite (OMS) (Erstellen von Verwaltungslösungen in der Operations Management Suite (OMS))](operations-management-suite-solutions-creating.md) beschrieben sind.
+> Die Beispiele in diesem Artikel verwenden Parameter und Variablen, die entweder erforderlich sind oder für Verwaltungslösungen gelten und unter [Entwerfen und Erstellen einer Verwaltungslösung in Azure](operations-management-suite-solutions-creating.md) beschrieben sind.
 >
 >
 
@@ -48,7 +47,7 @@ Die grundlegenden Schritte zum Hinzufügen einer Ansicht zu einer Lösung sind w
 ## <a name="export-the-view-to-a-file"></a>Exportieren der Ansicht in eine Datei
 Führen Sie die Schritte unter [Log Analytics View Designer (Log Analytics-Ansicht-Designer)](../log-analytics/log-analytics-view-designer.md), um eine Ansicht in eine Datei zu exportieren.  Die exportierte Datei wird im JSON-Format mit den gleichen [Elementen wie die der Lösungsdatei](operations-management-suite-solutions-solution-file.md) dargestellt.  
 
-Das Element **resources** (Ressourcen) der Ansichtsdatei erhält eine Ressource mit einem Typ **Microsoft.OperationalInsights/workspaces**, der den OMS-Arbeitsbereich darstellt.  Dieses Element erhält ein Unterelement mit einem Typ **views** (Ansichten), der die Ansicht darstellt und die ausführliche Konfiguration enthält.  Kopieren Sie die Details dieses Elements, und kopieren Sie diese dann in Ihre Lösung.
+Das Element **resources** (Ressourcen) der Ansichtsdatei erhält eine Ressource mit einem Typ **Microsoft.OperationalInsights/workspaces**, der den Log Analytics-Arbeitsbereich darstellt.  Dieses Element erhält ein Unterelement mit einem Typ **views** (Ansichten), der die Ansicht darstellt und die ausführliche Konfiguration enthält.  Kopieren Sie die Details dieses Elements, und kopieren Sie diese dann in Ihre Lösung.
 
 ## <a name="create-the-view-resource-in-the-solution"></a>Erstellen der Ansichtsressource in der Lösung
 Fügen Sie die folgende Ansichtsressource zum Element **resources** (Ressourcen) Ihrer Lösungsdatei.  Diese verwendet Variablen, die unten beschrieben sind, die Sie ebenfalls hinzufügen müssen.  Beachten Sie, dass die **Dashboard**- und **OverviewTile**-Eigenschaften Platzhalter sind, die Sie mit den entsprechenden Eigenschaften der exportierten Ansichtsdatei überschreiben.

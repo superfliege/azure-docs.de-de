@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 03/29/2018
 ms.author: kumud
-ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f5d46fda6bdb32c1a5000883c6aedb2da15e796a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer Standard und Verfügbarkeitszonen
 
 Azure Load Balancer Standard-SKU unterstützt [Verfügbarkeitszonen](../availability-zones/az-overview.md)-Szenarios. Mehrere neue Konzepte sind mit Load Balancer Standard verfügbar, die Ihnen das Optimieren der Verfügbarkeit in Ihrem End-to-End-Szenario durch die Ausrichtung von Ressourcen an Zonen sowie deren Verteilung über Zonen ermöglichen.  In [Verfügbarkeitszonen](../availability-zones/az-overview.md) erfahren Sie, was Verfügbarkeitszonen sind, welche Regionen derzeit Verfügbarkeitszonen unterstützen, und Sie erhalten Informationen über Konzepte und Produkte, die im Zusammenhang stehen. Verfügbarkeitszonen und Load Balancer Standard bilden eine umfassende und flexible Featuregruppe, die viele unterschiedliche Szenarios erstellen kann.  Lesen Sie dieses Dokument, um diese [Konzepte](#concepts) und die [Entwurfsanleitung](#design) für das grundlegende Szenario zu verstehen.
 
 >[!NOTE]
->Weitere verwandte Themen finden Sie unter [Vorschauversion für Verfügbarkeitszonen](https://aka.ms/availabilityzones). 
+>Weitere verwandte Themen finden Sie unter [Verfügbarkeitszonen](https://aka.ms/availabilityzones). 
 
 ## <a name="concepts"></a> Auf den Load Balancer angewendete Verfügbarkeitszonenkonzepte
 
@@ -43,7 +43,7 @@ Eine Load Balancer-Ressource selbst ist regional und nie zonal.  Ein VNet und ei
 
 Ein Load Balancer-Front-End ist eine Front-End-IP-Konfiguration, die entweder auf eine öffentliche IP-Adressressource oder eine private IP-Adresse innerhalb des Subnetzes einer virtuellen Netzwerkressource verweist.  Es bildet den Lastenausgleichsendpunkt, in dem Ihr Dienst verfügbar gemacht wird.
 
-Eine Load Balancer-Ressource darf gleichzeitig zonale und zonenredundante Front-Ends enthalten.
+Eine Load Balancer-Ressource darf gleichzeitig zonale und zonenredundante Front-Ends enthalten. 
 
 Wenn eine öffentliche IP-Ressource einer Zone zugesichert wurde, ist die Zonalität (oder deren Fehlen) nicht veränderbar.  Wenn Sie die Zonalität eines öffentlichen IP-Front-Ends ändern oder auslassen möchten, müssen Sie die öffentliche IP-Adresse in der entsprechenden Zone neu erstellen.  
 
@@ -219,3 +219,5 @@ Ohne Kenntnis der Dienstarchitektur lässt sich nicht sagen, welche Option die b
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Verfügbarkeitszonen](../availability-zones/az-overview.md)
 - Weitere Informationen zum [Load Balancer Standard](load-balancer-standard-overview.md).
+- Erfahren Sie mehr über den [Lastenausgleich für VMs innerhalb einer Zone mit einem Standard-Lastenausgleich und einem zonenredundanten Front-End](load-balancer-standard-public-zonal-cli.md).
+- Erfahren Sie mehr über den [zonenübergreifenden Lastenausgleich für VMs mit einem Standard-Lastenausgleich und einem zonenredundanten Front-End](load-balancer-standard-public-zone-redundant-cli.md).

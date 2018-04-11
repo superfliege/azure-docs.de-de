@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-ms.openlocfilehash: 4acf1f549a6c901fb0b772c4591f1f35d61365ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b0d938112aaea4d86dd539b53a1749cc800607a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Erstellen klassischer Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal
 > [!div class="op_single_selector"]
 > * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
-> * [Befehlszeilenschnittstelle (CLI)](insights-alerts-command-line-interface.md)
+> * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](insights-alerts-command-line-interface.md)
 >
 >
 
 ## <a name="overview"></a>Übersicht
 
 > [!NOTE]
-> In diesem Artikel erfahren Sie, wie Sie ältere Metrikwarnungen erstellen. Azure Monitor unterstützt jetzt neuere, bessere Metrikwarnungen. Diese Warnungen ermöglichen die Überwachung mehrerer Metriken sowie Warnungen für dimensionale Metriken. Erfahren Sie mehr über [Metrikwarnungen, die nahezu in Echtzeit stattfinden](monitoring-near-real-time-metric-alerts.md).
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt jetzt [neuere Metrikwarnungen](monitoring-near-real-time-metric-alerts.md). 
 >
 >
 
-In diesem Artikel erfahren Sie, wie Sie Metrikwarnungen über das Azure-Portal einrichten können. 
+In diesem Artikel erfahren Sie, wie Sie klassische Azure-Metrikwarnungen über das Azure-Portal einrichten können. 
 
 Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services oder von Ereignissen, die bei diesen auftreten, eine Warnung empfangen.
 
 * **Metrikwerte** : Die Warnung wird ausgelöst, wenn der Wert einer angegebenen Metrik einen von Ihnen festgelegten Schwellenwert in beliebiger Richtung überschreitet. Das Auslösen erfolgt sowohl, wenn die Bedingung erstmals erfüllt wird, als auch danach, wenn diese Bedingung nicht mehr erfüllt wird.    
 * **Aktivitätsprotokollereignisse**: Eine Warnung kann für *jedes* Ereignis oder nur dann ausgelöst werden, wenn ein bestimmtes Ereignis auftritt. Erfahren Sie mehr über [Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts.md).
 
-Sie können konfigurieren, dass bei einer Metrikwarnung Folgendes erfolgt, wenn sie ausgelöst wird:
+Sie können konfigurieren, dass bei einer klassischen Metrikwarnung Folgendes erfolgt, wenn sie ausgelöst wird:
 
 * Senden von E-Mail-Benachrichtigungen an den Dienstadministrator und Co-Administratoren
 * Senden von E-Mal an weitere von Ihnen angegebene Adressen
 * Aufrufen eines Webhooks
 * Starten der Ausführung eines Azure-Runbooks (nur über das Azure-Portal)
 
-Sie haben folgende Möglichkeiten zum Konfigurieren von Metrikwarnregeln und Abrufen zugehöriger Informationen:
+Sie haben folgende Möglichkeiten zum Konfigurieren von klassischen Metrikwarnregeln und Abrufen zugehöriger Informationen:
 
 * [Azure-Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
@@ -63,7 +63,7 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Metrikwarnregeln und Abr
 
     ![Überwachung](./media/insights-alerts-portal/AlertRulesButton.png)
 
-3. Wählen Sie den Befehl **Metrikwarnung hinzufügen** aus, und füllen Sie die Felder aus.
+3. Wählen Sie den Befehl **Metrikwarnung hinzufügen (klassisch)** aus, und füllen Sie die Felder aus.
 
     ![Warnung hinzufügen](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 237a34c955f8ef36e25c30a6b13787f6a9296612
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f9318b5baa46ab991b5e72e12a89a25e4f635db3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>Einrichten der SQL-Datensynchronisierung (Vorschauversion)
 In diesem Tutorial erfahren Sie, wie sie Azure SQL-Datensynchronisierung einrichten können, indem Sie eine hybride Synchronisierungsgruppe erstellen, die Azure SQL-Datenbank und SQL Server-Instanzen enthält. Die neue Synchronisierungsgruppe ist vollständig konfiguriert und synchronisiert mit dem von Ihnen festgelegten Zeitplan.
@@ -38,6 +38,8 @@ Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchroni
     ![Liste der Azure SQL-Datenbanken](media/sql-database-get-started-sql-data-sync/datasync-preview-sqldbs.png)
 
 3.  Wählen Sie auf der Seite **SQL-Datenbanken** die vorhandene SQL-Datenbank, die Sie als die Hub-Datenbank für die Datensynchronisierung verwenden möchten. Die Seite für die SQL-Datenbank wird geöffnet.
+
+    Die Hubdatenbank ist der zentrale Endpunkt der Synchronisierungstopologie, bei der eine Synchronisierungsgruppe mehrere Datenbankendpunkte enthält. Alle anderen Datenbankendpunkte in der gleichen Synchronisierungsgruppe, d.h. alle Mitgliedsdatenbanken, werden mit der Hubdatenbank synchronisiert.
 
 4.  Wählen Sie auf der Seite „SQL-Datenbank“ der ausgewählten Datenbank **Sync to other databases** (Mit anderen Datenbanken synchronisieren). Die Seite „Datensynchronisierung“ wird geöffnet.
 
@@ -67,6 +69,8 @@ Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchroni
         ![Synchronisierungshäufigkeit festlegen](media/sql-database-get-started-sql-data-sync/datasync-preview-syncfreq.png)
 
     4.  Wählen Sie im Abschnitt **Konfliktlösung** „Hub gewinnt“ oder „Member gewinnt“ aus.
+
+        „Hub gewinnt“ bedeutet, dass bei einem Konflikt die Daten in der Hubdatenbank die in Konflikt stehenden Daten in der Mitgliedsdatenbank überschreiben. „Mitglied gewinnt“ bedeutet, dass bei einem Konflikt die Daten in der Mitgliedsdatenbank die in Konflikt stehenden Daten in der Hubdatenbank überschreiben. 
 
         ![Konfliktlösung bestimmen](media/sql-database-get-started-sql-data-sync/datasync-preview-conflictres.png)
 

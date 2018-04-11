@@ -1,11 +1,11 @@
 ---
 title: Integration des Azure Mobile Engagement Android SDKs
-description: "Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement"
+description: Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a7d719ec-67b3-4be3-9d7f-0b61a57fe978
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 43987962ea2b7b825b88643d18b4db65f1f1670e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c3b8f60333e6096411aad8499bb4bfc36e53f3c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-adm-with-engagement"></a>So integrieren Sie ADM in Engagement
+> [!IMPORTANT]
+> Azure Mobile Engagement wird am 31.3.2018 außer Kraft gesetzt. Diese Seite wird kurz danach gelöscht.
+> 
+
 > [!IMPORTANT]
 > Bevor Sie dieser Anleitung folgen, müssen Sie das unter „Integrieren von Mobile Engagement unter Android“ beschriebene Integrationsverfahren befolgen.
 > 
@@ -41,7 +45,7 @@ ADM-Nutzlasten, die mithilfe von Push an das SDK übertragen werden, enthalten i
 ## <a name="sign-up-to-adm"></a>Anmelden bei ADM
 Sofern nicht bereits geschehen, müssen Sie ADM über Ihr Amazon-Konto aktivieren.
 
-Detaillierte Informationen zum Vorgehen finden Sie hier: [<https://developer.amazon.com/sdk/adm/credentials.html>].
+Eine detaillierte Beschreibung der Prozedur finden Sie unter: [<https://developer.amazon.com/sdk/adm/credentials.html>].
 
 Nach Abschluss des Verfahrens erhalten Sie:
 
@@ -104,7 +108,7 @@ Stellen Sie sicher, dass Sie die folgenden Berechtigungen in der Datei `AndroidM
 ## <a name="grant-engagement-oauth-credentials"></a>Gewähren von OAuth-Anmeldeinformationen für Engagement
 Übermitteln Sie Ihre OAuth-Anmeldeinformationen (Client-ID und geheimen Clientschlüssel) in das Engagement-Portal.
 
-[&lt;https://developer.amazon.com/sdk/adm/credentials.html&gt;]:https://developer.amazon.com/sdk/adm/credentials.html
+[<https://developer.amazon.com/sdk/adm/credentials.html>]:https://developer.amazon.com/sdk/adm/credentials.html
 [ADM-Clientbibliothek]:https://developer.amazon.com/sdk/adm/setup.html
 [ADM-Integration]:https://developer.amazon.com/sdk/adm/integrating-app.html
 [dieses Verfahren]:https://developer.amazon.com/sdk/adm/integrating-app.html#Asset

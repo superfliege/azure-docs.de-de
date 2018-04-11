@@ -1,11 +1,11 @@
 ---
-title: "Überwachen von Azure Functions"
-description: "Es wird beschrieben, wie Sie Azure Application Insights mit Azure Functions zum Überwachen der Funktionsausführung verwenden."
+title: Überwachen von Azure Functions
+description: Es wird beschrieben, wie Sie Azure Application Insights mit Azure Functions zum Überwachen der Funktionsausführung verwenden.
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: functions
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: d2a61f5f51e3c4a1de6baa79493cb2c7380c76b6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -493,7 +493,7 @@ Wir empfehlen die Nutzung von Application Insights zum Überwachen von Funktione
 
 ### <a name="logging-to-storage"></a>Protokollierung im Speicher
 
-Für die integrierte Protokollierung wird das Speicherkonto verwendet, das über die Verbindungszeichenfolge in der App-Einstellung `AzureWebJobsDashboard` angegeben wird. Wenn diese App-Einstellung konfiguriert wurde, werden die Protokollierungsdaten im Azure-Portal angezeigt. Wählen Sie auf einer Funktionen-App-Seite eine Funktion und anschließend die Registerkarte **Überwachen**, um eine Liste mit den Funktionsausführungen anzuzeigen. Wählen Sie eine Funktionsausführung aus, um die Dauer, Eingabedaten, Fehler und zugehörigen Protokolldateien zu überprüfen.
+Für die integrierte Protokollierung wird das Speicherkonto verwendet, das über die Verbindungszeichenfolge in der App-Einstellung `AzureWebJobsDashboard` angegeben wird. Wenn diese App-Einstellung konfiguriert wurde, werden die Protokollierungsdaten im Azure-Portal angezeigt. Wechseln Sie in der Storage-Ressource zu „Dateien“, wählen Sie den Dateidienst für die Funktion, und wechseln Sie dann zu `LogFiles > Application > Functions > Function > your_function`, um die Protokolldatei anzuzeigen. Wählen Sie auf einer Funktionen-App-Seite eine Funktion und anschließend die Registerkarte **Überwachen**, um eine Liste mit den Funktionsausführungen anzuzeigen. Wählen Sie eine Funktionsausführung aus, um die Dauer, Eingabedaten, Fehler und zugehörigen Protokolldateien zu überprüfen.
 
 Wenn Sie Application Insights nutzen und die [integrierte Protokollierung deaktiviert](#disable-built-in-logging) haben, gelangen Sie über die Registerkarte **Überwachen** zu Application Insights.
 

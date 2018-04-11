@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: db472345bacda916f1b1664ed7803978ab235a2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen 
 
@@ -47,6 +47,10 @@ Zurzeit weist die Vorschauversion die Einschränkung auf, dass keine Abonnements
 Wenn Sie Informationen zum Abonnement mithilfe der REST-API abrufen, werden Details zurückgegeben, da Sie zwar Zugriff auf die Abonnements haben, diese jedoch weder im Azure-Portal noch in Azure PowerShell angezeigt werden. 
 
 An der Lösung dieses Problem wird zurzeit gearbeitet. Noch vor der Ankündigung der allgemeinen Verfügbarkeit von Verwaltungsgruppen wird eine Lösung bereitgestellt.  
+
+### <a name="cloud-solution-providercsp-limitation-during-preview"></a>CSP-Einschränkung (Cloud Solution Provider) in der Vorschauversion 
+Es gibt eine aktuelle Einschränkung für CSP-Partner (Cloud Solution Provider), die dazu führt, dass sie ihre Kundenverwaltungsgruppen nicht im Kundenverzeichnis erstellen oder verwalten können.  
+An der Lösung dieses Problem wird zurzeit gearbeitet. Noch vor der Ankündigung der allgemeinen Verfügbarkeit von Verwaltungsgruppen wird eine Lösung bereitgestellt.
 
 
 ## <a name="root-management-group-for-each-directory"></a>Stammverwaltungsgruppe für jedes Verzeichnis

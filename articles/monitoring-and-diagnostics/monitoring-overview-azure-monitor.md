@@ -1,25 +1,25 @@
 ---
-title: "Übersicht über Azure Monitor | Microsoft-Dokumentation"
-description: "Azure Monitor erfasst Statistiken zur Verwendung in Warnungen, in Webhooks, bei der automatischen Skalierung und bei der Automatisierung. Im Artikel werden auch andere Microsoft-Überwachungsoptionen aufgeführt."
+title: Übersicht über Azure Monitor | Microsoft-Dokumentation
+description: Azure Monitor erfasst Statistiken zur Verwendung in Warnungen, in Webhooks, bei der automatischen Skalierung und bei der Automatisierung. Im Artikel werden auch andere Microsoft-Überwachungsoptionen aufgeführt.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: ed9ace24778f000b42013cc0ce4d7dacf4a1d4fb
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 448711b7b2e102662bc157485561c33bf7f5fba1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-azure-monitor"></a>Übersicht über Azure Monitor
 Dieser Artikel bietet einen Überblick über den Azure Monitor-Dienst in Microsoft Azure. Er bietet einen Überblick über die Funktionen von Azure Monitor und stellt Verknüpfungen zu zusätzlichen Informationen über die Verwendung von Azure Monitor bereit.  Ein Einführungsvideo finden Sie über die Links im Abschnitt „Nächste Schritte“ weiter unten in diesem Artikel. 
@@ -35,15 +35,13 @@ Azure Monitor verfügt über eine Startseite, die Benutzer bei Folgendem unterst
 - Verstehen Sie die Überwachungsfunktionen, die von Azure bereitgestellt werden.
 - Entdecken, Konfigurieren und Integrieren der Azure-Plattform und der Premium-Überwachungsfunktionen.
 
-Während der Azure Monitor-Dienst bereits veröffentlicht wurde, befindet sich die Übersicht über die Startseite noch in der Vorschauversion. 
-
 Die Seite stellt einen Ausgangspunkt für die Navigation dar, einschließlich der Integration. Es werden ausgewählte relevante Probleme von unterschiedlichen Diensten angezeigt, außerdem wird es dem Benutzer ermöglicht, zu diesen im Kontext zu navigieren.
  
 ![Modell zur Überwachung und Diagnose für Nicht-Computeressourcen](./media/monitoring-overview-azure-monitor/monitor-overview-ux2.png)
 
 Wenn Sie die Seite öffnen, können Sie zwischen den Abonnements auswählen, für die Sie über Lesezugriff verfügen. Für ein ausgewähltes Abonnement sehen Sie Folgendes:
 
-- **Ausgelöste Warnungen und Warnungsquellen**: Diese Tabelle zeigt eine Zusammenfassung der Anzahlen, Warnungsquellen und die Anzahl von ausgelösten Warnungen für die ausgewählte Zeitdauer an. Dies gilt für Metrik- und Aktivitätsprotokollwarnungen. *<Änderung: Die einheitliche Oberfläche „Warnungen (Vorschauversion)“ wird auch für alle Warnungen angezeigt, d.h. für Ereignisse, Metriken und Protokolle.>*
+- **Ausgelöste Warnungen und Warnungsquellen**: Diese Tabelle zeigt eine Zusammenfassung der Anzahlen, Warnungsquellen und die Anzahl von ausgelösten Warnungen für die ausgewählte Zeitdauer an. Dies gilt sowohl für ältere als auch für neuere Warnungen. Erfahren Sie mehr über die [neueren Azure-Warnungen](monitoring-overview-unified-alerts.md). 
 - **Aktivitätsprotokollfehler**: Wenn eine Ihrer Azure-Ressourcen Ereignisse mit dem Schweregrad „Fehler“ protokolliert, können Sie eine allgemeine Anzahl anzeigen und durch die Seite des Aktivitätsprotokolls klicken, um jedes Ereignis zu untersuchen.
 - **Azure Service Health**: Ihnen wird die Anzahl von Problemen der Dienstintegrität angezeigt sowie geplante Wartungsereignisse und Integritätsempfehlungen. Azure Service Health stellt persönliche Informationen bereit, wenn sich Probleme in der Azure-Infrastruktur auf Ihre Dienste auswirken.  Weitere Informationen finden Sie unter [Azure Service Health](../service-health/service-health-overview.md).  
 - **Application Insights**: Anzeige der KPIs für jede AppInsights-Ressource im aktuellen Abonnement. Die KPIs sind für die serverseitige Überwachung der Anwendungen (ASP.NET-Apps, Java, Node und allgemeine Anwendungstypen) optimiert. Diese KPIs enthalten Metriken für die Anforderungsrate, Antwortdauer, Fehlerrate und die Verfügbarkeit in Prozent. 
@@ -143,12 +141,12 @@ Einige Beispiele für Visualisierungsmethoden:
 
 ### <a name="automate"></a>Automatisieren
 > [!NOTE]
-> Im Zuge der kontinuierlichen Weiterentwicklung von Warnungen für Microsoft Azure, steht nun eine einheitliche Oberfläche für Warnungen als Vorschauversion zur Verfügung. Weitere Informationen zu [Azure-Warnungen (Vorschauversion)](monitoring-overview-unified-alerts.md)
+> Im Zuge der kontinuierlichen Weiterentwicklung von Warnungen für Microsoft Azure steht nun eine einheitliche Oberfläche für Warnungen zur Verfügung. Erfahren Sie mehr über [neue Azure-Warnungen](monitoring-overview-unified-alerts.md).
 
-In der Standardversion von Azure-Warnungen können Sie Überwachungsdaten nutzen, um Warnungen oder sogar ganze Prozesse auszulösen. Beispiele:
+Bei Azure-Warnungen können Sie Überwachungsdaten nutzen, um Warnungen oder sogar ganze Prozesse auszulösen. Beispiele:
 
 * Verwenden der Daten, um Compute-Instanzen je nach Anwendungslast automatisch horizontal hoch- oder herunterzuskalieren
-* Senden von E-Mails, wenn eine Metrik einen vorgegebenen Schwellenwert überschreitet
+* Senden Sie E-Mails basierend auf Metrik- oder Protokollbedingungen. 
 * Aufrufen einer Web-URL (Webhook), um eine Aktion in einem System außerhalb von Azure auszuführen
 * Starten eines Runbooks in Azure Automation, um verschiedenste Aufgaben auszuführen
 
