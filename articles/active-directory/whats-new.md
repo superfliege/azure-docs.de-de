@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 03/28/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d356535bf1a7daf45108bc790a19578108a50bb7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9a947de3ad821d4cd65e579357e3c779e8623435
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -73,6 +73,32 @@ Sie können in Azure AD B2C jetzt Twitter oder GitHub als Identitätsanbieter hi
 
 Weitere Informationen finden Sie unter [Was ist die Azure AD B2B-Zusammenarbeit?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
  
+---
+
+
+### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Einschränken des Browserzugriffs durch Verwendung von Intune Managed Browser mit anwendungsbasiertem bedingtem Azure AD-Zugriff für iOS und Android
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Bedingter Zugriff  
+**Produktfunktion**: Identitätssicherheit und -schutz
+ 
+
+**Jetzt in der Public Preview!**
+
+**Intune Managed Browser – SSO:** Ihre Mitarbeiter können einmaliges Anmelden übergreifend für native Clients (beispielsweise Microsoft Outlook) und Intune Managed Browser für alle mit Azure AD verbundenen Apps verwenden.
+
+**Intune Managed Browser – Unterstützung von bedingtem Zugriff:** Mithilfe von Richtlinien für den bedingten Zugriff können Sie nun für Mitarbeiter die Verwendung von Intune Managed Browser erzwingen.
+
+Weitere Informationen hierzu finden Sie in unserem [Blogbeitrag](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
+
+Weitere Informationen:
+
+- [App-basierter bedingter Zugriff mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+
+- [Verwalten des Internetzugriffs mittels Richtlinien für Managed Browser mit Microsoft Intune](https://aka.ms/managedbrowser)  
+
+
+
 ---
  
 
