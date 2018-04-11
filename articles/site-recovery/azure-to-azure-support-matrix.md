@@ -1,21 +1,21 @@
 ---
 title: Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure | Microsoft-Dokumentation
-description: "Übersicht über die unterstützten Betriebssysteme und Konfigurationen für die Azure Site Recovery-Replikation von virtuellen Azure-Computern (VMs) aus einer Region in eine andere für die Notfallwiederherstellung."
+description: Übersicht über die unterstützten Betriebssysteme und Konfigurationen für die Azure Site Recovery-Replikation von virtuellen Azure-Computern (VMs) aus einer Region in eine andere für die Notfallwiederherstellung.
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/29/2018
 ms.author: sujayt
-ms.openlocfilehash: 4383286285f02bad1645344fab43f8b6bdb145cb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 4ddad2d8e5c5323b632b65efaf87d3df7ce8d707
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure
+# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
 
 >[!NOTE]
@@ -79,8 +79,8 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 - CentOS 6.5, 6.6, 6.7, 6.8, 6.9, 7.0, 7.1, 7.2, 7.3, 7.4
 - Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-- Debian 7
-- Debian 8
+- Debian 7 [ (unterstützte Kernel-Versionen)](#supported-debian-kernel-versions-for-azure-virtual-machines)
+- Debian 8 [ (unterstützte Kernel-Versionen)](#supported-debian-kernel-versions-for-azure-virtual-machines)
 - Oracle Enterprise Linux 6.4, 6.5, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
@@ -95,14 +95,22 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-14.04 LTS | 9.10 | 3.13.0-24-generic bis 3.13.0-121-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-81-generic |
 14.04 LTS | 9.11 | 3.13.0-24-generic bis 3.13.0-125-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-83-generic |
 14.04 LTS | 9.12 | 3.13.0-24-generic to 3.13.0-132-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic to 4.4.0-96-generic |
 14.04 LTS | 9.13 | 3.13.0-24-generic bis 3.13.0-137-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-104-generic |
-16.04 LTS | 9.10 | 4.4.0-21-generic bis 4.4.0-81-generic,<br/>4.8.0-34-generic bis 4.8.0-56-generic,<br/>4.10.0-14-generic bis 4.10.0-24-generic |
+14.04 LTS | 9.14 | 3.13.0-24-generic bis 3.13.0-141-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-112-generic |
 16.04 LTS | 9.11 | 4.4.0-21-generic bis 4.4.0-83-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-27-generic |
 16.04 LTS | 9.12 | 4.4.0-21-generic to 4.4.0-96-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic to 4.10.0-35-generic |
 16.04 LTS | 9.13 | 4.4.0-21-generic bis 4.4.0-104-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic |
+16.04 LTS | 9.14 | 4.4.0-21-generic bis 4.4.0-112-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-32-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1009-azure |
+
+
+### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Unterstützte Debian-Kernelversionen für virtuelle Azure-Computer
+
+**Release** | **Mobility Service-Version** | **Kernelversion** |
+--- | --- | --- |
+Debian 7 | 9.14 | 3.2.0-4-amd64 bis 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 8 | 9.14 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.5-amd64 |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Unterstützte Dateisysteme und Gastspeicherkonfigurationen auf virtuellen Azure-Computern unter Linux
 
@@ -179,7 +187,7 @@ Internetlastenausgleich | Unterstützt | Sie müssen den vorkonfigurierten Laste
 Interner Lastenausgleich | Unterstützt | Sie müssen den vorkonfigurierten Lastenausgleich mit einem Azure-Automatisierungsskript in einem Wiederherstellungsplan zuordnen.
 Öffentliche IP-Adresse| Unterstützt | Sie müssen eine bereits vorhandene öffentliche IP-Adresse der Netzwerkkarte zuordnen oder eine IP-Adresse erstellen und der Netzwerkkarte mit einem Azure Automatisierungsskript in einem Wiederherstellungsplan zuordnen.
 NSG auf Netzwerkkarte (Ressourcen-Manager)| Unterstützt | Sie müssen die NSG mit einem Azure-Automatisierungsskript in einem Wiederherstellungsplan der Netzwerkkarte zuordnen.  
-NSG in Subnetz (Ressourcen-Manager und klassische Bereitstellung)| Unterstützt | Sie müssen die NSG mit einem Azure-Automatisierungsskript in einem Wiederherstellungsplan der Netzwerkkarte zuordnen.
+NSG in Subnetz (Ressourcen-Manager und klassische Bereitstellung)| Unterstützt | Sie müssen die NSG mithilfe eines Azure-Automatisierungsskript dem Subnetz in einem Wiederherstellungsplan zuordnen.
 NSG auf virtuellem Computer (klassische Bereitstellung)| Unterstützt | Sie müssen die NSG mit einem Azure-Automatisierungsskript in einem Wiederherstellungsplan der Netzwerkkarte zuordnen.
 Reservierte IP (statische IP-Adresse)/Quell-IP beibehalten | Unterstützt | Wenn die NIC auf dem virtuellen Quellcomputer eine statische IP-Konfiguration aufweist und im Zielsubnetz die gleiche IP-Adresse verfügbar ist, wird sie dem virtuellen Failovercomputer zugewiesen. Wenn im Zielsubnetz nicht die gleiche IP-Adresse verfügbar ist, wird eine der verfügbaren IP-Adressen im Subnetz für diesen virtuellen Computer reserviert. Sie können unter „Repliziertes Element“ > „Einstellungen“ > „Compute und Netzwerk“ > „Netzwerkschnittstellen“ eine beliebige feste IP-Adresse angeben. Sie können die Netzwerkkarte auswählen und das gewünschte Subnetz und die IP-Adresse angeben.
 Dynamische IP| Unterstützt | Wenn die Netzwerkkarte auf dem virtuellen Quellcomputer über eine dynamische IP-Konfiguration verfügt, ist die Netzwerkkarte auf dem virtuellen Failovercomputer standardmäßig ebenfalls dynamisch. Sie können unter „Repliziertes Element“ > „Einstellungen“ > „Compute und Netzwerk“ > „Netzwerkschnittstellen“ eine beliebige feste IP-Adresse angeben. Sie können die Netzwerkkarte auswählen und das gewünschte Subnetz und die IP-Adresse angeben.

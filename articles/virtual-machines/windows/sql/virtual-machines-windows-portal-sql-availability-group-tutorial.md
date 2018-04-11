@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: fe79c6e6344bef8f25ae2e343e3301959c4e0ae5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 915f36678b8515c5f4a6bd367843255865f4b34d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
@@ -374,22 +374,14 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
    ![Navigieren zum Lastenausgleich in der Ressourcengruppe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
 
-1. Klicken Sie auf den Lastenausgleich, auf **Back-End-Pools** und anschließend auf **+ Hinzufügen**. Konfigurieren Sie den Back-End-Pool wie folgt:
+1. Klicken Sie auf den Lastenausgleich, auf **Back-End-Pools** und anschließend auf **+ Hinzufügen**. 
 
-   | Einstellung | BESCHREIBUNG | Beispiel
-   | --- | --- |---
-   | **Name** | Geben Sie einen Textnamen ein. | SQLLBBE
-   | **Zugeordnet zu** | Auswahlliste | Verfügbarkeitsgruppe
-   | **Verfügbarkeitsgruppe** | Verwenden Sie einen Namen der Verfügbarkeitsgruppe, in der sich Ihre virtuellen SQL Server-Computer befinden. | sqlAvailabilitySet |
-   | **Virtuelle Computer** |Die Namen der beiden virtuellen Azure-Computer mit SQL Server | sqlserver-0, sqlserver-1
+1. Ordnen Sie den Back-End-Pool der Verfügbarkeitsgruppe mit den virtuellen Computern zu.
 
-1. Geben Sie den Namen für den Back-End-Pool ein.
+1. Aktivieren Sie unter **Zielnetzwerk-IP-Konfigurationen** die Option **VIRTUELLER COMPUTER**, und wählen Sie die beiden virtuellen Computer aus, die als Hosts für Verfügbarkeitsgruppenreplikate fungieren. Schließen Sie den Dateifreigabenzeugen-Server nicht ein.
 
-1. Klicken Sie auf **+ Virtuellen Computer hinzufügen**.
-
-1. Wählen Sie als Verfügbarkeitsgruppe die Verfügbarkeitsgruppe mit den SQL Server-Instanzen aus.
-
-1. Schließen Sie bei den virtuellen Computern beide SQL Server-Instanzen ein. Schließen Sie den Dateifreigabenzeugen-Server nicht ein.
+   >[!NOTE]
+   >Ohne Angabe der beiden virtuellen Computer können nur Verbindungen mit dem primären Replikat hergestellt werden.
 
 1. Klicken Sie auf **OK**, um den Back-End-Pool zu erstellen.
 

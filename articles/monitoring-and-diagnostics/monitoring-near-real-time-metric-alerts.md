@@ -1,6 +1,6 @@
 ---
-title: Near Real-Time Metric Alerts in Azure Monitor | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Near Real-Time Metric Alerts (Metrikwarnungen nahezu in Echtzeit) verwenden, um Azure-Ressourcenmetriken mit einer Häufigkeit ab 1 Minute zu überwachen.
+title: Neuere Metrikwarnungen in von Azure Monitor unterstützten Ressourcen | Microsoft-Dokumentation
+description: Referenz zu Supportmetriken und -protokollen für neuere Azure-Metrikwarnungen nahezu in Echtzeit.
 author: snehithm
 manager: kmadnani1
 editor: ''
@@ -12,32 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/26/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: 15b9b0b69f3805b3e3af1d3973fd3a77bea62ab9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6ccb095f3739a90bdab2408965a742f9cbc19359
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="use-the-newer-metric-alerts-for-azure-services-in-azure-portal"></a>Verwenden Sie die neueren Metrikwarnungen für Azure-Dienste im Azure-Portal.
-Azure Monitor unterstützt jetzt einen neuen Typ von Metrikwarnungen, der als „Near Real-Time Metric Alerts“ bezeichnet wird. 
+# <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Neuere Metrikwarnungen für Azure-Dienste im Azure-Portal
+Azure Monitor unterstützt jetzt eine neue Art von Metrikwarnungen. Die neueren Warnungen unterscheiden sich in einigen Punkten von [klassischen Metrikwarnungen](insights-alerts-portal.md):
 
-Near Real-Time Metric Alerts unterscheiden sich in verschiedener Hinsicht von [klassischen Metrikwarnungen](insights-alerts-portal.md):
+- **Kürzere Wartezeit:** Neuere Metrikwarnungen können im Minutentakt ausgeführt werden. Ältere Metrikwarnungen werden immer nur alle fünf Minuten ausgeführt. Aufgrund der Zeit, die für die Erfassung der Protokolle benötigt wird, beträgt die Verzögerung bei Protokollwarnungen weiterhin mehr als eine Minute. 
+- **Unterstützung mehrdimensionaler Metriken:** Sie können Warnungen für dimensionale Metriken verwenden, um nur ein bestimmtes interessantes Segment der Metrik zu überwachen. 
+- **Mehr Kontrolle über Metrikbedingungen:** Sie können umfangreichere Warnungsregeln definieren. Die neueren Warnungen unterstützen die Überwachung der maximalen, minimalen und durchschnittlichen Werte sowie der Gesamtwerte der Metriken. 
+- **Kombinierte Überwachung mehrerer Metriken:** Sie können mehrere Metriken (aktuell bis zu zwei) mit einer einzelnen Regel überwachen. Eine Warnung wird ausgelöst, wenn beide Metriken ihren jeweiligen Schwellenwert für den angegebenen Zeitraum überschreiten. 
+- **Besseres Benachrichtigungssystem:** Alle neuere Warnungen verwenden [Aktionsgruppen](monitoring-action-groups.md). Hierbei handelt es sich um benannte Gruppen von Benachrichtigungen und Aktionen, die in mehreren Warnungen wiederverwendet werden können. Klassische Metrikwarnungen und ältere Log Analytics-Warnungen verwenden keine Aktionsgruppen. 
+- **Metriken aus Protokollen** (eingeschränkte Public Preview): Bei Log Analytics eingehende Protokolldaten können jetzt extrahiert und in Azure Monitor-Metriken konvertiert werden. Dadurch können sie genau wie andere Metriken in Warnungen genutzt werden. 
 
-- **Verbesserte Latenz**: Near Real-Time Metric Alerts können jede Minute erneut ausgeführt werden. Ältere Metrikwarnungen werden immer nur alle fünf Minuten ausgeführt.
-- **Unterstützung für mehrdimensionale Metriken**: Es können für dimensionale Metriken Warnungen ausgegeben werden, sodass Sie ein interessantes Segment der Metrik überwachen können.
-- **Mehr Kontrolle über Metrikbedingungen:** Sie können mit Near Real-Time Metric Alerts umfangreichere Warnungsregeln definieren. Die Warnungen unterstützen die Überwachung der maximalen, minimalen und durchschnittlichen Werte sowie der Gesamtwerte der Metriken.
-- **Kombinierte Überwachung mehrerer Metriken:** Near Real-Time Metric Alerts können mehrere Metriken (zurzeit bis zu zwei Metriken) mit einer einzigen Regel überwachen. Eine Warnung wird ausgelöst, wenn beide Metriken ihre jeweiligen Schwellenwerte für den angegebenen Zeitraum überschreiten.
-- **Modulares Benachrichtigungssystem:** Near Real-Time Metric Alerts verwenden [Aktionsgruppen](monitoring-action-groups.md). Sie können mit Aktionsgruppen modulare Aktionen erstellen. Sie können Aktionsgruppen für mehrere Warnungsregeln wiederverwenden.
-- **Metriken aus Protokollen**: Aus gängigen Protokolldaten, die in [Log Analytics](../log-analytics/log-analytics-overview.md) gesammelt werden, können Metriken in Azure Monitor extrahiert werden, und es können nahezu in Echtzeit Warnungen dazu erstellt werden.
+Informationen zum Erstellen einer neueren Metrikwarnung im Azure-Portal finden Sie unter [Erstellen einer Warnungsregel im Azure-Portal](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal). Nach der Erstellung können Sie die Warnung wie unter [Verwalten von Warnungen im Azure-Portal](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal) beschrieben verwalten.
 
+
+## <a name="portal-powershell-cli-rest-support"></a>Portal, PowerShell, Befehlszeilenschnittstelle, REST-Unterstützung
+Derzeit können Sie neuere Metrikwarnungen nur im Azure-Portal oder in der REST-API erstellen. Die Konfiguration neuerer Warnungen über PowerShell und die Azure-Befehlszeilenschnittstelle (Azure CLI 2.0) wird in Kürze unterstützt.
 
 ## <a name="metrics-and-dimensions-supported"></a>Unterstützte Metriken und Dimensionen
-Near Real-Time Metric Alerts unterstützen Warnungen für Metriken mit Dimensionen. Mithilfe von Dimensionen können Sie die Metrik nach der richtigen Ebene filtern. Sie können alle unterstützten Metriken und die dazugehörigen Dimensionen unter [Azure Monitor-Metrik-Explorer](monitoring-metric-charts.md) erkunden und visualisieren.
+Neuere Metrikwarnungen unterstützen Warnungen für Metriken mit Dimensionen. Mithilfe von Dimensionen können Sie die Metrik nach der richtigen Ebene filtern. Sie können alle unterstützten Metriken und die dazugehörigen Dimensionen unter [Azure Monitor-Metrik-Explorer](monitoring-metric-charts.md) erkunden und visualisieren.
 
-Hier ist die vollständige Liste mit Azure Monitor-basierten Metrikquellen angegeben, die für Near Real-Time Metric Alerts unterstützt werden:
+Im Anschluss finden Sie die vollständige Liste der Azure Monitor-Metrikquellen, die von den neueren Warnungen unterstützt werden:
 
 |Ressourcentyp  |Unterstützte Dimensionen  | Verfügbare Metriken|
 |---------|---------|----------------|
@@ -60,25 +63,20 @@ Hier ist die vollständige Liste mit Azure Monitor-basierten Metrikquellen angeg
 |Microsoft.Storage/storageAccounts/services     |     Ja    | [Blobdienste](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [Dateidienste](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [Warteschlangendienste](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) und [Tabellendienste](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  N/V       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
 |Microsoft.CognitiveServices/accounts     |    N/V     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
-|Microsoft.OperationalInsights/workspaces (Vorschau) | Ja|[Log Analytics-Arbeitsbereiche](#support-for-oms-logs-as-metrics-for-alerting)|
+|Microsoft.OperationalInsights/workspaces (Vorschau) | Ja|[Log Analytics-Arbeitsbereiche](#log-analytics-logs-as-metrics-for-alerting)|
 
 
-## <a name="create-a-newer-metric-alert"></a>Erstellen einer neueren Metrikwarnung
-Derzeit können Sie neuere Metrikwarnungen nur im Azure-Portal oder in der REST-API erstellen. Unterstützung für die Konfiguration von Near Real-Time Metric Alerts über PowerShell und die Azure-Befehlszeilenschnittstelle (Azure CLI) wird bald verfügbar sein.
+## <a name="log-analytics-logs-as-metrics-for-alerting"></a>Log Analytics-Protokolle als Metriken für Warnungen 
 
-Informationen zum Erstellen einer neueren Metrikwarnung im Azure-Portal finden Sie unter [Erstellen einer Warnungsregel im Azure-Portal](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal).
-
-## <a name="manage-newer-metric-alerts"></a>Erstellen von neueren Metrikwarnungen
-Nach der Erstellung von Near Real-Time Metric Alerts können Sie die Warnungen mithilfe der Schritte in [Verwalten von Warnungen im Azure-Portal](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal) verwalten.
-
-## <a name="support-for-oms-logs-as-metrics-for-alerting"></a>Unterstützung für OMS-Protokolle als Metriken für Warnungen
-
-Sie können auch Near Real-Time Metric Alerts für gängige OMS-Protokolle verwenden, die als Metriken aus der Protokollvorschau extrahiert wurden.  
+Sie können neuere Metrikwarnungen auch für gängige Log Analytics-Protokolle verwenden, die als Metriken aus der Protokollvorschau extrahiert wurden.  
 - [Leistungsindikatoren](../log-analytics/log-analytics-data-sources-performance-counters.md) für Windows- und Linux-Computer
 - [Heartbeat-Datensätze für Agent-Integritätsdiagnose](../operations-management-suite/oms-solution-agenthealth.md)
 - Datensätze der [Updateverwaltung](../operations-management-suite/oms-solution-update-management.md)
+ 
+> [!NOTE]
+> Bestimmte Metriken und/oder Dimensionen werden nur angezeigt, wenn im gewählten Zeitraum dafür Daten vorhanden sind. Diese Metriken sind für Kunden, die sich für die Vorschau entschieden haben, mit Arbeitsbereichen in folgenden Regionen verfügbar: USA, Osten; USA, Westen-Mitte; Europa, Westen. Wenn Sie diese Vorschauversion verwenden möchten, melden Sie sich über die [Umfrage](https://aka.ms/MetricLogPreview) an.
 
-Hier ist die vollständige Liste mit OMS-Protokoll-Metrikquellen angegeben, die für Near Real-Time Metric Alerts unterstützt werden:
+Die folgende Liste enthält die unterstützten protokollbasierten Log Analytics-Metrikquellen:
 
 Metrikname/-details  |Unterstützte Dimensionen  | Typ des Protokolls  |
 |---------|---------|---------|
@@ -151,13 +149,11 @@ Metrikname/-details  |Unterstützte Dimensionen  | Typ des Protokolls  |
 |    Heartbeat  |     Ja – Computer, OSType, Version & SourceComputerId    |   Heartbeat-Datensätze |
 |    Aktualisieren |     Ja – Computer, Product, Classification, UpdateState, Optional & Approved    |   Updateverwaltung |
 
-> [!NOTE]
-> Bestimmte Metriken und/oder Dimensionen werden nur angezeigt, wenn im gewählten Zeitraum dafür Daten vorhanden sind. Diese Metriken sind für Kunden, die sich für die Vorschau entschieden haben, mit Arbeitsbereichen in folgenden Regionen verfügbar: USA, Osten; USA, Westen-Mitte; Europa, Westen. Wenn Sie diese Vorschauversion verwenden möchten, melden Sie sich über die [Umfrage](https://aka.ms/MetricLogPreview) an.
 
 
 ## <a name="payload-schema"></a>Nutzlast und Schema
 
-Der POST-Vorgang enthält die folgende JSON-Nutzlast bzw. folgendes JSON-Schema für alle Near Real-Time Metric Alerts, wenn eine richtig konfigurierte [Aktionsgruppe](monitoring-action-groups.md) verwendet wird:
+Bei Verwendung einer ordnungsgemäß konfigurierten [Aktionsgruppe](monitoring-action-groups.md) enthält der POST-Vorgang für alle neueren Metrikwarnungen die folgende JSON-Nutzlast und das folgende Schema:
 
 ```json
 {"schemaId":"AzureMonitorMetricAlert","data":

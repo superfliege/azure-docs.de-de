@@ -1,5 +1,5 @@
 ---
-title: 'Azure Monitor-Metriken: Unterstützte Metriken pro Ressourcentyp | Microsoft-Dokumentation'
+title: 'Azure Monitor-Metriken: Unterstützte Metriken pro Ressourcentyp | Microsoft Docs'
 description: Liste der Metriken, die mit Azure Monitor für jeden Ressourcentyp zur Verfügung stehen.
 author: anirudhcavale
 manager: ashwink
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 285f4540c7f9be19cde0aafeff67ce2b39abe957
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc7a4062af9e73383af46f0c36eb22710ce9b6e1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind.
 
 > [!NOTE]
-> Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Diese Liste enthält nur Metriken, die über die konsolidierte Azure Monitor-Metrikpipeline verfügbar sind. Verwenden Sie zum Abfragen von Metriken mit Dimensionen und zum Zugreifen auf diese [2017-05-01-preview (API-Version)](https://docs.microsoft.com/rest/api/monitor/metricdefinitions).
+> Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Diese Liste enthält nur Metriken, die über die konsolidierte Azure Monitor-Metrikpipeline verfügbar sind. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um Metriken mit Dimensionen abzufragen und auf sie zuzugreifen.
 >
 >
 

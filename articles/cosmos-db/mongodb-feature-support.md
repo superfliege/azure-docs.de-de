@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 470ad2fe458c47392b8f55a8f46c75e54ccf87a3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 22ae56d9ebb2ea39acbd9f4536ef9ea5508b9867
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Unterstützung der MongoDB-API für Features und Syntax von MongoDB
 
 Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Die Kommunikation mit der MongoDB-API der Datenbank ist über einen beliebigen Open-Source-MongoDB-[Clienttreiber](https://docs.mongodb.org/ecosystem/drivers) möglich. Die MongoDB-API ermöglicht die Verwendung vorhandener Clienttreiber durch Nutzung des MongoDB-[Verbindungsprotokolls](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
-Mithilfe der MongoDB-API von Azure Cosmos DB können Sie die Vorteile der für Sie gewohnten MongoDB-APIs zusammen mit allen Unternehmensfunktionen von Azure Cosmos DB nutzen: [globale Verteilung](distribute-data-globally.md), [automatisches Sharding](partition-data.md), Gewährleistung der Verfügbarkeit und Latenz, automatische Indizierung der einzelnen Felder, Verschlüsselung ruhender Daten, Sicherungen u.v.m.
+Mit der MongoDB-API von Azure Cosmos DB können Sie die Vorteile der vertrauten MongoDB-APIs mit allen Unternehmensfunktionen von Azure Cosmos DB kombinieren. Hierzu zählen unter anderem [globale Verteilung](distribute-data-globally.md), [automatisches Sharding](partition-data.md), Gewährleistung der Verfügbarkeit und Latenz, automatische Indizierung der einzelnen Felder, Verschlüsselung ruhender Daten sowie Sicherungen.
 
 ## <a name="mongodb-query-language-support"></a>Unterstützung der MongoDB-Abfragesprache
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 455c74ca808f71258a12166c2e36bdd73d9a3e20
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5712e556d7b3bdcce38b8b8d39a08414ce0fd2f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack-PKI-Zertifikatanforderungen
 Azure Stack verfügt über ein öffentliches Infrastrukturnetz mit extern zugänglichen öffentlichen IP-Adressen, die einer kleinen Gruppe von Azure Stack-Diensten und möglicherweise Mandanten-VMs zugewiesen sind. PKI-Zertifikate (Public Key-Infrastruktur) mit den entsprechenden DNS-Namen für diese Endpunkte der öffentlichen Infrastruktur von Azure Stack werden während der Bereitstellung von Azure Stack benötigt. Dieser Artikel enthält Informationen zu Folgendem:
@@ -34,6 +34,9 @@ Azure Stack verfügt über ein öffentliches Infrastrukturnetz mit extern zugän
 ## <a name="certificate-requirements"></a>Zertifikatanforderungen
 Die folgende Liste beschreibt die Zertifikatsanforderungen, die für die Bereitstellung von Azure Stack erfüllt sein müssen: 
 - Zertifikate müssen von einer internen oder öffentlichen Zertifizierungsstelle ausgestellt werden. Wenn eine öffentliche Zertifizierungsstelle verwendet wird, muss diese im Rahmen des Microsoft Trusted Root Authority Program in das Basisbetriebssystem-Image aufgenommen werden. Die vollständige Liste finden Sie hier: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
+- Ihre Azure Stack-Infrastruktur muss über Netzwerkzugriff auf die Zertifizierungsstelle verfügen, die zum Signieren Ihrer Zertifikate verwendet wurde.
+- Beim Rotieren von Zertifikaten müssen diese entweder von der gleichen internen Zertifizierungsstelle stammen, die auch zum Signieren der bei der Bereitstellung angegebenen Zertifikate verwendet wurde, oder von einer der oben angegebenen öffentlichen Zertifizierungsstellen.
+- Die Verwendung selbstsignierter Zertifikate wird nicht unterstützt.
 - Das Zertifikat kann ein einzelnes Platzhalterzertifikat sein, das alle Namespaces im Feld „Alternativer Antragstellername“ abdeckt. Alternativ können Sie auch einzelne Zertifikate mit Platzhaltern für Endpunkte wie ACS und Key Vault verwenden, wo sie benötigt werden. 
 - Der Zertifikatsignaturalgorithmus darf nicht SHA1, sondern muss sicherer sein. 
 - Das Zertifikatsformat muss PFX sein, da sowohl der öffentliche als auch der private Schlüssel für die Installation von Azure Stack benötigt werden. 
@@ -42,6 +45,9 @@ Die folgende Liste beschreibt die Zertifikatsanforderungen, die für die Bereits
 - Das Feld „Ausgestellt für:“ des Zertifikats darf nicht mit dem Feld „Ausgestellt von:“ identisch sein.
 - Die Kennwörter aller PFX-Zertifikatdateien müssen zum Zeitpunkt der Bereitstellung identisch sein.
 - Stellen Sie sicher, dass die Antragstellernamen und alternativen Antragstellernamen aller Zertifikate mit den in diesem Artikel beschriebenen Vorgaben übereinstimmen, um fehlerhafte Implementierungen zu vermeiden.
+
+> [!NOTE]
+> Selbstsignierte Zertifikate werden nicht unterstützt.
 
 > [!NOTE]
 > Das Vorhandensein von Zwischenzertifizierungsstellen in der Vertrauenskette eines Zertifikats wird ausdrücklich unterstützt. 

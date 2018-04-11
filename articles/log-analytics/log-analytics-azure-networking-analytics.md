@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: richrund
-ms.openlocfilehash: 17dadd784d59a2cc0cab6ffbae144010f896b296
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 12172e81ed6b4d79ee200ee1ca79803ad58d6d19
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Azure-Netzwerküberwachungslösungen in Log Analytics
 
@@ -28,18 +28,19 @@ Log Analytics bietet die folgenden Lösungen zur Überwachung Ihrer Netzwerke:
 * Azure Application Gateway-Analyse zur Überprüfung
  * Azure Application Gateway-Protokolle
  * Azure Application Gateway-Metriken
-* Azure-Netzwerksicherheitsgruppen-Analyse zur Überprüfung
- * Protokolle für Azure-Netzwerksicherheitsgruppen
+* Lösungen zum Überwachen und Überprüfen der Netzwerkaktivität in Ihrem Cloudnetzwerk
+* [Traffic Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+* Azure-Netzwerksicherheitsgruppen-Analyse
 
 ## <a name="network-performance-monitor-npm"></a>Netzwerkleistungsmonitor (NPM)
 
-Die [Netzwerkleistungsmonitor](log-analytics-network-performance-monitor.md)-Verwaltungslösung ist eine Lösung zur Netzwerküberwachung, die die Integrität, Verfügbarkeit und Erreichbarkeit von Netzwerken überwacht.  Sie dient zur Überwachung der Konnektivität zwischen:
+Die [Netzwerkleistungsmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview)-Verwaltungslösung ist eine Lösung zur Netzwerküberwachung, die die Integrität, Verfügbarkeit und Erreichbarkeit von Netzwerken überwacht.  Sie dient zur Überwachung der Konnektivität zwischen:
 
 * Public Cloud und lokaler Umgebung
 * Rechenzentren und Benutzerstandorten (Zweigstellen)
 * Subnetzen, die verschiedene Ebenen einer Multi-Tier-Anwendung hosten.
 
-Weitere Informationen finden Sie unter [Netzwerkleistungsmonitor](log-analytics-network-performance-monitor.md).
+Weitere Informationen finden Sie unter [Netzwerkleistungsmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview).
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure Application Gateway- und Netzwerksicherheitsgruppen-Analysen
 Verwendung der Lösungen:

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: 75615de523f1fba808f44fb1a1015138fb190edc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2982c8ba534b9a93a021a9d3a3819b904f09abc7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -280,7 +280,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 1. **[A]** Richten Sie die Hostnamensauflösung ein.   
 
    Sie können entweder einen DNS-Server verwenden oder „/etc/hosts“ auf allen Knoten ändern. In diesem Beispiel wird die Verwendung der /etc/hosts-Datei veranschaulicht.
-   Ersetzen Sie die IP-Adresse und den Hostnamen in den folgenden Befehlen.
+   Ersetzen Sie die IP-Adresse und den Hostnamen in den folgenden Befehlen. Durch die Verwendung von „/etc/hosts“ wird Ihr Cluster vom DNS (einem weiteren möglichen Single Point of Failure) unabhängig.
 
    <pre><code>
    sudo vi /etc/hosts
@@ -329,10 +329,16 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   Fügen Sie der Datei den im Folgenden fett formatierten Inhalt hinzu.
+   Fügen Sie den folgenden fett formatierten Inhalt in die Datei ein, falls die Werte dort nicht vorhanden sind oder sich von den angegebenen Werten unterscheiden.
    
    <pre><code> 
    [...]
+     <b>token:          5000
+     token_retransmits_before_loss_const: 10
+     join:           60
+     consensus:      6000
+     max_messages:   20</b>
+     
      interface { 
         [...] 
      }

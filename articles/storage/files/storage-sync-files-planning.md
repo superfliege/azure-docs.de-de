@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 401542bf61aa27138d26cce522e24078503b77e0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3f3ed53e3c6606ca540cc2e760f2f6280ccf5cc2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)
 Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -96,6 +96,19 @@ Zukünftige Versionen von Windows Server werden hinzugefügt, sobald sie veröff
 
 > [!Note]  
 > Nur NTFS-Volumes werden unterstützt. ReFS, FAT, FAT32 und andere Dateisysteme werden nicht unterstützt.
+
+### <a name="files-skipped"></a>Übersprungene Dateien
+| Datei/Ordner | Hinweis |
+|-|-|
+| Desktop.ini | Systemspezifische Datei |
+| ethumbs.db$ | Temporäre Datei für Miniaturansichten |
+| ~$\*.\* | Temporäre Office-Datei |
+| \*.tmp | Temporäre Datei |
+| \*.laccdb | Access-DB-Sperrdatei|
+| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| \\System Volume Information | Volumespezifischer Ordner |
+| $RECYCLE.BIN| Ordner |
+| \\SyncShareState | Ordner für die Synchronisierung |
 
 ### <a name="failover-clustering"></a>Failoverclustering
 Windows Server-Failoverclustering wird von der Azure-Dateisynchronisierung für die Bereitstellungsoption „Dateiserver zur allgemeinen Verwendung“ unterstützt. Failoverclustering wird auf einem „Dateiserver mit horizontaler Skalierung für Anwendungsdaten“ (SOFS) oder auf freigegebenen Volumes (CSV) nicht unterstützt.

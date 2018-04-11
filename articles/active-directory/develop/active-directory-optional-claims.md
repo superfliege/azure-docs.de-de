@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 03/15/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0cfa79b9c44953c613eaec8d701f351c6f2ce212
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76e7be62caae7e33caefc3f90a5e57c5f71a31d3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Optionale Ansprüche in Azure AD (Preview)
 
@@ -28,7 +28,7 @@ Dieses Feature wird von Anwendungsentwicklern verwendet, um anzugeben, welche An
 -   Hinzufügen und Zugreifen auf benutzerdefinierte Ansprüche für Ihre Anwendung 
 
 > [!Note]
-> Diese Funktion befindet sich derzeit in der Public Preview-Phase. Seien Sie darauf vorbereitet, Änderungen zurückzusetzen bzw. zu löschen. Die Funktion ist während der Public Preview-Phase in allen Azure AD-Abonnements verfügbar. Sobald die Funktion aber allgemein verfügbar wird, ist für einige Aspekte des Features unter Umständen ein Azure AD Premium-Abonnement erforderlich.
+> Diese Funktion befindet sich derzeit in der Public Preview. Seien Sie darauf vorbereitet, Änderungen zurückzusetzen bzw. zu löschen. Die Funktion ist während der Public Preview-Phase in allen Azure AD-Abonnements verfügbar. Sobald die Funktion aber allgemein verfügbar wird, ist für einige Aspekte des Features unter Umständen ein Azure AD Premium-Abonnement erforderlich.
 
 Die Liste der Standardansprüche und Informationen zu deren Verwendung in Token finden Sie in den [Grundlagen zu den von Azure AD ausgestellten Token](active-directory-token-and-claims.md). 
 
@@ -49,7 +49,7 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 
 **Tabelle 2: Standardmäßige optionale Ansprüche**
 
-| Name                     | Beschreibung                                                                                                                                                                                     | Tokentyp | Benutzertyp | Hinweise                                                                                                                                                                                                                                                                                   |
+| NAME                     | BESCHREIBUNG                                                                                                                                                                                     | Tokentyp | Benutzertyp | Notizen                                                                                                                                                                                                                                                                                   |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `auth_time`                | Zeitpunkt der letzten Authentifizierung des Benutzers.  Siehe OpenID Connect-Spezifikation.                                                                                                                                | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_region_scope`      | Region des Ressourcenmandanten                                                                                                                                                                   | JWT        |           |                                                                                                                                                                                                                                                                                         |
@@ -69,15 +69,13 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 | `is_device_managed`        | Gibt an, ob MDM auf dem Gerät installiert ist. Steht mit der Richtlinie für bedingten Zugriff im Zusammenhang.                                                                                                                  | SAML       |           | Bei JWTs in „signin_state“ zusammengefasst.                                                                                                                                                                                                                                                   |
 | `is_device_compliant`      | Gibt an, dass MDM festgestellt hat, dass das Gerät den Gerätesicherheitsrichtlinien des Unternehmens entspricht.                                                                                  | SAML       |           | Bei JWTs in „signin_state“ zusammengefasst.                                                                                                                                                                                                                                                   |
 | `kmsi`                     | Gibt an, ob der Benutzer die Option „Angemeldet bleiben“ ausgewählt hat.                                                                                                                                    | SAML       |           | Bei JWTs in „signin_state“ zusammengefasst.                                                                                                                                                                                                                                                   |
-| `upn`                      | Anspruch „UserPrincipalName“.  Obwohl dieser Anspruch automatisch hinzugefügt wird, können Sie ihn als einen optionalen Anspruch angeben, um zusätzliche Eigenschaften zum Ändern des Verhaltens im Fall eines Gastbenutzer anzufügen. | JWT, SAML  |           | Zusätzliche Eigenschaften: <br> include_externally_authenticated_upn <br> include_externally_authenticated_upn_without_hash                                                                                                                                                                 |
-| `groups`                   | Die Gruppen, in denen ein Benutzer Mitglied ist.                                                                                                                                                               | JWT, SAML  |           | Zusätzliche Eigenschaften: <br> Sam_account_name<br> Dns_domain_and_sam_account_name<br> Netbios_domain_and_sam_account<br> Max_size_limit<br> Emit_as_roles<br>                                                                                                                            |
-
+| `upn`                      | Anspruch „UserPrincipalName“.  Obwohl dieser Anspruch automatisch hinzugefügt wird, können Sie ihn als einen optionalen Anspruch angeben, um zusätzliche Eigenschaften zum Ändern des Verhaltens im Fall eines Gastbenutzer anzufügen. | JWT, SAML  |           | Zusätzliche Eigenschaften: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
 ### <a name="v20-optional-claims"></a>Optionale Ansprüche in v2.0
 Diese Ansprüche sind in v1.0-Token immer enthalten, wurden aber aus v2.0-Token entfernt, sofern nicht angefordert.  Diese Ansprüche gelten nur für JWTs (ID-Token und Zugriffstoken).  
 
 **Tabelle 3: Nur in v2.0 enthaltene optionale Ansprüche**
 
-| JWT-Anspruch     | Name                            | Beschreibung                                                                                                                    | Hinweise |
+| JWT-Anspruch     | NAME                            | BESCHREIBUNG                                                                                                                    | Notizen |
 |---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
 | `ipaddr`      | IP-Adresse                      | Die IP-Adresse, von der aus sich der Client angemeldet hat.                                                                                      |       |
 | `onprem_sid`  | Lokale Sicherheits-ID |                                                                                                                                |       |
@@ -85,31 +83,24 @@ Diese Ansprüche sind in v1.0-Token immer enthalten, wurden aber aus v2.0-Token 
 | `pwd_url`     | Kennwortänderungs-URL             | Eine URL, die der Benutzer besuchen kann, um sein Kennwort zu ändern.                                                                        |       |
 | `in_corp`     | Innerhalb des Unternehmensnetzwerks        | Signalisiert, ob sich der Client aus dem Unternehmensnetzwerk anmeldet. Andernfalls ist der Anspruch nicht enthalten.                     |       |
 | `nickname`    | Spitzname                        | Ein zusätzlicher Name für den Benutzer, der vom Vor- oder Nachnamen abweicht.                                                             |       |                                                                                                                |       |
-| `family_name` | Nachname                       | Gibt den Nachnamen des Benutzers entsprechend der Definition im Azure AD-Benutzerobjekt an. <br>„family_name“: „Miller“ |       |
+| `family_name` | Last Name (Nachname)                       | Gibt den Nachnamen des Benutzers entsprechend der Definition im Azure AD-Benutzerobjekt an. <br>„family_name“: „Miller“ |       |
 | `given_name`  | Vorname                      | Gibt den Vornamen des Benutzers entsprechend der Festlegung im Azure AD-Benutzerobjekt an.<br>„given_name“: „Frank“                   |       |
 
 ### <a name="additional-properties-of-optional-claims"></a>Zusätzliche Eigenschaften optionaler Ansprüche
 
-Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere Art zurückgegeben werden.  Diese zusätzlichen Eigenschaften reichen von Formatierungsänderungen (z. B. `include_externally_authenticated_upn_without_hash`) bis hin zu Änderungen der Gruppe zurückgegebener Daten (`Dns_domain_and_sam_account_name`).
+Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere Art zurückgegeben werden.  Diese zusätzlichen Eigenschaften unterstützen in erster Linie die Migration lokaler Anwendungen mit unterschiedlichen Datenerwartungen. So ist `include_externally_authenticated_upn_without_hash` beispielsweise hilfreich bei Clients, die keine Hashmarks (`#`) im UPN verarbeiten können.
 
 **Tabelle 4: Werte zum Konfigurieren standardmäßiger optionaler Ansprüche**
 
-| Eigenschaftenname                                     | Name der zusätzlichen Eigenschaft                                                                                                             | Beschreibung |
+| Eigenschaftenname                                     | Name der zusätzlichen Eigenschaft                                                                                                             | BESCHREIBUNG |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `Upn`                                                 |                                                                                                                                      |             |
-| | `include_externally_authenticated_upn`              | Bezieht den Gast-UPN ein, wie er im Ressourcenmandanten gespeichert ist.  Beispiel: `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
+| `upn`                                                 |                                                                                                                                      |             |
+| | `include_externally_authenticated_upn`              | Bezieht den Gast-UPN ein, wie er im Ressourcenmandanten gespeichert ist.  Zum Beispiel, `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
 | | `include_externally_authenticated_upn_without_hash` | Wie oben, außer dass die Rautenzeichen (`#`) durch Unterstriche (`_`) ersetzt werden. Beispiel: `foo_hometenant.com_EXT_@resourcetenant.com` |             
-| `groups`                                              |                                                                                                                                      |             |
-| | `sam_account_name`                                  |                                                                                                                                      |             
-| | `dns_domain_and_sam_account_name`                   |                                                                                                                                      |             
-| | `netbios_domain_and_sam_account_name`               |                                                                                                                                      |             
-| | `max_size_limit`                                    | Erhöht die Anzahl von Gruppen, die für die maximale Gruppengröße (1.000) zurückgegeben werden.                                                            |             
-| | `emit_as_roles`                                     | Gibt einen Anspruch des Typs "roles" anstelle des Anspruchs "groups" mit den gleichen Werten aus.  Für Apps vorgesehen, die von einer lokalen Umgebung migriert werden, in der RBAC üblicherweise über eine Gruppenmitgliedschaft gesteuert wurde.   |             
 
 > [!Note]
 >Durch Angabe des optionalen Anspruchs „upn“ ohne eine zusätzliche Eigenschaft wird kein Verhalten geändert. Damit ein neuer Anspruch im Token ausgestellt wird, muss mindestens eine der zusätzlichen Eigenschaften hinzugefügt werden. 
->
->Die zusätzlichen `account_name`-Eigenschaften für Gruppen können nicht zusammen verwendet werden, und das Sortieren der zusätzlichen Eigenschaften ist von Bedeutung: Nur die zuerst aufgelistete zusätzliche Eigenschaft für den Kontonamen wird verwendet. 
+
 
 #### <a name="additional-properties-example"></a>Beispiel für zusätzliche Eigenschaften:
 
@@ -118,15 +109,15 @@ Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere 
    {
        "idToken": [ 
              { 
-                "name": "groups", 
+                "name": "upn", 
             "essential": false,
-                "additionalProperties": [ "netbios_domain_and_sam_account_name", "sam_account_name" , "emit_as_roles"]  
+                "additionalProperties": [ "include_externally_authenticated_upn"]  
               }
         ]
 }
 ```
 
-Dieses „OptionalClaims“-Objekt gibt den gleichen `groups`-Anspruch zurück, als wäre `sam_account_name` nicht eingeschlossen – da es sich hinter `netbios_domain_and_sam_account_name` befindet, wird es ignoriert. 
+Dieses OptionalClaims-Objekt bewirkt, dass das an den Client zurückgegebene ID-Token einen weiteren UPN mit den zusätzlichen Informationen zum Home- und zum Ressourcenmandanten enthält.  
 
 ## <a name="configuring-optional-claims"></a>Konfigurieren optionaler Ansprüche
 
@@ -170,7 +161,7 @@ Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anw
 
 **Tabelle 5: Eigenschaften des „OptionalClaims“-Typs**
 
-| Name        | Typ                       | Beschreibung                                           |
+| NAME        | Typ                       | BESCHREIBUNG                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-ID-Token zurückgegeben werden.     |
 | `accessToken` | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-Zugriffstoken zurückgegeben werden. |
@@ -184,7 +175,7 @@ Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalte
 
 **Tabelle 6: Eigenschaften des „OptionalClaim“-Typs**
 
-| Name                 | Typ                    | Beschreibung                                                                                                                                                                                                                                                                                                   |
+| NAME                 | Typ                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Der Name des optionalen Anspruchs.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Die Quelle (Verzeichnisobjekt) des Anspruchs. Es gibt vordefinierte Ansprüche und benutzerdefinierte Ansprüche aus Erweiterungseigenschaften. Wenn der Quellwert „null“ ist, ist der Anspruch ein vordefinierter optionaler Anspruch. Wenn der Quellwert „user“ ist, ist der Wert in der „name“-Eigenschaft die Erweiterungseigenschaft aus dem Benutzerobjekt. |

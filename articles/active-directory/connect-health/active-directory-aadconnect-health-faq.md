@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: b4c977b54c87276bd4b168bc56e70f3b918e6634
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 983c2c8aeb4c9d37213061dd70d6d64bae3de9d7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -178,6 +178,10 @@ CheckForMS17-010
 **F: Warum zeigt das PowerShell-Cmdlet <i>Get-MsolDirSyncProvisioningError</i> weniger Synchronisierungsfehler im Ergebnis an?**
 
 <i>Get-MsolDirSyncProvisioningError</i> gibt nur Bereitstellungsfehler vom Typ „DirSync“ zurück. Außerdem zeigt das Connect Health-Portal auch andere Synchronisierungsfehlertypen wie beispielsweise Exportfehler an. Dies ist mit dem Azure AD Connect-Deltaergebnis konsistent. Lesen Sie mehr zu [Azure AD Connect-Synchronisierungsfehlern](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
+
+**F: Warum werden meine AD FS-Überwachungen nicht generiert?**
+
+Vergewissern Sie sich mithilfe des PowerShell-Cmdlets <i>Get-AdfsProperties -AuditLevel</i>, dass Überwachungsprotokolle nicht deaktiviert sind. Weitere Informationen zu AD FS-Überwachungsprotokollen finden Sie [hier](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016).
 
 
 ## <a name="related-links"></a>Verwandte Links

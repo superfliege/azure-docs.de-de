@@ -14,17 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: 258aac722aa1c94ecf2cbf0524a3e4b53b8a788c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f3e7b9c7432538c0f78662213544d4d691652f13
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-and-service-level-logging"></a>Protokollierung auf Anwendungs- und Dienstebene
 
 Das Instrumentieren des Codes ist die Grundlage für die meisten anderen Aspekte bei der Überwachung Ihrer Dienste. Die Instrumentierung ist die einzige Möglichkeit, wie Sie Fehler erkennen und die Diagnose zur Fehlerbehebung stellen können. Es ist zwar technisch möglich, einen Debugger mit einem Produktionsdienst zu verbinden, aber dies ist keine gängige Vorgehensweise. Es ist also wichtig, dass Sie über ausführliche Instrumentierungsdaten verfügen.
 
 Bei einigen Produkten wird Ihr Code automatisch instrumentiert. Obwohl diese Lösungen ggf. gut funktionieren, ist fast immer eine manuelle Instrumentierung erforderlich. Letztlich benötigen Sie ausreichend Informationen für das genaue Debuggen der Anwendung. In diesem Dokument werden die verschiedenen Verfahren für das Instrumentieren des Codes und die jeweiligen Vor- und Nachteile für bestimmte Fälle beschrieben.
+
+Beispiele zur Verwendung dieser Vorschläge finden Sie unter [Hinzufügen von Protokollierung zur Service Fabric-Anwendung](service-fabric-how-to-diagnostics-log.md).
 
 ## <a name="eventsource"></a>EventSource
 

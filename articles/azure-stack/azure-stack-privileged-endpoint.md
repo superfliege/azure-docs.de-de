@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: fb4dea9832e781b2ec9f4cfa573b5a4f630188db
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f786d99718b82dba052909e566f1b0571701127e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Verwenden des privilegierten Endpunkts in Azure Stack
 
@@ -76,6 +76,8 @@ Es wird empfohlen, nur über den Hardwarelebenszyklushost oder über einen dediz
 
       - **Benutzername**: Geben Sie das CloudAdmin-Konto im Format **&lt;*Azure Stack-Domäne*&gt;\accountname** an. (Für ASDK lautet der Benutzername **Azurestack\accountname**.) 
       - **Kennwort**: Geben Sie das gleiche Kennwort ein, das während der Installation für das Domänenadministratorkonto AzureStackAdmin bereitgestellt wurde.
+    > [!NOTE]
+    > Falls Sie keine Verbindung mit dem ERCS-Endpunkt herstellen können, wiederholen Sie die Schritte 1 und 2 mit der IP-Adresse eines virtuellen ERCS-Computers, mit dem Sie noch nicht versucht haben, eine Verbindung herzustellen.
     
 3.  Nachdem Sie eine Verbindung hergestellt haben, ändert sich die Aufforderung abhängig von der Umgebung entweder in **[*IP-Adresse oder ERCS VM-Name*]: PS>** oder in **[Azs ercs01]: PS>**. Führen Sie `Get-Command` aus, um die Liste der verfügbaren Cmdlets anzuzeigen.
 
