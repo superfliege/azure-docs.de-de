@@ -5,7 +5,7 @@ services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 860c86e0-90f7-492c-9a84-1bdd3d1735cd
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: barbkess
 ms.openlocfilehash: f8c251fb9b8275eeea2940f8856669d2ef9f3549
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>Laden von Daten mit PolyBase in SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ Für dieses Tutorial ist Folgendes erforderlich:
 ## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>Schritt 1: Hinzufügen von Beispieldaten zu Azure Blob Storage
 Um Daten laden zu können, müssen wir einige Beispieldaten in Azure Blob Storage einfügen. In diesem Schritt füllen wir einen Azure-Blobspeicher mit Beispieldaten. Wir werden diese Beispieldaten später mit PolyBase in die SQL Data Warehouse-Datenbank laden.
 
-### <a name="a-prepare-a-sample-text-file"></a>A: Vorbereiten einer Beispieltextdatei
+### <a name="a-prepare-a-sample-text-file"></a>A. Vorbereiten einer Beispieltextdatei
 So bereiten Sie eine Beispieltextdatei vor
 
 1. Öffnen Sie Editor, und kopieren Sie die folgenden Datenzeilen in eine neue Datei. Speichern Sie diese im lokalen temporären Verzeichnis als „%temp%\DimDate2.txt“.

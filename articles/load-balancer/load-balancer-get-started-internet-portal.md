@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1b7901542a699e74f65527bf734133f73acb0bea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c646b0b1ab0ec62cffb4f7cf7474b48c68dfabb4
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-public-basic-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Erstellen eines öffentlichen Load Balancers im Tarif „Basic“ für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -38,8 +38,8 @@ In diesem Abschnitt erstellen Sie über das Portal einen öffentlichen Load Bala
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** folgende Werte für den Lastenausgleich ein:
     - *myLoadBalancer*: Name des Lastenausgleichs
-    - **Öffentlich**: Lastenausgleichstyp 
-     - *myPublicIP*: öffentliche IP-Adresse, die Sie mit der SKU **Basic** erstellen müssen, und **Dynamisch** für **Zuweisung**
+    - **Öffentlich**: Lastenausgleichstyp
+    - *myPublicIP*: öffentliche IP-Adresse, die Sie mit der SKU **Basic** erstellen müssen, und **Dynamisch** für **Zuweisung**
     - *myResourceGroupLB*: Name der neuen Ressourcengruppe, die Sie erstellen
 3. Klicken Sie auf **Erstellen**, um den Lastenausgleich zu erstellen.
    

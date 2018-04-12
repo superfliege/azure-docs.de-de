@@ -1,11 +1,11 @@
 ---
-title: "Laden von Daten in Azure SQL Data Warehouse – Data Factory | Microsoft Docs"
+title: Laden von Daten in Azure SQL Data Warehouse – Data Factory | Microsoft Docs
 description: In diesem Tutorial werden Daten mithilfe von Azure Data Factory in Azure SQL Data Warehouse geladen und eine SQL Server-Datenbank als Datenquelle verwendet.
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-sql-data-warehouse;azure-data-factory
 ms.service: sql-data-warehouse
 ms.workload: data-management
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
 ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>Laden von Daten in SQL Data Warehouse mit Data Factory
 
@@ -110,7 +110,6 @@ Teilen Sie jetzt Data Factory die Zielinformationen mit.
     ![Zuordnen von Schemas](media/sql-data-warehouse-load-with-data-factory/schema-mapping.png)
 
 4. Klicken Sie auf **Weiter**.
-
 
 ## <a name="configure-the-performance-settings"></a>Konfigurieren der Leistungseinstellungen
 Konfigurieren Sie ein Azure Storage-Konto in den Leistungskonfigurationen zum Bereitstellen der Daten, bevor sie performant mit [PolyBase](sql-data-warehouse-best-practices.md#use-polybase-to-load-and-export-data-quickly) in SQL Data Warehouse geladen werden. Nach Abschluss des Kopiervorgangs werden die vorläufigen Daten im Speicher automatisch bereinigt.
