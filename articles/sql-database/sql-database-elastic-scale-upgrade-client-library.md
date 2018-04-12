@@ -7,13 +7,13 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 54ddde10935fa5add07aaf0c514cf48c6115678e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5e7702c164a414ee2b9c08ccb276d5d74ad90f19
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade einer App auf die neueste Clientbibliothek für elastische Datenbanken
 Neue Versionen der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) stehen über NuGet und die NuGetPackage Manager-Benutzeroberfläche in Visual Studio zur Verfügung. Upgrades bieten Fehlerkorrekturen und Unterstützung für die neuen Funktionen der Clientbibliothek.

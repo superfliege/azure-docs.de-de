@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/19/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 241f872b3069a58a35df7104f3335964298c7a20
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2ad995c4b48c2c298edd7c6b4da92ea8f3c4a060
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="authorize-access-to-web-applications-using-oauth-20-and-azure-active-directory"></a>Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory
 Azure Active Directory (Azure AD) verwendet OAuth 2.0, um den Zugriff auf Webanwendungen und Web-APIs in Ihrem Azure AD-Mandanten zu autorisieren. Diese sprachunabhängige Anleitung beschreibt das Senden und Empfangen von HTTP-Nachrichten ohne Verwendung unserer Open Source-Bibliotheken.
@@ -59,7 +59,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | prompt |optional |Geben Sie den Typ der erforderlichen Benutzerinteraktion an.<p> Gültige Werte sind: <p> *login*: Der Benutzer sollte zum erneuten Authentifizieren aufgefordert werden. <p> *consent*: Die Benutzerzustimmung wurde erteilt, muss aber aktualisiert werden. Der Benutzer sollte zur Erteilung der Zustimmung aufgefordert werden. <p> *admin_consent*: Ein Administrator sollte aufgefordert werden, die Zustimmung im Namen aller Benutzer der Organisation zu erteilen. |
 | login_hint |optional |Dieser Wert kann verwendet werden, um das Feld für den Benutzernamen oder die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist.  Apps verwenden diesen Parameter häufig für die erneute Authentifizierung, nachdem sie den Benutzernamen aus einer vorherigen Anmeldung mithilfe des Anspruchs `preferred_username` extrahiert haben. |
 | domain_hint |optional |Stellt einen Hinweis zum Mandanten oder zur Domäne bereit, die der Benutzer zum Anmelden verwenden sollte. Der Wert von „domain_hint“ ist eine registrierte Domäne für den Mandanten. Wenn der Mandant mit einem lokalen Verzeichnis verbunden ist, führt AAD eine Umleitung an den angegebenen Mandantenverbundserver durch. |
-| code_challenge_method | optional    | Die Methode wird zum Codieren von `code_verifier` für den `code_challenge`-Parameter verwendet. Kann `plain` oder `S256` sein.  Wenn ausgeschlossen, wird angenommen, dass `code_challenge` Klartext ist, wenn `code_challenge` enthalten ist.  Azure AAD v2.0 unterstützt sowohl `plain` als auch `S256`. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge_method | optional    | Die Methode wird zum Codieren von `code_verifier` für den `code_challenge`-Parameter verwendet. Kann `plain` oder `S256` sein.  Wenn ausgeschlossen, wird angenommen, dass `code_challenge` Klartext ist, wenn `code_challenge` enthalten ist.  Azure AAD 1.0 unterstützt sowohl `plain` als auch `S256`. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 | code_challenge        | optional    | Wird verwendet, um die Gewährung von Autorisierungscodes über Proof Key for Code Exchange (PKCE) von einem nativen Client aus zu sichern. Erforderlich, wenn `code_challenge_method` enthalten ist.  Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 > [!NOTE]

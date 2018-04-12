@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b908e8877162a6a1d9292616a1704c1c528e1725
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9f8f8cb7fd267e25c83ecceb98b5faa8848fb126
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Überwachen und Aktualisieren eines virtuellen Windows-Computers mit Azure PowerShell
 
@@ -36,7 +36,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Anzeigen von Metriken des virtuellen Computers
 > * Erstellen einer Warnung
 > * Verwalten von Windows-Updates
-> * Überwachungsänderungen und Inventur
+> * Überwachen von Änderungen und Bestand
 > * Einrichten der erweiterten Überwachung
 
 Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
@@ -191,13 +191,13 @@ Klicken Sie auf die Kachel **Ausgabe**, um den Auftragsdatenstrom des Runbooks a
 
 Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern aus der Bereitstellung anzuzeigen.
 
-## <a name="monitor-changes-and-inventory"></a>Überwachungsänderungen und Inventur
+## <a name="monitor-changes-and-inventory"></a>Überwachen von Änderungen und Bestand
 
 Sie können die Bestandsinformationen für Software, Dateien, Linux-Daemons, Windows-Dienste und Windows-Registrierungsschlüssel auf Ihren Computern sammeln und anzeigen. Durch das Nachverfolgen der Konfigurationen Ihrer Computer können Sie betriebsbezogene Problem in Ihrer Umgebung erkennen und ein besseres Verständnis des Zustands Ihrer Computer entwickeln.
 
 ### <a name="enable-change-and-inventory-management"></a>Aktivieren der Änderungs- und Bestandsverwaltung
 
-Aktivieren der Änderungs- und Bestandsverwaltung für Ihre VM:
+So aktivieren Sie die Änderungs- und Bestandsverwaltung für Ihren virtuellen Computer:
 
 1. Wählen Sie auf der linken Seite des Bildschirms die Option **Virtuelle Computer**.
 2. Wählen Sie einen virtuellen Computer in der Liste aus.
@@ -220,7 +220,7 @@ Ausführliche Informationen zur „Änderungsnachverfolgung“ finden Sie unter 
 
 ### <a name="view-inventory"></a>Anzeigen des Bestands
 
-Wählen Sie auf Ihrer VM unter **VORGÄNGE** die Option **Bestand**. Auf der Registerkarte **Software** wird eine Tabellenliste mit der gefundenen Software angezeigt. Die allgemeinen Details zu den einzelnen Softwaredatensätzen können in der Tabelle angezeigt werden. Zu diesen Details zählen Softwarename, Version, Herausgeber, Zeitpunkt der letzten Aktualisierung.
+Wählen Sie auf Ihrer VM unter **VORGÄNGE** die Option **Bestand**. Auf der Registerkarte **Software** wird eine Tabellenliste mit der gefundenen Software angezeigt. Die allgemeinen Details zu den einzelnen Softwaredatensätzen können in der Tabelle angezeigt werden. Zu diesen Details zählen Softwarename, Version, Herausgeber und der Zeitpunkt der letzten Aktualisierung.
 
 ![Anzeigen des Bestands](./media/tutorial-monitoring/inventory-view-results.png)
 
@@ -230,7 +230,7 @@ Wählen Sie auf Ihrer VM auf der Seite **Änderungsnachverfolgung** die Option *
 
 Navigieren Sie bei aktivierter Einstellung auf die Seite **Übersicht** Ihrer VM, und wählen Sie **Beenden**, um die VM zu beenden. Wählen Sie nach der entsprechenden Aufforderung **Ja**, um die VM zu beenden. Wählen Sie nach der Aufhebung der Zuordnung die Option **Starten**, um die VM neu zu starten.
 
-Beim Beenden und Starten einer VM wird im Aktivitätsprotokoll dazu ein Ereignis protokolliert. Navigieren Sie zurück zur Seite **Änderungsnachverfolgung**. Wählen Sie unten auf der Seite die Registerkarte **Ereignisse**. Nach kurzer Wartezeit werden die Ereignisse im Diagramm und in der Tabelle angezeigt. Sie können jedes Ereignis auswählen, um ausführliche Informationen dazu anzuzeigen.
+Beim Beenden und Starten einer VM wird im Aktivitätsprotokoll dazu ein Ereignis protokolliert. Navigieren Sie zurück zur Seite **Änderungsnachverfolgung**. Wählen Sie unten auf der Seite die Registerkarte **Ereignisse**. Nach kurzer Wartezeit werden die Ereignisse im Diagramm und in der Tabelle angezeigt. Durch Klicken auf die einzelnen Ereignisse können Sie ausführliche Informationen anzeigen.
 
 ![Anzeigen von Änderungen im Aktivitätsprotokoll](./media/tutorial-monitoring/manage-activitylog-view-results.png)
 
@@ -238,9 +238,9 @@ Im Diagramm werden Änderungen angezeigt, die im Laufe der Zeit durchgeführt wu
 
 ## <a name="advanced-monitoring"></a>Erweiterte Überwachung
 
-Sie können die erweiterte Überwachung Ihres virtuellen Computers mit Lösungen von Azure Automation wie Updateverwaltung sowie Änderungs- und Bestandsverwaltung durchführen. [Operations Management Suite](../../automation/automation-intro.md):
+Sie können die erweiterte Überwachung Ihres virtuellen Computers mit Lösungen von [Azure Automation](../../automation/automation-intro.md) wie Updateverwaltung sowie Änderungs- und Bestandsverwaltung durchführen.
 
-Wenn Sie Zugriff auf den Log Analytics-Arbeitsbereich haben, finden Sie den Arbeitsbereichsschlüssel und die Arbeitsbereich-ID bei Auswahl von **Erweiterte Einstellungen** unter **EINSTELLUNGEN**. Verwenden Sie den Befehl [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension), um dem virtuellen Computer die Microsoft Monitoring Agent-Erweiterung hinzufügen. Aktualisieren Sie die Variablenwerte im nachstehenden Beispiel gemäß Ihrem Log Analytics-Arbeitsbereichsschlüssel und Ihrer Arbeitsbereichs-ID.
+Wenn Sie Zugriff auf den Log Analytics-Arbeitsbereich haben, finden Sie den Arbeitsbereichsschlüssel und die Arbeitsbereich-ID, indem Sie unter **EINSTELLUNGEN** auf **Erweiterte Einstellungen** klicken. Verwenden Sie den Befehl [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension), um dem virtuellen Computer die Microsoft Monitoring Agent-Erweiterung hinzufügen. Aktualisieren Sie die Variablenwerte im nachstehenden Beispiel gemäß Ihrem Log Analytics-Arbeitsbereichsschlüssel und Ihrer Arbeitsbereichs-ID.
 
 ```powershell
 $workspaceId = "<Replace with your workspace Id>"
@@ -275,7 +275,7 @@ In diesem Tutorial haben Sie virtuelle Computer mit Azure Security Center konfig
 > * Anzeigen von Metriken des virtuellen Computers
 > * Erstellen einer Warnung
 > * Verwalten von Windows-Updates
-> * Überwachungsänderungen und Inventur
+> * Überwachen von Änderungen und Bestand
 > * Einrichten der erweiterten Überwachung
 
 Im nächsten Tutorial erhalten Sie Informationen zu Azure Security Center.

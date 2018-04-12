@@ -1,8 +1,8 @@
 ---
-title: "Erstellen von Zugriffsberichten – Azure RBAC | Microsoft Docs"
-description: "Erstellen Sie einen Bericht, in dem alle Änderungen am Zugriff auf Ihre Azure-Abonnements mit rollenbasierter Zugriffssteuerung von Azure in den letzten 90 Tagen aufgeführt sind."
+title: Erstellen von Zugriffsberichten – Azure RBAC | Microsoft Docs
+description: Erstellen Sie einen Bericht, in dem alle Änderungen am Zugriff auf Ihre Azure-Abonnements mit rollenbasierter Zugriffssteuerung von Azure in den letzten 90 Tagen aufgeführt sind.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 169ed8dd6d14d8d9d0fd49ad7306b1d4fb2c4d90
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="create-an-access-report-for-role-based-access-control"></a>Erstellen eines Zugriffsberichts für die rollenbasierte Zugriffssteuerung
 Jedes Mal, wenn ein Benutzer in Ihren Abonnement Zugriff gewährt bzw. widerruft, werden die Änderungen in Azure-Ereignissen protokolliert. Sie können Verlaufsberichte zu Zugriffsänderungen erstellen, um alle Änderungen der letzten 90 Tage anzuzeigen.

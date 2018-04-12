@@ -2,7 +2,7 @@
 title: Verwalten des Zugriffs auf die Azure-Verwaltung mit dem bedingten Zugriff in Azure Active Directory
 description: Sie erhalten Informationen zur Verwendung des bedingten Zugriffs in Azure AD, um den Zugriff auf die Azure-Verwaltung zu steuern.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: bryanla
@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 09/22/2017
 ms.author: skwan
 ms.openlocfilehash: 22d0e53c201853e2c316089479ffbd4d9e5d92be
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff
 

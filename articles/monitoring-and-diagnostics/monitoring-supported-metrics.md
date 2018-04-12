@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: fc7a4062af9e73383af46f0c36eb22710ce9b6e1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 68f5784f1724441ff6f18e2581c8e01d66c60c5e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind.
@@ -811,11 +811,11 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
 |Throughput|Throughput|Bytes pro Sekunde|Gesamt|Anzahl von Bytes pro Sekunde, die das Application Gateway bereitgestellt hat|Keine Dimensionen|
-|UnhealthyHostCount|Anzahl von fehlerhaften Hosts|Count|Durchschnitt|Anzahl von fehlerhaften Back-End-Hosts|BackendSettingsPool|
-|HealthyHostCount|Anzahl von fehlerfreien Hosts|Count|Durchschnitt|Anzahl von fehlerfreien Back-End-Hosts|BackendSettingsPool|
+|UnhealthyHostCount|Anzahl von fehlerhaften Hosts|Count|Durchschnitt|Die Anzahl fehlerhafter Back-End-Hosts. Sie können auf Back-End-Pool-Basis filtern, um fehlerfreie/fehlerhafte Hosts in einem bestimmten Back-End-Pool anzuzeigen.|BackendSettingsPool|
+|HealthyHostCount|Anzahl von fehlerfreien Hosts|Count|Durchschnitt|Die Anzahl fehlerfreier Back-End-Hosts. Sie können auf Back-End-Pool-Basis filtern, um fehlerfreie/fehlerhafte Hosts in einem bestimmten Back-End-Pool anzuzeigen.|BackendSettingsPool |
 |TotalRequests|Anzahl von Anforderungen|Count|Gesamt|Anzahl von erfolgreichen Anforderungen über Application Gateway|BackendSettingsPool|
 |FailedRequests|Anforderungsfehler|Count|Gesamt|Anzahl von fehlerhaften Anforderungen über Application Gateway|BackendSettingsPool|
-|ResponseStatus|Antwortstatus|Count|Gesamt|Von Application Gateway zurückgegebener HTTP-Antwortstatus|HttpStatusGroup|
+|ResponseStatus|Antwortstatus|Count|Gesamt|Von Application Gateway zurückgegebener HTTP-Antwortstatus. Die Antwortstatuscode-Verteilung kann weiter kategorisiert werden, um Antworten in 2xx-, 3xx-, 4xx- und 5xx-Kategorien anzuzeigen.|HttpStatusGroup|
 |CurrentConnections|Aktuelle Verbindungen|Count|Gesamt|Anzahl von aktuellen Verbindungen mit Application Gateway|Keine Dimensionen|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways

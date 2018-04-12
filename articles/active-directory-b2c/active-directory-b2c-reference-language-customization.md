@@ -1,5 +1,5 @@
 ---
-title: 'Verwenden der Sprachanpassung: Azure AD B2C | Microsoft-Dokumentation'
+title: Sprachanpassung in Azure AD B2C | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Sprachanpassung.
 services: active-directory-b2c
 documentationcenter: ''
@@ -11,54 +11,58 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 7c72c1d43d9a5fa541c72a8ba7a5ccedeafdaaff
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3d0f1f2ffd02873df2e2e7eab9894d9c3421b0f7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="azure-active-directory-b2c-using-language-customization"></a>Azure Active Directory B2C: Verwenden der Sprachanpassung
+# <a name="language-customization-in-azure-active-directory-b2c"></a>Sprachanpassung in Azure Active Directory B2C
 
 >[!NOTE]
 >Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
 >
 
-Durch die Sprachanpassung können Sie mithilfe Ihrer Richtlinie Unterstützung für verschiedene Sprachen bereitstellen, um etwaige Kundenanforderungen zu erfüllen.  Microsoft bietet Übersetzungen für 36 Sprachen (siehe [Zusätzliche Informationen](#additional-information)), Sie können jedoch auch eigene Übersetzungen für beliebige Sprachen bereitstellen.  Auch wenn Ihre Benutzeroberfläche nur für eine einzelne Sprache bestimmt ist, können Sie beliebigen Text auf den Seiten anpassen.  
+Mit der Sprachanpassung in Azure Active Directory B2C (Azure AD B2C) kann Ihre Richtlinie verschiedene Sprachen abdecken, um Ihre Kundenanforderungen zu erfüllen.  Microsoft stellt Übersetzungen für [36 Sprachen](#supported-languages) bereit. Sie können aber auch eigene Übersetzungen für beliebige Sprachen bereitstellen. Auch wenn Ihre Benutzeroberfläche nur für eine einzelne Sprache bestimmt ist, können Sie beliebigen Text auf den Seiten anpassen.  
 
-## <a name="how-does-language-customization-work"></a>Wie funktioniert die Sprachanpassung?
-Mit der Sprachanpassung können Sie auswählen, in welchen Sprachen Ihre User Journey verfügbar ist.  Nach der Aktivierung des Features können Sie den Abfragezeichenfolgen-Parameter „ui_locales“ aus Ihrer Anwendung bereitstellen.  Wenn Sie Azure AD B2C aufrufen, übersetzen wir Ihre Seite in das von Ihnen angegebene Gebietsschema.  Mit dieser Art von Konfiguration haben Sie die vollständige Kontrolle über die Sprachen Ihrer User Journey, und die Spracheinstellungen des Kundenbrowsers können ignoriert werden. Es kann aber auch sein, dass Sie nicht so genau steuern müssen, welche Sprachen Kunden angezeigt werden.  Wenn Sie den Parameter „ui_locales“ nicht angeben, wird die Benutzeroberfläche des Kunden durch die Einstellungen des Browsers vorgegeben.  Sie können weiterhin steuern, in welche Sprachen Ihre User Journey übersetzt wird, indem Sie eine unterstützte Sprache hinzufügen.  Wenn für den Browser eines Kunden das Anzeigen einer Sprache festgelegt ist, die Sie nicht unterstützen möchten, wird stattdessen die Sprache angezeigt, die Sie als Standardeinstellung für die unterstützte Kultur ausgewählt haben.
+## <a name="how-language-customization-works"></a>Funktionsweise der Sprachanpassung
+Mit der Sprachanpassung können Sie die Sprachen auswählen, in denen Ihre User Journey verfügbar ist. Nach Aktivierung des Features können Sie über Ihre Anwendung den Abfragezeichenfolgen-Parameter `ui_locales` angeben. Wenn Sie Azure AD B2C aufrufen, wird Ihre Seite in das von Ihnen angegebene Gebietsschema übersetzt. Mit dieser Art von Konfiguration haben Sie die vollständige Kontrolle über die Sprachen Ihrer User Journey, und die Spracheinstellungen des Kundenbrowsers können ignoriert werden. 
 
-1. **Für „ui-locales“ angegebene Sprache**: Nachdem Sie die Sprachanpassung aktiviert haben, wird Ihre User Journey in die hier angegebene Sprache übersetzt.
-2. **Vom Browser angeforderte Sprache**: Wenn keine Angaben für „ui-locales“ vorhanden sind, wird eine Übersetzung in die vom Browser angeforderte Sprache durchgeführt, **sofern sie in den unterstützten Sprachen enthalten ist**.
-3. **Standardsprache für Richtlinie**: Wenn vom Browser keine Sprache oder eine nicht unterstützte Sprache angegeben wird, wird eine Übersetzung in die Standardsprache der Richtlinie durchgeführt.
+Möglicherweise müssen Sie aber gar nicht so genau steuern, welche Sprachen Ihren Kunden angezeigt werden. Wenn Sie den Parameter `ui_locales` nicht angeben, wird die Benutzeroberfläche des Kunden durch die Einstellungen des Browsers vorgegeben.  Sie können weiterhin steuern, in welche Sprachen Ihre User Journey übersetzt wird, indem Sie eine unterstützte Sprache hinzufügen. Wenn der Browser eines Kunden mit einer Sprache konfiguriert ist, die Sie nicht unterstützen möchten, wird stattdessen die Sprache angezeigt, die Sie als Standardeinstellung für die unterstützte Kultur ausgewählt haben.
+
+- **Für „ui-locales“ angegebene Sprache:** Nach Aktivierung der Sprachanpassung wird Ihre User Journey in die hier angegebene Sprache übersetzt.
+- **Vom Browser angeforderte Sprache:** Ohne Angabe des Parameters `ui_locales` wird Ihre User Journey in die vom Browser angeforderte Sprache übersetzt, *sofern diese Sprache unterstützt wird*.
+- **Standardsprache der Richtlinie:** Wenn vom Browser keine oder eine nicht unterstützte Sprache angegeben wird, wird die User Journey in die Standardsprache der Richtlinie übersetzt.
 
 >[!NOTE]
->Falls Sie benutzerdefinierte Benutzerattribute verwenden, müssen Sie Ihre eigenen Übersetzungen angeben. Ausführliche Informationen hierzu finden Sie unter [Anpassen von Zeichenfolgen](#customize-your-strings).
+>Falls Sie benutzerdefinierte Benutzerattribute verwenden, müssen Sie Ihre eigenen Übersetzungen angeben. Weitere Informationen finden Sie unter [Anpassen von Zeichenfolgen](#customize-your-strings).
 >
 
-## <a name="support-uilocales-requested-languages"></a>Unterstützen von angeforderten Sprachen für „ui_locales“ 
-Bei Richtlinien, die vor der Veröffentlichung der allgemein verfügbaren Version der Sprachanpassung erstellt wurden, muss zuerst diese Funktion aktiviert werden.  Bei Richtlinien, die im Anschluss erstellt wurden, ist die Sprachanpassung standardmäßig aktiviert.  Indem Sie die „Sprachanpassung“ für eine Richtlinie aktivieren, können Sie die Sprache der User Journey jetzt steuern. Fügen Sie hierzu den Parameter „ui_locales“ hinzu.
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zur Seite „B2C-Features“ zu navigieren.](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration#navigate-to-b2c-settings)
+## <a name="support-requested-languages-for-uilocales"></a>Unterstützen von angeforderten Sprachen für „ui_locales“ 
+Bei Richtlinien, die vor der allgemeinen Verfügbarkeit der Sprachanpassung erstellt wurden, muss das Feature zunächst aktiviert werden. Bei später erstellten Richtlinien ist die Sprachanpassung standardmäßig aktiviert. 
+
+Wenn Sie die Sprachanpassung für eine Richtlinie aktivieren, können Sie die Sprache der User Journey durch Hinzufügen des Parameters `ui_locales` steuern.
+1. [Öffnen Sie im Azure-Portal die Seite mit den B2C-Features.](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration#navigate-to-b2c-settings)
 2. Navigieren Sie zu einer Richtlinie, die Sie für Übersetzungen aktivieren möchten.
 3. Klicken Sie auf **Sprachanpassung**.  
-4. Klicken Sie oben auf **Sprachanpassung aktivieren**.
-5. Lesen Sie das Dialogfeld, und klicken Sie auf „Ja“.
+4. Klicken Sie auf **Sprachanpassung aktivieren**.
+5. Lesen Sie die Informationen im Dialogfeld, und klicken Sie anschließend auf **Ja**.
 
 ## <a name="select-which-languages-in-your-user-journey-are-enabled"></a>Auswählen der in der User Journey zu aktivierenden Sprachen 
-Aktivieren Sie eine Reihe von Sprachen für Ihre User Journey, in die die Übersetzung erfolgen soll, wenn der Parameter „ui_locales“ nicht angegeben ist.
-1. Stellen Sie anhand der obigen Anleitung sicher, ob für Ihre Richtlinie die „Sprachanpassung“ aktiviert ist.
+Aktivieren Sie eine Reihe von Sprachen, in die Ihre User Journey übersetzt werden soll, wenn der Parameter `ui_locales` nicht angegeben ist.
+1. Stellen Sie anhand der obigen Anleitung sicher, dass die Sprachanpassung für Ihre Richtlinie aktiviert ist.
 2. Wählen Sie auf der Seite **Richtlinie bearbeiten** die Option **Sprachanpassung** aus.
-3. Wählen Sie eine Sprache aus, die unterstützt werden soll.
-4. Schalten Sie im Bereich „Eigenschaften“ die Option **Aktiviert** auf „Ja“ um.  
+3. Wählen Sie eine Sprache aus, die Sie unterstützen möchten.
+4. Legen Sie im Bereich „Eigenschaften“ die Option **Aktiviert** auf **Ja** fest.  
 5. Klicken Sie oben im Bereich „Eigenschaften“ auf **Speichern**.
 
 >[!NOTE]
->Wenn der Parameter „ui_locales“ nicht angegeben wird, wird die Seite nur in die Browsersprache des Kunden übersetzt, wenn sie aktiviert ist.
+>Ohne Angabe des Parameters `ui_locales` wird die Seite nur in die Browsersprache des Kunden übersetzt, wenn sie aktiviert ist.
 >
 
 ## <a name="customize-your-strings"></a>Anpassen von Zeichenfolgen
 Mit der Sprachanpassung können Sie alle Zeichenfolgen Ihrer User Journey anpassen.
-1. Stellen Sie anhand der obigen Anleitung sicher, ob für Ihre Richtlinie die „Sprachanpassung“ aktiviert ist.
+1. Stellen Sie anhand der obigen Anleitung sicher, dass die Sprachanpassung für Ihre Richtlinie aktiviert ist.
 2. Wählen Sie auf der Seite **Richtlinie bearbeiten** die Option **Sprachanpassung** aus.
 3. Wählen Sie die Sprache aus, die Sie anpassen möchten.
 4. Wählen Sie die Seite aus, die Sie bearbeiten möchten.
@@ -66,19 +70,19 @@ Mit der Sprachanpassung können Sie alle Zeichenfolgen Ihrer User Journey anpass
 
 Bei diesen Schritten erhalten Sie eine JSON-Datei, die Sie nutzen können, um mit dem Bearbeiten Ihrer Zeichenfolgen zu beginnen.
 
-### <a name="changing-any-string-on-the-page"></a>Ändern einer beliebigen Zeichenfolge auf der Seite
+### <a name="change-any-string-on-the-page"></a>Ändern einer beliebigen Zeichenfolge auf der Seite
 1. Öffnen Sie die JSON-Datei, die Sie im Rahmen der obigen Anleitung heruntergeladen haben, in einem JSON-Editor.
-2. Suchen Sie nach dem Element, das Sie ändern möchten.  Sie können nach der gewünschten `StringId` der Zeichenfolge oder nach dem `Value` suchen, den Sie ändern möchten.
+2. Suchen Sie nach dem Element, das Sie ändern möchten.  Sie können nach der `StringId` der gewünschten Zeichenfolge oder nach dem Attribut `Value` suchen, das Sie ändern möchten.
 3. Aktualisieren Sie das `Value`-Attribut mit den Daten, die angezeigt werden sollen.
-4. Denken Sie daran, bei jeder zu ändernden Zeichenfolge `Override` auf **True** umzuschalten.
-5. Speichern Sie die Datei, und laden Sie Ihre Änderungen hoch (Sie finden das Steuerelement zum Hochladen an derselben Stelle, an der Sie die JSON-Datei heruntergeladen haben). 
+4. Ändern Sie `Override` für jede Zeichenfolge, die Sie ändern möchten, in `true`.
+5. Speichern Sie die Datei, und laden Sie Ihre Änderungen hoch. (Das Steuerelement zum Hochladen befindet sich dort, wo Sie auch die JSON-Datei heruntergeladen haben.) 
 
 >[!IMPORTANT]
 >Stellen Sie beim Überschreiben einer Zeichenfolge sicher, dass Sie den Wert für `Override` auf `true` festlegen.  Wenn der Wert nicht geändert wird, wird der Eintrag ignoriert. 
 >
 
-### <a name="changing-extension-attributes"></a>Ändern von Erweiterungsattributen
-Wenn Sie die Zeichenfolge für ein benutzerdefiniertes Benutzerattribut ändern oder eine Zeichenfolge dem JSON-Code hinzufügen möchten, hat diese das folgende Format:
+### <a name="change-extension-attributes"></a>Ändern von Erweiterungsattributen
+Wenn Sie die Zeichenfolge für ein benutzerdefiniertes Benutzerattribut ändern oder dem JSON-Code eine Zeichenfolge hinzufügen möchten, verwenden Sie das folgende Format:
 ```JSON
 {
   "LocalizedStrings": [
@@ -97,8 +101,8 @@ Ersetzen Sie `<ExtensionAttribute>` durch den Namen Ihres benutzerdefinierten Be
 
 Ersetzen Sie `<ExtensionAttributeValue>` durch die neue Zeichenfolge, die angezeigt werden soll.
 
-### <a name="using-localizedcollections"></a>Verwenden von LocalizedCollections
-Wenn Sie eine vorgegebene Liste mit Werten für Antworten bereitstellen möchten, müssen Sie ein `LocalizedCollections`-Element erstellen.  Ein `LocalizedCollections`-Element ist ein Array mit Paaren aus `Name` und `Value`.  `Name` wird angezeigt, und `Value` ist der Wert, der im Anspruch zurückgegeben wird.  Für das Hinzufügen eines `LocalizedCollections`-Elements gilt das folgende Format:
+### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Angeben einer Liste mit Werten mithilfe von „LocalizedCollections“
+Wenn Sie eine feste Liste mit Werten für Antworten bereitstellen möchten, müssen Sie ein Attribut vom Typ `LocalizedCollections` erstellen.  Bei `LocalizedCollections` handelt es sich um ein Array mit Paaren aus `Name` und `Value`. Verwenden Sie zum Hinzufügen von `LocalizedCollections` das folgende Format:
 
 ```JSON
 {
@@ -122,58 +126,59 @@ Wenn Sie eine vorgegebene Liste mit Werten für Antworten bereitstellen möchten
 }
 ```
 
-* `ElementId` ist das Benutzerattribut, für das `LocalizedCollections` als Antwort gilt.
+* `ElementId` ist das Benutzerattribut, für das dieses Attribut vom Typ `LocalizedCollections` eine Antwort darstellt.
 * `Name` ist der Wert, der dem Benutzer angezeigt wird.
 * `Value` wird im Anspruch zurückgegeben, wenn diese Option ausgewählt wird.
 
 ### <a name="upload-your-changes"></a>Hochladen von Änderungen
-1. Navigieren Sie nach dem Eingeben der Änderungen in die JSON-Datei zurück zu Ihrem B2C-Mandanten.
+1. Kehren Sie nach dem Ändern der JSON-Datei wieder zu Ihrem B2C-Mandanten zurück.
 2. Wählen Sie auf der Seite **Richtlinie bearbeiten** die Option **Sprachanpassung** aus.
-3. Wählen Sie die Sprache aus, für die Sie Übersetzungen bereitstellen möchten.
-4. Wählen Sie die Seite aus, für die Sie Übersetzungen bereitstellen möchten.
+3. Wählen Sie die gewünschte Zielsprache für die Übersetzung aus.
+4. Wählen Sie die Seite aus, auf der Sie Übersetzungen bereitstellen möchten.
 5. Klicken Sie auf das Ordnersymbol, und wählen Sie die hochzuladende JSON-Datei aus.
-6. Diese Änderung wird automatisch in Ihrer Richtlinie gespeichert.
+ 
+Die Änderungen werden automatisch in Ihrer Richtlinie gespeichert.
 
-## <a name="using-page-ui-customization-with-language-customization"></a>Verwenden der „Seite für die Benutzeroberflächenanpassung“ mit der Sprachanpassung
+## <a name="customize-the-page-ui-by-using-language-customization"></a>Anpassen der Benutzeroberfläche der Seite mithilfe der Sprachanpassung
 
-Es gibt zwei Möglichkeiten zum Lokalisieren Ihrer HTML-Inhalte.  Durch Aktivieren von [Sprachanpassung](active-directory-b2c-reference-language-customization.md).  Wenn Sie dieses Feature aktivieren, kann Azure AD B2C den Open ID Connect-Parameter `ui-locales` an Ihren Endpunkt weiterleiten.  Ihr Inhaltsserver kann diesen Parameter verwenden, um benutzerdefinierte HTML-Seiten bereitzustellen, die sprachspezifisch sind.
+Es gibt zwei Möglichkeiten zum Lokalisieren Ihrer HTML-Inhalte. Eine davon ist die Aktivierung der [Sprachanpassung](active-directory-b2c-reference-language-customization.md). Wenn Sie dieses Feature aktivieren, kann Azure AD B2C den Open ID Connect-Parameter `ui-locales` an Ihren Endpunkt weiterleiten.  Ihr Inhaltsserver kann diesen Parameter verwenden, um benutzerdefinierte, sprachspezifische HTML-Seiten bereitzustellen.
 
-Alternativ können wir abhängig vom verwendeten Gebietsschema Inhalte aus unterschiedlichen Quellen abrufen.  In Ihrem CORS-fähigen Endpunkt können Sie eine Ordnerstruktur zum Hosten des Inhalts für bestimmte Sprachen einrichten. Wenn Sie den Platzhalterwert `{Culture:RFC5646}` einfügen, rufen wir den richtigen Inhalt ab.  Nehmen Sie beispielsweise an, das Folgende ist Ihr benutzerdefinierter Seiten-URI:
+Alternativ können Sie auf der Grundlage des verwendeten Gebietsschemas Inhalte aus unterschiedlichen Quellen abrufen. In Ihrem CORS-fähigen Endpunkt können Sie eine Ordnerstruktur zum Hosten von Inhalten für bestimmte Sprachen einrichten. Wenn Sie den Platzhalterwert `{Culture:RFC5646}` verwenden, wird der passende Inhalt abgerufen.  Ein Beispiel: Angenommen, Ihr benutzerdefinierter Seiten-URI sieht wie folgt aus:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
-Sie können Ihre Seite in `fr` laden. HTML- und CSS-Inhalte werden von der folgenden Seite abgerufen:
+Sie können die Seite in `fr` laden. HTML- und CSS-Inhalte der Seite werden dann aus der folgenden Quelle abgerufen:
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ```
 
-## <a name="custom-locales"></a>Benutzerdefinierte Gebietsschemas
+## <a name="add-custom-locales"></a>Hinzufügen benutzerdefinierter Gebietsschemas
 
-Sie können auch Sprachen hinzufügen, für die Microsoft aktuell keine Übersetzungen bereitstellt.  Sie müssen die Übersetzungen für alle Zeichenfolgen in der Richtlinie bereitstellen.
+Sie können auch Sprachen hinzufügen, für die Microsoft aktuell keine Übersetzungen bereitstellt. Die Übersetzungen müssen für alle Zeichenfolgen in der Richtlinie bereitgestellt werden.
 
 1. Wählen Sie auf der Seite **Richtlinie bearbeiten** die Option **Sprachanpassung** aus.
 2. Wählen Sie im oberen Bereich der Seite **Benutzerdefinierte Sprache hinzuzufügen** aus.
-3. Legen Sie im Kontextbereich fest, für welche Sprache Sie Übersetzungen bereitstellen, indem Sie einen gültigen Gebietsschemacode eingeben.
-4. Für jede Seite können Sie eine Reihe von Außerkraftsetzungen für Englisch herunterladen und Übersetzungen anfertigen.
-5. Wenn Sie mit der Bearbeitung der JSON-Dateien fertig sind, können Sie sie für jede Seite hochladen.
-6. Wählen Sie **Aktivieren** aus. Ihre Richtlinie kann diese Sprache nun für Ihren Benutzer anzeigen.
-7. Denken Sie daran, Ihre Sprache zu speichern, nachdem Sie sie aktiviert haben.
+3. Geben Sie im Kontextbereich mithilfe eines gültigen Gebietsschemacodes die Sprache an, für die Sie Übersetzungen bereitstellen.
+4. Für jede Seite können Sie eine Reihe von Außerkraftsetzungen für Englisch herunterladen und Übersetzungen erstellen.
+5. Wenn Sie mit der Bearbeitung der JSON-Dateien fertig sind, können Sie sie für die einzelnen Seiten hochladen.
+6. Nachdem Sie auf **Aktivieren** geklickt haben, kann Ihre Richtlinie diese Sprache für Ihre Benutzer anzeigen.
+7. Speichern Sie die Sprache.
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
-### <a name="page-ui-customization-labels-are-persisted-as-your-first-set-of-overrides-once-language-customization-is-enabled"></a>Sobald die „Sprachanpassung“ aktiviert ist, werden Bezeichnungen zur „Seite für die Benutzeroberflächenanpassung“ als erste Gruppe von Außerkraftsetzungen beibehalten.
-Bei Aktivierung der „Sprachanpassung“ werden Ihre vorherigen Bearbeitungen für Bezeichnungen anhand von „Seite für die Benutzeroberflächenanpassung“ in einer JSON-Datei für Englisch (en) beibehalten.  Sie können Ihre Bezeichnungen und anderen Zeichenfolgen weiterhin ändern, indem Sie Sprachressourcen in „Sprachanpassung“ hochladen.
-### <a name="microsoft-is-committed-to-provide-the-most-up-to-date-translations-for-your-use"></a>Microsoft versucht, Ihnen jeweils die aktuellsten Übersetzungen zur Verfügung zu stellen.
-Wir arbeiten ständig an der Verbesserung der Übersetzungen und sorgen für deren Konformität.  Wir identifizieren Fehler und Änderungen der globalen Terminologie und nehmen die Aktualisierungen vor, die für Ihre User Journey am besten geeignet sind.
+### <a name="page-ui-customization-labels-as-overrides"></a>Bezeichnungen der Seite für die Benutzeroberflächenanpassung als Außerkraftsetzungen
+Wenn Sie die Sprachanpassung aktivieren, werden Ihre bisherigen Bearbeitungen für Bezeichnungen, die Sie auf der Seite für die Benutzeroberflächenanpassung vorgenommen haben, in einer JSON-Datei für Englisch (en) gespeichert. Sie können Ihre Bezeichnungen und anderen Zeichenfolgen weiterhin ändern, indem Sie Sprachressourcen in die Sprachanpassung hochladen.
+### <a name="up-to-date-translations"></a>Aktuelle Übersetzungen
+Microsoft ist bemüht, Ihnen möglichst aktuelle Übersetzungen zur Verfügung zu stellen. Die Übersetzungen werden kontinuierlich optimiert und auf ihre Konformität überprüft. Microsoft ermittelt Fehler und Änderungen für die globale Terminologie und nimmt geeignete Aktualisierungen für Ihre User Journey vor.
 ### <a name="support-for-right-to-left-languages"></a>Unterstützung für von rechts nach links geschriebene Sprachen
-Zurzeit bieten wir keine Unterstützung für von rechts nach links geschriebene Sprachen. Wenn Sie dieses Feature benötigen, stimmen Sie auf [Azure-Feedback](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag) dafür.
+Von rechts nach links geschriebene Sprachen werden von Microsoft derzeit nicht unterstützt. Sollten Sie dieses Feature benötigen, stimmen Sie im [Azure-Feedback](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag) dafür ab.
 ### <a name="social-identity-provider-translations"></a>Übersetzungen für den Fall „Soziales Netzwerk als Identitätsanbieter“
-Wir stellen den OIDC-Parameter „ui_locales“ für die Anmeldung an sozialen Netzwerken bereit, aber er wird von einigen Identitätsanbietern für soziale Netzwerke, z.B. Facebook und Google, nicht respektiert. 
+Für Anmeldungen per sozialem Netzwerk stellt Microsoft den OIDC-Parameter `ui_locales` bereit. Einige soziale Netzwerke, die als Identitätsanbieter fungieren, erkennen diesen jedoch nicht an. Dazu zählen auch Facebook und Google. 
 ### <a name="browser-behavior"></a>Browserverhalten
-Für Chrome und Firefox wird jeweils die festgelegte Sprache angefordert, und wenn es sich um eine unterstützte Sprache handelt, wird sie anstelle der Standardsprache angezeigt.  Für Edge wird derzeit keine Sprache angefordert, sondern es wird gleich die Standardsprache verwendet.
+Von Chrome und Firefox wird jeweils die eigene festgelegte Sprache angefordert. Wenn es sich dabei um eine unterstützte Sprache handelt, wird sie vor der Standardsprache angezeigt. Für Edge wird derzeit keine Sprache angefordert, sondern es wird gleich die Standardsprache verwendet.
 
-### <a name="what-languages-are-supported"></a>Welche Sprachen werden unterstützt?
+### <a name="supported-languages"></a>Unterstützte Sprachen
 
 | Sprache              | Sprachcode |
 |-----------------------|---------------|

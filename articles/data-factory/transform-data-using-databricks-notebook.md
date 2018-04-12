@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/12/2018
+ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 7a90906f0bb41b0ced368e9010e0c8a4981f038c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: edd3bbb5d47753890328ae86b15dc938dfcf7eb7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Ausführen eines Databricks-Notebooks mit der Databricks-Notebook-Aktivität in Azure Data Factory
 
@@ -25,19 +25,19 @@ In diesem Tutorial verwenden Sie das Azure-Portal, um eine Azure Data Factory-Pi
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
-  - Erstellen einer Data Factory
+  - Erstellen einer Data Factory.
 
   - Erstellen einer Pipeline mit Databricks-Notebook-Aktivität
 
   - Auslösen einer Pipelineausführung
 
-  - Überwachen der Pipelineausführung
+  - Überwachen der Pipelineausführung.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-  - **Azure Databricks-Arbeitsbereich:** [Erstellen Sie einen Databricks-Arbeitsbereich](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal), oder verwenden Sie einen vorhandenen Arbeitsbereich. Sie erstellen ein Python-Notebook in Ihrem Azure Databricks-Arbeitsbereich. Anschließend führen Sie das Notebook aus und übergeben Parameter mit Azure Data Factory.
+  - **Azure Databricks-Arbeitsbereich** [Erstellen Sie einen Databricks-Arbeitsbereich](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal), oder verwenden Sie einen vorhandenen Arbeitsbereich. Sie erstellen ein Python-Notebook in Ihrem Azure Databricks-Arbeitsbereich. Anschließend führen Sie das Notebook aus und übergeben Parameter mit Azure Data Factory.
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 

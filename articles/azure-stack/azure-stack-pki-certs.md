@@ -3,7 +3,7 @@ title: Azure Stack-PKI-Zertifikatanforderungen für in Azure Stack integrierte S
 description: Beschreibt die Azure Stack-PKI-Zertifikatanforderungen für in Azure Stack integrierte Systeme.
 services: azure-stack
 documentationcenter: ''
-author: mabriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,16 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
-ms.author: mabrigg
+ms.date: 03/29/2018
+ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: a5712e556d7b3bdcce38b8b8d39a08414ce0fd2f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 583f827fe77ef7721b3098dee01c418c9e5cccd8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack-PKI-Zertifikatanforderungen
+
 Azure Stack verfügt über ein öffentliches Infrastrukturnetz mit extern zugänglichen öffentlichen IP-Adressen, die einer kleinen Gruppe von Azure Stack-Diensten und möglicherweise Mandanten-VMs zugewiesen sind. PKI-Zertifikate (Public Key-Infrastruktur) mit den entsprechenden DNS-Namen für diese Endpunkte der öffentlichen Infrastruktur von Azure Stack werden während der Bereitstellung von Azure Stack benötigt. Dieser Artikel enthält Informationen zu Folgendem:
 
 - Den zum Bereitstellen von Azure Stack erforderlichen Zertifikaten
@@ -37,7 +38,7 @@ Die folgende Liste beschreibt die Zertifikatsanforderungen, die für die Bereits
 - Ihre Azure Stack-Infrastruktur muss über Netzwerkzugriff auf die Zertifizierungsstelle verfügen, die zum Signieren Ihrer Zertifikate verwendet wurde.
 - Beim Rotieren von Zertifikaten müssen diese entweder von der gleichen internen Zertifizierungsstelle stammen, die auch zum Signieren der bei der Bereitstellung angegebenen Zertifikate verwendet wurde, oder von einer der oben angegebenen öffentlichen Zertifizierungsstellen.
 - Die Verwendung selbstsignierter Zertifikate wird nicht unterstützt.
-- Das Zertifikat kann ein einzelnes Platzhalterzertifikat sein, das alle Namespaces im Feld „Alternativer Antragstellername“ abdeckt. Alternativ können Sie auch einzelne Zertifikate mit Platzhaltern für Endpunkte wie ACS und Key Vault verwenden, wo sie benötigt werden. 
+- Das Zertifikat kann ein einzelnes Platzhalterzertifikat sein, das alle Namespaces im Feld „Alternativer Antragstellername“ abdeckt. Alternativ können Sie auch einzelne Zertifikate mit Platzhaltern für Endpunkte wie **acs** und Key Vault verwenden, wo sie benötigt werden. 
 - Der Zertifikatsignaturalgorithmus darf nicht SHA1, sondern muss sicherer sein. 
 - Das Zertifikatsformat muss PFX sein, da sowohl der öffentliche als auch der private Schlüssel für die Installation von Azure Stack benötigt werden. 
 - Die PFX-Zertifikatdateien müssen im Feld „Schlüsselverwendung“ einen Wert in „Digitale Signatur“ und „Schlüsselchiffrierung“ enthalten.
@@ -58,6 +59,23 @@ Die Tabelle in diesem Abschnitt beschreibt die PKI-Zertifikate für öffentliche
 Zertifikate mit den entsprechenden DNS-Namen für diese Endpunkte der öffentlichen Infrastruktur von Azure Stack sind erforderlich. Der DNS-Name von Endpunkten wird im folgenden Format angegeben: *&lt;Präfix>.&lt;Region>.&lt;FQDN>*. 
 
 Für Ihre Bereitstellung müssen die Werte [region] und [externalfqdn] mit der Region und den externen Domänennamen übereinstimmen, die Sie für Ihr Azure Stack-System ausgewählt haben. Beispiel: Wenn der Name der Region *Redmond* und der externe Domänenname *contoso.com* lautet, haben die DNS-Namen das Format *&lt;Präfix>.redmond.contoso.com*. Die *&lt;Präfix>*-Werte werden von Microsoft vordefiniert, um den durch das Zertifikat geschützten Endpunkt zu beschreiben. Darüber hinaus hängen die *&lt;Präfix>*-Werte der externen Infrastrukturendpunkte vom Azure Stack-Dienst ab, der den spezifischen Endpunkt verwendet. 
+
+> [!note]  
+> Zertifikate können als einzelnes, in alle Verzeichnisse kopiertes Platzhalterzertifikat bereitgestellt werden, das alle Namespaces in den Feldern für Antragsteller und alternativen Antragstellernamen (Subject Alternative Name, SAN) abdeckt, oder als individuelle Zertifikate für jeden Endpunkt (kopiert in das entsprechende Verzeichnis). Wie bereits erwähnt, müssen für beide Optionen Platzhalterzertifikate für Endpunkte wie **acs** und Key Vault verwendet werden, wo diese erforderlich sind. 
+
+| Bereitstellungsordner | Erforderlicher Zertifikatantragsteller und alternative Antragstellernamen | Bereich (pro Region) | Namespace der Unterdomäne |
+|-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
+| Öffentliches Portal | portal.&lt;Region>.&lt;FQDN> | Portale | &lt;Region>.&lt;FQDN> |
+| Verwaltungsportal | adminportal.&lt;Region>.&lt;FQDN> | Portale | &lt;Region>.&lt;FQDN> |
+| Azure Resource Manager (Öffentlich) | management.&lt;Region>.&lt;FQDN> | Azure Resource Manager | &lt;Region>.&lt;FQDN> |
+| Azure Resource Manager (Verwaltung) | adminmanagement.&lt;Region>.&lt;FQDN> | Azure Resource Manager | &lt;Region>.&lt;FQDN> |
+| ACSBlob | *.blob.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Blob Storage | blob.&lt;Region>.&lt;FQDN> |
+| ACSTable | *.table.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Tabellenspeicher | table.&lt;Region>.&lt;FQDN> |
+| ACSQueue | *.queue.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Warteschlangenspeicher | queue.&lt;Region>.&lt;FQDN> |
+| KeyVault | *.vault.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Schlüsseltresor | vault.&lt;Region>.&lt;FQDN> |
+| KeyVaultInternal | *.adminvault.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) |  Interner Schlüsseltresor |  adminvault.&lt;Region>.&lt;FQDN> |
+
+### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>Für Azure-Stack-Umgebung vor der Version 1803
 
 |Bereitstellungsordner|Erforderlicher Zertifikatantragsteller und alternative Antragstellernamen|Bereich (pro Region)|Namespace der Unterdomäne|
 |-----|-----|-----|-----|
@@ -93,7 +111,7 @@ In der folgenden Tabelle werden die Endpunkte und Zertifikate beschrieben, die f
 |Bereich (pro Region)|Zertifikat|Erforderlicher Zertifikatantragsteller und alternative Antragstellernamen|Namespace der Unterdomäne|
 |-----|-----|-----|-----|
 |SQL, MySQL|SQL und MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(SSL-Platzhalterzertifikat)|dbadapter.*&lt;region>.&lt;fqdn>*|
-|App Service|Webdatenverkehr: SSL-Standardzertifikat|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-Platzhalterzertifikat für mehrere Domänen<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|App Service|Webdatenverkehr: SSL-Standardzertifikat|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;Region>.&lt;FQDN>*<br>(SSL-Platzhalterzertifikat für mehrere Domänen<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-Zertifikat<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-Zertifikat<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-Zertifikat<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|

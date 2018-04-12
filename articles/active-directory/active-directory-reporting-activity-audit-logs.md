@@ -322,8 +322,8 @@ Dieser Abschnitt enthält eine Liste aller Aktivitäten, die protokolliert werde
 |B2C|Ressource|Ressource|Get list of tags for all admin flows for all users (Liste der Tags für alle Verwaltungsflows für alle Benutzer abrufen)|
 |B2C|Ressource|Ressource|Get list of tenants for a user (Liste der Mandanten für einen Benutzer abrufen)|
 |B2C|Autorisierung|Autorisierung|Get list of tenants for a user (Liste der Mandanten für einen Benutzer abrufen)|
-|B2C|Ressource|Ressource|Get local accounts' self-asserted claims (Selbstbestätigte Ansprüche des lokalen Kontos abrufen)|
-|B2C|Autorisierung|Autorisierung|Get local accounts' self-asserted claims (Selbstbestätigte Ansprüche des lokalen Kontos abrufen)|
+|B2C|Ressource|Ressource|Get local accounts' self-asserted claims (Selbstbestätigte Ansprüche der lokalen Konten abrufen)|
+|B2C|Autorisierung|Autorisierung|Get local accounts' self-asserted claims (Selbstbestätigte Ansprüche der lokalen Konten abrufen)|
 |B2C|Ressource|Ressource|Get localized resource json (Lokalisierten JSON-Ressourcencode abrufen)|
 |B2C|Autorisierung|Autorisierung|Get localized resource json (Lokalisierten JSON-Ressourcencode abrufen)|
 |B2C|Autorisierung|Autorisierung|Get operations of Microsoft.AzureActiveDirectory resource provider (Vorgänge des Microsoft.AzureActiveDirectory-Ressourcenanbieters abrufen)|
@@ -391,8 +391,8 @@ Dieser Abschnitt enthält eine Liste aller Aktivitäten, die protokolliert werde
 |B2C|Autorisierung|Autorisierung|MigrateTenantMetadata|
 |B2C|Ressource|Ressource|MigrateTenantMetadata|
 |B2C|Ressource|Ressource|Verschieben von Ressourcen|
-|B2C|Autorisierung|Autorisierung|Patch IdentityProvider („IdentityProvider“ patchen)|
-|B2C|Ressource|Ressource|Patch IdentityProvider („IdentityProvider“ patchen)|
+|B2C|Autorisierung|Autorisierung|Patch IdentityProvider (IdentityProvider patchen)|
+|B2C|Ressource|Ressource|Patch IdentityProvider (IdentityProvider patchen)|
 |B2C|Ressource|Ressource|PutTrustFrameworkPolicy|
 |B2C|Autorisierung|Autorisierung|PutTrustFrameworkPolicy|
 |B2C|Autorisierung|Autorisierung|PutTrustFrameworkpolicy|
@@ -427,7 +427,7 @@ Dieser Abschnitt enthält eine Liste aller Aktivitäten, die protokolliert werde
 |B2C|Schlüssel|Schlüssel|Upload a CPIM encrypted key (Verschlüsselten CPIM-Schlüssel hochladen)|
 |B2C|Autorisierung|Autorisierung|Upload a CPIM encrypted key (Verschlüsselten CPIM-Schlüssel hochladen)|
 |B2C|Autorisierung|Autorisierung|User Authorization: API is disabled for tenant featureset (Benutzerautorisierung: Die API ist für die Mandantenfeatures deaktiviert.)|
-|B2C|Autorisierung|Autorisierung|User Authorization: User granted access as 'Tenant Admin' (Benutzerautorisierung: Der Benutzer hat Zugriff als „Mandantenadministrator“ gewährt.)|
+|B2C|Autorisierung|Autorisierung|User Authorization: User granted access as 'Tenant Admin' (Benutzerautorisierung: Dem Benutzer wurde Zugriff als „Mandantenadministrator“ gewährt.)|
 |B2C|Autorisierung|Autorisierung|User Authorization: User was granted 'Authenticated Users' access rights (Benutzerautorisierung: Dem Benutzer wurden Zugriffsrechte vom Typ „Authentifizierte Benutzer“ gewährt.)|
 |B2C|Authentifizierung|Authentifizierung|Validate local account credentials (Anmeldeinformationen des lokalen Kontos überprüfen)|
 |B2C|Ressource|Ressource|Validate move resources (Verschiebung von Ressourcen überprüfen)|
@@ -465,7 +465,7 @@ Dieser Abschnitt enthält eine Liste aller Aktivitäten, die protokolliert werde
 |Kernverzeichnis|Anwendungsverwaltung|Anwendung|Anmeldeinformationen für Dienstprinzipal hinzufügen|
 |Kernverzeichnis|Verzeichnisverwaltung|Verzeichnis|Add inverified domain (Nicht überprüfte Domäne hinzufügen)|
 |Kernverzeichnis|Benutzerverwaltung|Benutzer|Benutzer hinzufügen|
-|Kernverzeichnis|Benutzerverwaltung|Benutzer|Add users strong authentication phone app detail (Phone-App-Details für die strenge Authentifizierung der Benutzer hinzufügen)|
+|Kernverzeichnis|Benutzerverwaltung|Benutzer|Add users strong authentication phone app detail (Phone-App-Details für die strikte Authentifizierung der Benutzer hinzufügen)|
 |Kernverzeichnis|Verzeichnisverwaltung|Verzeichnis|Add verified domain (Überprüfte Domäne hinzufügen)|
 |Kernverzeichnis|Benutzerverwaltung|Benutzer|Benutzerlizenz ändern|
 |Kernverzeichnis|Benutzerverwaltung|Benutzer|Benutzerkennwort ändern|
@@ -492,7 +492,7 @@ Dieser Abschnitt enthält eine Liste aller Aktivitäten, die protokolliert werde
 |Kernverzeichnis|Verzeichnisverwaltung|Verzeichnis|Directory deleted permanently (Verzeichnis unwiderruflich gelöscht)|
 |Kernverzeichnis|Verzeichnisverwaltung|Verzeichnis|Directory scheduled for deletion (Löschen des Verzeichnisses geplant)|
 |Kernverzeichnis|Benutzerverwaltung|Benutzer|Disable account (Konto deaktivieren)|
-|Kernverzeichnis|Benutzerverwaltung|Benutzer|Enable Strong Authentication (Strenge Authentifizierung aktivieren)|
+|Kernverzeichnis|Benutzerverwaltung|Benutzer|Enable Strong Authentication (Strikte Authentifizierung aktivieren)|
 |Kernverzeichnis|Gruppenverwaltung|Group|Finish applying group based license to users (Gruppenbasierte Lizenzzuweisung zu Benutzern fertig stellen)|
 |Kernverzeichnis|Anwendungsverwaltung|Anwendung|Hard Delete application (Anwendung endgültig löschen)|
 |Kernverzeichnis|Gruppenverwaltung|Group|Hard Delete group (Gruppe endgültig löschen)|
@@ -546,7 +546,7 @@ Dieser Abschnitt enthält eine Liste aller Aktivitäten, die protokolliert werde
 |Kernverzeichnis|Benutzerverwaltung|Benutzer|Set users oath token metadata enabled (OATH-Tokenmetadaten der Benutzer auf „Aktiviert“ festlegen)|
 |Kernverzeichnis|Gruppenverwaltung|Group|Start applying group based license to users (Starten der gruppenbasierten Lizenzzuweisung zu Benutzern)|
 |Kernverzeichnis|Gruppenverwaltung|Group|Trigger group license recalculation (Neuberechnung der Gruppenlizenzen auslösen)|
-|Kernverzeichnis|Benutzerverwaltung|Benutzer|Update StsRefreshTokenValidFrom Timestamp (Zeitstempel „StsRefreshTokenValidFrom“ aktualisieren)|
+|Kernverzeichnis|Benutzerverwaltung|Benutzer|Update StsRefreshTokenValidFrom Timestamp (Zeitstempel StsRefreshTokenValidFrom aktualisieren)|
 |Kernverzeichnis|Verwaltung administrativer Einheiten|AdministrativeUnit|Verwaltungseinheit aktualisieren|
 |Kernverzeichnis|Anwendungsverwaltung|Anwendung|Aktualisieren der Anwendung|
 |Kernverzeichnis|Verzeichnisverwaltung|Verzeichnis|Update company (Unternehmen aktualisieren)|
@@ -620,7 +620,7 @@ Dieser Abschnitt enthält eine Liste aller Aktivitäten, die protokolliert werde
 |Self-Service-Kennwortverwaltung|Benutzerverwaltung|Benutzer|Blocked from self-service password reset (Von Self-Service-Kennwortzurücksetzung ausgeschlossen)|
 |Self-Service-Kennwortverwaltung|Benutzerverwaltung|Benutzer|Change password (self-service) (Kennwort ändern (Self-Service))|
 |Self-Service-Kennwortverwaltung|Verzeichnisverwaltung|Verzeichnis|Disable password writeback for directory (Kennwortrückschreiben für Verzeichnis deaktivieren)|
-|Self-Service-Kennwortverwaltung|Verzeichnisverwaltung|Verzeichnis|Enable password writeback for directory (Kennwortrückschreiben für Verzeichnis deaktivieren)|
+|Self-Service-Kennwortverwaltung|Verzeichnisverwaltung|Verzeichnis|Enable password writeback for directory (Kennwortrückschreiben für Verzeichnis aktivieren)|
 |Self-Service-Kennwortverwaltung|Benutzerverwaltung|Benutzer|Reset password (by admin) (Kennwort zurücksetzen (durch Administrator))|
 |Self-Service-Kennwortverwaltung|Benutzerverwaltung|Benutzer|Reset password (self-service) (Kennwort zurücksetzen (Self-Service))|
 |Self-Service-Kennwortverwaltung|Benutzerverwaltung|Benutzer|Self serve password reset flow activity progress (Aktivitätsstatus des Self-Service-Kennwortzurücksetzungsablaufs)|
