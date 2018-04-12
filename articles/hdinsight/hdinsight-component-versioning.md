@@ -109,7 +109,7 @@ Die folgende Tabelle enthält die Versionen von HDInsight, die derzeit **nicht**
 
 ## <a name="enterprise-security-package-for-hdinsight"></a>Enterprise Security Package für HDInsight
 
-Azure HDInsight ist ein optionales Paket, das Sie während der Clustererstellung zu Ihrem HDInsight-Cluster hinzufügen können. Das Enterprise Security Package unterstützt Folgendes:
+Das Enterprise Security Package für HDInsight ist ein optionales Paket, das Sie während der Clustererstellung zu Ihrem HDInsight-Cluster hinzufügen können. Das Enterprise Security Package unterstützt Folgendes:
 
 - Integration in Active Directory für die Authentifizierung
 
