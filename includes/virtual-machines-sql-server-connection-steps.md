@@ -11,7 +11,6 @@
    
     ![TCP-Port 1433](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
 6. Klicken Sie auf **Weiter**.
-
 7. Klicken Sie im Dialogfeld **Aktion** auf **Verbindung zulassen** und anschließend auf **Weiter**.
    
     **Sicherheitshinweis:** Die Auswahl von **Verbindung zulassen, wenn sie sicher ist** kann für zusätzliche Sicherheit sorgen. Wählen Sie diese Option, wenn Sie zusätzliche Sicherheitsoptionen in Ihrer Umgebung konfigurieren möchten.

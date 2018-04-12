@@ -1,11 +1,11 @@
 ---
-title: "Bestimmen der zu verwendenden Methode für das einmalige Anmelden | Microsoft-Dokumentation"
-description: "Erhalten Sie Informationen zu den von Azure AD unterstützten Modi für das einmalige Anmelden, und erfahren Sie, wie Sie herausfinden, welchen Modus Sie für Ihre Anwendung auswählen sollten."
+title: Bestimmen der zu verwendenden Methode für das einmalige Anmelden | Microsoft-Dokumentation
+description: Erhalten Sie Informationen zu den von Azure AD unterstützten Modi für das einmalige Anmelden, und erfahren Sie, wie Sie herausfinden, welchen Modus Sie für Ihre Anwendung auswählen sollten.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 4363f308f9bfa685b0f4e946cdd97d34b6ece197
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>Bestimmen der zu verwendenden Methode für das einmalige Anmelden
 

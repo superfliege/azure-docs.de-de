@@ -1,12 +1,12 @@
 ---
-title: "Bereitstellen von Geräten für die Remoteüberwachung in Node.js – Azure | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie ein Gerät mit der vorkonfigurierten Remoteüberwachungslösung von Azure IoT Suite verbinden, indem Sie eine in Node.js geschriebene Anwendung ausführen."
-services: 
+title: Bereitstellen von Geräten für die Remoteüberwachung in Node.js – Azure | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie ein Gerät mit der vorkonfigurierten Remoteüberwachungslösung von Azure IoT Suite verbinden, indem Sie eine in Node.js geschriebene Anwendung ausführen.
+services: ''
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
 ms.service: iot-suite
 ms.devlang: na
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: df89150867a3c95116ba8ca8cd684af4b32a36de
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Node.js)
 
@@ -52,7 +52,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
     var async = require('async');
     ```
 
-1. Fügen Sie die folgenden Variablendeklarationen nach den `require` -Anweisungen hinzu. Ersetzen Sie den Platzhalterwert `{device connection string}` durch den Wert, den Sie für das Gerät, das Sie in der Remoteüberwachungslösung bereitgestellt haben, notiert haben:
+1. Fügen Sie die folgenden Variablendeklarationen nach den `require` -Anweisungen hinzu. Ersetzen Sie den Platzhalterwert `{device connection string}` durch den Wert, den Sie für das in der Remoteüberwachungslösung bereitgestellte Gerät notiert haben:
 
     ```nodejs
     var connectionString = '{device connection string}';
@@ -158,7 +158,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
     }
     ```
 
-1. Fügen Sie die folgende generische Funktion zur Verarbeitung der Aufrufe von direkten Methoden aus der Lösung hinzu. Die Funktion zeigt Informationen über die direkte Methode an, die aufgerufen wurde, ändert aber in diesem Beispiel das Gerät in keiner Weise. Die Lösung verwendet direkte Methoden, die auf Geräte einwirken:
+1. Fügen Sie die folgende generische Funktion zur Verarbeitung der direkten Methodenaufrufe aus der Lösung hinzu. Die Funktion zeigt Informationen über die direkte Methode an, die aufgerufen wurde, ändert aber in diesem Beispiel das Gerät in keiner Weise. Die Lösung verwendet direkte Methoden, die auf Geräte einwirken:
 
     ```nodejs
     function onDirectMethod(request, response) {
@@ -202,7 +202,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
     }
     ```
 
-1. Fügen Sie die folgende Funktion hinzu, um einen Firmwareupdatefluss mit langer Ausführung zu simulieren, der den Verlauf wieder an die Lösung meldet:
+1. Fügen Sie die folgende Funktion hinzu, um einen Firmwareupdatefluss mit langer Ausführungsdauer zu simulieren, der den Fortschritt wieder an die Lösung meldet:
 
     ```node.js
     // Simulated firmwareUpdate flow

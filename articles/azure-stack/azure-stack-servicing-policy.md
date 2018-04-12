@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/03/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2c10dcf185c62f3672be80ad2e3d049eae82fe6b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e37b63580d8cea4b5772bc54f7b2f79980afc0bc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack-Wartungsrichtlinie
 Dieser Artikel beschreibt die Wartungsrichtlinie für integrierte Azure Stack-Systeme, und was Sie tun müssen, um den unterstützten Zustand Ihres Systems aufrechtzuerhalten. 
@@ -47,19 +47,6 @@ Beispiel: Wenn die neueste verfügbare Updateversion 1805 ist und die beiden vor
 
 Microsoft-Softwareupdatepakete sind nicht kumulativ und setzen das vorherige Updatepaket voraus. Wenn Sie eines oder mehrere Updates aufschieben möchten, berücksichtigen Sie die gesamte Laufzeit, wenn Sie auf die neueste Version aktualisieren möchten. 
 
-Die folgende Tabelle zeigt Beispiele für Updatepaketreleases, deren Voraussetzungen und die unterstützte Mindestversion, die Ihr System aufweisen muss, um Support zu erhalten. Die Tabelle basiert auf dem ersten Release der integrierten Azure Stack-Systeme (Build 1708) mit dem ersten Updatepaketrelease (1709) im September 2017. 
-
-| Neuestes Updatepaket (*Beispiel*) | Voraussetzung | Unterstützte Mindestversion |
-| -- | -- | -- |
-| 1710 | 1709 | N/V |
-| 1711 | 1710 | 1709 |
-| 1.712 | 1711 | 1710 |
-| 1802 | 1.712 | 1711 |
-| 1803 | 1802 | 1.712 |
-| 1804 | 1803 | 1802 |
-| 1805 | 1804 | 1803 |
-| | | 
-In der obigen Tabelle ist keine Version 1801 vorhanden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

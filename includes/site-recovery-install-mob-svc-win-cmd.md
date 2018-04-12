@@ -28,7 +28,7 @@ UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “
 | Parameter|Typ|BESCHREIBUNG|Mögliche Werte|
 |-|-|-|-|
 |/Role|Erforderlich|Gibt an, ob Mobility Service (MS) oder MasterTarget (MT) installiert werden soll.|MS </br> MT|
-|/InstallLocation|Optional|Installationsort von Mobility Service|Beliebiger Ordner auf dem Computer|
+|/InstallLocation|Optional|Installationsort des Mobilitätsdiensts|Beliebiger Ordner auf dem Computer|
 |/Platform|Erforderlich|Gibt die Plattform an, auf der Mobility Service installiert wird. </br> </br>- **VMware**: Verwenden Sie diesen Wert für die Installation von Mobility Service auf einem virtuellen Computer, der auf *VMware vSphere ESXi-Hosts*, *Hyper-V-Hosts* und *physischen Servern* ausgeführt wird. </br> - **Azure**: Verwenden Sie diesen Wert, wenn Sie einen Agent auf einem virtuellen Azure-IaaS-Computer installieren. | VMware </br> Azure|
 |/Silent|Optional|Gibt an, dass das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll.| N/V|
 

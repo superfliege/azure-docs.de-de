@@ -1,11 +1,11 @@
 ---
-title: "Lösungsübersicht zur StorSimple 8000-Serie | Microsoft-Dokumentation"
-description: "Beschreibt die StorSimple-Speicherstaffelung, das Gerät, das virtuelle Gerät, Dienste und die Speicherverwaltung und erläutert wichtige in StorSimple verwendete Begriffe."
+title: Lösungsübersicht zur StorSimple 8000-Serie | Microsoft-Dokumentation
+description: Beschreibt die StorSimple-Speicherstaffelung, das Gerät, das virtuelle Gerät, Dienste und die Speicherverwaltung und erläutert wichtige in StorSimple verwendete Begriffe.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7144d218-db21-4495-88fb-e3b24bbe45d1
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.openlocfilehash: 10f4b6ec29c2d9539fa7fe61c96581755e630822
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung
 ## <a name="overview"></a>Übersicht
@@ -216,7 +216,7 @@ In der folgenden Tabelle finden Sie eine Übersicht über die unterstützten Sto
 | Sicherung |Sicherung des Primärziels |Ja* |Unterstützt, wenn das StorSimple-Gerät nur für diese Workload verwendet wird |Update 3 und höher |
 | Sicherung |Sicherung des Sekundärziels |Ja* |Unterstützt, wenn das StorSimple-Gerät nur für diese Workload verwendet wird |Update 3 und höher |
 
-*Ja&amp;#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
+*Ja&#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
 
 Die folgenden Workloads werden von Geräten der StorSimple 8000-Serie nicht unterstützt. Die Bereitstellung dieser Workloads auf einem StorSimple-Gerät führt zu einer nicht unterstützten Konfiguration.
 
@@ -239,7 +239,7 @@ Nachfolgend finden Sie eine Liste der von StorSimple unterstützten Infrastruktu
 | Allgemein |Indizierung |Ja* |Bei mehrstufigen Volumes wird nur die Indizierung der Metadaten unterstützt (nicht der Daten).<br>Bei lokalen Volumes wird eine vollständige Indizierung unterstützt. |Alle Versionen |
 | Allgemein |Virenschutz |Ja* |Bei mehrstufigen Volumes wird das Scannen nur beim Öffnen und Schließen unterstützt.<br> Bei lokalen Volumes wird ein vollständiger Scan unterstützt. |Alle Versionen |
 
-*Ja&amp;#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
+*Ja&#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
 
 Im Folgenden finden Sie eine Liste von Software, die mit StorSimple zum Erstellen von Lösungen verwendet wird.
 
