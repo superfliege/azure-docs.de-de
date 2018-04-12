@@ -1,11 +1,11 @@
 ---
-title: "Migrieren klassischer Ressourcen zu Azure Resource Manager – Übersicht | Microsoft-Dokumentation"
-description: "In diesem Artikel wird die plattformgestützte Migration von Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager erläutert."
+title: Migrieren klassischer Ressourcen zu Azure Resource Manager – Übersicht | Microsoft-Dokumentation
+description: In diesem Artikel wird die plattformgestützte Migration von Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager erläutert.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: kasing
-ms.openlocfilehash: 78e8f478dcf7a6547cb24ad3e9cb991a1a663023
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: 40bfe5771f35bc5b386e3d1a5e643d72b9e298ca
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/06/2018
 ---
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-overview.md)]
 

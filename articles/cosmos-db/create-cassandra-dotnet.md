@@ -1,10 +1,10 @@
 ---
-title: "Schnellstartanleitung: Cassandra-API mit .NET – Azure Cosmos DB | Microsoft-Dokumentation"
+title: 'Schnellstartanleitung: Cassandra-API mit .NET – Azure Cosmos DB | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Cassandra-API von Azure Cosmos DB eine Profilanwendung mit dem Azure-Portal und .NET erstellen.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: 73839abf-5af5-4ae0-a852-0f4159bc00a0
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: c1830d13e759205935fbd769574c1132a8e70d09
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.author: sngun
+ms.openlocfilehash: 7cd8c61f19e09900267cdc93c1d478f5b0f75afe
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Cassandra-App mit .NET und Azure Cosmos DB
 
@@ -147,7 +147,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
     ```cmd
     Install-Package CassandraCSharpDriver
     ```
-3. Drücken Sie STRG + F5, um die Anwendung auszuführen. Ihre App wird im Konsolenfenster angezeigt. 
+3. Drücken Sie STRG+F5, um die Anwendung auszuführen. Ihre App wird im Konsolenfenster angezeigt. 
 
     ![Anzeigen und Überprüfen der Ausgabe](./media/create-cassandra-dotnet/output.png)
 

@@ -1,25 +1,24 @@
 ---
-title: "Schnellstartanleitung: Table-API mit Node.js – Azure Cosmos DB | Microsoft-Dokumentation"
+title: 'Schnellstartanleitung: Table-API mit Node.js – Azure Cosmos DB | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Table-API von Azure Cosmos DB eine Anwendung mit dem Azure-Portal und Node.js erstellen.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
-manager: jhubbard
-editor: 
+manager: kfile
 ms.assetid: 66327041-4d5e-4ce6-a394-fee107c18e59
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: quickstart
 ms.date: 11/20/2017
 ms.author: arramac
-ms.openlocfilehash: 8cf8820ceea19fe8c4926c65d107d4f770f40926
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 0aa8f31f0c5607c82a2da36db791c29cf8769d9e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Table-API-App mit Node.js und Azure Cosmos DB
 
@@ -35,7 +34,7 @@ Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren 
 Außerdem haben Sie folgende Möglichkeiten:
 
 * [Node.js](https://nodejs.org/en/) Version v0.10.29 oder höher
-* [Git](http://git-scm.com/)
+* [Git-Client](http://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 

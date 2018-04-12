@@ -17,21 +17,20 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 445baa36f33cbe02b68bdb37406f842932089183
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2490b96716519ef749dd1e3a1fbe6846c6b5d999
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peering virtueller Netzwerke mit PowerShell
 
 Sie können durch Peering virtueller Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen. Sobald ein Peering zwischen virtuellen Netzwerken eingerichtet wurde, können Ressourcen in beiden virtuellen Netzwerken untereinander mit der gleichen Latenz und Bandbreite kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen zweier virtueller Netzwerke
-> * Herstellen einer Verbindung zwischen zwei virtuellen Netzwerken mit einem Peering virtueller Netzwerke
-> * Bereitstellen eines virtuellen Computers (VM) in jedem virtuellen Netzwerk
-> * Kommunikation zwischen VMs
+* Erstellen zweier virtueller Netzwerke
+* Herstellen einer Verbindung zwischen zwei virtuellen Netzwerken mit einem Peering virtueller Netzwerke
+* Bereitstellen eines virtuellen Computers (VM) in jedem virtuellen Netzwerk
+* Kommunikation zwischen VMs
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -208,4 +207,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 In diesem Artikel haben Sie erfahren, wie zwei Netzwerke in derselben Azure-Region durch das Peering virtueller Netzwerke verbunden werden. Sie können auch virtuelle Netzwerke in unterschiedlichen [ unterstützten Regionen](virtual-network-manage-peering.md#cross-region) und [verschiedenen Azure-Abonnements](create-peering-different-subscriptions.md#powershell) durch Peering verbinden und [Netzwerke vom Typ „Nabe und Speiche“](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) mit Peering erstellen. Weitere Informationen zum Peering in virtuellen Netzwerken finden Sie unter [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md) und [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md).
 
-Sie können über ein VPN [eine Verbindung zwischen Ihrem eigenen Computer und einem virtuellen Netzwerk herstellen](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und mit Ressourcen in einem virtuellen Netzwerk oder in durch Peering verbundenen virtuellen Netzwerken interagieren. Wiederverwendbare Skripts, um viele der in den Artikeln zu virtuellen Netzwerken behandelten Aufgaben durchzuführen, finden Sie unter [Virtueller Azure-Computer – PowerShell-Beispiele](powershell-samples.md).
+Sie können über ein VPN [eine Verbindung zwischen Ihrem eigenen Computer und einem virtuellen Netzwerk herstellen](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und mit Ressourcen in einem virtuellen Netzwerk oder in durch Peering verbundenen virtuellen Netzwerken interagieren. Wiederverwendbare Skripts, um viele der in den Artikeln zu virtuellen Netzwerken behandelten Aufgaben durchzuführen, finden Sie unter [Azure CLI-Beispiele für Linux-VMs](powershell-samples.md).

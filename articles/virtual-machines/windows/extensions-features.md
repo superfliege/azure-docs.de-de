@@ -1,11 +1,11 @@
 ---
-title: "Erweiterungen und Features für virtuelle Computer für Windows in Azure | Microsoft Docs"
-description: "Sie erhalten einen Überblick über die Erweiterungen für virtuelle Azure-Computer, gruppiert nach den bereitgestellten oder verbesserten Funktionen."
+title: Erweiterungen und Features für virtuelle Computer für Windows in Azure | Microsoft Docs
+description: Sie erhalten einen Überblick über die Erweiterungen für virtuelle Azure-Computer, gruppiert nach den bereitgestellten oder verbesserten Funktionen.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2017
 ms.author: danis
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0065468e4172f62dc1759c1905a8df48e91e01a6
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: efb7f7cf911ad5dc753afffd077c473cc0faaf74
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -279,7 +279,7 @@ Eine Erweiterung kann auch im Azure-Portal entfernt werden. Gehen Sie dazu wie f
 4. Wählen Sie **Deinstallieren**.
 
 ## <a name="common-vm-extensions-reference"></a>Allgemeine VM-Erweiterungsreferenz
-| Name der Erweiterung | Beschreibung | Weitere Informationen |
+| Name der Erweiterung | BESCHREIBUNG | Weitere Informationen |
 | --- | --- | --- |
 | CustomScript-Erweiterung für Windows |Ausführen von Skripts für virtuelle Azure-Computer |[Benutzerdefinierte Skripterweiterung für Windows](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | DSC-Erweiterung für Windows |PowerShell-DSC-Erweiterung (Desired State Configuration, Konfigurieren des gewünschten Zustands) |[DSC-Erweiterung für Windows](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |

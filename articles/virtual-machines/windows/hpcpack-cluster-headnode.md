@@ -2,10 +2,10 @@
 title: Erstellen eines HPC Pack-Hauptknotens in einem virtuellen Azure-Computer | Microsoft Docs
 description: Erfahren Sie, wie Sie das Azure-Portal und das Resource Manager-Bereitstellungsmodell verwenden, um einen Microsoft HPC Pack 2012 R2-Hauptknoten auf einem virtuellen Azure-Computer zu erstellen.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,hpc-pack
 ms.assetid: e6a13eaf-9124-47b4-8d75-2bc4672b8f21
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: b2bb9caf82a580dc5f67ea0b0b1c2e9a46363e9c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: acd4cd44dd35a5b1755d9456f683076567d62165
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>Erstellen des Hauptknotens eines HPC Pack-Clusters auf einem virtuellen Azure-Computer mit einem Marketplace-Image
 Verwenden Sie ein [Microsoft HPC Pack 2012 R2-Image für einen virtuellen Computer](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) aus Azure Marketplace und das Azure-Portal, um den Hauptknoten eines HPC-Clusters zu erstellen. Das HPC Pack-VM-Image basiert auf Windows Server 2012 R2 Datacenter mit vorinstalliertem HPC Pack 2012 R2 Update 3. Verwenden Sie diesen Hauptknoten für eine Proof of Concept-Bereitstellung von HPC Pack in Azure. Sie können dem Cluster dann Computeknoten zum Ausführen von HPC-Workloads hinzufügen.

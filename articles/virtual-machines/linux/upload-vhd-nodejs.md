@@ -2,9 +2,9 @@
 title: Hochladen eines benutzerdefinierten Linux-Images mit der Azure CLI 1.0 | Microsoft-Dokumentation
 description: Erstellen Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit einem benutzerdefinierten Linux-Image mithilfe des Resource Manager-Bereitstellungsmodells und der Azure CLI 1.0, und laden Sie sie in Azure hoch.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
-ms.openlocfilehash: ca4c6cb9296028275b2b032af0c94baabeec1223
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6eb0cae2b70e0cbb9a4fb5fcab3a58d566d0f4d9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image-by-using-the-azure-cli-10"></a>Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage mithilfe der Azure CLI 1.0
 In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem Resource Manager-Bereitstellungsmodell in Azure hochladen und virtuelle Linux-Computer aus diesem benutzerdefinierten Image erstellen. Dadurch können Sie eine Linux-Distribution installieren und konfigurieren und die VHD dann zur schnellen Erstellung virtueller Azure-Computer (Azure-VMs) verwenden.
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard 
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#quick-commands): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0:](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
@@ -85,7 +85,7 @@ azure vm create myVM -l "WestUS" --resource-group myResourceGroup \
 
 Das Zielspeicherkonto muss mit dem Konto identisch sein, in das Sie den virtuellen Datenträger hochgeladen haben. Sie müssen außerdem alle erforderlichen Zusatzparameter für den `azure vm create`-Befehl angeben bzw. entsprechende Eingabeaufforderungen beantworten. Dazu gehören: virtuelles Netzwerk, öffentliche IP-Adresse, Benutzername und SSH-Schlüssel. Erfahren Sie mehr zu den [verfügbaren Resource Manager-Parametern für die Befehlszeilenschnittstelle](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines).
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Um die folgenden Schritte ausführen zu können, benötigen Sie Folgendes:
 
 * **In einer VHD-Datei installiertes Linux-Betriebssystem:** Installieren Sie auf einer virtuellen Festplatte im VHD-Format eine [von Azure unterstützte Linux-Distribution](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). (Informationen zu nicht unterstützten Distributionen finden Sie [hier](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).) Für die Erstellung virtueller Computer und Festplatten stehen verschiedene Tools zur Verfügung:
@@ -137,7 +137,7 @@ Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGr
 azure group create myResourceGroup --location "WestUS"
 ```
 
-## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 Virtuelle Computer werden als Seitenblobs in einem Speicherkonto gespeichert. Erfahren Sie [hier](../../storage/common/storage-introduction.md#blob-storage)mehr über Azure Blob Storage. Sie erstellen ein Speicherkonto für Ihr benutzerdefiniertes Datenträgerimage und die virtuellen Computer. Alle virtuellen Computer, die Sie aus Ihrem benutzerdefinierten Image erstellen, müssen sich im gleichen Speicherkonto wie das Image befinden.
 
 Das folgende Beispiel erstellt ein Speicherkonto namens `mystorageaccount` in der zuvor erstellten Ressourcengruppe:

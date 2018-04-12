@@ -1,21 +1,21 @@
 ---
 title: Verwenden des Azure Database Migration Service-Moduls in Microsoft Azure PowerShell zum Migrieren von lokalem SQL Server zur Azure SQL-Datenbank | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie mit Azure PowerShell eine Migration von lokalem SQL Server zu Azure SQL durchführen."
+description: Erfahren Sie, wie Sie mit Azure PowerShell eine Migration von lokalem SQL Server zu Azure SQL durchführen.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
-manager: 
-ms.reviewer: 
+manager: ''
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/24/2018
-ms.openlocfilehash: 8569bf65d04f677a45935284dc61d68879014c10
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 04/05/2018
+ms.openlocfilehash: d70d39f027df1fba7934c4b752b1dd2100f2e8b9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Migrieren von lokalem SQL Server zur Azure SQL-Datenbank mithilfe von Azure PowerShell
 In diesem Artikel migrieren Sie die Datenbank **Adventureworks2012**, die in einer lokalen Instanz von SQL Server 2016 (oder höher) wiederhergestellt wurde, mithilfe von Microsoft Azure PowerShell zu einer Azure SQL-Datenbank. Mithilfe des Moduls `AzureRM.DataMigration` in Microsoft Azure PowerShell können Sie Datenbanken aus einer lokalen Instanz von SQL Server zur Azure SQL-Datenbank migrieren.
@@ -127,7 +127,7 @@ $project = New-AzureRmDataMigrationProject -ResourceGroupName myResourceGroup `
   -TargetType SQLDB `
   -SourceConnection $sourceConnInfo `
   -TargetConnection $targetConnInfo `
-  -DatabaseInfos $dbList
+  -DatabaseInfo $dbList
 ```
 
 ## <a name="create-and-start-a-migration-task"></a>Erstellen und Starten einer Migrationsaufgabe

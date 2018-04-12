@@ -1,12 +1,12 @@
 ---
-title: "Konfigurationsschema für die Azure-Diagnose 1.2) | Microsoft-Dokumentation"
+title: Konfigurationsschema für die Azure-Diagnose 1.2) | Microsoft-Dokumentation
 description: NUR relevant, wenn Sie Azure SDK 2.5 mit Azure Virtual Machines, VM-Skalierungsgruppen, Service Fabric oder Cloud Services verwenden.
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
 ms.openlocfilehash: 1e9cc6d0950945df8c4fba74d8e1f6196be224f0
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Konfigurationsschema für die Azure-Diagnose 1.2
 > [!NOTE]

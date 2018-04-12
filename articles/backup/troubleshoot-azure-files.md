@@ -3,25 +3,24 @@ title: Behandeln von Problemen mit der Azure Files-Sicherung
 description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 services: backup
 ms.service: backup
-keywords: Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen.
 author: markgalioto
 ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: c803118ccdafa8db0e8f8ddee608f60311f65e05
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2e067e0a1f673480bc08abfee61d2b1b2c92f885
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>Behandeln von Problemen beim Sichern von Azure Files
 Die folgende Tabelle enthält Problembehandlungsinformationen für Probleme und Fehler, die bei der Verwendung der Azure Files-Sicherung auftreten können.
 
 ## <a name="preview-boundaries"></a>Einschränkungen der Vorschauversion
 Die Azure Files-Sicherung befindet sich in der Vorschauphase. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
-- Schützen von Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy.md#zone-redundant-storage) (zonenredundanter Speicher) oder [RA-GRS](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff)
+- Schützen von Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (zonenredundanter Speicher) oder [RA-GRS](../storage/common/storage-redundancy-grs.md) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff)
 - Schützen von Azure-Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken
 - Sichern von Azure-Dateifreigaben mithilfe von PowerShell oder über die Befehlszeilenschnittstelle
 

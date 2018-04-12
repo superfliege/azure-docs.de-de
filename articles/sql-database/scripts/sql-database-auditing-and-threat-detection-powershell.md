@@ -1,26 +1,26 @@
 ---
-title: "PowerShell-Beispiel: Überwachung und Bedrohungserkennung in einer Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Azure PowerShell-Beispielskript zum Konfigurieren der Überwachung und Bedrohungserkennung in einer Azure SQL-Datenbank"
+title: 'PowerShell-Beispiel: Überwachung und Bedrohungserkennung in einer Azure SQL-Datenbank | Microsoft-Dokumentation'
+description: Azure PowerShell-Beispielskript zum Konfigurieren der Überwachung und Bedrohungserkennung in einer Azure SQL-Datenbank
 services: sql-database
 documentationcenter: sql-database
 author: janeng
 manager: jstrauss
 editor: carlrab
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: mvc,security
 ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 09/08/2017
+ms.date: 04/01/2018
 ms.author: janeng
-ms.openlocfilehash: da4c5cd2c18e62ae40fe1c3f0a7fa014163b351c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b3beb3b4bf88e3e18afbc3165545cebe2addbcc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>Konfigurieren der SQL-Datenbank-Überwachung und -Bedrohungserkennung
 
@@ -44,7 +44,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Erstellt einen logischen Server, der eine Datenbank oder einen Pool für elastische Datenbanken hostet. |

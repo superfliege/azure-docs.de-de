@@ -1,11 +1,11 @@
 ---
 title: Systembegrenzungen der StorSimple 8000-Serie | Microsoft-Dokumentation
-description: "Beschreibt Systembegrenzungen und empfohlene Größen für StorSimple-Komponenten und Verbindungen der 8000 Serie."
+description: Beschreibt Systembegrenzungen und empfohlene Größen für StorSimple-Komponenten und Verbindungen der 8000 Serie.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c7392678-0924-46c6-9c59-1665cb9b6586
 ms.service: storsimple
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc3c0ad193af7625c8c4c1c2e82b6bdc8be33310
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>Welche Systemeinschränkungen gelten für die StorSimple 8000-Serie?
 
@@ -53,9 +53,9 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 | Maximaler Client-Lese-/-Schreibdurchsatz (wenn von HDD-Ebene aus bereitgestellt)* |120/250 MB/s | |
 | Maximaler Client-Lese-/-Schreibdurchsatz (wenn von Cloud-Ebene aus bereitgestellt)* ab Update 3 und höher** |40/60 MB/s für mehrstufige Volumes<br><br>60/80 MB/s für mehrstufige Volumes, bei denen im Rahmen der Volumeerstellung die Archivierungsoption ausgewählt wurde |Lesedurchsatz hängt von Clients ab, die genügend E/A-Warteschlangentiefe generieren und verwalten müssen. <br><br>Die erreichbare Geschwindigkeit hängt von der Geschwindigkeit des zugrunde liegenden Speicherkontos ab. |
 
-&#42; Der maximale Durchsatz pro E/A-Typ wurde mit 100 %-Lese- und 100 %-Schreibszenarien gemessen. Der tatsächliche Durchsatz kann geringer sein und hängt von der E/A-Mischung und den Netzwerkbedingungen ab.
+& #42; Der maximale Durchsatz pro E/A-Typ wurde mit 100 %-Lese- und 100 %-Schreibszenarien gemessen. Der tatsächliche Durchsatz kann geringer sein und hängt von der E/A-Mischung und den Netzwerkbedingungen ab.
 
-&#42; &#42; Leistungswerte vor Update 3 können niedriger sein.
+& #42; & #42; Leistungswerte vor Update 3 können niedriger sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die [StorSimple-Systemanforderungen](storsimple-8000-system-requirements.md).

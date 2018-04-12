@@ -1,10 +1,10 @@
 ---
-title: PowerShell-Skript zum Bereitstellen eines Windows-HPC-Clusters | Microsoft-Dokumentation
+title: PowerShell-Skript zum Bereitstellen eines Windows-HPC-Clusters | Microsoft Docs
 description: Ausführen eines PowerShell-Skripts zum Bereitstellen eines Windows HPC Pack 2012 R2-Clusters auf virtuellen Azure-Computern
 services: virtual-machines-windows
 documentationcenter: ''
 author: dlepow
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 286b2be8-2533-40df-b02a-26156b1f1133
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 82aa2942a6a4fe6a3ac1c3ec2c0710e39f4282b1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e05562aeac0ea89ec1c3d80d2967c8f59c68d332
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Erstellen eines Windows-High Performance Computing (HPC)-Clusters mit dem HPC Pack-IaaS-Bereitstellungsskript
 Führen Sie das PowerShell-Skript für die HPC Pack-IaaS-Bereitstellung aus, um einen vollständigen HPC Pack 2012 R2-Cluster für Windows-Workloads auf virtuellen Azure-Computern bereitzustellen. Der Cluster besteht aus einem mit Active Directory verknüpften Hauptknoten mit Windows Server und Microsoft HPC Pack sowie weiteren von Ihnen angegebenen Windows-Computeressourcen. Falls Sie einen HPC Pack-Cluster in Azure für Linux-Workloads bereitstellen möchten, finden Sie weitere Informationen unter [Erstellen eines High Performance Computing (HPC)-Clusters mit virtuellen Linux-Computern mit dem HPC Pack-IaaS-Bereitstellungsskript](../../linux/classic/hpcpack-cluster-powershell-script.md). 

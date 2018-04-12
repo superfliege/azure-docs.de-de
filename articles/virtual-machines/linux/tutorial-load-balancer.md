@@ -1,13 +1,13 @@
 ---
-title: "Lastenausgleich für virtuelle Linux-Computer in Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mit dem Azure Load Balancer eine hoch verfügbare und sichere Anwendung für drei virtuelle Linux-Computer erstellen."
+title: Lastenausgleich für virtuelle Linux-Computer in Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mit dem Azure Load Balancer eine hoch verfügbare und sichere Anwendung für drei virtuelle Linux-Computer erstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: tutorial
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: feb2c369fc00d37c9a6af0c0be68cbf7d9e59921
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c473a31261337f0b968ca21c85b61dafbf8fa74a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Lastenausgleich für virtuelle Linux-Computer in Azure zum Erstellen einer hoch verfügbaren Anwendung
 Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer kennen, die den Datenverkehr verteilen und Hochverfügbarkeit bereitstellen. Folgendes wird vermittelt:

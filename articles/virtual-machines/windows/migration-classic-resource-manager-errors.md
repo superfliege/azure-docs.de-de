@@ -1,11 +1,11 @@
 ---
-title: "Häufige Fehler bei der Migration von einer klassischen Bereitstellung zu einer Azure Resource Manager-Bereitstellung | Microsoft-Dokumentation"
-description: "In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Migration von IaaS-Ressourcen von der Azure-Dienstverwaltung zum Azure Resource Manager-Stapel am häufigsten auftreten."
+title: Häufige Fehler bei der Migration von einer klassischen Bereitstellung zu einer Azure Resource Manager-Bereitstellung | Microsoft-Dokumentation
+description: In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Migration von IaaS-Ressourcen von der Azure-Dienstverwaltung zum Azure Resource Manager-Stapel am häufigsten auftreten.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5bc03a1b-eb1c-438c-83d9-f0e9d61f1b6a
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 53ca2cc7647f39103471ad80ad72c2b30e989ba5
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: c038127f153251a6f010a96394acf46c7708392a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/06/2018
 ---
 [!INCLUDE [virtual-machines-common-migration-errors](../../../includes/virtual-machines-common-classic-resource-manager-migration-common-errors.md)]
 

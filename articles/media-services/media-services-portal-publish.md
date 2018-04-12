@@ -1,11 +1,11 @@
 ---
-title: "Veröffentlichen von Inhalten im Azure-Portal | Microsoft-Dokumentation"
-description: "Dieses Tutorial führt Sie durch die Schritte zur Veröffentlichung Ihrer Inhalte im Azure-Portal."
+title: Veröffentlichen von Inhalten im Azure-Portal | Microsoft-Dokumentation
+description: Dieses Tutorial führt Sie durch die Schritte zur Veröffentlichung Ihrer Inhalte im Azure-Portal.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 92c364eb-5a5f-4f4e-8816-b162c031bb40
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 6759d3f49e15a3b01022df318a83563ad6bd859f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6fec9b21e8612376dced6af9da7304f4c2b1a93f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Veröffentlichen von Inhalten im Azure-Portal
 > [!div class="op_single_selector"]
@@ -30,26 +30,26 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="overview"></a>Übersicht
 > [!NOTE]
-> Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/). 
+> Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
 Damit Sie Benutzern eine URL zum Streamen oder Herunterladen Ihrer Inhalte zur Verfügung stellen können, müssen Sie zunächst einen Locator erstellen, um das Medienobjekt zu veröffentlichen. Locator bieten Zugriff auf Medienobjektdateien. Azure Media Services unterstützt zwei Arten von Locators: 
 
-* **Streaminglocators (OnDemandOrigin)**. Streaminglocators werden für adaptives Streaming verwendet. Beispiele für adaptives Streaming sind Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming und Dynamic Adaptive Streaming über HTTP (DASH oder MPEG-DASH). Für die Erstellung eines Streaminglocators muss Ihr Medienobjekt eine ISM-Datei enthalten. 
+* **Streaminglocators (OnDemandOrigin)**. Streaminglocators werden für adaptives Streaming verwendet. Beispiele für adaptives Streaming sind Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming und Dynamic Adaptive Streaming über HTTP (DASH oder MPEG-DASH). Für die Erstellung eines Streaminglocators muss Ihr Medienobjekt eine ISM-Datei enthalten. Beispiel: http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
 * **Progressive Locators (Shared Access Signature, SAS)**. Progressive Locators werden verwendet, um Videos per progressivem Download bereitzustellen.
 
 Eine HLS-Streaming-URL können Sie erstellen, indem Sie *(format=m3u8-aapl)* an die URL anhängen:
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
+    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
 Eine Streaming-URL für die Wiedergabe von Smooth Streaming-Medienobjekten hat das folgende Format:
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest
+    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest
 
 Eine MPEG-DASH-Streaming-URL können Sie erstellen, indem Sie *(format=mpd-time-csf)* an die URL anhängen:
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
+    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
 
 Eine SAS-URL hat das folgende Format:
 

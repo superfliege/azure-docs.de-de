@@ -1,13 +1,13 @@
 ---
 title: Erstellen und Verwalten eines virtuellen Azure-Computers mit Java | Microsoft-Dokumentation
-description: "Verwenden Sie Java und Azure Resource Manager, um einen virtuellen Computer und alle unterstützenden Ressourcen bereitzustellen."
+description: Verwenden Sie Java und Azure Resource Manager, um einen virtuellen Computer und alle unterstützenden Ressourcen bereitzustellen.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: b970b7a5e1db6d8580ede9699d4776a79e03c98f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: da8f8b0e84a51683bd4f631832e1f319f3a9bbb0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Erstellen und Verwalten von virtuellen Windows-Computern in Azure mithilfe von Java
 
@@ -112,7 +112,7 @@ Die Ausführung dieser Schritte dauert etwa 20 Minuten.
     </dependency>
     ```
 
-3. Speichern Sie die Datei.
+3. Speichern Sie die Datei .
 
 ## <a name="create-credentials"></a>Erstellen von Anmeldeinformationen
 
@@ -135,7 +135,7 @@ Bevor Sie mit diesem Schritt beginnen, stellen Sie sicher, dass Sie Zugriff auf 
 
     Ersetzen Sie **&lt;subscription-id&gt;** durch Ihre Abonnement-ID, **&lt;application-id&gt;** durch die Active Directory-Anwendungs-ID, **&lt;authentication-key&gt;** durch den Anwendungsschlüssel und **&lt;tenant-id&gt;** durch die Mandanten-ID.
 
-2. Speichern Sie die Datei.
+2. Speichern Sie die Datei .
 3. Legen Sie eine Umgebungsvariable namens AZURE_AUTH_LOCATION mit dem vollständigen Pfad zur Authentifizierungsdatei in Ihrer Shell fest.
 
 ### <a name="create-the-management-client"></a>Erstellen des Verwaltungsclients

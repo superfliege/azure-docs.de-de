@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 11/08/2016
+ms.date: 04/01/2018
 ms.author: bonova
-ms.openlocfilehash: f0c3780f6efe87437742af7c1b8f6a3e6d0ee243
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4722399525b376e232f2bc7802a570836da79e29
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Verwenden des Abfragespeichers in Azure SQL-Datenbank
 Der Abfragespeicher in Azure ist eine vollständig verwaltete Datenbankfunktion, mit der fortlaufend ausführliche Verlaufsinformationen zu allen Abfragen gesammelt und dargestellt werden. Sie können sich den Abfragespeicher in etwa wie den Flugdatenschreiber eines Flugzeugs vorstellen, mit dem die Problembehandlung der Abfrageleistung sowohl für Cloudkunden als auch für lokale Kunden erheblich vereinfacht wird. In diesem Artikel werden spezielle Aspekte der Abfragespeichernutzung in Azure beschrieben. Mit diesen vorab erfassten Abfragedaten können Sie Leistungsprobleme schnell diagnostizieren und lösen und haben mehr Zeit, sich auf das Geschäft zu konzentrieren. 

@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 1accc672e396c5a9405369654f9bc4f8463c9afc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ddb870d0513d6834aacf0964c240260f18df0fd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Hier erfahren Sie, wie Sie neue Mandanten bereitstellen und sie im Katalog registrieren.
 
@@ -30,7 +30,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Die Wingtip Tickets SaaS-App mit einer Datenbank pro Mandant ist bereitgestellt. Unter [Bereitstellen und Kennenlernen der Wingtip Tickets SaaS-App mit einer Datenbank pro Mandant](saas-dbpertenant-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
+* Die Wingtip Tickets-SaaS-App mit einer Datenbank pro Mandant ist bereitgestellt. Unter [Bereitstellen und Kennenlernen der Wingtip Tickets SaaS-App mit einer Datenbank pro Mandant](saas-dbpertenant-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
 * Azure PowerShell wurde installiert. Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ## <a name="introduction-to-the-saas-catalog-pattern"></a>Einführung in das SaaS-Katalogmuster
@@ -66,7 +66,7 @@ Die Wingtip Tickets-App mit einer Datenbank pro Mandant stellt neue Mandanten be
 Bereitstellungsskripts kopieren die Datenbank _basetenantdb_, um eine neue Mandantendatenbank in einem Pool für elastische Datenbanken zu erstellen. Anschließend wird die Datenbank von den Skripts mit mandantenspezifischen Informationen initialisiert und in der Katalogshardzuordnung registriert. Mandantendatenbanken erhalten ihre Namen auf Grundlage des Mandantennamens. Dieses Benennungsschema ist kein wichtiger Bestandteil des Musters. Da der Katalog den Mandantenschlüssel dem Datenbanknamen zuordnet, kann jede Benennungskonvention verwendet werden. 
 
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur Wingtip Tickets SaaS-Anwendung mit einer Datenbank pro Mandant
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
 
 Die Wingtip Tickets SaaS-Skripts und der Quellcode der Anwendung stehen im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
 
@@ -77,7 +77,7 @@ Um nachzuvollziehen, wie die Wingtip Tickets-Anwendung die Bereitstellung neuer 
 
 1. Öffnen Sie in der PowerShell ISE ...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_, und legen Sie die folgenden Parameter fest:
 
-   * **$TenantName** = Name des neuen Veranstaltungsorts (z.B. *Bushwillow Blues*)
+   * **$TenantName** = Name des neuen Veranstaltungsorts (z.B., *Bushwillow Blues*).
    * **$VenueType** = einer der vordefinierten Veranstaltungsorttypen: _blues, classicalmusic, dance, jazz, judo, motor racing, multipurpose, opera, rockmusic, soccer_
    * **$DemoScenario** = **1**, *Bereitstellen eines einzelnen Mandanten*
 

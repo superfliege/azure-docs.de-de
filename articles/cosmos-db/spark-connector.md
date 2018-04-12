@@ -1,12 +1,11 @@
 ---
-title: "Herstellen einer Verbindung für Apache Spark mit Azure Cosmos DB | Microsoft-Dokumentation"
-description: "In diesem Tutorial wird der Azure Cosmos DB-Spark-Connector beschrieben, mit dem Sie für Apache Spark eine Verbindung mit Azure Cosmos DB herstellen können, um verteilte Aggregationen und Data Science-Vorgänge für das global verteilte mehrinstanzenfähige Datenbanksystem von Microsoft für die Cloud durchzuführen."
+title: Herstellen einer Verbindung für Apache Spark mit Azure Cosmos DB | Microsoft-Dokumentation
+description: In diesem Tutorial wird der Azure Cosmos DB-Spark-Connector beschrieben, mit dem Sie für Apache Spark eine Verbindung mit Azure Cosmos DB herstellen können, um verteilte Aggregationen und Data Science-Vorgänge für das global verteilte mehrinstanzenfähige Datenbanksystem von Microsoft für die Cloud durchzuführen.
 keywords: Apache Spark
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: dennyglee
-manager: jhubbard
-editor: 
+manager: kfile
 ms.assetid: c4f46007-2606-4273-ab16-29d0e15c0736
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: denlee
-ms.openlocfilehash: 4ba8a53f2018727cc4fa225b2d4ce14d9f1d7467
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: e93148a8870a40dbe5d89a2364497c44096eef7c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>Beschleunigen der Big Data-Echtzeitanalyse mit dem Spark-Connector für Azure Cosmos DB
 
@@ -31,7 +30,7 @@ Weitere Informationen finden Sie in diesem Video mit Azure Cosmos DB Principal P
 
 Informationen zum Arbeiten mit Spark GraphX und den Gremlin-Graph-APIs von Azure Cosmos DB finden Sie unter [Durchführen von Graphanalysen mithilfe von Spark und Apache TinkerPop Gremlin](spark-connector-graph.md).
 
-## <a name="download"></a>Herunterladen
+## <a name="download"></a>Download
 
 Laden Sie zunächst den Spark-Connector für Azure Cosmos DB aus dem GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/) herunter.
 
@@ -46,8 +45,7 @@ Der Connector verwendet die folgenden Komponenten:
    * Garantierte Hochverfügbarkeit mit Multi-Homing-Funktionen
    * Alle Funktionen werden durch branchenführende, umfassende [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/cosmos-db) (Service Level Agreements, SLAs) unterstützt.
 
-* 
-            [Apache Spark](http://spark.apache.org/) ist eine leistungsstarke Open-Source-Verarbeitungs-Engine, die für hohe Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen konzipiert wurde.
+* [Apache Spark](http://spark.apache.org/) ist eine leistungsstarke Open-Source-Verarbeitungs-Engine, die für hohe Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen konzipiert wurde.
 
 * [Apache Spark on Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md), sodass Sie Apache Spark in der Cloud mithilfe von [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/) für unternehmenskritische Bereitstellungen bereitstellen können.
 

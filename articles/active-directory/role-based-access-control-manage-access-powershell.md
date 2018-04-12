@@ -1,8 +1,8 @@
 ---
-title: Verwalten der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) mit Azure PowerShell | Microsoft-Dokumentation
-description: "So verwalten Sie RBAC mit Azure PowerShell einschließlich der Auflistung von Rollen, der Zuweisung von Rollen und dem Löschen von Rollenzuweisungen."
+title: Verwalten der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) mit Azure PowerShell | Microsoft Docs
+description: So verwalten Sie RBAC mit Azure PowerShell einschließlich der Auflistung von Rollen, der Zuweisung von Rollen und dem Löschen von Rollenzuweisungen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
@@ -15,10 +15,10 @@ ms.date: 07/12/2017
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.openlocfilehash: 5e7e01502a173cb93216c77dd43f61094fd88148
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-role-based-access-control-with-azure-powershell"></a>Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell
 > [!div class="op_single_selector"]

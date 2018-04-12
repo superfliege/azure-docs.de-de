@@ -3,7 +3,7 @@ title: Durchführen eines Firmwareupdates mit Azure IoT Hub (Java/Java) | Micros
 description: Erfahren Sie, wie die Geräteverwaltung in Azure IoT Hub verwendet wird, um ein Firmwareupdate zu initiieren. Sie verwenden das Azure IoT-Geräte-SDK für Java, um eine simulierte Geräte-App und eine Dienst-App zu implementieren, die das Firmwareupdate auslöst.
 services: iot-hub
 documentationcenter: java
-author: msebolt
+author: dominicbetts
 manager: timlt
 editor: ''
 ms.assetid: 70b84258-bc9f-43b1-b7cf-de1bb715f2cf
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
-ms.author: v-masebo
-ms.openlocfilehash: 19d9cc6722d65d8bcd76d73fda0f24a598479647
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: v-masebo;dobett
+ms.openlocfilehash: ff8fc5cc1623c570f79a8acfa0afbcf95450c1d2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-javajava"></a>Initiieren eines Firmwareupdates mithilfe der Geräteverwaltung (Java/Java)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]

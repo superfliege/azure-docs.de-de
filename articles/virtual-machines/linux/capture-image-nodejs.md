@@ -1,11 +1,11 @@
 ---
 title: Erfassen eines virtuellen Azure-Computers unter Linux zur Verwendung als Vorlage | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell ein Image eines Linux-basierten virtuellen Azure-Computers erfassen und generalisieren können."
+description: Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell ein Image eines Linux-basierten virtuellen Azure-Computers erfassen und generalisieren können.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: f990a0da0be7f10dc16aa2e5a6320b456cfffed1
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 71c60c8d29e4db8aab1932a1bece03396a12e4da
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="capture-a-linux-virtual-machine-running-on-azure"></a>Erfassen eines virtuellen Linux-Computers, der in Azure ausgeführt wird
 Befolgen Sie die Anweisungen in diesem Artikel zum Generalisieren und Erfassen Ihrer Azure-Linux-VM im Resource Manager-Bereitstellungsmodell. Wenn Sie den virtuellen Computer generalisieren, entfernen Sie persönliche Kontoinformationen und bereiten die VM auf die Nutzung als Image vor. Sie erfassen dann eine generalisierte virtuelle Festplatte (Virtual Hard Disk, VHD) für das Betriebssystem, VHDs für angefügte Datenträger und eine [Resource Manager-Vorlage](../../azure-resource-manager/resource-group-overview.md) für neue VM-Bereitstellungen. Dieser Artikel erläutert, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle 1.0 ein VM-Image für einen virtuellen Computer erfassen, der nicht verwaltete Datenträger verwendet. Sie können auch [mithilfe von Azure CLI 2.0 einen virtuellen Computer erfassen, der Azure Managed Disks verwendet](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Verwaltete Datenträger werden von der Azure-Plattform verarbeitet und erfordern weder Vorbereitung und noch einen Speicherort. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
@@ -33,7 +33,7 @@ Um VMs mithilfe des Images zu erstellen, richten Sie die Netzwerkressourcen für
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#before-you-begin): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0:](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:

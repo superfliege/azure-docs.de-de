@@ -3,9 +3,8 @@ title: Firewallunterstützung und IP-Access Control in Azure Cosmos DB | Microso
 description: Erfahren Sie, wie IP-Access Control-Richtlinien für die Firewallunterstützung in Azure Cosmos DB-Datenbankkonten verwendet werden.
 keywords: IP-Access Control, Firewallunterstützung
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: ''
+author: SnehaGunda
+manager: kfile
 tags: azure-resource-manager
 documentationcenter: ''
 ms.assetid: c1b9ede0-ed93-411a-ac9a-62c113a8e887
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: mimig
-ms.openlocfilehash: 5b70f77d49651e2873428fc7798fff3770b7a095
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: sngun
+ms.openlocfilehash: 4d5743703f3a1d98b720bd92a30c91549bbf89c0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB-Firewallunterstützung
 Zum Sichern von in einem Azure Cosmos DB-Datenbankkonto gespeicherten Daten bietet Azure Cosmos DB Unterstützung für ein auf einem Geheimnis basierendes [Autorisierungsmodell](https://msdn.microsoft.com/library/azure/dn783368.aspx), das einen starken hashbasierten Nachrichtenauthentifizierungscode (HMAC) nutzt. Azure Cosmos DB unterstützt nun neben dem auf einem Geheimnis basierenden Autorisierungsmodell durch Richtlinien gesteuerte IP-basierte Access Control für die eingehende Firewallunterstützung. Dieses Modell ähnelt den Firewallregeln eines herkömmlichen Datenbanksystems und bietet zusätzliche Sicherheit für das Azure Cosmos DB-Datenbankkonto. Mit diesem Modell können Sie nun ein Azure Cosmos DB-Datenbankkonto so konfigurieren, dass es nur über eine genehmigte Gruppe von Computern und/oder Clouddiensten zugänglich ist. Für den Zugriff auf Azure Cosmos DB-Ressourcen über diese genehmigten Gruppen von Computern und Diensten muss der Aufrufer weiterhin ein gültiges Autorisierungstoken vorlegen.

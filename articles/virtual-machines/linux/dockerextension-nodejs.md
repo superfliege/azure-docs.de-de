@@ -2,11 +2,11 @@
 title: Verwenden der Azure Docker-VM-Erweiterung mit Azure CLI 1.0 | Microsoft Docs
 description: Erfahren Sie, wie die Docker-VM-Erweiterung verwendet wird, um schnell und sicher eine Docker-Umgebung in Azure mit Resource Manager-Vorlagen bereitzustellen.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: a3cbcf63533f4042dcd695e141655c5814bd7068
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f981a50887138660d26a9d011870a05f1270c94
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension-with-the-azure-cli-10"></a>Erstellen einer Docker-Umgebung in Azure mit der Docker-VM-Erweiterung mit Azure CLI 1.0
 Docker ist eine beliebte Plattform für Containerverwaltung und Imageerstellung, die es Ihnen ermöglicht, schnell mit Containern unter Linux (und auch Windows) zu arbeiten. In Azure gibt es verschiedene Möglichkeiten, wie Sie Docker gemäß Ihren Anforderungen bereitstellen können. In diesem Artikel geht es um die Verwendung der Docker-VM-Erweiterung und Azure Resource Manager-Vorlagen. 
@@ -33,7 +33,7 @@ Weitere Informationen zu den verschiedenen Bereitstellungsmethoden, z.B. der Ver
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#azure-docker-vm-extension-overview): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0:](dockerextension.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell 
+- [Azure CLI 2.0](dockerextension.md): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell 
 
 ## <a name="azure-docker-vm-extension-overview"></a>Übersicht über die Azure Docker-VM-Erweiterung
 Die Azure Docker-VM-Erweiterung installiert und konfiguriert den Docker-Daemon, Docker-Client und Docker Compose auf dem virtuellen Linux-Computer (VM). Durch die Verwendung der Azure Docker-VM-Erweiterung haben Sie eine bessere Kontrolle und bessere Features als bei der alleinigen Nutzung von Docker Machine oder bei der selbstständigen Erstellung des Docker-Hosts. Mit diesen zusätzlichen Features, z.B. [Docker Compose](https://docs.docker.com/compose/overview/), ist die Azure Docker-VM-Erweiterung für robustere Entwickler- oder Produktionsumgebungen geeignet.

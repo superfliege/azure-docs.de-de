@@ -1,11 +1,11 @@
 ---
-title: "Erstellen einer vollständigen Linux-Umgebung mit der Azure CLI 1.0 | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine Netzwerkschnittstellenkarte, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle 1.0 von Grund auf neu erstellen."
+title: Erstellen einer vollständigen Linux-Umgebung mit der Azure CLI 1.0 | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine Netzwerkschnittstellenkarte, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle 1.0 von Grund auf neu erstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 201ccd523e49d638ace50fbc0ffdceb705b35473
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a43e138d3497e01fe9e0e5c55a4a66adac767c6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Erstellen einer vollständigen Linux-Umgebung mit der Azure CLI 1.0
 In diesem Artikel erstellen wir ein einfaches Netzwerk mit einem Load Balancer und zwei virtuellen Computern, die zu Entwicklungszwecken und für einfache Berechnungen nützlich sind. Wir führen Sie Befehl für Befehl durch den Prozess, bis Sie über zwei funktionierende, sichere virtuelle Linux-Computer verfügen, mit denen Sie über das Internet von jedem Ort aus eine Verbindung herstellen können. Anschließend können Sie sich mit komplexeren Netzwerken und Umgebungen beschäftigen.
@@ -39,7 +39,7 @@ Um diese benutzerdefinierte Umgebung zu erstellen, benötigen Sie die aktuelle [
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#quick-commands): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0:](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
@@ -300,7 +300,7 @@ data:
 info:    group create command OK
 ```
 
-## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 Sie benötigen unter anderem Speicherkonten für Ihre VM-Datenträger und für alle zusätzlichen Datenträger, die Sie hinzufügen möchten. Sie erstellen Speicherkonten normalerweise immer direkt nach der Erstellung von Ressourcengruppen.
 
 Hier verwenden wir den Befehl `azure storage account create` und übergeben den Speicherort des Kontos, die Ressourcengruppe, mit der es gesteuert wird, und den Typ der gewünschten Speicherunterstützung. Das folgende Beispiel erstellt ein Speicherkonto namens `mystorageaccount`:

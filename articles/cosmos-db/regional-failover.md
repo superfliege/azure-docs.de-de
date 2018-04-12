@@ -4,7 +4,7 @@ description: Erfahren Sie etwas über die Funktionsweise von manuellen und autom
 services: cosmos-db
 documentationcenter: ''
 author: arramac
-manager: jhubbard
+manager: kfile
 editor: ''
 ms.assetid: 446e2580-ff49-4485-8e53-ae34e08d997f
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8da3e2c970ab1e60e3396cb0aaeaba64dba1713c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4a221a0d4f9ef6b6b32ed9b684939b9f277e2084
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatische regionale Failover für die Geschäftskontinuität in Azure Cosmos DB
 Azure Cosmos DB vereinfacht die globale Verteilung von Daten, indem es vollständig verwaltete [Datenbankkonten in mehreren Regionen](distribute-data-globally.md) bietet, die für eine sorgfältig austarierte Balance zwischen Konsistenz, Verfügbarkeit und Leistung mit den entsprechenden Garantien sorgen. Cosmos DB-Konten bieten Hochverfügbarkeit, Latenzen im einstelligen Millisekundenbereich, mehrere [klar abgegrenzte Konsistenzebenen](consistency-levels.md), transparentes regionales Failover mit Multihosting-APIs sowie die Fähigkeit, Durchsatz und Speicher für alle Konten weltweit flexibel zu skalieren. 
@@ -86,7 +86,7 @@ Sobald die betroffene Region nach dem Ausfall wiederhergestellt wurde, werden al
 
 **Was passiert beim Ausfall einer Schreibregion?**
 
-Wenn die betroffene Region die aktuelle Schreibregion ist und für das Azure Cosmos DB-Konto die Funktion „automatisches Failover“ aktiviert ist, wird die Region automatisch als offline gekennzeichnet. Danach wird eine andere Region zur Schreibregion für das betroffene Cosmos DB-Konto hochgestuft. Sie können die Funktion „automatisches Failover“ aktivieren und die Reihenfolge der Regionsauswahl für Ihre Azure Cosmos DB-Konten vollständig über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange) steuern. 
+Wenn die betroffene Region die aktuelle Schreibregion ist und für das Azure Cosmos DB-Konto die Funktion „automatisches Failover“ aktiviert ist, wird die Region automatisch als offline gekennzeichnet. Danach wird eine andere Region zur Schreibregion für das betroffene Cosmos DB-Konto hochgestuft. Sie können die Funktion „automatisches Failover“ aktivieren und die Reihenfolge der Regionsauswahl für Ihre Azure Cosmos DB-Konten vollständig über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange) steuern. 
 
 ![Failoverprioritäten für Azure Cosmos DB](./media/regional-failover/failover-priorities.png)
 
@@ -98,7 +98,7 @@ Sobald die betroffene Region nach dem Ausfall wiederhergestellt wurde, werden al
 
 * Daten, die in der vorherigen Schreibregion vorhanden sind und nicht während des Ausfalls in Leseregionen repliziert wurden, werden als Konflikt-Feed veröffentlicht. Anwendungen können das Konflikt-Feed lesen, Konflikte, die auf anwendungsabhängiger Logik basieren, lösen, und aktualisierte Daten nach Bedarf in das Azure Cosmos DB-Konto zurückschreiben. 
 * Die vorherige Schreibregion wird als Leseregion wiederhergestellt und automatisch wieder online gestellt. 
-* Sie können die Leseregion, die automatisch wieder online gestellt wurde, erneut als Schreibregion konfigurieren, indem Sie über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate) ein manuelles Failover durchführen.
+* Sie können die Leseregion, die automatisch wieder online gestellt wurde, erneut als Schreibregion konfigurieren, indem Sie über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_CreateOrUpdate) ein manuelles Failover durchführen.
 
 Im folgenden Codeausschnitt wird dargestellt, wie Konflikte verarbeitet werden sollen, nachdem die betroffene Region nach dem Ausfall wieder hergestellt worden ist.
 
@@ -123,7 +123,7 @@ do
 
 ## <a id="ManualFailovers"></a>Manuelle Failover
 
-Zusätzlich zu automatischen Failovern kann die aktuelle Schreibregion eines bestimmten Cosmos DB-Kontos manuell und dynamisch in eine der vorhandenen Leseregionen geändert werden. Manuelle Failover können über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate) initiiert werden. 
+Zusätzlich zu automatischen Failovern kann die aktuelle Schreibregion eines bestimmten Cosmos DB-Kontos manuell und dynamisch in eine der vorhandenen Leseregionen geändert werden. Manuelle Failover können über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_CreateOrUpdate) initiiert werden. 
 
 Manuelle Failover stellen sicher, dass **kein Datenverlust** und **kein Verfügbarkeitsverlust** auftreten, und übertragen den Schreibzugriff ordnungsgemäß aus der alten Schreibregion in die neue Schreibregion des angegebenen Cosmos DB-Kontos. Ähnlich wie bei automatischen Failovern verarbeitet das Cosmos DB-SDK Änderungen bei Schreibregionen während eines manuellen Failovers automatisch und stellt sicher, dass Aufrufe automatisch an die neue Schreibregion umgeleitet werden. Zum Verwalten von Failovern sind keine Code- oder Konfigurationsänderungen in Ihrer Anwendung erforderlich. 
 

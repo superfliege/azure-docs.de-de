@@ -1,11 +1,11 @@
 ---
-title: "HPC Pack-Cluster für Excel und SOA | Microsoft Docs"
-description: "Erste Schritte mit umfangreichen Excel- und SOA-Workloads in einem HPC Pack-Cluster in Azure"
+title: HPC Pack-Cluster für Excel und SOA | Microsoft Docs
+description: Erste Schritte mit umfangreichen Excel- und SOA-Workloads in einem HPC Pack-Cluster in Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,hpc-pack
 ms.assetid: cb6a9abe-caf3-44da-b911-849a50f6cfb3
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: 63babd94fdab15217cfb0757e4cd6efe458a628d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaf26e04fdb38fd76f4ab8211f9fdda8ebafd668
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Erste Schritte mit Excel- und SOA-Workloads in einem HPC Pack-Cluster in Azure
 In diesem Artikel erfahren Sie, wie Sie einen Microsoft HPC Pack 2012 R2-Cluster mithilfe einer Azure-Schnellstartvorlage oder optional eines Azure PowerShell-Bereitstellungsskripts für Azure-VMs bereitstellen. Der Cluster verwendet VM-Images aus Azure Marketplace, die für die Ausführung von Microsoft Excel- oder SOA-Workloads mit HPC Pack konzipiert sind. Mit dem Cluster können Sie Excel-HPC- und SOA-Dienste über einen lokalen Clientcomputer ausführen. Zu den Excel-HPC-Diensten zählen die Abladung von Excel-Arbeitsmappen sowie benutzerdefinierte Funktionen (User-Defined Functions, UDFs) von Excel.
@@ -192,7 +192,7 @@ Das HPC Pack-Bereitstellungsskript wird ausgeführt. Dieser Vorgang kann eine We
     You have enabled REST API or web portal on HPC Pack head node. Please import the following certificate in the Trusted Root Certification Authorities certificate store on the computer where you are submitting job or accessing the HPC web portal:
     C:\Users\hpcuser\Documents\HPCWebComponent_HPCExcelHN004_20150707162011.cer
 
-## <a name="step-2-offload-excel-workbooks-and-run-udfs-from-an-on-premises-client"></a>Schritt 2: Abladen von Excel-Arbeitsmappen und Ausführen von UDFs über einen lokalen Client
+## <a name="step-2-offload-excel-workbooks-and-run-udfs-from-an-on-premises-client"></a>Schritt 2: Abladen von Excel-Arbeitsmappen und Ausführen von UDFs über einen lokalen Client
 ### <a name="excel-activation"></a>Excel-Aktivierung
 Wenn Sie das ComputeNodeWithExcel-VM-Image für Produktionsworkloads verwenden, müssen Sie eine gültige Microsoft Office-Lizenz angeben, um Excel auf den Serverknoten zu aktivieren. Andernfalls läuft die Evaluierungsversion von Excel nach 30 Tagen ab, und bei der Ausführung der Excel-Arbeitsmappen würde der Ausnahmefehler „COMException“ (0x800AC472) auftreten. 
 
@@ -275,7 +275,7 @@ Führen Sie nach erfolgreicher Bereitstellung des Clusters die folgenden Schritt
    
    Wenn Berechnungen für viele Zellen durchzuführen sind, drücken Sie STRG+ALT+UMSCHALT+F9, um die Berechnung für alle Zellen durchzuführen.
 
-## <a name="step-3-run-a-soa-workload-from-an-on-premises-client"></a>Schritt 3: Ausführen einer SOA-Workload über einen lokalen Client
+## <a name="step-3-run-a-soa-workload-from-an-on-premises-client"></a>Schritt 3: Ausführen einer SOA-Workload über einen lokalen Client
 Um allgemeine SOA-Anwendungen auf dem HPC Pack-IaaS-Cluster auszuführen, wenden Sie zuerst eine der Methoden in Schritt 1 zur Bereitstellung des Clusters an. Geben Sie in diesem Fall ein generisches Serverknotenimage an, da Sie Excel auf den Serverknoten nicht benötigen. Führen Sie dann die folgenden Schritte durch:
 
 1. Rufen Sie das Clusterzertifikat ab, und importieren Sie es anschließend auf dem Clientcomputer unter „Cert:\<Aktueller Benutzer>\Root“.

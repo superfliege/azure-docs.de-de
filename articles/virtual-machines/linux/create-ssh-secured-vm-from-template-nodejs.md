@@ -2,12 +2,12 @@
 title: Erstellen eines virtuellen Linux-Computers mithilfe einer Azure-Vorlage mit Azure CLI 1.0| Microsoft-Dokumentation
 description: Erstellen Sie einen virtuellen Linux-Computer auf Azure mithilfe von Azure CLI 1.0 und einer Azure Resource Manager-Vorlage.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: v-livech
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d4aaa78fcdf3bd9e2e236606f2d3049f464a8a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 620adcba9e136aa56e7a4867196ce5b9249b6072
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>Erstellen eines virtuellen Linux-Computers mithilfe von Azure CLI 1.0 und einer Azure Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie schnell einen virtuellen Linux-Computer mithilfe von Azure CLI 1.0 und einer Azure Resource Manager-Vorlage erstellen. Zum Ausführen der Schritte in diesem Artikel ist Folgendes erforderlich:
@@ -35,7 +35,7 @@ Sie können eine Vorlage für eine Linux-VM auch schnell über das [Azure-Portal
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#quick-command-summary): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0:](create-ssh-secured-vm-from-template.md) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0](create-ssh-secured-vm-from-template.md): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="quick-command-summary"></a>Kurze Zusammenfassung der Befehle
 ```azurecli

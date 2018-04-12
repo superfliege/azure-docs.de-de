@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 994b8946078ed9b4c8aa965a3bc0e117ba3185c0
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 42932e6d1727a1444c62f565ae3c48dc178aeb2b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Schema der Definitionssprache für Workflows für Azure Logic Apps
 
@@ -70,7 +70,7 @@ Das folgende Beispiel zeigt die Struktur einer Parameterdefinition:
 
 |Elementname|Erforderlich|BESCHREIBUNG|  
 |------------------|--------------|-----------------|  
-|type|Ja|**Typ:** string <p> **Deklaration:**`"parameters": {"parameter1": {"type": "string"}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** securestring <p> **Deklaration:**`"parameters": {"parameter1": {"type": "securestring"}}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** int <p> **Deklaration:**`"parameters": {"parameter1": {"type": "int"}}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value" : 5}}` <p> **Typ:** bool <p> **Deklaration:**`"parameters": {"parameter1": {"type": "bool"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": true }}` <p> **Typ:** array <p> **Deklaration:**`"parameters": {"parameter1": {"type": "array"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ:** object <p> **Deklaration:**`"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ:** secureobject <p> **Deklaration:**`"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Hinweis:** Die Typen `securestring` und `secureobject` werden bei `GET`-Vorgängen nicht zurückgegeben. Dieser Typ muss für alle Kennwörter, Schlüssel und Geheimnisse verwendet werden.|  
+|type|Ja|**Typ:** string <p> **Deklaration:**`"parameters": {"parameter1": {"type": "string"}}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** securestring <p> **Deklaration:**`"parameters": {"parameter1": {"type": "securestring"}}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** int <p> **Deklaration:**`"parameters": {"parameter1": {"type": "int"}}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value" : 5}}` <p> **Typ:** bool <p> **Deklaration:**`"parameters": {"parameter1": {"type": "bool"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": true }}` <p> **Typ:** array <p> **Deklaration:**`"parameters": {"parameter1": {"type": "array"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ:** object <p> **Deklaration:**`"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ:** secureobject <p> **Deklaration:**`"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Hinweis:** Die Typen `securestring` und `secureobject` werden bei `GET`-Vorgängen nicht zurückgegeben. Dieser Typ muss für alle Kennwörter, Schlüssel und Geheimnisse verwendet werden.|  
 |defaultValue|Nein |Gibt den Standardwert für den Parameter an. Dieser wird verwendet, falls zum Zeitpunkt der Ressourcenerstellung kein Wert angegeben wird.|  
 |allowedValues|Nein |Gibt ein Array mit zulässigen Werten für den Parameter an.|  
 |metadata|Nein |Gibt zusätzliche Informationen zum Parameter an. Hierzu zählen beispielsweise eine lesbare Beschreibung oder Entwurfszeitdaten für Visual Studio oder andere Tools.|  
@@ -126,14 +126,14 @@ Bei den JSON-Werten in der Definition kann es sich um Literalwerte oder um Ausdr
 > [!NOTE]
 > Einige Ausdrücke erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung unter Umständen noch nicht vorhanden sind. Einige dieser Werte können mithilfe von **Funktionen** abgerufen werden.  
   
-Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwendet werden und ergeben immer einen anderen JSON-Wert. Wenn ein JSON-Wert als Ausdruck erkannt wurde, wird der Text des Ausdrucks durch Entfernen des @-Zeichens extrahiert. Falls Sie ein Zeichenfolgenliteral benötigen, das mit einem \@-Zeichen beginnt, muss die Zeichenfolge wie folgt mit einem Escapezeichen versehen werden: @. Die folgenden Beispiele veranschaulichen die Auswertung von Ausdrücken.  
+Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwendet werden und ergeben immer einen anderen JSON-Wert. Wenn ein JSON-Wert als Ausdruck erkannt wurde, wird der Text des Ausdrucks durch Entfernen des @-Zeichens extrahiert. Falls Sie ein Zeichenfolgenliteral benötigen, das mit einem @-Zeichen beginnt, muss die Zeichenfolge wie folgt mit einem Escapezeichen versehen werden: @. Die folgenden Beispiele veranschaulichen die Auswertung von Ausdrücken.  
   
 |JSON-Wert|Ergebnis|  
 |----------------|------------|  
 |"parameters"|Die Zeichenfolge „parameters“ wird zurückgegeben.|  
 |"parameters[1]"|Die Zeichenfolge „parameters[1]“ wird zurückgegeben.|  
-|\"\@\@\"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
-|\" \@\"|Eine Zeichenfolge, die \„ \@\“ enthält, wird zurückgegeben (zwei Zeichen).|  
+|"@@"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
+|\" \@\"|Eine Zeichenfolge, die „ @“ enthält, wird zurückgegeben (zwei Zeichen).|  
   
 Mit der *Zeichenfolgeninterpolation* können Ausdrücke auch innerhalb von Zeichenfolgen verwendet werden. Dabei werden die Ausdrücke in `@{ ... }` eingeschlossen. Beispiel:  <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 
@@ -142,12 +142,12 @@ Das Ergebnis ist immer eine Zeichenfolge. Somit ist dieses Feature vergleichbar 
 |JSON-Wert|Ergebnis|  
 |----------------|------------|  
 |"@parameters('myString')"|Gibt `sampleString` als Zeichenfolge zurück.|  
-|\"\@{parameters('myString')}"|Gibt `sampleString` als Zeichenfolge zurück.|  
+|"@{parameters('myString')}"|Gibt `sampleString` als Zeichenfolge zurück.|  
 |"@parameters('myNumber')"|Gibt `42` als *Zahl* zurück.|  
-|\"\@{parameters('myNumber')}"|Gibt `42` als *Zeichenfolge* zurück.|  
-|"Answer is: \@{parameters('myNumber')}"|Gibt die Zeichenfolge `Answer is: 42` zurück.|  
+|"@{parameters('myNumber')}"|Gibt `42` als *Zeichenfolge* zurück.|  
+|"Answer is: @{parameters('myNumber')}"|Gibt die Zeichenfolge `Answer is: 42` zurück.|  
 |"@concat('Answer is: ', string(parameters('myNumber')))"|Gibt die Zeichenfolge `Answer is: 42` zurück.|  
-|"Answer is: \@\@{parameters('myNumber')}"|Gibt die Zeichenfolge `Answer is: @{parameters('myNumber')}` zurück.|  
+|"Answer is: @@{parameters('myNumber')}"|Gibt die Zeichenfolge `Answer is: @{parameters('myNumber')}` zurück.|  
   
 ## <a name="operators"></a>Operatoren  
 

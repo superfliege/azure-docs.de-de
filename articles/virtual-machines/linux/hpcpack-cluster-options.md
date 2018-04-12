@@ -2,10 +2,10 @@
 title: Linux HPC Pack-Clusteroptionen in Azure | Microsoft-Dokumentation
 description: Informationen zu Optionen mit Microsoft HPC Pack, um einen Linux-HPC-Cluster (High Performance Computing) in der Azure-Cloud zu erstellen und zu verwalten
 services: virtual-machines-linux,cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management,hpc-pack
 ms.assetid: ac60624e-aefa-40c3-8bc1-ef6d5c0ef1a2
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/26/2017
 ms.author: danlep
-ms.openlocfilehash: ae36e64c0261b1fe8d02d6dcb80df7cdee333db9
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 96e77b739550c935316f7bade57b8aac7e634f02
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="options-with-hpc-pack-to-create-and-manage-a-cluster-for-linux-hpc-workloads-in-azure"></a>Optionen zum Erstellen und Verwalten eines Clusters für Linux-HPC-Workloads in Azure mit HPC Pack
 [!INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../../includes/virtual-machines-common-hpcpack-cluster-options.md)]

@@ -2,18 +2,17 @@
 title: 'Anleitung: Verwenden des Azure Location Based Services-Kartensteuerelements | Microsoft-Dokumentation'
 description: Es wird beschrieben, wie Sie die clientseitige JavaScript-Bibliothek des Azure Location Based Services-Kartensteuerelements verwenden.
 services: location-based-services
-keywords: "Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen."
 author: kgremban
 ms.author: kgremban
 ms.date: 11/22/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 9843387a9e4f3b5751bafceb48d6fc949dff7e23
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ee767c9461f79437ab49d2a919bb82e7de8feba7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-the-azure-location-based-services-map-control"></a>Anleitung: Verwenden des Azure Location Based Services-Kartensteuerelements
 Mit der clientseitigen JavaScript-Bibliothek des Kartensteuerelements können Sie Karten und eingebettete Azure Location Based Services-Funktionen in Ihrer Web- oder mobilen Anwendung rendern. 

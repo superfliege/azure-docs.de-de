@@ -1,8 +1,7 @@
 ---
-title: "Verwalten von Administratorkonten für den Notfallzugriff in Azure AD | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie Konten für den Notfallzugriff verwenden, um Organisationen dabei zu unterstützen, den privilegierten Zugriff innerhalb einer vorhandenen Azure Active Directory-Umgebung einzuschränken."
+title: Verwalten von Administratorkonten für den Notfallzugriff in Azure AD | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie Konten für den Notfallzugriff verwenden, um Organisationen dabei zu unterstützen, den privilegierten Zugriff innerhalb einer vorhandenen Azure Active Directory-Umgebung einzuschränken.
 services: active-directory
-keywords: "Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen."
 author: markwahl-msft
 ms.author: billmath
 ms.date: 12/13/2017
@@ -11,11 +10,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 1545fb9a89794a74efbb855c4480040973c3308e
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: 5c256befba4c73527b529c953f7b9cd4d266450c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>Verwalten von Administratorkonten für den Notfallzugriff in Azure AD 
 

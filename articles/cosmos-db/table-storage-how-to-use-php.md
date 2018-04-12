@@ -1,6 +1,6 @@
 ---
-title: "Verwenden des Azure Table Storage-Diensts oder der Tabellen-API für Azure Cosmos DB mit PHP | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Tabellenspeicherdienst-API mit PHP zum Erstellen und Löschen von Tabellen sowie zum Einfügen und für Abfragen in der Tabelle verwenden."
+title: Verwenden des Azure Table Storage-Diensts oder der Tabellen-API für Azure Cosmos DB mit PHP | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Tabellenspeicherdienst-API mit PHP zum Erstellen und Löschen von Tabellen sowie zum Einfügen und für Abfragen in der Tabelle verwenden.
 services: cosmos-db
 documentationcenter: php
 author: mimig1
@@ -14,11 +14,11 @@ ms.devlang: php
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: mimig
-ms.openlocfilehash: 64ce8206b4b0ab3c831417d6e478f9c059188345
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 69fa1f8f9717d1ea4ca5081a45317cff8d752809
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Verwenden des Azure Table Storage-Diensts oder der Tabellen-API für Cosmos DB mit PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -435,9 +435,6 @@ Mithilfe der **TableRestProxy->batch**-Methode können Sie mehrere Vorgänge in 
 * **addDeleteEntity** (fügt einen deleteEntity-Vorgang hinzu)
 
 Das folgende Beispiel zeigt die Ausführung von **insertEntity**- und **deleteEntity**-Vorgängen in einer einzelnen Anforderung. 
-
-> [!NOTE]
-> Azure Cosmos DB unterstützt noch keine Batchvorgänge für Tabellen. 
 
 ```php
 require_once 'vendor/autoload.php';

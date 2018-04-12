@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus
 > [!IMPORTANT] 
@@ -66,8 +66,7 @@ In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Ser
    * **Größe:A3** ist die empfohlene Größe für einen virtuellen Computer für SQL Server-Workloads. Wird ein virtueller Computer nur als Berichtsserver verwendet, genügt die Größe A2 für den virtuellen Computer, es sei denn, für den Berichtsserver tritt eine große Workload auf. Preisinformationen zu virtuellen Computern finden Sie unter [Preise für virtuelle Computer](https://azure.microsoft.com/pricing/details/virtual-machines/).
    * **Neuer Benutzername**: Der von Ihnen angegebene Name wird dazu verwendet, einen Administrator auf dem virtuellen Computer zu erstellen.
    * **Neues Kennwort** und **Bestätigen**. Dieses Kennwort wird für das neue Administratorkonto verwendet, und es wird empfohlen, dass Sie ein sicheres Kennwort verwenden.
-   * Klicken Sie auf **Weiter**.
- ![next](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * Klicken Sie auf **Weiter**. ![next](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 7. Bearbeiten Sie auf der nächsten Seite die folgenden Felder:
    
    * **Clouddienst:** Wählen Sie **Einen neuen Clouddienst erstellen** aus.
@@ -513,7 +512,6 @@ Wenn Sie nicht das PowerShell-Skript ausführen möchten, um den Berichtsserver 
    1. Klicken Sie auf **Datenbank ändern**.
    2. Klicken Sie auf **Neue Berichtsserver-Datenbank erstellen**, und klicken Sie dann auf **Weiter**.
    3. Übernehmen Sie für **Servername** den Namen des virtuellen Computers, und übernehmen Sie für **Authentifizierungstyp** den Standardtyp **Aktueller Benutzer** – **Integrierte Sicherheit**. Klicken Sie auf **Weiter**.
-
    4. Übernehmen Sie für **Datenbankname** den Standardnamen **ReportServer**, und klicken Sie auf **Weiter**.
    5. Übernehmen Sie für **Authentifizierungstyp** den Standardtyp **Dienstanmeldeinformationen**, und klicken Sie auf **Weiter**.
    6. Klicken Sie im linken Bereich auf **Weiter** on the **Weiter** .

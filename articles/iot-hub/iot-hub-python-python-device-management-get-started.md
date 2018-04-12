@@ -1,11 +1,11 @@
 ---
-title: "Erste Schritte mit der Azure IoT Hub-Geräteverwaltung (Python) | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe der IoT Hub-Geräteverwaltung den Neustart eines Remotegeräts initiieren. Sie verwenden das Azure IoT SDK für Python, um eine simulierte Geräte-App mit einer direkten Methode und eine Dienst-App zum Aufrufen der direkten Methode zu implementieren."
+title: Erste Schritte mit der Azure IoT Hub-Geräteverwaltung (Python) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe der IoT Hub-Geräteverwaltung den Neustart eines Remotegeräts initiieren. Sie verwenden das Azure IoT SDK für Python, um eine simulierte Geräte-App mit einer direkten Methode und eine Dienst-App zum Aufrufen der direkten Methode zu implementieren.
 services: iot-hub
 documentationcenter: .net
-author: msebolt
+author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e044006d-ffd6-469b-bc63-c182ad066e31
 ms.service: iot-hub
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
-ms.author: v-masebo
-ms.openlocfilehash: b9dfbd775de3bb54e405e4054bca4e2b878305a3
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.author: v-masebo;kgremban
+ms.openlocfilehash: 001a5d180e2b97894174ba7c63ec3947c9968364
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-device-management-python"></a>Erste Schritte mit der Geräteverwaltung (Python)
 
@@ -57,7 +57,7 @@ In diesem Abschnitt werden Sie:
 
 1. Erstellen Sie mit einem Text-Editor die Datei **dmpatterns_getstarted_device.py**.
 
-1. Fügen Sie am Anfang der Datei `import`dmpatterns_getstarted_device.py **die folgenden** -Anweisungen ein.
+1. Fügen Sie am Anfang der Datei `import`dmpatterns_getstarted_device.py**die folgenden**-Anweisungen ein.
    
     ```python
     import random

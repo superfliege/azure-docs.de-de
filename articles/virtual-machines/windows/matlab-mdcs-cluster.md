@@ -1,11 +1,11 @@
 ---
 title: MATLAB-Cluster auf virtuellen Computern | Microsoft Docs
-description: "Erstellen Sie unter Verwendung virtueller Microsoft Azure-Computer MATLAB Distributed Computing Server-Cluster für die Ausführung rechenintensiver paralleler MATLAB-Workloads."
+description: Erstellen Sie unter Verwendung virtueller Microsoft Azure-Computer MATLAB Distributed Computing Server-Cluster für die Ausführung rechenintensiver paralleler MATLAB-Workloads.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mscurrell
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: e9980ce9-124a-41f1-b9ec-f444c8ea5c72
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: 177f8a61487130e718e3e6cfb779b17a3ed8ed69
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 695833fb12c0c7a130e98fe9b3bdfa502672ab29
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Erstellen eines MATLAB Distributed Computing Server-Clusters auf virtuellen Azure-Computern
 Erstellen Sie unter Verwendung virtueller Microsoft Azure-Computer einen oder mehrere MATLAB Distributed Computing Server-Cluster für die Ausführung rechenintensiver paralleler MATLAB-Workloads. Installieren Sie die MATLAB Distributed Computing Server-Software auf einem virtuellen Computer, der als Basisimage fungiert, und verwenden Sie zum Bereitstellen und Verwalten des Clusters eine Azure-Schnellstartvorlage oder ein Azure PowerShell-Skript (erhältlich auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)). Stellen Sie nach dem Bereitstellen eine Verbindung mit dem Cluster her, um Ihre Workloads auszuführen.

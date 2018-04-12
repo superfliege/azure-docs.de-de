@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: e0882a6c87454498d0d1370ee244bfffc137aafb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ba02e877fe7152d759085e3d25090459cd2459fc
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="door-monitor"></a>Türüberwachung          
 
@@ -44,7 +44,7 @@ Befolgen Sie die Anweisungen im [Leitfaden zu den ersten Schritten]({{"/docs/get
 
 Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie sich mit einer der folgenden Methoden registrieren:
 
-* [Kostenloses Microsoft Azure-Testkonto für 30 Tage](https://azureinfo.microsoft.com/us-freetrial.html) aktivieren
+* [Kostenloses Microsoft Azure-Testkonto für 30 Tage](https://azure.microsoft.com/en-us/free/) aktivieren
 * [Azure-Gutschrift](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) beanspruchen, wenn Sie MSDN- oder Visual Studio-Abonnent sind
 
 ## <a name="deploy-sendgrid-service-in-azure"></a>Bereitstellen des SendGrid-Diensts in Azure
@@ -60,7 +60,7 @@ Verwenden Sie die Schaltfläche **In Azure bereitstellen**, um Azure-Dienste ber
 
 Klicken Sie unten auf die Schaltfläche **In Azure bereitstellen**. 
 
-[![In Azure bereitstellen](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2FSendGridDeploy%2Fazuredeploy.json)
+[![Bereitstellen in Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2FSendGridDeploy%2Fazuredeploy.json)
 
 Die folgende Seite wird angezeigt.
 
@@ -102,7 +102,7 @@ Mit den folgenden Schritten werden weitere Azure IoT-bezogene Dienste und die L�
 
 Klicken Sie unten auf die Schaltfläche **In Azure bereitstellen**. 
 
-[![In Azure bereitstellen](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2Fazuredeploy.json)
+[![Bereitstellen in Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2Fazuredeploy.json)
 
 Die folgende Seite wird angezeigt.
 

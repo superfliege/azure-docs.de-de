@@ -1,13 +1,13 @@
 ---
 title: Erstellen einer CI/CD-Pipeline in Azure mit Team Services | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie eine Visual Studio Team Services-Pipeline für Continuous Integration und Continuous Delivery erstellen, die eine Web-App in IIS auf einem virtuellen Windows-Computer bereitstellt."
+description: Erfahren Sie, wie Sie eine Visual Studio Team Services-Pipeline für Continuous Integration und Continuous Delivery erstellen, die eine Web-App in IIS auf einem virtuellen Windows-Computer bereitstellt.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 006cac5606c411c9d86b36d0069021094fcdb1db
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cf6e3013d4dfc7e18d96a717a76b591cde939139
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Erstellen einer Continuous Integration-Pipeline mit Visual Studio Team Services und IIS
 Sie können zum Automatisieren der Erstellungs-, Test- und Bereitstellungsphasen der Anwendungsentwicklung eine Pipeline für Continuous Integration und Continuous Deployment (CI/CD) verwenden. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline mit Visual Studio Team Services und einem virtuellen Windows-Computer in Azure, auf dem IIS ausgeführt wird. Folgendes wird vermittelt:
@@ -204,11 +204,11 @@ Ihre Webanwendung wird unter IIS ausgeführt. Testen Sie nun die gesamte CI/CD-P
 
     `<h1>ASP.NET with VSTS and CI/CD!</h1>`
 
-4. Speichern Sie die Datei.
+4. Speichern Sie die Datei .
 5. Öffnen Sie das **Team Explorer**-Fenster, wählen Sie das Projekt *myWebApp* aus, und klicken Sie dann auf **Änderungen**.
 6. Geben Sie eine Commitnachricht ein, z.B. *Testen der CI/CD-Pipeline*, und wählen Sie dann im Dropdownmenü **Commit für alle und Sync**.
 7. In einem Team Services-Arbeitsbereich wird durch den Codecommit ein neuer Build ausgelöst. 
-    - Klicken Sie auf **Build und Release** und dann auf **Builds**. 
+    - Wählen Sie **Build und Release** und dann **Builds**. 
     - Wählen Sie Ihre Builddefinition aus, und wählen Sie dann den Build **Queued & running** (In der Warteschlange und ausgeführt), um den Status des Builds zu überwachen.
 9. Nachdem der Build erfolgreich erstellt wurde, wird ein neues Release ausgelöst.
     - Klicken Sie auf **Build und Release** und dann auf **Releases**, um das Webbereitstellungspaket per Push an den virtuellen IIS-Computer zu übertragen. 

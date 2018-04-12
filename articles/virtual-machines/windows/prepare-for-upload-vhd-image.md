@@ -1,11 +1,11 @@
 ---
-title: "Vorbereiten einer Windows-VHD für das Hochladen in Azure | Microsoft-Dokumentation"
+title: Vorbereiten einer Windows-VHD für das Hochladen in Azure | Microsoft-Dokumentation
 description: Vorbereiten einer Windows-VHD oder -VHDX vor dem Hochladen in Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: glimoli
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 7802489d-33ec-4302-82a4-91463d03887a
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 67832fd20b758af6fd7a31c0099ce8019bb2442d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 74c47907698e3365d093f0e17dba87b690406443
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt nur virtuelle Computer der 1. Generation, die das VHD-Dateiformat aufweisen und einen Datenträger mit fester Größe umfassen. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB. Sie können virtuelle Computer der 1. Generation vom VHDX- in das VHD-Dateisystemformat und von einem dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren. Aber die Generation eines virtuellen Computers kann nicht geändert werden. Weitere Informationen finden Sie unter [Should I create a generation 1 or 2 VM in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) (Sollte ich eine VM der 1. oder 2. Generation in Hyper-V erstellen?).
@@ -297,7 +297,7 @@ Stellen Sie sicher, dass die folgenden Einstellungen für die Remotedesktopverbi
 
 5. Wenn es sich bei der Windows-VHD, die Sie hochladen möchten, um einen Domänencontroller handelt, führen Sie diese Schritte aus:
 
-    A: Führen Sie [diese zusätzlichen Schritte aus](https://support.microsoft.com/kb/2904015), um den Datenträger vorzubereiten.
+    A. Führen Sie [diese zusätzlichen Schritte aus](https://support.microsoft.com/kb/2904015), um den Datenträger vorzubereiten.
 
     B: Stellen Sie sicher, dass Sie das DSRM-Kennwort kennen, falls Sie zu einem bestimmten Zeitpunk die VM in DSRM starten müssen. Dieser Link enthält Informationen dazu, wie Sie das [DSRM-Kennwort festlegen](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
 
@@ -383,7 +383,7 @@ Nicht jede Rolle oder Anwendung, die auf einem Windows-basierten Computer instal
 3. Wählen Sie unter **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und vergewissern Sie sich, dass das Kontrollkästchen **Generalisieren** aktiviert ist.
 
     ![Tool für die Systemvorbereitung](media/prepare-for-upload-vhd-image/syspre.png)
-4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren**.
+4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus.
 5. Klicken Sie auf **OK**.
 6. Fahren Sie die VM herunter, nachdem Sysprep abgeschlossen wurde. Verwenden Sie nicht **Neu starten**, um die VM herunterzufahren.
 7. Jetzt kann die VHD hochgeladen werden. Weitere Informationen zum Erstellen einer VM aus einem generalisierten Datenträger finden Sie unter [Hochladen einer generalisierten VHD in Azure und Erstellen einer neuen VM](sa-upload-generalized.md).
@@ -392,7 +392,7 @@ Nicht jede Rolle oder Anwendung, die auf einem Windows-basierten Computer instal
 ## <a name="complete-recommended-configurations"></a>Abschließen empfohlener Konfigurationen
 Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es wird jedoch dringend empfohlen, diese Einstellungen zu konfigurieren.
 
-* Installieren Sie den [Azure-VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Anschließend können Sie VM-Erweiterungen aktivieren. Die VM-Erweiterungen implementieren die meisten der wichtigen Funktionen, die Sie für Ihre virtuellen Computer möglicherweise verwenden möchten, darunter das Zurücksetzen von Kennwörtern, das Konfigurieren von RDP und viele andere. Weitere Informationen finden Sie unter:
+* Installieren Sie den [Azure-VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Anschließend können Sie VM-Erweiterungen aktivieren. Die VM-Erweiterungen implementieren die meisten der wichtigen Funktionen, die Sie für Ihre virtuellen Computer möglicherweise verwenden möchten, darunter das Zurücksetzen von Kennwörtern, das Konfigurieren von RDP und viele andere. Weitere Informationen finden Sie unter 
 
     - [VM Agent and Extensions – Part 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/) (VM-Agent und -Erweiterungen – Teil 1)
     - [VM Agent and Extensions – Part 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) (VM-Agent und -Erweiterungen – Teil 2)

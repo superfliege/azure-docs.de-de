@@ -1,11 +1,11 @@
 ---
 title: Zuordnung von Fragen und Antworten mit Azure Machine Learning Workbench | Microsoft-Dokumentation
-description: "Wie verschiedene effektive Machine Learning-Methoden verwendet werden können, um offene Abfragen bereits vorhandenen, häufig gestellten Frage/Antwort-Paaren zuzuordnen."
+description: Wie verschiedene effektive Machine Learning-Methoden verwendet werden können, um offene Abfragen bereits vorhandenen, häufig gestellten Frage/Antwort-Paaren zuzuordnen.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: mezmicrosoft
 editor: mezmicrosoft
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.date: 09/15/2017
 ms.author: mez
 manager: tihazen
 ms.openlocfilehash: 33f807a4a0bbc4afd1f2fbe017f8913eccacc34b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Zuordnung von Fragen und Antworten mit Azure Machine Learning Workbench
 Die Beantwortung von offenen Fragen ist schwierig und erfordert oft manuellen Aufwand von Experten (SMEs). Um die Arbeitsbelastung der internen SMEs zu reduzieren, erstellen Unternehmen oft Listen mit häufig gestellten Fragen (FAQs), um die Benutzer zu unterstützen. Dieses Beispiel zeigt, wie verschiedene effektive Machine Learning-Methoden verwendet werden können, um offene Abfragen bereits vorhandenen, häufig gestellten Frage/Antwort-Paaren zuzuordnen. Dieses Beispiel zeigt einen einfachen Entwicklungsprozess für die Erstellung einer Lösung, die Azure Machine Learning Workbench verwendet. 

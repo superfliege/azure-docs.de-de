@@ -1,11 +1,11 @@
 ---
 title: Aktivieren der Diagnose auf einem virtuellen Windows-Computer mithilfe von Azure PowerShell | Microsoft-Dokumentation
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 description: Erfahren Sie, wie Sie die Azure-Diagnose auf einer virtuellen Azure-Maschine unter Windows mithilfe von PowerShell aktivieren
 author: sbtron
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: d0be4a712657edfc516c5f32e66519f5d9486728
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 49c6fe69afdee6a075d9f888f8a2417455bc7e51
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Aktivieren der Azure-Diagnose auf einer virtuellen Azure-Maschine unter Windows mithilfe von PowerShell
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Die Azure-Diagnose ist eine Funktion in Azure, mit der Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Mithilfe der Diagnoseerweiterung können Sie Diagnosedaten wie Anwendungsprotokolle oder Leistungsindikatoren von einer virtuellen Azure-Maschine (VM) unter Windows sammeln. In diesem Artikel wird beschrieben, wie Sie die Diagnoseerweiterung für eine VM mithilfe von Windows PowerShell aktivieren. Informationen zu den erforderlichen Komponenten für diesen Artikel finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
+Die Azure-Diagnose ist eine Funktion in Azure, mit der Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Mithilfe der Diagnoseerweiterung können Sie Diagnosedaten wie Anwendungsprotokolle oder Leistungsindikatoren von einer virtuellen Azure-Maschine (VM) unter Windows sammeln. In diesem Artikel wird beschrieben, wie Sie die Diagnoseerweiterung für eine VM mithilfe von Windows PowerShell aktivieren. Informationen zu den erforderlichen Komponenten für diesen Artikel finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Aktivieren der Diagnoseerweiterung bei Verwendung des Ressourcen-Manager-Bereitstellungsmodells
 Die Diagnoseerweiterung kann im Zuge der Erstellung einer Windows-VM mit dem Azure-Ressourcen-Manager-Bereitstellungsmodell durch Hinzufügen der Erweiterungskonfiguration zur Ressourcen-Manager-Vorlage aktiviert werden. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

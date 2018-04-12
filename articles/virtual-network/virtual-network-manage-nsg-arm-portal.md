@@ -5,7 +5,7 @@ services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5d55679d-57da-457c-97dc-1e1973909ee5
 ms.service: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-nsgs-using-the-portal"></a>Erstellen von Netzwerksicherheitsgruppen (NSGs) mithilfe des Portals
 

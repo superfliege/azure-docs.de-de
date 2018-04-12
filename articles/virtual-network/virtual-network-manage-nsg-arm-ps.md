@@ -1,11 +1,11 @@
 ---
-title: "Verwalten von Netzwerksicherheitsgruppen – Azure PowerShell | Microsoft-Dokumentation"
+title: Verwalten von Netzwerksicherheitsgruppen – Azure PowerShell | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Netzwerksicherheitsgruppen mithilfe von PowerShell verwalten.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3706ce6c-d9ae-46cb-a048-f0a4e84dc5cc
 ms.service: virtual-network
@@ -17,10 +17,10 @@ ms.date: 03/14/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ca7f4926ca4edf9d20612aca74f6ae5f0ed847b3
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-network-security-groups-using-powershell"></a>Verwalten von Netzwerksicherheitsgruppen mithilfe von PowerShell
 

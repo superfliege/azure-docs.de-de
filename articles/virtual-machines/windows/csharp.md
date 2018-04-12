@@ -1,10 +1,10 @@
 ---
 title: Erstellen und Verwalten eines virtuellen Azure-Computers mit C# | Microsoft-Dokumentation
-description: "Verwenden Sie C# und Azure Resource Manager, um einen virtuellen Computer und alle unterstützenden Ressourcen bereitzustellen."
+description: Verwenden Sie C# und Azure Resource Manager, um einen virtuellen Computer und alle unterstützenden Ressourcen bereitzustellen.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 5d9021c2f65b70e36d5ea82992c9fb9d2d6d394a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43dcc8e5d9756807a3e005d629e84469a2e6eb04
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Erstellen und Verwalten von virtuellen Windows-Computern in Azure mithilfe von C# #
 
@@ -38,7 +38,7 @@ Die Ausführung dieser Schritte dauert etwa 20 Minuten.
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
 
-1. Wenn Sie dies noch nicht getan haben, installieren Sie [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wählen Sie auf der Seite „Workloads“ **.NET-Desktopentwicklung** aus, und klicken Sie dann auf **Installieren**. In der Zusammenfassung sehen Sie, dass **Entwicklungstools für .NET Framework 4 – 4.6** automatisch für Sie ausgewählt ist. Wenn Sie Visual Studio bereits installiert haben, können Sie die .NET-Workload mit dem Visual Studio-Startprogramm hinzufügen.
+1. Wenn Sie dies noch nicht getan haben, installieren Sie [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wählen Sie auf der Seite „Workloads“  **	.NET-Desktopentwicklung** aus, und klicken Sie dann auf **Installieren**. In der Zusammenfassung sehen Sie, dass **Entwicklungstools für .NET Framework 4 – 4.6** automatisch für Sie ausgewählt ist. Wenn Sie Visual Studio bereits installiert haben, können Sie die .NET-Workload mit dem Visual Studio-Startprogramm hinzufügen.
 2. Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**.
 3. Wählen Sie unter **Vorlagen** > **Visual C#** die Option **Konsolen-App (.NET Framework)** aus, geben Sie *myDotnetProject* als Name des Projekts ein, wählen Sie den Projektspeicherort, und klicken Sie dann auf **OK**.
 
@@ -143,7 +143,7 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 ### <a name="create-the-public-ip-address"></a>Erstellen der öffentlichen IP-Adresse
 
-Eine [öffentliche IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) ist für die Kommunikation mit dem virtuellen Computer erforderlich.
+Eine öffentliche [IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) ist für die Kommunikation mit dem virtuellen Computer erforderlich.
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um die öffentliche IP-Adresse des virtuellen Computers zu erstellen:
    
@@ -336,7 +336,7 @@ Wenn Sie die Zuordnung des virtuellen Computers aufheben möchten, ändern Sie d
 vm.Deallocate();
 ```
 
-### <a name="start-the-vm"></a>Starten des virtuellen Computers
+### <a name="start-the-vm"></a>Starten der VM
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um den virtuellen Computer zu starten:
 
@@ -347,7 +347,7 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="resize-the-vm"></a>Ändern der Größe des virtuellen Computers
+### <a name="resize-the-vm"></a>Ändern der Größe der VM
 
 Viele Aspekte der Bereitstellung müssen berücksichtigt werden, wenn Sie die Größe für den virtuellen Computer festlegen. Weitere Informationen finden Sie unter [VM-Größen](sizes.md).  
 
@@ -362,7 +362,7 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>Hinzufügen eines Datenträgers zum virtuellen Computer
+### <a name="add-a-data-disk-to-the-vm"></a>Hinzufügen eines Datenträgers zur VM
 
 Um dem virtuellen Computer einen Datenträger hinzuzufügen, fügen Sie der „Main“-Methode diesen Code hinzu. Damit wird ein Datenträger der Größe 2 GB mit der LUN 0 und dem Cachetyp „ReadWrite“ hinzugefügt:
 

@@ -1,11 +1,11 @@
 ---
 title: Verwalten von HPC Pack-Clustercomputeknoten | Microsoft Docs
-description: "Informationen zu PowerShell-Skripttools zum Hinzufügen, Entfernen, Starten und Beenden von HPC Pack 2012 R2-Clustercomputeknoten in Azure"
+description: Informationen zu PowerShell-Skripttools zum Hinzufügen, Entfernen, Starten und Beenden von HPC Pack 2012 R2-Clustercomputeknoten in Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 4193f03b-94e9-4704-a7ad-379abde063a9
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 2ad67efecf9a688ac3e7ccd7cc32576e9a46d1f5
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 453f53be15b24b96f183b4935cc45fc97ad058bd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Verwalten der Anzahl und Verfügbarkeit von Computeknoten in einem HPC Pack-Cluster in Azure
 Wenn Sie einen HPC Pack 2012 R2-Cluster auf virtuellen Azure-Computern erstellt haben, möchten Sie wahrscheinlich einige virtuelle Computer für Computeknoten im Cluster hinzufügen, entfernen, starten (bereitstellen) oder beenden (Bereitstellung aufheben). Zum Durchführen dieser Aufgaben können Sie Azure PowerShell-Skripts ausführen, die auf dem Hauptknoten des virtuellen Computers installiert sind. Mit diesen Skripts können Sie die Anzahl und Verfügbarkeit der HPC Pack-Clusterressourcen steuern und so auch Kosten senken.

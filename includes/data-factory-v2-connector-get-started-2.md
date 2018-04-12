@@ -3,7 +3,7 @@
 -->
 Sie können eine Pipeline mit Kopieraktivität erstellen, indem Sie eines der folgenden Tools/SDKs verwenden: Klicken Sie auf einen Link, um zu einem Tutorial mit schrittweise Anleitungen zum Erstellen einer Pipeline mit einer Kopieraktivität zu navigieren. 
 
-- [Azure portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
+- [Azure-Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
 - [.NET SDK](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
 - [Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)

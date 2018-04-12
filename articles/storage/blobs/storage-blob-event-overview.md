@@ -2,17 +2,17 @@
 title: Reaktion auf Azure Blob Storage-Ereignisse | Microsoft-Dokumentation
 description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid.
 services: storage,event-grid
-keywords: 
+keywords: ''
 author: cbrooksmsft
 ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: ea2ec712c8d8b5f85f020535ab0544986f0da53a
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktion auf Blob Storage-Ereignisse
 

@@ -1,13 +1,13 @@
 ---
-title: "Azure-Schnellstart – Erstellen einer Windows-VM im Portal | Microsoft-Dokumentation"
-description: "Azure-Schnellstart – Erstellen einer Windows-VM im Portal"
+title: Azure-Schnellstart – Erstellen einer Windows-VM im Portal | Microsoft-Dokumentation
+description: Azure-Schnellstart – Erstellen einer Windows-VM im Portal
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: hero-article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 12/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ef2fdfc8f248f9ec5dd9fce9753548dfe802982a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: fdee34b91dc6780764abf8b16d1b710c1f5397e5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-the-azure-portal"></a>Erstellen einer Windows-VM im Azure-Portal
 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter „https://portal.azure.com“ am Azure-Portal an.
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 

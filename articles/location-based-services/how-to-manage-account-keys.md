@@ -1,19 +1,18 @@
 ---
-title: "Verwalten Ihres Azure Location Based Services-Kontos und der dazugehörigen Schlüssel | Microsoft-Dokumentation"
-description: "Sie können das Azure-Portal verwenden, um Ihr Azure Location Based Services-Konto und Ihre Zugriffsschlüssel zu verwalten."
+title: Verwalten Ihres Azure Location Based Services-Kontos und der dazugehörigen Schlüssel | Microsoft-Dokumentation
+description: Sie können das Azure-Portal verwenden, um Ihr Azure Location Based Services-Konto und Ihre Zugriffsschlüssel zu verwalten.
 services: location-based-services
-keywords: "Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen."
 author: kgremban
 ms.author: kgremban
 ms.date: 11/14/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 8ea7beae054157800ee404cf237772d0677574ca
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 38466a741bc836a6f13db83fd939d178fbbc1a7b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-manage-your-azure-location-based-services-account-and-keys"></a>Verwalten Ihres Azure Location Based Services-Kontos und der dazugehörigen Schlüssel
 
@@ -23,7 +22,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure 
 
-Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-new-account"></a>Erstellen eines neuen Kontos
 

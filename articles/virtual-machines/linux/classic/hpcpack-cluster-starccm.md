@@ -1,11 +1,11 @@
 ---
-title: "Ausführen von STAR-CCM+ mit HPC Pack auf virtuellen Linux-Computern | Microsoft Docs"
-description: "Stellen Sie einen Microsoft HPC Pack-Cluster unter Azure bereit, und führen Sie einen StarCCM+-Auftrag auf mehreren Linux-Computeknoten in einem RDMA-Netzwerk aus."
+title: Ausführen von STAR-CCM+ mit HPC Pack auf virtuellen Linux-Computern | Microsoft Docs
+description: Stellen Sie einen Microsoft HPC Pack-Cluster unter Azure bereit, und führen Sie einen StarCCM+-Auftrag auf mehreren Linux-Computeknoten in einem RDMA-Netzwerk aus.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: xpillons
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 75523406-d268-4623-ac3e-811c7b74de4b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8689d7abfd5ab45277df3b5672a1f6e7e874d88e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Ausführen von STAR-CCM+ mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure
 In diesem Artikel erfahren Sie, wie Sie einen Microsoft HPC Pack-Cluster unter Azure bereitstellen und einen Auftrag vom Typ [CD-adapco STAR-CCM+](http://www.cd-adapco.com/products/star-ccm%C2%AE) auf mehreren Linux-Computeknoten ausführen, die per InfiniBand miteinander verbunden sind.
@@ -116,7 +116,7 @@ Führen Sie die folgenden Azure PowerShell-Befehle in einer Eingabeaufforderung 
 Nachdem nun alle Knoten im Cluster betriebsbereit sind, müssen noch einige weitere Infrastruktureinstellungen vorgenommen werden.
 
 ## <a name="set-up-an-azure-file-share-for-windows-and-linux-nodes"></a>Einrichten der Azure-Dateifreigabe für Windows- und Linux-Knoten
-Sie können den Azure-Dateidienst zum Speichern von Skripts, Anwendungspaketen und Datendateien verwenden. Der Azure-Dateidienst bietet zusätzlich zum Azure-BLOB-Speicher auch CIFS-Funktionen als permanenten Speicher. Diese Lösung ist zwar nicht besonders skalierbar, dafür aber sehr einfach und erfordert keine dedizierten virtuellen Computer.
+Sie können den Azure-Dateidienst zum Speichern von Skripts, Anwendungspaketen und Datendateien verwenden. Azure Files bietet zusätzlich zu Azure Blob Storage auch CIFS-Funktionen als permanenten Speicher. Diese Lösung ist zwar nicht besonders skalierbar, dafür aber sehr einfach und erfordert keine dedizierten virtuellen Computer.
 
 Erstellen Sie eine Azure-Dateifreigabe. Eine entsprechende Anleitung finden Sie im Artikel [Erste Schritte mit Azure File Storage unter Windows](../../../storage/files/storage-dotnet-how-to-use-files.md).
 
@@ -294,7 +294,7 @@ Für das Format von **$CCP_NODES_CORES** wird das folgende Muster verwendet:
 <Number of nodes> <Name of node1> <Cores of node1> <Name of node2> <Cores of node2>...`
 ```
 
-Hierbei gilt:
+Hinweis:
 
 * `<Number of nodes>` entspricht der Anzahl von Knoten, die diesem Auftrag zugeordnet sind.
 * `<Name of node_n_...>` ist der Name des jeweiligen Knotens, der dem Auftrag zugeordnet ist.

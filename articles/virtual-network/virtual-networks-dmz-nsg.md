@@ -5,8 +5,8 @@ services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Beispiel 1 – Erstellen einer einfachen DMZ unter Verwendung von NSGs mit einer Azure Resource Manager-Vorlage 
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]

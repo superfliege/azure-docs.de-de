@@ -1,8 +1,8 @@
 ---
 title: Technischer Leitfaden zur Prognose des Energiebedarfs | Microsoft Docs
-description: "Ein technischer Leitfaden zur Microsoft Cortana Intelligence-Lösungsvorlage für die Prognose des Energiebedarfs."
+description: Ein technischer Leitfaden zur Microsoft Cortana Intelligence-Lösungsvorlage für die Prognose des Energiebedarfs.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yijichen
 manager: ilanr9
 editor: yijichen
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
 ms.openlocfilehash: bb3520d36e4c34c752fe388f3126da285e2161cd
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technischer Leitfaden zur Cortana Intelligence-Lösungsvorlage für die Prognose des Energiebedarfs
 ## <a name="overview"></a>**Übersicht**

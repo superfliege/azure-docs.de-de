@@ -1,12 +1,12 @@
 ---
-title: "Erweitern eines Betriebssystemdatenträgers auf einem virtuellen Linux-Computer mit Azure CLI 1.0 | Microsoft Docs"
-description: "Erfahren Sie, wie Sie den virtuellen Betriebssystemdatenträger auf einer Linux-VM unter Verwendung von Azure CLI 1.0 und des Resource Manager-Bereitstellungsmodells erweitern."
+title: Erweitern eines Betriebssystemdatenträgers auf einem virtuellen Linux-Computer mit Azure CLI 1.0 | Microsoft Docs
+description: Erfahren Sie, wie Sie den virtuellen Betriebssystemdatenträger auf einer Linux-VM unter Verwendung von Azure CLI 1.0 und des Resource Manager-Bereitstellungsmodells erweitern.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 0aedcd70b54c2ed47ec327ccf0529a48351353c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f81054727bb1f0e8ffa752783e866a72d573589d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10"></a>Erweitern des Betriebssystemdatenträgers auf einer Linux-VM mithilfe von Azure CLI 1.0
 Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating system; OS) beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer (VM) in Azure. Sie können [Datenträger hinzufügen](add-disk.md), um zusätzlichen Speicherplatz zur Verfügung zu stellen, aber möglicherweise möchten Sie auch den Betriebssystemdatenträger erweitern. In diesem Artikel wird beschrieben, wie der Betriebssystemdatenträger für einen virtuellen Linux-Computer mit nicht verwalteten Datenträgern mithilfe von Azure CLI 1.0 erweitert werden kann.
@@ -27,7 +27,7 @@ Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#prerequisites): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0:](expand-disks.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0](expand-disks.md): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Installieren Sie die [neueste Azure CLI 1.0](../../cli-install-nodejs.md), und melden Sie sich mithilfe des Resource Manager-Modus wie folgt bei einem [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) an:

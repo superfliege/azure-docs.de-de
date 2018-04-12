@@ -2,18 +2,17 @@
 title: Sichern von Azure Files in Azure
 description: Dieser Artikel enthält ausführliche Informationen zum Sichern und Wiederherstellen von Azure-Dateifreigaben sowie Informationen zu Verwaltungsaufgaben.
 services: backup
-keywords: Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen.
 author: markgalioto
 ms.author: markgal
 ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 3eab85aa4f7fde190a93239fc396cb9c04c2396c
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 440cee4309fad0a22d8964982f3aad2178397124
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) sichern und wiederherstellen.
@@ -32,7 +31,7 @@ Um eine Azure-Dateifreigabe sichern zu können, muss sie sich unter einem der [u
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Einschränkungen beim Sichern von Azure-Dateifreigaben während der Vorschauphase
 Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Während der Vorschauphase sind folgende Einschränkungen zu beachten:
-- Azure-Dateifreigaben können nicht in Speicherkonten mit einer Replikation vom Typ [ZRS](../storage/common/storage-redundancy.md#zone-redundant-storage) (zonenredundanter Speicher) oder [RA-GRS](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) geschützt werden.
+- Azure-Dateifreigaben können nicht in Speicherkonten mit einer Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (zonenredundanter Speicher) oder [RA-GRS](../storage/common/storage-redundancy-grs.md) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) geschützt werden.
 - Azure-Dateifreigaben können nicht in Speicherkonten mit aktivierten virtuellen Netzwerken geschützt werden.
 - Für den Schutz von Azure Files steht keine PowerShell- oder Befehlszeilenoption zur Verfügung.
 - Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.

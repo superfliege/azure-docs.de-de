@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: kumud
-ms.openlocfilehash: 09c51441d393de5d801e7a4c259b711a527349d8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f6e9dd09558a3485629d5b70dd8b68b292427b18
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="high-availability-ports-overview"></a>Übersicht über Hochverfügbarkeitsports
 
@@ -72,20 +72,20 @@ Diese Konfiguration erlaubt keine andere Regelkonfiguration für den Lastenausgl
 
 Sie können jedoch zusätzlich zu dieser HA-Portregel einen öffentlichen Standard Load Balancer für die Back-End-Instanzen konfigurieren.
 
-## <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>Eine einzige Floating-IP-Konfiguration (Direct Server Return) für Hochverfügbarkeitsports auf dem internen Standard Load Balancer
+### <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>Eine einzige Floating-IP-Konfiguration (Direct Server Return) für Hochverfügbarkeitsports auf dem internen Standard Load Balancer
 
 Sie können Load Balancer auch so konfigurieren, dass eine Lastenausgleichsregel mit **HA-Port** mit einem einzigen Front-End verwendet und **Floating IP** auf **Aktiviert** gesetzt wird. 
 
 Diese Konfiguration ermöglicht es Ihnen, weitere Lastenausgleichsregeln für Floating IPs und/oder einen öffentlichen Load Balancer hinzuzufügen. Es ist jedoch nicht möglich, zusätzlich zu dieser Konfiguration eine Lastenausgleichskonfiguration für HA-Ports mit Non-Floating IPs zu verwenden.
 
-## <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>Mehrere HA-Portkonfigurationen auf der internen Standard Load Balancer-Instanz
+### <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>Mehrere HA-Portkonfigurationen auf der internen Standard Load Balancer-Instanz
 
 Wenn Ihr Szenario erfordert, dass Sie mehrere Front-Ends mit Hochverfügbarkeitsports für den gleichen Back-End-Pool konfigurieren, können Sie dies wie folgt erreichen: 
 - Konfigurieren Sie mehrere private Front-End-IP-Adressen für eine einzige interne Standard Load Balancer-Ressource.
 - Konfigurieren Sie mehrere Lastenausgleichsregeln, wobei jede Regel eine einzige eindeutige Front-End-IP-Adresse hat.
 - Wählen Sie die Option **HA-Ports**, und setzen Sie für alle Lastenausgleichsregeln die Option **Floating IP** auf **Aktiviert**.
 
-## <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>Interner Load Balancer mit Hochverfügbarkeitsports und öffentlicher Load Balancer auf denselben Back-End-Instanzen
+### <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>Interner Load Balancer mit Hochverfügbarkeitsports und öffentlicher Load Balancer auf denselben Back-End-Instanzen
 
 Sie können **eine** öffentliche Standard Load Balancer-Ressource für die Back-End-Ressourcen zusammen mit einem einzigen internen Standard Load Balancer mit Hochverfügbarkeitsports konfigurieren.
 

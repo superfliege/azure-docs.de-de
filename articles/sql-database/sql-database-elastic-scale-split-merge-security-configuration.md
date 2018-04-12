@@ -8,13 +8,13 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 05/27/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: c07ba1e74daace546bae4f4209842312136914a3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 694c1755b5263d48fdfa5cad3c0b13e42bfb8522
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge-Sicherheitskonfiguration
 Zur Verwendung des Split-Merge-Diensts müssen Sie die Sicherheit ordnungsgemäß konfigurieren. Der Dienst ist Teil der Funktion Elastic Scale von Microsoft Azure SQL-Datenbank. Weitere Informationen finden Sie im [Lernprogramm zum Split-Merge-Dienst für die elastische Skalierung](sql-database-elastic-scale-configure-deploy-split-and-merge.md).

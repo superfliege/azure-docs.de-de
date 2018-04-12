@@ -2,12 +2,12 @@
 title: Erstellen eines nicht verwalteten Images eines generalisierten virtuellen Computers in Azure | Microsoft-Dokumentation
 description: Erstellen Sie ein nicht verwaltetes Image eines generalisierten virtuellen Windows-Computers, um damit mehrere Kopien eines virtuellen Computers in Azure zu erstellen.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 39ac47df65743dc807b060f34a6df16977ef49a1
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: bacf59cd7be637110125a51b64c708e755a8958d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Erstellen nicht verwalteter VM-Images aus virtuellen Azure-Computern
 

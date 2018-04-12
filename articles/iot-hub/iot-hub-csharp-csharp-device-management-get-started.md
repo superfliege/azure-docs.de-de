@@ -1,24 +1,24 @@
 ---
-title: "Erste Schritte mit der Azure IoT Hub-Geräteverwaltung (.NET/.NET) | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe der Azure IoT Hub-Geräteverwaltung den Neustart eines Remotegeräts initiieren. Sie verwenden das Azure IoT-Geräte-SDK für .NET, um eine simulierte Geräte-App zu implementieren, die eine direkte Methode enthält, und das Azure IoT-Dienst-SDK für .NET, um eine Dienst-App zu implementieren, die die direkte Methode aufruft."
+title: Erste Schritte mit der Azure IoT Hub-Geräteverwaltung (.NET/.NET) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe der Azure IoT Hub-Geräteverwaltung den Neustart eines Remotegeräts initiieren. Sie verwenden das Azure IoT-Geräte-SDK für .NET, um eine simulierte Geräte-App zu implementieren, die eine direkte Methode enthält, und das Azure IoT-Dienst-SDK für .NET, um eine Dienst-App zu implementieren, die die direkte Methode aufruft.
 services: iot-hub
 documentationcenter: .net
-author: JimacoMS2
+author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/15/2017
-ms.author: v-jamebr
-ms.openlocfilehash: 3af7fbfb9740e00d9ff9c2b077cb444a8057b8c3
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.author: v-jamebr;dobett
+ms.openlocfilehash: 44160eeb90f0f65c974b7188dd7c70cce382bf21
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-device-management-netnet"></a>Erste Schritte mit der Geräteverwaltung (.NET/.NET)
 
@@ -48,7 +48,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Auslösen eines Remoteneustarts auf dem Gerät über eine direkte Methode
 In diesem Abschnitt erstellen Sie (mit C#) eine .NET Konsolen-App, die einen Remoteneustart auf einem Gerät über eine direkte Methode auslöst. Die App verwendet Gerätezwillingsabfragen, um den Zeitpunkt des letzten Neustarts bei diesem Gerät zu ermitteln.
 
-1. Fügen Sie in Visual Studio einer neuen Projektmappe mithilfe der Projektvorlage **Konsolen-App (.NET Framework)** ein Visual C#-Projekt für den klassischen Windows-Desktop hinzu. Stellen Sie sicher, dass .NET-Framework-Version 4.5.1 oder höher verwendet wird. Nennen Sie das Projekt **TriggerReboot**.
+1. Fügen Sie in Visual Studio einer neuen Projektmappe mithilfe der Projektvorlage **Konsolenanwendung (.NET Framework** ein Visual C#-Projekt für den klassischen Windows-Desktop hinzu. Stellen Sie sicher, dass .NET-Framework-Version 4.5.1 oder höher verwendet wird. Nennen Sie das Projekt **TriggerReboot**.
 
     ![Neues Visual C#-Projekt für den klassischen Windows-Desktop][img-createserviceapp]
 
@@ -89,7 +89,7 @@ In diesem Abschnitt erstellen Sie (mit C#) eine .NET Konsolen-App, die einen Rem
             Console.WriteLine("Invoked firmware update on device.");
         }
 
-7. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
+7. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
    
         registryManager = RegistryManager.CreateFromConnectionString(connString);
         StartReboot().Wait();

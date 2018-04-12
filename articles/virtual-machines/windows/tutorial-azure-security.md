@@ -1,13 +1,13 @@
 ---
 title: Azure Security Center und virtuelle Windows-Computer in Azure | Microsoft-Dokumentation
-description: "Erfahren Sie etwas über die Sicherheit für virtuelle Windows-Computer in Azure mit Azure Security Center."
+description: Erfahren Sie etwas über die Sicherheit für virtuelle Windows-Computer in Azure mit Azure Security Center.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/01/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: adb00e28b0b204858a763f83836ee2ac96f8f9e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4597de035e352387c22e92412ee6361f9c38a8ca
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Überwachen der Sicherheit virtueller Computer mit Azure Security Center
 
@@ -42,7 +42,7 @@ Wählen Sie für den Zugriff auf das Security Center-Dashboard im Azure-Portal a
 
 Security Center bietet über die reine Datenermittlung hinaus auch Empfehlungen für erkannte Probleme. Wenn etwa ein virtueller Computer ohne eine angefügte Netzwerksicherheitsgruppe bereitgestellt wurde, zeigt Security Center beispielsweise eine Empfehlung für mögliche Maßnahmen an. Sie erhalten automatisierte Korrekturmaßnahmen, ohne das Umfeld von Security Center verlassen zu müssen.  
 
-![Recommendations](./media/tutorial-azure-security/recommendations.png)
+![Empfehlungen](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>Einrichten der Datensammlung
 
@@ -110,7 +110,7 @@ So zeigen Sie eine Liste aller Empfehlungen an
 
 In vielen Fällen stellt Security Center Schritte zur Umsetzung der Empfehlung vor, die Sie ausführen können, ohne Security Center verlassen zu müssen. Im folgenden Beispiel erkennt Security Center eine Netzwerksicherheitsgruppe, die eine uneingeschränkte Eingangsregel enthält. Sie können auf der Empfehlungsseite die Schaltfläche **Eingangsregeln bearbeiten** auswählen. Die für das Ändern der Regel erforderliche Benutzeroberfläche wird angezeigt. 
 
-![Recommendations](./media/tutorial-azure-security/remediation.png)
+![Empfehlungen](./media/tutorial-azure-security/remediation.png)
 
 Nachdem Empfehlungen umgesetzt wurden, werden sie als gelöst markiert. 
 

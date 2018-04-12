@@ -1,8 +1,8 @@
 ---
-title: "Vorhersagbarer Wartungsbedarf in der Luft- und Raumfahrt mit Azure – Cortana Intelligence-Lösungsvorlage (technischer Leitfaden) | Microsoft-Dokumentation"
-description: "Eine technische Anleitung für die Lösungsvorlage mit Microsoft Cortana Intelligence zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt, in Versorgungsunternehmen und im Transportwesen."
+title: Vorhersagbarer Wartungsbedarf in der Luft- und Raumfahrt mit Azure – Cortana Intelligence-Lösungsvorlage (technischer Leitfaden) | Microsoft-Dokumentation
+description: Eine technische Anleitung für die Lösungsvorlage mit Microsoft Cortana Intelligence zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt, in Versorgungsunternehmen und im Transportwesen.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
 ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technische Anleitung für die Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen
 

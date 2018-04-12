@@ -1,11 +1,11 @@
 ---
-title: "Zurücksetzen des Kennworts und des SSH-Schlüssels für einen virtuellen Linux-Computer über die Befehlszeilenschnittstelle | Microsoft Docs"
-description: "Informationen zum Verwenden der VMAccess-Erweiterung über die Azure-Befehlszeilenschnittstelle (CLI) zum Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für einen virtuellen Linux-Computer, zum Beheben von SSH-Konfigurationsproblemen und zum Überprüfen der Datenträgerkonsistenz"
+title: Zurücksetzen des Kennworts und des SSH-Schlüssels für einen virtuellen Linux-Computer über die Befehlszeilenschnittstelle | Microsoft Docs
+description: Informationen zum Verwenden der VMAccess-Erweiterung über die Azure-Befehlszeilenschnittstelle (CLI) zum Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für einen virtuellen Linux-Computer, zum Beheben von SSH-Konfigurationsproblemen und zum Überprüfen der Datenträgerkonsistenz
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: d975eb70-5ff1-40d1-a634-8dd2646dcd17
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
-ms.openlocfilehash: 4577b6b9656b6a1cf83e6f9a227526701ba297b4
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: c36498d2f4fef506dc7047fe91666aceec73c13d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für einen virtuellen Linux-Computer, Beheben von SSH-Konfigurationsproblemen und Überprüfen der Datenträgerkonsistenz mithilfe der VMAccess-Erweiterung
 Wenn Sie aufgrund eines vergessenen Kennworts, eines falschen SSH-Schlüssels (Secure Shell) oder eines Problems bei der SSH-Konfiguration keine Verbindung mit einem virtuellen Linux-Computer herstellen können, haben Sie die Möglichkeit, das Kennwort oder den SSH-Schlüssel zurückzusetzen, SSH-Konfigurationsprobleme zu beheben und die Datenträgerkonsistenz zu überprüfen. Verwenden Sie dazu die VMAccessForLinux-Erweiterung mit der Azure-Befehlszeilenschnittstelle. 

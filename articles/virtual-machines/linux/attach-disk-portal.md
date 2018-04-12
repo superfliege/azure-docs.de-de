@@ -1,11 +1,11 @@
 ---
-title: "Anfügen eines Datenträgers an eine Linux-VM | Microsoft Docs"
-description: "Verwenden Sie das Portal, um einen neuen oder vorhandenen Datenträger an einen virtuellen Linux-Computer anzufügen."
+title: Anfügen eines Datenträgers an eine Linux-VM | Microsoft Docs
+description: Verwenden Sie das Portal, um einen neuen oder vorhandenen Datenträger an einen virtuellen Linux-Computer anzufügen.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: cynthn
-ms.openlocfilehash: 1a7c98207a5f19d514a0cd05b66898e7fb725944
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 4acfe53d68db3192c1f6c3c9e5f91b55bd5df7b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals 
 In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -32,7 +32,7 @@ Bevor Sie Datenträger an Ihren virtuellen Computer anfügen, lesen Sie diese Ti
 
 
 ## <a name="find-the-virtual-machine"></a>Suchen des virtuellen Computers
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie im linken Menü auf **Virtuelle Computer**.
 3. Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
 4. Klicken Sie auf der Seite „Virtuelle Computer“ unter **Zusammenfassung** auf **Datenträger**.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 577c45edc832288943a7eeefe27c7a189a61b7b0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8187a4bc6278f917c28418baf3cda2d75ea4e3d8
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>host.json-Referenz für Azure Functions
 
@@ -139,7 +139,7 @@ Steuert das [Stichprobenfeature in Application Insights](functions-monitoring.md
 
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
-|isEnabled|false|Aktiviert oder deaktiviert die Stichprobenentnahme.| 
+|isEnabled|true|Aktiviert oder deaktiviert die Stichprobenentnahme.| 
 |maxTelemetryItemsPerSecond|5|Der Schwellenwert, bei dem die Stichprobenentnahme beginnt.| 
 
 ## <a name="eventhub"></a>eventHub

@@ -1,11 +1,11 @@
 ---
-title: "Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen | Microsoft-Dokumentation"
-description: "Erstellen Sie einen Linux-Cluster mit virtuellen Computern der Größe H16r, H16mr, A8 oder A9, um das Azure RDMA-Netzwerk für die Ausführung von MPI-Apps zu verwenden."
+title: Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen | Microsoft-Dokumentation
+description: Erstellen Sie einen Linux-Cluster mit virtuellen Computern der Größe H16r, H16mr, A8 oder A9, um das Azure RDMA-Netzwerk für die Ausführung von MPI-Apps zu verwenden.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 01834bad-c8e6-48a3-b066-7f1719047dd2
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 428dc1e8ba03ba17e348a33a33b5cf5e6118a43c
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 18549a8606285238f26d2c8cec54793e26e3e8d1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen
 Hier erfahren Sie, wie Sie in Azure einen Linux RDMA-Cluster mit [HPC-VM-Größen (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) einrichten, um parallele MPI-Anwendungen (Message Passing Interface) auszuführen. Dieser Artikel enthält die Schritte, die ausgeführt werden müssen, um ein Linux-HPC-Image für die Ausführung von Intel MPI auf einem Cluster vorzubereiten. Im Anschluss an die Vorbereitung stellen Sie mithilfe dieses Images und einer der RDMA-fähigen Größen für virtuelle Azure-Computer (derzeit H16r, H16mr, A8 oder A9) einen Cluster mit virtuellen Computern bereit. Mit dem Cluster können Sie MPI-Anwendungen ausführen, die effizient mit geringer Latenz und hohem Durchsatz über ein RDMA-Netzwerk (Remote Direct Memory Access, Remotezugriff auf den direkten Speicher) kommunizieren.

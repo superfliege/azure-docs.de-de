@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI-Skript – Skalieren einer Azure Database for PostgreSQL-Instanz"
-description: "Azure CLI-Skriptbeispiel: Skalieren eines Azure-Datenbank für PostgreSQL-Servers auf eine andere Leistungsstufe nach Abfragen der Metriken."
+title: Azure CLI-Skript – Skalieren einer Azure Database for PostgreSQL-Instanz
+description: 'Azure CLI-Skriptbeispiel: Skalieren eines Azure-Datenbank für PostgreSQL-Servers auf eine andere Leistungsstufe nach Abfragen der Metriken.'
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.custom: mvc
 ms.topic: sample
-ms.date: 02/28/2018
-ms.openlocfilehash: 10ce026b4cef4ef06d379a35a4109544ce8573e5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 04/05/2018
+ms.openlocfilehash: ff740bf22b745e3f9e00ccbdb40c5e4d5948fb41
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Überwachen und Skalieren eines einzelnen PostgreSQL-Servers mit der Azure CLI
 Dieses CLI-Beispielskript skaliert einen einzelnen Azure-Datenbank für PostgreSQL-Server nach Abfragen der Metriken auf eine andere Leistungsstufe. 

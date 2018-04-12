@@ -1,11 +1,11 @@
 ---
-title: "Ausführen eines MariaDB (MySQL)-Clusters in Azure | Microsoft-Dokumentation"
+title: Ausführen eines MariaDB (MySQL)-Clusters in Azure | Microsoft-Dokumentation
 description: Erstellen eines MariaDB- + Galera MySQL-Clusters auf virtuellen Azure-Computern
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: sabbour
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: d0d21937-7aac-4222-8255-2fdc4f2ea65b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-ms.openlocfilehash: 53e9bf18b26338212411ea7c4f260eb308486738
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5438bfb75abaac2bed55a76b38f69790f7fc87fa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL)-Cluster: Azure-Tutorial
 > [!IMPORTANT]
@@ -222,7 +222,7 @@ In diesem Artikel wird beschrieben, wie Sie die folgenden Schritte ausführen:
       
       ![Erfassen des virtuellen Computers](./media/mariadb-mysql-cluster/Capture2.PNG)
 
-## <a name="create-the-cluster"></a>Cluster erstellen
+## <a name="create-the-cluster"></a>Erstellen des Clusters
 Erstellen Sie drei virtuelle Computer anhand der Vorlage, die Sie gerade erstellt haben, und konfigurieren und starten Sie dann den Cluster.
 
 1. Erstellen Sie den ersten virtuellen CentOS 7-Computer anhand des erstellten Images „mariadb-galera-image“, und geben Sie die folgenden Informationen an:
@@ -281,7 +281,7 @@ Erstellen Sie drei virtuelle Computer anhand der Vorlage, die Sie gerade erstell
 
         sudo vi /etc/my.cnf.d/server.cnf
 
-    Heben Sie die Auskommentierung von  **`wsrep_cluster_name`**  und  **`wsrep_cluster_address`**  durch Entfernen von **#** am Anfang der Zeile auf.
+    Heben Sie die Auskommentierung von **`wsrep_cluster_name`** und **`wsrep_cluster_address`** durch Entfernen von **#** am Anfang der Zeile auf.
     Ersetzen Sie außerdem **`<ServerIP>`** in **`wsrep_node_address`** und **`<NodeName>`** in **`wsrep_node_name`** durch die IP-Adresse bzw. den Namen des virtuellen Computers, und kommentieren Sie auch diese Zeilen aus.
 5. Starten Sie den Cluster auf MariaDB1, und führen Sie ihn beim Start aus.
 

@@ -2,11 +2,11 @@
 title: StorSimple 8000-Serie als Sicherungsziel mit Veeam | Microsoft-Dokumentation
 description: Beschreibt die Konfiguration des StorSimple-Sicherungsziels mit Veeam.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: harshakirank
 manager: matd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
 ms.openlocfilehash: cc1c7a3f77af76c451bb6e97a081a01c119333b5
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als Sicherungsziel mit Veeam
 

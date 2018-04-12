@@ -1,13 +1,12 @@
 ---
-title: "Azure PowerShell-Skript: Abrufen der Azure Cosmos DB-Verbindungszeichenfolge für MongoDB-Apps| Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel: Abrufen der Azure Cosmos DB-Verbindungszeichenfolge für MongoDB-Apps"
+title: 'Azure PowerShell-Skript: Abrufen der Azure Cosmos DB-Verbindungszeichenfolge für MongoDB-Apps| Microsoft-Dokumentation'
+description: 'Azure PowerShell-Skriptbeispiel: Abrufen der Azure Cosmos DB-Verbindungszeichenfolge für MongoDB-Apps'
 services: cosmos-db
 documentationcenter: cosmosdb
-author: mimig1
-manager: jhubbard
-editor: 
+author: SnehaGunda
+manager: kfile
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: PowerShell
@@ -15,12 +14,12 @@ ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
-ms.author: mimig
-ms.openlocfilehash: e44e35cc7d11db48cd82e470ce8226b3c8cc220a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: sngun
+ms.openlocfilehash: 0f53c060468c1473e0ed1329907fc84a37a2b902
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-apps-using-powershell"></a>Abrufen einer Azure Cosmos DB-Verbindungszeichenfolge für MongoDB-Apps mithilfe von PowerShell
 
@@ -44,7 +43,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmResource](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-3.8.0) | Erstellt einen logischen Server, der eine Datenbank oder einen Pool für elastische Datenbanken hostet. |

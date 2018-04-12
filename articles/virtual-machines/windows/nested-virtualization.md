@@ -4,18 +4,18 @@ description: Aktivieren der geschachtelten Virtualisierung auf Azure-VMs
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: philmea
-manager: timlt
+manager: jeconnoc
 ms.author: philmea
 ms.date: 10/09/2017
 ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 180b87e18d98bb1e7ddefdcce09fc45d2fc26d0f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: bf2de6738f83be96cd574c43dd6584fa3885ba6d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
@@ -49,7 +49,7 @@ Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer.
 Sie können diese Einstellungen manuell konfigurieren. Alternativ dazu haben wir ein PowerShell-Skript bereitgestellt, um die Konfiguration zu automatisieren.
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Option 1: Verwenden eines PowerShell-Skripts zum Konfigurieren der geschachtelten Virtualisierung
-Ein PowerShell-Skript zum Aktivieren der geschachtelten Virtualisierung auf einem Windows Server 2016-Host steht auf [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) zur Verfügung. Das Skript überprüft die Voraussetzungen und konfiguriert dann die geschachtelte Virtualisierung auf der Azure-VM. Um die Konfiguration abzuschließen, ist ein Neustart der Azure-VM erforderlich. Das Skript funktioniert möglicherweise in anderen Umgebungen, dies wird jedoch nicht garantiert. Sehen Sie sich den Azure-Blogbeitrag mit einer Livedemonstration zur geschachtelten Virtualisierung auf Azure an: https://aka.ms/AzureNVblog.
+Ein PowerShell-Skript zum Aktivieren der geschachtelten Virtualisierung auf einem Windows Server 2016-Host steht auf [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) zur Verfügung. Das Skript überprüft die Voraussetzungen und konfiguriert dann die geschachtelte Virtualisierung auf der Azure-VM. Um die Konfiguration abzuschließen, ist ein Neustart der Azure-VM erforderlich. Das Skript funktioniert möglicherweise in anderen Umgebungen, dies wird jedoch nicht garantiert. Sehen Sie sich den Azure-Blogbeitrag mit einer Livedemonstration zur geschachtelten Virtualisierung auf Azure an: https://aka.ms/AzureNVblog(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>Option 2: Manuelles Konfigurieren der geschachtelten Virtualisierung
 

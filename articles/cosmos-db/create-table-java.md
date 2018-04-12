@@ -1,25 +1,24 @@
 ---
-title: "Schnellstartanleitung: Table-API mit Java – Azure-Cosmos-DB | Microsoft-Dokumentation"
+title: 'Schnellstartanleitung: Table-API mit Java – Azure-Cosmos-DB | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Table-API von Azure Cosmos DB eine Anwendung mit dem Azure-Portal und Java erstellen.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
-manager: jhubbard
-editor: 
+manager: kfile
 ms.assetid: 66327041-4d5e-4ce6-a394-fee107c18e59
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 11/20/2017
 ms.author: arramac
-ms.openlocfilehash: 90ba10990049cd1fb788d63a143eb1169191cf24
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: fb544e11ac637201fb3fb032daeb395d5f0da839
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Table-API-App mit Java und Azure Cosmos DB
 
@@ -39,7 +38,7 @@ Außerdem haben Sie folgende Möglichkeiten:
     * Achten Sie darauf, dass die Umgebungsvariable „JAVA_HOME“ auf den Ordner verweist, in dem das JDK installiert ist.
 * Ein binäres [Maven](http://maven.apache.org/)-Archiv ([Download](http://maven.apache.org/download.cgi)/[Installationsanleitung](http://maven.apache.org/install.html))
     * Unter Ubuntu können Sie `apt-get install maven` ausführen, um Maven zu installieren.
-* [Git](https://www.git-scm.com/)
+* [Git-Client](https://www.git-scm.com/)
     * Unter Ubuntu können Sie `sudo apt-get install git` ausführen, um Git zu installieren.
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos

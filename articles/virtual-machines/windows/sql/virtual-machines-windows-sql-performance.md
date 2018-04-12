@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/20/2018
 ms.author: jroth
-ms.openlocfilehash: 2aa066caf6239f29038228c3c91607d913e70682
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e4f955a0880254cb67ccd3e46ad04b3685341263
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern
 
@@ -39,7 +39,7 @@ Im folgenden finden eine kurze Checkliste für die optimale Leistung von SQL Ser
 
 | Bereich | Optimierungen |
 | --- | --- |
-| [Größe des virtuellen Computers](#vm-size-guidance) |[DS3](../sizes-memory.md) oder höher für SQL Server Enterprise Edition<br/><br/>[DS2](../sizes-memory.md) oder höher für SQL Standard und Web Edition |
+| [Größe des virtuellen Computers](#vm-size-guidance) |[DS3](../sizes-general.md) oder höher für SQL Server Enterprise Edition<br/><br/>[DS2](../sizes-general.md) oder höher für SQL Standard und Web Edition |
 | [Speicher](#storage-guidance) |Verwenden Sie [Storage Premium](../premium-storage.md). Storage Standard empfiehlt sich nur für Entwicklungs- und Testumgebungen.<br/><br/>Speichern Sie das [Speicherkonto](../../../storage/common/storage-create-storage-account.md) und die SQL Server-VM in derselben Region.<br/><br/>Deaktivieren Sie auf dem Speicherkonto den [georedundanten Azure-Speicher](../../../storage/common/storage-redundancy.md) (Georeplikation). |
 | [Datenträger](#disks-guidance) |Verwenden Sie mindestens 2 [P30-Datenträger](../premium-storage.md#scalability-and-performance-targets) (1 für Protokolldateien; 1 für Datendateien und tempdb).<br/><br/>Vermeiden Sie die Verwendung von Betriebssystem- oder temporären Datenträgern für die Datenbankspeicherung oder Protokollierung.<br/><br/>Aktivieren Sie das Caching für Lesevorgänge auf den Datenträgern, auf denen die Datendateien und TempDB-Datendateien gehostet werden.<br/><br/>Aktivieren Sie kein Caching auf Datenträgern, auf denen die Protokolldatei gehostet wird.<br/><br/>Wichtig: Beenden Sie den SQL Server-Dienst, wenn Sie die Cacheeinstellungen für einen Azure-VM-Datenträger ändern.<br/><br/>Erstellen Sie ein Stripeset mehrerer Azure-Datenträger für Daten, um einen höheren E/A-Durchsatz zu erzielen.<br/><br/>Formatieren Sie mit dokumentierten Zuordnungsgrößen. |
 | [E/A](#io-guidance) |Aktivieren Sie die Datenbankseitenkomprimierung.<br/><br/>Aktivieren Sie die sofortige Dateiinitialisierung für Datendateien.<br/><br/>Begrenzen Sie die automatische Vergrößerung der Datenbank.<br/><br/>Deaktivieren Sie die automatische Verkleinerung der Datenbank.<br/><br/>Verschieben Sie alle Datenbanken, einschließlich der Systemdatenbanken, auf Datenträger für Daten.<br/><br/>Verschieben Sie die Verzeichnisse für das SQL Server-Fehlerprotokoll und die Ablaufverfolgungsdateien auf die Datenträger für Daten.<br/><br/>Richten Sie standardmäßige Dateispeicherorte für Sicherungen und Datenbanken ein.<br/><br/>Aktivieren Sie gesperrte Seiten.<br/><br/>Wenden Sie SQL Server-Leistungs-Hotfixpakete an. |

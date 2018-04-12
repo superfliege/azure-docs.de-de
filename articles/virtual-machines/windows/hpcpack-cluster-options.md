@@ -2,10 +2,10 @@
 title: Windows HPC Pack-Clusteroptionen in Azure | Microsoft-Dokumentation
 description: Informationen zu Optionen mit Microsoft HPC Pack, um einen Windows HPC-Cluster (High Performance Computing) in der Azure-Cloud zu erstellen und zu verwalten.
 services: virtual-machines-windows,cloud-services,batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management,hpc-pack
 ms.assetid: 02c5566d-2129-483c-9ecf-0d61030442d7
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 10/26/2017
 ms.author: danlep
-ms.openlocfilehash: 3dd00d4fb0d334e836256e66207358c034fc005a
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: c5b8c16e076be3002425ceeac377043cea1a40a7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="options-with-hpc-pack-to-create-and-manage-a-cluster-for-windows-hpc-workloads-in-azure"></a>Optionen zum Erstellen und Verwalten eines Clusters für Windows HPC-Workloads in Azure mit HPC Pack
 [!INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
@@ -48,7 +48,7 @@ Dieser Artikel konzentriert sich auf Optionen zum Erstellen von HPC Pack-Cluster
 ### <a name="powershell-deployment-script-for-hpc-pack-2012-r2"></a>PowerShell-Bereitstellungsskript für HPC Pack 2012 R2
 * [Erstellen eines HPC-Clusters mit dem HPC Pack IaaS-Bereitstellungsskript](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-### <a name="tutorials"></a>Lernprogramme
+### <a name="tutorials"></a>Tutorials
 * [Tutorial: Bereitstellen eines HPC Pack 2016-Clusters in Azure](hpcpack-2016-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Tutorial: Erste Schritte mit einem HPC Pack-Cluster in Azure zum Ausführen von Excel- und SOA-Workloads](excel-cluster-hpcpack.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

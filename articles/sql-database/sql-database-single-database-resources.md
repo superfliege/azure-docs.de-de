@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 167a72ae55052b8ac1dfe8f032f136a9bf8bcedf
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 87cd4c565a7429ffb7096034823a1f5ff49df195
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank
 
@@ -34,7 +34,7 @@ Klicken Sie auf **Übersicht**, um einen laufenden Vorgang zu überwachen und/od
 ![Abbrechen eines Vorgangs](./media/sql-database-single-database-resources/cancel-operation.png)
 
 > [!IMPORTANT]
-> Wenn Sie eine P11- oder P15-Dienstebene auswählen, helfen Ihnen die Informationen unter [Aktuelle Einschränkungen von P11- und P15-Datenbanken mit einer maximalen Größe von 4 TB](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb) weiter.
+> Wenn Sie eine P11- oder P15-Dienstebene auswählen, helfen Ihnen die Informationen unter [Aktuelle Einschränkungen von P11- und P15-Datenbanken mit einer maximalen Größe von 4 TB](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb) weiter.
 >
 
 ## <a name="manage-single-database-resources-using-powershell"></a>Verwalten der Ressourcen einer einzelnen Datenbank mit PowerShell

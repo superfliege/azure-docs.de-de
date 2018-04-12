@@ -1,11 +1,11 @@
 ---
-title: "Anzeigen und Verwalten von StorSimple Virtual Array-Aufträgen | Microsoft Docs"
-description: "Beschreibt die Seite „Aufträge“ des StorSimple-Geräte-Manager-Diensts und wie Sie damit kürzlich durchgeführte und aktuelle Aufträge für das StorSimple Virtual Array nachverfolgen."
+title: Anzeigen und Verwalten von StorSimple Virtual Array-Aufträgen | Microsoft Docs
+description: Beschreibt die Seite „Aufträge“ des StorSimple-Geräte-Manager-Diensts und wie Sie damit kürzlich durchgeführte und aktuelle Aufträge für das StorSimple Virtual Array nachverfolgen.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 31879821-b599-4609-a7f4-d4b0f658a933
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Anzeigen von Aufträgen für das StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht

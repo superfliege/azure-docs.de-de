@@ -3,9 +3,8 @@ title: Power BI-Tutorial für den Azure Cosmos DB-Connector | Microsoft-Dokument
 description: Verwenden Sie dieses Power BI-Tutorial, um JSON zu importieren, aufschlussreiche Berichte zu erstellen und Daten mithilfe des Azure Cosmos DB- und Power BI-Connectors zu visualisieren.
 keywords: Power BI-Tutorial, Daten visualisieren, Power BI-Connector
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: mimig
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: cd1b7f70-ef99-40b7-ab1c-f5f3e97641f7
 ms.service: cosmos-db
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
-ms.author: mimig
-ms.openlocfilehash: 74be3e5b25401a7811c1af23a0a7e2887f9055c1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: sngun
+ms.openlocfilehash: 7f884589cc198bed95a4a5fe51325a72cb799b69
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI-Tutorial für Azure Cosmos DB: Visualisieren von Daten mithilfe des Power BI-Connectors
 [PowerBI.com](https://powerbi.microsoft.com/) ist ein Onlinedienst zum Erstellen und Freigeben von Dashboards und Berichten mit Daten, die für Sie und Ihr Unternehmen wichtig sind.  Power BI Desktop ist ein dediziertes Berichterstellungstool, mit dem Sie Daten aus verschiedenen Datenquellen abrufen, die Daten zusammenführen und transformieren, leistungsstarke Berichte und Visualisierungen erstellen und Berichte in Power BI veröffentlichen können.  Mit der neuesten Version von Power BI Desktop können Sie jetzt über den Azure Cosmos DB-Connector für Power BI eine Verbindung mit Ihrem Azure Cosmos DB-Konto herstellen.   

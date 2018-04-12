@@ -1,13 +1,13 @@
 ---
-title: "Verschlüsseln von Datenträgern auf einem virtuellen Linux-Computer mithilfe von Azure CLI 1.0 | Microsoft-Dokumentation"
-description: "Verschlüsseln von Datenträgern auf einem virtuellen Linux-Computer unter Verwendung von Azure CLI 1.0 und des Resource Manager-Bereitstellungsmodells"
+title: Verschlüsseln von Datenträgern auf einem virtuellen Linux-Computer mithilfe von Azure CLI 1.0 | Microsoft-Dokumentation
+description: Verschlüsseln von Datenträgern auf einem virtuellen Linux-Computer unter Verwendung von Azure CLI 1.0 und des Resource Manager-Bereitstellungsmodells
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/06/2017
 ms.author: iainfou
-ms.openlocfilehash: b436f2d43c41000f4385889edb3fa3983d4a8c66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1704ba37b1d2acc595cb0c354b22bfcf1c57036
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="encrypt-disks-on-a-linux-vm-using-the-azure-cli-10"></a>Verschlüsseln von Datenträgern auf einem virtuellen Linux-Computer mithilfe von Azure CLI 1.0
 Zur Verbesserung der Sicherheit und Compliance von virtuellen Computern können virtuelle Datenträger in Azure im Ruhezustand verschlüsselt werden. Die Verschlüsselung der Datenträger basiert auf kryptografischen Schlüsseln, die in Azure Key Vault gesichert werden. Diese kryptografischen Schlüssel werden von Ihnen kontrolliert, und Sie können deren Verwendung überwachen. In diesem Artikel erfahren Sie, wie Sie virtuelle Datenträger auf einem virtuellen Linux-Computer unter Verwendung von Azure CLI 1.0 und des Resource Manager-Bereitstellungsmodells verschlüsseln.
@@ -28,7 +28,7 @@ Zur Verbesserung der Sicherheit und Compliance von virtuellen Computern können 
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#quick-commands): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0:](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="quick-commands"></a>Schnellbefehle
 Der folgende Abschnitt enthält Informationen zu den grundlegenden Befehlen für die Verschlüsselung virtueller Datenträger auf Ihrem virtuellen Computer. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#overview-of-disk-encryption)).

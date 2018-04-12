@@ -1,8 +1,8 @@
 ---
-title: "Verwalten von Nebenläufigkeit Microsoft Azure Storage"
-description: "Verwalten von Nebenläufigkeit für die Blob-, Warteschlangen-, Tabellen- und Dateidienste"
+title: Verwalten von Nebenläufigkeit Microsoft Azure Storage
+description: Verwalten von Nebenläufigkeit für die Blob-, Warteschlangen-, Tabellen- und Dateidienste
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: jasontang501
 manager: tadb
 editor: tysonn
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.openlocfilehash: 937cca66a0af0674b868e6a87681adbea330e91c
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Verwalten von Nebenläufigkeit Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht

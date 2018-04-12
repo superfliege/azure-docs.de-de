@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 950c64ea1ea2edc072650a9f63a6d21ad369c496
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3b935d3a3c37b63386dfb2cbd25ceba59d91a998
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-security"></a>Netzwerksicherheit
 
@@ -35,7 +35,7 @@ Wenn eine Netzwerksicherheitsgruppe sowohl einer Netzwerkschnittstelle als auch 
 - **Eingehender Datenverkehr**: Die Netzwerksicherheitsgruppe, die dem Subnetz der Netzwerkschnittstelle zugeordnet ist, wird zuerst ausgewertet. Der gesamte Datenverkehr, der über die dem Subnetz zugeordnete Netzwerksicherheitsgruppe zugelassen wird, wird dann von der Netzwerksicherheitsgruppe ausgewertet, die der Netzwerkschnittstelle zugeordnet ist. Es kann beispielsweise sein, dass Sie Zugriff in eingehender Richtung auf einen virtuellen Computer über Port 80 aus dem Internet benötigen. Wenn Sie eine Netzwerksicherheitsgruppe sowohl der Netzwerkschnittstelle als auch dem Subnetz der Netzwerkschnittstelle zuordnen, muss für die Netzwerksicherheitsgruppe, die dem Subnetz und der Netzwerkschnittstelle zugeordnet ist, Port 80 zugelassen werden. Falls Sie Port 80 nur für die Netzwerksicherheitsgruppe, die dem Subnetz zugeordnet ist, oder der Netzwerkschnittstelle des Subnetzes zugelassen haben, tritt für die Kommunikation aufgrund der Standardsicherheitsregeln ein Fehler auf. Ausführliche Informationen finden Sie unter [Standardsicherheitsregeln](#default-security-rules). Wenn Sie eine Netzwerksicherheitsgruppe nur auf das Subnetz oder die Netzwerkschnittstelle angewendet haben und die Netzwerksicherheitsgruppe eine Regel enthalten hat, für die beispielsweise der eingehende Datenverkehr über Port 80 zugelassen ist, ist die Kommunikation erfolgreich. 
 - **Ausgehender Datenverkehr**: Die Netzwerksicherheitsgruppe, die der Netzwerkschnittstelle zugeordnet ist, wird zuerst ausgewertet. Der gesamte Datenverkehr, der über die Netzwerksicherheitsgruppe der Netzwerkschnittstelle zugelassen wird, wird dann von der Netzwerksicherheitsgruppe ausgewertet, die dem Subnetz zugeordnet ist.
 
-Es ist für Sie unter Umständen nicht immer klar erkennbar, wenn Netzwerksicherheitsgruppen sowohl auf eine Netzwerkschnittstelle als auch auf ein Subnetz angewendet werden. Sie können die Aggregatregeln, die auf eine Netzwerkschnittstelle angewendet werden, leicht prüfen, indem Sie die [effektiven Sicherheitsregeln](virtual-network-manage-nsg-arm-portal.md) für eine Netzwerkschnittstelle anzeigen. Sie können auch in Azure Network Watcher die Funktion [Überprüfen des IP-Flusses](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwenden, um zu ermitteln, ob die Kommunikation für eine Netzwerkschnittstelle in ein- oder ausgehender Richtung zulässig ist. Das Tool gibt an, ob die Kommunikation zugelassen ist und für welche Netzwerksicherheitsregel Datenverkehr zugelassen ist oder abgelehnt wird.
+Es ist für Sie unter Umständen nicht immer klar erkennbar, wenn Netzwerksicherheitsgruppen sowohl auf eine Netzwerkschnittstelle als auch auf ein Subnetz angewendet werden. Sie können die Aggregatregeln, die auf eine Netzwerkschnittstelle angewendet werden, leicht prüfen, indem Sie die [effektiven Sicherheitsregeln](virtual-network-nsg-troubleshoot-portal.md) für eine Netzwerkschnittstelle anzeigen. Sie können auch in Azure Network Watcher die Funktion [Überprüfen des IP-Flusses](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwenden, um zu ermitteln, ob die Kommunikation für eine Netzwerkschnittstelle in ein- oder ausgehender Richtung zulässig ist. Das Tool gibt an, ob die Kommunikation zugelassen ist und für welche Netzwerksicherheitsregel Datenverkehr zugelassen ist oder abgelehnt wird.
  
 > [!NOTE]
 > Netzwerksicherheitsgruppen sind Subnetzen oder virtuellen Computern und Clouddiensten zugeordnet, die im Rahmen des klassischen Bereitstellungsmodells bereitgestellt wurden, und nicht Netzwerkschnittstellen gemäß dem Resource Manager-Bereitstellungsmodell. Weitere Informationen zu den Azure-Bereitstellungsmodellen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

@@ -1,13 +1,13 @@
 ---
-title: "Ausführliche Problembehandlung für Remotedesktops in Azure | Microsoft Docs"
+title: Ausführliche Problembehandlung für Remotedesktops in Azure | Microsoft Docs
 description: Hier finden Sie detaillierte Informationen zur Behandlung von Remotedesktopfehlern, bei denen keine Remotedesktopverbindung mit virtuellen Windows-Computern in Azure hergestellt werden kann.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: genlin
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
-keywords: "keine Verbindung mit Remotedesktop, Problembehandlung für Remotedesktop, Remotedesktop kann keine Verbindung herstellen, Remotedesktopfehler, Remotedesktop Problembehandlung, Probleme mit Remotedesktop"
+keywords: keine Verbindung mit Remotedesktop, Problembehandlung für Remotedesktop, Remotedesktop kann keine Verbindung herstellen, Remotedesktopfehler, Remotedesktop Problembehandlung, Probleme mit Remotedesktop
 ms.assetid: 9da36f3d-30dd-44af-824b-8ce5ef07e5e0
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/06/2017
 ms.author: genli
-ms.openlocfilehash: afbaa3afc78efd220d74def2e9f106e9fbd1ee2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1485bc5ac7ae47df9a1a36c8b88d6515b5624360
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Detaillierte Problembehandlung beim Herstellen einer Remotedesktopverbindung mit virtuellen Windows-Computern in Azure
 Dieser Artikel enthält ausführliche schrittweise Anleitungen zur Diagnose und Behebung komplexer Remotedesktop-Fehler für virtuelle windowsbasierte Azure-Computer.
@@ -39,7 +39,7 @@ Eine Remotedesktopverbindung umfasst folgende Komponenten:
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-Bevor Sie fortfahren, kann es hilfreich sein zu überlegen, was sich seit der letzten erfolgreichen Remotedesktopverbindung mit dem virtuellen Computer geändert hat. Beispiel:
+Bevor Sie fortfahren, kann es hilfreich sein zu überlegen, was sich seit der letzten erfolgreichen Remotedesktopverbindung mit dem virtuellen Computer geändert hat. Beispiel: 
 
 * Die öffentliche IP-Adresse des virtuellen Computers oder des Clouddiensts mit dem virtuellen Computer (auch virtuelle IP-Adresse [ [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)] genannt) hat sich geändert. Der RDP-Fehler kann darauf zurückzuführen sein, dass in Ihrem DNS-Clientcache immer noch die *alte IP-Adresse* für den DNS-Namen gespeichert ist. Löschen Sie den Cache des DNS-Clients, und versuchen Sie erneut eine Verbindung zum virtuellen Computer herzustellen. Oder versuchen Sie es direkt mit der neuen VIP.
 * Sie verwenden nicht die vom Azure-Portal generierte Verbindung, sondern verwalten Ihre Remotedesktopverbindungen mithilfe einer Drittanbieteranwendung. Vergewissern Sie sich, dass die Anwendungskonfiguration den richtigen TCP-Port für den Remotedesktop-Datenverkehr enthält. Bei klassischen virtuellen Computern können Sie den Port im [Azure-Portal](https://portal.azure.com) überprüfen, indem Sie die Einstellungen für diesen virtuellen Computer aufrufen und auf „Endpunkte“ klicken.

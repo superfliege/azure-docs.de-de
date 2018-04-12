@@ -1,11 +1,11 @@
 ---
 title: Konfigurieren des Telestream Wirecast-Encoders zum Senden eines Single-Bitrate-Livedatenstroms | Microsoft-Dokumentation
-description: "In diesem Thema wird beschrieben, wie Sie den Wirecast-Liveencoder zum Senden eines Single-Bitrate-Livedatenstroms an AMS-Kanäle konfigurieren, für die Livecodierung aktiviert sind. "
+description: 'In diesem Thema wird beschrieben, wie Sie den Wirecast-Liveencoder zum Senden eines Single-Bitrate-Livedatenstroms an AMS-Kanäle konfigurieren, für die Livecodierung aktiviert sind. '
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: 0e4fb0b7c915969da1760eaccc77aa399030752e
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des Wirecast-Encoders zum Senden eines Single-Bitrate-Livedatenstroms
 > [!div class="op_single_selector"]

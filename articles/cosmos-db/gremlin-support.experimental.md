@@ -4,9 +4,7 @@ description: Informieren Sie sich über die Sprache Gremlin von Apache TinkerPop
 services: cosmos-db
 documentationcenter: ''
 author: LuisBosquez
-manager: jhubbard
-editor: ''
-tags: ''
+manager: kfile
 ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
 ms.service: cosmos-db
 ms.devlang: na
@@ -15,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: f04beb9526dbf55d42590b9843e7c104b8fca092
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: c5e904c741c96808555718b0d90368e1bf770ecb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Unterstützung für Gremlin-Diagramme in Azure Cosmos DB
 Azure Cosmos DB unterstützt die Graph-Traversalsprache [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) von [Apache Tinkerpop](http://tinkerpop.apache.org). Dabei handelt es sich um eine Graph-API zur Erstellung von Diagrammentitäten und zur Durchführung von Diagrammabfragen. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
@@ -35,10 +33,10 @@ Anhand eines Beispieldiagramms wird erläutert, wie Abfragen in Gremlin ausgedr�
 
 Dieses Diagramm weist folgende Vertex-Typen (in Gremlin als „Bezeichnung“ bezeichnet) auf:
 
-- Personen: Das Diagramm enthält die drei Personen „Robin“, „Thomas“ und „Ben“.
-- Interessen: In diesem Beispiel liegen ihre Interessen bei Football-Spielen.
-- Geräte: Dies sind die von den Personen verwendeten Geräte.
-- Betriebssysteme: Dies sind die Betriebssysteme, die auf den Geräten ausgeführt werden.
+- Personen: Das Diagramm enthält drei Personen: Robin, Thomas und Ben.
+- Interessen: In diesem Beispiel interessieren sie sich für Football.
+- Geräte: Die von den Personen verwendeten Geräte.
+- Betriebssysteme: Die Betriebssysteme auf den Geräten.
 
 Die Beziehungen zwischen diesen Entitäten werden anhand von folgenden Edgetypen/Bezeichnungen dargestellt:
 
@@ -206,4 +204,4 @@ Die von Azure Cosmos DB bereitgestellte, für Schreibvorgänge optimierte Engine
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erste Schritte zum Erstellen einer Diagrammanwendung [mithilfe unserer SDKs](create-graph-dotnet.md) 
-* Weitere Informationen zur [Diagrammunterstützung](graph-introduction.md) in Azure Cosmos DB
+* Informieren Sie sich ausführlicher über die [Diagrammunterstützung](graph-introduction.md) in Azure Cosmos DB.

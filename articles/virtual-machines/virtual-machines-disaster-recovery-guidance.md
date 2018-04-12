@@ -1,11 +1,11 @@
 ---
-title: "Notfallwiederherstellungsszenarien für Azure-VMs | Microsoft Docs"
+title: Notfallwiederherstellungsszenarien für Azure-VMs | Microsoft Docs
 description: Hier erhalten Sie Informationen zur Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer.
 services: virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: kmouss
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 65272148-ff06-4bce-91f1-851d706d4d40
 ms.service: virtual-machines
 ms.workload: virtual-machines
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: kmouss;aglick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb986a41e33501ee71c93a48457ac4114e33c671
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70aec41c885ab81371f5318f7557b0e628ac3308
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer
 Bei Microsoft setzen wir uns mit großem Engagement dafür ein, dass unsere Dienste immer verfügbar sind, wenn Sie sie benötigen. Aufgrund von höherer Gewalt können jedoch gelegentlich ungeplante Dienstausfälle auftreten.
 
 Microsoft stellt für seine Dienste Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) bereit, um dem Engagement für Verfügbarkeit und Konnektivität Nachdruck zu verleihen. Die SLAs für einzelne Azure-Dienste finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).
 
-Azure weist bereits viele integrierte Plattformfunktionen auf, die hoch verfügbare Anwendungen unterstützen. Weitere Informationen zu diesen Diensten finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+Azure weist bereits viele integrierte Plattformfunktionen auf, die hoch verfügbare Anwendungen unterstützen. Weitere Informationen zu diesen Diensten finden Sie unter [Notfallwiederherstellung und Hochverfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
 Dieser Artikel behandelt ein echtes Szenario der Notfallwiederherstellung für den Fall, dass eine ganze Region aufgrund einer Naturkatastrophe oder einer umfangreichen Dienstunterbrechung von einem Ausfall betroffen ist. So etwas kommt zwar äußerst selten vor, dennoch müssen Sie für den Ausfall einer gesamten Region vorbereitet sein. Falls eine ganze Region von einer Dienstunterbrechung betroffen ist, sind die lokal redundanten Kopien Ihrer Daten vorübergehend nicht verfügbar. Bei aktivierter Georeplikation sind drei zusätzliche Kopien Ihrer Azure Storage-Blobs und -Tabellen in einer anderen Region gespeichert. Sollte eine gesamte Region ausfallen oder die primäre Region aufgrund einer Katastrophe nicht wiederherstellbar sein, ordnet Azure alle DNS-Einträge der georeplizierten Region zu.
 
@@ -51,7 +51,7 @@ Dies ist die beste Option, wenn Sie vor der Unterbrechung nicht Azure Site Recov
 
 - Beginnen Sie damit, mithilfe von Azure Site Recovery [Ihre Anwendungen auf virtuellen Azure-Computern zu schützen](https://aka.ms/a2a-getting-started).
 
-- Weitere Informationen zur Implementierung einer Strategie für Notfallwiederherstellung und hohe Verfügbarkeit finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+- Weitere Informationen zur Implementierung einer Strategie für Notfallwiederherstellung und Hochverfügbarkeit finden Sie unter [Notfallwiederherstellung und Hochverfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
 - Im [technischen Leitfaden zur Resilienz in Azure](../resiliency/resiliency-technical-guidance.md)können Sie detaillierte technische Kenntnisse hinsichtlich der Funktionen einer Cloudplattform erwerben.
 

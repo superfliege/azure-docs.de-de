@@ -1,11 +1,11 @@
 ---
 title: Virtuelle Linux-Computeknoten-Computer in einem HPC Pack-Cluster | Microsoft Docs
-description: "Erfahren Sie, wie Sie einen HPC Pack-Cluster in Azure für Linux-HPC-Workloads (High Performance Computing) erstellen und verwenden."
+description: Erfahren Sie, wie Sie einen HPC Pack-Cluster in Azure für Linux-HPC-Workloads (High Performance Computing) erstellen und verwenden.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 4d080fdd-5ffe-4f54-a78d-4c818f6eb3fb
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57ad5d5d2e7e068f47d51408527f1f7553917279
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure
 Richten Sie einen [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx)-Cluster in Azure ein, der einen Hauptknoten unter Windows Server sowie mehrere Serverknoten unter einer unterstützten Linux-Distribution enthält. Informieren Sie sich über die Optionen zum Verschieben von Daten zwischen den Linux-Knoten und dem Windows-Hauptknoten des Clusters. Finden Sie heraus, wie Sie Linux-HPC-Aufträge an den Cluster senden.
@@ -153,7 +153,7 @@ Das HPC Pack-IaaS-Bereitstellungsskript verwendet als Eingabe eine XML-Konfigura
    
     c. Nach erfolgreicher Überprüfung listet das Skript die zu erstellenden Clusterressourcen auf. Geben Sie *Y* ein, um fortzufahren.
    
-    ![Ressourcen][resources]
+    ![angeben][resources]
    
     d. Das Skript beginnt mit der Bereitstellung des HPC Pack-Clusters und schließt die Konfiguration ohne weitere manuelle Schritte ab. Die Ausführung des Skripts kann mehrere Minuten dauern.
    

@@ -1,12 +1,12 @@
 ---
-title: "Bestimmte RDP-Fehlermeldungen für Azure-VMs | Microsoft Docs"
-description: "Grundlegendes zu Fehlermeldungen, die möglicherweise angezeigt werden, wenn Sie versuchen, eine Remotedesktopverbindung zu einem Windows-Computer in Azure zu verwenden"
-keywords: "Remotedesktop-Fehler,Remotedesktop-Verbindungsfehler,Verbindung mit virtuellem Computer nicht möglich,Remotedesktop-Problembehandlung"
+title: Bestimmte RDP-Fehlermeldungen für Azure-VMs | Microsoft Docs
+description: Grundlegendes zu Fehlermeldungen, die möglicherweise angezeigt werden, wenn Sie versuchen, eine Remotedesktopverbindung zu einem Windows-Computer in Azure zu verwenden
+keywords: Remotedesktop-Fehler,Remotedesktop-Verbindungsfehler,Verbindung mit virtuellem Computer nicht möglich,Remotedesktop-Problembehandlung
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: genlin
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 5feb1d64-ee6f-4907-949a-a7cffcbc6153
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 199f8c62b7aa3310bebd33c88edf57ea3bce804b
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 4d13d32e0269be3715a18484157519e1a0556ade
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Problembehandlung bei bestimmten RDP-Fehlermeldungen in einer Windows-VM in Azure
 Sie erhalten möglicherweise eine bestimmte Fehlermeldung bei Verwendung einer Remotedesktopverbindung mit einem virtuellen Windows-Computer (VM) in Azure. In diesem Artikel werden einige der häufigeren Fehlermeldungen beschrieben, zusammen mit Problemlösungsschritten zur Fehlerbehebung. Wenn beim Herstellen einer Verbindung mit Ihrem virtuellen Computer mit RDP keine bestimmte Fehlermeldung auftritt, finden Sie Informationen im [Handbuch zur Problembehandlung bei Remotedesktopfehlern](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

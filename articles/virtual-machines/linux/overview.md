@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über virtuelle Linux-Computer in Azure | Microsoft-Dokumentation"
+title: Übersicht über virtuelle Linux-Computer in Azure | Microsoft-Dokumentation
 description: Beschreibt die Azure Compute-, Speicher- und Netzwerkdienste in Bezug auf virtuelle Linux-Computer.
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: rickstercdn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: cdb2bda0c3f7e73b115c2609c3f229c633093bdc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d2e4a014a0f7bb7f94885528abc930d2b243318b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-and-linux"></a>Azure und Linux
 Microsoft Azure ist eine wachsende Sammlung von integrierten Diensten der öffentlichen Cloud, z.B. für Analysen, virtuelle Computer, Datenbanken, mobile Geräte, Netzwerke, Speicher und Web – damit eignet Azure sich ideal zum Hosten Ihrer Lösungen.  Microsoft Azure stellt eine skalierbare Computingplattform bereit, bei der Sie nur für die tatsächliche gewünschte Nutzung bezahlen – ohne dass Sie in lokale Hardware investieren müssen.  Azure ist darauf ausgelegt, dass Sie Ihre Lösungen wie gewünscht vertikal und horizontal auf den Stand hochskalieren, der für die Erfüllung der Anforderungen Ihrer Kunden erforderlich ist.

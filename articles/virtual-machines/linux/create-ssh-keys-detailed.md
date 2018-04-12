@@ -1,13 +1,13 @@
 ---
-title: "Ausführliche Schritte zum Erstellen eines SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure| Microsoft-Dokumentation"
-description: "Hier finden Sie zusätzliche Schritte zum Erstellen eines öffentlich-privaten SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure mit bestimmten Zertifikaten für verschiedene Anwendungsfälle."
+title: Ausführliche Schritte zum Erstellen eines SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure| Microsoft-Dokumentation
+description: Hier finden Sie zusätzliche Schritte zum Erstellen eines öffentlich-privaten SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure mit bestimmten Zertifikaten für verschiedene Anwendungsfälle.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/28/2017
 ms.author: danlep
-ms.openlocfilehash: 1308812287fa4484e244c47497a7aef7aa994b14
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 20d36f5e377f2d5af588319cee2be1808571f905
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>Ausführliche exemplarische Vorgehensweise zum Erstellen eines SSH-Schlüsselpaars mit zusätzlichen Zertifikaten für einen virtuellen Linux-Computer in Azure
 Mit einem SSH-Schlüsselpaar können Sie virtuelle Computer in Azure erstellen, bei deren Authentifizierung standardmäßig SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. Kennwörter können erraten werden und machen Ihre virtuellen Computer anfällig für entsprechende Brute-Force-Angriffe. Virtuelle Computer, die mit der Azure CLI oder Resource Manager-Vorlagen erstellt werden, können Ihren öffentlichen SSH-Schlüssel als Teil der Bereitstellung enthalten, sodass eine nachträgliche Deaktivierung von Kennwortanmeldungen für SSH entfällt. Dieser Artikel enthält detaillierte Schritte und zusätzliche Beispiele zum Generieren von Zertifikaten, z.B. zur Verwendung mit virtuellen Linux-Computern. Wenn Sie schnell ein SSH-Schlüsselpaar erstellen und verwenden möchten, finden Sie Informationen dazu unter [Erstellen eines öffentlich-privaten SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure](mac-create-ssh-keys.md).
