@@ -1,11 +1,11 @@
 ---
 title: Erstellen einer PHP- und MySQL-Web-App in Azure | Microsoft-Dokumentation
-description: "Erfahren Sie etwas über das Ausführen einer PHP-App in Azure mit Verbindung mit einer MySQL-Datenbank in Azure."
+description: Erfahren Sie etwas über das Ausführen einer PHP-App in Azure mit Verbindung mit einer MySQL-Datenbank in Azure.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.service: app-service-web
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 39bfc4e6a4f4066e8aeda0da387fe570525b6086
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 28c50aea9aaad1b9b18fb6b3034617d10beea7ec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-php-and-mysql-web-app-in-azure"></a>Erstellen einer PHP- und MySQL-Web-App in Azure
+# <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Tutorial: Erstellen einer PHP- und MySQL-Web-App in Azure
 
 > [!NOTE]
 > In diesem Artikel wird eine App in App Service unter Windows bereitgestellt. Informationen zur Bereitstellung in App Service unter _Linux_ finden Sie unter [Erstellen einer PHP- und MySQL-Web-App in Azure](./containers/tutorial-php-mysql-app.md).
@@ -154,7 +154,7 @@ Um den PHP-Server zu beenden, geben Sie `Ctrl + C` im Terminal ein.
 
 ## <a name="create-mysql-in-azure"></a>Erstellen von MySQL in Azure
 
-In diesem Schritt erstellen Sie eine MySQL-Datenbank in [Azure-Datenbank für MySQL (Vorschau)](/azure/mysql). Später konfigurieren Sie die PHP-Anwendung für eine Verbindung mit dieser Datenbank.
+In diesem Schritt erstellen Sie eine MySQL-Datenbank in [Azure Database for MySQL](/azure/mysql). Später konfigurieren Sie die PHP-Anwendung für eine Verbindung mit dieser Datenbank.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -162,7 +162,7 @@ In diesem Schritt erstellen Sie eine MySQL-Datenbank in [Azure-Datenbank für My
 
 ### <a name="create-a-mysql-server"></a>Erstellen eines MySQL-Servers
 
-Erstellen Sie in Cloud Shell mit dem Befehl [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) einen Server in Azure Database for MySQL (Vorschauversion).
+Erstellen Sie in Cloud Shell mit dem Befehl [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) einen Server in Azure Database for MySQL.
 
 Ersetzen Sie im folgenden Befehl den Platzhalter _&lt;mysql_server_name>_ durch Ihren MySQL-Servernamen (gültige Zeichen sind `a-z`, `0-9` und `-`). Dieser Name ist Teil des Hostnamens des MySQL-Servers (`<mysql_server_name>.database.windows.net`) und muss global eindeutig sein.
 
@@ -199,7 +199,7 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 ```
 
 > [!NOTE]
-> Für Azure-Datenbank für MySQL (Vorschauversion) besteht derzeit keine Beschränkung für ausschließliche Verbindungen mit Azure-Diensten. Da IP-Adressen in Azure dynamisch zugewiesen werden, ist es besser, alle IP-Adressen zu aktivieren. Der Dienst befindet sich in der Vorschauphase. Bessere Methoden zum Schützen Ihrer Datenbank sind geplant.
+> Für Azure Database for MySQL besteht derzeit keine Beschränkung für ausschließliche Verbindungen mit Azure-Diensten. Da IP-Adressen in Azure dynamisch zugewiesen werden, ist es besser, alle IP-Adressen zu aktivieren. Bessere Methoden zum Schützen Ihrer Datenbank sind geplant.
 >
 >
 
@@ -236,7 +236,7 @@ quit
 
 ## <a name="connect-app-to-azure-mysql"></a>Verbinden der App mit Azure MySQL
 
-In diesem Schritt verbinden Sie die PHP-Anwendung mit der MySQL-Datenbank, die Sie in Azure-Datenbank für MySQL (Vorschauversion) erstellt haben.
+In diesem Schritt verbinden Sie die PHP-Anwendung mit der MySQL-Datenbank, die Sie in Azure Database for MySQL erstellt haben.
 
 <a name="devconfig"></a>
 
@@ -260,12 +260,12 @@ MYSQL_SSL=true
 Speichern Sie die Änderungen.
 
 > [!TIP]
-> Um Ihre MySQL-Verbindungsinformationen zu schützen, ist diese Datei bereits aus dem Git-Repository ausgeschlossen (siehe _.gitignore_ im Repositorystamm). Später erfahren Sie, wie Sie die Umgebungsvariablen in App Service so konfigurieren, dass eine Verbindung mit Ihrer Datenbank in Azure-Datenbank für MySQL (Vorschauversion) hergestellt wird. Bei Umgebungsvariablen benötigen Sie die *ENV*-Datei in App Service nicht.
+> Um Ihre MySQL-Verbindungsinformationen zu schützen, ist diese Datei bereits aus dem Git-Repository ausgeschlossen (siehe _.gitignore_ im Repositorystamm). Später erfahren Sie, wie Sie die Umgebungsvariablen in App Service so konfigurieren, dass eine Verbindung mit Ihrer Datenbank in Azure Database for MySQL hergestellt wird. Bei Umgebungsvariablen benötigen Sie die *ENV*-Datei in App Service nicht.
 >
 
 ### <a name="configure-ssl-certificate"></a>Konfigurieren des SSL-Zertifikats
 
-Standardmäßig erzwingt Azure-Datenbank für MySQL SSL-Verbindungen von Clients. Zum Herstellen einer Verbindung mit Ihrer MySQL-Datenbank in Azure müssen Sie das [_PEM_-Zertifikat verwenden, das von Azure Database for MySQL bereitgestellt wird](../mysql/howto-configure-ssl.md).
+Standardmäßig erzwingt Azure Database for MySQL SSL-Verbindungen von Clients. Zum Herstellen einer Verbindung mit Ihrer MySQL-Datenbank in Azure müssen Sie das [_PEM_-Zertifikat verwenden, das von Azure Database for MySQL bereitgestellt wird](../mysql/howto-configure-ssl.md).
 
 Öffnen Sie _config/database.php_, und fügen Sie `connections.mysql` die Parameter `sslmode` und `options` hinzu, wie im folgenden Code gezeigt.
 
@@ -283,7 +283,7 @@ Das Zertifikat `BaltimoreCyberTrustRoot.crt.pem` wird in diesem Tutorial der Ein
 
 ### <a name="test-the-application-locally"></a>Lokales Testen der Anwendung
 
-Führen Sie die Laravel-Datenbankmigrationen mit der Datei _.env.production_ als Umgebungsdatei aus, um die Tabellen in der MySQL-Datenbank in Azure-Datenbank für MySQL (Vorschau) zu erstellen. Beachten Sie, dass _.env.production_ die Verbindungsinformationen für Ihre MySQL-Datenbank in Azure enthält.
+Führen Sie die Laravel-Datenbankmigrationen mit der Datei _.env.production_ als Umgebungsdatei aus, um die Tabellen in der MySQL-Datenbank in Azure Database for MySQL zu erstellen. Beachten Sie, dass _.env.production_ die Verbindungsinformationen für Ihre MySQL-Datenbank in Azure enthält.
 
 ```bash
 php artisan migrate --env=production --force
@@ -305,7 +305,7 @@ Navigieren Sie zu `http://localhost:8000`. Wenn die Seite ohne Fehler geladen wi
 
 Fügen Sie auf der Seite einige Aufgaben hinzu.
 
-![Erfolgreiche Verbindung zwischen PHP und Azure-Datenbank für MySQL (Vorschau)](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
+![Erfolgreiche Verbindung zwischen PHP und Azure Database for MySQL](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
 
 Geben Sie zum Beenden von PHP im Terminal `Ctrl + C` ein.
 

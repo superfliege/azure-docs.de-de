@@ -1,11 +1,11 @@
 ---
 title: RESTful-API mit CORS in Azure App Service | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Azure App Service Ihnen beim Hosten Ihrer RESTful-APIs mit CORS-Unterstützung hilft."
+description: Hier erfahren Sie, wie Azure App Service Ihnen beim Hosten Ihrer RESTful-APIs mit CORS-Unterstützung hilft.
 services: app-service\api
 documentationcenter: dotnet
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.service: app-service
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 02/28/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7420e92bc929808f074e9be00dfbcb7d8476654a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4b5e432a9c553f5221f138b19a180f92420e6058
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="host-a-restful-api-with-cors-in-azure-app-service"></a>Hosten einer RESTful-API mit CORS in Azure App Service
+# <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Tutorial: Hosten einer RESTful-API mit CORS in Azure App Service
 
 Von [Azure App Service](app-service-web-overview.md) wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt. Darüber hinaus bietet App Service integrierte Unterstützung für die [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) für RESTful-APIs. In diesem Tutorial erfahren Sie, wie Sie eine ASP.NET Core-API-App mit CORS-Unterstützung in App Service bereitstellen. Die App wird mithilfe von Befehlszeilentools konfiguriert und unter Verwendung von Git bereitgestellt. 
 
@@ -38,9 +38,9 @@ Die Schritte in diesem Tutorial können unter macOS, Linux und Windows ausgefüh
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie zur Vorbereitung dieses Tutorials die folgenden Schritte aus:
+Für dieses Tutorial benötigen Sie Folgendes:
 
-* [Installieren Sie Git.](https://git-scm.com/)
+* [Git installieren](https://git-scm.com/).
 * [Installieren Sie .NET Core.](https://www.microsoft.com/net/core/)
 
 ## <a name="create-local-aspnet-core-app"></a>Erstellen einer lokalen ASP.NET Core-App
@@ -204,7 +204,7 @@ Sie haben Folgendes gelernt:
 > * Bereitstellen einer RESTful-API in Azure mithilfe von Git
 > * Aktivieren der App Service-CORS-Unterstützung
 
-Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihrer Web-App einen benutzerdefinierten DNS-Namen zuordnen.
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Benutzer authentifizieren und autorisieren.
 
 > [!div class="nextstepaction"]
-> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](app-service-web-tutorial-custom-domain.md)
+> [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](app-service-web-tutorial-auth-aad.md)
