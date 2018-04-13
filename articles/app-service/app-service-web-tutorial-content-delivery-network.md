@@ -1,6 +1,6 @@
 ---
-title: "Hinzufügen eines CDN zu Azure App Service | Microsoft-Dokumentation"
-description: "Fügen Sie einer Azure App Service-Instanz ein Content Delivery Network (CDN) hinzu, um Ihre statischen Dateien über Server zwischenzuspeichern und bereitzustellen, die von Ihren weltweiten Kunden jeweils nicht weit entfernt sind."
+title: Hinzufügen eines CDN zu Azure App Service | Microsoft-Dokumentation
+description: Fügen Sie einer Azure App Service-Instanz ein Content Delivery Network (CDN) hinzu, um Ihre statischen Dateien über Server zwischenzuspeichern und bereitzustellen, die von Ihren weltweiten Kunden jeweils nicht weit entfernt sind.
 services: app-service\web
 author: syntaxc4
 ms.author: cfowler
@@ -10,13 +10,13 @@ ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
-ms.openlocfilehash: 257b75d01f3904661c1a188a2d53ffcb74f48f06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 74344b72869ef6b27f9e7329c7a1777a40662b17
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Hinzufügen eines Content Delivery Network (CDN) zu einer Azure App Service-Instanz
+# <a name="tutorial-add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Tutorial: Hinzufügen eines CDN (Content Delivery Network) zu einer Azure App Service-Instanz
 
 Das [Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md) speichert statische Webinhalte an strategisch platzierten Standorten zwischen, um beim Bereitstellen von Inhalten für Benutzer einen maximalen Durchsatz zu ermöglichen. Durch das CDN wird auch die Serverlast auf Ihrer Web-App verringert. In diesem Tutorial wird veranschaulicht, wie Sie Azure CDN einer [Web-App in Azure App Service](app-service-web-overview.md) hinzufügen. 
 
@@ -36,7 +36,7 @@ Sie lernen Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- [Installieren Sie Git.](https://git-scm.com/)
+- [Installation von Git](https://git-scm.com/)
 - [Installieren der Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -69,10 +69,10 @@ Geben Sie auf der Seite **Azure Content Delivery Network** die Einstellungen fü
 
 ![Erstellen des Profils und Endpunkts im Portal](media/app-service-web-tutorial-content-delivery-network/portal-new-endpoint.png)
 
-| Einstellung | Empfohlener Wert | Beschreibung |
+| Einstellung | Empfohlener Wert | BESCHREIBUNG |
 | ------- | --------------- | ----------- |
 | **CDN-Profil** | myCDNProfile | Wählen Sie **Neu erstellen** aus, um ein CDN-Profil zu erstellen. Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten mit demselben Tarif. |
-| **Tarif** | Standard Akamai | Über den [Tarif](../cdn/cdn-overview.md#azure-cdn-features) werden der Anbieter und die verfügbaren Features angegeben. In diesem Tutorial verwenden wir Standard Akamai. |
+| **Preisstufe** | Standard Akamai | Über den [Tarif](../cdn/cdn-overview.md#azure-cdn-features) werden der Anbieter und die verfügbaren Features angegeben. In diesem Tutorial verwenden wir Standard Akamai. |
 | **CDN-Endpunktname** | Beliebiger Name, der in der Domäne „azureedge.net“ eindeutig ist | Sie greifen auf Ihre zwischengespeicherten Ressourcen in der Domäne *\<Endpunktname>.azureedge.net* zu.
 
 Klicken Sie auf **Erstellen**.
@@ -204,7 +204,7 @@ Wählen Sie im Azure-Portal auf der Seite **CDN-Endpunkt** die Option **Cache**.
 
 Wählen Sie in der Dropdownliste **Verhalten für das Zwischenspeichern von Abfragezeichenfolgen** die Option **Jede eindeutige URL zwischenspeichern**.
 
-Wählen Sie **Speichern** aus.
+Wählen Sie **Speichern**aus.
 
 ![Auswählen des Zwischenspeicherverhaltens für Abfragezeichenfolgen](media/app-service-web-tutorial-content-delivery-network/portal-select-caching-behavior.png)
 
