@@ -1,7 +1,7 @@
----
-title: Hadoop-Komponenten und -Versionen – Azure HDInsight | Microsoft-Dokumentation
-description: Erfahren Sie mehr zu den Hadoop-Komponenten und -Versionen in HDInsight und die in dieser Cloud-Distribution von Hortonworks Data Platform verfügbaren Servicelevels.
-keywords: Hadoop-Versionen, Komponenten des Hadoop-Ökosystems, Hadoop-Komponenten, Hadoop-Version überprüfen
+﻿---
+title: "Hadoop-Komponenten und -Versionen – Azure HDInsight | Microsoft-Dokumentation"
+description: "Erfahren Sie mehr zu den Hadoop-Komponenten und -Versionen in HDInsight und die in dieser Cloud-Distribution von Hortonworks Data Platform verfügbaren Servicelevels."
+keywords: "Hadoop-Versionen, Komponenten des Hadoop-Ökosystems, Hadoop-Komponenten, Hadoop-Version überprüfen"
 services: hdinsight
 editor: cgronlun
 manager: asadk
