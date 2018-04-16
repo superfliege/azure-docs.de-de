@@ -1,10 +1,10 @@
 ---
-title: "Verwenden von Azure Event Grid zum Automatisieren der Größenänderung hochgeladener Bilder | Microsoft Docs"
-description: "Azure Event Grid kann bei Blob-Uploads in Azure Storage ausgelöst werden. Sie können diese Funktion verwenden, um in Azure Storage hochgeladene Bilddateien an andere Dienste (z. B. Azure Functions) für die Größenänderung und andere Optimierungen zu senden."
+title: Verwenden von Azure Event Grid zum Automatisieren der Größenänderung hochgeladener Bilder | Microsoft Docs
+description: Azure Event Grid kann bei Blob-Uploads in Azure Storage ausgelöst werden. Sie können diese Funktion verwenden, um in Azure Storage hochgeladene Bilddateien an andere Dienste (z. B. Azure Functions) für die Größenänderung und andere Optimierungen zu senden.
 services: event-grid, functions
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 68343c3ffd87496ed4ae89b478ee5c8119ed67f5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0edf5648ddef58db74273635c84d7473e17e1b30
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -90,7 +90,7 @@ storageConnectionString=$(az storage account show-connection-string \
 az functionapp config appsettings set --name <function_app> \
 --resource-group myResourceGroup \
 --settings myblobstorage_STORAGE=$storageConnectionString \
-myContainerName=thumbs
+myContainerName=thumbnails
 ```
 
 Sie können nun ein Funktionscodeprojekt für diese Funktions-App bereitstellen.
@@ -145,7 +145,7 @@ Ein Ereignisabonnement gibt an, welche vom Anbieter generierten Ereignisse an ei
     | **Abonnentenendpunkt** | Automatisch generiert | Verwenden Sie die Endpunkt-URL, die für Sie generiert wird. | 
     | **Präfixfilter** | /blobServices/default/containers/images/blobs/ | Filtert Speicherereignisse nur für den Container **images**.| 
 
-4. Klicken Sie auf **Erstellen**, um das Ereignisabonnement hinzuzufügen. Dadurch wird ein Ereignisabonnement erstellt, das `imageresizerfunc` auslöst, wenn ein Blob dem Container *images* hinzugefügt wird. Die Funktion ändert die Größe der Bilder und fügt sie dem Container *thumbs* hinzu.
+4. Klicken Sie auf **Erstellen**, um das Ereignisabonnement hinzuzufügen. Dadurch wird ein Ereignisabonnement erstellt, das `imageresizerfunc` auslöst, wenn ein Blob dem Container *images* hinzugefügt wird. Die Funktion passt die Größe der Bilder an und fügt sie dem Container *thumbnails* hinzu.
 
 Nachdem die Back-End-Dienste konfiguriert wurden, testen Sie die Funktion für die Größenänderung von Bildern in der Beispiel-Web-App. 
 
@@ -155,7 +155,7 @@ Navigieren Sie zum Testen der Größenänderung von Bildern in der Web-App zur U
 
 Klicken Sie auf den Bereich **Fotos hochladen**, um eine Datei auszuwählen und hochzuladen. Sie können auch ein Foto in diese Region ziehen. 
 
-Beachten Sie, dass eine Kopie des hochgeladenen Bilds im Karussell **Generierte Miniaturansichten** angezeigt wird, nachdem das hochgeladene Bild nicht mehr angezeigt wird. Die Größe dieses Bilds wurde von der Funktion geändert, dem Container *thumbs* hinzugefügt und vom Webclient heruntergeladen.
+Beachten Sie, dass eine Kopie des hochgeladenen Bilds im Karussell **Generierte Miniaturansichten** angezeigt wird, nachdem das hochgeladene Bild nicht mehr angezeigt wird. Die Größe dieses Bilds wurde von der Funktion angepasst, und das Bild wurde dem Container *thumbnails* hinzugefügt und vom Webclient heruntergeladen.
 
 ![Veröffentlichte Web-App im Edge-Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
 

@@ -1,11 +1,11 @@
 ---
-title: "Schnellstart für Azure Security Center: Einbinden von Windows-Computern in Azure Security Center | Microsoft-Dokumentation"
+title: 'Schnellstart für Azure Security Center: Einbinden von Windows-Computern in Azure Security Center | Microsoft-Dokumentation'
 description: Dieser Schnellstart veranschaulicht die Microsoft Monitoring Agent-Bereitstellung auf einem Windows-Computer.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 8d9b0fcc8b72f947cbc64c6ac9a428ac29f8dfd2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b872153278810ce92f19c7c71fe473a2b77def35
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Schnellstart: Einbinden von Windows-Computern in Azure Security Center
 Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Ressourcen aktivieren, die außerhalb von Azure ausgeführt werden, z.B. lokale Ressourcen oder Ressourcen in anderen Clouds, indem Sie den Microsoft Monitoring Agent bereitstellen.
@@ -62,7 +62,7 @@ Jetzt müssen Sie die heruntergeladene Datei auf dem Zielcomputer installieren.
 2. Wählen Sie auf der Seite **Willkommen** die Option **Weiter** aus.
 3. Lesen Sie die Seite **Lizenzbedingungen** durch, und klicken Sie anschließend auf **Ich stimme zu**.
 4. Auf der Seite **Zielordner** können Sie den Standardinstallationsordner entweder ändern oder beibehalten. Klicken Sie anschließend auf **Weiter**.
-5. Wählen Sie auf der Seite **Agent-Setupoptionen** aus, dass der Agent mit Azure Log Analytics (OMS) verbunden wird, und klicken Sie dann auf **Weiter**.
+5. Stellen Sie über die Seite **Agent-Setupoptionen** eine Verbindung zwischen dem Agent und Azure Log Analytics her, und klicken Sie anschließend auf **Weiter**.
 6. Fügen Sie auf der Seite **Azure Log Analytics** die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel (Primärschlüssel)** ein, die Sie im vorherigen Schritt in Editor kopiert haben.
 7. Wenn der Computer in einen Log Analytics-Arbeitsbereich in Azure Government Cloud melden soll, wählen Sie **Azure US-Regierung** in der Dropdownliste **Azure Cloud** aus.  Wenn der Computer über einen Proxyserver mit dem Log Analytics-Dienst kommunizieren muss, klicken Sie auf **Erweitert**, und stellen Sie die URL sowie die Portnummer des Proxyservers bereit.
 8. Klicken Sie auf **Weiter**, nachdem Sie die Bereitstellung der erforderlichen Konfigurationseinstellungen abgeschlossen haben.

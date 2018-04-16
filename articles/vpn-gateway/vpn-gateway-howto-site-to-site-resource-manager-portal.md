@@ -4,7 +4,7 @@ description: Schritte zum Erstellen einer IPsec-Verbindung zwischen Ihrem lokale
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 827a4db7-7fa5-4eaf-b7e1-e1518c51c815
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.date: 04/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3f85893884d11e89c1780db83f347005859b170a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 42aa80013edd7dcd0f78744e03e0f5da64bfeafc
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Erstellen einer Site-to-Site-Verbindung im Azure-Portal
 
@@ -50,50 +50,50 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie können diese Werte zum Erstellen einer Testumgebung verwenden oder zum besseren Verständnis der Beispiele in diesem Artikel heranziehen. Weitere Informationen zu Gatewayeinstellungen im Allgemeinen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
 * **VNET-Name:** TestVNet1
-* **Adressbereich:** 10.11.0.0/16 und 10.12.0.0/16 (für diese Übung optional)
+* **Adressraum:** 10.1.0.0/16
 * **Abonnement:** Das zu verwendende Abonnement
 * **Ressourcengruppe:** TestRG1
 * **Standort:** USA, Osten
-* **Subnetz:** FrontEnd: 10.11.0.0/24, BackEnd: 10.12.0.0/24 (für diese Übung optional)
+* **Subnetz:** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (für diese Übung optional)
 * **Name des Gatewaysubnetzes:** GatewaySubnet (wird im Portal automatisch ausgefüllt)
-* **Adressbereich des Gatewaysubnetzes:** 10.11.255.0/27
-* **DNS-Server:** Optional. Die IP-Adresse Ihres DNS-Servers.
+* **Adressbereich des Gatewaysubnetzes:** 10.1.255.0/27
+* **DNS-Server:** 8.8.8.8 (optional). Die IP-Adresse Ihres DNS-Servers.
 * **Name des Gateways für virtuelle Netzwerke:** VNet1GW
 * **Öffentliche IP-Adresse:** VNet1GWIP
 * **VPN-Typ:** Routenbasiert
 * **Verbindungstyp:** Site-to-Site (IPsec)
 * **Gatewaytyp:** VPN
-* **Name des Gateways für das lokale Netzwerk:** Site2
-* **Verbindungsname:** VNet1toSite2
+* **Name des Gateways für das lokale Netzwerk:** Site1
+* **Verbindungsname:** VNet1toSite1
 * **Gemeinsam verwendeter Schlüssel:** In diesem Beispiel verwenden wir „abc123“. Sie können jedoch einen beliebigen, mit Ihrer VPN-Hardware kompatiblen Wert verwenden. Wichtig ist, dass die Werte auf beiden Seiten der Verbindung übereinstimmen.
 
 ## <a name="CreatVNet"></a>1. Erstellen eines virtuellen Netzwerks
 
-[!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-s2s-rm-portal-include.md)]
+[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
 
 ## <a name="dns"></a>2. Angeben eines DNS-Servers
 
 DNS ist zum Erstellen von Standort-zu-Standort-Verbindungen nicht erforderlich. Wenn Sie für Ressourcen, die in Ihren virtuellen Netzwerken bereitgestellt werden, die Namensauflösung verwenden möchten, müssen Sie aber einen DNS-Server angeben. Diese Einstellung bietet die Möglichkeit, den DNS-Server anzugeben, den Sie zur Namensauflösung für dieses virtuelle Netzwerk verwenden möchten. Mit dieser Einstellung wird kein DNS-Server erstellt. Weitere Informationen zur Funktionsweise der Namensauflösung finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-[!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
+[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-specify-dns-portal-include.md)]
 
 ## <a name="gatewaysubnet"></a>3. Erstellen des Gatewaysubnetzes
 
-[!INCLUDE [about gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
 
-[!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-s2s-rm-portal-include.md)]
+[!INCLUDE [Add a gateway subnet](../../includes/vpn-gateway-add-gateway-subnet-portal-include.md)]
 
-[!INCLUDE [no nsg](../../includes/vpn-gateway-no-nsg-include.md)]
+[!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="VNetGateway"></a>4. Erstellen des VPN-Gateways
 
-[!INCLUDE [vpn-gateway-add-gw-s2s-rm-portal](../../includes/vpn-gateway-add-gw-s2s-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gateway-portal-include.md)]
 
 ## <a name="LocalNetworkGateway"></a>5. Erstellen des Gateways des lokalen Netzwerks
 
 Mit dem Gateway des lokalen Netzwerks ist normalerweise Ihr lokaler Standort gemeint. Sie geben dem Standort einen Namen, über den Azure darauf verweisen kann, und geben dann die IP-Adresse des lokalen VPN-Geräts an, mit dem Sie eine Verbindung herstellen. Außerdem geben Sie die IP-Adresspräfixe an, die über das VPN-Gateway an das VPN-Gerät weitergeleitet werden. Die von Ihnen angegebenen Adresspräfixe befinden sich in Ihrem lokalen Netzwerk. Wenn bei dem lokalen Netzwerk Änderungen vorgenommen werden oder Sie die öffentliche IP-Adresse des VPN-Geräts ändern müssen, können Sie dies Werte später bequem aktualisieren.
 
-[!INCLUDE [Add local network gateway](../../includes/vpn-gateway-add-lng-s2s-rm-portal-include.md)]
+[!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 
 ## <a name="VPNDevice"></a>6. Konfigurieren des VPN-Geräts
 
@@ -102,17 +102,17 @@ Für Site-to-Site-Verbindungen mit einem lokalen Netzwerk ist ein VPN-Gerät erf
 - Einen gemeinsam verwendeten Schlüssel. Dies ist derselbe gemeinsame Schlüssel, den Sie beim Erstellen Ihrer Site-to-Site-VPN-Verbindung angeben. In unseren Beispielen verwenden wir einen einfachen gemeinsamen Schlüssel. Es wird empfohlen, einen komplexeren Schlüssel zu generieren.
 - Die öffentliche IP-Adresse Ihres Gateways für virtuelle Netzwerke. Sie können die öffentliche IP-Adresse mit dem Azure-Portal, mit PowerShell oder mit der CLI anzeigen. Sie können die öffentliche IP-Adresse des VPN-Gateways mit dem Azure-Portal ermitteln, indem Sie zu **Gateways für virtuelle Netzwerke** navigieren und auf den Namen Ihres Gateways klicken.
 
-[!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
+[!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
 ## <a name="CreateConnection"></a>7. Erstellen der VPN-Verbindung
 
 Erstellen Sie die Site-to-Site-VPN-Verbindung zwischen dem Gateway Ihres virtuellen Netzwerks und Ihrem lokalen VPN-Gerät.
 
-[!INCLUDE [Add connections](../../includes/vpn-gateway-add-site-to-site-connection-s2s-rm-portal-include.md)]
+[!INCLUDE [Add a site-to-site connection](../../includes/vpn-gateway-add-site-to-site-connection-portal-include.md)]
 
 ## <a name="VerifyConnection"></a>8. Überprüfen der VPN-Verbindung
 
-[!INCLUDE [Verify - Azure portal](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
+[!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 
 ## <a name="connectVM"></a>Herstellen einer Verbindung mit einem virtuellen Computer
 

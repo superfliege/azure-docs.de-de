@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Fabric-Plug-In für Eclipse | Microsoft-Dokumentation"
-description: "Enthält eine Beschreibung der ersten Schritte mit dem Service Fabric-Plug-In für Eclipse."
+title: Azure Service Fabric-Plug-In für Eclipse | Microsoft-Dokumentation
+description: Enthält eine Beschreibung der ersten Schritte mit dem Service Fabric-Plug-In für Eclipse.
 services: service-fabric
 documentationcenter: java
 author: rapatchi
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
 ms.devlang: java
@@ -14,38 +14,43 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2016
 ms.author: rapatchi
-ms.openlocfilehash: 291bbd35d6e3c89eb9568130ad144831452142ad
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: d415c3eb540056dc7ad6f1ab14fc8250903d6744
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Service Fabric-Plug-In für die Entwicklung von Eclipse-Java-Anwendungen
-Eclipse ist eine der am häufigsten genutzten IDEs (Integrated Development Environments) für Java-Entwickler. In diesem Artikel wird beschrieben, wie Sie Ihre Eclipse-Entwicklungsumgebung für Azure Service Fabric einrichten. Sie erfahren, wie Sie das Service Fabric-Plug-In installieren, eine Service Fabric-Anwendung erstellen und Ihre Service Fabric-Anwendung in einem lokalen Service Fabric-Cluster oder Service Fabric-Remotecluster in Eclipse Neon bereitstellen. 
+Eclipse ist eine der am häufigsten genutzten IDEs (Integrated Development Environments) für Java-Entwickler. In diesem Artikel wird beschrieben, wie Sie Ihre Eclipse-Entwicklungsumgebung für Azure Service Fabric einrichten. Hier erfahren Sie, wie Sie das Service Fabric-Plug-In installieren, eine Service Fabric-Anwendung erstellen und Ihre Service Fabric-Anwendung in einem lokalen Service Fabric-Cluster oder Service Fabric-Remotecluster in Eclipse bereitstellen. 
 
 > [!NOTE]
 > Das Eclipse-Plug-In wird unter Windows aktuell nicht unterstützt. 
 
-## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse-neon"></a>Installieren oder Aktualisieren des Service Fabric-Plug-Ins in Eclipse Neon
+## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse"></a>Installieren oder Aktualisieren des Service Fabric-Plug-Ins in Eclipse
 Sie können ein Service Fabric-Plug-In in Eclipse installieren. Das Plug-In kann dazu beitragen, den Prozess der Erstellung und Bereitstellung von Java-Diensten zu vereinfachen.
 
-1.  Stellen Sie sicher, dass Sie die aktuelle Version von Eclipse Neon und die aktuelle Version von Buildship (1.0.17 oder höher) installiert haben:
-    -   In Eclipse Neon können Sie unter **Hilfe** > **Installationsdetails** die Versionen der installierten Komponenten überprüfen.
-    -   Informationen zur Aktualisierung von Buildship finden Sie unter [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse-Plug-Ins für Gradle).
-    -   Unter **Hilfe** > **Nach Updates suchen** können Sie nach Updates für Eclipse Neon suchen und diese installieren.
+> [!IMPORTANT]
+> Für das Service Fabric-Plug-In ist Eclipse Neon oder eine höhere Version erforderlich. Wie Sie Ihre Version von Eclipse überprüfen, erfahren Sie in der Anleitung im Anschluss an diesen Hinweis. Falls Sie eine ältere Version von Eclipse installiert haben, können Sie neuere Versionen von der [Eclipse-Website](https://www.eclipse.org) herunterladen. Es wird davon abgeraten, eine bereits vorhandene Installation von Eclipse durch eine neue Installation zu überschreiben. Entfernen Sie entweder die ältere Version, bevor Sie das Installationsprogramm ausführen, oder installieren Sie die neuere Version in einem anderen Verzeichnis. 
+> 
+> Unter Ubuntu sollten Sie die Installation direkt über die Eclipse-Website ausführen, anstatt ein Paketinstallationsprogramm (`apt` oder `apt-get`) zu verwenden. Dadurch wird sichergestellt, dass Sie die neueste Version von Eclipse erhalten. 
 
-2.  Die Installation des Service Fabric-Plug-Ins können Sie unter **Hilfe** > **Install New Software** (Neue Software installieren) durchführen.
-  1.    Geben Sie im Feld **Work with** (Verwenden von) die URL **http://dl.microsoft.com/eclipse** ein.
+1.  Vergewissern Sie sich, dass bei Ihnen mindestens Eclipse Neon sowie die neueste Version von Buildship (1.0.17 oder höher) installiert sind:
+    -   Die Versionen der installierten Komponenten können Sie in Eclipse unter **Hilfe** > **Installationsdetails** überprüfen.
+    -   Informationen zur Aktualisierung von Buildship finden Sie unter [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse-Plug-Ins für Gradle).
+    -   Unter **Hilfe** > **Nach Updates suchen** können Sie nach Updates für Eclipse suchen und diese installieren.
+
+2.  Die Installation des Service Fabric-Plug-Ins können Sie in Eclipse unter **Hilfe** > **Install New Software** (Neue Software installieren) durchführen.
+  1.    Geben Sie im Feld **Work with** (Arbeiten mit) Folgendes ein: **http://dl.microsoft.com/eclipse**.
   2.    Klicken Sie auf **Hinzufügen**.
 
-         ![Service Fabric-Plug-In für Eclipse Neon][sf-eclipse-plugin-install]
+         ![Service Fabric-Plug-In für Eclipse][sf-eclipse-plugin-install]
   3.    Wählen Sie das Service Fabric-Plug-In aus, und klicken Sie auf **Weiter**.
   4.    Führen Sie die Schritte für die Installation aus, und akzeptieren Sie die Microsoft-Software-Lizenzbedingungen.
 
 Falls Sie das Service Fabric-Plug-In bereits installiert haben, sollten Sie sicherstellen, dass Sie über die aktuelle Version verfügen. Unter **Hilfe** > **Installationsdetails** können Sie prüfen, ob Updates verfügbar sind. Wählen Sie in der Liste mit den installierten Plug-Ins die Option „Service Fabric“, und klicken Sie auf **Aktualisieren**. Die verfügbaren Updates werden installiert.
 
 > [!NOTE]
-> Wenn das Installieren oder Aktualisieren des Service Fabric-Plug-Ins lange dauert, kann dies an einer Eclipse-Einstellung liegen. In Eclipse werden Metadaten zu allen Änderungen von Updatewebsites gesammelt, die für Ihre Eclipse-Instanz registriert sind. Navigieren Sie zu **Available Software Sites** (Verfügbare Softwarestandorte), um das Vorhandensein eines Updates für das Service Fabric-Plug-In zu prüfen und das Update zu installieren. Deaktivieren Sie die Kontrollkästchen für alle Websites, mit Ausnahme des Kontrollkästchens, das auf den Speicherort des Service Fabric-Plug-Ins (http://dl.microsoft.com/eclipse/azure/servicefabric) verweist.
+> Wenn das Installieren oder Aktualisieren des Service Fabric-Plug-Ins lange dauert, kann dies an einer Eclipse-Einstellung liegen. In Eclipse werden Metadaten zu allen Änderungen von Updatewebsites gesammelt, die für Ihre Eclipse-Instanz registriert sind. Navigieren Sie zu **Available Software Sites** (Verfügbare Softwarestandorte), um das Vorhandensein eines Updates für das Service Fabric-Plug-In zu prüfen und das Update zu installieren. Deaktivieren Sie bis auf das Kontrollkästchen, das auf den Speicherort des Service Fabric-Plug-Ins (http://dl.microsoft.com/eclipse/azure/servicefabric) verweist, die Kontrollkästchen für alle Websites.
 
 > [!NOTE]
 >Sollte Eclipse auf Ihrem Mac nicht wie erwartet funktioniert oder die Ausführung als Administrator voraussetzen, navigieren Sie zum Ordner **ECLIPSE_INSTALLATION_PATH** und dort zum Unterordner **Eclipse.app/Contents/MacOS**. Führen Sie `./eclipse` aus, um Eclipse zu starten.
@@ -53,7 +58,7 @@ Falls Sie das Service Fabric-Plug-In bereits installiert haben, sollten Sie sich
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Erstellen einer Service Fabric-Anwendung in Eclipse
 
-1.  Navigieren Sie in Eclipse Neon zu **Datei** > **Neu** > **Other** (Andere). Wählen Sie die Option **Service Fabric-Projekt**, und klicken Sie dann auf **Weiter**.
+1.  Navigieren Sie in Eclipse zu **Datei** > **Neu** > **Other** (Andere). Wählen Sie die Option **Service Fabric-Projekt**, und klicken Sie dann auf **Weiter**.
 
     ![Service Fabric – Neues Projekt – Seite 1][create-application/p1]
 
@@ -142,7 +147,7 @@ Angenommen, Sie haben für ein Upgradeszenario das Projekt **App1** erstellt, in
 
 Nehmen Sie zuerst Änderungen an Ihrer Anwendung vor, und erstellen Sie den geänderten Dienst anschließend neu. Aktualisieren Sie die Manifestdatei des geänderten Diensts (ServiceManifest.xml) mit den aktualisierten Versionen für den Dienst (und ggf. mit aktualisiertem Code, aktualisierter Konfiguration oder aktualisierten Daten). Passen Sie auch das Manifest der Anwendung (ApplicationManifest.xml) mit der aktualisierten Versionsnummer für die Anwendung und dem geänderten Dienst an.  
 
-Zum Durchführen eines Upgrades für Ihre Anwendung mit Eclipse Neon können Sie ein dupliziertes Profil einer Ausführungskonfiguration erstellen. Verwenden Sie es anschließend, um die Anwendung wie gewünscht zu aktualisieren.
+Wenn Sie mithilfe von Eclipse ein Upgrade für Ihre Anwendung durchführen möchten, können Sie ein dupliziertes Profil einer Ausführungskonfiguration erstellen. Verwenden Sie es anschließend, um die Anwendung wie gewünscht zu aktualisieren.
 
 1.  Navigieren Sie zu **Ausführen** > **Run Configurations** (Ausführungskonfigurationen). Klicken Sie im linken Bereich auf den kleinen Pfeil links neben **Gradle Project** (Gradle-Projekt).
 2.  Klicken Sie mit der rechten Maustaste auf **ServiceFabricDeployer**, und wählen Sie die Option **Duplizieren**. Geben Sie einen neuen Namen für diese Konfiguration ein, z.B. **ServiceFabricUpgrader**.

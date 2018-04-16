@@ -1,30 +1,31 @@
 ---
-title: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen – Azure-Portal | Microsoft Docs
-description: Erfahren Sie, wie Sie den Netzwerkzugriff auf Azure-Ressourcen wie Azure Storage und die Azure SQL-Datenbank mit virtuellen Netzwerkdienstendpunkten mithilfe des Azure-Portals einschränken können.
+title: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen – Tutorial – Azure-Portal | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe des Azure-Portals den Netzwerkzugriff auf Azure-Ressourcen wie Azure Storage und Azure SQL-Datenbank mit virtuellen Netzwerkdienstendpunkten einschränken können.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: ''
-ms.tgt_pltfrm: virtual-network
+ms.topic: tutorial
+ms.tgt_pltfrm: virtual-networ
 ms.workload: infrastructure
 ms.date: 03/14/2018
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: 9a64a5c1f63dc05cba6fdfa310b694e34bdba7d1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.custom: mvc
+ms.openlocfilehash: f53544e756bde623a604513f17f9cc92c8efe42b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit virtuellen Netzwerkdienstendpunkten mithilfe des Azure-Portals
+# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Tutorial: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit virtuellen Netzwerkdienstendpunkten mithilfe des Azure-Portals
 
-Virtuelle Netzwerkdienstendpunkte ermöglichen es Ihnen, den Netzwerkzugriff auf einige Azure-Dienstressourcen auf ein Subnetz eines virtuellen Netzwerks einzuschränken. Sie können auch den Internetzugriff auf die Ressourcen entfernen. Dienstendpunkte ermöglichen eine direkte Verbindung zwischen Ihrem virtuellen Netzwerk und unterstützten Azure-Diensten, sodass Sie mithilfe des privaten Adressraums Ihres virtuellen Netzwerks auf die Azure-Dienste zugreifen können. Datenverkehr, der über Dienstendpunkte für Azure-Ressourcen bestimmt ist, verbleibt immer im Microsoft Azure-Backbonenetzwerk. In diesem Artikel werden folgende Vorgehensweisen behandelt:
+Virtuelle Netzwerkdienstendpunkte ermöglichen es Ihnen, den Netzwerkzugriff auf einige Azure-Dienstressourcen auf ein Subnetz eines virtuellen Netzwerks einzuschränken. Sie können auch den Internetzugriff auf die Ressourcen entfernen. Dienstendpunkte ermöglichen eine direkte Verbindung zwischen Ihrem virtuellen Netzwerk und unterstützten Azure-Diensten, sodass Sie mithilfe des privaten Adressraums Ihres virtuellen Netzwerks auf die Azure-Dienste zugreifen können. Datenverkehr, der über Dienstendpunkte für Azure-Ressourcen bestimmt ist, verbleibt immer im Microsoft Azure-Backbonenetzwerk. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Netzwerks mit einem Subnetz
@@ -33,6 +34,8 @@ Virtuelle Netzwerkdienstendpunkte ermöglichen es Ihnen, den Netzwerkzugriff auf
 > * Bereitstellen eines virtuellen Computers für jedes Subnetz
 > * Bestätigen des Zugriffs auf eine Ressource aus einem Subnetz
 > * Bestätigen, dass der Zugriff auf eine Ressource aus einem Subnetz und dem Internet verweigert wird
+
+Dieser Artikel kann auch mit der [Azure-Befehlszeilenschnittstelle](tutorial-restrict-network-access-to-resources-cli.md) oder mit [Azure PowerShell](tutorial-restrict-network-access-to-resources-powershell.md) durchgearbeitet werden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -53,7 +56,7 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
     |Speicherort| Wählen Sie **USA, Osten** aus. |
-    |Subnetzname| Public|
+    |Subnetzname| Öffentlich|
     |Subnetzadressbereich| 10.0.0.0/24|
     |Dienstendpunkte| Deaktiviert|
 
@@ -75,7 +78,7 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
     |Adressbereich| 10.0.1.0/24|
     |Dienstendpunkte| Wählen Sie unter **Dienste** **Microsoft.Storage** aus.|
 
-## <a name="restrict-network-access-to-and-from-a-subnet"></a>Einschränken des Netzwerkzugriffs auf ein Subnetz und aus diesem
+## <a name="restrict-network-access-for-a-subnet"></a>Einschränken des Netzwerkzugriffs für ein Subnetz
 
 1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
 2. Wählen Sie die Option **Netzwerk** und dann **Netzwerksicherheitsgruppe** aus.
@@ -141,7 +144,7 @@ Geben Sie unter **Netzwerksicherheitsgruppe erstellen** die folgenden Informatio
 
 ## <a name="restrict-network-access-to-a-resource"></a>Einschränken des Netzwerkzugriffs auf eine Ressource
 
-Die Schritte, die erforderlich sind, um den Netzwerkzugriff auf Ressourcen einzuschränken, die durch Azure-Dienste erstellt und für Dienstendpunkte aktiviert wurden, sind je nach Dienst unterschiedlich. Informationen zu den Schritten für einzelne Dienste finden Sie in der Dokumentation des jeweiligen Diensts. Der Rest dieses Artikels enthält als Beispiel Schritte zum Einschränken des Netzwerkzugriffs für ein Azure Storage-Konto.
+Die Schritte, die erforderlich sind, um den Netzwerkzugriff auf Ressourcen einzuschränken, die durch Azure-Dienste erstellt und für Dienstendpunkte aktiviert wurden, sind je nach Dienst unterschiedlich. Informationen zu den Schritten für einzelne Dienste finden Sie in der Dokumentation des jeweiligen Diensts. Im weiteren Verlauf dieses Tutorials wird als Beispiel der Netzwerkzugriff für ein Azure Storage-Konto eingeschränkt.
 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -261,7 +264,7 @@ Die Bereitstellung des virtuellen Computers dauert einige Minuten. Fahren Sie er
     
     Sie erhalten keine Antworten, da die dem Subnetz *Private* zugeordnete Netzwerksicherheitsgruppe keinen ausgehenden Zugriff auf andere öffentliche IP-Adressen als auf die dem Azure Storage-Dienst zugewiesenen Adressen erlaubt.
 
-8. Schließen Sie die Remotedesktopsitzung für den virtuellen Computer *myVmPrivate*.
+8. Schließen Sie die Remotedesktopsitzung mit der VM *myVmPrivate*.
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>Bestätigen, dass der Zugriff auf das Speicherkonto verweigert wird
 
@@ -292,9 +295,9 @@ Löschen Sie die Ressourcengruppe mit allen ihren Ressourcen, wenn Sie sie nicht
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen Dienstendpunkt für ein Subnetz eines virtuellen Netzwerks aktiviert. Sie haben erfahren, dass Dienstendpunkte für Ressourcen aktiviert werden können, die mit mehreren Azure-Diensten bereitgestellt werden. Sie haben ein Azure Storage-Konto erstellt und den Netzwerkzugriff auf das Speicherkonto ausschließlich auf Ressourcen im Subnetz eines virtuellen Netzwerks eingeschränkt. Bevor Sie Dienstendpunkte in virtuellen Produktionsnetzwerken erstellen, sollten Sie sich unbedingt gründlich mit [ Dienstendpunkten](virtual-network-service-endpoints-overview.md) vertraut machen.
+In diesem Tutorial haben Sie einen Dienstendpunkt für ein Subnetz eines virtuellen Netzwerks aktiviert. Sie haben erfahren, dass Dienstendpunkte für Ressourcen aktiviert werden können, die mit mehreren Azure-Diensten bereitgestellt werden. Sie haben ein Azure Storage-Konto erstellt und den Netzwerkzugriff auf das Speicherkonto ausschließlich auf Ressourcen im Subnetz eines virtuellen Netzwerks eingeschränkt. Weitere Informationen zu Dienstendpunkten finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](virtual-network-service-endpoints-overview.md) und [Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md).
 
-Wenn Sie mehrere virtuelle Netzwerke in Ihrem Konto verwenden, können Sie zwei virtuelle Netzwerke miteinander verbinden, damit die Ressourcen in jedem virtuellen Netzwerk miteinander kommunizieren können. Im nächsten Tutorial erfahren Sie, wie virtuelle Netzwerke verbunden werden.
+Wenn Sie mehrere virtuelle Netzwerke in Ihrem Konto verwenden, können Sie zwei virtuelle Netzwerke miteinander verbinden, damit die Ressourcen in jedem virtuellen Netzwerk miteinander kommunizieren können. Im nächsten Tutorial erfahren Sie, wie Sie Verbindungen zwischen virtuellen Netzwerken herstellen.
 
 > [!div class="nextstepaction"]
 > [Herstellen von Verbindungen zwischen virtuellen Netzwerken](./tutorial-connect-virtual-networks-portal.md)

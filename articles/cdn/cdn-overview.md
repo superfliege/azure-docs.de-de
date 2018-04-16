@@ -1,105 +1,80 @@
 ---
-title: "Übersicht über Azure CDN | Microsoft Docs"
-description: "Erfahren Sie, was das Azure Content Delivery Network (CDN, Netzwerk für die Inhaltsübermittlung) ist und wie es für die Übermittlung breitbandiger Inhalte eingesetzt wird, indem Blobs und statische Inhalte zwischengespeichert werden."
+title: Was ist ein Content Delivery Network (CDN)? – Azure | Microsoft-Dokumentation
+description: Hier erfahren Sie, was Azure Content Delivery Network (CDN) ist und wie es für die Übermittlung von Inhalten mit hoher Bandbreite verwendet wird.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 11/10/2017
-ms.author: v-semcev
-ms.openlocfilehash: cdcf07b6af2bd915345361c0bda2dcd9abe5486e
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.topic: overview
+ms.date: 04/06/2018
+ms.author: rli
+ms.custom: mvc
+ms.openlocfilehash: 2da919a880332be928c211a2493f2c0b09a0fcbb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="overview-of-the-azure-content-delivery-network"></a>Übersicht über das Azure Content Delivery Network
+# <a name="what-is-a-content-delivery-network-on-azure"></a>Was ist ein Content Delivery Network in Azure?
+Ein Content Delivery Network (CDN) ist ein verteiltes Netzwerk mit Servern, über die Webinhalte auf effiziente Weise für Benutzer bereitgestellt werden können. In CDNs werden zwischengespeicherte Inhalte auf Edgeservern an POP-Standorten (Point of Presence) gespeichert, die sich in der Nähe der Endbenutzer befinden, um die Wartezeit zu verringern. 
 
-Das Azure Content Delivery Network (CDN) speichert statische Webinhalte an strategisch platzierten Orten zwischen, um beim sicheren Bereitstellen von Inhalten für Benutzer einen maximalen Durchsatz zu gewährleisten. Das CDN bietet Entwicklern eine globale Lösung für die schnelle Übermittlung von Inhalten mit hoher Bandbreite durch Zwischenspeichern der Inhalte auf physischen Knoten auf der ganzen Welt. 
+Azure Content Delivery Network (CDN) bietet Entwicklern eine globale Lösung zur schnellen Übermittlung von Inhalten mit hoher Bandbreite an Benutzer. Hierzu werden Inhalte auf physischen Knoten zwischengespeichert, die strategisch auf der ganzen Welt verteilt sind. Durch die Nutzung verschiedener Netzwerkoptimierungen unter Verwendung von CDN-POPs kann Azure CDN außerdem dynamische Inhalte beschleunigen, die nicht zwischengespeichert werden können. Ein Beispiel wäre etwa die Routenoptimierung zur BGP-Umgehung (Border Gateway Protocol).
 
-> [!NOTE]
-> In diesem Artikel wird beschrieben, was Azure CDN ist, wie es funktioniert und welche Features die einzelnen Azure CDN-Produkte enthalten. Wenn Sie diese Informationen überspringen und ein Tutorial zur Erstellung eines CDN-Endpunkts anzeigen möchten, hilft Ihnen der Artikel [Erste Schritte mit Azure CDN](cdn-create-new-endpoint.md) weiter. Eine Liste mit den aktuellen CDN-Knotenstandorten finden Sie unter [POP-Standorte von Azure Content Delivery Network (CDN)](cdn-pop-locations.md).
-
-Die Verwendung eines CDN zum Zwischenspeichern von Websiteobjekten bietet folgende Vorteile:
+Die Bereitstellung von Websiteressourcen über Azure CDN bietet folgende Vorteile:
 
 * Bessere Leistung und höhere Benutzerfreundlichkeit für Endbenutzer – vor allem bei Verwendung von Anwendungen, für die zum Laden von Inhalten mehrere Roundtrips erforderlich sind
 * Umfassende Skalierung, um hohe Lasten zu Beginn eines Ereignisses, z.B. bei einer Produkteinführung, besser verarbeiten zu können
-* Verteilung von Benutzeranforderungen und Bereitstellung von Inhalten direkt von den Edgeservern, damit weniger Datenverkehr an den Ursprung gesendet wird.
+* Verteilung von Benutzeranforderungen und Bereitstellung von Inhalten direkt von Edgeservern, damit weniger Datenverkehr an den Ursprungsserver gesendet wird
+
+Eine Liste mit aktuellen CDN-Knotenstandorten finden Sie unter [Azure CDN-POP-Standorte nach Region](cdn-pop-locations.md).
 
 ## <a name="how-it-works"></a>So funktioniert's
 ![Übersicht über CDN](./media/cdn-overview/cdn-overview.png)
 
-1. Ein Benutzer (Alice) fordert eine Datei (auch als „Asset“ bezeichnet) über eine URL mit einem speziellen Domänennamen an, z.B. `<endpointname>.azureedge.net`. DNS leitet die Anforderung an den POP (Point of Presence) mit der besten Leistung weiter. Dabei handelt es sich in der Regel um den POP, der dem Benutzer geografisch am nächsten ist.
-2. Wenn die Datei nicht im Cache der Edgeserver am POP enthalten ist, fordert der Edgeserver die Datei vom Ursprung an.  Beim Ursprung kann es sich um eine Azure-Web-App, einen Azure Cloud Service, ein Azure Storage-Konto oder einen beliebigen öffentlich zugänglichen Webserver handeln.
-3. Der Ursprung gibt die Datei an den Edgeserver zurück, und zwar einschließlich der optionalen HTTP-Header, in denen die Lebensdauer (Time-To-Live, TTL) beschrieben wird.
-4. Der Edgeserver speichert die Datei zwischen und gibt sie an die ursprüngliche anfordernde Person (Alice) zurück.  Die Datei bleibt auf dem Edgeserver so lange zwischengespeichert, bis die Lebensdauer abläuft.  Falls vom Ursprung kein TTL-Wert angegeben wurde, wird der Standardwert von sieben Tagen verwendet.
-5. Weitere Benutzer können die Datei dann über dieselbe URL anfordern und werden ggf. auch an denselben POP geleitet.
-6. Sofern die Lebensdauer der Datei noch nicht abgelaufen ist, gibt der Edgeserver die Datei aus dem Cache zurück. Dieser Prozess führt zu schnellen Reaktionen und somit zu einer höheren Benutzerfreundlichkeit.
+1. Ein Benutzer (Alice) fordert eine Datei (auch Ressource genannt) über eine URL mit einem speziellen Domänennamen an. Beispiel: _&lt;Endpunktname&gt;_.azureedge.net. Dieser Name kann ein Endpunkt-Hostname oder eine benutzerdefinierte Domäne sein. Das DNS leitet die Anforderung an den POP-Standort mit der besten Leistung weiter. Dabei handelt es sich in der Regel um den POP, der dem Benutzer geografisch am nächsten ist.
+    
+2. Falls sich die Datei nicht im Cache eines der Edgeserver am POP befindet, fordert der POP die Datei vom Ursprungsserver an. Der Ursprungsserver kann eine Azure-Web-App, eine Azure Cloud Service-Instanz, ein Azure Storage-Konto oder ein beliebiger öffentlich zugänglicher Webserver sein.
+   
+3. Der Ursprungsserver gibt die Datei an einen Edgeserver am POP zurück.
+    
+4. Ein Edgeserver am POP speichert die Datei zwischen und gibt sie an den ursprünglichen Anforderer (Alice) zurück. Die Datei bleibt bis zum Ablauf der in den entsprechenden HTTP-Headern angegebenen Gültigkeitsdauer (Time to Live, TTL) auf dem Edgeserver am POP zwischengespeichert. Falls der Ursprungsserver keinen TTL-Wert angegeben hat, wird der Standardwert (sieben Tage) verwendet.
+    
+5. Andere Benutzer können die gleiche Datei unter Verwendung der gleichen URL anfordern, die auch Alice verwendet hat, und an den gleichen POP weitergeleitet werden.
+    
+6. Sofern die Gültigkeitsdauer der Datei nicht abgelaufen ist, gibt der POP-Edgeserver die Datei direkt aus dem Cache zurück. Dieser Prozess führt zu schnellen Reaktionen und somit zu einer höheren Benutzerfreundlichkeit.
 
+## <a name="requirements"></a>Requirements (Anforderungen)
+Für die Verwendung von Azure CDN müssen Sie mindestens über ein Azure-Abonnement verfügen. Darüber hinaus müssen Sie mindestens ein CDN-Profil erstellen. Hierbei handelt es sich um eine Sammlung von CDN-Endpunkten. Jeder CDN-Endpunkt stellt eine spezifische Konfiguration des Verhaltens bei der Inhaltsbereitstellung und des Zugriffs dar. Sie können mehrere Profile verwenden, um Ihre CDN-Endpunkte nach Internetdomäne, Webanwendung oder anderen Kriterien zu organisieren. Da die [Preise für Azure CDN](https://azure.microsoft.com/pricing/details/cdn/) auf der CDN-Profilebene gelten, müssen Sie mehrere CDN-Profile erstellen, wenn Sie eine Kombination verschiedener Tarife verwenden möchten.
+
+### <a name="limitations"></a>Einschränkungen
+Bei jedem Azure-Abonnement gelten Standardgrenzwerte für folgende Ressourcen:
+ - Anzahl erstellbarer CDN-Profile
+ - Anzahl von Endpunkten, die in einem CDN-Profil erstellt werden können 
+ - Anzahl von benutzerdefinierten Domänen, die einem Endpunkt zugeordnet werden können
+
+Weitere Informationen zu Grenzwerten für CDN-Abonnements finden Sie unter [CDN-Grenzwerte](https://docs.microsoft.com/azure/azure-subscription-service-limits#cdn-limits).
+    
 ## <a name="azure-cdn-features"></a>Azure CDN-Features
-Es gibt drei Azure CDN-Produkte: **Azure CDN Standard von Akamai**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon**.  Die folgende Tabelle listet die Features auf, die bei jedem Produkt zur Verfügung stehen.
+Azure CDN bietet folgende Schlüsselfeatures:
 
-|  | Standard Akamai | Standard Verizon | Premium Verizon |
-| --- | --- | --- | --- |
-| __Leistungsfeatures und -optimierungen__ |
-| [Beschleunigung dynamischer Websites](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration) | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  [Beschleunigung dynamischer Websites – Adaptive Bildkomprimierung](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-akamai-only) | **&#x2713;**  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  [Beschleunigung dynamischer Websites – Objektvorabruf](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-akamai-only) | **&#x2713;**  |  |  |
-| [Videostreamingoptimierung](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization) | **&#x2713;**  | \* |  \* |
-| [Optimierung großer Dateien](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization) | **&#x2713;**  | \* |  \* |
-| [Globaler Serverlastenausgleich (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Schnelles Löschen](cdn-purge-endpoint.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Vorabladen von Assets](cdn-preload-endpoint.md) | |**&#x2713;** |**&#x2713;** |
-| Cache-/Headereinstellungen (mit [Zwischenspeicherungsregeln](cdn-caching-rules.md)) |**&#x2713;** |**&#x2713;** | |
-| Cache-/Headereinstellungen (mit [Regelmodul](cdn-rules-engine.md)) | | |**&#x2713;** |
-| [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| Dualer IPv4-/IPv6-Stapel |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [HTTP/2-Unterstützung](cdn-http2.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| __Sicherheit__ |
-| Unterstützung von HTTPS mit CDN-Endpunkt |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [HTTPS für benutzerdefinierte Domänen](cdn-custom-ssl.md) | |**&#x2713;** |**&#x2713;** |
-| [Unterstützung benutzerdefinierter Domänennamen](cdn-map-content-to-custom-domain.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Geofilterung](cdn-restrict-access-by-country.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Tokenauthentifizierung](cdn-token-auth.md)|  |  |**&#x2713;**| 
-| [DDOS-Schutz](https://www.us-cert.gov/ncas/tips/ST04-015) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| __Analysen und Berichte__ |
-| [Azure-Diagnoseprotokolle](cdn-azure-diagnostic-logs.md) | **&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Kernberichte aus Verizon](cdn-analyze-usage-patterns.md) | |**&#x2713;** |**&#x2713;** |
-| [Benutzerdefinierte Berichte aus Verizon](cdn-verizon-custom-reports.md) | |**&#x2713;** |**&#x2713;** |
-| [Erweiterte HTTP-Berichte](cdn-advanced-http-reports.md) | | |**&#x2713;** |
-| [Echtzeitstatistiken](cdn-real-time-stats.md) | | |**&#x2713;** |
-| [Edgeknotenleistung](cdn-edge-performance.md) | | |**&#x2713;** |
-| [Warnungen in Echtzeit](cdn-real-time-alerts.md) | | |**&#x2713;** |
-| __Hohe Benutzerfreundlichkeit__ |
-| Einfache Integration in Azure-Dienste wie [Storage](cdn-create-a-storage-account-with-cdn.md), [Cloud Services](cdn-cloud-service-with-cdn.md), [Web-Apps](../app-service/app-service-web-tutorial-content-delivery-network.md) und [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| Verwaltung per [REST-API](https://msdn.microsoft.com/library/mt634456.aspx), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md) oder [PowerShell](cdn-manage-powershell.md). |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Anpassbares, regelbasiertes Modul zur Inhaltsübermittlung](cdn-rules-engine.md) | | |**&#x2713;** |
-| URL-Umleitung/-Umschreibung (mit [Regelmodul](cdn-rules-engine.md)) | | |**&#x2713;** |
-| Regeln für mobile Geräte (mit [Regelmodul](cdn-rules-engine.md)) | | |**&#x2713;** |
+- [Beschleunigung dynamischer Websites](cdn-dynamic-site-acceleration.md)
+- [CDN-Cacheregeln](cdn-caching-rules.md)
+- [Unterstützung benutzerdefinierter HTTPS-Domänen](cdn-custom-ssl.md)
+- [Azure-Diagnoseprotokolle](cdn-azure-diagnostic-logs.md)
+- [Dateikomprimierung](cdn-improve-performance.md)
+- [Geofilterung](cdn-restrict-access-by-country.md)
 
-\* Verizon unterstützt die Übermittlung von umfangreichen Dateien und Medien direkt über die allgemeine Webbereitstellung.
-
-
-> [!TIP]
-> Gibt es eine Funktion, die Sie sich für Azure CDN wünschen?  [Geben Sie uns Feedback!](https://feedback.azure.com/forums/169397-cdn) 
-> 
-> 
+Eine vollständige Liste mit den Features, die von den einzelnen Azure CDN-Produkten unterstützt werden, finden Sie unter [Azure CDN product features](cdn-features.md) (Azure CDN-Produktfeatures).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zu den ersten Schritten mit CDN finden Sie unter [Erste Schritte mit Azure CDN](cdn-create-new-endpoint.md).
-
-Wenn Sie bereits CDN-Kunde sind, können Sie jetzt Ihre CDN-Endpunkte über das [Microsoft Azure-Portal](https://portal.azure.com) oder mit [PowerShell](cdn-manage-powershell.md) verwalten.
-
-Im [Video zur Build 2016-Veranstaltung](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/) sehen Sie das CDN in Aktion.
-
-Erfahren Sie, wie Sie Azure CDN mit [.NET](cdn-app-dev-net.md) oder [Node.js](cdn-app-dev-node.md) automatisieren.
-
-Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).
+- Informationen zu den ersten Schritten mit CDN finden Sie unter [Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts](cdn-create-new-endpoint.md).
+- Verwalten Sie Ihre CDN-Endpunkte über das [Microsoft Azure-Portal](https://portal.azure.com) oder mit [PowerShell](cdn-manage-powershell.md).
+- Erfahren Sie, wie Sie Azure CDN mit [.NET](cdn-app-dev-net.md) oder [Node.js](cdn-app-dev-node.md) automatisieren.
+- Sehen Sie sich die [Videos zu Azure CDN](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest) an, um Azure CDN in Aktion zu erleben.
 

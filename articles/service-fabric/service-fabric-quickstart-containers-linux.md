@@ -1,12 +1,12 @@
 ---
 title: Erstellen einer Azure Service Fabric-Containeranwendung unter Linux | Microsoft-Dokumentation
-description: "In diesem Schnellstart erstellen Sie Ihre erste Linux-Containeranwendung unter Azure Service Fabric.  Erstellen Sie ein Docker-Image mit Ihrer Anwendung, übertragen Sie es per Push an eine Containerregistrierung, erstellen Sie eine Service Fabric-Containeranwendung, und stellen Sie diese bereit."
+description: In diesem Schnellstart erstellen Sie Ihre erste Linux-Containeranwendung unter Azure Service Fabric.  Erstellen Sie ein Docker-Image mit Ihrer Anwendung, übertragen Sie es per Push an eine Containerregistrierung, erstellen Sie eine Service Fabric-Containeranwendung, und stellen Sie diese bereit.
 services: service-fabric
 documentationcenter: linux
 author: suhuruli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: python
 ms.topic: quickstart
@@ -15,142 +15,161 @@ ms.workload: NA
 ms.date: 09/05/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: f568bdf6ce40ff2d437f3566b66f6dd1478a74fa
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1b65f54547821654f35571c55f61074a0106a292
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Schnellstart: Bereitstellen einer Azure Service Fabric-Containeranwendung unter Linux in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
 
-In diesem Schnellstart wird veranschaulicht, wie Sie Linux-Container in einem Service Fabric-Cluster bereitstellen. Nach Abschluss des Vorgangs verfügen Sie über eine Abstimmungsanwendung bestehend aus einem Python-Web-Front-End und einem Redis-Back-End, die in einem Service Fabric-Cluster ausgeführt werden. 
+In diesem Schnellstart wird veranschaulicht, wie Sie Linux-Container in einem Service Fabric-Cluster bereitstellen. Nach Abschluss des Vorgangs verfügen Sie über eine Abstimmungsanwendung mit einem Python-Web-Front-End und einem Redis-Back-End, die in einem Service Fabric-Cluster ausgeführt werden. Außerdem erfahren Sie, wie Sie ein Failover für eine Anwendung ausführen und eine Anwendung in Ihrem Cluster skalieren.
 
-![quickstartpic][quickstartpic]
+![Webseite der Voting-App][quickstartpic]
 
-In dieser Schnellstartanleitung wird Folgendes vermittelt:
-> [!div class="checklist"]
-> * Bereitstellen der Container in einem Linux-Service Fabric-Cluster in Azure
-> * Skalieren und Durchführen des Failovers für Container in Service Fabric
+In dieser Schnellstartanleitung verwenden Sie die Bash-Umgebung in Azure Cloud Shell, um Befehle über die Service Fabric-Befehlszeilenschnittstelle auszuführen. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="prerequisite"></a>Voraussetzung
-1. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-2. Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und nutzen möchten, sollten Sie sicherstellen, dass Sie Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie „az --version“ aus, um nach der Version zu suchen. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) Informationen dazu.
+Beim erstmaligen Ausführen von Cloud Shell werden Sie zur Einrichtung Ihrer `clouddrive`-Dateifreigabe aufgefordert. Sie können die Standardwerte übernehmen oder eine bereits vorhandene Dateifreigabe anfügen. Weitere Informationen finden Sie unter [Einrichten einer `clouddrive`-Dateifreigabe](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share).
 
-## <a name="get-application-package"></a>Abrufen des Anwendungspakets
+## <a name="get-the-application-package"></a>Abrufen des Anwendungspakets
 Zum Bereitstellen von Containern in Service Fabric benötigen Sie eine Gruppe von Manifestdateien (die Anwendungsdefinition), in denen die einzelnen Container und die Anwendung beschrieben ist.
 
-Verwenden Sie „git“ in der Cloud Shell, um eine Kopie der Anwendungsdefinition zu klonen.
+Klonen Sie in Cloud Shell mithilfe von „git“ eine Kopie der Anwendungsdefinition, und navigieren Sie anschließend in Ihrem Klon zum Verzeichnis `Voting`. 
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-containers.git
 
 cd service-fabric-containers/Linux/container-tutorial/Voting
 ```
-## <a name="deploy-the-application-to-azure"></a>Bereitstellen der Anwendung für Azure
 
-### <a name="set-up-your-azure-service-fabric-cluster"></a>Einrichten des Azure Service Fabric-Clusters
-Um die Anwendung in einem Cluster in Azure bereitzustellen, erstellen Sie einen eigenen Cluster.
+## <a name="create-a-service-fabric-cluster"></a>Erstellen von Service Fabric-Clustern
+Für die Bereitstellung der Anwendung in Azure benötigen Sie einen Service Fabric-Cluster, in dem die Anwendung ausgeführt wird. Mit Partyclustern können Sie schnell und einfach einen Service Fabric-Cluster erstellen. Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team betrieben werden. Mithilfe von Partyclustern können Sie Anwendungen bereitstellen und sich mit der Plattform vertraut machen. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit.
 
-Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet werden. Sie werden vom Service Fabric-Team ausgeführt, und alle Interessenten können Anwendungen bereitstellen und sich mit der Plattform vertraut machen. [Befolgen Sie die Anweisungen](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
-
-Zum Durchführen von Verwaltungsvorgängen im sicheren Partycluster können Sie Service Fabric Explorer, die CLI oder PowerShell verwenden. Zum Verwenden von Service Fabric Explorer müssen Sie die PFX-Datei von der Partycluster-Website herunterladen und das Zertifikat in Ihren Zertifikatspeicher (Windows oder Mac) oder in den Browser selbst (Ubuntu) importieren. Für selbstsignierte Zertifikate aus dem Partycluster wird kein Kennwort verwendet. 
-
-Zum Durchführen von Verwaltungsvorgängen per PowerShell oder CLI benötigen Sie die PFX- (PowerShell) oder die PEM-Datei (CLI). Führen Sie den folgenden Befehl aus, um die PFX-Datei in eine PEM-Datei zu konvertieren:  
-
-```bash
-openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
-```
-
-Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Melden Sie sich an, und [treten Sie einem Linux-Cluster bei](http://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Unter dem Link **ReadMe** finden Sie das Zertifikatkennwort sowie Anweisungen zum Konfigurieren verschiedener Umgebungen für die Verwendung des Zertifikats. Lassen Sie sowohl die**Willkommensseite** als auch die Seite mit der**Infodatei** geöffnet, da Sie einige der Anweisungen in den folgenden Schritten benötigen. 
 
 > [!Note]
-> Der Web-Front-End-Dienst ist für das Lauschen auf eingehenden Datenverkehr über Port 80 konfiguriert. Stellen Sie sicher, dass der Port in Ihrem Cluster geöffnet ist. Wenn Sie den Partycluster verwenden, ist dieser Port geöffnet.
+> Pro Stunde ist eine begrenzte Anzahl von Partyclustern verfügbar. Sollte beim Registrieren für einen Partycluster ein Fehler auftreten, können Sie eine Weile warten und es dann erneut versuchen. Alternativ können Sie die Schritte unter [Tutorial: Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md) ausführen, um einen Cluster in Ihrem Abonnement zu erstellen. 
+> 
+>Beachten Sie bei der Erstellung Ihres eigenen Clusters, dass der Web-Front-End-Dienst standardmäßig für das Lauschen auf eingehenden Datenverkehr an Port 80 konfiguriert ist. Stellen Sie sicher, dass der Port in Ihrem Cluster geöffnet ist. (Wenn Sie einen Partycluster verwenden, ist dieser Port geöffnet.)
 >
 
-### <a name="install-service-fabric-command-line-interface-and-connect-to-your-cluster"></a>Installieren der Service Fabric-Befehlszeilenschnittstelle und Herstellen einer Verbindung mit Ihrem Cluster
+## <a name="configure-your-environment"></a>Konfigurieren der Umgebung
+Service Fabric bietet mehrere Tools, mit denen Sie einen Cluster und die dazugehörigen Anwendungen verwalten können:
 
-Stellen Sie eine Verbindung mit dem Service Fabric-Cluster in Azure her, indem Sie die Azure CLI verwenden. Der Endpunkt ist der Verwaltungsendpunkt Ihres Clusters, z.B. `https://linh1x87d1d.westus.cloudapp.azure.com:19080`.
+- Service Fabric Explorer: Ein browserbasiertes Tool.
+- Service Fabric-Befehlszeilenschnittstelle (CLI): Basiert auf der Azure CLI 2.0.
+- PowerShell-Befehle 
 
-```bash
-sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
-```
+In dieser Schnellstartanleitung verwenden Sie die Service Fabric-Befehlszeilenschnittstelle in Cloud Shell sowie Service Fabric Explorer. In den folgenden Abschnitten erfahren Sie, wie Sie mit diesen Tools das Zertifikat installieren, das zum Herstellen einer Verbindung mit Ihrem sicheren Cluster benötigt wird.
 
-### <a name="deploy-the-service-fabric-application"></a>Bereitstellen der Service Fabric-Anwendung 
-Service Fabric-Containeranwendungen können mithilfe des beschriebenen Service Fabric-Anwendungspakets oder mithilfe von Docker Compose bereitgestellt werden. 
+### <a name="configure-certificate-for-the-service-fabric-cli"></a>Konfigurieren des Zertifikats für die Service Fabric-Befehlszeilenschnittstelle
+Um die Befehlszeilenschnittstelle in Cloud Shell verwenden zu können, müssen Sie die PFX-Zertifikatdatei in Cloud Shell hochladen und damit anschließend eine PEM-Datei erstellen.
 
-#### <a name="deploy-using-service-fabric-application-package"></a>Bereitstellen mithilfe des Service Fabric-Anwendungspakets
-Verwenden Sie das bereitgestellte Installationsskript, um die Definition der Abstimmungsanwendung in den Cluster zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
+1. Laden Sie das Zertifikat in Ihr aktuelles Arbeitsverzeichnis in Cloud Shell hoch. Ziehen Sie dazu die PFX-Zertifikatdatei auf Ihrem Computer aus dem Downloadordner in das Cloud Shell-Fenster.  
 
-```bash
-./install.sh
-```
+2. Konvertieren Sie die PFX-Datei mithilfe des folgenden Befehls in eine PEM-Datei. (Für Partycluster können Sie einen spezifischen Befehl für Ihre PFX-Datei und Ihr Kennwort aus den Anweisungen auf der Seite mit der**Infodatei**kopieren.)
 
-#### <a name="deploy-the-application-using-docker-compose"></a>Bereitstellen der Anwendung mithilfe von Docker Compose
-Verwenden Sie Docker Compose mit dem folgenden Befehl, um die Anwendung in dem Service Fabric-Cluster bereitzustellen und zu installieren.
-```bash
-sfctl compose create --deployment-name TestApp --file-path docker-compose.yml
-```
+    ```bash
+    openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
+    ``` 
 
-Öffnen Sie einen Browser, und navigieren Sie zum Service Fabric Explorer unter http://\<URL meines Azure Service Fabric-Clusters>:19080/Explorer, z.B. `http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`. Erweitern Sie den Knoten „Anwendungen“, um zu prüfen, ob nun ein Eintrag für den Abstimmungsanwendungstyp und die von Ihnen erstellte Instanz vorhanden ist.
+### <a name="configure-certificate-for-service-fabric-explorer"></a>Konfigurieren des Zertifikats für Service Fabric Explorer
+Zur Verwendung von Service Fabric Explorer müssen Sie die von der Partycluster-Website heruntergeladene PFX-Zertifikatdatei in Ihren Zertifikatspeicher (Windows oder Mac) oder in den Browser selbst (Ubuntu) importieren. Sie benötigen das PFX-Kennwort für den privaten Schlüssel von der Seite mit der**Infodatei**.
 
-![Service Fabric Explorer][sfx]
+Importieren Sie das Zertifikat mit der von Ihnen bevorzugten Methode in Ihr System. Beispiel: 
 
-Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser mit der URL Ihres Clusters (Beispiel: `http://linh1x87d1d.westus.cloudapp.azure.com:80`). Die Abstimmungsanwendung sollte im Browser angezeigt werden.
+- Unter Windows: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrem persönlichen Zertifikatspeicher (`Certificates - Current User\Personal\Certificates`) zu installieren. Alternativ können Sie den in der**Infodatei** angegebenen PowerShell-Befehl ausführen.
+- Auf einem Mac: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrer Keychain zu installieren.
+- Unter Ubuntu: Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importieren des Zertifikats rechts oben in Firefox auf die Menüschaltfläche und anschließend auf **Einstellungen**. Suchen Sie über das Suchfeld auf der Seite **Einstellungen** nach „Zertifikate“. Klicken Sie auf **Zertifikate anzeigen**, klicken Sie auf die Registerkarte **Ihre Zertifikate**, klicken Sie auf **Importieren**, und befolgen Sie die Anweisungen zum Importieren des Zertifikats.
+ 
+   ![Installieren des Zertifikats in Firefox](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png) 
 
-![quickstartpic][quickstartpic]
+## <a name="deploy-the-service-fabric-application"></a>Bereitstellen der Service Fabric-Anwendung 
+1. Stellen Sie in Cloud Shell über die Befehlszeilenschnittstelle eine Verbindung mit dem Service Fabric-Cluster in Azure her. Der Endpunkt ist der Verwaltungsendpunkt für Ihren Cluster. Die PEM-Datei haben Sie im vorherigen Abschnitt erstellt. (Für Partycluster können Sie einen spezifischen Befehl für Ihre PEM-Datei und Ihren Verwaltungsendpunkt aus den Anweisungen auf der Seite mit der**Infodatei**kopieren.)
 
-## <a name="fail-over-a-container-in-a-cluster"></a>Durchführen eines Failovers für einen Container in einem Cluster
-Mit Service Fabric wird sichergestellt, dass Ihre Containerinstanzen automatisch auf andere Knoten im Cluster verschoben werden, falls es zu einem Ausfall kommt. Sie können die Container eines Knotens auch manuell entfernen und diese geregelt auf andere Knoten im Cluster verschieben. Sie haben mehrere Möglichkeiten, um Ihre Dienste zu skalieren. In diesem Beispiel verwenden wir Service Fabric Explorer.
+    ```bash
+    sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
+    ```
 
-Führen Sie die folgenden Schritte aus, um für den Front-End-Container ein Failover durchzuführen:
+2. Verwenden Sie das Installationsskript, um die Definition der Voting-Anwendung in den Cluster zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
 
-1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`.
-2. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront**, und erweitern Sie den Partitionsknoten (durch eine GUID dargestellt). Beachten Sie den Knotennamen in der Strukturansicht. Hier werden die Knoten angezeigt, auf denen der Container derzeit ausgeführt wird, z.B. `_nodetype_4`.
-3. Erweitern Sie in der Strukturansicht den Knoten **Knoten**. Klicken Sie auf die Auslassungspunkte (drei Punkte) neben dem Knoten, auf dem der Container ausgeführt wird.
-4. Wählen Sie **Neu starten**, um den Knoten neu zu starten, und bestätigen Sie die Neustartaktion. Der Neustart bewirkt, dass für den Container ein Failover auf einen anderen Knoten im Cluster durchgeführt wird.
+    ```bash
+    ./install.sh
+    ```
 
-![sfxquickstartshownodetype][sfxquickstartshownodetype]
+2. Navigieren Sie in einem Webbrowser zum Service Fabric Explorer-Endpunkt für Ihren Cluster. Der Endpunkt hat das folgende Format: https://\<URL Ihres Azure Service Fabric-Clusters>:19080/Explorer. Beispiel: `https://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`. </br>(Für Party-Cluster finden Sie den entsprechenden Service Fabric Explorer-Endpunkt auf der**Willkommensseite**.) 
+
+3. Erweitern Sie den Knoten **Anwendungen**, um zu prüfen, ob nun ein Eintrag für den Voting-Anwendungstyp und die von Ihnen erstellte Instanz vorhanden ist.
+
+    ![Service Fabric Explorer][sfx]
+
+3. Navigieren Sie in einem Webbrowser zur URL des Clusters (beispielsweise `http://linh1x87d1d.westus.cloudapp.azure.com:80`), um eine Verbindung mit dem ausgeführten Container herzustellen. Die Abstimmungsanwendung sollte im Browser angezeigt werden.
+
+    ![Webseite der Voting-App][quickstartpic]
+
+
+> [!NOTE]
+> Service Fabric-Anwendungen können auch mit Docker Compose bereitgestellt werden. Verwenden Sie beispielsweise den folgenden Befehl, um die Anwendung mithilfe von Docker Compose im Cluster bereitzustellen und zu installieren:
+>  ```bash
+> sfctl compose create --deployment-name TestApp --file-path ../docker-compose.yml
+> ```
+
+## <a name="fail-over-a-container-in-a-cluster"></a>Ausführen eines Failovers für einen Container in einem Cluster
+Bei einem Ausfall sorgt Service Fabric dafür, dass Ihre Containerinstanzen automatisch auf andere Knoten im Cluster verschoben werden. Sie können die Container eines Knotens auch manuell entfernen und diese geregelt auf andere Knoten im Cluster verschieben. Service Fabric bietet mehrere Skalierungsoptionen für Dienste. In den folgenden Schritten wird Service Fabric Explorer verwendet.
+
+Führen Sie die folgenden Schritte aus, um für den Front-End-Container ein Failover auszuführen:
+
+1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster. Beispiel: `https://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`.
+2. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront**, und erweitern Sie den (durch eine GUID dargestellten) Partitionsknoten. Beachten Sie den Knotennamen in der Strukturansicht. Hier werden die Knoten angezeigt, auf denen der Container derzeit ausgeführt wird (beispielsweise `_nodetype_4`).
+3. Erweitern Sie in der Strukturansicht den Knoten **Knoten**. Klicken Sie neben dem Knoten, auf dem der Container ausgeführt wird, auf die Auslassungspunkte.
+4. Wählen Sie **Neu starten** aus, um den Knoten neu zu starten, und bestätigen Sie die Neustartaktion. Der Neustart bewirkt, dass für den Container ein Failover auf einen anderen Knoten im Cluster ausgeführt wird.
+
+    ![Knotenansicht in Service Fabric Explorer][sfxquickstartshownodetype]
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalieren von Anwendungen und Diensten in einem Cluster
 Service Fabric-Dienste können für einen Cluster auf einfache Weise skaliert werden, um die Last für die Dienste zu bewältigen. Sie skalieren einen Dienst, indem Sie die Anzahl von Instanzen ändern, die im Cluster ausgeführt werden.
 
 Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren:
 
-1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://linh1x87d1d.westus.cloudapp.azure.com:19080`.
-2. Klicken Sie in der Strukturansicht auf das Auslassungszeichen (drei Punkte) neben dem Knoten **fabric:/Voting/azurevotefront**, und wählen Sie **Scale Service** (Dienst skalieren).
+1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster. Beispiel: `https://linh1x87d1d.westus.cloudapp.azure.com:19080`.
+2. Klicken Sie in der Strukturansicht neben dem Knoten **fabric:/Voting/azurevotefront** auf die drei Auslassungspunkte und anschließend auf **Scale Service** (Dienst skalieren).
 
-    ![containersquickstartscale][containersquickstartscale]
+    ![Service Fabric Explorer: Starten der Dienstskalierung][containersquickstartscale]
 
   Sie können jetzt angeben, dass die Anzahl von Instanzen des Web-Front-End-Diensts skaliert werden soll.
 
 3. Ändern Sie die Anzahl in **2**, und klicken Sie auf **Scale Service** (Dienst skalieren).
-4. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront**, und erweitern Sie den Partitionsknoten (durch eine GUID dargestellt).
+4. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront**, und erweitern Sie den (durch eine GUID dargestellten) Partitionsknoten.
 
-    ![containersquickstartscaledone][containersquickstartscaledone]
+    ![Service Fabric Explorer: Dienstskalierung abgeschlossen][containersquickstartscaledone]
 
     Sie sehen jetzt, dass der Dienst über zwei Instanzen verfügt. In der Strukturansicht wird angezeigt, auf welchen Knoten die Instanzen ausgeführt werden.
 
-Mit dieser einfachen Verwaltungsaufgabe haben wir die Ressourcen verdoppelt, die für unseren Front-End-Dienst zum Verarbeiten der Benutzerauslastung verfügbar sind. Es ist wichtig zu verstehen, dass Sie nicht mehrere Instanzen eines Diensts benötigen, damit er zuverlässig ausgeführt wird. Wenn ein Dienst ausfällt, wird von Service Fabric sichergestellt, dass im Cluster eine neue Dienstinstanz ausgeführt wird.
+Mit dieser einfachen Verwaltungsaufgabe haben Sie die Ressourcen verdoppelt, die dem Front-End-Dienst zur Bewältigung der Benutzerauslastung zur Verfügung stehen. Es ist wichtig zu verstehen, dass Sie nicht mehrere Instanzen eines Diensts benötigen, damit er zuverlässig ausgeführt wird. Sollte ein Dienst ausfallen, stellt Service Fabric sicher, dass im Cluster eine neue Dienstinstanz ausgeführt wird.
 
-## <a name="clean-up"></a>Bereinigen
-Verwenden Sie das Deinstallationsskript aus der Vorlage, um die Anwendungsinstanz aus dem Cluster zu löschen und die Registrierung des Anwendungstyps aufzuheben. Bei diesem Befehl dauert das Bereinigen der Instanz einige Zeit, und der Befehl 'install'sh' sollte nicht direkt nach diesem Skript ausgeführt werden. 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+1. Verwenden Sie das Deinstallationsskript (uninstall.sh) aus der Vorlage, um die Anwendungsinstanz aus dem Cluster zu löschen und die Registrierung des Anwendungstyps aufzuheben. Es dauert etwas, bis die Instanz durch dieses Skript bereinigt wurde. Aus diesem Grund sollte das Installationsskript nicht unmittelbar nach diesem Skript ausgeführt werden. Sie können mithilfe von Service Fabric Explorer ermitteln, ob die Instanz entfernt und die Registrierung des Anwendungstyps aufgehoben wurde. 
 
-```bash
-./uninstall.sh
-```
+    ```bash
+    ./uninstall.sh
+    ```
+
+2. Nach Abschluss der Clusterverwendung können Sie das Zertifikat aus Ihrem Zertifikatspeicher entfernen. Beispiel: 
+   - Unter Windows: Verwenden Sie das [MMC-Snap-In „Zertifikate“](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Beim Hinzufügen des Snap-Ins muss **Mein Benutzerkonto** ausgewählt sein. Navigieren Sie zu `Certificates - Current User\Personal\Certificates`, und entfernen Sie das Zertifikat.
+   - Auf einem Mac: Verwenden Sie die Keychain-App.
+   - Unter Ubuntu: Führen Sie die Schritte aus, die Sie zum Anzeigen von Zertifikaten verwendet haben, und entfernen Sie das Zertifikat.
+
+3. Wenn Sie Cloud Shell nicht weiter verwenden möchten, können Sie das zugeordnete Speicherkonto löschen, um Gebühren zu vermeiden. Schließen Sie Ihre Cloud Shell-Sitzung. Klicken Sie im Azure-Portal auf das Speicherkonto, das Cloud Shell zugeordnet ist. Klicken Sie anschließend am oberen Seitenrand auf **Löschen**, und reagieren Sie auf die Eingabeaufforderungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Schnellstart haben Sie Folgendes gelernt:
-> [!div class="checklist"]
-> * Bereitstellen einer Linux-Containeranwendung in Azure
-> * Durchführen eines Failovers für einen Container in einem Service Fabric-Cluster
-> * Skalieren eines Containers in einem Service Fabric-Cluster
+In dieser Schnellstartanleitung haben Sie eine Linux-Containeranwendung in einem Service Fabric-Cluster in Azure bereitgestellt, ein Failover für die Anwendung ausgeführt und die Anwendung im Cluster skaliert. Weitere Informationen zur Verwendung von Linux-Containern in Service Fabric finden Sie im Tutorial für Linux-Container-Apps.
 
-* Weitere Informationen zum Ausführen von [Containern in Service Fabric](service-fabric-containers-overview.md)
-* Weitere Informationen zum [Anwendungslebenszyklus](service-fabric-application-lifecycle.md) von Service Fabric
-* Sehen Sie sich die [Codebeispiele zu Service Fabric-Containern](https://github.com/Azure-Samples/service-fabric-containers) auf GitHub an.
+> [!div class="nextstepaction"]
+> [Erstellen einer Linux-Container-App](./service-fabric-tutorial-create-container-images.md)
+
 
 [sfx]: ./media/service-fabric-quickstart-containers-linux/containersquickstartappinstance.png
 [quickstartpic]: ./media/service-fabric-quickstart-containers-linux/votingapp.png

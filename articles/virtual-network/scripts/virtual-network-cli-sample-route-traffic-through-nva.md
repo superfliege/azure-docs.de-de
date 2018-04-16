@@ -10,18 +10,18 @@ tags: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: jdial
-ms.openlocfilehash: 8506d67152a21586b2854891674d50f89d1a643c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d0d410fd59574fe2884ae941ef3fd64600930f31
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="route-traffic-through-a-network-virtual-appliance"></a>Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
+# <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>Skriptbeispiel zum Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
 In diesem Skriptbeispiel wird ein virtuelles Netzwerk mit Front-End- und Back-End-Subnetz erstellt. Es wird auch ein virtueller Computer mit IP-Weiterleitung erstellt, der zur Weiterleitung von Datenverkehr zwischen den zwei Subnetzen aktiviert ist. Nach dem Ausführen des Skripts können Sie dem virtuellen Computer Netzwerksoftware bereitstellen, z.B. eine Firewallanwendung.
 
@@ -65,4 +65,4 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Weitere CLI-Skriptbeispiele für virtuelle Netzwerke finden Sie unter [Azure CLI samples for virtual network](../cli-samples.md) (Azure CLI-Beispiele für virtuelle Netzwerke).
+Weitere CLI-Skriptbeispiele für virtuelle Netzwerke finden Sie unter [Azure CLI-Beispiele für virtuelle Netzwerke](../cli-samples.md).

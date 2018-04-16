@@ -14,14 +14,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 07/31/2017
+ms.date: 04/01/2018
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: 31be6bc80b147e106066c064903c6eb9e1900e12
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5f10bc981581de12b816a45a6c6d704c42024b67
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Verwenden von PowerShell zum Synchronisieren zwischen einer SQL-Datenbank und einer lokalen SQL Server-Datenbank
 
@@ -395,7 +395,7 @@ Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 -   [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](../sql-database-sync-data.md)
 -   [Einrichten von Azure SQL-Datensynchronisierung](../sql-database-get-started-sql-data-sync.md)
 -   [Best practices for Azure SQL Data Sync (Preview)](../sql-database-best-practices-data-sync.md) (Bewährte Methoden für die Azure SQL-Datensynchronisierung-Vorschauversion)
--   [Überwachen der Azure SQL-Datensynchronisierung mit OMS Log Analytics](../sql-database-sync-monitor-oms.md)
+-   [Überwachen der Azure SQL-Datensynchronisierung mit Log Analytics](../sql-database-sync-monitor-oms.md)
 -   [Troubleshoot issues with SQL Data Sync (Preview)](../sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:

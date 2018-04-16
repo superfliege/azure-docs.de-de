@@ -1,36 +1,37 @@
 ---
-title: Erstellen eines virtuellen Azure-Netzwerks – Azure CLI | Microsoft-Dokumentation
-description: Erfahren Sie schnell, wie Sie ein virtuelles Netzwerk über die Azure-Befehlszeilenschnittstelle erstellen. In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer privat miteinander und mit dem Internet kommunizieren.
+title: Erstellen eines virtuellen Netzwerks – Schnellstart – Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal ein virtuelles Netzwerk erstellen. In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer privat miteinander und mit dem Internet kommunizieren.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: ''
+ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/09/2018
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: d07f06a1a70c859544c3b1ceb6146dc11e4d10aa
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.custom: mvc
+ms.openlocfilehash: bb45b2b4ecd89187e94066bc81782174738fe3a9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="create-a-virtual-network-using-the-azure-cli"></a>Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle
+# <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Schnellstart: Erstellen eines virtuellen Netzwerks mithilfe der Azure-Befehlszeilenschnittstelle
 
-In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer privat miteinander und mit dem Internet kommunizieren. In diesem Artikel erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen. Nach dem Erstellen eines virtuellen Netzwerks stellen Sie zwei virtuelle Computer im virtuellen Netzwerk bereit. Anschließend stellen Sie über das Internet eine Verbindung mit einem virtuellen Computer her und kommunizieren privat mit dem anderen virtuellen Computer.
+In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer privat miteinander und mit dem Internet kommunizieren. In dieser Schnellstartanleitung erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen. Nach dem Erstellen eines virtuellen Netzwerks stellen Sie zwei virtuelle Computer im virtuellen Netzwerk bereit. Anschließend stellen Sie über das Internet eine Verbindung mit einem virtuellen Computer her und kommunizieren privat mit dem anderen virtuellen Computer.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.28 der Azure CLI ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart mindestens Azure CLI-Version 2.0.28 ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
 
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
@@ -102,7 +103,7 @@ Geben Sie den folgenden Befehl ein, und ersetzen Sie dabei `<publicIpAddress>` d
 ssh <publicIpAddress>
 ```
 
-## <a name="communicate-privately-between-vms"></a>Private Kommunikation zwischen virtuellen Computern
+## <a name="communicate-between-vms"></a>Kommunikation zwischen VMs
 
 Wenn Sie die private Kommunikation zwischen den virtuellen Computern *myVm2* und *myVm1* überprüfen möchten, geben Sie den folgenden Befehl ein:
 
@@ -124,9 +125,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie ein virtuelles Standardnetzwerk und zwei virtuelle Computer erstellt. Sie haben über das Internet eine Verbindung mit einem virtuellen Computer hergestellt und privat zwischen den beiden virtuellen Computern kommuniziert. Weitere Informationen zu den Einstellungen des virtuellen Netzwerks finden Sie unter [Create, change, or delete a virtual network](manage-virtual-network.md) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks). 
+In dieser Schnellstartanleitung haben Sie ein virtuelles Standardnetzwerk und zwei virtuelle Computer erstellt. Sie haben über das Internet eine Verbindung mit einem der virtuellen Computer hergestellt und privat zwischen den beiden virtuellen Computern kommuniziert. Weitere Informationen zu den Einstellungen des virtuellen Netzwerks finden Sie unter [Create, change, or delete a virtual network](manage-virtual-network.md) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks). 
 
-Standardmäßig erlaubt Azure uneingeschränkte private Kommunikation zwischen virtuellen Computern. Über das Internet sind mit virtuellen Linux-Computern jedoch nur SSH-Sitzungen in eingehender Richtung zugelassen. Informationen zum Zulassen und Beschränken verschiedener Arten von Netzwerkkommunikation zwischen virtuellen Computern finden Sie im nächsten Tutorial.
-
-> [!div class="nextstepaction"]
-> [Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal](tutorial-filter-network-traffic-cli.md)
+Azure ermöglicht standardmäßig eine uneingeschränkte private Kommunikation zwischen virtuellen Computern. Über das Internet lässt Azure dagegen nur eingehende Remotedesktopverbindungen mit virtuellen Windows-Computern zu. Informationen zum Zulassen und Beschränken verschiedener Arten von Netzwerkkommunikation zwischen virtuellen Computern finden Sie im [Tutorial zum Filtern von Netzwerkdatenverkehr](tutorial-filter-network-traffic.md).

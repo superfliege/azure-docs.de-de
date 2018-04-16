@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/13/2017
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 61a454ffb36865d4e1bc6b7ae5622fa4d4e85fd2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
- Die Azure App Service-Umgebung ist eine Bereitstellung von Azure App Service in einem Subnetz in einem virtuellen Azure-Netzwerk (VNET). Es gibt zwei Möglichkeiten für die Bereitstellung einer App Service-Umgebung (App Service Environment, ASE): 
+ Die Azure App Service-Umgebung ist eine Bereitstellung von Azure App Service in einem Subnetz in einem virtuellen Azure-Netzwerk (VNET). Eine App Service-Umgebung (App Service Environment, ASE) kann auf zwei Arten bereitgestellt werden: 
 
 - Mit einer VIP unter einer externen IP-Adresse, die häufig als „externe ASE“ bezeichnet wird
 - Mit einer VIP unter einer internen IP-Adresse, die häufig als „ILB-ASE“ bezeichnet wird, da der interne Endpunkt ein interner Lastenausgleich (ILB) ist. 
@@ -63,7 +63,7 @@ So erstellen Sie eine ILB-ASE:
 
 4. Wählen Sie ein VNET aus, oder erstellen Sie eines.
 
-5. Wenn Sie ein vorhandenes VNET auswählen, müssen Sie ein Subnetz erstellen, das die ASE beinhaltet. Die Größe des Subnetzes sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken. Empfohlen wird eine Größe von `/25` mit 128 Adressen zur Verarbeitung einer ASE in maximaler Größe. Die kleinste Größe, die Sie auswählen können, beträgt `/28`. Diese Größe kann je nach den Infrastrukturanforderungen auf maximal 11 Instanzen skaliert werden.
+5. Wenn Sie ein vorhandenes VNET auswählen, müssen Sie ein Subnetz erstellen, das die ASE beinhaltet. Die Größe des Subnetzes sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken. Empfohlen wird eine Größe von `/25` mit 128 Adressen zur Verarbeitung einer ASE in maximaler Größe. Die kleinste Größe, die Sie auswählen können, beträgt `/28`. Diese Größe kann je nach den Infrastrukturanforderungen auf maximal drei Instanzen skaliert werden.
 
     * Skalieren Sie in Ihren App Service-Plänen über die maximale Anzahl von 100 Instanzen hinaus.
 
@@ -81,7 +81,7 @@ So erstellen Sie eine ILB-ASE:
 
     * &lt;ASE-Name&gt;.p.azurewebsites.net
 
-   Der für Apps verwendete benutzerdefinierte Domänenname und der von Ihrer ASE verwendete Domänenname dürfen sich nicht überschneiden. Für eine ILB-ASE mit dem Domänennamen _contoso.com_ können Sie keine benutzerdefinierten Domänennamen für beispielsweise folgende Apps verwenden:
+   Mit dem Feature „Benutzerdefinierte Domänennamen“ können Sie Ihrer Web-App einen vorhandenen DNS-Namen zuordnen. Weitere Informationen zu diesem Feature finden Sie im Dokument [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps][customdomain]. Der für Apps verwendete benutzerdefinierte Domänenname und der von Ihrer ASE verwendete Domänenname dürfen sich nicht überschneiden. Für eine ILB-ASE mit dem Domänennamen _contoso.com_ können Sie keine benutzerdefinierten Domänennamen für beispielsweise folgende Apps verwenden:
 
     * www.contoso.com
 
@@ -250,3 +250,4 @@ Weitere Informationen zum Konfigurieren Ihrer ILB-ASE mit einem WAF-Gerät finde
 [Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[customdomain]: ../app-service-web-tutorial-custom-domain.md

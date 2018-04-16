@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 44e5f921ca9303e680c76d439ab7503ea3c39680
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 0513dc73912b095c8045f37c7e1d9d06db3ab7e1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-java"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Java
 
@@ -46,11 +46,12 @@ git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Starten Sie Eclipse, und schließen Sie die Willkommensseite, um das Projekt zu öffnen. Klicken Sie auf **Datei** und dann auf **Open Projects from File System** (Projekte aus Dateisystem öffnen...). Stellen Sie sicher, dass **Detect and configure project natures** (Projektarten erkennen und konfigurieren) aktiviert ist. Klicken Sie auf **Verzeichnis**, und navigieren Sie zum Speicherort des geklonten Repositorys. Wählen Sie dort den Ordner **javaBlobsQuickstart** aus. Stellen Sie sicher, dass das Projekt **javaBlobsQuickstart** als Eclipse-Projekt angezeigt wird, und klicken Sie dann auf **Fertig stellen**.
 
 Nachdem das Importieren des Projekts abgeschlossen ist, öffnen Sie **AzureApp.java** (unter **blobQuickstart.blobAzureApp** in **src/main/java**), und ersetzen Sie `accountname` und `accountkey` in der `storageConnectionString`-Zeichenfolge. Führen Sie die Anwendung dann aus.
-     
+
+[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]   
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurieren der Speicherverbindungszeichenfolge
     
-Sie müssen in der Anwendung die Verbindungszeichenfolge für das Speicherkonto angeben. Öffnen Sie die Datei **AzureApp.Java**. Suchen Sie die Variable `storageConnectionString`. Ersetzen Sie die Werte `AccountName` und `AccountKey` in der Verbindungszeichenfolge durch die Werte, die Sie im Azure-Portal gespeichert haben. Ihre `storageConnectionString` sollte etwa folgendermaßen aussehen:
+Sie müssen in der Anwendung die Verbindungszeichenfolge für das Speicherkonto angeben. Öffnen Sie die Datei **AzureApp.Java**. Suchen Sie die Variable `storageConnectionString`, und fügen Sie den Wert der Verbindungszeichenfolge ein, den Sie im vorherigen Abschnitt kopiert haben. Die Variable `storageConnectionString` sollte etwa wie folgt aussehen:
 
 ```java
 public static final String storageConnectionString =

@@ -1,6 +1,6 @@
 ---
-title: Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke – Azure-Portal | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie im Azure-Portal durch Peering virtueller Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen.
+title: Herstellen von Verbindungen zwischen virtuellen Netzwerken mittels Peering – Tutorial – Azure-Portal | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal durch Peering virtueller Netzwerke eine Verbindung zwischen virtuellen Netzwerken herstellen.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -11,21 +11,21 @@ Customer intent: I want to connect two virtual networks so that virtual machines
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: b864c71a62289b3abef13a98b52683f7d928b8e1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d702253c7b58b0a29c03e6563238b56ae75fa0d1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke mit dem Azure-Portal
+# <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Tutorial: Herstellen einer Verbindung zwischen virtuellen Netzwerken mittels Peering über das Azure-Portal
 
-Sie können mithilfe von Peerings für virtuelle Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen. Sobald ein Peering zwischen virtuellen Netzwerken eingerichtet wurde, können Ressourcen in beiden virtuellen Netzwerken untereinander mit der gleichen Latenz und Bandbreite kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. In diesem Artikel werden folgende Vorgehensweisen behandelt:
+Sie können durch Peering virtueller Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen. Sobald ein Peering zwischen virtuellen Netzwerken eingerichtet wurde, können Ressourcen in beiden virtuellen Netzwerken untereinander mit der gleichen Latenz und Bandbreite kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen zweier virtueller Netzwerke
@@ -33,7 +33,7 @@ Sie können mithilfe von Peerings für virtuelle Netzwerke Verbindungen zwischen
 > * Bereitstellen eines virtuellen Computers (VM) in jedem virtuellen Netzwerk
 > * Kommunikation zwischen VMs
 
-Falls gewünscht, können Sie diesen Artikel mit [Azure CLI](tutorial-connect-virtual-networks-cli.md) oder [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md) durcharbeiten.
+Dieser Artikel kann auch mit der [Azure-Befehlszeilenschnittstelle](tutorial-connect-virtual-networks-cli.md) oder mit [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md) durchgearbeitet werden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -156,7 +156,7 @@ Die Erstellung der VMs kann einige Minuten dauern. Fahren Sie mit den restlichen
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
     ```
     
-    In diesem Artikel wird Ping zwar für die Kommunikation zwischen VMs verwendet, aber das Zulassen des ICMP für die Windows-Firewall wird für Produktionsbereitstellungen nicht empfohlen.
+    In diesem Tutorial wird zwar Ping für die Kommunikation zwischen virtuellen Computern verwendet, für Produktionsbereitstellungen wird jedoch davon abgeraten, ICMP-Datenverkehr durch die Windows-Firewall zuzulassen.
 
 7. Um eine Verbindung mit der VM *myVm2* herzustellen, geben Sie an einer Eingabeaufforderung auf der VM *myVm1* den folgenden Befehl ein:
 
@@ -182,6 +182,6 @@ Löschen Sie die Ressourcengruppe mit allen ihren Ressourcen, wenn Sie sie nicht
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie zwei Netzwerke in derselben Azure-Region durch das Peering virtueller Netzwerke verbunden werden. Sie können auch virtuelle Netzwerke in unterschiedlichen [unterstützten Regionen](virtual-network-manage-peering.md#cross-region) und [verschiedenen Azure-Abonnements](create-peering-different-subscriptions.md#portal) durch Peering verbinden und [Netzwerke vom Typ „Nabe und Speiche“](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) mit Peering erstellen. Weitere Informationen zum Peering in virtuellen Netzwerken finden Sie unter [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md) und [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md).
+In diesem Tutorial haben Sie erfahren, wie Sie mittels Peering eine Verbindung zwischen zwei Netzwerken in der gleichen Azure-Region herstellen. Sie können auch virtuelle Netzwerke in unterschiedlichen [ unterstützten Regionen](virtual-network-manage-peering.md#cross-region) und [verschiedenen Azure-Abonnements](create-peering-different-subscriptions.md#portal) durch Peering verbinden und [Netzwerke vom Typ „Nabe und Speiche“](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) mit Peering erstellen. Weitere Informationen zum Peering in virtuellen Netzwerken finden Sie unter [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md) und [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md).
 
 Wie Sie über ein VPN eine Verbindung zwischen Ihrem eigenen Computer und einem virtuellen Netzwerk herstellen und mit Ressourcen in einem virtuellen Netzwerk oder in durch Peerings verbundenen virtuellen Netzwerken interagieren, erfahren Sie unter [Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der nativen Azure-Zertifikatauthentifizierung: Azure-Portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

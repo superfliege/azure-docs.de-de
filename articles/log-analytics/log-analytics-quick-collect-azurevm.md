@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2018
+ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: ff610c4efa9db16ca8a1e151b36e0e08dfe30d69
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 3b21a3ae5940cd736fe23b76e7ede9dc0061b711
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Sammeln von Daten über virtuelle Azure-Computer
 [Azure Log Analytics](log-analytics-overview.md) kann Daten direkt von Ihren virtuellen Azure-Computern und anderen Ressourcen in Ihrer Umgebung zur detaillierten Analyse und Korrelation in einem einzelnen Repository sammeln.  Dieser Schnellstart zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihren Azure-Linux- oder Windows-VMs konfigurieren und sammeln.  
@@ -37,7 +37,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
   * Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
   * Wählen Sie für **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, die einen oder mehrere virtuelle Azure-Computer enthält.  
   * Wählen Sie den **Speicherort** für die Bereitstellung Ihrer virtuellen Computer aus.  Weitere Informationen finden Sie auf der Seite zur [Verfügbarkeit von Log Analytics in den einzelnen Regionen](https://azure.microsoft.com/regions/services/).
-  * Wenn Sie einen Arbeitsbereich in einem neuen Abonnement erstellen, das nach dem 2. April 2018 erstellt wurde, wird automatisch der Tarif *Pro GB* verwendet. In diesem Fall ist keine Tarifauswahloption verfügbar.  Wenn Sie einen Arbeitsbereich für ein Abonnement erstellen, das vor dem 2. April erstellt oder mit einer vorhandenen EA-Registrierung verknüpft wurde, können Sie zwischen drei Tarifen wählen.  In dieser Schnellstartanleitung verwenden wir den Free-Tarif.  Weitere Informationen zu den einzelnen Tarifen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
+  * Wenn Sie einen Arbeitsbereich in einem neuen Abonnement erstellen, das nach dem 2. April 2018 erstellt wurde, wird automatisch der Tarif *Pro GB* verwendet. In diesem Fall ist keine Tarifauswahloption verfügbar.  Wenn Sie einen Arbeitsbereich für ein Abonnement erstellen, das vor dem 2. April erstellt oder mit einer vorhandenen EA-Registrierung verknüpft wurde, wählen Sie Ihren bevorzugten Tarif aus.  Weitere Informationen zu den einzelnen Tarifen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
   
         ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
 
@@ -45,19 +45,12 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 Die Informationen werden überprüft, und der Arbeitsbereich wird erstellt. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. 
 
->[!NOTE]
->Wenn Sie einen neuen Arbeitsbereich erstellen und mit einem Abonnement verknüpfen, das nach dem 2. April 2018 erstellt wurde, wird automatisch der Tarif *PerGB2018* verwendet.  Dieser Tarif beinhaltet ein kostenloses monatliches Datenvolumen von 5 GB für Application Insights- und Log Analytics-Ressourcen. Weitere Informationen zum Preismodell finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
->
-
 ## <a name="enable-the-log-analytics-vm-extension"></a>Aktivieren der Log Analytics-VM-Erweiterung
 Für bereits in Azure bereitgestellte Windows- und Linux-VMs installieren Sie den Log Analytics-Agent mit Log Analytics-VM-Erweiterung.  Die Verwendung der Erweiterung vereinfacht den Installationsvorgang. Außerdem wird der Agent zum Senden von Daten an den angegebenen Log Analytics-Arbeitsbereich automatisch konfiguriert. Der Agent wird auch automatisch aktualisiert, damit Sie immer über die neuesten Features und Fixes verfügen.
 
 >[!NOTE]
 >Der OMS-Agent für Linux kann nicht für die Berichterstattung für mehrere Log Analytics-Arbeitsbereiche konfiguriert werden. 
 
-Falls Sie einen Arbeitsbereich in einer Azure Government-Cloud erstellt haben, fällt Ihnen im Portal am oberen Rand der Log Analytics-Ressourcenseite unter Umständen ein Banner auf, das Sie zu einem Upgrade einlädt.  Das Upgrade ist im Rahmen dieses Schnellstarts nicht erforderlich.<br>
-
-![Log Analytics-Upgradehinweis im Azure-Portal](media/log-analytics-quick-collect-azurevm/log-analytics-portal-upgradebanner.png)zu erstellen und zu verwalten.    
 1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 2. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche den zuvor erstellten *DefaultLAWorkspace*.
 3. Klicken Sie im linken Menü unter „Arbeitsbereichsdatenquellen“ auf **Virtuelle Computer**.  
@@ -93,10 +86,6 @@ Jetzt haben Sie die Datensammlung aktiviert und können ein einfaches Protokolls
 
 1. Navigieren Sie im Azure-Portal zu Log Analytics, und wählen Sie den zuvor erstellten Arbeitsbereich aus.
 2. Klicken Sie auf die Kachel **Protokollsuche** und im Bereich „Protokollsuche“ auf den Abfragefeldtyp `Perf`, und drücken Sie dann auf EINGABE, oder klicken Sie auf die Suchschaltfläche rechts neben dem Abfragefeld.<br> ![Beispiel für Log Analytics-Protokollsucheabfrage](./media/log-analytics-quick-collect-azurevm/log-analytics-portal-perf-query.png)<br> 
-
-   >[!NOTE]
-   >Falls Ihr Arbeitsbereich in der Azure Government-Cloud erstellt wurde, verwenden Sie die Abfrage `Type=Perf`.  
-   >
 
 Die Abfrage in der folgenden Abbildung gibt z.B. 78.000 Leistungsdatensätze zurück.  Ihre Ergebnisse werden deutlich geringer ausfallen.<br> ![Log Analytics: Ergebnis der Protokollsuche](media/log-analytics-quick-collect-azurevm/log-analytics-search-perf.png)
 

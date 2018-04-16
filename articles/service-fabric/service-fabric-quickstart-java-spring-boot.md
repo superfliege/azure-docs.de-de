@@ -1,12 +1,12 @@
 ---
 title: Bereitstellen einer Spring Boot-Anwendung in Azure Service Fabric | Microsoft-Dokumentation
-description: "In diesem Schnellstart stellen Sie eine Spring Boot-Anwendung für Azure Service Fabric bereit, indem Sie eine Spring Boot-Beispielanwendung verwenden."
+description: In diesem Schnellstart stellen Sie eine Spring Boot-Anwendung für Azure Service Fabric bereit, indem Sie eine Spring Boot-Beispielanwendung verwenden.
 services: service-fabric
 documentationcenter: java
 author: suhuruli
 manager: msfussell
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: quickstart
@@ -15,27 +15,26 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ab860b8525bcb77d3ab35d3f649532713c661b61
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e41a7754e6e170dda7818bceadab7858a9d9fa76
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-azure"></a>Schnellstart: Bereitstellen einer Java Spring Boot-Anwendung in Azure
 Azure Service Fabric ist eine Plattform, mit der verteilte Systeme bereitgestellt und skalierbare und zuverlässige Microservices und Container verwaltet werden können. 
 
-In diesem Schnellstart wird gezeigt, wie Sie eine Spring Boot-Anwendung in Service Fabric bereitstellen. In diesem Schnellstart wird das Beispiel [Getting Started](https://spring.io/guides/gs/spring-boot/) von der Spring-Website verwendet. In dieser Schnellstartanleitung erfahren Sie anhand vertrauter Befehlszeilentools, wie Sie das Spring Boot-Beispiel als Service Fabric-Anwendung bereitstellen. Am Ende des Schnellstarts wird das Spring Boot Getting Started-Beispiel in Service Fabric ausgeführt. 
+In dieser Schnellstartanleitung wird gezeigt, wie Sie eine Spring Boot-Anwendung in Service Fabric bereitstellen. In diesem Schnellstart wird das Beispiel [Getting Started](https://spring.io/guides/gs/spring-boot/) von der Spring-Website verwendet. In dieser Schnellstartanleitung erfahren Sie anhand vertrauter Befehlszeilentools, wie Sie das Spring Boot-Beispiel als Service Fabric-Anwendung bereitstellen. Am Ende des Schnellstarts wird das Spring Boot Getting Started-Beispiel in Service Fabric ausgeführt. 
 
 ![Screenshot der Anwendung](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 
 In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
-> [!div class="checklist"]
-> * Bereitstellen einer Spring Boot-Anwendung in Service Fabric
-> * Bereitstellen der Anwendung im Cluster 
-> * Bereitstellen der Anwendung in einem Cluster in Azure
-> * Horizontales Hochskalieren der Anwendung über mehrere Knoten hinweg
-> * Ausführen eines Failovers für den Dienst ohne Verfügbarkeitstreffer
+* Bereitstellen einer Spring Boot-Anwendung in Service Fabric
+* Bereitstellen der Anwendung im Cluster 
+* Bereitstellen der Anwendung in einem Cluster in Azure
+* Horizontales Hochskalieren der Anwendung über mehrere Knoten hinweg
+* Ausführen eines Failovers für den Dienst ohne Verfügbarkeitstreffer
 
 ## <a name="prerequisites"></a>Voraussetzungen
 So führen Sie diesen Schnellstart durch:
@@ -45,13 +44,13 @@ So führen Sie diesen Schnellstart durch:
 4. [Richten Sie die Java-Umgebung ein](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development).
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
-Führen Sie in einem Befehlsfenster den folgenden Befehl aus, um das Spring Boot Getting Started-Beispiel auf Ihrem lokalen Computer zu klonen.
-```
+Führen Sie in einem Terminalfenster den folgenden Befehl aus, um das Spring Boot Getting Started-Beispiel auf Ihrem lokalen Computer zu klonen.
+```bash
 git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
 
 ## <a name="package-the-spring-boot-application"></a>Packen der Spring Boot-Anwendung 
-1. Führen Sie in dem geklonten Verzeichnis `gs-spring-boot` den Befehl `yo azuresfguest` aus. 
+1. Führen Sie in Ihrem Klon im Verzeichnis `gs-spring-boot` den Befehl `yo azuresfguest` aus. 
 
 2. Geben Sie die folgenden Details für die einzelnen Eingabeaufforderungen ein. 
 
@@ -101,21 +100,40 @@ Sie können nun auf die Spring Boot-Anwendung zugreifen, die in einem Service Fa
 ### <a name="set-up-your-azure-service-fabric-cluster"></a>Einrichten des Azure Service Fabric-Clusters
 Um die Anwendung in einem Cluster in Azure bereitzustellen, erstellen Sie einen eigenen Cluster.
 
-Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet werden. Sie werden vom Service Fabric-Team ausgeführt, und alle Interessenten können Anwendungen bereitstellen und sich mit der Plattform vertraut machen. [Befolgen Sie die Anweisungen](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
+Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team betrieben werden. Mithilfe von Partyclustern können Sie Anwendungen bereitstellen und sich mit der Plattform vertraut machen. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit.
 
-Zum Durchführen von Verwaltungsvorgängen im sicheren Partycluster können Sie Service Fabric Explorer, die CLI oder PowerShell verwenden. Zum Verwenden von Service Fabric Explorer müssen Sie die PFX-Datei von der Partycluster-Website herunterladen und das Zertifikat in Ihren Zertifikatspeicher (Windows oder Mac) oder in den Browser selbst (Ubuntu) importieren. Für selbstsignierte Zertifikate aus dem Partycluster wird kein Kennwort verwendet. 
-
-Zum Durchführen von Verwaltungsvorgängen per PowerShell oder CLI benötigen Sie die PFX- (PowerShell) oder die PEM-Datei (CLI). Führen Sie den folgenden Befehl aus, um die PFX-Datei in eine PEM-Datei zu konvertieren:  
-
-```bash
-openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
-```
-
-Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Melden Sie sich an, und treten Sie einem [Linux-Cluster](http://aka.ms/tryservicefabric) bei. Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Unter dem Link **ReadMe** finden Sie das Zertifikatkennwort sowie Anweisungen zum Konfigurieren verschiedener Umgebungen für die Verwendung des Zertifikats. Lassen Sie sowohl die**Willkommensseite** als auch die Seite mit der**Infodatei** geöffnet, da Sie einige der Anweisungen in den folgenden Schritten benötigen. 
 
 > [!Note]
+> Pro Stunde ist eine begrenzte Anzahl von Partyclustern verfügbar. Sollte beim Registrieren für einen Partycluster ein Fehler auftreten, können Sie eine Weile warten und es dann erneut versuchen. Alternativ können Sie die Schritte unter [Tutorial: Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md) ausführen, um einen Cluster in Ihrem Abonnement zu erstellen. 
+>
 > Der Spring Boot-Dienst ist für das Lauschen auf eingehenden Datenverkehr über Port 8080 konfiguriert. Stellen Sie sicher, dass der Port in Ihrem Cluster geöffnet ist. Wenn Sie den Partycluster verwenden, ist dieser Port geöffnet.
 >
+
+Service Fabric bietet mehrere Tools, mit denen Sie einen Cluster und die dazugehörigen Anwendungen verwalten können:
+
+- Service Fabric Explorer: Ein browserbasiertes Tool.
+- Service Fabric-Befehlszeilenschnittstelle (CLI): Basiert auf der Azure CLI 2.0.
+- PowerShell-Befehle 
+
+In dieser Schnellstartanleitung verwenden Sie die Service Fabric-Befehlszeilenschnittstelle sowie Service Fabric Explorer. 
+
+Um die Befehlszeilenschnittstelle verwenden zu können, müssen Sie auf der Grundlage der heruntergeladenen PFX-Datei eine PEM-Datei erstellen. Verwenden Sie den folgenden Befehl, um die Datei zu konvertieren. (Für Partycluster können Sie einen spezifischen Befehl für Ihre PFX-Datei aus den Anweisungen auf der Seite mit der**Infodatei**kopieren.)
+
+    ```bash
+    openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
+    ``` 
+
+Zur Verwendung von Service Fabric Explorer müssen Sie die von der Partycluster-Website heruntergeladene PFX-Zertifikatdatei in Ihren Zertifikatspeicher (Windows oder Mac) oder in den Browser selbst (Ubuntu) importieren. Sie benötigen das PFX-Kennwort für den privaten Schlüssel von der Seite mit der**Infodatei**.
+
+Importieren Sie das Zertifikat mit der von Ihnen bevorzugten Methode in Ihr System. Beispiel: 
+
+- Unter Windows: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrem persönlichen Zertifikatspeicher (`Certificates - Current User\Personal\Certificates`) zu installieren. Alternativ können Sie den in der**Infodatei** angegebenen PowerShell-Befehl ausführen.
+- Auf einem Mac: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrer Keychain zu installieren.
+- Unter Ubuntu: Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importieren des Zertifikats rechts oben in Firefox auf die Menüschaltfläche und anschließend auf **Einstellungen**. Suchen Sie über das Suchfeld auf der Seite **Einstellungen** nach „Zertifikate“. Klicken Sie auf **Zertifikate anzeigen**, klicken Sie auf die Registerkarte **Ihre Zertifikate**, klicken Sie auf **Importieren**, und befolgen Sie die Anweisungen zum Importieren des Zertifikats.
+ 
+   ![Installieren des Zertifikats in Firefox](./media/service-fabric-quickstart-java-spring-boot/install-cert-firefox.png) 
+
 
 ### <a name="deploy-the-application-using-cli"></a>Bereitstellen der Anwendung über die Befehlszeilenschnittstelle
 Nachdem die Anwendung und Ihr Cluster nun bereitstehen, können Sie die Anwendung direkt über die Befehlszeile im Cluster bereitstellen.
@@ -138,18 +156,18 @@ Nachdem die Anwendung und Ihr Cluster nun bereitstehen, können Sie die Anwendun
     ./install.sh
     ```
 
-4. Öffnen Sie Ihren bevorzugten Browser, und greifen Sie über **http://\<VerbindungsIPoderURL>:8080** auf die Anwendung zu. 
+4. Öffnen Sie Ihren Browser, und greifen Sie über **http://\<IP-Adresse oder URL der Verbindung>:8080** auf die Anwendung zu. 
 
     ![Lokales Front-End der Anwendung](./media/service-fabric-quickstart-java-spring-boot/springbootsfazure.png)
     
-Sie können nun auf die Spring Boot-Anwendung zugreifen, die in einem Service Fabric-Cluster bereitgestellt wurde.  
+Sie können nun auf die Spring Boot-Anwendung zugreifen, die in einem Service Fabric-Cluster in Azure ausgeführt wird.  
     
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalieren von Anwendungen und Diensten in einem Cluster
-Dienste können clusterweit skaliert werden, um eine Änderung der Last für die Dienste auszugleichen. Sie skalieren einen Dienst, indem Sie die Anzahl von Instanzen ändern, die im Cluster ausgeführt werden. Für das Skalieren gibt es verschiedene Möglichkeiten. Sie können z.B. Skripts oder Befehle der Service Fabric-CLI (sfctl) verwenden. In diesem Beispiel wird Service Fabric Explorer verwendet.
+Dienste können clusterweit skaliert werden, um eine Laständerungen für die Dienste auszugleichen. Sie skalieren einen Dienst, indem Sie die Anzahl von Instanzen ändern, die im Cluster ausgeführt werden. Dienste können auf unterschiedliche Weise skaliert werden – beispielsweise mithilfe von Skripts oder Befehlen der Service Fabric-Befehlszeilenschnittstelle (sfctl). In den folgenden Schritten wird Service Fabric Explorer verwendet.
 
-Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und ist über einen Browser zugänglich, indem auf den HTTP-Verwaltungsport (19080) der Cluster zugegriffen wird, z.B. `http://localhost:19080`.
+Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und kann in einem Browser geöffnet werden. Navigieren Sie hierzu zum HTTP-Verwaltungsport des Clusters (19.080). Beispiel: `http://localhost:19080`.
 
-Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren:
+Gehen Sie zum Skalieren des Web-Front-End-Diensts wie folgt vor:
 
 1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://localhost:19080`.
 2. Klicken Sie in der Strukturansicht auf das Auslassungszeichen (drei Punkte) neben dem Knoten **fabric:/SpringServiceFabric/SpringGettingStarted**, und wählen Sie **Scale Service** (Dienst skalieren) aus.
@@ -176,7 +194,7 @@ Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren
 
     Der Dienst verfügt über drei Instanzen, und die Strukturansicht zeigt, auf welchen Knoten die Instanzen ausgeführt werden.
 
-Mit dieser einfachen Verwaltungsaufgabe werden die Ressourcen erhöht, die dem Spring-Dienst für die Verarbeitung der Benutzerauslastung zur Verfügung stehen. Es ist wichtig zu verstehen, dass Sie nicht mehrere Instanzen eines Diensts benötigen, damit er zuverlässig ausgeführt wird. Wenn ein Dienst ausfällt, wird von Service Fabric sichergestellt, dass im Cluster eine neue Dienstinstanz ausgeführt wird.
+Mit dieser einfachen Verwaltungsaufgabe haben Sie die Ressourcen verdoppelt, die dem Front-End-Dienst zur Bewältigung der Benutzerauslastung zur Verfügung stehen. Es ist wichtig zu verstehen, dass Sie nicht mehrere Instanzen eines Diensts benötigen, damit er zuverlässig ausgeführt wird. Sollte ein Dienst ausfallen, stellt Service Fabric sicher, dass im Cluster eine neue Dienstinstanz ausgeführt wird.
 
 ## <a name="fail-over-services-in-a-cluster"></a>Ausführen eines Failovers für Dienste in einem Cluster 
 Zur Veranschaulichung eines Dienstfailovers wird unter Verwendung von Service Fabric Explorer ein Neustart des Knotens simuliert. Vergewissern Sie sich, dass nur eine einzelne Instanz des Diensts ausgeführt wird. 
@@ -192,13 +210,13 @@ Zur Veranschaulichung eines Dienstfailovers wird unter Verwendung von Service Fa
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Schnellstart haben Sie Folgendes gelernt:
 
-> [!div class="checklist"]
-> * Bereitstellen einer Spring Boot-Anwendung in Service Fabric
-> * Bereitstellen der Anwendung im Cluster 
-> * Bereitstellen der Anwendung in einem Cluster in Azure
-> * Horizontales Hochskalieren der Anwendung über mehrere Knoten hinweg
-> * Ausführen eines Failovers für den Dienst ohne Verfügbarkeitstreffer
+* Bereitstellen einer Spring Boot-Anwendung in Service Fabric
+* Bereitstellen der Anwendung im Cluster 
+* Bereitstellen der Anwendung in einem Cluster in Azure
+* Horizontales Hochskalieren der Anwendung über mehrere Knoten hinweg
+* Ausführen eines Failovers für den Dienst ohne Verfügbarkeitstreffer
 
-* Weitere Informationen zum [Erstellen von Java-Microservices mithilfe von Service Fabric-Programmiermodellen](service-fabric-quickstart-java-reliable-services.md)
-* Weitere Informationen zum [Einrichten von Continuous Integration & Deployment mithilfe von Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
-* Sehen Sie sich die anderen [Java-Beispiele](https://github.com/Azure-Samples/service-fabric-java-getting-started) an
+Weitere Informationen zur Verwendung von Java-Apps in Service Fabric finden Sie im Tutorial für Java-Apps.
+
+> [!div class="nextstepaction"]
+> [Bereitstellen einer Java-App](./service-fabric-tutorial-create-java-app.md)

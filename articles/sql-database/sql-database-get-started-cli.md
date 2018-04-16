@@ -11,11 +11,11 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 03/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 509cff23609896a019c110d8046935dfbce793f2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0c011ba84033655432ceee34295c2b1908a3ab58
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-single-azure-sql-database-using-the-azure-cli"></a>Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI.
 
@@ -29,7 +29,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="define-variables"></a>Definieren von Variablen
 
-Definieren Sie Variablen zur Verwendung in den Skripts dieses Schnellstarts.
+Definieren Sie Variablen zur Verwendung in den Skripts dieser Schnellstartanleitung.
 
 ```azurecli-interactive
 # The data center and resource name for your resources
@@ -78,7 +78,7 @@ az sql server firewall-rule create --resource-group $resourcegroupname --server 
 
 ## <a name="create-a-database-in-the-server-with-sample-data"></a>Erstellen einer Datenbank auf dem Server mit Beispieldaten
 
-Erstellen Sie mit dem Befehl [az sql db create](/cli/azure/sql/db#az_sql_db_create) auf dem Server eine Datenbank mit der [Leistungsstufe „S0“](sql-database-service-tiers.md). Im folgenden Beispiel wird eine Datenbank mit dem Namen `mySampleDatabase` erstellt, und die AdventureWorksLT-Beispieldaten werden in diese Datenbank geladen. Ersetzen Sie diese vordefinierten Werte wie gewünscht (andere Schnellstarts in dieser Sammlung bauen auf den Werten dieses Schnellstarts auf).
+Erstellen Sie mit dem Befehl [az sql db create](/cli/azure/sql/db#az_sql_db_create) auf dem Server eine Datenbank mit der [Leistungsstufe „S0“](sql-database-service-tiers.md). Im folgenden Beispiel wird eine Datenbank mit dem Namen `mySampleDatabase` erstellt, und die AdventureWorksLT-Beispieldaten werden in diese Datenbank geladen. Ersetzen Sie diese vordefinierten Werte wie gewünscht. (Andere Schnellstarttutorials in dieser Sammlung basieren auf den Werten dieser Schnellstartanleitung.)
 
 ```azurecli-interactive
 az sql db create --resource-group $resourcegroupname --server $servername \
@@ -87,10 +87,10 @@ az sql db create --resource-group $resourcegroupname --server $servername \
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Andere Schnellstarts dieser Sammlung bauen auf diesem Schnellstart auf. 
+Andere Schnellstarttutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. 
 
 > [!TIP]
-> Wenn Sie planen, mit den nachfolgenden Schnellstarts fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
+> Wenn Sie planen, mit den nachfolgenden Schnellstarttutorials fortzufahren, sollten Sie die in dieser Schnellstartanleitung erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
 >
 
 ```azurecli-interactive

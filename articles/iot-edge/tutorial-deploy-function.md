@@ -6,15 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 04/02/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3d7dd0986878c747f92afc712301453bc8772ef2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f1c6b5cd07752c6b29234a365b3298d76b639b3a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Bereitstellen einer Azure-Funktion als IoT Edge-Modul – Vorschau
 Mithilfe von Azure Functions können Sie Code bereitstellen, mit dem Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert wird. Dieses Tutorial führt Sie durch die Erstellung und Bereitstellung einer Azure-Funktion, die Sensordaten des simulierten IoT Edge-Geräts filtert, das Sie im Tutorial zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Windows][lnk-tutorial1-win] oder [Linux][lnk-tutorial1-lin] erstellt haben. In diesem Tutorial lernen Sie Folgendes:     
@@ -95,8 +95,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
                 // Copy the properties of the original message into the new Message object
                 foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
                 {
-                    filteredMessage.Properties.Add(prop.Key, prop.Value);
-                }
+                    filteredMessage.Properties.Add(prop.Key, prop.Value);                }
                 // Add a new property to the message to indicate it is an alert
                 filteredMessage.Properties.Add("MessageType", "Alert");
                 // Send the message        
@@ -136,10 +135,13 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
    ```
    Zur Ermittlung von Benutzername, Kennwort und die Anmeldeserver für diesen Befehl wechseln Sie zum [Azure-Portal] (https://portal.azure.com)). Klicken Sie unter **Alle Ressourcen** auf die Kachel Ihrer Azure-Containerregistrierung, um deren Eigenschaften zu öffnen. Klicken Sie dann auf **Zugriffsschlüssel**. Kopieren Sie die Werte der Felder **Benutzername**, **Kennwort** und **Anmeldeserver**. 
 
-2. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei **module.json**, und klicken Sie auf **IoT Edge-Modul-Docker-Image erstellen und pushen**. Wählen Sie im oberen Bereich des VS Code-Fensters im Popup-Dropdownfeld Ihre Containerplattform (**amd64** für Linux-Container oder **windows-amd64** für Windows-Container) aus. Daraufhin packt VS Code Ihre Funktionscodes in einen Container und führt einen Pushvorgang an die angegebene Containerregistrierung durch.
+2. Öffnen Sie **module.json**. `"version"` kann optional aktualisiert werden – beispielsweise auf **"1.0"**. Außerdem wird der Name des Repositorys angezeigt, den Sie im Parameter `-r` von `dotnet new aziotedgefunction` eingegeben haben.
 
+3. Speichern Sie die Datei **module.json**.
 
-3. Sie können die vollständige Adresse des Containerimages mit Tag im integrierten VS Code-Terminal abrufen. Weitere Informationen zur Definition für Erstellen und Pushen finden Sie in der Datei `module.json`.
+4. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei **module.json**, und klicken Sie auf **IoT Edge-Modul-Docker-Image erstellen und pushen**. Wählen Sie im oberen Bereich des VS Code-Fensters im Popup-Dropdownfeld Ihre Containerplattform (**amd64** für Linux-Container oder **windows-amd64** für Windows-Container) aus. Daraufhin packt VS Code Ihre Funktionscodes in einen Container und führt einen Pushvorgang an die angegebene Containerregistrierung durch.
+
+5. Sie können die vollständige Adresse des Containerimages mit Tag im integrierten VS Code-Terminal abrufen. Weitere Informationen zur Definition für Erstellen und Pushen finden Sie in der Datei `module.json`.
 
 ## <a name="add-registry-credentials-to-your-edge-device"></a>Hinzufügen von Registrierungsanmeldeinformationen zur Edge-Runtime auf Ihrem Edge-Gerät
 Fügen Sie die Anmeldeinformationen für Ihre Registrierung zur Edge-Runtime auf dem Computer hinzu, auf dem Sie Ihr Edge-Gerät ausgeführen. Hierdurch erhält die Runtime Zugriff zum Pullen des Containers. 
@@ -169,7 +171,7 @@ Fügen Sie die Anmeldeinformationen für Ihre Registrierung zur Edge-Runtime auf
 1. Fügen Sie das Modul **filterFunction** hinzu.
     1. Wählen Sie erneut **IoT Edge-Modul hinzufügen** aus.
     2. Geben Sie im Feld **Name** die Zeichenfolge `filterFunction` ein.
-    3. Geben Sie im Feld **Image-URI** die Imageadresse ein, z.B. `<your container registry address>/filterfunction:0.0.1-amd64`. Die vollständige Image-Adresse kann im vorherigen Abschnitt gefunden werden.
+    3. Geben Sie im Feld **Image-URI** die Imageadresse ein, z.B. `<your container registry address>/filterfunction:0.0.1-amd64`. Die vollständige Imageadresse finden Sie im vorherigen Abschnitt.
     74. Klicken Sie auf **Speichern**.
 2. Klicken Sie auf **Weiter**.
 3. Kopieren Sie im Schritt **Routen angeben** den folgenden JSON-Code in das Textfeld. Die erste Route transportiert Nachrichten vom Temperatursensor über den Endpunkt „input1“ zum Filtermodul. Die zweite Route transportiert Nachrichten vom Filtermodul an IoT Hub. In dieser Route ist `$upstream` ein spezieller Empfänger, der Edge Hub anweist, Nachrichten an IoT Hub zu senden. 

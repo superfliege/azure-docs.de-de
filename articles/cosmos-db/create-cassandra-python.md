@@ -1,11 +1,10 @@
 ---
-title: "Schnellstartanleitung: Cassandra-API mit Python – Azure-Cosmos-DB | Microsoft-Dokumentation"
+title: 'Schnellstartanleitung: Cassandra-API mit Python – Azure-Cosmos-DB | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Apache Cassandra-API von Azure Cosmos DB eine Profilanwendung mit Python erstellen.
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 4ebc883e-c512-4e34-bd10-19f048661159
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.author: govindk
-ms.openlocfilehash: 4a2347fe9578b35c95d240c5c4dd2bf062077ece
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.author: sngun
+ms.openlocfilehash: c725610dde10c275c3e2811cab197cf4912fe808
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Cassandra-App mit Python und Azure Cosmos DB
 
@@ -35,7 +34,7 @@ Sie benötigen Zugriff auf das Vorschauprogramm für die Cassandra-API von Azure
 
 Außerdem haben Sie folgende Möglichkeiten:
 * [Python](https://www.python.org/downloads/) (Version 2.7.14)
-* [Git](http://git-scm.com/)
+* [Git-Client](http://git-scm.com/)
 * [Python-Treiber für Apache Cassandra](https://github.com/datastax/python-driver)
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos

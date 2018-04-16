@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad8ed320a8dd91ea83dbaf71e2e9514b4df4cdb5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 630a633cf8657d43d6416d316928830634c9bf48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Überwachen von AD FS mithilfe von Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung Ihrer AD FS-Infrastruktur mit Azure AD Connect Health. Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
@@ -109,7 +109,7 @@ Der Bericht enthält die folgenden Informationen:
 | Benutzer-ID |Die verwendete Benutzer-ID. Dies ist der Wert mit der Eingabe des Benutzers, also in einigen Fällen die Verwendung der falschen Benutzer-ID. |
 | Fehlgeschlagene Anmeldeversuche |Die Gesamtanzahl fehlgeschlagener Anmeldeversuche für die jeweilige Benutzer-ID. Die Tabelle ist nach der höchsten Anzahl fehlgeschlagener Versuche in absteigender Reihenfolge sortiert. |
 | Letzter Fehler |Zeigt den Zeitstempel des letzten Fehlers an. |
-| Letzte Fehler-IP-Adresse |Zeigt die Client-IP-Adresse der letzten fehlerhaften Anforderung an. |
+| Letzte Fehler-IP-Adresse |Zeigt die Client-IP-Adresse der letzten fehlerhaften Anforderung an. Sollten für diesen Wert mehrere IP-Adressen angezeigt werden, enthält er möglicherweise die Forward-Client-IP-Adresse sowie die IP-Adresse des letzten Anforderungsversuchs des Benutzers.  |
 
 > [!NOTE]
 > Der Bericht wird automatisch alle zwölf Stunden mit den neuen gesammelten Informationen aktualisiert. Anmeldeversuche innerhalb der letzten 12 Stunden sind daher unter Umständen nicht im Bericht enthalten.
@@ -191,11 +191,14 @@ Der Schwellenwert für Warnungen kann über die „Schwellenwerteinstellungen“
 1. Warum werden im Bericht Bereiche mit privaten IP-Adressen angezeigt?  <br />
 Private IP-Adressen (<i>10.x.x.x, 172.x.x.x und 192.168.x.x</i>) und Exchange-IP-Adressen werden gefiltert und in der IP-Whitelist als „True“ gekennzeichnet. Wenn Bereiche mit privaten IP-Adressen angezeigt werden, ist die Wahrscheinlichkeit hoch, dass Ihr externer Lastenausgleich die Client-IP-Adresse beim Übergeben der Anforderung an den Webanwendungsproxy-Server nicht sendet.
 
-2. Wie kann ich die IP-Adresse blockieren?  <br />
+2. Warum enthält der Bericht IP-Adressen des Lastenausgleichs?  <br />
+Falls IP-Adressen des Lastenausgleichs angezeigt werden, sendet Ihr externer Lastenausgleich höchstwahrscheinlich die Client-IP-Adresse nicht, wenn er die Anforderung an den Webanwendungsproxy-Server übergibt. Konfigurieren Sie Ihren Lastenausgleich so, dass Forward-Client-IP-Adressen ordnungsgemäß weitergegeben werden. 
+
+3. Wie kann ich die IP-Adresse blockieren?  <br />
 Sie sollten identifizierte schädliche IP-Adressen der Firewall hinzufügen oder in Exchange blockieren.   <br />
 Für AD FS 2016 + 1803.C+ QFE können Sie die IP-Adresse direkt in AD FS blockieren. 
 
-3. Warum werden in diesem Bericht keine Elemente angezeigt? <br />
+4. Warum werden in diesem Bericht keine Elemente angezeigt? <br />
    - Es liegen keine fehlgeschlagenen Anmeldeaktivitäten vor, für die die Schwellenwerteinstellungen überschritten werden. 
    - Stellen Sie sicher, dass in Ihrer AD FS-Serverliste keine Warnung vom Typ „Integritätsdienst ist nicht aktuell” aktiv ist.  Informieren Sie sich über das [Durchführen der Problembehandlung für diese Warnung](active-directory-aadconnect-health-data-freshness.md).
    - Überwachungen sind in AD FS-Farmen nicht aktiviert.

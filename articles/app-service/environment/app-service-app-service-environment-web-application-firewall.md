@@ -1,8 +1,8 @@
 ---
-title: "Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung"
+title: Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung
 description: Erfahren Sie, wie eine Ihrer App Service-Umgebung vorgelagerte Web Application Firewall konfigurieren.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: erikre
 editor: jimbe
@@ -12,25 +12,28 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/17/2016
+ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: mvc
-ms.openlocfilehash: bfe36ee5365e71db4280e8e2ccff6db8e552dd39
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: bc59d8671d904cf5096d616213cc4674ef5743b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung
 ## <a name="overview"></a>Übersicht
-Web Application Firewalls, wie die [Barracuda WAF für Azure](https://www.barracuda.com/programs/azure), die im [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) erhältlich ist, helfen Ihnen, Ihre Webanwendungen zu schützen, indem sie eingehenden Webverkehr untersuchen, um Einschleusung von SQL-Befehlen, Cross-Site Scripting, das Hochladen von Schadsoftware und Anwendungs-DDoS sowie andere Angriffe zu blockieren. WAF überprüft auch zur Verhinderung von Datenverlust (Data Loss Prevention, DLP) die Antworten von den Back-End-Webservern. Zusammen mit der von App Service-Umgebungen bereitgestellten Isolierung und zusätzlichen Skalierung ergibt sich dadurch eine ideale Umgebung für das Hosten geschäftswichtiger Webanwendungen, die böswilligen Anforderungen abwehren und hohe Datenverkehrsvolumen bewältigen müssen.
+
+Web Application Firewalls (WAFs) tragen zum Schutz Ihrer Webanwendungen bei, indem sie eingehenden Webdatenverkehr untersuchen und die Einschleusung von SQL-Befehlen, websiteübergreifendes Scripting, das Hochladen von Schadsoftware sowie DDoS-Angriffe und andere Angriffe unterbinden. Darüber hinaus überprüfen sie die Antworten der Back-End-Webserver, um Datenverluste zu verhindern (Data Loss Prevention, DLP). Zusammen mit der von App Service-Umgebungen bereitgestellten Isolierung und zusätzlichen Skalierung ergibt sich dadurch eine ideale Umgebung für das Hosten geschäftswichtiger Webanwendungen, die böswilligen Anforderungen abwehren und hohe Datenverkehrsvolumen bewältigen müssen. Azure bietet eine WAF-Funktion mit [Application Gateway](http://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).  Im Dokument [Integrieren Ihrer ILB-App Service-Umgebung in ein Application Gateway](http://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) erfahren Sie, wie Sie Ihre App Service-Umgebung in eine Application Gateway-Instanz integrieren.
+
+Neben Azure Application Gateway stehen verschiedene Marketplace-Optionen wie [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure) zur Verfügung, die über den [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) bezogen werden können. Im weiteren Verlauf dieses Dokuments erfahren Sie, wie Sie Ihre App Service-Umgebung in ein Barracuda WAF-Gerät integrieren.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
 ## <a name="setup"></a>Einrichtung
 Für dieses Dokument konfigurieren wir die App Service-Umgebung hinter mehreren Barracuda WAF-Instanzen mit Lastenausgleich, sodass nur Datenverkehr von der WAF die App Service-Umgebung erreichen kann und kein Zugriff aus der DMZ möglich ist. Außerdem haben wir Azure Traffic Manager die Barracuda WAF-Instanzen für den Lastenausgleich von Azure-Rechenzentren und Regionen vorgelagert. Ein allgemeines Diagramm der Einrichtung sieht aus wie in der folgenden Abbildung dargestellt:
 
-![Architektur][Architecture] 
+![Architecture][Architecture] 
 
 > [!NOTE]
 > Mit der Einführung der [ILB-Unterstützung für die App Service-Umgebung](app-service-environment-with-internal-load-balancer.md) können Sie die ASE so konfigurieren, dass darauf von der DMZ nicht zugegriffen werden kann und sie nur im privaten Netzwerk zur Verfügung steht. 
@@ -62,7 +65,7 @@ Fügen Sie, wie in der folgenden Abbildung gezeigt, den Verwaltungsendpunkt hinz
 
 ![Verwaltungsendpunkt hinzufügen][AddManagementEndpoint]
 
-Navigieren Sie in einem Browser zum Verwaltungsendpunkt für Ihren Clouddienst. Wenn der Clouddienst „test.cloudapp.net“ heißt, greifen Sie auf diesen Endpunkt zu, indem Sie zu „ http://test.cloudapp.net:8000 “ navigieren. Es sollte, wie in der folgenden Abbildung gezeigt, eine Anmeldeseite angezeigt werden, auf der Sie sich mit den Anmeldeinformationen anmelden können, die Sie beim Einrichten der WAF-VM angegeben haben.
+Navigieren Sie in einem Browser zum Verwaltungsendpunkt für Ihren Clouddienst. Wenn der Clouddienst „test.cloudapp.net“ heißt, greifen Sie auf diesen Endpunkt zu, indem Sie zu http://test.cloudapp.net:8000 navigieren. Es sollte, wie in der folgenden Abbildung gezeigt, eine Anmeldeseite angezeigt werden, auf der Sie sich mit den Anmeldeinformationen anmelden können, die Sie beim Einrichten der WAF-VM angegeben haben.
 
 ![Anmeldeseite für die Verwaltung][ManagementLoginPage]
 
