@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6038251ba79797312a0fec61e4a6f3d2e99d5435
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 276c6bf1a476e5c74c5e75e4906f451154becf31
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Schnellstart: Erstellen einer .NET Service Fabric-Anwendung in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -29,14 +29,14 @@ In diesem Schnellstart wird gezeigt, wie Sie Ihre erste .NET-Anwendung für Serv
 ![Screenshot der Anwendung](./media/service-fabric-quickstart-dotnet/application-screenshot.png)
 
 Mithilfe dieser Anwendung erfahren Sie Folgendes:
-> [!div class="checklist"]
-> * Erstellen einer Anwendung mit .NET und Service Fabric
-> * Verwenden von ASP.NET Core als Web-Front-End
-> * Speichern von Anwendungsdaten in einem zustandsbehafteten Dienst
-> * Lokales Debuggen Ihrer Anwendung
-> * Bereitstellen der Anwendung in einem Cluster in Azure
-> * Horizontales Hochskalieren der Anwendung über mehrere Knoten hinweg
-> * Durchführen eines parallelen Anwendungsupgrades
+
+* Erstellen einer Anwendung mit .NET und Service Fabric
+* Verwenden von ASP.NET Core als Web-Front-End
+* Speichern von Anwendungsdaten in einem zustandsbehafteten Dienst
+* Lokales Debuggen Ihrer Anwendung
+* Bereitstellen der Anwendung in einem Cluster in Azure
+* Horizontales Hochskalieren der Anwendung über mehrere Knoten hinweg
+* Durchführen eines parallelen Anwendungsupgrades
 
 ## <a name="prerequisites"></a>Voraussetzungen
 So führen Sie diesen Schnellstart durch:
@@ -92,7 +92,7 @@ Beim Abstimmen in der Anwendung treten die folgenden Ereignisse ein:
 
 ## <a name="debug-in-visual-studio"></a>Debuggen in Visual Studio
 
-Beim Debuggen der Anwendung in Visual Studio verwenden Sie einen lokalen Service Fabric-Entwicklungscluster. Sie haben die Möglichkeit, Ihre Oberfläche für das Debuggen an Ihr Szenario anzupassen. In dieser Anwendung werden Daten mithilfe eines zuverlässigen Wörterbuchs in einem Back-End-Dienst gespeichert. Standardmäßig wird die Anwendung von Visual Studio entfernt, wenn Sie den Debugger beenden. Die Entfernung der Anwendung führt dazu, dass auch die Daten im Back-End-Dienst entfernt werden. Um die Daten zwischen den Debugsitzungen beizubehalten, können Sie den **Debugmodus für die Anwendung** als Eigenschaft im Projekt **Voting** in Visual Studio ändern.
+Die Anwendung sollte reibungslos funktionieren. Sie können jedoch den Debugger verwenden, um die Funktion wichtiger Komponenten der Anwendung zu überprüfen. Beim Debuggen der Anwendung in Visual Studio verwenden Sie einen lokalen Service Fabric-Entwicklungscluster. Sie haben die Möglichkeit, Ihre Oberfläche für das Debuggen an Ihr Szenario anzupassen. In dieser Anwendung werden Daten mithilfe eines zuverlässigen Wörterbuchs in einem Back-End-Dienst gespeichert. Standardmäßig wird die Anwendung von Visual Studio entfernt, wenn Sie den Debugger beenden. Die Entfernung der Anwendung führt dazu, dass auch die Daten im Back-End-Dienst entfernt werden. Um die Daten zwischen den Debugsitzungen beizubehalten, können Sie den **Debugmodus für die Anwendung** als Eigenschaft im Projekt **Voting** in Visual Studio ändern.
 
 Führen Sie die folgenden Schritte aus, um zu ermitteln, was im Code passiert:
 1. Öffnen Sie die Datei **/VotingWeb/Controllers/VotesController.cs**, und legen Sie in der **Put**-Methode der Web-API (Zeile 69) einen Breakpoint fest. Sie können in Visual Studio im Projektmappen-Explorer nach der Datei suchen.
@@ -181,8 +181,8 @@ Unter Umständen erscheint eine Browserwarnung mit dem Hinweis, dass der Ort nic
 
 Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren:
 
-1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
-2. Klicken Sie auf das Auslassungszeichen (drei Punkte) neben dem Knoten **fabric:/Voting/VotingWeb** in der Strukturansicht, und wählen Sie **Scale Service** (Dienst skalieren).
+1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+2. Erweitern Sie **Anwendungen**->**VotingType**->**fabric:/Voting** in der Strukturansicht. Klicken Sie auf das Auslassungszeichen (drei Punkte) neben dem Knoten **fabric:/Voting/VotingWeb** in der Strukturansicht, und wählen Sie **Scale Service** (Dienst skalieren).
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
 
@@ -213,25 +213,26 @@ Gehen Sie zum Aktualisieren der Anwendung wie folgt vor:
 7. Aktivieren Sie im Dialogfeld **Service Fabric-Anwendung veröffentlichen** das Kontrollkästchen „Upgrade der Anwendung ausführen“, und klicken Sie auf **Veröffentlichen**.
 
     ![Dialogfeld „Veröffentlichen“ – Einstellung für Upgrade](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
+
+    Während das Upgrade durchgeführt wird, können Sie die Anwendung weiterverwenden. Da zwei Instanzen des Diensts im Cluster ausgeführt werden, erhalten einige Anforderungen unter Umständen eine aktualisierte Version der Anwendung, während für andere weiterhin die alte Version verwendet wird.
+
 8. Öffnen Sie Ihren Browser, und navigieren Sie zu der Clusteradresse an Port 19080, z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
 9. Klicken Sie in der Strukturansicht auf den Knoten **Anwendungen** und dann im rechten Bereich auf **Upgrades in Progress** (Laufende Upgrades). Sie sehen, wie das Upgrade die Upgradedomänen in Ihrem Cluster durchläuft und wie sichergestellt wird, dass jede Domäne fehlerfrei ist, bevor mit der nächsten Domäne fortgefahren wird. Eine Upgradedomäne wird in der Statusanzeige grün angezeigt, wenn die Integrität der Domäne überprüft wurde.
     ![Upgradeansicht im Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     Mit Service Fabric werden Upgrades sicher gemacht, indem nach dem Aktualisieren des Diensts auf einem Knoten im Cluster jeweils zwei Minuten gewartet wird. Rechnen Sie damit, dass der gesamte Updatevorgang ca. acht Minuten dauert.
 
-10. Während das Upgrade durchgeführt wird, können Sie die Anwendung weiterverwenden. Da zwei Instanzen des Diensts im Cluster ausgeführt werden, erhalten einige Anforderungen unter Umständen eine aktualisierte Version der Anwendung, während für andere weiterhin die alte Version verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Schnellstart haben Sie Folgendes gelernt:
 
-> [!div class="checklist"]
-> * Erstellen einer Anwendung mit .NET und Service Fabric
-> * Verwenden von ASP.NET Core als Web-Front-End
-> * Speichern von Anwendungsdaten in einem zustandsbehafteten Dienst
-> * Lokales Debuggen Ihrer Anwendung
-> * Bereitstellen der Anwendung in einem Cluster in Azure
-> * Horizontales Hochskalieren der Anwendung über mehrere Knoten hinweg
-> * Durchführen eines parallelen Anwendungsupgrades
+* Erstellen einer Anwendung mit .NET und Service Fabric
+* Verwenden von ASP.NET Core als Web-Front-End
+* Speichern von Anwendungsdaten in einem zustandsbehafteten Dienst
+* Lokales Debuggen Ihrer Anwendung
+* Bereitstellen der Anwendung in einem Cluster in Azure
+* Horizontales Hochskalieren der Anwendung über mehrere Knoten hinweg
+* Durchführen eines parallelen Anwendungsupgrades
 
 Weitere Informationen zu Service Fabric und .NET finden Sie im Tutorial zum folgenden Thema:
 > [!div class="nextstepaction"]

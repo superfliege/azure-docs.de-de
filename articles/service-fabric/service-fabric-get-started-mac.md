@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: 81265dd61faee38d578a380ca392e7851662329c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76bbe686d07ff83bff6271f62793713194938212
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Einrichten Ihrer Entwicklungsumgebung unter Mac OS X
 > [!div class="op_single_selector"]
@@ -187,9 +187,9 @@ Nachdem Sie Ihre Service Fabric-Anwendung erstellt und den Buildvorgang durchgef
 
 Installieren Sie das [.NET Core 2.0 SDK für Mac](https://www.microsoft.com/net/core#macos), um mit dem [Erstellen von Service Fabric-C#-Anwendungen](service-fabric-create-your-first-linux-application-with-csharp.md) zu beginnen. Pakete für Service Fabric-Anwendungen mit .NET Core 2.0 werden auf NuGet.org gehostet (derzeit in der Vorschauphase).
 
-## <a name="install-the-service-fabric-plug-in-for-eclipse-neon-on-your-mac"></a>Installieren des Service Fabric-Plug-Ins für Eclipse Neon auf Ihrem Mac
+## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Installieren des Service Fabric-Plug-Ins für Eclipse auf Ihrem Mac
 
-Azure Service Fabric stellt ein Plug-In für Neon Eclipse für die Java-IDE bereit. Das Plug-In vereinfacht den Prozess der Erstellung und Bereitstellung von Java-Diensten. Führen Sie [diese Schritte](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon) aus, um das Service Fabric-Plug-In für Eclipse zu installieren oder auf die aktuelle Version zu aktualisieren. Die anderen Schritte unter [Service Fabric-Plug-In für die Entwicklung von Eclipse-Java-Anwendungen](service-fabric-get-started-eclipse.md) gelten ebenfalls: Erstellen einer Anwendung, Hinzufügen eines Diensts zu einer Anwendung, Deinstallieren einer Anwendung usw.
+Azure Service Fabric stellt ein Plug-In für Eclipse Neon (oder höher) für die Java-IDE bereit. Das Plug-In vereinfacht den Prozess der Erstellung und Bereitstellung von Java-Diensten. Führen Sie [diese Schritte](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse) aus, um das Service Fabric-Plug-In für Eclipse zu installieren oder auf die aktuelle Version zu aktualisieren. Die anderen Schritte unter [Service Fabric-Plug-In für die Entwicklung von Eclipse-Java-Anwendungen](service-fabric-get-started-eclipse.md) gelten ebenfalls: Erstellen einer Anwendung, Hinzufügen eines Diensts zu einer Anwendung, Deinstallieren einer Anwendung usw.
 
 Der letzte Schritt besteht im Instanziieren des Containers mit einem Pfad, der mit Ihrem Host gemeinsam verwendet wird. Für das Plug-In ist diese Art der Instanziierung erforderlich, damit es mit dem Docker-Container auf Ihrem Mac verwendet werden kann. Beispiel: 
 

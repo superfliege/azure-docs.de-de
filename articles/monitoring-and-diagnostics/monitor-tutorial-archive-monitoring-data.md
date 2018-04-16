@@ -1,5 +1,5 @@
 ---
-title: "Archivieren von Azure-Überwachungsdaten | Microsoft-Dokumentation"
+title: Archivieren von Azure-Überwachungsdaten | Microsoft-Dokumentation
 description: Archivieren Sie in Azure generierte Protokoll- und Metrikdaten in einem Speicherkonto.
 author: johnkemnetz
 manager: orenr
@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: a3ab4713861d4d9681ad2ac5f084255fc29462ce
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b44bbd9cb2f54107d2593b1ab7f07f07fcc41e57
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="archive-azure-monitoring-data"></a>Archivieren von Azure-Überwachungsdaten
 
@@ -22,11 +22,11 @@ Auf mehreren Ebenen Ihrer Azure-Umgebung werden Protokoll- und Metrikdaten gener
 
 > [!div class="checklist"]
 > * Erstellen eines Speicherkontos zum Speichern der Überwachungsdaten
-> * Weiterleiten von Abonnementprotokollen an dieses Konto 
-> * Weiterleiten von Ressourcen an dieses Konto 
-> * Weiterleiten von Daten des virtuellen Computers (Gastbetriebssystems) an das Konto 
-> * Anzeigen der Überwachungsdaten im Konto 
-> * Bereinigen von Ressourcen 
+> * Weiterleiten von Abonnementprotokollen an dieses Konto
+> * Weiterleiten von Ressourcen an dieses Konto
+> * Weiterleiten von Daten des virtuellen Computers (Gastbetriebssystems) an das Konto
+> * Anzeigen der Überwachungsdaten im Konto
+> * Bereinigen von Ressourcen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -69,7 +69,7 @@ Jetzt konfigurieren wir Daten auf Ressourcenebene (Ressourcenmetriken und Diagno
 1. Klicken Sie im Navigationsbereich auf der linken Seite auf die Schaltfläche **Überwachen** und dann auf **Diagnoseeinstellungen**. Es wird eine Liste aller Ressourcen in Ihrem Abonnement eingeblendet, die mithilfe von Azure Monitor Überwachungsdaten generieren. Wenn diese Liste keine Ressourcen enthält, können Sie, bevor Sie fortfahren, [eine Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md), damit Sie über eine Ressource verfügen, für die Sie eine Diagnoseeinstellung konfigurieren können.
 
 2. Klicken Sie auf eine Ressource in der Liste und dann auf **Diagnose aktivieren**.
-   
+
    ![Aktivieren der Diagnose](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-turn-on.png)
 
    Wenn bereits eine Einstellung konfiguriert ist, sehen Sie stattdessen die vorhandenen Einstellungen und die Schaltfläche **Diagnoseeinstellung hinzufügen**. Klicken Sie auf diese Schaltfläche.
@@ -87,12 +87,19 @@ Jetzt konfigurieren wir Daten auf Ressourcenebene (Ressourcenmetriken und Diagno
 5. Aktivieren Sie alle Kontrollkästchen unter **Protokoll** und **Metrik**. Je nach Ressourcentyp wird Ihnen nur eine dieser Optionen angeboten. Diese Kontrollkästchen steuern, welche Kategorien von Protokoll- und Metrikdaten, die für den jeweiligen Ressourcentyp verfügbar sind, an das ausgewählte Ziel, in diesem Fall ein Speicherkonto, gesendet werden.
 
    ![Kategorien von Diagnoseeinstellungen](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-categories.png)
-   
+
 6. Legen Sie den Schieberegler **Aufbewahrung (Tage)** auf 30 fest. Mit diesem Schieberegler legen Sie die Anzahl von Tagen fest, die Überwachungsdaten im Speicherkonto aufbewahrt werden sollen. Azure Monitor löscht automatisch Daten, die älter als die angegebene Anzahl von Tagen sind. Bei einer Aufbewahrungsdauer von 0 Tagen werden die Daten dauerhaft gespeichert.
 
 7. Klicken Sie auf **Speichern**.
 
 Zu Ihrer Ressource gehörige Überwachungsdaten werden nun in das Speicherkonto übertragen.
+
+> [!NOTE]
+> Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
+>
+> *Beispiel:* Die Metrik „Eingehende Nachrichten“ eines Event Hubs kann auf einer warteschlangenspezifischen Ebene untersucht und in einem Diagramm dargestellt werden. Wenn Sie die Metrik allerdings über die Diagnoseeinstellungen exportieren, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
+>
+>
 
 ## <a name="route-virtual-machine-guest-os-data-to-the-storage-account"></a>Weiterleiten von Daten des virtuellen Computers (Gastbetriebssystems) an das Speicherkonto
 
@@ -113,7 +120,7 @@ Zu Ihrer Ressource gehörige Überwachungsdaten werden nun in das Speicherkonto 
 6. Sobald die Diagnoseeinstellung richtig gespeichert wurde, wird auf der Registerkarte **Übersicht** eine Liste der erfassten Daten und ihrer Speicherorte angezeigt. Klicken Sie auf den Abschnitt **Leistungsindikatoren**, um die erfassten Windows-Leistungsindikatoren zu überprüfen.
 
    ![Einstellungen von Leistungsindikatoren](media/monitor-tutorial-archive-monitoring-data/guest-perf-counters.png)
-   
+
 7. Klicken Sie auf die Registerkarte **Protokolle**, und aktivieren Sie in „Anwendungs- und Systemprotokolle“ die Kontrollkästchen für Protokolle auf der Ebene **Informationen**.
 
    ![Protokolleinstellungen](media/monitor-tutorial-archive-monitoring-data/guest-logs.png)
@@ -166,16 +173,16 @@ Sie haben das Archivieren von Überwachungsdaten in einem Speicherkonto erfolgre
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie die Archivierung von Überwachungsdaten aus Ihrer Azure-Umgebung (Abonnement, Ressource und Gastbetriebssystem) in einem Speicherkonto einrichten. 
+In diesem Tutorial haben Sie gelernt, wie Sie die Archivierung von Überwachungsdaten aus Ihrer Azure-Umgebung (Abonnement, Ressource und Gastbetriebssystem) in einem Speicherkonto einrichten.
 
 
 > [!div class="checklist"]
 > * Erstellen eines Speicherkontos zum Speichern der Überwachungsdaten
-> * Weiterleiten von Abonnementprotokollen an dieses Konto 
-> * Weiterleiten von Ressourcen an dieses Konto 
-> * Weiterleiten von Daten des virtuellen Computers (Gastbetriebssystems) an das Konto 
-> * Anzeigen der Überwachungsdaten im Konto 
-> * Bereinigen von Ressourcen 
+> * Weiterleiten von Abonnementprotokollen an dieses Konto
+> * Weiterleiten von Ressourcen an dieses Konto
+> * Weiterleiten von Daten des virtuellen Computers (Gastbetriebssystems) an das Konto
+> * Anzeigen der Überwachungsdaten im Konto
+> * Bereinigen von Ressourcen
 
 Um Ihre Daten optimal auszunutzen und zusätzliche Erkenntnisse zu gewinnen, übermitteln Sie Ihre Daten an Log Analytics.
 

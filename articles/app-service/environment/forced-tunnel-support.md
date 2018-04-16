@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 3/6/2018
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 92073cd29f29c1ddf5863e23c4a12dfdf8e21598
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 904641a433d55cc5f1d04b17ed067cd560c6b33c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling
 
@@ -49,6 +49,8 @@ Um für Ihre ASE den direkten Weg ins Internet auch dann zu ermöglichen, wenn d
 
 Wenn Sie diese beiden Änderungen vornehmen, wird der aus dem Subnetz des App Service stammende Datenverkehr ins Internet nicht zwingend über die ExpressRoute-Verbindung geleitet.
 
+Falls das Netzwerk bereits Datenverkehr lokal weiterleitet, müssen Sie das Subnetz zum Hosten Ihrer ASE erstellen und die UDR dafür konfigurieren, bevor Sie die ASE bereitstellen.  
+
 > [!IMPORTANT]
 > Die in einer UDR definierten Routen müssen ausreichend spezifisch sein, damit sie Vorrang vor allen von der ExpressRoute-Konfiguration angekündigten Routen erhalten. Im vorhergehenden Beispiel wird der allgemeine Adressbereich „0.0.0.0/0“ verwendet. Er kann durch Routenankündigungen mit spezifischeren Adressbereichen versehentlich überschrieben werden kann.
 >
@@ -56,13 +58,16 @@ Wenn Sie diese beiden Änderungen vornehmen, wird der aus dem Subnetz des App Se
 
 ![Direkter Internetzugriff][1]
 
-## <a name="configure-your-ase-with-service-endpoints"></a>Konfigurieren Ihrer ASE mit Dienstendpunkten
+
+## <a name="configure-your-ase-with-service-endpoints"></a>Konfigurieren Ihrer ASE mit Dienstendpunkten ##
 
 Führen Sie die folgenden Schritte aus, um das Routing für den gesamten ausgehenden Datenverkehr Ihrer ASE einzurichten, mit Ausnahme des Datenverkehrs für Azure SQL und Azure Storage:
 
 1. Erstellen Sie eine Routingtabelle, und weisen Sie sie Ihrem ASE-Subnetz zu. Die Adressen für Ihre Region finden Sie unter [App Service-Umgebung Management-Adressen][management]. Erstellen Sie Routen für diese Adressen mit „Internet“ als nächstem Hop. Dies ist erforderlich, weil für eingehenden Verwaltungsdatenverkehr der App Service-Umgebung von derselben Adresse geantwortet werden muss, an die er gesendet wurde.   
 
-2. Aktivieren von Dienstendpunkten mit Azure SQL und Azure Storage über Ihr ASE-Subnetz
+2. Aktivieren Sie Dienstendpunkte mit Azure SQL und Azure Storage mit Ihrem ASE-Subnetz.  Nach diesem Schritt können Sie Ihr VNet mit erzwungenem Tunneling konfigurieren.
+
+Wenn Sie Ihre ASE in einem virtuellen Netzwerk erstellen möchten, das bereits für die lokale Weiterleitung sämtlichen Datenverkehrs konfiguriert ist, müssen Sie Ihre ASE unter Verwendung einer Resource Manager-Vorlage erstellen.  Über das Portal kann keine ASE in einem vorhandenen Subnetz erstellt werden.  Wenn Sie Ihre ASE in einem VNet bereitstellen, das bereits für die lokale Weiterleitung ausgehenden Datenverkehrs konfiguriert ist, müssen Sie Ihre ASE unter Verwendung einer Resource Manager-Vorlage erstellen. Hierbei können Sie dann ein bereits vorhandenes Subnetz angeben. Ausführliche Informationen zum Bereitstellen einer ASE mit einer Vorlage finden Sie unter [Erstellen einer ASE mit einer Azure Resource Manager-Vorlage][template].
 
 Dienstendpunkte ermöglichen Ihnen das Beschränken des Zugriffs auf mehrinstanzenfähige Dienste auf eine Gruppe von virtuellen Azure-Netzwerken und Subnetzen. Weitere Informationen zu Dienstendpunkten finden Sie in der Dokumentation [Dienstendpunkte im virtuellen Netzwerk][serviceendpoints]. 
 
@@ -70,7 +75,7 @@ Wenn Sie die Dienstendpunkte auf einer Ressource aktivieren, werden Routen erste
 
 Wenn Dienstendpunkte in einem Subnetz mit einer Azure SQL-Instanz aktiviert werden, müssen für alle Azure SQL-Instanzen, mit denen aus diesem Subnetz Verbindungen hergestellt werden, Dienstendpunkte aktiviert sein. Falls Sie aus demselben Subnetz auf mehrere Azure SQL-Instanzen zugreifen möchten, ist es nicht möglich, dass Sie Dienstendpunkte nur auf einer Azure SQL-Instanz aktivieren, aber nicht auf einer anderen Instanz.  Azure Storage weist ein anderes Verhalten als Azure SQL auf.  Wenn Sie Dienstendpunkte mit Azure Storage aktivieren, sperren Sie den Zugriff auf diese Ressource aus Ihrem Subnetz. Der Zugriff auf andere Azure Storage-Konten ist aber auch dann möglich,wenn dafür keine Dienstendpunkte aktiviert wurden.  
 
-Wenn Sie die Tunnelerzwingung mit einer Netzwerkfilter-Appliance konfigurieren, sollten Sie bedenken, dass die ASE zusätzlich zu Azure SQL und Azure Storage noch über einige andere Abhängigkeiten verfügt. Sie müssen diesen Datenverkehr zulassen, da die ASE ansonsten nicht richtig funktioniert.
+Bedenken Sie beim Konfigurieren von erzwungenem Tunneling mit einer Netzwerkfilter-Appliance, dass die ASE neben Azure SQL und Azure Storage noch über andere Abhängigkeiten verfügt. Lassen Sie Datenverkehr für diese Abhängigkeiten zu. Andernfalls funktioniert die ASE nicht ordnungsgemäß.
 
 ![Tunnelerzwingung mit Dienstendpunkten][2]
 
@@ -122,7 +127,7 @@ Durch diese Änderungen wird Datenverkehr an Azure Storage direkt aus der ASE ge
 
 Wenn die Kommunikation zwischen der ASE und ihren Abhängigkeiten unterbrochen ist, ist die ASE nicht mehr fehlerfrei.  Falls dieser Fehlerzustand zu lange anhält, wird die ASE angehalten. Befolgen Sie die Anleitung im ASE-Portal, um den angehaltenen Zustand für die ASE zu beenden.
 
-Zusätzlich zur Unterbrechung der Kommunikation kann es auch zu einer negativen Beeinträchtigung Ihrer ASE kommen, wenn Sie zu viel Latenz zulassen. Die Latenz kann zu hoch sein, wenn sich Ihre ASE in zu weiter Entfernung von Ihrem lokalen Netzwerk befindet.  Beispiele für eine zu weite Entfernung zur Erreichung Ihres lokalen Netzwerks sind ein Ozean oder ein Kontinent, der überwunden werden muss. Latenz kann auch entstehen, wenn das Intranet überlastet ist oder Einschränkungen der ausgehenden Bandbreite vorliegen.
+Zusätzlich zur Unterbrechung der Kommunikation kann es auch zu einer negativen Beeinträchtigung Ihrer ASE kommen, wenn Sie zu viel Latenz zulassen. Die Latenz kann zu hoch sein, wenn sich Ihre ASE in zu weiter Entfernung von Ihrem lokalen Netzwerk befindet.  Dies kann beispielsweise der Fall sein, wenn auf dem Weg zu Ihrem lokalen Netzwerk ein Ozean oder ein Kontinent überwunden werden muss. Latenz kann auch entstehen, wenn das Intranet überlastet ist oder Einschränkungen der ausgehenden Bandbreite vorliegen.
 
 
 <!--IMAGES-->

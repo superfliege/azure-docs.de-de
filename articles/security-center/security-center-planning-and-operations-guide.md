@@ -1,11 +1,11 @@
 ---
-title: "Planungs- und Betriebshandbuch für Security Center | Microsoft Docs"
-description: "Dieses Dokument ist hilfreich bei der Planung der Verwendung von Azure Security Center und informiert über Aspekte des täglichen Betriebs."
+title: Planungs- und Betriebshandbuch für Security Center | Microsoft Docs
+description: Dieses Dokument ist hilfreich bei der Planung der Verwendung von Azure Security Center und informiert über Aspekte des täglichen Betriebs.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: f984e4a2-ac97-40bf-b281-2f7f473494c4
 ms.service: security-center
 ms.topic: hero-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: 8a44542091ea4dddc214a4954766c63dacd3e2a2
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: e07e6792c74e1bdb5c5839e8c6bd9efbedf10170
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, deren Organisation Azure Security Center verwenden möchte.
@@ -138,7 +138,7 @@ Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Sta
 Ermitteln Sie vor dem Konfigurieren der Sicherheitsrichtlinien zunächst anhand der [Sicherheitsempfehlungen](https://docs.microsoft.com/azure/security-center/security-center-recommendations), ob diese Richtlinien für Ihre verschiedenen Abonnements und Ressourcengruppen geeignet sind. Es ist auch wichtig zu verstehen, welche Aktionen aufgrund der Sicherheitsempfehlungen ausgeführt werden sollten und wer in Ihrer Organisation für die Überwachung neuer Empfehlungen und die Durchführung der erforderlichen Schritte verantwortlich ist.
 
 ## <a name="data-collection-and-storage"></a>Datensammlung und -speicherung
-Azure Security Center verwendet den Microsoft Monitoring Agent – derselbe Agent wird auch von der Operations Management Suite und dem Log Analytics-Dienst verwendet –, um sicherheitsrelevante Daten von Ihren virtuellen Computern zu sammeln. Die von diesem Agent [gesammelten Daten](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) werden in Ihren Log Analytics-Arbeitsbereichen gespeichert.
+Azure Security Center verwendet den Microsoft Monitoring Agent, um sicherheitsrelevante Daten von Ihren virtuellen Computern zu sammeln. Dieser Agent wird auch vom Log Analytics-Dienst verwendet. Die von diesem Agent [gesammelten Daten](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) werden in Ihren Log Analytics-Arbeitsbereichen gespeichert.
 
 ### <a name="agent"></a>Agent
 

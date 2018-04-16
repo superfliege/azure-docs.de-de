@@ -10,11 +10,11 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 0e7ab68075fbce729d3905375acce0dace22c483
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a86f54d580db6e577b878cb1701c7b969d23c129
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Simulieren eines Fehlers bei Zugriff auf redundanten Speicher mit Lesezugriff
 
@@ -179,9 +179,9 @@ Im zweiten Teil dieser Reihe haben Sie gelernt, wie Sie einen Fehler simulieren,
 > * Simulieren eines Fehlers mit [Fiddler](#simulate-a-failure-with-fiddler) oder [einer ungültigen statischen Route](#simulate-a-failure-with-an-invalid-static-route) 
 > * Simulieren der Wiederherstellung des primären Endpunkts
 
-Unter diesem Link finden Sie vordefinierte Speicherbeispiele.
+Der folgende Artikel enthält weitere Informationen zur Funktionsweise von RA-GRS-Speicher (und zu den damit verbundenen Risiken):
 
 > [!div class="nextstepaction"]
-> [Beispielskripts für Azure Storage](storage-samples-blobs-cli.md)
+> [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS](../common/storage-designing-ha-apps-with-ragrs.md)
 
 [previous-tutorial]: storage-create-geo-redundant-storage.md

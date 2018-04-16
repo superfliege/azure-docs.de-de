@@ -1,11 +1,11 @@
 ---
-title: "Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation"
-description: "Mithilfe von Azure Active Directory-Zugriffsüberprüfungen können Sie Gruppenmitgliedschaften und den Anwendungszugriff steuern, um die Anforderungen von Governance-, Risikomanagement- und Complianceinitiativen in Ihrer Organisation zu erfüllen."
+title: Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation
+description: Mithilfe von Azure Active Directory-Zugriffsüberprüfungen können Sie Gruppenmitgliedschaften und den Anwendungszugriff steuern, um die Anforderungen von Governance-, Risikomanagement- und Complianceinitiativen in Ihrer Organisation zu erfüllen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.openlocfilehash: 40c3cfaf723a22013c93e0efae3d074e98643742
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3c5d09b6f17fe8ae9be73d23d7aef6beae2ae43c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="azure-ad-access-reviews-preview"></a>Azure AD-Zugriffsüberprüfungen (Vorschauversion)
+# <a name="azure-ad-access-reviews"></a>Azure AD-Zugriffsüberprüfungen
 
-Mithilfe von Azure Active Directory-Zugriffsüberprüfungen (Azure AD) können Unternehmen Gruppenmitgliedschaften und den Zugriff auf Unternehmensanwendungen effizient verwalten. 
+Mithilfe von Azure AD-Zugriffsüberprüfungen (Azure Active Directory) können Unternehmen Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie die Zuweisung privilegierter Rollen effizient verwalten. 
 
 ## <a name="what-can-you-do-with-access-reviews"></a>Verwendungsmöglichkeiten für Zugriffsüberprüfungen
    
@@ -30,6 +30,8 @@ Mithilfe von Azure Active Directory-Zugriffsüberprüfungen (Azure AD) können U
 - Mithilfe von Zugriffsüberprüfungen können Sie den Anwendungszugriff von Mitarbeitern sowie deren Gruppenmitgliedschaften neu zertifizieren.
    
 - Die Kontrollen der Zugriffsüberprüfung können in unternehmensrelevanten Programmen zusammengefasst werden, um Überprüfungen für compliance- oder risikokritische Anwendungen nachzuverfolgen.
+
+- Sie können die Rollenzuweisung von Administratorbenutzern, die Azure AD-Rollen wie „Globaler Administrator“ oder Azure-Abonnementrollen zugewiesen sind, neu zertifizieren.  Diese Funktion ist Teil von Azure Active Directory Privileged Identity Management.
     
 
 ## <a name="next-steps"></a>Nächste Schritte

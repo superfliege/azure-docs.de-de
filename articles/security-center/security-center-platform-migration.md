@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center – Plattformmigration | Microsoft-Dokumentation"
-description: "Dieses Dokument erläutert einige Änderungen an der Art und Weise, wie Azure Security Center-Daten gesammelt werden."
+title: Azure Security Center – Plattformmigration | Microsoft-Dokumentation
+description: Dieses Dokument erläutert einige Änderungen an der Art und Weise, wie Azure Security Center-Daten gesammelt werden.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 80246b00-bdb8-4bbc-af54-06b7d12acf58
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.openlocfilehash: 89970b50a2f7246a43ac9666be4d992649605cbf
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2e2e8d7213504ccd71df7048045925bf566c76d5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-security-center-platform-migration"></a>Azure Security Center – Plattformmigration
 
@@ -32,7 +32,7 @@ Ab Anfang Juni 2017 werden in Azure Security Center grundlegende Änderungen an 
 
 Bisher hat Security Center den Azure Monitoring Agent zum Sammeln von sicherheitsrelevanten Daten von Ihren virtuellen Computern verwendet. Dazu gehören auch Informationen zu Sicherheitskonfigurationen, mit denen die Sicherheitsrisiken identifiziert werden, sowie zu Sicherheitsereignissen, mit denen Bedrohungen erkannt werden. Diese Daten wurden in Ihren Speicherkonten in Azure gespeichert.
 
-Ab sofort verwendet Security Center den Microsoft Monitoring Agent – dies ist derselbe Agent, den auch die Operations Management Suite und der Log Analytics-Dienst verwenden. Die von diesem Agent gesammelten Daten werden entweder in einem vorhandenen *Log Analytics*-[Arbeitsbereich](../log-analytics/log-analytics-manage-access.md), der mit Ihrem Azure-Abonnement verknüpft ist, oder unter Berücksichtigung des geografischen Standorts des virtuellen Computers in neuen Arbeitsbereichen gespeichert.
+Ab sofort verwendet Security Center den Microsoft Monitoring Agent. Hierbei handelt es sich um den gleichen Agent, den auch der Log Analytics-Dienst verwendet. Die von diesem Agent gesammelten Daten werden entweder in einem vorhandenen *Log Analytics*-[Arbeitsbereich](../log-analytics/log-analytics-manage-access.md), der mit Ihrem Azure-Abonnement verknüpft ist, oder unter Berücksichtigung des geografischen Standorts des virtuellen Computers in neuen Arbeitsbereichen gespeichert.
 
 ## <a name="agent"></a>Agent
 
@@ -62,9 +62,9 @@ Für Arbeitsbereiche, die von Security Center erstellt wurden, werden die Daten 
 > [!NOTE]
 > Die zuvor von Security Center erfassten Daten verbleiben in Ihren Speicherkonten. Nach Abschluss der Migration können Sie diese Speicherkonten löschen.
 
-### <a name="oms-security-solution"></a>OMS-Sicherheitslösung 
+### <a name="security-management-solution"></a>Sicherheitsverwaltungslösung 
 
-Für bestehende Kunden ohne installierte OMS-Sicherheitslösung erfolgt die Installation in ihrem Arbeitsbereich durch Microsoft, wobei ausschließlich Azure-VMs als Ziel verwendet werden. Deinstallieren Sie diese Lösung nicht, da keine automatische Wiederherstellung möglich ist, wenn dies über die OMS-Verwaltungskonsole ausgeführt wird.
+Für bestehende Kunden ohne installierte Sicherheitsverwaltungslösung in Log Analytics wird die Lösung durch Microsoft in ihrem Arbeitsbereich installiert. Dabei werden allerdings ausschließlich virtuelle Azure-Computer als Ziel verwendet. Deinstallieren Sie diese Lösung nicht, da keine automatische Wiederherstellung möglich ist, wenn dieser Schritt über die Verwaltungskonsole ausgeführt wird.
 
 
 ## <a name="other-updates"></a>Andere Updates

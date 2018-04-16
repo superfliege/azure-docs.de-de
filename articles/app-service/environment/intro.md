@@ -1,6 +1,6 @@
 ---
-title: "Einführung in Azure App Service-Umgebungen"
-description: "Kurze Übersicht über Azure App Service-Umgebungen"
+title: Einführung in Azure App Service-Umgebungen
+description: Kurze Übersicht über Azure App Service-Umgebungen
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/13/2017
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 803a1cde5387b549504b42346d1a2e6a5df04746
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 0b113a594ebf1180346eccc295251f522dcc29c5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="introduction-to-app-service-environments"></a>Einführung in App Service-Umgebungen #
+# <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
  
 ## <a name="overview"></a>Übersicht ##
 
-Eine Azure App Service-Umgebung ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps mit umfangreicher Skalierung bereitstellt. Diese Funktion kann Ihre Web-Apps, [mobilen Apps][mobileapps], API-Apps und [Funktionen][Functions] hosten.
+Die Azure App Service-Umgebung ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps mit umfangreicher Skalierung bereitstellt. Diese Funktion kann Ihre Web-Apps, [mobilen Apps][mobileapps], API-Apps und [Funktionen][Functions] hosten.
 
 App Service-Umgebungen (App Service Environments, ASEs) sind ideal geeignet für Anwendungsworkloads mit folgenden Anforderungen:
 
@@ -43,7 +43,7 @@ Aufgrund der Isolierung werden in ASEs nur Anwendungen eines einzelnen Kunden au
 
 ## <a name="dedicated-environment"></a>Dedizierte Umgebung ##
 
-Eine ASE wird dediziert für ausschließlich ein einzelnes Abonnement verwendet und kann 100 Instanzen hosten. Dabei kann es sich um 100 Instanzen in einem einzelnen App Service-Plan oder auch um 100 App Service-Einzelinstanzpläne und alles dazwischen handeln.
+Eine ASE wird dediziert für ein einzelnes Abonnement verwendet und kann 100 App Service-Planinstanzen hosten. Dabei kann es sich um 100 Instanzen in einem einzelnen App Service-Plan oder auch um 100 App Service-Einzelinstanzpläne und alles dazwischen handeln.
 
 Eine ASE besteht aus Front-Ends und Worker. Front-Ends sind für die HTTP/HTTPS-Beendigung und den automatischen Lastenausgleich von App-Anforderungen in einer ASE zuständig. Front-Ends werden automatisch hinzugefügt, wenn die App Service-Pläne in der ASE horizontal hochskaliert werden.
 

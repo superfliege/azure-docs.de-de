@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 04/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8a5d05342a1db5f27d115364798885a278d09fc0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4cd17826afece44eff9f4a4c403b077dc78fd1c9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 1. Klicken Sie im Portal auf der linken Seite auf **+ Ressource erstellen**, und geben Sie für die Suche „Gateway für virtuelle Netzwerke“ ein. Suchen Sie in der Ausgabe nach **Virtuelles Netzwerkgateway**, und klicken Sie auf den Eintrag. Klicken Sie auf der Seite **Gateway für virtuelle Netzwerke** unten auf **Erstellen**, um die Seite **Gateway für virtuelle Netzwerke erstellen** zu öffnen.
 2. Geben Sie auf der Seite **Gateway für virtuelle Netzwerke erstellen** die Werte für das Gateway für virtuelle Netzwerke an.
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/23/2018
     - Klicken Sie zunächst auf **Gateway-IP-Konfiguration erstellen**, um die Seite „Öffentliche IP-Adresse wählen“ zu öffnen, und klicken Sie dann auf **+ Neu erstellen**, um die Seite „Öffentliche IP-Adresse erstellen“ zu öffnen.
     - Geben Sie anschließend einen **Namen** für die öffentliche IP-Adresse ein. Behalten Sie als SKU **Basic** bei, es sei denn, es gibt einen bestimmten Grund dafür, einen anderen Wert festzulegen. Klicken Sie dann unten auf dieser Seite auf **OK**, um die Änderungen zu speichern.
 
-      ![Erstellen der öffentlichen IP-Adresse](./media/vpn-gateway-add-gw-s2s-rm-portal-include/gwip.png "Erstellen der PIP")
+      ![Anfordern der öffentlichen IP-Adresse](./media/vpn-gateway-add-gateway-portal-include/public-ip-address-name.png "Anfordern der öffentlichen IP-Adresse")
 
 4. Überprüfen Sie die Einstellungen. Sie können unten auf der Seite auf **An Dashboard anheften** klicken, wenn das Gateway auf dem Dashboard angezeigt werden soll. 
 5. Klicken Sie auf **Erstellen**, um das VPN-Gateway zu erstellen. Die Einstellungen werden überprüft, und auf dem Dashboard wird die Kachel mit dem Hinweis angezeigt, dass das Gateway des virtuellen Netzwerks bereitgestellt wird. Die Erstellung eines Gateways kann bis zu 45 Minuten dauern. Unter Umständen müssen Sie die Portalseite aktualisieren, um den Status „Abgeschlossen“ anzuzeigen.

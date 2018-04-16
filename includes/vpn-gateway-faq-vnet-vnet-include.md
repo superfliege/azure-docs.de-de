@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 04/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d562e58b86a6d5c18b10683dc4c14cf9c28c809b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 66ff1e2e02728e05cb0aeedce90de1882a8804ce
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 Die häufig gestellten Fragen zu VNet-zu-VNet-Verbindungen gelten für VPN Gateway-Verbindungen. Informationen zum VNet-Peering finden Sie unter [Peering in virtuellen Netzwerken](../articles/virtual-network/virtual-network-peering-overview.md).
 
@@ -23,6 +23,10 @@ VNET-zu-VNET-Datenverkehr innerhalb einer Region ist bei Verwendung einer VPN-Ga
 ### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>Wird VNet-zu-VNet-Datenverkehr über das Internet übertragen?
 
 Nein. VNet-zu-VNet-Datenverkehr wird über den Microsoft Azure-Backbone übertragen, nicht über das Internet.
+
+### <a name="can-i-establish-a-vnet-to-vnet-connection-across-aad-tenants"></a>Kann ich eine VNet-zu-VNet-Verbindung zwischen AAD-Mandanten herstellen?
+
+Ja. VNet-zu-VNet-Verbindungen mit Azure-VPN-Gateways können übergreifend für AAD-Mandanten verwendet werden.
 
 ### <a name="is-vnet-to-vnet-traffic-secure"></a>Ist VNet-zu-VNet-Datenverkehr sicher?
 
