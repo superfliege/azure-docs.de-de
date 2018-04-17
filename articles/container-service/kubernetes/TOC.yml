@@ -23,7 +23,7 @@
       href: container-service-tutorial-kubernetes-scale.md
     - name: 6. Aktualisieren der Anwendung
       href: container-service-tutorial-kubernetes-app-update.md
-    - name: 7. Überwachen mit OMS
+    - name: '7: Überwachen mit Log Analytics'
       href: container-service-tutorial-kubernetes-monitor.md
 - name: Konzepte
   items:
@@ -45,7 +45,7 @@
       href: container-service-scale.md
     - name: Überwachen
       items:
-        - name: Überwachen mit OMS
+        - name: Überwachen mit Log Analytics
           href: container-service-kubernetes-oms.md
         - name: Überwachen mit Datadog
           href: container-service-kubernetes-datadog.md

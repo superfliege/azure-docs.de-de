@@ -196,6 +196,8 @@
               href: app-insights-usage-segmentation.md
             - name: Trichter
               href: usage-funnels.md
+            - name: Kohorten
+              href: app-insights-usage-cohorts.md
             - name: Auswirkung
               href: app-insights-usage-impact.md
             - name: Aufbewahrung
