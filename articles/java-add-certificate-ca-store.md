@@ -1,11 +1,11 @@
 ---
-title: "Hinzufügen eines Zertifikats zum Java CA-Zertifikatspeicher | Microsoft Docs"
-description: "Erfahren Sie, wie Sie ein Zertifikat der Zertifizierungsstelle (CA) zum Java-Zertifizierungsstellen-Zertifikatspeicher (cacerts) für den Twilio-Dienst oder Azure Service Bus hinzufügen."
-services: 
+title: Hinzufügen eines Zertifikats zum Java CA-Zertifikatspeicher | Microsoft Docs
+description: Erfahren Sie, wie Sie ein Zertifikat der Zertifizierungsstelle (CA) zum Java-Zertifizierungsstellen-Zertifikatspeicher (cacerts) für den Twilio-Dienst oder Azure Service Bus hinzufügen.
+services: ''
 documentationcenter: java
 author: rmcmurray
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d3699b0a-835c-43fb-844d-9c25344e5cda
 ms.service: multiple
 ms.workload: na
@@ -21,7 +21,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
 ---
 # <a name="adding-a-certificate-to-the-java-ca-certificates-store"></a>Hinzufügen eines Zertifikats zum Java CA-Zertifikatspeicher
-In den folgenden Schritten wird gezeigt, wie ein Zertifikat der Zertifizierungsstelle (Certificate Authority, CA) zum Java CA-Zertifikatspeicher bzw. cacerts-Speicher hinzugefügt wird. Das verwendete Beispiel steht für das Zertifizierungsstellenzertifikat, das für den Twilio-Dienst erforderlich ist. Weiter unten in diesem Thema wird beschrieben, wie das Zertifizierungsstellenzertifikat für den Azure-Dienstbus installiert wird. 
+In den folgenden Schritten wird gezeigt, wie ein Zertifikat der Zertifizierungsstelle (Certificate Authority, CA) zum Java CA-Zertifikatspeicher bzw. cacerts-Speicher hinzugefügt wird. Das verwendete Beispiel steht für das Zertifizierungsstellenzertifikat, das für den Twilio-Dienst erforderlich ist. Weiter unten in diesem Thema wird beschrieben, wie das Zertifizierungsstellenzertifikat für Azure Service Bus installiert wird. 
 
 Sie können „keytool“ zum Hinzufügen des Zertifizierungsstellenzertifikats verwenden, bevor Sie das JDK komprimieren und zum Ordner **approot** des Azure-Projekts hinzufügen. Optional können Sie auch eine Azure-Startaufgabe ausführen, bei der zum Hinzufügen des Zertifikats „keytool“ zum Einsatz kommt. Bei diesem Beispiel wird davon ausgegangen, dass Sie ein Zertifizierungsstellenzertifikat hinzufügen, bevor das JDK gezippt wird. Darüber hinaus wird in diesem Beispiel ein bestimmtes Zertifizierungsstellenzertifikat verwendet. Die Schritte zum Abrufen eines anderen Zertifizierungsstellenzertifikats und Importieren dieses Zertifikats in den cacerts-Speicher sind allerdings nahezu identisch.
 
