@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: c2e11d89f35915ef0a0c1e1f544b0be8df0473de
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e5dc48aa5e3c614192ae140dc80b5d9845acc474
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Gewusst wie: Erweitern (Kopieren) von Warnungen aus dem OMS-Portal in Azure
-Ab **23. April 2018** werden die Warnungen aller Kunden, die in [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) konfiguriert sind, in Azure erweitert. Warnungen, die in Azure erweitert werden, verhalten sich auf die gleiche Weise wie in OMS. Die Überwachungsfunktionen bleiben intakt. Das Erweitern von Warnungen aus OMS in Azure bietet zahlreiche Vorteile. Weitere Informationen zu den Vorteilen und dem Vorgang der Erweiterung von Warnungen aus OMS in Azure finden Sie unter [Erweitern von Warnungen aus OMS in Azure](monitoring-alerts-extend.md).
+Ab dem **14. Mai 2018** werden die Warnungen aller Kunden, die in [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) konfiguriert sind, auf Azure erweitert. Warnungen, die in Azure erweitert werden, verhalten sich auf die gleiche Weise wie in OMS. Die Überwachungsfunktionen bleiben intakt. Das Erweitern von Warnungen aus OMS in Azure bietet zahlreiche Vorteile. Weitere Informationen zu den Vorteilen und dem Vorgang der Erweiterung von Warnungen aus OMS in Azure finden Sie unter [Erweitern von Warnungen aus OMS in Azure](monitoring-alerts-extend.md).
 
 Kunden, die ihre Warnungen sofort aus OMS in Azure verschieben möchten, können dies über eine der angegebenen Optionen erreichen.
 
@@ -157,8 +157,87 @@ Wenn der POST-Aufruf erfolgreich ist, wird eine 200 OK-Antwort zusammen mit der 
 ```
 Diese Antwort gibt an, dass die Warnungen in Azure erweitert wurden, wie „version 2“ besagt. Diese Versionsangabe dient nur zur Überprüfung, ob Warnungen in Azure erweitert wurden, und besitzt keinen Einfluss auf die Verwendung mit der [Log Analytics-Such-API](../log-analytics/log-analytics-api-alerts.md). Sobald die Warnungen erfolgreich in Azure erweitert sind, wird an alle während der Ausführung von GET bereitgestellten E-Mail-Adressen ein Bericht mit Details zu den vorgenommenen Änderungen gesendet.
 
+Wenn die Erweiterung aller Warnungen im angegebenen Arbeitsbereich in Azure bereits geplant ist, ist die Antwort auf POST schließlich „403 Forbidden“. Zum Anzeigen von Fehlermeldungen oder zum Ermitteln, ob der Erweiterungsprozess hängt, können Benutzer einen GET-Aufruf durchführen. Es wird eine Zusammenfassung und, falls zutreffend, eine Fehlermeldung angezeigt.
 
-Wenn die Erweiterung aller Warnungen im angegebenen Arbeitsbereich in Azure bereits geplant wurde, ist die Antwort auf POST schließlich 403 Forbidden.
+```json
+{
+    "version": 1,
+    "message": "OMS was unable to extend your alerts into Azure, Error: The subscription is not registered to use the namespace 'microsoft.insights'. OMS will schedule extending your alerts, once remediation steps illustrated in the troubleshooting guide are done.",
+    "recipients": [
+       "john.doe@email.com",
+       "jane.doe@email.com"
+     ],
+    "migrationSummary": {
+        "alertsCount": 2,
+        "actionGroupsCount": 2,
+        "alerts": [
+            {
+                "alertName": "DemoAlert_1",
+                "alertId": " /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/savedSearches/<savedSearchId>/schedules/<scheduleId>/actions/<actionId>",
+                "actionGroupName": "<workspaceName>_AG_1"
+            },
+            {
+                "alertName": "DemoAlert_2",
+                "alertId": " /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/savedSearches/<savedSearchId>/schedules/<scheduleId>/actions/<actionId>",
+                "actionGroupName": "<workspaceName>_AG_2"
+            }
+        ],
+        "actionGroups": [
+            {
+                "actionGroupName": "<workspaceName>_AG_1",
+                "actionGroupResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<resourceGroupName>/providers/microsoft.insights/actionGroups/<workspaceName>_AG_1",
+                "actions": {
+                    "emailIds": [
+                        "JohnDoe@mail.com"
+                    ],
+                    "webhookActions": [
+                        {
+                            "name": "Webhook_1",
+                            "serviceUri": "http://test.com"
+                        }
+                    ],
+                    "itsmAction": {}
+                }
+            },
+            {
+                "actionGroupName": "<workspaceName>_AG_1",
+                "actionGroupResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<resourceGroupName>/providers/microsoft.insights/actionGroups/<workspaceName>_AG_1",
+                 "actions": {
+                    "emailIds": [
+                        "test1@mail.com",
+                          "test2@mail.com"
+                    ],
+                    "webhookActions": [],
+                    "itsmAction": {
+                        "connectionId": "<Guid>",
+                        "templateInfo":"{\"PayloadRevision\":0,\"WorkItemType\":\"Incident\",\"UseTemplate\":false,\"WorkItemData\":\"{\\\"contact_type\\\":\\\"email\\\",\\\"impact\\\":\\\"3\\\",\\\"urgency\\\":\\\"2\\\",\\\"category\\\":\\\"request\\\",\\\"subcategory\\\":\\\"password\\\"}\",\"CreateOneWIPerCI\":false}"
+                    }
+                }
+            }
+        ]
+    }
+}              
+
+```
+
+## <a name="troubleshooting"></a>Problembehandlung 
+Bei der Erweiterung von Warnungen aus OMS auf Azure kann es gelegentlich zu Problemen kommen, die verhindern, dass die erforderlichen [Aktionsgruppen](monitoring-action-groups.md) vom System erstellt werden können. In diesen Fällen wird im OMS-Portal über ein Banner im Abschnitt „Warnungen“ und für den GET-Aufruf an die API eine Fehlermeldung angezeigt.
+
+Hier sind die Schritte zum Beheben der Fehler angegeben:
+1. **Error: The subscription is not registered to use the namespace 'microsoft.insights'** (Fehler: Das Abonnement ist nicht für die Verwendung des Namespace „microsoft.insights“ registriert.): ![OMS-Portal: Seite „Warnungseinstellungen“mit Fehlermeldung zur Registrierung](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
+
+    a. Das Abonnement, das Ihrem OMS-Arbeitsbereich zugeordnet ist, wurde nicht für die Verwendung von Azure Monitor (microsoft.insights) registriert. Aus diesem Grund können Ihre Warnungen aus OMS nicht auf Azure Monitor und Azure-Warnungen erweitert werden.
+    
+    b. Sie können diesen Fehler beheben, indem Sie die Verwendung von „microsoft.insights“ (Azure Monitor und Azure-Warnungen) in Ihrem Abonnement per PowerShell, Azure CLI oder Azure-Portal registrieren. Weitere Informationen finden Sie im Artikel zum Thema [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](../azure-resource-manager/resource-manager-register-provider-errors.md).
+    
+    c. Nachdem Sie den Fehler mit den im Artikel beschriebenen Schritten behoben haben, führt OMS die Erweiterung Ihrer Warnung auf Azure innerhalb der für den nächsten Tag geplanten Ausführung durch, ohne dass von Ihrer Seite aus eine Aktion oder Initiierung erforderlich ist.
+2. **Error: Scope Lock is present at subscription/resource group level for write operations** (Fehler: Bereichssperre auf Abonnement-/Ressourcengruppenebene für Schreibvorgänge): ![OMS-Portal: Seite „Warnungseinstellungen“ mit Fehlermeldung zu Bereichssperre](./media/monitor-alerts-extend/ErrorScopeLock.png)
+
+    a. Wenn eine Bereichssperre aktiviert ist, sind alle neuen Änderungen am Abonnement oder der Ressourcengruppe mit dem Log Analytics-Arbeitsbereich (OMS) eingeschränkt. Das System kann keine Warnungen auf Azure erweitern (kopieren) und keine erforderlichen Aktionsgruppen erstellen.
+    
+    b. Sie können den Fehler beheben, indem Sie die Schreibschutzsperre (*ReadOnly*) für Ihr Abonnement oder die Ressourcengruppe mit dem Arbeitsbereich per Azure-Portal, PowerShell, Azure CLI oder API löschen. Weitere Informationen finden Sie im Artikel zum [Sperren von Ressourcen](../azure-resource-manager/resource-group-lock-resources.md). 
+    
+    c. Nachdem Sie den Fehler mit den im Artikel beschriebenen Schritten behoben haben, führt OMS die Erweiterung Ihrer Warnung auf Azure innerhalb der für den nächsten Tag geplanten Ausführung durch, ohne dass von Ihrer Seite aus eine Aktion oder Initiierung erforderlich ist.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
