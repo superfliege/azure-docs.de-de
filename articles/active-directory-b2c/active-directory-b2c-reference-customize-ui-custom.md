@@ -1,8 +1,7 @@
 ---
-title: 'Azure Active Directory B2C: Referenz: Anpassen der UI einer User Journey mit benutzerdefinierten Richtlinien | Microsoft-Dokumentation'
-description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien
+title: Anpassen der UI einer User Journey mit benutzerdefinierten Richtlinien | Microsoft-Dokumentation
+description: Erfahren Sie mehr über benutzerdefinierte Azure Active Directory B2C-Richtlinien.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
 editor: ''
@@ -11,25 +10,25 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: b0f68f76bfb746b91cb82b2b7e9e750f15f14253
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4fe9e90996c56773480eb147e5aef7475453fe43
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Anpassen der UI einer User Journey mit benutzerdefinierten Richtlinien
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 > [!NOTE]
-> Dieser Artikel enthält eine erweiterte Beschreibung der Funktionsweise der UI-Anpassung und der Aktivierung mit benutzerdefinierten B2C-Richtlinien per Identity Experience Framework.
+> Dieser Artikel enthält eine erweiterte Beschreibung der Funktionsweise der UI-Anpassung und der Aktivierung mit benutzerdefinierten Azure AD B2C-Richtlinien per Identity Experience Framework.
 
 
 Ein reibungslose Benutzeroberfläche ist für jede B2C-Lösung (Business to Consumer) von entscheidender Bedeutung. Ein nahtloses Benutzererlebnis bedeutet, dass sich eine „User Journey“ durch unseren Dienst – ob per Gerät oder Browser – nicht von der User Journey des verwendeten Diensts des Kunden unterscheidet.
 
 ## <a name="understand-the-cors-way-for-ui-customization"></a>Verinnerlichen des CORS-Ansatzes für die UI-Anpassung
 
-Mit Azure AD B2C können Sie das Aussehen und Verhalten der Benutzeroberfläche auf den unterschiedlichen Seiten anpassen, die bereitgestellt und mit Azure AD B2C über Ihre benutzerdefinierten Richtlinien angezeigt werden.
+Mit Azure AD B2C können Sie das Aussehen und Verhalten der Benutzeroberfläche auf den unterschiedlichen Seiten anpassen, die von Azure AD B2C über Ihre benutzerdefinierten Richtlinien bereitgestellt und angezeigt werden.
 
 Zu diesem Zweck wird von Azure AD B2C Code im Browser des Kunden ausgeführt und der moderne Standardansatz [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](http://www.w3.org/TR/cors/) verwendet, um für benutzerdefinierten Inhalt von einer bestimmten URL, die Sie in einer benutzerdefinierten Richtlinie angeben, auf Ihre HTML5/CSS-Vorlagen zu verweisen. CORS ist ein Mechanismus, mit dem eingeschränkte Ressourcen, z.B. Schriftarten, auf einer Webseite von einer anderen Domäne aus angefordert werden können, die sich außerhalb der Ursprungsdomäne der Ressource befindet.
 
@@ -66,7 +65,7 @@ Führen Sie folgende Schritte aus, um dafür zu sorgen, dass alles wie gewünsch
 - Sicherstellen, dass Ihr Inhalt HTML5-konform und zugänglich ist
 - Sicherstellen, dass Ihr Inhaltsserver für CORS aktiviert ist
 - Bereitstellen von Inhalt per HTTPS
-- Verwenden von absoluten URLs, z.B. „https://ihredomäne/content“, für alle Links und den gesamten CSS-Inhalt.
+- Verwenden Sie absolute URLs, z.B. https://yourdomain/content, für alle Links und CSS-Inhalte.
 
 > [!TIP]
 > Sie können die Website http://test-cors.org/ verwenden, um sicherzustellen, dass die von Ihnen gehostete Website für Ihren Inhalt über eine CORS-Aktivierung verfügt, und um CORS-Anforderungen zu testen. Dank dieser Website können Sie die CORS-Anforderung an einen Remoteserver senden (um zu testen, ob CORS unterstützt wird). Sie können die CORS-Anforderung auch an einen Testserver senden (um bestimmte Features von CORS auszuprobieren).
@@ -115,7 +114,7 @@ Wenn Sie die obigen Schritte ausgeführt haben, verweisen die HTML5- und CSS-Dat
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>Sicherstellen der CORS-Aktivierung für das Speicherkonto
 
-CORS (Cross-Origin Resource Sharing) muss auf Ihrem Endpunkt aktiviert sein, damit Azure AD B2C Premium Ihre Inhalte laden kann, da Ihre Inhalte in einer anderen Domäne gehostet werden als der Domäne, aus der Azure AD B2C Premium die Seite bereitstellt.
+CORS (Cross-Origin Resource Sharing) muss auf Ihrem Endpunkt aktiviert sein, damit Ihr Inhalt von Azure AD B2C geladen werden kann. Der Grund ist, dass Ihr Inhalt in einer anderen Domäne als der Domäne gehostet wird, aus der Azure AD B2C die Seite bereitstellt.
 
 Führen Sie die folgenden Schritte aus, um sicherzustellen, dass für den Speicher, in dem Sie Ihren Inhalt hosten, CORS aktiviert ist:
 
@@ -161,9 +160,9 @@ Die folgende Tabelle beschreibt die IDs der Inhaltsdefinitionen, die von der Azu
 | *api.idpselections.signup* | **Seite zur Auswahl des Identitätsanbieters für die Registrierung**: Diese Seite enthält eine Liste mit den Identitätsanbietern, aus denen der Benutzer bei der Registrierung auswählen kann. Hierbei handelt es sich um Unternehmensidentitätsanbieter, Identitätsanbieter sozialer Netzwerke wie Facebook und Google+ oder lokale Konten (basierend auf E-Mail-Adresse oder Benutzername). |
 | *api.localaccountpasswordreset* | **Seite „Kennwort vergessen“**: Diese Seite enthält ein Formular, das vom Benutzer ausgefüllt werden muss, um die Kennwortzurücksetzung zu initiieren.  |
 | *api.localaccountsignin* | **Seite für Anmeldung mit lokalem Konto**: Diese Seite enthält ein Anmeldeformular. Es muss vom Benutzer bei der Anmeldung für ein lokales Konto ausgefüllt werden, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert. Das Formular kann ein Texteingabefeld und ein Kennworteingabefeld enthalten. |
-| *api.localaccountsignup* | **Seite für Registrierung mit lokalem Konto**: Diese Seite enthält ein Registrierungsformular, das der Benutzer bei der Registrierung für ein lokales Konto ausfüllen muss, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert. Das Formular kann verschiedene Eingabesteuerelemente enthalten, z. B. Texteingabefelder, Kennworteingabefelder, Optionsfelder, Dropdownfelder mit einer Auswahlmöglichkeit und Kontrollkästchen mit mehreren Optionen. |
-| *api.phonefactor* | **Seite „Multi-Factor Authentication“**: Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre Telefonnummern verifizieren (per SMS oder Sprachnachricht). |
-| *api.selfasserted* | **Seite zur Registrierung über Konto für soziales Netzwerk**: Diese Seite enthält ein Registrierungsformular, das Benutzer ausfüllen müssen, wenn sie sich mit einem vorhandenen Konto bei einem Identitätsanbieter eines sozialen Netzwerks wie Facebook oder Google+ registrieren. Mit Ausnahme der Felder zum Eingeben des Kennworts ähnelt diese Seite der obigen „Seite zur Registrierung über Konto für soziales Netzwerk“. |
+| *api.localaccountsignup* | **Seite für Registrierung mit lokalem Konto**: Diese Seite enthält ein Registrierungsformular, das der Benutzer bei der Registrierung für ein lokales Konto ausfüllen muss, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert.  Das Formular kann verschiedene Eingabesteuerelemente enthalten, z. B. Texteingabefelder, Kennworteingabefelder, Optionsfelder, Dropdownfelder mit einer Auswahlmöglichkeit und Kontrollkästchen mit mehreren Optionen. |
+| *api.phonefactor* | **Seite „Multi-Factor Authentication“**: Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre Telefonnummern überprüfen (per SMS oder Sprachnachricht). |
+| *api.selfasserted* | **Seite zur Registrierung über Konto für soziales Netzwerk**: Diese Seite enthält ein Registrierungsformular, das der Benutzer ausfüllen muss, wenn die Registrierung mit einem vorhandenen Konto bei einem sozialen Netzwerk wie Facebook oder Google+ als Identitätsanbieter erfolgt. Mit Ausnahme der Felder zum Eingeben des Kennworts ähnelt diese Seite der obigen „Seite zur Registrierung über Konto für soziales Netzwerk“. |
 | *api.selfasserted.profileupdate* | **Seite für Profilaktualisierung**: Diese Seite enthält ein Formular, das vom Benutzer zum Aktualisieren des Profils verwendet werden kann. Mit Ausnahme der Felder zum Eingeben des Kennworts ähnelt diese Seite der obigen „Seite zur Registrierung über Konto für soziales Netzwerk“. |
 | *api.signuporsignin* | **Einheitliche Seite für Registrierung oder Anmeldung**:  Auf dieser Seite wird sowohl die Registrierung als auch die Anmeldung von Benutzern verarbeitet, die dafür Unternehmensidentitätsanbieter, Identitätsanbieter sozialer Netzwerke, z.B. Facebook oder Google+, oder lokale Konten verwenden können.
 

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 624a40b1e40db6ceac9c567926b3932449e7bf7e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12f63bc42f8450f086ed9f0e8d598c9c91a0c3d4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Grundlegendes zu den benutzerdefinierten Azure AD B2C-Richtlinien des Starter Packs
 
@@ -39,7 +39,7 @@ Diese Anspruchsschemas sind in drei Abschnitte unterteilt:
 3.  Im dritten Abschnitt sind alle weiteren optionalen Ansprüche aufgeführt, die vom Benutzer erfasst, im Verzeichnis gespeichert und bei der Anmeldung in Token gesendet werden können. In diesem Abschnitt können neue Anspruchstypen, die vom Benutzer erfasst bzw. per Token gesendet werden sollen, hinzugefügt werden.
 
 > [!IMPORTANT]
-> Das Anspruchsschema enthält Einschränkungen zu bestimmten Ansprüchen, z.B. Kennwörter und Benutzernamen. Mit der TF-Richtlinie (Trust Framework, Vertrauensframework) wird Azure AD wie jeder andere Anspruchsanbieter behandelt, und alle Einschränkungen sind in der Premium-Richtlinie modelliert. Eine Richtlinie kann geändert werden, um weitere Einschränkungen hinzuzufügen, oder verwenden Sie einen anderen Anspruchsanbieter zum Speichern von Anmeldeinformationen, der über eigene Einschränkungen verfügt.
+> Das Anspruchsschema enthält Einschränkungen zu bestimmten Ansprüchen, z.B. Kennwörter und Benutzernamen. Mit der TF-Richtlinie (Trust Framework, Vertrauensframework) wird Azure AD wie jeder andere Anspruchsanbieter behandelt, und alle Einschränkungen sind in der benutzerdefinierten Richtlinie modelliert. Eine Richtlinie kann geändert werden, um weitere Einschränkungen hinzuzufügen, oder verwenden Sie einen anderen Anspruchsanbieter zum Speichern von Anmeldeinformationen, der über eigene Einschränkungen verfügt.
 
 Die verfügbaren Anspruchstypen sind unten aufgeführt.
 
@@ -51,12 +51,12 @@ Die folgenden Ansprüche sind erforderlich, damit User Journeys richtig funktion
 |-------------|-------------|
 | *UserId* | Username |
 | *signInName* | Anmeldename |
-| *tenantId* | Mandantenbezeichner (ID) des Benutzerobjekts in Azure AD B2C Premium |
-| *objectId* | Objektbezeichner (ID) des Benutzerobjekts in Azure AD B2C Premium |
+| *tenantId* | Mandantenbezeichner (ID) des Benutzerobjekts in Azure AD B2C |
+| *objectId* | Objektbezeichner (ID) des Benutzerobjekts in Azure AD B2C |
 | *password* | Password |
 | *newPassword* | |
 | *reenterPassword* | |
-| *passwordPolicies* | Kennwortrichtlinien, die von Azure AD B2C Premium zum Bestimmen von Kennwortsicherheit, -ablauf usw. verwendet werden |
+| *passwordPolicies* | Kennwortrichtlinien, die von Azure AD B2C zum Bestimmen von Kennwortsicherheit, -ablauf usw. verwendet werden |
 | *sub* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
@@ -66,9 +66,9 @@ Die folgenden Ansprüche sind erforderlich, damit User Journeys richtig funktion
 | *email* | E-Mail-Adresse, die für die Kontaktaufnahme mit dem Benutzer verwendet werden kann |
 | *signInNamesInfo.emailAddress* | E-Mail-Adresse, die vom Benutzer zum Anmelden verwendet werden kann |
 | *otherMails* | E-Mail-Adressen, die für die Kontaktaufnahme mit dem Benutzer verwendet werden können |
-| *userPrincipalName* | In Azure AD B2C Premium gespeicherter Benutzername |
+| *userPrincipalName* | In Azure AD B2C gespeicherter Benutzername |
 | *upnUserName* | Benutzername zum Erstellen des Benutzerprinzipalnamens |
-| *mailNickName* | In Azure AD B2C Premium gespeicherter E-Mail-Kontoname des Benutzers |
+| *mailNickName* | In Azure AD B2C gespeicherter E-Mail-Kontoname des Benutzers |
 | *newUser* | |
 | *executed-SelfAsserted-Input* | Anspruch, mit dem angegeben wird, ob Attribute vom Benutzer erfasst wurden |
 | *executed-PhoneFactor-Input* | Anspruch, mit dem angegeben wird, ob eine neue Telefonnummer des Benutzers erfasst wurde |
