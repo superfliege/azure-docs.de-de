@@ -1,26 +1,25 @@
 ---
-title: "Dokumentation für Azure SQL Data Warehouse – Tutorials, API-Referenz | Microsoft-Dokumentation"
-description: Hier erfahren Sie, wie Sie SQL Data Warehouse verwenden und so SQL Server mit MPP (Massively Parallel Processing) kombinieren. Die Dokumentation zeigt, wie Sie Daten laden, analysieren, verwalten und exportieren.
+title: Dokumentation für Azure SQL Data Warehouse – Tutorials, Konzepte | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Azure SQL Data Warehouse verwenden, um die relationalen SQL-Datenbanken mit MPP (Massively Parallel Processing) zu kombinieren. In Tutorials und anderen Dokumentationen wird gezeigt, wie Sie Daten mithilfe eines Data Warehouse entwerfen, laden, verwalten und analysieren.
 services: sql-data-warehouse
-author: czeumault
-manager: carolz
+author: hirokib
+manager: craigg-msft
 layout: LandingPage
-ms.assetid: 
 ms.service: sql-data-warehouse
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 47807360dd58f0c19360d90ed66f726d8922be1e
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.component: design
+ms.date: 04/11/2018
+ms.author: elbutter
+ms.reviewer: jrj
+ms.openlocfilehash: 42db87fd64bca58ee3e86589acdc85107e057665
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-data-warehouse-documentation"></a>Dokumentation zu SQL Data Warehouse
 
-Hier erfahren Sie, wie Sie SQL Data Warehouse verwenden, um die relationale Datenbank von SQL Server mit MPP (Massively Parallel Processing) zu kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Daten in das Warehouse laden und sie anschließend analysieren, verwalten und exportieren.
+Hier erfahren Sie, wie Sie Azure SQL Data Warehouse verwenden, um die relationalen SQL-Datenbanken mit MPP (Massively Parallel Processing) zu kombinieren. In Tutorials und anderen Dokumentationen wird gezeigt, wie Sie Daten mithilfe eines Data Warehouse entwerfen, laden, verwalten und analysieren. 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -82,7 +81,7 @@ Hier erfahren Sie, wie Sie SQL Data Warehouse verwenden, um die relationale Date
 
 ---
 
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">

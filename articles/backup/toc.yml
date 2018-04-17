@@ -85,8 +85,6 @@
           href: backup-azure-files.md
         - name: Sichern von Azure-Dateifreigaben – häufig gestellte Fragen
           href: backup-azure-files-faq.md
-        - name: Problembehandlung beim Sichern von Azure-Dateifreigaben
-          href: troubleshoot-azure-files.md
     - name: Virtuelle Azure-Computer
       items:
         - name: Vorbereiten des virtuellen Computers
@@ -181,18 +179,20 @@
           href: backup-azure-delete-vault.md
     - name: Problembehandlung
       items:
-        - name: Probleme bei der Azure-VM-Sicherung im Azure-Portal
+        - name: 'IaaS-VM-Sicherung: Fehlermeldungen'
           href: backup-azure-vms-troubleshoot.md
-        - name: 'Fehler bei der Azure-VM-Sicherung: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich. Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM.'
+        - name: Timeout bei Azure Backup-Agent (MARS) oder VM-Erweiterung
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
-        - name: Langsame Sicherung von Dateien und Ordnern in Azure Backup
+        - name: Langsame Sicherung der Dateien und Ordner
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
-        - name: Behandeln von Problemen mit Azure Backup Server
+        - name: Azure Backup Server
           href: backup-azure-mabs-troubleshoot.md
-        - name: Behandeln von Problemen in System Center Data Protection Manager
+        - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Behandeln von Problemen mit dem Azure Backup-Agent
+        - name: Azure Backup-Agent (MARS)
           href: backup-azure-mars-troubleshoot.md
+        - name: Sicherung von Azure-Dateifreigaben
+          href: troubleshoot-azure-files.md
 - name: Verweis
   items:
     - name: Azure PowerShell

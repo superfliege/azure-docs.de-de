@@ -56,6 +56,7 @@
 #### [Einladungs-E-Mail](active-directory-b2b-invitation-email.md)
 #### [Einlösen der Einladung](active-directory-b2b-redemption-experience.md)
 #### [Hinzufügen von B2B-Benutzern ohne Einladung](active-directory-b2b-add-user-without-invite.md)
+#### [Zulassen oder Blockieren von Einladungen](active-directory-b2b-allow-deny-list.md)
 #### [Bedingter Zugriff für B2B](active-directory-b2b-mfa-instructions.md)
 #### [B2B-Freigaberichtlinien](active-directory-b2b-delegate-invitations.md)
 #### [Hinzufügen eines B2B-Benutzers zu einer Rolle](active-directory-b2b-add-guest-to-role.md)
@@ -327,9 +328,6 @@
 #### [Technische Referenz](active-directory-conditional-access-technical-reference.md)
 #### [Häufig gestellte Fragen](active-directory-conditional-faqs.md)
 
-### Windows Hello
-#### [Authentifizierung ohne Kennwort](active-directory-azureadjoin-passport.md)
-#### [Aktivieren von Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
 ### Zertifikatbasierte Authentifizierung
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)

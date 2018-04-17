@@ -35,8 +35,6 @@
       items:
         - name: MPP-Architektur
           href: massively-parallel-processing-mpp-architecture.md
-        - name: Leistungsstufen
-          href: performance-tiers.md
         - name: Data Warehouse-Einheiten
           href: what-is-a-data-warehouse-unit-dwu-cdwu.md
         - name: 'Horizontale Skalierung, Anhalten, Fortsetzen'
@@ -79,8 +77,10 @@
           href: how-to-use-elastic-query-with-sql-data-warehouse.md
     - name: Abfrageleistung
       items:
-        - name: Ressourcenklassen
+        - name: Ressourcenklassen und Workloadverwaltung
           href: resource-classes-for-workload-management.md
+        - name: Speicher- und Parallelitätslimits
+          href: memory-and-concurrency-limits.md
         - name: Columnstore-Komprimierung
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
     - name: Überwachen
@@ -172,9 +172,7 @@
         - name: BCP
           href: sql-data-warehouse-load-with-bcp.md
         - name: Data Factory
-          href: sql-data-warehouse-load-with-data-factory.md
-        - name: AzCopy
-          href: sql-data-warehouse-load-from-sql-server-with-polybase.md
+          href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json
         - name: Redgate
           href: sql-data-warehouse-load-with-redgate.md
         - name: SSIS

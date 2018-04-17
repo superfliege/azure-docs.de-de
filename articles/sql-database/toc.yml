@@ -48,14 +48,18 @@
       href: sql-database-design-first-database.md
     - name: '1: Entwerfen einer Datenbank mithilfe von .NET'
       href: sql-database-design-first-database-csharp.md
-    - name: '2: Migrieren zu SQL Server-Datenbank'
+    - name: '2: Migrieren zu SQL Server-Datenbank mithilfe von DMS'
       href: sql-database-migrate-your-sql-server-database.md
     - name: '3: Sichern Ihrer SQL-Datenbank'
       href: sql-database-security-tutorial.md
     - name: '4: Implementieren einer geografisch verteilten Datenbank'
       href: sql-database-implement-geo-distributed-database.md
     - name: '5: Erstellen einer verwalteten Instanz'
-      href: sql-database-managed-instance-tutorial-portal.md
+      href: sql-database-managed-instance-create-tutorial-portal.md
+    - name: '6: Wiederherstellen einer Sicherung in einer verwalteten Instanz'
+      href: sql-database-managed-instance-restore-from-backup-tutorial.md
+    - name: '7: Migrieren zu einer verwalteten Instanz mithilfe von DMS'
+      href: ../dms/tutorial-sql-server-to-managed-instance.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -410,6 +414,10 @@
               href: saas-tenancy-cross-tenant-reporting.md
             - name: ETL für Analysen
               href: saas-tenancy-tenant-analytics.md
+            - name: Notfallwiederherstellung mithilfe der Geowiederherstellung
+              href: saas-dbpertenant-dr-geo-restore.md
+            - name: Notfallwiederherstellung mithilfe der Datenbankgeoreplikation
+              href: saas-dbpertenant-dr-geo-replication.md
         - name: Mehrinstanzenfähige Datenbank
           items:
             - name: Bereitstellen der Beispiel-App

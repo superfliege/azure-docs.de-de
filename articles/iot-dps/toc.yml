@@ -89,28 +89,30 @@
       href: concepts-service.md
 - name: Anleitungen
   items:
-    - name: Verwalten der Geräteregistrierungen
-      items:
-        - name: Verwalten von Geräteregistrierungen mit dem Azure-Portal
-          href: how-to-manage-enrollments.md
-        - name: Verwalten von Geräteregistrierungen mit Dienst-SDKs
-          href: how-to-manage-enrollments-sdks.md
-    - name: Widerrufen von Gerätezugriff
-      href: how-to-revoke-device-access-portal.md
-    - name: Aufheben der Bereitstellung von Geräten
-      href: how-to-unprovision-devices.md
-    - name: Ausführen eines Eigentumsnachweises für X.509-Zertifizierungsstellenzertifikate
-      href: how-to-verify-certificates.md
-    - name: Verwenden von HSM mit SDK
-      href: use-hsm-with-sdk.md
-    - name: Steuern des Zugriffs auf den Bereitstellungsdienst
-      href: how-to-control-access.md
-    - name: Verwenden der Azure-Befehlszeilenschnittstelle zum Verwalten des Gerätebereitstellungsdiensts
-      href: how-to-manage-dps-with-cli.md
-    - name: Verwenden der SDK-Tools für die Entwicklung
-      href: how-to-use-sdk-tools.md
-    - name: Herstellen einer Verbindung mit dem MXChip IoT DevKit
+    - name: Herstellen einer Verbindung zwischen MXChip IoT DevKit und IoT Hub
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: Verwalten der Gerätebereitstellungskonfiguration
+      items:
+        - name: Konfigurieren von überprüften ZS-Zertifikaten
+          href: how-to-verify-certificates.md
+        - name: Verwalten der Bereitstellungsaufhebung
+          href: how-to-unprovision-devices.md
+        - name: Verwalten der Registrierungsaufhebung
+          href: how-to-revoke-device-access-portal.md
+        - name: 'Verwalten von Registrierungen: Portal'
+          href: how-to-manage-enrollments.md
+        - name: 'Verwalten von Registrierungen: Dienst-SDKs'
+          href: how-to-manage-enrollments-sdks.md
+    - name: Verwalten des Gerätebereitstellungsdiensts
+      items:
+        - name: Konfigurieren des Gerätebereitstellungsdiensts mithilfe der Azure-Befehlszeilenschnittstelle
+          href: how-to-manage-dps-with-cli.md
+        - name: Steuern des Zugriffs auf Bereitstellungsdienst-APIs
+          href: how-to-control-access.md
+    - name: Verwenden von Nachweismechanismen mit dem SDK
+      href: use-hsm-with-sdk.md
+    - name: Verwenden von SDK-Tools für die Entwicklung
+      href: how-to-use-sdk-tools.md
 - name: Verweis
   items:
     - name: REST

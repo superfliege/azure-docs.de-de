@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/27/2018
+ms.date: 04/09/2018
 ms.author: bwren
-ms.openlocfilehash: b20283e1189e4f1a3555e2dd8d25972c9a677cd6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 36dd04be167d9e8e63ab38e4af80c5766ba55370
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-management---monitoring"></a>Azure-Verwaltung – Überwachung
 
@@ -54,3 +54,14 @@ Das Verwalten der Sicherheit Ihrer Anwendungen, Ressourcen und Daten umfasst ein
 
 ## <a name="migrate"></a>Migrieren 
 „Migration“ bezieht sich auf den Übergang von Workloads, die derzeit lokal ausgeführt werden, in die Azure-Cloud.  [Azure Migrate](../migrate/migrate-overview.md) ist ein Dienst für die Bewertung der Migrationseignung von lokalen virtuellen Computern zu Azure, einschließlich leistungsbasierter Größen- und Kostenschätzungen.  Azure Site Recovery unterstützt Sie bei der Ausführung der tatsächlichen Migration von virtuellen Computern [aus einer lokalen Umgebung](../site-recovery/migrate-tutorial-on-premises-azure.md) oder [Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md).  [Azure Database Migration](../dms/dms-overview.md) hilft Ihnen bei der Migration mehrerer Datenbankenquellen zu Azure Data-Plattformen.
+
+
+## <a name="operations-management-suite"></a>Operations Management Suite
+Die vorherige technische Dokumentation zur Azure-Verwaltung beinhaltete Operations Management Suite (OMS), unter der die folgenden Azure-Verwaltungsdienste als Paket zusammengefasst waren:
+
+- Azure-Automatisierung
+- Azure Backup
+- Log Analytics
+- Site Recovery
+
+Dieses Paket wird in der technischen Dokumentation nicht mehr beschrieben, da die komplette Verwaltung in Azure auf andere Dienste erweitert wurde. Keiner der Dienste, die Teil der OMS sind, hat sich geändert, und jeder Dienst spielt weiterhin eine wichtige Rolle beim Verwalten Ihrer Azure-Anwendungen und -Ressourcen. Sie sollten sich auf die für Sie erforderlichen Verwaltungsaufgaben und die verschiedenen Azure-Dienste konzentrieren, die bei den einzelnen Aufgaben zusammen verwendet werden können.
