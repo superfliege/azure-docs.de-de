@@ -293,8 +293,8 @@
               href: delete-vault.md
         - name: Überwachen und Behandeln von Problemen
           items:
-            - name: Problembehandlung bei einem Failover auf Azure
-              href: site-recovery-failover-to-azure-troubleshoot.md
+            - name: Problembehandlung für die Hyper-V-Replikation
+              href: hyper-v-azure-troubleshoot.md
             - name: Überwachen von Azure Site Recovery
               href: site-recovery-monitor-and-troubleshoot.md
     - name: Hyper-V zum sekundären Standort
