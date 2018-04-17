@@ -51,7 +51,7 @@ Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwende
 |----------------|------------|  
 |"parameters"|Die Zeichenfolge „parameters“ wird zurückgegeben.|  
 |"parameters[1]"|Die Zeichenfolge „parameters[1]“ wird zurückgegeben.|  
-|"@@"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
+|"\@@\"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
 |\" \@\"|Eine Zeichenfolge, die \„ \@\“ enthält, wird zurückgegeben (zwei Zeichen).|  
   
  Mit der *Zeichenfolgeninterpolation* können Ausdrücke auch innerhalb von Zeichenfolgen verwendet werden. Dabei werden die Ausdrücke in `@{ ... }` eingeschlossen. Beispiel: `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
