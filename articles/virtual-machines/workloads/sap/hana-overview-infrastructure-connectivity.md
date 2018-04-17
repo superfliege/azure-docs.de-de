@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d94e491d12ac43a4d85a638c79bcd3b24a4bc0ef
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 43debeb710e5ab5112f9f0a85a76761cde3051a7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen) 
 
@@ -49,9 +49,9 @@ Nachdem der Kauf von SAP HANA in Azure (große Instanzen) zwischen Ihnen und dem
 - Daten für jedes HANA (große Instanzen)-System:
   - Der gewünschte Hostname – idealerweise mit vollqualifiziertem Domänennamen
   - Die gewünschte IP-Adresse für die Einheit von HANA (große Instanzen) aus dem Adressbereich des Server-IP-Pools. Beachten Sie, dass die ersten 30 IP-Adressen im Adressbereich des Server-IP-Pools für die interne Verwendung in HANA (große Instanzen) reserviert sind.
-  - SAP HANA-SID-Name für die SAP HANA-Instanz (zum Erstellen der benötigten SAP HANA-bezogenen Datenträgervolumes erforderlich). Die HANA-SID wird zum Erstellen der Berechtigungen für <sidadm> auf den NFS-Volumes benötigt, die an die Einheit von HANA (große Instanzen) angefügt werden. Außerdem wird sie als eine der Namenskomponenten der Datenträgervolumes verwendet, die bereitgestellt werden. Wenn Sie auf der Einheit mehr als eine HANA-Instanz ausführen möchten, müssen Sie mehrere HANA-SIDs auflisten. Für jede Instanz wird jeweils ein separater Volumesatz zugewiesen.
-  - Die Gruppen-ID (groupid), die der Benutzer „hana-sidadm“ in Linux hat, ist erforderlich, um die notwendigen SAP HANA-bezogenen Datenträgervolumes zu erstellen. Bei einer SAP HANA-Installation wird die Gruppe „sapsys“ in der Regel mit der Gruppen-ID „1001“ erstellt. Der Benutzer „hana-sidadm“ gehört zu dieser Gruppe.
-  - Die Benutzer-ID (userid), die der Benutzer „hana-sidadm“ in Linux hat, ist erforderlich, um die notwendigen SAP HANA-bezogenen Datenträgervolumes zu erstellen. Wenn Sie auf der Einheit mehrere HANA-Instanzen ausführen, müssen Sie alle Benutzer vom Typ „<sid>adm“ auflisten. 
+  - SAP HANA-SID-Name für die SAP HANA-Instanz (zum Erstellen der benötigten SAP HANA-bezogenen Datenträgervolumes erforderlich). Die HANA-SID wird zum Erstellen der Berechtigungen für „sidadm“ auf den NFS-Volumes benötigt, die an die Einheit von HANA (große Instanz) angefügt werden. Außerdem wird sie als eine der Namenskomponenten der Datenträgervolumes verwendet, die bereitgestellt werden. Wenn Sie auf der Einheit mehr als eine HANA-Instanz ausführen möchten, müssen Sie mehrere HANA-SIDs auflisten. Für jede Instanz wird jeweils ein separater Volumesatz zugewiesen.
+  - Die Gruppen-ID (groupid), die der Benutzer „sidadm“ in Linux hat, wird zum Erstellen der erforderlichen SAP HANA-bezogenen Datenträgervolumes benötigt. Bei einer SAP HANA-Installation wird die Gruppe „sapsys“ in der Regel mit der Gruppen-ID „1001“ erstellt. Der Benutzer „sidadm“ gehört zu dieser Gruppe.
+  - Die Benutzer-ID (userid), die der Benutzer „sidadm“ in Linux hat, wird zum Erstellen der erforderlichen SAP HANA-bezogenen Datenträgervolumes benötigt. Wenn Sie auf der Einheit mehrere HANA-Instanzen ausführen, müssen Sie alle Benutzer vom Typ „<sid>adm“ auflisten. 
 - Die ID des Azure-Abonnements, mit dem SAP HANA in Azure HANA (große Instanzen) direkt verbunden wird. Diese Abonnement-ID verweist auf das Azure-Abonnement, für das die HANA-Einheiten (große Instanzen) berechnet werden.
 
 Nachdem Sie die Informationen bereitgestellt haben, stellt Microsoft SAP HANA in Azure (große Instanzen) bereit, und Microsoft gibt die Informationen zurück, die erforderlich sind, damit Sie Ihre Azure-VNets mit HANA (große Instanzen) verbinden und auf die HANA (große Instanz)-Einheiten zugreifen können.
