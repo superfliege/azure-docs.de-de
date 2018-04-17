@@ -55,7 +55,7 @@
 
 # Verwandte Themen
 ## [Azure Active Directory](/azure/active-directory/)
-## [Rollenbasierte Zugriffssteuerung](../role-based-access-control-what-is.md)
+## [Rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md)
 # angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

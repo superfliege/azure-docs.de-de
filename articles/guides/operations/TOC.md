@@ -24,7 +24,7 @@
 ###[Bereitstellen von Vorlagen mit der Azure-CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Sicherheit (RBAC)](azure-operations-guide.md#security-of-azure-resource)
-###[Verwenden von Rollenzuweisungen zum Verwalten von Ressourcen](../../active-directory/role-based-access-control-configure.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+###[Verwenden von Rollenzuweisungen zum Verwalten von Ressourcen](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Virtuelle Computer](azure-operations-guide.md#azure-virtual-machines)
 ### [VM-Größen für Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 

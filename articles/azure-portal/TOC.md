@@ -1,6 +1,6 @@
 # Übersicht
 ## [Informationen zum Azure-Portal](../azure-portal-overview.md)
-# Lernprogramme
+# Tutorials
 ## [DevOps mit dem Azure-Portal](tutorial-azureportal-devops.md)
 # Konzepte
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
@@ -16,7 +16,7 @@
 ## Verwalten
 ### [Aktivieren des hohen Kontrasts oder Ändern des Designs](azure-portal-change-theme-high-contrast.md)
 ### [Verwenden des Portals zum Verwalten von Ressourcen](../azure-resource-manager/resource-group-portal.md)
-### [Verwalten des Zugriffs per rollenbasierter Zugriffssteuerung](../active-directory/role-based-access-control-configure.md)
+### [Verwalten des Zugriffs per rollenbasierter Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md)
 ### [Freigeben von Dashboards per rollenbasierter Zugriffssteuerung](azure-portal-dashboard-share-access.md)
 ### [Verwenden von Tags zum Organisieren von Ressourcen](../azure-resource-manager/resource-group-using-tags.md)
 ### [Skalieren von Ressourcen](../monitoring-and-diagnostics/insights-how-to-scale.md)
@@ -39,11 +39,11 @@
 ## [Azure Insights – PowerShell-Schnellstartbeispiele](../monitoring-and-diagnostics/insights-powershell-samples.md)
 ## [CLI-Beispiele für den Schnellstart mit Azure Insights](../monitoring-and-diagnostics/insights-cli-samples.md)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-management-portal)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-management-portal)
 
 
 
