@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/13/2018
+ms.date: 04/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d1ca15028590824cef95e3e9c2d957f9883a0e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b0cb9b4003faa2ccdd07ccc78c2095472690f0e7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Azure-Schreibbeschleunigung für SAP-Bereitstellungen
 Die Azure-Schreibbeschleunigung ist eine Funktion, die nur für VMs der M-Serie eingeführt wird. Die Azure-Schreibbeschleunigung ist für alle anderen VM-Serien in Azure mit Ausnahme der M-Serie nicht verfügbar. Der Name macht bereits deutlich, dass der Zweck der Funktion die Verbesserung der E/A-Wartezeit bei Schreibvorgängen für Azure Storage Premium ist. 
@@ -28,10 +28,11 @@ Die Azure-Schreibbeschleunigung ist eine Funktion, die nur für VMs der M-Serie 
 >[!NOTE]
 > Die Azure-Schreibbeschleunigung ist zurzeit als öffentliche Vorschauversion verfügbar und erfordert die Eintragung Ihrer Azure-Abonnement-ID in der Zulassungsliste.
 
-Die Azure-Schreibbeschleunigungsfunktion ist in folgenden Regionen als öffentliche Vorschauversion verfügbar:
+Die Azure-Schreibbeschleunigungsfunktion ist in folgenden Regionen als öffentliche Vorschauversion für die Bereitstellung der M-Serie verfügbar:
 
 - USA, Westen 2
 - Europa, Westen
+- Asien, Südosten
 
 ## <a name="planning-for-using-azure-write-accelerator"></a>Planen der Verwendung der Azure-Schreibbeschleunigung
 Die Azure-Schreibbeschleunigung sollte für die Volumes verwendet werden, die das Transaktionsprotokoll oder die Protokolle der Rollforwardphase eines DBMS enthalten. Die Verwendung der Azure-Schreibbeschleunigung für die Datenvolumes eines DBMS wird nicht empfohlen. Der Grund hierfür ist, dass die Azure Storage Premium-VHDs für die Azure-Schreibbeschleunigung ohne die für Storage Premium verfügbare zusätzliche Zwischenspeicherung für Lesevorgänge eingebunden werden müssen. Mit dieser Art der Zwischenspeicherung lassen sich bei herkömmlichen Datenbanken größere Vorteile erzielen. Da die Schreibbeschleunigung nur die Schreibaktivitäten betrifft und Lesevorgänge nicht beschleunigt, ist das unterstütze Konzept für SAP die Verwendung der Schreibbeschleunigung für die Laufwerke mit dem Transaktionsprotokoll oder dem Protokoll der Rollforwardphase von unterstützten SAP-Datenbanken. 
@@ -54,15 +55,16 @@ Die Anzahl von Azure Storage Premium-VHDs pro VM, die von der Azure-Schreibbesch
 > Um die Azure-Schreibbeschleunigung für einen vorhandenen Azure-Datenträger zu aktivieren, der NICHT Teil eines Volumes ist, das aus mehreren Datenträgern mit Windows-Datenträgerverwaltung oder Volume-Manager, Windows-Speicherplätzen, einem Windows-Dateiserver mit horizontaler Skalierung, Linux LVM oder MDADM besteht, muss die Workload, die auf den Azure-Datenträger zugreift, heruntergefahren werden. Datenbankanwendungen, die den Azure-Datenträger verwenden, MÜSSEN beendet werden.
 
 > [!IMPORTANT]
-> Wenn Sie die Schreibbeschleunigung für den Azure-Betriebssystem-Datenträger der VM aktivieren, wird die VM neu gestartet. 
+> Wenn Sie die Schreibbeschleunigung für den Betriebssystemdatenträger des virtuellen Azure-Computers aktivieren, wird der virtuelle Computer neu gestartet. 
 
 Für SAP-spezifische VM-Konfigurationen sollte das Aktivieren der Azure-Schreibbeschleunigung für Betriebssystem-Datenträger nicht erforderlich sein.
 
 ### <a name="restrictions-when-using-azure-write-accelerator"></a>Einschränkungen bei der Verwendung der Azure-Schreibbeschleunigung
 Bei der Verwendung der Azure-Schreibbeschleunigung für einen Azure-Datenträger/eine Azure-VHD gelten folgende Einschränkungen:
 
-- Die Premium-Datenträgerzwischenspeicherung muss auf „Keine“ festgelegt werden. Alle anderen Zwischenspeicherungsmodi werden nicht unterstützt.
+- Die Premium-Datenträgerzwischenspeicherung muss auf „Keine“ oder „Schreibgeschützt“ festgelegt werden. Alle anderen Zwischenspeicherungsmodi werden nicht unterstützt.
 - Momentaufnahmen des Datenträgers, für den die Schreibbeschleunigung aktiviert ist, werden noch nicht unterstützt. Aufgrund dieser Einschränkung kann der Azure Backup-Dienst keine anwendungskonsistente Momentaufnahme aller Datenträger der VM erstellen.
+- Der beschleunigte Pfad wird nur für kleinere E/A-Größen verwendet. In Workloadsituationen, bei denen Daten in einem Massenvorgang geladen oder die Transaktionsprotokollpuffer vor ihrer persistenten Speicherung stärker befüllt werden, wird für die auf Datenträger geschriebenen E/A-Vorgänge wahrscheinlich nicht der beschleunigte Pfad verwendet.
 
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Aktivieren der Schreibbeschleunigung auf einem bestimmten Datenträger
@@ -289,7 +291,7 @@ Die Ausgabe sieht in etwa wie folgt aus:
 
 ```
 
-Als Nächstes aktualisieren Sie die JSON-Datei und aktivieren die Schreibbeschleunigung auf dem Datenträger namens „log1“. Dazu können Sie das folgende Attribut nach dem Cacheeintrag des Datenträgers in der JSON-Datei hinzufügen. 
+Als Nächstes aktualisieren Sie die JSON-Datei und aktivieren die Schreibbeschleunigung auf dem Datenträger namens „log1“. Für diesen Schritt können Sie das folgende Attribut nach dem Cacheeintrag des Datenträgers in der JSON-Datei hinzufügen. 
 
 ```
         {

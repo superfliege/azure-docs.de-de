@@ -5,16 +5,16 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/02/2018
+ms.date: 04/03/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 6ad9c365894feed61fa4f55d442194d1cf996889
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 81357bce92bb8bd2f77f7aaabc8e3b1d49047a1b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
-**Letzte Aktualisierung des Dokuments**: 2. April, 10:00 Uhr PST.
+**Letzte Aktualisierung des Dokuments**: 3. April, 3:00 Uhr PST.
 
 Eine vor kurzem öffentlich gemachte [neue Art von CPU-Sicherheitsrisiken](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), die als „Seitenkanalangriffe mit spekulativer Ausführung“ bezeichnet wird, hatte Fragen von Kunden zur Folge, sich mehr Klarheit wünschen.  
 
@@ -25,7 +25,7 @@ Darüber hinaus erweitert Azure die Nutzung der [Wartung mit Speicherbeibehaltun
 > [!NOTE] 
 > Ende Februar 2018 veröffentlichte die Intel Corporation aktuelle [Microcode-Revisionsrichtlinien](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) zum Status ihrer Microcodereleases, die die Stabilität verbessern und vor den vor Kurzem durch [Google Project Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html) offengelegten Schwachstellen schützen. Die von Azure am [3. Januar 2018](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/) eingerichteten Entschärfungen sind durch das Intel-Microcodeupdate nicht betroffen. Microsoft hat bereits eine umfassende Risikominderung zum Schutz von Azure-Kunden vor anderen virtuellen Azure-Computern eingerichtet.  
 >
-> Der Microcode von Intel betrifft Spectre-Variante 2 ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715)) zum Schutz vor Angriffen. Dies betrifft Sie nur, wenn Sie freigegebene oder nicht vertrauenswürdige Workloads in Ihren virtuellen Computern in Azure ausführen. Unsere Techniker testen derzeit die Stabilität zur Minimierung von Leistungsauswirkungen auf den Microcode, bevor dieser Azure-Kunden zur Verfügung gestellt wird.  Da nur wenige Kunden nicht vertrauenswürdige Workloads auf ihren virtuellen Computern ausführen, müssen die meisten Kunden diese Funktion nach der Veröffentlichung nicht aktivieren. 
+> Der Microcode von Intel betrifft Spectre-Variante 2 ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715) oder Branch Target Injection) zum Schutz vor Angriffen. Dies betrifft Sie nur, wenn Sie freigegebene oder nicht vertrauenswürdige Workloads in Ihren virtuellen Computern in Azure ausführen. Unsere Techniker testen derzeit die Stabilität zur Minimierung von Leistungsauswirkungen auf den Microcode, bevor dieser Azure-Kunden zur Verfügung gestellt wird.  Da nur wenige Kunden nicht vertrauenswürdige Workloads auf ihren virtuellen Computern ausführen, müssen die meisten Kunden diese Funktion nach der Veröffentlichung nicht aktivieren. 
 >
 > Diese Seite wird aktualisiert, sobald weitere Informationen verfügbar sind.  
 
@@ -64,7 +64,7 @@ Weitere Kundenaktionen sind nur erforderlich, wenn nicht vertrauenswürdiger Cod
 
 
 ### <a name="windows"></a>Windows 
-Wenn Sie Windows verwenden und nicht vertrauenswürdigen Code hosten, müssen Sie auch die Windows-Funktion zum Shadowing der virtuellen Kerneladresse aktivieren, die zusätzlichen Schutz vor Sicherheitsrisiken durch Seitenkanalangriffe mit spekulativer Ausführung bietet (insbesondere Meltdown der Variante 3, [CVE-2017-5754](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754)). Diese Funktion ist standardmäßig deaktiviert, da sie im aktivierten Zustand die Leistung beeinträchtigen kann. Führen Sie die Anweisungen in [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) aus, um Schutzmaßnahmen auf dem Server zu aktivieren. Wenn Sie Azure Cloud Services ausführen, stellen Sie sicher, dass WA-GUEST-OS-5.15_201801-01 oder WA-GUEST-OS-4.50_201801-01 (verfügbar ab 10. Januar 2018) ausgeführt wird, und aktivieren Sie den Registrierungsschlüssel über eine Startaufgabe.
+Wenn Sie Windows verwenden und nicht vertrauenswürdigen Code hosten, müssen Sie auch die Windows-Funktion zum Shadowing der virtuellen Kerneladresse aktivieren, die zusätzlichen Schutz vor Sicherheitsrisiken durch Seitenkanalangriffe mit spekulativer Ausführung bietet (insbesondere für Meltdown der Variante 3, [CVE-2017-5754](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754) oder Rogue Data Cache Load). Diese Funktion ist standardmäßig deaktiviert, da sie im aktivierten Zustand die Leistung beeinträchtigen kann. Führen Sie die Anweisungen in [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) aus, um Schutzmaßnahmen auf dem Server zu aktivieren. Wenn Sie Azure Cloud Services ausführen, stellen Sie sicher, dass WA-GUEST-OS-5.15_201801-01 oder WA-GUEST-OS-4.50_201801-01 (verfügbar ab 10. Januar 2018) ausgeführt wird, und aktivieren Sie den Registrierungsschlüssel über eine Startaufgabe.
 
 
 ### <a name="linux"></a>Linux

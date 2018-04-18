@@ -1,34 +1,29 @@
 ---
-title: Verwenden des Blatts „Ressourcenintegrität“ in Azure Stream Analytics | Microsoft-Dokumentation
-description: Ermitteln von Problemen bei der Problembehandlung von Stream Analytics-Aufträgen.
-keywords: Problembehandlung bei Flussdiagrammen, Blatt „Ressource“
-documentationcenter: ''
+title: Verwenden der Seite „Ressourcenintegrität“ in Azure Stream Analytics
+description: Dieser Artikel beschreibt die Behandlung von Problemen in Azure Stream Analytics-Aufträgen mithilfe der Ressourcenintegrität im Azure-Portal.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 05/01/2017
 ms.author: jeanb
-ms.openlocfilehash: 598f858c22494bc511ef0e2f04f3c3a6baad1ae8
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 05/01/2017
+ms.openlocfilehash: 27d9bd7ffd7088cbd67879e83176b66cdbbf471d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="stream-analytics-resource-health-blade"></a>Stream Analytics-Blatt „Ressourcenintegrität“
+# <a name="stream-analytics-resource-health-page-in-the-azure-portal"></a>Stream Analytics-Seite „Ressourcenintegrität“ im Azure-Portal
 
-Das Blatt **Ressourcenintegrität** im Azure-Portal zeigt die Integrität Ihrer Azure Stream Analytics-Aufträge. Es zeigt außerdem umsetzbare Anleitungen, die Ihnen helfen können, Probleme zu beheben. 
+Die Seite **Ressourcenintegrität** im Azure-Portal zeigt die Integrität Ihrer Azure Stream Analytics-Aufträge. Es zeigt außerdem umsetzbare Anleitungen, die Ihnen helfen können, Probleme zu beheben. 
 
-Das Blatt **Ressourcenintegrität** soll Ihnen helfen, schneller zu bestimmen, ob die Anwendung die Ursache des Problems ist oder ob es durch ein Ereignis in Azure verursacht wird. Es kann sie auch informieren, wann Sie eine Supportanfrage stellen sollten, um Unterstützung zu erhalten.
+Die Seite **Ressourcenintegrität** soll Ihnen helfen, schneller zu bestimmen, ob die Anwendung die Ursache des Problems ist oder ob es durch ein Ereignis in Azure verursacht wird. Es kann sie auch informieren, wann Sie eine Supportanfrage stellen sollten, um Unterstützung zu erhalten.
 
 ## <a name="troubleshooting-workflow"></a>Workflow bei der Problembehandlung
 
-Um die Ressourcenintegrität Ihrer Stream Analytics-Aufträge anzuzeigen, wählen Sie das Blatt **Ressourcenintegrität** aus. 
+Um die Ressourcenintegrität Ihrer Stream Analytics-Aufträge anzuzeigen, wählen Sie die Seite **Ressourcenintegrität** aus. 
 
 ![Fluss der Stream Analytics-Problembehandlung: Zugriff](media/stream-analytics-resource-health/stream-analytics-access-troubleshooting.png)
 
@@ -37,7 +32,7 @@ Das folgende Flussdiagramm unterstützt Sie beim Treffen von Entscheidungen dazu
 ![Fluss der Stream Analytics-Problembehandlung: Diagramm](media/stream-analytics-resource-health/stream-analytics-troubleshooting-map.png)
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um weitere Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Um weitere Hilfe zu erhalten, nutzen Sie das [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

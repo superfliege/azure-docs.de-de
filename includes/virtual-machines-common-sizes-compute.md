@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 9602e8d73e5aca650dd20da34a9aa675b508ada7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 638b52edb554b6bddb206943fca42b03bdc69060
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 <!-- F-series, Fs-series* -->
 
@@ -34,13 +34,13 @@ ACU: 195 – 210
 
 | Größe             | vCPUs | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|------------------------------------------------|
-| Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4.000 (32)                                                             | Moderat                                       |
-| Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8.000 (64)                                                             | Moderat                                       |
-| Standard_F8s_v2   | 8      | 16          | 64             | 16             | 16.000 (128)                                                           | Hoch                                           |
-| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32.000 (256)                                                           | Hoch                                           |
-| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64.000 (512)                                                           | Äußerst hoch                                 |
-| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128.000 (1024)                                                         | Äußerst hoch                                 |
-| Standard_F72s_v2<sup>2, 3</sup> | 72     | 144         | 576            | 32             | 144.000 (1520)                                                         | Äußerst hoch                                 |
+| Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4.000 (32)                                                             | 2/875                                        |
+| Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8.000 (64)                                                             | 2/1.750                                      |
+| Standard_F8s_v2   | 8      | 16          | 64             | 16             | 16.000 (128)                                                           | 4/3.500                                      |
+| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32.000 (256)                                                           | 4/7.000                                      |
+| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64.000 (512)                                                           | 8/14.000                                     |
+| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128.000 (1024)                                                         | 8/28.000                                     |
+| Standard_F72s_v2<sup>2, 3</sup> | 72     | 144         | 576            | 32             | 144.000 (1520)                                                         | 8 / 30.000                                     |
 
 <sup>1</sup> Virtuelle Computer der Fsv2-Serie verfügen über Hyper-Threading-Technologie von Intel®
 

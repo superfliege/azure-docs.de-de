@@ -1,11 +1,11 @@
 ---
 title: Authentifizierung und Autorisierung in Azure App Service | Microsoft Docs
-description: "Eine grundlegende Übersicht über das Authentifizierungs-/Autorisierungsfeature für Azure App Service."
+description: Eine grundlegende Übersicht über das Authentifizierungs-/Autorisierungsfeature für Azure App Service.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: mattchenderson
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
@@ -14,146 +14,141 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: f0d2644903181cd2e20166feae4f90ddd4037fa8
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 342aeee25a7cb9f6a0f5af055d04e67d0c52db80
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
-## <a name="what-is-app-service-authentication--authorization"></a>Was ist App Service-Authentifizierung/Autorisierung?
-Mithilfe des Authentifizierungs-/Autorisierungsfeatures von App Service kann Ihre Anwendung Benutzer anmelden, sodass Sie keine Codeänderungen für das Back-End der App vornehmen müssen. Es stellt eine einfache Möglichkeit zum Schutz Ihrer Anwendung und für die Arbeit mit benutzerspezifischen Daten bereit.
 
-App Service nutzt die Verbundidentität. Dabei werden Kontenspeicherung und Benutzerauthentifizierung von einem Drittanbieter übernommen. Die Anwendung verwendet die Identitätsinformationen des Anbieters, sodass die App diese Informationen nicht selbst speichern muss. App Service unterstützt standardmäßig fünf Identitätsanbieter: Azure Active Directory, Facebook, Google, das Microsoft-Konto und Twitter. Ihre App kann eine beliebige Anzahl dieser Identitätsanbieter nutzen. Dadurch können Sie Ihren Benutzern verschiedene Anmeldeoptionen zur Verfügung stellen. Die integrierte Unterstützung kann durch Integrieren eines weiteren Identitätsanbieters oder einer [eigenen benutzerdefinierten Identitätslösung][custom-auth] erweitert werden.
+Azure App Service bietet integrierte Authentifizierungs- und Autorisierungsunterstützung, sodass Sie für das Anmelden von Benutzern und den Zugriff auf Daten nur wenig oder keinen Code in Ihrer Web-App, API und dem mobilen Back-End sowie in [Azure Functions](../azure-functions/functions-overview.md) schreiben müssen. In diesem Artikel wird beschrieben, wie App Service zur Vereinfachung der Authentifizierung und Autorisierung für Ihre App beiträgt. 
 
-Wenn Sie direkt starten möchten, finden Sie entsprechende Informationen in einem der folgenden Tutorials. [Hinzufügen der Authentifizierung zu Ihrer iOS-App][iOS] (oder [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms] oder [Cordova])
+Eine sichere Authentifizierung und Autorisierung erfordert umfassende Sicherheitskenntnisse, u.a. zu Verbund, Verschlüsselung, Verwaltung von [JSON-Webtoken (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) und [Gewährungstypen](https://oauth.net/2/grant-types/). App Service bietet diese Hilfsprogramme, damit Sie mehr Zeit und Energie für das Bereitstellen von geschäftlichem Nutzen für Ihre Kunden aufwenden können.
 
-## <a name="how-authentication-works-in-app-service"></a>Funktionsweise der Authentifizierung in App Service
-Zur Authentifizierung mit einem der Identitätsanbieter müssen Sie zunächst den Identitätsanbieter konfigurieren, damit er Ihre Anwendung kennt. Der Identitätsanbieter stellt anschließend IDs und geheime Schlüssel bereit, die Sie wiederum für App Service bereitstellen. Dadurch wird die Vertrauensstellung komplettiert, und App Service kann Benutzerassertionen (beispielsweise Authentifizierungstoken) des Identitätsanbieters überprüfen.
+> [!NOTE]
+> Die Nutzung von App Service für die Authentifizierung und Autorisierung ist nicht verpflichtend. Viele Webframeworks sind mit Sicherheitsfunktionen gebündelt und können bei Bedarf verwendet werden. Wenn Sie mehr Flexibilität benötigen, als App Service bietet, können Sie auch eigene Hilfsprogramme schreiben.  
+>
 
-Für die Anmeldung mit einem dieser Anbieter muss der Benutzer an einen Endpunkt umgeleitet werden, der Benutzer für den entsprechenden Anbieter anmeldet. Wenn Kunden einen Webbrowser verwenden, kann App Service auf Wunsch automatisch alle nicht authentifizierten Benutzer an den Endpunkt für die Benutzeranmeldung weiterleiten. Andernfalls müssen Sie Ihre Kunden an `{your App Service base URL}/.auth/login/<provider>` weiterleiten, wobei `<provider>` einem der folgenden Werte entspricht: „aad“, „facebook“, „google“, „microsoft“ oder „twitter“. Szenarien für mobile Geräte und APIs werden weiter unten in diesem Artikel erläutert.
+Spezielle Informationen zu nativen mobilen Apps finden Sie unter [Authentifizierung und Autorisierung in Azure Mobile Apps](../app-service-mobile/app-service-mobile-auth.md).
 
-Für Benutzer, die über einen Webbrowser mit Ihrer Anwendung interagieren, wird ein Cookie festgelegt, damit sie während der Verwendung Ihrer Anwendung authentifiziert bleiben. Bei anderen Clienttypen (etwa bei mobilen Clients) wird an den Client ein JSON-Webtoken (JWT) ausgegeben, das im `X-ZUMO-AUTH` -Header angegeben werden muss. Dies wird von den Mobile Apps-Client-SDKs für Sie übernommen. Alternativ kann ein Azure Active Directory-Identitätstoken oder ein Zugriffstoken direkt als [Bearertoken](https://tools.ietf.org/html/rfc6750) in den `Authorization`-Header eingefügt werden.
+## <a name="how-it-works"></a>So funktioniert's
 
-App Service überprüft jedes Cookie oder Token, das Ihre Anwendung ausgibt, um Benutzer zu authentifizieren. Informationen zum Einschränken des Zugriffs auf Ihre Anwendung finden Sie weiter unten in diesem Artikel im Abschnitt [Autorisierung](#authorization) .
+Das Modul für Authentifizierung und Autorisierung wird in der gleichen Sandbox wie Ihr Anwendungscode ausgeführt. Wenn es aktiviert ist, wird es von allen eingehenden HTTP-Anforderungen durchlaufen, bevor diese von Ihrem Anwendungscode behandelt werden.
 
-### <a name="mobile-authentication-with-a-provider-sdk"></a>Mobile Authentifizierung mit einem Anbieter-SDK
-Nachdem das Back-End vollständig konfiguriert ist, können Sie mobile Clients für die Anmeldung mit App Service anpassen. Dazu gibt es zwei Ansätze:
+![](media/app-service-authentication-overview/architecture.png)
 
-* Verwenden Sie ein von einem bestimmten Identitätsanbieter veröffentlichtes SDK, um zuerst die Identität und anschließend den Zugriff auf App Service einzurichten.
-* Verwenden Sie eine einzelne Codezeile, um Benutzeranmeldungen über das Mobile Apps-Client-SDK zu ermöglichen.
+Dieses Modul erledigt einige Dinge für Ihre App:
 
-> [!TIP]
-> Bei den meisten Anwendungen empfiehlt sich die Verwendung eines Anbieter-SDKs, um eine möglichst konsistente Benutzeranmeldung zu erhalten. Außerdem profitieren Sie bei dieser Variante von Aktualisierungsunterstützung und weiteren Vorteilen des jeweiligen Anbieters.
-> 
-> 
+- Authentifizierung von Benutzern mit dem angegebenen Anbieter
+- Überprüfung, Speicherung und Aktualisierung von Token
+- Verwaltung der authentifizierten Sitzung
+- Einfügen von Identitätsinformationen in Anforderungsheader
 
-Bei Verwendung eines Anbieter-SDKs können sich die Benutzer in einer Umgebung anmelden, die stärker in das Betriebssystem eingebunden ist, unter dem die Anwendung ausgeführt wird. Dadurch erhalten Sie außerdem ein Anbietertoken und bestimmte Benutzerinformationen auf dem Client, was die Nutzung von Graph-APIs und die Anpassung der Benutzerumgebung wesentlich vereinfacht. Dies wird in Blogs und Foren gelegentlich als „Clientfluss“ oder „clientgesteuerter Datenfluss“ bezeichnet, da Benutzer durch auf dem Client befindlichen Code angemeldet werden und der Clientcode Zugriff auf ein Anbietertoken erhält.
+Das Modul wird getrennt vom Anwendungscode ausgeführt und mithilfe von App-Einstellungen konfiguriert. Weder SDKs noch bestimmte Sprachen oder Änderungen am Anwendungscode sind erforderlich. 
 
-Das abgerufene Anbietertoken muss zur Überprüfung an App Service gesendet werden. Nach der Tokenüberprüfung durch App Service wird ein neues App Service-Token erstellt und an den Client zurückgegeben. Im Mobile Apps-Client-SDK stehen Hilfsmethoden zur Verfügung, um diesen Austausch zu verwalten und das Token automatisch an alle Anforderungen anzufügen, die an das Anwendungs-Back-End gerichtet werden. Entwickler können bei Bedarf auch einen Verweis auf das Anbietertoken speichern.
+### <a name="user-claims"></a>Benutzeransprüche
 
-### <a name="mobile-authentication-without-a-provider-sdk"></a>Mobile Authentifizierung ohne Anbieter-SDK
-Wenn Sie kein Anbieter-SDK einrichten möchten, können Sie die Anmeldung dem Mobile Apps-Feature von Azure App Service überlassen. Das Mobile Apps-Client-SDK öffnet eine Webansicht für den Anbieter Ihrer Wahl und meldet den Benutzer an. Dies wird in Blogs und Foren gelegentlich als „Serverfluss“ oder „servergesteuerter Datenfluss“ bezeichnet, da der Server den Prozess für die Benutzeranmeldung verwaltet und das Client-SDK das Anbietertoken nie empfängt.
+App Service stellt Ihrem Code für alle Sprachenframeworks die Ansprüche des Benutzers zur Verfügung, indem sie in die Anforderungsheader eingefügt werden. Für ASP.NET 4.6-Apps füllt App Service die [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)-Eigenschaft mit Ansprüchen des authentifizierten Benutzers, sodass Sie dem standardmäßigen .NET Codemuster einschließlich des `[Authorize]`-Attributs folgen können. Auf ähnliche Weise füllt App Service die `_SERVER['REMOTE_USER']`-Variable für PHP-Apps.
 
-Den Code zum Starten dieses Datenflusses finden Sie im entsprechenden plattformspezifischen Authentifizierungstutorial. Am Ende des Datenflusses verfügt das Client-SDK über ein App Service-Token, und das Token wird automatisch an alle Anforderungen angefügt, die an das Anwendungs-Back-End gerichtet werden.
+Für [Azure Functions](../azure-functions/functions-overview.md) wird `ClaimsPrincipal.Current` nicht für .NET Code extrahiert, Sie können die Benutzeransprüche jedoch in den Anforderungsheadern finden.
 
-### <a name="service-to-service-authentication"></a>Dienst-zu-Dienst-Authentifizierung
-Neben der Gewährung des Benutzerzugriffs auf Ihre Anwendung können Sie auch einer anderen vertrauenswürdigen Anwendung das Aufrufen Ihrer eigenen API ermöglichen. So kann beispielsweise eine Web-App eine API in einer anderen Web-App aufrufen. In diesem Szenario können Sie anstelle von Benutzeranmeldeinformationen Anmeldeinformationen für ein Dienstkonto verwenden, um ein Token zu erhalten. Ein Dienstkonto wird im Kontext von Azure Active Directory auch als *Dienstprinzipal* bezeichnet, und die Authentifizierung mithilfe eines solchen Kontos wird auch „Dienst-zu-Dienst-Szenario“ genannt.
+Weitere Informationen finden Sie unter [Zugriff auf Benutzeransprüche](app-service-authentication-how-to.md#access-user-claims).
 
-> [!IMPORTANT]
-> Mobile Apps werden auf Kundengeräten ausgeführt. Sie gelten daher *nicht* als vertrauenswürdige Anwendungen und dürfen keinen Dienstprinzipalfluss verwenden. Stattdessen müssen diese Apps den zuvor erläuterten Benutzerfluss verwenden.
-> 
-> 
+### <a name="token-store"></a>Tokenspeicher
 
-In Dienst-zu-Dienst-Szenarien kann App Service Ihre Anwendung mithilfe von Azure Active Directory schützen. Die aufrufende Anwendung muss lediglich ein Azure Active Directory-Dienstprinzipal-Autorisierungstoken bereitstellen, das unter Angabe von Client-ID und geheimem Clientschlüssel von Azure Active Directory abgerufen wurde. Ein Beispiel für dieses Szenario unter Verwendung von ASP.NET-API-Apps finden Sie im Tutorial [Dienstprinzipalauthentifizierung für API-Apps][apia-service].
+App Service bietet einen integrierten Tokenspeicher. Dabei handelt es sich um ein Repository mit Token, die den Benutzern Ihrer Web-Apps, APIs oder nativen mobilen Apps zugeordnet sind. Wenn Sie die Authentifizierung für jeden Anbieter aktivieren, ist dieser Tokenspeicher sofort für Ihre App verfügbar. Wenn Ihr Anwendungscode im Auftrag des Benutzers auf Daten dieser Anbieter zugreifen muss, z.B um: 
 
-Wenn Sie ein Dienst-zu-Dienst-Szenario mit App Service-Authentifizierung verwenden möchten, können Sie Clientzertifikate oder die Standardauthentifizierung verwenden. Informationen zu Clientzertifikaten in Azure finden Sie unter [Konfigurieren von gegenseitiger TLS-Authentifizierung für Web-Apps](app-service-web-configure-tls-mutual-auth.md). Informationen zur Standardauthentifizierung in ASP.NET finden Sie unter [Authentication Filters in ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/authentication-filters)(Authentifizierungsfilter in ASP.NET-Web-API 2).
+- Beiträge in der Facebook-Chronik des authentifizierten Benutzers zu veröffentlichen
+- Unternehmensdaten des authentifizierten Benutzers aus der Azure Active Directory Graph-API oder sogar Microsoft Graph zu lesen,
 
-Die Dienstkontoauthentifizierung zwischen einer App Service-Logik-App und einer API-App ist ein Sonderfall, der in [Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps](../logic-apps/logic-apps-custom-hosted-api.md)erklärt wird.
+werden die ID-, Zugriffs- und Aktualisierungstoken für die authentifizierte Sitzung zwischengespeichert und sind nur für den zugehörigen Benutzer zugänglich.  
 
-## <a name="authorization"></a>Funktionsweise der Autorisierung in App Service
-Sie haben uneingeschränkte Kontrolle über die Anforderungen, denen der Zugriff auf Ihre Anwendung gestattet werden soll. Die App Service-Authentifizierung/-Autorisierung kann mit folgenden Verhaltensweisen konfiguriert werden:
+In der Regel müssen Sie Code schreiben, um diese Token in Ihrer Anwendung zu erfassen, speichern und aktualisieren. Mit dem Tokenspeicher [rufen Sie die Token bei Bedarf einfach ab](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) und [weisen App Service an, sie zu aktualisieren](app-service-authentication-how-to.md#refresh-access-tokens), wenn sie ungültig werden. 
 
-* Nur zulassen, dass authentifizierte Anforderungen Ihre Anwendung erreichen.
-  
-    Wenn ein Browser eine anonyme Anforderung sendet, leitet App Service sie auf eine Seite für den von Ihnen gewählten Identitätsanbieter um, damit sich die Benutzer anmelden können. Stammt die Anforderung von einem Mobilgerät, wird eine HTTP-Antwort vom Typ *401 – Nicht autorisiert* zurückgegeben.
-  
-    Mit dieser Option müssen Sie in Ihrer App keinerlei Authentifizierungscode schreiben. Falls Sie eine präzisere Autorisierung benötigen, kann Ihr Code auf Informationen zum Benutzer zurückgreifen.
-* Zulassen, dass alle Anforderungen Ihre Anwendung erreichen, aber authentifizierte Anforderungen überprüfen, und Authentifizierungsdaten an die HTTP-Header übergeben.
-  
-    Diese Option überlässt Autorisierungsentscheidungen Ihrem Anwendungscode. Sie bietet mehr Flexibilität bei der Verarbeitung anonymer Anforderungen, benötigt aber auch entsprechenden Code.
-* Zulassen, dass alle Anforderungen Ihre Anwendung erreichen, und keine Aktionen für die Authentifizierungsdaten in den Anforderungen ausführen.
-  
-    In diesem Fall ist das Authentifizierungs-/Autorisierungsfeature deaktiviert. Authentifizierungs- und Autorisierungsaufgaben bleiben vollständig Ihrem Anwendungscode überlassen.
+Wenn Sie in Ihrer App nicht mit Token arbeiten müssen, können Sie den Tokenspeicher deaktivieren.
 
-Die oben genannten Verhaltensweisen werden mithilfe der Option **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** im Azure-Portal gesteuert. Bei Verwendung der Option „Mit *Anbietername* anmelden“ müssen alle Anforderungen authentifiziert werden. Bei Verwendung von **Anforderung zulassen (keine Aktion)** bleibt die Autorisierungsentscheidung Ihrem Code überlassen, es werden aber trotzdem Authentifizierungsinformationen angegeben. Falls der Code sämtliche Aufgaben übernehmen soll, können Sie das Authentifizierungs-/Autorisierungsfeature deaktivieren.
+### <a name="logging-and-tracing"></a>Protokollierung und Nachverfolgung
 
-## <a name="working-with-user-identities-in-your-application"></a>Verwenden von Benutzeridentitäten in Ihrer Anwendung
-App Service übergibt einige Benutzerinformationen mithilfe spezieller Header an Ihre Anwendung. Diese Header sind in externen Anforderungen nicht zulässig und nur vorhanden, wenn sie von der App Service-Authentifizierung/-Autorisierung festgelegt werden. Beispiele für solche Header wären etwa:
+Wenn Sie die [Anwendungsprotokollierung](web-sites-enable-diagnostic-log.md) aktivieren, werden Ablaufverfolgungen für Authentifizierung und Autorisierung direkt in den Protokolldateien angezeigt. Wenn ein unerwarteter Authentifizierungsfehler angezeigt wird, können Sie alle Details dazu problemlos in den vorhandenen Anwendungsprotokollen finden. Wenn Sie die [Ablaufverfolgung für Anforderungsfehler](web-sites-enable-diagnostic-log.md) aktivieren, sehen Sie genau, welche Rolle das Modul für Authentifizierung und Autorisierung möglicherweise bei einer fehlgeschlagenen Anforderung gespielt hat. Suchen Sie in den Ablaufverfolgungsprotokollen nach Verweisen auf ein Modul namens `EasyAuthModule_32/64`. 
 
-* X-MS-CLIENT-PRINCIPAL-NAME
-* X-MS-CLIENT-PRINCIPAL-ID
-* X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN
-* X-MS-TOKEN-FACEBOOK-EXPIRES-ON
+## <a name="identity-providers"></a>Identitätsanbieter
 
-Anhand dieser Header kann jeder Code unabhängig von Programmiersprache oder Framework die benötigten Informationen ermitteln. Bei ASP.NET 4.6-Apps wird **ClaimsPrincipal** automatisch mit entsprechenden Werten festgelegt.
+App Service nutzt die [Verbundidentität](https://en.wikipedia.org/wiki/Federated_identity). Dabei werden die Benutzeridentitäten und der Authentifizierungsablauf von einem externen Identitätsanbieter für Sie verwaltet. Fünf Identitätsanbieter sind standardmäßig verfügbar: 
 
-Über eine HTTP GET-Anforderung kann Ihre Anwendung zusätzliche Benutzerdetails vom `/.auth/me` -Endpunkt Ihrer Anwendung abrufen. Wenn die Anforderung ein gültiges Token enthält, wird eine JSON-Nutzlast mit Details zum verwendeten Anbieter, dem zugrunde liegenden Anbietertoken und einigen anderen Benutzerinformationen zurückgegeben. Die Mobile Apps-Server-SDKs enthalten Hilfsmethoden für die Verwendung dieser Daten. Weitere Informationen finden Sie unter [Verwenden des Azure Mobile Apps SDK für Node.js](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity) sowie unter [Arbeiten mit dem .NET-Back-End-Server-SDK für Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+| Anbieter | Anmeldungsendpunkt |
+| - | - |
+| [Azure Active Directory](../active-directory/active-directory-whatis.md) | `/.auth/login/aad` |
+| [Microsoft-Konto](../active-directory/develop/active-directory-appmodel-v2-overview.md) | `/.auth/login/microsoft` |
+| [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
+| [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
+| [Twitter](https://developer.twitter.com/docs/basics/authentication) | `/.auth/login/twitter` |
 
-## <a name="documentation-and-additional-resources"></a>Dokumentation und zusätzliche Ressourcen
-### <a name="identity-providers"></a>Identitätsanbieter
-In den folgenden Tutorials erfahren Sie, wie Sie App Service für die Verwendung verschiedener Authentifizierungsanbieter konfigurieren:
+Wenn Sie die Authentifizierung und Autorisierung mit einem dieser Anbieter aktivieren, ist der entsprechende Anmeldungsendpunkt für die Benutzerauthentifizierung und die Überprüfung von Authentifizierungstoken vom Anbieter verfügbar. Sie können Ihren Benutzern problemlos eine beliebige Anzahl von diesen Anmeldeoptionen bereitstellen. Außerdem können Sie einen weiteren Identitätsanbieter oder eine [eigene benutzerdefinierte Identitätslösung][custom-auth] integrieren.
+
+## <a name="authentication-flow"></a>Authentifizierungsfluss
+
+Der Authentifizierungsablauf gilt für alle Anbieter, unterscheidet sich jedoch abhängig davon, ob die Anmeldung mit dem SDK des Anbieters erfolgen soll:
+
+- Ohne die Anbieter-SDK: Die Anwendung delegiert die Verbundanmeldung an App Service. Dies ist normalerweise bei Browser-Apps der Fall, die dem Benutzer die Anmeldeseite des Anbieters anzeigen können. Der Servercode verwaltet den Anmeldevorgang, daher wird er auch als _servergesteuerter Datenfluss_ oder _Serverfluss_ bezeichnet. Dieser Fall gilt für Web-Apps. Es gilt auch für native Apps, die Benutzer mithilfe des Client SDK von Mobile Apps anmelden, da das SDK eine Webansicht zum Anmelden von Benutzern mit der App Service-Authentifizierung öffnet. 
+- Mit Anbieter-SDK: Die Anwendung meldet den Benutzer manuell an und sendet dann das Authentifizierungstoken zur Überprüfung an App Service. Dies ist normalerweise bei Apps ohne Browser der Fall, die dem Benutzer die Anmeldeseite des Anbieters nicht anzeigen können. Der Anwendungscode verwaltet den Anmeldevorgang, daher wird er auch als _clientgesteuerter Datenfluss_ oder _Clientfluss_ bezeichnet. Dieser Fall gilt für REST-APIs [Azure Functions](../azure-functions/functions-overview.md) und JavaScript-Browserclients sowie Web-Apps, die eine höhere Flexibilität beim Anmeldevorgang erfordern. Er gilt auch für native mobile Apps, die Benutzer mithilfe des Anbieter-SDKs anmelden.
+
+> [!NOTE]
+> Bei Aufrufen aus einer vertrauenswürdigen Browser-App in App Service wird eine weitere REST-API in App Service aufgerufen, oder [Azure Functions](../azure-functions/functions-overview.md) kann über den servergesteuerten Datenfluss authentifiziert werden. Weitere Informationen finden Sie unter [Authentifizierung und Autorisierung in Azure App Service]().
+>
+
+Die folgende Tabelle zeigt die Schritte des Authentifizierungsablaufs.
+
+| Schritt | Ohne Anbieter-SDK | Mit Anbieter-SDK |
+| - | - | - |
+| 1. Anmeldung des Benutzers | Client wird zu `/.auth/login/<provider>` umgeleitet. | Clientcode meldet Benutzer direkt mit dem Anbieter-SDK an und erhält ein Authentifizierungstoken. Informationen finden Sie in der Dokumentation des Anbieters. |
+| 2. Nachauthentifizierung | Anbieter leitet Client zu `/.auth/login/<provider>/callback` um. | Clientcode sendet Token des Anbieters zur Überprüfung an `/.auth/login/<provider>`. |
+| 3. Einrichten der authentifizierten Sitzung | App Service fügt der Antwort ein authentifiziertes Cookie hinzu. | App Service gibt das eigene Authentifizierungstoken an den Clientcode zurück. |
+| 4. Bereitstellen von authentifiziertem Inhalt | Client schließt Authentifizierungscookie in nachfolgenden Anforderungen (die automatisch vom Browser verarbeitet werden) ein. | Clientcode stellt Authentifizierungstoken im `X-ZUMO-AUTH`-Header (der automatisch von Mobile Apps-Client-SDKs verarbeitet wird) bereit. |
+
+Für Clientbrowser kann App Service alle nicht authentifizierten Benutzer automatisch an `/.auth/login/<provider>` weiterleiten. Sie können Benutzern auch einen oder mehrere `/.auth/login/<provider>`-Links zur Anmeldung bei Ihrer App mit dem Anbieter ihrer Wahl bereitstellen.
+
+<a name="authorization"></a>
+
+## <a name="authorization-behavior"></a>Autorisierungsverhalten
+
+Im [Azure-Portal](https://portal.azure.com) können Sie die App Service-Autorisierung mit einer Reihe von Verhaltensweisen konfigurieren.
+
+![](media/app-service-authentication-overview/authorization-flow.png)
+
+Die folgenden Überschriften beschreiben die Optionen.
+
+### <a name="allow-all-requests-default"></a>Alle Anforderungen zulassen (Standard)
+
+Authentifizierung und Autorisierung werden nicht von App Service (deaktiviert) verwaltet. 
+
+Wählen Sie diese Option, wenn Sie keine Authentifizierung und Autorisierung benötigen, oder wenn Sie einen eigenen Authentifizierungs- und Autorisierungscode schreiben möchten.
+
+### <a name="allow-only-authenticated-requests"></a>Nur authentifizierte Anforderungen zulassen
+
+Die Option lautet **Mit \<Anbieter> anmelden**. App Service leitet alle anonymen Anforderungen an `/.auth/login/<provider>` für den ausgewählten Anbieter um. Wenn die anonyme Anforderung von einer nativen mobilen App stammt, wird `HTTP 401 Unauthorized` als Antwort zurückgegeben.
+
+Mit dieser Option müssen Sie in Ihrer App keinen Authentifizierungscode schreiben. Eine genauere Autorisierung, z.B. rollenspezifische Autorisierung, kann durch das Untersuchen der Ansprüche des Benutzers durchgeführt werden (siehe [Zugriff auf Benutzeransprüche](app-service-authentication-how-to.md#access-user-claims)).
+
+### <a name="allow-all-requests-but-validate-authenticated-requests"></a>Alle Anforderungen zulassen, aber authentifizierte Anforderungen überprüfen
+
+Die Option lautet **Anonyme Anforderungen zulassen**. Diese Option aktiviert die Authentifizierung und Autorisierung in App Service, überlässt Autorisierungsentscheidungen jedoch Ihrem Anwendungscode. Für authentifizierte Anforderungen übergibt App Service auch Authentifizierungsinformationen in den HTTP-Headern. 
+
+Diese Option bietet mehr Flexibilität bei der Verarbeitung anonymer Anforderungen. Beispielsweise können Sie Ihren Benutzern [mehrere Anmeldeoptionen bereitstellen](app-service-authentication-how-to.md#configure-multiple-sign-in-options). Allerdings müssen Sie Code schreiben. 
+
+## <a name="more-resources"></a>Weitere Ressourcen
+
+[Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](app-service-web-tutorial-auth-aad.md)  
+[Anpassen der Authentifizierung und Autorisierung in App Service](app-service-authentication-how-to.md)
+
+Anbieterspezifische Anleitungen:
 
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung][AAD]
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung][Facebook]
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Google-Anmeldung][Google]
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung][MSA]
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung][Twitter]
-
-Wenn Sie keines der hier beschriebenen Identitätssysteme verwenden möchten, können Sie die [Vorschau der Unterstützung der benutzerdefinierten Authentifizierung im Mobile Apps-.NET-Server-SDK][custom-auth] (geeignet für Web-Apps, mobile Apps und API-Apps) nutzen.
-
-### <a name="mobile-applications"></a>Mobile Anwendungen
-In den folgenden Tutorials erfahren Sie, wie Sie Ihren mobilen Clients die Authentifizierung mit servergesteuertem Datenfluss hinzufügen:
-
-* [Hinzufügen der Authentifizierung zu Ihrer iOS-App][iOS]
-* [Hinzufügen der Authentifizierung zu Ihrer Android-App][Android]
-* [Hinzufügen der Authentifizierung zu Ihrer Windows-App][Windows]
-* [Hinzufügen der Authentifizierung zu Ihrer Xamarin.iOS-App][Xamarin.iOS]
-* [Hinzufügen der Authentifizierung zu Ihrer Xamarin.Android-App][Xamarin.Android]
-* [Hinzufügen der Authentifizierung zu Ihrer Xamarin.Forms-App][Xamarin.Forms]
-* [Hinzufügen der Authentifizierung zu Ihrer Cordova-App][Cordova]
-
-Informationen zur Verwendung des clientgesteuerten Flusses für Azure Active Directory finden Sie hier:
-
-* [Verwenden der Active Directory-Authentifizierungsbibliothek für iOS][ADAL-iOS]
-* [Verwenden der Active Directory-Authentifizierungsbibliothek für Android][ADAL-Android]
-* [Verwenden der Active Directory-Authentifizierungsbibliothek für Windows und Xamarin][ADAL-dotnet]
-
-Informationen zur Verwendung des clientgesteuerten Flusses für Facebook finden Sie in den folgenden Ressourcen:
-
-* [Verwenden des Facebook-SDK für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
-
-Informationen zur Verwendung des clientgesteuerten Flusses für Twitter finden Sie in den folgenden Ressourcen:
-
-* [Verwenden von Twitter Fabric für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
-
-Informationen zur Verwendung des clientgesteuerten Flusses für Google finden Sie in den folgenden Ressourcen:
-
-* [Verwenden des Google-Anmelde-SDK für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
-
-<!-- ### API applications
-The following tutorials show how to protect your API apps:
-
-* [User authentication for API Apps in Azure App Service][apia-user]
-* [Service principal authentication for API Apps in Azure App Service][apia-service] -->
-
-[iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
-[Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
-[Xamarin.iOS]: ../app-service-mobile/app-service-mobile-xamarin-ios-get-started-users.md
-[Xamarin.Android]: ../app-service-mobile/app-service-mobile-xamarin-android-get-started-users.md
-[Xamarin.Forms]: ../app-service-mobile/app-service-mobile-xamarin-forms-get-started-users.md
-[Windows]: ../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-users.md
-[Cordova]: ../app-service-mobile/app-service-mobile-cordova-get-started-users.md
+* [Vorgehensweise: Verwenden einer benutzerdefinierten Authentifizierung für Ihre Anwendung][custom-auth]
 
 [AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
 [Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md
