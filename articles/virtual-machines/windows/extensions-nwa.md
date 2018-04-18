@@ -1,11 +1,11 @@
 ---
-title: "VM-Erweiterung für den Azure Network Watcher-Agent für Windows | Microsoft-Dokumentation"
+title: VM-Erweiterung für den Azure Network Watcher-Agent für Windows | Microsoft-Dokumentation
 description: Stellen Sie den Network Watcher-Agent mithilfe einer VM-Erweiterung auf einem virtuellen Windows-Computer bereit.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dennisg
 manager: amku
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 68855e0070916dc672914fbc8ca3587a5d3c25f6
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 84ac50ea555df538cc6347be58537e31b0f14611
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>VM-Erweiterung für den Network Watcher-Agent für Windows
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/20/2017
 [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) ist ein Dienst zur Überwachung, Diagnose und Analyse der Netzwerkleistung, der die Überwachung von Azure-Netzwerken ermöglicht. Die VM-Erweiterung des Network Watcher-Agents ist eine Voraussetzung für die bedarfsgesteuerte Erfassung von Netzwerkdatenverkehr und andere erweiterte Funktionalität auf virtuellen Azure-Computern.
 
 
-Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen und Bereitstellungsoptionen für die VM-Erweiterung für den Network Watcher-Agent für Windows.
+Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen und Bereitstellungsoptionen für die VM-Erweiterung für den Network Watcher-Agent für Windows. Die Installation des Agents führt nicht zu einer Unterbrechung, und der virtuelle Computer muss nicht neu gestartet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

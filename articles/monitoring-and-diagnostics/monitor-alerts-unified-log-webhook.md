@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/2/2018
 ms.author: vinagara
-ms.openlocfilehash: 9d2bc934424ff7a31b65ad6c03624ff02ee2a6f3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cd289d506cbe22e683392256cce14211a5db0729
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Warnung in Azure erstellt](monitor-alerts-unified-usage.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](monitoring-action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
@@ -54,7 +54,7 @@ Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um d
 | Startzeit für das Suchintervall |#searchintervalstarttimeutc |Startzeit für die Abfrage im UTC-Format 
 | SearchQuery |#searchquery |Von der Warnungsregel verwendete Protokollsuchabfrage |
 | SearchResults |"IncludeSearchResults": true|Von der Abfrage als JSON-Tabelle zurückgegebene Datensätze, die auf die ersten 1.000 Datensätze beschränkt sind; wenn "IncludeSearchResults": true in der benutzerdefinierten JSON-Webhookdefinition als Eigenschaft der obersten Ebene hinzugefügt wird |
-| WorkspaceID |#workspaceid |ID Ihres Log Analytics-Arbeitsbereichs (OMS) |
+| WorkspaceID |#workspaceid |ID Ihres Log Analytics-Arbeitsbereichs. |
 | Anwendungs-ID |#applicationid |ID Ihrer Application Insight-App |
 | Abonnement-ID |#subscriptionid |ID Ihres Azure-Abonnements, das für Application Insights verwendet wird 
 
@@ -77,7 +77,7 @@ Um Suchergebnisse in eine benutzerdefinierte Nutzlast einzuschließen, muss **In
 Dieser Abschnitt zeigt eine Beispielnutzlast für den Webhook für Protokollwarnungen, einschließlich Fällen mit Standardnutzlast und benutzerdefinierter Nutzlast.
 
 > [!NOTE]
-> Zum Gewährleisten der Abwärtskompatibilität ist die Standard-Webhooknutzlast für Warnungen mit Azure Log Analytics identisch mit der [OMS-Warnungsverwaltung](../log-analytics/log-analytics-alerts-creating.md). Für Protokollwarnungen mit [Application Insights](../application-insights/app-insights-analytics.md) basiert die Standard-Webhooknutzlast aber auf dem Aktionsgruppenschema.
+> Zum Gewährleisten der Abwärtskompatibilität ist die Standard-Webhooknutzlast für Warnungen mit Azure Log Analytics identisch mit der [Log Analytics-Warnungsverwaltung](../log-analytics/log-analytics-alerts-creating.md). Für Protokollwarnungen mit [Application Insights](../application-insights/app-insights-analytics.md) basiert die Standard-Webhooknutzlast aber auf dem Aktionsgruppenschema.
 
 ### <a name="standard-webhook-for-log-alerts"></a>Standardwebhook für Protokollwarnungen 
 In beiden Beispielen wurde eine Pseudonutzlast mit nur zwei Spalten und zwei Zeilen angegeben.

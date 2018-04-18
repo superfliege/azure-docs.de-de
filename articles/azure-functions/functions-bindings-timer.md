@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: 89469af2b1d02ef00fc347e47719956885e7f142
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2bc2559dc1cf737e018895ffae61d0da0e56fc85
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -171,8 +171,8 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**type** | – | Muss auf „timerTrigger“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen.|
 |**direction** | – | Muss auf „in“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
 |**name** | – | Der Name der Variablen, die das Timerobjekt im Funktionscode darstellt. | 
-|**schedule**|**ScheduleExpression**|Ein [CRON-Ausdruck](#cron-expressions) oder ein [TimeSpan](#timespan)-Wert. `TimeSpan` kann nur für eine Funktionen-App verwendet werden, die in einem App Service-Plan ausgeführt wird. Sie können den Zeitplanausdruck in eine App-Einstellung einfügen und diese Eigenschaft auf den Namen der App-Einstellung festlegen, der wie in diesem Beispiel **%**-Zeichen als Wrapper verwendet: „%NameOfAppSettingWithScheduleExpression%“. |
-|**runOnStartup**|**RunOnStartup**|Wenn `true`, wird die Funktion beim Starten der Laufzeit aufgerufen. Die Laufzeit startet beispielsweise, wenn die Funktionen-App nach dem Leerlauf aufgrund von Inaktivität reaktiviert wird, wenn die Funktionen-App aufgrund von Funktionsänderungen neu gestartet wird und wenn die Funktionen-App horizontal hochskaliert wird. Deshalb sollte **runOnStartup** nur selten, wenn überhaupt, auf `true` festgelegt werden, da dadurch Code zu schwer vorhersehbaren Zeiten ausgeführt wird. Wenn Sie die Funktion außerhalb des Timerzeitplans auslösen müssen, können Sie eine zweite Funktion mit einem anderen Triggertyp erstellen, und den Code für beide Funktionen freigeben. Beispielsweise können Sie für ein Auslösen bei Bereitstellung [Ihre Bereitstellung so anpassen](https://github.com/projectkudu/kudu/wiki/Customizing-deployments), dass die zweite Funktion aufgerufen wird, indem eine HTTP-Anforderung nach Abschluss der Bereitstellung ausgegeben wird.|
+|**schedule**|**ScheduleExpression**|Ein [CRON-Ausdruck](#cron-expressions) oder ein [TimeSpan](#timespan)-Wert. `TimeSpan` kann nur für eine Funktionen-App verwendet werden, die in einem App Service-Plan ausgeführt wird. Sie können den Zeitplanausdruck in eine App-Einstellung einfügen und diese Eigenschaft auf den Namen der App-Einstellung festlegen, der wie in diesem Beispiel **%**-Zeichen als Wrapper verwendet: „%ScheduleAppSetting%“. |
+|**runOnStartup**|**RunOnStartup**|Wenn `true`, wird die Funktion beim Starten der Laufzeit aufgerufen. Die Laufzeit startet beispielsweise, wenn die Funktionen-App nach dem Leerlauf aufgrund von Inaktivität reaktiviert wird, wenn die Funktionen-App aufgrund von Funktionsänderungen neu gestartet wird und wenn die Funktionen-App horizontal hochskaliert wird. Deshalb sollte **runOnStartup** nur selten, wenn überhaupt, auf `true` festgelegt werden, da dadurch Code zu schwer vorhersehbaren Zeiten ausgeführt wird.|
 |**useMonitor**|**UseMonitor**|Legen Sie diese Eigenschaft auf `true` oder `false` fest, um anzugeben, ob der Zeitplan überwacht werden soll. Durch die Überwachung des Zeitplans werden Zeitplantermine beibehalten, mit deren Hilfe sichergestellt werden kann, dass der Zeitplan richtig eingehalten wird, selbst wenn Instanzen der Funktionen-App neu gestartet werden. Wenn diese Eigenschaft nicht explizit festgelegt wird, lautet der Standardwert `true` für Zeitpläne mit einem Wiederholungsintervall von mehr als einer Minute. Bei Zeitplänen, die mehr als einmal pro Minute ausgelöst werden, lautet der Standardwert `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -226,7 +226,7 @@ Die folgenden Beispiele zeigen CRON-Ausdrücke, die Sie für den Trigger mit Tim
 |"0 30 9 * * 1-5"|werktags um 9:30 Uhr|
 
 >[!NOTE]   
->Sie können Beispiele für CRON-Ausdrücke online finden, doch wird bei vielen das Feld `{second}` ausgelassen. Wenn Sie einen dieser Ausdrücke kopieren, fügen Sie das fehlende `{second}`-Feld hinzu. In der Regel sollte dieses Feld eine 0 (null) und kein Sternchen enthalten.
+>Sie können Beispiele für CRON-Ausdrücke online finden, doch wird bei vielen das Feld `{second}` ausgelassen. Wenn Sie einen dieser Ausdrücke kopieren, fügen das fehlende `{second}`-Feld hinzu. In der Regel sollte dieses Feld eine 0 (null) und kein Sternchen enthalten.
 
 ### <a name="cron-time-zones"></a>CRON-Zeitzonen
 
@@ -266,7 +266,7 @@ Wenn eine Funktionen-App auf mehrere Instanzen horizontal hochskaliert wird, wir
 
 ## <a name="function-apps-sharing-storage"></a>Funktionen-Apps mit gemeinsamer Nutzung von Speicher
 
-Wenn Sie ein Speicherkonto für mehrere Funktionen-Apps verwenden, stellen Sie sicher, dass jede Funktionen-App einen anderen Wert für `id` in *host.json* aufweist. Sie können die `id`-Eigenschaft auslassen oder `id` für jede Funktionen-App manuell auf einen anderen Wert festlegen. Der Trigger mit Timer verwendet eine Speichersperre, um sicherzustellen, dass nur eine Timer-Instanz vorhanden ist, wenn eine Funktionen-App auf mehrere Instanzen horizontal hochskaliert wird. Wenn zwei Funktionen-Apps denselben `id`-Wert aufweisen und beide einen Trigger mit Timer verwenden, wird nur ein Timer ausgeführt.
+Wenn Sie ein Speicherkonto für mehrere Funktionen-Apps verwenden, stellen Sie sicher, dass jede Funktionen-App einen anderen Wert für `id` in *host.json* aufweist. Sie können die `id`-Eigenschaft auslassen oder `id` für jede Funktionen-App manuell auf einen anderen Wert festlegen. Der Trigger mit Timer verwendet eine Speichersperre, um sicherzustellen, dass nur eine Timerinstanz vorhanden ist, wenn eine Funktions-App auf mehrere Instanzen horizontal hochskaliert wird. Wenn zwei Funktionen-Apps denselben `id`-Wert aufweisen und beide einen Trigger mit Timer verwenden, wird nur ein Timer ausgeführt.
 
 ## <a name="retry-behavior"></a>Wiederholungsverhalten
 

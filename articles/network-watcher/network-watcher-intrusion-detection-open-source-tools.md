@@ -1,11 +1,11 @@
 ---
-title: "Durchführen der Erkennung von Netzwerkangriffen mit Azure Network Watcher und Open Source-Tools | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie Azure Network Watcher und Open Source-Tools zum Durchführen der Erkennung von Netzwerkangriffen verwenden."
+title: Durchführen der Erkennung von Netzwerkangriffen mit Azure Network Watcher und Open Source-Tools | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie Azure Network Watcher und Open Source-Tools zum Durchführen der Erkennung von Netzwerkangriffen verwenden.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Durchführen der Erkennung von Netzwerkangriffen mit Network Watcher und Open Source-Tools
 
 Paketerfassungen sind eine wichtige Komponente zum Implementieren von Systemen zur Erkennung von Netzwerkangriffen (Intrusion Detection Systems, IDS) und Durchführen der Sicherheitsüberwachung für Netzwerke (Network Security Monitoring, NSM). Es gibt mehrere Open Source-Tools für den IDS-Bereich, mit denen Paketerfassungen verarbeitet werden können und nach Signaturen von möglichen Netzwerkangriffen und schädlichen Aktivitäten gesucht werden kann. Mit den von Network Watcher bereitgestellten Paketerfassungen können Sie Ihr Netzwerk im Hinblick auf schädliche Eindringversuche oder Sicherheitsrisiken analysieren.
 
-Ein Open Source-Tool dieser Art ist Suricata. Es handelt sich um eine IDS-Engine, bei der Regelsätze zum Überwachen von Netzwerkdatenverkehr verwendet und Warnungen ausgelöst werden, wenn verdächtige Ereignisse eintreten. Suricata verfügt über eine Multithread-Engine, mit der Analysen des Netzwerkdatenverkehrs mit erhöhter Geschwindigkeit und Effizienz durchgeführt werden können. Weitere Details zu Suricata und seinen Funktionen finden Sie auf der entsprechenden Website unter „https://suricata-ids.org/“.
+Ein Open Source-Tool dieser Art ist Suricata. Es handelt sich um eine IDS-Engine, bei der Regelsätze zum Überwachen von Netzwerkdatenverkehr verwendet und Warnungen ausgelöst werden, wenn verdächtige Ereignisse eintreten. Suricata verfügt über eine Multithread-Engine, mit der Analysen des Netzwerkdatenverkehrs mit erhöhter Geschwindigkeit und Effizienz durchgeführt werden können. Weitere Details zu Suricata und seinen Funktionen finden Sie auf der entsprechenden Website unter https://suricata-ids.org/.
 
 ## <a name="scenario"></a>Szenario
 
@@ -38,7 +38,7 @@ Beide Open Source-Tools können auf einem virtuellen Azure-Computer eingerichtet
 
 ### <a name="install-suricata"></a>Installieren von Suricata
 
-Eine Beschreibung aller anderen Installationsmethoden finden Sie unter „http://suricata.readthedocs.io/en/latest/install.html“.
+Informationen zu allen anderen Installationsmethoden finden Sie unter http://suricata.readthedocs.io/en/latest/install.html
 
 1. Führen Sie im Befehlszeilenterminal Ihrer VM die folgenden Befehle aus:
 

@@ -1,21 +1,21 @@
 ---
-title: Überwachen der Azure SQL-Datensynchronisierung (Vorschauversion) mit OMS Log Analytics | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie die Azure SQL-Datensynchronisierung (Vorschauversion) mithilfe von OMS Log Analytics überwachen.
+title: Überwachen der Azure SQL-Datensynchronisierung (Vorschauversion) mit Log Analytics | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die Azure SQL-Datensynchronisierung (Vorschauversion) mithilfe von Log Analytics überwachen.
 services: sql-database
-ms.date: 11/07/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: c106d5bbea118c9b78cbccee187b8eb5c347f232
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1b22b4ddf9fa4880b814efc3f8c3f1fc6ec7d141
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>Überwachen der SQL-Datensynchronisierung (Vorschau) mit OMS Log Analytics 
+# <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>Überwachen der SQL-Datensynchronisierung (Vorschauversion) mit Log Analytics 
 
 Zur Überprüfung des Aktivitätsprotokolls der SQL-Datensynchronisierung sowie zur Erkennung von Fehlern und Warnungen mussten Sie bislang die SQL-Datensynchronisierung manuell im Azure-Portal überprüfen oder hierfür PowerShell oder die REST-API verwenden. Mit den Schritten in diesem Artikel können Sie eine benutzerdefinierte Lösung konfigurieren, die die Überwachung der Datensynchronisierung verbessert. Diese Lösung kann an Ihr individuelles Szenario angepasst werden.
 
@@ -23,27 +23,27 @@ Eine Übersicht über die SQL-Datensynchronisierung finden Sie unter [Synchronis
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Überwachungsdashboard für alle Synchronisierungsgruppen 
 
-Bei der Suche nach Problemen müssen Sie nun nicht mehr die Protokolle der einzelnen Synchronisierungsgruppen durchgehen. Mit einer benutzerdefinierten OMS-Ansicht (Operations Management Suite) können Sie alle Ihre Synchronisierungsgruppen aus allen Ihren Abonnements zentral überwachen. Diese Ansicht enthält die Informationen, die für Kunden der SQL-Datensynchronisierung relevant sind.
+Bei der Suche nach Problemen müssen Sie nun nicht mehr die Protokolle der einzelnen Synchronisierungsgruppen durchgehen. Mit einer benutzerdefinierten Log Analytics-Ansicht können Sie alle Ihre Synchronisierungsgruppen aus allen Ihren Abonnements zentral überwachen. Diese Ansicht enthält die Informationen, die für Kunden der SQL-Datensynchronisierung relevant sind.
 
 ![Dashboard zur Überwachung der Datensynchronisierung](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>Automatische E-Mail-Benachrichtigungen
 
-Die Protokolle müssen nicht mehr manuell im Azure-Portal, über PowerShell oder mithilfe der REST-API geprüft werden. Mit [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) können Sie Warnungen erstellen, die direkt an die E-Mail-Adressen der Benutzer gesendet werden, die beim Auftreten eines Fehlers informiert werden müssen.
+Die Protokolle müssen nicht mehr manuell im Azure-Portal, über PowerShell oder mithilfe der REST-API geprüft werden. Mit [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) können Sie Warnungen erstellen, die direkt an die E-Mail-Adressen der Benutzer gesendet werden, die beim Auftreten eines Fehlers informiert werden müssen.
 
 ![E-Mail-Benachrichtigungen für die Datensynchronisierung](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
 ## <a name="how-do-you-set-up-these-monitoring-features"></a>Wie richten Sie diese Überwachungsfunktionen ein? 
 
-Mit den folgenden Schritten implementieren Sie in weniger als einer Stunde eine benutzerdefinierte OMS-Überwachungslösung für die SQL-Datensynchronisierung.
+Mit den folgenden Schritten implementieren Sie in weniger als einer Stunde eine benutzerdefinierte Log Analytics-Überwachungslösung für die SQL-Datensynchronisierung.
 
 Sie müssen drei Komponenten konfigurieren:
 
--   Ein PowerShell-Runbook zur Übertragung von Protokolldaten der SQL-Datensynchronisierung an die OMS
+-   Ein PowerShell-Runbook zur Übertragung von Protokolldaten der SQL-Datensynchronisierung an Log Analytics
 
--   Eine OMS Log Analytics-Warnung für E-Mail-Benachrichtigungen
+-   Eine Log Analytics-Warnung für E-Mail-Benachrichtigungen
 
--   Eine OMS-Ansicht für die Überwachung
+-   Eine Log Analytics-Ansicht für die Überwachung
 
 ### <a name="samples-to-download"></a>Beispiele zum Herunterladen
 
@@ -51,7 +51,7 @@ Laden Sie die beiden folgenden Beispiele herunter:
 
 -   [PowerShell-Runbook für das Protokoll der Datensynchronisierung](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [OMS-Ansicht für das Protokoll der Datensynchronisierung](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Log Analytics-Ansicht für die Datensynchronisierung](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -59,11 +59,11 @@ Folgendes muss bereits eingerichtet sein:
 
 -   Ein Azure Automation-Konto
 
--   Log Analytics-Verknüpfung mit einem OMS-Arbeitsbereich
+-   Log Analytics-Arbeitsbereich
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>PowerShell-Runbook zum Abrufen des Protokolls der SQL-Datensynchronisierung 
 
-Verwenden Sie ein in Azure Automation gehostetes PowerShell-Runbook, um die Protokolldaten der SQL-Datensynchronisierung abzurufen und an die OMS zu senden. Ein Beispielskript steht zur Verfügung. Sie benötigen ein Azure Automation-Konto. Anschließend müssen Sie ein Runbook erstellen und dessen Ausführung planen. 
+Verwenden Sie ein in Azure Automation gehostetes PowerShell-Runbook, um die Protokolldaten der SQL-Datensynchronisierung abzurufen und an Log Analytics zu senden. Ein Beispielskript steht zur Verfügung. Sie benötigen ein Azure Automation-Konto. Anschließend müssen Sie ein Runbook erstellen und dessen Ausführung planen. 
 
 ### <a name="create-a-runbook"></a>Erstellen eines Runbooks
 
@@ -121,9 +121,9 @@ So planen Sie das Runbook:
 
 Um zu prüfen, ob die Automatisierung erwartungsgemäß funktioniert, suchen Sie in der **Übersicht** für Ihr Automation-Konto unter **Überwachung** nach der Ansicht **Auftragsstatistik**. Heften Sie diese Ansicht zur einfacheren Betrachtung an Ihr Dashboard an. Erfolgreiche Ausführungen des Runbooks werden als „Abgeschlossen“ angezeigt, nicht erfolgreiche als „Fehler“.
 
-## <a name="create-an-oms-log-reader-alert-for-email-notifications"></a>Erstellen einer OMS-Protokollleserwarnung für E-Mail-Benachrichtigungen
+## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Erstellen einer Log Analytics-Leserwarnung für E-Mail-Benachrichtigungen
 
-Gehen Sie wie im Anschluss beschrieben vor, um eine auf OMS Log Analytics basierende Warnung zu erstellen. Hierzu muss Log Analytics bereits mit einem OMS-Arbeitsbereich verknüpft sein.
+Gehen Sie wie im Anschluss beschrieben vor, um eine auf Log Analytics basierende Warnung zu erstellen. Hierzu muss Log Analytics bereits mit einem Log Analytics-Arbeitsbereich verknüpft sein.
 
 1.  Klicken Sie im OMS-Portal auf **Protokollsuche**.
 
@@ -179,7 +179,7 @@ In den meisten Fällen ist diese Lösung kostenlos.
 
 **Azure Automation:** Je nach Verwendung fallen unter Umständen Kosten im Zusammenhang mit dem Azure Automation-Konto an. Pro Monat sind jeweils die ersten 500 Minuten der Auftragsausführungszeit kostenlos. In den meisten Fällen kommt diese Lösung mit weniger als 500 Minuten pro Monat aus. Verwenden Sie zur Vermeidung von Gebühren ein Runbook-Ausführungsintervall von mindestens zwei Stunden. Weitere Informationen finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
 
-**OMS Log Analytics:** Je nach Verwendung fallen unter Umständen Kosten für die OMS an. Im Free-Tarif sind 500 MB an erfassten Daten pro Tag enthalten. In den meisten Fällen erfasst diese Lösung weniger als 500 MB pro Tag. Filtern Sie ggf. nur nach Fehlern, um den Verbrauch zu senken. Ein entsprechender Filter ist im Runbook enthalten. Sollten Sie pro Tag mehr als 500 MB benötigen, führen Sie ein Upgrade auf den kostenpflichtigen Tarif durch, um zu vermeiden, dass die Analyse bei Erreichen des Limits beendet wird. Weitere Informationen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Log Analytics:** Je nach Verwendung fallen unter Umständen Kosten für Log Analytics an. Im Free-Tarif sind 500 MB an erfassten Daten pro Tag enthalten. In den meisten Fällen erfasst diese Lösung weniger als 500 MB pro Tag. Filtern Sie ggf. nur nach Fehlern, um den Verbrauch zu senken. Ein entsprechender Filter ist im Runbook enthalten. Sollten Sie pro Tag mehr als 500 MB benötigen, führen Sie ein Upgrade auf den kostenpflichtigen Tarif durch, um zu vermeiden, dass die Analyse bei Erreichen des Limits beendet wird. Weitere Informationen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Codebeispiele
 
@@ -187,7 +187,7 @@ Die in diesem Artikel beschriebenen Codebeispiele können Sie unter den folgende
 
 -   [PowerShell-Runbook für das Protokoll der Datensynchronisierung](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [OMS-Ansicht für das Protokoll der Datensynchronisierung](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Log Analytics-Ansicht für die Datensynchronisierung](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:

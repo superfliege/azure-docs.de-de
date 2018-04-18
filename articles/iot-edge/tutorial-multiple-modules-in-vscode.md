@@ -9,20 +9,19 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0ea2dc723c674e7119b6ef38771a73ff4c11e98d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6c94701507f86f6ecab2875f952215cc3e4cc719
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="develop-an-iot-edge-solution-with-multiple-modules-in-visual-studio-code---preview"></a>Entwickeln einer IoT Edge-Projektmappe mit mehreren Modulen in Visual Studio Code – Vorschau
-Sie können Visual Studio Code verwenden, um Ihre IoT Edge-Projektmappe mit mehreren Modulen zu entwickeln. Dieses Tutorial führt Sie durch das Erstellen, Aktualisieren und Bereitstellen einer IoT Edge-Projektmappe, die einfach Sensordaten des simulierten IoT Edge-Geräts in Visual Studio Code weiterleitet. In diesem Tutorial lernen Sie Folgendes:
+Sie können Visual Studio Code verwenden, um Ihre IoT Edge-Projektmappe mit mehreren Modulen zu entwickeln. In diesem Artikel wird Schritt für Schritt das Erstellen, Aktualisieren und Bereitstellen einer IoT Edge-Projektmappe beschrieben, die Sensordaten des simulierten IoT Edge-Geräts in Visual Studio Code weiterleitet. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Verwenden von Visual Studio Code zum Erstellen einer IoT Edge-Projektmappe
-> * Verwenden von VS Code zum Hinzufügen eines neuen Moduls zu Ihrer funktionierenden IoT Edge-Projektmappe. 
-> * Bereitstellen der IoT Edge-Projektmappe (mehrere Module) auf Ihrem IoT Edge-Gerät
-> * Anzeigen generierter Daten
+* Verwenden von Visual Studio Code zum Erstellen einer IoT Edge-Projektmappe
+* Verwenden von VS Code zum Hinzufügen eines neuen Moduls zu Ihrer funktionierenden IoT Edge-Projektmappe. 
+* Bereitstellen der IoT Edge-Projektmappe (mehrere Module) auf Ihrem IoT Edge-Gerät
+* Anzeigen generierter Daten
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Absolvieren der unten genannten Tutorials
@@ -67,8 +66,7 @@ Sie können Visual Studio Code verwenden, um Ihre IoT Edge-Projektmappe mit mehr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine IoT Edge-Projektmappe mit einem C#-Modul erstellt, später haben Sie ein Funktionsmodul hinzugefügt, die Routen für die Projektmappe aktualisiert, sie erstellt und auf Ihrem simulierten IoT Edge-Gerät bereitgestellt. Sie können mit einem der beiden folgenden Tutorials fortfahren, um andere Szenarien bei der Entwicklung von Azure IoT Edge in VSCode kennenzulernen.
+Sie können mit einem der beiden folgenden Artikel fortfahren, um andere Szenarien bei der Entwicklung von Azure IoT Edge in Visual Studio Code kennenzulernen:
 
-> [!div class="nextstepaction"]
-> [Debuggen eines C#-Moduls in VS Code](how-to-vscode-debug-csharp-module.md)
-> [Debuggen einer C#-Funktion in VS Code](how-to-vscode-debug-azure-function.md)
+* [Verwenden von Visual Studio Code zum Debuggen eines C#-Moduls mit Azure IoT Edge](how-to-vscode-debug-csharp-module.md)
+* [Verwenden von Visual Studio Code zum Debuggen von Azure Functions mit Azure IoT Edge](how-to-vscode-debug-azure-function.md)

@@ -8,21 +8,21 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: c596006e33c2c4f0228c14a65f58e82bcf300727
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d19087743740799ec9972bed7a602073afea9f26
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank
 
 Beim Erstellen und Bereitstellen von hoch verfügbaren Diensten für Azure SQL-Datenbank verwenden Sie [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md), um Resilienz bei regionalen Ausfällen und schwerwiegenden Fehlern bereitzustellen. Zudem wird eine schnelle Wiederherstellung in den sekundären Datenbanken ermöglicht. Dieser Artikel konzentriert sich auf gängige Anwendungsmuster und erörtert die Vor- und Nachteile der einzelnen Optionen. Informationen zur Verwendung der aktiven Georeplikation mit Pools für elastische Datenbanken finden Sie unter [Strategien zur Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 > [!NOTE]
-> Wenn Sie Premium-Datenbanken und -Pools verwenden, können Sie sie resistent gegenüber regionalen Ausfällen machen, indem Sie sie auf die Konfiguration der zonenredundanten Bereitstellung umstellen (derzeit in der Vorschauphase). Informationen finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).  
+> Wenn Sie Premium-Datenbanken, unternehmenskritische Datenbanken (Vorschauversion) oder Pools für elastische Datenbanken verwenden, können Sie sie resistent gegenüber regionalen Ausfällen machen, indem Sie sie auf die Konfiguration der zonenredundanten Bereitstellung umstellen (derzeit in der Vorschauphase). Informationen finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).  
 
 ## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Szenario 1: Verwenden von zwei Azure-Regionen für die Geschäftskontinuität mit minimalen Ausfallzeiten
 In diesem Szenario weist die Anwendung die folgenden Merkmale auf: 

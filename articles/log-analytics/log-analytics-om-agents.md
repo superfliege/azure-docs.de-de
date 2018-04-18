@@ -1,11 +1,11 @@
 ---
 title: Herstellen einer Verbindung zwischen Operations Manager und Log Analytics | Microsoft Docs
-description: "Zur Bewahrung Ihrer bisherigen Investitionen in System Center Operations Manager sowie zur Nutzung erweiterter Funktionen mit Log Analytics können Sie Operations Manager mit Ihrem OMS-Arbeitsbereich verknüpfen."
+description: Zur Bewahrung Ihrer bisherigen Investitionen in System Center Operations Manager sowie zur Nutzung erweiterter Funktionen mit Log Analytics können Sie Operations Manager mit Ihrem OMS-Arbeitsbereich verknüpfen.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
 ms.service: log-analytics
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/10/2017
 ms.author: magoedte
 ms.openlocfilehash: 6db47c7baa0a345a32d26d56e843acd0204ae50b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Herstellen einer Verbindung zwischen Operations Manager und Log Analytics
 Zur Bewahrung Ihrer bisherigen Investitionen in System Center Operations Manager sowie zur Nutzung erweiterter Funktionen mit Log Analytics können Sie Operations Manager mit Ihrem OMS-Arbeitsbereich verknüpfen.  Die Kombination der Möglichkeiten von OMS mit den Vorteilen von Operations Manager ermöglicht Folgendes:
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, wenn sich zwischen Verwaltungsgruppe und
 1. Öffnen Sie die Operations Manager-Konsole, und wählen Sie den Arbeitsbereich **Administration** aus.
 2. Erweitern Sie „Operations Management Suite“, und klicken Sie auf **Verbindungen**.
 3. Klicken Sie in der Ansicht „OMS-Verbindung“ auf **Proxyserver konfigurieren**.
-4. Wählen Sie auf der Seite **Operations Management Suite Wizard: Proxy Server (Operations Management Suite-Assistent: Proxyserver)** die Option **Proxyserver für Zugriff auf Operations Management Suite verwenden** aus, geben Sie die URL mit der Portnummer ein (z.B. http://corpproxy:80), und klicken Sie anschließend auf **Fertig stellen**.
+4. Wählen Sie auf der Seite **Operations Management Suite Wizard: Proxy Server** (Operations Management Suite-Assistent: Proxyserver) die Option **Proxyserver für Zugriff auf Operations Management Suite verwenden** aus, geben Sie die URL mit der Portnummer ein (z.B. http://corpproxy:80), und klicken Sie anschließend auf **Fertig stellen**.
 
 Falls Ihr Proxyserver eine Authentifizierung erfordert, führen Sie die folgenden Schritte aus, um Anmeldeinformationen und Einstellungen zu konfigurieren, die an verwaltete Computer weitergegeben werden müssen, die in der Verwaltungsgruppe Daten an OMS melden.
 

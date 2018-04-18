@@ -1,11 +1,11 @@
 ---
 title: Erstellen und Verwalten virtueller Windows-Computer in Azure mit mehreren Netzwerkkarten | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie über Azure PowerShell oder mithilfe von Resource Manager-Vorlagen einen virtuellen Windows-Computer mit mehreren angefügten Netzwerkkarten erstellen und verwalten."
+description: Erfahren Sie, wie Sie über Azure PowerShell oder mithilfe von Resource Manager-Vorlagen einen virtuellen Windows-Computer mit mehreren angefügten Netzwerkkarten erstellen und verwalten.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 9bff5b6d-79ac-476b-a68f-6f8754768413
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: fab9f4ab1f0e974da68e1e9f36bc10687ea0b631
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 0f19ed89e49b34ff4b8abf5d22e7d59b89fd6d72
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Erstellen und Verwalten eines virtuellen Windows-Computers mit mehrere Netzwerkkarten
 Virtuelle Computer (VMs) in Azure können über mehrere virtuelle Netzwerkkarten (Network Interface Cards, NICs) verfügen. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Außerdem erfahren Sie, wie Sie Netzwerkkarten zu einem vorhandenen virtuellen Computer hinzufügen oder davon entfernen. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
@@ -116,11 +116,13 @@ Beginnen Sie jetzt damit, Ihre VM-Konfiguration zu erstellen. Jede VM-Größe we
     $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
     ```
 
-5. Erstellen Sie dann Ihren virtuellen Computer mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm):
+5. Erstellen Sie Ihren virtuellen Computer mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm):
 
     ```powershell
     New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
     ```
+
+6. Fügen Sie Routen für sekundäre NICs zum Betriebssystem hinzu. Führen Sie dazu die Schritte unter [Erstellen und Verwalten eines virtuellen Windows-Computers mit mehreren Netzwerkkarten](#configure-guest-os-for-multiple-nics) aus.
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>Hinzufügen einer Netzwerkkarte auf einem vorhandenen virtuellen Computer
 Wenn Sie einem vorhandenen virtuellen Computer eine virtuelle Netzwerkkarte hinzufügen möchten, heben Sie die Zuordnung des virtuellen Computers auf, fügen Sie die virtuelle Netzwerkkarte hinzu, und starten Sie anschließend den virtuellen Computer. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an. Bei Bedarf können Sie die [Größe eines virtuellen Computers ändern](resize-vm.md).
@@ -175,6 +177,8 @@ Wenn Sie einem vorhandenen virtuellen Computer eine virtuelle Netzwerkkarte hinz
     ```powershell
     Start-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
+
+5. Fügen Sie Routen für sekundäre NICs zum Betriebssystem hinzu. Führen Sie dazu die Schritte unter [Erstellen und Verwalten eines virtuellen Windows-Computers mit mehreren Netzwerkkarten](#configure-guest-os-for-multiple-nics) aus.
 
 ## <a name="remove-a-nic-from-an-existing-vm"></a>Entfernen einer Netzwerkkarte von einem vorhandenen virtuellen Computer
 Wenn Sie von einem vorhandenen virtuellen Computer eine virtuelle Netzwerkkarte entfernen möchten, heben Sie die Zuordnung des virtuellen Computers auf, entfernen Sie die virtuelle Netzwerkkarte, und starten Sie anschließend den virtuellen Computer.
@@ -232,6 +236,8 @@ Sie können einem Ressourcennamen auch mithilfe von `copyIndex()` eine Nummer an
 ```
 
 Hier finden Sie auch ein vollständiges Beispiel für das [Erstellen von mehreren Netzwerkkarten mithilfe von Resource Manager-Vorlagen](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
+
+Fügen Sie Routen für sekundäre NICs zum Betriebssystem hinzu. Führen Sie dazu die Schritte unter [Erstellen und Verwalten eines virtuellen Windows-Computers mit mehreren Netzwerkkarten](#configure-guest-os-for-multiple-nics) aus.
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurieren von Gastbetriebssystem für mehrere Netzwerkadapter
 

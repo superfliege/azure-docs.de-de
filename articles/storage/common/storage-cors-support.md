@@ -1,6 +1,6 @@
 ---
-title: "Unterstützung von Cross-Origin Resource Sharing (CORS) | Microsoft Docs"
-description: "Erfahren Sie, wie die CORS-Unterstützung für die Microsoft Azure Storage-Dienste aktiviert werden."
+title: Unterstützung von Cross-Origin Resource Sharing (CORS) | Microsoft Docs
+description: Erfahren Sie, wie die CORS-Unterstützung für die Microsoft Azure Storage-Dienste aktiviert werden.
 services: storage
 documentationcenter: .net
 author: cbrooksmsft
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste
 Ab Version 2013-08-15 unterstützen die Azure Storage-Dienste Cross-Origin Resource Sharing (CORS) für die Blob-, Tabellen-, Warteschlangen- und Dateidienste. CORS ist eine HTTP-Funktion, die einer Webanwendung in einer Domäne den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Webbrowser implementieren eine Sicherheitseinschränkung, die als [Same-Origin-Richtlinie](http://www.w3.org/Security/wiki/Same_Origin_Policy) (Richtlinie desselben Ursprungs) bezeichnet wird und verhindert, dass eine Webseite APIs in einer anderen Domäne aufruft. CORS bietet eine sichere Methode, einer Domäne (der Ursprungsdomäne) das Aufrufen von APIs in einer anderen Domäne zu ermöglichen. Informationen zu CORS finden Sie in der [CORS-Spezifikation](http://www.w3.org/TR/cors/).
@@ -86,7 +86,7 @@ Für CORS-Regeln gelten die folgenden Einschränkungen:
 * Die Länge eines zulässigen Headers oder Ursprungs bzw. eines verfügbar gemachten Headers sollte maximal 256 Zeichen betragen.
 * Zulässige und verfügbar gemachte Header können in folgender Form vorkommen:
   * Literale Header, bei denen der genaue Headername angegeben ist, z.B. **x-ms-meta-processed**. In der Anforderung können maximal 64 literale Header angegeben werden.
-  * Header mit Präfix, bei denen ein Präfix des Headers, z. B. angegeben ist ** X-ms-Meta-Data ***. Wird auf diese Weise ein Präfix angegeben, sind alle Header zulässig bzw. werden alle Header verfügbar gemacht, die mit dem angegebenen Präfix beginnen. In der Anforderung können maximal zwei Header mit Präfix angegeben werden.
+  * Header mit Präfix, bei denen ein Präfix des Headers angegeben ist, z.B. **x-ms-meta-data***. Wird auf diese Weise ein Präfix angegeben, sind alle Header zulässig bzw. werden alle Header verfügbar gemacht, die mit dem angegebenen Präfix beginnen. In der Anforderung können maximal zwei Header mit Präfix angegeben werden.
 * Die Methoden (oder HTTP-Verben), die im **AllowedMethods** -Element angegeben sind, müssen den Methoden entsprechen, die von Azure Storage-Dienst-APIs unterstützt werden. Unterstützte Methoden sind DELETE, GET, HEAD, MERGE, POST, OPTIONS und PUT.
 
 ## <a name="understanding-cors-rule-evaluation-logic"></a>Grundlagen zur Auswertungslogik für CORS-Regeln
@@ -167,7 +167,7 @@ Der folgenden Tabelle können Sie entnehmen, wie Azure Storage in den oben besch
 
 | Anforderung | Kontoeinstellung und Ergebnis der Regelauswertung |  |  | response |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Origin-Header für Anforderung vorhanden** |**CORS-Regel(n) für den Dienst angegeben** |**Abgleichsregel vorhanden, die alle origins(*) ermöglicht.** |**Abgleichsregel für genaue Übereinstimmung mit Ursprungsdomäne vorhanden** |**Antwort enthält Vary-Header, der auf "Origin" festgelegt ist** |**Antwort enthält Access-Control-Allowed-Origin: "*"** |**Antwort enthält Access-Control-Exposed-Header** |
+| **Origin-Header für Anforderung vorhanden** |**CORS-Regel(n) für den Dienst angegeben** |**Abgleichsregel vorhanden, die alle Ursprungsdomänen zulässt (*)** |**Abgleichsregel für genaue Übereinstimmung mit Ursprungsdomäne vorhanden** |**Antwort enthält Vary-Header, der auf "Origin" festgelegt ist** |**Antwort enthält „Access-Control-Allowed-Origin“: "*"** |**Antwort enthält Access-Control-Exposed-Header** |
 | Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |
 | Nein  |Ja |Nein  |Nein  |Ja |Nein  |Nein  |
 | Nein  |Ja |Ja |Nein  |Nein  |Ja |Ja |

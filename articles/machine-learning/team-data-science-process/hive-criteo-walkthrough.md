@@ -1,8 +1,8 @@
 ---
 title: 'Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset | Microsoft-Dokumentation'
-description: "Verwenden des Team Data Science-Prozesses für ein vollständiges Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells unter Verwendung eines (1 TB) großen öffentlich zugänglichen Datasets"
+description: Verwenden des Team Data Science-Prozesses für ein vollständiges Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells unter Verwendung eines (1 TB) großen öffentlich zugänglichen Datasets
 services: machine-learning,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev
 ms.openlocfilehash: 760e08643fb3e71478fc899278591569da1d515b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset
 
@@ -62,7 +62,7 @@ In dieser exemplarischen Vorgehensweise werden zwei beispielhafte Vorhersageprob
 
 Richten Sie Ihre Azure Data Science-Umgebung ein, um in drei Schritten Lösungen für Vorhersageanalysen mit HDInsight-Clustern zu erstellen:
 
-1. [Erstellen eines Speicherkontos:](../../storage/common/storage-create-storage-account.md)Mit diesem Speicherkonto werden Daten im Azure-Blob-Speicher gespeichert. Die in HDInsight-Clustern verwendeten Daten werden hier gespeichert.
+1. [Erstellen eines Speicherkontos:](../../storage/common/storage-create-storage-account.md)Mit diesem Speicherkonto werden Daten in Azure Blob Storage gespeichert. Die in HDInsight-Clustern verwendeten Daten werden hier gespeichert.
 2. [Anpassen von Azure HDInsight Hadoop-Clustern für Data Science:](customize-hadoop-cluster.md)Mit diesem Schritt wird ein Azure HDInsight Hadoop-Cluster mit 64-Bit-Anaconda Python 2.7 auf allen Knoten erstellt. Beim Anpassen des HDInsight-Clusters müssen zwei (in diesem Thema beschriebene) wichtige Schritte durchgeführt werden.
    
    * Verknüpfen Sie das in Schritt 1 erstellte Speicherkonto mit dem HDInsight-Cluster. Mit diesem Speicherkonto wird auf Daten zugegriffen, die innerhalb des Clusters verarbeitet werden können.
@@ -76,7 +76,7 @@ Um auf das [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-log
 
 Klicken Sie auf **Download fortsetzen** , um weitere Informationen über das DataSet und seine Verfügbarkeit zu erhalten.
 
-Die Daten befinden sich an einem öffentlichen [Azure Blob Storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)-Speicherort: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "wasb" bezieht sich auf den Azure-Blob-Speicherort. 
+Die Daten befinden sich an einem öffentlichen [Azure Blob Storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)-Speicherort: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. „wasb“ bezieht sich auf den Speicherort in Azure Blob Storage. 
 
 1. Die Daten in diesem öffentlichen Blob-Speicher bestehen aus drei untergeordneten Ordnern mit extrahierten Daten.
    
@@ -437,7 +437,7 @@ Für das Modul **Daten importieren** sind die Werte der in der Grafik enthaltene
 
 1. Auswählen von „Hive-Abfrage“ als **Datenquelle**
 2. Im Feld **Hive database query** reicht „SELECT * FROM <Name_Ihrer_\_Datenbank\_.Name_Ihrer\_Tabelle\_> -“ aus.
-3. **Hcatalog-Server-URI**: Wenn Ihr Cluster „abc“ ist, lautet dieser einfach: https://abc.azurehdinsight.net
+3. **Hcatalog-Server-URI**: Wenn Ihr Cluster „abc“ ist, lautet dieser einfach: https://abc.azurehdinsight.net.
 4. **Hadoop user account name**: Der bei der Bereitstellung des Clusters ausgewählte Benutzername. (NICHT der Benutzername für den Remotezugriff!)
 5. **Hadoop-Benutzerkontokennwort**: Das Kennwort für den bei der Bereitstellung des Clusters ausgewählten Benutzernamen. (NICHT das Kennwort für den Remotezugriff!)
 6. **Speicherort der Ausgabedaten**: Wählen Sie „Azure“ aus.
@@ -456,7 +456,7 @@ Um das gespeicherte DataSet für die Verwendung in einem Machine Learning-Experi
 ![Ziehen des Datasets in den Hauptbereich](./media/hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
-> Dies gilt sowohl für Trainings- als auch Test-DataSets. Achten Sie außerdem darauf, den Datenbanknamen und die Tabellennamen zu verwenden, die Sie für diesen Zweck angegeben haben. Die in der Abbildung verwendeten Werte dienen lediglich zur Veranschaulichung.\**\
+> Dies gilt sowohl für Trainings- als auch Test-DataSets. Achten Sie außerdem darauf, den Datenbanknamen und die Tabellennamen zu verwenden, die Sie für diesen Zweck angegeben haben. Die in der Abbildung verwendeten Werte dienen lediglich zur Veranschaulichung.**
 > 
 > 
 
@@ -613,7 +613,7 @@ Nach dem Veröffentlichen des der Webdienstes werden Sie auf eine Seite weiterge
 Auf der linken Seite befinden sich zwei Links zu Webdiensten:
 
 * Der **REQUEST/RESPONSE**-Dienst (RRS) für einzelne Vorhersagen, der in diesem Workshop verwendet wurde.
-* Der **BATCH EXECUTION** -Dienst (BES) wird für Stapelvorhersagen verwendet und setzt voraus, dass sich die Eingabedaten für Vorhersagen in einem Azure-BLOB-Speicher befinden.
+* Der **BATCH EXECUTION**-Dienst (BES) wird für Stapelvorhersagen verwendet und setzt voraus, dass sich die Eingabedaten für Vorhersagen in Azure Blob Storage befinden.
 
 Wenn Sie auf den Link **REQUEST/RESPONSE** klicken, gelangen Sie zu einer Seite mit vorprogrammiertem Code in C#, Python und R. Dieser Code kann problemlos für Aufrufe an den Webdienst verwendet werden. Beachten Sie, dass der API-Schlüssel auf dieser Seite für die Authentifizierung verwendet werden muss.
 

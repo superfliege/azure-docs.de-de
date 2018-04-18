@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 4598267e92716529774f42d22ab7c47d944d4495
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 537213fdf106da1c07d549d65b1d8cf71887db9f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Überblick über Metriken in Microsoft Azure
 In diesem Artikel wird beschrieben, was Metriken in Microsoft Azure sind, welche Vorteile sie haben und wie Sie mit deren Nutzung beginnen.  
@@ -47,7 +47,7 @@ Weitere Funktionen:
 
 * Konfigurieren einer **Warnungsregel für eine Metrik, die eine Benachrichtigung sendet oder eine automatisierte Aktion ausführt**, sobald der Metrikwert einen von Ihnen festgelegten Schwellenwert überschreitet. Die automatische Skalierung ist eine besondere automatisierte Aktion, mit der Sie Ihre Ressource horizontal hochskalieren können, um die auf Ihrer Website oder Ihren Computeressourcen eingehenden Anforderungen oder Lasten zu bewältigen. Sie können eine Regel für die automatische Skalierung konfigurieren, die das horizontale Hoch- und Herunterskalieren auslöst, sobald eine Metrik einen bestimmten Schwellenwert überschreitet.
 
-* **Leiten** Sie alle Metriken an Application Insights oder Log Analytics (OMS) weiter, um unmittelbare Analysen, Suchen und benutzerdefinierte Warnungen für von Ihren Ressourcen gesendete Metrikdaten zu ermöglichen. Sie können auch Metriken an einen Event Hub streamen, wodurch Sie sie dann an Azure Stream Analytics oder benutzerdefinierte Apps weiterleiten können, um Analysen nahezu in Echtzeit durchführen zu können. Event Hub-Streaming wird mit Diagnoseeinstellungen eingerichtet.
+* **Leiten** Sie alle Metriken an Application Insights oder Log Analytics weiter, um unmittelbare Analysen, Suchen und benutzerdefinierte Warnungen für von Ihren Ressourcen gesendete Metrikdaten zu ermöglichen. Sie können auch Metriken an einen Event Hub streamen, wodurch Sie sie dann an Azure Stream Analytics oder benutzerdefinierte Apps weiterleiten können, um Analysen nahezu in Echtzeit durchführen zu können. Event Hub-Streaming wird mit Diagnoseeinstellungen eingerichtet.
 
 * **Archivieren Sie Metriken im Speicher**, um sie länger aufzubewahren oder zur Erstellung von Offlineberichten zu verwenden. Sie können Ihre Metriken an Azure Blob Storage weiterleiten, wenn Sie die Diagnoseeinstellungen für Ihre Ressource konfigurieren.
 
@@ -100,11 +100,18 @@ Auf Azure-Metriken kann über Azure Monitor-APIs zugegriffen werden. Es gibt zwe
 Eine ausführliche exemplarische Vorgehensweise unter Verwendung der Azure Monitor-REST-APIs finden Sie unter [Exemplarische Vorgehensweise zur Azure Monitor-REST-API](monitoring-rest-api-walkthrough.md).
 
 ## <a name="export-metrics"></a>Exportieren von Metriken
-Die Exportoptionen für Metriken können Sie auf der Registerkarte **Monitor** auf dem Blatt **Diagnoseprotokolle** anzeigen. Sie können Metriken (und Diagnoseprotokolle) zum Weiterleiten an Blob Storage, Azure Event Hubs oder OMS für die Anwendungsfälle auswählen, die wir zuvor in diesem Artikel erwähnt haben.
+Die Exportoptionen für Metriken können Sie auf der Registerkarte **Monitor** auf dem Blatt **Diagnoseprotokolle** anzeigen. Sie können Metriken (und Diagnoseprotokolle) zum Weiterleiten an Blob Storage, Azure Event Hubs oder Log Analytics für die Anwendungsfälle auswählen, die zuvor in diesem Artikel erwähnt wurden.
 
  ![Exportoptionen für Metriken in Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview3.png)
 
 Dies können Sie über Resource Manager-Vorlagen, [PowerShell](insights-powershell-samples.md), die [Azure CLI](insights-cli-samples.md) oder [REST-APIs](https://msdn.microsoft.com/library/dn931943.aspx) konfigurieren.
+
+> [!NOTE]
+> Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
+>
+> *Beispiel:* Die Metrik „Eingehende Nachrichten“ eines Event Hubs kann auf einer warteschlangenspezifischen Ebene untersucht und in einem Diagramm dargestellt werden. Wenn Sie die Metrik allerdings über die Diagnoseeinstellungen exportieren, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
+>
+>
 
 ## <a name="take-action-on-metrics"></a>Ausführen von Aktionen für Metriken
 Um Benachrichtigungen zu empfangen oder aufgrund von Metrikdaten automatisierte Aktionen auszuführen, können Sie Warnungsregeln oder Einstellungen für die automatische Skalierung konfigurieren.

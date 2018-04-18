@@ -1,11 +1,11 @@
 ---
 title: Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkkarten | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie mithilfe von Azure CLI 2.0 oder mithilfe von Resource Manager-Vorlagen einen virtuellen Linux-Computer mit mehreren angefügten Netzwerkkarten erstellen."
+description: Erfahren Sie, wie Sie mithilfe von Azure CLI 2.0 oder mithilfe von Resource Manager-Vorlagen einen virtuellen Linux-Computer mit mehreren angefügten Netzwerkkarten erstellen.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 635d1373a51f2f2e4d4f7ab5053e520f5b9363a6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d981ffc9a0053ed8bf2d49f386f7c1c82d50c907
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten
 Sie können einen virtuellen Computer in Azure erstellen, an den mehrere Netzwerkkarten angefügt werden. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen und wie Sie Netzwerkkarten vorhandener virtueller Computer hinzufügen oder entfernen. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
@@ -100,6 +100,8 @@ az vm create \
     --nics myNic1 myNic2
 ```
 
+Fügen Sie dem Gastbetriebssystem Routingtabellen hinzu, indem Sie die Schritte unter [Konfigurieren des Gastbetriebssystems für mehrere Netzwerkadapter](#configure-guest-os-for- multiple-nics) ausführen.
+
 ## <a name="add-a-nic-to-a-vm"></a>Hinzufügen einer Netzwerkkarte zu einem virtuellen Computer
 In den vorangegangenen Schritten wurde ein virtueller Computer mit mehreren Netzwerkkarten erstellt. Sie können mit Azure CLI 2.0 auch einem vorhandenen virtuellen Computer Netzwerkkarten hinzufügen. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an. Bei Bedarf können Sie die [Größe eines virtuellen Computers ändern](change-vm-size.md).
 
@@ -135,6 +137,8 @@ Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm#az_vm_start)
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
+
+Fügen Sie dem Gastbetriebssystem Routingtabellen hinzu, indem Sie die Schritte unter [Konfigurieren des Gastbetriebssystems für mehrere Netzwerkadapter](#configure-guest-os-for- multiple-nics) ausführen.
 
 ## <a name="remove-a-nic-from-a-vm"></a>Entfernen einer Netzwerkkarte von einem virtuellen Computer
 Um eine Netzwerkkarte von einem vorhandenen virtuellen Computer zu entfernen, heben Sie zunächst die Zuordnung des virtuellen Computers mit [az vm deallocate](/cli/azure/vm#az_vm_deallocate) auf. Im folgenden Beispiel wird die Zuordnung für den virtuellen Computer *myVM* aufgehoben:
@@ -179,6 +183,7 @@ Sie können auch `copyIndex()` verwenden und eine Zahl an einen Ressourcennamen 
 
 Ein vollständiges Beispiel finden Sie unter [Erstellen von mehreren Netzwerkkarten mithilfe von Resource Manager-Vorlagen](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
+Fügen Sie dem Gastbetriebssystem Routingtabellen hinzu, indem Sie die Schritte unter [Konfigurieren des Gastbetriebssystems für mehrere Netzwerkadapter](#configure-guest-os-for- multiple-nics) ausführen.
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurieren von Gastbetriebssystem für mehrere Netzwerkadapter
 Wenn Sie einem virtuellen Linux-Computer mehrere NICs hinzufügen, müssen Sie Routingregeln erstellen. Diese Regeln ermöglichen den virtuellen Computer das Senden und Empfangen von Datenverkehr, der zu einer bestimmten NIC gehört. Andernfalls kann Datenverkehr, der beispielsweise zu *eth1* gehört, von der definierten Standardroute nicht ordnungsgemäß verarbeitet werden.
@@ -190,7 +195,7 @@ echo "200 eth0-rt" >> /etc/iproute2/rt_tables
 echo "201 eth1-rt" >> /etc/iproute2/rt_tables
 ```
 
-Damit die Änderung dauerhaft ist und während der Netzwerkstapelaktivierung angewendet wird, bearbeiten Sie */etc/sysconfig/network-scipts/ifcfg-eth0* und */etc/sysconfig/network-scipts/ifcfg-eth1*. Ändern Sie die Zeile *NM_CONTROLLED=yes* in *NM_CONTROLLED=no*. Ohne diesen Schritt werden die zusätzlichen Regeln/das Routing nicht automatisch angewendet.
+Damit die Änderung dauerhaft ist und während der Netzwerkstapelaktivierung angewendet wird, bearbeiten Sie */etc/sysconfig/network-scripts/ifcfg-eth0* und */etc/sysconfig/network-scripts/ifcfg-eth1*. Ändern Sie die Zeile *NM_CONTROLLED=yes* in *NM_CONTROLLED=no*. Ohne diesen Schritt werden die zusätzlichen Regeln/das Routing nicht automatisch angewendet.
  
 Als Nächstes werden die Routingtabellen erweitert. Wir gehen von der folgenden Einrichtung aus:
 

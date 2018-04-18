@@ -1,8 +1,8 @@
 ---
-title: "Hinzufügen von HDInsight-Clusterverwaltungslösungen zu Azure Log Analytics | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mit Azure Log Analytics benutzerdefinierte Ansichten für HDInsight-Cluster erstellen."
+title: Hinzufügen von HDInsight-Clusterverwaltungslösungen zu Azure Log Analytics | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mit Azure Log Analytics benutzerdefinierte Ansichten für HDInsight-Cluster erstellen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: f8a073fbf40feaef97053bb1165d63bbca3e3feb
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ab959d2cdaf840a1a88a71a0b8f29d84a8979330
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="add-hdinsight-cluster-management-solutions-to-log-analytics"></a>Hinzufügen von HDInsight-Clusterverwaltungslösungen zu Log Analytics
 
-HDInsight bietet clusterspezifische Verwaltungslösungen, die Sie zu Azure Log Analytics hinzufügen können. [Verwaltungslösungen](../log-analytics/log-analytics-add-solutions.md) erweitern den Funktionsumfang der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) und stellen zusätzliche Daten und Analysetools für Log Analytics bereit. Diese Lösungen sammeln wichtige Leistungsmetriken aus Ihrem HDInsight-Cluster und stellen die Tools bereit, um die Metriken zu durchsuchen. Außerdem bieten diese Lösungen Visualisierungen und Dashboards für die meisten in HDInsight unterstützten Clustertypen. Anhand der mit der Lösung erfassten Kennzahlen können Sie benutzerdefinierte Überwachungsregeln und -warnungen erstellen. 
+HDInsight bietet clusterspezifische Verwaltungslösungen, die Sie zu Azure Log Analytics hinzufügen können. [Verwaltungslösungen](../log-analytics/log-analytics-add-solutions.md) erweitern den Funktionsumfang von Log Analytics und stellen zusätzliche Daten und Analysetools bereit. Diese Lösungen sammeln wichtige Leistungsmetriken aus Ihrem HDInsight-Cluster und stellen die Tools bereit, um die Metriken zu durchsuchen. Außerdem bieten diese Lösungen Visualisierungen und Dashboards für die meisten in HDInsight unterstützten Clustertypen. Anhand der mit der Lösung erfassten Kennzahlen können Sie benutzerdefinierte Überwachungsregeln und -warnungen erstellen. 
 
-In diesem Artikel erfahren Sie, wie Sie einem Operations Management Suite-Arbeitsbereich clusterspezifische Verwaltungslösungen hinzufügen.
+In diesem Artikel erfahren Sie, wie Sie einem Log Analytics-Arbeitsbereich clusterspezifische Verwaltungslösungen hinzufügen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,15 +33,15 @@ In diesem Artikel erfahren Sie, wie Sie einem Operations Management Suite-Arbeit
 
 ## <a name="add-cluster-specific-management-solutions"></a>Hinzufügen von clusterspezifischen Verwaltungslösungen
 
-In diesem Abschnitt fügen Sie eine HBase-Clusterverwaltungslösung zu einem vorhandenen Operations Management Suite-Arbeitsbereich hinzu.
+In diesem Abschnitt fügen Sie eine HBase-Clusterverwaltungslösung einem vorhandenen Log Analytics-Arbeitsbereich hinzu.
 
 1. Öffnen Sie einen HDInsight-Cluster im Azure-Portal, klicken Sie auf **Überwachung** und dann auf **OMS-Dashboard öffnen**.
 
     ![Operations Management Suite-Dashboard öffnen](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-log-analytics-open-oms-dashboard.png "OMS-Dashboard öffnen")
 
-1. Klicken Sie im OMS-Dashboard auf **Lösungskatalog** oder auf das Symbol **Designer anzeigen** im linken Bereich.
+1. Klicken Sie auf dem Dashboard im linken Bereich auf **Lösungskatalog** oder auf das Symbol **Designer anzeigen**.
 
-    ![Verwaltungslösung in Operations Management Suite hinzufügen](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-add-management-solution-oms-portal.png "Verwaltungslösung in Operations Management Suite hinzufügen")
+    ![Hinzufügen der Verwaltungslösung in Log Analytics](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-add-management-solution-oms-portal.png "Hinzufügen der Verwaltungslösung in Operations Management Suite")
 
 2. Klicken Sie im Lösungskatalog auf eine der folgenden Kacheln:
 
@@ -55,7 +55,7 @@ In diesem Abschnitt fügen Sie eine HBase-Clusterverwaltungslösung zu einem vor
 
      ![Hinzufügen der HBase-Verwaltungslösung](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/add-hbase-management-solution.png "Hinzufügen der HBase-Verwaltungslösung")
 
-4. Sie sehen jetzt auf dem OMS-Dashboard eine Kachel für die HBase-Verwaltungslösung. Wenn der Cluster, den Sie (im Rahmen der Voraussetzungen für diesen Artikel) der Operations Management Suite zugeordnet haben, ein HBase-Cluster ist, zeigt die Kachel den Namen des Clusters und die Anzahl der Knoten im Cluster an.
+4. Sie sehen jetzt auf dem Dashboard eine Kachel für die HBase-Verwaltungslösung. Wenn der Cluster, den Sie (im Rahmen der Voraussetzungen für diesen Artikel) der Operations Management Suite zugeordnet haben, ein HBase-Cluster ist, zeigt die Kachel den Namen des Clusters und die Anzahl der Knoten im Cluster an.
 
     ![Hinzugefügte HBase-Verwaltungslösung](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/added-hbase-management-solution.png "Hinzugefügte HBase-Verwaltungslösung")
 
@@ -65,5 +65,5 @@ In diesem Abschnitt fügen Sie eine HBase-Clusterverwaltungslösung zu einem vor
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Arbeiten mit Log Analytics in der Operations Management Suite](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [OMS Log Analytics: Create Tiles, Drill-ins and Dashboards with the View Designer](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/) (OMS Log Analytics: Erstellen von Kacheln, Drill-ins und Dashboards mit dem Ansicht-Designer)
 * [Arbeiten mit Warnungsregeln in Log Analytics](../log-analytics/log-analytics-alerts-creating.md)

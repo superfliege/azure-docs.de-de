@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: bd4413c2-0d7c-41a7-aba4-b7a7a28c9448
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 00292d0aed24ea034eba8686bcd9cbdd1ef676e3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 07b4be1256b77ac35efab9c6b2d593b4763cdf86
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamworkcomhttpswwwteamworkcomprojects"></a>Tutorial: Azure Active Directory-Integration mit [Teamwork.com](https://www.teamwork.com/projects)
+# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Tutorial: Azure Active Directory-Integration mit Teamwork.com
 
 In diesem Tutorial erfahren Sie, wie Sie Teamwork.com in Azure Active Directory (Azure AD) integrieren.
 
@@ -37,7 +37,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Um die Azure AD-Integration mit Teamwork.com konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein [Teamwork.com](https://www.teamwork.com/projects)-Abonnement im Pro-Plan oder höher
+- Ein Teamwork.com-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -48,7 +48,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Teamwork.com aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -108,10 +108,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Informationen zur Domäne und zu den URLs für Teamwork.com](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_url.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.teamwork.com`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.teamwork.com`.
+
+    b. Geben Sie im Textfeld **Bezeichner** die folgende URL ein:
+
+    |||
+    |-|-|
+    | `https://teamwork.com/saml`|
+    | `https://eu.teamwork.com/saml`|
 
     > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von Teamwork.com](mailto:support@teamwork.com), um diesen Wert zu erhalten. 
+    > Dieser Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von Teamwork.com](mailto:support@teamwork.com), um diesen Wert zu erhalten. 
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
@@ -119,13 +126,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-teamwork-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-teamwork-tutorial/tutorial_general_400.png)
 
 6. Zum Konfigurieren des einmaligen Anmeldens bei **Teamwork.com** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Teamwork.com-Supportteam](mailto:support@teamwork.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
-
-> [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -157,7 +160,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-teamworkcom-test-user"></a>Erstellen einer Teamwork.com-Testbenutzerin
 
@@ -204,8 +207,6 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

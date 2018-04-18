@@ -1,11 +1,11 @@
 ---
-title: "Konfigurieren eines benutzerdefinierten Domänennamens in Cloud Services | Microsoft Docs"
-description: "Hier erfahren Sie, wie Sie Ihre Azure-Anwendung oder -Daten durch das Konfigurieren von DNS-Einstellungen auf einer benutzerdefinierten Domäne im Internet verfügbar machen.  In diesen Beispielen wird das Azure-Portal verwendet."
+title: Konfigurieren eines benutzerdefinierten Domänennamens in Cloud Services | Microsoft Docs
+description: Hier erfahren Sie, wie Sie Ihre Azure-Anwendung oder -Daten durch das Konfigurieren von DNS-Einstellungen auf einer benutzerdefinierten Domäne im Internet verfügbar machen.  In diesen Beispielen wird das Azure-Portal verwendet.
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5783a246-a151-4fb1-b488-441bfb29ee44
 ms.service: cloud-services
 ms.workload: tbd
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
 ms.openlocfilehash: 139ec6578dc9e76039c5fb13e7a7741aa8ba4e0d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst
-Wenn Sie einen Clouddienst erstellen, weist Azure diesen einer Unterdomäne von **cloudapp.net**zu. Wenn der Clouddienst beispielsweise den Namen „contoso“ hat, können Ihre Benutzer auf die Anwendung über eine URL wie „http://contoso.cloudapp.net“ zugreifen. Darüber hinaus weist Azure eine virtuelle IP-Adresse zu.
+Wenn Sie einen Clouddienst erstellen, weist Azure diesen einer Unterdomäne von **cloudapp.net**zu. Wenn der Clouddienst beispielsweise den Namen „contoso“ hat, können Ihre Benutzer auf die Anwendung über eine URL wie http://contoso.cloudapp.net zugreifen. Darüber hinaus weist Azure eine virtuelle IP-Adresse zu.
 
 Sie können Ihre Anwendung jedoch auch unter Ihrem eigenen Domänennamen zur Verfügung stellen, beispielsweise **contoso.com**. In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten Domänennamen für Clouddienst-Webrollen reservieren oder konfigurieren.
 

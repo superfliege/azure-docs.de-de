@@ -1,21 +1,21 @@
 ---
-title: "Bereitstellen von Modulen auf IoT Edge-Geräten per IoT-Erweiterung für Azure CLI 2.0 | Microsoft-Dokumentation"
-description: "Bereitstellen von Modulen auf einem IoT Edge-Gerät per IoT-Erweiterung für Azure CLI 2.0"
+title: Bereitstellen von Modulen auf IoT Edge-Geräten per IoT-Erweiterung für Azure CLI 2.0 | Microsoft-Dokumentation
+description: Bereitstellen von Modulen auf einem IoT Edge-Gerät per IoT-Erweiterung für Azure CLI 2.0
 services: iot-edge
-keywords: 
+keywords: ''
 author: chrissie926
 manager: timlt
 ms.author: menchi
 ms.date: 03/02/2018
 ms.topic: article
 ms.service: iot-edge
-ms.custom: mvc
+ms.custom: ''
 ms.reviewer: kgremban
-ms.openlocfilehash: 25f1becff11138e59595c211802acbf791094e53
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1f71fdfb7090dce24ba73f1fa01e287c52b065f8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-modules-to-an-iot-edge-device-using-iot-extension-for-azure-cli-20"></a>Bereitstellen von Modulen auf einem IoT Edge-Gerät per IoT-Erweiterung für Azure CLI 2.0
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/09/2018
 
 Mit Azure CLI 2.0 können Sie Azure IoT Hub-Ressourcen, Instanzen des Device Provisioning-Diensts und verknüpfte Hubs ohne weitere Tools verwalten. Mit der neuen IoT-Erweiterung wird Azure CLI 2.0 um Features wie beispielsweise die Geräteverwaltung und umfassende IoT Edge-Funktionen erweitert.
 
-In diesem Tutorial führen Sie zuerst die Schritte zum Einrichten von Azure CLI 2.0 und der IoT-Erweiterung aus. Anschließend wird beschrieben, wie Sie Module auf einem IoT Edge-Gerät mit den verfügbaren CLI-Befehlen bereitstellen.
+In diesem Artikel richten Sie die Azure CLI 2.0 und die IoT-Erweiterung ein. Anschließend wird beschrieben, wie Sie Module auf einem IoT Edge-Gerät mit den verfügbaren CLI-Befehlen bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

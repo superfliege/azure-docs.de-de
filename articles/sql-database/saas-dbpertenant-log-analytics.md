@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Log Analytics mit einer mehrinstanzenfähigen App für SQL-Datenbank | Microsoft-Dokumentation
-description: Einrichten und Verwenden von Log Analytics (Operations Management Suite) mit einer mehrinstanzenfähigen SaaS-App für Azure SQL-Datenbank
+description: Einrichten und Verwenden von Log Analytics mit einer mehrinstanzenfähigen SaaS-App für Azure SQL-Datenbank
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 author: stevestein
@@ -8,23 +8,23 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 38a849ca5f4a767a4b9d9b9b86549e89a8217a2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 285b8d0acc8a6cbe1a6441a4aabf372de204309e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="set-up-and-use-log-analytics-operations-management-suite-with-a-multitenant-sql-database-saas-app"></a>Einrichten und Verwenden von Log Analytics (Operations Management Suite) mit einer mehrinstanzenfähigen SaaS-App für SQL-Datenbank
+# <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Einrichten und Verwenden von Log Analytics mit einer mehrinstanzenfähigen SaaS-App für SQL-Datenbank
 
-In diesem Tutorial richten Sie Azure Log Analytics ([Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite)) ein und verwenden es für die Überwachung von Pools für elastische Datenbanken und von Datenbanken. Dieses Tutorial baut auf dem [Tutorial zum Überwachen und Verwalten der Leistung](saas-dbpertenant-performance-monitoring.md) auf. Es zeigt, wie Sie mit Log Analytics die im Azure-Portal bereitgestellte Überwachungs- und Warnungsfunktionalität erweitern können. Log Analytics unterstützt die Überwachung von zigtausend elastischen Pools und mehreren hunderttausend Datenbanken. Mit Log Analytics verfügen Sie über eine zentrale Überwachungslösung, in der die Überwachung von unterschiedlichen Anwendungen und Azure-Diensten für mehrere Azure-Abonnements integriert werden kann.
+In diesem Tutorial richten Sie [Log Analytics](/azure/log-analytics/log-analytics-overview) zum Überwachen von Pools für elastische Datenbanken sowie Datenbanken ein. Dieses Tutorial baut auf dem [Tutorial zum Überwachen und Verwalten der Leistung](saas-dbpertenant-performance-monitoring.md) auf. Es zeigt, wie Sie mit Log Analytics die im Azure-Portal bereitgestellte Überwachungs- und Warnungsfunktionalität erweitern können. Log Analytics unterstützt die Überwachung von zigtausend elastischen Pools und mehreren hunderttausend Datenbanken. Mit Log Analytics verfügen Sie über eine zentrale Überwachungslösung, in der die Überwachung von unterschiedlichen Anwendungen und Azure-Diensten für mehrere Azure-Abonnements integriert werden kann.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Installieren und Konfigurieren von Log Analytics (Operations Management Suite)
+> * Installieren und Konfigurieren von Log Analytics
 > * Überwachen von Pools und Datenbanken mithilfe von Log Analytics
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
@@ -34,11 +34,11 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 Im [Tutorial zum Überwachen und Verwalten der Leistung](saas-dbpertenant-performance-monitoring.md) finden Sie eine Beschreibung der SaaS-Szenarien und -Muster, und es wird erläutert, wie sie die Anforderungen an eine Überwachungslösung beeinflussen.
 
-## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics-or-operations-management-suite"></a>Überwachen und Verwalten der Leistung von Datenbanken und Pools für elastische Datenbanken mit Log Analytics oder Operations Management Suite
+## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics"></a>Überwachen und Verwalten der Leistung von Datenbanken und Pools für elastische Datenbanken mit Log Analytics
 
 Bei Azure SQL-Datenbank stehen Überwachungs- und Warnungsfunktionen für Datenbanken und Pools im Azure-Portal zur Verfügung. Diese integrierten Überwachungs- und Warnungsfunktionen sind praktisch, aber auch ressourcenspezifisch. Sie eigenen sich daher weniger, um große Installationen zu überwachen oder eine zentrale Übersicht über Ressourcen und Abonnements zu erhalten.
 
-Bei Szenarien mit hohem Volumen kann Log Analytics zur Überwachung und für Warnungen eingesetzt werden. Log Analytics ist ein separater Azure-Dienst, der die Analyse von Diagnoseprotokollen und Telemetriedaten ermöglicht, die in einem Arbeitsbereich von möglicherweise vielen Diensten gesammelt werden. Mit der integrierten Abfragesprache und den Tools zur Datenvisualisierung ermöglicht Log Analytics die Analyse operativer Daten. SQL-Analyse bietet mehrere vordefinierte Überwachungs- und Warnungsansichten und -abfragen für Datenbanken und für Pools für elastische Datenbanken. Operations Management Suite bietet auch einen Designer für benutzerdefinierte Ansichten.
+Bei Szenarien mit hohem Volumen kann Log Analytics zur Überwachung und für Warnungen eingesetzt werden. Log Analytics ist ein separater Azure-Dienst, der die Analyse von Diagnoseprotokollen und Telemetriedaten ermöglicht, die in einem Arbeitsbereich von möglicherweise vielen Diensten gesammelt werden. Mit der integrierten Abfragesprache und den Tools zur Datenvisualisierung ermöglicht Log Analytics die Analyse operativer Daten. SQL-Analyse bietet mehrere vordefinierte Überwachungs- und Warnungsansichten und -abfragen für Datenbanken und für Pools für elastische Datenbanken. Log Analytics bietet außerdem einen Designer für benutzerdefinierte Ansichten.
 
 Sowohl Log Analytics-Arbeitsbereiche als auch Analyselösungen können im Azure-Portal und in Operations Management Suite geöffnet werden. Das Azure-Portal stellt den neueren Zugangspunkt dar, bleibt jedoch möglicherweise in einigen Bereichen hinter dem Portal von Operations Management Suite zurück.
 
@@ -129,9 +129,9 @@ Jetzt können Sie Log Analytics im Azure-Portal oder im Portal der Operations Ma
 
 Im Operations Management Suite-Portal können Sie die Protokoll- und Metrikdaten im Arbeitsbereich weiter untersuchen. 
 
-Überwachung und Warnung in Log Analytics und Operations Management Suite beruhen – im Gegensatz zu den Warnungen, die im Azure-Portal für jede Ressource definiert werden – auf Abfragen der Daten im Arbeitsbereich. Da Warnungen auf Abfragen beruhen, können Sie statt einer Warnung pro Datenbank eine einzige Warnung definieren, die alle Datenbanken abdeckt. Abfragen sind nur durch die im Arbeitsbereich verfügbaren Daten beschränkt.
+Überwachung und Warnung in Log Analytics beruhen – im Gegensatz zu den Warnungen, die im Azure-Portal für jede Ressource definiert werden – auf Abfragen der Daten im Arbeitsbereich. Da Warnungen auf Abfragen beruhen, können Sie statt einer Warnung pro Datenbank eine einzige Warnung definieren, die alle Datenbanken abdeckt. Abfragen sind nur durch die im Arbeitsbereich verfügbaren Daten beschränkt.
 
-Weitere Informationen zum Abfragen und Festlegen von Warnungen mit Operations Management Suite finden Sie unter [Arbeiten mit Warnungsregeln in Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
+Weitere Informationen zum Abfragen und Festlegen von Warnungen mit Log Analytics finden Sie unter [Arbeiten mit Warnungsregeln in Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
 
 Die Rechnungsstellung für Log Analytics für SQL-Datenbank basiert auf dem jeweiligen Datenvolumen im Arbeitsbereich. In diesem Tutorial haben Sie einen kostenlosen Arbeitsbereich erstellt, der auf 500 MB pro Tag beschränkt ist. Sobald dieser Grenzwert erreicht wird, werden dem Arbeitsbereich keine Daten mehr hinzugefügt.
 
@@ -141,7 +141,7 @@ Die Rechnungsstellung für Log Analytics für SQL-Datenbank basiert auf dem jewe
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Installieren und Konfigurieren von Log Analytics (Operations Management Suite)
+> * Installieren und Konfigurieren von Log Analytics
 > * Überwachen von Pools und Datenbanken mithilfe von Log Analytics
 
 Absolvieren Sie das [Tutorial zu Mandantenanalysen](saas-dbpertenant-log-analytics.md).
@@ -150,4 +150,3 @@ Absolvieren Sie das [Tutorial zu Mandantenanalysen](saas-dbpertenant-log-analyti
 
 * [Weitere Tutorials, die auf der anfänglichen Anwendungsbereitstellung der Wingtip Tickets-SaaS-App mit einer Datenbank pro Mandant aufbauen](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
-* [Operations Management Suite](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)

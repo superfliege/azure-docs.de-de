@@ -1,11 +1,11 @@
 ---
-title: "Azure-Linux-VM-Agent – Übersicht | Microsoft-Dokumentation"
+title: Azure-Linux-VM-Agent – Übersicht | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Linux-Agent (waagent) zum Verwalten der Interaktion Ihres virtuellen Computers mit Azure Fabric Controller installieren und konfigurieren.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: szarkos
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59266c6d6452eeff56b05e60389ac14f0b2c3f1f
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: be3955c670382af1a2b558e8e7d656ca5a1f353d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Grundlegendes zum Azure Linux-Agent und seiner Verwendung
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -62,7 +62,7 @@ Der Microsoft Azure Linux-Agent (waagent) verwaltet die Bereitstellung von Linux
 * **VM-Erweiterung**
   
   * Fügt von Microsoft und Partnern erstellte Komponenten in einen virtuellen Linux-Computer ein, um die Automatisierung der Software und der Konfiguration zu ermöglichen
-  * Referenzimplementierung einer VM-Erweiterung unter [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * Referenzimplementierung der VM-Erweiterung unter [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Kommunikation
 Der Informationsfluss von der Plattform zum Agenten erfolgt über zwei Kanäle:
@@ -70,7 +70,7 @@ Der Informationsfluss von der Plattform zum Agenten erfolgt über zwei Kanäle:
 * Über eine beim Start angeschlossene DVD für IaaS-Bereitstellungen. Diese DVD enthält eine OVF-kompatible Konfigurationsdatei mit allen Bereitstellungsinformationen außer den tatsächlichen SSH-Schlüsselpaaren.
 * Über einen TCP-Endpunkt, der eine REST-API verfügbar macht, um die Bereitstellungs- und Topologiekonfiguration abzurufen.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Folgende Systeme können nachweislich mit dem Azure Linux-Agent verwendet werden:
 
 > [!NOTE]

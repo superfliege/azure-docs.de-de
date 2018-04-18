@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 8ab2e7cdc8472be9c0800eea5bef9322b0ed87f2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1399455fb727c27e22da8c5525eec87e343d46cc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Überwachen von Data Factorys mit Azure Monitor  
 Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachung stellt Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
@@ -31,7 +31,7 @@ Azure Monitor stellt Infrastrukturmetriken auf Basisebene und Protokolle für di
 
 * Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem **Speicherkonto** gespeichert werden. In den Diagnoseeinstellungen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
 * Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an **Event Hubs** streamen.
-* Sie können sie mit **Operations Management Suite (OMS) Log Analytics** analysieren.
+* Analysieren Sie sie mit **Log Analytics**.
 
 Sie können ein Speicherkonto oder einen Event Hub-Namespace verwenden, das/der sich nicht im gleichen Abonnement befindet wie die Ressource, die Protokolle ausgibt. Der Benutzer, der die Einstellung konfiguriert, benötigt den entsprechenden Zugriff gemäß der rollenbasierten Zugriffssteuerung auf beide Abonnements.
 
@@ -40,11 +40,11 @@ Sie können ein Speicherkonto oder einen Event Hub-Namespace verwenden, das/der 
 ### <a name="diagnostic-settings"></a>Diagnoseeinstellungen
 Diagnoseprotokolle für Nicht-Computeressourcen werden mithilfe von Diagnoseeinstellungen konfiguriert. Diagnoseeinstellungen für ein Ressourcensteuerelement:
 
-* Wohin Diagnoseprotokolle gesendet werden sollen (Speicherkonto, Event Hubs und/oder OMS Log Analytics)
+* Wohin Diagnoseprotokolle gesendet werden sollen (Speicherkonto, Event Hubs und/oder Log Analytics)
 * Welche Protokollkategorien gesendet werden sollen
 * Wie lange die einzelnen Protokollkategorien in einem Speicherkonto beibehalten werden sollen
 * Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
-* Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert.
+* Wenn Aufbewahrungsrichtlinien festgelegt wurden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (wenn z.B. nur die Optionen „Event Hubs“ oder „Log Analytics“ ausgewählt sind), werden die Aufbewahrungsrichtlinien ignoriert.
 * Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
 
 ### <a name="enable-diagnostic-logs-via-rest-apis"></a>Aktivieren von Diagnoseprotokollen über die REST-API
@@ -69,7 +69,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "properties": {
         "storageAccountId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>",
         "serviceBusRuleId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>/providers/Microsoft.EventHub/namespaces/<eventHubName>/authorizationrules/RootManageSharedAccessKey",
-        "workspaceId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<OMSName>",
+        "workspaceId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<LogAnalyticsName>",
         "metrics": [
         ],
         "logs": [
@@ -103,7 +103,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 } 
 ```
 
-| Eigenschaft | Typ | Beschreibung |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
 | storageAccountId |Zeichenfolge | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
 | serviceBusRuleId |Zeichenfolge | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID hat dieses Format: {Service Bus-Ressourcen-ID}/authorizationrules/{Schlüsselname}.|
@@ -123,7 +123,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```json
 {
-    "id": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/adf/providers/microsoft.datafactory/factories/shloadobetest2/providers/microsoft.insights/diagnosticSettings/service",
+    "id": "/subscriptions/<subID>/resourcegroups/adf/providers/microsoft.datafactory/factories/shloadobetest2/providers/microsoft.insights/diagnosticSettings/service",
     "type": null,
     "name": "service",
     "location": null,
@@ -132,7 +132,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "properties": {
         "storageAccountId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>//providers/Microsoft.Storage/storageAccounts/<storageAccountName>",
         "serviceBusRuleId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>//providers/Microsoft.EventHub/namespaces/<eventHubName>/authorizationrules/RootManageSharedAccessKey",
-        "workspaceId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>//providers/Microsoft.OperationalInsights/workspaces/<OMSName>",
+        "workspaceId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>//providers/Microsoft.OperationalInsights/workspaces/<LogAnalyticsName>",
         "eventHubAuthorizationRuleId": null,
         "eventHubName": null,
         "metrics": [],
@@ -187,16 +187,16 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```json
 {
-    "id": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/adf/providers/microsoft.datafactory/factories/shloadobetest2/providers/microsoft.insights/diagnosticSettings/service",
+    "id": "/subscriptions/<subID>/resourcegroups/adf/providers/microsoft.datafactory/factories/shloadobetest2/providers/microsoft.insights/diagnosticSettings/service",
     "type": null,
     "name": "service",
     "location": null,
     "kind": null,
     "tags": null,
     "properties": {
-        "storageAccountId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/shloprivate/providers/Microsoft.Storage/storageAccounts/azmonlogs",
-        "serviceBusRuleId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/shloprivate/providers/Microsoft.EventHub/namespaces/shloeventhub/authorizationrules/RootManageSharedAccessKey",
-        "workspaceId": "/subscriptions/0ee78edb-a0ad-456c-a0a2-901bf542c102/resourceGroups/ADF/providers/Microsoft.OperationalInsights/workspaces/mihaipie",
+        "storageAccountId": "/subscriptions/<subID>/resourceGroups/shloprivate/providers/Microsoft.Storage/storageAccounts/azmonlogs",
+        "serviceBusRuleId": "/subscriptions/<subID>/resourceGroups/shloprivate/providers/Microsoft.EventHub/namespaces/shloeventhub/authorizationrules/RootManageSharedAccessKey",
+        "workspaceId": "/subscriptions/<subID>/resourceGroups/ADF/providers/Microsoft.OperationalInsights/workspaces/mihaipie",
         "eventHubAuthorizationRuleId": null,
         "eventHubName": null,
         "metrics": [],
@@ -230,7 +230,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-Weitere Informationen finden Sie hier.](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
+[Weitere Informationen](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
 
 ## <a name="schema-of-logs--events"></a>Schema von Protokollen und Ereignissen
 

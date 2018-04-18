@@ -1,11 +1,11 @@
 ---
 title: Media Encoder Standard-Schema | Microsoft Docs
-description: "Dieser Artikel enthält eine Übersicht über das Media Encoder Standard-Schema."
+description: Dieser Artikel enthält eine Übersicht über das Media Encoder Standard-Schema.
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 4c060062-8ef2-41d9-834e-e81e8eafcf2e
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
 ms.openlocfilehash: e936f5c47abe5bb5531f9af3be48662ea2f48c97
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-Schema
 In diesem Artikel werden einige Elemente und Typen des XML-Schemas beschrieben, auf dem [Media Encoder Standard-Voreinstellungen](media-services-mes-presets-overview.md) basieren. Der Artikel enthält eine Beschreibung der Elemente und der dazugehörigen gültigen Werte.  

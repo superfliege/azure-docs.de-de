@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 80f427d5acb884be1752f470e2a9d9d04eee5518
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f1e1c2aa447e35ea483665cc33e4eb6af7a41f51
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatisches Aktivieren von Diagnoseeinstellungen bei der Ressourcenerstellung mithilfe einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
@@ -40,7 +40,7 @@ Im Anschluss finden Sie ein Beispiel für die JSON-Vorlagendatei, die für compu
 ## <a name="non-compute-resource-template"></a>Vorlage für computefremde Ressourcen
 Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
 
-1. Fügen Sie dem Parameterblob Parameter für den Speicherkontonamen, die Event Hub-Autorisierungsregel-ID und/oder die OMS Log Analytics-Arbeitsbereichs-ID hinzu (um die Archivierung von Diagnoseprotokollen in einem Speicherkonto, das Streamen von Protokollen an Event Hubs und/oder das Senden von Protokollen an Log Analytics zu ermöglichen).
+1. Fügen Sie dem Parameterblob Parameter für den Speicherkontonamen, die Event Hub-Autorisierungsregel-ID und/oder die Log Analytics-Arbeitsbereichs-ID hinzu (um die Archivierung von Diagnoseprotokollen in einem Speicherkonto, das Streamen von Protokollen an Event Hubs und/oder das Senden von Protokollen an Log Analytics zu ermöglichen).
    
     ```json
     "settingName": {

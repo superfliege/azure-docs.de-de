@@ -1,28 +1,23 @@
 ---
-title: "Ausführen von Azure Functions mit Azure Stream Analytics-Aufträgen | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Azure Functions als Ausgabesenke für Stream Analytics-Aufträge konfigurieren."
-keywords: Datenausgabe, Streamen von Daten, Azure Functions
-documentationcenter: 
+title: Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen
+description: Dieser Artikel beschreibt die Konfiguration von Azure Functions als Ausgabesenke in Stream Analytics-Aufträgen, sodass Workloads ereignisgesteuert sind.
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
+ms.reviewer: jasonh
 manager: kfile
-ms.assetid: 
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 12/19/2017
-ms.author: sngun
-ms.openlocfilehash: f2f4a8d8cda752dc6ed197b8402119f7cbcaf58f
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: a8eebfa0c40caa455eb20431e5cf4acb8eeb248c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="run-azure-functions-with-azure-stream-analytics-jobs"></a>Ausführen von Azure Functions mit Azure Stream Analytics-Aufträgen 
+# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen 
 
-Sie können Azure Functions mit Azure Stream Analytics ausführen, indem Sie Functions als eine der Ausgabesenken für den Stream Analytics-Auftrag konfigurieren. Functions ist eine ereignisgesteuerte On-Demand-Computeumgebung, mit der Sie Code implementieren können, der durch in Azure- oder Drittanbieterdiensten auftretende Ereignisse ausgelöst wird. Aufgrund der Möglichkeit, auf Trigger zu antworten, ist Functions die ideale Ausgabe für Stream Analytics-Aufträge.
+Sie können Azure Functions in Azure Stream Analytics ausführen, indem Sie Functions als eine der Ausgabesenken für den Stream Analytics-Auftrag konfigurieren. Functions ist eine ereignisgesteuerte On-Demand-Computeumgebung, mit der Sie Code implementieren können, der durch in Azure- oder Drittanbieterdiensten auftretende Ereignisse ausgelöst wird. Aufgrund der Möglichkeit, auf Trigger zu antworten, ist Functions die ideale Ausgabe für Stream Analytics-Aufträge.
 
 Stream Analytics ruft Functions über HTTP-Trigger auf. Der Functions-Ausgabeadapter ermöglicht Benutzern das Verbinden von Functions mit Stream Analytics, sodass die Ereignisse basierend auf Stream Analytics-Abfragen ausgelöst werden können. 
 

@@ -1,11 +1,11 @@
 ---
-title: "Überwachen von B2B-Transaktionen und Einrichten der Protokollierung: Azure Logic Apps | Microsoft-Dokumentation"
-description: "Überwachen Sie AS2-, X12 und EDIFACT-Nachrichten, und starten Sie die Diagnoseprotokollierung für Ihr Integrationskonto."
+title: 'Überwachen von B2B-Transaktionen und Einrichten der Protokollierung: Azure Logic Apps | Microsoft-Dokumentation'
+description: Überwachen Sie AS2-, X12 und EDIFACT-Nachrichten, und starten Sie die Diagnoseprotokollierung für Ihr Integrationskonto.
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -15,22 +15,22 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f717dae9a70a96944b623f22b90cf8c5a943f382
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6afab12b9e2d6e8686ecbc95be9743afbe70d98c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-and-set-up-diagnostics-logging-for-b2b-communication-in-integration-accounts"></a>Überwachen und Einrichten der Diagnoseprotokollierung für die B2B-Kommunikation in Integrationskonten
 
-Nachdem Sie über Ihr Integrationskonto die B2B-Kommunikation zwischen zwei laufenden Geschäftsprozessen oder -anwendungen eingerichtet haben, können diese Entitäten untereinander Nachrichten austauschen. Um zu prüfen, ob die Kommunikation erwartungsgemäß funktioniert, können Sie über den Dienst [Azure Log Analytics](../log-analytics/log-analytics-overview.md) die Überwachung für AS2-, X12- und EDIFACT-Nachrichten sowie die Diagnoseprotokollierung für Ihr Integrationskonto einrichten. Dieser Dienst aus der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) überwacht sowohl Ihre Cloudumgebung als auch Ihre lokale Umgebung und unterstützt Sie nicht nur dabei, deren Verfügbarkeit und Leistung zu gewährleisten, sondern erfasst auch Laufzeitdetails und Ereignisse für ein ausführlicheres Debugging. Darüber hinaus können Sie diese [Diagnosedaten mit anderen Diensten verwenden](#extend-diagnostic-data) (beispielsweise mit Azure Storage und Azure Event Hubs).
+Nachdem Sie über Ihr Integrationskonto die B2B-Kommunikation zwischen zwei laufenden Geschäftsprozessen oder -anwendungen eingerichtet haben, können diese Entitäten untereinander Nachrichten austauschen. Um zu prüfen, ob die Kommunikation erwartungsgemäß funktioniert, können Sie über den Dienst [Azure Log Analytics](../log-analytics/log-analytics-overview.md) die Überwachung für AS2-, X12- und EDIFACT-Nachrichten sowie die Diagnoseprotokollierung für Ihr Integrationskonto einrichten. Dieser Dienst überwacht sowohl Ihre Cloudumgebung als auch Ihre lokale Umgebung und unterstützt Sie nicht nur dabei, deren Verfügbarkeit und Leistung zu gewährleisten, sondern erfasst auch Laufzeitdetails und Ereignisse für ein ausführlicheres Debugging. Darüber hinaus können Sie diese [Diagnosedaten mit anderen Diensten verwenden](#extend-diagnostic-data) (beispielsweise mit Azure Storage und Azure Event Hubs).
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 * Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informationen zum Einrichten der Protokollierung für diese Logik-App finden Sie [hier](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
   > [!NOTE]
-  > Wenn diese Anforderung erfüllt ist, verfügen Sie über einen Arbeitsbereich in der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Es empfiehlt sich, beim Einrichten der Protokollierung für Ihr Integrationskonto den gleichen OMS-Arbeitsbereich zu verwenden. Falls Sie über keinen OMS-Arbeitsbereich verfügen, erfahren Sie [hier](../log-analytics/log-analytics-get-started.md), wie Sie einen OMS-Arbeitsbereich erstellen.
+  > Wenn diese Anforderung erfüllt ist, verfügen Sie über einen Arbeitsbereich in Log Analytics. Es empfiehlt sich, beim Einrichten der Protokollierung für Ihr Integrationskonto den gleichen Log Analytics-Arbeitsbereich zu verwenden. Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md).
 
 * Ein mit Ihrer Logik-App verknüpftes Integrationskonto. Informationen zum Erstellen eines Integrationskontos mit Logik-App-Verknüpfung finden Sie [hier](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
@@ -58,17 +58,17 @@ Die Protokollierung kann entweder direkt über Ihr Integrationskonto oder [über
 
    ![Aktivieren der Azure-Diagnose](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account-2.png)
 
-4. Wählen Sie nun den OMS-Arbeitsbereich und die für die Protokollierung zu verwendenden Daten aus, wie hier zu sehen:
+4. Wählen Sie nun den Log Analytics-Arbeitsbereich und die für die Protokollierung zu verwendenden Daten aus, wie hier zu sehen:
 
    1. Wählen Sie **An Log Analytics senden** aus. 
    2. Wählen Sie unter **Log Analytics** die Option **Konfigurieren** aus. 
-   3. Wählen Sie unter **OMS-Arbeitsbereiche** den OMS-Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
+   3. Wählen Sie unter **OMS-Arbeitsbereiche** den Log Analytics-Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
    4. Wählen Sie unter **Protokoll** die Kategorie **IntegrationAccountTrackingEvents** aus.
    5. Wählen Sie **Speichern** aus.
 
    ![Einrichten von Log Analytics zum Senden von Diagnosedaten an ein Protokoll](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-5. Nun können Sie das [Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) einrichten.
+5. Nun können Sie das [Nachverfolgen von B2B-Nachrichten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) einrichten.
 
 <a name="azure-monitor-service"></a>
 
@@ -92,17 +92,17 @@ Die Protokollierung kann entweder direkt über Ihr Integrationskonto oder [über
 
    ![Aktivieren der Azure-Diagnose](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account-2.png)
 
-4. Wählen Sie anschließend den OMS-Arbeitsbereich und die Ereigniskategorie für die Protokollierung aus:
+4. Wählen Sie anschließend den Log Analytics-Arbeitsbereich und die Ereigniskategorie für die Protokollierung wie hier gezeigt aus:
 
    1. Wählen Sie **An Log Analytics senden** aus. 
    2. Wählen Sie unter **Log Analytics** die Option **Konfigurieren** aus. 
-   3. Wählen Sie unter **OMS-Arbeitsbereiche** den OMS-Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
+   3. Wählen Sie unter **OMS-Arbeitsbereiche** den Log Analytics-Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
    4. Wählen Sie unter **Protokoll** die Kategorie **IntegrationAccountTrackingEvents** aus.
    5. Wenn Sie fertig sind, wählen Sie **Speichern** aus.
 
    ![Einrichten von Log Analytics zum Senden von Diagnosedaten an ein Protokoll](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-5. Nun können Sie das [Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) einrichten.
+5. Nun können Sie das [Nachverfolgen von B2B-Nachrichten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) einrichten.
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>Erweitern der Nutzung von Diagnosedaten mit anderen Diensten
 
@@ -111,7 +111,7 @@ In Verbindung mit Azure Log Analytics können Sie die Nutzung der Diagnosedaten 
 * [Archivieren von Azure-Diagnoseprotokollen in Azure Storage](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 * [Streamen von Azure-Diagnoseprotokollen an Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../log-analytics/log-analytics-powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel:
+Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../log-analytics/log-analytics-powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel: 
 
 * [Streamen von Daten von Event Hubs zu Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analysieren von Streamingdaten mit Stream Analytics und Erstellen eines Dashboards für die Echtzeitanalyse in Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -133,6 +133,6 @@ Azure unterstützt die folgenden Nachverfolgungsschematypen. Mit Ausnahme des Ty
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal")
+* [Nachverfolgen von B2B-Nachrichten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "Nachverfolgen von B2B-Nachrichten in OMS")
 * [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 

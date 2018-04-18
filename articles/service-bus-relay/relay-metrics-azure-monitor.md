@@ -1,12 +1,12 @@
 ---
 title: Azure Relay-Metriken in Azure Monitor (Vorschauversion) | Microsoft-Dokumentation
-description: "Überwachen von Azure Relay mit Azure Monitor"
+description: Überwachen von Azure Relay mit Azure Monitor
 services: service-bus-relay
 documentationcenter: .NET
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-relay
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: dd5bc0dd0088856954e06d880f2c03f0a74ed9d7
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: b919f1fb0799ec497742115b2611f34872af2027
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Relay-Metriken in Azure Monitor (Vorschauversion)
 
@@ -44,7 +44,7 @@ Bei Metriken mit Dimensionsunterstützung müssen Sie den gewünschten Dimension
 
 ## <a name="billing"></a>Abrechnung
 
-Die Verwendung von Metriken in Azure Monitor ist in der Vorschauversion kostenlos. Wenn Sie allerdings zusätzliche Lösungen zur Metrikdatenerfassung verwenden, fallen unter Umständen Kosten für diese Lösungen an. So werden etwa Gebühren für Azure Storage berechnet, wenn Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Kosten fallen auch an, wenn Sie Metrikdaten für eine ausführlichere Analyse an die Operation Management Suite (OMS) streamen.
+Die Verwendung von Metriken in Azure Monitor ist in der Vorschauversion kostenlos. Wenn Sie allerdings zusätzliche Lösungen zur Metrikdatenerfassung verwenden, fallen unter Umständen Kosten für diese Lösungen an. So werden etwa Gebühren für Azure Storage berechnet, wenn Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Kosten für Log Analytics fallen auch an, wenn Sie Metrikdaten für eine ausführlichere Analyse an Log Analytics streamen.
 
 Die folgenden Metriken bieten Ihnen eine Übersicht über die Integrität eines Diensts. 
 

@@ -7,17 +7,16 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 08/25/2017
+ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 160e65130efc78bc1a98a0feceb1c824cf226156
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+ms.openlocfilehash: 1f125596a6cc874f285611290d5c42700009afbe
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
@@ -27,20 +26,20 @@ Diese Übersicht beschreibt die Funktionen, die Azure SQL-Datenbank für Geschä
 
 SQL-Datenbank bietet verschiedene Funktionen für die Sicherstellung der Geschäftskontinuität, einschließlich automatisierter Sicherungen und optionaler Datenbankreplikation. Jede Funktion weist unterschiedliche Eigenschaften für die geschätzte Wiederherstellungszeit (Estimated Recovery Time, ERT) sowie für mögliche Datenverluste bei kürzlich durchgeführten Transaktionen auf. Wenn Sie diese Optionen kennen, können Sie die richtigen Optionen auswählen und in den meisten Szenarien auch miteinander kombinieren. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie ermitteln, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist – diese Zeitspanne ist Ihre RTO (Recovery Time Objective). Sie müssen auch herausfinden, wie viele kürzlich durchgeführte Datenupdates (in einem bestimmten Zeitraum) verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird – diese Zeitspanne ist Ihre RPO (Recovery Point Objective).
 
-Die folgende Tabelle vergleicht ERT und RPO für die drei häufigsten Szenarien.
+Die folgende Tabelle vergleicht ERT und RPO für die einzelnen Dienstebenen und die drei häufigsten Szenarien.
 
-| Funktion | Basic-Tarif | Standard-Tarif | Premium-Tarif |
-| --- | --- | --- | --- |
-| Point-in-Time-Wiederherstellung von Sicherung |Jeder Wiederherstellungspunkt innerhalb von 7 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |
-| Geowiederherstellung von georeplizierten Sicherungen |Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h |Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h |Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h |
-| Wiederherstellen von Daten aus dem Azure-Sicherungstresor |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |
-| Aktive Georeplikation |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |
+| Funktion | Basic | Standard | Premium  | Allgemeiner Zweck | Unternehmenskritisch
+| --- | --- | --- | --- |--- |--- |
+| Point-in-Time-Wiederherstellung von Sicherung |Jeder Wiederherstellungspunkt innerhalb von 7 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |Jeder Wiederherstellungspunkt innerhalb des konfigurierten Zeitraums (bis zu 35 Tage)|Jeder Wiederherstellungspunkt innerhalb des konfigurierten Zeitraums (bis zu 35 Tage)|
+| Geowiederherstellung von georeplizierten Sicherungen |Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h |Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h |Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h |Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h|Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h|
+| Wiederherstellen von Daten aus dem Azure-Sicherungstresor |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche|Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche|
+| Aktive Georeplikation |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s|Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s|
 
-### <a name="use-database-backups-to-recover-a-database"></a>Verwenden von Datenbanksicherungen zum Wiederherstellen einer Datenbank
+### <a name="use-point-in-time-restore-to-recover-a-database"></a>Verwenden der Point-in-Time-Wiederherstellung für die Wiederherstellung einer Datenbank
 
-SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, stündlichen differenziellen Datenbanksicherungen sowie Transaktionsprotokollsicherungen im Abstand von fünf bis zehn Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Diese Sicherungen werden in georedundantem Speicher gespeichert – für Datenbanken in den Tarifen „Standard“ und „Premium“ 35 Tage lang, für Datenbanken im Tarif „Basic“ sieben Tage lang. Weitere Informationen finden Sie unter [Tarife](sql-database-service-tiers.md). Wenn der Aufbewahrungszeitraum für Ihren Tarif Ihre Geschäftsanforderungen nicht erfüllt, können Sie diesen verlängern, indem Sie [den Tarif wechseln](sql-database-service-tiers.md). Die vollständigen und differenziellen Datenbanksicherungen werden auch in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert, um weiteren Schutz bei Rechenzentrumsausfällen zu bieten. Weitere Informationen finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md).
+SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, stündlichen differenziellen Datenbanksicherungen sowie Transaktionsprotokollsicherungen im Abstand von fünf bis zehn Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Diese Sicherungen werden im RA-GRS-Speicher gespeichert – für Datenbanken in den Tarifen „Standard“ und „Premium“ 35 Tage lang, für Datenbanken im Tarif „Basic“ sieben Tage lang. In den Dienstebenen „Universell“ und „Unternehmenskritisch“ (Vorschauversion) ist die Vermerkdauer für Sicherungen bis zu 35 Tagen konfigurierbar. Weitere Informationen finden Sie unter [Tarife](sql-database-service-tiers.md). Wenn der Aufbewahrungszeitraum für Ihren Tarif Ihre Geschäftsanforderungen nicht erfüllt, können Sie diesen verlängern, indem Sie [den Tarif wechseln](sql-database-service-tiers.md). Die vollständigen und differenziellen Datenbanksicherungen werden auch in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert, um weiteren Schutz bei Rechenzentrumsausfällen zu bieten. Weitere Informationen finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md).
 
-Wenn die integrierte Aufbewahrungsdauer für Ihre Anwendung nicht ausreicht, können Sie diese verlängern, indem Sie eine langfristige Aufbewahrungsrichtlinie für Datenbanken konfigurieren. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
+Wenn die maximal unterstützte PITR-Aufbewahrungsdauer für Ihre Anwendung nicht ausreicht, können Sie diese verlängern, indem Sie eine Richtlinie für die langfristige Aufbewahrung (LTR) für die Datenbank(en) konfigurieren. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
 
 Sie können diese automatischen Datenbanksicherungen verwenden, um eine Datenbank nach verschiedenen Störungen und Unterbrechungen wiederherzustellen, sowohl innerhalb Ihres eigenen Rechenzentrums als auch in einem anderen Rechenzentrum. Bei automatischen Datenbanksicherungen hängt die geschätzte Wiederherstellungszeit von verschiedenen Faktoren ab, beispielsweise von der Gesamtzahl von Datenbanken, die gleichzeitig in der gleichen Region wiederhergestellt werden müssen, von der Größe der Datenbank und der Transaktionsprotokolle sowie von der Netzwerkbandbreite. Die Wiederherstellungszeit beträgt für gewöhnlich weniger als 12 Stunden. Bei der Wiederherstellung in eine andere Datenregion ist der potenzielle Datenverlust aufgrund der georedundanten Speicherung der stündlichen differenziellen Datensicherungen auf eine Stunde begrenzt.
 
@@ -55,7 +54,7 @@ Verwenden Sie automatisierte Sicherungen als Mechanismus für Geschäftskontinui
 * Daten ändern sich langsam (nur wenige Transaktionen pro Stunde), und der Verlust aller innerhalb einer Stunde erfolgten Datenänderungen ist akzeptabel.
 * Die Kosten spielen eine große Rolle.
 
-Wenn Sie eine schnellere Wiederherstellung benötigen, verwenden Sie die [aktive Georeplikation](sql-database-geo-replication-overview.md) (im nächsten Abschnitt beschrieben). Wenn Sie Daten, die älter sind als 35 Tage, wiederherstellen müssen, verwenden Sie die [langfristige Sicherungsaufbewahrung](sql-database-long-term-retention.md). 
+Wenn Sie eine schnellere Wiederherstellung benötigen, verwenden Sie die [aktive Georeplikation](sql-database-geo-replication-overview.md) (im nächsten Abschnitt beschrieben). Wenn Sie Daten, die älter sind als 35 Tage, wiederherstellen müssen, verwenden Sie die [langfristige Aufbewahrung](sql-database-long-term-retention.md). 
 
 ### <a name="use-active-geo-replication-and-auto-failover-groups-in-preview-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>Verwenden von aktiver Georeplikation und automatischen Failovergruppen (in der Vorschau) zum Verkürzen der Wiederherstellungszeit und Begrenzen von Datenverlusten im Zusammenhang mit einer Wiederherstellung
 
@@ -77,12 +76,12 @@ Verwenden Sie die aktive Georeplikation und automatische Failovergruppen (in der
 * Daten ändern sich sehr schnell, und der Verlust aller innerhalb einer Stunde erfolgten Datenänderungen ist nicht akzeptabel.
 * Die zusätzlichen Kosten für die Georeplikation sind niedriger als die potenziellen Kosten aufgrund der finanziellen Haftung und die damit einhergehenden Geschäftsverluste.
 
->
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
 
 ## <a name="recover-a-database-after-a-user-or-application-error"></a>Wiederherstellen einer Datenbank nach einem Benutzer- oder Anwendungsfehler
-*Niemand ist perfekt! Es kann passieren, dass ein Benutzer versehentlich Daten, eine wichtige Tabelle oder sogar eine ganze Datenbank löscht. Es kann auch vorkommen, dass eine Anwendung aufgrund eines Anwendungsfehlers unbeabsichtigt gültige Daten mit ungültigen Daten überschreibt.
+
+Niemand ist perfekt! Es kann passieren, dass ein Benutzer versehentlich Daten, eine wichtige Tabelle oder sogar eine ganze Datenbank löscht. Es kann auch vorkommen, dass eine Anwendung aufgrund eines Anwendungsfehlers unbeabsichtigt gültige Daten mit ungültigen Daten überschreibt.
 
 In einem solchen Szenario stehen Ihnen die nachfolgend beschriebenen Wiederherstellungsoptionen zur Verfügung.
 
@@ -101,8 +100,9 @@ Weitere Informationen und die detaillierten Schritte zum Wiederherstellen einer 
 >
 >
 
-### <a name="restore-from-azure-backup-vault"></a>Wiederherstellen von Daten aus dem Azure-Sicherungstresor
-Wenn der Datenverlust außerhalb des aktuellen Aufbewahrungszeitraums für automatisierte Sicherungen aufgetreten und Ihre Datenbank für die langfristige Aufbewahrung konfiguriert ist, können Sie die Daten aus einer wöchentlichen Sicherung im Azure Backup-Tresor in eine neue Datenbank wiederherstellen. Zu diesem Zeitpunkt können Sie entweder die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen oder die benötigten Daten aus der wiederhergestellten Datenbank in die ursprüngliche Datenbank kopieren. Wenn Sie vor einem größeren Anwendungsupgrade eine alte Version Ihrer Datenbank abrufen oder Prüfanforderungen bzw. rechtliche Vorgaben erfüllen müssen, können Sie mithilfe einer im Azure Backup-Tresor gespeicherten vollständigen Sicherung eine Datenbank erstellen.  Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
+### <a name="restore-backups-from-long-term-retention"></a>Wiederherstellen langfristig aufbewahrter Sicherungen
+
+Wenn der Datenverlust außerhalb des aktuellen Aufbewahrungszeitraums für automatisierte Sicherungen aufgetreten und Ihre Datenbank für die langfristige Aufbewahrung konfiguriert ist, können Sie die Daten aus einer vollständigen Sicherung im LTR-Speicher in einer neue Datenbank wiederherstellen. Zu diesem Zeitpunkt können Sie entweder die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen oder die benötigten Daten aus der wiederhergestellten Datenbank in die ursprüngliche Datenbank kopieren. Wenn Sie vor einem größeren Anwendungsupgrade eine alte Version Ihrer Datenbank abrufen oder Prüfanforderungen bzw. rechtliche Vorgaben erfüllen müssen, können Sie mithilfe einer im Azure Backup-Tresor gespeicherten vollständigen Sicherung eine Datenbank erstellen.  Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Wiederherstellen einer Datenbank in einer anderen Region nach dem Ausfall eines Rechenzentrums in einer Azure-Region
 <!-- Explain this scenario -->

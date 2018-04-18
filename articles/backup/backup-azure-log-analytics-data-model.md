@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics-Datenmodell für Azure Backup"
-description: "In diesem Artikel werden die Details des Log Analytics-Datenmodells für Azure Backup-Daten vorgestellt."
+title: Log Analytics-Datenmodell für Azure Backup
+description: In diesem Artikel werden die Details des Log Analytics-Datenmodells für Azure Backup-Daten vorgestellt.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: dfd5c73d-0d34-4d48-959e-1936986f9fc0
 ms.service: backup
 ms.devlang: na
@@ -15,14 +15,14 @@ ms.workload: storage-backup-recovery
 ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 041a8835a1dd185739b23d4073fd5811bb4490b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d55ec8ac4416fe0a082812584552462292b6dbb7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
-Dieser Artikel beschreibt das Datenmodell, das für die Pushübertragung von Berichtsdaten an Log Analytics verwendet wird. Mit diesem Datenmodell können Sie benutzerdefinierte Abfragen und Dashboards erstellen und in OMS verwenden. 
+Dieser Artikel beschreibt das Datenmodell, das für die Pushübertragung von Berichtsdaten an Log Analytics verwendet wird. Mit diesem Datenmodell können Sie benutzerdefinierte Abfragen und Dashboards erstellen und in Log Analytics verwenden. 
 
 ## <a name="using-azure-backup-data-model"></a>Verwenden des Azure Backup-Datenmodells
 Sie können die folgenden im Rahmen des Datenmodells bereitgestellten Felder verwenden, um visuelle Elemente, benutzerdefinierte Abfragen und ein Dashboard gemäß Ihren Anforderungen zu erstellen.
@@ -30,7 +30,7 @@ Sie können die folgenden im Rahmen des Datenmodells bereitgestellten Felder ver
 ### <a name="alert"></a>Warnung
 Diese Tabelle enthält Details zu warnungsbezogenen Feldern.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | AlertUniqueId_s |Text |Eindeutige ID der generierten Warnung |
 | AlertType_s |Text |Typ der generierten Warnung, z.B. Sicherung |
@@ -43,7 +43,7 @@ Diese Tabelle enthält Details zu warnungsbezogenen Feldern.
 | State_s |Text |Aktueller Status des Warnungsobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für die Sicherung, zu der diese Warnung gehört, z.B. IaaSVM, FileFolder |
 | NameVorgang |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: Warnung |
-| Kategorie |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
+| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | Ressource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | ProtectedServerUniqueId_s |Text |Eindeutige ID der geschützten Ressource, zu der diese Warnung gehört |
 | VaultUniqueId_s |Text |Eindeutige ID der geschützten Ressource, zu der diese Warnung gehört |
@@ -57,7 +57,7 @@ Diese Tabelle enthält Details zu warnungsbezogenen Feldern.
 ### <a name="backupitem"></a>BackupItem
 Diese Tabelle enthält Details zu Feldern in Bezug auf Sicherungselemente.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | EventName_s |Text |Dieses Feld stellt den Namen des Ereignisses dar, es lautet immer „AzureBackupCentralReport“ |  
 | BackupItemUniqueId_s |Text |Eindeutige ID des Sicherungselements |
@@ -71,7 +71,7 @@ Diese Tabelle enthält Details zu Feldern in Bezug auf Sicherungselemente.
 | State_s |Text |Aktueller Status des Sicherungselementobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für die Sicherung, zu der dieses Sicherungselement gehört, z.B. IaaSVM, FileFolder |
 | NameVorgang |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: BackupItem |
-| Kategorie |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
+| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | Ressource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | SourceSystem |Text |Quellsystem der aktuellen Daten: Azure |
 | ResourceId |Text |Dieses Feld repräsentiert die ID der Ressource, für die Daten erfasst werden; zeigt die Recovery Services-Tresor-ID an |
@@ -83,7 +83,7 @@ Diese Tabelle enthält Details zu Feldern in Bezug auf Sicherungselemente.
 ### <a name="backupitemassociation"></a>BackupItemAssociation
 Diese Tabelle enthält Details zur Zuordnung von Sicherungselementen zu verschiedenen Entitäten.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | EventName_s |Text |Dieses Feld stellt den Namen des Ereignisses dar, es lautet immer „AzureBackupCentralReport“ |  
 | BackupItemUniqueId_s |Text |Eindeutige ID des Sicherungselements |
@@ -91,7 +91,7 @@ Diese Tabelle enthält Details zur Zuordnung von Sicherungselementen zu verschie
 | State_s |Text |Aktueller Status des Zuordnungsobjekts für das Sicherungselement, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für die Sicherung, zu der dieses Sicherungselement gehört, z.B. IaaSVM, FileFolder |
 | NameVorgang |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: BackupItemAssociation |
-| Kategorie |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
+| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | Ressource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | PolicyUniqueId_g |Text |Eindeutige ID zur Identifizierung der Richtlinie, der das Sicherungselement zugeordnet ist |
 | ProtectedServerUniqueId_s |Text |Eindeutige ID des geschützten Servers, zu dem dieses Sicherungselement gehört |
@@ -106,7 +106,7 @@ Diese Tabelle enthält Details zur Zuordnung von Sicherungselementen zu verschie
 ### <a name="job"></a>Auftrag
 Diese Tabelle enthält Details zu auftragsbezogenen Feldern.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | EventName_s |Text |Dieses Feld stellt den Namen des Ereignisses dar, es lautet immer „AzureBackupCentralReport“ |
 | BackupItemUniqueId_s |Text |Eindeutige ID des Sicherungselements, zu dem dieser Auftrag gehört |
@@ -114,7 +114,7 @@ Diese Tabelle enthält Details zu auftragsbezogenen Feldern.
 | State_s |Text |Aktueller Status des Auftragsobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für die Sicherung, zu der dieser Auftrag gehört, z.B. IaaSVM, FileFolder |
 | NameVorgang |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: Auftrag |
-| Kategorie |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
+| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | Ressource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | ProtectedServerUniqueId_s |Text |Eindeutige ID der geschützten Ressource, zu der dieser Auftrag gehört |
 | VaultUniqueId_s |Text |Eindeutige ID der geschützten Ressource, zu der dieser Auftrag gehört |
@@ -136,14 +136,14 @@ Diese Tabelle enthält Details zu auftragsbezogenen Feldern.
 ### <a name="policy"></a>Richtlinie
 Diese Tabelle enthält Details zu richtlinienbezogenen Feldern.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | EventName_s |Text |Dieses Feld stellt den Namen des Ereignisses dar, es lautet immer „AzureBackupCentralReport“ |
 | SchemaVersion_s |Text |Dieses Feld gibt die aktuelle Version des Schemas an: **V1** |
 | State_s |Text |Aktueller Status des Richtlinienobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für die Sicherung, zu der diese Richtlinie gehört, z.B. IaaSVM, FileFolder |
 | NameVorgang |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: Richtlinie |
-| Kategorie |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
+| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | Ressource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | PolicyUniqueId_g |Text |Eindeutige ID zur Bezeichnung der Richtlinie |
 | PolicyName_s |Text |Name der definierten Richtlinie |
@@ -176,14 +176,14 @@ Diese Tabelle enthält Details zu richtlinienbezogenen Feldern.
 ### <a name="policyassociation"></a>PolicyAssociation
 Diese Tabelle enthält Details zur Zuordnung von Richtlinien zu verschiedenen Entitäten.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | EventName_s |Text |Dieses Feld stellt den Namen des Ereignisses dar, es lautet immer „AzureBackupCentralReport“ |
 | SchemaVersion_s |Text |Dieses Feld gibt die aktuelle Version des Schemas an: **V1** |
 | State_s |Text |Aktueller Status des Richtlinienobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für die Sicherung, zu der diese Richtlinie gehört, z.B. IaaSVM, FileFolder |
 | NameVorgang |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: PolicyAssociation |
-| Kategorie |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
+| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | Ressource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | PolicyUniqueId_g |Text |Eindeutige ID zur Bezeichnung der Richtlinie |
 | VaultUniqueId_s |Text |Eindeutige ID des Tresors, zu dem diese Richtlinie gehört |
@@ -197,7 +197,7 @@ Diese Tabelle enthält Details zur Zuordnung von Richtlinien zu verschiedenen En
 ### <a name="protectedserver"></a>ProtectedServer
 Diese Tabelle enthält Details zu Feldern in Bezug auf geschützte Server.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | EventName_s |Text |Dieses Feld stellt den Namen des Ereignisses dar, es lautet immer „AzureBackupCentralReport“ |
 | ProtectedServerName_s |Text |Name des geschützten Servers |
@@ -205,7 +205,7 @@ Diese Tabelle enthält Details zu Feldern in Bezug auf geschützte Server.
 | State_s |Text |Aktueller Status des Objekts des geschützten Servers, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für die Sicherung, zu der dieser geschützte Server gehört, z.B. IaaSVM, FileFolder |
 | NameVorgang |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: ProtectedServer |
-| Kategorie |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
+| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | Ressource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | ProtectedServerUniqueId_s |Text |Eindeutige ID des geschützten Servers |
 | RegisteredContainerId_s |Text |ID des Containers, der für die Sicherung registriert ist |
@@ -222,14 +222,14 @@ Diese Tabelle enthält Details zu Feldern in Bezug auf geschützte Server.
 ### <a name="protectedserverassociation"></a>ProtectedServerAssociation
 Diese Tabelle enthält Details zur Zuordnung von geschützten Servern zu anderen Entitäten.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | EventName_s |Text |Dieses Feld stellt den Namen des Ereignisses dar, es lautet immer „AzureBackupCentralReport“ |
 | SchemaVersion_s |Text |Dieses Feld gibt die aktuelle Version des Schemas an: **V1** |
 | State_s |Text |Aktueller Status des Objekts der Zuordnung für den geschützten Server, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für die Sicherung, zu der dieser geschützte Server gehört, z.B. IaaSVM, FileFolder |
 | NameVorgang |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: ProtectedServerAssociation |
-| Kategorie |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
+| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | Ressource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | ProtectedServerUniqueId_s |Text |Eindeutige ID des geschützten Servers |
 | VaultUniqueId_s |Text |Eindeutige ID des Tresors, zu dem dieser geschützte Server gehört |
@@ -243,7 +243,7 @@ Diese Tabelle enthält Details zur Zuordnung von geschützten Servern zu anderen
 ### <a name="storage"></a>Speicher
 Diese Tabelle enthält Details zu speicherbezogenen Feldern.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | CloudStorageInBytes_s |Dezimalzahl |Von Sicherungen belegter Sicherungsspeicher in der Cloud, berechnet anhand des letzten Werts |
 | ProtectedInstances_s |Dezimalzahl |Anzahl der geschützten Instanzen, die zum Berechnen von Front-End-Speicher in der Abrechnung verwendet werden, berechnet anhand des letzten Werts |
@@ -252,7 +252,7 @@ Diese Tabelle enthält Details zu speicherbezogenen Feldern.
 | State_s |Text |Aktueller Status des Speicherobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für die Sicherung, zu der dieser Speicher gehört, z.B. IaaSVM, FileFolder |
 | NameVorgang |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: Speicher |
-| Kategorie |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
+| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | Ressource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | ProtectedServerUniqueId_s |Text |Eindeutige ID des geschützten Servers, für den der Speicher berechnet wird |
 | VaultUniqueId_s |Text |Eindeutige ID des Tresors, für den der Speicher berechnet wird |
@@ -266,13 +266,13 @@ Diese Tabelle enthält Details zu speicherbezogenen Feldern.
 ### <a name="vault"></a>Tresor
 Diese Tabelle enthält Details zu tresorbezogenen Feldern.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | EventName_s |Text |Dieses Feld stellt den Namen des Ereignisses dar, es lautet immer „AzureBackupCentralReport“ |
 | SchemaVersion_s |Text |Dieses Feld gibt die aktuelle Version des Schemas an: **V1** |
 | State_s |Text |Aktueller Status des Tresorobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | NameVorgang |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: Tresor |
-| Kategorie |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
+| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | Ressource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | VaultUniqueId_s |Text |Eindeutige ID des Tresors |
 | VaultName_s |Text |Name des Tresors |
@@ -286,4 +286,4 @@ Diese Tabelle enthält Details zu tresorbezogenen Feldern.
 | ResourceType |Text |Dieses Feld repräsentiert den Typ der Ressource, für die Daten erfasst werden: Tresore |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie das Datenmodell zum Erstellen von Azure Backup-Berichten überprüft haben, können Sie mit dem [Erstellen von Dashboards](../log-analytics/log-analytics-dashboards.md) in Log Analytics und OMS beginnen.
+Nachdem Sie das Datenmodell zum Erstellen von Azure Backup-Berichten überprüft haben, können Sie mit dem [Erstellen von Dashboards](../log-analytics/log-analytics-dashboards.md) in Log Analytics beginnen.

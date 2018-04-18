@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: 95c11de3a1aed680d37dd86c1783ac8bee7ffec3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3b37afc9d768313f6cc202eeecca22528cc57b07
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Vorbereiten der Sicherung von Workloads per Azure Backup Server
 > [!div class="op_single_selector"]
@@ -183,7 +183,7 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
 2. Klicken Sie auf der Willkommensseite auf die Schaltfläche **Weiter** . Sie gelangen zum Abschnitt *Voraussetzungsüberprüfungen* . Klicken Sie auf diesem Bildschirm auf **Überprüfen**, um zu ermitteln, ob die Hardware- und Softwarevoraussetzungen für Azure Backup Server erfüllt sind. Wenn alle Voraussetzungen erfolgreich erfüllt wurden, sehen Sie eine Meldung, die darauf hinweist, dass der Computer die Anforderungen erfüllt. Klicken Sie auf die Schaltfläche **Weiter** .
 
     ![Azure Backup Server – Willkommen und Voraussetzungsüberprüfung](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Für Microsoft Azure Backup Server ist SQL Server Standard erforderlich, und im Azure Backup Server-Installationspaket sind die passenden SQL Server-Binärdaten enthalten. Beim Starten einer neuen Azure Backup Server-Installation sollten Sie die Option **Neue Instanz von SQL Server bei diesem Setup installieren** auswählen und auf die Schaltfläche **Prüfen und installieren** klicken. Nachdem die erforderlichen Komponenten erfolgreich installiert wurden, klicken Sie auf **Weiter**.
+3. Für Microsoft Azure Backup Server ist SQL Server Standard erforderlich. Außerdem sind dem Azure Backup Server-Installationspaket die passenden SQL Server-Binärdateien beigefügt, die Sie benötigen, falls Sie keine eigene SQL-Instanz nutzen möchten. Beim Starten einer neuen Azure Backup Server-Installation sollten Sie die Option **Neue Instanz von SQL Server bei diesem Setup installieren** auswählen und auf die Schaltfläche **Prüfen und installieren** klicken. Nachdem die erforderlichen Komponenten erfolgreich installiert wurden, klicken Sie auf **Weiter**.
 
     ![Azure Backup Server – SQL-Überprüfung](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 

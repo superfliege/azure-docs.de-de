@@ -1,8 +1,8 @@
 ---
-title: "Verwenden von Skriptaktionen zum Installieren von Solr in Hadoop-Clustern – Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mithilfe von Skriptaktionen HDInsight-Cluster mit Solr anpassen können."
+title: Verwenden von Skriptaktionen zum Installieren von Solr in Hadoop-Clustern – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe von Skriptaktionen HDInsight-Cluster mit Solr anpassen können.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: 6efb7ea26c3cdf7748fff4b02b5810c85cc41e1a
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Installieren und Verwenden von Solr in Windows-basierten HDInsight-Clustern
 
@@ -30,7 +30,7 @@ Erfahren Sie, wie Sie mithilfe von Skriptaktionen Windows-basierte HDInsight-Clu
 > Die Schritte in diesem Dokument funktionieren nur mit einem Windows-basierten HDInsight-Cluster. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informationen zur Verwendung von Solr mit einem Linux-basierten Cluster finden Sie unter [Installieren und Verwenden von Solr in HDinsight Hadoop-Clustern (Linux)](hdinsight-hadoop-solr-install-linux.md).
 
 
-Mithilfe von *Skriptaktionen*können Sie Solr in einem beliebigen Clustertyp (Hadoop, Storm, HBase, Spark) in Azure HDInsight installieren. Ein Beispielskript zum Installieren von Solr in einem HDInsight-Cluster steht in einem schreibgeschützten Azure-Speicherblob unter [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)zur Verfügung.
+Mithilfe von *Skriptaktionen*können Sie Solr in einem beliebigen Clustertyp (Hadoop, Storm, HBase, Spark) in Azure HDInsight installieren. Ein Beispielskript zum Installieren von Solr in einem HDInsight-Cluster ist über ein schreibgeschütztes Azure-Speicherblob unter [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) verfügbar.
 
 Das Beispielskript funktioniert nur mit HDInsight-Clustern der Version 3.1. Weitere Informationen zu HDInsight-Clusterversionen finden Sie unter [HDInsight-Clusterversionen](hdinsight-component-versioning.md).
 
@@ -159,7 +159,7 @@ Sie müssen mit der Indizierung von Solr mit einigen Datendateien beginnen. Sie 
              </lst>
              <str name="status">OK</str>
            </response>
-   2. Navigieren Sie in der Remotesitzung zu „{SOLR_HOME}\{{Collection}\data“. Für den mit dem Beispielskript erstellten Cluster ist dies **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**. An dieser Stelle sollte einen momentaufnahmeordner, der mit einem ähnlichen Namen erstellt **Momentaufnahme.* Timestamp ***.
+   2. Navigieren Sie in der Remotesitzung zu „{SOLR_HOME}\{{Collection}\data“. Für den mit dem Beispielskript erstellten Cluster ist dies **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**. An diesem Speicherort sollte ein Momentaufnahmenordner mit einem Namen wie **snapshot.*timestamp*** erstellt werden.
    3. Komprimieren Sie den Ordner für Momentaufnahmen im ZIP.-Format, und laden Sie ihn in Azure Blob Storage hoch. Navigieren Sie über die Hadoop-Befehlszeile zum Verzeichnis des Momentaufnahmenordners mithilfe des folgenden Befehls:
 
              hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
@@ -167,10 +167,10 @@ Sie müssen mit der Indizierung von Solr mit einigen Datendateien beginnen. Sie 
        Mit diesem Befehl wird die Momentaufnahme in "/example/data/" unter der Container im Standardspeicherkonto kopiert, das dem Cluster zugeordnet ist.
 
 ## <a name="install-solr-using-aure-powershell"></a>Installieren von Solr mithilfe von Azure PowerShell
-Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Das Beispiel veranschaulicht das Installieren von Spark mithilfe von Azure PowerShell. Sie müssen das Skript für die Verwendung von [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)anpassen.
+Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Das Beispiel veranschaulicht das Installieren von Spark mithilfe von Azure PowerShell. Sie müssen das Skript für die Verwendung von [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) anpassen.
 
 ## <a name="install-solr-using-net-sdk"></a>Installieren von Solr mithilfe des .NET SDK
-Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). Das Beispiel veranschaulicht das Installieren von Spark mithilfe des .NET SDK. Sie müssen das Skript für die Verwendung von [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)anpassen.
+Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). Das Beispiel veranschaulicht das Installieren von Spark mithilfe des .NET SDK. Sie müssen das Skript für die Verwendung von [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) anpassen.
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Installieren und Verwenden von Solr in HDInsight Hadoop-Clustern (Linux)](hdinsight-hadoop-solr-install-linux.md)

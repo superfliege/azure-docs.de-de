@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 42fdfa2eb629351c38fb72c20a62cd7d78acf229
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -70,7 +70,7 @@ Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtlinie ausge
 * `all`: Ressourcengruppen und alle Ressourcentypen werden ausgewertet. 
 * `indexed`: Nur Ressourcentypen, die Tags und Speicherort unterstützen, werden ausgewertet.
 
-Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle über das Portal erstellten Richtliniendefinitionen verwenden für „mode“ die Option `all`. Wenn Sie PowerShell oder Azure CLI verwenden, müssen Sie den **mode**-Parameter manuell angeben.
+Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle über das Portal erstellten Richtliniendefinitionen verwenden für „mode“ die Option `all`. Wenn Sie PowerShell oder Azure CLI verwenden, müssen Sie den **mode**-Parameter manuell angeben. Wenn die Richtliniendefinition keinen Wert für **mode** enthält, wird aus Gründen der Abwärtskompatibilität standardmäßig `indexed` festgelegt.
 
 `indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Die einzige Ausnahme hierbei ist **Ressourcengruppen**. Richtlinien zum Erzwingen von Speicherort oder Tags einer Ressourcengruppe sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroup` abzielen. Ein Beispiel finden Sie unter [Ressourcengruppen-Tags erzwingen](scripts/enforce-tag-rg.md).
 
@@ -102,6 +102,8 @@ Innerhalb der Metadateneigenschaft können Sie mit **strongType** eine Liste der
 * `"resourceTypes"`
 * `"storageSkus"`
 * `"vmSKUs"`
+* `"existingResourceGroups"`
+* `"omsWorkspace"`
 
 In der Richtlinienregel wird die folgende Syntax verwendet, um auf Parameter zu verweisen:
 

@@ -1,24 +1,19 @@
 ---
-title: Datengesteuerte Debuggen bei Azure Stream Analytics mithilfe des Auftragsdiagramms | Microsoft-Dokumentation
-description: Behandeln Sie Probleme in Bezug auf Ihre Stream Analytics-Aufträge mithilfe von Auftragsdiagrammen und Metriken.
-keywords: ''
-documentationcenter: ''
+title: Datengesteuertes Debuggen in Azure Stream Analytics
+description: Dieser Artikel beschreibt die Behandlung von Problemen in Azure Stream Analytics-Aufträgen mithilfe von Auftragsdiagrammen und Metriken im Azure-Portal.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 05/01/2017
 ms.author: jeanb
-ms.openlocfilehash: 65eeeee7daa22b94074f55defdfd1219049774c9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 05/01/2017
+ms.openlocfilehash: e6b2b7f4c01a5280c2fb3a5c17158b8dcc2797d4
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Datengesteuertes Debuggen mithilfe des Auftragsdiagramms
 
@@ -85,7 +80,7 @@ Handelt es sich beim vorherigen Abfrageschritt um einen Eingabeprozessor, beantw
 
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um weitere Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Um weitere Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

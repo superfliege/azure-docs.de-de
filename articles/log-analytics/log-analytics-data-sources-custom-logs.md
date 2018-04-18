@@ -1,8 +1,8 @@
 ---
 title: Erfassen benutzerdefinierter Protokolle in Azure Log Analytics | Microsoft-Dokumentation
-description: "Log Analytics kann Ereignisse aus Textdateien auf Windows- und Linux-Computern sammeln.  Dieser Artikel enthält Informationen zum Definieren eines neuen benutzerdefinierten Protokolls sowie Details zu den Datensätzen, die im Log Analytics-Arbeitsbereich erstellt werden."
+description: Log Analytics kann Ereignisse aus Textdateien auf Windows- und Linux-Computern sammeln.  Dieser Artikel enthält Informationen zum Definieren eines neuen benutzerdefinierten Protokolls sowie Details zu den Datensätzen, die im Log Analytics-Arbeitsbereich erstellt werden.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2017
+ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
 Mithilfe der Datenquelle „Custom Logs“ (Benutzerdefinierte Protokolle) in Log Analytics können Ereignisse aus Textdateien auf Windows- und Linux-Computern gesammelt werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien.  Mithilfe des Log Analytics-Features [Benutzerdefinierte Felder](log-analytics-custom-fields.md) können gesammelte Datensätze im Protokoll individuell analysiert und einzelnen Feldern zugeordnet werden.
@@ -31,7 +31,7 @@ Die zu sammelnden Protokolldateien müssen folgende Kriterien erfüllen:
 
     JJJJ-MM-TT HH:MM:SS <br>M/T/JJJJ HH:MM:SS AM/PM <br>Mon TT,JJJJ HH:MM:SS
 
-- Die Protokolldatei darf keine zirkulären Updates zulassen, bei denen die Datei mit neuen Einträgen überschrieben wird.
+- Die Protokolldatei darf keine zirkuläre Protokollierung oder Protokollrotation zulassen, bei der die Datei mit neuen Einträgen überschrieben wird.
 - Die Protokolldatei muss ASCII- oder UTF-8-Codierung verwenden.  Andere Formate wie UTF-16 werden nicht unterstützt.
 
 >[!NOTE]

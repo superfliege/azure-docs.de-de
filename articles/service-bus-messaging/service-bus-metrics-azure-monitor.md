@@ -1,12 +1,12 @@
 ---
 title: Azure Service Bus-Metriken in Azure Monitor (Vorschauversion) | Microsoft-Dokumentation
-description: "Überwachen von Service Bus-Entitäten mit Azure Monitor"
+description: Überwachen von Service Bus-Entitäten mit Azure Monitor
 services: service-bus-messaging
 documentationcenter: .NET
 author: christianwolf42
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: 20115897bb5ae2638588e79d80700fa8ece06104
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3660f0a6794a2fd784ec8846177da7effe7fe681
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Service Bus-Metriken in Azure Monitor (Vorschauversion)
 
@@ -28,7 +28,7 @@ Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende �
 
 ## <a name="access-metrics"></a>Zugreifen auf Metriken
 
-Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie die Operation Management Suite (OMS) und Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
+Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie Log Analytics und Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
 
 Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dies wird in den [Diagnoseeinstellungen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) in Azure Monitor konfiguriert.
 
@@ -46,7 +46,7 @@ Bei Metriken mit Dimensionsunterstützung müssen Sie den gewünschten Dimension
 
 ## <a name="billing"></a>Abrechnung
 
-Die Verwendung von Metriken in Azure Monitor ist in der Vorschauversion kostenlos. Wenn Sie allerdings zusätzliche Lösungen zur Metrikdatenerfassung verwenden, fallen unter Umständen Kosten für diese Lösungen an. So werden etwa Gebühren für Azure Storage berechnet, wenn Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Kosten fallen auch an, wenn Sie Metrikdaten für eine ausführlichere Analyse an die Operation Management Suite (OMS) streamen.
+Die Verwendung von Metriken in Azure Monitor ist in der Vorschauversion kostenlos. Wenn Sie allerdings zusätzliche Lösungen zur Metrikdatenerfassung verwenden, fallen unter Umständen Kosten für diese Lösungen an. So werden etwa Gebühren für Azure Storage berechnet, wenn Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Kosten für Log Analytics fallen auch an, wenn Sie Metrikdaten für eine ausführlichere Analyse an Log Analytics streamen.
 
 Die folgenden Metriken bieten Ihnen eine Übersicht über die Integrität eines Diensts. 
 

@@ -6,7 +6,7 @@ documentationcenter: na
 author: fhryo-msft
 manager: cbrooks
 editor: fhryo-msft
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: d30a99044e335723e5d2c4bbd71fab7e4fd51145
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e8e9f9c0cbe044b2aa459898f2d3900db10d200a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-storage-metrics-in-azure-monitor-preview"></a>Azure Storage-Metriken in Azure Monitor (Vorschauversion)
 
@@ -28,7 +28,7 @@ Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende �
 
 ## <a name="access-metrics"></a>Zugreifen auf Metriken
 
-Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie die Operation Management Suite und Event Hub auf Metriken zugreifen. Weitere Informationen finden Sie im [Überblick über Metriken in Microsoft Azure](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie Log Analytics und Event Hub auf Metriken zugreifen. Weitere Informationen finden Sie im [Überblick über Metriken in Microsoft Azure](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dies wird in den [Diagnoseeinstellungen](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) in Azure Monitor konfiguriert.
 
@@ -141,7 +141,7 @@ Die folgende Antwort enthält Metrikwerte im JSON-Format:
 
 ## <a name="billing-for-metrics"></a>Abrechnung für Metriken
 
-Die Verwendung von Metriken in Azure Monitor ist derzeit kostenlos. Wenn Sie allerdings zusätzliche Lösungen zur Metrikdatenerfassung verwenden, fallen unter Umständen Kosten für diese Lösungen an. So werden etwa Gebühren für Azure Storage berechnet, wenn Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Kosten fallen auch an, wenn Sie Metrikdaten für eine ausführlichere Analyse an die Operation Management Suite (OMS) streamen.
+Die Verwendung von Metriken in Azure Monitor ist derzeit kostenlos. Wenn Sie allerdings zusätzliche Lösungen zur Metrikdatenerfassung verwenden, fallen unter Umständen Kosten für diese Lösungen an. So werden etwa Gebühren für Azure Storage berechnet, wenn Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Oder Ihre Gebühren werden über Log Analytics berechnet, wenn Sie Metrikdaten zur Durchführung einer ausführlicheren Analyse an Log Analytics streamen.
 
 ## <a name="understanding-resource-id-for-services-in-azure-storage"></a>Grundlegendes zur Ressourcen-ID für Dienste in Azure Storage
 
@@ -194,13 +194,13 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 ### <a name="account-level"></a>Kontoebene
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | UsedCapacity | Die vom Speicherkonto beanspruchte Speichermenge. Bei Standardspeicherkonten ist das die Summe der von Blob, Table, File und Queue beanspruchten Kapazität. Bei Storage Premium- und Blob Storage-Konten ist es der gleiche Wert wie für „BlobCapacity“. <br/><br/> Einheit: Bytes <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 |
 
 ### <a name="blob-storage"></a>Blob Storage
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | BlobCapacity | Der gesamte im Speicherkonto beanspruchte Blobspeicher. <br/><br/> Einheit: Bytes <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 <br/> Dimension: BlobType ([Definition](#metrics-dimensions)) |
 | BlobCount    | Die Anzahl von im Speicherkonto gespeicherten Blobs. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 <br/> Dimension: BlobType ([Definition](#metrics-dimensions)) |
@@ -208,7 +208,7 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 ### <a name="table-storage"></a>Table Storage
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | TableCapacity | Der vom Speicherkonto beanspruchte Table-Speicher. <br/><br/> Einheit: Bytes <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 |
 | TableCount   | Die Anzahl von Tabellen im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 |
@@ -216,7 +216,7 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 ### <a name="queue-storage"></a>Queue Storage
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | QueueCapacity | Der vom Speicherkonto beanspruchte Queue-Speicher. <br/><br/> Einheit: Bytes <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 |
 | QueueCount   | Die Anzahl von Warteschlangen im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 |
@@ -224,7 +224,7 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 ### <a name="file-storage"></a>File Storage
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | FileCapacity | Der vom Speicherkonto beanspruchte File-Speicher. <br/><br/> Einheit: Bytes <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 |
 | FileCount   | Die Anzahl von Dateien im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 |
@@ -236,25 +236,25 @@ Transaktionsmetriken werden im Minutentakt von Azure Storage an Azure Monitor ge
 
 Azure Storage stellt in Azure Monitor folgende Transaktionsmetriken bereit:
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | Transaktionen | Die Anzahl von Anforderungen, die an einen Speicherdienst oder an den angegebenen API-Vorgang gerichtet wurden. Diese Anzahl umfasst erfolgreiche und nicht erfolgreiche Anforderungen sowie Anforderungen, die zu Fehlern geführt haben. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Verfügbare Dimensionen: ResponseType, GeoType, ApiName ([Definition](#metrics-dimensions))<br/> Beispielwert: 1024 |
 | Eingehende Daten | Die eingehende Datenmenge. Dieser Wert umfasst an Azure Storage gerichtete eingehende Daten von einem externen Client sowie eingehende Daten innerhalb von Azure. <br/><br/> Einheit: Bytes <br/> Aggregationstyp: Summe <br/> Verfügbare Dimensionen: GeoType, ApiName ([Definition](#metrics-dimensions)) <br/> Beispielwert: 1024 |
 | Ausgehende Daten | Die ausgehende Datenmenge. Dieser Wert umfasst an Azure Storage gerichtete ausgehende Daten von einem externen Client sowie ausgehende Daten innerhalb von Azure. Der Wert stellt somit keine gebührenpflichtigen ausgehenden Daten dar. <br/><br/> Einheit: Bytes <br/> Aggregationstyp: Summe <br/> Verfügbare Dimensionen: GeoType, ApiName ([Definition](#metrics-dimensions)) <br/> Beispielwert: 1024 |
 | SuccessServerLatency | Die durchschnittliche Verarbeitungszeit einer erfolgreichen Anforderung durch Azure Storage. Dieser Wert beinhaltet nicht die in „SuccessE2ELatency“ angegebene Netzwerklatenz. <br/><br/> Einheit: Millisekunden <br/> Aggregationstyp: Durchschnitt <br/> Verfügbare Dimensionen: GeoType, ApiName ([Definition](#metrics-dimensions)) <br/> Beispielwert: 1024 |
 | SuccessE2ELatency | Die durchschnittliche End-to-End-Wartezeit (in Millisekunden) bei erfolgreichen Anforderungen, die an einen Speicherdienst oder an den angegebenen API-Vorgang gerichtet wurden. Dieser Wert umfasst die erforderliche Verarbeitungszeit in Azure Storage für das Lesen der Anforderung, das Senden der Antwort und das Empfangen der Antwortbestätigung. <br/><br/> Einheit: Millisekunden <br/> Aggregationstyp: Durchschnitt <br/> Verfügbare Dimensionen: GeoType, ApiName ([Definition](#metrics-dimensions)) <br/> Beispielwert: 1024 |
-| Availability | Die Verfügbarkeit (in Prozent) für den Speicherdienst oder den angegebenen API-Vorgang. Zur Berechnung der Verfügbarkeit wird der Wert der gesamten gebührenpflichtigen Anforderungen durch die Anzahl zutreffender Anforderungen geteilt. Dabei werden auch Anforderungen einbezogen, die zu unerwarteten Fehlern geführt haben. Alle unerwarteten Fehler verringern die Verfügbarkeit für den Speicherdienst oder den angegebenen API-Vorgang. <br/><br/> Einheit: Prozent <br/> Aggregationstyp: Durchschnitt <br/> Verfügbare Dimensionen: GeoType, ApiName ([Definition](#metrics-dimensions)) <br/> Beispielwert: 99,99 |
+| Verfügbarkeit | Die Verfügbarkeit (in Prozent) für den Speicherdienst oder den angegebenen API-Vorgang. Zur Berechnung der Verfügbarkeit wird der Wert der gesamten gebührenpflichtigen Anforderungen durch die Anzahl entsprechender Anforderungen geteilt. Dabei werden auch Anforderungen einbezogen, die zu unerwarteten Fehlern geführt haben. Alle unerwarteten Fehler verringern die Verfügbarkeit für den Speicherdienst oder den angegebenen API-Vorgang. <br/><br/> Einheit: Prozent <br/> Aggregationstyp: Durchschnitt <br/> Verfügbare Dimensionen: GeoType, ApiName ([Definition](#metrics-dimensions)) <br/> Beispielwert: 99,99 |
 
 ## <a name="metrics-dimensions"></a>Metrikdimensionen
 
 Azure Storage unterstützt folgende Dimensionen für Metriken in Azure Monitor:
 
-| Dimensionsname | Beschreibung |
+| Dimensionsname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | BlobType | Die Art des Blobs (nur für Blobmetriken). Unterstützte Werte: **BlockBlob** und **PageBlob**. Anfügeblob ist in „BlockBlob“ enthalten. |
 | ResponseType | Transaktionsantworttyp. Verfügbaren Werte: <br/><br/> <li>ServerOtherError: Alle anderen serverseitigen Fehler (mit Ausnahme beschriebener Fehler). </li> <li> ServerBusyError: Authentifizierte Anforderung, die den HTTP-Statuscode 503 zurückgegeben hat. (Wird noch nicht unterstützt.) </li> <li> ServerTimeoutError: Authentifizierte Anforderung mit Timeout, die den HTTP-Statuscode 500 zurückgegeben hat. Das Timeout ist auf einen Serverfehler zurückzuführen. </li> <li> ThrottlingError: Summe clientseitiger und serverseitiger Drosselungsfehler. (Wird entfernt, sobald „ServerBusyError“ und „ClientThrottlingError“ unterstützt werden.) </li> <li> AuthorizationError: Authentifizierte Anforderung, die aufgrund eines nicht autorisierten Datenzugriffs oder aufgrund eines Autorisierungsfehlers nicht erfolgreich war. </li> <li> NetworkError: Authentifizierte Anforderung, die aufgrund von Netzwerkfehlern nicht erfolgreich war. Tritt üblicherweise auf, wenn ein Client vor Ablauf des Timeouts vorzeitig eine Verbindung trennt. </li> <li>  ClientThrottlingError: Clientseitige Drosselungsfehler. (Wird noch nicht unterstützt.) </li> <li> ClientTimeoutError: Authentifizierte Anforderung mit Timeout, die den HTTP-Statuscode 500 zurückgegeben hat. Wenn das Netzwerktimeout des Clients oder das Anforderungstimeout auf einen niedrigeren Wert festgelegt ist als vom Speicherdienst erwartet, handelt es sich um ein erwartetes Timeout. Andernfalls wird „ServerTimeoutError“ gemeldet. </li> <li> ClientOtherError: Alle anderen clientseitigen Fehler (mit Ausnahme beschriebener Fehler). </li> <li> Success: Erfolgreiche Anforderung.|
 | GeoType | Transaktion aus dem primären oder sekundären Cluster. Verfügbare Werte: „Primary“ und „Secondary“. Gilt für georedundanten Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) beim Lesen von Objekten aus dem sekundären Mandanten. |
-| ApiName | Der Name des Vorgangs. Beispiel: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Eine Liste mit allen Vorgangsnamen finden Sie [hier](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
+| ApiName | Der Name des Vorgangs. Beispiel:  <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Eine Liste mit allen Vorgangsnamen finden Sie [hier](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
 
 Bei Metriken mit Dimensionsunterstützung muss der Dimensionswert angegeben werden, um die entsprechenden Metrikwerte anzeigen zu können. Wenn Sie sich also beispielsweise erfolgreiche Antworten für **Transaktionen** ansehen möchten, müssen Sie die Dimension **ResponseType** nach **Success** filtern. Anderes Beispiel: Wenn Sie sich **BlobCount** für „Blockblob“ ansehen möchten, müssen Sie die Dimension **BlobType** nach **BlockBlob** filtern.
 
@@ -262,6 +262,6 @@ Bei Metriken mit Dimensionsunterstützung muss der Dimensionswert angegeben werd
 
 Legacymetriken stehen parallel zu den von Azure Monitor verwalteten Metriken zur Verfügung. Die Unterstützung bleibt unverändert, bis Azure Storage den Dienst für Legacymetriken einstellt. Der Einstellungsplan wird bekannt gegeben, wenn die von Azure Monitor verwalteten Metriken offiziell eingeführt werden.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)

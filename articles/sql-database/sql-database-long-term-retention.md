@@ -1,161 +1,66 @@
 ---
 title: Speichern von Sicherungen von Azure SQL-Datenbank bis zu 10 Jahre lang| Microsoft-Dokumentation
-description: Erfahren Sie, wie Azure SQL-Datenbank das Speichern von Sicherungen bis zu 10 Jahre lang unterstützt.
+description: Hier erfahren Sie, wie Azure SQL-Datenbank das Speichern vollständiger Datenbanksicherungen für bis zu zehn Jahre unterstützt.
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 2f31e89fce2746e57d6a670aef949d0d534af4c1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+ms.openlocfilehash: 51f00984a8f0d750bdb478ae4bc8093adad8108e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Speichern von Sicherungen von Azure SQL-Datenbank bis zu 10 Jahre lang
-Viele Anwendungen dienen gesetzlichen, ordnungsgemäßen oder anderen geschäftlichen Zwecken, die voraussetzen, dass Datenbanksicherungen länger als der Zeitraum von 7–35 Tagen, der für [automatischen Sicherungen](sql-database-automated-backups.md) von Azure SQL-Datenbank zur Verfügung gestellt wird, aufbewahrt werden. Mit dem Feature zur langfristigen Aufbewahrung von Sicherungen können Sie Ihre Sicherungen von SQL-Datenbank bis zu 10 Jahre lang in einem Azure Recovery Services-Tresor speichern. Sie können bis zu 1.000 Datenbanken pro Tresor speichern. Sie können dann jede Sicherung im Tresor auswählen, um sie als eine neue Datenbank wiederherzustellen.
+
+Viele Anwendungen dienen gesetzlichen, ordnungsgemäßen oder anderen geschäftlichen Zwecken, die voraussetzen, dass Datenbanksicherungen länger als der Zeitraum von 7–35 Tagen, der für [automatischen Sicherungen](sql-database-automated-backups.md) von Azure SQL-Datenbank zur Verfügung gestellt wird, aufbewahrt werden. Mithilfe des Features für die langfristige Aufbewahrung (Long-Term Retention, LTR) können Sie bestimmte vollständige Sicherungen von SQL-Datenbank in [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)-Blobspeicher bis zu zehn Jahre lang speichern. Sie können dann jede Sicherung als neue Datenbank wiederherstellen.
 
 > [!IMPORTANT]
-> Langfristige Aufbewahrung der Sicherung ist zurzeit in den folgenden Regionen als Vorschauversion verfügbar: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Indien, Mitte“, „Indien, Süden“, „Japan, Osten“, „Japan, Westen“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Europa, Westen“ und „USA, Westen“.
+> Die langfristige Aufbewahrung ist derzeit als Vorschauversion verfügbar. Vorhandene Sicherungen, die im Rahmen der vorherigen Vorschauversion dieses Features im Azure Services Recovery Service-Tresor gespeichert wurden, werden zu SQL Azure-Speicher migriert.<!-- and available in the following regions: Australia East, Australia Southeast, Brazil South, Central US, East Asia, East US, East US 2, India Central, India South, Japan East, Japan West, North Central US, North Europe, South Central US, Southeast Asia, West Europe, and West US.-->
 >
 
-> [!NOTE]
-> Sie können bis zu 200 Datenbanken pro Tresor innerhalb eines Zeitraums von 24 Stunden aktivieren. Wir empfehlen, dass Sie einen separaten Tresor für jeden Server verwenden, um die Auswirkung dieser Einschränkung zu minimieren. 
-> 
+## <a name="how-sql-database-long-term-retention-works"></a>Funktionsweise der langfristigen Aufbewahrung von SQL-Datenbank
 
-## <a name="how-sql-database-long-term-backup-retention-works"></a>Wie funktioniert die langfristige Aufbewahrung von Sicherungen von SQL-Datenbank?
+Die langfristige Sicherungsaufbewahrung nutzt die [automatischen Sicherungen von SQL-Datenbank](sql-database-automated-backups.md) für die Point-in-Time-Wiederherstellung (Point In Time Restore, PITR). Sie können eine Richtlinie für die langfristige Aufbewahrung für jede SQL-Datenbank konfigurieren und angeben, wie häufig die Sicherungen in den langfristigen Speicher kopiert werden sollen. Um von dieser Flexibilität zu profitieren, können Sie in der Richtlinie eine Kombination aus vier Parametern verwenden: wöchentliche Sicherungsaufbewahrung (W), monatliche Sicherungsaufbewahrung (M), jährliche Sicherungsaufbewahrung (Y) und Woche des Jahres (WeekOfYear). Wenn Sie den Parameter „W“ angeben, wird eine wöchentliche Sicherung in den langfristigen Speicher kopiert. Wenn Sie den Parameter „M“ angeben, wird eine in der ersten Woche jedes Monats erstellte Sicherung in den langfristigen Speicher kopiert. Wenn Sie den Parameter „Y“ angeben, wird eine Sicherung, die in der durch „WeekOfYear“ angegebenen Woche erstellt wird, in den langfristigen Speicher kopiert. Jede Sicherung wird für den durch diese Parameter angegebenen Zeitraum im langfristigen Speicher aufbewahrt. 
 
-Mithilfe der langfristigen Aufbewahrung von Sicherungen können Sie einen SQL-Datenbank-Server einem Azure Recovery Services-Tresor zuordnen. 
+Beispiele:
 
-* Sie müssen den Tresor im gleichen Azure-Abonnement erstellen, in dem der SQL-Server erstellt wurde, und er muss sich in der gleichen geografischen Region und Ressourcengruppe befinden. 
-* Dann konfigurieren Sie eine Beibehaltungsrichtlinie für jede beliebige Datenbank. Die Richtlinie sorgt dafür, dass die wöchentlichen vollständigen Datenbanksicherungen in den Recovery Services-Tresor kopiert werden und für die angegebene Beibehaltungsdauer (bis zu 10 Jahre) aufbewahrt werden. 
-* Sie können dann aus jeder dieser Datenbanksicherungen eine neue Datenbank auf jedem beliebigen Server innerhalb des Abonnements wiederherstellen. Azure Storage erstellt aus vorhandenen Sicherungen eine Kopie, die keine Auswirkungen auf die Leistung der vorhandenen Datenbank hat.
+-  W=0, M=0, Y=5, WeekOfYear=3
 
-> [!TIP]
-> Einen Leitfaden finden Sie unter [Konfigurieren und Wiederherstellen einer langfristig aufbewahrten Sicherung von Azure SQL-Datenbank](sql-database-long-term-backup-retention-configure.md).
+   Die dritte vollständige Sicherung jedes Jahres wird fünf Jahre lang aufbewahrt.
 
-## <a name="enable-long-term-backup-retention"></a>Langfristiges Aufbewahren von Sicherungen
+- W=0, M=3, Y=0
 
-So konfigurieren Sie die langfristige Beibehaltung der Sicherung für eine Datenbank:
+   Die erste vollständige Sicherung jedes Monats wird drei Monate lang aufbewahrt.
 
-1. Erstellen Sie einen Azure Recovery Services-Tresor in der gleichen Region, im gleichen Abonnement und in der gleichen Ressourcengruppe wie Ihren SQL-Datenbank-Server. 
-2. Registrieren Sie den Server im Tresor.
-3. Erstellen Sie eine Azure Recovery Services-Schutzrichtlinie.
-4. Wenden Sie die Schutzrichtlinie auf die Datenbanken an, die eine langfristige Aufbewahrung von Sicherungen erfordern.
+- W=12, M=0, Y=0
 
-Um die langfristige Aufbewahrung von automatisierten Datenbanksicherungen in einem Azure Recovery Services-Tresor zu konfigurieren, zu verwalten und wiederherzustellen, wenden Sie eine der folgenden Vorgehensweisen an:
+   Jede wöchentliche vollständige Sicherung wird zwölf Wochen lang aufbewahrt.
 
-* Im Azure-Portal: Klicken Sie auf **Langfristige Sicherungsaufbewahrung**, wählen Sie eine Datenbank aus, und klicken Sie dann auf **Konfigurieren**. 
+- W=6, M=12, Y=10, WeekOfYear=16
 
-   ![Auswählen einer Datenbank für die langfristige Aufbewahrung von Sicherungen](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
+   Jede wöchentliche vollständige Sicherung wird sechs Wochen lang aufbewahrt. Eine Ausnahme stellt die erste vollständige Sicherung jeden Monats dar: Sie wird zwölf Monate lang aufbewahrt. Eine weitere Ausnahme stellt die vollständige Sicherung dar, die in der 16. Woche des Jahres erstellt wurde: Sie wird zehn Jahre lang aufbewahrt. 
 
-* Mit PowerShell: Weitere Informationen finden Sie unter [Konfigurieren und Wiederherstellen einer langfristig aufbewahrten Sicherung von Azure SQL-Datenbank](sql-database-long-term-backup-retention-configure.md).
+Die folgende Tabelle veranschaulicht den Rhythmus und den Ablauf der langfristigen Sicherungen für die folgenden Richtlinie:
 
-## <a name="restore-a-database-thats-stored-with-the-long-term-backup-retention-feature"></a>Wiederherstellen einer Datenbank, die mit dem Feature zur langfristigen Aufbewahrung von Sicherungen gespeichert wurde
+W=12 (12 Wochen bzw. 84 Tage), M=12 (12 Monate bzw. 365 Tage), Y=10 (10 Jahre bzw. 3.650 Tage), WeekOfYear=15 (Woche nach dem 15. April)
 
-So stellen Sie Datenbanken aus einer langfristigen Aufbewahrung von Sicherungen wieder her
+   ![LTR-Beispiel](./media/sql-database-long-term-retention/ltr-example.png)
 
-1. Listen Sie den Tresor auf, in dem die Sicherung gespeichert ist.
-2. Listen Sie den Container auf, der Ihrem logischen Server zugeordnet ist.
-3. Listen Sie die Datenquelle innerhalb des Tresors auf, die Ihrer Datenbank zugeordnet ist.
-4. Listen Sie die für die Wiederherstellung verfügbaren Wiederherstellungspunkte auf.
-5. Stellen Sie die Datenbank aus dem Wiederherstellungspunkt auf dem Zielserver innerhalb Ihres Abonnements wieder her.
 
-Um die langfristige Aufbewahrung von automatisierten Datenbanksicherungen in einem Azure Recovery Services-Tresor zu konfigurieren, zu verwalten und wiederherzustellen, wenden Sie eine der folgenden Vorgehensweisen an:
+ 
+Wenn Sie die obige Richtlinie ändern und „W=0“ (keine wöchentlichen Sicherungen) festlegen, ändert sich der Rhythmus der Sicherungskopien wie in der obigen Tabelle durch die hervorgehobenen Daten gezeigt. Der zum Aufbewahren dieser Sicherungen benötigte Speicherplatz verringert sich entsprechend. Hinweis: Die LTR-Kopien werden vom Azure-Speicherdienst erstellt, sodass der Kopiervorgang die Leistung der vorhandenen Datenbank nicht beeinträchtigt.
+Zum Wiederherstellen einer Datenbank aus dem LTR-Speicher können Sie eine bestimmte Sicherung basierend auf ihrem Zeitstempel auswählen.   Die Datenbank kann auf einem beliebigen vorhandenen Server unter dem gleichen Abonnement wie die ursprüngliche Datenbank wiederhergestellt werden. 
 
-* Mit dem Azure-Portal: Weitere Informationen finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen mit dem Azure-Portal](sql-database-long-term-backup-retention-configure.md). 
+## <a name="configure-long-term-backup-retention"></a>Konfigurieren der langfristigen Sicherungsaufbewahrung
 
-* Mit PowerShell: Weitere Informationen finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen mit PowerShell](sql-database-long-term-backup-retention-configure.md).
-
-## <a name="get-pricing-for-long-term-backup-retention"></a>Preisinformationen zur langfristigen Aufbewahrung von Sicherungen
-
-Die langfristige Aufbewahrung von Sicherungen einer SQL-Datenbank-Instanz wird gemäß den [Tarifen des Azure Backup-Diensts](https://azure.microsoft.com/pricing/details/backup/) in Rechnung gestellt.
-
-Nachdem der SQL-Datenbank-Server im Tresor registriert wurde, wird Ihnen der gesamte Speicher, der von den wöchentlichen Sicherungen im Tresor benötigt wird, berechnet.
-
-## <a name="view-available-backups-that-are-stored-in-long-term-backup-retention"></a>Anzeigen der verfügbaren Sicherungen in der langfristigen Sicherungsaufbewahrung
-
-Um die langfristige Aufbewahrung von automatisierten Datenbanksicherungen in einem Azure Recovery Services-Tresor im Azure-Portal zu konfigurieren, zu verwalten und wiederherzustellen, wenden Sie eine der folgenden Vorgehensweisen an:
-
-* Mit dem Azure-Portal: Weitere Informationen finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen mit dem Azure-Portal](sql-database-long-term-backup-retention-configure.md). 
-
-* Mit PowerShell: Weitere Informationen finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen mit PowerShell](sql-database-long-term-backup-retention-configure.md).
-
-## <a name="disable-long-term-retention"></a>Langfristige Aufbewahrung
-
-Recovery Service kümmert sich anhand der bereitgestellten Aufbewahrungsrichtlinie automatisch um die Bereinigung der Sicherungen. 
-
-Damit die Sicherungen einer bestimmten Datenbank nicht länger zum Tresor gesendet werden, entfernen Sie die Beibehaltungsrichtlinie für diese Datenbank.
-  
-```
-Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName 'RG1' -ServerName 'Server1' -DatabaseName 'DB1' -State 'Disabled' -ResourceId $policy.Id
-```
-
-> [!NOTE]
-> Die Sicherungen, die sich bereits im Tresor befinden, sind davon nicht betroffen. Sie werden automatisch vom Recovery Service gelöscht, wenn ihre Beibehaltungsdauer abläuft.
-
-## <a name="long-term-backup-retention-faq"></a>Häufig gestellte Fragen zur langfristigen Aufbewahrung von Sicherungen
-
-**Kann ich bestimmte Sicherungen im Tresor manuell löschen?**
-
-Derzeit ist dies nicht möglich. Der Tresor bereinigt Sicherungen nach Ablauf des Aufbewahrungszeitraums automatisch.
-
-**Kann ich meinen Server registrieren, um in mehr als einem Tresor Sicherungen zu speichern?**
-
-Nein, Sie können momentan nur Sicherungen in einem Tresor gleichzeitig speichern.
-
-**Kann ich über einen Tresor und Server in verschiedenen Abonnements verfügen?**
-
-Nein, derzeit müssen der Tresor und der Server im gleichen Abonnement und der gleichen Ressourcengruppe sein.
-
-**Kann ich einen von mir erstellten Tresor in einer anderen Region als der meines Servers verwenden?**
-
-Nein, der Tresor und der Server müssen in der gleichen Region sein, um die Zeit für den Kopiervorgang und die Gebühren für den Datenverkehr zu minimieren.
-
-**Wie viele Datenbanken kann ich in einem Tresor speichern?**
-
-Derzeit unterstützen wir bis zu 1.000 Datenbanken pro Tresor. 
-
-**Wie viele Tresore kann ich pro Abonnement erstellen?**
-
-Sie können bis zu 25 Tresore pro Abonnement erstellen.
-
-**Wie viele Datenbanken kann ich pro Tresor und pro Tag konfigurieren?**
-
-Sie können 200 Datenbanken pro Tresor und pro Tag einrichten.
-
-**Funktioniert die langfristige Aufbewahrung von Sicherungen auch mit Pools für elastische Datenbanken?**
-
-Ja. Jede Datenbank im Pool kann mit der Beibehaltungsrichtlinie konfiguriert werden.
-
-**Kann ich den Zeitpunkt auswählen, an dem die Sicherungen erstellt werden?**
-
-Nein, SQL-Datenbank kontrolliert den Zeitplan der Sicherungen, um die Auswirkungen auf die Leistung Ihrer Datenbanken zu minimieren.
-
-**Ich habe die Transparent Data Encryption (TDE) für die Datenbank aktiviert. Kann ich dieses Feature mit dem Tresor verwenden?** 
-
-Ja, Transparent Data Encryption wird unterstützt. Selbst wenn die ursprüngliche Datenbank nicht mehr vorhanden ist, können Sie die Datenbank aus dem Tresor wiederherstellen.
-
-**Was geschieht mit den Sicherungen im Tresor, wenn mein Abonnement unterbrochen wird?** 
-
-Falls Ihr Abonnement unterbrochen wird, werden wir die vorhandenen Datenbanken und Sicherungen beibehalten. Neue Sicherungen werden jedoch nicht in den Tresor kopiert. Nachdem Sie das Abonnement reaktiviert haben, setzt der Dienst das Kopieren der Sicherungen in den Tresor fort. Ihr Tresor wird wieder für Wiederherstellungsvorgänge verfügbar, indem die Sicherungen genutzt werden, die vor dem Unterbrechen des Abonnements kopiert wurden. 
-
-**Kann ich Zugriff auf die SQL-Datenbank-Sicherungsdateien erhalten, damit ich sie herunterladen oder auf dem SQL-Server wiederherstellen kann?**
-
-Derzeit ist dies nicht möglich.
-
-**Ist es möglich, mehrere Zeitpläne (täglich, wöchentlich, monatlich, jährlich) in einer SQL-Beibehaltungsrichtlinie zu verwenden?**
-
-Nein, mehrere Zeitpläne sind derzeit nur für Sicherungen virtueller Computer verfügbar.
-
-**Was geschieht, wenn wir die langfristige Aufbewahrung von Sicherungen für eine Datenbank einrichten, die eine sekundäre Datenbank einer aktiven Georeplikation ist?**
-
-Da wir derzeit keine Sicherungen von Replikaten erstellen, steht keine Option für die langfristige Aufbewahrung von Sicherungen sekundärer Datenbanken zur Verfügung. Es ist jedoch aus folgenden Gründen für einen Benutzer wichtig, eine langfristige Aufbewahrung von Sicherungen für eine sekundäre Datenbank in einer aktiven Georeplikation zu erstellen:
-* Wenn ein Failover erfolgt und die Datenbank die primäre Datenbank wird, führen wir eine vollständige Sicherung durch, die dann in den Tresor hochgeladen wird.
-* Für den Kunden fallen keine zusätzlichen Kosten für die Einrichtung der langfristigen Aufbewahrung von Sicherungen einer sekundären Datenbank an.
+Informationen zum Konfigurieren der langfristigen Aufbewahrung mit dem Azure-Portal oder mit PowerShell finden Sie unter [Konfiguration einer langfristig aufbewahrten Sicherung einer Azure SQL-Datenbank und die Wiederherstellung daraus](sql-database-long-term-backup-retention-configure.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Weitere Informationen zu den anderen Geschäftskontinuitätslösungen von SQL-Datenbank finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).

@@ -1,11 +1,11 @@
 ---
-title: "Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung | Microsoft-Dokumentation"
-description: "Informationen zu den häufig auftretenden Problemen beim Konfigurieren des einmaligen Anmeldens per Kennwort für benutzerdefinierte, nicht im Katalog enthaltene Anwendungen, die nicht im Azure AD-Anwendungskatalog aufgeführt sind"
+title: Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung | Microsoft-Dokumentation
+description: Informationen zu den häufig auftretenden Problemen beim Konfigurieren des einmaligen Anmeldens per Kennwort für benutzerdefinierte, nicht im Katalog enthaltene Anwendungen, die nicht im Azure AD-Anwendungskatalog aufgeführt sind
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: e5c8562b89b70236d9d65a5f8765ae386d6831b4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 
@@ -63,7 +63,7 @@ Führen Sie die folgenden Schritte aus, um das **einmalige Anmelden per Kennwort
 
 9.  Geben Sie die **Anmelde-URL**. Dies ist die URL, an der Benutzer ihren Benutzernamen und ihr Kennwort für die Anmeldung eingeben. **Stellen Sie sicher, dass die Anmeldefelder unter der angegebenen URL sichtbar sind**.
 
-10. Klicken Sie auf die Schaltfläche **Speichern**.
+10. Klicken Sie auf die Schaltfläche **Save** .
 
 11. Diese URL wird anschließend automatisch auf ein Eingabefeld für einen Benutzernamen und ein Kennwort untersucht, und Sie können Azure AD verwenden, um auf sichere Weise Kennwörter an diese Anwendung zu übertragen, indem Sie die Zugriffsbereich-Browsererweiterung verwenden.
 
@@ -141,7 +141,7 @@ Sollte die manuelle Erkennung nicht funktionieren, können Sie einige der folgen
 
 -   Wenn die manuelle Erfassung oder die Anmeldeseite nicht mehr reagiert (Fall 3 oben), versuchen Sie, die manuelle Erfassung erneut durchzuführen. Drücken Sie dieses Mal nach Abschluss des Vorgangs jedoch die Taste **F12**, um die Entwicklerkonsole des Browsers zu öffnen. Öffnen Sie die **Konsole**, und geben Sie **window.location="&lt;Anmelde-URL, die Sie beim Konfigurieren der App angegeben haben&gt;"** ein. Drücken Sie dann die **EINGABETASTE**. So erzwingen Sie eine Seitenumleitung, die den Erfassungsprozess beendet und die erfassten Felder speichert.
 
-Wenn keiner dieser Ansätze funktioniert, fordern Sie Unterstützung beim Support an. Erstellen Sie eine Supportanfrage mit den Details Ihrer Lösungsversuche. Geben Sie außerdem die Informationen an, die in den Abschnitten [Anzeigen von Details einer Portalbenachrichtigung](#i-cannot-manually-detect-sign-in-fields-for-my-application) und [Anfordern von Unterstützung durch das Senden von Benachrichtigungsdetails an einen Supporttechniker](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) erfasst wurden (sofern zutreffend).
+Wenn keiner dieser Ansätze funktioniert, fordern Sie Unterstützung beim Support an. Erstellen Sie eine Supportanfrage mit den Details Ihrer Lösungsversuche. Geben Sie außerdem die Informationen an, die in den Abschnitten [Anzeigen von Details einer Portalbenachrichtigung](#i-cannot-manually-detect-sign-in-fields-for-my-application) und [Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) erfasst wurden (sofern zutreffend).
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
@@ -187,7 +187,7 @@ Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgend
 
 6.  Klicken Sie auf das **Symbol** **Kopieren** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker mitzuteilen.
 
-## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Anfordern von Unterstützung durch das Senden von Benachrichtigungsdetails an einen Supporttechniker
+## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker
 
 Es ist sehr wichtig, dass Sie dem Supporttechniker **alle unten aufgelisteten Details** mitteilen, wenn Sie Hilfe benötigen, damit dieser schnell helfen kann. Sie können entweder **einen Screenshot erstellen**, oder Sie klicken auf das Symbol **Fehler kopieren** rechts neben dem Textfeld **Fehler kopieren**.
 

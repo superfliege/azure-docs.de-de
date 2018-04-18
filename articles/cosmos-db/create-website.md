@@ -1,11 +1,10 @@
 ---
-title: "Bereitstellen einer Web-App mit einer Vorlage – Azure Cosmos DB | Microsoft-Dokumentation"
+title: Bereitstellen einer Web-App mit einer Vorlage – Azure Cosmos DB | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie ein Azure Cosmos DB-Konto, eine Azure App Service-Web-App und eine Beispielwebanwendung mithilfe einer Vorlage des Azure Resource Managers bereitstellen.
 services: cosmos-db, app-service\web
-author: mimig1
-manager: jhubbard
-editor: monicar
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: 087d8786-1155-42c7-924b-0eaba5a8b3e0
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 89513d6c1b9aa9f4709359d6d7681bff9c291618
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 468edd78e0ef8e13b2783485004a9db21906f1fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Bereitstellen von Azure Cosmos DB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure Resource Managers
 In diesem Lernprogramm erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), eine [Azure App Service-Web-App](http://go.microsoft.com/fwlink/?LinkId=529714) und eine Beispielwebanwendung bereitstellen und integrieren.
@@ -77,7 +76,7 @@ Jetzt stellen wir unsere erste Vorlage bereit.
    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/create-website/TemplateDeployment6.png)
 7. Wenn die Bereitstellung abgeschlossen ist, wird der Bereich der Ressourcengruppe geöffnet.
    ![Screenshot des Bereichs „Ressourcengruppe“](./media/create-website/TemplateDeployment7.png)  
-8. Um die Anwendung zu verwenden, navigieren Sie zur Web-App-URL (im obigen Beispiel: http://mydemodocdbwebapp.azurewebsites.net).  Die folgende Webanwendung wird angezeigt:
+8. Um die Anwendung zu verwenden, navigieren Sie zur Web-App-URL (im obigen Beispiel: http://mydemodocdbwebapp.azurewebsites.net)).  Die folgende Webanwendung wird angezeigt:
    
    ![Todo-Beispielanwendung](./media/create-website/image2.png)
 9. Erstellen Sie nun eine Reihe von Aufgaben in der Web-App, und kehren Sie dann zum Bereich der Ressourcengruppe im Azure-Portal zurück. Klicken Sie auf die Azure Cosmos DB-Kontoressource in der Liste „Ressourcen“ und dann auf **Daten-Explorer**.

@@ -1,10 +1,10 @@
 ---
-title: "Erstellen eines klassischen virtuellen Azure-Computers, auf dem MySQL ausgeführt wird | Microsoft-Dokumentation"
+title: Erstellen eines klassischen virtuellen Azure-Computers, auf dem MySQL ausgeführt wird | Microsoft-Dokumentation
 description: Erstellen Sie einen virtuellen Azure-Computer mit Windows Server 2012 R2 und der MySQL-Datenbank mithilfe des klassischen Bereitstellungsmodells.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 98fa06d2-9b92-4d05-ac16-3f8e9fd4feaa
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
-ms.openlocfilehash: e4135f96027cc25e1e0a149857ace1672570fc4b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: be2a4232fdb59deb87d6d9340fd22909707294b8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>Installieren von MySQL auf einem virtuellen Computer mit Windows Server 2016, der mit dem klassischen Bereitstellungsmodell erstellt wurde
 [MySQL](https://www.mysql.com) ist eine beliebte Open-Source-SQL-Datenbank. In diesem Tutorial erfahren Sie, wie Sie die **Communityversion von MySQL 5.7.18** als MySQL-Server auf einem virtuellen Computer mit **Windows Server 2016** installieren und ausführen. Ihre Erfahrung ist möglicherweise für andere Versionen von MySQL oder Windows Server unterschiedlich.
@@ -51,7 +51,7 @@ Befolgen Sie diese Schritte, um die Community-Version von MySQL Server zu instal
 
 1. Wenn Sie über Remotedesktop eine Verbindung zum virtuellen Computer aufgebaut haben, klicken Sie im Startbildschirm auf **Internet Explorer** .
 2. Wählen Sie oben rechts die Schaltfläche **Tools** (Zahnradsymbol) aus, und klicken Sie dann auf **Internetoptionen**. Klicken Sie auf die Registerkarte **Sicherheit**, auf das Symbol **Vertrauenswürdige Sites** und dann auf die Schaltfläche **Sites**. Fügen Sie http://*.mysql.com der Liste vertrauenswürdiger Websites hinzu. Klicken Sie auf **Schließen** und dann auf **OK**.
-3. Geben Sie auf der Adressleiste von Internet Explorer https://dev.mysql.com/downloads/mysql/ ein.
+3. Geben Sie in der Adressleiste von Internet Explorer https://dev.mysql.com/downloads/mysql/ ein.
 4. Verwenden Sie die MySQL-Website, um die neueste Version von MySQL-Installer für Windows zu suchen und herunterzuladen. Laden Sie bei Auswahl des MySQL-Installers die Version mit dem kompletten Dateisatz herunter (beispielsweise „mysql-installer-community-5.7.18.0.msi“ mit einer Dateigröße von 352,8 MB), und speichern Sie die Installationsprogrammdatei.
 5. Nachdem das Installationsprogramm heruntergeladen wurde, klicken Sie auf **Ausführen** , um die Installation zu starten.
 6. Stimmen Sie auf der Seite **Lizenzvereinbarung** der Lizenzvereinbarung zu, und klicken Sie auf **Weiter**.

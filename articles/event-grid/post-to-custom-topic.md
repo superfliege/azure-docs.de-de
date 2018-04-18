@@ -1,18 +1,18 @@
 ---
 title: Posten eines Ereignisses in einem benutzerdefinierten Azure Event Grid-Thema
-description: "Erfahren Sie, wie Sie ein Ereignis in einem benutzerdefinierten Thema für Azure Event Grid posten."
+description: Erfahren Sie, wie Sie ein Ereignis in einem benutzerdefinierten Thema für Azure Event Grid posten.
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 43dcdf9ab0fee5f7e61ecdc42aaf40430e272d92
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1c23aef0773ffddbc26e4090ecf137b632394ee3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Posten eines Ereignisses in einem benutzerdefinierten Azure Event Grid-Thema
 
@@ -91,8 +91,34 @@ Ein gültiges Ereignisdatenschema lautet beispielsweise wie folgt:
 }]
 ```
 
+## <a name="response"></a>response
+
+Nachdem Sie das Posten an den Themenendpunkt durchgeführt haben, erhalten Sie eine Antwort. Die Antwort ist ein HTTP-Standardantwortcode. Einige häufige Antworten lauten:
+
+|Ergebnis  |Antwort  |
+|---------|---------|
+|Erfolgreich  | 200 – OK  |
+|Falscher Endpunkt | 404 – Nicht gefunden |
+|Ungültiger Zugriffsschlüssel | 401 – Nicht autorisiert |
+|Fehlerhaftes Format der Ereignisdaten | 400 – Ungültige Anforderung |
+
+Für Fehler hat der Nachrichtentext das folgende Format:
+
+```json
+{
+    "error": {
+        "code": "<HTTP status code>",
+        "message": "<description>",
+        "details": [{
+            "code": "<HTTP status code>",
+            "message": "<description>"
+    }]
+  }
+}
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Einführung in die Weiterleitung benutzerdefinierter Ereignisse finden Sie unter [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure CLI und Event Grid](custom-event-quickstart.md) oder [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure PowerShell und Event Grid](custom-event-quickstart-powershell.md).
+* Informationen zur Überwachung von Ereignisübermittlungen finden Sie unter [Überwachen der Event Grid-Nachrichtenübermittlung](monitor-event-delivery.md).
 * Weitere Informationen zum Authentifizierungsschlüssel finden Sie unter [Event Grid – Sicherheit und Authentifizierung](security-authentication.md).
 * Weitere Informationen zum Erstellen eines Azure Event Grid-Abonnements finden Sie unter [Event Grid-Abonnementschema](subscription-creation-schema.md).

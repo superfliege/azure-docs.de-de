@@ -1,9 +1,9 @@
 ---
-title: "Übersicht über Azure-Diagnoseprotokolle | Microsoft Docs"
+title: Übersicht über Azure-Diagnoseprotokolle | Microsoft Docs
 description: Hier erfahren Sie, worum es sich bei Azure-Diagnoseprotokollen handelt, und wie Sie mithilfe von Diagnoseprotokollen Ereignisse innerhalb einer Azure-Ressource nachvollziehen.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: fe8887df-b0e6-46f8-b2c0-11994d28e44f
@@ -12,17 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 04/04/2018
 ms.author: johnkem; magoedte
-ms.openlocfilehash: df20e174abb9960ad378221008ac7261fd0582f1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 884acc4885da3a321477c51f6d7b76748d797d9b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen
 
 ## <a name="what-are-azure-resource-diagnostic-logs"></a>Was sind Diagnoseprotokolle auf Azure-Ressourcenebene?
+
 **Diagnoseprotokolle auf Azure-Ressourcenebene** sind von einer Ressource ausgegebene Protokolle mit umfangreichen, in kurzen Abständen erfassten Betriebsdaten der Ressource. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp. Beispielweise sind Netzwerksicherheitsgruppen-Regelzähler und Key Vault-Überwachungen zwei Kategorien von Ressourcenprotokollen.
 
 Diagnoseprotokolle auf Ressourcenebene unterscheiden sich vom [Aktivitätsprotokoll](monitoring-overview-activity-logs.md). Das Aktivitätsprotokoll ermöglicht Einblicke in die Vorgänge, die für Ressourcen Ihres Abonnements mit dem Resource Manager durchgeführt wurden, z.B. das Erstellen eines virtuellen Computers oder das Löschen einer Logik-App. Das Aktivitätsprotokoll ist ein Protokoll auf Abonnementebene. Diagnoseprotokolle auf Ressourcenebene ermöglichen Einblicke in Vorgänge, die für die Ressource selbst durchgeführt wurden, z.B. das Abrufen eines Geheimnisses aus einem Key Vault.
@@ -38,39 +39,44 @@ Hier sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle auf Ressource
 
 ![Logische Anordnung von Diagnoseprotokollen für Ressourcen](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
 
-
 * Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [**Speicherkonto**](monitoring-archive-diagnostic-logs.md) gespeichert werden. Mithilfe der **Diagnoseeinstellungen für Ressourcen** können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
 * [Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md) streamen.
-* Diagnoseprotokolle können mit [OMS Log Analytics](../log-analytics/log-analytics-azure-storage.md)
+* Analysieren Sie sie mit [Log Analytics](../log-analytics/log-analytics-azure-storage.md).
 
 Sie können ein Speicherkonto oder Event Hubs-Namespace verwenden, das sich nicht im gleichen Abonnement befindet wie das, das Protokolle angibt. Der Benutzer, der die Einstellung konfiguriert, benötigt den entsprechenden RBAC-Zugriff auf beide Abonnements.
 
 ## <a name="resource-diagnostic-settings"></a>Diagnoseeinstellungen für Ressourcen
+
 Ressourcendiagnoseprotokolle für computefremde Ressourcen werden mithilfe von Diagnoseeinstellungen für Ressourcen konfiguriert. Mit **Diagnoseeinstellungen für Ressourcen** für ein Ressourcensteuerelement können Sie Folgendes festlegen:
 
-* Wohin Ressourcendiagnoseprotokolle und Metriken gesendet werden sollen (Speicherkonto, Event Hubs und/oder OMS Log Analytics).
+* Wohin Ressourcendiagnoseprotokolle und Metriken gesendet werden sollen (Speicherkonto, Event Hubs und/oder Log Analytics).
 * Welche Protokollkategorien gesendet werden, und ob auch Metrikdaten gesendet werden.
 * Wie lange die einzelnen Protokollkategorien in einem Speicherkonto beibehalten werden sollen
     - Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
-    - Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert.
+    - Wenn Aufbewahrungsrichtlinien festgelegt wurden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Optionen „Event Hubs“ oder „Log Analytics“ ausgewählt sind), werden die Aufbewahrungsrichtlinien ignoriert.
     - Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
 
 Diese Einstellungen können für eine Ressource ganz einfach über die Diagnoseeinstellungen im Azure-Portal, mithilfe von Azure PowerShell oder CLI-Befehlen oder über die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931943.aspx) konfiguriert werden.
 
-> [!WARNING]
-> Bei Diagnoseprotokollen und Metriken für Computeressourcen aus der Gastbetriebssystem-Schicht (etwa virtuelle Computer oder Service Fabric) wird [ein separater Mechanismus für die Konfiguration und Auswahl von Ausgaben](../azure-diagnostics.md) verwendet.
+> [!NOTE]
+> Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
+>
+> *Beispiel:* Die Metrik „Eingehende Nachrichten“ eines Event Hubs kann auf einer warteschlangenspezifischen Ebene untersucht und in einem Diagramm dargestellt werden. Wenn Sie die Metrik allerdings über die Diagnoseeinstellungen exportieren, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
 >
 >
 
+> [!WARNING]
+> Bei Diagnoseprotokollen und Metriken für Computeressourcen aus der Gastbetriebssystem-Schicht (etwa virtuelle Computer oder Service Fabric) wird [ein separater Mechanismus für die Konfiguration und Auswahl von Ausgaben](../azure-diagnostics.md) verwendet.
+
 ## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>Gewusst wie: Aktivieren der Erfassung von Diagnoseprotokollen für Ressourcen
+
 Die Erfassung von Diagnoseprotokollen für Ressourcen kann [im Zuge der Ressourcenerstellung in einer Resource Manager-Vorlage](./monitoring-enable-diagnostic-logs-using-template.md) oder später im Portal über die Seite der Ressource aktiviert werden. Darüber hinaus können Sie die Erfassung jederzeit mithilfe von Azure PowerShell oder CLI-Befehlen oder mithilfe der Azure Monitor-REST-API aktivieren.
 
 > [!TIP]
 > Diese Anweisungen lassen sich unter Umständen nicht immer direkt auf jede Ressource anwenden. Informationen zu Sonderschritten, die ggf. für bestimmte Ressourcentypen erforderlich sind, finden Sie unter den Schemalinks am Ende dieser Seite.
->
->
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-in-the-portal"></a>Aktivieren der Erfassung von Diagnoseprotokollen für Ressourcen im Portal
+
 Sie können die Erfassung von Diagnoseprotokollen für Ressourcen nach dem Erstellen einer Ressource im Azure-Portal aktivieren, indem Sie entweder zu einer bestimmten Ressource oder zu Azure Monitor navigieren. So aktivieren Sie dies über Azure Monitor:
 
 1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zu Azure Monitor, und klicken Sie auf **Diagnoseeinstellungen**.
@@ -88,14 +94,15 @@ Sie können die Erfassung von Diagnoseprotokollen für Ressourcen nach dem Erste
    ![Diagnoseeinstellung hinzufügen – Einstellungen vorhanden](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-multiple.png)
 
 3. Geben Sie Ihrer Einstellung einen Namen, aktivieren Sie die Kontrollkästchen für die einzelnen Ziele, an die Sie Daten senden möchten, und konfigurieren Sie, welche Ressourcen für die einzelnen Ziele verwendet werden. Legen Sie optional eine Anzahl von Tagen für die Aufbewahrung dieser Protokolle fest. Verwenden Sie dazu die Schieberegler unter **Aufbewahrung (Tage)** (gilt nur für das Speicherkontoziel). Bei einer Aufbewahrung von 0 Tagen werden die Protokolle dauerhaft gespeichert.
-   
+
    ![Diagnoseeinstellung hinzufügen – Einstellungen vorhanden](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-configure.png)
-    
+
 4. Klicken Sie auf **Speichern**.
 
 Nach einigen Augenblicken wird die neue Einstellung in der Liste der Einstellungen für diese Ressource angezeigt, und Diagnoseprotokolle werden an die angegebenen Ziele gesendet, sobald neue Ereignisdaten generiert werden.
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>Aktivieren der Erfassung von Diagnoseprotokollen für Ressourcen mit PowerShell
+
 Verwenden Sie die folgenden Befehle, um die Erfassung von Diagnoseprotokollen für Ressourcen mit Azure PowerShell zu aktivieren:
 
 Verwenden Sie den folgenden Befehl, um das Speichern von Diagnoseprotokollen in einem Speicherkonto zu aktivieren:
@@ -128,37 +135,72 @@ Sie können die Ressourcen-ID mit dem folgenden Befehl aus Ihrem Log Analytics-A
 
 Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen zu aktivieren.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-cli"></a>Aktivieren der Erfassung von Diagnoseprotokollen für Ressourcen per CLI
-Mit den folgenden Befehlen können Sie Diagnoseprotokolle für Ressourcen über die Azure-Befehlszeilenschnittstelle aktivieren:
+### <a name="enable-collection-of-resource-diagnostic-logs-via-azure-cli-20"></a>Aktivieren der Erfassung von Diagnoseprotokollen für Ressourcen per Azure CLI 2.0
 
-Verwenden Sie den folgenden Befehl, um das Speichern von Diagnoseprotokollen in einem Speicherkonto zu aktivieren:
+Zum Aktivieren der Auflistung von Ressourcendiagnoseprotokollen über die Azure CLI 2.0 verwenden Sie den Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
-```azurecli
-azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
-```
-
-Die Speicherkonto-ID ist die Ressourcen-ID für das Speicherkonto, an das die Protokolle gesendet werden sollen.
-
-Verwenden Sie den folgenden Befehl, um das Streamen von Diagnoseprotokollen an eine Event Hub-Instanz zu aktivieren:
+Aktivieren der Speicherung von Diagnoseprotokollen in einem Speicherkonto:
 
 ```azurecli
-azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
+az monitor diagnostic-settings create --name <diagnostic name> \
+    --storage-account <name or ID of storage account> \
+    --resource <target resource object ID> \
+    --resource-group <storage account resource group> \
+    --logs '[
+    {
+        "category": <category name>,
+        "enabled": true,
+        "retentionPolicy": {
+            "days": <# days to retain>,
+            "enabled": true
+        }
+    }]'
 ```
 
-Die Service Bus-Regel-ID ist eine Zeichenfolge mit dem folgenden Format: `{Service Bus resource ID}/authorizationrules/{key name}`.
+Das `--resource-group`-Argument ist nur erforderlich, wenn `--storage-account` keine Objekt-ID ist.
 
-Verwenden Sie den folgenden Befehl, um das Senden von Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich zu aktivieren:
+Aktivieren des Streamings von Diagnoseprotokollen an eine Event Hub-Instanz:
 
 ```azurecli
-azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
+az monitor diagnostic-settings create --name <diagnostic name> \
+    --event-hub <event hub name> \
+    --event-hub-rule <event hub rule ID> \
+    --resource <target resource object ID> \
+    --logs '[
+    {
+        "category": <category name>,
+        "enabled": true
+    }
+    ]'
 ```
 
-Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen zu aktivieren.
+Die Regel-ID ist eine Zeichenfolge in folgendem Format: `{Service Bus resource ID}/authorizationrules/{key name}`
+
+Aktivieren der Sendung von Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich:
+
+```azurecli
+az monitor diagnostic-settings create --name <diagnostic name> \
+    --workspace <log analytics name or object ID> \
+    --resource <target resource object ID> \
+    --resource-group <log analytics workspace resource group> \
+    --logs '[
+    {
+        "category": <category name>,
+        "enabled": true
+    }
+    ]'
+```
+
+Das `--resource-group`-Argument ist nur erforderlich, wenn `--workspace` keine Objekt-ID ist.
+
+Sie können das Diagnoseprotokoll mithilfe eines beliebigen Befehls mit weiteren Kategorien ergänzen, indem Sie dem JSON-Array, das als der `--logs`-Parameter übergeben wird, Wörterbücher hinzufügen. Sie können Parameter `--storage-account`, `--event-hub` und `--workspace` miteinander kombinieren, um mehrere Ausgabeoptionen zu aktivieren.
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>Aktivieren der Erfassung von Diagnoseprotokollen für Ressourcen per REST-API
+
 Informationen zum Ändern der Diagnoseeinstellungen mithilfe der Azure Monitor-REST-API finden Sie in [diesem Dokument](https://msdn.microsoft.com/library/azure/dn931931.aspx).
 
 ## <a name="manage-resource-diagnostic-settings-in-the-portal"></a>Verwalten von Diagnoseeinstellungen für Ressourcen im Portal
+
 Stellen Sie sicher, dass für alle Ihre Ressourcen Diagnoseeinstellungen festgelegt sind. Navigieren Sie im Portal zu **Überwachen**, und öffnen Sie **Diagnoseeinstellungen**.
 
 ![Das Blatt „Diagnoseprotokolle“ im Portal](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
@@ -172,6 +214,7 @@ Hier können Sie alle Ressourcen anzeigen und filtern, die Diagnoseeinstellungen
 Wenn Sie eine Diagnoseeinstellung hinzufügen, wird das Blatt „Diagnoseeinstellungen“ angezeigt, auf dem Sie die Diagnoseeinstellungen für die ausgewählte Ressource aktivieren, deaktivieren oder ändern können.
 
 ## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>Unterstützte Dienste, Kategorien und Schemas für Ressourcendiagnoseprotokolle
+
 [In diesem Artikel](monitoring-diagnostic-logs-schema.md) finden Sie eine vollständige Liste der unterstützten Dienste, Protokollkategorien und Schemas, die von diesen Diensten verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

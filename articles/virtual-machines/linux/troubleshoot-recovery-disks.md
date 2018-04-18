@@ -1,11 +1,11 @@
 ---
 title: Verwenden eines virtuellen Linux-Computers zur Problembehandlung mithilfe von Azure CLI 2.0 | Microsoft Docs
-description: "Erfahren Sie, wie Sie Probleme auf einer Linux-VM beheben, indem Sie mithilfe von Azure CLI 2.0 den Betriebssystemdatenträger mit einer Wiederherstellungs-VM verbinden."
+description: Erfahren Sie, wie Sie Probleme auf einer Linux-VM beheben, indem Sie mithilfe von Azure CLI 2.0 den Betriebssystemdatenträger mit einer Wiederherstellungs-VM verbinden.
 services: virtual-machines-linux
-documentationCenter: 
+documentationCenter: ''
 authors: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-ms.openlocfilehash: 9f1ac319e87f321306a2239b2e17725d281fbf59
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: e96f31b3e91066bfc04af62c2bf82db200f35002
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe von Azure CLI 2.0
 Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie mithilfe von Azure CLI 2.0 eine Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM hergestellt werden kann, um Fehler zu beheben, und wie dann die ursprüngliche VM neu erstellt wird. Sie können diese Schritte auch per [Azure CLI 1.0](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
@@ -59,7 +59,7 @@ az vm show --resource-group myResourceGroup --name myVM \
     --query [storageProfile.osDisk.vhd.uri] --output tsv
 ```
 
-Der URI ähnelt **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd**.
+Der URI lautet in etwa wie folgt: **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd**.
 
 ## <a name="delete-existing-vm"></a>Löschen einer vorhandener VM
 Virtuelle Festplatten und VMs sind zwei unterschiedliche Ressourcen in Azure. Eine virtuelle Festplatte ist der Ort, an dem das Betriebssystem selbst, Anwendungen und Konfigurationen gespeichert werden. Die VM selbst besteht nur aus Metadaten, die die Größe oder Position definieren und auf Ressourcen verweisen, z.B. eine virtuelle Festplatte oder virtuelle Netzwerkschnittstellenkarte (NIC). Jede virtuelle Festplatte verfügt über eine zugewiesene Lease, wenn sie mit einer VM verknüpft ist. Obwohl Datenträger auch bei laufendem Betrieb der VM hinzugefügt und getrennt werden können, kann der Betriebssystemdatenträger nicht getrennt werden, es sei denn, die VM-Ressource wird gelöscht. Die Lease ordnet den Betriebssystemdatenträger weiterhin einer VM zu, selbst wenn diese VM beendet und die Zuordnung aufgehoben ist.
@@ -151,7 +151,7 @@ Sobald Ihre Fehler behoben sind, heben Sie die Bereitstellung auf, und trennen S
         --query '[].{Disk:vhd.uri}' --output table
     ```
 
-    Notieren Sie den Namen Ihrer vorhandenen virtuellen Festplatte. Der Name eines Datenträgers mit dem URI **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** lautet beispielsweise **myVHD**. 
+    Notieren Sie den Namen Ihrer vorhandenen virtuellen Festplatte. Der Name einer Festplatte mit dem URI **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** lautet beispielsweise **myVHD**. 
 
     Trennen Sie mit [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_detach) den Datenträger von Ihrem virtuellen Computer. Im folgenden Beispiel wird der Datenträger mit dem Namen `myVHD` vom virtuellen Computer `myVMRecovery` in der Ressourcengruppe `myResourceGroup` getrennt:
 

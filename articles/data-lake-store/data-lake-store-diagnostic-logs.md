@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 5f1fa378c8eea68181d4596700238d03f360c5d0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5cdc67a138e2316c2e87a72371a6df527cc36ac
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store
 Erfahren Sie, wie Sie die Diagnoseprotokollierung für Ihr Data Lake Store-Konto aktivieren, und wie Sie die für Ihr Konto erfassten Protokolle anzeigen.
@@ -47,7 +47,7 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
         
         * Wählen Sie die Option zum **Streamen an einen Event Hub**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
 
-        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Log Analytics-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Operations Management Suite-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden. Informationen zum Verwenden von Log Analytics finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](../log-analytics/log-analytics-tutorial-viewdata.md).
+        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Log Analytics-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Log Analytics-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden. Informationen zum Verwenden von Log Analytics finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](../log-analytics/log-analytics-tutorial-viewdata.md).
      
    * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.
    * Geben Sie die Anzahl der Tage an, für die die Daten beibehalten werden müssen. Die Aufbewahrung ist nur zutreffend, wenn Sie Azure-Speicherkonten zum Archivieren von Protokolldaten verwenden.

@@ -1,24 +1,19 @@
 ---
-title: Azure Stream Analytics und Machine Learning-Integration | Microsoft-Dokumentation
-description: Verwenden von Machine Learning und einer benutzerdefinierten Funktion in einem Stream Analytics-Auftrag
-keywords: ''
-documentationcenter: ''
+title: Azure Stream Analytics-Integration in Azure Machine Learning
+description: Dieser Artikel beschreibt, wie Sie mithilfe einer benutzerdefinierten Funktion schnell einen einfachen Azure Stream Analytics-Auftrag mit Azure Machine Learning-Integration einrichten.
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: cfced01f-ccaa-4bc6-81e2-c03d1470a7a2
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/01/2018
-ms.author: sngun
-ms.openlocfilehash: e5661f9f3871619201ff9106e87785de802e8933
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 93397e5370863b11b7c153bbf234d6bfdd808718
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Durchführen von Standpunktanalysen mit Azure Stream Analytics und Azure Machine Learning
 Dieser Artikel beschreibt, wie Sie schnell einen einfachen Azure Stream Analytics-Auftrag mit Azure Machine Learning-Integration einrichten. Sie nutzen ein Stimmungsanalysemodell für Machine Learning aus dem Cortana Intelligence-Katalog, um Streamingtextdaten zu analysieren und den Stimmungswert in Echtzeit zu ermitteln. Über die Cortana Intelligence Suite können Sie diese Aufgabe ausführen, ohne sich um die Komplexität der Erstellung eines Analysemodells für die Stimmung kümmern zu müssen.

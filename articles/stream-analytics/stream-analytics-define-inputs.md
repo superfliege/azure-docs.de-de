@@ -1,24 +1,19 @@
 ---
-title: 'Datenverbindung: Datenstromeingaben aus einem Ereignisstrom | Microsoft Docs'
-description: Erfahren Sie, wie eine „Eingaben“ genannte Datenverbindung mit Stream Analytics eingerichtet wird. Eingaben umfassen einen Datenstrom von Ereignissen und Verweisdaten.
-keywords: Datenstrom, Datenverbindung, Ereignisstrom
+title: Datenstromeingaben von einem Ereignisdatenstrom in Azure Stream Analytics
+description: Hier erfahren Sie, wie eine Datenverbindung mit Stream Analytics eingerichtet wird. Eingaben umfassen einen Datenstrom von Ereignissen und Verweisdaten.
 services: stream-analytics
-documentationcenter: ''
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: 8155823c-9dd8-4a6b-8393-34452d299b68
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 12/11/2017
-ms.author: sngun
-ms.openlocfilehash: 0ddc3187e9fc0664838dd07f781f4d7e2e4a7fe0
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 0a90e97779416db7b7244cce9d6bdad740161051
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Datenverbindung: Erfahren Sie mehr über Datenstromeingaben aus Ereignissen in Stream Analytics
 Bei der Datenverbindung mit einem Stream Analytics-Auftrag handelt es sich um einen Datenstrom von Ereignissen aus einer Datenquelle, die als *Eingabe* des Auftrags bezeichnet wird. Stream Analytics bietet eine hervorragende Integration in Datenstromquellen von Azure wie [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) und [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/). Diese Eingabequellen können aus demselben Azure-Abonnement wie dem Ihres Analyseauftrags oder aus einem anderen Abonnement stammen.
@@ -176,7 +171,7 @@ FROM Input
 ````
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben sich mit Datenverbindungsoptionen in Azure für Ihre Stream Analytics-Aufträge vertraut gemacht. Weitere Informationen zu Stream Analytics finden Sie unter:

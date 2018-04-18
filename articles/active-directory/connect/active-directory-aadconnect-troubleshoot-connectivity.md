@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: Problembehebung bei Konnektivitätsproblemen| Microsoft Docs"
-description: "Erklärt, wie Konnektivitätsprobleme mit Azure AD Connect behoben werden können"
+title: 'Azure AD Connect: Problembehebung bei Konnektivitätsproblemen| Microsoft Docs'
+description: Erklärt, wie Konnektivitätsprobleme mit Azure AD Connect behoben werden können
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
 ms.workload: identity
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 1c8bbbde653ed8e927ab1550c32ae86a4dc2ffac
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Problembehebung bei Konnektivitätsproblemen mit Azure AD Connect 
 Dieser Artikel erklärt, wie die Konnektivität zwischen Azure AD Connect und Azure AD funktioniert und wie Konnektivitätsprobleme behoben werden können. Diese Probleme können insbesondere in einer Umgebung mit einem Proxyserver auftreten.
@@ -75,10 +75,10 @@ Dieser Fehler wird angezeigt, wenn der Endpunkt **https://secure.aadcdn.microsof
 Falls sich der Installations-Assistent erfolgreich mit Azure AD verbinden konnte, aber das Kennwort selbst nicht überprüft werden kann, wird Ihnen dieser Fehler angezeigt:  
 ![badpassword](./media/active-directory-aadconnect-troubleshoot-connectivity/badpassword.png)
 
-* Handelt es sich um ein temporäres Kennwort, das geändert werden muss? Handelt es sich um das richtige Kennwort? Versuchen Sie, sich bei „https://login.microsoftonline.com“ (auf einem anderen Computer als dem Azure AD Connect-Server) anzumelden, und überprüfen Sie, ob das Konto verwendbar ist.
+* Handelt es sich um ein temporäres Kennwort, das geändert werden muss? Handelt es sich um das richtige Kennwort? Versuchen Sie, sich bei https://login.microsoftonline.com (auf einem anderen Computer als dem Azure AD Connect-Server) anzumelden, und überprüfen Sie, ob das Konto verwendbar ist.
 
 ### <a name="verify-proxy-connectivity"></a>Überprüfung der Proxykonnektivität
-Um nachzuprüfen, ob der Azure AD Connect-Server über eine Verbindung zum Proxy und dem Internet verfügt, verwenden wir einige PowerShell-Teile, um festzustellen, ob der Proxy Webanforderungen zulässt oder nicht. Führen Sie in PowerShell `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` aus. (Streng genommen ist der erste Aufruf an „https://login.microsoftonline.com“ gerichtet. Dieser URI würde auch funktionieren, aber der andere URI antwortet schneller.)
+Um nachzuprüfen, ob der Azure AD Connect-Server über eine Verbindung zum Proxy und dem Internet verfügt, verwenden wir einige PowerShell-Teile, um festzustellen, ob der Proxy Webanforderungen zulässt oder nicht. Führen Sie in PowerShell `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` aus. (Streng genommen ist der erste Aufruf an https://login.microsoftonline.com gerichtet. Dieser URI würde auch funktionieren, aber der andere URI antwortet schneller.)
 
 PowerShell verwendet die Konfiguration aus machine.config , um den Proxy zu kontaktieren. Die Einstellungen in winhttp/netsh sollten sich nicht auf diese Cmdlets auswirken.
 
@@ -101,7 +101,7 @@ Wenn Azure AD Connect eine Exportanforderung an Azure AD gesendet hat, kann Azur
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Das Kommunikationsmuster zwischen Azure AD Connect und Azure AD 
 Falls Sie alle vorhergehenden Schritte ausgeführt haben und immer noch keine Verbindung herstellen können, sollten Sie sich Ihre Netzwerkprotokolle ansehen. Dieser Abschnitt dokumentiert ein normales und erfolgreiches Konnektivitätsmuster. Er zeigt auch häufig auftretende Meldungen, die Sie aber ignorieren können, wenn Sie die Netzwerkprotokolle lesen.
 
-* Es werden Aufrufe an „https://dc.services.visualstudio.com“ durchgeführt. Für eine erfolgreiche Installation ist es nicht erforderlich, dass diese URL im Proxy geöffnet ist. Sie können diese Aufrufe daher ignorieren.
+* Es erfolgen Aufrufe an https://dc.services.visualstudio.com. Für eine erfolgreiche Installation ist es nicht erforderlich, dass diese URL im Proxy geöffnet ist. Sie können diese Aufrufe daher ignorieren.
 * Sie werden sehen, dass die DNS-Auflösung den tatsächlichen Host im DNS-Namen von nsatc.net und anderen Namespaces anzeigt, anstatt unter microsoftonline.com. Es werden jedoch keine Webdienstanfragen an die eigentlichen Servernamen gestellt, und Sie müssen diese URLs dem Proxy nicht hinzufügen.
 * Die Endpunkte „adminwebservice“ und „provisioningapi“ sind Ermittlungsendpunkte und werden benutzt, um die tatsächlich zu verwendeten Endpunkte zu finden. Diese Endpunkte unterscheiden sich abhängig von Ihrer Region.
 

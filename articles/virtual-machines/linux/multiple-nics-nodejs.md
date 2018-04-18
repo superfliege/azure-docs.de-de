@@ -1,12 +1,12 @@
 ---
 title: Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkkarten | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle oder mithilfe von Resource Manager-Vorlagen einen virtuellen Linux-Computer mit mehreren angefügten Netzwerkkarten erstellen."
+description: Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle oder mithilfe von Resource Manager-Vorlagen einen virtuellen Linux-Computer mit mehreren angefügten Netzwerkkarten erstellen.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 93a32ae7ec0cf73825791e8c8bc3d388cf999ece
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 20e3a65c28e95849822d81076b6780e05a2aebbf
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-multiple-nics-using-the-azure-cli-10"></a>Erstellen eines virtuellen Linux-Computers mit mehreren Netzwerkkarten mithilfe von Azure CLI 1.0
 Sie können einen virtuellen Computer in Azure erstellen, an den mehrere Netzwerkkarten angefügt werden. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. Dieser Artikel bietet Informationen zu Schnellbefehlen zum Erstellen eines virtuellen Computers, an den mehrere Netzwerkkarten angefügt werden. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
@@ -31,7 +31,7 @@ Sie können einen virtuellen Computer in Azure erstellen, an den mehrere Netzwer
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#create-supporting-resources): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0:](multiple-nics.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0](multiple-nics.md): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="create-supporting-resources"></a>Erstellen von unterstützenden Ressourcen
@@ -143,6 +143,8 @@ azure vm create \
     --ssh-publickey-file ~/.ssh/id_rsa.pub
 ```
 
+Wenn Sie einem virtuellen Linux-Computer mehrere NICs hinzufügen, müssen Sie Routingregeln erstellen. Diese Regeln ermöglichen den virtuellen Computer das Senden und Empfangen von Datenverkehr, der zu einer bestimmten NIC gehört. Andernfalls kann Datenverkehr, der beispielsweise zu „eth1“ gehört, von der definierten Standardroute nicht ordnungsgemäß verarbeitet werden. Informationen zum Beheben dieses Routingproblems finden Sie unter [Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten](multiple-nics.md#configure-guest-os-for-multiple-nics).
+
 ## <a name="create-multiple-nics-using-resource-manager-templates"></a>Erstellen von mehreren Netzwerkkarten mithilfe von Resource Manager-Vorlagen
 Azure Resource Manager-Vorlagen verwenden deklarative JSON-Dateien zum Definieren Ihrer Umgebung. Lesen Sie eine [Übersicht über Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Resource Manager-Vorlagen bieten eine Möglichkeit, während der Bereitstellung mehrere Instanzen einer Ressource zu erstellen – z.B. mehrere Netzwerkkarten. Mit *copy* geben Sie die Anzahl der zu erstellenden Instanzen an:
 
@@ -162,6 +164,8 @@ Sie können auch `copyIndex()` verwenden und eine Zahl an einen Ressourcennamen 
 ```
 
 Ein vollständiges Beispiel finden Sie unter [Erstellen von mehreren Netzwerkkarten mithilfe von Resource Manager-Vorlagen](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
+
+Wenn Sie einem virtuellen Linux-Computer mehrere NICs hinzufügen, müssen Sie Routingregeln erstellen. Diese Regeln ermöglichen den virtuellen Computer das Senden und Empfangen von Datenverkehr, der zu einer bestimmten NIC gehört. Andernfalls kann Datenverkehr, der beispielsweise zu „eth1“ gehört, von der definierten Standardroute nicht ordnungsgemäß verarbeitet werden. Informationen zum Beheben dieses Routingproblems finden Sie unter [Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten](multiple-nics.md#configure-guest-os-for-multiple-nics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die [Linux-VM-Größen](sizes.md) , wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird. 

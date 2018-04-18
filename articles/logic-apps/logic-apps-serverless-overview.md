@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über Azure Serverless | Microsoft-Dokumentation"
-description: "Erstellen Sie leistungsstarke Lösungen in der Cloud, ohne über die Infrastruktur nachdenken zu müssen."
-keywords: 
+title: Übersicht über Azure Serverless | Microsoft-Dokumentation
+description: Erstellen Sie leistungsstarke Lösungen in der Cloud, ohne über die Infrastruktur nachdenken zu müssen.
+keywords: ''
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5cc6837ed0b0f4467e48c736f5d596a51a799fae
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 30c7dd36efca5ffcae770fe310a43a107d9136af
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-of-azure-serverless-with-functions-and-logic-apps"></a>Übersicht über Azure Serverless mit Funktionen und Logik-Apps
 
@@ -45,7 +45,7 @@ Starten Sie zum Einstieg in Logic Apps mit dem [Erstellen Ihrer ersten Logik-App
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Wie kann ich serverlose Anwendungen in Azure erstellen und bereitstellen?
 
-Azure bietet umfangreiche Tools für die Entwicklung, Bereitstellung und Verwaltung von serverlosen Apps.  Apps können direkt im Azure-Portal oder mit den [Tools von Visual Studio](logic-apps-serverless-get-started-vs.md) (in englischer Sprache) erstellt werden.  Sobald eine Anwendung entwickelt wurde, kann sie [sofort bereitgestellt werden](logic-apps-create-deploy-template.md).  Azure bietet auch eine Überwachung für serverlose Apps.  Auf diese Überwachung kann direkt über das Azure-Portal, über die API oder über SDKs zugegriffen werden oder alternativ über integrierte Tools für OMS und Application Insights.
+Azure bietet umfangreiche Tools für die Entwicklung, Bereitstellung und Verwaltung von serverlosen Apps.  Apps können direkt im Azure-Portal oder mit den [Tools von Visual Studio](logic-apps-serverless-get-started-vs.md) (in englischer Sprache) erstellt werden.  Sobald eine Anwendung entwickelt wurde, kann sie [sofort bereitgestellt werden](logic-apps-create-deploy-template.md).  Azure bietet auch eine Überwachung für serverlose Apps.  Auf diese Überwachung kann direkt über das Azure-Portal, über die API oder über SDKs oder alternativ über integrierte Tools für Log Analytics und Application Insights zugegriffen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

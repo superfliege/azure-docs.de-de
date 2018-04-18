@@ -1,10 +1,10 @@
 ---
-title: "Häufige PowerShell-Befehle für virtuelle Azure-Computer | Microsoft-Dokumentation"
-description: "Enthält häufig verwendete PowerShell-Befehle als Einstiegshilfe zum Erstellen und Verwalten Ihrer Windows-VMs in Azure."
+title: Häufige PowerShell-Befehle für virtuelle Azure-Computer | Microsoft-Dokumentation
+description: Enthält häufig verwendete PowerShell-Befehle als Einstiegshilfe zum Erstellen und Verwalten Ihrer Windows-VMs in Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ba3839a2-f3d5-4e19-a5de-95bfb1c0e61e
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 7744f0bef5969a41130c09635d608df1a2952993
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f84473e73a32da43cc6cc80b21deb49ab4f3ceb9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Häufige PowerShell-Befehle zum Erstellen und Verwalten virtueller Azure-Computer
 
@@ -48,14 +48,14 @@ Diese Variablen könnten hilfreich sein, wenn Sie mehr als einen der Befehle aus
 
 ## <a name="get-information-about-vms"></a>Abrufen von Informationen zu virtuellen Computern
 
-| Aufgabe | Befehl |
+| Aufgabe | Get-Help |
 | ---- | ------- |
 | Auflisten der VMs eines Abonnements |[Get-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvm) |
 | Auflisten der VMs einer Ressourcengruppe |Get-AzureRmVM -ResourceGroupName $myResourceGroup<BR></BR><BR></BR>Verwenden Sie zum Abrufen einer Liste mit Ressourcengruppen Ihres Abonnements den Befehl [Get-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/get-azurermresourcegroup)verwenden. |
 | Abrufen von Informationen zu einem virtuellen Computer |Get-AzureRmVM -ResourceGroupName $myResourceGroup -Name $myVM |
 
 ## <a name="manage-vms"></a>Verwalten von VMs
-| Aufgabe | Befehl |
+| Aufgabe | Get-Help |
 | --- | --- |
 | Starten eines virtuellen Computers |[Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm) -ResourceGroupName $myResourceGroup -Name $myVM |
 | Anhalten eines virtuellen Computers |[Stop-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/stop-azurermvm) -ResourceGroupName $myResourceGroup -Name $myVM |

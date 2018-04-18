@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: c62817b6bb60d99a4762e433510cc54d15add35a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 84e6f2303bcfd6a2c91f29e9e9afdc2b84f990ca
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet
 
@@ -108,7 +108,7 @@ Innerhalb der App wird für jeden Mandanten eine SQL-Datenbank in einem Pool fü
 
 Auf einer zentralen **Event Hub**-Seite wird eine Liste mit Links zu den Mandanten in Ihrer Bereitstellung aufgeführt.
 
-1. Verwenden Sie die URL zum Öffnen des Event Hub in Ihrem Webbrowser: http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net. Ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.
+1. Verwenden Sie die URL zum Öffnen des Event Hub in Ihrem Webbrowser: http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net. Ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.
 
     ![Veranstaltungshub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
@@ -120,7 +120,7 @@ Auf einer zentralen **Event Hub**-Seite wird eine Liste mit Links zu den Mandant
 
 Die Wingtip-Anwendung verwendet [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md), um die Verteilung eingehender Anforderungen zu steuern. Die URL für den Zugriff auf die Veranstaltungsseite für einen bestimmten Mandanten verwendet das folgende Format:
 
-- http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
     In der folgenden Tabelle werden die Teile des oben genannten Formats erläutert.
 

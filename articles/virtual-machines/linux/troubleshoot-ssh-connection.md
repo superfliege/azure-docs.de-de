@@ -3,10 +3,10 @@ title: Behandeln von Problemen bei der SSH-Verbindung mit einem virtuellen Azure
 description: Erfahren Sie, wie Sie SSH-Fehler wie etwa fehlgeschlagene oder abgelehnte SSH-Verbindungen auf virtuellen Azure-Computern unter Linux beheben.
 keywords: SSH-Verbindung abgelehnt, SSH-Fehler, Azure SSH, SSH-Verbindungsfehler
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 176477105e1f660b0bd22d95142b744ef17044ee
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 533a80edbb115dfd324db9e4488e5c66dc36667e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer
 Es gibt verschiedene Gründe dafür, dass SSH-Fehler (Secure Shell) oder SSH-Verbindungsfehler auftreten oder dass die SSH-Verbindung abgelehnt wird, wenn Sie versuchen, eine Verbindung mit einem virtuellen Azure-Computer unter Linux herzustellen. Dieser Artikel hilft Ihnen, diese Probleme zu ermitteln und zu beheben. Sie können das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder die VM-Zugriffserweiterung für Linux verwenden, um Verbindungsproblemen zu ermitteln und zu beheben.
@@ -68,6 +68,14 @@ Wählen Sie zuerst die Option `Reset configuration only` aus dem Dropdownmenü *
 Um die Anmeldeinformationen eines vorhandenen Benutzers zurückzusetzen, wählen Sie entweder `Reset SSH public key` oder `Reset password` aus dem Dropdownmenü **Modus**, wie im vorigen Screenshot gezeigt. Geben Sie den Benutzernamen sowie einen SSH-Schlüssel oder ein neues Kennwort an, und klicken Sie auf die Schaltfläche **Zurücksetzen**.
 
 Über dieses Menü können Sie auch einen Benutzer mit sudo-Berechtigungen auf dem virtuellen Computer erstellen. Geben Sie einen neuen Benutzernamen sowie ein Kennwort oder einen SSH-Schlüssel ein, und klicken Sie dann auf die Schaltfläche **Zurücksetzen**.
+
+### <a name="check-security-rules"></a>Überprüfen von Sicherheitsregeln
+
+Verwenden Sie den Ansatz [Überprüfen des IP-Flusses](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md), um zu bestätigen, dass eine Regel in einer Netzwerksicherheitsgruppe den Datenverkehr an einen oder von einem virtuellen Computer blockiert. Sie können auch die aktiven Sicherheitsgruppenregeln überprüfen, um sicherzustellen, dass die NSG-Regel „Zulassen“ für eingehende Verbindungen vorhanden ist und für den SSH-Port (standardmäßig 22) Priorität hat. Weitere Informationen finden Sie unter [Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+
+### <a name="check-routing"></a>Überprüfen des Routings
+
+Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/network-watcher-check-next-hop-portal.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen über das Azure-Portal](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
 
 ## <a name="use-the-azure-cli-20"></a>Verwenden von Azure CLI 2.0
 Wenn nicht bereits geschehen, installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an.

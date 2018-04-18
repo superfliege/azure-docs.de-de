@@ -1,26 +1,21 @@
 ---
-title: Verwenden von Verweisdaten und Nachschlagetabellen in Stream Analytics | Microsoft Docs
-description: Verwenden von Verweisdaten in einer Stream Analytics-Abfrage
-keywords: Nachschlagetabelle, Verweisdaten
+title: Verwenden von Referenzdaten für Suchvorgänge in Azure Stream Analytics
+description: In diesem Artikel wird beschrieben, wie Sie Referenzdaten nutzen, um nach Daten in einem Abfragedesign eines Azure Stream Analytics-Auftrags zu suchen oder diese zu korrelieren.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 06103be5-553a-4da1-8a8d-3be9ca2aff54
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 77a4a9a28060206a30c658216156d7339bddc398
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 9d1763697e93ea0bd5eaeaeb92f5f882f39a6c64
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="using-reference-data-or-lookup-tables-in-a-stream-analytics-input-stream"></a>Verwenden von Verweisdaten oder Nachschlagetabellen in einem Stream Analytics-Eingabedatenstrom
+# <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
 Verweisdaten (auch als Nachschlagetabellen bezeichnet) sind ein begrenzter Satz von Daten, der statisch ist oder sich nur langsam ändert und der für eine Suche oder Korrelation mit Ihrem Datenstrom verwendet wird. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](https://msdn.microsoft.com/library/azure/dn949258.aspx) in Ihrer Abfrage. Stream Analytics verwendet Azure Blob Storage als Speicherschicht für Verweisdaten, und mit Azure Data Factory können Verweisdaten aus einer [beliebigen Anzahl von cloudbasierten und lokalen Datenspeichern](../data-factory/copy-activity-overview.md) transformiert und/oder in Azure Blob Storage kopiert werden, um sie als Verweisdaten zu verwenden. Referenzdaten werden als (in der Eingabekonfiguration definierte) Blobsequenz in aufsteigender Reihenfolge nach dem im Blobnamen angegebenen Datums- bzw. Uhrzeitwert modelliert. Hinzufügungen sind jeweils **nur** am Sequenzende möglich. Hierzu muss der verwendete Datums-/Uhrzeitwert den Wert des letzten Blobs in der Sequenz **übersteigen**.
 
 Für Stream Analytics gilt ein **Grenzwert von 100 MB pro Blob**. Aufträge können jedoch mithilfe der **Pfadmuster**-Eigenschaft mehrere Verweisblobs verarbeiten.
@@ -97,7 +92,7 @@ Mit [Azure Data Factory](https://azure.microsoft.com/documentation/services/data
 3. Um die Auflistung einer großen Anzahl von Blobs zu vermeiden, sollten Sie darüber nachdenken, sehr alte Blobs zu löschen, für die die Verarbeitung nicht mehr durchgeführt wird. Beachten Sie, dass ASA in einigen Szenarien, wie z.B. einem Neustart, eine kleine Menge nachbearbeiten muss.
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben nun Stream Analytics kennengelernt, einen verwalteten Dienst für Stream Analytics für Daten aus dem Internet der Dinge. Weitere Informationen zu diesem Dienst finden Sie unter:

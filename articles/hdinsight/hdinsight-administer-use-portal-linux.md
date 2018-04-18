@@ -2,7 +2,7 @@
 title: Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal | Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen zum Erstellen und Verwalten von HDInsight-Clustern mithilfe des Azure-Portals.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b0a9b808f2c1a65d10c1c12500325a9b5a34bc5a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9b5df3d5e355fac0c0ea4203d28170a2d3c04ad9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -33,7 +33,7 @@ Mithilfe des [Azure-Portals][azure-portal] können Sie Hadoop-Cluster in Azure H
 Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie ein **Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="open-the-azure-portal"></a>Öffnen Sie das Azure-Portal.
-1. Melden Sie sich bei [https://portal.azure.com](https://portal.azure.com)an.
+1. Melden Sie sich bei [https://portal.azure.com](https://portal.azure.com) an.
 2. Nachdem Sie das Portal geöffnet haben, können Sie die folgenden Schritte ausführen:
 
    * Klicken Sie im linken Menü auf **Ressource erstellen**, um einen neuen Cluster zu erstellen:
@@ -75,7 +75,7 @@ Wenn Sie einen HDInsight-Cluster erstellen, müssen Sie ein Azure-Abonnement ang
 Wenn der Fehler „NoRegisteredProviderFound“ oder „MissingSubscriptionRegistration“ angezeigt wird, lesen Sie [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md).
 
 ## <a name="list-and-show-clusters"></a>Auflisten und Anzeigen von Clustern
-1. Melden Sie sich bei [https://portal.azure.com](https://portal.azure.com)an.
+1. Melden Sie sich bei [https://portal.azure.com](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **HDInsight-Cluster** , um die vorhandenen Cluster aufzulisten. Klicken Sie zuerst auf **Alle Dienste**, falls **HDInsight-Cluster** nicht angezeigt wird.
 3. Klicken Sie auf den Clusternamen. Wenn die Clusterliste lang ist, können Sie oben auf der Seite filtern.
 4. Klicken Sie in der Liste auf einen Cluster, um die Übersichtsseite anzuzeigen:
@@ -103,7 +103,7 @@ Wenn der Fehler „NoRegisteredProviderFound“ oder „MissingSubscriptionRegis
     * **Externe Metastores**: Anzeigen der Hive- und Oozie-Metastores. Die Metastores können nur während der Clustererstellung konfiguriert werden. Weitere Informationen finden Sie unter [Verwenden des Hive/Oozie-Metastores](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore).
     * **Skriptaktionen**: Anwenden von Bashskripts auf den Cluster. Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
     * **Anwendungen**: Dient zum Hinzufügen und Entfernen von HDInsight-Anwendungen.  Weitere Informationen finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
-    * **Überwachung:** überwacht den Cluster in Azure Operations Management Suite und Azure Log Analytics
+    * **Überwachung**: Überwachen des Clusters in Azure Log Analytics
     * **Eigenschaften**: Anzeigen der Clustereigenschaften
     * **Speicherkonten**: Dient zum Anzeigen der Speicherkonten und Schlüssel. Die Speicherkonten werden während der Clustererstellung konfiguriert.
     * **Data Lake Store-Zugriff:** konfiguriert den Zugriff auf Data Lake Stores.  Weitere Informationen finden Sie unter [Erstellen von HDInsight-Clustern mit Azure Data Lake Store mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
@@ -345,7 +345,7 @@ Siehe [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläc
 ## <a name="browse-files"></a>Dateien durchsuchen
 Mit dem Azure-Portal können Sie den Inhalt des Standardcontainers durchsuchen.
 
-1. Melden Sie sich bei [https://portal.azure.com](https://portal.azure.com)an.
+1. Melden Sie sich bei [https://portal.azure.com](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **HDInsight-Cluster** , um die vorhandenen Cluster aufzulisten.
 3. Klicken Sie auf den Clusternamen. Wenn die Clusterliste lang ist, können Sie oben auf der Seite filtern.
 4. Klicken Sie im linken Menü des Clusters auf **Speicherkonten**.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 02/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3a10437d0a2d680e586ada6a87750a69453c1f0c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: fe0ef5c81b1ef6bef298e65cde3649c9464089d8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sfctl-application"></a>sfctl application
 Ermöglicht es, Anwendungen und Anwendungstypen zu erstellen, zu löschen und zu verwalten.
@@ -71,7 +71,7 @@ Erstellt eine Service Fabric-Anwendung mithilfe der angegebenen Beschreibung.
 | --debug              | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h            | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o          | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query              | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query              | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose            | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-delete"></a>sfctl application delete
@@ -94,7 +94,7 @@ Löscht eine vorhandene Service Fabric-Anwendung. Eine Anwendung muss erstellt w
 | --debug                 | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h               | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o             | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query                 | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                 | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose               | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-deployed"></a>sfctl application deployed
@@ -117,7 +117,7 @@ Ruft die Informationen zu einer Anwendung ab, die auf einem Service Fabric-Knote
 | --debug                 | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h               | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o             | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query                 | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                 | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose               | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-health"></a>sfctl application health
@@ -143,7 +143,7 @@ Gibt den Integritätsstatus der Service Fabric-Anwendung zurück. In der Antwort
 | --debug                                 | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                               | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                             | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query                                 | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
+| --query                                 | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter http://jmespath.org/.|
 | --verbose                               | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-info"></a>sfctl application info
@@ -166,7 +166,7 @@ Gibt die Informationen zu der Anwendung zurück, die im Service Fabric-Cluster e
 | --debug                      | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                    | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                  | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.             Standardwert: json.|
-| --query                      | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
+| --query                      | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter http://jmespath.org/.|
 | --verbose                    | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-list"></a>sfctl application list
@@ -192,7 +192,7 @@ Ruft die Informationen zu den Anwendung ab, die im Service Fabric-Cluster erstel
 | --debug                      | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                    | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                  | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.             Standardwert: json.|
-| --query                      | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                      | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose                    | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-load"></a>sfctl application load
@@ -212,7 +212,7 @@ Gibt die Lastinformationen der Anwendung zurück, die im Service Fabric-Cluster 
 |--debug                    | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
     --help -h                  | Zeigt diese Hilfemeldung an und beendet.|
     --output -o                | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-    --query                    | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
+    --query                    | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter http://jmespath.org/.|
     --verbose                  | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-manifest"></a>sfctl application manifest
@@ -235,15 +235,13 @@ Ruft das Manifest ab, das einen Anwendungstyp beschreibt. Die Antwort enthält d
 | --debug                           | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                         | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                       | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.                  Standardwert: json.|
-| --query                           | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
+| --query                           | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter http://jmespath.org/.|
 | --verbose                         | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-provision"></a>sfctl application provision
 Stellt einen Service Fabric-Anwendungstyp mithilfe des SFPKG-Pakets im externen Speicher oder mithilfe des Anwendungspakets im Imagespeicher im Cluster bereit oder registriert ihn.
 
-Stellt einen Service Fabric-Anwendungstyp im Cluster bereit. Dies ist erforderlich, bevor neue Anwendungen instanziiert werden können. Der Bereitstellungsvorgang kann mit dem Anwendungspaket, das durch RelativePathInImageStore angegeben wird, oder mithilfe des URI des externen SFPKG-Pakets ausgeführt werden. Sofern nicht „--external-provision“ festgelegt wurde, erwartet dieser Befehl eine
-
-Bereitstellung per Imagespeicher.
+Stellt einen Service Fabric-Anwendungstyp im Cluster bereit. Dies ist erforderlich, bevor neue Anwendungen instanziiert werden können. Der Bereitstellungsvorgang kann mit dem Anwendungspaket, das durch RelativePathInImageStore angegeben wird, oder mithilfe des URI des externen SFPKG-Pakets ausgeführt werden. Mit diesem Befehl wird das Anwendungspaket nur dann aus dem Imagespeicher bereitgestellt, wenn nicht „--external-provision“ festgelegt ist.
         
 
 
@@ -266,7 +264,7 @@ Bereitstellung per Imagespeicher.
 | --debug                              | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                            | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                          | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query                              | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
+| --query                              | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter http://jmespath.org/.|
 | --verbose                            | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-type"></a>sfctl application type
@@ -293,7 +291,7 @@ Gibt die Informationen über die Anwendungstypen zurück, die im Service Fabric-
 | --debug                        | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                      | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                    | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.               Standardwert: json.|
-| --query                        | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                        | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose                      | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-unprovision"></a>sfctl application unprovision
@@ -317,7 +315,7 @@ Entfernt einen Service Fabric-Anwendungstyp aus dem Cluster oder hebt die Regist
 | --debug                           | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                         | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                       | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.                  Standardwert: json.|
-| --query                           | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
+| --query                           | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter http://jmespath.org/.|
 | --verbose                         | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-upgrade"></a>sfctl application upgrade
@@ -354,7 +352,7 @@ Startet ein Aktualisieren einer Anwendung im Service Fabric-Cluster.
 | --debug                     | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                   | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                 | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.            Standardwert: json.|
-| --query                     | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                     | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose                   | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-upload"></a>sfctl application upload
@@ -377,7 +375,7 @@ Optional kann der Uploadfortschritt für jede Datei im Paket angezeigt werden. D
 | --debug       | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h     | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o   | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query       | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
+| --query       | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter http://jmespath.org/.|
 | --verbose     | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="next-steps"></a>Nächste Schritte

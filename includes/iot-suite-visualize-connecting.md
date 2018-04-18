@@ -26,7 +26,7 @@ Um Methoden auf Ihren Geräten aufzurufen, verwenden Sie in der Lösung für die
 
 1. Um eine Liste der Methoden anzuzeigen, können Sie diese auf Ihrem Gerät aufrufen und **Planen** wählen. Um eine Methode für die Ausführung auf mehreren Geräten zu planen, können Sie mehrere Geräte in der Liste auswählen. Der Bereich **Planen** zeigt die für alle ausgewählten Geräte gemeinsamen Methodentypen an.
 
-1. Wählen Sie **FirmwareUpdate** aus, und legen Sie **UpdatePhysischesKühlgerät** als Auftragsnamen fest. Legen Sie die **Firmwareversion** auf **2.0.0** fest, stellen Sie den **Firmware-URI** auf **http://contoso.com/updates/firmware.bin** ein, und wählen Sie dann **Anwenden** aus:
+1. Wählen Sie **FirmwareUpdate** aus, und legen Sie **UpdatePhysischesKühlgerät** als Auftragsnamen fest. Legen Sie die **Firmwareversion** auf **2.0.0** und den **Firmware-URI** auf **http://contoso.com/updates/firmware.bin** fest, und klicken Sie dann auf **Anwenden**:
 
     ![Planen des Firmwareupdates](media/iot-suite-visualize-connecting/deviceschedule.png)
 

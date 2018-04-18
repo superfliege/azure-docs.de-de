@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: ede128d23ca73dc46f2d4dc4b1dd4b1f83a2bc3f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 65e5e45300e66cd8c3acc44a91335de45a919eb5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/28/2018
 
 Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort hilft Ihnen bei Analyse und Behandlung von Problemen, die ggf. in Ihrem Cluster oder in den Anwendungen und Diensten des Clusters auftreten.
 
-Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Windows Azure-Diagnose (WAD)-Erweiterung, mit der Protokolle in Azure Storage hochgeladen und an Azure Application Insights oder Event Hubs gesendet werden können. Sie können zudem einen externen Prozess verwenden, um die Ereignisse aus dem Speicher zu lesen und in einem Analyseplattformprodukt wie [OMS Log Analytics](../log-analytics/log-analytics-service-fabric.md) oder in einer anderen Protokollanalyselösung zu verwenden.
+Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Windows Azure-Diagnose (WAD)-Erweiterung, mit der Protokolle in Azure Storage hochgeladen und an Azure Application Insights oder Event Hubs gesendet werden können. Sie können zudem einen externen Prozess verwenden, um die Ereignisse aus dem Speicher zu lesen und in einem Analyseplattformprodukt wie [Log Analytics](../log-analytics/log-analytics-service-fabric.md) oder in einer anderen Protokollanalyselösung zu verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Diese Tools werden verwendet, um einige Vorgänge in diesem Dokument durchzuführen:
@@ -285,11 +285,11 @@ Das Senden von Überwachungs- und Diagnosedaten an Application Insights (AI) kan
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie die Azure-Diagnose richtig konfiguriert haben, enthalten Ihre Speichertabellen Daten aus den ETW- und EventSource-Protokollen. Wenn Sie OMS, Kibana oder eine andere Plattform zur Datenanalyse und -visualisierung verwenden möchten, die in der Resource Manager-Vorlage nicht direkt konfiguriert ist, richten Sie die gewünschte Plattform so ein, dass sie die Daten aus diesen Speichertabellen liest. Bei OMS ist dies recht einfach. Informationen dazu finden Sie unter [Event analysis and visualization with OMS](service-fabric-diagnostics-event-analysis-oms.md) (Ereignis- und Protokollanalyse mithilfe von OMS). Bei Application Insights verhält sich dies ein wenig anders, da es bei der Konfiguration der Diagnoseerweiterung konfiguriert werden kann. Wenn Sie also AI verwenden möchten, lesen Sie die Informationen im [entsprechenden Artikel](service-fabric-diagnostics-event-analysis-appinsights.md).
+Wenn Sie die Azure-Diagnose richtig konfiguriert haben, enthalten Ihre Speichertabellen Daten aus den ETW- und EventSource-Protokollen. Wenn Sie Log Analytics, Kibana oder eine andere Plattform zur Datenanalyse und -visualisierung verwenden möchten, die in der Resource Manager-Vorlage nicht direkt konfiguriert ist, richten Sie die gewünschte Plattform so ein, dass sie die Daten aus diesen Speichertabellen liest. Bei Log Analytics ist dies recht einfach. Informationen dazu finden Sie unter [Ereignis- und Protokollanalyse](service-fabric-diagnostics-event-analysis-oms.md). Bei Application Insights verhält sich dies ein wenig anders, da es bei der Konfiguration der Diagnoseerweiterung konfiguriert werden kann. Wenn Sie also AI verwenden möchten, lesen Sie die Informationen im [entsprechenden Artikel](service-fabric-diagnostics-event-analysis-appinsights.md).
 
 >[!NOTE]
 >Es gibt derzeit keine Möglichkeit, die an die Tabelle gesendeten Ereignisse zu filtern oder zu optimieren. Wenn Sie keinen Prozess zum Entfernen von Ereignissen aus der Tabelle implementieren, wächst die Tabelle weiter an. Im [Watchdog-Beispiel](https://github.com/Azure-Samples/service-fabric-watchdog-service) finden Sie derzeit ein Beispiel für einen ausgeführten Datenbereinigungsdienst. Die Erstellung eines solchen Diensts wird empfohlen, sofern Sie Protokolle nicht aus einem triftigen Grund länger als 30 oder 90 Tage speichern müssen.
 
 * [Erfahren Sie, wie Sie Leistungsindikatoren oder Protokolle mithilfe der Diagnoseerweiterung sammeln können.](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Event Analysis and Visualization with Application Insights (Ereignisanalyse und -visualisierung mit Application Insights)](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Event Analysis and Visualization with OMS (Ereignisanalyse und -visualisierung mit OMS)](service-fabric-diagnostics-event-analysis-oms.md)
+* [Ereignisanalyse und Visualisierung mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Ereignisanalyse und -visualisierung mit Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)

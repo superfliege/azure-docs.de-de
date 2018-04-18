@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: rli
-ms.openlocfilehash: d105c88105512df4a9f8d999f64ad001b5d54917
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: rli; v-deasim
+ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Beschleunigung dynamischer Websites durch das Azure CDN
 
@@ -152,11 +152,11 @@ Für die DSA ist die Zwischenspeicherung im CDN standardmäßig deaktiviert. Die
 
 Wenn Sie über eine Website mit einer Mischung aus statischen und dynamischen Ressourcen verfügen, erzielen Sie die beste Leistung, indem Sie sich für einen Hybridansatz entscheiden. 
 
-Sie können das Zwischenspeichern für das **Azure CDN Standard von Verizon**-Profil und das **Azure CDN Standard von Akamai**-Profil für bestimmte DSA-Endpunkte aktivieren, indem Sie [Cacheregeln](cdn-caching-rules.md) verwenden.
+Sie können das Zwischenspeichern für das Profil **Azure CDN Standard von Verizon** und das Profil **Azure CDN Standard von Akamai** für bestimmte DSA-Endpunkte aktivieren, indem Sie [Cacheregeln](cdn-caching-rules.md) verwenden.
 
 So greifen Sie auf Cacheregeln zu
 
-1. Wählen Sie auf der Seite **CDN-Profil** unter „Einstellungen“ die Option **Cacheregeln**.  
+1. Wählen Sie auf der Seite **CDN-Profil** unter „Einstellungen“ die Option **Cacheregeln**.  
     
     ![Schaltfläche für CDN-Cacheregeln](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -164,7 +164,7 @@ So greifen Sie auf Cacheregeln zu
 
 2. Erstellen Sie eine globale oder benutzerdefinierte Cacheregel, um das Zwischenspeichern für den DSA-Endpunkt zu aktivieren. 
 
-Bei **Azure CDN Premium von Verizon**-Profilen können Sie das Zwischenspeichern für bestimmte DSA-Endpunkte mithilfe der [Regel-Engine](cdn-rules-engine.md) aktivieren. Alle Regeln, die erstellt werden, betreffen nur die für die DSA optimierten Endpunkte Ihres Profils. 
+Bei Profilen vom Typ **Azure CDN Premium von Verizon** können Sie das Zwischenspeichern für bestimmte DSA-Endpunkte mithilfe der [Regel-Engine](cdn-rules-engine.md) aktivieren. Alle Regeln, die erstellt werden, betreffen nur die für die DSA optimierten Endpunkte Ihres Profils. 
 
 So greifen Sie auf die Regel-Engine zu
     

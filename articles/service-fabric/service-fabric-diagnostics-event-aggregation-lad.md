@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric-Ereignisaggregation mit Linux-Azure-Diagnose | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Ereignisse unter Verwendung von LAD zur Überwachung und Diagnose von Azure Service Fabric-Clustern aggregieren und sammeln."
+description: Erfahren Sie, wie Sie Ereignisse unter Verwendung von LAD zur Überwachung und Diagnose von Azure Service Fabric-Clustern aggregieren und sammeln.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: b70780b2e1d169aced3412f6fe6d13ad4dab82be
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9ad63a67d3b51cad1376eb9e97e68fb9102013e3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit Linux-Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 
 Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort hilft Ihnen bei Analyse und Behandlung von Problemen, die ggf. in Ihrem Cluster oder in den Anwendungen und Diensten des Clusters auftreten.
 
-Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Erweiterung Linux-Azure-Diagnose (LAD), mit der Protokolle in Azure Storage hochgeladen werden und an Azure Application Insights oder Event Hubs gesendet werden können. Sie können zudem einen externen Prozess verwenden, um die Ereignisse aus dem Speicher zu lesen und in einem Analyseplattformprodukt wie [OMS Log Analytics](../log-analytics/log-analytics-service-fabric.md) oder in einer anderen Protokollanalyselösung zu verwenden.
+Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Erweiterung Linux-Azure-Diagnose (LAD), mit der Protokolle in Azure Storage hochgeladen werden und an Azure Application Insights oder Event Hubs gesendet werden können. Sie können zudem einen externen Prozess verwenden, um die Ereignisse aus dem Speicher zu lesen und in einem Analyseplattformprodukt wie [Log Analytics](../log-analytics/log-analytics-service-fabric.md) oder in einer anderen Protokollanalyselösung zu verwenden.
 
 ## <a name="log-and-event-sources"></a>Protokoll- und Ereignisquellen
 
@@ -52,4 +52,4 @@ Dadurch wird der LAD-Agent konfiguriert, um bestimmte Protokolldateien zu überw
 ## <a name="next-steps"></a>Nächste Schritte
 
 1. Ausführlichere Informationen zu relevanten Ereignissen für die Problembehandlung finden Sie in der [LTTng-Dokumentation](http://lttng.org/docs) sowie unter [Verwenden der Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten einer Linux-VM](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
-2. [Richten Sie den OMS-Agent ein](service-fabric-diagnostics-event-analysis-oms.md), um bei der Sammlung von Metriken, bei der Überwachung des auf Ihrem Cluster bereitgestellten Container und bei der Visualisierung Ihrer Protokolle zu helfen. 
+2. [Richten Sie den Log Analytics-Agent ein](service-fabric-diagnostics-event-analysis-oms.md), um bei der Sammlung von Metriken, bei der Überwachung der in Ihrem Cluster bereitgestellten Container und bei der Visualisierung Ihrer Protokolle zu helfen. 

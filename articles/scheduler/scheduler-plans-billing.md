@@ -1,11 +1,11 @@
 ---
-title: "Pläne und Abrechnung in Azure Scheduler"
-description: "Pläne und Abrechnung in Azure Scheduler"
+title: Pläne und Abrechnung in Azure Scheduler
+description: Pläne und Abrechnung in Azure Scheduler
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,33 +14,27 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: f0662230c5d1663e37ee2be58f234934ec3d55dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b25e97b0f0d0b6f63134a774856eb7ec8f77b679
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Pläne und Abrechnung in Azure Scheduler
 ## <a name="job-collection-plans"></a>Pläne für Auftragssammlungen
-In Azure Scheduler wird nach Auftragssammlungen abgerechnet. Auftragssammlungen enthalten eine Reihe von Aufträgen und sind in drei Plänen (Free, Standard und Premium) verfügbar.
+In Azure Scheduler wird nach Auftragssammlungen abgerechnet. Auftragssammlungen enthalten eine Reihe von Aufträgen und sind in drei Plänen (Standard, P10 Premium und P20 Premium) verfügbar.
 
 | **Auftragssammlungsplan** | **Max. Anzahl von Aufträgen pro Auftragssammlung** | **Max. Wiederholungen** | **Max. Auftragssammlungen pro Abonnement** | **Einschränkungen** |
 |:--- |:--- |:--- |:--- |:--- |
-| **Free** |Fünf Aufträge pro Auftragssammlung |Einmal pro Stunde. Aufträge können maximal einmal pro Stunde ausgeführt werden. |Ein Abonnement kann höchstens eine Auftragssammlung vom Typ „Free“ enthalten. |Das [HTTP-Objekt für die ausgehende Autorisierung](scheduler-outbound-authentication.md) |
 | **Standard** |50 Aufträge pro Auftragssammlung |Einmal pro Minute. Aufträge können maximal einmal pro Minute ausgeführt werden. |Ein Abonnement kann bis zu 100 Auftragssammlungen vom Typ „Standard“ enthalten. |Zugriff auf sämtliche Scheduler-Features |
 | **P10 Premium** |50 Aufträge pro Auftragssammlung |Einmal pro Minute. Aufträge können maximal einmal pro Minute ausgeführt werden. |Ein Abonnement kann bis zu 10.000 Auftragssammlungen vom Typ „P10 Premium“ enthalten. <a href="mailto:wapteams@microsoft.com">Setzen Sie sich mit uns in Verbindung</a>, um weitere Informationen zu erhalten. |Zugriff auf sämtliche Scheduler-Features |
 | **P20 Premium** |1.000 Aufträge pro Auftragssammlung |Einmal pro Minute. Aufträge können maximal einmal pro Minute ausgeführt werden. |Ein Abonnement kann bis zu 10.000 Auftragssammlungen vom Typ „P20 Premium“ enthalten. <a href="mailto:wapteams@microsoft.com">Setzen Sie sich mit uns in Verbindung</a>, um weitere Informationen zu erhalten. |Zugriff auf sämtliche Scheduler-Features |
 
 ## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>Upgrades und Downgrades für Auftragssammlungspläne
-Sie können bei Ihren Auftragssammlungsplänen jederzeit zwischen „Free“, „Standard“ und „Premium“ wechseln. Beim Herabstufen einer Auftragssammlung zu „Free“ kann jedoch aus folgenden Gründen ein Fehler auftreten:
-
-* Im Abonnement ist bereits eine Auftragssammlung vom Typ „Free“ vorhanden.
-* Ein Auftrag in der Auftragssammlung hat eine höhere Wiederholungsrate als für Aufträge in Auftragssammlungen vom Typ „Free“ zulässig. In Auftragssammlungen vom Typ „Free“ ist maximal eine Wiederholung pro Stunde zulässig.
-* Die Auftragssammlung enthält mehr als fünf Aufträge.
-* Ein Auftrag in der Auftragssammlung besitzt eine HTTP- oder HTTPS-Aktion, die ein [HTTP-Objekt für die ausgehende Autorisierung](scheduler-outbound-authentication.md)
+Sie können bei Ihren Auftragssammlungsplänen jederzeit zwischen „Standard“, „P10 Premium“ und „P20 Premium“ wechseln.
 
 ## <a name="billing-and-azure-plans"></a>Abrechnung und Azure-Pläne
-Für Auftragssammlungen vom Typ „Free“ fallen in Abonnements keine Kosten an. Bei mehr als 100 Standard-Auftragssammlungen (entspricht zehn Standard-Abrechnungseinheiten) lohnt sich die Verlagerung der Auftragssammlungen in der Premium-Plan.
+Bei mehr als 100 Standard-Auftragssammlungen (entspricht zehn Standard-Abrechnungseinheiten) lohnt sich die Verlagerung der Auftragssammlungen in der Premium-Plan.
 
 Wenn Sie eine Auftragssammlung vom Typ „Standard“ und eine vom Typ „Premium“ besitzen, werden Ihnen eine Standard-Abrechnungseinheit *und* eine Premium-Abrechnungseinheit in Rechnung gestellt. Die Abrechnung des Scheduler-Diensts basiert auf der Anzahl aktiver Auftragssammlungen vom Typ „Standard“ oder „Premium“. Dies wird in den beiden folgenden Abschnitten ausführlicher erläutert.
 
@@ -69,7 +63,7 @@ Sie können zwar mit einem einzelnen Vorgang alle Aufträge innerhalb einer Auft
 ## <a name="pricing"></a>Preise
 Ausführliche Informationen finden Sie unter [Scheduler Preise](https://azure.microsoft.com/pricing/details/scheduler/).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
  [Was ist Azure Scheduler?](scheduler-intro.md)
 
  [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)

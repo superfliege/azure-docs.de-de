@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über die Azure Service Fabric-Sicherheit | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält eine Übersicht über die Azure Service Fabric-Sicherheit."
+title: Übersicht über die Azure Service Fabric-Sicherheit | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Übersicht über die Azure Service Fabric-Sicherheit.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 64717da922701aabd27e15a67e8da1b0acb30b77
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9b6c2463c2a782f463e64d6e350a565fa7898b63
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-service-fabric-security-overview"></a>Übersicht über die Azure Service Fabric-Sicherheit
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Service Fabric bietet einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind.
@@ -104,7 +104,7 @@ Der allgemeine Workflow für die Überwachung und Diagnose besteht aus drei Schr
 
 -   **Ereignisaggregation:** Die generierten Ereignisse müssen gesammelt und aggregiert werden, bevor sie angezeigt werden können. In der Regel empfehlen wir die Verwendung von [Azure-Diagnose](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (ähnlich der Agent-basierten Protokollsammlung) oder [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (In-Process-Protokollsammlung).
 
--   **Analyse:** Die Ereignisse müssen visualisiert und in einem Format verfügbar sein, das die Analyse und Anzeige ermöglicht. Es gibt mehrere Plattformen für die Analyse und Visualisierung von Überwachungs- und Diagnosedaten. Wir empfehlen aufgrund ihrer guten Integration in Service Fabric [Operations Management Suite](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) und [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights).
+-   **Analyse:** Die Ereignisse müssen visualisiert und in einem Format verfügbar sein, das die Analyse und Anzeige ermöglicht. Es gibt mehrere Plattformen für die Analyse und Visualisierung von Überwachungs- und Diagnosedaten. Wir empfehlen aufgrund ihrer guten Integration in Service Fabric [Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) und [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights).
 
 Sie können auch [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) zum Überwachen von vielen Azure-Ressourcen verwenden, aus denen ein Service Fabric-Cluster erstellt wird.
 
@@ -120,7 +120,7 @@ Digitale X.509-Zertifikate werden in der Regel verwendet, um Clients und Server 
 
 In der folgenden Tabelle sind die Zertifikate aufgeführt, die Sie für die Einrichtung des Clusters benötigen:
 
-|Zertifikatinformationseinstellung |Beschreibung|
+|Zertifikatinformationseinstellung |BESCHREIBUNG|
 |-------------------------------|-----------|
 |ClusterCertificate|    Dieses Zertifikat ist erforderlich, um die Kommunikation zwischen den Knoten in einem Cluster zu schützen. Sie können zwei verschiedene Zertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades.|
 |ServerCertificate| Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. Sie können zwei verschiedene Serverzertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades.|

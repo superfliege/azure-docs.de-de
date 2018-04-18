@@ -1,24 +1,24 @@
 ---
-title: "Verwalten des Zugriffs auf Cloud-Apps durch Einschränken von Mandanten – Azure | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe von Mandanteneinschränkungen auf der Grundlage des verwendeten Azure AD-Mandanten steuern, welcher Benutzer auf Apps zugreifen kann."
+title: Verwalten des Zugriffs auf Cloud-Apps durch Einschränken von Mandanten – Azure | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe von Mandanteneinschränkungen auf der Grundlage des verwendeten Azure AD-Mandanten steuern, welcher Benutzer auf Apps zugreifen kann.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
 editor: yossib
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 04/03/2018
 ms.author: kgremban
-ms.openlocfilehash: 63e0fa54433a60fe7384d21cf7d215cc8283afca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a6b498b38e76dfa2553bf3a916b723cd774d950d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -112,7 +112,9 @@ Aktuelle Informationen zu den Office-Clients, die die moderne Authentifizierung 
 
 Mandanteneinschränkungen werden derzeit von browserbasierten Office 365-Anwendungen unterstützt. Hierzu zählen beispielsweise das Office-Portal sowie Yammer, SharePoint-Websites und Outlook im Web. Bei Fat Clients (Outlook, Skype for Business, Word, Excel, PowerPoint usw.) können Mandanteneinschränkungen nur erzwungen werden, wenn die moderne Authentifizierung verwendet wird.  
 
-Outlook- und Skype for Business-Clients, die die moderne Authentifizierung unterstützen, können für Mandanten, bei denen keine moderne Authentifizierung aktiviert ist, weiterhin ältere Protokolle verwenden und dadurch die Mandanteneinschränkungen umgehen. Bei Outlook unter Windows können Kunden ggf. Einschränkungen implementieren, die verhindern, dass Endbenutzer ihren Profilen nicht genehmigte E-Mail-Konten hinzufügen. Informationen hierzu finden Sie beispielsweise unter der Gruppenrichtlinieneinstellung [Das Hinzufügen nicht standardmäßiger Exchange-Konten verhindern](http://gpsearch.azurewebsites.net/default.aspx?ref=1). Für Outlook auf Plattformen, bei denen es sich nicht um Windows handelt, und für Skype for Business auf allen Plattformen ist vollständige Unterstützung für Mandanteneinschränkungen zurzeit nicht verfügbar.
+Outlook- und Skype for Business-Clients, die die moderne Authentifizierung unterstützen, können für Mandanten, bei denen keine moderne Authentifizierung aktiviert ist, unter Umständen weiterhin ältere Protokolle verwenden und dadurch die Mandanteneinschränkungen umgehen. Anwendungen, die ältere Protokolle verwenden, werden unter Umständen durch Mandanteneinschränkungen blockiert, wenn sie bei der Authentifizierung login.microsoftonline.com, login.microsoft.com oder login.windows.net kontaktieren.
+
+Bei Outlook unter Windows können Kunden ggf. Einschränkungen implementieren, die verhindern, dass Endbenutzer ihren Profilen nicht genehmigte E-Mail-Konten hinzufügen. Informationen hierzu finden Sie beispielsweise unter der Gruppenrichtlinieneinstellung [Das Hinzufügen nicht standardmäßiger Exchange-Konten verhindern](http://gpsearch.azurewebsites.net/default.aspx?ref=1). Für Outlook auf Plattformen, bei denen es sich nicht um Windows handelt, und für Skype for Business auf allen Plattformen ist vollständige Unterstützung für Mandanteneinschränkungen zurzeit nicht verfügbar.
 
 ## <a name="testing"></a>Testen
 
@@ -132,7 +134,7 @@ Fiddler ist ein kostenloser Web Debugging Proxy, mit dem Sie HTTP/HTTPS-Datenver
   if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
   ```
 
-  Falls Sie mehrere Mandanten zulassen möchten, trennen Sie die einzelnen Mandantennamen jeweils durch ein Komma. Beispiel:
+  Falls Sie mehrere Mandanten zulassen möchten, trennen Sie die einzelnen Mandantennamen jeweils durch ein Komma. Beispiel: 
 
   ```
   oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";

@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/31/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 352b0d48ab223a236b96c633526f792b6f8a703d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f76a9f0aa5e68e729c67dad52f6dae4e01fdb56a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 
@@ -54,7 +54,7 @@ Pools und die Datenbanken in den Pools sollten überwacht werden, um sicherzuste
 
 Das [Azure-Portal](https://portal.azure.com) bietet integrierte Überwachung und Benachrichtigungen für die meisten Ressourcen. In SQL-Datenbank sind Überwachung und Benachrichtigungen für Datenbanken und Pools verfügbar. Die integrierte Überwachungs- und Benachrichtigungsfunktionalität ist ressourcenspezifisch, daher lässt sie sich bequem für eine kleine Anzahl von Ressourcen verwenden, ist aber bei der Arbeit mit vielen Ressourcen nicht sehr praktisch.
 
-Bei Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, kann [Log Analytics (OMS)](saas-dbpertenant-log-analytics.md) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Diagnoseprotokolle und Telemetriedaten bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Log Analytics kann Telemetriedaten über eine Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Benachrichtigungen verwendet werden.
+Bei Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, kann [Log Analytics](saas-dbpertenant-log-analytics.md) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Diagnoseprotokolle und Telemetriedaten bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Log Analytics kann Telemetriedaten über eine Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Benachrichtigungen verwendet werden.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
 

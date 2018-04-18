@@ -1,8 +1,8 @@
 ---
-title: "Veröffentlichen von Apps mit Azure AD-Anwendungsproxy | Microsoft Docs"
-description: "Es wird beschrieben, wie Sie lokale Anwendungen im Azure-Portal mit dem Azure AD-Anwendungsproxy in der Cloud veröffentlichen."
+title: Veröffentlichen von Apps mit Azure AD-Anwendungsproxy | Microsoft Docs
+description: Es wird beschrieben, wie Sie lokale Anwendungen im Azure-Portal mit dem Azure AD-Anwendungsproxy in der Cloud veröffentlichen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
@@ -15,11 +15,11 @@ ms.date: 12/06/2017
 ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 43cabb03a698dd87f12fef8e9a4dd54ee42c3ec9
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 1bf72b450747e98e254db77514fc7a902bbe70cc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy
 
@@ -53,7 +53,7 @@ Führen Sie diese Schritte aus, um Ihre Apps mit dem Anwendungsproxy zu veröffe
    - **Interne URL**: Die URL, die zu nutzen, um innerhalb Ihres privaten Netzwerks auf die Anwendung zuzugreifen. Sie können einen bestimmten Pfad auf dem Back-End-Server für die Veröffentlichung angeben, während der Rest des Servers nicht veröffentlicht wird. Auf diese Weise können Sie unterschiedliche Websites auf demselben Server als unterschiedliche Apps veröffentlichen und jeweils einen eigenen Namen und Zugriffsregeln vergeben.
 
      > [!TIP]
-     > Stellen Sie beim Veröffentlichen eines Pfads sicher, dass er alle erforderlichen Bilder, Skripts und Stylesheets für Ihre Anwendung enthält. Wenn sich die App beispielsweise unter „https://yourapp/app“ befindet und Bilder unter „https://yourapp/media“ genutzt werden, sollten Sie https://yourapp/ als Pfad veröffentlichen. Diese interne URL verfügt nicht über die Zielseite, die den Benutzern angezeigt wird. Weitere Informationen finden Sie unter [Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps](application-proxy-office365-app-launcher.md).
+     > Stellen Sie beim Veröffentlichen eines Pfads sicher, dass er alle erforderlichen Bilder, Skripts und Stylesheets für Ihre Anwendung enthält. Wenn sich Ihre App beispielsweise unter https://yourapp/app befindet und Bilder nutzt, die unter https://yourapp/media gespeichert sind, sollten Sie https://yourapp/ als Pfad veröffentlichen. Diese interne URL verfügt nicht über die Zielseite, die den Benutzern angezeigt wird. Weitere Informationen finden Sie unter [Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps](application-proxy-office365-app-launcher.md).
 
    - **Externe URL**: Die Adresse, die Ihre Benutzer aufrufen, um auf die App von außerhalb Ihres Netzwerks zuzugreifen. Wenn Sie die Anwendungsproxy-Standarddomäne nicht verwenden möchten, lesen Sie [Benutzerdefinierte Domänen im Azure AD-Anwendungsproxy](active-directory-application-proxy-custom-domains.md).
    - **Vorauthentifizierung**: Gibt das Verfahren an, wie der Anwendungsproxy Benutzer überprüft, bevor diese Zugriff auf Ihre Anwendung erhalten. 
@@ -61,6 +61,9 @@ Führen Sie diese Schritte aus, um Ihre Apps mit dem Anwendungsproxy zu veröffe
      - Azure Active Directory: Der Anwendungsproxy leitet Benutzer an die Anmeldung mit Azure AD um. Hierbei werden deren Berechtigungen für das Verzeichnis und die Anwendung authentifiziert. Es wird empfohlen, diese Option als Standardwert aktiviert zu lassen, damit Sie Azure AD-Sicherheitsfunktionen wie bedingten Zugriff und Multi-Factor Authentication nutzen können.
      - Passthrough: Benutzer müssen sich nicht bei Azure Active Directory authentifizieren, um Zugriff auf die Anwendung zu erhalten. Sie können weiterhin Authentifizierungsanforderungen auf dem Back-End einrichten.
    - **Connectorgruppe**: Connectors verarbeiten den Remotezugriff auf Ihre Anwendung, und Connectorgruppen helfen Ihnen, Connectors und Apps nach Region, Netzwerk oder Zweck zu organisieren. Wenn Sie noch keine Connectorgruppen erstellt haben, wird Ihre App zu **Standard** zugewiesen.
+
+>[!NOTE]
+>Wenn für Ihre Anwendung WebSockets zum Herstellen einer Verbindung verwendet werden, sollten Sie sicherstellen, dass Sie über die Connectorversion 1.5.612.0 oder höher mit WebSocket-Unterstützung verfügen und von der zugewiesenen Connectorgruppe nur diese Connectors verwendet werden.
 
    ![Konfigurieren der Anwendung](./media/application-proxy-publish-azure-portal/configure-app.png)
 5. Konfigurieren Sie bei Bedarf weitere Einstellungen. Für die meisten Anwendungen sollten Sie diese Einstellungen im Standardzustand belassen. 

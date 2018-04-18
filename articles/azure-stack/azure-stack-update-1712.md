@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 04/06/2018
 ms.author: brenduns
-ms.openlocfilehash: c3cb8ab8a838a3f831ece617fcf3e218a9510ea5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e9c39c374d7dfa6759da9f9b9a12816d77c647b1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1712-update"></a>Azure Stack-Update 1712
 
@@ -43,11 +43,14 @@ Die Buildnummer des Azure Stack-Updates 1712 ist **180106.1**. Wenn ein Kunde be
 Sie müssen zunächst das Azure Stack-[Update 1711](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1711) installieren, bevor Sie dieses Update anwenden können.
 
 ### <a name="post-update-steps"></a>Schritte nach dem Update
+- Installieren Sie nach der Installation von 1712 alle entsprechenden Hotfixes. Weitere Informationen finden Sie in den folgenden Knowledge Base-Artikeln sowie in unserer [Wartungsrichtlinie](azure-stack-servicing-policy.md).  
+  - [KB 4103348 – Netzwerkcontroller-API-Dienst stürzt ab, wenn versucht wird, ein Azure Stack-Update zu installieren](https://support.microsoft.com/help/4103348)
 
-Dieses Update erfordert auch, dass Sie Firmware-Updates vom OEM-Partner installieren, nachdem Sie die Installation des Azure Stack-Updates 1712 abgeschlossen haben.
 
-> [!NOTE]
-> Besuchen Sie die Website Ihres OEM-Partners, um die Updates herunterzuladen.
+- Update 1712 erfordert auch, dass Sie Firmware-Updates vom OEM-Partner installieren, nachdem Sie die Installation des Azure Stack-Updates 1712 abgeschlossen haben.
+
+  > [!NOTE]
+  > Besuchen Sie die Website Ihres OEM-Partners, um die Updates herunterzuladen.
 
 ### <a name="new-features-and-fixes"></a>Neue Features und Fehlerbehebungen
 

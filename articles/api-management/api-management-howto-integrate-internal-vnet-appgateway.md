@@ -2,7 +2,7 @@
 title: Verwenden von Azure API Management im virtuellen Netzwerk mit Application Gateway | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Azure API Management im internen virtuellen Netzwerk mit Application Gateway (WAF) als Front-End einrichten und konfigurieren.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: solankisamir
 manager: kjoshi
 editor: antonba
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
 ms.openlocfilehash: f9bc3ffda9f943a37fd5aadf440abf7d33a6d1de
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrieren von API Management in ein internes VNET mit Application Gateway 
 
@@ -350,7 +350,7 @@ Get-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -Name "publicIP01"
 ##<a name="summary"></a> Zusammenfassung
 Bei einer Konfiguration von Azure API Management in einem VNET wird eine einzelne Gatewayschnittstelle für alle konfigurierten APIs bereitgestellt. Hierbei spielt es keine Rolle, ob sie lokal oder in der Cloud gehostet werden. Mit der Integration des Application Gateway in API Management verfügen Sie über die Flexibilität, für bestimmte APIs den Zugriff über das Internet selektiv zu aktivieren, und können eine Web Application Firewall als Front-End für Ihre API Management-Instanz bereitstellen.
 
-##<a name="next-steps"></a>Nächste Schritte
+##<a name="next-steps"> </a> Nächste Schritte
 * Weitere Informationen zu Azure Application Gateway
   * [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md)
   * [Web Application Firewall für Application Gateway](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

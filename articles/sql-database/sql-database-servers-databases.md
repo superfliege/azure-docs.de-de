@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 2e05be2131ca89a084da5eeffc0b025b38432a8d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 18f904a2bac70bce3e1208945a7b94b59f6225f7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Erstellen und Verwalten von Azure SQL-Datenbankservern und -datenbanken
 
@@ -53,7 +53,7 @@ Ein logischer Azure Datenbankserver:
 - bietet Zugriff auf Metadaten bezüglich der darin enthaltenen Ressourcen über DMVs (dynamic management views), indem eine Verbindung mit einer Masterdatenbank hergestellt wird 
 - stellt den Bereich für Verwaltungsrichtlinien bereit, die für seine Datenbanken gelten – Anmeldungen, Firewall, Überwachung, Bedrohungserkennung usw. 
 - ist durch ein Kontingent innerhalb des übergeordneten Abonnements eingeschränkt (standardmäßig sechs Server pro Abonnement – [siehe Grenzwerte für Abonnements hier](../azure-subscription-service-limits.md))
-- stellt den Bereich für Datenbank- und DTU-Kontingente für die darin enthaltenen Ressourcen (z.B. 45.000 DTU9) bereit
+- stellt den Bereich für Datenbank- und DTU- bzw. V-Kern-Kontingente für die darin enthaltenen Ressourcen (z.B. 45.000 DTU) bereit
 - ist der Versionsverwaltungsbereich für Funktionen, die in enthaltenen Ressourcen aktiviert wurden 
 - Serverebenenprinzipal-Anmeldungen können alle Datenbanken auf einem Server verwalten
 - kann Anmeldungen enthalten, die denen in SQL-Instanzen vor Ort ähnlich sind und die über Zugriff auf eine oder mehrere Datenbanken auf dem Server verfügen und denen beschränkte Administratorrechte zugewiesen werden können. Weitere Informationen finden Sie unter [Logins (Anmeldungen)](sql-database-manage-logins.md).

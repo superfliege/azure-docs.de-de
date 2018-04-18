@@ -1,11 +1,11 @@
 ---
 title: Verwenden des E-Mail-Diensts SendGrid (Node.js) | Microsoft Docs
 description: Erfahren Sie, wie Sie E-Mails mit dem SendGrid-E-Mail-Dienst in Azure senden. Die Codebeispiele wurden mithilfe der Node.js-API geschrieben.
-services: 
+services: ''
 documentationcenter: nodejs
 author: erikre
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: cac444b4-26b0-45ea-9c3d-eca28d57dacb
 ms.service: multiple
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Senden von E-Mails mit SendGrid aus Node.js
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem E-Mail-Dienst SendGrid in Azure. Die Beispiele sind in C# geschrieben und verwenden die Node.js-API. Die behandelten Szenarien umfassen das **Erstellen einer E-Mail**, **Senden einer E-Mail**, **Hinzufügen von Anhängen**, **Verwenden von Filtern** und **Aktualisieren von Eigenschaften**. Weitere Informationen zu SendGrid und zum Senden von E-Mails erhalten Sie im Abschnitt [Nächste Schritte](#next-steps) .
@@ -161,7 +161,7 @@ Die folgenden Beispiele veranschaulichen die Filter für die Fußzeile und die K
     sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>Aktualisieren von E-Mail-Eigenschaften
-Einige e-Mail-Eigenschaften können überschrieben werden, mithilfe von **festgelegt * Eigenschaft*** oder angefügt, mit **hinzufügen*Eigenschaft ***. Sie können z. B. zusätzliche Empfänger hinzufügen:
+Einige E-Mail-Eigenschaften können mit **set*Property*** überschrieben oder mit **add*Property*** angefügt werden. Sie können z. B. zusätzliche Empfänger hinzufügen:
 
     email.addTo('jeff@contoso.com');
 

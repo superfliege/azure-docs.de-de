@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.openlocfilehash: 1ee634b3acf0fa8815b69aef21e6213aee636ce1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6020272d79ace55041da94ee45165e557e92b80f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivieren des Azure-Aktivitätsprotokolls
 In diesem Artikel erfahren Sie, wie Sie Ihr [**Azure-Aktivitätsprotokoll**](monitoring-overview-activity-logs.md) über das Azure-Portal, mithilfe von PowerShell-Cmdlets oder mithilfe der plattformübergreifenden Befehlszeilenschnittstelle in einem Speicherkonto archivieren. Dies ist hilfreich, wenn Sie Ihr Aktivitätsprotokoll (bei vollständiger Kontrolle über die Aufbewahrungsrichtlinie) zur Überwachung, statischen Analyse oder als Sicherungskopie länger als 90 Tage aufbewahren möchten. Falls Sie Ihre Ereignisse nur maximal 90 Tage lang aufbewahren möchten, müssen Sie keine Archivierung in einem Speicherkonto einrichten, da Aktivitätsprotokollereignisse in der Azure-Plattform auch ohne aktivierte Archivierung 90 Tage lang aufbewahrt werden.
@@ -43,29 +43,43 @@ Legen Sie das **Protokollprofil** für ein Abonnement fest, um das Aktivitätspr
 5. Klicken Sie auf **Speichern**.
 
 ## <a name="archive-the-activity-log-via-powershell"></a>Archivieren des Aktivitätsprotokolls mithilfe von PowerShell
-```
-Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus -RetentionInDays 180 -Categories Write,Delete,Action
-```
+
+   ```powershell
+   # Settings needed for the new log profile
+   $logProfileName = "default"
+   $locations = (Get-AzureRmLocation).Location
+   $locations += "global"
+   $subscriptionId = "<your Azure subscription Id>"
+   $resourceGroupName = "<resource group name your storage account belongs to>"
+   $storageAccountName = "<your storage account name>"
+
+   # Build the storage account Id from the settings above
+   $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+
+   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -StorageAccountId $storageAccountId
+   ```
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
-| StorageAccountId |Nein  |Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
-| Standorte |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Eine Liste mit allen Bereichen können Sie sich auf [dieser Seite](https://azure.microsoft.com/en-us/regions) oder mithilfe der [Azure-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/gg441293.aspx) ansehen. |
-| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
-| Categories |Ja |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
+| StorageAccountId |Ja |Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
+| Standorte |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Mit `(Get-AzureRmLocation).Location` können Sie eine Liste aller Regionen für Ihr Abonnement anzeigen. |
+| RetentionInDays |Nein  |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
+| Categories |Nein  |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“.  Wird kein Wert angegeben, werden alle möglichen Werte angenommen. |
 
 ## <a name="archive-the-activity-log-via-cli"></a>Archivieren des Aktivitätsprotokolls mithilfe der Befehlszeilenschnittstelle
-```
-azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --locations global,westus,eastus,northeurope --retentionInDays 180 –categories Write,Delete,Action
-```
+
+   ```azurecli-interactive
+   az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --storage-account-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>"
+   ```
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
 | name |Ja |Name des Protokollprofils. |
-| storageId |Nein  |Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
-| Locations |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Eine Liste mit allen Bereichen können Sie sich auf [dieser Seite](https://azure.microsoft.com/en-us/regions) oder mithilfe der [Azure-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/gg441293.aspx) ansehen. |
-| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
-| categories |Ja |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
+| storage-account-id |Ja |Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
+| Locations |Ja |Durch Leerzeichen getrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Mit `az account list-locations --query [].name` können Sie eine Liste aller Regionen für Ihr Abonnement anzeigen. |
+| Tage |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert.  Wenn der Wert 0 ist, muss der aktivierte Parameter auf „true“ festgelegt werden. |
+|Aktiviert | Ja |„True“ oder „False“.  Wird zum Aktivieren bzw. Deaktivieren der Aufbewahrungsrichtlinie verwendet.  Ist „True“ festgelegt, muss für den Parameter „days“ ein Wert größer 0 angegeben werden.
+| categories |Ja |Durch Leerzeichen getrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 
 ## <a name="storage-schema-of-the-activity-log"></a>Speicherschema des Aktivitätsprotokolls
 Nach dem Einrichten der Archivierung wird in dem Speicherkonto ein Speichercontainer erstellt, sobald ein Aktivitätsprotokollereignis auftritt. Bei den Blobs innerhalb des Containers wird sowohl für das Aktivitätsprotokoll als auch für die Diagnoseprotokolle ein einheitliches Format verwendet. Die Struktur dieser Blobs sieht wie folgt aus:

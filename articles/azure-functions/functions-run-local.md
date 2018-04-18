@@ -1,11 +1,11 @@
 ---
-title: "Lokales Entwickeln und Ausführen von Azure Functions | Microsoft Docs"
-description: "Erfahren Sie, wie Sie Azure-Funktionen auf dem lokalen Computer codieren und testen, bevor Sie sie in Azure Functions ausführen."
+title: Lokales Entwickeln und Ausführen von Azure Functions | Microsoft Docs
+description: Erfahren Sie, wie Sie Azure-Funktionen auf dem lokalen Computer codieren und testen, bevor Sie sie in Azure Functions ausführen.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 59a15697641dd8e4bdfdb974436d46a34b47ffb5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1fe07790bd534cbe18c25cb5fb1e0634f54ac9e2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Lokales Codieren und Testen von Azure Functions
 
@@ -110,7 +110,7 @@ Verwenden Sie die Option `--no-source-control [-n]`, um das Projekt ohne lokales
 
 In Version 2.x der Azure Functions Runtime müssen Sie die in Ihrer Funktions-App verwendeten [Bindungserweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) explizit registrieren. 
 
-[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+[!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
 Weitere Informationen finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md#register-binding-extensions).
 
@@ -215,7 +215,7 @@ func host start
 | **`--nodeDebugPort -n`** | Der Port, den der Knotendebugger verwendet. Standard: Ein Wert von „launch.json“ oder 5858. |
 | **`--debugLevel -d`** | Die Konsolen-Ablaufverfolgungsebene (aus, ausführlich, Info, Warnung oder Fehler). Standard: Info.|
 | **`--timeout -t`** | Das Timeout für den zu startenden Functions-Host in Sekunden. Standard: 20 Sekunden.|
-| **`--useHttps`** | An https://localhost:{Port} statt an http://localhost:{Port} binden. Standardmäßig erstellt diese Option ein vertrauenswürdiges Zertifikat auf Ihrem Computer.|
+| **`--useHttps`** | Erstellen Sie eine Bindung an https://localhost:{port} statt an http://localhost:{port}. Standardmäßig erstellt diese Option ein vertrauenswürdiges Zertifikat auf Ihrem Computer.|
 | **`--pause-on-error`** | Vor Beenden des Prozesses für zusätzliche Eingabe anhalten. Ist beim Starten von Azure Functions Core Tools in einer integrierten Entwicklungsumgebung (IDE) nützlich.|
 
 Wenn der Functions-Host startet, gibt er die URL der HTTP-ausgelösten Funktionen aus:

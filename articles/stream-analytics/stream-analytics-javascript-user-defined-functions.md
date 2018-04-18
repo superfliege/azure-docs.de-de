@@ -1,23 +1,19 @@
 ---
-title: Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen | Microsoft Docs
-description: Durchführen erweiterter Abfragemechanismen mit benutzerdefinierten JavaScript-Funktionen
-keywords: JavaScript, benutzerdefinierte Funktionen, UDF
+title: Benutzerdefinierte JavaScript-Funktionen in Azure Stream Analytics
+description: In diesem Artikel wird beschrieben, wie Sie erweiterte Abfragemechanismen mit benutzerdefinierten JavaScript-Funktionen in Azure Stream Analytics durchführen.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: f2b14029ebea7f9cf1fa74a384ecbb72b08b7ad6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 462bd55dfae3a2c471d1111637a6de0bc95e6bfa
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-functions"></a>Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen
 Azure Stream Analytics unterstützt benutzerdefinierte Funktionen, die in JavaScript geschrieben sind. Die umfassenden **String**-, **RegExp**-, **Math**-, **Array**- und **Date**-Methoden von JavaScript vereinfachen die Erstellung von komplexen Datentransformationen mit Stream Analytics-Aufträgen.
@@ -138,7 +134,7 @@ FROM
 ```
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Weitere Hilfe finden Sie in unserem [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Weitere Hilfe finden Sie in unserem [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

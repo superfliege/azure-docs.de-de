@@ -1,9 +1,9 @@
 ---
-title: "Was sind Apache Hive und HiveQL – Azure HDInsight | Microsoft-Dokumentation"
-description: "Apache Hive ist ein Data Warehouse-System für Hadoop. Sie können in Hive gespeicherte Daten mithilfe von HiveQL abrufen, die Transact-SQL ähnelt. Erfahren Sie in diesem Dokument, wie Sie Hive und HiveQL mit Azure HDInsight verwenden."
+title: Was sind Apache Hive und HiveQL – Azure HDInsight | Microsoft-Dokumentation
+description: Apache Hive ist ein Data Warehouse-System für Hadoop. Sie können in Hive gespeicherte Daten mithilfe von HiveQL abrufen, die Transact-SQL ähnelt. Erfahren Sie in diesem Dokument, wie Sie Hive und HiveQL mit Azure HDInsight verwenden.
 keywords: HiveQL, was ist Hive, Hadoop HiveQL, Verwenden von Hive, Hive lernen, was ist Hive
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -18,10 +18,10 @@ ms.workload: big-data
 ms.date: 01/26/2018
 ms.author: larryfr
 ms.openlocfilehash: afd2bc95beb2458ec149824723ec62381b31b2da
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Was sind Apache Hive und HiveQL in Azure HDInsight?
 
@@ -57,7 +57,7 @@ In der folgenden Tabelle finden Sie Informationen zu unterschiedlichen Methoden 
 
 ## <a name="hiveql-language-reference"></a>Referenz zu HiveQL
 
-Sie finden die HiveQL-Sprachreferenz im [Sprachhandbuch (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+Die Referenz zu HiveQL ist im [Sprachhandbuch (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) verfügbar.
 
 ## <a name="hive-and-data-structure"></a>Hive und Datenstruktur
 
@@ -78,7 +78,7 @@ STORED AS TEXTFILE LOCATION '/example/data/';
 
 Hive unterstützt auch benutzerdefinierte **Serialisierer/Deserialisierer (SerDe)** für komplexe oder unregelmäßig strukturierte Daten. Weitere Informationen finden Sie im Artikel [Verwenden eines benutzerdefinierten JSON-SerDe mit HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx).
 
-Weitere Informationen zu den von Hive unterstützten Dateiformaten finden Sie im [Sprachhandbuch (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+Weitere Informationen zu von Hive unterstützten Dateiformaten finden Sie im [Sprachhandbuch (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
 
 ### <a name="hive-internal-tables-vs-external-tables"></a>Interne und externe Hive-Tabellen
 
@@ -144,8 +144,7 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 Im vorherigen Beispiel führen die HiveQL-Anweisungen die folgenden Aktionen aus:
 
-* 
-            `set hive.execution.engine=tez;`: Legt die Ausführungs-Engine auf Tez fest. Durch die Verwendung von Tez kann eine höhere Abfrageleistung erreicht werden. Weitere Informationen zu Tez finden Sie im Abschnitt [Verwenden von Apache Tez zur Verbesserung der Leistung](#usetez) .
+* `set hive.execution.engine=tez;`: Legt die Ausführungs-Engine auf Tez fest. Durch die Verwendung von Tez kann eine höhere Abfrageleistung erreicht werden. Weitere Informationen zu Tez finden Sie im Abschnitt [Verwenden von Apache Tez zur Verbesserung der Leistung](#usetez) .
 
     > [!NOTE]
     > Diese Anweisung ist nur erforderlich, wenn Sie einen Windows-basierten HDInsight-Cluster verwenden. Tez ist die Standard-Ausführungs-Engine für Linux-basiertes HDInsight.

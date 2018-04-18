@@ -1,12 +1,12 @@
 ---
-title: "Überwachen und Gewinnen von Erkenntnissen zu Logik-App-Ausführungen mit OMS – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Überwachen Sie Ihre Logik-App-Ausführungen mit Log Analytics und Operations Management Suite (OMS), um Einblicke zu gewinnen und ausführlichere Debuggingdetails für die Problembehandlung und Diagnose zu erhalten."
+title: Überwachen und Auswerten von Logik-App-Ausführungen mit Log Analytics – Azure Logic Apps | Microsoft-Dokumentation
+description: Überwachen Sie Ihre Logik-App-Ausführungen mit Log Analytics, um Erkenntnisse zu gewinnen und ausführlichere Debuggingdetails für die Problembehandlung und Diagnose zu erhalten.
 author: divyaswarnkar
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2f9f27dc74348909b89941c2bb17ccdf610dba33
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d484aaf7d7582bd474d7437a7a62f41880690dbc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>Überwachen und Gewinnen von Erkenntnissen zu Logik-App-Ausführungen mit Operations Management Suite (OMS) und Log Analytics
+# <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Überwachen und Auswerten von Logik-App-Ausführungen mit Log Analytics
 
-Sie können beim Erstellen einer Logik-App gleichzeitig Log Analytics aktivieren, um die Überwachung durchzuführen und umfassendere Debuginformationen zu erhalten. Log Analytics ermöglicht die Diagnoseprotokollierung und Überwachung für Ihre Logik-App-Ausführungen über das OMS-Portal (Operations Management Suite). Wenn Sie OMS die Lösung für die Logik-App-Verwaltung hinzufügen, erhalten Sie den aggregierten Status für Ihre Logik-App-Ausführungen und spezifische Details wie Status, Ausführungszeit, Status der erneuten Übermittlung und Korrelations-IDs.
+Sie können beim Erstellen einer Logik-App gleichzeitig Log Analytics aktivieren, um die Überwachung durchzuführen und umfassendere Debuginformationen zu erhalten. Log Analytics ermöglicht die Diagnoseprotokollierung und Überwachung für Ihre Logik-App-Ausführungen über das Azure-Portal. Wenn Sie die Lösung für die Logik-App-Verwaltung hinzufügen, erhalten Sie den aggregierten Status für Ihre Logik-App-Ausführungen und spezifische Details wie Status, Ausführungszeit, Status der erneuten Übermittlung und Korrelations-IDs.
 
-In diesem Thema wird veranschaulicht, wie Sie Log Analytics aktivieren oder die Lösung für die Logik-App-Verwaltung in OMS installieren, um Laufzeitereignisse und Daten für Ihre Logik-App-Ausführung anzuzeigen.
+In diesem Thema wird veranschaulicht, wie Sie Log Analytics aktivieren, um Laufzeitereignisse und Daten für Ihre Logik-App-Ausführung anzuzeigen.
 
  > [!TIP]
- > Führen Sie diese Schritte zum [Aktivieren der Diagnoseprotokollierung und Senden von Logik-App-Laufzeitdaten an OMS](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics) aus, um Ihre vorhandenen Logik-Apps zu überwachen.
+ > Führen Sie diese Schritte zum [Aktivieren der Diagnoseprotokollierung und Senden von Logik-App-Laufzeitdaten an Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics) aus, um Ihre vorhandenen Logik-Apps zu überwachen.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
-Sie müssen über einen OMS-Arbeitsbereich verfügen, bevor Sie beginnen können. Informieren Sie sich, wie Sie [einen OMS-Arbeitsbereich erstellen](../log-analytics/log-analytics-get-started.md). 
+Sie müssen über einen Log Analytics-Arbeitsbereich verfügen, bevor Sie beginnen. Erfahren Sie mehr über das [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md). 
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>Aktivieren der Diagnoseprotokollierung beim Erstellen von Logik-Apps
 
@@ -44,56 +44,47 @@ Sie müssen über einen OMS-Arbeitsbereich verfügen, bevor Sie beginnen können
    1. Geben Sie einen Namen für Ihre Logik-App an, und wählen Sie Ihr Azure-Abonnement aus. 
    2. Erstellen Sie eine Azure-Ressourcengruppe, oder wählen Sie sie aus.
    3. Legen Sie **Log Analytics** auf **Ein** fest. 
-   Wählen Sie den OMS-Arbeitsbereich aus, für den Sie Daten für Ihre Logik-App-Ausführungen senden möchten. 
+   Wählen Sie den Log Analytics-Arbeitsbereich aus, an den Sie Daten für Ihre Logik-App-Ausführungen senden möchten. 
    4. Wählen Sie **An Dashboard anheften** > **Erstellen**, wenn alles bereit ist.
 
       ![Erstellen einer Logik-App](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-app.png)
 
-      Nach Abschluss dieses Schritts erstellt Azure Ihre Logik-App, die jetzt Ihrem OMS-Arbeitsbereich zugeordnet ist. 
-      Mit diesem Schritt wird auch die Lösung für die Logik-App-Verwaltung automatisch in Ihrem OMS-Arbeitsbereich installiert.
+      Nach Abschluss dieses Schritts erstellt Azure Ihre Logik-App, die jetzt Ihrem Log Analytics-Arbeitsbereich zugeordnet ist. 
+      Mit diesem Schritt wird auch die Lösung für die Logik-App-Verwaltung automatisch in Ihrem Arbeitsbereich installiert.
 
-3. [Fahren Sie mit diesen Schritten fort](#view-logic-app-runs-oms), um Ihre Logik-App-Ausführungen in OMS anzuzeigen.
+3. Fahren Sie mit [diesen Schritten](#view-logic-app-runs-oms) fort, um Ihre Logik-App-Ausführungen anzuzeigen.
 
-## <a name="install-the-logic-apps-management-solution-in-oms"></a>Installieren der Lösung für die Logik-App-Verwaltung in OMS
+## <a name="install-the-logic-apps-management-solution"></a>Installieren der Lösung für die Logik-App-Verwaltung
 
-Überspringen Sie diesen Schritt, falls Sie Log Analytics bereits beim Erstellen Ihrer Logik-App aktiviert haben. Sie haben die Lösung für die Logik-App-Verwaltung bereits in OMS installiert.
+Überspringen Sie diesen Schritt, falls Sie Log Analytics bereits beim Erstellen Ihrer Logik-App aktiviert haben. Sie haben die Lösung für die Logik-App-Verwaltung bereits installiert.
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Weitere Dienste** aus. Verwenden Sie für die Suche den Filter „log analytics“, und wählen Sie dann wie gezeigt **Log Analytics**:
 
    ![Auswählen von „Log Analytics“](media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
 
-2. Wählen Sie unter **Log Analytics** Ihren OMS-Arbeitsbereich aus. 
+2. Wählen Sie unter **Log Analytics** Ihren Log Analytics-Arbeitsbereich aus. 
 
-   ![Auswählen Ihres OMS-Arbeitsbereichs](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
+   ![Auswählen Ihres Log Analytics-Arbeitsbereichs](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
 3. Wählen Sie unter **Verwaltung** die Option **OMS-Portal**.
 
    ![Auswählen von „OMS-Portal“](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
 
-4. Wenn auf Ihrer OMS-Startseite das Upgradebanner angezeigt wird, wählen Sie das Banner aus, um erst ein Upgrade für Ihren OMS-Arbeitsbereich durchzuführen. Wählen Sie dann **Lösungskatalog** aus.
-
-   ![Auswählen von „Lösungskatalog“](media/logic-apps-monitor-your-logic-apps-oms/solutions-gallery.png)
-
-5. Wählen Sie unter **Alle Lösungen** die Kachel für die Lösung **Logic Apps Management** (Logik-App-Verwaltung) aus.
+4. Wählen Sie unter **Alle Lösungen** die Kachel für die Lösung **Logic Apps Management** (Logik-App-Verwaltung) aus.
 
    ![Auswählen von „Logic Apps Management“ (Logik-App-Verwaltung)](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-management-tile2.png)
 
-6. Wählen Sie **Hinzufügen**, um die Lösung in Ihrem OMS-Arbeitsbereich zu installieren.
+5. Wählen Sie **Hinzufügen**, um die Lösung in Ihrem Log Analytics-Arbeitsbereich zu installieren.
 
    ![Auswählen von „Hinzufügen“ für „Logic Apps Management“ (Logik-App-Verwaltung)](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
 <a name="view-logic-app-runs-oms"></a>
 
-## <a name="view-your-logic-app-runs-in-your-oms-workspace"></a>Anzeigen Ihrer Logik-App-Ausführungen in Ihrem OMS-Arbeitsbereich
+## <a name="view-your-logic-app-runs-in-your-log-analytics-workspace"></a>Anzeigen Ihrer Logik-App-Ausführungen in Ihrem Log Analytics-Arbeitsbereich
 
-1. Navigieren Sie zur Übersichtsseite für Ihren OMS-Arbeitsbereich, um Anzahl und Status für Ihre Logik-App-Ausführungen anzuzeigen. Überprüfen Sie die Details auf der Kachel **Logic Apps Management** (Logik-App-Verwaltung).
+1. Navigieren Sie zur Übersichtsseite für Ihren Log Analytics-Arbeitsbereich, um Anzahl und Status für Ihre Logik-App-Ausführungen anzuzeigen. Überprüfen Sie die Details auf der Kachel **Logic Apps Management** (Logik-App-Verwaltung).
 
    ![Übersichtskachel mit Anzahl und Status der Logik-App-Ausführungen](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
-
-   > [!Note]
-   > Wenn anstelle der Kachel „Logik-App-Verwaltung“ dieses Upgradebanner angezeigt wird, wählen Sie das Banner aus, um zuerst ein Upgrade für Ihren OMS-Arbeitsbereich durchzuführen.
-  
-   > ![Durchführen eines Upgrades für den OMS-Arbeitsbereich](media/logic-apps-monitor-your-logic-apps-oms/oms-upgrade-banner.png)
 
 2. Wählen Sie die Kachel **Logic Apps Management** (Logik-App-Verwaltung), um eine Zusammenfassung mit weiteren Details zu Ihren Logik-App-Ausführungen anzuzeigen.
 

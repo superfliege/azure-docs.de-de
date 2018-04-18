@@ -1,6 +1,6 @@
 ---
 title: Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie ein Web-API-Back-End mit Azure Active Directory und API Management schützen.
+description: Hier erfahren Sie, wie Sie ein Web-API-Back-End mit Azure Active Directory und API Management schützen.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -13,177 +13,171 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 2c05407d761a8848f9e032aa219960cd7ea6fa93
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f5662a4082487137dfd642cc3264a90f8ab19054
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="how-to-protect-an-api-using-oauth-20-with-azure-active-directory-and-api-management"></a>So schützen Sie eine API über OAuth 2.0 mit Azure Active Directory und API Management
+# <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management
 
-In diesem Handbuch wird gezeigt, wie Sie Ihre APIM-Instanz (API Management) so konfigurieren, dass eine API über das OAuth 2.0-Protokoll mit Azure Active Directory (AAD) geschützt ist. 
+In diesem Handbuch wird gezeigt, wie Sie Ihre Azure API Management-Instanz so konfigurieren, dass eine API über das OAuth 2.0-Protokoll mit Azure Active Directory (Azure AD) geschützt ist. 
 
-## <a name="prerequisite"></a>Voraussetzung
+## <a name="prerequisites"></a>Voraussetzungen
 Damit Sie den Schritten in diesem Artikel folgen können, benötigen Sie folgende Komponenten:
-* Eine APIM-Instanz
-* Eine API, die mit der APIM-Instanz veröffentlicht wird
+* Eine API Management-Instanz
+* Eine API, die veröffentlicht wird und die API Management-Instanz verwendet
 * Einen Azure AD-Mandanten
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Handbuch wird gezeigt, wie Sie eine API über OAuth 2.0 in APIM schützen können. In diesem Artikel wird Azure AD als Autorisierungsserver (OAuth-Server) verwendet. Es folgt eine kurze Übersicht über die Schritte:
+Es folgt eine kurze Übersicht über die Schritte:
 
 1. Registrieren einer Anwendung (Back-End-App) in Azure AD, die die API darstellt
 2. Registrieren einer anderen Anwendung (Client-App) in Azure AD, die eine Clientanwendung darstellt, aus der die API aufgerufen werden muss
 3. Gewähren von Berechtigungen in Azure AD, damit die Client-App die Back-End-App aufrufen kann
-4. Konfigurieren der Entwicklerkonsole, damit in ihr die OAuth 2.0-Benutzerautorisierung verwendet wird
-5. Hinzufügen der „validate-jwt“-Richtlinie, um das OAuth-Token für jede eingehende Anforderung zu überprüfen
+4. Konfigurieren der Entwicklerkonsole für die Verwendung der OAuth 2.0-Benutzerautorisierung
+5. Hinzufügen der **validate-jwt**-Richtlinie, um das OAuth-Token für jede eingehende Anforderung zu überprüfen
 
 ## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>Registrieren einer Anwendung in Azure AD, die die API darstellt
 
 Um eine API mit Azure AD zu schützen, besteht der erste Schritt darin, eine Anwendung in Azure AD zu registrieren, die die API darstellt. 
 
-Navigieren Sie zu Ihrem Azure AD-Mandanten, und navigieren Sie dann zu **App-Registrierungen**.
+1. Navigieren Sie zu Ihrem Azure AD-Mandanten und dann zu **App-Registrierungen**.
 
-Wählen Sie **Registrierung einer neuen Anwendung** aus. 
+2. Wählen Sie **Registrierung einer neuen Anwendung** aus. 
 
-Geben Sie den Namen der Anwendung an. In diesem Beispiel wird `backend-app` verwendet.  
+3. Geben Sie den Namen der Anwendung an. (In diesem Beispiel lautet der Name `backend-app`.)  
 
-Wählen Sie **Web-App/API** als **Anwendungstyp** aus. 
+4. Wählen Sie **Web-App/API** als **Anwendungstyp** aus. 
 
-Für **Anmelde-URL** können Sie `https://localhost` als Platzhalter verwenden.
+5. Für **Anmelde-URL** können Sie `https://localhost` als Platzhalter verwenden.
 
-Klicken Sie auf **Erstellen**.
+6. Klicken Sie auf **Erstellen**.
 
-Sobald die Anwendung erstellt ist, notieren Sie sich die **Anwendungs-ID**, um sie in einem späteren Schritt verwenden zu können. 
+Wenn die Anwendung erstellt wird, notieren Sie sich die **Anwendungs-ID**, um sie in einem späteren Schritt verwenden zu können. 
 
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>Registrieren einer anderen Anwendung in Azure AD, die eine Clientanwendung darstellt
 
-Jede Clientanwendung, aus der die API aufgerufen werden muss, muss in Azure AD als eine Anwendung registriert werden. In diesem Handbuch wird die Entwicklerkonsole im APIM-Entwicklerportal als Beispielclientanwendung verwendet. 
+Jede Clientanwendung, aus der die API aufgerufen wird, muss auch in Azure AD als eine Anwendung registriert werden. In diesem Beispiel wird die Entwicklerkonsole im API Management-Entwicklerportal als Beispielclientanwendung verwendet. So registrieren Sie eine weitere Anwendung in Azure AD, die die Entwicklerkonsole darstellt:
 
-Es muss eine weitere Anwendung in Azure AD registriert werden, die die Entwicklerkonsole darstellt.
+1. Wählen Sie **Registrierung einer neuen Anwendung** aus. 
 
-Klicken Sie erneut auf **Registrierung einer neuen Anwendung**. 
+2. Geben Sie den Namen der Anwendung an. (In diesem Beispiel lautet der Name `client-app`.)
 
-Geben Sie den Namen der Anwendung an, und wählen Sie **Web-App/API** als **Anwendungstyp** aus. In diesem Beispiel wird `client-app` verwendet.  
+3. Wählen Sie **Web-App/API** als **Anwendungstyp** aus.  
 
-Für **Anmelde-URL** können Sie `https://localhost` als Platzhalter oder die Anmelde-URL Ihrer APIM-Instanz verwenden. In diesem Beispiel wird `https://contoso5.portal.azure-api.net/signin` verwendet.
+4. Für **Anmelde-URL** können Sie `https://localhost` als Platzhalter oder die Anmelde-URL Ihrer API Management-Instanz verwenden. (In diesem Beispiel lautet die URL `https://contoso5.portal.azure-api.net/signin`.)
 
-Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Erstellen**.
 
-Sobald die Anwendung erstellt ist, notieren Sie sich die **Anwendungs-ID**, um sie in einem späteren Schritt verwenden zu können. 
+Wenn die Anwendung erstellt wird, notieren Sie sich die **Anwendungs-ID**, um sie in einem späteren Schritt verwenden zu können. 
 
-Jetzt muss ein geheimer Clientschlüssel für diese Anwendung erstellt werden, der in einem späteren Schritt verwendet wird.
+Erstellen Sie nun einen geheimen Clientschlüssel für diese Anwendung, der in einem späteren Schritt verwendet wird.
 
-Klicken Sie erneut auf **Einstellungen**, und wechseln Sie zu **Schlüssel**.
+1. Klicken Sie erneut auf **Einstellungen**, und wechseln Sie zu **Schlüssel**.
 
-Geben Sie unter **Kennwörter** eine **Schlüsselbeschreibung** an, wählen Sie aus, wann der Schlüssel ablaufen soll, und klicken Sie auf **Speichern**.
+2. Geben Sie unter **Kennwörter** eine **Schlüsselbeschreibung** ein. Legen Sie ein Ablaufdatum für den Schlüssel fest, und klicken Sie auf **Speichern**.
 
 Notieren Sie sich den Schlüsselwert. 
 
-## <a name="grant-permissions-in-aad"></a>Erteilen von Berechtigungen in AAD
+## <a name="grant-permissions-in-azure-ad"></a>Erteilen von Berechtigungen in Azure AD
 
-Nachdem nun zwei Anwendungen registriert sind, die die API (d. h. die Back-End-App) und die Entwicklerkonsole (d. h. die Client-App) darstellen, müssen Berechtigungen gewährt werden, damit die Client-App die Back-End-App aufrufen kann.  
+Nachdem nun zwei Anwendungen registriert sind, die die API und die Entwicklerkonsole darstellen, müssen Sie Berechtigungen gewähren, damit die Client-App die Back-End-App aufrufen kann.  
 
-Navigieren Sie erneut zu **Anwendungsregistrierung**. 
+1. Navigieren Sie zu **Anwendungsregistrierungen**. 
 
-Klicken Sie auf `client-app`, und wechseln Sie zu **Einstellungen**.
+2. Klicken Sie auf `client-app`, und wechseln Sie zu **Einstellungen**.
 
-Klicken Sie auf **Erforderliche Berechtigungen**, und klicken Sie dann auf **Hinzufügen**.
+3. Klicken Sie auf **Erforderliche Berechtigungen** > **Hinzufügen**.
 
-Klicken Sie auf **Hiermit wählen Sie eine API aus**, und suchen Sie nach `backend-app`.
+4. Klicken Sie auf **Hiermit wählen Sie eine API aus**, und suchen Sie nach `backend-app`.
 
-Aktivieren Sie `Access backend-app` unter **Delegierte Berechtigungen**. 
+5. Klicken Sie unter **Delegierte Berechtigungen** auf `Access backend-app`. 
 
-Klicken Sie auf **Auswählen**, und klicken Sie dann auf **Fertig**. 
+6. Klicken Sie auf **Auswählen** und dann auf **Fertig**. 
 
 > [!NOTE]
-> Wenn **Windows** **Azure Active Directory** unter den Berechtigungen für andere Programme nicht aufgeführt ist, klicken Sie auf **Hinzufügen**, und fügen Sie die Option aus der Liste hinzu.
+> Wenn **Azure Active Directory** unter den Berechtigungen für andere Programme nicht aufgeführt ist, klicken Sie auf **Hinzufügen**, und fügen Sie die Option aus der Liste hinzu.
 > 
 > 
 
-## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>Aktivieren der OAuth 2.0-Benutzerautorisierung in der Entwicklerkonsole
+## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>Aktivieren der OAuth 2.0-Benutzerautorisierung in der Entwicklerkonsole
 
-An diesem Punkt sind die Anwendungen in Azure AD erstellt und die erforderlichen Berechtigungen erteilt, damit die Client-App die Back-End-App aufrufen kann. 
+An diesem Punkt haben Sie die Anwendungen in Azure AD erstellt und die erforderlichen Berechtigungen erteilt, damit die Client-App die Back-End-App aufrufen kann. 
 
-In diesem Handbuch wird die Entwicklerkonsole als Client-App verwendet. In den folgenden Schritten ist beschrieben, wie OAuth 2.0-Benutzerautorisierung in der Entwicklerkonsole aktiviert wird. 
+In diesem Beispiel ist die Entwicklerkonsole die Client-App. In den folgenden Schritten wird beschrieben, wie OAuth 2.0-Benutzerautorisierung in der Entwicklerkonsole aktiviert wird. 
 
-Navigieren zu Ihrer APIM-Instanz.
+1. Navigieren Sie zu Ihrer API Management-Instanz.
 
-Klicken Sie auf **OAuth 2.0**, und klicken Sie dann auf **Hinzufügen**.
+2. Klicken Sie auf **OAuth 2.0** > **Hinzufügen**.
 
-Geben Sie den **Anzeigenamen** und eine **Beschreibung** an.
+3. Geben Sie den **Anzeigenamen** und eine **Beschreibung** an.
 
-Geben Sie als Seiten-URL für Clientregistrierung (**) einen Platzhalterwert ein, z. B. `http://localhost`.  **Seiten-URL für Clientregistrierung** verweist auf die Seite, die Benutzer zum Erstellen und Konfigurieren eigener Konten für OAuth 2.0-Anbieter nutzen können, die eine Benutzerverwaltung für Konten unterstützen. In diesem Beispiel werden von Benutzern keine eigenen Konten erstellt und konfiguriert, daher wird ein Platzhalter verwendet.
+4. Geben Sie als **URL für Clientregistrierungsseite** einen Platzhalterwert ein, beispielsweise `http://localhost`. **URL für Clientregistrierungsseite** verweist auf die Seite, die Benutzer zum Erstellen und Konfigurieren eigener Konten für OAuth 2.0-Anbieter nutzen können, die dies unterstützen. In diesem Beispiel werden von Benutzern keine eigenen Konten erstellt und konfiguriert, daher verwenden Sie stattdessen einen Platzhalter.
 
-Aktivieren Sie **Autorisierungscode** als **Autorisierungszuweisungstypen**.
+5. Wählen Sie unter **Autorisierungszuweisungstypen** die Option **Autorisierungscode**.
 
-Geben Sie anschließend die **Autorisierungsendpunkt-URL** und die **Token-Endpunkt-URL** ein.
+6. Geben Sie die **URL für Autorisierungsendpunkt** und die **URL für Tokenendpunkt** ein. Rufen Sie diese Werte von der Seite **Endpunkte** in Ihrem Azure AD-Mandanten ab. Navigieren Sie erneut zur Seite **App-Registrierung**, und klicken Sie auf **Endpunkte**.
 
-Diese Werte können Sie von der Seite **Endpunkte** in Ihrem Azure AD-Mandanten abrufen. Um auf die Endpunkte zuzugreifen, navigieren Sie zur Seite **App-Registrierungen**, und klicken Sie erneut auf **Endpunkte**.
+7. Kopieren Sie den **OAuth 2.0-Autorisierungsendpunkt**, und fügen Sie ihn in das Textfeld **URL für Autorisierungsendpunkt** ein.
 
-Kopieren Sie den **OAuth 2.0-Autorisierungsendpunkt**, und fügen Sie ihn in das Textfeld **URL für Autorisierungsendpunkt** ein.
+8. Kopieren Sie den **OAuth 2.0-Token-Endpunkt**, und fügen Sie ihn in das Textfeld **URL für Tokenendpunkt** ein. Fügen Sie zusätzlich zum Tokenendpunkt den Textkörperparameter **resource** hinzu. Verwenden Sie als Wert für diesen Parameter die **Anwendungs-ID** für die Back-End-App.
 
-Kopieren Sie den **OAuth 2.0-Token-Endpunkt**, und fügen Sie ihn in das Textfeld **URL für Tokenendpunkt** ein.
+9. Geben Sie anschließend Clientanmeldeinformationen an. Diese sind die Anmeldeinformationen für die Client-App.
 
-Zusätzlich zum Einfügen des Tokenendpunkts fügen Sie einen Textkörperparameter namens **resource** hinzu, und verwenden Sie als Wert die **Anwendungs-ID** für die Back-End-App.
+10. Verwenden Sie für **Client-ID** die **Anwendungs-ID** für die Client-App.
 
-Geben Sie anschließend Clientanmeldeinformationen an. Diese sind die Anmeldeinformationen für die Client-App.
+11. Verwenden Sie für **Clientgeheimnis** den Schlüssel, den Sie zuvor für die Client-App erstellt haben. 
 
-Verwenden Sie für **Client-ID** die **Anwendungs-ID** für die Client-App.
+12. Unmittelbar hinter dem Clientgeheimnis folgt die Umleitungs-URL (**redirect_url**) für den Typ der Gewährung für Autorisierungscode. Notieren Sie sich diese URL.
 
-Verwenden Sie für **Clientgeheimnis** den Schlüssel, den Sie zuvor für die Client-App erstellt haben. 
+13. Klicken Sie auf **Erstellen**.
 
-Unmittelbar hinter dem Clientgeheimnis folgt die Umleitungs-URL (**redirect_url**) für den Typ der Gewährung für Autorisierungscode.
+14. Navigieren Sie zurück zur Seite **Einstellungen** Ihrer Client-App.
 
-Notieren Sie sich diese URL.
+15. Klicken Sie auf **Antwort-URLs**, und fügen Sie den Wert für **redirect_url** in der ersten Zeile ein. In diesem Beispiel haben Sie `https://localhost` durch die URL in der ersten Zeile ersetzt.  
 
-Klicken Sie auf **Erstellen**.
+Nachdem Sie nun einen OAuth 2.0-Autorisierungsserver konfiguriert haben, kann die Entwicklerkonsole Zugriffstoken von Azure AD abrufen. 
 
-Navigieren Sie zurück zur **Einstellungen**-Seite Ihrer Client-App.
+Im nächsten Schritt aktivieren Sie die OAuth 2.0-Benutzerautorisierung für Ihre API. Dadurch weiß die Entwicklerkonsole, dass sie im Namen des Benutzers ein Zugriffstoken abrufen muss, bevor Aufrufe an die API erfolgen.
 
-Klicken Sie auf **Antwort-URLs**, und fügen Sie die **redirect_url** in der ersten Zeile hinzu. In diesem Beispiel wurde `https://localhost` durch die URL in der ersten Zeile ersetzt.  
+1. Navigieren Sie zu Ihrer API Management-Instanz und dann zu **APIs**.
 
-Nachdem nun ein OAuth 2.0-Autorisierungsserver konfiguriert ist, sollte es möglich sein, dass die Entwicklerkonsole Zugriffstoken von Azure AD abruft. 
+2. Wählen Sie die API aus, die Sie schützen möchten. In diesem Beispiel wird die `Echo API` verwendet.
 
-Der nächste Schritt besteht darin, die OAuth 2.0-Benutzerautorisierung für die API zu aktivieren, damit die Entwicklerkonsole weiß, dass sie im Namen des Benutzers ein Zugriffstoken abrufen muss, bevor Aufrufe an die API vorgenommen werden.
+3. Wechseln Sie zu **Einstellungen**.
 
-Navigieren Sie zu Ihrer APIM-Instanz, und wechseln Sie zu **APIs**.
+4. Wählen Sie unter **Sicherheit** die Option **OAuth 2.0** aus, und wählen Sie den OAuth 2.0-Server aus, den Sie zuvor konfiguriert haben. 
 
-Klicken Sie auf die API, die Sie schützen möchten. In diesem Beispiel wird die `Echo API` verwendet.
-
-Wechseln Sie zu **Einstellungen**.
-
-Wählen Sie unter **Sicherheit** die Option **OAuth 2.0** aus, und wählen Sie den OAuth 2.0-Server aus, den Sie zuvor konfiguriert haben. 
-
-Klicken Sie auf **Speichern**.
+5. Wählen Sie **Speichern**aus.
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>Erfolgreiches Aufrufen der API aus dem Entwicklerportal
 
 Nachdem nun die OAuth 2.0-Benutzerautorisierung für die `Echo API` aktiviert ist, ruft die Entwicklerkonsole im Namen des Benutzers ein Zugriffstoken ab, bevor die API aufgerufen wird.
 
-Navigieren Sie zu irgendeinem Vorgang unter der `Echo API` im Entwicklerportal, und klicken Sie auf **Ausprobieren**, damit Sie zur Entwicklerkonsole gelangen.
+1. Navigieren Sie im Entwicklerportal zu einem beliebigen Vorgang unter der `Echo API`, und klicken Sie auf **Ausprobieren**. Dadurch wird die Entwicklerkonsole angezeigt.
 
-Beachten Sie ein neues Element im Abschnitt **Autorisierung**, das dem Autorisierungsserver entspricht, den Sie soeben hinzugefügt haben.
+2. Beachten Sie ein neues Element im Abschnitt **Autorisierung**, das dem soeben hinzugefügten Autorisierungsserver entspricht.
 
-Wählen Sie **Autorisierungscode** in der Dropdownliste „Autorisierung“ aus. Sie werden dann aufgefordert, sich bei dem Azure AD-Mandanten anzumelden. Wenn Sie bereits mit dem Konto angemeldet sind, werden Sie möglicherweise nicht dazu aufgefordert.
+3. Wählen Sie in der Dropdownliste „Autorisierung“ die Option **Autorisierungscode** aus. Sie werden dann aufgefordert, sich beim Azure AD-Mandanten anzumelden. Wenn Sie bereits mit dem Konto angemeldet sind, werden Sie möglicherweise nicht dazu aufgefordert.
 
-Nach der erfolgreichen Anmeldung wird der Anforderung ein `Authorization`-Header mit einem Zugriffstoken von Azure AD hinzugefügt. 
+4. Nach der erfolgreichen Anmeldung wird der Anforderung ein `Authorization`-Header mit einem Zugriffstoken von Azure AD hinzugefügt. Hier sehen Sie ein Beispieltoken (Base64-codiert):
 
-Ein Beispieltoken sieht wie das folgende aus, das Base64-codiert ist.
+   ```
+   Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCIsImtpZCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCJ9.eyJhdWQiOiIxYzg2ZWVmNC1jMjZkLTRiNGUtODEzNy0wYjBiZTEyM2NhMGMiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC80NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgvIiwiaWF0IjoxNTIxMTUyNjMzLCJuYmYiOjE1MjExNTI2MzMsImV4cCI6MTUyMTE1NjUzMywiYWNyIjoiMSIsImFpbyI6IkFWUUFxLzhHQUFBQUptVzkzTFd6dVArcGF4ZzJPeGE1cGp2V1NXV1ZSVnd1ZXZ5QU5yMlNkc0tkQmFWNnNjcHZsbUpmT1dDOThscUJJMDhXdlB6cDdlenpJdzJLai9MdWdXWWdydHhkM1lmaDlYSGpXeFVaWk9JPSIsImFtciI6WyJyc2EiXSwiYXBwaWQiOiJhYTY5ODM1OC0yMWEzLTRhYTQtYjI3OC1mMzI2NTMzMDUzZTkiLCJhcHBpZGFjciI6IjEiLCJlbWFpbCI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiSmlhbmciLCJnaXZlbl9uYW1lIjoiTWlhbyIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJpcGFkZHIiOiIxMzEuMTA3LjE3NC4xNDAiLCJuYW1lIjoiTWlhbyBKaWFuZyIsIm9pZCI6IjhiMTU4ZDEwLWVmZGItNDUxMS1iOTQzLTczOWZkYjMxNzAyZSIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6IkFGaWtvWFk1TEV1LTNkbk1pa3Z3MUJzQUx4SGIybV9IaVJjaHVfSEM1aGciLCJ0aWQiOiI0NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgiLCJ1bmlxdWVfbmFtZSI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsInV0aSI6ImFQaTJxOVZ6ODBXdHNsYjRBMzBCQUEiLCJ2ZXIiOiIxLjAifQ.agGfaegYRnGj6DM_-N_eYulnQdXHhrsus45QDuApirETDR2P2aMRxRioOCR2YVwn8pmpQ1LoAhddcYMWisrw_qhaQr0AYsDPWRtJ6x0hDk5teUgbix3gazb7F-TVcC1gXpc9y7j77Ujxcq9z0r5lF65Y9bpNSefn9Te6GZYG7BgKEixqC4W6LqjtcjuOuW-ouy6LSSox71Fj4Ni3zkGfxX1T_jiOvQTd6BBltSrShDm0bTMefoyX8oqfMEA2ziKjwvBFrOjO0uK4rJLgLYH4qvkR0bdF9etdstqKMo5gecarWHNzWi_tghQu9aE3Z3EZdYNI_ZGM-Bbe3pkCfvEOyA
+   ```
 
-```
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCIsImtpZCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCJ9.eyJhdWQiOiIxYzg2ZWVmNC1jMjZkLTRiNGUtODEzNy0wYjBiZTEyM2NhMGMiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC80NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgvIiwiaWF0IjoxNTIxMTUyNjMzLCJuYmYiOjE1MjExNTI2MzMsImV4cCI6MTUyMTE1NjUzMywiYWNyIjoiMSIsImFpbyI6IkFWUUFxLzhHQUFBQUptVzkzTFd6dVArcGF4ZzJPeGE1cGp2V1NXV1ZSVnd1ZXZ5QU5yMlNkc0tkQmFWNnNjcHZsbUpmT1dDOThscUJJMDhXdlB6cDdlenpJdzJLai9MdWdXWWdydHhkM1lmaDlYSGpXeFVaWk9JPSIsImFtciI6WyJyc2EiXSwiYXBwaWQiOiJhYTY5ODM1OC0yMWEzLTRhYTQtYjI3OC1mMzI2NTMzMDUzZTkiLCJhcHBpZGFjciI6IjEiLCJlbWFpbCI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiSmlhbmciLCJnaXZlbl9uYW1lIjoiTWlhbyIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJpcGFkZHIiOiIxMzEuMTA3LjE3NC4xNDAiLCJuYW1lIjoiTWlhbyBKaWFuZyIsIm9pZCI6IjhiMTU4ZDEwLWVmZGItNDUxMS1iOTQzLTczOWZkYjMxNzAyZSIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6IkFGaWtvWFk1TEV1LTNkbk1pa3Z3MUJzQUx4SGIybV9IaVJjaHVfSEM1aGciLCJ0aWQiOiI0NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgiLCJ1bmlxdWVfbmFtZSI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsInV0aSI6ImFQaTJxOVZ6ODBXdHNsYjRBMzBCQUEiLCJ2ZXIiOiIxLjAifQ.agGfaegYRnGj6DM_-N_eYulnQdXHhrsus45QDuApirETDR2P2aMRxRioOCR2YVwn8pmpQ1LoAhddcYMWisrw_qhaQr0AYsDPWRtJ6x0hDk5teUgbix3gazb7F-TVcC1gXpc9y7j77Ujxcq9z0r5lF65Y9bpNSefn9Te6GZYG7BgKEixqC4W6LqjtcjuOuW-ouy6LSSox71Fj4Ni3zkGfxX1T_jiOvQTd6BBltSrShDm0bTMefoyX8oqfMEA2ziKjwvBFrOjO0uK4rJLgLYH4qvkR0bdF9etdstqKMo5gecarWHNzWi_tghQu9aE3Z3EZdYNI_ZGM-Bbe3pkCfvEOyA
-```
-
-Klicken Sie auf **Senden**. Danach sollten Sie die API erfolgreich aufrufen können.
+5. Klicken Sie auf **Senden**, und Sie können die API aufrufen.
 
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>Konfigurieren einer JWT-Überprüfungsrichtlinie zur Vorautorisierung von Anforderungen
 
-Wenn ein Benutzer an diesem Punkt versucht, aus der Entwicklerkonsole einen Aufruf auszuführen, wird er aufgefordert, sich anzumelden, und die Entwicklerkonsole erhält im Namen des Benutzers ein Zugriffstoken. Alles funktioniert erwartungsgemäß. Was aber passiert, wenn jemand die API ohne Token oder mit einem ungültigen Token aufruft? Sie können beispielsweise den `Authorization`-Header löschen und werden feststellen, dass Sie die API weiterhin aufrufen können. Dies liegt daran, dass APIM das Zugriffstoken an diesem Punkt nicht überprüft. APIM übergibt den `Auhtorization`-Header einfach an die Back-End-API.
+Wenn an diesem Punkt ein Benutzer versucht, einen Aufruf über die Entwicklerkonsole auszuführen, wird er zum Anmelden aufgefordert. Die Entwicklerkonsole ruft im Namen des Benutzers ein Zugriffstoken ab.
 
-Sie können die Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) verwenden, um Anforderungen in APIM vorab zu autorisieren, indem die Zugriffstoken für jede eingehende Anforderung überprüft werden. Wenn eine Anforderung kein gültiges Token hat, wird sie von API Management blockiert, und sie wird nicht an das Back-End übergeben. Wir können z.B. die folgende Richtlinie zum Richtlinienabschnitt `<inbound>` von `Echo API` hinzufügen. Sie überprüft den „Audience“-Anspruch in einem Zugriffstoken und gibt eine Fehlermeldung zurück, wenn das Token nicht gültig ist. Informationen zum Konfigurieren von Richtlinien finden Sie unter [How to set or edit Azure API Management policies](set-edit-policies.md) (Festlegen oder Bearbeiten von Azure API Management-Richtlinien).
+Aber was passiert, wenn jemand die API ohne Token oder mit einem ungültigen Token aufruft? Sie können beispielsweise die API trotzdem aufrufen, auch wenn Sie den `Authorization`-Header löschen. Dies liegt daran, dass API Management das Zugriffstoken an diesem Punkt nicht überprüft. API Management übergibt den `Authorization`-Header einfach an die Back-End-API.
+
+Sie können die Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) verwenden, um Anforderungen in API Management vorab zu autorisieren, indem die Zugriffstoken für jede eingehende Anforderung überprüft werden. Wenn für eine Anforderung kein gültiges Token vorliegt, wird sie von API Management blockiert. Sie können beispielsweise die folgende Richtlinie zum Richtlinienabschnitt `<inbound>` der `Echo API` hinzufügen. Sie überprüft den Zielgruppenanspruch in einem Zugriffstoken und gibt eine Fehlermeldung zurück, wenn das Token nicht gültig ist. Informationen zum Konfigurieren von Richtlinien finden Sie unter [How to set or edit Azure API Management policies](set-edit-policies.md) (Festlegen oder Bearbeiten von Azure API Management-Richtlinien).
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -198,12 +192,13 @@ Sie können die Richtlinie [JWT überprüfen](api-management-access-restriction-
 
 ## <a name="build-an-application-to-call-the-api"></a>Erstellen einer Anwendung zum Aufrufen der API
 
-In diesem Handbuch wird die Entwicklerkonsole in APIM als Beispielclientanwendung verwendet, um die durch OAuth 2.0 geschützte `Echo API` aufzurufen. Weitere Informationen zum Erstellen einer Anwendung und zum Implementieren des OAuth 2.0-Datenflusses finden Sie unter [Azure Active Directory-Codebeispiele](../active-directory/develop/active-directory-code-samples.md).
+In diesem Handbuch wird die Entwicklerkonsole in API Management als Beispielclientanwendung verwendet, um die durch OAuth 2.0 geschützte `Echo API` aufzurufen. Weitere Informationen zum Erstellen einer Anwendung und zum Implementieren von OAuth 2.0 finden Sie unter [Azure Active Directory-Codebeispiele](../active-directory/develop/active-directory-code-samples.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu [Azure Active Directory und OAuth 2.0](../active-directory/develop/active-directory-authentication-scenarios.md)
 * Hier finden Sie weitere [Videos](https://azure.microsoft.com/documentation/videos/index/?services=api-management) zu API Management.
-* Weitere Methoden zum Sichern Ihres Back-End-Diensts finden Sie unter [Gegenseitige Zertifikatauthentifizierung](api-management-howto-mutual-certificates.md).
+* Weitere Methoden zum Sichern Ihres Back-End-Diensts finden Sie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md).
 
-[Create an API Management service instance]: get-started-create-service-instance.md
-[Manage your first API]: import-and-publish.md
+* [Erstellen einer API Management-Dienstinstanz](get-started-create-service-instance.md)
+
+* [Verwalten Ihrer ersten API](import-and-publish.md)

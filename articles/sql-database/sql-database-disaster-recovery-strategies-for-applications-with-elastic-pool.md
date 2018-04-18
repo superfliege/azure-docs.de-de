@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 6ec202237a0b3fb1b7f0b7158c0aa454b4d65770
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1f2f0819f987bf389ff4b2816ad422fdd8a81f82
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategien für die Notfallwiederherstellung für Anwendungen mit Pools für elastische SQL-Datenbank-Instanzen
 Im Laufe der Jahre haben wir gelernt, dass Clouddienste nicht narrensicher sind und dass es zu schwerwiegenden Vorfällen kommen kann. SQL-Datenbank verfügt über verschiedene Funktionen, mit denen für die geschäftliche Kontinuität Ihrer Anwendung gesorgt werden kann, wenn Vorfälle dieser Art auftreten. [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und einzelne Datenbanken unterstützen die gleichen Funktionen für die Notfallwiederherstellung. In diesem Artikel werden mehrere Notfallwiederherstellungsstrategien für Pools für elastische Datenbanken beschrieben, bei denen diese SQL-Datenbankfunktionen zur Sicherstellung der geschäftlichen Kontinuität verwendet werden.
@@ -26,7 +26,7 @@ In diesem Artikel wird das folgende kanonische SaaS-ISV-Anwendungsmuster verwend
 In diesem Artikel werden Strategien für die Notfallwiederherstellung anhand mehrerer Szenarios besprochen, angefangen bei kostenbewussten Anwendungen bis hin zu Anwendungen mit strengen Verfügbarkeitsanforderungen.
 
 > [!NOTE]
-> Wenn Sie Premium-Datenbanken und -Pools verwenden, können Sie sie resistent gegenüber regionalen Ausfällen machen, indem Sie sie auf die Konfiguration der zonenredundanten Bereitstellung umstellen (derzeit in der Vorschauphase). Informationen finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).
+> Wenn Sie Premium-Datenbanken, unternehmenskritische Datenbanken (Vorschauversion) oder Pools für elastische Datenbanken verwenden, können Sie sie resistent gegenüber regionalen Ausfällen machen, indem Sie sie auf die Konfiguration der zonenredundanten Bereitstellung umstellen (derzeit in der Vorschauphase). Informationen finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).
 
 ## <a name="scenario-1-cost-sensitive-startup"></a>Szenario 1: Kostenbewusste Anwendung für Startup-Unternehmen
 <i>Wir sind ein Startup-Unternehmen, bei dem stark auf die Kosten geachtet wird.  Wir möchten die Bereitstellung und Verwaltung der Anwendung vereinfachen und einen eingeschränkten Servicelevel (SLA) für einzelne Kunden verwenden. Es soll aber sichergestellt sein, dass die Anwendung als Ganzes niemals offline ist.</i>
@@ -65,7 +65,7 @@ Der **Hauptvorteil** dieser Strategie sind die geringen laufenden Kosten für di
 ## <a name="scenario-2-mature-application-with-tiered-service"></a>Szenario 2: Ausgereifte Anwendung mit Diensten auf mehreren Ebenen
 <i>Wir verwenden eine ausgereifte SaaS-Anwendung mit Dienstangeboten auf mehreren Ebenen und unterschiedlichen SLAs für Testkunden und zahlende Kunden. Für die Testkunden sollen die Kosten so weit wie möglich reduziert werden. Für Testkunden kann es zu Ausfallzeiten kommen, aber die Wahrscheinlichkeit dafür soll verringert werden. In Bezug auf die zahlenden Kunden ist jede Ausfallzeit mit einem Abwanderungsrisiko verbunden. Daher soll sichergestellt sein, dass zahlende Kunden immer auf ihre Daten zugreifen können.</i> 
 
-Trennen Sie zur Unterstützung dieses Szenarios die Testmandanten von den zahlenden Mandanten, indem Sie sie in separaten Pools für elastische Datenbanken anordnen. Für die Testkunden gilt dann ein niedrigerer eDTU-Wert pro Mandant und ein SLA mit einer längeren Wiederherstellungszeit. Die zahlenden Kunden sind in einem Pool mit einem höheren eDTU-Wert pro Mandant und einem höheren SLA angeordnet. Um die kürzeste Wiederherstellungsdauer zu gewährleisten, werden die Mandantendatenbanken der zahlenden Kunden georepliziert. Diese Konfiguration ist im nächsten Diagramm dargestellt. 
+Trennen Sie zur Unterstützung dieses Szenarios die Testmandanten von den zahlenden Mandanten, indem Sie sie in separaten Pools für elastische Datenbanken anordnen. Für die Testkunden gilt dann eine niedrigere Anzahl von eDTUs oder virtuellen Kernen pro Mandant und ein SLA mit einer längeren Wiederherstellungszeit. Die zahlenden Kunden sind in einem Pool mit einer höheren Anzahl von eDTUs oder virtuellen Kernen pro Mandant und einem höheren SLA angeordnet. Um die kürzeste Wiederherstellungsdauer zu gewährleisten, werden die Mandantendatenbanken der zahlenden Kunden georepliziert. Diese Konfiguration ist im nächsten Diagramm dargestellt. 
 
 ![Abbildung 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
@@ -80,7 +80,7 @@ Bei einem Ausfall in der primären Region können Sie die Wiederherstellungsschr
 * Führen Sie ein sofortiges Failover der Verwaltungsdatenbanken in die Region für die Notfallwiederherstellung durch (3).
 * Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Region für die Notfallwiederherstellung verweist. Alle neuen Konten und Mandantendatenbanken werden jetzt in der Region für die Notfallwiederherstellung erstellt. Für die vorhandenen Testkunden sind die Daten vorübergehend nicht verfügbar.
 * Führen Sie für die Datenbanken der bezahlten Mandanten ein Failover in den Pool in der Region für die Notfallwiederherstellung durch, um die Verfügbarkeit sofort wiederherzustellen (4). Da es sich beim Failover um eine schnelle Änderung der Metadatenebene handelt, erwägen Sie eine Optimierung, bei der die einzelnen Failover bei Bedarf von den Endbenutzerverbindungen ausgelöst werden. 
-* Falls die eDTU-Größe des sekundären Pools niedriger als die Größe des primären Pools war, weil für die sekundären Datenbanken die Kapazität zum Verarbeiten der Änderungsprotokolle nur erforderlich war, als es sich um sekundäre Replikate gehandelt hat, erhöhen Sie die Poolkapazität jetzt sofort. Dies ist nötig, um die gesamte Workload aller Mandanten abdecken zu können (5). 
+* Falls die eDTU-Größe oder der Wert der virtuellen Kerne des sekundären Pools niedriger als die Größe des primären Pools war, weil für die sekundären Datenbanken die Kapazität zum Verarbeiten der Änderungsprotokolle nur erforderlich war, als es sich um sekundäre Replikate gehandelt hat, erhöhen Sie die Poolkapazität jetzt sofort. Dies ist nötig, um die gesamte Workload aller Mandanten abdecken zu können (5). 
 * Erstellen Sie den neuen Pool für elastische Datenbanken mit dem gleichen Namen und der gleichen Konfiguration in der Notfallwiederherstellungsregion für die Datenbanken der Testkunden (6). 
 * Nachdem der Pool für die Testkunden erstellt wurde, verwenden Sie die Geowiederherstellung, um die einzelnen Testmandanten-Datenbanken im neuen Pool wiederherzustellen (7). Erwägen Sie die Auslösung der einzelnen Wiederherstellungen über die Endbenutzerverbindungen, oder verwenden Sie ein anderes anwendungsspezifisches Prioritätsschema.
 
@@ -108,7 +108,7 @@ Der **Hauptvorteil** dieser Strategie besteht darin, dass für die zahlenden Kun
 ## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>Szenario 3: Geografisch verteilte Anwendung mit Diensten auf mehreren Ebenen
 <i>Wir verwenden eine ausgereifte SaaS-Anwendung mit Dienstangeboten auf mehreren Ebenen. Wir möchten zahlenden Kunden einen sehr aggressiven Servicelevel (SLA) anbieten und die Auswirkungen bei Ausfällen gering halten, da auch kurze Unterbrechungen bei Kunden zu Unzufriedenheit führen können. Es ist sehr wichtig, dass die zahlenden Kunden immer Zugriff auf ihre Daten haben. Die Testversionen sind kostenlos, und während des Testzeitraums wird keine SLA angeboten.</i> 
 
-Verwenden Sie für dieses Szenario drei separate Pools für elastische Datenbanken. Stellen Sie zwei Pools gleicher Größe mit hohen eDTUs pro Datenbank in zwei unterschiedlichen Regionen bereit, um die Mandantendatenbanken der zahlenden Kunden aufnehmen zu können. Der dritte Pool mit den Testmandanten kann hierbei über niedrigere eDTUs pro Datenbank verfügen und wird in einer der beiden Regionen bereitgestellt.
+Verwenden Sie für dieses Szenario drei separate Pools für elastische Datenbanken. Stellen Sie zwei Pools gleicher Größe mit einer hohen Anzahl von eDTUs oder virtuellen Kernen pro Datenbank in zwei unterschiedlichen Regionen bereit, um die Mandantendatenbanken der zahlenden Kunden aufnehmen zu können. Der dritte Pool mit den Testmandanten kann hierbei über weniger eDTUs oder virtuelle Kerne pro Datenbank verfügen und in einer der beiden Regionen bereitgestellt werden.
 
 Um bei Ausfällen die kürzeste Wiederherstellungsdauer garantieren zu können, werden die Mandantendatenbanken der zahlenden Kunden mit 50 Prozent der primären Datenbanken in beiden Regionen georepliziert. Außerdem verfügt jede Region über 50 Prozent der sekundären Datenbanken. Wenn eine Region offline ist, sind hierbei also nur 50 Prozent der Datenbanken zahlender Kunden betroffen und müssen einem Failover unterzogen werden. Die restlichen Datenbanken bleiben intakt. Diese Konfiguration ist im folgenden Diagramm dargestellt:
 
@@ -125,7 +125,7 @@ Im nächsten Diagramm sind die Wiederherstellungsschritte dargestellt, die ausge
 * Führen Sie für die Verwaltungsdatenbanken sofort ein Failover in Region B durch (3).
 * Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Verwaltungsdatenbanken in Region B verweist. Ändern Sie die Verwaltungsdatenbanken, um sicherzustellen, dass die neuen Konten und Mandantendatenbanken in Region B erstellt werden und die vorhandenen Mandantendatenbanken ebenfalls dort angeordnet sind. Für die vorhandenen Testkunden sind die Daten vorübergehend nicht verfügbar.
 * Führen Sie für die Datenbanken der bezahlten Mandanten ein Failover in Pool 2 von Region B durch, um die Verfügbarkeit sofort wiederherzustellen (4). Da es sich beim Failover um eine schnelle Änderung der Metadatenebene handelt, können Sie eine Optimierung erwägen, bei der die einzelnen Failover bei Bedarf von den Endbenutzerverbindungen ausgelöst werden. 
-* Da Pool 2 jetzt nur primäre Datenbanken enthält, erhöht sich die gesamte Workload im Pool und kann die eDTU-Größe sofort erhöhen (5). 
+* Da Pool 2 jetzt nur primäre Datenbanken enthält, erhöht sich die gesamte Workload im Pool und kann die eDTU-Größe (5) oder die Anzahl von virtuellen Kernen sofort erhöhen. 
 * Erstellen Sie den neuen Pool für elastische Datenbanken mit dem gleichen Namen und der gleichen Konfiguration in Region B für die Datenbanken der Testkunden (6). 
 * Verwenden Sie nach der Erstellung des Pools die Geowiederherstellung, um die individuelle Testmandanten-Datenbank im Pool wiederherzustellen (7). Sie können erwägen, die einzelnen Wiederherstellungen über die Endbenutzerverbindungen auszulösen, oder Sie können ein anderes anwendungsspezifisches Prioritätsschema verwenden.
 
@@ -142,7 +142,7 @@ Nach dem Wiederherstellen von Region A müssen Sie entscheiden, ob Sie Region B 
 * Brechen Sie alle ausstehenden Anforderungen der Geowiederherstellung an den Notfallwiederherstellungspool für Testkunden ab.   
 * Führen Sie das Failover für die Verwaltungsdatenbank durch (8). Nach der Wiederherstellung der Region werden die alten primären Replikate automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten.  
 * Wählen Sie aus, für welche Datenbanken für bezahlte Mandaten ein Failback zu Pool 1 durchgeführt werden soll, und initiieren Sie das Failover zu den sekundären Replikaten (9). Nach der Wiederherstellung der Region werden alle Datenbanken in Pool 1 automatisch zu sekundären Replikaten. Nun werden 50 Prozent davon wieder zu primären Replikaten. 
-* Reduzieren Sie die Größe von Pool 2 auf den eDTU-Originalwert (10).
+* Reduzieren Sie die Größe von Pool 2 auf die ursprüngliche Anzahl von eDTUs (10) oder virtuellen Kernen.
 * Legen Sie alle wiederhergestellten Testdatenbanken in Region B auf „Schreibgeschützt“ fest (11).
 * Benennen Sie für jede Datenbank im Notfallwiederherstellungspool für Testkunden, die sich seit der Wiederherstellung geändert hat, die entsprechende Datenbank im primären Testpool um, oder löschen Sie sie (12). 
 * Kopieren Sie die aktualisierten Datenbanken aus dem Pool für die Notfallwiederherstellung in den primären Pool (13). 

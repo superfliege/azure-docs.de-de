@@ -7,14 +7,14 @@ manager: jhubbard
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e9ec0a0a602965561b77619123588db57c59993c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: dc97c0703150df9773427b13fc07371c3593ce9f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank
 Azure SQL-Datenbank bietet die folgenden Features zur Wiederherstellung nach einem Ausfall:
@@ -26,7 +26,7 @@ Azure SQL-Datenbank bietet die folgenden Features zur Wiederherstellung nach ein
 Informationen über Szenarien zum Thema Geschäftskontinuität sowie über die Funktionen, die diese Szenarien unterstützen, finden Sie unter [Geschäftskontinuität](sql-database-business-continuity.md).
 
 > [!NOTE]
-> Bei Verwendung zonenredundanter Premium-Datenbanken oder -Pools erfolgt der Wiederherstellungsprozess automatisch, sodass das verbleibende Material nicht relevant ist. 
+> Bei Verwendung zonenredundanter Datenbanken oder -Pools vom Typ „Premium“ oder „Unternehmenskritisch“ (Vorschauversion) erfolgt der Wiederherstellungsprozess automatisch, sodass das verbleibende Material nicht relevant ist. 
 
 ### <a name="prepare-for-the-event-of-an-outage"></a>Vorbereiten auf einen Ausfall
 Um eine erfolgreiche Wiederherstellung in eine andere Datenregion mithilfe von Failovergruppen oder georedundanter Sicherungen durchzuführen, müssen Sie einen Server in einem anderen Rechenzentrum vorbereiten, um diesen bei einem Ausfall zum neuen primären Server hochstufen zu können. Darüber hinaus müssen Sie sorgfältig definierte Schritte dokumentiert und getestet haben, um eine reibungslose Wiederherstellung sicherzustellen. Folgende Vorbereitungsschritte sind erforderlich:
