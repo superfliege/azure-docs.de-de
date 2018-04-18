@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 63a8b9f8c81ad3dc122bf25d8a06cdf242a0f35b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 89575f94e95c5ae378d95220d63c162e53158069
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Optimieren der Leistung bei Azure SQL-Datenbank
 
@@ -39,8 +39,8 @@ Azure SQL-Datenbank bietet drei [Dienstebenen](sql-database-service-tiers.md), a
   * **Sie verfügen über eine Datenbank mit nur einem Benutzer**. Für Anwendungen, bei denen einer Datenbank nur ein Benutzer zugeordnet wird, bestehen in der Regel keine hohen Anforderungen an Parallelität und Leistung. Diese Anwendungen sind Kandidaten für die Dienstebene Basic.
 * **Standard**: Der Diensttarif Standard bietet eine verbesserte Leistungsvorhersagbarkeit und gute Leistung, die für Datenbanken mit mehreren gleichzeitigen Anforderungen konzipiert sind, z.B. Arbeitsgruppen und Webanwendungen. Wenn Sie eine Datenbank der Dienstebene Standard wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf einer minutengenauen vorhersagbaren Leistung festlegen.
   * **Ihre Datenbank verfügt über mehrere gleichzeitige Anforderungen**. Anwendungen, die für mehr als einen Benutzer gleichzeitig bestimmt sind, benötigen normalerweise höhere Leistungsebenen. Gute Kandidaten für den Diensttarif Standard sind beispielsweise Arbeitsgruppen- oder Webanwendungen, die niedrige bis mittelhohe Anforderungen an den E/A-Datenverkehr stellen und mehrere gleichzeitige Abfragen unterstützen.
-* **Premium**: Der Diensttarif Premium bietet für jede Premium-Datenbank eine sekundengenau vorhersagbare Leistung. Wenn Sie die Dienstebene Premium wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf der Spitzenlast der Datenbank festlegen. Bei diesem Plan werden Fälle verhindert, in denen die Leistungsvarianz bewirkt, dass kleinere Abfragen bei latenzanfälligen Vorgängen länger als erwartet dauern. Dieses Modell kann für eine starke Vereinfachung bei Entwicklungs- und Produktprüfungszyklen für Anwendungen sorgen, bei denen in Bezug auf Ressourcenspitzenlast, Leistungsvarianz oder Abfragewartezeit hohe Anforderungen bestehen. Für die meisten Anwendungsfälle der Dienstebene Premium gelten die folgenden Merkmale bzw. Teile dieser Merkmale:
-  * **Hohe Spitzenlast**. Eine Anwendung, für die zum Durchführen der Vorgänge hohe Werte in Bezug auf CPU, Arbeitsspeicher oder Eingang/Ausgang (I/O) erforderlich sind, wird eine dedizierte, hohe Leistungsebene benötigt. Falls ein Datenbankvorgang über einen längeren Zeitraum mehrere CPU-Kerne nutzt, ist dies beispielsweise ein Kandidat für die Dienstebene Premium.
+* **Premium**: Der Premium-Diensttarif bietet für jede Datenbank vom Typ Premium oder Unternehmenskritisch (Vorschauversion) eine sekundengenau vorhersagbare Leistung. Wenn Sie die Dienstebene Premium wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf der Spitzenlast der Datenbank festlegen. Bei diesem Plan werden Fälle verhindert, in denen die Leistungsvarianz bewirkt, dass kleinere Abfragen bei latenzanfälligen Vorgängen länger als erwartet dauern. Dieses Modell kann für eine starke Vereinfachung bei Entwicklungs- und Produktprüfungszyklen für Anwendungen sorgen, bei denen in Bezug auf Ressourcenspitzenlast, Leistungsvarianz oder Abfragewartezeit hohe Anforderungen bestehen. Für die meisten Anwendungsfälle der Dienstebene Premium gelten die folgenden Merkmale bzw. Teile dieser Merkmale:
+  * **Hohe Spitzenlast**. Eine Anwendung, für die zum Durchführen der Vorgänge hohe Werte in Bezug auf CPU, Arbeitsspeicher oder Eingabe/Ausgabe (E/A) erforderlich sind, wird eine dedizierte, hohe Leistungsebene benötigt. Falls ein Datenbankvorgang über einen längeren Zeitraum mehrere CPU-Kerne nutzt, ist dies beispielsweise ein Kandidat für die Dienstebene Premium.
   * **Hohe Zahl von gleichzeitigen Anforderungen**: Einige Datenbankanwendungen verarbeiten viele gleichzeitige Anforderungen, z.B. bei einer Website mit hohem Datenverkehrsaufkommen. Für die Dienstebenen Basic und Standard gelten bei der Anzahl von gleichzeitigen Anforderungen bestimmte Einschränkungen pro Datenbank. Für Anwendungen, die mehr Verbindungen benötigen, muss eine angemessene Reservierungsgröße gewählt werden, um die maximale Anzahl von erforderlichen Anforderungen verarbeiten zu können.
   * **Niedrige Latenz**. Für einige Anwendungen muss eine Reaktion der Datenbank in kürzester Zeit garantiert werden. Wenn eine bestimmte gespeicherte Prozedur im Rahmen eines größeren Kundenvorgangs aufgerufen wird, kann unter Umständen die Anforderung bestehen, dass die Rückgabe für diesen Aufruf in 99 Prozent der Fälle innerhalb von maximal 20 Millisekunden erfolgt. Diese Art von Anwendung profitiert von der Dienstebene Premium, da sichergestellt ist, dass genügend erforderliche Rechenleistung verfügbar ist.
 

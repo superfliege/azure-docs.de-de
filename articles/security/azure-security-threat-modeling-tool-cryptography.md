@@ -1,6 +1,6 @@
 ---
-title: "Kryptografie – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation"
-description: "Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren"
+title: Kryptografie – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 96e74371fe51a8050a91c86215e3eefab07bbed8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e5d487c4c793a49ce1d4ac17f6fcd672e09bb90
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Sicherheitsrahmen: Kryptografie | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | N/V  |
-| **Schritte** | <p>Für Produkte müssen genehmigte Zufallszahlengeneratoren verwendet werden. Pseudozufallsfunktionen, z.B. die C-Runtimefunktion „rand“, die .NET Framework-Klasse „System.Random“ oder Systemfunktionen wie „GetTickCount“, dürfen in Code dieser Art daher niemals genutzt werden. Die Verwendung des DUAL_EC_DRBG-Algorithmus (Dual Elliptic Curve Random Number Generator) ist untersagt.</p><ul><li>**CNG-** BCryptGenRandom (Die Verwendung des Flags BCRYPT_USE_SYSTEM_PREFERRED_RNG wird empfohlen, sofern der Aufrufer für die Ausführung nicht einen IRQL-Wert größer als Null verwendet [PASSIVE_LEVEL].)</li><li>**CAPI-** cryptGenRandom</li><li>**Win32/64-** RtlGenRandom (für neue Implementierungen sollte BCryptGenRandom oder CryptGenRandom verwendet werden) * rand_s * SystemPrng (für Kernelmodus)</li><li>**.NET-** RNGCryptoServiceProvider oder RNGCng</li><li>**Windows Store Apps-** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom oder .GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+)-** int SecRandomCopyBytes (SecRandomRef rnd, size_t count, uint8_t *Byte)</li><li>**Apple OS X (&lt;10.7)-** Verwenden Sie „/dev/random“ zum Abrufen von Zufallszahlen.</li><li>**Java (einschließlich Google Android Java-Code)-** java.security.SecureRandom-Klasse. Beachten Sie, dass Entwickler für Android 4.3 (Jelly Bean) die für Android empfohlene Problemumgehung verwenden und ihre Anwendungen aktualisieren müssen, um PRNG mit Entropie über „/dev/urandom“ oder „/dev/random“ explizit zu initialisieren.</li></ul>|
+| **Schritte** | <p>Für Produkte müssen genehmigte Zufallszahlengeneratoren verwendet werden. Pseudozufallsfunktionen, z.B. die C-Runtimefunktion „rand“, die .NET Framework-Klasse „System.Random“ oder Systemfunktionen wie „GetTickCount“, dürfen in Code dieser Art daher niemals genutzt werden. Die Verwendung des DUAL_EC_DRBG-Algorithmus (Dual Elliptic Curve Random Number Generator) ist untersagt.</p><ul><li>**CNG-** BCryptGenRandom (Die Verwendung des Flags BCRYPT_USE_SYSTEM_PREFERRED_RNG wird empfohlen, sofern der Aufrufer für die Ausführung nicht einen IRQL-Wert größer als Null verwendet [PASSIVE_LEVEL].)</li><li>**CAPI-** cryptGenRandom</li><li>**Win32/64-** RtlGenRandom (für neue Implementierungen sollte BCryptGenRandom oder CryptGenRandom verwendet werden) * rand_s * SystemPrng (für Kernelmodus)</li><li>**.NET-** RNGCryptoServiceProvider oder RNGCng</li><li>**Windows Store Apps-** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom oder .GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+)-** int SecRandomCopyBytes (SecRandomRef rnd, size_t count, uint8_t \*Byte)</li><li>**Apple OS X (<10.7)-** Verwenden Sie „/dev/random“ zum Abrufen von Zufallszahlen.</li><li>**Java (einschließlich Google Android Java-Code)-** java.security.SecureRandom-Klasse. Beachten Sie, dass Entwickler für Android 4.3 (Jelly Bean) die für Android empfohlene Problemumgehung verwenden und ihre Anwendungen aktualisieren müssen, um PRNG mit Entropie über „/dev/urandom“ oder „/dev/random“ explizit zu initialisieren.</li></ul>|
 
 ## <a id="stream-ciphers"></a>Vermeiden der Verwendung von symmetrischen Streamchiffren
 

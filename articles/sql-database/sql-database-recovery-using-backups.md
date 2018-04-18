@@ -2,18 +2,19 @@
 title: Wiederherstellen einer Azure SQL-Datenbank aus einer Sicherung | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zur Point-in-Time-Wiederherstellung, mit der Sie ein Rollback für eine Azure SQL-Datenbank durchführen können (bis zu 35 Tage).
 services: sql-database
-author: CarlRabeler
+author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 02/13/2018
-ms.author: carlrab
-ms.openlocfilehash: d2cc2e44c13750b654e2d6acf39d4f6a80cac98a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/04/2018
+ms.author: sashan
+ms.reviewer: carlrab
+ms.openlocfilehash: afe06d6e61d4b2b99a47f3d3348299c61863fec3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
 Azure SQL-Datenbank bietet diese Optionen für die Datenbankwiederherstellung mit [automatisierten Datenbanksicherungen](sql-database-automated-backups.md) und [Sicherungen mit langfristiger Aufbewahrungsdauer](sql-database-long-term-retention.md). Die Wiederherstellung aus einer Datenbanksicherung kann die folgenden Ziele haben:
@@ -30,7 +31,7 @@ Eine wiederhergestellte Datenbank ist unter folgenden Bedingungen mit zusätzlic
 - Wiederherstellung von P11–P15 bis S4–S12 oder P1–P6, wenn die maximale Datenbankgröße 500 GB überschreitet.
 - Wiederherstellung von P1–P6 in S4–S12, wenn die maximale Datenbankgröße 250 GB überschreitet.
 
-Die zusätzlichen Kosten entstehen, weil die maximale Größe der wiederhergestellten Datenbank größer als die Menge des für die Leistungsstufe einbezogenen Speichers ist und jeglicher über der enthalten Menge zusätzlich bereitgestellter Speicherplatz extra in Rechnung gestellt wird.  Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).  Wenn die tatsächlich verwendete Speichermenge kleiner als die enthaltene Speichermenge ist, können Sie diese zusätzlichen Kosten vermeiden, indem Sie die maximale Datenbankgröße auf die enthaltene Menge reduzieren. Weitere Informationen zu Datenbankspeichergrößen und zum Ändern der maximalen Größe der Datenbank finden Sie in „Ressourceneinschränkungen für Azure SQL-Datenbank“ im Abschnitt zu [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
+Die zusätzlichen Kosten entstehen, weil die maximale Größe der wiederhergestellten Datenbank größer als die Menge des für die Leistungsstufe einbezogenen Speichers ist und jeglicher über der enthalten Menge zusätzlich bereitgestellter Speicherplatz extra in Rechnung gestellt wird.  Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).  Wenn die tatsächlich verwendete Speichermenge kleiner als die enthaltene Speichermenge ist, können Sie diese zusätzlichen Kosten vermeiden, indem Sie die maximale Datenbankgröße auf die enthaltene Menge reduzieren. Weitere Informationen zu Datenbankspeichergrößen und zum Ändern der maximalen Größe der Datenbank finden Sie in den Abschnitten zu [DTU-basierten Ressourceneinschränkungen für Einzeldatenbanken](sql-database-dtu-resource-limits.md#single-database-storage-sizes-and-performance-levels) und [V-Kern-basierten Ressourceneinschränkungen für Einzeldatenbanken](sql-database-vcore-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
 
 > [!NOTE]
 > [Automatische Datenbanksicherungen](sql-database-automated-backups.md) werden verwendet, wenn Sie eine [Datenbankkopie](sql-database-copy.md) erstellen. 
@@ -117,7 +118,7 @@ Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn
 Point-in-Time-Wiederherstellung für geosekundäre Datenbanken wird derzeit nicht unterstützt. Point-in-Time-Wiederherstellung kann nur für eine primäre Datenbank erfolgen. Ausführliche Informationen zum Verwenden der Geowiederherstellung nach einem Ausfall finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
-> Die Wiederherstellung aus Sicherungen ist die elementarste Notfallwiederherstellungslösung, die in SQL-Datenbank verfügbar ist. Sie weist den längsten Recovery Point Objective-Wert (RPO) und die längste geschätzte Wiederherstellungszeit (ERT) auf. Für Lösungen mit Basic-Datenbanken stellt die Geowiederherstellung oftmals eine vernünftige Lösung zur Datenbankwiederherstellung mit einer ERT von 12 Stunden dar. Für Lösungen mit größeren Standard- oder Premium-Datenbanken, die kürzere Wiederherstellungszeiten erfordern, sollten Sie die Verwendung von [aktiver Georeplikation](sql-database-geo-replication-overview.md) in Erwägung ziehen. Die aktive Georeplikation bietet eine niedrigere RPO und ERT, da sie nur das Einleiten eines Failovers auf eine kontinuierlich replizierte sekundäre Datenbank erfordert. Weitere Informationen zur Optionen für Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+> Die Wiederherstellung aus Sicherungen ist die elementarste Notfallwiederherstellungslösung, die in SQL-Datenbank verfügbar ist. Sie weist den längsten Recovery Point Objective-Wert (RPO) und die längste geschätzte Wiederherstellungszeit (ERT) auf. Für Lösungen mit kleinen Datenbanken (z.B. auf der Basic-Dienstebene oder kleine Mandantendatenbanken in Pools für elastische Datenbanken) stellt die Georeplikation häufig eine sinnvolle Lösung für die Notfallwiederherstellung mit einer ERT von 12 Stunden dar. Für Lösungen mit großen Datenbanken, die kürzere Wiederherstellungszeiten erfordern, sollten Sie die Verwendung von [Failovergruppen und aktiver Georeplikation](sql-database-geo-replication-overview.md) in Erwägung ziehen. Die aktive Georeplikation bietet eine niedrigere RPO und ERT, da sie nur das Einleiten eines Failovers auf eine kontinuierlich replizierte sekundäre Datenbank erfordert. Weitere Informationen zur Optionen für Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 > 
 
 ### <a name="azure-portal"></a>Azure-Portal
@@ -149,6 +150,5 @@ Automatische Sicherungen schützen Ihre Datenbanken vor Benutzer- und Anwendungs
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 * Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
-* Weitere Informationen zur langfristigen Aufbewahrung von Sicherungen finden Sie im Artikel [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
-* Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der langfristigen Aufbewahrung automatisierter Sicherungen in einem Azure Recovery Services-Tresor mit dem Azure-Portal finden Sie im Artikel über das [Konfigurieren und Verwenden der langfristigen Sicherungsaufbewahrung](sql-database-long-term-backup-retention-configure.md). 
+* Weitere Informationen zur langfristigen Aufbewahrung finden Sie im Artikel [Langfristiges Aufbewahren](sql-database-long-term-retention.md).
 * Informationen zu schnelleren Wiederherstellungsoptionen finden Sie unter [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md).  

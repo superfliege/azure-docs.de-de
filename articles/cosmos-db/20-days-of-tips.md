@@ -1,23 +1,23 @@
 ---
 title: 20 Tage Azure Cosmos DB-Tipps | Microsoft-Dokumentation
-description: "Hier finden Sie alle Tipps aus der Serie „20 days of Azure Cosmos DB“ (20 Tage Azure Cosmos DB) von Simona Cotin an einem Ort."
+description: Hier finden Sie alle Tipps aus der Serie „20 days of Azure Cosmos DB“ (20 Tage Azure Cosmos DB) von Simona Cotin an einem Ort.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: cda
-ms.openlocfilehash: 976be65fc4668a911bfa93ef87a7f14686a79f31
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 79ef4a8c22143ed77535e1190b5f7e8eb5d17bb0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="20-days-of-azure-cosmos-db-tips"></a>20 Tage Azure Cosmos DB-Tipps
 
@@ -37,7 +37,7 @@ Was ist #cosmosdb? Die beste NoSQL-Datenbank, die Sie nicht verwenden! [https://
 
 ## <a name="tip-2-seeing-is-believing"></a>Tipp 2: Sehen heißt glauben
 
-Sehen heißt glauben. Verwenden Sie die grafische #cosmosDB-Benutzeroberfläche im Azure-Portal, um Ihre DB zu überprüfen und abzufragen ([https://aka.ms/jprf75](https://aka.ms/jprf75)).
+Sehen heißt glauben. Verwenden Sie die grafische #cosmosDB-Benutzeroberfläche im Azure-Portal, um Ihre DB zu überprüfen und abzufragen: [https://aka.ms/jprf75](https://aka.ms/jprf75).
 
 > [!VIDEO https://www.youtube.com/embed/4aWL5p_SJDE]
 
@@ -53,7 +53,7 @@ Tipp 3: Muss die App an jedem beliebigen Ort auf der ganzen Welt superschnell se
 
 ## <a name="tip-4-gremlin-graph-support"></a>Tipp 4: Gremlin Graph-Unterstützung
 
-Tipp 4: Mögen Sie Gremlins? #cosmosdb liebt Gremlin auch! Nutzen Sie das Azure-Portal zum Anzeigen, Abfragen und Bearbeiten Ihrer Graph-DB: [https://aka.ms/tfmi37](https://aka.ms/tfmi37)  
+Tipp 4: Mögen Sie Gremlins? #cosmosdb liebt Gremlin auch! Nutzen Sie das Azure-Portal zum Anzeigen, Abfragen und Bearbeiten Ihrer Graph-DB: [https://aka.ms/tfmi37](https://aka.ms/tfmi37).  
 
 > [!VIDEO https://www.youtube.com/embed/oPUTZbiXffk]
 
@@ -69,7 +69,7 @@ Tipp 5: Möchten Sie Azure #CosmosDB kostenlos ausprobieren? Keine Registrierung
 
 ## <a name="tip-6-migrate-your-mean-app"></a>Tipp 6: Migrieren Ihrer MEAN-App
 
-Tipp 6: Sie nutzen MEAN? Erfahren Sie, wie Sie Ihre App ganz einfach zu Azure #cosmosDB migrieren: https://aka.ms/gfh6i5 Vollständiges Video unter: https://aka.ms/aoojih  
+Tipp 6: Sie nutzen MEAN? Erfahren Sie, wie Sie Ihre App ganz einfach zu Azure #cosmosDB migrieren: https://aka.ms/gfh6i5 Vollständiges Video: https://aka.ms/aoojih  
 
 > [!VIDEO https://www.youtube.com/embed/vlAUxc3d2ak]
 
@@ -77,7 +77,7 @@ Tipp 6: Sie nutzen MEAN? Erfahren Sie, wie Sie Ihre App ganz einfach zu Azure #c
 
 ## <a name="tip-8-build-a-nodejs-app-by-using-sql-api"></a>Tipp 8: Erstellen einer Node.js-App mit SQL-API
 
-Tipp 8: Erstellen Sie eine @nodejs-App mithilfe der SQL-API und mit Azure #CosmosDB. Weitere Informationen finden Sie auf der Dokumentationsseite: [https://aka.ms/Bd77a8](https://aka.ms/Bd77a8).  
+Tipp 8: Erstellen Sie eine @nodejs-App mithilfe der SQL-API und mit Azure #CosmosDB. Weitere Informationen finden Sie auf der Dok.-Seite [https://aka.ms/Bd77a8](https://aka.ms/Bd77a8).  
 
 > [!VIDEO https://www.youtube.com/embed/_gd9ZY-rHtM]
 
@@ -85,7 +85,7 @@ Tipp 8: Erstellen Sie eine @nodejs-App mithilfe der SQL-API und mit Azure #Cosmo
 
 ## <a name="tip-9-query-using-mongodb-in-nodejs"></a>Tipp 9: Abfragen mithilfe von MongoDB in Node.js
 
-Tipp 9: Fragen Sie Azure #CosmosDB mit der MongoDB-API in Node.js ab. Weitere Informationen finden Sie auf der Dokumentationsseite: [https://aka.ms/Dert0r](https://aka.ms/Dert0r).  
+Tipp 9: Fragen Sie Azure #CosmosDB mit der MongoDB-API in Node.js ab. Weitere Informationen finden Sie auf der Dok.-Seite [https://aka.ms/Dert0r](https://aka.ms/Dert0r).  
 
 ![Abfragen mit MongoDB](./media/20-days-of-tips/cosmos-db-tip-9-mongodb-query.png)
 
@@ -93,7 +93,7 @@ Tipp 9: Fragen Sie Azure #CosmosDB mit der MongoDB-API in Node.js ab. Weitere In
 
 ## <a name="tip-10-copy-mongodb-data-using-studio-3t"></a>Tipp 10: Kopieren von MongoDB-Daten mithilfe von Studio 3T
 
-Tipp 10: Kopieren Sie Ihre MongoDB-Daten mithilfe von Studio 3T (MongoChef) in Azure Cosmos DB. Weitere Informationen finden Sie auf der Dokumentationsseite: [https://aka.ms/apzhww](https://aka.ms/apzhww)
+Tipp 10: Kopieren Sie Ihre MongoDB-Daten mithilfe von Studio 3T (MongoChef) in Azure Cosmos DB. Dokumentation unter [https://aka.ms/apzhww](https://aka.ms/apzhww)
 
 > [!VIDEO https://www.youtube.com/embed/Qa4YpShYEcI]
 
@@ -109,7 +109,7 @@ Den entsprechenden Artikel finden Sie unter: [Erstellen einer MongoDB-App mit Re
 
 ## <a name="tip-12-go-serverless"></a>Tipp 12: Serverlos arbeiten
 
-Tipp 12: Arbeiten Sie mit Azure #CosmosDB und @AzureFunctions ohne Server! Weitere Informationen finden Sie auf der Dokumentationsseite: [https://aka.ms/Pmic1j](https://aka.ms/Pmic1j).
+Tipp 12: Arbeiten Sie mit Azure #CosmosDB und @AzureFunctions ohne Server! Vollständige Dokumentation unter [https://aka.ms/Pmic1j](https://aka.ms/Pmic1j)
 
 > [!VIDEO https://www.youtube.com/embed/U--3mfisNCs]
 
@@ -125,7 +125,7 @@ Den entsprechenden Artikel finden Sie unter: [Erstellen einer MongoDB-App mit An
 
 ## <a name="tip-14-use-cases"></a>Tipp 14: Anwendungsfälle
 
-Tipp 14: Neugierig geworden auf häufige Anwendungsfälle für Azure #CosmosDB? Schauen Sie sich [https://aka.ms/Ihpf00](https://aka.ms/Ihpf00) an, und erfahren Sie mehr über IoT, Spiele und Apps für soziale Netzwerke.
+Tipp 14: Neugierig geworden auf häufige Anwendungsfälle für Azure #CosmosDB? Sehen Sie sich [https://aka.ms/Ihpf00](https://aka.ms/Ihpf00) an, und erfahren Sie mehr über IoT, Spiele und Apps für soziale Netzwerke.
 
 Den entsprechenden Artikel finden Sie unter: [Häufige Anwendungsfälle für Azure Cosmos DB](https://aka.ms/Ihpf00).
 
@@ -133,7 +133,7 @@ Den entsprechenden Artikel finden Sie unter: [Häufige Anwendungsfälle für Azu
 
 ## <a name="tip-15-vs-code-integration"></a>Tipp 15: Integration von VS Code
 
-Tipp 15: Erstellen Sie ein neues Azure #CosmosDB-Konto, ohne @code zu verlassen. Installieren Sie die Erweiterung unter [https://aka.ms/Wy547u](https://aka.ms/Wy547u). 
+Tipp 15: Erstellen Sie ein neues Azure #CosmosDB-Konto, ohne @code zu verlassen. Installieren der Erweiterung von [https://aka.ms/Wy547u](https://aka.ms/Wy547u) 
 
 > [!VIDEO https://www.youtube.com/embed/w8HyW8AHHZQ]
 
@@ -142,7 +142,7 @@ Tipp 15: Erstellen Sie ein neues Azure #CosmosDB-Konto, ohne @code zu verlassen.
 
 ## <a name="tip-16-functions-and-twilio-demo"></a>Tipp 16: Demo zu Functions und Twilio
 
-Tipp 16: Großartige Demo! Integrieren Sie Azure #cosmosDB, Funktionen und @twilio, um bei jeder Datenbankänderung eine SMS zu senden. Informationen dazu finden Sie in der Dokumentation unter [https://aka.ms/Kjkc2d](https://aka.ms/Kjkc2d). 
+Tipp 16: Großartige Demo! Integrieren Sie Azure #cosmosDB, Funktionen und @twilio, um bei jeder Datenbankänderung eine SMS zu senden. Siehe Dokumentation unter [https://aka.ms/Kjkc2d](https://aka.ms/Kjkc2d) 
 
 > [!VIDEO https://www.youtube.com/embed/3Q7WffTeaKY]
 
@@ -159,7 +159,7 @@ Blog: [„Using Mongoose Discriminators to Store Multiple Entities in a Single C
 
 ## <a name="tip-18-request-units"></a>Tipp 18: Anforderungseinheiten
 
-Tipp 18: Erfahren Sie, was Anforderungseinheiten (Request Units, RU) sind, und wie sie in Azure Cosmos DB konfiguriert werden. Weitere Informationen dazu finden Sie in der Dokumentation unter [https://aka.ms/Kt2nbn](https://aka.ms/Kt2nbn). 
+Tipp 18: Erfahren Sie, was Anforderungseinheiten (Request Units, RU) sind, und wie sie in Azure Cosmos DB konfiguriert werden. Weitere Dokumentation unter [https://aka.ms/Kt2nbn](https://aka.ms/Kt2nbn) 
 
 Artikel: [Anforderungseinheiten in Azure Cosmos DB](https://aka.ms/Kt2nbn)
 
@@ -167,7 +167,7 @@ Artikel: [Anforderungseinheiten in Azure Cosmos DB](https://aka.ms/Kt2nbn)
 
 ## <a name="tip-19-partition-partition-partition"></a>Tipp 19: Partition! Partition! Partition! 
 
-Tipp 19: Partition! Partition! Partition! Warum und wie in Azure Cosmos DB. Weitere Informationen finden Sie in der Dokumentation unter [https://aka.ms/Ts5pon](https://aka.ms/Ts5pon).  
+Tipp 19: Partition! Partition! Partition! Warum und wie in Azure Cosmos DB. Dokumentation unter [https://aka.ms/Ts5pon](https://aka.ms/Ts5pon)  
 
 > [!VIDEO https://www.youtube.com/embed/I_tVk3hKvSI]
 

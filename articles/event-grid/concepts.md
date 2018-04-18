@@ -1,18 +1,18 @@
 ---
-title: "Azure Event Grid – Begriffe"
-description: "In diesem Artikel werden Azure Event Grid und die zugehörigen Begriffe beschrieben. Zudem werden verschiedene Schlüsselkomponenten von Event Grid definiert."
+title: Azure Event Grid – Begriffe
+description: In diesem Artikel werden Azure Event Grid und die zugehörigen Begriffe beschrieben. Zudem werden verschiedene Schlüsselkomponenten von Event Grid definiert.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/04/2018
 ms.author: babanisa
-ms.openlocfilehash: 4fd44387ac1c3dad9f0194f1b2c97d6350f9b15d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e55127e60470f8f95235893a14113b80e8d6565b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Begriffe in Azure Event Grid
 
@@ -32,9 +32,11 @@ Herausgeber kategorisieren Ereignisse in Themen. Dieses Thema enthält einen End
 
 Systemthemen sind integrierte Themen, die von Azure-Diensten bereitgestellt werden. Benutzerdefinierte Themen sind Anwendungs- und Drittanbieterthemen.
 
+Beim Entwerfen Ihrer Anwendung erstellen Sie ein benutzerdefiniertes Thema für jede Kategorie von verwandten Ereignissen. Denken Sie beispielsweise an eine Anwendung, die Ereignisse im Zusammenhang mit der Änderung von Benutzerkonten und der Verarbeitung von Bestellungen sendet. Es ist unwahrscheinlich, dass ein Ereignishandler beide Ereigniskategorien benötigt. Erstellen Sie zwei benutzerdefinierte Themen, und lassen Sie Ereignishandler das jeweils relevante Thema abonnieren. Wenn der Ereignishandler das benutzerdefinierte Thema abonniert, kann er nach Ereignistyp filtern.
+
 ## <a name="event-subscriptions"></a>Ereignisabonnements
 
-Ein Abonnement gibt in Event Grid an, welche Ereignisse zu einem Thema ein Abonnent erhalten möchte.  Ein Abonnement enthält auch Informationen darüber, wie Ereignisse an den Abonnenten übermittelt werden sollen.
+Ein Abonnement gibt in Event Grid an, welche Ereignisse zu einem Thema ein Abonnent erhalten möchte. Ein Abonnement enthält auch Informationen darüber, wie Ereignisse an den Abonnenten übermittelt werden sollen.
 
 ## <a name="event-handlers"></a>Ereignishandler
 

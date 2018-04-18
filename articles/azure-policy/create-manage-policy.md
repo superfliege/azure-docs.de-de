@@ -1,8 +1,8 @@
 ---
-title: "Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung in Organisationen mithilfe von Azure Policy | Microsoft-Dokumentation"
-description: "Verwenden Sie Azure Policy, um die Einhaltung von Standards, gesetzlichen Vorschriften und Auditanforderungen durchzusetzen, Kosten zu steuern, für konsistente Sicherheit und Leistung zu sorgen und unternehmensweite Entwurfsprinzipien vorzugeben."
+title: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung in Organisationen mithilfe von Azure Policy | Microsoft-Dokumentation
+description: Verwenden Sie Azure Policy, um die Einhaltung von Standards, gesetzlichen Vorschriften und Auditanforderungen durchzusetzen, Kosten zu steuern, für konsistente Sicherheit und Leistung zu sorgen und unternehmensweite Entwurfsprinzipien vorzugeben.
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/18/2018

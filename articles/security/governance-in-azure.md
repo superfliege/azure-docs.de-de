@@ -1,12 +1,12 @@
 ---
 title: Governance in Azure | Microsoft-Dokumentation
-description: "Enthält Informationen zu cloudbasierten Computingdiensten mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen."
+description: Enthält Informationen zu cloudbasierten Computingdiensten mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 875b78f6af330aea3333b045ee72e9632e9aa8a6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="governance-in-azure"></a>Governance (Kontrolle) in Azure
 
@@ -410,33 +410,33 @@ Azure Security Center überwacht die folgenden Azure-Ressourcen:
 
 - Partnerlösungen, die in Ihr Azure-Abonnement integriert sind, z.B. die Firewall einer Webanwendung auf virtuellen Computern und in einer [App Service-Umgebung](https://docs.microsoft.com/azure/app-service/app-service-app-service-environments-readme).
 
-### <a name="operations-management-suite"></a>Operations Management Suite
+### <a name="log-analytics"></a>Log Analytics
 
-Das Informationssicherheits- und [Governance-Programm](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) des OMS-Softwareentwicklungs- und Service-Teams unterstützt die geschäftlichen Anforderungen und entspricht Gesetzen und Vorschriften, wie unter [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) und [Microsoft Trust Center Compliance](https://www.microsoft.com/TrustCenter/Compliance/default.aspx) beschrieben. Außerdem wird beschrieben, wie OMS Sicherheitsanforderungen einrichtet, Sicherheitskontrollen identifiziert und Risiken verwaltet und überwacht. Richtlinien, Standards, Verfahren und Leitlinien werden jährlich überprüft.
+Das Informationssicherheits- und [Governance-Programm](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) des Softwareentwicklungs- und Serviceteams für Log Analytics unterstützt die geschäftlichen Anforderungen und entspricht Gesetzen und Vorschriften, wie unter [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) und [Microsoft Trust Center Compliance](https://www.microsoft.com/TrustCenter/Compliance/default.aspx) beschrieben. Außerdem wird beschrieben, wie Log Analytics Sicherheitsanforderungen einrichtet, Sicherheitskontrollen identifiziert und Risiken verwaltet und überwacht. Richtlinien, Standards, Verfahren und Leitlinien werden jährlich überprüft.
 
-Jedes Mitglied des OMS-Entwicklungsteams erhält eine formale Anwendungssicherheitsschulung. Intern verwenden wir ein Versionskontrollsystem für die Softwareentwicklung. Jedes Softwareprojekt wird durch das Versionskontrollsystem geschützt.
+Jedes Mitglied des Log Analytics-Entwicklungsteams erhält eine formale Anwendungssicherheitsschulung. Intern verwenden wir ein Versionskontrollsystem für die Softwareentwicklung. Jedes Softwareprojekt wird durch das Versionskontrollsystem geschützt.
 
-Microsoft hat ein Sicherheits- und Compliance-Team, das alle Microsoft-Dienste überwacht und bewertet. In diesem Team sind Information Security Officer, die nicht mit den Entwicklungsabteilungen verbunden sind, die OMS entwickeln. Die Sicherheitsbeauftragten verfügen über eine eigene Managementkette und führen unabhängige Beurteilungen von Produkten und Dienstleistungen durch, um Sicherheit und Compliance zu gewährleisten.
+Microsoft hat ein Sicherheits- und Compliance-Team, das alle Microsoft-Dienste überwacht und bewertet. Dieses Team besteht aus Informationssicherheitsbeauftragten, die nicht mit den Entwicklungsabteilungen, die Log Analytics entwickeln, verbunden sind. Die Sicherheitsbeauftragten verfügen über eine eigene Managementkette und führen unabhängige Beurteilungen von Produkten und Dienstleistungen durch, um Sicherheit und Compliance zu gewährleisten.
 
-Bei Operations Management Suite (OMS) handelt es sich um eine Sammlung von Verwaltungsdiensten, die von Grund auf für die Cloud konzipiert wurden. Anstatt lokale Ressourcen bereitzustellen und zu verwalten, werden OMS-Komponenten vollständig in Azure gehostet. Der Konfigurationsaufwand ist minimal, und die Lösung ist innerhalb weniger Minuten einsatzbereit.
+Azure bietet eine Sammlung von Verwaltungsdiensten, die von Grund auf für die Cloud konzipiert wurden. Anstatt lokale Ressourcen bereitzustellen und zu verwalten, werden diese Komponenten vollständig in Azure gehostet. Der Konfigurationsaufwand ist minimal, und die Lösung ist innerhalb weniger Minuten einsatzbereit.
 
 ![Operations Management Suite](./media/governance-in-azure/security-governance-in-azure-fig8.png)
 
-Die Tatsache, dass OMS-Dienste in der Cloud ausgeführt werden, bedeutet nicht, dass sie nicht auch zur effektiven Verwaltung Ihrer lokalen Umgebung genutzt werden können.
+Die Tatsache, dass Log Analytics-Dienste in der Cloud ausgeführt werden, bedeutet nicht, dass sie nicht auch zur effektiven Verwaltung Ihrer lokalen Umgebung genutzt werden können.
 
 Platzieren Sie einfach einen Agent auf einem beliebigen Windows- oder Linux-Computer in Ihrem Rechenzentrum. Dieser sendet dann Daten an Log Analytics, wo sie zusammen mit all den anderen Daten aus cloudbasierten oder lokalen Diensten analysiert werden. Verwenden Sie Azure Backup und Azure Site Recovery, um die Cloud für die Sicherung und Hochverfügbarkeit lokaler Ressourcen zu nutzen.
 
 Runbooks in der Cloud können üblicherweise nicht auf lokale Ressourcen zugreifen. Sie können jedoch ebenfalls einen Agent auf Computern installieren, um Runbooks in Ihrem Rechenzentrum zu hosten. Geben Sie beim Starten eines Runbooks einfach an, ob es in der Cloud oder für einen lokalen Worker ausgeführt werden soll.
 
-Die Kernfunktionen von OMS werden durch eine Reihe von Diensten bereitgestellt, die in Azure ausgeführt werden. Jeder Dienst bietet eine bestimmte Verwaltungsfunktion, und Sie können Dienste miteinander kombinieren, um verschiedene Verwaltungsszenarien zu bewältigen.
+Die Kernfunktionen von Log Analytics werden durch eine Reihe von Diensten bereitgestellt, die in Azure ausgeführt werden. Jeder Dienst bietet eine bestimmte Verwaltungsfunktion, und Sie können Dienste miteinander kombinieren, um verschiedene Verwaltungsszenarien zu bewältigen.
 
 ![Operations Management Suite](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
 
-Azure Operations Manager erweitert die Funktionalität durch die Bereitstellung von Lösungen für die Verwaltung. [Verwaltungslösungen](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) sind vorgefertigte Logiksätze zur Implementierung eines Verwaltungsszenarios unter Verwendung mindestens eines OMS-Diensts.
+Azure Operations Manager erweitert die Funktionalität durch die Bereitstellung von Lösungen für die Verwaltung. [Verwaltungslösungen](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) sind vorgefertigte Logiksätze zur Implementierung eines Verwaltungsszenarios unter Verwendung mindestens eines Verwaltungsdiensts.
 
 ![Verwaltung von Azure-Vorgang](./media/governance-in-azure/security-governance-in-azure-fig10.png)
 
-Von Microsoft und von Partnern werden verschiedene Lösungen angeboten, die Sie problemlos Ihrem Azure-Abonnement hinzufügen und dadurch den Nutzen Ihrer OMS-Investition erhöhen können.
+Von Microsoft und von Partnern werden verschiedene Lösungen angeboten, die Sie problemlos Ihrem Azure-Abonnement hinzufügen und dadurch den Nutzen Ihrer Log Analytics-Investition erhöhen können.
 
 Partner können eigene Lösungen zur Unterstützung ihrer Anwendungen und Dienste erstellen und sie Benutzern über den Azure Marketplace oder über Schnellstartvorlagen zur Verfügung stellen.
 
@@ -455,7 +455,7 @@ Warnungen sind für verschiedene Dienste verfügbar, z.B. die folgenden:
 >[!Note]
 > Informationen dazu finden Sie unter [Einrichten von Warnungen in Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) und [Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability).
 
-- Log Analytics (Operations Management Suite): Ermöglicht die Weiterleitung von Aktivitäts- und Diagnoseprotokollen an Log Analytics. Die Operations Management Suite ermöglicht Metrik-, Protokollwarnungen und andere Typen von Warnungen.
+- Log Analytics: Ermöglicht die Weiterleitung von Aktivitäts- und Diagnoseprotokollen an Log Analytics und lässt Metrik- und Protokollwarnungen sowie andere Typen von Warnungen zu.
 
 >[!Note]
 > Weitere Informationen finden Sie in [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts) unter „Warnungen“.
