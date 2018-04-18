@@ -2,17 +2,16 @@
 title: Suchen nach einer Adresse mit dem Suchdienst von Azure Location Based Services (Vorschau) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit dem Suchdienst von Azure Location Based Services (Vorschau) nach einer Adresse suchen.
 services: location-based-services
-keywords: "Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen."
 author: kgremban
 ms.author: kgremban
 ms.date: 11/29/2017
 ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: dd8026c55d71f6e421b976d8e7ae12f1cfd679a1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8b886607fe0915396a659593cd5910a271fca93
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Suchen nach einer Adresse mit dem Suchdienst von Azure Location Based Services (Vorschau)
 Bei dem Suchdienst handelt es sich um eine für Entwickler konzipierte Gruppe von RESTful-APIs für die Suche nach Adressen, Orten, interessanten Orten, Brancheneinträgen und anderen geografischen Informationen. Der Suchdienst weist einer bestimmten Adresse, einer Querstraße, einem geografischen Objekt oder einem interessanten Ort (POI) einen Breiten- und Längengrad zu. Die von den APIs des Suchdiensts zurückgegebenen Werte für den Breiten- und Längengrad können als Parameter in anderen Azure Location Based Services verwendet werden, z.B. in den APIs für Routen oder den Datenverkehrsfluss.
@@ -44,7 +43,7 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
     | Anfrage-URL | https://atlas.microsoft.com/search/fuzzy/json? |
     | Autorisierung | No Auth |
 
-    Das Attribut **json** im URL-Pfad legt das Antwortformat fest. In diesem Artikel wird zur einfachen Handhabung und besseren Lesbarkeit durchgängig JSON verwendet. Sie finden die verfügbaren Antwortformate in der Definition für **Get Search Fuzzy** der [Referenz zur Location Based Services Functional API] (https://docs.microsoft.com/rest/api/location-based-services/search/getsearchfuzzy).
+    Das Attribut **json** im URL-Pfad legt das Antwortformat fest. In diesem Artikel wird zur einfachen Handhabung und besseren Lesbarkeit durchgängig JSON verwendet. Sie finden die verfügbaren Antwortformate in der Definition für **Get Search Fuzzy** der [Referenz zur funktionalen API von Location Based Services] (https://docs.microsoft.com/rest/api/location-based-services/search/getsearchfuzzy).
 
 3. Klicken Sie auf **Params** (Parameter), und geben Sie die folgenden Schlüssel-Wert-Paare zur Verwendung als Abfrage- oder Pfadparameter in der Anforderungs-URL ein:
 

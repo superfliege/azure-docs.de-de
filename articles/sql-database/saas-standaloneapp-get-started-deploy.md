@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: e30f096a9f02214839550c2dc143ab665e1cd85c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 86a5bc31639cbbcdac1468f3bc2e35a547068882
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Untersuchen einer eigenständigen SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet
 
@@ -73,16 +73,16 @@ In der App werden Veranstaltungsorte vorgestellt.  Die Veranstaltungsorte sind d
 
 1. Öffnen Sie die Ereignisseite für jeden der drei Mandanten in eigenen Browserregisterkarten:
 
-    - http://events.contosoconcerthall.&lt;Benutzer&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;Benutzer&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;Benutzer&gt;.trafficmanager.net
+    - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
+    - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
+    - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
 
     (Ersetzen Sie in jeder URL &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.)
 
    ![Ereignisse](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Zum Steuern der Verteilung eingehender Anforderungen nutzt die App [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Jede mandantenspezifische App-Instanz enthält den Namen des Mandanten als Teil des Domänennamens in der URL. Alle Mandanten-URLs enthalten Ihren spezifischen Wert für **Benutzer**. Die URLs haben das folgende Format:
-- http://events.&lt;Veranstaltungsort&gt;.&lt;Benutzer&gt;.trafficmanager.net
+- http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
 
 Der **Speicherort** der Datenbank jedes Mandanten ist in den App-Einstellungen der zugehörigen bereitgestellten App enthalten.
 

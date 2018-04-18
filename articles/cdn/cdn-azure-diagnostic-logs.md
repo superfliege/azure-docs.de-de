@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: f9711f9cfaab1ef22da220a773689c95b1103970
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9c61fe7c62f0718d390509d3b0ff3327bd193f43
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 
@@ -26,7 +26,7 @@ Mit Azure-Diagnoseprotokollen können Sie Daten der Basisanalyse anzeigen und di
 
  - Azure-Speicherkonto
  - Azure Event Hubs
- - [OMS Log Analytics-Repository](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
+ - [Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
 Dieses Feature ist für alle CDN-Endpunkte verfügbar, die zu CDN-Profilen von Verizon (Standard und Premium) und Akamai (Standard) gehören. 
 
@@ -34,7 +34,7 @@ Mit Azure-Diagnoseprotokollen können Sie Metriken zur grundlegenden Nutzung von
 
 - Exportieren von Daten in Blobspeicher, Exportieren in eine CSV-Datei und Generieren von Diagrammen in Excel
 - Exportieren von Daten nach Event Hubs und Korrelieren mit Daten von anderen Azure-Diensten
-- Exportieren von Daten in Log Analytics und Anzeigen von Daten in Ihrem eigenen OMS-Arbeitsbereich
+- Exportieren von Daten in Log Analytics und Anzeigen von Daten in Ihrem eigenen Log Analytics-Arbeitsbereich
 
 In der folgenden Abbildung ist eine typische Datenansicht der CDN-Basisanalyse dargestellt:
 
@@ -68,9 +68,9 @@ Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an. Wenn Sie CDN fü
 
 *Abbildung 2: Protokollierung mit Azure Storage*
 
-### <a name="logging-with-oms-log-analytics"></a>Protokollierung mit OMS Log Analytics
+### <a name="logging-with-log-analytics"></a>Protokollierung mit Log Analytics
 
-Führen Sie diese Schritte aus, um OMS Log Analytics zum Speichern der Protokolle zu verwenden:
+Führen Sie die folgenden Schritte aus, um Log Analytics zum Speichern der Protokolle zu verwenden:
 
 1. Aktivieren Sie auf dem Blatt **Diagnoseprotokolle** die Option **An Log Analytics senden**. 
 
@@ -84,7 +84,7 @@ Führen Sie diese Schritte aus, um OMS Log Analytics zum Speichern der Protokoll
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. Geben Sie einen Namen für den neuen OMS-Arbeitsbereich ein. Ein OMS-Arbeitsbereichsname muss eindeutig sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. Leerzeichen und Unterstriche sind nicht zulässig. 
+4. Geben Sie einen neuen Namen für den Log Analytics-Arbeitsbereich ein. Ein Log Analytics-Arbeitsbereichsname muss eindeutig sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. Leerzeichen und Unterstriche sind nicht zulässig. 
 5. Wählen Sie als Nächstes ein vorhandenes Abonnement, eine Ressourcengruppe (neu oder vorhanden), einen Standort und einen Tarif aus. Sie können diese Konfiguration auch an Ihr Dashboard anheften. Klicken Sie auf **OK**, um die Konfiguration abzuschließen.
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/08_Workspace-resource.png)
@@ -97,11 +97,11 @@ Führen Sie diese Schritte aus, um OMS Log Analytics zum Speichern der Protokoll
 
 6. Klicken Sie auf **Speichern**.
 
-7. Um Ihren neuen OMS-Arbeitsbereich anzuzeigen, navigieren Sie zu Ihrem Dashboard im Azure-Portal und klicken auf den Namen Ihres Log Analytics-Arbeitsbereichs. Klicken Sie auf die Kachel „OMS-Portal“, um Ihren Arbeitsbereich im OMS-Repository anzuzeigen. 
+7. Um Ihren neuen Log Analytics-Arbeitsbereich anzuzeigen, navigieren Sie zu Ihrem Dashboard im Azure-Portal und klicken auf den Namen Ihres Log Analytics-Arbeitsbereichs. Klicken Sie auf die Kachel „OMS-Portal“, um Ihren Log Analytics-Arbeitsbereich anzuzeigen. 
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
 
-    Ihr OMS-Repository ist jetzt zum Protokollieren von Daten bereit. Zum Nutzen dieser Daten müssen Sie eine [OMS-Lösung](#consuming-oms-log-analytics-data) verwenden, die später in diesem Artikel behandelt wird.
+    Ihr Log Analytics-Arbeitsbereich ist nun bereit zur Datenprotokollierung. Zum Nutzen dieser Daten müssen Sie eine [Log Analytics-Lösung](#consuming-diagnostics-logs-from-a-log-analytics-workspace) verwenden, die später in diesem Artikel behandelt wird.
 
 Weitere Informationen zu Protokolldatenverzögerungen finden Sie unter [Protokolldatenverzögerungen](#log-data-delays).
 
@@ -123,7 +123,7 @@ Verwenden Sie den folgenden Befehl, um Diagnoseprotokolle in einem Speicherkonto
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
 ```
-Verwenden Sie diesen Befehl, um Diagnoseprotokolle in einem OMS-Arbeitsbereich zu aktivieren:
+Verwenden Sie den folgenden Befehl, um Diagnoseprotokolle in einem Log Analytics-Arbeitsbereich zu aktivieren:
 
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
@@ -179,16 +179,16 @@ Sie können das Tool wie folgt verwenden:
 4.  Führen Sie das Tool aus.
 5.  In der sich ergebenden CSV-Datei werden die Analysedaten in einer einfachen flachen Hierarchie angezeigt.
 
-## <a name="consuming-diagnostics-logs-from-an-oms-log-analytics-repository"></a>Nutzen von Diagnoseprotokollen aus einem OMS Log Analytics-Repository
-Log Analytics ist ein Dienst in Operations Management Suite (OMS), der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen. 
+## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Nutzen von Diagnoseprotokollen aus einem Log Analytics-Arbeitsbereich
+Log Analytics ist ein Dienst in Azure, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen. 
 
-Für die Verwendung von Log Analytics müssen Sie die [Protokollierung im Azure OMS Log Analytics-Repository aktivieren](#enable-logging-with-azure-storage). Dies wurde weiter oben in diesem Artikel beschrieben.
+Für die Verwendung von Log Analytics müssen Sie die [Protokollierung im Azure Log Analytics-Arbeitsbereich aktivieren](#enable-logging-with-azure-storage). Dies wurde weiter oben in diesem Artikel beschrieben.
 
-### <a name="using-the-oms-repository"></a>Verwenden des OMS-Repositorys
+### <a name="using-the-log-analytics-workspace"></a>Verwenden des Log Analytics-Arbeitsbereichs
 
  Im folgenden Diagramm ist die Architektur der Ein- und Ausgaben des Repositorys dargestellt:
 
-![OMS Log Analytics-Repository](./media/cdn-diagnostics-log/12_Repo-overview.png)
+![Log Analytics-Arbeitsbereich](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
 *Abbildung 3: Log Analytics-Repository*
 
@@ -196,7 +196,7 @@ Sie können die Daten mithilfe von Verwaltungslösungen auf unterschiedliche Wei
 
 Sie können Verwaltungslösungen aus Azure Marketplace installieren, indem Sie unten in jeder Lösung auf den Link **Jetzt herunterladen** klicken.
 
-### <a name="adding-an-oms-cdn-management-solution"></a>Hinzufügen einer OMS-CDN-Verwaltungslösung
+### <a name="adding-a-log-analytics-cdn-management-solution"></a>Hinzufügen einer Log Analytics-CDN-Verwaltungslösung
 
 Führen Sie diese Schritte aus, um eine Verwaltungslösung hinzuzufügen:
 
@@ -219,7 +219,7 @@ Führen Sie diese Schritte aus, um eine Verwaltungslösung hinzuzufügen:
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6.  Nachdem Sie auf **Erstellen** geklickt haben, werden Sie aufgefordert, einen neuen OMS-Arbeitsbereich zu erstellen oder einen vorhandenen zu verwenden. 
+6.  Nachdem Sie auf **Erstellen** geklickt haben, werden Sie aufgefordert, einen neuen Log Analytics-Arbeitsbereich zu erstellen oder einen vorhandenen zu verwenden. 
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
@@ -241,11 +241,11 @@ Führen Sie diese Schritte aus, um eine Verwaltungslösung hinzuzufügen:
 
     Klicken Sie auf den Log Analytics-Arbeitsbereich, den Sie erstellt haben, um darauf zuzugreifen. 
 
-11. Klicken Sie auf die Kachel **OMS-Portal**, um Ihre neue Lösung im OMS-Portal anzuzeigen.
+11. Klicken Sie auf die Kachel **OMS-Portal**, um Ihre neue Lösung anzuzeigen.
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/23_workspace.png)
 
-12. Ihr OMS-Portal sollte jetzt wie folgt aussehen:
+12. Ihr Portal sollte jetzt wie folgt aussehen:
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
@@ -261,11 +261,11 @@ Führen Sie diese Schritte aus, um eine Verwaltungslösung hinzuzufügen:
 
 ### <a name="offers-and-pricing-tiers"></a>Angebote und Tarife
 
-Angebote und Tarife für OMS-Verwaltungslösungen finden Sie [hier](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
+Angebote und Tarife für Verwaltungslösungen finden Sie [hier](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
 
 ### <a name="customizing-views"></a>Anpassen von Ansichten
 
-Sie können die Ansichten für Ihre Daten anpassen, in dem Sie den **Ansicht-Designer** verwenden. Um mit dem Entwerfen zu beginnen, navigieren Sie zu Ihrem OMS-Arbeitsbereich und klicken auf die Kachel **Ansicht-Designer**.
+Sie können die Ansichten für Ihre Daten anpassen, in dem Sie den **Ansicht-Designer** verwenden. Um mit dem Entwerfen zu beginnen, navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich und klicken auf die Kachel **Ansicht-Designer**.
 
 ![Ansicht-Designer](./media/cdn-diagnostics-log/27_Designer.png)
 
@@ -410,7 +410,7 @@ Beispiele für Eigenschaften:
 
 * [Azure-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Analysieren von Azure CDN-Verwendungsmustern](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Log Analytics-REST-API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

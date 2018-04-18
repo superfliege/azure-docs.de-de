@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 9f1a9343a657e076e94f6aa59fd03128ef488ac9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 748cecbdf4c59469c9a56da03631dd04a819043b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Features der Azure CDN-Regel-Engine
 Dieser Artikel bietet ausführliche Beschreibungen der verfügbaren Features für das Azure CDN-[Regelmodul](cdn-rules-engine.md) (Content Delivery Network).
@@ -28,7 +28,6 @@ Der dritte Teil einer Regel ist das Feature. Ein Feature definiert die Art der A
 ## <a name="access-features"></a>Zugriffsfeatures
 
 Diese Features dienen zum Steuern des Zugriffs auf Inhalte.
-
 
 NAME | Zweck
 -----|--------
@@ -71,7 +70,7 @@ NAME | Zweck
 
 ## <a name="comment-feature"></a>Kommentarfeatures
 
-Dieses Feature dient zum Bereitstellen zusätzlicher Informationen innerhalb einer Regel.
+Diese Funktion dient zum Bereitstellen zusätzlicher Informationen innerhalb einer Regel.
 
 NAME | Zweck
 -----|--------
@@ -146,7 +145,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 ## <a name="origin-features"></a>Ursprungsfeatures
 
-Diese Features dienen zum Steuern, wie das CDN mit einem Ursprungsserver kommuniziert.
+Diese Funktionen dienen zum Steuern, wie das CDN mit einem Ursprungsserver kommuniziert.
 
 NAME | Zweck
 -----|--------
@@ -312,7 +311,7 @@ Remove (Entfernen)| Diese Option stellt sicher, dass in der Headerantwort kein `
 
 Wichtige Informationen:
 
-- Geben Sie mindestens einen Namen eines Abfragezeichenfolgenparameters an. Trennt die Parameternamen durch ein einzelnes Leerzeichen voneinander.
+- Geben Sie mindestens einen Namen von Abfragezeichenfolgenparametern an, und trennen Sie mehrere Parameternamen durch ein einzelnes Leerzeichen.
 - Dieses Feature legt fest, ob Abfragezeichenfolgenparameter in den Cacheschlüssel einbezogen oder davon ausgeschlossen werden. In der nachfolgenden Tabelle werden zu jeder Option zusätzliche Informationen bereitgestellt.
 
 Typ|BESCHREIBUNG
@@ -325,6 +324,9 @@ Typ|BESCHREIBUNG
 Durch die Regel-Engine können Sie die Implementierung der Zwischenspeicherung von Abfragezeichenfolgen anpassen. Beispielsweise können Sie angeben, dass die Zwischenspeicherung von Abfragezeichenfolgen nur für bestimmte Standorte oder Dateitypen ausgeführt wird.
 
 Um das als „no-cache“ bezeichnete Verhalten für das Zwischenspeichern von Abfragezeichenfolgen auf der Seite „Query-String Caching“ zu duplizieren, erstellen Sie eine Regel, die eine Übereinstimmungsbedingung „URL Query Wildcard“ und ein Feature namens „Bypass Cache“ enthält. Legen Sie die Übereinstimmungsbedingung „URL Query Wildcard“ auf ein Sternchen (*) fest.
+
+>[!IMPORTANT] 
+> Wenn die Tokenberechtigung für einen beliebigen Pfad für dieses Konto aktiviert ist, ist der Standardcachemodus der einzige Modus, der für die Zwischenspeicherung von Abfragezeichenfolgen verwendet werden kann. Weitere Informationen finden Sie unter [Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen](cdn-query-string-premium.md).
 
 #### <a name="sample-scenarios"></a>Beispielszenarien
 
@@ -745,7 +747,7 @@ Normalerweise sendet der POP bei Ablauf der max-age-Zeit eines Assets eine Anfor
 
 Wenn der POP bei dem Versuch einer solchen erneuten Überprüfung keine Verbindung mit dem Ursprungsserver herstellen kann, steuert dieses Feature „Internal Max-Stale“, ob und wie lange der POP das jetzt veraltete Asset noch bedienen darf.
 
-Beachten Sie, dass dieses Zeitintervall mit Ablauf des max-age-Werts des Assets beginnt, nicht bei Eintritt der fehlerhaften erneuten Überprüfung. Daher entspricht der maximale Zeitraum, während dessen ein Asset ohne erfolgreiche erneute Überprüfung bedient werden kann, der Zeitspanne, die durch die Kombination von max-age und max-stale angegeben wird. Wenn ein Objekt beispielsweise um 9:00 Uhr mit einem max-age-Wert von 30 Minuten und einem max-stale-Wert von 15 Minuten zwischengespeichert wurde, führt ein fehlerhafter Versuch zur erneuten Überprüfung um 9:44 Uhr dazu, dass ein Endbenutzer das veraltete zwischengespeicherte Asset erhält, während ein fehlerhafter Versuch zur erneuten Überprüfung um 9:46 Uhr dazu führt, dass der Endbenutzer den Statuscode „504 – Gatewaytimeout“ empfängt.
+Beachten Sie, dass dieses Zeitintervall mit Ablauf des max-age-Werts des Assets beginnt, nicht bei Eintritt der fehlerhaften erneuten Überprüfung. Daher entspricht der maximale Zeitraum, während dessen ein Asset ohne erfolgreiche erneute Überprüfung bedient werden kann, der Zeitspanne, die durch die Kombination von max-age und max-stale angegeben wird. Wenn ein Objekt beispielsweise um 9:00 Uhr mit einem max-age-Wert von 30 Minuten und einem max-stale-Wert von 15 Minuten zwischengespeichert wurde, führt ein fehlerhafter Versuch zur erneuten Überprüfung um 9:44 Uhr dazu, dass ein Endbenutzer das veraltete zwischengespeicherte Objekt erhält, während ein fehlerhafter Versuch zur erneuten Überprüfung um 9:46 Uhr dazu führt, dass der Endbenutzer den Statuscode „504 – Gatewaytimeout“ empfängt.
 
 Jeder für dieses Feature konfigurierte Wert wird durch die `Cache-Control: must-revalidate`- oder `Cache-Control: proxy-revalidate`-Header ersetzt, die vom Ursprungsserver empfangen werden. Wenn einer dieser Header beim ersten Zwischenspeichern eines Assets vom Ursprungsserver empfangen wird, bedient der POP kein veraltetes zwischengespeichertes Asset. Wenn der POP in einem solchen Fall bei Ablauf des max-age-Intervalls für das Asset die erneute Überprüfung mit dem Ursprung nicht durchführen kann, gibt der POP einen Fehler vom Typ „504 – Gatewaytimeout“ zurück.
 
@@ -1054,10 +1056,12 @@ Deaktiviert| Stellt das Standardverhalten wieder her. Standardmäßig wird Ihrer
 ### <a name="token-auth-denial-code"></a>Token Auth Denial Code
 **Zweck:** Legt die Art der Antwort fest, die einem Benutzer zurückgegeben wird, wenn eine Anforderung aufgrund der tokenbasierten Authentifizierung verweigert wird.
 
-Die verfügbaren Antwortcodes sind unten aufgeführt.
+Token Auth Denial Code kann nicht mit der Übereinstimmungsbedingung „Always“ verwendet werden. Verwenden Sie stattdessen den Abschnitt **Custom Denial Handling** auf der Seite **Token Auth** des **Verwaltungsportals**. Weitere Informationen finden Sie unter [Schützen von Azure CDN-Assets mit Tokenauthentifizierung](cdn-token-auth.md).
+
+Die verfügbaren Antwortcodes sind in der folgenden Tabelle aufgeführt.
 
 Antwortcode|Antwortname|BESCHREIBUNG
-----------------|-----------|--------
+-------------|-------------|--------
 301|Permanent verschoben|Dieser Statuscode leitet nicht autorisierte Benutzer auf die URL um, die im Adressheader angegeben ist.
 302|Gefunden|Dieser Statuscode leitet nicht autorisierte Benutzer auf die URL um, die im Adressheader angegeben ist. Dieser Statuscode entspricht der Industriestandardmethode zum Ausführen einer Umleitung.
 307|Temporäre Umleitung|Dieser Statuscode leitet nicht autorisierte Benutzer auf die URL um, die im Adressheader angegeben ist.

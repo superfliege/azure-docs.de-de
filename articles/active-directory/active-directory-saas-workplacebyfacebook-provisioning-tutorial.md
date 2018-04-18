@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Konfigurieren von Workplace by Facebook für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
+title: 'Tutorial: Konfigurieren von Workplace by Facebook für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Workplace by Facebook konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 15cbaafcd86c576f4789a61ed80c526b6fe705ab
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: d42a6b63833bffc3cce1830a728ec21083b25dc9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workplace by Facebook für die automatische Benutzerbereitstellung
 
@@ -75,7 +75,7 @@ Azure AD unterstützt die Möglichkeit, die Kontodetails zugewiesener Benutzer m
 
     ![Bereitstellung](./media/active-directory-saas-workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** das geheime Token Ihres Workplace by Facebook-Administrators ein, und legen Sie die Mandanten-URL auf `https://www.facebook.com/scim/v1/` fest.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** das Zugriffstoken Ihres Workplace by Facebook-Administrators ein, und legen Sie die Mandanten-URL auf `https://www.facebook.com/scim/v1/` fest. Lesen Sie [diese Anweisungen](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) zum Erstellen eines Zugriffstoken für Workplace. 
 
 6. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Workplace by Facebook-App herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, sollten Sie sicherstellen, dass Ihr Workplace by Facebook-Konto über Teamadministratorberechtigungen verfügt.
 

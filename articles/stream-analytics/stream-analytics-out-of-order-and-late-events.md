@@ -1,24 +1,19 @@
 ---
-title: Behandlung von Ereignissen außerhalb der Reihenfolge oder bei Verzögerung in Azure Stream Analytics | Microsoft-Dokumentation
-description: Erfahren Sie, wie Stream Analytics mit Ereignissen außerhalb der Reihenfolge oder spät empfangenen Ereignissen in Datenströmen umgeht.
-keywords: außerhalb der Reihenfolge, spät empfangen, Ereignisse
-documentationcenter: ''
+title: Behandlung von Ereignissen außerhalb der Reihenfolge oder bei Verzögerung in Azure Stream Analytics
+description: In diesem Artikel wird beschrieben, wie Stream Analytics mit Ereignissen außerhalb der Reihenfolge oder spät empfangenen Ereignissen in Datenströmen umgeht.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 3c1924ad87715f7a44c3666991e792adc3a20af9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: e407a95d3ac858ea7180a75f9fbfc399860ad378
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Überlegungen zur Ereignisreihenfolge in Azure Stream Analytics
 
@@ -132,7 +127,7 @@ Azure Stream Analytics implementiert diese Funktion mithilfe der [TIMESTAMP BY O
 * Beim Kombinieren von mehreren Zeitachsen kann das Fehlen von Daten in einer der Quellen oder Partitionen dazu führen, dass die Ausgabe um ein zusätzliches Fenster „Toleranz für Eingangsverzögerung“ verzögert wird.
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um weitere Hilfe zu erhalten, nutzen Sie das [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Um weitere Hilfe zu erhalten, nutzen Sie das [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

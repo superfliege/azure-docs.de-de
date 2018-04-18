@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/12/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 563d82076721a669069ba3e36df84a050188813c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 224639dcc7da950801c7a5959ec14fc5ac7313e0
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Einführung in eine mehrinstanzenfähige SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet.
 
@@ -43,7 +43,7 @@ Sehen Sie sich nach der Bereitstellung der App die folgenden Tutorials an, die a
 |[Bereitstellen und Kennenlernen der SaaS-Anwendung Wingtip](saas-dbpertenant-get-started-deploy.md)|  Stellen Sie die Wingtip-SaaS-Anwendung mit Ihrem Azure-Abonnement bereit, und machen Sie sich mit ihr vertraut. |
 |[Bereitstellen und Katalogisieren von Mandanten](saas-dbpertenant-provision-and-catalog.md)| Hier erfahren Sie, wie die Anwendung mithilfe einer Katalogdatenbank mit Mandanten verbunden wird und wie den Mandanten im Katalog die entsprechenden Daten zugeordnet werden. |
 |[Überwachen und Verwalten der Leistung](saas-dbpertenant-performance-monitoring.md)| Hier erfahren Sie, wie Überwachungsfunktionen der SQL-Datenbank verwendet und Benachrichtigungen festgelegt werden, wenn Leistungsschwellenwerte überschritten werden. |
-|[Überwachen mit Azure Log Analytics (Operations Management Suite)](saas-dbpertenant-log-analytics.md) | Erfahren Sie, wie mithilfe von [Log Analytics](../log-analytics/log-analytics-overview.md) große Mengen von Ressourcen über mehrere Pools hinweg überwacht werden. |
+|[Einrichten und Verwenden von Log Analytics (Operations Management Suite) mit einer mehrinstanzenfähigen SaaS-App für SQL-Datenbank](saas-dbpertenant-log-analytics.md) | Erfahren Sie, wie mithilfe von [Log Analytics](../log-analytics/log-analytics-overview.md) große Mengen von Ressourcen über mehrere Pools hinweg überwacht werden. |
 |[Wiederherstellen einzelner Mandanten](saas-dbpertenant-restore-single-tenant.md)| Hier erfahren Sie, wie Sie eine Mandantendatenbank zu einem früheren Zeitpunkt wiederherstellen. Lernen Sie auch, wie eine parallele Datenbank wiederhergestellt wird, wobei die vorhandene Mandantendatenbank online bleibt. |
 |[Manage schema for multiple tenants in the WTP SaaS application](saas-tenancy-schema-management.md) (Verwalten des Schemas für mehrere Mandanten in der SaaS-Anwendung WTP)| Erfahren Sie, wie Sie Schemas und Verweisdaten in allen Mandantendatenbanken aktualisieren. |
 |[Ausführen von mandantenübergreifenden verteilten Abfragen](saas-tenancy-cross-tenant-reporting.md) | Erstellen Sie eine Datenbank für Ad-hoc-Analysen, und führen Sie verteilte Echtzeitabfragen für alle Mandanten aus.  |

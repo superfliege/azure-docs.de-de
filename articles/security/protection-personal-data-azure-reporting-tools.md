@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 2c677a1dea001c6a414304fbaa683c3787b355b1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fc859f3aa34531133b7a21e36591b011c63d511c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Dokumentschutz personenbezogener Daten mit Azure-Berichtstools
 
@@ -95,13 +95,13 @@ Analysetools in Log Analytics (wie Protokollsuche, Ansichten und Lösungen) ber�
 
 #### <a name="how-do-i-use-log-analytics"></a>Wie verwende ich Log Analytics?
 
-Auf Log Analytics können Sie über das OMS-Portal oder das Azure-Portal in jedem Webbrowser zugreifen. Log Analytics bietet eine Abfragesprache, mit der Sie Daten schnell abrufen und im Repository konsolidieren können. Sie können Protokollsuchvorgänge erstellen und speichern, um Daten direkt im Portal zu analysieren.
+Auf Log Analytics können Sie über das OMS-Portal oder das Azure-Portal in jedem Webbrowser zugreifen. Log Analytics bietet eine Abfragesprache, mit der Sie Daten im Log Analytics-Arbeitsbereich schnell abrufen und konsolidieren können. Sie können Protokollsuchvorgänge erstellen und speichern, um Daten direkt im Portal zu analysieren.
 
 Führen Sie folgende Schritte aus, um einen Log Analytics-Arbeitsbereich im Azure-Portal zu erstellen:
 
 1. Wählen Sie in der Liste der Dienste im Marketplace die Option **Log Analytics** aus.
 
-2. Wählen Sie **Erstellen** aus. Geben Sie dann den Namen des OMS-Arbeitsbereichs ein, und wählen Sie Ihr Abonnement, die Ressourcengruppe, den Standort und den Tarif aus.
+2. Wählen Sie **Erstellen** aus. Geben Sie dann den Namen des Log Analytics-Arbeitsbereichs ein, und wählen Sie Ihr Abonnement, die Ressourcengruppe, den Standort und den Tarif aus.
 
 3. Klicken Sie auf **OK**, um eine Liste mit Ihren Arbeitsbereichen anzuzeigen.
 

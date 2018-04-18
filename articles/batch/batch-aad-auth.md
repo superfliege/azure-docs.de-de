@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: e2d97929ada820a1ce969c59fb69b3518fe2eb6c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2479701174086ddf680e0ecb1da4a9d13b32b76e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -312,13 +312,13 @@ public static async Task PerformBatchOperations()
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure AD finden Sie unter [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Ausführliche Beispiele zur ADAL-Verwendung finden Sie in der Bibliothek mit den [Azure-Codebeispielen](https://azure.microsoft.com/resources/samples/?service=active-directory).
+* Weitere Informationen zu Azure AD finden Sie unter [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Ausführliche Beispiele zur ADAL-Verwendung finden Sie in der Bibliothek mit den [Azure-Codebeispielen](https://azure.microsoft.com/resources/samples/?service=active-directory).
 
-Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/active-directory-application-objects.md). Wie Sie einen Dienstprinzipal im Azure-Portal erstellen, erfahren Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../resource-group-create-service-principal-portal.md). Sie können einen Dienstprinzipal auch mit PowerShell oder Azure CLI erstellen.
+* Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/active-directory-application-objects.md). Wie Sie einen Dienstprinzipal im Azure-Portal erstellen, erfahren Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../resource-group-create-service-principal-portal.md). Sie können einen Dienstprinzipal auch mit PowerShell oder Azure CLI erstellen.
 
-Informationen zum Authentifizieren von Batch Management-Anwendungen bei Azure AD finden Sie unter [Authenticate Batch Management solutions with Active Directory](batch-aad-auth-management.md) (Authentifizieren von Batch Management-Lösungen bei Active Directory).
+* Informationen zum Authentifizieren von Batch Management-Anwendungen bei Azure AD finden Sie unter [Authenticate Batch Management solutions with Active Directory](batch-aad-auth-management.md) (Authentifizieren von Batch Management-Lösungen bei Active Directory).
 
-Ein Python-Beispiel für die Erstellung eines Batchclients, der mit einem Azure AD-Token authentifiziert wurde, finden Sie im Beispiel [Azure Active Directory-Authentifizierung](http://azure-sdk-for-python.readthedocs.io/en/latest/batch.html#azure-active-directory-authentication) im Azure SDK für die Python-Dokumentation.
+* Ein Python-Beispiel zum Erstellen eines Batch-Clients, der mithilfe eines Azure AD-Token authentifiziert wird, finden Sie im Beispiel [Deploying Azure Batch Custom Image with a Python Script](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) (Bereitstellen eines benutzerdefinierten Azure Batch-Images mit einem Python-Skript).
 
 [aad_about]: ../active-directory/active-directory-whatis.md "Was ist Azure Active Directory?"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md

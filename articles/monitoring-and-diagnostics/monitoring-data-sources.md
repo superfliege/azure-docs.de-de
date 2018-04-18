@@ -1,12 +1,12 @@
 ---
-title: "Nutzen der Überwachungsdaten von Azure | Microsoft Docs"
-description: "Erfahren Sie etwas über alle zurzeit in Azure verfügbaren Überwachungsdatenquellen."
+title: Nutzen der Überwachungsdaten von Azure | Microsoft Docs
+description: Erfahren Sie etwas über alle zurzeit in Azure verfügbaren Überwachungsdatenquellen.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
-ms.openlocfilehash: c7075c2e1a2500eca1d0aa9b3a797e8a0e903ede
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b10e95cd6b335468201b4cd123b3a29fb5d1bcdb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Nutzen der Überwachungsdaten von Azure
 
@@ -26,7 +26,7 @@ Wir bringen mit der Azure Monitor-Pipeline die Überwachungsdaten von der gesamt
 
 ## <a name="options-for-data-consumption"></a>Optionen für die Datennutzung
 
-| Datentyp | Kategorie | Unterstützte Dienste | Zugriffsmethoden |
+| Datentyp | Category (Kategorie) | Unterstützte Dienste | Zugriffsmethoden |
 | --- | --- | --- | --- |
 | Azure Monitor-Metriken auf Plattformebene | Metriken | [Siehe Liste hier](monitoring-supported-metrics.md) | <ul><li>**REST-API:**[Azure Monitor-Metrik-API](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Speicher-Blob oder Event Hub:**[Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
 | Compute-Metriken für Gastbetriebssysteme (z.B. Leistungsindikatoren) | Metriken | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:**[Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:**[Windows Azure-Diagnose](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
@@ -45,7 +45,7 @@ Wir bringen mit der Azure Monitor-Pipeline die Überwachungsdaten von der gesamt
 | Azure Monitor-Metrikwarnungen | Benachrichtigungen | [Siehe Liste hier](monitoring-supported-metrics.md) | <ul><li>**Webhook:**[Azure-Metrikwarnungen](insights-webhooks-alerts.md)</li></ul> |
 | Azure Monitor-Aktivitätsprotokollwarnungen | Benachrichtigungen | Alle Azure-Dienste | <ul><li>**Webhook:** Azure-Aktivitätsprotokollwarnungen</li></ul> |
 | Benachrichtigungen zum automatischen Skalieren | Benachrichtigungen | [Siehe Liste hier](monitoring-overview-autoscale.md#supported-services-for-autoscale) | <ul><li>**Webhook:**[Benachrichtigung zur automatischen Skalierung mit dem Webhook-Nutzlastschema](insights-autoscale-to-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Warnungen zu OMS-Protokollsuchabfragen | Benachrichtigungen | OMS Log Analytics | <ul><li>**Webhook:**[Log Analytics-Warnungen](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
+| Warnungen zu Protokollsuchabfragen | Benachrichtigungen | Log Analytics | <ul><li>**Webhook:**[Log Analytics-Warnungen](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
 | Application Insights-Metrikwarnungen | Benachrichtigungen | Application Insights | <ul><li>**Webhook:**[Application Insights-Warnungen](../application-insights/app-insights-alerts.md)</li></ul> |
 | Application Insights-Webtests | Benachrichtigungen | Application Insights | <ul><li>**Webhook:**[Application Insights-Warnungen](../application-insights/app-insights-alerts.md)</li></ul> |
 

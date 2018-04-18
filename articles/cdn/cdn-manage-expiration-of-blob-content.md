@@ -1,11 +1,11 @@
 ---
 title: Verwalten des Ablaufs von Azure Blob Storage im Azure Content Delivery Network | Microsoft-Dokumentation
-description: "Informationen zu den Optionen für das Festlegen der Gültigkeitsdauer von Blobs beim Azure CDN-Zwischenspeichern."
+description: Informationen zu den Optionen für das Festlegen der Gültigkeitsdauer von Blobs beim Azure CDN-Zwischenspeichern.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ad4801e9-d09a-49bf-b35c-efdc4e6034e8
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: bafb04a1a19c4436d8f6c1c21700e9463334b3de
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 72a823ef04ad69d1d3b40377c32a02bacb8328c2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Verwalten des Ablaufs von Azure Blob Storage im Azure Content Delivery Network
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Sie können die Cacheeinstellungen auch über das Portal durch Festlegen von [CD
 Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Blob ist die Verwendung von Cacheregeln im Azure-Portal. Weitere Informationen zu CDN-Cacheregeln finden Sie unter [Steuern des Verhaltens beim Zwischenspeichern im Azure Content Delivery Network mit Cacheregeln](cdn-caching-rules.md).
 
 > [!NOTE] 
-> Cacheregeln sind nur für die Profile **Azure CDN von Verizon Standard** und **Azure CDN von Akamai Standard** verfügbar. Für **Azure CDN von Verizon Premium**-Profile müssen Sie die [Azure CDN-Regel-Engine](cdn-rules-engine.md) im **Verwaltungsportal** verwenden, um von einer ähnlichen Funktionalität zu profitieren.
+> Cacheregeln sind nur für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** verfügbar. Für Profile vom Typ **Azure CDN Premium von Verizon**  müssen Sie die [Azure CDN-Regel-Engine](cdn-rules-engine.md) im **Verwaltungsportal** verwenden, um von einer ähnlichen Funktionalität zu profitieren.
 
 **So navigieren Sie zur Seite mit den CDN-Cacheregeln**
 
@@ -74,7 +74,7 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Blo
 
 1. Erstellen Sie unter **Benutzerdefinierte Cacheregeln** zwei Übereinstimmungsbedingungen:
 
-     A: Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert** `/blobcontainer1/*` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 4 ein.
+     A. Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert** `/blobcontainer1/*` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 4 ein.
 
     B: Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert** `/blobcontainer1/blob1.txt` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 2 ein.
 

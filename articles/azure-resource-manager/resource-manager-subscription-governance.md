@@ -1,6 +1,6 @@
 ---
-title: "Bewährte Methoden für Unternehmen, die auf Azure umstellen| Microsoft Docs"
-description: "Beschreibt ein Gerüst, mit dem Unternehmen eine sichere und verwaltbare Umgebung sicherstellen können."
+title: Bewährte Methoden für Unternehmen, die auf Azure umstellen| Microsoft Docs
+description: Beschreibt ein Gerüst, mit dem Unternehmen eine sichere und verwaltbare Umgebung sicherstellen können.
 services: azure-resource-manager
 documentationcenter: na
 author: rdendtler
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 3b5087faaf3db087b15b77fedac8df0d7e4a899a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 02553bb59cb37bab21d53adafc42fddcf08795a7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure-Unternehmensgerüst – präskriptive Abonnementgovernance
 Immer mehr Unternehmen führen für Mobilität und Flexibilität eine öffentliche Cloud ein. Sie nutzen die Stärken der Cloud, um Umsatz zu generieren oder Ressourcen für das Unternehmen zu optimieren. Microsoft Azure bietet eine Vielzahl von Diensten, die Unternehmen wie Bausteine zusammenstellen können, um ein großes Spektrum von Workloads und Anwendungen zu berücksichtigen. 
@@ -135,7 +135,7 @@ Abonnement der „herkömmlichen IT“ für Branchenanwendungen
 > 
 
 ### <a name="audit---what-happened"></a>Überwachen – was ist passiert?
-Um anzuzeigen, wie Ihre Umgebung funktioniert, müssen Sie die Benutzeraktivitäten überwachen. Die meisten Ressourcentypen in Azure erstellen Diagnoseprotokolle, die Sie über ein Protokolltool oder in Azure Operations Management Suite analysieren können. Sie können Aktivitätsprotokolle aus mehreren Abonnements erfassen, um Abteilungs- oder Unternehmensansichten bereitzustellen. Überwachungsdatensätze sind ein wichtiges Tool für die Diagnose und ein entscheidender Mechanismus zum Auslösen von Ereignissen in der Azure-Umgebung.
+Um anzuzeigen, wie Ihre Umgebung funktioniert, müssen Sie die Benutzeraktivitäten überwachen. Die meisten Ressourcentypen in Azure erstellen Diagnoseprotokolle, die Sie über ein Protokolltool oder in Azure Log Analytics analysieren können. Sie können Aktivitätsprotokolle aus mehreren Abonnements erfassen, um Abteilungs- oder Unternehmensansichten bereitzustellen. Überwachungsdatensätze sind ein wichtiges Tool für die Diagnose und ein entscheidender Mechanismus zum Auslösen von Ereignissen in der Azure-Umgebung.
 
 Mit Aktivitätsprotokollen aus Resource Manager-Bereitstellungen können Sie bestimmen, welche **Vorgänge** ausgeführt wurden und wer sie ausgeführt hat. Aktivitätsprotokolle können mit Tools wie Log Analytics gesammelt und aggregiert werden.
 
@@ -190,7 +190,7 @@ Diese Zunahme von Abonnements ist nicht mehr erforderlich. Mit der rollenbasiert
 > * Verbinden Sie den Identitätsspeicher Ihres Unternehmens (meist Active Directory) über das AD Connect-Tool mit Azure Active Directory.
 > * Kontrollieren Sie den Administrator/Co-Administrator eines Abonnements mithilfe einer verwalteten Identität. Weisen Sie den Administrator/Co-Administrator **nicht** einem neuen Abonnementbesitzer zu. Verwenden Sie stattdessen die RBAC-Rollen, um die Rechte eines **Besitzers** für eine Gruppe oder eine Einzelperson bereitzustellen.
 > * Fügen Sie Azure-Benutzer einer Gruppe (z.B. Besitzer von Anwendung X) in Active Directory hinzu. Verwenden Sie die synchronisierte Gruppe, um Mitgliedern der Gruppe die erforderlichen Rechte zum Verwalten der Ressourcengruppe, die die Anwendung enthält, zu gewähren.
-> * Befolgen Sie das Prinzip, die **geringsten Rechte** zu gewähren, die zur Erledigung der erwarteten Arbeit erforderlich sind. Beispiel:
+> * Befolgen Sie das Prinzip, die **geringsten Rechte** zu gewähren, die zur Erledigung der erwarteten Arbeit erforderlich sind. Beispiel: 
 >   * Bereitstellungsgruppe: Eine Gruppe, die nur Ressourcen bereitstellen kann.
 >   * Verwaltung virtueller Computer: Eine Gruppe, die virtuelle Computer (für Vorgänge) neu starten kann.
 > 

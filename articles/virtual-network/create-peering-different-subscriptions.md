@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 92cbcad42508f2ae6113d13449aba7eed5acd251
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: eccfdf519d16595f2bda77675d62bff4bf14b4f8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Erstellen eines Peerings virtueller Netzwerke gemäß dem Ressourcen-Manager-Modell in verschiedenen Abonnements 
 
 In diesem Tutorial erfahren Sie, wie Sie ein Peering zwischen virtuellen Netzwerken erstellen, die über Ressourcen-Manager eingerichtet wurden. Die virtuellen Netzwerke befinden sich in unterschiedlichen Abonnements. Das Peering zweier virtueller Netzwerke ermöglicht es Ressourcen, in verschiedenen virtuellen Netzwerken untereinander mit derselben Bandbreite und Latenz zu kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. Weitere Informationen hierzu finden Sie unter [Peering virtueller Netzwerke](virtual-network-peering-overview.md). 
 
-Die Schritte zum Erstellen eines Peerings virtueller Netzwerke sind je nachdem unterschiedlich, ob sich die virtuellen Netzwerke im selben oder unterschiedlichen Abonnements befinden und mit welchem [Azure-Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) die virtuellen Netzwerke erstellt werden. Erfahren Sie, wie Sie ein Peering virtueller Netzwerke in anderen Szenarien erstellen, indem Sie in der folgenden Tabelle auf das gewünschte Szenario klicken:
+Die Schritte zum Erstellen eines Peerings virtueller Netzwerke sind je nachdem unterschiedlich, ob sich die virtuellen Netzwerke im selben oder unterschiedlichen Abonnements befinden und mit welchem [Azure-Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) die virtuellen Netzwerke erstellt werden. Erfahren Sie, wie Sie ein Peering virtueller Netzwerke in anderen Szenarien erstellen, indem Sie in der folgenden Tabelle das gewünschte Szenario auswählen:
 
 |Azure-Bereitstellungsmodell  | Azure-Abonnement  |
 |--------- |---------|
@@ -37,15 +37,15 @@ Ein Peering zweier virtueller Netzwerke, die über das klassische Bereitstellung
 
 In diesem Tutorial wird ein Peering für virtuelle Netzwerke in der gleichen Region durchgeführt. Sie können virtuelle Netzwerke auch in verschiedenen [unterstützten Regionen](virtual-network-manage-peering.md#cross-region) per Peering verknüpfen. 
 
-Ein Peering in Netzwerken lässt sich mithilfe des [Azure-Portals](#portal), mit der [Azure-Befehlszeilenschnittstelle](#cli) (CLI), mit [Azure PowerShell](#powershell) oder mit der [Azure Resource Manager-Vorlage](#template) erstellen. Klicken Sie auf einen der vorherigen Tool-Links. So gelangen Sie direkt zu den Anleitungen zum Erstellen von Peerings in virtuellen Netzwerken mit dem Tool Ihrer Wahl.
+Ein Peering in Netzwerken lässt sich mithilfe des [Azure-Portals](#portal), mit der [Azure-Befehlszeilenschnittstelle](#cli) (CLI), mit [Azure PowerShell](#powershell) oder mit der [Azure Resource Manager-Vorlage](#template) erstellen. Klicken Sie auf einen der vorherigen Toollinks. So gelangen Sie direkt zu den Anleitungen zum Erstellen von Peerings virtueller Netzwerke mit dem Tool Ihrer Wahl.
 
 ## <a name="portal"></a>Erstellen eines Peerings: Azure-Portal
 
 In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwendet. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden vom Portal und zum Zuweisen weiterer Benutzerberechtigungen für die virtuellen Netzwerke.
 
-1. Melden Sie sich als UserA beim [Azure-Portal](https://portal.azure.com) an. Das Konto, mit dem Sie sich anmelden, muss über die Berechtigungen verfügen, die zum Erstellen eines Peerings virtueller Netzwerke erforderlich sind. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#permissions).
-2. Klicken Sie auf **+ Neu**, dann auf **Network**, und klicken Sie zuletzt auf **Virtuelles Netzwerk**.
-3. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die Werte für die folgenden Einstellungen an, oder wählen Sie sie aus, und klicken Sie anschließend auf **Erstellen**:
+1. Melden Sie sich als *UserA* beim [Azure-Portal](https://portal.azure.com) an. Das Konto, mit dem Sie sich anmelden, muss über die Berechtigungen verfügen, die zum Erstellen eines Peerings virtueller Netzwerke erforderlich sind. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#permissions).
+2. Klicken Sie auf **+ Ressource erstellen**, auf **Netzwerk** und dann auf **Virtuelles Netzwerk**.
+3. Wählen Sie die nachfolgenden Beispielwerte für die folgenden Einstellungen aus, oder geben Sie sie ein, und klicken Sie dann auf **Erstellen**:
     - **Name**: *myVnetA*
     - **Adressraum**: *10.0.0.0/16*
     - **Subnetzname**: *Standard*
@@ -53,13 +53,13 @@ In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwende
     - **Abonnement**: Wählen Sie Abonnement A aus.
     - *Ressourcengruppe*: Wählen Sie **Neu erstellen** aus, und geben Sie **myResourceGroupA** ein.
     - **Standort**: *USA, Osten*
-4. Geben Sie im oben im Portal *myVnetA* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetA**, sobald es in den Suchergebnissen angezeigt wird. Für das virtuelle Netzwerk **myVnetA** wird ein Blatt angezeigt.
-5. Klicken Sie auf dem eingeblendeten Blatt **myVnetA** links in der vertikalen Liste der Optionen auf **Zugriffssteuerung (IAM)**.
-6. Klicken Sie auf dem eingeblendeten Blatt **myVnetA – Zugriffssteuerung (IAM)** auf **+ Hinzufügen**.
-7. Wählen Sie auf dem sich öffnenden Blatt **Berechtigungen hinzufügen** im Feld **Rolle** die Option **Netzwerkmitwirkender** aus.
-8. Wählen Sie im Feld **Auswählen** UserB aus, oder geben Sie die E-Mail-Adresse von UserB ein, um ihn zu suchen. Die Liste der angezeigten Benutzer stammt aus dem gleichen Azure Active Directory-Mandanten, in dem sich auch das virtuelle Netzwerk befindet, für das Sie das Peering erstellen.
-9. Klicken Sie auf **Speichern**.
-10. Klicken Sie im Blatt **myVnetA - Zugriffssteuerung (IAM)** links in der vertikalen Liste der Optionen auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID lautet ähnlich wie im folgenden Beispiel: /subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA.
+4. Geben Sie im oben im Portal *myVnetA* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetA**, wenn es in den Suchergebnissen angezeigt wird. 
+5. Klicken Sie in der vertikalen Liste der Optionen auf der linken Seite auf **Zugriffssteuerung (IAM)**.
+6. Klicken Sie unter **myVnetA – Zugriffssteuerung (IAM)** auf **+ Hinzufügen**.
+7. Wählen Sie im Feld **Rolle** die Option **Netzwerkmitwirkender** aus.
+8. Wählen Sie im Feld **Auswählen** die Option *UserB* aus, oder geben Sie die E-Mail-Adresse von UserB ein, um ihn zu suchen. Die Liste der angezeigten Benutzer stammt aus dem gleichen Azure Active Directory-Mandanten, in dem sich auch das virtuelle Netzwerk befindet, für das Sie das Peering erstellen. Wenn UserB nicht angezeigt wird, befindet er sich wahrscheinlich in einem anderen Active Directory-Mandanten als UserA. Wenn Sie virtuelle Netzwerke in verschiedenen Active Directory-Mandanten verbinden möchten, können Sie dazu anstelle eines Peerings virtueller Netzwerke ein [Azure-VPN-Gateway](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) verwenden.
+9. Wählen Sie **Speichern**aus.
+10. Klicken Sie unter **myVnetA – Zugriffssteuerung (IAM)** in der vertikalen Liste der Optionen auf der linken Seite auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID lautet ähnlich wie im folgenden Beispiel: /subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA.
 11. Melden Sie sich als UserA vom Portal ab, und melden Sie sich als UserB an.
 12. Führen Sie die Schritte 2-3 erneut aus, und geben Sie bei Schritt 3 die folgenden Werte an:
 
@@ -71,25 +71,25 @@ In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwende
     - *Ressourcengruppe*: Wählen Sie **Neu erstellen** aus, und geben Sie **myResourceGroupB** ein.
     - **Standort**: *USA, Osten*
 
-13. Geben Sie im oben im Portal *myVnetB* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetB**, wenn es in den Suchergebnissen angezeigt wird. Für das virtuelle Netzwerk **myVnetB** wird ein Blatt angezeigt.
-14. Klicken Sie auf dem eingeblendeten Blatt **myVnetB** links in der vertikalen Liste der Optionen auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID lautet ähnlich wie im folgenden Beispiel: /subscriptions/<Susbscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
-15. Klicken Sie auf dem Blatt **myVnetB** auf **Zugriffssteuerung (IAM)**, und führen Sie dann die Schritte 5-10 für myVnetB aus. Geben Sie in Schritt 8 **UserA** ein.
+13. Geben Sie im oben im Portal *myVnetB* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetB**, wenn es in den Suchergebnissen angezeigt wird.
+14. Klicken Sie unter **myVnetB** in der vertikalen Liste der Optionen auf der linken Seite auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID lautet ähnlich wie im folgenden Beispiel: /subscriptions/<Susbscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
+15. Klicken Sie unter **myVnetB** auf **Zugriffssteuerung (IAM)**, und führen Sie dann die Schritte 5 bis 10 für myVnetB aus. Geben Sie dabei in Schritt 8 **UserA** ein.
 16. Melden Sie sich als UserB vom Portal ab, und melden Sie sich als UserA an.
-17. Geben Sie im oben im Portal *myVnetA* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetA**, sobald es in den Suchergebnissen angezeigt wird. Für das virtuelle Netzwerk **myVnet** wird ein Blatt angezeigt.
+17. Geben Sie im oben im Portal *myVnetA* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetA**, wenn es in den Suchergebnissen angezeigt wird.
 18. Klicken Sie auf **myVnetA**.
-19. Klicken Sie auf dem eingeblendeten Blatt **myVnetA** links in der vertikalen Liste der Optionen auf **Peerings**.
-20. Klicken Sie auf dem eingeblendeten Blatt **myVnetA – Peerings** auf **+ Hinzufügen**
-21. Geben Sie auf dem sich öffnenden Blatt **Peering hinzufügen** die folgenden Optionen ein, oder wählen Sie sie aus, und klicken Sie auf **OK**:
+19. Wählen Sie unter **EINSTELLUNGEN** die Option **Peerings** aus.
+20. Klicken Sie unter **myVnetA – Peerings** auf **+ Hinzufügen**
+21. Geben Sie unter **Peering hinzufügen** die folgenden Optionen ein, oder wählen Sie sie aus, und klicken Sie dann auf **OK**:
      - **Name**: *myVnetAToMyVnetB*
      - **Bereitstellungsmodell für das virtuelle Netzwerk**: Wählen Sie **Resource Manager** aus.
      - **Ich kenne meine Ressourcen-ID**: Aktivieren Sie dieses Kontrollkästchen.
      - **Ressourcen-ID**: Geben Sie die Ressourcen-ID aus Schritt 14 ein.
      - **Zugriff auf virtuelles Netzwerk zulassen**: Vergewissern Sie sich, dass **Aktiviert** ausgewählt ist.
     In diesem Tutorial werden keine anderen Einstellungen verwendet. Weitere Informationen zu allen Peeringeinstellungen finden Sie unter [Create a peering (Erstellen eines Peerings)](virtual-network-manage-peering.md#create-a-peering).
-22. Nachdem Sie zuvor auf **OK** geklickt haben, wird das Blatt **Peering hinzufügen** geschlossen, und Sie gelangen wieder zum Blatt **myVnetA – Peerings**. Nach wenigen Sekunden wird das von Ihnen erstellte Peering auf dem Blatt angezeigt. In der Spalte **Peeringstatus** wird für das Peering **myVnetAToMyVnetB** der Status **Initiiert** angezeigt. Sie haben ein Peering von myVnetA mit myVnetB eingerichtet, doch nun müssen Sie ein Peering von myVnetB mit myVnetA erstellen. Das Peering muss für beide Richtungen erstellt werden, damit die Ressourcen in den virtuellen Netzwerken miteinander kommunizieren können.
+22. Das von Ihnen erstellte Peering wird kurz nach dem Klicken auf **OK** im vorherigen Schritt angezeigt. In der Spalte **Peeringstatus** wird für das Peering **myVnetAToMyVnetB** der Status **Initiiert** angezeigt. Sie haben ein Peering von myVnetA mit myVnetB eingerichtet, doch nun müssen Sie ein Peering von myVnetB mit myVnetA erstellen. Das Peering muss für beide Richtungen erstellt werden, damit die Ressourcen in den virtuellen Netzwerken miteinander kommunizieren können.
 23. Melden Sie sich als UserA vom Portal ab, und melden Sie sich als UserB an.
 24. Führen Sie die Schritte 17-21 für myVnetB erneut aus. Geben Sie in Schritt 21 dem Peering den Namen *myVnetBToMyVnetA*. Wählen Sie *myVnetA* für **Virtuelles Netzwerk** aus, und geben Sie die ID aus Schritt 10 in das Feld **Ressourcen-ID** ein.
-25. Einige Sekunden nach Klicken auf **OK** zum Erstellen des Peerings für myVnetB wird das zuvor erstellte Peering **myVnet2ToMyVnet1** in der Spalte **Peeringstatus** als **Verbunden** angezeigt.
+25. Einige Sekunden nach dem Klicken auf **OK** zum Erstellen des Peerings für myVnetB wird das zuvor erstellte Peering **myVnetBToMyVnetA** in der Spalte **Peeringstatus** als **Verbunden** angezeigt.
 26. Melden Sie sich als UserB vom Portal ab, und melden Sie sich als UserA an.
 27. Führen Sie die Schritte 17-19 erneut aus. Der **Peeringstatus** für **myVnetAToVNetB** lautet jetzt auch **Verbunden**. Wenn in der Spalte **Peeringstatus** für beide virtuellen Netzwerke der Status **Verbunden** angezeigt wird, wurde das Peering erfolgreich erstellt. Alle Azure-Ressourcen, die Sie in einem der virtuellen Netzwerke erstellen, sind in der Lage, miteinander über ihre IP-Adressen zu kommunizieren. Wenn Sie die standardmäßige Azure-Namensauflösung für virtuelle Netzwerke verwenden, können die Ressourcen in den virtuellen Netzwerken Namen nicht netzwerkübergreifend auflösen. Wenn Sie Namen netzwerkübergreifend in einem Peering auflösen möchten, müssen Sie einen eigenen DNS-Server erstellen. Weitere Informationen finden Sie im Artikel [Namensauflösung mithilfe eines eigenen DNS-Servers](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 28. **Optional**: Obwohl das Erstellen virtueller Computer in diesem Tutorial nicht behandelt wird, können Sie in jedem virtuellen Netzwerk virtuelle Computer erstellen und sie miteinander verbinden, um die Verbindung zu überprüfen.
@@ -97,14 +97,14 @@ In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwende
 
 ## <a name="cli"></a>Erstellen eines Peerings: Azure CLI
 
-In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwendet. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden von Azure und zum Entfernen der Skriptzeilen zum Erstellen von Benutzerrollenzuweisungen. Ersetzen Sie UserA@azure.com und UserB@azure.com in allen folgenden Skripts durch die Benutzernamen, die Sie für UserA und UserB verwenden.
+In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwendet. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden von Azure und zum Entfernen der Skriptzeilen zum Erstellen von Benutzerrollenzuweisungen. Ersetzen Sie UserA@azure.com und UserB@azure.com in allen folgenden Skripts durch die Benutzernamen, die Sie für UserA und UserB verwenden. Die beiden virtuellen Netzwerke für das Peering müssen sich in Abonnements befinden, die demselben Azure Active Directory-Mandanten zugeordnet sind.  Wenn Sie virtuelle Netzwerke in verschiedenen Active Directory-Mandanten verbinden möchten, können Sie dazu anstelle eines Peerings virtueller Netzwerke ein [Azure-VPN-Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) verwenden.
 
-Für das folgende Skript gilt:
+Für das Skript gilt Folgendes:
 
 - Es erfordert mindestens Version 2.0.4 der Azure CLI. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) Informationen dazu.
 - Es wird in einer Bash-Shell ausgeführt. Optionen zum Ausführen von Azure CLI-Skripts auf einem Windows-Client finden Sie unter [Verwenden der Azure CLI unter Windows](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
-Anstatt die CLI und ihre Abhängigkeiten zu installieren, können Sie die Azure Cloud Shell verwenden. Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure CLI ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Klicken Sie im folgenden Skript auf die Schaltfläche **Ausprobieren**, um eine Cloud Shell aufzurufen, über die Sie sich bei Ihrem Azure-Konto anmelden können. 
+Anstatt die CLI und ihre Abhängigkeiten zu installieren, können Sie die Azure Cloud Shell verwenden. Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure CLI ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Klicken Sie im folgenden Skript auf die Schaltfläche **Ausprobieren**, um eine Cloud Shell-Instanz aufzurufen, über die Sie sich bei Ihrem Azure-Konto anmelden können. 
 
 1. Starten Sie eine CLI-Sitzung, und melden Sie sich mit dem Befehl `azure login` als UserA bei Azure an. Das Konto, mit dem Sie sich anmelden, muss über die Berechtigungen verfügen, die zum Erstellen eines Peerings virtueller Netzwerke erforderlich sind. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#permissions).
 2. Kopieren Sie das folgende Skript in einen Texteditor auf Ihrem PC. Ersetzen Sie `<SubscriptionA-Id>` durch die ID von „SubscriptionA“. Kopieren Sie das geänderte Skript, fügen Sie es in die CLI-Sitzung ein, und drücken Sie `Enter`. Wenn Sie Ihre Abonnement-ID nicht kennen, geben Sie den Befehl „az account show“ ein. Der Wert für **id** in der Ausgabe ist Ihre Abonnement-ID.
@@ -175,7 +175,7 @@ Alle Azure-Ressourcen, die Sie in einem der virtuellen Netzwerke erstellen, sind
  
 ## <a name="powershell"></a>Erstellen eines Peerings: PowerShell
 
-In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwendet. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden von Azure und zum Entfernen der Skriptzeilen zum Erstellen von Benutzerrollenzuweisungen. Ersetzen Sie UserA@azure.com und UserB@azure.com in allen folgenden Skripts durch die Benutzernamen, die Sie für UserA und UserB verwenden.
+In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwendet. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden von Azure und zum Entfernen der Skriptzeilen zum Erstellen von Benutzerrollenzuweisungen. Ersetzen Sie UserA@azure.com und UserB@azure.com in allen folgenden Skripts durch die Benutzernamen, die Sie für UserA und UserB verwenden. Die beiden virtuellen Netzwerke für das Peering müssen sich in Abonnements befinden, die demselben Azure Active Directory-Mandanten zugeordnet sind.  Wenn Sie virtuelle Netzwerke in verschiedenen Active Directory-Mandanten verbinden möchten, können Sie dazu anstelle eines Peerings virtueller Netzwerke ein [Azure-VPN-Gateway](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md) verwenden.
 
 1. Installieren Sie die neueste Version des PowerShell-Moduls [AzureRm](https://www.powershellgallery.com/packages/AzureRM/). Wenn Sie noch nicht mit Azure PowerShell vertraut sind, lesen Sie die [Übersicht über Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Starten Sie eine PowerShell-Sitzung.
@@ -287,7 +287,7 @@ Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die S
 
 1. Melden Sie sich als UserA beim Azure-Portal an.
 2. Geben Sie in das Suchfeld im Portal **myResourceGroupA** ein. Klicken Sie in den Suchergebnissen auf **myResourceGroupA**.
-3. Klicken Sie auf dem Blatt **myResourceGroupA** auf das **Löschsymbol**.
+3. Klicken Sie auf **Löschen**.
 4. Um den Löschvorgang zu bestätigen, geben Sie in das Feld **Geben Sie den Ressourcengruppennamen ein** den Namen **myResourceGroupA** ein, und klicken Sie dann auf **Löschen**.
 5. Melden Sie sich als UserA vom Portal ab, und melden Sie sich als UserB an.
 6. Führen Sie die Schritte 2-4 für myResourceGroupB aus.

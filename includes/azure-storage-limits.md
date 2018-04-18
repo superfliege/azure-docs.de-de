@@ -1,13 +1,29 @@
+---
+title: Includedatei
+description: Includedatei
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 04/03/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: 6381f8f0e68853183fc3e17e76b4ab93b152b48b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/05/2018
+---
 | Ressource | Standardlimit |
 | --- | --- |
 | Anzahl von Speicherkonten pro Region | 200<sup>1</sup> |
 | Maximale Speicherkontokapazität | 500 TiB<sup>2</sup> |
 | Maximale Anzahl an Blob-Containern, Blobs, Dateifreigaben, Tabellen, Warteschlangen, Entitäten oder Meldungen pro Speicherkonto | Keine Begrenzung |
 | Maximale Anforderungsrate pro Speicherkonto | 20.000 Anforderungen pro Sekunde<sup>2</sup> |
-| Max. Eingang<sup>3</sup> pro Speicherkonto (US-Regionen) | 10 GBit/s bei aktiviertem RA-GRS/GRS/ZRS<sup>4</sup>, 20 GBit/s für LRS<sup>2</sup> |
-| Max. Ausgang<sup>3</sup> pro Speicherkonto (US-Regionen) | 20 GBit/s bei aktiviertem RA-GRS/GRS/ZRS<sup>4</sup>, 30 GBit/s für LRS<sup>2</sup> |
-| Max. Eingang<sup>3</sup> pro Speicherkonto (US-fremde Regionen) | 5 GBit/s bei aktiviertem RA-GRS/GRS/ZRS<sup>4</sup>, 10 GBit/s für LRS<sup>2</sup> |
-| Max. Ausgang<sup>3</sup> pro Speicherkonto (US-fremde Regionen) | 10 GBit/s bei aktiviertem RA-GRS/GRS/ZRS<sup>4</sup>, 15 GBit/s für LRS<sup>2</sup> |
+| Max. Eingang<sup>3</sup> pro Speicherkonto (US-Regionen) | 10 GBit/s bei aktiviertem RA-GRS/GRS, 20 GBit/s für LRS/ZRS<sup>4</sup> |
+| Max. Ausgang<sup>3</sup> pro Speicherkonto (US-Regionen) | 20 GBit/s bei aktiviertem RA-GRS/GRS, 30 GBit/s für LRS/ZRS<sup>4</sup> |
+| Max. Eingang<sup>3</sup> pro Speicherkonto (US-fremde Regionen) | 5 GBit/s bei aktiviertem RA-GRS/GRS, 10 GBit/s für LRS/ZRS<sup>4</sup> |
+| Max. Ausgang<sup>3</sup> pro Speicherkonto (US-fremde Regionen) | 10 GBit/s bei aktiviertem RA-GRS/GRS, 15 GBit/s für LRS/ZRS<sup>4</sup> |
 
 <sup>1</sup> Dies umfasst sowohl Standard- als auch Premium-Speicherkonten. Wenn Sie mehr als 200 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen. 
 

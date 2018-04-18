@@ -11,49 +11,49 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: c991a1535b82a76a3d0b9bdbf4ede8f3e22bc866
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4b4a5b9199fe648425304eaa8db0130bb1b4264d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung (Vorschau)
 
 Mithilfe der Azure CLI können Batch-Aufträge ausgeführt werden, ohne Code zu schreiben.
 
-Erstellen und verwenden Sie die Vorlagendateien mit der Azure CLI zum Erstellen von Batch-Pools, -Aufträgen und -Aufgaben. Auftragseingabedateien können problemlos in das Speicherkonto hochgeladen werden, das dem Batch-Konto und den heruntergeladenen Auftragsausgabedateien zugeordnet ist.
+Erstellen und verwenden Sie die Vorlagendateien mit der Azure CLI zum Erstellen von Batch-Pools, -Aufträgen und -Aufgaben. Sie können problemlos Auftragseingabedateien in das Speicherkonto hochladen, das dem Batch-Konto zugeordnet ist, und Auftragsausgabedateien herunterladen.
 
 ## <a name="overview"></a>Übersicht
 
-Durch eine Erweiterung für die Azure CLI kann Batch nahtlos von Benutzern verwendet werden, die keine Entwickler sind. So können Pools erstellt, Eingabedaten hochgeladen, Aufträge und zugehörige Aufgaben erstellt und die resultierenden Ausgabedaten heruntergeladen werden – und das ohne Code, da die CLI direkt verwendet oder in Skripts integriert wird.
+Durch eine Erweiterung für die Azure CLI kann Batch nahtlos von Benutzern verwendet werden, die keine Entwickler sind. Allein mit CLI-Befehlen können Sie einen Pool erstellen, Eingabedaten hochladen, Aufträge und zugehörige Aufgaben erstellen und die resultierenden Ausgabedaten herunterladen. Es ist kein zusätzlicher Code erforderlich. Führen Sie die CLI-Befehle direkt aus, oder integrieren Sie sie in Skripts.
 
-Batch-Vorlagen basieren auf der [vorhandenen Unterstützung für Batch in der Azure CLI](https://docs.microsoft.com/azure/batch/batch-cli-get-started#json-files-for-resource-creation), durch die mithilfe von JSON-Dateien Eigenschaftenwerte für die Erstellung von Pools, Aufträgen, Aufgaben und anderen Elementen angegeben werden können. Durch Batch-Vorlagen werden neben den bestehenden Funktionen bei JSON-Dateien folgende Funktionen hinzugefügt:
+Batch-Vorlagen basieren auf der [vorhandenen Unterstützung für Batch in der Azure CLI](batch-cli-get-started.md#json-files-for-resource-creation) für JSON-Dateien, um beim Erstellen von Pools, Aufträgen, Aufgaben und anderen Elementen Eigenschaftswerte anzugeben. Durch Batch-Vorlagen werden neben den bestehenden Funktionen bei JSON-Dateien folgende Funktionen hinzugefügt:
 
 -   Parameter können definiert werden. Bei der Verwendung von Vorlagen werden nur die Parameterwerte für die Erstellung des Elements angegeben, während die anderen Elementeigenschaftenwerte im Vorlagentext angegeben werden. Ein Benutzer, der mit Batch und den von Batch ausgeführten Anwendungen vertraut ist, kann Vorlagen erstellen, die Eigenschaftenwerte für Pools, Aufträge und Aufgaben angeben. Ein Benutzer, dem Batch und/oder die Anwendungen weniger vertraut ist, muss lediglich die Werte für die definierten Parameter angeben.
 
 -   Durch Auftragsaufgabenfactorys können mehrere Aufgaben für einen Auftrag erstellt werden, sodass keine zahlreichen Aufgabendefinitionen erstellt werden müssen und die Auftragsübermittlung drastisch vereinfacht wird.
 
 
-Es müssen Eingabedatendateien für Aufträge bereitgestellt, und es werden häufig Ausgabedatendateien erzeugt. Ein Speicherkonto ist standardmäßig jedem Batch-Konto zugeordnet, und Dateien können mithilfe der CLI problemlos an dieses bzw. aus diesem Speicherkonto übertragen werden, ohne dass Code oder Speicheranmeldeinformationen erforderlich sind.
+Aufträge nutzen in der Regel Eingabedatendateien und generieren Ausgabedatendateien. Ein Speicherkonto ist standardmäßig mit jedem Batch-Konto verknüpft. Übertragen Sie mithilfe der CLI ohne Codierung und Speicheranmeldeinformationen Dateien in dieses und aus diesem Speicherkonto.
 
-Eine gängige Anwendung für die Verarbeitung von Audio- und Videodateien ist beispielsweise [ffmpeg](http://ffmpeg.org/). Mit der Azure Batch-CLI kann ffmpeg aufgerufen werden, um Videoquelldateien in anderen Auflösungen zu transcodieren.
+Eine gängige Anwendung für die Verarbeitung von Audio- und Videodateien ist beispielsweise [ffmpeg](http://ffmpeg.org/). Nachfolgend sind die Schritte aufgeführt, die Sie in der Azure Batch-CLI ausführen, um ffmpeg aufzurufen und Videoquelldateien in anderen Auflösungen zu transcodieren.
 
--   Eine Poolvorlage wird erstellt. Der Benutzer, der die Vorlage erstellt, weiß, wie die ffmpeg-Anwendung und deren Anforderungen aufgerufen werden. Der Benutzer gibt das entsprechende BS, die VM-Größe, die Methode für die Installation von ffmpeg (z.B. über ein Anwendungspaket oder mithilfe eines Paket-Managers) und andere Pooleigenschaftenwerte an. Parameter werden bei der Verwendung der Vorlage erstellt, nur die Pool-ID und die Anzahl der VMs müssen angegeben werden.
+-   Erstellen Sie eine Poolvorlage. Der Benutzer, der die Vorlage erstellt, weiß, wie die ffmpeg-Anwendung und deren Anforderungen aufgerufen werden. Der Benutzer gibt das entsprechende BS, die VM-Größe, die Methode für die Installation von ffmpeg (z.B. über ein Anwendungspaket oder mithilfe eines Paket-Managers) und andere Pooleigenschaftenwerte an. Parameter werden bei der Verwendung der Vorlage erstellt, nur die Pool-ID und die Anzahl der VMs müssen angegeben werden.
 
--   Eine Auftragsvorlage wird erstellt. Der Benutzer, der die Vorlage erstellt, weiß, wie ffmpeg aufgerufen werden muss, um ein Quellvideo in einer anderen Auflösung zu transcodieren, und gibt die Taskbefehlszeile an. Zudem ist ihm bekannt, dass ein Ordner mit den Quellvideodateien vorhanden ist, für die eine Aufgabe pro Eingabedatei erforderlich ist.
+-   Erstellen Sie eine Auftragsvorlage. Der Benutzer, der die Vorlage erstellt, weiß, wie ffmpeg aufgerufen werden muss, um ein Quellvideo in einer anderen Auflösung zu transcodieren, und gibt die Taskbefehlszeile an. Zudem ist ihm bekannt, dass ein Ordner mit den Quellvideodateien vorhanden ist, für die eine Aufgabe pro Eingabedatei erforderlich ist.
 
 -   Ein Endbenutzer, der einen Satz von Videodateien transcodieren muss, erstellt zunächst einen Pool anhand der Poolvorlage, die nur die Pool-ID und die Anzahl der erforderlichen VMs angibt. Danach kann der Benutzer die zu transcodierenden Quelldateien hochladen. Anschließend kann ein Auftrag mithilfe der Auftragsvorlage angegeben werden, die nur die Pool-ID und den Speicherort der hochgeladenen Quelldateien angibt. Der Batch-Auftrag wird erstellt, wobei pro Eingabedatei eine Aufgabe generiert wird. Schließlich können die transcodierten Ausgabedateien heruntergeladen werden.
 
 ## <a name="installation"></a>Installation
 
-Für die Vorlagen- und Dateiübertragungsfunktionen muss keine Erweiterung installiert werden.
+Installieren Sie eine Azure Batch-CLI-Erweiterung, um die Vorlagen- und Dateiübertragungsfunktionen zu nutzen.
 
-Anweisungen zum Installieren der Azure CLI finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Anweisungen zum Installieren der Azure CLI finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli).
 
-Nachdem die Azure CLI installiert wurde, kann die Batch-Erweiterung der aktuellen Version mit dem folgenden CLI-Befehl installiert werden:
+Nachdem die Azure CLI installiert wurde, installieren Sie die aktuelle Version der Batch-Erweiterung mit dem folgenden CLI-Befehl:
 
 ```azurecli
-az extension add --source https://github.com/Azure/azure-batch-cli-extensions/releases/download/azure-batch-cli-extensions-2.0.1/azure_batch_cli_extensions-2.0.1-py2.py3-none-any.whl
+az extension add --name azure-batch-cli-extensions
 ```
 
 Weitere Informationen über die Batch-Erweiterung finden Sie unter [Microsoft Azure Batch-CLI-Erweiterungen für Windows, Mac und Linux](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux).
@@ -76,23 +76,23 @@ Azure Batch-Vorlagen sind Azure Resource Manager-Vorlagen in Bezug auf Funktiona
 
 -   **Variablen**
 
-    -   Durch Variablen können einfache oder komplexe Parameterwerte an einer Stelle angegeben und an einer oder mehreren Stellen im Vorlagentext verwendet werden. Durch Variablen können Vorlagen vereinfacht, deren Größe reduziert und die Verwaltung vereinfacht werden, da Eigenschaften im Falle einer Änderung der Werte nur an einem Ort geändert werden müssen.
+    -   Durch Variablen können einfache oder komplexe Parameterwerte an einer Stelle angegeben und an einer oder mehreren Stellen im Vorlagentext verwendet werden. Durch Variablen können Vorlagen vereinfacht, deren Größe reduziert und die Verwaltung vereinfacht werden, da Eigenschaften nur an einem Ort geändert werden müssen.
 
 -   **Konstrukte auf höheren Ebenen**
 
-    -   Einige in der Vorlage vorhandenen Konstrukte auf höheren Ebenen sind noch nicht in den Batch-APIs verfügbar. Beispielsweise kann eine Aufgabenfactory in einer Auftragsvorlage definiert werden, die mittels einer allgemeinen Aufgabendefinition mehrere Aufgaben für den Auftrag erstellt. Diese Konstrukte machen eine Codierung hinfällig, sodass mehrere JSON-Dateien dynamisch erstellt werden können (z.B. eine Datei pro Aufgabe). Zudem können Skriptdateien für die Installation von Anwendungen beispielsweise über einen Paket-Manager erstellt werden.
+    -   Einige in der Vorlage vorhandenen Konstrukte auf höheren Ebenen sind noch nicht in den Batch-APIs verfügbar. Beispielsweise kann eine Aufgabenfactory in einer Auftragsvorlage definiert werden, die mittels einer allgemeinen Aufgabendefinition mehrere Aufgaben für den Auftrag erstellt. Diese Konstrukte machen eine Codierung hinfällig, sodass mehrere JSON-Dateien dynamisch erstellt werden können (z.B. eine Datei pro Aufgabe). Zudem können Skriptdateien für die Installation von Anwendungen über einen Paket-Manager erstellt werden.
 
-    -   Diese Konstrukte können gegebenenfalls dem Batch-Dienst hinzugefügt werden und sind in den Batch-APIs, auf den Benutzeroberflächen usw. verfügbar.
+    -   Diese Konstrukte können dem Batch-Dienst hinzugefügt werden und sind in den Batch-APIs, auf den Benutzeroberflächen usw. verfügbar.
 
 ### <a name="pool-templates"></a>Poolvorlagen
 
-Neben den standardmäßigen Vorlagenfunktionen der Parameter und Variablen werden die folgenden Konstrukte auf höherer Ebene von der Poolvorlage unterstützt:
+Poolvorlagen unterstützen die Standardvorlagenfunktionen von Parametern und Variablen. Außerdem unterstützen sie das folgende Konstrukt auf höherer Ebene:
 
 -   **Paketverweise**
 
-    -   Optional kann mithilfe des Paket-Managers Software auf Poolknoten kopiert werden. Der Paket-Manager und die Paket-ID werden angegeben. Dank der Möglichkeit, ein oder mehrere Pakete deklarieren zu können, müssen keine Skripts zum Abrufen der erforderlichen Pakete erstellt, Skripts installiert und Skripts auf jedem Poolknoten ausgeführt werden.
+    -   Optional kann mithilfe des Paket-Managers Software auf Poolknoten kopiert werden. Der Paket-Manager und die Paket-ID werden angegeben. Da Sie ein oder mehrere Pakete deklarieren können, müssen keine Skripts zum Abrufen der erforderlichen Pakete erstellt, Skripts installiert und Skripts in jedem Poolknoten ausgeführt werden.
 
-Im Folgenden wird ein Beispiel für eine Vorlage vorgestellt, die einen Pool von Linux-VMs mit installierter ffmpeg-Anwendung erstellt und nur eine Pool-ID-Zeichenfolge sowie die Anzahl der für die Verwendung bereitzustellenden VMs erfordert:
+Nachfolgend sehen Sie ein Beispiel für eine Vorlage, die einen Pool mit virtuellen Linux-Computern mit installierter ffmpeg-Anwendung erstellt. Geben Sie zur Verwendung nur eine Pool-ID-Zeichenfolge und die Anzahl von virtuellen Computern im Pool an:
 
 ```json
 {
@@ -139,7 +139,7 @@ Im Folgenden wird ein Beispiel für eine Vorlage vorgestellt, die einen Pool von
 }
 ```
 
-Wenn die Vorlagendatei unter dem Namen _pool-ffmpeg.json_ gespeichert wurde, würde die Vorlage wie folgt aufgerufen werden:
+Wenn die Vorlagendatei unter dem Namen _pool-ffmpeg.json_ gespeichert wurde, rufen Sie die Vorlage wie folgt auf:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
@@ -147,13 +147,13 @@ az batch pool create --template pool-ffmpeg.json
 
 ### <a name="job-templates"></a>Auftragsvorlagen
 
-Neben den standardmäßigen Vorlagenfunktionen der Parameter und Variablen werden die folgenden Konstrukte auf höherer Ebene von der Auftragsvorlage unterstützt:
+Auftragsvorlagen unterstützen die Standardvorlagenfunktionen von Parametern und Variablen. Außerdem unterstützen sie das folgende Konstrukt auf höherer Ebene:
 
 -   **Aufgabenfactory**
 
     -   Erstellt mehrere Aufgaben aus einer Aufgabendefinition. Es werden drei Arten von Aufgabenfactorys unterstützt – parametrische Sweeps, Aufgaben pro Datei und Aufgabenauflistung.
 
-Im Folgenden wird ein Beispiel für eine Vorlage vorgestellt, die einen Auftrag zum Transcodieren von MP4-Videodateien in eine von zwei niedrigeren Auflösungen durch ffmpeg erstellt (dabei wird pro Videoquelldatei eine Aufgabe erstellt):
+Im Folgenden wird ein Beispiel für eine Vorlage vorgestellt, die einen Auftrag zum Transcodieren von MP4-Videodateien in eine von zwei niedrigeren Auflösungen mit ffmpeg erstellt. Pro Quellvideodatei wird eine Aufgabe erstellt:
 
 ```json
 {
@@ -229,7 +229,7 @@ Im Folgenden wird ein Beispiel für eine Vorlage vorgestellt, die einen Auftrag 
 }
 ```
 
-Wenn die Vorlagendatei unter dem Namen _job-ffmpeg.json_ gespeichert wurde, würde die Vorlage wie folgt aufgerufen werden:
+Wenn die Vorlagendatei unter dem Namen _job-ffmpeg.json_ gespeichert wurde, rufen Sie die Vorlage wie folgt auf:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json
@@ -237,11 +237,11 @@ az batch job create --template job-ffmpeg.json
 
 ## <a name="file-groups-and-file-transfer"></a>Dateigruppen und Dateiübertragung
 
-Die meisten Aufträge und Aufgaben erfordern Eingabedateien und erzeugen Ausgabedateien. Eingabe- und Ausgabedateien müssen in der Regel vom Client zum Knoten oder vom Knoten zum Client übertragen werden. Die Azure Batch-CLI-Erweiterung abstrahiert die Dateiübertragung und nutzt das Speicherkonto, das standardmäßig für jedes Batch-Konto erstellt wird.
+Die meisten Aufträge und Aufgaben erfordern Eingabedateien und erzeugen Ausgabedateien. Eingabe- und Ausgabedateien werden in der Regel vom Client zum Knoten oder vom Knoten zum Client übertragen. Die Azure Batch-CLI-Erweiterung abstrahiert die Dateiübertragung und nutzt das Speicherkonto, das standardmäßig für jedes Batch-Konto erstellt wird.
 
 Eine Dateigruppe entspricht einem im Azure Storage-Konto erstellten Container. Die Dateigruppe kann Unterordner enthalten.
 
-Die Batch CLI-Erweiterung unterstützt Befehle, mit denen Dateien von einem Client in eine bestimmte Dateigruppe hochgeladen und Dateien aus der angegebenen Dateigruppe auf einen Client heruntergeladen werden können.
+Die Batch-CLI-Erweiterung unterstützt Befehle, mit denen Dateien von einem Client in eine bestimmte Dateigruppe hochgeladen und Dateien aus der angegebenen Dateigruppe auf einen Client heruntergeladen werden können.
 
 ```azurecli
 az batch file upload --local-path c:\source_videos\*.mp4 
@@ -251,7 +251,7 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-Mit Pool- und Auftragsvorlagen können in Dateigruppen gespeicherte Dateien angegeben werden, die auf Poolknoten oder aus Poolknoten wieder in eine Dateigruppe kopiert werden sollen. In der zuvor angegebenen Auftragsvorlage wird z.B. die Dateigruppe „ffmpeg-input“ für die Aufgabenfactory als Speicherort der Quellvideodateien angegeben, die zum Transcodieren auf den Knoten kopiert werden. Die Dateigruppe „ffmpeg-output“ wird dagegen als Speicherort verwendet, in den die transcodierten Ausgabedateien von dem für jede Aufgabe ausgeführten Knoten kopiert werden.
+Mit Pool- und Auftragsvorlagen können in Dateigruppen gespeicherte Dateien angegeben werden, die auf Poolknoten oder aus Poolknoten wieder in eine Dateigruppe kopiert werden sollen. In der zuvor angegebenen Auftragsvorlage wird beispielsweise die Dateigruppe „ffmpeg-input“ für die Aufgabenfactory als Speicherort der Quellvideodateien angegeben, die zum Transcodieren auf den Knoten kopiert werden. Die Dateigruppe „ffmpeg-output“ ist der Speicherort, in den die transcodierten Ausgabedateien von dem für jede Aufgabe ausgeführten Knoten kopiert werden.
 
 ## <a name="summary"></a>Zusammenfassung
 

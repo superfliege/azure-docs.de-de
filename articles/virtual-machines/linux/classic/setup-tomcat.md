@@ -1,11 +1,11 @@
 ---
 title: Einrichten von Apache Tomcat auf einem virtuellen Linux-Computer | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Apache Tomcat7 unter Verwendung eines virtuellen Azure-Computers (VM) mit Linux einrichten können."
+description: Erfahren Sie, wie Sie Apache Tomcat7 unter Verwendung eines virtuellen Azure-Computers (VM) mit Linux einrichten können.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 45ecc89c-1cb0-4e80-8944-bd0d0bbedfdc
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: f3bd3167c9a879a876774e5d91fbb10fd340c6a8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 161a56a019f8c2c8ce5e3890e73ad5c5710e7b82
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Einrichten von Tomcat7 auf einem virtuellen Linux-Computer mit Microsoft Azure
 Apache Tomcat (oder einfach Tomcat, früher auch Jakarta Tomcat) ist ein Open-Source-Webserver und Servlet-Container und wurde von der Apache Software Foundation (ASF) entwickelt. Tomcat implementiert das Java-Servlet und die Java Server Pages-Spezifikationen (JSP) von Sun Microsystems. Tomcat bietet eine reine Java-HTTP-Webserverumgebung, in der Java-Code ausgeführt wird. In der einfachsten Konfiguration wird Tomcat in einem einzelnen Betriebssystem-Prozess ausgeführt. Dieser Prozess führt eine Java Virtual Machine (JVM) aus. Jede HTTP-Anforderung von einem Browser an Tomcat wird als separater Thread im Tomcat-Prozess verarbeitet.  
@@ -54,7 +54,7 @@ Ein weiterer Vorteil dieser Methode ist, dass Sie nicht verschiedene Kennwörter
 
 Führen Sie die folgenden Schritte aus, um den SSH-Authentifizierungsschlüssel zu generieren.
 
-1. Laden und installieren Sie PuTTYgen von folgender Adresse: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. Laden Sie PuTTYgen unter [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) herunter, und installieren Sie das Tool.
 2. Führen Sie „Puttygen.exe“ aus.
 3. Klicken Sie auf **Generieren**, um die Schlüssel zu generieren. Während des Vorgangs können Sie den Zufallsfaktor durch Bewegen der Maus über den leeren Bereich im Fenster erhöhen.  
    ![Screenshots des PuTTY-Schlüsselgenerators mit Schaltfläche zum Generieren eines neuen Schlüssels][1]
@@ -184,7 +184,7 @@ Geben Sie den folgenden Befehl für die Installation von Tomcat7 ein.
 Wenn Sie Tomcat7 nicht verwenden, verwenden Sie die entsprechende Variante dieses Befehls.  
 
 #### <a name="confirm-that-tomcat7-installation-is-successful"></a>Bestätigen, dass die Tomcat7-Installation erfolgreich war
-Um zu überprüfen, ob Tomcat7 erfolgreich installiert wurde, navigieren Sie zum DNS-Namen Ihres Tomcat-Servers. Für das Beispiel in diesem Artikel lautet die URL so: http://tomcatexample.cloudapp.net/. Wenn sinngemäß die folgende Meldung angezeigt wird, ist Tomcat7 ordnungsgemäß installiert.
+Um zu überprüfen, ob Tomcat7 erfolgreich installiert wurde, navigieren Sie zum DNS-Namen Ihres Tomcat-Servers. In diesem Artikel lautet die Beispiel-URL http://tomcatexample.cloudapp.net/. Wenn sinngemäß die folgende Meldung angezeigt wird, ist Tomcat7 ordnungsgemäß installiert.
 ![Meldung zur erfolgreichen Installation von Tomcat7][16]
 
 ### <a name="install-other-tomcat7-components"></a>Installieren anderer Tomcat7-Komponenten
@@ -231,7 +231,7 @@ Nach der Bearbeitung dieser Datei sollten Sie Tomcat7-Dienste mit dem folgenden 
 
     sudo /etc/init.d/tomcat7 restart  
 
-Öffnen Sie den Browser, und geben Sie die URL **http://<your tomcat server DNS name>/manager/html** ein. Für das Beispiel in diesem Artikel ist die URL http://tomcatexample.cloudapp.net/manager/html.  
+Öffnen Sie den Browser, und geben Sie die URL **http://<your tomcat server DNS name>/manager/html** ein. Für das Beispiel in diesem Artikel lautet die URL http://tomcatexample.cloudapp.net/manager/html.  
 
 Nachdem die Verbindung hergestellt wurde, müsste in etwa Folgendes angezeigt werden:   
 ![Screenshot von Tomcat Web Application Manager][18]

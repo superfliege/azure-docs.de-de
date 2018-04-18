@@ -1,11 +1,11 @@
 ---
-title: "Überprüfen des Status, Einrichten der Protokollierung und Empfangen von Warnungen – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Überwachen des Status und der Leistung für Logik-Apps, Protokollieren von Diagnosedaten und Einrichten von Warnungen"
+title: Überprüfen des Status, Einrichten der Protokollierung und Empfangen von Warnungen – Azure Logic Apps | Microsoft-Dokumentation
+description: Überwachen des Status und der Leistung für Logik-Apps, Protokollieren von Diagnosedaten und Einrichten von Warnungen
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 0dc8bc81ca6125d40d1784ce39fd0facaf9e736a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: fdc986fb32225f94e5a257c46a7b943abc0edf8f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps
 
@@ -76,9 +76,9 @@ Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfäl
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>Aktivieren der Diagnoseprotokollierung für Ihre Logik-App
 
-Wenn Sie ein umfangreicheres Debuggen mit Runtimedetails und -ereignissen durchführen möchten, können Sie die Diagnoseprotokollierung mit [Azure Log Analytics](../log-analytics/log-analytics-overview.md) einrichten. Log Analytics ist ein Dienst in [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), der Ihre cloudbasierten und lokalen Umgebungen überwacht, um Sie beim Sicherstellen der Verfügbarkeit und Leistung zu unterstützen. 
+Wenn Sie ein umfangreicheres Debuggen mit Runtimedetails und -ereignissen durchführen möchten, können Sie die Diagnoseprotokollierung mit [Azure Log Analytics](../log-analytics/log-analytics-overview.md) einrichten. Log Analytics ist ein Dienst in Azure, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. 
 
-Sie müssen über einen OMS-Arbeitsbereich verfügen, bevor Sie beginnen können. Informieren Sie sich, wie Sie [einen OMS-Arbeitsbereich erstellen](../log-analytics/log-analytics-get-started.md).
+Sie müssen über einen Log Analytics-Arbeitsbereich verfügen, bevor Sie beginnen. Erfahren Sie mehr über das [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md).
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Logik-App, und wählen Sie sie aus. 
 
@@ -90,16 +90,16 @@ Sie müssen über einen OMS-Arbeitsbereich verfügen, bevor Sie beginnen können
 
    ![Aktivieren der Diagnoseprotokolle](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
-4. Wählen Sie anschließend den OMS-Arbeitsbereich und die Ereigniskategorie wie gezeigt für die Protokollierung aus:
+4. Wählen Sie anschließend den Log Analytics-Arbeitsbereich und die Ereigniskategorie für die Protokollierung wie hier gezeigt aus:
 
    1. Wählen Sie **An Log Analytics senden** aus. 
    2. Wählen Sie unter **Log Analytics** die Option **Konfigurieren** aus. 
-   3. Wählen Sie unter **OMS-Arbeitsbereiche** den OMS-Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
+   3. Wählen Sie unter **OMS-Arbeitsbereiche** den Log Analytics-Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
    4. Wählen Sie unter **Protokoll** die Kategorie **WorkflowRuntime** aus.
    5. Wählen Sie das Metrikintervall aus.
    6. Wenn Sie fertig sind, wählen Sie **Speichern** aus.
 
-   ![Auswählen des OMS-Arbeitsbereichs und der Daten für die Protokollierung](media/logic-apps-monitor-your-logic-apps/send-diagnostics-data-log-analytics-workspace.png)
+   ![Auswählen des Log Analytics-Arbeitsbereichs und der Daten für die Protokollierung](media/logic-apps-monitor-your-logic-apps/send-diagnostics-data-log-analytics-workspace.png)
 
 Nun können Sie nach Ereignissen und anderen Daten für Triggerereignisse, Ausführungsereignisse und Aktionsereignisse suchen.
 
@@ -113,23 +113,23 @@ Führen Sie die hier angegebenen Schritte aus, um nach Ereignissen in Ihrer Logi
 
    ![Auswählen von „Log Analytics“](media/logic-apps-monitor-your-logic-apps/browseloganalytics.png)
 
-2. Wählen Sie unter **Log Analytics** Ihren OMS-Arbeitsbereich aus. 
+2. Wählen Sie unter **Log Analytics** Ihren Log Analytics-Arbeitsbereich aus. 
 
-   ![Auswählen Ihres OMS-Arbeitsbereichs](media/logic-apps-monitor-your-logic-apps/selectla.png)
+   ![Auswählen Ihres Log Analytics-Arbeitsbereichs](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
 3. Wählen Sie unter **Verwaltung** die Option **OMS-Portal**.
 
    ![Auswählen von „OMS-Portal“](media/logic-apps-monitor-your-logic-apps/omsportalpage.png)
 
-4. Wählen Sie auf Ihrer OMS-Startseite die Option **Protokollsuche**.
+4. Klicken Sie auf der Startseite auf **Protokollsuche**.
 
-   ![Auswählen von „Protokollsuche“ auf Ihrer OMS-Startseite](media/logic-apps-monitor-your-logic-apps/logsearch.png)
+   ![Klicken auf „Protokollsuche“ auf der Startseite](media/logic-apps-monitor-your-logic-apps/logsearch.png)
 
    Oder
 
-   ![Auswählen von „Protokollsuche“ im OMS-Menü](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
+   ![Auswählen von „Protokollsuche“ im Menü](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
 
-5. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden in OMS mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. 
+5. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. 
 
    Wenn Sie beispielsweise nach den ersten 10 Ereignissen suchen möchten, müssen Sie diese Suchabfrage eingeben und auswählen: **search Category == "WorkflowRuntime" | limit 10**
 

@@ -11,11 +11,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: routlaw
 ms.custom: mvc
-ms.openlocfilehash: 08906939ecc80999de94ad7e7141081f959fb6f2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ca4a6cb886b0453848dc7b29e15de2063878a65d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-and-jenkins"></a>Azure und Jenkins
 
@@ -31,7 +31,7 @@ Hosten Sie Jenkins in Azure, um Ihre Buildautomatisierung zu zentralisieren und 
 - Mit [Azure Virtual Machines](/azure/virtual-machines/linux/overview). In unserem [Tutorial](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd) finden Sie Informationen zum Erstellen einer Jenkins-Instanz auf einem virtuellen Computer.
 - Informationen zu einem Kubernetes-Cluster im [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) finden Sie in unserer [Anleitung](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
-Überwachen und verwalten Sie Ihre Azure Jenkins-Bereitstellung mit [Log Analytics](/azure/log-analytics/log-analytics-overview), [Operations Management Suite](/azure/operations-management-suite/operations-management-suite-overview) und der [Azure-Befehlszeilenschnittstelle](/cli/azure).
+Überwachen und verwalten Sie Ihre Azure Jenkins-Bereitstellung mit [Log Analytics](/azure/log-analytics/log-analytics-overview) und der [Azure-Befehlszeilenschnittstelle](/cli/azure).
 
 ## <a name="scale-your-build-automation-on-demand"></a>Skalieren der Buildautomatisierung nach Bedarf
 

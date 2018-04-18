@@ -12,15 +12,15 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 4e50a1be3437ab1b027c1ca0f160402239e13e92
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 96bc75e15c99897414fad8c138c8a34ef790af21
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Neuer DBA in der Cloud – Verwalten Ihrer Datenbank in Azure SQL-Datenbank
 
-Der Umstieg von der herkömmlichen, selbstverwalteten, automatisch gesteuerten Umgebung auf eine PaaS-Umgebung kann anfangs eine Herausforderung darstellen. Als App-Entwickler oder DBA möchten Sie wissen, welche Plattformfunktionen in erster Linie dafür sorgen, dass Ihre Anwendung verfügbar, leistungsfähig, sicher und zuverlässig ist – und zwar zu jeder Zeit. Dieser Artikel soll Aufklärung leisten. Hier werden die Ressourcen kurz zusammengefasst, und Sie erhalten hilfreiche Informationen zur optimalen Verwendung der wichtigsten Funktionen von SQL-Datenbank. So können Sie Ihre Anwendung effizient verwalten und ausführen, um optimale Ergebnisse in der Cloud zu erzielen. Die typische Zielgruppe für diesen Artikel sind Nutzer, die
+Der Umstieg von der herkömmlichen, selbstverwalteten, automatisch gesteuerten Umgebung auf eine PaaS-Umgebung kann anfangs eine Herausforderung darstellen. Als App-Entwickler oder DBA möchten Sie wissen, welche Plattformfunktionen in erster Linie dafür sorgen, dass Ihre Anwendung verfügbar, leistungsfähig, sicher und zuverlässig ist – und zwar zu jeder Zeit. Dieser Artikel soll Aufklärung leisten. Hier werden die Ressourcen kurz zusammengefasst, und Sie erhalten hilfreiche Informationen zur optimalen Verwendung der wichtigsten Funktionen von SQL-Datenbank. So können Sie Ihre Anwendung effizient verwalten und ausführen, um optimale Ergebnisse in der Cloud zu erzielen. Die typische Zielgruppe für diesen Artikel sind Nutzer, die 
 - die Migration ihrer Anwendung(en) zu Azure SQL DB evaluieren – Modernisierung der Anwendung(en)
 - ihre Anwendung(en) gerade migrieren – Szenario für laufende Migration
 - die Migration zu Azure SQL DB gerade abgeschlossen haben – Neuer DBA in der Cloud

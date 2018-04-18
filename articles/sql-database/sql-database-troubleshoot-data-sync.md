@@ -2,18 +2,18 @@
 title: Behandeln von Problemen mit der Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie häufige Probleme mit der Azure SQL-Datensynchronisierung (Vorschauversion) behandeln.
 services: sql-database
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: a24e16abd78a89d6143c00fc08a3ef91d7dd8202
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Behandeln von Problemen mit der SQL-Datensynchronisierung (Vorschau)
 
@@ -442,7 +442,7 @@ Weitere Informationen zur SQL-Datensynchronisierung (Vorschauversion) finden Sie
 -   [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung (Vorschauversion)](sql-database-sync-data.md)  
 -   [Einrichten der Azure SQL-Datensynchronisierung (Vorschauversion)](sql-database-get-started-sql-data-sync.md)  
 -   [Bewährte Methoden für die Azure SQL-Datensynchronisierung (Vorschauversion)](sql-database-best-practices-data-sync.md)  
--   [Überwachen der Azure SQL-Datensynchronisierung (Vorschauversion) mit OMS Log Analytics](sql-database-sync-monitor-oms.md)  
+-   [Überwachen der Azure SQL-Datensynchronisierung (Vorschauversion) mit Log Analytics](sql-database-sync-monitor-oms.md)  
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung (Vorschauversion) veranschaulichen:  
     -   [Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren Azure SQL-­Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](scripts/sql-database-sync-data-between-azure-onprem.md)  

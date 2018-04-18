@@ -2,11 +2,11 @@
 title: Verschieben von Apps aus BizTalk Services nach Azure Logic Apps | Microsoft-Dokumentation
 description: Verschieben oder Migrieren von Azure BizTalk Services (MABS) zu Azure Logic Apps
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jonfancey
 manager: anneta
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: jonfan; LADocs
-ms.openlocfilehash: 6e00e62e60c059a16731a77e529b4b93f50802e9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f5ad003189d70216198f2d5c7719a971c16d5479
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="move-from-biztalk-services-to-azure-logic-apps"></a>Verschieben von BizTalk Services zu Azure Logic Apps
 
@@ -130,7 +130,7 @@ Diese Aktionen werden im Gegensatz zu BizTalk Services von den Transportprotokol
 
 ## <a name="manage-and-monitor"></a>Verwalten und Überwachen
 
-In BizTalk Services bot ein dediziertes Portal Nachverfolgungsfunktionen für die Überwachung und Problembehandlung an. Logic Apps bietet umfangreichere Nachverfolgungs- und Überwachungsfunktionen im [Azure-Portal](../logic-apps/logic-apps-monitor-your-logic-apps.md) und über die [B2B-Lösung der Operations Management Suite](../logic-apps/logic-apps-monitor-b2b-message.md). Dies umfasst auch eine mobile App für die Überwachung von unterwegs.
+In BizTalk Services bot ein dediziertes Portal Nachverfolgungsfunktionen für die Überwachung und Problembehandlung an. Logic Apps bietet umfangreichere Nachverfolgungs- und Überwachungsfunktionen im [Azure-Portal](../logic-apps/logic-apps-monitor-your-logic-apps.md). Dies umfasst auch eine mobile App für die Überwachung unterwegs.
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 

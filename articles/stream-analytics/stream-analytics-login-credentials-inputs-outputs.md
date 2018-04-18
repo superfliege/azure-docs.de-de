@@ -1,24 +1,19 @@
 ---
-title: 'Stream Analytics: Austauschen von Anmeldeinformationen für Ein- und Ausgaben | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie die Anmeldeinformationen für Stream Analytics-Ein- und Ausgaben aktualisieren können.
-keywords: Anmeldeinformationen
+title: Rotieren der Anmeldeinformationen in Azure Stream Analytics-Aufträgen
+description: In diesem Artikel wird beschrieben, wie Sie die Anmeldeinformationen für Eingabe- und Ausgabesenken in Azure Stream Analytics-Aufträgen aktualisieren.
 services: stream-analytics
-documentationcenter: ''
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: 42ae83e1-cd33-49bb-a455-a39a7c151ea4
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 01/11/2018
-ms.author: sngun
-ms.openlocfilehash: d01e5d9f0bbfe6ca3ef8511aeb813cead3809f04
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: b49b4fecb6be70987e7e6736d78f224c03f719bf
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Austauschen von Anmeldeinformationen für Ein- und Ausgaben eines Stream Analytics-Auftrags
 

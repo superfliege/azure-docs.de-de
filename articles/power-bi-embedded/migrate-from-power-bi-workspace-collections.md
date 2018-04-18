@@ -1,12 +1,12 @@
 ---
 title: Migrieren von Power BI-Arbeitsbereichssammlungsinhalten zu Power BI Embedded | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Power BI-Arbeitsbereichssammlungen zu Power BI Embedded migrieren und die Einbettung in Apps durchführen."
+description: Erfahren Sie, wie Sie Power BI-Arbeitsbereichssammlungen zu Power BI Embedded migrieren und die Einbettung in Apps durchführen.
 services: power-bi-embedded
-documentationcenter: 
+documentationcenter: ''
 author: guyinacube
 manager: erikre
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
 ms.openlocfilehash: 069f31c8213bd0d8586f7ca50e543acfdad8a2b3
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>Migrieren von Power BI-Arbeitsbereichssammlungsinhalten zu Power BI Embedded
 
@@ -117,13 +117,13 @@ Zwischengespeicherte DataSets beziehen sich auf PBIX-Dateien, die importierte Da
 
 **Ablauf**
 
-1. Rufen Sie „GET https://api.powerbi.com/v1.0/collections/{Sammlungs-ID}/workspaces/{Arbeitsbereichs-ID}/datasets/{DataSet-ID}/Default.GetBoundGatewayDataSources“ auf, und speichern Sie die empfangene Verbindungszeichenfolge.
+1. Rufen Sie „GET https://api.powerbi.com/v1.0/collections/{collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources“ auf, und speichern Sie die zurückgegebene Verbindungszeichenfolge.
 2. Rufen Sie die Download PBIX-API über Ihren Arbeitsbereich der Power BI-Arbeitsbereichssammlung auf.
 3. Speichern Sie die PBIX-Datei.
 4. Rufen Sie die Import PBIX-API für Ihren Power BI Embedded-Arbeitsbereich auf.
-5. Aktualisieren Sie die Verbindungszeichenfolge durch Aufrufen von „POST https://api.powerbi.com/v1.0/myorg/datasets/{DataSet-ID}/Default.SetAllConnections“.
-6. Rufen Sie die Gateway-ID und Datenquellen-ID durch Aufrufen von „GET https://api.powerbi.com/v1.0/myorg/datasets/{DataSet-ID}/Default.GetBoundGatewayDataSources“ ab.
-7. Aktualisieren Sie die Anmeldeinformationen des Benutzers durch Aufrufen von „PATCH https://api.powerbi.com/v1.0/myorg/gateways/{Gateway-ID}/datasources/{Datenquellen-ID}“.
+5. Aktualisieren Sie die Verbindungszeichenfolge durch Aufrufen von „POST https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.SetAllConnections“.
+6. Rufen Sie die Gateway-ID und Datenquellen-ID durch Aufrufen von „GET https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.GetBoundGatewayDataSources“ ab.
+7. Aktualisieren Sie die Anmeldeinformationen des Benutzers durch Aufrufen von „PATCH https://api.powerbi.com/v1.0/myorg/gateways/{gateway_id}/datasources/{datasource_id}“.
 
 #### <a name="old-dataset-and-reports"></a>Altes DataSet und alte Berichte
 
@@ -193,4 +193,4 @@ In den Power BI-Arbeitsbereichssammlungen sind einige Löschvorgänge erforderli
 
 Herzlichen Glückwunsch. Ihre Anwendung wurde nun zu Power BI Embedded migriert. Informationen zum Einbetten von Power BI-Dashboards, -Berichten und -DataSets finden Sie unter [Einbetten von Power BI-Dashboards, -Berichten und -Kacheln](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/).
 
-Weitere Fragen? [Fragen Sie die Power BI-Community](http://community.powerbi.com/)
+Weitere Fragen? [Fragen Sie die Power BI-Community](http://community.powerbi.com/).

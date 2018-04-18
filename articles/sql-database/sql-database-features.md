@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: d8adf097d6bee404cff8e7b15782c6c59531a897
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bca2629ea4a0c859e92d829b49072fbdf3f9ffe2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Funktionsvergleich: Azure SQL-Datenbank und SQL Server 
 
@@ -45,7 +45,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Erfassung geänderter Daten](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nein  | Ja |
 | [Änderungsnachverfolgung](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | Ja |Ja |
 | [Sortierungsanweisungen](https://docs.microsoft.com/sql/t-sql/statements/collations) | Ja | Ja |
-| [ColumnStore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Ja – [Premium-Ebene und Standardebene – S3 und höher](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ja |
+| [ColumnStore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Ja – [Premium-Tarif, Standard-Tarif – mindestens S3, Tarif „Universell“ und Tarif „Unternehmenskritisch“](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ja |
 | [Common Language Runtime (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nein  | Ja – siehe [CLR](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [Eigenständige Datenbanken](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Ja | Ja |
 | [Eigenständige Benutzer](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Ja | Ja |
@@ -82,7 +82,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) | Ja | Nein – Sie können vollständige Sicherungen vom Typ „COPY_ONLY“ wiederherstellen, die Sie in regelmäßigen Abständen erstellen – siehe [Sicherung](sql-database-managed-instance-transact-sql-information.md#backup) und [Wiederherstellung](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
 | [Georeplikation](sql-database-geo-replication-overview.md) | Ja | Nein  |
 | [Graph-Verarbeitung](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Ja | Ja |
-| [In-Memory-Optimierung](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ja ([nur Premium Edition](sql-database-in-memory.md)) | Nein  |
+| [In-Memory-Optimierung](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ja – [nur Tarife „Premium“ und „Unternehmenskritisch“](sql-database-in-memory.md) | Nein  |
 | [Unterstützung von JSON-Daten](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | Ja | Ja |
 | [Sprachelemente](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Die meisten (siehe einzelne Elemente) |  Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md) |
 | [Verknüpfte Server](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nein (siehe [Elastische Abfrage](sql-database-elastic-query-horizontal-partitioning.md)) | Nur mit SQL Server |

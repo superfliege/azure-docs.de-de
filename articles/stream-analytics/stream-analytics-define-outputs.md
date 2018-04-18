@@ -1,26 +1,21 @@
 ---
-title: 'Stream Analytics-Ausgaben: Optionen für Speicher, Analyse | Microsoft-Docs'
+title: Ausgabetypen von Azure Stream Analytics-Aufträgen
 description: Erfahren Sie, wie Sie Optionen für Stream Analytics-Datenausgaben einschließlich Power BI für Analyseergebnisse einsetzen.
-keywords: Datentransformation, Analyseergebnisse, Datenspeicheroptionen
-services: stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage
-documentationcenter: ''
-author: SnehaGunda
+services: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: ba6697ac-e90f-4be3-bafd-5cfcf4bd8f1f
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 02/18/2017
-ms.author: sngun
-ms.openlocfilehash: a641c7e5e792b020be54a2ebc4bac63b545ce71e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: afaadc12d056f42a75795073d480fe26757649d8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="stream-analytics-outputs-options-for-storage-analysis"></a>Stream Analytics-Ausgaben: Optionen für Speicher, Analyse
+# <a name="stream-analytics-outputs-options-for-storage-and-analysis"></a>Stream Analytics-Ausgaben: Optionen für Speicher und Analyse
 Überlegen Sie beim Erstellen eines Stream Analytics-Auftrags, wie die sich ergebenden Daten genutzt werden. Wie können Sie die Ergebnisse des Stream Analytics-Auftrags anzeigen, und wo können Sie sie speichern?
 
 Um verschiedene Anwendungsmuster zu ermöglichen, stellt Azure Stream Analytics verschiedene Optionen zum Speichern der Ausgabe und zum Anzeigen von Analyseergebnissen bereit. Dadurch wird sowohl einfaches Anzeigen der Auftragsausgabe als auch Flexibilität bei der Nutzung und Speicherung der Auftragsausgabe für Data Warehousing und andere Zwecke erreicht. Jede Ausgabe, die im Auftrag konfiguriert wird, muss vorhanden sein, bevor der Auftrag gestartet wird und Ereignisse übertragen werden. Wird beispielsweise Blob Storage als Ausgabe verwendet, erstellt der Auftrag nicht automatisch ein Speicherkonto. Erstellen Sie ein Speicherkonto, bevor der Stream Analytics-Auftrag gestartet wird.
@@ -342,7 +337,7 @@ Zudem wird in Fällen, in denen kein Ereignis in einem Zeitfenster auftritt, kei
 
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben nun Stream Analytics kennengelernt, einen verwalteten Dienst für Stream Analytics für Daten aus dem Internet der Dinge. Weitere Informationen zu diesem Dienst finden Sie unter:

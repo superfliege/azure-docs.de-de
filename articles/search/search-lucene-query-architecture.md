@@ -1,10 +1,10 @@
 ---
 title: Architektur des Volltext-Suchmoduls (Lucene) in Azure Search | Microsoft-Dokumentation
-description: "Enthält eine Beschreibung der Konzepte für die Lucene-Abfrageverarbeitung und den Dokumentabruf für die Volltextsuche von Azure Search."
+description: Enthält eine Beschreibung der Konzepte für die Lucene-Abfrageverarbeitung und den Dokumentabruf für die Volltextsuche von Azure Search.
 services: search
 manager: jhubbard
 author: yahnoosh
-documentationcenter: 
+documentationcenter: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
 ms.openlocfilehash: 0b2e66cd40c1b49832b865e5bf59edcf78996eb8
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Funktionsweise der Volltextsuche in Azure Search
 
@@ -363,7 +363,7 @@ In einem Beispiel ist dargestellt, warum dies wichtig ist. Platzhaltersuchen mit
 Es gibt zwei Möglichkeiten, wie Sie Relevanzbewertungen in Azure Search optimieren können:
 
 1. Mit **Bewertungsprofilen** werden Dokumente in der Rangfolgenliste der Ergebnisse basierend auf einer Gruppe von Regeln höhergestuft. In unserem Beispiel können wir Dokumente, für die sich Übereinstimmungen im Feld „title“ ergeben, als relevanter als Dokumente einstufen, für die sich Übereinstimmungen im Feld „description“ ergeben. Wenn unser Index über ein Preisfeld für jedes Hotel verfügen würde, könnten wir zusätzlich Dokumente mit einem niedrigeren Preis höherstufen. Lesen Sie die weiteren Informationen zum [Hinzufügen von Bewertungsprofilen zu einem Suchindex](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index).
-2. Beim **Term Boosting** („Begriffsverstärkung“, nur in der vollständigen Lucene-Abfragesyntax verfügbar) wird der Verstärkungsoperator `^` bereitgestellt, der auf alle Teile der Abfragestruktur angewendet werden kann. In unserem Beispiel, anstatt auf das Präfix suchen *air-condition*\*, eine konnte suchen Sie nach einer exakten Begriff *air-condition* oder das Präfix, aber die Dokumente, die nach dem genauen Begriff entsprechen sind durch Anwenden von Boost abzufragende Begriff höher eingestuft: * Air-Bedingung ^ 2 || AIR-Condition **. [Hier finden Sie weitere Informationen zum „Term Boosting“](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. Beim **Term Boosting** („Begriffsverstärkung“, nur in der vollständigen Lucene-Abfragesyntax verfügbar) wird der Verstärkungsoperator `^` bereitgestellt, der auf alle Teile der Abfragestruktur angewendet werden kann. In unserem Beispiel könnten wir anstatt nach dem Präfix *air-condition*\* auch entweder nach dem exakten Begriff *air-condition* oder dem Präfix suchen. Dokumente, für die sich eine Übereinstimmung mit dem exakten Begriff ergibt, werden dann höher eingestuft, indem die Begriffsabfrage verstärkt wird: *air-condition^2||air-condition**. [Hier finden Sie weitere Informationen zum „Term Boosting“](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Durchführen von Bewertungen in einem verteilten Index

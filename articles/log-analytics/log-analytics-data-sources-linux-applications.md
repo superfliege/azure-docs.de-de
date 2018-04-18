@@ -1,8 +1,8 @@
 ---
 title: Erfassen der Linux-Anwendungsleistung in OMS Log Analytics | Microsoft-Dokumentation
-description: "Dieser Artikel bietet Einzelheiten zum Konfigurieren des OMS-Agents für Linux, um Leistungsindikatoren für MySQL und Apache HTTP Server zu erfassen."
+description: Dieser Artikel bietet Einzelheiten zum Konfigurieren des OMS-Agents für Linux, um Leistungsindikatoren für MySQL und Apache HTTP Server zu erfassen.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Log Analytics 
 Dieser Artikel bietet Einzelheiten zum Konfigurieren des [OMS-Agents für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux), um Leistungsindikatoren für bestimmte Anwendungen zu erfassen.  Folgende Anwendungen sind in diesem Artikel enthalten:  
@@ -76,7 +76,7 @@ In der Installation von MySQL-OMI-Anbieter enthalten ist ein MySQL-OMI-Authentif
 
 Die folgende Tabelle enthält Details zur Syntax für die Verwendung von mycimprovauth.
 
-| Vorgang | Beispiel | Beschreibung
+| Vorgang | Beispiel | BESCHREIBUNG
 |:--|:--|:--|
 | autoupdate *false\|true* | mycimprovauth autoupdate false | Legt fest, ob die Authentifizierungsdatei bei Neustart oder bei Aktualisierung automatisch aktualisiert wird |
 | default *bind-address Benutzername Kennwort* | mycimprovauth default 127.0.0.1 root pwd | Legt die Standardinstanz in der MySQL-OMI-Authentifizierungsdatei fest<br>Das Kennwortfeld sollte als Nur-Text eingegeben werden, das Kennwort in der MySQL-OMI-Authentifizierungsdatei ist Base 64-codiert. |

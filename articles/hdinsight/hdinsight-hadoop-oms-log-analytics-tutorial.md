@@ -1,8 +1,8 @@
 ---
-title: "Verwenden von Log Analytics zum Überwachen von Azure HDInsight-Clustern | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Azure Log Analytics zum Überwachen von Aufträgen verwenden, die in einem HDInsight-Cluster ausgeführt werden."
+title: Verwenden von Log Analytics zum Überwachen von Azure HDInsight-Clustern | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure Log Analytics zum Überwachen von Aufträgen verwenden, die in einem HDInsight-Cluster ausgeführt werden.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 2c43b9aabda56e1204870575e86934bf93d05882
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: be71b065999c30546432895804df8633da21b43e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Verwenden von Azure Log Analytics zum Überwachen von HDInsight-Clustern
 
 Erfahren Sie, wie Sie Azure Log Analytics zum Überwachen von Hadoop-Clustervorgängen in HDInsight verwenden.
 
-[Log Analytics](../log-analytics/log-analytics-overview.md) ist ein Dienst in [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen. 
+[Log Analytics](../log-analytics/log-analytics-overview.md) ist ein Dienst, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Ein Azure-Abonnement**. Für dieses Tutorial wird ein Azure-Abonnement benötigt. Weitere Informationen finden Sie unter [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/free).
 
-* **Ein Azure HDInsight-Cluster**. Derzeit können Sie Azure Operations Management Suite mit den folgenden HDInsight-Clustertypen verwenden:
+* **Ein Azure HDInsight-Cluster**. Derzeit können Sie Log Analytics mit den folgenden HDInsight-Cluster-Typen verwenden:
 
     * Hadoop
     * hbase

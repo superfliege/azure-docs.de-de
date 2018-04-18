@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 04/02/2018
 ms.author: kumud
-ms.openlocfilehash: 15bbd32d982bdefc5665421b828ce0c8234b7257
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 684c226e566d6a5a2db456d24ad2fc5811f08067
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Übersicht: Azure Standard Load Balancer
 
@@ -43,7 +43,7 @@ Load Balancer-Ressourcen sind Objekte, in denen Sie formulieren können, wie Azu
 
 ## <a name="why-use-standard-load-balancer"></a>Gründe zum Verwenden von Standard Load Balancer
 
-Sie können Standard Load Balancer für das gesamte Spektrum virtueller Rechenzentren von kleinen Bereitstellungen bis hin zu großen und komplexen Architekturen mit mehreren Zonen verwenden.
+Standard Load Balancer ermöglicht Ihnen das Skalieren Ihrer Anwendungen sowie die Bereitstellung von Hochverfügbarkeit für kleine Bereitstellungen bis hin zu großen komplexen Architekturen mit mehreren Zonen.
 
 In der folgenden Tabelle finden Sie einen Überblick über die Unterschiede zwischen Standard Load Balancer und Basic Load Balancer:
 
@@ -76,9 +76,6 @@ Der Back-End-Pool kann eigenständige virtuelle Computer, Verfügbarkeitsgruppen
 Wenn Sie überlegen, wie Sie Ihren Back-End-Pool gestalten, können Sie die Anzahl der einzelnen Back-End-Pool-Ressourcen so gering wie möglich halten, um die Dauer von Verwaltungsvorgängen weiter zu optimieren.  Es gibt keinen Unterschied in der Datenebenenleistung oder -skalierung.
 
 ## <a name="az"></a>Verfügbarkeitszonen
-
->[!NOTE]
-> Wenn Sie die [Vorschauversion für Verfügbarkeitszonen](https://aka.ms/availabilityzones) mit Standard Load Balancer verwenden möchten, müssen Sie [sich für Verfügbarkeitszonen](https://aka.ms/availabilityzones) registrieren.
 
 Standard Load Balancer unterstützt zusätzliche Funktionen in Regionen, in denen Verfügbarkeitszonen verfügbar sind.  Diese Funktionen ergänzen alle Funktionen, die Standard Load Balancer bereitstellt.  Verfügbarkeitszonenkonfigurationen sind für einen öffentlichen und internen Standard Load Balancer verfügbar.
 
@@ -229,7 +226,7 @@ Standard Load Balancer ist ein Produkt, das auf Basis einer Reihe von konfigurie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [Standard Load Balancer und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
+- Weitere Informationen zu [Standard Load Balancer und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md)
 - Weitere Informationen zu [Verfügbarkeitszonen](../availability-zones/az-overview.md).
 - Weitere Informationen zu [Diagnosen für Standard Load Balancer](load-balancer-standard-diagnostics.md).
 - Weitere Informationen zu [unterstützten mehrdimensionalen Metriken](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) für Diagnosen in [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
@@ -238,6 +235,6 @@ Standard Load Balancer ist ein Produkt, das auf Basis einer Reihe von konfigurie
 - Informationen zur Verwendung von [Load Balancer mit mehreren Front-Ends](load-balancer-multivip-overview.md).
 - Weitere Informationen zu [virtuellen Netzwerken](../virtual-network/virtual-networks-overview.md).
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
-- Weitere Informationen zu [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
+- Weitere Informationen zu [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md)
 - Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) in Azure.
 - Weitere Informationen zu [Load Balancer](load-balancer-overview.md).

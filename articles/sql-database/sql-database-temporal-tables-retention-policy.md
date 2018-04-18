@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 04/01/2018
 ms.author: bonova
-ms.openlocfilehash: 36ce6889cccbf5ae7df519c5c73846f12eed4a08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3175236306f05831a78ae8ca01911d0c5d19f893
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Verwalten von Verlaufsdaten in temporalen Tabellen mit einer Aufbewahrungsrichtlinie
 Temporale Tabellen können die Größe einer Datenbank mehr erhöhen als reguläre Tabellen, insbesondere, wenn Sie Verlaufsdaten für einen längeren Zeitraum beibehalten. Daher stellt eine Aufbewahrungsrichtlinie für Verlaufsdaten einen wichtigen Aspekt der Planung und Verwaltung des Lebenszyklus jeder temporalen Tabelle dar. Temporale Tabellen in Azure SQL-Datenbank verfügen über einen benutzerfreundlichen Aufbewahrungsmechanismus, der Sie bei dieser Aufgabe unterstützt.
@@ -102,7 +102,7 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 ## <a name="how-sql-database-deletes-aged-rows"></a>Wie löscht SQL-Datenbank veraltete Zeilen?
 Der Bereinigungsprozess hängt vom Indexlayout der Verlaufstabelle ab. Zu beachten ist, dass *nur Verlaufstabellen mit einem gruppierten Index (B-Struktur oder Columnstore) mit einer unendlichen Aufbewahrungsrichtlinie konfiguriert werden können*. Es wird ein Hintergrundtask erstellt, um veraltete Daten für alle temporalen Tabellen mit begrenzter Beibehaltungsdauer zu bereinigen.
-Die Bereinigungslogik für den gruppierten Index für Rowstore (B-Struktur) löscht veraltete Zeilen in kleineren Blöcken (max. 10 K), was die Belastung des Datenbankprotokolls und des E/A-Subsystems minimiert. Zwar verwendet die Bereinigungslogik den benötigten B-Strukturindex, die Löschreihenfolge der Zeilen, deren Alter die Beibehaltungsdauer übersteigt, kann jedoch nicht sicher garantiert werden. *Verwenden Sie in Ihren Anwendungen daher keine Abhängigkeit von der Bereinigungsreihenfolge*.
+Die Bereinigungslogik für den gruppierten Index für Rowstore (B-Struktur) löscht veraltete Zeilen in kleineren Blöcken (max. 10.000), was die Belastung des Datenbankprotokolls und des E/A-Subsystems minimiert. Zwar verwendet die Bereinigungslogik den benötigten B-Strukturindex, die Löschreihenfolge der Zeilen, deren Alter die Beibehaltungsdauer übersteigt, kann jedoch nicht sicher garantiert werden. *Verwenden Sie in Ihren Anwendungen daher keine Abhängigkeit von der Bereinigungsreihenfolge*.
 
 Der Bereinigungstask für den gruppierten Columnstore entfernt ganze [Zeilengruppen](https://msdn.microsoft.com/library/gg492088.aspx) gleichzeitig (die üblicherweise jeweils 1 Mio. Zeilen enthalten). Dies ist sehr effizient, vor allem dann, wenn mit einer hohen Geschwindigkeit Verlaufsdaten generiert werden.
 

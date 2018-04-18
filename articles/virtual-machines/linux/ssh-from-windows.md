@@ -1,11 +1,11 @@
 ---
-title: "Verwenden von SSH-Schlüsseln mit Windows für virtuelle Linux-Computer | Microsoft Docs"
-description: "Erfahren Sie, wie Sie SSH-Schlüssel auf einem Windows-Computer erstellen und verwenden, um Verbindungen mit virtuellen Linux-Computern in Azure herzustellen."
+title: Verwenden von SSH-Schlüsseln mit Windows für virtuelle Linux-Computer | Microsoft Docs
+description: Erfahren Sie, wie Sie SSH-Schlüssel auf einem Windows-Computer erstellen und verwenden, um Verbindungen mit virtuellen Linux-Computern in Azure herzustellen.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2cacda3b-7949-4036-bd5d-837e8b09a9c8
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: danlep
-ms.openlocfilehash: 66837a3a153cda041f5351c52c8ccb1f8ccfea50
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fcc2365c3b41fb69492aa68bf7c48c2d3b8ee5f3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Gewusst wie: Verwenden von SSH-Schlüsseln mit Windows in Azure
 > [!div class="op_single_selector"]
@@ -137,7 +137,7 @@ Im folgenden Beispiel wird der zusätzliche private Schlüssel erstellt, der spe
     ```bash
     chmod 0600 myPrivateKey_rsa
     ```
-2. Laden Sie PuTTYgen unter [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) herunter, und führen Sie es aus.
+2. Laden Sie PuTTYgen unter [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) herunter, und führen Sie das Tool aus.
 3. Wählen Sie die Befehlsfolge **Datei** > **Privaten Schlüssel laden**.
 4. Suchen Sie Ihren privaten Schlüssel (`myPrivateKey_rsa` im vorherigen Beispiel). Das Standardverzeichnis beim Start von **Git Bash** ist `C:\Users\%username%`. Ändern Sie den Dateifilter, sodass **Alle Dateien (\*.\*)** angezeigt werden:
 
@@ -168,7 +168,7 @@ Im folgenden Beispiel wird der zusätzliche private Schlüssel erstellt, der spe
 ## <a name="use-putty-to-ssh-to-a-linux-machine"></a>Verwenden von PuTTY zum Herstellen einer SSH-Verbindung mit einem Linux-Computer
 Bei PuTTY handelt es sich wie bereits erwähnt um einen verbreiteten SSH-Client für Windows. Sie können aber auch einen anderen SSH-Client verwenden. Die folgenden Schritte zeigen, wie Sie sich per SSH und unter Verwendung Ihres privaten Schlüssels bei Ihrem virtuellen Computer authentifizieren. Die Vorgehensweise ist in anderen SSH-Schlüsselclients ähnlich. Auch hier müssen Sie Ihren privaten Schlüssel laden, um die SSH-Verbindung zu authentifizieren.
 
-1. Laden Sie PuTTY unter [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) herunter, und führen Sie es aus.
+1. Laden Sie putty unter [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) herunter, und führen Sie das Tool aus.
 2. Geben Sie den Hostnamen oder die IP-Adresse des virtuellen Computers aus dem Azure-Portal ein:
 
     ![Herstellen einer neuen PuTTY-Verbindung](./media/ssh-from-windows/putty-new-connection.png)

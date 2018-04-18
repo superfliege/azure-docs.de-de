@@ -1,31 +1,25 @@
 ---
-title: Skalieren von Stream Analytics-Aufträgen zur Erhöhung des Durchsatzes | Microsoft Docs
-description: Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfiguration von Eingabepartitionen, Optimierung der Abfragedefinition und Einstellung von Auftrags-Streaming-Einheiten skalieren.
-keywords: Datenstreaming, Datenströme verarbeiten, Analysen optimieren
+title: Vertikales Hoch- und Herunterskalieren in Azure Stream Analytics-Aufträgen
+description: In diesem Artikel wird beschrieben, wie Sie einen Stream Analytics-Auftrag skalieren, indem Sie Eingabedaten partitionieren, die Abfrage optimieren und Streamingeinheiten für den Auftrag festlegen.
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: 2e0487a9e4cd6346312c6817ef2768556cba72ba
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/22/2017
+ms.openlocfilehash: 1438ffa34652268572fe89dc63583cc25607d722
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="scale-azure-stream-analytics-jobs-to-increase--throughput"></a>Skalieren von Azure Stream Analytics-Aufträgen zur Erhöhung des Durchsatzes
+# <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalieren eines Azure Stream Analytics-Auftrags zur Erhöhung des Durchsatzes
 In diesem Artikel erfahren Sie, wie Sie eine Stream Analytics-Abfrage zur Steigerung des Durchsatzes für Stream Analytics-Aufträge optimieren. Im folgenden Leitfaden wird erläutert, wie Sie Ihren Auftrag zur Verarbeitung höherer Lasten skalieren und von einer größeren Menge an Systemressourcen (z.B. Bandbreite, CPU-Ressourcen, Arbeitsspeicher) profitieren können.
 Hierfür sollten Sie folgende Artikel gelesen haben:
 -   [Verstehen und Anpassen von Streamingeinheiten](stream-analytics-streaming-unit-consumption.md)
 -   [Erstellen von parallelisierbaren Aufträgen](stream-analytics-parallelization.md)
-
 
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>Fall 1: Ihre Abfrage ist prinzipiell über alle Eingabepartitionen hinweg vollständig parallelisierbar.
 Wenn Ihre Abfrage prinzipiell über alle Eingabepartitionen hinweg vollständig parallelisierbar ist, können Sie folgende Schritte durchführen:
@@ -40,7 +34,6 @@ Wenn Ihre Abfrage prinzipiell über alle Eingabepartitionen hinweg vollständig 
 >[!Note]
 > Wählen Sie die richtige Anzahl von Streamingeinheiten: Da Stream Analytics für jede hinzugefügte Gruppe aus 6 SUs einen Verarbeitungsknoten erstellt, wird empfohlen, die Anzahl der Eingabepartitionen durch die Anzahl der Knoten zu teilen, damit die Partitionen gleichmäßig auf die Knoten aufgeteilt werden können.
 > Beispiel: Sie haben gemessen, dass Ihr 6-SU-Auftrag eine Verarbeitungsrate von 4 MB/s erreichen kann. Die Anzahl Ihrer Eingabepartitionen beträgt 4. Sie können festlegen, dass Aufträge mit 12 SUs ungefähr eine Verarbeitungsrate von 8 MB/s erreichen und Aufträge mit 24 SUs 16 MB/s erreichen sollen. Anschließend können Sie entscheiden, auf welchen Wert die Anzahl der SUs für den Auftrag in Abhängigkeit von der Eingangsrate erhöht werden soll.
-
 
 
 ## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>Fall 2: Ihre Abfrage weist keinen hohen Parallelitätsgrad auf.
@@ -150,7 +143,7 @@ Im folgenden Diagramm wird die Beziehung zwischen SUs und dem Durchsatz visualis
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

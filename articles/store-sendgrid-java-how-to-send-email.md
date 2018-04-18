@@ -1,7 +1,7 @@
 ---
 title: Verwenden des E-Mail-Diensts SendGrid (Java) | Microsoft Docs
 description: Erfahren Sie, wie Sie E-Mails mit dem SendGrid-E-Mail-Dienst in Azure senden. Die Codebeispiele wurden in Java geschrieben.
-services: 
+services: ''
 documentationcenter: java
 author: thinkingserious
 manager: sendgrid
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Senden von E-Mails mit SendGrid aus Java
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem E-Mail-Dienst SendGrid in Azure. Die Beispiele sind in Java geschrieben. Die behandelten Szenarien umfassen das **Erstellen einer E-Mail**, **Senden einer E-Mail**, **Hinzufügen von Anhängen**, **Verwenden von Filtern** und **Aktualisieren von Eigenschaften**. Weitere Informationen zu SendGrid und zum Senden von E-Mails erhalten Sie im Abschnitt [Nächste Schritte](#next-steps) .
@@ -39,7 +39,7 @@ Weitere Informationen finden Sie unter <http://sendgrid.com>.
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="how-to-use-the-javaxmail-libraries"></a>Vorgehensweise: javax.mail-Bibliotheken verwenden
-Laden Sie die javax.mail-Bibliotheken herunter, z.B. unter <http://www.oracle.com/technetwork/java/javamail>, und importieren Sie sie in Ihren Code. Auf oberer Ebene dient der Prozess zur Verwendung der javax.mail-Bibliothek zum Senden von E-Mails per SMTP für Folgendes:
+Rufen Sie die javax.mail-Bibliotheken ab, z.B. von <http://www.oracle.com/technetwork/java/javamail>, und importieren Sie sie in Ihren Code. Auf oberer Ebene dient der Prozess zur Verwendung der javax.mail-Bibliothek zum Senden von E-Mails per SMTP für Folgendes:
 
 1. Geben Sie die SMTP-Werte einschließlich des SMTP-Servers an, welcher bei SendGrid unter smtp.sendgrid.net geführt wird.
 
@@ -158,7 +158,7 @@ SendGrid bietet zusätzliche E-Mail-Funktionen durch die Verwendung von *Filtern
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>Vorgehensweise: E-Mail-Eigenschaften aktualisieren
-Einige e-Mail-Eigenschaften können überschrieben werden, mithilfe von **festgelegt * Eigenschaft*** oder angefügt, mit **hinzufügen*Eigenschaft ***.
+Einige E-Mail-Eigenschaften können mit **set*Property*** überschrieben oder mit **add*Property*** angefügt werden.
 
 Um z.B. die **ReplyTo**-Adressen anzugeben, können Sie folgenden Code verwenden:
 

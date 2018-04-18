@@ -1,11 +1,11 @@
 ---
 title: Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory? | Microsoft-Dokumentation
-description: "Verwenden Sie Azure Active Directory, um die einmalige Anmeldung für alle SaaS- und Webanwendungen zu aktivieren, die Sie für Ihr Unternehmen benötigen."
+description: Verwenden Sie Azure Active Directory, um die einmalige Anmeldung für alle SaaS- und Webanwendungen zu aktivieren, die Sie für Ihr Unternehmen benötigen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 75d1a3fd-b3c5-4495-a5c8-c4c24145ff00
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 42a24654eb059894a855474c922a4dd2da185149
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: f19d33c905d6153dffa1e7d5cdaea92ed1b94ff7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?
 Einmaliges Anmelden bedeutet, dass Sie Zugriff auf sämtliche für Ihre Geschäftsaktivitäten benötigten Anwendungen und Ressourcen erhalten, indem Sie sich nur einmal mit einem einzigen Benutzerkonto anmelden. Nach der Anmeldung können Sie auf alle benötigten Anwendungen zugreifen, ohne sich ein zweites Mal (z.B. durch Eingabe eines Kennworts) authentifizieren zu müssen.
@@ -68,7 +68,7 @@ Das Konfigurieren der kennwortbasierten einmaligen Anmeldung ermöglicht die aut
 Azure AD kann das kennwortbasierte einmalige Anmelden für jede cloudbasierte App unterstützen, die über eine HTML-basierte Anmeldeseite verfügt. Mithilfe eines benutzerdefinierten Browser-Plug-Ins automatisiert AAD die Anmeldevorgänge der Benutzer über den sicheren Abruf von Anmeldeinformationen der Anwendung, z.B. Benutzername und Kennwort, aus dem Verzeichnis, und trägt diese Anmeldeinformationen für die Benutzer in die Anmeldeseite der Anwendung ein. Es gibt zwei Anwendungsfälle:
 
 1. **Administrator verwaltet Anmeldeinformationen:** Administratoren können Anmeldeinformationen von Anwendungen erstellen und verwalten und weisen diese Anmeldeinformationen Benutzern oder Gruppen zu, die auf die Anwendung zugreifen müssen. In diesen Fällen müssen die Endbenutzer die Anmeldeinformationen nicht kennen, erhalten aber weiterhin einfach durch Klicken auf die Anwendung in ihrem Zugriffsbereich oder über einen bereitgestellten Link durch einmaliges Anmelden Zugriff auf die Anwendung. Dies ermöglicht zum einen die Lebenszyklusverwaltung der Anmeldeinformationen durch den Administrator und bietet zum anderen den Endbenutzern den Komfort, dass sie sich App-spezifische Kennwörter weder merken noch sie verwalten müssen. Die Anmeldeinformationen werden während des automatisierten Anmeldevorgangs vor dem Endbenutzer verborgen. Der Benutzer kann sie jedoch mithilfe von Webdebugtools technisch sichtbar machen, und Benutzer und Administratoren sollten die gleichen Sicherheitsrichtlinien befolgen, die auch für direkt vom Benutzer eingegebene Anmeldeinformationen gelten. Vom Administrator bereitgestellte Anmeldeinformationen sind hilfreich beim Bereitstellen von Kontozugriff bei Anwendungen, die von vielen Benutzern gemeinsam genutzt werden, wie z.B. bei sozialen Medien oder Anwendungen zur gemeinsamen Nutzung von Dokumenten.
-2. **Benutzer verwaltet Anmeldeinformationen** – Administratoren können Endbenutzern oder Gruppen Anwendungen zuweisen und Endbenutzern die direkte Eingabe ihrer Anmeldeinformationen beim erstmaligen Zugriff auf die Anwendung in ihrem Zugriffsbereich ermöglichen. Dies stellt einen Komfort für Endbenutzer dar, da sie nicht ständig für jeden Zugriff auf die Anwendung die App-spezifischen Kennwörter eingeben müssen. Dieser Anwendungsfall kann auch als Hilfe zum Einstieg in die administrative Verwaltung der Anmeldeinformationen dienen, wobei der Administrator neue Anmeldeinformationen für die Anwendung zu einem späteren Zeitpunkt festlegen kann, ohne die Benutzerfreundlichkeit für den App-Zugriff einzuschränken.
+2. **Benutzer verwaltet Anmeldeinformationen** – Administratoren können Endbenutzern oder Gruppen Anwendungen zuweisen und Endbenutzern die direkte Eingabe ihrer Anmeldeinformationen beim erstmaligen Zugriff auf die Anwendung in ihrem Zugriffsbereich ermöglichen. Dies stellt einen Komfort für Endbenutzer dar, da sie nicht ständig für jeden Zugriff auf die Anwendung die App-spezifischen Kennwörter eingeben müssen. Benutzer können mit dem Verwalten ihrer Kennwörter fortfahren, indem sie diese je nach Bedarf aktualisieren oder löschen. Dieser Anwendungsfall kann auch als Hilfe zum Einstieg in die administrative Verwaltung der Anmeldeinformationen dienen, wobei der Administrator neue Anmeldeinformationen für die Anwendung zu einem späteren Zeitpunkt festlegen kann, ohne die Benutzerfreundlichkeit für den App-Zugriff einzuschränken.
 
 In beiden Fällen werden Anmeldeinformationen verschlüsselt im Verzeichnis gespeichert und nur beim automatisierten Anmelden über HTTPS übergeben. Mit dem kennwortbasierten einmaligen Anmelden bietet Azure AD eine bequeme Lösung zur Identitäts- und Zugriffsverwaltung für Apps, die keine Verbundprotokolle unterstützen können.
 
@@ -113,7 +113,7 @@ Wenn Sie Ihre Anwendung nicht im Azure AD-Anwendungskatalog finden, haben Sie fo
 * **Fügen Sie eine nicht gelistete App hinzu, die Sie verwenden** – Verwenden Sie die Kategorie "Benutzerdefiniert" im App-Katalog des Azure-Verwaltungsportals, um eine nicht gelistete Anwendung zu verbinden, die in Ihrer Organisation verwendet wird. Sie können jede Anwendung hinzufügen, die SAML 2.0 als Verbund-App unterstützt, oder jede Anwendung für die kennwortbasierte einmalige Anmeldung, die über eine HTML-basierte Anmeldeseite verfügt. Weitere Informationen finden Sie in diesem Artikel unter [Hinzufügen Ihrer eigenen Anwendung](application-config-sso-how-to-configure-federated-sso-non-gallery.md).
 * **Hinzufügen Ihrer eigenen, selbst entwickelten App** – Wenn Sie die Anwendung selbst entwickelt haben, befolgen Sie die Richtlinien in der Azure AD-Entwicklerdokumentation, um die einmalige Verbundanmeldung oder die Bereitstellung mithilfe der Azure AD Graph-API zu implementieren. Weitere Informationen finden Sie in den folgenden Ressourcen:
   
-  * [Authentifizierungsszenarios für Azure AD](active-directory-authentication-scenarios.md)
+  * [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md)
   * [https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)
@@ -151,7 +151,7 @@ Azure AD bietet mehrere anpassbare Möglichkeiten zum Bereitstellen von Anwendun
 Welche Methode(n) Sie zur Bereitstellung in Ihrer Organisation wählen, liegt in Ihrem eigenen Ermessen.
 
 ### <a name="azure-ad-access-panel"></a>Azure AD-Zugriffsbereich
-Der Zugriffsbereich unter https://myapps.microsoft.com ist ein webbasiertes Portal, das einem Endbenutzer mit einem Organisationskonto in Azure Active Directory erlaubt, cloudbasierte Anwendungen anzuzeigen und zu starten, für die der Azure AD-Administrator Zugriff gewährt hat. Als Endbenutzer mit [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) können Sie auch die Funktionen zur Self-Service-Gruppenverwaltung über den Zugriffsbereich verwenden.
+Der Zugriffsbereich unter https://myapps.microsoft.com ist ein webbasiertes Portal, das es einem Endbenutzer mit einem Organisationskonto in Azure Active Directory ermöglicht, cloudbasierte Anwendungen anzuzeigen und zu starten, für die der Azure AD-Administrator Zugriff gewährt hat. Als Endbenutzer mit [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) können Sie auch die Funktionen zur Self-Service-Gruppenverwaltung über den Zugriffsbereich verwenden.
 
 ![Azure AD-Zugriffsbereich](media/active-directory-appssoaccess-whatis/azure-ad-access-panel.png)
 

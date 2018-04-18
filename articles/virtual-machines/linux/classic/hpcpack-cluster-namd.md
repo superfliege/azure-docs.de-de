@@ -1,11 +1,11 @@
 ---
 title: NAMD mit Microsoft HPC Pack auf virtuellen Linux-Computern | Microsoft Docs
-description: "Sie stellen einen Microsoft HPC Pack-Cluster in Azure bereit und führen eine NAMD-Simulation mit „charmrun“ auf mehreren Linux-Computeknoten aus."
+description: Sie stellen einen Microsoft HPC Pack-Cluster in Azure bereit und führen eine NAMD-Simulation mit „charmrun“ auf mehreren Linux-Computeknoten aus.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 76072c6b-ac35-4729-ba67-0d16f9443bd7
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
-ms.openlocfilehash: 0c0b9875b4153edcc0ec0096577d041d394a842f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61dd49d4bd3183b6b9a78036d6d7d01798e4dc89
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Ausführen von NAMD mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure
 In diesem Artikel wird eine Möglichkeit zum Ausführen einer Linux-HPC-Workload (High-Performance Computing) auf virtuellen Azure-Computern beschrieben. Hier richten Sie einen [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029)-Cluster in Azure mit Linux-Computeknoten ein und führen eine [NAMD](http://www.ks.uiuc.edu/Research/namd/)-Simulation aus, um die Struktur eines großen Biomolekularsystems zu visualisieren.  
@@ -208,7 +208,7 @@ host <Name of node2> ++cpus <Cores of node2>
 …
 ```
 
-Beispiel:
+Beispiel: 
 
 ```
 group main
@@ -232,7 +232,7 @@ Jetzt können Sie einen NAMD-Auftrag in HPC-Cluster-Manager übermitteln.
 6. Klicken Sie im linken Navigationsbereich auf **Aufgaben bearbeiten**, und klicken Sie dann zum Hinzufügen einer Aufgabe zum Auftrag auf **Hinzufügen**.    
 7. Legen Sie auf der Seite **Aufgabendetails und E/A-Umleitung** die folgenden Werte fest.
    
-   * **Befehlszeile**-
+   * **Befehlszeile** -
      `/namd2/hpccharmrun.sh ++remote-shell ssh /namd2/namd2 /namd2/namdsample/1-2-sphere/ubq_ws_eq.conf > /namd2/namd2_hpccharmrun.log`
      
      > [!TIP]

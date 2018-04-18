@@ -1,13 +1,13 @@
 ---
-title: "Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver | Microsoft-Dokumentation"
-description: "Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver"
+title: Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver | Microsoft-Dokumentation
+description: Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: MSSedusch
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9cd12808f7e3bbb8a4edfe0d8de1e5b0a007770a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -677,7 +677,7 @@ Alle virtuellen Computer in Azure müssen mit einem virtuellen Netzwerk verbunde
 Weitere Informationen finden Sie in [diesem Artikel][resource-groups-networking] und auf [dieser Seite](https://azure.microsoft.com/documentation/services/virtual-network/).
 
 [comment]: <> (MShermannd TODO Couldn't find an article which includes the OpenLDAP topic + ARM; )
-[comment]: <> (MSSedusch &lt;https://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL&gt;)
+[comment]: <> (MSSedusch <https://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL>)
 
 > [!NOTE]
 > Standardmäßig können Sie nach der Bereitstellung eines virtuellen Computers die Konfiguration des virtuellen Netzwerks nicht mehr ändern. Die TCP/IP-Einstellungen müssen dem Azure-DHCP-Server überlassen werden. Das Standardverhalten ist die dynamische IP-Zuweisung.
@@ -798,8 +798,8 @@ Das Azure-Portal ist eine von drei Schnittstellen für die Verwaltung von Azure-
 
 ![Übersicht der virtuellen Computer im Microsoft Azure-Portal][planning-guide-figure-800]
 
-[comment]: <> (MSSedusch * &lt;https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/&gt;)
-[comment]: <> (MSSedusch * &lt;https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/&gt;)
+[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/>)
+[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/>)
 
 Die Verwaltung und Konfiguration einer VM-Instanz können im Azure-Portal erfolgen.
 
@@ -979,7 +979,7 @@ In diesem Fall möchten wir eine VHD mit oder ohne Betriebssystem hochladen und 
 * Melden Sie sich mit *az login* bei Ihrem Abonnement an.
 * Wählen Sie mit *azure account set - subscription`<subscription name or id`>* Ihr Abonnement aus.
 * Laden Sie die VHD mit *az storage blob upload* hoch (siehe [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure Storage][storage-azure-cli]).
-* (Optional) Erstellen Sie einen verwalteten Datenträger aus der VHD mit *az disk create* (siehe https://docs.microsoft.com/cli/azure/disk#az_disk_create).
+* (Optional) Erstellen Sie mit *az disk create* aus der VHD einen verwalteten Datenträger (siehe https://docs.microsoft.com/cli/azure/disk#az_disk_create).
 * Erstellen Sie mit *azure vm create* und dem Parameter *--attach-os-disk* eine neue VM, wobei Sie die hochgeladene VHD oder den verwalteten Datenträger als Betriebssystem-Datenträger angeben.
 * Fügen Sie einen Datenträger für Daten mit *vm disk attach-new* und dem Parameter *--new* hinzu.
 
@@ -1008,7 +1008,7 @@ Eine vorhandene VM oder VHD, die Sie aus dem lokalen Netzwerk hochladen möchten
 * Melden Sie sich mit *az login* bei Ihrem Abonnement an.
 * Wählen Sie mit *azure account set - subscription`<subscription name or id`>* Ihr Abonnement aus.
 * Laden Sie die VHD mit *az storage blob upload* hoch (siehe [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure Storage][storage-azure-cli]).
-* (Optional) Erstellen Sie ein Image eines verwalteten Datenträgers aus der VHD mit *az image create* (siehe https://docs.microsoft.com/cli/azure/image#az_image_create).
+* (Optional) Erstellen Sie mit *az image create* aus der VHD ein Image für einen verwalteten Datenträger (siehe https://docs.microsoft.com/cli/azure/image#az_image_create).
 * Erstellen Sie mit *azure vm create* und dem Parameter *--attach-os-disk* eine neue VM, wobei Sie die hochgeladene VHD oder das Image des verwalteten Datenträgers als Betriebssystem-Datenträger angeben.
 
 **Vorlage**

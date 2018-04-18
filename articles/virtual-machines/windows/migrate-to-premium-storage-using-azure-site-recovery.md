@@ -1,12 +1,12 @@
 ---
 title: Migrieren Ihrer Windows-VMs zu Azure Storage Premium mithilfe von Azure Site Recovery | Microsoft-Dokumentation
-description: "Migrieren Sie Ihre vorhandenen virtuellen Computer mithilfe von Site Recovery zu Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden."
+description: Migrieren Sie Ihre vorhandenen virtuellen Computer mithilfe von Site Recovery zu Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden.
 services: virtual-machines-windows
 cloud: Azure
 documentationcenter: na
 author: luywang
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 15c9a6608421b3eeebe6fbe91a10a849bf36ed85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 171b0f938e44218d11cfb001e3f58ebd0feb35fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrieren zu Storage Premium mithilfe von Azure Site Recovery
 
@@ -80,7 +80,7 @@ Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder in
 ### <a name="step-1-create-a-recovery-services-vault"></a>Schritt 1: Erstellen eines Recovery Services-Tresors
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Wählen Sie **Ressource erstellen** > **Verwaltung** > **Backup** und **Site Recovery (OMS)** aus. Alternativ können Sie auch **Durchsuchen** > **Recovery Services-Tresor** > **Hinzufügen** auswählen. 
+2. Wählen Sie **Ressource erstellen** > **Verwaltung** > **Backup & Site Recovery (OMS)** aus. Alternativ können Sie auch **Durchsuchen** > **Recovery Services-Tresor** > **Hinzufügen** auswählen. 
 3. Geben Sie eine Region für die Replikation virtueller Computer an. Wählen Sie für eine Migration in derselben Region die Region aus, in der sich Ihre Quell-VMs und Quellspeicherkonten befinden. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Schritt 2: Auswählen der Schutzziele 

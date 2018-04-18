@@ -1,11 +1,11 @@
 ---
-title: "Schützen von Azure CDN-Assets mit Tokenauthentifizierung | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie die Tokenauthentifizierung zum Schützen des Zugriffs auf Ihre Azure CDN-Assets verwenden."
+title: Schützen von Azure CDN-Assets mit Tokenauthentifizierung | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die Tokenauthentifizierung zum Schützen des Zugriffs auf Ihre Azure CDN-Assets verwenden.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
 manager: zhangmanling
-editor: 
+editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
 ms.service: cdn
 ms.devlang: multiple
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: f6d008a92677d28d0184e64637dcb2e093299519
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: aaec713a7680aeda8317f5af41b9b99bcbdca4b7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>Schützen von Azure Content Delivery Network-Assets mit Tokenauthentifizierung
+# <a name="securing-azure-cdn-assets-with-token-authentication"></a>Schützen von Azure CDN-Assets mit Tokenauthentifizierung
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Übersicht
 
-Die Tokenauthentifizierung ist ein Mechanismus, mit dem Sie verhindern können, dass Assets im Azure Content Delivery Network (CDN) für nicht autorisierte Clients bereitgestellt werden. Die Tokenauthentifizierung wird normalerweise genutzt, um das „Hotlinking“ von Inhalten zu verhindern. Dabei verwendet eine andere Website (z.B. ein Diskussionsforum) Ihre Assets ohne Erlaubnis. Hotlinking kann sich auf Ihre Kosten für die Inhaltsbereitstellung auswirken. Durch Aktivieren der Tokenauthentifizierung im CDN werden Anforderungen von CDN-Edgeserver authentifiziert, bevor das CDN den Inhalt übermittelt. 
+Die Tokenauthentifizierung ist ein Mechanismus, mit dem Sie verhindern können, dass Assets im Azure Content Delivery Network (CDN) für nicht autorisierte Clients bereitgestellt werden. Die Tokenauthentifizierung wird normalerweise genutzt, um das *Hotlinking* von Inhalten zu verhindern. Dabei verwendet eine andere Website (z.B. ein Diskussionsforum) Ihre Assets ohne Erlaubnis. Hotlinking kann sich auf Ihre Kosten für die Inhaltsbereitstellung auswirken. Durch Aktivieren der Tokenauthentifizierung im CDN werden Anforderungen von CDN-Edgeserver authentifiziert, bevor das CDN den Inhalt übermittelt. 
 
 ## <a name="how-it-works"></a>So funktioniert's
 
@@ -41,6 +41,9 @@ Bei der Tokenauthentifizierung wird überprüft, ob Anforderungen von einer vert
 - Ablaufzeit: Weisen Sie einen Datums- und Zeitbereich zu, um sicherzustellen, dass ein Link nur für eine begrenzte Zeit gültig bleibt.
 
 Weitere Informationen finden Sie in den ausführlichen Konfigurationsbeispielen für jeden Parameter unter [Einrichten der Tokenauthentifizierung](#setting-up-token-authentication).
+
+>[!IMPORTANT] 
+> Wenn die Tokenberechtigung für einen beliebigen Pfad für dieses Konto aktiviert ist, ist der Standardcachemodus der einzige Modus, der für die Zwischenspeicherung von Abfragezeichenfolgen verwendet werden kann. Weitere Informationen finden Sie unter [Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen](cdn-query-string-premium.md).
 
 ## <a name="reference-architecture"></a>Referenzarchitektur
 
@@ -68,7 +71,7 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
 
        ```rand -hex <key length>```
 
-       Beispiel:
+       Beispiel: 
 
        ```OpenSSL> rand -hex 32``` 
 
@@ -92,7 +95,7 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
        > <table>
        > <tr>
        >   <th>Parametername</th> 
-       >   <th>Beschreibung</th>
+       >   <th>BESCHREIBUNG</th>
        > </tr>
        > <tr>
        >    <td><b>ec_expire</b></td>
@@ -166,20 +169,22 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
 
     9. Passen Sie optional den Typ des Antwortcodes an, der zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Wählen Sie **Aktiviert** aus, und wählen Sie dann den Antwortcode aus der Liste **Antwortcode** aus. **Headername** wird automatisch auf **Speicherort** festgelegt. Klicken Sie auf **Speichern**, um den neuen Antwortcode zu implementieren. Für bestimmte Antwortcodes müssen Sie auch die URL Ihrer Fehlerseite in das Feld **Headerwert** eingeben. Der Antwortcode **403** („Unzulässig“) ist standardmäßig aktiviert. 
 
-3. Klicken Sie unter **HTTP Large** auf **Regelmodul**. Sie verwenden das Regelmodul, um Pfade zum Anwenden der Funktion zu definieren und die Tokenauthentifizierung sowie weitere Funktionen zur Tokenauthentifizierung zu aktivieren. Weitere Informationen finden Sie unter [Azure CDN-Regelmodul](cdn-rules-engine-reference.md).
+3. Klicken Sie unter **HTTP Large** auf **Regel-Engine**. Sie verwenden die Regel-Engine, um Pfade zum Anwenden der Funktion zu definieren und die Tokenauthentifizierung sowie weitere Funktionen zur Tokenauthentifizierung zu aktivieren. Weitere Informationen finden Sie unter [Azure CDN-Regel-Engine](cdn-rules-engine-reference.md).
 
     1. Wählen Sie eine vorhandene Regel aus, oder erstellen Sie eine neue Regel, um das Asset oder den Pfad zu definieren, auf das bzw. den Sie die Tokenauthentifizierung anwenden möchten. 
     2. Zum Aktivieren der Tokenauthentifizierung für eine Regel wählen Sie **[Token Auth](cdn-rules-engine-reference-features.md#token-auth)** aus der Liste **Features** und dann **Aktiviert** aus. Klicken Sie auf **Aktualisieren**, wenn Sie eine Regel aktualisieren, oder auf **Hinzufügen**, wenn Sie eine Regel erstellen.
         
-    ![Beispiel für das CDN-Regelmodul: Tokenauthentifizierung aktiviert](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
+    ![Beispiel für die CDN-Regel-Engine: Tokenauthentifizierung aktiviert](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
-4. Im Regelmodul können Sie auch weitere Features im Zusammenhang mit der Tokenauthentifizierung aktivieren. Um die folgenden Features zu aktivieren, wählen Sie sie in der Liste **Features** aus, und wählen Sie dann **Aktiviert** aus.
+4. In der Regel-Engine können Sie auch weitere Features im Zusammenhang mit der Tokenauthentifizierung aktivieren. Um die folgenden Features zu aktivieren, wählen Sie sie in der Liste **Features** aus, und wählen Sie dann **Aktiviert** aus.
     
     - **[Token Auth Denial Code](cdn-rules-engine-reference-features.md#token-auth-denial-code)**: Gibt den Typ der Antwort an, die an einen Benutzer zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Hier festgelegte Regeln setzen den Antwortcode außer Kraft, der im Abschnitt **Custom Denial Handling** auf der Seite für die tokenbasierte Authentifizierung festgelegt wurde.
+
     - **[Token Auth Ignore URL Case](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)**: Legt fest, ob für die URL, die zum Überprüfen des Tokens verwendet wird, die Groß-/Kleinschreibung berücksichtigt wird.
+
     - **[Token Auth Parameter](cdn-rules-engine-reference-features.md#token-auth-parameter)**: Benennt den Parameter für die Tokenauthentifizierung-Abfragezeichenfolge um, der in der angeforderten URL angezeigt wird. 
         
-    ![Beispiel für das CDN-Regelmodul: Einstellungen der Tokenauthentifizierung](./media/cdn-token-auth/cdn-rules-engine2.png)
+    ![Beispiel für die CDN-Regel-Engine: Einstellungen der Tokenauthentifizierung](./media/cdn-token-auth/cdn-rules-engine2.png)
 
 5. Sie können Ihr Token anpassen, indem Sie auf Quellcode in [GitHub](https://github.com/VerizonDigital/ectoken) zugreifen.
 Verfügbare Sprachen:
@@ -193,4 +198,4 @@ Verfügbare Sprachen:
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Preise für Azure CDN-Funktionen und -Anbieter
 
-Informationen zu Features finden Sie unter [Übersicht über das Azure Content Delivery Network (CDN)](cdn-overview.md). Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).
+Weitere Informationen zu Funktionen finden Sie unter [Azure CDN-Produktfeatures](cdn-features.md). Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).

@@ -10,11 +10,11 @@ ms.component: design
 ms.date: 03/28/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: c27ad843c9ee9beed871dcc03254cb1266f6ebe2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 18d5f4131718021de82328719e0538db759dde9c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Entwerfen von ELT-Prozessen für Azure SQL Data Warehouse
 
@@ -47,8 +47,9 @@ PolyBase ist eine Technologie, die über die T-SQL-Sprache auf Daten außerhalb 
 Um Daten mit PolyBase zu laden, können Sie jede dieser Ladeoptionen nutzen.
 
 - [PolyBase mit T-SQL](load-data-from-azure-blob-storage-using-polybase.md) funktioniert gut, wenn sich Ihre Daten in Azure Blob Storage oder Azure Data Lake Store befinden. Es bietet Ihnen die größtmögliche Kontrolle über den Ladevorgang, erfordert aber auch die Definition externer Datenobjekte. Die anderen Methoden definieren diese Objekte im Hintergrund, wenn Sie Quelltabellen zu Zieltabellen zuordnen.  Zum Orchestrieren von T-SQL-Ladevorgängen können Sie Azure Data Factory-, SSIS- oder Azure-Funktionen verwenden. 
-- [PolyBase mit SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md) funktioniert gut, wenn sich die Quelldaten in SQL Server befinden (entweder lokal in SQL Server oder in der Cloud). SSIS definiert die Zuordnung von Quell- zu Zieltabellen und orchestriert zudem die Workload. Wenn Sie bereits über SSIS-Pakete verfügen, können Sie die Pakete so ändern, dass sie mit dem neuen Data Warehouse-Ziel funktionieren. 
-- [PolyBase mit Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) ist ein weiteres Orchestrierungstool.  Es definiert eine Pipeline und plant Aufträge. 
+- [PolyBase mit SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) funktioniert gut, wenn sich die Quelldaten in SQL Server befinden (entweder lokal in SQL Server oder in der Cloud). SSIS definiert die Zuordnung von Quell- zu Zieltabellen und orchestriert zudem die Workload. Wenn Sie bereits über SSIS-Pakete verfügen, können Sie die Pakete so ändern, dass sie mit dem neuen Data Warehouse-Ziel funktionieren. 
+- [PolyBase mit Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) ist ein weiteres Orchestrierungstool.  Es definiert eine Pipeline und plant Aufträge. Sie können ADF verwenden, um JSON-Daten zu analysieren und in SQL Data Warehouse zu laden.
+- [PolyBase mit Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) überträgt Daten aus Azure Data Lake Store an SQL Data Warehouse. Sie können Azure DataBricks verwenden, um JSON-Daten zu analysieren und die Daten in SQL Data Warehouse zu laden. 
 
 ### <a name="polybase-external-file-formats"></a>Externe PolyBase-Dateiformate
 

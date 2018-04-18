@@ -1,24 +1,19 @@
 ---
-title: Einführung in Stream Analytics-Fensterfunktionen | Microsoft Docs
-description: Enthält Informationen zu den drei Fensterfunktionen in Stream Analytics (rollierende Fenster, springende Fenster, Schiebefenster).
-keywords: rollierendes Fenster, Schiebefenster, springendes Fenster
-documentationcenter: ''
+title: Einführung in die Azure Stream Analytics-Windowing-Funktionen
+description: In diesem Artikel werden die drei Windowing-Funktionen (rollierend, springend, gleitend) beschrieben, die in Azure Stream Analytics-Aufträgen verwendet werden.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 0d8d8717-5d23-43f0-b475-af078ab4627d
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 3757834ff816fffc4571aeef8c164c2230c0f7c2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: c6f5dbe49cb60e3c7b2bc6562acf2d7fd79096ec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-stream-analytics-window-functions"></a>Einführung in Stream Analytics-Fensterfunktionen
 In vielen Szenarien mit Echtzeit-Streaming ist es erforderlich, Vorgänge nur für die Daten in temporalen Fenstern durchzuführen. Die native Unterstützung für Fensterfunktionen ist ein Hauptfeature von Azure Stream Analytics, mit dem die Entwicklerproduktivität beim Erstellen komplexer Aufträge mit Datenstromverarbeitung gefördert wird. Stream Analytics ermöglicht Entwicklern die Verwendung von [**rollierenden Fenstern**](https://msdn.microsoft.com/library/dn835055.aspx), [**springenden Fenstern**](https://msdn.microsoft.com/library/dn835041.aspx) und [**Schiebefenstern**](https://msdn.microsoft.com/library/dn835051.aspx), um für Streamingdaten temporale Vorgänge durchzuführen. Beachten Sie, dass die Ergebnisse für alle [Fenster](https://msdn.microsoft.com/library/dn835019.aspx) vorgänge am **Ende** des Fensters ausgegeben werden. Die Ausgabe des Fensters ist ein einzelnes Ereignis, das auf der verwendeten Aggregatfunktion basiert. Das Ereignis verfügt über den Zeitstempel vom Ende des Fensters, und alle Fensterfunktionen werden mit einer festen Länge definiert. Schließlich sollten Sie noch beachten, dass alle Fensterfunktionen in einer [**GROUP BY**](https://msdn.microsoft.com/library/dn835023.aspx)-Klausel verwendet werden sollten.
@@ -41,7 +36,7 @@ Bei Schiebefensterfunktionen wird im Gegensatz zu rollierenden oder springenden 
 ![Stream Analytics-Fensterfunktionen – Einführung in Schiebefenster](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
 ## <a name="getting-help-with-window-functions"></a>Hilfe zu Fensterfunktionen
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

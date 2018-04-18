@@ -1,27 +1,22 @@
 ---
-title: Auftragsskalierung mit Azure Stream Analytics und Azure ML-Funktionen | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Stream Analytics-Aufträge (Partitionierung, SU-Menge usw.) richtig skalieren, wenn Sie Azure Machine Learning-Funktionen verwenden.
-keywords: ''
-documentationcenter: ''
+title: Skalieren von Machine Learning-Funktionen in Azure Stream Analytics
+description: In diesem Artikel wird beschrieben, wie Sie Stream Analytics-Aufträge mit Machine Learning-Funktionen skalieren, indem Sie die Partitionierung und Streamingeinheiten konfigurieren.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 47ce7c5e-1de1-41ca-9a26-b5ecce814743
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: dd6effab3ba0b411131414bd757ffe8cc54e49d2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 015312ab95d6dd5615a5f5bc62d270d46b795ffa
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning-Funktionen
-Häufig ist es einfach, einen Stream Analytics-Auftrag einzurichten und Beispieldaten dafür auszuführen. Was ist zu tun, wenn derselbe Auftrag mit einem höheren Datenvolumen ausgeführt werden soll? Hierfür müssen wir wissen, wie der Stream Analytics-Auftrag konfiguriert werden muss, damit er skaliert werden kann. In diesem Dokument liegt der Schwerpunkt auf den speziellen Aspekten der Skalierung von Stream Analytics-Aufträgen mit Machine Learning-Funktionen. Allgemeine Informationen zum Skalieren von Stream Analytics-Aufträgen finden Sie im Artikel [Skalieren von Aufträgen](stream-analytics-scale-jobs.md).
+Es ist einfach, einen Stream Analytics-Auftrag einzurichten und Beispieldaten dafür auszuführen. Was ist zu tun, wenn derselbe Auftrag mit einem höheren Datenvolumen ausgeführt werden soll? Hierfür müssen wir wissen, wie der Stream Analytics-Auftrag konfiguriert werden muss, damit er skaliert werden kann. In diesem Dokument liegt der Schwerpunkt auf den speziellen Aspekten der Skalierung von Stream Analytics-Aufträgen mit Machine Learning-Funktionen. Allgemeine Informationen zum Skalieren von Stream Analytics-Aufträgen finden Sie im Artikel [Skalieren von Aufträgen](stream-analytics-scale-jobs.md).
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Was ist in Stream Analytics eine Azure Machine Learning-Funktion?
 Eine Machine Learning-Funktion kann in Stream Analytics wie ein normaler Funktionsaufruf in der Stream Analytics-Abfragesprache verwendet werden. Im Hintergrund handelt es sich bei den Funktionsaufrufen aber um Azure Machine Learning-Webdienstanforderungen. Machine Learning-Webdienste unterstützen das „Batching“ mehrerer Zeilen zu einem so genannten Mini-Batch in demselben Webdienst-API-Aufruf, um den Gesamtdurchsatz zu verbessern. Weitere Details finden Sie im Blogbeitrag [Azure ML Now Available as a Function in Azure Stream Analytics](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/) (Azure ML jetzt als Funktion in Azure Stream Analytics verfügbar) und im Artikel [Nutzen eines Azure Machine Learning-Webdiensts, der von einem Machine Learning-Experiment aus bereitgestellt wurde](../machine-learning/studio/consume-web-services.md).
@@ -111,7 +106,7 @@ Zusammenfassend lässt sich festhalten, dass die folgenden Elemente berücksicht
 2. Tolerierte Latenz für den ausgeführten Stream Analytics-Auftrag (und somit die Batchgröße der Machine Learning-Webdienstanforderungen)
 3. Bereitgestellte Stream Analytics-Streamingeinheiten (SUs) und die Anzahl von Machine Learning-Webdienstanforderungen (zusätzliche funktionsbezogene Kosten)
 
-Als Beispiel wurde eine vollständig partitionierte Stream Analytics-Abfrage verwendet. Falls Sie eine komplexere Abfrage benötigen, können Sie das [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics) als hervorragende Ressource nutzen, um vom Stream Analytics-Team weitere Hilfe zu erhalten.
+Als Beispiel wurde eine vollständig partitionierte Stream Analytics-Abfrage verwendet. Falls Sie eine komplexere Abfrage benötigen, können Sie das [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) als hervorragende Ressource nutzen, um vom Stream Analytics-Team weitere Hilfe zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Stream Analytics finden Sie unter:

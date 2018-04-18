@@ -5,7 +5,7 @@ services: cdn
 documentationcenter: .NET
 author: dksimpson
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: db7b5053cb926d2ec86c7feea4ac411acbeb1ae2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d1a12e0d5bd5852cf8de3d5fec93f2bfdd3ab257
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Verwalten des Ablaufs von Webinhalt im Azure Content Delivery Network
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Sie können die Cacheeinstellungen auch über das Portal durch Festlegen von [CD
 Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Webserver ist die Verwendung von Cacheregeln im Azure-Portal. Weitere Informationen zu CDN-Cacheregeln finden Sie unter [Steuern des Verhaltens beim Zwischenspeichern im Azure Content Delivery Network mit Cacheregeln](cdn-caching-rules.md).
 
 > [!NOTE] 
-> Cacheregeln sind nur für die Profile **Azure CDN von Verizon Standard** und **Azure CDN von Akamai Standard** verfügbar. Für **Azure CDN von Verizon Premium**-Profile müssen Sie die [Azure CDN-Regel-Engine](cdn-rules-engine.md) im **Verwaltungsportal** verwenden, um von einer ähnlichen Funktionalität zu profitieren.
+> Cacheregeln sind nur für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** verfügbar. Für Profile vom Typ **Azure CDN Premium von Verizon**  müssen Sie die [Azure CDN-Regel-Engine](cdn-rules-engine.md) im **Verwaltungsportal** verwenden, um von einer ähnlichen Funktionalität zu profitieren.
 
 **So navigieren Sie zur Seite mit den CDN-Cacheregeln**
 
@@ -65,7 +65,7 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Web
 
    Mit diesen globalen Cacheregeln wird eine Cachedauer von 1 Stunde festgelegt, die sich auf alle Anforderungen an den Endpunkt auswirkt. Der festgelegte Ablauf überschreibt alle `Cache-Control`- oder `Expires`-HTTP-Header, die durch die vom Endpunkt festgelegten Ursprungsserver gesendet werden.   
 
-3. Wählen Sie **Speichern** aus.
+3. Wählen Sie **Speichern**aus.
 
 **So legen Sie mit benutzerdefinierten Cacheregeln Cache-Control-Header für einen Webserver fest**
 

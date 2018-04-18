@@ -1,13 +1,13 @@
 ---
-title: "Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver | Microsoft-Dokumentation"
-description: "Handbuch zum Thema „Hohe Verfügbarkeit“ für SAP NetWeaver auf virtuellen Azure-Computern"
+title: Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver | Microsoft-Dokumentation
+description: Handbuch zum Thema „Hohe Verfügbarkeit“ für SAP NetWeaver auf virtuellen Azure-Computern
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d00db895ffcf9ba9a51e3df2dae5d33c0277dd6f
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 02/13/2018
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP-Multi-SID-Konfiguration mit Hochverfügbarkeit)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -739,7 +739,7 @@ Legen Sie die IP-Adresse des Lastenausgleichs **pr1-lb-dbms** auf die IP-Adresse
 
 Wenn Sie andere Nummern für die SAP ASCS- oder SCS-Instanzen verwenden möchten, müssen Sie die Namen und Werte der entsprechenden Ports in der Standardeinstellung ändern.
 
-1.  Wählen Sie im Azure-Portal  **< *SID*> - lb - Ascs Lastenausgleichsmodul** > **Lastenausgleich Regeln laden**.
+1.  Wählen Sie im Azure-Portal **<*SID*>-lb-ascs load balancer** > **Lastenausgleichsregeln**.
 2.  Ändern Sie für alle zur SAP ASCS- oder SCS-Instanz gehörenden Lastenausgleichsregeln die folgenden Werte:
 
   * NAME
@@ -954,7 +954,7 @@ Das Konfigurieren eines Cluster-Dateifreigabenzeugen umfasst die folgenden Aufga
 
   _**Abbildung 38:** Bestätigung der Neukonfiguration des Clusters_
 
-Nach der erfolgreichen Installation des Windows-Failoverclusters müssen an einigen Schwellenwerten Änderungen vorgenommen werden, um die Failovererkennung den Bedingungen in Azure anzupassen. Die zu ändernden Parameter sind in diesem Blog dokumentiert: „https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/“. Vorausgesetzt, dass Ihre beiden virtuellen Computer, die die Windows-Clusterkonfiguration für ASCS/SCS erstellen, sich im gleichen Subnetz befinden, müssen die folgenden Parameter in diese Werte geändert werden:
+Nach der erfolgreichen Installation des Windows-Failoverclusters müssen an einigen Schwellenwerten Änderungen vorgenommen werden, um die Failovererkennung den Bedingungen in Azure anzupassen. Die zu ändernden Parameter sind in diesem Blog dokumentiert: https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/ . Vorausgesetzt, dass Ihre beiden virtuellen Computer, die die Windows-Clusterkonfiguration für ASCS/SCS erstellen, sich im gleichen Subnetz befinden, müssen die folgenden Parameter in diese Werte geändert werden:
 - SameSubNetDelay = 2
 - SameSubNetThreshold = 15
 
@@ -1134,7 +1134,7 @@ Das Installieren von SAP mit einer ASCS/SCS-Instanz mit hoher Verfügbarkeit umf
 1.  Erstellen Sie im Windows-DNS-Manager einen DNS-Eintrag für den virtuellen Hostnamen der ASCS/SCS-Instanz.
 
   > [!IMPORTANT]
-  > Die IP-Adresse, die Sie in den virtuellen Hostnamen der ASCS/SCS-Instanz zuweisen, muss die IP-Adresse, die Azure-Lastenausgleich zugewiesen identisch sein (**<*SID*> - lb - Ascs**).  
+  > Die IP-Adresse, die Sie dem virtuellen Hostnamen der ASCS/SCS-Instanz zuweisen, muss mit der IP-Adresse identisch sein, die Sie dem Azure Load Balancer zugeordnet haben (**<*SID*>-lb-ascs**).  
   >
   >
 
@@ -1212,7 +1212,7 @@ So fügen Sie einen Testport hinzu
 
   Die Portnummer ist in Azure Resource Manager-Vorlagen für SAP definiert. Sie können die Portnummer in PowerShell zuweisen.
 
-  Festzulegende einen neuen ProbePort-Wert für die **SAP <*SID*> IP** Clusterressource, führen Sie das folgende PowerShell-Skript. Aktualisieren Sie die PowerShell-Variablen für Ihre Umgebung. Nach dem Ausführen des Skripts werden Sie aufgefordert, die SAP-Clustergruppe neu zu starten, um die Änderungen zu aktivieren.
+  Führen Sie das folgende PowerShell-Skript aus, um einen neuen ProbePort-Wert für die Clusterressource **SAP <*SID*> IP** festzulegen. Aktualisieren Sie die PowerShell-Variablen für Ihre Umgebung. Nach dem Ausführen des Skripts werden Sie aufgefordert, die SAP-Clustergruppe neu zu starten, um die Änderungen zu aktivieren.
 
   ```PowerShell
   $SAPSID = "PR1"      # SAP <SID>
@@ -1270,7 +1270,7 @@ So fügen Sie einen Testport hinzu
   }
   ```
 
-  Nach dem Onlineschalten der **SAP <*SID* >**  cluster die Rolle "online", überprüfen Sie, ob **ProbePort** auf den neuen Wert festgelegt ist.
+  Überprüfen Sie, nachdem Sie die Clusterrolle **SAP <*SID*>** online geschaltet haben, ob **ProbePort** auf den neuen Wert festgelegt wurde.
 
   ```PowerShell
   $SAPSID = "PR1"     # SAP <SID>

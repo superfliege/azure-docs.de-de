@@ -1,11 +1,11 @@
 ---
-title: "Einrichten des WinRM-Zugriffs für eine Azure-VM | Microsoft-Dokumentation"
-description: "Richten Sie den WinRM-Zugriff für eine Azure-VM ein, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurde."
+title: Einrichten des WinRM-Zugriffs für eine Azure-VM | Microsoft-Dokumentation
+description: Richten Sie den WinRM-Zugriff für eine Azure-VM ein, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurde.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 9718e85b-d360-4621-90b8-0b0b84a21208
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 2d6533462400bc1d93d0d3b0227769784e2658a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fa82dd4a85ff2e62848df0fdc6006922005a84b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager
 ## <a name="winrm-in-azure-service-management-vs-azure-resource-manager"></a>WinRM in Azure Service Management im Vergleich zu Azure Resource Manager
@@ -88,7 +88,7 @@ Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretV
 Der Microsoft.Compute-Ressourcenanbieter benötigt bei der Bereitstellung des virtuellen Computers eine URL für den geheimen Schlüssel im Schlüsseltresor. Dadurch kann der Microsoft.Compute-Ressourcenanbieter den geheimen Schlüssel herunterladen und das entsprechende Zertifikat auf dem virtuellen Computer erstellen.
 
 > [!NOTE]
-> Die URL des geheimen Schlüssels muss auch die Version enthalten. Eine Beispiel-URL sieht wie folgt aus: https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve.
+> Die URL des geheimen Schlüssels muss auch die Version enthalten. Eine Beispiel-URL sieht wie folgt aus: https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 > 
 > 
 

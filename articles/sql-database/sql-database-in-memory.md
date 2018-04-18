@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 442c860a13e2af1d5398fb30a6069a0e3764ee64
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 36a6b32851c4778db3405b6b9b35d9551181abf4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in SQL-Datenbank
 
@@ -22,7 +22,7 @@ Mithilfe von In-Memory-Technologien in Azure SQL-Datenbank können Sie für vers
 Hier sind zwei Beispiele dafür, wie In-Memory-OLTP geholfen hat, die Leistung deutlich zu verbessern:
 
 - Mithilfe von In-Memory-OLTP [konnten Quorum Business Solutions ihre Workload verdoppeln und ihre DTUs um 70 % verbessern](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
-    - DTU bedeutet *Database Throughput Unit* (Datenbankdurchsatzeinheit) und schließt eine Messung der Ressourcennutzung ein.
+    - DTU bedeutet *Database Transaction Unit* (Datenbank-Transaktionseinheit) und schließt eine Messung der Ressourcennutzung ein.
 - Das folgende Video veranschaulicht anhand einer Beispielworkload eine erhebliche Verbesserung der Ressourcennutzung: [In-Memory-OLTP in Azure SQL-Datenbank](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
     - Weitere Informationen finden Sie im Blogbeitrag [In-Memory OLTP in Azure SQL Database Blog Post](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) (In-Memory-OLTP in Azure SQL-Datenbank).
 
@@ -36,7 +36,7 @@ Im folgende Video werden potenzielle Leistungsvorteile mit In-Memory-Technologie
 
 Azure SQL-Datenbank verfügt über die folgenden In-Memory-Technologien:
 
-- *In-Memory-OLTP* erhöht den Durchsatz und verringert die Latenz für die Verarbeitung von Transaktionen. Szenarien, die von In-Memory-OLTP profitieren sind: hoher Durchsatz bei der Transaktionsverarbeitung z.B. Handel treiben, Spielen, Datenerfassung von Ereignissen oder IoT-Geräten, Zwischenspeichern, Laden von Daten, temporäre Tabellen und Szenarien mit Tabellenvariablen.
+- *In-Memory-OLTP* erhöht die Transaktionsanzahl und verringert die Latenz für die Verarbeitung von Transaktionen. Szenarien, die von In-Memory-OLTP profitieren sind: hoher Durchsatz bei der Transaktionsverarbeitung z.B. Handel treiben, Spielen, Datenerfassung von Ereignissen oder IoT-Geräten, Zwischenspeichern, Laden von Daten, temporäre Tabellen und Szenarien mit Tabellenvariablen.
 - *Gruppierte Columnstore-Indizes* reduzieren den Speicherplatzbedarf (bis um das Zehnfache) und verbessern die Leistung für Berichts- und Analyseabfragen. Verwenden Sie sie mit Faktentabellen in Ihren Data Marts, um mehr Daten in Ihrer Datenbank zu speichern und die Leistung zu verbessern. Sie können sie auch mit Verlaufsdaten in der Betriebsdatenbank verwenden, um bis zu zehnmal mehr Daten zu archivieren und abfragen zu können.
 - *Nicht gruppierte Columnstore-Indizes* für HTAP helfen beim Gewinnen von Einblicken in Echtzeit in Ihr Geschäft, indem Sie die Betriebsdatenbank direkt abfragen, ohne einen aufwendigen ETL-Prozess (Extrahieren, Transformieren, Laden) ausführen zu müssen und darauf zu warten, dass das Data Warehouse aufgefüllt wird. Nicht gruppierte Columnstore-Indizes helfen beim sehr schnellen Ausführen von Analyseabfragen in der OLTP-Datenbank, während gleichzeitig die Auswirkung auf die Betriebsworkload gering gehalten wird.
 - Sie können auch eine Kombination aus einer speicheroptimierten Tabelle und einem Columnstore-Index verwenden. Diese Kombination ermöglicht eine sehr schnelle Transaktionsverarbeitung und eine *parallele* Ausführung von Analyseabfragen auf dieselben Daten.
@@ -71,7 +71,7 @@ Ausführliche Videos zu den Technologien:
 
 In-Memory-OLTP enthält speicheroptimierte Tabellen, die zum Speichern von Benutzerdaten verwendet werden. Diese Tabellen sind müssen in den Arbeitsspeicher passen. Da Sie Arbeitsspeicher direkt im SQL-Datenbank-Dienst verwalten, arbeiten wir mit dem Konzept eines Kontingents für Benutzerdaten. Dieses Konzept wird als *In-Memory-OLTP-Speicher* bezeichnet.
 
-Jeder unterstützte eigenständige Datenbanktarif und jeder Tarif für Pools für elastische Datenbanken sieht eine bestimmte Menge von In-Memory-OLTP-Speicher vor. Zum Zeitpunkt der Verfassung erhalten Sie ein GB Speicher für alle 125 Datenbank-Transaktionseinheiten (DTUs) bzw. elastische Datenbank-Transaktionseinheiten (eDTUs). Weitere Informationen finden Sie unter [Ressourcenlimits](sql-database-resource-limits.md).
+Jeder unterstützte eigenständige Datenbanktarif und jeder Tarif für Pools für elastische Datenbanken sieht eine bestimmte Menge von In-Memory-OLTP-Speicher vor. Siehe [DTU-basierte Ressourceneinschränkungen](sql-database-dtu-resource-limits.md) und [V-Kern-basierte Ressourceneinschränkungen](sql-database-vcore-resource-limits.md).
 
 Die folgenden Elemente werden bis zu Ihrer In-Memory-OLTP-Speicherkapazitätsobergrenze angerechnet:
 
@@ -87,8 +87,8 @@ Weitere Informationen zur Überwachung der In-Memory-OLTP-Speicherverwendung und
 
 Bei Pools für elastische Datenbanken wird der In-Memory-OLTP-Speicher von allen Datenbanken im Pool gemeinsam genutzt. Aus diesem Grund kann die Verwendung in einer Datenbank andere Datenbanken möglicherweise beeinträchtigen. Zwei Lösungen dafür sind:
 
-- Konfigurieren Sie eine maximale eDTU-Anzahl für Datenbanken, die niedriger als die eDTU-Anzahl für den ganzen Pool ist. Dieser Maximalwert begrenzt die In-Memory-OLTP-Speichernutzung in jeder Datenbank im Pool auf die Größe, die der eDTU-Anzahl entspricht.
-- Konfigurieren Sie eine minimale eDTU-Anzahl, die größer als 0 ist. Mit diesem Minimalwert wird sichergestellt, dass jede Datenbank im Pool die Menge des In-Memory-OLTP-Speichers zur Verfügung hat, die der konfigurierten minimalen eDTU-Anzahl entspricht.
+- Konfigurieren Sie eine `Max-eDTU` oder `MaxvCore` für Datenbanken, die niedriger als die eDTU- oder V-Kern-Anzahl für den ganzen Pool ist. Dieser Maximalwert begrenzt die In-Memory-OLTP-Speichernutzung in jeder Datenbank im Pool auf die Größe, die der eDTU-Anzahl entspricht.
+- Konfigurieren Sie eine `Min-eDTU` oder `MinvCore`, die größer als 0 ist. Mit diesem Minimalwert wird sichergestellt, dass jede Datenbank im Pool die Menge des In-Memory-OLTP-Speichers zur Verfügung hat, die der konfigurierten `Min-eDTU` oder `vCore` entspricht.
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Datengröße und Speicher für Columnstore-Indizes
 
@@ -152,7 +152,7 @@ Eine einfachere, aber visuell ansprechendere Demo der Leistung von In-Memory-OLT
 
 #### <a name="installation-steps"></a>Installationsschritte
 
-1. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) auf einem Server eine Premium-Datenbank. Legen Sie die Beispieldatenbank „AdventureWorksLT“ als **Quelle** fest. Detaillierte Anweisungen finden Sie unter [Erstellen Ihrer ersten Azure SQL-Datenbank](sql-database-get-started-portal.md).
+1. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) auf einem Server eine Datenbank vom Typ „Premium“ oder „Unternehmenskritisch“ (Vorschauversion). Legen Sie die Beispieldatenbank „AdventureWorksLT“ als **Quelle** fest. Detaillierte Anweisungen finden Sie unter [Erstellen Ihrer ersten Azure SQL-Datenbank](sql-database-get-started-portal.md).
 
 2. Stellen Sie eine Verbindung mit der Datenbank mit SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx)her.
 

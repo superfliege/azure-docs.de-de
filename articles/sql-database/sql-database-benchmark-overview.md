@@ -1,5 +1,5 @@
 ---
-title: Übersicht über das Durchführen von Vergleichstests für Azure SQL-Datenbank
+title: Übersicht über das Durchführen von DTU-Vergleichstests für Azure SQL-Datenbank
 description: Dieses Thema beschreibt den Azure SQL Database Benchmark-Vergleichstest zum Messen der Leistung von Azure SQL-Datenbank.
 services: sql-database
 author: jan-eng
@@ -7,17 +7,20 @@ manager: jhubbard
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 06/21/2016
+ms.date: 04/01/2018
 ms.author: janeng
-ms.openlocfilehash: 25685f663d976674ad877bcfa1409ef016dd02ae
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0dae04ab3de16e2ef51134ec6979c6c289a6da3f
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="azure-sql-database-benchmark-overview"></a>Übersicht über das Durchführen von Vergleichstests für Azure SQL-Datenbank
+# <a name="azure-sql-database-dtu-benchmark-overview"></a>Übersicht über das Durchführen von DTU-Vergleichstests für Azure SQL-Datenbank
 ## <a name="overview"></a>Übersicht
-Microsoft Azure SQL-Datenbank bietet drei [Tarife](sql-database-service-tiers.md) mit mehreren Leistungsstufen. Jede Leistungsstufe bietet einen zunehmenden Umfang an Ressourcen bzw. Leistungsfähigkeit, um einen zunehmend höheren Durchsatz zu bieten.
+Beim DTU-basierten Kaufmodell werden für Microsoft Azure SQL-Datenbank drei [Diensttarife](sql-database-service-tiers.md) mit mehreren Leistungsstufen angeboten. Jede Leistungsstufe bietet einen zunehmenden Umfang an Ressourcen bzw. Leistungsfähigkeit, um einen zunehmend höheren Durchsatz zu bieten.
+
+> [!IMPORTANT]
+> Azure SQL-Datenbank unterstützt jetzt auch ein V-Kern-basiertes Kaufmodell (Vorschauversion). Informationen hierzu finden Sie unter [V-Kern-basiertes Kaufmodell (Vorschauversion)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
 
 Wichtig ist die Möglichkeit der Quantifizierung, wie sich die zunehmende Leistungsfähigkeit der einzelnen Stufen in wachsender Datenbankleistung ausdrückt. Hierfür hat Microsoft den Vergleichstest Azure SQL Database Benchmark (ASDB) entwickelt. Für den Vergleichstest wird eine Kombination grundlegender Vorgänge verwendet, die in allen OLTP-Workloads zu finden sind. Wir messen den Durchsatz, der für Datenbanken auf den einzelnen Leistungsstufen erzielt wird.
 

@@ -1,18 +1,18 @@
 ---
-title: "Bewährte Methoden für die Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation"
-description: "Hier können Sie sich über bewährte Methoden zum Konfigurieren und Ausführen der Azure SQL-Datensynchronisierung (Vorschauversion) informieren."
+title: Bewährte Methoden für die Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation
+description: Hier können Sie sich über bewährte Methoden zum Konfigurieren und Ausführen der Azure SQL-Datensynchronisierung (Vorschauversion) informieren.
 services: sql-database
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 1c8ad4b318d52b5cb6af284b3304cfa7ad35522b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 7ce7830d853a77b54706201fa614e9f4bee637a4
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="best-practices-for-sql-data-sync-preview"></a>Bewährte Methoden für die SQL-Datensynchronisierung (Vorschauversion) 
 
@@ -208,16 +208,16 @@ Entfernen Sie stattdessen zuerst eine Datenbank aus einer Synchronisierungsgrupp
 Wenn Sie versuchen, eine Datenbank zu entfernen und dann eine Synchronisierungsgruppe zu bearbeiten, ohne zuerst eine der Änderungen bereitzustellen, schlägt einer der Vorgänge fehl. Die Portaloberfläche wird unter Umständen inkonsistent. Aktualisieren Sie in diesem Fall die Seite, um den korrekten Zustand wiederherzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur SQL-Datensynchronisierung (Vorschau) finden Sie unter:
+Weitere Informationen zur SQL-Datensynchronisierung (Vorschauversion) finden Sie unter:
 
 -   [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung (Vorschauversion)](sql-database-sync-data.md)
--   [Einrichten von Azure SQL-Datensynchronisierung (Vorschauversion)](sql-database-get-started-sql-data-sync.md)
--   [Überwachen der Azure SQL-Datensynchronisierung-Vorschauversion mit OMS Log Analytics](sql-database-sync-monitor-oms.md)
+-   [Einrichten der Azure SQL-Datensynchronisierung (Vorschauversion)](sql-database-get-started-sql-data-sync.md)
+-   [Überwachen der Azure SQL-Datensynchronisierung (Vorschauversion) mit Log Analytics](sql-database-sync-monitor-oms.md)
 -   [Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion](sql-database-troubleshoot-data-sync.md)  
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung (Vorschauversion) veranschaulichen:  
     -   [Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren Azure SQL-­Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [Download the SQL Data Sync (Preview) REST API documentation](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true) (Herunterladen der Dokumentation zur REST-API von SQL-Datensynchronisierung (Vorschauversion))  
+-   [Herunterladen der Dokumentation zur REST-API der SQL-Datensynchronisierung (Vorschauversion)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 
 Weitere Informationen zu SQL-Datenbank finden Sie hier:
 

@@ -1,11 +1,11 @@
 ---
 title: Verwenden von Azure CDN mit CORS | Microsoft Docs
-description: "Erfahren Sie, wie Sie das Azure Content Delivery Network (CDN), mit Cross-Origin Resource Sharing (Ressourcenfreigabe zwischen verschiedenen Ursprüngen; CORS) verwendet wird."
+description: Erfahren Sie, wie Sie das Azure Content Delivery Network (CDN), mit Cross-Origin Resource Sharing (Ressourcenfreigabe zwischen verschiedenen Ursprüngen; CORS) verwendet wird.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
 ms.service: cdn
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>Verwendung von Azure CDN mit CORS
 ## <a name="what-is-cors"></a>Was ist CORS?
@@ -29,7 +29,7 @@ Es gibt zwei Arten von CORS-Anforderungen: *einfache Anforderungen* und *komplex
 
 ### <a name="for-simple-requests"></a>Für einfache Anforderungen gilt Folgendes:
 
-1. Der Browser sendet die CORS-Anforderung mit einem zusätzlichen HTTP-Anforderungsheader vom Typ **Ursprung**. Der Wert dieses Headers ist der Ursprung, der die übergeordneten Seite bereitgestellt hat. Dabei handelt es sich um eine Kombination aus *Protokoll*, *Domäne* und *Port*.  Wenn eine Seite aus „https://www.contoso.com“ versucht, auf die Benutzerdaten im Ursprung „fabrikam.com“ zuzugreifen, wird der folgende Anforderungsheader an „fabrikam.com“ gesendet:
+1. Der Browser sendet die CORS-Anforderung mit einem zusätzlichen HTTP-Anforderungsheader vom Typ **Ursprung**. Der Wert dieses Headers ist der Ursprung, der die übergeordneten Seite bereitgestellt hat. Dabei handelt es sich um eine Kombination aus *Protokoll*, *Domäne* und *Port*.  Wenn eine Seite aus https://www.contoso.com versucht, auf die Benutzerdaten im Ursprung fabrikam.com zuzugreifen, wird der folgende Anforderungsheader an fabrikam.com gesendet:
 
    `Origin: https://www.contoso.com`
 
@@ -75,8 +75,7 @@ In diesem Fall erstellen Sie einen regulären Ausdruck, der alle Ursprünge enth
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> 
-            **Azure CDN von Verizon** verwendet [Perl Compatible Regular Expressions](http://pcre.org/) als Engine für reguläre Ausdrücke.  Sie können ein Tool wie [Regular Expressions 101](https://regex101.com/) verwenden, um Ihre regulären Ausdrücke zu überprüfen.  Beachten Sie, dass das Zeichen „/“ in regulären Ausdrücken zulässig ist und nicht mit Escapezeichen versehen werden muss. Dieses Zeichen in Escapezeichen zu setzen ist jedoch die beste Methode und wird von einigen RegEx-Validierern erwartet.
+> **Azure CDN von Verizon** verwendet [Perl Compatible Regular Expressions](http://pcre.org/) als Engine für reguläre Ausdrücke.  Sie können ein Tool wie [Regular Expressions 101](https://regex101.com/) verwenden, um Ihre regulären Ausdrücke zu überprüfen.  Beachten Sie, dass das Zeichen „/“ in regulären Ausdrücken zulässig ist und nicht mit Escapezeichen versehen werden muss. Dieses Zeichen in Escapezeichen zu setzen ist jedoch die beste Methode und wird von einigen RegEx-Validierern erwartet.
 > 
 > 
 

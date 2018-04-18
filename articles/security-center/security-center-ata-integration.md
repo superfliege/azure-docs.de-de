@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: yurid
-ms.openlocfilehash: 02e14315018f6586644eb560894785e6b6eb022e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fb32fc55288229fb1d09dce98b6092d38c10abf2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Verbinden von Microsoft Advanced Threat Analytics mit Azure Security Center
 Dieses Dokument soll Sie bei der Konfiguration der Integration zwischen Microsoft Advanced Threat Analytics und dem Azure Security Center unterstützen.
@@ -58,7 +58,7 @@ Folgen Sie diesen Schritten zur Konfiguration dieser Integration, wenn Sie Advan
 
     ![Direkt-Agent](./media/security-center-ata-integration/security-center-ata-integration-fig6.png)
 
-12. Installieren Sie diesen Agent im Advanced Threat Analytics-Center. Stellen Sie bei der Installation sicher, dass die Option **Connect the agent to Azure Log Analytics (OMS)** (Den Agent mit der Azure-Protokollanalyse (OMS) verbinden) ausgewählt ist, und geben Sie die *Arbeitsbereich-ID* und den *Primärschlüssel* ein, wenn Sie dazu aufgefordert werden.
+12. Installieren Sie diesen Agent im Advanced Threat Analytics-Center. Stellen Sie bei der Installation sicher, dass die Option **Connect the agent to Azure Log Analytics** (Agent mit Azure Log Analytics verbinden) ausgewählt ist, und geben Sie die *Arbeitsbereich-ID* und den *Primärschlüssel* ein, wenn Sie dazu aufgefordert werden.
 
 
 Sobald Sie die Installation beendet haben, ist die Integration abgeschlossen, und Ihnen werden neue Warnungen, die von ATA an das Security Center im **Suchergebnis** gesendet werden, angezeigt. Die Lösung erscheint auf der Seite **Sicherheitslösungen** unter **Verbundene Lösungen**. 

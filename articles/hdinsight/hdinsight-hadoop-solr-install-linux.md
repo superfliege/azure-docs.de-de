@@ -1,8 +1,8 @@
 ---
-title: "Verwenden von Skriptaktionen zum Installieren von Solr in Linux-basiertem HDInsight – Azure | Microsoft-Dokumentation"
+title: Verwenden von Skriptaktionen zum Installieren von Solr in Linux-basiertem HDInsight – Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Solr auf Linux-basierten HDInsight Hadoop-Clustern mit Skriptaktionen installieren.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.openlocfilehash: f642a1f8060f566ec95b23995d0f82191b0c5315
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Solr in HDInsight Hadoop-Clustern
 
@@ -39,7 +39,7 @@ Erfahren Sie, wie Sie Solr in Azure HDInsight mithilfe der Funktion „Skriptakt
 > [!WARNING]
 > Mit dem HDInsight-Cluster bereitgestellte Komponenten werden von Microsoft vollständig unterstützt.
 >
-> Für benutzerdefinierte Komponenten wie Solr steht in wirtschaftlich angemessenem Rahmen Support für eine weiterführende Behebung des Problems zur Verfügung. Microsoft-Support kann Probleme mit benutzerdefinierten Komponenten möglicherweise nicht beheben. Gegebenenfalls müssen Sie die Open Source-Communitys um Unterstützung bitten. So können z. B. viele Communitywebsites verwendet werden, wie: das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), [z. B. Hadoop](http://hadoop.apache.org/).
+> Für benutzerdefinierte Komponenten wie Solr steht in wirtschaftlich angemessenem Rahmen Support für eine weiterführende Behebung des Problems zur Verfügung. Microsoft-Support kann Probleme mit benutzerdefinierten Komponenten möglicherweise nicht beheben. Gegebenenfalls müssen Sie die Open Source-Communitys um Unterstützung bitten. So können z.B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), z.B. [Hadoop](http://hadoop.apache.org/).
 
 ## <a name="what-the-script-does"></a>Funktion des Skripts
 
@@ -61,7 +61,7 @@ Zum Erstellen eines Clusters, in dem Solr installiert ist, führen Sie die im Ar
 1. Wählen Sie im Abschnitt __Clusterübersicht__ die Option „Erweiterte Einstellungen“ und dann __Skriptaktionen__ aus. Verwenden Sie die folgenden Informationen zum Füllen des Formulars:
 
    * **NAME**: Geben Sie einen Anzeigenamen für die Skriptaktion ein.
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
+   * **SKRIPT-URI**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
    * **HEAD**: Aktivieren Sie diese Option.
    * **WORKER**: Aktivieren Sie diese Option.
    * **ZOOKEEPER**: Aktivieren Sie diese Option für die Installation auf dem Zookeeper-Knoten.
@@ -319,7 +319,7 @@ Verwenden Sie die folgenden Schritte, um Solr-Daten im Standardspeicher für Ihr
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-Weitere Informationen zum Arbeiten mit Solr-Sicherungen und -Wiederherstellungen finden Sie unter [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
+Weitere Informationen zum Arbeiten mit Solr-Backups und -Wiederherstellungen finden Sie unter [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,15 +8,15 @@ editor: ''
 ms.assetid: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 03/13/2018
+ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: anajod
 keywords: ''
-ms.openlocfilehash: a4c854bdd659a05f032f5ee232074bc38ff677ef
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cdabd2a9d336cdd8ac83d27460fe129c45b7e1c6
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Bereitstellen von VM-Skalierungsgruppen in Azure Stack
 
@@ -47,6 +47,7 @@ In Azure Stack unterstützen VM-Skalierungsgruppen keine automatische Skalierung
 
    Wenn Sie Unterstützung für Linux benötigen, laden Sie Ubuntu Server 16.04 herunter, und fügen Sie es mithilfe von ```Add-AzsVMImage``` mit den folgenden Parametern hinzu: ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```.
 
+
 ## <a name="add-the-virtual-machine-scale-set"></a>Hinzufügen der VM-Skalierungsgruppe
 
 Bearbeiten Sie das folgende PowerShell-Skript für Ihre Umgebung, und führen Sie es anschließend aus, um eine VM-Skalierungsgruppe zu Ihrem Azure Stack-Marketplace hinzuzufügen. 
@@ -72,6 +73,38 @@ Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
 
 Add-AzsVMSSGalleryItem -Location $Location
 ```
+
+## <a name="update-images-in-a-virtual-machine-scale-set"></a>Aktualisieren von Images in einer VM-Skalierungsgruppe 
+Nach der Erstellung einer VM-Skalierungsgruppe können Benutzer Images in der Skalierungsgruppe aktualisieren, ohne dass diese neu erstellt werden muss. Die Vorgehensweise zum Aktualisieren eines Images hängt von den folgenden Szenarien ab:
+
+1. In der Bereitstellungsvorlage der VM-Skalierungsgruppe ist **latest** für *version* angegeben:  
+
+   Wenn im Abschnitt *imageReference* der Vorlage für eine Skalierungsgruppe *version* auf **latest** festgelegt ist, nutzen Vorgänge zum zentralen Hochskalieren für die Skalierungsgruppe die neueste verfügbare Version des Images für die Skalierungsgruppeninstanzen. Nach dem Abschluss eines Vorgangs zum zentralen Hochskalieren können Sie ältere VM-Skalierungsgruppeninstanzen löschen.  (Die Werte für *publisher*, *offer* und *sku* bleiben unverändert). 
+
+   Hier sehen Sie ein Beispiel für die Angabe von *latest*:  
+
+          "imageReference": {
+             "publisher": "[parameters('osImagePublisher')]",
+             "offer": "[parameters('osImageOffer')]",
+             "sku": "[parameters('osImageSku')]",
+             "version": "latest"
+             }
+
+   Bevor beim zentralen Hochskalieren ein neues Image verwendet werden kann, müssen Sie dieses Image herunterladen:  
+
+   - Wenn das Image im Marketplace neuer ist als das Image in der Skalierungsgruppe: Laden Sie das neue Image herunter, das das ältere Image ersetzt. Nachdem der Benutzer das Image ersetzt hat, kann er mit dem zentralen Hochskalieren fortfahren. 
+
+   - Wenn die Imageversion im Marketplace der Imageversion in der Skalierungsgruppe entspricht: Löschen Sie das in der Skalierungsgruppe verwendete Image, und laden Sie das neue Image herunter. In der Zeit zwischen dem Entfernen des ursprünglichen Images und dem Herunterladen des neuen Images können Sie nicht zentral hochskalieren. 
+      
+     Bei diesem Vorgang müssen Images neu syndiziert werden, die das in Version 1803 eingeführte Sparsedateiformat verwenden. 
+ 
+
+2. In der Bereitstellungsvorlage der VM-Skalierungsgruppe ist **nicht** „latest“ für *version*, sondern eine Versionsnummer angegeben:  
+
+     Wenn Sie ein Image mit einer neueren Version herunterladen (wodurch sich die verfügbare Version ändert), kann die Skalierungsgruppe nicht zentral hochskaliert werden. Dies ist beabsichtigt, da die in der Skalierungsgruppenvorlage angegebene Imageversion verfügbar sein muss.  
+
+Weitere Informationen finden Sie unter [Einführung in virtuelle Azure Stack-Computer](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
+
 
 ## <a name="remove-a-virtual-machine-scale-set"></a>Entfernen einer VM-Skalierungsgruppe
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/19/2018
+ms.date: 4/6/2018
 ms.author: raiye
-ms.openlocfilehash: 0456bf8d8cdd84078d12c3fc0f48d16b0370cddd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1f24db331b3d59eaad54c5c2488e56913261cff2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem deaktiviert wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
@@ -42,6 +42,9 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sind Sie unsicher, was das Gast-BS ist oder wie Gast-BS-Releases funktionieren? Lesen Sie [diesen](#how-it-works) Abschnitt.
 
 ## <a name="news-updates"></a>Neuigkeiten
+###### <a name="april-6-2018"></a>**6. April 2018**
+Das Gastbetriebssystem für März wurde veröffentlicht.
+
 ###### <a name="march-19-2018"></a>**19. März 2018**
 Das Gast-BS für Februar wurde veröffentlicht.
 
@@ -90,8 +93,9 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.17_201803-01 |6. April 2018 |Nach Version 5.19 |TBD |
 | WA-GUEST-OS-5.16_201802-01 |12. März 2018 |Post 5.18 |TBD |
-| WA-GUEST-OS-5.15_201801-01 |4. Januar 2018 |Post 5.17 |TBD |
+|~~WA-GUEST-OS-5.15_201801-01~~ |4. Januar 2018 |6. April 2018 |TBD |
 |~~WA-GUEST-OS-5.14_201712-01~~ |4. Januar 2018 |12. März 2018 |TBD |
 |~~WA-GUEST-OS-5.13_201711-01~~ |14. Dezember 2017 |4. Januar 2018|TBD |
 |~~WA-GUEST-OS-5.12_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
@@ -116,8 +120,9 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.52_201803-01 |6. April 2018 |Nach Version 4.54 |TBD |
 | WA-GUEST-OS-4.51_201802-01 |12. März 2018 |Post 4.53 |TBD |
-| WA-GUEST-OS-4.50_201801-01 |4. Januar 2018 |Post 4.52 |TBD |
+|~~WA-GUEST-OS-4.50_201801-01~~ |4. Januar 2018 |6. April 2018 |TBD |
 |~~WA-GUEST-OS-4.49_201712-01~~ |4. Januar 2018 |12. März 2018 |TBD |
 |~~WA-GUEST-OS-4.48_201711-01~~ |14. Dezember 2017 |4. Januar 2018 |TBD |
 |~~WA-GUEST-OS-4.47_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
@@ -142,8 +147,9 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.59_201803-01 |6. April 2018 |Nach Version 3.61 |TBD |
 | WA-GUEST-OS-3.58_201802-01 |19. März 2018 |Post 3.60 |TBD |
-| WA-GUEST-OS-3.57_201801-01 |29. Januar 2018 |Nach Version 3.59 |TBD |
+|~~WA-GUEST-OS-3.57_201801-01~~ |29. Januar 2018 |6. April 2018 |TBD |
 |~~WA-GUEST-OS-3.56_201712-01~~ |4. Januar 2018 |19. März 2018 |TBD |
 |~~WA-GUEST-OS-3.55_201711-01~~ |14. Dezember 2017 |29. Januar 2018 |TBD |
 |~~WA-GUEST-OS-3.54_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
@@ -168,8 +174,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.72_201803-01 |6. April 2018 |Nach Version 2.74 |TBD |
 | WA-GUEST-OS-2.71_201802-01 |12. März 2018 |Post 2.73 |TBD |
-| WA-GUEST-OS-2.70_201801-01 |29. Januar 2018 |Nach Version 2.72 |TBD |
+|~~WA-GUEST-OS-2.70_201801-01~~ |29. Januar 2018 |6. April 2018 |TBD |
 |~~WA-GUEST-OS-2.69_201712-01~~ |4. Januar 2018 |12. März 2018 |TBD |
 |~~WA-GUEST-OS-2.68_201711-01~~ |14. Dezember 2017 |29. Januar 2018 |TBD |
 |~~WA-GUEST-OS-2.67_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |

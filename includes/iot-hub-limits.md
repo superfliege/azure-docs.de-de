@@ -16,6 +16,7 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte:
 | --- | --- |
 | Maximale Anzahl kostenpflichtiger IoT Hubs pro Azure-Abonnement |10 |
 | Maximale Anzahl kostenloser IoT Hubs pro Azure-Abonnement |1 |
+| Maximale Anzahl von Zeichen in einer Geräte-ID | 128 |
 | Maximale Anzahl von Geräte-Identitäten,<br/> die bei einem einzelnen Aufruf zurückgegeben wird |1000 |
 | Maximale Beibehaltungsdauer von IoT Hub-Nachrichten für D2C-Nachrichten |7 Tage |
 | Maximale Größe einer Nachricht von einem Gerät an die Cloud |256 KB |

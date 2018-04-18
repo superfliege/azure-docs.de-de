@@ -9,13 +9,13 @@ ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 3806b165e0124e979f59b51d5583cdbb1f949366
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4cbf758b82bccae8efe77e197d23a090d71fd7e5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding, die Azure SQL-Datenbank verwendet
 
@@ -57,7 +57,7 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 In den Schritten in diesem Abschnitt geben Sie einen Wert für *Benutzer* an, mit dem sichergestellt wird, dass Ressourcennamen global eindeutig sind, sowie einen Namen für die *Ressourcengruppe*, die alle Ressourcen enthält, die durch eine Bereitstellung der App erstellt werden. Für eine Person mit dem Namen *Ann Finley* wird Folgendes empfohlen:
 - *Benutzer:* **af1** *(Die Initialen mit einer Ziffer. Verwenden Sie einen anderen Wert (z. B. „af2“), wenn Sie die App ein zweites Mal bereitstellen.)*
-- *Ressourcengruppe:* **wingtip-dpt-af1** *(„wingtip-dpt“ gibt an, dass es sich um die App für eine Datenbank pro Mandant handelt. Durch Anhängen des Benutzernamens „af1“ wird der Name der Ressourcengruppe mit den Namen der darin enthaltenen Ressourcen korreliert.)*
+- *Ressourcengruppe:* **wingtip-mt-af1** *(„wingtip-mt“ gibt an, dass es sich um die mehrinstanzenfähige App mit Sharding handelt. Durch Anhängen des Benutzernamens „af1“ wird der Name der Ressourcengruppe mit den Namen der darin enthaltenen Ressourcen korreliert.)*
 
 Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese. 
 
@@ -123,7 +123,7 @@ Jeder Veranstaltungsort erhält eine personalisierte Web-App, über die Veransta
 Auf der zentralen Webseite **Veranstaltungshub** wird eine Liste mit Links zu den Mandanten in der jeweiligen Bereitstellung aufgeführt. Anhand der folgenden Schritte können Sie die Webseite **Veranstaltungshub** und die jeweilige Web-App erkunden:
 
 1. Öffnen Sie den **Ereignis-Hub** in Ihrem Webbrowser:
-    - http://events.wingtip-mt.&lt;Benutzer&gt;.trafficmanager.net &nbsp; *(ersetzen Sie &gt;Benutzer* durch den Benutzerwert Ihrer Bereitstellung)&lt;
+    - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *(Ersetzen Sie &lt;user&gt; durch den Benutzerwert Ihrer Bereitstellung.)*
 
     ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -135,7 +135,7 @@ Auf der zentralen Webseite **Veranstaltungshub** wird eine Liste mit Links zu de
 
 Zum Steuern der Verteilung eingehender Anforderungen nutzt die Wingtip-App den [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Die Veranstaltungsseite für die einzelnen Mandanten enthalten den Mandantennamen in der URL. Jede URL enthält auch den jeweiligen Benutzerwert. Bei jeder URL wird durch Ausführung der folgenden Schritte die Erfüllung des angezeigten Formats sichergestellt:
 
-- http://events.wingtip-mt.&lt;Benutzer&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Die Veranstaltungs-App analysiert den Mandantennamen aus der URL. Der Mandantenname in der vorangehenden Beispiel-URL lautet *fabrikamjazzclub*.
 2. Die App hashcodiert anschließend den Mandantennamen, um einen Schlüssel für den Zugriff auf einen Katalog mithilfe der [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) zu erstellen.

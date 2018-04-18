@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeedes
 ms.openlocfilehash: 200d87b950ac76c85513bc11da2798562e48bec3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrieren von Azure Active Directory mit E Sales Manager Remix
 
@@ -155,7 +155,7 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
     
     b. Wählen Sie in der Dropdownliste im Abschnitt **Collaboration item** (Zusammenarbeitselement) die Option **email** aus.
 
-    c. Fügen Sie im Feld **Collaboration item** (Zusammenarbeitselement) den Anspruchswert, den Sie zuvor im Azure-Portal kopiert haben, ein (**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. Fügen Sie in das Feld **Collaboration item** (Zusammenarbeitselement) den Anspruchswert ein, den Sie aus dem Azure-Portal kopiert haben (d.h. **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
 
     d. Fügen Sie in das Feld **Issuer (entity ID)** (Aussteller (Entitäts-ID)) den Wert für „Bezeichner“ ein, den Sie aus dem Azure-Portal im Abschnitt **Domäne und URLs für E Sales Manager Remix** kopiert haben.
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/07/2018
 ms.author: glenga
-ms.openlocfilehash: 559cfee1a8116703371a5641cf4534b7ad6f7578
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d008e94186dd3c5a18c92617ebddfffa966358d5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 
@@ -49,7 +49,7 @@ In Version 2.x der Azure Functions Runtime müssen Sie die in Ihrer Funktions-Ap
 
 Erweiterungen werden als NuGet-Pakete bereitgestellt. Der Paketnamen beginnt in der Regel mit [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions).  Das Installieren und Registrieren Ihrer Bindungserweiterungen hängt davon ab, wie Sie Ihre Funktionen entwickeln: 
 
-+ [Lokal in C# mit Visual Studio oder VS Code](#precompiled-functions-c)
++ [Lokal in C# mit Visual Studio oder VS Code](#local-c-development-using-visual-studio-or-vs-code)
 + [Lokal mit Azure Functions Core Tools](#local-development-azure-functions-core-tools)
 + [Im Azure-Portal](#azure-portal-development) 
 
@@ -635,7 +635,7 @@ In C# und anderen .NET-Sprachen können Sie ein imperatives Bindungsmuster verwe
 
 ## <a name="functionjson-file-schema"></a>function.json-Dateischema
 
-Das *function.json*-Dateischema finden Sie unter [http://json.schemastore.org/function](http://json.schemastore.org/function).
+Das Dateischema *function.json* steht unter [http://json.schemastore.org/function](http://json.schemastore.org/function) zur Verfügung.
 
 ## <a name="handling-binding-errors"></a>Beheben von Bindungsfehlern
 

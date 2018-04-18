@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f3c6d50ac128cd766a1d22689b737da975922466
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 509570dfe0e3d4be2e589ac1958dd377dc4e8e03
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Rotieren von Geheimnissen in Azure Stack
 
@@ -69,7 +69,7 @@ Diese Warnungen können durch Ausführen der Geheimnisrotation behandelt werden.
 2.  Bereiten Sie eine neue Gruppe externer Ersatzzertifikate vor. Die neue Gruppe entspricht den Zertifikatspezifikationen aus den [Azure Stack-PKI-Zertifikatanforderungen](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
 3.  Speichern Sie eine Sicherung der für die Rotation verwendeten Zertifikate an einem sicheren Sicherungsspeicherort. Sollte die Rotation nicht erfolgreich sein, ersetzen Sie die Zertifikate in der Dateifreigabe durch die Sicherungskopien, und wiederholen Sie dann die Rotation. Hinweis: Bewahren Sie Sicherungskopien am sicheren Sicherungsspeicherort auf.
 3.  Erstellen Sie eine Dateifreigabe, auf die Sie über die virtuellen ERCS-Computer zugreifen können. Die Identität **CloudAdmin** muss über Lese- und Schreibzugriff für die Dateifreigabe verfügen.
-4.  Öffnen Sie auf dem virtuellen ERCS-Computer unter Verwendung des Kontos **CloudAdmin** eine PowerShell-ISE-Konsole.  Navigieren Sie zu Ihrer Dateifreigabe. 
+4.  Öffnen Sie eine PowerShell ISE-Konsole auf einem Computer, auf dem Sie Zugriff auf die Dateifreigabe haben. Navigieren Sie zu Ihrer Dateifreigabe. 
 5.  Führen Sie **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** aus, um die erforderlichen Verzeichnisse für Ihre externen Zertifikate zu erstellen.
 
 ## <a name="rotating-external-and-internal-secrets"></a>Rotieren externer und interner Geheimnisse
@@ -131,13 +131,13 @@ Pfad (Standard)
 Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential] <PSCredential> [-CertificatePassword <SecureString>]  
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 
 Das Cmdlet „Start-SecretRotation“ rotiert die Infrastrukturgeheimnisse eines Azure Stack-Systems. Standardmäßig werden alle Geheimnisse rotiert, die für das interne Infrastrukturnetzwerk verfügbar gemacht wurden. Mit „user-input“ werden auch die Zertifikate aller externen Netzwerkinfrastruktur-Endpunkte rotiert. Beim Rotieren externer Netzwerkinfrastruktur-Endpunkte muss „Start-SecretRotation“ über einen Invoke-Command-Skriptblock ausgeführt werden, und die Sitzung des privilegierten Endpunkts der Azure Stack-Umgebung muss als Sitzungsparameter übergeben werden.
  
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Typ | Erforderlich | Position | Standard | Beschreibung |
+| Parameter | Typ | Erforderlich | Position | Standard | BESCHREIBUNG |
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | Zeichenfolge  | False  | benannt  | Keine  | Der Dateifreigabepfad des Verzeichnisses **\Certificates** mit allen externen Netzwerkendpunkt-Zertifikaten. Nur beim Rotieren interner und externer Geheimnisse erforderlich. Das Endverzeichnis muss **\Certificates** sein. |
 | CertificatePassword | SecureString | False  | benannt  | Keine  | Das Kennwort für alle Zertifikate in „-PfXFilesPath“. Erforderlich, wenn „PfxFilesPath“ beim gleichzeitigen Rotieren interner und externer Geheimnisse angegeben wird. |

@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 0339dc2ecc93fb9ec260ede9d3f2e9b7b1419b08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 54cd9864f6ff4bd8234e8ec55e158f4213f9f11b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung ermöglicht außerdem Folgendes:
@@ -118,7 +118,7 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen:
 
     4. Die zusammengeführte Datei wird in SSMS geöffnet. Hier können Sie die Datei anzeigen und analysieren und in eine XEL- oder CSV-Datei oder in eine Tabelle exportieren.
 
-* Verwenden Sie die [Synchronisierungsanwendung](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration), die wir zuvor erstellt haben. Diese wird in Azure ausgeführt und nutzt öffentliche OMS (Operations Management Suite) Log Analytics-APIs, um SQL-Überwachungsprotokolle in OMS zu verschieben. Die Synchronisierungsanwendung verschiebt SQL-Überwachungsprotokolle für die Nutzung über das OMS Log Analytics-Dashboard in OMS Log Analytics.
+* Verwenden Sie die [Synchronisierungsanwendung](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration), die wir zuvor erstellt haben. Diese wird in Azure ausgeführt und nutzt öffentliche Log Analytics-APIs, um SQL-Überwachungsprotokolle in Log Analytics zu verschieben. Die Synchronisierungsanwendung verschiebt SQL-Überwachungsprotokolle für die Nutzung über das Log Analytics-Dashboard in Log Analytics.
 
 * Verwenden Sie Power BI. Sie können Überwachungsprotokolldateien in Power BI anzeigen und analysieren. Erfahren Sie mehr über [Power BI, und erhalten Sie Zugriff eine herunterladbare Vorlage](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 

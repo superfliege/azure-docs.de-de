@@ -7,13 +7,13 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 5d55ae225ca1b550bbf70314e2f48fc0161ad107
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2d8760476fd7b8a5a11d01a434a383ec1ba27ef1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Erste Schritte mit Aufträgen für die elastische Datenbank
 Aufträge für die elastische Datenbank (Vorschau) für Azure SQL-Datenbank ermöglicht die zuverlässige Ausführung von T-SQL-Skripts, die mehrere Datenbanken überspannen, und stellt automatische Wiederholung und ggf. Abschlussgarantien bereit. Weitere Informationen zu den Features von Aufträgen für die elastische Datenbank finden Sie unter [Elastische Aufträge](sql-database-elastic-jobs-overview.md).
@@ -460,7 +460,7 @@ Die Excel-Tabelle wird mit allen Zeilen aus der Tabelle **Customers** gefüllt, 
 Sie können jetzt die Datenfunktionen von Excel verwenden. Verwenden Sie die Verbindungszeichenfolge mit dem Servernamen, dem Datenbanknamen und den Anmeldeinformationen zum Verbinden der BI und der Datenintegrationstools mit der elastischen Abfragedatenbank. Stellen Sie sicher, dass SQL Server als Datenquelle für das Tool unterstützt wird. Verweisen Sie auf die elastische Abfragedatenbank und die externen Tabellen wie auf jede andere SQL Server-Datenbank und SQL Server-Tabelle, zu denen Sie mit dem Tool eine Verbindung herstellen würden.
 
 ### <a name="cost"></a>Kosten
-Es gibt keine zusätzlichen Gebühren für die Verwendung der Abfragefunktion für elastische Datenbanken. Zum jetzigen Zeitpunkt steht dieses Feature nur für Premium-Datenbanken als Endpunkt zur Verfügung, die Shards können jedoch aus jeder Dienstebene stammen.
+Es gibt keine zusätzlichen Gebühren für die Verwendung der Abfragefunktion für elastische Datenbanken. Derzeit ist dieses Feature nur für Datenbanken vom Typ „Premium“ und „Unternehmenskritisch“ (Vorschauversion) und Pools für elastische Datenbanken als Endpunkt verfügbar, aber die Shards können einen beliebigen Diensttarif aufweisen.
 
 Preisinformationen finden Sie in der [SQL-Datenbank – Preisdetails](https://azure.microsoft.com/pricing/details/sql-database/).
 

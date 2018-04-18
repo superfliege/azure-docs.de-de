@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2018
 ms.author: johnkem
-ms.openlocfilehash: e09fe4fd48d1806e2194ed3065e7c2edbe2d1aa5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 05e9430dd8b7a14bc94869071cd145696f34567f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-azure-monitor"></a>Erste Schritte mit Azure Monitor
 Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an einem zentralen Ort verwalten können. Mit Azure Monitor können Sie Metriken und Protokolle aus den Ressourcen in Azure visualisieren, abfragen, weiterleiten und archivieren und andere Maßnahmen ergreifen. Sie können im Azure-Portal, mit [Monitor PowerShell-Cmdlets](insights-powershell-samples.md), in einer [plattformübergreifenden Befehlszeilenschnittstelle](insights-cli-samples.md) oder in [Azure Monitor-REST-APIs](https://msdn.microsoft.com/library/dn931943.aspx) mit diesen Daten arbeiten. In diesem Artikel werden einige wichtige Komponenten von Azure Monitor beschrieben, indem zu Demonstrationszwecken das Portal verwendet wird.
@@ -37,9 +37,9 @@ Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an eine
     Im [**Aktivitätsprotokoll**](monitoring-overview-activity-logs.md) werden alle Vorgänge beschrieben, die in den Ressourcen in Ihrem Abonnement durchgeführt wurden. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Erstell-, Aktualisierungs- und Löschvorgänge ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Das Aktivitätsprotokoll enthält beispielsweise Informationen darüber, wann und von wem eine Web-App beendet wurde. Aktivitätsprotokollereignisse werden auf der Plattform gespeichert und sind 90 Tage verfügbar.
 
     ![Aktivitätsprotokoll](./media/monitoring-get-started/monitor-act-log-blade.png)
-    
+
     Sie können Abfragen für allgemeine Filter erstellen und speichern und dann die wichtigsten Abfragen an ein Portaldashboard anheften. So können Sie jederzeit sehen, ob Ereignisse aufgetreten sind, die Ihre Kriterien erfüllen.
-4. Filtern Sie die Ansicht für eine bestimmte Ressourcengruppe nach der letzten Woche, und klicken Sie dann auf die Schaltfläche **Speichern** . Geben Sie Ihrer Abfrage einen Namen. 
+4. Filtern Sie die Ansicht für eine bestimmte Ressourcengruppe nach der letzten Woche, und klicken Sie dann auf die Schaltfläche **Speichern** . Geben Sie Ihrer Abfrage einen Namen.
 
     ![Aktivitätsprotokollabfrage speichern](./media/monitoring-get-started/monitor-act-log-save.png)
 5. Klicken Sie jetzt auf die Schaltfläche **Anheften** .
@@ -63,6 +63,7 @@ Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an eine
    > Einige Metriken sind nur verfügbar, wenn Sie [Application Insights](../application-insights/app-insights-overview.md) bzw. die Windows- oder Linux-Azure-Diagnose-Erweiterung für Ihre Ressource aktivieren.
    >
    >
+
 9. Wenn Sie mit dem Diagramm zufrieden sind, können Sie es über die Schaltfläche **Anheften** an Ihr Dashboard anheften.
 10. Kehren Sie zu **Monitor** zurück, und klicken Sie auf **Diagnoseprotokolle**.
 
@@ -71,6 +72,13 @@ Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an eine
     [**Diagnoseprotokolle**](monitoring-overview-of-diagnostic-logs.md) sind *von* einer Ressource ausgegebene Protokolle, in denen Daten zum Betrieb dieser bestimmten Ressource erfasst werden. Regelzähler für Netzwerksicherheitsgruppen und Workflowprotokolle für Logik-Apps sind Beispiele für solche Diagnoseprotokolle. Diese Protokolle können in einem Speicherkonto gespeichert, an einen Event Hub gestreamt oder an [Log Analytics](../log-analytics/log-analytics-overview.md) gesendet werden. Log Analytics ist das Operational Intelligence-Produkt von Microsoft für erweiterte Suchen und Warnungen.
 
     Um zu überprüfen, ob die entsprechenden Diagnoseprotokolle aktiviert sind, können Sie im Portal eine Liste aller Ressourcen in Ihrem Abonnement anzeigen und filtern.
+    > [!NOTE]
+    > Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
+    >
+    > *Beispiel:* Die Metrik „Eingehende Nachrichten“ eines Event Hubs kann auf einer warteschlangenspezifischen Ebene untersucht und in einem Diagramm dargestellt werden. Wenn Sie die Metrik allerdings über die Diagnoseeinstellungen exportieren, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
+    >
+    >
+
 11. Klicken Sie auf der Seite „Diagnoseprotokolle“ auf eine Ressource. Wenn Diagnoseprotokolle in einem Speicherkonto gespeichert sind, sehen Sie nun eine Liste mit stündlich erstellten Protokollen, die Sie direkt herunterladen können.
 
     ![Diagnoseprotokolle für eine Ressource](./media/monitoring-get-started/monitor-diaglogs-detail.png)
@@ -84,8 +92,8 @@ Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an eine
 
     ![Blatt „Warnungen“ für öffentliche Vorschau](./media/monitoring-get-started/monitor-alerts-nopp.png)
 
-    Hier können Sie alle [**klassischen Warnungen**](monitoring-overview-alerts.md) für Ihre Azure-Ressourcen verwalten. Dies beinhaltet auch Warnungen für Metriken, Aktivitätsprotokollereignisse sowie Webtests (Speicherorte) und proaktive Diagnosen in Application Insights. Warnungen werden mit Aktionsgruppen verknüpft. Mit [Aktionsgruppen](monitoring-action-groups.md) können Benutzer benachrichtigt oder bestimmte Aktionen ausgeführt werden, wenn eine Warnung ausgelöst wird. 
-    
+    Hier können Sie alle [**klassischen Warnungen**](monitoring-overview-alerts.md) für Ihre Azure-Ressourcen verwalten. Dies beinhaltet auch Warnungen für Metriken, Aktivitätsprotokollereignisse sowie Webtests (Speicherorte) und proaktive Diagnosen in Application Insights. Warnungen werden mit Aktionsgruppen verknüpft. Mit [Aktionsgruppen](monitoring-action-groups.md) können Benutzer benachrichtigt oder bestimmte Aktionen ausgeführt werden, wenn eine Warnung ausgelöst wird.
+
 13. Klicken Sie auf **Metrikwarnungen hinzufügen** , um eine Warnung zu erstellen.
 
     ![Metrikwarnungen hinzufügen](./media/monitoring-get-started/monitor-alerts-add.png)
@@ -93,7 +101,7 @@ Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an eine
     Sie können dann eine Warnung an Ihr Dashboard anheften, um den Status jederzeit einfach einsehen zu können.
 
     Azure Monitor bietet nun auch [**neuere Warnungen**](https://aka.ms/azuremonitor/near-real-time-alerts), die im Minutentakt ausgewertet werden können.
-    
+
 14. Auch der Abschnitt „Überwachen“ enthält Links zu [Application Insights](../application-insights/app-insights-overview.md)-Anwendungen und [Log Analytics](../log-analytics/log-analytics-overview.md)-Verwaltungslösungen. Diese Microsoft-Produkte sind eng in Azure Monitor integriert.
 15. Falls Sie Application Insights oder Log Analytics nicht verwenden, ist es gut möglich, dass eine Partnerschaft zwischen Azure Monitor und Ihrem aktuellen Produktanbieter für Überwachung, Protokollierung und Warnungen besteht. Eine vollständige Liste unserer Partner sowie Anleitungen zur Integration finden Sie auf unserer [Partner-Website](monitoring-partners.md) .
 
@@ -102,6 +110,4 @@ Wenn Sie diese Schritte befolgen und alle wichtigen Kacheln an ein Dashboard anh
 ![Azure Monitor-Dashboard](./media/monitoring-get-started/monitor-final-dash.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* In der [Übersicht über alle Azure-Überwachungstools](monitoring-overview.md) erfahren Sie, wie Azure Monitor mit ihnen arbeitet. 
-
-
+* In der [Übersicht über alle Azure-Überwachungstools](monitoring-overview.md) erfahren Sie, wie Azure Monitor mit ihnen arbeitet.
