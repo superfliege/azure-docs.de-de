@@ -102,7 +102,7 @@ Azure Location Based Services (LBS) bietet ausführliche Geocodierungsinformatio
 | Japan                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
 | Laos                                                |                 |                |              |      ✓     |          ✓         |
-| Macau                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Macau (SAR)                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malaysia                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mikronesien |                 |                |              |      ✓     |          ✓         |
 | Mongolei                                            |                 |                |              |      ✓     |          ✓         |
@@ -121,7 +121,7 @@ Azure Location Based Services (LBS) bietet ausführliche Geocodierungsinformatio
 | Philippinen                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Pitcairninseln                                            |                 |                |              |      ✓     |          ✓         |
 | Samoa                                               |                 |                |              |      ✓     |          ✓         |
-| Senkaku-Inseln                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Senkaku-Inseln/Diaoyutai-Inseln                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Salomonen                                     |                 |                |              |      ✓     |          ✓         |
 | Südkorea                                         |                 |                |              |      ✓     |          ✓         |
@@ -176,7 +176,7 @@ Azure Location Based Services (LBS) bietet ausführliche Geocodierungsinformatio
 | Liechtenstein                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Litauen                                           |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Luxemburg                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Mazedonien                                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Mazedonien (ehemalige jugoslawische Republik)                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Malta                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Moldau                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Monaco                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -217,7 +217,7 @@ Azure Location Based Services (LBS) bietet ausführliche Geocodierungsinformatio
 | Cabo Verde|                 |                |       ✓      |      ✓     |          ✓         |
 | Zentralafrikanische Republik                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Tschad                                                |                 |                |       ✓      |      ✓     |          ✓         |
-| Kongo                                               |                 |                |       ✓      |      ✓     |          ✓         |
+| Kongo (Demokratische Republik)                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Côte d'Ivoire                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Demokratische Republik Kongo                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Dschibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |

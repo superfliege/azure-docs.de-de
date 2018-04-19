@@ -1,11 +1,11 @@
 ---
-title: Verwenden des Azure Slave-Plug-Ins mit Hudson Continuous Integration | Microsoft Docs
-description: Beschreibt das Verwenden des Azure Slave-Plug-Ins mit Hudson Continuous Integration.
+title: Verwenden des Azure-Plug-Ins für Sekundärgeräte mit Hudson Continuous Integration | Microsoft Docs
+description: Beschreibt das Verwenden des Azure-Plug-Ins für Sekundärgeräte mit Hudson Continuous Integration.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rmcmurray
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: b2083d1c-4de8-4a19-a615-ccc9d9b6e1d9
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -20,24 +20,24 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/08/2018
 ---
-# <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Verwenden des Azure Slave-Plug-Ins mit Hudson Continuous Integration
-Das Azure Slave-Plug-In für Hudson ermöglicht Ihnen das Bereitstellen untergeordneter Knoten in Azure beim Ausführen von verteilten Builds.
+# <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Verwenden des Azure-Plug-Ins für Sekundärgeräte mit Hudson Continuous Integration
+Das Azure-Plug-In für Sekundärgeräte für Hudson ermöglicht Ihnen das Bereitstellen untergeordneter Knoten in Azure beim Ausführen von verteilten Builds.
 
-## <a name="install-the-azure-slave-plug-in"></a>Installieren des Azure Slave-Plug-Ins
+## <a name="install-the-azure-slave-plug-in"></a>Installieren des Azure-Plug-Ins für Sekundärgeräte
 1. Klicken Sie im Hudson-Dashboard auf **Manage Hudson**.
 2. Klicken Sie unter **Manage Hudson** auf **Manage Plugins**.
 3. Klicken Sie auf die Registerkarte **Available**.
 4. Klicken Sie auf **Search**, und geben Sie **Azure** ein, um relevante Plug-Ins aufzulisten.
    
-    Wenn Sie einen Bildlauf durch die Liste der verfügbaren Plug-Ins durchführen möchten, finden Sie das Azure Slave-Plug-In im Abschnitt **Cluster Management and Distributed Build** auf der Registerkarte **Others**.
-5. Aktivieren Sie das Kontrollkästchen **Azure Slave Plugin**.
+    Wenn Sie einen Bildlauf durch die Liste der verfügbaren Plug-Ins durchführen möchten, finden Sie das Azure-Plug-In für Sekundärgeräte im Abschnitt **Cluster Management and Distributed Build** auf der Registerkarte **Others**.
+5. Aktivieren Sie das Kontrollkästchen **Azure-Plug-In für Sekundärgeräte**.
 6. Klicken Sie auf **Installieren**.
 7. Starten Sie Hudson neu.
 
 Da das Plug-In jetzt installiert ist, wären die nächsten Schritte das Konfigurieren des Plug-Ins mit Ihrem Azure-Abonnementprofil und das Erstellen einer Vorlage, die verwendet wird, um den virtuellen Computer für den untergeordneten Knoten zu erstellen.
 
-## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>Konfigurieren des Azure Slave-Plug-Ins mit Ihrem Abonnementprofil
-Ein Abonnementprofil, das als Veröffentlichungseinstellungen bezeichnet wird, ist eine XML-Datei, die sichere Anmeldeinformationen und einige zusätzliche Informationen enthält, die Sie für die Arbeit mit Azure in Ihrer Entwicklungsumgebung benötigen. Um das Azure Slave-Plug-In zu konfigurieren, benötigen Sie Folgendes:
+## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>Konfigurieren des Azure-Plug-Ins für Sekundärgeräte mit Ihrem Abonnementprofil
+Ein Abonnementprofil, das als Veröffentlichungseinstellungen bezeichnet wird, ist eine XML-Datei, die sichere Anmeldeinformationen und einige zusätzliche Informationen enthält, die Sie für die Arbeit mit Azure in Ihrer Entwicklungsumgebung benötigen. Um das Azure-Plug-In für Sekundärgeräte zu konfigurieren, benötigen Sie Folgendes:
 
 * Ihre Abonnement-ID
 * Ein Verwaltungszertifikat für Ihr Abonnement
@@ -63,7 +63,7 @@ Sie finden dies in Ihrem [Abonnementprofil]. Es folgt ein Beispiel für ein Abon
 
     </PublishData>
 
-Sobald Sie Ihr Abonnementprofil haben, gehen Sie folgendermaßen vor, um das Azure Slave-Plug-In zu konfigurieren.
+Sobald Sie Ihr Abonnementprofil haben, gehen Sie folgendermaßen vor, um das Azure-Plug-In für Sekundärgeräte zu konfigurieren.
 
 1. Klicken Sie im Hudson-Dashboard auf **Manage Hudson**.
 2. Klicken Sie auf **Configure System**.
@@ -81,7 +81,7 @@ Sobald Sie Ihr Abonnementprofil haben, gehen Sie folgendermaßen vor, um das Azu
 6. Klicken Sie auf **Verify Configuration**.
 7. Wenn die Konfiguration erfolgreich überprüft wurde, klicken Sie auf **Speichern**.
 
-## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Einrichten einer Vorlage für virtuelle Computer für das Azure Slave-Plug-In
+## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Einrichten einer Vorlage für virtuelle Computer für das Azure-Plug-In für Sekundärgeräte
 Eine Vorlage für virtuelle Computer definiert die Parameter, die das Plug-In zum Erstellen eines untergeordneten Knotens in Azure verwendet. In den folgenden Schritten erstellen Sie eine Vorlage für einen virtuellen Ubuntu-Computer.
 
 1. Klicken Sie im Hudson-Dashboard auf **Manage Hudson**.
@@ -96,7 +96,7 @@ Eine Vorlage für virtuelle Computer definiert die Parameter, die das Plug-In zu
 8. Wählen Sie eine Region aus, in der der virtuelle Computer erstellt wird.
 9. Wählen Sie die passende Größe des virtuellen Computers aus.
 10. Geben Sie ein Speicherkonto an, in dem der virtuelle Computer erstellt wird. Stellen Sie sicher, dass es sich in der gleichen Region wie der Clouddienst befindet, den Sie verwenden möchten. Wenn Sie neuen Speicher erstellen möchten, können Sie dieses Feld leer lassen.
-11. Die Aufbewahrungszeit gibt die Anzahl der Minuten an, bevor Hudson einen Slave im Leerlauf löscht. Behalten Sie hier den Standardwert 60 bei.
+11. Die Aufbewahrungszeit gibt die Anzahl der Minuten an, bevor Hudson ein Sekundärgerät im Leerlauf löscht. Behalten Sie hier den Standardwert 60 bei.
 12. Wählen Sie unter **Usage**die entsprechende Bedingung für die Verwendung dieses untergeordneten Knotens aus. Wählen Sie vorerst **Utilize this node as much as possible**aus.
     
      Zu diesem Zeitpunkt sieht das Formular in etwa so aus:

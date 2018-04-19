@@ -1,13 +1,13 @@
 ---
-title: "Überwachen der Clusterleistung – Azure HDInsight | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie die Kapazität und Leistung eines HDInsight-Clusters überwachen."
+title: Überwachen der Clusterleistung – Azure HDInsight | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie die Kapazität und Leistung eines HDInsight-Clusters überwachen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data
@@ -37,7 +37,7 @@ Melden Sie sich an der [Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-a
 | Farbe | Beschreibung |
 | --- | --- |
 | Rot | Mindestens eine Master-Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
-| Orange | Mindestens eine Slave-Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
+| Orange | Mindestens eine untergeordnete Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
 | Gelb | Ambari Server hat seit mehr als drei Minuten keinen Heartbeat vom Host empfangen. |
 | Grün | Normaler Ausführungszustand |
 

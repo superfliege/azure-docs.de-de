@@ -1,9 +1,9 @@
 ---
-title: "Zugriffsprobleme im Azure-Portal auf einem Windows-Gerät | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie es zu Zugriffsproblemen kommen kann und was Sie überprüfen können, um Dialogfelder mit Meldungen dieser Art zu vermeiden."
+title: Zugriffsprobleme im Azure-Portal auf einem Windows-Gerät | Microsoft-Dokumentation
+description: Es wird beschrieben, wie es zu Zugriffsproblemen kommen kann und was Sie überprüfen können, um Dialogfelder mit Meldungen dieser Art zu vermeiden.
 services: active-directory
-keywords: "gerätebasierter bedingter Zugriff, Geräteregistrierung, Geräteregistrierung aktivieren, Geräteregistrierung und MDM"
-documentationcenter: 
+keywords: gerätebasierter bedingter Zugriff, Geräteregistrierung, Geräteregistrierung aktivieren, Geräteregistrierung und MDM
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
@@ -40,7 +40,7 @@ Beim Versuch, beispielsweise auf das SharePoint Online-Intranet Ihrer Organisati
 
 ## <a name="supported-browser"></a>Unterstützte Browser
 
-Wenn Ihr Administrator eine Richtlinie für bedingten Zugriff konfiguriert hat, können Sie nur über einen unterstützten Browser auf die Ressourcen Ihrer Organisation zugreifen. Auf Windows-Geräten werden ausschließlich **Internet Explorer** und **Edge** unterstützt.
+Wenn Ihr Administrator eine Richtlinie für bedingten Zugriff konfiguriert hat, können Sie nur über einen unterstützten Browser auf die Ressourcen Ihrer Organisation zugreifen. Auf Windows-Geräten werden ausschließlich **Internet Explorer** und **Microsoft Edge** unterstützt.
 
 Sie können ganz einfach ermitteln, ob das Ressourcenzugriffsproblem auf einen nicht unterstützten Browser zurückzuführen ist. Sehen Sie sich dazu den Detailbereich der Fehlerseite an:
 

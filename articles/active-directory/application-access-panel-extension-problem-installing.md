@@ -1,11 +1,11 @@
 ---
-title: "Installieren der Browsererweiterung für den Anwendungszugriffsbereich – Azure | Microsoft-Dokumentation"
-description: "Korrigieren Sie allgemeine Fehler, die beim Installieren der Browsererweiterung für den Zugriffsbereich auftreten können."
+title: Installieren der Browsererweiterung für den Anwendungszugriffsbereich – Azure | Microsoft-Dokumentation
+description: Korrigieren Sie allgemeine Fehler, die beim Installieren der Browsererweiterung für den Zugriffsbereich auftreten können.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -34,7 +34,7 @@ Die Mindestanforderung für den Zugriffsbereich ist ein Browser mit JavaScript-U
 
 Für kennwortbasiertes SSO können folgende Browser verwendet werden:
 
-- **Edge:** Unter Windows 10 Anniversary Edition oder höher 
+- **Microsoft Edge:** Unter Windows 10 Anniversary Edition oder höher 
 - **Chrome:** Unter Windows 7 oder höher und MacOS X oder höher
 - **Firefox 26.0 oder höher:** Unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 - **Internet Explorer 8, 9, 10, 11:** Unter Windows 7 oder höher (eingeschränkte Unterstützung)
@@ -58,7 +58,7 @@ Gehen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich wie f
 
 7.  Melden Sie sich beim Zugriffsbereich an, und überprüfen Sie, ob Sie Ihre Anwendungen mit kennwortbasiertem SSO starten können.
 
-Sie können die Erweiterung für Chrome und Edge auch direkt von den folgenden Websites herunterladen:
+Sie können die Erweiterung für Chrome und Microsoft Edge auch direkt von den folgenden Websites herunterladen:
 
 - [Chrome-Erweiterung](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 - [Edge-Erweiterung](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
@@ -86,7 +86,7 @@ Sie können die Erweiterung für Chrome und Edge auch direkt von den folgenden W
        In der Verknüpfungsliste **Zuletzt verwendet** werden die drei zuletzt verwendeten Apps angezeigt.
 
 > [!NOTE]
-> Die obigen Optionen sind nur für Edge, Chrome und Firefox verfügbar.
+> Die obigen Optionen sind nur für Microsoft Edge, Chrome und Firefox verfügbar.
 
 ## <a name="set-up-a-group-policy-for-internet-explorer"></a>Einrichten einer Gruppenrichtlinie für Internet Explorer
 
@@ -105,7 +105,7 @@ Eine ausführliche Anleitung zum Konfigurieren der Gruppenrichtlinie sowie zum B
 Der Artikel [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md) bietet Zugriff auf ein Diagnosetool und enthält Informationen zum Konfigurieren der Erweiterung für Internet Explorer.
 
 > [!NOTE]
-> Internet Explorer wird nur eingeschränkt unterstützt, und es werden keine neuen Softwareupdates dafür bereitgestellt. Edge ist der empfohlene Browser.
+> Internet Explorer wird nur eingeschränkt unterstützt, und es werden keine neuen Softwareupdates dafür bereitgestellt. Microsoft Edge ist der empfohlene Browser.
 
 ## <a name="if-the-preceding-steps-do-not-resolve-the-issue"></a>Falls sich das Problem mit den oben genannten Schritten nicht beheben lässt:
 

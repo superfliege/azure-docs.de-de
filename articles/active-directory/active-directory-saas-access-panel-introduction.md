@@ -72,7 +72,7 @@ Das Installationsprogramm ist architekturspezifisch. Wenn Sie auf Downloadlink k
 
 
 Die Zugriffsbereichserweiterung ist derzeit verfügbar für:
-- **Edge:** Unter Windows 10 Anniversary Edition oder höher 
+- **Microsoft Edge:** Unter Windows 10 Anniversary Edition oder höher 
 - **Chrome:** Unter Windows 7 oder höher und MacOS X oder höher
 - **Firefox 26.0 oder höher:** Unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 - **Internet Explorer 8, 9, 10, 11:** Unter Windows 7 oder höher (eingeschränkte Unterstützung)
@@ -85,7 +85,7 @@ Diese Erweiterung muss für kennwortbasiertes einmaliges Anmelden verwendet werd
 - Im Bereich **Zuletzt verwendet** werden die drei zuletzt gestarteten Anwendungen angezeigt.
 
 > [!NOTE]
-> Zusätzliche Features sind nur für Edge, Chrome und Firefox verfügbar.
+> Zusätzliche Features sind nur für Microsoft Edge, Chrome und Firefox verfügbar.
 >
 
 Falls sich Ihre Meine Apps-URL von `https://myapps.microsoft.com` unterscheidet, konfigurieren Ihre Standard-URL wie folgt:

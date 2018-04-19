@@ -1,11 +1,11 @@
 ---
 title: Problem beim Anmelden bei der Zugriffspanelwebsite | Microsoft-Dokumentation
-description: "Leitfaden zur Behandlung von Problemen, die bei der Anmeldung beim Zugriffspanel auftreten können"
+description: Leitfaden zur Behandlung von Problemen, die bei der Anmeldung beim Zugriffspanel auftreten können
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -62,7 +62,7 @@ Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 
 -   Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher
 
--   Edge in Windows 10 Anniversary Edition oder höher 
+-   Microsoft Edge in Windows 10 Anniversary Edition oder höher 
 
 -   Chrome – unter Windows 7 oder höher und MacOS x oder höher
 

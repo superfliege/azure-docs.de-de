@@ -28,7 +28,7 @@ In diesem Artikel finden Sie Informationen zur Problembehandlung bei bekannten P
 
 - Die Aktivierung der nahtlosen einmaligen Anmeldung kann in seltenen Fällen bis zu 30 Minuten dauern.
 - Wenn Sie die nahtlose einmalige Anmeldung für Ihren Mandanten deaktivieren und dann erneut aktivieren, steht die Benutzeroberfläche zum einmaligen Anmelden Benutzern erst wieder zur Verfügung, nachdem ihre zwischengespeicherten Kerberos-Tickets, die im Normalfall 10 Stunden gültig sind, abgelaufen sind.
-- Edge-Browser wird nicht unterstützt.
+- Microsoft Edge-Browser wird nicht unterstützt.
 - Wenn nahtloses einmaliges Anmelden erfolgreich ausgeführt wurde, hat der Benutzer nicht die Möglichkeit, die Option **Angemeldet bleiben** auszuwählen. Aufgrund dieses Verhaltens funktionieren Zuordnungsszenarien für SharePoint und OneDrive nicht.
 - Office-Clients mit einer älteren Version als 16.0.8730.xxxx unterstützen die nicht interaktive Anmeldung mit nahtlosem SSO nicht. Auf diesen Clients müssen Benutzer für die Anmeldung ihren Benutzernamen, aber kein Kennwort eingeben.
 - Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus.

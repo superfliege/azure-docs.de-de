@@ -52,7 +52,7 @@ Sie können mithilfe der Self-Service-Kennwortzurücksetzung (Self-Service Passw
 Das Meine Apps-Portal erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Wenn Sie kennwortbasierte Apps für einmaliges Anmelden verwenden, muss die dazugehörige Browsererweiterung auch installiert werden. Diese Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung starten, die für kennwortbasierte Apps mit einmaligem Anmelden konfiguriert ist.
 
 Stellen Sie sicher, dass folgende Browseranforderungen erfüllt sind:
-- **Edge**: unter Windows 10 Anniversary Edition oder höher.
+- **Microsoft Edge**: unter Windows 10 Anniversary Edition oder höher.
 - **Chrome**: unter Windows 7 oder höher und Mac OS X oder höher.
 - **Firefox 26.0 oder höher**: unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher.
 - **Internet Explorer 8, 9, 10, 11**: unter Windows 7 oder höher (eingeschränkte Unterstützung).
@@ -92,7 +92,7 @@ Wenn Sie die Erweiterung installiert haben und dennoch weiterhin Probleme auftre
        In der Verknüpfungsliste **Zuletzt verwendet** werden die letzten drei verwendeten Apps angezeigt.
 
 > [!NOTE]
-> Diese Optionen sind nur für Edge, Chrome und Firefox verfügbar.
+> Diese Optionen sind nur für Microsoft Edge, Chrome und Firefox verfügbar.
 
 ## <a name="how-do-i-add-a-new-app"></a>Wie füge ich eine neue App hinzu?
 

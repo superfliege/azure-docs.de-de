@@ -1,9 +1,9 @@
 ---
-title: "Häufig gestellte Fragen zum Roaming von Einstellungen und Daten | Microsoft Docs"
-description: "Enthält Antworten auf einige Fragen, die für IT-Administratoren in Bezug auf die Synchronisierung von Einstellungen und App-Daten ggf. interessant sind."
+title: Häufig gestellte Fragen zum Roaming von Einstellungen und Daten | Microsoft Docs
+description: Enthält Antworten auf einige Fragen, die für IT-Administratoren in Bezug auf die Synchronisierung von Einstellungen und App-Daten ggf. interessant sind.
 services: active-directory
-keywords: "Enterprise State Roaming-Einstellungen, Windows-Cloud, Häufig gestellte Fragen zu Enterprise State Roaming"
-documentationcenter: 
+keywords: Enterprise State Roaming-Einstellungen, Windows-Cloud, Häufig gestellte Fragen zu Enterprise State Roaming
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -29,7 +29,7 @@ Dieses Thema enthält Antworten auf einige Fragen, die für IT-Administratoren i
 
 * *Design*: beispielsweise Desktopdesign und Taskleisteneinstellungen.
 * *Internet Explorer-Einstellungen:*: zuletzt geöffnete Registerkarten, Favoriten usw.
-* *Einstellungen des Edge-Browsers*: beispielsweise Favoriten und Leseliste.
+* *Einstellungen des Microsoft Edge-Browsers*: beispielsweise Favoriten und Leseliste.
 * *Kennwörter:*: Internet-Kennwörter, WLAN-Profile usw.
 * *Spracheinstellungen:*: Einstellungen für Tastaturlayouts, Systemsprache, Datum und Uhrzeit usw.
 * *Funktionen für die erleichterte Bedienung:*: Design mit hohem Kontrast, Sprachausgabe, Bildschirmlupe usw.

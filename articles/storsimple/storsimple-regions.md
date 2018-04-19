@@ -1,12 +1,12 @@
 ---
-title: "Regionale Verfügbarkeit von StorSimple | Microsoft-Dokumente"
-description: "Erläutert die Azure-Regionen, in denen die verschiedenen StorSimple-Gerätemodelle verfügbar sind."
+title: Regionale Verfügbarkeit von StorSimple | Microsoft-Dokumente
+description: Erläutert die Azure-Regionen, in denen die verschiedenen StorSimple-Gerätemodelle verfügbar sind.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -79,7 +79,7 @@ Wenn Sie ein physisches StorSimple 8100- oder 8600-Gerät verwenden, ist das Ger
 | 9  | Tschechische Republik | 24 | Japan       | 11,9 | Katar        | 54 | Türkei               |
 | 10 | Dänemark        | 25 | Kenia       | 40 | Rumänien      | 55 | Ukraine              |
 | 11 | Ägypten          | 26 | Kuwait      | 41 | Russland       | 56 | Vereinigte Arabische Emirate |
-| 12 | Finnland        | 27 | Macau       | 42 | Saudi-Arabien | 57 | Vereinigtes Königreich       |
+| 12 | Finnland        | 27 | Macau (SAR)       | 42 | Saudi-Arabien | 57 | Vereinigtes Königreich       |
 | 13 | Frankreich         | 28 | Malaysia    | 43 | Singapur    | 58 | USA        |
 | 14 | Deutschland        | 29 | Mexiko      | 44 | Slowakei     | 59 | Vietnam              |
 | 15 | Griechenland         | 30 | Niederlande | 45 | Slowenien     | 60 | Kroatien              |

@@ -1,11 +1,11 @@
 ---
-title: "Einführung in den Premium-Tarif von Azure Redis Cache | Microsoft Docs"
-description: "Hier erfahren Sie, wie Sie für Ihre Azure Redis Cache-Instanzen im Tarif \"Premium\" Redis-Persistenz Redis-Clustering und VNET-Unterstützung erstellen und verwalten."
+title: Einführung in den Premium-Tarif von Azure Redis Cache | Microsoft Docs
+description: Hier erfahren Sie, wie Sie für Ihre Azure Redis Cache-Instanzen im Tarif "Premium" Redis-Persistenz Redis-Clustering und VNET-Unterstützung erstellen und verwalten.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
 ms.workload: tbd
@@ -64,7 +64,7 @@ Im Premium-Tarif können Sie einen oder mehrere Knoten Ihres Caches bei Bedarf n
 * Masterknoten des Caches
 * Slaveknoten des Caches
 * Sowohl den Master- als auch den Slaveknoten des Caches
-* Wenn Sie einen Premium-Cache mit Clustering verwenden, können Sie den Master-, Slave- oder beide Knoten für einzelne Shards im Cache neu starten.
+* Wenn Sie einen Premium-Cache mit Clustering verwenden, können Sie den übergeordneten, den untergeordneten oder beide Knoten für einzelne Shards im Cache neu starten.
 
 Weitere Informationen finden Sie unter [Neustart](cache-administration.md#reboot) und [Häufig gestellte Fragen zum Neustart](cache-administration.md#reboot-faq).
 

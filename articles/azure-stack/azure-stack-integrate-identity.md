@@ -261,7 +261,7 @@ Wenn Sie die Befehle manuell ausführen möchten, gehen Sie folgendermaßen vor:
    > [!IMPORTANT]
    > Sie müssen das AD FS MMC-Snap-In verwenden, um die Ausstellungsautorisierungsregeln zu konfigurieren, wenn Windows Server 2012 oder 2012 R2 AD FS verwendet wird.
 
-4. Wenn Sie Internet Explorer oder den Edge-Browser verwenden, um auf Azure Stack zuzugreifen, müssen Sie Tokenbindungen ignorieren. Andernfalls tritt beim Anmeldeversuch ein Fehler auf. Führen Sie für Ihre AD FS-Instanz oder Ihr Farmmitglied den folgenden Befehl aus:
+4. Wenn Sie Internet Explorer oder den Microsoft Edge-Browser verwenden, um auf Azure Stack zuzugreifen, müssen Sie Tokenbindungen ignorieren. Andernfalls tritt beim Anmeldeversuch ein Fehler auf. Führen Sie für Ihre AD FS-Instanz oder Ihr Farmmitglied den folgenden Befehl aus:
 
    ```powershell
    Set-AdfsProperties -IgnoreTokenBinding $true

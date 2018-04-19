@@ -1,8 +1,8 @@
 ---
 title: SCP.NET-Programmierleitfaden | Microsoft Docs
-description: "Erfahren Sie, wie Sie mit SCP.NET .NET-basierte Storm-Topologien für die Verwendung mit Storm unter HDInsight erstellen."
+description: Erfahren Sie, wie Sie mit SCP.NET .NET-basierte Storm-Topologien für die Verwendung mit Storm unter HDInsight erstellen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: raviperi
 manager: jhubbard
 editor: cgronlun
@@ -425,7 +425,7 @@ Entwickler müssen sicherstellen, dass die ausgegebenen Tupel dem für den Strea
 ### <a name="multi-stream-support"></a>Unterstützung für Multi-Streams
 SCP unterstützt Benutzercode, der mit mehreren separaten Streams gleichzeitig kommunizieren kann. Diese Unterstützung erfolgt im Context-Objekt: Die Emit-Methode nimmt einen optionalen StreamId-Parameter entgegen.
 
-IM SCP.NET-Context-Objekt wurden zwei Methoden hinzugefügt. Diese Methoden geben Tupel aus, mit denen die StreamId angegeben wird. Die StreamId ist eine Zeichenfolge und muss in C\# und in der Topologiedefinition übereinstimmen.
+Im SCP.NET-Context-Objekt wurden zwei Methoden hinzugefügt. Diese Methoden geben Tupel aus, mit denen die StreamId angegeben wird. Die StreamId ist eine Zeichenfolge und muss in C\# und in der Topologiedefinition übereinstimmen.
 
         /* Emit tuple to the specific stream. */
         public abstract void Emit(string streamId, List<object> values);

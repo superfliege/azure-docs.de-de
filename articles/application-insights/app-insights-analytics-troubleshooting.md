@@ -1,8 +1,8 @@
 ---
-title: "Problembehandlung für Analytics in Azure Application Insights | Microsoft-Dokumentation"
+title: Problembehandlung für Analytics in Azure Application Insights | Microsoft-Dokumentation
 description: 'Probleme mit Analytics in Application Insights? Beginnen Sie hier '
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9bbd5859-3584-4d80-9b6d-d5910fa48baa
@@ -54,7 +54,7 @@ Es ist ein authentifizierungsbezogener Fehler aufgetreten (während der Authenti
 2. Haben Sie versucht, das Analytics-Portal über einen Favoriten, ein Lesezeichen oder einen gespeicherten Link zu öffnen? Sind Sie mit anderen Anmeldeinformationen angemeldet als denen, die Sie beim Speichern des Links verwendet haben?
 3. Versuchen Sie ein InPrivate- bzw. Inkognito-Browserfenster zu verwenden (nachdem Sie alle solchen möglicherweise vorhandenen Fenster geschlossen haben). Sie müssen Ihre Anmeldeinformationen bereitstellen. 
 4. Öffnen Sie ein anderes (normales) Browserfenster, und wechseln Sie zu [Azure](https://portal.azure.com). Melden Sie sich ab. Öffnen Sie Ihren Link, und melden Sie sich mit den richtigen Anmeldeinformationen an.
-5. Dieser Fehler kann auch bei Edge und Internet Explorer auftreten, wenn die Einstellungen für vertrauenswürdige Zonen nicht unterstützt werden.
+5. Dieser Fehler kann auch bei Microsoft Edge und Internet Explorer auftreten, wenn die Einstellungen für vertrauenswürdige Zonen nicht unterstützt werden.
    
     Überprüfen Sie, ob sich das [Analytics-Portal](https://analytics.applicationinsights.io) und das [Azure Active Directory-Portal](https://portal.azure.com) in der gleichen Sicherheitszone befinden:
    

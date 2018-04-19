@@ -37,7 +37,7 @@ Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 -   Firefox 26.0 oder höher – unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 
 >[!NOTE]
->Die Erweiterung für das kennwortbasierte einmalige Anmelden steht für Edge unter Windows 10 zur Verfügung, sobald Browsererweiterungen von Edge unterstützt werden.
+>Die Erweiterung für das kennwortbasierte einmalige Anmelden steht für Microsoft Edge unter Windows 10 zur Verfügung, sobald Browsererweiterungen von Microsoft Edge unterstützt werden.
 >
 >
 

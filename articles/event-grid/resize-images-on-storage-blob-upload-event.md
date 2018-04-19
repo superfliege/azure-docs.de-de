@@ -26,7 +26,7 @@ Dieses Tutorial stellt Teil zwei einer Reihe von Tutorials zu Storage dar. Es er
 
 Sie verwenden die Azure-CLI und das Azure-Portal, um die Größenänderungsfunktionalität einer vorhandenen Bildupload-App hinzuzufügen.
 
-![Veröffentlichte Web-App im Edge-Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Veröffentlichte Web-App im Microsoft Edge-Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -157,7 +157,7 @@ Klicken Sie auf den Bereich **Fotos hochladen**, um eine Datei auszuwählen und 
 
 Beachten Sie, dass eine Kopie des hochgeladenen Bilds im Karussell **Generierte Miniaturansichten** angezeigt wird, nachdem das hochgeladene Bild nicht mehr angezeigt wird. Die Größe dieses Bilds wurde von der Funktion angepasst, und das Bild wurde dem Container *thumbnails* hinzugefügt und vom Webclient heruntergeladen.
 
-![Veröffentlichte Web-App im Edge-Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
+![Veröffentlichte Web-App im Microsoft Edge-Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

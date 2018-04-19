@@ -188,7 +188,7 @@ Funktionen und Webaufträge werden auf einer ILB-ASE unterstützt. Damit das Por
 
 Bei Verwendung von Azure Functions für eine ILB-ASE kann ein Fehler mit folgender Meldung auftreten: „Wir können Ihre Funktionen zurzeit nicht abrufen. Versuchen Sie es später noch mal.“ Dieser Fehler tritt auf, da die Benutzeroberfläche von Functions über HTTPS auf die SCM-Site zugreift und das Stammzertifikat nicht in der Vertrauenskette des Browsers enthalten ist. Webaufträge weisen ein ähnliches Problem auf. Um dieses Problem zu vermeiden können Sie eine der folgenden Aktionen ausführen:
 
-- Zertifikat dem Zertifikatspeicher für vertrauenswürdige Anbieter hinzufügen Dies hebt die Blockierung von Edge und Internet Explorer auf.
+- Zertifikat dem Zertifikatspeicher für vertrauenswürdige Anbieter hinzufügen Dies hebt die Blockierung von Microsoft Edge und Internet Explorer auf.
 - Verwenden Sie Chrome, und rufen Sie zuerst die SCM-Website auf. Akzeptieren Sie das nicht vertrauenswürdige Zertifikat, und wechseln Sie anschließend zum Portal.
 - Verwenden Sie ein kommerzielles Zertifikat, das in der Vertrauenskette Ihres Browsers enthalten ist.  Dies ist die beste Option.  
 
