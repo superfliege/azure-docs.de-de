@@ -1,6 +1,6 @@
 ---
 title: Azure Service Fabric-Hostingmodell | Microsoft-Dokumentation
-description: Beschreibt die Beziehung zwischen Replikaten (oder Instanzen) eines bereitgestellten Service Fabric-Diensts und dem service-host-Prozess.
+description: Dieser Artikel beschreibt die Beziehung zwischen Replikaten (oder Instanzen) eines bereitgestellten Service Fabric-Diensts und dem Dienst-Host-Prozess.
 services: service-fabric
 documentationcenter: .net
 author: harahma
@@ -12,53 +12,53 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 0206a9a486e3511834a23b3cc3f20f236a1cc261
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b2ba019f21256ee98276ef30847c43709b9b3462
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="service-fabric-hosting-model"></a>Service Fabric-Hostingmodell
-Dieser Artikel bietet einen Überblick über von Service Fabric bereitgestellte Anwendungshostingmodelle, und beschreibt die Unterschiede zwischen dem Modell mit einem **gemeinsam genutzten Prozess** und dem Modell mit einem **exklusiven Prozess**. Er beschreibt die Darstellung einer bereitgestellten Anwendung auf einem Service Fabric-Knoten und die Beziehung zwischen Replikaten (oder Instanzen) des Diensts und dem service-host-Prozess.
+# <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric-Hostingmodell
+Dieser Artikel bietet einen Überblick über von Azure Service Fabric bereitgestellte Anwendungshostingmodelle und beschreibt die Unterschiede zwischen dem Modell mit einem **gemeinsam genutzten Prozess** und dem Modell mit einem **exklusiven Prozess**. Er veranschaulicht grafisch die Bereitstellung einer Anwendung auf einem Service Fabric-Knoten beschreibt und die Beziehung zwischen Replikaten (oder Instanzen) des Diensts und dem Dienst-Host-Prozess.
 
-Bevor Sie fortfahren, sollten Sie mit dem [Service Fabric-Anwendungsmodell][a1] vertraut sein und die verschiedenen Konzepte und Beziehungen zwischen diesen kennen. 
+Bevor Sie fortfahren, müssen Sie die verschiedenen Konzepte und Beziehungen kennen, die unter [Modellieren von Anwendungen in Service Fabric][a1] erläutert werden. 
 
 > [!NOTE]
-> In diesem Artikel gilt (sofern nicht explizit erwähnt) aus Gründen der Einfachheit Folgendes:
+> In diesem Artikel werden folgende Begriffe mit folgenden Bedeutungen verwendet, sofern nicht explizit erwähnt wird, dass sie in einer anderen Bedeutung verwendet werden:
 >
-> - Das Wort *Replikat* bezieht sich auf ein Replikat eines zustandsbehafteten Diensts oder einer Instanz eines zustandslosen Diensts.
-> - *CodePackage* wird gleichbedeutend mit dem Prozess *ServiceHost* verwendet, der einen *ServiceType* registriert und Replikate von Diensten dieses *ServiceType* hostet.
+> - *Replikat* bezieht sich sowohl auf ein Replikat eines zustandsbehafteten Diensts als auch auf eine Instanz eines zustandslosen Diensts.
+> - *CodePackage* wird gleichbedeutend mit dem *ServiceHost*-Prozess verwendet, der einen *ServiceType* registriert und Replikate von Diensten dieses *ServiceType* hostet.
 >
 
-Um das Hostingmodell zu verstehen, betrachten wir ein Beispiel im Detail. Angenommen, Sie verfügen über einen *ApplicationType* „MyAppType“, der einen *ServiceType* „MyServiceType“ hat.  „MyServiceType“ wird vom *ServicePackage* „MyServicePackage“ bereitgestellt, das über ein *CodePackage* „MyCodePackage“ verfügt. „MyCodePackage“ registriert *ServiceType* „MyServiceType“, sobald dieser ausgeführt wird.
+Um das Hostingmodell zu verstehen, betrachten wir ein Beispiel im Detail. Angenommen, Sie verfügen über einen *ApplicationType* „MyAppType“, der den *ServiceType* „MyServiceType“ aufweist. „MyServiceType“ wird vom *ServicePackage* „MyServicePackage“ bereitgestellt, das über ein *CodePackage* „MyCodePackage“ verfügt. „MyCodePackage“ registriert *ServiceType* „MyServiceType“, sobald dieser ausgeführt wird.
 
-Weiterhin angenommen, Sie verfügen über einen Cluster mit drei Knoten und erstellen eine *Anwendung* **fabric:/App1** vom Typ „MyAppType“. In dieser *Anwendung* **fabric:/App1** erstellen Sie einen Dienst **fabric:/App1/ServiceA** vom Typ „MyServiceType“ mit zwei Partitionen (**P1** & **P2**) und drei Replikaten pro Partition. Das folgende Diagramm zeigt die Sicht dieser Anwendung, wie sie auf einem Knoten bereitgestellt wird.
+Weiterhin angenommen, Sie verfügen über einen Cluster mit drei Knoten und erstellen die *Anwendung* **fabric:/App1** vom Typ „MyAppType“. In dieser Anwendung **fabric:/App1** erstellen Sie einen Dienst **fabric:/App1/ServiceA** vom Typ „MyServiceType“. Dieser Dienst verfügt über zwei Partitionen (**P1** und **P2**) und drei Replikate pro Partition. Das folgende Diagramm zeigt die Sicht dieser Anwendung, wie sie auf einem Knoten bereitgestellt wird.
 
-<center>
-![Sicht der bereitgestellten Anwendung auf dem Knoten][node-view-one]
-</center>
 
-Von Service Fabric wurde „MyServicePackage“ aktiviert, von dem „MyCodePackage“ gestartet wurde, das Replikate aus beiden Partitionen hostet.  Dies sind zum Beispiel **P1** & **P2**. Alle Knoten im Cluster weisen dieselbe Sicht auf, da eine Anzahl von Replikaten pro Partition ausgewählt wurde, die der Anzahl der Knoten im Cluster entspricht. Erstellen Sie in der Anwendung **fabric:/App1** nun einen weiteren Dienst **fabric:/App1/ServiceB** mit einer Partition (**P3**) und drei Replikaten pro Partition. Das folgende Diagramm zeigt die neue Sicht auf dem Knoten:
+![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-one]
 
-<center>
-![Sicht der bereitgestellten Anwendung auf dem Knoten][node-view-two]
-</center>
 
-Wie Sie sehen, hat Service Fabric das neue Replikat für die Partition **P3** des Diensts **fabric:/App1/ServiceB** in die vorhandene Aktivierung von „MyServicePackage“ platziert. Erstellen Sie jetzt eine weitere *Anwendung* **fabric:/App2** vom Typ „MyAppType“. Erstellen Sie innerhalb von **fabric:/App2** einen Dienst **fabric:/App2/ServiceA** mit zwei Partitionen (**P4** & **P5**) und drei Replikaten pro Partition. Die folgenden Diagramme zeigen die neue Knotensicht:
+Service Fabric hat „MyServicePackage“ aktiviert, das „MyCodePackage“ gestartet hat, das wiederum Replikate aus beiden Partitionen hostet. Alle Knoten im Cluster weisen dieselbe Ansicht auf, da eine Anzahl von Replikaten pro Partition ausgewählt wurde, die der Anzahl der Knoten im Cluster entspricht. Jetzt erstellen wir einen weiteren Dienst, **fabric:/App1/ServiceB**, in der Anwendung **fabric:/App1**. Dieser Dienst verfügt über eine Partition (**P3**) und drei Replikate pro Partition. Das folgende Diagramm zeigt die neue Sicht auf dem Knoten:
 
-<center>
-![Sicht der bereitgestellten Anwendung auf dem Knoten][node-view-three]
-</center>
 
-Service Fabric aktiviert eine neue Kopie von „MyServicePackage“, die eine neue Kopie von „MyCodePackage“ startet. Replikate aus beiden Partitionen des Diensts **fabric:/App2/ServiceA** (z.B. **P4** & **P5**) werden in diese neue Kopie „MyCodePackage“ eingefügt.
+![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-two]
+
+
+Service Fabric hat das neue Replikat für die Partition **P3** des Diensts **fabric:/App1/ServiceB** in die vorhandene Aktivierung von „MyServicePackage“ platziert. Jetzt erstellen wir eine weitere Anwendung, **fabric:/App2**, vom Typ „MyAppType“. In **fabric:/App2** erstellen wir den Dienst **fabric:/App2/ServiceA**. Dieser Dienst verfügt über zwei Partitionen (**P4** und **P5**) und drei Replikate pro Partition. Das folgende Diagramm zeigt die neue Knotenansicht:
+
+
+![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-three]
+
+
+Service Fabric aktiviert eine neue Kopie von „MyServicePackage“, die eine neue Kopie von „MyCodePackage“ startet. Replikate aus beiden Partitionen des Diensts **fabric:/App2/ServiceA** (**P4** und **P5**) werden in diese neue Kopie „MyCodePackage“ eingefügt.
 
 ## <a name="shared-process-model"></a>Modell mit einem gemeinsam genutzten Prozess
-Im oben stehenden Beispiel wird das von Service Fabric bereitgestellte Standardhostingmodell dargestellt, das als Modell mit einem **gemeinsam genutzten Prozess** bezeichnet wird. In diesem Modell wird für eine bestimmte *Anwendung* nur eine Kopie eines bestimmten *ServicePackage* auf einem *Knoten* aktiviert (der alle darin enthaltenen *CodePackages* startet), und alle Replikate aller Dienste eines bestimmten *ServiceType* werden in das *CodePackage* platziert, das den *ServiceType* registriert. Dies bedeutet, dass alle Replikate aller Dienste auf einem Knoten eines bestimmten *ServiceType* denselben Prozess gemeinsam nutzen.
+Im vorherigen Abschnitt wurde das von Service Fabric bereitgestellte Standardhostingmodell beschrieben, das als Modell mit einem gemeinsam genutzten Prozess bezeichnet wird. In diesem Modell ist für jede Anwendung nur eine Kopie eines bestimmten *ServicePackage*-Elements auf einem Knoten aktiviert (diese Kopie startet alle darin enthaltenen *CodePackages*). Alle Replikate aller Dienste von einem bestimmten *ServiceType* werden in dem *CodePackage* platziert, das diesen *ServiceType* registriert. Dies bedeutet, dass alle Replikate aller Dienste auf einem Knoten eines bestimmten *ServiceType* denselben Prozess gemeinsam nutzen.
 
 ## <a name="exclusive-process-model"></a>Modell mit einem exklusiven Prozess
-Das andere von Service Fabric bereitgestellte Hostingmodell ist das Modell mit einem **exklusiven Prozess**. In diesem Modell aktiviert Service Fabric auf einem bestimmten *Knoten* zum Platzieren jedes einzelnen Replikats eine neue Kopie des *ServicePackage* (das alle darin enthaltenen *CodePackages* startet), und das Replikat wird in das *CodePackage* platziert, das den *ServiceType* des Diensts registriert hat, dem das Replikat angehört. Das heißt, jedes Replikat wird in seinem eigenen dedizierten Prozess ausgeführt. 
+Das andere von Service Fabric bereitgestellte Hostingmodell ist das Modell mit einem exklusiven Prozess. In diesem Modell wird jedes Replikat auf einem Knoten in einem eigenen dedizierten Prozess ausgeführt. Service Fabric aktiviert eine neue Kopie von *ServicePackage* (diese startet alle darin enthaltenen *CodePackages*). Replikate werden in dem *CodePackage* platziert, das den *ServiceType* des Diensts registriert, zu dem das Replikat gehört. 
 
-Dieses Modell wird ab Version 5.6 von Service Fabric unterstützt. Das Modell mit einem **exklusiven Prozess** kann zum Zeitpunkt der Erstellung des Diensts ausgewählt werden (mit [PowerShell][p1], [REST][r1] oder [FabricClient][c1]), indem **ServicePackageActivationMode** auf „ExclusiveProcess“ festgelegt wird.
+Wenn Sie Service Fabric Version 5.6 oder höher verwenden, können Sie das Modell mit einem exklusiven Prozess zum Zeitpunkt der Diensterstellung auswählen (mithilfe von [PowerShell][p1], [REST][r1] oder [FabricClient][c1]). Legen Sie **ServicePackageActivationMode** als „ExclusiveProcess“ fest.
 
 ```powershell
 PS C:\>New-ServiceFabricService -ApplicationName "fabric:/App1" -ServiceName "fabric:/App1/ServiceA" -ServiceTypeName "MyServiceType" -Stateless -PartitionSchemeSingleton -InstanceCount -1 -ServicePackageActivationMode "ExclusiveProcess"
@@ -79,7 +79,7 @@ var fabricClient = new FabricClient(clusterEndpoints);
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Wenn Sie über einen Standarddienst im Anwendungsmanifest verfügen, können Sie das Modell mit einem **exklusiven Prozess** auswählen, indem Sie das Attribut **ServicePackageActivationMode** wie unten dargestellt festlegen:
+Wenn Sie über einen Standarddienst im Anwendungsmanifest verfügen, können Sie das Modell mit einem exklusiven Prozess auswählen, indem Sie das Attribut **ServicePackageActivationMode** festlegen:
 
 ```xml
 <DefaultServices>
@@ -90,95 +90,95 @@ Wenn Sie über einen Standarddienst im Anwendungsmanifest verfügen, können Sie
   </Service>
 </DefaultServices>
 ```
-Zur Fortführung des vorangehenden Beispiels erstellen Sie einen weiteren Dienst **fabric:/App1/ServiceC** in der Anwendung **fabric:/App1** mit zwei Partitionen (**P6** & **P7**) und drei Replikaten pro Partition, und legen Sie **ServicePackageActivationMode** auf „ExclusiveProcess“ fest. Das folgende Diagramm zeigt die neue Sicht auf dem Knoten:
+Jetzt erstellen wir einen weiteren Dienst, **fabric:/App1/ServiceC**, in der Anwendung **fabric:/App1**. Dieser Dienst verfügt über zwei Partitionen (**P6** und **P7**) und drei Replikate pro Partition. Legen Sie **ServicePackageActivationMode** als „ExclusiveProcess“ fest. Das folgende Diagramm zeigt die neue Ansicht des Knotens:
 
-<center>
-![Sicht der bereitgestellten Anwendung auf dem Knoten][node-view-four]
-</center>
 
-Wie Sie sehen können, hat Service Fabric zwei neue Kopien von „MyServicePackage“ aktiviert (eine für jedes Replikat aus den Partitionen **P6** & **P7**) und jedes Replikat in eine dedizierte Kopie von *CodePackage* platziert. Ein weiterer Aspekt ist hierbei zu beachten: Bei Verwendung des Modells mit einem **exklusiven Prozess** können für eine bestimmte *Anwendung* mehrere Kopien eines bestimmten *ServicePackage* auf einem *Knoten* aktiv sein. Im oben stehenden Beispiel sehen Sie, dass drei Kopien von „MyServicePackage“ für **fabric:/App1** aktiv sind. Jeder dieser aktiven Kopien von „MyServicePackage“ ist eine **ServicePackageActivationId** zugeordnet, die diese Kopie innerhalb der *Anwendung* **fabric:/App1** identifiziert.
+![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-four]
 
-Wenn nur das Modell mit einem **gemeinsam genutzten Prozess** für eine *Anwendung* wie **fabric:/App2** im Beispiel oben verwendet wird, gibt es nur eine aktive Kopie von *ServicePackage* auf einem *Knoten*, und die **ServicePackageActivationId** für diese Aktivierung von *ServicePackage* ist eine leere Zeichenfolge.
 
-> [!NOTE]
->- Das Hostingmodell mit einem **gemeinsam genutzten Prozess** entspricht **ServicePackageActivationMode** = **SharedProcess**. Dies ist das Standardhostingmodell, und **ServicePackageActivationMode** muss zum Zeitpunkt der Erstellung des Diensts nicht festgelegt werden.
->
->- Das Hostingmodell mit einem **exklusiven Prozess** entspricht **ServicePackageActivationMode**, gesetzt auf **ExclusiveProcess**, und muss zum Zeitpunkt der Erstellung des Diensts explizit festgelegt werden. 
->
->- Das Hostingmodell eines Diensts können Sie ermitteln, indem Sie die [Dienstbeschreibung][p2] abfragen und den Wert von **ServicePackageActivationMode** untersuchen.
->
->
+Wie Sie sehen können, hat Service Fabric zwei neue Kopien von „MyServicePackage“ aktiviert (eine für jedes Replikat aus den Partitionen **P6** und **P7**). Service Fabric hat jedes Replikat in eine dedizierte Kopie von *CodePackage* platziert. Bei Verwendung des Modells mit einem exklusiven Prozess können für eine bestimmte Anwendung mehrere Kopien eines bestimmten *ServicePackage* auf einem Knoten aktiv sein. Im vorherigen Beispiel sind drei Kopien von „MyServicePackage“ für **fabric:/App1** aktiv. Jeder dieser aktiven Kopien von „MyServicePackage“ ist eine **ServicePackageActivationId** zugeordnet. Diese ID identifiziert diese Kopie in der Anwendung **fabric:/App1**.
 
-## <a name="working-with-deployed-service-package"></a>Arbeiten mit einem bereitgestellten Dienstpaket
-Eine aktive Kopie eines *ServicePackage* auf einem Knoten wird als [bereitgestelltes Dienstpaket][p3] bezeichnet. Wenn Sie das Modell mit einem **exklusiven Prozess** zum Erstellen von Diensten für eine bestimmte *Anwendung* verwenden, können, wie bereits erwähnt, mehrere bereitgestellte Dienstpakete für dasselbe *ServicePackage* vorliegen. Beim Ausführen von Vorgängen, die für ein bereitgestelltes Dienstpaket spezifisch sind, (z.B. die [Erstellung eines Berichts zur Integrität eines bereitgestellten Dienstpakets][p4] oder das [Neustarten des Codepakets eines bereitgestellten Dienstpakets][p5]), muss die **ServicePackageActivationId** angegeben werden, um ein bestimmtes bereitgestelltes Dienstpaket zu identifizieren.
-
-Die **ServicePackageActivationId** eines bereitgestellten Dienstpakets kann abgerufen werden, indem Sie die Liste der auf einem Knoten [bereitgestellten Dienstpakete] [p3] abfragen. Beim Abfragen von [bereitgestellten Diensttypen][p6], [bereitgestellten Replikaten][p7] und [bereitgestellten Codepaketen][p8] auf einem Knoten enthält das Ergebnis der Abfrage auch die **ServicePackageActivationId** des übergeordneten bereitgestellten Dienstpakets.
+Wenn Sie nur das Modell mit einem gemeinsam genutzten Prozess für eine Anwendung verwenden, ist auf einem Knoten nur eine aktive Kopie von *ServicePackage* vorhanden. Die **ServicePackageActivationId** für diese Aktivierung von *ServicePackage* ist eine leere Zeichenfolge. Dies ist z.B. bei **fabric:/App2** der Fall.
 
 > [!NOTE]
->- Unter dem Hostingmodell mit einem **gemeinsam genutzten Prozess** wird auf einem bestimmten *Knoten* für eine bestimmte *Anwendung* nur eine Kopie eines *ServicePackage* aktiviert. Die **ServicePackageActivationId** ist eine *leere Zeichenfolge* und muss bei der Ausführung von Vorgängen im Zusammenhang mit bereitgestellten Dienstpaketen nicht angegeben werden. 
+>- Das Hostingmodell mit einem gemeinsam genutzten Prozess entspricht **ServicePackageActivationMode** = **SharedProcess**. Dies ist das Standardhostingmodell, und **ServicePackageActivationMode** muss zum Zeitpunkt der Erstellung des Diensts nicht festgelegt werden.
 >
-> - Unter dem Hostingmodell mit einem **exklusiven Prozess** können auf einem bestimmten *Knoten* für eine bestimmte *Anwendung* eine oder mehrere Kopien eines *ServicePackage* aktiv sein. Für jede Aktivierung ist **ServicePackageActivationId** *nicht leer* und wird bei der Ausführung von Vorgängen im Zusammenhang mit bereitgestellten Dienstpaketen angegeben. 
+>- Das Hostingmodell mit einem exklusiven Prozess entspricht **ServicePackageActivationMode** = **ExclusiveProcess**. Um diese Einstellung zu verwenden, müssen Sie sie zum Zeitpunkt der Diensterstellung explizit angeben. 
 >
-> - Wird **ServicePackageActivationId** nicht angegeben, wird der Wert standardmäßig auf eine leere Zeichenfolge festgelegt. Ist ein bereitgestelltes Dienstpaket vorhanden, das unter dem Modell mit einem **gemeinsam genutzten Prozess** aktiviert wurde, wird der Vorgang ausgeführt, andernfalls schlägt der Vorgang fehl.
+>- Um das Hostingmodell eines Diensts zu ermitteln, fragen Sie die [Dienstbeschreibung][p2] ab und sehen sich den Wert von **ServicePackageActivationMode** an.
 >
-> - Achten Sie darauf, **ServicePackageActivationId** nicht einmalig abzufragen und zwischenzuspeichern, da sie dynamisch generiert wird und sich aus verschiedenen Gründen ändern kann. Vor dem Ausführen eines Vorgangs, bei dem die **ServicePackageActivationId** benötigt wird, sollten Sie zunächst die Liste der auf einem Knoten [bereitgestellten Dienstpakete][p3] abfragen und dann mit **ServicePackageActivationId** aus den Ergebnissen der Abfrage den ursprünglichen Vorgang ausführen.
+>
+
+## <a name="work-with-a-deployed-service-package"></a>Arbeiten mit einem bereitgestellten Dienstpaket
+Eine aktive Kopie eines *ServicePackage* auf einem Knoten wird als [bereitgestelltes Dienstpaket][p3] bezeichnet. Wenn Sie das Modell mit einem exklusiven Prozess zum Erstellen von Diensten verwenden, können für eine bestimmte Anwendung mehrere bereitgestellte Dienstpakete für dasselbe *ServicePackage* vorliegen. Wenn Sie Vorgänge ausführen, die für ein bestimmtes bereitgestelltes Dienstpaket gelten sollen, sollten Sie eine **ServicePackageActivationId** angeben, um dieses bestimmte bereitgestellte Dienstpaket zu identifizieren. Geben Sie z.B. eine ID an, wenn Sie [Integritätsberichte für ein bereitgestelltes Dienstpaket senden][p4] oder [das Codepaket eines bereitgestellten Dienstpakets neu starten][p5].
+
+Sie können die **ServicePackageActivationId** eines bereitgestellten Dienstpakets ermitteln, indem Sie die Liste der auf einem Knoten [bereitgestellten Dienstpakete][p3] abfragen. Wenn Sie die [bereitgestellten Diensttypen][p6], [bereitgestellten Replikate][p7] und [bereitgestellten Codepakete][p8] auf einem Knoten abfragen, enthält das Abfrageergebnis auch die **ServicePackageActivationId** des übergeordneten bereitgestellten Dienstpakets.
+
+> [!NOTE]
+>- Im Hostingmodell mit einem gemeinsam genutzten Prozess wird auf einem bestimmten Knoten für eine bestimmte Anwendung nur eine Kopie eines *ServicePackage* aktiviert. Die zugehörige **ServicePackageActivationId** ist eine *leere Zeichenfolge* und muss bei der Ausführung von Vorgängen im Zusammenhang mit dem bereitgestellten Dienstpaket nicht angegeben werden. 
+>
+> - Im Hostingmodell mit einem exklusiven Prozess können auf einem bestimmten Knoten für eine bestimmte Anwendung eine oder mehrere Kopien eines *ServicePackage* aktiv sein. Jede Aktivierung verfügt über eine *nicht leere* **ServicePackageActivationId**, die bei der Ausführung von Vorgängen im Zusammenhang mit dem bereitgestellten Dienstpaket angegeben wird. 
+>
+> - Wird **ServicePackageActivationId** nicht angegeben, wird der Wert standardmäßig auf eine *leere Zeichenfolge* festgelegt. Wenn ein bereitgestelltes Dienstpaket vorhanden ist, das im Modell mit einem gemeinsam genutzten Prozess aktiviert wurde, wird der Vorgang in diesem Dienstpaket ausgeführt. Andernfalls ist der Vorgang nicht erfolgreich.
+>
+> - Fragen Sie die **ServicePackageActivationId** nicht nur einmal ab und speichern Sie im Cache. Die ID wird dynamisch generiert und kann sich aus verschiedenen Gründen ändern. Vor dem Ausführen eines Vorgangs, bei dem die **ServicePackageActivationId** benötigt wird, sollten Sie zunächst die Liste der auf einem Knoten [bereitgestellten Dienstpakete][p3] abfragen. Verwenden Sie dann die **ServicePackageActivationId** aus den Abfrageergebnissen, um den ursprünglichen Vorgang auszuführen.
 >
 >
 
 ## <a name="guest-executable-and-container-applications"></a>Ausführbare Gastanwendungsdatei- und Containeranwendungen
-Service Fabric behandelt [ausführbare Gastanwendungsdatei-][a2] und [Containeranwendungen][a3] als zustandslose Dienste, die eigenständig sind: Es gibt keine Service Fabric-Runtime in *ServiceHost* (Prozess oder Container). Da diese Dienste eigenständig sind, gilt die Anzahl der Replikate pro *ServiceHost* für diese Dienste nicht. Die mit diesen Diensten am häufigsten verwendete Konfiguration ist eine einzelne Partition mit [InstanceCount][c2] = -1 (d. h., auf jedem Knoten des Clusters wird eine Kopie des Dienstcodes ausgeführt). 
+Service Fabric behandelt Anwendungen mit [ausführbaren Gastdateien][a2] und [Containern][a3] als zustandslose Dienste, die eigenständig sind. Es gibt keine Service Fabric-Runtime in *ServiceHost* (ein Prozess oder Container). Da diese Dienste eigenständig sind, gilt die Anzahl der Replikate pro *ServiceHost* für diese Dienste nicht. Die mit diesen Diensten am häufigsten verwendete Konfiguration ist eine einzelne Partition mit einem [InstanceCount][c2] von -1 (auf jedem Knoten des Clusters wird eine Kopie des Dienstcodes ausgeführt). 
 
-Der standardmäßige **ServicePackageActivationMode** für diese Dienste ist **SharedProcess**. In diesem Fall aktiviert Service Fabric nur eine Kopie des *ServicePackage* auf einem *Knoten* für eine bestimmte *Anwendung*.  Das bedeutet, dass auf einem *Knoten* nur eine Kopie des Dienstcodes ausgeführt wird. Wenn Sie aber auf einem *Knoten* mehrere Kopien Ihres Dienstcodes ausführen möchten, dann sollten Sie, beim Erstellen mehrerer Dienste (*Service1* bis *ServiceN*) des (im *ServiceManifest* angegebenen) *ServiceType* bzw. wenn Ihr Dienst mehrere Partitionen enthält, zum Zeitpunkt der Erstellung des Diensts als **ServicePackageActivationMode** die Option **ExclusiveProcess** angeben.
+Der standardmäßige **ServicePackageActivationMode** für diese Dienste ist **SharedProcess**. In diesem Fall aktiviert Service Fabric nur eine Kopie des *ServicePackage* auf einem Knoten für eine bestimmte Anwendung.  Das bedeutet, dass auf einem Knoten nur eine Kopie des Dienstcodes ausgeführt wird. Wenn Sie mehrere Kopien Ihres Dienstcodes auf einem Knoten ausführen möchten, geben Sie zum Zeitpunkt der Diensterstellung **ServicePackageActivationMode** als **ExclusiveProcess** an. Dies ist z.B. der Fall, wenn Sie mehrere Dienste (*Service1* bis *ServiceN*) eines *ServiceType* (im *ServiceManifest* angegeben) erstellen oder wenn Ihr Dienst über mehrere Partitionen verfügt. 
 
-## <a name="changing-hosting-model-of-an-existing-service"></a>Ändern des Hostingmodells eines vorhandenen Diensts
-Das Ändern des Hostingmodells eines vorhandenen Diensts von **SharedProcess** zu **ExclusiveProcess** und umgekehrt durch Upgrade- oder Updatemechanismen (bzw. in der Standarddienstspezifikation im Anwendungsmanifest) wird derzeit nicht unterstützt. Die Unterstützung für dieses Feature ist für zukünftige Versionen geplant.
+## <a name="change-the-hosting-model-of-an-existing-service"></a>Ändern des Hostingmodells eines vorhandenen Diensts
+Zurzeit können Sie das Hostingmodell eines vorhandenen Diensts nicht von „gemeinsam genutzter Prozess“ zu „exklusiver Prozess“ (oder umgekehrt) ändern.
 
-## <a name="choosing-between-shared-process-and-exclusive-process-model"></a>Auswählen zwischen einem Modell mit einem gemeinsam genutzten Prozess und einem Modell mit einem exklusiven Prozess
-Beide Hostingmodelle weisen Vor- und Nachteile auf, und der Benutzer muss abwägen, welches Modell seine Anforderungen am besten erfüllt. Das Modell mit einem **gemeinsam genutzten Prozess** ermöglicht eine bessere Nutzung von Betriebssystemressourcen, da weniger Prozesse erzeugt werden, mehrere Replikate im selben Prozess Ports gemeinsam verwenden können usw. Wenn eines der Replikate jedoch auf einen Fehler stößt, durch den der Diensthost beendet werden muss, hat dies Auswirkungen auf alle anderen Replikate im selben Prozess.
+## <a name="choose-between-the-hosting-models"></a>Auswählen des richtigen Hostingmodells
+Sie müssen überlegen, welches Hostingmodell Ihre Anforderungen am besten erfüllt. Das Modell mit einem gemeinsam genutzten Prozess nutzt Betriebssystemressourcen besser, da weniger Prozesse erzeugt werden und mehrere Replikate im selben Prozess Ports gemeinsam verwenden können. Wenn in einem der Replikate jedoch ein Fehler auftritt, durch den der Diensthost beendet werden muss, hat dies Auswirkungen auf alle anderen Replikate im selben Prozess.
 
- Das Modell mit einem **exklusiven Prozess** bietet eine bessere Isolierung, bei der jedes Replikat in seinem eigenen Prozess ausgeführt wird und ein fehlerhaftes Replikat sich nicht auf die anderen Replikate auswirkt. Dies ist beispielsweise praktisch, wenn die gemeinsame Portnutzung durch das Kommunikationsprotokoll nicht unterstützt wird. Es erleichtert die Ressourcenkontrolle auf Replikatebene. **Exklusive Prozesse** verbrauchen jedoch mehr Betriebssystemressourcen, da ein Prozess für jedes Replikat auf dem Knoten erzeugt wird.
+ Das Modell mit einem exklusiven Prozess bietet eine bessere Isolierung, da jedes Replikat in einem eigenen Prozess ausgeführt wird. Wenn in einem der Replikate ein Fehler auftritt, wirkt sich dies nicht auf die anderen Replikate aus. Dieses Modell ist nützlich, wenn die gemeinsame Portnutzung durch das Kommunikationsprotokoll nicht unterstützt wird. Es erleichtert die Ressourcenkontrolle auf Replikatebene. Exklusive Prozesse verbrauchen jedoch mehr Betriebssystemressourcen, da für jedes Replikat auf dem Knoten ein Prozess erzeugt wird.
 
-## <a name="exclusive-process-model-and-application-model-considerations"></a>Überlegungen zum Modell mit einem exklusiven Prozess und zur Anwendungsmodellierung
-Die empfohlene Methode für die Anwendungsmodellierung in Service Fabric besteht darin, einen *ServiceType* pro *ServicePackage* zu verwalten, und dieses Modell eignet sich gut für die meisten Anwendungen. 
+## <a name="exclusive-process-model-and-application-model-considerations"></a>Überlegungen zum Modell mit einem exklusiven Prozess und zum Anwendungsmodell
+Die meisten Anwendungen können in Service Fabric modelliert werden, indem Sie einen *ServiceType* pro *ServicePackage* angeben. 
 
-In bestimmten Anwendungsfällen erlaubt Service Fabric auch mehrere *ServiceType* pro *ServicePackage* (und ein *CodePackage* kann mehrere  *ServiceType* registrieren). In den folgenden Szenarien können diese Konfigurationen nützlich sein:
+In bestimmten Fällen erlaubt Service Fabric auch mehrere *ServiceTypes* pro *ServicePackage* (und ein *CodePackage* kann mehrere  *ServiceTypes* registrieren). In den folgenden Szenarien können diese Konfigurationen nützlich sein:
 
 - Sie möchten die Verwendung von Betriebssystemressourcen dadurch optimieren, dass weniger Prozesse mit einer erhöhten Replikatdichte pro Prozess erzeugt werden.
-- Replikate aus verschiedenen ServiceTypes müssen einige allgemeine Daten mit hohen Initialisierungs- oder Arbeitsspeicherkosten gemeinsam nutzen.
-- Sie verfügen über ein Angebot kostenloser Dienste, und Sie möchten einen Grenzwert für die Ressourcenverwendung festlegen, indem Sie alle Replikate des Diensts im den gleichen Prozess platzieren.
+- Replikate aus verschiedenen *ServiceTypes* müssen einige Daten mit hohen Initialisierungs- oder Arbeitsspeicherkosten gemeinsam nutzen.
+- Sie verfügen über ein Angebot kostenloser Dienste, und Sie möchten einen Grenzwert für die Ressourcenverwendung festlegen, indem Sie alle Replikate des Diensts im gleichen Prozess platzieren.
 
-Das Hostingmodell mit einem **exklusiven Prozess** ist nicht kohärent mit einem Anwendungsmodell, das über mehrere *ServiceTypes* pro *ServicePackage* verfügt. Grund hierfür ist, dass mehrere *ServiceTypes* pro *ServicePackage* dazu ausgelegt sind, eine höhere gemeinsame Ressourcennutzung zwischen Replikaten zu erreichen. Zudem ermöglichen sie eine höhere Replikatdichte pro Prozess. Dies steht im Gegensatz zu den Zielen des Modells mit einem **exklusiven Prozess**.
+Das Hostingmodell mit einem exklusiven Prozess ist nicht kohärent mit einem Anwendungsmodell, das über mehrere *ServiceTypes* pro *ServicePackage* verfügt. Grund hierfür ist, dass mehrere *ServiceTypes* pro *ServicePackage* dafür ausgelegt sind, eine höhere gemeinsame Ressourcennutzung von Replikaten zu erreichen. Zudem ermöglichen sie eine höhere Replikatdichte pro Prozess. Das Modell mit einem exklusiven Prozess ist für andere Ergebnisse konzipiert.
 
 Betrachten Sie den Fall mehrerer *ServiceTypes* pro *ServicePackage*, wobei jeder *ServiceType* von einem anderen *CodePackage* registriert wird. Angenommen, Sie haben ein *ServicePackage* „MultiTypeServicePackge“ mit zwei *CodePackages*:
 
 - „MyCodePackageA“ registriert *ServiceType* „MyServiceTypeA“.
 - „MyCodePackageB“ registriert *ServiceType* „MyServiceTypeB“.
 
-Angenommen, wir erstellen jetzt eine *Anwendung* **fabric:/SpecialApp**, und innerhalb von **fabric:/SpecialApp** erstellen wir die folgenden beiden Dienste mit dem Modell mit einem **exklusiven Prozess**:
+Jetzt erstellen Sie die Anwendung **fabric:/SpecialApp**. In **fabric:/SpecialApp** erstellen Sie die folgenden beiden Dienste mit dem Modell mit einem exklusiven Prozess:
 
 - Den Dienst **fabric:/SpecialApp/ServiceA** vom Typ „MyServiceTypeA“ mit zwei Partitionen (**P1** und **P2**) und drei Replikaten pro Partition.
 - Den Dienst **fabric:/SpecialApp/ServiceB** vom Typ „MyServiceTypeB“ mit zwei Partitionen (**P3** und **P4**) und drei Replikaten pro Partition.
 
-Beide Dienste verfügen auf einem bestimmten Knoten über je zwei Replikate. Da wir verwendet das Modell mit einem **exklusiven Prozess** Erstellen von der Dienste verwendet haben, aktiviert Service Fabric eine neue Kopie von „MyServicePackage“ für jedes Replikat. Jede Aktivierung von „MultiTypeServicePackage“ startet eine Kopie von „MyCodePackageA“ und „MyCodePackageB“. Allerdings wird das Replikat, für das „MultiTypeServicePackage“ aktiviert wurde, nur entweder von „MyCodePackageA“ oder „MyCodePackageB“ gehostet. Das folgende Diagramm zeigt die Knotensicht:
+Beide Dienste verfügen auf jedem Knoten über je zwei Replikate. Da Sie das Modell mit einem exklusiven Prozess zum Erstellen der Dienste verwendet haben, aktiviert Service Fabric eine neue Kopie von „MyServicePackage“ für jedes Replikat. Jede Aktivierung von „MultiTypeServicePackge“ startet eine Kopie von „MyCodePackageA“ und „MyCodePackageB“. Allerdings wird das Replikat, für das „MultiTypeServicePackge“ aktiviert wurde, nur entweder von „MyCodePackageA“ oder „MyCodePackageB“ gehostet. Das folgende Diagramm zeigt die Knotenansicht:
 
-<center>
-![Sicht der bereitgestellten Anwendung auf dem Knoten][node-view-five]
-</center>
 
-Das Replikat der Partition **P1** des Diensts **fabric:/SpecialApp/ServiceA** wird bei der Aktivierung von „MultiTypeServicePackage“ von „MyCodePackageA“ gehostet, und „MyCodePackageB“ wird gerade ausgeführt. Gleichermaßen wird das Replikat der Partition **P3** des Diensts **fabric:/SpecialApp/ServiceB** bei der Aktivierung von „MultiTypeServicePackage“ von „MyCodePackageB“ gehostet, und „MyCodePackageA“ wird gerade ausgeführt usw. Daher gilt: Je höher die Zahl der *CodePackages* (die verschiedene *ServiceTypes* registrieren) pro *ServicePackage* ist, desto höher wird die redundante Ressourcenverwendung. 
+![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-five]
+
+
+In der Aktivierung von „MultiTypeServicePackge“ für das Replikat der Partition **P1** des Diensts **fabric:/SpecialApp/ServiceA** hostet „MyCodePackageA“ das Replikat. „MyCodePackageB“ wird ausgeführt. Gleiches gilt für die Aktivierung von „MultiTypeServicePackge“ für das Replikat der Partition **P3** des Diensts **fabric:/SpecialApp/ServiceB**: „MyCodePackageB“ hostet das Replikat, „MyCodePackageA“ wird ausgeführt. Daher gilt: Je höher die Anzahl von *CodePackages* (die verschiedene *ServiceTypes* registrieren) pro *ServicePackage* ist, desto höher wird die redundante Ressourcenverwendung. 
  
- Wenn Sie jedoch die Dienste **fabric:/SpecialApp/ServiceA** und **fabric:/SpecialApp/ServiceB** mit dem Modell mit einem **gemeinsam genutzten Prozess** erstellen, aktiviert Service Fabric nur eine Kopie von „MultiTypeServicePackage“ für die *Anwendung* **fabric:/SpecialApp** (wie zuvor beschrieben). „MyCodePackageA“ hostet alle Replikate für den Dienst **fabric:/SpecialApp/ServiceA** (oder, um genauer zu sein, eines beliebigen Diensts vom Typ „MyServiceTypeA“). „MyCodePackageB“ hostet alle Replikate für den Dienst **fabric:/SpecialApp/ServiceB** (oder, um genauer zu sein, eines beliebigen Diensts vom Typ „MyServiceTypeB“). Das folgende Diagramm zeigt die Knotensicht in dieser Einstellung: 
+ Wenn Sie jedoch die Dienste **fabric:/SpecialApp/ServiceA** und **fabric:/SpecialApp/ServiceB** mit dem Modell mit einem gemeinsam genutzten Prozess erstellen, aktiviert Service Fabric nur eine Kopie von „MultiTypeServicePackge“ für die Anwendung **fabric:/SpecialApp**. „MyCodePackageA“ hostet alle Replikate für den Dienst **fabric:/SpecialApp/ServiceA**. „MyCodePackageB“ hostet alle Replikate für den Dienst **fabric:/SpecialApp/ServiceB**. Das folgende Diagramm zeigt die Knotensicht in dieser Einstellung: 
 
-<center>
-![Sicht der bereitgestellten Anwendung auf dem Knoten][node-view-six]
-</center>
 
-Sie könnten einwenden, dass im vorangehenden Beispiel keine redundante Ausführung von *CodePackage* erfolgt, wenn „MyCodePackageA“ sowohl „MyServiceTypeA“ als auch „MyServiceTypeB“ registriert, aber kein „MyCodePackageB“ existiert. Dies ist richtig, wie bereits erwähnt. Dieses Anwendungsmodell steht nicht in Einklang mit dem Hostingmodell mit einem **exklusive Prozess**. Wenn das Ziel darin besteht, jedes Replikat in einem eigenen dedizierten Prozess zu verarbeiten, ist die Registrierung beider *ServiceTypes* aus demselben *CodePackage* nicht erforderlich. Es ist sinnvoller, jeden *ServiceType* in einem eigenen *ServicePackage* zu platzieren.
+![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-six]
+
+
+Sie könnten einwenden, dass im vorangehenden Beispiel keine redundante *CodePackage*-Ausführung erfolgt, wenn „MyCodePackageA“ sowohl „MyServiceTypeA“ als auch „MyServiceTypeB“ registriert, aber kein „MyCodePackageB“ existiert. Das ist zwar richtig, aber dieses Anwendungsmodell steht nicht in Einklang mit dem Hostingmodell mit einem exklusive Prozess. Wenn das Ziel darin besteht, jedes Replikat in einem eigenen dedizierten Prozess zu verarbeiten, müssen nicht beide *ServiceTypes* aus demselben *CodePackage* registriert werden. Stattdessen platzieren Sie einfach jeden *ServiceType* in einem eigenen *ServicePackage*.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Packen][a4] und Vorbereiten einer Anwendung für die Bereitstellung.
 
-[Bereitstellen und Entfernen von Anwendungen][a5] beschreibt, wie Sie mit PowerShell Anwendungsinstanzen verwalten.
+[Bereitstellen und Entfernen von Anwendungen][a5]. Dieser Artikel beschreibt, wie Sie Anwendungsinstanzen mithilfe von PowerShell verwalten.
 
 <!--Image references-->
 [node-view-one]: ./media/service-fabric-hosting-model/node-view-one.png

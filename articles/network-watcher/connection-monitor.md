@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2018
 ms.author: jdial
-ms.openlocfilehash: 0d550d3bda119cfcb9ecc6f852006d5e325fdfa3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b0eb10d373f47191933eb1c3c22b779e9e8d6685
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>Überwachen von Netzwerkverbindungen mit Azure Network Watcher mithilfe des Azure-Portals
 
@@ -29,7 +29,7 @@ Sie müssen die folgenden Voraussetzungen erfüllen, bevor Sie die Schritte in d
 
 * Eine Instanz von Network Watcher in der Region, in der Sie eine Verbindung überwachen möchten. Falls Sie noch nicht über eine Instanz verfügen, können Sie eine erstellen, indem Sie die Schritte unter [Erstellen einer Azure Network Watcher-Instanz](network-watcher-create.md) ausführen.
 * Einen virtuellen Computer, von dem aus die Überwachung erfolgt. Um zu erfahren, wie Sie einen virtuellen Computer erstellen, lesen Sie die Artikel zum Erstellen von [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)-VMs.
-* Sie müssen auf dem virtuellen Computer, von dem aus Sie eine Verbindung überwachen möchten, `AzureNetworkWatcherExtension` installieren. Informationen zum Installieren der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Azure Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Azure Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+* Sie müssen auf dem virtuellen Computer, von dem aus Sie eine Verbindung überwachen möchten, `AzureNetworkWatcherExtension` installieren. Informationen zum Installieren der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Azure Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Azure Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Die Erweiterung ist nicht auf dem Zielendpunkt erforderlich, den Sie überwachen möchten.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure 
 

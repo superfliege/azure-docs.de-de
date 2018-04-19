@@ -1,88 +1,97 @@
 ---
-title: Verwenden eines Azure Marketplace-Images zum Erstellen einer Terraform-VM für Linux mit verwalteter Dienstidentität
-description: Verwenden Sie ein Marketplace-Image, um eine Terraform-VM für Linux mit verwalteter Dienstidentität und Remotezustandsverwaltung zur einfachen Bereitstellung von Ressourcen in Azure zu erstellen.
+title: Verwenden eines Azure Marketplace-Images zum Erstellen eines virtuellen Terraform-Computers für Linux mit verwalteter Dienstidentität
+description: Verwenden Sie ein Marketplace-Image, um einen virtuellen Terraform-Computer für Linux mit verwalteter Dienstidentität und Remotezustandsverwaltung zur einfachen Bereitstellung von Ressourcen in Azure zu erstellen.
 keywords: Terraform, DevOps, MSI, VM, Remotezustand, Azure
 author: VaijanathB
 manager: rloutlaw
 ms.author: tarcher
 ms.date: 3/12/2018
 ms.topic: article
-ms.openlocfilehash: ce8a3e8b813bf4224a1fd77d60ec30f2f8e080a7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: db45e9fe1eb724e6404f5e83bbbe4f62ee32343d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Verwenden eines Azure Marketplace-Images zum Erstellen einer Terraform-VM für Linux mit verwalteter Dienstidentität
+# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Verwenden eines Azure Marketplace-Images zum Erstellen eines virtuellen Terraform-Computers für Linux mit verwalteter Dienstidentität
 
-In diesem Artikel erfahren Sie, wie Sie mit einem [Terraform-Marketplace-Image](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) eine `Ubuntu Linux VM (16.04 LTS)` erstellen, auf der die neueste [Terraform](https://www.terraform.io/intro/index.html)-Version installiert ist und die mit der [verwalteten Dienstidentität (Managed Service Identity, MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) konfiguriert ist. Dieses Image konfiguriert außerdem ein Remote-Back-End, um die Verwaltung des [Remotezustands](https://www.terraform.io/docs/state/remote.html) mit Terraform zu ermöglichen. Mit dem Terraform-Marketplace-Image können Sie die ersten Schritte zur Verwendung von Terraform in Azure in Minutenschnelle erledigen, ohne Terraform installieren und die Authentifizierung manuell konfigurieren zu müssen. 
+In diesem Artikel erfahren Sie, wie Sie mit einem [Terraform-Marketplace-Image](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) eine Ubuntu-Linux-VM (16.04 LTS) erstellen, auf der die neueste [Terraform](https://www.terraform.io/intro/index.html)-Version installiert ist und die mit der [verwalteten Dienstidentität (Managed Service Identity, MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) konfiguriert ist. Dieses Image konfiguriert außerdem ein Remote-Back-End, um die Verwaltung des [Remotezustands](https://www.terraform.io/docs/state/remote.html) mit Terraform zu ermöglichen. 
 
-Für dieses Terraform-VM-Image fallen keine Softwaregebühren an. Sie zahlen nur die Gebühren für die Azure-Hardwarenutzung, die basierend auf der Größe der von Ihnen bereitgestellten VM berechnet werden. Weitere Informationen zu den Computegebühren finden Sie auf der Seite [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Das Terraform-Marketplace-Image vereinfacht den Einstieg in die Verwendung von Terraform in Azure, ohne dass Sie Terraform manuell installieren und konfigurieren müssen. 
+
+Für dieses Terraform-VM-Image fallen keine Softwaregebühren an. Sie zahlen nur die Gebühren für die Azure-Hardwarenutzung, die basierend auf der Größe des virtuellen Computers berechnet werden, der bereitgestellt wurde. Weitere Informationen zu den Computegebühren finden Sie auf der Seite [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie eine Terraform-VM für Linux erstellen können, benötigen Sie ein Azure-Abonnement. Wenn Sie noch kein Abonnement besitzen, helfen Ihnen die Informationen unter [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/free/)weiter.  
+Bevor Sie einen virtuellen Terraform-Computer für Linux erstellen können, benötigen Sie ein Azure-Abonnement. Wenn Sie noch kein Abonnement besitzen, helfen Ihnen die Informationen unter [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/free/) weiter.  
 
-## <a name="create-your-terraform-virtual-machine"></a>Erstellen der Terraform-VM 
+## <a name="create-your-terraform-virtual-machine"></a>Erstellen des virtuellen Terraform-Computers 
 
-Führen Sie zum Erstellen einer Instanz der Terraform-VM für Linux die folgenden Schritte aus. 
+Führen Sie zum Erstellen einer Instanz eines virtuellen Terraform-Computers für Linux die folgenden Schritte aus: 
 
-1. Navigieren Sie im Azure-Portal zum Eintrag [Ressource erstellen](https://ms.portal.azure.com/#create/hub).
-2. Suchen Sie in der Suchleiste `Search the Marketplace` nach `Terraform`. Wählen Sie die Vorlage `Terraform` aus. Klicken Sie unten rechts auf der Registerkarte mit den Terraform-Details auf die Schaltfläche **Erstellen**.
-![Alternativer Text](media\terraformmsi.png)
-3. Die folgenden Abschnitte enthalten die Eingaben für jeden Schritt des Assistenten (**aufgelistet auf der rechten Seite**) zum Erstellen der Terraform-VM für Linux.  Im Folgenden finden Sie die erforderlichen Eingaben zum Konfigurieren der einzelnen Schritte.
+1. Wechseln Sie im Azure-Portal zum Eintrag [Ressource erstellen](https://ms.portal.azure.com/#create/hub).
 
-## <a name="details-in-create-terraform-tab"></a>Details auf der Registerkarte „Terraform erstellen“
+2. Suchen Sie in der Suchleiste **Marketplace durchsuchen** nach **Terraform**. Wählen Sie die Vorlage **Terraform** aus. 
 
-Die folgenden Details müssen auf der Registerkarte „Terraform erstellen“ eingegeben werden.
+3. Klicken auf der Registerkarte mit den Terraform-Details unten rechts auf die Schaltfläche **Erstellen**.
 
-a. **Grundlagen**
+    ![Erstellen eines virtuellen Terraform-Computers](media\terraformmsi.png)
+
+4. Die folgenden Abschnitte enthalten die Angaben für jeden Schritt des Assistenten zum Erstellen des virtuellen Terraform-Computers für Linux. Im folgenden Abschnitt sind die Angaben aufgeführt, die zum Konfigurieren jedes dieser Schritte erforderlich sind.
+
+## <a name="details-on-the-create-terraform-tab"></a>Details auf der Registerkarte „Terraform erstellen“
+
+Geben Sie auf der Registerkarte **Terraform erstellen** folgende Informationen ein:
+
+1. **Grundlagen**
     
-* **Name**: Der Name Ihrer Terraform-VM.
-* **Benutzername**: Die ID für die erste Kontoanmeldung.
-* **Kennwort**: Das erste Kontokennwort (Sie können anstelle eines Kennworts einen öffentlichen SSH-Schlüssel verwenden).
-* **Abonnement:**Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
-* **Ressourcengruppe**: Sie können eine neue Gruppe erstellen oder eine vorhandene Gruppe verwenden.
-* **Standort**: Wählen Sie das Rechenzentrum aus, das am besten geeignet ist. Normalerweise handelt es sich dabei um das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen.
+   * **Name**: Der Name Ihres virtuellen Terraform-Computers.
+   * **Benutzername**: Die ID für die erste Kontoanmeldung.
+   * **Kennwort**: Das erste Kontokennwort. (Sie können statt des Kennworts einen öffentlichen SSH-Schlüssel verwenden.)
+   * **Abonnement**: Das Abonnement, in dem der Computer erstellt und abgerechnet werden soll. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
+   * **Ressourcengruppe**: Eine neue oder vorhandene Ressourcengruppe.
+   * **Standort**: Das am besten geeignete Rechenzentrum. In der Regel handelt es sich dabei um das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist, oder das Rechenzentrum, das Ihrem physischen Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen.
 
-b. **Zusätzliche Einstellungen**
+2. **Zusätzliche Einstellungen**
 
-* Größe: Die Größe der VM.
-* VM-Datenträgertyp: Wählen Sie zwischen SSD und HDD.
+   * **Größe**: Die Größe des virtuellen Computers. 
+   * **VM-Datenträgertyp**: Solid-State Drive (SSD) oder Festplattenlaufwerk (HDD).
 
-c. **Zusammenfassung für Terraform**
+3. **Zusammenfassung für Terraform**
 
-* Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind. 
+   * Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind. 
 
-d. **Kaufen**
+4. **Kaufen**
 
-* Klicken Sie auf „Kaufen“, um die Bereitstellung zu starten. Ein Link zu den Bedingungen der Transaktion wird bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie unter „Größe“ ausgewählt haben, hinausgehenden Kosten.
+   * Um den Bereitstellungsprozess zu starten, klicken Sie auf **Kaufen**. Ein Link zu den Bedingungen der Transaktion wird bereitgestellt. Für den virtuellen Computer fallen über die Computekosten hinaus keine weiteren Kosten für die Servergröße an, die Sie unter „Größe“ ausgewählt haben.
 
 Das Terraform-VM-Image führt die folgenden Schritte aus:
 
-* Es erstellt eine VM mit vom System zugewiesener Identität basierend auf dem Ubuntu 16.04 LTS-Image.
-* Es installiert die MSI-Erweiterung auf der VM, um das Ausstellen von OAuth-Token für Azure-Ressourcen zu ermöglichen.
+* Es erstellt einen virtuellen Computer mit vom System zugewiesener Identität basierend auf dem Ubuntu 16.04 LTS-Image.
+* Es installiert die MSI-Erweiterung auf dem virtuellen Computer um das Ausstellen von OAuth-Token für Azure-Ressourcen zu ermöglichen.
 * Es weist der verwalteten Identität RBAC-Berechtigungen zu, wodurch Besitzerrechte für die Ressourcengruppe erteilt werden.
-* Es erstellt einen Vorlagenordner für Terraform (TfTemplate).
-* Es konfiguriert den Terraform-Remotezustand mit dem Azure-Back-End vor.
+* Es erstellt einen Vorlagenordner für Terraform (tfTemplate).
+* Es konfiguriert einen Terraform-Remotezustand mit dem Azure-Back-End vor.
 
-## <a name="how-to-access-and-configure-linux-terraform-virtual-machine"></a>Zugreifen auf die Terraform-VM für Linux und Konfigurieren der VM
+## <a name="access-and-configure-a-linux-terraform-virtual-machine"></a>Zugreifen auf eine Terraform-VM für Linux und Konfigurieren der VM
 
-Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dazu die Kontoanmeldeinformationen, die Sie im Abschnitt „Grundlagen“ von Schritt 3 für die Textshell-Schnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool wie [Putty](http://www.putty.org/) herunterladen.
+Nachdem der virtuelle Computer erstellt wurde, können Sie sich über SSH bei diesem Computer anmelden. Verwenden Sie dazu die Kontoanmeldeinformationen, die Sie in Schritt 3 im Abschnitt „Grundlagen“ für die Textshellschnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool wie [PuTTY](http://www.putty.org/)herunterladen.
 
-Nachdem Sie mit `SSH` eine Verbindung mit der VM hergestellt haben, müssen Sie der verwalteten Dienstidentität auf der VM Berechtigungen für Mitwirkende für das gesamte Abonnement erteilen. Die Berechtigung für Mitwirkende ermöglicht der verwalteten Dienstidentität auf der VM die Verwendung von Terraform zum Erstellen von Ressourcen außerhalb der VM-Ressourcengruppe. Dazu müssen Sie lediglich einmal ein Skript ausführen. Der entsprechende Befehl lautet wie folgt.
+Nachdem Sie über SSH eine Verbindung mit dem virtuellen Computer hergestellt haben, müssen Sie der verwalteten Dienstidentität auf dem virtuellen Computer Berechtigungen für Mitwirkende für das gesamte Abonnement erteilen. 
+
+Die Berechtigung für Mitwirkende ermöglicht der verwalteten Dienstidentität auf der VM die Verwendung von Terraform zum Erstellen von Ressourcen außerhalb der VM-Ressourcengruppe. Dazu müssen Sie lediglich einmal ein Skript ausführen. Verwenden Sie den folgenden Befehl:
 
 `. ~/tfEnv.sh`
 
-Das vorherige Skript verwendet den Mechanismus zur [interaktiven Anmeldung mit Azure CLI 2.0 ](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in), um die Authentifizierung bei Azure vorzunehmen und die Berechtigung für Mitwirkende der verwalteten Dienstidentität der VM für das gesamte Abonnement zuzuweisen. 
+Das vorherige Skript verwendet den Mechanismus zur [interaktiven Anmeldung mit Azure CLI 2.0 ](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in), um die Authentifizierung bei Azure vorzunehmen und dem virtuellen Computer die Berechtigung für Mitwirkende der verwalteten Dienstidentität für das gesamte Abonnement zuzuweisen. 
 
- Für die VM wurde ein Terraform-Remotezustands-Back-End erstellt. Um dieses Backend für Ihre Terraform-Bereitstellung zu aktivieren, müssen Sie die Datei „remoteState.tf“ aus dem Verzeichnis „tfTemplate“ in das Stammverzeichnis der Terraform-Skripts kopieren.  
+ Der virtuelle Computer verfügt über ein Terraform-Back-End mit Remotezustand. Um dieses Back-End in Ihrer Terraform-Bereitstellung zu aktivieren, kopieren Sie die Datei „remoteState.tf“ aus dem Verzeichnis „tfTemplate“ in das Stammverzeichnis der Terraform-Skripts.  
 
  `cp  ~/tfTemplate/remoteState.tf .`
 
- Weitere Informationen zur Remotezustandsverwaltung finden Sie [hier](https://www.terraform.io/docs/state/remote.html). Der Speicherzugriffsschlüssel wird in dieser Datei verfügbar gemacht und muss sorgfältig in die Quellcodeverwaltung eingecheckt werden.  
+ Weitere Informationen zur Remotezustandsverwaltung finden Sie auf [dieser Seite zum Terraform-Remotezustand](https://www.terraform.io/docs/state/remote.html). Der Speicherzugriffsschlüssel wird in dieser Datei verfügbar gemacht und muss sorgfältig in die Quellcodeverwaltung eingecheckt werden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie Sie eine Terraform-VM für Linux in Azure einrichten. Folgende zusätzliche Ressourcen können Sie nutzen, um mehr über Terraform in Azure zu erfahren. 
+In diesem Artikel haben Sie erfahren, wie Sie einen virtuellen Terraform-Computer für Linux in Azure einrichten. In folgenden zusätzlichen Ressourcen können Sie mehr über Terraform in Azure erfahren: 
 
  [Dokumentation zu Terraform in Azure](https://docs.microsoft.com/azure/terraform/)  
  [Terraform Azure Provider Documentation](http://aka.ms/terraform) (Dokumentation zum Azure-Anbieter für Terraform)  

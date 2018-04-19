@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: ea2367a6e1facfbe6a36cb145e258491a1c99517
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 059f577c138847af04e92ce9ab12a8de88251c73
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="collector-appliance"></a>Collectorappliance
 
@@ -53,7 +53,7 @@ Die Collectorappliance muss mit dem Internet verbunden sein, um die ermittelten 
 1. Sie können den Collector so konfigurieren, dass er über direkten Internetzugriff verfügt.
 2. Sie können den Collector für die Verbindung über einen Proxyserver konfigurieren.
     * Wenn der Proxyserver eine Authentifizierung erfordert, können Sie den Benutzernamen und das Kennwort in den Verbindungseinstellungen angeben.
-    * Die IP-Adresse/der FQDN des Proxyservers muss im Format „http://IPadresse“ oder „http://FQDN“ angegeben sein. Nur HTTP-Proxys werden unterstützt.
+    * Die IP-Adresse bzw. der FQDN des Proxyservers muss im Format http://IPaddress oder http://FQDN angegeben werden. Nur HTTP-Proxys werden unterstützt.
 
 > [!NOTE]
 > HTTPS-basierte Proxyserver werden vom Collector nicht unterstützt.
@@ -126,7 +126,7 @@ Sobald die Verbindung mit vCenter besteht, können Sie einen Bereich für die Er
 
 1. Der Bereich kann entweder ein Rechenzentrum, ein Ordner oder ein ESXi-Host sein. 
 2. Sie können jeweils nur einen Bereich auswählen. Zum Auswählen weiterer virtueller Computer können eine Ermittlung abschließen und den Ermittlungsprozess mit einem neuen Bereich neu starten.
-3. Sie können nur einen Bereich mit *weniger als 1000 virtuellen Computern* auswählen. Wenn Sie einen Bereich mit mehr als 1000 virtuellen Computern auswählen, müssen Sie den Bereich in kleinere Einheiten aufteilen, indem Sie Ordner erstellen. Als Nächstes müssen Sie unabhängige Ermittlungen der kleineren Ordner ausführen.
+3. Sie können nur einen Bereich mit *weniger als 1500 virtuellen Computern* auswählen.
 
 ## <a name="specify-migration-project"></a>Festlegen des Migrationsprojekts
 
@@ -197,6 +197,16 @@ Sie können ein Upgrade für den Collector auf die neueste Version durchführen,
 5. Klicken Sie mit der rechten Maustaste auf „Setup.ps1“, und klicken Sie auf „Mit PowerShell ausführen“. Befolgen Sie dann die Anweisungen auf dem Bildschirm, um das Update zu installieren.
 
 ### <a name="list-of-updates"></a>Liste der Updates
+
+#### <a name="upgrade-to-version-1097"></a>Upgrade auf Version 1.0.9.7
+
+Laden Sie zum Durchführen eines Upgrade auf Version 1.0.9.7 das [Paket](https://aka.ms/migrate/col/upgrade_9_7) herunter.
+
+**Algorithmus** | **Hashwert**
+--- | ---
+MD5 | 01ccd6bc0281f63f2a672952a2a25363
+SHA1 | 3e6c57523a30d5610acdaa14b833c070bffddbff
+SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
 
 #### <a name="upgrade-to-version-1095"></a>Upgrade auf Version 1.0.9.5
 

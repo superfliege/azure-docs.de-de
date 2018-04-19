@@ -1,10 +1,10 @@
 ---
-title: "Überwachen eines virtuellen Linux-Computers mit einer VM-Erweiterung | Microsoft Docs"
-description: "Hier erfahren Sie, wie Sie die Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten einer Linux-VM in Azure verwenden."
+title: Überwachen eines virtuellen Linux-Computers mit einer VM-Erweiterung | Microsoft Docs
+description: Hier erfahren Sie, wie Sie die Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten einer Linux-VM in Azure verwenden.
 services: virtual-machines-linux
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: f54a11c5-5a0e-40ff-af6c-e60bd464058b
 ms.service: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: b8c6e2e22d8478b6e92e7b7942f15d37a840fed3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd22188042c60da7c761e1fa00a12921146caf25
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Verwenden der Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten eines Linux-VM
 
@@ -64,7 +64,7 @@ Beachten Sie, dass die hier beschriebenen Konfigurationsmethoden nicht für das 
 * **Azure Linux Agent ab Version 2.0.6**.
 
   Beachten Sie, dass die meisten Images des Linux-Katalogs für virtuelle Azure-Computer die Version 2.0.6 oder höher besitzen. Sie können **WAAgent -version** ausführen, um zu ermitteln, welche Version auf dem virtuellen Computer installiert ist. Wenn auf dem virtuellen Computer eine ältere Version als 2.0.6 ausgeführt wird, können Sie sie unter Verwendung [dieser Anweisungen bei GitHub](https://github.com/Azure/WALinuxAgent "Anweisungen") aktualisieren.
-* **Azure-Befehlszeilenschnittstelle**. Folgen Sie [dieser Anleitung zur CLI-Installation](../../../cli-install-nodejs.md) , um die Azure-Befehlszeilenschnittstelle auf Ihrem Computer einzurichten. Sobald die Azure-Befehlszeilenschnittstelle installiert ist, können Sie über Ihre Befehlszeilenschnittstelle (Bash, Terminal oder Eingabeaufforderung) mithilfe des Befehls **azure** auf die Befehle der Azure-Befehlszeilenschnittstelle zugreifen. Beispiel:
+* **Azure-Befehlszeilenschnittstelle**. Folgen Sie [dieser Anleitung zur CLI-Installation](../../../cli-install-nodejs.md) , um die Azure-Befehlszeilenschnittstelle auf Ihrem Computer einzurichten. Sobald die Azure-Befehlszeilenschnittstelle installiert ist, können Sie über Ihre Befehlszeilenschnittstelle (Bash, Terminal oder Eingabeaufforderung) mithilfe des Befehls **azure** auf die Befehle der Azure-Befehlszeilenschnittstelle zugreifen. Beispiel: 
 
   * Führen Sie **azure vm extension set --help** aus, um ausführliche Hilfeinformationen zu erhalten.
   * Führen Sie **azure login** aus, um sich bei Azure anzumelden.
@@ -88,7 +88,7 @@ Schritt 1: Erstellen Sie eine Datei namens „PrivateConf.json“ mit folgendem 
         "storageAccountKey" : "the key of the account"
     }
 
-Schritt 2: Führen Sie **azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
+Schritt 2: Führen Sie **azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2* aus. --private-config-path PrivateConfig.json** aus.
 
 ### <a name="scenario-2-customize-the-performance-monitor-metrics"></a>Szenario 2: Anpassen der Leistungsüberwachungsmetriken
 
@@ -111,7 +111,7 @@ Rsyslog-Daten werden standardmäßig gesammelt.
     }
 
 
-Schritt 2: Führen Sie **azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** aus.
+Schritt 2: Führen Sie **azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** aus.
 
 ### <a name="scenario-3-upload-your-own-log-files"></a>Szenario 3: Hochladen eigener Protokolldateien
 
@@ -131,7 +131,7 @@ Schritt 1: Erstellen Sie eine Datei mit dem Namen „PrivateConfig.json“ und d
 }
 ```
 
-Schritt 2: Führen Sie `azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json`aus.
+Schritt 2: Führen Sie `azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json`aus.
 
 Beachten Sie, dass bei Verwendung dieser Einstellung in Erweiterungsversionen vor 2.3 unter Umständen alle in `/var/log/mysql.err` geschriebenen Protokolle in `/var/log/syslog` (oder `/var/log/messages`, abhängig von der Linux-Distribution) dupliziert werden. Zur Vermeidung dieser Doppelprotokollierung können Sie die Protokollierung von `local6`-Einrichtungsprotokollen in Ihrer rsyslog-Konfiguration ausschließen. Dies ist abhängig von Ihrer Linux-Distribution. Bei einem Ubuntu 14.04-System muss beispielsweise die Datei `/etc/rsyslog.d/50-default.conf` geändert werden: Hier können Sie die Zeile `*.*;auth,authpriv.none -/var/log/syslog` durch `*.*;auth,authpriv,local6.none -/var/log/syslog` ersetzen. Dieses Problem wurde in der neuesten Hotfixversion 2.3 (2.3.9007) behoben. Wenn Sie also die Erweiterungsversion 2.3 nutzen, sollte dieses Problem nicht auftreten. Falls es auch nach dem Neustart Ihres virtuellen Computers auftritt, kontaktieren Sie uns, und helfen Sie uns dabei herauszufinden, warum die neueste Hotfixversion nicht automatisch installiert wird.
 
@@ -147,7 +147,7 @@ Schritt 1: Erstellen Sie eine Datei mit dem Namen „PrivateConfig.json“ und d
     }
 
 
-Schritt 2: Führen Sie **azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** aus.
+Schritt 2: Führen Sie **azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** aus.
 
 ## <a name="review-your-data"></a>Überprüfen der Daten
 
@@ -156,11 +156,11 @@ Die Leistungs- und Diagnosedaten werden in einer Azure Storage-Tabelle gespeich
 Darüber hinaus können Sie folgende Tools mit grafischer Benutzeroberfläche für den Datenzugriff verwenden:
 
 1. Server-Explorer von Visual Studio Wechseln Sie zum Speicherkonto. Nachdem die VM etwa fünf Minuten lang ausgeführt wurde, werden die vier Standardtabellen angezeigt: „LinuxCpu“, „LinuxDisk“, „LinuxMemory“ und „Linuxsyslog“. Doppelklicken Sie auf den Tabellennamen, um die Daten anzuzeigen.
-1. [Azure-Speicher-Explorer](https://azurestorageexplorer.codeplex.com/ "Azure-Speicher-Explorer")angegeben sind
+1. [Azure Storage-Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
 
 ![image](./media/diagnostic-extension/no1.png)
 
-Wenn Sie fileCfg oder perfCfg aktiviert haben (wie in Szenario 2 und 3 beschrieben), können Sie den Speicher-Explorer von Visual Studio und Azure-Speicher-Explorer verwenden, um nicht standardmäßige Daten anzuzeigen.
+Wenn Sie fileCfg oder perfCfg aktiviert haben (wie in Szenario 2 und 3 beschrieben), können Sie den Server-Explorer von Visual Studio und den Azure Storage-Explorer verwenden, um nicht standardmäßige Daten anzuzeigen.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 

@@ -4,7 +4,7 @@ description: Unter Zwischenspeichern versteht man das lokale Speichern von Daten
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
-ms.author: v-deasim
-ms.openlocfilehash: 26a0478f8713cb3584045f59c181c0a38331ea97
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: rli; v-deasim
+ms.openlocfilehash: 88c1b98a9dcaa1d22cdc1be3853b1fa7116c8a48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-caching-works"></a>Funktionsweise der Zwischenspeicherung
 
@@ -64,7 +64,7 @@ Zum Definieren der Cacheaktualität können zwei Header verwendet werden: `Cache
 ## <a name="cache-directive-headers"></a>Header mit Cacheanweisungen
 
 > [!IMPORTANT]
-> Standardmäßig ignoriert ein für die DSA optimierter Azure CDN-Endpunkt Header mit Cacheanweisungen und umgeht die Zwischenspeicherung. Für **Azure CDN von Verizon**- und **Azure CDN von Akamai**-Standardprofilen können Sie anpassen, wie ein Azure CDN-Endpunkt diese Header behandelt, indem Sie das Zwischenspeichern mit [CDN-Cacheregeln](cdn-caching-rules.md) aktivieren. Nur für **Azure CDN von Verizon Premium**-Profilen verwenden Sie das [Regelmodul](cdn-rules-engine.md), um das Zwischenspeichern zu aktivieren.
+> Standardmäßig ignoriert ein für die DSA optimierter Azure CDN-Endpunkt Header mit Cacheanweisungen und umgeht die Zwischenspeicherung. Für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** können Sie die Behandlung dieser Header durch einen Azure CDN-Endpunkt anpassen, indem Sie [CDN-Cacheregeln](cdn-caching-rules.md) verwenden, um die Zwischenspeicherung zu aktivieren. Nur bei **Azure CDN Premium von Verizon**-Profilen verwenden Sie die [Regel-Engine](cdn-rules-engine.md), um die Zwischenspeicherung zu aktivieren.
 
 Azure CDN unterstützt die folgenden HTTP-Header mit Cacheanweisungen, die die Cachedauer und die -freigabe definieren.
 
@@ -95,14 +95,14 @@ Azure CDN unterstützt die folgenden HTTP-Header mit Cacheanweisungen, die die C
 Wenn der Cache veraltet ist, werden Validierungssteuerelemente des HTTP-Caches verwendet, um die zwischengespeicherte Version einer Datei mit der Version auf dem Ursprungsserver abzugleichen. **Azure CDN von Verizon** unterstützt standardmäßig sowohl `ETag`- als auch `Last-Modified`-Validierungssteuerelemente, wohingegen **Azure CDN von Akamai** standardmäßig nur `Last-Modified`-Validierungssteuerelemente unterstützt.
 
 **ETag:**
-- Das **Azure CDN von Verizon** verwendet standardmäßig `ETag`, was beim **Azure CDN von Akamai** nicht der Fall ist.
+- **Azure CDN von Verizon** verwendet standardmäßig `ETag`, was bei **Azure CDN von Akamai** nicht der Fall ist.
 - `ETag` definiert eine Zeichenfolge, die für jede Datei und Dateiversion eindeutig ist. Beispiel: `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
 - Es wurde in HTTP 1.1 eingeführt und ist neuer als `Last-Modified`. Ist nützlich, wenn die Ermittelung des Datums der letzten Änderung schwierig ist.
 - Unterstützt sowohl eine sichere als auch eine unsichere Überprüfung, wobei das Azure CDN jedoch nur eine sichere Überprüfung unterstützt. Für eine sichere Überprüfung müssen die beiden Ressourcendarstellungen Byte für Byte identisch sein. 
 - Ein Cache überprüft eine Datei mit `ETag`, indem er einen `If-None-Match`-Header mit einem oder mehreren `ETag`-Validierungssteuerelementen in der Anforderung sendet. Beispiel: `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Wenn die Serverversion mit einem `ETag`-Validierungssteuerelement in der Liste übereinstimmt, wird der Statuscode 304 (Nicht geändert) in der Antwort gesendet. Wenn die Version unterschiedlich ist, antwortet der Server mit dem Statuscode 200 (OK) und der aktualisierten Ressource.
 
 **Last-Modified:**
-- Nur bei **Azure CDN von Verizon** wird das `Last-Modified`-Validierungssteuerelement verwendet, wenn `ETag` nicht Teil der HTTP-Antwort ist. 
+- Nur bei **Azure CDN von Verizon** wird `Last-Modified` verwendet, wenn `ETag` nicht Teil der HTTP-Antwort ist. 
 - Gibt das Datum und die Uhrzeit an, an dem der Ursprungsserver festgestellt hat, dass die Ressource zuletzt geändert wurde. Beispiel: `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
 - Ein Cache überprüft eine Datei mit `Last-Modified`, indem er einen `If-Modified-Since`-Header mit Datum und Uhrzeit in der Anforderung sendet. Der Ursprungsserver gleicht dieses Datum mit dem `Last-Modified`-Header der aktuellen Ressource ab. Wenn die Ressource seit dem angegebenen Zeitpunkt nicht geändert wurde, gibt der Server in seiner Antwort den Statuscode 304 (Nicht geändert) zurück. Wenn die Ressource geändert wurde, gibt der Server den Statuscode 200 (OK) und die aktualisierte Ressource zurück.
 

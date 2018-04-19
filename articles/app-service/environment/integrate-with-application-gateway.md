@@ -1,6 +1,6 @@
 ---
-title: Integrieren Ihrer ILB-App Service-Umgebung in ein Application Gateway
-description: Exemplarische Vorgehensweise zum Integrieren einer App in Ihrer ILB-App Service-Umgebung mit Ihrem Application Gateway
+title: Integrieren Ihrer ILB-App Service-Umgebung in ein Azure Application Gateway
+description: Exemplarische Vorgehensweise zum Integrieren einer App in Ihrer ILB-App Service-Umgebung in ein Application Gateway
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 03/03/2018
 ms.author: ccompy
-ms.openlocfilehash: c64b686d7a9016b3834096ebc88179db8972098f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 31aea1d19ed6da856bb5fc634a919819513cb6b2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="integrate-your-ilb-app-service-environment-with-an-application-gateway"></a>Integrieren Ihrer ILB-App Service-Umgebung in ein Application Gateway #
+# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrieren Ihrer ILB-App Service-Umgebung in ein Azure Application Gateway #
 
 Die [Azure App Service-Umgebung](./intro.md) ist eine Bereitstellung von Azure App Service in einem Subnetz im virtuellen Azure-Netzwerk eines Kunden. Sie kann für den App-Zugriff über einen öffentlichen oder privaten Endpunkt bereitgestellt werden. Die Bereitstellung der App Service-Umgebung mit einem privaten Endpunkt (d.h. mit einem internen Lastenausgleich) wird als ILB-App Service-Umgebung bezeichnet.  
 
-Azure Application Gateway ist eine virtuelle Anwendung, die Lastenausgleich in Schicht 7, SSL-Abladung und WAF-Schutz (Web Application Firewall) bietet. Es kann eine öffentliche IP-Adresse überwachen und Datenverkehr an Ihren Anwendungsendpunkt routen. 
+Web Application Firewalls tragen zum Schutz Ihrer Webanwendungen bei, indem sie eingehenden Webdatenverkehr untersuchen und die Einschleusung von SQL-Befehlen, websiteübergreifendes Scripting, das Hochladen von Schadsoftware sowie DDoS-Angriffe und andere Angriffe unterbinden. WAF überprüft auch zur Verhinderung von Datenverlust (Data Loss Prevention, DLP) die Antworten von den Back-End-Webservern. Sie erhalten ein WAF-Gerät im Azure-Marketplace, oder verwenden Sie das [Azure Application Gateway][appgw].
 
-In den folgenden Informationen wird die Vorgehensweise beim Integrieren eines WAF-konfigurierten Application Gateways mit einer App in einer ILB-App Service-Umgebung beschrieben.  
+Das Azure Application Gateway ist eine virtuelle Anwendung, die Lastenausgleich in Schicht 7, SSL-Abladung und WAF-Schutz (Web Application Firewall) bietet. Es kann eine öffentliche IP-Adresse überwachen und Datenverkehr an Ihren Anwendungsendpunkt routen. In den folgenden Informationen wird die Vorgehensweise beim Integrieren eines WAF-konfigurierten Application Gateways mit einer App in einer ILB-App Service-Umgebung beschrieben.  
 
 Die Integration des Application Gateways mit der ILB-App Service-Umgebung erfolgt auf App-Ebene. Wenn Sie das Application Gateway mit der ILB-App Service-Umgebung konfigurieren, erfolgt dies für bestimmte Apps in Ihrer ILB-App Service-Umgebung. Dieses Verfahren ermöglicht es, sichere mehrinstanzenfähige Anwendungen in einer einzelnen ILB App Service-Umgebung zu hosten.  
 
@@ -33,14 +33,14 @@ Die Integration des Application Gateways mit der ILB-App Service-Umgebung erfolg
 
 In dieser exemplarischen Vorgehensweise führen Sie folgende Aktionen aus:
 
-* Erstellen eines Anwendungsgateways
-* Konfigurieren des Application Gateways zum Verweisen auf eine App in Ihrer ILB-App Service-Umgebung
+* Erstellen eines Azure Application Gateways.
+* Konfigurieren des Application Gateways zum Verweisen auf eine App in Ihrer ILB-App Service-Umgebung.
 * Konfigurieren Ihrer App, sodass der benutzerdefinierte Domänenname anerkannt wird
 * Bearbeiten des öffentlichen DNS-Hostnamens, der auf Ihr Application Gateway verweist
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Folgendes, um Ihr Application Gateway mit der ILB-App Service-Umgebung zu integrieren:
+Sie benötigen Folgendes, um Ihr Application Gateway in die ILB-App Service-Umgebung zu integrieren:
 
 * Eine ILB-App Service-Umgebung
 * Eine App, die in der ILB-App Service-Umgebung ausgeführt wird
@@ -49,7 +49,7 @@ Sie benötigen Folgendes, um Ihr Application Gateway mit der ILB-App Service-Umg
 
     ![Beispielliste von IP-Adressen, die von der ILB-App Service-Umgebung verwendet werden][9]
     
-* Einen öffentlichen DNS-Namen, über den später auf Ihr Application Gateway verwiesen wird 
+* Einen öffentlichen DNS-Namen, über den später auf Ihr Application Gateway verwiesen wird. 
 
 Ausführliche Informationen zum Erstellen einer ILB-App Service-Umgebung finden Sie unter [Erstellen und Verwenden einer ILB-App Service-Umgebung][ilbase].
 

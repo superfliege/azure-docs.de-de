@@ -1,11 +1,11 @@
 ---
-title: "Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie eine Zugriffsüberprüfung für Mitglieder einer Gruppe oder für Benutzer mit Zugriff auf eine Anwendung in Azure Active Directory durchführen."
+title: Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung für Mitglieder einer Gruppe oder für Benutzer mit Zugriff auf eine Anwendung in Azure Active Directory durchführen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: de853d633aa65c9f08f5e28088d5240c2e4d7fa6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c4efdbf5a355ddc9a31091517665f91dd8e68ec0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD
 
-Mit Azure Active Directory (Azure AD) können Administratoren [eine Zugriffsüberprüfung erstellen](active-directory-azure-ad-controls-create-access-review.md). Diese kann für Mitglieder einer Gruppe oder Benutzer, die einer Anwendung zugewiesen sind, durchgeführt werden. Azure AD sendet Prüfern automatisch eine E-Mail, in der sie aufgefordert werden, den Zugriff zu überprüfen. Benutzern, die diese E-Mail nicht erhalten haben, können Sie die Anweisungen unter [So überprüfen Sie den Zugriff](active-directory-azure-ad-controls-perform-access-review.md) senden. Folgen Sie den Schritten in diesem Artikel, nachdem der Zeitraum der Zugriffsüberprüfung abgelaufen ist oder ein Administrator die Zugriffsüberprüfung beendet hat, um die Ergebnisse anzuzeigen und anzuwenden.
+Mit Azure Active Directory (Azure AD) können Administratoren [eine Zugriffsüberprüfung erstellen](active-directory-azure-ad-controls-create-access-review.md). Diese kann für Mitglieder einer Gruppe oder Benutzer, die einer Anwendung zugewiesen sind, durchgeführt werden. Azure AD sendet Prüfern automatisch eine E-Mail, in der sie aufgefordert werden, den Zugriff zu überprüfen. Benutzern, die diese E-Mail nicht erhalten haben, können Sie die Anweisungen unter [So überprüfen Sie den Zugriff](active-directory-azure-ad-controls-perform-access-review.md) senden. (Beachten Sie, dass Gäste, die als Prüfer zugewiesen wurden, die Einladung aber nicht angenommen haben, keine E-Mail zu Zugriffsüberprüfungen erhalten, da die Einladung zuerst akzeptiert werden muss, bevor Prüfer Überprüfungen vornehmen können.) Folgen Sie den Schritten in diesem Artikel, nachdem der Zeitraum der Zugriffsüberprüfung abgelaufen ist oder ein Administrator die Zugriffsüberprüfung beendet hat, um die Ergebnisse anzuzeigen und anzuwenden.
 
 ## <a name="view-an-access-review-in-the-azure-portal"></a>Anzeigen einer Zugriffsüberprüfung im Azure-Portal
 
@@ -35,13 +35,15 @@ Wenn die Überprüfung noch nicht am geplanten Enddatum angelangt ist, kann ein 
 
 ## <a name="apply-the-changes"></a>Übernehmen von Änderungen 
 
-Klicken Sie auf **Apply** (Übernehmen), nachdem eine Zugriffsüberprüfung beendet wurde, entweder weil das Enddatum erreicht wurde oder weil sie von einem Administrator manuell beendet wurde. Das Ergebnis der Überprüfung wird durch das Aktualisieren der Gruppe oder der Anwendung implementiert. Wenn der Zugriff eines Benutzers in der Überprüfung verweigert wurde, entfernt Azure AD deren Mitgliedschaft oder Anwendungszuweisung, wenn ein Administrator diese Option auswählt. 
+Nachdem eine Zugriffsüberprüfung abgeschlossen wurde, weil sie entweder das Enddatum erreicht hat oder von einem Administrator manuell angehalten wurde, und wenn für die Überprüfung keine automatische Anwendung konfiguriert wurde, können Sie **Anwenden** auswählen, um die Änderungen manuell anzuwenden. Das Ergebnis der Überprüfung wird durch das Aktualisieren der Gruppe oder der Anwendung implementiert. Wenn der Zugriff eines Benutzers in der Überprüfung verweigert wurde, entfernt Azure AD deren Mitgliedschaft oder Anwendungszuweisung, wenn ein Administrator diese Option auswählt. 
 
-Das Klicken auf **Übernehmen** hat keine Auswirkung auf eine Gruppe, die aus einem lokalen Verzeichnis stammt, oder auf eine dynamische Gruppe. Wenn Sie eine Gruppe ändern möchten, die aus einem lokalen Verzeichnis stammt, laden Sie die Ergebnisse herunter, und wenden Sie diese Änderungen auf die Darstellung der Gruppe im Verzeichnis an.
+Nachdem eine Zugriffsüberprüfung abgeschlossen wurde und wenn eine automatische Anwendung konfiguriert wurde, ändert sich der Status der Überprüfung von „Abgeschlossen“ zu verschiedenen Zwischenstadien und letztendlich in den Status „Angewendet“. Erwartungsgemäß werden abgelehnte Benutzer, sofern vorhanden, innerhalb weniger Minuten aus der Ressourcengruppen oder App-Zuweisung entfernt.
+
+Die konfigurierte automatische Anwendung einer Überprüfung oder die Auswahl von **Anwenden** haben keine Auswirkung auf eine Gruppe, die aus einem lokalen Verzeichnis stammt, oder auf eine dynamische Gruppe. Wenn Sie eine Gruppe ändern möchten, die aus einem lokalen Verzeichnis stammt, laden Sie die Ergebnisse herunter, und wenden Sie diese Änderungen auf die Darstellung der Gruppe im Verzeichnis an.
 
 ## <a name="download-the-results-of-the-review"></a>Herunterladen der Ergebnisse der Überprüfung
 
-Klicken Sie auf **Approvals** (Genehmigungen), um die Ergebnisse der Überprüfung abzurufen, und klicken Sie anschließend auf **Herunterladen**. Die CSV-Datei mit den Ergebnissen kann in Excel oder in anderen Programmen angezeigt werden, die CSV-Dateien öffnen können.
+Klicken Sie auf **Approvals** (Genehmigungen), um die Ergebnisse der Überprüfung abzurufen, und klicken Sie anschließend auf **Herunterladen**. Die CSV-Datei mit den Ergebnissen kann in Excel oder in anderen Programmen angezeigt werden, die mit UTF-8 codierte CSV-Dateien öffnen können.
 
 ## <a name="optional-delete-a-review"></a>Optional: Löschen einer Überprüfung
 Wenn Sie eine Überprüfung nicht mehr benötigen, können Sie diese löschen. Klicken Sie auf **Löschen**, um eine Überprüfung aus Azure AD zu entfernen.

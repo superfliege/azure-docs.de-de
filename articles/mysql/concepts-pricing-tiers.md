@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 9d4e42df3137108248a043bb0d9def181d766c7a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c9a74aa00ee263b8fb4e19b77ad5be418e31c7d6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL – Tarife
 
@@ -24,7 +24,7 @@ Sie können eine Azure Database for MySQL-Serverinstanz basierend auf drei unter
 | Computegeneration | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | V-Kerne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Arbeitsspeicher pro V-Kern | Grundwert | 2x Basic | 2x Allgemein |
-| Speichergröße | 5 GB bis 1 TB | 5 GB bis 1 TB | 5 GB bis 1 TB |
+| Speichergröße | 5 GB bis 1 TB | 5 GB bis 2 TB | 5 GB bis 2 TB |
 | Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
 | Aufbewahrungszeitraum von Datenbanksicherungen | 7 bis 35 Tage | 7 bis 35 Tage | 7 bis 35 Tage |
 
@@ -46,9 +46,9 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 |:---|:----------:|:--------------------:|
 | USA (Mitte) |  | X |
 | USA (Ost) | X | X |
-| USA (Ost) 2 | X |  |
+| USA (Ost) 2 | X | X |
 | USA Nord Mitte | X |  |
-| USA Süd Mitte | X |  |
+| USA Süd Mitte | X | X |
 | USA (Westen) | X | X |
 | USA, Westen 2 |  | X |
 | Kanada, Mitte | X | X |
@@ -63,8 +63,8 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 | Australien (Osten) |  | X |
 | Indien, Mitte | X |  |
 | Indien, Westen | X |  |
-| Japan, Osten | X |  |
-| Japan, Westen | X |  |
+| Japan, Osten | X | X |
+| Japan, Westen | X | X |
 | Korea, Süden |  | X |
 
 Je nach Tarif wird jeder V-Kern mit einer bestimmten Menge an Speicher bereitgestellt. Wenn Sie die Anzahl von V-Kernen für Ihren Server erhöhen oder verringern, wird der Speicher proportional dazu ebenfalls erhöht oder verringert. Im Tarif „Allgemein“ erhalten Sie im Vergleich zum Tarif „Basic“ die doppelte Menge an Speicher pro V-Kern. Im Tarif „Arbeitsspeicheroptimiert“ erhalten Sie im Vergleich zum Tarif „Allgemein“ die doppelte Menge an Speicher.
@@ -76,7 +76,7 @@ Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die fü
 |    | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
-| Speichergröße | 5 GB bis 1 TB | 5 GB bis 1 TB | 5 GB bis 1 TB |
+| Speichergröße | 5 GB bis 1 TB | 5 GB bis 2 TB | 5 GB bis 2 TB |
 | Speicherinkrementgröße | 1 GB | 1 GB | 1 GB |
 | IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS |
 

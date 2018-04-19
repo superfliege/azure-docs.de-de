@@ -1,10 +1,10 @@
 ---
-title: Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln | Microsoft-Dokumentation
+title: Steuern des Azure CDN-Zwischenspeicherverhaltens mit Cacheregeln | Microsoft-Dokumentation
 description: Anhand von CDN-Cacheregeln können Sie das Standardverhalten bei Cacheablauf sowohl global als auch mit Bedingungen (z.B. URL-Pfad und Dateierweiterungen) festlegen oder ändern.
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
-ms.author: v-deasim
-ms.openlocfilehash: 735978a0986b2b16b4f96faca78c06d798915002
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: rli; v-deasim
+ms.openlocfilehash: 60693b919fad6808bfe60b504d2a70caf80fbe48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln
+# <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Cacheregeln
 
 > [!NOTE] 
-> Cacheregeln sind nur für das **Azure CDN von Verizon Standard** und das **Azure CDN von Akamai Standard** verfügbar. Beim **Azure CDN von Verizon Premium** können Sie die [Azure CDN-Regel-Engine](cdn-rules-engine.md) im **Verwaltungsportal** verwenden, um von ähnlichen Funktionen zu profitieren.
+> Cacheregeln sind nur für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** verfügbar. Bei **Azure CDN Premium von Verizon** können Sie die [Azure CDN-Regel-Engine](cdn-rules-engine.md) im **Verwaltungsportal** verwenden, um eine ähnliche Funktionalität zu erzielen.
  
 Azure Content Delivery Network (CDN) bietet zwei Möglichkeiten, um zu steuern, wie Ihre Dateien zwischengespeichert werden: 
 

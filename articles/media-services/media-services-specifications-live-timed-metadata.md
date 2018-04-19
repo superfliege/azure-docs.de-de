@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: ae726b141f5f44b1eb0887cbd988881e41e163c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cf4541aebe0c735d66f42532c74e97bf9bbc4a5f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalisieren von zeitgesteuerten Metadaten beim Livestreaming
 
@@ -40,7 +40,7 @@ Die Schlüsselwörter "MUSS", "DARF NICHT", "ERFORDERLICH", "SOLL", "SOLL NICHT"
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Präsentationszeit | Die Zeit, zu der ein Ereignis einem Benutzer präsentiert wird. Diese Zeit stellt den Moment auf der Medienzeitachse dar, in dem ein Betrachter das Ereignis zu sehen bekommt. Beispielsweise ist die Präsentationszeit für einen SCTE-35-Befehl „splice_info()“ die „splice_time()“. |
 | Ankunftszeit      | Der Zeitpunkt, zu dem eine Ereignismeldung eintrifft. Diese Zeit unterscheidet sich normalerweise von der Präsentationszeit des Ereignisses, da Ereignismeldungen vor der Präsentationszeit des Ereignisses gesendet werden.                                     |
-| Sparsespur      | Medienspur, die nicht fortlaufend ist und mit einer übergeordneten Spur oder Steuerungsspur zeitsynchronisiert ist.                                                                                                                                    |
+| Platzsparende Spur      | Medienspur, die nicht fortlaufend ist und mit einer übergeordneten Spur oder Steuerungsspur zeitsynchronisiert ist.                                                                                                                                    |
 | Origin            | Der Azure Media-Streamingdienst                                                                                                                                                                                                |
 | Kanalsenke      | Der Azure Media-Livestreamingdienst                                                                                                                                                                                           |
 | HLS               | Apple HTTP Live Streaming-Protokoll                                                                                                                                                                                               |
@@ -134,7 +134,7 @@ Die stsd-Box SOLLTE eine MetaDataSampleEntry-Box mit einem gemäß [ISO-14496-12
 
 Fragmente von Sparsespuren bestehen aus einer Movie Fragment Box (‚moof‘) und einer Media Data Box (‚mdat‘).
 
-Die MovieFragmentBox (‚moof‘) MUSS eine **TrackFragmentExtendedHeaderBox (‚uuid‘)** gemäß Definition in [FMP4] mit den folgenden Feldern enthalten:
+Die MovieFragmentBox („moof“) MUSS ein Feld **TrackFragmentExtendedHeaderBox („uuid“)** gemäß Definition in [MS-SSTR] mit den folgenden Feldern enthalten:
 
 | **Feldname**         | **Feldtyp**          | **Erforderlich?** | **Beschreibung**                                                                               |
 |------------------------|-------------------------|---------------|-----------------------------------------------------------------------------------------------|
@@ -177,7 +177,7 @@ Ereignisdatenstrom-Daten sind für Media Services nicht transparent. Media Servi
 
 ## <a name="31-smooth-streaming-delivery"></a>3.1 Smooth Streaming-Zustellung
 
-Informationen zu den Details der Behandlung von Sparsespuren finden Sie in den Spezifikationen [FMP4] und [MS-SSTR].
+Informationen zur Behandlung von Sparsespuren finden Sie in [MS-SSTR].
 
 #### <a name="smooth-client-manifest-example"></a>Beispiel für ein Smooth-Clientmanifest
 ~~~ xml
@@ -407,13 +407,11 @@ Für Smooth-Datenstromerfassung ist es erforderlich, dass die Media Data Box (�
 
 **[AMF0]** [„Action Message Format AMF0“](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf) (Aktionsnachrichtenformat AMF0)
 
-**[FMP4]** [Spezifikation des IIS-Smooth Streaming-Datei/Drahtformats](https://microsoft.sharepoint.com/teams/mediaservices/_layouts/15/WopiFrame.aspx?sourcedoc=%7bAC5A31A4-E455-4000-96E1-AB17BD083144%7d&file=IIS%20Smooth%20Streaming%20File%20Format%20Specification%20-%20v%202%203%2001%20latest%20draft.docx&action=default)
-
-**[LIVE-FMP4]** [Azure Media Services Fragmented MP4 Live Ingest Specification](https://microsoft.sharepoint.com/teams/mediaservices/_layouts/15/WopiFrame.aspx?sourcedoc=%7b5CEE1122-AA28-4368-BC8E-9C0048BF1529%7d&file=AMS%20F-MP4%20Live%20Ingest%20Specification.docx&action=default) (Spezifikation der Live-Erfassung von fragmentiertem MP4 in Azure Media Services)
+**[LIVE-FMP4]** [Azure Media Services Fragmented MP4 Live Ingest Specification](https://docs.microsoft.com/en-us/azure/media-services/media-services-fmp4-live-ingest-overview) (Spezifikation der Live-Erfassung von fragmentiertem MP4 in Azure Media Services)
 
 **[ISO-14496-12]** ISO/IEC 14496-12: Part 12 ISO base media file format, Fourth Edition 2012-07-15 (Teil 12 ISO-Mediendatei-Basisformat, vierte Ausgabe, 15. Juli 2012).
 
-**[RTMP]** [„Adobe’s Real-Time Messaging Protocol“, December 21, 2012](http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/rtmp/pdf/rtmp_specification_1.0.pdf) (Adobe Echtzeit-Nachrichtenprotokoll, 21. Dezember 2012) 
+**[RTMP]** [„Adobe’s Real-Time Messaging Protocol“, December 21, 2012](https://www.adobe.com/devnet/rtmp.html) (Adobe Echtzeit-Nachrichtenprotokoll, 21. Dezember 2012) 
 
 ------------------------------------------
 

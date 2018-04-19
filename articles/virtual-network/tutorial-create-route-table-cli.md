@@ -7,6 +7,7 @@ author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
@@ -16,24 +17,23 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 871b562fa12b93d1b65e23ca58615d35ef6bb34b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eb4a28b5a57d7e301e800cd4ad87c56b7c5df6d2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Weiterleiten von Netzwerkdatenverkehr mithilfe der Azure-Befehlszeilenschnittstelle
 
-Standardmäßig leitet Azure automatisch den Datenverkehr aller Subnetze des virtuellen Netzwerks weiter. Sie können eigene Routen erstellen, um das Azure-Standardrouting außer Kraft zu setzen. Die Möglichkeit zum Erstellen von benutzerdefinierten Routen ist hilfreich, wenn Sie z.B. über ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) Datenverkehr zwischen Subnetzen weiterleiten möchten. In diesem Artikel wird Folgendes behandelt:
+Standardmäßig leitet Azure automatisch den Datenverkehr aller Subnetze des virtuellen Netzwerks weiter. Sie können eigene Routen erstellen, um das Azure-Standardrouting außer Kraft zu setzen. Die Möglichkeit zum Erstellen von benutzerdefinierten Routen ist beispielsweise hilfreich, wenn Sie über ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) Datenverkehr zwischen Subnetzen weiterleiten möchten. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen einer Routingtabelle
-> * Erstellen einer Route
-> * Erstellen eines virtuellen Netzwerks mit mehreren Subnetzen
-> * Zuordnen einer Routingtabelle zu einem Subnetz
-> * Erstellen einer NVA, die Datenverkehr weiterleitet
-> * Bereitstellen von virtuellen Computern (VM) in unterschiedlichen Subnetzen
-> * Weiterleiten von Datenverkehr aus einem Subnetz zu einem anderen über eine NVA
+* Erstellen einer Routingtabelle
+* Erstellen einer Route
+* Erstellen eines virtuellen Netzwerks mit mehreren Subnetzen
+* Zuordnen einer Routingtabelle zu einem Subnetz
+* Erstellen eines virtuellen Netzwerkgeräts, das Datenverkehr weiterleitet
+* Bereitstellen von VMs in unterschiedlichen Subnetzen
+* Weiterleiten von Datenverkehr aus einem Subnetz zu einem anderen über ein virtuelles Netzwerkgerät
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -116,7 +116,7 @@ az network vnet subnet update \
   --route-table myRouteTablePublic
 ```
 
-## <a name="create-an-nva"></a>Erstellen einer NVA
+## <a name="create-an-nva"></a>Erstellen eines virtuellen Netzwerkgeräts
 
 Eine NVA ist eine VM, die eine Netzwerkfunktion wie Routing, Firewall oder WAN-Optimierung ausführt.
 
@@ -144,7 +144,7 @@ az network nic update \
   --ip-forwarding true
 ```
 
-Das Betriebssystem der VM oder eine Anwendung, die auf dieser ausgeführt wird, muss ebenfalls Netzwerkdatenverkehr weiterleiten können. Aktivieren Sie die IP-Weiterleitung innerhalb des Betriebssystems der VM mit [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set):
+Das Betriebssystem der VM oder eine Anwendung, die auf der VM ausgeführt wird, muss ebenfalls Netzwerkdatenverkehr weiterleiten können. Aktivieren Sie die IP-Weiterleitung innerhalb des Betriebssystems der VM mit [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set):
 
 ```azurecli-interactive
 az vm extension set \
@@ -203,9 +203,9 @@ Die Erstellung des virtuellen Computers dauert einige Minuten. Nach dem Erstelle
   "resourceGroup": "myResourceGroup"
 }
 ```
-Notieren Sie sich **publicIpAddress**. Über diese Adresse wird in einem späteren Schritt über das Internet auf die VM zugegriffen.
+Notieren Sie sich **publicIpAddress**. Über diese Adresse wird in einem späteren Schritt über das Internet auf den virtuellen Computer zugegriffen.
 
-## <a name="route-traffic-through-an-nva"></a>Weiterleiten von Datenverkehr über eine NVA
+## <a name="route-traffic-through-an-nva"></a>Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
 Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit der *myVmPrivate*-VM. Ersetzen Sie *<publicIpAddress>* durch die öffentliche IP-Adresse der VM. Im Beispiel oben lautet die IP-Adresse *13.90.242.231*.
 
@@ -215,7 +215,7 @@ ssh azureuser@<publicIpAddress>
 
 Geben Sie bei entsprechender Aufforderung das Kennwort ein, das Sie unter [Erstellen von virtuellen Computern](#create-virtual-machines) ausgewählt haben.
 
-Installieren Sie mit dem folgenden Befehl Traceroute auf der *myVmPrivate*-VM:
+Installieren Sie mit dem folgenden Befehl die Routenverfolgung auf der *myVmPrivate*-VM:
 
 ```bash 
 sudo apt-get install traceroute
@@ -234,7 +234,7 @@ traceroute to myVmPublic (10.0.0.4), 30 hops max, 60 byte packets
 1  10.0.0.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
 
-Beachten Sie, dass Datenverkehr direkt von der *myVmPrivate*-VM zur *myVmPublic*-VM weitergeleitet wird. Azure-Standardrouten leiten Datenverkehr direkt zwischen Subnetzen weiter. 
+Wie Sie sehen, wird Datenverkehr direkt von der VM *myVmPrivate* zur VM *myVmPublic* weitergeleitet. Azure-Standardrouten leiten Datenverkehr direkt zwischen Subnetzen weiter. 
 
 Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung zwischen der *myVmPublic*-VM und der *myVmPrivate*-VM:
 
@@ -242,7 +242,7 @@ Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung zwischen der *myVmPublic
 ssh azureuser@myVmPublic
 ```
 
-Installieren Sie mit dem folgenden Befehl Traceroute auf der *myVmPublic*-VM:
+Installieren Sie mit dem folgenden Befehl die Routenverfolgung auf der *myVmPublic*-VM:
 
 ```bash 
 sudo apt-get install traceroute
@@ -261,7 +261,7 @@ traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 1  10.0.2.4 (10.0.2.4)  0.781 ms  0.780 ms  0.775 ms
 2  10.0.1.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
-Wie Sie sehen können, ist der erste Hop 10.0.2.4, die private IP-Adresse der NVA. Der zweite Hop ist 10.0.1.4, die private IP-Adresse der *myVmPrivate*-VM. Die Route, die der Routingtabelle *myRouteTablePublic* hinzugefügt und dem Subnetz *Public* zugeordnet wurde, hat bewirkt, dass Azure Datenverkehr über das virtuelle Netzwerkgerät weiterleitet und nicht direkt an das Subnetz *Private*.
+Wie Sie sehen können, ist der erste Hop 10.0.2.4, die private IP-Adresse des virtuellen Netzwerksgeräts. Der zweite Hop ist 10.0.1.4, die private IP-Adresse der VM *myVmPrivate*. Die Route, die der Routingtabelle *myRouteTablePublic* hinzugefügt und dem Subnetz *Public* zugeordnet wurde, hat bewirkt, dass Azure Datenverkehr über das virtuelle Netzwerkgerät weiterleitet und nicht direkt an das Subnetz *Private*.
 
 Schließen Sie die SSH-Sitzungen zu *myVmPublic*- und *myVmPrivate*-VM.
 
@@ -275,9 +275,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie eine Routingtabelle erstellt und einem Subnetz zugeordnet. Sie haben eine einfache NVA erstellt, die Datenverkehr von einem öffentlichen Subnetz an ein privates Subnetz weiterleitet. Stellen Sie eine Vielzahl von vorkonfigurierten NVAs, die Netzwerkfunktionen wie z.B. Firewall- und WAN-Optimierung ausführen, vom [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) aus bereit. Vor der Bereitstellung von Routingtabellen für die Produktion sollten Sie sich gründlich mit dem [Routing in Azure](virtual-networks-udr-overview.md), [Verwalten von Routingtabellen](manage-route-table.md) und den [Grenzen von Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) vertraut machen.
+In diesem Artikel haben Sie eine Routingtabelle erstellt und einem Subnetz zugeordnet. Sie haben ein einfaches virtuelles Netzwerkgerät erstellt, das Datenverkehr von einem öffentlichen Subnetz an ein privates Subnetz weiterleitet. Über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) können Sie eine Vielzahl von vorkonfigurierten virtuellen Netzwerkgeräten bereitstellen, die Netzwerkfunktionen wie Firewall und WAN-Optimierung ausführen. Weitere Informationen zum Routing finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md) und [Erstellen, Ändern oder Löschen einer Routingtabelle](manage-route-table.md).
 
-Sie können zwar in einem virtuellen Netzwerk viele Azure-Ressourcen bereitstellen, für einige Azure-PaaS-Dienste können jedoch keine Ressourcen in einem virtuellen Netzwerk bereitgestellt werden. Allerdings können Sie den Zugriff auf die Ressourcen einiger Azure-PaaS-Dienste nach wie vor auf den Datenverkehr nur eines Subnetzes eines virtuellen Netzwerks beschränken. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Netzwerkzugriff auf Azure-PaaS-Ressourcen beschränken.
-
-> [!div class="nextstepaction"]
-> [Beschränken des Netzwerkzugriffs auf PaaS-Ressourcen](tutorial-restrict-network-access-to-resources-cli.md)
+Sie können zwar in einem virtuellen Netzwerk viele Azure-Ressourcen bereitstellen, für einige Azure-PaaS-Dienste können jedoch keine Ressourcen in einem virtuellen Netzwerk bereitgestellt werden. Allerdings können Sie den Zugriff auf die Ressourcen einiger Azure-PaaS-Dienste nach wie vor auf den Datenverkehr nur eines Subnetzes eines virtuellen Netzwerks beschränken. Informationen zur Vorgehensweise finden Sie unter [Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit virtuellen Netzwerkdienstendpunkten mithilfe der Azure CLI](tutorial-restrict-network-access-to-resources-cli.md).
