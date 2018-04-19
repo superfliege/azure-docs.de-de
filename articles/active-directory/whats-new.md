@@ -206,7 +206,7 @@ Weitere Informationen finden Sie unter [Optionale Ansprüche in Azure AD](https:
  
 Die Azure AD-Dokumentation wurde um Unterstützung für PKCE ergänzt, das eine sicherere Kommunikation beim Gewährungsflow des OAuth 2.0-Autorisierungscodes ermöglicht.  An v1.0- und v2.0-Endpunkten werden sowohl S256- als auch Klartext-Abfragecodes unterstützt. 
 
-Weitere Informationen finden Sie unter „Anfordern eines Autorisierungscodes“[](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code). 
+Weitere Informationen finden Sie unter, Anfordern eines Autorisierungscodes[](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code). 
 
  
 ---
@@ -594,7 +594,7 @@ Die Browsererweiterung „Meine Apps“ ist jetzt über ein nützliches Tool ver
 - Die Möglichkeit, sich direkt bei Apps per Kennwort-SSO über die Anmeldeseite der App anzumelden
 - Starten einer App mithilfe der Schnellsuchfunktion
 - Verknüpfungen für zuletzt verwendete Apps über die Erweiterung
-- Die Erweiterung ist für Edge, Chrome und Firefox verfügbar.
+- Die Erweiterung ist für Microsoft Edge, Chrome und Firefox verfügbar.
  
 Weitere Informationen finden Sie unter [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension).
 
