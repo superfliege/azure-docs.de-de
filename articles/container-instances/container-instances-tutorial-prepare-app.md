@@ -116,7 +116,7 @@ $ docker run -d -p 8080:80 aci-tutorial-app
 a2e3e4435db58ab0c664ce521854c2e1a1bda88c9cf2fcff46aedf48df86cccf
 ```
 
-Navigieren Sie in Ihrem Browser jetzt zu „http://localhost:8080“, um sicherzustellen, dass der Container ausgeführt wird. Es wird eine Webseite angezeigt, die in etwa wie folgt aussieht:
+Navigieren Sie in Ihrem Browser jetzt zu http://localhost:8080 , um sicherzustellen, dass der Container ausgeführt wird. Es wird eine Webseite angezeigt, die in etwa wie folgt aussieht:
 
 ![Lokales Ausführen der App im Browser][aci-tutorial-app-local]
 

@@ -1,38 +1,38 @@
 ---
 title: 'Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen: Azure CLI | Microsoft Docs'
-description: Erfahren Sie, wie Sie den Netzwerkzugriff auf Azure-Ressourcen wie Azure Storage und die Azure SQL-Datenbank mit virtuellen Netzwerkdienstendpunkten mithilfe der Azure CLI einschränken können.
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure CLI den Netzwerkzugriff auf Azure-Ressourcen wie Azure Storage und Azure SQL-Datenbank mit virtuellen Netzwerkdienstendpunkten einschränken können.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: ''
+ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 5c0c6a802c931b71f5be8b01c610cf0810b0b4d1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f357861a7a44b249e06f091a8693b7f2d8dd5178
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit virtuellen Netzwerkdienstendpunkten mithilfe der Azure CLI
 
 Virtuelle Netzwerkdienstendpunkte ermöglichen es Ihnen, den Netzwerkzugriff auf einige Azure-Dienstressourcen auf ein Subnetz eines virtuellen Netzwerks einzuschränken. Sie können auch den Internetzugriff auf die Ressourcen entfernen. Dienstendpunkte ermöglichen eine direkte Verbindung zwischen Ihrem virtuellen Netzwerk und unterstützten Azure-Diensten, sodass Sie mithilfe des privaten Adressraums Ihres virtuellen Netzwerks auf die Azure-Dienste zugreifen können. Datenverkehr, der über Dienstendpunkte für Azure-Ressourcen bestimmt ist, verbleibt immer im Microsoft Azure-Backbonenetzwerk. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen eines virtuellen Netzwerks mit einem Subnetz
-> * Hinzufügen eines Subnetzes und Aktivieren eines Dienstendpunkts
-> * Erstellen einer Azure-Ressource und Zulassen des Netzwerkzugriffs darauf ausschließlich aus einem Subnetz
-> * Bereitstellen eines virtuellen Computers für jedes Subnetz
-> * Bestätigen des Zugriffs auf eine Ressource aus einem Subnetz
-> * Bestätigen, dass der Zugriff auf eine Ressource aus einem Subnetz und dem Internet verweigert wird
+* Erstellen eines virtuellen Netzwerks mit einem Subnetz
+* Hinzufügen eines Subnetzes und Aktivieren eines Dienstendpunkts
+* Erstellen einer Azure-Ressource und Zulassen des Netzwerkzugriffs darauf ausschließlich aus einem Subnetz
+* Bereitstellen eines virtuellen Computers für jedes Subnetz
+* Bestätigen des Zugriffs auf eine Ressource aus einem Subnetz
+* Bestätigen, dass der Zugriff auf eine Ressource aus einem Subnetz und dem Internet verweigert wird
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -82,7 +82,7 @@ az network vnet subnet create \
   --service-endpoints Microsoft.Storage
 ```
 
-## <a name="restrict-network-access-to-and-from-subnet"></a>Einschränken des Netzwerkzugriffs auf das und aus dem Subnetz
+## <a name="restrict-network-access-for-a-subnet"></a>Einschränken des Netzwerkzugriffs für ein Subnetz
 
 Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) eine Netzwerksicherheitsgruppe. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens *myNsgPrivate* erstellt.
 
@@ -151,9 +151,9 @@ az network nsg rule create \
 
 ## <a name="restrict-network-access-to-a-resource"></a>Einschränken des Netzwerkzugriffs auf eine Ressource
 
-Die Schritte, die erforderlich sind, um den Netzwerkzugriff auf Ressourcen einzuschränken, die durch Azure-Dienste erstellt wurden und für Dienstendpunkte aktiviert sind, sind je nach Dienst unterschiedlich. Informationen zu den Schritten für einzelne Dienste finden Sie in der Dokumentation des jeweiligen Diensts. Der Rest dieses Artikels enthält als Beispiel Schritte zum Einschränken des Netzwerkzugriffs für ein Azure Storage-Konto.
+Die Schritte, die erforderlich sind, um den Netzwerkzugriff auf Ressourcen einzuschränken, die durch Azure-Dienste erstellt und für Dienstendpunkte aktiviert wurden, sind je nach Dienst unterschiedlich. Informationen zu den Schritten für einzelne Dienste finden Sie in der Dokumentation des jeweiligen Diensts. Der Rest dieses Artikels enthält als Beispiel Schritte zum Einschränken des Netzwerkzugriffs für ein Azure Storage-Konto.
 
-### <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Erstellen Sie ein Azure-Speicherkonto mithilfe von [az storage account create](/cli/azure/storage/account#az_storage_account_create). Ersetzen Sie `<replace-with-your-unique-storage-account-name>` durch einen Namen, der an allen Azure-Standorten eindeutig, zwischen 3 und 24 Zeichen lang ist und nur aus Ziffern und Kleinbuchstaben besteht.
 
@@ -311,7 +311,7 @@ Erstellen Sie ein Verzeichnis für einen Bereitstellungspunkt:
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Versuchen Sie, die Azure-Dateifreigabe für das Verzeichnis bereitzustellen, das Sie erstellt haben. In diesem Tutorial wird davon ausgegangen, dass Sie die neueste Version von Ubuntu bereitgestellt haben. Bei Verwendung von früheren Versionen von Ubuntu finden Sie unter [Bereitstellen unter Linux](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zusätzliche Anweisungen zum Bereitstellen von Dateifreigaben. Ersetzen Sie vor dem Ausführen des folgenden Befehls `<storage-account-name>` durch den Kontonamen und `<storage-account-key>` durch den Schlüssel, den Sie unter [Erstellen eines Speicherkontos](#create-a-storage-account) abgerufen haben:
+Versuchen Sie, die Azure-Dateifreigabe für das Verzeichnis bereitzustellen, das Sie erstellt haben. In diesem Artikel wird davon ausgegangen, dass Sie die neueste Version von Ubuntu bereitgestellt haben. Bei Verwendung von früheren Versionen von Ubuntu finden Sie unter [Bereitstellen unter Linux](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zusätzliche Anweisungen zum Bereitstellen von Dateifreigaben. Ersetzen Sie vor dem Ausführen des folgenden Befehls `<storage-account-name>` durch den Kontonamen und `<storage-account-key>` durch den Schlüssel, den Sie unter [Erstellen eines Speicherkontos](#create-a-storage-account) abgerufen haben:
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -341,9 +341,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen Dienstendpunkt für ein Subnetz eines virtuellen Netzwerks aktiviert. Sie haben erfahren, dass Dienstendpunkte für Ressourcen aktiviert werden können, die mit mehreren Azure-Diensten bereitgestellt werden. Sie haben ein Azure Storage-Konto erstellt und den Netzwerkzugriff auf das Speicherkonto ausschließlich auf Ressourcen im Subnetz eines virtuellen Netzwerks eingeschränkt. Bevor Sie Dienstendpunkte in virtuellen Produktionsnetzwerken erstellen, sollten Sie sich unbedingt gründlich mit [ Dienstendpunkten](virtual-network-service-endpoints-overview.md) vertraut machen.
+In diesem Artikel haben Sie einen Dienstendpunkt für ein Subnetz eines virtuellen Netzwerks aktiviert. Sie haben erfahren, dass Dienstendpunkte für Ressourcen aktiviert werden können, die mit mehreren Azure-Diensten bereitgestellt werden. Sie haben ein Azure Storage-Konto erstellt und den Netzwerkzugriff auf das Speicherkonto ausschließlich auf Ressourcen im Subnetz eines virtuellen Netzwerks eingeschränkt. Weitere Informationen zu Dienstendpunkten finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](virtual-network-service-endpoints-overview.md) und [Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md).
 
-Wenn Sie mehrere virtuelle Netzwerke in Ihrem Konto verwenden, können Sie zwei virtuelle Netzwerke miteinander verbinden, damit die Ressourcen in jedem virtuellen Netzwerk miteinander kommunizieren können. Im nächsten Tutorial erfahren Sie, wie virtuelle Netzwerke verbunden werden.
-
-> [!div class="nextstepaction"]
-> [Verbinden virtueller Netzwerke](./tutorial-connect-virtual-networks-cli.md)
+Wenn Sie mehrere virtuelle Netzwerke in Ihrem Konto verwenden, können Sie zwei virtuelle Netzwerke miteinander verbinden, damit die Ressourcen in jedem virtuellen Netzwerk miteinander kommunizieren können. Informationen zur Vorgehensweise finden Sie unter [Herstellen von Verbindungen zwischen virtuellen Netzwerken](tutorial-connect-virtual-networks-cli.md).

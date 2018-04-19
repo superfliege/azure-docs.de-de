@@ -1,6 +1,6 @@
 ---
-title: Überwachen von HBase mit der Operations Management Suite (OMS) – Azure HDInsight HBase | Microsoft-Dokumentation
-description: Verwenden Sie die OMS und Azure Log Analytics zur Überwachung von HDInsight HBase-Clustern.
+title: Überwachen von HBase mit Azure Log Analytics – Azure HDInsight | Microsoft-Dokumentation
+description: Verwenden Sie Azure Log Analytics zum Überwachen von HDInsight HBase-Clustern.
 services: hdinsight
 documentationcenter: ''
 tags: azure-portal
@@ -16,23 +16,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: f78d570cfa8b040cd7673a5e14e6a992511f60bb
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3746713cdadff0a4c6f4fe25d278e8d78555f9d6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="monitor-hbase-with-operations-management-suite-oms"></a>Überwachen von HBase mit der Operations Management Suite (OMS)
+# <a name="monitor-hbase-with-log-analytics"></a>Überwachen von HBase mit Log Analytics
 
 Bei der HDInsight HBase-Überwachung wird Azure Log Analytics verwendet, um HDInsight HBase-Leistungsmetriken Ihrer HDInsight-Clusterknoten zu erfassen. Die Überwachung bietet HBase-spezifische Visualisierungen und Dashboards sowie Tools zum Durchsuchen der Metriken und ermöglicht das Erstellen benutzerdefinierter Überwachungsregeln und -benachrichtigungen. Sie können die Metriken für mehrere HDInsight HBase-Cluster und über mehrere Azure-Abonnements hinweg überwachen.
 
-Log Analytics ist ein Dienst in [Operations Management Suite (OMS)](../../operations-management-suite/operations-management-suite-overview.md), der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Log Analytics sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen.
+Log Analytics ist ein Dienst in [Azure](../../operations-management-suite/operations-management-suite-overview.md), der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Log Analytics sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen.
 
-[Log Analytics-Verwaltungslösungen](../../log-analytics/log-analytics-add-solutions.md) erweitern den Funktionsumfang der OMS und stellen zusätzliche Daten und Analysetools bereit. Bei den Log Analytics-Verwaltungslösungen handelt es sich um eine Sammlung von Logik-, Visualisierungs- und Datenerfassungsregeln für einen bestimmten Bereich. Eine Lösung kann auch neue Datensatztypen definieren, die erfasst und mit der Protokollsuche oder mithilfe neuer Features der Benutzeroberfläche analysiert werden können.
+[Log Analytics-Verwaltungslösungen](../../log-analytics/log-analytics-add-solutions.md) erweitern den Funktionsumfang von Log Analytics und stellen zusätzliche Daten und Analysetools bereit. Bei den Log Analytics-Verwaltungslösungen handelt es sich um eine Sammlung von Logik-, Visualisierungs- und Datenerfassungsregeln für einen bestimmten Bereich. Eine Lösung kann auch neue Datensatztypen definieren, die erfasst und mit der Protokollsuche oder mithilfe neuer Features der Benutzeroberfläche analysiert werden können.
 
 [Insight & Analytics](https://azure.microsoft.com/pricing/details/insight-analytics/) basiert auf der Log Analytics-Plattform. Sie können entweder die Log Analytics-Funktionen nutzen (in diesem Fall basiert die Abrechnung auf den vom Dienst erfassten GB) oder Ihren Arbeitsbereich auf den Tarif „Insight & Analytics“ umstellen (in diesem Fall basiert die Abrechnung auf den vom Dienst verwalteten Knoten). Insight & Analytics bietet im Vergleich zu Log Analytics mehr Funktionen. Die HBase-Überwachungslösung ist mit Log Analytics oder mit Insight & Analytics erhältlich.
 
-Wenn Sie eine HDInsight HBase-Überwachungslösung bereitstellen, erstellen Sie einen OMS-Arbeitsbereich. Jeder Arbeitsbereich ist eine eigene Log Analytics-Umgebung mit eigenem Datenrepository, eigenen Datenquellen und eigenen Lösungen. Sie können in Ihrem Abonnement mehrere Arbeitsbereiche erstellen, um mehrere Umgebungen zu unterstützen (beispielsweise eine Produktions- und eine Testumgebung).
+Wenn Sie eine HDInsight HBase-Überwachungslösung bereitstellen, erstellen Sie einen Log Analytics-Arbeitsbereich. Jeder Arbeitsbereich ist eine eigene Log Analytics-Umgebung mit eigenem Datenrepository, eigenen Datenquellen und eigenen Lösungen. Sie können in Ihrem Abonnement mehrere Arbeitsbereiche erstellen, um mehrere Umgebungen zu unterstützen (beispielsweise eine Produktions- und eine Testumgebung).
 
 ## <a name="provision-hdinsight-hbase-monitoring"></a>Bereitstellen der HDInsight HBase-Überwachung
 
@@ -50,7 +50,7 @@ Wenn Sie eine HDInsight HBase-Überwachungslösung bereitstellen, erstellen Sie 
 
     ![Bereich „Verwaltungslösungen“](./media/apache-hbase-monitor-with-oms/hbase-solution.png)  
 6. Überprüfen Sie im Bereich „Verwaltungslösung“ die Informationen zur Verwaltungslösung, und klicken Sie anschließend auf **Erstellen**. 
-7. Wählen Sie im Bereich *Name der Verwaltungslösung* einen vorhandenen Arbeitsbereich aus, um ihn der Verwaltungslösung zuzuordnen, oder erstellen Sie einen neuen OMS-Arbeitsbereich, und wählen Sie ihn aus.
+7. Wählen Sie im Bereich *Name der Verwaltungslösung* einen vorhandenen Arbeitsbereich aus, um ihn der Verwaltungslösung zuzuordnen, oder erstellen Sie einen neuen Log Analytics-Arbeitsbereich, und wählen Sie ihn aus.
 8. Ändern Sie ggf. die Arbeitsbereichseinstellungen für das Azure-Abonnement, die Ressourcengruppe und den Standort. 
     ![Lösungsarbeitsbereich](./media/apache-hbase-monitor-with-oms/solution-workspace.png)  
 9. Klicken Sie auf **Erstellen**.  
@@ -68,9 +68,9 @@ Wenn Sie eine HDInsight HBase-Überwachungslösung bereitstellen, erstellen Sie 
 
 Um die von der HDInsight HBase-Überwachung bereitgestellten Tools verwenden zu können, müssen Sie Ihren Cluster so konfigurieren, dass er die Metriken vom entsprechenden Regionsserver sowie von den Haupt- und ZooKeeper-Knoten an Log Analytics überträgt. Hierzu wird eine Skriptaktion für Ihren HDInsight HBase-Cluster ausgeführt.
 
-### <a name="get-oms-workspace-id-and-workspace-key"></a>Abrufen von OMS-Arbeitsbereichs-ID und Arbeitsbereichsschlüssel
+### <a name="get-log-analytics-workspace-id-and-workspace-key"></a>Abrufen von Log Analytics-Arbeitsbereichs-ID und Arbeitsbereichsschlüssel
 
-Sie benötigen die OMS-Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel, damit sich die Knoten in Ihrem Cluster bei Log Analytics authentifizieren können. Diese Werte erhalten Sie wie folgt:
+Sie benötigen die Log Analytics-Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel, damit sich die Knoten in Ihrem Cluster bei Log Analytics authentifizieren können. Diese Werte erhalten Sie wie folgt:
 
 1. Klicken Sie im Azure-Portal im Bereich Ihrer HBase-Überwachung auf „Übersicht“.
 
@@ -146,5 +146,5 @@ Einige Minuten nach Abschluss der Skriptaktion sollten in der Überwachungslösu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Arbeiten mit Warnungsregeln in Log Analytics](../../log-analytics/log-analytics-alerts-creating.md)
+* [Erstellen von Warnungen in Log Analytics](../../log-analytics/log-analytics-alerts-creating.md)
 * [Suchen von Daten mit Protokollsuchen in Log Analytics](../../log-analytics/log-analytics-log-searches.md)

@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/03/2018
 ms.author: bonova
-ms.openlocfilehash: 2d07d58114a4d89f40a4ea9e388c58f58494766c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ffe25e911273b93f1c16224d30fea5c920425f03
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Was ist eine verwaltete Instanz (Vorschauversion)?
 
@@ -69,6 +69,23 @@ In der folgenden Tabelle sind verschiedene Eigenschaften aufgeführt, auf die ü
 
 ![Einmaliges Anmelden](./media/sql-database-managed-instance/sso.png) 
 
+## <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
+
+Das auf virtuellen Kernen basierende Einkaufsmodell bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen skalieren. Das Modell mit virtuellen Kernen ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zudem Einsparungen von bis zu 30 Prozent.
+
+Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten.
+- Logische CPUs der Generation 4 basieren auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz.
+- Logische CPUs der Generation 5 basieren auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) mit 2,3 GHz.
+
+Die folgende Tabelle bietet Informationen dazu, wie Sie die optimale Konfiguration Ihrer Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen auswählen.
+
+||Gen 4|Gen 5|
+|----|------|-----|
+|Hardware|Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern|Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle eNVM-SSD, virtueller Kern =1 LP (Hyperthread)|
+|Leistungsstufen|8, 16, 24 virtuelle Kerne|8, 16, 24, 32, 40 virtuelle Kerne|
+|Arbeitsspeicher|7 GB pro virtuellem Kern|5,5 GB pro virtuellem Kern|
+||||
+
 ## <a name="managed-instance-service-tier"></a>Dienstebene für eine verwaltete Instanz
 
 Eine verwaltete Instanz ist zunächst nur auf einer Dienstebene verfügbar, und zwar der universellen Dienstebene, die für Anwendungen mit typischen Anforderungen an die Verfügbarkeit und allgemeine E/A-Latenz konzipiert ist.
@@ -89,11 +106,11 @@ Nachfolgend sind die wichtigsten Features der universellen Dienstebene aufgefüh
 
 |Feature | BESCHREIBUNG|
 |---|---|
-| Anzahl der virtuellen Kerne* | 8, 16, 24|
+| Anzahl der virtuellen Kerne* | 8, 16, 24 (Gen 4)<br>8, 16, 24, 32, 40 (Gen 5)|
 | SQL Server-Version/-Build | SQL Server (neueste verfügbare Version) |
 | Min. Speichergröße | 32 GB |
 | Max. Speichergröße | 8 TB |
-| Max. Speicherkapazität pro Datenbank | 4 TB |
+| Max. Speicherkapazität pro Datenbank | 8 TB |
 | Erwartete Speicher-IOPS | 500–7.500 IOPS pro Datendatei (abhängig von der jeweiligen Datendatei). Siehe [Storage Premium](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes). |
 | Anzahl der Datendateien (ROWS) pro Datenbank | Mehrere | 
 | Anzahl der Protokolldateien (LOG) pro Datenbank | 1 | 
@@ -106,7 +123,7 @@ Nachfolgend sind die wichtigsten Features der universellen Dienstebene aufgefüh
 | Portal-Unterstützung | Ja|
 |||
 
-\* Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten. Logische CPUs der Generation 4 basieren auf Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz und logische CPUs der Generation 5 auf Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz.  
+\* Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten. Logische CPUs der Generation 4 basieren auf Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz und logische CPUs der Generation 5 auf Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz. 
 
 ## <a name="advanced-security-and-compliance"></a>Erweiterte Sicherheit und Konformität 
 
@@ -152,7 +169,7 @@ SQL-Datenbank ermöglicht über die [Azure Active Directory-Integration](sql-dat
 Die SQL-Datenbank-Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL-Datenbank unterstützt zwei Arten der Authentifizierung:  
 
 - SQL-Authentifizierung, bei der ein Benutzername und ein Kennwort verwendet werden
-- Azure Active Directory-Authentifizierung, bei der von Azure Active Directory verwaltete Identitäten verwendet werden und die für verwaltete und integrierte Domänen unterstützt wird  
+- Azure Active Directory-Authentifizierung, bei der von Azure Active Directory verwaltete Identitäten verwendet werden und die für verwaltete und integrierte Domänen unterstützt wird 
 
 ### <a name="authorization"></a>Autorisierung
 
@@ -160,11 +177,11 @@ Autorisierung bezieht sich darauf, welche Aufgaben ein Benutzer innerhalb einer 
 
 ## <a name="database-migration"></a>Datenbankmigration 
 
-Verwaltete Instanzen zielen auf Benutzerszenarien mit einer Massenmigration der Datenbank von lokalen oder IaaS-Datenbankimplementierungen ab.  Verwaltete Instanzen unterstützen mehrere Optionen zur Datenbankmigration: 
+Verwaltete Instanzen zielen auf Benutzerszenarien mit einer Massenmigration der Datenbank von lokalen oder IaaS-Datenbankimplementierungen ab. Verwaltete Instanzen unterstützen mehrere Optionen zur Datenbankmigration: 
 
 ### <a name="data-migration-service"></a>Data Migration Service
 
-Azure Database Migration Service ist ein vollständig verwalteter Dienst, der die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen mit minimaler Downtime ermöglicht.   Dieser Dienst optimiert die Aufgaben, die erforderlich sind, um bestehende Drittanbieter- und SQL Server-Datenbanken in Azure zu verschieben. Zu den Bereitstellungsoptionen in der Public Preview-Phase gehören Azure SQL-Datenbank, verwaltete Instanz und SQL Server auf einem virtuellen Azure-Computer. Siehe [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](https://aka.ms/migratetoMIusingDMS).  
+Azure Database Migration Service ist ein vollständig verwalteter Dienst, der die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen mit minimaler Downtime ermöglicht. Dieser Dienst optimiert die Aufgaben, die erforderlich sind, um bestehende Drittanbieter- und SQL Server-Datenbanken in Azure zu verschieben. Zu den Bereitstellungsoptionen in der Public Preview-Phase gehören Azure SQL-Datenbank, verwaltete Instanz und SQL Server auf einem virtuellen Azure-Computer. Siehe [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](https://aka.ms/migratetoMIusingDMS). 
 
 ### <a name="backup-and-restore"></a>Sichern und Wiederherstellen  
 
@@ -174,7 +191,7 @@ Beim Migrationsansatz werden SQL-Sicherungen in Azure Blob Storage genutzt. In A
 
 Bis zur allgemeinen Verfügbarkeit des Diensts wird für verwaltete Instanzen in mehreren Stufen eine nahezu 100%ige Oberflächenkompatibilität mit der lokalen SQL Server-Version angestrebt. Eine Liste der Features und einen Funktionsvergleich finden Sie unter [Allgemeine SQL-Features](sql-database-features.md).
  
-Verwaltete Instanzen unterstützen die Abwärtskompatibilität mit SQL 2008-Datenbanken.  Die direkte Migration von SQL 2005-Datenbankservern wird unterstützt, der Kompatibilitätsgrad für migrierte SQL 2005-Datenbanken wird auf SQL 2008 aktualisiert. 
+Verwaltete Instanzen unterstützen die Abwärtskompatibilität mit SQL 2008-Datenbanken. Die direkte Migration von SQL 2005-Datenbankservern wird unterstützt, der Kompatibilitätsgrad für migrierte SQL 2005-Datenbanken wird auf SQL 2008 aktualisiert. 
  
 In der folgenden Abbildung ist die Oberflächenkompatibilität in einer verwalteten Instanz aufgeführt:  
 
@@ -182,7 +199,7 @@ In der folgenden Abbildung ist die Oberflächenkompatibilität in einer verwalte
 
 ### <a name="key-differences-between-sql-server-on-premises-and-managed-instance"></a>Hauptunterschiede zwischen einer lokalen SQL Server-Instanz und einer verwalteten Instanz 
 
-Die verwaltete Instanz ist in der Cloud immer auf dem neuesten Stand, d.h., einige Features in der lokalen SQL Server-Instanz sind möglicherweise entweder veraltet oder außer Kraft gesetzt oder weisen Alternativen auf.  In spezifischen Fällen müssen Tools erkennen, dass ein bestimmtes Feature auf leicht abweichende Weise ausgeführt wird oder dass ein Dienst in einer Umgebung nicht ausgeführt wird, die Sie nicht vollständig steuern können: 
+Die verwaltete Instanz ist in der Cloud immer auf dem neuesten Stand, d.h., einige Features in der lokalen SQL Server-Instanz sind möglicherweise entweder veraltet oder außer Kraft gesetzt oder weisen Alternativen auf. In spezifischen Fällen müssen Tools erkennen, dass ein bestimmtes Feature auf leicht abweichende Weise ausgeführt wird oder dass ein Dienst in einer Umgebung nicht ausgeführt wird, die Sie nicht vollständig steuern können: 
 
 - Die Hochverfügbarkeit ist integriert und vorkonfiguriert. Die Features der Always On-Hochverfügbarkeit werden nicht auf dieselbe Weise verfügbar gemacht wie in SQL-IaaS-Implementierungen. 
 - Automatisierte Sicherungen und Point-in-Time-Wiederherstellung. Kunden können `copy-only`-Sicherungen initiieren, die die automatische Sicherungskette nicht beeinträchtigen. 
@@ -192,7 +209,7 @@ Die verwaltete Instanz ist in der Cloud immer auf dem neuesten Stand, d.h., eini
  
 ### <a name="managed-instance-administration-features"></a>Features zur Verwaltung einer verwalteten Instanz  
 
-In einer verwalteten Instanz können Systemadministratoren sich auf die für das Unternehmen wichtigsten Aspekte konzentrieren. Viele durch Systemadministratoren oder DBA durchgeführte Aktivitäten sind nicht erforderlich oder lassen sich einfach ausführen, z.B. Installation und Patches des Betriebssystems und von RDBMS, dynamische Größenänderung und Konfiguration von Instanzen, Sicherungen, Datenbankreplikation (einschließlich Systemdatenbanken), Konfiguration der Hochverfügbarkeit und der Integrität und Leistungsüberwachung der Datenströme.  
+In einer verwalteten Instanz können Systemadministratoren sich auf die für das Unternehmen wichtigsten Aspekte konzentrieren. Viele durch Systemadministratoren oder DBA durchgeführte Aktivitäten sind nicht erforderlich oder lassen sich einfach ausführen, z.B. Installation und Patches des Betriebssystems und von RDBMS, dynamische Größenänderung und Konfiguration von Instanzen, Sicherungen, Datenbankreplikation (einschließlich Systemdatenbanken), Konfiguration der Hochverfügbarkeit und der Integrität und Leistungsüberwachung der Datenströme. 
 
 > [!IMPORTANT]
 > Eine Liste der unterstützten, teilweise unterstützten und nicht unterstützten Features finden Sie unter [Features von Azure SQL-Datenbank](sql-database-features.md). Eine Liste der T-SQL-Unterschiede in verwalteten Instanzen im Vergleich zu SQL Server finden Sie unter [T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server](sql-database-managed-instance-transact-sql-information.md).

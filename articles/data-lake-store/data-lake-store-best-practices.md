@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: c394142ba40fc580bdcec11430dcae2816fa9760
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: daa6a0fd6927a166ee4809dc1dc5df612765403a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Bewährte Methoden für die Verwendung von Azure Data Lake Store
 In diesem Artikel erfahren Sie mehr zu den bewährten Methoden und Aspekten in Bezug auf die Arbeit mit Azure Data Lake Store. Der Artikel enthält Informationen zu den Bereichen Sicherheit, Leistung, Resilienz und Überwachung für Data Lake Store. Vor der Einführung von Data Lake Store war die Arbeit mit wirklich großen Datenmengen (Big Data) in Diensten wie Azure HDInsight sehr komplex. Daten mussten per Sharding auf mehrere Blobspeicherkonten verteilt werden, um die Speicherung im Petabyte-Bereich und eine entsprechende optimale Leistung zu erzielen. Dank Data Lake Store gelten die meisten festen Grenzwerte im Hinblick auf die Größe und Leistung nicht mehr. In diesem Artikel werden aber trotzdem noch einige Aspekte beschrieben, damit Sie für Data Lake Store die bestmögliche Leistung erzielen können. 
@@ -129,7 +129,7 @@ Data Lake Store verfügt über ausführliche Diagnoseprotokolle und Überwachung
 
 ### <a name="export-data-lake-store-diagnostics"></a>Exportieren der Data Lake Store-Diagnose 
 
-Eine der schnellsten Möglichkeiten, um aus Data Lake Store Zugriff auf durchsuchbare Protokolle zu erhalten, ist die Aktivierung des Protokollversands für **Operations Management Suite (OMS)**. Verwenden Sie hierfür das Blatt **Diagnose** des Data Lake Store-Kontos. Sie haben so direkten Zugriff auf eingehende Protokolle mit Zeit- und Inhaltsfiltern und können Warnungsoptionen (E-Mail/Webhook) nutzen, die in 15-Minuten-Intervallen ausgelöst werden. Eine Anleitung hierzu finden Sie unter [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](data-lake-store-diagnostic-logs.md). 
+Eine der schnellsten Möglichkeiten, um aus Data Lake Store Zugriff auf durchsuchbare Protokolle zu erhalten, ist die Aktivierung des Protokollversands für **Log Analytics**. Verwenden Sie hierfür das Blatt **Diagnose** des Data Lake Store-Kontos. Sie haben so direkten Zugriff auf eingehende Protokolle mit Zeit- und Inhaltsfiltern und können Warnungsoptionen (E-Mail/Webhook) nutzen, die in 15-Minuten-Intervallen ausgelöst werden. Eine Anleitung hierzu finden Sie unter [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](data-lake-store-diagnostic-logs.md). 
 
 Falls Sie mehr Echtzeitwarnungen nutzen und mehr Kontrolle darüber haben möchten, wo die Protokolle verfügbar sein sollen, können Sie die Protokolle nach Azure EventHub exportieren. Hier können Inhalte einzeln oder in einem Zeitfenster analysiert werden, um Echtzeitbenachrichtigungen an eine Warteschlange zu senden. Eine separate Anwendung, z.B. eine [Logik-App](../connectors/connectors-create-api-azure-event-hubs.md), kann die Warnungen dann nutzen und an den entsprechenden Kanal kommunizieren und Metriken an Überwachungstools wie NewRelic, Datadog oder AppDynamics senden. Wenn Sie Drittanbietertools verwenden, z.B. ElasticSearch, können Sie die Protokolle alternativ dazu nach Blob Storage exportieren und das [Azure Logstash-Plug-In](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob) verwenden, um die Daten in Ihrem Elasticsearch-, Kibana- und Logstash-Stack (ELK) zu nutzen.
 
@@ -139,7 +139,7 @@ Wenn das Senden von Data Lake Store-Protokollen nicht aktiviert ist, ermöglicht
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG 
 
-Nachdem die Eigenschaft festgelegt wurde und die Knoten neu gestartet wurden, wird die Data Lake Store-Diagnose in die YARN-Protokolle auf den Knoten (/tmp/<user>/yarn.log) geschrieben, und wichtige Details wie Fehler oder die Drosselung (Fehlercode HTTP 429) können überwacht werden. Diese Informationen können auch in OMS überwacht werden (oder unter einem anderen Ziel, für das unter dem Data Lake Store-Konto auf dem Blatt [Diagnose](data-lake-store-diagnostic-logs.md) das Senden von Protokollen festgelegt ist). Es wird empfohlen, mindestens die clientseitige Protokollierung zu aktivieren oder die Protokollversandoption von Data Lake Store für die Sichtbarkeit von Vorgängen und das vereinfachte Debuggen zu nutzen.
+Nachdem die Eigenschaft festgelegt wurde und die Knoten neu gestartet wurden, wird die Data Lake Store-Diagnose in die YARN-Protokolle auf den Knoten (/tmp/<user>/yarn.log) geschrieben, und wichtige Details wie Fehler oder die Drosselung (Fehlercode HTTP 429) können überwacht werden. Diese Informationen können auch in Log Analytics oder an jedem anderen Ziel überwacht werden, das im Data Lake Store-Konto auf dem Blatt [Diagnose](data-lake-store-diagnostic-logs.md) für das Empfangen von Protokollen festgelegt ist. Es wird empfohlen, mindestens die clientseitige Protokollierung zu aktivieren oder die Protokollversandoption von Data Lake Store für die Sichtbarkeit von Vorgängen und das vereinfachte Debuggen zu nutzen.
 
 ### <a name="run-synthetic-transactions"></a>Ausführen von synthetischen Transaktionen 
 

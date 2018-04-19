@@ -1,6 +1,6 @@
 ---
-title: Plug-In zum einmaligen Anmelden mit Microsoft Azure Active Directory – FAQ | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Microsoft Azure Active Directory single sign-on for JIRA konfigurieren.
+title: Häufig gestellte Fragen zum Azure Active Directory-SSO-Plug-In | Microsoft-Dokumentation
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Konfigurieren des einmaligen Anmeldens zwischen Azure Active Directory und JIRA/Confluence.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,70 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 571fbd5078f66375f6e81cba2a790121366f9d60
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b642d6de9fd9265d7f7ee11b827a36d20e5bcce7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="microsoft-azure-active-directory-single-sign-on-plugin-faq"></a>Plug-In zum einmaligen Anmelden mit Microsoft Azure Active Directory – FAQ 
+# <a name="faq-for-the-azure-active-directory-sso-plug-in"></a>Häufig gestellte Fragen zum Azure Active Directory-SSO-Plug-In 
 
-## <a name="1-whats-the-microsoft-sso-add-on"></a>1. Was ist das Add-On für Microsoft-SSO?
+## <a name="what-does-the-plug-in-do"></a>Was macht das Plug-In?
 
-Dieses Add-On ermöglicht das einmalige Anmelden (Single Sign On, SSO) für JIRA von Atlassian (einschließlich JIRA Core, JIRA Software, JIRA Service Desk) und lokale Confluence-Software. Das Add-On funktioniert mit Azure AD als IdP.
+Das Plug-In ermöglicht das einmalige Anmelden (Single Sign On, SSO) bei lokaler Atlassian JIRA- und Confluence-Software (einschließlich JIRA Core, JIRA Software, JIRA Service Desk). Das Plug-In funktioniert mit Azure Active Directory (Azure AD) als Identitätsanbieter (IdP).
 
-## <a name="2-add-on-works-with-which-atlassian-products"></a>2. Mit welchen Atlassian-Produkten funktioniert das Add-On?
+## <a name="which-atlassian-products-does-the-plug-in-work-with"></a>Mit welchen Atlassian-Produkten ist das Plug-In einsetzbar?
 
-Derzeit funktioniert das Add-On mit lokalen Versionen von JIRA und Confluence.
+Das Plug-In funktioniert mit lokalen Versionen von JIRA und Confluence.
 
-## <a name="3-does-this-add-on-work-on-cloud-version"></a>3. Funktioniert dieses Add-On mit der Cloudversion?
+## <a name="does-the-plug-in-work-on-cloud-versions"></a>Funktioniert dieses Plug-In mit Cloudversionen?
 
-Nein. Nur lokale Versionen von JIRA und Confluence werden unterstützt.
+Nein. Das Plug-In unterstützt lokale Versionen von JIRA und Confluence.
 
-## <a name="4-which-versions-of-jira-and-confluence-are-supported"></a>4. Welche Versionen von JIRA und Confluence werden unterstützt?
+## <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>Welche Versionen von JIRA und Confluence unterstützt das Plug-In?
 
-Im Folgenden finden Sie die Liste der unterstützten Versionen:
+Das Plug-In unterstützt diese Versionen:
 
 * JIRA Core und Software: 6.0 bis 7.2.2 
 * JIRA Service Desk: 3.0 bis 3.2 
 * Confluence: 5.0 bis 5.10
 
-## <a name="5-is-this-add-on-free-or-paid"></a>5. Ist dieses Add-On kostenlos oder kostenpflichtig?
+## <a name="is-the-plug-in-free-or-paid"></a>Ist das Plug-In kostenlos oder kostenpflichtig?
 
-Dies ist ein kostenloses Add-On und kann vom Atlassian-Marketplace aus installiert werden.
+Es ist ein kostenloses Add-On. Sie können es auch vom Atlassian-Marketplace aus installieren.
 
-## <a name="6-do-i-need-to-restart-jiraconfluence-once-i-deploy-the-add-on"></a>6. Muss ich JIRA/Confluence nach dem Bereitstellen des Add-Ons neu starten?
+## <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Muss ich JIRA bzw. Confluence nach dem Bereitstellen des Plug-Ins neu starten?
 
-Neustart nach der Bereitstellung ist nicht erforderlich. Sie können das Add-On sofort nach der Bereitstellung verwenden.
+Es ist kein Neustart erforderlich. Sie können das Plug-In sofort benutzen.
 
-## <a name="7-how-do-i-get-support-for-the-add-on"></a>7. Wie erhalte ich Support für das Add-On?
+## <a name="how-do-i-get-support-for-the-plug-in"></a>Wie erhalte ich Support für das Plug-In?
 
-Sie erreichen uns unter: <email>. Wir werden innerhalb von Stunden <> antworten. Sie können auch bei Microsoft ein Supportticket über den Azure-Portalkanal erstellen. Sie können uns auch unter <Number> zwischen <> Uhr und <> Uhr wochentags anrufen.
+Wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Das Team antwortet innerhalb von 24 bis 48 Geschäftsstunden. 
 
-## <a name="8-would-this-add-on-work-on-mac-or-ubuntu-installation-of-jira-and-confluence"></a>8. Funktioniert dieses Add-On unter der Mac- oder Ubuntu-Installation von JIRA und Confluence?
+Sie können auch bei Microsoft ein Supportticket über den Azure-Portalkanal erstellen.
 
-Wir haben dieses Add-On nur mit 64-Bit-Windows-Serverinstallationen von JIRA und Confluence getestet.
+## <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>Funktioniert dieses Plug-In unter der Mac- oder Ubuntu-Installation von JIRA und Confluence?
 
-## <a name="9-does-this-add-on-work-with-other-idps-than-azure-ad"></a>9. Funktioniert dieses Add-On mit anderen IdPs als Azure AD?
+Wir haben dieses Plug-In nur mit 64-Bit-Windows-Serverinstallationen von JIRA und Confluence getestet.
 
-Nein. Das Add-On funktioniert nur mit Azure AD.
+## <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>Funktioniert das Plug-In mit anderen IdPs als Azure AD?
 
-## <a name="10-what-version-of-saml-does-the-add-on-work-with"></a>10. Mit welcher SAML-Version funktioniert das Add-On?
+Nein. Es funktioniert nur mit Azure AD.
 
-Das Add-On funktioniert mit SAML 2.0.
+## <a name="what-version-of-saml-does-the-plug-in-work-with"></a>Mit welcher SAML-Version funktioniert das Plug-In?
 
-## <a name="11-does-the-add-on-do-use-provisioning-as-well"></a>11. Verwendet das Add-On auch die Bereitstellung?
+Es funktioniert mit SAML 2.0.
 
-Nein. Derzeit stellt das Add-On nur SSO auf Basis von SAML 2.0 bereit. Der Benutzer muss vor der SSO-Anmeldung in der Anwendung bereitgestellt werden.
+## <a name="does-the-plug-in-do-user-provisioning"></a>Führt das Plug-In eine Benutzerbereitstellung durch?
 
-## <a name="12-are-cluster-versions-of-jira-and-confluence-supported-by-add-on"></a>12. Unterstützt das Add-On Clusterversionen von JIRA und Confluence?
+Nein. Das Plug-In stellt nur SSO auf Basis von SAML 2.0 bereit. Der Benutzer muss vor der SSO-Anmeldung in der Anwendung bereitgestellt werden.
 
-Nein. Das Add-On funktioniert mit lokalen Versionen von JIRA und Confluence.
+## <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>Unterstützt das Plug-In Clusterversionen von JIRA und Confluence?
 
-## <a name="13-would-this-plugin-work-with-http-version-of-jira-and-confluence"></a>13. Würde dieses Plug-In mit der HTTP-Version von JIRA und Confluence funktionieren?
+Nein. Das Plug-In funktioniert mit lokalen Versionen von JIRA und Confluence.
 
-Nein. Das Add-On funktioniert nur mit HTTPS-fähigen Installationen.
+## <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>Funktioniert das Plug-In mit HTTP-Versionen von JIRA und Confluence?
 
-## <a name="14-do-i-need-to-buy-license-of-the-add-on"></a>14. Muss ich eine Lizenz für das Add-On kaufen?
-
-Es ist ein kostenloses Add-On.
+Nein. Das Plug-In funktioniert nur mit HTTPS-fähigen Installationen.

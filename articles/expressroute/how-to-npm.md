@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 586d78e29177dd4a627c94cd754c21cc2b6f37d4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
 
-Der Netzwerkleistungsmonitor (Network Performance Monitor, NPM) ist eine cloudbasierte Lösung für die Netzwerküberwachung, die die Konnektivität zwischen Azure-Cloudbereitstellungen und lokalen Standorten (Zweigstellen usw.) überwacht. Der Netzwerkleistungsmonitor ist Teil von Microsoft Operations Management Suite (OMS). Der Netzwerkleistungsmonitor bietet nun eine Erweiterung für ExpressRoute, durch die Sie die Netzwerkleistung über ExpressRoute-Verbindungen überwachen können, die dafür konfiguriert sind, privates Peering zu verwenden. Wenn Sie den Netzwerkleistungsmonitor für ExpressRoute konfigurieren, können Sie Netzwerkprobleme erkennen, die identifiziert und entfernt werden sollen.
+Der Netzwerkleistungsmonitor (Network Performance Monitor, NPM) ist eine cloudbasierte Lösung für die Netzwerküberwachung, die die Konnektivität zwischen Azure-Cloudbereitstellungen und lokalen Standorten (Zweigstellen usw.) überwacht. Der Netzwerkleistungsmonitor ist Teil von Log Analytics. Der Netzwerkleistungsmonitor bietet nun eine Erweiterung für ExpressRoute, durch die Sie die Netzwerkleistung über ExpressRoute-Verbindungen überwachen können, die dafür konfiguriert sind, privates Peering zu verwenden. Wenn Sie den Netzwerkleistungsmonitor für ExpressRoute konfigurieren, können Sie Netzwerkprobleme erkennen, die identifiziert und entfernt werden sollen.
 
 Ihre Möglichkeiten:
 
@@ -72,11 +72,11 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) das Abonnement, in dem Peering der VNETs mit Ihrer ExpressRoute-Leitung eingerichtet ist. Suchen Sie anschließend über den **Marketplace** in der Liste der Dienste nach „Netzwerkleistungsmonitor“. Klicken Sie in die Ausgabe, um die Seite **Netzwerkleistungsmonitor** zu öffnen.
 
->[!NOTE]
->Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden.  Wenn Sie einen vorhandenen Arbeitsbereich verwenden möchten, müssen Sie sicherstellen, dass der Arbeitsbereich zur neuen Abfragesprache migriert wurde. [Weitere Informationen](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
->
+   >[!NOTE]
+   >Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden.  Wenn Sie einen vorhandenen Arbeitsbereich verwenden möchten, müssen Sie sicherstellen, dass der Arbeitsbereich zur neuen Abfragesprache migriert wurde. [Weitere Informationen](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >
 
-  ![Portal](.\media\how-to-npm\3.png)<br><br>
+   ![Portal](.\media\how-to-npm\3.png)<br><br>
 2. Klicken Sie im unteren Bereich der Hauptseite **Netzwerkleistungsmonitor** auf **Erstellen**, um die Seite **Network Performance Monitor – Create new solution** (Netzwerkleistungsmonitor – Neue Lösung erstellen) zu öffnen. Klicken Sie auf **OMS Workspace – select a workspace** (OMS-Arbeitsbereich – Arbeitsbereich auswählen), um die Seite „Arbeitsbereich“ zu öffnen. Klicken Sie auf **+ Neuen Arbeitsbereich erstellen**, um die Seite „Arbeitsbereich“ zu öffnen.
 3. Klicken Sie auf der Seite **OMS-Arbeitsbereich** auf **Neu erstellen**, und konfigurieren Sie folgende Einstellungen:
 
@@ -86,15 +86,15 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
   * Standort: Sie müssen eine [unterstützte Region](#regions) auswählen.
   * Tarif: Wählen Sie „Free“ aus.
   
-  >[!NOTE]
-  >Die ExpressRoute-Verbindung kann sich an einer beliebigen Stelle auf der ganzen Welt befinden. Sie muss nicht in der gleichen Region wie der Arbeitsbereich liegen.
-  >
+    >[!NOTE]
+    >Die ExpressRoute-Verbindung kann sich an einer beliebigen Stelle auf der ganzen Welt befinden. Sie muss nicht in der gleichen Region wie der Arbeitsbereich liegen.
+    >
   
-  ![Arbeitsbereich](.\media\how-to-npm\4.png)<br><br>
+    ![Arbeitsbereich](.\media\how-to-npm\4.png)<br><br>
 4. Klicken Sie auf **OK**, um die Einstellungsvorlage zu speichern und bereitzustellen. Sobald die Vorlage überprüft wurde, klicken Sie auf **Erstellen**, um den Arbeitsbereich bereitzustellen.
 5. Nachdem der Arbeitsbereich bereitgestellt wurde, navigieren Sie zu der Ressource **NetworkMonitoring(Name)**, die Sie erstellt haben. Überprüfen Sie die Einstellungen, und klicken Sie dann auf **Für die Lösung ist eine weitere Konfiguration erforderlich**.
 
-  ![Zusätzliche Konfiguration](.\media\how-to-npm\5.png)
+   ![Zusätzliche Konfiguration](.\media\how-to-npm\5.png)
 
 ## <a name="agents"></a>Schritt 2: Installieren und Konfigurieren von Agents
 
@@ -126,9 +126,9 @@ Es wird empfohlen, dass Sie zur Bereitstellung von Redundanz mindestens zwei Age
 2. Klicken Sie auf der Seite **Willkommen**auf **Weiter**.
 3. Lesen Sie die Seite **Lizenzbedingungen** durch, und klicken Sie anschließend auf **Ich stimme zu**.
 4. Auf der Seite **Zielordner** können Sie den Standardinstallationsordner entweder ändern oder beibehalten. Klicken Sie anschließend auf **Weiter**.
-5. Auf der Seite **Agent-Setupoptionen** können Sie auswählen, ob der Agent mit Azure Log Analytics (OMS) oder Operations Manager verbunden werden soll. Sie können die Auswahl auch leer lassen, wenn Sie den Agent später konfigurieren möchten. Klicken Sie auf **Weiter**, nachdem Sie Ihre Auswahl getroffen haben.
+5. Auf der Seite **Agent-Setupoptionen** können Sie auswählen, ob der Agent mit Azure Log Analytics oder Operations Manager verbunden werden soll. Sie können die Auswahl auch leer lassen, wenn Sie den Agent später konfigurieren möchten. Klicken Sie auf **Weiter**, nachdem Sie Ihre Auswahl getroffen haben.
 
-  * Wenn Sie eine Verbindung mit **Azure Log Analytics (OMS)** herstellen möchten, fügen Sie die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** (Primärschlüssel) ein, die Sie im vorherigen Abschnitt in Editor kopiert haben. Klicken Sie auf **Weiter**.
+  * Wenn Sie eine Verbindung mit **Azure Log Analytics** herstellen möchten, fügen Sie die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** (Primärschlüssel) ein, die Sie im vorherigen Abschnitt in Editor kopiert haben. Klicken Sie auf **Weiter**.
 
     ![ID und Schlüssel](.\media\how-to-npm\8.png)
   * Wenn Sie eine Verbindung zu **Operations Manager** herstellen möchten, geben Sie auf der Seite **Verwaltungsgruppenkonfiguration** den **Namen der Verwaltungsgruppe**, den **Verwaltungsserver** und den **Verwaltungsserverport** ein. Klicken Sie auf **Weiter**.
@@ -139,7 +139,7 @@ Es wird empfohlen, dass Sie zur Bereitstellung von Redundanz mindestens zwei Age
     ![Konto](.\media\how-to-npm\10.png)
 6. Überprüfen Sie Ihre Auswahl auf der Seite **Bereit zum Installieren**, und klicken Sie dann auf **Installieren**.
 7. Klicken Sie auf der Seite **Die Konfiguration wurde erfolgreich abgeschlossen** auf **Fertig stellen**.
-8. Nach Abschluss wird der Microsoft Monitoring Agent in der Systemsteuerung angezeigt. Dort können Sie Ihre Konfiguration überprüfen und sicherstellen, dass der Agent mit Operational Insights (OMS) verbunden ist. Wenn die Verbindung mit OMS hergestellt ist, zeigt der Agent folgende Meldung an: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Operations Management Suite service** (Für den Microsoft Monitoring Agent wurde die Verbindung mit dem Microsoft Operations Management Suite-Dienst erfolgreich hergestellt).
+8. Nach Abschluss wird der Microsoft Monitoring Agent in der Systemsteuerung angezeigt. Dort können Sie Ihre Konfiguration überprüfen und sicherstellen, dass der Agent mit Azure Log Analytics (OMS) verbunden ist. Wenn die Verbindung hergestellt ist, zeigt der Agent folgende Meldung an: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Operations Management Suite service** (Für den Microsoft Monitoring Agent wurde die Verbindung mit dem Microsoft Operations Management Suite-Dienst erfolgreich hergestellt).
 
 9. Wiederholen Sie dies für jedes VNET, das Sie überwachen müssen.
 
@@ -162,8 +162,8 @@ Sie können problemlos überprüfen, ob die Agents kommunizieren.
 
 1. Öffnen Sie die **Systemsteuerung** auf einem Server mit dem Überwachungs-Agent.
 2. Öffnen Sie den **Microsoft Monitoring Agent**.
-3. Klicken Sie auf die Registerkarte **Azure Log Analytics (OMS)**.
-4. In der Spalte **Status** sollte angezeigt werden, dass der Agent erfolgreich mit dem Operations Management Suite-Dienst verbunden wurde.
+3. Klicken Sie auf die Registerkarte **Azure Log Analytics**.
+4. In der Spalte **Status** sollte angezeigt werden, dass der Agent erfolgreich mit Log Analytics verbunden wurde.
 
   ![status](.\media\how-to-npm\12.png)
 

@@ -1,11 +1,11 @@
 ---
-title: "Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen | Microsoft Docs"
-description: "Verwalten von Gastbenutzern als Mitglieder einer Gruppe oder einer Anwendung zugewiesene Benutzer mit Azure Active Directory-Zugriffsüberprüfungen"
+title: Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen | Microsoft Docs
+description: Verwalten von Gastbenutzern als Mitglieder einer Gruppe oder einer Anwendung zugewiesene Benutzer mit Azure Active Directory-Zugriffsüberprüfungen
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 8d5cc8035d085ac9c8fc46077376836726afbb1a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 564f4f4a3f7532a7419e15b91fdbae9ee12088fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen
 
@@ -90,7 +90,7 @@ Mithilfe von Zugriffsüberprüfungen können Sie sicherstellen, dass Benutzer, d
 
 ### <a name="ask-a-sponsor-to-review-a-guests-access-to-an-application"></a>Auffordern eines Sponsors zum Überprüfen des Zugriffs eines Gasts auf eine Anwendung
 
-Sie können einen Sponsor (z.B. den Besitzer einer Anwendung) bitten, den weiteren Zugriffsbedarf eines Gasts auf die Anwendung zu überprüfen.
+Sie können einen Sponsor – z.B. den Besitzer einer Anwendung – bitten, den Bedarf eines Gasts für den weiteren Zugriff auf die Anwendung zu überprüfen.
 
 1. Um eine Zugriffsüberprüfung für die Anwendung zu starten, geben Sie an, dass die Überprüfung nur Gäste umfasst. Geben Sie dann mindestens einen Benutzer als Prüfer an. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](active-directory-azure-ad-controls-create-access-review.md).
 
@@ -105,15 +105,15 @@ In einigen Organisationen sind Gästen ihre Gruppenmitgliedschaften möglicherwe
 > [!NOTE]
 > In früheren Versionen des Azure-Portals war ein Administratorzugriff durch Benutzer mit dem UserType-Wert „Guest“ nicht zulässig. In einigen Fällen hat ein Administrator in Ihrem Verzeichnis möglicherweise den UserType-Wert eines Gasts mithilfe von PowerShell in „Member“ geändert. Wenn diese Änderung zuvor in Ihrem Verzeichnis vorgenommen wurde, enthält die vorherige Abfrage möglicherweise nicht alle Gastbenutzer, die in der Vergangenheit über Administratorrechte verfügten. In diesem Fall müssen Sie entweder den UserType-Wert des Gasts ändern oder den Gast manuell in die Gruppenmitgliedschaft aufnehmen.
 
-1. Erstellen Sie eine Sicherheitsgruppe mit den Gästen als Mitgliedern in Azure AD, wenn noch keine geeignete Gruppe vorhanden ist. Sie können z.B. eine Gruppe mit einer manuell verwalteten Mitgliedschaft von Gästen erstellen. Oder Sie können eine dynamische Gruppe mit einem Namen wie „Gäste von Contoso“ für Benutzer im Contoso-Mandanten erstellen, deren UserType-Attributwert „Guest“ lautet.
+1. Erstellen Sie eine Sicherheitsgruppe mit den Gästen als Mitgliedern in Azure AD, wenn noch keine geeignete Gruppe vorhanden ist. Sie können z.B. eine Gruppe mit einer manuell verwalteten Mitgliedschaft von Gästen erstellen. Oder Sie können eine dynamische Gruppe mit einem Namen wie „Gäste von Contoso“ für Benutzer im Contoso-Mandanten erstellen, deren UserType-Attributwert „Guest“ lautet.  Stellen Sie aus Gründen der Effizienz sicher, dass die Gruppe vorwiegend aus Gästen besteht. Wählen Sie keine Gruppe mit Benutzern aus, die nicht überprüft werden müssen.
 
 2. Um eine Zugriffsüberprüfung für diese Gruppe zu starten, geben Sie an, dass die Prüfer selbst Mitglieder sind. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](active-directory-azure-ad-controls-create-access-review.md).
 
-3. Bitten Sie jeden Gast, seine eigene Mitgliedschaft zu überprüfen. Standardmäßig erhält jeder Gast, der eine Einladung angenommen hat, eine E-Mail von Azure AD mit einem Link zu der Zugriffsüberprüfung im Zugriffsbereich Ihrer Organisation. Azure AD stellt Anweisungen für Gäste bereit, [wie sie ihren Zugriff überprüfen können](active-directory-azure-ad-controls-perform-access-review.md).
+3. Bitten Sie jeden Gast, seine eigene Mitgliedschaft zu überprüfen. Standardmäßig erhält jeder Gast, der eine Einladung angenommen hat, eine E-Mail von Azure AD mit einem Link zu der Zugriffsüberprüfung im Zugriffsbereich Ihrer Organisation. Azure AD stellt Anweisungen für Gäste bereit, [wie sie ihren Zugriff überprüfen können](active-directory-azure-ad-controls-perform-access-review.md).  Gäste, die ihre Einladung nicht angenommen haben, werden in den Überprüfungsergebnissen als „nicht benachrichtigt“ angezeigt.
 
 4. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden. Weitere Informationen finden Sie unter [Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD](active-directory-azure-ad-controls-complete-access-review.md).
 
-5. Entfernen Sie den Gastzugriff für Gäste, die abgelehnt wurden, die Überprüfung nicht abgeschlossen haben oder ihre Einladung zuvor nicht angenommen haben. Wenn einige der Gäste Kontakte sind, die für die Teilnahme an der Überprüfung ausgewählt wurden, weil sie eine Einladung zuvor nicht angenommen haben, können Sie deren Konten über das Azure-Portal oder mit PowerShell deaktivieren. Wenn der Gast keinen Zugriff mehr benötigt und kein Kontakt ist, können Sie sein Benutzerobjekt über das Azure-Portal oder mit PowerShell aus dem Verzeichnis entfernen.
+5. Entfernen Sie den Gastzugriff für Gäste, die abgelehnt wurden, die Überprüfung nicht abgeschlossen haben oder ihre Einladung zuvor nicht angenommen haben. Wenn einige der Gäste Kontakte sind, die für die Teilnahme an der Überprüfung ausgewählt wurden oder die eine Einladung zuvor nicht angenommen haben, können Sie deren Konten über das Azure-Portal oder mit PowerShell deaktivieren. Wenn ein Gast keinen Zugriff mehr benötigt und kein Kontakt ist, können Sie das zugehörige Benutzerobjekt aus dem Verzeichnis entfernen, indem Sie das Gastbenutzerobjekt über das Azure-Portal oder mit PowerShell löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

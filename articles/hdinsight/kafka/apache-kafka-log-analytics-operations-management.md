@@ -1,30 +1,30 @@
 ---
-title: "Log Analytics mit Apache Kafka – Azure HDInsight | Microsoft-Dokumentation"
-description: Erfahren Sie, wie Sie mithilfe der Operations Management Suite Protokolle aus Apache Kafka-Clustern in Azure HDInsight analysieren.
+title: Log Analytics mit Apache Kafka – Azure HDInsight | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe von Log Analytics Protokolle aus Apache Kafka-Clustern in Azure HDInsight analysieren.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 6fcb925829e33704c94c96209a61346b0404e13b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 15107a0fbcd6242ac13f366b16be10efaeaad6bb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysieren von Protokollen für Apache Kafka in HDInsight
 
-Erfahren Sie, wie Sie mithilfe der Microsoft Operations Management Suite Protokolle, die von Apache Kafka generiert wurden, in HDInsight analysieren.
+Erfahren Sie, wie Sie mithilfe von Log Analytics in Apache Kafka generierte Protokolle in HDInsight analysieren.
 
-## <a name="enable-oms-for-kafka"></a>Aktivieren der OMS für Kafka
+## <a name="enable-log-analytics-for-kafka"></a>Aktivieren von Log Analytics für Kafka
 
 Die Schritte zum Aktivieren von Log Analytics für HDInsight sind für alle HDInsight-Cluster identisch. Verwenden Sie die folgenden Links, um zu verstehen, wie die erforderlichen Dienste erstellt und konfiguriert werden:
 
@@ -32,14 +32,14 @@ Die Schritte zum Aktivieren von Log Analytics für HDInsight sind für alle HDIn
 
 2. Erstellen Sie ein Kafka-Cluster im HDInsight-Cluster. Weitere Informationen finden Sie unter [Einstieg in Apache Kafka in HDInsight](apache-kafka-get-started.md).
 
-3. Konfigurieren Sie das Kafka-Cluster für die Verwendung von Log Analytics. Weitere Informationen finden Sie im Dokument [Überwachen von HDInsight mit Log Analytics](../hdinsight-hadoop-oms-log-analytics-tutorial.md).
+3. Konfigurieren Sie den Kafka-Cluster für die Verwendung von Log Analytics. Weitere Informationen finden Sie im Dokument [Überwachen von HDInsight mit Log Analytics](../hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
     > [!NOTE]
-    > Sie können auch das Cluster konfigurieren, um Log Analytics mit dem Cmdlet `Enable-AzureRmHDInsightOperationsManagementSuite` zu verwenden. Für dieses Cmdlet benötigen Sie die folgenden Informationen:
+    > Sie können auch den Cluster konfigurieren, um Log Analytics mit dem Cmdlet `Enable-AzureRmHDInsightOperationsManagementSuite` zu verwenden. Für dieses Cmdlet benötigen Sie die folgenden Informationen:
     >
     > * Den HDInsight-Clusternamen
-    > * Die Arbeitsbereichs-ID für Log Analytics. Sie finden die Arbeitsbereichs-ID im OMS-Arbeitsbereich für den Log Analytics-Arbeitsbereich.
-    > * Den Primärschlüssel für die OMS-Verbindung. Um den primären Schlüssel zu suchen, wählen Sie Ihre Log Analytics-Instanz und dann das __OMS-Portal__ aus. Wählen Sie im OMS-Portal die Option __Einstellungen__, __Verbundene Quellen__ und dann __Linux-Server__.
+    > * Die Arbeitsbereichs-ID für Log Analytics. Die Arbeitsbereichs-ID finden Sie in Ihrem Log Analytics-Arbeitsbereich.
+    > * Den Primärschlüssel für die Log Analytics-Verbindung. Um den primären Schlüssel zu suchen, wählen Sie Ihre Log Analytics-Instanz und dann das __OMS-Portal__ aus. Wählen Sie im OMS-Portal die Option __Einstellungen__, __Verbundene Quellen__ und dann __Linux-Server__.
 
 
 > [!IMPORTANT]

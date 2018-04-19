@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: cbd5b57d0cde3743c7ef70437f702536c27ac999
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b1fdc364b903ed552f657fcabdadcf209d7c969e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 Während des Lebenszyklus von Anwendungen müssen Sie möglicherweise Ihre VM-Skalierungsgruppe ändern oder aktualisieren. Zu diesen Aktualisierungen können das Aktualisieren der Konfiguration der Skalierungsgruppe oder das Ändern der Anwendungskonfiguration zählen. Dieser Artikel beschreibt die Vorgehensweise zum Ändern einer vorhandenen Skalierungsgruppe mit den REST-APIs, Azure PowerShell oder Azure CLI 2.0.
@@ -367,7 +367,7 @@ Bestimmte Änderungen können statt auf die globalen Skalierungsgruppeneigenscha
 ## <a name="scenarios"></a>Szenarien
 
 ### <a name="application-updates"></a>Anwendungsupdates
-Wenn eine Anwendung über Erweiterungen in einer Skalierungsgruppe bereitgestellt wird, löst eine Aktualisierung der Erweiterungskonfiguration eine Aktualisierung der Anwendung gemäß der Upgraderichtlinie aus. Wenn Sie beispielsweise über eine neue Version eines Skripts für die Ausführung in einer benutzerdefinierten Skripterweiterung verfügen, können Sie die *fileUris*-Eigenschaft aktualisieren, sodass sie auf das neue Skript verweist. In einigen Fällen möchten Sie jedoch eine Aktualisierung erzwingen, auch wenn die Erweiterungskonfiguration unverändert bleibt, z.B. wenn Sie das Skript aktualisiert haben, ohne den URI des Skripts zu ändern. In diesen Fällen können Sie *forceUpdateTag* ändern, um eine Aktualisierung zu erzwingen. Diese Eigenschaft wird von der Azure-Plattform nicht interpretiert. Eine Änderung des Werts hat keine Auswirkung auf die Ausführung der Erweiterung. Durch eine Änderung wird lediglich eine erneute Ausführung der Erweiterung erzwungen. Weitere Informationen zu *forceUpdateTag* finden Sie in der [REST-API-Dokumentation für Erweiterungen](/rest/api/compute/virtualmachineextensions/createorupdate).
+Wenn eine Anwendung über Erweiterungen in einer Skalierungsgruppe bereitgestellt wird, löst eine Aktualisierung der Erweiterungskonfiguration eine Aktualisierung der Anwendung gemäß der Upgraderichtlinie aus. Wenn Sie beispielsweise über eine neue Version eines Skripts für die Ausführung in einer benutzerdefinierten Skripterweiterung verfügen, können Sie die *fileUris*-Eigenschaft aktualisieren, sodass sie auf das neue Skript verweist. In einigen Fällen möchten Sie jedoch eine Aktualisierung erzwingen, auch wenn die Erweiterungskonfiguration unverändert bleibt, z.B. wenn Sie das Skript aktualisiert haben, ohne den URI des Skripts zu ändern. In diesen Fällen können Sie *forceUpdateTag* ändern, um eine Aktualisierung zu erzwingen. Diese Eigenschaft wird von der Azure-Plattform nicht interpretiert. Eine Änderung des Werts hat keine Auswirkung auf die Ausführung der Erweiterung. Durch eine Änderung wird lediglich eine erneute Ausführung der Erweiterung erzwungen. Weitere Informationen zu *forceUpdateTag* finden Sie in der [REST-API-Dokumentation für Erweiterungen](/rest/api/compute/virtualmachineextensions/createorupdate). Beachten Sie, dass *forceUpdateTag* mit allen Erweiterungen verwendet werden kann, nicht nur mit der benutzerdefinierten Skripterweiterung.
 
 Anwendungen werden häufig auch über ein benutzerdefiniertes Image bereitgestellt. Dieses Szenario wird im folgenden Abschnitt behandelt.
 
