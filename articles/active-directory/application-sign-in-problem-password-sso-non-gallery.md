@@ -1,11 +1,11 @@
 ---
-title: "Probleme beim Anmelden bei einer Azure AD-Kataloganwendung, die für einmaliges Anmelden per Kennwort konfiguriert ist | Microsoft-Dokumentation"
-description: "Erläuterungen von Problembereichen zur Hilfestellung beim Behandeln von Problemen beim Anmelden bei Azure AD-Kataloganwendungen, die für einmaliges Anmelden per Kennwort konfiguriert sind"
+title: Probleme beim Anmelden bei einer Azure AD-Kataloganwendung, die für einmaliges Anmelden per Kennwort konfiguriert ist | Microsoft-Dokumentation
+description: Erläuterungen von Problembereichen zur Hilfestellung beim Behandeln von Problemen beim Anmelden bei Azure AD-Kataloganwendungen, die für einmaliges Anmelden per Kennwort konfiguriert sind
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -38,7 +38,7 @@ Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 -   Firefox 26.0 oder höher – unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 
 >[!NOTE]
->Die Erweiterung für die kennwortbasierte einmalige Anmeldung steht für Edge unter Windows 10 zur Verfügung, sobald Browsererweiterungen von Edge unterstützt werden.
+>Die Erweiterung für die kennwortbasierte einmalige Anmeldung steht für Microsoft Edge unter Windows 10 zur Verfügung, sobald Browsererweiterungen von Microsoft Edge unterstützt werden.
 >
 >
 

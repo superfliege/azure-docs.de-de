@@ -1,11 +1,11 @@
 ---
-title: "Probleme beim Anmelden bei einer Anwendung über den Zugriffsbereich | Microsoft-Dokumentation"
+title: Probleme beim Anmelden bei einer Anwendung über den Zugriffsbereich | Microsoft-Dokumentation
 description: Beheben von Problemen beim Zugreifen auf eine Anwendung aus dem Microsoft Azure AD-Zugriffsbereich unter myapps.microsoft.com
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -66,7 +66,7 @@ Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 
 -   Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher
 
--   Edge in Windows 10 Anniversary Edition oder höher
+-   Microsoft Edge in Windows 10 Anniversary Edition oder höher
 
 -   Chrome – unter Windows 7 oder höher und MacOS x oder höher
 
@@ -90,7 +90,7 @@ Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die
 
 7.  Melden Sie sich beim Zugriffsbereich an, und überprüfen Sie, ob Sie die für kennwortbasiertes SSO konfigurierten Anwendungen **starten** können.
 
-Sie können die Erweiterung für Chrome und Edge auch direkt über die folgenden Links herunterladen:
+Sie können die Erweiterung für Chrome und Microsoft Edge auch direkt über die folgenden Links herunterladen:
 
 -   [Zugriffsbereichserweiterung für Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 

@@ -26,7 +26,7 @@ Die Informationen in diesem Artikel helfen Ihnen beim Beheben von Problemen mit 
 ## <a name="overview"></a>Übersicht
 Wenn Sie eine Anwendungsproxyanwendung veröffentlichen, können Sie beim Zugriff auf die Anwendung nur Seiten in Ihrem Stammordner öffnen. Wenn die Seite nicht ordnungsgemäß angezeigt wird, fehlen der internen Stamm-URL für die Anwendung möglicherweise einige Seitenressourcen. Um dies zu beheben, stellen Sie sicher, dass Sie *alle* Ressourcen für die Seite als Teil Ihrer Anwendung veröffentlicht haben.
 
-Sie können überprüfen, ob das Problem dadurch verursacht wird, indem Sie eine Netzwerküberwachungssoftware öffnen (z.B. Fiddler oder F12-Tools in Internet Explorer/Edge), die Seite laden und nach Fehlern des Typs 404 suchen. Diese Fehler zeigen die Seiten an, die derzeit nicht gefunden werden und möglicherweise noch veröffentlicht werden müssen.
+Sie können überprüfen, ob das Problem dadurch verursacht wird, indem Sie eine Netzwerküberwachungssoftware öffnen (z.B. Fiddler oder F12-Tools in Internet Explorer/Microsoft Edge), die Seite laden und nach Fehlern des Typs 404 suchen. Diese Fehler zeigen die Seiten an, die derzeit nicht gefunden werden und möglicherweise noch veröffentlicht werden müssen.
 
 Ein Beispiel für diesen Fall wäre eine Ausgabenanwendung, die mit der internen URL <http://myapps/expenses> veröffentlicht wurde, jedoch das Stylesheet <http://myapps/style.css> verwendet. In diesem Fall wird das Stylesheet nicht in der Anwendung veröffentlicht, sodass das Laden der Ausgabenanwendung einen 404-Fehler beim Laden von „style.css“ auslöst. In diesem Beispiel kann das Problem durch eine Veröffentlichung der Anwendung mit der internen URL <http://myapp/> behoben werden.
 

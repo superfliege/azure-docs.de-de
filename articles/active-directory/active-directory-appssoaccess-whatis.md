@@ -76,7 +76,7 @@ Das kennwortbasierte einmalige Anmelden nutzt eine Browsererweiterung, um die An
 
 Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 * Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher
-* Edge in Windows 10 Anniversary Edition oder höher 
+* Microsoft Edge in Windows 10 Anniversary Edition oder höher 
 * Chrome – unter Windows 7 oder höher und MacOS x oder höher
 * Firefox 26.0 oder höher – unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 

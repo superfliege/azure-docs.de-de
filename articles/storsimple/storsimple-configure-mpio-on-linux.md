@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren von MPIO auf einem StorSimple-Linux-Host | Microsoft Docs
-description: "Konfigurieren von MPIO auf einem StorSimple-Gerät, das mit einem Linux-Host mit CentOS 6.6 verbunden ist"
+description: Konfigurieren von MPIO auf einem StorSimple-Gerät, das mit einem Linux-Host mit CentOS 6.6 verbunden ist
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -57,7 +57,7 @@ Die Datei "multipath.conf" enthält fünf Abschnitte:
 
 - **Standardeinstellungen auf Systemebene***(defaults)*: Sie können die Standardwerte auf Systemebene überschreiben.
 - **Gesperrte Geräte***(blacklist)*: Sie können eine Liste der Geräte konfigurieren, die nicht über "device-mapper" gesteuert werden sollen.
-- **Ausnahmen für schwarze Liste***(blacklist_exceptions)*: Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden, selbst wenn sie in der schwarzen Liste aufgeführt sind.
+- **Blockliste***(blacklist_exceptions)*: Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden, selbst wenn sie in der Blockliste aufgeführt sind.
 - **Einstellungen für den Speichercontroller***(devices)*: Sie können Konfigurationseinstellungen festlegen, die auf Geräte mit Hersteller- und Produktinformationen angewendet werden.
 - **Gerätespezifische Einstellungen***(multipaths)*: Sie können diesen Abschnitt dazu verwenden, die Konfigurationseinstellungen für einzelne LUNs zu optimieren.
 

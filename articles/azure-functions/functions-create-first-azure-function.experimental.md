@@ -62,7 +62,7 @@ Nun können Sie die neue Funktion ausführen, indem Sie eine HTTP-Anforderung se
 
 2. Fügen Sie die URL der Funktion in die Adressleiste Ihres Browsers ein. Fügen Sie den Wert der Abfragezeichenfolge `&name=<yourname>` am Ende der URL hinzu, und drücken Sie die Taste `Enter` auf Ihrer Tastatur, um die Anforderung auszuführen. Daraufhin sollte die von der Funktion zurückgegebene Antwort im Browser angezeigt werden.  
 
-    Im folgenden Beispiel ist die Antwort im Edge-Browser dargestellt (bei anderen Browsern wird unter Umständen auch XML-Code angezeigt):
+    Im folgenden Beispiel ist die Antwort im Microsoft Edge-Browser dargestellt (bei anderen Browsern wird unter Umständen auch XML-Code angezeigt):
 
     ![Funktionsantwort im Browser.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 

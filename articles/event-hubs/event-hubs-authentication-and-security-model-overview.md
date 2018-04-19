@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über Azure Event Hubs-Authentifizierung und -Sicherheitsmodell | Microsoft Docs"
-description: "Übersicht über Event Hubs-Authentifizierung und -Sicherheitsmodell."
+title: Übersicht über Azure Event Hubs-Authentifizierung und -Sicherheitsmodell | Microsoft Docs
+description: Übersicht über Event Hubs-Authentifizierung und -Sicherheitsmodell.
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 93841e30-0c5c-4719-9dc1-57a4814342e7
 ms.service: event-hubs
 ms.devlang: na
@@ -94,9 +94,9 @@ Sobald die Token erstellt wurden, wird jedem Client sein eigenes eindeutiges Tok
 
 Wenn der Client Daten an einen Event Hub sendet, markiert er seine Sendeanforderung mit dem Token. Um Lauschangriffe und Diebstahl von Token von einem Angreifer zu verhindern, muss die Kommunikation zwischen dem Client und dem Event Hub über einen verschlüsselten Kanal erfolgen.
 
-### <a name="blacklisting-clients"></a>Eintragen von Clients in eine schwarze Liste
+### <a name="blacklisting-clients"></a>Eintragen von Clients in eine Blockliste
 
-Wenn ein Token von einem Angreifer gestohlen wurde, kann der Angreifer den Client imitieren, dessen Token gestohlen wurde. Wird ein Client in eine schwarze Liste eingetragen, wird dieser Client als nicht verwendbar gekennzeichnet, bis er ein neues Token erhalten hat, das einen anderen Herausgeber verwendet.
+Wenn ein Token von einem Angreifer gestohlen wurde, kann der Angreifer den Client imitieren, dessen Token gestohlen wurde. Wird ein Client in eine Blockliste eingetragen, wird dieser Client als nicht verwendbar gekennzeichnet, bis er ein neues Token erhalten hat, das einen anderen Herausgeber verwendet.
 
 ## <a name="authentication-of-back-end-applications"></a>Authentifizierung von Back-End-Anwendungen
 

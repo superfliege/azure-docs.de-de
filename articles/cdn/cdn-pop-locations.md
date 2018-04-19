@@ -44,7 +44,7 @@ Dieser Artikel enthält die aktuellen POP-Standorte (Point of Presence) sortiert
 | Europa, Süden | Mailand, Italien<br />Madrid, Spanien | Italien<br />Spanien |
 | Afrika | Johannesburg, Südafrika | |
 | Naher Osten | Maskat, Oman<br />Fujirah, Vereinigte Arabische Emirate | Katar |
-| Asien | Hongkong<br />Bangalore, Indien<br />Chennai, Indien<br />Delhi, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Osaka, Japan<br />Tokio, Japan<br />Singapur<br />Seoul, Südkorea<br />Kaohsiung, Taiwan | Hongkong<br />Indien<br />Indonesien<br />Japan<br />Malaysia<br />Philippinen<br />Singapur<br />Taiwan<br />Thailand<br />Vietnam |
+| Asien | Hongkong<br />Bengaluru (Bangalore), Indien<br />Chennai, Indien<br />Delhi, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Osaka, Japan<br />Tokio, Japan<br />Singapur<br />Seoul, Südkorea<br />Kaohsiung, Taiwan | Hongkong<br />Indien<br />Indonesien<br />Japan<br />Malaysia<br />Philippinen<br />Singapur<br />Taiwan<br />Thailand<br />Vietnam |
 | Australien und Neuseeland | Melbourne, Australien<br />Sydney, Australien<br />Auckland, Neuseeland | Australien<br />Neuseeland |
 
 

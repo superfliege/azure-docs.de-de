@@ -1,12 +1,12 @@
 ---
 title: Azure-Netzwerksicherheit | Microsoft-Dokumentation
-description: "Enthält Informationen zu cloudbasierten Computingdiensten mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen."
+description: Enthält Informationen zu cloudbasierten Computingdiensten mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f0cc1716daa70bf7c860373819568774cf6f95d9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9b86eda1f4ddff9b61ff5b0f9c465e5ef6c2088b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-network-security"></a>Azure-Netzwerksicherheit
 
@@ -69,7 +69,7 @@ In diesem Dokument werden die folgenden Unternehmensfunktionen für Azure-Netzwe
 
 -   Hybridkonnektivität
 
--   Sicherheitskontrollen
+-   Einstellungen für einmaliges Anmelden
 
 -   Netzwerküberprüfung
 
@@ -311,7 +311,7 @@ Dieser Kommunikationsfluss ist möglich, weil Azure eine Reihe von Systemrouten 
 
 -   Aus einem VNet in ein lokales Netzwerk über ein VPN-Gateway.
 
-In vielen Unternehmen gelten strenge Sicherheits- und Konformitätsanforderungen, für die eine lokale Untersuchung aller Netzwerkpakete zur Durchsetzung bestimmter Richtlinien erforderlich ist. Azure verfügt über den Mechanismus der [Tunnelerzwingung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). Hierbei wird Datenverkehr von den VMs zum lokalen Standort geleitet, indem eine benutzerdefinierte Route erstellt wird oder [BGP](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp)-Ankündigungen (Border Gateway Protocol)
+In vielen Unternehmen gelten strenge Sicherheits- und Konformitätsanforderungen, für die eine lokale Untersuchung aller Netzwerkpakete zur Durchsetzung bestimmter Richtlinien erforderlich ist. Azure verfügt über den Mechanismus der [Tunnelerzwingung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). Hierbei wird Datenverkehr von den VMs zum lokalen Standort geleitet, indem eine benutzerdefinierte Route erstellt wird oder [BGP](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp)-Ankündigungen (Border Gateway Protocol) per ExpressRoute oder VPN genutzt werden.
 
 Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen Netzwerk konfiguriert. Das Umleiten von Datenverkehr an einen lokalen Standort wird als eine Standardroute zum Azure-VPN-Gateway umgesetzt.
 
@@ -392,7 +392,7 @@ Außerdem dient die Application Gateway-WAF als Unterstützung beim Überwachen 
 
 Das Protokoll im JSON-Format wird direkt im Speicherkonto des Kunden gespeichert. Sie verfügen über die vollständige Kontrolle über diese Protokolle und können Ihre eigenen Richtlinien für die Aufbewahrung anwenden.
 
-Darüber hinaus können Sie diese Protokolle per [Azure-Protokollintegration](https://aka.ms/AzLog) in Ihrem eigenen Analysesystem erfassen. WAF-Protokolle sind auch in die [Operations Management Suite (OMS)](https://www.microsoft.com/cloud-platform/operations-management-suite) integriert, sodass Sie OMS-Protokollanalysen nutzen können, um anspruchsvolle, differenzierte Abfragen auszuführen.
+Darüber hinaus können Sie diese Protokolle per [Azure-Protokollintegration](https://aka.ms/AzLog) in Ihrem eigenen Analysesystem erfassen. WAF-Protokolle sind auch in [Log Analytics](../log-analytics/log-analytics-overview.md) integriert, sodass Sie Log Analytics nutzen können, um anspruchsvolle, differenzierte Abfragen auszuführen.
 
 #### <a name="azure-web-application-firewall-waf"></a>Azure Web Application Firewall (WAF)
 
@@ -418,7 +418,7 @@ Hier sind die Kontrollelemente für die Netzwerkverfügbarkeit aufgeführt:
 
 **Azure Load balancer**
 
-Dient zum Sicherstellen der hohen Verfügbarkeit und Netzwerkleistung für Ihre Anwendungen. Es ist ein Layer-4-Lastenausgleichsmodul (TCP, UDP), das eingehenden Datenverkehr auf funktionierende Dienstinstanzen verteilt, die in einer Lastenausgleichsgruppe definiert sind.
+Dient zum Sicherstellen der Hochverfügbarkeit und Netzwerkleistung für Ihre Anwendungen. Es ist ein Layer-4-Lastenausgleichsmodul (TCP, UDP), das eingehenden Datenverkehr auf funktionierende Dienstinstanzen verteilt, die in einer Lastenausgleichsgruppe definiert sind.
 
  ![Azure Load Balancer](media/azure-network-security/azure-network-security-fig-14.png)
 
@@ -606,7 +606,7 @@ Network Watcher bietet eine Ansicht der Diagnoseprotokolle. Diese Ansicht enthä
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) ist ein Dienst in [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview), der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen.
+[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) ist ein Dienst in Azure, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen.
 
 Log Analytics bietet die folgenden Lösungen zur Überwachung Ihrer Netzwerke:
 

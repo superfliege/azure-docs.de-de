@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: e9343b4a0049b2eea30f903159fdeff0ae7ff851
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 07fb601b2cf6e3fe3cc9bfb7bca3bdcbec7e9ca7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Herausgeberleitfaden für Azure Marketplace und AppSource
 
@@ -32,7 +32,7 @@ Wenn Sie diesen Leitfaden gelesen haben, sind Sie mit den folgenden Themen besse
 - Welche Arten von Anwendungen und Dienstangeboten können veröffentlicht werden?
 - Wie lauten die technischen und geschäftlichen Anforderungen für die einzelnen Veröffentlichungsoptionen?
 - Erstellen einer Vorveröffentlichungs-Objektprüfliste
-- Weg zum Herausgeber
+- Herausgeber werden
 - Wo werden Angebote erstellt und veröffentlicht?
 - Optimieren einer Auflistung und Verwenden von Ressourcen für die Markteinführung, um die Wirkung zu verbessern
 - Zugreifen auf Hilfe und Support
@@ -84,7 +84,7 @@ Wecken Sie bei IT-Experten und Cloudentwicklern im Azure Marketplace das Interes
 Wecken Sie bei Geschäftsbenutzern das Interesse, in AppSource branchenspezifische SaaS-Anwendungen und Implementierungsdienste zu entdecken, zu testen und abzurufen und so gute Geschäftsergebnisse zu erzielen und die Amortisationszeit zu reduzieren: 
 
 
-|Kundenanforderung  |AppSource  |
+|Kunde  |AppSource  |
 |---------|---------|
 |**Geschäftslösungen, die mit bereits vom Kunden verwendeten Microsoft-Produkten funktionieren** | Ermöglicht es Kunden, Anwendungen und Dienste von Drittanbietern zu verwenden, um Cloudanwendungen und Technologien von Microsoft zu erweitern.       |
 |**Möglichkeit zum einfachen Suchen nach der geeigneten Lösung oder dem passenden Implementierungsdienst**    |   Ist eine zentrale Anlaufstelle zum Entdecken, Testen und Abrufen von Anwendungen und Diensten, Add-Ins und mehr.      |
@@ -121,7 +121,8 @@ Jede Storefront unterstützt mehrere Veröffentlichungsoptionen und Angebotstype
 Verwenden Sie die Kontaktaufnahme, wenn eine Beteiligung auf Testversions- oder Transaktionsebene nicht möglich ist. Der Vorteil dieses Ansatzes ist, dass Herausgeber, die eine marktinterne Lösung anbieten, dabei sofort Leads gewinnen und zu Erstabschlüssen führen können. Dies ist der Anfang des Umsatzwachstums. Der Nachteil ist jedoch, dass die Kundenbindung im Vergleich zu anderen Angebotstypen beschränkt ist.
 
 >[!IMPORTANT]
->„Kontaktaufnahme“ wird als Auflistungstyp nicht empfohlen. Diese Option sollte nur dann verwendet werden, wenn keine Testversion zur Verfügung gestellt werden kann. Die Kundenbindung ist am stärksten bei den Angebotstypen „Testen“ und „Transaktion“. Wenn Sie über eine Testversion verfügen, werden Sie in unserem Onboardingprozess je nach Szenario zu einer dieser Optionen geführt.
+<<<<<<< HEAD Die Kundenbindung ist am stärksten bei den Angebotstypen „Testen“ und „Transaktion“. Der Wert von „Kontaktaufnahme“ ist der Lead, den Sie erhalten. Wenn Sie also diesen Auflistungstyp auswählen, stellen Sie sicher, dass Ihr Leadziel konfiguriert ist und Sie darauf vorbereitet sind, den Lead zu maximieren. ======= „Kontaktaufnahme“ wird als Auflistungstyp nicht empfohlen. Diese Option sollte nur dann verwendet werden, wenn keine Testversion zur Verfügung gestellt werden kann. Die Kundenbindung ist am stärksten bei den Angebotstypen „Testen“ und „Transaktion“. Wenn Sie über eine Testversion verfügen, werden Sie in unserem Onboardingprozess je nach Szenario zu einer dieser Optionen geführt.
+>>>>>>> 2874631130f763b6e91e8725781400bcb76d6a62
 
 Wenn das Angebot im Wesentlichen aus Dienstleistungen (z.B. Bewertungen, Implementierungen, Workshops) besteht, sollten Sie den Angebotstyp „Beratungsdienste“ verwenden. Umfang, Dauer und Preis des Angebots müssen festgelegt werden, für einen einzelnen Kunden bestimmt sein und vor Ort durchgeführt werden.
 
@@ -410,7 +411,7 @@ In diesem Abschnitt werden die folgenden Schritte beschrieben:
 ### <a name="process-overview"></a>Prozessübersicht
 
 
-|Schritt für die Marketplace-Registrierung  |Zeit  |Beschreibung  |
+|Schritt für die Marketplace-Registrierung  |Zeit  |BESCHREIBUNG  |
 |---------|---------|---------|
 | Registrieren im Microsoft Partner Network | 15 Min. | Herausgeber müssen im Microsoft Partner Network (MPN) registriert sein, um die erste Ebene der Kontoüberprüfung durchführen zu können und zusätzliche Vorteile und Support als Azure Marketplace-Herausgeber zu erhalten. |
 |Erstellen einer Microsoft-ID     |   15 Minuten      |   Partner benötigen eine Microsoft-ID. Diese Microsoft-ID wird für den Zugriff auf das Cloud-Partnerportal benötigt.       |
@@ -469,13 +470,13 @@ Ausführliche Informationen zum Verwenden des Cloud-Partnerportals erhalten Sie,
 Dies ist die Liste der Supportoptionen für Azure Marketplace:
 
 **Allgemeine Azure Marketplace-Anfragen**
-|Supportkanal |Beschreibung |
+|Supportkanal |BESCHREIBUNG |
 |---------|---------|
 |E-Mail: cloudmarketplace@microsoft.com     |  Onboarding-Supportverteilerliste. Wird für Onboardinganfragen, die Einrichtung von Discovery-Sitzungen und Architecture Design Sessions mit Partnern verwendet.        |
 
 **Azure Marketplace-Veröffentlichungssupport**
 
-|Supportkanal  |Beschreibung  |
+|Supportkanal  |BESCHREIBUNG  |
 |---------|---------|
 |E-Mail: azurecertified@microsoft.com |   Unterstützung für Azure Marketplace-Veröffentlichungsanwendungen von Partnern. Die Geschäftszeiten sind in „Pacific Time“ angegeben.      |
 |E-Mail: AzureMarketOnboard@microsoft.com |   Unterstützung für das Antragsformular und den Prozess zur Azure Marketplace-Lösung. Die Geschäftszeiten sind in „Pacific Time“ angegeben.      |
@@ -483,14 +484,14 @@ Dies ist die Liste der Supportoptionen für Azure Marketplace:
 
 **Azure Marketplace-Portalunterstützung**
 
-|Supportkanal  |Beschreibung  |
+|Supportkanal  |BESCHREIBUNG  |
 |---------|---------|
 |E-Mail: [Support](https://go.microsoft.com/fwlink/?linkid=844975)    |   Marketplace-Veröffentlichungsportalsupport. Support ist zu jeder Zeit verfügbar (Tag und Nacht).        |
 
 **Technischer Support**
 
 
-|Supportkanal  |Beschreibung  |
+|Supportkanal  |BESCHREIBUNG  |
 |---------|---------|
 |Slack: [Join Marketplace Slack](https://join.marketplace.azure.com) (Marketplace Slack beitreten)    |   Slack-Umgebung zur Unterstützung von Partnern bei technischen Problemen. In dieser Umgebung arbeiten derzeit mehr als 350 Partner.        |
 |MSDN-Foren: [Marketplace](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=DataMarket)     | Microsoft Developer Network-Forum.         |
@@ -499,7 +500,7 @@ Dies ist die Liste der Supportoptionen für Azure Marketplace:
 
 **Marketingressourcen**
 
-|Supportkanal  |Beschreibung  |
+|Supportkanal  |BESCHREIBUNG  |
 |---------|---------|
 |E-Mail: cosell@microsoft.com    |  Unterstützung für Onboardingprozesse und Fragen im Zusammenhang mit dem Co-Sell-Programm. Befindet sich in der Zone mit „Pacific Time“.        |
 |E-Mail: gtm@microsoft.com    |  Unterstützung zu GTM-Vorteilen und Programmfragen. Die Geschäftszeiten sind in „Pacific Time“ angegeben.        |

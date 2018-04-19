@@ -56,7 +56,7 @@ In der folgenden Tabelle finden Sie Informationen zu Regionen und geopolitischen
 | **Geopolitische Region** | **Azure-Regionen** | **ExpressRoute-Standorte** |
 | --- | --- | --- |
 | **US-Government Cloud** |USA Gov Iowa, USA Gov Virginia, US DoD, Mitte+, US DoD, Osten  |Chicago, Dallas, New York, Seattle, Silicon Valley, Washington DC |
-| **China** |China (Norden), China (Osten) |Peking, Shanghai |
+| **China** |China (Norden), China (Osten) |Peking (Beijing), Shanghai |
 | **Deutschland** |Deutschland, Mitte, Deutschland, Ost |Berlin, Frankfurt |
 
 Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standard-SKU nicht unterstützt. Sie müssen das ExpressRoute Premium-Add-On aktivieren, um Unterstützung für globale Konnektivität zu erhalten. Verbindungen mit nationalen Cloudumgebungen werden nicht unterstützt. Wenden Sie sich an Ihren Konnektivitätsanbieter, wenn Sie derartige Verbindungen implementieren möchten.
@@ -119,7 +119,7 @@ Die folgende Tabelle enthält die Konnektivitätsstandorte und die dazugehörige
 ### <a name="china"></a>China
 | **Location** | **Service Providers** |
 | --- | --- |
-| **Peking** |China Telecom |
+| **Peking (Beijing)** |China Telecom |
 | **Shanghai** |China Telecom |
 
 Weitere Informationen finden Sie unter [ExpressRoute in China](http://www.windowsazure.cn/home/features/expressroute/)

@@ -1,11 +1,11 @@
 ---
-title: "Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services – Häufig gestellte Fragen | Microsoft-Dokumentation"
-description: "Dieser Artikel behandelt häufig gestellte Fragen zur Konfiguration und Verwaltung von Microsoft Azure Cloud Services."
+title: Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services – Häufig gestellte Fragen | Microsoft-Dokumentation
+description: Dieser Artikel behandelt häufig gestellte Fragen zur Konfiguration und Verwaltung von Microsoft Azure Cloud Services.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -192,7 +192,7 @@ Diese Schritte könnten über einen Starttask automatisiert werden, sodass immer
 Sobald dies geschehen ist, können Sie mit einer der folgenden Methoden überprüfen, ob HTTP/2 aktiviert wurde:
 
 - Aktivieren Sie die Protokollversion in IIS-Protokollen, und schauen Sie in die IIS-Protokolle. HTTP/2 wird in den Protokollen angezeigt. 
-- Aktivieren Sie „F12 Developer Tool“ in Internet Explorer/Edge, und wechseln Sie zur Registerkarte „Netzwerk“, um das Protokoll zu überprüfen. 
+- Aktivieren Sie „F12 Developer Tool“ in Internet Explorer/Microsoft Edge, und wechseln Sie zur Registerkarte „Netzwerk“, um das Protokoll zu überprüfen. 
 
 Weitere Informationen finden Sie unter [HTTP/2 on IIS](https://blogs.iis.net/davidso/http2) (HTTP/2 auf IIS).
 

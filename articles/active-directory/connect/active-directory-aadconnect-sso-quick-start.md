@@ -148,7 +148,7 @@ Das Rollout der Azure AD-URL für Firefox und Google Chrome unter Mac mithilfe v
 
 #### <a name="known-browser-limitations"></a>Bekannte Browsereinschränkungen
 
-Das nahtlose einmalige Anmelden funktioniert in Firefox- und Edge-Browsern nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird.
+Das nahtlose einmalige Anmelden funktioniert in Firefox- und Microsoft Edge-Browsern nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird.
 
 ## <a name="step-4-test-the-feature"></a>Schritt 4: Testen des Features
 

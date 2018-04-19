@@ -1,12 +1,12 @@
 ---
-title: "Vom geografischen Routingtyp des Azure Traffic Managers verwendete Länder-/Regionshierarchie| Microsoft-Dokumentation"
-description: "Dieser Artikel listet die Länder-/Regionshierarchie auf, die vom geografischen Routingtyp des Azure Traffic Managers verwendet wird"
+title: Vom geografischen Routingtyp des Azure Traffic Managers verwendete Länder-/Regionshierarchie| Microsoft-Dokumentation
+description: Dieser Artikel listet die Länder-/Regionshierarchie auf, die vom geografischen Routingtyp des Azure Traffic Managers verwendet wird
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -482,7 +482,7 @@ In diesem Artikel sind die Länder und Regionen aufgelistet, die von der **geogr
 
         - CF(Zentralafrikanische Republik)
 
-        - CG(Kongo)
+        - CG(Kongo, Demokratische Republik)
 
         - CI(Côte d’Ivoire)
 

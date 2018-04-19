@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Azure Redis Cache | Microsoft Docs
-description: "Informationen zum Ausführen von Verwaltungsaufgaben wie Neustarten und Planen von Updates für Azure Redis Cache"
+description: Informationen zum Ausführen von Verwaltungsaufgaben wie Neustarten und Planen von Updates für Azure Redis Cache
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -42,7 +42,7 @@ Die Auswirkungen auf Clientanwendungen hängen von den Knoten ab, die Sie neu st
 
 * **Master** : Wenn der Masterknoten neu gestartet wird, führt Azure Redis Cache ein Failover auf den Replikatknoten durch, der zum Master hochgestuft wird. Während dieses Failovers gibt es möglicherweise ein kurzes Intervall, in dem keine Verbindungen mit dem Cache aufgebaut werden können.
 * **Untergeordneter Knoten** : Wenn der Slaveknoten neu gestartet wird, hat dies meist keine Auswirkungen auf Cacheclients.
-* **Master und Slave** : Wenn beide Cacheknoten neu gestartet werden, gehen alle Daten im Cache verloren, und es können erst wieder Verbindungen mit dem Cache hergestellt werden, wenn der primäre Knoten wieder online ist. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzte Sicherung wiederhergestellt, sobald der Cache wieder online ist. Allerdings gehen alle Cacheschreibvorgänge verloren, die nach der letzten Sicherung durchgeführt wurden.
+* **Primär- und Sekundärgerät** : Wenn beide Cacheknoten neu gestartet werden, gehen alle Daten im Cache verloren, und es können erst wieder Verbindungen mit dem Cache hergestellt werden, wenn der primäre Knoten wieder online ist. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzte Sicherung wiederhergestellt, sobald der Cache wieder online ist. Allerdings gehen alle Cacheschreibvorgänge verloren, die nach der letzten Sicherung durchgeführt wurden.
 * **Knoten eines Premium-Caches mit aktiviertem Clustering:** Wenn Sie einen oder mehrere Knoten eines Premium-Caches mit aktiviertem Clustering neu starten, entspricht das Verhalten für die ausgewählten Knoten dem Neustart des oder der entsprechenden Knoten eines nicht gruppierten Caches.
 
 > [!IMPORTANT]

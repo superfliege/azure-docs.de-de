@@ -2,10 +2,10 @@
 title: Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus
 description: Erfahren Sie, wie Sie von einer App Service-Umgebung aus eine sichere Verbindung mit Back-End-Ressourcen herstellen.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.service: app-service
 ms.workload: na
@@ -52,7 +52,7 @@ Es gibt zwei Ansätze zum Einschränken des Datenverkehrs zu diesem Endpunkt:
 * [Netzwerksicherheitsgruppen][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Einschränken des Zugriffs mit einer Netzwerk-ACL
-Port 1433 kann über eine Netzwerk-Zugriffssteuerungsliste geschützt werden.  Im Beispiel unten werden Clientadressen innerhalb des virtuellen Netzwerks auf eine weiße Liste gesetzt und der Zugriff auf alle anderen Clients blockiert.
+Port 1433 kann über eine Netzwerk-Zugriffssteuerungsliste geschützt werden.  Im Beispiel unten werden Clientadressen innerhalb des virtuellen Netzwerks auf eine Zulassungsliste gesetzt und der Zugriff auf alle anderen Clients blockiert.
 
 ![Beispiel zu Netzwerk-Zugriffssteuerungslisten][NetworkAccessControlListExample]
 

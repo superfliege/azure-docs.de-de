@@ -185,7 +185,7 @@ Sie haben zwei Optionen zum Aufzeichnen einer F12-Ablaufverfolgung:
 3. Überprüfen Sie, ob die Registerkarte **Netzwerk** ausgewählt ist, und klicken Sie dann auf die grüne Schaltfläche **Wiedergeben**.
 4. Führen Sie die Schritte zum Reproduzieren des Problems aus.
 5. Klicken Sie auf die rote Schaltfläche **Beenden**.
-6. Klicken Sie auf die Schaltfläche **Speichern** (Datenträgersymbol), und speichern Sie die HAR-Datei (in Internet Explorer und Edge). *Oder* klicken Sie mit der rechten Maustaste auf die HAR-Datei, und wählen Sie dann **HAR mit Inhalte speichern** (in Chrome) aus.
+6. Klicken Sie auf die Schaltfläche **Speichern** (Datenträgersymbol), und speichern Sie die HAR-Datei (in Internet Explorer und Microsoft Edge). *Oder* klicken Sie mit der rechten Maustaste auf die HAR-Datei, und wählen Sie dann **HAR mit Inhalte speichern** (in Chrome) aus.
 
 ### <a name="f12-console-output"></a>F12-Konsolenausgabe
 

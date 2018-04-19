@@ -58,7 +58,7 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](act
 - Es handelt sich um ein kostenloses Feature, sodass Sie für dessen Verwendung keine kostenpflichtigen Editionen von Azure AD benötigen.
 - Ist auf webbrowserbasierten Clients und Office-Clients möglich, die eine [moderne Authentifizierung](https://aka.ms/modernauthga) auf Plattformen und Browsern unterstützen, die eine Kerberos-Authentifizierung ausführen können:
 
-| Betriebssystem/Browser |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
+| Betriebssystem/Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|Ja|Nein|Ja|Ja\*|N/V
 |Windows 8.1|Ja|N/V|Ja|Ja\*|N/V
