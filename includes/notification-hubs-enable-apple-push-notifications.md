@@ -37,7 +37,7 @@ Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Appl
      
       Hierdurch wird Ihre App-ID generiert, und Sie werden zur Bestätigung der Daten aufgefordert. Klicken Sie auf **Registrieren** , um die neue App-ID zu bestätigen.
      
-      Nachdem Sie auf **Registrieren** geklickt haben, wird der Bildschirm **Registrierung abgeschlossen** wie unten gezeigt geöffnet. Klicken Sie auf **Done**.
+      Nachdem Sie auf **Registrieren** geklickt haben, wird der Bildschirm **Registrierung abgeschlossen** wie unten gezeigt geöffnet. Klicken Sie auf **Fertig**.
       
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
