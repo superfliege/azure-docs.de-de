@@ -1,11 +1,11 @@
 ---
 title: Verwenden von Azure Machine Learning mit SQL Data Warehouse | Microsoft Docs
-description: "Tipps für die Verwendung von Azure Machine Learning mit Azure SQL Data Warehouse für die Entwicklung von Lösungen."
+description: Tipps für die Verwendung von Azure Machine Learning mit Azure SQL Data Warehouse für die Entwicklung von Lösungen.
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: ac6bc731-6add-47a9-b3fe-68996e656f4d
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 ms.openlocfilehash: c19860c6b5b1c15d1e29ddc67f9cf9ad4618725b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-with-sql-data-warehouse"></a>Verwenden von Azure Machine Learning mit SQL Data Warehouse
 Azure Machine Learning ist ein vollständig verwalteter Predictive Analytics-Dienst, für das Erstellen von Vorhersagemodellen anhand Ihrer Daten in SQL Data Warehouse. Diese können Sie anschließend als sofort nutzbare Webdienste veröffentlichen. Zum Erlernen der Grundlagen von Vorhersageanalysen und maschinellem Lernen lesen Sie [Einführung in Machine Learning in Azure][Introduction to Machine Learning on Azure].  Anschließend erfahren Sie im [Tutorial zum Erstellen eines Experiments][Create experiment tutorial] wie Sie ein Modell zum maschinellen Lernen erstellen, trainieren, bewerten und testen.

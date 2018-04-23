@@ -1,11 +1,11 @@
 ---
 title: Erstellen und Freigeben von Dashboards von Azure Log Analytics-Daten | Microsoft-Dokumentation
-description: "In diesem Tutorial wird beschrieben, wie in Log Analytics-Dashboards alle gespeicherten Protokollsuchvorgänge visualisiert werden können, um Ihnen eine zentrale Übersicht über Ihre Umgebung zu ermöglichen."
+description: In diesem Tutorial wird beschrieben, wie in Log Analytics-Dashboards alle gespeicherten Protokollsuchvorgänge visualisiert werden können, um Ihnen eine zentrale Übersicht über Ihre Umgebung zu ermöglichen.
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 272945134b534a5ded794379ce5e96b0902a4227
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: f6a70f33b143a5b9354411af9717d2a21e24af0c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Erstellen und Freigeben von Dashboards von Log Analytics-Daten
 
@@ -34,7 +34,7 @@ Log Analytics-Dashboards können alle Ihre gespeicherten Protokollsuchen visuali
 Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein, der [mit dem Log Analytics-Arbeitsbereich verbunden](log-analytics-quick-collect-azurevm.md) ist.  
  
 ## <a name="log-in-to-azure-portal"></a>Anmelden beim Azure-Portal
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an. 
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an. 
 
 ## <a name="create-a-shared-dashboard"></a>Erstellen eines freigegebenen Dashboards
 
@@ -48,7 +48,7 @@ Bei dieser Aktion wird ein neues, leeres, privates Dashboard erstellt. Außerdem
 
 Wenn Sie ein Dashboard erstellen, ist es standardmäßig ein privates Dashboard. Dies bedeutet, dass Sie die einzige Person sind, die es anzeigen kann. Verwenden Sie die Schaltfläche **Freigeben**, die neben den anderen Dashboardbefehlen angezeigt wird, um es auch für andere Benutzer sichtbar zu machen.<br> ![Freigeben eines neuen Dashboards im Azure-Portal](media/log-analytics-tutorial-dashboards/log-analytics-share-dashboard.png) 
 
-Sie werden aufgefordert, für die Veröffentlichung des Dashboards ein Abonnement und eine Ressourcengruppe auszuwählen. Während der Veröffentlichung über das Portal werden Sie der Einfachheit halber zu einem Muster geführt, bei dem Sie Dashboards in einer Ressourcengruppe mit dem Namen **Dashboards**anordnen.  Überprüfen Sie das ausgewählte Abonnement, und klicken Sie dann auf **Veröffentlichen**.  Der Zugriff auf die im Dashboard angezeigten Informationen wird mit [Azure Resource Based Access Control](../active-directory/role-based-access-control-configure.md) gesteuert.   
+Sie werden aufgefordert, für die Veröffentlichung des Dashboards ein Abonnement und eine Ressourcengruppe auszuwählen. Während der Veröffentlichung über das Portal werden Sie der Einfachheit halber zu einem Muster geführt, bei dem Sie Dashboards in einer Ressourcengruppe mit dem Namen **Dashboards**anordnen.  Überprüfen Sie das ausgewählte Abonnement, und klicken Sie dann auf **Veröffentlichen**.  Der Zugriff auf die im Dashboard angezeigten Informationen wird mit [Azure Resource Based Access Control](../role-based-access-control/role-assignments-portal.md) gesteuert.   
 
 ## <a name="visualize-a-log-search"></a>Visualisieren einer Protokollsuche
 

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 60836bd88335dc5c58423bad94b6a95e9782c474
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9ba7d8c403a7778a52b858a41ad41bca405cb199
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Erstellen einer durch Azure Cosmos DB ausgelösten Funktion
 
@@ -111,7 +111,7 @@ Als Nächstes stellen Sie eine Verbindung mit Ihrem Azure Cosmos DB-Konto her un
     | **Sammlungs-ID** | Items | Der Name der neuen Sammlung. Dieser muss mit dem in der Funktionsbindung definierten Namen übereinstimmen.  |
     | **Speicherkapazität** | Fixed (10 GB)|Verwenden Sie den Standardwert. Dieser Wert gibt die Speicherkapazität der Datenbank an. |
     | **Durchsatz** |400 RU| Verwenden Sie den Standardwert. Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten. |
-    | **[Partitionsschlüssel](../cosmos-db/partition-data.md#design-for-partitioning)** | /category|Ein Partitionsschlüssel, der Daten gleichmäßig auf alle Partitionen verteilt. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung einer leistungsfähigen Sammlung. | 
+    | **[Partitionsschlüssel](../cosmos-db/partition-data.md#design-for-scale)** | /category|Ein Partitionsschlüssel, der Daten gleichmäßig auf alle Partitionen verteilt. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung einer leistungsfähigen Sammlung. | 
 
 1. Klicken Sie auf **OK**, um die Sammlung **Tasks** zu erstellen. Es dauert möglicherweise kurze Zeit, bis die Sammlung erstellt ist.
 

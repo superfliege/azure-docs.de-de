@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: genli
-ms.openlocfilehash: 916fbb436806c64ded9ebf9fdd9c57c42d0809f0
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: cc43d1a0e07eac78a47e6f183c2fd066a489f4f4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services – Häufig gestellte Fragen (FAQs)
 
@@ -192,7 +192,7 @@ Diese Schritte könnten über einen Starttask automatisiert werden, sodass immer
 Sobald dies geschehen ist, können Sie mit einer der folgenden Methoden überprüfen, ob HTTP/2 aktiviert wurde:
 
 - Aktivieren Sie die Protokollversion in IIS-Protokollen, und schauen Sie in die IIS-Protokolle. HTTP/2 wird in den Protokollen angezeigt. 
-- Aktivieren Sie „F12 Developer Tool“ in Internet Explorer/Microsoft Edge, und wechseln Sie zur Registerkarte „Netzwerk“, um das Protokoll zu überprüfen. 
+- Aktivieren Sie „F12 Developer Tool“ in Internet Explorer/Edge, und wechseln Sie zur Registerkarte „Netzwerk“, um das Protokoll zu überprüfen. 
 
 Weitere Informationen finden Sie unter [HTTP/2 on IIS](https://blogs.iis.net/davidso/http2) (HTTP/2 auf IIS).
 
@@ -201,7 +201,7 @@ Weitere Informationen finden Sie unter [HTTP/2 on IIS](https://blogs.iis.net/dav
 ### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Wie implementiere ich rollenbasierten Zugriff für Cloud Services?
 Das rollenbasierte Zugriffsmodell (Role-Based Access Control, RBAC) wird von Cloud Services nicht unterstützt, da es sich nicht um einen Azure Resource Manager-basierten Dienst handelt.
 
-Weitere Informationen finden Sie unter [Azure RBAC im Vergleich zu klassischen Administratoren für Abonnements](../active-directory/role-based-access-control-what-is.md#azure-rbac-vs-classic-subscription-administrators).
+Weitere Informationen finden Sie unter [Azure RBAC im Vergleich zu klassischen Administratoren für Abonnements](../role-based-access-control/overview.md#azure-rbac-vs-classic-subscription-administrators).
 
 ## <a name="remote-desktop"></a>Remotedesktop
 
