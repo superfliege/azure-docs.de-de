@@ -1,12 +1,12 @@
 ---
-title: "Übertragung des Besitzes eines Azure-Abonnements auf ein anderes Konto | Microsoft-Dokumentation"
-description: "In diesem Artikel wird die beschrieben, wie die Übertragung eines Azure-Abonnements auf einen anderen Benutzer erfolgt, und Sie finden hier einige häufig gestellte Fragen (FAQs) zu dem Prozess"
-keywords: "azure-abonnement übertragen, azure übertragung abonnement, verschieben azure-abonnement auf anderes konto, azure änderung besitzer des abonnements, übertragung azure-abonnement auf anderes konto"
-services: 
-documentationcenter: 
+title: Übertragung des Besitzes eines Azure-Abonnements auf ein anderes Konto | Microsoft-Dokumentation
+description: In diesem Artikel wird die beschrieben, wie die Übertragung eines Azure-Abonnements auf einen anderen Benutzer erfolgt, und Sie finden hier einige häufig gestellte Fragen (FAQs) zu dem Prozess
+keywords: azure-abonnement übertragen, azure übertragung abonnement, verschieben azure-abonnement auf anderes konto, azure änderung besitzer des abonnements, übertragung azure-abonnement auf anderes konto
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: c8ecdc1e-c9c5-468c-a024-94ae41e64702
 ms.service: billing
@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff694ee7c2ecf7f8ee5ea89902fa77efad3f501c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e81037aeb3a8aee4f70eaf33280b1dc0d483332
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/02/2018
 
 > [!IMPORTANT]
 > 
-> Wenn Sie ein Abonnement auf einen neuen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen in der [rollenbasierten Zugriffssteuerung (RBAC)](../active-directory/role-based-access-control-what-is.md) dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert.
+> Wenn Sie ein Abonnement auf einen neuen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen in der [rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md) dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert.
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Übertragen des Besitzes eines Azure-Abonnements
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 03/02/2018
 
    > [!IMPORTANT]
    > 
-   > Wenn Sie ein Abonnement auf einen neuen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen in der [rollenbasierten Zugriffssteuerung (RBAC)](../active-directory/role-based-access-control-what-is.md) dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert.
+   > Wenn Sie ein Abonnement auf einen neuen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen in der [rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md) dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert.
 
    ![Dialogfeld „Abonnement übertragen“](./media/billing-subscription-transfer/image2.PNG)
 
@@ -115,7 +115,7 @@ Der Kontoadministrator ist die Person, die sich für das Azure-Abonnement regist
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Wird alles übertragen? Auch Ressourcengruppen, virtuelle Computer, Datenträger und andere aktive Dienste?
 
-Alle Ressourcen wie virtuelle Computer, Datenträger und Websites werden auf den neuen Besitzer übertragen. Allerdings werden [Administratorrollen](billing-add-change-azure-subscription-administrator.md) und Richtlinien für die [rollenbasierte Zugriffssteuerung (RBAC)](../active-directory/role-based-access-control-configure.md), die Sie eingerichtet haben, nicht zwischen verschiedenen Verzeichnissen übertragen. [App-Registrierungen](../active-directory//develop/active-directory-integrating-applications.md) und andere mandantenspezifische Dienste werden ebenfalls nicht übertragen.
+Alle Ressourcen wie virtuelle Computer, Datenträger und Websites werden auf den neuen Besitzer übertragen. Allerdings werden [Administratorrollen](billing-add-change-azure-subscription-administrator.md) und Richtlinien für die [rollenbasierte Zugriffssteuerung (RBAC)](../role-based-access-control/role-assignments-portal.md), die Sie eingerichtet haben, nicht zwischen verschiedenen Verzeichnissen übertragen. [App-Registrierungen](../active-directory//develop/active-directory-integrating-applications.md) und andere mandantenspezifische Dienste werden ebenfalls nicht übertragen.
 
 ### <a id="no-button"></a> Warum wird die Schaltfläche „Abonnement übertragen“ nicht angezeigt?
 

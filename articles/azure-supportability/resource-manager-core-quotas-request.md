@@ -1,6 +1,6 @@
 ---
-title: "Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten | Microsoft-Dokumentation"
-description: "Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten"
+title: Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten | Microsoft-Dokumentation
+description: Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten
 author: ganganarayanan
 ms.author: gangan
 ms.date: 1/18/2017
@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: c22a6dde0067385a1bf8d889cc76178bb44dd0ac
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resource-manager-vcpu-quota-increase-requests"></a>Anforderungen zur Erhöhung von Resource Manager-vCPU-Kontingenten
 
@@ -19,7 +19,7 @@ Resource Manager-vCPU-Kontingente werden auf Regionsebene und auf der Ebene der 
 Weitere Informationen zur Erzwingung von Kontingenten finden Sie auf der Seite [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](http://aka.ms/quotalimits).
 Auf der Seite [Virtuelle Windows-Computer – Preise](http://aka.ms/pricingcompute) können Sie die Kosten und die Leistung vergleichen und sich ausführlicher über SKU-Familien informieren.
 
-Wenn Sie eine Erhöhung anfordern möchten, erstellen Sie im Azure-Portal ([https://portal.azure.com](https://portal.azure.com)) eine kontingentbezogene Supportanfrage für vCPUs.
+Wenn Sie eine Erhöhung anfordern möchten, erstellen Sie im Azure-Portal [https://portal.azure.com](https://portal.azure.com) eine kontingentbezogene Supportanfrage für vCPUs.
 
 > [!NOTE]
 > Informationen zum Erstellen einer Supportanfrage im Azure-Portal finden Sie [hier](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
