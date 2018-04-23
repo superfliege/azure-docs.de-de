@@ -2,24 +2,24 @@
 title: Verbinden von Sparkfun ESP8266 Thing Dev mit Azure IoT Hub | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Sparkfun ESP8266 Thing Dev einrichten und eine Verbindung mit Azure IoT Hub herstellen, um in diesem Tutorial Daten an die Azure-Cloudplattform zu senden.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.assetid: 587fe292-9602-45b4-95ee-f39bba10e716
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2017
-ms.author: xshi
-ms.openlocfilehash: 557f0cdf375b345e0dbe0526f5a5bd3c050dec38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: e6837d0312217d8e27e3639b8220f5016a2505a6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>Verbinden von Sparkfun ESP8266 Thing Dev mit Azure IoT Hub in der Cloud
 
@@ -34,14 +34,14 @@ Verbinden Sie Sparkfun ESP8266 Thing Dev mit einem von Ihnen erstellten IoT Hub.
 > [!NOTE]
 > Bei Verwendung von anderen ESP8266-Boards können Sie diese Schritte dennoch durchführen, um es mit Ihrem IoT Hub zu verbinden. Je nach verwendetem ESP8266-Board müssen Sie möglicherweise das `LED_PIN`-Objekt neu konfigurieren. Beispiel: Bei Verwendung von ESP8266 aus AI-Thinker können Sie es von `0` in `2` ändern. Wenn Sie noch über kein Kit verfügen: Klicken Sie [hier](http://azure.com/iotstarterkits).
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+## <a name="what-you-will-learn"></a>Lernziele
 
 * Erstellen eines IoT Hubs und Registrieren eines Geräts für Thing Dev
 * Herstellen einer Verbindung von Thing Dev mit dem Sensor und Ihrem Computer
 * Erfassen von Sensordaten durch Ausführen einer Beispielanwendung auf Thing Dev
 * Senden der Sensordaten an Ihren IoT Hub
 
-## <a name="what-you-will-need"></a>Sie benötigen Folgendes
+## <a name="what-you-will-need"></a>Voraussetzungen
 
 ![Für das Tutorial erforderliche Teile](media/iot-hub-sparkfun-thing-dev-get-started/2_parts-needed-for-the-tutorial.png)
 

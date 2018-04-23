@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: acdd829785c44f6683c356c135587be183cce392
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d394c856b2f27446ab28c44fe4fed2dfd59ae62f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Vergleich von Azure Data Lake Store und Azure Blob Storage
 In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lake Store und Azure Blob Storage zusammengefasst und einige wichtige Aspekte der Big Data-Verarbeitung aufgezeigt. Azure Blob Storage ist ein universell einsetzbarer und skalierbarer Objektspeicher, der auf eine Vielzahl von Speicherszenarien ausgelegt ist. Azure Data Lake Store ist ein hochgradig skalierbares Repository, das für Big Data-Analyseworkloads optimiert ist.
@@ -37,7 +37,7 @@ In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lak
 | Datenvorgänge – Autorisierung |POSIX-Zugriffssteuerungslisten (ACLs).  Auf Azure Active Directory-Identitäten basierende ACLs können auf Datei- und Ordnerebene festgelegt werden. |Für die Autorisierung auf Kontoebene – Verwenden Sie [Zugriffsschlüssel](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>Für Konto-, Container- oder Blobautorisierung – Verwenden Sie [Shared Access Signature-Schlüssel](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | Datenvorgänge – Überwachung |Verfügbar. Weitere Informationen finden Sie [hier](data-lake-store-diagnostic-logs.md) . |Verfügbar |
 | Verschlüsselung für ruhende Daten |<ul><li>Transparent, serverseitig</li> <ul><li>Mit dienstverwalteten Schlüsseln</li><li>Mit kundenverwalteten Schlüsseln in Azure Key Vault</li></ul></ul> |<ul><li>Transparent, serverseitig</li> <ul><li>Mit dienstverwalteten Schlüsseln</li><li>Mit kundenverwalteten Schlüsseln in Azure Key Vault (Vorschau)</li></ul><li>Clientseitige Verschlüsselung</li></ul> |
-| Verwaltungsvorgänge (z.B. Kontoerstellung) |[Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |[Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |
+| Verwaltungsvorgänge (z.B. Kontoerstellung) |[Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |[Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |
 | Entwickler-SDKs |.NET, Java, Python, Node.js |.NET, Java, Python, Node.js, C++, Ruby, PHP, Go, Android, iOS |
 | Leistung von Analyseworkloads |Optimierte Leistung für parallele Analyseworkloads. Hoher Durchsatz, hohe IOPS. |Optimierte Leistung für parallele Analyseworkloads. |
 | Größenbeschränkungen |Keine Beschränkungen für Kontogrößen, Dateigrößen oder die Anzahl von Dateien. |Die geltenden Einschränkungen finden Sie [hier](../storage/common/storage-scalability-targets.md). Für größere Kontolimits wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/). |

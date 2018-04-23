@@ -1,31 +1,31 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel: Lastenausgleich für den Datenverkehr zu virtuellen Computern für hohe Verfügbarkeit | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel: Lastenausgleich für den Datenverkehr zu virtuellen Computern für hohe Verfügbarkeit"
+title: 'Azure PowerShell-Skriptbeispiel: Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit | Microsoft-Dokumentation'
+description: 'Azure PowerShell-Skriptbeispiel: Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit'
 services: load-balancer
 documentationcenter: load-balancer
 author: georgewallace
 manager: timlt
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
-ms.openlocfilehash: c77def8906b151f2cc6e4bbc4188be8ecbeac732
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61d65cbdcf7867cc7a2a225648dc8b1ab7137bcb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="load-balance-traffic-to-vms-for-high-availability"></a>Lastenausgleich für den Datenverkehr zu virtuellen Computern für hohe Verfügbarkeit
+# <a name="load-balance-traffic-to-vms-for-high-availability"></a>Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit
 
 Dieses Beispielskript erstellt alle Komponenten, die zum Ausführen mehrerer Windows-VMs in einer Konfiguration mit hoher Verfügbarkeit und Lastenausgleich benötigt werden. Nach dem Ausführen dieses Skripts verfügen Sie über drei virtuelle Computer, die in einer Azure-Verfügbarkeitsgruppe zusammengefasst und über eine Azure Load Balancer-Instanz zugänglich sind.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Connect-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengruppe, einen virtuellen Computer, eine Verfügbarkeitsgruppe, einen Load Balancer und alle zugehörigen Ressourcen zu erstellen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Erstellt eine Subnetzkonfiguration. Diese Konfiguration wird mit dem Prozess der Erstellung des virtuellen Netzwerks verwendet. |

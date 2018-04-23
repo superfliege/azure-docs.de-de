@@ -1,11 +1,11 @@
 ---
-title: "Zuweisen des Zugriffs auf eine Azure-Ressource für eine MSI mithilfe von PowerShell"
-description: "Schrittweise Anweisungen für das Zuweisen von MSI zu einer Ressource und das Zuweisen des Zugriffs für eine andere Ressource mithilfe von PowerShell."
+title: Zuweisen des Zugriffs auf eine Azure-Ressource für eine MSI mithilfe von PowerShell
+description: Schrittweise Anweisungen für das Zuweisen von MSI zu einer Ressource und das Zuweisen des Zugriffs für eine andere Ressource mithilfe von PowerShell.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c9f146e829e463fbdaf1bcff8747ffc5dd055ecb
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: ac8cca1e80defca33a879db5d4c160362314931a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-powershell"></a>Zuweisen des Zugriffs auf eine Ressource für eine MSI (Managed Service Identity, verwaltete Dienstidentität) mithilfe von PowerShell
 
@@ -36,10 +36,10 @@ Installieren Sie [Azure PowerShell, Version 4.3.1](https://www.powershellgallery
 
 Nachdem Sie MSI für eine Azure-Ressource aktiviert haben, [zum Beispiel für einen virtuellen Azure-Computer](msi-qs-configure-powershell-windows-vm.md), gehen Sie wie folgt vor:
 
-1. Melden Sie sich bei Azure mithilfe des Cmdlets `Login-AzureRmAccount` an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, unter dem Sie die MSI konfiguriert haben:
+1. Melden Sie sich bei Azure mithilfe des Cmdlets `Connect-AzureRmAccount` an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, unter dem Sie die MSI konfiguriert haben:
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 2. In diesem Beispiel wird einem virtuellen Azure-Computer der Zugriff auf ein Speicherkonto gewährt. Zunächst wird [Get-AzureRMVM](/powershell/module/azurerm.compute/get-azurermvm) verwendet, um den Dienstprinzipal für den virtuellen Computer mit dem Namen „myVM“ abzurufen, der beim Aktivieren von MSI erstellt wurde. Dann wird [New-AzureRmRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment) verwendet, um dem virtuellen Computer „Reader“ den Zugriff auf ein Speicherkonto namens „MyStorageAcct“ zu erteilen:
 

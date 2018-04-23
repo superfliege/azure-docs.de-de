@@ -7,7 +7,7 @@ author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: tutorial
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 63858da0a4a47d67ec659e922ab10f9f7bc97938
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 6afb5757e11108eec856d821d92afed9681a2668
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-customize-a-windows-virtual-machine-in-azure"></a>Anpassen eines virtuellen Windows-Computers in Azure
 Zum Konfigurieren von virtuellen Computern (VMs) auf schnelle und einheitliche Weise ist meist eine Form der Automatisierung erwünscht. Eine gängige Methode zum Anpassen von Windows-VMs ist die Verwendung der [benutzerdefinierten Skripterweiterung für Windows](extensions-customscript.md). In diesem Tutorial lernen Sie Folgendes:
@@ -32,7 +32,7 @@ Zum Konfigurieren von virtuellen Computern (VMs) auf schnelle und einheitliche W
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
 
 
 ## <a name="custom-script-extension-overview"></a>Übersicht über benutzerdefinierte Skripterweiterungen

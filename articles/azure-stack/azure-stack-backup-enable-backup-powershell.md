@@ -1,11 +1,11 @@
 ---
-title: "Aktivieren der Sicherung für Azure Stack mit PowerShell | Microsoft-Dokumentation"
-description: "Aktivieren Sie den Dienst für die Infrastruktursicherung mit Windows PowerShell, sodass Azure Stack bei einem Fehler wiederhergestellt werden kann."
+title: Aktivieren der Sicherung für Azure Stack mit PowerShell | Microsoft-Dokumentation
+description: Aktivieren Sie den Dienst für die Infrastruktursicherung mit Windows PowerShell, sodass Azure Stack bei einem Fehler wiederhergestellt werden kann.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 7DFEFEBE-D6B7-4BE0-ADC1-1C01FB7E81A6
 ms.service: azure-stack
 ms.workload: na
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mabrigg
-ms.openlocfilehash: cbec6242fb4e185c9801a93fc2c4b35721269c2f
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d21bb919686e318b1caf7267b3115dae20938884
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>Aktivieren der Sicherung für Azure Stack mit PowerShell
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Aktivieren Sie den Dienst für die Infrastruktursicherung mit Windows PowerShell, sodass Azure Stack bei einem Fehler wiederhergestellt werden kann. Sie können auf die PowerShell-Cmdlets zugreifen, um über den Endpunkt der Bedienerverwaltung die Sicherung zu aktivieren und zu starten sowie Sicherungsinformationen abzurufen.
 
@@ -79,7 +79,7 @@ Bearbeiten Sie in der gleichen PowerShell-Sitzung das folgende PowerShell-Skript
       -EnvironmentName AzureStackAdmin
     
     # Sign-in to the operator's console.
-    Login-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID 
+    Connect-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID 
     
    ```
 ## <a name="generate-a-new-encryption-key"></a>Generieren eines neuen Verschlüsselungsschlüssels

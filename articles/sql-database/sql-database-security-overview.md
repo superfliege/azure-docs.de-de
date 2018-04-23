@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 1dc34f021fa6482c65cce0e922951ae329987c43
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6a66c9fe3716935a717dca984d1995ca371d9499
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-your-sql-database"></a>Sichern der SQL-Datenbank
 
@@ -48,7 +48,7 @@ Weitere Informationen finden Sie unter [Erste Schritte bei der Datenermittlung u
 SQL-Datenbank schützt Ihre Daten, indem der Zugriff auf Ihre Datenbank beschränkt wird. Hierfür wird Folgendes verwendet: Firewallregeln, Authentifizierungsmechanismen, bei denen Benutzer ihre Identität nachweisen müssen, und Datenautorisierung über rollenbasierte Mitgliedschaften und Berechtigungen sowie mithilfe von Sicherheit auf Zeilenebene und dynamischer Datenmaskierung. Eine Beschreibung der Nutzung von Zugriffssteuerungsfunktionen in SQL-Datenbank finden Sie unter [Steuern des Zugriffs](sql-database-control-access.md).
 
 > [!IMPORTANT]
-> Die Verwaltung von Datenbanken und logischen Servern in Azure wird über die Rollenzuweisungen in Ihrem Portalbenutzerkonto gesteuert. Weitere Informationen zu diesem Artikel finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
+> Die Verwaltung von Datenbanken und logischen Servern in Azure wird über die Rollenzuweisungen in Ihrem Portalbenutzerkonto gesteuert. Weitere Informationen zu diesem Artikel finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 >
 
 ### <a name="firewall-and-firewall-rules"></a>Firewall und Firewallregeln

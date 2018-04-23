@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 0712035f317adb318d60285637526f951bf5bdec
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 31951b609f7d819b532e6fa8cb02c702e9457253
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Tutorial: Erstellen einer Java- und MySQL-Web-App in Azure
 
@@ -161,14 +161,11 @@ Nach dem Erstellen des MySQL-Servers zeigt die Azure-Befehlszeilenschnittstelle 
 
 ### <a name="configure-server-firewall"></a>Konfigurieren der Serverfirewall
 
-Erstellen Sie in Cloud Shell mit dem Befehl [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) eine Firewallregel für Ihren MySQL-Server, um Clientverbindungen zuzulassen. 
+Erstellen Sie in Cloud Shell mit dem Befehl [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) eine Firewallregel für Ihren MySQL-Server, um Clientverbindungen zuzulassen. Wenn sowohl Start- als auch End-IP auf 0.0.0.0 festgelegt ist, wird die Firewall nur für andere Azure-Ressourcen geöffnet. 
 
 ```azurecli-interactive
-az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
-
-> [!NOTE]
-> Verbindungen von Azure-Diensten werden von Azure Database for MySQL derzeit nicht automatisch aktiviert. Da IP-Adressen in Azure dynamisch zugewiesen werden, ist es besser, zunächst alle IP-Adressen zu aktivieren. Bessere Methoden für den Schutz Ihrer Datenbank sind in Arbeit.
 
 ## <a name="configure-the-azure-mysql-database"></a>Konfigurieren der Azure MySQL-Datenbank
 

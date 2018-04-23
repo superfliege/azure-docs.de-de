@@ -12,19 +12,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 4b83f2a2228ef0dd7fa56b5a71b267d1e4302620
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9eef1760b7cee3bbdf33122514669b38b0b4d9db
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---cask-data-application-platform-cdap"></a>Installieren einer veröffentlichten Anwendung – Cask Data Application Platform (CDAP)
 
-In diesem Artikel erfahren Sie, wie Sie die veröffentlichte Hadoop-Anwendung [CDAP](http://cask.co/products/cdap/) in Azure HDInsight installieren und ausführen. Eine Übersicht über die HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
+In diesem Artikel erfahren Sie, wie Sie die veröffentlichte Hadoop-Anwendung [CDAP](http://cask.co/products/cdap/) in Azure HDInsight installieren und ausführen. Eine Übersicht der HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-cdap"></a>Informationen zu CDAP
 
@@ -136,5 +134,5 @@ Eine ausführliche Installationsanleitung für diese und andere verfügbare ISV-
 * [Installieren von benutzerdefinierten Hadoop-Anwendungen in Azure HDInsight:](hdinsight-apps-install-custom-applications.md) Hier erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
 * [Veröffentlichen von HDInsight-Anwendungen](hdinsight-apps-publish-applications.md): Hier erfahren Sie, wie Sie benutzerdefinierte HDInsight-Anwendungen im Azure Marketplace veröffentlichen.
 * [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx)(MSDN: Installieren einer HDInsight-Anwendung): Hier erfahren Sie, wie Sie HDInsight-Anwendungen definieren.
-* [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen:](hdinsight-hadoop-customize-cluster-linux.md) Hier erfahren Sie, wie Sie mithilfe einer Skriptaktion zusätzliche Anwendungen installieren.
-* [Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight:](hdinsight-apps-use-edge-node.md) Hier erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster und zum Testen und Hosten von HDInsight-Anwendungen verwenden.
+* [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe einer Skriptaktion zusätzliche Anwendungen installieren.
+* [Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight](hdinsight-apps-use-edge-node.md): Hier erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster und zum Testen und Hosten von HDInsight-Anwendungen verwenden.

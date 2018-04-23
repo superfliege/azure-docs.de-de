@@ -1,9 +1,9 @@
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich mit dem Befehl `Login-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+Melden Sie sich mit dem Befehl `Connect-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Wenn Sie sich nicht sicher sind, welche Region Sie verwenden sollen, können Sie die verfügbaren Regionen auflisten. Sobald die Liste angezeigt wird, wählen Sie die gewünschte Region aus. In diesem Beispiel wird **eastus** verwendet. Speichern Sie diese in einer Variablen, und verwenden Sie die Variable, damit Sie sie an zentraler Stelle ändern können.

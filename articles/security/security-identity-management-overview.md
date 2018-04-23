@@ -1,5 +1,5 @@
 ---
-title: "Azure-Sicherheitsfeatures, die die Identitätsverwaltung unterstützen | Microsoft-Dokumentation"
+title: Azure-Sicherheitsfeatures, die die Identitätsverwaltung unterstützen | Microsoft-Dokumentation
 description: " Dieser Artikel bietet eine Übersicht über die wichtigsten Azure-Sicherheitsfeatures, die die Identitätsverwaltung unterstützen. Lösungen zur Identitäts- und Zugriffsverwaltung von Microsoft unterstützen IT-Profis dabei, den Zugriff auf Anwendungen und Ressourcen über das Unternehmensrechenzentrum und in der Cloud zu schützen, wobei zusätzliche Ebenen der Überprüfungen aktiviert werden, z.B. mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 921d7eef90a86216dc13804d3dc4dd216247fb87
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 1338f9e5c4a0e21dadbd5ae6f51b12c8f1dd44a3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-identity-management-security-overview"></a>Übersicht über die Sicherheit der Azure-Identitätsverwaltung
 Lösungen zur Identitäts- und Zugriffsverwaltung von Microsoft unterstützen IT-Profis dabei, den Zugriff auf Anwendungen und Ressourcen über das Unternehmensrechenzentrum und in der Cloud zu schützen, wobei zusätzliche Ebenen der Überprüfungen aktiviert werden, z.B. mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff. Die Überwachung verdächtiger Aktivitäten über erweiterte Sicherheitsberichtserstellung, Überwachung und Warnung trägt dazu bei, potenzielle Sicherheitsprobleme zu verringern. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) ermöglicht einmaliges Anmelden bei Tausenden von Cloudanwendungen (SaaS) und Zugriff auf Webanwendungen, die Sie lokal ausführen.
@@ -76,7 +76,7 @@ Weitere Informationen:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Was ist Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
-* [Funktionsweise von Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
+* [Funktionsweise von Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Sicherheitsüberwachung, Warnungen und Machine Learning-basierte Berichte
 Sicherheitsüberwachung und Warnungen sowie Berichte auf Machine Learning-Basis, die inkonsistente Zugriffsmuster erkennen und Ihnen helfen können, Ihr Unternehmen zu schützen. Sie können die Zugriffs- und Nutzungsberichte von Azure Active Directory verwenden, um sich einen Einblick in die Integrität und Sicherheit des Verzeichnisses Ihrer Organisation zu verschaffen. Mithilfe dieser Informationen kann ein Verzeichnisadministrator mögliche Sicherheitsrisiken besser bestimmen, um angemessen zu planen, wie diese Risiken eingedämmt werden können.

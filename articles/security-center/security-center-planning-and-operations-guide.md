@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: e07e6792c74e1bdb5c5839e8c6bd9efbedf10170
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b9198f7621c74ae6cbe98fd526cc9bf8eadc9e70
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, deren Organisation Azure Security Center verwenden möchte.
@@ -75,7 +75,7 @@ Security Center ermöglicht es den Personen, diese unterschiedlichen Aufgaben au
 * Untersucht Angriffe
 * Arbeitet zusammen mit dem Cloudworkloadbesitzer an der Lösung 
 
-Security Center verwendet die [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md) (Role-Based Access Control, RBAC). Dabei werden [integrierte Rollen](../active-directory/role-based-access-built-in-roles.md) bereitgestellt, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können. Wenn Benutzer Security Center öffnen, werden nur Informationen zu den Ressourcen angezeigt, auf die jeweils Zugriff besteht. Dies bedeutet, dass dem Benutzer die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ für das Abonnement oder die Ressourcengruppe einer Ressource zugewiesen wird. Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
+Security Center verwendet die [rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md) (Role-Based Access Control, RBAC). Dabei werden [integrierte Rollen](../role-based-access-control/built-in-roles.md) bereitgestellt, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können. Wenn Benutzer Security Center öffnen, werden nur Informationen zu den Ressourcen angezeigt, auf die jeweils Zugriff besteht. Dies bedeutet, dass dem Benutzer die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ für das Abonnement oder die Ressourcengruppe einer Ressource zugewiesen wird. Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 
 - **Benutzer mit Leseberechtigung für Sicherheitsfunktionen:** Benutzer, die zu dieser Rolle gehören, können nur Security Center-Konfigurationen (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
 - **Sicherheitsadministrator:** Es gelten die gleichen Berechtigungen wie bei einem Benutzer mit Leseberechtigung für Sicherheitsfunktionen, zusätzlich sind jedoch auch Rechte zum Ändern der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen vorhanden.

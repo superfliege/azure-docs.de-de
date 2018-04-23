@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 03/04/2018
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: 500fb11627fa0ce7ac838c650a582dd9d49b598c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 94a066c43d1b04161a46dac15e5b373d97cc063d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Verschiedene Administratorrollen in Azure Active Directory PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -67,7 +67,7 @@ Wenn Sie einem anderen Benutzer Verwaltungszugriff für PIM gewähren möchten, 
 ## <a name="roles-not-managed-in-pim"></a>In PIM nicht verwaltete Rollen
 Mit Ausnahme der oben genannten Rollen werden Rollen in Exchange Online oder SharePoint Online nicht durch Azure AD verwaltet und sind daher in PIM nicht sichtbar. Informationen zum Ändern von differenzierten Rollenzuweisungen in diesen Office 365-Diensten finden Sie unter [Berechtigungen in Office 365](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-Azure-Abonnements und Ressourcengruppen werden auch nicht in Azure AD dargestellt. Weitere Informationen zum Verwalten von Azure-Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing/billing-add-change-azure-subscription-administrator.md). Weitere Informationen zu Azure RBAC finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
+Azure-Abonnements und Ressourcengruppen werden auch nicht in Azure AD dargestellt. Weitere Informationen zum Verwalten von Azure-Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing/billing-add-change-azure-subscription-administrator.md). Weitere Informationen zu Azure RBAC finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/role-assignments-portal.md).
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 

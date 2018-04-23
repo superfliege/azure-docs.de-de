@@ -1,8 +1,8 @@
 ---
-title: "Verwenden von Hadoop Hive und Remotedesktop in HDInsight – Azure | Microsoft-Dokumentation"
-description: "In diesem Artikel erfahren Sie, wie Sie die Verbindung zu einem HDInsight-Cluster über den Remotedesktop herstellen und dann die Hive-Abfragen mithilfe der Hive-Befehlszeilenschnittstelle ausführen."
+title: Verwenden von Hadoop Hive und Remotedesktop in HDInsight – Azure | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie die Verbindung zu einem HDInsight-Cluster über den Remotedesktop herstellen und dann die Hive-Abfragen mithilfe der Hive-Befehlszeilenschnittstelle ausführen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 8c228e35-d58a-4f22-917a-1d20c9da89b4
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: ded90b0f94e545b4066a0220afffae26f1cd15ee
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 70eab088ce87d8a62d3f258b70aaec5e2e147d0e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>Verwenden von Hive mit Hadoop in HDInsight über den Remotedesktop
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -33,7 +31,7 @@ In diesem Artikel erfahren Sie, wie Sie die Verbindung zu einem HDInsight-Cluste
 > Informationen zum Ausführen von Hive-Abfragen direkt im Cluster mithilfe einer Befehlszeile für HDInsight 3.4 oder höher finden Sie unter [Verwenden von Hive mit HDInsight und Beeline](apache-hadoop-use-hive-beeline.md).
 
 ## <a id="prereq"></a>Voraussetzungen
-Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
+Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 * Einen Windows-basierten HDInsight-Cluster (Hadoop in HDInsight)
 * Ein Clientcomputer mit dem Betriebssystem Windows 10, Windows 8 oder Windows 7

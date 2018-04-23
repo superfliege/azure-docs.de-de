@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 7a0104e68b07dbdff5483b771429fb9bc19a523f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 08a025acb89d3b35798688dc333038fb807284cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Erstellen eines Peerings virtueller Netzwerke mithilfe verschiedener Bereitstellungsmodelle und Abonnements
 
@@ -204,7 +204,7 @@ In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwende
     > [!WARNING]
     > Das Importieren einer geänderten Netzwerkkonfigurationsdatei kann zu Änderungen an vorhandenen virtuellen Netzwerken (klassisch) in Ihrem Abonnement führen. Vergewissern Sie sich, dass Sie nur das vorherige virtuelle Netzwerk hinzufügen und keine in Ihrem Abonnement vorhandenen virtuellen Netzwerke ändern oder entfernen. 
 
-5. Melden Sie beim Abonnement von UserB durch Eingeben des Befehls `login-azurermaccount` als UserB zum Verwenden von Ressourcen-Manager-Befehlen an.
+5. Melden Sie beim Abonnement von UserB durch Eingeben des Befehls `Connect-AzureRmAccount` als UserB zum Verwenden von Ressourcen-Manager-Befehlen an.
 6. Weisen Sie dem virtuellen Netzwerk B die Berechtigungen von UserA zu. Kopieren Sie das folgende Skript in einen Text-Editor auf Ihrem PC, und ersetzen Sie `<SubscriptionB-id>` durch die ID von Abonnement B. Wenn Sie die Abonnement-ID nicht kennen, geben Sie den Befehl `Get-AzureRmSubscription` ein, um sie anzuzeigen. Der Wert für **Id** in der Ausgabe ist Ihre Abonnement-ID. Azure erstellt das virtuelle Netzwerk (klassisch), das Sie in Schritt 4 erstellt haben, in einer Ressourcengruppe mit dem Namen*Default-Networking*. Um das Skript auszuführen, kopieren Sie das geänderte Skript. Fügen Sie es in PowerShell ein, und drücken Sie dann `Enter`.
     
     ```powershell 
@@ -214,7 +214,7 @@ In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwende
       -Scope /subscriptions/<SubscriptionB-id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
     ```
 
-7. Melden Sie von Azure als UserB ab, und melden Sie durch Eingeben des Befehls `login-azurermaccount` beim Abonnement von UserA als UserA an. Das Konto, mit dem Sie sich anmelden, muss über die Berechtigungen verfügen, die zum Erstellen eines Peerings virtueller Netzwerke erforderlich sind. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#permissions).
+7. Melden Sie von Azure als UserB ab, und melden Sie durch Eingeben des Befehls `Connect-AzureRmAccount` beim Abonnement von UserA als UserA an. Das Konto, mit dem Sie sich anmelden, muss über die Berechtigungen verfügen, die zum Erstellen eines Peerings virtueller Netzwerke erforderlich sind. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#permissions).
 8. Erstellen Sie das virtuelle Netzwerk (Ressourcen-Manager), indem Sie das folgende Skript kopieren, es in PowerShell einfügen und dann `Enter` drücken:
 
     ```powershell

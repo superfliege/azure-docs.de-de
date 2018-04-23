@@ -1,11 +1,11 @@
 ---
-title: "Bewährte Methoden für die Sicherheit virtueller Computer in Azure"
-description: "Dieser Artikel enthält eine Reihe bewährter Sicherheitsmethoden für virtuelle Computer in Azure."
+title: Bewährte Methoden für die Sicherheit virtueller Computer in Azure
+description: Dieser Artikel enthält eine Reihe bewährter Sicherheitsmethoden für virtuelle Computer in Azure.
 services: security
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5e757abe-16f6-41d5-b1be-e647100036d8
 ms.service: security
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 6541d09d7f1a7e85333f54797dba7db79328e9de
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ddddf72d1ded0fb7952a641c287a4a5696e3aaef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Bewährte Methoden für die Sicherheit virtueller Azure-Computer
 
@@ -49,14 +49,14 @@ In dem Artikel werden folgende bewährten Sicherheitsmethoden für virtuelle Com
 
 Der erste Schritt zum Schutz Ihres virtuellen Computers ist es, sicherzustellen, dass nur autorisierte Benutzer neue VMs bereitstellen können. Mithilfe von [Azure-Richtlinien](../azure-policy/azure-policy-introduction.md) können Sie Konventionen für Ressourcen in Ihrer Organisation einrichten, benutzerdefinierte Richtlinien erstellen und diese Richtlinien auf Ressourcen (beispielsweise [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md)) anwenden.
 
-Virtuelle Computer, die einer Ressourcengruppe angehören, erben natürlich deren Richtlinien. Diese Herangehensweise wird zwar für die Verwaltung virtueller Computer empfohlen, Sie können den Zugriff auf einzelne VM-Richtlinien jedoch auch mithilfe der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-configure.md) steuern.
+Virtuelle Computer, die einer Ressourcengruppe angehören, erben natürlich deren Richtlinien. Diese Herangehensweise wird zwar für die Verwaltung virtueller Computer empfohlen, Sie können den Zugriff auf einzelne VM-Richtlinien jedoch auch mithilfe der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md) steuern.
 
 Wenn Sie Resource Manager-Richtlinien und RBAC zum Steuern des Zugriffs auf virtuelle Computer aktivieren, verbessern Sie dadurch insgesamt die Sicherheit von virtuellen Computern. Es empfiehlt sich, virtuelle Computer mit gleichem Lebenszyklus in der gleichen Ressourcengruppe zusammenzufassen. Ressourcengruppen ermöglichen die Bereitstellung und Überwachung Ihrer Ressourcen sowie die Zusammenfassung der Abrechnungskosten für Ihre Ressourcen. Verwenden Sie den [Ansatz der geringsten Rechte](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models), wenn Sie Benutzern Zugriff auf virtuelle Computer gewähren und ihnen die Einrichtung virtueller Computer ermöglichen. Planen Sie außerdem die Verwendung der folgenden integrierten Azure-Rollen, wenn Sie den Benutzern Berechtigungen zuweisen:
 
-- [Mitwirkender für virtuelle Computer:](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) Kann virtuelle Computer verwalten, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
-- [Mitwirkender für klassische virtuelle Computer:](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor) Kann virtuelle Computer verwalten, die mit dem klassischen Bereitstellungsmodell erstellt wurden, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
-- [Sicherheits-Manager:](../active-directory/role-based-access-built-in-roles.md#security-manager) Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Computer verwalten.
-- [DevTest Labs-Benutzer:](../active-directory/role-based-access-built-in-roles.md#devtest-labs-user) Kann alles anzeigen sowie virtuelle Computer verbinden, starten, neu starten und herunterfahren.
+- [Mitwirkender für virtuelle Computer:](../role-based-access-control/built-in-roles.md#virtual-machine-contributor) Kann virtuelle Computer verwalten, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
+- [Mitwirkender für klassische virtuelle Computer:](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor) Kann virtuelle Computer verwalten, die mit dem klassischen Bereitstellungsmodell erstellt wurden, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
+- [Sicherheits-Manager:](../role-based-access-control/built-in-roles.md#security-manager) Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Computer verwalten.
+- [DevTest Labs-Benutzer:](../role-based-access-control/built-in-roles.md#devtest-labs-user) Kann alles anzeigen sowie virtuelle Computer verbinden, starten, neu starten und herunterfahren.
 
 Administratoren dürfen Konten und Kennwörter nicht gemeinsam verwenden, und Kennwörter dürfen nicht für mehrere Benutzerkonten oder Dienste verwendet werden. Das gilt insbesondere für Kennwörter für soziale Medien oder andere nicht administrative Aktivitäten. Zur sicheren Einrichtung Ihrer virtuellen Computer sollten Sie im Idealfall [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) verwenden. Mit diesem Ansatz können Sie die Sicherheit Ihrer Bereitstellungsoptionen verbessern und Sicherheitseinstellungen in der gesamten Bereitstellung erzwingen.
 

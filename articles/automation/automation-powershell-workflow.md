@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 32f991f0b0017e673828b1ceb832511e118efa92
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 173d151c2b86db621ee452e68b06baa709f86cdc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Grundlagen der wichtigsten Windows PowerShell-Workflowkonzepte für Automation-Runbooks 
 Runbooks in Azure Automation sind als Windows PowerShell-Workflows implementiert.  Ein Windows PowerShell-Workflow ähnelt einem Windows PowerShell-Skript, weist aber einige wesentliche Unterschiede auf, die für einen neuen Benutzer verwirrend sein können.  Dieser Artikel ist zwar dazu vorgesehen, Sie beim Schreiben von Runbooks mithilfe des PowerShell-Workflows zu schreiben, wir empfehlen jedoch, dass Sie die Runbooks mithilfe von PowerShell schreiben, sofern Sie keine Prüfpunkte benötigen.  Beim Erstellen von PowerShell-Workflow-Runbooks gelten mehrere Syntaxunterschiede, die etwas mehr Aufwand beim Schreiben effektiver Workflows erfordern.  
@@ -228,7 +228,7 @@ Der folgende Code veranschaulicht die Behandlung dieses Aspekts in PowerShell-Wo
     workflow CreateTestVms
     {
        $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-       $null = Add-AzureRmAccount -Credential $Cred
+       $null = Connect-AzureRmAccount -Credential $Cred
 
        $VmsToCreate = Get-AzureAutomationVariable -Name "VmsToCreate"
 
@@ -243,7 +243,7 @@ Der folgende Code veranschaulicht die Behandlung dieses Aspekts in PowerShell-Wo
           $Cred = $null
           Checkpoint-Workflow
           $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-          $null = Add-AzureRmAccount -Credential $Cred
+          $null = Connect-AzureRmAccount -Credential $Cred
          }
      }
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure-Glossar – Azure-Wörterbuch | Microsoft-Dokumentation"
-description: "Verwenden Sie das Azure-Glossar, um die Cloudterminologie für die Azure Platform zu verstehen. Dieses kompakte Azure-Wörterbuch bietet Definitionen für gängige Cloudbegriffe für Azure."
+title: Azure-Glossar – Azure-Wörterbuch | Microsoft-Dokumentation
+description: Verwenden Sie das Azure-Glossar, um die Cloudterminologie für die Azure Platform zu verstehen. Dieses kompakte Azure-Wörterbuch bietet Definitionen für gängige Cloudbegriffe für Azure.
 keywords: Azure dictionary, cloud terminology, Azure glossary, terminology definitions, cloud terms
 services: na
 documentationcenter: na
 author: MonicaRush
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: d7ac12f7-24b5-4bcd-9e4d-3d76fbd8d297
 ms.service: multiple
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: fd20405c284161a1a66493056f21c147efa632cb
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 953320734c1601c411144bd7a6496716a65e452e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -111,7 +111,7 @@ Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Mana
 
 ## <a name="role"></a>role
 Eine Möglichkeit zum Steuern des Zugriffs, die Benutzern, Gruppen und Diensten zugewiesen werden kann. Rollen können verschiedene Aktionen ausführen und so beispielsweise Azure-Ressourcen erstellen, verwalten und lesen.  
-Weitere Informationen finden Sie unter [RBAC: Integrierte Rollen](active-directory/role-based-access-built-in-roles.md).
+Weitere Informationen finden Sie unter [RBAC: Integrierte Rollen](role-based-access-control/built-in-roles.md).
 
 ## <a name="sla"></a>Vereinbarung zum Servicelevel (SLA)
 In dieser Vereinbarung ist die garantierte Verfügbarkeit und Konnektivität beschrieben, die Microsoft zusichert. Jeder Azure-Dienst verfügt über eine bestimmte Vereinbarung zum Servicelevel.  

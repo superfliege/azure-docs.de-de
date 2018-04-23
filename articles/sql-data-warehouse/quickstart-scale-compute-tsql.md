@@ -1,24 +1,20 @@
 ---
 title: 'Schnellstart: Horizontales Hochskalieren von Computeressourcen in Azure SQL Data Warehouse – T-SQL | Microsoft-Dokumentation'
-description: Skalieren von Computeressourcen durch Anpassen der DWUs mithilfe von T-SQL-Befehlen
+description: Skalieren Sie Computeressourcen in Azure SQL Data Warehouse mithilfe von T-SQL und SQL Server Management Studio (SSMS). Skalieren Sie Computeressourcen zentral hoch, um eine bessere Leistung zu erzielen, oder skalieren Sie sie zentral herunter, um Kosten einzusparen.
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: jhubbard
-editor: ''
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 03/16/2018
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 1591192c72f5bf201dbbef80acc5895c8324fca4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: quickstart
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: b4e123475679cf1afce09630c157377ee67b5202
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Schnellstart: Skalieren von Computeressourcen in Azure SQL Data Warehouse mithilfe von T-SQL
 

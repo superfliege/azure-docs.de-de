@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 2b9ed5b3374c98740923790dac90cb1eb2f065d8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1e258473614e01ca35eaa5970d02544844da6972
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory
 
@@ -42,7 +42,7 @@ Alle Benutzer verfügen über ein einzelnes Basisverzeichnis für die Authentifi
 2. Klicken Sie auf **Verzeichnis ändern**.
 
     ![Screenshot mit der Schaltfläche „Verzeichnis ändern“](./media/active-directory-how-subscriptions-associated-directory/edit-directory-button.PNG)
-3. Sehen Sie sich die Warnungen an. [RBAC](role-based-access-control-configure.md)-Benutzer (Role-Based Access Control, rollenbasierte Zugriffssteuerung) mit zugewiesenem Zugriff und Abonnementadministratoren haben keinen Zugriff mehr, wenn sich das Abonnementverzeichnis ändert.
+3. Sehen Sie sich die Warnungen an. [RBAC](../role-based-access-control/role-assignments-portal.md)-Benutzer (Role-Based Access Control, rollenbasierte Zugriffssteuerung) mit zugewiesenem Zugriff und Abonnementadministratoren haben keinen Zugriff mehr, wenn sich das Abonnementverzeichnis ändert.
 4. Wählen Sie ein Verzeichnis aus.
 
     ![Screenshot mit der Benutzeroberfläche zum Ändern des Verzeichnisses](./media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.PNG)
@@ -60,7 +60,7 @@ Die Änderung des Abonnementverzeichnisses erfolgt auf Dienstebene. Sie wirkt si
 
 * Weitere Informationen zum kostenlosen Erstellen eines neuen Azure AD-Verzeichnisses finden Sie unter [Einrichten eines Azure Active Directory-Mandanten](develop/active-directory-howto-tenant.md).
 * Weitere Informationen zum Übertragen der Abrechnung für ein Azure-Abonnement finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md).
-* Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](active-directory-understanding-resource-access.md)
+* Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Informationen zum Zuweisen von Rollen in Azure AD finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md)
 
 <!--Image references-->

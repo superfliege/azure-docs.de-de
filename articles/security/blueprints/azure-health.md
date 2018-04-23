@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 700378d23f869427fb50b9dee5bcf8448ac73404
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bdd7dbf4f39529ac76fb496f0d459577e6f929dc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsdaten und -KI
 
@@ -79,14 +79,14 @@ Die grundlegende Architektur besteht aus den folgenden Komponenten:
 ## <a name="roles"></a>Rollen
 
 
-Der Entwurf definiert zwei Rollen für administrative Benutzer (Operatoren) und drei Rollen für Benutzer im Krankenhausmanagement und in der Patientenversorgung. Eine sechste Rolle wird für einen Prüfer definiert, um die Einhaltung von HIPAA und anderen Vorschriften zu bewerten. Rollenbasierte Zugriffssteuerung in Azure (Role-based Access Control, RBAC) ermöglicht ein zielgerichtetes Zugriffsmanagement für jeden Benutzer der Lösung durch integrierte und benutzerdefinierte Rollen. Ausführliche Informationen zu RBAC, Rollen und Berechtigungen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) und [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
+Der Entwurf definiert zwei Rollen für administrative Benutzer (Operatoren) und drei Rollen für Benutzer im Krankenhausmanagement und in der Patientenversorgung. Eine sechste Rolle wird für einen Prüfer definiert, um die Einhaltung von HIPAA und anderen Vorschriften zu bewerten. Rollenbasierte Zugriffssteuerung in Azure (Role-based Access Control, RBAC) ermöglicht ein zielgerichtetes Zugriffsmanagement für jeden Benutzer der Lösung durch integrierte und benutzerdefinierte Rollen. Ausführliche Informationen zu RBAC, Rollen und Berechtigungen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/overview) und [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
 ### <a name="site-administrator"></a>Siteadministrator
 
 
 Der Siteadministrator ist für das Azure-Abonnement des Kunden verantwortlich. Er steuert die gesamte Bereitstellung, besitzt aber keinen Zugriff auf die Patientenakten.
 
--   Standardrollenzuweisungen: [Besitzer](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#owner)
+-   Standardrollenzuweisungen: [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 -   Benutzerdefinierte Rollenzuweisungen: k.A.
 
@@ -97,7 +97,7 @@ Der Siteadministrator ist für das Azure-Abonnement des Kunden verantwortlich. E
 Der Datenbankanalyst verwaltet die SQL Server-Instanz und die Datenbank.
 Er besitzt keinen Zugriff auf die Patientenakten.
 
--   Integrierten Rollenzuweisungen: [SQL-DB-Mitwirkender](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-db-contributor), [SQL Server-Mitwirkender](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-server-contributor)
+-   Integrierten Rollenzuweisungen: [SQL-DB-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [SQL Server-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
 -   Benutzerdefinierte Rollenzuweisungen: k.A.
 
@@ -108,7 +108,7 @@ Er besitzt keinen Zugriff auf die Patientenakten.
 
 Der Data Scientist betreibt den Azure Machine Learning-Dienst. Er kann Daten importieren, exportieren, verwalten und Berichte ausführen. Der Data Scientist besitzt Zugriff auf Patientendaten, verfügt aber nicht über Administratorrechte.
 
--   Integrierten Rollenzuweisungen: [Speicherkontomitwirkender](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#storage-account-contributor)
+-   Integrierten Rollenzuweisungen: [Speicherkontomitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
 -   Benutzerdefinierte Rollenzuweisungen: k.A.
 
@@ -138,7 +138,7 @@ In dieser Rolle ist sie für die Überwachung des Zustands einzelner Patienten z
 
 Der Prüfer wertet die Lösung bezüglich der Konformität aus. Er besitzt keinen direkten Zugriff auf das Netzwerk.
 
--   Integrierten Rollenzuweisungen: [Leser](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#reader)
+-   Integrierten Rollenzuweisungen: [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
 -   Benutzerdefinierte Rollenzuweisungen: k.A.
 
@@ -222,7 +222,7 @@ In diesem Abschnitt werden die Standardkonfigurationen und Sicherheitsmaßnahmen
 
 -   [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) erkennt potenzielle Sicherheitsrisiken, die sich auf die Identitäten Ihrer Organisation auswirken, konfiguriert automatisierte Antworten auf erkannte verdächtige Aktionen, die im Zusammenhang mit Identitäten Ihrer Organisation stehen, untersucht verdächtige Vorfälle und führt die entsprechenden Aktionen zu deren Behebung aus.
 
--   Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure](/azure/active-directory/role-based-access-control-configure) ermöglicht eine präzise Zugriffsverwaltung für Azure. Abonnementzugriff besitzt ausschließlich der Abonnementadministrator, und Azure Key Vault-Zugriff ist auf den Siteadministrator beschränkt. Sichere Kennwörter (mindestens 12 Zeichen mit mindestens einem Groß-/Kleinbuchstaben, einer Zahl und einem Sonderzeichen) sind erforderlich.
+-   Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure](/azure/role-based-access-control/role-assignments-portal) ermöglicht eine präzise Zugriffsverwaltung für Azure. Abonnementzugriff besitzt ausschließlich der Abonnementadministrator, und Azure Key Vault-Zugriff ist auf den Siteadministrator beschränkt. Sichere Kennwörter (mindestens 12 Zeichen mit mindestens einem Groß-/Kleinbuchstaben, einer Zahl und einem Sonderzeichen) sind erforderlich.
 
 -   Die mehrstufige Authentifizierung wird unterstützt, wenn der Schalter -enableMFA während der Bereitstellung aktiviert ist.
 
@@ -230,7 +230,7 @@ In diesem Abschnitt werden die Standardkonfigurationen und Sicherheitsmaßnahmen
 
 **Rollen:**
 
--   Die Lösung verwendet [integrierte Rollen](/azure/active-directory/role-based-access-built-in-roles), um den Zugriff auf Ressourcen zu verwalten.
+-   Die Lösung verwendet [integrierte Rollen](/azure/role-based-access-control/built-in-roles), um den Zugriff auf Ressourcen zu verwalten.
 
 -   Allen Benutzern werden standardmäßig bestimmte integrierte Rollen zugewiesen.
 
@@ -356,7 +356,7 @@ Die Lösung unterstützt Azure Event Grid, einen einzelnen Dienst für die Verwa
 
 
 -   [Protokollierung ist aktiviert](/azure/machine-learning/studio/web-services-logging) für Machine Learning-Webdienste.
-- Die Verwendung von [Machine Learning](/azure/machine-learning/preview/experimentation-service-configuration) Workbench erfordert die Entwicklung von Experimenten, die die Fähigkeit zur Vorhersage eines Lösungssatzes bereitstellen. [Integration der Workbench](/azure/machine-learning/preview/using-git-ml-project) kann dabei helfen, die Verwaltung von Experimenten zu optimieren.
+- Die Verwendung von [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench erfordert die Entwicklung von Experimenten, die die Fähigkeit zur Vorhersage eines Lösungssatzes bereitstellen. [Integration der Workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) kann dabei helfen, die Verwaltung von Experimenten zu optimieren.
 
 ## <a name="security"></a>SICHERHEIT
 

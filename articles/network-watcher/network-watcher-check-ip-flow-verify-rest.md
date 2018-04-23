@@ -1,11 +1,11 @@
 ---
-title: "Überprüfen des Datenverkehrs mit der IP-Datenflussüberprüfung in Azure Network Watcher – REST | Microsoft-Dokumentation"
-description: "Dieser Artikel beschreibt, wie Sie überprüfen, ob bei einem virtuellen Computer eingehender und ausgehender Datenverkehr zugelassen oder verweigert wird."
+title: Überprüfen des Datenverkehrs mit der IP-Datenflussüberprüfung in Azure Network Watcher – REST | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie überprüfen, ob bei einem virtuellen Computer eingehender und ausgehender Datenverkehr zugelassen oder verweigert wird.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3307a79f-03be-46a0-aaaf-b2079cb5f3b2
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 3ccef9ef521b86ffc1eb6047174f4f9e5d9e4296
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c3d38f776db63e777174b7dca8b09a0d19c387e8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Überprüfen mit der IP-Datenflussüberprüfung (einer Komponente von Azure Network Watcher), ob eingehender und ausgehender Datenverkehr zugelassen oder verweigert wird
 
@@ -34,9 +34,9 @@ Die IP-Datenflussüberprüfung ist ein Feature von Network Watcher, mit dem Sie 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-ARMClient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
+ARMclient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen.
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben.
 
 ## <a name="scenario"></a>Szenario
 
@@ -165,7 +165,7 @@ Die Antwort, gibt Aufschluss darüber, ob der Datenverkehr zugelassen oder verwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Datenverkehr fälschlicherweise blockiert wird, finden Sie unter [Verwalten von Netzwerksicherheitsgruppen](../virtual-network/virtual-network-manage-nsg-arm-portal.md) Informationen zu Netzwerksicherheitsgruppen.
+Wenn Datenverkehr fälschlicherweise blockiert wird, finden Sie unter [Verwalten von Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md) Informationen zu Netzwerksicherheitsgruppen.
 
 
 

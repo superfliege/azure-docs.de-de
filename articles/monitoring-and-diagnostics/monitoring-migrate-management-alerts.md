@@ -1,12 +1,12 @@
 ---
-title: "Migrieren von Azure-Warnungen für Verwaltungsereignisse zu Aktivitätsprotokollwarnungen | Microsoft-Dokumentation"
-description: "Warnungen für Verwaltungsereignisse werden am 1. Oktober entfernt. Bereiten Sie sich darauf vor, indem Sie vorhandene Warnungen migrieren."
+title: Migrieren von Azure-Warnungen für Verwaltungsereignisse zu Aktivitätsprotokollwarnungen | Microsoft-Dokumentation
+description: Warnungen für Verwaltungsereignisse werden am 1. Oktober entfernt. Bereiten Sie sich darauf vor, indem Sie vorhandene Warnungen migrieren.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: johnkem
-ms.openlocfilehash: 08a457029d3721f5c38dbcd2d2aab7d09a241d8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1cc02664a345da49c276a6876d5cdfaf5bdb8477
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrieren von Azure-Warnungen für Verwaltungsereignisse zu Aktivitätsprotokollwarnungen
 
@@ -38,7 +38,7 @@ Azure Monitor (ehemals „Azure Insights“) hat eine Funktion zum Erstellen ein
 Das folgende PowerShell-Skript gibt eine Liste aller Warnungen für Verwaltungsereignisse zurück, die in Ihrem Abonnement vorliegen, sowie die für die einzelnen Warnungen festgelegten Bedingungen.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 $alerts = $null
 foreach ($rg in Get-AzureRmResourceGroup ) {
   $alerts += Get-AzureRmAlertRule -ResourceGroup $rg.ResourceGroupName

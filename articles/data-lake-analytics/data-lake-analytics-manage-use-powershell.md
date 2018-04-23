@@ -1,8 +1,8 @@
 ---
 title: Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell | Microsoft Docs
-description: "Erfahren Sie, wie Sie Konten, Datenquellen, Aufträge und Katalogelemente in Data Lake Analytics verwalten. "
+description: 'Erfahren Sie, wie Sie Konten, Datenquellen, Aufträge und Katalogelemente in Data Lake Analytics verwalten. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: matt1883
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
-ms.openlocfilehash: dd81e9d6c91387b3873593b84e952ca4f2546c57
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 69530ab2ad795eaf611cb749d8c439ab07cafeac
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -50,16 +50,16 @@ $location = "<Location>"
 Melden Sie sich mit einer Abonnement-ID an.
 
 ```powershell
-Login-AzureRmAccount -SubscriptionId $subId
+Connect-AzureRmAccount -SubscriptionId $subId
 ```
 
 Melden Sie sich mit einem Abonnementnamen an.
 
 ```
-Login-AzureRmAccount -SubscriptionName $subname 
+Connect-AzureRmAccount -SubscriptionName $subname 
 ```
 
-Das Cmdlet `Login-AzureRmAccount` fordert immer zur Eingabe von Anmeldeinformationen auf. Damit diese Aufforderung nicht erfolgt, können Sie die folgenden Cmdlets verwenden:
+Das Cmdlet `Connect-AzureRmAccount` fordert immer zur Eingabe von Anmeldeinformationen auf. Damit diese Aufforderung nicht erfolgt, können Sie die folgenden Cmdlets verwenden:
 
 ```powershell
 # Save login session information
@@ -604,7 +604,7 @@ $deploymentName = "MyDataLakeAnalyticsDeployment"
 $armTemplateFile = "<LocalFolderPath>\azuredeploy.json"  # update the JSON template path 
 
 # Log in to Azure
-Login-AzureRmAccount -SubscriptionId $subId
+Connect-AzureRmAccount -SubscriptionId $subId
 
 # Create the resource group
 New-AzureRmResourceGroup -Name $rg -Location $location

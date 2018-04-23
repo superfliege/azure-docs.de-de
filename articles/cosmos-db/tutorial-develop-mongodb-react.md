@@ -1,25 +1,25 @@
 ---
-title: "Tutorial mit MongoDB, React und Node.js für Azure | Microsoft-Dokumentation"
-description: "In dieser videobasierten Tutorialreihe erfahren Sie, wie Sie in Azure Cosmos DB eine MongoDB-App mit React und Node.js erstellen und dabei die gleichen APIs verwenden wie für MongoDB."
+title: Tutorial mit MongoDB, React und Node.js für Azure | Microsoft-Dokumentation
+description: In dieser videobasierten Tutorialreihe erfahren Sie, wie Sie in Azure Cosmos DB eine MongoDB-App mit React und Node.js erstellen und dabei die gleichen APIs verwenden wie für MongoDB.
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 96cd397a7f04fe579b9c6331423abe107ad1c6d9
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: c2cb4b30cb056303c07d5e82861e4022489c7072
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Erstellen einer MongoDB-App mit React und Azure Cosmos DB  
 
@@ -113,5 +113,5 @@ Demnächst kommt ein weiteres Video aus dieser Tutorialreihe hinzu, in dem das B
 Im nächsten Tutorial erfahren Sie, wie Sie MongoDB-Daten in Azure Cosmos DB importieren.  
 
 > [!div class="nextstepaction"]
-> [Importieren von Daten aus MongoDB in Azure Cosmos DB](mongodb-migrate.md)
+> [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](mongodb-migrate.md)
  

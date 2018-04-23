@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: 2479701174086ddf680e0ecb1da4a9d13b32b76e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e67ae32902c989f74cee0c1d223dacc770c0d387
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -139,7 +139,7 @@ Zur Authentifizierung bei einem Dienstprinzipal müssen Sie Ihrer Anwendung eine
 1. Navigieren Sie im Azure-Portal zu dem Batch-Konto, das von Ihrer Anwendung verwendet wird.
 2. Wählen Sie auf dem Blatt **Einstellungen** für das Batch-Konto die Option **Zugriffssteuerung (IAM)**.
 3. Klicken Sie auf die Schaltfläche **Hinzufügen** . 
-4. Wählen Sie aus der Dropdownliste **Rolle** entweder die Rolle _Mitwirkender_ oder _Leser_ für Ihre Anwendung. Weitere Informationen zu diesen Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).  
+4. Wählen Sie aus der Dropdownliste **Rolle** entweder die Rolle _Mitwirkender_ oder _Leser_ für Ihre Anwendung. Weitere Informationen zu diesen Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).  
 5. Geben Sie im Feld **Auswählen** den Namen Ihrer Anwendung ein. Wählen Sie die Anwendung in der Liste aus, und klicken Sie auf **Speichern**.
 
 Ihre Anwendung sollte jetzt in Ihren Einstellungen für die Zugriffssteuerung mit einer zugewiesenen RBAC-Rolle angezeigt werden. 

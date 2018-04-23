@@ -3,7 +3,7 @@
 
 * Die Konvertierung kann nicht rückgängig gemacht werden. 
 
-* Beachten Sie, dass Benutzer mit der Rolle [Mitwirkender von virtuellen Computern](../articles/active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) die Größe des virtuellen Computers nicht mehr ändern können (was vor dem Wechsel möglich war). Der Grund dafür ist, dass virtuelle Computer mit verwalteten Datenträgern erfordern, dass der Benutzer über die Berechtigung „Microsoft.Compute/disks/write“ für die Betriebssystemdatenträger verfügt.
+* Beachten Sie, dass Benutzer mit der Rolle [Mitwirkender von virtuellen Computern](../articles/role-based-access-control/built-in-roles.md#virtual-machine-contributor) die Größe des virtuellen Computers nicht mehr ändern können (was vor dem Wechsel möglich war). Der Grund dafür ist, dass virtuelle Computer mit verwalteten Datenträgern erfordern, dass der Benutzer über die Berechtigung „Microsoft.Compute/disks/write“ für die Betriebssystemdatenträger verfügt.
 
 * Testen Sie die Konvertierung unbedingt. Migrieren Sie einen virtuellen Testcomputer, bevor Sie die Migration in der Produktion durchführen.
 

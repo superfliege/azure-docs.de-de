@@ -1,13 +1,13 @@
 ---
-title: "Durchführen eines Lastenausgleichs bei virtuellen Windows-Computern in Azure | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mit Azure Load Balancer eine hochverfügbare und sichere Anwendung für drei virtuelle Windows-Computer erstellen."
+title: Durchführen eines Lastenausgleichs bei virtuellen Windows-Computern in Azure | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mit Azure Load Balancer eine hochverfügbare und sichere Anwendung für drei virtuelle Windows-Computer erstellen.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: tutorial
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: f0e154d0ac917d2ef2799431a72969a96415e0c0
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 0ac48844932c77ea4d597da6cb18a820a34e0f39
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Gewusst wie: Durchführen eines Lastenausgleichs bei virtuellen Windows-Computern in Azure, um eine hochverfügbare Anwendung zu erstellen
 Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer kennen, die den Datenverkehr verteilen und Hochverfügbarkeit bereitstellen. Folgendes wird vermittelt:
@@ -36,7 +36,7 @@ Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der 
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
 
 
 ## <a name="azure-load-balancer-overview"></a>Übersicht über den Azure Load Balancer

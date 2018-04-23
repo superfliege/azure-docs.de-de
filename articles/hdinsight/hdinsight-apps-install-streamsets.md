@@ -12,19 +12,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 90775452c58457ae8ecc73687a375606474158f5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: e433de82576f8b943988881ed0b6673c0dccd77e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---streamsets-data-collector"></a>Installieren einer veröffentlichten Anwendung – StreamSets Data Collector
 
-In diesem Artikel erfahren Sie, wie Sie die veröffentlichte Hadoop-Anwendung [StreamSets Data Collector for HDInsight](https://streamsets.com/) in Azure HDInsight installieren und ausführen. Eine Übersicht über die HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
+In diesem Artikel erfahren Sie, wie Sie die veröffentlichte Hadoop-Anwendung [StreamSets Data Collector for HDInsight](https://streamsets.com/) in Azure HDInsight installieren und ausführen. Eine Übersicht der HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-streamsets-data-collector"></a>Informationen zu StreamSets Data Collector
 
@@ -36,7 +34,7 @@ StreamSets Data Collector ist dafür konzipiert, jede Phase einer Pipeline logis
 
 ### <a name="streamsets-resource-links"></a>Ressourcenlinks für StreamSets
 
-* [Dokumentation](https://streamsets.com/documentation/datacollector/latest/help/#Getting_Started/GettingStarted_Title.html)
+* [Documentation](https://streamsets.com/documentation/datacollector/latest/help/#Getting_Started/GettingStarted_Title.html)
 * [Blog](https://streamsets.com/blog/)
 * [Lernprogramme](https://github.com/streamsets/tutorials)
 * [Supportforum für Entwickler](https://groups.google.com/a/streamsets.com/forum/#!forum/sdc-user)
@@ -82,5 +80,5 @@ Eine ausführliche Installationsanleitung für diese und andere verfügbare ISV-
 * [Installieren von benutzerdefinierten Hadoop-Anwendungen in Azure HDInsight:](hdinsight-apps-install-custom-applications.md) Hier erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
 * [Veröffentlichen von HDInsight-Anwendungen](hdinsight-apps-publish-applications.md): Hier erfahren Sie, wie Sie benutzerdefinierte HDInsight-Anwendungen im Azure Marketplace veröffentlichen.
 * [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx)(MSDN: Installieren einer HDInsight-Anwendung): Hier erfahren Sie, wie Sie HDInsight-Anwendungen definieren.
-* [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen:](hdinsight-hadoop-customize-cluster-linux.md) Hier erfahren Sie, wie Sie mithilfe einer Skriptaktion zusätzliche Anwendungen installieren.
-* [Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight:](hdinsight-apps-use-edge-node.md) Hier erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster und zum Testen und Hosten von HDInsight-Anwendungen verwenden.
+* [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe einer Skriptaktion zusätzliche Anwendungen installieren.
+* [Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight](hdinsight-apps-use-edge-node.md): Hier erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster und zum Testen und Hosten von HDInsight-Anwendungen verwenden.

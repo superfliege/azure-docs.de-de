@@ -1,24 +1,18 @@
 ---
 title: Anordnen von Suchergebnissen auf Seiten in Azure Search | Microsoft Docs
 description: Paginierung in Azure Search, einem gehosteten Cloudsuchdienst bei Microsoft Azure.
-services: search
-documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: a0a1d315-8624-4cdf-b38e-ba12569c6fcc
+manager: cgronlun
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 1054e15a2751c53aad5dbc8054c4cec41102dee9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 066358241b79f8bc0fb40e5e5b5989e561d9c909
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Anordnen von Suchergebnissen auf Seiten in Azure Search
 Dieser Artikel enthält Anleitungen dazu, wie die REST-API für den Azure-Suchdienst zum Implementieren von Standardelementen einer Seite mit Suchergebnissen, z. B. Gesamtanzahl, Dokumentabruf, Sortierreihenfolge und Navigation, verwendet wird.
@@ -62,7 +56,7 @@ So wird eine Teilmenge von Feldern für ein gekacheltes Layout zurückzugeben:
 
         GET /indexes/ onlineCatalog/docs?search=*&$select=productName,imageFile,description,price,rating 
 
-Bild- und Mediendateien können nicht direkt durchsucht werden und sollten auf einer anderen Speicherplattform gespeichert werden, z. B. Azure Blob-Speicher, um die Kosten zu senken. Definieren Sie im Index und in den Dokumenten ein Feld, das die URL-Adresse des externen Inhalts enthält. Sie können das Feld dann als Bildverweis verwenden. Die URL zum Bild sollte im Dokument enthalten sein.
+Bild- und Mediendateien können nicht direkt durchsucht werden und sollten auf einer anderen Speicherplattform gespeichert werden, z.B. Azure Blob Storage, um die Kosten zu senken. Definieren Sie im Index und in den Dokumenten ein Feld, das die URL-Adresse des externen Inhalts enthält. Sie können das Feld dann als Bildverweis verwenden. Die URL zum Bild sollte im Dokument enthalten sein.
 
 Zum Abrufen der Seite mit einer Produktbeschreibung für ein **onClick** -Ereignis verwenden Sie [Dokument suchen](http://msdn.microsoft.com/library/azure/dn798929.aspx) , um den Schlüssel des abzurufenden Dokuments zu übergeben. Der Schlüssel hat den Datentyp `Edm.String`. In diesem Beispiel lautet er *246810*. 
 
@@ -102,7 +96,7 @@ Sie können einen Filter mit oder ohne Suchbegriff senden. Beispielsweise wird m
 
 Weitere Informationen zu `$filter`-Ausdrücken finden Sie unter [Dokumente durchsuchen (Azure Search-API)](http://msdn.microsoft.com/library/azure/dn798927.aspx).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [REST-API für Azure Suchdienst](http://msdn.microsoft.com/library/azure/dn798935.aspx)
 * [Indexvorgänge](http://msdn.microsoft.com/library/azure/dn798918.aspx)
 * [Dokumentvorgänge](http://msdn.microsoft.com/library/azure/dn800962.aspx)

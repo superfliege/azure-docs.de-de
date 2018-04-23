@@ -13,10 +13,10 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: bdd1c51c915787d9e9522f6691ae0ff06d546484
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="supported-matrix-for-this-release"></a>Unterstützte Matrix für diese Version 
 Wenn Ihr Code Daten mithilfe von Azure Machine Learning-Datenquellen oder Azure Machine Learning-Datenvorbereitungen lädt, bei denen ein Pandas- oder Spark-Datenframe abgerufen wird, werden die folgenden Kombinationen von Compute-Umgebungen für Experimente und Datenspeicherorten unterstützt:

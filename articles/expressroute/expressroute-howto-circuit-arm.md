@@ -1,11 +1,11 @@
 ---
-title: "Erstellen und Ändern einer ExpressRoute-Verbindung: PowerShell: Azure Resource Manager | Microsoft-Dokumentation"
-description: "Dieser Artikel beschreibt das Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung."
+title: 'Erstellen und Ändern einer ExpressRoute-Verbindung: PowerShell: Azure Resource Manager | Microsoft-Dokumentation'
+description: Dieser Artikel beschreibt das Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f997182e-9b25-4a7a-b079-b004221dadcc
 ms.service: expressroute
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: ef092a48994b68268109cb98bd6cd4526e259d5b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0d45e97cc42826375a99df16a73c9a7b0c359224
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Erstellen und Ändern einer ExpressRoute-Verbindung mit PowerShell
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure ExpressRoute-Verbindung m
 Um mit der Konfiguration zu beginnen, melden Sie sich bei Ihrem Azure-Konto an. Verwenden Sie die folgenden Beispiele, um eine Verbindung herzustellen:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Überprüfen Sie die Abonnements für das Konto:
@@ -68,7 +68,7 @@ Get-AzureRmExpressRouteServiceProvider
 
 Überprüfen Sie, ob Ihr Konnektivitätsanbieter hier aufgeführt ist. Notieren Sie sich die folgenden Informationen, da Sie sie später zum Erstellen einer Verbindung benötigen:
 
-* Name
+* NAME
 * PeeringLocations
 * BandwidthsOffered
 

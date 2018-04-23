@@ -2,11 +2,11 @@
 title: Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie die rollenbasierte Zugriffssteuerung (RBAC) zum Verwalten von Azure Site Recovery-Bereitstellungen an- und verwendet wird.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 9c8745162afebe6690776152b29d8619edc26a42
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d02ecc3293d0607dd3e19ade3c1d9087b544703b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-role-based-access-control-to-manage-azure-site-recovery-deployments"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Site Recovery-Bereitstellungen
 
 Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe der rollenbasierten Zugriffssteuerung können Sie Zuständigkeiten in Ihrem Team aufteilen und Benutzern nur die jeweils spezifischen Zugriffsrechte zum Ausführen bestimmter Aufträge zuweisen.
 
-Azure Site Recovery bietet drei integrierte Rollen zum Steuern von Site Recovery-Verwaltungsvorgängen. Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../active-directory/role-based-access-built-in-roles.md).
+Azure Site Recovery bietet drei integrierte Rollen zum Steuern von Site Recovery-Verwaltungsvorgängen. Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../role-based-access-control/built-in-roles.md).
 
-* [Site-Recovery Contributor](../active-directory/role-based-access-built-in-roles.md#site-recovery-contributor): Diese Rolle verfügt über alle erforderlichen Berechtigungen zum Verwalten von Azure Site Recovery-Vorgängen in einem Tresor von Recovery Services. Ein Benutzer mit dieser Rolle kann jedoch keinen Tresor von Recovery Services erstellen oder löschen oder anderen Benutzern Zugriffsrechte zuweisen. Diese Rolle eignet sich optimal für Administratoren der Notfallwiederherstellung, die die Notfallwiederherstellung für Anwendungen oder gesamte Unternehmen aktivieren und verwalten können o.ä.
-* [Site Recovery-Operator](../active-directory/role-based-access-built-in-roles.md#site-recovery-operator): Diese Rolle verfügt über Berechtigungen zum Ausführen und Verwalten von Failover- und Failback-Vorgängen. Ein Benutzer, der über diese Rolle verfügt, kann die Replikation aktivieren oder deaktivieren, Tresore erstellen oder löschen, eine neue Infrastruktur registrieren oder anderen Benutzern Zugriffsrechte zuweisen. Diese Rolle eignet sich optimal für einen Notfallwiederherstellungsoperator, der ein Failover für einen virtuellen Computer oder Anwendungen durchführen kann, wenn er dazu vom Besitzer der Anwendung oder IT-Administratoren in einer tatsächlichen oder simulierten Notfallsituation (z.B. eine DR-Übung) angewiesen wird. Nachdem der Notfall behandelt wurde, kann der DR-Operator den virtuellen Computer erneut schützen und ein Failback durchführen.
-* [Site Recovery-Leser](../active-directory/role-based-access-built-in-roles.md#site-recovery-reader): Diese Rolle verfügt über Berechtigungen zum Anzeigen aller Site Recovery-Verwaltungsvorgänge. Diese Rolle eignet sich optimal für eine IT-Überwachungsführungskraft, die den aktuellen Schutzstatus überwachen und bei Bedarf Supporttickets ausstellen kann.
+* [Site-Recovery Contributor](../role-based-access-control/built-in-roles.md#site-recovery-contributor): Diese Rolle verfügt über alle erforderlichen Berechtigungen zum Verwalten von Azure Site Recovery-Vorgängen in einem Tresor von Recovery Services. Ein Benutzer mit dieser Rolle kann jedoch keinen Tresor von Recovery Services erstellen oder löschen oder anderen Benutzern Zugriffsrechte zuweisen. Diese Rolle eignet sich optimal für Administratoren der Notfallwiederherstellung, die die Notfallwiederherstellung für Anwendungen oder gesamte Unternehmen aktivieren und verwalten können o.ä.
+* [Site Recovery-Operator](../role-based-access-control/built-in-roles.md#site-recovery-operator): Diese Rolle verfügt über Berechtigungen zum Ausführen und Verwalten von Failover- und Failback-Vorgängen. Ein Benutzer, der über diese Rolle verfügt, kann die Replikation aktivieren oder deaktivieren, Tresore erstellen oder löschen, eine neue Infrastruktur registrieren oder anderen Benutzern Zugriffsrechte zuweisen. Diese Rolle eignet sich optimal für einen Notfallwiederherstellungsoperator, der ein Failover für einen virtuellen Computer oder Anwendungen durchführen kann, wenn er dazu vom Besitzer der Anwendung oder IT-Administratoren in einer tatsächlichen oder simulierten Notfallsituation (z.B. eine DR-Übung) angewiesen wird. Nachdem der Notfall behandelt wurde, kann der DR-Operator den virtuellen Computer erneut schützen und ein Failback durchführen.
+* [Site Recovery-Leser](../role-based-access-control/built-in-roles.md#site-recovery-reader): Diese Rolle verfügt über Berechtigungen zum Anzeigen aller Site Recovery-Verwaltungsvorgänge. Diese Rolle eignet sich optimal für eine IT-Überwachungsführungskraft, die den aktuellen Schutzstatus überwachen und bei Bedarf Supporttickets ausstellen kann.
 
-Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle zu haben, helfen Ihnen die Informationen zum [Erstellen von benutzerdefinierten Rollen](../active-directory/role-based-access-control-custom-roles.md) in Azure weiter.
+Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle zu haben, helfen Ihnen die Informationen zum [Erstellen von benutzerdefinierten Rollen](../role-based-access-control/custom-roles.md) in Azure weiter.
 
 ## <a name="permissions-required-to-enable-replication-for-new-virtual-machines"></a>Erforderliche Berechtigungen zum Aktivieren der Replikation für neue virtuelle Computer
 Wenn ein neuer virtueller Computer in Azure mithilfe von Azure Site Recovery repliziert wird, werden die Zugriffsebenen des zugeordneten Benutzers überprüft, um sicherzustellen, dass der Benutzer über die erforderlichen Berechtigungen zum Verwenden der in Site Recovery bereitgestellten Azure-Ressourcen verfügt.
@@ -73,12 +73,12 @@ Ein Benutzer benötigt die folgenden Berechtigungen, um die Replikation eines ne
 | Ressourcengruppe | Ressourcen-Manager | Microsoft.Resources/deployments/* |
 |  |  | Microsoft.Resources/subscriptions/resourceGroups/read |
 
-Sie können auch jeweils die [integrierte Rolle](../active-directory/role-based-access-built-in-roles.md) „Mitwirkender für virtuelle Computer“ oder „Mitwirkender für klassische virtuelle Computer“ für das Resource Manager- bzw. das klassische Bereitstellungsmodell verwenden.
+Sie können auch jeweils die [integrierte Rolle](../role-based-access-control/built-in-roles.md) „Mitwirkender für virtuelle Computer“ oder „Mitwirkender für klassische virtuelle Computer“ für das Resource Manager- bzw. das klassische Bereitstellungsmodell verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md): Erste Schritte mit RBAC im Azure-Portal.
+* [Rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md): Erste Schritte mit RBAC im Azure-Portal.
 * Informationen zur Zugriffsverwaltung mit:
-  * [PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
-  * [Azure-CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md)
-  * [REST-API](../active-directory/role-based-access-control-manage-access-rest.md)
-* [Problembehandlung bei rollenbasierter Zugriffssteuerung:](../active-directory/role-based-access-control-troubleshooting.md)Sehen Sie sich Vorschläge zur Behebung häufig auftretender Probleme an.
+  * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
+  * [Azure-CLI](../role-based-access-control/role-assignments-cli.md)
+  * [REST-API](../role-based-access-control/role-assignments-rest.md)
+* [Problembehandlung bei rollenbasierter Zugriffssteuerung:](../role-based-access-control/troubleshooting.md)Sehen Sie sich Vorschläge zur Behebung häufig auftretender Probleme an.

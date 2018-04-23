@@ -1,8 +1,8 @@
 ---
 title: Verwenden des Azure-Portals zum Verwalten von Azure-Ressourcen | Microsoft Docs
-description: "Verwenden Sie das Azure-Portal und Azure Resource Manager zum Verwalten Ihrer Ressourcen. Veranschaulicht das Arbeiten mit Dashboards, um Ressourcen zu überwachen."
+description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Verwalten Ihrer Ressourcen. Veranschaulicht das Arbeiten mit Dashboards, um Ressourcen zu überwachen.
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 27213482c3ef6b35e1e3f887c9a336b946850802
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 61cfd9e9d955b6a722bc88542b872a4a3edf5a36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-azure-resources-through-portal"></a>Verwalten von Azure-Ressourcen über das Portal
 
@@ -127,6 +127,6 @@ Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen ge
 * Informationen zum Anzeigen von Aktivitätsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
 * Informationen zum Anzeigen von Details zu einer Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen](resource-manager-deployment-operations.md).
 * Informationen zum Bereitstellen von Ressourcen über das Portal finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](resource-group-template-deploy-portal.md).
-* Informationen zum Verwalten des Zugriffs auf Ressourcen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
+* Informationen zum Verwalten des Zugriffs auf Ressourcen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 

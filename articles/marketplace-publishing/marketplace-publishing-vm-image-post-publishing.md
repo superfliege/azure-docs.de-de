@@ -1,5 +1,5 @@
 ---
-title: Verwalten eines VM-Images im Azure Marketplace | Microsoft-Dokumentation
+title: Verwalten eines VM-Images im Azure Marketplace | Microsoft Docs
 description: Eine ausführliche Anleitung dazu, wie Sie Ihr VM-Image nach der ersten Veröffentlichung im Azure Marketplace verwalten
 services: Azure Marketplace
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/03/2016
 ms.author: mbaldwin;
 ms.openlocfilehash: 19f60de4a6c651885da7ff1fb7612a77f3d0c8f1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Postproduktionsleitfaden für Virtual Machine-Angebote im Azure Marketplace
 In diesem Artikel wird beschrieben, wie Sie ein Virtual Machine-Liveangebot im Azure Marketplace aktualisieren können. Sie werden durch die Schritte zum Hinzufügen einer oder mehrerer neuer SKUs zu einem vorhandenen Angebot geführt. Außerdem wird beschrieben, wie Sie ein VM-Liveangebot oder eine SKU vom Marketplace entfernen.

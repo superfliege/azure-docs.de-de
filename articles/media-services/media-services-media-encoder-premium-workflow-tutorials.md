@@ -1,11 +1,11 @@
 ---
 title: Erweiterte Media Encoder Premium Workflow-Tutorials
-description: "Dieses Dokument enthält exemplarische Vorgehensweisen zur Durchführung von erweiterten Aufgaben mit dem Media Encoder Premium Workflow und zur Erstellung komplexer Workflows mit Workflow Designer."
+description: Dieses Dokument enthält exemplarische Vorgehensweisen zur Durchführung von erweiterten Aufgaben mit dem Media Encoder Premium Workflow und zur Erstellung komplexer Workflows mit Workflow Designer.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: xstof
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1ba52865-b4a8-4ca0-ac96-920d55b9d15b
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: christoc;xpouyat;juliako
 ms.openlocfilehash: 8b714fcf001a6830cffe4df8c152dab40834c7c4
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Erweiterte Media Encoder Premium Workflow-Tutorials
 ## <a name="overview"></a>Übersicht

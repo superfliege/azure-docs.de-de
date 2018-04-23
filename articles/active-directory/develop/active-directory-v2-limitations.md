@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory v2.0-Endpunkt – Einschränkungen | Microsoft Docs"
-description: "Eine Liste der Einschränkungen des v2.0-Endpunkts von Azure AD."
+title: Azure Active Directory v2.0-Endpunkt – Einschränkungen | Microsoft Docs
+description: Eine Liste der Einschränkungen des v2.0-Endpunkts von Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a99289c0-e6ce-410c-94f6-c279387b4f66
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a81f505c189da31edb91d1b522d9f3140f821cb4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a36f55c57a75f671b3e5eeae3d91ff60483afd37
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Sollte ich den v2.0-Endpunkt verwenden?
 Beim Erstellen von Anwendungen, die in Azure Active Directory integriert werden, müssen Sie entscheiden, ob der v2.0-Endpunkt und die Authentifizierungsprotokolle Ihren Anforderungen entsprechen. Der ursprüngliche Azure Active Directory-Endpunkt wird weiterhin vollständig unterstützt und umfasst in gewisser Hinsicht mehr Funktionen als v2.0. Allerdings werden mit dem v2.0-Endpunkt [bedeutende Vorteile](active-directory-v2-compare.md) für Entwickler eingeführt.
@@ -84,15 +84,6 @@ Die beiden letztgenannten URIs können hinzugefügt werden, da es sich hierbei u
 Beachten Sie zudem, dass Sie nur 20 Antwort-URLs für eine bestimmte Anwendung verwenden können.
 
 Informationen zum Registrieren einer App im Anwendungsregistrierungsportal finden Sie unter [Registrieren einer App mit dem v2.0-Endpunkt](active-directory-v2-app-registration.md).
-
-## <a name="restrictions-on-services-and-apis"></a>Einschränkungen für Dienste und APIs
-Der v2.0-Endpunkt unterstützt derzeit die Anmeldung für jede App, die im Anwendungsregistrierungsportal registriert ist, sofern sie in der Liste der [unterstützten Authentifizierungsflüsse](active-directory-v2-flows.md) enthalten ist. Diese Apps können OAuth 2.0-Zugriffstoken jedoch nur für einen sehr begrenzten Satz von Ressourcen erhalten. Der v2.0-Endpunkt gibt Zugriffstoken nur aus für:
-
-* Die App, die das Token angefordert hat. Eine App kann ein Zugriffstoken für sich selbst abrufen, wenn die logische App aus mehreren unterschiedlichen Komponenten oder Schichten besteht. Wenn Sie dieses Szenario in Aktion sehen möchten, besuchen Sie unsere [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started)-Tutorials.
-* Die Outlook-Mail-, -Kalender- und -Kontakte-REST-APIs, die sich alle unter „https://outlook.office.com“ befinden. Um zu erfahren, wie Sie eine App schreiben, die auf diese APIs zugreift, beachten Sie die Tutorials [Erste Schritte mit Office](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2).
-* Microsoft Graph-APIs. Informieren Sie sich bei Bedarf über [Microsoft Graph](https://graph.microsoft.io) und die Daten, die Ihnen zur Verfügung stehen.
-
-Zu diesem Zeitpunkt werden keine anderen Dienste unterstützt. In Zukunft werden weitere Microsoft Online Services sowie der Support für Ihre eigenen Web-APIs und Dienste hinzugefügt werden.
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>Einschränkungen für Bibliotheken und SDKs
 Die Bibliotheksunterstützung für den v2.0-Endpunkt ist gegenwärtig eingeschränkt. Wenn Sie den v2.0-Endpunkt in einer Produktionsanwendung verwenden möchten, stehen Ihnen folgende Möglichkeiten offen:

@@ -1,24 +1,18 @@
 ---
 title: Hinzufügen eines Dienstprinzipals zur Azure Analysis Services-Serveradministratorrolle | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Automatisierungsdienstprinzipal zur Serveradministratorrolle hinzufügen.
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-ms.assetid: ''
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 8e51b80e184b2b1ff24b1051b55088fbc54c271c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.reviewer: minewiskan
+ms.openlocfilehash: 9c6417e069bbed38b1f6e9317636a10834ce7197
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-a-service-principle-to-the-server-administrator-role"></a>Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle 
 
@@ -47,7 +41,7 @@ Für die Durchführung dieser Aufgabe benötigen Sie die Rechte eines [Serveradm
 
 
 > [!NOTE]
-> Bei Servervorgängen, für die AzureRm-Cmdlets verwendet werden, muss der Dienstprinzipal mit dem Scheduler außerdem zur Rolle **Besitzer** für die Ressource in der [rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-what-is.md) gehören. 
+> Bei Servervorgängen, für die AzureRm-Cmdlets verwendet werden, muss der Dienstprinzipal mit dem Scheduler außerdem zur Rolle **Besitzer** für die Ressource in der [rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)](../role-based-access-control/overview.md) gehören. 
 
 ## <a name="related-information"></a>Verwandte Informationen
 

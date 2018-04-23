@@ -10,17 +10,15 @@ editor: cgronlun
 ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: aa56c1e2f1f506be51f449a1cf10b4f0bc57a152
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: ca4a248e9da2c0d50aaf320370b1f3050a0ff263
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="overview-of-spark-structured-streaming"></a>Übersicht zu Spark Structured Streaming
 
@@ -138,11 +136,11 @@ Um Resilienz und Fehlertoleranz zu gewährleisten, stellt das Structured Streami
 
 ## <a name="deploying-spark-streaming-applications"></a>Bereitstellen von Spark-Streaminganwendungen
 
-Sie erstellen eine Spark Streaming-Anwendung in der Regel lokal in einer JAR-Datei und stellen sie dann unter HDInsight für Spark bereit, indem Sie die JAR-Datei in den Standardspeicher kopieren, der Ihrem HDInsight-Cluster angefügt ist. Sie können Ihre Anwendung mit den LIVY-REST-APIs, die in Ihrem Cluster verfügbar sind, mit einem POST-Vorgang starten. Der POST-Textkörper enthält ein JSON-Dokument, das Folgendes angibt: den Pfad zu Ihrer JAR-Datei, den Namen der Klasse, deren Hauptmethode die Streaminganwendung definiert und ausführt, und optional die Ressourcenanforderungen des Auftrags (z.B. die Anzahl der Executors, Speicher und Kerne) sowie alle Konfigurationseinstellungen, die Ihr Anwendungscode erfordert.
+Sie erstellen eine Spark-Streaming-Anwendung in der Regel lokal in einer JAR-Datei und stellen sie dann unter HDInsight für Spark bereit, indem Sie die JAR-Datei in den Standardspeicher kopieren, der an Ihren HDInsight-Cluster angefügt ist. Sie können Ihre Anwendung mit den LIVY-REST-APIs, die in Ihrem Cluster verfügbar sind, mit einem POST-Vorgang starten. Der POST-Textkörper enthält ein JSON-Dokument, das Folgendes angibt: den Pfad zu Ihrer JAR-Datei, den Namen der Klasse, deren Hauptmethode die Streaming-Anwendung definiert und ausführt, und optional die Ressourcenanforderungen des Auftrags (z.B. die Anzahl der Executors, Speicher und Kerne) sowie alle Konfigurationseinstellungen, die Ihr Anwendungscode erfordert.
 
-![Bereitstellen von Spark Streaming-Anwendungen](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+![Bereitstellen von Spark-Streaming-Anwendungen](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-Der Status aller Anwendungen kann auch mit einer GET-Anforderung an einem LIVY-Endpunkt überprüft werden. Schließlich können Sie eine ausgeführte Anwendung durch Senden einer DELETE-Anforderung an den LIVY-Endpunkt beenden. Einzelheiten zur LIVY-API finden Sie unter [Übermitteln von Remoteaufträgen an einen HDInsight Spark-Cluster mithilfe der Apache Spark-REST-API](apache-spark-livy-rest-interface.md)
+Der Status aller Anwendungen kann auch mit einer GET-Anforderung an einem LIVY-Endpunkt überprüft werden. Außerdem können Sie eine ausgeführte Anwendung durch das Senden einer DELETE-Anforderung an den LIVY-Endpunkt beenden. Einzelheiten zur LIVY-API finden Sie unter [Übermitteln von Remoteaufträgen an einen HDInsight Spark-Cluster mithilfe der Apache Spark-REST-API](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

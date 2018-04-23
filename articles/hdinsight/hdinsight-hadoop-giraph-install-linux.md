@@ -1,8 +1,8 @@
 ---
-title: "Installieren und Verwenden von Giraph in HDInsight (Hadoop) – Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Giraph auf Linux-basierten HDInsight-Clustern mit Skriptaktionen installieren. Mit Skriptaktionen können Sie den Cluster während der Erstellung anpassen, indem Sie die Clusterkonfiguration ändern oder Dienste und Hilfsprogramme installieren."
+title: Installieren und Verwenden von Giraph in HDInsight (Hadoop) – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Giraph auf Linux-basierten HDInsight-Clustern mit Skriptaktionen installieren. Mit Skriptaktionen können Sie den Cluster während der Erstellung anpassen, indem Sie die Clusterkonfiguration ändern oder Dienste und Hilfsprogramme installieren.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 9fcac906-8f06-4002-9fe8-473e42f8fd0f
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 1f2ee45d5d3a4dbb53faf43f67989ea92488b92a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: dcfd37a40ce16a1574c21e3a6e9520cb2e773166
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Installieren von Giraph in HDInsight Hadoop-Clustern und Verwenden von Giraph zur Verarbeitung großer Diagramme
 
@@ -42,7 +40,7 @@ In diesem Artikel wird erläutert, wie Sie Apache Giraph in einem HDInsight-Clus
 > [!WARNING]
 > Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft-Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
 >
-> Für benutzerdefinierte Komponenten wie Giraph steht in wirtschaftlich angemessenem Rahmen Support für eine weiterführende Behebung des Problems zur Verfügung. Microsoft-Support kann Ihnen bei der Lösung des Problems helfen. Andernfalls finden Sie in Open-Source-Communitys Unterstützung, die oft über umfassende Kenntnisse zu dieser Technologie verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), [z. B. Hadoop](http://hadoop.apache.org/).
+> Für benutzerdefinierte Komponenten wie Giraph steht in wirtschaftlich angemessenem Rahmen Support für eine weiterführende Behebung des Problems zur Verfügung. Microsoft-Support kann Ihnen bei der Lösung des Problems helfen. Andernfalls finden Sie in Open-Source-Communitys Unterstützung, die oft über umfassende Kenntnisse zu dieser Technologie verfügen. So können z.B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), z.B. [Hadoop](http://hadoop.apache.org/).
 
 
 ## <a name="what-the-script-does"></a>Funktion des Skripts
@@ -76,7 +74,7 @@ Dieser Abschnitt enthält Anweisungen zur Verwendung des Beispielskripts währen
 
    * **NAME**: Geben Sie einen Anzeigenamen für die Skriptaktion ein.
 
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
+   * **SKRIPT-URI**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
    * **HEAD**: Aktivieren Sie diese Option.
 

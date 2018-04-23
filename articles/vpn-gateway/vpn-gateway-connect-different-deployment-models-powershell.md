@@ -5,7 +5,7 @@ services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: a3afd89a928854a1b03bfd4c5645ea12dbb638fc
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 65faf1a4f78244d9fdd03b6415bf2cadac923504
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell
 
@@ -176,7 +176,7 @@ Gehen Sie wie im Folgenden beschrieben vor, um ein VPN-Gateway für das RM-VNet 
 1. Melden Sie sich in der PowerShell-Konsole bei Ihrem Azure-Konto an. Das folgende Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto auf. Nachdem Sie sich angemeldet haben, werden Ihre Kontoeinstellungen heruntergeladen, sodass sie in Azure PowerShell verfügbar sind.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ``` 
    
   Rufen Sie eine Liste Ihrer Azure-Abonnements ab.

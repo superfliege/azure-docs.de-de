@@ -1,13 +1,13 @@
 ---
-title: "Zurücksetzen einer fehlerhaften Azure ExpressRoute-Verbindung: PowerShell | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie eine ExpressRoute-Verbindung zurücksetzen, die sich in einem fehlerhaften Zustand befindet."
+title: 'Zurücksetzen einer fehlerhaften Azure ExpressRoute-Verbindung: PowerShell | Microsoft-Dokumentation'
+description: In diesem Artikel wird beschrieben, wie Sie eine ExpressRoute-Verbindung zurücksetzen, die sich in einem fehlerhaften Zustand befindet.
 documentationcenter: na
 services: expressroute
 author: anzaman
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: 0e017200193de3e4a02275cec3b09c32f1fa5c31
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 423bc1d6409e5b7fe02339a05d0775f4ff42de49
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Zurücksetzen einer fehlerhaften ExpressRoute-Verbindung
 
@@ -32,7 +32,7 @@ Wenn ein Vorgang über eine ExpressRoute-Verbindung nicht erfolgreich abgeschlos
 2. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 3. Überprüfen Sie die Abonnements für das Konto, wenn Sie über mehrere Azure-Abonnements verfügen.
 

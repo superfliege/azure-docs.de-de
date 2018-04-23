@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 520427b99c05fcbc8125bdbde7d8eb56e7487292
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3eb6f08d89daec063841eeb5fff8479c9f2f41fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Verwenden von Azure Machine Learning-Webdienstparametern
 Ein Azure Machine Learning-Webdienst wird erstellt, indem ein Experiment veröffentlicht wird, das Module mit konfigurierbaren Parametern enthält. In einigen Fällen kann es vielleicht erforderlich sein, das Verhalten des Moduls zu ändern, während der Webdienst ausgeführt wird. *Webdienstparameter* erlauben Ihnen, diese Aufgabe auszuführen. 
@@ -52,8 +52,8 @@ Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem Modul [Export
    * Wählen Sie unter **Please specify data destination**(Datenziel angeben) das Ziel "Azure Blob Storage" (Azure-Blob-Speicher" aus.
    * Wählen Sie unter **Please specify authentication type**(Authentifizierungstyp angeben) die Option "Account" (Konto) aus.
    * Geben Sie die Kontoinformationen für Azure Blob Storage ein. 
-     <p />
-3. Klicken Sie auf das Symbol rechts neben **Path to blob beginning with container parameter** (Blob-Pfad beginnt mit Containerparameter). Es sieht folgendermaßen aus:
+
+3. Klicken Sie auf das Symbol rechts neben **Path to blob beginning with container parameter**(Blob-Pfad beginnt mit Containerparameter). Es sieht folgendermaßen aus:
    
    ![Symbol für Webdienstparameter][icon]
    

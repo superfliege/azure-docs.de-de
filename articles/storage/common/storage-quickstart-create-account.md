@@ -1,6 +1,6 @@
 ---
 title: 'Azure-Schnellstartanleitung: Erstellen eines Speicherkontos | Microsoft-Dokumentation'
-description: "Hier erfahren Sie, wie Sie über das Azure-Portal, mithilfe von Azure PowerShell oder über die Azure-Befehlszeilenschnittstelle ein neues Speicherkonto erstellen."
+description: Hier erfahren Sie, wie Sie über das Azure-Portal, mithilfe von Azure PowerShell oder über die Azure-Befehlszeilenschnittstelle ein neues Speicherkonto erstellen.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: 600689dfe2d572a83382522f6bea1ec5bf0f3883
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1dffceb629df5d0197bfc8ac66120df3912d70b1
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -65,10 +65,10 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Melden Sie sich mit dem Befehl `Login-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Authentifizierungsanweisungen auf dem Bildschirm.
+Melden Sie sich mit dem Befehl `Connect-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Authentifizierungsanweisungen auf dem Bildschirm.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
@@ -222,7 +222,7 @@ Fügen Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ m
 > Der [zonenredundante Speicher](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-zone-redundant-storage/preview/) befindet sich derzeit in der Vorschauphase und ist nur für die folgenden Standorte verfügbar:
 >    - USA (Ost 2)
 >    - USA, Mitte
->    - Frankreich, Mitte (Diese Region befindet sich derzeit in der Vorschauphase. Informationen zum Anfordern des Zugriffs finden Sie unter [Microsoft Azure preview with Azure Availability Zones now open in France](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france) (Vorschauversion von Microsoft Azure mit Azure-Verfügbarkeitszonen jetzt auch in Frankreich).)
+>    - Frankreich, Mitte (Diese Region ist derzeit in der Vorschauversion verfügbar. Informationen zum Anfordern des Zugriffs finden Sie unter [Microsoft Azure preview with Azure Availability Zones now open in France](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france) (Vorschauversion von Microsoft Azure mit Azure-Verfügbarkeitszonen jetzt auch in Frankreich).)
     
 Weitere Informationen zu den verschiedenen Replikationsarten, die verfügbar sind, finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 

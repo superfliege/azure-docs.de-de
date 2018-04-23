@@ -1,13 +1,13 @@
 ---
-title: "Verschlüsseln von Datenträgern für Microsoft Azure Virtual Machine Scale Sets | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie angefügte Datenträger in VM-Skalierungsgruppen verschlüsseln."
+title: Verschlüsseln von Datenträgern für Microsoft Azure Virtual Machine Scale Sets | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie angefügte Datenträger in VM-Skalierungsgruppen verschlüsseln.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3263ed4d6325207f38656d741fa4a1f091d4fdea
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 570764ad5d657a8b1efa2425423a89ddc518451c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>Verschlüsseln von Betriebssystem- und angefügten Datenträgern in einer VM-Skalierungsgruppe
 Azure [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) unterstützt Azure Disk Encryption (ADE).  Azure Disk Encryption kann für Windows- und Linux-VM-Skalierungsgruppen aktiviert werden, um die ruhenden Daten in den Skalierungsgruppen mit Industriestandard-Verschlüsselungstechnologie zu schützen. Weitere Informationen finden Sie unter „Azure Disk Encryption für virtuelle Windows- und Linux-Computer“.
@@ -42,7 +42,7 @@ Installieren Sie die neuesten Versionen von [Azure PowerShell](https://github.co
 Für die Vorschauversion von Azure Disk Encryption für VM-Skalierungsgruppen müssen Sie Ihr Abonnement mit den folgenden PowerShell-Befehlen selbst registrieren: 
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 

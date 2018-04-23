@@ -1,6 +1,6 @@
 ---
-title: "Python-Beispiel für das Ableiten neuer Spalten in der Azure Machine Learning-Datenvorbereitung | Microsoft-Dokumentation"
-description: "Dieses Dokument enthält Python-Codebeispiele zum Erstellen neuer Spalten in der Azure Machine Learning-Datenvorbereitung."
+title: Python-Beispiel für das Ableiten neuer Spalten in der Azure Machine Learning-Datenvorbereitung | Microsoft-Dokumentation
+description: Dieses Dokument enthält Python-Codebeispiele zum Erstellen neuer Spalten in der Azure Machine Learning-Datenvorbereitung.
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 02670fa4506237ac391e467e5c7a1187b1131ece
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sample-of-custom-column-transforms-python"></a>Beispiel für benutzerdefinierte Spaltentransformationen (Python) 
 Der Name dieser Transformation im Menü ist **Add Column (Script)** (Spalte hinzufügen (Skript)).

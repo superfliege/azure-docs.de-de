@@ -1,11 +1,11 @@
 ---
-title: "Öffnen von Ports für einen virtuellen Computer mithilfe von Azure PowerShell | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell und Azure PowerShell für Ihren virtuellen Windows-Computer einen Port öffnen oder einen Endpunkt erstellen."
+title: Öffnen von Ports für einen virtuellen Computer mithilfe von Azure PowerShell | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell und Azure PowerShell für Ihren virtuellen Windows-Computer einen Port öffnen oder einen Endpunkt erstellen.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: cf45f7d8-451a-48ab-8419-730366d54f1e
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: d9918992ef1ac46b3b000480b6be7e984f0858e1
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: b8eb36e4abad12cb46493846a024da00f9146d40
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Öffnen von Ports und Endpunkten für einen virtuellen Computer in Azure mit PowerShell
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -29,7 +29,7 @@ Zum Erstellen einer Netzwerksicherheitsgruppe und von ACL-Regeln (Access Control
 Melden Sie sich bei Ihrem Azure-Konto an:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind etwa *myResourceGroup*, *myNetworkSecurityGroup* oder *myVnet*.

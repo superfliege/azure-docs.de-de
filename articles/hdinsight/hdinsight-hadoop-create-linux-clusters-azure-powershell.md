@@ -1,8 +1,8 @@
 ---
-title: "Erstellen von Hadoop-Clustern mit PowerShell – Azure HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Hadoop-, HBase-, Storm- oder Spark-Cluster unter Linux für HDInsight mithilfe von Azure PowerShell erstellt werden."
+title: Erstellen von Hadoop-Clustern mit PowerShell – Azure HDInsight | Microsoft-Dokumentation
+description: Erfahren Sie, wie Hadoop-, HBase-, Storm- oder Spark-Cluster unter Linux für HDInsight mithilfe von Azure PowerShell erstellt werden.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 4208deca-d64a-45e1-8948-2673d5d7678c
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 2bbb34987bbf639bcd246afbfd4debea98681922
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 57ae7c3cab6c0084bb43585f65d79ae6cc265356
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Erstellen von Linux-basierten Clustern in HDInsight mit Azure PowerShell
 

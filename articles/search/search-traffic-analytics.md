@@ -1,24 +1,17 @@
 ---
-title: "„Datenverkehrsanalyse durchsuchen“ für Azure Search | Microsoft Docs"
-description: "Aktivieren Sie „Datenverkehrsanalyse durchsuchen“ für Azure Search, einen cloudgehosteten Suchdienst für Microsoft Azure, um Erkenntnisse über Ihre Benutzer und Daten zu gewinnen."
-services: search
-documentationcenter: 
-author: bernitorres
-manager: jlembicz
-editor: 
-ms.assetid: b31d79cf-5924-4522-9276-a1bb5d527b13
+title: „Datenverkehrsanalyse durchsuchen“ für Azure Search | Microsoft Docs
+description: Aktivieren Sie „Datenverkehrsanalyse durchsuchen“ für Azure Search, einen cloudgehosteten Suchdienst für Microsoft Azure, um Erkenntnisse über Ihre Benutzer und Daten zu gewinnen.
+author: HeidiSteen
+manager: cgronlun
 ms.service: search
-ms.devlang: multiple
-ms.workload: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/05/2017
-ms.author: betorres
-ms.openlocfilehash: 303ca5c820f573dc0b58f1910f258403c3baad2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: heidist
+ms.openlocfilehash: 10963d1e022fc2aa574c88e994c4d8593b4d4de1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="what-is-search-traffic-analytics"></a>Was ist „Datenverkehrsanalyse durchsuchen“?
 „Datenverkehrsanalyse durchsuchen“ ist ein Muster für das Implementieren einer Feedbackschleife für Ihren Suchdienst. Dieses Muster beschreibt die erforderlichen Daten, und wie Sie sie mit Application Insights sammeln, einem branchenführenden Tool für die Überwachung von Diensten auf mehrere Plattformen.

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3c6823387e2e875e935a5a12345afdbf7e81a0cb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c86f7ae9ef3eeaa68708df509020af0f6ecc2d1f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="secure-iis-web-server-with-ssl-certificates-on-a-windows-virtual-machine-in-azure"></a>Sichern eines IIS-Webservers mit SSL-Zertifikaten auf einem virtuellen Windows-Computer in Azure
 Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Verschlüsseln des Webdatenverkehrs verwendet werden. Diese SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Windows-Computern in Azure. In diesem Tutorial lernen Sie Folgendes:
@@ -33,7 +33,7 @@ Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Ve
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
 
 
 ## <a name="overview"></a>Übersicht

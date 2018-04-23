@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
-ms.openlocfilehash: 4d971d75424f85bb07c0be779b9dfedb1ef41c1e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f5561ac0089225ae2d06e51a90fa2081e409ce41
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Verwalten eines Azure Machine Learning-Arbeitsbereichs
 
@@ -49,7 +49,7 @@ Verwenden Sie zum Verwalten der dem Arbeitsbereich zugeordneten Webdienste das P
 > [!NOTE]
 > Zum Bereitstellen oder Verwalten neuer Webdienste muss Ihnen in dem Abonnement, für das der Webdienst bereitgestellt wird, eine Teilnehmer- oder Administratorrolle zugewiesen sein. Wenn Sie andere Benutzer in einen Machine Learning-Arbeitsbereich einladen, müssen Sie ihnen eine Teilnehmer- oder Administratorrolle im Abonnement zuweisen, damit sie Webdienste bereitstellen oder verwalten können. 
 > 
->Weitere Informationen zum Festlegen von Zugriffsberechtigungen finden Sie unter [Anzeigen von Zugriffszuweisungen für Benutzer und Gruppen im Azure-Portal](../../active-directory/role-based-access-control-manage-assignments.md).
+>Weitere Informationen zum Festlegen von Zugriffsberechtigungen finden Sie unter [Anzeigen von Zugriffszuweisungen für Benutzer und Gruppen im Azure-Portal](../../role-based-access-control/role-assignments-users.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Bereitstellen von Machine Learning mithilfe von Azure Resource Manager-Vorlagen](deploy-with-resource-manager-template.md). 

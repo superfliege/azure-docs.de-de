@@ -14,6 +14,8 @@
   items:
     - name: Hinzufügen einer benutzerdefinierten Domäne
       href: cdn-map-content-to-custom-domain.md
+    - name: Konfigurieren von HTTPS für eine benutzerdefinierte Domäne
+      href: cdn-custom-ssl.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -38,10 +40,6 @@
               href: cdn-sas-storage-support.md
         - name: Cross-Origin Resource Sharing
           href: cdn-cors.md
-        - name: Hinzufügen einer benutzerdefinierten Domäne zum CDN-Endpunkt
-          href: cdn-map-content-to-custom-domain.md
-        - name: Konfigurieren von HTTPS für eine benutzerdefinierte Domäne
-          href: cdn-custom-ssl.md
     - name: Optimieren von Inhalten
       items:
         - name: Übersicht über die Optimierung
@@ -137,6 +135,11 @@
           href: cdn-rules-engine-reference-match-conditions.md
         - name: Regel-Engine – Features
           href: cdn-rules-engine-reference-features.md
+    - name: Verizon-spezifische HTTP-Header
+      href: cdn-verizon-http-headers.md
+      items:
+        - name: X-EC-Debug-Header
+          href: cdn-http-debug-headers.md
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cdn
     - name: .NET

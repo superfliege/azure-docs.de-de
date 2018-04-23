@@ -2,7 +2,7 @@
 title: Erstellen und Freigeben von Dashboards im Azure-Portal | Microsoft-Dokumentation
 description: In diesem Artikel wird das Erstellen und Bearbeiten von Dashboards im Azure-Portal beschrieben.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: sewatson
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: sewatson
-ms.openlocfilehash: 7f90c882285170bac34bfe020831d3ac04010a11
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4e5a5ae944b5f0059ee78a2171a9688902aaf6db
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Erstellen und Freigeben von Dashboards im Azure-Portal
 Sie können mehrere Dashboards erstellen und für andere Benutzer freigeben, die Zugriff auf Ihre Azure-Abonnements haben.  In diesem Artikel werden die Grundlagen der Erstellung, Bearbeitung, Veröffentlichung und Verwaltung des Zugriffs auf Dashboards beschrieben.
@@ -75,7 +75,7 @@ Wenn Sie ein Dashboard erstellen, ist es standardmäßig ein privates Dashboard.
 
 ![Dashboard freigeben](./media/azure-portal-dashboards/share-dashboard.png)
 
-Sie werden aufgefordert, für die Veröffentlichung des Dashboards ein Abonnement und eine Ressourcengruppe auszuwählen. Damit Dashboards nahtlos in das Ökosystem integriert werden können, haben wir freigegebene Dashboards als Azure-Ressourcen implementiert (das Freigeben durch die Eingabe einer E-Mail-Adresse ist also nicht möglich).  Der Zugriff auf die Informationen, die von den meisten Kacheln im Portal angezeigt werden, wird in Azure über die [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md) geregelt. Aus Sicht der Zugriffssteuerung unterscheiden sich freigegebene Dashboards nicht von einem virtuellen Computer oder Speicherkonto.  
+Sie werden aufgefordert, für die Veröffentlichung des Dashboards ein Abonnement und eine Ressourcengruppe auszuwählen. Damit Dashboards nahtlos in das Ökosystem integriert werden können, haben wir freigegebene Dashboards als Azure-Ressourcen implementiert (das Freigeben durch die Eingabe einer E-Mail-Adresse ist also nicht möglich).  Der Zugriff auf die Informationen, die von den meisten Kacheln im Portal angezeigt werden, wird in Azure über die [rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md) geregelt. Aus Sicht der Zugriffssteuerung unterscheiden sich freigegebene Dashboards nicht von einem virtuellen Computer oder Speicherkonto.  
 
 Ein Beispiel: Sie verfügen über ein Azure-Abonnement, und Mitgliedern Ihres Teams wurden die Rollen **Besitzer**, **Mitwirkender** oder **Leser** für das Abonnement zugewiesen.  Benutzer, die Besitzer oder Mitwirkende sind, können Dashboards im Abonnement auflisten, anzeigen, erstellen, ändern oder löschen.  Benutzer, die als Leser festgelegt wurden, können Dashboards auflisten und anzeigen, aber sie können diese nicht ändern oder löschen.  Benutzer mit Lesezugriff können lokale Änderungen an einem freigegebenen Dashboard vornehmen, haben aber nicht die Möglichkeit, diese Änderungen zur Veröffentlichung zurück an den Server zu übergeben.  Sie können aber eine private Kopie des Dashboards zur eigenen Verwendung erstellen.  Einzelne Kacheln im Dashboard erzwingen basierend auf den jeweiligen Ressourcen wie immer eigene Regeln für die Zugriffssteuerung.  
 

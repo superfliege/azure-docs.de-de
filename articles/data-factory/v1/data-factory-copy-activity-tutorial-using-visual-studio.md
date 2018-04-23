@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c25bd85c362e7055109e0a2a178a417ef110899a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1e82c73c1d2984631e8d2dd2eb0f93c9751a1cf1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe von Visual Studio
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten
 
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus.       
-2. Zum Erstellen von Data Factory-Instanzen müssen Sie Mitglied der Rolle [Data Factory-Mitwirkender](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) auf Abonnement- bzw. Ressourcengruppenebene sein.
+2. Zum Erstellen von Data Factory-Instanzen müssen Sie Mitglied der Rolle [Data Factory-Mitwirkender](../../role-based-access-control/built-in-roles.md#data-factory-contributor) auf Abonnement- bzw. Ressourcengruppenebene sein.
 3. Folgendes muss auf Ihrem Computer installiert sein: 
    * Visual Studio 2013 oder Visual Studio 2015
    * Laden Sie das Azure-SDK für Visual Studio 2013 oder Visual Studio 2015 herunter. Navigieren Sie zur [Azure-Downloadseite](https://azure.microsoft.com/downloads/), und klicken Sie auf **VS 2013** oder **VS 2015** im Abschnitt **.NET**.

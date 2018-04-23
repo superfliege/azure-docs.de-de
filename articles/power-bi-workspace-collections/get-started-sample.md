@@ -1,12 +1,12 @@
 ---
 title: Erste Schritte mit einem Beispiel
-description: "Dieser Artikel enthält eine Einführung in das Beispiel für die ersten Schritte mit Power BI-Arbeitsbereichssammlungen."
+description: Dieser Artikel enthält eine Einführung in das Beispiel für die ersten Schritte mit Power BI-Arbeitsbereichssammlungen.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: d8a9ef78-ad4e-4bc7-9711-89172dc5c548
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 9049f95c9f81c0217c96469a45561b6cd0b33ae9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 4daa675092bed1788025e7e3f7e7e11d02ef1671
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Beispiel für die ersten Schritte mit Power BI-Arbeitsbereichssammlungen
 
@@ -141,7 +141,7 @@ In der **Ansicht** wird die Anzeige von Power BI-**Berichten** und eines einzeln
 
 **Reports.cshtml:** Durchlaufen Sie **Model.Reports**, um einen **ActionLink** zu erstellen. Der **ActionLink** setzt sich wie folgt zusammen:
 
-| Teil | Beschreibung |
+| Teil | BESCHREIBUNG |
 | --- | --- |
 | Titel |Der Name des Berichts. |
 | QueryString |Ein Link zur Berichts-ID. |
@@ -257,7 +257,7 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 ## <a name="see-also"></a>Weitere Informationen
 
 [Häufige Szenarien für Microsoft Power BI-Arbeitsbereichssammlungen](scenarios.md)  
-[Authentifizieren und Autorisieren in Power BI-Arbeitsbereichssammlungen](app-token-flow.md)  
+[Authenticating and authorizing in Power BI Workspace Collections (Authentifizieren und Autorisieren in Power BI-Arbeitsbereichssammlungen)](app-token-flow.md)  
 [Einbetten eines Berichts](embed-report.md)  
 [Erstellen eines neuen Berichts aus einem Dataset](create-report-from-dataset.md)  
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  

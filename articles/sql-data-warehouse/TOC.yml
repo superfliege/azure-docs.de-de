@@ -11,6 +11,8 @@
   items:
     - name: Erstellen und Verbinden – Portal
       href: create-data-warehouse-portal.md
+    - name: Erstellen – PowerShell
+      href: create-data-warehouse-powershell.md
     - name: Anhalten und Fortsetzen von Computevorgängen
       items:
         - name: Portal

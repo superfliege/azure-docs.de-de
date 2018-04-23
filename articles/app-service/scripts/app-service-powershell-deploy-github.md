@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Code über GitHub | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Code über GitHub"
+title: Azure PowerShell-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Code über GitHub | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Code über GitHub
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
 ms.service: app-service-web
@@ -15,17 +15,17 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 573766f4b1256ec0ba85edd3742b16684db4bd10
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0fbda001d86c63c6ec045f7a3ac5ec1d10e15fe4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-web-app-and-deploy-code-from-github"></a>Erstellen einer Web-App und Bereitstellen von Code über GitHub
 
 Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und stellt dann Ihren Web-App-Code über ein öffentliches GitHub-Repository bereit (ohne Continuous Deployment). Informationen zur GitHub-Bereitstellung mit Continuous Deployment finden Sie unter [Erstellen einer Web-App mit Continuous Deployment über GitHub](app-service-powershell-continuous-deployment-github.md).
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. Darüber hinaus benötigen Sie eine Verknüpfung mit dem GitHub-Repository, das den Code der Web-App enthält.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. Darüber hinaus benötigen Sie eine Verknüpfung mit dem GitHub-Repository, das den Code der Web-App enthält.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -43,7 +43,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Erstellt einen App Service-Plan. |

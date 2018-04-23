@@ -5,7 +5,7 @@ services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 4d7ad981-ef31-4513-b337-50bdc4709c09
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
 ms.openlocfilehash: e8a8a84153a950f2d1bc002b34c83dc5ed8a5eb8
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="data-warehouse-migration-utility-preview"></a>Data Warehouse-Hilfsprogramm für die Migration (Vorschau)
 > [!div class="op_single_selector"]

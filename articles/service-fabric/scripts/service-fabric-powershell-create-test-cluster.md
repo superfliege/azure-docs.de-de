@@ -15,11 +15,11 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: a03362ebd4b8502f12b7c7bb9aadc558f6a073d2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 169f68d179c7f895078fe649d0e2a69e58d148cb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-three-node-test-service-fabric-cluster"></a>Erstellen eines Service Fabric-Testclusters mit drei Knoten
 
@@ -27,7 +27,7 @@ Dieses Beispielskript erstellt einen Service Fabric-Testcluster mit drei Knoten,
 
 Der Befehl erstellt ein selbstsigniertes Zertifikat und lädt es in einen neuen Schlüsseltresor hoch, der in derselben Ressourcengruppe wie der Cluster erstellt wird. Das Zertifikat wird außerdem in ein lokales Verzeichnis kopiert.  Legen Sie den *-OS*-Parameter fest, um die Version von Windows oder Linux auszuwählen, in der die Clusterknoten ausgeführt werden.  Passen Sie die Parameter nach Bedarf an.
 
-Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. 
+Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="sample-script"></a>Beispielskript
 

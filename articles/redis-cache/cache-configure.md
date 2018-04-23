@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Azure Redis Cache | Microsoft-Dokumentation
+title: Konfigurieren von Azure Redis Cache | Microsoft Docs
 description: Grundlagen der Redis-Standardkonfiguration für Azure Redis Cache und Informationen zur Konfiguration Ihrer Azure Redis Cache-Instanzen
 services: redis-cache
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 2e2e22c17bce4bdaf4988001db8de31b68f497fc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0cd21c0367a95d3e866137797ac32fc5bdd196c0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Gewusst wie: Konfigurieren von Azure Redis Cache
 In diesem Thema sind die für Ihre Azure Redis Cache-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Redis Cache-Instanzen behandelt.
@@ -79,7 +79,7 @@ Klicken Sie auf **Aktivitätsprotokoll** , um in Ihrem Cache ausgeführte Aktion
 
 ### <a name="access-control-iam"></a>Zugriffssteuerung (IAM)
 
-Der Abschnitt **Zugriffssteuerung (IAM)** bietet Unterstützung für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) über das Azure-Portal. Mit dieser Konfiguration können Organisationen ihre Zugriffsverwaltungsanforderungen einfach und präzise erfüllen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../active-directory/role-based-access-control-configure.md).
+Der Abschnitt **Zugriffssteuerung (IAM)** bietet Unterstützung für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) über das Azure-Portal. Mit dieser Konfiguration können Organisationen ihre Zugriffsverwaltungsanforderungen einfach und präzise erfüllen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="tags"></a>Tags
 

@@ -2,10 +2,10 @@
 title: 'Raspberry Pi in der Cloud (C): Verbinden von Raspberry Pi mit Azure IoT Hub | Microsoft-Dokumentation'
 description: Erfahren Sie in diesem Tutorial, wie Sie Raspberry Pi einrichten und eine Verbindung mit Azure IoT Hub herstellen, damit Raspberry Pi Daten an die Azure-Cloudplattform senden kann.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
+tags: ''
 keywords: Azure IoT Raspberry Pi, Raspberry Pi IoT Hub, Raspberry Pi sendet Daten an Cloud, Raspberry Pi in der Cloud
 ms.assetid: 68c0e730-1dc8-4e26-ac6b-573b217b302d
 ms.service: iot-hub
@@ -13,14 +13,14 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/12/2017
-ms.author: xshi
+ms.date: 4/11/2018
+ms.author: rangv
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d643647d4103acd511ed270132c844da12f2ac9b
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: ea4a7b4084faf702cf303036b414a9bc9e153840
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Verbinden von Raspberry Pi mit Azure IoT Hub (C)
 
@@ -46,15 +46,15 @@ Verbinden Sie Raspberry Pi mit einem von Ihnen erstellten IoT Hub. Führen Sie a
 * Erfassen von Sensordaten durch Ausführen einer Beispielanwendung auf Pi
 * Senden von Sensordaten an Ihren IoT Hub
 
-## <a name="what-you-need"></a>Erforderliches Element
+## <a name="what-you-need"></a>Voraussetzungen
 
-![Erforderliches Element](media/iot-hub-raspberry-pi-kit-c-get-started/0_starter_kit.jpg)
+![Voraussetzungen](media/iot-hub-raspberry-pi-kit-c-get-started/0_starter_kit.jpg)
 
 * Raspberry Pi 2- oder Raspberry Pi 3-Platine.
 * Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Testkonto](https://azure.microsoft.com/free/) erstellen.
 * Monitor, USB-Tastatur und Maus, die mit Pi verbunden werden.
 * Mac oder PC, auf dem Windows oder Linux ausgeführt wird
-* Internetverbindung.
+* Eine Internetverbindung.
 * microSD-Karte mit mindestens 16 GB
 * USB-SD-Adapter oder microSD-Karte, um das Betriebssystemimage auf die microSD-Karte zu kopieren
 * Netzteil (5 V, 2 A) mit Micro-USB-Kabel (1,8 m)
@@ -112,7 +112,7 @@ Verwenden Sie die Steckplatine und Jumperdrähte, um eine LED und einen BME280-S
 
 Mit dem BME280-Sensor können Daten zur Temperatur und Luftfeuchtigkeit erfasst werden. Die LED blinkt, wenn der Kommunikationsvorgang zwischen dem Gerät und der Cloud aktiv ist. 
 
-Für Sensorstifte verwenden Sie die folgende Verkabelung:
+Verwenden Sie für Sensorstifte die folgende Verkabelung:
 
 | Start (Sensor und LED)     | Ende (Board)            | Kabelfarbe   |
 | -----------------------  | ---------------------- | ------------: |

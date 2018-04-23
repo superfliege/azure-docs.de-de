@@ -3,7 +3,7 @@ title: Bereitstellen von Azure File Storage auf Linux-VMs per SMB | Microsoft-Do
 description: Bereitstellen von Azure File Storage auf virtuellen Linux-Computern per SMB mithilfe der Azure CLI 2.0
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
-author: vlivech
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
-ms.author: v-livech
-ms.openlocfilehash: de200c9b18b9d27325bcb92e0d27e83ad7c65811
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: iainfou
+ms.openlocfilehash: 01e18103f9e94615357ff3b9c4be7f2473763a57
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Bereitstellen von Azure File Storage auf Linux-VMs per SMB
 
-In diesem Artikel wird beschrieben, wie Sie den Azure File Storage-Dienst auf einem virtuellen Linux-Computer über eine SMB-Bereitstellung mit der Azure CLI 2.0 verwenden. Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Sie können diese Schritte auch per [Azure CLI 1.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen. Folgende Anforderungen müssen erfüllt sein:
+In diesem Artikel wird beschrieben, wie Sie den Azure File Storage-Dienst auf einem virtuellen Linux-Computer über eine SMB-Bereitstellung mit der Azure CLI 2.0 verwenden. Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Sie können diese Schritte auch per [Azure CLI 1.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md) ausführen. Folgende Anforderungen müssen erfüllt sein:
 
 - [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/)
 - [Dateien mit den öffentlichen und privaten SSH-Schlüsseln](mac-create-ssh-keys.md)
@@ -49,14 +49,14 @@ mkdir -p /mnt/mymountpoint
 ### <a name="mount-the-file-storage-smb-share-to-the-mount-point"></a>Bereitstellen der File Storage-SMB-Freigabe im Bereitstellungspunkt
 
 ```bash
-sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
 
 ### <a name="persist-the-mount-after-a-reboot"></a>Beibehalten der Bereitstellung nach einem Neustart
 Fügen Sie zu diesem Zweck folgende Zeile zu `/etc/fstab` hinzu:
 
 ```bash
-//myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+//myaccountname.file.core.windows.net/mysharename /mnt/mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
 
 ## <a name="detailed-walkthrough"></a>Ausführliche exemplarische Vorgehensweise
@@ -121,7 +121,7 @@ Für diese ausführliche exemplarische Vorgehensweise schaffen wir die Vorausset
     Erstellen Sie ein lokales Verzeichnis in dem Linux-Dateisystem, in dem die SMB-Freigabe bereitgestellt werden soll. Alle Elemente, die im lokalen Bereitstellungsverzeichnis geschrieben oder gelesen werden, werden an die in File Storage gehostete SMB-Freigabe weitergeleitet. Verwenden Sie das folgende Beispiel, um ein lokales Verzeichnis unter „/mnt/mymountdirectory“ zu erstellen:
 
     ```bash
-    sudo mkdir -p /mnt/mymountdirectory
+    sudo mkdir -p /mnt/mymountpoint
     ```
 
 6. Stellen Sie die SMB-Freigabe in dem lokalen Verzeichnis bereit.
@@ -129,7 +129,7 @@ Für diese ausführliche exemplarische Vorgehensweise schaffen wir die Vorausset
     Geben Sie wie folgt Ihren eigenen Benutzernamen und Speicherkontoschlüssel für das Speicherkonto als Anmeldeinformationen für die Bereitstellung an:
 
     ```azurecli
-    sudo mount -t cifs //myStorageAccount.file.core.windows.net/mystorageshare /mnt/mymountdirectory -o vers=3.0,username=mystorageaccount,password=mystorageaccountkey,dir_mode=0777,file_mode=0777
+    sudo mount -t cifs //myStorageAccount.file.core.windows.net/mystorageshare /mnt/mymountpoint -o vers=3.0,username=mystorageaccount,password=mystorageaccountkey,dir_mode=0777,file_mode=0777
     ```
 
 7. Legen Sie fest, dass die SMB-Bereitstellung bei Neustarts beibehalten wird.
@@ -137,11 +137,11 @@ Für diese ausführliche exemplarische Vorgehensweise schaffen wir die Vorausset
     Beim Neustart eines virtuellen Linux-Computers wird die Bereitstellung der SMB-Freigabe während des Herunterfahrens aufgehoben. Fügen Sie der Linux-Datei „etc/fstab“ eine Zeile hinzu, damit die SMB-Freigabe beim Starten erneut bereitgestellt wird. Linux verwendet die fstab-Datei, um die Dateisysteme aufzulisten, die während des Startvorgangs bereitgestellt werden müssen. Durch Hinzufügen der SMB-Freigabe wird sichergestellt, dass die File Storage-Freigabe für den virtuellen Linux-Computer ein dauerhaft bereitgestelltes Dateisystem ist. Das Hinzufügen der File Storage-SMB-Freigabe zu einem neuen virtuellen Computer ist möglich, wenn Sie „cloud-init“ verwenden.
 
     ```bash
-    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountdirectory cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwenden von Cloud-Init zum Anpassen einer Linux-VM während der Erstellung](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Verschlüsseln von Datenträgern auf einem virtuellen Linux-Computer mithilfe der Azure-Befehlszeilenschnittstelle](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Verwenden von Cloud-Init zum Anpassen einer Linux-VM während der Erstellung](using-cloud-init.md)
+- [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer](add-disk.md)
+- [Verschlüsseln von Datenträgern auf einem virtuellen Linux-Computer mithilfe der Azure-Befehlszeilenschnittstelle](encrypt-disks.md)

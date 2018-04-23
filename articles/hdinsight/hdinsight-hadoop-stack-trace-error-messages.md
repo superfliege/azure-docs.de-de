@@ -1,7 +1,7 @@
 ---
-title: "Hadoop-Stapelüberwachungsfehlermeldungen – Azure HDInsight | Microsoft-Dokumentation"
-description: "Index von Hadoop-Stapelüberwachungsfehlermeldungen in Azure HDInsight. Informationen zur Problembehandlung finden sich in der Liste unter der jeweiligen Fehlermeldung."
-keywords: "Stapelüberwachung, Fehlermeldungen"
+title: Hadoop-Stapelüberwachungsfehlermeldungen – Azure HDInsight | Microsoft-Dokumentation
+description: Index von Hadoop-Stapelüberwachungsfehlermeldungen in Azure HDInsight. Informationen zur Problembehandlung finden sich in der Liste unter der jeweiligen Fehlermeldung.
+keywords: Stapelüberwachung, Fehlermeldungen
 services: hdinsight
 documentationcenter: NA
 author: mumian
@@ -11,16 +11,14 @@ ms.assetid: 310051e5-5e2f-4be2-9780-2e8c0430e52d
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 49a7629987df77da0844a65b265cde87473b4d0c
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 8bf02df1dd2a82e9b2ea8b07ddc39bc9cc8b13f5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="index-of-hadoop-in-hdinsight-troubleshooting-articles"></a>Übersicht über Artikel zur Problembehandlung für Hadoop in HDInsight
 Die Artikel sind nach Art der Fehler unterteilt.

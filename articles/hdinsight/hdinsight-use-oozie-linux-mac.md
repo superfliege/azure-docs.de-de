@@ -1,8 +1,8 @@
 ---
 title: Verwenden von Hadoop Oozie-Workflows in Linux-basiertem Azure HDInsight | Microsoft-Dokumentation
-description: "Verwenden von Hadoop Oozie in Linux-basiertem HDInsight Erfahren Sie, wie Sie einen Oozie-Workflow definieren und einen Oozie-Auftrag übermitteln können."
+description: Verwenden von Hadoop Oozie in Linux-basiertem HDInsight Erfahren Sie, wie Sie einen Oozie-Workflow definieren und einen Oozie-Auftrag übermitteln können.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 53c249c24af774499becdf18350ff75dbc2ab861
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 586879c949a2acf5e84c0947864910fe120052ff
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
 
@@ -688,7 +686,7 @@ Im Folgenden sehen Sie Fehlermeldungen, die auftreten können, und Möglichkeite
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**Ursache**: Die in der Datei **job.xml** verwendeten Azure-Blob-Speicheradressen enthalten nicht den Namen des Speichercontainers oder des Speicherkontos. Das Format der Blob-Speicheradresse muss `wasb://containername@storageaccountname.blob.core.windows.net` sein.
+**Ursache:** Die in der Datei **job.xml** verwendeten Azure Blob Storage-Adressen enthalten nicht den Namen des Speichercontainers oder des Speicherkontos. Das Format der Blob-Speicheradresse muss `wasb://containername@storageaccountname.blob.core.windows.net` sein.
 
 **Lösung**: Ändern Sie die Blob-Speicheradressen, die vom Auftrag verwendet werden.
 

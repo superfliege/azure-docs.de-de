@@ -1,6 +1,6 @@
 ---
 title: Was ist Azure Time Series Insights? | Microsoft-Dokumentation
-description: "Einführung in Azure Time Series Insights, einem neuen Dienst zum Analysieren von Zeitreihendaten und für IoT-Lösungen."
+description: Einführung in Azure Time Series Insights, einem neuen Dienst zum Analysieren von Zeitreihendaten und für IoT-Lösungen.
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -12,10 +12,10 @@ ms.workload: big-data
 ms.topic: article
 ms.date: 01/26/2018
 ms.openlocfilehash: e31cebfd027e93096e233f2963445e4fc50a7e9d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>Was ist Azure Time Series Insights?
 

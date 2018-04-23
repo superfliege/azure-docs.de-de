@@ -1,24 +1,24 @@
 ---
-title: "Skalieren der Power BI Embedded-Kapazität | Microsoft-Dokumentation"
-description: "In diesem Artikel wird erläutert, wie Sie eine Power BI Embedded-Kapazität in Microsoft Azure skalieren."
+title: Skalieren der Power BI Embedded-Kapazität | Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, wie Sie eine Power BI Embedded-Kapazität in Microsoft Azure skalieren.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/19/2018
-ms.author: asaxton
-ms.openlocfilehash: 9b7d0bc31946d6022e9bfae463f4a22eb12c2a58
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: maghan
+ms.openlocfilehash: a089d34b3f49188f3037ad57aab4d7bcc8c660f2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scale-your-power-bi-embedded-capacity"></a>Skalieren der Power BI Embedded-Kapazität
 
@@ -65,4 +65,4 @@ Informationen zum Anhalten oder Starten Ihrer Kapazität finden Sie unter [Anhal
 
 Informationen zum Einbetten von Power BI-Inhalten in Ihre Anwendung finden Sie unter [So können Sie Ihre Dashboards, Berichte und Kacheln von Power BI einbetten](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/).
 
-Weitere Fragen? [Fragen Sie die Power BI-Community](http://community.powerbi.com/)
+Weitere Fragen? [Fragen Sie die Power BI-Community](http://community.powerbi.com/).

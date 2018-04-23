@@ -2,10 +2,10 @@
 title: Erstellen einer Azure IoT Hub-Instanz mithilfe einer Vorlage (PowerShell) | Microsoft Docs
 description: Erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage in PowerShell eine IoT Hub-Instanz erstellen.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7eade855-c289-4ffb-b5ef-02be8c5f670f
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 242c50b61b00bbf71b26e2aea1a66e2b2c55dbd5
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 0e5f95d98f772b226e162f601939bc94bf8fb78b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (PowerShell)
 
@@ -31,7 +31,7 @@ Sie können den Azure-Ressourcen-Manager verwenden, um Azure IoT Hubs programmge
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Ein aktives Azure-Konto. <br/>Wenn Sie kein Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.
+* Ein aktives Azure-Konto. <br/>Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.
 * [Azure PowerShell 1.0][lnk-powershell-install] oder höher.
 
 > [!TIP]
@@ -42,7 +42,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 Geben Sie in einer PowerShell-Befehlszeile den folgenden Befehl zur Anmeldung bei Ihrem Azure-Abonnement ein:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Wenn Sie über mehrere Azure-Abonnements verfügen, erhalten Sie durch die Anmeldung bei Azure Zugriff auf alle Azure-Abonnements, die mit Ihren Anmeldeinformationen verknüpft sind. Führen Sie den folgenden Befehl aus, um eine Liste der Azure-Abonnements anzuzeigen, die Sie verwenden können:
@@ -157,7 +157,7 @@ Weitere Informationen zum Entwickeln für IoT Hub finden Sie in folgenden Artike
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter Linux – Vorschau][lnk-iotedge]
+* [Deploy Azure IoT Edge on a simulated device in Linux - preview][lnk-iotedge] (Bereitstellen von Azure IoT Edge auf einem simulierten Gerät in Linux – Vorschauversion)
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/

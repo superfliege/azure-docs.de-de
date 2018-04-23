@@ -1,11 +1,11 @@
 ---
-title: "Durchführen eines Upgrades für einen Sicherungstresor zum Recovery Services-Tresor von Azure Backup | Microsoft-Dokumentation"
-description: "Durchführen eines Upgrades für einen Sicherungstresor zum Recovery Services-Tresor, um neue Features wie die Sicherung von Resource Manager-VMs, erhöhte Sicherheit, VMware-VM-Sicherungen und Systemstatussicherung für Windows-Server zu erhalten."
+title: Durchführen eines Upgrades für einen Sicherungstresor zum Recovery Services-Tresor von Azure Backup | Microsoft-Dokumentation
+description: Durchführen eines Upgrades für einen Sicherungstresor zum Recovery Services-Tresor, um neue Features wie die Sicherung von Resource Manager-VMs, erhöhte Sicherheit, VMware-VM-Sicherungen und Systemstatussicherung für Windows-Server zu erhalten.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: vijayts
-editor: 
+editor: ''
 keyword: backup vault; upgrade vault; recovery services vault
 ms.assetid: d037a8bf-49f2-4578-974a-3471d87ca278
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 708983fc2c5264d1213bdb32b665dcccc5ca9df9
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 7c340f60bc648909d073821f1987036da9633458
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Zum Recovery Services-Tresor aktualisierter Sicherungstresor
 Dieser Artikel bietet einen Überblick darüber, was der Recovery Services-Tresor bietet, enthält häufig gestellte Fragen zum Upgrade des vorhandenen Sicherungstresors zum Recovery Services-Tresor und nach dem Upgrade auszuführende Schritte. Ein Recovery Services-Tresor ist die Azure Resource Manager-Entsprechung eines Sicherungstresors, der Ihre Sicherungsdaten enthält. Bei den Daten handelt es sich in der Regel um Kopien von Daten oder Konfigurationsinformationen für virtuelle Computer (VMs), Workloads, Server oder Arbeitsstationen – lokal oder in Azure.
@@ -34,7 +34,7 @@ Recovery Services-Tresore basieren auf dem Azure Resource Manager-Modell von Azu
 
 - **Zentrale Überwachung Ihrer Hybrid-IT-Umgebung**: Mit Recovery Services-Tresoren können Sie nicht nur Ihre [Azure-IaaS-VMs](backup-azure-manage-vms.md), sondern auch Ihre [lokalen Ressourcen](backup-azure-manage-windows-server.md#manage-backup-items) über ein zentrales Portal überwachen. [Weitere Informationen](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)**: Die RBAC ermöglicht eine präzise Verwaltung der Zugriffssteuerung in Azure. [Azure bietet verschiedene integrierte Rollen](../active-directory/role-based-access-built-in-roles.md), während Azure Backup über drei [integrierte Rollen zum Verwalten von Wiederherstellungspunkten](backup-rbac-rs-vault.md) verfügt. Recovery Services-Tresore sind mit der RBAC kompatibel, die den Zugriff auf Sicherungen und Wiederherstellungen auf den definierten Satz von Benutzerrollen beschränkt. [Weitere Informationen](backup-rbac-rs-vault.md)
+- **Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)**: Die RBAC ermöglicht eine präzise Verwaltung der Zugriffssteuerung in Azure. [Azure bietet verschiedene integrierte Rollen](../role-based-access-control/built-in-roles.md), während Azure Backup über drei [integrierte Rollen zum Verwalten von Wiederherstellungspunkten](backup-rbac-rs-vault.md) verfügt. Recovery Services-Tresore sind mit der RBAC kompatibel, die den Zugriff auf Sicherungen und Wiederherstellungen auf den definierten Satz von Benutzerrollen beschränkt. [Weitere Informationen](backup-rbac-rs-vault.md)
 
 - **Schutz aller Konfigurationen von virtuellen Azure-Computern**: Recovery Services-Tresore schützen Resource Manager-basierte VMs, einschließlich Premium-Datenträger, verwaltete Datenträger und verschlüsselte VMs. Durch die Durchführung eines Upgrades eines Sicherungstresors auf einen Recovery Services-Tresor erhalten Sie die Möglichkeit, ein Upgrade für Ihre Service Manager-basierten VMs auf Resource Manager-basierte VMs durchzuführen. Während des Upgrades des Tresors können Sie die Wiederherstellungspunkte für Ihre Service Manager-basierten VMs beibehalten und den Schutz für die aktualisierten (Resource Manager-fähigen) VMs konfigurieren. [Weitere Informationen](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 

@@ -45,16 +45,12 @@
       href: how-to-install-iot-core.md
     - name: Entwickeln von IoT Edge-Lösungen mithilfe von VS Code
       items:
-        - name: 'Entwickeln und Bereitstellen eines C#-Moduls'
-          href: how-to-vscode-develop-csharp-module.md
-        - name: 'Debuggen eines C#-Moduls'
-          href: how-to-vscode-debug-csharp-module.md
-        - name: Entwickeln und Bereitstellen von Azure Functions
-          href: how-to-vscode-develop-azure-function.md
-        - name: Debuggen von Azure Functions
-          href: how-to-vscode-debug-azure-function.md
         - name: Verwenden mehrerer Module
           href: tutorial-multiple-modules-in-vscode.md
+        - name: 'Debuggen eines C#-Moduls'
+          href: how-to-vscode-debug-csharp-module.md
+        - name: Debuggen von Azure Functions
+          href: how-to-vscode-debug-azure-function.md
     - name: Speichern von Daten im Edge-Bereich
       href: sql-storage.md
     - name: Problembehandlung

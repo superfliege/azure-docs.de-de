@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/30/2018
 ms.author: billmath
-ms.openlocfilehash: 87d349933a8daeaf8b7a4487612ad62dd2b9efc2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: edf22ea0cfe60cb734b4339363d50af050466000
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="pim-for-azure-resources"></a>PIM für Azure-Ressourcen
 
@@ -43,7 +43,7 @@ Azure AD PIM kann sowohl die integrierten Azure-Ressourcenrollen als auch benutz
 - Sicherheits-Manager
 
 >[!NOTE]
-Benutzer oder Mitglieder von Gruppen, die der Rolle „Besitzer“ oder „Benutzerzugriffsadministrator“ zugewiesen sind, sowie globale Administratoren, die die Abonnementverwaltung in Azure AD ermöglichen, sind Ressourcenadministratoren. Diese Administratoren können Rollen zuweisen, Rolleneinstellungen konfigurieren und den Zugriff mithilfe von PIM für Azure-Ressourcen prüfen. Eine Liste mit den integrierten Rollen für Azure-Ressourcen finden Sie [hier](../role-based-access-built-in-roles.md).
+Benutzer oder Mitglieder von Gruppen, die der Rolle „Besitzer“ oder „Benutzerzugriffsadministrator“ zugewiesen sind, sowie globale Administratoren, die die Abonnementverwaltung in Azure AD ermöglichen, sind Ressourcenadministratoren. Diese Administratoren können Rollen zuweisen, Rolleneinstellungen konfigurieren und den Zugriff mithilfe von PIM für Azure-Ressourcen prüfen. Eine Liste mit den integrierten Rollen für Azure-Ressourcen finden Sie [hier](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="tasks"></a>Aufgaben
 
@@ -193,6 +193,6 @@ Klicken Sie im linken Navigationsmenü auf „My roles“ (Meine Rollen), und w�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-built-in-roles.md)
+- [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/built-in-roles.md)
 - [Aktivieren oder Deaktivieren von Rollen in Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-how-to-activate-role.md)
 - [Genehmigungen (Vorschau)](azure-ad-pim-approval-workflow.md)

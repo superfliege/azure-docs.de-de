@@ -1,25 +1,19 @@
 ---
-title: "Überwachen der Nutzung und Statistiken in einem Azure Search-Dienst | Microsoft Docs"
-description: "Verfolgen Sie die Ressourcennutzung und Indexgröße für Azure Search nach, einem in Microsoft Azure gehosteten Cloudsuchdienst."
-services: search
-documentationcenter: 
+title: Überwachen der Nutzung und Statistiken in einem Azure Search-Dienst | Microsoft Docs
+description: Verfolgen Sie die Ressourcennutzung und Indexgröße für Azure Search nach, einem in Microsoft Azure gehosteten Cloudsuchdienst.
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 
 ms.service: search
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: required
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: fe852afedfc1cce99d81b8ab53c6c80df34ac6d6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: b8c07d5965876cba45f03fa8c5ffb473c6ca3bc2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitoring-an-azure-search-service"></a>Überwachen eines Diensts von Azure Search
 
@@ -63,7 +57,7 @@ Der Abschnitt „Verwendung“ umfasst einen Verbrauchszähler, aus dem hervorge
 ### <a name="using-the-rest-api"></a>Verwenden der REST-API
 Sowohl die REST-API von Azure Search als auch das .NET SDK bieten programmgesteuerten Zugriff auf Dienstmetriken.  Bei Verwendung von [Indexern](https://msdn.microsoft.com/library/azure/dn946891.aspx) zum Laden eines Index aus Azure SQL-Datenbank oder Azure Cosmos DB steht eine zusätzliche API zum Abrufen der benötigen Zahlen zur Verfügung.
 
-* [Abrufen von Indexstatistiken](/rest/api/searchservice/get-index-statistics)
+* [Indexstatistiken abrufen](/rest/api/searchservice/get-index-statistics)
 * [Dokumentenanzahl](/rest/api/searchservice/count-documents)
 * [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status)
 
@@ -96,38 +90,38 @@ Die Protokollblobs enthalten die Datenverkehrprotokolle des Suchdiensts.
 Jedes Blob hat ein Stammobjekt namens **records** , das ein Array mit Protokollobjekten enthält.
 Jedes Blob enthält Einträge zu allen Vorgängen, die während derselben Stunde erfolgt sind.
 
-| Name | Typ | Beispiel | Hinweise |
+| NAME | Typ | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| in |datetime |„2015-12-07T00:00:43.6872559Z“ |Zeitstempel des Vorgangs |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
-| operationName |string |„Query.Search“ |Der Name des Vorgangs |
-| operationVersion |string |„2015-02-28“ |Die verwendete API-Version |
-| category |string |„OperationLogs“ |Konstante |
-| resultType |string |„Success“ |Mögliche Werte: „Success“ oder „Failure“ |
+| time |Datetime |„2015-12-07T00:00:43.6872559Z“ |Zeitstempel des Vorgangs |
+| Ressourcen-ID |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| operationName |Zeichenfolge |„Query.Search“ |Der Name des Vorgangs |
+| operationVersion |Zeichenfolge |„2015-02-28“ |Die verwendete API-Version |
+| category |Zeichenfolge |„OperationLogs“ |Konstante |
+| resultType |Zeichenfolge |„Success“ |Mögliche Werte: „Success“ oder „Failure“ |
 | resultSignature |int |200 |HTTP-Ergebniscode |
 | durationMS |int |50 |Dauer des Vorgangs in Millisekunden |
-| Eigenschaften |objekt |Siehe hierzu die folgende Tabelle. |Objekt, das vorgangsspezifische Daten enthält |
+| Eigenschaften |object |Siehe hierzu die folgende Tabelle. |Objekt, das vorgangsspezifische Daten enthält |
 
 **Eigenschaftsschema**
-| Name | Typ | Beispiel | Hinweise |
+| NAME | Typ | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| Beschreibung |string |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
-| Abfrage |string |„?search=AzureSearch&$count=true&api-version=2015-02-28“ |Die Abfrageparameter |
+| BESCHREIBUNG |Zeichenfolge |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
+| Abfrage |Zeichenfolge |„?search=AzureSearch&$count=true&api-version=2015-02-28“ |Die Abfrageparameter |
 | Dokumente |int |42 |Anzahl von verarbeiteten Dokumenten |
-| IndexName |string |„testindex“ |Name des Indexes, der dem Vorgang zugeordnet ist |
+| IndexName |Zeichenfolge |„testindex“ |Name des Indexes, der dem Vorgang zugeordnet ist |
 
 #### <a name="metrics-schema"></a>Metrikenschema
-| Name | Typ | Beispiel | Hinweise |
+| NAME | Typ | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
-| metricName |string |„Latency“ |Der Name der Metrik |
-| in |datetime |„2015-12-07T00:00:43.6872559Z“ |Der Zeitstempel des Vorgangs |
+| Ressourcen-ID |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| metricName |Zeichenfolge |„Latency“ |Der Name der Metrik |
+| in |Datetime |„2015-12-07T00:00:43.6872559Z“ |Der Zeitstempel des Vorgangs |
 | average |int |64 |Der Durchschnittswert der unformatierten Beispiele im Metrikzeitintervall |
 | minimum |int |37 |Der Mindestwert der unformatierten Beispiele im Metrikzeitintervall |
 | maximum |int |78 |Der Höchstwert der unformatierten Beispiele im Metrikzeitintervall |
 | total |int |258 |Der Gesamtwert der unformatierten Beispiele im Metrikzeitintervall |
 | count |int |4 |Die Anzahl der unformatierten Beispiele, die zum Generieren der Metrik verwendet werden |
-| timegrain |string |„PT1M“ |Das Aggregationsintervall der Metrik in ISO 8601 |
+| timegrain |Zeichenfolge |„PT1M“ |Das Aggregationsintervall der Metrik in ISO 8601 |
 
 Alle Metriken werden in Intervallen von einer Minute gemeldet. Jede Metrik macht Mindest-, Höchst- und Durchschnittswerte pro Minute verfügbar.
 

@@ -1,31 +1,31 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Filtern des VM-Netzwerkdatenverkehrs | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Filtern ein- und ausgehenden VM-Netzwerkdatenverkehrs"
+title: Azure PowerShell-Skriptbeispiel – Filtern des VM-Netzwerkdatenverkehrs | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Filtern ein- und ausgehenden VM-Netzwerkdatenverkehrs
 services: virtual-network
 documentationcenter: virtual-network
 author: georgewallace
 manager: timlt
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
-ms.openlocfilehash: e871ba2f370157936c2aaabc804dc9f5aea6d7ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0cac36b8dec530dc5b4fa00ccd6e775a39c2d80d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>Filtern ein- und ausgehenden VM-Netzwerkverkehrs
 
 In diesem Skriptbeispiel wird ein virtuelles Netzwerk mit Front-End- und Back-End-Subnetz erstellt. Eingehender Netzwerkdatenverkehr zum Front-End-Subnetz ist auf HTTP und HTTPS beschränkt, während ausgehender Datenverkehr zum Internet aus dem Back-End-Subnetz nicht zulässig ist. Nach dem Ausführen des Skripts besitzen Sie einen virtuellen Computer mit zwei NICs. Jede NIC kann mit einem anderen Subnetz verbunden sein.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Connect-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -46,7 +46,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengruppe, ein virtuelles Netzwerk und Netzwerksicherheitsgruppen zu erstellen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Erstellt ein Subnetzkonfigurationsobjekt |

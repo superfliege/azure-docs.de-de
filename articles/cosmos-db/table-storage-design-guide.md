@@ -1,11 +1,10 @@
 ---
-title: Azure-Tabellenspeicher – Handbuch für den Entwurf | Microsoft-Dokumentation
+title: Azure-Tabellenspeicher – Handbuch für den Entwurf | Microsoft Docs
 description: Entwurf skalierbarer und leistungsfähiger Tabellen in Azure-Tabellenspeicher
 services: cosmos-db
 documentationcenter: na
-author: mimig1
-manager: tadb
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: cosmos-db
 ms.devlang: na
@@ -13,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/03/2017
-ms.author: mimig
-ms.openlocfilehash: fadb81e16a6c641ca15efb4f910a51de4fe7c997
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: sngun
+ms.openlocfilehash: 667fef855238b2524c05bbc2f137d466c0e56de8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure-Speichertabelle – Entwurfshandbuch: Entwerfen von skalierbaren und leistungsfähigen Tabellen
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -825,7 +824,7 @@ Verwenden Sie mehrere physische Entitäten, um logische Entitäten mit mehr als 
 Eine einzelne Entität kann nicht mehr als 252 Eigenschaften (mit Ausnahme der obligatorischen Systemeigenschaften) beinhalten und nicht mehr als 1 MB Daten insgesamt speichern. In einer relationalen Datenbank würden Sie in der Regel die Grenzen umgehen können bezüglich der Größe einer Zeile, indem Sie eine neue Tabelle hinzufügen und eine 1:1-Beziehung erzwingen.  
 
 #### <a name="solution"></a>Lösung
-Durch Verwendung des Tabellenspeicherdienstes können Sie mehrere Entitäten speichern, um ein einzelnes großes Geschäftsobjekt mit mehr als 252 Eigenschaften darzustellen. Beispiel: Wenn Sie die Anzahl der Chatnachrichten, die von jedem Mitarbeiter in den letzten 365 Tagen gesendet wurde, speichern möchten, können Sie den folgenden Entwurf verwenden, der zwei Entitäten mit unterschiedlichen Schemas verwendet:  
+Durch Verwendung des Tabellenspeicherdienstes können Sie mehrere Entitäten speichern, um ein einzelnes großes Geschäftsobjekt mit mehr als 252 Eigenschaften darzustellen. Beispiel: Wenn Sie die Anzahl der IM-Meldungen, die von jedem Mitarbeiter in den letzten 365 Tagen gesendet wurde, speichern möchten, können Sie den folgenden Entwurf verwenden, der zwei Entitäten mit unterschiedlichen Schemas verwendet:  
 
 ![][24]
 

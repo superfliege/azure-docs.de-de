@@ -1,13 +1,13 @@
 ---
-title: "Konfigurieren von IP-Adressen für Azure-Netzwerkschnittstellen | Microsoft-Dokumentation"
-description: "Erfahren Sie etwas über das Hinzufügen, Ändern und Entfernen öffentlicher und privater IP-Adressen für Netzwerkschnittstellen."
+title: Konfigurieren von IP-Adressen für Azure-Netzwerkschnittstellen | Microsoft-Dokumentation
+description: Erfahren Sie etwas über das Hinzufügen, Ändern und Entfernen öffentlicher und privater IP-Adressen für Netzwerkschnittstellen.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 478a2ebfa6a4cc504119734ac2f67b1f7c77dd5a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 79b84e3231886f62bf5978195562339d5c3275b6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -33,15 +33,15 @@ Informationen zum Erstellen, Ändern oder Löschen von Netzwerkschnittstellen fi
 Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Abschnitten dieses Artikels durchführen:
 
 - Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
-- Öffnen Sie bei Verwendung des Portals die Seite „https://portal.azure.com“, und melden Sie sich mit Ihrem Azure-Konto an.
-- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.2.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+- Öffnen Sie bei Verwendung des Portals https://portal.azure.com, und melden Sie sich mit Ihrem Azure-Konto an.
+- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.2.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 - Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.26 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="add-ip-addresses"></a>Hinzufügen von IP-Adressen
 
 Einer Netzwerkschnittstelle können beliebig viele [private](#private) und [öffentliche](#public) [IPv4](#ipv4)-Adressen hinzugefügt werden (im Rahmen der im Artikel [Einschränkungen bei Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) aufgeführten Grenzwerte). Sie können einer vorhandenen Netzwerkschnittstelle nicht über das Portal eine IPv6-Adresse hinzufügen. (Sie können im Portal jedoch einer Netzwerkschnittstelle bei ihrer Erstellung eine private IPv6-Adresse hinzufügen.) Sie können PowerShell oder die Befehlszeilenschnittstelle verwenden, um einer [sekundären IP-Konfiguration](#secondary) eine private IPv6-Adresse für eine vorhandene Netzwerkschnittstelle, die nicht einem virtuellen Computer zugeordnet ist, hinzuzufügen (solange noch keine sekundären IP-Konfigurationen vorhanden sind). Sie können nicht jedes Tool verwenden, um einer Netzwerkschnittstelle eine öffentliche IPv6-Adresse hinzuzufügen. Ausführliche Informationen zur Verwendung von IPv6-Adressen finden Sie unter [IPv6](#ipv6). 
 
-1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 3. Klicken Sie auf dem daraufhin angezeigten Blatt **Netzwerkschnittstellen** auf die Netzwerkschnittstelle, der Sie eine IPv4-Adresse hinzufügen möchten.
 4. Klicken Sie auf dem Blatt der ausgewählten Netzwerkschnittstelle im Abschnitt **EINSTELLUNGEN** auf **IP-Konfigurationen**.
@@ -67,7 +67,7 @@ Einer Netzwerkschnittstelle können beliebig viele [private](#private) und [öff
 
 Sie müssen ggf. die Zuweisungsmethode einer IPv4-Adresse, die statische IPv4-Adresse oder die einer Netzwerkschnittstelle zugewiesene öffentliche IP-Adresse ändern. Wenn Sie die private IPv4-Adresse einer sekundären IP-Konfiguration ändern, die einer sekundären Netzwerkschnittstelle eines virtuellen Computers zugeordnet ist (siehe [Primäre und sekundäre Netzwerkschnittstellen](virtual-network-network-interface-vm.md)), ändern Sie den Status des virtuellen Computers in „Beendet (Zuordnung aufgehoben)“, bevor Sie die folgenden Schritte ausführen: 
 
-1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 3. Klicken Sie auf dem angezeigten Blatt **Netzwerkschnittstellen** auf die Netzwerkschnittstelle, deren IP-Adresseinstellungen Sie anzeigen oder ändern möchten.
 4. Klicken Sie auf dem Blatt der ausgewählten Netzwerkschnittstelle im Abschnitt **EINSTELLUNGEN** auf **IP-Konfigurationen**.
@@ -88,7 +88,7 @@ Sie müssen ggf. die Zuweisungsmethode einer IPv4-Adresse, die statische IPv4-Ad
 
 Sie können [private](#private) und [öffentliche](#public) IP-Adressen von einer Netzwerkschnittstelle entfernen. Doch einer Netzwerkschnittstelle muss stets mindestens eine private IPv4-Adresse zugewiesen sein.
 
-1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 3. Klicken Sie auf dem daraufhin angezeigten Blatt **Netzwerkschnittstellen** auf die Netzwerkschnittstelle, von der Sie IP-Adressen entfernen möchten.
 4. Klicken Sie auf dem Blatt der ausgewählten Netzwerkschnittstelle im Abschnitt **EINSTELLUNGEN** auf **IP-Konfigurationen**.

@@ -1,24 +1,24 @@
 ---
 title: Vergleich der Standardbenutzerberechtigungen in Azure Active Directory | Microsoft-Dokumentation
-description: "Vergleich der Berechtigungen für Mitglieder, Gastbenutzer, App- und Gruppenbesitzer"
+description: Vergleich der Berechtigungen für Mitglieder, Gastbenutzer, App- und Gruppenbesitzer
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 880eaedcba2c0cdfe057ddb2460cf6a19bf8298e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 7465486109af773403c61f6b4505d932949009df
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Standardbenutzerberechtigungen in Azure Active Directory
 
@@ -77,6 +77,6 @@ Wenn ein Benutzer eine Gruppe erstellt, wird er automatisch als Besitzer für di
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum Ändern von Administratoren für ein Azure-Abonnement finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing-add-change-azure-subscription-administrator.md)
-* Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](active-directory-understanding-resource-access.md)
+* Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 * [Verwalten von Benutzern](active-directory-create-users.md)

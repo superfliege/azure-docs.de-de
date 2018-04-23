@@ -1,25 +1,23 @@
 ---
-title: "Verwenden von Spark zum Lesen und Schreiben von HBase-Daten – Azure HDInsight | Microsoft-Dokumentation"
+title: Verwenden von Spark zum Lesen und Schreiben von HBase-Daten – Azure HDInsight | Microsoft-Dokumentation
 description: Verwenden Sie den Spark HBase-Connector, um Daten aus einem Spark-Cluster zu lesen und in einen HBase-Cluster zu schreiben.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: maxluk
-ms.openlocfilehash: ccbcd1d9cb45da7076d73f71a2ed692e71816650
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: acad1058cbff2099a67603cc547a19d6cac022be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-spark-to-read-and-write-hbase-data"></a>Verwenden von Spark zum Lesen und Schreiben von HBase-Daten
 
@@ -94,7 +92,7 @@ In diesem Schritt erstellen Sie einfache Tabelle in HBase und füllen sie auf, d
 
 9. Wählen Sie im Bereich mit den Blobeigenschaften die Option „Herunterladen“ aus, und speichern Sie `hbase-site.xml` in einem Speicherort auf Ihrem lokalen Computer.
 
-    ![Herunterladen](./media/hdinsight-using-spark-query-hbase/download.png)
+    ![Download](./media/hdinsight-using-spark-query-hbase/download.png)
 
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Ablegen von „hbase-site.xml“ in Ihrem Spark-Cluster
 

@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie die Größe des Betriebssystemlaufwerks 
 1. Melden Sie sich im Ressourcenverwaltungsmodus bei Ihrem Microsoft Azure-Konto an, und wählen Sie Ihr Abonnement wie folgt aus:
    
    ```Powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. Legen Sie den Namen Ihrer Ressourcengruppe und VM wie folgt fest:
@@ -65,7 +65,7 @@ In diesem Artikel wird beschrieben, wie die Größe des Betriebssystemlaufwerks 
 1. Melden Sie sich im Ressourcenverwaltungsmodus bei Ihrem Microsoft Azure-Konto an, und wählen Sie Ihr Abonnement wie folgt aus:
    
    ```Powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. Legen Sie den Namen Ihrer Ressourcengruppe und VM wie folgt fest:
@@ -109,7 +109,7 @@ In diesem Artikel haben wir Azure Resource Manager-Module von Powershell verwend
 Nicht verwaltete Datenträger:
 
 ```Powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'
@@ -122,7 +122,7 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 Verwaltete Datenträger:
 
 ```Powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'

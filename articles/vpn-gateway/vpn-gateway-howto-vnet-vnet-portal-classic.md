@@ -5,9 +5,9 @@ services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9e0c96d0d2c321869f7dc90e18f8dd25d58edc8f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d9766afefa793baf66ea5218843f06031b1b364c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurieren einer VNet-zu-VNet-Verbindung (klassisch)
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/21/2018
 Dieser Artikel hilft Ihnen beim Erstellen einer VPN-Gatewayverbindung zwischen virtuellen Netzwerken. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Die Schritte in diesem Artikel gelten für das klassische Bereitstellungsmodell und Azure-Portal. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -218,7 +218,7 @@ In den folgenden Schritten stellen Sie eine Verbindung zu Ihrem Azure-Konto her.
 2. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Überprüfen Sie die Abonnements für das Konto.

@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 31e71f153c7bbf76b0f06f8f17a74c43cc1b1c81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen 
 
@@ -32,7 +32,7 @@ Sie können eine flexible Struktur von Verwaltungsgruppen und Abonnements aufbau
 
 ![Struktur](media/management-groups/MG_overview.png)
 
-Indem Sie eine Hierarchie erstellen, die nach Abteilungen gruppiert ist, können Sie Rollen der [rollenbasierten Zugriffssteuerung (RBAC) in Azure](../active-directory/role-based-access-control-what-is.md) zuweisen, die entsprechend den Abteilungen in dieser Verwaltungsgruppe *erben*. Mithilfe von Verwaltungsgruppen können Sie die Workload und das Risiko von Fehlern verringern, indem Sie die Rolle nur einmal zuweisen müssen. 
+Indem Sie eine Hierarchie erstellen, die nach Abteilungen gruppiert ist, können Sie Rollen der [rollenbasierten Zugriffssteuerung (RBAC) in Azure](../role-based-access-control/overview.md) zuweisen, die entsprechend den Abteilungen in dieser Verwaltungsgruppe *erben*. Mithilfe von Verwaltungsgruppen können Sie die Workload und das Risiko von Fehlern verringern, indem Sie die Rolle nur einmal zuweisen müssen. 
 
 ### <a name="important-facts-about-management-groups"></a>Wichtige Fakten zu Verwaltungsgruppen
 - 10.000 Verwaltungsgruppen können in einem einzigen Verzeichnis unterstützt werden. 
@@ -55,7 +55,7 @@ An der Lösung dieses Problem wird zurzeit gearbeitet. Noch vor der Ankündigung
 
 ## <a name="root-management-group-for-each-directory"></a>Stammverwaltungsgruppe für jedes Verzeichnis
 
-Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, die als Stammverwaltungsgruppe bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. Der [Verzeichnisadministrator muss seine eigenen Rechte erhöhen](../active-directory/role-based-access-control-tenant-admin-access.md), um der erste Besitzer dieser Gruppe zu sein. Sobald der Administrator der Besitzer der Gruppe ist, kann er jede RBAC-Rolle anderen Benutzern oder Gruppen des Verzeichnisses zuweisen, um die Hierarchie zu verwalten.  
+Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, die als Stammverwaltungsgruppe bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. Der [Verzeichnisadministrator muss seine eigenen Rechte erhöhen](../role-based-access-control/elevate-access-global-admin.md), um der erste Besitzer dieser Gruppe zu sein. Sobald der Administrator der Besitzer der Gruppe ist, kann er jede RBAC-Rolle anderen Benutzern oder Gruppen des Verzeichnisses zuweisen, um die Hierarchie zu verwalten.  
 
 ### <a name="important-facts-about-the-root-management-group"></a>Wichtige Fakten zur Stammverwaltungsgruppe
 - Für den Namen und die ID der Stammverwaltungsgruppe wird standardmäßig die Azure Active Directory-ID verwendet. Der Anzeigename kann jederzeit aktualisiert werden, damit er im Azure-Portal entsprechend angezeigt wird. 
@@ -67,9 +67,9 @@ Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, di
   
 ## <a name="management-group-access"></a>Zugriff auf die Verwaltungsgruppe
 
-Azure-Verwaltungsgruppen unterstützen die [rollenbasierte Zugriffssteuerung (RBAC) in Azure](../active-directory/role-based-access-control-what-is.md) für alle Ressourcenzugriffe und Rollendefinitionen. Diese Berechtigungen werden an untergeordnete Ressourcen in der Hierarchie vererbt.   
+Azure-Verwaltungsgruppen unterstützen die [rollenbasierte Zugriffssteuerung (RBAC) in Azure](../role-based-access-control/overview.md) für alle Ressourcenzugriffe und Rollendefinitionen. Diese Berechtigungen werden an untergeordnete Ressourcen in der Hierarchie vererbt.   
 
-Auch wenn einer Verwaltungsgruppe alle [integrierten RBAC-Rollen](../active-directory/role-based-access-control-what-is.md#built-in-roles) zugewiesen werden können, werden im Allgemeinen vier Rollen verwendet: 
+Auch wenn einer Verwaltungsgruppe alle [integrierten RBAC-Rollen](../role-based-access-control/overview.md#built-in-roles) zugewiesen werden können, werden im Allgemeinen vier Rollen verwendet: 
 - **Besitzer** verfügen über vollständigen Zugriff auf alle Ressourcen, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren. 
 - **Mitwirkende** können alle Arten von Azure-Ressourcen erstellen und verwalten, aber keinen anderen Personen Zugriff gewähren.
 - **Mitwirkende bei Ressourcenrichtlinien** können Richtlinien im Verzeichnis für die Ressourcen erstellen und verwalten.     

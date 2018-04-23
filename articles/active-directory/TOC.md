@@ -134,24 +134,24 @@
 #### [Verwenden von Zertifikaten](active-directory-reporting-api-with-certificates.md)
 
 ## Verwalten von Kennwörtern
-### [Übersicht über Kennwörter](active-directory-passwords-overview.md)
+### [Übersicht über Kennwörter](authentication/active-directory-passwords-overview.md)
 ### Benutzerdokumente
 #### [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
 #### [Bewährte Methoden für Kennwörter](active-directory-secure-passwords.md)
 #### [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
-### [SSPR – So funktioniert‘s](active-directory-passwords-how-it-works.md)
-### [SSPR-Bereitstellungshandbuch](active-directory-passwords-best-practices.md)
+### [SSPR – So funktioniert‘s](authentication/concept-sspr-howitworks.md)
+### [SSPR-Bereitstellungshandbuch](authentication/howto-sspr-deployment.md)
 ### [SSPR and Windows 10 (SSPR und Windows 10)](active-directory-passwords-login.md)
-### [SSPR-Richtlinien ](active-directory-passwords-policy.md)
-### [SSPR-Anpassung](active-directory-passwords-customize.md)
-### [SSPR-Datenanforderungen](active-directory-passwords-data.md)
-### [SSPR-Berichterstellung](active-directory-passwords-reporting.md)
+### [SSPR-Richtlinien ](authentication/concept-sspr-policy.md)
+### [SSPR-Anpassung](authentication/concept-sspr-customization.md)
+### [SSPR-Datenanforderungen](authentication/howto-sspr-authenticationdata.md)
+### [SSPR-Berichterstellung](authentication/howto-sspr-reporting.md)
 ### IT-Administratoren: Zurücksetzen von Kennwörtern
 #### [Azure-Portal](active-directory-users-reset-password-azure-portal.md)
-### [Lizenzieren von SSPR](active-directory-passwords-licensing.md)
+### [Lizenzieren von SSPR](authentication/concept-sspr-licensing.md)
 ### [Kennwortrückschreiben](active-directory-passwords-writeback.md)
-### [Problembehandlung](active-directory-passwords-troubleshoot.md)
-### [HÄUFIG GESTELLTE FRAGEN](active-directory-passwords-faq.md)
+### [Problembehandlung](authentication/active-directory-passwords-troubleshoot.md)
+### [HÄUFIG GESTELLTE FRAGEN](authentication/active-directory-passwords-faq.md)
 
 
 ## Verwalten von Geräten

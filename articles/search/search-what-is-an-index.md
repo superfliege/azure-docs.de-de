@@ -1,22 +1,17 @@
 ---
 title: Indizes in Azure Search | Microsoft-Dokumentation
 description: Es wird beschrieben, welche Indexkonzepte es in Azure Search gibt und wie Indizes verwendet werden.
-services: search
-documentationcenter: 
-author: ashmaka
-ms.assetid: a395e166-bf2e-4fca-8bfc-116a46c5f7b1
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/08/2017
-ms.author: ashmaka
-ms.openlocfilehash: 87f1121594d8577b5dacac4026aa7d86b2921d10
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 933db5a9790088c38d4db8c3fffb1eed3c42c225
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="indexes-in-azure-search"></a>Indizes in Azure Search
 > [!div class="op_single_selector"]
@@ -35,7 +30,7 @@ Wenn Sie Dokumente hinzufügen/hochladen und Suchabfragen an Azure Search überm
 Wenn Sie Ihr Schema definieren, müssen Sie den Namen, den Typ und die Attribute jedes Felds in Ihrem Index festlegen. Der Feldtyp klassifiziert die Daten, die in dem Feld gespeichert sind. Attribute werden für einzelne Felder festlegen, um anzugeben, wie das Feld verwendet wird. Die folgende Tabelle listet die Typen und Attribute auf, die Sie angeben können.
 
 ### <a name="field-types"></a>Feldtypen
-| Typ | Beschreibung |
+| Typ | BESCHREIBUNG |
 | --- | --- |
 | *Edm.String* |Text, der optional für die Volltextsuche (Worttrennung, Wortstammerkennung usw.) mit einem Token versehen werden kann |
 | *Collection(Edm.String)* |Eine Liste von Zeichenfolgen, die für die Volltextsuche mit einem Token versehen werden können. Für die Anzahl der Elemente in einer Sammlung gibt es keine Obergrenze, allerdings gilt die Obergrenze für die Größe der Nutzlast von 16 MB auch für Sammlungen. |
@@ -49,7 +44,7 @@ Wenn Sie Ihr Schema definieren, müssen Sie den Namen, den Typ und die Attribute
 Ausführlichere Informationen zu den von Azure Search unterstützten Datentypen finden Sie [hier](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
 
 ### <a name="field-attributes"></a>Feldattribute
-| Attribut | Beschreibung |
+| Attribut | BESCHREIBUNG |
 | --- | --- |
 | *Schlüssel* |Eine Zeichenfolge, die die eindeutige ID der einzelnen Dokumente darstellt und für die Dokumentsuche verwendet wird. Jeder Index muss über einen Schlüssel verfügen. Als Schlüssel kann immer nur ein einzelnes Feld fungieren, und sein Typ muss auf „Edm.String“ festgelegt sein. |
 | *Abrufbar* |Gibt an, ob ein Feld in einem Suchergebnis zurückgegeben werden kann. |

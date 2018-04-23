@@ -1,11 +1,11 @@
 ---
 title: 'Tutorial: Erstellen einer Pipeline zum Verschieben von Daten mithilfe von Azure PowerShell | Microsoft-Dokumentation'
-description: "In diesem Tutorial erstellen Sie mithilfe von Azure PowerShell eine Azure Data Factory-Pipeline mit Kopieraktivität."
+description: In diesem Tutorial erstellen Sie mithilfe von Azure PowerShell eine Azure Data Factory-Pipeline mit Kopieraktivität.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 71087349-9365-4e95-9847-170658216ed8
 ms.service: data-factory
 ms.workload: data-services
@@ -15,17 +15,17 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dc9476e6a9ee4f4832862ad45dc5a9fbae6ccce6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 09698f06ebbc39d9913c0cbd43ad29c1f0dae9c8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Tutorial: Erstellen einer Data Factory-Pipeline zum Verschieben von Daten mithilfe von Azure PowerShell
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-Vorlage](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -80,7 +80,7 @@ Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline k
     Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
 
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```   
    
     Führen Sie den folgenden Befehl aus, um alle Abonnements für dieses Konto anzuzeigen:

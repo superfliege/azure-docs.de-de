@@ -2,7 +2,7 @@
 title: Aktivieren von Microsoft Windows Hello for Business in Ihrer Organisation | Microsoft Docs
 description: Bereitstellungsanweisungen zum Aktivieren von Microsoft Passport in Ihrer Organisation.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 keywords: Konfigurieren von Microsoft Passport, Bereitstellung von Microsoft Windows Hello for Business
 author: MarkusVi
 manager: mtillman
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.openlocfilehash: 0aa16e3466b36b6d1d83308cf37623aa15d61fcb
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>Aktivieren von Windows Hello for Business in Ihrer Organisation
 Nach der [Verknüpfung von in die Domäne eingebundenen Windows 10-Geräten mit Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md) gehen Sie wie folgt vor, um Windows Hello for Business in Ihrer Organisation zu aktivieren:
@@ -77,7 +77,6 @@ Das Verwenden von System Center Configuration Manager ist die bevorzugte Methode
     a. Geben Sie im Textfeld **Name** einen Namen für Ihr Profil ein, z. B. **Mein WHfB-Profil**.
    
     b. Klicken Sie auf **Weiter**.
-
 4. Wählen Sie im Dialogfeld **Unterstützte Plattformen** die Plattformen aus, die mit diesem Windows Hello for Business-Profil bereitgestellt werden, und klicken Sie auf **Weiter**.
    
     ![Konfigurieren von Windows Hello for Business](./media/active-directory-azureadjoin-passport-deployment/04.png)
@@ -92,7 +91,6 @@ Das Verwenden von System Center Configuration Manager ist die bevorzugte Methode
     c. Wählen Sie als **Authentifizierungsmethode** die Einstellung **Zertifikatbasiert** aus.
    
     d. Klicken Sie auf **Weiter**.
-
 6. Klicken Sie im Dialogfeld **Zusammenfassung** auf **Weiter**.
 7. Klicken Sie im Dialogfeld **Abschluss** auf **Schließen**.
 8. Klicken Sie auf der Symbolleiste oben auf **Bereitstellen**.

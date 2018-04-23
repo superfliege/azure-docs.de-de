@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics-Funktionen für Dienstanbieter | Microsoft-Dokumentation"
-description: "Log Analytics unterstützt Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hosting-Anbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden."
+title: Log Analytics-Funktionen für Dienstanbieter | Microsoft-Dokumentation
+description: Log Analytics unterstützt Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hosting-Anbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
 ms.service: log-analytics
 ms.workload: na
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: richrund
-ms.openlocfilehash: 3910038e788352df45ab00c0f697d9a5426b3498
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6934e92df562099122eaede39fd26cf51cf1ee44
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="log-analytics-features-for-service-providers"></a>Log Analytics-Funktionen für Dienstanbieter
 Log Analytics unterstützt Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hosting-Anbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden. 
 
 Zwischen Großunternehmen und Dienstanbietern bestehen viele Gemeinsamkeiten, insbesondere wenn ein zentrales IT-Team für die Verwaltung der IT vieler unterschiedlicher Geschäftseinheiten verantwortlich ist. Der Einfachheit halber wird in diesem Dokument der Begriff *Dienstanbieter* verwendet, jedoch ist die gleiche Funktionalität für Unternehmen und andere Kunden verfügbar.
 
-## <a name="cloud-solution-provider"></a>Cloud-Lösungsanbieter
+## <a name="cloud-solution-provider"></a>Cloud Solution Provider
 Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) teilnehmen, ist Log Analytics einer der in einem [Azure CSP-Abonnement](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) verfügbaren Azure-Dienste. 
 
-Für Log Analytics sind in *Cloud-Lösungsanbieter*-Abonnements die folgenden Funktionen aktiviert.
+Für Log Analytics sind in *Cloud Solution Provider*-Abonnements die folgenden Funktionen aktiviert.
 
 Als *Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)* haben Sie folgende Möglichkeiten:
 
@@ -39,11 +39,11 @@ Als *Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)* haben Sie folgende M
 
 Zum Anmelden beim Abonnement eines Mandanten müssen Sie die Mandanten-ID angeben. Die Mandanten-ID ist häufig der letzte Teil der E-Mail-Adresse, mit der Sie sich anmelden.
 
-* Fügen Sie im OMS-Portal in der URL für das Portal `?tenant=contoso.com` hinzu. Beispiel: `mms.microsoft.com/?tenant=contoso.com`
-* Geben Sie in PowerShell den `-Tenant contoso.com`-Parameter an, wenn Sie das `Add-AzureRmAccount`-Cmdlet verwenden.
+* Fügen Sie im OMS-Portal in der URL für das Portal `?tenant=contoso.com` hinzu. Zum Beispiel, `mms.microsoft.com/?tenant=contoso.com`
+* Geben Sie in PowerShell den `-Tenant contoso.com`-Parameter an, wenn Sie das `Connect-AzureRmAccount`-Cmdlet verwenden.
 * Die Mandanten-ID wird automatisch hinzugefügt, wenn Sie zum Aufrufen des OMS-Portals für den ausgewählten Arbeitsbereich und Anmelden beim Portal den `OMS portal`-Link aus dem Azure-Portal verwenden.
 
-Als *Kunde* eines Cloud-Lösungsanbieters haben Sie folgende Möglichkeiten:
+Als Cloud Solution Provider-*Kunde* haben Sie folgende Möglichkeiten:
 
 * Erstellen von Log Analytics-Arbeitsbereichen in einem CSP-Abonnement
 * Zugreifen auf Arbeitsbereiche, die vom CSP erstellt wurden

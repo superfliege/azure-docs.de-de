@@ -10,17 +10,15 @@ editor: cgronlun
 ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: maxluk
-ms.openlocfilehash: f2333202cdccc82edea649ff1c295752a414c8b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9bf49631da58de86ffa1881bca976cab86677805
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-cluster-performance"></a>Überwachen der Clusterleistung
 
@@ -34,7 +32,7 @@ In Hadoop-Clustern sollte das Laden auf die Knoten des Clusters verteilt werden.
 
 Melden Sie sich an der [Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) an, und wählen Sie dann die Registerkarte **Hosts**, um sich einen allgemeinen Überblick über die Knoten Ihres Clusters und das dazugehörige Ladeverhalten zu verschaffen. Ihre Hosts werden anhand ihrer vollqualifizierten Domänennamen aufgelistet. Der Betriebsstatus jedes Hosts wird mit einer farbigen Integritätsanzeige angegeben:
 
-| Farbe | Beschreibung |
+| Farbe | BESCHREIBUNG |
 | --- | --- |
 | Rot | Mindestens eine Master-Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
 | Orange | Mindestens eine untergeordnete Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |

@@ -2,7 +2,7 @@
 title: Ressourcen, Rollen und Access Control in Application Insights | Microsoft Docs
 description: "\"Besitzer\", \"Mitwirkende\" und \"Leser\" für die gewonnenen Unternehmensinformationen."
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6e811c9b427469fa781cf1f5b7c7deff3a8e6eb3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bb6c33c083e1be690b70b63ca087c923d43f3ee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Ressourcen, Rollen und Zugriffssteuerung in Application Insights
-Anhand einer [rollenbasierten Zugriffssteuerung in Microsoft Azure](../active-directory/role-based-access-control-configure.md) können Sie steuern, wer in Azure [Application Insights][start] über Lese- und Aktualisierungszugriff auf Ihre Daten verfügt.
+Anhand einer [rollenbasierten Zugriffssteuerung in Microsoft Azure](../role-based-access-control/role-assignments-portal.md) können Sie steuern, wer in Azure [Application Insights][start] über Lese- und Aktualisierungszugriff auf Ihre Daten verfügt.
 
 > [!IMPORTANT]
 > Weisen Sie Benutzern den Zugriff in der **Ressourcengruppe oder dem Abonnement** zu, dem Ihre Anwendungsressource angehört – nicht in der Ressource selbst. Weisen Sie die Rolle **Mitwirkender der Application Insights-Komponente** zu. Dadurch wird eine einheitliche Steuerung des Zugriffs auf Webtests und Warnungen zusammen mit Ihrer Anwendungsressource sichergestellt. [Weitere Informationen](#access).
@@ -72,16 +72,16 @@ Sie können auch zur nächsthöheren Ebene wechseln und den Benutzer zum Abonnem
 
 | Rolle | In der Ressourcengruppe |
 | --- | --- |
-| Besitzer |Kann alle Elemente ändern, einschließlich des Benutzerzugriffs |
+| Owner (Besitzer) |Kann alle Elemente ändern, einschließlich des Benutzerzugriffs |
 | Mitwirkender |Kann alle Elemente bearbeiten, einschließlich aller Ressourcen |
 | Mitwirkender der Application Insights-Komponente |Kann Application Insights-Ressourcen, Webtests und Warnungen bearbeiten. |
 | Leser |Kann Inhalte anzeigen, aber nicht ändern. |
 
 Zum "Bearbeiten" gehört das Erstellen, Löschen und Aktualisieren von:
 
-* Ressourcen
+* angeben
 * Webtests
-* Warnungen
+* Alerts
 * Fortlaufendem Export
 
 #### <a name="select-the-user"></a>Auswählen des Benutzers
@@ -91,7 +91,7 @@ Wenn der gewünschte Benutzer nicht im Verzeichnis enthalten ist, können Sie je
 
 ## <a name="related-content"></a>Verwandte Inhalte
 
-* [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md)
+* [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/role-assignments-portal.md)
 
 <!--Link references-->
 

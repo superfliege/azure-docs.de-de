@@ -12,20 +12,20 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 12/08/2017
-ms.openlocfilehash: b09d4a1aea56a4e306f80a1b43d519d313fd73ab
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8355248f28a019ef4712f542c8eac731362330ce
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Erstellen von Time Series Insights-Ressourcen mit Azure Resource Manager-Vorlagen
 
 In diesem Artikel wird das Erstellen und Bereitstellen von Time Series Insights-Ressourcen mithilfe von Azure Resource Manager-Vorlagen, PowerShell und des Time Series Insights-Ressourcenanbieters beschrieben.
 
 Time Series Insights unterstützt die folgenden Ressourcen:
-   | Ressource | Beschreibung |
+   | Ressource | BESCHREIBUNG |
    | --- | --- |
-   | Umgebung | Eine Time Series Insights-Umgebung ist eine logische Gruppierung von Ereignissen, die aus Ereignisbrokern gelesen, gespeichert und für Abfragen verfügbar gemacht werden. Weitere Informationen finden Sie unter [Planen Ihrer Azure Time Series Insights-Umgebung](time-series-insights-environment-planning.md). |
+   | Environment | Eine Time Series Insights-Umgebung ist eine logische Gruppierung von Ereignissen, die aus Ereignisbrokern gelesen, gespeichert und für Abfragen verfügbar gemacht werden. Weitere Informationen finden Sie unter [Planen Ihrer Azure Time Series Insights-Umgebung](time-series-insights-environment-planning.md). |
    | Ereignisquelle | Eine Ereignisquelle ist eine Verbindung mit einem Ereignisbroker, von dem Time Series Insights Daten liest und Ereignisse für die Umgebung erfasst. Derzeit werden IoT Hub und Event Hub als Ereignisquellen unterstützt. |
    | Verweisdataset | Verweisdatasets stellen Metadaten zu den Ereignissen der Umgebung bereit. Metadaten in den Verweisdaten werden während der Erfassung mit Ereignissen verknüpft. Verweisdatasets werden über die dazugehörigen Ereignisschlüsseleigenschaften als Ressourcen definiert. Die eigentlichen Metadaten, aus denen das Verweisdataset besteht, wird über Datenebenen-APIs hochgeladen oder geändert. |
    | Zugriffsrichtlinie | Zugriffsrichtlinien gewähren Berechtigungen für die Erstellung von Datenabfragen, für die Bearbeitung von Verweisdaten in der Umgebung und für die Freigabe gespeicherter Abfragen und Perspektiven, die der Umgebung zugeordnet sind. Weitere Informationen finden Sie unter [Gewähren von Datenzugriff für eine Time Series Insights-Umgebung über das Azure-Portal](time-series-insights-data-access.md). |
@@ -88,7 +88,7 @@ Kopieren Sie die Datei [201-timeseriesinsights-environment-with-eventhub](https:
 
 #### <a name="required-parameters"></a>Erforderliche Parameter
 
-   | Parameter | Beschreibung |
+   | Parameter | BESCHREIBUNG |
    | --- | --- |
    | eventHubNamespaceName | Der Namespace der Quelle (Event Hub). |
    | eventHubName | Der Name der Quelle (Event Hub). |
@@ -98,7 +98,7 @@ Kopieren Sie die Datei [201-timeseriesinsights-environment-with-eventhub](https:
 
 #### <a name="optional-parameters"></a>Optionale Parameter
 
-   | Parameter | Beschreibung |
+   | Parameter | BESCHREIBUNG |
    | --- | --- |
    | existingEventHubResourceId | Eine optionale Ressourcen-ID eines vorhandenen Event Hub, der über die Ereignisquelle mit der Time Series Insights-Umgebung verbunden wird. **HINWEIS:** Der Benutzer, der die Vorlage bereitstellt, muss über Berechtigungen zum Durchführen des Vorgangs „listkeys“ auf dem Event Hub verfügen. Wenn kein Wert übergeben wird, wird von der Vorlage ein neuer Event Hub erstellt. |
    | environmentDisplayName | Ein optionaler Anzeigenamen, der in Tools oder Benutzeroberflächen anstelle des Umgebungsnamens angezeigt wird. |
@@ -153,7 +153,7 @@ Weitere Informationen finden Sie im Artikel [Parameter](../azure-resource-manage
 Führen Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl aus:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Sie werden aufgefordert, sich bei Ihrem Azure-Konto anzumelden. Führen Sie nach der Anmeldung den folgenden Befehl aus, um Ihre verfügbaren Abonnements anzuzeigen:
@@ -266,7 +266,8 @@ Outputs                 :
 
 Die Startseite der Schnellstartvorlage auf GitHub enthält auch die Schaltfläche **Deploy to Azure** (In Azure bereitstellen). Wenn Sie darauf klicken, wird im Azure-Portal die Seite „Benutzerdefinierte Bereitstellung“ geöffnet. Auf dieser Seite können Sie Werte für jeden Parameter aus der Tabelle mit den [erforderlichen Parametern](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) oder den [optionalen Parametern](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) eingeben oder auswählen. Wenn Sie nach dem Angeben der Einstellungen auf die Schaltfläche **Kauf** klicken, wird die Vorlagenbereitstellung initiiert.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
 ## <a name="next-steps"></a>Nächste Schritte

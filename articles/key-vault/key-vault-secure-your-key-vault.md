@@ -1,8 +1,8 @@
 ---
-title: "Schützen einer Key Vault-Instanz | Microsoft-Dokumentation"
-description: "Verwalten Sie Zugriffsberechtigungen für Key Vault zur Verwaltung von Tresoren, Schlüsseln und Geheimnissen. Authentifizierungs- und Autorisierungsmodell für Key Vault und Schützen einer Key Vault-Instanz"
+title: Schützen einer Key Vault-Instanz | Microsoft-Dokumentation
+description: Verwalten Sie Zugriffsberechtigungen für Key Vault zur Verwaltung von Tresoren, Schlüsseln und Geheimnissen. Authentifizierungs- und Autorisierungsmodell für Key Vault und Schützen einer Key Vault-Instanz
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a769d15fe79a56d623399d0d38b6dd9c060db36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-your-key-vault"></a>Schützen einer Key Vault-Instanz
 Der Azure Key Vault-Clouddienst schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) für Ihre Cloudanwendungen. Da es sich hierbei um vertrauliche und geschäftskritische Daten handelt, empfiehlt es sich, den Zugriff auf Key Vault-Instanzen so zu konfigurieren, dass nur autorisierte Anwendungen und Benutzer auf Key Vault zugreifen können. Dieser Artikel enthält eine Übersicht über das Key Vault-Zugriffsmodell sowie Informationen zur Authentifizierung und Autorisierung. Außerdem erfahren Sie anhand eines Beispiels, wie Sie den Zugriff auf Key Vault für Ihre Cloudanwendungen schützen.
@@ -76,7 +76,7 @@ Jedes Azure-Abonnement hat ein Azure Active Directory. Benutzern, Gruppen und An
 
 Bei Verwendung des Azure Resource Manager-Modells erstellen Sie Ihre Key Vault-Instanz in einer Ressourcengruppe und steuern den Zugriff auf die Verwaltungsebene dieser Key Vault-Instanz mithilfe von Azure Active Directory. So können Sie beispielsweise Benutzern oder einer Gruppe die Verwaltung von Key Vault-Instanzen in einer bestimmten Ressourcengruppe ermöglichen.
 
-Durch Zuweisen geeigneter RBAC-Rollen können Sie Benutzern, Gruppen und Anwendungen in einem bestimmten Bereich Zugriff gewähren. Wenn Sie also etwa einem Benutzer Zugriff für die Verwaltung von Key Vault-Instanzen gewähren möchten, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle „Key Vault-Mitwirkender“ zu. Der Bereich wäre in diesem Fall entweder ein Abonnement, eine Ressourcengruppe oder einfach eine bestimmte Key Vault-Instanz. Eine auf Abonnementebene zugewiesene Rolle gilt für alle Ressourcengruppen und Ressourcen innerhalb des Abonnements. Eine auf Ressourcengruppenebene zugewiesene Rolle gilt für alle Ressourcen in der Ressourcengruppe. Eine für eine bestimmte Ressource zugewiesene Rolle gilt nur für diese Ressource. Es stehen mehrere vordefinierte Rollen zur Verfügung (siehe [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md)). Sollte hier keine passende Rolle für Sie dabei sein, können Sie auch eigene Rollen erstellen.
+Durch Zuweisen geeigneter RBAC-Rollen können Sie Benutzern, Gruppen und Anwendungen in einem bestimmten Bereich Zugriff gewähren. Wenn Sie also etwa einem Benutzer Zugriff für die Verwaltung von Key Vault-Instanzen gewähren möchten, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle „Key Vault-Mitwirkender“ zu. Der Bereich wäre in diesem Fall entweder ein Abonnement, eine Ressourcengruppe oder einfach eine bestimmte Key Vault-Instanz. Eine auf Abonnementebene zugewiesene Rolle gilt für alle Ressourcengruppen und Ressourcen innerhalb des Abonnements. Eine auf Ressourcengruppenebene zugewiesene Rolle gilt für alle Ressourcen in der Ressourcengruppe. Eine für eine bestimmte Ressource zugewiesene Rolle gilt nur für diese Ressource. Es stehen mehrere vordefinierte Rollen zur Verfügung (siehe [RBAC: Integrierte Rollen](../role-based-access-control/built-in-roles.md)). Sollte hier keine passende Rolle für Sie dabei sein, können Sie auch eigene Rollen erstellen.
 
 > [!IMPORTANT]
 > Hinweis: Falls ein Benutzer für eine Key Vault-Verwaltungsebene über Mitwirkungsberechtigungen (RBAC) verfügt, kann er sich durch Festlegen einer Key Vault-Zugriffsrichtlinie (steuert den Zugriff auf den Datenebene) selbst Zugriff auf die Datenebene gewähren. Es empfiehlt sich daher, sehr genau darauf zu achten, wer als Mitwirkender Zugriff auf Ihre Key Vault-Instanzen hat, um sicherzustellen, dass nur autorisierte Benutzer auf Ihre Key Vault-Instanzen, Schlüssel, Geheimnisse und Zertifikate zugreifen und diese verwalten können.
@@ -203,20 +203,20 @@ Bei diesem Beispiel handelt es sich um ein einfaches Szenario. In der Praxis kö
 > 
 > 
 
-## <a name="resources"></a>Ressourcen
-* [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-configure.md)
+## <a name="resources"></a>angeben
+* [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
   
   Dieser Artikel beschreibt die rollenbasierte Steuerung des Zugriffs auf Azure Active Directory, und wie sie funktioniert.
-* [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md)
+* [RBAC: Integrierte Rollen](../role-based-access-control/built-in-roles.md)
   
   In diesem Artikel werden alle integrierten, in RBAC verfügbaren Rollen ausführlich beschrieben.
 * [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md)
   
   Dieser Artikel erläutert die Resource Manager-Bereitstellung sowie klassische Bereitstellungsmodelle und erläutert die Vorteile der Verwendung der Resource Manager- und Ressourcengruppen.
-* [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
+* [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
   
   In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung mit Azure PowerShell verwalten.
-* [Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API](../active-directory/role-based-access-control-manage-access-rest.md)
+* [Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API](../role-based-access-control/role-assignments-rest.md)
   
   Dieser Artikel beschreibt die Verwendung der REST-API zum Verwalten von RBAC.
 * [Role-Based Access Control for Microsoft Azure from Ignite (Rollenbasierte Zugriffssteuerung für Microsoft Azure über Ignite)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)

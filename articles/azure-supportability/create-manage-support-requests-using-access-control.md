@@ -7,15 +7,15 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 20ebd324cbf379980b43d255d468673de2b6d950
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c3557d54b9fb3fd0173eec1e327050ac7cc80fc2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure zum Steuern von Zugriffsrechten für die Erstellung und Verwaltung von Supportanfragen
 
-Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) ermöglicht eine präzise Zugriffsverwaltung für Azure.
+Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) ermöglicht eine präzise Zugriffsverwaltung für Azure.
 für die Supportanfragenerstellung im Azure-Portal ([portal.azure.com](https://portal.azure.com)) wird mithilfe des RBAC-Modells von Azure definiert, wer zum Erstellen und Verwalten von Supportanfragen berechtigt ist.
 Der Zugriff wird gewährt, indem Benutzern, Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Hierbei kann es sich um ein Abonnement, um eine Ressourcengruppe oder um eine Ressource handeln.
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: d241bfb6245eb5a70f1e4fcedc86c969766019f4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: fc3dca82bea17b44f66b433f59e5861da3bb0ca2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Übersicht: Failovergruppen und aktive Georeplikation
 Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenbanken am gleichen oder an verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen für Abfragen und Failover zur Verfügung, wenn ein Rechenzentrum ausgefallen oder keine Verbindung mit der primären Datenbank möglich ist. Das Failover muss durch die Anwendung des Benutzers manuell eingeleitet werden. Nach einem Failover hat die neue primäre Datenbank einen anderen Verbindungsendpunkt. 
@@ -131,7 +131,7 @@ Aufgrund der hohen Latenz von WANs wird für die fortlaufende Kopie ein asynchro
 ## <a name="programmatically-managing-failover-groups-and-active-geo-replication"></a>Programmgesteuertes Verwalten von Failovergruppen und aktive Georeplikation
 Wie bereits erwähnt, können Gruppen für automatisches Failover (in der Vorschau) und aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen.
 
-**Azure Resource Manager-API und rollenbasierte Sicherheit:** Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](https://docs.microsoft.com/rest/api/sql/) und [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-what-is.md).
+**Azure Resource Manager-API und rollenbasierte Sicherheit:** Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](https://docs.microsoft.com/rest/api/sql/) und [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/overview.md).
 
 ## <a name="manage-sql-database-failover-using-transact-sql"></a>Verwalten eines Failovers von SQL-Datenbanken mit Transact-SQL
 

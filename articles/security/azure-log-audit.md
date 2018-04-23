@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c82b56cdf0fc2cb288986cf8fbf43c2dab5eacb6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 130bb7f20c030433741a9b9ecebe740fb44f5f81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-Protokollierung und -Überwachung
 ## <a name="introduction"></a>Einführung
@@ -101,7 +101,7 @@ Integrationsszenarien
 
 -   Exportieren des Aktivitätsprotokolls mit Protokollprofilen in [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 
-Sie können ein Speicherkonto oder [Event Hub-Namespace](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive) verwenden, das sich nicht im gleichen Abonnement befindet wie das, das Protokolle angibt. Der Benutzer, der die Einstellung konfiguriert, benötigt den entsprechenden [RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)-Zugriff auf beide Abonnements.
+Sie können ein Speicherkonto oder [Event Hub-Namespace](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive) verwenden, das sich nicht im gleichen Abonnement befindet wie das, das Protokolle angibt. Der Benutzer, der die Einstellung konfiguriert, benötigt den entsprechenden [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)-Zugriff auf beide Abonnements.
 ### <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 Azure-Diagnoseprotokolle werden von einer Ressource ausgegeben und stellen umfangreiche, in kurzen Abständen erfasste Betriebsdaten der Ressource bereit. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp. ([Windows-Systemereignisprotokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events) sind beispielsweise eine Diagnoseprotokollkategorie für virtuelle Computer; [Blob-, Tabellen- und Warteschlangenprotokolle](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account) sind Diagnoseprotokollkategorien für Speicherkonten.) Darüber hinaus unterscheiden sich Diagnoseprotokolle vom Aktivitätsprotokoll, das Informationen zu den Vorgängen liefert, die auf Ressourcen in Ihrem Abonnement ausgeführt wurden.
 

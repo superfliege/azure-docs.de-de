@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Importieren einer API | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Importieren einer API"
+title: Azure PowerShell-Skriptbeispiel – Importieren einer API | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Importieren einer API
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.devlang: na
@@ -13,11 +13,11 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: e718b7a38ae2db21c544912deb381ec5a7d2b52f
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 36e787fc3e638dd45c1a48313c31da1e5d346b18
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="import-an-api"></a>Importieren einer API
 
@@ -25,7 +25,7 @@ Mit diesem Beispielskript wird eine API importiert und zu einem API Management-P
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="sample-script"></a>Beispielskript
 

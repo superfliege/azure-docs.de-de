@@ -1,26 +1,24 @@
 ---
-title: "Verwalten von Protokollen für einen HDInsight-Cluster – Azure HDInsight | Microsoft-Dokumentation"
-description: "Ermitteln Sie die Typen, Größen und Aufbewahrungsrichtlinien für HDInsight-Aktivitätsprotokolldateien."
+title: Verwalten von Protokollen für einen HDInsight-Cluster – Azure HDInsight | Microsoft-Dokumentation
+description: Ermitteln Sie die Typen, Größen und Aufbewahrungsrichtlinien für HDInsight-Aktivitätsprotokolldateien.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: a161a5c639ff02e1e8a2ea987d9f913ff41c5618
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 165464bd6851bf5fa76632731455722c393060c6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Verwalten von Protokollen für einen HDInsight-Cluster
 
@@ -104,7 +102,7 @@ Im nächsten Schritt werden die Protokolldateien zur Auftragsausführung für di
 
 ### <a name="access-the-hadoop-log-files"></a>Zugreifen auf die Hadoop-Protokolldateien
 
-Für HDInsight werden die Protokolldateien sowohl im Clusterdateisystem als auch im Azure-Speicher gespeichert. Sie können Protokolldateien im Cluster untersuchen, indem Sie eine SSH-Verbindung mit dem Cluster öffnen und das Dateisystem durchsuchen oder das Hadoop YARN-Statusportal auf dem Hauptknoten-Remoteserver verwenden. Sie können die Protokolldateien in Azure-Speicher mit allen Tools untersuchen, mit denen auf Daten des Azure-Speichers zugegriffen und der Download dafür durchgeführt werden kann. Beispiele hierfür sind AZCopy, CloudXplorer und der Server-Explorer von Visual Studio. Sie können auch PowerShell und die Azure Storage-Clientbibliotheken oder die Azure .NET SDKs verwenden, um auf Daten im Azure-Blobspeicher zuzugreifen.
+Für HDInsight werden die Protokolldateien sowohl im Clusterdateisystem als auch im Azure-Speicher gespeichert. Sie können Protokolldateien im Cluster untersuchen, indem Sie eine SSH-Verbindung mit dem Cluster öffnen und das Dateisystem durchsuchen oder das Hadoop YARN-Statusportal auf dem Hauptknoten-Remoteserver verwenden. Sie können die Protokolldateien in Azure-Speicher mit allen Tools untersuchen, mit denen auf Daten des Azure-Speichers zugegriffen und der Download dafür durchgeführt werden kann. Beispiele hierfür sind AZCopy, CloudXplorer und der Server-Explorer von Visual Studio. Sie können auch PowerShell und die Azure Storage-Clientbibliotheken oder die Azure .NET SDKs verwenden, um auf Daten in Azure Blob Storage zuzugreifen.
 
 Hadoop führt die Schritte der Aufträge als *Taskversuche* auf verschiedenen Knoten im Cluster aus. HDInsight kann spekulative Taskversuche initiieren und zuerst alle anderen Taskversuche beenden, die nicht erfolgreich abgeschlossen werden können. Hierbei wird eine erhebliche Zahl von Aktivitäten generiert, die nebenbei in den controller-, stderr- und syslog-Protokolldateien protokolliert werden. Außerdem werden gleichzeitig mehrere Taskversuche ausgeführt, aber eine Protokolldatei kann Ergebnisse nur linear anzeigen.
 
@@ -121,7 +119,7 @@ Die in Azure-Tabellen geschriebenen Protokolle ermöglichen einen Einblick in di
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>In Azure Blob Storage geschriebene HDInsight-Protokolle
 
-HDInsight-Cluster werden so konfiguriert, dass Taskprotokolle für alle Aufträge, die über die Azure PowerShell-Cmdlets oder die .NET-APIs für die Auftragsübermittlung gesendet werden, in ein Azure-Blobspeicherkonto geschrieben werden.  Wenn Sie Aufträge per SSH an den Cluster senden, werden die Informationen zur Ausführungsprotokollierung in den Azure-Tabellen gespeichert, wie im vorherigen Abschnitt beschrieben.
+HDInsight-Cluster werden so konfiguriert, dass Taskprotokolle für alle Aufträge, die über die Azure PowerShell-Cmdlets oder die .NET-APIs für die Auftragsübermittlung gesendet werden, in ein Azure Blob Storage-Konto geschrieben werden.  Wenn Sie Aufträge per SSH an den Cluster senden, werden die Informationen zur Ausführungsprotokollierung in den Azure-Tabellen gespeichert, wie im vorherigen Abschnitt beschrieben.
 
 Zusätzlich zu den von HDInsight generierten Kernprotokolldateien generieren auch installierte Dienste wie YARN Protokolldateien zur Auftragsausführung.  Anzahl und Typ der Protokolldateien richten sich nach den installierten Diensten.  Häufig genutzte Dienste sind Apache HBase, Apache Spark usw.  Sehen Sie sich die Protokolldateien zur Auftragsausführung für jeden Dienst an, um zu verstehen, welche allgemeinen Protokollierungsdateien in Ihrem Cluster verfügbar sind.  Jeder Dienst verfügt über eigene Methoden für die Protokollierung sowie über eigene Speicherorte für die Protokolldateien.  Als Beispiel werden im folgenden Abschnitt Details zum Zugreifen auf die am häufigsten verwendeten Protokolldateien (aus YARN) beschrieben.
 

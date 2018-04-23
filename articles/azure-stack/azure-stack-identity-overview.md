@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 2/22/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: deebe5d8ff4c35c4507d2daf5c15025a1810d865
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 607c7938a789b3504a425057645b291bd4c8235b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Übersicht über die Identität für Azure Stack
 
@@ -66,7 +66,7 @@ Zum Einladen von Gastbenutzern können Cloudbetreiber und -benutzer die [Azure A
 
 Als Gastbenutzer können Sie sich am Verzeichnismandanten einer anderen Organisation anmelden. Hierzu hängen Sie den Verzeichnisnamen der Organisation an die Portal-URL an. Wenn Sie beispielsweise zur Organisation Contoso gehören und sich am Fabrikam-Verzeichnis anmelden möchten, verwenden Sie https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
-### <a name="applications"></a>Anwendungen
+### <a name="applications"></a>ANWENDUNGEN
 Sie können Anwendungen für Azure AD oder AD FS registrieren und diese dann Benutzern in Ihrer Organisation anbieten. 
 
 Dies können diese Arten von Anwendungen sein:
@@ -169,9 +169,9 @@ Nachdem alle Überprüfungen abgeschlossen sind, verwendet Azure Resource Manage
 
 ### <a name="use-role-based-access-control"></a>Verwenden der rollenbasierten Zugriffssteuerung  
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure Stack ist mit der Implementierung in Microsoft Azure konsistent. Sie können den Zugriff auf Ressourcen verwalten, indem Sie Benutzern, Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle zuweisen. Informationen zur Verwendung von RBAC mit Azure Stack finden Sie in den folgenden Artikeln:
-- [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](/azure/active-directory/role-based-access-control-what-is)
-- [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](/azure/active-directory/role-based-access-control-configure)
-- [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](/azure/active-directory/role-based-access-control-custom-roles)
+- [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](/azure/role-based-access-control/overview)
+- [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](/azure/role-based-access-control/role-assignments-portal)
+- [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](/azure/role-based-access-control/custom-roles)
 - [Verwalten der rollenbasierten Zugriffssteuerung](azure-stack-manage-permissions.md) (in Azure Stack)
 
 

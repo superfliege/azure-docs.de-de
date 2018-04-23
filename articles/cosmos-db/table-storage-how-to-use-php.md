@@ -3,22 +3,21 @@ title: Verwenden des Azure Table Storage-Diensts oder der Tabellen-API für Azur
 description: Erfahren Sie, wie Sie die Tabellenspeicherdienst-API mit PHP zum Erstellen und Löschen von Tabellen sowie zum Einfügen und für Abfragen in der Tabelle verwenden.
 services: cosmos-db
 documentationcenter: php
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 1e57f371-6208-4753-b2a0-05db4aede8e3
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 02/22/2018
-ms.author: mimig
-ms.openlocfilehash: 69fa1f8f9717d1ea4ca5081a45317cff8d752809
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: af193c5ec7993d44fe67216843eb18f459718cfe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Verwenden des Azure Table Storage-Diensts oder der Tabellen-API für Cosmos DB mit PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -27,23 +26,18 @@ ms.lasthandoff: 04/06/2018
 ## <a name="overview"></a>Übersicht
 In dieser Anleitung wird gezeigt, wie Sie allgemeine Szenarien mit dem Azure Table Storage-Dienst und der Tabellen-API für Azure Cosmos DB ausführen. Die Beispiele sind in PHP geschrieben und greifen auf die [Azure Table Storage-Clientbibliothek für PHP][download] zurück. Die besprochenen Szenarien umfassen das **Erstellen und Löschen einer Tabelle** sowie das **Einfügen, Löschen und Abfragen von Entitäten in einer Tabelle**. Weitere Informationen zum Azure-Tabellenspeicherdienst finden Sie im Abschnitt [Nächste Schritte](#next-steps) .
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 ## <a name="create-an-azure-service-account"></a>Erstellen eines Azure-Dienstkontos
 
-Sie können in Azure Table Storage oder der Tabellen-API für Azure Cosmos DB mit Tabellen arbeiten. Informationen über die Unterschiede zwischen den Diensten finden Sie unter [Tabellenangebote](table-introduction.md#table-offerings). Sie müssen ein Konto für den Dienst erstellen, den Sie verwenden werden. 
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-Ihr erstes Speicherkonto erstellen Sie am einfachsten im [Azure-Portal](https://portal.azure.com). Weitere Informationen finden Sie unter [Erstellen von Speicherkonten](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-Sie können ein Speicherkonto auch mit [Azure PowerShell](../storage/common/storage-powershell-guide-full.md) oder der [Azure-Befehlszeilenschnittstelle](../storage/common/storage-azure-cli.md) erstellen.
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Erstellen eines Kontos für die Azure Cosmos DB-Tabellen-API
 
-Wenn Sie zu diesem Zeitpunkt kein Speicherkonto erstellen möchten, können Sie auch den Azure Storage-Emulator zum Ausführen und Testen Ihres Codes in einer lokalen Umgebung verwenden. Weitere Informationen finden Sie unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](../storage/common/storage-use-emulator.md).
-
-### <a name="create-an-azure-cosmos-db-account"></a>Erstellen eines Azure Cosmos DB-Kontos
-
-Anweisungen zum Erstellen eines Kontos für Azure Cosmos DB finden Sie unter [Erstellen eines Tabellen-API-Kontos](create-table-dotnet.md#create-a-database-account).
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-php-application"></a>Erstellen einer PHP-Anwendung
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4d926ee08da593e590aa77a2ca09d8d1e1f6bb46
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5d91d8d00a37422dcead195354447d602b801f9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Schützen von Daten, die im Azure Data Lake-Speicher gespeichert sind
 Das Schützen von Daten im Azure Data Lake-Speicher ist ein Ansatz, der drei Schritte umfasst.  Die rollenbasierte Zugriffssteuerung (RBAC) sowie die Zugriffssteuerungslisten (ACLs) müssen so festgelegt werden, dass der Zugriff auf Daten für Benutzer und Sicherheitsgruppen vollständig aktiviert ist.
 
-1. Beginnen Sie, indem Sie in Azure Active Directory (AAD) Sicherheitsgruppen erstellen. Diese Sicherheitsgruppen werden verwendet, um die rollenbasierte Zugriffssteuerung im Azure-Portal zu implementieren. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Microsoft Azure](../active-directory/role-based-access-control-configure.md).
+1. Beginnen Sie, indem Sie in Azure Active Directory (AAD) Sicherheitsgruppen erstellen. Diese Sicherheitsgruppen werden verwendet, um die rollenbasierte Zugriffssteuerung im Azure-Portal zu implementieren. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
 2. Weisen Sie die AAD-Sicherheitsgruppen dem Azure Data Lake-Speicherkonto zu. Hiermit werden der Zugriff auf das Data Lake-Speicherkonto über das Portal und die Verwaltungsvorgänge über das Portal oder APIs gesteuert.
 3. Weisen Sie die AAD-Sicherheitsgruppen als Zugriffssteuerungslisten im Data Lake-Speicher-Dateisystem zu.
 4. Darüber hinaus können Sie auch einen IP-Adressbereich für Clients festlegen, die auf die Daten im Data Lake-Speicher zugreifen können.

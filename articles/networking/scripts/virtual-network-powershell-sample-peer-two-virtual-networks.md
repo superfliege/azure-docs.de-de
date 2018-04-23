@@ -1,31 +1,31 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken"
+title: Azure PowerShell-Skriptbeispiel – Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken
 services: virtual-network
 documentationcenter: virtual-network
 author: georgewallace
 manager: timlt
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
-ms.openlocfilehash: 51c0b98727e148671cfd7ab2b31ffd1c705d8a4e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c475311f8b0299908dfc26aa590c1990e00bc4a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="peer-two-virtual-networks"></a>Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken
 
 Dieses Skript erstellt zwei virtuelle Netzwerke in der gleichen Region und stellt über das Azure-Netzwerk eine Verbindung zwischen ihnen her. Nach dem Ausführen des Skripts erstellen Sie ein Peering zwischen zwei virtuellen Netzwerken.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Connect-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengruppe, einen virtuellen Computer und alle zugehörigen Ressourcen zu erstellen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. | 
 | [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork)| Erstellt ein virtuelles Azure-Netzwerk und ein Subnetz. |

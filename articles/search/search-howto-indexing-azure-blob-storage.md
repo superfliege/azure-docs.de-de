@@ -1,24 +1,18 @@
 ---
 title: Indizieren von Azure Blob Storage mit Azure Search
 description: Erfahren Sie, wie Sie Azure Blob Storage indizieren und Text aus Dokumenten mit Azure Search extrahieren.
-services: search
-documentationcenter: ''
 author: chaosrealm
-manager: pablocas
-editor: ''
-ms.assetid: 2a5968f4-6768-4e16-84d0-8b995592f36a
+manager: jlembicz
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: eugenesh
-ms.openlocfilehash: 67f6775fb68f4cd13c52ebe66727f2b4df23c692
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c997982868213bc1e0315a8d19c95b7c97f81de3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indizieren von Dokumenten in Azure Blob Storage mit Azure Search
 Dieser Artikel beschreibt, wie Sie Azure Search zum Indizieren von Dokumenten (z.B. PDF- oder Microsoft Office-Dokumente und verschiedene andere gängige Formate) verwenden, die in Azure Blob Storage gespeichert sind. Zunächst werden grundlegende Informationen zu Einrichten und Konfigurieren eines Blobindexers erläutert. Anschließend folgt eine ausführlichere Betrachtung der Verhaltensweisen und Szenarien, die Ihnen voraussichtlich begegnen.

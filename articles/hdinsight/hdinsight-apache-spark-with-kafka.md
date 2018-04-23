@@ -1,26 +1,24 @@
 ---
-title: "Apache Spark-Streaming mit Kafka – Azure HDInsight | Microsoft-Dokumentation"
+title: Apache Spark-Streaming mit Kafka – Azure HDInsight | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Apache Spark verwenden, um Daten mithilfe von DStreams in oder aus Apache Kafka zu streamen. In diesem Beispiel werden Sie Daten mithilfe eines Jupyter Notebooks aus Spark auf HDInsight streamen.
 keywords: Kafka Beispiel,Kafka ZooKeeper,Spark Streaming Kafka,Spark Streaming Kafka Beispiel
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dd8f53c1-bdee-4921-b683-3be4c46c2039
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.devlang: ''
+ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 8c9a901b8922bf349959438487c88e3df4f2ebea
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a9463b5983b5f41683a5cfe416ca125bf2810062
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>Beispiel für Apache Spark-Streaming (DStream) mit Kafka in HDInsight
 
@@ -49,7 +47,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
     
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Die Azure Resource Manager-Vorlage befindet sich unter **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**.
+    Die Azure Resource Manager-Vorlage finden Sie unter **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**.
 
     > [!WARNING]
     > Um die Verfügbarkeit von Kafka in HDInsight zu gewährleisten, muss der Cluster mindestens drei Workerknoten enthalten. Diese Vorlage erstellt einen Kafka-Cluster, der drei Workerknoten enthält.
@@ -87,7 +85,7 @@ Sobald die Ressourcen erstellt wurden, wird eine Zusammenfassungsseite angezeigt
 
 ## <a name="use-the-notebooks"></a>Verwenden der Notebooks
 
-Der Code für das in diesem Dokument beschriebene Beispiel ist unter [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) verfügbar.
+Den Code für das in diesem Dokument beschriebene Beispiel finden Sie unter [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka).
 
 Führen Sie die Schritte in der Datei `README.md` aus, um dieses Beispiel durchzuführen.
 

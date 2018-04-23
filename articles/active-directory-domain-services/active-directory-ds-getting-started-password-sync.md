@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: 5d65ce4c199c9ddc54e0120fe1c456a95a34f649
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4122052e48e57a27492433d01ee93536a9bbcf35
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Aktivieren der Kennworthashsynchronisierung für Azure Active Directory Domain Services
 In vorherigen Aufgaben haben Sie Azure Active Directory Domain Services für Ihren Azure AD-Mandanten (Azure Active Directory) aktiviert. Die nächste Aufgabe besteht darin, die Synchronisierung der Kennworthashes, die für die NTLM- (NT LAN Manager) und Kerberos-Authentifizierung erforderlich sind, mit Azure AD Domain Services zu ermöglichen. Nach der Einrichtung der Kennworthashsynchronisierung können sich Benutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden.
@@ -64,7 +64,7 @@ Stellen Sie Ihren Benutzern die folgende Anleitung zur Verfügung, damit sie ihr
     ![Klicken auf „Kennwort ändern“](./media/active-directory-domain-services-getting-started/user-change-password.png)
 
    > [!TIP]
-   > Sollte die Option **Kennwort ändern** auf der Zugriffsbereichsseite nicht angezeigt werden, vergewissern Sie sich, dass in Ihrer Organisation die [Kennwortverwaltung in Azure AD](../active-directory/active-directory-passwords-getting-started.md) konfiguriert ist.
+   > Sollte die Option **Kennwort ändern** auf der Zugriffsbereichsseite nicht angezeigt werden, vergewissern Sie sich, dass in Ihrer Organisation die [Kennwortverwaltung in Azure AD](../active-directory/authentication/quickstart-sspr.md) konfiguriert ist.
    >
    >
 4. Geben Sie auf der Seite **Kennwort ändern** Ihr vorhandenes (altes) und ein neues Kennwort ein, und bestätigen Sie das neue Kennwort.
@@ -77,7 +77,7 @@ Das neue Kennwort kann wenige Minuten nach der Kennwortänderung in Azure Active
 
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Aktualisieren Ihres eigenen Kennworts](../active-directory/active-directory-passwords-update-your-own-password.md)
-* [Erste Schritte mit der Kennwortverwaltung](../active-directory/active-directory-passwords-getting-started.md)
+* [Erste Schritte mit der Kennwortverwaltung](../active-directory/authentication/quickstart-sspr.md)
 * [Aktivieren der Kennwortsynchronisierung für Azure Active Directory Domain Services](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Verwalten einer durch die Azure Active Directory-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 * [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne](active-directory-ds-admin-guide-join-windows-vm.md)

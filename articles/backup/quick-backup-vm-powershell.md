@@ -5,9 +5,9 @@ services: backup
 documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 2/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 55de58770bd91e000c12b42c8eeac92fb8c0a710
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 91303368f96b477f0756e4d3b9d19601797f0ba8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Sichern eines virtuellen Computers in Azure mit PowerShell
 Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in georedundanten Recovery-Tresoren gespeichert werden können. In diesem Artikel wird ausführlich beschrieben, wie Sie einen virtuellen Computer (VM) mit dem Azure PowerShell-Modul sichern. Sie können diese Schritte auch mit der [Azure CLI](quick-backup-vm-cli.md) oder mit dem [Azure-Portal](quick-backup-vm-portal.md) ausführen.
@@ -31,10 +31,10 @@ Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 4.4 oder
 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich mit dem Befehl `Login-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+Melden Sie sich mit dem Befehl `Connect-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Bei der ersten Verwendung von Azure Backup müssen Sie den Azure Recovery Service-Anbieter in Ihrem Abonnement mit [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) registrieren.

@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Network (VNET) – Planungs- und Entwurfshandbuch | Microsoft-Dokumentation
+title: Azure Virtual Network (VNET) – Planungs- und Entwurfshandbuch | Microsoft Docs
 description: Es wird beschrieben, wie Sie virtuelle Netzwerke in Azure basierend auf Ihren Anforderungen in Bezug auf Isolierung, Verbindung und Standort planen und entwerfen.
 services: virtual-network
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: f11b2d1b4061b395918a274c4c53688bf34fbae1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e41dae2f4e93fe2e3cef689596612a6a192c844
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Planen und Entwerfen von Azure Virtual Networks
 Das Erstellen eines VNET zum Experimentieren ist einfach. Aber die Wahrscheinlichkeit ist hoch, dass Sie im Laufe der Zeit mehrere VNETs bereitstellen, um die Produktionsanforderungen Ihres Unternehmens zu erfüllen. Mit etwas Planungs- und Entwurfsarbeit können Sie beim Bereitstellen von VNETs und beim Herstellen einer Verbindung mit den Ressourcen effektiver vorgehen. Falls Sie mit VNETs noch nicht vertraut sind, sollten Sie sich die [Informationen zu VNETs](virtual-networks-overview.md) und die [Informationen zur Bereitstellung](quick-create-portal.md) durchlesen, bevor Sie fortfahren.
@@ -87,12 +87,12 @@ Standardmäßig verwendet Ihr VNet die [von Azure bereitgestellte Namensauflösu
 Informieren Sie sich im Artikel zu den [Grenzwerten in Azure](../azure-subscription-service-limits.md#networking-limits) über die Grenzwerte für Netzwerke, um sicherzustellen, dass Ihr Entwurf keinen Konflikt mit einem dieser Grenzwerte verursacht. Einige Einschränkungen können durch Öffnen eines Supporttickets erhöht werden.
 
 ### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
-Sie können [Azure RBAC](../active-directory/role-based-access-built-in-roles.md) verwenden, um die Zugriffsebene zu steuern, die unterschiedlichen Benutzern für die Ressourcen in Azure gewährt wird. Auf diese Weise können Sie die Arbeit Ihres Teams je nach Bedarf aufteilen.
+Sie können [Azure RBAC](../role-based-access-control/built-in-roles.md) verwenden, um die Zugriffsebene zu steuern, die unterschiedlichen Benutzern für die Ressourcen in Azure gewährt wird. Auf diese Weise können Sie die Arbeit Ihres Teams je nach Bedarf aufteilen.
 
 Bei virtuellen Netzwerken haben Benutzer mit der Rolle **Mitwirkender von virtuellem Netzwerk** die vollständige Kontrolle über die Virtual Network-Ressourcen von Azure-Ressourcen-Manager. Ebenso haben Benutzer mit der Rolle **Mitwirkender von klassischem Netzwerk** die vollständige Kontrolle über herkömmliche Virtual Network-Ressourcen.
 
 > [!NOTE]
-> Sie können auch [eigene Rollen erstellen](../active-directory/role-based-access-control-configure.md) , um Ihre administrativen Anforderungen zu erfüllen.
+> Sie können auch [eigene Rollen erstellen](../role-based-access-control/role-assignments-portal.md) , um Ihre administrativen Anforderungen zu erfüllen.
 >
 >
 

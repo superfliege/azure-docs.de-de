@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: d0b287eb61087e90c898aad5273ab5be8c1f98b2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bd3618367f91fe043cc8412481b38a9c996a5275
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Verwenden von SQL-Datenbanken in Microsoft Azure Stack
 
@@ -81,7 +81,7 @@ Sie müssen mindestens eine SQL Server-Instanz erstellen bzw. den Zugriff auf ex
 
     - In dem Verzeichnis, auf das mit dem Parameter „DependencyFilesLocalPath“ verwiesen wird, kann nur eine Zertifikatdatei vorhanden sein.
 
-    - Der Dateiname darf keine Sonderzeichen enthalten.
+    - Der Dateiname darf keine Sonderzeichen oder Leerzeichen enthalten.
 
 
 5. Öffnen Sie eine **neue** PowerShell-Konsole mit erhöhten Rechten (Administrator), und wechseln Sie zu dem Verzeichnis, in dem Sie die Dateien extrahiert haben. Verwenden Sie ein neues Fenster, um Probleme aufgrund von falschen PowerShell-Modulen zu vermeiden, die bereits in Ihrem System geladen sind.
@@ -307,7 +307,7 @@ Führen Sie diese Schritte aus, um die Defender-Definitionen zu aktualisieren:
 
     Laden Sie auf dieser Seite unter „Manually download and install the definitions“ (Definitionen manuell herunterladen und installieren) die 64-Bit-Datei „Windows Defender Antivirus for Windows 10 and Windows 8.1“ herunter. 
     
-    Direkte Verknüpfung: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+    Direkter Link: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
 
 2. Erstellen Sie eine PowerShell-Sitzung mit dem VM-Wartungsendpunkt des SQL-Ressourcenanbieteradapters.
 3. Kopieren Sie die Updatedatei für die Definitionen auf den DB-Adaptercomputer, indem Sie die Wartungsendpunkt-Sitzung verwenden.

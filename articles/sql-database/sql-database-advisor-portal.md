@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: a9b9bec4fd48c44ece9d762b539cd3d6e10c1858
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Suchen und Anwenden von Empfehlungen zur Leistung
 
@@ -21,7 +21,7 @@ Sie können im Azure-Portal Empfehlungen zur Leistungsverbesserung erhalten, die
 
 ## <a name="viewing-recommendations"></a>Anzeigen von Empfehlungen
 
-Zum Anzeigen und Anwenden von Empfehlungen zur Leistung benötigen Sie die richtigen Berechtigungen für die [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) in Azure. Die Berechtigungen **Leser** und **SQL-DB-Mitwirkender** sind erforderlich, um Empfehlungen anzuzeigen, und die Berechtigungen **Besitzer** und **SQL-DB-Mitwirkender** sind erforderlich, um Aktionen ausführen zu können, Indizes zu erstellen oder zu löschen und die Indexerstellung abzubrechen.
+Zum Anzeigen und Anwenden von Empfehlungen zur Leistung benötigen Sie die richtigen Berechtigungen für die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) in Azure. Die Berechtigungen **Leser** und **SQL-DB-Mitwirkender** sind erforderlich, um Empfehlungen anzuzeigen, und die Berechtigungen **Besitzer** und **SQL-DB-Mitwirkender** sind erforderlich, um Aktionen ausführen zu können, Indizes zu erstellen oder zu löschen und die Indexerstellung abzubrechen.
 
 Verwenden Sie die folgenden Schritte, um Empfehlungen zur Leistung im Azure-Portal zu suchen:
 
@@ -154,5 +154,5 @@ Azure SQL-Datenbank bietet Empfehlungen zur Leistungsverbesserung für die SQL-D
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md)
+* [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md)
 

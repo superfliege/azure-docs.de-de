@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: cbb9a47b878471e6efd5f4e280f44c6c8fe78df4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2201fa48c84aec2c291d8df7e16293a41720ce3e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Beheben von Problemen mit einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM per Azure PowerShell
 Wenn für Ihren virtuellen Windows-Computer in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie unter Umständen Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie Sie Azure PowerShell zum Herstellen der Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Windows-VM verwenden, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen.
@@ -35,7 +35,7 @@ Der Problembehebungsprozess sieht wie folgt aus:
 Stellen Sie sicher, dass Sie die [aktuelle Version von Azure PowerShell](/powershell/azure/overview) installiert haben und an Ihrem Abonnement angemeldet sind:
 
 ```powershell
-Login-AzureRMAccount
+Connect-AzureRmAccount
 ```
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `mystorageaccount` und `myVM` verwendet.

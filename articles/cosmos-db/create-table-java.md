@@ -3,7 +3,7 @@ title: 'Schnellstartanleitung: Table-API mit Java – Azure-Cosmos-DB | Microsof
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Table-API von Azure Cosmos DB eine Anwendung mit dem Azure-Portal und Java erstellen.
 services: cosmos-db
 documentationcenter: ''
-author: arramac
+author: SnehaGunda
 manager: kfile
 ms.assetid: 66327041-4d5e-4ce6-a394-fee107c18e59
 ms.service: cosmos-db
@@ -12,13 +12,13 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/20/2017
-ms.author: arramac
-ms.openlocfilehash: fb544e11ac637201fb3fb032daeb395d5f0da839
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/10/2018
+ms.author: sngun
+ms.openlocfilehash: 70b07115a676bb5c8cc4dbbf39843d8144fb0b66
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Table-API-App mit Java und Azure Cosmos DB
 
@@ -55,28 +55,25 @@ Außerdem haben Sie folgende Möglichkeiten:
 
 ## <a name="add-sample-data"></a>Hinzufügen von Beispieldaten
 
-Sie können nun mithilfe des Daten-Explorers Daten zu einer neuen Tabelle hinzufügen.
-
-1. Erweitern Sie im Daten-Explorer **sample-database**, klicken Sie auf **Entitäten**, und klicken Sie anschließend auf **Entität hinzufügen**.
-
-   ![Erstellen neuer Entitäten im Daten-Explorer im Azure-Portal](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-document.png)
-2. Geben Sie nun Daten in die Wertfelder „PartitionKey“ und „RowKey“ ein, und klicken Sie auf **Entität hinzufügen**.
-
-   ![Festlegen des Partitions- und Zeilenschlüssels für eine neue Entität](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-entity.png)
-  
-    Jetzt können Sie weitere Entitäten in Ihre Tabelle hinzufügen, diese Entitäten bearbeiten und Ihre Daten im Daten-Explorer abfragen. Im Daten-Explorer können Sie zudem Ihren Durchsatz skalieren und der Tabelle gespeicherte Prozeduren, benutzerdefinierte Funktionen und Trigger hinzufügen.
+[!INCLUDE [cosmos-db-create-table-add-sample-data](../../includes/cosmos-db-create-table-add-sample-data.md)]
 
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
 Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenfolge fest und führen Sie diese aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
 
-1. Öffnen Sie ein Terminalfenster von Git (z. B. Git Bash), und verwenden Sie den Befehl `cd`, um den Ordner zu ändern, in den die Beispiel-App gespeichert wird. 
+1. Öffnen Sie eine Eingabeaufforderung, erstellen Sie einen neuen Ordner namens „git-samples“, und schließen Sie die Eingabeaufforderung.
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Öffnen Sie ein Git-Terminalfenster (z. B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. Führen Sie den folgenden Befehl aus, um das Beispielrepository zu klonen. Dieser Befehl erstellt eine Kopie der Beispiel-App auf Ihrem Computer. 
+3. Führen Sie den folgenden Befehl aus, um das Beispielrepository zu klonen. Dieser Befehl erstellt eine Kopie der Beispiel-App auf Ihrem Computer.
 
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-java-getting-started.git 

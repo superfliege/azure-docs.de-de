@@ -1,6 +1,6 @@
 ---
-title: "Schützen von DNS-Zonen und -Ressourceneintragssätzen | Microsoft Docs"
-description: "So schützen Sie DNS-Zonen und -Ressourceneintragsätze in Microsoft Azure DNS"
+title: Schützen von DNS-Zonen und -Ressourceneintragssätzen | Microsoft Docs
+description: So schützen Sie DNS-Zonen und -Ressourceneintragsätze in Microsoft Azure DNS
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
-ms.openlocfilehash: 0b7040d6273b3a6b85cd55850d596807226b87fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a23f5fa296be6d883229d3810e0387224b6708ff
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>So schützen Sie DNS-Zonen und -Ressourceneintragssätze
 
 DNS-Zonen und -Ressourceneintragssätze sind kritische Ressourcen. Das Löschen einer DNS-Zone oder auch nur eines einzelnen DNS-Ressourceneintragssatzes kann zu einem vollständigen Dienstausfall führen.  Daher ist es wichtig, dass kritische DNS-Zonen und -Ressourceneintragssätze vor unzulässigen oder versehentlichen Änderungen geschützt werden.
 
-In diesem Artikel wird erläutert, wie Sie mithilfe von Azure DNS Ihre DNS-Zonen und -Ressourceneinträge vor solchen Änderungen schützen können.  Wir wenden zwei leistungsstarke Sicherheitsfeatures an, die von Azure Resource Manager bereitgestellt werden: [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) und [Ressourcensperren](../azure-resource-manager/resource-group-lock-resources.md).
+In diesem Artikel wird erläutert, wie Sie mithilfe von Azure DNS Ihre DNS-Zonen und -Ressourceneinträge vor solchen Änderungen schützen können.  Wir wenden zwei leistungsstarke Sicherheitsfeatures an, die von Azure Resource Manager bereitgestellt werden: [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) und [Ressourcensperren](../azure-resource-manager/resource-group-lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Die rollenbasierte Zugriffssteuerung in Azure (role-based access control, RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Benutzer, -Gruppen und -Ressourcen. Mit RBAC können Sie den Benutzern genau die Zugriffsrechte erteilen, die diese zum Ausführen ihrer Aufgaben benötigen. Weitere Informationen dazu, wie RBAC Sie bei der Zugriffsverwaltung unterstützt, finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
+Die rollenbasierte Zugriffssteuerung in Azure (role-based access control, RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Benutzer, -Gruppen und -Ressourcen. Mit RBAC können Sie den Benutzern genau die Zugriffsrechte erteilen, die diese zum Ausführen ihrer Aufgaben benötigen. Weitere Informationen dazu, wie RBAC Sie bei der Zugriffsverwaltung unterstützt, finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../role-based-access-control/overview.md).
 
 ### <a name="the-dns-zone-contributor-role"></a>Die Rolle „DNS Zone Contributor“ (DNS-Zone-Mitwirkender)
 
@@ -35,18 +35,18 @@ Bei der Rolle „DNS Zone Contributor“ handelt es sich um eine integrierte Rol
 
 Nehmen wir beispielsweise an, dass die Ressourcengruppe „meineZonen“ fünf Zonen für die Contoso Corporation enthält. Indem dem DNS-Administrator die „DNS Zone Contributor“-Berechtigungen für diese Ressourcengruppe erteilt werden, wird die vollständige Kontrolle über diese DNS-Zonen ermöglicht. Außerdem wird das Erteilen von unnötigen Berechtigungen vermieden. Der DNS-Administrator kann z.B. keine virtuellen Computer erstellen oder anhalten.
 
-Die einfachste Möglichkeit, RBAC-Berechtigungen zuzuweisen, ist das Zuweisen [über das Azure-Portal](../active-directory/role-based-access-control-configure.md).  Öffnen Sie das Blatt „Zugriffssteuerung (IAM)“ für die Ressourcengruppe, klicken Sie auf „Hinzufügen“, und wählen Sie anschließend die Rolle „DNS Zone Contributor“ sowie die erforderlichen Benutzer oder Gruppen aus, um Berechtigungen zu erteilen.
+Die einfachste Möglichkeit, RBAC-Berechtigungen zuzuweisen, ist das Zuweisen [über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).  Öffnen Sie das Blatt „Zugriffssteuerung (IAM)“ für die Ressourcengruppe, klicken Sie auf „Hinzufügen“, und wählen Sie anschließend die Rolle „DNS Zone Contributor“ sowie die erforderlichen Benutzer oder Gruppen aus, um Berechtigungen zu erteilen.
 
 ![RBAC auf Ressourcengruppenebene über das Azure-Portal](./media/dns-protect-zones-recordsets/rbac1.png)
 
-Berechtigungen können auch [mithilfe von Azure PowerShell erteilt werden](../active-directory/role-based-access-control-manage-access-powershell.md):
+Berechtigungen können auch [mithilfe von Azure PowerShell erteilt werden](../role-based-access-control/role-assignments-powershell.md):
 
 ```powershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
-Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
@@ -63,14 +63,14 @@ RBAC-Berechtigungen auf Zonenebene können über das Azure-Portal erteilt werden
 
 ![RBAC auf DNS-Zonenebene über das Azure-Portal](./media/dns-protect-zones-recordsets/rbac2.png)
 
-Berechtigungen können auch [mithilfe von Azure PowerShell erteilt werden](../active-directory/role-based-access-control-manage-access-powershell.md):
+Berechtigungen können auch [mithilfe von Azure PowerShell erteilt werden](../role-based-access-control/role-assignments-powershell.md):
 
 ```powershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
-Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to a specific zone
@@ -85,14 +85,14 @@ RBAC-Berechtigungen auf Ressourceneintragssatz-Ebene können über das Azure-Por
 
 ![RBAC auf Ressourceneintragssatz-Ebene über das Azure-Portal](./media/dns-protect-zones-recordsets/rbac3.png)
 
-RBAC-Berechtigungen auf Ressourceneintragssatz-Ebene können auch [mithilfe von Azure PowerShell erteilt werden](../active-directory/role-based-access-control-manage-access-powershell.md):
+RBAC-Berechtigungen auf Ressourceneintragssatz-Ebene können auch [mithilfe von Azure PowerShell erteilt werden](../role-based-access-control/role-assignments-powershell.md):
 
 ```powershell
 # Grant permissions to a specific record set
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
-Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant permissions to a specific record set
@@ -136,7 +136,7 @@ Die Eigenschaft „Actions“ definiert die folgenden DNS-spezifischen Berechtig
 * `Microsoft.Network/dnsZones/CNAME/*` erteilt vollständige Kontrolle über CNAME-Einträge
 * `Microsoft.Network/dnsZones/read` erteilt die Berechtigung zum Lesen von DNS-Zonen, jedoch nicht zum Ändern dieser, wobei Ihnen ermöglicht wird, die Zone zu sehen, in der der CNAME erstellt wird.
 
-Die verbleibenden Aktionen werden aus der [integrierten Rolle „DNS Zone Contributor“](../active-directory/role-based-access-built-in-roles.md#dns-zone-contributor) kopiert.
+Die verbleibenden Aktionen werden aus der [integrierten Rolle „DNS Zone Contributor“](../role-based-access-control/built-in-roles.md#dns-zone-contributor) kopiert.
 
 > [!NOTE]
 > Das Verwenden von benutzerdefinierten RBAC-Rollen, um das Löschen von Ressourceneintragssätzen zu verhindern, wobei diese immer noch aktualisiert werden dürfen, stellt keine effiziente Kontrolle dar. Ressourceneintragssätze können zwar nicht gelöscht werden, jedoch können sie bearbeitet werden.  Zulässige Bearbeitungen umfassen das Hinzufügen und Entfernen von Einträgen zu dem bzw. aus dem Ressourceneintragssatz. Dazu zählt auch das Entfernen aller Einträge, um den Ressourceneintragssatz „leer“ zu lassen. Dies hat die gleiche Wirkung wie das Löschen des Ressourceneintragssatzes aus der Sichtweise einer DNS-Auflösung.
@@ -157,7 +157,7 @@ azure role create -inputfile <file path>
 
 Die Rolle kann anschließend auf die gleiche Weise wie integrierte Rollen zugewiesen werden, wie weiter oben in diesem Artikel beschrieben.
 
-Weitere Informationen zum Erstellen, Verwalten und Zuweisen von benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
+Weitere Informationen zum Erstellen, Verwalten und Zuweisen von benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../role-based-access-control/custom-roles.md).
 
 ## <a name="resource-locks"></a>Ressourcensperren
 
@@ -219,6 +219,6 @@ Es ist möglich, beide Ansätze – Ressourcensperren sowie benutzerdefinierte R
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Arbeiten mit RBAC finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
+* Weitere Informationen zum Arbeiten mit RBAC finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../role-based-access-control/overview.md).
 * Weitere Informationen zum Arbeiten mit Ressourcensperren finden Sie unter [Sperren von Ressourcen mit Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
 

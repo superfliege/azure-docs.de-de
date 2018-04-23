@@ -1,31 +1,25 @@
 ---
 title: Indizierung der JSON-Blobs mit Azure Search-Blobindexer
 description: Indizierung der JSON-Blobs mit Azure Search-Blobindexer
-services: search
-documentationcenter: 
 author: chaosrealm
-manager: pablocas
-editor: 
-ms.assetid: 57e32e51-9286-46da-9d59-31884650ba99
+manager: jlembicz
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 09/07/2017
 ms.author: eugenesh
-ms.openlocfilehash: 2dac2c5980970946a6b9c26ee6ee8ac0f0344144
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: eea20deddb91642db62855c743c0f6e31a9960ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indizierung der JSON-Blobs mit Azure Search-Blobindexer
 In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Blobindexer konfigurieren, um strukturierten Inhalt aus JSON-Blobs in Azure Blob Storage zu extrahieren.
 
 JSON-Blobs in Azure Blob Storage bestehen normalerweise entweder aus einem einzelnen JSON-Dokument oder einem JSON-Array. Mit dem Blobindexer in Azure Search können beide Fälle analysiert werden. Dies richtet sich danach, wie Sie den Parameter **parsingMode** in der Anforderung festlegen.
 
-| JSON-Dokument | parsingMode | Beschreibung | Verfügbarkeit |
+| JSON-Dokument | parsingMode | BESCHREIBUNG | Verfügbarkeit |
 |--------------|-------------|--------------|--------------|
 | Ein Dokument pro Blob | `json` | JSON-Blobs werden als einzelne Textblöcke analysiert. Jedes JSON-Blob wird zu einem einzelnen Azure Search-Dokument. | Allgemein verfügbar in [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)- und [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer)-APIs. |
 | Mehrere Dokumente pro Blob | `jsonArray` | Analysiert ein JSON-Array im Blob, und jedes Element des Arrays wird zu einem separaten Azure Search-Dokument.  | Befindet sich für [REST api-version=`2016-09-01-Preview`](search-api-2016-09-01-preview.md) und [.NET SDK Preview](https://aka.ms/search-sdk-preview) in der Vorschauphase. |
@@ -221,4 +215,4 @@ Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums
 + [Indexer in Azure Search](search-indexer-overview.md)
 + [Indizieren von Azure Blob Storage mit Azure Search](search-howto-index-json-blobs.md)
 + [Indizierung von CSV-Blobs mit Azure Search-Blobindexer](search-howto-index-csv-blobs.md)
-+ [Tutorial: Durchsuchen von teilweise strukturierten Daten in Cloudspeicher](search-semi-structured-data.md)
++ [Tutorial: Durchsuchen von teilweise strukturierten Daten in Azure Blob Storage](search-semi-structured-data.md)

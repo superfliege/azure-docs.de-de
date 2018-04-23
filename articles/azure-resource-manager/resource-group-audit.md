@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 990c3ed8c6fd79430b27c7c96673f7845e54b26f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bd11ec7c8a32792853e60b4bb14d4ed52f53f4a3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen
 
@@ -30,7 +30,7 @@ Mithilfe von Aktivitätsprotokollen können Sie Folgendes ermitteln:
 * Den Status des Vorgangs
 * Die Werte anderer Eigenschaften, mit denen Sie den Vorgang eventuell untersuchen können
 
-Das Aktivitätsprotokoll enthält alle Schreibvorgänge (PUT, POST, DELETE), die für Ihre Ressourcen durchgeführt wurden. Es enthält jedoch keine Lesevorgänge (GET). Eine Liste der Ressourcenvorgänge finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../active-directory/role-based-access-control-resource-provider-operations.md). Sie können bei der Problembehandlung mithilfe der Überwachungsprotokolle einen Fehler ermitteln oder nachverfolgen, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
+Das Aktivitätsprotokoll enthält alle Schreibvorgänge (PUT, POST, DELETE), die für Ihre Ressourcen durchgeführt wurden. Es enthält jedoch keine Lesevorgänge (GET). Eine Liste der Ressourcenvorgänge finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../role-based-access-control/resource-provider-operations.md). Sie können bei der Problembehandlung mithilfe der Überwachungsprotokolle einen Fehler ermitteln oder nachverfolgen, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
 
 Aktivitätsprotokolle werden 90 Tage lang aufbewahrt. Sie können beliebige Datumsbereiche abfragen, das Startdatum darf jedoch maximal 90 Tage zurückliegen.
 
@@ -154,8 +154,8 @@ Die REST-Vorgänge für die Arbeit mit Aktivitätsprotokollen gehören zur [Insi
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Azure-Aktivitätsprotokolle können mit Power BI verwendet werden, um bessere Einblicke in die in Ihrem Abonnement ausgeführten Aktionen zu erhalten. Informationen hierzu finden Sie unter [View and analyze Azure Activity Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)(Anzeigen und Analysieren von Azure-Aktivitätsprotokollen in Power BI und mehr).
-* Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md).
+* Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/role-assignments-portal.md).
 * Weitere Informationen zu den Befehlen zum Anzeigen von Bereitstellungsvorgängen finden Sie unter [View deployment operations with Azure Resource Manager](resource-manager-deployment-operations.md) (Anzeigen von Bereitstellungsvorgängen mit Azure Resource Manager).
 * Informationen zum Verhindern von Löschvorgängen für eine Ressource für alle Benutzer finden Sie unter [Sperren von Ressourcen mit Azure Resource Manager](resource-group-lock-resources.md).
-* Eine Liste der Vorgänge, die für jeden Microsoft Azure Resource Manager-Anbieter verfügbar sind, finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](~/articles/active-directory/role-based-access-control-resource-provider-operations.md).
+* Eine Liste der Vorgänge, die für jeden Microsoft Azure Resource Manager-Anbieter verfügbar sind, finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../role-based-access-control/resource-provider-operations.md).
 

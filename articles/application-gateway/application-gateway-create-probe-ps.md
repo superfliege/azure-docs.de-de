@@ -1,11 +1,11 @@
 ---
-title: "Erstellen eines benutzerdefinierten Tests – Azure Application Gateway (PowerShell) | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie einen benutzerdefinierten Test für Application Gateways mithilfe von PowerShell im Ressourcen-Manager erstellen."
+title: Erstellen eines benutzerdefinierten Tests – Azure Application Gateway (PowerShell) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie einen benutzerdefinierten Test für Application Gateways mithilfe von PowerShell im Ressourcen-Manager erstellen.
 services: application-gateway
 documentationcenter: na
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 68feb660-7fa4-4f69-a7e4-bdd7bdc474db
 ms.service: application-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: davidmu
-ms.openlocfilehash: 344d6922d1649449e26f2500e538b5a0b440476d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5d17a05f964367ff12a58c3e301a1741181003fc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Erstellen eines benutzerdefinierten Tests für Azure Application Gateway mithilfe von PowerShell für Azure-Ressourcen-Manager
 
@@ -39,10 +39,10 @@ In diesem Artikel fügen Sie einen benutzerdefinierten Test zu einem vorhandenen
 
 ### <a name="sign-in-and-create-resource-group"></a>Anmelden und Erstellen einer Ressourcengruppe
 
-1. Verwenden Sie zum Authentifizieren `Login-AzureRmAccount`.
+1. Verwenden Sie zum Authentifizieren `Connect-AzureRmAccount`.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
 1. Rufen Sie die Abonnements für das Konto ab.
@@ -63,7 +63,7 @@ In diesem Artikel fügen Sie einen benutzerdefinierten Test zu einem vorhandenen
   New-AzureRmResourceGroup -Name appgw-rg -Location 'West US'
   ```
 
-Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Anwendungsgateway erstellt wird, die gleiche Ressourcengruppe verwenden.
+Der Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Anwendungsgateway erstellt wird, die gleiche Ressourcengruppe verwenden.
 
 Im obigen Beispiel haben wir eine Ressourcengruppe namens **appgw-RG** mit dem Standort **USA, Westen** erstellt.
 

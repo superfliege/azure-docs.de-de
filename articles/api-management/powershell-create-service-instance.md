@@ -1,22 +1,22 @@
 ---
 title: Erstellen einer Azure API Management-Instanz mit PowerShell | Microsoft-Dokumentation
-description: "Führen Sie die Schritte dieses Tutorials zum Erstellen einer neuen Azure API Management-Instanz aus."
+description: Führen Sie die Schritte dieses Tutorials zum Erstellen einer neuen Azure API Management-Instanz aus.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: d33a37002f1e3a2684d4b93682dbd48327f3312b
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 4037666081395abc18543fc4dc8d26d40024e1ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Erstellen einer neuen Azure API Management-Dienstinstanz
 
@@ -28,11 +28,11 @@ In diesem Schnellstart werden die Schritte zum Erstellen einer neuen API Managem
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen

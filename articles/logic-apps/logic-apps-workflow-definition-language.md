@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
 ms.openlocfilehash: 42932e6d1727a1444c62f565ae3c48dc178aeb2b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Schema der Definitionssprache für Workflows für Azure Logic Apps
 
@@ -132,8 +132,8 @@ Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwende
 |----------------|------------|  
 |"parameters"|Die Zeichenfolge „parameters“ wird zurückgegeben.|  
 |"parameters[1]"|Die Zeichenfolge „parameters[1]“ wird zurückgegeben.|  
-|"\@@\"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
-|\" \@\"|Eine Zeichenfolge, die „ @“ enthält, wird zurückgegeben (zwei Zeichen).|  
+|"@@"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
+|\" \@\"|Eine Zeichenfolge, die \„  \@ \“ enthält, wird zurückgegeben (zwei Zeichen).|  
   
 Mit der *Zeichenfolgeninterpolation* können Ausdrücke auch innerhalb von Zeichenfolgen verwendet werden. Dabei werden die Ausdrücke in `@{ ... }` eingeschlossen. Beispiel:  <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 

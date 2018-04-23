@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: af011cb3eea27498107cdfd650518552cd63bdf3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="governance-in-azure"></a>Governance (Kontrolle) in Azure
 
@@ -147,7 +147,7 @@ Als Azure ursprünglich veröffentlicht wurde, waren Zugriffssteuerungen für ei
 
 Diese Zunahme von Abonnements ist nicht mehr erforderlich. Mit der rollenbasierten Zugriffssteuerung können Sie Benutzer zu Standardrollen (z.B. zu den allgemeinen Rollentypen „Leser“ und „Autor“) zuweisen. Sie können auch benutzerdefinierte Rollen definieren.
 
-Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit RBAC können Sie den Benutzern nur die Zugriffsrechte gewähren, die diese zum Ausführen ihrer Aufgaben benötigen. Sicherheitsorientierte Unternehmen müssen sich darauf konzentrieren, Mitarbeitern genau die Berechtigungen zuzuweisen, die sie benötigen. Zu viele Berechtigungen machen ein Konto zum leichten Angriffsziel. Durch nicht ausreichende Berechtigungen können Mitarbeiter nicht effizient arbeiten. Die rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC) begegnet diesem Problem, indem sie eine präzise Zugriffsverwaltung für Azure ermöglicht. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen uneingeschränkte Berechtigungen in Ihrem Azure-Abonnement oder Ihren Ressourcen zu gewähren, können Sie die Berechtigungen auf bestimmte Aktionen beschränken.
+Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit RBAC können Sie den Benutzern nur die Zugriffsrechte gewähren, die diese zum Ausführen ihrer Aufgaben benötigen. Sicherheitsorientierte Unternehmen müssen sich darauf konzentrieren, Mitarbeitern genau die Berechtigungen zuzuweisen, die sie benötigen. Zu viele Berechtigungen machen ein Konto zum leichten Angriffsziel. Durch nicht ausreichende Berechtigungen können Mitarbeiter nicht effizient arbeiten. Die rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC) begegnet diesem Problem, indem sie eine präzise Zugriffsverwaltung für Azure ermöglicht. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen uneingeschränkte Berechtigungen in Ihrem Azure-Abonnement oder Ihren Ressourcen zu gewähren, können Sie die Berechtigungen auf bestimmte Aktionen beschränken.
 
 Gestatten Sie z.B. mit RBAC einem Mitarbeiter die Verwaltung virtueller Computer in einem Abonnement, während ein anderer im gleichen Abonnement SQL-Datenbanken verwalten kann.
 
@@ -161,7 +161,7 @@ Azure RBAC verfügt über drei grundlegende Rollen, die für alle Ressourcentype
 
 Die verbleibenden RBAC-Rollen in Azure ermöglichen die Verwaltung von bestimmten Azure-Ressourcen. Mit der Rolle „Mitwirkender von virtuellen Computern“ können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Sie haben damit keinen Zugriff auf das virtuelle Netzwerk oder das Subnetz, mit dem der virtuelle Computer verbunden ist.
 
-[Integrierte RBAC-Rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) sind die Rollen aufgeführt, die in Azure verfügbar sind. Hierbei werden die Vorgänge und der Bereich angegeben, die mit jeder integrierten Rolle für Benutzer gewährt werden.
+[Integrierte RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) sind die Rollen aufgeführt, die in Azure verfügbar sind. Hierbei werden die Vorgänge und der Bereich angegeben, die mit jeder integrierten Rolle für Benutzer gewährt werden.
 
 Gewähren Sie Zugriff, indem Sie Benutzern, Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zuweisen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein. Mit einer Rolle, die einem übergeordneten Bereich zugewiesen ist, wird außerdem der Zugriff auf die darin enthaltenen untergeordneten Elemente gewährt.
 
@@ -169,9 +169,9 @@ Ein Benutzer mit Zugriff auf eine Ressourcengruppe kann beispielsweise alle Ress
 
 Azure RBAC unterstützt nur Verwaltungsvorgänge von Azure-Ressourcen im Azure-Portal und in den Azure Resource Manager-APIs. Azure RBAC kann nicht alle Vorgänge auf Datenebene für Azure-Ressourcen autorisieren. Sie können z.B. eine Person zum Verwalten von Speicherkonten autorisieren, jedoch nicht zum Verwalten von Blobs oder Tabellen innerhalb eines Speicherkontos. Ebenso kann eine SQL-Datenbank verwaltet werden, aber nicht die darin enthaltenen Tabellen.
 
-Weitere Informationen dazu, wie RBAC Sie bei der Zugriffsverwaltung unterstützt, finden Sie unter [Get started with access management in the Azure portal](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)(Erste Schritte mit der Zugriffsverwaltung im Azure-Portal).
+Weitere Informationen dazu, wie RBAC Sie bei der Zugriffsverwaltung unterstützt, finden Sie unter [Get started with access management in the Azure portal](https://docs.microsoft.com/azure/role-based-access-control/overview)(Erste Schritte mit der Zugriffsverwaltung im Azure-Portal).
 
-Sie können auch eine [benutzerdefinierte Rolle](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) in der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) erstellen, falls keine der integrierten Rollen Ihre speziellen Zugriffsanforderungen erfüllt. Benutzerdefinierte Rollen können mit [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell), der [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli) und der [REST-API](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-rest) erstellt werden. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Anwendungen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden.
+Sie können auch eine [benutzerdefinierte Rolle](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) in der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) erstellen, falls keine der integrierten Rollen Ihre speziellen Zugriffsanforderungen erfüllt. Benutzerdefinierte Rollen können mit [Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), der [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) und der [REST-API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest) erstellt werden. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Anwendungen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden.
 
 In jedem Abonnement können Sie bis zu 2.000 Rollenzuweisungen gewähren.
 
@@ -271,7 +271,7 @@ Die Anwendung von **ReadOnly** kann zu unerwarteten Ergebnissen führen, da eini
 
 Weiteres Beispiel: Das Festlegen von ReadOnly für eine App Service-Ressource verhindert, dass der Server-Explorer von Visual Studio Dateien für die Ressource anzeigen kann, da für diese Interaktion Schreibzugriff erforderlich ist.
 
-Im Gegensatz zur rollenbasierten Zugriffssteuerung verwenden Sie Verwaltungssperren, um eine Einschränkung für alle Benutzer und Rollen zu aktivieren. Informationen zum Festlegen von Benutzer- und Rollenberechtigungen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
+Im Gegensatz zur rollenbasierten Zugriffssteuerung verwenden Sie Verwaltungssperren, um eine Einschränkung für alle Benutzer und Rollen zu aktivieren. Informationen zum Festlegen von Benutzer- und Rollenberechtigungen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 Wenn Sie eine Sperre in einem übergeordneten Bereich anwenden, erben alle Ressourcen in diesem Bereich die entsprechende Sperre. Auch Ressourcen, die Sie später hinzufügen, erben die Sperre aus dem übergeordneten Element. Die restriktivste Sperre in der Vererbung hat Vorrang.
 

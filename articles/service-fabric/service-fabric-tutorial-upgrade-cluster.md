@@ -5,8 +5,8 @@ services: service-fabric
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 49211a88e004bbcbcc41b6674a34934db39513c7
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 407268299e77d771a53c49c11995dce1ada65112
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster"></a>Tutorial: Aktualisieren der Runtime eines Service Fabric-Clusters
 
@@ -55,7 +55,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus, bevor Sie Azure-Befehle ausführen.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```

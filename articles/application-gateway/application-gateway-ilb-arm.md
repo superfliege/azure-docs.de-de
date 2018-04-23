@@ -1,6 +1,6 @@
 ---
-title: "Verwenden von Azure Application Gateway mit internem Lastenausgleich – PowerShell | Microsoft-Dokumentation"
-description: "Diese Seite enthält Anweisungen zum Erstellen, Konfigurieren, Starten und Löschen eines Azure Application Gateways mit internem Lastenausgleich (ILB) mit Azure-Ressourcen-Manager."
+title: Verwenden von Azure Application Gateway mit internem Lastenausgleich – PowerShell | Microsoft-Dokumentation
+description: Diese Seite enthält Anweisungen zum Erstellen, Konfigurieren, Starten und Löschen eines Azure Application Gateways mit internem Lastenausgleich (ILB) mit Azure-Ressourcen-Manager.
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: davidmu
-ms.openlocfilehash: 8d96af009055a5c0349f0ac17054bebee4e54d36
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: dd6455622a7fecd99c23aef1b181035ffe6061dd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb-by-using-azure-resource-manager"></a>Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB) mit Azure-Ressourcen-Manager
 
@@ -52,9 +52,9 @@ Beim Resource Manager werden alle Elemente, die ein Application Gateway bilden, 
 Hier sind die erforderlichen Schritte zum Erstellen eines Application Gateways angegeben:
 
 1. Erstellen einer Ressourcengruppe für den Resource Manager
-2. Erstellen eines virtuelles Netzwerkes und eines Subnetzes für das Application Gateway
+2. Erstellen eines virtuelles Netzwerkes und eines Subnetzes für das Application Gateway.
 3. Erstellen eines Konfigurationsobjekts für das Anwendungsgateway
-4. Erstellen einer Anwendungsgatewayressource
+4. Erstellen einer Application Gateway-Ressource
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Erstellen einer Ressourcengruppe für den Resource Manager
 
@@ -63,7 +63,7 @@ Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Azure-Ress
 ### <a name="step-1"></a>Schritt 1
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ### <a name="step-2"></a>Schritt 2
@@ -92,11 +92,11 @@ Erstellen Sie eine neue Ressourcengruppe (Überspringen Sie diesen Schritt, wenn
 New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 ```
 
-Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Anwendungsgateway erstellt wird, die gleiche Ressourcengruppe verwenden.
+Der Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Anwendungsgateway erstellt wird, die gleiche Ressourcengruppe verwenden.
 
 Im obigen Beispiel haben wir eine Ressourcengruppe namens „appgw-rg“ mit dem Standort „USA, Westen“ erstellt.
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Erstellen eines virtuelles Netzwerkes und eines Subnetzes für das Application Gateway
+## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Erstellen eines virtuelles Netzwerkes und eines Subnetzes für das Application Gateway.
 
 Das folgende Beispiel zeigt, wie Sie mit dem Ressourcen-Manager ein virtuelles Netzwerk erstellen:
 
@@ -193,7 +193,7 @@ Die Instanzgröße des Anwendungsgateways wird konfiguriert.
 > [!NOTE]
 > Der Standardwert für *InstanceCount* ist 2, der Maximalwert ist 10. Der Standardwert für *GatewaySize* ist "Medium". Sie können zwischen „Standard_Small“, „Standard_Medium“ und „Standard_Large“ wählen.
 
-## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>Erstellen eines Application Gateways mit dem New-AzureApplicationGateway-Cmdlet
+## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>Erstellen eines Anwendungsgateways mit dem New-AzureApplicationGateway-Cmdlet
 
 Erstellen Sie ein Anwendungsgateway mit allen Konfigurationselementen aus den vorherigen Schritten. In diesem Beispiel heißt das Anwendungsgateway „appgwtest“.
 

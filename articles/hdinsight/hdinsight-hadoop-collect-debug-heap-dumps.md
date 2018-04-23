@@ -1,31 +1,29 @@
 ---
-title: "Debuggen und Analysieren von Hadoop-Diensten mit Heapdumps – Azure | Microsoft-Dokumentation"
-description: "Lassen Sie Heapdumps für Hadoop-Dienste automatisch sammeln und zum Debuggen und Analysieren in das Azure-Blobspeicherkonto einfügen."
+title: Debuggen und Analysieren von Hadoop-Diensten mit Heapdumps – Azure | Microsoft-Dokumentation
+description: Lassen Sie Heapdumps für Hadoop-Dienste automatisch sammeln und zum Debuggen und Analysieren in das Azure Blob Storage-Konto einfügen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: e4ec4ebb-fd32-4668-8382-f956581485c4
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6d1d4d47d279eb7a1f0bf1f587445683f0ace7a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0721d20987008e5cc6370c6e853440ce93edcfa9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-hadoop-services"></a>Sammeln von Heapdumps im Blobspeicher zum Debuggen und Analysieren von Hadoop-Diensten
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Heapdumps enthalten eine Momentaufnahme des Speichers der Anwendung, einschließlich der Werte von Variablen zum Zeitpunkt der Dumperstellung. Daher sind sie zum Diagnostizieren von Problemen nützlich, die bei der Ausführung auftreten. Heapdumps können für Hadoop-Dienste automatisch gesammelt und im Azure-Blobspeicherkonto eines Benutzers unter "HDInsightHeapDumps/" abgelegt werden.
+Heapdumps enthalten eine Momentaufnahme des Speichers der Anwendung, einschließlich der Werte von Variablen zum Zeitpunkt der Dumperstellung. Daher sind sie zum Diagnostizieren von Problemen nützlich, die bei der Ausführung auftreten. Heapdumps können für Hadoop-Dienste automatisch gesammelt und im Azure Blob Storage-Konto eines Benutzers unter „HDInsightHeapDumps/“ abgelegt werden.
 
 Die Sammlung von Heapdumps für verschiedene Dienste muss für Dienste in einzelnen Clustern aktiviert werden. Standardmäßig ist dieses Feature für einen Cluster deaktiviert. Diese Heapdumps können groß sein, sodass es ratsam ist, das Blobspeicherkonto zu überwachen, in dem sie gespeichert werden, nachdem die Sammlung aktiviert wurde.
 

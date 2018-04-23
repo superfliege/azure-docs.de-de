@@ -1,12 +1,12 @@
 ---
 title: F#-Entwicklerreferenz zu Azure Functions | Microsoft Docs
-description: "Es wird beschrieben, wie die Azure Functions-Entwicklung mit F# durchgeführt wird."
+description: Es wird beschrieben, wie die Azure Functions-Entwicklung mit F# durchgeführt wird.
 services: functions
 documentationcenter: fsharp
 author: sylvanc
 manager: jbronsk
-editor: 
-tags: 
+editor: ''
+tags: ''
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Computing, serverlose Architektur, F#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: functions
@@ -16,14 +16,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: 039306b093d92b66883edcca10e42f7b1dbc7245
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2c84de3f38a49bc97fda04a7a4eb449a1f7d14bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-functions-f-developer-reference"></a>F#-Entwicklerreferenz zu Azure Functions
-[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 F# für Azure Functions ist eine Lösung, mit der Sie ganz einfach kleinere Codeelemente (Funktionen) in der Cloud ausführen können. Daten fließen über Funktionsargumente in Ihre F#-Funktion. Argumentnamen werden in `function.json`angegeben, und es gibt vordefinierte Namen für den Zugriff auf Elemente wie die Funktionsprotokollierung und Abbruchtoken.
 

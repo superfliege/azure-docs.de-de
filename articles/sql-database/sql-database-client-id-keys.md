@@ -9,11 +9,11 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 9127362ec806b7b3cbf3971488bb5393eb170eff
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 31dd476244d578acf1ced3881fac94d5262bcb82
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Abrufen der erforderlichen Werte aus dem Code zum Authentifizieren einer Anwendung für den Zugriff auf die SQL-Datenbank
 Zum Erstellen und Verwalten der SQL-Datenbank über den Code müssen Sie Ihre App in der Azure Active Directory-Domäne (AAD) in dem Abonnement registrieren, in dem die Azure-Ressourcen erstellt wurden.
@@ -24,7 +24,7 @@ Die aktuelle Version von [Azure PowerShell](https://msdn.microsoft.com/library/m
 Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung und der Dienstprinzipal erstellt, den wir zum Authentifizieren der C#-App benötigen. Das Skript gibt Werte aus, die für das vorhergehende C#-Beispiel erforderlich sind. Ausführliche Informationen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
     # Sign in to Azure.
-    Add-AzureRmAccount
+    Connect-AzureRmAccount
 
     # If you have multiple subscriptions, uncomment and set to the subscription you want to work with.
     #$subscriptionId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"

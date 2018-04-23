@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: 680e70ce572e182aa35c736f61036415d8714ea0
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 14d2a29e65bf2f3a974f2713f36d9b9fa497ee1c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](active-directory-aadconnect-get-started-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -166,7 +166,7 @@ In einer Produktionsbereitstellung wird es schwer, eine einzelne Gruppe mit alle
 | Öffentliche Exchange-E-Mail-Ordner | Mit dem Feature „Öffentliche Exchange-E-Mail-Ordner“ können Sie Objekte für E-Mail-aktivierte öffentliche Ordner von Ihrer lokalen Active Directory-Instanz nach Azure AD synchronisieren. |
 | Azure AD-App- und Attributfilterung |Mithilfe der App- und Attributfilterung von Azure AD kann die Gruppe synchronisierter Attribute individuell konfiguriert werden. Durch diese Option wird der Assistent um zwei weitere Konfigurationsseiten erweitert. Weitere Informationen finden Sie unter [Azure AD-App- und Attributfilterung](#azure-ad-app-and-attribute-filtering). |
 | Kennworthashsynchronisierung |Diese Option ist verfügbar, wenn Sie als Anmeldelösung die Verbundoption ausgewählt haben. Die Kennworthashsynchronisierung kann dann als Sicherungsoption verwendet werden. Weitere Informationen finden Sie unter [Implement password hash synchronization with Azure AD Connect sync](active-directory-aadconnectsync-implement-password-hash-synchronization.md) (Implementieren der Kennworthashsynchronisierung mit Azure AD Connect-Synchronisierung). </br></br>Wenn Sie die Passthrough-Authentifizierung ausgewählt haben, kann diese Option auch standardmäßig aktiviert werden, um sicherzustellen, dass Legacyclients unterstützt werden und eine Sicherungsoption vorhanden ist. Weitere Informationen finden Sie unter [Implement password hash synchronization with Azure AD Connect sync](active-directory-aadconnectsync-implement-password-hash-synchronization.md) (Implementieren der Kennworthashsynchronisierung mit Azure AD Connect-Synchronisierung).|
-| Kennwortrückschreiben |Durch Aktivieren des Kennwortrückschreibens werden Kennwortänderungen aus Azure AD in Ihr lokales Verzeichnis zurückgeschrieben. Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltung](../active-directory-passwords-getting-started.md). |
+| Kennwortrückschreiben |Durch Aktivieren des Kennwortrückschreibens werden Kennwortänderungen aus Azure AD in Ihr lokales Verzeichnis zurückgeschrieben. Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltung](../authentication/quickstart-sspr.md). |
 | Gruppenrückschreiben |Bei Verwendung des Features **Office 365-Gruppen** können diese Gruppen in Ihrem lokalen Active Directory dargestellt werden. Diese Option ist nur verfügbar, wenn Exchange in Ihrem lokalen Active Directory vorhanden ist. Weitere Informationen finden Sie unter [Gruppenrückschreiben](active-directory-aadconnect-feature-preview.md#group-writeback). |
 | Geräterückschreiben |Ermöglicht für bedingte Szenarios das Rückschreiben von Geräteobjekten in Azure AD auf Ihr lokales Active Directory. Weitere Informationen finden Sie unter [Aktivieren des Geräterückschreibens in Azure AD Connect](active-directory-aadconnect-feature-device-writeback.md). |
 | Verzeichniserweiterungen-Attributsynchronisierung |Durch Aktivieren der Attributsynchronisierung für Verzeichniserweiterungen werden die angegebenen Attribute mit Azure AD synchronisiert. Weitere Informationen finden Sie unter [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md). |

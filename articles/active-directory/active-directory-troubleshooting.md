@@ -1,11 +1,11 @@
 ---
-title: "Problembehandlung: Element „Active Directory“ fehlt oder ist nicht verfügbar | Microsoft-Dokumentation"
-description: "Vorgehensweise, wenn das Active Directory-Menüelement nicht im Azure-Verwaltungsportal angezeigt wird."
+title: 'Problembehandlung: Element „Active Directory“ fehlt oder ist nicht verfügbar | Microsoft-Dokumentation'
+description: Vorgehensweise, wenn das Active Directory-Menüelement nicht im Azure-Verwaltungsportal angezeigt wird.
 services: active-directory
 documentationcenter: na
 author: bryanla
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3383020d-6397-43ea-b7aa-c6a9d6a1e3df
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
-ms.openlocfilehash: 27a884b89224ed5765e9fcef134e711e3952ff72
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c6e8557ec66db51df0bb463a9511b0cdc94811d4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshooting-active-directory-item-is-missing-or-not-available"></a>Problembehandlung: Element "Active Directory" fehlt oder ist nicht verfügbar
 Viele der Anweisungen für die Verwendung von Azure Active Directory-Funktionen und -Diensten beginnen mit der Aufforderung, das Azure-Verwaltungsportal aufzurufen und auf **Active Directory**zu klicken. Aber was tun Sie, wenn die Active Directory-Erweiterung oder das entsprechende Menüelement nicht angezeigt wird oder als **Nicht verfügbar**markiert ist? Dieses Thema soll Ihnen helfen. Es beschreibt die Umstände, unter denen **Active Directory** nicht angezeigt wird oder nicht verfügbar ist, und mögliche Abhilfen.
@@ -39,7 +39,7 @@ Das Active Directory-Element wird im linken Navigationsmenü angezeigt, wenn ein
 * Der Azure-Mandant hat mindestens einen Azure AD Access Control-Namespace (ACS). Weitere Informationen finden Sie unter [Access Control-Namespace](https://msdn.microsoft.com/library/azure/gg185908.aspx).
   
     OR
-* Der Azure-Mandant hat mindestens einen Azure Multi-Factor Authentication-Anbieter. Weitere Informationen finden Sie unter [Verwalten von Azure Multi-Factor Authentication-Anbietern](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+* Der Azure-Mandant hat mindestens einen Azure Multi-Factor Authentication-Anbieter. Weitere Informationen finden Sie unter [Verwalten von Azure Multi-Factor Authentication-Anbietern](authentication/howto-mfa-getstarted.md).
 
 Um einen Access Control-Namespace oder einen Multi-Factor Authentication-Anbieter zu erstellen, klicken Sie auf **+NEU** > **App Services** > **Active Directory**.
 

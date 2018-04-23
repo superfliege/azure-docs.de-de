@@ -1,5 +1,5 @@
 ---
-title: "Sicherheitsfunktionen, die mit Azure Storage verwendet werden können | Microsoft-Dokumentation"
+title: Sicherheitsfunktionen, die mit Azure Storage verwendet werden können | Microsoft-Dokumentation
 description: " Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit Azure Storage verwendet werden können. "
 services: security
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: a118bde2290e68c9a741e40cda210d47db918047
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8160ede71930bf4c15969044deb3fced855f03e6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-security-overview"></a>Übersicht über die Sicherheit von Azure Storage
-Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Zuverlässigkeit, Verfügbarkeit und Skalierbarkeit bietet, um die Anforderungen Ihrer Kunden zu erfüllen. Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen:
+Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen. Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen:
 
 * Das Speicherkonto kann mit rollenbasierter Zugriffssteuerung und Azure Active Directory geschützt werden.
 * Daten können während der Übertragung zwischen einer Anwendung und Azure mit clientseitiger Verschlüsselung, HTTPS oder SMB 3.0 geschützt werden.
@@ -40,15 +40,15 @@ Hier sind die wichtigsten Features aufgeführt, die in diesem Artikel behandelt 
 * Delegierter Zugriff auf Speicherobjekte
 * Verschlüsselung während der Übertragung
 * Verschlüsselung ruhender Daten/Storage Service Encryption
-* Azure-Datenträgerverschlüsselung
-* Azure-Schlüsseltresor
+* Azure Disk Encryption
+* Azure Key Vault
 
 ## <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
-Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [integrierte RBAC-Rollen](../active-directory/role-based-access-built-in-roles.md)(etwa „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen.
+Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [integrierte RBAC-Rollen](../role-based-access-control/built-in-roles.md)(etwa „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen.
 
 Weitere Informationen:
 
-* [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-configure.md)
+* [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="delegated-access-to-storage-objects"></a>Delegierter Zugriff auf Speicherobjekte
 Shared Access Signatures (SAS) bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen. Dazu müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben. Die SAS ist ein URI, dessen Abfrageparameter alle erforderlichen Informationen für den authentifizierten Zugriff auf eine Speicherressource enthalten. Für den Zugriff auf Speicherressourcen mit der SAS braucht der Client diese nur an den entsprechenden Konstruktor bzw. die entsprechende Methode zu übergeben.
@@ -79,10 +79,10 @@ Für viele Organisationen ist die Verschlüsselung von [ruhenden Daten](https://
 
 Weitere Informationen zu Storage Service Encryption finden Sie hier:
 
-* [Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) ist für [Azure-Blobspeicher](https://azure.microsoft.com/services/storage/blobs/) verfügbar. Ausführliche Informationen zu anderen Arten von Azure-Speicher finden Sie unter [Datei](https://azure.microsoft.com/services/storage/files/), [Datenträger (Storage Premium)](https://azure.microsoft.com/services/storage/premium-storage/), [Tabelle](https://azure.microsoft.com/services/storage/tables/) und [Warteschlange](https://azure.microsoft.com/services/storage/queues/).
+* [Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) ist für [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) verfügbar. Ausführliche Informationen zu anderen Arten von Azure-Speicher finden Sie unter [Datei](https://azure.microsoft.com/services/storage/files/), [Datenträger (Storage Premium)](https://azure.microsoft.com/services/storage/premium-storage/), [Tabelle](https://azure.microsoft.com/services/storage/tables/) und [Warteschlange](https://azure.microsoft.com/services/storage/queues/).
 * [Azure Storage Service Encryption für ruhende Daten](../storage/common/storage-service-encryption.md)
 
-## <a name="azure-disk-encryption"></a>Azure-Datenträgerverschlüsselung
+## <a name="azure-disk-encryption"></a>Azure Disk Encryption
 Mithilfe von Azure Disk Encryption für virtuelle Computer können Sie die Sicherheits- und Complianceanforderungen Ihrer Organisation erfüllen, indem Sie die Datenträger Ihrer virtuellen Computer (Startdatenträger und allgemeine Datenträger) mit Schlüsseln und Richtlinien verschlüsseln, die Sie über den [Azure-Schlüsseltresor](https://azure.microsoft.com/services/key-vault/)steuern.
 
 Datenträgerverschlüsselung für VMs funktioniert für Linux- und Windows-Betriebssysteme. Es wird auch Key Vault verwendet, um Ihnen das Schützen, Verwalten und Überwachen der Nutzung Ihrer Datenträgerverschlüsselungs-Schlüssel zu erleichtern. Alle Daten auf den Datenträgern Ihrer virtuellen Computer werden im Ruhezustand mithilfe von Verschlüsselungstechnologien des Industriestandards in Ihren Azure Storage-Konten verschlüsselt. Die Disk Encryption-Lösung für Windows basiert auf der [Microsoft BitLocker-Laufwerkverschlüsselung](https://technet.microsoft.com/library/cc732774.aspx), die Linux-Lösung auf [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
@@ -91,7 +91,7 @@ Weitere Informationen:
 
 * [Azure Disk Encryption for Windows and Linux IaaS Virtual Machines (Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer)](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
-## <a name="azure-key-vault"></a>Azure-Schlüsseltresor
+## <a name="azure-key-vault"></a>Azure Key Vault
 Azure Disk Encryption verwendet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), um Sie bei der Steuerung und Verwaltung von Datenträger-Verschlüsselungsschlüsseln und Geheimnissen in Ihrem Schlüsseltresorabonnement zu unterstützen. Dabei wird gleichzeitig sichergestellt, dass alle ruhenden Daten auf den Laufwerken der virtuellen Computer in Ihrer Azure Storage-Instanz verschlüsselt sind. Es empfiehlt sich, die Verwendung von Schlüsseln und Richtlinien mithilfe des Azure-Schlüsseltresors zu überwachen.
 
 Weitere Informationen:

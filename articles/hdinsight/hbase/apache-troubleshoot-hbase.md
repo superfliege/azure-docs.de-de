@@ -1,23 +1,21 @@
 ---
 title: Problembehandlung bei HBase mit Azure HDInsight | Microsoft-Dokumentation
-description: "Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit HBase und Azure HDInsight."
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit HBase und Azure HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinver
 manager: ashitg
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 7/7/2017
 ms.author: nitinver
-ms.openlocfilehash: cd6315c192ad3c33d43406993b1a3e6bd6ec7e4d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 04d8e37791c12078754a661f7a1aa8a76a6b3c44
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Problembehandlung bei HBase mit Azure HDInsight
 
@@ -56,7 +54,7 @@ Eine mögliche Ursache für Timeoutprobleme beim Verwenden des Befehls `hbck` ka
 5. Starten Sie in der Ambari-Benutzeroberfläche den Active HBase-Master-Dienst neu.
 6. Führen Sie den Befehl `hbase hbck -fixAssignments` erneut aus.
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Wie erzwinge ich die Deaktivierung des abgesicherten HDFS-Modus in einem Cluster?
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Wie erzwinge ich das Deaktivieren des abgesicherten HDFS-Modus in einem Cluster?
 
 ### <a name="issue"></a>Problem
 
@@ -421,5 +419,5 @@ Aufgrund dieses abrupten Herunterfahrens wird der Port, der dem Prozess zugeordn
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"   
    ```
 
-### <a name="see-also"></a>Weitere Informationen
-[Problembehandlung mit Azure HDInsight](../../hdinsight/hdinsight-troubleshoot-guide.md)
+### <a name="see-also"></a>Siehe auch
+[Beheben von Problemen mit Azure HDInsight](../../hdinsight/hdinsight-troubleshoot-guide.md)

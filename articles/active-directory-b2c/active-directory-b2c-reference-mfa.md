@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: 0f560a02a51239cff0a7d4057ec7beb2f0f5c5c5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f439c65d9b4fbeb78623312c426767f89dfd9fab
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C: Aktivieren der Multi-Factor Authentication in kundenorientierten Anwendungen
-Azure Active Directory (Azure AD) B2C bietet eine direkte Integration in die [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) , damit Sie eine zweite Sicherheitsebene zu Registrierungs- und Anmeldeoberflächen in kundenorientierten Anwendungen hinzufügen können. Sie erreichen dies, ohne eine einzige Codezeile schreiben zu müssen. Derzeit wird eine Überprüfung per Telefonanruf und Textnachricht unterstützt. Sie können die Multi-Factor Authentication auch dann aktivieren, wenn Sie bereits Registrierungs- und Anmelderichtlinien erstellt haben.
+Azure Active Directory (Azure AD) B2C bietet eine direkte Integration in die [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , damit Sie eine zweite Sicherheitsebene zu Registrierungs- und Anmeldeoberflächen in kundenorientierten Anwendungen hinzufügen können. Sie erreichen dies, ohne eine einzige Codezeile schreiben zu müssen. Derzeit wird eine Überprüfung per Telefonanruf und Textnachricht unterstützt. Sie können die Multi-Factor Authentication auch dann aktivieren, wenn Sie bereits Registrierungs- und Anmelderichtlinien erstellt haben.
 
 > [!NOTE]
 > Die Multi-Factor Authentication kann auch beim Erstellen von Registrierungs- und Anmelderichtlinien aktiviert werden und nicht nur durch Bearbeiten von vorhandenen Richtlinien.

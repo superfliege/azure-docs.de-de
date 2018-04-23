@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Hochladen von Dateien in eine Web-App mithilfe von FTP | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Hochladen von Dateien in eine Web-App mithilfe von FTP"
+title: Azure PowerShell-Skriptbeispiel – Hochladen von Dateien in eine Web-App mithilfe von FTP | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Hochladen von Dateien in eine Web-App mithilfe von FTP
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
 ms.service: app-service-web
@@ -15,17 +15,17 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 96b99110b63b037746fcc40eb15db5d718eb71a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87a8a86fc0d655ae3881613ef89a31b8cf85219d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>Hochladen von Dateien in eine Web-App mithilfe von FTP
 
 Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und stellt dann Ihren Web-App-Code über FTP (mit [WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx)) bereit.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -43,7 +43,7 @@ Remove-AzureRmResourceGroup -Name $webappname -Force
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Erstellt einen App Service-Plan. |

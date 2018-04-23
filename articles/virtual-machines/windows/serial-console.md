@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: 2ff0dcba0912461d8528fc76c7c67d90febc0324
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d5d855cac9f09f92798d955dda3d66ab6b631091
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Serielle Konsole für virtuelle Azure-Computer (Vorschau) 
 
@@ -33,7 +33,7 @@ Die serielle Konsole für virtuelle Computer in Azure bietet Zugriff auf eine te
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 * Für den virtuellen Computer MUSS die [Startdiagnose](boot-diagnostics.md) aktiviert sein. 
-* Das Konto, das die serielle Konsole verwendet, muss die Rolle [Mitwirkender](../../active-directory/role-based-access-built-in-roles.md) für den virtuellen Computer und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen. 
+* Das Konto, das die serielle Konsole verwendet, muss die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md) für den virtuellen Computer und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen. 
 
 ## <a name="open-the-serial-console"></a>Öffnen der seriellen Konsole
 Auf die serielle Konsole für virtuelle Computer kann nur über das [Azure-Portal](https://portal.azure.com) zugegriffen werden. Im Folgenden werden die Schritte für den Zugriff auf die serielle Konsole für virtuelle Computer über das Portal beschrieben. 
@@ -51,7 +51,7 @@ Die Funktionalität der seriellen Konsole kann für bestimmte virtuelle Computer
 ## <a name="serial-console-security"></a>Sicherheit der seriellen Konsole 
 
 ### <a name="access-security"></a>Zugriffssicherheit 
-Der Zugriff auf die serielle Konsole ist auf Benutzer eingeschränkt, die über die Zugriffsberechtigung [VM-Mitwirkende](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) oder höher für den virtuellen Computer verfügen. Wenn Ihr AAD-Mandant mehrstufige Authentifizierung erfordert, ist auch für den Zugriff auf die serielle Konsole mehrstufige Authentifizierung erforderlich, da der Zugriff über das [Azure-Portal](https://portal.azure.com) erfolgt.
+Der Zugriff auf die serielle Konsole ist auf Benutzer eingeschränkt, die über die Zugriffsberechtigung [VM-Mitwirkende](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) oder höher für den virtuellen Computer verfügen. Wenn Ihr AAD-Mandant mehrstufige Authentifizierung erfordert, ist auch für den Zugriff auf die serielle Konsole mehrstufige Authentifizierung erforderlich, da der Zugriff über das [Azure-Portal](https://portal.azure.com) erfolgt.
 
 ### <a name="channel-security"></a>Kanalsicherheit
 Alle gesendeten Daten werden bei der Übertragung verschlüsselt.

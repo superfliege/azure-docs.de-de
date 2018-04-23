@@ -1,25 +1,18 @@
 ---
 title: Diagnoseprotokollierung für Azure Analysis Services | Microsoft-Dokumentation
 description: Informationen zum Einrichten der Diagnoseprotokollierung für Azure Analysis Services.
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: ''
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 20e2e76e8df9421ee97671000f9557f5db34f1b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: minewiskan
+ms.openlocfilehash: 396ee2fc132abb5fbfd29bf5fffe9b1388b9a964
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="setup-diagnostic-logging"></a>Einrichten der Diagnoseprotokollierung
 
@@ -210,7 +203,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen:
 Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:  
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure-Kontos ein. Azure PowerShell ruft alle Abonnements ab, die diesem Konto zugeordnet sind, und verwendet standardmäßig das erste Abonnement.

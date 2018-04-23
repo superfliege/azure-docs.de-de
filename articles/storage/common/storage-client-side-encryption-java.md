@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
 ms.openlocfilehash: b4f3814ac2dbc8b74cef8f5fcb0540b7509efa0d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -61,7 +61,7 @@ Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initia
 
 Beim Herunterladen eines verschlüsselten Blobs wird der Inhalt des gesamten Blobs mit den **download*/openInputStream**-Hilfsmethoden abgerufen. Der umschlossene CEK wird entpackt und zusammen mit dem IV (in diesem Fall als Blobmetadaten gespeichert) verwendet, um die entschlüsselten Daten an die Benutzer zurückzugeben.
 
-Beim Herunterladen eines beliebigen Bereichs (**downloadRange**\*-Methoden) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die verwendet werden können, um den angeforderten Bereich erfolgreich zu entschlüsseln.  
+Beim Herunterladen eines beliebigen Bereichs (**downloadRange***-Methoden) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die verwendet werden können, um den angeforderten Bereich erfolgreich zu entschlüsseln.  
 
 Alle Blobtypen (Blockblobs, Seitenblobs und Anfügeblobs) können mit diesem Schema verschlüsselt/entschlüsselt werden.
 

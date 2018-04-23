@@ -1,6 +1,6 @@
 ---
-title: "Lesen und Schreiben von großen Datendateien | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie bei Azure Machine Learning-Experimenten große Dateien lesen und schreiben."
+title: Lesen und Schreiben von großen Datendateien | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie bei Azure Machine Learning-Experimenten große Dateien lesen und schreiben.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
 ms.openlocfilehash: 099ff69b396c35730471d684b59115f03ccf67d9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Beibehalten von Änderungen und Arbeiten mit großen Dateien
 Mit dem Azure Machine Learning-Experimentieren-Dienst können Sie viele verschiedene Ausführungsziele konfigurieren. Einige Ziele sind lokale Ziele, z.B. ein lokaler Computer oder ein Docker-Container auf einem lokalen Computer. Andere Ziele sind Remoteziele, z.B. ein Docker-Container auf einem Remotecomputer oder ein HDInsight-Cluster. Weitere Informationen finden Sie unter [Übersicht über den Azure Machine Learning-Experimentieren-Ausführungsdienst](experimentation-service-configuration.md). 

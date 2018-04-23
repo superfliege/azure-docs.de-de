@@ -1,6 +1,6 @@
 ---
 title: Authentifizieren mit einer Azure-Containerregistrierung
-description: "Authentifizierungsoptionen für eine Azure-Containerregistrierung einschließlich direkter und Registrierungsanmeldung von Azure Active Directory-Dienstprinzipalen."
+description: Authentifizierungsoptionen für eine Azure-Containerregistrierung einschließlich direkter und Registrierungsanmeldung von Azure Active Directory-Dienstprinzipalen.
 services: container-registry
 author: stevelas
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70758f938718aef160670bc023aff5fc0c9fb92a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 349d4f8cba2967edcedb202979695d271283fa8b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Authentifizieren mit einer privaten Docker-Containerregistrierung
 
@@ -31,11 +31,11 @@ Authentifizieren Sie sich bei der direkten Arbeit mit der Registrierung wie der 
 az acr login --name <acrName>
 ```
 
-Bei der Anmeldung mit `az acr login` verwendet die CLI das Token, das erstellt wurde, als Sie `az login` ausgeführt haben, zur nahtlosen Authentifizierung Ihrer Sitzung mit Ihrer Registrierung. Sobald Sie sich auf diese Weise angemeldet haben, werden Ihre Anmeldeinformationen zwischengespeichert, und nachfolgende `docker`-Befehle benötigen weder einen Benutzernamen noch das Kennwort. Wenn das Token abgelaufen ist, können Sie es aktualisieren, indem Sie den `az acr login`-Befehl erneut zur Authentifizierung verwenden. Die Verwendung von `az acr login` mit Azure-Identitäten ermöglicht [rollenbasierten Zugriff](../active-directory/role-based-access-control-configure.md).
+Bei der Anmeldung mit `az acr login` verwendet die CLI das Token, das erstellt wurde, als Sie `az login` ausgeführt haben, zur nahtlosen Authentifizierung Ihrer Sitzung mit Ihrer Registrierung. Sobald Sie sich auf diese Weise angemeldet haben, werden Ihre Anmeldeinformationen zwischengespeichert, und nachfolgende `docker`-Befehle benötigen weder einen Benutzernamen noch das Kennwort. Wenn das Token abgelaufen ist, können Sie es aktualisieren, indem Sie den `az acr login`-Befehl erneut zur Authentifizierung verwenden. Die Verwendung von `az acr login` mit Azure-Identitäten ermöglicht [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="service-principal"></a>Dienstprinzipal
 
-Sie können Ihrer Registrierung einen [Dienstprinzipal](../active-directory/develop/active-directory-application-objects.md) zuweisen, und Ihre Anwendung oder Ihr Dienst kann ihn für die monitorlose Authentifizierung verwenden. Dienstprinzipale ermöglichen [rollenbasierten Zugriff](../active-directory/role-based-access-control-configure.md) auf eine Registrierung, und Sie können einer Registrierung mehrere Dienstprinzipale zuweisen. Mit mehreren Dienstprinzipalen können Sie unterschiedliche Zugriffsberechtigungen für verschiedene Anwendungen definieren.
+Sie können Ihrer Registrierung einen [Dienstprinzipal](../active-directory/develop/active-directory-application-objects.md) zuweisen, und Ihre Anwendung oder Ihr Dienst kann ihn für die monitorlose Authentifizierung verwenden. Dienstprinzipale ermöglichen [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md) auf eine Registrierung, und Sie können einer Registrierung mehrere Dienstprinzipale zuweisen. Mit mehreren Dienstprinzipalen können Sie unterschiedliche Zugriffsberechtigungen für verschiedene Anwendungen definieren.
 
 Folgende Rollen sind verfügbar:
 

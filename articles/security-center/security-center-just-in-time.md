@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: terrylan
-ms.openlocfilehash: f1ea31d1081bc263cf85cf4dcc3d73d4cc0b842d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 22eee6c2253e6b1ff92de0cebf4fea451a0a8fe5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features
 
@@ -41,7 +41,7 @@ Eine Möglichkeit, die Gefährdung durch Brute-Force-Angriffe zu verringern, ist
 
 Wenn Just-In-Time aktiviert ist, sperrt das Security Center durch das Erstellen einer NSG-Regel eingehenden Datenverkehr auf den Azure-VMs. Sie wählen die Ports auf dem virtuellen Computer aus, für die eingehender Datenverkehr gesperrt wird. Diese Ports werden durch die Just-In-Time-Lösung gesteuert.
 
-Wenn ein Benutzer auf einen virtuellen Computer zugreift, überprüft das Security Center, ob der Benutzer über Berechtigungen der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-configure.md) verfügt, die Schreibzugriff für den virtuellen Computer bereitstellen. Wenn er über Schreibberechtigungen verfügt, wird die Anforderung genehmigt, und die Netzwerksicherheitsgruppen (NSGs) werden vom Security Center automatisch so konfiguriert, dass für die angegebene Zeitspanne eingehender Datenverkehr an den Verwaltungsports zugelassen wird. Nach Ablauf dieser Zeitspanne stellt das Security Center die vorherigen Status der NSGs wieder her.
+Wenn ein Benutzer auf einen virtuellen Computer zugreift, überprüft das Security Center, ob der Benutzer über Berechtigungen der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md) verfügt, die Schreibzugriff für den virtuellen Computer bereitstellen. Wenn er über Schreibberechtigungen verfügt, wird die Anforderung genehmigt, und die Netzwerksicherheitsgruppen (NSGs) werden vom Security Center automatisch so konfiguriert, dass für die angegebene Zeitspanne eingehender Datenverkehr an den Verwaltungsports zugelassen wird. Nach Ablauf dieser Zeitspanne stellt das Security Center die vorherigen Status der NSGs wieder her.
 
 > [!NOTE]
 > Der durch das Security Center gesteuerte Just-In-Time-Zugriff auf virtuelle Computer unterstützt derzeit nur virtuelle Computer, die über Azure Resource Manager bereitgestellt wurden. Weitere Informationen über das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).

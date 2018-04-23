@@ -1,12 +1,12 @@
 ---
-title: "Schützen von PaaS-Anwendungen mit Azure Storage | Microsoft-Dokumentation"
+title: Schützen von PaaS-Anwendungen mit Azure Storage | Microsoft-Dokumentation
 description: " Informationen zu den Best Practices in Azure Storage zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen. "
 services: security
 documentationcenter: na
 author: TomShinder
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomShinder
-ms.openlocfilehash: 16ee6d9d2f02c758d7682626a8b71a3ff17f841c
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9d4251e61b60d8da6ce5072ba66aeaedb60cb33a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure Storage
 In diesem Artikel erläutern wir eine Sammlung empfohlener Vorgehensweisen in Azure Storage zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit Azure und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -75,7 +75,7 @@ Weitere Informationen finden Sie unter [Frequently Asked Questions about managed
 
 Weiter oben wurde erläutert, wie Sie mit einer Shared Access Signature (SAS) anderen Clients eingeschränkten Zugriff auf Objekte in Ihrem Speicherkonto gewähren, ohne Ihren Speicherkontoschlüssel verfügbar zu machen. Manchmal überwiegen die Risiken einer bestimmten Operation für Ihr Speicherkonto gegenüber den Vorzügen von SAS. Manchmal gibt es einfachere Möglichkeiten der Zugriffsverwaltung.
 
-Die Zugriffsverwaltung kann auch mit [rollenbasierter Zugriffssteuerung in Azure](../active-directory/role-based-access-control-what-is.md) (Azure Role-Based Access Control, RBAC) erfolgen. Mit RBAC gewähren Sie Mitarbeitern auf Need-to-Know-Basis und auf Grundlage des Sicherheitsprinzips der geringsten Rechte genau die Berechtigungen, die sie benötigen. Zu viele Berechtigungen können ein Konto zum leichten Angriffsziel machen. Wenn die Berechtigungen nicht ausreichen, können Mitarbeiter nicht effizient arbeiten. RBAC begegnet diesem Problem dadurch, dass eine präzise Zugriffsverwaltung für Azure ermöglicht wird. Dies ist für Organisationen zwingend erforderlich, die Sicherheitsrichtlinien für den Datenzugriff durchsetzen möchten.
+Die Zugriffsverwaltung kann auch mit [rollenbasierter Zugriffssteuerung in Azure](../role-based-access-control/overview.md) (Azure Role-Based Access Control, RBAC) erfolgen. Mit RBAC gewähren Sie Mitarbeitern auf Need-to-Know-Basis und auf Grundlage des Sicherheitsprinzips der geringsten Rechte genau die Berechtigungen, die sie benötigen. Zu viele Berechtigungen können ein Konto zum leichten Angriffsziel machen. Wenn die Berechtigungen nicht ausreichen, können Mitarbeiter nicht effizient arbeiten. RBAC begegnet diesem Problem dadurch, dass eine präzise Zugriffsverwaltung für Azure ermöglicht wird. Dies ist für Organisationen zwingend erforderlich, die Sicherheitsrichtlinien für den Datenzugriff durchsetzen möchten.
 
 Sie können integrierte RBAC-Rollen in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Ziehen Sie die Verwendung von „Speicherkontomitwirkender“ für Cloudoperatoren in Betracht, die Speicherkonten verwalten müssen, und nutzen Sie die Rolle „Klassischer Speicherkontomitwirkender“, um klassische Speicherkonten zu verwalten. Cloudoperatoren, die virtuelle Computer, jedoch nicht das virtuelle Netzwerk oder das Speicherkonto, mit dem sie verbunden sind, verwalten müssen, können Sie der Rolle „Mitwirkender für virtuelle Computer“ zuweisen.
 
@@ -83,8 +83,8 @@ Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie RBA
 
 Weitere Informationen über RBAC:
 
-- [Rollenbasierte Access Control in Azure](../active-directory/role-based-access-control-configure.md)
-- [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md)
+- [Rollenbasierte Access Control in Azure](../role-based-access-control/role-assignments-portal.md)
+- [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md)
 - [Azure Storage security guide](../storage/common/storage-security-guide.md) (Azure Storage-Sicherheitsleitfaden, in englischer Sprache) mit Informationen zum Sichern des Speicherkontos mit RBAC
 
 ## <a name="storage-encryption"></a>Speicherverschlüsselung

@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: sngun
-ms.openlocfilehash: 01634be8c59433bc3f4b7283f7da38e8c248e80e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 69302a0291b267bd4d46ab9387d296673da17025
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: Migrieren einer vorhandenen Web-App von Node.js MongoDB 
 
@@ -45,13 +45,25 @@ Sie sollten über ausreichende Kenntnisse zu Node.js verfügen. Dieser Schnellst
 
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
-Öffnen Sie ein Git-Terminalfenster, z.B. ein Git Bash, und `cd` in einem Arbeitsverzeichnis.  
+Führen Sie die folgenden Befehle aus, um das Beispielrepository zu klonen. Dieses Beispielrepository enthält eine [MEAN.js](http://meanjs.org/)-Standardanwendung.
 
-Führen Sie die folgenden Befehle aus, um das Beispielrepository zu klonen. Dieses Beispielrepository enthält eine [MEAN.js](http://meanjs.org/)-Standardanwendung. 
+1. Öffnen Sie eine Eingabeaufforderung, erstellen Sie einen neuen Ordner namens „git-samples“, und schließen Sie die Eingabeaufforderung.
 
-```bash
-git clone https://github.com/prashanthmadi/mean
-```
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Öffnen Sie ein Git-Terminalfenster (z. B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. Führen Sie den folgenden Befehl aus, um das Beispielrepository zu klonen. Dieser Befehl erstellt eine Kopie der Beispiel-App auf Ihrem Computer. 
+
+    ```bash
+    git clone https://github.com/prashanthmadi/mean
+    ```
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
@@ -232,10 +244,7 @@ git commit -m "configured MongoDB connection string"
 ```
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie diese App nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen im Azure-Portal. Führen Sie dazu folgende Schritte durch:
-
-1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen**, und klicken Sie auf den Namen der erstellten Ressource. 
-2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

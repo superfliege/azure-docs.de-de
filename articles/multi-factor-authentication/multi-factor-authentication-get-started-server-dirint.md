@@ -1,8 +1,8 @@
 ---
 title: Verzeichnisintegration zwischen Multi-Factor Authentication und Active Directory
-description: "Dies ist die Azure Multi-Factor Authentication-Seite, auf der beschrieben wird, wie Sie den Azure Multi-Factor Authentication-Server in Active Directory integrieren, damit Sie die Verzeichnisse synchronisieren können."
+description: Dies ist die Azure Multi-Factor Authentication-Seite, auf der beschrieben wird, wie Sie den Azure Multi-Factor Authentication-Server in Active Directory integrieren, damit Sie die Verzeichnisse synchronisieren können.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
@@ -16,10 +16,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: 9d06da0d15bfeffb17da81e4b5ae4423d01ed770
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Verzeichnisintegration zwischen Azure MFA-Server und Active Directory
 Verwenden Sie den Abschnitt „Verzeichnisintegration“ des Azure MFA-Servers für die Integration in Active Directory oder ein anderes LDAP-Verzeichnis. Sie können Attribute für das Verzeichnisschema konfigurieren und die automatische Synchronisierung von Benutzern einrichten.

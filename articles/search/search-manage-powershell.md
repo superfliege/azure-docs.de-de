@@ -1,25 +1,19 @@
 ---
 title: Verwalten von Azure Search mit PowerShell-Skripts | Microsoft Docs
-description: "Verwalten Sie den Azure Search-Dienst mit PowerShell-Skripts. Erstellen oder Aktualisieren eines Azure Search-Diensts und Verwalten von Azure Search-Administratorschlüsseln"
-services: search
-documentationcenter: 
-author: seansaleh
-manager: mblythe
-editor: 
+description: Verwalten Sie den Azure Search-Dienst mit PowerShell-Skripts. Erstellen oder Aktualisieren eines Azure Search-Diensts und Verwalten von Azure Search-Administratorschlüsseln
+author: HeidiSteen
+manager: cgronlun
 tags: azure-resource-manager
-ms.assetid: 9b3dc1f2-3619-4235-ba1f-d2d6f5c45dd5
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: powershell
+ms.devlang: powershell
+ms.topic: conceptual
 ms.date: 08/15/2016
-ms.author: seasa
-ms.openlocfilehash: aa51c846efef12461ec382274199bc049c42aaa3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: heidist
+ms.openlocfilehash: fc9d23b0c11484c7fec575c411f32522b6e46e28
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Verwalten des Azure Search-Diensts mit PowerShell
 > [!div class="op_single_selector"]
@@ -37,7 +31,7 @@ Diese Befehle stehen parallel zu den Verwaltungsoptionen der [Azure Search Manag
 
 Zunächst müssen Sie sich mit dem folgenden Befehl in Azure anmelden:
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Geben Sie die E-Mail-Adresse Ihres Azure-Kontos und das Kennwort in das Anmeldedialogfeld von Microsoft Azure ein.
 

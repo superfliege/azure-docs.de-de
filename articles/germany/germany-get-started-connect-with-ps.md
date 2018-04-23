@@ -1,6 +1,6 @@
 ---
-title: "Herstellen einer Verbindung mit Azure Deutschland über PowerShell | Microsoft-Dokumentation"
-description: "Informationen zum Verwalten Ihres Abonnements in Azure Deutschland über PowerShell"
+title: Herstellen einer Verbindung mit Azure Deutschland über PowerShell | Microsoft-Dokumentation
+description: Informationen zum Verwalten Ihres Abonnements in Azure Deutschland über PowerShell
 services: germany
 cloud: na
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 3dafd3b15a4b83d523e04facaa030053b7a65ec0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4232227f8598e8b67987412c0f4afdb738a6040c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-to-azure-germany-by-using-powershell"></a>Herstellen einer Verbindung mit Azure Deutschland über PowerShell
 Zur Verwendung von Azure PowerShell mit Azure Deutschland müssen Sie anstelle einer Verbindung mit der globalen Azure-Umgebung eine Verbindung mit Azure Deutschland herstellen. Sie können Azure PowerShell zum Verwalten eines umfangreichen Abonnements über Skripts oder für den Zugriff auf Features verwenden, die derzeit im Azure-Portal nicht verfügbar sind. Wenn Sie PowerShell bereits in der globalen Azure-Umgebung verwendet haben, ist dies größtenteils identisch. In Azure Deutschland bestehen folgende Unterschiede:
@@ -32,10 +32,10 @@ Zur Verwendung von Azure PowerShell mit Azure Deutschland müssen Sie anstelle e
 
 Wenn Sie PowerShell starten, müssen Sie durch Angeben eines Umgebungsparameters festlegen, dass eine Verbindung mit Azure Deutschland hergestellt wird. Mit dem Parameter wird sichergestellt, dass PowerShell eine Verbindung mit der richtigen Umgebung herstellt. Die Sammlung von Endpunkten wird bestimmt, wenn Sie eine Verbindung mit Ihrem Konto herstellen. Für unterschiedliche APIs sind verschiedene Varianten des Umgebungsparameters erforderlich:
 
-| Verbindungstyp | Befehl |
+| Verbindungstyp | Get-Help |
 | --- | --- |
 | Befehle für [Azure (klassisches Bereitstellungsmodell)](https://msdn.microsoft.com/library/dn708504.aspx) |`Add-AzureAccount -Environment AzureGermanCloud` |
-| Befehle für [Azure (Resource Manager-Bereitstellungsmodell)](https://msdn.microsoft.com/library/mt125356.aspx) |`Login-AzureRmAccount -EnvironmentName AzureGermanCloud` |
+| Befehle für [Azure (Resource Manager-Bereitstellungsmodell)](https://msdn.microsoft.com/library/mt125356.aspx) |`Connect-AzureRmAccount -EnvironmentName AzureGermanCloud` |
 | Befehle für [Azure Active Directory (klassisches Bereitstellungsmodell)](https://msdn.microsoft.com/library/azure/jj151815.aspx) |`Connect-MsolService -AzureEnvironment AzureGermanyCloud` |
 | Befehle für [Azure Active Directory (Resource Manager-Bereitstellungsmodell)](https://msdn.microsoft.com/library/azure/mt757189.aspx) |`Connect-AzureAD -AzureEnvironmentName AzureGermanyCloud` |
 

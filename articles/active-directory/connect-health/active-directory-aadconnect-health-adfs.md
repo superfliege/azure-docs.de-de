@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 630a633cf8657d43d6416d316928830634c9bf48
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d416c8953f1e41c04a39141c79e0b1568c1dccb3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Überwachen von AD FS mithilfe von Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung Ihrer AD FS-Infrastruktur mit Azure AD Connect Health. Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
@@ -127,7 +127,7 @@ Außerdem ist es möglich, dass von einer einzelnen IP-Adresse versucht wird, me
 
 > [!NOTE]
 > Für die Verwendung dieses Berichts muss die AD FS-Überwachung aktiviert sein. Weitere Informationen finden Sie unter [Aktivieren der Überwachung für AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
-> Zugriff auf die Vorschauversion erhalten nur globale Administratoren und [Benutzer mit Leseberechtigung für Sicherheitsfunktionen](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#security-reader).  
+> Zugriff auf die Vorschauversion erhalten nur globale Administratoren und [Benutzer mit Leseberechtigung für Sicherheitsfunktionen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader).  
 > 
 
 ### <a name="what-is-in-the-report"></a>Inhalt des Berichts

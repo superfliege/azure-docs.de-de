@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: c4c85395856756e8ec6a788aa958b479a297892d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a56ff1d70d56b742966c9980f01b4de03f7f30b2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-sql-database-dtu-based-resource-model-limits"></a>Einschränkungen des DTU-basierten Ressourcenmodells für Azure SQL-Datenbank
 
@@ -39,7 +39,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 ### <a name="standard-service-tier"></a>Standard-Dienstebene
 | **Leistungsstufe** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|---:|
-| Max. DTU-Anzahl** | 10 | 20 | 50 | 100 |
+| Max. DTU-Anzahl | 10 | 20 | 50 | 100 |
 | Inbegriffener Speicher (GB) | 250 | 250 | 250 | 250 |
 | Max. Speicherlösungen (GB)* | 250 | 250 | 250 | 250, 500, 750, 1024 |
 | Max. In-Memory-OLTP-Speicher (GB) | N/V | N/V | N/V | N/V |
@@ -51,7 +51,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 ### <a name="standard-service-tier-continued"></a>Standard-Dienstebene (Fortsetzung)
 | **Leistungsstufe** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|---:|
-| Max. DTU-Anzahl** | 200 | 400 | 800 | 1600 | 3000 |
+| Max. DTU-Anzahl | 200 | 400 | 800 | 1600 | 3000 |
 | Inbegriffener Speicher (GB) | 250 | 250 | 250 | 250 | 250 |
 | Max. Speicherlösungen (GB)* | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
 | Max. In-Memory-OLTP-Speicher (GB) | N/V | N/V | N/V | N/V |N/V |
@@ -78,8 +78,6 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 >
 >\* Im Premium-Tarif ist derzeit eine Speicherkapazität von mehr als 1 TB in folgenden Regionen verfügbar: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. Siehe [Aktuelle Einschränkungen für P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > 
->\*\* Die maximale Anzahl von eDTUs pro Datenbank beginnt im Standard-Tarif ab 200 eDTUs und befindet sich in der Vorschauphase.
->
 
 
 ## <a name="single-database-change-storage-size"></a>Einzeldatenbank: Ändern der Speichergröße

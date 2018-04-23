@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/20178
 ms.author: kumud
-ms.openlocfilehash: 7f7f8e254e0ed0556446e7b08eaf46ec59977f62
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eb305986982432d7a432204e3fae8a1dff6a5d74
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Konfigurieren von Hochverfügbarkeitsports für internen Lastenausgleich
 
@@ -39,12 +39,6 @@ Die Abbildung zeigt die folgende Konfiguration des in diesem Artikel beschrieben
 ![Beispielbereitstellung für Hochverfügbarkeitsports](./media/load-balancer-configure-ha-ports/haports.png)
 
 
-## <a name="preview-sign-up"></a>Registrierung für die Vorschauversion
-
-Für die Teilnahme an der Vorschau des Features für Hochverfügbarkeitsports im Azure Load Balancer (Standard) registrieren Sie Ihr Abonnement mithilfe von Azure CLI 2.0 oder PowerShell, um Zugriff zu erhalten. Registrieren Sie Ihr Abonnement für [Load Balancer im Standard-Tarif (Vorschau)](https://aka.ms/lbpreview#preview-sign-up).
-
->[!NOTE]
->Die Registrierung der Vorschauversionen von Load Balancer im Standard-Tarif kann bis zu einer Stunde dauern.
 
 ## <a name="configure-high-availability-ports"></a>Konfigurieren von Hochverfügbarkeitsports
 

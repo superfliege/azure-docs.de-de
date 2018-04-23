@@ -2,11 +2,11 @@
 title: Erste Schritte mit dem bedingten Zugriff in Azure Active Directory | Microsoft-Dokumentation
 description: Testen Sie den bedingten Zugriff mit einer Ortsbedingung.
 services: active-directory
-keywords: "bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff"
-documentationcenter: 
+keywords: bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c780efe92ec69ff692b42a586f55a1036d2ec952
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 04a7736e85c0b149cb627411f61fc147220769ad
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Erste Schritte mit dem bedingten Zugriff in Azure Active Directory
 
@@ -30,7 +30,7 @@ Dieses Thema enthält Anweisungen zum Testen des bedingten Zugriffs auf Grundlag
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-Eine häufige Anforderung in vielen Organisationen besteht darin, die mehrstufige Authentifizierung für den Zugriff auf Apps nur dann erforderlich zu machen, wenn der Zugriff nicht vom Unternehmensintranet aus erfolgt. Mit Azure Active Directory erreichen Sie dies problemlos, indem Sie eine ortsbasierte Richtlinie für bedingten Zugriff konfigurieren. Dieses Thema enthält ausführliche Anweisungen zum Konfigurieren einer entsprechenden Richtlinie. Die Richtlinie nutzt [vertrauenswürdige IPs](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips), um zwischen Zugriffsversuchen vom Unternehmensintranet und Zugriffsversuchen von anderswo zu unterscheiden.
+Eine häufige Anforderung in vielen Organisationen besteht darin, die mehrstufige Authentifizierung für den Zugriff auf Apps nur dann erforderlich zu machen, wenn der Zugriff nicht vom Unternehmensintranet aus erfolgt. Mit Azure Active Directory erreichen Sie dies problemlos, indem Sie eine ortsbasierte Richtlinie für bedingten Zugriff konfigurieren. Dieses Thema enthält ausführliche Anweisungen zum Konfigurieren einer entsprechenden Richtlinie. Die Richtlinie nutzt [vertrauenswürdige IPs](authentication/howto-mfa-mfasettings.md#trusted-ips), um zwischen Zugriffsversuchen vom Unternehmensintranet und Zugriffsversuchen von anderswo zu unterscheiden.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -47,7 +47,7 @@ Zum Testen dieses Szenario ist Folgendes erforderlich:
 
 - Konfigurieren vertrauenswürdiger IP-Adressen
 
-Weitere Informationen zu vertrauenswürdigen IP-Adressen finden Sie unter [Vertrauenswürdige IPs](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).
+Weitere Informationen zu vertrauenswürdigen IP-Adressen finden Sie unter [Vertrauenswürdige IPs](authentication/howto-mfa-mfasettings.md#trusted-ips).
 
 
 ## <a name="policy-configuration-steps"></a>Schritte für die Richtlinienkonfiguration

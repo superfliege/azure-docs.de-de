@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 28c50aea9aaad1b9b18fb6b3034617d10beea7ec
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ecf83dd21b0803a6ceb4139d117a8b989b070403
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Tutorial: Erstellen einer PHP- und MySQL-Web-App in Azure
 
@@ -192,16 +192,11 @@ Nach dem Erstellen des MySQL-Servers zeigt die Azure-Befehlszeilenschnittstelle 
 
 ### <a name="configure-server-firewall"></a>Konfigurieren der Serverfirewall
 
-Erstellen Sie in Cloud Shell mit dem Befehl [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) eine Firewallregel für Ihren MySQL-Server, um Clientverbindungen zuzulassen.
+Erstellen Sie in Cloud Shell mit dem Befehl [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) eine Firewallregel für Ihren MySQL-Server, um Clientverbindungen zuzulassen. Wenn sowohl Start- als auch End-IP auf 0.0.0.0 festgelegt ist, wird die Firewall nur für andere Azure-Ressourcen geöffnet. 
 
 ```azurecli-interactive
-az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
-
-> [!NOTE]
-> Für Azure Database for MySQL besteht derzeit keine Beschränkung für ausschließliche Verbindungen mit Azure-Diensten. Da IP-Adressen in Azure dynamisch zugewiesen werden, ist es besser, alle IP-Adressen zu aktivieren. Bessere Methoden zum Schützen Ihrer Datenbank sind geplant.
->
->
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Lokales Verbinden mit dem MySQL-Produktionsserver
 
@@ -265,7 +260,7 @@ Speichern Sie die Änderungen.
 
 ### <a name="configure-ssl-certificate"></a>Konfigurieren des SSL-Zertifikats
 
-Standardmäßig erzwingt Azure Database for MySQL SSL-Verbindungen von Clients. Zum Herstellen einer Verbindung mit Ihrer MySQL-Datenbank in Azure müssen Sie das [_PEM_-Zertifikat verwenden, das von Azure Database for MySQL bereitgestellt wird](../mysql/howto-configure-ssl.md).
+Standardmäßig erzwingt Azure-Datenbank für MySQL SSL-Verbindungen von Clients. Zum Herstellen einer Verbindung mit Ihrer MySQL-Datenbank in Azure müssen Sie das [_PEM_-Zertifikat verwenden, das von Azure Database for MySQL bereitgestellt wird](../mysql/howto-configure-ssl.md).
 
 Öffnen Sie _config/database.php_, und fügen Sie `connections.mysql` die Parameter `sslmode` und `options` hinzu, wie im folgenden Code gezeigt.
 

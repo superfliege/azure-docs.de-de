@@ -1,11 +1,11 @@
 ---
-title: "Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs | Microsoft-Dokumentation"
-description: "Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs über das Azure-Portal oder PowerShell"
+title: Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs | Microsoft Docs
+description: Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs über das Azure-Portal oder PowerShell
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 4f51d9a5-2702-45f0-a2d5-a3635b58c416
 ms.service: devtest-lab
 ms.workload: na
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: 348952626e13b9ac73ca2ec8e101bf02e416dc9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f7f7562f0af4753bc08018227a967f9ca3736021
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Der Zugriff in Azure DevTest Labs wird durch die [rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-what-is.md)gesteuert. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team in *Rollen* verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Drei dieser RBAC-Rollen sind *Besitzer*, *DevTest Labs-Benutzer* und *Mitwirkender*. In diesem Artikel erfahren Sie, welche Aktionen in jeder der drei wichtigsten RBAC-Rollen ausgeführt werden können. Sie erfahren, wie Sie Benutzer über das Portal oder über ein PowerShell-Skript zu einem Lab hinzufügen und Benutzer auf Abonnementebene hinzufügen.
+Der Zugriff in Azure DevTest Labs wird durch die [rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)](../role-based-access-control/overview.md)gesteuert. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team in *Rollen* verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Drei dieser RBAC-Rollen sind *Besitzer*, *DevTest Labs-Benutzer* und *Mitwirkender*. In diesem Artikel erfahren Sie, welche Aktionen in jeder der drei wichtigsten RBAC-Rollen ausgeführt werden können. Sie erfahren, wie Sie Benutzer über das Portal oder über ein PowerShell-Skript zu einem Lab hinzufügen und Benutzer auf Abonnementebene hinzufügen.
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>Aktionen, die in jeder Rolle ausgeführt werden können
 Es gibt drei wichtige Rollen, die Sie einem Benutzer zuweisen können:
@@ -97,7 +97,7 @@ Sie können die Werte `subscriptionId`, `labResourceGroup` und `labName` aus dem
     $userDisplayName = "<Enter user's display name here>"
 
     # Log into your Azure account
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     # Select the Azure subscription that contains the lab. 
     # This step is optional if you have only one subscription.

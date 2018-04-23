@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mbaldwin
-ms.openlocfilehash: e3a0bbe75177ac25a0aeff89d171dfe88bd0880f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c716f54a1361d41dbad00e2e45562d5fbf8fd6ca
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-private-templates-on-the-azure-portal"></a>Erste Schritte mit privaten Vorlagen im Azure-Portal
 Eine [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) -Vorlage ist eine deklarative Vorlage, die zum Definieren Ihrer Bereitstellung verwendet wird. Sie können die für eine Lösung bereitzustellenden Ressourcen definieren und Parameter und Variablen angeben, die die Eingabe von Werten für verschiedene Umgebungen ermöglichen. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für die Bereitstellung erstellen können.
@@ -103,7 +103,7 @@ Sie können alle **Vorlagen** bereitstellen, für die Sie über die Berechtigung
 ![Vorlage bereitstellen](media/deploy-template-portal1b.png)
 
 ## <a name="share-a-template-resource"></a>Freigeben einer Vorlagenressource
-Sie können eine **Vorlagen** ressource für andere Benutzer freigeben. Das Verhalten bei der Freigabe ähnelt der [Rollenzuweisung für Ressourcen unter Azure](../active-directory/role-based-access-control-configure.md). Der Besitzer der **Vorlage** gewährt anderen Benutzern Berechtigungen zur Interaktion mit einer Vorlagenressource. Die Person oder Gruppe, für die Sie die **Vorlage** freigeben, kann die Resource Manager-Vorlage und die Katalogeigenschaften anzeigen.
+Sie können eine **Vorlagen** ressource für andere Benutzer freigeben. Das Verhalten bei der Freigabe ähnelt der [Rollenzuweisung für Ressourcen unter Azure](../role-based-access-control/role-assignments-portal.md). Der Besitzer der **Vorlage** gewährt anderen Benutzern Berechtigungen zur Interaktion mit einer Vorlagenressource. Die Person oder Gruppe, für die Sie die **Vorlage** freigeben, kann die Resource Manager-Vorlage und die Katalogeigenschaften anzeigen.
 
 ### <a name="access-control-for-the-microsoftgallery-resources"></a>Zugriffssteuerung für die Microsoft.Gallery-Ressourcen
 | Rolle | Berechtigungen |

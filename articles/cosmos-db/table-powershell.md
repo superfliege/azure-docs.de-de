@@ -1,12 +1,12 @@
 ---
-title: "Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mit PowerShell | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie Azure Cosmos DB-Tabellen-API-Vorgänge mit PowerShell ausführen."
+title: Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mit PowerShell | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Azure Cosmos DB-Tabellen-API-Vorgänge mit PowerShell ausführen.
 services: storage
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: d0f835db8a9fbe3833a9c7931ad1d8b4a778f016
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: d40a56ca3c07bfadcf6e24d407b059a39522ca2b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mit Azure PowerShell 
 
@@ -55,10 +55,10 @@ Ermitteln Sie im Portal den Namen des Datenbankkontos und die Ressourcengruppe. 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich mit dem Befehl `Login-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+Melden Sie sich mit dem Befehl `Connect-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="create-a-table-or-reference-a-table"></a>Erstellen einer Tabelle oder Verweisen auf eine Tabelle
@@ -115,4 +115,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Working with Azure Storage Tables from PowerShell](https://blogs.technet.microsoft.com/paulomarques/2017/01/17/working-with-azure-storage-tables-from-powershell/) (Verwenden von Azure-Speichertabellen mit PowerShell)
 
-* Beim [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
+* Beim [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.

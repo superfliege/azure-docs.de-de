@@ -1,11 +1,11 @@
 ---
 title: Gemeinsame Nutzung von Konten mit Azure AD | Microsoft Docs
-description: "Beschreibt, wie es Azure Active Directory Organisationen ermöglicht, Konten für lokale Apps und für Verbraucherclouddienste auf sichere Weise gemeinsam zu nutzen."
+description: Beschreibt, wie es Azure Active Directory Organisationen ermöglicht, Konten für lokale Apps und für Verbraucherclouddienste auf sichere Weise gemeinsam zu nutzen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: e2d77104-d978-46a3-bfea-03ffdf3b61e6
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 3b6a83d91ec5d8466669655d6c3bd7ae7b42dd2f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e5c0687a2d0dd9bb42f566daf3835c1c3130054e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 ## <a name="overview"></a>Übersicht
@@ -69,7 +69,7 @@ Folgende Schritte sind erforderlich, um Azure AD zum Freigeben eines Kontos zu v
 * Verwenden einer [gruppenbasierten Zuweisung](active-directory-accessmanagement-group-saasapps.md) mit der Option „Gemeinsam genutzte Anmeldeinformationen“
 * Optional: In einigen Anwendungen wie Facebook, Twitter oder LinkedIn lässt sich die Option zur automatisierten Kennwortaktualisierung aktivieren: [Azure AD automated password roll-over for Facebook, Twitter and LinkedIn now in preview!](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx)
 
-Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor Authentication (MFA) sicherer gestalten (siehe [Sichern von Anwendungen mit Azure AD](../multi-factor-authentication/multi-factor-authentication-get-started.md)), und Sie können die Verwaltungsrechte über den Zugriff auf die Anwendung mithilfe der [Azure AD Self-Service](active-directory-accessmanagement-self-service-group-management.md)-Gruppenverwaltung delegieren.
+Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor Authentication (MFA) sicherer gestalten (siehe [Sichern von Anwendungen mit Azure AD](authentication/concept-mfa-whichversion.md)), und Sie können die Verwaltungsrechte über den Zugriff auf die Anwendung mithilfe der [Azure AD Self-Service](active-directory-accessmanagement-self-service-group-management.md)-Gruppenverwaltung delegieren.
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)

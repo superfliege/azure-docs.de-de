@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Zuweisen einer benutzerdefinierten Domäne an eine Web-App | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Zuweisen einer benutzerdefinierten Domäne an eine Web-App"
+title: Azure PowerShell-Skriptbeispiel – Zuweisen einer benutzerdefinierten Domäne an eine Web-App | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Zuweisen einer benutzerdefinierten Domäne an eine Web-App
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 356f5af9-f62e-411c-8b24-deba05214103
 ms.service: app-service-web
@@ -15,17 +15,17 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6d25fe8098848fc69470c77e3200bee554c1f875
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f9412a40920c6887d85bbbbe2b9e9c23a242bdc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="assign-a-custom-domain-to-a-web-app"></a>Zuweisen einer benutzerdefinierten Domäne an eine Web-App
 
 Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und ordnet ihr dann `www.<yourdomain>` zu. 
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. Sie benötigen außerdem Zugriff auf die Seite für die DNS-Konfiguration der Domänenregistrierungsstelle.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. Sie benötigen außerdem Zugriff auf die Seite für die DNS-Konfiguration der Domänenregistrierungsstelle.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -43,7 +43,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Erstellt einen App Service-Plan. |

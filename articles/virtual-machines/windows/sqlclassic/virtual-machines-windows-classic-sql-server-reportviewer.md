@@ -1,9 +1,9 @@
 ---
 title: Verwenden von ReportViewer auf einer Website | Microsoft Docs
-description: "In diesem Thema wird beschrieben, wie eine Microsoft Azure-Website mit dem Visual Studio-Steuerelement „ReportViewer“ erstellt wird, in dem ein Bericht angezeigt wird, der auf einem virtuellen Microsoft Azure-Computer gespeichert ist."
+description: In diesem Thema wird beschrieben, wie eine Microsoft Azure-Website mit dem Visual Studio-Steuerelement „ReportViewer“ erstellt wird, in dem ein Bericht angezeigt wird, der auf einem virtuellen Microsoft Azure-Computer gespeichert ist.
 services: virtual-machines-windows
 documentationcenter: na
-author: guyinacube
+author: markingmyname
 manager: erikre
 editor: monicar
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
-ms.author: asaxton
-ms.openlocfilehash: c4f7c829e6fe3890342bd973185e679dd3ea2df5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: af8a4a9c25005925bed3ddb78ced618e669f7f09
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Verwenden von ReportViewer auf einer in Azure gehosteten Website
 > [!IMPORTANT] 
@@ -86,7 +86,7 @@ Anleitungen zum Veröffentlichen einer ASP.NET Web-Anwendung in Azure finden Sie
 > 
 > 
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 [Microsoft-Berichte](http://go.microsoft.com/fwlink/?LinkId=205399)
 
 [SQL Server-Business Intelligence auf virtuellen Azure-Computern](../classic/ps-sql-bi.md)

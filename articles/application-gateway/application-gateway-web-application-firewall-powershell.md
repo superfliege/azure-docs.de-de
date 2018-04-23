@@ -1,6 +1,6 @@
 ---
-title: "Erstellen eines Anwendungsgateways mit einer Web Application Firewall – Azure PowerShell | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie über Azure PowerShell ein Anwendungsgateway mit einer Web Application Firewall erstellen."
+title: Erstellen eines Anwendungsgateways mit einer Web Application Firewall – Azure PowerShell | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie über Azure PowerShell ein Anwendungsgateway mit einer Web Application Firewall erstellen.
 services: application-gateway
 author: davidmu1
 manager: timlt
@@ -11,11 +11,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: fe36076988e65837340ec70982de788e532c455d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 662e8bc8b1119022cf88bf40108bb8d1e680f122
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall über Azure PowerShell
 
@@ -35,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -110,7 +110,7 @@ $poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
 
 Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an die Back-End-Adresspools weiterleiten kann. In diesem Beispiel erstellen Sie einen grundlegenden Listener, der an der Stamm-URL auf Datenverkehr lauscht. 
 
-Erstellen Sie einen Listener namens *myDefaultListener* mit [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener), der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) eine grundlegende Regel namens *rule1*.
+Erstellen Sie einen Listener namens *mydefaultListener* mit [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener), der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) eine grundlegende Regel namens *rule1*.
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzureRmApplicationGatewayHttpListener `

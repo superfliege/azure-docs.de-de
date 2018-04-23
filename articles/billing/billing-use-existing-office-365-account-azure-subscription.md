@@ -1,11 +1,11 @@
 ---
-title: "Registrieren für Azure mit einem Office 365-Konto | Microsoft-Dokumentation"
+title: Registrieren für Azure mit einem Office 365-Konto | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit einem Office 365-Konto ein Azure-Abonnement erstellen.
-services: 
-documentationcenter: 
+services: ''
+documentationcenter: ''
 author: JiangChen79
 manager: adpick
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: 129cdf7a-2165-483d-83e4-8f11f0fa7f8b
 ms.service: billing
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: cjiang
-ms.openlocfilehash: c81d7fa793388612ec4d76d79a2f30f209b9cf42
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: e9f90127bce0502147572c5ac6bd65e47dbe8c35
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Registrieren für ein Azure-Abonnement mit Ihrem Office 365-Konto
-Wenn Sie über ein Office 365-Abonnement verfügen, können Sie mit Ihrem Office 365-Konto ein Azure-Abonnement erstellen. Melden Sie sich mit Ihrem Office 365-Benutzernamen und -Kennwort beim [Azure-Portal](https://portal.azure.com/) an. Wenn Sie virtuelle Computer einrichten oder andere Azure-Dienste verwenden möchten, müssen Sie sich für ein Azure-Abonnement registrieren. Sie können Ihr Azure-Abonnement gemeinsam mit anderen nutzen und [rollenbasierte Zugriffssteuerung verwenden, um den Zugriff auf Ihr Azure-Abonnement und Ressourcen zu verwalten](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
+Wenn Sie über ein Office 365-Abonnement verfügen, können Sie mit Ihrem Office 365-Konto ein Azure-Abonnement erstellen. Melden Sie sich mit Ihrem Office 365-Benutzernamen und -Kennwort beim [Azure-Portal](https://portal.azure.com/) an. Wenn Sie virtuelle Computer einrichten oder andere Azure-Dienste verwenden möchten, müssen Sie sich für ein Azure-Abonnement registrieren. Sie können Ihr Azure-Abonnement gemeinsam mit anderen nutzen und [rollenbasierte Zugriffssteuerung verwenden, um den Zugriff auf Ihr Azure-Abonnement und Ressourcen zu verwalten](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 Wenn Sie bereits über ein Office 365-Konto und ein Azure-Abonnement verfügen, finden Sie weitere Informationen unter [Zuordnen eines Office 365-Mandanten zu einem Azure-Abonnement](billing-add-office-365-tenant-to-azure-subscription.md).
 
@@ -39,7 +39,7 @@ Sparen Sie Zeit, und vermeiden Sie die Anhäufung von Konten, indem Sie sich mit
 
     ![Screenshot des Registrierungsformulars.](./media/billing-use-existing-office-365-account-azure-subscription/billing-azure-sign-up-fill-information.png)
 
-- Wenn Sie dem Azure-Abonnement weitere Benutzer aus Ihrer Organisation hinzufügen möchten, finden Sie weitere Informationen unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../active-directory/role-based-access-control-what-is.md). 
+- Wenn Sie dem Azure-Abonnement weitere Benutzer aus Ihrer Organisation hinzufügen möchten, finden Sie weitere Informationen unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../role-based-access-control/overview.md). 
 
 ## <a id="more-about-subs">Weitere Informationen zu Azure- und Office 365-Abonnements</a>
 Office 365 und Azure verwenden den Azure AD-Dienst zum Verwalten von Benutzern und Abonnements. Das Azure-Verzeichnis funktioniert wie ein Container, in dem Sie Benutzer und Abonnements gruppieren können. Damit Sie für Ihre Azure- und Office 365-Abonnements die gleichen Benutzerkonten verwenden können, müssen Sie sicherstellen, dass die Azure-Abonnements im gleichen Verzeichnis wie die Office 365-Abonnements erstellt werden. Berücksichtigen Sie dabei Folgendes:

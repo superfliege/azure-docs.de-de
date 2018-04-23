@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Erstellen einer Web-App mit Continuous Deployment über GitHub | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Erstellen einer Web-App mit Continuous Deployment über GitHub"
+title: Azure PowerShell-Skriptbeispiel – Erstellen einer Web-App mit Continuous Deployment über GitHub | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Erstellen einer Web-App mit Continuous Deployment über GitHub
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 42f901f8-02f7-4869-b22d-d99ef59f874c
 ms.service: app-service-web
@@ -15,17 +15,17 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f0574c8c549c45682206624ffe38a4a3919cb1c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8185edf1176f5215065b8154e584703069d371a2
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>Erstellen einer Web-App mit Continuous Deployment über GitHub
 
 Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und richtet dann Continuous Deployment über ein GitHub-Repository ein. Informationen zur GitHub-Bereitstellung ohne Continuous Deployment finden Sie unter [Erstellen einer Web-App und Bereitstellen von Code über GitHub](app-service-powershell-deploy-github.md).
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. Stellen Sie darüber hinaus Folgendes sicher:
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. Stellen Sie darüber hinaus Folgendes sicher:
 
 - Eine Verbindung mit Azure wurde mit dem Befehl `az login` hergestellt.
 - Der Anwendungscode befindet sich in einem öffentlichen oder privaten GitHub-Repository, das Sie besitzen.
@@ -47,7 +47,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Erstellt einen App Service-Plan. |

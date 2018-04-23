@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi;ayolubek
 ms.author: dmalik
-ms.openlocfilehash: c2a2bce3b385bd5700bf327f283289cf4d94b057
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1793f44026db55d17fabde5fb92bc46795109418
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>DNS-Alias für Azure SQL-Datenbank
 
@@ -63,7 +63,7 @@ Die folgenden Eigenschaften gelten für sämtliche DNS-Aliase Ihres SQL-Datenban
 - *Nicht an eine beliebige Region gebunden*: DNS-Aliase sind nicht an eine Region gebunden. DNS-Aliase können dahingehend aktualisiert werden, dass sie auf einen Azure SQL-Datenbankserver in einer beliebigen geografischen Region verweisen.
     - Wenn ein Alias jedoch für den Verweis auf einen anderen Server aktualisiert wird, müssen beide Server im selben Azure-*Abonnement* vorhanden sein.
 
-- *Berechtigungen*: Für die Verwaltung eines DNS-Alias benötigt der Benutzer die Berechtigungen *Servermitwirkender* oder höhere Berechtigungen. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
+- *Berechtigungen*: Für die Verwaltung eines DNS-Alias benötigt der Benutzer die Berechtigungen *Servermitwirkender* oder höhere Berechtigungen. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 
 
 

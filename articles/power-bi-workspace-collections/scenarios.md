@@ -1,12 +1,12 @@
 ---
-title: "Häufige Szenarien für Microsoft Power BI-Arbeitsbereichssammlungen"
-description: "Häufige Microsoft Power BI Embedded-Szenarien"
+title: Häufige Szenarien für Microsoft Power BI-Arbeitsbereichssammlungen
+description: Häufige Microsoft Power BI Embedded-Szenarios
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 0bf9706c-11bd-432a-bab3-89c04bc4dd1f
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: f0c64995a14c92bee56e4b7722afda2f7e1ece73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 57eb3bc52dc61be38b94e93e7872b9a2166279cf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="common-power-bi-workspace-collection-scenarios"></a>Häufige Szenarien für Power BI-Arbeitsbereichssammlungen
 
@@ -35,7 +35,7 @@ Nachstehend finden Sie einige Szenarien für die Verwendung von **Power BI-Arbei
 * Unabhängige Softwarehersteller und Kunden, die kundenorientierte Anwendungen erstellen, können den Dienst **Power BI-Arbeitsbereichssammlung** und das Power BI SDK verwenden, um interaktive Berichte einzubetten. Informationen finden Sie unter [Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen](get-started.md).
 * Als Entwickler können Sie das Power BI-Visualisierungsframework zum Erstellen von benutzerdefinierten Visualisierungen verwenden, die in Ihrer eigenen App verwendet werden können. Weitere Informationen finden Sie unter [Erweitern Sie Power BI um Ihre eigenen Visualisierungen](https://powerbi.microsoft.com/custom-visuals/).
 
-### <a name="see-also"></a>Weitere Informationen
+### <a name="see-also"></a>Siehe auch
 
 * [Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen](get-started.md)
 * [Beispiel zu den ersten Schritten](get-started-sample.md)

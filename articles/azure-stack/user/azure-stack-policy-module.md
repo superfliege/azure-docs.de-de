@@ -1,11 +1,11 @@
 ---
 title: Verwenden des Azure Stack-Richtlinienmoduls | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie ein Azure-Abonnement so beschränken, dass es sich wie ein Azure Stack-Abonnement verhält."
+description: Erfahren Sie, wie Sie ein Azure-Abonnement so beschränken, dass es sich wie ein Azure Stack-Abonnement verhält.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 937ef34f-14d4-4ea9-960b-362ba986f000
 ms.service: azure-stack
 ms.workload: na
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: mabrigg
-ms.openlocfilehash: 71f17a460f4a81a98e2cdef183acb29f721d584e
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 7a909a36597d9ceb31b6dc9f142c4a9d9d37b464
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Verwalten von Azure-Richtlinien mithilfe des Azure Stack-Richtlinienmoduls
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Das Azure Stack-Richtlinienmodul ermöglicht Ihnen die Konfiguration eines Azure-Abonnements mit der gleichen Versionsverwaltung und Dienstverfügbarkeit wie Azure Stack.  Das Modul verwendet das **New-AzureRMPolicyAssignment**-Cmdlet zum Erstellen einer Azure-Richtlinie, das die in einem Abonnement verfügbaren Ressourcentypen und Dienste beschränkt.  Sobald der Vorgang abgeschlossen ist, können Sie Ihr Azure-Abonnement zum Entwickeln von Apps für Azure Stack verwenden.  
 
@@ -41,7 +41,7 @@ Das Azure Stack-Richtlinienmodul ermöglicht Ihnen die Konfiguration eines Azure
 Der folgende Befehl kann verwendet werden, um eine Azure Stack-Standardrichtlinie auf Ihr Azure-Abonnement anzuwenden. Ersetzen Sie vor der Ausführung *Azure Subscription Name* durch den Namen Ihres Azure-Abonnements.
 
 ```PowerShell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
@@ -53,7 +53,7 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 Möglicherweise möchten Sie die Richtlinien in einer präziseren Methode anwenden,  beispielsweise wenn andere Ressourcen im selben Abonnement ausgeführt werden.  Sie können die Anwendung der Richtlinie auf eine bestimmte Ressourcengruppe beschränken, was es Ihnen ermöglicht, Ihre Apps für Azure Stack mithilfe von Azure-Ressourcen zu testen. Ersetzen Sie vor der Ausführung *Azure Subscription Name* durch den Namen Ihres Azure-Abonnements.
 
 ```PowerShell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 $rgName = 'myRG01'
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)

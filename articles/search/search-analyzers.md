@@ -1,22 +1,17 @@
 ---
 title: Analysen in Azure Search | Microsoft-Dokumentation
 description: Weisen Sie durchsuchbaren Textfeldern in einem Index Analysen zu, um die Lucene-Standardanalyse durch benutzerdefinierte, vordefinierte oder sprachspezifische Alternativen zu ersetzen.
-services: search
-manager: jhubbard
-author: HeidiSteen
-documentationcenter: 
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: heidist
-ms.openlocfilehash: 1b9dea2978c11955da3ea4df8b90dc10a866d3f1
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+manager: cgronlun
+author: HeidiSteen
+ms.openlocfilehash: ef578d880c832ed5f853275f9194e15eefecfcaa
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="analyzers-in-azure-search"></a>Analysemodule in Azure Search
 
@@ -35,7 +30,7 @@ Standardmäßig verwendet Azure Search der [Standardanalyzer von Lucene](https:/
 
 Die folgende Liste gibt Aufschluss darüber, welche Analysen in Azure Search unterstützt werden:
 
-| Category (Kategorie) | Beschreibung |
+| Category (Kategorie) | BESCHREIBUNG |
 |----------|-------------|
 | [Lucene-Standardanalyse](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Standard. Muss nicht angegeben oder konfiguriert werden. Diese allgemeine Analyse eignet sich für die meisten Sprachen und Szenarien.|
 | Vordefinierte Analysen | Werden als fertiges Produkt angeboten und in der Regel unverändert oder nur mit minimalen Anpassungen verwendet. <br/>Es gibt spezialisierte und sprachspezifische Typen. Sie sind „vordefiniert“, da Sie ihren Namen angeben und sie nicht weiter anpassen. <br/><br/>[Spezialisierte (sprachunabhängige) Analyzer](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable) werden verwendet, wenn Texteingaben eine spezielle oder eine minimale Verarbeitung erfordern. Zu sprachunabhängigen vordefinierten Analysen zählen **Asciifolding**, **Keyword**, **Pattern**, **Simple**, **Stop** und **Whitespace**.<br/><br/>[Sprachanalyzer](https://docs.microsoft.com/rest/api/searchservice/language-support) werden verwendet, wenn umfassende linguistische Unterstützung für einzelne Sprachen benötigt werden. Azure Search unterstützt 35 Lucene-Sprachanalysen und 50 Microsoft-Analysen für die Verarbeitung natürlicher Sprache. |

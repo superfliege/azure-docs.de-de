@@ -470,6 +470,8 @@
           href: troubleshoot-app-connection.md
         - name: Fehler bei der Zuordnung
           href: allocation-failure.md
+        - name: Zuordnungsfehler bei klassischen virtuellen Computern
+          href: allocation-failure-classic.md
         - name: Bereitstellungsprobleme
           href: troubleshoot-deploy-vm.md
         - name: Erstellen eines virtuellen Computers

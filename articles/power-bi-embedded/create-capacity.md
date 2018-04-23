@@ -1,24 +1,24 @@
 ---
-title: "Einrichten von Power BI Embedded-Kapazität im Azure-Portal | Microsoft-Dokumentation"
-description: "In diesem Artikel erläutert, wie Sie Power BI Embedded-Kapazität in Microsoft Azure einrichten."
+title: Einrichten von Power BI Embedded-Kapazität im Azure-Portal | Microsoft-Dokumentation
+description: In diesem Artikel erläutert, wie Sie Power BI Embedded-Kapazität in Microsoft Azure einrichten.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: bf7eb967760338626cd7e0465b16dc570e5f582a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: maghan
+ms.openlocfilehash: 2fadfde13aee3aaf965c6ba30188544a8a075b9d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-power-bi-embedded-capacity-in-the-azure-portal"></a>Einrichten von Power BI Embedded-Kapazität im Azure-Portal
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
 * **Azure-Abonnement:** Besuchen Sie die Webseite [Kostenlose Azure-Testversion](https://azure.microsoft.com/free/), und erstellen Sie ein Konto.
-* **Azure Active Directory**: Ihr Abonnement muss einem Azure Active Directory-Mandanten (AAD) zugeordnet sein. Und ***Sie müssen bei Azure mit einem Konto in diesem Mandanten angemeldet sein***. Microsoft-Konten werden nicht unterstützt. Weitere Informationen finden Sie unter „Authentifizierung und Benutzerberechtigungen“.
+* **Azure Active Directory**: Ihr Abonnement muss einem Azure Active Directory-Mandanten (AAD) zugeordnet sein. Und ***Sie müssen bei Azure mit einem Konto in diesem Mandanten angemeldet sein***. Microsoft-Konten werden nicht unterstützt. Weitere Informationen finden Sie unter [Authentifizierung und Benutzerberechtigungen](../analysis-services/analysis-services-manage-users.md).
 * **Power BI-Mandant:** Mindestens ein Konto in Ihrem AAD-Mandanten muss bei Power BI registriert sein.
 * **Ressourcengruppe:** Verwenden Sie eine bereits vorhandene Ressourcengruppe, oder [erstellen Sie eine neue](../azure-resource-manager/resource-group-overview.md).
 
@@ -74,4 +74,4 @@ Wenn Sie diese Kapazität nicht benötigen, halten Sie sie an, um die Abrechnung
 
 Informationen zum Einbetten von Power BI-Inhalten in Ihre Anwendung finden Sie unter [So können Sie Ihre Dashboards, Berichte und Kacheln von Power BI einbetten](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/).
 
-Weitere Fragen? [Fragen Sie die Power BI-Community](http://community.powerbi.com/)
+Weitere Fragen? [Fragen Sie die Power BI-Community](http://community.powerbi.com/).

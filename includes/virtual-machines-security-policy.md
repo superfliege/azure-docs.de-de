@@ -28,7 +28,7 @@ Mit [Azure-Richtlinien](../articles/azure-policy/azure-policy-introduction.md) k
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](../articles/active-directory/role-based-access-control-what-is.md) können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff auf Ihre VM gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen Benutzern den uneingeschränkten Zugriff auf die VM zu gewähren, können Sie auch nur bestimmte Aktionen zulassen. Sie können die Zugriffssteuerung für die VM im [Azure-Portal](../articles/active-directory/role-based-access-control-configure.md), per [Azure CLI](https://docs.microsoft.com/cli/azure/role) oder mit [Azure PowerShell](../articles/active-directory/role-based-access-control-manage-access-powershell.md) konfigurieren.
+Mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](../articles/role-based-access-control/overview.md) können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff auf Ihre VM gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen Benutzern den uneingeschränkten Zugriff auf die VM zu gewähren, können Sie auch nur bestimmte Aktionen zulassen. Sie können die Zugriffssteuerung für die VM im [Azure-Portal](../articles/role-based-access-control/role-assignments-portal.md), per [Azure CLI](https://docs.microsoft.com/cli/azure/role) oder mit [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md) konfigurieren.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

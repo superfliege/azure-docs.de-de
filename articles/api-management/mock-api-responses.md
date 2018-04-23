@@ -1,11 +1,11 @@
 ---
 title: Simulieren von API-Antworten mit dem Azure-Portal | Microsoft-Dokumentation
-description: "Dieses Tutorial veranschaulicht, wie Sie API Management (APIM) verwenden, um eine Richtlinie für eine API festzulegen, damit diese eine simulierte Antwort zurückgibt. Diese Methode ermöglicht Entwicklern das Fortsetzen von Implementierung und Tests der API Management-Instanz, wenn das Back-End nicht verfügbar ist und keine echten Antworten senden kann."
+description: Dieses Tutorial veranschaulicht, wie Sie API Management (APIM) verwenden, um eine Richtlinie für eine API festzulegen, damit diese eine simulierte Antwort zurückgibt. Diese Methode ermöglicht Entwicklern das Fortsetzen von Implementierung und Tests der API Management-Instanz, wenn das Back-End nicht verfügbar ist und keine echten Antworten senden kann.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: e485071b026c52eb23532639546ad475fc92cde3
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: f3209edb23577d656e228aa0d75d852f35cd93ef
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="mock-api-responses"></a>Simulieren von API-Antworten
 
@@ -39,9 +39,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie das folgende Schnellstarttutorial: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
-
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Erstellen einer Test-API 
 
@@ -61,7 +59,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine leere API ohne Back-End erstellen
 
     ![Simulierte Antwort auf einen Vorgang](./media/mock-api-responses/mock-api-responses02.png)
 
-    |Einstellung|Wert|Beschreibung|
+    |Einstellung|Wert|BESCHREIBUNG|
     |---|---|---|
     |**URL** (HTTP-Verb)|GET|Sie können eines der vordefinierten HTTP-Verben auswählen.|
     |**URL** |*/test*|Ein URL-Pfad für die API. |
@@ -77,7 +75,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine leere API ohne Back-End erstellen
 6. Wählen Sie unter der Überschrift **Darstellungen** auf der rechten Seite **+ Darstellung hinzufügen** aus.
 7. Geben Sie „*application/json*“ in das Suchfeld ein, und wählen Sie den Inhaltstyp **application/json** aus.
 8. Geben Sie im Testfeld **Beispiel** die Zeichenfolge „*{ 'sampleField' : 'test' }*“ ein.
-9. Wählen Sie **Speichern** aus.
+9. Wählen Sie **Speichern**aus.
 
 ## <a name="enable-response-mocking"></a>Aktivieren der Antwortsimulation
 
@@ -87,7 +85,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine leere API ohne Back-End erstellen
 3. Klicken Sie im Fenster **Eingehende Verarbeitung** auf das Stiftsymbol.
 4. Wählen Sie auf der Registerkarte **Simulation** für **Simulationsverhalten** die Option **Statische Antworten** aus.
 5. Geben Sie im Textfeld **API Management returns the following response:** (API Management gibt folgende Antwort zurück) die Zeichenfolge **200 OK, application/json** ein. Diese Auswahl gibt an, dass Ihre API das Antwortbeispiel zurückgeben soll, das Sie im vorherigen Abschnitt definiert haben.
-6. Wählen Sie **Speichern** aus.
+6. Wählen Sie **Speichern**aus.
 
 ## <a name="test-the-mocked-api"></a>Testen der simulierten API
 
@@ -119,4 +117,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Fahren Sie mit dem nächsten Tutorial fort:
 
 > [!div class="nextstepaction"]
-> [Transformieren und Schützen veröffentlichter APIs](transform-api.md)
+> [Transformieren und Schützen einer veröffentlichten API](transform-api.md)

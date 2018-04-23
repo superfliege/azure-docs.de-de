@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: b13e31be58502d670b11dace1f646b0632a2f039
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c3d80fcaa38d0f1d7fa1770879ca9b40642bb796
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Unterstützung für Gremlin-Diagramme in Azure Cosmos DB
 Azure Cosmos DB unterstützt die Graph-Traversalsprache [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) von [Apache Tinkerpop](http://tinkerpop.apache.org). Dabei handelt es sich um eine Graph-API zur Erstellung von Diagrammentitäten und zur Durchführung von Diagrammabfragen. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
@@ -153,12 +153,6 @@ Jede Eigenschaft kann mehrere Werte in einem Array speichern.
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | value | Der Wert der Eigenschaft.
-
-## <a name="gremlin-partitioning"></a>Gremlin-Partitionierung
-
-In Azure Cosmos DB werden Diagramme in Containern gespeichert, die in Bezug auf Speicherung und Durchsatz (ausgedrückt in normalisierten Anforderungen pro Sekunde) unabhängig voneinander skaliert werden können. Jeder Container muss eine optionale, jedoch empfohlene Eigenschaft für Partitionsschlüssel definieren, die eine logische Partitionsbegrenzung für die verknüpften Daten festlegt. Jeder Vertex/Edge muss eine `id`-Eigenschaft aufweisen, die für Entitäten innerhalb dieses Partitionsschlüsselwerts eindeutig ist. Ausführliche Informationen finden Sie unter [Partitionierung in Azure Cosmos DB](partition-data.md).
-
-Gremlin-Vorgänge funktionieren nahtlos in Diagrammdaten, die sich über mehrere Partitionen in Azure Cosmos DB erstrecken. Es wird jedoch empfohlen, einen Partitionsschlüssel für die Diagramme auszuwählen, der häufig als Filter in Abfragen verwendet wird, viele unterschiedliche Werte enthält und eine ähnliche Zugriffshäufigkeit für diese Werte aufweist. 
 
 ## <a name="gremlin-steps"></a>Gremlin-Schritte
 Sehen wir uns nun die Gremlin-Schritte an, die von Azure Cosmos DB unterstützt werden. Eine vollständige Referenz zu Gremlin finden Sie in der [TinkerPop-Referenz](http://tinkerpop.apache.org/docs/current/reference).

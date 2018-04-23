@@ -18,6 +18,7 @@
 ## [Bash – Ausführen von Ansible-Playbooks](../ansible/ansible-run-playbook-in-cloudshell.md)
 
 # [Einbetten von Cloud Shell](embed-cloud-shell.md)
+# [Verwenden von MSI in Cloud Shell](msi-authorization.md)
 
 # [Problembehandlung und Einschränkungen](troubleshooting.md)
 

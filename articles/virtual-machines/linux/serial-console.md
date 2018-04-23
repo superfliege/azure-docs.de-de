@@ -1,5 +1,5 @@
 ---
-title: Serielle Konsole für virtuelle Azure-Computer | Microsoft-Dokumentation
+title: Serielle Konsole für virtuelle Azure-Computer | Microsoft Docs
 description: Bidirektionale serielle Konsole für virtuelle Azure-Computer.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: b7d6e48a6f34472bc38947fd70e850b1c3bf6f8a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 69f5e29be77f25d649ce357dae6e3905ab2bf6b8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="virtual-machine-serial-console-preview"></a>Serielle Konsole für virtuelle Computer (Vorschauversion) 
+# <a name="virtual-machine-serial-console-preview"></a>Serielle Konsole für virtuelle Azure-Computer (Vorschau) 
 
 
 Die serielle Konsole für virtuelle Computer in Azure bietet Zugriff auf eine textbasierte Konsole für virtuelle Linux- und Windows-Computer. Diese serielle Verbindung erfolgt mit dem seriellen COM1-Port des virtuellen Computers und ermöglicht den Zugriff auf den virtuellen Computer. Sie steht nicht in Beziehung zum Zustand des Netzwerks/Betriebssystems des virtuellen Computers. Der Zugriff auf die serielle Konsole für einen virtuellen Computer kann zurzeit nur über das Azure-Portal erfolgen und ist nur für Benutzer mit der Zugriffsberechtigung „VM-Mitwirkender“ oder höher für den virtuellen Computer möglich. 
 
 > [!Note] 
-> Die Vorschauen werden Ihnen zur Verfügung gestellt, wenn Sie die folgenden Nutzungsbedingungen akzeptieren. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen]. (https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Zurzeit befindet sich dieser Dienst in der **Public Preview**, und der Zugriff auf die serielle Konsole für virtuelle Computer ist für globale Azure-Regionen verfügbar. Zu diesem Zeitpunkt ist die serielle Konsole in der Azure Government-, Azure Deutschland- und Azure China-Cloud nicht verfügbar.
+> Die Vorschauen werden Ihnen zur Verfügung gestellt, wenn Sie die folgenden Nutzungsbedingungen akzeptieren. Weitere Informationen finden Sie unter [Ergänzende Microsoft Azure-Nutzungsbedingungen für Microsoft Azure-Vorschauen]. (https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Zurzeit befindet sich dieser Dienst in der **öffentlichen Vorschau**, und der Zugriff auf die serielle Konsole für virtuelle Computer ist für globale Azure-Regionen verfügbar. Zu diesem Zeitpunkt ist die serielle Konsole in der Azure Government-, Azure Deutschland- und Azure China-Cloud nicht verfügbar.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 * Für den virtuellen Computer MUSS die [Startdiagnose](boot-diagnostics.md) aktiviert sein. 
-* Das Konto, das die serielle Konsole verwendet, muss die Rolle [Mitwirkender](../../active-directory/role-based-access-built-in-roles.md) für den virtuellen Computer und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen. 
+* Das Konto, das die serielle Konsole verwendet, muss die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md) für den virtuellen Computer und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen. 
 * Spezifische Einstellungen für die Linux-Distribution finden Sie unter [Zugriff auf die serielle Konsole für Linux](#accessing-serial-console-for-linux).
 
 
@@ -51,18 +51,18 @@ Auf die serielle Konsole für virtuelle Computer kann nur über das [Azure-Porta
 > Für die serielle Konsole ist ein konfigurierter lokaler Benutzer mit einem Kennwort erforderlich. Derzeit haben virtuelle Computer, die nur mit einem öffentlichen SSH-Schlüssel konfiguriert sind, keinen Zugriff auf die serielle Konsole. Erstellen Sie einen lokalen Benutzer mit einem Kennwort. Befolgen Sie dazu die Anweisungen unter [VMAccess-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension).
 
 ### <a name="disable-feature"></a>Deaktivieren des Features
-Die Funktionalität der seriellen Konsole kann für bestimmte virtuelle Computer deaktiviert werden, indem die Startdiagnoseeinstellung des jeweiligen virtuellen Computers deaktiviert wird.
+Die Funktionalität der seriellen Konsole kann für bestimmte virtuelle Computer deaktiviert werden, indem die Startdiagnoseeinstellung dieses virtuellen Computers deaktiviert wird.
 
 ## <a name="serial-console-security"></a>Sicherheit der seriellen Konsole 
 
 ### <a name="access-security"></a>Zugriffssicherheit 
-Der Zugriff auf die serielle Konsole ist auf Benutzer eingeschränkt, die über die Zugriffsberechtigung [VM-Mitwirkende](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) oder höher für den virtuellen Computer verfügen. Wenn Ihr AAD-Mandant mehrstufige Authentifizierung erfordert, ist auch für den Zugriff auf die serielle Konsole mehrstufige Authentifizierung erforderlich, da der Zugriff über das [Azure-Portal](https://portal.azure.com) erfolgt.
+Der Zugriff auf die serielle Konsole ist auf Benutzer eingeschränkt, die über die Zugriffsberechtigung [VM-Mitwirkende](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) oder höher für den virtuellen Computer verfügen. Wenn Ihr AAD-Mandant mehrstufige Authentifizierung erfordert, ist auch für den Zugriff auf die serielle Konsole mehrstufige Authentifizierung erforderlich, da der Zugriff über das [Azure-Portal](https://portal.azure.com) erfolgt.
 
 ### <a name="channel-security"></a>Kanalsicherheit
 Alle gesendeten Daten werden bei der Übertragung verschlüsselt.
 
 ### <a name="audit-logs"></a>Überwachungsprotokolle
-Alle Zugriffe auf die serielle Konsole werden zurzeit in den Protokollen der [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) des virtuellen Computers protokolliert. Der Zugriff auf diese Protokolle wird durch den Administrator des virtuellen Azure-Computers (der auch Besitzer dieser Protokolle ist) gesteuert.  
+Alle Zugriffe auf die serielle Konsole werden zurzeit in den Protokollen [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) des virtuellen Computers protokolliert. Der Zugriff auf diese Protokolle wird durch den Administrator des virtuellen Azure-Computers (der auch Besitzer dieser Protokolle ist) gesteuert.  
 
 >[!CAUTION] 
 Es werden keine Zugriffskennwörter für die Konsole protokolliert. Wenn jedoch Befehle, die innerhalb der Konsole ausgeführt werden, Kennwörter, Geheimnisse, Benutzernamen oder eine andere Form von persönlich identifizierbaren Informationen (PII) enthalten oder ausgeben, werden diese zusammen mit dem anderen sichtbaren Text als Teil der Implementierung der Scrollbackfunktionalität der seriellen Konsole in die Startdiagnoseprotokolle des virtuellen Computers geschrieben. Diese Protokolle sind zirkulär, und nur Personen mit Leseberechtigungen für das Diagnosespeicherkonto haben Zugriff auf sie. Es wird jedoch empfohlen, bewährte Methoden bei der Verwendung der SSH-Konsole für alle Aspekte zu befolgen, die Geheimnisse und/oder PII beinhalten können. 
@@ -71,7 +71,7 @@ Es werden keine Zugriffskennwörter für die Konsole protokolliert. Wenn jedoch 
 Wenn ein Benutzer mit der seriellen Konsole verbunden ist und ein anderer Benutzer erfolgreich den Zugriff auf denselben virtuellen Computer anfordert, wird der erste Benutzer getrennt und der zweite Benutzer in einer Art und Weise verbunden, als würde der erste Benutzer aufstehen und die physische Konsole verlassen und ein neuer Benutzer dessen Platz einnehmen.
 
 >[!CAUTION] 
-Dies bedeutet, dass der Benutzer, der getrennt wird, nicht abgemeldet wird! Die Möglichkeit, eine Abmeldung beim Trennen der Verbindung (über SIGHUP oder einen ähnlichen Mechanismus) zu erzwingen, befindet sich noch in Planung. Für Windows ist ein automatisches Timeout in SAC aktiviert, für Linux können Sie jedoch die Terminaltimeouteinstellung konfigurieren. Fügen Sie dazu einfach `export TMOUT=600` in der Datei „.bash_profile“ oder „.profile“ für den Benutzer ein, mit dem Sie sich an der Konsole anmelden, sodass das Timeout für die Sitzung nach 10 Minuten erfolgt.
+Dies bedeutet, dass der Benutzer, der getrennt wird, nicht abgemeldet wird! Die Möglichkeit, eine Abmeldung beim Trennen der Verbindung (über SIGHUP oder einen ähnlichen Mechanismus) zu erzwingen, ist noch in der Planung begriffen. Für Windows ist ein automatisches Timeout in SAC aktiviert, für Linux können Sie jedoch die Terminaltimeouteinstellung konfigurieren. Fügen Sie dazu einfach `export TMOUT=600` in der Datei „.bash_profile“ oder „.profile“ für den Benutzer ein, mit dem Sie sich an der Konsole anmelden, sodass das Timeout für die Sitzung nach 10 Minuten erfolgt.
 
 ### <a name="disable-feature"></a>Deaktivieren des Features
 Die Funktionalität der seriellen Konsole kann für bestimmte virtuelle Computer deaktiviert werden, indem die Startdiagnoseeinstellung des jeweiligen virtuellen Computers deaktiviert wird.
@@ -124,12 +124,12 @@ Um die serielle Konsole für Ihr benutzerdefiniertes Linux-VM-Image zu aktiviere
 `S0:12345:respawn:/sbin/agetty -L 115200 console vt102` 
 
 ## <a name="errors"></a>Errors
-Die meisten Fehler sind vorübergehender Natur und können durch einen Wiederholungsversuch der Verbindung behoben werden. In der folgenden Tabelle sind einige Fehler und deren Behebung aufgeführt. 
+Die meisten Fehler sind vorübergehender Natur und können durch einen Wiederholungsversuch der Verbindung behoben werden. Die Tabelle unten zeigt eine Liste von Fehlern und deren Behebung. 
 
 Error                            |   Lösung 
 :---------------------------------|:--------------------------------------------|
 Startdiagnoseeinstellungen für „<VMNAME>“ können nicht abgerufen werden. Damit Sie die serielle Konsole verwenden können, stellen Sie sicher, dass die Startdiagnose für diesen virtuellen Computer aktiviert ist. | Stellen Sie sicher, dass für den virtuellen Computer [Startdiagnose](boot-diagnostics.md) aktiviert ist. 
-Der virtuelle Computer befindet sich in einem beendeten Zustand mit aufgehobener Zuordnung. Starten Sie den virtuellen Computer, und stellen Sie erneut eine Verbindung mit der seriellen Konsole her. | Der virtuelle Computer muss den Zustand „Gestartet“ aufweisen, um auf die serielle Konsole zugreifen zu können.
+Der virtuelle Computer befindet sich in einem beendeten Zustand mit aufgehobener Zuordnung. Starten Sie den virtuellen Computer neu, und wiederholen Sie die Verbindung mit der seriellen Konsole. | Der virtuelle Computer muss den Zustand „Gestartet“ aufweisen, um auf die serielle Konsole zugreifen zu können.
 Sie verfügen nicht über die erforderlichen Berechtigungen zum Verwenden der seriellen Konsole dieses virtuellen Computers. Stellen Sie sicher, dass Sie mindestens über Berechtigungen der Rolle „VM-Mitwirkender“ verfügen.| Für den Zugriff auf die serielle Konsole sind bestimmte Berechtigungen erforderlich. Details finden Sie unter [Zugriffsanforderungen](#prerequisites).
 Die Ressourcengruppe für das Startdiagnose-Speicherkonto „<STORAGEACCOUNTNAME>“ kann nicht ermittelt werden. Stellen Sie sicher, dass die Startdiagnose für diesen virtuellen Computer aktiviert ist und Sie über Zugriff auf dieses Speicherkonto verfügen. | Für den Zugriff auf die serielle Konsole sind bestimmte Berechtigungen erforderlich. Details finden Sie unter [Zugriffsanforderungen](#prerequisites).
 
@@ -139,7 +139,7 @@ Da wir uns noch in der Vorschauphase für den Zugriff auf die serielle Konsole b
 Problem                           |   Lösung 
 :---------------------------------|:--------------------------------------------|
 Es gibt keine Option der seriellen Konsole für VM-Skalierungsgruppeninstanzen. |  Zum Zeitpunkt der Vorschau wird der Zugriff auf die serielle Konsole für VM-Skalierungsgruppeninstanzen nicht unterstützt.
-Nach dem Drücken der Eingabetaste nach dem Verbindungsbanner wird keine Anmeldeeingabeaufforderung angezeigt. | [Nach dem Drücken der Eingabetaste geschieht nichts](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md).
+Nach dem Drücken der EINGABETASTE nach dem Verbindungsbanner wird keine Anmeldeeingabeaufforderung angezeigt. | [Nach dem Drücken der Eingabetaste geschieht nichts](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md).
 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen 
@@ -153,7 +153,7 @@ A. Dies ist ein bekanntes Problem. Um dieses Problem zu beheben, öffnen Sie ein
 
 **F: Ich bin nicht in der Lage, auf die serielle Konsole zugreifen. Wo kann ich eine Supportanfrage stellen?**
 
-A. Dieses Vorschaufeature wird durch die Nutzungsbedingungen für die Azure-Vorschau abgedeckt. Unterstützung erfolgt am besten über die oben genannten Kanäle. 
+A. Dieses Vorschaufeature wird durch die Nutzungsbedingungen für die Vorschau abgedeckt. Unterstützung erfolgt am besten über die oben genannten Kanäle. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Die serielle Konsole ist auch für [virtuelle Windows-Computer](../windows/serial-console.md) verfügbar.

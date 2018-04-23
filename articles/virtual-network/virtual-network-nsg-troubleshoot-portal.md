@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 5998aa0e0b281ead859c24d792c3e175e3cca899
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: b053993bec74d358dd7a0a8889fa05885b563b16
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Führen Sie die folgenden Schritte aus, um Probleme bei NSGs für einen virtuell
 
 Sie können die vollständige Liste der effektiven Sicherheitsregeln für eine NIC über den virtuellen Computer selbst anzeigen. Zudem können Sie NSG-Regeln für die NIC und das Subnetz auf dem Blatt für die effektiven Regeln hinzufügen, ändern und löschen, wenn Sie über die Berechtigungen zum Durchführen dieser Vorgänge verfügen.
 
-1. Melden Sie sich mit einem Azure-Konto unter https://portal.azure.com beim Azure-Portal an. Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Melden Sie sich mit einem Azure-Konto unter https://portal.azure.com beim Azure-Portal an. Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Klicken Sie auf **Alle Dienste** und dann in der angezeigten Liste auf **Virtuelle Computer**.
 3. Wählen Sie in der angezeigten Liste einen virtuellen Computer für die Problembehandlung aus. Für den entsprechenden virtuellen Computer wird dann ein Blatt mit Optionen angezeigt.
 4. Klicken Sie auf **Diagnose und Problembehandlung**, und wählen Sie dann ein gängiges Problem aus. In diesem Beispiel wird **Ich kann keine Verbindung mit meinem virtuellen Windows-Computer herstellen** ausgewählt. 

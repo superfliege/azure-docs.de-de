@@ -1,23 +1,18 @@
 ---
-title: "Erstellen eines Index (Portal – Azure Search) | Microsoft-Dokumentation"
-description: "Erstellen Sie einen Azure Search-Index im Azure-Portal."
-services: search
-manager: jhubbard
+title: Erstellen eines Index (Portal – Azure Search) | Microsoft-Dokumentation
+description: Erstellen Sie einen Azure Search-Index im Azure-Portal.
+manager: cgronlun
 author: heidisteen
-documentationcenter: 
-ms.assetid: 
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 06/20/2017
 ms.author: heidist
-ms.openlocfilehash: a7d98ab0937a7d3f932d5df34c19ae091129804e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ab0352b8c830e875afc9b1d1b006ba4d2a512d7a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-an-azure-search-index-using-the-azure-portal"></a>Erstellen eines Azure Search-Indexes im Azure-Portal
 > [!div class="op_single_selector"]
@@ -83,7 +78,7 @@ Zu den Feldern zum Eingrenzen der Suchergebnisse gehören **Sortierbar**, **Filt
 
 Feldattribute bestimmen, wie ein Feld verwendet wird, z.B. ob es in der Volltextsuche, in der Facettennavigation, für Sortiervorgänge usw. verwendet wird. In der folgenden Tabelle werden die einzelnen Attribute beschrieben.
 
-|Attribut|Beschreibung|  
+|Attribut|BESCHREIBUNG|  
 |---------------|-----------------|  
 |**Durchsuchbar**|Volltextsuche ist möglich, unterliegt einer lexikalischen Analyse, z.B. Worttrennung, während der Indizierung. Wenn Sie ein durchsuchbares Feld auf einen Wert wie „sunny day“ festlegen, wird es intern in die einzelnen Token „sunny“ und „day“ unterteilt. Weitere Informationen finden Sie unter [Funktionsweise der Volltextsuche](search-lucene-query-architecture.md).|  
 |**Filterbar**|Wird in **$filter**-Abfragen angegeben. Filterbare Felder vom Typ `Edm.String` oder `Collection(Edm.String)` werden keiner Worttrennung unterzogen, sodass nur nach exakten Übereinstimmungen gesucht wird. Beispiel: Wenn Sie ein solches Feld „f“ auf „sunny day“ festlegen, werden mit `$filter=f eq 'sunny'` keine Übereinstimmungen gefunden, während Sie mit `$filter=f eq 'sunny day'` Suchergebnisse erhalten. |  

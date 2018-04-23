@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 81d8cc85827b29beaaec03fd258b550948798641
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: dd573a90e49197d59e6228359f57fcd4cc3f69e2
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows"></a>Erstellen einer VM-Skalierungsgruppe und Bereitstellen einer hoch verfügbaren App unter Windows
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung gemäß CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Tutorial stellen Sie eine Skalierungsgruppe für virtuelle Computer bereit. Folgendes wird vermittelt:
@@ -34,7 +34,7 @@ Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch 
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.6 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.6 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 
 ## <a name="scale-set-overview"></a>Übersicht über Skalierungsgruppen
@@ -174,11 +174,12 @@ $mySubscriptionId = (Get-AzureRmSubscription)[0].Id
 $myResourceGroup = "myResourceGroupScaleSet"
 $myScaleSet = "myScaleSet"
 $myLocation = "East US"
+$myScaleSetId = (Get-AzureRmVmss -ResourceGroupName $myResourceGroup -VMScaleSetName $myScaleSet).Id 
 
 # Create a scale up rule to increase the number instances after 60% average CPU usage exceeded for a 5-minute period
 $myRuleScaleUp = New-AzureRmAutoscaleRule `
   -MetricName "Percentage CPU" `
-  -MetricResourceId /subscriptions/$mySubscriptionId/resourceGroups/$myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/$myScaleSet `
+  -MetricResourceId $myScaleSetId `
   -Operator GreaterThan `
   -MetricStatistic Average `
   -Threshold 60 `
@@ -191,7 +192,7 @@ $myRuleScaleUp = New-AzureRmAutoscaleRule `
 # Create a scale down rule to decrease the number of instances after 30% average CPU usage over a 5-minute period
 $myRuleScaleDown = New-AzureRmAutoscaleRule `
   -MetricName "Percentage CPU" `
-  -MetricResourceId /subscriptions/$mySubscriptionId/resourceGroups/$myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/$myScaleSet `
+  -MetricResourceId $myScaleSetId `
   -Operator LessThan `
   -MetricStatistic Average `
   -Threshold 30 `
@@ -214,7 +215,7 @@ Add-AzureRmAutoscaleSetting `
   -Location $myLocation `
   -Name "autosetting" `
   -ResourceGroup $myResourceGroup `
-  -TargetResourceId /subscriptions/$mySubscriptionId/resourceGroups/$myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/$myScaleSet `
+  -TargetResourceId $myScaleSetId `
   -AutoscaleProfiles $myScaleProfile
 ```
 

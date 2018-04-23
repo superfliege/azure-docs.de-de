@@ -1,11 +1,11 @@
 ---
-title: "Überprüfen des Datenverkehrs mit der IP-Datenflussüberprüfung in Azure Network Watcher – Azure-Portal | Microsoft-Dokumentation"
-description: "Dieser Artikel beschreibt, wie Sie überprüfen, ob bei einem virtuellen Computer eingehender und ausgehender Datenverkehr zugelassen oder verweigert wird."
+title: Überprüfen des Datenverkehrs mit der IP-Datenflussüberprüfung in Azure Network Watcher – Azure-Portal | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie überprüfen, ob bei einem virtuellen Computer eingehender und ausgehender Datenverkehr zugelassen oder verweigert wird.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e0e3e9a8-70eb-409a-a744-0ce9deb27148
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 8333ccfd1e4cc917c8af4b3006292e43b77ecc7f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b6d929f025c8b95709b7c0eb28ee78310e5f12a5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Überprüfen mit der IP-Datenflussüberprüfung (einer Komponente von Azure Network Watcher), ob bei einem virtuellen Computer eingehender und ausgehender Datenverkehr zugelassen oder verweigert wird
 
@@ -59,7 +59,7 @@ Wie in der folgenden Abbildung gezeigt, wird der Datenverkehr in eingehend geän
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Datenverkehr fälschlicherweise blockiert wird, finden Sie unter [Verwalten von Netzwerksicherheitsgruppen](../virtual-network/virtual-network-manage-nsg-arm-portal.md) Informationen zum Ermitteln der Netzwerksicherheitsgruppe und der definierten Sicherheitsregeln.
+Wenn Datenverkehr fälschlicherweise blockiert wird, finden Sie unter [Verwalten von Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md) Informationen zum Ermitteln der Netzwerksicherheitsgruppe und der definierten Sicherheitsregeln.
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png

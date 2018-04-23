@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 18f904a2bac70bce3e1208945a7b94b59f6225f7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0466b0e911736d2e1e7fc50649feda932c3163e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Erstellen und Verwalten von Azure SQL-Datenbankservern und -datenbanken
 
@@ -46,7 +46,7 @@ Ein logischer Azure Datenbankserver:
 - ist die übergeordnete Ressource für Datenbanken, Pools für elastische Datenbanken und Data Warehouses
 - bietet einen Namespace für Datenbanken, für Pools für elastische Datenbanken und Data Warehouses
 - ist ein logischer Container mit Semantik von hoher Lebensdauer – beim Löschen eines Servers werden die enthaltenen Datenbanken, Pools für elastische Datenbanken und Data Warehouses gelöscht
-- beteiligt sich an der [rollenbasierten Zugriffssteuerung (role-based access control, RBAC) in Azure](/active-directory/role-based-access-control-what-is) – Datenbanken, Pools für elastische Datenbanken und Data Warehouses innerhalb eines Servers erben dessen Zugriffsrechte
+- beteiligt sich an der [rollenbasierten Zugriffssteuerung (role-based access control, RBAC) in Azure](/azure/role-based-access-control/overview) – Datenbanken, Pools für elastische Datenbanken und Data Warehouses innerhalb eines Servers erben dessen Zugriffsrechte
 - ist ein oberes Element der Identität von Datenbanken, Pools für elastische Datenbanken und Data Warehouses für Zwecke der Azure-Ressourcenverwaltung (siehe das URL-Schema für Datenbanken und Pools)
 - stellt in einer Region Ressourcen zusammen
 - bietet eine Verbindungsendpunkt für den Datenbankzugriff (<serverName>.database.windows.net)
@@ -79,9 +79,8 @@ Zum Erstellen einer Azure SQL-Datenbank mithilfe des [Azure-Portals](https://por
 
 > [!IMPORTANT]
 > Informationen zum Auswählen des Tarifs für Ihre Datenbank finden Sie unter [Dienstebenen](sql-database-service-tiers.md).
->
 
-Informationen zum Erstellen einer verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-tutorial-portal.md)
+Informationen zum Erstellen einer verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-create-tutorial-portal.md)
 
 ### <a name="manage-an-existing-sql-server"></a>Verwalten eines vorhandenen SQL-Servers
 

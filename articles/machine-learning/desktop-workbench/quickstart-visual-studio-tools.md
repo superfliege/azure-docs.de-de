@@ -1,6 +1,6 @@
 ---
-title: "Schnellstartanleitung für Visual Studio-Tools für Machine Learning in Azure | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie Visual Studio-Tools für Machine Learning verwenden, um ein Experiment zu erstellen, das Modell zu trainieren und einen Webdienst zu operationalisieren."
+title: Schnellstartanleitung für Visual Studio-Tools für Machine Learning in Azure | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie Visual Studio-Tools für Machine Learning verwenden, um ein Experiment zu erstellen, das Modell zu trainieren und einen Webdienst zu operationalisieren.
 services: machine-learning
 author: ahgyger
 ms.author: ahgyger
@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.openlocfilehash: bbcb2ea5a7ceeb976f590393608cc29c67d9a49e
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="visual-studio-tools-for-ai"></a>Visual Studio-Tools für AI
 Visual Studio-Tools für AI ist eine Entwicklungserweiterung zum Erstellen, Testen und Bereitstellen von Deep Learning- und KI-Lösungen. Die Erweiterung lässt sich nahtlos in Azure Machine Learning integrieren und zeigt den Ausführungsverlauf sowie die Leistung vorheriger Trainings und benutzerdefinierter Metriken an. Sie bietet eine Explorer-Ansicht mit Beispielen zum Durchsuchen und Durchführen eines Bootstraps eines neuen Projekts mit dem [Microsoft Cognitive Toolkit](http://www.microsoft.com/en-us/cognitive-toolkit) (früher als CNTK bezeichnet), [Google TensorFlow](https://www.tensorflow.org) und anderen Deep Learning-Frameworks. Sie bietet zudem einen Explorer für Computeziele, mit dem Sie Aufträge übermitteln können, um Modelle in Remoteumgebungen wie Azure Virtual Machines oder Linux-Servern mit GPU zu trainieren. Außerdem ermöglicht die Erweiterung vereinfachten Zugriff auf [Azure Batch AI (Vorschauversion)](https://docs.microsoft.com/azure/batch-ai/).

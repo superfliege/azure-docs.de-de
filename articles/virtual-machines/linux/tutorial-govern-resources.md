@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1f52079e00c7c5f4e70acf8c86f648ed9281744e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a7d44e421162cf5784dde58f757e235d12b63cba
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-governance-with-azure-cli"></a>Verwaltung von virtuellen Computern mit der Azure-Befehlszeilenschnittstelle
 
@@ -43,15 +43,15 @@ Die Ressourcengruppe ist derzeit leer.
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Sie sollten sicherstellen, dass Benutzer in Ihrer Organisation einen geeigneten Zugriff auf diese Ressourcen haben. Den Benutzern sollte kein uneingeschränkter Zugriff erteilt werden, aber Sie müssen auch sicherstellen, dass sie ihre Arbeit erledigen können. Mit der [rollenbasierten Zugriffssteuerung](../../active-directory/role-based-access-control-what-is.md) können Sie verwalten, welche Benutzer die Berechtigung zum Ausführen bestimmter Aktionen in einem Bereich erhalten.
+Sie sollten sicherstellen, dass Benutzer in Ihrer Organisation einen geeigneten Zugriff auf diese Ressourcen haben. Den Benutzern sollte kein uneingeschränkter Zugriff erteilt werden, aber Sie müssen auch sicherstellen, dass sie ihre Arbeit erledigen können. Mit der [rollenbasierten Zugriffssteuerung](../../role-based-access-control/overview.md) können Sie verwalten, welche Benutzer die Berechtigung zum Ausführen bestimmter Aktionen in einem Bereich erhalten.
 
 Um Rollenzuweisungen erstellen und entfernen zu können, benötigen Benutzer den Zugriff `Microsoft.Authorization/roleAssignments/*`. Dieser Zugriff wird über die Rolle „Besitzer“oder „Benutzerzugriffsadministrator“ gewährt.
 
 Zum Verwalten virtueller Computerlösungen gibt es drei ressourcenspezifische Rollen, die Zugriff auf häufig benötigte Ressourcen bereitstellen:
 
-* [Mitwirkender von virtuellen Computern](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
-* [Mitwirkender von virtuellem Netzwerk](../../active-directory/role-based-access-built-in-roles.md#network-contributor)
-* [Mitwirkender von Speicherkonto](../../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+* [Mitwirkender von virtuellen Computern](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Mitwirkender von virtuellem Netzwerk](../../role-based-access-control/built-in-roles.md#network-contributor)
+* [Mitwirkender von Speicherkonto](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, [eine Azure Active Directory-Gruppe zu erstellen](../../active-directory/active-directory-groups-create-azure-portal.md), um die Benutzer zusammenzufassen, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Zur Vereinfachung erstellen Sie in diesem Artikel eine Azure Active Directory-Gruppe ohne Mitglieder. Sie können diese Gruppe dennoch einer Rolle für einen bestimmten Bereich zuweisen. 
 

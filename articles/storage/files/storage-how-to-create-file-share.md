@@ -1,12 +1,12 @@
 ---
 title: Erstellen einer Azure-Dateifreigabe | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Sie über das Azure-Portal, mithilfe von PowerShell oder mit der Azure-Befehlszeilenschnittstelle eine Azure-Dateifreigabe in Azure Files erstellen."
+description: Hier erfahren Sie, wie Sie über das Azure-Portal, mithilfe von PowerShell oder mit der Azure-Befehlszeilenschnittstelle eine Azure-Dateifreigabe in Azure Files erstellen.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: bc01e5427f32e9532e39694f6de9f0b1146eda35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4dfc4bca4453b5a8027086bd7c3625efc8feda03
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Erstellen einer Dateifreigabe in Azure Files
 Sie können Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com/), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. In diesem Tutorial lernen Sie Folgendes:
@@ -69,7 +69,7 @@ Laden Sie die Azure PowerShell-Cmdlets herunter und installieren Sie diese ansch
 
 ## <a name="create-file-share-through-command-line-interface-cli"></a>Erstellen einer Dateifreigabe unter Verwendung der Befehlszeilenschnittstelle (CLI)
 1. **Laden Sie zur Vorbereitung auf die Verwendung einer Befehlszeilenschnittstelle (CLI) die Azure-Befehlszeilenschnittstelle herunter, und installieren Sie sie.**  
-    Informationen finden Sie unter [Install Azure CLI 2.0](/cli/azure/install-az-cli2.md) (Installieren von Azure CLI 2.0) und [Get started with Azure CLI 2.0](/cli/azure/get-started-with-azure-cli.md) (Erste Schritte mit Azure CLI 2.0).
+    Informationen finden Sie unter [Install Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (Installieren von Azure CLI 2.0) und [Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) (Erste Schritte mit Azure CLI 2.0).
 
 2. **Erstellen Sie eine Verbindungszeichenfolge für das Speicherkonto, unter dem Sie die Freigabe erstellen möchten.**  
     Ersetzen Sie im folgenden Beispiel ```<storage-account>``` und ```<resource_group>``` durch Ihren Speicherkontonamen und Ihre Ressourcengruppe:
@@ -94,6 +94,6 @@ Laden Sie die Azure PowerShell-Cmdlets herunter und installieren Sie diese ansch
 
 Weitere Informationen zu Azure Files erhalten Sie über diese Links.
 
-* [Häufig gestellte Fragen](../storage-files-faq.md)
+* [HÄUFIG GESTELLTE FRAGEN](../storage-files-faq.md)
 * [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Windows)      
 * [Troubleshoot Azure File storage problems in Linux](storage-troubleshoot-linux-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Linux)   

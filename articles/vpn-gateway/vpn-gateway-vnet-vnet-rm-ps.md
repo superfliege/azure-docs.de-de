@@ -5,7 +5,7 @@ services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8f2ecf4f10c5506b79adb033c67c41a4b1e17777
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a96326e23a2ed913ccab8a23666a4f408157d3da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung mithilfe von PowerShell
 
@@ -28,7 +28,7 @@ In diesem Artikel erfahren Sie, wie Sie zwischen virtuellen Netzwerken eine VNet
 Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell und für die Verwendung von PowerShell. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -153,7 +153,7 @@ In den Beispielen werden die folgenden Werte verwendet:
 2. Stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Überprüfen Sie die Abonnements für das Konto.
@@ -349,7 +349,7 @@ Dieser Schritt muss im Kontext des neuen Abonnements ausgeführt werden. Dieser 
 2. Stellen Sie eine Verbindung mit Abonnement 5 her. Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Überprüfen Sie die Abonnements für das Konto.
