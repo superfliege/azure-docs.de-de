@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 07fb601b2cf6e3fe3cc9bfb7bca3bdcbec7e9ca7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f090bcd56377d167dddab1b8f942d473aecb66a2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Herausgeberleitfaden für Azure Marketplace und AppSource
 
@@ -121,8 +121,7 @@ Jede Storefront unterstützt mehrere Veröffentlichungsoptionen und Angebotstype
 Verwenden Sie die Kontaktaufnahme, wenn eine Beteiligung auf Testversions- oder Transaktionsebene nicht möglich ist. Der Vorteil dieses Ansatzes ist, dass Herausgeber, die eine marktinterne Lösung anbieten, dabei sofort Leads gewinnen und zu Erstabschlüssen führen können. Dies ist der Anfang des Umsatzwachstums. Der Nachteil ist jedoch, dass die Kundenbindung im Vergleich zu anderen Angebotstypen beschränkt ist.
 
 >[!IMPORTANT]
-<<<<<<< HEAD Die Kundenbindung ist am stärksten bei den Angebotstypen „Testen“ und „Transaktion“. Der Wert von „Kontaktaufnahme“ ist der Lead, den Sie erhalten. Wenn Sie also diesen Auflistungstyp auswählen, stellen Sie sicher, dass Ihr Leadziel konfiguriert ist und Sie darauf vorbereitet sind, den Lead zu maximieren. ======= „Kontaktaufnahme“ wird als Auflistungstyp nicht empfohlen. Diese Option sollte nur dann verwendet werden, wenn keine Testversion zur Verfügung gestellt werden kann. Die Kundenbindung ist am stärksten bei den Angebotstypen „Testen“ und „Transaktion“. Wenn Sie über eine Testversion verfügen, werden Sie in unserem Onboardingprozess je nach Szenario zu einer dieser Optionen geführt.
->>>>>>> 2874631130f763b6e91e8725781400bcb76d6a62
+>Die Kundenbindung ist am stärksten bei den Angebotstypen „Testen“ und „Transaktion“. Der Wert von „Kontaktaufnahme“ ist der Lead, den Sie erhalten. Wenn Sie also diesen Auflistungstyp auswählen, stellen Sie sicher, dass Ihr Leadziel konfiguriert ist und Sie darauf vorbereitet sind, den Lead zu maximieren. 
 
 Wenn das Angebot im Wesentlichen aus Dienstleistungen (z.B. Bewertungen, Implementierungen, Workshops) besteht, sollten Sie den Angebotstyp „Beratungsdienste“ verwenden. Umfang, Dauer und Preis des Angebots müssen festgelegt werden, für einen einzelnen Kunden bestimmt sein und vor Ort durchgeführt werden.
 
@@ -493,7 +492,6 @@ Dies ist die Liste der Supportoptionen für Azure Marketplace:
 
 |Supportkanal  |BESCHREIBUNG  |
 |---------|---------|
-|Slack: [Join Marketplace Slack](https://join.marketplace.azure.com) (Marketplace Slack beitreten)    |   Slack-Umgebung zur Unterstützung von Partnern bei technischen Problemen. In dieser Umgebung arbeiten derzeit mehr als 350 Partner.        |
 |MSDN-Foren: [Marketplace](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=DataMarket)     | Microsoft Developer Network-Forum.         |
 |Stack Overflow: [Azure](https://stackoverflow.com/questions/tagged/azure)     |    Stack Overflow-Umgebung zum Abrufen von Lösungen und Stellen von allgemeinen Fragen zu Azure und zum Marketplace:<ul><li>[Azure Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure Resource Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Dokumentation zu virtuellen Computern](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li></ul> |
 
