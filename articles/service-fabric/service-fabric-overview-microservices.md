@@ -99,7 +99,7 @@ Wir kehren noch einmal kurz zum Vergleich des monolithischen Ansatzes mit dem Mi
 #### <a name="state-storage-between-application-styles"></a>Speichern des Zustands für unterschiedliche Anwendungsstile
 ![Service Fabric-Plattform: Zustandsspeicherung][Image2]
 
-***Der monolithische Ansatz auf der rechten Seite enthält eine Einzeldatenbank und die spezifischen Technologieebenen.***
+***Der monolithische Ansatz auf der linken Seite enthält eine Einzeldatenbank und die spezifischen Technologieebenen.***
 
 ***Der Microservice-Ansatz auf der rechten Seite verfügt über einen Graphen mit verbundenen Microservices, wobei der Zustand meist auf den Microservice beschränkt ist und verschiedene Technologien verwendet werden.***
 
