@@ -1,11 +1,11 @@
 ---
-title: "Erstellen eines virtuellen Computers mit mehreren Netzwerkkarten – Azure Resource Manager-Vorlage | Microsoft-Dokumentation"
+title: Erstellen eines virtuellen Computers mit mehreren Netzwerkkarten – Azure Resource Manager-Vorlage | Microsoft-Dokumentation
 description: Erstellen Sie mithilfe einer Azure Resource Manager-Vorlage einen virtuellen Computer mit mehreren Netzwerkkarten (NICs).
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 486f7dd5-cf2f-434c-85d1-b3e85c427def
 ms.service: virtual-network
@@ -17,10 +17,10 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 85bfa264c6cf2b0586816a47b3ab72f3aee8ec96
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-with-multiple-nics-using-a-template"></a>Erstellen eines virtuellen Computers (VM) mit mehreren Netzwerkkarten (NICs) mithilfe einer Vorlage
 [!INCLUDE [virtual-network-deploy-multinic-arm-selectors-include.md](../../includes/virtual-network-deploy-multinic-arm-selectors-include.md)]

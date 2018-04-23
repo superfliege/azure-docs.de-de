@@ -1,11 +1,11 @@
 ---
 title: Lokales Einrichten des bedingten Zugriffs in Azure Active Directory | Microsoft-Dokumentation
-description: "Eine Schritt-für-Schritt-Anleitung, die zeigt, wie Sie mithilfe der Active Directory-Verbunddienste (AD FS) unter Windows Server 2012 R2 den bedingten Zugriff auf lokale Anwendungen ermöglichen."
+description: Eine Schritt-für-Schritt-Anleitung, die zeigt, wie Sie mithilfe der Active Directory-Verbunddienste (AD FS) unter Windows Server 2012 R2 den bedingten Zugriff auf lokale Anwendungen ermöglichen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 466cd564f08b07d443db7cb1de59c5778682ed73
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8c692323803247cd54d27f369ea749e462fbc359
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung
 Wenn Sie von Benutzern verlangen, ihre persönlichen Geräte mithilfe des Geräteregistrierungsdiensts mit Azure Active Directory (Azure AD) über den Arbeitsplatz einzubinden, können deren Geräte als Ihrer Organisation bekannt markiert werden. Im Folgenden wird eine Schritt-für-Schritt-Anleitung aufgeführt, die zeigt, wie Sie mithilfe der Active Directory-Verbunddienste (AD FS) unter Windows Server 2012 R2 den bedingten Zugriff auf lokale Anwendungen ermöglichen.
@@ -89,7 +89,7 @@ Führen Sie die Schritte in der Checkliste durch, um den Azure Active Directory-
 | Führen Sie Teil 2 von „Aktivieren des Geräterückschreibens in Azure AD Connect“ durch. Danach können Sie zu den Anweisungen dieses Handbuchs zurückkehren. |[Aktivieren des Geräterückschreibens in Azure AD Connect](#upgrade-your-active-directory-domain-services-schema) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Optional] Teil 4: Aktivieren von Multi-Factor Authentication
-Es wird dringend empfohlen, eine der verschiedenen Optionen für Multi-Factor Authentication zu konfigurieren. Wenn Sie Multi-Factor Authentication durchsetzen möchten, lesen Sie [Auswählen der Sicherheitslösung Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started.md). Darin ist eine Beschreibung der einzelnen Lösungen enthalten, und außerdem Links mit hilfreichen Informationen zum Konfigurieren der Lösung Ihrer Wahl.
+Es wird dringend empfohlen, eine der verschiedenen Optionen für Multi-Factor Authentication zu konfigurieren. Wenn Sie Multi-Factor Authentication durchsetzen möchten, lesen Sie [Auswählen der Sicherheitslösung Multi-Factor Authentication](authentication/concept-mfa-whichversion.md). Darin ist eine Beschreibung der einzelnen Lösungen enthalten, und außerdem Links mit hilfreichen Informationen zum Konfigurieren der Lösung Ihrer Wahl.
 
 ## <a name="part-5-verification"></a>Teil 5: Überprüfung
 Die Bereitstellung ist nun abgeschlossen, sodass Sie einige Szenarien ausprobieren können. Folgen Sie den unten angegebenen Links, um mit dem Dienst zu experimentieren und sich mit den Funktionen vertraut zu machen.

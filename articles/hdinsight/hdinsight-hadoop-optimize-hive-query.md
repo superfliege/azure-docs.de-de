@@ -1,8 +1,8 @@
 ---
 title: Optimieren von Hive-Abfragen in Azure HDInsight | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Ihre Hive-Abfragen für Hadoop in HDInsight optimieren."
+description: Erfahren Sie, wie Sie Ihre Hive-Abfragen für Hadoop in HDInsight optimieren.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: d6174c08-06aa-42ac-8e9b-8b8718d9978e
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 3577b06bfb23457c17099902a7ac9fb8eb6e3087
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 8fc4a1c1759ad857502a540d6c3be11b0f607c79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Optimieren von Hive-Abfragen in Azure HDInsight
 
@@ -41,15 +39,13 @@ Weitere Informationen zu den von HDInsight unterstützten virtuellen Computern f
 
 ## <a name="enable-tez"></a>Aktivieren von Tez
 
-
-            [Apache Tez](http://hortonworks.com/hadoop/tez/) ist eine Alternative zur Ausführungs-Engine MapReduce:
+[Apache Tez](http://hortonworks.com/hadoop/tez/) ist eine Alternative zur Ausführungs-Engine MapReduce:
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
 Tez ist jedoch aus folgenden Gründen schneller:
 
-* 
-            **Ausführen eines gerichteten azyklischen Graphen als einzelnen Auftrag in der MapReduce-Engine**. Der gerichtete azyklische Graph erfordert, dass auf jede Gruppe von Mappern eine Gruppe von Reducern folgt. Dadurch müssen für jede Hive-Abfrage mehrere MapReduce-Aufträge gestartet werden. Für Tez gilt diese Einschränkung nicht. Es kann auch ein komplexes DAG in einem Auftrag verarbeiten, so dass weniger Aufträge gestartet werden müssen.
+* **Ausführen eines gerichteten azyklischen Graphen als einzelnen Auftrag in der MapReduce-Engine**. Der gerichtete azyklische Graph erfordert, dass auf jede Gruppe von Mappern eine Gruppe von Reducern folgt. Dadurch müssen für jede Hive-Abfrage mehrere MapReduce-Aufträge gestartet werden. Für Tez gilt diese Einschränkung nicht. Es kann auch ein komplexes DAG in einem Auftrag verarbeiten, so dass weniger Aufträge gestartet werden müssen.
 * **Vermeiden unnötiger Schreibvorgänge**. Aufgrund der Eröffnung mehrerer Aufträge für eine Hive-Abfrage in der MapReduce-Engine wird die Ausgabe jedes Auftrags in den HDFS-Zwischenspeicher geschrieben. Tez hingegen minimiert die Anzahl der Aufträge für jede Hive-Abfrage und vermeidet so unnötige Schreibvorgänge.
 * **Minimierung von Startverzögerungen**. Tez minimiert Startverzögerungen durch Reduzierung der Anzahl der für den Start erforderlichen Mapper sowie durch eine insgesamt bessere Optimierung.
 * **Wiederverwendung von Containern**. Tez versucht, Container möglichst wiederzuverwenden, und verringert so Latenzzeiten aufgrund von Containerstarts.

@@ -1,23 +1,17 @@
 ---
 title: Abfragen in Azure Search | Microsoft-Dokumentation
 description: Erstellen Sie eine Suchabfrage in Azure Search, und verwenden Sie Suchparameter zum Filtern und Sortieren von Suchergebnissen.
-services: search
-manager: jhubbard
-documentationcenter: 
-author: ashmaka
-ms.assetid: 69205d7a-363f-4b92-a53f-6ca818a3d2c7
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/13/2017
-ms.author: ashmaka
-ms.openlocfilehash: b1a96c2299e415db89f881fa72b150d50bb3c69c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7429f2b3c2a75e1864f78711ad6e374475a25275
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="queries-in-azure-search"></a>Abfragen in Azure Search
 > [!div class="op_single_selector"]

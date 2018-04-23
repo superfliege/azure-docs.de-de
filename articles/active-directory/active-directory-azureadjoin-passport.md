@@ -1,11 +1,11 @@
 ---
-title: "Authentifizieren von Identitäten ohne Kennwörter über Windows Hello for Business und Azure AD | Microsoft-Dokumentation"
-description: "Bietet eine Übersicht über Windows Hello for Business und weitere Informationen zum Bereitstellen von Windows Hello for Business."
+title: Authentifizieren von Identitäten ohne Kennwörter über Windows Hello for Business und Azure AD | Microsoft-Dokumentation
+description: Bietet eine Übersicht über Windows Hello for Business und weitere Informationen zum Bereitstellen von Windows Hello for Business.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 tags: azure-classic-portal
 ms.assetid: f907bb90-8776-46ca-9e12-279949af66ff
 ms.service: active-directory
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
 ms.openlocfilehash: 22534cc5f7f2de235bc1f1212c63ea227083c5a4
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>Authentifizieren von Identitäten ohne Kennwörter über Windows Hello for Business
 Die aktuellen Methoden der Authentifizierung mit Kennwörtern allein sind nicht ausreichend, um Benutzer zu schützen. Benutzer verwenden gleiche Kennwörter wiederholt und vergessen sie. Kennwörter können missbraucht werden, sind anfällig für Phishing, für Sicherheitslücken und sie sind leicht zu erraten. Sie sind außerdem schwer zu merken und anfällig für Angriffe wie "[Pass-the-Hash](https://technet.microsoft.com/dn785092.aspx)".

@@ -2,18 +2,18 @@
 title: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen in Ihrer Azure-Umgebung | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie eine Richtliniendefinition zur Identifizierung nicht konformer Ressourcen erstellen.
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/10/2018
+ms.date: 04/18/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 4287b139f26d17e58f6caffbadb2c7da2a9b7b82
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: e5b27bdc2aef15b619022d1c08fa3e6dccaa5736
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen in Ihrer Azure-Umgebung
 Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln. Diese Schnellstartanleitung führt Sie schrittweise durch die Erstellung einer Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden.
@@ -71,18 +71,17 @@ Falls Ressourcen vorhanden sind, die mit dieser neuen Zuweisung nicht konform si
 
 Wenn eine Bedingung für einige Ihrer vorhandenen Ressourcen als erfüllt ausgewertet wird, werden diese Ressourcen als nicht mit der Richtlinie konform markiert. In der Beispielabbildung oben werden nicht konforme Ressourcen angezeigt. Die folgende Tabelle gibt Aufschluss über das Zusammenspiel zwischen den verschiedenen Richtlinienaktionen, der Bedingungsauswertung und dem resultierenden Konformitätszustand. Die Auswertungslogik wird zwar im Azure-Portal nicht angezeigt, Sie sehen aber die Ergebnisse für den Konformitätszustand. Das Ergebnis für den Konformitätszustand ist entweder „konform“ oder „nicht konform“.
 
-|Ressource  |Auswertungsergebnis für die Richtlinienbedingung  |Aktion in der Richtlinie   |Konformitätszustand  |
-|-----------|---------|---------|---------|
-|Exists     |True     |Verweigern     |Nicht konform |
-|Exists     |False    |Verweigern     |Konform     |
-|Exists     |True     |Anfügen   |Nicht konform |
-|Exists     |False    |Anfügen   |Konform     |
-|Exists     |True     |Audit    |Nicht konform |
-|Exists     |False    |Audit    |Nicht konform |
+| **Ressourcenzustand** | **Aktion** | **Richtlinienauswertung** | **Konformitätszustand** |
+| --- | --- | --- | --- |
+| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Nicht konform |
+| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Konform |
+| Neu | Audit, AuditIfNotExist\* | True | Nicht konform |
+| Neu | Audit, AuditIfNotExist\* | False | Konform |
 
+\* Für die Aktionen Append, DeployIfNotExist und AuditIfNotExist muss die IF-Anweisung auf TRUE festgelegt sein. Für die Aktionen muss die Existenzbedingung außerdem auf FALSE festgelegt sein, damit sie nicht konform sind. Bei TRUE löst die IF-Bedingung die Auswertung der Existenzbedingung für die zugehörigen Ressourcen aus.
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Andere Anleitungen in dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie mit den nachfolgenden Tutorials fortfahren möchten, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
+Andere Leitfäden in dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie mit den nachfolgenden Tutorials fortfahren möchten, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
 1. Klicken Sie im linken Bereich auf **Zuweisungen**.
 2. Suchen Sie nach der von Ihnen erstellten Zuordnung, und klicken Sie mit der rechten Maustaste darauf.
 

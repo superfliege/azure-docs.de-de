@@ -1,5 +1,5 @@
 ---
-title: "Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure | Microsoft Docs"
+title: Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure | Microsoft Docs
 description: " Die Workloadmigration zu Azure IaaS ist eine gute Gelegenheit zur Neubewertung unserer Designs. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
-ms.openlocfilehash: 376a3e47e5099aa4d74732e0b6ed14ed9af14091
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8561d9ca2570975f4cd20a0606ce5b9cdee632b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 
@@ -83,7 +83,7 @@ Mithilfe von [Privileged Identity Management](../active-directory/active-directo
 
 Organisationen, die Azure in Lab- und Entwicklungsumgebungen einsetzen, können agiler testen und entwickeln, da die von der Hardwarebeschaffung verursachten Verzögerungen wegfallen. Mangelnde Vertrautheit mit Azure oder der Wunsch, die Einführung von Azure zu beschleunigen, kann jedoch leider dazu führen, dass der Administrator die Rechte zu großzügig vergibt. Dadurch kann die Organisation für interne Angriffe anfällig werden. Einige Benutzer verfügen unter Umständen über wesentlich umfangreichere Zugriffsrechte als beabsichtigt.
 
-Der Dienst [Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) verwendet die [rollenbasierte Zugriffssteuerung von Azure](../active-directory/role-based-access-control-what-is.md) (Role Based Access Control, RBAC). Mit RBAC können Sie die Aufgaben in Ihrem Team in Rollen aufteilen, denen jeweils nur das für die Aufgabenausführung notwendige Zugriffsniveau gewährt wird. RBAC beinhaltet vordefinierte Rollen (Besitzer, Lab-Benutzer und Mitwirkender). Mit diesen Rollen können Sie sogar Rechte für externe Partner gewähren, was die Zusammenarbeit erheblich vereinfacht.
+Der Dienst [Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) verwendet die [rollenbasierte Zugriffssteuerung von Azure](../role-based-access-control/overview.md) (Role Based Access Control, RBAC). Mit RBAC können Sie die Aufgaben in Ihrem Team in Rollen aufteilen, denen jeweils nur das für die Aufgabenausführung notwendige Zugriffsniveau gewährt wird. RBAC beinhaltet vordefinierte Rollen (Besitzer, Lab-Benutzer und Mitwirkender). Mit diesen Rollen können Sie sogar Rechte für externe Partner gewähren, was die Zusammenarbeit erheblich vereinfacht.
 
 Da DevTest Labs RBAC verwendet, können zusätzlich [benutzerdefinierte Rollen](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md) erstellt werden. DevTest Labs vereinfacht nicht nur die Berechtigungsverwaltung, sondern auch den Prozess der Umgebungsbereitstellung. Darüber hinaus unterstützt Sie der Dienst bei der Bewältigung anderer typischer Herausforderungen von Teams, die an Entwicklungs- und Testumgebungen arbeiten. DevTest Labs erfordert zwar eine gewisse Vorbereitung, erleichtert Ihrem Team aber langfristig die Arbeit.
 
@@ -178,7 +178,7 @@ Vergleichen Sie Ihre Standards mit den bewährten Methoden der Branche, passen S
 Für Umgebungen, die getrennt von Ihrer Produktionsumgebung gehostet werden, können Sie eine Antischadsoftware-Erweiterung verwenden, um den Schutz Ihrer virtuellen Computer und Clouddienste zu verbessern. Diese wird in [Azure Security Center](../security-center/security-center-intro.md) integriert.
 
 
-[Microsoft Antimalware](azure-security-antimalware.md) umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Malwareproblembehandlung, Signaturupdates, Modulupdates, Beispielberichte, Sammlungen von Ausschlussereignissen und [PowerShell-Unterstützung](https://msdn.microsoft.com/library/dn771715.aspx).
+[Microsoft-Antischadsoftware](azure-security-antimalware.md) umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Malwareproblembehandlung, Signaturupdates, Engine-Updates, Beispielberichte, Sammlungen von Ausschlussereignissen und [PowerShell-Unterstützung](https://msdn.microsoft.com/library/dn771715.aspx).
 
 ![Azure Antimalware](./media/azure-security-iaas/azantimalware.png)
 

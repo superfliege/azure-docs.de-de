@@ -1,26 +1,24 @@
 ---
-title: "Überwachen von Hadoop-Clustern in HDInsight mit der Ambari API – Azure | Microsoft-Dokumentation"
-description: "Verwenden Sie die Apache Ambari-APIs für die Erstellung, Verwaltung und Überwachung von Hadoop-Clustern. Die intuitiven Operatortools und APIs verbergen die Komplexität von Hadoop."
+title: Überwachen von Hadoop-Clustern in HDInsight mit der Ambari API – Azure | Microsoft-Dokumentation
+description: Verwenden Sie die Apache Ambari-APIs für die Erstellung, Verwaltung und Überwachung von Hadoop-Clustern. Die intuitiven Operatortools und APIs verbergen die Komplexität von Hadoop.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 editor: cgronlun
 manager: jhubbard
 ms.assetid: 052135b3-d497-4acc-92ff-71cee49356ff
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 57b63490037760c9150fd4b8fdb66267739f20ae
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 3c8b1af3ad151a7a901150352202ab0b85aa6ec8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Überwachen von Hadoop-Clustern in HDInsight mit der Ambari API
 Erfahren Sie, wie HDInsight-Cluster mithilfe der Ambari-APIs überwacht werden.
@@ -48,7 +46,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
   > 
 * **Ein Azure HDInsight-Cluster**. Anweisungen zur Bereitstellung von Clustern finden Sie unter [Erste Schritte mit HDInsight][hdinsight-get-started] und unter [Bereitstellen von HDInsight-Clustern][hdinsight-provision]. Sie benötigen die folgenden Daten, um das Lernprogramm durchzuarbeiten:
   
-  | Clustereigenschaft | Azure PowerShell-Variablenname | Wert | Beschreibung |
+  | Clustereigenschaft | Azure PowerShell-Variablenname | Wert | BESCHREIBUNG |
   | --- | --- | --- | --- |
   |   HDInsight-Clustername |$clusterName | |Der Name des HDInsight-Clusters. |
   |   Cluster-Benutzername |$clusterUsername | |Der Clustername, der beim Erstellen des Clusters angegeben wurde. |
@@ -128,7 +126,7 @@ Wenn der Ambari-Endpunkt „https://{clusterDns}.azurehdinsight.net/ambari/api/v
 ## <a name="ambari-monitoring-apis"></a>Ambari-Überwachungs-APIs
 In der folgenden Tabelle sind einige der am häufigsten verwendeten Ambari-Überwachungs-API-Aufrufe aufgeführt. Weitere Informationen zur API finden Sie in der [Ambari-API-Referenz][ambari-api-reference].
 
-| Überwachungs-API-Aufruf | URI | Beschreibung |
+| Überwachungs-API-Aufruf | URI | BESCHREIBUNG |
 | --- | --- | --- |
 | Cluster abrufen |`/api/v1/clusters` | |
 | Clusterinformationen abrufen. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net` |Cluster, Dienste, Hosts |

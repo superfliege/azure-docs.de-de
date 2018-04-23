@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: a0dc2ee201c1729b10cd363553cdf5d61ec87748
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: dbbbc7ee87d53f65d51b20fd5b8ffcb6c4930f15
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktivieren von Azure-Abonnements und -Konten mit Azure Cost Management
 
@@ -29,7 +29,7 @@ Um die in diesem Artikel beschriebenen Verfahren ausführen zu können, werden b
 - Berechtigung zum Registrieren der CloudynCollector-Anwendung bei Ihrem Azure AD-Mandanten.
 - Fähigkeit zum Zuweisen der Anwendung zu einer Rolle in Ihren Azure-Abonnements.
 
-Die Konten in Ihren Azure-Abonnements müssen über `Microsoft.Authorization/*/Write`-Zugriff verfügen, um die CloudynCollector-Anwendung zuweisen zu können. Diese Aktion wird über die Rolle [Besitzer](../active-directory/role-based-access-built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](../active-directory/role-based-access-built-in-roles.md#user-access-administrator) gewährt.
+Die Konten in Ihren Azure-Abonnements müssen über `Microsoft.Authorization/*/Write`-Zugriff verfügen, um die CloudynCollector-Anwendung zuweisen zu können. Diese Aktion wird über die Rolle [Besitzer](../role-based-access-control/built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) gewährt.
 
 Wenn Ihr Konto der Rolle **Mitwirkender** zugewiesen ist, verfügen Sie nicht über die erforderliche Berechtigung zum Zuweisen der Anwendung. Sie erhalten einen Fehler, wenn Sie versuchen, Ihrem Azure-Abonnement die CloudynCollector-Anwendung zuzuweisen.
 

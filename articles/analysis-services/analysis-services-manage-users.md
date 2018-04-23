@@ -1,25 +1,18 @@
 ---
 title: Authentifizierung und Benutzerberechtigungen in Azure Analysis Services | Microsoft-Dokumentation
 description: Informationen zu Authentifizierung und Benutzerberechtigungen in Azure Analysis Services.
-services: analysis-services
-documentationcenter: 
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 1011e2c8351839cc8c93fc74a7d6f51f29e52410
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: ede05667d794267443babacaa8b016206d86ab2c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authentication-and-user-permissions"></a>Authentifizierung und Benutzerberechtigungen
 Azure Analysis Services verwendet Azure Active Directory (Azure AD) zur Identitätsverwaltung und Benutzerauthentifizierung. Jeder Benutzer, der einen Azure Analysis Services-Server erstellt, verwaltet oder eine Verbindung mit diesem herstellt, muss über eine gültige Benutzeridentität in einem [Azure AD-Mandanten](../active-directory/active-directory-administer.md) im selben Abonnement verfügen.
@@ -69,7 +62,7 @@ Excel-Benutzer können eine Verbindung mit einem Server über ein Windows-Konto,
 
 ![Access Control im Azure-Portal](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-Rollen auf dieser Ebene gelten für Benutzer oder Konten, die sie zum Ausführen von Aufgaben im Portal oder mithilfe von Azure Resource Manager-Vorlagen benötigen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md). 
+Rollen auf dieser Ebene gelten für Benutzer oder Konten, die sie zum Ausführen von Aufgaben im Portal oder mithilfe von Azure Resource Manager-Vorlagen benötigen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md). 
 
 
 ## <a name="database-roles"></a>Datenbankrollen
@@ -85,4 +78,4 @@ Rollen auf dieser Ebene gelten für Benutzer oder Konten, die sie zum Ausführen
 [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](../active-directory/active-directory-manage-groups.md)   
 [Verwalten von Datenbankrollen und Benutzern](analysis-services-database-users.md)  
 [Verwalten von Serveradministratoren](analysis-services-server-admins.md)  
-[Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md)  
+[Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md)  

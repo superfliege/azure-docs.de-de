@@ -1,12 +1,12 @@
 ---
-title: "Bewährte Methoden für die Azure-Datenbanksicherheit | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält bewährte Methoden zur Azure-Datenbanksicherheit."
+title: Bewährte Methoden für die Azure-Datenbanksicherheit | Microsoft-Dokumentation
+description: Dieser Artikel enthält bewährte Methoden zur Azure-Datenbanksicherheit.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c8f49a778ab5e32108531cab05cab7f7eb092221
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3c019e8e1518c661eb75065f061ee681f0231efa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-database-security-best-practices"></a>Bewährte Methoden für die Azure-Datenbanksicherheit
 
@@ -112,14 +112,14 @@ Es ist wichtig zu verstehen, dass Dateien, die im Zusammenhang mit der [Pufferpo
 Da ein autorisierter Benutzer, wie beispielsweise ein Sicherheits- oder Datenbankadministrator, auf die Daten zugreifen kann, selbst wenn Sie mit TDE verschlüsselt sind, sollten Sie auch die folgenden Empfehlungen befolgen:
 
 -   Aktivieren Sie die SQL-Authentifizierung auf Datenbankebene.
--   Verwenden Sie die Azure AD-Authentifizierung mithilfe von [RBAC-Rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is).
+-   Verwenden Sie die Azure AD-Authentifizierung mithilfe von [RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/overview).
 -   Benutzer und Anwendungen sollten verschiedenen Konten verwenden, um sich zu authentifizieren. Auf diese Weise können Sie die Anzahl von an Benutzer und Anwendungen verliehenen Berechtigungen beschränken und das Risiko böswilliger Aktivitäten reduzieren.
 -   Implementieren Sie Sicherheitsmaßnahmen auf Datenbankebene, indem Sie feste Datenbankrollen (z.B. „db_datareader“ oder „db_datawriter“) verwenden oder benutzerdefinierte Rollen für Ihre Anwendung erstellen, um explizite Berechtigungen für ausgewählte Datenbankobjekte zu gewähren.
 
 Es gibt noch weitere Möglichkeiten zum Verschlüsseln Ihrer Daten:
 
 -   [Verschlüsselung auf Zellenebene](https://msdn.microsoft.com/library/ms179331.aspx) werden bestimmte Spalten oder sogar Zellen, die Daten enthalten, mit unterschiedlichen Verschlüsselungsschlüsseln verschlüsselt.
--   Verschlüsselung verwendeter Daten mit Always Encrypted: Mit [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) können Kunden sensible Daten in Clientanwendungen verschlüsseln, ohne die Verschlüsselungsschlüssel für das Datenbankmodul (SQL-Datenbank oder SQL Server) jemals offenzulegen. Zu diesem Zweck ermöglicht Always Encrypted eine Trennung zwischen den Besitzern der Daten (die diese anzeigen dürfen) und den Personen, die die Daten verwalten (aber ansonsten keinen Zugriff haben).
+-   Verschlüsselung verwendeter Daten mit Always Encrypted: Mit [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) können Kunden sensible Daten in Clientanwendungen verschlüsseln, ohne die Verschlüsselungsschlüssel für die Datenbank-Engine (SQL-Datenbank oder SQL Server) jemals offenzulegen. Zu diesem Zweck ermöglicht Always Encrypted eine Trennung zwischen den Besitzern der Daten (die diese anzeigen dürfen) und den Personen, die die Daten verwalten (aber ansonsten keinen Zugriff haben).
 -   Verwendung der Sicherheit auf Zeilenebene: Bei der Sicherheit auf Zeilenebene können Kunden den Zugriff auf Zeilen in einer Datenbanktabelle basierend auf den Merkmalen des Benutzers steuern, der eine Abfrage ausführt (z.B. Gruppenmitgliedschaft oder Ausführungskontext). Weitere Informationen finden Sie unter [Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/dn765131).
 
 ## <a name="protect-data-in-transit"></a>Schützen der Daten während der Übertragung
@@ -140,7 +140,7 @@ Organisationen, die die Daten während der Übertragung nicht schützen, sind an
 Weitere Informationen zur Azure-VPN-Option finden Sie im Artikel [Planung und Entwurf für VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
 ## <a name="enable-database-auditing"></a>Aktivieren der Datenbanküberwachung
-Die Überprüfung einer Instanz des SQL Server-Datenbankmoduls oder einer einzelnen Datenbank umfasst das Nachverfolgen und Protokollieren von Ereignissen, die im Datenbankmodul auftreten. Bei der SQL Server-Überwachung können Sie Serverüberwachungen erstellen, die Serverüberwachungsspezifikationen für Ereignisse auf Serverebene und Datenbanküberwachungsspezifikationen für Ereignisse auf Datenbankebene enthalten. Überwachte Ereignisse können in die Ereignisprotokolle oder Überwachungsdateien geschrieben werden.
+Die Überprüfung einer Instanz der SQL Server-Datenbank-Engine oder einer einzelnen Datenbank umfasst das Nachverfolgen und Protokollieren von Ereignissen, die in der Datenbank-Engine auftreten. Bei der SQL Server-Überwachung können Sie Serverüberwachungen erstellen, die Serverüberwachungsspezifikationen für Ereignisse auf Serverebene und Datenbanküberwachungsspezifikationen für Ereignisse auf Datenbankebene enthalten. Überwachte Ereignisse können in die Ereignisprotokolle oder Überwachungsdateien geschrieben werden.
 
 Es gibt mehrere Ebenen der Überwachung für SQL Server. Dies richtet sich nach den behördlichen Anforderungen bzw. den Standardvorgaben für Ihre Installation. SQL Server Audit enthält die Tools und Prozesse, die Sie benötigen, um Überwachungen für verschiedene Server- und Datenbankobjekte zu aktivieren, zu speichern und anzuzeigen.
 

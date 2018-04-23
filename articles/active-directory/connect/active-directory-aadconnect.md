@@ -15,17 +15,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: bd2b65c31e7736346957dde4edfb7c32894c833e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7112b8af792dc245c1a2a68e130328d82b4958b3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory
 Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen. Dieses Thema beschreibt die Planung, Bereitstellung und den Betrieb. Es umfasst Links zu Themen, die mit diesem Bereich zusammenhängen.
 
 > [!IMPORTANT]
 > [Azure AD Connect ist die beste Lösung, um Ihr lokales Verzeichnis mit Azure AD und Office 365 zu verbinden. Da Windows Azure Active Directory Sync (DirSync) und Azure AD Sync veraltet sind und der Support für diese Tools am 13. April 2017 endete, ist dies ein guter Zeitpunkt, um ein Upgrade auf Azure AD Connect durchzuführen.](active-directory-aadconnect-dirsync-deprecated.md)  Außerdem gilt:
+
+
+
 > 
 > - Die Synchronisierung von Benutzern mit Azure AD ist ein **kostenloses Feature**, für das Kunden keinerlei kostenpflichtiges Abonnement benötigen.
 >- Synchronisierten Benutzer wird **nicht automatisch** *eine* Lizenz erteilt. Administratoren haben weiterhin uneingeschränkte Kontrolle über Lizenzzuweisungen. 
@@ -51,6 +54,10 @@ Azure Active Directory Connect besteht aus drei Hauptkomponenten: den Synchronis
 * Systemüberwachung: Azure AD Connect Health bietet eine stabile Überwachung und einen zentralen Speicherort im Azure-Portal, um diese Aktivität anzuzeigen. Weitere Informationen finden Sie unter [Azure Active Directory Connect Health](../connect-health/active-directory-aadconnect-health.md).
 
 ## <a name="install-azure-ad-connect"></a>Installieren von Azure AD Connect
+
+> [!IMPORTANT]
+> Microsoft unterstützt die Änderung oder den Einsatz der Azure AD Connect-Synchronisierung außerhalb dieser formal dokumentierten Aktionen nicht. Eine dieser Aktionen kann zu einem inkonsistenten oder nicht unterstützten Status der Azure AD Connect-Synchronisierung führen. Folglich kann Microsoft auch keinen technischen Support für solche Bereitstellungen leisten.
+
 Den Download für Azure AD Connect finden Sie im [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771).
 
 | Lösung | Szenario |
@@ -90,7 +97,7 @@ Azure AD Connect verfügt über mehrere Funktionen, die Sie optional aktivieren 
 
 [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-hash-synchronization.md) synchronisiert das Kennworthash in Active Directory mit Azure AD. So kann der Endbenutzer das gleiche Kennwort lokal und in der Cloud verwenden, es jedoch nur an einem Ort verwalten. Da es das lokale Active Directory als Autorität verwendet, können Sie auch Ihre eigene Kennwortrichtlinie verwenden.
 
-[Kennwortrückschreiben](../active-directory-passwords-getting-started.md) ermöglicht es den Benutzern, ihre Kennwörter in der Cloud zu ändern und zurückzusetzen und die lokale Kennwortrichtlinie anzuwenden.
+[Kennwortrückschreiben](../authentication/quickstart-sspr.md) ermöglicht es den Benutzern, ihre Kennwörter in der Cloud zu ändern und zurückzusetzen und die lokale Kennwortrichtlinie anzuwenden.
 
 [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md) ermöglicht es Ihnen, ein in Azure AD registriertes Gerät wieder in das lokale Active Directory zurückzuschreiben, damit es für bedingten Zugriff verwendet werden kann.
 
@@ -103,7 +110,7 @@ Die Funktion zum [Verhindern eines versehentlichen Löschvorgangs](active-direct
 | --- | --- |
 |Konfigurieren der Filterung | [Azure AD Connect-Synchronisierung: Konfigurieren der Filterung](active-directory-aadconnectsync-configure-filtering.md)|
 |Kennworthashsynchronisierung | [Azure AD Connect-Synchronisierung: Implementieren der Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-hash-synchronization.md)|
-|Kennwortrückschreiben | [Erste Schritte mit der Kennwortverwaltung](../active-directory-passwords-getting-started.md)|
+|Kennwortrückschreiben | [Erste Schritte mit der Kennwortverwaltung](../authentication/quickstart-sspr.md)|
 |Geräterückschreiben | [Aktivieren des Geräterückschreibens in Azure AD Connect](active-directory-aadconnect-feature-device-writeback.md)|
 |Verhindern eines versehentlichen Löschvorgangs | [Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)|
 |automatische Upgrade | [Azure AD Connect: Automatisches Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md)|

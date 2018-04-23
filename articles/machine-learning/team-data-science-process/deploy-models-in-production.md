@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: bradsev
-ms.openlocfilehash: ddb45dd5fae0fbdecebbc262d7bac78ff2b10f21
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 681f227a04802c4e27e42083c1eb63f620a8fc77
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="deploy-models-in-production"></a>Bereitstellen von Modellen in der Produktion
 
@@ -27,7 +27,7 @@ Bei einer Produktionsbereitstellung kann ein Modell eine aktive Rolle in einem U
 Es gibt verschiedene Ansätze und Plattformen für das Einführen von Modellen in die Produktion. Hier sind einige Optionen angegeben:
 
 
-- [Modellentwicklung in Azure Machine Learning](../preview/model-management-overview.md)
+- [Modellentwicklung in Azure Machine Learning](../desktop-workbench/model-management-overview.md)
 - [Bereitstellung eines Modells in SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

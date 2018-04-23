@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f135665b6fa7eb640526be513d2757c8e17ab8df
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 > [!NOTE]
 > Die neuen VPN-Gateway-SKUs (VpnGw1, VpnGw2 und VpnGw3) werden nur für das Resource Manager-Bereitstellungsmodell unterstützt. Für klassische virtuelle Netzwerke sollten weiterhin die alten SKUs (Legacy-SKUs) verwendet werden.

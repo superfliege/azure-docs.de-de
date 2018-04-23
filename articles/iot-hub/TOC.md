@@ -121,7 +121,7 @@
 #### [.NET-Back-End-/.NET-Gerät](iot-hub-csharp-csharp-twin-how-to-configure.md)
 #### [Java-Back-End-/Java-Gerät](iot-hub-java-java-twin-how-to-configure.md)
 #### [Python-Back-End/Python-Gerät](iot-hub-python-python-twin-how-to-configure.md)
-### Aktualisieren der Gerätefirmware mithilfe von Geräteaufträgen
+### Aktualisieren der Gerätefirmware mithilfe von Gerätezwillingen
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-firmware-update.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-firmware-update.md)
 #### [.NET-Back-End-/.NET-Gerät](iot-hub-csharp-csharp-firmware-update.md)

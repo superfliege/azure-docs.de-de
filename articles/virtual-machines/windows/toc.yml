@@ -421,6 +421,8 @@
           href: troubleshoot-activation-problems.md
         - name: Fehler bei der Zuordnung
           href: allocation-failure.md
+        - name: Zuordnungsfehler bei klassischen virtuellen Computern
+          href: allocation-failure-classic.md
         - name: Erneutes Bereitstellen eines virtuellen Computers
           href: redeploy-to-new-node.md
         - name: Häufige Fehlermeldungen

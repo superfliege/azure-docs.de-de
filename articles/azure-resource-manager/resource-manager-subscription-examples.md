@@ -1,6 +1,6 @@
 ---
-title: "Szenarien und Beispiele für die Abonnementgovernance | Microsoft Docs"
-description: "Enthält Beispiele für das Implementieren der Azure-Abonnementgovernance für allgemeine Szenarien."
+title: Szenarien und Beispiele für die Abonnementgovernance | Microsoft Docs
+description: Enthält Beispiele für das Implementieren der Azure-Abonnementgovernance für allgemeine Szenarien.
 services: azure-resource-manager
 documentationcenter: na
 author: rdendtler
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 4ab816d0392816c2293f9d70eb249bbcfa09bfba
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6bd4e9f6bbc5bba73b2c169b7f3c5931f30029e6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Beispiele für das Implementieren eines Azure-Unternehmensgerüsts
 Dieses Thema enthält Beispiele dafür, wie ein Unternehmen die Empfehlungen für ein [Azure-Unternehmensgerüst](resource-manager-subscription-governance.md) implementieren kann. Ein fiktives Unternehmen mit dem Namen Contoso wird verwendet, um die bewährten Methoden für allgemeine Szenarien zu veranschaulichen.
@@ -43,7 +43,7 @@ Contoso baut ein Quellcodeverwaltungssystem (BitBucket) auf, das von Entwicklern
 ### <a name="naming-standards--resource-groups"></a>Benennungsstandards und Ressourcengruppen
 Dave erstellt ein Abonnement, um Entwicklertools zu unterstützen, die in allen Unternehmenseinheiten genutzt werden. Er muss aussagekräftige Namen für die Abonnement und die Ressourcengruppen (für die Anwendung und die Netzwerke) erstellen. Er erstellt das Abonnement und die Ressourcengruppen wie folgt:
 
-| Item | Name | Beschreibung |
+| Item | NAME | BESCHREIBUNG |
 | --- | --- | --- |
 | Abonnement |Contoso ETS DeveloperTools Production |Unterstützt allgemeine Entwicklertools |
 | Ressourcengruppe |bitbucket-prod-rg |Enthält den Anwendungswebserver und den Datenbankserver |
@@ -54,12 +54,12 @@ Nach dem Erstellen seines Abonnement möchte Dave sicherstellen, dass die entspr
 
 Dave weist die folgenden Rollen für das Abonnement zu:
 
-| Rolle | Zugewiesen zu | Beschreibung |
+| Rolle | Zugewiesen zu | BESCHREIBUNG |
 | --- | --- | --- |
-| [Besitzer](../active-directory/role-based-access-built-in-roles.md#owner) |Verwaltete-ID aus AD von Contoso |Diese ID wird mit Just-In-Time-Zugriff (JIT) über das Identitätsverwaltungstool von Contoso gesteuert und stellt sicher, dass der Zugriff des Abonnementbesitzers vollständig überwacht wird. |
-| [Sicherheits-Manager](../active-directory/role-based-access-built-in-roles.md#security-manager) |Abteilung für Sicherheits- und Risikomanagement |Diese Rolle ermöglicht es Benutzern, das Azure Security Center und den Status der Ressourcen anzuzeigen. |
-| [Mitwirkender von virtuellem Netzwerk](../active-directory/role-based-access-built-in-roles.md#network-contributor) |Netzwerkteam |Diese Rolle ermöglicht es dem Netzwerkteam von Contoso, das Site-to-Site-VPN und die virtuellen Netzwerke zu verwalten. |
-| *Benutzerdefinierte Rolle* |Anwendungsbesitzer |Dave erstellt eine Rolle, die die Berechtigung zum Ändern von Ressourcen innerhalb der Ressourcengruppe gewährt. Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../active-directory/role-based-access-control-custom-roles.md). |
+| [Besitzer](../role-based-access-control/built-in-roles.md#owner) |Verwaltete-ID aus AD von Contoso |Diese ID wird mit Just-In-Time-Zugriff (JIT) über das Identitätsverwaltungstool von Contoso gesteuert und stellt sicher, dass der Zugriff des Abonnementbesitzers vollständig überwacht wird. |
+| [Sicherheits-Manager](../role-based-access-control/built-in-roles.md#security-manager) |Abteilung für Sicherheits- und Risikomanagement |Diese Rolle ermöglicht es Benutzern, das Azure Security Center und den Status der Ressourcen anzuzeigen. |
+| [Mitwirkender von virtuellem Netzwerk](../role-based-access-control/built-in-roles.md#network-contributor) |Netzwerkteam |Diese Rolle ermöglicht es dem Netzwerkteam von Contoso, das Site-to-Site-VPN und die virtuellen Netzwerke zu verwalten. |
+| *Benutzerdefinierte Rolle* |Anwendungsbesitzer |Dave erstellt eine Rolle, die die Berechtigung zum Ändern von Ressourcen innerhalb der Ressourcengruppe gewährt. Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../role-based-access-control/custom-roles.md). |
 
 ### <a name="policies"></a>Richtlinien
 Dave hat die folgenden Anforderungen für die Verwaltung von Ressourcen im Abonnement:
@@ -70,10 +70,10 @@ Dave hat die folgenden Anforderungen für die Verwaltung von Ressourcen im Abonn
 
 Er erstellt die folgenden [Azure-Richtlinien](../azure-policy/azure-policy-introduction.md):
 
-| Feld | Effekt | Beschreibung |
+| Feld | Wirkung | BESCHREIBUNG |
 | --- | --- | --- |
 | location |audit |Überwachen der Erstellung von Ressourcen in einer beliebigen Region |
-| Typ |deny |Verweigern der Erstellung von virtuellen Computern der G-Serie |
+| type |deny |Verweigern der Erstellung von virtuellen Computern der G-Serie |
 | tags |deny |Erfordern des Tags für Anwendungsbesitzer |
 | tags |deny |Erfordern Tags für Kostenstellen |
 | tags |append |Anfügen des Tagnamens **BusinessUnit** und des Tagwerts **ETS** an alle Ressourcen |
@@ -94,7 +94,7 @@ Das Contoso ETS-Team für Informationssicherheit und Risikomanagement überprüf
 
 Er erstellt die folgenden Ressourcen:
 
-| Ressourcentyp | Name | Beschreibung |
+| Ressourcentyp | NAME | BESCHREIBUNG |
 | --- | --- | --- |
 | Virtuelles Netzwerk |internal-vnet |Wird mit der Anwendung BitBucket verwendet und ist über ExpressRoute mit dem Contoso-Unternehmensnetzwerk verbunden.  Ein Subnetz (`bitbucket`) stellt einen bestimmten IP-Adressbereich für die Anwendung bereit. |
 | Virtuelles Netzwerk |external-vnet |Dies ist für zukünftige Anwendungen verfügbar, die öffentliche Endpunkte erfordern. |
@@ -105,7 +105,7 @@ Dave erkennt, dass die Konnektivität zwischen dem Unternehmensnetzwerk von Cont
 
 Er erstellt die folgende [Ressourcensperre](resource-group-lock-resources.md):
 
-| Sperrtyp | Ressource | Beschreibung |
+| Sperrtyp | Ressource | BESCHREIBUNG |
 | --- | --- | --- |
 | **CanNotDelete** |internal-vnet |Verhindert, dass Benutzer das virtuelle Netzwerk oder Subnetze löschen; verhindert jedoch nicht, dass neue Subnetze hinzugefügt werden. |
 
@@ -123,7 +123,7 @@ Die Unternehmensführung in der Supply Chain-Unternehmenseinheit hat verschieden
 ### <a name="azure-subscriptions"></a>Azure-Abonnements
 Dave meldet sich beim Azure Enterprise Portal an und stellt fest, dass die Supply Chain-Abteilung bereits vorhanden ist.  Da das Projekt jedoch das erste Entwicklungsprojekt für das Supply Chain-Team in Azure ist, erkennt Dave, dass ein neues Konto für das Entwicklungsteam von Alice eingerichtet werden muss.  Er erstellt das Konto „R&D“ für das Team und gewährt Alice Zugriff. Alice meldet sich über das Azure-Portal an und erstellt zwei Abonnements: eines für die Entwicklungsserver und eines für die Produktionsserver.  Sie befolgt beim Erstellen der folgenden Abonnements die zuvor festgelegten Benennungsstandards:
 
-| Abonnementnutzung | Name |
+| Abonnementnutzung | NAME |
 | --- | --- |
 | Entwicklung |Contoso SupplyChain ResearchDevelopment LoyaltyCard Development |
 | Bereitstellung |SupplyChain Operations LoyaltyCard Production |
@@ -133,7 +133,7 @@ Dave und Alice besprechen die Anwendung und legen fest, dass diese Anwendung nur
 
 Für das **Entwicklungsabonnement** erstellen sie die folgende Richtlinie:
 
-| Feld | Effekt | Beschreibung |
+| Feld | Wirkung | BESCHREIBUNG |
 | --- | --- | --- |
 | location |audit |Überwachen der Erstellung von Ressourcen in einer beliebigen Region |
 
@@ -141,7 +141,7 @@ Sie begrenzen den Typ von SKU nicht, die ein Benutzer bei der Entwicklung erstel
 
 Für das **Produktionsabonnement** erstellen sie die folgenden Richtlinien:
 
-| Feld | Effekt | Beschreibung |
+| Feld | Wirkung | BESCHREIBUNG |
 | --- | --- | --- |
 | location |deny |Verweigern der Erstellung von Ressourcen außerhalb der US-amerikanischen Rechenzentren |
 | tags |deny |Erfordern des Tags für Anwendungsbesitzer |
@@ -164,13 +164,13 @@ Das Contoso ETS-Team für Informationssicherheit und Risikomanagement überprüf
 
 Für das **Entwicklungsabonnement** erstellen sie Folgendes:
 
-| Ressourcentyp | Name | Beschreibung |
+| Ressourcentyp | NAME | BESCHREIBUNG |
 | --- | --- | --- |
 | Virtuelles Netzwerk |internal-vnet |Ist für die Entwicklungsumgebung der Contoso-Kundenkarte vorgesehen und über ExpressRoute mit dem Contoso-Unternehmensnetzwerk verbunden. |
 
 Für das **Produktionsabonnement** erstellen sie Folgendes:
 
-| Ressourcentyp | Name | Beschreibung |
+| Ressourcentyp | NAME | BESCHREIBUNG |
 | --- | --- | --- |
 | Virtuelles Netzwerk |external-vnet |Hostet die Anwendung für die Kundenkarte und ist nicht direkt mit der ExpressRoute-Instanz von Contoso verbunden. Code wird über das Quellcodesystem direkt an die PaaS-Dienste übertragen |
 | Netzwerksicherheitsgruppen (NSG) |loyaltycard-nsg |Stellt sicher, dass die Angriffsfläche dieser Workload minimiert wird, indem eingehende Kommunikation nur über TCP 443 zugelassen wird.  Contoso untersucht auch die Nutzung einer Web Application Firewall für zusätzlichen Schutz |
@@ -180,7 +180,7 @@ Dave und Alice beschließen, Ressourcensperren für einige der wichtigsten Resso
 
 Die folgende Sperre wird erstellt:
 
-| Sperrtyp | Ressource | Beschreibung |
+| Sperrtyp | Ressource | BESCHREIBUNG |
 | --- | --- | --- |
 | **CanNotDelete** |external-vnet |Verhindert, dass das virtuelle Netzwerk oder die Subnetze gelöscht werden. Die Sperre verhindert nicht das Hinzufügen neuer Subnetze |
 

@@ -14,8 +14,12 @@
     - name: Konfigurieren von Hive-Richtlinien
       href: apache-domain-joined-run-hive.md
       maintainContext: true
-    - name: Verwalten von in die Domäne eingebundenen Clustern
-      href: apache-domain-joined-manage.md
+    - name: Verknüpfen mit einem in die Domäne eingebundenen Cluster mithilfe von VSCode
+      href: ../hdinsight-for-vscode.md
+    - name: Verknüpfen mit einem in die Domäne eingebundenen Cluster mithilfe von IntelliJ
+      href: ../spark/apache-spark-intellij-tool-plugin.md
+    - name: Verknüpfen mit einem in die Domäne eingebundenen Cluster mithilfe von Eclipse
+      href: ../spark/apache-spark-eclipse-tool-plugin.md
 - name: Sichern von Daten
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
   maintainContext: true

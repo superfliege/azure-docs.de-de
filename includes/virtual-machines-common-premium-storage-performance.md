@@ -26,7 +26,7 @@ IOPS beschreibt die Anzahl von Anforderungen, die Ihre Anwendung pro Sekunde an 
 
 Wenn Sie einen Storage Premium-Datenträger an Ihre Hochleistungs-VM anfügen, stellt Ihnen Azure gemäß der Datenträgerspezifikation eine garantierte IOPS-Anzahl bereit. Beispielsweise stellt ein Datenträger vom Typ „P50“ 7500 IOPS bereit. Jeder Typ von Hochleistungs-VM weist außerdem einen bestimmtes IOPS-Limit auf. Bei einer Standard-VM vom Typ GS5 ist das Limit beispielsweise 80.000 IOPS.
 
-## <a name="throughput"></a>Durchsatz
+## <a name="throughput"></a>Throughput
 Durchsatz oder Bandbreite ist die Menge der Daten, die Ihre Anwendung in einem angegebenen Intervall an die Speicherdatenträger überträgt. Wenn Ihre Anwendung E/A-Vorgänge mit hohen E/A-Einheitsgrößen durchführt, benötigt sie hohen Durchsatz. Data Warehouse-Anwendungen führen meist suchintensive Vorgänge, bei denen jeweils auf große Datenmengen zugegriffen wird, und üblicherweise Massenvorgänge durch. Aus diesem Grund erfordern solche Anwendungen einen höheren Durchsatz. Wenn Sie eine solche Anwendung haben, müssen Sie die Anwendungsinfrastruktur für eine Durchsatzoptimierung entwerfen. Im nächsten Abschnitt geht es im Detail um die Faktoren, die Sie optimieren müssen, um dies zu erreichen.
 
 Wenn Sie einen Storage Premium-Datenträger an eine Hochleistungs-VM anfügen, bietet Azure Durchsatz gemäß der Spezifikation dieses Datenträgers. Ein P50-Datenträger stellt z.B. einen Datenträgerdurchsatz von 250 MB pro Sekunde bereit. Jeder Typ von Hochleistungs-VM weist außerdem ein bestimmtes Durchsatzlimit auf. Eine Standard-VM vom Typ GS5 bietet beispielsweise einen maximalen Durchsatz von 2.000 MB pro Sekunde. 
@@ -37,7 +37,7 @@ Zwischen Durchsatz und IOPS gibt es, wie in der folgenden Formel dargestellt, ei
 
 Aus diesem Grund ist es wichtig, die optimalen Durchsatz- und IOPS-Werte zu bestimmen, die Ihre Anwendung benötigt. Beim Versuch, einen der Faktoren zu optimieren, ist der andere ebenfalls betroffen. Im Abschnitt *Optimieren der Anwendungsleistung*weiter unten werden weitere Details zum Optimieren von IOPS und Durchsatz erläutert.
 
-## <a name="latency"></a>Latenz
+## <a name="latency"></a>Latency
 Latenz ist die Zeit, die eine Anwendung zum Empfangen einer einzelnen Anforderung, deren Übertragung an die Speicherdatenträger und zum Zurücksenden der Antwort an den Client benötigt. Neben IOPS und Durchsatz ist dies ein weiterer wichtiger Messwert für die Leistung einer Anwendung. Die Latenz eines Storage Premium-Datenträgers ist die benötigte Zeit zum Abrufen der Informationen für eine Anforderung und deren Übermittlung zurück an die Anwendung. Storage Premium bietet durchgängig eine niedrige Latenz. Wenn Sie das Hostcache-Einstellung „ReadOnly“ für Storage Premium-Datenträger aktivieren, erhalten Sie bei Lesevorgängen eine wesentlich niedrigere Latenz. Der Datenträgercache wird weiter unten im Abschnitt *Optimieren der Anwendungsleistung*ausführlicher erläutert.
 
 Wenn Sie Ihre Anwendung optimieren, um höhere IOPS- und Durchsatzwerte zu erzielen, wirkt sich dies auf die Latenz der Anwendung aus. Prüfen Sie nach einer Optimierung der Anwendungsleistung stets die Latenz, um unerwartet hohe Latenzen zu vermeiden.
@@ -53,19 +53,19 @@ Messen Sie als Nächstes die maximalen Leistungsanforderungen der Anwendung wäh
 
 | **Leistungsanforderungen** | **50. Perzentil** | **90. Perzentil** | **99. Perzentil** |
 | --- | --- | --- | --- |
-| Max. Transaktionen pro Sekunde | | | |
+| Maximal Transaktionen pro Sekunde | | | |
 | % Lesevorgänge | | | |
 | % Schreibvorgänge | | | |
 | % zufällige Vorgänge | | | |
 | % sequenzielle Vorgänge | | | |
 | Größe der E/A-Anforderung | | | |
 | Durchschnittlicher Durchsatz | | | |
-| Max. Durchsatz | | | |
-| Min. Latenz | | | |
+| Maximal Throughput | | | |
+| Min. Latency | | | |
 | Durchschnittliche Latenz | | | |
-| Max. CPU | | | |
+| Maximal CPU | | | |
 | Durchschnittliche CPU-Nutzung | | | |
-| Max. Arbeitsspeicher | | | |
+| Maximal Arbeitsspeicher | | | |
 | Durchschnittliche Arbeitsspeichernutzung | | | |
 | Warteschlangenlänge | | | |
 
@@ -83,7 +83,7 @@ Die beste Methode zum Messen der Leistungsanforderungen Ihrer Anwendung ist die 
 
 Die Leistungsindikatoren im Systemmonitor sind für Prozessor, Arbeitsspeicher und alle logischen und physischen Datenträger Ihres Servers verfügbar. Bei Verwenden von Storage Premium-Datenträgern mit einem virtuellen Computer gelten die Indikatoren für physische Datenträger für jeden Storage Premium-Datenträger. Die Indikatoren für logische Datenträger gelten für jedes Volume, das auf den Storage Premium-Datenträgern erstellt wurde. Sie müssen die Werte für die Datenträger erfassen, die den Workload Ihrer Anwendung hosten. Wenn es eine 1: 1-Zuordnung zwischen logischen und physischen Datenträgern gilt, beziehen Sie sich auf die Leistungsindikatoren für physische Datenträger und andernfalls auf die Leistungsindikatoren für logische Datenträger. Unter Linux erzeugt der Befehl „iostat“ einen Bericht der CPU- und Festplattenauslastung. Der Bericht zur Datenträgerauslastung bietet Statistiken pro physischem Gerät bzw. pro Partition. Wenn Sie einen Datenbankserver mit Daten- und Protokolldateien auf getrennten Datenträgern nutzen, erfassen Sie diese Daten für beide Datenträger. In der folgenden Tabelle werden die Leistungsindikatoren für Datenträger, Prozessor und Arbeitsspeicher beschrieben:
 
-| Indikator | Beschreibung | Systemmonitor | iostat |
+| Indikator | BESCHREIBUNG | Systemmonitor | iostat |
 | --- | --- | --- | --- |
 | **IOPS oder Transaktionen pro Sekunde** |Anzahl der an den Speicherdatenträger pro Sekunde erfolgten E/A-Anforderungen. |Lesevorgänge/s  <br> Schreibvorgänge/s |tps  <br> r/s  <br> w/s |
 | **Lese- und Schreibvorgänge auf Datenträger** |% der auf dem Datenträger ausgeführten Lese- und Schreibvorgänge. |% Lesezeit  <br> % Schreibzeit |r/s  <br> w/s |
@@ -94,7 +94,7 @@ Die Leistungsindikatoren im Systemmonitor sind für Prozessor, Arbeitsspeicher u
 | **Max. Arbeitsspeicher** |Für die reibungslose Ausführung der Anwendung erforderlicher Arbeitsspeicher |Zugesicherte verwendete Bytes (%) |vmstat verwenden |
 | **Max. CPU** |Für die reibungslose Ausführung der Anwendung erforderliche CPU-Größe |% Prozessorzeit |%util |
 
-Weitere Informationen zu [iostat](http://linuxcommand.org/man_pages/iostat1.html) und [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx) (Systemmonitor)
+Weitere Informationen zu [iostat](https://linux.die.net/man/1/iostat) und [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx) (Systemmonitor)
 
 ## <a name="optimizing-application-performance"></a>Optimieren der Anwendungsleistung
 Die wichtigsten Faktoren für die Leistung einer Anwendung, die in Storage Premium ausgeführt wird, sind die Art der E/A-Anforderungen, VM-Größe, Datenträgergröße, Anzahl der Datenträger, die Datenträgerzwischenspeicherung, Multithreading und Warteschlangenlänge. Sie können einige dieser Faktoren mithilfe vom System bereitgestellter Einstellungsmöglichkeiten steuern. Die meisten Anwendungen bieten jedoch möglicherweise keine Option, die E/A-Größe und Warteschlangenlänge direkt zu ändern. In SQL Server können Sie z. B. die E/A-Größe und Warteschlangenlänge nicht festlegen. SQL Server wählt optimale Einstellungen für E/A-Größe und Warteschlangenlänge, um die beste Leistung zu erzielen. Es ist wichtig, die Auswirkungen beider Arten von Faktoren auf die Leistung Ihrer Anwendung zu verstehen, damit Sie entsprechende Ressourcen zum Erfüllen der Leistungsanforderungen bereitstellen können.
@@ -249,7 +249,7 @@ Es folgen die empfohlenen Cacheeinstellungen für Datenträger:
 *ReadOnly*  
 Durch Konfigurieren des „ReadOnly“-Caches für Storage Premium-Datenträger können Sie für Ihre Anwendung eine niedrige Leselatenz und einen sehr hohe Leserate hinsichtlich IOPS und Durchsatz erzielen. Hierfür gibt es zwei Gründe:
 
-1. Aus dem Cache erfüllte Leseanforderungen, der sich im Arbeitsspeicher der VM und auf dem lokalen SSD-Laufwerk befindet, sind wesentlich schneller als Lesevorgänge vom Datenträger, der sich in Azure-Blobspeicher befindet.  
+1. Aus dem Cache erfüllte Leseanforderungen, der sich im Arbeitsspeicher der VM und auf dem lokalen SSD-Laufwerk befindet, sind wesentlich schneller als Lesevorgänge vom Datenträger, der sich in Azure Blob Storage befindet.  
 2. Storage Premium rechnet die aus dem Cache erfüllten Leseanforderungen nicht zur IOPS- und Durchsatzrate des Datenträgers. Aus diesem Grund kann Ihre Anwendung eine höhere Gesamtrate bei IOPS und Durchsatz erzielen.
 
 *ReadWrite*  
@@ -374,30 +374,30 @@ Führen Sie die folgenden Schritte aus, um den Cache aufzufüllen.
 
 1. Erstellen Sie zwei Zugriffsspezifikationen mit unten aufgeführten Werten:
 
-   | Name | Anforderungsgröße | Random % | Read % |
+   | NAME | Anforderungsgröße | Random % | Read % |
    | --- | --- | --- | --- |
    | RandomWrites\_1MB |1 MB |100 |0 |
    | RandomReads\_1MB |1 MB |100 |100 |
 2. Führen Sie den Iometer-Test zum Initialisieren des Cachedatenträgers mit folgenden Parametern aus. Verwenden Sie drei Arbeitsthreads für das Zielvolume und die Warteschlangenlänge 128. Legen Sie auf der Registerkarte „Test Setup“ unter „Run time“ die Laufzeit des Tests auf 2 Stunden fest.
 
-   | Szenario | Zielvolume | Name | Dauer |
+   | Szenario | Zielvolume | NAME | Duration |
    | --- | --- | --- | --- |
    | Cachedatenträger initialisieren |CacheReads |RandomWrites\_1MB |2 Stunden |
 3. Führen Sie den Iometer-Test zum Auffüllen des Cachedatenträgers mit folgenden Parametern aus. Verwenden Sie drei Arbeitsthreads für das Zielvolume und die Warteschlangenlänge 128. Legen Sie auf der Registerkarte „Test Setup“ unter „Run time“ die Laufzeit des Tests auf 2 Stunden fest.
 
-   | Szenario | Zielvolume | Name | Dauer |
+   | Szenario | Zielvolume | NAME | Dauer |
    | --- | --- | --- | --- |
    | Auffüllen des Cachedatenträgers |CacheReads |RandomReads\_1MB |2 Stunden |
 
 Nachdem der Cachedatenträger aufgefüllt wurde, fahren Sie mit den nachstehenden Testszenarien fort. Verwenden Sie zum Ausführen des Iometer-Tests mindestens drei Arbeitsthreads für **jedes** Zielvolume. Wählen Sie für jeden Arbeitsthread das Zielvolume aus, legen Sie die Warteschlangenlänge fest, und wählen Sie eine der gespeicherten Testspezifikationen, wie in der folgenden Tabelle gezeigt, um das entsprechenden Testszenario auszuführen. Die Tabelle enthält auch erwartete Ergebnisse für IOPS und Durchsatz beim Ausführen dieser Tests. Bei allen Szenarien wird eine kleine E/A-Größe von 8 KB und die hohe Warteschlangenlänge 128 verwendet.
 
-| Testszenario | Zielvolume | Name | Ergebnis |
+| Testszenario | Zielvolume | NAME | Ergebnis |
 | --- | --- | --- | --- |
-| Max. Lese-IOPS |CacheReads |RandomWrites\_8K |50.000 IOPS  |
-| Max. Schreib-IOPS |NoCacheWrites |RandomReads\_8K |64.000 IOPS |
-| Max. Kombinierte IOPS |CacheReads |RandomWrites\_8K |100.000 IOPS |
+| Maximal Lese-IOPS |CacheReads |RandomWrites\_8K |50.000 IOPS  |
+| Maximal Schreib-IOPS |NoCacheWrites |RandomReads\_8K |64.000 IOPS |
+| Maximal Kombinierte IOPS |CacheReads |RandomWrites\_8K |100.000 IOPS |
 | NoCacheWrites |RandomReads\_8K | &nbsp; | &nbsp; |
-| Max. Lesen – MB/s |CacheReads |RandomWrites\_64K |524 MB/s |
+| Maximal Lesen – MB/s |CacheReads |RandomWrites\_64K |524 MB/s |
 | Maximal Schreiben – MB/s |NoCacheWrites |RandomReads\_64K |524 MB/s |
 | Kombiniert – MB/s |CacheReads |RandomWrites\_64K |1.000 MB/s |
 | NoCacheWrites |RandomReads\_64K | &nbsp; | &nbsp; |

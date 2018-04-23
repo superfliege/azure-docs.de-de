@@ -14,11 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 5979ded9afaa31054f835b5f16fe525809f5730d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 52843c926248627e4e530612cfe9326d4302eb95
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Authentifizieren mit Mobile Engagement-REST-APIs
 > [!IMPORTANT]
@@ -67,7 +67,7 @@ Sie können optional auch die Anleitung aus der [manuellen Einrichtung](mobile-e
         Import-Module Azure
 3. Führen Sie den folgenden Befehl aus, um sich über PowerShell bei Azure Resource Manager anzumelden. Geben Sie den Benutzernamen und das Kennwort für Ihr Azure-Konto an: 
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
 4. Falls Sie über mehrere Abonnements verfügen, führen Sie folgende Schritte aus:
 
     a. Rufen Sie eine Liste mit allen Ihren Abonnements ab. Kopieren Sie dann den Wert von **SubscriptionId** für das Abonnement, das Sie verwenden möchten. Vergewissern Sie sich, dass das Abonnement über die Mobile Engagement-App verfügt. Diese App wird später für die Interaktion mit den APIs verwendet. 

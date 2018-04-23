@@ -10,10 +10,10 @@ ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
 ms.openlocfilehash: d5bad277e6a54b23f0e3ef7321e82d212ae885d3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device---preview"></a>Entwickeln und Bereitstellen eines Python-IoT Edge-Moduls für Ihr simuliertes Gerät – Vorschau
 
@@ -150,7 +150,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
 
 2. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei **module.json**, und klicken Sie auf **IoT Edge-Modul-Docker-Image erstellen und pushen**. Wählen Sie im Popup-Dropdownlistenfeld oben im VS Code-Fenster Ihre Containerplattform aus, z.B. **amd64** für Linux-Container. Bringen Sie die Datei `main.py` und erforderliche Abhängigkeiten mit VS Code in einem Container unter, und pushen Sie sie in die angegebene Containerregistrierung. Das erstmalige Erstellen des Images kann einige Minuten dauern.
 
-3. Sie können die vollständige Adresse des Containerimages mit Tag in dem Terminal abrufen, das in VS Code integriert ist. Weitere Informationen zur Definition von Erstellen und Pushen bietet die Datei `module.json`.
+3. Sie können die vollständige Adresse des Containerimages mit Tag in dem Terminal abrufen, das in VS Code integriert ist. Weitere Informationen zur Definition für Erstellen und Pushen finden Sie in der Datei `module.json`.
 
 ## <a name="add-registry-credentials-to-edge-runtime"></a>Hinzufügen von Registrierungsanmeldeinformationen zur Edge-Runtime
 Fügen Sie die Anmeldeinformationen für Ihre Registrierung zur Edge-Runtime auf dem Computer hinzu, auf dem Sie Ihr Edge-Gerät ausgeführen. Über diese Anmeldeinformationen erhält die Runtime Zugriff zum Pullen des Containers. 
@@ -180,7 +180,7 @@ Fügen Sie die Anmeldeinformationen für Ihre Registrierung zur Edge-Runtime auf
 9. Fügen Sie das Modul **filterModule** hinzu, das Sie in den vorherigen Abschnitten erstellt haben. 
     1. Wählen Sie **IoT Edge-Modul hinzufügen** aus.
     2. Geben Sie im Feld **Name** die Zeichenfolge `filterModule` ein.
-    3. Geben Sie im Feld **Image-URI** die Imageadresse ein, z.B. `<your container registry address>/filtermodule:0.0.1-amd64`. Die vollständige Image-Adresse finden Sie im vorherigen Abschnitt.
+    3. Geben Sie im Feld **Image-URI** die Imageadresse ein, z.B. `<your container registry address>/filtermodule:0.0.1-amd64`. Die vollständige Imageadresse finden Sie im vorherigen Abschnitt.
     4. Aktivieren Sie das Kontrollkästchen **Aktivieren**, damit Sie den Modulzwilling bearbeiten können. 
     5. Ersetzen Sie den JSON-Code im Textfeld für den Modulzwilling durch den folgenden JSON-Code: 
 

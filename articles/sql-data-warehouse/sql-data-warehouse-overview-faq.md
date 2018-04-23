@@ -1,25 +1,20 @@
 ---
-title: "Häufig gestellte Fragen zu Azure SQL Data Warehouse | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält häufig gestellte Fragen von Kunden und Entwicklern zu Azure SQL Data Warehouse."
+title: Häufig gestellte Fragen zu Azure SQL Data Warehouse | Microsoft-Dokumentation
+description: Dieser Artikel enthält häufig gestellte Fragen von Kunden und Entwicklern zu Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: 812CA525-3BF3-49DF-8DF3-FB4342464F4F
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: overview
-ms.date: 3/1/2017
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 4c00710ecc0c91f8407eca81b78176075fcbd6ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: ee34cbf38e8cde754e6d1cec9dce6885b0b56709
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>Häufig gestellte Fragen zu SQL Data Warehouse
 
@@ -27,64 +22,64 @@ ms.lasthandoff: 10/11/2017
 
 F: Welche Datensicherheit bietet SQL DW?
 
-A: SQL DW bietet verschiedene Lösungen für den Schutz von Daten, etwa transparente Datenverschlüsselung (Transparent Data Encryption, TDE) und Überwachung. Weitere Informationen finden Sie unter [Sicherheit].
+A. SQL DW bietet verschiedene Lösungen für den Schutz von Daten, etwa transparente Datenverschlüsselung (Transparent Data Encryption, TDE) und Überwachung. Weitere Informationen finden Sie unter [Sicherheit].
 
 F: Wo finde ich Informationen dazu, welche rechtlichen oder geschäftsspezifischen Standards SQL DW erfüllt?
 
-A: Auf der Seite [Microsoft-Compliance] finden Sie verschiedene nach Produkt sortierte Compliance-Angebote (beispielsweise für SOC und ISO). Wählen Sie zunächst einen Compliancetitel aus. Erweitern Sie anschließend rechts auf der Seite im Abschnitt mit den konformen Microsoft-Clouddiensten den Knoten „Azure“, um die richtlinienkonformen Azure-Dienste anzuzeigen.
+A. Auf der Seite [Microsoft-Compliance] finden Sie verschiedene nach Produkt sortierte Compliance-Angebote (beispielsweise für SOC und ISO). Wählen Sie zunächst einen Compliancetitel aus. Erweitern Sie anschließend rechts auf der Seite im Abschnitt mit den konformen Microsoft-Clouddiensten den Knoten „Azure“, um die richtlinienkonformen Azure-Dienste anzuzeigen.
 
 F: Kann ich eine Verbindung mit PowerBI herstellen?
 
-A: Ja. PowerBI unterstützt zwar direkte Abfragen mit SQL DW, ist jedoch nicht für eine große Anzahl von Benutzern oder eine große Menge von Echtzeitdaten vorgesehen. Für die Verwendung von PowerBI in der Produktion wird die Nutzung von PowerBI zusätzlich zu Azure Analysis Services oder Analysis Service IaaS empfohlen. 
+A. Ja. PowerBI unterstützt zwar direkte Abfragen mit SQL DW, ist jedoch nicht für eine große Anzahl von Benutzern oder eine große Menge von Echtzeitdaten vorgesehen. Für die Verwendung von PowerBI in der Produktion wird die Nutzung von PowerBI zusätzlich zu Azure Analysis Services oder Analysis Service IaaS empfohlen. 
 
 F: Welche Kapazitätsgrenzen hat SQL Data Warehouse?
 
-A: Informationen finden Sie auf der Seite mit den [Kapazitätsgrenzen]. 
+A. Informationen finden Sie auf der Seite mit den [Kapazitätsgrenzen]. 
 
 F: Warum erfordert Skalieren/Anhalten/Fortsetzen so viel Zeit?
 
-A: Die Dauer der Computerverwaltungsvorgänge kann durch eine Vielzahl von Faktoren beeinflusst werden. Diese Vorgänge erfordern häufig viel Zeit, wenn Transaktionsrollback erfolgt. Wenn Skalierung oder Anhalten initiiert wird, werden alle eingehenden Sitzungen blockiert, und Abfragen werden ausgeglichen. Damit das System stabil bleibt, muss ein Rollback von Transaktionen erfolgen, bevor ein Vorgang beginnen kann. Je größer die Anzahl der Transaktionen und je größer ihre Protokollgröße, desto länger wird der Vorgang angehalten, um einen stabilen Zustand des Systems wiederherzustellen.
+A. Die Dauer der Computerverwaltungsvorgänge kann durch eine Vielzahl von Faktoren beeinflusst werden. Diese Vorgänge erfordern häufig viel Zeit, wenn Transaktionsrollback erfolgt. Wenn Skalierung oder Anhalten initiiert wird, werden alle eingehenden Sitzungen blockiert, und Abfragen werden ausgeglichen. Damit das System stabil bleibt, muss ein Rollback von Transaktionen erfolgen, bevor ein Vorgang beginnen kann. Je größer die Anzahl der Transaktionen und je größer ihre Protokollgröße, desto länger wird der Vorgang angehalten, um einen stabilen Zustand des Systems wiederherzustellen.
 
 ## <a name="user-support"></a>Unterstützung für Benutzer
 
 F: Ich habe einen Funktionswunsch. Wie kann ich diesen übermitteln?
 
-A: Wenn Sie einen Funktionswunsch haben, können Sie ihn über die Seite [UserVoice] einsenden.
+A. Wenn Sie einen Funktionswunsch haben, können Sie ihn über die Seite [UserVoice] einsenden.
 
 F: Wo finde ich Informationen zu x?
 
-A: Wenn Sie Hilfe bei der Entwicklung mit SQL Data Warehouse benötigen, können Sie Fragen auf der Seite [Stack Overflow] stellen. 
+A. Wenn Sie Hilfe bei der Entwicklung mit SQL Data Warehouse benötigen, können Sie Fragen auf der Seite [Stack Overflow] stellen. 
 
 F: Wie übermittle ich ein Supportticket?
 
-A: [Supporttickets] können über das Azure-Portal erstellt werden.
+A. [Supporttickets] können über das Azure-Portal erstellt werden.
 
 ## <a name="sql-languagefeature-support"></a>Unterstützung von SQL-Sprache/-Features 
 
 F: Welche Datentypen werden von SQL Data Warehouse unterstützt?
 
-A: Informationen finden Sie im Thema zu SQL Data Warehouse-[Datentypen].
+A. Informationen finden Sie im Thema zu SQL Data Warehouse-[Datentypen].
 
 F: Welche Tabellenfunktionen werden unterstützt?
 
-A: SQL Data Warehouse unterstützt zahlreiche Funktionen. Die nicht unterstützten Funktionen sind unter [Nicht unterstützte Tabellenfunktionen] dokumentiert.
+A. SQL Data Warehouse unterstützt zahlreiche Funktionen. Die nicht unterstützten Funktionen sind unter [Nicht unterstützte Tabellenfunktionen] dokumentiert.
 
 ## <a name="tooling-and-administration"></a>Tools und Verwaltung
 
 F: Werden Datenbankprojekte in Visual Studio unterstützt?
 
-A: Derzeit werden keine Datenbankprojekte in Visual Studio für SQL Data Warehouse unterstützt. Wenn Sie für die Einführung dieses Features stimmen möchten, besuchen Sie unsere User Voice-Seite für die [Anforderung von Features für Datenbankprojekte].
+A. Derzeit werden keine Datenbankprojekte in Visual Studio für SQL Data Warehouse unterstützt. Wenn Sie für die Einführung dieses Features stimmen möchten, besuchen Sie unsere User Voice-Seite für die [Anforderung von Features für Datenbankprojekte].
 
 F: Unterstützt SQL Data Warehouse REST-APIs?
 
-A: Ja. Die meisten REST-Funktionen, die mit SQL-Datenbank verwendet werden können, sind auch für SQL Data Warehouse verfügbar. API-Informationen finden Sie auf den REST-Dokumentationsseiten oder auf [MSDN].
+A. Ja. Die meisten REST-Funktionen, die mit SQL-Datenbank verwendet werden können, sind auch für SQL Data Warehouse verfügbar. API-Informationen finden Sie auf den REST-Dokumentationsseiten oder auf [MSDN].
 
 
 ## <a name="loading"></a>Laden
 
 F: Welche Clienttreiber werden unterstützt?
 
-A: Treiberunterstützung für DW finden Sie auf der Seite [Verbindungszeichenfolgen].
+A. Treiberunterstützung für DW finden Sie auf der Seite [Verbindungszeichenfolgen].
 
 F: Welche Dateiformate werden von PolyBase und SQL Data Warehouse unterstützt?
 

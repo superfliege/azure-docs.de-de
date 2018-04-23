@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
 ms.openlocfilehash: 45ddd4dc6fb5559c020706e2784158b1319f9b52
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="model-management-setup"></a>Einrichtung der Modellverwaltung
 
@@ -83,7 +83,7 @@ Beginnen Sie mit einer lokalen Bereitstellung. Überprüfen Sie, ob Ihr Modell u
 Zuallererst müssen Sie Ihre Bereitstellungsumgebung einrichten. Dieser Vorgang muss nur einmal erfolgen. Nachdem die Einrichtung abgeschlossen ist, können Sie die Umgebung für nachfolgende Bereitstellungen wiederverwenden. Im folgenden Abschnitt finden Sie weitere Details.
 
 Schritte im Anschluss an die Einrichtung der Umgebung:
-- Sie werden aufgefordert, sich bei Azure anzumelden. Öffnen Sie dazu in einem Webbrowser die Seite https://aka.ms/devicelogin, und geben Sie zur Authentifizierung den angegebenen Code ein.
+- Sie werden aufgefordert, sich bei Azure anzumelden. Verwenden Sie zur Anmeldung einen Webbrowser, um die Seite https://aka.ms/devicelogin zu öffnen. Geben Sie dann zur Authentifizierung den bereitgestellten Code ein.
 - Während des Authentifizierungsvorgangs werden Sie für die Authentifizierung zur Angabe eines Kontos aufgefordert. Wichtig: Wählen Sie ein Konto mit einem gültigen Azure-Abonnement und ausreichenden Berechtigungen zum Erstellen von Ressourcen im Konto aus. Wenn die Anmeldung abgeschlossen ist, werden Ihre Abonnementinformationen angezeigt, und Sie werden gefragt, ob Sie mit dem ausgewählten Konto fortfahren möchten.
 
 ### <a name="environment-setup"></a>Einrichten der Umgebung

@@ -1,6 +1,6 @@
 ---
-title: "Azure-Datenquellen-Assistent für Azure Machine Learning | Microsoft-Dokumentation"
-description: "In diesem Artikel wird der Datenquellen-Assistenten von Azure Machine Learning (AML) Workbench erläutert."
+title: Azure-Datenquellen-Assistent für Azure Machine Learning | Microsoft-Dokumentation
+description: In diesem Artikel wird der Datenquellen-Assistenten von Azure Machine Learning (AML) Workbench erläutert.
 services: machine-learning
 author: cforbe
 ms.author: cforbe
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
 ms.openlocfilehash: 4f9a2249142220f3c57cb2e479a175d4227749fd
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-source-wizard"></a>Datenquellen-Assistent #
 

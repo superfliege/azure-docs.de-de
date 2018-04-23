@@ -1,25 +1,18 @@
 ---
-title: "Hochladen von Daten (REST-API – Azure Search) | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Daten in einen Index in Azure Search über die REST-API hochladen."
-services: search
-documentationcenter: 
-author: ashmaka
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 8d0749fb-6e08-4a17-8cd3-1a215138abc6
+title: Hochladen von Daten (REST-API – Azure Search) | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Daten in einen Index in Azure Search über die REST-API hochladen.
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 12/08/2016
-ms.author: ashmaka
-ms.openlocfilehash: f22a33ed86fbfc46dfa732239263a49f34c4afee
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5322faf04d29643bba2d1371cef23ab224675adb
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>Hochladen von Daten in Azure Search über die REST-API
 > [!div class="op_single_selector"]
@@ -55,7 +48,7 @@ Wenn Sie die REST-API verwenden, werden HTTP POST-Anforderungen mit JSON-Anforde
 
 Jedes JSON-Objekt im Array „value“ stellt ein zu indizierendes Dokument dar. Jedes der Objekte enthält den Schlüssel des Dokuments und bestimmt die gewünschte Indizierungsaktion (Hochladen, Zusammenführen, Löschen usw.). Je nachdem, welche der folgenden Aktionen Sie wählen, müssen für jedes Dokument nur bestimmte Felder eingefügt werden:
 
-| @search.action | Beschreibung | Erforderliche Felder für jedes Dokument | Hinweise |
+| @search.action | BESCHREIBUNG | Erforderliche Felder für jedes Dokument | Notizen |
 | --- | --- | --- | --- |
 | `upload` |Eine `upload` -Aktion entspricht „upsert“, wobei neue Dokumente eingefügt und bestehende Dokumente aktualisiert/ersetzt werden. |Schlüssel und alle anderen zu definierenden Felder |Wenn ein bestehendes Dokument aktualisiert/ersetzt wird, werden alle in der Anforderung nicht festgelegten Felder auf `null`festgelegt. Dies tritt auch auf, wenn das Feld zuvor auf einen Wert festgelegt wurde, der nicht Null ist. |
 | `merge` |Aktualisiert ein bestehendes Dokument mit den angegebenen Feldern. Wenn das Dokument im Index nicht vorhanden ist, schlägt die Zusammenführung fehl. |Schlüssel und alle anderen zu definierenden Felder |Jedes Feld, das Sie in einer Zusammenführung angeben, ersetzt das vorhandene Feld im Dokument. Dies beinhaltet auch Felder vom Typ `Collection(Edm.String)`. Wenn das Dokument beispielsweise das Feld `tags` mit dem Wert `["budget"]` enthält und Sie eine Zusammenführung mit dem Wert `["economy", "pool"]` für `tags` durchführen, hat das Feld `tags` am Ende den Wert `["economy", "pool"]`. Der Wert lautet nicht `["budget", "economy", "pool"]`. |

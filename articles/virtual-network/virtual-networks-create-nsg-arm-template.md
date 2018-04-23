@@ -1,5 +1,5 @@
 ---
-title: "Erstellen von Netzwerksicherheitsgruppen – Azure Resource Manager-Vorlage | Microsoft-Dokumentation"
+title: Erstellen von Netzwerksicherheitsgruppen – Azure Resource Manager-Vorlage | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Netzwerksicherheitsgruppen mithilfe einer Azure Resource Manager-Vorlage erstellen und bereitstellen.
 services: virtual-network
 documentationcenter: na
@@ -17,10 +17,10 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1fc210ac5e28efe10be27f8b5a752788d3d5a5a3
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>Erstellen von Netzwerksicherheitsgruppen mithilfe einer Azure Resource Manager-Vorlage
 

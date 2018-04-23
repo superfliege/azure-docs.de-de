@@ -18,6 +18,12 @@
       href: concepts-dependency-visualization.md
 - name: Anleitungen
   items:
+    - name: Migrieren lokaler Ressourcen zu Azure
+      items:
+        - name: 'Szenarioübersicht: Migrieren lokaler Ressourcen zu Azure'
+          href: migrate-scenarios-overview.md
+        - name: 'Szenario 1: Bewerten der lokalen Ressourcen für die Migration zu Azure'
+          href: migrate-scenarios-assessment.md
     - name: Erkunden und Bewerten einer großen Umgebung
       href: how-to-scale-assessment.md
     - name: Gruppieren von Computern

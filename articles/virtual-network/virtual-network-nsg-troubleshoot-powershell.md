@@ -1,11 +1,11 @@
 ---
-title: "Problembehandlung bei Netzwerksicherheitsgruppen – PowerShell | Microsoft Docs"
-description: "Erfahren Sie, wie Sie eine Problembehandlung bei Netzwerksicherheitsgruppen im Azure Resource Manager-Bereitstellungsmodell mit Azure PowerShell durchführen."
+title: Problembehandlung bei Netzwerksicherheitsgruppen – PowerShell | Microsoft Docs
+description: Erfahren Sie, wie Sie eine Problembehandlung bei Netzwerksicherheitsgruppen im Azure Resource Manager-Bereitstellungsmodell mit Azure PowerShell durchführen.
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 4c732bb7-5cb1-40af-9e6d-a2a307c2a9c4
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: d556f2d6d37956c3b3bca2a2905b2c947e6be0df
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6beaeb4b7e5c9e393427d575f1cf8bc48599dbd5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Problembehandlung bei Netzwerksicherheitsgruppen mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Obwohl in diesem Beispiel TCP-Port 3389 verwendet wird, können anhand der folge
 ## <a name="detailed-troubleshooting-steps"></a>Ausführliche Schritte zur Problembehandlung
 Führen Sie die folgenden Schritte aus, um Probleme bei NSGs für einen virtuellen Computer zu beheben:
 
-1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit der Verwendung von Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) . Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit der Verwendung von Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) . Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Geben Sie den folgenden Befehl ein, damit alle NSG-Regeln zurückgegeben werden, die auf die NIC *VM1-NIC1* in der Ressourcengruppe *RG1* angewendet werden:
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1

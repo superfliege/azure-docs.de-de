@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 61815098a4935983f19b3dcea6e001230aee4771
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 753e13ea0dbfc7fe0c74987e1383f71329b76a63
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Verwaltete Azure-Anwendungen im Marketplace
 
@@ -107,7 +107,7 @@ Eine SKU wird im Marketplace unterhalb des übergeordneten Angebots angezeigt. S
 
 Sie können mehrere Autorisierungen hinzufügen. Es wird empfohlen, eine AD-Benutzergruppe zu erstellen und die jeweilige ID unter **PrincipalId** anzugeben. Auf diese Weise können Sie der Benutzergruppe weitere Benutzer hinzufügen, ohne die SKU aktualisieren zu müssen.
 
-Weitere Informationen zur RBAC finden Sie unter [Erste Schritte mit der RBAC im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
+Weitere Informationen zur RBAC finden Sie unter [Erste Schritte mit der RBAC im Azure-Portal](../role-based-access-control/overview.md).
 
 ## <a name="marketplace-form"></a>Marketplace-Formular
 

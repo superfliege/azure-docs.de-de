@@ -1,11 +1,11 @@
 ---
 title: Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen | Microsoft-Dokumentation
-description: 
-services: 
-documentationcenter: 
+description: ''
+services: ''
+documentationcenter: ''
 author: vikramdesai01
 manager: vikdesai
-editor: 
+editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
 ms.service: billing
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: vikdesai
-ms.openlocfilehash: c70904097f139bc2178feed83f1cf1274f3c738d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ded7904c6cb855994d92e68c4a1af64ccdb2c3a0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure mithilfe der rollenbasierten Zugriffssteuerung
 
-Sie können Mitgliedern Ihres Teams den Zugriff auf Azure-Abrechnungsinformationen gewähren, indem Sie Ihrem Abonnement eine der folgenden Benutzerrollen zuweisen: Kontoadministrator, Dienstadministrator, Co-Administrator, Besitzer, Mitwirkender, Leser und Abrechnungsleser. Diese haben dann Zugriff auf die Abrechnungsinformationen im [Azure-Portal](https://portal.azure.com/) und können die [Abrechnungs-APIs](billing-usage-rate-card-overview.md) verwenden, um Rechnungen (nach erfolgter Anmeldung) und Nutzungsdetails programmgesteuert abzurufen. Weitere Informationen dazu, wer Rollen zuweisen kann und welche Vorgänge mit welchen Rollen durchgeführt werden können, finden Sie unter [Rollen in Azure RBAC](../active-directory/role-based-access-built-in-roles.md).
+Sie können Mitgliedern Ihres Teams den Zugriff auf Azure-Abrechnungsinformationen gewähren, indem Sie Ihrem Abonnement eine der folgenden Benutzerrollen zuweisen: Kontoadministrator, Dienstadministrator, Co-Administrator, Besitzer, Mitwirkender, Leser und Abrechnungsleser. Diese haben dann Zugriff auf die Abrechnungsinformationen im [Azure-Portal](https://portal.azure.com/) und können die [Abrechnungs-APIs](billing-usage-rate-card-overview.md) verwenden, um Rechnungen (nach erfolgter Anmeldung) und Nutzungsdetails programmgesteuert abzurufen. Weitere Informationen dazu, wer Rollen zuweisen kann und welche Vorgänge mit welchen Rollen durchgeführt werden können, finden Sie unter [Rollen in Azure RBAC](../role-based-access-control/built-in-roles.md).
 
 ## <a name="opt-in"></a>Festlegen weiterer Benutzer für den Zugriff auf Rechnungen
 

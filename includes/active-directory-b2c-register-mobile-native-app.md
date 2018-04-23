@@ -1,14 +1,30 @@
+---
+title: Includedatei
+description: Includedatei
+services: active-directory-b2c
+author: davidmu1
+ms.service: active-directory-b2c
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: davidmu
+ms.custom: include file
+ms.openlocfilehash: 8363d023e89c77aabc0d123f19264c9a0758a656
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/18/2018
+---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
 Verwenden Sie zum Registrieren der mobilen oder nativen Anwendung die in der Tabelle angegebenen Einstellungen.
 
 ![Beispielregistrierungseinstellungen für eine neue mobile oder native Anwendung](./media/active-directory-b2c-register-mobile-native-app/b2c-new-mobile-native-app-settings.png)
 
-| Einstellung      | Beispielwert  | Beschreibung                                        |
+| Einstellung      | Beispielwert  | BESCHREIBUNG                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **Name** | Contoso B2C-App | Geben Sie einen **Namen** für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. |
 | **Nativer Client** | Ja | Wählen Sie **Ja** für eine mobile oder native Anwendung. |
-| **Benutzerdefinierter Umleitungs-URI** | `com.onmicrosoft.contoso.appname://redirect/path` | Geben Sie einen Umleitungs-URI mit einem benutzerdefinierten Schema ein. Stellen Sie sicher, dass Sie einen [gültigen Umleitungs-URI](../articles/active-directory-b2c/active-directory-b2c-app-registration.md#choosing-a-native-application-redirect-uri) auswählen und keine Sonderzeichen wie Unterstriche eingeben. |
+| **Benutzerdefinierter Umleitungs-URI** | `com.onmicrosoft.contoso.appname://redirect/path` | Geben Sie einen Umleitungs-URI mit einem benutzerdefinierten Schema ein. Stellen Sie sicher, dass Sie einen [gültigen Umleitungs-URI](../articles/active-directory-b2c/active-directory-b2c-app-registration.md) auswählen und keine Sonderzeichen wie Unterstriche eingeben. |
 
 Klicken Sie auf **Erstellen** , um Ihre Anwendung zu registrieren.
 

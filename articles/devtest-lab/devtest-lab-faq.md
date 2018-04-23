@@ -1,11 +1,11 @@
 ---
-title: "Häufig gestellte Fragen zu Azure DevTest Labs | Microsoft Docs"
-description: "Hier finden Sie Antworten auf häufig gestellte Fragen zu Azure DevTest Labs."
+title: Häufig gestellte Fragen zu Azure DevTest Labs | Microsoft Docs
+description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Azure DevTest Labs.
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: afe83109-b89f-4f18-bddd-b8b4a30f11b4
 ms.service: devtest-lab
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: v-craic
-ms.openlocfilehash: 24a3220a21280684a34405ac4c3d9f9eab9e3683
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: d8b9e48db9e75fb41ecad1958b3aa930a6bce3aa
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
@@ -55,7 +55,7 @@ DevTest Labs ist ein kostenloser Dienst. Für das Erstellen von Labs sowie das K
 
 **Sicherheit**
 ## <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Wie lauten die verschiedenen Sicherheitsstufen in DevTest Labs?
-Der Sicherheitszugriff wird durch die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-built-in-roles.md) bestimmt. Die Funktionsweise des Zugriffs ist leichter zu verstehen, wenn Sie die Unterschiede zwischen Berechtigungen, Rollen und Bereichen in der RBAC kennen.
+Der Sicherheitszugriff wird durch die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../role-based-access-control/built-in-roles.md) bestimmt. Die Funktionsweise des Zugriffs ist leichter zu verstehen, wenn Sie die Unterschiede zwischen Berechtigungen, Rollen und Bereichen in der RBAC kennen.
 
 * **Berechtigung**: Eine Berechtigung ermöglicht einen definierten Zugriff auf eine bestimmte Aktion. Zum Beispiel kann eine Berechtigung den Lesezugriff auf alle VMs ermöglichen.
 * **Rolle**: Eine Rolle ist ein Satz von Berechtigungen, die gruppiert und einem Benutzer zugewiesen werden können. Zum Beispiel verfügt die Rolle „Abonnementbesitzer“ über Zugriff auf alle Ressourcen in einem Abonnement.
@@ -136,7 +136,7 @@ Weitere Informationen zu den Azure-Gutschriften für die einzelnen MSDN-Angebote
 Um das Hochladen von VHD-Dateien zum Erstellen benutzerdefinierter Images automatisieren, haben Sie zwei Optionen:
 
 * Verwenden Sie [AzCopy](../storage/common/storage-use-azcopy.md#upload-blobs-to-blob-storage), um VHD-Dateien in das dem Lab zugeordneten Speicherkonto zu kopieren oder hochzuladen.
-* Verwenden Sie den [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md). Der Storage Explorer ist eine eigenständige App, die unter Windows, OS X und Linux ausgeführt wird.   
+* Verwenden Sie den [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md). Der Storage-Explorer ist eine eigenständige App, die unter Windows, OS X und Linux ausgeführt wird.   
 
 So suchen Sie nach dem Zielspeicherkonto, das Ihrem Lab zugeordnet ist:
 
@@ -159,7 +159,7 @@ Sie können VMs aus Ihrem Lab im Azure-Portal löschen. Mit einem PowerShell-Skr
     $labName = "<Enter lab name here>"
 
     # Sign in to your Azure account.
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     # Select the Azure subscription that has the lab. This step is optional
     # if you have only one subscription.

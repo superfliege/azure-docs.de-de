@@ -5,9 +5,9 @@ services: networking
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: b0de4aa816d7decab1831449f855ab01b101db3a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a4f1c7c3342a2a78a2a5b765bd688bed4c85392f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-networking"></a>Azure-Netzwerke
 
@@ -138,7 +138,7 @@ Azure bietet die folgenden Tools zum Überwachen und Verwalten von Netzwerken:
 - **Diagnoseprotokolle:** Regelmäßige und spontane Ereignisse werden von Netzwerkressourcen erstellt, in Azure-Speicherkonten protokolliert und dann an einen Azure Event Hub oder an Azure Log Analytics gesendet. Diagnoseprotokolle geben Einblick in die Integrität einer Ressource. Diagnoseprotokolle werden für Load Balancer (mit Internetzugriff), Netzwerksicherheitsgruppen, Routen und Application Gateway bereitgestellt. Weitere Informationen zu Diagnoseprotokollen finden Sie im Artikel mit der [Übersicht über Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fnetworking%2ftoc.json).
 - **Metriken:** Metriken sind Leistungsmessungen und -indikatoren, die über einen Zeitraum auf Ressourcen gesammelt werden. Metriken können verwendet werden, um basierend auf Schwellenwerten Warnungen auszulösen. Zurzeit sind Metriken für Application Gateway verfügbar. Weitere Informationen zu Metriken finden Sie im Artikel mit der [Übersicht über Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json).
 - **Problembehandlung:** Informationen zur Problembehandlung sind direkt über das Azure-Portal zugänglich. Diese Informationen unterstützen Sie bei der Diagnose gängiger Probleme mit ExpressRoute, VPN Gateway, Application Gateway, Netzwerksicherheitsprotokolle, Routen, DNS, Load Balancer und Traffic Manager.
-- **Rollenbasierte Zugriffssteuerung (RBAC):** Steuern Sie, wer Netzwerkressourcen mit der rollenbasierten Zugriffssteuerung (RBAC) erstellen und verwalten kann. Weitere Informationen zu RBAC finden Sie im Artikel [Erste Schritte mit RBAC](../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fnetworking%2ftoc.json). 
+- **Rollenbasierte Zugriffssteuerung (RBAC):** Steuern Sie, wer Netzwerkressourcen mit der rollenbasierten Zugriffssteuerung (RBAC) erstellen und verwalten kann. Weitere Informationen zu RBAC finden Sie im Artikel [Erste Schritte mit RBAC](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json). 
 - **Paketerfassung:** Der Azure Network Watcher-Dienst bietet die Möglichkeit, eine Paketerfassung auf einem virtuellen Computer über eine Erweiterung innerhalb des virtuellen Computers auszuführen. Diese Funktion ist für VMs unter Linux und Windows verfügbar. Weitere Informationen zur Paketerfassung finden Sie im Artikel mit der [Übersicht zur Paketerfassung](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 - **Überprüfen von IP-Flüssen:** Network Watcher ermöglicht Ihnen die Überprüfung von IP-Flüssen zwischen einer Azure-VM und einer Remoteressource, um zu ermitteln, ob die Pakete zugelassen oder abgelehnt werden. Diese Funktion bietet Administratoren die Möglichkeit, Konnektivitätsprobleme schnell zu diagnostizieren. Weitere Informationen zum Überprüfen von IP-Flüssen finden Sie im Artikel mit der [Übersicht zur IP-Flussüberprüfung](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 - **Problembehandlung der VPN-Konnektivität:** Die VPN-Problembehandlungsfunktion von Network Watcher bietet die Möglichkeit, eine Verbindung oder ein Gateway abzufragen und die Integrität der Ressourcen zu überprüfen. Weitere Informationen zur Problembehandlung von VPN-Verbindungen finden Sie im Artikel mit der [Übersicht über die Problembehandlung der VPN-Konnektivität](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).

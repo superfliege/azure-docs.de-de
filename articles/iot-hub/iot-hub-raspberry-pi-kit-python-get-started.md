@@ -1,24 +1,24 @@
 ---
-title: "Raspberry Pi in der Cloud (Python) – Verbinden von Raspberry Pi mit Azure IoT Hub | Microsoft-Dokumentation"
+title: Raspberry Pi in der Cloud (Python) – Verbinden von Raspberry Pi mit Azure IoT Hub | Microsoft-Dokumentation
 description: Erfahren Sie in diesem Tutorial, wie Sie Raspberry Pi einrichten und eine Verbindung mit Azure IoT Hub herstellen, damit Raspberry Pi Daten an die Azure-Cloudplattform senden kann.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
+tags: ''
 keywords: Azure IoT Raspberry Pi, Raspberry Pi IoT Hub, Raspberry Pi sendet Daten an Cloud, Raspberry Pi in der Cloud
 ms.service: iot-hub
 ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/31/2017
-ms.author: xshi
-ms.openlocfilehash: 1b1a9dc960846cbc15ce09d0fd106e1492937439
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: 7069748c10f7c98f80fadc008f43a3aa02f7ac0e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Verbinden von Raspberry Pi mit Azure IoT Hub (Python)
 
@@ -44,15 +44,15 @@ Verbinden Sie Raspberry Pi mit einem von Ihnen erstellten IoT Hub. Führen Sie a
 * Erfassen von Sensordaten durch Ausführen einer Beispielanwendung auf Pi
 * Senden von Sensordaten an Ihren IoT Hub
 
-## <a name="what-you-need"></a>Erforderliches Element
+## <a name="what-you-need"></a>Voraussetzungen
 
-![Erforderliches Element](media/iot-hub-raspberry-pi-kit-c-get-started/0_starter_kit.jpg)
+![Voraussetzungen](media/iot-hub-raspberry-pi-kit-c-get-started/0_starter_kit.jpg)
 
 * Raspberry Pi 2- oder Raspberry Pi 3-Platine.
 * Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Testkonto](https://azure.microsoft.com/free/) erstellen.
 * Monitor, USB-Tastatur und Maus, die mit Pi verbunden werden.
 * Mac oder PC, auf dem Windows oder Linux ausgeführt wird
-* Internetverbindung.
+* Eine Internetverbindung.
 * microSD-Karte mit mindestens 16 GB
 * USB-SD-Adapter oder microSD-Karte, um das Betriebssystemimage auf die microSD-Karte zu kopieren
 * Netzteil (5 V, 2 A) mit Micro-USB-Kabel (1,8 m)
@@ -110,7 +110,7 @@ Verwenden Sie die Steckplatine und Jumperdrähte, um eine LED und einen BME280-S
 
 Mit dem BME280-Sensor können Daten zur Temperatur und Luftfeuchtigkeit erfasst werden. Die LED blinkt, wenn der Kommunikationsvorgang zwischen dem Gerät und der Cloud aktiv ist. 
 
-Für Sensorstifte verwenden Sie die folgende Verkabelung:
+Verwenden Sie für Sensorstifte die folgende Verkabelung:
 
 | Start (Sensor und LED)     | Ende (Board)            | Kabelfarbe   |
 | -----------------------  | ---------------------- | ------------: |
@@ -169,7 +169,7 @@ Verwenden Sie einen der folgenden SSH-Clients auf Ihrem Hostcomputer, um die Ver
    nano config.py
    ```
 
-   Es gibt 5 Makros in dieser Datei, die Sie konfigurieren können. Das erste ist `MESSAGE_TIMESPAN`, welches das Zeitintervall (in Millisekunden) zwischen zwei Nachrichten bestimmt, die an die Cloud gesendet werden. Das zweite ist `SIMULATED_DATA` und ist ein boolescher Wert, der bestimmt, ob simulierte Sensordaten verwendet werden sollen. `I2C_ADDRESS` ist die I2C-Adresse, mit der Ihr BME280-Sensor verbunden ist. `GPIO_PIN_ADDRESS` ist die GPIO-Adresse für die LED. Das letzte ist `BLINK_TIMESPAN`, das den Zeitraum in Millisekunden bestimmt, in der die LED eingeschaltet ist.
+   Es gibt 5 Makros in dieser Datei, die Sie konfigurieren können. Das erste ist `MESSAGE_TIMESPAN`, mit dem das Zeitintervall (in Millisekunden) zwischen zwei Nachrichten bestimmt wird, die an die Cloud gesendet werden. Das zweite ist `SIMULATED_DATA` und ist ein boolescher Wert, der bestimmt, ob simulierte Sensordaten verwendet werden sollen. `I2C_ADDRESS` ist die I2C-Adresse, mit der Ihr BME280-Sensor verbunden ist. `GPIO_PIN_ADDRESS` ist die GPIO-Adresse für die LED. Das letzte ist `BLINK_TIMESPAN`, das den Zeitraum in Millisekunden bestimmt, in der die LED eingeschaltet ist.
 
    Wenn Sie **keinen Sensor haben**, legen Sie den Wert von `SIMULATED_DATA` auf `True` fest, damit die Beispielanwendung simulierte Sensordaten erstellt und nutzt.
 

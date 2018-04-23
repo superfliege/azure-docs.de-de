@@ -1,24 +1,17 @@
 ---
 title: Filter in Azure Search | Microsoft-Dokumentation
 description: Filtern Sie nach Benutzersicherheits-ID, Sprache, geografischem Standort oder numerischen Werten, um Suchergebnisse bei Abfragen in Azure Search, einem in Microsoft Azure gehosteten Cloudsuchdienst, zu reduzieren.
-services: search
-documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: cgronlun
 ms.service: search
-ms.devlang: 
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/19/2017
 ms.author: heidist
-ms.openlocfilehash: 2e8721684b1d4ed0e7392d85ea1df0f595860a05
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 867a0eab20c7827ca99dc4b4371dfb2d551180b3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="filters-in-azure-search"></a>Filter in Azure Search 
 
@@ -159,7 +152,7 @@ Bei Textfiltern, die aus Zeichenfolgen zusammengesetzt sind, erfolgt keine lexik
 Bei Textzeichenfolgen wird Groß-/Kleinschreibung berücksichtigt. Es gibt keine Kleinschreibung großgeschriebener Wörter. `$filter=f eq 'Sunny day'` findet deshalb „sunny day“ nicht.
 
 
-| Vorgehensweise | Beschreibung | 
+| Vorgehensweise | BESCHREIBUNG | 
 |----------|-------------|
 | [search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funktion, die eine durch Trennzeichen getrennte Liste von Zeichenfolgen für ein bestimmtes Feld bereitstellt. Die Zeichenfolgen umfassen die Filterkriterien, die auf jedes Feld im Gültigkeitsbereich der Abfrage angewendet werden. <br/><br/>`search.in(f, ‘a, b, c’)` ist semantisch gleichwertig mit `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, außer dass seine Ausführung wesentlich schneller erfolgt, wenn die Liste der Werte sehr groß ist.<br/><br/>Wir empfehlen die Funktion **search.in** für [Sicherheitsfilter](search-security-trimming-for-azure-search.md) und alle Filter, die aus Rohtext bestehen, der mit Werten in einem bestimmten Feld abgeglichen werden soll. Dieser Ansatz ist auf Tempo ausgelegt. Sie können bei Hunderten bis Tausenden von Werten mit einer Reaktionszeit von unter einer Sekunde rechnen. Die Anzahl der Elemente, die Sie an die Funktion übergeben können, ist zwar nicht explizit begrenzt, doch steigt die Wartezeit proportional zur Anzahl der von Ihnen bereitgestellten Zeichenfolgen. | 
 | [search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Eine Funktion, die es erlaubt, Volltextsuchvorgänge mit strikt booleschen Filteroperationen im selben Filterausdruck zu kombinieren. Dadurch werden mehrere Kombinationen von Abfragefiltern in einer Anforderung möglich. Sie können sie auch für den Filter *enthält* verwenden, um auf eine Teilzeichenfolge innerhalb einer größeren Zeichenfolge zu filtern. |  

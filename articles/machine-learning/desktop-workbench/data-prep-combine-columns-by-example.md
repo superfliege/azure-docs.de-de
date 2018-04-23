@@ -1,6 +1,6 @@
 ---
-title: "Transformation „Spalten nach Beispiel kombinieren“ mit Azure Machine Learning Workbench"
-description: "Dies ist das Referenzdokument zur Transformation „Spalten nach Beispiel kombinieren“."
+title: Transformation „Spalten nach Beispiel kombinieren“ mit Azure Machine Learning Workbench
+description: Dies ist das Referenzdokument zur Transformation „Spalten nach Beispiel kombinieren“.
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -12,10 +12,10 @@ ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
 ms.openlocfilehash: 469fefa48ea795a56b0e7525f99634c5149a780f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="combine-columns-by-example-transformation"></a>Transformation „Spalten nach Beispiel kombinieren“
 Diese Transformation ermöglicht Benutzern das Hinzufügen einer neuen Spalte, indem Werte aus mehreren Spalten kombiniert werden. Der Benutzer kann zum Ausführen dieser Transformation ein Trennzeichen oder Beispiele für kombinierte Werte angeben. Wenn der Benutzer Beispiele für Kombinationen angibt, wird die Transformation von derselben **By-Example**-Engine verarbeitet, das bei der Transformation **Spalten nach Beispiel ableiten** verwendet wurde.

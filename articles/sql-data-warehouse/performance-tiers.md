@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL Data Warehouse – Leistungsstufen | Microsoft-Dokumentation"
-description: "Einführung in die für Elastizität und Compute optimierten Leistungsstufen, die in Azure SQL Data Warehouse zur Verfügung stehen"
+title: Azure SQL Data Warehouse – Leistungsstufen | Microsoft-Dokumentation
+description: Einführung in die für Elastizität und Compute optimierten Leistungsstufen, die in Azure SQL Data Warehouse zur Verfügung stehen
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.custom: performance
 ms.date: 11/10/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 03881c12faed723999e97431e4a69fdeb6bfa10d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="azure-sql-data-warehouse-performance-tiers-preview"></a>Azure SQL Data Warehouse – Leistungsstufen (Vorschau)
 SQL Data Warehouse bietet zwei Leistungsstufen, die für analytische Workloads optimiert sind. In diesem Artikel werden die Konzepte von Leistungsstufen beschrieben, die Ihnen bei der Auswahl der am besten geeigneten Leistungsstufe für Ihre Workload helfen sollen. 

@@ -26,7 +26,7 @@ Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](
 
 Öffnen Sie eine Azure PowerShell-Eingabeaufforderung und melden Sie sich mit diesem Befehl bei Azure an.
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Wenn Sie mehrere Azure-Abonnements haben, können Sie Ihre Azure-Abonnements mit diesem Befehl auflisten.
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Security and Compliance Blueprint – Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL"
-description: "Azure Security and Compliance Blueprint – Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL"
+title: Azure Security and Compliance Blueprint – Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL
+description: Azure Security and Compliance Blueprint – Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9d95ccdd536efbff1540fab2b564e7745f5ac397
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure Security and Compliance Blueprint – Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL
 
@@ -211,7 +211,7 @@ Kunden können sich außerdem für die Verwendung eines [Verwaltungsmodells mit 
 
 **Ressourcenverwaltung**: Azure-Ressourcen, wie etwa VMs, VNets und Lastenausgleichsmodule, werden verwaltet, indem sie in [Azure-Ressourcengruppen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource) zusammengefasst werden. Rollen für die ressourcenbasierte Zugriffssteuerung können anschließend den einzelnen Ressourcengruppen zugewiesen werden, um den Zugriff exklusiv auf autorisierte Benutzer zu beschränken.
 
-**Einschränkungen der Zugriffssteuerung**: Verwenden Sie [rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (Role-Based Access Control, RBAC), um die Ressourcen in Ihrer Anwendung mithilfe von [benutzerdefinierten Rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) zu verwalten. RBAC kann dazu verwendet werden, die Vorgänge einzuschränken, die DevOps in den einzelnen Schichten ausführen können. Verwenden Sie beim Erteilen von Berechtigungen den [Ansatz der geringsten Rechte](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Protokollieren Sie alle Verwaltungsvorgänge, und führen Sie regelmäßig Überwachungen durch, um sicherzustellen, dass alle Konfigurationsänderungen auf Planung beruhen.
+**Einschränkungen der Zugriffssteuerung**: Verwenden Sie [rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (Role-Based Access Control, RBAC), um die Ressourcen in Ihrer Anwendung mithilfe von [benutzerdefinierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) zu verwalten. RBAC kann dazu verwendet werden, die Vorgänge einzuschränken, die DevOps in den einzelnen Schichten ausführen können. Verwenden Sie beim Erteilen von Berechtigungen den [Ansatz der geringsten Rechte](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Protokollieren Sie alle Verwaltungsvorgänge, und führen Sie regelmäßig Überwachungen durch, um sicherzustellen, dass alle Konfigurationsänderungen auf Planung beruhen.
 
 **Internetzugriff**: Diese Referenzarchitektur verwendet [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) als das dem Internet zugewandte Gateway und als Lastenausgleichsmodul. Für einige Kunden können ferner virtuelle Netzwerkappliances von Drittanbietern zum Schaffen zusätzlichen Schichten an Netzwerksicherheit als Alternative zum [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) sinnvoll sein.
 

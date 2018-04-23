@@ -1,11 +1,11 @@
 ---
-title: "Problembehandlung bei Azure Virtual Network-Gateways und -Verbindungen – Portal | Microsoft-Dokumentation"
-description: "Auf dieser Seite wird erläutert, wie das Azure Network Watcher-Portal zur Problembehandlung verwendet wird."
+title: Problembehandlung bei Azure Virtual Network-Gateways und -Verbindungen – Portal | Microsoft-Dokumentation
+description: Auf dieser Seite wird erläutert, wie das Azure Network Watcher-Portal zur Problembehandlung verwendet wird.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: fb8f60eea0eaa24649f584ae4183aa8e552a433e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: becc4f799e34aabba5c703f09e51a4b7d497c45a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-network-watcher-from-azure-portal"></a>Problembehandlung bei Virtual Network-Gateways und -Verbindungen mit Azure Network Watcher im Azure-Portal
 
@@ -74,7 +74,7 @@ Die Registerkarte **Aktion** enthält allgemeine Richtlinien zum Beheben des Pro
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Einstellungen geändert wurden und die VPN-Konnektivität beenden, finden Sie unter [Verwalten von Netzwerksicherheitsgruppen](../virtual-network/virtual-network-manage-nsg-arm-portal.md) Informationen zum Ermitteln der fraglichen Netzwerksicherheitsgruppe und der Sicherheitsregeln.
+Wenn Einstellungen geändert wurden und die VPN-Konnektivität beenden, finden Sie unter [Verwalten von Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md) Informationen zum Ermitteln der fraglichen Netzwerksicherheitsgruppe und der Sicherheitsregeln.
 
 
 [2]: ./media/network-watcher-troubleshoot-manage-portal/2.png

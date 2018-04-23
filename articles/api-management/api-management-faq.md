@@ -1,11 +1,11 @@
 ---
 title: FAQ zu Azure API Management | Microsoft Docs
-description: "In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen (FAQ) sowie Informationen zu bewährten Methoden in Azure API Management."
+description: In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen (FAQ) sowie Informationen zu bewährten Methoden in Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2fa193cd-ea71-4b33-a5ca-1f55e5351e23
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 091cfaaf8fa1cccf2f8b819732946bbbd08fd426
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 243f0b8206166e3e054dfc423259bd3444d8a2db
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
@@ -88,7 +88,7 @@ So fügen Sie Benutzer zur Gruppe „Administratoren“ hinzu:
 
 Der neu hinzugefügte Mitwirkende kann nun Azure PowerShell-[Cmdlets](https://msdn.microsoft.com/library/mt613507.aspx) verwenden. So melden Sie sich als Administrator an:
 
-1. Verwenden Sie das `Login-AzureRmAccount`-Cmdlet, um sich anzumelden.
+1. Verwenden Sie das `Connect-AzureRmAccount`-Cmdlet, um sich anzumelden.
 2. Legen Sie den Kontext auf das Abonnement fest, das den Dienst enthält. Verwenden Sie hierfür `Set-AzureRmContext -SubscriptionID <subscriptionGUID>`.
 3. Rufen Sie mithilfe von `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` eine URL für einmaliges Anmelden ab.
 4. Greifen Sie über die URL auf das Verwaltungsportal zu.

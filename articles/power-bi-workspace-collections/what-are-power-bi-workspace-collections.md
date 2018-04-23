@@ -1,12 +1,12 @@
 ---
 title: Was sind Power BI-Arbeitsbereichssammlungen?
-description: "Mit Power BI Embedded können Sie Power BI-Berichte in Ihre Web- oder mobilen Anwendungen integrieren, sodass Sie keine benutzerdefinierten Lösungen erstellen müssen."
+description: Mit Power BI Embedded können Sie Power BI-Berichte in Ihre Web- oder mobilen Anwendungen integrieren, sodass Sie keine benutzerdefinierten Lösungen erstellen müssen.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 03649b72-b7d7-40ca-b077-12356d72d4f3
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 7df172895bb926f1715370b941964e2c29ab393d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 0bd6ba74d176ed1db1e8f1f1b38646182da2c379
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Was sind Power BI-Arbeitsbereichssammlungen?
 
@@ -29,7 +29,7 @@ Mit **Power BI-Arbeitsbereichssammlungen** können Sie Power BI-Berichte direkt 
 ![Anwendungsdiagramm](media/what-are-power-bi-workspace-collections/what-is.png)
 
 > [!IMPORTANT]
-> Power BI-Arbeitsbereichssammlungen sind veraltet und nur noch bis Juni 2018 (oder bis zum Termin in Ihrem Vertrag) verfügbar. Es wird empfohlen, die Migration zu Power BI Embedded zu planen, um Unterbrechungen in Ihrer Anwendung zu vermeiden. Informationen zur Migration Ihrer Daten zu Power BI Embedded finden Sie unter [Migrieren von Inhalten aus Power BI-Arbeitsbereichssammlungen zu Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
+> Power BI-Arbeitsbereichssammlungen sind veraltet und nur noch bis Juni 2018 (oder bis zum Termin in Ihrem Vertrag) verfügbar. Es wird empfohlen, die Migration zu Power BI Embedded zu planen, um Unterbrechungen für Ihre Anwendung zu vermeiden. Informationen zur Migration Ihrer Daten zu Power BI Embedded finden Sie unter [Migrieren von Inhalten aus Power BI-Arbeitsbereichssammlungen zu Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
 Power BI-Arbeitsbereichssammlungen sind ein **Azure-Dienst**, mit dessen Hilfe unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und App-Entwickler Power BI-Daten innerhalb ihrer Anwendungen darstellen können. Als Entwickler haben Sie Anwendungen erstellt. Diese Anwendungen verfügen über eigene Benutzer und eine besondere Auswahl an Features. Diese Apps können auch integrierte Datenelemente wie Diagramme und Berichte umfassen, die jetzt durch Microsoft Power BI-Arbeitsbereichssammlungen unterstützt werden können. Sie benötigen für die Verwendung Ihrer App kein Power BI-Konto. Sie können sich weiterhin wie gewohnt bei Ihrer Anwendung anmelden und ganz ohne zusätzliche Lizenzen die Berichtsoberfläche von Power BI anzeigen und damit interagieren.
 
@@ -83,7 +83,7 @@ Sie können jetzt vorhandene Berichte bearbeiten oder neue Berichte direkt in Ih
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Häufige Szenarios für Microsoft Power BI-Arbeitsbereichssammlungen](scenarios.md)  
+[Häufige Szenarien für Microsoft Power BI-Arbeitsbereichssammlungen](scenarios.md)  
 [Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen](get-started.md)  
 [Erste Schritte mit dem Beispiel](get-started-sample.md)  
 [Einbetten eines Berichts](embed-report.md)  

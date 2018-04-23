@@ -1,25 +1,25 @@
 ---
 title: Erste Schritte mit Azure Active Directory | Microsoft-Dokumentation
-description: "Abrufen von Lizenzen, Hinzufügen von Domänennamen, Erstellen einer benutzerdefinierten Anmeldeseite, Hinzufügen der Self-Service-Kennwortzurücksetzung in Azure Active Diretory"
-keywords: 
+description: Abrufen von Lizenzen, Hinzufügen von Domänennamen, Erstellen einer benutzerdefinierten Anmeldeseite, Hinzufügen der Self-Service-Kennwortzurücksetzung in Azure Active Diretory
+keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
 ms.reviewer: jsnow
 ms.date: 11/14/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: active-directory
 ms.workload: identity
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: 9e1a7337c2477455aa0b56f2147f46f3bf5293a8
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: eedcb80038179cf74666880816cb0b5416ac63fd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-azure-ad"></a>Erste Schritte mit Azure AD
 Eine moderne Identitätsverwaltung muss skalierbar, konsistent und zuverlässig sein, um zu gewährleisten, dass Anwendungen und Dienste nur authentifizierten Benutzern zur Verfügung stehen. Zur angemessenen Unterstützung der Identitätsverwaltungsanforderungen von Benutzern muss die IT in der Lage sein, den Zugriff auf genehmigte, öffentliche SaaS-Apps (Software-as-a-Service) zu ermöglichen, interne Branchen-Apps zu hosten und die lokale App-Entwicklung und -Verwendung zu verbessern. Diese Anforderungen lassen sich alle mit einer cloudbasierten Identitätsverwaltungslösung erfüllen.      
@@ -81,7 +81,7 @@ Mit gruppenbasierter Lizenzzuweisung können Sie Regeln wie die Folgenden einric
 Prüfen Sie unter **Azure Active Directory** > **Lizenzen** > **Alle Produkte** die zugewiesenen und verfügbaren Lizenzen.
 
 ## <a name="configure-self-service-password-reset"></a>Konfigurieren der Self-Service-Kennwortzurücksetzung
-Die [Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)](active-directory-passwords-getting-started.md) ist für IT-Administratoren eine einfache Möglichkeit, Benutzern das Zurücksetzen oder Entsperren ihrer Kennwörter oder Konten zu ermöglichen. Das System verfügt über eine ausführliche Berichterstellung zur Nutzung des Systems durch Benutzer sowie über eine Benachrichtigungsfunktion, damit Sie über eine fehlerhafte oder missbräuchliche Nutzung informiert sind.
+Die [Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)](authentication/quickstart-sspr.md) ist für IT-Administratoren eine einfache Möglichkeit, Benutzern das Zurücksetzen oder Entsperren ihrer Kennwörter oder Konten zu ermöglichen. Das System verfügt über eine ausführliche Berichterstellung zur Nutzung des Systems durch Benutzer sowie über eine Benachrichtigungsfunktion, damit Sie über eine fehlerhafte oder missbräuchliche Nutzung informiert sind.
 
 ### <a name="verification-step"></a>Überprüfungsschritt
 Prüfen Sie unter **Azure Active Directory** > **Kennwortzurücksetzung** die aktivierten SSPR-Eigenschaften, um sicherzustellen, dass die Benutzer- und Gruppenzuweisungen korrekt sind. 

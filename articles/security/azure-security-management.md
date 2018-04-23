@@ -1,6 +1,6 @@
 ---
-title: "Erhöhen der Sicherheit bei der Remoteverwaltung in Azure | Microsoft-Dokumentation"
-description: "In diesem Artikel werden Schritte zur Verbesserung der Sicherheit bei der Remoteverwaltung während des Verwaltens von Microsoft Azure-Umgebungen erläutert, darunter auch Clouddienste, Virtual Machines und benutzerdefinierte Anwendungen."
+title: Erhöhen der Sicherheit bei der Remoteverwaltung in Azure | Microsoft-Dokumentation
+description: In diesem Artikel werden Schritte zur Verbesserung der Sicherheit bei der Remoteverwaltung während des Verwaltens von Microsoft Azure-Umgebungen erläutert, darunter auch Clouddienste, Virtual Machines und benutzerdefinierte Anwendungen.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 026a22355ab1d35fa1fe6b7ba624fed5d10b3e38
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 7575e25f06014caf962a4b7241a8a2d6bca8c918
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-management-in-azure"></a>Sicherheitsverwaltung in Azure
 Azure-Abonnenten können ihre Cloudumgebungen über verschiedene Geräte verwalten. Hierzu zählen etwa Arbeitsstationen für die Verwaltung, Entwickler-PCs und sogar geeignete Endbenutzergeräte, die über die aufgabenspezifischen Berechtigungen verfügen. In einigen Fällen werden Administratorfunktionen über webbasierte Konsolen ausgeführt, z. B. das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/). In anderen Fällen können auch direkte Verbindungen mit Azure von lokalen Systemen über Virtual Private Networks (VPNs), Terminal Services, Clientanwendungsprotokolle oder (programmgesteuert) die Azure-Dienstverwaltungs-API (SMAPI) bestehen. Außerdem können Clientendpunkte entweder Mitglied einer Domäne oder isoliert und unverwaltet sein, z.B. Tablets oder Smartphones.
@@ -64,7 +64,7 @@ Mit dem Konsolidieren von Zugriffsressourcen und dem Entfernen nicht verwalteter
 ### <a name="providing-security-for-azure-remote-management"></a>Bereitstellen von Sicherheit für die Azure-Remoteverwaltung
 In Azure werden Sicherheitsmechanismen als Hilfe für Administratoren bereitgestellt, die Azure-Clouddienste und virtuelle Azure-Computer verwalten. Diese Mechanismen sind:
 
-* Authentifizierung und [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md).
+* Authentifizierung und [rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md).
 * Überwachung, Protokollierung und Auditing
 * Zertifikate und verschlüsselte Kommunikation
 * Webverwaltungsportal
@@ -197,7 +197,7 @@ Gehen Sie nicht davon aus, dass andere gängige Sicherheitsanforderungen nicht e
 | - | Verwenden Sie Firewalls, VPNs und Netzwerkzugriffsschutz für alle Verwaltungsverbindungen. |
 
 ## <a name="azure-operations"></a>Azure-Vorgänge
-Im Rahmen des Azure-Betriebs von Microsoft verwenden Betriebstechniker und Supportmitarbeiter, die auf die Produktionssysteme von Azure zugreifen, [Arbeitsstation-PCs mit verstärkter Sicherheit und mit virtuellen Computern](#stand-alone-hardened-workstation-for-management), die darauf für den internen Zugriff auf das Unternehmensnetzwerk und Anwendungen (z. B. E-Mail, Intranet usw.) bereitgestellt werden. Alle Arbeitsstationen für die Verwaltung verfügen über TPMs, das Hoststartlaufwerk ist mit BitLocker verschlüsselt, und sie sind Teil einer speziellen Organisationseinheit in der primären Unternehmensdomäne von Microsoft.
+Im Rahmen des Azure-Betriebs von Microsoft verwenden Betriebstechniker und Supportmitarbeiter, die auf die Produktionssysteme von Azure zugreifen, [Arbeitsstation-PCs mit verstärkter Sicherheit und mit virtuellen Computern](#stand-alone-hardened-workstation-for-management), die darauf für den internen Zugriff auf das Unternehmensnetzwerk und Anwendungen (z.B. E-Mail, Intranet usw.) bereitgestellt werden. Alle Arbeitsstationen für die Verwaltung verfügen über TPMs, das Hoststartlaufwerk ist mit BitLocker verschlüsselt, und sie sind Teil einer speziellen Organisationseinheit in der primären Unternehmensdomäne von Microsoft.
 
 Die Verstärkung der Sicherheit des Systems wird per Gruppenrichtlinie mit zentralisierten Softwareupdates durchgesetzt. Für die Überwachung und Analyse werden Ereignisprotokolle (z.B. Sicherheit und AppLocker) von Verwaltungsarbeitsstationen erfasst und an einem zentralen Ort gespeichert.
 

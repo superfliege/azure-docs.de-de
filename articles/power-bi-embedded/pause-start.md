@@ -1,24 +1,24 @@
 ---
-title: "Anhalten und Starten Ihrer Power BI Embedded-Kapazität im Azure-Portal | Microsoft-Dokumentation"
-description: "In diesem Artikel wird erläutert, wie Sie eine Power BI Embedded-Kapazität in Microsoft Azure anhalten und starten."
+title: Anhalten und Starten Ihrer Power BI Embedded-Kapazität im Azure-Portal | Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, wie Sie eine Power BI Embedded-Kapazität in Microsoft Azure anhalten und starten.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: a7f86ebf3e79812eb50e58cbb320336cbd1149e6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: maghan
+ms.openlocfilehash: f96c62ea1d4fea6a724cd50cce9b54c02ddebdf5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="pause-and-start-your-power-bi-embedded-capacity-in-the-azure-portal"></a>Anhalten und Starten Ihrer Power BI Embedded-Kapazität im Azure-Portal
 
@@ -81,4 +81,4 @@ Wenn Ihre Kapazität nach oben oder unten skaliert werden soll, siehe [Skalieren
 
 Informationen zum Einbetten von Power BI-Inhalten in Ihre Anwendung finden Sie unter [So können Sie Ihre Dashboards, Berichte und Kacheln von Power BI einbetten](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/).
 
-Weitere Fragen? [Fragen Sie die Power BI-Community](http://community.powerbi.com/)
+Weitere Fragen? [Fragen Sie die Power BI-Community](http://community.powerbi.com/).

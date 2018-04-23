@@ -1,5 +1,5 @@
-* [Rollenbasierte Zugriffssteuerung](../articles/active-directory/role-based-access-control-configure.md)
-* [Zugriffsverwaltung mit Azure PowerShell](../articles/active-directory/role-based-access-control-manage-access-powershell.md)
-* [Zugriffsverwaltung mit der Azure-Befehlszeilenschnittstelle](../articles/active-directory/role-based-access-control-manage-access-azure-cli.md)
-* [Integrierte RBAC-Rollen](../articles/active-directory/role-based-access-built-in-roles.md)
+* [Rollenbasierte Zugriffssteuerung](../articles/role-based-access-control/role-assignments-portal.md)
+* [Zugriffsverwaltung mit Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md)
+* [Zugriffsverwaltung mit der Azure-Befehlszeilenschnittstelle](../articles/role-based-access-control/role-assignments-cli.md)
+* [Integrierte RBAC-Rollen](../articles/role-based-access-control/built-in-roles.md)
 

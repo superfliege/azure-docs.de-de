@@ -1,23 +1,23 @@
 ---
-title: "Grundlegendes zur Azure-Identität | Microsoft-Dokumentation"
-description: "Erhalten Sie grundlegende Informationen zu den Begriffen, Konzepten und Empfehlungen der Microsoft Azure-Identitätslösung, um für Ihre Organisation eine fundierte Entscheidung zur Identitätsgovernance zu treffen."
-keywords: 
+title: Grundlegendes zur Azure-Identität | Microsoft-Dokumentation
+description: Erhalten Sie grundlegende Informationen zu den Begriffen, Konzepten und Empfehlungen der Microsoft Azure-Identitätslösung, um für Ihre Organisation eine fundierte Entscheidung zur Identitätsgovernance zu treffen.
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: jeffgilb
 ms.date: 7/17/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 4438917db93c37ddbba3e7ee692b2e3c065d2beb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e5f76bd5da8ff040ea184544b96eb245c42d4dc2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>Grundlegendes zu Azure-Identitätslösungen
 Microsoft Azure Active Directory (Azure AD) ist eine Cloudlösung für die Identitäts- und Zugriffsverwaltung, die Verzeichnisdienste, Indentitätsgovernance und Möglichkeiten für die Anwendungszugriffsverwaltung bietet. Sie ermöglicht Ihnen das [einmalige Anmelden (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) bei tausenden vorab integrierten geschäftlichen und benutzerdefinierten Apps aus dem [Azure AD-Anwendungskatalog](https://azure.microsoft.com/marketplace/active-directory/all/). Viele dieser Apps verwenden Sie wahrscheinlich bereits, wie z.B Salesforce.com, Office 365, Box, ServiceNow und Workday.
@@ -32,7 +32,7 @@ Für die individuellen Anforderungen Ihrer Organisation bietet Microsoft Azure m
 
 Bevor Sie eine Entscheidung hinsichtlich der Azure-Identitätsdienstlösung für Ihre Organisation treffen können, müssen Sie die Begriffe kennen, die im Zusammenhang mit den Azure-Identitätsdiensten häufig verwendet werden.
 
-|Begriff| Beschreibung|
+|Begriff| BESCHREIBUNG|
 |-----|-----|
 |Azure-Abonnement |Abonnements werden zum Bezahlen von Azure-Clouddiensten verwendet und sind in der Regel mit einer Kreditkarte verknüpft. Sie können mehrere Abonnements besitzen, aber es kann schwierig sein, Ressourcen über mehrere Abonnements gemeinsam zu verwenden.|
 |Azure-Mandant | Ein Azure AD-Mandant steht für eine einzelne Organisation. Es handelt sich um eine dedizierte, vertrauenswürdige Instanz von Azure AD, die automatisch erstellt wird, wenn sich eine Organisation für ein Abonnement eines Microsoft-Clouddienst wie Azure, Intune oder Office 365 registriert. Mandanten können Zugriff auf Dienste in einer dedizierten Umgebung (einzelner Mandant) oder in einer mit anderen Organisationen gemeinsam genutzten Umgebung (mehrinstanzenfähig) erhalten.|
@@ -49,11 +49,11 @@ Bevor Sie eine Entscheidung hinsichtlich der Azure-Identitätsdienstlösung für
 
 Nun, da Sie die Grundbegriffe der Azure-Identität kennen, sollten Sie sich über die nachstehenden Konzepte der Azure-Identität informieren, um sich für einen Azure-Identitätsdienst entscheiden zu können.
 
-|Konzept |Beschreibung|
+|Konzept |BESCHREIBUNG|
 |-----|-----|
 |[Beziehung zwischen Azure-Abonnements und Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory) |Jedes Azure-Abonnement verfügt über eine Vertrauensstellung bei einem Azure AD-Verzeichnis zur Authentifizierung von Benutzern, Diensten und Geräten. *Mehrere Abonnements können demselben Azure AD-Verzeichnis vertrauen, aber ein Abonnement vertraut immer nur einem einzigen Azure AD-Verzeichnis*. Diese Vertrauensstellung unterscheidet sich von der Beziehung, die ein Abonnement mit anderen Azure-Ressourcen aufweist (Websites, Datenbanken usw.). Diese ähneln eher den untergeordneten Ressourcen eines Abonnements. Wenn ein Abonnement abläuft, wird der Zugriff auf die ihm zugeordneten Ressourcen mit Ausnahme von Azure AD ebenfalls beendet. Das Azure AD-Verzeichnis verbleibt jedoch in Azure, und Sie können diesem Verzeichnis ein anderes Abonnement zuordnen und die Mandantenressourcen weiterhin verwalten.|
 |[Funktionsweise der Azure AD-Lizenzierung](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-get-started-azure-portal) | Wenn Sie Enterprise Mobility Suite, Azure AD Premium oder Azure AD Basic erwerben oder aktivieren, wird das Verzeichnis mit dem Abonnement aktualisiert, einschließlich der Gültigkeitsdauer und der vorausbezahlten Lizenzen. Nach Aktivierung des Abonnements können der Dienst von globalen Azure AD-Administratoren verwaltet und von lizenzierten Benutzern verwendet werden. Ihre Abonnementinformationen (einschließlich der Anzahl zugewiesener oder verfügbarer Lizenzen) stehen im Azure-Portal auf dem Blatt **Azure Active Directory** > **Lizenzen**. Dies ist auch der beste Ort für die Verwaltung Ihrer Lizenzzuweisungen.|
-|[Rollenbasierte Zugriffssteuerung im Azure-Portal](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)|Die rollenbasierte Azure-Zugriffssteuerung (Role-Based Access Control, RBAC) ermöglicht eine präzise Verwaltung des Zugriffs für Azure-Ressourcen. Zu viele Berechtigungen können ein Konto zum leichten Angriffsziel machen. Wenn die Berechtigungen nicht ausreichen, können Mitarbeiter nicht effizient arbeiten. Mithilfe der RBAC können Sie Mitarbeitern genau die Berechtigungen erteilen, die sie brauchen. Dazu verwenden Sie drei grundlegende Rollen, die für alle Ressourcengruppen gelten: Besitzer, Mitwirkender, Leser. Außerdem können Sie bis zu 2.000 eigene [benutzerdefinierte RBAC-Rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) erstellen, die Ihren speziellen Anforderungen entsprechen. |
+|[Rollenbasierte Zugriffssteuerung im Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/overview)|Die rollenbasierte Azure-Zugriffssteuerung (Role-Based Access Control, RBAC) ermöglicht eine präzise Verwaltung des Zugriffs für Azure-Ressourcen. Zu viele Berechtigungen können ein Konto zum leichten Angriffsziel machen. Wenn die Berechtigungen nicht ausreichen, können Mitarbeiter nicht effizient arbeiten. Mithilfe der RBAC können Sie Mitarbeitern genau die Berechtigungen erteilen, die sie brauchen. Dazu verwenden Sie drei grundlegende Rollen, die für alle Ressourcengruppen gelten: Besitzer, Mitwirkender, Leser. Außerdem können Sie bis zu 2.000 eigene [benutzerdefinierte RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) erstellen, die Ihren speziellen Anforderungen entsprechen. |
 |[Hybrididentität](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)|Hybrididentität wird erzielt, indem Sie Ihr lokales Windows Server Active Directory (AD DS) über [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) in Azure AD integrieren. So können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte Office 365-, Azure- und lokale Apps oder SaaS-Anwendungen bereitstellen. Mit Hybrididentität erweitern Sie effektiv Ihre lokale Umgebung in die Cloud, um die Identitäts- und Zugriffsverwaltung zu ermöglichen.|
 
 ### <a name="the-difference-between-windows-server-ad-ds-and-azure-ad"></a>Der Unterschied zwischen Windows Server AD DS und Azure AD

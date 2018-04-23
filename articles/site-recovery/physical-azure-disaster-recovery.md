@@ -1,6 +1,6 @@
 ---
-title: "Einrichten der Notfallwiederherstellung in Azure für physische lokale Server mit Azure Site Recovery | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Notfallwiederherstellung in Azure für lokale Windows- und Linux-Server mit dem Azure Site Recovery-Dienst einrichten."
+title: Einrichten der Notfallwiederherstellung in Azure für physische lokale Server mit Azure Site Recovery | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Notfallwiederherstellung in Azure für lokale Windows- und Linux-Server mit dem Azure Site Recovery-Dienst einrichten.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: d460da197c6e9f0bface402d83d4788f8164cc9c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 207ff17f7b113bf4a94bb6c157cf53e7b1c46b45
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Einrichten der Notfallwiederherstellung in Azure für physische lokale Server
 
@@ -54,7 +54,7 @@ Erstellen Sie ein [Microsoft Azure-Konto](http://azure.microsoft.com/).
 Vergewissern Sie sich, dass Ihr Azure-Konto über die Berechtigungen für die Replikation von virtuellen Computern in Azure verfügt.
 
 - Überprüfen Sie die [Berechtigungen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines), die Sie für das Replizieren von Computern in Azure benötigen.
-- Überprüfen Sie die Berechtigungen für den [rollenbasierten Zugriff](../active-directory/role-based-access-control-configure.md), und passen Sie sie ggf. an. 
+- Überprüfen Sie die Berechtigungen für den [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md), und passen Sie sie ggf. an. 
 
 
 

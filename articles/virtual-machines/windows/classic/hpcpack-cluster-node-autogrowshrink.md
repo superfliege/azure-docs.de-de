@@ -1,10 +1,10 @@
 ---
 title: Automatisches Skalieren von HPC Pack-Clusterknoten | Microsoft Docs
-description: "Automatisches Vergrößern und Verkleinern der Anzahl der HPC Pack-Cluster-Compute-Knoten in Azure"
+description: Automatisches Vergrößern und Verkleinern der Anzahl der HPC Pack-Cluster-Compute-Knoten in Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: 
+manager: ''
 editor: tysonn
 ms.assetid: 38762cd1-f917-464c-ae5d-b02b1eb21e3f
 ms.service: virtual-machines-windows
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/08/2016
 ms.author: danlep
-ms.openlocfilehash: 0c8a5aacd19d83b26cfeb3750d57dd783687f1c4
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 4a2350183bc0cb9360e9315cd8a351be20b66584
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>Automatisches Vergrößern oder Verkleinern der HPC Pack-Clusterressourcen in Azure gemäß der Clusterworkload
 Wenn Sie Azure-Burstknoten im HPC Pack-Cluster bereitstellen oder einen HPC Pack-Cluster auf virtuellen Azure-Computern erstellen, möchten Sie möglicherweise die Anzahl der Clusterressourcen, wie z.B. Knoten oder Kerne, entsprechend der Workload im Cluster automatisch vergrößern oder verkleinern. Indem Sie die Clusterressourcen auf diese Weise skalieren, können Sie Ihre Azure-Ressourcen effizienter nutzen und die Kosten kontrollieren.
@@ -50,13 +50,13 @@ Zurzeit können Sie nur die HPC Pack-Computeknoten automatisch vergrößern oder
     ```powershell
         cd $env:CCP_HOME\bin
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
     ```
         
     Wenn sich Ihr Konto in mehreren Azure Active Directory-Mandanten oder Azure-Abonnements befindet, können Sie den folgenden Befehl ausführen, um den richtigen Mandanten und das richtige Abonnement auszuwählen:
   
     ```powershell
-        Login-AzureRMAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
+        Connect-AzureRmAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
     ```     
        
     Führen Sie den folgenden Befehl aus, um den aktuell ausgewählten Mandanten und das aktuell ausgewählte Abonnement anzuzeigen:
@@ -186,12 +186,12 @@ Standardmäßig ist **SoaJobGrowThreshold** auf 50.000 und **SoaRequestsPerCore*
 * **Cluster mit HPC Pack 2012 R2 Update 1 oder höher**: Das Skript **AzureAutoGrowShrink.ps1** ist im Ordner „%CCP_HOME%bin“ installiert. Der Clusterhauptknoten kann entweder lokal oder auf einem virtuellen Azure-Computer bereitgestellt werden. Informationen für die ersten Schritte mit einem lokalen Hauptknoten und Azure-Burstknoten finden Sie unter [Einrichten eines Hybrid-Rechenclusters mit Microsoft HPC Pack](../../../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md) . Informationen zur schnellen Bereitstellung eines HPC Pack-Clusters auf virtuellen Azure-Computern finden Sie im [HPC Pack IaaS-Bereitstellungsskript](hpcpack-cluster-powershell-script.md). Alternativ können Sie eine [Azure-Schnellstartvorlage](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/) nutzen.
 * **Azure PowerShell 1.4.0**: Das Skript ist derzeit von dieser spezifischen Version von Azure PowerShell abhängig.
 * **Für einen Cluster mit Azure-Burstknoten** – Führen Sie das Skript auf einem Clientcomputer, auf dem HPC Pack installiert ist, oder auf dem Hauptknoten aus. Wenn Sie das Skript auf einem Clientcomputer ausführen, stellen Sie sicher, dass Sie die Variable „$env:CCP_SCHEDULER“ so festlegen, dass sie auf den Hauptknoten verweist. Die Azure-Burstknoten müssen dem Cluster bereits hinzugefügt sein, können jedoch den Status „Nicht bereitgestellt“ aufweisen.
-* **Für einen auf virtuellen Azure-Computern bereitgestellten Cluster (Resource Manager-Bereitstellungsmodell)**: Bei einem Cluster aus virtuellen Azure-Computern, der im Resource Manager-Bereitstellungsmodell bereitgestellt wurde, unterstützt das Skript zwei Methoden der Azure-Authentifizierung: Anmelden bei Ihrem Azure-Konto, um das Skript jedes Mal auszuführen (mit `Login-AzureRmAccount`), oder Konfigurieren eines Dienstprinzipals zur Authentifizierung mit einem Zertifikat. HPC Pack stellt das Skript **ConfigARMAutoGrowShrinkCert.ps** bereit, um einen Dienstprinzipal mit Zertifikat zu erstellen. Das Skript erstellt eine Azure Active Directory-Anwendung (Azure AD) und einen Dienstprinzipal und weist dem Dienstprinzipal die Rolle „Mitwirkender“ zu. Um das Skript auszuführen, starten Sie Azure PowerShell als Administrator, und führen Sie die folgenden Befehle aus:
+* **Für einen auf virtuellen Azure-Computern bereitgestellten Cluster (Resource Manager-Bereitstellungsmodell)**: Bei einem Cluster aus virtuellen Azure-Computern, der im Resource Manager-Bereitstellungsmodell bereitgestellt wurde, unterstützt das Skript zwei Methoden der Azure-Authentifizierung: Anmelden bei Ihrem Azure-Konto, um das Skript jedes Mal auszuführen (mit `Connect-AzureRmAccount`), oder Konfigurieren eines Dienstprinzipals zur Authentifizierung mit einem Zertifikat. HPC Pack stellt das Skript **ConfigARMAutoGrowShrinkCert.ps** bereit, um einen Dienstprinzipal mit Zertifikat zu erstellen. Das Skript erstellt eine Azure Active Directory-Anwendung (Azure AD) und einen Dienstprinzipal und weist dem Dienstprinzipal die Rolle „Mitwirkender“ zu. Um das Skript auszuführen, starten Sie Azure PowerShell als Administrator, und führen Sie die folgenden Befehle aus:
 
     ```powershell
     cd $env:CCP_HOME\bin
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     .\ConfigARMAutoGrowShrinkCert.ps1 -DisplayName “YourHpcPackAppName” -HomePage "https://YourHpcPackAppHomePage" -IdentifierUri "https://YourHpcPackAppUri" -PfxFile "d:\yourcertificate.pfx"
     ```

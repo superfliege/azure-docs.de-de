@@ -1,11 +1,11 @@
 ---
 title: Erstellen einer Azure AD-App mithilfe von CLI 2.0 und Konfigurieren ihres Zugriffs auf die Azure Media Services-API | Microsoft-Dokumentation
-description: "In diesem Thema wird erläutert, wie mithilfe von CLI 2.0 eine Azure AD-App erstellt und ihr Zugriff auf die Azure Media Services-API konfiguriert wird."
+description: In diesem Thema wird erläutert, wie mithilfe von CLI 2.0 eine Azure AD-App erstellt und ihr Zugriff auf die Azure Media Services-API konfiguriert wird.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 205e554fa42b1c28ed78add3e84c046855875872
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b640455b151d0e5d4701b8c076ee1a587b92f5b6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-cli-20-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>Erstellen einer AAD-App mithilfe von CLI 2.0 und Konfigurieren ihres Zugriffs auf die Azure Media Services-API
 
@@ -61,7 +61,7 @@ So kann beispielsweise eine der folgenden Ebenen festgelegt sein:
 
 Weitere Informationen finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)
 
-Siehe auch [Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle](../active-directory/role-based-access-control-manage-access-azure-cli.md). 
+Siehe auch [Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle](../role-based-access-control/role-assignments-cli.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

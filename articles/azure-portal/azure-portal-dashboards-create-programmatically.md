@@ -1,8 +1,8 @@
 ---
 title: Programmgesteuertes Erstellen von Azure-Dashboards | Microsoft-Dokumentation
-description: "In diesem Artikel wird erläutert, wie Azure-Dashboards programmgesteuert erstellt werden."
+description: In diesem Artikel wird erläutert, wie Azure-Dashboards programmgesteuert erstellt werden.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: adamab
 manager: timlt
 editor: tysonn
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 0e84ff61346f2788cf475cee2783ba2056a091ad
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3d72c8b026dd7c72be01aabcb47e76174d7afd6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmgesteuertes Erstellen von Azure-Dashboards
 
@@ -55,7 +55,7 @@ Nachdem Sie das Dashboard nach Ihren Vorstellungen konfiguriert haben, wird es i
 
 ![Befehl „Freigeben“](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-Durch Klicken auf den Befehl „Freigeben“ wird ein Dialogfeld angezeigt, in dem Sie zum Auswählen des Abonnements und der Ressourcengruppe aufgefordert werden, in denen die Veröffentlichung erfolgen soll. Beachten Sie, dass Sie für das Abonnement und die Ressourcengruppe, die Sie auswählen, [über Schreibzugriff verfügen müssen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
+Durch Klicken auf den Befehl „Freigeben“ wird ein Dialogfeld angezeigt, in dem Sie zum Auswählen des Abonnements und der Ressourcengruppe aufgefordert werden, in denen die Veröffentlichung erfolgen soll. Beachten Sie, dass Sie für das Abonnement und die Ressourcengruppe, die Sie auswählen, [über Schreibzugriff verfügen müssen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 ![Freigabe und Zugriffssteuerung](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

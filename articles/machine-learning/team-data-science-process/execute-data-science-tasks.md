@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: bradsev
-ms.openlocfilehash: da09ab7daba115e570bb8b97549cc5f01e7496b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f0e0c04e48a551db6d7d7cd221a35e267dc0a63f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Ausführen von Data Science-Aufgaben: Durchsuchen, Modellieren und Bereitstellen
 
 Zu den typischen Data Science-Aufgaben gehören das Durchsuchen, Modellieren und Bereitstellen. In diesem Artikel wird gezeigt, wie mit den Hilfsprogrammen **IDEAR (Interactive Data Exploration, Analysis, and Reporting)** und **AMAR (Automated Modeling and Reporting)** verschiedene häufige Data Science-Aufgaben wie interaktive Datendurchsuchung, Datenanalyse, Berichterstellung und Modellbildung ausgeführt werden. Es werden auch Optionen zum Bereitstellen eines Modells in einer Produktionsumgebung mit einer Vielzahl von Toolkits und Datenplattformen vorgestellt, etwa mit den folgenden:
 
-- [Azure Machine Learning](../preview/index.yml)
+- [Azure Machine Learning](../service/index.yml)
 - [SQL Server mit ML-Diensten](https://docs.microsoft.com/sql/advanced-analytics/r/r-services#in-database-analytics-with-sql-server)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
@@ -32,7 +32,7 @@ Zu den typischen Data Science-Aufgaben gehören das Durchsuchen, Modellieren und
 
 Datenanalysten haben verschiedene Möglichkeiten für das Durchsuchen und die Berichterstellung: mit verfügbaren Bibliotheken und Paketen für Python (z.B. matplotlib) oder mit R (z.B. ggplot oder lattice). Solchen Code können Datenanalysten entsprechend den Anforderungen an Datendurchsuchung für spezifische Szenarien anpassen. Die Anforderungen für den Umgang mit strukturierten Daten unterscheiden sich von denen für unstrukturierte Daten wie Texte oder Bilder. 
 
-Produkte wie Azure Machine Learning Workbench bieten auch eine [erweiterte Datenvorbereitung](../preview/tutorial-bikeshare-dataprep.md) für den Umgang mit Daten und das Durchsuchen dieser, einschließlich der Erstellung von Features. Der Benutzer sollte entscheiden, welche Tools, Bibliotheken und Pakete seinen Anforderungen am besten entsprechen. 
+Produkte wie Azure Machine Learning Workbench bieten auch eine [erweiterte Datenvorbereitung](../desktop-workbench/tutorial-bikeshare-dataprep.md) für den Umgang mit Daten und das Durchsuchen dieser, einschließlich der Erstellung von Features. Der Benutzer sollte entscheiden, welche Tools, Bibliotheken und Pakete seinen Anforderungen am besten entsprechen. 
 
 Das Ergebnis dieser Phase ist ein Bericht zur Datendurchsuchung. Der Bericht sollte eine umfassende Ansicht der Daten für die Modellierung und eine Bewertung, ob die Daten für den Modellierungsschritt geeignet sind, enthalten. Die TDSP-Hilfsprogramme (Team Data Science-Prozess), die in den folgenden Abschnitten für die teilautomatisierte Durchsuchung, Modellierung und Berichterstellung erläutert werden, bieten auch standardisierte Datendurchsuchungs- und Modellierungsberichte. 
 
@@ -75,7 +75,7 @@ Weitere Informationen finden Sie unter [Automatisiertes Modellierungs- und Beric
 ### <a name="model-management"></a>Modellverwaltung
 Nachdem mehrere Modelle erstellt wurden, benötigen Sie in der Regel ein System zum Registrieren und Verwalten der Modelle. Normalerweise benötigen Sie eine Kombination aus Skripts oder APIs und einer Back-End-Datenbank oder einem Versionsverwaltungssystem. Für diese Verwaltungsaufgaben stehen Ihnen unter anderem die folgenden Optionen zur Verfügung:
 
-1. [Azure Machine Learning-Modellverwaltungsdienst](../preview/index.yml)
+1. [Azure Machine Learning-Modellverwaltungsdienst](../service/index.yml)
 2. [ModelDB von MIT](https://mitdbg.github.io/modeldb/) 
 3. [SQL Server als Modellverwaltungssystem](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
@@ -88,7 +88,7 @@ Bei einer Produktionsbereitstellung kann ein Modell eine aktive Rolle in einem U
 Es gibt verschiedene Ansätze und Plattformen für das Einführen von Modellen in die Produktion. Hier sind einige Optionen angegeben:
 
 
-- [Modellentwicklung in Azure Machine Learning](../preview/model-management-overview.md)
+- [Modellentwicklung in Azure Machine Learning](../desktop-workbench/model-management-overview.md)
 - [Bereitstellung eines Modells in SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

@@ -1,6 +1,6 @@
 ---
-title: "Erstellen von Netzwerksicherheitsgruppen – Azure-Portal | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Netzwerksicherheitsgruppen über das Azure-Portal erstellen und bereitstellen."
+title: Erstellen von Netzwerksicherheitsgruppen – Azure-Portal | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Netzwerksicherheitsgruppen über das Azure-Portal erstellen und bereitstellen.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 865032f350735d35668bb199ccf1ef3f0fae81de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd05df542327f9d8dae924b7097d247980a0558b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-portal"></a>Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal
 
@@ -92,6 +92,6 @@ Führen Sie die folgenden Schritte aus, um die Netzwerksicherheitsgruppe **NSG-B
 3. Wiederholen Sie die Schritte in [Zuordnen der NSG zum FrontEnd-Subnetz](#Associate-the-NSG-to-the-FrontEnd-subnet), um die **NSG-BackEnd**-NSG dem **BackEnd**-Subnetz zuzuordnen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie, wie Sie [vorhandene NSGs verwalten](virtual-network-manage-nsg-arm-portal.md)
+* Erfahren Sie, wie Sie [vorhandene NSGs verwalten](manage-network-security-group.md)
 * [Aktivieren Sie die Protokollierung](virtual-network-nsg-manage-log.md) für NSGs.
 

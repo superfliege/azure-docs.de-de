@@ -1,11 +1,11 @@
 ---
 title: Azure AD-Kennwortsicherheit mit Stufen | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Azure AD sichere Kennwörter erzwingt und Benutzerkennwörter vor Cyberkriminellen schützt."
+description: Erfahren Sie, wie Azure AD sichere Kennwörter erzwingt und Benutzerkennwörter vor Cyberkriminellen schützt.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.openlocfilehash: 19c8d9084c9ce03d347e58b3359b65cdbcd80651
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 04e437eb5a040f418df22e0857cb96d7ef99bbbb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Ein mehrstufiger Ansatz für die Azure AD-Kennwortsicherheit
 
@@ -84,4 +84,4 @@ Informationen zur Kennwortzurücksetzung in Azure Active Directory finden Sie im
 
 * [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md)
 * [Grundlagen der Identitätsverwaltung in Azure](fundamentals-identity.md)
-* [Bericht zur Aktivität „Zurücksetzen des Kennworts“](active-directory-passwords-reporting.md)
+* [Bericht zur Aktivität „Zurücksetzen des Kennworts“](authentication/howto-sspr-reporting.md)

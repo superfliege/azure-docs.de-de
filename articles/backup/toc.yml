@@ -100,7 +100,7 @@
         - name: Sichern virtueller Computer
           items:
             - name: Sichern von virtuellen Azure-Computern in einem Recovery Services-Tresor
-              href: backup-azure-arm-vms.md
+              href: backup-azure-vms-first-look-arm.md
             - name: Sichern verschlüsselter virtueller Computer
               href: backup-azure-vms-encryption.md
             - name: Aktivieren der VM-Sicherung während der Erstellung virtueller Computer
@@ -179,9 +179,9 @@
           href: backup-azure-delete-vault.md
     - name: Problembehandlung
       items:
-        - name: 'IaaS-VM-Sicherung: Fehlermeldungen'
+        - name: Azure-VM
           href: backup-azure-vms-troubleshoot.md
-        - name: Timeout bei Azure Backup-Agent (MARS) oder VM-Erweiterung
+        - name: Timeout bei Azure Backup-Agent oder VM-Erweiterung
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Langsame Sicherung der Dateien und Ordner
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
@@ -189,16 +189,22 @@
           href: backup-azure-mabs-troubleshoot.md
         - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Azure Backup-Agent (MARS)
+        - name: Azure Backup-Agent
           href: backup-azure-mars-troubleshoot.md
-        - name: Sicherung von Azure-Dateifreigaben
+        - name: Azure-Dateifreigabe
           href: troubleshoot-azure-files.md
 - name: Verweis
   items:
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.recoveryservices.backup
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
+    - name: Azure CLI 2.0
+      href: /cli/azure/backup?view=azure-cli-latest
+    - name: PowerShell
+      href: /powershell/module/azurerm.recoveryservices.backup
+    - name: REST – Sicherung
+      href: /rest/api/backup/
+    - name: REST – Recovery Services-Tresors
+      href: /rest/api/recoveryservices/
 - name: angeben
   items:
     - name: Azure-Roadmap

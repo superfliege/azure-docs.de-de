@@ -1,11 +1,11 @@
 ---
 title: Sammeln von Log Analytics-Daten mit einem Runbook in Azure Automation | Microsoft-Dokumentation
-description: "Dieses ausführliche Tutorial führt Sie die durch die Erstellung eines Runbooks in Azure Automation für das Sammeln von Daten im OMS-Repository für die Analyse durch Log Analytics."
+description: Dieses ausführliche Tutorial führt Sie die durch die Erstellung eines Runbooks in Azure Automation für das Sammeln von Daten im OMS-Repository für die Analyse durch Log Analytics.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: operations-management-suite
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 59f674c9c6404da7f5384539189f41a4ba1a939a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0784e2317fbc98561b486547654ca27bb30e76c3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Sammeln von Daten in Log Analytics mit einem Azure Automation-Runbook
 Sie können in Log Analytics eine erhebliche Menge an Daten aus unterschiedlichen Quellen sammeln, einschließlich [Datenquellen](../log-analytics/log-analytics-data-sources.md) auf Agents sowie [von Azure gesammelte Daten](../log-analytics/log-analytics-azure-storage.md).  Es gibt jedoch Fälle, in denen Sie Daten sammeln müssen, auf die Sie über diese Standardquellen keinen Zugriff erhalten.  Sie können in diesen Situationen die [HTTP-Datensammler-API](../log-analytics/log-analytics-data-collector-api.md) verwenden, um Daten von einem REST-API-Client an Log Analytics zu senden.  Eine gängige Methode zum Durchführen dieser Datensammlung stellt die Verwendung eines Runbooks in Azure Automation dar.   
@@ -57,7 +57,7 @@ Der PowerShell-Katalog bietet jedoch eine schnelle Möglichkeit, ein Modul direk
 ## <a name="2-create-automation-variables"></a>2. Erstellen von Automation-Variablen
 [Automation-Variablen](..\automation\automation-variables.md) enthalten Werte, die von allen Runbooks in Ihrem Automation-Konto verwendet werden können.  Sie machen die Runbooks flexibler, da Sie diese Werte ändern können, ohne das eigentliche Runbook zu bearbeiten. Jede Anforderung von der HTTP-Datensammler-API erfordert die ID und den Schlüssel des OMS-Arbeitsbereichs. Für das Speichern solcher Informationen eignen sich besonders variable Ressourcen.  
 
-![Variablen](media/operations-management-suite-runbook-datacollect/variables.png)
+![Variables](media/operations-management-suite-runbook-datacollect/variables.png)
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto.
 2. Wählen Sie unter **Freigegebene Ressourcen** die Option **Variablen** aus.
@@ -65,10 +65,10 @@ Der PowerShell-Katalog bietet jedoch eine schnelle Möglichkeit, ein Modul direk
 
 | Eigenschaft | Wert der Arbeitsbereichs-ID | Wert des Arbeitsbereichsschlüssels |
 |:--|:--|:--|
-| Name | WorkspaceId | WorkspaceKey |
-| Typ | String | String |
+| NAME | WorkspaceId | WorkspaceKey |
+| Typ | Zeichenfolge | Zeichenfolge |
 | Wert | Fügen Sie die Arbeitsbereichs-ID Ihres Log Analytics-Arbeitsbereichs ein. | Fügen Sie den primären oder sekundären Schlüssel Ihres Log Analytics-Arbeitsbereichs ein. |
-| Verschlüsselt | Nein | Ja |
+| Verschlüsselt | Nein  | Ja |
 
 
 
@@ -97,7 +97,7 @@ Azure Automation bietet im Portal einen Editor, mit dem Sie Ihr Runbook bearbeit
         # Code copied from the runbook AzureAutomationTutorial.
         $connectionName = "AzureRunAsConnection"
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -184,11 +184,11 @@ Die gängigste Methode zum Starten eines Runbooks, das Überwachungsdaten sammel
 
 | Eigenschaft | Wert |
 |:--|:--|
-| Name | AutomationJobs-Hourly |
+| NAME | AutomationJobs-Hourly |
 | Startet | Wählen Sie eine Zeit aus, die mindestens 5 Minuten in der Zukunft liegt. |
 | Serie | Serie |
 | Wiederholen alle | 1 Stunde |
-| Ablaufdatum festlegen | Nein |
+| Ablaufdatum festlegen | Nein  |
 
 Nachdem der Zeitplan erstellt wurde, müssen Sie die Parameterwerte festlegen, die jedes Mal verwendet werden, wenn dieser Zeitplan das Runbook startet.
 

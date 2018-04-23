@@ -12,15 +12,15 @@
 ## [Metriken und Diagnosen für Load Balancer im Standard-Tarif](load-balancer-standard-diagnostics.md)
 
 # Erste Schritte
-## [Einrichten eines Load Balancers im Tarif „Basic“](load-balancer-get-started-internet-portal.md)
-### [Einrichten eines Load Balancers im Tarif „Basic“ (CLI)](load-balancer-get-started-internet-arm-cli.md)
-### [Einrichten eines Load Balancers im Tarif „Basic“ (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
-## [Einrichten eines Load Balancers im Tarif „Standard“](load-balancer-standard-public-portal.md)
-### [Einrichten eines Load Balancers im Tarif „Standard“ (CLI)](load-balancer-standard-public-cli.md)
+## [Einrichten eines Load Balancers im Tarif „Basic“](quickstart-create-basic-load-balancer-portal.md)
+### [Einrichten eines Load Balancers im Tarif „Basic“ (CLI)](quickstart-create-basic-load-balancer-cli.md)
+### [Einrichten eines Load Balancers im Tarif „Basic“ (PowerShell)](quickstart-create-basic-load-balancer-powershell.md)
+## [Einrichten eines Load Balancers im Tarif „Standard“](quickstart-load-balancer-standard-public-portal.md)
+### [Einrichten eines Load Balancers im Tarif „Standard“ (CLI)](quickstart-load-balancer-standard-public-cli.md)
 
 # Anleitung
 
-## [Erstellen eines zonenredundanten öffentlichen Load Balancers im Standard-Tarif](load-balancer-get-started-internet-az-portal.md)
+## [Erstellen eines zonenredundanten öffentlichen Load Balancers im Standard-Tarif](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
 ### [Erstellen eines zonenredundanten öffentlichen Load Balancers im Standard-Tarif (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
 ### [Erstellen eines zonenredundanten öffentlichen Load Balancers im Standard-Tarif (CLI)](load-balancer-get-started-internet-az-cli.md)
 ## [Erstellen eines zonalen öffentlichen Load Balancers im Standard-Tarif](load-balancer-get-started-internet-availability-zones-zonal-portal.md)

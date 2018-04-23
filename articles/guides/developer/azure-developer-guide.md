@@ -1,12 +1,12 @@
 ---
-title: "Handbuch für Entwickler zu den ersten Schritten in Azure | Microsoft-Dokumentation"
-description: "Dieses Thema enthält wichtige Informationen für Entwickler, die mit der Microsoft Azure-Plattform für Ihre Entwicklungsbedürfnisse beginnen möchten."
-services: 
-cloud: 
-documentationcenter: 
+title: Handbuch für Entwickler zu den ersten Schritten in Azure | Microsoft-Dokumentation
+description: Dieses Thema enthält wichtige Informationen für Entwickler, die mit der Microsoft Azure-Plattform für Ihre Entwicklungsbedürfnisse beginnen möchten.
+services: ''
+cloud: ''
+documentationcenter: ''
 author: ggailey777
 manager: erikre
-ms.assetid: 
+ms.assetid: ''
 ms.service: na
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: e740b655cbd22a08aab988e83a057cc770e8dfe3
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b1cda302636d8bd4d0f14536f186c7b4951c09c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -116,8 +116,7 @@ Die meisten Anwendungen müssen Daten speichern, es ist also egal, wie Sie Ihre 
 
     >**Erste Schritte**: Wählen Sie aus den folgenden Speichertypen aus: [Blobs](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [Tabellen](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Warteschlangen](../../storage/queues/storage-dotnet-how-to-use-queues.md) oder [Dateien](../../storage/files/storage-dotnet-how-to-use-files.md).
 
--   
-            **Azure SQL-Datenbank**: Eine auf Azure basierende Version der Microsoft SQL Server-Engine zum Speichern relationaler Tabellendaten in der Cloud. SQL-Datenbank bietet vorhersagbare Leistung, Skalierbarkeit ohne Downtime, Geschäftskontinuität, und Datenschutz.
+-   **Azure SQL-Datenbank**: Eine auf Azure basierende Version der Microsoft SQL Server-Engine zum Speichern relationaler Tabellendaten in der Cloud. SQL-Datenbank bietet vorhersagbare Leistung, Skalierbarkeit ohne Downtime, Geschäftskontinuität, und Datenschutz.
 
     >**Verwendung**: Wenn Ihre Anwendung Datenspeicherung mit referentieller Integrität, Transaktionsunterstützung und Unterstützung für TSQL-Abfragen erfordert.
 
@@ -144,8 +143,7 @@ Azure bietet mehrere Methoden zum Verwenden von Containern in Ihren Anwendungen.
 
     >**Erste Schritte**: [Deploy a Container Service cluster (Bereitstellen eines Container Service-Clusters)](../../container-service/dcos-swarm/container-service-deployment.md).
 
--   
-            **Docker-Computer**: Hiermit können Sie eine Docker-Engine auf virtuellen Hosts installieren und verwalten, indem Sie Docker-Computerbefehle verwenden.
+-   **Docker-Computer**: Hiermit können Sie eine Docker-Engine auf virtuellen Hosts installieren und verwalten, indem Sie Docker-Computerbefehle verwenden.
 
     >**Verwendung**: Wenn Sie schnell einen Prototyp für eine App erstellen müssen, indem Sie einen einzelnen Docker-Host erstellen.
 
@@ -297,7 +295,7 @@ Wenn Sie den Zugriff auf Azure-Ressourcen gewähren, ist es empfehlenswert, Benu
 
     >**Verwendung**: Wenn Sie eine differenzierte Zugriffsverwaltung für Benutzer und Gruppen benötigen.
 
-    >**Erste Schritte**: Weitere Informationen finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../../active-directory/role-based-access-control-what-is.md).
+    >**Erste Schritte**: Weitere Informationen finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../../role-based-access-control/overview.md).
 
 -   **Dienstprinzipalobjekte**: Zusätzlich zum Bereitstellen des Zugriffs für Benutzerprinzipale und Gruppen können Sie einem Dienstprinzipal den gleichen Zugriff gewähren.
 

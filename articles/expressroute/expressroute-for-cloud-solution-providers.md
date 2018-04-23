@@ -1,11 +1,11 @@
 ---
-title: "Azure ExpressRoute für Cloudlösungsanbieter | Microsoft Docs"
-description: "Dieser Artikel enthält Informationen für Clouddienstanbieter, die Azure-Dienste und ExpressRoute in ihre Angebote integrieren möchten."
+title: Azure ExpressRoute für Cloud Solution Provider | Microsoft Docs
+description: Dieser Artikel enthält Informationen für Clouddienstanbieter, die Azure-Dienste und ExpressRoute in ihre Angebote integrieren möchten.
 documentationcenter: na
 services: expressroute
 author: richcar
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f6c5f8ee-40ba-41a1-ae31-67669ca419a6
 ms.service: expressroute
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: dfae23638e31242dc795922fd62d1abb02579480
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 9991da5d5ab6f43cc8c5ebf1672d7da0f1ad061e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute für Cloudlösungsanbieter (Cloud Solution Providers, CSPs)
 Mit den von Microsoft bereitgestellten Diensten mit Hyperskalierung können traditionelle Wiederverkäufer und Distributoren (CSPs) schnell neue Dienste und Lösungen für Ihre Kunden bereitstellen, ohne in die Entwicklung dieser neuen Dienste investieren zu müssen. Microsoft stellt zudem Programme und APIs zur direkten Verwaltung dieser neuen Dienste bereit, sodass der Cloudlösungsanbieter (Cloud Solution Provider, CSP) Microsoft Azure-Ressourcen im Auftrag Ihrer Kunden verwalten kann. Eine dieser Ressourcen ist ExpressRoute. Mit ExpressRoute kann der CSP vorhandene Kundenressourcen mit Azure-Diensten verknüpfen. ExpressRoute ist eine private Hochgeschwindigkeitsverbindung für die Kommunikation mit Diensten in Azure. 
@@ -65,7 +65,7 @@ Für dieses Verbindungsszenario ist es erforderlich, dass der Kunde die Verbindu
 
 Die Entscheidung für eine dieser beiden Optionen hängt von den Anforderungen Ihres Kunden sowie davon ab, ob Sie Azure-Dienste bereitstellen müssen. Details zu diesen Modellen sowie zur dazugehörigen rollenbasierten Zugriffssteuerung, zum Netzwerk und zu Identitätsentwurfsmustern finden Sie unter folgenden Links:
 
-* **Rollenbasierte Zugriffssteuerung** (Role Based Access Control, RBAC): RBAC basiert auf Azure Active Directory.  Weitere Informationen zu Azure RBAC finden Sie [hier](../active-directory/role-based-access-control-configure.md).
+* **Rollenbasierte Zugriffssteuerung** (Role Based Access Control, RBAC): RBAC basiert auf Azure Active Directory.  Weitere Informationen zu Azure RBAC finden Sie [hier](../role-based-access-control/role-assignments-portal.md).
 * **Netzwerk** : Behandelt die verschiedenen Netzwerkthemen in Microsoft Azure.
 * **Azure Active Directory (Azure AD)**: Azure AD stellt die Identitätsverwaltung für Microsoft Azure und SaaS-Drittanbieteranwendungen bereit. Weitere Informationen zu Azure AD finden Sie [hier](https://azure.microsoft.com/documentation/services/active-directory/).  
 
@@ -130,10 +130,10 @@ Je nach verwendetem Modell (Direktverbindung oder Durchleitung) definiert Ihr Ku
 ![alt text](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 
 ## <a name="next-steps"></a>Nächste Schritte
-Der Cloudlösungsanbieter-Dienst ermöglicht es Ihnen, Ihren Nutzen für Kunden ohne Anschaffung teurer Infrastruktur und Funktionen zu erhöhen und dabei gleichzeitig Ihre Position als primärer Outsourcinganbieter zu festigen. Zur nahtlosen Integration von Microsoft Azure steht die CSP-API zur Verfügung, mit der Sie die Verwaltung von Microsoft Azure in Ihre vorhandenen Verwaltungsframeworks integrieren können.  
+Der Cloud Solution Provider-Dienst ermöglicht es Ihnen, Ihren Nutzen für Kunden ohne Anschaffung teurer Infrastruktur und Funktionen zu erhöhen und dabei gleichzeitig Ihre Position als primärer Outsourcinganbieter zu festigen. Zur nahtlosen Integration von Microsoft Azure steht die CSP-API zur Verfügung, mit der Sie die Verwaltung von Microsoft Azure in Ihre vorhandenen Verwaltungsframeworks integrieren können.  
 
 Weitere Informationen finden Sie unter den folgenden Links:
 
 [Azure im Cloud Solution Provider-Programm](https://docs.microsoft.com/azure/cloud-solution-provider)  
-[Vorbereitung auf Transaktionen](https://partner.microsoft.com/en-us/solutions/cloud-reseller-pre-launch)  
+[Vorbereitung auf Transaktionen als Cloud Solution Provider](https://partner.microsoft.com/en-us/solutions/cloud-reseller-pre-launch)  
 [Microsoft Cloud Solution Provider – Ressourcen](https://partner.microsoft.com/en-us/solutions/cloud-reseller-resources)

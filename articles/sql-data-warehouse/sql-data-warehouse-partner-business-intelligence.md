@@ -1,31 +1,26 @@
 ---
-title: "Business Intelligence-Partner für SQL Data Warehouse | Microsoft Docs"
-description: "Liste der externen Business Intelligence-Partner mit Lösungen, die SQL Data Warehouse unterstützen."
+title: Business Intelligence-Partner für SQL Data Warehouse | Microsoft Docs
+description: Liste der externen Business Intelligence-Partner mit Lösungen, die SQL Data Warehouse unterstützen.
 services: sql-data-warehouse
-documentationcenter: NA
-author: kevinvngo
-manager: jhubbard
-editor: 
-ms.assetid: 1d9cdbd0-76c0-4b87-8a80-e792b73ffe10
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: partners
-ms.date: 10/31/2016
-ms.author: kevin;barbkess
-ms.openlocfilehash: 7c88e55b420d45f6d0cd4486377e3f2b1347bd9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: 22f05607d85a1425c54b890e233b161e72c10848
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Business Intelligence-Partner für SQL Data Warehouse
 Für die Erstellung Ihrer eigenen End-to-End-Data Warehouse-Lösung können Sie auf eine Vielzahl branchenführender Tools zurückgreifen.  In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die Business Intelligence-Lösungen (BI) für die Datenverwaltung anbieten, die Azure SQL Data Warehouse unterstützen.
 
 ## <a name="our-business-intelligence-partners"></a>Unsere Business Intelligence-Partner
-| Partner | Beschreibung | Links | Videos |
+| Partner | BESCHREIBUNG | Links | Videos |
 | --- | --- | --- | --- |
 | ![Birst][1] |**Birst**<br>Birst ist ein weltweit führender Anbieter von Business Intelligence und Analysen in der Cloud. Unternehmen können eine vertrauenswürdige Datenquelle im Kontext der einzelnen wichtigen Geschäftskunden erstellen. Geschäftskunden im gesamten Unternehmen können dann Informationen mit erstklassigen BI-Tools protokollieren und analysieren. |[Marketplace][birst_marketplace]<br>[Website][birst_website]<br>[Twitter][birst_twitter]<br>[YouTube][birst_youtube] | |
 | ![ClearStory Data][2] |**ClearStory Data**<br>ClearStory Data ermöglicht Analysen mit kurzen Zyklen für unterschiedliche in SQL Data Warehouse gespeicherte Daten. Die integrierte Spark-basierte Plattform und Analyseanwendung von ClearStory beschleunigt den Datenzugriff und die Harmonisierung von unterschiedlichen Datasets. Sie ermöglichen die schnelle und übergreifende Datendurchsuchung, anhand der Geschäftskunden sich selbständig einen detaillierten Einblick verschaffen können. |[Website][clearstory_website]<br>[Datenblatt][clearstory_datasheet]<br>[Twitter][clearstory_twitter]<br>[YouTube][clearstory_youtube] | |

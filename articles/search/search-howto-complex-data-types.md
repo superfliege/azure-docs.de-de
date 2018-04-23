@@ -1,25 +1,18 @@
 ---
 title: Modellieren komplexer Datentypen in Azure Search | Microsoft Docs
-description: "Geschachtelte oder hierarchische Datenstrukturen lassen sich in einem Azure Search-Index mit einem vereinfachten Rowset und dem Datentyp „Sammlungen“ modellieren."
-services: search
-documentationcenter: 
-author: LiamCa
-manager: pablocas
-editor: 
+description: Geschachtelte oder hierarchische Datenstrukturen lassen sich in einem Azure Search-Index mit einem vereinfachten Rowset und dem Datentyp „Sammlungen“ modellieren.
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
-ms.assetid: e4bf86b4-497a-4179-b09f-c1b56c3c0bb2
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/01/2017
-ms.author: liamca
-ms.openlocfilehash: d7a7400fe7470439dfa957f1ddb463e0a7f1a271
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: bc7deddc73139e587114c2d58c3fd176df47225c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Gewusst wie: Modellieren komplexer Datentypen in Azure Search
 Externe Datasets, die zum Auffüllen eines Azure Search-Index verwendet werden, weisen manchmal hierarchische oder geschachtelte Teilstrukturen auf, die in einem tabellarischen Rowset nicht sauber unterteilt werden. Beispiele für solche Strukturen können mehrere Standorte und Telefonnummern für einen einzelnen Kunden, mehrere Farben und Größen für eine einzelne SKU, mehrere Autoren für ein einzelnes Buch enthalten und so weiter. In der Modelliersprache werden diese Strukturen bisweilen als *komplexe Datentypen*, *zusammengesetzte Datentypen*, *verbundene Datentypen* oder *aggregierte Datentypen* bezeichnet, um nur einige zu nennen.
@@ -102,7 +95,7 @@ Sobald Sie den Index erstellt und die Daten geladen haben, können Sie die Lösu
 * Anzahl der Personen abrufen, die in einem Heimbüro arbeiten  
 * Für Personen, die in einem Heimbüro arbeiten, die anderen Büros, in denen sie arbeiten sowie die Anzahl der Personen an jedem Standort anzeigen  
 
-Dieses Verfahren funktioniert nicht, wenn Sie eine Suche durchführen müssen, bei der die ID und die Standortbeschreibung kombiniert werden. Beispiel:
+Dieses Verfahren funktioniert nicht, wenn Sie eine Suche durchführen müssen, bei der die ID und die Standortbeschreibung kombiniert werden. Beispiel: 
 
 * Alle Personen suchen, die ein Heimbüro und die Standort-ID 4 haben  
 
@@ -117,7 +110,7 @@ Sie erinnern sich vielleicht, dass der ursprüngliche Inhalt folgendermaßen aus
 
 Da jetzt jedoch die Daten in separate Felder aufgeteilt sind, ist unklar, ob sich das Heimbüro für Klarissa Wolf auf `locationsID 3` oder `locationsID 4` bezieht.  
 
-Für diesen Fall definieren Sie ein anderes Feld im Index, das alle Daten in einer einzelnen Sammlung kombiniert.  Für unser Beispiel nennen wir dieses Feld `locationsCombined` und trennen den Inhalt durch `||`. Sie können jedoch jedes Trennzeichen verwenden, das Sie für eine eindeutige Zeichengruppe für Ihren Inhalt halten. Beispiel: 
+Für diesen Fall definieren Sie ein anderes Feld im Index, das alle Daten in einer einzelnen Sammlung kombiniert.  Für unser Beispiel nennen wir dieses Feld `locationsCombined` und trennen den Inhalt durch `||`. Sie können jedoch jedes Trennzeichen verwenden, das Sie für eine eindeutige Zeichengruppe für Ihren Inhalt halten. Beispiel:  
 
 ![Beispieldaten, 2 Zeilen mit Trennzeichen](./media/search-howto-complex-data-types/sample-data-2.png)
 
@@ -127,7 +120,7 @@ Mit diesem `locationsCombined`-Feld sind sogar noch mehr Abfragen möglich, z. B
 * Personen suchen, die in einem Heimbüro mit der Standort-ID 4 arbeiten 
 
 ## <a name="limitations"></a>Einschränkungen
-Diese Methode eignet sich für eine Reihe von Szenarien, ist jedoch nicht in jedem Fall anwendbar.  Beispiel:
+Diese Methode eignet sich für eine Reihe von Szenarien, ist jedoch nicht in jedem Fall anwendbar.  Beispiel: 
 
 1. Wenn in Ihrem komplexen Datentyp kein statischer Satz von Feldern vorhanden ist und es keine Möglichkeit gab, alle möglichen Typen einem einzelnen Feld zuzuordnen. 
 2. Das Aktualisieren der geschachtelten Objekte erfordert einige zusätzliche Aufgaben, um zu bestimmen, was im Azure Search-Index genau aktualisiert werden muss.

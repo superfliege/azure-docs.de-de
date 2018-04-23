@@ -1,6 +1,6 @@
 ---
-title: "Ermitteln der genauesten und kürzesten Ausführungen in Azure Machine Learning Workbench | Microsoft-Dokumentation"
-description: "Ein End-to-End-Anwendungsfall, um die beste Genauigkeit über die CLI mithilfe von Azure Machine Learning Workbench zu ermitteln."
+title: Ermitteln der genauesten und kürzesten Ausführungen in Azure Machine Learning Workbench | Microsoft-Dokumentation
+description: Ein End-to-End-Anwendungsfall, um die beste Genauigkeit über die CLI mithilfe von Azure Machine Learning Workbench zu ermitteln.
 services: machine-learning
 author: totekp
 ms.author: kefzhou
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
 ms.openlocfilehash: bd8888d911730831435b87d3a60b48a7797eea98
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Ermitteln der genauesten und kürzesten Ausführungen
 Bei mehreren Ausführungen ist ein Anwendungsfall, die Ausführungen mit der besten Genauigkeit zu ermitteln. Ein Ansatz besteht darin, die Befehlszeilenschnittstelle (Command Line Interface, CLI) mit einer [JMESPath](http://jmespath.org/)-Abfrage zu verwenden. Weitere Informationen zum Verwenden von JMESPath in der Azure CLI finden Sie unter [Verwenden von JMESPath-Abfragen mit Azure CLI 2.0](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). Im folgenden Beispiel werden vier Ausführungen mit den Genauigkeitswerten von 0, 0,98, 1 und 1 erstellt. Die Ausführungen werden gefiltert, wenn diese sich im Bereich `[MaxAccuracy-Threshold, MaxAccuracy]` befinden, in dem `Threshold = .03`.

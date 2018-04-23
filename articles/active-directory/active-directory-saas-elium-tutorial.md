@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 6a72cc1829b7b8a5c7c588543d0b5c91f9f36bf5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2c41b2c297d8d89554950e8c77201ff5bedf743e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>Tutorial: Integration von Elium in Azure Active Directory
 
@@ -117,7 +117,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: ` https://<platform-domain>.elium.com/login/saml2/login`.
      
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Sie erhalten diese Werte in der **SP-Metadatendatei**, die Sie unter `https://<platform-domain>/login/saml2/metadata` herunterladen können und die später in diesem Tutorial erläutert wird.
+    > Hierbei handelt es sich um Beispielwerte. Sie erhalten diese Werte in der **SP-Metadatendatei**, die Sie unter `https://<platform-domain>.elium.com/login/saml2/metadata` herunterladen können und die später in diesem Tutorial erläutert wird.
 
 5. Die Elium-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten.
 

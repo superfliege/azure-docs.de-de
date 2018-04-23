@@ -1,6 +1,6 @@
 ---
 title: Sicherheitsdienste und -technologien in Azure | Microsoft Docs
-description: "Der Artikel enthält eine Aufstellung von Sicherheitsdiensten und -technologien in Azure."
+description: Der Artikel enthält eine Aufstellung von Sicherheitsdiensten und -technologien in Azure.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 1ea707d3d149734dad2d5c76d853ddd667cbf73b
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 838987e7fa5e638a980c592f5cdf775d3110fab0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-services-and-technologies"></a>Sicherheitsdienste und -technologien in Azure
 In unseren Diskussionen mit bestehenden und zukünftigen Azure-Kunden werden wir häufig gefragt: „Haben Sie eine Liste aller sicherheitsbezogenen Dienste und Technologien, die Azure zu bieten hat?“
@@ -54,7 +54,7 @@ Im Folgenden sehen Sie den Beginn unserer Bestrebungen, eine Liste zusammenzuste
 * [Azure SQL – Datenbanküberwachung](../sql-database/sql-database-auditing.md)
 
 ## <a name="azure-identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung in Azure
-* [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md)
+* [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/role-assignments-portal.md)
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
 * [Azure Active Directory-Domänendienste](../active-directory-domain-services/active-directory-ds-overview.md)

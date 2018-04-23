@@ -1,8 +1,8 @@
 ---
-title: "Verwenden des Azure-Speicheremulators für Entwicklung und Tests | Microsoft-Dokumentation"
-description: "Der Azure-Speicheremulator bietet eine kostenlose lokale Entwicklungsumgebung zum Entwickeln und Testen Ihrer Azure Storage-Anwendungen. Hier erhalten Sie Informationen zur Authentifizierung von Anforderungen, zum Herstellen einer Verbindung mit dem Emulator über eine Anwendung und zum Verwenden des Befehlszeilentools."
+title: Verwenden des Azure-Speicheremulators für Entwicklung und Tests | Microsoft-Dokumentation
+description: Der Azure-Speicheremulator bietet eine kostenlose lokale Entwicklungsumgebung zum Entwickeln und Testen Ihrer Azure Storage-Anwendungen. Hier erhalten Sie Informationen zur Authentifizierung von Anforderungen, zum Herstellen einer Verbindung mit dem Emulator über eine Anwendung und zum Verwenden des Befehlszeilentools.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: tamram
-ms.openlocfilehash: 13aee7bbbe58c0a4183eddc0881aaed8cbebd956
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 
@@ -27,7 +27,7 @@ Der Microsoft Azure-Speicheremulator bietet eine lokale Umgebung, die die Azure-
 ## <a name="get-the-storage-emulator"></a>Abrufen des Speicheremulators
 Der Speicheremulator ist als Teil des [Microsoft Azure-SDK](https://azure.microsoft.com/downloads/)verfügbar. Sie können den Speicheremulator auch mithilfe des [eigenständigen Installationsprogramms](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) installieren (direkter Download). Zum Installieren des Speicheremulators benötigen Sie Administratorrechte auf Ihrem Computer.
 
-Der Speicheremulator wird derzeit nur unter Windows ausgeführt. Eine Option für diejenigen, die einen Speicheremulator für Linux in Betracht ziehen, ist der von der Community unterstützte Open Source-Standardemulator [Azurite](https://github.com/arafato/azurite).
+Der Speicheremulator wird derzeit nur unter Windows ausgeführt. Eine Option für diejenigen, die einen Speicheremulator für Linux in Betracht ziehen, ist der von der Community unterstützte Open Source-Standardemulator [Azurite](https://github.com/azure/azurite).
 
 > [!NOTE]
 > Der Zugriff auf die Daten, die in einer bestimmten Version des Speicheremulators erstellt wurden, ist bei Verwendung einer anderen Version nicht garantiert. Wenn Sie die Daten langfristig beibehalten möchten, sollten Sie diese Daten in einem Azure Storage-Konto und nicht im Speicheremulator speichern.

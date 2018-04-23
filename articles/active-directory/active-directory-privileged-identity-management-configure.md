@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 827e3521be8918f4de00113fd9eaf4e01679cac5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f91ebe0f94c57c9ad217ffe280f9aa0a9aa6acb9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
@@ -72,7 +72,7 @@ Bei Azure RBAC-Rollen können nur Abonnementadministratoren, Ressourcenbesitzer 
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Übersicht über Privileged Identity Management (Einstiegspunkt)
 
-Azure AD Privileged Identity Management unterstützt die Verwaltung von Azure AD-Verzeichnisrollen sowie von Rollen für Azure-Ressourcen (Vorschauversion). Die Funktion von Rollen für Azure-Ressourcen unterscheidet sich von Administratorrollen in Azure AD. Azure-Ressourcenrollen bieten präzise Berechtigungen für die Ressource, für die sie zugewiesen sind, sowie für alle untergeordneten Ressourcen in der Ressourcenhierarchie (Vererbung). Weitere Informationen zu RBAC, Ressourcenhierarchie und Vererbung finden Sie [hier](role-based-access-control-configure.md). PIM für Azure AD-Verzeichnisrollen und Azure-Ressourcen (Vorschauversion) kann über den entsprechenden Link im Abschnitt „Verwalten“ verwaltet werden. Zu diesem Abschnitt gelangen Sie über den Einstiegspunkt der PIM-Übersicht im linken Navigationsmenü.
+Azure AD Privileged Identity Management unterstützt die Verwaltung von Azure AD-Verzeichnisrollen sowie von Rollen für Azure-Ressourcen (Vorschauversion). Die Funktion von Rollen für Azure-Ressourcen unterscheidet sich von Administratorrollen in Azure AD. Azure-Ressourcenrollen bieten präzise Berechtigungen für die Ressource, für die sie zugewiesen sind, sowie für alle untergeordneten Ressourcen in der Ressourcenhierarchie (Vererbung). Weitere Informationen zu RBAC, Ressourcenhierarchie und Vererbung finden Sie [hier](../role-based-access-control/role-assignments-portal.md). PIM für Azure AD-Verzeichnisrollen und Azure-Ressourcen (Vorschauversion) kann über den entsprechenden Link im Abschnitt „Verwalten“ verwaltet werden. Zu diesem Abschnitt gelangen Sie über den Einstiegspunkt der PIM-Übersicht im linken Navigationsmenü.
 
 Mit PIM können Sie über den Aufgabenabschnitt des linken Navigationsmenüs komfortabel Rollen aktivieren sowie ausstehende Aktivierungen/Anforderungen, ausstehende Genehmigungen (für Azure AD-Verzeichnisrollen) und Überprüfungen mit ausstehender Antwort anzeigen.
 

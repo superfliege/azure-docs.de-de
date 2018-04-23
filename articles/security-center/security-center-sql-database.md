@@ -1,11 +1,11 @@
 ---
 title: Azure Security Center und Azure SQL-Datenbankdienst | Microsoft Docs
-description: "In diesem Artikel erfahren Sie, wie Sie mithilfe von Security Center Ihre Datenbanken in Azure SQL-Datenbank schützen können."
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Security Center Ihre Datenbanken in Azure SQL-Datenbank schützen können.
 services: sql-database
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f109adfd-daed-4257-9692-2042a1399480
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 46dd298a5664d914e55d45c5b7599d5983287476
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b507a62db9a80866005cb63d2008fb14612b516f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure Security Center und Azure SQL-Datenbankdienst
 Mit [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) können Sie Bedrohungen verhindern, erkennen und bekämpfen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
@@ -38,7 +38,7 @@ Security Center ermöglicht nicht nur den Schutz Ihrer SQL-Datenbank-Ressourcen,
 ## <a name="prerequisites"></a>Voraussetzungen
 Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Der Free-Tarif für Security Center wird mit Ihrem Abonnement aktiviert. Weitere Informationen zum Free- und Standard-Tarif von Security Center finden Sie unter [Security Center Preise](https://azure.microsoft.com/pricing/details/security-center/).
 
-Security Center unterstützt rollenbasierten Zugriff. Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) in Azure finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-configure.md). Im Artikel mit häufig gestellten Fragen zu Security Center finden Sie Informationen zur [Behandlung von Berechtigungen in Security Center](security-center-faq.md#permissions).
+Security Center unterstützt rollenbasierten Zugriff. Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) in Azure finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../role-based-access-control/role-assignments-portal.md). Im Artikel mit häufig gestellten Fragen zu Security Center finden Sie Informationen zur [Behandlung von Berechtigungen in Security Center](security-center-faq.md#permissions).
 
 ## <a name="access-security-center"></a>Zugreifen auf Security Center
 Sie können über das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/)auf Security Center zugreifen. [Melden Sie sich beim Portal](https://portal.azure.com/) an, und wählen Sie die Option **Security Center** aus.
@@ -66,7 +66,7 @@ Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus de
 
 Nach Einstellung einer Sicherheitsrichtlinie analysiert Security Center den Sicherheitsstatus Ihrer Ressourcen, um potenzielle Sicherheitsrisiken zu erkennen. Die Empfehlungen werden in einem Tabellenformat angezeigt, wobei jede Zeile eine bestimmte Empfehlung darstellt. Verwenden Sie die folgende Tabelle als Übersicht über die verfügbaren Empfehlungen für Azure SQL-Datenbank und um zu erfahren, was die einzelnen Empfehlungen bei Anwendung bewirken. Wenn Sie eine Empfehlung auswählen, gelangen Sie zu einem Artikel, in dem erläutert wird, wie die Empfehlung in Security Center implementiert wird.
 
-| Empfehlung | Beschreibung |
+| Empfehlung | BESCHREIBUNG |
 | --- | --- |
 | [Aktivieren der Überwachung und Bedrohungserkennung auf SQL-Servern](security-center-enable-auditing-on-sql-servers.md) |Empfiehlt die Überwachung und Bedrohungserkennung für SQL-Datenbankserver zu aktivieren. (Nur SQL-Datenbank-Dienst. Bezieht sich nicht auf Microsoft SQL Server auf virtuellen Computern.) |
 | [Aktivieren der Überwachung und Bedrohungserkennung auf SQL-Datenbanken](security-center-enable-auditing-on-sql-databases.md) |Empfiehlt, die Überwachung und Bedrohungserkennung für SQL-Datenbank Datenbanken zu aktivieren. (Nur SQL-Datenbank-Dienst. Bezieht sich nicht auf Microsoft SQL Server auf virtuellen Computern.) |

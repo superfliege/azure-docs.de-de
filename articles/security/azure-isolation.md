@@ -1,12 +1,12 @@
 ---
-title: "Isolation in der öffentlichen Azure-Cloud | Microsoft-Dokumentation"
-description: "Enthält Informationen zu cloudbasierten Computingdiensten mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen."
+title: Isolation in der öffentlichen Azure-Cloud | Microsoft-Dokumentation
+description: Enthält Informationen zu cloudbasierten Computingdiensten mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a153d70e077ad63a042e76d0c4ae40e3cc067a2a
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 996079e0062bf1e24ae2bf24354a94167e6adff3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 ##  <a name="introduction"></a>Einführung
@@ -52,7 +52,7 @@ An einem cloudaktivierten Arbeitsplatz kann ein Mandant als ein Client oder eine
 Jedes Azure AD-Verzeichnis ist eindeutig und von anderen Azure AD-Verzeichnissen getrennt. Genau so wie ein Bürogebäude, das ein sicherer Ort nur für Ihre Organisation ist, soll auch ein Azure AD-Verzeichnis ein sicheres Anlagegut nur für Ihre Organisation darstellen. Die Azure AD-Architektur isoliert Kundendaten und Identitätsinformationen und verhindert deren Vermischung. Dies bedeutet, dass Benutzer und Administratoren eines Azure AD-Verzeichnisses nicht versehentlich oder böswillig auf Daten in einem anderen Verzeichnis zugreifen können.
 
 ### <a name="azure-tenancy"></a>Azure-Mandant
-Die Bezeichnung „Azure-Mandant“ (Azure-Abonnement) bezieht sich auf eine Kunden-/Abrechnungsbeziehung und einen eindeutigen [Mandanten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) in [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Die Isolation auf Mandantenebene wird in Microsoft Azure mithilfe von Azure Active Directory und der damit verbundenen [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) erreicht. Jedes Azure-Abonnement ist mit einem Azure Active Directory-Verzeichnis (AD) verknüpft.
+Die Bezeichnung „Azure-Mandant“ (Azure-Abonnement) bezieht sich auf eine Kunden-/Abrechnungsbeziehung und einen eindeutigen [Mandanten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) in [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Die Isolation auf Mandantenebene wird in Microsoft Azure mithilfe von Azure Active Directory und der damit verbundenen [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview) erreicht. Jedes Azure-Abonnement ist mit einem Azure Active Directory-Verzeichnis (AD) verknüpft.
 
 Benutzer, Gruppen und Anwendungen aus diesem Verzeichnis können Ressourcen im Azure-Abonnement verwalten. Sie können diese Zugriffsrechte mit dem Azure-Portal, Azure-Befehlszeilentools und Azure-Verwaltungs-APIs zuweisen. Ein Azure AD-Mandant ist logisch isoliert und nutzt Sicherheitsgrenzen, sodass kein Kunde auf andere Mandanten zugreifen oder diese kompromittieren kann – weder in böswilliger Absicht noch versehentlich. Azure AD wird auf „Bare-Metal“-Servern ausgeführt, die in einem abgetrennten Netzwerksegment isoliert sind, für das per Paketfilterung auf Hostebene und über die Windows-Firewall unerwünschte Verbindungen und Datenübertragungen blockiert werden.
 
@@ -80,7 +80,7 @@ Das Konzept der Mandantencontainer ist auf allen Ebenen tief in den Verzeichnisd
 Auch wenn Metadaten mehrerer Azure Active Directory-Mandanten auf demselben physischen Datenträger gespeichert sind, besteht keine Beziehung zwischen den Containern, sondern es gilt nur, was vom Verzeichnisdienst definiert wird. Dies wird wiederum vom Mandantenadministrator vorgegeben.
 
 ### <a name="azure-role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung in Azure
-Die [rollenbasierte Zugriffssteuerung von Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) (Role-Based Access Control, RBAC) unterstützt Sie beim Freigeben der unterschiedlichen Komponenten, die in einem Azure-Abonnement verfügbar sind, indem eine präzise Zugriffsverwaltung für Azure ermöglicht wird. Mithilfe von Azure RBAC können Sie die Aufgabenbereiche in Ihrer Organisation unterteilen und den Zugriff jeweils in Abhängigkeit davon gewähren, was Benutzer zum Erledigen ihrer Arbeit benötigen. Anstatt allen Benutzern uneingeschränkte Berechtigungen für das Azure-Abonnement oder Ressourcen zu gewähren, können Sie die Berechtigungen auf bestimmte Aktionen beschränken.
+Die [rollenbasierte Zugriffssteuerung von Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) (Role-Based Access Control, RBAC) unterstützt Sie beim Freigeben der unterschiedlichen Komponenten, die in einem Azure-Abonnement verfügbar sind, indem eine präzise Zugriffsverwaltung für Azure ermöglicht wird. Mithilfe von Azure RBAC können Sie die Aufgabenbereiche in Ihrer Organisation unterteilen und den Zugriff jeweils in Abhängigkeit davon gewähren, was Benutzer zum Erledigen ihrer Arbeit benötigen. Anstatt allen Benutzern uneingeschränkte Berechtigungen für das Azure-Abonnement oder Ressourcen zu gewähren, können Sie die Berechtigungen auf bestimmte Aktionen beschränken.
 
 Azure RBAC verfügt über drei grundlegende Rollen, die für alle Ressourcentypen gelten:
 
@@ -94,7 +94,7 @@ Azure RBAC verfügt über drei grundlegende Rollen, die für alle Ressourcentype
 
 Die verbleibenden RBAC-Rollen in Azure ermöglichen die Verwaltung von bestimmten Azure-Ressourcen. Mit der Rolle „Mitwirkender von virtuellen Computern“ können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Sie haben damit keinen Zugriff auf das virtuelle Azure-Netzwerk oder das Subnetz, mit dem der virtuelle Computer verbunden ist.
 
-Unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) sind die Rollen aufgeführt, die in Azure verfügbar sind. Hierbei werden die Vorgänge und der Bereich angegeben, die mit jeder integrierten Rolle für Benutzer gewährt werden. Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle zu haben, helfen Ihnen die Informationen zum Erstellen von [benutzerdefinierten Rollen in Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)weiter.
+Unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) sind die Rollen aufgeführt, die in Azure verfügbar sind. Hierbei werden die Vorgänge und der Bereich angegeben, die mit jeder integrierten Rolle für Benutzer gewährt werden. Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle zu haben, helfen Ihnen die Informationen zum Erstellen von [benutzerdefinierten Rollen in Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)weiter.
 
 Weitere Beispiele für Azure Active Directory-Funktionen sind:
 - Azure AD ermöglicht SSO für SaaS-Anwendungen unabhängig davon, wo sie gehostet werden. Einige Anwendungen bilden einen Verbund mit Azure AD, andere verwenden Kennwort-SSO. Verbundanwendungen können auch die Benutzerbereitstellung und [Kennworttresore](https://www.techopedia.com/definition/31415/password-vault) unterstützen.
@@ -239,7 +239,7 @@ Mithilfe von [Azure Disk Encryption](https://docs.microsoft.com/azure/security/a
 Die Disk Encryption-Lösung für Windows basiert auf der [Microsoft BitLocker-Laufwerkverschlüsselung](https://technet.microsoft.com/library/cc732774.aspx), die Linux-Lösung auf [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
 Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, wenn sie in Microsoft Azure aktiviert sind:
--   Integration in Azure-Schlüsseltresor
+-   Integration in Azure Key Vault
 
 -   Virtuelle Computer im Standard-Tarif: Virtuelle IaaS-Computer der Serien A, D, DS, G, GS usw.
 
@@ -271,10 +271,10 @@ Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologie
 
 -   Integration in den lokalen Schlüsselverwaltungsdienst
 
--   Azure Files (freigegebenes Dateisystem), Netzwerkdateisystem (NFS), dynamische Volumes und Windows-VMs, die mit softwarebasierten RAID-Systemen konfiguriert sind
+-   Azure Files (freigegebenes Dateisystem), Network File System (NFS), dynamische Volumes und virtuelle Windows-Computer, die mit softwarebasierten RAID-Systemen konfiguriert sind
 
 ## <a name="sql-azure-database-isolation"></a>Isolation per SQL Azure-Datenbank
-SQL-Datenbank ist ein relationaler Datenbankdienst in der Microsoft Cloud, der auf dem marktführenden Microsoft SQL Server-Modul basiert und unternehmenswichtige Workloads verarbeiten kann. Mit der SQL-Datenbank ist eine vorhersagbare Isolation von Daten auf Kontoebene, nach Geografie/Region und nach Netzwerk möglich – nahezu ohne Verwaltungsaufwand.
+SQL-Datenbank ist ein relationaler Datenbankdienst in der Microsoft Cloud, der auf der marktführenden Microsoft SQL Server-Engine basiert und unternehmenswichtige Workloads verarbeiten kann. Mit der SQL-Datenbank ist eine vorhersagbare Isolation von Daten auf Kontoebene, nach Geografie/Region und nach Netzwerk möglich – nahezu ohne Verwaltungsaufwand.
 
 ### <a name="sql-azure-application-model"></a>SQL Azure-Anwendungsmodell
 
@@ -317,7 +317,7 @@ Hinter der VIP (virtuelle IP-Adresse) befindet sich eine Sammlung von zustandslo
 
 ![Isolation per Netzwerktopologie](./media/azure-isolation/azure-isolation-fig12.png)
 
-Die Ebene hinter den Gateways wird als „Back-End“ bezeichnet. Hier werden alle Daten mit hoher Verfügbarkeit gespeichert. Jedes Datenelement gehört einer „Partition“ oder „Failovereinheit“ an, die jeweils über mindestens drei Replikate verfügt. Replikate werden mit dem SQL Server-Modul gespeichert und repliziert und von einem Failoversystem verwaltet, das häufig als „Fabric“ bezeichnet wird.
+Die Ebene hinter den Gateways wird als „Back-End“ bezeichnet. Hier werden alle Daten mit hoher Verfügbarkeit gespeichert. Jedes Datenelement gehört einer „Partition“ oder „Failovereinheit“ an, die jeweils über mindestens drei Replikate verfügt. Replikate werden mit der SQL Server-Engine gespeichert und repliziert und von einem Failoversystem verwaltet, das häufig als „Fabric“ bezeichnet wird.
 
 Normalerweise kommuniziert das Back-End-System aus Sicherheitsgründen nicht in ausgehender Richtung mit anderen Systemen. Dies ist auf die Systeme der Front-End-Ebene (Gateway) beschränkt. Die Computer der Gatewayebene verfügen auf den Back-End-Computern über eingeschränkte Rechte, um die Angriffsfläche zu verkleinern und auch auf dieser Ebene Verteidigungsmaßnahmen zu ergreifen.
 

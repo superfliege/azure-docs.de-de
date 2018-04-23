@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: 76bbe686d07ff83bff6271f62793713194938212
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f6813d98782d31dc780da21f78aafbbfdfc5e688
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Einrichten Ihrer Entwicklungsumgebung unter Mac OS X
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Führen Sie die folgenden Schritte aus, um einen lokalen Docker-Container einzur
     >
     >Es empfiehlt sich, Docker beim Testen großer Anwendungen mehr Ressourcen zuzuordnen. Klicken Sie hierzu auf das **Docker-Symbol** und anschließend auf **Erweitert**, um die Anzahl von Kernen und die Speichermenge anzupassen.
 
-2. Erstellen Sie zur Erstellung Ihres Service Fabric-Images eine Datei namens `.Dockerfile` in einem neuen Verzeichnis:
+2. Erstellen Sie zur Erstellung Ihres Service Fabric-Images eine Datei namens `Dockerfile` in einem neuen Verzeichnis:
 
     ```dockerfile
     FROM microsoft/service-fabric-onebox
@@ -86,7 +86,7 @@ Führen Sie die folgenden Schritte aus, um einen lokalen Docker-Container einzur
     >[!TIP]
     > Standardmäßig wird dann das Image mit der aktuellen Version von Service Fabric per Pullvorgang bereitgestellt. Bestimmte Revisionen finden Sie auf der Seite [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
 
-3. Öffnen Sie ein Terminal, wechseln Sie per `cd` zum Verzeichnis mit Ihrer Datei vom Typ `.Dockerfile`, und führen Sie anschließend Folgendes aus, um Ihr wiederverwendbares Images auf der Grundlage der Datei vom Typ `.Dockerfile` zu erstellen:
+3. Öffnen Sie ein Terminal, wechseln Sie per `cd` zum Verzeichnis mit Ihrer Datei vom Typ `Dockerfile`, und führen Sie anschließend Folgendes aus, um Ihr wiederverwendbares Images auf der Grundlage der Datei vom Typ `Dockerfile` zu erstellen:
 
     ```bash 
     docker build -t mysfcluster .
