@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI-Beispiele für Azure-Datenbank für PostgreSQL"
-description: "Dieser Artikel führt verschiedene Azure CLI-Codebeispiele auf, die für die Interaktion mit Azure Database for PostgreSQL-Server verfügbar sind."
+title: Azure CLI-Beispiele für Azure-Datenbank für PostgreSQL
+description: Dieser Artikel führt verschiedene Azure CLI-Codebeispiele auf, die für die Interaktion mit Azure Database for PostgreSQL-Server verfügbar sind.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

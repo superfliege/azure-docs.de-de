@@ -1,6 +1,6 @@
 ---
-title: "Tutorial für Azure Containerdienst – DC/OS verwalten"
-description: "Tutorial für Azure Containerdienst – DC/OS verwalten"
+title: Tutorial für Azure Containerdienst – DC/OS verwalten
+description: Tutorial für Azure Containerdienst – DC/OS verwalten
 services: container-service
 author: neilpeterson
 manager: timlt

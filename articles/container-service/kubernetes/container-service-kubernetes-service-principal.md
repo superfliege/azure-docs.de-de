@@ -1,6 +1,6 @@
 ---
-title: "Dienstprinzipal für Azure Kubernetes-Cluster"
-description: "Erstellen und Verwalten eines Azure Active Directory-Dienstprinzipals für einen Kubernetes-Cluster in Azure Container Service"
+title: Dienstprinzipal für Azure Kubernetes-Cluster
+description: Erstellen und Verwalten eines Azure Active Directory-Dienstprinzipals für einen Kubernetes-Cluster in Azure Container Service
 services: container-service
 author: neilpeterson
 manager: timlt

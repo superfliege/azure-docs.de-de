@@ -3,7 +3,6 @@
 # Übersicht
 ## [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md)
 ## [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md)
-## [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # Erste Schritte
 ## Erstellen eines routenbasierten VPN-Gateways
@@ -122,6 +121,7 @@
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Blog](https://azure.microsoft.com/blog/topics/networking)
 ## [Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## [Preise](https://azure.microsoft.com/pricing/details/vpn-gateway)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla)

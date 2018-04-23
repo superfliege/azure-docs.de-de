@@ -1,7 +1,7 @@
 ---
-title: "Erweiterte Überwachung in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation"
-description: "In diesem Tutorial wird erläutert, wie Sie Geräte über das Dashboard der Remoteüberwachungslösung überwachen."
-services: 
+title: Erweiterte Überwachung in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+description: In diesem Tutorial wird erläutert, wie Sie Geräte über das Dashboard der Remoteüberwachungslösung überwachen.
+services: ''
 suite: iot-suite
 author: dominicbetts
 manager: timlt

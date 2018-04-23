@@ -1,6 +1,6 @@
 ---
-title: "Schnellstartanleitung: Azure Docker CE-Cluster für Linux"
-description: "Hier erfahren Sie, wie Sie in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle einen Docker CE-Cluster für Linux-Container erstellen."
+title: 'Schnellstartanleitung: Azure Docker CE-Cluster für Linux'
+description: Hier erfahren Sie, wie Sie in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle einen Docker CE-Cluster für Linux-Container erstellen.
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -8,7 +8,7 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: nepeters
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: 3c06aaa09366df89ad73cb60780511d2087d5994
 ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT

@@ -1,5 +1,3 @@
-Für die Anmeldung bei Ihrer Anwendung müssen Sie eine Anmelderichtlinie erstellen. Diese Richtlinie beschreibt die Benutzeroberflächen, die Kunden bei der Anmeldung durchlaufen, und den Inhalt der Token, die die Anwendung bei erfolgreichen Anmeldungen erhält.
-
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
 Wählen Sie im Richtlinienabschnitt der Einstellungen die Option **Registrierungs- oder Anmelderichtlinien**, und klicken Sie auf **+ Hinzufügen**.

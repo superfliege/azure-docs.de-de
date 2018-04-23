@@ -1,25 +1,20 @@
 ---
 title: Indizieren einer Azure Cosmos DB-Datenquelle für Azure Search | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Indexer mit einer Azure Cosmos DB-Datenquelle erstellen.
-services: search
-documentationcenter: ''
 author: chaosrealm
-manager: pablocas
-editor: ''
-ms.assetid: ''
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: search
+ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: 165402f5147224cd355f0ae14642069a3de58f19
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3e6c7c70acbfde9d82d40c884711db8e9eb6946a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Verbinden von Cosmos DB mit Azure Search mithilfe von Indexern
 

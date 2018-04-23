@@ -1,6 +1,6 @@
 ---
 title: Migration nach Azure Database for MySQL mit minimaler Ausfallzeit
-description: "Dieser Artikel beschreibt die Durchführung einer Migration einer MySQL-Datenbank nach Azure Database for MySQL mit minimaler Ausfallzeit und die Einrichtung der anfänglichen Last und der kontinuierlichen Datensynchronisierung von der Quelldatenbank zur Zieldatenbank mithilfe von Attunity Replicate for Microsoft Migrations."
+description: Dieser Artikel beschreibt die Durchführung einer Migration einer MySQL-Datenbank nach Azure Database for MySQL mit minimaler Ausfallzeit und die Einrichtung der anfänglichen Last und der kontinuierlichen Datensynchronisierung von der Quelldatenbank zur Zieldatenbank mithilfe von Attunity Replicate for Microsoft Migrations.
 services: mysql
 author: HJToland3
 ms.author: jtoland

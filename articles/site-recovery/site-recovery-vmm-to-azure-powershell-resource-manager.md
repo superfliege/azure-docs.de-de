@@ -2,7 +2,7 @@
 title: Replizieren virtueller Hyper-V-Computer in VMM-Clouds mithilfe von Azure Site Recovery und PowerShell (Resource Manager) | Microsoft Docs
 description: Replizieren von virtuellen Hyper-V-Computern in VMM-Clouds mithilfe von Azure Site Recovery und PowerShell
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: Rajani-Janaki-Ram
 manager: rochakm
 editor: raynew

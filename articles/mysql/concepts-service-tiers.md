@@ -1,6 +1,6 @@
 ---
-title: "Tarife in Azure-Datenbank für MySQL | Microsoft-Dokumentation"
-description: "Tarife in Azure-Datenbank für MySQL"
+title: Tarife in Azure-Datenbank für MySQL | Microsoft-Dokumentation
+description: Tarife in Azure-Datenbank für MySQL
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

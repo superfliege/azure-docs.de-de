@@ -1,6 +1,6 @@
 ---
-title: "Hochverfügbarkeitskonzepte von Azure Database for MySQL"
-description: "Dieses Thema biete Informationen zur Hochverfügbarkeit bei der Verwendung von Azure Database for MySQL."
+title: Hochverfügbarkeitskonzepte von Azure Database for MySQL
+description: Dieses Thema biete Informationen zur Hochverfügbarkeit bei der Verwendung von Azure Database for MySQL.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

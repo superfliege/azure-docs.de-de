@@ -1,11 +1,11 @@
 ---
-title: "Steuern des Routings in einem virtuellen Azure-Netzwerk – PowerShell – klassisch | Microsoft-Dokumentation"
+title: Steuern des Routings in einem virtuellen Azure-Netzwerk – PowerShell – klassisch | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie das Routing in VNets mithilfe von PowerShell steuern. | klassisch
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
-editor: 
+author: genlin
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: d8d07c16-cbe5-4536-acd6-870269346fe3
 ms.service: virtual-network
@@ -14,19 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
-ms.author: jdial
-ms.openlocfilehash: 09a8c1bbfc42146098f5f4aa799a39e589c175e7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: genli
+ms.openlocfilehash: 930676a396ae316ec761ba5d03ad1a1d0fd7a425
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Steuern des Routings und Verwenden virtueller Geräte (klassisch) mithilfe von PowerShell
 
 > [!div class="op_single_selector"]
 > * [PowerShell](tutorial-create-route-table-powershell.md)
 > * [Azure-CLI](tutorial-create-route-table-cli.md)
-> * [Vorlage](virtual-network-create-udr-arm-template.md)
 > * [PowerShell (klassisch)](virtual-network-create-udr-classic-ps.md)
 > * [CLI (klassisch)](virtual-network-create-udr-classic-cli.md)
 

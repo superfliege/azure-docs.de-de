@@ -1,6 +1,6 @@
 ---
 title: Videos zu Azure Database for PostgreSQL
-description: "Auf dieser Seite werden Videoinhalte aufgelistet, anhand derer Sie Azure-Datenbank für PostgreSQL kennenlernen können."
+description: Auf dieser Seite werden Videoinhalte aufgelistet, anhand derer Sie Azure-Datenbank für PostgreSQL kennenlernen können.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

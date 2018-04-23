@@ -1,6 +1,6 @@
 ---
 title: Migrieren von VMs aus AWS zu Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation
-description: "In diesem Artikel wird beschrieben, wie Sie in Amazon Web Services (AWS) ausgeführte VMs mithilfe von Azure Site Recovery zu Azure migrieren."
+description: In diesem Artikel wird beschrieben, wie Sie in Amazon Web Services (AWS) ausgeführte VMs mithilfe von Azure Site Recovery zu Azure migrieren.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm

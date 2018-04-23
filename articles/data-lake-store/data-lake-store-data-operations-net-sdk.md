@@ -1,8 +1,8 @@
 ---
-title: ".NET SDK: Dateisystemvorgänge in Azure Data Lake Store | Microsoft-Dokumentation"
-description: "Verwenden Sie das Azure Data Lake Store .NET SDK, um Dateisystemvorgänge in Data Lake Store durchzuführen, z.B. das Erstellen von Ordnern usw."
+title: '.NET SDK: Dateisystemvorgänge in Azure Data Lake Store | Microsoft-Dokumentation'
+description: Verwenden Sie das Azure Data Lake Store .NET SDK, um Dateisystemvorgänge in Data Lake Store durchzuführen, z.B. das Erstellen von Ordnern usw.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun

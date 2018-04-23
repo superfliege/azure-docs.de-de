@@ -1,9 +1,9 @@
 ---
-title: "Problembehandlung bei der zweistufigen Überprüfung | Microsoft-Dokumentation"
+title: Problembehandlung bei der zweistufigen Überprüfung | Microsoft-Dokumentation
 description: In diesem Dokument erhalten Benutzer Informationen zur Vorgehensweise, wenn bei Multi-Factor Authentication ein Problem auftreten sollte.
 services: multi-factor-authentication
-keywords: "Client für Multi-Factor Authentication, Authentifizierungsproblem, Korrelations-ID"
-documentationcenter: 
+keywords: Client für Multi-Factor Authentication, Authentifizierungsproblem, Korrelations-ID
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
@@ -16,11 +16,11 @@ ms.date: 07/06/2017
 ms.author: barlan
 ms.reviewer: richagi
 ms.custom: end-user
-ms.openlocfilehash: 20a90aa36b727b18fb37aaf658da884b5997cd44
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 736a1f03ef87850fdaaee7ce636d8dd0f3ae1a84
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-help-with-two-step-verification"></a>Hilfe bei der zweistufigen Überprüfung
 Dieser Artikel behandelt die häufigsten Fragen von Anwendern zur zweistufigen Überprüfung. 
@@ -86,7 +86,7 @@ Wenn Sie keine andere Methode konfiguriert haben, wenden Sie sich an den Unterne
 Wenn Sie häufig Verzögerungen aufgrund schlechten Empfangs bemerken, empfiehlt sich die Verwendung der [Microsoft Authenticator-App](microsoft-authenticator-app-how-to.md) auf Ihrem Smartphone. Die App kann zufällige Sicherheitscodes generieren, die Sie zum Anmelden verwenden. Diese Codes erfordern weder mobilen Empfang noch eine Internetverbindung.
 
 ## <a name="app-passwords-are-not-working"></a>App-Kennwörter funktionieren nicht
-Stellen Sie zunächst sicher, dass Sie das App-Kennwort richtig eingegeben haben. Das generierte App-Kennwort ersetzt Ihr übliches Kennwort. Dies gilt jedoch nur für ältere Desktopanwendungen, die die zweistufige Überprüfung nicht unterstützen. Wenn es weiterhin nicht funktioniert, versuchen Sie, sich anzumelden, und [erstellen Sie ein neues App-Kennwort](multi-factor-authentication-end-user-app-passwords.md).  Wenn dies immer noch nicht funktioniert, wenden Sie sich an den Unternehmenssupport mit der Bitte, [Ihre vorhandenen App-Kennwörter zu löschen](../multi-factor-authentication-manage-users-and-devices.md). Legen Sie anschließend ein neues Kennwort fest.
+Stellen Sie zunächst sicher, dass Sie das App-Kennwort richtig eingegeben haben. Das generierte App-Kennwort ersetzt Ihr übliches Kennwort. Dies gilt jedoch nur für ältere Desktopanwendungen, die die zweistufige Überprüfung nicht unterstützen. Wenn es weiterhin nicht funktioniert, versuchen Sie, sich anzumelden, und [erstellen Sie ein neues App-Kennwort](multi-factor-authentication-end-user-app-passwords.md).  Wenn dies immer noch nicht funktioniert, wenden Sie sich an den Unternehmenssupport mit der Bitte, [Ihre vorhandenen App-Kennwörter zu löschen](../../active-directory/authentication/howto-mfa-userdevicesettings.md). Legen Sie anschließend ein neues Kennwort fest.
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Ich konnte keine Lösung für mein Problem finden
 Wenn Sie diese Schritte zur Problembehandlung ausgeführt haben, das Problem aber weiterhin besteht, wenden Sie sich an den Unternehmenssupport. Diese Personen sollten Ihnen helfen können.

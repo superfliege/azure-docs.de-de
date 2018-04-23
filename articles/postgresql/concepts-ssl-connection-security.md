@@ -1,13 +1,13 @@
 ---
-title: "Konfigurieren von SSL-Konnektivität in Azure-Datenbank für PostgreSQL"
-description: "Anweisungen und Informationen zum Konfigurieren von Azure-Datenbank für PostgreSQL und zugehörigen Anwendungen für die richtige Verwendung von SSL-Verbindungen"
+title: Konfigurieren von SSL-Konnektivität in Azure-Datenbank für PostgreSQL
+description: Anweisungen und Informationen zum Konfigurieren von Azure-Datenbank für PostgreSQL und zugehörigen Anwendungen für die richtige Verwendung von SSL-Verbindungen
 services: postgresql
 author: JasonMAnderson
 ms.author: janders
 editor: jasonwhowell
 manager: kfile
 ms.service: postgresql
-ms.custom: 
+ms.custom: ''
 ms.topic: article
 ms.date: 02/28/2018
 ms.openlocfilehash: 0a4a7041a905470f895921cfedf2bd94e8466966

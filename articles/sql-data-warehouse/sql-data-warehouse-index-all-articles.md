@@ -1,11 +1,11 @@
 ---
 title: Alle Themen zum SQL Data Warehouse-Dienst | Microsoft Docs
-description: "Tabelle mit allen Themen für den Azure-Dienst namens „SQL Data Warehouse“ in https://azure.microsoft.com/de-de/documentation/articles/, Titel und Beschreibung."
+description: Tabelle mit allen Themen für den Azure-Dienst namens „SQL Data Warehouse“ in https://azure.microsoft.com/de-de/documentation/articles/, Titel und Beschreibung.
 services: sql-data-warehouse
-documentationcenter: 
+documentationcenter: ''
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: a26a6dec-9c08-4415-8f58-4ee1dd41f718
 ms.service: sql-data-warehouse
 ms.workload: sql-data-warehouse

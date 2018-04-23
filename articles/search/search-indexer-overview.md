@@ -3,16 +3,17 @@ title: Indexer in Azure Search | Microsoft Docs
 description: Erfahren Sie, wie Sie eine Azure SQL-Datenbank, Azure Cosmos DB oder Azure-Speicher per Crawler durchlaufen, um durchsuchbare Daten zu extrahieren und einen Azure Search-Index aufzufüllen.
 author: HeidiSteen
 manager: cgronlun
+services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: heidist
-ms.openlocfilehash: a4130ceb3b60ac6b332e64964aa9e6c8b6e62450
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8def65c15d631909c69428a1cb5f100beb1f9b08
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="indexers-in-azure-search"></a>Indexer in Azure Search
 > [!div class="op_single_selector"]

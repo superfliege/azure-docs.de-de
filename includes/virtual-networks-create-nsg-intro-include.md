@@ -2,17 +2,17 @@
 title: Includedatei
 description: Includedatei
 services: virtual-network
-author: genli
+author: genlin
 ms.service: virtual-network
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 14e2b88c35cee3178abbdd263eb006dcb6605d2e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3cf3eb65b97335821f5611cb9b86281d749a40b5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 Sie können eine Netzwerksicherheitsgruppe (NSG) verwenden, um in Ihrem virtuellen Netzwerk eingehenden Datenverkehr für virtuelle Computer, Rolleninstanzen, Netzwerkkarten (NICs) oder Subnetze zu steuern. Eine NSG enthält Regeln zur Zugriffssteuerung, die den Datenverkehr auf Grundlage der Richtung des Datenverkehrs, des Protokolls, der Quelladresse und des Quellports, und der Zieladresse und des Zielports zulässt oder verweigert. Die Regeln für eine NSG können jederzeit geändert werden, und die Änderungen werden auf alle zugeordneten Instanzen angewendet.
 

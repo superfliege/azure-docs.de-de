@@ -1,6 +1,6 @@
 ---
-title: "Tutorial für Azure Container Service - App vorbereiten"
-description: "Tutorial für Azure Container Service - App vorbereiten"
+title: Tutorial für Azure Container Service - App vorbereiten
+description: Tutorial für Azure Container Service - App vorbereiten
 services: container-service
 author: neilpeterson
 manager: timlt

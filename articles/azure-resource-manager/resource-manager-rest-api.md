@@ -1,11 +1,11 @@
 ---
 title: Resource Manager-REST-APIs | Microsoft Docs
-description: "Enthält eine Übersicht über die Authentifizierung mit Resource Manager-REST-APIs und Beispiele zur Verwendung."
+description: Enthält eine Übersicht über die Authentifizierung mit Resource Manager-REST-APIs und Beispiele zur Verwendung.
 services: azure-resource-manager
 documentationcenter: na
 author: navalev
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e8d7a1d2-1e82-4212-8288-8697341408c5
 ms.service: azure-resource-manager
 ms.devlang: na

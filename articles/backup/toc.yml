@@ -29,6 +29,8 @@
   items:
     - name: Azure PowerShell
       href: powershell-backup-samples.md
+    - name: Resource Manager-Vorlagen
+      href: backup-rm-template-samples.md
 - name: Konzepte
   items:
     - name: Häufig gestellte Fragen

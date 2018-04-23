@@ -1,6 +1,6 @@
 ---
-title: "Empfohlene Vorgehensweisen für die Datensicherheit und die Verschlüsselung | Microsoft Docs"
-description: "Dieser Artikel bietet eine Reihe von empfohlenen Vorgehensweisen für die Datensicherheit und Verschlüsselung unter Verwendung der integrierten Azure-Funktionen."
+title: Empfohlene Vorgehensweisen für die Datensicherheit und die Verschlüsselung | Microsoft Docs
+description: Dieser Artikel bietet eine Reihe von empfohlenen Vorgehensweisen für die Datensicherheit und Verschlüsselung unter Verwendung der integrierten Azure-Funktionen.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 0cebc7ae5279b720e8fd0d6c986e1706d944476f
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure
 Einer der Schlüssel zum Schutz von Daten in der Cloud ist die Berücksichtigung der möglichen Zustände, in denen Ihre Daten auftreten können. Außerdem sollten Sie die Steuerungsmöglichkeiten beachten, die für diesen Zustand verfügbar sind. Im Rahmen der empfohlenen Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure befassen sich die Empfehlungen mit den folgenden Datenzuständen:
@@ -50,24 +50,24 @@ Die in diesem Artikel besprochenen empfohlenen Vorgehensweisen für Datensicherh
 * Erzwingen der Datenverschlüsselung auf Dateiebene
 
 ## <a name="enforce-multi-factor-authentication"></a>Erzwingen der Multi-Factor Authentication
-Der erste Schritt beim Datenzugriff und der Datensteuerung in Microsoft Azure ist die Authentifizierung des Benutzers. Die [Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) ist eine Methode zur Überprüfung der Identität eines Benutzers mithilfe einer weiteren Methode, als nur mittels Benutzername und Kennwort. Diese Authentifizierungsmethode schützt den Zugriff auf Daten und Anwendungen und erfüllt gleichzeitig die Anforderungen der Benutzer, die ein einfaches Anmeldeverfahren wünschen.
+Der erste Schritt beim Datenzugriff und der Datensteuerung in Microsoft Azure ist die Authentifizierung des Benutzers. Die [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) ist eine Methode zur Überprüfung der Identität eines Benutzers mithilfe einer weiteren Methode, als nur mittels Benutzername und Kennwort. Diese Authentifizierungsmethode schützt den Zugriff auf Daten und Anwendungen und erfüllt gleichzeitig die Anforderungen der Benutzer, die ein einfaches Anmeldeverfahren wünschen.
 
 Durch die Aktivierung von Azure MFA für Ihre Benutzer fügen Sie eine zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen hinzu. In diesem Fall greift eine Transaktion möglicherweise auf ein Dokument zu, das sich auf einem Dateiserver oder in Ihrem SharePoint Online-Konto befindet. Azure MFA hilft der IT, die Wahrscheinlichkeit zu verringern, dass kompromittierte Anmeldeinformationen Zugriff auf die Daten einer Organisation erhalten.
 
 Beispiel: Falls Sie Azure MFA für Ihre Benutzer erzwingen, und sie so konfigurieren, dass sie einen Telefonanruf oder eine SMS für die Überprüfung verwendet, ist es für den Angreifer im Falle der Kompromittierung von Benutzeranmeldeinformationen nicht möglich, auf Ressourcen zuzugreifen, da er keinen Zugriff auf das Handy des Benutzers hat. Organisationen, die diese zusätzliche Schicht zur Identitätssicherung nicht hinzufügen, sind anfälliger für Angriffe mit gestohlenen Anmeldeinformationen, was wiederum zu kompromittierten Daten führen kann.
 
-Eine Alternative für Organisationen, die die Authentifizierung weiterhin lokal steuern möchten, ist die Verwendung des [Azure Multi-Factor Authentication-Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md), der auch als MFA lokal bezeichnet wird. Mithilfe dieser Methode können Sie weiterhin die Multi-Factor Authentication erzwingen und dabei den MFA-Server lokal halten.
+Eine Alternative für Organisationen, die die Authentifizierung weiterhin lokal steuern möchten, ist die Verwendung des [Azure Multi-Factor Authentication-Server](../active-directory/authentication/howto-mfaserver-deploy.md), der auch als MFA lokal bezeichnet wird. Mithilfe dieser Methode können Sie weiterhin die Multi-Factor Authentication erzwingen und dabei den MFA-Server lokal halten.
 
-Weitere Informationen über Azure Multi-Factor Authentication finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+Weitere Informationen über Azure Multi-Factor Authentication finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="use-role-based-access-control-rbac"></a>Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control; RBAC)
 Schränken Sie den Zugriff auf Grundlage der Sicherheitsprinzipien [Need-to-know](https://en.wikipedia.org/wiki/Need_to_know) und [least privilege (in englischer Sprache)](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ein. Dies ist für Organisationen zwingend erforderlich, die Sicherheitsrichtlinien für den Datenzugriff durchsetzen möchten. Die rollenbasierte Zugriffssteuerung in Azure (RBAC) kann verwendet werden, um Benutzern, Gruppen und Anwendungen Berechtigungen für einen bestimmten Bereich zu erteilen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein.
 
-Sie können [integrierte RBAC-Rollen](../active-directory/role-based-access-built-in-roles.md) in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Ziehen Sie die Verwendung von *Speicherkontomitwirkender* für Cloudoperatoren in Betracht, die Speicherkonten verwalten müssen, und nutzen Sie die Rolle *Klassischer Speicherkontomitwirkender*, um klassische Speicherkonten zu verwalten. Überlegen Sie sich, ob Sie Cloudoperatoren, die VMs und Speicherkonten verwalten müssen, zur Rolle *Mitwirkender für virtuelle Computer* hinzufügen.
+Sie können [integrierte RBAC-Rollen](../role-based-access-control/built-in-roles.md) in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Ziehen Sie die Verwendung von *Speicherkontomitwirkender* für Cloudoperatoren in Betracht, die Speicherkonten verwalten müssen, und nutzen Sie die Rolle *Klassischer Speicherkontomitwirkender*, um klassische Speicherkonten zu verwalten. Überlegen Sie sich, ob Sie Cloudoperatoren, die VMs und Speicherkonten verwalten müssen, zur Rolle *Mitwirkender für virtuelle Computer* hinzufügen.
 
 Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie RBAC erzwingen, erteilen Ihren Benutzern möglicherweise mehr Berechtigungen als erforderlich. Dies kann zur Kompromittierung der Daten führen, da einige Benutzer Zugriff auf Daten erhalten, auf die sie von vorneherein keinen Zugriff haben sollten.
 
-Lesen Sie den Artikel [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md), um mehr über die Azure RBAC zu erfahren.
+Lesen Sie den Artikel [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md), um mehr über die Azure RBAC zu erfahren.
 
 ## <a name="encrypt-azure-virtual-machines"></a>Verschlüsseln virtueller Azure-Computer
 Für viele Organisationen ist die [Verschlüsselung von ruhenden Daten](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Azure Disk Encryption ermöglicht IT-Administratoren, die Datenträger virtueller Windows- und Linux-IaaS-Computer (VMs) zu verschlüsseln. Bei der Azure Disk Encryption werden die Branchenstandardfunktion BitLocker von Windows und die Funktion DM-Crypt von Linux verwendet, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen.

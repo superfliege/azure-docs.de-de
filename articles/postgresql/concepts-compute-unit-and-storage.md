@@ -1,6 +1,6 @@
 ---
-title: "Erläuterungen zu Computeeinheiten in Azure-Datenbank für PostgreSQL | Microsoft-Dokumentation"
-description: "Azure-Datenbank für PostgreSQL: In diesem Artikel werden das Konzept der Computeeinheiten und die Folgen bei Überschreitung der maximalen Anzahl von Computeeinheiten durch eine Workload erläutert."
+title: Erläuterungen zu Computeeinheiten in Azure-Datenbank für PostgreSQL | Microsoft-Dokumentation
+description: 'Azure-Datenbank für PostgreSQL: In diesem Artikel werden das Konzept der Computeeinheiten und die Folgen bei Überschreitung der maximalen Anzahl von Computeeinheiten durch eine Workload erläutert.'
 services: postgresql
 author: kamathsun
 ms.author: sukamat

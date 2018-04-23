@@ -1,6 +1,6 @@
 ---
-title: "Skriptbeispiele für Azure Container Service"
-description: "Skriptbeispiele für Azure Container Service"
+title: Skriptbeispiele für Azure Container Service
+description: Skriptbeispiele für Azure Container Service
 services: container-service
 author: neilpeterson
 manager: timlt

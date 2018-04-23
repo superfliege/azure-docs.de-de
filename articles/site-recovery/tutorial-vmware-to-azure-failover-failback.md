@@ -1,6 +1,6 @@
 ---
-title: "Ausführen eines Failovers und Failbacks für VMware-VMs und physische Server, die mit Site Recovery nach Azure repliziert werden | Microsoft-Dokumentation"
-description: "Informationen zum Ausführen eines Failovers für VMware-VMs und physische Server auf Azure und eines Failbacks auf den lokalen Standort mit Azure Site Recovery."
+title: Ausführen eines Failovers und Failbacks für VMware-VMs und physische Server, die mit Site Recovery nach Azure repliziert werden | Microsoft-Dokumentation
+description: Informationen zum Ausführen eines Failovers für VMware-VMs und physische Server auf Azure und eines Failbacks auf den lokalen Standort mit Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm

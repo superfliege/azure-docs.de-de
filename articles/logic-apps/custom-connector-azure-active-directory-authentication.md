@@ -1,12 +1,12 @@
 ---
-title: "Sichern benutzerdefinierter Connectors mit Azure AD – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Hinzufügen von Sicherheit und Authentifizierung zu Ihrer API und dem Connector mithilfe von Azure AD (Azure Active Directory)"
+title: Sichern benutzerdefinierter Connectors mit Azure AD – Azure Logic Apps | Microsoft-Dokumentation
+description: Hinzufügen von Sicherheit und Authentifizierung zu Ihrer API und dem Connector mithilfe von Azure AD (Azure Active Directory)
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na
