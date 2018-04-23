@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management-Übersicht und zentrale Konzepte | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über APIs, Produkte, Rollen, Gruppen und andere API Management-Schlüsselkonzepte."
+title: Azure API Management-Übersicht und zentrale Konzepte | Microsoft-Dokumentation
+description: Erfahren Sie mehr über APIs, Produkte, Rollen, Gruppen und andere API Management-Schlüsselkonzepte.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na

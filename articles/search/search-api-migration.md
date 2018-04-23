@@ -3,16 +3,17 @@ title: Aktualisieren der REST-API für den Azure Search-Dienst auf Version 2016-
 description: Aktualisieren der REST-API für den Azure Search-Dienst auf Version 2016-09-01
 author: brjohnstmsft
 manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 10/27/2016
 ms.author: brjohnst
-ms.openlocfilehash: f2e8d5dd7f54e3435d1d94f34a5d4556690bfba8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ea901462677d42d90007a2130825bd3b382407f2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrading-to-the-azure-search-service-rest-api-version-2016-09-01"></a>Aktualisieren der REST-API für den Azure Search-Dienst auf Version 2016-09-01
 Wenn Sie die Version 2015-02-28 oder 2015-02-28-Preview der [REST-API für den Azure Search-Dienst](https://msdn.microsoft.com/library/azure/dn798935.aspx) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf die erste allgemein verfügbare API-Version 2016-09-01.

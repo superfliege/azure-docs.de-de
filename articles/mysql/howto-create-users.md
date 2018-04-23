@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Benutzern auf einem Azure Database for MySQL-Server
-description: "In diesem Artikel wird beschrieben, wie Sie neue Benutzerkonten für die Interaktion mit einem Azure Database for MySQL-Server erstellen können."
+description: In diesem Artikel wird beschrieben, wie Sie neue Benutzerkonten für die Interaktion mit einem Azure Database for MySQL-Server erstellen können.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

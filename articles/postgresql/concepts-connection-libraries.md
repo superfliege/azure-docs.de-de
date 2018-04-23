@@ -1,6 +1,6 @@
 ---
-title: "Datenverbindungsbibliotheken für Azure-Datenbank für PostgreSQL"
-description: "In diesem Artikel werden verschiedene Bibliotheken und Treiber beschrieben, die Entwickler beim Schreiben von Anwendungen zum Erstellen von Verbindungen mit und zum Abfragen von Azure-Datenbank für PostgreSQL verwenden können."
+title: Datenverbindungsbibliotheken für Azure-Datenbank für PostgreSQL
+description: In diesem Artikel werden verschiedene Bibliotheken und Treiber beschrieben, die Entwickler beim Schreiben von Anwendungen zum Erstellen von Verbindungen mit und zum Abfragen von Azure-Datenbank für PostgreSQL verwenden können.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

@@ -1,12 +1,12 @@
 ---
-title: "Registrieren benutzerdefinierter Connectors – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Informationen zum Einrichten benutzerdefinierter Connectors für die Nutzung in Azure Logic Apps"
+title: Registrieren benutzerdefinierter Connectors – Azure Logic Apps | Microsoft-Dokumentation
+description: Informationen zum Einrichten benutzerdefinierter Connectors für die Nutzung in Azure Logic Apps
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na

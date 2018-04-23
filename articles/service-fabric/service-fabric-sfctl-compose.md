@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric CLI – sfctl compose | Microsoft-Dokumentation"
+title: Azure Service Fabric CLI – sfctl compose | Microsoft-Dokumentation
 description: Beschreibt die sfctl compose-Befehle der Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference

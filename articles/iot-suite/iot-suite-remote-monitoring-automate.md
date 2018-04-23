@@ -1,7 +1,7 @@
 ---
-title: "Erkennen von Geräteproblemen in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation"
-description: "In diesem Tutorial wird erläutert, wie Sie mithilfe von Regeln und Aktionen automatisch schwellenwertbasierte Geräteprobleme in der Remoteüberwachungslösung erkennen können."
-services: 
+title: Erkennen von Geräteproblemen in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+description: In diesem Tutorial wird erläutert, wie Sie mithilfe von Regeln und Aktionen automatisch schwellenwertbasierte Geräteprobleme in der Remoteüberwachungslösung erkennen können.
+services: ''
 suite: iot-suite
 author: dominicbetts
 manager: timlt

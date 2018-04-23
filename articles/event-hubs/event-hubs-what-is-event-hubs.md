@@ -1,12 +1,12 @@
 ---
 title: Definition und Vorteile von Azure Event Hubs | Microsoft-Dokumentation
-description: "Übersicht und Einführung in Azure Event Hubs – Telemetrieeingang auf Cloudebene von Websites, Apps und Geräten"
+description: Übersicht und Einführung in Azure Event Hubs – Telemetrieeingang auf Cloudebene von Websites, Apps und Geräten
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article

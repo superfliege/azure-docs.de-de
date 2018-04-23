@@ -1,12 +1,12 @@
 ---
-title: "Erstellen von Genehmigungsworkflows für die Verarbeitung von Adressenlistenanforderungen – Azure Logic Apps | Microsoft-Dokumentation"
-description: "In diesem Tutorial erfahren Sie, wie Sie mit Azure Logic Apps automatisierte Genehmigungsworkflows für die Verarbeitung von Adressenlistenabonnements erstellen."
+title: Erstellen von Genehmigungsworkflows für die Verarbeitung von Adressenlistenanforderungen – Azure Logic Apps | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Logic Apps automatisierte Genehmigungsworkflows für die Verarbeitung von Adressenlistenabonnements erstellen.
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na

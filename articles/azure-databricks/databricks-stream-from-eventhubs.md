@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 03/27/2018
 ms.author: alehall
-ms.openlocfilehash: c43edc6673c42a8b69bfa296e288e77adee4d0af
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2e4c424bb26a3b268ec893ca40dcdce7d7469217
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Tutorial: Streamen von Daten an Azure Databricks unter Verwendung von Event Hubs
 
@@ -173,6 +173,7 @@ In diesem Abschnitt erstellen Sie im Databricks-Arbeitsbereich zwei Notebooks mi
 
 Fügen Sie im Notebook **SendTweetsToEventHub** den folgenden Code ein, und ersetzen Sie die Platzhalter durch Werte für Ihren Event Hubs-Namespace und die zuvor erstellte Twitter-Anwendung. Mit diesem Notebook werden Tweets mit dem Schlüsselwort „Azure“ in Echtzeit an Event Hubs gestreamt.
 
+```scala
     import java.util._
     import scala.collection.JavaConverters._
     import com.microsoft.azure.eventhubs._
@@ -242,6 +243,7 @@ Fügen Sie im Notebook **SendTweetsToEventHub** den folgenden Code ein, und erse
 
     // Closing connection to the Event Hub
     eventHubClient.get().close()
+```
 
 Drücken Sie **UMSCHALT+EINGABE**, um das Notebook auszuführen. Die Ausgabe sieht in etwa wie im folgenden Codeausschnitt aus. Jedes Ereignis der Ausgabe ist ein Tweet, der in Event Hubs erfasst wird und den Begriff „Azure“ enthält.
 
@@ -264,6 +266,7 @@ Drücken Sie **UMSCHALT+EINGABE**, um das Notebook auszuführen. Die Ausgabe sie
 
 Fügen Sie im Notebook **ReadTweetsFromEventHub** den folgenden Code ein, und ersetzen Sie den Platzhalter durch Werte für Ihre zuvor erstellten Azure Event Hubs. Mit diesem Notebook werden die Tweets gelesen, die Sie weiter oben mit dem Notebook **SendTweetsToEventHub** an Event Hubs gestreamt haben.
 
+```scala
     import org.apache.spark.eventhubs._
 
     // Build connection string with the above information
@@ -282,6 +285,7 @@ Fügen Sie im Notebook **ReadTweetsFromEventHub** den folgenden Code ein, und er
     // Sending the incoming stream into the console.
     // Data comes in batches!
     incomingStream.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
+```
 
 Sie erhalten die folgende Ausgabe:
 
@@ -312,6 +316,7 @@ Sie erhalten die folgende Ausgabe:
 
 Da die Ausgabe in einem Binärmodus vorliegt, verwenden Sie den folgenden Codeausschnitt, um sie in eine Zeichenfolge zu konvertieren.
 
+```scala
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
 
@@ -328,6 +333,7 @@ Da die Ausgabe in einem Binärmodus vorliegt, verwenden Sie den folgenden Codeau
     messages.printSchema
 
     messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
+```
 
 Die Ausgabe sieht nun in etwa wie im folgenden Codeausschnitt aus:
 

@@ -1,6 +1,6 @@
 ---
-title: "Aktivieren von öffentlichem Lesezugriff auf Container und Blobs in Azure Blob Storage | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Container und Blobs für den anonymen Zugriff verfügbar machen und darauf programmgesteuert zugreifen."
+title: Aktivieren von öffentlichem Lesezugriff auf Container und Blobs in Azure Blob Storage | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Container und Blobs für den anonymen Zugriff verfügbar machen und darauf programmgesteuert zugreifen.
 services: storage
 author: tamram
 manager: jeconnoc

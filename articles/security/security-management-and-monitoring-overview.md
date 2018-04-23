@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 906ea3c37823616597ee74dbadf50618d5c4e11d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 66a3a31574778bb1238498b523d51dc0d32ac22f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure-Sicherheitsverwaltung und -Überwachung – Übersicht
 Azure verfügt über Sicherheitsmechanismen, die als Hilfe bei der Verwaltung und Überwachung von Azure-Clouddiensten und virtuellen Azure-Computern dienen. Dieser Artikel enthält eine Übersicht über diese Features und Dienste. Es sind jeweils Links zu Artikeln mit weiteren Informationen angegeben.
@@ -75,7 +75,7 @@ Azure Multi-Factor Authentication (MFA) ist eine Authentifizierungsmethode, für
 Weitere Informationen:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Was ist Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
+* [Was ist Azure Multi-Factor Authentication?](../active-directory/authentication/multi-factor-authentication.md)
 * [Funktionsweise von Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute

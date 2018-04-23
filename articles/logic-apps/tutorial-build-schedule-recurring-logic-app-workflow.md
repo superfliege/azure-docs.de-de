@@ -1,12 +1,12 @@
 ---
-title: "Erstellen von planerbasierten automatisierten Workflows – Azure Logic Apps | Microsoft-Dokumentation"
+title: Erstellen von planerbasierten automatisierten Workflows – Azure Logic Apps | Microsoft-Dokumentation
 description: In diesem Tutorial wird veranschaulicht, wie Sie mit Azure Logic Apps einen planerbasierten, periodischen automatisierten Workflow erstellen.
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na

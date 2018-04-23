@@ -1,11 +1,11 @@
 ---
-title: "Einrichten der Notfallwiederherstellung für VMware-VMs oder physische Server an einem sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation"
-description: "Hier erfahren sie, wie Sie die Notfallwiederherstellung für VMware-VMs oder physische Windows- und Linux-Server an einem sekundären Standort mit Azure Site Recovery einrichten."
+title: Einrichten der Notfallwiederherstellung für VMware-VMs oder physische Server an einem sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation
+description: Hier erfahren sie, wie Sie die Notfallwiederherstellung für VMware-VMs oder physische Windows- und Linux-Server an einem sekundären Standort mit Azure Site Recovery einrichten.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: gauarvd
-editor: 
+editor: ''
 ms.assetid: 68616d15-398c-4f40-8323-17b6ae1e65c0
 ms.service: site-recovery
 ms.workload: backup-recovery

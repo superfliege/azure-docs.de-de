@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2144e3527b44e3cf508d23fedf7abb4cda595bbf
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 06da24babd470e81bed9c45a32c59ad9cfd153fe
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
 In diesem Artikel wird sowohl das Azure Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell erläutert. Das Resource Manager-Bereitstellungsmodell und das klassische Bereitstellungsmodell sind zwei unterschiedliche Methoden zum Bereitstellen und Verwalten Ihrer Azure-Lösungen. Sie nutzen sie unter Verwendung von zwei verschiedenen API-Sätzen, und die bereitgestellten Ressourcen weisen unter Umständen erhebliche Unterschiede auf. Die beiden Modelle sind nicht miteinander kompatibel. In diesem Artikel werden diese Unterschiede beschrieben.
@@ -101,14 +101,14 @@ Komponenten der klassischen Lösung zum Hosten eines virtuellen Computers:
 
 In der folgenden Tabelle werden die Änderungen in der Interaktion von Compute-, Netzwerk- und Speicherressourcenanbietern beschrieben:
 
-| Element | Klassisch | Ressourcen-Manager |
+| Item | Klassisch | Ressourcen-Manager |
 | --- | --- | --- |
 | Clouddienst für virtuelle Computer |Beim Clouddienst handelte es sich um einen Container für die virtuellen Computer, für den Plattformverfügbarkeit sowie Lastenausgleich erforderlich waren. |Der Clouddienst ist kein erforderliches Objekt zum Erstellen eines virtuellen Computers mithilfe des neuen Modells mehr. |
 | Virtuelle Netzwerke |Ein virtuelles Netzwerk ist optional für den virtuellen Computer. Ist eines vorhanden, kann das virtuelle Netzwerk nicht mit Resource Manager bereitgestellt werden. |Der virtuelle Computer benötigt ein virtuelles Netzwerk, das mit Resource Manager bereitgestellt wurde. |
 | Speicherkonten |Der virtuelle Computer erfordert ein Speicherkonto, in dem die VHDs für das Betriebssystem sowie temporäre und zusätzliche Datenträger gespeichert werden. |Der virtuelle Computer benötigt ein Speicherkonto zum Speichern der Datenträger im Blobspeicher. |
-| Verfügbarkeitsgruppen |Die Plattformverfügbarkeit wurde durch das Konfigurieren des gleichen „AvailabilitySetName“ auf den virtuellen Computern angezeigt. Die maximale Anzahl von Fehlerdomänen betrug 2. |Verfügbarkeitsgruppen sind Ressourcen, die vom Microsoft.Compute-Anbieter bereitgestellt werden. Virtuelle Computer, für die eine hohe Verfügbarkeit erforderlich ist, müssen in der Verfügbarkeitsgruppe enthalten sein. Die maximale Anzahl von Fehlerdomänen beträgt nun 3. |
+| Verfügbarkeitsgruppen |Die Plattformverfügbarkeit wurde durch das Konfigurieren des gleichen „AvailabilitySetName“ auf den virtuellen Computern angezeigt. Die maximale Anzahl von Fehlerdomänen betrug 2. |Verfügbarkeitsgruppen sind Ressourcen, die vom Microsoft.Compute-Anbieter bereitgestellt werden. Virtuelle Computer, für die Hochverfügbarkeit erforderlich ist, müssen in der Verfügbarkeitsgruppe enthalten sein. Die maximale Anzahl von Fehlerdomänen beträgt nun 3. |
 | Affinitätsgruppen |Zum Erstellen von virtuellen Netzwerken waren Affinitätsgruppen erforderlich. Dies ist jedoch seit der Einführung regionaler virtueller Netzwerke nicht mehr erforderlich. |Zur Vereinfachung ist das Affinitätsgruppenkonzept in über den Azure-Ressourcen-Manager verfügbaren APIs nicht vorhanden. |
-| Lastenausgleich |Durch das Erstellen von Clouddiensten ist ein impliziter Lastenausgleich für die bereitgestellten virtuellen Computer verfügbar. |Der Lastenausgleich ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die primäre Netzwerkschnittstelle der virtuellen Computer, die mit einem Lastenausgleich versehen werden soll, muss auf das Lastenausgleichsmodul verweisen. Lastenausgleichsmodule können intern oder extern sein. Eine Lastenausgleichsinstanz verweist auf den Back-End-Pool von IP-Adressen, die die NIC eines virtuellen Computers enthalten (optional) und auf eine öffentliche oder private IP-Adresse für den Lastenausgleich (optional). [Weitere Informationen](../virtual-network/resource-groups-networking.md) |
+| Lastenausgleich |Durch das Erstellen von Clouddiensten ist ein impliziter Lastenausgleich für die bereitgestellten virtuellen Computer verfügbar. |Der Lastenausgleich ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die primäre Netzwerkschnittstelle der virtuellen Computer, die mit einem Lastenausgleich versehen werden soll, muss auf das Lastenausgleichsmodul verweisen. Lastenausgleichsmodule können intern oder extern sein. Eine Lastenausgleichsinstanz verweist auf den Back-End-Pool von IP-Adressen, die die NIC eines virtuellen Computers enthalten (optional) und auf eine öffentliche oder private IP-Adresse für den Lastenausgleich (optional). |
 | Virtuelle IP-Adresse |Cloud Services erhält eine Standard-VIP (virtuelle IP-Adresse), wenn einem Clouddienst ein virtueller Computer hinzugefügt wird. Die virtuelle IP-Adresse ist dem impliziten Lastenausgleich zugeordnet. |Die öffentliche IP-Adresse ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die öffentliche IP-Adresse kann statisch (reserviert) oder dynamisch sein. Dynamische öffentliche IP-Adressen können einem Lastenausgleich zugewiesen werden. Öffentliche IP-Adressen können mithilfe von Sicherheitsgruppen gesichert werden. |
 | Reservierte IP-Adresse |Sie können eine IP-Adresse in Azure reservieren und einem Clouddienst zuordnen, um die Persistenz der IP-Adresse sicherzustellen. |Die öffentliche IP-Adresse kann im statischen Modus erstellt werden. Sie bietet die gleiche Funktionalität wie eine reservierte IP-Adresse. |
 | Öffentliche IP-Adresse (PIP) pro virtuellem Computer |Öffentliche IP-Adressen können virtuellen Computern auch direkt zugeordnet werden. |Die öffentliche IP-Adresse ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die öffentliche IP-Adresse kann statisch (reserviert) oder dynamisch sein. |

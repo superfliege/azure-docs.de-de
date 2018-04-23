@@ -12,10 +12,10 @@ ms.date: 03/14/2018
 ms.author: bonova
 manager: craigg
 ms.openlocfilehash: 774a761465cfd886b85378a35dd43ac656a7ee48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Erstellen einer verwalteten Azure SQL-Datenbank-Instanz im Azure-Portal
 
@@ -284,7 +284,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie SSMS herunterladen und 
     ![Verstärkte Sicherheitskonfiguration für Internet Explorer](./media/sql-database-managed-instance-tutorial/internet-explorer-security-configuration.png)  
 4. Öffnen Sie über die Taskleiste **Internet Explorer**.
 5. Wählen Sie die Option **Use recommended security and compatibility settings** (Empfohlene Sicherheits- und Kompatibilitätseinstellungen verwenden), und klicken Sie anschließend auf **OK**, um das Setup von Internet Explorer 11 abzuschließen.
-6. Geben Sie https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms in das Adressfeld für die URL ein, und drücken Sie die**EINGABETASTE**. 
+6. Geben Sie https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms in das Adressfeld für die URL ein, und drücken Sie die **EINGABETASTE**. 
 7. Laden Sie die aktuelle Version von SQL Server Management Studio herunter, und klicken Sie auf **Ausführen**, wenn Sie dazu aufgefordert werden.
 8. Klicken Sie in der Aufforderung auf **Installieren**, um den Vorgang zu starten.
 9. Klicken Sie nach Abschluss der Installation auf **Schließen**.

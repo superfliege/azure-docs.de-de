@@ -1,6 +1,6 @@
 ---
 title: Migrieren von lokalen Computern mit Azure Site Recovery zu Azure | Microsoft-Dokumentation
-description: "In diesem Artikel wird erläutert, wie Sie lokale Computer mithilfe von Azure Site Recovery zu Azure migrieren."
+description: In diesem Artikel wird erläutert, wie Sie lokale Computer mithilfe von Azure Site Recovery zu Azure migrieren.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery

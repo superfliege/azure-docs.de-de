@@ -1,6 +1,6 @@
 ---
-title: "Tarife in Azure-Datenbank für PostgreSQL"
-description: "Tarife in Azure-Datenbank für PostgreSQL"
+title: Tarife in Azure-Datenbank für PostgreSQL
+description: Tarife in Azure-Datenbank für PostgreSQL
 services: postgresql
 author: kamathsun
 ms.author: sukamat

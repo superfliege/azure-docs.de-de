@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 7c340f60bc648909d073821f1987036da9633458
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ffc5f11a324b5ac65c872ca2c033f039c129c5f8
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Zum Recovery Services-Tresor aktualisierter Sicherungstresor
 Dieser Artikel bietet einen Überblick darüber, was der Recovery Services-Tresor bietet, enthält häufig gestellte Fragen zum Upgrade des vorhandenen Sicherungstresors zum Recovery Services-Tresor und nach dem Upgrade auszuführende Schritte. Ein Recovery Services-Tresor ist die Azure Resource Manager-Entsprechung eines Sicherungstresors, der Ihre Sicherungsdaten enthält. Bei den Daten handelt es sich in der Regel um Kopien von Daten oder Konfigurationsinformationen für virtuelle Computer (VMs), Workloads, Server oder Arbeitsstationen – lokal oder in Azure.
@@ -60,7 +60,7 @@ Auf dem zweiten Bildschirm werden verfügbare Hilfelinks angezeigt, die Sie beim
 Der Recovery Services-Tresor unterstützt das Angeben von Zeitzoneninformationen in den Sicherungsrichtlinien. Nachdem der Tresor erfolgreich aktualisiert wurde, rufen Sie die Sicherungsrichtlinien im Menü „Tresoreinstellungen“ auf, und aktualisieren Sie die Zeitzoneninformationen für jede Richtlinie, die im Tresor konfiguriert wurde. Dieser Bildschirm zeigt bereits die Zeit des Sicherungszeitplans gemäß der Ortszeit an, die verwendet wurde, als Sie die Richtlinie erstellt haben. 
 
 ## <a name="enhanced-security"></a>Erweiterte Sicherheit
-Wenn ein Sicherungstresor auf einen Recovery Services-Tresor aktualisiert wird, werden die Sicherheitseinstellungen für diesen Tresor automatisch aktiviert. Wenn die Sicherheitseinstellungen eingeschaltet sind, erfordern bestimmte Vorgänge wie z.B. das Löschen von Sicherungen oder das Ändern einer Passphrase einen [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)-PIN. Weitere Informationen zur erhöhten Sicherheit finden Sie im Artikel [Sicherheitsfeatures für den Schutz von Hybridsicherungen](backup-azure-security-feature.md). Wenn die erhöhte Sicherheit aktiviert ist, werden Daten bis zu 14 Tage beibehalten, nachdem die Wiederherstellungspunktinformationen aus dem Tresor gelöscht wurden. Den Kunden wird das Speichern dieser Sicherheitsdaten in Rechnung gestellt. Die Beibehaltung der Sicherheitsdaten gilt für Wiederherstellungspunkt, die für den Azure Backup-Agent, den Azure Backup Server und den System Center Data Protection-Manager aufgestellt wurden. 
+Wenn ein Sicherungstresor auf einen Recovery Services-Tresor aktualisiert wird, werden die Sicherheitseinstellungen für diesen Tresor automatisch aktiviert. Wenn die Sicherheitseinstellungen eingeschaltet sind, erfordern bestimmte Vorgänge wie z.B. das Löschen von Sicherungen oder das Ändern einer Passphrase einen [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)-PIN. Weitere Informationen zur erhöhten Sicherheit finden Sie im Artikel [Sicherheitsfeatures für den Schutz von Hybridsicherungen](backup-azure-security-feature.md). Wenn die erhöhte Sicherheit aktiviert ist, werden Daten bis zu 14 Tage beibehalten, nachdem die Wiederherstellungspunktinformationen aus dem Tresor gelöscht wurden. Den Kunden wird das Speichern dieser Sicherheitsdaten in Rechnung gestellt. Die Beibehaltung der Sicherheitsdaten gilt für Wiederherstellungspunkt, die für den Azure Backup-Agent, den Azure Backup Server und den System Center Data Protection-Manager aufgestellt wurden. 
 
 ## <a name="gather-data-on-your-vault"></a>Sammeln von Daten in Ihrem Tresor
 Konfigurieren Sie nach einem Upgrade auf einen Recovery Services-Tresor Berichte für Azure Backup (für IaaS-VMs und Microsoft Azure Recovery Services-Agent), und verwenden Sie Power BI, um auf die Berichte zuzugreifen. Weitere Informationen zum Sammeln von Daten finden Sie im Artikel [Konfigurieren von Azure Backup-Berichten](backup-azure-configure-reports.md).

@@ -1,6 +1,6 @@
 ---
-title: "Datenverbindungsbibliotheken für Azure-Datenbank für MySQL"
-description: "In diesem Artikel werden die einzelnen Bibliotheken bzw. Treiber aufgelistet, mit denen Clientprogramme Verbindungen zu Azure-Datenbank für MySQL herstellen können."
+title: Datenverbindungsbibliotheken für Azure-Datenbank für MySQL
+description: In diesem Artikel werden die einzelnen Bibliotheken bzw. Treiber aufgelistet, mit denen Clientprogramme Verbindungen zu Azure-Datenbank für MySQL herstellen können.
 services: mysql
 author: mswutao
 ms.author: wutao

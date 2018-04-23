@@ -1,6 +1,6 @@
 ---
 title: Videos zu Azure Database for MySQL
-description: "Auf dieser Seite werden Videoinhalte aufgelistet, anhand derer Sie Azure-Datenbank für MySQL kennenlernen können, das verwaltete MySQL-Angebot von Microsoft in Azure."
+description: Auf dieser Seite werden Videoinhalte aufgelistet, anhand derer Sie Azure-Datenbank für MySQL kennenlernen können, das verwaltete MySQL-Angebot von Microsoft in Azure.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

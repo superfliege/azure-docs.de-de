@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: e5f76bd5da8ff040ea184544b96eb245c42d4dc2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd8e122324ab2d4c783fb6d4e09a9f4f197f91ca
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>Grundlegendes zu Azure-Identitätslösungen
 Microsoft Azure Active Directory (Azure AD) ist eine Cloudlösung für die Identitäts- und Zugriffsverwaltung, die Verzeichnisdienste, Indentitätsgovernance und Möglichkeiten für die Anwendungszugriffsverwaltung bietet. Sie ermöglicht Ihnen das [einmalige Anmelden (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) bei tausenden vorab integrierten geschäftlichen und benutzerdefinierten Apps aus dem [Azure AD-Anwendungskatalog](https://azure.microsoft.com/marketplace/active-directory/all/). Viele dieser Apps verwenden Sie wahrscheinlich bereits, wie z.B Salesforce.com, Office 365, Box, ServiceNow und Workday.
@@ -107,7 +107,7 @@ Im Folgenden sind einige Identitäts- und Zugriffsszenarien mit Empfehlungen zur
 Wir haben viele hervorragende Ressourcen online gestellt, in denen Sie alles Wissenswerte über Azure AD erfahren. Hier finden Sie eine Liste mit wichtigen Artikeln, um Ihnen den Einstieg zu erleichtern:
 
 * [Aktivieren Sie Ihr Verzeichnis für das Hybrid-Management mit Azure AD Connect](active-directory-aadconnect.md)
-* [Mehr Sicherheit für eine allzeit vernetzte Welt](../multi-factor-authentication/multi-factor-authentication.md)
+* [Mehr Sicherheit für eine allzeit vernetzte Welt](authentication/multi-factor-authentication.md)
 * [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md)
 * [Erste Schritte mit Azure AD Reporting](active-directory-reporting-getting-started.md)
 * [Verwalten von Kennwörtern von einem beliebigen Ort aus](active-directory-passwords-update-your-own-password.md)

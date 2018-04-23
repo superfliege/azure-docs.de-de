@@ -1,25 +1,18 @@
 ---
-title: "Kapazitätsplanung für Azure Search | Microsoft-Dokumentation"
+title: Kapazitätsplanung für Azure Search | Microsoft-Dokumentation
 description: Passen Sie Partitions- und Replikatcomputerressourcen in Azure Search an, wobei jede Ressource in abrechenbaren Sucheinheiten abgerechnet wird.
-services: search
-documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 1dc16afe-56f9-439d-8874-1733ae1a2b74
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 47dcd5366ef8ba3d4598e6d418b11997c61bddea
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 08ae64aa92d7262b462ad105aa8e776bdaef15c0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Skalieren von Ressourcenebenen für Abfrage und Indizierung von Arbeitslasten in Azure Search
 Nach dem [Auswählen eines Tarifs](search-sku-tier.md) und dem [Bereitstellen eines Suchdiensts](search-create-service-portal.md) kann im nächsten Schritt optional die Anzahl der von dem Dienst verwendeten Replikate oder Partitionen erhöht werden. Jeder Tarif bietet eine feste Anzahl von Abrechnungseinheiten. In diesem Artikel wird erläutert, wie Sie diese Einheiten für eine optimale Konfiguration zuordnen, bei der Ihre Anforderungen für die Abfrageausführung, Indizierung und Speicherung ausgeglichen sind.
@@ -53,7 +46,7 @@ Wir empfehlen, die Replikat- und Partitionszuordnung über das Azure-Portal zu e
 
 Als Alternative zum Portal kann die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/services) verwendet werden, wenn die Bereitstellung skript- oder codebasiert erfolgen soll.
 
-Allgemein gilt: Suchanwendungen benötigen mehr Replikate als Partitionen, insbesondere, wenn die Dienstvorgänge auf Abfrageworkloads ausgerichtet sind. Warum das so ist, erfahren Sie im [Abschnitt zu hoher Verfügbarkeit](#HA) .
+Allgemein gilt: Suchanwendungen benötigen mehr Replikate als Partitionen, insbesondere, wenn die Dienstvorgänge auf Abfrageworkloads ausgerichtet sind. Warum das so ist, erfahren Sie im [Abschnitt zu Hochverfügbarkeit](#HA).
 
 > [!NOTE]
 > Sobald ein Dienst bereitgestellt ist, kann kein direktes Upgrade auf eine höhere SKU erfolgen. In diesem Fall müssen Sie einen Suchdienst unter dem neuen Tarif erstellen und Ihre Indizes neu laden. Informationen zur Dienstbereitstellung finden Sie unter [Erstellen eines Azure Search-Diensts im Portal](search-create-service-portal.md) .
@@ -62,13 +55,13 @@ Allgemein gilt: Suchanwendungen benötigen mehr Replikate als Partitionen, insbe
 
 <a id="HA"></a>
 
-## <a name="high-availability"></a>Hohe Verfügbarkeit
-Da ein Hochskalieren einfach und relativ schnell durchzuführen ist, wird im Allgemeinen empfohlen, mit einer Partition und einem oder zwei Replikaten zu beginnen und dann bei steigenden Abfragevolumen hochzuskalieren. Abfrageworkloads werden in erster Linie auf Replikaten ausgeführt. Wenn Sie einen höheren Durchsatz oder hohe Verfügbarkeit benötigen, sind wahrscheinlich zusätzliche Replikate erforderlich.
+## <a name="high-availability"></a>Hochverfügbarkeit
+Da ein Hochskalieren einfach und relativ schnell durchzuführen ist, wird im Allgemeinen empfohlen, mit einer Partition und einem oder zwei Replikaten zu beginnen und dann bei steigenden Abfragevolumen hochzuskalieren. Abfrageworkloads werden in erster Linie auf Replikaten ausgeführt. Wenn Sie einen höheren Durchsatz oder Hochverfügbarkeit benötigen, sind wahrscheinlich zusätzliche Replikate erforderlich.
 
-Allgemeine Empfehlungen für hohe Verfügbarkeit sind:
+Allgemeine Empfehlungen für Hochverfügbarkeit sind:
 
-* Zwei Replikate für hohe Verfügbarkeit von schreibgeschützten Workloads (Abfragen)
-* Drei oder mehr Replikate für hohe Verfügbarkeit von Lese-/Schreibworkloads (Abfragen und Indizierung, wenn einzelne Dokumente hinzugefügt, aktualisiert oder gelöscht werden)
+* Zwei Replikate für Hochverfügbarkeit von schreibgeschützten Workloads (Abfragen)
+* Drei oder mehr Replikate für Hochverfügbarkeit von Lese-/Schreibworkloads (Abfragen und Indizierung, wenn einzelne Dokumente hinzugefügt, aktualisiert oder gelöscht werden)
 
 Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) für Azure Search sind auf Abfragevorgänge und auf Indexupdates (Hinzufügen, Aktualisieren oder Löschen von Dokumenten) ausgerichtet.
 
@@ -76,7 +69,7 @@ Der Tarif „Basic“ erreicht den Höchstwert bei einer Partition und drei Repl
 
 ### <a name="index-availability-during-a-rebuild"></a>Indexverfügbarkeit während einer Neuerstellung
 
-Die hohe Verfügbarkeit von Azure Search gilt für Abfragen und Indexaktualisierungen ohne Indexneuerstellung. Wenn Sie ein Feld löschen, einen Datentyp ändern oder ein Feld umbenennen, müssen Sie den Index neu erstellen. Um den Index neu zu erstellen, müssen Sie ihn löschen, neu erstellen und die Daten neu laden.
+Die Hochverfügbarkeit von Azure Search gilt für Abfragen und Indexaktualisierungen ohne Indexneuerstellung. Wenn Sie ein Feld löschen, einen Datentyp ändern oder ein Feld umbenennen, müssen Sie den Index neu erstellen. Um den Index neu zu erstellen, müssen Sie ihn löschen, neu erstellen und die Daten neu laden.
 
 > [!NOTE]
 > Sie können einem Azure Search-Index neue Felder hinzufügen, ohne den Index neu zu erstellen. Der Wert des neuen Felds lautet NULL für alle Dokumente, die bereits im Index vorhanden sind.
@@ -99,7 +92,7 @@ Suchanwendungen, die Datenaktualisierung nahezu in Echtzeit erfordern, benötige
 Größere Indizes erfordern eine längere Abfragezeit. Daher werden Sie feststellen, dass jede inkrementelle Zunahme an Partitionen einen kleineren, aber proportionalen Anstieg der Replikate erforderlich macht. Die Komplexität Ihrer Abfragen und das Abfragevolumen haben darauf Einfluss, wie schnell die Abfrage ausgeführt wird.
 
 ## <a name="basic-tier-partition-and-replica-combinations"></a>Basic-Tarif: Partitions- und Replikatskombinationen
-Ein Basic-Dienst kann genau eine Partition und bis zu drei Replikate besitzen. Die Obergrenze liegt bei drei SUs. Nur die Replikate können angepasst werden. Für hohe Verfügbarkeit bei Abfragen sind mindestens zwei Replikate erforderlich.
+Ein Basic-Dienst kann genau eine Partition und bis zu drei Replikate besitzen. Die Obergrenze liegt bei drei SUs. Nur die Replikate können angepasst werden. Für Hochverfügbarkeit bei Abfragen sind mindestens zwei Replikate erforderlich.
 
 <a id="chart"></a>
 
@@ -111,8 +104,8 @@ Diese Tabelle enthält die SUs, die für eine Unterstützung der Kombinationen a
 | **1 Replikat:** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 Replikate** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 Replikate** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 Replikate** |4 SU |8 SU |12 SU |16 SU |24 SU |– |
-| **5 Replikate** |5 SU |10 SU |15 SU |20 SU |30 SU |– |
+| **4 Replikate** |4 SU |8 SU |12 SU |16 SU |24 SU |N/V |
+| **5 Replikate** |5 SU |10 SU |15 SU |20 SU |30 SU |N/V |
 | **6 Replikate** |6 SU |12 SU |18 SU |24 SU |36 SU |N/V |
 | **12 Replikate** |12 SU |24 SU |36 SU |N/V |N/V |N/V |
 

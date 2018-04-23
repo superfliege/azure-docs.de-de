@@ -1,25 +1,20 @@
 ---
-title: "Weitere Informationen zu Azure SQL Data Warehouse-Vorgängen | Microsoft-Dokumentation"
-description: "Die Flexibilität von SQL Data Warehouse ermöglicht Ihnen das Vergrößern, Verkleinern oder Anhalten der Rechenleistung mithilfe eines Schiebereglers für Data Warehouse-Einheiten (DWUs). Dieser Artikel beschreibt die Data Warehouse-Metriken und deren Beziehung zu DWUs. "
+title: Weitere Informationen zu Azure SQL Data Warehouse-Vorgängen | Microsoft-Dokumentation
+description: 'Die Flexibilität von SQL Data Warehouse ermöglicht Ihnen das Vergrößern, Verkleinern oder Anhalten der Rechenleistung mithilfe eines Schiebereglers für Data Warehouse-Einheiten (DWUs). Dieser Artikel beschreibt die Data Warehouse-Metriken und deren Beziehung zu DWUs. '
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: cadffa9c-589d-4db7-888a-1f202a753bc5
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 629ce22bf669a760d041bbd006b836d2da5d237b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 21e1f687e152cf91bd32389e0d5aa0dabd463b2f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-warehouse-workload"></a>Data Warehouse-Workload
 Ein Data Warehouse-Workload bezieht sich auf alle Vorgänge, die für ein Data Warehouse ablaufen müssen. Der Data Warehouse-Workload umfasst den gesamten Prozess des Ladens von Daten in das Warehouse, das Durchführen der Analyse und die Berichterstellung für das Data Warehouse, das Verwalten von Daten im Data Warehouse und das Exportieren von Daten aus dem Data Warehouse. Die Tiefe und Breite dieser Komponenten entsprechen häufig dem Reifegrad des Data Warehouse.
@@ -57,7 +52,7 @@ Berichterstellung und Analyseabfragen werden häufig in die Kategorien klein, mi
 Das Verwalten von Daten ist wichtig, besonders wenn Sie wissen, dass zukünftig möglicherweise nicht genügend Speicherplatz zur Verfügung steht. Data Warehouses unterteilen die Daten in der Regel in sinnvolle Bereiche, die als Partitionen in einer Tabelle gespeichert werden. Alle SQL Server-basierten Produkte ermöglichen Ihnen das Verschieben von Partitionen in die und aus der Tabelle. Durch diesen Partitionswechsel können Sie ältere Daten auf kostengünstigeren Speicher verschieben und die neuesten Daten auf dem Onlinespeicher verfügbar halten.
 
 * ColumnStore-Indizes unterstützen partitionierte Tabellen. Für ColumnStore-Indizes werden partitionierte Tabellen für die Datenverwaltung und -archivierung verwendet. Bei zeilenweise gespeicherten Tabellen spielen Partitionen eine größere Rolle bei der Abfrageleistung.  
-* PolyBase spielt eine wichtige Rolle bei der Verwaltung von Daten. Mit PolyBase können Sie ältere Daten im Hadoop- oder Azure-Blob-Speicher archivieren.  Dies bietet viele Möglichkeiten, da die Daten noch immer online sind.  Es dauert u. U. länger, Daten aus Hadoop abzurufen, aber der Nachteil der Abrufzeit gleicht möglicherweise die Speicherkosten aus.
+* PolyBase spielt eine wichtige Rolle bei der Verwaltung von Daten. Mit PolyBase können Sie ältere Daten in Hadoop oder Azure Blob Storage archivieren.  Dies bietet viele Möglichkeiten, da die Daten noch immer online sind.  Es dauert u. U. länger, Daten aus Hadoop abzurufen, aber der Nachteil der Abrufzeit gleicht möglicherweise die Speicherkosten aus.
 
 ### <a name="exporting-data"></a>Exportieren von Daten
 Eine Möglichkeit, Daten für Berichte und Analysen verfügbar zu machen, ist das Senden von Daten aus dem Data Warehouse an Server, die speziell zum Ausführen von Berichten und Analysen verwendet werden. Diese Server werden als Data Marts bezeichnet. Beispielsweise könnten Sie Berichtsdaten vorab verarbeiten und dann aus dem Data Warehouse auf viele Server auf der ganzen Welt exportieren, um sie für Kunden und Analysten allgemein verfügbar zu machen.

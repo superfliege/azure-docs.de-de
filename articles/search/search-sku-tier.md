@@ -1,25 +1,19 @@
 ---
-title: "Auswählen einer SKU oder eines Tarifs für Azure Search | Microsoft Docs"
-description: "Azure Search kann unter folgenden SKUs bereitgestellt werden: Free, Basic und Standard. Standard ist mit verschiedenen Ressourcenkonfigurationen und Kapazitäten verfügbar."
+title: Auswählen einer SKU oder eines Tarifs für Azure Search | Microsoft Docs
+description: 'Azure Search kann unter folgenden SKUs bereitgestellt werden: Free, Basic und Standard. Standard ist mit verschiedenen Ressourcenkonfigurationen und Kapazitäten verfügbar.'
 services: search
-documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 8d4b7bca-02a5-43ee-b3f8-03551dfb32fd
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/24/2016
 ms.author: heidist
-ms.openlocfilehash: 781683f27c943e25d5629dd846da357f51c9d4f9
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 6fe41a8c4d184fef4d1bb0a12fed44a49ef8a6da
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>Auswählen einer SKU oder eines Tarifs für Azure Search
 In Azure Search erfolgt die [Bereitstellung eines Diensts](search-create-service-portal.md) für einen bestimmten Tarif oder eine bestimmte SKU. Folgende Optionen stehen zur Verfügung: **Free**, **Basic** und **Standard**, wobei **Standard** mit verschiedenen Konfigurationen und Kapazitäten verfügbar ist.
@@ -78,9 +72,9 @@ Das folgende Diagramm stellt einen Teil der Grenzwerte aus [Grenzwerte für den 
 | Vereinbarung zum Servicelevel (SLA) |Nein <sup>1</sup> |Ja |Ja |Ja |Ja |Ja |
 | Indexgrenzwerte |3 |5 |50 |200 |200 |1000 <sup>2</sup> |
 | Dokumentgrenzwerte |10.000 insgesamt |1 Million pro Dienst |15 Mio. pro Partition |60 Mio. pro Partition |120 Mio. pro Partition |1 Mio. pro Index |
-| Maximale Anzahl der Partitionen |– |1 |12 |12 |12 |3 <sup>2</sup> |
+| Maximale Anzahl der Partitionen |N/V |1 |12 |12 |12 |3 <sup>2</sup> |
 | Partitionsgröße |50 MB insgesamt |2 GB pro Dienst |25 GB pro Partition |100 GB pro Partition (bis zu maximal 1,2 TB pro Dienst) |200 GB pro Partition (bis zu maximal 2,4 TB pro Dienst) |200 GB (bis zu maximal 600 GB pro Dienst) |
-| Maximale Anzahl der Replikate |– |3 |12 |12 |12 |12 |
+| Maximale Anzahl der Replikate |N/V |3 |12 |12 |12 |12 |
 
 <sup>1</sup> Für Funktionen der Free- und Vorschauversion gilt keine Vereinbarung zum Servicelevel (Service Level Agreement, SLA). Für alle abrechenbaren Tarife gelten SLAs, wenn Sie genügend Redundanz für Ihren Dienst bereitstellen. Zwei oder mehr Replikate sind für die Abfrage-SLA (Lesezugriff) erforderlich. Drei oder mehr Replikate sind für die Abfrage- und Indizierungs-SLA (Lese-/Schreibzugriff) erforderlich. Die Anzahl der Partitionen wird für die SLA nicht berücksichtigt. 
 

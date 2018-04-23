@@ -1,6 +1,6 @@
 ---
-title: "Schnellstart – Azure-Kubernetes-Cluster für Linux"
-description: "Hier lernen Sie schnell, einen Kubernetes-Cluster für Linux-Container in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle zu erstellen."
+title: Schnellstart – Azure-Kubernetes-Cluster für Linux
+description: Hier lernen Sie schnell, einen Kubernetes-Cluster für Linux-Container in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle zu erstellen.
 services: container-service
 author: neilpeterson
 manager: timlt

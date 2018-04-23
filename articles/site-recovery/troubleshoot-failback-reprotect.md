@@ -1,12 +1,12 @@
 ---
-title: "Behandeln von Problemen während eines Failbacks von Azure zu einem lokalen Standort und anschließendes erneutes Schützen in Azure | Microsoft-Dokumentation"
-description: "Dieser Artikel beschreibt Möglichkeiten zum Beheben allgemeiner Fehler bei Failbacks von Azure zu einem lokalen Standort und während des erneuten Schützens"
+title: Behandeln von Problemen während eines Failbacks von Azure zu einem lokalen Standort und anschließendes erneutes Schützen in Azure | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt Möglichkeiten zum Beheben allgemeiner Fehler bei Failbacks von Azure zu einem lokalen Standort und während des erneuten Schützens
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rajani-janaki-ram
 manager: gauravd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article

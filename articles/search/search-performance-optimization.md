@@ -1,24 +1,19 @@
 ---
-title: "Überlegungen zur Leistung und Optimierung von Azure Search | Microsoft Docs"
+title: Überlegungen zur Leistung und Optimierung von Azure Search | Microsoft Docs
 description: Optimieren der Leistung von Azure Search und Konfigurieren der optimalen Skalierung
-services: search
-documentationcenter: 
 author: LiamCavanagh
-manager: pablocas
-editor: 
-ms.assetid: 4d3cd864-29d2-4921-be0d-a3f1a819de46
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89c0352723f1ed00784250b566902028af853d10
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Überlegungen zur Leistung und Optimierung von Azure Search
 Eine hervorragende Suchfunktion ist ein Schlüssel zum Erfolg für viele mobile und Webanwendungen. Vom Immobilienmarkt über Gebrauchtwagenmärkte bis hin zu Onlinekatalogen – schnelle Suchvorgänge und relevante Ergebnisse sind sehr wichtig für die Kundenzufriedenheit. Dieses Dokument stellt bewährte Methoden vor, mit deren Hilfe Sie optimal von Azure Search profitieren können. Dies gilt insbesondere für Szenarien mit hohen Anforderungen an die Skalierbarkeit, die Unterstützung mehrerer Sprachen oder benutzerdefinierte Rangfolgen.  Darüber hinaus beschreibt dieses Dokument interne Merkmale und erläutert verschiedene Vorgehensweisen, die in realen Kunden-Apps effektiv funktionieren.
@@ -59,10 +54,10 @@ Ein weiterer Grund für hohe Latenzraten kann darin liegen, dass eine einzelne A
 3. **Wechseln zu einem höheren Search-Tarif:** Der Wechsel in einen anderen Azure Search-Tarif ist eine weitere Möglichkeit, die Leistung langsamer Abfragen zu verbessern.  Jeder höhere Tarif bietet auch schnellere CPUs und mehr Arbeitsspeicher, was sich positiv auf die Abfrageleistung auswirken kann.
 
 ## <a name="scaling-for-availability"></a>Skalieren zur Erhöhung der Verfügbarkeit
-Replikate können nicht nur zur Verringerung von Abfragelatenzen beitragen, sondern auch die Verfügbarkeit steigern.  Mit einem einzigen Replikat müssen Sie mit regelmäßigen Ausfallzeiten aufgrund von Serverneustarts nach Softwareupdates oder anderen Wartungsereignissen rechnen.  Daher müssen Sie überlegen, ob Ihre Anwendung eine hohe Verfügbarkeit sowohl für Suchvorgänge (Abfragen) als auch für Schreibvorgänge (Indizierungsereignisse) erfordert.  Azure Search bietet SLA-Optionen in allen kostenpflichtigen Tarifen mit den folgenden Attributen:
+Replikate können nicht nur zur Verringerung von Abfragelatenzen beitragen, sondern auch Hochverfügbarkeit ermöglichen.  Mit einem einzigen Replikat müssen Sie mit regelmäßigen Ausfallzeiten aufgrund von Serverneustarts nach Softwareupdates oder anderen Wartungsereignissen rechnen.  Daher müssen Sie überlegen, ob Ihre Anwendung Hochverfügbarkeit sowohl für Suchvorgänge (Abfragen) als auch für Schreibvorgänge (Indizierungsereignisse) erfordert.  Azure Search bietet SLA-Optionen in allen kostenpflichtigen Tarifen mit den folgenden Attributen:
 
-* 2 Replikate für hohe Verfügbarkeit von schreibgeschützten Workloads (Abfragen)
-* 3 oder mehr Replikate für hohe Verfügbarkeit von Lese-/ Schreibworkloads (Abfragen und Indizierung)
+* Zwei Replikate für Hochverfügbarkeit von schreibgeschützten Workloads (Abfragen)
+* Drei oder mehr Replikate für Hochverfügbarkeit von Lese-/ Schreibworkloads (Abfragen und Indizierung)
 
 Weitere Informationen hierzu finden Sie unter [SLA für Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 

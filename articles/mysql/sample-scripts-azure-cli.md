@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI-Beispiele für Azure-Datenbank für MySQL"
-description: "Dieser Artikel führt die Azure CLI-Codebeispiele auf, die für die Interaktion mit Azure-Datenbank für MySQL verfügbar sind."
+title: Azure CLI-Beispiele für Azure-Datenbank für MySQL
+description: Dieser Artikel führt die Azure CLI-Codebeispiele auf, die für die Interaktion mit Azure-Datenbank für MySQL verfügbar sind.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

@@ -1,11 +1,11 @@
 ---
-title: "Verwenden des API Management-Diensts zum Generieren von HTTP-Anforderungen"
-description: "Erfahren Sie mehr über die Verwendung von Anforderungs- und Antwortrichtlinien in API Management, um externe Dienste aus Ihrer API abzurufen."
+title: Verwenden des API Management-Diensts zum Generieren von HTTP-Anforderungen
+description: Erfahren Sie mehr über die Verwendung von Anforderungs- und Antwortrichtlinien in API Management, um externe Dienste aus Ihrer API abzurufen.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4539c0fa-21ef-4b1c-a1d4-d89a38c242fa
 ms.service: api-management
 ms.devlang: dotnet

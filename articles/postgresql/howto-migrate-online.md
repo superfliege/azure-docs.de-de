@@ -1,6 +1,6 @@
 ---
 title: Migration zu Azure Database for PostgreSQL mit minimaler Ausfallzeit
-description: "In diesem Artikel wird beschrieben, wie Sie eine Migration mit minimaler Ausfallzeit durchführen. Hierzu extrahieren Sie zunächst eine PostgreSQL-Datenbank in eine Dumpdatei und stellen die PostgreSQL-Datenbank aus einer Archivdatei wieder her, die über „pg_dump“ in Azure Database for PostgreSQL erstellt wurde. Außerdem richten Sie unter Verwendung von Attunity Replicate for Microsoft Migrations den ersten Ladevorgang und die fortlaufende Synchronisierung von der Quelldatenbank zur Zieldatenbank ein."
+description: In diesem Artikel wird beschrieben, wie Sie eine Migration mit minimaler Ausfallzeit durchführen. Hierzu extrahieren Sie zunächst eine PostgreSQL-Datenbank in eine Dumpdatei und stellen die PostgreSQL-Datenbank aus einer Archivdatei wieder her, die über „pg_dump“ in Azure Database for PostgreSQL erstellt wurde. Außerdem richten Sie unter Verwendung von Attunity Replicate for Microsoft Migrations den ersten Ladevorgang und die fortlaufende Synchronisierung von der Quelldatenbank zur Zieldatenbank ein.
 services: postgresql
 author: HJToland3
 ms.author: jtoland

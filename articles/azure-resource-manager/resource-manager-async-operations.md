@@ -1,12 +1,12 @@
 ---
-title: "Asynchrone Vorgänge in Azure | Microsoft-Dokumentation"
-description: "Beschreibt, wie asynchrone Vorgänge in Azure nachverfolgt werden."
+title: Asynchrone Vorgänge in Azure | Microsoft-Dokumentation
+description: Beschreibt, wie asynchrone Vorgänge in Azure nachverfolgt werden.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article

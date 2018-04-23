@@ -1,12 +1,12 @@
 ---
-title: "Schützen einer SAP NetWeaver-Anwendungsbereitstellung mit mehreren Schichten mit Azure Site Recovery | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie SAP NetWeaver-Anwendungsbereitstellungen mit Azure Site Recovery schützen."
+title: Schützen einer SAP NetWeaver-Anwendungsbereitstellung mit mehreren Schichten mit Azure Site Recovery | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie SAP NetWeaver-Anwendungsbereitstellungen mit Azure Site Recovery schützen.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
@@ -19,24 +19,6 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2018
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-ms.openlocfilehash: b6ab734186f23d51d60e51bd0946329d5209097b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
-=======
-ms.openlocfilehash: 1ee472498bdefc4eeb9863670e5480326b5ba6d8
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
->>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
->>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
-=======
->>>>>>> ffcb13bb5fc8687cd2f604cdad085442a2a65a08
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Schützen einer SAP NetWeaver-Anwendungsbereitstellung mit mehreren Ebenen mit Azure Site Recovery
 

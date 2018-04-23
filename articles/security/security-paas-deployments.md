@@ -1,12 +1,12 @@
 ---
-title: "Schützen von PaaS-Bereitstellungen | Microsoft-Dokumentation"
+title: Schützen von PaaS-Bereitstellungen | Microsoft-Dokumentation
 description: " Informieren Sie sich über die Sicherheitsvorteile von PaaS im Vergleich zu anderen Clouddienstmodellen, und machen Sie sich mit empfohlenen Vorgehensweisen für den Schutz Ihrer Azure-PaaS-Bereitstellung vertraut. "
 services: security
 documentationcenter: na
 author: techlake
 manager: MBaldwin
 editor: techlake
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 4629e0ab6bbc9554128a923e92b269df79446b18
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: f19c52629a997687692eef9bce2e13b2b7894052
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -87,12 +87,12 @@ Der folgende Abschnitt enthält eine allgemeine Zusammenfassung bewährter Metho
 
 - **Verlieren Sie Ihre Schlüssel oder Anmeldeinformationen nicht.** Schlüssel und Anmeldeinformationen müssen unbedingt geschützt werden, um die Sicherheit von PaaS-Bereitstellungen zu gewährleisten. Der Verlust von Schlüsseln und Anmeldeinformationen ist ein verbreitetes Problem. Eine empfehlenswerte Methode ist die Verwendung einer zentralen Lösung, bei der Schlüssel und Geheimnisse in Hardwaresicherheitsmodulen (HSM) gespeichert werden. Azure bietet mit [Azure Key Vault](../key-vault/key-vault-whatis.md) ein HSM in der Cloud.
 - **Platzieren Sie Anmeldeinformationen und andere Geheimnisse nicht in Quellcode oder auf GitHub.** Noch schlimmer als der Verlust von Schlüsseln und Anmeldeinformationen ist es, wenn nicht autorisierte Personen an Ihre Schlüssel und Anmeldeinformationen gelangen. Angreifer können mithilfe von Bottechnologien Coderepositorys wie GitHub nach darin gespeicherten Schlüsseln und Geheimnissen durchsuchen. Speichern Sie daher keine Schlüssel oder Geheimnisse in diesen öffentlichen Quellcoderepositorys.
-- **Schützen Sie Ihre VM-Verwaltungsschnittstellen in PaaS- und IaaS-Hybriddiensten.** IaaS- und PaaS-Dienste werden auf virtuellen Computern ausgeführt. Für die direkte Remoteverwaltung dieser virtuellen Computer stehen je nach Art des Diensts mehrere Verwaltungsschnittstellen zur Verfügung. Dabei können Remoteverwaltungsprotokolle wie das [SSH-Protokoll (Secure Shell)](https://en.wikipedia.org/wiki/Secure_Shell), das [Remotedesktopprotokoll (RDP)](https://support.microsoft.com/kb/186607) und [Remote PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) verwendet werden. Im Allgemeinen empfiehlt es sich, über das Internet keinen direkten Remotezugriff auf virtuelle Computer zu ermöglichen. Verwenden Sie nach Möglichkeit alternative Methoden – beispielsweise eine VPN-Verbindung (virtuelles privates Netzwerk) mit einem virtuellen Azure-Netzwerk. Sollten keine Alternativen verfügbar sein, verwenden Sie unbedingt komplexe Passphrasen und nach Möglichkeit eine zweistufige Authentifizierung (beispielsweise [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)).
+- **Schützen Sie Ihre VM-Verwaltungsschnittstellen in PaaS- und IaaS-Hybriddiensten.** IaaS- und PaaS-Dienste werden auf virtuellen Computern ausgeführt. Für die direkte Remoteverwaltung dieser virtuellen Computer stehen je nach Art des Diensts mehrere Verwaltungsschnittstellen zur Verfügung. Dabei können Remoteverwaltungsprotokolle wie das [SSH-Protokoll (Secure Shell)](https://en.wikipedia.org/wiki/Secure_Shell), das [Remotedesktopprotokoll (RDP)](https://support.microsoft.com/kb/186607) und [Remote PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) verwendet werden. Im Allgemeinen empfiehlt es sich, über das Internet keinen direkten Remotezugriff auf virtuelle Computer zu ermöglichen. Verwenden Sie nach Möglichkeit alternative Methoden – beispielsweise eine VPN-Verbindung (virtuelles privates Netzwerk) mit einem virtuellen Azure-Netzwerk. Sollten keine Alternativen verfügbar sein, verwenden Sie unbedingt komplexe Passphrasen und nach Möglichkeit eine zweistufige Authentifizierung (beispielsweise [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)).
 - **Verwenden Sie sichere Authentifizierungs- und Autorisierungsplattformen.**
 
   - Verwenden Sie Verbundidentitäten in Azure AD anstelle von benutzerdefinierten Benutzerspeichern. Bei Verbundidentitäten profitieren Sie von einem plattformbasierten Konzept und delegieren die Verwaltung autorisierter Identitäten an Ihre Partner. Das Verbundidentitätskonzept ist besonders in Szenarien wichtig, in denen Mitarbeiter gekündigt werden und diese Information in mehreren Identitäts- und Autorisierungssystemen berücksichtigt werden muss.
   - Verwenden Sie von der Plattform bereitgestellte Authentifizierungs- und Autorisierungsmechanismen anstelle von benutzerdefiniertem Code. Der Grund: Bei der Entwicklung von benutzerdefiniertem Authentifizierungscode können Ihnen unter Umständen Fehler unterlaufen. Die meisten Ihrer Entwickler sind keine Sicherheitsexperten und deshalb wahrscheinlich nicht mit den Feinheiten und neuesten Entwicklungen im Authentifizierungs- und Autorisierungsbereich vertraut. Die Sicherheit von kommerziellem Code (etwa von Microsoft) wird häufig intensiv geprüft.
-  - Verwenden Sie eine mehrstufige Authentifizierung. Die mehrstufige Authentifizierung ist der aktuelle Standard für die Authentifizierung und Autorisierung, da sie die Sicherheitsprobleme eliminiert, die für Authentifizierungsmethoden mit Benutzername und Kennwort typisch sind. Der Zugriff auf Azure-Verwaltungsschnittstellen (Portal/Remote-PowerShell) und auf kundenorientierte Dienste sollte für die Verwendung von [Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) konzipiert und konfiguriert sein.
+  - Verwenden Sie eine mehrstufige Authentifizierung. Die mehrstufige Authentifizierung ist der aktuelle Standard für die Authentifizierung und Autorisierung, da sie die Sicherheitsprobleme eliminiert, die für Authentifizierungsmethoden mit Benutzername und Kennwort typisch sind. Der Zugriff auf Azure-Verwaltungsschnittstellen (Portal/Remote-PowerShell) und auf kundenorientierte Dienste sollte für die Verwendung von [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) konzipiert und konfiguriert sein.
   - Verwenden Sie standardmäßige Authentifizierungsprotokolle wie OAuth2 und Kerberos. Diese Protokolle wurden umfassend überprüft und sind wahrscheinlich Teil Ihrer Plattformbibliotheken für die Authentifizierung und Autorisierung.
 
 ## <a name="next-steps"></a>Nächste Schritte

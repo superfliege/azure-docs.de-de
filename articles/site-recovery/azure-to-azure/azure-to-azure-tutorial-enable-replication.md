@@ -1,6 +1,6 @@
 ---
-title: "Einrichten der Notfallwiederherstellung für Azure-VMs in eine sekundäre Region mit Azure Site Recovery (Vorschau)"
-description: "Erfahren Sie, wie Sie die Notfallwiederherstellung für Azure-VMs in eine andere Region mit dem Dienst „Azure Site Recovery“ durchführen."
+title: Einrichten der Notfallwiederherstellung für Azure-VMs in eine sekundäre Region mit Azure Site Recovery (Vorschau)
+description: Erfahren Sie, wie Sie die Notfallwiederherstellung für Azure-VMs in eine andere Region mit dem Dienst „Azure Site Recovery“ durchführen.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm

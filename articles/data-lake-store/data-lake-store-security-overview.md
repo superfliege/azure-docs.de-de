@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: d3387812e064d3ce8a293db7d2c942a34cd5b364
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4dc1b070f7933f23ee615501dfbc68551068210c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Sicherheit im Azure Data Lake-Speicher
 Viele Unternehmen nutzen Big-Data-Analysen zur Gewinnung von Unternehmenseinblicken, um fundierte Entscheidungen treffen zu können. Ein Unternehmen verfügt unter Umständen über eine komplexe und regulierte Umgebung mit einer wachsenden Zahl von unterschiedlichen Benutzern. Unternehmen müssen sicherstellen, dass wichtige Geschäftsdaten sicherer gespeichert werden und dass einzelnen Benutzern die richtige Zugriffsebene gewährt wird. Azure Data Lake Store ist so konzipiert, dass diese Sicherheitsanforderungen besser erfüllt werden können. In diesem Artikel werden die Sicherheitsfunktionen von Data Lake Store beschrieben, z.B.:
@@ -35,7 +35,7 @@ Die Authentifizierung ist der Prozess, bei dem die Identität des Benutzers übe
 Jedes Azure-Abonnement kann mit einer Instanz von Azure Active Directory verknüpft werden. Nur Benutzer- und Dienstidentitäten, die in Ihrem Azure Active Directory-Dienst definiert sind, können auf Ihr Data Lake Store-Konto zugreifen. Hierfür werden das Azure-Portal, Befehlszeilentools oder Clientanwendungen verwendet, die von Ihrer Organisation mit dem Azure Data Lake Store SDK erstellt werden. Die Nutzung von Azure Active Directory als zentrales Verfahren für die Zugriffssteuerung hat die folgenden wichtigen Vorteile:
 
 * Vereinfachte Verwaltung des Identitätslebenszyklus: Die Identität eines Benutzers oder Diensts (Dienstprinzipalidentität) kann schnell erstellt und widerrufen werden, indem das Konto im Verzeichnis einfach gelöscht oder deaktiviert wird.
-* Multi-Factor Authentication: Per [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) wird eine zusätzliche Sicherheitsebene für die Benutzeranmeldung und für Transaktionen geschaffen.
+* Multi-Factor Authentication: Per [Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) wird eine zusätzliche Sicherheitsebene für die Benutzeranmeldung und für Transaktionen geschaffen.
 * Authentifizierung von jedem Client über ein geöffnetes Standardprotokoll, z.B. OAuth oder OpenID.
 * Verbund mit Unternehmensverzeichnisdiensten und Cloudidentitätsanbietern.
 
