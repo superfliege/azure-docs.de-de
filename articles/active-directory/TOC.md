@@ -17,7 +17,7 @@
 ## [Konfigurieren des Unternehmensbrandings](customize-branding.md)
 ## [Hinzufügen von Benutzern zu Azure AD](add-users-azure-active-directory.md)
 ## [Zuweisen von Lizenzen zu Benutzern](license-users-groups.md)
-## [Konfigurieren der Self-Service-Kennwortzurücksetzung](active-directory-passwords-getting-started.md)
+## [Konfigurieren der Self-Service-Kennwortzurücksetzung](authentication/quickstart-sspr.md)
 
 
 # Anleitung
@@ -63,6 +63,8 @@
 #### [Dynamische Gruppen und B2B-Benutzer](active-directory-b2b-dynamic-groups.md)
 #### [Überwachung und Berichte](active-directory-b2b-auditing-and-reporting.md)
 #### [B2B für Hybridorganisationen](active-directory-b2b-hybrid-organizations.md)
+##### [Gewähren des Zugriffs auf lokale Apps für B2B-Benutzer](active-directory-b2b-hybrid-cloud-to-on-premises.md)
+##### [Gewähren des Zugriffs auf Cloud-Apps für lokale Benutzer](active-directory-b2b-hybrid-on-premises-to-cloud.md)
 #### [B2B und externe Office 365-Freigaben](active-directory-b2b-o365-external-user.md)
 #### [B2B-Lizenzierung](active-directory-b2b-licensing.md)
 #### [Aktuelle Einschränkungen](active-directory-b2b-current-limitations.md)
@@ -119,6 +121,7 @@
 #### [Vermerkdauer](active-directory-reporting-retention.md)
 #### [Wartezeiten](active-directory-reporting-latencies-azure-portal.md)
 #### [Notifications](active-directory-reporting-notifications.md)
+#### [Referenz zu Überwachungsaktivitäten](active-directory-reporting-activity-audit-reference.md)
 #### [Fehlercodes für Anmeldeaktivitäten](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
 ### Problembehandlung
@@ -141,7 +144,7 @@
 #### [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
 ### [SSPR – So funktioniert‘s](authentication/concept-sspr-howitworks.md)
 ### [SSPR-Bereitstellungshandbuch](authentication/howto-sspr-deployment.md)
-### [SSPR and Windows 10 (SSPR und Windows 10)](active-directory-passwords-login.md)
+### [SSPR and Windows 10 (SSPR und Windows 10)](authentication/tutorial-sspr-windows.md)
 ### [SSPR-Richtlinien ](authentication/concept-sspr-policy.md)
 ### [SSPR-Anpassung](authentication/concept-sspr-customization.md)
 ### [SSPR-Datenanforderungen](authentication/howto-sspr-authenticationdata.md)
@@ -149,7 +152,7 @@
 ### IT-Administratoren: Zurücksetzen von Kennwörtern
 #### [Azure-Portal](active-directory-users-reset-password-azure-portal.md)
 ### [Lizenzieren von SSPR](authentication/concept-sspr-licensing.md)
-### [Kennwortrückschreiben](active-directory-passwords-writeback.md)
+### [Kennwortrückschreiben](authentication/howto-sspr-writeback.md)
 ### [Problembehandlung](authentication/active-directory-passwords-troubleshoot.md)
 ### [HÄUFIG GESTELLTE FRAGEN](authentication/active-directory-passwords-faq.md)
 

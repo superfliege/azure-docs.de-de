@@ -50,7 +50,7 @@
 ### [Unterstützung mehrerer Domänen für den Verbund](active-directory-aadconnect-multiple-domains.md)
 ### [Automatisches Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [Verwenden eines SAML 2.0-Identitätsanbieters für einmaliges Anmelden](active-directory-aadconnect-federation-saml-idp.md)
-
+### [Synchronisieren von Gastbenutzerkonten mit Anmeldung per E-Mail](active-directory-aadconnect-guest-sync.md)
 
 
 ## Verwalten der Azure AD Connect-Synchronisierung

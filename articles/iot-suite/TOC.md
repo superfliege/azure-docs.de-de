@@ -48,6 +48,7 @@
 ### [Exemplarische Vorgehensweise zur Predictive Maintenance-Lösung](iot-suite-predictive-walkthrough.md)
 
 ## Verbundene Factory
+### [Was ist die verbundene Factory?](iot-suite-connected-factory-features.md)
 ### [Übersicht über die Lösung für verbundene Factorys](iot-suite-connected-factory-overview.md)
 ### [Exemplarische Vorgehensweise für die Lösung für verbundene Factorys](iot-suite-connected-factory-sample-walkthrough.md)
 
