@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: ac869cc45d352bdeed16bb3ca926ec7a921d1f75
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 47629350967026f6901441ff20d182cd7fd5be3a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Azure Cosmos DB-Bindungen für Azure Functions
 
@@ -38,7 +38,7 @@ Die Cosmos DB-Bindungen für Functions, Version 1.x, finden Sie im NuGet-Paket [
 
 ## <a name="trigger"></a>Trigger
 
-Informationen über das partitionsübergreifende Lauschen auf Änderungen durch den Azure Cosmos DB-Trigger finden Sie unter [Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB](../cosmos-db/change-feed.md). Der Änderungsfeed veröffentlicht Einfügungen und Updates, keine Löschungen. 
+Informationen über das partitionsübergreifende Lauschen auf Änderungen durch den Azure Cosmos DB-Trigger finden Sie unter [Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB](../cosmos-db/change-feed.md). Der Änderungsfeed veröffentlicht Einfügungen und Updates, keine Löschungen. Der Trigger wird für jeden Einfüge- oder Aktualisierungsvorgang aufgerufen, der in der überwachten Sammlung vorgenommen wird. 
 
 ## <a name="trigger---example"></a>Trigger: Beispiel
 

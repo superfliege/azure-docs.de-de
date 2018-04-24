@@ -1,11 +1,11 @@
 ---
-title: "Verwenden einer verwalteten Dienstidentität für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store"
-description: "Dieses Tutorial veranschaulicht die Verwendung einer verwalteten Dienstidentität (Managed Service Identity, MSI) für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store."
+title: Verwenden einer verwalteten Dienstidentität für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store
+description: Dieses Tutorial veranschaulicht die Verwendung einer verwalteten Dienstidentität (Managed Service Identity, MSI) für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: bef549a0cb8a876bbf8fbf281a6c2d1d489736af
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8b7e6cbd4bc7cfef349e9cebd9e4db537701a877
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Verwenden einer verwalteten Dienstidentität für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store
 
@@ -58,16 +58,13 @@ In diesem Tutorial wird ein neuer virtueller Linux-Computer erstellt. Sie könne
 
 ## <a name="enable-msi-on-your-vm"></a>Aktivieren von MSI auf dem virtuellen Computer
 
-Sie können MSI für einen virtuellen Computer verwenden, um Zugriffstoken aus Azure AD abzurufen, ohne Anmeldeinformationen in Ihren Code einfügen zu müssen. Durch das Aktivieren von MSI wird die MSI-VM-Erweiterung auf dem virtuellen Computer installiert, und MSI wird im Azure Resource Manager aktiviert.  
+Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren der verwalteten Dienstidentität auf einem virtuellen Computer werden zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
 
 1. Wählen Sie unter **Virtueller Computer** den virtuellen Computer aus, auf dem Sie MSI aktivieren möchten.
 2. Wählen Sie im linken Bereich die Option **Konfiguration**.
 3. Die Option **Verwaltete Dienstidentität** wird angezeigt. Klicken Sie zum Registrieren und Aktivieren von MSI auf **Ja**. Klicken Sie zum Deaktivieren auf **Nein**.
    ![Auswahl „Registrierung bei Azure Active Directory“](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. Wählen Sie **Speichern**aus.
-5. Wenn Sie überprüfen möchten, welche Erweiterungen sich auf diesem virtuellen Linux-Computer befinden, klicken Sie auf **Erweiterungen**. Wenn MSI aktiviert ist, wird **ManagedIdentityExtensionforLinux** in der Liste angezeigt.
-
-   ![Liste der Erweiterungen](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Gewähren des Zugriffs auf Azure Data Lake Store durch Ihre VM
 
@@ -102,10 +99,10 @@ Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client. Wenn Sie Windows
 
 1. Navigieren Sie im Portal zu Ihrem virtuellen Linux-Computer. Klicken Sie unter **Übersicht** auf **Verbinden**.  
 2. Stellen Sie mithilfe des gewünschten SSH-Clients eine Verbindung mit dem virtuellen Computer her. 
-3. Stellen Sie im Terminalfenster mit cURL eine Anforderung an den lokalen MSI-Endpunkt, um ein Zugriffstoken für das Data Lake Store-Dateisystem abzurufen. Der Ressourcenbezeichner für Data Lake Store lautet „https://datalake.azure.net/“.  Es ist wichtig, den abschließenden Schrägstrich in den Ressourcenbezeichner einzuschließen.
+3. Stellen Sie im Terminalfenster mit cURL eine Anforderung an den lokalen MSI-Endpunkt, um ein Zugriffstoken für das Data Lake Store-Dateisystem abzurufen. Der Ressourcenbezeichner für Data Lake Store lautet https://datalake.azure.net/.  Es ist wichtig, den abschließenden Schrägstrich in den Ressourcenbezeichner einzuschließen.
     
    ```bash
-   curl http://localhost:50342/oauth2/token --data "resource=https://datalake.azure.net/" -H Metadata:true   
+   curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
    ```
     
    Eine erfolgreiche Antwort gibt das Zugriffstoken zurück, das Sie zur Authentifizierung bei Data Lake Store verwenden:

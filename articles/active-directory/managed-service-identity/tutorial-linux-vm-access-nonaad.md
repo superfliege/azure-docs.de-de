@@ -1,8 +1,8 @@
 ---
-title: "Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Key Vault"
-description: "Dieses Tutorial erläutert, wie Sie eine Linux-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) verwenden, um auf Azure Resource Manager zuzugreifen."
+title: Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Key Vault
+description: Dieses Tutorial erläutert, wie Sie eine Linux-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) verwenden, um auf Azure Resource Manager zuzugreifen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 8d962475fc2b40f042e1e746d892442b0275643b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: eb97c6ddf2300677dd1ecc94d149e0171f42e67e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Verwenden einer mit einer Linux-VM verwalteten Dienstidentität (Managed Service Identity, MSI) für den Zugriff auf Azure Key Vault 
 
@@ -57,7 +57,7 @@ In diesem Tutorial wird ein neuer virtueller Linux-Computer erstellt. Sie könne
 
 ## <a name="enable-msi-on-your-vm"></a>Aktivieren von MSI auf dem virtuellen Computer
 
-Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Im Hintergrund werden durch das Aktivieren von MSI zwei Vorgänge ausgelöst: Auf dem virtuellen Computer wird die MSI-VM-Erweiterung installiert, und MSI wird für den virtuellen Computer aktiviert.  
+Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren der verwalteten Dienstidentität auf einem virtuellen Computer werden zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
 
 1. Wählen Sie den **virtuellen Computer** aus, auf dem Sie MSI aktivieren möchten.
 2. Klicken Sie in der links angezeigten Navigationsleiste auf **Konfiguration**.
@@ -65,11 +65,6 @@ Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne das
 4. Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.
 
     ![Alternativer Bildtext](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Wenn Sie überprüfen möchten, welche Erweiterungen sich auf diesem **virtuellen Linux-Computer** befinden, klicken Sie auf **Erweiterungen**. Wenn MSI aktiviert ist, wird **ManagedIdentityExtensionforLinux** in der Liste angezeigt.
-
-    ![Alternativer Bildtext](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
-
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Gewähren des Zugriffs auf ein in einer Key Vault gespeicherten Geheimnisses für den virtuellen Computer  
 
@@ -99,7 +94,7 @@ Fügen Sie der Key Vault nun ein Geheimnis hinzu, das Sie später mithilfe von C
  
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens zum Abrufen des Geheimnisses aus dem Schlüsseltresor  
 
-Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client.  Wenn Sie Windows verwenden, können Sie den SSH-Client im [Windows-Subsystem für Linux](https://msdn.microsoft.com/commandline/wsl/about) verwenden. Wenn Sie Hilfe beim Konfigurieren der SSH-Clientschlüssel benötigen, finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) oder [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) weitere Informationen.
+Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client.  Wenn Sie Windows verwenden, können Sie den SSH-Client im [Windows-Subsystem für Linux](https://msdn.microsoft.com/commandline/wsl/about) verwenden. Wenn Sie Hilfe beim Konfigurieren der SSH-Clientschlüssel benötigen, lesen Sie die Informationen unter [Vorgehensweise: Verwenden von SSH-Schlüsseln mit Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) oder [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
  
 1. Navigieren Sie im Portal zu Ihrem virtuellen Linux-Computer, und klicken Sie in der **Übersicht** auf **Verbinden**. 
 2. **Verbinden** Sie den virtuellen Computer mit dem gewünschten SSH-Client. 
@@ -108,7 +103,7 @@ Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client.  Wenn Sie Window
     Die CURL-Anforderung für das Zugriffstoken finden Sie weiter unten.  
     
     ```bash
-    curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true  
+    curl http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net -H Metadata:true  
     ```
     Die Antwort enthält das Zugriffstoken, das Sie für den Zugriff auf Resource Manager benötigen. 
     
