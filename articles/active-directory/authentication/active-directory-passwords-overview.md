@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 810c585e104f6b7bc63222594375527c45c6082d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e084db41cd199a9609e3edaf8b427a85ab2366b4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>Self-Service-Kennwortzurücksetzung in Azure AD für IT-Experten
 
@@ -42,7 +42,7 @@ Azure AD SSPR ermöglicht Ihnen Folgendes:
 * **Fördern Sie die Mobilität**, da Benutzer ihre Kennwörter unabhängig von ihrem Standort zurücksetzen können.
 * **Behalten Sie die Kontrolle** über die Sicherheitsrichtlinie. Administratoren können weiterhin ihre derzeitigen Richtlinien durchsetzen.
 
-Wenn Sie bereit sind, können Sie mithilfe unserer [Schnellstartanleitung](../active-directory-passwords-getting-started.md) mit der Nutzung von Azure AD SSPR beginnen. Sie können Ihre Benutzer schnell in die Lage versetzen, ihre eigenen Kennwörter zurückzusetzen.
+Wenn Sie bereit sind, können Sie mithilfe unserer [Schnellstartanleitung](quickstart-sspr.md) mit der Nutzung von Azure AD SSPR beginnen. Sie können Ihre Benutzer schnell in die Lage versetzen, ihre eigenen Kennwörter zurückzusetzen.
 
 ## <a name="azure-ad-sspr-availability"></a>Verfügbarkeit von Azure AD SSPR
 
@@ -65,7 +65,7 @@ Weitere Details zu Lizenzierung, Preisen und Plänen für die Zukunft finden Sie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sind Sie bereit für die ersten Schritte mit SSPR? [Einrichten von Self-Service-Kennwortzurücksetzung in Azure AD](../active-directory-passwords-getting-started.md).
+* Sind Sie bereit für die ersten Schritte mit SSPR? [Einrichten von Self-Service-Kennwortzurücksetzung in Azure AD](quickstart-sspr.md).
 * Planen Sie eine erfolgreiche SSPR-Bereitstellung für Ihre Benutzer, indem Sie die Anleitungen unter [Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md) verwenden.
 * [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../active-directory-passwords-update-your-own-password.md)
 * [Registrieren Sie sich für die Self-Service-Kennwortzurücksetzung](../active-directory-passwords-reset-register.md).
