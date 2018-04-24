@@ -29,7 +29,7 @@
       href: app-service-web-get-started-html.md
 - name: Tutorials
   items:
-    - name: '1: App mit Datenbank'
+    - name: App mit Datenbank
       items:
         - name: .NET Core mit SQL-Datenbank
           href: app-service-web-tutorial-dotnetcore-sqldb.md
@@ -43,15 +43,17 @@
           href: app-service-web-tutorial-java-mysql.md
         - name: Python mit PostgreSQL
           href: app-service-web-tutorial-python-postgresql.md
-    - name: '1: Hosten einer RESTful-API'
+    - name: Sicherer Zugriff auf SQL-Datenbank
+      href: app-service-web-tutorial-connect-msi.md
+    - name: Hosten einer RESTful-API
       href: app-service-web-tutorial-rest-api.md
-    - name: '2: Zuordnen einer benutzerdefinierten Domäne'
+    - name: Zuordnen einer benutzerdefinierten Domäne
       href: app-service-web-tutorial-custom-domain.md
-    - name: '3: Binden eines SSL-Zertifikats'
+    - name: Binden eines SSL-Zertifikats
       href: app-service-web-tutorial-custom-ssl.md
-    - name: '4: Hinzufügen von CDN'
+    - name: Hinzufügen von CDN
       href: app-service-web-tutorial-content-delivery-network.md
-    - name: '5: Authentifizieren von Benutzern'
+    - name: Authentifizieren von Benutzern
       href: app-service-web-tutorial-auth-aad.md
 - name: Beispiele
   items:
@@ -69,6 +71,8 @@
       href: azure-web-sites-web-hosting-plans-in-depth-overview.md
     - name: Betriebssystemfunktionalität
       href: web-sites-available-operating-system-functionality.md
+    - name: Eingehende und ausgehende IPs
+      href: app-service-ip-addresses.md
     - name: Authentifizierung und Autorisierung
       href: app-service-authentication-overview.md
     - name: Hybridverbindungen
@@ -143,6 +147,8 @@
               href: app-service-mobile-how-to-configure-twitter-authentication.md
         - name: Anpassen der Authentifizierung
           href: app-service-authentication-how-to.md
+        - name: Beschränken von IP-Adressen
+          href: app-service-ip-restrictions.md
         - name: Verwenden der verwalteten Dienstidentität
           href: app-service-managed-service-identity.md
         - name: Verwenden des SSL-Zertifikats im Anwendungscode
