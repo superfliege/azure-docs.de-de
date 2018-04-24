@@ -1191,7 +1191,7 @@ Das Konfigurieren eines Cluster-Dateifreigabenzeugen umfasst die folgenden Aufga
 
   ![Abbildung 32: Aktivieren des Kontrollkästchens „Computer“][sap-ha-guide-figure-3021]
 
-  _**Abbildung 32:**Aktivieren des Kontrollkästchens **Computer**_
+  _**Abbildung 32:** Aktivieren des Kontrollkästchens **Computer**_
 
 4.  Geben Sie das Clusternamenobjekt ein, wie in Abbildung 31 dargestellt. Da der Datensatz bereits erstellt wurde, können Sie die Berechtigungen ändern (siehe Abbildung 30).
 
