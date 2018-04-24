@@ -10,11 +10,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: 11ffb1a6260fca52ccb173cb842c1a2d5adbf139
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b1ac34c97d94f0b8759cb3e6f229ba0f7a2be7c9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
 Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
@@ -191,11 +191,11 @@ Das Azure-Portal stellt die einfachste Möglichkeit dar, das Verzeichnis zu konf
 
 ### <a name="install-the-sql-analytics-solution-from-the-gallery"></a>Installieren der Azure SQL-Analyselösung aus dem Katalog
 
-1. Installieren Sie die Lösung „Azure SQL-Analyse“, nachdem Sie die Log Analytics-Ressource erstellt haben und Daten in diese fließen. Wählen Sie auf der Startseite der Operations Management Suite im seitlichen Menü die Option **Lösungskatalog** aus. Wählen Sie im Katalog die Lösung **Azure SQL-Analyse** aus, und wählen Sie dann **Hinzufügen** aus.
+1. Installieren Sie die Lösung „Azure SQL-Analyse“, nachdem Sie die Log Analytics-Ressource erstellt haben und Daten in diese fließen. Wählen Sie auf der Startseite im seitlichen Menü die Option **Lösungskatalog** aus. Wählen Sie im Katalog die Lösung **Azure SQL-Analyse** aus, und wählen Sie dann **Hinzufügen** aus.
 
    ![Überwachungslösung](./media/sql-database-metrics-diag-logging/monitoring-solution.png)
 
-2. Auf Ihrer Startseite der Operations Management Suite wird die Kachel **Azure SQL-Analyse** angezeigt. Wählen Sie diese Kachel aus, um das SQL-Analysedashboard zu öffnen.
+2. Auf Ihrer Startseite wird die Kachel **Azure SQL-Analyse** angezeigt. Wählen Sie diese Kachel aus, um das SQL-Analysedashboard zu öffnen.
 
 ### <a name="use-the-sql-analytics-solution"></a>Verwenden der Lösung „SQL-Analyse“
 

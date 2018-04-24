@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 04/09/2018
 ms.author: carlrab
-ms.openlocfilehash: a7fde828c7a88f440cf69e3a4b26bb6c75cdaafb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 38b7749ae83f1c4b037ec1996c84a9ffca1de50e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)
 Azure bietet zwei Optionen zum Hosten von SQL Server-Workloads in Microsoft Azure:
@@ -74,7 +74,10 @@ Ob Sie ein Startup-Unternehmen mit wenig liquiden Mitteln oder ein Team in einem
 #### <a name="billing-and-licensing-basics"></a>Abrechnungs- und Lizenzierungsgrundlagen
 **SQL-Datenbank** wird Kunden nicht mit einer Lizenz, sondern als Dienst verkauft.  [SQL Server auf virtuellen Azure-Computern](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) wird mit einer minutengenau abgerechneten Lizenz verkauft. Sie können aber auch eine ggf. bereits vorhandene Lizenz verwenden.  
 
-Derzeit stehen für **SQL-Datenbank** verschiedene Tarife zur Verfügung, bei denen ein fester Stundensatz je nach ausgewähltem Tarif und ausgewählter Leistungsstufe abgerechnet wird. Außerdem wird Ihnen der ausgehende Internetdatenverkehr basierend auf den üblichen [Datenübertragungsraten](https://azure.microsoft.com/pricing/details/data-transfers/)berechnet. Die Tarife Basic, Standard und Premium liefern vorhersagbare Leistung mit mehreren Leistungsstufen entsprechend den Spitzenanforderungen der Anwendung. Sie können zwischen Tarifen und Leistungsstufen entsprechend den unterschiedlichen Durchsatzanforderungen Ihrer Anwendung wechseln. Wenn Ihre Datenbank ein hohes Transaktionsvolumen aufweist und viele gleichzeitige Benutzer unterstützen muss, empfehlen wir, den Tarif „Premium“ zu verwenden. Die neuesten Informationen zu den derzeit unterstützten Tarifen finden Sie unter [Tarife für Azure SQL-Datenbank](sql-database-service-tiers.md). Sie können auch [Pools für elastische Datenbanken](sql-database-elastic-pool.md) erstellen, um Leistungsressourcen zwischen Datenbankinstanzen freizugeben.
+Derzeit stehen für **SQL-Datenbank** verschiedene Tarife zur Verfügung, bei denen ein fester Stundensatz je nach ausgewähltem Tarif und ausgewählter Leistungsstufe abgerechnet wird. Außerdem wird Ihnen der ausgehende Internetdatenverkehr basierend auf den üblichen [Datenübertragungsraten](https://azure.microsoft.com/pricing/details/data-transfers/)berechnet. Die Tarife „Basic“, „Standard“, Premium, „General Purpose“ und „Mission Critical“ liefern vorhersagbare Leistung mit mehreren Leistungsstufen entsprechend den Spitzenanforderungen Ihrer Anwendung. Sie können zwischen Tarifen und Leistungsstufen entsprechend den unterschiedlichen Durchsatzanforderungen Ihrer Anwendung wechseln. Die neuesten Informationen zu den derzeit unterstützten Tarifen finden Sie unter [Tarife für Azure SQL-Datenbank](sql-database-service-tiers.md). Sie können auch [Pools für elastische Datenbanken](sql-database-elastic-pool.md) erstellen, um Leistungsressourcen zwischen Datenbankinstanzen freizugeben.
+
+> [!IMPORTANT]
+> Wenn Ihre Datenbank ein hohes Transaktionsvolumen aufweist und viele gleichzeitige Benutzer unterstützen muss, empfehlen wir, den Tarif „Premium“ oder „Mission Critical“ zu verwenden. Um die Wartezeit zwischen Ihrer Anwendung und Ihrer SQL-Datenbank zu minimieren, positionieren Sie Ihre Anwendung in derselben Region wie Ihre Datenbank, und testen Sie dann die Leistung, wobei Sie den Diensttarif und die Leistungsstufe nach Bedarf zu erhöhen.
 
 Bei **SQL-Datenbank** wird die Datenbanksoftware automatisch von Microsoft konfiguriert, gepatcht und aktualisiert. Dadurch sinken Ihre Verwaltungskosten. Darüber hinaus helfen Ihnen die [integrierten Datensicherungsfunktionen](sql-database-automated-backups.md) dabei, erhebliche Kosteneinsparungen zu erzielen, vor allem bei einer großen Anzahl von Datenbanken.
 
@@ -112,7 +115,7 @@ Bei **SQL Server auf virtuellen Azure-Computern**haben Sie die uneingeschränkte
 ### <a name="service-level-agreement-sla"></a>Vereinbarung zum Servicelevel (SLA)
 Für viele IT-Abteilungen hat die Einhaltung vereinbarter Betriebszeiten und Servicelevels höchste Priorität. In diesem Abschnitt wird erläutert, welche Vereinbarung zum Servicelevel (SLA) für die jeweilige Datenbank-Hostingoption gilt.
 
-Für **SQL-Datenbank** bietet Microsoft für die Tarife Basic, Standard und Premium eine Verfügbarkeits-SLA von 99,99 %. Aktuelle Informationen finden Sie unter [Vereinbarung zum Servicelevel](https://azure.microsoft.com/support/legal/sla/sql-database/). Aktuelle Informationen zu den Tarifen für SQL-Datenbank und zu den unterstützten Geschäftskontinuitätsplänen finden Sie unter [Tarife](sql-database-service-tiers.md).
+Für **SQL-Datenbank** bietet Microsoft für die Tarife „Basic“, „Standard“, „Premium“, „General Purpose“ und „Mission Critical“ eine Verfügbarkeits-SLA von 99,99%. Aktuelle Informationen finden Sie unter [Vereinbarung zum Servicelevel](https://azure.microsoft.com/support/legal/sla/sql-database/). Aktuelle Informationen zu den Tarifen für SQL-Datenbank und zu den unterstützten Geschäftskontinuitätsplänen finden Sie unter [Tarife](sql-database-service-tiers.md).
 
 Für **SQL Server auf Azure Virtual Machines** bietet Microsoft eine Verfügbarkeits-SLA von 99,95%, die nur den virtuellen Computer abdeckt. Diese SLA deckt nicht die Prozesse ab, die auf dem virtuellen Computer ausgeführt werden (z. B. SQL Server). Außerdem erfordert sie, dass mindestens zwei VM-Instanzen in einer Verfügbarkeitsgruppe gehostet werden. Aktuelle Informationen finden Sie unter [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Für eine besonders hohe Datenbankverfügbarkeit auf den virtuellen Computern sollten Sie eine der unterstützten Hochverfügbarkeitsoptionen in SQL Server konfigurieren, wie z.B. [AlwaysOn-Verfügbarkeitsgruppen](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx). Durch die Verwendung einer Hochverfügbarkeitsoption erhalten Sie zwar keine zusätzliche SLA, können aber eine Datenbankverfügbarkeit von >99,99 Prozent erreichen.
 
