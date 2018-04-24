@@ -12,38 +12,38 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/17/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7c34d7a225be63da95f664525b0366ff89b28838
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2e66a65665fe2021d1154990ed1156f8d168b5c3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="using-the-azure-stack-portal"></a>Verwenden des Azure Stack-Portals
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Als Nutzer der Azure Stack-Dienste können Sie im Azure Stack-Portal öffentliche Angebote abonnieren und die Dienste nutzen, die über diese Angebote zur Verfügung gestellt werden. Wenn Sie das Azure-Portal bereits verwendet haben, sind Sie mit der Benutzeroberfläche schon vertraut.
+Als Nutzer der Azure Stack-Dienste können Sie im Azure Stack-Portal öffentliche Angebote abonnieren und die Dienste nutzen, die über diese Angebote bereitgestellt werden. Wenn Sie das Azure-Portal bereits verwendet haben, sind Sie mit der Benutzeroberfläche schon vertraut.
 
 ## <a name="access-the-portal"></a>Zugriff auf das Portal
 
-Ihr Azure Stack-Operator (ein Dienstanbieter oder ein Administrator in Ihrer Organisation) teilt Ihnen die richtige URL für den Zugriff auf das Portal mit. 
+Ihr Azure Stack-Operator (ein Dienstanbieter oder ein Administrator in Ihrer Organisation) teilt Ihnen die richtige URL für den Zugriff auf das Portal mit.
 
-- Für ein integriertes System variiert die URL basierend auf der Region Ihres Operators und dem externen Domänenamen und hat das Format https://portal.&lt;*Region*&gt;.&lt; *FQDN*&gt;.
+- Bei einem integrierten System variiert die URL abhängig von der Region und dem externen Domänenamen des Betreibers und hat das Format https://portal.&lt;*Region*&gt;.&lt;*FQDN*&gt;.
 - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse https://portal.local.azurestack.external.
 
 ![Screenshot des Azure Stack-Benutzerportals](media/azure-stack-use-portal/UserPortal.png)
 
 ## <a name="customize-the-dashboard"></a>Anpassen des Dashboards
 
-Das Dashboard enthält eine Reihe von Standardkacheln. Klicken Sie auf **Dashboard bearbeiten**, um das Standarddashboard anzupassen, oder auf **Neues Dashboard**, um benutzerdefinierte Dashboards hinzuzufügen. Sie können dem Dashboard einfach Kacheln hinzufügen. Klicken Sie beispielsweise auf **Neu**, klicken Sie mit der rechten Maustaste auf **Compute**, und klicken Sie dann auf **An Dashboard anheften**.
+Das Dashboard enthält eine Reihe von Standardkacheln. Klicken Sie auf **Dashboard bearbeiten**, um das Standarddashboard anzupassen, oder auf **Neues Dashboard**, um ein benutzerdefiniertes Dashboard zu erstellen. Sie können ein Dashboard einfach durch Hinzufügen oder Entfernen von Kacheln anpassen. Klicken Sie beispielsweise zum Hinzufügen der Kachel „Compute“ auf **Neu**. Klicken Sie mit der rechten Maustaste auf **Compute**, und klicken Sie dann auf **An Dashboard anheften**.
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Erstellen von Abonnements und Durchsuchen verfügbarer Ressourcen
  
-Wenn Sie noch kein Abonnement haben, müssen Sie zunächst ein Angebot abonnieren. Danach können Sie nach verfügbaren Ressourcen suchen. Führen Sie zum Durchsuchen und Erstellen von Ressourcen einen der folgenden Schritte aus:
+Wenn Sie noch kein Abonnement haben, müssen Sie zunächst ein Angebot abonnieren. Danach können Sie die verfügbaren Ressourcen durchsuchen. Führen Sie zum Durchsuchen und Erstellen von Ressourcen einen der folgenden Schritte aus:
 
-- Klicken Sie auf dem Dashboard auf die Kachel **Marketplace**. 
+- Klicken Sie auf dem Dashboard auf die Kachel **Marketplace**.
 - Klicken Sie auf der Kachel **Alle Ressourcen** auf **Ressourcen erstellen**.
 - Klicken Sie im linken Navigationsbereich auf **Neu**.
 
@@ -51,7 +51,7 @@ Wenn Sie noch kein Abonnement haben, müssen Sie zunächst ein Angebot abonniere
 
 Wenn Sie Anleitungen zur Verwendung verfügbarer Dienste wünschen, stehen Ihnen möglicherweise unterschiedliche Optionen zur Verfügung.
 
-- Ihr Unternehmen oder Ihr Dienstanbieter stellt möglicherweise eigene Dokumentationen bereit. Dies gilt insbesondere, wenn sie angepasste Dienste oder Apps anbieten.
+- Ihre Organisation oder Ihr Dienstanbieter stellt möglicherweise eine eigene Dokumentation bereit. Dies ist in der Regel der Fall, wenn angepasste Dienste oder Apps angeboten werden.
 - Für Drittanbieter-Apps sind eigene Dokumentationen erforderlich.
 - Für Azure-konsistente Dienste sollten Sie zuerst die Azure Stack-Dokumentation lesen. Um auf die Azure Stack-Benutzerdokumentation zuzugreifen, klicken Sie auf das Symbol „Hilfe“ und dann auf **Hilfe und Support**.
  
@@ -60,13 +60,13 @@ Wenn Sie Anleitungen zur Verwendung verfügbarer Dienste wünschen, stehen Ihnen
     Insbesondere sollten Sie zum Einstieg die folgenden Artikel lesen:
 
     - [Wichtige Überlegungen: Verwenden von Diensten oder Erstellen von Apps für Azure Stack](azure-stack-considerations.md)
-    - Im Abschnitt „Verwenden der Dienste“ der Dokumentation ist jeder Azure-konsistente Dienst aufgeführt. Für jeden Dienst gibt es ein Thema „Überlegungen“, in dem die Unterschiede zwischen dem Angebot des Diensts in Azure und dem Angebot des gleichen Diensts in Azure Stack beschrieben werden. Ein Beispiel hierfür ist [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md) (Überlegungen zu VMs in Azure Stack). Der Abschnitt „Verwenden der Dienste“ enthält möglicherweise andere, für Azure Stack individuelle Informationen. 
+    - In der Dokumentation befindet sich im Abschnitt „Verwenden der Dienste“ für jeden Dienst ein Artikel „Überlegungen“. Auf der Seite „Überlegungen“ werden die Unterschiede zwischen dem Angebot des Diensts in Azure und dem Angebot des gleichen Diensts in Azure Stack beschrieben. Ein Beispiel hierfür ist [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md) (Überlegungen zu VMs in Azure Stack). Der Abschnitt „Verwenden der Dienste“ enthält möglicherweise andere, für Azure Stack individuelle Informationen.
      
       Sie können die Azure-Dokumentation als allgemeine Referenz für einen Dienst verwenden, aber Sie müssen sich dieser Unterschiede bewusst sein. Beachten Sie, dass die Dokumentationslinks auf der Kachel **Schnellstarttutorials** auf Azure-Dokumentation verweisen.
 
 ## <a name="get-support"></a>Support
 
-Wenn Sie weitere Unterstützung benötigen, wenden Sie sich an Ihr Unternehmen oder Ihren Dienstanbieter. 
+Wenn Sie weitere Unterstützung benötigen, wenden Sie sich an Ihr Unternehmen oder Ihren Dienstanbieter.
 
 Bei Verwendung des Azure Stack Development Kit können Sie nur das [Azure Stack-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) als Support nutzen.
 

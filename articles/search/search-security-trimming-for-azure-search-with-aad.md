@@ -1,18 +1,17 @@
 ---
-title: "Sicherheitsfilter zum Einschränken von Azure Search-Ergebnissen mit Active Directory-Identitäten | Microsoft-Dokumentation"
-description: "Zugriffssteuerung für Azure Search-Inhalte mithilfe von Sicherheitsfiltern und Active Directory-Identitäten"
-services: search
+title: Sicherheitsfilter zum Einschränken von Azure Search-Ergebnissen mit Active Directory-Identitäten | Microsoft-Dokumentation
+description: Zugriffssteuerung für Azure Search-Inhalte mithilfe von Sicherheitsfiltern und Active Directory-Identitäten
 author: revitalbarletz
 manager: jlembicz
 ms.service: search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 2113b59d6fec15067acbef8b4d4c1fc34c141e62
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: d7df9ede1851680fb6327cac7eed0a479928cea0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Sicherheitsfilter zum Einschränken von Azure Search-Ergebnissen mit Active Directory-Identitäten
 
@@ -97,7 +96,7 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>Schritt 4: Zwischenspeichern der Gruppenbezeichner
-Um die Netzwerklatenz zu verringern, können Sie optional die Benutzer-Gruppen-Zuordnungen zwischenspeichern, sodass bei einer Suchanfrage Gruppen aus dem Cache zurückgegeben werden und ein Roundtrip zu AAD entfällt. Sie können mit der (AAD-Batch-API)[https://developer.microsoft.com/graph/docs/concepts/json_batching] eine einzelne HTTP-Anforderung mit mehreren Benutzern senden und den Cache erstellen.
+Um die Netzwerklatenz zu verringern, können Sie optional die Benutzer-Gruppen-Zuordnungen zwischenspeichern, sodass bei einer Suchanfrage Gruppen aus dem Cache zurückgegeben werden und ein Roundtrip zu AAD entfällt. Sie können mit der AAD-Batch-API [https://developer.microsoft.com/graph/docs/concepts/json_batching] eine einzelne HTTP-Anforderung mit mehreren Benutzern senden und den Cache erstellen.
 
 Microsoft Graph ist für die Verarbeitung einer großen Anzahl von Anforderungen konzipiert. Wenn die Anzahl von Anforderungen zu hoch ist, gibt Microsoft Graph einen Fehler mit dem HTTP-Statuscode 429 aus. Weitere Informationen finden Sie unter [Microsoft Graph-Drosselung](https://developer.microsoft.com/graph/docs/concepts/throttling).
 
