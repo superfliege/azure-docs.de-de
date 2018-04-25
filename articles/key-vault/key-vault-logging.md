@@ -1,8 +1,8 @@
 ---
 title: Azure Key Vault-Protokollierung | Microsoft Docs
-description: "Dieses Tutorial dient als Hilfe bei den ersten Schritten mit der Azure-Schlüsseltresor-Protokollierung."
+description: Dieses Tutorial dient als Hilfe bei den ersten Schritten mit der Azure-Schlüsseltresor-Protokollierung.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: 2faf45c7329f1c98a26bcf7ec5d569dfa16cbbda
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 3406d314fb4dba92830933c4e4d373fc8bebeba3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-key-vault-logging"></a>Azure-Schlüsseltresor-Protokollierung
-Azure-Schlüsseltresor ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).
+Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="introduction"></a>Einführung
 Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie vermutlich überwachen, wie, wann und von wem auf die Schlüsseltresore zugegriffen wird. Hierfür können Sie die Protokollierung für den Schlüsseltresor aktivieren, bei der Informationen im von Ihnen bereitgestellten Azure-Speicherkonto gespeichert werden. Ein neuer Container mit dem Namen **insights-logs-auditevent** wird für Ihr angegebenes Speicherkonto automatisch erstellt, und Sie können dieses Speicherkonto verwenden, um Protokolle für mehrere Schlüsseltresore zu sammeln.
@@ -52,7 +52,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 ## <a id="connect"></a>Verbindungsherstellung mit Ihren Abonnements
 Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:  
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure-Kontos ein. Azure PowerShell ruft alle Abonnements ab, die diesem Konto zugeordnet sind, und verwendet standardmäßig das erste Abonnement.
 
@@ -133,7 +133,7 @@ Geben Sie Folgendes ein, um alle Blobs in diesem Container aufzulisten:
     Get-AzureStorageBlob -Container $container -Context $sa.Context
 Die Ausgabe sieht etwa wie folgt aus:
 
-**Container Uri: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
+**Container-URI: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
 
 **Name**
 
@@ -150,7 +150,7 @@ Für die Werte für Datum und Uhrzeit wird UTC verwendet.
 
 Da dasselbe Speicherkonto zum Erfassen von Protokollen für mehrere Ressourcen verwendet werden kann, ist die vollständige Ressourcen-ID im Blobnamen sehr hilfreich, um nur auf die benötigten Blobs zuzugreifen bzw. diese herunterzuladen. Zuerst wird aber beschrieben, wie Sie alle Blobs herunterladen.
 
-Erstellen Sie zunächst einen Ordner zum Herunterladen der Blobs. Beispiel:
+Erstellen Sie zunächst einen Ordner zum Herunterladen der Blobs. Beispiel: 
 
     New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 
@@ -164,7 +164,7 @@ Leiten Sie diese Liste an Get-AzureStorageBlobContent um, um die Blobs in Ihren 
 
 Beim Ausführen dieses zweiten Befehls wird mit dem Trennzeichen **/** in den Blobnamen eine vollständige Ordnerstruktur unter dem Zielordner erstellt. Diese Struktur wird zum Herunterladen und Speichern der Blobs als Dateien verwendet.
 
-Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
+Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel: 
 
 * Bei Verwendung mehrerer Schlüsseltresore und einem Download von Protokollen nur für einen Schlüsseltresor mit dem Namen CONTOSOKEYVAULT3:
 
@@ -208,10 +208,10 @@ Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Dies is
 
 In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt.
 
-| Feldname | Beschreibung |
+| Feldname | BESCHREIBUNG |
 | --- | --- |
-| in |Datum und Uhrzeit (UTC) |
-| resourceId |Azure-Ressourcen-Manager-Ressourcen-ID. Für Key Vault-Protokolle ist dies immer die Key Vault-Ressourcen-ID. |
+| time |Datum und Uhrzeit (UTC) |
+| Ressourcen-ID |Azure-Ressourcen-Manager-Ressourcen-ID. Für Key Vault-Protokolle ist dies immer die Key Vault-Ressourcen-ID. |
 | operationName |Name des Vorgangs, wie in der folgenden Tabelle beschrieben |
 | operationVersion |Vom Client angeforderte REST-API-Version |
 | category |Für Schlüsseltresor-Protokolle ist AuditEvent der einzige verfügbare Wert |
@@ -224,7 +224,7 @@ In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt.
 | identity |Identität des Tokens, das beim Erstellen der REST-API-Anforderung angegeben wurde. Dies ist normalerweise ein „Benutzer“, ein Dienstprinzipal oder die Kombination „Benutzer + appId“, wie bei einer Anforderung, die auf einem Azure PowerShell-Cmdlet basiert. |
 | Eigenschaften |Dieses Feld enthält je nach Vorgang verschiedene Informationen (operationName). In den meisten Fällen enthält es Clientinformationen (vom Client übergebene Zeichenfolge „useragent“), den genauen REST-API-Anforderungs-URI und den HTTP-Statuscode. Wenn ein Objekt als Ergebnis einer Anforderung (z. B. KeyCreate oder VaultGet) zurückgegeben wird, enthält es außerdem den Schlüssel-URI (als „id“), Tresor-URI oder URI des geheimen Schlüssels. |
 
-Die Feldwerte unter **operationName** liegen im ObjectVerb-Format vor. Beispiel:
+Die Feldwerte unter **operationName** liegen im ObjectVerb-Format vor. Beispiel: 
 
 * Alle Schlüsseltresorvorgänge verfügen über das Format „Vault`<action>`“, z.B. `VaultGet` und `VaultCreate`.
 * Alle Schlüsselvorgänge verfügen über das Format „Key`<action>`“, z.B. `KeySign` und `KeyList`.

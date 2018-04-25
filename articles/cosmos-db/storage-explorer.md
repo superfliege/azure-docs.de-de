@@ -17,17 +17,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 18f580f1eae31c9bf3626e100217467bb48ca881
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8c584ec0c8d89a232d573399cfabe02fc8aa1c87
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Verwalten von Azure Cosmos DB in Azure Storage-Explorer (Vorschau)
+# <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Verwalten von Azure Cosmos DB in Azure Storage-Explorer
 
 Mit der Verwendung von Azure Cosmos DB in Azure Storage-Explorer können Benutzer Azure Cosmos DB-Entitäten verwalten, Daten bearbeiten und gespeicherte Prozeduren und Trigger zusammen mit anderen Azure-Entitäten wie Speicherblobs und Warteschlangen aktualisieren. Nun können Sie mit demselben Tool Ihre verschiedenen Azure-Entitäten an einem Ort verwalten. Derzeit unterstützt Azure Storage-Explorer SQL-, MongoDB-, Graph- und Table-Konten.
-
-In diesem Artikel erfahren Sie, wie Sie Storage-Explorer zum Verwalten von Azure Cosmos DB verwenden.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -75,8 +73,11 @@ Eine alternative Möglichkeit zum Herstellen einer Verbindung mit einer Azure Co
     ![Verbindungszeichenfolge](./media/storage-explorer/connection-string.png)
 
 ## <a name="connect-to-azure-cosmos-db-by-using-local-emulator"></a>Herstellen einer Verbindung mit Azure Cosmos DB über den lokalen Emulator
+
 Verwenden Sie die folgenden Schritte, um eine Verbindung mit Azure Cosmos DB per Emulator herzustellen. Derzeit wird nur das SQL-Konto unterstützt.
+
 1. Installieren Sie den Emulator, und starten Sie ihn. Informationen zur Installation des Emulators finden Sie im Artikel zum [Cosmos DB-Emulator](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator).
+
 2. Suchen Sie in der linken Struktur nach **Local and Attached** (Lokal und angefügt), klicken Sie mit der rechten Maustaste auf **Cosmos DB-Konten**, und wählen Sie **Connect to Cosmos DB Emulator...** (Mit Cosmos DB-Emulator verbinden...).
 
     ![Herstellen einer Verbindung mit Cosmos DB per Emulator](./media/storage-explorer/emulator-entry.png)
@@ -84,7 +85,6 @@ Verwenden Sie die folgenden Schritte, um eine Verbindung mit Azure Cosmos DB per
 3. Derzeit wird nur die SQL-API unterstützt. Fügen Sie die **Verbindungszeichenfolge** ein, und geben Sie die **Kontobezeichnung** ein. Klicken Sie auf **Weiter**, um die Zusammenfassung zur Überprüfung anzuzeigen, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
 
     ![Dialogfeld zum Herstellen einer Verbindung mit Cosmos DB per Emulator](./media/storage-explorer/emulator-dialog.png)
-
 
 
 ## <a name="azure-cosmos-db-resource-management"></a>Azure Cosmos DB-Ressourcenverwaltung
@@ -183,7 +183,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 1. Öffnen Sie zum Erstellen einer neuen Tabelle im linken Fenster die Option **Entitäten**, klicken Sie auf **Hinzufügen**, bearbeiten Sie den Inhalt im Dialogfeld **Entität hinzufügen**, fügen Sie die Eigenschaft durch das Klicken auf die Schaltfläche **Eigenschaft hinzufügen** hinzu, und klicken Sie anschließend auf **Einfügen**.
 2. Klicken Sie zum Ändern einer Tabelle auf **Bearbeiten**, ändern Sie den Inhalt, und klicken Sie dann auf **Aktualisieren**.
 
-    ![Tabelle](./media/storage-explorer/table.png)
+    ![Table](./media/storage-explorer/table.png)
 
 #### <a name="import-and-export-table"></a>Importieren und Exportieren einer Tabelle
 1. Klicken Sie zum Importieren auf die Schaltfläche **Importieren**, und wählen Sie eine vorhandene Tabelle aus.
@@ -208,8 +208,111 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
     ![Gespeicherte Prozedur](./media/storage-explorer/stored-procedure.png)
 * Die Vorgänge für **Trigger** und **UDFs** ähneln **gespeicherten Prozeduren**.
 
+## <a name="troubleshooting"></a>Problembehandlung
+
+[Azure Cosmos DB in Azure Storage-Explorer](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer) ist eine eigenständige App, mit der Sie von Windows, macOS oder Linux eine Verbindung mit Azure Cosmos DB-Konten, die in Azure und Sovereign Clouds gehostet werden, herstellen können. Sie können damit Azure Cosmos DB-Entitäten verwalten, Daten bearbeiten und gespeicherte Prozeduren und Trigger zusammen mit anderen Azure-Entitäten wie Speicherblobs und Warteschlangen aktualisieren.
+
+Hierbei handelt es sich um Lösungen für allgemeine Probleme, die bei Azure Cosmos DB im Storage-Explorer auftreten.
+
+### <a name="sign-in-issues"></a>Probleme bei der Anmeldung
+
+Versuchen Sie vor dem Fortfahren, Ihre Anwendung neu zu starten, um zu prüfen, ob die Probleme behoben werden können.
+
+#### <a name="self-signed-certificate-in-certificate-chain"></a>Selbstsigniertes Zertifikat in der Zertifikatkette
+
+Es gibt verschiedene Gründe, warum dieser Fehler unter Umständen angezeigt wird. Die zwei häufigsten Gründe sind:
+
++ Sie befinden sich hinter einem „transparenten Proxy“. Dies bedeutet, dass HTTPS-Datenverkehr abgefangen (z.B. von Ihrer IT-Abteilung) und entschlüsselt und anschließend mit einem selbstsignierten Zertifikat wieder verschlüsselt wird.
+
++ Sie führen Software aus, z.B. Virenschutzsoftware, mit der ein selbstsigniertes Zertifikat in Ihre HTTPS-Nachrichten injiziert wird.
+
+Wenn Storage-Explorer eines dieser „selbstsignierten Zertifikate“ erkennt, kann nicht mehr überprüft werden, ob die empfangene HTTPS-Nachricht manipuliert wurde. Falls Sie aber über eine Kopie des selbstsignierten Zertifikats verfügen, können Sie Storage-Explorer anweisen, es als vertrauenswürdig anzusehen. Wenn Sie unsicher sind, von wem das Zertifikat injiziert wird, können Sie mit den folgenden Schritten versuchen, es selbst zu finden:
+
+1. Installieren Sie OpenSSL.
+     - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (alle Light-Versionen sind geeignet)
+     - Mac und Linux: Sollte im Betriebssystem enthalten sein
+2. Führen Sie OpenSSL aus.
+    - Windows: Navigieren Sie zum Installationsverzeichnis und dann zu **/bin/**, und doppelklicken Sie anschließend auf **openssl.exe**.
+    - Mac und Linux: Führen Sie **openssl** über ein Terminal aus.
+3. Führen Sie `s_client -showcerts -connect microsoft.com:443` aus.
+4. Suchen Sie nach selbstsignierten Zertifikaten. Wenn Sie nicht sicher sind, welche Zertifikate selbstsigniert sind, sollten Sie nach Stellen suchen, an denen der Antragsteller („s:“) und der Zertifikataussteller („i:“) identisch sind.
+5.  Nachdem Sie selbstsignierte Zertifikate gefunden haben, kopieren Sie den gesamten Inhalt von **-----BEGIN CERTIFICATE-----** bis **-----END CERTIFICATE-----** (einschließlich) und fügen ihn für jedes Zertifikat in eine neue CER-Datei ein.
+6.  Öffnen Sie Storage-Explorer, und navigieren Sie dann zu **Bearbeiten** > **SSL-Zertifikate** > **Zertifikate importieren**. Verwenden Sie die Dateiauswahl, um die von Ihnen erstellten CER-Dateien zu suchen, auszuwählen und zu öffnen.
+
+Falls Sie mit den oben angegebenen Schritten keine selbstsignierten Zertifikate finden können, können Sie Feedback senden, um weitere Hilfe zu erhalten.
+
+#### <a name="unable-to-retrieve-subscriptions"></a>Abonnements können nicht abgerufen werden
+
+Gehen Sie wie folgt vor, wenn Sie nach dem erfolgreichen Anmelden Ihre Abonnements nicht abrufen können:
+
+- Melden Sie sich am [Azure-Portal](http://portal.azure.com/) an, um zu überprüfen, ob Ihr Konto Zugriff auf die Abonnements hat.
+- Stellen Sie sicher, dass die Anmeldung mit der richtigen Umgebung ([Azure](http://portal.azure.com/), [Azure China](https://portal.azure.cn/), [Azure Deutschland](https://portal.microsoftazure.de/), [Azure US-Regierung](http://portal.azure.us/) oder „Benutzerdefinierte Umgebung/Azure Stack“) erfolgt ist.
+- Wenn Sie sich hinter einem Proxy befinden, sollten Sie sicherstellen, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
+- Entfernen Sie das Konto, und fügen Sie es wieder hinzu.
+- Löschen Sie die folgenden Dateien aus Ihrem Basisverzeichnis (z.B. „C:\Users\ContosoUser“), und fügen Sie das Konto dann erneut hinzu:
+  - .adalcache
+  - .devaccounts
+  - .extaccounts
+- Achten Sie beim Anmelden auf Fehlermeldungen in der Entwicklertools-Konsole (F12)
+
+![console](./media/storage-explorer/console.png)
+
+#### <a name="unable-to-see-the-authentication-page"></a>Authentifizierungsseite wird nicht angezeigt 
+
+Gehen Sie wie folgt vor, wenn die Authentifizierungsseite nicht angezeigt wird:
+
+- Je nach Verbindungsgeschwindigkeit kann es eine Weile dauern, bis die Anmeldeseite geladen wird. Warten Sie mindestens eine Minute, bevor Sie das Dialogfeld für die Authentifizierung schließen.
+- Wenn Sie sich hinter einem Proxy befinden, sollten Sie sicherstellen, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
+- Rufen Sie durch Drücken der Taste F12 die Entwicklerkonsole auf. Prüfen Sie in den Antworten in der Entwicklerkonsole, ob diese Aufschluss darüber geben, warum die Authentifizierung nicht funktioniert.
+
+#### <a name="cannot-remove-account"></a>Konto kann nicht entfernt werden
+
+Gehen Sie wie folgt vor, falls Sie ein Konto nicht entfernen können oder wenn der Link für die erneute Authentifizierung nicht funktioniert.
+
+- Löschen Sie die folgenden Dateien aus Ihrem Basisverzeichnis, und fügen Sie das Konto dann wieder hinzu:
+  - .adalcache
+  - .devaccounts
+  - .extaccounts
+- Löschen Sie Folgendes, wenn Sie Storage-Ressourcen mit SAS-Anfügung entfernen möchten:
+  - Ordner „%AppData%/StorageExplorer“ für Windows
+  - „/Users/<Ihr_Name>/Library/Application Support/StorageExplorer“ für Mac
+  - „~/.config/StorageExplorer“ für Linux
+  - Wenn Sie diese Dateien löschen, **müssen Sie alle Ihre Anmeldeinformationen erneut eingeben**.
+
+
+### <a name="httphttps-proxy-issue"></a>HTTP/HTTPS-Proxyproblem
+
+Es ist nicht möglich, Azure Cosmos DB-Knoten in der linken Struktur aufzulisten, wenn Sie den HTTP/HTTPS-Proxy in ASE konfigurieren. Dies ist ein bekanntes Problem, das im nächsten Release behoben sein wird. Derzeit können Sie den Azure Cosmos DB-Daten-Explorer im Azure-Portal als Problemumgehung verwenden. 
+
+### <a name="development-node-under-local-and-attached-node-issue"></a>Problem mit dem Knoten „Development“ unter „Local and Attached“
+
+Wenn Sie in der linken Struktur unter „Local and Attached“ (Lokal und angefügt) auf den Knoten „Development“ (Entwicklung) klicken, erfolgt keine Reaktion.  Dies ist das erwartete Verhalten. Der lokale Azure Cosmos DB-Emulator wird ab dem nächsten Release unterstützt.
+
+![Knoten „Development“ (Entwicklung)](./media/storage-explorer/development.png)
+
+### <a name="attaching-azure-cosmos-db-account-in-local-and-attached-node-error"></a>Fehler beim Anfügen eines Azure Cosmos DB-Kontos im Knoten „Local and Attached“
+
+Wenn nach dem Anfügen des Azure Cosmos DB-Kontos unter dem Knoten „Local and Attached“ (Lokal und angefügt) der unten angegebene Fehler angezeigt wird, sollten Sie überprüfen, ob Sie die richtige Verbindungszeichenfolge verwenden.
+
+![Fehler beim Anfügen von Azure Cosmos DB unter „Local and Attached“](./media/storage-explorer/attached-error.png)
+
+### <a name="expand-azure-cosmos-db-node-error"></a>Fehler beim Erweitern des Azure Cosmos DB-Knotens
+
+Unter Umständen wird der folgende Fehler angezeigt, wenn Sie versuchen, in der linken Struktur die Knoten zu erweitern. 
+
+![Fehler beim Erweitern](./media/storage-explorer/expand-error.png)
+
+Versuchen Sie es mit folgenden Lösungsvorschlägen:
+
+- Überprüfen Sie, ob die Bereitstellung des Azure Cosmos DB-Kontos ausgeführt wird, und wiederholen Sie den Vorgang, nachdem die Erstellung des Kontos erfolgreich abgeschlossen wurde.
+- Wenn sich das Konto unter dem Knoten „Quick Access“ (Schnellzugriff) oder „Local and Attached“ (Lokal und angefügt) befindet, sollten Sie überprüfen, ob das Konto gelöscht wurde. Wenn dies der Fall ist, müssen Sie den Knoten manuell entfernen.
+
+## <a name="contact-us"></a>Kontakt
+
+Falls Ihnen keine dieser Lösungen weiterhilft, können Sie eine E-Mail mit Details zum Problem an das Azure Cosmos DB Dev Tooling-Team ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)) senden, um Informationen zur Problemlösung zu erhalten.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Im folgenden Video erfahren Sie, wie Sie Azure Cosmos DB in Azure Storage-Explorer verwenden: [Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
-* Weitere Informationen zum Storage-Explorer sowie zum Herstellen einer Verbindung mit weiteren Diensten finden Sie unter [Erste Schritte mit dem Storage-Explorer (Vorschau)](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+* Weitere Informationen zum Storage-Explorer und zum Herstellen einer Verbindung mit weiteren Diensten finden Sie unter [Erste Schritte mit dem Storage-Explorer (Vorschau)](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 

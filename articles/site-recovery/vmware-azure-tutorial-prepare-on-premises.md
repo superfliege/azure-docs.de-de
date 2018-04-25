@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/15/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6898f725d1d3cbf3f8d9d90faeafc13fbc8cb201
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7722891af15111fd0151055c35bf24100ed79b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler VMware-Server für die Notfallwiederherstellung in Azure
 
@@ -25,9 +25,12 @@ In diesem Tutorial wird gezeigt, wie Sie Ihre lokale VMware-Infrastruktur vorber
 > * Überprüfen der Anforderungen für VMware-Server
 > * Überprüfen der Anforderungen für VMware-VMs
 
-In dieser Tutorialreihe erfahren Sie, wie Sie einen einzelnen virtuellen Computer mithilfe von Azure Site Recovery sichern. Wenn Sie beabsichtigen, mehrere VMware-VMs zu schützen, sollten Sie den [Bereitstellungsplaner](https://aka.ms/asr-deployment-planner) für die VMware-Replikation herunterladen. Mit diesem Tool sammeln Sie Informationen zur VM-Konformität, die Datenträger pro VM und die Datenänderungen pro Datenträger. Zudem behandelt das Tool Anforderungen an Netzwerkbandbreite und die erforderliche Azure-Infrastruktur für eine erfolgreiche Replikation und ein erfolgreiches Testfailover. [Erfahren Sie mehr](site-recovery-deployment-planner.md) über die Ausführung des Tools.
+In dieser Tutorialreihe erfahren Sie, wie Sie einen einzelnen virtuellen Computer mithilfe von Azure Site Recovery replizieren. 
 
 Dies ist das zweite Tutorial in der Reihe. Stellen Sie sicher, dass Sie die [Azure-Komponenten eingerichtet haben](tutorial-prepare-azure.md). Die Vorgehensweise dazu wird im vorhergehenden Tutorial beschrieben.
+
+Laden Sie für die Replikation mehrerer virtueller Computer das [Bereitstellungsplaner-Tool](https://aka.ms/asr-deployment-planner) für die VMware-Replikation herunter. [Weitere Informationen](site-recovery-deployment-planner.md)
+
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Vorbereiten eines Kontos für die automatische Ermittlung
 

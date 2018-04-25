@@ -1,6 +1,6 @@
 ---
-title: "Azure-Schnellstart – Ausführen eines Batch-Auftrags – CLI"
-description: "In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag in der Azure CLI ausführen."
+title: Azure-Schnellstart – Ausführen eines Batch-Auftrags – CLI
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag in der Azure CLI ausführen.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/16/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8d0e827dd3658d711de3830453c92af581786ad0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: de0ff088b3a61c48ddcbdff01f105884870886e1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI
 
@@ -40,7 +40,7 @@ az group create \
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Sie können ein allgemeines Azure-Speicherkonto mit Ihrem Batch-Konto verknüpfen. Auch wenn es für diese Schnellstartanleitung nicht erforderlich ist, ist das Speicherkonto nützlich zum Bereitstellen von Anwendungen und Speichern von Eingabe- und Ausgabedaten für die meisten Workloads in der Praxis. Erstellen Sie mit dem Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create) in Ihrer Ressourcengruppe ein Speicherkonto.
+Sie können ein Azure Storage-Konto mit Ihrem Batch-Konto verknüpfen. Auch wenn es für diese Schnellstartanleitung nicht erforderlich ist, ist das Speicherkonto nützlich zum Bereitstellen von Anwendungen und Speichern von Eingabe- und Ausgabedaten für die meisten Workloads in der Praxis. Erstellen Sie mit dem Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create) in Ihrer Ressourcengruppe ein Speicherkonto.
 
 ```azurecli-interactive
 az storage account create \

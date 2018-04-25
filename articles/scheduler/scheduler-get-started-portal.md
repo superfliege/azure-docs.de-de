@@ -5,7 +5,7 @@ services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
-ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f03ddb475835b30e9b931b7f057c062b57ac45f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Erste Schritte mit Azure Scheduler im Azure-Portal
 Das Erstellen geplanter Aufträge in Azure Scheduler ist einfach. In diesem Tutorial erfahren Sie, wie ein Auftrag erstellt wird. Außerdem erhalten Sie Informationen zu den Überwachungs- und Verwaltungsfunktionen von Scheduler.
@@ -55,7 +55,7 @@ Sobald ein Auftrag erstellt wurde, wird er im Azure-Hauptdashboard angezeigt. We
 
 1. Eigenschaften  
 2. Aktionseinstellungen  
-3. Zeitplan  
+3. Schedule  
 4. Verlauf
 5. Benutzer
    
@@ -105,9 +105,9 @@ Klicken Sie auf eine Ausführung, um die **Verlaufsdetails**anzuzeigen, einschli
    ![][job-history-details]
 
 ### <a name="users"></a>Benutzer
-Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure Scheduler. Informationen zur Verwendung der Registerkarte „Benutzer“ finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md)
+Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure Scheduler. Informationen zur Verwendung der Registerkarte „Benutzer“ finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/role-assignments-portal.md)
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
  [Was ist Azure Scheduler?](scheduler-intro.md)
 
  [Scheduler-Konzepte, -Terminologie und -Entitätshierarchie](scheduler-concepts-terms.md)

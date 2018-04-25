@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von HTTPS in einer benutzerdefinierten Azure Content Delivery Network-Domäne | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie HTTPS für Ihren Azure CDN-Endpunkt mit einer benutzerdefinierten Domäne aktivieren oder deaktivieren.
+title: Tutorial – Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne | Microsoft-Dokumentation
+description: In diesem Tutorial wird beschrieben, wie Sie HTTPS in Ihrer benutzerdefinierten Azure CDN-Endpunktdomäne aktivieren und deaktivieren.
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -11,22 +11,23 @@ ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/22/2018
-ms.author: rli; v-deasim
-ms.openlocfilehash: 554ae4c19d1a3d35075ad174549a62a20329e5fa
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.topic: tutorial
+ms.date: 04/12/2018
+ms.author: rli
+ms.custom: mvc
+ms.openlocfilehash: a8f2da5a68552c35a55a7bbb764afc7b36af6962
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>Konfigurieren von HTTPS in einer benutzerdefinierten Azure Content Delivery Network-Domäne
+# <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Microsoft unterstützt das HTTPS-Protokoll für benutzerdefinierte Domänen im Azure Content Delivery Network (CDN). Dank der HTTPS-Unterstützung für benutzerdefinierte Domänen können Sie unter Verwendung Ihres eigenen Domänennamens sichere Inhalte über SSL bereitstellen und so die Datensicherheit bei der Übertragung verbessern. Der Workflow zur Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne wird durch die Möglichkeit zur Aktivierung mit nur einem Klick sowie durch eine umfassende Zertifikatverwaltung vereinfacht – alles ohne zusätzliche Kosten.
+In diesem Lernprogramm wird veranschaulicht, wie Sie das HTTP-Protokoll für eine benutzerdefinierte Domäne aktivieren, die einem Azure CDN-Endpunkt (Content Delivery Network) zugeordnet ist. Durch die Verwendung des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne (z.B. „https:\//www.contoso.com“) stellen Sie sicher, dass Ihre sensiblen Daten per SSL-Verschlüsselung sicher zugestellt werden, wenn diese über das Internet gesendet werden. HTTPS sorgt für Vertrauen und bietet Authentifizierung und Angriffsschutz für Ihre Webanwendungen. Der Workflow zur Aktivierung von HTTPS wird durch die Möglichkeit zur Aktivierung per Klick sowie durch eine umfassende Zertifikatverwaltung vereinfacht – alles ohne zusätzliche Kosten.
 
-Während der Datenübertragung müssen Schutz und Integrität der sensiblen Webanwendungsdaten unbedingt gewährleistet sein. Durch die Verwendung des HTTPS-Protokolls stellen Sie sicher, dass Ihre sensiblen Daten verschlüsselt sind, wenn sie über das Internet gesendet werden. Das Protokoll sorgt für Vertrauen und bietet Authentifizierung und Angriffsschutz für Ihre Webanwendungen. Azure CDN unterstützt HTTPS standardmäßig für einen CDN-Endpunkt. Wenn Sie also etwa über Azure CDN einen CDN-Endpunkt erstellen (beispielsweise „https:\//contoso.azureedge.net“), wird HTTPS automatisch aktiviert. Dank der Unterstützung von HTTPS für benutzerdefinierte Domänen können Sie auch eine sichere Bereitstellung für eine benutzerdefinierte Domäne (beispielsweise „https:\//www.contoso.com“) aktivieren. 
+Azure CDN unterstützt HTTPS standardmäßig für einen CDN-Endpunkt-Hostnamen. Wenn Sie also beispielsweise einen CDN-Endpunkt erstellen (z.B. „https:\//contoso.azureedge.net“), wird HTTPS automatisch aktiviert.  
 
 Zu den wichtigsten Attributen des HTTPS-Features zählen unter anderem folgende:
 
@@ -36,36 +37,49 @@ Zu den wichtigsten Attributen des HTTPS-Features zählen unter anderem folgende:
 
 - Umfassende Zertifikatverwaltung: Die gesamte Zertifikatbeschaffung und -verwaltung wird für Sie erledigt. Zertifikate werden automatisch bereitgestellt und vor Ablauf verlängert. Dadurch ist gewährleistet, dass keine Dienstunterbrechungen aufgrund eines abgelaufenen Zertifikats auftreten.
 
->[!NOTE] 
->Vor der Aktivierung der HTTPS-Unterstützung muss bereits eine [benutzerdefinierte Azure CDN-Domäne](./cdn-map-content-to-custom-domain.md) eingerichtet worden sein.
+In diesem Tutorial lernen Sie Folgendes:
+> [!div class="checklist"]
+> - Aktivieren des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne
+> - Überprüfen der Domäne
+> - Deaktivieren des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne
 
-## <a name="enabling-https"></a>Aktivieren von HTTPS
+## <a name="prerequisites"></a>Voraussetzungen
+
+Bevor Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst ein CDN-Profil und mindestens einen CDN-Endpunkt erstellen. Weitere Informationen finden Sie unter [Erste Schritte mit Azure CDN](cdn-create-new-endpoint.md).
+
+Zusätzlich müssen Sie Ihrem CDN-Endpunkt eine benutzerdefinierte Azure CDN-Domäne zuordnen. Weitere Informationen finden Sie unter [Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](cdn-map-content-to-custom-domain.md).
+
+## <a name="enable-the-https-feature"></a>Aktivieren des HTTPS-Features
 
 Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, führen Sie die folgenden Schritte aus:
 
-### <a name="step-1-enable-the-feature"></a>Schritt 1: Aktivieren des Features 
-
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum CDN-Profil **Azure CDN Standard von Verizon** oder **Azure CDN Premium von Verizon**.
 
-2. Klicken Sie in der Liste mit den Endpunkten auf den Endpunkt, die Ihre benutzerdefinierte Domäne enthält.
+2. Wählen Sie in der Liste mit den CDN-Endpunkten den Endpunkt aus, der Ihre benutzerdefinierte Domäne enthält.
 
-3. Klicken Sie auf die benutzerdefinierte Domäne, für die Sie HTTPS aktivieren möchten.
+    ![Liste mit Endpunkten](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
+
+    Die Seite **Endpunkt** wird angezeigt.
+
+3. Wählen Sie in der Liste mit den benutzerdefinierten Domänen die benutzerdefinierte Domäne aus, für die Sie HTTPS aktivieren möchten.
 
     ![Liste mit benutzerdefinierten Domänen](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
-4. Klicken Sie auf **Ein**, um HTTPS zu aktivieren, und klicken Sie dann auf **Anwenden**.
+    Die Seite **Benutzerdefinierte Domäne** wird angezeigt.
+
+4. Wählen Sie **Ein**, um HTTPS zu aktivieren, und wählen Sie dann **Übernehmen**.
 
     ![HTTPS-Status benutzerdefinierter Domänen](./media/cdn-custom-ssl/cdn-enable-custom-ssl.png)
 
 
-### <a name="step-2-validate-domain"></a>Schritt 2: Überprüfen der Domäne
+## <a name="validate-the-domain"></a>Überprüfen der Domäne
 
->[!NOTE]
->Wenn Sie über einen CAA-Datensatz (Certificate Authority Authorization) bei Ihrem DNS-Anbieter verfügen, muss dieser DigiCert als gültige Zertifizierungsstelle enthalten. Ein CAA-Datensatz ermöglicht es Domänenbesitzern, ihrem jeweiligen DNS-Anbieter mitzuteilen, welche Zertifizierungsstellen zum Ausstellen von Zertifikaten für ihre Domäne autorisiert sind. Wenn eine Zertifizierungsstelle einen Auftrag für ein Zertifikat für eine Domäne empfängt, für die ein CAA-Datensatz vorliegt und die Zertifizierungsstelle nicht als autorisierter Aussteller angegeben ist, darf sie das Zertifikat für die Domäne oder Unterdomäne nicht ausstellen. Informationen zum Verwalten von CAA-Einträgen finden Sie unter [Manage CAA records](https://support.dnsimple.com/articles/manage-caa-record/) (Verwalten von CAA-Einträgen). Ein Tool für CAA-Einträge finden Sie unter [CAA Record Helper](https://sslmate.com/caa/) (Hilfsprogramm für CAA-Einträge).
+Wenn Sie bereits eine benutzerdefinierte Domäne verwenden, die Ihrem benutzerdefinierten Endpunkt mit einem CNAME-Eintrag zugeordnet ist, können Sie mit  
+[Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt mit einem CNAME-Eintrag zugeordnet](#custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record) fortfahren. Fahren Sie andernfalls mit [Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt nicht zugeordnet](#custom-domain-is-not-mapped-to-your-cdn-endpoint) fort, falls der CNAME-Eintrag für Ihren Endpunkt nicht mehr vorhanden ist oder falls er die Unterdomäne „cdnverify“ enthält.
 
-#### <a name="custom-domain-is-mapped-to-cdn-endpoint"></a>Benutzerdefinierte Domäne ist dem CDN-Endpunkt zugeordnet.
+### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt mit einem CNAME-Eintrag zugeordnet
 
-Nach dem Hinzufügen einer benutzerdefinierten Domäne zu dem Endpunkt haben Sie einen CNAME-Eintrag in der DNS-Tabelle Ihrer Domänenregistrierungsstelle erstellt, um ihn Ihrem CDN-Endpunkt-Hostnamen zuzuordnen. Wenn dieser CNAME-Eintrag noch vorhanden ist und die cdnverify-Unterdomäne nicht enthält, wird er von der DigiCert-Zertifizierungsstelle (Certificate Authority, CA) verwendet, um den Besitz Ihrer benutzerdefinierten Domäne zu überprüfen. 
+Nach dem Hinzufügen einer benutzerdefinierten Domäne zu Ihrem Endpunkt haben Sie einen CNAME-Eintrag in der DNS-Tabelle Ihrer Domänenregistrierungsstelle erstellt, um ihn Ihrem CDN-Endpunkt-Hostnamen zuzuordnen. Wenn dieser CNAME-Eintrag noch vorhanden ist und die cdnverify-Unterdomäne nicht enthält, wird er von der DigiCert-Zertifizierungsstelle (Certificate Authority, CA) verwendet, um den Besitz Ihrer benutzerdefinierten Domäne zu überprüfen. 
 
 Ihr CNAME-Eintrag sollte im folgenden Format vorliegen, wobei *Name* Ihr benutzerdefinierter Domänenname und *Wert* Ihr CDN-Endpunkt-Hostname ist:
 
@@ -73,11 +87,16 @@ Ihr CNAME-Eintrag sollte im folgenden Format vorliegen, wobei *Name* Ihr benutze
 |-----------------|-------|-----------------------|
 | www.contoso.com | CNAME | contoso.azureedge.net |
 
-Weitere Informationen über CNAME-Einträge finden Sie unter [Erstellen Sie die CNAME-DNS-Einträge](https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain#step-2-create-the-cname-dns-records).
+Weitere Informationen über CNAME-Einträge finden Sie unter [Erstellen Sie die CNAME-DNS-Einträge](https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records).
 
-Wenn Ihr CNAME-Eintrag im richtigen Format vorliegt, überprüft DigiCert automatisch Ihren benutzerdefinierten Domänennamen und fügt ihn dem SAN-Zertifikat hinzu. DigiCert sendet Ihnen keine Bestätigungs-E-Mail, und Sie müssen Ihre Anforderung nicht genehmigen. Das Zertifikat ist ein Jahr lang gültig und wird automatisch verlängert, bevor es abläuft. Fahren Sie mit [Schritt 3: Warten auf die Weitergabe](#step-3-wait-for-propagation) fort. 
+Wenn Ihr CNAME-Eintrag im richtigen Format vorliegt, überprüft DigiCert automatisch Ihren benutzerdefinierten Domänennamen und fügt ihn dem SAN-Zertifikat hinzu. DigiCert sendet Ihnen keine Bestätigungs-E-Mail, und Sie müssen Ihre Anforderung nicht genehmigen. Das Zertifikat ist ein Jahr lang gültig und wird automatisch verlängert, bevor es abläuft. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort. 
 
-#### <a name="cname-record-is-not-mapped-to-cdn-endpoint"></a>CNAME-Eintrag ist nicht dem CDN-Endpunkt zugeordnet.
+Die automatische Validierung dauert normalerweise einige Minuten. Öffnen Sie ein Supportticket, falls Ihre Domäne nicht innerhalb einer Stunde validiert wurde.
+
+>[!NOTE]
+>Wenn Sie über einen CAA-Datensatz (Certificate Authority Authorization) bei Ihrem DNS-Anbieter verfügen, muss dieser DigiCert als gültige Zertifizierungsstelle enthalten. Ein CAA-Datensatz ermöglicht es Domänenbesitzern, ihrem jeweiligen DNS-Anbieter mitzuteilen, welche Zertifizierungsstellen zum Ausstellen von Zertifikaten für ihre Domäne autorisiert sind. Wenn eine Zertifizierungsstelle einen Auftrag für ein Zertifikat für eine Domäne empfängt, für die ein CAA-Datensatz vorliegt und die Zertifizierungsstelle nicht als autorisierter Aussteller angegeben ist, darf sie das Zertifikat für die Domäne oder Unterdomäne nicht ausstellen. Informationen zum Verwalten von CAA-Einträgen finden Sie unter [Manage CAA records](https://support.dnsimple.com/articles/manage-caa-record/) (Verwalten von CAA-Einträgen). Ein Tool für CAA-Einträge finden Sie unter [CAA Record Helper](https://sslmate.com/caa/) (Hilfsprogramm für CAA-Einträge).
+
+### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt nicht zugeordnet
 
 Wenn der CNAME-Eintrag für Ihren Endpunkt nicht mehr vorhanden ist oder die cdnverify-Unterdomäne enthält, folgen Sie den weiteren Anweisungen in diesem Schritt.
 
@@ -109,7 +128,7 @@ Befolgen Sie die Anweisungen im Formular. Sie haben zwei Möglichkeiten zur Gene
 
 Nach der Genehmigung fügt DigiCert Ihren benutzerdefinierten Domänennamen dem SAN-Zertifikat hinzu. Das Zertifikat ist ein Jahr lang gültig und wird automatisch verlängert, bevor es abläuft.
 
-### <a name="step-3-wait-for-propagation"></a>Schritt 3: Warten auf die Weitergabe
+## <a name="wait-for-propagation"></a>Warten auf die Weitergabe
 
 Nach der Überprüfung des Domänennamens dauert es maximal 6 bis 8 Stunden, bis das HTTPS-Feature für die benutzerdefinierte Domäne aktiviert wird. Wenn der Prozess abgeschlossen ist, wird der HTTP-Status für benutzerdefinierte Domänen im Azure-Portal auf **Aktiviert** festgelegt, und die vier Schritte im Dialogfeld der benutzerdefinierten Domäne werden als abgeschlossen markiert. Die benutzerdefinierte Domäne ist jetzt bereit zur Verwendung von HTTPS.
 
@@ -124,7 +143,7 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Aktivieren von HTTPS. Nac
 | 1: Übermitteln der Anforderung | Übermitteln der Anforderung |
 | | Die HTTPS-Anforderung wird übermittelt. |
 | | Die HTTPS-Anforderung wurde erfolgreich übermittelt. |
-| 2: Überprüfen der Domäne | Wir haben Ihnen eine E-Mail-Nachricht gesendet, in der Sie aufgefordert werden, den Besitz der Domäne zu bestätigen. Es wird auf Ihre Bestätigung gewartet. ** |
+| 2: Überprüfen der Domäne | Die Domäne wird automatisch überprüft, wenn sie per CNAME dem CDN-Endpunkt zugeordnet wird. Andernfalls wird an die E-Mail-Adresse, die im Registrierungsdatensatz (WHOIS-Registrant) Ihrer Domäne angegeben ist, eine Überprüfungsanforderung gesendet. Überprüfen Sie die Domäne schnellstmöglich. |
 | | Der Besitz der Domäne wurde erfolgreich bestätigt. |
 | | Die Überprüfungsanforderung für den Domänenbesitz ist abgelaufen (Kunde hat wahrscheinlich nicht innerhalb von 6 Tagen reagiert). HTTPS wird für Ihre Domäne nicht aktiviert. * |
 | | Die Überprüfungsanforderung für den Domänenbesitz wurde vom Kunden zurückgewiesen. HTTPS wird für Ihre Domäne nicht aktiviert. * |
@@ -135,19 +154,17 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Aktivieren von HTTPS. Nac
 
 \* Diese Meldung wird nur bei einem Fehler angezeigt. 
 
-\** Diese Meldung wird nicht angezeigt, wenn Sie einen CNAME-Eintrag für Ihre benutzerdefinierte Domäne haben, der direkt auf Ihren CDN-Endpunkt-Hostnamen verweist.
-
 Sollte vor dem Übermitteln der Anforderung ein Fehler auftreten, wird die folgende Fehlermeldung angezeigt:
 
 <code>
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
-## <a name="disabling-https"></a>Deaktivieren von HTTPS
+## <a name="clean-up-resources---disable-https"></a>Bereinigen von Ressourcen – Deaktivieren von HTTPS
 
-Wenn Sie HTTPS für eine benutzerdefinierte Domäne aktiviert haben, können Sie es später deaktivieren. Gehen Sie folgendermaßen vor, um HTTPS zu deaktivieren:
+In den obigen Schritten haben Sie das HTTPS-Protokoll für Ihre benutzerdefinierte Domäne aktiviert. Falls Sie Ihre benutzerdefinierte Domäne nicht mehr mit HTTPS verwenden möchten, können Sie HTTPS mit diesen Schritten deaktivieren:
 
-### <a name="step-1-disable-the-feature"></a>Schritt 1: Deaktivieren des Features 
+### <a name="disable-the-https-feature"></a>Deaktivieren des HTTPS-Features 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum CDN-Profil **Azure CDN Standard von Verizon** oder **Azure CDN Premium von Verizon**.
 
@@ -161,13 +178,13 @@ Wenn Sie HTTPS für eine benutzerdefinierte Domäne aktiviert haben, können Sie
 
     ![Dialogfeld „HTTPS für benutzerdefinierte Domänen“](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
-### <a name="step-2-wait-for-propagation"></a>Schritt 2: Warten auf die Weitergabe
+### <a name="wait-for-propagation"></a>Warten auf die Weitergabe
 
 Nachdem das HTTPS-Feature für die benutzerdefinierte Domäne deaktiviert wurde, dauert es maximal 6 bis 8 Stunden, bis die Änderung wirksam wird. Nach Abschluss des Prozesses wird der HTTP-Status für benutzerdefinierte Domänen im Azure-Portal auf **Deaktiviert** festgelegt, und die drei Schritte im Dialogfeld der benutzerdefinierten Domäne werden als abgeschlossen markiert. Die benutzerdefinierte Domäne kann HTTPS nicht mehr verwenden.
 
 ![Dialogfeld „HTTPS deaktivieren“](./media/cdn-custom-ssl/cdn-disable-custom-ssl-complete.png)
 
-### <a name="operation-progress"></a>Vorgangsstatus
+#### <a name="operation-progress"></a>Vorgangsstatus
 
 Die folgende Tabelle zeigt den Status des Vorgangs zum Deaktivieren von HTTPS. Nach der Deaktivierung von HTTPS werden im Dialogfeld der benutzerdefinierten Domäne drei Schritte angezeigt. Beim Durchlaufen der einzelnen Schritte werden weitere Details zum jeweiligen Schritt angezeigt. Nachdem ein Schritt erfolgreich abgeschlossen wurde, wird neben diesem ein grünes Häkchen angezeigt. 
 
@@ -189,7 +206,7 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Deaktivieren von HTTPS. N
 
 3. *Was passiert, wenn ich die Domänenüberprüfungs-E-Mail von DigiCert nicht erhalte?*
 
-    Sollten Sie nach 24 Stunden noch keine E-Mail erhalten haben, setzen Sie sich mit dem Microsoft-Support in Verbindung. Wenn Sie einen CNAME-Eintrag für Ihre benutzerdefinierte Domäne haben, der direkt auf Ihren Endpunkt-Hostnamen verweist (und Sie verwenden nicht den cdnverify-Unterdomänennamen), erhalten Sie keine Bestätigungs-E-Mail für die Domäne. Die Bestätigung erfolgt automatisch.
+    Wenn Sie einen CNAME-Eintrag für Ihre benutzerdefinierte Domäne haben, der direkt auf Ihren Endpunkt-Hostnamen verweist (und Sie verwenden nicht den cdnverify-Unterdomänennamen), erhalten Sie keine Bestätigungs-E-Mail für die Domäne. Die Bestätigung erfolgt automatisch. Wenden Sie sich andernfalls an den Microsoft-Support, falls Sie nicht über einen CNAME-Eintrag verfügen und innerhalb von 24 Stunden keine E-Mail erhalten.
 
 4. *Ist ein SAN-Zertifikat weniger sicher als ein dediziertes Zertifikat?*
     
@@ -206,6 +223,15 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Deaktivieren von HTTPS. N
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich, wie Sie eine [benutzerdefinierte Domäne für Ihren Azure CDN-Endpunkt](./cdn-map-content-to-custom-domain.md) einrichten.
+Sie haben Folgendes gelernt:
 
+> [!div class="checklist"]
+> - Aktivieren des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne
+> - Überprüfen der Domäne
+> - Deaktivieren des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne
+
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie das Caching auf Ihrem CDN-Endpunkt konfigurieren.
+
+> [!div class="nextstepaction"]
+> [Steuern des Azure CDN-Zwischenspeicherverhaltens mit Cacheregeln](cdn-caching-rules.md)
 

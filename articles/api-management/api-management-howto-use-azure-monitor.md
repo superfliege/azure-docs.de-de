@@ -14,15 +14,15 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 93cbcf91af4ecf9425ed43ade400a0c82cea72d8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f4b1a6e3ee995fb309577fd6df611a705e613041
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
-Azure Monitor ist ein Azure-Dienst, mit dem Sie all Ihre Azure-Ressourcen von einer einzigen Quelle aus verwalten können. Mit Azure Monitor können Sie Metriken und Protokolle aus Azure-Ressourcen wie API Management visualisieren, abfragen, weiterleiten und archivieren und ggf. notwendige Maßnahmen ergreifen. 
+Mit Azure Monitor können Sie Metriken oder Protokolle aus Azure-Ressourcen visualisieren, abfragen, weiterleiten und archivieren und ggf. notwendige Maßnahmen ergreifen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -43,24 +43,22 @@ Im folgenden Video wird die Überwachung von API Management mithilfe von Azure M
 + Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
 + Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
-
 ## <a name="view-metrics-of-your-apis"></a>Anzeigen von Metriken Ihrer API
 
 Von API Management werden jede Minute Metriken ausgegeben, sodass Sie einen Überblick über den Zustand und die Integrität Ihrer APIs nahezu in Echtzeit erhalten. Hier sehen Sie eine Übersicht über einige der verfügbaren Metriken:
 
 * Kapazität (Vorschau): Unterstützt Sie beim Treffen von Entscheidungen in Bezug auf Upgrades/Downgrades Ihrer APIM-Dienste. Die Metrik wird minütlich ausgegeben und spiegelt die Gatewaykapazität zum Zeitpunkt der Meldung wider. Der Wert der Metrik kann zwischen 0 und 100 liegen und wird basierend auf Gatewayressourcen wie CPU und Speicherauslastung berechnet.
 * Gatewayanforderungen gesamt: Anzahl der API-Anforderungen innerhalb des Zeitraums. 
-* Erfolgreiche Gatewayanforderungen: Anzahl der API-Anforderungen, die erfolgreiche HTTP-Antwortcodes einschließlich 304, 307 und alle unter 301 (z.B. 200) erhalten haben. 
+* Erfolgreiche Gatewayanforderungen: Anzahl der API-Anforderungen, die erfolgreiche HTTP-Antwortcodes einschließlich 304, 307 und alle unter 301 (z.B. 200) erhalten haben.
 * Fehlerhafte Gatewayanforderungen: Anzahl der API-Anforderungen, die fehlerhafte HTTP-Antwortcodes einschließlich 400 und alle über 500 erhalten haben.
-* Nicht autorisierte Gatewayanforderungen: Anzahl der API-Anforderungen, die HTTP-Antwortcodes einschließlich 401, 403 und 429 erhalten haben. 
+* Nicht autorisierte Gatewayanforderungen: Anzahl der API-Anforderungen, die HTTP-Antwortcodes einschließlich 401, 403 und 429 erhalten haben.
 * Andere Gateway-Anforderungen: Anzahl der API-Anforderungen, die HTTP-Antwortcodes erhalten haben, die keiner der oben genannten Kategorien angehören (z.B. 418).
 
 So greifen Sie auf Metriken zu:
 
 1. Klicken Sie im Menü am unteren Seitenrand auf **Metriken**.
 2. Wählen Sie im Dropdownmenü die gewünschten Metriken aus (Sie können mehrere Metriken hinzufügen). 
-    
+
     Wählen Sie in der Liste der verfügbaren Metriken beispielsweise **Gatewayanforderungen gesamt** und **Fehlerhafte Gatewayanforderungen** aus.
 3. Im Diagramm ist die Gesamtanzahl von API-Aufrufen gezeigt. Es enthält außerdem die Anzahl fehlerhafter API-Aufrufe. 
 
@@ -89,7 +87,7 @@ So konfigurieren Sie Warnungen:
 
 ## <a name="activity-logs"></a>Aktivitätsprotokolle
 
-Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre API Management-Dienste ausgeführt wurden. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für Ihre API Management-Dienste durchgeführt wurden. 
+Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre API Management-Dienste ausgeführt wurden. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für Ihre API Management-Dienste durchgeführt wurden.
 
 > [!NOTE]
 > Aktivitätsprotokolle enthalten keine Lesevorgänge (GET) oder Vorgänge, die im Azure-Portal oder mithilfe der ursprünglichen Management-APIs durchgeführt wurden.
@@ -116,15 +114,15 @@ API Management bietet derzeit Diagnoseprotokolle (stündlich erfasst) zu einzeln
 ```json
 {  
     "isRequestSuccess" : "",
-    "time": "",   
-    "operationName": "",      
-    "category": "",   
-    "durationMs": ,   
-    "callerIpAddress": "",   
-    "correlationId": "",   
-    "location": "",      
-    "httpStatusCodeCategory": "",      
-    "resourceId": "",      
+    "time": "",
+    "operationName": "",
+    "category": "",
+    "durationMs": ,
+    "callerIpAddress": "",
+    "correlationId": "",
+    "location": "",
+    "httpStatusCodeCategory": "",
+    "resourceId": "",
     "properties": {   
         "method": "", 
         "url": "", 
@@ -206,7 +204,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Anzeigen von Aktivitätsprotokollen
 > * Anzeigen von Diagnoseprotokollen
-> * Anzeigen von Metriken Ihrer API 
+> * Anzeigen von Metriken Ihrer API
 > * Einrichten einer Warnungsregel, wenn Ihre API nicht autorisierte Aufrufe empfängt
 
 Fahren Sie mit dem nächsten Tutorial fort:

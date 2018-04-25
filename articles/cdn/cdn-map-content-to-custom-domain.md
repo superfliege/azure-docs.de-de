@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/09/2018
+ms.date: 04/06/2018
 ms.author: mazha
 ms.custom: mvc
-ms.openlocfilehash: de04253a51d30885e936cb65a1925df4e5e96eaf
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: dad9866a3d61421987bc4a62057498e004f65e7f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt
-In diesem Tutorial wird veranschaulicht, wie Sie einem Azure CDN-Endpunkt eine benutzerdefinierte Domäne hinzufügen. Wenn Sie einen CDN-Endpunkt zum Bereitstellen von Inhalt verwenden, ist eine benutzerdefinierte Domäne erforderlich, falls Ihr eigener Domänenname in Ihrer CDN-URL sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein. 
+In diesem Tutorial wird veranschaulicht, wie Sie einem Azure CDN-Endpunkt (Content Delivery Network) eine benutzerdefinierte Domäne hinzufügen. Wenn Sie einen CDN-Endpunkt zum Bereitstellen von Inhalt verwenden, ist eine benutzerdefinierte Domäne erforderlich, falls Ihr eigener Domänenname in Ihrer CDN-URL sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein. 
 
 Nachdem Sie einen CDN-Endpunkt in Ihrem Profil erstellt haben, wird der Endpunktname, bei dem es sich um eine Unterdomäne von „azureedge.net“ handelt, standardmäßig in die URL für die Bereitstellung von CDN-Inhalten eingefügt (z.B. „https:\//contoso.azureedge.net/photo.png“). Als Hilfe für Sie verfügt Azure CDN über die Möglichkeit, eine benutzerdefinierte Domäne einem CDN-Endpunkt zuzuordnen. Bei dieser Option stellen Sie Ihren Inhalt über eine benutzerdefinierte Domäne in Ihrer URL und nicht über einen Endpunktnamen bereit (z.B. „https:\//www.contoso.com/photo.png“). 
 
@@ -49,7 +49,8 @@ Bevor Sie eine benutzerdefinierte Domäne mit einem Azure CDN-Endpunkt verwenden
 
 Eine benutzerdefinierte Domäne und die dazugehörige Unterdomäne können jeweils nur einem Endpunkt zugeordnet werden. Sie können aber unterschiedliche Unterdomänen derselben benutzerdefinierten Domäne für unterschiedliche Azure-Dienstendpunkte verwenden, indem Sie mehrere CNAME-Einträge nutzen. Außerdem können Sie eine benutzerdefinierte Domäne mit unterschiedlichen Unterdomänen demselben CDN-Endpunkt zuordnen.
 
-## <a name="map-temporary-cdnverify-subdomain"></a>Zuordnen der temporären Unterdomäne „cdnverify“
+
+## <a name="map-the-temporary-cdnverify-subdomain"></a>Zuordnen der temporären Unterdomäne „cdnverify“
 
 Es müssen bestimmte Aspekte berücksichtigt werden, wenn Sie eine vorhandene Domäne zuordnen, die sich in der Produktion befindet. Während Sie Ihre benutzerdefinierte Domäne im Azure-Portal registrieren, kann es für die Domäne zu einer kurzen Ausfallzeit kommen. Ordnen Sie Ihre benutzerdefinierte Domäne zuerst dem Hostnamen Ihres CDN-Endpunkts mit der Azure-Unterdomäne „cdnverify“ zu, um eine temporäre CNAME-Zuordnung zu erstellen und so eine Unterbrechung des Webdatenverkehrs zu vermeiden. Mit dieser Methode können Benutzer ohne Unterbrechung auf Ihre Domäne zugreifen, während die DNS-Zuordnung durchgeführt wird. 
 
@@ -97,7 +98,7 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
     - Gültigkeitsdauer: Übernehmen Sie *1 Stunde*.
 
-6. Wählen Sie **Speichern** aus.
+6. Wählen Sie **Speichern**aus.
  
     Der CNAME-Eintrag wird der Tabelle mit den DNS-Einträgen hinzugefügt.
 
@@ -135,7 +136,8 @@ Nachdem Sie die Registrierung der benutzerdefinierten Domäne abgeschlossen habe
 
 2. Navigieren Sie in Ihrem Browser mithilfe der benutzerdefinierten Domäne zur Adresse der Datei. Wenn Ihre benutzerdefinierte Domäne beispielsweise „cdn.contoso.com“ lautet, sollte die URL zur zwischengespeicherten Datei in etwa wie folgt lauten: „http:\//cdn.contoso.com/my-public-container/my-file.jpg“.
 
-## <a name="map-permanent-custom-domain"></a>Zuordnen der permanenten benutzerdefinierten Domäne
+
+## <a name="map-the-permanent-custom-domain"></a>Zuordnen der permanenten benutzerdefinierten Domäne
 
 Wenn Sie sich vergewissert haben, dass die Unterdomäne „cdnverify“ Ihrem Endpunkt erfolgreich zugeordnet wurde (oder wenn Sie eine neue benutzerdefinierte Domäne verwenden, die nicht für die Produktion bestimmt ist), können Sie die benutzerdefinierte Domäne direkt dem Hostnamen Ihres CDN-Endpunkts zuordnen.
 
@@ -161,6 +163,8 @@ Erstellen Sie wie folgt einen CNAME-Eintrag für Ihre benutzerdefinierten Domän
 
 5. Wenn Sie zuvor einen temporären CNAME-Eintrag für die Unterdomäne „cdnverify“ erstellt haben, sollten Sie ihn löschen. 
 
+6. Wenn Sie diese benutzerdefinierte Domäne zum ersten Mal in der Produktion verwenden, können Sie die Schritte unter [Zuordnen der benutzerdefinierten Domäne zu Ihrem CDN-Endpunkt](#associate-the-custom-domain-with-your-cdn-endpoint) und [Überprüfen der benutzerdefinierten Domäne](#verify-the-custom-domain) ausführen.
+
 Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorgehensweise:
 
 1. Melden Sie sich an, und wählen Sie die gewünschte benutzerdefinierte Domäne aus.
@@ -183,7 +187,7 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
     - Gültigkeitsdauer: Übernehmen Sie *1 Stunde*.
 
-6. Wählen Sie **Speichern** aus.
+6. Wählen Sie **Speichern**aus.
  
     Der CNAME-Eintrag wird der Tabelle mit den DNS-Einträgen hinzugefügt.
 
@@ -192,8 +196,6 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 7. Wählen Sie bei Vorhandensein des CNAME-Eintrags „cdnverify“ daneben das Stiftsymbol und dann das Papierkorbsymbol aus.
 
 8. Wählen Sie **Löschen**, um den CNAME-Eintrag zu löschen.
-
-Wenn Sie diese benutzerdefinierte Domäne zum ersten Mal in der Produktion verwenden, können Sie die Schritte unter [Zuordnen der benutzerdefinierten Domäne zu Ihrem CDN-Endpunkt](#associate-the-custom-domain-with-your-cdn-endpoint) und [Überprüfen der benutzerdefinierten Domäne](#verify-the-custom-domain) ausführen.
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

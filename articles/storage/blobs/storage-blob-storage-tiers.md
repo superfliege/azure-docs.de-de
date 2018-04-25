@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: c62f3a92e6199f6467556054c9f58c20b6ceba2c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 21b09d9c428f9c29e0048faa32ce5349a127be89
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“
 
@@ -32,9 +32,9 @@ Jedes dieser Datenzugriffsszenarien profitiert von einer differenzierten Speiche
 
 ## <a name="storage-accounts-that-support-tiering"></a>Speicherkonten mit Tiering-Unterstützung
 
-Sie können das Tiering für „Hot“, „Cool“ und „Archiv“ für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (General Purpose v2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Kunden können ihre vorhandenen GPv1- oder Blob Storage-Konten aber leicht in GPv2-Konten konvertieren, indem sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Für GPv2 gilt eine neue Preisstruktur für Blobs, Dateien und Warteschlangen, und außerdem besteht Zugriff auf viele andere neue Speicherfeatures. Zudem werden in Zukunft einige neue Features und Preisreduzierungen nur für GPv2-Konten angeboten. Aus diesem Grund ist es für Kunden ratsam, die Nutzung von GPv2-Konten zu evaluieren. Sie sollten die Konten aber erst verwenden, nachdem sie die Preise für alle Dienste überprüft haben, da einige Workloads unter GPv2 teurer als unter GPv1 sein können. Weitere Informationen finden Sie unter [Optionen für Azure Storage-Konten](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Sie können das Tiering für „Heiß“, „Kalt“ und „Archiv“ für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (General Purpose v2, Allgemein, Version 2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Kunden können ihre vorhandenen GPv1- oder Blobspeicherkonten aber leicht in GPv2-Konten konvertieren, indem sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Für GPv2 gilt eine neue Preisstruktur für Blobs, Dateien und Warteschlangen, und außerdem besteht Zugriff auf viele andere neue Speicherfeatures. Zudem werden in Zukunft einige neue Features und Preisreduzierungen nur für GPv2-Konten angeboten. Aus diesem Grund ist es für Kunden ratsam, die Nutzung von GPv2-Konten zu evaluieren. Sie sollten die Konten aber erst verwenden, nachdem sie die Preise für alle Dienste überprüft haben, da einige Workloads unter GPv2 teurer als unter GPv1 sein können. Weitere Informationen finden Sie unter [Optionen für Azure Storage-Konten](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Bei Blob Storage- und GPv2-Konten wird das Attribut **Access Tier** (Zugriffsebene) auf Kontoebene verfügbar gemacht. Hiermit können Sie die Standardspeicherebene für alle Blobs des Speicherkontos, für die auf Objektebene keine Ebene festgelegt ist, als „Hot“ oder „Cool“ angeben. Für Objekte, für die die Ebene auf Objektebene festgelegt ist, gilt die Kontoebene nicht. Die Archivebene kann nur auf Objektebene angewendet werden. Sie können jederzeit zwischen diesen Speicherebenen wechseln.
+Bei Blobspeicher- und GPv2-Konten wird das Attribut **Access Tier** (Zugriffsebene) auf Kontoebene verfügbar gemacht. Hiermit können Sie die Standardspeicherebene für alle Blobs des Speicherkontos, für die auf Objektebene keine Ebene festgelegt ist, als „Heiß“ oder „Kalt“ angeben. Für Objekte, für die die Ebene auf Objektebene festgelegt ist, gilt die Kontoebene nicht. Die Archivebene kann nur auf Objektebene angewendet werden. Sie können jederzeit zwischen diesen Speicherebenen wechseln.
 
 ## <a name="hot-access-tier"></a>Zugriffsebene „Hot“
 
@@ -81,7 +81,7 @@ Ein Konto kann Blobs aus allen drei Speicherebenen enthalten. Blobs, denen keine
 
 Wenn ein Blob in eine „kältere“ Ebene verschoben wird (von „Hot“ zu „Cool“, von „Hot“ zu „Archiv“ oder von „Cool“ zu „Archiv“), wird der Vorgang als Schreibvorgang der Zielebene berechnet, und es gelten die Zielebenengebühren für Schreibvorgänge (pro 10.000) und das Schreiben von Daten (pro GB). Wenn ein Blob in eine „wärmere“ Ebene verschoben wird (von „Archiv“ zu „Cool“, von „Archiv“ zu „Hot“ oder von „Cool“ zu „Hot“), wird der Vorgang als Lesevorgang aus der Quellebene berechnet, und es gelten die Quellebenengebühren für Lesevorgänge (pro 10.000) und Datenabruf (pro GB).
 
-Wenn Sie für die Kontoebene von „Hot“ zu „Cool“ wechseln, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs ohne festgelegte Ebene nur für GPv2-Konten berechnet. Für Blob Storage-Konten fallen hierfür keine Gebühren an. Ihnen werden sowohl Gebühren für Lesevorgänge (pro 10.000) als auch für den Datenabruf (pro GB) berechnet, wenn Sie für Ihr Blob Storage- oder GPv2-Konto von „Cool“ zu „Hot“ wechseln. Für alle Blobs, die aus der Ebene „Cool“ oder „Archiv“ verschoben werden, können auch Gebühren für das frühe Löschen anfallen.
+Wenn Sie für die Kontoebene von „Hot“ zu „Cool“ wechseln, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs ohne festgelegte Ebene nur für GPv2-Konten berechnet. Für Blobspeicherkonten fallen hierfür keine Gebühren an. Ihnen werden sowohl Gebühren für Lesevorgänge (pro 10.000) als auch für den Datenabruf (pro GB) berechnet, wenn Sie für Ihr Blob Storage- oder GPv2-Konto von „Kalt“ zu „Heiß“ wechseln. Für alle Blobs, die aus der Ebene „Cool“ oder „Archiv“ verschoben werden, können auch Gebühren für das frühe Löschen anfallen.
 
 ### <a name="cool-and-archive-early-deletion"></a>Frühzeitiges Löschen für kalte Speicher und Archivspeicher
 
@@ -102,14 +102,14 @@ Die folgende Tabelle enthält eine Gegenüberstellung der Speicherebenen „Hot�
 | **Skalierbarkeits- und Leistungsziele** | Identisch mit allgemeinen Speicherkonten | Identisch mit allgemeinen Speicherkonten | Identisch mit allgemeinen Speicherkonten |
 
 > [!NOTE]
-> Blob Storage-Konten unterstützen die gleichen Leistungs- und Skalierbarkeitsziele wie allgemeine Speicherkonten. Weitere Informationen finden Sie unter [Microsoft Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Speicherskalierbarkeit und Leistungsziele von Azure, in englischer Sprache).
+> Blob-Speicherkonten unterstützen die gleichen Leistungs- und Skalierbarkeitsziele wie allgemeine Speicherkonten. Weitere Informationen finden Sie unter [Microsoft Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Speicherskalierbarkeit und Leistungsziele von Azure, in englischer Sprache).
 
 ## <a name="quickstart-scenarios"></a>Schnellstartszenarien
 
 In diesem Abschnitt werden unter Verwendung des Azure-Portals die folgenden Szenarien veranschaulicht:
 
-* Ändern der Standard-Kontozugriffsebene für ein GPv2- oder Blob Storage-Konto
-* Ändern der Ebene eines Blobs in einem GPv2- oder Blob Storage-Konto
+* Ändern der Standard-Kontozugriffsebene für ein GPv2- oder Blobspeicherkonto
+* Ändern der Ebene eines Blobs in einem GPv2- oder Blobspeicherkonto
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Ändern der Standard-Kontozugriffsebene für ein GPv2- oder Blob Storage-Konto
 
@@ -123,7 +123,7 @@ In diesem Abschnitt werden unter Verwendung des Azure-Portals die folgenden Szen
 
 5. Klicken Sie oben im Blatt auf „Speichern“.
 
-### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Ändern der Ebene eines Blobs in einem GPv2- oder Blob Storage-Konto
+### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Ändern der Ebene eines Blobs in einem GPv2- oder Blobspeicherkonto
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -135,11 +135,11 @@ In diesem Abschnitt werden unter Verwendung des Azure-Portals die folgenden Szen
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-**Sollte ich Blob Storage- oder GPv2-Konten verwenden, wenn ich für meine Daten das Tiering durchführen möchte?**
+**Sollte ich Blobspeicher- oder GPv2-Konten verwenden, wenn ich für meine Daten das Tiering durchführen möchte?**
 
-Wir empfehlen Ihnen, für das Tiering anstelle von Blob Storage-Konten GPv2-Konten zu nutzen. Für GPv2 werden alle Features von Blob Storage-Konten sowie noch viele weitere Features unterstützt. Die Preise für Blob Storage und GPv2 sind nahezu identisch, aber einige neue Features und Preisreduzierungen gelten nur für GPv2-Konten. Für GPv1-Konten wird das Tiering nicht unterstützt.
+Wir empfehlen Ihnen, für das Tiering anstelle von Blobspeicherkonten GPv2-Konten zu nutzen. Für GPv2 werden alle Features von Blobspeicherkonten sowie noch viele weitere Features unterstützt. Die Preise für Blobspeicher und GPv2 sind nahezu identisch, aber einige neue Features und Preisreduzierungen gelten nur für GPv2-Konten. Für GPv1-Konten wird das Tiering nicht unterstützt.
 
-Die Preisstruktur von GPv1 und GPv2 unterscheidet sich, und Kunden sollten dies jeweils sorgfältig evaluieren, bevor sie sich für die Nutzung von GPv2-Konten entscheiden. Sie können ein vorhandenes Blob Storage- oder GPv1-Konto leicht in ein GPv2-Konto konvertieren, indem Sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Weitere Informationen finden Sie unter [Optionen für Azure Storage-Konten](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Die Preisstruktur von GPv1 und GPv2 unterscheidet sich, und Kunden sollten dies jeweils sorgfältig evaluieren, bevor sie sich für die Nutzung von GPv2-Konten entscheiden. Sie können ein vorhandenes Blobspeicher- oder GPv1-Konto leicht in ein GPv2-Konto konvertieren, indem Sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Weitere Informationen finden Sie unter [Optionen für Azure Storage-Konten](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 **Kann ich Objekte unter demselben Konto auf allen drei Speicherebenen („Hot“, „Cool“ und „Archiv“) speichern?**
 
@@ -147,7 +147,7 @@ Ja. Das Attribut **Access Tier** (Zugriffsebene) auf Kontoebene ist die Standard
 
 **Kann ich die Standardspeicherebene meines Blob Storage- oder GPv2-Kontos ändern?**
 
-Ja. Sie können die Standardspeicherebene ändern, indem Sie für das Speicherkonto das Attribut **Access tier** (Zugriffsebene) festlegen. Die Änderung der Speicherebene gilt für alle gespeicherten Objekte des Kontos, für die keine explizite Ebene festgelegt ist. Wenn Sie für die Speicherebene von „Hot“ zu „Cool“ wechseln, fallen Gebühren für Schreibvorgänge (pro 10.000) für alle Blobs ohne festgelegte Ebene nur für GPv2-Konten an, und wenn Sie von „Cool“ zu „Hot“ wechseln, fallen Gebühren für Lesevorgänge (pro 10.000) und den Datenabruf (pro GB) für alle Blobs in Blob Storage- und GPv2-Konten an.
+Ja. Sie können die Standardspeicherebene ändern, indem Sie für das Speicherkonto das Attribut **Access tier** (Zugriffsebene) festlegen. Die Änderung der Speicherebene gilt für alle gespeicherten Objekte des Kontos, für die keine explizite Ebene festgelegt ist. Wenn Sie für die Speicherebene von „Heiß“ zu „Kalt“ wechseln, fallen Gebühren für Schreibvorgänge (pro 10.000) für alle Blobs ohne festgelegte Ebene nur für GPv2-Konten an. Wenn Sie von „Kalt“ zu „Heiß“ wechseln, fallen Gebühren für Lesevorgänge (pro 10.000) und den Datenabruf (pro GB) für alle Blobs in Blobspeicher- und GPv2-Konten an.
 
 **Kann ich meine Standard-Kontozugriffsebene auf „Archiv“ festlegen?**
 
@@ -159,7 +159,7 @@ Die Speicherebenen „Hot“ und „Cool“ sind zusammen mit dem Blobebenentier
 
 **Verhalten sich die Blobs der Speicherebene „Cool“ anders als die Blobs der Speicherebene „Hot“?**
 
-Blobs der Speicherebene „Hot“ weisen die gleiche Latenz wie Blobs in GPv1-, GPv2- und Blob Storage-Konten auf. Blobs der Speicherebene „Cool“ verfügen über eine ähnliche Latenz (in Millisekunden) wie Blobs in GPv1-, GPv2- und Blob Storage-Konten. In GPv1-, GPv2- und Blob Storage-Konten gilt für Blobs auf der Speicherebene „Archiv“ eine Latenzzeit von mehreren Stunden.
+Blobs der Speicherebene „Heiß“ weisen die gleiche Latenz wie Blobs in GPv1-, GPv2- und Blobspeicherkonten auf. Blobs der Speicherebene „Kalt“ verfügen über eine ähnliche Latenz (in Millisekunden) wie Blobs in GPv1-, GPv2- und Blobspeicherkonten. In GPv1-, GPv2- und Blobspeicherkonten gilt für Blobs auf der Speicherebene „Archiv“ eine Latenzzeit von mehreren Stunden.
 
 Für Blobs der Speicherebene „Cool“ gilt in Bezug auf die Verfügbarkeit ein etwas geringerer Servicelevel (SLA) als für Blobs, die auf der Speicherebene „Hot“ gespeichert sind. Weitere Details finden Sie unter [SLA für Speicher](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
 
@@ -189,12 +189,12 @@ Die Datenspeicherung wird zusammen mit anderen Beschränkungen auf Kontoebene un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>Evaluieren von „Hot“, „Cool“ und „Archiv“ in GPv2- und Blob Storage-Konten
+### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>Evaluieren von „Heiß“, „Kalt“ und „Archiv“ in GPv2- und Blobspeicherkonten
 
 Prüfen der Verfügbarkeit von „Hot“, „Cool“ und „Archiv“ nach Region unter [Azure-Regionen](https://azure.microsoft.com/regions/#services)
 
 [Auswerten der Nutzung vorhandener Speicherkonten durch Aktivierung von Azure Storage-Metriken](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-Prüfen der Preise für „Hot“, „Cool“ und „Archiv“ in Blob Storage- und GPv2-Konten nach Region unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
+Prüfen der Preise für „Heiß“, „Kalt“ und „Archiv“ in Blobspeicher- und GPv2-Konten nach Region unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 
 [Überprüfen der Preise für Datenübertragungen unter Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/)

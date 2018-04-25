@@ -1,12 +1,12 @@
 ---
 title: Integrieren von Azure Service Fabric in API Management | Microsoft-Dokumentation
-description: "In diesem Tutorial werden die ersten Schritte für Azure API Management und Service Fabric beschrieben."
+description: In diesem Tutorial werden die ersten Schritte für Azure API Management und Service Fabric beschrieben.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 3/9/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 430e813b89f3e0004c517ef77f1028e00ebe5404
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f209e992c4562f11727613c58e1e94483af03bb7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-deploy-api-management-with-service-fabric"></a>Tutorial: Bereitstellen von API Management mit Service Fabric
 Dieses Tutorial ist der vierte Teil einer Serie.  Bei der Bereitstellung von Azure API Management mit Service Fabric handelt es sich um ein erweitertes Szenario.  API Management ist nützlich, wenn Sie APIs mit einem umfangreichen Satz von Routingregeln für Ihre Service Fabric-Back-End-Dienste veröffentlichen möchten. Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutzer, Geräte oder andere Anwendungen einen zentralen Eingangspunkt bereitzustellen. In Service Fabric kann ein Gateway ein beliebiger zustandsloser Dienst sein, der für den Eingang von Datenverkehr ausgelegt ist, z.B. eine ASP.NET Core-Anwendung, Event Hubs, IoT Hub oder Azure API Management. 
@@ -59,7 +59,7 @@ Nach dem Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-cre
 Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus, bevor Sie Azure-Befehle ausführen.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```
@@ -142,7 +142,7 @@ In diesem Tutorial erstellen Sie einen einfachen Webserver, der Nachrichten als 
 
    Ein zustandsloser Java-Dienst mit dem Namen `fabric:/EchoServerApplication/EchoServerService` sollte jetzt in Ihrem Service Fabric-Cluster in Azure ausgeführt werden.
 
-5. Öffnen Sie einen Browser, und geben Sie diese URL ein: http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage. Es sollte „[Version 1.0]Hello World!!!“ angezeigt werden.
+5. Öffnen Sie einen Browser, und geben Sie http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage ein. Daraufhin sollte „[Version 1.0]Hallo Welt!!!“ angezeigt werden.
 
 ## <a name="download-and-understand-the-resource-manager-templates"></a>Herunterladen und Nachvollziehen der Resource Manager-Vorlagen
 Laden Sie die folgenden Resource Manager-Vorlagen und die Parameterdatei herunter, und speichern Sie sie:
@@ -179,7 +179,7 @@ Geben Sie für **displayName** einen beschreibenden Anzeigenamen und für **desc
 
 - **displayName** kann ein beliebiger Name für die API sein. Verwenden Sie für dieses Tutorial „Service Fabric App“.
 - **name** enthält einen eindeutigen und beschreibenden Namen für die API, z.B. „service-fabric-app“. Dieser Name wird in den Entwickler- und Herausgeberportalen angezeigt. 
-- **serviceUrl** verweist auf den HTTP-Dienst, der die API implementiert. API Management leitet Anfragen an diese Adresse weiter. Bei Service Fabric-Back-Ends wird dieser URL-Wert nicht verwendet. Sie können hier einen beliebigen Wert einfügen. Verwenden Sie für dieses Tutorial z.B. „http://servicefabric“. 
+- **serviceUrl** verweist auf den HTTP-Dienst, der die API implementiert. API Management leitet Anfragen an diese Adresse weiter. Bei Service Fabric-Back-Ends wird dieser URL-Wert nicht verwendet. Sie können hier einen beliebigen Wert einfügen. Verwenden Sie für dieses Tutorial z.B. http://servicefabric. 
 - **path** wird an die Basis-URL für den API Management-Dienst angefügt. Alle in einer API Management-Dienstinstanz gehosteten APIs teilen sich dieselbe Basis-URL. API Management unterscheidet APIs durch deren Suffix. Daher muss jede API eines bestimmten Herausgebers ein eindeutiges Suffix haben. 
 - **protocols** legt fest, welche Protokolle für den Zugriff auf die API verwendet werden können. Geben Sie für dieses Tutorial **http** und **https** an.
 - **path** ist ein Suffix für die API. Verwenden Sie für dieses Tutorial „myapp“.

@@ -1,0 +1,202 @@
+---
+title: 'Tutorial: Aktivieren der Authentifizierung einseitiger Apps mit Konten unter Verwendung von Azure Active Directory B2C | Microsoft-Dokumentation'
+description: Tutorial zur Verwendung von Azure Active Directory B2C zum Bereitstellen einer Benutzeranmeldung für eine einseitige Anwendung (JavaScript)
+services: active-directory-b2c
+author: PatAltimore
+ms.author: patricka
+ms.reviewer: paraj
+ms.date: 3/02/2018
+ms.custom: mvc
+ms.topic: tutorial
+ms.service: active-directory-b2c
+ms.openlocfilehash: 9f5f98ae5798cabd90c453221fe36f17052f77aa
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/18/2018
+---
+# <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung einseitiger Apps mit Konten unter Verwendung von Azure Active Directory B2C
+
+In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) B2C für die Anmeldung und Registrierung von Benutzern in einer einseitigen App (Single-Page App, SPA) verwenden. Mit Azure AD B2C können sich Ihre Apps über offene Standardprotokolle bei Konten für soziale Netzwerke sowie bei Unternehmenskonten und Azure Active Directory-Konten authentifizieren.
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Registrieren einer einseitigen Beispiel-App bei Ihrem Azure AD B2C-Mandanten
+> * Erstellen von Richtlinien für Benutzerregistrierung, Benutzeranmeldung, Profilbearbeitung und Kennwortzurücksetzung
+> * Konfigurieren der Beispielanwendung für die Verwendung Ihres Azure AD B2C-Mandanten
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Erstellen Sie Ihren eigenen [Azure AD B2C-Mandanten](active-directory-b2c-get-started.md).
+* Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit der Workload **ASP.NET und Webentwicklung**.
+* [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) oder eine höhere Version
+* Installieren von [Node.js](https://nodejs.org/en/download/)
+
+## <a name="register-single-page-app"></a>Registrieren der einseitigen App
+
+Anwendungen müssen bei Ihrem Mandanten [registriert](../active-directory/develop/active-directory-dev-glossary.md#application-registration) werden, um [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) aus Azure Active Directory erhalten zu können. Bei der App-Registrierung wird für die App eine [Anwendungs-ID](../active-directory/develop/active-directory-dev-glossary.md#application-id-client-id) in Ihrem Mandanten erstellt. 
+
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
+
+[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
+
+1. Wählen Sie **Azure AD B2C** aus der Dienstliste im Azure-Portal aus. 
+
+2. Klicken Sie in den B2C-Einstellungen auf **Anwendungen** und anschließend auf **Hinzufügen**. 
+
+    Verwenden Sie die folgenden Einstellungen, um die Beispiel-Web-App bei Ihrem Mandanten zu registrieren:
+    
+    ![Hinzufügen einer neuen App](media/active-directory-b2c-tutorials-spa/spa-registration.png)
+    
+    | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Name** | My sample single page app | Geben Sie einen aussagekräftigen **App-Namen**ein. | 
+    | **Web-App/Web-API einschließen** | Ja | Wählen Sie bei einer einseitigen App **Ja** aus. |
+    | **Impliziten Fluss zulassen** | Ja | Diese App verwendet die [OpenID Connect-Anmeldung](active-directory-b2c-reference-oidc.md). Wählen Sie daher **Ja** aus. |
+    | **Antwort-URL** | `http://localhost:6420` | Antwort-URLs sind Endpunkte, an denen Azure AD B2C von Ihrer App angeforderte Token zurückgibt. Das Beispiel in diesem Tutorial wird lokal (localhost) ausgeführt und lauscht am Port 6420. |
+    | **Nativen Client einschließen** | Nein  | Da es sich hierbei um eine einseitige App und nicht um einen nativen Client handelt, wählen Sie „Nein“ aus. |
+    
+3. Klicken Sie auf **Erstellen**, um Ihre App zu registrieren.
+
+Registrierte Apps werden in der Anwendungsliste für den Azure AD B2C-Mandanten angezeigt. Wählen Sie Ihre einseitige App aus der Liste aus. Der Eigenschaftenbereich der registrierten einseitigen App wird angezeigt.
+
+![Eigenschaften der einseitigen App](./media/active-directory-b2c-tutorials-spa/b2c-spa-properties.png)
+
+Notieren Sie sich den Wert der **Anwendungsclient-ID**. Die ID identifiziert die App eindeutig und wird im weiteren Verlauf des Tutorials beim Konfigurieren der App benötigt.
+
+## <a name="create-policies"></a>Erstellen von Richtlinien
+
+Eine Azure AD B2C-Richtlinie dient zum Definieren von Benutzerworkflows. Gängige Workflows sind beispielsweise Anmelden, Registrieren, Ändern von Kennwörtern und Bearbeiten von Profilen.
+
+### <a name="create-a-sign-up-or-sign-in-policy"></a>Erstellen einer Registrierungs- oder Anmelderichtlinie
+
+Erstellen Sie eine **Registrierungs- oder Anmelderichtlinie**, um Benutzer für den Zugriff und die anschließende Anmeldung zu registrieren.
+
+1. Wählen Sie auf der Azure AD B2C-Portalseite die Option **Registrierungs- oder Anmelderichtlinien** aus, und klicken Sie auf **Hinzufügen**.
+
+    Konfigurieren Sie Ihre Richtlinie mit den folgenden Einstellungen:
+
+    ![Hinzufügen einer Registrierungs- oder Anmelderichtlinie](media/active-directory-b2c-tutorials-web-app/add-susi-policy.png)
+
+    | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Name** | SiUpIn | Geben Sie einen **Namen**für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **B2C_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **B2C_1_SiUpIn** verwendet. | 
+    | **Identitätsanbieter** | E-Mail-Registrierung | Der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
+    | **Registrierungsattribute** | „Anzeigename“ und „Postleitzahl“ | Wählen Sie Attribute aus, die im Rahmen der Benutzerregistrierung erfasst werden sollen. |
+    | **Anwendungsansprüche** | „Anzeigename“, „Postleitzahl“, „User is new“ (Benutzer ist neu), „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/active-directory-dev-glossary.md#claim) aus, die im [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) enthalten sein sollen. |
+
+2. Klicken Sie auf **Erstellen**, um die Richtlinie zu erstellen. 
+
+### <a name="create-a-profile-editing-policy"></a>Erstellen einer Richtlinie für die Profilbearbeitung
+
+Erstellen Sie eine **Richtlinie zur Profilbearbeitung**, um Benutzern das eigenständige Zurücksetzen ihrer Benutzerprofilinformationen zu ermöglichen.
+
+1. Wählen Sie auf der Azure AD B2C-Portalseite die Option **Richtlinien zur Profilbearbeitung** aus, und klicken Sie auf **Hinzufügen**.
+
+    Konfigurieren Sie Ihre Richtlinie mit den folgenden Einstellungen:
+
+    | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Name** | SiPe | Geben Sie einen **Namen**für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **B2C_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **B2C_1_SiPe** verwendet. | 
+    | **Identitätsanbieter** | Anmeldung mit lokalem Konto | Der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
+    | **Profilattribute** | „Anzeigename“ und „Postleitzahl“ | Wählen Sie Attribute aus, die Benutzer bei der Profilbearbeitung ändern können. |
+    | **Anwendungsansprüche** | „Anzeigename“, „Postleitzahl“, „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/active-directory-dev-glossary.md#claim) aus, die nach erfolgreicher Profilbearbeitung im [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) enthalten sein sollen. |
+
+2. Klicken Sie auf **Erstellen**, um die Richtlinie zu erstellen. 
+
+### <a name="create-a-password-reset-policy"></a>Erstellen einer Richtlinie zur Kennwortrücksetzung
+
+Wenn Sie in Ihrer Anwendung das Zurücksetzen des Kennworts ermöglichen möchten, müssen Sie eine **Richtlinie für die Kennwortzurücksetzung** erstellen. Diese Richtlinie beschreibt die Kundenerfahrung während der Kennwortzurücksetzung und den Inhalt der Token, die die Anwendung bei erfolgreichem Abschluss erhält.
+
+1. Wählen Sie auf der Azure AD B2C-Portalseite die Option **Richtlinien für die Kennwortzurücksetzung** aus, und klicken Sie auf **Hinzufügen**.
+
+    Konfigurieren Sie Ihre Richtlinie mit den folgenden Einstellungen:
+
+    | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Name** | SSPR | Geben Sie einen **Namen**für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **B2C_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **B2C_1_SSPR** verwendet. | 
+    | **Identitätsanbieter** | Kennwort mittels E-Mail-Adresse zurücksetzen | Dies ist der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
+    | **Anwendungsansprüche** | User's Object ID (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/active-directory-dev-glossary.md#claim) aus, die nach erfolgreicher Kennwortzurücksetzung im [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) enthalten sein sollen. |
+
+2. Klicken Sie auf **Erstellen**, um die Richtlinie zu erstellen. 
+
+## <a name="update-single-page-app-code"></a>Aktualisieren des Codes der einseitigen App
+
+Nachdem Sie eine App registriert und Richtlinien erstellt haben, müssen Sie Ihre App für die Verwendung Ihres Azure AD B2C-Mandanten konfigurieren. In diesem Tutorial konfigurieren Sie ein Beispiel für eine einseitige JavaScript-App, die Sie von GitHub herunterladen können. 
+
+[Laden Sie eine ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip), oder klonen Sie die Beispiel-Web-App aus GitHub.
+
+```
+git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+```
+Die Beispiel-App veranschaulicht, wie eine einseitige App Azure AD B2C für die Benutzerregistrierung und -anmeldung sowie zum Aufrufen einer geschützten Web-API verwenden kann. Sie müssen die App ändern, damit sie die App-Registrierung in Ihrem Mandanten verwendet, und die von Ihnen erstellten Richtlinien konfigurieren. 
+
+Gehen Sie zum Ändern der App-Einstellungen wie folgt vor:
+
+1. Öffnen Sie die Datei `index.html` im Beispiel für die einseitige Node.js-App.
+2. Konfigurieren Sie das Beispiel mit den Registrierungsinformationen für den Azure AD B2C-Mandanten. Ändern Sie die folgenden Codezeilen:
+
+    ```javascript
+    // The current application coordinates were pre-registered in a B2C tenant.
+    var applicationConfig = {
+        clientID: '<Application ID for your SPA obtained from portal app registration>',
+        authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
+        b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/demoapi/demo.read"],
+        webApi: 'https://fabrikamb2chello.azurewebsites.net/hello',
+    };
+    ```
+
+    Der in diesem Tutorial verwendete Richtlinienname lautet **B2C_1_SiUpIn**. Verwenden Sie bei einem anderen Richtliniennamen den Richtliniennamen im Wert `authority`.
+
+## <a name="run-the-sample"></a>Ausführen des Beispiels
+
+1. Starten Sie eine Node.js-Eingabeaufforderung.
+2. Wechseln Sie zum Verzeichnis mit dem Node.js-Beispiel. Beispiel: `cd c:\active-directory-b2c-javascript-msal-singlepageapp`
+3. Führen Sie die folgenden Befehle aus:
+    ```
+    npm install && npm update
+    node server.js
+    ```
+
+    Im Konsolenfenster wird die Portnummer angezeigt, unter der die App gehostet wird.
+    
+    ```
+    Listening on port 6420...
+    ```
+
+4. Navigieren Sie in einem Browser zur Adresse `http://localhost:6420`, um die App anzuzeigen.
+
+Die Beispiel-App unterstützt Registrierung, Anmeldung, Profilbearbeitung und Kennwortzurücksetzung. In diesem Tutorial wird beschrieben, wie ein Benutzer sich mit einer E-Mail-Adresse für die Nutzung der App anmeldet. Die anderen Szenarien können Sie selbstständig erkunden.
+
+### <a name="sign-up-using-an-email-address"></a>Registrieren mit einer E-Mail-Adresse
+
+1. Klicken Sie auf **Anmelden**, um sich als Benutzer der SPA-App zu registrieren. Hierbei wird die zuvor definierte Richtlinie **B2C_1_SiUpIn** verwendet.
+
+2. Azure AD B2C zeigt eine Anmeldeseite mit einem Registrierungslink an. Da Sie noch nicht über ein Konto verfügen, klicken Sie auf den Link **Jetzt registrieren**. 
+
+3. Der Registrierungsworkflow zeigt eine Seite an, über die die Identität des Benutzers mithilfe einer E-Mail-Adresse erfasst und überprüft wird. Darüber hinaus werden im Rahmen des Registrierungsworkflows auch das Kennwort des Benutzers sowie die angeforderten Attribute erfasst, die in der Richtlinie definiert wurden.
+
+    Verwenden Sie eine gültige E-Mail-Adresse, und bestätigen Sie sie mithilfe des Prüfcodes. Legen Sie ein Kennwort fest. Geben Sie Werte für die angeforderten Attribute ein. 
+
+    ![Registrierungsworkflow](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
+
+4. Klicken Sie auf **Erstellen**, um im Azure AD B2C-Mandanten ein lokales Konto zu erstellen.
+
+Nun kann sich der Benutzer mithilfe seiner E-Mail-Adresse anmelden und die SPA-App verwenden.
+
+> [!NOTE]
+> Nach der Anmeldung wird von der App der Fehler „Nicht genügend Berechtigungen“ angezeigt. Der Fehler wird angezeigt, da Sie versuchen, über den Demomandanten auf eine Ressource zuzugreifen. Da Ihr Zugriffstoken nur für Ihren Azure AD-Mandanten gilt, ist der API-Aufruf nicht autorisiert. Fahren Sie mit dem nächsten Tutorial fort, um eine geschützte Web-API für Ihren Mandanten zu erstellen. 
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Sie können Ihren Azure AD B2C-Mandanten für weitere Azure AD B2C-Tutorials verwenden. Wenn Sie ihn nicht mehr benötigt, können Sie [Ihren Azure AD B2C-Mandanten löschen](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Tutorial haben Sie gelernt, wie Sie einen Azure AD B2C-Mandanten und Richtlinien erstellen und wie Sie die einseitige Beispiel-App für die Verwendung Ihres Azure AD B2C-Mandanten aktualisieren. Im nächsten Tutorial erfahren Sie, wie Sie eine geschützte Web-API registrieren, konfigurieren und über eine Desktop-App aufrufen.
+
+> [!div class="nextstepaction"]
+> 

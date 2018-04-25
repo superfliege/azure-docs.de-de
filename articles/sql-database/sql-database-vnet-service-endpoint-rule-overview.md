@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 7622c6e6ffb1410cc2cbd42f6ac3601d281832da
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6037659eb419a785b01d4cbb6a2428cbd7f852da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank
 
@@ -129,8 +129,8 @@ Bei Azure SQL-Datenbank gelten für Regeln für ein virtuelles Netzwerk folgende
 
 - Regeln für ein virtuelles Netzwerk gelten nur für virtuelle Netzwerke gemäß dem Azure Resource Manager-Modell und nicht gemäß dem [klassischen Bereitstellungsmodell][arm-deployment-model-568f].
 
-- Durch das Aktivieren virtueller Netzwerkdienst-Endpunkte für Azure SQL-Datenbank werden auch die Endpunkte für die Azure-Dienste MySQL und Postgres aktiviert. Jedoch schlagen Verbindungen von den Endpunkten zu den MySQL- oder Postgres-Instanzen fehl, wenn Endpunkte aktiviert sind.
-    - Der Grund dafür ist, dass ACLing derzeit von MySQL und Postgres nicht unterstützt wird.
+- Durch das Aktivieren virtueller Netzwerkdienst-Endpunkte für Azure SQL-Datenbank werden auch die Endpunkte für die Azure-Dienste MySQL und PostgreSQL aktiviert. Jedoch treten bei Verbindungen von den Endpunkten mit den MySQL- oder PostgreSQL-Instanzen Fehler auf, wenn Endpunkte aktiviert sind.
+    - Der Grund dafür ist, dass ACLing derzeit von MySQL und PostgreSQL nicht unterstützt wird.
 
 - In der Firewall gelten zwar IP-Adressbereiche für die folgenden Netzwerkelemente, Regeln für virtuelle Netzwerke jedoch nicht:
     - [Virtuelles privates Netzwerk zwischen Standorten][vpn-gateway-indexmd-608y]
@@ -226,6 +226,10 @@ Eine Liste verschiedener Fehlermeldungen der SQL-Datenbank ist [hier][sql-databa
 
 In diesem Abschnitt wird veranschaulicht, wie Sie im [Azure-Portal][http-azure-portal-link-ref-477t] eine *Regel für ein virtuelles Netzwerk* in Ihrer Azure SQL-Datenbank-Instanz erstellen. Die Regel weist Ihre SQL-Datenbank-Instanz an, Nachrichten von einem bestimmten Subnetz zu akzeptieren, das als *Dienstendpunkt des virtuellen Netzwerks* gekennzeichnet ist.
 
+> [!NOTE]
+> Vergewissern Sie sich, dass Dienstendpunkte für das VNET/Subnetz aktiviert sind, das Sie den VNET-Firewallregeln des Servers hinzufügen möchten.
+> Wenn keine Dienstendpunkte für das VNET/Subnetz aktiviert sind, werden Sie im Portal zu deren Aktivierung aufgefordert; klicken Sie auf dem Blatt, auf dem Sie die Regel hinzuzufügen, auf „Aktivieren“.
+
 #### <a name="powershell-alternative"></a>PowerShell-Alternative
 
 Regeln für ein virtuelles Netzwerk können auch mit einem PowerShell-Skript erstellt werden. Dazu dient das Cmdlet **New-AzureRmSqlServerVirtualNetworkRule**. Lesen Sie bei Interesse [Verwenden von PowerShell zum Erstellen eines Endpunkts und einer Regel für den virtuellen Dienst für Azure SQL-Datenbank][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
@@ -315,7 +319,7 @@ Das Feature für Regeln für virtuelle Netzwerke für Azure SQL-Datenbank wurde 
 
 [expressroute-indexmd-744v]: ../expressroute/index.md
 
-[rbac-what-is-813s]: ../active-directory/role-based-access-control-what-is.md
+[rbac-what-is-813s]:../role-based-access-control/overview.md
 
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
 

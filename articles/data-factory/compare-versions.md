@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/24/2018
+ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 9aed1e903b5af3e5bcf53987ba80c1dcdb06f202
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e78051c4eb0cd79d636a6af31db8ffb6cd7e6aef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Vergleich von Azure Data Factory V1 und V2
 In diesem Artikel wird Azure Data Factory V2 mit V1 verglichen. Eine Einführung in V1 finden Sie unter [Einführung in Azure Data Factory](v1/data-factory-introduction.md). Eine Einführung in V2 finden Sie [hier](introduction.md).
@@ -139,11 +139,7 @@ Die für V2 aktualisierten SDKs sind nicht mit V1-Clients kompatibel.
 
 ## <a name="roles-and-permissions"></a>Rollen und Berechtigungen
 
-Bei der Erstellung und Verwaltung untergeordneter Ressourcen für eine Data Factory v2-Instanz ist Folgendes zu beachten:
-
--   Mit der Rolle „Mitwirkender“ der Data Factory-Version 1 können keine v2-Ressourcen erstellt und verwaltet werden.
--   Die standardmäßige ARM-Rolle „Mitwirkender“, die für die Data Factory-Ressource erstellt wird, reicht zum Erstellen und Verwalten untergeordneter Ressourcen für eine Data Factory v2-Instanz aus, die mit PowerShell oder den SDKs bereitgestellt wurde. Sie reicht nicht aus, um untergeordnete Ressourcen für eine Data Factory v2-Instanz zu erstellen und zu verwalten, die über das Azure-Portal oder per ARM-Vorlagenbereitstellung bereitgestellt wurde.
--   Zur Erstellung und Verwaltung untergeordneter Ressourcen für eine Data Factory v2-Instanz, die über das Azure-Portal oder per ARM-Vorlagenbereitstellung bereitgestellt wurde, müssen Sie auf der Ressourcengruppen- oder auf der Abonnementebene Mitglied der Rolle „Automation-Auftragsoperator“ sein. Ihre Organisation kann auch eine benutzerdefinierte Rolle mit „Microsoft.Resources/deployments/*“ in der Aktionenliste erstellen, wie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md) beschrieben.
+Mit der Rolle „Mitwirkender“ der Data Factory-Version 1 können Ressourcen von Data Factory V2 erstellt und verwaltet werden.
 
 ## <a name="monitoring-experience"></a>Benutzeroberfläche für die Überwachung
 In V2 können Sie Data Factorys auch unterstützen, indem Sie [Azure Monitor](monitor-using-azure-monitor.md) verwenden. Die neuen PowerShell-Cmdlets unterstützen die Überwachung von [Integrationslaufzeiten](monitor-integration-runtime.md). Sowohl V1 als auch V2 unterstützen die visuelle Überwachung unter Verwendung einer Überwachungsanwendung, die über das Azure-Portal gestartet werden kann.

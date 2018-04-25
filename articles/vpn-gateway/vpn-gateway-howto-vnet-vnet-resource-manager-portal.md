@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: a95fdf078baa35eb9ca8ade462223b204be77d8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7e72e9ff9be0b092bc9425828bab46ffd60f0822
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
 
@@ -127,7 +127,7 @@ Sie können dem VNet nach dem Erstellen weitere Adressräume hinzufügen und Sub
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="gatewaysubnet"></a>3. Erstellen eines Gatewaysubnetzes
-Bevor Sie ein Gateway für Ihr virtuelles Netzwerk erstellen, müssen Sie das Gatewaysubnetz erstellen. Das Gatewaysubnetz enthält die IP-Adressen, die vom Gateway des virtuellen Netzwerks verwendet werden. Erstellen Sie nach Möglichkeit ein Gatewaysubnetz mit einem CIDR-Block vom Typ „/28“ oder „/27“, damit genügend IP-Adressen für zukünftige zusätzliche Konfigurationsanforderungen zur Verfügung stehen.
+Bevor Sie ein Gateway für Ihr virtuelles Netzwerk erstellen, müssen Sie zunächst das Gatewaysubnetz erstellen. Das Gatewaysubnetz enthält die IP-Adressen, die vom Gateway des virtuellen Netzwerks verwendet werden. Erstellen Sie nach Möglichkeit ein Gatewaysubnetz mit einem CIDR-Block vom Typ „/28“ oder „/27“, damit genügend IP-Adressen für zukünftige zusätzliche Konfigurationsanforderungen zur Verfügung stehen.
 
 Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen des Gatewaysubnetzes [diese Beispieleinstellungen](#values) verwenden.
 

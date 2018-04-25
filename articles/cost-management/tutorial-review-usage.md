@@ -1,20 +1,20 @@
 ---
-title: "Tutorial: Überprüfen von Nutzung und Kosten in Azure Cost Management | Microsoft-Dokumentation"
-description: "In diesem Tutorial überprüfen Sie die Nutzung und die Kosten, um Trends nachzuverfolgen, Ineffizienz zu erkennen und Warnungen zu erstellen."
+title: 'Tutorial: Überprüfen von Nutzung und Kosten in Azure Cost Management | Microsoft-Dokumentation'
+description: In diesem Tutorial überprüfen Sie die Nutzung und die Kosten, um Trends nachzuverfolgen, Ineffizienz zu erkennen und Warnungen zu erstellen.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/27/2018
+ms.date: 04/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 558dcd65051c0134a87205dcd8bbf432d7763fd2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 820fea1aa2eb93fb383dca4def9ed607515c29b8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -37,11 +37,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="open-the-cloudyn-portal"></a>Öffnen des Cloudyn-Portals
 
-Die Nutzung und die Kosten werden generell im Cloudyn-Portal überprüft. Öffnen Sie das Cloudyn-Portal über das Azure-Portal, oder navigieren Sie zu https://azure.cloudyn.com, und melden Sie sich dort an.
+Die Nutzung und die Kosten werden generell im Cloudyn-Portal überprüft. Öffnen Sie das Cloudyn-Portal aus dem Azure-Portal, oder navigieren Sie zu https://azure.cloudyn.com, und melden Sie sich dort an.
 
 ## <a name="track-usage-and-cost-trends"></a>Nachverfolgen der Nutzung und der Kosten
 
-Sie verfolgen die tatsächlich für die Nutzung getätigten Ausgaben und die Kosten mit Berichten über den Lauf der Zeit, um Trends zu erkennen. Betrachten Sie Trends ausgehend vom Bericht über die tatsächlichen Kosten im Zeitverlauf. Klicken Sie im Berichtsmenü am oberen Rand des Portals auf **Cost** (Kosten) > **Cost Analysis** (Kostenanalyse) > **Actual Cost Over Time** (Tatsächliche Kosten im Zeitverlauf). Beim erstmaligen Öffnen des Berichts sind keine Gruppen oder Filter darauf angewendet.
+Sie verfolgen die tatsächlich für die Nutzung getätigten Ausgaben und die Kosten mit Berichten über den Lauf der Zeit, um Trends zu erkennen. Betrachten Sie Trends ausgehend vom Bericht über die tatsächlichen Kosten im Zeitverlauf. Klicken Sie im Menü oben im Portal auf **Cost** (Kosten) > **Cost Analysis** (Kostenanalyse) > **Actual Cost Over Time** (Tatsächliche Kosten im Zeitverlauf). Beim erstmaligen Öffnen des Berichts sind keine Gruppen oder Filter darauf angewendet.
 
 Dies ist ein Beispiel für einen Bericht:
 
@@ -69,7 +69,7 @@ Das Problem liegt darin, dass die vorhandene Infrastruktur bereits bezahlt wurde
 
 Im Bericht mit Empfehlungen zu kostengünstigen Größenanpassungen werden potenzielle jährliche Einsparungen ausgewiesen. Dabei wird die Kapazität des jeweiligen VM-Instanztyps mit den historischen Daten zu CPU- und Speichernutzung verglichen.  
 
-Klicken Sie im Berichtsmenü am oberen Rand des Portals auf **Optimizer** (Optimierung) > **Pricing Optimization** (Preisoptimierung) > **Cost Effective Sizing Recommendations** (Empfehlungen zu kostengünstigen Größenanpassungen). Geben Sie im Filter Azure als Anbieter an, um ausschließlich Azure-VMs zu betrachten. In der folgenden Abbildung finden Sie ein Beispiel.
+Klicken Sie im Menü oben im Portal auf **Optimizer** (Optimierung) > **Sizing Optimization** (Größenoptimierung) > **Cost Effective Sizing Recommendations** (Empfehlungen zu kostengünstigen Größenanpassungen). Geben Sie im Filter Azure als Anbieter an, um ausschließlich Azure-VMs zu betrachten. In der folgenden Abbildung finden Sie ein Beispiel.
 
 ![Virtuelle Azure-Computer](./media/tutorial-review-usage/sizing01.png)
 
@@ -87,9 +87,9 @@ Ein Videotutorial zum Ermitteln von Ineffizienzen bei der Nutzung finden Sie unt
 
 Sie können Beteiligte automatisch über Anomalien bei den Ausgaben und Risiken der Budgetüberschreitung benachrichtigen. Sie können schnell und einfach Warnungen auf der Grundlage von Berichten erstellen, die Warnungen anhand von Budget- und Kostenschwellenwerten ausgeben.
 
-Für Ausgaben erstellen Sie eine Warnung anhand eines Kostenberichts. In diesem Beispiel wird mithilfe des Berichts über die tatsächlichen Kosten im Zeitverlauf eine Benachrichtigung an Sie ausgegeben, wenn sich die Azure VM-Ausgaben Ihrem Gesamtbudget nähern. Klicken Sie im Berichtsmenü am oberen Rand des Portals auf **Cost** (Kosten) > **Cost Analysis** (Kostenanalyse) > **Actual Cost Over Time** (Tatsächliche Kosten im Zeitverlauf). Legen Sie **Groups** (Gruppen) auf **Service** (Dienst) und **Filter on the service** (Filtern nach Dienst) auf **Azure/VM** fest. Klicken Sie in der oberen rechten Ecke des Berichts auf **Actions** (Aktionen), und wählen Sie anschließend **Schedule report** (Bericht planen) aus.
+Für Ausgaben erstellen Sie eine Warnung anhand eines Kostenberichts. In diesem Beispiel wird mithilfe des Berichts über die tatsächlichen Kosten im Zeitverlauf eine Benachrichtigung an Sie ausgegeben, wenn sich die Azure VM-Ausgaben Ihrem Gesamtbudget nähern. Zum Erstellen der Warnung sind folgende Schritte erforderlich: Klicken Sie im Menü oben im Portal auf **Cost** (Kosten) > **Cost Analysis** (Kostenanalyse) > **Actual Cost Over Time** (Tatsächliche Kosten im Zeitverlauf). Legen Sie **Groups** (Gruppen) auf **Service** (Dienst) und **Filter on the service** (Filtern nach Dienst) auf **Azure/VM** fest. Klicken Sie in der oberen rechten Ecke des Berichts auf **Actions** (Aktionen), und wählen Sie anschließend **Schedule report** (Bericht planen) aus.
 
-Verwenden Sie die Registerkarte **Scheduling** (Planung), um sich den Bericht in den gewünschten Intervallen per E-Mail zusenden zu lassen. Sämtliche verwendeten Tags, Gruppierungen und Filter sind in dem per E-Mail versendeten Bericht enthalten. Klicken Sie auf die Registerkarte **Threshold** (Schwellenwert), und wählen Sie **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. Wenn Sie über ein Gesamtbudget von 500.000 USD verfügen und eine Benachrichtigung wünschen, wenn sich die Kosten der Hälfte des Budgetbetrags annähern, erstellen Sie eine **rote Warnung** bei 250.000 USD und eine **gelbe Warnung** bei 240.000 USD. Wählen Sie anschließend die Anzahl der aufeinanderfolgenden Warnungen aus. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr versendet. Speichern Sie den geplanten Bericht.
+Verwenden Sie die Registerkarte **Scheduling** (Planung), um sich den Bericht in den gewünschten Intervallen per E-Mail zusenden zu lassen. Wählen Sie unbedingt **Send via email** (Per E-Mail senden). Sämtliche verwendeten Tags, Gruppierungen und Filter sind in dem per E-Mail versendeten Bericht enthalten. Klicken Sie auf die Registerkarte **Threshold** (Schwellenwert), und wählen Sie **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. Wenn Sie über ein Gesamtbudget von 500.000 USD verfügen und eine Benachrichtigung wünschen, wenn sich die Kosten der Hälfte des Budgetbetrags annähern, erstellen Sie eine **rote Warnung** bei 250.000 USD und eine **gelbe Warnung** bei 240.000 USD. Verwenden Sie keine Kommas in eingegebenen Werten. Wählen Sie anschließend die Anzahl der aufeinanderfolgenden Warnungen aus. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr versendet. Speichern Sie den geplanten Bericht.
 
 ![Beispielbericht](./media/tutorial-review-usage/schedule-alert01.png)
 

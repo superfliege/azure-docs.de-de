@@ -1,11 +1,11 @@
 ---
 title: Erstellen eines Batch-Kontos im Azure-Portal | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie ein Azure Batch-Konto im Azure-Portal erstellen, um umfangreiche parallele Workloads in der Cloud auszuführen."
+description: Erfahren Sie, wie Sie ein Azure Batch-Konto im Azure-Portal erstellen, um umfangreiche parallele Workloads in der Cloud auszuführen.
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
 ms.workload: big-compute
@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5efe804806cb9c14a483e7393f0e8202897d53d6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6374e49f3f682d022613e3e5244d273337213311
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
 > [!div class="op_single_selector"]
-> * [Azure portal](batch-account-create-portal.md)
+> * [Azure-Portal](batch-account-create-portal.md)
 > * [Batch Management .NET](batch-management-dotnet.md)
 >
 >
@@ -58,7 +58,7 @@ Hintergrundinformationen zu Batch-Konten und -Szenarien finden Sie in der [Funkt
 
     d. **Standort**: Die Azure-Region, in der das Batch-Konto erstellt werden soll. Nur die von Ihrem Abonnement und der Ressourcengruppe unterstützten Regionen werden als Optionen angezeigt.
 
-    e. **Speicherkonto** (optional): Ein allgemeines Azure Storage-Konto, das Sie dem Batch-Konto zuordnen. Dies ist bei den meisten Batch-Konten empfehlenswert. Ausführliche Informationen finden Sie weiter unten in diesem Artikel unter [Verknüpftes Azure-Speicherkonto](#linked-azure-storage-account).
+    e. **Speicherkonto** (optional): Ein Azure Storage-Konto, das Sie dem Batch-Konto zuordnen. Dies ist bei den meisten Batch-Konten empfehlenswert. Ausführliche Informationen finden Sie weiter unten in diesem Artikel unter [Verknüpftes Azure-Speicherkonto](#linked-azure-storage-account).
 
 4. Klicken Sie auf **Erstellen** , um das Konto zu erstellen.
 
@@ -85,11 +85,11 @@ Klicken Sie nach der Kontoerstellung auf das Konto, um auf dessen Einstellungen 
 
 ## <a name="linked-azure-storage-account"></a>Verknüpftes Azure-Speicherkonto
 
-Sie können ein allgemeines Azure Storage-Konto mit Ihrem Batch-Konto verknüpfen. Dies ist in zahlreichen Szenarien hilfreich. Das Feature [Anwendungspakete](batch-application-packages.md) von Batch verwendet ebenso wie die .NET-Bibliothek [Batch-Dateikonventionen](batch-task-output.md) Azure Blob Storage. Diese optionalen Features unterstützen Sie beim Bereitstellen der von Ihren Batch-Aufgaben ausgeführten Anwendungen und Beibehalten der von ihnen erzeugten Daten.
+Sie können ein Azure Storage-Konto mit Ihrem Batch-Konto verknüpfen. Dies ist in zahlreichen Szenarien hilfreich. Das Feature [Anwendungspakete](batch-application-packages.md) von Batch verwendet ebenso wie die .NET-Bibliothek [Batch-Dateikonventionen](batch-task-output.md) Azure Blob Storage. Diese optionalen Features unterstützen Sie beim Bereitstellen der von Ihren Batch-Aufgaben ausgeführten Anwendungen und Beibehalten der von ihnen erzeugten Daten.
 
-Wir empfehlen die Erstellung eines neuen Speicherkontos, das ausschließlich von Ihrem Batch-Konto verwendet wird. Azure Batch unterstützt derzeit nur allgemeine Speicherkonten. Dieser Kontotyp ist unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md) in Schritt 5 ([Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account)) beschrieben.
+Informationen zu den Optionen für Speicherkonten in Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md#azure-storage-account).
 
-![Erstellen eines allgemeinen Speicherkontos][storage_account]
+![Erstellen eines Speicherkontos][storage_account]
 
 > [!NOTE]
 > Gehen Sie beim erneuten Generieren der Zugriffsschlüssel für ein verknüpftes Speicherkonto vorsichtig vor. Generieren Sie nur einen Speicherkontoschlüssel erneut, und klicken Sie auf der Seite des verknüpften Speicherkontos auf **Synchronisierungsschlüssel**. Warten Sie fünf Minuten, damit der Schlüssel an die Computeknoten in Ihren Pools verteilt werden kann. Anschließend können Sie ggf. den anderen Schlüssel erneut generieren und synchronisieren. Wenn Sie beide Schlüssel gleichzeitig generieren, können die Computeknoten keinen der Schlüssel synchronisieren und nicht mehr auf das Speicherkonto zugreifen.

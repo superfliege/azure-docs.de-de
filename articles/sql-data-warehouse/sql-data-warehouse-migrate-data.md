@@ -1,25 +1,20 @@
 ---
 title: Migrieren Ihrer Daten nach SQL Data Warehouse | Microsoft Docs
-description: "Tipps für die Migration von Daten in Azure SQL Data Warehouse zum Entwickeln von Lösungen."
+description: Tipps für die Migration von Daten in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: d78f954a-f54c-4aa4-9040-919bc6414887
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: migrate
-ms.date: 06/29/2017
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 0d156bc2eecf8220bd5ff4eb811d91482f216837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: 3839f02d8e083ed384f0d01fccee6ad951477f3b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="migrate-your-data"></a>Migrieren von Daten
 Daten können aus unterschiedlichen Quellen und mithilfe verschiedener Tools in Ihr SQL Data Warehouse verschoben werden.  Zum Erreichen dieses Ziels können die ADF-Kopieraktivität, SSIS und bcp verwendet werden. Mit zunehmender Menge der Daten empfiehlt es sich jedoch, den Vorgang der Datenmigration in verschiedene Schritte aufzugliedern. Dies bietet Ihnen die Möglichkeit, die einzelnen Schritte im Hinblick auf Leistung und Belastbarkeit zu optimieren und so eine reibungslose Datenmigration zu gewährleisten.
@@ -27,7 +22,7 @@ Daten können aus unterschiedlichen Quellen und mithilfe verschiedener Tools in 
 In diesem Artikel werden zunächst einfache Migrationsszenarien der ADF-Kopieraktivität sowie von SSIS und bcp erörtert. Dann wird detaillierter erläutert, wie die Migration optimiert werden kann.
 
 ## <a name="azure-data-factory-adf-copy"></a>Azure Data Factory (ADF)-Kopieraktivität
-Die [ADF-Kopieraktivität][ADF Copy] ist Teil von [Azure Data Factory][Azure Data Factory]. Mithilfe der ADF-Kopieraktivität können Sie Ihre Daten in Flatfiles im lokalen Speicher, in Remoteflatfiles im Azure-Blob-Speicher oder direkt in SQL Data Warehouse exportieren.
+Die [ADF-Kopieraktivität][ADF Copy] ist Teil von [Azure Data Factory][Azure Data Factory]. Mithilfe der ADF-Kopieraktivität können Sie Ihre Daten in Flatfiles im lokalen Speicher, in Remoteflatfiles in Azure Blob Storage oder direkt in SQL Data Warehouse exportieren.
 
 Wenn sich Ihre Daten in Flatfiles befinden, müssen Sie sie zuerst in den Azure-Blobspeicher übertragen. Erst dann können Sie sie in SQL Data Warehouse laden. Nachdem die Daten in Azure Blob Storage übertragen wurden, können Sie sie dann wieder mithilfe der [ADF-Kopieraktivität][ADF Copy] in SQL Data Warehouse übertragen.
 
@@ -109,7 +104,7 @@ Sie müssen jede Spalte in der Datei als Teil der externen Tabelle in PolyBase d
 Ausführliche Informationen zu den unterstützten Datentypen finden Sie im Artikel [Migrieren Ihres Schemas].
 
 ### <a name="location-of-data-files"></a>Speicherort der Datendateien
-SQL Data Warehouse verwendet PolyBase ausschließlich zum Laden von Daten aus dem Azure-Blob-Speicher. Aus diesem Grund müssen die Daten zuerst in den Blob-Speicher übertragen werden.
+SQL Data Warehouse verwendet PolyBase ausschließlich zum Laden von Daten aus Azure Blob Storage. Aus diesem Grund müssen die Daten zuerst in den Blob-Speicher übertragen werden.
 
 ## <a name="optimizing-data-transfer"></a>Optimieren der Datenübertragung
 Einer der langsamsten Schritte bei der Datenmigration ist die Übertragung der Daten in Azure. Dabei kann nicht nur die Netzwerkbandbreite Probleme verursachen, sondern auch die Zuverlässigkeit des Netzwerks zu Beeinträchtigungen führen. Die Migration von Daten in Azure erfolgt standardmäßig über das Internet, sodass mit Übertragungsfehlern zu rechnen ist. Diese Fehler führen jedoch möglicherweise dazu, dass Daten vollständig oder teilweise erneut gesendet werden müssen.
@@ -135,12 +130,12 @@ Der Azure Import/Export-Dienst ist ein Datenübertragungsprozess zur Übertragun
 
 Allgemeine Übersicht über den Import- und Exportprozess:
 
-1. Konfigurieren eines Azure-Blob-Speichercontainers zum Empfangen der Daten
+1. Konfigurieren eines Azure Blob Storage-Containers zum Empfangen der Daten
 2. Exportieren der Daten in den lokalen Speicher
 3. Kopieren der Daten auf SATA II/III-Festplatten (3,5 Zoll) mit dem +++[Azure Import/Export-Tool]
 4. Erstellen eines Importauftrags mithilfe des Azure Import/Export-Diensts mit den vom [Azure Import/Export-Tool] generierten Journaldateien
 5. Versenden der Datenträger an das von Ihnen benannte Azure-Rechenzentrum
-6. Übertragen der Daten in Ihren Azure-Blob-Speichercontainer
+6. Übertragen der Daten in Ihren Azure Blob Storage-Container
 7. Laden der Daten in SQLDW mithilfe von PolyBase
 
 ### <a name="azcopyazcopy-utility"></a>[AZCopy][AZCopy]-Hilfsprogramm
@@ -158,7 +153,7 @@ Allgemeine Übersicht über diesen Prozess:
 
 1. Konfigurieren eines Azure-Blob-Speichercontainers zum Empfangen der Daten
 2. Exportieren der Daten in den lokalen Speicher
-3. Kopieren der Daten in den Azure-Blob-Speichercontainer mithilfe von AZCopy
+3. Kopieren der Daten in den Azure Blob Storage-Container mithilfe von AZCopy
 4. Laden der Daten in SQL Data Warehouse mithilfe von PolyBase
 
 Die vollständige Dokumentation finden Sie hier: [AZCopy][AZCopy].
@@ -172,7 +167,7 @@ Neben dem Sicherstellen, dass der Export den von PolyBase vorgegebenen Anforderu
 PolyBase kann die mit GZip komprimierten Daten lesen. Wenn Sie Ihre Daten in GZip-Dateien komprimieren können, minimieren Sie die Menge der über das Netzwerk übertragenen Daten.
 
 ### <a name="multiple-files"></a>Mehrere Dateien
-Die Unterteilung großer Tabellen in mehrere Dateien verbessert nicht nur die Exportgeschwindigkeit, sondern auch die Neustartfähigkeit bei der Übertragung und die gesamte Verwaltbarkeit der Daten, wenn sie sich im Azure-Blob-Speicher befinden. Einer der vielen Vorteile von PolyBase ist, dass alle Dateien in einem Ordner gelesen und wie eine einzige Tabelle behandelt werden. Es empfiehlt sich daher, die Dateien für die einzelnen Tabellen jeweils in einem separaten Ordner zu speichern.
+Die Unterteilung großer Tabellen in mehrere Dateien verbessert nicht nur die Exportgeschwindigkeit, sondern auch die Neustartfähigkeit bei der Übertragung und die gesamte Verwaltbarkeit der Daten, wenn sie sich in Azure Blob Storage befinden. Einer der vielen Vorteile von PolyBase ist, dass alle Dateien in einem Ordner gelesen und wie eine einzige Tabelle behandelt werden. Es empfiehlt sich daher, die Dateien für die einzelnen Tabellen jeweils in einem separaten Ordner zu speichern.
 
 PolyBase unterstützt auch eine Funktion zum "rekursiven Ordnerdurchlauf". Mit dieser Funktion können Sie die Organisation der exportierten Daten weiter verbessern und so die Datenverwaltung optimieren.
 
@@ -190,10 +185,11 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][deve
 [ADF samples]: ../data-factory/v1/data-factory-samples.md
 [ADF Copy examples]: ../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md
 [development overview]: sql-data-warehouse-overview-develop.md
+[Migrieren Ihres Schemas]: sql-data-warehouse-migrate-schema.md
 [Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
 [Use bcp to load data into SQL Data Warehouse]: sql-data-warehouse-load-with-bcp.md
-[Use PolyBase to load data into SQL Data Warehouse]: sql-data-warehouse-get-started-load-with-polybase.md
+[Use PolyBase to load data into SQL Data Warehouse]: load-data-wideworldimportersdw.md
 
 
 <!--MSDN references-->

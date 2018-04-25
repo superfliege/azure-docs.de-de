@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cd12808f7e3bbb8a4edfe0d8de1e5b0a007770a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2c164406b3b988b5848f662d544ffa78bd6955d0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -292,7 +292,7 @@ ms.lasthandoff: 04/05/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -966,7 +966,7 @@ In diesem Fall möchten wir eine VHD mit oder ohne Betriebssystem hochladen und 
 
 **PowerShell**
 
-* Melden Sie sich mit *Login-AzureRmAccount* bei Ihrem Abonnement an.
+* Melden Sie sich mit *Connect-AzureRmAccount* bei Ihrem Abonnement an.
 * Legen Sie das Abonnement Ihres Kontexts mit *Set-AzureRmContext* und dem Parameter „SubscriptionId“ oder „SubscriptionName“ fest (siehe <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>).
 * Laden Sie die VHD mit *Add-AzureRmVhd* in ein Azure Storage-Konto hoch (siehe <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>).
 * (Optional) Erstellen Sie mit *New-AzureRMDisk* einen verwalteten Datenträger aus der VHD (siehe <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk>).
@@ -993,7 +993,7 @@ In diesem Fall möchten wir eine VHD mit oder ohne Betriebssystem hochladen und 
 Eine vorhandene VM oder VHD, die Sie aus dem lokalen Netzwerk hochladen möchten, um sie als Azure-VM-Image zu verwenden, muss die Anforderungen erfüllen, die in diesem Dokument im Kapitel [Vorbereitung der Bereitstellung eines virtuellen Computers mit einem kundenspezifischen Image für SAP][planning-guide-5.2.2] beschrieben werden.
 
 * Verwenden Sie *sysprep* (unter Windows) bzw. *waagent -deprovision* (unter Linux), um die VM zu generalisieren (siehe [Technische Referenz zu Sysprep](https://technet.microsoft.com/library/cc766049.aspx) für Windows bzw. [Erfassen eines virtuellen Linux-Computers zur Verwendung als Resource Manager-Vorlage][capture-image-linux-step-2-create-vm-image] für Linux).
-* Melden Sie sich mit *Login-AzureRmAccount* bei Ihrem Abonnement an.
+* Melden Sie sich mit *Connect-AzureRmAccount* bei Ihrem Abonnement an.
 * Legen Sie das Abonnement Ihres Kontexts mit *Set-AzureRmContext* und dem Parameter „SubscriptionId“ oder „SubscriptionName“ fest (siehe <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>).
 * Laden Sie die VHD mit *Add-AzureRmVhd* in ein Azure Storage-Konto hoch (siehe <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>).
 * (Optional) Erstellen Sie mit *New-AzureRMDisk* einen verwalteten Datenträger aus der VHD (siehe <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage>).

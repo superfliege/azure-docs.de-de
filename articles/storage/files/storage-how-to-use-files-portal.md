@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
-ms.openlocfilehash: 588d260bb939c8f6439ca66828296ea455f1524a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 9b8a7988be2c3a2622dd45a264abcb674b7d169e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="managing-azure-file-shares-with-the-azure-portal"></a>Verwalten von Azure-Dateifreigaben mit dem Azure-Portal 
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können unter Windows, Linux und macOS bereitgestellt werden. In dieser Anleitung werden die Grundlagen der Arbeit mit Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com/) Schritt für Schritt beschrieben. In diesem Artikel werden folgende Themen erläutert:
@@ -47,10 +47,10 @@ Gehen Sie wie folgt vor, um eine Dateifreigabe zu erstellen:
 4. Geben Sie unter **Name** den Namen *myshare* ein.
 5. Klicken Sie auf **OK**, um die Azure-Dateifreigabe zu erstellen.
 
-## <a name="manipulating-the-contents-of-the-azure-file-share"></a>Bearbeiten des Inhalts der Azure-Dateifreigabe
-Nachdem Sie nun eine Azure-Dateifreigabe erstellt haben, können Sie die Dateifreigabe mit SMB unter [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) oder [macOS](storage-how-to-use-files-mac.md) bereitstellen. Alternativ hierzu können Sie Ihre Azure-Dateifreigabe mit dem Azure-Portal ändern. Alle Anforderungen über das Azure-Portal werden mit der Datei-REST-API durchgeführt, sodass Sie Dateien und Verzeichnisse ohne SMB-Zugriff erstellen, ändern und löschen können.
+## <a name="work-with-the-contents-of-the-azure-file-share"></a>Bearbeiten des Inhalts der Azure-Dateifreigabe
+Nachdem Sie nun eine Azure-Dateifreigabe erstellt haben, können Sie die Dateifreigabe mit SMB unter [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) oder [macOS](storage-how-to-use-files-mac.md) bereitstellen. Alternativ hierzu können Sie mit Ihrer Azure-Dateifreigabe im Azure-Portal arbeiten. Alle Anforderungen über das Azure-Portal werden mit der Datei-REST-API durchgeführt, sodass Sie Dateien und Verzeichnisse ohne SMB-Zugriff erstellen, ändern und löschen können.
 
-### <a name="create-directory"></a>Erstellen eines Verzeichnisses
+### <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
 Gehen Sie wie folgt vor, um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen:
 
 1. Wählen Sie auf der Seite **Dateidienst** die Dateifreigabe **myshare** aus. Die Seite für Ihre Dateifreigabe wird geöffnet.

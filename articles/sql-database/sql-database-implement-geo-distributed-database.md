@@ -9,11 +9,11 @@ ms.custom: mvc,business continuity
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 569eef6e1d930e505bc6dff9b692814438e5bd4d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: fbd239c3c8c11b1907a6d28eb95d2c0ad26cfe61
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="implement-a-geo-distributed-database"></a>Implementieren einer geografisch verteilten Datenbank
 
@@ -179,7 +179,7 @@ Installieren Sie [Maven](https://maven.apache.org/download.cgi) unter Verwendung
 
 4. Öffnen Sie in Ihrem bevorzugten Editor die Datei „pom.xml“ im Projektordner. 
 
-5. Fügen Sie dem Maven-Projekt die Abhängigkeit „Microsoft JDBC Driver for SQL Server“ hinzu, indem Sie Ihren bevorzugten Text-Editor öffnen, die folgenden Zeilen kopieren und in die Datei „pom.xml“ einfügen. Überschreiben Sie nicht die vorhandenen Werte, mit denen die Datei bereits gefüllt ist. Die JDBC-Abhängigkeit muss innerhalb des größeren Abschnitts „dependencies“ ( ) eingefügt werden.   
+5. Fügen Sie dem Maven-Projekt die Abhängigkeit „Microsoft JDBC-Treiber für SQL Server“ hinzu, indem Sie Ihren bevorzugten Text-Editor öffnen, die folgenden Zeilen kopieren und in die Datei „pom.xml“ einfügen. Überschreiben Sie nicht die vorhandenen Werte, mit denen die Datei bereits gefüllt ist. Die JDBC-Abhängigkeit muss innerhalb des größeren Abschnitts „dependencies“ ( ) eingefügt werden.   
 
    ```xml
    <dependency>
@@ -380,4 +380,17 @@ Installieren Sie [Maven](https://maven.apache.org/download.cgi) unter Verwendung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Aktive Georeplikation und Failovergruppen](sql-database-geo-replication-overview.md).
+In diesem Tutorial haben Sie erfahren, wie Sie eine Azure SQL-Datenbank-Instanz und Anwendung für das Failover zu einer Remoteregion konfigurieren und dann Ihren Failoverplan testen.  Es wurde Folgendes vermittelt: 
+
+> [!div class="checklist"]
+> * Erstellen von Datenbankbenutzern und Gewähren von Berechtigungen
+> * Einrichten einer Firewallregel auf Datenbankebene
+> * Erstellen einer Georeplikations-Failovergruppe
+> * Erstellen und Kompilieren einer Java-Anwendung zum Abfragen einer Azure SQL-Datenbank
+> * Durchführen eines Notfallwiederherstellungsverfahrens
+
+Im nächsten Tutorial erfahren Sie, wie Sie eine verwaltete Instanz erstellen.
+
+> [!div class="nextstepaction"]
+>[Erstellen einer verwalteten Instanz](sql-database-managed-instance-create-tutorial-portal.md)
+

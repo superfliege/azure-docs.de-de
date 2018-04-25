@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer verwalteten Azure-Anwendung per Azure CLI | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie eine verwaltete Azure-Anwendung erstellen, die für Mitglieder Ihrer Organisation vorgesehen ist."
+description: Erfahren Sie, wie Sie eine verwaltete Azure-Anwendung erstellen, die für Mitglieder Ihrer Organisation vorgesehen ist.
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2017
+ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35059603096279f7d58da1c1b40dd2ab3f1b5c38
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 46ea192220ced18b25d60030527d1f76fb37962a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-deploy-an-azure-managed-application-with-azure-cli"></a>Erstellen und Bereitstellen einer verwalteten Azure-Anwendung per Azure CLI
 
@@ -22,7 +22,7 @@ Dieser Artikel enthält eine Einführung in die Verwendung von verwalteten Anwen
 
 Nach Abschluss des Vorgangs verfügen Sie über drei Ressourcengruppen, die unterschiedliche Teile der verwalteten Anwendung enthalten.
 
-| Ressourcengruppe | Contains | Beschreibung |
+| Ressourcengruppe | Contains | BESCHREIBUNG |
 | -------------- | -------- | ----------- |
 | appDefinitionGroup | Die Definition der verwalteten Anwendung. | Der Herausgeber erstellt diese Ressourcengruppe und die Definition der verwalteten Anwendung. Alle Benutzer, die Zugriff auf die Definition der verwalteten Anwendung haben, können sie bereitstellen. |
 | applicationGroup | Die Instanz der verwalteten Anwendung. | Der Consumer erstellt diese Ressourcengruppe und die Instanz der verwalteten Anwendung. Der Consumer kann die verwaltete Anwendung über diese Instanz aktualisieren. |
@@ -75,7 +75,7 @@ Nachdem die Ausführung des Befehls abgeschlossen ist, verfügen Sie in Ihrer Re
 Im vorigen Beispiel werden u.a. folgende Parameter verwendet:
 
 * **resource-group:** Der Name der Ressourcengruppe, in der die Definition für die verwaltete Anwendung erstellt wird.
-* **lock-level**: Der Typ der Sperre, der auf die verwaltete Ressourcengruppe angewendet wird. Er verhindert, dass der Kunde unerwünschte Vorgänge für diese Ressourcengruppe durchführt. Derzeit ist „ReadOnly“ die einzige unterstützte Sperrebene. Wenn „ReadOnly“ festgelegt wird, sind die in der verwalteten Ressourcengruppe vorhandenen Ressourcen für den Kunden schreibgeschützt.
+* **lock-level**: Der Typ der Sperre, der auf die verwaltete Ressourcengruppe angewendet wird. Er verhindert, dass der Kunde unerwünschte Vorgänge für diese Ressourcengruppe durchführt. Derzeit ist „ReadOnly“ die einzige unterstützte Sperrebene. Wenn „ReadOnly“ festgelegt wird, sind die in der verwalteten Ressourcengruppe vorhandenen Ressourcen für den Kunden schreibgeschützt. Dies gilt nicht für Herausgeberidentitäten, denen Zugriff auf die verwaltete Ressourcengruppe gewährt wird.
 * **authorizations**: Beschreibt die Prinzipal-ID und die Rollendefinitions-ID, die zum Erteilen von Berechtigungen für die verwaltete Ressourcengruppe verwendet werden. Diese ist im Format `<principalId>:<roleDefinitionId>` angegeben. Für diese Eigenschaft können auch mehrere Werte angegeben werden. Wenn mehrere Werte erforderlich sind, sollten sie in diesem Format angegeben werden: `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Mehrere Werte werden durch ein Leerzeichen voneinander getrennt.
 * **package-file-uri**: Der Speicherort eines ZIP-Pakets, das die erforderlichen Dateien enthält. Das Paket enthält mindestens die Dateien **mainTemplate.json** und **createUiDefinition.json**. Die Datei **mainTemplate.json** definiert die Azure-Ressourcen, die als Teil der verwalteten Anwendung bereitgestellt werden. Die Vorlage unterscheidet sich nicht von anderen regulären Resource Manager-Vorlagen. Die Datei **createUiDefinition.json** generiert die Benutzeroberfläche für Benutzer, die die verwaltete Anwendung über das Portal erstellen.
 

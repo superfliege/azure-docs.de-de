@@ -1,11 +1,11 @@
 ---
 title: Verwalten von Arbeitsbereichen in Azure Log Analytics | Microsoft-Dokumentation
-description: "Sie können Arbeitsbereiche in Azure Log Analytics verwalten, indem Sie verschiedene Verwaltungsaufgaben für Benutzer, Konten, Arbeitsbereiche und Azure-Konten verwenden."
+description: Sie können Arbeitsbereiche in Azure Log Analytics verwalten, indem Sie verschiedene Verwaltungsaufgaben für Benutzer, Konten, Arbeitsbereiche und Azure-Konten verwenden.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: d0e5162d-584b-428c-8e8b-4dcaa746e783
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 6caa0c8769ea6e62a22659089f37f74f6962e1c7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: af648e97f5913ef7413f72db8e19aa5ea69d6d09
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
 
@@ -77,7 +77,7 @@ Standardmäßig wird der Besitzer des Microsoft- oder Organisationskontos, mit d
 Es gibt zwei Berechtigungsmodelle, mit denen der Zugriff auf einen Log Analytics-Arbeitsbereich gesteuert wird:
 
 1. Ältere Log Analytics-Benutzerrollen
-2. [Rollenbasierter Zugriff in Azure](../active-directory/role-based-access-control-configure.md)
+2. [Rollenbasierter Zugriff in Azure](../role-based-access-control/role-assignments-portal.md)
 
 In der folgenden Tabelle sind die Zugriffsmöglichkeiten aufgeführt, die für die einzelnen Berechtigungsmodelle festgelegt werden können:
 
@@ -104,7 +104,7 @@ Für die folgenden Aktivitäten sind ebenfalls Azure-Berechtigungen erforderlich
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Verwalten des Zugriffs auf Log Analytics mit Azure-Berechtigungen
-Führen Sie die Schritte unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md) aus, um den Zugriff auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen zu gewähren.
+Führen Sie die Schritte unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md) aus, um den Zugriff auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen zu gewähren.
 
 Azure verfügt über zwei integrierte Benutzerrollen für Log Analytics:
 - Log Analytics-Leser
@@ -156,7 +156,7 @@ Mit diesen Rollen können Sie Benutzern Zugriff auf verschiedenen Ebenen gewähr
 - Ressourcengruppe: Zugriff auf alle Arbeitsbereiche in der Ressourcengruppe
 - Ressource: Nur Zugriff auf den angegebenen Arbeitsbereich
 
-Verwenden Sie [benutzerdefinierte Rollen](../active-directory/role-based-access-control-custom-roles.md), um Rollen mit spezifischen Berechtigungen zu erstellen.
+Verwenden Sie [benutzerdefinierte Rollen](../role-based-access-control/custom-roles.md), um Rollen mit spezifischen Berechtigungen zu erstellen.
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Azure-Benutzerrollen und Benutzerrollen des Log Analytics-Portals
 Wenn Sie mindestens über die Azure-Leseberechtigung für den Log Analytics-Arbeitsbereich verfügen, können Sie das OMS-Portal öffnen, indem Sie beim Anzeigen des Log Analytics-Arbeitsbereichs auf die Aufgabe **OMS-Portal** klicken.
@@ -174,11 +174,11 @@ Ihre Rollenzuweisung im OMS-Portal wird wie folgt ermittelt:
 | Für per Cloud Solution Provider (CSP) verwaltete Abonnements. <br> Das Konto, mit dem Sie angemeldet sind, befindet sich unter der Azure Active Directory-Instanz, die mit dem Arbeitsbereich verknüpft ist. | Administrator | Normalerweise der Kunde eines CSP |
 | Für per Cloud Solution Provider (CSP) verwaltete Abonnements. <br> Das Konto, mit dem Sie angemeldet sind, befindet sich nicht unter der Azure Active Directory-Instanz, die mit dem Arbeitsbereich verknüpft ist. | Mitwirkender | Normalerweise der CSP |
 
-<sup>1</sup> Weitere Informationen zu Rollendefinition finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md). Beim Auswerten von Rollen ist die Aktion `*` nicht äquivalent zu `Microsoft.OperationalInsights/workspaces/*`.
+<sup>1</sup> Weitere Informationen zu Rollendefinition finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md). Beim Auswerten von Rollen ist die Aktion `*` nicht äquivalent zu `Microsoft.OperationalInsights/workspaces/*`.
 
 Wichtige Punkte zum Azure-Portal:
 
-* Wenn Sie sich über „http://mms.microsoft.com“ beim OMS-Portal anmelden, wird die Liste **Arbeitsbereich auswählen** angezeigt. Diese Liste enthält nur Arbeitsbereiche, für die Sie über eine Log Analytics-Benutzerrolle verfügen. Zum Anzeigen der Arbeitsbereiche, auf die Sie mit Azure-Abonnements zugreifen können, müssen Sie als Teil der URL einen Mandanten angeben. Beispiel: `mms.microsoft.com/?tenant=contoso.com`. Die Mandanten-ID ist häufig dieser letzte Teil der E-Mail-Adresse, die Sie bei der Anmeldung verwenden.
+* Wenn Sie sich über http://mms.microsoft.com beim OMS-Portal anmelden, wird die Liste **Arbeitsbereich auswählen** angezeigt. Diese Liste enthält nur Arbeitsbereiche, für die Sie über eine Log Analytics-Benutzerrolle verfügen. Zum Anzeigen der Arbeitsbereiche, auf die Sie mit Azure-Abonnements zugreifen können, müssen Sie als Teil der URL einen Mandanten angeben. Beispiel: `mms.microsoft.com/?tenant=contoso.com`. Die Mandanten-ID ist häufig dieser letzte Teil der E-Mail-Adresse, die Sie bei der Anmeldung verwenden.
 * Wenn Sie direkt zu einem Portal navigieren möchten, auf das Sie mit Azure-Berechtigungen Zugriff haben, müssen Sie die Ressource als Teil der URL angeben. Es ist möglich, diese URL mit PowerShell abzurufen.
 
   Beispiel: `(Get-AzureRmOperationalInsightsWorkspace).PortalUrl`.

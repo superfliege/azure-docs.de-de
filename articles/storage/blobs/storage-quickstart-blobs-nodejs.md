@@ -1,19 +1,19 @@
 ---
-title: Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit Node.js | Microsoft-Dokumentation
-description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für Node.js, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
+title: 'Azure-Schnellstart: Erstellen eines Blobs im Objektspeicher mithilfe von Node.js | Microsoft-Dokumentation'
+description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Anschließend verwenden Sie die Speicherclientbibliothek für Node.js, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 services: storage
 author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: 8783b83a1a94caf4a49f9da7a2dd30c9cb52df22
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 30a64ec6fd4df63eba9c35f1774c81c35fa3506f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Node.js
 
@@ -82,7 +82,7 @@ Die Module haben den folgenden Zweck:
 - *dotenv* lädt Umgebungsvariablen, die in der Datei *.env* definiert sind, in den aktuellen Ausführungskontext.
 - *path* ist erforderlich, um den absoluten Dateipfad der Datei zu ermitteln, die in Blobspeicher hochgeladen werden soll.
 - *yargs* macht eine einfache Oberfläche zum Zugreifen auf Befehlszeilenargumente verfügbar.
-- *azure-storage* ist das [Azure Storage-SDK](/nodejs/api/azure-storage)-Modul für Node.js.
+- *azure-storage* ist das [Azure Storage-SDK](https://docs.microsoft.com/javascript/api/azure-storage)-Modul für Node.js.
 
 Als Nächstes wird eine Reihe von Variablen initialisiert:
 
@@ -294,4 +294,4 @@ In dieser Schnellstartanleitung wurde veranschaulicht, wie Sie den Upload einer 
 > [!div class="nextstepaction"]
 > [Gewusst wie: Blob Storage-Vorgänge](storage-nodejs-how-to-use-blob-storage.md)
 
-Die Node.js-Referenz für Azure Storage finden Sie unter [azure-storage package](https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-latest) (azure-storage-Paket).
+Die Node.js-Referenz für Azure Storage finden Sie unter [azure-storage package](https://docs.microsoft.com/javascript/api/azure-storage) (azure-storage-Paket).

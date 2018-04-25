@@ -1,6 +1,6 @@
 ---
-title: "Überwachung und Problembehandlung für eine Cloudspeicheranwendung in Azure | Microsoft-Dokumentation"
-description: "Sie können Diagnosetools, Metriken und Warnungen für die Problembehandlung und Überwachung von Cloudanwendungen verwenden."
+title: Überwachung und Problembehandlung für eine Cloudspeicheranwendung in Azure | Microsoft-Dokumentation
+description: Sie können Diagnosetools, Metriken und Warnungen für die Problembehandlung und Überwachung von Cloudanwendungen verwenden.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: a1b3a1d4bb397e19f033b8f3bfe68ca6a63725c4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: eb58104309802125a8424cbbf8a1bef3d1c5e79c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Überwachung und Problembehandlung für eine Cloudspeicheranwendung
 
@@ -41,11 +41,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
 
 Wählen Sie im linken Menü **Ressourcengruppen**, **myResourceGroup** und dann Ihr Speicherkonto in der Ressourcenliste aus.
 
-Legen Sie unter **Diagnose** die Option **Status** auf **Ein** fest. Stellen Sie sicher, dass die Optionen **Aggregierte Blobmetriken**, **Blobmetriken pro API** und **Blobprotokolle** aktiviert sind.
+Legen Sie unter **Diagnose** die Option **Status** auf **Ein** fest. Stellen Sie sicher, dass alle Optionen unter **Blob-Eigenschaften** aktiviert sind.
 
 Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
-![Diagnosebereich](media/storage-monitor-troubleshoot-storage-application/figure1.png)
+![Diagnosebereich](media/storage-monitor-troubleshoot-storage-application/contoso.png)
 
 ## <a name="enable-alerts"></a>Aktivieren von Warnungen
 

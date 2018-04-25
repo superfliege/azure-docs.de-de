@@ -13,19 +13,50 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/05/2018
 ms.author: iainfou
-ms.openlocfilehash: dee06eee045bc24c2864333a66a6d145a771b3ad
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 660f75440d7d93562a3a17f646d5d284196e073d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet
+
 Um Ihre VM-Skalierungsgruppen vor Fehlern auf Rechenzentrumsebene zu schützen, können Sie eine Skalierungsgruppe über mehrere Verfügbarkeitszonen erstellen. Azure-Regionen, die Verfügbarkeitszonen unterstützen, weisen mindestens drei getrennte Zonen auf, mit je eigener, unabhängiger Stromquelle, Netzwerk und Kühlung. Weitere Informationen finden Sie in der [Overview of Availability Zones (Übersicht über Verfügbarkeitszonen)](../availability-zones/az-overview.md).
 
+## <a name="availability-considerations"></a>Überlegungen zur Verfügbarkeit
+
+Beim Bereitstellen einer Skalierungsgruppe in einer oder mehreren Zonen haben Sie ab API-Version *2017-12-01* die Möglichkeit, die „maximale Zuweisung“ oder die „statische Zuweisung mit fünf Fehlerdomänen“ zu verwenden. Bei der maximalen Zuweisung verteilt die Skalierungsgruppe Ihre VMs in jeder Zone auf so viele Fehlerdomänen wie möglich. Diese Zuweisung kann für mehr oder weniger als fünf Fehlerdomänen pro Zone erfolgen. Bei der „statischen Zuweisung mit fünf Fehlerdomänen“ verteilt die Skalierungsgruppe Ihre VMs exakt auf fünf Fehlerdomänen pro Zone. Wenn die Skalierungsgruppe nicht fünf einzelne Fehlerdomänen pro Zone finden kann, um die Zuordnungsanforderung zu erfüllen, ist die Anforderung nicht erfolgreich.
+
+**Wir empfehlen die Bereitstellung mit maximaler Zuweisung für die meisten Workloads**, da diese Vorgehensweise normalerweise die bestmögliche Zuweisung ergibt. Falls bei Ihnen Replikate auf einzelne Einheiten für die Hardwareisolation verteilt werden müssen, raten wir Ihnen zum Verteilen auf Verfügbarkeitszonen und zur Verwendung der maximalen Zuweisung in jeder Zone.
+
+Bei der maximalen Zuweisung ist in der VM-Instanzansicht für Skalierungsgruppen und in den Instanzmetadaten nur eine Fehlerdomäne zu sehen. Dies gilt unabhängig davon, auf wie viele Fehlerdomänen die VMs verteilt werden. Die Zuweisung in einer Zone erfolgt jeweils implizit.
+
+Legen Sie *platformFaultDomainCount* auf *1* fest, um die maximale Zuweisung zu verwenden. Legen Sie *platformFaultDomainCount* auf *5* fest, um die statische Zuweisung mit fünf Fehlerdomänen zu verwenden. In API-Version *2017-12-01* ist *platformFaultDomainCount* für Skalierungsgruppen für eine oder mehrere Zonen standardmäßig auf *1* festgelegt. Derzeit wird für regionale Skalierungsgruppen nur die statische Zuweisung mit fünf Fehlerdomänen unterstützt.
+
+### <a name="placement-groups"></a>Platzierungsgruppen
+
+Bei der Bereitstellung einer Skalierungsgruppe haben Sie auch die Möglichkeit, diese mit einer einzelnen oder mit mehreren [Platzierungsgruppen](./virtual-machine-scale-sets-placement-groups.md) pro Verfügbarkeitszone durchzuführen. Bei regionalen Skalierungsgruppen ist eine Auswahl zwischen einer einzelnen oder mehreren Platzierungsgruppen in der Region möglich. Für die meisten Workloads empfehlen wir mehrere Platzierungsgruppen, um eine bessere Skalierbarkeit zu erzielen. In API-Version *2017-12-01* werden für Skalierungsgruppen standardmäßig mehrere Platzierungsgruppen für einzelne Zonen und mehrere Zonen verwendet, aber für regionale Skalierungsgruppen wird standardmäßig nur eine einzelne Platzierungsgruppe genutzt.
+
+> [!NOTE]
+> Bei der maximalen Zuweisung müssen Sie mehrere Platzierungsgruppen verwenden.
+
+### <a name="zone-balancing"></a>Sicherstellen eines Zonengleichgewichts
+
+Für Skalierungsgruppen, die über mehrere Zonen hinweg bereitgestellt werden, können Sie auch „bestmögliches Zonengleichgewicht“ oder „strenges Zonengleichgewicht“ wählen. Eine Skalierungsgruppe befindet sich „im Gleichgewicht“, wenn die Anzahl von VMs in jeder Zone innerhalb einer VM-Anzahl aller anderen Zonen der Skalierungsgruppe liegt. Beispiel: 
+
+- Eine Skalierungsgruppe wird mit zwei VMs in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 als im Gleichgewicht befindlich angesehen.
+- Eine Skalierungsgruppe wird mit einer VM in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 als nicht im Gleichgewicht befindlich angesehen.
+
+Es ist möglich, dass VMs in der Skalierungsgruppe erfolgreich erstellt werden, dies ist für die Bereitstellung von Erweiterungen dieser VMs jedoch nicht der Fall. Diese VMs mit Erweiterungsfehlern werden trotzdem mitgezählt, wenn ermittelt wird, ob sich eine Skalierungsgruppe im Gleichgewicht befindet. Eine Skalierungsgruppe mit drei VMs in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 wird beispielsweise auch dann als im Gleichgewicht befindlich angesehen, wenn alle Erweiterungen in Zone 1 nicht erfolgreich und alle Erweiterungen in den Zonen 2 und 3 erfolgreich waren.
+
+Beim bestmöglichen Zonengleichgewicht versucht die Skalierungsgruppe, das horizontale Herunter- und Hochskalieren durchzuführen, während das Gleichgewicht beibehalten wird. Falls dies aus bestimmten Gründen nicht möglich ist (wenn beispielsweise eine Zone ausfällt und die Skalierungsgruppe in dieser Zone keine neue VM erstellen kann), lässt die Skalierungsgruppe ein vorübergehendes Ungleichgewicht zu, um das erfolgreiche horizontale Herunter- und Hochskalieren zu ermöglichen. Bei den nachfolgenden Versuchen zur horizontalen Skalierung fügt die Skalierungsgruppe den Zonen VMs hinzu, die mehr VMs benötigen, damit sich die Skalierungsgruppe im Gleichgewicht befindet. Entsprechend entfernt die Skalierungsgruppe bei nachfolgenden Versuchen, das horizontale Herunterskalieren durchzuführen, VMs aus den Zonen, die weniger VMs benötigen, damit sich die Skalierungsgruppe im Gleichgewicht befindet. Beim „strengen Zonengleichgewicht“ enden für die Skalierungsgruppe alle Versuche zum horizontalen Herunter- oder Hochskalieren mit einem Fehler, falls dies zu einem Ungleichgewicht führen würde.
+
+Legen Sie *zoneBalance* auf *false* fest, um das bestmögliche Zonengleichgewicht zu verwenden. Dies ist die Standardeinstellung in API-Version *2017-12-01*. Legen Sie *zoneBalance* auf *true* fest, um das strenge Zonengleichgewicht zu verwenden.
 
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>Skalierungsgruppen mit einer Zone und zonenredundante Skalierungsgruppen
+
 Wenn Sie eine VM-Skalierungsgruppe bereitstellen, können eine einzelne Verfügbarkeitszone in einer Region oder mehrere Zonen verwenden.
 
 Wenn Sie eine Skalierungsgruppe in einer einzelnen Zone erstellen, können Sie steuern, in welcher Zone alle diese VM-Instanzen ausgeführt werden. Die Skalierungsgruppe wird dann nur innerhalb dieser Zone verwaltet und automatisch skaliert. Durch eine zonenredundante Skalierungsgruppe können Sie eine einzelne Skalierungsgruppe erstellen, die sich über mehrere Zonen erstreckt. Während der Erstellung werden VM-Instanzen standardmäßig gleichmäßig auf Zonen verteilt. Wenn in einer der Zonen eine Unterbrechung auftritt, wird eine Skalierungsgruppe nicht automatisch horizontal hochskaliert, um die Kapazität zu erhöhen. Eine bewährte Methode besteht darin, Regeln für die automatische Skalierung anhand der CPU- oder Arbeitsspeicherauslastung zu konfigurieren. Über diese Regeln für automatische Skalierung könnte die Skalierungsgruppe auf den Verlust der VM-Instanzen in dieser einen Zone reagieren, indem neue Instanzen in den verbleibenden betriebsbereiten Zonen horizontal hochskaliert werden.
@@ -37,31 +68,16 @@ Damit Verfügbarkeitszonen verwendet werden können, muss Ihre Skalierungsgruppe
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure-Ressourcen-Manager-Vorlagen](#use-azure-resource-manager-templates)
 
-## <a name="availability-considerations"></a>Überlegungen zur Verfügbarkeit
-Ab API-Version 2017-12-01 haben Sie beim Bereitstellen einer Skalierungsgruppe in einer oder mehreren Zonen die Möglichkeit, die „maximale Zuweisung“ oder die „statische Zuweisung mit fünf Fehlerdomänen“ zu verwenden. Bei der maximalen Zuweisung verteilt die Skalierungsgruppe Ihre VMs in jeder Zone auf so viele Fehlerdomänen wie möglich. Diese Zuweisung kann für mehr oder weniger als fünf Fehlerdomänen pro Zone erfolgen. Bei der „statischen Zuweisung mit fünf Fehlerdomänen“ werden Ihre VMs dagegen exakt auf fünf Fehlerdomänen pro Zone verteilt. Wenn die Skalierungsgruppe nicht fünf einzelne Fehlerdomänen pro Zone finden kann, um die Zuteilungsanforderung zu erfüllen, ist die Anforderung nicht erfolgreich.
-
-**Wir empfehlen die Bereitstellung mit maximaler Zuweisung für die meisten Workloads**, da dies normalerweise die bestmögliche Zuweisung ergibt. Falls bei Ihnen Replikate auf einzelne Einheiten für die Hardwareisolation verteilt werden müssen, raten wir Ihnen zum Verteilen auf Verfügbarkeitszonen und zur Verwendung der maximalen Zuweisung in jeder Zone. Beachten Sie, dass bei der maximalen Zuweisung in der VM-Instanzanzeige für Skalierungsgruppen und in den Instanzmetadaten nur eine Fehlerdomäne zu sehen ist. Dies gilt unabhängig davon, auf wie viele Fehlerdomänen die VMs verteilt werden. Die Zuweisung in einer Zone erfolgt jeweils implizit.
-
-Legen Sie „platformFaultDomainCount“ auf „1“ fest, um die maximale Zuweisung zu verwenden. Legen Sie „platformFaultDomainCount“ auf „5“ fest, um die statische Zuweisung mit fünf Fehlerdomänen zu verwenden. In API-Version 2017-12-01 ist „platformFaultDomainCount“ für Skalierungsgruppen für eine oder mehrere Zonen standardmäßig auf „1“ festgelegt. Derzeit wird für regionale Skalierungsgruppen nur die statische Zuweisung mit fünf Fehlerdomänen unterstützt.
-
-Beim Bereitstellen einer Skalierungsgruppe haben Sie auch die Möglichkeit, eine einzelne [Platzierungsgruppe](./virtual-machine-scale-sets-placement-groups.md) pro Verfügbarkeitszone oder mehrere Platzierungsgruppen pro Zone zu verwenden (für regionale Skalierungsgruppen können Sie entweder eine einzelne oder mehrere Platzierungsgruppen in der Region nutzen). Für die meisten Workloads empfehlen wir die Verwendung von mehreren Platzierungsgruppen, um eine bessere Skalierbarkeit zu erzielen. In API-Version 2017-12-01 werden für Skalierungsgruppen standardmäßig mehrere Platzierungsgruppen für einzelne Zonen und mehrere Zonen verwendet, aber für regionale Skalierungsgruppen wird standardmäßig nur eine einzelne Platzierungsgruppe genutzt.
-
->[!NOTE]
-> Bei der maximalen Zuweisung müssen Sie mehrere Platzierungsgruppen verwenden.
-
-Für Skalierungsgruppen, die über mehrere Zonen hinweg bereitgestellt werden, können Sie auch „bestmögliches Zonengleichgewicht“ oder „strenges Zonengleichgewicht“ wählen. Eine Skalierungsgruppe befindet sich „im Gleichgewicht“, wenn die Anzahl von VMs in jeder Zone innerhalb einer VM-Anzahl aller anderen Zonen der Skalierungsgruppe liegt. Beispielsweise wird eine Skalierungsgruppe mit zwei VMs in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 als im Gleichgewicht befindlich angesehen. Eine Skalierungsgruppe mit einer VM in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 befindet sich dagegen nicht im Gleichgewicht. Es ist möglich, dass VMs in der Skalierungsgruppe erfolgreich erstellt werden, während dies für die Erweiterung dieser VMs nicht der Fall ist. Diese VMs mit Erweiterungsfehlern werden trotzdem mitgezählt, wenn ermittelt wird, ob sich eine Skalierungsgruppe im Gleichgewicht befindet. Eine Skalierungsgruppe mit drei VMs in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 wird beispielsweise auch dann als im Gleichgewicht befindlich angesehen, wenn alle Erweiterungen in Zone 1 nicht erfolgreich und alle Erweiterungen in den Zonen 2 und 3 erfolgreich waren. Beim bestmöglichen Zonengleichgewicht versucht die Skalierungsgruppe, das horizontale Herunter- und Hochskalieren durchzuführen, während das Gleichgewicht beibehalten wird. Falls dies aus bestimmten Gründen nicht möglich ist (wenn beispielsweise eine Zone ausfällt und die Skalierungsgruppe in dieser Zone keine neue VM erstellen kann), lässt die Skalierungsgruppe ein vorübergehendes Ungleichgewicht zu, um das erfolgreiche horizontale Herunter- und Hochskalieren zu ermöglichen. Bei den nachfolgenden Versuchen, horizontal hochzuskalieren, fügt die Skalierungsgruppe den Zonen VMs hinzu, die mehr VMs benötigen, damit sich die Skalierungsgruppe im Gleichgewicht befindet. Entsprechend entfernt die Skalierungsgruppe bei nachfolgenden Versuchen, das horizontale Herunterskalieren durchzuführen, VMs aus den Zonen, die weniger VMs benötigen, damit sich die Skalierungsgruppe im Gleichgewicht befindet. Beim strengen Zonengleichgewicht enden für die Skalierungsgruppe alle Versuche zum horizontalen Herunter- oder Hochskalieren mit einem Fehler, falls dies zu einem Ungleichgewicht führen würde.
-
-Legen Sie „zoneBalance“ auf „false“ fest (Standardeinstellung in API-Version 2017-12-01), um das bestmögliche Zonengleichgewicht zu verwenden. Legen Sie „zoneBalance“ auf „true“ fest, um das strenge Zonengleichgewicht zu verwenden.
-
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
-Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](quick-create-portal.md) ausführlich beschrieben wird. Achten Sie darauf, dass Sie sich [für die Vorschau von Verfügbarkeitszonen registriert haben](http://aka.ms/azenroll). Wenn Sie eine unterstützte Azure-Region auswählen, können Sie eine Skalierungsgruppe in einer der Verfügbarkeitszonen erstellen, wie im folgenden Beispiel gezeigt:
 
-![Erstellen einer Skalierungsgruppe in einer einzelnen Verfügbarkeitszone](media/virtual-machine-scale-sets-use-availability-zones/create-portal-single-az.png)
+Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](quick-create-portal.md) ausführlich beschrieben wird. Wenn Sie eine unterstützte Azure-Region auswählen, können Sie eine Skalierungsgruppe in einer oder mehreren Verfügbarkeitszonen erstellen, wie im folgenden Beispiel gezeigt:
+
+![Erstellen einer Skalierungsgruppe in einer einzelnen Verfügbarkeitszone](media/virtual-machine-scale-sets-use-availability-zones/vmss-az-portal.png)
 
 Die Skalierungsgruppe und die unterstützenden Ressourcen, wie etwa der Azure Load Balancer und die öffentliche IP-Adresse, werden in der von Ihnen angegebenen einzelnen Zone erstellt.
 
-
 ## <a name="use-the-azure-cli-20"></a>Verwenden von Azure CLI 2.0
+
 Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](quick-create-cli.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen und [für die Vorschau von Verfügbarkeitszonen registriert sein](http://aka.ms/azenroll).
 
 Fügen Sie dem [az vmss create](/cli/azure/vmss#az_vmss_create)-Befehl den `--zones`-Parameter hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*). Im folgenden Beispiel wird eine Skalierungsgruppe mit einer Zone namens *myScaleSet* in Zone *1* erstellt:
@@ -76,10 +92,12 @@ az vmss create \
     --generate-ssh-keys \
     --zones 1
 ```
+
 Ein vollständiges Beispiel einer Skalierungsgruppe mit einer einzelnen Zone und Netzwerkressourcen finden Sie in [diesem Beispielskript für die Befehlszeilenschnittstelle](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh.).
 
 ### <a name="zone-redundant-scale-set"></a>Zonenredundante Skalierungsgruppe
-Um eine zonenredundante Skalierungsgruppe zu erstellen, verwenden Sie die öffentliche IP-Adresse einer *Standard*-SKU und einen Lastenausgleich. Für eine verbesserte Redundanz erstellt die *Standard*-SKU zonenredundante Netzwerkressourcen. Weitere Informationen finden Sie unter [Übersicht über Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md). 
+
+Um eine zonenredundante Skalierungsgruppe zu erstellen, verwenden Sie die öffentliche IP-Adresse einer *Standard*-SKU und einen Lastenausgleich. Für eine verbesserte Redundanz erstellt die *Standard*-SKU zonenredundante Netzwerkressourcen. Weitere Informationen finden Sie unter [Übersicht über Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
 
 Geben Sie zum Erstellen einer zonenredundanten Skalierungsgruppe mehrere Zonen mit dem Parameter `--zones` an. Im folgenden Beispiel wird eine zonenredundante Skalierungsgruppe namens *myScaleSet* in den Zonen *1, 2 und 3* erstellt:
 
@@ -91,49 +109,50 @@ az vmss create \
     --upgrade-policy-mode automatic \
     --admin-username azureuser \
     --generate-ssh-keys \
-    --zones {1,2,3}
+    --zones 1 2 3
 ```
 
 Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Skalierungsgruppe in den von Ihnen angegebenen Zonen dauert einige Minuten. Ein vollständiges Beispiel einer zonenredundanten Skalierungsgruppe mit Netzwerkressourcen finden Sie in [diesem Beispielskript für die Befehlszeilenschnittstelle](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh).
 
-
 ## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
-Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](quick-create-powershell.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen und [für die Vorschau von Verfügbarkeitszonen registriert sein](http://aka.ms/azenroll). Fügen Sie dem [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig)-Befehl den `-Zone`-Parameter hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*). 
 
-Im folgenden Beispiel wird eine Konfiguration für eine Skalierungsgruppe mit einer einzelnen Zone namens *vmssConfig* in Zone *1* von *USA, Osten 2* erstellt:
+Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen. Fügen Sie dem [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig)-Befehl den `-Zone`-Parameter hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*).
+
+Im folgenden Beispiel wird eine Skalierungsgruppe mit einer einzelnen Zone namens *myScaleSet* in Zone *1* von *USA, Osten 2* erstellt: Die Azure-Netzwerkressourcen für virtuelles Netzwerk, öffentliche IP-Adresse und Lastenausgleich werden automatisch erstellt. Geben Sie Ihre gewünschten Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe an, wenn Sie dazu aufgefordert werden:
 
 ```powershell
-$vmssConfig = New-AzureRmVmssConfig `
-    -Location "East US 2" `
-    -SkuCapacity 2 `
-    -SkuName "Standard_DS2" `
-    -UpgradePolicyMode Automatic `
-    -Zone "1"
+New-AzureRmVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS2" `
+  -VMScaleSetName "myScaleSet" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -PublicIpAddressName "myPublicIPAddress" `
+  -LoadBalancerName "myLoadBalancer" `
+  -UpgradePolicy "Automatic" `
+  -Zone "1"
 ```
-
-Ein vollständiges Beispiel einer Skalierungsgruppe mit einer einzelnen Zone und Netzwerkressourcen finden Sie in [diesem Beispielskript für PowerShell](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.ps1).
 
 ### <a name="zone-redundant-scale-set"></a>Zonenredundante Skalierungsgruppe
-Um eine zonenredundante Skalierungsgruppe zu erstellen, verwenden Sie die öffentliche IP-Adresse einer *Standard*-SKU und einen Lastenausgleich. Für eine verbesserte Redundanz erstellt die *Standard*-SKU zonenredundante Netzwerkressourcen. Weitere Informationen finden Sie unter [Übersicht über Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
 
-Geben Sie zum Erstellen einer zonenredundanten Skalierungsgruppe mehrere Zonen mit dem Parameter `-Zone` an. Im folgenden Beispiel wird eine Konfiguration für eine zonenredundante Skalierungsgruppe namens *myScaleSet* in den Zonen *1, 2 und 3* von *USA, Osten 2* erstellt:
+Geben Sie zum Erstellen einer zonenredundanten Skalierungsgruppe mehrere Zonen mit dem Parameter `-Zone` an. Im folgenden Beispiel wird eine zonenredundante Skalierungsgruppe namens *myScaleSet* in den Zonen *1, 2 und 3* von *USA, Osten 2* erstellt: Die zonenredundanten Azure-Netzwerkressourcen für virtuelles Netzwerk, öffentliche IP-Adresse und Lastenausgleich werden automatisch erstellt. Geben Sie Ihre gewünschten Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe an, wenn Sie dazu aufgefordert werden:
 
 ```powershell
-$vmssConfig = New-AzureRmVmssConfig `
-    -Location "East US 2" `
-    -SkuCapacity 2 `
-    -SkuName "Standard_DS2" `
-    -UpgradePolicyMode Automatic `
-    -Zone "1", "2", "3"
+New-AzureRmVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS2" `
+  -VMScaleSetName "myScaleSet" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -PublicIpAddressName "myPublicIPAddress" `
+  -LoadBalancerName "myLoadBalancer" `
+  -UpgradePolicy "Automatic" `
+  -Zone "1", "2", "3"
 ```
 
-Geben Sie beim Erstellen einer öffentlichen IP-Adresse mit [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) oder eines Lastenausgleichsmoduls mit [New-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/New-AzureRmLoadBalancer) den Zusatz *-SKU "Standard"* an, um die zonenredundanten Netzwerkressourcen zu erstellen. Sie müssen außerdem eine Netzwerksicherheitsgruppe und Regeln zum Zulassen von Datenverkehr erstellen. Weitere Informationen finden Sie unter [Übersicht über Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
-
-Ein vollständiges Beispiel einer zonenredundanten Skalierungsgruppe mit Netzwerkressourcen finden Sie in [diesem Beispielskript für PowerShell](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.ps1).
-
-
 ## <a name="use-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
-Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im Artikel „Erste Schritte“ für [Linux](quick-create-template-linux.md) oder [Windows](quick-create-template-windows.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen und [für die Vorschau von Verfügbarkeitszonen registriert sein](http://aka.ms/azenroll). Fügen Sie in Ihrer Vorlage dem Ressourcentyp *Microsoft.Compute/virtualMachineScaleSets* die Eigenschaft `zones` hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*).
+
+Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im Artikel „Erste Schritte“ für [Linux](quick-create-template-linux.md) oder [Windows](quick-create-template-windows.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen. Fügen Sie in Ihrer Vorlage dem Ressourcentyp *Microsoft.Compute/virtualMachineScaleSets* die Eigenschaft `zones` hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*).
 
 Im folgenden Beispiel wird eine Linux-Skalierungsgruppe mit einer einzelnen Zone namens *myScaleSet* in Zone *1* von *USA, Osten 2* erstellt:
 
@@ -178,6 +197,7 @@ Im folgenden Beispiel wird eine Linux-Skalierungsgruppe mit einer einzelnen Zone
 Ein vollständiges Beispiel einer Skalierungsgruppe mit einer einzelnen Zone und Netzwerkressourcen finden Sie in [dieser Resource Manager-Beispielvorlage](https://github.com/Azure/vm-scale-sets/blob/master/zones/singlezone.json).
 
 ### <a name="zone-redundant-scale-set"></a>Zonenredundante Skalierungsgruppe
+
 Um eine zonenredundante Skalierungsgruppe zu erstellen, geben Sie in der `zones`-Eigenschaft für den Ressourcentyp *Microsoft.Compute/virtualMachineScaleSets* mehrere Werte an. Im folgenden Beispiel wird eine zonenredundante Skalierungsgruppe namens *myScaleSet* in den Zonen *1, 2 und 3* von *USA, Osten 2* erstellt:
 
 ```json
@@ -198,6 +218,6 @@ Wenn Sie eine öffentliche IP-Adresse oder einen Lastenausgleich erstellen, gebe
 
 Ein vollständiges Beispiel einer zonenredundanten Skalierungsgruppe mit Netzwerkressourcen finden Sie in [dieser Resource Manager-Beispielvorlage](https://github.com/Azure/vm-scale-sets/blob/master/zones/multizone.json).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie jetzt eine Skalierungsgruppe in einer Verfügbarkeitszone erstellt haben, können Sie lernen, wie das [Bereitstellen von Anwendungen auf VM-Skalierungsgruppen](virtual-machine-scale-sets-deploy-app.md) oder das [Verwenden von automatischer Skalierung bei VM-Skalierungsgruppen](virtual-machine-scale-sets-autoscale-overview.md) funktioniert.
+
+Nachdem Sie jetzt eine Skalierungsgruppe in einer Verfügbarkeitszone erstellt haben, können Sie lernen, wie das [Bereitstellen von Anwendungen auf VM-Skalierungsgruppen](tutorial-install-apps-cli.md) oder das [Verwenden von automatischer Skalierung bei VM-Skalierungsgruppen](tutorial-autoscale-cli.md) funktioniert.

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/03/2018
 ms.author: cephalin
-ms.openlocfilehash: 66e127e3c2c025818bb972d8937d8fb238d49e15
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4bdb182d93b842bf94e75672b1d7b4cf4f6da253
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -273,7 +273,7 @@ Melden Sie sich am [Azure-Ressourcen-Explorer](https://resources.azure.com) an. 
 
 ![In Azure App Service ausgeführte ASP.NET Core-API](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-Klicken Sie im linken Browser auf **subscriptions** > **_&lt;Ihr\_Abonnement>_** > **resourceGroups** > **myAuthResourceGroup** > **providers** > **Microsoft.Web** > **sites** > **_&lt;Back-\_End-\_App-\_Name>_** > **config** > **authsettings**.
+Klicken Sie im linken Browser auf **subscriptions** > **_&lt;Ihr\_Abonnement>_** > **resourceGroups** > **myAuthResourceGroup** > **providers** > **Microsoft.Web** > **sites** > **_\<Front-\_End-\_App-\_Name>_** > **config** > **authsettings**.
 
 Klicken Sie in der Ansicht **authsettings** auf **Bearbeiten**. Legen Sie `additionalLoginParams` auf die folgende JSON-Zeichenfolge fest, indem Sie die kopierte Anwendungs-ID verwenden. 
 

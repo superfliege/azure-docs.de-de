@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 3a581111587d0fe3cba04cd05272b3154374ce52
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 87ca0a1cd9766d3ad76d0fe5dd29a34ec40ea276
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen
 
@@ -50,8 +50,8 @@ NSG-Regeln enthalten die folgenden Eigenschaften:
 | **Protokoll** |Protokoll entsprechend der Regel: |TCP, UDP oder *. |Wenn als Protokoll „*“ verwendet wird, sind ICMP (nur Ost-West-Datenverkehr), UDP und TCP eingeschlossen, wodurch sich die Anzahl der erforderlichen Regeln verringern kann.<br/>Die Verwendung von „*“ kann auch ein zu weit gefasster Ansatz sein, sodass Sie „*“ nur nutzen sollten, wenn dies wirklich erforderlich ist. |
 | **Quellportbereich** |Quellportbereich entsprechend der Regel: |Eine einzelne Portnummer zwischen 1 und 65535, ein Portbereich (z.B. 1 - 65535) oder „*“ (für alle Ports). |Quellports können kurzlebig sein. Sofern Ihr Clientprogramm keinen bestimmten Port nutzt, sollten Sie in den meisten Fällen „*“ verwenden.<br/>Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden. |
 | **Zielportbereich** |Zielportbereich entsprechend der Regel: |Eine einzelne Portnummer zwischen 1 und 65535, ein Portbereich (z.B. 1 - 65535) oder „\*“ (für alle Ports). |Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden. |
-| **Quelladresspräfix** |Quelladresspräfix oder -tag entsprechend der Regel: |Eine IP-Adresse (z.B. 10.10.10.10), IP-Subnetz (z.B. 192.168.1.0/24), [Standardtag](#default-tags) oder „*“ (für alle Adressen). |Verwenden Sie nach Möglichkeit Bereiche, Standardtags und „*“, um die Anzahl von Regeln zu reduzieren. |
-| **Zieladresspräfix** |Zieladresspräfix oder -tag entsprechend der Regel. | Eine IP-Adresse (z.B. 10.10.10.10), IP-Subnetz (z.B. 192.168.1.0/24), [Standardtag](#default-tags) oder „*“ (für alle Adressen). |Verwenden Sie nach Möglichkeit Bereiche, Standardtags und „*“, um die Anzahl von Regeln zu reduzieren. |
+| **Quelladresspräfix** |Quelladresspräfix oder -tag entsprechend der Regel: |Eine IP-Adresse (z.B. 10.10.10.10), IP-Subnetz (z.B. 192.168.1.0/24), [Diensttag](#service-tags) oder „*“ (für alle Adressen). |Verwenden Sie nach Möglichkeit Bereiche, Diensttags und „*“, um die Anzahl von Regeln zu reduzieren. |
+| **Zieladresspräfix** |Zieladresspräfix oder -tag entsprechend der Regel. | Eine IP-Adresse (z.B. 10.10.10.10), IP-Subnetz (z.B. 192.168.1.0/24), [Standardtag](#service-tags) oder „*“ (für alle Adressen). |Verwenden Sie nach Möglichkeit Bereiche, Diensttags und „*“, um die Anzahl von Regeln zu reduzieren. |
 | **Richtung** |Richtung des Datenverkehrs entsprechend der Regel. |Eingehend oder ausgehend. |Die Regeln für eingehenden und ausgehenden Datenverkehr werden abhängig von der Richtung getrennt verarbeitet. |
 | **Priority** |Regeln werden gemäß ihrer Priorität geprüft. Sobald eine Regel als gültig erkannt wird, werden keine weiteren Regeln mehr geprüft. | Eine Zahl zwischen 100 und 4.096. | Vergeben Sie beim Erstellen von Regeln die Prioritäten am besten jeweils in Hunderterschritten, damit noch Platz für ggf. später hinzukommende Regeln bleibt. |
 | **Access** |Typ des Zugriffs bei Übereinstimmung mit der Regel. | Dies kann „Zulassen“ oder „Verweigern“ sein. | Beachten Sie, dass ein Paket verworfen wird, wenn keine Zulassungsregel dafür gefunden wird. |
@@ -62,36 +62,13 @@ NGSs enthalten zwei Regelsätze: für eingehenden und für ausgehenden Datenverk
 
 In der obigen Abbildung ist dargestellt, wie NSG-Regeln verarbeitet werden.
 
-### <a name="default-tags"></a>Standardtags
-Standardtags sind vom System bereitgestellte Bezeichner für eine Kategorie von IP-Adressen. In den Eigenschaften **Quelladresspräfix** und **Zieladresspräfix** von Regeln können Standardtags verwendet werden. Es gibt drei Standardtags, die Sie verwenden können:
+### <a name="default-tags"></a>Systemtags
 
-* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** für klassisch): Dieses Tag enthält den Adressraum des virtuellen Netzwerks (in Azure definierte CIDR-Bereiche), alle verbundenen lokalen Adressräume und verbundene Azure-VNets (lokale Netzwerke).
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** für klassisch): Dieses Tag symbolisiert den Lastenausgleich der Azure-Infrastruktur. Das Tag wird in eine Azure-Datencenter-IP umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure Load Balancer fungiert.
-* **Internet** (Resource Manager) (**INTERNET** für klassisch): Dies ist das Tag für den IP-Adressraum, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist. Der Bereich schließt den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) ein.
+Diensttags sind vom System bereitgestellte Bezeichner für eine Kategorie von IP-Adressen. In den Eigenschaften **Quelladresspräfix** und **Zieladresspräfix** von Sicherheitsregeln können Diensttags verwendet werden. Erfahren Sie mehr über [Diensttags](security-overview.md#service-tags).
 
-### <a name="default-rules"></a>Standardregeln
-Alle NSGs enthalten eine Gruppe von Standardregeln. Die Standardregeln können zwar nicht gelöscht werden, haben aber niedrigste Priorität und können somit durch selbst erstellte Regeln außer Kraft gesetzt werden. 
+### <a name="default-rules"></a>Standardsicherheitsregeln
 
-Mit den Standardregeln wird Datenverkehr wie folgt zugelassen und verweigert:
-- **Virtuelles Netzwerk:** Datenverkehr wird aus einem bzw. in ein virtuelles Netzwerk in ein- und ausgehender Richtung zugelassen.
-- **Internet:** Ausgehender Datenverkehr wird zugelassen, aber eingehender Datenverkehr wird blockiert.
-- **Lastenausgleich:** Lassen Sie für Azure Load Balancer die Überprüfung der Integrität der virtuellen Computer und der Rolleninstanzen zu. Wenn Sie diese Regel außer Kraft setzen, tritt bei den Integritätstests von Azure Load Balancer ein Fehler auf, wodurch Ihr Dienst beeinträchtigt werden kann.
-
-**Eingehende Standardregeln**
-
-| NAME | Priorität | Quell-IP | Quellport | Ziel-IP | Zielport | Protokoll | Access |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| AllowVNetInBound |65000 | VirtualNetwork | * | VirtualNetwork | * | * | ZULASSEN |
-| AllowAzureLoadBalancerInBound | 65001 | AzureLoadBalancer | * | * | * | * | ZULASSEN |
-| DenyAllInBound |65500 | * | * | * | * | * | Verweigern |
-
-**Ausgehende Standardregeln**
-
-| NAME | Priorität | Quell-IP | Quellport | Ziel-IP | Zielport | Protokoll | Access |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| AllowVnetOutBound | 65000 | VirtualNetwork | * | VirtualNetwork | * | * | ZULASSEN |
-| AllowInternetOutBound | 65001 | * | * | Internet | * | * | ZULASSEN |
-| DenyAllOutBound | 65500 | * | * | * | * | * | Verweigern |
+Alle NSGs enthalten eine Gruppe von Standardsicherheitsregeln. Die Standardregeln können zwar nicht gelöscht werden, haben aber niedrigste Priorität und können somit durch selbst erstellte Regeln außer Kraft gesetzt werden. Erfahren Sie mehr über [Standardsicherheitsregeln](security-overview.md#default-security-rules).
 
 ## <a name="associating-nsgs"></a>Zuordnen von NSGs
 Je nach verwendetem Bereitstellungsmodell können Sie eine NSG wie folgt einem virtuellen Computer, Netzwerkkarten (NICs) und Subnetzen zuordnen:
@@ -127,7 +104,7 @@ Sie können NSGs für das Resource Manager- oder das klassische Bereitstellungsm
 | PowerShell     | [Ja](virtual-networks-create-nsg-classic-ps.md) | [Ja](tutorial-filter-network-traffic.md) |
 | Azure-CLI **V1**   | [Ja](virtual-networks-create-nsg-classic-cli.md) | [Ja](tutorial-filter-network-traffic-cli.md) |
 | Azure-CLI **V2**   | Nein  | [Ja](tutorial-filter-network-traffic-cli.md) |
-| Azure Resource Manager-Vorlage   | Nein   | [Ja](virtual-networks-create-nsg-arm-template.md) |
+| Azure Resource Manager-Vorlage   | Nein   | [Ja](template-samples.md) |
 
 ## <a name="planning"></a>Planung
 Bevor Sie NSGs implementieren, müssen Sie folgende Fragen beantworten:

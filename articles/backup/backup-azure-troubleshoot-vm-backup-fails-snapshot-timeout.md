@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e2bd041bd5848ceb5f04f06601190fb0508aca1c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Beheben von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -29,7 +29,8 @@ Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure
 
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>VM-Agent kann nicht mit Azure Backup kommunizieren
 
-Fehlermeldung: „VM Agent unable to communicate with Azure Backup“ (VM-Agent kann nicht mit Azure Backup kommunizieren)
+Fehlermeldung: „VM Agent unable to communicate with Azure Backup“ (VM-Agent kann nicht mit Azure Backup kommunizieren)<br>
+Fehlercode: „UserErrorGuestAgentStatusUnavailable“
 
 Nachdem Sie einen virtuellen Computer für den Backup-Dienst registriert und geplant haben, initiiert Backup den Auftrag, indem der Dienst mit dem VM-Agent kommuniziert, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn eine Momentaufnahme nicht ausgelöst wird, kann dies zu einem Fehler bei der Sicherung führen. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:
 
@@ -41,7 +42,8 @@ Nachdem Sie einen virtuellen Computer für den Backup-Dienst registriert und gep
 
 ## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>Der Momentaufnahmevorgang kann nicht ausgeführt werden, weil der virtuelle Computer nicht mit dem Netzwerk verbunden ist
 
-Fehlermeldung: „Snapshot operation failed due to no network connectivity on the virtual machine“ (Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer)
+Fehlermeldung: „Snapshot operation failed due to no network connectivity on the virtual machine“ (Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer)<br>
+Fehlercode: „ExtensionSnapshotFailedNoNetwork“
 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:    
 **Ursache 1: [Der virtuelle Computer verfügt nicht über Internetzugriff](#the-vm-has-no-internet-access)**  
@@ -50,7 +52,8 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 
 ## <a name="vmsnapshot-extension-operation-failed"></a>Fehler beim Vorgang der VMSnapshot-Erweiterung
 
-Fehlermeldung: „VMSnapshot extension operation failed“ (Fehler beim Vorgang der VMSnapshot-Erweiterung)
+Fehlermeldung: „VMSnapshot extension operation failed“ (Fehler beim Vorgang der VMSnapshot-Erweiterung)<br>
+Fehlercode: „ExtentionOperationFailed“
 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:  
 **Ursache 1: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
@@ -60,7 +63,8 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Fehler bei der Sicherung, weil der VM-Agent nicht reagiert
 
-Fehlermeldung: „Unable to perform the operation as the VM Agent is not responsive“ (Der Vorgang kann nicht ausgeführt werden, da der VM-Agent nicht reagiert)
+Fehlermeldung: „Der Vorgang kann nicht durchgeführt werden, weil der VM-Agent nicht antwortet“ <br>
+Fehlercode: „GuestAgentSnapshotTaskStatusError“
 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:  
 **Ursache 1: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -69,7 +73,8 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 
 ## <a name="backup-fails-with-an-internal-error"></a>Interner Fehler bei der Sicherung
 
-Fehlermeldung: „Backup failed with an internal error – Please retry the operation in a few minutes“ (Interner Fehler bei der Sicherung – versuchen Sie, den Vorgang in einigen Minuten zu wiederholen)
+Fehlermeldung: „Backup failed with an internal error – Please retry the operation in a few minutes“ (Interner Fehler bei der Sicherung – versuchen Sie, den Vorgang in einigen Minuten zu wiederholen) <br>
+Fehlercode: „BackUpOperationFailed“ / „BackUpOperationFailedV2“
 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:  
 **Ursache 1: [Der virtuelle Computer verfügt nicht über Internetzugriff](#the-vm-has-no-internet-access)**  
@@ -177,6 +182,8 @@ So deinstallieren Sie die Erweiterung:
 3. Wählen Sie **Erweiterungen**.
 4. Wählen Sie **VMSnapshot-Erweiterung** aus.
 5. Wählen Sie **Deinstallieren**.
+
+Wenn die VMSnapshot-Erweiterung im Azure-Portal nicht angezeigt wird, [aktualisieren Sie den Azure-Linux-Agent](../virtual-machines/linux/update-agent.md) und führen Sie dann die Sicherung aus. 
 
 Diese Schritte bewirken, dass die Erweiterung während der nächsten Sicherung neu installiert wird.
 

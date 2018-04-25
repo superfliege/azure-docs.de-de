@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 04/11/2018
 ms.author: renash
-ms.openlocfilehash: 8905b708101e78691c14168edf7afd659afa92a4
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: e283619c7e634a1fbba5940e5c8545b0ee4de3d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und in Windows Server eingebunden werden. Dieser Artikel zeigt drei verschiedene Methoden zum Einbinden einer Azure-Dateifreigabe unter Windows: über die Benutzeroberfläche des Explorers, mithilfe von PowerShell und über die Eingabeaufforderung. 
@@ -49,11 +49,20 @@ Sie können Azure-Dateifreigaben unter einer Windows-Installation einbinden, die
 
 * **Speicherkontoschlüssel:** Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den primären (oder sekundären) Speicherschlüssel. SAS-Schlüssel können derzeit nicht zum Einbinden verwendet werden.
 
-* **Sicherstellen, dass Port 445 geöffnet ist:** Azure Files verwendet das SMB-Protokoll. SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.
+* **Sicherstellen, dass Port 445 geöffnet ist:** Azure Files verwendet das SMB-Protokoll. SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird. Sie können mit Portqry überprüfen, ob der TCP-Port 445 geöffnet ist. Wenn der TCP-Port 445 als gefiltert angezeigt wird, wird der TCP-Port blockiert. Dies ist eine Beispielabfrage:
+
+    `g:\DataDump\Tools\Portqry>PortQry.exe -n [storage account name].file.core.windows.net -p TCP -e 445`
+
+    Wenn der TCP-Port 445 durch eine Regel entlang des Netzwerkpfads blockiert wird, wird Ihnen die folgende Ausgabe angezeigt:
+
+    `TCP port 445 (Microsoft-ds service): FILTERED`
+
+    Weitere Informationen zur Verwendung von Portqry finden Sie unter [Beschreibung des Befehlszeilenprogramms Portqry.exe](https://support.microsoft.com/help/310099).
+
 
 ## <a name="persisting-connections-across-reboots"></a>Beibehalten von Verbindungen nach einem Neustart
 ### <a name="cmdkey"></a>CmdKey
-Die einfachste Methode zur Einrichtung einer dauerhaften Verbindung besteht darin, Ihre Speicherkonto-Anmeldeinformationen mithilfe des CmdKey-Befehlszeilentools in Windows zu speichern. Das folgende Befehlszeilenbeispiel speichert Ihre Speicherkonto-Anmeldeinformationen auf Ihrem virtuellen Computer:
+Die einfachste Methode zu Einrichten einer dauerhaften Verbindung besteht darin, Ihre Speicherkonto-Anmeldeinformationen mithilfe des Befehlszeilentools „CmdKey“ in Windows zu speichern. Im folgenden Befehlszeilenbeispiel werden Ihre Speicherkonto-Anmeldeinformationen auf Ihrem virtuellen Computer gespeichert:
 ```
 C:\>cmdkey /add:<yourstorageaccountname>.file.core.windows.net /user:<domainname>\<yourstorageaccountname> /pass:<YourStorageAccountKeyWhichEndsIn==>
 ```
@@ -84,7 +93,7 @@ Nach dem Speichern der Anmeldeinformationen müssen sie beim Herstellen der Verb
 
 2. **Navigieren Sie im linken Fensterbereich zu „Dieser PC“. Dadurch ändern sich die verfügbaren Menüs auf dem Menüband. Wählen Sie im Menü „Computer“ die Option „Netzlaufwerk verbinden“ aus.**
     
-    ![Screenshot des Dropdownmenüs „Netzlaufwerk verbinden“](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
+    ![Screenshot: Dropdownmenü „Netzlaufwerk verbinden“](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
 3. **Kopieren Sie den UNC-Pfad aus dem Bereich „Verbinden“ im Azure-Portal.** 
 
@@ -102,7 +111,7 @@ Nach dem Speichern der Anmeldeinformationen müssen sie beim Herstellen der Verb
     
     ![Die Azure-Dateifreigabe ist nun eingebunden.](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. **Wenn Sie die Einbindung der Azure-Dateifreigabe wieder aufheben (also die Verbindung trennen) möchten, klicken Sie im Explorer unter „Netzwerk“ mit der rechten Maustaste auf den Eintrag für die Freigabe, und wählen Sie „Trennen“ aus.**
+7. **Wenn Sie die Einbindung der Azure-Dateifreigabe wieder aufheben (also die Verbindung trennen) möchten, klicken Sie im Explorer unter „Netzwerk“ mit der rechten Maustaste auf den Eintrag für die Freigabe, und wählen Sie „Trennen“.**
 
 ## <a name="mount-the-azure-file-share-with-powershell"></a>Einbinden der Azure-Dateifreigabe mithilfe von PowerShell
 1. **Verwenden Sie zum Einbinden der Azure-Dateifreigabe den folgenden Befehl.** Ersetzen Sie dabei `<storage-account-name>`, `<share-name>`, `<storage-account-key>` und `<desired-drive-letter>` durch die entsprechenden Angaben.

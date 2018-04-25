@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: ''
-ms.openlocfilehash: fd3beb57cda4993f922fb935263b0e962b38da6a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 08c26942294d7027ffdcd3fcaa0ff0831e95509f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory und Multi-Factor Authentication: Schützen personenbezogener Daten mit der Identitäts- und Zugriffssteuerung
 
@@ -83,11 +83,11 @@ Weitere Informationen und Anweisungen zum Einstieg in AAD PIM finden Sie unter [
 
 ### <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 
-Mit der [rollenbasierten Zugriffssteuerung in Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) können Azure-Administratoren den Zugriff auf Azure-Ressourcen verwalten, indem sie die Zugriffsgewährung basierend auf der zugewiesenen Rolle des jeweiligen Benutzers aktivieren. Sie können Aufgaben innerhalb eines Teams verteilen und Benutzern, Gruppen und Anwendungen nur den Zugriff gewähren, den diese zur Ausführung ihrer Aufgaben benötigen.
+Mit der [rollenbasierten Zugriffssteuerung in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) können Azure-Administratoren den Zugriff auf Azure-Ressourcen verwalten, indem sie die Zugriffsgewährung basierend auf der zugewiesenen Rolle des jeweiligen Benutzers aktivieren. Sie können Aufgaben innerhalb eines Teams verteilen und Benutzern, Gruppen und Anwendungen nur den Zugriff gewähren, den diese zur Ausführung ihrer Aufgaben benötigen.
 
 Den Benutzern kann die rollenbasierte Zugriffssteuerung über das Azure-Portal, Azure Befehlszeilenwerkzeuge oder Azure Management APIs zugewiesen werden.
 
-Weitere grundlegende Informationen zu Azure RBAC finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](https://docs.microsoft.com/active-directory/role-based-access-control-what-is).
+Weitere grundlegende Informationen zu Azure RBAC finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
 #### <a name="how-do-i-manage-azure-rbac-with-powershell"></a>Wie verwalte ich Azure RBAC mit PowerShell?
 
@@ -111,7 +111,7 @@ Mithilfe von PowerShell-Cmdlets können Sie Azure RBAC, einschließlich der folg
 
 - Auflisten benutzerdefinierter Rollen 
 
-Anweisungen zum Verwalten von Azure RBAC mit PowerShell finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell).
+Anweisungen zum Verwalten von Azure RBAC mit PowerShell finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
@@ -125,7 +125,7 @@ Wenn Ihre Benutzer über Lizenzen verfügen, die Azure Multi-Factor Authenticati
 
 ![Benutzer, für die MFA aktiviert ist](media/protect-personal-data-identity-access-controls/enable-mfa.png)
 
-Wenn Sie derzeit über keine Lizenzen verfügen, müssen Sie den am besten geeigneten Bereitstellungstyp für das Szenario bestimmen. Sie können zunächst den Artikel [Auswählen einer geeigneten Azure Multi-Factor Authentication-Lösung](../multi-factor-authentication/multi-factor-authentication-get-started.md) lesen. Wenn Sie einen Multi-Factor Authentication-Server erstellen möchten, können Sie dazu die folgenden Schritte ausführen:
+Wenn Sie derzeit über keine Lizenzen verfügen, müssen Sie den am besten geeigneten Bereitstellungstyp für das Szenario bestimmen. Sie können zunächst den Artikel [Auswählen einer geeigneten Azure Multi-Factor Authentication-Lösung](../active-directory/authentication/concept-mfa-whichversion.md) lesen. Wenn Sie einen Multi-Factor Authentication-Server erstellen möchten, können Sie dazu die folgenden Schritte ausführen:
 
 1. Wählen Sie im Azure-Portal (Anmeldung als Administrator) die Option **Active Directory** aus.
 
@@ -184,6 +184,6 @@ Informationen zum Konfigurieren von Azure MFA-Einstellungen zum Einrichten von B
 
 - [Häufig gestellte Fragen zu Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-faq)
 
-- [Beheben von Problemen bei der rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/active-directory/role-based-access-control-troubleshooting)
+- [Beheben von Problemen bei der rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting)
 
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)

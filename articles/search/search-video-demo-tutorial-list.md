@@ -1,25 +1,17 @@
 ---
 title: Videos, Beispiele und Tutorials in Azure Search | Microsoft Docs
-description: "Zentrale Liste mit allen Videos, Beispielen, Demos und Tutorials, die für Azure Search, einen in Microsoft Azure gehosteten Clouddienst, erstellt wurden."
-services: search
-documentationcenter: 
+description: Zentrale Liste mit allen Videos, Beispielen, Demos und Tutorials, die für Azure Search, einen in Microsoft Azure gehosteten Clouddienst, erstellt wurden.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 4ffa17a3-9e2b-4172-ad77-30c6a1354b24
+manager: cgronlun
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: heidist
-ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3dd2e689e3f21877bdbaee83ef48dc9eaf438090
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Azure Search: Codebeispiele, Demos, Videos und Tutorials
 Finden Sie mit den folgenden Videos, Demos, Tutorials und Beispiel-Apps einen schnelleren Einstieg.
@@ -28,7 +20,7 @@ Finden Sie mit den folgenden Videos, Demos, Tutorials und Beispiel-Apps einen sc
 
 Beginnen Sie hier, wenn Sie noch nicht mit Azure Search vertraut sind. Sie können all diese Ressourcen in ungefähr einer Stunde überprüfen.
 
-| Titel | Beschreibung | Datum |
+| Titel | BESCHREIBUNG | Datum |
 |-------|-------------|------|
 | [Video-Einführung](https://channel9.msdn.com/Events/Connect/2016/138) | 9:38 Minuten. Einführung in Features, Diensterstellung und Abfragen. | November 2016 |
 | [Erstellen eines Diensts](search-get-started-portal.md) | Schritte zum Einrichten von Azure Search im Portal. | Februar 2017 |
@@ -41,7 +33,7 @@ Beginnen Sie hier, wenn Sie noch nicht mit Azure Search vertraut sind. Sie könn
 
 Codebasierte Übungen mit Beispielen und exemplarischen Vorgehensweisen.
 
-| Codebeispiel | Beschreibung |
+| Codebeispiel | BESCHREIBUNG |
 |-------|-------------|
 | [Erste Schritte mit der .NET-Clientbibliothek](https://github.com/Azure-Samples/search-dotnet-getting-started) | ASP.NET MVC 5-Anwendung mit der .NET Client Library. |
 | [Erste Schritte mit der REST-API](https://github.com/Azure-Samples/search-rest-api-getting-started) | REST-API-Codebeispiel |
@@ -53,7 +45,7 @@ Weitere Codebeispiele für bestimmte Featurekombinationen und Szenarien: [**Beis
 ## <a name="online-demos"></a>Online-Demos
 Voll funktionsfähige Webanwendungen, die Azure Search für ihre Suchoberfläche einsetzen. Unter diesen Links wird praxisnah die Verwendung einer App vorgeführt, die Azure Search nutzt.
 
-| Link | Beschreibung |
+| Link | BESCHREIBUNG |
 |-------|-------------|
 |[Search Analyzer Demo](http://alice.unearth.ai) | Eine Livedemo-Website mit den Abfrageausgaben aus der Standard-Analyse von Lucene, der Englischanalyse von Lucene und vom Prozessor von Microsoft für natürliche Sprache. Für jede Suchbegriffseingabe können Sie einen direkten Vergleich der Ausgabe jeder Analyse anzeigen. |
 |[Demo eines Jobportals für New York City (NYC) mit Azure Search](http://aka.ms/azjobsdemo) | Eine aktive ASP.NET-Website, die Azure Search-Funktionen mithilfe von Daten der NYC Open Data Initiative veranschaulicht. Für diese App wird die [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx)verwendet. Sie können den Code ändern, um die [Lucene-Syntax](https://msdn.microsoft.com/library/azure/mt589323.aspx)auszuprobieren. |
@@ -64,7 +56,7 @@ Voll funktionsfähige Webanwendungen, die Azure Search für ihre Suchoberfläche
 
 Mehrteilige Demos und Übungseinheiten für Azure Search.
 
-| Link | Beschreibung | Datum |
+| Link | BESCHREIBUNG | Datum |
 |------|-------------|------|
 [Erstellen von intelligenten, plattformübergreifenden mobilen Anwendungen mit Xamarin und Azure Search](https://mva.microsoft.com/en-US/training-courses/building-intelligent-crossplatform-mobile-applications-using-xamarin-and-azure-search-16890) | Vervollständigte Abfragen, Volltextsuche und Seitenaufteilung, Filtern, Suchen, moreLikeThis, Machine Learning, Bewertung und die Optimierung, Analyse | Dezember 2016 |
 [Verwenden von Windows Azure Search](https://mva.microsoft.com/en-US/training-courses/using-windows-azure-search-10540) | Ältere, aber immer noch relevante Funktionsübersicht zur Skalierung, räumlichen Suche, linguistischen Analyse und Spracherkennung mit Cortana | Mai 2015 | 
@@ -91,7 +83,7 @@ Mehrteilige Demos und Übungseinheiten für Azure Search.
 
 ## <a name="tutorial-archive"></a>Tutorial-Archiv
 
-| Exemplarische Vorgehensweise | Beschreibung |
+| Exemplarische Vorgehensweise | BESCHREIBUNG |
 | --- | --- |
 | [How to use Azure Search with D3.js to Build Interactive Data Visualizations](https://azure.microsoft.com/blog/2015/07/14/how-to-use-azure-search-with-d3-js-to-build-interactive-data-visualizations/) |Blogbeitrag und Beispielcode, der veranschaulicht, wie visuelle Suchfunktionen zu Ihrer benutzerdefinierten Anwendung hinzugefügt werden. |
 | [Erste Schritte mit Azure Search in NodeJS](search-get-started-nodejs.md) |Erfahren Sie, wie Sie mit Azure Search in NodeJS arbeiten. |

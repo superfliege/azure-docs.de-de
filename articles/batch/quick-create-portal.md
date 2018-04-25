@@ -1,6 +1,6 @@
 ---
-title: "Azure-Schnellstart – Ausführen eines Batch-Auftrags – Portal"
-description: "In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag mit dem Azure-Portal ausführen."
+title: Azure-Schnellstart – Ausführen eines Batch-Auftrags – Portal
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag mit dem Azure-Portal ausführen.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a00c8ea07c31d2ab4ba2638f2a7e4adcf5ca4a10
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f6b2cc8f3e27b65f225014ec92a7e99851eac743
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal
 
@@ -24,7 +24,7 @@ In diesem Schnellstart wird veranschaulicht, wie Sie das Azure-Portal zum Erstel
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure 
 
-Melden Sie sich unter „https://portal.azure.com“ am Azure-Portal an.
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-batch-account"></a>Erstellen eines Batch-Kontos
 
@@ -37,7 +37,7 @@ Führen Sie diese Schritte aus, um ein Batch-Beispielkonto für Testzwecke zu er
 
 2. Geben Sie Werte für **Kontoname** und **Ressourcengruppe** ein. Der Kontoname muss für den ausgewählten Azure-**Standort** eindeutig sein, darf nur Kleinbuchstaben oder Zahlen enthalten und muss zwischen 3 und 24 Zeichen lang sein. 
 
-3. Wählen Sie unter **Speicherkonto** ein vorhandenes allgemeines Speicherkonto aus, oder erstellen Sie ein neues.
+3. Wählen Sie für **Speicherkonto** ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.
 
 4. Behalten Sie die Standardwerte für die verbleibenden Einstellungen bei, und klicken Sie auf **Erstellen**, um das Konto zu erstellen.
 

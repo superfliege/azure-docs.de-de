@@ -1,6 +1,6 @@
 ---
-title: Testen einer Azure AD B2C-fähigen Desktop-App
-description: Schnellstart zum Testen einer ASP.NET-Desktop-App (Beispiel-App), für die Azure Active Directory B2C zum Bereitstellen einer Benutzeranmeldung genutzt wird.
+title: 'Schnellstart: Einrichten der Anmeldung für eine Desktop-App mit Azure Active Directory B2C | Microsoft-Dokumentation'
+description: Führen Sie eine ASP.NET-Desktopbeispielanwendung aus, bei der die Kontoanmeldung über Azure Active Directory B2C erfolgt.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: 8726a5816623d42deb495aa062ef82f1f95b76b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a312169217ac5476a503d5ad5a9126674f999eac
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-desktop-app"></a>Schnellstart: Testen einer Azure AD B2C-fähigen Desktop-App
+# <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine Desktop-App mit Azure Active Directory B2C 
 
 Azure Active Directory (Azure AD) B2C ermöglicht die Cloudidentitätsverwaltung zum Schützen Ihrer Anwendung, Ihres Unternehmens und Ihrer Kunden. Mit Azure AD B2C können sich Ihre Apps über offene Standardprotokolle bei Konten für soziale Netzwerke und bei Unternehmenskonten authentifizieren.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Service Fabric: Einrichten der Überwachung mit OMS Log Analytics | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie die Operations Management Suite für die Visualisierung und Analyse von Ereignissen einrichten, um Ihre Azure Service Fabric-Cluster zu überwachen.
+title: 'Azure Service Fabric: Einrichten der Überwachung mit Log Analytics | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie Log Analytics für die Visualisierung und Analyse von Ereignissen einrichten, um Ihre Azure Service Fabric-Cluster zu überwachen.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/30/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: 2589efa1808a394f2e32b842efa2ee70809da232
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: af09df52fe733b69cfe4470de2fd6e978f126ca0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>Einrichten von Operations Management Suite Log Analytics für einen Cluster
+# <a name="set-up-log-analytics-for-a-cluster"></a>Einrichten von Log Analytics für einen Cluster
 
-Sie können einen Operations Management Suite-Arbeitsbereich (OMS-Arbeitsbereich) über Azure Resource Manager, PowerShell oder den Azure Marketplace einrichten. Wenn Sie eine aktualisierte Resource Manager-Vorlage von Ihrer Bereitstellung verwalten, verwenden Sie zukünftig die gleiche Vorlage für die Einrichtung Ihrer OMS-Umgebung. Die Bereitstellung über den Marketplace ist einfacher, wenn Sie bereits einen Cluster mit aktivierter Diagnose bereitgestellt haben. Wenn Sie in dem Konto, für das Sie die OMS bereitstellen, keinen Zugriff auf Abonnementebene haben, führen Sie die Bereitstellung über PowerShell oder über die Resource Manager-Vorlage durch.
+Sie können einen Log Analytics-Arbeitsbereich über den Azure Resource Manager, über PowerShell oder über den Azure Marketplace einrichten. Wenn Sie eine aktualisierte Resource Manager-Vorlage von Ihrer Bereitstellung verwalten, verwenden Sie zukünftig die gleiche Vorlage für die Einrichtung Ihrer OMS-Umgebung. Die Bereitstellung über den Marketplace ist einfacher, wenn Sie bereits einen Cluster mit aktivierter Diagnose bereitgestellt haben. Wenn Sie in dem Konto, für das Sie die OMS bereitstellen, keinen Zugriff auf Abonnementebene haben, führen Sie die Bereitstellung über PowerShell oder über die Resource Manager-Vorlage durch.
 
 > [!NOTE]
-> Zum Einrichten der OMS zur Überwachung des Clusters muss die Diagnose aktiviert sein, um Ereignisse auf Cluster- oder auf Plattformebene anzeigen zu können.
+> Zum Einrichten von Log Analytics zur Überwachung des Clusters muss die Diagnose aktiviert sein, um Ereignisse auf Cluster- oder auf Plattformebene anzeigen zu können.
 
 ## <a name="deploy-oms-by-using-azure-marketplace"></a>Bereitstellen der OMS mithilfe des Azure Marketplace
 
@@ -200,7 +200,7 @@ $WorkspaceName = "<OMS Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
 # Log in to Azure and access the correct subscription
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionId $SubID 
 
 # Create the resource group if needed

@@ -1,28 +1,56 @@
-## <a name="what-is-blob-storage"></a>Was ist Blobspeicher?
-Der Azure-Blobspeicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Objektdaten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Sie können den Blobspeicher verwenden, um Daten öffentlich auf der ganzen Welt zur Verfügung zu stellen oder um Anwendungsdaten privat zu speichern.
+---
+title: Includedatei
+description: Includedatei
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: 203f5a766c4c8a8f1e577f6be1e18d0f9ac95403
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/16/2018
+---
+Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Blobspeicher ist für die Speicherung großer Mengen von unstrukturierten Daten, z.B. Text oder Binärdaten, optimiert.
 
-BLOB-Speicherungen werden hauptsächlich für folgende Zwecke verwendet:
+Blobspeicher ist für folgende Zwecke ideal geeignet:
 
 * Speichern von Bildern oder Dokumenten direkt für einen Browser
 * Speichern von Dateien für verteilten Zugriff
 * Video- und Audio-Streaming
+* Schreiben in Protokolldateien
 * Speichern von Daten für Sicherung und Wiederherstellung, Notfallwiederherstellung und Archivierung
 * Speichern von Daten für Analysen durch einen lokalen oder von Azure gehosteten Dienst
 
+Über HTTP oder HTTPS kann von allen Orten weltweit auf Objekte zugegriffen werden, die sich in Blobspeicher befinden. Benutzer oder Clientanwendungen können über URLs, die [Azure Storage-REST-API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), die [Azure CLI](https://docs.microsoft.com/cli/azure/storage) oder eine Azure Storage-Clientbibliothek auf Blobs zugreifen. Die Speicherclientbibliotheken sind für mehrere Sprachen verfügbar, z.B. [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage/client), [Node.js](http://azure.github.io/azure-storage-node), [Python](https://azure-storage.readthedocs.io/en/latest/index.html), [PHP](http://azure.github.io/azure-storage-php/) und [Ruby](http://azure.github.io/azure-storage-ruby).
+
 ## <a name="blob-service-concepts"></a>Konzepte des Blob-Diensts
-Der BLOB-Dienst umfasst die folgenden Komponenten:
 
-![Diagramm der Blob-Dienst-Architektur](./media/storage-blob-concepts-include/blob1.png)
+Blobspeicher macht drei Ressourcen verfügbar: Ihr Speicherkonto, die Container im Konto und die Blobs in einem Container. Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
 
-* **Speicherkonto:** Alle Zugriffe auf Azure Storage erfolgen über ein Speicherkonto. Bei diesem Speicherkonto kann es sich um ein **allgemeines Speicherkonto** oder ein **BLOB-Speicherkonto** handeln, das speziell für die Speicherung von Objekten oder Blobs verwendet wird. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../articles/storage/common/storage-create-storage-account.md).
-* **Container:** Ein Container dient zur Gruppierung eines Satzes von Blobs. Alle BLOBs müssen sich in Containern befinden. Ein Konto kann eine beliebige Anzahl von Containern enthalten. In einem Container kann eine beliebige Anzahl von BLOBs gespeichert sein. Beachten Sie, dass der Containername ausschließlich Kleinbuchstaben enthalten darf.
-* **Blob:** Eine Datei von beliebiger Art und Größe. Azure Storage verfügt über drei Arten von Blobs: Blockblobs, Anfügeblobs und Seitenblobs.
+![Diagramm der Blobspeicherarchitektur (bzw. Objektspeicher)](./media/storage-blob-concepts-include/blob1.png)
+
+### <a name="storage-account"></a>Speicherkonto
+
+Der gesamte Zugriff auf Datenobjekte erfolgt in Azure Storage über ein Speicherkonto. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../articles/storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+### <a name="container"></a>Container
+
+Ein Container dient zum Organisieren einer Gruppe von Blobs (ähnlich wie ein Ordner in einem Dateisystem). Alle Blobs befinden sich innerhalb eines Containers. Ein Speicherkonto kann eine unbegrenzte Anzahl von Containern enthalten, und in einem Container kann eine unbegrenzte Anzahl von Blobs gespeichert werden. Beachten Sie, dass der Containername ausschließlich Kleinbuchstaben enthalten darf.
+
+### <a name="blob"></a>Blob
+ 
+Azure Storage verfügt über drei Arten von Blobs: Blockblobs, Anfügeblobs und [Seitenblobs](../articles/storage/blobs/storage-blob-pageblob-overview.md) (für VHD-Dateien).
+
+* In Blockblobs werden Text- und Binärdaten bis zu einer Größe von ca. 4,7 TB gespeichert. Blockblobs bestehen aus Datenblöcken, die einzeln verwaltet werden können.
+* Anfügeblobs bestehen wie Blockblobs auch aus Blöcken, aber sie sind für Anfügevorgänge optimiert. Anfügeblobs sind beispielsweise ideal für Szenarien, bei denen es um das Protokollieren von Daten virtueller Computer geht.
+* In Seitenblobs werden Random-Access-Dateien mit einer Größe von bis zu 8 TB gespeichert. Die VHD-Dateien, die als Grundlage für VMs dienen, werden in Seitenblobs gespeichert.
+
+Alle Blobs befinden sich innerhalb eines Containers. Ein Container ähnelt einem Ordner in einem Dateisystem. Sie können Blobs außerdem in virtuellen Verzeichnissen anordnen und wie in einem Dateisystem organisieren. 
+
+Wenn sich die Daten besonders umfangreicher Datasets aufgrund von Netzwerkbeschränkungen nicht sinnvoll über eine Kabelverbindung in Blob Storage hochladen bzw. daraus herunterladen lassen, können Sie Festplatten an Microsoft schicken und Ihre Daten direkt in das Rechenzentrum importieren bzw. aus dem Rechenzentrum exportieren lassen. Weitere Informationen finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../articles/storage/common/storage-import-export-service.md).
   
-    *Blockblobs* eignen sich ideal zum Speichern von Text- oder Binärdateien, z.B. Dokumente und Mediendateien. Ein einzelnes Blockblob kann bis zu 50.000 Blöcke mit jeweils bis zu 100 MB enthalten; dies ergibt eine Gesamtgröße von etwas mehr als 4,75 TB (100 MB X 50.000). 
-
-    *Anfügeblobs* ähneln Blockblobs dahingehend, dass sie aus Blöcken bestehen. Allerdings sind sie für Anfügevorgänge optimiert, sodass sie für Protokollierungsszenarien nützlich sind. Ein einzelnes Anfügeblob kann bis zu 50.000 Blöcke mit jeweils bis zu 4 MB enthalten; dies ergibt eine Gesamtgröße von etwas mehr als 195 GB (4 MB X 50.000).
-  
-    *Seitenblobs* können bis zu 1 TB groß sein und sind besonders für häufige Lese-und Schreibvorgänge effizient. Virtuelle Azure-Computer verwenden Seitenblobs als Betriebssystem und Datenträger.
-  
-    Ausführliche Informationen zum Benennen von Containern und Blobs finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)(Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).
-
+Ausführliche Informationen zum Benennen von Containern und Blobs finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)(Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).

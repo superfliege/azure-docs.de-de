@@ -1,8 +1,8 @@
 ---
 title: Schnellstart mit Azure Application Insights | Microsoft-Dokumentation
-description: "Dieser Artikel bietet Informationen zum schnellen Einrichten einer Java-Web-App für die Überwachung mit Application Insights."
+description: Dieser Artikel bietet Informationen zum schnellen Einrichten einer Java-Web-App für die Überwachung mit Application Insights.
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: daf7fb88b41ca21ea08e1368215578971032e47d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0198614f34b5e4ad31d9cf19f6799913dc71e21f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Starten der Überwachung Ihrer Java-Webanwendung
 
@@ -26,7 +26,7 @@ Diese Schnellstartanleitung führt Sie durch die notwendigen Schritte, um das Ap
 
 So führen Sie diesen Schnellstart durch:
 
-- Installieren Sie Oracle JRE 1.6 oder höher oder Zulu JRE 1.6 oder höher.
+- Installieren Sie JRE 1.7 oder 1.8.
 - Installieren Sie die [kostenlose Eclipse-IDE für Java EE-Entwickler](http://www.eclipse.org/downloads/). In diesem Schnellstart wird Eclipse Oxygen (4.7) verwendet.
 - Sie benötigen ein Azure-Abonnement und ein vorhandenes Java Dynamic Web Project.
  

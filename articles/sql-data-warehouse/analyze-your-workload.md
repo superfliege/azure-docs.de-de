@@ -2,24 +2,25 @@
 title: Analysieren Ihrer Workload – Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Lernen Sie Techniken zum Analysieren von Abfrageprioritäten für Ihre Workload in Azure SQL Data Warehouse kennen.
 services: sql-data-warehouse
-author: sqlmojo
-manager: jhubbard
+author: kevinvngo
+manager: craigg-msft
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 03/28/2018
-ms.author: joeyong
-ms.reviewer: jrj
-ms.openlocfilehash: 7fa5bbd8d9a50bb1dcd1ab5be73f4e248cbbf8fc
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: c2f6e1092b9375a90eb1909696a196c9ab4b5dad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="analyze-your-workload"></a>Analysieren Ihrer Workload
+# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analysieren Ihrer Workload in Azure SQL Data Warehouse
 Lernen Sie Techniken zum Analysieren von Abfrageprioritäten für Ihre Workload in Azure SQL Data Warehouse kennen.
 
 ## <a name="workload-groups"></a>Workloadgruppen 
-SQL Data Warehouse implementiert Ressourcenklassen anhand von Workloadgruppen. Es gibt insgesamt acht Workloadgruppen, die das Verhalten der Ressourcenklassen über die verschiedenen DWU-Größen hinweg steuern. In jeder DWU verwendet SQL Data Warehouse nur vier der acht Workloadgruppen. Dies ergibt Sinn, da jede Workloadgruppe einer der vier Ressourcenklassen „smallrc“, „mediumrc“, „largerc“ oder „xlargerc“ zugewiesen ist. Sie müssen diese Workloadgruppen verstehen, da für einige dieser Workloadgruppen eine höhere *Wichtigkeit*festgelegt ist. Die Wichtigkeit wird für die CPU-Zeitplanung verwendet. Abfragen, die mit hoher Wichtigkeit ausgeführt werden, erhalten dreimal mehr CPU-Zyklen als Abfragen mit mittlerer Wichtigkeit. Daher wird anhand von Parallelitätsslotzuordnungen auch die CPU-Priorität bestimmt. Wenn für eine Abfrage 16 oder mehr Slots verwendet werden, ist die Wichtigkeit hoch.
+SQL Data Warehouse implementiert Ressourcenklassen anhand von Workloadgruppen. Es gibt insgesamt acht Workloadgruppen, die das Verhalten der Ressourcenklassen über die verschiedenen DWU-Größen hinweg steuern. In jeder DWU verwendet SQL Data Warehouse nur vier der acht Workloadgruppen. Diese Vorgehensweise ergibt Sinn, da jede Arbeitsauslastungsgruppe einer der vier Ressourcenklassen „smallrc“, „mediumrc“, „largerc“ oder „xlargerc“ zugewiesen ist. Sie müssen diese Workloadgruppen verstehen, da für einige dieser Workloadgruppen eine höhere *Wichtigkeit*festgelegt ist. Die Wichtigkeit wird für die CPU-Zeitplanung verwendet. Abfragen, die mit hoher Wichtigkeit ausgeführt werden, erhalten dreimal mehr CPU-Zyklen als Abfragen, die mit mittlerer Wichtigkeit ausgeführt werden. Daher wird anhand von Parallelitätsslotzuordnungen auch die CPU-Priorität bestimmt. Wenn für eine Abfrage 16 oder mehr Slots verwendet werden, ist die Wichtigkeit hoch.
 
 In der folgenden Tabelle sind die Wichtigkeitszuordnungen für die einzelnen Workloadgruppen angegeben.
 
@@ -38,7 +39,7 @@ In der folgenden Tabelle sind die Wichtigkeitszuordnungen für die einzelnen Wor
 | SloDWGroupC08   | 256                      | 25.600                         | 64.000                      | Hoch               |
 
 <!-- where are the allocation and consumption of concurrency slots charts? -->
-In der Tabelle **Zuordnung und Verbrauch von Parallelitätsslots** sehen Sie, dass ein DW500 jeweils 1, 4, 8 bzw. 16 Parallelitätsslots für smallrc-, mediumrc-, largerc- und xlargerc-Ressourcenklassen verwendet. Schlagen Sie diese Werte in der vorherigen Tabelle nach, um die Wichtigkeit für jede Ressourcenklasse zu ermitteln.
+Die Tabelle **Zuordnung und Verbrauch von Parallelitätsslots** zeigt, dass ein DW500 jeweils 1, 4, 8 bzw. 16 Parallelitätsslots für smallrc-, mediumrc-, largerc- und xlargerc-Ressourcenklassen verwendet. Um die Wichtigkeit für jede Ressourcenklasse zu ermitteln, schlagen Sie diese Werte in der vorherigen Tabelle nach.
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500-Zuordnung zwischen Ressourcenklassen und Wichtigkeit
 | Ressourcenklasse | Workloadgruppe | Verwendete Parallelitätsslots | MB/Verteilung | Wichtigkeit |
@@ -57,7 +58,7 @@ In der Tabelle **Zuordnung und Verbrauch von Parallelitätsslots** sehen Sie, da
 | staticrc80     | SloDWGroupC03  | 16                     | 1.600             | Hoch       |
 
 ## <a name="view-workload-groups"></a>Anzeigen von Workloadgruppen
-Sie können die folgende DMV-Abfrage verwenden, um die Unterschiede bei der Arbeitsspeicherressourcen-Zuweisung detailliert aus Sicht des Resource Governors anzuzeigen. Außerdem können Sie die derzeitige und zurückliegende Nutzung der Workloadgruppen bei der Problembehandlung analysieren.
+Die folgende Abfrage zeigt Einzelheiten zur Zuordnung der Speicherressourcen aus der Perspektive des Resource Governor an. Dies ist hilfreich, um die aktive und vergangene Verwendung von Arbeitsauslastungsgruppen bei der Problembehandlung zu analysieren.
 
 ```sql
 WITH rg
@@ -106,7 +107,7 @@ ORDER BY
 ```
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Erkennung von Abfragen in der Warteschlange und andere DMVs
-Sie können die DMV `sys.dm_pdw_exec_requests` verwenden, um Abfragen zu identifizieren, die in eine Parallelitätswarteschlange eingereiht wurden. Abfragen, die auf einen Parallelitätsslot warten, weisen den Status **Angehalten**auf.
+Sie können die DMV `sys.dm_pdw_exec_requests` verwenden, um Abfragen zu identifizieren, die in eine Parallelitätswarteschlange eingereiht wurden. Abfragen, die auf einen Parallelitätsslot warten, weisen den Status **Angehalten** auf.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID

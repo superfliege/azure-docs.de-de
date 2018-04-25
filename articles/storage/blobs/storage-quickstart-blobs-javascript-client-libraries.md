@@ -1,5 +1,5 @@
 ---
-title: Hochladen, Auflisten und Löschen von Blobs mit Azure Storage unter Verwendung von JavaScript und HTML im Browser
+title: 'Azure-Schnellstart: Erstellen eines Blobs im Objektspeicher unter Verwendung von JavaScript und HTML im Browser'
 description: Hier erfahren Sie, wie Sie eine Instanz von BlobService verwenden, um Blobs unter Verwendung von JavaScript im Rahmen einer HTML-Seite hochzuladen, aufzulisten und zu löschen.
 services: storage
 keywords: Speicher, JavaScript, HTML
@@ -10,23 +10,18 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 83db6539e6ad8ec8e18d99bf7eedbc037d95509e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3d01788050779ea5d6e67b345f048775f8e98e9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-with-azure-storage-using-javascripthtml-in-the-browser"></a>Schnellstart: Hochladen, Auflisten und Löschen von Blobs mit Azure Storage unter Verwendung von JavaScript/HTML im Browser
-Diese Schnellstartanleitung zeigt die Verwaltung von Blobs über vollständig im Browser ausgeführten Code sowie die erforderlichen Sicherheitsmaßnahmen zum Schutz des Zugriffs auf Ihr Blob Storage-Konto. Für diese Schnellstartanleitung benötigen Sie ein [Azure-Abonnement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Schnellstart: Hochladen, Auflisten und Löschen von Blobs unter Verwendung von JavaScript/HTML im Browser
+Diese Schnellstartanleitung veranschaulicht, wie Sie Blobs über vollständig im Browser ausgeführten Code verwalten. Der hier verwendete Ansatz zeigt, wie Sie erforderliche Sicherheitsmaßnahmen einsetzen, um den geschützten Zugriff auf Ihr Blobspeicherkonto sicherzustellen. Für diese Schnellstartanleitung benötigen Sie ein [Azure-Abonnement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
-
-### <a name="copy-security-settings"></a>Kopieren von Sicherheitseinstellungen
-Im Rahmen dieser Schnellstartanleitung benötigen Sie einige sicherheitsspezifische Werte zur Erstellung eines Sicherheitstokens. Diese Werte können Sie zur späteren Verwendung aus dem Portal in einen Text-Editor kopieren. 
-
-Wählen Sie im Portal das Speicherkonto aus, und navigieren Sie zum Abschnitt **Einstellungen**. Klicken Sie in den Einstellungen auf **Zugriffsschlüssel**, und kopieren Sie den Wert für **Speicherkontoname** sowie den **Schlüssel** unter der Überschrift **key1**. (Sie können die Schaltfläche „Kopieren“ rechts neben dem Eingabefeld verwenden, um den Wert in die Zwischenablage zu kopieren.)
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Einrichten von CORS-Regeln für das Speicherkonto 
 Damit Ihre Webanwendung auf einen Blob-Speicher aus dem Client zugreifen kann, muss für das Konto [Cross-Origin Resource Sharing (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) aktiviert werden. 
@@ -37,7 +32,7 @@ Kehren Sie zum Azure-Portal zurück, und wählen Sie Ihr Speicherkonto aus. Navi
 
 In der folgenden Tabelle werden die einzelnen CORS-Einstellungen beschrieben und die Definitionswerte der Regel erläutert:
 
-|Einstellung  |Wert  | Beschreibung |
+|Einstellung  |Wert  | BESCHREIBUNG |
 |---------|---------|---------|
 | Zulässige Ursprünge | * | Akzeptiert eine kommagetrennte Liste mit Domänen, die als zulässige Ursprünge festgelegt werden. Wenn Sie den Wert auf `*` festlegen, wird allen Domänen Zugriff auf das Speicherkonto gewährt. |
 | Zulässige Verben     | „delete“, „get“, „head“, „merge“, „post“, „options“ und „put“ | Listet die zulässigen HTTP-Verben für das Speicherkonto auf. Wählen Sie für diese Schnellstartanleitung alle verfügbaren Optionen aus. |
@@ -55,9 +50,9 @@ Erstellen Sie als Nächstes mithilfe von Azure Cloud Shell ein Sicherheitstoken.
 ## <a name="create-a-shared-access-signature"></a>Erstellen einer SAS (Shared Access Signature)
 Die SAS (Shared Access Signature) wird von dem im Browser ausgeführten Code verwendet, um Anforderungen an den Blob-Speicher zu authentifizieren. Mithilfe der SAS kann sich der Client authentifizieren, ohne über den Kontozugriffsschlüssel oder die Verbindungszeichenfolge zu verfügen. Weitere Informationen zur SAS finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md).
 
-Sie können eine SAS mithilfe der Azure-Befehlszeilenschnittstelle über Azure Cloud Shell erstellen. In der folgenden Tabelle werden die Parameter beschrieben, für die Sie Werte angeben müssen, um eine SAS zu generieren:
+Sie können eine SAS mithilfe der Azure-Befehlszeilenschnittstelle über Azure Cloud Shell oder den Azure Storage-Explorer erstellen. In der folgenden Tabelle werden die Parameter beschrieben, für die Sie Werte angeben müssen, um eine SAS mit der CLI zu generieren:
 
-| Parameter      |Beschreibung  | Platzhalter |
+| Parameter      |BESCHREIBUNG  | Platzhalter |
 |----------------|-------------|-------------|
 | *expiry*       | Das Ablaufdatum des Zugriffstokens im Format JJJJ-MM-TT. Geben Sie im Rahmen dieser Schnellstartanleitung das morgige Datum ein. | *FUTURE_DATE* |
 | *account-name* | Der Name des Speicherkontos. Verwenden Sie den Namen, den Sie sich in einem früheren Schritt notiert haben. | *YOUR_STORAGE_ACCOUNT_NAME* |
@@ -79,7 +74,7 @@ az storage account generate-sas
 ```
 Die Reihe von Werten nach den einzelnen Parametern erscheint unter Umständen etwas kryptisch. Diese Parameterwerte setzen sich aus den Anfangsbuchstaben der jeweiligen Berechtigung zusammen. Die Herkunft der Werte wird in der folgenden Tabelle erläutert: 
 
-| Parameter        | Wert   | Beschreibung  |
+| Parameter        | Wert   | BESCHREIBUNG  |
 |------------------|---------|---------|
 | *permissions*    | racwdl  | Diese SAS umfasst Folgendes: *read* (Lesen), *append* (Anfügen), *create* (Erstellen), *write* (Schreiben), *delete* (Löschen) und *list* (Auflisten). |
 | *resource-types* | sco     | Die SAS gilt für folgende Ressourcen: *service* (Dienst), *container* (Container) und *object* (Objekt). |
@@ -121,7 +116,7 @@ Geben Sie abschließend an der Eingabeaufforderung `npm start` ein, um den Webse
 npm start
 ```
 
-### <a name="get-the-blob-storage-client-scripts"></a>Abrufen der Clientskripts für Blob-Speicher
+### <a name="get-the-blob-storage-client-library"></a>Abrufen der Clientbibliothek für Blobspeicher
 [Laden Sie die JavaScript-Clientbibliotheken herunter](https://aka.ms/downloadazurestoragejs), extrahieren Sie den Inhalt der ZIP-Datei, und platzieren Sie die Skriptdateien aus dem Ordner *bundle* in einem Ordner namens *scripts*.
 
 ### <a name="add-the-client-script-reference-to-the-page"></a>Hinzufügen des Clientskriptverweises zur Seite
@@ -153,7 +148,7 @@ Durch dieses Markup wird der Seite Folgendes hinzugefügt:
 - Ein *INPUT*-Element zum Hochladen einer Datei
 - Ein Platzhalter für speicherspezifischen Code
 
-### <a name="create-a-blob-service"></a>Erstellen eines Blob-Diensts 
+### <a name="create-an-instance-of-blobservice"></a>Erstellen einer BlobService-Instanz 
 [BlobService](https://azure.github.io/azure-storage-node/BlobService.html) stellt eine Schnittstelle für Azure Blob Storage bereit. Bei der Erstellung einer Instanz des Diensts müssen Sie den Speicherkontonamen und die SAS angeben, die Sie in einem vorherigen Schritt generiert haben.
 
 ```javascript
@@ -184,7 +179,7 @@ document.getElementById('create-button').addEventListener('click', () => {
 ```
 
 ### <a name="upload-a-blob"></a>Hochladen eines Blobs
-Wenn Sie ein Blob aus einem HTML-Formular hochladen möchten, rufen Sie zunächst einen Verweis auf die ausgewählte Datei ab. Verwenden Sie hierzu das `files`-Array eines *INPUT*-Elements, für das *type* auf *file* festgelegt ist.
+Über ein *INPUT*-Element erhalten Sie einen Verweis auf die ausgewählte Datei, um ein Blob aus einem HTML-Formular hochzuladen. Die ausgewählte Datei ist über das Array `files` verfügbar, wenn der *Typ* des Elements auf *Datei* festgelegt ist.
 
 Über das Skript können Sie auf das HTML-Element verweisen und die ausgewählte Datei an den Blob-Dienst übergeben.
 
@@ -227,6 +222,9 @@ document.getElementById('list-button').addEventListener('click', () => {
     
 });
 ```
+
+Die Methode *listBlobsSegmented* gibt eine Sammlung von Blobs zurück. Als Menge für die Sammlung ist standardmäßig 5.000 Blobs festgelegt, Sie können diesen Wert jedoch Ihren Anforderungen entsprechend anpassen. Im [fortführenden Beispiel](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js#L132) wird gezeigt, wie Sie mit einer großen Anzahl von Blobs arbeiten und wie die Clientbibliothek die Auslagerung unterstützt. 
+
 
 ### <a name="delete-blobs"></a>Löschen von Blobs
 Durch Aufrufen von [deleteBlobIfExists](https://azure.github.io/azure-storage-node/BlobService.html#deleteBlobIfExists__anchor) können Sie das hochgeladene Blob löschen.

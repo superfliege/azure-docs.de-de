@@ -2,7 +2,7 @@
 title: Registrieren Ihres Azure Enterprise Agreements bei der Azure Kostenverwaltung | Microsoft Docs
 description: Verwenden Sie Ihr Enterprise Agreement, um sich bei Azure Cost Management zu registrieren.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 75ae3aabf51a14ceb3326e7f3cee3e20d9b98579
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f0769340ca15f2b60cbcb2669e1a5cf9beef6b8e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten
 
@@ -22,9 +22,9 @@ Sie verwenden Ihr Enterprise Agreement, um sich bei Azure Cost Management zu reg
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-- Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+- Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
-## <a name="create-a-trial-registration"></a>Erstellen einer Registrierung für die Testversion
+## <a name="register-with-azure-cost-management"></a>Registrieren bei Azure Cost Management
 
 1. Klicken Sie im Azure-Portal in der Liste der Dienste auf **Kostenverwaltung und Abrechnung**.
 2. Klicken Sie unter **Übersicht** auf **Kostenverwaltung**.  

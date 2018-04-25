@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center – Handbuch zur Problembehandlung | Microsoft Docs"
+title: Azure Security Center – Handbuch zur Problembehandlung | Microsoft Docs
 description: In diesem Dokument wird die Problembehandlung in Azure Security Center beschrieben.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2018
 ms.author: yurid
-ms.openlocfilehash: e2e8b16bf720e2be8b8bc8ae81fc944af79dddab
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0c5f7a932cef904abbca25b63cf8e0d96db73c29
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Handbuch zur Problembehandlung
 Dieses Handbuch ist für IT-Experten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, in deren Organisation Azure Security Center verwendet wird und die Security Center-Probleme lösen müssen.
@@ -39,7 +39,7 @@ In diesem Handbuch wird beschrieben, wie Sie Probleme mit Security Center behebe
 Das Überwachungsprotokoll enthält alle Schreibvorgänge (PUT, POST, DELETE), die für Ihre Ressourcen durchgeführt werden, aber keine Lesevorgänge (GET).
 
 ## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
-Security Center verwendet den Microsoft Monitoring Agent, um sicherheitsrelevante Daten von Ihren virtuellen Azure-Computern zu sammeln. Derselbe Agent wird auch von der Operations Management Suite und dem Log Analytics-Dienst verwendet. Nachdem die Datensammlung aktiviert und der Agent auf dem Zielcomputer richtig installiert wurde, sollte dieser Prozess ausgeführt werden:
+Security Center verwendet Microsoft Monitoring Agent, um sicherheitsrelevante Daten von Ihren virtuellen Azure-Computern zu sammeln. Dieser Agent wird auch vom Log Analytics-Dienst verwendet. Nachdem die Datensammlung aktiviert und der Agent auf dem Zielcomputer richtig installiert wurde, sollte dieser Prozess ausgeführt werden:
 
 * HealthService.exe
 
@@ -49,7 +49,7 @@ Wenn Sie die Dienstverwaltungskonsole („services.msc“) öffnen, sehen Sie au
 
 Wenn Sie erfahren möchten, welche Version des Agents Sie verwenden, öffnen Sie den **Task-Manager**, und suchen Sie auf der Registerkarte **Prozesse** den **Microsoft Monitoring Agent-Dienst**. Klicken Sie mit der rechten Maustaste darauf, und klicken Sie dann auf **Eigenschaften**. Auf der Registerkarte **Details** wird die Dateiversion wie unten dargestellt angezeigt:
 
-![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+![Datei](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
 
 ## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Installationsszenarien für den Microsoft Monitoring Agent
@@ -84,7 +84,7 @@ Mit der **Zustandsüberwachung** wird der Grund dafür definiert, warum Security
 Damit Agents eine Verbindung mit Security Center herstellen und sich bei diesem registrieren können, müssen sie Zugriff auf Netzwerkressourcen, einschließlich der Portnummern und Domänen-URLs, haben.
 
 - Für Proxy-Server müssen Sie sicherstellen, dass die entsprechenden Proxy-Serverressourcen in Agenteinstellungen konfiguriert sind. Weitere Informationen zum [Ändern der Proxyeinstellungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings) finden Sie in diesem Artikel.
-- Wenn eine Firewall den Zugriff auf das Internet einschränkt, müssen Sie die Firewall so konfigurieren, dass OMS Zugriff erhält. In den Agenteinstellungen ist keine Aktion erforderlich.
+- Wenn eine Firewall den Zugriff auf das Internet einschränkt, müssen Sie die Firewall so konfigurieren, dass Log Analytics Zugriff erhält. In den Agenteinstellungen ist keine Aktion erforderlich.
 
 Die folgende Tabelle zeigt die für die Kommunikation erforderlichen Ressourcen.
 

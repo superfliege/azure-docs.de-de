@@ -1,12 +1,12 @@
 ---
-title: Verwenden des Speicher-Explorers (Vorschau) mit Azure File Storage | Microsoft-Dokumentation
-description: "Es wird beschrieben, wie Sie den Speicher-Explorer (Vorschau) für die Verwendung von Dateifreigaben und Dateien nutzen."
+title: Verwenden des Speicher-Explorers mit Azure File Storage | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie den Storage-Explorer für die Verwendung von Dateifreigaben und Dateien nutzen.
 services: storage
 documentationcenter: na
 author: cawaMS
 manager: paulyuk
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 964691758254531cb92a5b1cbe055ef61d25dba8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8bcc2bf11ef4adbe9139635d3c24c240a46783c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="using-storage-explorer-preview-with-azure-file-storage"></a>Verwenden des Speicher-Explorers (Vorschau) mit Azure File Storage
+# <a name="using-storage-explorer-with-azure-file-storage"></a>Verwenden des Storage-Explorers mit Azure File Storage
 
-Azure File Storage ist ein Dienst, bei dem Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls (Server Message Block) bereitgestellt werden können. Sowohl SMB 2.1 als auch SMB 3.0 werden unterstützt. Mit Azure File Storage können Sie Legacyanwendungen, für die Dateifreigaben benötigt werden, schnell und ohne teures Umschreiben zu Azure migrieren. Sie können File Storage verwenden, um Daten weltweit öffentlich zur Verfügung zu stellen oder um Anwendungsdaten privat zu speichern. In diesem Artikel wird beschrieben, wie Sie den Speicher-Explorer (Vorschau) für Dateifreigaben und Dateien verwenden.
+Azure File Storage ist ein Dienst, bei dem Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls (Server Message Block) bereitgestellt werden können. Sowohl SMB 2.1 als auch SMB 3.0 werden unterstützt. Mit Azure File Storage können Sie Legacyanwendungen, für die Dateifreigaben benötigt werden, schnell und ohne teures Umschreiben zu Azure migrieren. Sie können File Storage verwenden, um Daten weltweit öffentlich zur Verfügung zu stellen oder um Anwendungsdaten privat zu speichern. In diesem Artikel wird beschrieben, wie Sie den Storage-Explorer für Dateifreigaben und Dateien verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
-- [Herunterladen und Installieren des Speicher-Explorers (Vorschau)](http://www.storageexplorer.com/)
+- [Herunterladen und Installieren des Storage-Explorers](http://www.storageexplorer.com/)
 
 - [Herstellen der Verbindung mit einem Azure Storage-Konto oder -Dienst](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
@@ -36,9 +36,9 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 Alle Dateien müssen sich auf einer Dateifreigabe befinden. Hierbei handelt es sich lediglich um eine logische Gruppierung von Dateien. Ein Konto kann eine unbegrenzte Anzahl von Dateifreigaben enthalten, und auf jeder Freigabe kann eine unbegrenzte Anzahl von Dateien gespeichert werden.
 
-Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Speicher-Explorer (Vorschau) erstellen.
+Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Storage-Explorer erstellen.
 
-1. Öffnen Sie den Speicher-Explorer (Vorschau).
+1. Öffnen Sie den Storage-Explorer.
 
 2. Erweitern Sie im linken Bereich das Speicherkonto, in dem Sie die Dateifreigabe erstellen möchten.
 
@@ -58,9 +58,9 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Speicher-
 
 Dateifreigaben enthalten Dateien und Ordner (die ebenfalls Dateien enthalten können).
 
-Die folgenden Schritte veranschaulichen, wie Sie den Inhalt einer Dateifreigabe im Speicher-Explorer (Vorschau) anzeigen:
+Die folgenden Schritte veranschaulichen, wie Sie den Inhalt einer Dateifreigabe im Storage-Explorer anzeigen:
 
-1. Öffnen Sie den Speicher-Explorer (Vorschau).
+1. Öffnen Sie den Storage-Explorer.
 
 2. Erweitern Sie im linken Bereich das Speicherkonto, das die gewünschte Dateifreigabe enthält.
 
@@ -78,9 +78,9 @@ Die folgenden Schritte veranschaulichen, wie Sie den Inhalt einer Dateifreigabe 
 
 Dateifreigaben können nach Bedarf leicht erstellt und gelöscht werden. (Informationen zum Löschen von einzelnen Dateien finden Sie im Abschnitt [Verwalten von Dateien auf einer Dateifreigabe](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
 
-Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Speicher-Explorer (Vorschau) löschen:
+Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Storage-Explorer löschen:
 
-1. Öffnen Sie den Speicher-Explorer (Vorschau).
+1. Öffnen Sie den Storage-Explorer.
 
 2. Erweitern Sie im linken Bereich das Speicherkonto, das die gewünschte Dateifreigabe enthält.
 
@@ -96,11 +96,11 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Speicher-
 
 ## <a name="copy-a-file-share"></a>Kopieren einer Dateifreigabe
 
-Mit dem Speicher-Explorer (Vorschau) können Sie eine Dateifreigabe in die Zwischenablage kopieren und die Dateifreigabe dann in ein anderes Speicherkonto einfügen. (Informationen zum Kopieren von einzelnen Dateien finden Sie im Abschnitt [Verwalten von Dateien auf einer Dateifreigabe](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
+Mit dem Storage-Explorer können Sie eine Dateifreigabe in die Zwischenablage kopieren und die Dateifreigabe dann in ein anderes Speicherkonto einfügen. (Informationen zum Kopieren von einzelnen Dateien finden Sie im Abschnitt [Verwalten von Dateien auf einer Dateifreigabe](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
 
 Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe aus einem Speicherkonto in ein anderes kopieren.
 
-1. Öffnen Sie den Speicher-Explorer (Vorschau).
+1. Öffnen Sie den Storage-Explorer.
 
 2. Erweitern Sie im linken Bereich das Speicherkonto, das die zu kopierende Dateifreigabe enthält.
 
@@ -120,7 +120,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe aus einem Sp
 
 Die folgenden Schritte veranschaulichen, wie Sie eine SAS für eine Dateifreigabe erstellen:
 
-1. Öffnen Sie den Speicher-Explorer (Vorschau).
+1. Öffnen Sie den Storage-Explorer.
 
 2. Erweitern Sie im linken Bereich das Speicherkonto mit der Dateifreigabe, für die Sie die SAS abrufen möchten.
 
@@ -146,7 +146,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine SAS für eine Dateifreigab
 
 Die folgenden Schritte veranschaulichen, wie Sie Zugriffsrichtlinien für eine Dateifreigabe verwalten (hinzufügen und entfernen): Die Zugriffsrichtlinien werden zum Erstellen von SAS-URLs verwendet, mit denen Benutzer während eines festgelegten Zeitraums auf die Storage-Dateiressource zugreifen können.
 
-1. Öffnen Sie den Speicher-Explorer (Vorschau).
+1. Öffnen Sie den Storage-Explorer.
 
 2. Erweitern Sie im linken Bereich das Speicherkonto mit der Dateifreigabe, deren Zugriffsrichtlinien Sie verwalten möchten.
 
@@ -180,7 +180,7 @@ Nachdem Sie eine Dateifreigabe erstellt haben, können Sie eine Datei auf diese 
 
 Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf einer Dateifreigabe verwalten.
 
-1.  Öffnen Sie den Speicher-Explorer (Vorschau).
+1.  Öffnen Sie den Storage-Explorer.
 
 2.  Erweitern Sie im linken Bereich das Speicherkonto, das die zu verwaltende Dateifreigabe enthält.
 
@@ -258,6 +258,6 @@ Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [neuesten Versionsanmerkungen und Videos zum Speicher-Explorer (Vorschau)](http://www.storageexplorer.com/)an.
+- Sehen Sie sich die [neuesten Versionsanmerkungen und Videos zum Storage-Explorer](http://www.storageexplorer.com/) an.
 
 - Informieren Sie sich, wie Sie [Anwendungen mit Azure-Blobs, -Tabellen, -Warteschlangen und -Dateien erstellen](https://azure.microsoft.com/documentation/services/storage/).

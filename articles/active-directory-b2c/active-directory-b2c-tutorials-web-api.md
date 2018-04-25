@@ -1,22 +1,22 @@
 ---
-title: Schützen einer ASP.NET-Web-API mithilfe von Azure Active Directory B2C (Tutorial)
+title: 'Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API über eine Web-App unter Verwendung von Azure Active Directory B2C | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie mit Active Directory B2C eine ASP.NET-Web-API schützen und sie über eine ASP.NET-Web-App aufrufen.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 editor: ''
 ms.author: davidmu
-ms.date: 1/23/2018
+ms.date: 01/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: f4e1c18f151a9c815258f01ea198d3d173d0b44e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f61a3b103d8738e1b86fb64aff99dab9c6986fdf
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="tutorial-use-azure-active-directory-b2c-to-protect-an-aspnet-web-api"></a>Tutorial: Schützen einer ASP.NET-Web-API mithilfe von Azure Active Directory B2C
+# <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API über eine Web-App unter Verwendung von Azure Active Directory B2C
 
 In diesem Tutorial erfahren Sie, wie Sie eine durch Azure Active Directory (Azure AD) B2C geschützte Web-API-Ressource über eine ASP.NET-Web-App aufrufen.
 
@@ -45,7 +45,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Admi
 
 1. Wählen Sie **Azure AD B2C** aus der Dienstliste im Azure-Portal aus.
 
-2. Klicken Sie in den B2C-Einstellungen auf **Anwendungen** und dann auf **+ Hinzufügen**.
+2. Klicken Sie in den B2C-Einstellungen auf **Anwendungen** und anschließend auf **Hinzufügen**.
 
     Verwenden Sie die folgenden Einstellungen, um die Beispiel-Web-API bei Ihrem Mandanten zu registrieren.
     
@@ -89,11 +89,13 @@ Fügen Sie folgende Einträge hinzu, um Bereiche für die API zu konfigurieren:
 | **Umfang** | Hello.Read | Lesezugriff auf „hello“ |
 | **Umfang** | Hello.Write | Schreibzugriff auf „hello“ |
 
+Klicken Sie auf **Speichern**.
+
 Mit den veröffentlichten Bereichen können einer Client-App Berechtigungen für die Web-API gewährt werden.
 
 ### <a name="grant-app-permissions-to-web-api"></a>Erteilen von Web-API-Berechtigungen für die App
 
-Wenn Sie über eine App eine geschützte Web-API aufrufen möchten, müssen Sie der App Berechtigungen für die API erteilen. 
+Wenn Sie über eine App eine geschützte Web-API aufrufen möchten, müssen Sie der App Berechtigungen für die API erteilen. In diesem Tutorial verwenden Sie die Web-App, die Sie unter [Verwenden von Azure Active Directory B2C für die Benutzerauthentifizierung in einer ASP.NET-Web-App](active-directory-b2c-tutorials-web-app.md) erstellt haben. 
 
 1. Wählen Sie in der Dienstliste des Azure-Portals die Option **Azure AD B2C** aus, und klicken Sie auf **Anwendungen**, um die Liste mit den registrierten Apps anzuzeigen.
 
@@ -109,7 +111,7 @@ Wenn Sie über eine App eine geschützte Web-API aufrufen möchten, müssen Sie 
 
 **My Sample Web App** wird zum Aufrufen der geschützten API **My Sample Web API** registriert. Ein Benutzer [authentifiziert](../active-directory/develop/active-directory-dev-glossary.md#authentication) sich mit Azure AD B2C, um die Web-App zu verwenden. Die Web-App bezieht eine [Autorisierungsgewährung](../active-directory/develop/active-directory-dev-glossary.md#authorization-grant) von Azure AD B2C, um auf die geschützte Web-API zuzugreifen.
 
-## <a name="update-web-api-code"></a>Aktualisieren des Web-API-Codes
+## <a name="update-code"></a>Aktualisieren des Codes
 
 Nachdem die Web-API registriert ist und Bereiche definiert wurden, müssen Sie den Web-API-Code für die Verwendung Ihres Azure AD B2C-Mandanten konfigurieren. In diesem Tutorial konfigurieren Sie eine Beispiel-Web-API. 
 
@@ -137,11 +139,11 @@ Die Beispiel-Web-App und die Beispiel-Web-API definieren die Konfigurationswerte
 
 3. Konfigurieren Sie den URI der API. Dieser URI wird von der Web-App für die API-Anforderung verwendet. Konfigurieren Sie außerdem die angeforderten Berechtigungen.
 
-```C#
-<add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/myAPISample/" />
-<add key="api:ReadScope" value="Hello.Read" />
-<add key="api:WriteScope" value="Hello.Write" />
-```
+    ```C#
+    <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/myAPISample/" />
+    <add key="api:ReadScope" value="Hello.Read" />
+    <add key="api:WriteScope" value="Hello.Write" />
+    ```
 
 ### <a name="configure-the-web-api"></a>Konfigurieren der Web-API
 
@@ -162,7 +164,7 @@ Die Beispiel-Web-App und die Beispiel-Web-API definieren die Konfigurationswerte
 4. Aktualisieren Sie die Richtlinieneinstellung mit dem Namen, der bei der Erstellung der Registrierungs- und Anmelderichtlinie generiert wurde.
 
     ```C#
-    <add key="ida:SignUpSignInPolicyId" value="b2c_1_SiUpIn" />
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_SiUpIn" />
     ```
 
 5. Konfigurieren Sie die Bereichseinstellung so, dass sie dem entspricht, was Sie im Portal erstellt haben.
@@ -172,7 +174,7 @@ Die Beispiel-Web-App und die Beispiel-Web-API definieren die Konfigurationswerte
     <add key="api:WriteScope" value="Hello.Write" />
     ```
 
-## <a name="run-the-sample-web-app-and-web-api"></a>Ausführen der Beispiel-Web-App und der Web-API
+## <a name="run-the-sample"></a>Ausführen des Beispiels
 
 Führen Sie sowohl das Projekt **TaskWebApp** als auch das Projekt **TaskService** aus. 
 

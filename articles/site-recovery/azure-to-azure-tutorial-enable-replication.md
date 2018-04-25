@@ -5,18 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 03/16/2018
+ms.topic: tutorial
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7dd0bfbd96e6ba7b5d2174334419797c4fd60a51
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d1bc6fcb17732da7f6b0985122dd2cff3c2c9cdf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Einrichten einer Notfallwiederherstellung für Azure-VMs in eine sekundäre Azure-Region (Vorschau)
 
@@ -77,7 +74,7 @@ Wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektiv
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Ausgehende Konnektivität für IP-Adressbereiche
 
-Wenn Sie eine IP-basierte Firewall, Proxys oder NSG-Regeln verwenden, um ausgehende Konnektivität zu steuern, müssen die folgenden IP-Adressbereiche in der Whitelist enthalten sein. Laden Sie eine Liste der Bereichen unter den folgenden Links herunter:
+Wenn Sie die Konnektivität in ausgehender Richtung mithilfe von IP-Adressen anstelle von URLs steuern möchten, setzen Sie die entsprechenden Datencenterbereiche, Office 365-Adressen und Dienstendpunkt-Adressen für IP-basierte Firewalls, Proxys oder NSG-Regeln auf die Whitelist.
 
   - [IP-Bereiche für Microsoft Azure-Rechenzentren](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
   - [IP-Bereiche für Azure-Rechenzentren in Deutschland](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
@@ -85,7 +82,7 @@ Wenn Sie eine IP-basierte Firewall, Proxys oder NSG-Regeln verwenden, um ausgehe
   - [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [IP-Adressen des Site Recovery-Dienstendpunkts](https://aka.ms/site-recovery-public-ips)
 
-Verwenden Sie diese Listen, um die Netzwerkzugriffssteuerung in Ihrem Netzwerk zu konfigurieren. Sie können die erforderlichen NSG-Regeln mit diesem [Skript](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702) erstellen.
+Sie können die erforderlichen NSG-Regeln mit diesem [Skript](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702) erstellen.
 
 ## <a name="verify-azure-vm-certificates"></a>Überprüfen der Azure-VM-Zertifikate
 
@@ -105,7 +102,7 @@ Azure Site Recovery bietet drei integrierte Rollen zum Steuern von Site Recovery
 
 - **Site Recovery-Leser**: Diese Rolle verfügt über Berechtigungen zum Anzeigen aller Site Recovery-Verwaltungsvorgänge. Diese Rolle eignet sich optimal für eine IT-Überwachungsführungskraft, die den aktuellen Schutzstatus überwachen und Supporttickets ausstellen kann.
 
-Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../active-directory/role-based-access-built-in-roles.md).
+Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../role-based-access-control/built-in-roles.md).
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 

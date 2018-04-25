@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 04/17/2018
 ms.author: jdial
-ms.openlocfilehash: 69264ac7ffe8124b964a10c11aacaca5c712fd63
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dcb46c7127590f1986fe1fd66c2f6ac4fd8b107d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
-Das Peering virtueller Netzwerke ermöglicht das nahtlose Verbinden zweier [virtueller Azure-Netzwerke](virtual-networks-overview.md). Nach dem Peering werden die virtuellen Netzwerke für Verbindungszwecke als einzelnes Element angezeigt. Der Datenverkehr zwischen virtuellen Computern in den virtuellen Netzwerken, die mittels Peering verknüpft sind, wird ähnlich wie der Datenverkehr zwischen virtuellen Computern im gleichen Netzwerk nur über *private* IP-Adressen über die Microsoft-Backbone-Infrastruktur geleitet. 
+Das Peering virtueller Netzwerke ermöglicht das nahtlose Verbinden zweier [virtueller Azure-Netzwerke](virtual-networks-overview.md). Nach dem Peering werden die virtuellen Netzwerke für Verbindungszwecke als einzelnes Element angezeigt. Der Datenverkehr zwischen virtuellen Computern in den virtuellen Netzwerken, die mittels Peering verknüpft sind, wird ähnlich wie der Datenverkehr zwischen virtuellen Computern im gleichen Netzwerk nur über *private* IP-Adressen über die Microsoft-Backbone-Infrastruktur geleitet. Azure unterstützt:
+* VNET-Peering: Verbinden von VNETS in derselben Azure-Region
+* Globales VNET-Peering: Verbinden von VNETS in verschiedenen Azure-Regionen
 
-Die Verwendung von VNET-Peering bietet unter anderem folgende Vorteile:
+Die Verwendung von VNET-Peering (lokal oder global) bietet unter anderem folgende Vorteile:
 
 * Netzwerkdatenverkehr zwischen virtuellen Netzwerken, die mittels Peering verknüpft sind, ist privat. Datenverkehr zwischen den virtuellen Netzwerken bleibt innerhalb des Microsoft-Backbone-Netzwerks. Die Kommunikation zwischen den virtuellen Netzwerken kommt ganz ohne öffentliches Internet, Gateways oder Verschlüsselung aus.
 * Niedrige Latenz, Verbindung mit hoher Bandbreite zwischen Ressourcen in unterschiedlichen virtuellen Netzwerken
@@ -95,5 +97,5 @@ Für ein- und ausgehenden Datenverkehr, der eine VNET-Peeringverbindung verwende
     |Einmal Resource Manager, einmal klassisch  |[Gleich](create-peering-different-deployment-models.md)|
     |                                   |[Unterschiedlich](create-peering-different-deployment-models-subscriptions.md)|
 
-* Informieren Sie sich über das Erstellen einer [Hub-and-Spoke-Netzwerktopologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering).
+* Informieren Sie sich über das Erstellen einer [Hub-Spoke-Netzwerktopologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering).
 * Erfahren Sie mehr über alle [Einstellungen für das VNET-Peering und deren Änderung](virtual-network-manage-peering.md).

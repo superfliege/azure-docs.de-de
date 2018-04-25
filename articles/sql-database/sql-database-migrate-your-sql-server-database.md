@@ -1,23 +1,28 @@
 ---
-title: Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine SQL Server-Datenbank zu Azure SQL-Datenbank migrieren.
+title: Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von DMS | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe von DMS eine SQL Server-Datenbank zu Azure SQL-Datenbank migrieren.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: c4b4354cb1090b9abc388da9d1d1b135f135144d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 14e9949fe0c292a366fa55e3f16d14d885606f6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank
+# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dms"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von DMS
 
-Das Verschieben Ihrer SQL Server-Datenbank zur Azure SQL-Datenbank ist so einfach, wie eine leere SQL­Datenbank in Azure zu erstellen und sie dann mithilfe des [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) in Azure zu importieren. In diesem Tutorial lernen Sie Folgendes:
+Das Migrieren Ihrer SQL Server-Datenbank zu einer einfachen Datenbank in Azure SQL-Datenbank ist so einfach, wie eine leere SQL-­Datenbank in Azure zu erstellen und sie dann mithilfe des [Datenmigrations-Assistenten ](https://www.microsoft.com/download/details.aspx?id=53595) (Data Migration Assistant, DMA) in Azure zu importieren. Weitere Migrationsoptionen finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
+
+> [!IMPORTANT]
+> Informationen zum Migrieren zu einer verwalteten Azure SQL-Datenbank-Instanz finden Sie unter [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-migrate.md).
+
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer leeren Azure SQL-Datenbank im Azure-Portal (mit einem neuen oder vorhandenen Azure SQL-Datenbankserver)

@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: b1b51b6c36143747a81d1c1fc035ee6d54d34076
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a29a3f27f7c9ab41724d400c9eb787e6888bedc4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrieren von mit Azure verwalteten Diensten mithilfe von Open Service Broker für Azure (OSBA)
 
@@ -21,9 +21,9 @@ Zusammen mit dem [Kubernetes Service Catalog][kubernetes-service-catalog] ermög
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement
 
-* Azure CLI 2.0: Sie können es [lokal installieren][azure-cli-install] oder in [Azure Cloud Shell][azure-cloud-shell] verwenden.
+* Azure CLI 2.0: [lokale Installation][azure-cli-install] oder Verwendung in [Azure Cloud Shell][azure-cloud-shell]
 
-* Helm CLI 2.7+: Sie können sie [lokal installieren][helm-cli-install] oder in [Azure Cloud Shell][azure-cloud-shell] verwenden.
+* Helm-CLI 2.7+: [lokale Installation][helm-cli-install] oder Verwendung in [Azure Cloud Shell][azure-cloud-shell]
 
 * Berechtigungen zum Erstellen eines Dienstprinzipals mit der Rolle „Mitwirkender“ in Ihrem Azure-Abonnement
 

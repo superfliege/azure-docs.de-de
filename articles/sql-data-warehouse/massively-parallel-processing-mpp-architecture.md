@@ -1,34 +1,30 @@
 ---
-title: "MPP-Architektur – Azure SQL Data Warehouse? | Microsoft Docs"
+title: Azure SQL Data Warehouse – MPP-Architektur | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie in Azure SQL Data Warehouse durch Kombination von Massively Parallel Processing (MPP) und Azure Storage hohe Leistung und Skalierbarkeit erzielt werden.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: architecture
-ms.date: 11/15/2017
-ms.author: jrj;barbkess
-ms.openlocfilehash: 4c230eb0633b2917b90a5c1f9f4176882bfd0290
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: dd148b8fdf6a816233f7adc0a8a22f87c417a156
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse – MPP-Architektur (Massively Parallel Processing)
 In diesem Artikel erfahren Sie, wie in Azure SQL Data Warehouse durch Kombination von Massively Parallel Processing (MPP) und Azure Storage hohe Leistung und Skalierbarkeit erzielt werden. 
 
 ## <a name="mpp-architecture-components"></a>Komponenten der MPP-Architektur
-SQL Data Warehouse nutzt eine horizontal hochskalierte Architektur zur Verteilung der Berechnungsverarbeitung von Daten auf mehrere Knoten. Die Skalierungseinheit ist eine Abstraktion der Computeleistung, die als Data Warehouse-Einheit bezeichnet wird. In SQL Data Warehouse sind Compute und Speicher getrennt, sodass Sie als Benutzer die Computedaten unabhängig von den Daten in Ihrem System skalieren können.
+SQL Data Warehouse nutzt eine horizontal hochskalierte Architektur zur Verteilung der Berechnungsverarbeitung von Daten auf mehrere Knoten. Die Skalierungseinheit ist eine Abstraktion der Computeleistung, die als Data Warehouse-Einheit bezeichnet wird. In SQL Data Warehouse sind Compute- und Speicherressourcen getrennt, sodass Sie die Computedaten unabhängig von den Daten in Ihrem System skalieren können.
 
 ![SQL Data Warehouse-Architektur](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SQL Data Warehouse verwendet eine knotenbasierte Architektur. Anwendungen stellen eine Verbindung her und geben T-SQL-Befehle an einen Steuerknoten aus, der auch der einzige Einstiegspunkt für das Data Warehouse ist. Der Steuerknoten führt das MPP-Modul aus, das Abfragen für die Parallelverarbeitung optimiert und dann Vorgänge an Serverknoten übergibt, sodass die Vorgänge parallel ausgeführt werden. Auf den Serverknoten werden alle Benutzerdaten in Azure Storage gespeichert und die parallelen Abfragen ausgeführt. Der Datenverschiebungsdienst (Data Movement Service, DMS) ist ein interner Dienst auf Systemebene, der Daten nach Bedarf zwischen den Knoten verschiebt, sodass Abfragen parallel ausgeführt und genaue Ergebnisse zurückgegeben werden. 
+SQL Data Warehouse verwendet eine knotenbasierte Architektur. Anwendungen stellen eine Verbindung her und geben T-SQL-Befehle an einen Steuerknoten aus, der auch der einzige Einstiegspunkt für das Data Warehouse ist. Der Steuerknoten führt die MPP-Engine aus, das Abfragen für die Parallelverarbeitung optimiert und dann Vorgänge an Serverknoten übergibt, sodass die Vorgänge parallel ausgeführt werden. Auf den Serverknoten werden alle Benutzerdaten in Azure Storage gespeichert und die parallelen Abfragen ausgeführt. Der Datenverschiebungsdienst (Data Movement Service, DMS) ist ein interner Dienst auf Systemebene, der Daten nach Bedarf zwischen den Knoten verschiebt, sodass Abfragen parallel ausgeführt und genaue Ergebnisse zurückgegeben werden. 
 
 Die Entkoppelung von Speicher und Compute ermöglicht SQL Data Warehouse Folgendes:
 
@@ -46,7 +42,7 @@ SQL Data Warehouse verwendet Azure Storage zum Schützen Ihrer Benutzerdaten.  D
 
 ### <a name="control-node"></a>Steuerknoten
 
-Der Steuerknoten ist der zentrale Knoten des Data Warehouse. Dies ist das Front-End, das mit allen Anwendungen und Verbindungen interagiert. Das MPP-Modul wird auf dem Steuerknoten ausgeführt, um parallele Abfragen zu optimieren und zu koordinieren. Wenn Sie eine T-SQL-Abfrage an SQL Data Warehouse übermitteln, wird sie vom Steuerknoten in Abfragen transformiert, die für alle Verteilungen parallel ausgeführt werden.
+Der Steuerknoten ist der zentrale Knoten des Data Warehouse. Dies ist das Front-End, das mit allen Anwendungen und Verbindungen interagiert. Die MPP-Engine wird auf dem Steuerknoten ausgeführt, um parallele Abfragen zu optimieren und zu koordinieren. Wenn Sie eine T-SQL-Abfrage an SQL Data Warehouse übermitteln, wird sie vom Steuerknoten in Abfragen transformiert, die für alle Verteilungen parallel ausgeführt werden.
 
 ### <a name="compute-nodes"></a>Serverknoten
 

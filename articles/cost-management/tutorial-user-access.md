@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Zuweisen des Zugriffs in Azure Cost Management | Microsoft-Dokumentation'
-description: "In diesem Tutorial wird beschrieben, wie Sie den Zugriff auf Kostenverwaltungsdaten mit Benutzerkonten zuweisen, die Ebenen für den Zugriff auf Entitäten definieren."
+description: In diesem Tutorial wird beschrieben, wie Sie den Zugriff auf Kostenverwaltungsdaten mit Benutzerkonten zuweisen, die Ebenen für den Zugriff auf Entitäten definieren.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/27/2018
+ms.date: 04/09/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6434eb9780eefdcd492273f11f8675668d8d6479
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: db5cdecc57cf07876ca8d4e981860615643cfd79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Tutorial: Zuweisen des Zugriffs auf Kostenverwaltungsdaten
 
@@ -40,7 +40,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Obwohl Sie bereits über Administratorzugriff verfügen, benötigen Kollegen in Ihrer Organisation möglicherweise ebenfalls Administratorzugriff. Klicken Sie im Cloudyn-Portal auf das Zahnradsymbol in der rechten oberen Ecke, und wählen Sie **User Management** (Benutzerverwaltung) aus. Klicken Sie auf **Add New User** (Neuen Benutzer hinzufügen), um einen neuen Benutzer hinzuzufügen.
 
-Geben Sie die erforderlichen Informationen zum Benutzer ein. Sie können das Kennwortfeld leer lassen, damit der Benutzer bei der ersten Anmeldung ein neues Kennwort festlegen kann. Ein Link mit Anmeldeinformationen wird von Cloudyn per E-Mail an den Benutzer gesendet, wenn Sie **Notify user by email** (Benutzer per E-Mail benachrichtigen) aktivieren. Wählen Sie die erforderlichen Berechtigungen für die Benutzerverwaltung aus, damit der Benutzer andere Benutzer erstellen und ändern kann. Aktivieren Sie die Empfängerlistenverwaltung, damit der Benutzer Empfängerlisten bearbeiten kann.
+Geben Sie die erforderlichen Informationen zum Benutzer ein. Die Anmelde-ID muss eine gültige E-Mail-Adresse sein. Wählen Sie die erforderlichen Berechtigungen für die Benutzerverwaltung aus, damit der Benutzer andere Benutzer erstellen und ändern kann. Dank der Empfängerlistenverwaltung kann der Benutzer Empfängerlisten bearbeiten. Ein Link mit Anmeldeinformationen wird von Cloudyn per E-Mail an den Benutzer gesendet, wenn Sie **Notify user by email** (Benutzer per E-Mail benachrichtigen) aktivieren. Bei der ersten Anmeldung legt der Benutzer ein Kennwort fest.
 
 Unter **User has admin access** (Benutzer verfügt über Administratorzugriff) ist die Stammentität Ihrer Organisation ausgewählt. Lassen Sie den Stamm ausgewählt, und speichern Sie die Benutzerinformationen. Durch das Auswählen der Stammentität verfügt der Benutzer nicht nur für die Stammentität in der Struktur über Administratorberechtigungen, sondern auch für alle Entitäten, die sich darunter befinden.  
   ![Neuen Benutzer mit Administratorzugriff hinzufügen](.\media\tutorial-user-access\new-admin-access.png)
@@ -64,7 +64,7 @@ Berücksichtigen Sie beim Erstellen der Struktur, wie die Kosten nach Geschäfts
 
 Bei der Registrierung Ihrer Azure-Vereinbarung oder Ihres Azure-Kontos bei Cloudyn wurden Ihre Azure-Ressourcendaten, einschließlich Auslastung, Leistung, Abrechnung und Tagdaten von Ihren Abonnements in Ihr Cloudyn-Konto kopiert. Ihre Entitätsstruktur müssen Sie jedoch manuell erstellen. Wenn Sie die Azure Resource Manager-Registrierung übersprungen haben, stehen nur Abrechnungsdaten und einige Ressourcenberichte im Cloudyn-Portal zur Verfügung.
 
-Klicken Sie im Cloudyn-Portal in der rechten oberen Ecke auf **Settings** (Einstellungen), und wählen Sie **Cloud Accounts** (Cloudkonten) aus. Sie beginnen mit einer einzigen Entität (Stamm) und erstellen Ihre Entitätsstruktur unter dem Stamm. Hier sehen Sie ein Beispiel für eine Entitätshierarchie, die vielen IT-Organisationen nach Fertigstellung der Struktur ähnelt:
+Klicken Sie im Cloudyn-Portal auf das Zahnradsymbol in der rechten oberen Ecke, und wählen Sie **Cloud Accounts** (Cloudkonten) aus. Sie beginnen mit einer einzigen Entität (Stamm) und erstellen Ihre Entitätsstruktur unter dem Stamm. Hier sehen Sie ein Beispiel für eine Entitätshierarchie, die vielen IT-Organisationen nach Fertigstellung der Struktur ähnelt:
 
 ![Entitätsstruktur](.\media\tutorial-user-access\entity-tree.png)
 

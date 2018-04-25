@@ -1,11 +1,11 @@
 ---
-title: "Häufig gestellte Fragen zu Azure Active Directory | Microsoft Docs"
-description: "In den häufig gestellten Fragen zu Azure Active Directory werden allgemeine Fragen zu Azure und Azure Active Directory sowie zur Kennwortverwaltung und zum Anwendungszugriff beantwortet."
+title: Häufig gestellte Fragen zu Azure Active Directory | Microsoft Docs
+description: In den häufig gestellten Fragen zu Azure Active Directory werden allgemeine Fragen zu Azure und Azure Active Directory sowie zur Kennwortverwaltung und zum Anwendungszugriff beantwortet.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 80df81f365ac884bc1f44268e615975407f485f0
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 83586cff59d5beb7c48bc6bb8b72fd09e4d37bf8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -119,11 +119,11 @@ Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltun
 
 **A:** Ja. Bei aktiviertem Kennwortrückschreiben werden die von einem Administrator durchgeführten Kennwortvorgänge in Ihre lokale Umgebung zurückgeschrieben.  
 
-Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellte Fragen zur Kennwortverwaltung](active-directory-passwords-faq.md).
+Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellte Fragen zur Kennwortverwaltung](authentication/active-directory-passwords-faq.md).
 - - -
 **F: Was kann ich tun, wenn ich mein vorhandenes Office 365-/Azure AD-Kennwort ändern möchte, aber das alte Kennwort vergessen habe?**
 
-**A:** Für diese Situation stehen mehrere Optionen zur Verfügung.  Verwenden Sie die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR), sofern verfügbar.  Ob die SSPR funktioniert, hängt davon ab, wie sie konfiguriert ist.  Weitere Informationen finden Sie unter [Wie funktioniert das Portal für die Kennwortzurücksetzung?](active-directory-passwords-best-practices.md).
+**A:** Für diese Situation stehen mehrere Optionen zur Verfügung.  Verwenden Sie die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR), sofern verfügbar.  Ob die SSPR funktioniert, hängt davon ab, wie sie konfiguriert ist.  Weitere Informationen finden Sie unter [Wie funktioniert das Portal für die Kennwortzurücksetzung?](authentication/howto-sspr-deployment.md).
 
 Für Office 365-Benutzer kann der Administrator das Kennwort mithilfe der Anleitung unter [Administratoren: Benutzerkennwörter zurücksetzen](https://support.office.com/en-us/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US) zurücksetzen.
 
