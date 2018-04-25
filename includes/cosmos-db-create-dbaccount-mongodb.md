@@ -1,18 +1,18 @@
 ---
-title: Erstellen eines Kontos für die Azure Cosmos DB-MongoDB-API
-description: Hier erfahren Sie, wie Sie über das Azure-Portal ein Konto für die Azure Cosmos DB-MongoDB-API erstellen.
+title: Includedatei
+description: Includedatei
 services: cosmos-db
-author: mimig1
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 03/20/2018
-ms.author: mimig
+ms.date: 04/13/2018
+ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 02ea0e011642313b885bc48ec48104fa2789da81
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 690c5f07a2b0f7a88e16f0b0bbbaa9ca78e37317
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 1. Melden Sie sich in einem neuen Fenster beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie im linken Menü auf **Ressource erstellen** > **Datenbanken** und anschließend unter **Azure Cosmos DB** auf **Erstellen**.
@@ -21,18 +21,15 @@ ms.lasthandoff: 03/28/2018
 
 3. Geben Sie auf dem Blatt **Neues Konto** als API die Option **MongoDB** an, und legen Sie die gewünschte Konfiguration für das Azure Cosmos DB-Konto fest.
  
-    ![Screenshot des Blatts „Neue Azure Cosmos DB“](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-2.png)
-
     * Bei der **ID** muss es sich um einen eindeutigen Namen handeln, den Sie für die Identifikation Ihres Azure Cosmos DB-Kontos verwenden möchten. Die ID darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten und muss zwischen drei und 50 Zeichen lang sein.
     * **Abonnement** ist Ihr Azure-Abonnement. Diese Angabe wird automatisch ausgefüllt.
-    * **Ressourcengruppe** ist der Ressourcengruppenname für Ihr Azure Cosmos DB-Konto.
+    * **Ressourcengruppe** ist der Ressourcengruppenname für Ihr Azure Cosmos DB-Konto. Wählen Sie **Neu erstellen** aus, und geben Sie dann einen neuen Ressourcengruppenname für Ihr Konto ein. Der Einfachheit halber können Sie denselben Namen wie bei Ihrer ID verwenden.
     * **Standort** ist der geografische Ort, an dem sich Ihre Azure Cosmos DB-Instanz befindet. Wählen Sie den Standort aus, der Ihren Benutzern am nächsten ist.
 
-4. Klicken Sie auf **Erstellen** , um das Konto zu erstellen.
-5. Klicken Sie in der Symbolleiste auf **Benachrichtigungen**, um den Bereitstellungsprozess zu überwachen.
+    Klicken Sie dann auf **Erstellen**.
 
-    ![Benachrichtigung „Bereitstellung gestartet“](./media/cosmos-db-create-dbaccount-mongodb/azure-documentdb-nosql-notification.png)
+    ![Die Seite „Neues Konto“ für Azure Cosmos DB](./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-create-new-account.png)
 
-6.  Wenn die Bereitstellung abgeschlossen wurde, öffnen Sie das neue Konto über die Kachel „Alle Ressourcen“. 
+4. Die Kontoerstellung dauert einige Minuten. Warten Sie, bis das Portal die Seite **Herzlichen Glückwunsch! Ihr Azure Cosmos DB-Konto mit MongoDB-API ist jetzt bereit.** anzeigt.
 
-    ![Azure Cosmos DB-Konto auf der Kachel „Alle Ressourcen“](./media/cosmos-db-create-dbaccount-mongodb/azure-documentdb-all-resources.png)
+    ![Der Bereich „Benachrichtigungen“ im Azure-Portal](./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-account-created.png)

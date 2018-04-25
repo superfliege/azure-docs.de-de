@@ -1,12 +1,12 @@
 ---
 title: Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen
-description: "Bei Power BI-Arbeitsbereichssammlungen handelt es sich um einen Azure-Dienst, mit dem Anwendungsentwickler eigenen Anwendungen interaktive Power BI-Berichte hinzufügen können."
+description: Bei Power BI-Arbeitsbereichssammlungen handelt es sich um einen Azure-Dienst, mit dem Anwendungsentwickler eigenen Anwendungen interaktive Power BI-Berichte hinzufügen können.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 4787cf44-5d1c-4bc3-b3fd-bf396e5c1176
 ms.service: power-bi-embedded
@@ -15,19 +15,19 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 4ee113ed25142507f381d8c9d49b25ee6553c525
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: ce8638bab55b18ec4f15ed9fc11f3256659bfbd9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen
 
 Bei **Power BI-Arbeitsbereichssammlungen** handelt es sich um einen Azure-Dienst, mit dem Anwendungsentwickler eigenen Anwendungen interaktive Power BI-Berichte hinzufügen können. **Power BI-Arbeitsbereichssammlungen** können mit vorhandenen Anwendungen ohne Umgestaltung oder Änderung der Benutzeranmeldung verwendet werden.
 
 > [!IMPORTANT]
-> Power BI-Arbeitsbereichssammlungen sind veraltet und nur noch bis Juni 2018 (oder bis zum Termin in Ihrem Vertrag) verfügbar. Es empfiehlt sich, die Migration zu Power BI Embedded zu planen, um Unterbrechungen für Ihre Anwendung zu vermeiden. Wie Sie Ihre Daten zu Power BI Embedded migrieren, erfahren Sie unter [Migrieren von Inhalten aus Power BI Embedded-Arbeitsbereichssammlungen zu Power BI](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
+> Power BI-Arbeitsbereichssammlungen sind veraltet und nur noch bis Juni 2018 (oder bis zum Termin in Ihrem Vertrag) verfügbar. Es wird empfohlen, die Migration zu Power BI Embedded zu planen, um Unterbrechungen für Ihre Anwendung zu vermeiden. Wie Sie Ihre Daten zu Power BI Embedded migrieren, erfahren Sie unter [Migrieren von Inhalten aus Power BI Embedded-Arbeitsbereichssammlungen zu Power BI](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
 Ressourcen für **Microsoft Power BI-Arbeitsbereichssammlungen** werden über die [Azure Resource Manager-APIs](https://msdn.microsoft.com/library/mt712306.aspx) bereitgestellt. In diesem Fall handelt es sich bei der bereitgestellten Ressource um eine **Power BI-Arbeitsbereichssammlung**.
 
@@ -106,7 +106,7 @@ Wenn Sie Ihre Arbeit in **Power BI Desktop** speichern, wird eine PBIX-Datei ers
 
 ## <a name="create-power-bi-datasets-and-reports-using-apis"></a>Erstellen von Power BI-Datasets und -Berichten mithilfe von APIs
 
-### <a name="datasets"></a>DATASETS
+### <a name="datasets"></a>Datasets
 
 Sie können Datasets in Power BI-Arbeitsbereichssammlungen mithilfe der REST-API erstellen. Anschließend können Sie Daten per Push in das Dataset übertragen. So können Sie ohne Power BI Desktop mit Daten arbeiten. Weitere Informationen finden Sie unter [Post Datasets](https://msdn.microsoft.com/library/azure/mt778875.aspx).
 
@@ -114,10 +114,10 @@ Sie können Datasets in Power BI-Arbeitsbereichssammlungen mithilfe der REST-API
 
 Mithilfe der JavaScript-API können Sie einen Bericht aus einem Dataset direkt in der Anwendung erstellen. Weitere Informationen finden Sie unter [Create a new report from a dataset in Power BI Workspace Collections](create-report-from-dataset.md) (Erstellen eines neuen Berichts auf der Grundlage eines Datasets in Power BI-Arbeitsbereichssammlungen).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 [Erste Schritte mit dem Beispiel](get-started-sample.md)  
-[Authenticating and authorizing in Power BI Workspace Collections](app-token-flow.md) (Authentifizieren und Autorisieren in Power BI-Arbeitsbereichssammlungen)  
+[Authenticating and authorizing in Power BI Workspace Collections (Authentifizieren und Autorisieren in Power BI-Arbeitsbereichssammlungen)](app-token-flow.md)  
 [Einbetten eines Berichts](embed-report.md)  
 [Create a new report from a dataset in Power BI Workspace Collections](create-report-from-dataset.md) (Erstellen eines neuen Berichts auf der Grundlage eines Datasets in Power BI-Arbeitsbereichssammlungen)
 [Save reports in Power BI Workspace Collections](save-reports.md) (Speichern von Berichten in Power BI-Arbeitsbereichssammlungen).  

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: ed8b76655ff0fc1a0604e59c704646aac95bd744
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 66b12b25787fc029b1f20b78cac578b7cc18c9b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Erstellen einer Node.js-Anwendung mit der Graph-API
 
@@ -46,9 +46,19 @@ Bevor Sie dieses Beispiel ausführen können, müssen folgende Voraussetzungen e
 
 Klonen Sie jetzt eine Graph-API-App aus GitHub, legen Sie die Verbindungszeichenfolge fest, und führen Sie diese aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
 
-1. Öffnen Sie ein Git-Terminalfenster, z.B. ein Git Bash, und wechseln Sie (über den `cd`-Befehl) in ein Arbeitsverzeichnis.
+1. Öffnen Sie eine Eingabeaufforderung, erstellen Sie einen neuen Ordner namens „git-samples“, und schließen Sie die Eingabeaufforderung.
 
-2. Führen Sie den folgenden Befehl aus, um das Beispielrepository zu klonen: 
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Öffnen Sie ein Git-Terminalfenster (z. B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. Führen Sie den folgenden Befehl aus, um das Beispielrepository zu klonen. Dieser Befehl erstellt eine Kopie der Beispiel-App auf Ihrem Computer.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
@@ -58,7 +68,9 @@ Klonen Sie jetzt eine Graph-API-App aus GitHub, legen Sie die Verbindungszeichen
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
-Es folgt ein kurzer Überblick zu dem, was in der App geschieht. Öffnen Sie die Datei `app.js`. Dort finden Sie folgende Codezeilen. 
+Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressourcen im Code erstellt werden, können Sie sich die folgenden Codeausschnitte ansehen. Andernfalls können Sie mit [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) fortfahren. 
+
+Die folgenden Codeausschnitte stammen alle aus der Datei „app.js“.
 
 * Der Gremlin-Client wird erstellt.
 
@@ -178,11 +190,7 @@ Vervollständigen Sie `g.V()` mit `.has('firstName', 'Thomas')`, um den Filter z
 
 ## <a name="clean-up-your-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie nicht beabsichtigen, diese App weiterhin zu verwenden, löschen Sie alle Ressourcen, die Sie in diesem Artikel erstellt haben, wie folgt: 
-
-1. Wählen Sie im Azure-Portal im linken Navigationsbereich die Option **Ressourcengruppen** aus. Wählen Sie dann den Namen der Ressource aus, die Sie erstellt haben. 
-
-2. Wählen Sie auf der Ressourcengruppenseite die Option **Löschen** aus. Geben Sie den Namen der Ressource ein, die gelöscht werden soll, und wählen Sie dann **Löschen** aus.
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

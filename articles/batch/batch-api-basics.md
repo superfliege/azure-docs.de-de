@@ -1,25 +1,25 @@
 ---
-title: "Übersicht über Azure Batch für Entwickler | Microsoft-Dokumentation"
+title: Übersicht über Azure Batch für Entwickler | Microsoft-Dokumentation
 description: Lernen Sie die Features des Batch-Diensts und seiner APIs aus der Sicht eines Entwicklers kennen.
 services: batch
 documentationcenter: .net
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
 ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 02/28/2018
+ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0a18f975530d2a291e529308ee53d6d48a68e42
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1a202efd08de69e6e766c9c42047c01a03be4d96
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
@@ -79,10 +79,15 @@ Sie können mehrere Batch-Workloads in einem Batch-Konto ausführen oder Ihre Wo
 
 ## <a name="azure-storage-account"></a>Azure-Speicherkonto
 
-Die meisten Batch-Lösungen verwenden Azure Storage zum Speichern von Ressourcen- und Ausgabedateien.  
+Die meisten Batch-Lösungen verwenden Azure Storage zum Speichern von Ressourcen- und Ausgabedateien. In Ihren Batch-Tasks (einschließlich Standardtasks, Starttasks und Tasks zur Auftragsvorbereitung und -freigabe) werden beispielsweise in der Regel Ressourcendateien angegeben, die sich in einem Speicherkonto befinden.
 
-Von Batch wird derzeit ausschließlich der Speicherkontotyp „Allgemein“ unterstützt, wie in den [Informationen zu Azure Storage-Konten](../storage/common/storage-create-storage-account.md#create-a-storage-account) unter Schritt 5 von [Speicherkonto erstellen](../storage/common/storage-create-storage-account.md) beschrieben. In Ihren Batch-Tasks (einschließlich Standardtasks, Starttasks und Tasks zur Auftragsvorbereitung und -freigabe) müssen Ressourcendateien angegeben werden, die sich in Speicherkonten vom Typ „Allgemein“ befinden.
+Batch unterstützt die folgenden [Kontooptionen](../storage/common/storage-account-options.md) für Azure Storage:
 
+* Konten vom Typ „General Purpose v2“ (GPv2) 
+* Konten vom Typ „General Purpose v1“ (GPv1)
+* Blob-Speicherkonten
+
+Sie können ein Speicherkonto mit Ihrem Batch-Konto verknüpfen – entweder im Zuge der Batch-Kontoerstellung oder zu einem späteren Zeitpunkt. Berücksichtigen Sie bei der Wahl eines Speicherkontos Ihre Kosten- und Leistungsanforderungen. Die Optionen für GPv2 und Blobspeicherkonto unterstützen beispielsweise höhere [Kapazitäts- und Skalierbarkeitsgrenzwerte](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) als GPv1. (Über den Azure-Support kann eine Erhöhung des Speicherlimits angefordert werden.) Diese Kontooptionen können die Leistung von Batch-Lösungen mit einer großen Anzahl paralleler Aufgaben verbessern, die aus dem Speicherkonto lesen oder in das Speicherkonto schreiben.
 
 ## <a name="compute-node"></a>Computeknoten
 Ein Serverknoten ist ein virtueller Azure-Computer (VM) oder ein virtueller Clouddienstcomputer, der für die Verarbeitung eines Teils der Anwendungsworkload fest zugeordnet ist. Die Größe eines Knotens bestimmt die Anzahl von CPU-Kernen, die Speicherkapazität und die lokale Dateisystemgröße, die dem Knoten zugeordnet werden. Pools mit Windows- oder Linux-Knoten können mithilfe von Azure Cloud Services, auf der Grundlage von Images aus dem [Azure Virtual Machines Marketplace][vm_marketplace] oder auf der Grundlage eigener benutzerdefinierter Images erstellt werden. Weitere Informationen zu diesen Optionen finden Sie weiter unten im Abschnitt [Pool](#pool) .
@@ -252,7 +257,7 @@ Beim Erstellen eines Tasks können Sie Folgendes angeben:
     `/bin/sh -c MyTaskApplication $MY_ENV_VAR`
 
     Wenn Ihre Tasks eine Anwendung oder ein Skript ausführen müssen, die bzw. das sich nicht unter dem `PATH` oder in den Referenzumgebungsvariablen des Knotens befindet, können Sie die Shell explizit in der Taskbefehlszeile aufrufen.
-* **Ressourcendateien** , die die zu verarbeitenden Daten enthalten. Diese Dateien werden automatisch aus Blob Storage in einem Azure-Speicherkonto vom Typ „Allgemein“ auf den Knoten kopiert, bevor die Befehlszeile des Tasks ausgeführt wird. Weitere Informationen finden Sie in den Abschnitten [Starttask](#start-task) und [Dateien und Verzeichnisse](#files-and-directories).
+* **Ressourcendateien** , die die zu verarbeitenden Daten enthalten. Diese Dateien werden automatisch aus Blob Storage in einem Azure-Speicherkonto auf den Knoten kopiert, bevor die Befehlszeile des Tasks ausgeführt wird. Weitere Informationen finden Sie in den Abschnitten [Starttask](#start-task) und [Dateien und Verzeichnisse](#files-and-directories).
 * Die von Ihrer Anwendung benötigten **Umgebungsvariablen** . Weitere Informationen finden Sie im Abschnitt [Umgebungseinstellungen für Tasks](#environment-settings-for-tasks) .
 * Die **Einschränkungen** , mit denen der Task ausgeführt werden soll. Beispielsweise enthalten Einschränkungen die maximale Ausführungsdauer des Tasks, die maximale Anzahl von Wiederholungen für einen nicht erfolgreichen Task und die maximal zulässige Beibehaltungsdauer für Dateien im Arbeitsverzeichnis des Tasks.
 * **Anwendungspakete** für die Bereitstellung auf dem Computeknoten, auf dem der Task ausgeführt werden soll. [Anwendungspakete](#application-packages) bieten eine vereinfachte Bereitstellung und Versionsverwaltung der Anwendungen, die von Ihren Tasks ausgeführt werden. Anwendungspakete auf Task-Ebene sind insbesondere in Umgebungen mit gemeinsam genutzten Pools praktisch, bei denen verschiedene Aufträge in einem Pool ausgeführt werden und der Pool nach Abschluss des Auftrags nicht gelöscht wird. Wenn Ihr Auftrag über weniger Tasks als Knoten im Pool verfügt, können Task-Anwendungspakete die Datenübertragung minimieren, da Ihre Anwendung nur auf den Knoten bereitgestellt wird, die Tasks ausführen.

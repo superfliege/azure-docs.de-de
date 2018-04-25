@@ -1,12 +1,12 @@
 ---
-title: "Vorgehensweise und entsprechende Schritte für die Azure Data Catalog-Einführung | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält eine Vorgehensweise und entsprechende Schritte für Organisationen, die den Einsatz von Azure Data Catalog in Betracht ziehen. Unter anderem wird erläutert, wie Sie eine Vision definieren, zentrale Anwendungsfälle in Ihrem Unternehmens ermitteln und ein Pilotprojekt auswählen."
+title: Vorgehensweise und entsprechende Schritte für die Azure Data Catalog-Einführung | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Vorgehensweise und entsprechende Schritte für Organisationen, die den Einsatz von Azure Data Catalog in Betracht ziehen. Unter anderem wird erläutert, wie Sie eine Vision definieren, zentrale Anwendungsfälle in Ihrem Unternehmens ermitteln und ein Pilotprojekt auswählen.
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: d092613d88a4186c17c8c91046bb598c4f60b307
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e7c104fa9b136df8ac4b94ee1e444100e2a2f969
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Vorgehensweise und entsprechende Schritte für die Azure Data Catalog-Einführung
 In diesem Artikel erhalten Sie Hilfe bei den ersten Schritten zur Einführung von **Azure Data Catalog** in Ihrem Unternehmen. Konzentrieren Sie sich auf drei wichtige Punkte, um **Azure Data Catalog** erfolgreich einzuführen: Definieren Sie Ihre Vision, ermitteln Sie die zentralen geschäftlichen Anwendungsfälle in Ihrem Unternehmen, und wählen Sie ein Pilotprojekt.

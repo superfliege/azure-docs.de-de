@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: mvc
-ms.openlocfilehash: 00ed2a64c672e1d2ae9a0037905a544b6c4424b7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b6701cdc4dd25c0a46193a73d1edd022388bc5ab
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
@@ -219,7 +219,7 @@ Allgemeine Beispiele für geschützte Instanzen sind virtuelle Computer, Anwendu
 
 
 ## <a name="what-is-a-recovery-services-vault"></a>Was ist ein Recovery Services-Tresor?
-Ein Recovery Services-Tresor ist eine Onlinespeicherentität in Azure, die zum Speichern von Daten wie Sicherungskopien, Wiederherstellungspunkten und Sicherungsrichtlinien verwendet wird. Sie können Recovery Services-Tresore zum Speichern von Sicherungsdaten für Azure-Dienste sowie lokale Server und Arbeitsstationen verwenden. Recovery Services-Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand. Innerhalb jedes Azure-Abonnements können Sie bis zu 25 Recovery Services-Tresore pro Azure-Region erstellen. In Bezug auf die Speicherung der Daten sind nicht alle Regionen gleich. Informationen zu Regionspaaren sowie weitere Überlegungen zum Speicher finden Sie unter [Azure Storage-Replikation](../storage/common/storage-redundancy-grs.md).
+Ein Recovery Services-Tresor ist eine Onlinespeicherentität in Azure, die zum Speichern von Daten wie Sicherungskopien, Wiederherstellungspunkten und Sicherungsrichtlinien verwendet wird. Sie können Recovery Services-Tresore zum Speichern von Sicherungsdaten für Azure-Dienste sowie lokale Server und Arbeitsstationen verwenden. Recovery Services-Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand. Innerhalb jedes Azure-Abonnements können pro Azure-Region bis zu 500 Recovery Services-Tresore erstellt werden. In Bezug auf die Speicherung der Daten sind nicht alle Regionen gleich. Informationen zu Regionspaaren sowie weitere Überlegungen zum Speicher finden Sie unter [Azure Storage-Replikation](../storage/common/storage-redundancy-grs.md).
 
 Sicherungstresore, die auf Azure Service Manager basieren, waren die erste Version eines Tresors. Recovery Services-Tresore, die um die Azure Resource Manager-Modellfunktionen ergänzt wurden, sind die zweite Version. Eine vollständige Beschreibung der Funktionsunterschiede finden Sie im [Übersichtsartikel zu Recovery Services-Tresoren](backup-azure-recovery-services-vault-overview.md). Sie können keine Backup-Tresore mehr erstellen, und für alle vorhandenen Backup-Tresore wurde ein Upgrade auf Recovery Services-Tresore ausgeführt. Sie können zum Verwalten der Tresore, für die ein Upgrade auf Recovery Services-Tresore ausgeführt wurde, das Azure-Portal verwenden.
 

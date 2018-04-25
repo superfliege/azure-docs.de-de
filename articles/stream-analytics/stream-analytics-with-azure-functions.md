@@ -1,19 +1,21 @@
 ---
-title: Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen
-description: Dieser Artikel beschreibt die Konfiguration von Azure Functions als Ausgabesenke in Stream Analytics-Aufträgen, sodass Workloads ereignisgesteuert sind.
+title: 'Tutorial: Ausführen von Azure Functions mit Azure Stream Analytics-Aufträgen | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie Azure Functions als Ausgabesenke für Stream Analytics-Aufträge konfigurieren.
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
-ms.reviewer: jasonh
 manager: kfile
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 12/19/2017
-ms.openlocfilehash: a8eebfa0c40caa455eb20431e5cf4acb8eeb248c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.topic: tutorial
+ms.custom: mvc
+ms.workload: data-services
+ms.date: 04/09/2018
+ms.author: jasonh
+ms.reviewer: jasonh
+ms.openlocfilehash: 1d33c3f0a4c36dc681aaa42bc68ae56eec234401
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen 
 
@@ -21,7 +23,14 @@ Sie können Azure Functions in Azure Stream Analytics ausführen, indem Sie Func
 
 Stream Analytics ruft Functions über HTTP-Trigger auf. Der Functions-Ausgabeadapter ermöglicht Benutzern das Verbinden von Functions mit Stream Analytics, sodass die Ereignisse basierend auf Stream Analytics-Abfragen ausgelöst werden können. 
 
-In diesem Tutorial wird veranschaulicht, wie Stream Analytics mithilfe von [Azure Functions](../azure-functions/functions-overview.md) mit [Azure Redis Cache](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md) verbunden wird. 
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Erstellen eines Stream Analytics-Auftrags
+> * Erstellen einer Azure-Funktion
+> * Konfigurieren einer Azure-Funktion als Ausgabe für Ihren Auftrag
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>Konfigurieren eines Stream Analytics-Auftrags zum Ausführen einer Funktion 
 
@@ -191,3 +200,16 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
 
 Wenn Sie im Azure-Portal versuchen, die Werte für die maximal zulässige Batchgröße oder die maximal zulässige Batchanzahl auf einen leeren Wert (Standard) zurückzusetzen, ändert sich der Wert beim Speichern in den zuvor eingegebenen Wert. Geben Sie in diesem Fall die Standardwerte für diese Felder manuell ein.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag später erneut verwenden möchten, können Sie ihn beenden und bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht mehr verwenden möchten, löschen Sie alle Ressourcen, die im Rahmen dieser Schnellstartanleitung erstellt wurden:
+
+1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen**, und klicken Sie auf den Namen der erstellten Ressource.  
+2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Tutorial haben Sie einen einfachen Stream Analytics-Auftrag erstellt, der eine Azure-Funktion ausführt. Weitere Informationen zu Stream Analytics-Aufträgen erhalten Sie im nächsten Tutorial:
+
+> [!div class="nextstepaction"]
+> [Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen](stream-analytics-javascript-user-defined-functions.md)

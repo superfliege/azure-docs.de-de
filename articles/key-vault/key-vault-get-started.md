@@ -1,8 +1,8 @@
 ---
 title: Erste Schritte mit Azure Key Vault | Microsoft Docs
-description: "Verwenden Sie dieses Tutorials für den Einstieg in den Azure-Schlüsseltresor, um einen geschützten Container in Azure zu erstellen, in dem Sie kryptografischen Schlüssel und geheime Schlüssel in Azure speichern und verwalten."
+description: Verwenden Sie dieses Tutorials für den Einstieg in den Azure-Schlüsseltresor, um einen geschützten Container in Azure zu erstellen, in dem Sie kryptografischen Schlüssel und geheime Schlüssel in Azure speichern und verwalten.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/20/2017
 ms.author: barclayn
-ms.openlocfilehash: 1b70802945b710059e93b54607996ccf74510d1f
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: d082241ee5151b199376a0c2c9baccc242ece12e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-azure-key-vault"></a>Erste Schritte mit dem Azure-Schlüsseltresor
 Dieser Artikel hilft Ihnen bei den ersten Schritten mit Azure Key Vault mit PowerShell und führt Sie durch die folgenden Aktivitäten:
@@ -33,7 +33,7 @@ Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informati
 
 Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie in [diesem entsprechenden Tutorial](key-vault-manage-with-cli2.md).
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Vergewissern Sie sich vor der weiteren Lektüre des Artikels, dass Sie über Folgendes verfügen:
 
 - **Ein Azure-Abonnement**. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/)registrieren.
@@ -49,10 +49,10 @@ Um detaillierte Hilfe zu einem Cmdlet aus dem Tutorial zu erhalten, verwenden Si
 Get-Help <cmdlet-name> -Detailed
 ```
     
-Geben Sie beispielsweise Folgendes ein, um Hilfe zum **Login-AzureRmAccount** -Cmdlet zu erhalten:
+Geben Sie beispielsweise Folgendes ein, um Hilfe zum Cmdlet **Connect-AzureRmAccount** zu erhalten:
 
 ```PowerShell
-Get-Help Login-AzureRmAccount -Detailed
+Get-Help Connect-AzureRmAccount -Detailed
 ```
 
 Lesen Sie ggf. auch die folgenden Artikel, um sich mit dem Azure Resource Manager-Bereitstellungsmodell in Azure PowerShell vertraut zu machen:
@@ -64,13 +64,13 @@ Lesen Sie ggf. auch die folgenden Artikel, um sich mit dem Azure Resource Manage
 Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:  
 
 ```PowerShell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 >[!NOTE]
- Verwenden Sie den „-Environment“-Parameter, falls Sie eine bestimmte Azure-Instanz verwenden. Beispiel: 
+ Verwenden Sie den „-Environment“-Parameter, falls Sie eine bestimmte Azure-Instanz verwenden. Beispiel:  
  ```powershell
- Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)
+ Connect-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)
  ```
 
 Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure-Kontos ein. Azure PowerShell ruft alle Abonnements ab, die diesem Konto zugeordnet sind, und verwendet standardmäßig das erste Abonnement.
@@ -114,7 +114,7 @@ New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoReso
 Die Ausgabe dieses Cmdlets zeigt die Eigenschaften des Schlüsseltresors, den Sie erstellt haben. Die zwei wichtigsten Eigenschaften sind diese:
 
 * **Tresorname**: In diesem Beispiel ist dies **ContosoKeyVault**. Sie verwenden diesen Namen für andere Schlüsseltresor-Cmdlets.
-* **-URI**: In diesem Beispiel ist dies „https://contosokeyvault.vault.azure.net/“. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
+* **Tresor-URI**: https://contosokeyvault.vault.azure.net/ in diesem Beispiel. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
 
 Ihr Azure-Konto ist jetzt autorisiert, Vorgänge in diesem Schlüsseltresor durchzuführen. Bisher sind Sie der einzige Benutzer mit dieser Berechtigung.
 
@@ -138,11 +138,11 @@ Geben Sie zum Anzeigen des URI für diesen Schlüsseltyp Folgendes ein:
 $key.id
 ```
 
-Sie können anhand des URI auf einen Schlüssel verweisen, den Sie erstellt oder in Azure Key Vault hochgeladen haben. Verwenden Sie zum Abrufen der aktuellen Version **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** und zum Abrufen dieser spezifischen Version **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**.  
+Sie können anhand des URI auf einen Schlüssel verweisen, den Sie erstellt oder in Azure Key Vault hochgeladen haben. Verwenden Sie **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey**, um die aktuelle Version zu erhalten, oder **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**, um genau diese Version zu erhalten.  
 
 ### <a name="importing-an-existing-pfx-file-into-azure-key-vault"></a>Importieren einer vorhandenen PFX-Datei in Azure Key Vault
 
-Falls vorhandene Schlüssel in einer PFX-Datei gespeichert sind, die Sie in Azure Key Vault hochladen möchten, unterscheiden sich die Schritte. Beispiel:
+Falls vorhandene Schlüssel in einer PFX-Datei gespeichert sind, die Sie in Azure Key Vault hochladen möchten, unterscheiden sich die Schritte. Beispiel: 
 - Sie haben einen vorhandenen softwaregeschützten Schlüssel in einer PFX-Datei.
 - Der Name der PFX-Datei lautet „softkey.pfx“. 
 - Die Datei ist auf dem Laufwerk C gespeichert.
@@ -187,7 +187,7 @@ $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPasswor
 ```
 
 
-Jetzt können Sie mit dem zugehörigen URI auf das Kennwort verweisen, das Sie dem Azure-Schlüsseltresor hinzugefügt haben. Verwenden Sie **https://ContosoVault.vault.azure.net/secrets/SQLPassword**, um immer die aktuelle Version zu erhalten, und **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**, um diese bestimmte Version zu erhalten.
+Jetzt können Sie mit dem zugehörigen URI auf das Kennwort verweisen, das Sie dem Azure-Schlüsseltresor hinzugefügt haben. Verwenden Sie **https://ContosoVault.vault.azure.net/secrets/SQLPassword**, um immer die aktuelle Version zu erhalten, oder **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**, um genau diese Version zu erhalten.
 
 Geben Sie zur Anzeige des URI für diesen geheimen Schlüssel Folgendes ein:
 
@@ -221,12 +221,12 @@ Die Anwendung muss beide dieser Werte in Azure Active Directory vorlegen, um ein
 
 So registrieren Sie die Anwendungen in Azure Active Directory
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Bereich auf **App-Registrierungen**. Falls keine App-Registrierungen angezeigt werden, klicken Sie auf **Weitere Dienste**, und suchen Sie nach der Registrierung.  
 >[!NOTE]
 Sie müssen dasselbe Verzeichnis auswählen, in dem auch das Azure-Abonnement enthalten ist, mit dem Sie Ihren Schlüsseltresor erstellt haben. 
 3. Klicken Sie auf **Registrierung einer neuen Anwendung**.
-4. Geben Sie auf dem Blatt **Erstellen** einen Namen für die Anwendung ein, wählen Sie dann **WEBANWENDUNG UND/ODER WEB-API** (Standardeinstellung) aus, und geben Sie die **ANMELDE-URL** für die Webanwendung ein. Falls Sie zu diesem Zeitpunkt nicht über diese Informationen verfügen, können Sie eine beliebige URL angeben (z. B. http://test1.contoso.com). Hierbei spielt es keine Rolle, ob diese Websites wirklich vorhanden sind. 
+4. Geben Sie auf dem Blatt **Erstellen** einen Namen für die Anwendung ein, wählen Sie dann **WEBANWENDUNG UND/ODER WEB-API** (Standardeinstellung) aus, und geben Sie die **ANMELDE-URL** für die Webanwendung ein. Falls Sie diese Information gerade nicht zur Hand haben, können Sie einen Fantasiewert angeben (beispielsweise http://test1.contoso.com). Hierbei spielt es keine Rolle, ob diese Websites wirklich vorhanden sind. 
 
     ![Registrierung einer neuen Anwendung](./media/key-vault-get-started/new-application-registration.png)
     >[!WARNING]
@@ -241,7 +241,10 @@ Sie müssen dasselbe Verzeichnis auswählen, in dem auch das Azure-Abonnement en
 10. Sie verwenden die **Anwendungs-ID** und die Informationen zum **Schlüssel** im nächsten Schritt, um Berechtigungen für den Tresor festzulegen.
 
 ## <a id="authorize"></a>Autorisieren der Anwendung zum Verwenden des Schlüssels oder geheimen Schlüssels
-Verwenden Sie das Cmdlet [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy), um für die Anwendung den Zugriff auf den Schlüssel oder geheimen Schlüssel im Tresor zu autorisieren.
+Die Anwendung kann auf zwei Arten für den Zugriff auf den Schlüssel oder das Geheimnis im Tresor autorisiert werden.
+
+### <a name="using-powershell"></a>Verwenden von PowerShell
+Wenn Sie PowerShell verwenden möchten, verwenden Sie das Cmdlet [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy).
 
 Wenn Ihr Tresorname beispielsweise **ContosoKeyVault** lautet, die Anwendung, die Sie autorisieren möchten, über die Client-ID 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed verfügt und Sie die Anwendung zum Entschlüsseln und Anmelden mit Schlüsseln in Ihrem Tresor autorisieren möchten, führen Sie Folgendes aus:
 
@@ -254,6 +257,13 @@ Wenn Sie dieselbe Anwendung so autorisieren möchten, dass sie geheime Schlüsse
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
 ```
+### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
+So ändern Sie die Autorisierung einer Anwendung für die Verwendung von Schlüsseln oder Geheimnissen:
+1. Klicken Sie auf dem Ressourcenblatt von Key Vault auf **Zugriffsrichtlinien**.
+2. Klicken Sie oben auf dem Blatt auf die Schaltfläche „+ Neu hinzufügen“.
+3. Klicken Sie auf **Prinzipal auswählen**, und wählen Sie die zuvor erstellte Anwendung aus.
+4. Wählen Sie in der Dropdownliste **Schlüsselberechtigungen** die Berechtigungen „Entschlüsseln“ und „Signieren“ aus, um die Anwendung für die Entschlüsselung und Signierung mit Schlüsseln aus Ihrem Tresor zu autorisieren.
+5. Wählen Sie in der Dropdownliste **Berechtigungen für Geheimnis** die Option „Abrufen“ aus, um der Anwendung das Lesen von Geheimnissen aus dem Tresor zu ermöglichen.
 
 ## <a id="HSM"></a>Verwenden eines Hardwaresicherheitsmoduls (HSM)
 Zur Steigerung der Sicherheit können Sie Schlüssel in HSMs importieren oder in diesen generieren. Diese Schlüssel verbleiben immer innerhalb der HSM-Grenzen. Die HSMs sind FIPS 140-2 Ebene 2 überprüft. Wenn diese Anforderung auf Sie nicht zutrifft, überspringen Sie diesen Abschnitt, und wechseln Sie zu [Löschen des Schlüsseltresors und zugeordneter Schlüssel und geheimer Schlüssel](#delete).

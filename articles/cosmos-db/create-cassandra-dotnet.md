@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 7cd8c61f19e09900267cdc93c1d478f5b0f75afe
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4baa5a7dd8f7ad9865ac88203584d12345a30f4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Cassandra-App mit .NET und Azure Cosmos DB
 
@@ -46,13 +46,19 @@ Außerdem haben Sie folgende Möglichkeiten:
 
 Beginnen wir nun mit der Verwendung von Code. Wir klonen eine Cassandra-API-App aus GitHub, legen die Verbindungszeichenfolge fest und führen die App aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
 
-1. Öffnen Sie ein Terminalfenster von Git (z. B. Git Bash), und verwenden Sie den Befehl `cd`, um den Ordner zu ändern, in den die Beispiel-App gespeichert wird. 
+1. Öffnen Sie eine Eingabeaufforderung, erstellen Sie einen neuen Ordner namens „git-samples“, und schließen Sie die Eingabeaufforderung.
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Öffnen Sie ein Git-Terminalfenster (z. B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. Führen Sie den folgenden Befehl aus, um das Beispielrepository zu klonen. Dieser Befehl erstellt eine Kopie der Beispiel-App auf Ihrem Computer.
+3. Führen Sie den folgenden Befehl aus, um das Beispielrepository zu klonen. Dieser Befehl erstellt eine Kopie der Beispiel-App auf Ihrem Computer.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-getting-started.git
@@ -62,7 +68,7 @@ Beginnen wir nun mit der Verwendung von Code. Wir klonen eine Cassandra-API-App 
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
-Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressourcen im Code erstellt werden, können Sie sich die folgenden Codeausschnitte ansehen. Die Codeausschnitte stammen alle aus der Datei `Program.cs`, die im Ordner „C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample“ installiert ist. Andernfalls können Sie mit [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) fortfahren.
+Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressourcen im Code erstellt werden, können Sie sich die folgenden Codeausschnitte ansehen. Die Codeausschnitte stammen alle aus der Datei „Program.cs“, die im Ordner „C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample“ installiert ist. Andernfalls können Sie mit [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) fortfahren.
 
 * Initialisieren Sie die Sitzung, indem Sie eine Verbindung mit einem Cassandra-Clusterendpunkt herstellen. Die Cassandra-API von Azure Cosmos DB unterstützt nur TLSv1.2. 
 
@@ -100,7 +106,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressou
    }
     ```
     
- * Führen Sie eine Abfrage zum Abrufen der Informationen eines einzelnen Benutzers aus.
+* Führen Sie eine Abfrage zum Abrufen der Informationen eines einzelnen Benutzers aus.
 
     ```csharp
     mapper.FirstOrDefault<User>("Select * from user where user_id = ?", 3);

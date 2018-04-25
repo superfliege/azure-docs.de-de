@@ -9,17 +9,18 @@ ms.topic: tutorial
 ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 59a09b5d67391f2b48d338d721369f14ed6b4ede
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3ad4f46585be9cf61e3ef8343b5cb05308c972d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
 In diesem Tutorial erfahren Sie, wie Sie virtuelle AWS-Computer (Amazon Web Services-VMs) mithilfe von Site Recovery zu Azure-VMs migrieren. Beim Migrieren von EC2-Instanzen zu Azure werden die VMs wie physische lokale Computer behandelt. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+> * Überprüfen der Voraussetzungen
 > * Vorbereiten der Azure-Ressourcen
 > * Vorbereiten der AWS EC2-Instanzen für die Migration
 > * Bereitstellen eines Konfigurationsservers
@@ -29,6 +30,22 @@ In diesem Tutorial erfahren Sie, wie Sie virtuelle AWS-Computer (Amazon Web Serv
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
+## <a name="prerequisites"></a>Voraussetzungen
+- Vergewissern Sie sich, dass die zu migrierenden virtuellen Computer über eine unterstützte Betriebssystemversion verfügen: 
+    - 64-Bit-Version von Windows Server 2008 R2 SP1 (oder höher), 
+    - Windows Server 2012,
+    - Windows Server 2012 R2, 
+    - Windows Server 2016
+    - Red Hat Enterprise Linux 6.7 (nur virtualisierte HVM-Instanzen); darf nur über Citrix PV- oder AWS PV-Treiber verfügen. Instanzen mit RedHat PV-Treibern werden **nicht** unterstützt.
+
+- Der Mobilitätsdienst muss auf jeder VMs installiert sein, den Sie replizieren möchten. 
+
+> [!IMPORTANT]
+> Site Recovery installiert diesen Dienst automatisch, wenn Sie die Replikation für die VM aktivieren. Für die automatische Installation müssen Sie ein Konto für die EC2-Instanzen vorbereiten, mit dem Site Recovery auf die VM zugreift. Sie können ein Domänenkonto oder ein lokales Konto verwenden. 
+> - Bei Linux-VMs muss auf dem Linux-Quellserver das root-Konto verwendet werden. 
+> - Für virtuelle Windows-Computer gilt: Wenn Sie kein Domänenkonto verwenden, deaktivieren Sie die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer. Fügen Sie dazu in der Registrierung unter **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** den DWORD-Eintrag **LocalAccountTokenFilterPolicy** hinzu, und legen Sie den Wert auf „1“ fest.
+
+- Sie benötigen eine separate EC2-Instanz, die Sie als Site Recovery-Konfigurationsserver verwenden können. Auf dieser Instanz muss Windows Server 2012 R2 ausgeführt werden.
 
 ## <a name="prepare-azure-resources"></a>Vorbereiten der Azure-Ressourcen
 
@@ -74,19 +91,6 @@ Wenn die Azure-VMs nach der Migration (Failover) erstellt werden, werden sie mit
 8. Behalten Sie die Standardwerte für **Subnetz** bei (**Name** und **IP-Bereich**).
 9. Lassen Sie **Dienstendpunkte** deaktiviert.
 10. Wenn Sie fertig sind, klicken Sie auf **Erstellen**.
-
-
-## <a name="prepare-the-ec2-instances"></a>Vorbereiten der EC2-Instanzen
-
-Sie benötigen mindestens eine VM, die migriert werden soll. Von diesen EC2-Instanzen muss die 64-Bit-Version von Windows Server 2008 R2 SP1 oder höher, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016 oder Red Hat Enterprise Linux 6.7 (nur virtualisierte HVM-Instanzen) ausgeführt werden. Der Server darf nur über Citrix PV- oder AWS PV-Treiber verfügen. Instanzen, auf denen RedHat PV-Treiber ausgeführt werden, werden nicht unterstützt.
-
-Der Mobilitätsdienst muss auf jeder VMs installiert sein, den Sie replizieren möchten. Site Recovery installiert diesen Dienst automatisch, wenn Sie die Replikation für die VM aktivieren. Für die automatische Installation müssen Sie ein Konto für die EC2-Instanzen vorbereiten, mit dem Site Recovery auf die VM zugreift.
-
-Sie können ein Domänenkonto oder ein lokales Konto verwenden. Bei Linux-VMs muss auf dem Linux-Quellserver das root-Konto verwendet werden. Wenn Sie kein Domänenkonto verwenden, deaktivieren Sie für Windows-VMs die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer:
-
-  - Fügen Sie in der Registrierung unter **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** den DWORD-Eintrag **LocalAccountTokenFilterPolicy** hinzu, und legen Sie den Wert auf 1 fest.
-
-Zudem benötigen Sie eine separate EC2-Instanz, die Sie als Site Recovery-Konfigurationsserver verwenden können. Auf dieser Instanz muss Windows Server 2012 R2 ausgeführt werden.
 
 
 ## <a name="prepare-the-infrastructure"></a>Vorbereiten der Infrastruktur

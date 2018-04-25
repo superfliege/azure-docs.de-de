@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: dbcb1d87fafe085d6232fa621fbd9e211fa4174d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e91e27da5ef80236768d19c5870ac96f19f6b074
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
 
@@ -87,6 +87,7 @@ Dienstendpunkte bieten folgende Vorteile:
 - **Mittels Peering verknüpfte, verbundene oder mehrere virtuelle Netzwerke**: Zum Schützen von Azure-Diensten in mehreren Subnetzen innerhalb eines virtuellen Netzwerks oder mehrerer virtueller Netzwerke können Sie Dienstendpunkte unabhängig voneinander in den einzelnen Subnetzen aktivieren und Ressourcen von Azure-Diensten in allen diesen Subnetzen schützen.
 - **Filtern von ausgehendem Datenverkehr, der aus dem virtuellen Netzwerk an Azure-Dienste fließt**: Wenn Sie den Datenverkehr, der aus einem virtuellen Netzwerk an einen Azure-Dienst fließen soll, untersuchen oder filtern möchten, können Sie in diesem virtuellen Netzwerk ein virtuelles Netzwerkgerät bereitstellen. Anschließend können Sie Dienstendpunkte auf das Subnetz anwenden, in dem das virtuelle Netzwerkgerät bereitgestellt wurde, und Ressourcen des Azure-Diensts auf dieses Subnetz beschränken und so schützen. Dieses Szenario kann hilfreich sein, wenn Sie den Zugriff auf den Azure-Dienst aus Ihrem virtuellen Netzwerk per Filterung durch ein virtuelles Netzwerkgerät nur auf bestimmte Azure-Ressourcen beschränken möchten. Weitere Informationen finden Sie unter [egress with network virtual appliances](/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Ausgehender Datenverkehr mit virtuellen Netzwerkgeräten).
 - **Schützen von Azure-Ressourcen für Dienste, die direkt in virtuellen Netzwerken bereitgestellt werden**: Verschiedene Azure-Dienste können in einem virtuellen Netzwerk direkt in bestimmten Subnetzen bereitgestellt werden. Sie können Ressourcen von Azure-Diensten für Subnetze mit [verwalteten Diensten](virtual-network-for-azure-services.md) schützen, indem Sie im Subnetz des verwalteten Diensts einen Dienstendpunkt einrichten.
+- **Datenträger-Datenverkehr von einem virtuellen Azure-Computer:** Datenträger-Datenverkehr eines virtuellen Computers (einschließlich Einbindung und Aufhebung der Einbindung sowie Datenträger-E/A) für verwaltete/nicht verwaltete Datenträger wird durch Dienstendpunkte, die Änderungen für Azure Storage weiterleiten, nicht beeinflusst. Der REST-Zugriff auf Seitenblobs kann über Dienstendpunkte und [Azure Storage-Netzwerkregeln](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json) auf bestimmte Netzwerke beschränkt werden. 
 
 ### <a name="logging-and-troubleshooting"></a>Protokollierung und Problembehandlung
 
@@ -105,7 +106,7 @@ Nachdem Dienstendpunkte für einen bestimmten Dienst konfiguriert wurden, könne
 
 Dienstendpunkte können in virtuellen Netzwerken einzeln von einem Benutzer konfiguriert werden, der über Schreibzugriff auf ein virtuelles Netzwerk verfügt. Zum Schützen der Ressourcen von Azure-Diensten in einem VNET muss der Benutzer die Berechtigung *Microsoft.Network/JoinServicetoaSubnet* für die hinzuzufügenden Subnetze haben. Diese Berechtigung ist standardmäßig in die integrierten Dienstadministratorrollen integriert und kann durch die Erstellung von benutzerdefinierten Rollen geändert werden.
 
-Erfahren Sie mehr über [integrierte Rollen](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und das Zuweisen bestimmter Berechtigungen zu [benutzerdefinierten Rollen](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Erfahren Sie mehr über [integrierte Rollen](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und das Zuweisen bestimmter Berechtigungen zu [benutzerdefinierten Rollen](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Virtuelle Netzwerke und Ressourcen von Azure-Diensten können sich in demselben oder in unterschiedlichen Abonnements befinden. Wenn das virtuelle Netzwerk und die Ressourcen von Azure-Diensten in unterschiedlichen Abonnements enthalten sind, müssen sich die Ressourcen unter demselben Active Directory-Mandanten befinden. 
 

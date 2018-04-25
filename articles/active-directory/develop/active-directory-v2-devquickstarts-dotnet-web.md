@@ -1,11 +1,11 @@
 ---
 title: Erste Schritte bei der Anmeldung mit Azure AD v2.0 und einer .NET-Web-App | Microsoft-Dokumentation
-description: "Vorgehensweise beim Erstellen einer .NET MVC-Web-App, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch ihrem Geschäfts- oder Schulkonto anmelden können."
+description: Vorgehensweise beim Erstellen einer .NET MVC-Web-App, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch ihrem Geschäfts- oder Schulkonto anmelden können.
 services: active-directory
 documentationcenter: .net
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c8b97ac6-0a06-4367-81b6-7d1d98152b14
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: a23b3b1084cf6776cee8583891ae3d879183d072
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/25/2018
 ---
 # <a name="add-sign-in-to-an-net-mvc-web-app"></a>Hinzufügen der Anmeldung zu einer .NET-MVC-Web-App
 Mit dem v2.0-Endpunkt können Sie schnell eine Authentifizierung zu Ihren Web-Apps hinzufügen, die sowohl persönliche Microsoft-Konten als auch Geschäfts-, Schul- oder Unikonten unterstützt.  Für ASP.NET-Webanwendungen erreichen Sie das Gleiche durch die in .NET Framework 4.5 enthaltenen OWIN-Middleware von Microsoft.
@@ -31,7 +31,7 @@ Mit dem v2.0-Endpunkt können Sie schnell eine Authentifizierung zu Ihren Web-Ap
 
  Hier erstellen wir eine Web-App, bei der OWIN zum Anmelden des Benutzers, zum Anzeigen von Informationen zum Benutzer und zum Abmelden des Benutzers von der Anwendung verwendet wird.
 
-## <a name="download"></a>Herunterladen
+## <a name="download"></a>Download
 Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet)verwaltet.  Um folgen zu können, können Sie [das App-Gerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) oder das Gerüst klonen:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```

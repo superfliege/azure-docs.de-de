@@ -1,8 +1,8 @@
 ---
-title: "Benutzerportal für Azure MFA-Server | Microsoft-Dokumentation"
-description: "Dies ist die Seite für Azure Multi-Factor Authentication, auf der die ersten Schritte mit Azure MFA und dem Benutzerportal beschrieben werden."
+title: Benutzerportal für Azure MFA-Server | Microsoft-Dokumentation
+description: Dies ist die Seite für Azure Multi-Factor Authentication, auf der die ersten Schritte mit Azure MFA und dem Benutzerportal beschrieben werden.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 06b419fa-3507-4980-96a4-d2e3960e1772
@@ -16,10 +16,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: 15f4ef7b70027a820dc50a9399891bbab77d7e12
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Benutzerportal für den Azure Multi-Factor Authentication-Server
 
@@ -105,7 +105,7 @@ Wenn Sie das Benutzerportal auf einem anderen Server als dem Azure Multi-Factor 
     * Suchen Sie den Schlüssel **"USE_WEB_SERVICE_SDK"**, und ändern Sie **value="false"** in **value="true"**.
     * Suchen Sie den Schlüssel **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"**, und ändern Sie **value=""** in **value="DOMÄNE\Benutzer"**, wobei es sich bei „DOMÄNE\Benutzer“ um ein Dienstkonto handelt, das der Gruppe „PhoneFactor Admins“ angehört.
     * Suchen Sie den Schlüssel **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"**, und ändern Sie **value=""** in **value="Kennwort"**, wobei es sich bei „Kennwort“ um das Kennwort für das Dienstkonto aus der vorherigen Zeile handelt.
-    * Suchen Sie den Wert **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx**, und ändern Sie diese Platzhalter-URL in die Webdienst-SDK-URL aus Schritt 2.
+    * Suchen Sie den Wert **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx**, und ändern Sie die Platzhalter-URL in die Webdienst-SDK-URL aus Schritt 2.
     * Speichern Sie die Datei „Web.Config“, und schließen Sie den Editor.
 
 6. Öffnen Sie auf einem beliebigen Computer einen Webbrowser, und navigieren Sie zu der URL, unter der das Benutzerportal installiert wurde (Beispiel: https://mfa.contoso.com/MultiFactorAuth). Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.

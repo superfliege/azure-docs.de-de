@@ -1,22 +1,19 @@
 ---
 title: Replizieren einer Azure-VM in eine andere Azure-Region (Vorschau)
-description: "Dieser Schnellstart enthält eine Anleitung zum Replizieren einer Azure-VM aus einer Azure-Region in eine andere."
+description: Dieser Schnellstart enthält eine Anleitung zum Replizieren einer Azure-VM aus einer Azure-Region in eine andere.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 02/07/2018
+ms.date: 04/08/2018
 ms.author: raynew
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 213b218a50506ace2298aa3f77721db1b81e2efe
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a317d54b56f72373d99af35b806cb231c2ef962e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region-preview"></a>Replizieren einer Azure-VM in eine andere Azure-Region (Vorschau)
 
@@ -28,7 +25,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Aktivieren der Replikation für die Azure-VM
 

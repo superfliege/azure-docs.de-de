@@ -1,47 +1,46 @@
 ---
-title: Wichtige Unterschiede zwischen Azure und Azure Stack beim Verwenden von Diensten und Erstellen von Apps | Microsoft-Dokumentation
-description: "Enthält die Informationen, die Sie für das Verwenden von Diensten oder Erstellen von Apps für Azure Stack benötigen."
+title: Grundlegendes zu den wichtigsten Unterschieden zwischen Azure und Azure Stack beim Verwenden von Diensten und Erstellen von Apps | Microsoft-Dokumentation
+description: Wissenswertes zur Verwendung von Diensten sowie zur Erstellung von Apps für Azure Stack.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: c81f551d-c13e-47d9-a5c2-eb1ea4806228
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/25/2017
+ms.date: 04/16/2018
 ms.author: mabrigg
-ms.openlocfilehash: 695824ef2537a97ea0530f2c33ad24d5cd9e20f8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: eab208175f7eb3b761ec7266483a7cd5268198e8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Wichtige Aspekte: Verwenden von Diensten oder Erstellen von Apps für Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
-
-In Bezug auf die Verwendung von Diensten oder die Erstellung von Apps für Azure Stack müssen Sie wissen, dass zwischen Azure Stack und Azure Unterschiede bestehen. Dieser Artikel enthält eine Übersicht über die wichtigsten Aspekte, die für die Nutzung von Azure Stack als Hybrid Cloud-Entwicklungsumgebung gelten.
+Vor der Verwendung von Diensten oder der Erstellung von Apps für Azure Stack müssen Sie sich mit den Unterschieden zwischen Azure Stack und Azure vertraut machen. Dieser Artikel geht auf die wichtigsten Aspekte der Verwendung von Azure Stack als Hybrid Cloud-Entwicklungsumgebung ein.
 
 ## <a name="overview"></a>Übersicht
 
-Azure Stack ist eine Hybrid Cloud-Plattform, mit der Sie Azure-Dienste aus dem Rechenzentrum Ihres Unternehmens oder Ihres Service Providers verwenden können. Als Entwickler können Sie Apps erstellen, die unter Azure Stack ausgeführt werden. Anschließend können Sie diese Apps in Azure Stack bzw. Azure bereitstellen, oder Sie können echte Hybrid-Apps erstellen, für die die Konnektivität zwischen einer Azure Stack-Cloud und Azure genutzt wird.
+Azure Stack ist eine Hybrid Cloud-Plattform, mit der Sie Azure-Dienste aus dem Rechenzentrum Ihres Unternehmens oder Ihres Service Providers verwenden können. Sie können eine Anwendung in Azure Stack erstellen und anschließend in Azure Stack, in Azure oder in Ihrer Azure Hybrid Cloud bereitstellen.
 
 Ihr Azure Stack-Betreiber teilt Ihnen mit, welche Dienste für Sie verfügbar sind und wie Sie Support erhalten. Diese Dienste sind jeweils über die angepassten Pläne und Angebote erhältlich.
 
 Für den technischen Inhalt von Azure wird davon ausgegangen, dass Apps nicht für Azure Stack, sondern für einen Azure-Dienst entwickelt werden. Für die Erstellung und Bereitstellung von Apps für Azure Stack müssen Sie einige wichtige Unterschiede kennen, z.B.:
 
 * Azure Stack stellt eine Teilmenge dieser Dienste und Features bereit, die in Azure verfügbar sind.
-* Ihr Unternehmen oder Service Provider kann auswählen, welche Dienste angeboten werden sollen. Dies gilt auch für angepasste Dienste oder Anwendungen. Sie enthalten unter Umständen eine eigene angepasste Dokumentation.
+* Ihr Unternehmen oder Service Provider kann auswählen, welche Dienste angeboten werden sollen. Die verfügbaren Optionen schließen unter Umständen benutzerdefinierte Dienste oder Anwendungen mit ein. Sie enthalten unter Umständen eine eigene angepasste Dokumentation.
 * Sie müssen die richtigen Azure Stack-spezifischen Endpunkte verwenden (z.B. die URLs für die Portaladresse und den Azure Resource Manager-Endpunkt).
-* Sie müssen PowerShell- und API-Versionen verwenden, die von Azure Stack unterstützt werden. Mit dieser Vorgehensweise wird sichergestellt, dass Ihre Apps sowohl in Azure Stack als auch in Azure funktionieren.
+* Sie müssen PowerShell- und API-Versionen verwenden, die von Azure Stack unterstützt werden. Die Verwendung unterstützter Versionen stellt sicher, dass Ihre Apps sowohl in Azure Stack als auch in Azure funktionieren.
 
 ## <a name="cheat-sheet-high-level-differences"></a>Cheat Sheet: Allgemeine Unterschiede
 
-In der folgenden Tabelle sind die allgemeinen Unterschiede zwischen Azure Stack und Azure beschrieben. Beachten Sie dies, wenn Sie für Azure Stack entwickeln oder Azure Stack-Dienste verwenden.
+In der folgenden Tabelle sind die allgemeinen Unterschiede zwischen Azure Stack und Azure beschrieben. Diese Unterschiede müssen bei der Entwicklung für Azure Stack sowie bei der Verwendung von Azure Stack-Diensten berücksichtigt werden.
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 | Bereich | Azure (global) | Azure Stack |
 | -------- | ------------- | ----------|
@@ -70,9 +69,9 @@ In der folgenden Tabelle sind die allgemeinen Unterschiede zwischen Azure Stack 
 
 ## <a name="version-requirements"></a>Versionsanforderungen
 
-Azure Stack unterstützt bestimmte Versionen von Azure PowerShell und Azure-Dienst-APIs. Sie müssen die unterstützten Versionen verwenden, um sicherzustellen, dass Ihre App sowohl für Azure Stack als auch für Azure bereitgestellt werden kann.
+Azure Stack unterstützt bestimmte Versionen von Azure PowerShell und Azure-Dienst-APIs. Verwenden Sie unterstützte Versionen, um sicherzustellen, dass Ihre App sowohl für Azure Stack als auch für Azure bereitgestellt werden kann.
 
-Verwenden Sie [API-Versionsprofile](azure-stack-version-profiles.md), damit sichergestellt ist, dass Sie eine richtige Version von Azure PowerShell nutzen. Zum Ermitteln des aktuellen API-Versionsprofils, das Sie nutzen können, müssen Sie wissen, welchen Build von Azure Stack Sie verwenden. Sie erhalten diese Informationen von Ihrem Azure Stack-Administrator.
+Verwenden Sie [API-Versionsprofile](azure-stack-version-profiles.md), damit sichergestellt ist, dass Sie eine richtige Version von Azure PowerShell nutzen. Ermitteln Sie den verwendeten Azure Stack-Build, um das neueste verwendbare API-Versionsprofil zu bestimmen. Sie erhalten diese Informationen von Ihrem Azure Stack-Administrator.
 
 >[!NOTE]
  Wenn Sie das Azure Stack Development Kit nutzen und über Administratorzugriff verfügen, können Sie den Azure Stack-Build ermitteln, indem Sie unter [Verwalten von Updates in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-updates#determine-the-current-version) die Schritte im Abschnitt „Bestimmen der aktuellen Version“ ausführen.

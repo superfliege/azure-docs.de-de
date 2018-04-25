@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8fd8bd81191d2019d5fa41ce1b6a029f3587adfd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Zugriffssteuerung in Azure Data Lake Store
 
@@ -150,7 +150,7 @@ Ein Data Lake Store-Konto besitzt in Azure mehrere Azure-Rollen, z.B.:
 * Mitwirkende
 * Leser
 
-Alle Benutzer, die der Rolle **Besitzer** für ein Data Lake Store-Konto angehören, sind automatisch auch Administratoren für dieses Konto. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md).
+Alle Benutzer, die der Rolle **Besitzer** für ein Data Lake Store-Konto angehören, sind automatisch auch Administratoren für dieses Konto. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md).
 Wenn Sie eine Rolle vom Typ „Benutzerdefinierte rollenbasierte Zugriffssteuerung“ (Role-Based Access Control, RBAC) mit Administratorberechtigungen erstellen möchten, müssen Sie dafür die folgenden Berechtigungen erteilen:
 - Microsoft.DataLakeStore/accounts/Superuser/action
 - Microsoft.Authorization/roleAssignments/write
@@ -184,7 +184,7 @@ Die zuständige Gruppe kann von folgenden Benutzern geändert werden:
 * Zuständiger Benutzer, sofern er auch der Zielgruppe angehört
 
 > [!NOTE]
-> Die zuständige Gruppe kann die ACLs einer Datei oder eines Ordners *nicht* ändern.
+> Die zuständige Gruppe kann die ACLs einer Datei oder eines Ordners *nicht* ändern.  Im Fall des Stammordners (**Fall 1** weiter oben) wird die zuständige Gruppe zwar auf den Benutzer festgelegt, der das Konto erstellt hat, für die Bereitstellung von Berechtigungen über die zuständige Gruppe ist jedoch kein einzelnes Konto zulässig.  Sie können diese Berechtigung ggf. einer gültigen Benutzergruppe zuweisen.
 
 ## <a name="access-check-algorithm"></a>Algorithmus für die Zugriffsüberprüfung
 

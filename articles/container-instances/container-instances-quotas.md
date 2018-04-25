@@ -8,11 +8,11 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 02/27/2018
 ms.author: marsma
-ms.openlocfilehash: 28177e17a15c5e3b92b9af52e05fa2f8e95db95f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2ed067542942cd314d61def5154c3c83cad6cc1c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Kontingente und Regionsverfügbarkeit für Azure Container Instances
 
@@ -28,9 +28,9 @@ Azure Container Instances ist mit den angegebenen CPU- und Arbeitsspeicherlimits
 
 | Speicherort | Betriebssystem | CPU | Arbeitsspeicher (GB) |
 | -------- | -- | :---: | :-----------: |
-| Europa, Westen; USA, Westen; USA, Osten | Linux | 4 | 14 |
+| „USA, Westen“, „USA, Osten“, „Europa, Westen“, „Europa, Norden“ | Linux | 4 | 14 |
 | USA, Westen 2; Asien, Südosten | Linux | 2 | 7 |
-| Europa, Westen; USA, Westen; USA, Osten | Windows | 4 | 14 |
+| „USA, Westen“, „USA, Osten“, „Europa, Westen“, „Europa, Norden“ | Windows | 4 | 14 |
 | USA, Westen 2; Asien, Südosten | Windows | 2 | 3,5 |
 
 Containerinstanzen, die innerhalb dieser Ressourcenlimits erstellt werden, unterliegen der Verfügbarkeit in der Bereitstellungsregion. Wenn eine Region stark ausgelastet ist, kann bei der Bereitstellung von Instanzen ein Fehler auftreten. Um einen solchen Fehler bei der Bereitstellung zu beheben, versuchen Sie, Instanzen mit niedrigeren CPU- und Arbeitsspeichereinstellungen bereitzustellen, oder führen Sie die Bereitstellung zu einem späteren Zeitpunkt durch.

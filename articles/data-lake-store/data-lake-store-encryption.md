@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: 53d5f413f58cea7bc8eab081d46eff2ab83e7ecb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2328f7e233025d9f9ee9113aa28fb74754dd9193
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Datenverschlüsselung in Azure Data Lake Store
 
@@ -138,3 +138,6 @@ Wenn Sie die Standardverschlüsselungsoptionen verwenden, werden Ihre Daten imme
     ![Screenshot des Data Lake Store-Fensters mit der Benachrichtigung, „Schlüssel rotieren“ hervorgehoben](./media/data-lake-store-encryption/rotatekey.png)
 
 Der Vorgang dauert in der Regel weniger als zwei Minuten, und bei der Schlüsselrotation sind keine Ausfallzeiten zu erwarten. Nach Abschluss des Vorgangs wird die neue Version des Schlüssels verwendet.
+
+> [!IMPORTANT]
+> Nach Abschluss der Schlüsselrotation wird die alte Version des Schlüssels nicht mehr aktiv zum Verschlüsseln Ihrer Daten verwendet.  Allerdings können im seltenen Fall eines unerwarteten Fehlers, von dem selbst redundante Kopien Ihrer Daten betroffen sind, Daten aus einer Sicherung wiederhergestellt werden, die weiterhin den alten Schlüssel verwendet. Bewahren Sie daher eine Kopie der früheren Version Ihres Verschlüsselungsschlüssels auf, um in einem solchen Fall auf Ihre Daten zugreifen zu können. Best Practices für Ihre Notfallwiederherstellungsplanung finden Sie unter [Leitfaden zur Notfallwiederherstellung für Daten in Data Lake Store](data-lake-store-disaster-recovery-guidance.md). 

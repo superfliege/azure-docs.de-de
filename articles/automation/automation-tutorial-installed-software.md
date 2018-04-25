@@ -2,19 +2,19 @@
 title: Ermitteln der auf Ihren Computern installierten Software mit Azure Automation | Microsoft-Dokumentation
 description: Ermitteln Sie mit der Bestandsfunktion, welche Software auf den Computern in Ihrer Umgebung installiert ist.
 services: automation
-keywords: "Inventar, Inventur, Bestand, Automatisierung, Änderung, Nachverfolgung"
+keywords: Inventar, Inventur, Bestand, Automatisierung, Änderung, Nachverfolgung
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 02/28/2018
+ms.date: 04/11/2018
 ms.topic: tutorial
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 97cd2c91ca2c70b044518c43d49356918202d5ff
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: bd9fdc237a3c6f1c2a57ddf0f4448d7c3402a798
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Ermitteln der Software, die auf Ihren Azure-Computern und anderen Computern installiert ist
 
@@ -23,7 +23,9 @@ In diesem Tutorial wird beschrieben, wie Sie ermitteln können, welche Software 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Integrieren einer VM für die Änderungsnachverfolgung und den Bestand
+> * Aktivieren der Lösung
+> * Integrieren einer Azure-VM
+> * Integrieren eines Azure-fremden virtuellen Computers
 > * Anzeigen von installierter Software
 > * Durchsuchen von Bestandsprotokollen nach installierter Software
 
@@ -37,18 +39,19 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Änderungsnachverfolgung und Bestandsfunktion
 
-In diesem Tutorial müssen Sie zuerst die Änderungsnachverfolgung und die Bestandsfunktion für Ihre VM aktivieren. Wenn Sie die Lösung **Änderungsnachverfolgung** für Ihre VM zuvor nicht aktiviert haben, ist dieser Schritt nicht erforderlich.
+In diesem Tutorial müssen Sie zuerst die Änderungsnachverfolgung und die Bestandsfunktion aktivieren. Wenn Sie die Lösung **Änderungsnachverfolgung** bereits aktiviert haben, ist dieser Schritt nicht erforderlich.
 
-1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer**, und wählen Sie in der Liste eine VM aus.
-2. Klicken Sie im Menü auf der linken Seite unter dem Abschnitt **Vorgänge** auf **Bestand**. Die Seite **Änderungsnachverfolgung und Bestand aktivieren** wird geöffnet.
+Navigieren Sie zu Ihrem Automation-Konto, und wählen Sie unter **KONFIGURATIONSVERWALTUNG** die Option **Bestand** aus.
+
+Wählen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto aus, und klicken Sie auf **Aktivieren**, um die Lösung zu aktivieren. Es dauert ungefähr 15 Minuten, bis die Lösung aktiviert ist.
 
 ![Banner für die Konfiguration zur Integration der Bestandsfunktion](./media/automation-tutorial-installed-software/enableinventory.png)
 
-Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**, um die Lösung zu aktivieren. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen.
+Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**, um die Lösung zu aktivieren. Wenn die Felder ausgegraut sind, bedeutet das, dass für den virtuellen Computer eine andere Automatisierungslösung aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen.
 
 Mit einem [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-Arbeitsbereich werden Daten gesammelt, die von Features und Diensten wie der Bestandsfunktion generiert werden.
 Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
@@ -57,15 +60,31 @@ Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Während dieses Zeitra
 Nachdem die Lösung aktiviert wurde, werden Informationen zur installierten Software und Änderungen der VM-Datenflüsse zu Log Analytics angezeigt.
 Es kann zwischen 30 Minuten und 6 Stunden dauern, bis die Daten für die Analyse verfügbar sind.
 
+## <a name="onboard-a-vm"></a>Integrieren eines virtuellen Computers
+
+Navigieren Sie in Ihrem Automation-Konto unter **KONFIGURATIONSVERWALTUNG** zu **Bestand**.
+
+Klicken Sie auf **+ Azure-VM hinzufügen**. Daraufhin wird die Seite **Virtuelle Computer** geöffnet, auf der Sie einen virtuellen Computer aus der Liste auswählen können. Wählen Sie den virtuellen Computer aus, den Sie integrieren möchten. Klicken Sie auf der daraufhin angezeigten Seite auf **Aktivieren**, um die Lösung für den virtuellen Computer zu aktivieren. Der Microsoft-Verwaltungs-Agent (Microsoft Management Agent, MMA) wird auf dem virtuellen Computer bereitgestellt und konfiguriert den Agent für die Kommunikation mit dem Log Analytics-Arbeitsbereich, den Sie beim Aktivieren der Lösung konfiguriert haben. Der Integrationsvorgang kann einige Minuten dauern. An diesem Punkt können Sie in der Liste einen neuen virtuellen Computer auswählen und integrieren.
+
+## <a name="onboard-a-non-azure-machine"></a>Integrieren eines Azure-fremden Computers
+
+Wenn Sie einen Azure-fremden Computer hinzufügen möchten, installieren den passenden Agent für das Betriebssystem ([Windows](../log-analytics/log-analytics-agent-windows.md) oder [Linux](automation-linux-hrw-install.md)). Navigieren Sie nach der Installation des Agents zu Ihrem Automation-Konto und dort unter **KONFIGURATIONSVERWALTUNG** zu **Bestand**. Wenn Sie auf **Computer verwalten** klicken, wird eine Liste mit den Computern angezeigt, die mit Ihrem Log Analytics-Arbeitsbereich verknüpft sind und für die die Lösung nicht aktiviert ist. Wählen Sie die passende Option für Ihre Umgebung aus:
+
+* **Enable on all available machines** (Auf allen verfügbaren Computern aktivieren): Diese Option aktiviert die Lösung auf allen Computern, die derzeit mit Ihrem Log Analytics-Arbeitsbereich verknüpft sind.
+* **Enable on all available machines and future machines** (Auf allen verfügbaren und zukünftigen Computern aktivieren): Diese Option aktiviert die Lösung auf allen Computern, die derzeit mit Ihrem Log Analytics-Arbeitsbereich verknüpft sind, sowie auf allen Computern, die dem Arbeitsbereich noch hinzugefügt werden.
+* **Enable on selected machines** (Auf ausgewählten Computern aktivieren): Diese Option aktiviert die Lösung nur auf den ausgewählten Computern.
+
+![Computer verwalten](./media/automation-tutorial-installed-software/manage-machines.png)
+
 ## <a name="view-installed-software"></a>Anzeigen von installierter Software
 
 Nachdem die Lösung für die Änderungsnachverfolgung und den Bestand aktiviert wurde, können Sie die Ergebnisse auf der Seite **Bestand** anzeigen.
 
-Wählen Sie auf Ihrer VM unter **VORGÄNGE** die Option **Bestand**.
+Wählen Sie innerhalb Ihres Automation-Kontos unter **KONFIGURATIONSVERWALTUNG** die Option **Bestand** aus.
 
 Klicken Sie auf der Seite **Bestand** auf die Registerkarte **Software**.
 
-Auf der Registerkarte **Software** wird eine Tabellenliste mit der gefundenen Software angezeigt. Die Software ist nach Name und Version der Software gruppiert.
+Auf der Registerkarte **Software** wird eine Tabelle mit der gefundenen Software angezeigt. Die Software ist nach Name und Version der Software gruppiert.
 
 Die allgemeinen Details zu den einzelnen Softwaredatensätzen können in der Tabelle angezeigt werden. Diese Details enthalten den Softwarenamen, die Version, den Herausgeber, den letzten Aktualisierungszeitpunkt (letzter Aktualisierungszeitpunkt, der von einem Computer der Gruppe gemeldet wurde) und die Computer (Anzahl von Computern mit der jeweiligen Software).
 
@@ -83,28 +102,29 @@ Wenn Sie beispielsweise nach „Contoso“ suchen, wird die gesamte Software zur
 Bei der Bestandsfunktion werden Protokolldaten generiert, die an Log Analytics gesendet werden. Um die Protokolle per Ausführung von Abfragen zu durchsuchen, klicken Sie oben im Fenster **Bestand** auf **Log Analytics**.
 
 Die Bestandsdaten werden unter dem Typ **ConfigurationData** gespeichert.
-Mit der folgenden Log Analytics-Beispielabfrage werden die Herausgeber zurückgegeben, die „Microsoft“ enthalten, sowie die Anzahl von Softwaredatensätzen (gruppiert nach „SoftwareName“ und „Computer“) für jeden Herausgeber.
+Die folgende Log Analytics-Beispielabfrage gibt die Bestandsergebnisse zurück, bei denen der Herausgeber „Microsoft Corporation“ lautet.
 
-```
+```loganalytics
 ConfigurationData
-| summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 | where ConfigDataType == "Software"
-| search Publisher:"Microsoft"
-| summarize count() by Publisher
+| where Publisher == "Microsoft Corporation"
+| summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
 Weitere Informationen zur Ausführung von Abfragen und zum Durchsuchen von Protokolldateien in Log Analytics finden Sie unter [Azure Log Analytics](https://docs.loganalytics.io/index).
 
 ### <a name="single-machine-inventory"></a>Bestandsermittlung für einen einzelnen Computer
 
-Zum Anzeigen des Softwarebestands für einen einzelnen Computer können Sie über die Seite mit den Azure-VM-Ressourcen auf die Bestandsfunktion zugreifen oder Log Analytics zum Filtern nach dem entsprechenden Computer verwenden. Mit der folgenden Log Analytics-Beispielabfrage wird eine Liste mit Software für einen Computer mit dem Namen ContosoVM zurückgegeben.
+Zum Anzeigen des Softwarebestands für einen einzelnen Computer können Sie über die Seite mit den Azure-VM-Ressourcen auf die Bestandsfunktion zugreifen oder Log Analytics zum Filtern nach dem entsprechenden Computer verwenden.
+Mit der folgenden Log Analytics-Beispielabfrage wird eine Liste mit Software für einen Computer mit dem Namen ContosoVM zurückgegeben.
 
-```
+```loganalytics
 ConfigurationData
-| where ConfigDataType == "Software" 
+| where ConfigDataType == "Software"
 | summarize arg_max(TimeGenerated, *) by SoftwareName, CurrentVersion
 | where Computer =="ContosoVM"
 | render table
+| summarize by Publisher, SoftwareName
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -112,7 +132,9 @@ ConfigurationData
 In diesem Tutorial wurde beschrieben, wie Sie den Softwarebestand beispielsweise für folgende Zwecke anzeigen:
 
 > [!div class="checklist"]
-> * Integrieren einer VM für die Änderungsnachverfolgung und den Bestand
+> * Aktivieren der Lösung
+> * Integrieren einer Azure-VM
+> * Integrieren eines Azure-fremden virtuellen Computers
 > * Anzeigen von installierter Software
 > * Durchsuchen von Bestandsprotokollen nach installierter Software
 

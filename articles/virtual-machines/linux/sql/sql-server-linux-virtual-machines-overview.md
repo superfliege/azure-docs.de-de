@@ -10,13 +10,13 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: get-started-article
 ms.workload: iaas-sql-server
-ms.date: 03/22/2018
+ms.date: 04/10/2018
 ms.author: jroth
-ms.openlocfilehash: e752ad844a6efe572564e7081ebac87193e9c2a7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9c24536d8d5647e4a2c19afa17c35050e1f11c20
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Übersicht über SQL Server auf virtuellen Azure-Computern (Linux)
 
@@ -24,27 +24,16 @@ ms.lasthandoff: 03/23/2018
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](sql-server-linux-virtual-machines-overview.md)
 
-Dieses Thema beschreibt die Optionen im Zusammenhang mit der Ausführung von SQL Server auf virtuellen Azure-Computern (VMs) unter Linux und enthält [Links zu Portal-Images](#create).
+Mit SQL Server auf virtuellen Azure-Computern können Sie Vollversionen von SQL Server in der Cloud nutzen, ohne lokale Hardware verwalten zu müssen. Virtuelle SQL Server-Computer vereinfachen außerdem die Lizenzierungskosten, wenn Sie eine nutzungsbasierte Bezahlung verwenden.
 
-> [!NOTE]
-> Wenn Sie bereits mit SQL Server vertraut sind und nur Informationen zum Bereitstellen eines virtuellen Linux-Computers mit SQL Server benötigen, helfen Ihnen die Informationen unter [Provision a Linux SQL Server virtual machine in the Azure portal](provision-sql-server-linux-virtual-machine.md) (Bereitstellen eines virtuellen Linux-Computers mit SQL Server über das Azure-Portal) weiter. Informationen zur Erstellung eines virtuellen Windows-Computers mit SQL Server finden Sie dagegen unter [Bereitstellen eines virtuellen Computers mit SQL Server über das Azure-Portal](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md).
+Virtuelle Azure-Computer werden in verschiedensten [geografischen Regionen](https://azure.microsoft.com/regions/) auf der ganzen Welt ausgeführt. Sie bieten auch eine Vielzahl von [Computergrößen](../sizes.md). Über den Katalog mit VM-Images können Sie virtuelle SQL Server-Computer mit passender Version, passender Edition und passendem Betriebssystem erstellen. Dadurch stellen virtuelle Computer eine gute Wahl für viele verschiedene SQL Server-Workloads dar.
 
-Wenn Sie ein Datenbankadministrator oder Entwickler sind, stellen Azure-VMs eine Möglichkeit zum Verschieben Ihrer lokalen SQL Server-Workloads und -Anwendungen in die Cloud dar.
+## <a id="create"></a>Erste Schritte mit virtuellen SQL-Computern
 
-## <a name="scenarios"></a>Szenarien
-
-Es gibt viele Gründe, die für das Hosten von Daten in Azure sprechen. Wenn Sie Ihre Anwendung in Azure entwickeln oder zu Azure migrieren, ist es aus Leistungsgründen sinnvoll, auch die Back-End-Daten in Azure zu platzieren. Sie haben automatisch Zugriff auf mehrere Rechenzentren, um weltweite Präsenz und die Notfallwiederherstellung zu ermöglichen. Außerdem sind die Daten dauerhaft stark geschützt.
-
-Die Ausführung von SQL Server auf Azure-VMs ist eine Möglichkeit zum Speichern Ihrer relationalen Daten in Azure. Sie können auch den Azure SQL-Datenbank-Dienst verwenden. Eine Gegenüberstellung von SQL Server auf virtuellen Computern und Azure SQL-Datenbank finden Sie unter [Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md).
-
-## <a id="create"></a> Erstellen eines neuen virtuellen SQL-Computers
-
-Eine ausführliche Anleitung zum Erstellen eines neuen virtuellen SQL Server-Computers finden Sie im Tutorial [Provision a Linux SQL Server virtual machine in the Azure portal](provision-sql-server-linux-virtual-machine.md) (Bereitstellen eines virtuellen Linux-Computers mit SQL Server über das Azure-Portal).
-
-Die folgende Tabelle enthält eine Matrix der aktuellen SQL Server-Images im Katalog der virtuellen Computer. Klicken Sie auf einen beliebigen Link, um mit dem Erstellen einer neuen SQL-VM mit Ihren Angaben zu Version, Edition und Betriebssystem zu beginnen.
+Wählen Sie als Erstes ein SQL Server-VM-Image mit der benötigten Version, der benötigten Edition und dem benötigten Betriebssystem aus. Die folgenden Abschnitte enthalten direkte Links zum Azure-Portal für die Katalogimages für virtuelle SQL Server-Computer.
 
 > [!TIP]
-> Informationen zu den VM- und SQL-Preisen für diese Images finden Sie auf der [Seite mit den Preisinformationen für virtuelle Linux-Computer mit SQL Server](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+> Weitere Informationen zur Preisgestaltung für SQL-Images finden Sie auf der [Seite mit den Preisinformationen für SQL Server-VMs unter Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 | Version | Betriebssystem | Edition |
 | --- | --- | --- |
@@ -65,6 +54,33 @@ Wenn Sie SQL Server unter Linux konfigurieren, installieren Sie das Datenbank-En
 | SLES | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![no](./media/sql-server-linux-virtual-machines-overview/no.png) | ![no](./media/sql-server-linux-virtual-machines-overview/no.png) |
 | Ubuntu | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) |
 
+## <a name="related-products-and-services"></a>Verwandte Produkte und Dienste
+
+### <a name="linux-virtual-machines"></a>Virtuelle Linux-Computer
+
+* [Übersicht über virtuelle Computer](../overview.md)
+
+### <a name="storage"></a>Speicher
+
+* [Einführung in Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
+
+### <a name="networking"></a>Netzwerk
+
+* [Virtuelle Netzwerke im Überblick](../../../virtual-network/virtual-networks-overview.md)
+* [IP-Adressen in Azure](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [Erstellen eines vollständig qualifizierten Domänennamens im Azure-Portal](../portal-create-fqdn.md)
+
+### <a name="sql"></a>SQL
+
+* [SQL Server unter Linux – Dokumentation](https://docs.microsoft.com/sql/linux)
+* [Vergleich mit Azure SQL-Datenbank](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Konfigurieren und Verwenden von SQL Server unter Linux finden Sie in der [Übersicht über SQL Server unter Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview).
+Führen Sie erste Schritte mit SQL Server auf virtuellen Azure-Computern unter Linux durch:
+
+* [Bereitstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal](provision-sql-server-linux-virtual-machine.md)
+
+Erhalten Sie Antworten auf häufig gestellte Fragen zu virtuellen SQL-Computern unter Linux:
+
+* [Häufig gestellte Fragen zu SQL Server auf virtuellen Linux-Computern in Azure](sql-server-linux-faq.md)

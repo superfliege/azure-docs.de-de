@@ -48,7 +48,7 @@ Sie können einen Cluster mit einem, drei oder fünf Masterknoten erstellen. Au�
 > 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Wie kann ich nach der Clustererstellung die Masteranzahl erhöhen? 
-Nach der Erstellung des Clusters ist die Masteranzahl unveränderlich. Bei der Clustererstellung sollten Sie im Idealfall mehrere Master auswählen, um eine hohe Verfügbarkeit sicherzustellen.
+Nach der Erstellung des Clusters ist die Masteranzahl unveränderlich. Bei der Clustererstellung sollten Sie im Idealfall mehrere Master auswählen, um Hochverfügbarkeit sicherzustellen.
 
 ### <a name="how-do-i-increase-the-number-of-agents-after-a-cluster-is-created"></a>Wie kann ich nach der Clustererstellung die Agent-Anzahl erhöhen? 
 Die Agent-Anzahl im Cluster kann über das Azure-Portal oder mithilfe von Befehlszeilentools skaliert werden. Informationen hierzu finden Sie unter [Skalieren eines Azure Container Service-Clusters](../articles/container-service/kubernetes/container-service-scale.md).
@@ -84,13 +84,23 @@ Die Verbindungszeichenfolge können Sie im Azure-Portal oder mithilfe von Azure-
 
 4. Auf der Seite **Zusammenfassung** werden unter **Ausgaben** mehrere Clusterlinks bereitgestellt. **SSHMaster0** stellt eine SSH-Verbindungszeichenfolge für den ersten Master in Ihrem Containerdienstcluster bereit. 
 
-Wie bereits erwähnt kann der FQDN des Masters auch mithilfe von Azure-Tools ermittelt werden. Stellen Sie eine SSH-Verbindung mit dem Master her, und verwenden Sie dabei den FQDN des Masters sowie den Benutzernamen, den Sie bei der Clustererstellung angegeben haben. Beispiel:
+Wie bereits erwähnt kann der FQDN des Masters auch mithilfe von Azure-Tools ermittelt werden. Stellen Sie eine SSH-Verbindung mit dem Master her, und verwenden Sie dabei den FQDN des Masters sowie den Benutzernamen, den Sie bei der Clustererstellung angegeben haben. Beispiel: 
 
 ```bash
 ssh userName@masterFQDN –A –p 22 
 ```
 
 Weitere Informationen finden Sie unter [Verbinden mit einem Azure Container Service-Cluster](../articles/container-service/kubernetes/container-service-connect.md).
+
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Mein DNS-Namensauflösung funktioniert unter Windows nicht. Wie sollte ich vorgehen?
+
+Unter Windows gibt es einige bekannte DNS-Probleme, für die momentan noch Korrekturen verteilt werden. Vergewissern Sie sich, dass Sie über die neueste ACS-Engine und die neueste Windows-Version (mit Installation von [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) und [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848)) verfügen, damit Ihre Umgebung hiervon profitieren kann. Weitere Schritte zur Problembehandlung finden Sie in der folgenden Tabelle:
+
+| DNS-Symptom | Problemumgehung  |
+|-------------|-------------|
+|Beim Absturz eines instabilen Workload-Containers wird der Netzwerknamespace bereinigt. | Stellen Sie die betroffenen Dienste erneut bereit. |
+| Der VIP-Dienstzugriff funktioniert nicht. | Konfigurieren Sie ein [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), damit jederzeit ein normales (nicht privilegiertes) Pod ausgeführt wird. |
+|Bei einem Ausfall des Knotens, auf dem der Container ausgeführt wird, sind DNS-Abfragen unter Umständen nicht erfolgreich und führen zu einem negativen Cacheeintrag. | Führen Sie in den betroffenen Containern Folgendes aus: <ul><li> `New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord`</li><li>`New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord`</li><li>`Restart-Service dnscache` </li></ul><br> Sollte das Problem weiterhin bestehen, deaktivieren Sie das DNS-Caching: <ul><li>`Set-Service dnscache -StartupType disabled`</li><li>`Stop-Service dnscache`</li></ul> |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

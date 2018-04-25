@@ -1,12 +1,12 @@
 ---
 title: Erstellen einer Azure Service Fabric-Containeranwendung unter Linux | Microsoft-Dokumentation
-description: "Erstellen Sie Ihre erste Linux-Containeranwendung unter Azure Service Fabric.  Erstellen Sie ein Docker-Image mit Ihrer Anwendung, übertragen Sie es per Push an eine Containerregistrierung, erstellen Sie eine Service Fabric-Containeranwendung, und stellen Sie diese bereit."
+description: Erstellen Sie Ihre erste Linux-Containeranwendung unter Azure Service Fabric. Erstellen Sie ein Docker-Image mit Ihrer Anwendung, übertragen Sie es per Push an eine Containerregistrierung, erstellen Sie eine Service Fabric-Containeranwendung, und stellen Sie diese bereit.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0e7e0f1262ee8c31bc6e71b49e9ef62129887f2c
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ba4e5996a87596c88822d96faf3e80e8243ad78b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Linux
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Zum Ausführen einer vorhandenen Anwendung eines Linux-Containers in einem Service Fabric-Cluster sind keine Änderungen an Ihrer Anwendung erforderlich. In diesem Artikel wird schrittweise beschrieben, wie Sie ein Docker-Image mit einer Python [Flask](http://flask.pocoo.org/)-Webanwendung erstellen und in einem Service Fabric-Cluster bereitstellen.  Außerdem stellen Sie Ihre Containeranwendung per [Azure Container Registry](/azure/container-registry/) bereit.  In diesem Artikel werden grundlegende Kenntnisse von Docker vorausgesetzt. Weitere Informationen zu Docker finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/understanding-docker/).
+Zum Ausführen einer vorhandenen Anwendung eines Linux-Containers in einem Service Fabric-Cluster sind keine Änderungen an Ihrer Anwendung erforderlich. In diesem Artikel wird schrittweise beschrieben, wie Sie ein Docker-Image mit einer Python [Flask](http://flask.pocoo.org/)-Webanwendung erstellen und in einem Service Fabric-Cluster bereitstellen. Außerdem stellen Sie Ihre Containeranwendung per [Azure Container Registry](/azure/container-registry/) bereit. In diesem Artikel werden grundlegende Kenntnisse von Docker vorausgesetzt. Weitere Informationen zu Docker finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/understanding-docker/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Entwicklungscomputer, auf dem Folgendes ausgeführt wird:
@@ -38,7 +38,7 @@ Zum Ausführen einer vorhandenen Anwendung eines Linux-Containers in einem Servi
 ## <a name="define-the-docker-container"></a>Definieren des Docker-Containers
 Erstellen Sie ein Image auf Grundlage des [Python-Image](https://hub.docker.com/_/python/) in Docker Hub. 
 
-Definieren Sie Ihren Docker-Container in einer Dockerfile-Datei. Die Dockerfile-Datei enthält eine Anleitung zum Einrichten der Umgebung in Ihrem Container, Laden der auszuführenden Anwendung und Zuordnen von Ports. Die Dockerfile-Datei ist die Eingabe für den Befehl `docker build`, der das Image erstellt. 
+Geben Sie Ihren Docker-Container in einer Dockerfile-Datei an. Die Dockerfile-Datei enthält Anweisungen für die Einrichtung der Umgebung in Ihrem Container, für das Laden der auszuführenden Anwendung und für die Portzuordnung. Die Dockerfile-Datei ist die Eingabe für den Befehl `docker build`, der das Image erstellt. 
 
 Erstellen Sie ein leeres Verzeichnis, und erstellen Sie die Datei *Dockerfile* (ohne Dateierweiterung). Fügen Sie der *Dockerfile* Folgendes hinzu, und speichern Sie Ihre Änderungen:
 
@@ -67,13 +67,13 @@ CMD ["python", "app.py"]
 
 Weitere Informationen finden Sie in der [Dockerfile-Referenz](https://docs.docker.com/engine/reference/builder/).
 
-## <a name="create-a-simple-web-application"></a>Erstellen einer einfachen Webanwendung
-Erstellen Sie eine Flask-Webanwendung, die über Port 80 lauscht und „Hello World!“ zurückgibt.  Erstellen Sie in demselben Verzeichnis die Datei *requirements.txt*.  Fügen Sie Folgendes hinzu, und speichern Sie die Änderungen:
+## <a name="create-a-basic-web-application"></a>Erstellen einer einfachen Webanwendung
+Erstellen Sie eine Flask-Webanwendung, die über Port 80 lauscht und „Hello World!“ zurückgibt. Erstellen Sie in demselben Verzeichnis die Datei *requirements.txt*. Fügen Sie Folgendes hinzu, und speichern Sie die Änderungen:
 ```
 Flask
 ```
 
-Erstellen Sie auch die Datei *app.py*, und fügen Sie Folgendes hinzu:
+Erstellen Sie auch die Datei *app.py*, und fügen Sie den folgenden Codeausschnitt hinzu:
 
 ```python
 from flask import Flask
@@ -96,7 +96,7 @@ Führen Sie den Befehl `docker build` aus, um das Image zu erstellen, mit dem Ih
 docker build -t helloworldapp .
 ```
 
-Dieser Befehl erstellt das neue Image mithilfe der Anweisungen in der Dockerfile-Datei. Das Image erhält den Namen „helloworldapp“ (-t tagging). Durch das Erstellen eines Image wird das Basisimage per Pullvorgang von Docker Hub abgerufen, und es wird ein neues Image erstellt, mit dem Ihre Anwendung zusätzlich zum Basisimage hinzugefügt wird.  
+Dieser Befehl erstellt das neue Image gemäß den Anweisungen aus der Dockerfile-Datei. Das Image erhält den Namen `helloworldapp`. Hierzu wird der Parameter „-t“ (für Tagging) verwendet. Zur Erstellung eines Containerimages wird zunächst das Basisimage von Docker Hub heruntergeladen, und die Anwendung wird hinzugefügt. 
 
 Wenn der Buildbefehl abgeschlossen ist, rufen Sie den Befehl `docker images` ab, um Informationen zum neuen Image anzuzeigen:
 
@@ -108,7 +108,7 @@ helloworldapp                 latest              86838648aab6        2 minutes 
 ```
 
 ## <a name="run-the-application-locally"></a>Lokales Ausführen der Anwendung
-Stellen Sie sicher, dass Ihre Containeranwendung lokal ausgeführt wird, bevor Sie sie an die Containerregistrierung übertragen.  
+Stellen Sie sicher, dass Ihre Containeranwendung lokal ausgeführt wird, bevor Sie sie an die Containerregistrierung übertragen. 
 
 Führen Sie die Anwendung aus, und ordnen Sie den Port 4000 Ihres Computers dem verfügbar gemachten Port 80 des Containers zu:
 
@@ -118,7 +118,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 *name* vergibt einen Namen für den ausgeführten Container (anstelle der Container-ID).
 
-Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser, und verweisen Sie auf die IP-Adresse, die über Port 4000 zurückgegeben wurde, z.B. http://localhost:4000 . Die Überschrift „Hello World!“ wird im Browser angezeigt.
+Stellen Sie eine Verbindung mit dem ausgeführten Container her. Öffnen Sie die am Port 4000 zurückgegebene IP-Adresse (beispielsweise http://localhost:4000) in einem Webbrowser. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 ![Hello World!][hello-world]
 
@@ -139,7 +139,7 @@ Nachdem Sie sichergestellt haben, dass die Anwendung in Docker ausgeführt wird,
 
 Führen Sie `docker login` aus, um sich mit Ihren [Registrierungsanmeldeinformationen](../container-registry/container-registry-authentication.md) an der Containerregistrierung anzumelden.
 
-Im folgenden Beispiel werden die ID und das Kennwort eines Azure Active Directory-[Dienstprinzipals](../active-directory/active-directory-application-objects.md) übergeben. Angenommen, Sie haben Ihrer Registrierung für ein Automatisierungsszenario einen Dienstprinzipal zugewiesen.  Oder Sie können sich mit Ihrem Benutzernamen und Kennwort für die Registrierung anmelden.
+Im folgenden Beispiel werden die ID und das Kennwort eines Azure Active Directory-[Dienstprinzipals](../active-directory/active-directory-application-objects.md) übergeben. Angenommen, Sie haben Ihrer Registrierung für ein Automatisierungsszenario einen Dienstprinzipal zugewiesen. Alternativ können Sie sich mit Ihrem für die Registrierung verwendeten Benutzernamen und Kennwort anmelden.
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -160,9 +160,9 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="package-the-docker-image-with-yeoman"></a>Packen des Docker-Image mit Yeoman
 Das Service Fabric SDK für Linux enthält einen [Yeoman](http://yeoman.io/)-Generator, mit dem Sie problemlos die Anwendung erstellen und ein Containerimage hinzufügen können. Lassen Sie uns mit Yeoman eine Anwendung mit einem einzelnen Docker-Container erstellen, deren Name *SimpleContainerApp* lautet.
 
-Öffnen Sie zum Erstellen einer Service Fabric-Containeranwendung ein Terminalfenster, und führen Sie `yo azuresfcontainer` aus.  
+Öffnen Sie zum Erstellen einer Service Fabric-Containeranwendung ein Terminalfenster, und führen Sie `yo azuresfcontainer` aus. 
 
-Benennen Sie Ihre Anwendung (Beispiel: mycontainer) und den Anwendungsdienst (Beispiel: myservice).
+Legen Sie einen Namen für Ihre Anwendung (beispielsweise `mycontainer`) und einen Namen für den Anwendungsdienst (beispielsweise `myservice`) fest.
 
 Geben Sie als Imagename die URL für das Containerimage in einer Containerregistrierung an (Beispiel: myregistry.azurecr.io/samples/helloworldapp). 
 
@@ -173,7 +173,7 @@ Geben Sie als Instanzanzahl „1“ an.
 ![Service Fabric-Yeoman-Generator für Container][sf-yeoman]
 
 ## <a name="configure-port-mapping-and-container-repository-authentication"></a>Konfigurieren der Portzuordnung und der Authentifizierung für das Containerrepository
-Für Ihren im Container ausgeführten Dienst wird ein Endpunkt für die Kommunikation benötigt.  Fügen Sie als Nächstes der Datei „ServiceManifest.xml“ unter dem Tag „Resources“ einem `Endpoint` nun das Protokoll, den Port und den Typ hinzu. In diesem Artikel lauscht der im Container ausgeführte Dienst auf Port 4000: 
+Für Ihren im Container ausgeführten Dienst wird ein Endpunkt für die Kommunikation benötigt. Fügen Sie als Nächstes der Datei „ServiceManifest.xml“ unter dem Tag „Resources“ einem `Endpoint` nun das Protokoll, den Port und den Typ hinzu. In diesem Artikel lauscht der im Container ausgeführte Dienst auf Port 4000: 
 
 ```xml
 
@@ -189,7 +189,7 @@ Für Ihren im Container ausgeführten Dienst wird ein Endpunkt für die Kommunik
  
 Durch die Bereitstellung von `UriScheme` wird automatisch der Containerendpunkt im Service Fabric Naming Service registriert, damit er einfacher erkennbar ist. Eine vollständige „ServiceManifest.xml“-Beispieldatei finden Sie am Ende dieses Artikels. 
 
-Konfigurieren Sie auch die Zuordnung vom Containerport zum Hostport, indem Sie in `ContainerHostPolicies` in der Datei „ApplicationManifest.xml“ eine `PortBinding`-Richtlinie angeben.  In diesem Artikel wird als `ContainerPort` 80 verwendet (der Container macht Port 80 verfügbar, wie in der Dockerfile-Datei angegeben), und `EndpointRef` lautet „myServiceTypeEndpoint“ (der im Dienstmanifest angegebene Endpunkt).  Über Port 4000 an den Dienst eingehende Anforderungen werden Port 80 im Container zugeordnet.  Wenn der Container eine Authentifizierung mit einem privaten Repository durchführen muss, fügen Sie `RepositoryCredentials` hinzu.  Fügen Sie für diesen Artikel den Kontonamen und das Kennwort für die Containerregistrierung „myregistry.azurecr.io“ hinzu. Stellen Sie sicher, dass die Richtlinie unter dem Tag „ServiceManifestImport“ gemäß dem richtigen Dienstpaket hinzugefügt wird.
+Konfigurieren Sie auch die Zuordnung vom Containerport zum Hostport, indem Sie in `ContainerHostPolicies` in der Datei „ApplicationManifest.xml“ eine `PortBinding`-Richtlinie angeben. In diesem Artikel wird als `ContainerPort` 80 verwendet (der Container macht Port 80 verfügbar, wie in der Dockerfile-Datei angegeben), und `EndpointRef` lautet „myServiceTypeEndpoint“ (der im Dienstmanifest angegebene Endpunkt). Über Port 4000 an den Dienst eingehende Anforderungen werden Port 80 im Container zugeordnet. Wenn der Container eine Authentifizierung mit einem privaten Repository durchführen muss, fügen Sie `RepositoryCredentials` hinzu. Fügen Sie für diesen Artikel den Kontonamen und das Kennwort für die Containerregistrierung „myregistry.azurecr.io“ hinzu. Stellen Sie sicher, dass die Richtlinie unter dem Tag „ServiceManifestImport“ gemäß dem richtigen Dienstpaket hinzugefügt wird.
 
 ```xml
    <ServiceManifestImport>
@@ -203,7 +203,7 @@ Konfigurieren Sie auch die Zuordnung vom Containerport zum Hostport, indem Sie i
    </ServiceManifestImport>
 ``` 
 ## <a name="configure-docker-healthcheck"></a>Konfigurieren von „docker HEALTHCHECK“ 
-Beim Starten von Version 6.1 integriert Service Fabric automatisch [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck)-Ereignisse in seinen Bericht zur Systemintegrität. Wenn für Ihren Container **HEALTHCHECK** aktiviert ist, bedeutet dies Folgendes: Von Service Fabric wird die Dienstintegrität immer dann gemeldet, wenn sich der Integritätsstatus des Containers gemäß Meldung durch Docker ändert. Die Integritätsmeldung **OK** wird in [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) angezeigt, wenn für *health_status* die Meldung *healthy* erfolgt, und **WARNING**, wenn für *health_status* die Meldung *unhealthy* erfolgt. Die Anweisung **HEALTHCHECK**, die auf die tatsächliche Prüfung zur Überwachung der Containerintegrität verweist, muss in der **Dockerfile** enthalten sein, die beim Generieren des Containerimages verwendet wurde. 
+Beim Starten von Version 6.1 integriert Service Fabric automatisch [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck)-Ereignisse in seinen Bericht zur Systemintegrität. Wenn für Ihren Container **HEALTHCHECK** aktiviert ist, bedeutet dies Folgendes: Von Service Fabric wird die Dienstintegrität immer dann gemeldet, wenn sich der Integritätsstatus des Containers gemäß Meldung durch Docker ändert. Die Integritätsmeldung **OK** wird in [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) angezeigt, wenn für *health_status* die Meldung *healthy* erfolgt, und **WARNING**, wenn für *health_status* die Meldung *unhealthy* erfolgt. Die Anweisung **HEALTHCHECK**, die auf die tatsächliche Prüfung zur Überwachung der Containerintegrität verweist, muss in der Dockerfile-Datei enthalten sein, die beim Generieren des Containerimages verwendet wurde. 
 
 ![HealthCheckHealthy][1]
 
@@ -252,7 +252,7 @@ Verwenden Sie das in der Vorlage bereitgestellte Installationsskript, um das Anw
 
 Navigieren Sie in einem Browser zu Service Fabric Explorer (http://localhost:19080/Explorer). Falls Sie Vagrant unter Mac OS X verwenden, ersetzen Sie „localhost“ durch die private IP-Adresse des virtuellen Computers. Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 
-Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser, und verweisen Sie auf die IP-Adresse, die über Port 4000 zurückgegeben wurde, z.B. http://localhost:4000 . Die Überschrift „Hello World!“ wird im Browser angezeigt.
+Stellen Sie eine Verbindung mit dem ausgeführten Container her. Öffnen Sie die am Port 4000 zurückgegebene IP-Adresse (beispielsweise http://localhost:4000) in einem Webbrowser. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 ![Hello World!][hello-world]
 
@@ -348,7 +348,7 @@ Dies sind die vollständigen Dienst- und Anwendungsmanifeste, die in diesem Arti
          
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
     <Service Name="myservice">
-      <!-- On a local development cluster, set InstanceCount to 1.  On a multi-node production 
+      <!-- On a local development cluster, set InstanceCount to 1. On a multi-node production 
       cluster, set InstanceCount to -1 for the container service to run on every node in 
       the cluster.
       -->
@@ -363,7 +363,7 @@ Dies sind die vollständigen Dienst- und Anwendungsmanifeste, die in diesem Arti
 
 Führen Sie zum Hinzufügen eines weiteren Containerdiensts zu einer Anwendung, die bereits mit Yeoman erstellt wurde, die folgenden Schritte aus:
 
-1. Legen Sie das Verzeichnis auf den Stamm der vorhandenen Anwendung fest.  Beispiel: `cd ~/YeomanSamples/MyApplication`, wenn `MyApplication` die von Yeoman erstellte Anwendung ist.
+1. Legen Sie das Verzeichnis auf den Stamm der vorhandenen Anwendung fest. Beispiel: `cd ~/YeomanSamples/MyApplication`, wenn `MyApplication` die von Yeoman erstellte Anwendung ist.
 2. Führen Sie `yo azuresfcontainer:AddService` aus.
 
 <a id="manually"></a>
@@ -371,7 +371,7 @@ Führen Sie zum Hinzufügen eines weiteren Containerdiensts zu einer Anwendung, 
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Konfigurieren des Zeitintervalls vor Erzwingung der Containerbeendigung
 
-Sie können für die Runtime konfigurieren, wie lange nach dem Starten der Dienstlöschung (oder der Verschiebung auf einen anderen Knoten) mit dem Entfernen des Containers gewartet werden soll. Durch die Konfiguration des Zeitintervalls wird der Befehl `docker stop <time in seconds>` an den Container gesendet.   Weitere Informationen finden Sie unter [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Die Wartezeit wird im Abschnitt `Hosting` angegeben. Im folgenden Codeausschnitt des Clustermanifests ist dargestellt, wie die Wartezeit festgelegt wird:
+Sie können für die Runtime konfigurieren, wie lange nach dem Starten der Dienstlöschung (oder der Verschiebung auf einen anderen Knoten) mit dem Entfernen des Containers gewartet werden soll. Durch die Konfiguration des Zeitintervalls wird der Befehl `docker stop <time in seconds>` an den Container gesendet.  Weitere Informationen finden Sie unter [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Die Wartezeit wird im Abschnitt `Hosting` angegeben. Im folgenden Codeausschnitt des Clustermanifests ist dargestellt, wie die Wartezeit festgelegt wird:
 
 
 ```json
@@ -391,7 +391,7 @@ Das Standardzeitintervall ist auf 10 Sekunden festgelegt. Da es sich hierbei um 
 
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>Konfigurieren der Runtime für die Entfernung nicht verwendeter Containerimages
 
-Sie können den Service Fabric-Cluster so konfigurieren, dass er nicht verwendete Containerimages aus dem Knoten entfernt. Diese Konfiguration ermöglicht die Freigabe von Speicherplatz, wenn zu viele Containerimages auf dem Knoten vorhanden sind.  Aktualisieren Sie zur Aktivierung dieses Features den Abschnitt `Hosting` im Clustermanifest, wie im folgenden Codeausschnitt gezeigt: 
+Sie können den Service Fabric-Cluster so konfigurieren, dass er nicht verwendete Containerimages aus dem Knoten entfernt. Diese Konfiguration ermöglicht die Freigabe von Speicherplatz, wenn zu viele Containerimages auf dem Knoten vorhanden sind. Aktualisieren Sie zur Aktivierung dieses Features den Abschnitt `Hosting` im Clustermanifest, wie im folgenden Codeausschnitt gezeigt: 
 
 
 ```json
@@ -412,11 +412,11 @@ Sie können den Service Fabric-Cluster so konfigurieren, dass er nicht verwendet
 } 
 ```
 
-Images, die nicht gelöscht werden sollen, können Sie unter dem Parameter `ContainerImagesToSkip` angeben. 
+Images, die nicht gelöscht werden sollen, können Sie mithilfe des Parameters `ContainerImagesToSkip` angeben. 
 
 ## <a name="configure-container-image-download-time"></a>Konfigurieren der Downloadzeit für Containerimages
 
-Standardmäßig wird von der Service Fabric-Runtime ein Zeitraum von 20 Minuten für das Herunterladen und Extrahieren von Containerimages zugeteilt. Dies ist für die meisten Containerimages ausreichend. Für große Images oder bei einer langsamen Netzwerkverbindung kann es erforderlich sein, die Wartezeit bis zu dem Zeitpunkt, zu dem das Herunterladen und Extrahieren des Images abgebrochen wird, zu erhöhen. Dies kann mit dem Attribut **ContainerImageDownloadTimeout** im Abschnitt **Hosting** des Clustermanifests festgelegt werden, wie im folgenden Codeausschnitt dargestellt:
+Von der Service Fabric-Runtime werden 20 Minuten für das Herunterladen und Extrahieren von Containerimages zugeteilt. Dies ist für die meisten Containerimages ausreichend. Für große Images oder bei einer langsamen Netzwerkverbindung kann es erforderlich sein, die Wartezeit bis zu dem Zeitpunkt, zu dem das Herunterladen und Extrahieren des Images abgebrochen wird, zu erhöhen. Dieses Timeout kann mit dem Attribut **ContainerImageDownloadTimeout** im Abschnitt **Hosting** des Clustermanifests festgelegt werden, wie im folgenden Codeausschnitt zu sehen:
 
 ```json
 {
@@ -433,14 +433,31 @@ Standardmäßig wird von der Service Fabric-Runtime ein Zeitraum von 20 Minuten 
 
 ## <a name="set-container-retention-policy"></a>Festlegen der Aufbewahrungsrichtlinie für Container
 
-Als Hilfe bei der Diagnose von Startfehlern unterstützt Service Fabric (Version 6.1 oder höher) das Aufbewahren von Containern, die beendet wurden oder nicht gestartet werden konnten. Diese Richtlinie kann in der Datei **ApplicationManifest.xml** festgelegt werden, wie im folgenden Codeausschnitt gezeigt:
+Zur Diagnose von Startfehlern unterstützt Service Fabric (ab Version 6.1) die Aufbewahrung von Containern, die beendet wurden oder nicht gestartet werden konnten. Diese Richtlinie kann in der Datei **ApplicationManifest.xml** festgelegt werden, wie im folgenden Codeausschnitt gezeigt:
 
 ```xml
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-Mit der Einstellung **ContainersRetentionCount** wird die Anzahl von Containern angegeben, die bei Fehlern beibehalten werden sollen. Wenn ein negativer Wert angegeben wird, werden alle fehlerhaften Container beibehalten. Wenn das Attribut **ContainersRetentionCount** nicht angegeben wird, werden keine Container beibehalten. Das Attribut **ContainersRetentionCount** unterstützt auch Anwendungsparameter, sodass Benutzer unterschiedliche Werte für Test- und Produktionscluster angeben können. Es wird empfohlen, bei Verwendung dieses Features Platzierungseinschränkungen zu nutzen, um den Containerdienst einem bestimmten Knoten zuzuordnen und zu verhindern, dass er auf andere Knoten verschoben wird. Alle Container, die mit diesem Feature beibehalten werden, müssen manuell entfernt werden.
+Mit der Einstellung **ContainersRetentionCount** wird die Anzahl von Containern angegeben, die bei Fehlern beibehalten werden sollen. Wenn ein negativer Wert angegeben wird, werden alle fehlerhaften Container beibehalten. Wenn das Attribut **ContainersRetentionCount** nicht angegeben wird, werden keine Container beibehalten. Das Attribut **ContainersRetentionCount** unterstützt auch Anwendungsparameter, sodass Benutzer unterschiedliche Werte für Test- und Produktionscluster angeben können. Nutzen Sie bei Verwendung dieses Features Platzierungseinschränkungen, um den Containerdienst einem bestimmten Knoten zuzuordnen und zu verhindern, dass er auf andere Knoten verschoben wird. Alle Container, die mit diesem Feature beibehalten werden, müssen manuell entfernt werden.
 
+## <a name="start-the-docker-daemon-with-custom-arguments"></a>Starten des Docker-Daemons mit benutzerdefinierten Argumenten
+
+Ab Version 6.2 der Service Fabric-Runtime können Sie den Docker-Daemon mit benutzerdefinierten Argumenten starten. Wenn Sie benutzerdefinierte Argumente angegeben, übergibt Service Fabric ausschließlich das Argument `--pidfile` an die Docker-Engine. `--pidfile` darf daher nicht als Argument übergeben werden. Außerdem muss das Argument weiterhin sicherstellen, dass der Docker-Daemon unter Windows an der standardmäßigen Named Pipe (bzw. unter Linux am Unix-Domänensocket) lauscht, damit Service Fabric mit dem Daemon kommunizieren kann. Die benutzerdefinierten Argumente werden im Clustermanifest im Abschnitt **Hosting** unter **ContainerServiceArguments** angegeben. Ein Beispiel sehen Sie im folgenden Codeausschnitt: 
+ 
+
+```json
+{ 
+   "name": "Hosting", 
+        "parameters": [ 
+          { 
+            "name": "ContainerServiceArguments", 
+            "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
+          } 
+        ] 
+} 
+
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Ausführen von [Containern in Service Fabric](service-fabric-containers-overview.md)

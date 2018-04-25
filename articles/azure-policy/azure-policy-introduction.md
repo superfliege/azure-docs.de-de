@@ -6,16 +6,16 @@ keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.reviewer: nini
-ms.date: 03/29/2018
+ms.date: 04/18/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f9cd00aec025748170a6576fe3ee4dbf794edfdb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9b948721c9190b38d0770fd38739d53d252f513d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -53,13 +53,17 @@ In Azure Policy bieten wir einige integrierte Richtlinien an, die Ihnen standard
 - **Tag und seinen Wert erzwingen**: Diese Richtlinie setzt ein erforderliches Tag und seinen Wert bei einer Ressource durch.
 - **Nicht zulässige Ressourcentypen**: Mit dieser Richtlinie können Sie die Ressourcentypen angeben, die Ihre Organisation nicht bereitstellen kann.
 
-Sie können diese Richtlinien über das Azure-Portal, PowerShell oder die Azure CLI zuweisen.
+Sie können diese Richtlinien über das Azure-Portal, PowerShell oder die Azure CLI zuweisen. Nachdem Sie Änderungen an einer Richtliniendefinition vorgenommen haben, kann es etwa bis zu einer Stunde dauern, bis die Richtlinie erneut ausgewertet wird.
 
 Weitere Informationen zu den Strukturen von Richtliniendefinitionen finden Sie im Artikel [Struktur von Richtliniendefinitionen](policy-definition.md).
 
 ## <a name="policy-assignment"></a>Richtlinienzuweisung
 
-Eine Richtlinienzuweisung ist eine zugewiesene Richtliniendefinition, die innerhalb eines bestimmten Bereichs angewendet werden soll. Ein solcher Bereich kann sich von einer Verwaltungsgruppe bis hin zu einer Ressourcengruppe erstrecken. Der Begriff *Bereich* bezieht sich auf alle Ressourcengruppen, Abonnements oder Verwaltungsgruppen, denen die Richtliniendefinition zugewiesen ist. Richtlinienzuordnungen werden von allen untergeordneten Ressourcen geerbt. Wenn also eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie auch für alle Ressourcen in der Ressourcengruppe. Sie können jedoch einen Unterbereich von der Richtlinienzuordnung ausschließen. Im Abonnementbereich können Sie beispielsweise eine Richtlinie zuweisen, die die Erstellung von Netzwerkressourcen verhindert. Allerdings schließen Sie dann eine Ressourcengruppe innerhalb des Abonnements aus, die für die Netzwerkinfrastruktur vorgesehen ist. Sie gewähren Benutzern Zugriff auf diese Netzwerkressourcengruppe, denen Sie für das Erstellen von Netzwerkressourcen vertrauen.
+Eine Richtlinienzuweisung ist eine zugewiesene Richtliniendefinition, die innerhalb eines bestimmten Bereichs angewendet werden soll. Ein solcher Bereich kann sich von einer Verwaltungsgruppe bis hin zu einer Ressourcengruppe erstrecken. Der Begriff *Bereich* bezieht sich auf alle Ressourcengruppen, Abonnements oder Verwaltungsgruppen, denen die Richtliniendefinition zugewiesen ist. Richtlinienzuordnungen werden von allen untergeordneten Ressourcen geerbt. Wenn also eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie auch für alle Ressourcen in der Ressourcengruppe. Sie können jedoch einen Unterbereich von der Richtlinienzuordnung ausschließen.
+
+Im Abonnementbereich können Sie beispielsweise eine Richtlinie zuweisen, die die Erstellung von Netzwerkressourcen verhindert. Allerdings schließen Sie dann eine Ressourcengruppe innerhalb des Abonnements aus, die für die Netzwerkinfrastruktur vorgesehen ist. Sie gewähren Benutzern Zugriff auf diese Netzwerkressourcengruppe, denen Sie für das Erstellen von Netzwerkressourcen vertrauen.
+
+In einem anderen Beispiel möchten Sie möglicherweise eine Ressourcentyp-Whitelist-Richtlinie auf der Verwaltungsgruppenebene zuweisen. Außerdem möchten Sie einer untergeordneten Verwaltungsgruppe (oder sogar Abonnements direkt) eine weniger restriktive Richtlinie zuweisen, die mehr Ressourcentypen zulässt. Dieses Beispiel funktioniert jedoch nicht, da es sich bei einer Richtlinie um ein explizites Verbotssystem handelt. Stattdessen müssen Sie die untergeordnete Verwaltungsgruppe oder das Abonnement aus der Richtlinienzuweisung auf der Verwaltungsgruppenebene ausschließen. Anschließend müssen Sie die weniger restriktive Richtlinie auf der Ebene der untergeordneten Verwaltungsgruppe oder des Abonnements zuweisen. Kurz gesagt: Falls eine Ressource aufgrund einer Richtlinie abgelehnt wird, muss zum Zulassen der Ressource die ablehnende Richtlinie geändert werden.
 
 Weitere Informationen zum Einrichten von Richtliniendefinitionen und Zuweisungen finden Sie unter [Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen in Ihrer Azure-Umgebung](assign-policy-definition.md).
 

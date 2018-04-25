@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a04cd63944d0ed75ff90f211134cd93c77abe1e3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c42f67197b10769a49ce61095e1d5d22c9012340
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die Python-API
 
@@ -38,7 +38,7 @@ In diesem Tutorial konvertieren Sie MP4-Mediendateien parallel in das MP3-Format
 
 * [pip](https://pip.pypa.io/en/stable/installing/)-Paket-Manager
 
-* Ein Azure Batch-Konto und ein verknüpftes allgemeines Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md).
+* Ein Azure Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

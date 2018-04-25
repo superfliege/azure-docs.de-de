@@ -1,6 +1,6 @@
 ---
-title: "Azure-Schnellstart – Ausführen eines Batch-Auftrags – .NET"
-description: "In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag und Aufgaben mit der Batch .NET-Clientbibliothek ausführen."
+title: Azure-Schnellstart – Ausführen eines Batch-Auftrags – .NET
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag und Aufgaben mit der Batch .NET-Clientbibliothek ausführen.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/16/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: efa697482b5b27846f2be129998c100787466467
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b5431feec23e2e0681967a9fe0345edc1db567aa
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Schnellstart: Ausführen Ihres ersten Azure Batch-Auftrags mit der .NET-API
 
@@ -28,7 +28,7 @@ In dieser Schnellstartanleitung wird ein Azure Batch-Auftrag über eine C#-Anwen
 
 * [Visual Studio-IDE](https://www.visualstudio.com/vs) (Visual Studio 2015 oder höher). 
 
-* Ein Batch-Konto und ein verknüpftes allgemeines Speicherkonto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md). 
+* Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md). 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

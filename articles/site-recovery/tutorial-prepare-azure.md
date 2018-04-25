@@ -1,18 +1,18 @@
 ---
-title: "Erstellen von Ressourcen für die Verwendung mit Azure Site Recovery | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Azure für die Replikation von lokalen Computern mit Azure Site Recovery vorbereiten."
+title: Erstellen von Ressourcen für die Verwendung mit Azure Site Recovery | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure für die Replikation von lokalen Computern mit Azure Site Recovery vorbereiten.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2f6ff1d30eef1fe34e55457d9bdd4295804ec16a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 0aec94ce4d53e1d0f5ecfbc7c667f7d4ceea1d2d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Replikation von lokalen Computern
 
@@ -21,9 +21,10 @@ ms.lasthandoff: 02/23/2018
 In diesem Tutorial wird gezeigt, wie Sie Azure-Komponenten vorbereiten, wenn Sie lokale virtuelle Computer (Hyper-V oder VMware) oder physische Windows/Linux-Server in Azure replizieren möchten. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Überprüfen der Kontoberechtigungen für die Replikation
-> * Erstellen eines Azure-Speicherkontos
-> * Einrichten eines Azure-Netzwerks. Wenn die Azure-VMs nach einem Failover erstellt werden, werden sie mit diesem Azure-Netzwerk verbunden.
+> * Überprüfen, ob Ihr Azure-Konto über Replikationsberechtigungen verfügt
+> * Erstellen eines Azure-Speicherkontos. Darin werden replizierte Daten gespeichert.
+> * Erstellen Sie einen Recovery Services-Tresor.
+> * Richten Sie ein Azure-Netzwerk ein. Wenn die Azure-VMs nach einem Failover erstellt werden, werden sie mit diesem Azure-Netzwerk verbunden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
@@ -39,9 +40,9 @@ Wenn Sie gerade ein kostenloses Azure-Konto erstellt haben, sind Sie der Adminis
 - Erstellen einer VM im ausgewählten virtuellen Netzwerk
 - Schreiben in das ausgewählte Speicherkonto
 
-Die integrierte Rolle „Mitwirkender für virtuelle Computer“ verfügt über diese Berechtigungen. Sie benötigen außerdem die Berechtigung zum Verwalten von Site Recovery-Vorgängen. Die Rolle „Site Recovery-Mitwirkender“ verfügt über alle erforderlichen Berechtigungen zum Verwalten von Site Recovery-Vorgängen in einem Recovery Services-Tresor.
+Zum Ausführen dieser Aufgaben muss Ihrem Konto die integrierte Rolle „Mitwirkender von virtuellen Computern“ zugewiesen werden. Zum Verwalten von Site Recovery-Vorgängen in einem Tresor muss Ihrem Konto außerdem die integrierte Rolle „Site Recovery-Mitwirkender“ zugewiesen werden.
 
-## <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs werden aus dem Speicher erstellt, wenn Sie ein Failover von einem lokalen Standort nach Azure ausführen.
 
@@ -70,7 +71,7 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 
    Der neue Tresor wird unter **Dashboard** > **Alle Ressourcen** und auf der Hauptseite **Recovery Services-Tresore** angezeigt.
 
-## <a name="set-up-an-azure-network"></a>Einrichten eines Azure-Netzwerks
+## <a name="set-up-an-azure-network"></a>Richten Sie ein Azure-Netzwerk ein
 
 Wenn die Azure-VMs nach einem Failover aus dem Speicher erstellt werden, werden sie mit diesem Netzwerk verknüpft.
 

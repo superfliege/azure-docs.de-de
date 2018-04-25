@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: hero-article
-ms.date: 01/29/2018
+ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: aca9f822bf3fd3b26e554240a4fee2474b89143d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cc0c26d83794cfb0b398e668ae89e268901df345
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure"></a>Bereitstellen von SQL Server Integration Services-Paketen in Azure
 In diesem Tutorial werden die Schritte zum Bereitstellen einer Azure SSIS Integration Runtime (IR) in Azure Data Factory mithilfe des Azure-Portals beschrieben. Anschließend können Sie SQL Server Data Tools oder SQL Server Management Studio zum Bereitstellen von SQL Server Integration Services-Paketen (SSIS) für diese Runtime in Azure verwenden. Konzeptionelle Informationen zu Azure-SSIS IRs finden Sie unter [Azure-SSIS-Integrationslaufzeit](concepts-integration-runtime.md#azure-ssis-integration-runtime).
@@ -41,7 +41,7 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 
 > [!NOTE]
 > - Eine Data Factory der Version 2 kann in folgenden Regionen erstellt werden: „USA, Osten“, „USA, Osten 2“, „Asien, Südosten“ und „Europa, Westen“. 
-> - Eine Azure-SSIS-IR kann in folgenden Regionen erstellt werden: „USA, Osten, „USA, Osten 2“, „USA, Mitte“, Europa, Norden“, „Europa, Westen“ und „Australien, Osten“. 
+> - Eine Azure-SSIS-IR kann in folgenden Regionen erstellt werden: „USA, Osten, „USA, Osten 2“, „USA, Mitte“, „USA, Westen 2“, Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“ und „Australien, Osten“. 
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
@@ -128,7 +128,7 @@ In diesem Tutorial führen Sie folgende Schritte aus:
    >
    > Der Data Factory-Dienst stellt die Verbindung mit Ihrer Azure SQL-Datenbank her, um den SSIS-Katalog (SSISDB) vorzubereiten. Mit dem Skript werden, falls angegeben, auch Berechtigungen und Einstellungen für Ihr virtuelles Netzwerk konfiguriert. Außerdem wird die neue Instanz der Azure-SSIS Integration Runtime mit dem virtuellen Netzwerk verknüpft.
    > 
-   > Wenn Sie eine Instanz einer Azure-SSIS IR bereitstellen, werden auch das Azure Feature Pack für SSIS und die Access Redistributable-Komponente installiert. Diese Komponenten ermöglichen nicht nur die Konnektivität mit Excel- und Access-Dateien und verschiedenen Azure-Datenquellen, sondern auch mit den Datenquellen, die von den integrierten Komponenten unterstützt werden. Es ist derzeit nicht möglich, für SSIS Drittanbieterkomponenten zu installieren. (Diese Einschränkung gilt auch für Drittanbieterkomponenten von Microsoft, z.B. Oracle- und Teradata-Komponenten von Attunity und die SAP BI-Komponenten).
+   > Wenn Sie eine Instanz einer Azure-SSIS IR bereitstellen, werden auch das Azure Feature Pack für SSIS und die Access Redistributable-Komponente installiert. Diese Komponenten ermöglichen nicht nur die Konnektivität mit Excel- und Access-Dateien und verschiedenen Azure-Datenquellen, sondern auch mit den Datenquellen, die von den integrierten Komponenten unterstützt werden. Sie können auch weitere Komponenten installieren. Weitere Informationen finden Sie unter [Custom setup for the Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md) (Benutzerdefinierte Einrichtung der Azure SSIS Integration Runtime).
 
 7. Wechseln Sie auf der Registerkarte **Verbindungen** ggf. zu **Integration Runtimes**. Wählen Sie zum Aktualisieren des Status die Option **Aktualisieren**. 
 
