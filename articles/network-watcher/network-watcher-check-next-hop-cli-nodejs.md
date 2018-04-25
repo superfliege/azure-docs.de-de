@@ -1,11 +1,11 @@
 ---
-title: "Suchen des nächsten Hops mit dem Azure Network Watcher-Feature „Nächster Hop“ – Azure CLI 1.0 | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure CLI den Typ und die IP-Adresse des nächsten Hops feststellen können."
+title: Suchen des nächsten Hops mit dem Azure Network Watcher-Feature „Nächster Hop“ – Azure CLI 1.0 | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure CLI den Typ und die IP-Adresse des nächsten Hops feststellen können.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0700c274-3e0d-4dca-acfa-3ceac8990613
 ms.service: network-watcher
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: e849f7952962d177f40ce99307ef1c305e089827
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-10"></a>Ermitteln des Typs des nächsten Hops über Azure CLI 1.0 mithilfe der Funktion „Nächster Hop“ in Azure Network Watcher
 
 > [!div class="op_single_selector"]
-> - [Azure portal](network-watcher-check-next-hop-portal.md)
+> - [Azure-Portal](network-watcher-check-next-hop-portal.md)
 > - [PowerShell](network-watcher-check-next-hop-powershell.md)
 > - [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)

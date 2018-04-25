@@ -1,11 +1,11 @@
 ---
-title: "Suchen des nächsten Hops mit dem Azure Network Watcher-Feature „Nächster Hop“ – Azure-Portal | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure-Portals den Typ und die IP-Adresse des nächsten Hops feststellen können."
+title: Suchen des nächsten Hops mit dem Azure Network Watcher-Feature „Nächster Hop“ – Azure-Portal | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure-Portals den Typ und die IP-Adresse des nächsten Hops feststellen können.
 services: network-watcher
 documentationcenter: na
 author: georgewallace
 manager: jimdial
-editor: 
+editor: ''
 ms.assetid: 7b459dcf-4077-424e-a774-f7bfa34c5975
 ms.service: network-watcher
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 445ec8c7eeb8dd715d3778b44372d16666da7fb8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-the-portal"></a>Herausfinden des Typs des nächsten Hops über das Azure-Portal mithilfe der Funktion „Nächster Hop“ in Azure Network Watcher
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist und verwendet werden kann.
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist und verwendet werden kann.
 
 ## <a name="scenario"></a>Szenario
 
