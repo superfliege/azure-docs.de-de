@@ -38,7 +38,7 @@ Anwendungen werden zu Azure AD hinzugefügt, damit sie die von Azure AD bereitge
 ## <a name="how-are-applications-represented-in-the-directory"></a>Wie werden die Anwendungen im Verzeichnis dargestellt?
 Anwendungen werden in Azure AD durch zwei Objekttypen dargestellt: das Anwendungsobjekt und das Dienstprinzipalobjekt.  Eine Anwendung wird in jedem Verzeichnis, in dem sie agiert, durch ein Anwendungsobjekt, das in einem „home“-, „owner“- oder „publishing“-Verzeichnis registriert ist, und durch ein oder mehrere Dienstprinzipalobjekte dargestellt.  
 
-Das Anwendungsobjekt beschreibt die Anwendung für Azure AD (dem mehrinstanzenfähigen Dienst). Es darf keines der folgenden Elemente enthalten: (*Hinweis*: Dies ist keine vollständige Liste.)
+Das Anwendungsobjekt beschreibt die Anwendung für Azure AD (dem mehrinstanzenfähigen Dienst). Es kann folgenden Elemente enthalten: (*Hinweis*: Dies ist keine vollständige Liste.)
 
 * Name, Logo und Herausgeber
 * Geheime Schlüssel (symmetrische und/oder asymmetrische Schlüssel für die Authentifizierung der Anwendung)
