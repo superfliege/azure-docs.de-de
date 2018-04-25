@@ -1,25 +1,24 @@
 ---
-title: 'Gewusst wie: Verwenden von Access Control (Java) | Microsoft Docs'
+title: Verwenden von Access Control (Java)
 description: Erfahren Sie, wie Sie Access Control mit Java in Azure entwickeln und verwenden.
 services: active-directory
 documentationcenter: java
 author: rmcmurray
-manager: mtillman
-editor: ''
+manager: mbaldwin
 ms.assetid: 247dfd59-0221-4193-97ec-4f3ebe01d3c7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/11/2018
 ms.author: robmcm
 ms.custom: aaddev
-ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: bd65da490bf3d7e17bf6ff36e76e306842d50653
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse
 Diese Anleitung zeigt, wie der Azure Access Control Service (ACS) im Azure Toolkit für Eclipse verwendet wird. Weitere Informationen zum ACS finden Sie im Abschnitt [Nächste Schritte](#next_steps) .
@@ -116,14 +115,14 @@ In dieser Aufgabe konfigurieren Sie den ACS zur Erkennung Ihrer Java-Webanwendun
    
    1. Geben Sie unter **Name**einen Namen für die RP ein. Geben Sie für die Zwecke dieses Lernprogramms **Azure Web App**ein.
    2. Wählen Sie unter **Modus** die Option **Enter settings manually** (Einstellungen manuell eingeben) aus.
-   3. Geben Sie unter **Bereich**den URI ein, für den das vom ACS ausgegebene Sicherheitstoken gilt. Geben Sie für diese Aufgabe **http://localhost:8080/** ein.
+   3. Geben Sie unter **Bereich**den URI ein, für den das vom ACS ausgegebene Sicherheitstoken gilt. Geben Sie für diese Aufgabe die Zeichenfolge **http://localhost:8080/** ein.
       ![RP-Bereich zur Verwendung im Serveremulator][relying_party_realm_emulator]
-   4. Geben Sie unter **Rückgabe-URL** die URL ein, an die der ACS das Sicherheitstoken zurückgibt. Geben Sie für diese Aufgabe **http://localhost:8080/MyACSHelloWorld/index.jsp**
-      ![Rückgabe-URL der vertrauenden Seite zur Verwendung im Serveremulator][relying_party_return_url_emulator] ein.
+   4. Geben Sie unter **Rückgabe-URL** die URL ein, an die der ACS das Sicherheitstoken zurückgibt. Geben Sie für diese Aufgabe Folgendes ein: **http://localhost:8080/MyACSHelloWorld/index.jsp**
+      ![Rückgabe-URL der vertrauenden Seite zur Verwendung im Serveremulator][relying_party_return_url_emulator]
    5. Übernehmen Sie in den restlichen Feldern die Standardwerte.
 4. Klicken Sie auf **Speichern**.
 
-Sie haben nun erfolgreich Ihre Java-Webanwendung konfiguriert, die im Azure-Serveremulator (unter http://localhost:8080/) ausgeführt wird, um als RP in Ihrem ACS-Namespace zu fungieren. Erstellen Sie als Nächstes die Regeln, die der ACS zur Verarbeitung von Ansprüchen für die RP verwendet.
+Sie haben nun erfolgreich Ihre Java-Webanwendung konfiguriert, die im Azure-Serveremulator (unter http://localhost:8080/) ausgeführt wird, um als vertrauende Seite in Ihrem ACS-Namespace zu fungieren. Erstellen Sie als Nächstes die Regeln, die der ACS zur Verarbeitung von Ansprüchen für die RP verwendet.
 
 ## <a name="create-rules"></a>Erstellen von Regeln
 In dieser Aufgabe definieren Sie die Regeln, die festlegen, wie Ansprüche von den IPs an Ihre RP weitergeleitet werden. Für die Zwecke dieser Anleitung konfigurieren wir den ACS auf einfache Weise so, dass er die eingegebenen Anspruchstypen und -werte ohne Filterung oder Änderung direkt in das ausgegebene Token kopiert.

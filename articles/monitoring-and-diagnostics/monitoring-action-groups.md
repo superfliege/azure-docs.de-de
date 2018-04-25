@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/12/2018
 ms.author: dukek
-ms.openlocfilehash: a7f8697b7a92de1c19ceb65fadbcd7e4186e83f7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e3185b8d8ce97ffd04188b2b49a457bd14d5c6c8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
@@ -26,10 +26,10 @@ In diesem Artikel wird beschrieben, wie Sie Aktionsgruppen im Azure-Portal erste
 
 Sie können eine Liste von Aktionen mit Aktionsgruppen konfigurieren. Diese Gruppen können Sie dann bei jeder Warnung wiederverwenden, die Sie definieren, um sicherzustellen, dass jedes Mal, wenn eine Warnung ausgelöst wird, die gleichen Aktionen ausgeführt werden.
 
-Eine Aktivitätsgruppe kann bis zu zehn Aktionen jedes Aktionstyps enthalten. Jede Aktion besteht aus den folgenden Eigenschaften:
+Jede Aktion besteht aus den folgenden Eigenschaften:
 
 * **Name:** ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.  
-* **Aktionstyp**: einen Sprachanruf oder eine SMS senden, eine E-Mail senden, einen Webhook aufrufen, Daten an ein ITSM-Tool senden, eine Azure-App aufrufen oder ein Automation-Runbook ausführen.
+* **Aktionstyp**: einen Sprachanruf oder eine SMS senden, eine E-Mail senden, einen Webhook aufrufen, Daten an ein ITSM-Tool senden, eine Logik-App aufrufen, eine Pushbenachrichtigung an die Azure-App senden oder ein Automation-Runbook ausführen.
 * **Details**: Die entsprechende Telefonnummer oder E-Mail-Adresse, die entsprechenden Details zur ITSM-Verbindung oder der entsprechende Webhook-URI.
 
 Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konfigurierung von Aktionsgruppen finden Sie unter [Aktionsgruppen-Resource Manager-Vorlagen](monitoring-create-action-group-with-resource-manager-template.md).
@@ -56,14 +56,48 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 
     a. **Name**: Geben Sie einen eindeutigen Bezeichner für diese Aktion an.
 
-    b. **Aktionstyp**: Wählen Sie E-Mail/SMS/Push/Sprachanruf, Webhook, ITSM oder Automation-Runbook aus.
+    b. **Aktionstyp**: Wählen Sie E-Mail/SMS/Push/Sprachanruf, Logik-App, Webhook, ITSM oder Automation-Runbook aus.
 
     c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook an. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt.
 
-   > [!NOTE]
-   > Für eine ITSM-Aktion muss eine ITSM-Verbindung hergestellt werden. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../log-analytics/log-analytics-itsmc-overview.md). 
-
 8. Wählen Sie **OK**, um die Aktionsgruppe zu erstellen.
+
+## <a name="action-specific-information"></a>Aktionsspezifische Informationen
+<dl>
+<dt>Azure-App-Push</dt>
+<dd>Eine Aktionsgruppe kann bis zu zehn Azure-App-Aktionen enthalten.</dd>
+<dd>Derzeit werden für Azure-App-Aktionen nur ServiceHealth-Warnungen unterstützt. Alle anderen Warnungen werden ignoriert. Weitere Informationen finden Sie unter [Konfigurieren von Warnungen, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
+
+<dt>
+E-Mail</dt>
+<dd>Eine Aktionsgruppe kann bis zu 50 E-Mail-Aktionen enthalten.</dd>
+<dd>Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./monitoring-alerts-rate-limiting.md).</dd>
+
+<dt>ITSM</dt>
+<dd>Eine Aktionsgruppe kann bis zu zehn ITSM-Aktionen enthalten.</dd>
+<dd>Für eine ITSM-Aktion muss eine ITSM-Verbindung hergestellt werden. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../log-analytics/log-analytics-itsmc-overview.md).</dd>
+
+<dt>
+Logik-App</dt>
+<dd>Eine Aktionsgruppe kann bis zu zehn Logik-App-Aktionen enthalten.</dd>
+
+<dt>Runbook</dt>
+<dd>Eine Aktionsgruppe kann bis zu zehn Runbookaktionen enthalten.</dd>
+
+<dt>SMS</dt>
+<dd>Eine Aktionsgruppe kann bis zu zehn SMS-Aktionen enthalten.</dd>
+<dd>Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./monitoring-alerts-rate-limiting.md).</dd>
+<dd>Weitere Informationen finden Sie im Artikel [SMS-Warnungsverhalten in Aktionsgruppen](monitoring-sms-alert-behavior.md).</dd>
+
+<dt>
+Sprachanruf</dt>
+<dd>Eine Aktionsgruppe kann bis zu zehn Sprachanrufaktionen enthalten.</dd>
+<dd>Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./monitoring-alerts-rate-limiting.md).</dd>
+
+<dt>Webhook</dt>
+<dd>Eine Aktionsgruppe kann bis zu zehn Webhookaktionen enthalten.
+<dd>Wiederholungslogik: Es wird maximal dreimal versucht, den Webhookaufruf durchzuführen, wenn die folgenden HTTP-Statuscodes zurückgegeben werden: 408, 429, 503, 504.</dd>
+</dl>
 
 ## <a name="manage-your-action-groups"></a>Verwalten von Aktionsgruppen ##
 Nachdem Sie eine Aktionsgruppe erstellt haben, wird diese im Abschnitt **Aktionsgruppen** des Diensts **Überwachen** angezeigt. Wählen Sie die Aktionsgruppe, die Sie verwalten möchten, um Folgendes zu tun:

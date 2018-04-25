@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: f87705ebbdd14b1bbf7cade481a7dbe7dd3d5131
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ce295c449b01de4fa99df9198805a6b0727c0d18
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Überwachen der Nutzung und der geschätzten Kosten
 
@@ -61,12 +61,16 @@ Hier sehen Sie andere Anzeigen, die für das neue Preismodell verwendet werden. 
 3. Application Insights\Basic-Überschreitungsdaten
 4. Application Insights\Enthaltene Daten
 
-Diese Anzeigen wurden in einer neuen gemeinsamen Anzeige für die Datenerfassung mit dem Namen **Gemeinsame Dienste\Datenerfassung** kombiniert. Der Grund ist, dass das neue Preismodell keine knotenbasierten Datenzuordnungen enthält.
+Diese Anzeigen wurden in einer neuen gemeinsamen Anzeige für die Datenerfassung mit dem Namen **Gemeinsame Dienste\Datenerfassung** kombiniert. Der Grund ist, dass das neue Preismodell keine Datenberechtigungen pro Knoten enthält.
 
 Eine weitere Änderung besteht darin, dass Daten, die in Log Analytics oder Application Insights in Regionen mit höheren Kosten erfasst werden, mit den neuen regionalen Anzeigen dargestellt werden, um dies richtig widerzuspiegeln, z.B. **Datenerfassung (USA, Westen-Mitte)**.
 
 > [!NOTE]
-> Wenn Sie über ein OMS-Abonnement (Operations Management Suite) verfügen, erhalten Sie Log Analytics- und Application Insights-Datenerfassungszuordnungen für jeden erworbenen Knoten. Da dies auf Kontoebene angewendet wird (nicht auf Abonnementebene), kann für diese Schätzung die Auswirkung dieser Zuordnungen nicht angezeigt werden. Wenden Sie sich in diesem Fall an Ihren Kontobeauftragten, um ausführlichere Informationen zum neuen Preismodell zu erhalten.
+> Die Kontoebenenberechtigungen pro Knoten für das OMS-Abonnement (Operations Management Suite) werden nicht in die geschätzten Kosten pro Abonnement einbezogen. Wenden Sie sich in diesem Fall an Ihren Kontobeauftragten, um ausführlichere Informationen zum neuen Preismodell zu erhalten.
+
+## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Neues Preismodell und Berechtigungen für Operations Management Suite-Abonnement
+
+Kunden, die Microsoft Operations Management Suite E1 und E2 erworben haben, verfügen über Datenerfassungsberechtigungen pro Knoten für [Log Analytics](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite) und [Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-pricing#the-price-plans). Um diese Berechtigungen für Log Analytics-Arbeitsbereiche oder Application Insights-Ressourcen in einem bestimmten Abonnement zu erhalten, muss für dieses Abonnement das Preismodell für den Zeitraum vor April 2018 weiterverwendet werden. In diesem Modell sind der Log Analytics-Tarif „Pro Knoten (OMS)“ und der Application Insights-Tarif „Enterprise“ verfügbar. Je nach Anzahl von Knoten einer Suite, die von Ihrer Organisation erworben wurde, kann die Umstellung von Abonnements auf das neue Preismodell trotzdem vorteilhaft sein. Dieser Schritt bedarf aber sorgfältiger Überlegung. 
 
 ## <a name="changes-when-moving-to-the-new-pricing-model"></a>Änderungen bei der Umstellung auf das neue Preismodell
 

@@ -1,11 +1,11 @@
 ---
-title: "Verschlüsseln eines virtuellen Azure-Computers | Microsoft Docs"
-description: "Dieses Dokument hilft Ihnen dabei, einen virtuellen Azure-Computer zu verschlüsseln, wenn Sie eine Warnung vom Azure Security Center erhalten haben."
+title: Verschlüsseln eines virtuellen Azure-Computers | Microsoft Docs
+description: Dieses Dokument hilft Ihnen dabei, einen virtuellen Azure-Computer zu verschlüsseln, wenn Sie eine Warnung vom Azure Security Center erhalten haben.
 services: security, security-center
 documentationcenter: na
 author: TomShinder
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
 ms.service: security
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: fa55df0c4d5291834035ea5cae58fa3d75de7e02
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9a376eb63e7ba054a125666f95c05d5e7dfb5470
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Verschlüsseln eines virtuellen Azure-Computers
 Azure Security Center gibt eine Warnung aus, wenn Sie über nicht verschlüsselte virtuelle Computer verfügen. Dies wird als Warnung mit hohem Schweregrad angezeigt. Empfohlen wird in diesem Fall die Verschlüsselung der virtuellen Computer.
@@ -92,10 +92,10 @@ Führen Sie die folgenden Schritte aus, um einen virtuellen Azure-Computer zu ve
 1. Wenn Sie PowerShell ISE geschlossen haben, öffnen Sie eine erhöhte Instanz von PowerShell ISE. Befolgen Sie die weiter oben in diesem Artikel beschriebenen Anweisungen, wenn PowerShell ISE nicht bereits geöffnet ist. Wenn Sie das Skript geschlossen haben, öffnen Sie **ADEPrereqScript.ps1**, indem Sie auf **Datei** und anschließend auf **Öffnen** klicken, und wählen das Skript aus dem Ordner **c:\AzureADEScript** aus. Wenn Sie die Anweisungen in diesem Artikel von Beginn an ausgeführt haben, gehen Sie zum nächsten Schritt weiter.
 2. Ändern Sie in der Konsole von PowerShell ISE (im unteren Bereich von PowerShell ISE) den lokalen Speicherort des Skripts, indem Sie **cd c:\AzureADEScript** eingeben und danach die **EINGABETASTE** betätigen.
 3. Legen Sie die Ausführungsrichtlinie auf Ihrem Computer fest, damit Sie das Skript ausführen können. Geben Sie in der Konsole **Set-ExecutionPolicy Unrestricted** ein, und betätigen Sie dann die EINGABETASTE. Wenn ein Dialogfeld erscheint, das auf die Auswirkungen der Änderung zu der Ausführungsrichtlinie hinweist, klicken Sie entweder auf **Ja, alle** oder auf **Ja** (wenn Ihnen die Option **Ja, alle** angezeigt wird, wählen Sie diese aus, **andernfalls** wählen Sie **Ja**).
-4. Melden Sie sich bei Ihrem Azure-Konto an. Geben Sie in der Konsole **Login-AzureRmAccount** ein, und betätigen Sie die **EINGABETASTE**. Ein Dialogfeld wird angezeigt, in dem Sie Ihre Anmeldeinformationen eingeben. (Dabei müssen Sie über die Rechte zum Ändern der virtuellen Computer verfügen, da Sie diese andernfalls nicht verschlüsseln können. Falls Sie sich nicht sicher sind, können Sie bei Ihrem Abonnementbesitzer oder Administrator nachfragen.) Es sollten Informationen zu **Environment**, **Account**, **TenantId**, **SubscriptionId** und **CurrentStorageAccount** angezeigt werden. Kopieren Sie die **SubscriptionId** in den Editor. Diese ist in Schritt Nr. 6 erforderlich.
-5. Ermitteln Sie das Abonnement, zum dem Ihr virtueller Computer gehört, sowie den Speicherort. Melden Sie sich bei [https://portal.azure.com](ttps://portal.azure.com) an.  Klicken Sie im linken Bereich der Seite auf **Virtuelle Computer**. Daraufhin wird eine Liste Ihrer virtuellen Computer mit den dazugehörige Abonnements angezeigt.
+4. Melden Sie sich bei Ihrem Azure-Konto an. Geben Sie in der Konsole **Connect-AzureRmAccount** ein, und drücken Sie die**EINGABETASTE**. Ein Dialogfeld wird angezeigt, in dem Sie Ihre Anmeldeinformationen eingeben. (Dabei müssen Sie über die Rechte zum Ändern der virtuellen Computer verfügen, da Sie diese andernfalls nicht verschlüsseln können. Falls Sie sich nicht sicher sind, können Sie bei Ihrem Abonnementbesitzer oder Administrator nachfragen.) Es sollten Informationen zu **Environment**, **Account**, **TenantId**, **SubscriptionId** und **CurrentStorageAccount** angezeigt werden. Kopieren Sie die **SubscriptionId** in den Editor. Diese ist in Schritt Nr. 6 erforderlich.
+5. Ermitteln Sie das Abonnement, zum dem Ihr virtueller Computer gehört, sowie den Speicherort. Navigieren Sie zu [https://portal.azure.com](ttps://portal.azure.com), und melden Sie sich an.  Klicken Sie im linken Bereich der Seite auf **Virtuelle Computer**. Daraufhin wird eine Liste Ihrer virtuellen Computer mit den dazugehörige Abonnements angezeigt.
 
-   ![Virtuelle Computer](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
+   ![Virtual Machines](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
 6. Kehren Sie zu PowerShell ISE zurück. Legen Sie den Abonnementkontext fest, in dem das Skript ausgeführt wird. Geben Sie in der Konsole **Select-AzureRmSubscription –SubscriptionId <Ihre_Abonnement-ID>** ein (ersetzen Sie **<Ihre_Abonnement-ID>** durch Ihre Abonnement-ID), und drücken Sie die **EINGABETASTE**. Es sollten Informationen zu „Environment“, **Account**, **TenantId**, **SubscriptionId** und **CurrentStorageAccount** angezeigt werden.
 7. Nun können Sie das Skript ausführen. Klicken Sie auf die Schaltfläche **Skript ausführen**, oder drücken Sie auf der Tastatur die **F5-TASTE**.
 
@@ -122,7 +122,7 @@ Geben Sie in die PowerShell ISE-Konsole Folgendes ein, um zu bestätigen, dass d
 
 **$resourceGroupName**
 
-Betätigen Sie die **EINGABETASTE**. Der Name der Ressourcengruppe, in der sich Ihre virtuellen Computer befinden, wird daraufhin angezeigt. Beispiel:
+Betätigen Sie die **EINGABETASTE**. Der Name der Ressourcengruppe, in der sich Ihre virtuellen Computer befinden, wird daraufhin angezeigt. Beispiel: 
 
 ![PowerShell-Ausgabe](./media/security-center-disk-encryption/security-center-disk-encryption-fig6.png)
 
@@ -137,7 +137,7 @@ Geben Sie Folgendes ein, um zu bestätigen, dass der richtige Name des virtuelle
 
 **$vmName**
 
-Betätigen Sie die **EINGABETASTE**. Ihnen wird nun der Name des zu verschlüsselnden virtuellen Computers angezeigt. Beispiel:
+Betätigen Sie die **EINGABETASTE**. Ihnen wird nun der Name des zu verschlüsselnden virtuellen Computers angezeigt. Beispiel: 
 
 ![PowerShell-Ausgabe](./media/security-center-disk-encryption/security-center-disk-encryption-fig7.png)
 

@@ -1,31 +1,26 @@
 ---
-title: Begriffe elastischer Abfragen mit Azure SQL Data Warehouse | Microsoft-Dokumentation
-description: Begriffe elastischer Abfragen mit Azure SQL Data Warehouse
+title: Elastische Abfrage – Zugreifen auf Daten in Azure SQL Data Warehouse über Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Enthält die bewährten Methoden zur Verwendung von elastischen Abfragen zum Zugreifen auf Daten in Azure SQL Data Warehouse über Azure SQL-Datenbank.
 services: sql-data-warehouse
-documentationcenter: NA
 author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67f
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 09/18/2017
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/11/2018
 ms.author: elbutter
-ms.openlocfilehash: 4c351d88b31adfa3443dd2231f67bb442f2b8fe0
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.reviewer: igorstan
+ms.openlocfilehash: ceda0399ae98e2a36fd41b954a741e0379c77fe7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="how-to-use-elastic-query-with-sql-data-warehouse"></a>Vorgehensweise zur Verwendung elastischer Abfragen mit SQL Data Warehouse
+# <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Bewährte Methoden zur Verwendung von elastischen Abfragen in Azure SQL-Datenbank zum Zugreifen auf Daten in Azure SQL Data Warehouse
+Hier werden die bewährten Methoden zur Verwendung von elastischen Abfragen zum Zugreifen auf Daten in Azure SQL Data Warehouse über Azure SQL-Datenbank beschrieben. 
 
-
-
-Durch elastische Abfragen mit Azure SQL Data Warehouse können Sie Daten in Transact-SQL in eine SQL-Datenbank schreiben, die durch externe Tabellen remote an eine Azure SQL Data Warehouse-Instanz gesendet wird. Diese Funktion ermöglicht je nach Szenario Kosteneinsparungen und leistungsstärkere Architekturen.
+## <a name="what-is-an-elastic-query"></a>Was ist eine elastische Abfrage?
+Mit einer elastischen Abfrage können Sie T-SQL und externe Tabellen verwenden, um eine Abfrage in eine Azure SQL-Datenbank zu schreiben, die per Remotezugriff an ein Azure SQL Data Warehouse gesendet wird. Diese Funktion ermöglicht je nach Szenario Kosteneinsparungen und leistungsstärkere Architekturen.
 
 Bei dieser Funktion sind zwei primäre Szenarien möglich:
 
@@ -46,10 +41,7 @@ Elastische Abfragen bieten die Möglichkeit, mühelos Teilmengen von SQL Data Wa
 
 Elastische Abfragen ermöglichen die Ausführung von Remoteabfragen in einer SQL Data Warehouse-Instanz. Indem Sie Ihre heißen und kalten Daten durch diese beiden Datenbanken trennen, können Sie von den Vorteilen der SQL-Datenbank und denen von SQL Data Warehouse profitieren. Benutzer können neuere Daten in einer SQL-Datenbank speichern, die zur Berichterstellung und von einer großen Anzahl gewöhnlicher Geschäftskunden genutzt werden kann. Wenn jedoch weitere Daten oder Berechnungen erforderlich sind, kann ein Benutzer einen Teil der Abfrage an eine SQL Data Warehouse-Instanz auslagern, in der umfangreiche Aggregate weitaus schneller und effizienter verarbeitet werden können.
 
-
-
-## <a name="elastic-query-overview"></a>Übersicht über elastische Abfragen
-
+## <a name="elastic-query-process"></a>Prozess für elastische Abfragen
 Eine elastische Abfrage kann verwendet werden, um Daten in einer SQL Data Warehouse-Instanz in SQL-Datenbankinstanzen zur Verfügung zu stellen. Durch elastische Abfragen können Abfragen aus einer SQL-Datenbank auf Tabellen in einer SQL Data Warehouse-Remoteinstanz verweisen. 
 
 Der erste Schritt besteht darin, eine Definition für eine externe Datenquelle zu erstellen, die auf die SQL Data Warehouse-Instanz verweist. Diese verwendet die bestehenden Benutzeranmeldeinformationen in der SQL Data Warehouse-Instanz. Es sind keine Änderungen an der SQL Data Warehouse-Remoteinstanz erforderlich. 
@@ -58,13 +50,12 @@ Der erste Schritt besteht darin, eine Definition für eine externe Datenquelle z
 > 
 > Sie müssen über die Berechtigung ALTER ANY EXTERNAL DATA SOURCE verfügen. Diese Berechtigung ist in der Berechtigung ALTER DATABASE enthalten. ALTER ANY EXTERNAL DATA SOURCE-Berechtigungen sind erforderlich, um auf Remotedatenquellen zu verweisen.
 
-Als Nächstes wird eine Definition für eine externe Remotetabelle in einer SQL-Datenbankinstanz erstellt, die auf eine Remotetabelle in der SQL Data Warehouse-Instanz verweist. Wenn Sie eine Abfrage mit einer externen Tabelle verwenden, wird der auf die externe Tabelle verweisende Teil der Abfrage an die zu verarbeitende SQL Data Warehouse-Instanz gesendet. Wenn die Abfrage abgeschlossen ist, wird das Resultset an die aufrufende SQL-Datenbankinstanz zurückgesendet. Ein kurzes Tutorial zum Einrichten einer elastischen Abfrage zwischen der SQL-Datenbank und SQL Data Warehouse finden Sie unter [Konfigurieren einer elastischen Abfrage mit SQL Data Warehouse][Configure Elastic Query with SQL Data Warehouse].
+Erstellen Sie als Nächstes eine Definition für eine externe Remotetabelle in einer SQL-Datenbankinstanz, die auf eine Remotetabelle in der SQL Data Warehouse-Instanz verweist. Wenn für eine Abfrage eine externe Tabelle verwendet wird, wird der auf die externe Tabelle verweisende Teil der Abfrage an die zu verarbeitende SQL Data Warehouse-Instanz gesendet. Wenn die Abfrage abgeschlossen ist, wird das Resultset an die aufrufende SQL-Datenbankinstanz zurückgesendet. Ein kurzes Tutorial zum Einrichten einer elastischen Abfrage zwischen der SQL-Datenbank und SQL Data Warehouse finden Sie unter [Konfigurieren einer elastischen Abfrage mit SQL Data Warehouse][Configure Elastic Query with SQL Data Warehouse].
 
 Weitere Informationen zu elastischen Abfragen mit der SQL-Datenbank finden Sie unter [Übersicht über elastische Abfragen in Azure SQL-Datenbank][Azure SQL Database elastic query overview].
 
-
-
 ## <a name="best-practices"></a>Bewährte Methoden
+Verwenden Sie diese bewährten Methoden zur effektiven Nutzung von elastischen Abfragen.
 
 ### <a name="general"></a>Allgemein
 
@@ -80,7 +71,7 @@ Weitere Informationen zu elastischen Abfragen mit der SQL-Datenbank finden Sie u
 
 - In vielen Fällen könnte man eine Art von gestreckter Tabelle verwalten, bei der sich ein Teil Ihrer Tabelle zu Leistungszwecken innerhalb der SQL-Datenbank als zwischengespeicherte Daten befinden, wobei die restlichen Daten in SQL Data Warehouse gespeichert werden. Sie benötigen zwei Objekte in der SQL-Datenbank: eine externe Tabelle in der SQL-Datenbank, die auf die Basistabelle in SQL Data Warehouse verweist, und den „zwischengespeicherten“ Teil der Tabelle in der SQL-Datenbank. Erwägen Sie die Erstellung einer Ansicht über den oberen Teil des zwischengespeicherten Teils der Tabelle und der externen Tabelle, die sowohl Tabellen vereint als auch Filter anwendet, die in der SQL-Datenbank und in SQL Data Warehouse materialisierte Daten trennt, die durch externe Tabellen offengelegt wurden.
 
-  Stellen Sie sich vor, es müssten die Daten des letzten Jahrs in einer SQL-Datenbankinstanz gespeichert werden. Es gibt zwei Tabellen: Die **ext.Orders**-Tabelle, die auf die Data Warehouse-Auftragstabellen verweist, und die **dbo.Orders**-Tabelle, die die Daten der letzten Jahre in der SQL-Datenbankinstanz darstellt. Statt die Benutzer dazu aufzufordern, festzulegen, welche dieser Tabellen abgefragt werden soll, erstellen wir oberhalb der beiden Tabellen eine Ansicht am Partitionspunkt des letzten Jahres.
+  Stellen Sie sich vor, Sie möchten die Daten des letzten Jahres in einer SQL-Datenbankinstanz speichern. In der Tabelle **ext.Orders** wird auf die Tabellen mit den Data Warehouse-Bestellungen verwiesen. Die Tabelle **dbo.Orders** enthält die Daten des letzten Jahres für die SQL-Datenbankinstanz. Anstatt die Benutzer um die Angabe zu bitten, welche Tabelle abgefragt werden soll, erstellen wir oberhalb der beiden Tabellen eine Ansicht am Partitionspunkt des letzten Jahres.
 
   ```sql
   CREATE VIEW dbo.Orders_Elastic AS
@@ -119,19 +110,17 @@ Weitere Informationen zu elastischen Abfragen mit der SQL-Datenbank finden Sie u
 
 ### <a name="when-to-choose-azure-analysis-services-vs-sql-database"></a>Gründe für die Auswahl von Azure Analysis Services oder der SQL-Datenbank
 
-#### <a name="azure-analysis-services"></a>Azure Analysis Services
+Verwenden Sie Azure Analysis Services in folgenden Fällen:
 
 - Sie haben vor, Ihren Cache mit einem BI-Tool zu verwenden, das eine Vielzahl kleinerer Abfragen übermittelt.
 - Sie sind auf Abfragewartezeiten von unter 1 Sekunde angewiesen.
 - Sie besitzen Erfahrungen in der Verwaltung bzw. Entwicklung von Modellen für Analysis Services. 
 
-#### <a name="sql-database"></a>SQL-Datenbank
+Verwenden Sie Azure SQL-Datenbank in folgenden Fällen:
 
 - Sie möchten Ihre Cachedaten mithilfe von SQL abfragen.
 - Für bestimmte Abfragen ist eine Remoteausführung erforderlich.
 - Sie verfügen über umfangreichere Cacheanforderungen.
-
-
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
@@ -161,19 +150,11 @@ A: Räumliche Typen können als varbinary(max)-Werte in SQL Data Warehouse gespe
 
 ![Räumliche Typen](./media/sql-data-warehouse-elastic-query-with-sql-database/geometry-types.png)
 
-
-
-
-
-<!--Image references-->
-
 <!--Article references-->
 
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop/
-[Configure Elastic Query with SQL Data Warehouse]: ./tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
+[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
+[Configure Elastic Query with SQL Data Warehouse]: tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
 [Feedback Page]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Azure SQL Database elastic query overview]: ../sql-database/sql-database-elastic-query-overview.md
 
-<!--MSDN references-->
 
-<!--Other Web references-->

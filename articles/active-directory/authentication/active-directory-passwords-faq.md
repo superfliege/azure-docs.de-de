@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: 34f014c98d9333598c10e85d100251e62685c476
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7500b456296dc69c70cd1b5500d40f7e007569b1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -249,7 +249,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 
 * **F: Wie funktioniert das Rückschreiben von Kennwörtern im Detail?**
 
-  > **A:** Im Artikel [Funktionsweise des Kennwortrückschreibens](../active-directory-passwords-writeback.md) wird erläutert, was geschieht, wenn Sie das Kennwortrückschreiben aktivieren, und wie Daten durch das System wieder in Ihre lokale Umgebung übertragen werden.
+  > **A:** Im Artikel [Funktionsweise des Kennwortrückschreibens](howto-sspr-writeback.md) wird erläutert, was geschieht, wenn Sie das Kennwortrückschreiben aktivieren, und wie Daten durch das System wieder in Ihre lokale Umgebung übertragen werden.
   >
   >
 * **F: Wie lange dauert es, bis das Rückschreiben von Kennwörtern funktioniert? Gibt es eine Synchronisierungsverzögerung wie bei der Kennworthashsynchronisierung?**
@@ -279,7 +279,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F: Ist die Kennwortrückschreibung sicher?  Wie kann ich sicher sein, dass ich nicht gehackt werde?**
 
-  > **A:** Ja, das Kennwortrückschreiben ist sicher. Weitere Informationen zu den vier Sicherheitsstufen, die durch den Dienst zum Kennwortrückschreiben implementiert werden, finden Sie im Abschnitt [Sicherheitsmodell für das Kennwortrückschreiben](../active-directory-passwords-writeback.md#password-writeback-security-model) im Artikel [Übersicht über die Kennwortrückschreibung](../active-directory-passwords-writeback.md).
+  > **A:** Ja, das Kennwortrückschreiben ist sicher. Weitere Informationen zu den vier Sicherheitsstufen, die durch den Dienst zum Kennwortrückschreiben implementiert werden, finden Sie im Abschnitt [Sicherheitsmodell für das Kennwortrückschreiben](howto-sspr-writeback.md#password-writeback-security-model) im Artikel [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md).
   >
   >
 
@@ -292,7 +292,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)
-* [Übersicht über die Kennwortrückschreibung](../active-directory-passwords-writeback.md)
+* [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md)
 * [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](howto-sspr-reporting.md)
 * [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)

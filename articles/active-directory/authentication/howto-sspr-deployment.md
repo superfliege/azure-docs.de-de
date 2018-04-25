@@ -16,19 +16,19 @@ ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 22086a0d9fc774b75e1b0873188b16fc548d0791
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e34bf6ec106976c1c3aab0f2b5c4ebf4b6ccc54b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung
 
 Um einen reibungslosen Rollout der Funktion für die Self-Service-Kennwortzurücksetzung (SSPR) von Azure Active Directory (Azure AD) sicherzustellen, führen die meisten Kunden die folgenden Schritte aus:
 
-1. [Aktivieren Sie die Kennwortzurücksetzung in Ihrem Verzeichnis.](../active-directory-passwords-getting-started.md)
-2. [Konfigurieren Sie die lokalen Active Directory-Berechtigungen für das Kennwortrückschreiben](../active-directory-passwords-writeback.md#active-directory-permissions).
-3. [Konfigurieren Sie das Kennwortrückschreiben](../active-directory-passwords-writeback.md#configure-password-writeback), um Kennwörter aus Azure AD wieder in Ihr lokales Verzeichnis zu schreiben.
+1. [Aktivieren Sie die Kennwortzurücksetzung in Ihrem Verzeichnis.](quickstart-sspr.md)
+2. [Konfigurieren Sie die lokalen Active Directory-Berechtigungen für das Kennwortrückschreiben](howto-sspr-writeback.md#active-directory-permissions).
+3. [Konfigurieren Sie das Kennwortrückschreiben](howto-sspr-writeback.md#configure-password-writeback), um Kennwörter aus Azure AD wieder in Ihr lokales Verzeichnis zu schreiben.
 4. [Weisen Sie die erforderlichen Lizenzen zu, und überprüfen Sie sie](concept-sspr-licensing.md).
 5. Entscheiden Sie, ob Sie den Rollout schrittweise durchführen möchten. Wenn Sie den SSPR-Rollout in Etappen durchführen möchten, können Sie den Zugriff auf eine Gruppe von Benutzern begrenzen und somit ein Pilotprogramm mit einer bestimmten Gruppe ausführen. Um einen Rollout für eine bestimmte Gruppe durchzuführen, legen Sie **Self-Service-Kennwortzurücksetzung aktiviert** auf **Ausgewählt** fest, und wählen Sie die Sicherheitsgruppe aus, für die die Kennwortzurücksetzung verfügbar sein soll. 
 6. Füllen Sie die [Authentifizierungsdaten](howto-sspr-authenticationdata.md) auf, die die Benutzer zur Registrierung benötigen, beispielsweise die geschäftliche Telefonnummer, die Mobiltelefonnummer und eine alternative E-Mail-Adresse.
@@ -41,7 +41,7 @@ Um einen reibungslosen Rollout der Funktion für die Self-Service-Kennwortzurüc
    > [!NOTE]
    > Wenn Sie diese Option von einer ausgewählten Gruppe in „Jeder“ ändern, werden die vorhandenen Authentifizierungsdaten nicht ungültig, die ein Benutzer im Rahmen einer Testgruppe registriert hat. Konfigurierte Benutzer, für die gültige Authentifizierungsdaten registriert wurden, können weiterhin verwendet werden.
 
-12. [Ermöglichen Sie Windows 10-Benutzern das Zurücksetzen ihres Kennworts auf dem Anmeldebildschirm](../active-directory-passwords-login.md).
+12. [Ermöglichen Sie Windows 10-Benutzern das Zurücksetzen ihres Kennworts auf dem Anmeldebildschirm](tutorial-sspr-windows.md).
 
    > [!IMPORTANT]
    > Testen Sie SSPR nicht als Administrator, sondern als normaler Benutzer, da Microsoft für Azure-Administratorkonten strenge Anforderungen an die Authentifizierung stellt. Weitere Informationen zur Richtlinie für Administratorkennwörter finden Sie im Artikel zu [Kennwortrichtlinien](concept-sspr-policy.md#administrator-password-policy-differences).
@@ -90,7 +90,7 @@ Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Si
 * [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md)
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)
-* [Übersicht über die Kennwortrückschreibung](../active-directory-passwords-writeback.md)
+* [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md)
 * [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](howto-sspr-reporting.md)
 * [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)

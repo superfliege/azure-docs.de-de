@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: 2b77167992704bd342d67dc03b66af1e55955532
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 761013ad82fb8fa7d84e7929341d2e7d9e2d724c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 Die Identität wird häufig als neue Grenzschicht für die Sicherheit angesehen, indem diese Rolle vom herkömmlichen netzwerkzentrierten Ansatz übernommen wird. Die Weiterentwicklung dieses Dreh- und Angelpunkts für die Bereiche Sicherheit und Investitionen basiert darauf, dass Umkreisnetzwerke immer durchlässiger geworden sind und die Verteidigung des Umkreisnetzwerks nicht mehr so effektiv wie vor der immensen Nutzung von [BYOD](http://aka.ms/byodcg)-Geräten und Cloudanwendungen sein kann.
@@ -88,7 +88,7 @@ Durch die Aktivierung von Azure MFA für Ihre Benutzer fügen Sie eine zweite Si
 
 Beispiel: Sie erzwingen Azure MFA für Ihre Benutzer und konfigurieren den Vorgang so, dass zur Verifizierung ein Telefonanruf oder eine SMS verwendet wird. Wenn die Anmeldeinformationen eines Benutzers kompromittiert werden, kann der Angreifer dann nicht auf Ressourcen zugreifen, da er keinen Zugriff auf das Telefon des Benutzers hat. Organisationen, die keine zusätzliche Schicht zur Identitätssicherung hinzufügen, sind anfälliger für Angriffe mit dem Ziel des Diebstahls von Anmeldeinformationen, was wiederum zu kompromittierten Daten führen kann.
 
-Eine Alternative für Organisationen, die die gesamte Authentifizierung weiterhin lokal steuern möchten, ist die Verwendung des [Azure Multi-Factor Authentication-Servers](../multi-factor-authentication/multi-factor-authentication-get-started-server.md). Dies wird auch als „MFA lokal“ bezeichnet. Mithilfe dieser Methode können Sie weiterhin die Multi-Factor Authentication erzwingen und dabei den MFA-Server lokal halten.
+Eine Alternative für Organisationen, die die gesamte Authentifizierung weiterhin lokal steuern möchten, ist die Verwendung des [Azure Multi-Factor Authentication-Servers](../active-directory/authentication/howto-mfaserver-deploy.md). Dies wird auch als „MFA lokal“ bezeichnet. Mithilfe dieser Methode können Sie weiterhin die Multi-Factor Authentication erzwingen und dabei den MFA-Server lokal halten.
 
 Weitere Informationen über Azure Multi-Factor Authentication finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](../active-directory/authentication/howto-mfa-getstarted.md).
 

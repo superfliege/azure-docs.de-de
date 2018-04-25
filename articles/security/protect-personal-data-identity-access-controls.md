@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: ''
-ms.openlocfilehash: 08c26942294d7027ffdcd3fcaa0ff0831e95509f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c0e7f2060f81812cd69ed1af0246287757985243
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory und Multi-Factor Authentication: Schützen personenbezogener Daten mit der Identitäts- und Zugriffssteuerung
 
@@ -137,7 +137,7 @@ Wenn Sie derzeit über keine Lizenzen verfügen, müssen Sie den am besten geeig
 
 4. Klicken Sie unten auf der Seite auf **Speichern**.
 
-In diesem Fenster haben Sie auch die Möglichkeit, den MFA-Server herunterzuladen. Im Artikel [Erste Schritte mit Azure Multi-Factor Authentication-Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md) finden Sie weitere ausführliche Informationen zum Festlegen der Größe und Planen einer Bereitstellung.
+In diesem Fenster haben Sie auch die Möglichkeit, den MFA-Server herunterzuladen. Im Artikel [Erste Schritte mit Azure Multi-Factor Authentication-Server](../active-directory/authentication/howto-mfaserver-deploy.md) finden Sie weitere ausführliche Informationen zum Festlegen der Größe und Planen einer Bereitstellung.
 
 Weitere Anweisungen zum Verwalten Ihres Multi-Factor Authentication-Anbieters finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication-Anbietern](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider).
 

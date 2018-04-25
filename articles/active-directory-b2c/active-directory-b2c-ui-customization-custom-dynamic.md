@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: davidmu
-ms.openlocfilehash: d8aaf0ef8cefdc0cb1c4ff3dec656d31c32f664f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 77f6ae1df8a364eecc5e7d6d6fe3a07dd215ac16
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 Mithilfe von benutzerdefinierten Azure Active Directory B2C-Richtlinien (Azure AD B2C) können Sie einen Parameter in einer Abfragezeichenfolge senden. Durch Übergeben des Parameters an Ihren HTML-Endpunkt können Sie den Seiteninhalt dynamisch ändern. Sie können z.B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -193,7 +196,7 @@ Die HTML5-Vorlage ist einsatzbereit. Sie ist jedoch im `ContentDefinition`-Code 
     >Über die Website [test-cors.org](http://test-cors.org/) können Sie überprüfen, ob auf der Site, auf der Sie den Inhalt hosten, CORS aktiviert ist, sowie CORS-Anforderungen testen. 
 
 * Bereitgestellte Inhalte sind über **HTTPS** sicher.
-* Sie verwenden *absolute URLs*, z.B. *https://yourdomain/content*, für alle Links, CSS-Inhalte und Bilder.
+* Sie verwenden *absolute URLs* (z. B. *https://yourdomain/content*) für alle Links, CSS-Inhalte und Bilder.
 
 ## <a name="step-5-configure-your-content-definition"></a>Schritt 5: Konfigurieren Ihrer Inhaltsdefinition
 Führen Sie folgende Schritte aus, um `ContentDefinition` zu konfigurieren:

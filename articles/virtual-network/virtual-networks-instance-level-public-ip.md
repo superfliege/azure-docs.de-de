@@ -1,10 +1,10 @@
 ---
-title: "Öffentliche IP-Adressen (klassisch) auf Azure-Instanzebene | Microsoft-Dokumentation"
-description: "Grundlegendes zu öffentlichen IP-Adressen auf Instanzebene (ILPIP) und zum Verwalten dieser Adressen mit PowerShell."
+title: Öffentliche IP-Adressen (klassisch) auf Azure-Instanzebene | Microsoft-Dokumentation
+description: Grundlegendes zu öffentlichen IP-Adressen auf Instanzebene (ILPIP) und zum Verwalten dieser Adressen mit PowerShell.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genli
+manager: cshepard
 editor: tysonn
 ms.assetid: 07eef6ec-7dfe-4c4d-a2c2-be0abfb48ec5
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
-ms.author: jdial
-ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: 631b667b12941781a7e69361a0e731f94b7119f8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Übersicht über die öffentliche IP-Adresse (klassisch) auf Instanzebene
 Eine öffentliche IP-Adresse auf Instanzebene (Instance-Level Public IP, ILPIP) ist eine öffentliche IP-Adresse, die Sie einer VM oder Cloud Services-Rolleninstanz direkt zuweisen können, statt sie dem Clouddienst zuzuweisen, in dem sich Ihre VM oder Rolleninstanz befindet. Eine ILPIP tritt nicht an die Stelle der virtuellen IP-Adresse (VIP), die Ihrem Clouddienst zugeordnet ist. Es ist vielmehr eine zusätzliche IP-Adresse, mit der Sie direkt eine Verbindung mit der VM oder Rolleninstanz herstellen können.
@@ -43,7 +43,7 @@ Bei der Erstellung eines Clouddiensts in Azure werden automatisch entsprechende 
 ## <a name="why-would-i-request-an-ilpip"></a>Warum kann es sinnvoll sein, eine ILPIP anzufordern?
 Wenn Sie über eine direkt zugewiesene IP-Adresse eine Verbindung mit Ihrer VM- oder Rolleninstanz herstellen möchten, anstatt VIP:&lt;Portnummer&gt; des Clouddiensts zu verwenden, fordern Sie eine ILPIP für die VM- oder Rolleninstanz an.
 
-* **Aktives FTP**: Wird einer VM eine ILPIP zugewiesen, kann die VM Datenverkehr an beliebigen Ports empfangen. Die VM benötigt keine Endpunkte, um Datenverkehr empfangen zu können.  Einzelheiten zum FTP-Protokoll finden Sie unter (https://de.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[File Transfer Protocol].
+* **Aktives FTP**: Wird einer VM eine ILPIP zugewiesen, kann die VM Datenverkehr an beliebigen Ports empfangen. Die VM benötigt keine Endpunkte, um Datenverkehr empfangen zu können.  Ausführlichere Informationen zum FTP-Protokoll finden Sie unter (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[FTP Protocol Overview] (FTP-Protokoll – Übersicht).
 * **Ausgehende IP**: Der vom virtuellen Computer ausgehende Datenverkehr wird der ILPIP als Quelle zugeordnet, und durch die ILPIP wird die VM gegenüber externen Entitäten eindeutig identifiziert.
 
 > [!NOTE]

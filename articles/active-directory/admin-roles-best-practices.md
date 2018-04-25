@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 98665ab215c98ea60273ce3aae2757cf20817a90
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 109a5b50688ca0b2c4edc63b6ba5c89bac74a6d3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -118,7 +118,7 @@ Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler A
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Aktivieren der mehrstufigen Authentifizierung und Registrieren aller anderen nicht verbundenen Einzelbenutzer-Administratorkonten mit hohen Privilegien 
 
-Setzen Sie die mehrstufige Azure-Authentifizierung (Multi-Factor Authentication, MFA) bei der Anmeldung für alle einzelnen Benutzer voraus, die dauerhaft einer oder mehreren Azure AD-Administratorrollen zugewiesen sind: globaler Administrator, privilegierter Rollenadministrator, Exchange Online-Administrator und SharePoint Online-Administrator. Nutzen Sie den Leitfaden zum Aktivieren [einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md), und stellen Sie sicher, dass alle Benutzer unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) registriert sind. Weitere Informationen finden Sie unter Schritt 2 und 3 des Handbuchs [Zugriffsschutz für Daten und Dienste in Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Setzen Sie die mehrstufige Azure-Authentifizierung (Multi-Factor Authentication, MFA) bei der Anmeldung für alle einzelnen Benutzer voraus, die dauerhaft einer oder mehreren Azure AD-Administratorrollen zugewiesen sind: globaler Administrator, privilegierter Rollenadministrator, Exchange Online-Administrator und SharePoint Online-Administrator. Nutzen Sie den Leitfaden zum Aktivieren [einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](authentication/howto-mfa-userstates.md), und stellen Sie sicher, dass alle Benutzer unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) registriert sind. Weitere Informationen finden Sie unter Schritt 2 und 3 des Handbuchs [Zugriffsschutz für Daten und Dienste in Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>Phase 2: am häufigsten verwendete Angriffsstrategien abschwächen
 
@@ -154,9 +154,9 @@ Sofern nicht bereits geschehen, erstellen Sie separate Konten für Benutzer zum 
 
 Stellen Sie sicher, dass alle Benutzer sich mindestens einmal in den letzten 90 Tagen bei ihren administrativen Konten angemeldet und ihre Kennwörter geändert haben. Stellen Sie außerdem sicher, dass bei gemeinsam genutzten Konten, deren Kennwort mehreren Benutzern bekannt ist, die Kennwörter kürzlich geändert wurden.
 
-#### <a name="turn-on-password-synchronization"></a>Aktivieren der Kennwortsynchronisierung
+#### <a name="turn-on-password-hash-synchronization"></a>Aktivieren der Kennworthashsynchronisierung
 
-Die Kennwortsynchronisierung ist ein Feature zum Synchronisieren von Hashes von Benutzerkennwörtern aus einer lokalen Active Directory-Instanz nach einer cloudbasierten Azure Active Directory-Instanz (Azure AD). Auch wenn Sie den Verbund mit Active Directory-Verbunddiensten (Active Directory Federation Services, AD FS) oder anderen Identitätsanbietern verwenden möchten, können Sie die Kennwortsynchronisierung optional als eine Sicherung für den Fall einrichten, dass bei Ihrer lokalen Infrastruktur – z.B. AD- oder AD FS-Server – ein Fehler auftritt oder sie vorübergehend nicht verfügbar ist. Dies ermöglicht Benutzern, sich bei dem Dienst mit dem gleichen Kennwort anzumelden, das sie zur Anmeldung bei Ihrer lokalen AD-Instanz verwenden. Außerdem ermöglicht es Identity Protection das Erkennen gefährdeter Anmeldeinformationen durch Vergleichen ihrer Kennworthashes mit Kennwörtern, die bekanntermaßen gefährdet sind, wenn ein Benutzer dieselbe E-Mail-Adresse und dasselbe Kennwort bei anderen Diensten genutzt hat, die nicht mit Azure AD verbunden sind.  Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
+Die Kennworthashsynchronisierung ist ein Feature zum Synchronisieren von Hashes von Benutzerkennwörtern aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD). Auch wenn Sie den Verbund mit Active Directory-Verbunddiensten (Active Directory Federation Services, AD FS) oder anderen Identitätsanbietern verwenden möchten, können Sie die Kennworthashsynchronisierung optional als eine Sicherung für den Fall einrichten, dass bei Ihrer lokalen Infrastruktur – z.B. AD- oder AD FS-Server – ein Fehler auftritt oder sie vorübergehend nicht verfügbar ist. Dies ermöglicht Benutzern, sich bei dem Dienst mit dem gleichen Kennwort anzumelden, das sie zur Anmeldung bei Ihrer lokalen AD-Instanz verwenden. Außerdem ermöglicht es Identity Protection das Erkennen gefährdeter Anmeldeinformationen durch Vergleichen ihrer Kennworthashes mit Kennwörtern, die bekanntermaßen gefährdet sind, wenn ein Benutzer dieselbe E-Mail-Adresse und dasselbe Kennwort bei anderen Diensten genutzt hat, die nicht mit Azure AD verbunden sind.  Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Fordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) sowohl für Benutzer in allen privilegierten Rollen als auch für Benutzer mit hoher Gefährdung
 
@@ -164,8 +164,8 @@ Azure AD empfiehlt, dass Sie die mehrstufige Authentifizierung (Multi-Factor Aut
 
 Aktivieren Sie:
 
-* [MFA für Konten mit hoher Gefährdung](../multi-factor-authentication/multi-factor-authentication-security-best-practices.md), z.B. Konten für Geschäftsführer in einer Organisation 
-* [MFA für jedes Administratorkonto, das einem einzelnen Benutzer](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) für andere verbundene SaaS-Apps zugeordnet ist 
+* [MFA für Konten mit hoher Gefährdung](authentication/multi-factor-authentication-security-best-practices.md), z.B. Konten für Geschäftsführer in einer Organisation 
+* [MFA für jedes Administratorkonto, das einem einzelnen Benutzer](authentication/howto-mfa-userstates.md) für andere verbundene SaaS-Apps zugeordnet ist 
 * MFA für alle Administratoren für Microsoft-SaaS-Apps, einschließlich der Administratoren in Rollen, die in Exchange Online und im Office-Portal verwaltet werden
 
 Wenn Sie Windows Hello for Business verwenden, kann die MFA-Anforderung durch Verwendung der Windows Hello-Anmeldebenutzeroberfläche erfüllt werden. Weitere Informationen finden Sie unter [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
@@ -282,11 +282,11 @@ Das [Azure Security Center](../security-center/security-center-intro.md) bietet 
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Inventarisieren Ihrer privilegierten Konten auf gehosteten virtuellen Computern
 
-In den meisten Fällen müssen Sie Benutzern keine uneingeschränkten Berechtigungen für Ihre gesamten Azure-Abonnements oder Ressourcen erteilen. Sie können mit Azure AD-Administratorrollen Aufgaben in Ihrer Organisation verteilen und Benutzern Zugriff nur in dem zur Ausführung bestimmter Aufträge erforderlichen Umfang gewähren. Gestatten Sie z.B. mit Azure AD-Administratorrollen einem Administrator nur die Verwaltung virtueller Computer in einem Abonnement, während ein anderer im gleichen Abonnement SQL-Datenbanken verwalten kann. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](role-based-access-control-what-is.md).
+In den meisten Fällen müssen Sie Benutzern keine uneingeschränkten Berechtigungen für Ihre gesamten Azure-Abonnements oder Ressourcen erteilen. Sie können mit Azure AD-Administratorrollen Aufgaben in Ihrer Organisation verteilen und Benutzern Zugriff nur in dem zur Ausführung bestimmter Aufträge erforderlichen Umfang gewähren. Gestatten Sie z.B. mit Azure AD-Administratorrollen einem Administrator nur die Verwaltung virtueller Computer in einem Abonnement, während ein anderer im gleichen Abonnement SQL-Datenbanken verwalten kann. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Implementieren von PIM für Azure AD-Administratorrollen
 
-Verwenden Sie Privileged Identity Management mit Azure AD-Administratorrollen zum Verwalten, Steuern und Überwachen des Zugriffs auf Azure-Ressourcen. Das Verwenden von PIM schützt privilegierte Konten vor Cyberangriffen durch Herabsetzen der Gefährdungszeit für Privilegien und Erweitern Ihres Einblicks in ihre Verwendung durch Berichte und Warnungen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit Privileged Identity Management](pim-azure-resource.md).
+Verwenden Sie Privileged Identity Management mit Azure AD-Administratorrollen zum Verwalten, Steuern und Überwachen des Zugriffs auf Azure-Ressourcen. Das Verwenden von PIM schützt privilegierte Konten vor Cyberangriffen durch Herabsetzen der Gefährdungszeit für Privilegien und Erweitern Ihres Einblicks in ihre Verwendung durch Berichte und Warnungen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit Privileged Identity Management](../role-based-access-control/pim-azure-resource.md).
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Verwenden von Azure-Protokollintegrationen zum Senden von relevanten Azure-Protokollen an Ihre SIEM-Systeme 
 

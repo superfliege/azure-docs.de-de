@@ -9,17 +9,21 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4294169e89533150cade700fb89e14c4121c4404
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b0bc6035c3004587ae50f1c331dd3976883e9d34
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Eingehende HTTPS-Daten in Azure Container Service (AKS)
 
 Ein Eingangscontroller ist eine Softwarekomponente, die einen Reverseproxy, konfigurierbare Datenverkehrsweiterleitung und TLS-Terminierung für Kubernetes-Dienste bereitstellt. Mithilfe von Ressourcen für eingehende Kubernetes-Daten werden Eingangsregeln und Routen für einzelne Kubernetes-Dienste konfiguriert. Durch die Verwendung von einem Eingangscontroller und Eingangsregeln kann eine einzelne externe Adresse zum Weiterleiten von Datenverkehr an mehrere Dienste in einem Kubernetes-Cluster verwendet werden.
 
 Dieses Dokument begleitet Sie durch eine Beispielbereitstellung des [NGINX-Eingangscontrollers][nginx-ingress] in einem Azure Container Service-Cluster (AKS). Darüber hinaus wird das Projekt [KUBE-LEGO][kube-lego] verwendet, um automatisch [Let‘s Encrypt][lets-encrypt]-Zertifikate zu generieren und zu konfigurieren. Schließlich werden verschiedene Anwendungen im AKS-Cluster ausgeführt, die jeweils über eine einzelne Adresse zugänglich sind.
+
+## <a name="prerequisite"></a>Voraussetzung
+
+Installieren Sie die Helm CLI. Installationsanweisungen finden Sie in der [Dokumentation][helm-cli] zur Helm CLI.
 
 ## <a name="install-an-ingress-controller"></a>Installieren eines Eingangscontrollers
 
@@ -179,10 +183,12 @@ Beachten Sie außerdem, dass die Verbindung verschlüsselt ist und ein von Let�
 
 Erfahren Sie mehr über die in diesem Dokument demonstrierte Software. 
 
+- [Helm CLI][helm-cli]
 - [NGINX-Eingangscontroller][nginx-ingress]
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
+[helm-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
