@@ -1,43 +1,48 @@
 ---
-title: "Aufheben der Bereitstellung von Geräten, die mit dem Azure IoT Hub Device Provisioning-Dienst registriert wurden | Microsoft-Dokumentation"
-description: "Anleitung zum Aufheben der Bereitstellung von Geräten, die per DPS im Azure-Portal registriert wurden"
+title: Aufheben der Bereitstellung von Geräten, die mit Azure IoT Hub Device Provisioning Service bereitgestellt wurden | Microsoft-Dokumentation
+description: Aufheben der Bereitstellung von Geräten, die mit Azure IoT Hub Device Provisioning Service bereitgestellt wurden
 services: iot-dps
-keywords: 
-author: JimacoMS
-ms.author: v-jamebr
-ms.date: 01/08/2018
+keywords: ''
+author: bryanla
+ms.author: v-jamebr;bryanla
+ms.date: 04/06/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 1d057a4df43cf25e6817672d198207d9a50e462e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 439d4ffa8eec12481f52bd15f0060800411f316e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-unprovision-devices-enrolled-by-your-provisioning-service"></a>Aufheben der Bereitstellung von Geräten, die durch Ihren Bereitstellungsdienst registriert wurden
+# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden 
 
-Manchmal muss unter Umständen die Bereitstellung von Geräten aufgehoben werden, die über den Device Provisioning-Dienst bereitgestellt wurden. Dies kann beispielsweise erforderlich sein, wenn ein Gerät verkauft oder in eine andere IoT Hub-Instanz verschoben wird oder wenn es verloren gegangen ist, gestohlen wurde oder anderweitig gefährdet ist. 
+Manchmal muss unter Umständen die Bereitstellung von Geräten aufgehoben werden, die zuvor automatisch über den Device Provisioning-Dienst bereitgestellt wurden. Dies kann beispielsweise erforderlich sein, wenn ein Gerät verkauft oder in eine andere IoT Hub-Instanz verschoben wird oder wenn es verloren gegangen ist, gestohlen wurde oder anderweitig gefährdet ist. 
 
 Die Aufhebung der Bereitstellung eines Geräts umfasst im Allgemeinen zwei Schritte:
 
-1. Widerrufen des Zugriffs auf Ihren Bereitstellungsdienst für das Gerät. Je nachdem, ob Sie den Zugriff vorübergehend oder dauerhaft widerrufen möchten (oder im Falle des X.509-Nachweismechanismus auf der Grundlage der Hierarchie Ihrer vorhandenen Registrierungsgruppen), können Sie einen Registrierungseintrag entweder deaktivieren oder löschen. 
+1. Heben Sie die Registrierung des Geräts bei Ihrem Bereitstellungsdienst auf, um weiter automatische Bereitstellungen zu verhindern. Ein Registrierungseintrag kann deaktiviert oder gelöscht werden – je nachdem, ob Sie den Zugriff vorübergehend oder dauerhaft widerrufen möchten. Für Geräte mit X.509-Nachweis empfiehlt es sich gegebenenfalls, einen Eintrag in der Hierarchie Ihrer vorhandenen Registrierungsgruppen zu deaktivieren bzw. zu löschen.  
  
-   - Unter [Vorgehensweise zum Widerrufen des Gerätezugriffs auf Ihren Bereitstellungsdienst im Azure-Portal](how-to-revoke-device-access-portal.md) erfahren Sie, wie Sie den Gerätezugriff über das Portal widerrufen.
-   - Unter [Gewusst wie: Verwalten von Geräteregistrierungen mit Azure Device Provisioning Service-SDKs](how-to-manage-enrollments-sdks.md) erfahren Sie, wie Sie den Gerätezugriff programmgesteuert mithilfe eines der Bereitstellungsdienst-SDKs widerrufen.
+   - Informationen zum Aufheben der Registrierung eines Geräts finden Sie unter [Aufheben der Registrierung eines Geräts bei IoT Hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
+   - Unter [Gewusst wie: Verwalten von Geräteregistrierungen mit Azure Device Provisioning Service-SDKs](how-to-manage-enrollments-sdks.md) erfahren Sie, wie Sie die Registrierung eines Geräts programmgesteuert mithilfe eines der Bereitstellungsdienst-SDKs aufheben.
 
-2. Deaktivieren oder Löschen des Eintrags für das Gerät in der Identitätsregistrierung für die IoT Hub-Instanz, in der es bereitgestellt wurde. Weitere Informationen finden Sie in der Dokumentation zu Azure IoT Hub unter [Verwalten von Geräteidentitäten](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices). 
+2. Heben Sie die Registrierung des Geräts bei Ihrer IoT Hub-Instanz auf, um eine weitere Kommunikation sowie weitere Datenübertragungen zu verhindern. Auch hier können Sie den Eintrag des Geräts in der Identitätsregistrierung für die IoT Hub-Instanz, in der es bereitgestellt wurde, entweder vorübergehend deaktivieren oder dauerhaft löschen. Weitere Informationen zur Deaktivierung finden Sie unter [Deaktivieren von Geräten](/azure/iot-hub/iot-hub-devguide-identity-registry.md#disable-devices). Ihre IoT Hub-Ressource finden Sie im [Azure-Portal](https://portal.azure.com) unter „Geräteverwaltung“ > „IoT-Geräte“.
 
-Welche Schritte Sie genau zum Aufheben der Bereitstellung eines Geräts ausführen, hängt von dessen Nachweismechanismus und dem zugehörigen Registrierungseintrag bei Ihrem Bereitstellungsdienst ab.
+Die genaue Vorgehensweise zum Aufheben der Bereitstellung eines Geräts hängt von dessen Nachweismechanismus und dem zugehörigen Registrierungseintrag in Ihrem Bereitstellungsdienst ab. Die folgenden Abschnitte geben einen Überblick über den Prozess auf der Grundlage von Registrierungs- und Nachweistyp.
 
 ## <a name="individual-enrollments"></a>Individuelle Registrierungen
 Geräte mit TPM-Nachweis oder X.509-Nachweis und einem untergeordneten Zertifikat werden über einen individuellen Registrierungseintrag bereitgestellt. 
 
 So heben Sie die Bereitstellung eines Geräts auf, das über eine individuelle Registrierung verfügt: 
-1. Bei Verwendung von Geräten mit TPM-Nachweis löschen Sie den individuellen Registrierungseintrag, um dauerhaft die Zugriffsberechtigung des Geräts auf den Bereitstellungsdienst zu widerrufen. Alternativ können Sie den Eintrag auch deaktivieren, um dessen Zugriffsberechtigung nur vorübergehend zu widerrufen. Für Geräte mit X.509-Nachweis können Sie den Eintrag entweder löschen oder deaktivieren. Denken Sie jedoch daran, dass ein Gerät mit X.509-Nachweis nicht erneut registriert werden kann, wenn Sie eine individuelle Registrierung für das Gerät löschen und eine aktivierte Registrierungsgruppe für ein Signaturzertifikat in der Zertifikatskette des Geräts vorhanden ist. Für solche Geräte kann es sicherer sein, den Registrierungseintrag zu deaktivieren. Dadurch wird eine erneute Registrierung des Geräts verhindert, unabhängig davon, ob eine aktivierte Registrierungsgruppe für eines der Signaturzertifikate vorhanden ist.
+
+1. Heben Sie die Registrierung des Geräts bei Ihrem Bereitstellungsdienst auf:
+
+   - Bei Verwendung von Geräten mit TPM-Nachweis löschen Sie den individuellen Registrierungseintrag, um die Zugriffsberechtigung des Geräts auf den Bereitstellungsdienst dauerhaft zu widerrufen. Alternativ können Sie den Eintrag auch deaktivieren, um die Zugriffsberechtigung nur vorübergehend zu widerrufen. 
+   - Für Geräte mit X.509-Nachweis können Sie den Eintrag entweder löschen oder deaktivieren. Bedenken Sie jedoch, dass das Gerät erneut registriert werden kann, wenn Sie eine individuelle Registrierung für ein Gerät mit X.509 löschen und eine aktivierte Registrierungsgruppe für ein Signaturzertifikat in der Vertrauenskette des Geräts vorhanden ist. Für solche Geräte kann es sicherer sein, den Registrierungseintrag zu deaktivieren. Dadurch wird eine erneute Registrierung des Geräts verhindert, unabhängig davon, ob eine aktivierte Registrierungsgruppe für eines der Signaturzertifikate vorhanden ist.
+
 2. Deaktivieren oder löschen Sie das Gerät in der Identitätsregistrierung für die IoT Hub-Instanz, in der es bereitgestellt wurde. 
 
 
@@ -59,6 +64,7 @@ Mit Registrierungsgruppen sind zwei Szenarien denkbar:
   1. Deaktivieren Sie die Registrierungsgruppe, um dessen Signaturzertifikat auf die Blacklist zu setzen. 
   2. Verwenden Sie die Liste bereitgestellter Geräte für diese Registrierungsgruppe, um jedes Gerät aus der Identitätsregistrierung der entsprechenden IoT Hub-Instanz zu deaktivieren oder zu löschen. 
   3. Nach dem Deaktivieren oder Löschen aller Geräte aus den entsprechenden IoT Hub-Instanzen können Sie optional die Registrierungsgruppe löschen. Hinweis: Wenn Sie die Registrierungsgruppe löschen und für ein übergeordnetes Signaturzertifikat in der Zertifikatkette mindestens eines der Geräte eine aktivierte Registrierungsgruppe vorhanden ist, können sich die entsprechenden Geräte erneut registrieren. 
+
 - So heben Sie die Bereitstellung eines einzelnen Geräts aus einer Registrierungsgruppe auf:
   1. Erstellen Sie eine deaktivierte individuelle Registrierung für das untergeordnete Zertifikat (des Geräts). Dadurch wird er Zugriff auf den Bereitstellungsdienst für dieses Gerät aufgehoben. Anderen Geräten, deren Zertifikatkette das Signaturzertifikat der Registrierungsgruppe enthält, wird dagegen weiterhin Zugriff gewährt. Löschen Sie die deaktivierte individuelle Registrierung für das Gerät nicht. Andernfalls kann sich das Gerät über die Registrierungsgruppe erneut registrieren. 
   2. Ermitteln Sie anhand der Liste bereitgestellter Geräte für die Registrierungsgruppe die IoT Hub-Instanz, für die das Gerät bereitgestellt wurde. Anschließend deaktivieren Sie das Gerät oder löschen es aus der Identitätsregistrierung des Hubs. 

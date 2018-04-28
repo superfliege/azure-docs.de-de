@@ -26,12 +26,12 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Subnetze pro virtuellem Netzwerk |1000 |10000 |
 | VNET-Peerings pro virtuellem Netzwerk |10 |50 |
 | DNS-Server pro virtuellem Netzwerk |9 |25 |
-| Private IP-Adressen pro virtuellem Netzwerk |4096 |8192 |
+| Private IP-Adressen pro virtuellem Netzwerk |16.384** |16384 |
 | Private IP-Adressen pro Netzwerkschnittstelle |256 |1024 |
 | Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500K |500K |
-| Netzwerkschnittstellen |350 |20000 |
+| Netzwerkschnittstellen |24.000** |24.000 |
 | Netzwerksicherheitsgruppen |100 |5.000 |
-| NSG-Regeln pro NSG |200 |1000 |
+| NSG-Regeln pro NSG |1.000** |1000 |
 | Angegebene IP-Adressen und -Bereiche für die Quelle oder das Ziel in einer Sicherheitsgruppe |2000 |4000 |
 | Anwendungssicherheitsgruppen |200 |500 |
 | Anwendungssicherheitsgruppen pro IP-Konfiguration pro NIC |10 |20 |
@@ -43,6 +43,8 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Öffentliche IP-Adressen – statisch |(Basic) 20 |an den Support wenden |
 | Öffentliche IP-Adressen – statisch |(Standard) 20 |an den Support wenden |
 | Punkt-zu-Standort-Stammzertifikate pro VPN Gateway |20 |20 |
+
+** Diese Standardlimits gelten für Abonnements, für die diese Limits nicht zuvor durch den Support erhöht wurden.
 
 #### <a name="load-balancer"></a>Load Balancer-Grenzwerte
 

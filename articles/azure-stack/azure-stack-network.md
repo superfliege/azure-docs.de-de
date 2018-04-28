@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/09/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 5ade2a09d0729f48c075a5bcaa20bee079ead47d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6438c353d84510ee918df120e6d54df0607c89d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="network-connectivity"></a>Netzwerkverbindung
 Dieser Artikel enthält Informationen zur Netzwerkinfrastruktur von Azure Stack, die Sie bei der Entscheidung unterstützen, wie Sie Azure Stack am besten in Ihre bestehende Netzwerkumgebung integrieren können. 
@@ -40,7 +40,7 @@ Die folgende Tabelle zeigt die logischen Netzwerke und die zugehörigen IPv4-Sub
 
 | Logisches Netzwerk | BESCHREIBUNG | Größe | 
 | -------- | ------------- | ------------ | 
-| Öffentliche VIP | Öffentliche IP-Adressen für einen kleinen Satz von Azure Stack-Diensten, wobei die restlichen Adressen von virtuellen Computern von Mandanten verwendet werden. Die Azure Stack-Infrastruktur verwendet 32 Adressen aus diesem Netzwerk. Wenn Sie App Service und SQL-Ressourcenanbieter verwenden möchten, werden sieben weitere Adressen verwendet. | /26 (62 Hosts) - /22 (1022 Hosts)<br><br>Empfohlen = /24 (254 Hosts) | 
+| Öffentliche VIP | Azure Stack verwendet insgesamt 32 Adressen aus diesem Netzwerk. Acht öffentliche IP-Adressen werden für einen kleinen Satz von Azure Stack-Diensten verwendet, und die restlichen Adressen werden von virtuellen Computern von Mandanten verwendet. Wenn Sie App Service und SQL-Ressourcenanbieter verwenden möchten, werden sieben weitere Adressen verwendet. | /26 (62 Hosts) - /22 (1022 Hosts)<br><br>Empfohlen = /24 (254 Hosts) | 
 | Switchinfrastruktur | Point-to-Point-IP-Adressen für Routingzwecke, dedizierte Switchverwaltungsschnittstellen und Loopbackadressen, die dem Switch zugewiesen sind. | /26 | 
 | Infrastruktur | Für die Kommunikation mit internen Azure Stack-Komponenten. | /24 |
 | Private | Für das Speichernetzwerk und die privaten virtuellen IP-Adressen. | /24 | 
@@ -70,7 +70,7 @@ Dieses Netzwerk des Typs „/24“ ist internen Azure Stack-Komponenten zugeordn
 Dieses Netzwerk des Typs „/27“ ist der kleine Bereich des bereits erwähnten Subnetzes der Azure Stack-Infrastruktur. Es benötigt keine öffentlichen IP-Adressen, jedoch Internetzugriff über einen NAT- oder transparenten Proxy. Dieses Netzwerk wird für das ERCS (Emergency Recovery Console System) bereitgestellt. Die ERCS-VM benötigt bei der Registrierung bei Azure und bei Infrastruktursicherungen Internetzugriff. Die ERCS-VM muss für die Problembehandlung zu Ihrem Verwaltungsnetzwerk geroutet werden können.
 
 ### <a name="public-vip-network"></a>Öffentliches VIP-Netzwerk
-Das öffentliche VIP-Netzwerk wird dem Netzwerkcontroller in Azure Stack zugewiesen. Es ist kein logisches Netzwerk auf dem Switch. Die SLB nutzt den Adresspool und ordnet Netzwerke des Typs „/32“ für die Workloads von Mandanten zu. In der Routingtabelle auf dem Switch werden diese IP-Adressen des Typs „/32“ über BGP als verfügbare Route angekündigt. Dieses Netzwerk enthält die extern zugänglichen oder öffentlichen IP-Adressen. Die Azure Stack-Infrastruktur verwendet mindestens 8 Adressen aus diesem öffentlichen VIP-Netzwerk, während der Rest von den VMs der Mandanten genutzt wird. Die Netzwerkgröße in diesem Subnetz kann von einem Minimum von „/26“ (64 Hosts) bis zu einem Maximum von „/22“ (1022 Hosts) reichen. Wir empfehlen Ihnen, ein Netzwerk des Typs „/24“ zu planen.
+Das öffentliche VIP-Netzwerk wird dem Netzwerkcontroller in Azure Stack zugewiesen. Es ist kein logisches Netzwerk auf dem Switch. Die SLB nutzt den Adresspool und ordnet Netzwerke des Typs „/32“ für die Workloads von Mandanten zu. In der Routingtabelle auf dem Switch werden diese IP-Adressen des Typs „/32“ über BGP als verfügbare Route angekündigt. Dieses Netzwerk enthält die extern zugänglichen oder öffentlichen IP-Adressen. Die Azure Stack-Infrastruktur verwendet acht Adressen aus diesem öffentlichen VIP-Netzwerk, während der Rest von den VMs der Mandanten genutzt wird. Die Netzwerkgröße in diesem Subnetz kann von einem Minimum von „/26“ (64 Hosts) bis zu einem Maximum von „/22“ (1022 Hosts) reichen. Wir empfehlen Ihnen, ein Netzwerk des Typs „/24“ zu planen.
 
 ### <a name="switch-infrastructure-network"></a>Switchinfrastrukturnetzwerk
 Dieses Netzwerk des Typs „/26“ ist das Subnetz, das die routingfähigen Punkt-zu-Punkt-IP-Subnetze des Typs „/30“ (2 Host-IP-Adressen) und die Loopbacks enthält, die dedizierte Subnetze des Typs „/32“ für die In-band-Switchverwaltung und BGP-Router-ID sind. Dieser IP-Adressbereich muss extern von der Azure Stack-Lösung zu Ihrem Rechenzentrum geroutet werden können. Es kann sich dabei um private oder öffentliche IP-Adressen handeln.

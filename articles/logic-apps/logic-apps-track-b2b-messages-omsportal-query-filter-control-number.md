@@ -1,11 +1,11 @@
 ---
-title: "Abfragen von B2B-Nachrichten in der Operations Management Suite – Azure Logic Apps | Microsoft-Dokumentation"
-description: Verfolgen Sie AS2-, X12- und EDIFACT-Nachrichten in der Operations Management Suite mithilfe von Abfragen nach.
+title: Abfragen von B2B-Nachrichten in Log Analytics – Azure Logic Apps | Microsoft-Dokumentation
+description: Erstellen von Abfragen zum Nachverfolgen von AS2-, X12- und EDIFACT-Nachrichten in Log Analytics
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -14,57 +14,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bc1ea42c9fb81fe1e2a2594fda48500132cbb539
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 345857801035fb7f149a57a4f0d58e7668f35b81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>Abfragen von AS2-, X12- und EDIFACT-Nachrichten in der Microsoft Operations Management Suite (OMS)
+# <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Abfragen von AS2-, X12- und EDIFACT-Nachrichten in Log Analytics
 
-Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriterien filtern, um die AS2-, X12- oder EDIFACT-Nachrichten zu finden, die Sie in der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) mithilfe von [Azure Log Analytics](../log-analytics/log-analytics-overview.md) nachverfolgen. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen.
+Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriterien filtern, um die AS2-, X12- oder EDIFACT-Nachrichten zu finden, die Sie mithilfe von [Azure Log Analytics](../log-analytics/log-analytics-overview.md) nachverfolgen. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 * Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Ein Integrationskonto, für das die Überwachung und Protokollierung eingerichtet ist. Informationen zum Erstellen eines Integrationskontos finden Sie [hier](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Informationen zum Einrichten der Überwachung und Protokollierung für das Konto stehen [hier](../logic-apps/logic-apps-monitor-b2b-message.md) zur Verfügung.
+* Ein Integrationskonto, für das die Überwachung und Protokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen eines Integrationskontos](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) und das [Einrichten der Überwachung und Protokollierung für dieses Konto](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* [Veröffentlichen Sie Diagnosedaten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), und [richten Sie die Nachrichtennachverfolgung in der OMS ein](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), sofern noch nicht geschehen.
+* [Veröffentlichen Sie Diagnosedaten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), und [richten Sie die Nachrichtennachverfolgung in Log Analytics ein](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), sofern noch nicht geschehen.
 
 > [!NOTE]
-> Wenn diese beiden Anforderungen erfüllt sind, verfügen Sie über einen Arbeitsbereich in der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Es empfiehlt sich, für die Nachverfolgung der B2B-Kommunikation in der OMS den gleichen OMS-Arbeitsbereich zu verwenden. 
+> Wenn auch die anderen Anforderungen erfüllt sind, verfügen Sie über einen Arbeitsbereich in Log Analytics. Es empfiehlt sich, für die Nachverfolgung der B2B-Kommunikation in Log Analytics den gleichen Arbeitsbereich zu verwenden. 
 >  
-> Falls Sie keinen OMS-Arbeitsbereich haben, können Sie sich unter [Erste Schritte mit einem Log Analytics-Arbeitsbereich](../log-analytics/log-analytics-get-started.md) über die Erstellung informieren.
+> Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="create-message-queries-with-filters-in-the-operations-management-suite-portal"></a>Erstellen von Nachrichtenabfragen mit Filtern über das Operations Management Suite-Portal
+## <a name="create-message-queries-with-filters-in-log-analytics"></a>Erstellen von Nachrichtenabfragen mit Filtern in Log Analytics
 
 In diesem Beispiel erfahren Sie, wie Sie anhand der Austauschkontrollnummer nach Nachrichten suchen.
 
 > [!TIP] 
-> Wenn Ihnen der Name Ihres OMS-Arbeitsbereichs bekannt ist, navigieren Sie zur Startseite Ihres Arbeitsbereichs (`https://{your-workspace-name}.portal.mms.microsoft.com`), und fahren Sie mit Schritt 4 fort. Beginnen Sie andernfalls mit Schritt 1.
+> Wenn Ihnen der Name Ihres Log Analytics-Arbeitsbereichs bekannt ist, navigieren Sie zur Startseite Ihres Arbeitsbereichs (`https://{your-workspace-name}.portal.mms.microsoft.com`), und fahren Sie mit Schritt 4 fort. Beginnen Sie andernfalls mit Schritt 1.
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Alle Dienste** aus. Suchen Sie nach „Log Analytics“, und wählen Sie die Option **Log Analytics** aus, wie hier zu sehen:
 
    ![Suchen nach Log Analytics](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
 
-2. Suchen Sie unter **Log Analytics** nach Ihrem OMS-Arbeitsbereich, und wählen Sie ihn aus.
+2. Wählen Sie unter **Log Analytics** Ihren Log Analytics-Arbeitsbereich aus.
 
-   ![Auswählen Ihres OMS-Arbeitsbereichs](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
+   ![Auswählen Ihres Log Analytics-Arbeitsbereichs](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
-3. Wählen Sie unter **Verwaltung** die Option **OMS-Portal** aus.
+3. Wählen Sie unter **Verwaltung** die Option **OMS-Portal**.
 
    ![Auswählen des OMS-Portals](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
 
-4. Wählen Sie auf Ihrer OMS-Startseite die Option **Protokollsuche** aus.
+4. Klicken Sie auf der Startseite auf **Protokollsuche**.
 
-   ![Auswählen von „Protokollsuche“ auf Ihrer OMS-Startseite](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![Klicken auf „Protokollsuche“ auf der Startseite](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    Oder
 
-   ![Auswählen von „Protokollsuche“ im OMS-Menü](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![Auswählen von „Protokollsuche“ im Menü](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
-5. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden in OMS mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. Weitere Informationen zur Datensuche in Log Analytics finden Sie [hier](../log-analytics/log-analytics-log-searches.md).
+5. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden in Log Analytics mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. Informieren Sie sich über das [Suchen nach Daten in Log Analytics](../log-analytics/log-analytics-log-searches.md).
 
    In diesem Beispiel wird nach Ereignissen mit **Type=AzureDiagnostics** gesucht.
 
@@ -106,15 +106,15 @@ In diesem Beispiel erfahren Sie, wie Sie anhand der Austauschkontrollnummer nach
 
    ![Auswählen Ihrer Abfrage](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
 
-## <a name="find-and-run-saved-queries-in-the-operations-management-suite-portal"></a>Suchen und Ausführen gespeicherter Abfragen im Operations Management Suite-Portal
+## <a name="find-and-run-saved-queries-in-log-analytics"></a>Suchen und Ausführen gespeicherter Abfragen in Log Analytics
 
-1. Öffnen Sie die Startseite Ihres OMS-Arbeitsbereichs (`https://{your-workspace-name}.portal.mms.microsoft.com`), und wählen Sie **Protokollsuche** aus.
+1. Öffnen Sie die Startseite Ihres Log Analytics-Arbeitsbereichs (`https://{your-workspace-name}.portal.mms.microsoft.com`), und klicken Sie auf **Protokollsuche**.
 
-   ![Auswählen von „Protokollsuche“ auf Ihrer OMS-Startseite](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![Klicken auf „Protokollsuche“ auf der Log Analytics-Startseite](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    Oder
 
-   ![Auswählen von „Protokollsuche“ im OMS-Menü](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![Auswählen von „Protokollsuche“ im Menü](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
 2. Wählen Sie auf der Startseite der **Protokollsuche** die Option **Favoriten** aus.
 

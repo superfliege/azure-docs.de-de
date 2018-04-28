@@ -1,6 +1,6 @@
 ---
-title: "Erstellen einer Azure Application Gateway-Instanz – Vorlagen | Microsoft-Dokumentation"
-description: "Diese Seite enthält Anweisungen zum Erstellen eines Azure-Anwendungsgateways mit einer Azure Resource Manager-Vorlage."
+title: Erstellen einer Azure Application Gateway-Instanz – Vorlagen | Microsoft-Dokumentation
+description: Diese Seite enthält Anweisungen zum Erstellen eines Azure-Anwendungsgateways mit einer Azure Resource Manager-Vorlage.
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
-ms.openlocfilehash: 0aa16e9d7472d2d8c3c251e60a506a7f4223ac1d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ba100189cec2060efa97914a2c90f7b0cccbc33f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Erstellen eines Anwendungsgateways mit der Azure-Ressourcen-Manager-Vorlage
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/21/2017
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 > * [Klassische Azure PowerShell](application-gateway-create-gateway.md)
 > * [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
-> * [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
+> * [Azure-CLI](application-gateway-create-gateway-cli.md)
 
 Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Es ermöglicht Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet zahlreiche ADC-Features (Application Delivery Controller) wie HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung mehrerer Standorte. Eine Liste mit allen unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
 
@@ -59,7 +59,7 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 1. Öffnen Sie die Datei, die Sie gespeichert haben, und betrachten Sie den Inhalt unter **parameters** in Zeile
 1. Die Parameter der Azure-Ressourcen-Manager-Vorlage stellen Platzhalter für Werte dar, die während der Bereitstellung ausgefüllt werden können.
 
-  | Parameter | Beschreibung |
+  | Parameter | BESCHREIBUNG |
   | --- | --- |
   | **subnetPrefix** |CIDR-Block für das Anwendungsgateway-Subnetz |
   | **applicationGatewaySize** | Größe des Anwendungsgateways.  WAF lässt nur mittelgroß und groß zu. |
@@ -120,7 +120,7 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
     }
     ```
 
-1. Speichern Sie die Datei. Sie können die JSON-Vorlage und die Parametervorlage mithilfe von online verfügbaren JSON-Validierungstools wie [JSlint.com](http://www.jslint.com/)testen.
+1. Speichern Sie die Datei . Sie können die JSON-Vorlage und die Parametervorlage mithilfe von online verfügbaren JSON-Validierungstools wie [JSlint.com](http://www.jslint.com/)testen.
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage mit PowerShell
 
@@ -129,7 +129,7 @@ Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie [Instal
 1. Anmeldung bei PowerShell
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. Überprüfen Sie die Abonnements für das Konto.

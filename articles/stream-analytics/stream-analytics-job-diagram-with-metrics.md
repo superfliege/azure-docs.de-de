@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: e6b2b7f4c01a5280c2fb3a5c17158b8dcc2797d4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3d50f96f3dea3646bb32a3a42d0248957dabf9f0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Datengesteuertes Debuggen mithilfe des Auftragsdiagramms
 
@@ -76,11 +76,11 @@ Handelt es sich beim vorherigen Abfrageschritt um einen Eingabeprozessor, beantw
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Gibt es eine Verzögerung beim Lesen der Daten?
 
-*   **InputEventsSourcesBackloggedTotal** gibt die Anzahl von Nachrichten an, die für Event Hub- und Azure IoT Hub-Eingaben noch gelesen werden müssen.
+*   **Eingabeereignisse im Rückstand (gesamt)** gibt die Anzahl von Nachrichten an, die für Event Hubs- und Azure IoT Hub-Eingaben noch gelesen werden müssen. Wenn diese Zahl größer als 0 ist, bedeutet dies, dass der Auftrag die Daten nicht so schnell verarbeiten kann, wie sie eintreffen. In diesem Fall müssen Sie die Anzahl der Streamingeinheiten erhöhen und/oder sicherstellen, dass Ihr Auftrag parallelisiert werden kann. Weitere Informationen hierzu finden Sie auf der Seite zur [Parallelisierung von Abfragen](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
 
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um weitere Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Um weitere Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

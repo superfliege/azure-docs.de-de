@@ -1,9 +1,9 @@
 ---
 title: SQL Server Business Intelligence | Microsoft Docs
-description: "Dieses Thema verwendet mit dem klassischen Bereitstellungsmodell erstellte Ressourcen und beschreibt die für SQL Server auf virtuellen Azure-Computern (Virtual Machines, VMs) verfügbaren Business Intelligence-Features (BI)."
+description: Dieses Thema verwendet mit dem klassischen Bereitstellungsmodell erstellte Ressourcen und beschreibt die für SQL Server auf virtuellen Azure-Computern (Virtual Machines, VMs) verfügbaren Business Intelligence-Features (BI).
 services: virtual-machines-windows
 documentationcenter: na
-author: guyinacube
+author: markingmyname
 manager: erikre
 editor: monicar
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
-ms.author: asaxton
-ms.openlocfilehash: a010e60df2d86d2b1cc923b427aa7d7452f58089
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: maghan
+ms.openlocfilehash: 6f1a95e52def9154253192ab9d43d1e7d621cee7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>SQL Server-Business Intelligence in Azure Virtual Machines
 > [!IMPORTANT] 
@@ -95,7 +95,7 @@ In der folgenden Tabelle sind die Business Intelligence-Features zusammengefasst
     Informationen zu den aktuellen Größen virtueller Computer finden Sie unter [Größen virtueller Computer unter Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Eine bewährte Methode für die Datenträgerverwaltung ist das Speichern von Daten-, Protokoll- und Sicherungsdateien auf anderen Laufwerken als **C:** und **D:**. Erstellen Sie beispielsweise die Datenträger **E:** und **F:** für Daten.
   
-  * Die Laufwerk-Cacherichtlinie für das Standardlaufwerk **C:**ist für die Verwendung von Daten nicht optimal.
+  * Die Laufwerk-Cacherichtlinie für das Standardlaufwerk **C:** ist für die Verwendung von Daten nicht optimal.
   * Das Laufwerk **D:** ist ein temporäres Laufwerk, das hauptsächlich für die Auslagerungsdatei verwendet wird. Das Laufwerk **D:** wird nicht beibehalten und nicht in Blob Storage gespeichert. Bei Verwaltungsaufgaben, z.B. einer Änderung der Größe des virtuellen Computers, wird das Laufwerk **D:** zurückgesetzt. Es wird empfohlen, das Laufwerk **D:** **NICHT** für Datenbankdateien zu verwenden, einschließlich „tempdb“.
     
     Weitere Informationen zum Erstellen und Anfügen von Datenträgern finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Computer](../classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
@@ -225,7 +225,7 @@ Wenn Sie über einen Remotecomputer eine Verbindung mit dem Webportal oder Beric
 2. Öffnen Sie Port 80 in der Firewall des virtuellen Computers.
 3. Navigieren Sie zum Webportal oder Berichts-Manager, indem Sie den **DNS-Namen** des virtuellen Azure-Computers als Servernamen in der URL verwenden. Beispiel: 
    
-    **Berichtsserver:** http://uebi.cloudapp.net/reportserver **Webportal:** http://uebi.cloudapp.net/reports
+    **Berichtsserver**: http://uebi.cloudapp.net/reportserver, **Webportal**: http://uebi.cloudapp.net/reports
    
     [Konfigurieren einer Firewall für den Zugriff auf den Berichtsserver](https://msdn.microsoft.com/library/bb934283.aspx)
 

@@ -1,5 +1,5 @@
 ---
-title: "Blueprint zur Azure-Zahlungsverarbeitung – CHD-Anforderungen"
+title: Blueprint zur Azure-Zahlungsverarbeitung – CHD-Anforderungen
 description: PCI-DSS-Anforderung 3
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 356599cbe1e4e1948a5ec16d0d504835fa7dcd43
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 3bbed692bfccaa2a3296ba4697c66e9069b6e914
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="chd-requirements-for-pci-dss-compliant-environments"></a>CHD-Anforderungen für PCI-DSS-konforme Umgebungen
 ## <a name="pci-dss-requirement-3"></a>PCI-DSS-Anforderung 3
@@ -161,7 +161,7 @@ Zu den vertraulichen Authentifizierungsdaten gehören die in den folgenden Anfor
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verschlüsselt alle gespeicherten Daten und trennt den Datenverkehr, um eine privilegierte Rechteerweiterung für DevOps-Funktionen zu verhindern.<br /><br />Weil die App Service-Umgebung geschützt und gesperrt ist, muss es einen Mechanismus geben, der es erlaubt, alle DevOps-Releases oder -Änderungen zu berücksichtigen, die notwendig sein könnten, so z. B. die Möglichkeit, eine Web-App mit Kudu zu überwachen.<br /><br />Ein virtueller Computer wurde als Jumpbox (Bastionhost) mit den folgenden Konfigurationen eingerichtet:<br /><br /><ul><li>[Antischadsoftware-Erweiterung](/azure/security/azure-security-antimalware)</li><li>[OMS-Überwachungserweiterung](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[VM-Diagnoseerweiterung](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[Bitlocker-verschlüsselter Datenträger](/azure/security/azure-security-disk-encryption)</li></ul>Die Verwendung von Azure Key Vault entspricht den Azure Government-, PCI-DSS- und HIPAA-Anforderungen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verschlüsselt alle gespeicherten Daten und trennt den Datenverkehr, um eine privilegierte Rechteerweiterung für DevOps-Funktionen zu verhindern.<br /><br />Weil die App Service-Umgebung geschützt und gesperrt ist, muss es einen Mechanismus geben, der es erlaubt, alle DevOps-Releases oder -Änderungen zu berücksichtigen, die notwendig sein könnten, so z. B. die Möglichkeit, eine Web-App mit Kudu zu überwachen.<br /><br />Ein virtueller Computer wurde als Jumpbox (Bastionhost) mit den folgenden Konfigurationen eingerichtet:<br /><br /><ul><li>[Antimalware-Erweiterung](/azure/security/azure-security-antimalware)</li><li>[Log Analytics-Überwachungserweiterung](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[VM-Diagnoseerweiterung](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[Bitlocker-verschlüsselter Datenträger](/azure/security/azure-security-disk-encryption)</li></ul>Die Verwendung von Azure Key Vault entspricht den Azure Government-, PCI-DSS- und HIPAA-Anforderungen.|
 
 
 
@@ -252,7 +252,7 @@ Zu den vertraulichen Authentifizierungsdaten gehören die in den folgenden Anfor
 **3.6** Dokumentieren und implementieren Sie alle Schlüsselverwaltungsprozesse und -verfahren für kryptografische Schlüssel, die zur Verschlüsselung von Karteninhaberdaten verwendet werden, einschließlich der folgenden. 
 
 > [!NOTE]
-> Zahlreiche Branchenstandards für die Schlüsselverwaltung sind aus verschiedenen Ressourcen verfügbar, einschließlich NIST, das unter „http://csrc.nist.gov“ verfügbar ist.
+> Zahlreiche Branchenstandards für die Schlüsselverwaltung sind in verschiedenen Ressourcen verfügbar, einschließlich NIST, das Sie unter http://csrc.nist.gov finden.
 
 **Zuständigkeiten:&nbsp;&nbsp;`Customer Only`**
 

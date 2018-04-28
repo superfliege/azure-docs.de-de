@@ -12,67 +12,106 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/11/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: fc2ec96113310f54d32a67ea5fa31725600046c9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 349661352d17b015d4c605b39f1e42aa482949ac
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="generate-pki-certificates-for-azure-stack-deployment"></a>Generieren von PKI-Zertifikaten für die Azure Stack-Bereitstellung
-Nachdem Sie nun [die PKI-Zertifikatanforderungen](azure-stack-pki-certs.md) für Azure Stack-Bereitstellungen kennen, müssen Sie diese Zertifikate von der Zertifizierungsstelle Ihrer Wahl beziehen. 
+# <a name="azure-stack-certificates-signing-request-generation"></a>Generieren von Signieranforderungen für Azure Stack-Zertifikate
 
-## <a name="request-certificates-using-an-inf-file"></a>Anfordern von Zertifikaten mithilfe einer INF-Datei
-Eine Möglichkeit zum Anfordern von Zertifikaten von einer öffentlichen oder internen Zertifizierungsstelle ist die Verwendung einer INF-Datei. Das in Windows integrierte Hilfsprogramm CERTREQ.EXE kann eine INF-Datei mit detaillierten Angaben zum Zertifikat verwenden, um eine Anforderungsdatei zu erzeugen, was in diesem Abschnitt beschrieben wird. 
+Das in diesem Artikel beschriebene Tool Azure Stack Readiness Checker steht im [PowerShell-Katalog](https://aka.ms/AzsReadinessChecker) zur Verfügung. Das Tool erstellt Zertifikatsignieranforderung, die für eine Azure Stack-Bereitstellung geeignet sind. Zertifikate müssen mit genügend Zeit zum Testen vor dem Einsatz angefordert, generiert und validiert werden. 
 
-### <a name="sample-inf-file"></a>Beispiel einer INF-Datei 
-Die INF-Beispieldatei zum Anfordern von Zertifikaten kann verwendet werden, um eine Offline-Zertifikatsanforderungsdatei zur Übermittlung an eine Zertifizierungsstelle (intern oder öffentlich) zu erstellen. Die INF-Datei deckt alle erforderlichen Endpunkte (einschließlich der optionalen PaaS-Dienste) in einem einzigen Platzhalterzertifikat ab. 
+Das Tool Azure Stack Readiness Checker (AzsReadinessChecker) führt die folgenden Zertifikatanforderung aus:
 
-Die INF-Beispieldatei geht davon aus, dass die Region **sea** und der externe FQDN-Wert **sea&#46;contoso&#46;com** ist. Ändern Sie diese Werte entsprechend Ihrer Umgebung, bevor Sie für Ihre Bereitstellung eine INF-Datei generieren. 
+ - **Standardzertifikatanforderungen**  
+    Stellen Sie eine Anforderung zum [Generieren von PKI-Zertifikaten für die Azure Stack-Bereitstellung](azure-stack-get-pki-certs.md). 
+ - **Anforderungstyp**  
+    Sie können mehrere Platzhalter-SAN-, mehrere Domänen- bzw. einzelne Platzhalterzertifikate anfordern.
+ - **Platform-as-a-Service**  
+    Fordern Sie optional PaaS-Namen (Platform-as-a-Service ) für Zertifikate an, wie unter [Azure Stack-PKI-Zertifikatanforderungen: Optionale PaaS-Zertifikate](azure-stack-pki-certs.md#optional-paas-certificates) angegeben.
 
-    
-    [Version] 
-    Signature="$Windows NT$"
+## <a name="prerequisites"></a>Voraussetzungen
 
-    [NewRequest] 
-    Subject = "C=US, O=Microsoft, L=Redmond, ST=Washington, CN=portal.sea.contoso.com"
+Ihr System muss die folgenden Voraussetzungen erfüllen, bevor Sie die Zertifikatsignieranforderungen für PKI-Zertifikate für eine Azure Stack-Bereitstellung generieren:
 
-    Exportable = TRUE                   ; Private key is not exportable 
-    KeyLength = 2048                    ; Common key sizes: 512, 1024, 2048, 4096, 8192, 16384 
-    KeySpec = 1                         ; AT_KEYEXCHANGE 
-    KeyUsage = 0xA0                     ; Digital Signature, Key Encipherment 
-    MachineKeySet = True                ; The key belongs to the local computer account 
-    ProviderName = "Microsoft RSA SChannel Cryptographic Provider" 
-    ProviderType = 12 
-    SMIME = FALSE 
-    RequestType = PKCS10
-    HashAlgorithm = SHA256
+ - Microsoft Azure Stack Readiness Checker
+ - Zertifikatattribute:
+    - Regionsname
+    - Externer vollqualifizierter Domänenname (FQDN)
+    - Antragsteller
+ - Windows 10 oder Windows Server 2016
 
-    ; At least certreq.exe shipping with Windows Vista/Server 2008 is required to interpret the [Strings] and [Extensions] sections below
+## <a name="generate-certificate-signing-requests"></a>Generieren der Zertifikatsignieranforderungen
 
-    [Strings] 
-    szOID_SUBJECT_ALT_NAME2 = "2.5.29.17" 
-    szOID_ENHANCED_KEY_USAGE = "2.5.29.37" 
-    szOID_PKIX_KP_SERVER_AUTH = "1.3.6.1.5.5.7.3.1" 
-    szOID_PKIX_KP_CLIENT_AUTH = "1.3.6.1.5.5.7.3.2"
+Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu überprüfen: 
 
-    [Extensions] 
-    %szOID_SUBJECT_ALT_NAME2% = "{text}dns=*.sea.contoso.com&dns=*.blob.sea.contoso.com&dns=*.queue.sea.contoso.com&dns=*.table.sea.contoso.com&dns=*.vault.sea.contoso.com&dns=*.adminvault.sea.contoso.com&dns=*.dbadapter.sea.contoso.com&dns=*.appservice.sea.contoso.com&dns=*.scm.appservice.sea.contoso.com&dns=api.appservice.sea.contoso.com&dns=ftp.appservice.sea.contoso.com&dns=sso.appservice.sea.contoso.com&dns=adminportal.sea.contoso.com&dns=management.sea.contoso.com&dns=adminmanagement.sea.contoso.com" 
-    %szOID_ENHANCED_KEY_USAGE% = "{text}%szOID_PKIX_KP_SERVER_AUTH%,%szOID_PKIX_KP_CLIENT_AUTH%"
+1.  Installieren Sie AzsReadinessChecker an einer PowerShell-Eingabeaufforderung (5.1 oder höher), indem Sie das folgende Cmdlet ausführen:
 
-    [RequestAttributes]
-    
+    ````PowerShell  
+        Install-Module Microsoft.AzureStack.ReadinessChecker
+    ````
 
-## <a name="generate-and-submit-request-to-the-ca"></a>Generieren und Übermitteln der Anforderung an die Zertifizierungsstelle
-Der folgende Workflow beschreibt, wie Sie die zuvor erzeugte INF-Beispieldatei anpassen und verwenden können, um ein Zertifikat von einer Zertifizierungsstelle anzufordern:
+2.  Deklarieren Sie den **Antragsteller** als sortiertes Wörterbuch. Beispiel:  
 
-1. **Bearbeiten und speichern Sie die INF-Datei**. Kopieren Sie das bereitgestellte Beispiel, und speichern Sie es in einer neuen Textdatei. Ersetzen Sie den Antragstellernamen und den externen FQDN mit den Werten, die Ihrer Bereitstellung entsprechen, und speichern Sie die Datei als INF-Datei.
-2. **Generieren Sie eine Anforderung mithilfe von CERTREQ**. Öffnen Sie auf einem Windows-Computer eine Eingabeaufforderung als Administrator, und führen Sie den folgenden Befehl aus, um eine Anforderungsdatei (.req) zu erzeugen: `certreq -new <yourinffile>.inf <yourreqfilename>.req`.
-3. **Übermitteln Sie die Datei an die Zertifizierungsstelle**. Senden Sie die generierte REQ-Datei an Ihre (interne oder öffentliche) Zertifizierungsstelle.
-4. **Importieren Sie die CER-Datei**. Die Zertifizierungsstelle gibt eine CER-Datei zurück. Importieren Sie auf dem Windows-Computer, auf dem Sie die Anforderungsdatei erstellt haben, die CER-Datei, die an den Computer bzw. in den persönlichen Speicher zurückgegeben wurde. 
-5. **Exportieren und kopieren Sie die PFX-Datei in die Bereitstellungsordner**. Exportieren Sie das Zertifikat (einschließlich des privaten Schlüssels) als PFX-Datei, und kopieren Sie die PFX-Datei in die Bereitstellungsordner, die unter [PKI-Anforderungen für die Azure Stack-Bereitstellung](azure-stack-pki-certs.md) angegeben sind.
+    ````PowerShell  
+    $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"} 
+    ````
+    > [!note]  
+    > Wenn ein allgemeiner Name (CN) angegeben ist, wird dieser vom ersten DNS-Namen der Zertifikatanforderung überschrieben.
+
+3.  Deklarieren Sie ein Ausgabeverzeichnis, das bereits vorhanden ist:
+
+    ````PowerShell  
+    $outputDirectory = "$ENV:USERNAME\Documents\AzureStackCSR" 
+    ````
+
+4. Deklarieren Sie einen **Regionsnamen** und **externen FQDN** für die Azure Stack-Bereitstellung.
+
+    ```PowerShell  
+    $regionName = 'east'
+    $externalFQDN = 'azurestack.contoso.com'
+    ````
+
+    > [!note]  
+    > `<regionName>.<externalFQDN>` bildet die Grundlage für die Erstellung aller externen DNS-Namen in Azure Stack. In diesem Beispiel heißt das Portal `portal.east.azurestack.contoso.com`.
+
+5. So generieren Sie eine einzige Zertifikatsanforderung mit mehreren alternativen Antragstellernamen, einschließlich derjenigen, die für PaaS-Dienste benötigt werden
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleSAN -OutputRequestPath $OutputDirectory -IncludePaaS
+    ````
+
+6. So generieren Sie individuelle Zertifikatsignieranforderungen für jeden DNS-Namen ohne PaaS-Dienste
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleSAN -OutputRequestPath $OutputDirectory
+    ````
+
+7. Überprüfen Sie die Ausgabe:
+
+    ````PowerShell  
+    AzsReadinessChecker v1.1803.405.3 started
+    Starting Certificate Request Generation
+
+    CSR generating for following SAN(s): dns=*.east.azurestack.contoso.com&dns=*.blob.east.azurestack.contoso.com&dns=*.queue.east.azurestack.contoso.com&dns=*.table.east.azurestack.cont
+    oso.com&dns=*.vault.east.azurestack.contoso.com&dns=*.adminvault.east.azurestack.contoso.com&dns=portal.east.azurestack.contoso.com&dns=adminportal.east.azurestack.contoso.com&dns=ma
+    nagement.east.azurestack.contoso.com&dns=adminmanagement.east.azurestack.contoso.com
+    Present this CSR to your Certificate Authority for Certificate Generation: C:\Users\username\Documents\AzureStackCSR\wildcard_east_azurestack_contoso_com_CertRequest_20180405233530.req
+    Certreq.exe output: CertReq: Request Created
+
+    Finished Certificate Request Generation
+
+    AzsReadinessChecker Log location: C:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\1.1803.405.3\AzsReadinessChecker.log
+    AzsReadinessChecker Completed
+    ````
+
+8.  Übermitteln Sie die generierte **REQ**-Datei an Ihre (interne oder öffentliche) Zertifizierungsstelle.  Das Ausgabeverzeichnis von **Start-AzsReadinessChecker** enthält die Zertifikatsignieranforderungen, die für die Übermittlung an eine Zertifizierungsstelle erforderlich sind.  Es enthält auch ein Unterverzeichnis, das die INF-Dateien, die bei der Generierung von Zertifikatanforderungen verwendet werden, als Referenz enthält. Vergewissern Sie sich, dass Ihre Zertifizierungsstelle Zertifikate mit Ihrer generierten Anforderung erstellt, die die [Azure Stack-PKI-Voraussetzungen](azure-stack-pki-certs.md) erfüllen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Vorbereiten von Azure Stack-PKI-Zertifikaten](azure-stack-prepare-pki-certs.md)
+

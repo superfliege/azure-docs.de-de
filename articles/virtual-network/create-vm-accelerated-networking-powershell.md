@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: c0017b8759a1f01b010172be562ed869d1d51a25
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 995f40599c059434c419bea95019f8700f756ad8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Virtuelle Computer müssen mit aktiviertem beschleunigtem Netzwerkbetrieb erstellt werden. Dieses Feature kann nicht auf vorhandenen virtuellen Computern aktiviert werden. Führen Sie die folgenden Schritte aus, um den beschleunigten Netzwerkbetrieb zu aktivieren:
 >   1. Löschen des virtuellen Computers
 >   2. Erneutes Erstellen des virtuellen Computers mit aktiviertem beschleunigtem Netzwerkbetrieb
@@ -52,7 +52,7 @@ Der beschleunigte Netzwerkbetrieb wird für die meisten Größen universeller, c
 Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Windows-Computer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="regions"></a>Regionen
-Verfügbar in allen öffentlichen Azure-Regionen und in der Azure Government Cloud 
+Verfügbar in allen öffentlichen Azure-Regionen und in der Azure Government Cloud
 
 ## <a name="limitations"></a>Einschränkungen
 Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
@@ -61,11 +61,11 @@ Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
 * **VM-Erstellung:** Eine NIC mit aktiviertem beschleunigten Netzwerkbetrieb kann nur an eine VM angefügt werden, während diese erstellt wird. Die NIC kann nicht an eine vorhandene VM angefügt werden. Wenn Sie den virtuellen Computer zu einer vorhandenen Verfügbarkeitsgruppe hinzufügen, muss der beschleunigte Netzwerkbetrieb für alle virtuellen Computer in der Verfügbarkeitsgruppe aktiviert sein.
 * **Bereitstellung nur über den Azure Resource Manager:** Virtuelle Computer (klassisch) können nicht mit beschleunigtem Netzwerkbetrieb bereitgestellt werden.
 
-In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb mithilfe von Azure PowerShell dargestellt, Sie können jedoch auch [über das Azure-Portal einen virtuellen Computer mit beschleunigtem Netzwerkbetrieb erstellen](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie einen virtuellen Computer mit einem unterstützten Betriebssystem und einer unterstützten VM-Größe im Portal erstellen, wählen Sie unter **Einstellungen** für **Beschleunigter Netzwerkbetrieb** die Option **Aktiviert** aus. Nach dem Erstellen des virtuellen Computers müssen Sie die Anweisungen unter [Überprüfen, ob der Treiber im Betriebssystem installiert ist](#confirm-the-driver-is-installed-in-the-operating-system) abschließen.
+In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb mithilfe von Azure PowerShell dargestellt, Sie können jedoch auch [über das Azure-Portal einen virtuellen Computer mit beschleunigtem Netzwerkbetrieb erstellen](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie einen virtuellen Computer im Portal erstellen, wählen Sie unter **Einstellungen** für **Beschleunigter Netzwerkbetrieb** die Option **Aktiviert** aus. Die Option zum Aktivieren des beschleunigten Netzwerkbetriebs wird nur dann im Portal angezeigt, wenn Sie ein [unterstütztes Betriebssystem](#supported-operating-systems) und die [Größe des virtuellen Computers](#supported-vm-instances) ausgewählt haben. Nach dem Erstellen des virtuellen Computers müssen Sie die Anweisungen unter [Überprüfen, ob der Treiber im Betriebssystem installiert ist](#confirm-the-driver-is-installed-in-the-operating-system) abschließen.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Installieren Sie [Azure PowerShell](/powershell/azure/install-azurerm-ps), Version 5.1.1 oder höher. Zur Ermittlung der derzeit installierten Version führen Sie `Get-Module -ListAvailable AzureRM` aus. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, installieren Sie die aktuelle Version des AzureRM-Moduls über den [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureRM). Melden Sie sich in einer PowerShell-Sitzung mithilfe von [Add-AzureRmAccount](/powershell/module/AzureRM.Profile/Add-AzureRmAccount) bei Ihrem Azure-Konto an.
+Installieren Sie [Azure PowerShell](/powershell/azure/install-azurerm-ps), Version 5.1.1 oder höher. Zur Ermittlung der derzeit installierten Version führen Sie `Get-Module -ListAvailable AzureRM` aus. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, installieren Sie die aktuelle Version des AzureRM-Moduls über den [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureRM). Melden Sie sich in einer PowerShell-Sitzung mithilfe von [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) bei Ihrem Azure-Konto an.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu den Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
 
@@ -200,13 +200,13 @@ New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "cent
 
 ## <a name="confirm-the-driver-is-installed-in-the-operating-system"></a>Überprüfen, ob der Treiber im Betriebssystem installiert ist
 
-Stellen Sie nach dem Erstellen des virtuellen Computers in Azure eine Verbindung mit dem virtuellen Computer her, und vergewissern Sie sich, dass der Treiber unter Windows installiert ist. 
+Stellen Sie nach dem Erstellen des virtuellen Computers in Azure eine Verbindung mit dem virtuellen Computer her, und vergewissern Sie sich, dass der Treiber unter Windows installiert ist.
 
 1. Navigieren Sie in einem Internetbrowser zum [Azure-Portal](https://portal.azure.com), und melden Sie sich bei Ihrem Azure-Konto an.
 2. Geben Sie oben im Azure-Portal im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *myVm* ein. Wenn **myVm** in den Suchergebnissen angezeigt wird, klicken Sie darauf. Wenn **Wird erstellt** unter der Schaltfläche **Verbinden** angezeigt wird, hat Azure das Erstellen der VM noch nicht abgeschlossen. Klicken Sie erst in der linken oberen Ecke auf **Verbinden**, nachdem **Wird erstellt** unter der Schaltfläche **Verbinden** nicht mehr angezeigt wird.
 3. Geben Sie den Benutzernamen und das Kennwort ein, die Sie in [Erstellen des virtuellen Computers](#create-the-virtual-machine) verwendet haben. Wenn Sie noch nie eine Verbindung mit einer Windows-VM in Azure hergestellt haben, finden Sie unter [Herstellen der Verbindung mit dem virtuellen Computer](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine) weitere Informationen.
 4. Klicken Sie mit der rechten Maustaste auf die Windows-Schaltfläche „Start“, und klicken Sie auf **Geräte-Manager**. Erweitern Sie den Knoten **Netzwerkadapter**. Vergewissern Sie sich, dass **Mellanox ConnectX-3 Virtual Function Ethernet Adapter** (wie in der folgenden Abbildung gezeigt) angezeigt wird:
-   
+
     ![Geräte-Manager](./media/create-vm-accelerated-networking/device-manager.png)
 
 Der beschleunigte Netzwerkbetrieb ist nun für Ihre VM aktiviert.
