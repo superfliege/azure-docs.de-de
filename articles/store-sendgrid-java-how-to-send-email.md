@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c9f7d4841846e41eacb66125bcdeeb29466bb0b8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Senden von E-Mails mit SendGrid aus Java
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem E-Mail-Dienst SendGrid in Azure. Die Beispiele sind in Java geschrieben. Die behandelten Szenarien umfassen das **Erstellen einer E-Mail**, **Senden einer E-Mail**, **Hinzufügen von Anhängen**, **Verwenden von Filtern** und **Aktualisieren von Eigenschaften**. Weitere Informationen zu SendGrid und zum Senden von E-Mails erhalten Sie im Abschnitt [Nächste Schritte](#next-steps) .
@@ -81,7 +81,7 @@ Rufen Sie die javax.mail-Bibliotheken ab, z.B. von <http://www.oracle.com/techne
        Authenticator auth = new SMTPAuthenticator();
        Session mailSession = Session.getDefaultInstance(properties, auth);
 3. Erstellen Sie Ihre Nachricht, und ordnen Sie die Werte für **An**, **Von**, **Betreff** und die Inhalte zu. Die entsprechende Vorgehensweise wird im Abschnitt [Erstellen einer E-Mail](#how-to-create-an-email) erläutert.
-4. Versenden Sie eine Nachricht über ein *javax.mail.Transport* -Objekt. Die entsprechende Vorgehensweise wird im Abschnitt [Vorgehensweise: Eine E-Mail senden][Vorgehensweise: Eine E-Mail senden] erläutert.
+4. Versenden Sie eine Nachricht über ein *javax.mail.Transport* -Objekt. Die entsprechende Vorgehensweise wird im Abschnitt [Senden von E-Mails][#how-to-send-an-email] erläutert.
 
 ## <a name="how-to-create-an-email"></a>Erstellen einer E-Mail
 Im Folgenden ist dargestellt, wie Sie Werte für eine E-Mail angeben.

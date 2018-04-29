@@ -13,11 +13,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 6d214072bccb8b2b42828ee003dcf349985b4f43
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7e092dc1448a45277e01b1a8c6d2bc0e2a8a22a3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="upgrade-to-vm-backup-stack-v2"></a>Upgrade auf VM-Sicherungsstapel V2
 Das Upgrade auf VM-Sicherungsstapel V2 bietet die folgenden Featureverbesserungen:
@@ -49,7 +49,9 @@ Standardmäßig werden Momentaufnahmen sieben Tage lang beibehalten. So kann die
 * Dies ist ein unidirektionales Upgrade des VM-Sicherungsstapels. Deshalb werden alle zukünftige Sicherungen diesem Ablauf folgen. Aufgrund der **Aktivierung auf Abonnementebene gehen alle virtuellen Computer in diesen Ablauf ein**. Alle neuen Featureergänzungen basieren auf demselben Stapel. In zukünftigen Releases wird es möglich sein, dies auf Richtlinienebene zu steuern. 
 * Stellen Sie bei virtuellen Computern mit Premium-Datenträgern während der ersten Sicherung sicher, dass der Größe des virtuellen Computers entsprechender Speicherplatz im Speicherkonto verfügbar ist, bis die erste Sicherung abgeschlossen ist. 
 * Da Momentaufnahmen lokal gespeichert werden, um das Erstellen eines Wiederherstellungspunkts zu unterstützen und auch die Wiederherstellung zu beschleunigen, werden Ihnen während des Zeitraums von sieben Tagen die Speicherkosten für die Momentaufnahmen angezeigt.
+* Inkrementelle Momentaufnahmen werden als Seitenblobs gespeichert. Für alle Kunden, die nicht verwaltete Datenträger verwenden, werden die 7-Tage-Momentaufnahmen berechnet, die im lokalen Speicherkonto des Kunden gespeichert sind. Gemäß dem aktuellen Preismodell entstehen Kunden keine Kosten für verwaltete Datenträger.
 * Wenn Sie eine Wiederherstellung von einem Momentaufnahmen-Wiederherstellungspunkt aus für eine Premium-VM durchführen, sehen Sie, das ein temporärer Speicherort verwendet wird, während der virtuelle Computer im Rahmen der Wiederherstellung erstellt wird. 
+* Bei Premium-Speicherkonten belegen die für die sofortige Wiederherstellung aufgenommenen Momentaufnahmen den im Premium-Speicherkonto zugewiesenen Speicherplatz von 10 TB.
 
 ## <a name="how-to-upgrade"></a>Wie werden Upgrades durchgeführt?
 ### <a name="the-azure-portal"></a>Das Azure-Portal
@@ -66,7 +68,7 @@ Führen Sie die folgenden Cmdlets in einem PowerShell-Terminal mit erhöhten Rec
 1.  Melden Sie sich beim Azure-Konto an. 
 
 ```
-PS C:> Login-AzureRmAccount
+PS C:> Connect-AzureRmAccount
 ```
 
 2.  Wählen Sie das Abonnement aus, das Sie für die Vorschau registrieren möchten:
@@ -78,14 +80,14 @@ PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select
 3.  Registrieren Sie dieses Abonnement für die private Vorschau:
 
 ```
-PS C:>  Register-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
+PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
 ## <a name="verify-whether-the-upgrade-is-complete"></a>Überprüfen Sie, ob das Upgrade abgeschlossen ist.
 Führen Sie das folgende Cmdlet in einem PowerShell-Terminal mit erhöhten Rechten aus:
 
 ```
-Get-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
+Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
 Wenn „Registriert“ anzeigt wird, wird Ihr Abonnement auf VM-Sicherungsstapel V2 aktualisiert. 

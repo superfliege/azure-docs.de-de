@@ -1,25 +1,23 @@
 ---
-title: "Hinzufügen zusätzlicher Azure-Speicherkonten zu HDInsight | Microsoft Docs"
-description: "Erfahren Sie, wie Sie einem vorhandenen HDInsight-Cluster zusätzliche Azure-Speicherkonten hinzufügen."
+title: Hinzufügen zusätzlicher Azure-Speicherkonten zu HDInsight | Microsoft Docs
+description: Erfahren Sie, wie Sie einem vorhandenen HDInsight-Cluster zusätzliche Azure-Speicherkonten hinzufügen.
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.devlang: ''
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 72045d363516a2f16d45e3f8ee157ddd9d9242bd
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 569a41dfdbf2f9d911e67f283f413130ba7e1f79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
@@ -55,7 +53,7 @@ Während der Verarbeitung führt dieses Skript folgende Aktionen aus:
 
 ## <a name="the-script"></a>Das Skript
 
-__Speicherort des Skripts__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
+__Skriptspeicherort__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
 __Anforderungen__:
 
@@ -68,7 +66,7 @@ Das Skript kann über das Azure-Portal, Azure PowerShell oder die Azure CLI 1.0 
 > [!IMPORTANT]
 > Verwenden Sie beim Ausführen der Schritte im Anpassungsdokument die folgenden Informationen, um dieses Skript anzuwenden:
 >
-> * Ersetzen Sie ggf. URIs in der Beispielskriptaktion mit dem URI für dieses Skript (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
+> * Ersetzen Sie alle Beispielskriptaktions-URIs durch den URI für dieses Skript (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)).
 > * Ersetzen Sie alle Beispiel-Parameter mit dem Azure-Speicherkontonamen und dem Schlüssel des Speicherkontos, das dem Cluster hinzugefügt werden soll. Bei Verwendung des Azure-Portals müssen diese Parameter durch eine Leerstelle getrennt werden.
 > * Sie müssen dieses Skript nicht als __Persistent__ markieren, da es die Ambari-Konfiguration für den Cluster direkt aktualisiert.
 
@@ -100,7 +98,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > Legen Sie `$PASSWORD` auf das Kennwort des Anmeldekontos (Administrator) für den Cluster fest. Legen Sie `$CLUSTERNAME` auf den Namen des HDInsight-Clusters fest. Legen Sie `$STORAGEACCOUNTNAME` auf den Namen des Speicherkontos fest.
 >
-> In diesem Beispiel werden JSON-Daten unter Verwendung von [curl (http://curl.haxx.se/)](http://curl.haxx.se/) und [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) abgerufen und analysiert.
+> Dieses Beispiel verwendet [curl (http://curl.haxx.se/)](http://curl.haxx.se/)) und [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/)) zum Abrufen und Analysieren von JSON-Daten.
 
 Ersetzen Sie bei Verwendung dieses Befehls __CLUSTERNAME__ durch den Namen des HDInsight-Clusters. Ersetzen Sie __PASSWORD__ mit dem HTTP-Anmeldekennwort für den Cluster. Ersetzen Sie __STORAGEACCOUNT__ mit dem Namen des Speicherkontos, das mit der Skriptaktion hinzugefügt wurde. Die Ausgabe dieses Befehls entspricht in etwa dem folgenden Text:
 
@@ -116,7 +114,7 @@ Das erneute Ausführen der Skriptaktion aktualisiert den Schlüssel __nicht__, d
 
 Um dieses Problem zu umgehen, müssen Sie den vorhandenen Eintrag für das Speicherkonto entfernen. Führen Sie die folgenden Schritte aus, um den vorhandenen Eintrag zu entfernen:
 
-1. Öffnen Sie in einem Webbrowser die Ambari-Webbenutzeroberfläche für Ihren HDInsight-Cluster. Der URI lautet https://CLUSTERNAME.azurehdinsight.net. Ersetzen Sie __CLUSTERNAME__ durch den Namen Ihres Clusters.
+1. Öffnen Sie in einem Webbrowser die Ambari-Webbenutzeroberfläche für Ihren HDInsight-Cluster. Der URI ist https://CLUSTERNAME.azurehdinsight.net. Ersetzen Sie __CLUSTERNAME__ durch den Namen Ihres Clusters.
 
     Geben Sie bei der entsprechenden Aufforderung den HTTP-Anmeldenamen und das Kennwort für den Cluster ein.
 

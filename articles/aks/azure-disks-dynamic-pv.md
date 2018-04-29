@@ -8,17 +8,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 36e25d7e5f1e5c6e1cf72442b73ac081810d216a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a6bc79d0556299634a78c5232bbab4e20810172c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Persistente Volumes mit Azure-Datenträgern
 
 Ein persistentes Volume stellt ein Speicherelement dar, das für die Verwendung in Kubernetes-Pods bereitgestellt wurde. Ein persistentes Volume kann von einem oder mehreren Pods verwendet und dynamisch oder statisch bereitgestellt werden. Weitere Informationen zu persistenten Kubernetes-Volumes finden Sie unter [Persistente Kubernetes-Volumes][kubernetes-volumes].
 
 Dieses Dokument enthält Informationen zur Verwendung von persistenten Volumes mit Azure-Datenträgern in einem AKS-Cluster (Azure Container Service).
+
+> [!NOTE]
+> Ein Azure-Datenträger kann nur mit dem Zugriffsmodustyp „ReadWriteOnce“ eingebunden werden. Dadurch ist er nur für einen einzelnen AKS-Knoten verfügbar. Wenn Sie ein persistentes Volume für mehrere Knoten freigeben möchten, ziehen Sie die Verwendung von [Azure Files][azure-files-pvc] in Erwägung.
 
 ## <a name="built-in-storage-classes"></a>Integrierte Speicherklassen
 
@@ -40,7 +43,7 @@ Ein Anspruch auf ein persistentes Volume (Persistent Volume Claim, PVC) wird ver
 
 Erstellen Sie eine Datei namens `azure-premimum.yaml`, und fügen Sie das folgende Manifest ein.
 
-Beachten Sie, dass die Speicherklasse `managed-premium` in der Anmerkung angegeben wird und dass der Anspruch einen Datenträger der Größe `5GB` mit `ReadWriteOnce`-Zugriff anfordert. 
+Beachten Sie, dass die Speicherklasse `managed-premium` in der Anmerkung angegeben wird und dass der Anspruch einen Datenträger der Größe `5GB` mit `ReadWriteOnce`-Zugriff anfordert.
 
 ```yaml
 apiVersion: v1
@@ -63,12 +66,9 @@ Erstellen Sie mit dem Befehl [kubectl create][kubectl-create] einen Anspruch auf
 kubectl create -f azure-premimum.yaml
 ```
 
-> [!NOTE]
-> Ein Azure-Datenträger kann nur mit dem Zugriffsmodustyp „ReadWriteOnce“ eingebunden werden. Dadurch ist er nur für einen einzelnen AKS-Knoten verfügbar. Wenn Sie ein persistentes Volume für mehrere Knoten freigeben möchten, ziehen Sie die Verwendung von [Azure Files][azure-files-pvc] in Erwägung.
-
 ## <a name="using-the-persistent-volume"></a>Verwenden des persistenten Volumes
 
-Nachdem der Anspruch auf ein persistentes Volumes erstellt und der Datenträger erfolgreich bereitgestellt wurde, kann ein Pod mit Zugriff auf den Datenträger erstellt werden. Das folgende Manifest erstellt einen Pod, der den Anspruch auf das persistente Volume `azure-managed-disk` verwendet, um den Azure-Datenträger im Pfad `/mnt/azure` einzubinden. 
+Nachdem der Anspruch auf ein persistentes Volumes erstellt und der Datenträger erfolgreich bereitgestellt wurde, kann ein Pod mit Zugriff auf den Datenträger erstellt werden. Das folgende Manifest erstellt einen Pod, der den Anspruch auf das persistente Volume `azure-managed-disk` verwendet, um den Azure-Datenträger im Pfad `/mnt/azure` einzubinden.
 
 Erstellen Sie eine Datei namens `azure-pvc-disk.yaml`, und fügen Sie das folgende Manifest ein.
 
@@ -96,7 +96,7 @@ Verwenden Sie den Befehl [kubectl create][kubectl-create] zum Erstellen des Pods
 kubectl create -f azure-pvc-disk.yaml
 ```
 
-Sie verfügen nun über einen ausgeführten Pod mit Ihrem Azure-Datenträger, der im Verzeichnis `/mnt/azure` eingebunden wurde. Sie können Ihre Volumeeinbindung anzeigen, wenn Sie Ihren Pod über `kubectl describe pod mypod` untersuchen.
+Sie verfügen nun über einen ausgeführten Pod mit Ihrem Azure-Datenträger, der im Verzeichnis `/mnt/azure` eingebunden wurde. Diese Konfiguration wird angezeigt, wenn Sie Ihren Pod über `kubectl describe pod mypod` auswerten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

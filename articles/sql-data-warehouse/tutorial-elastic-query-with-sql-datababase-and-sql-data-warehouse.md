@@ -1,29 +1,24 @@
 ---
-title: Tutorial zu elastischen Abfragen mit Azure SQL Data Warehouse | Microsoft-Dokumentation
-description: Erfahren Sie, wie elastische Abfragen mit Azure SQL Data Warehouse verwendet werden.
+title: 'Tutorial: Elastische Abfragen mit Azure SQL Data Warehouse | Microsoft-Dokumentation'
+description: In diesem Tutorial wird Azure SQL Data Warehouse mithilfe des Features für elastische Abfragen über Azure SQL-Datenbank abgefragt.
 services: sql-data-warehouse
-documentationcenter: NA
 author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67g
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 11/03/2017
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/14/2018
 ms.author: elbutter
-ms.openlocfilehash: 20bbdbbde7edc4351563685761785874870a3c82
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.reviewer: igorstan
+ms.openlocfilehash: a31f035b5ec086a046028956c4a9c0de0d6a313d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="configure-elastic-query-with-sql-data-warehouse"></a>Konfigurieren von elastischen Abfragen mit SQL Data Warehouse
+# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Tutorial: Zugreifen auf Daten in Azure SQL Data Warehouse über Azure SQL-Datenbank mithilfe elastischer Abfragen
 
-In diesem Tutorial wird gezeigt, wie eine Abfrage mithilfe elastischer Abfragen von der SQL-Datenbank an SQL Data Warehouse übermittelt wird. Die Funktion zum Ausführen elastischer Abfragen kann nur bei Azure SQL-Produkten verwendet werden. Weitere Informationen zum Begriff „Elastische Abfrage“ finden Sie unter [**Verwendung von elastischen Abfragen mit SQL Data Warehouse**][How to use Elastic Query with SQL Data Warehouse].
+In diesem Tutorial wird Azure SQL Data Warehouse mithilfe des Features für elastische Abfragen über Azure SQL-Datenbank abgefragt. 
 
 ## <a name="prerequisites-for-the-tutorial"></a>Voraussetzungen für das Tutorial
 
@@ -128,7 +123,7 @@ In den nächsten Schritten erstellen wir eine Tabelle in unserer Data Warehouse-
 
 5. Beachten Sie, dass Ihre **SQL-Datenbankinstanz** nun eine externe Tabellendefinition enthält.
 
-   ![Externe Tabellendefinition für elastische Abfragen](./media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
+   ![Externe Tabellendefinition für elastische Abfragen](media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
 
 
 6. Senden Sie die folgende Abfrage, die die Data Warehouse-Instanz abfragt. Sie sollten die fünf Werte erhalten, die Sie in Schritt 2 eingefügt haben. 
@@ -143,15 +138,5 @@ SELECT * FROM [dbo].[OrderInformation];
 
 Herzlichen Glückwunsch! Sie haben die Konfiguration der grundlegenden Einstellungen elastischer Abfragen abgeschlossen. 
 
-
-
-
-<!--Image references-->
-
-<!--Article references-->
-
-[How to use Elastic Query with SQL Data Warehouse]: ./how-to-use-elastic-query-with-sql-data-warehouse.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
+## <a name="next-steps"></a>Nächste Schritte
+Empfehlungen finden Sie unter [Vorgehensweise zur Verwendung elastischer Abfragen mit SQL Data Warehouse](how-to-use-elastic-query-with-sql-data-warehouse.md).

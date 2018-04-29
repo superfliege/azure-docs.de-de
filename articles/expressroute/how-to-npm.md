@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0d8bee936717a5668e16fbd66d416fcc4e738814
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
 
@@ -73,7 +73,7 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) das Abonnement, in dem Peering der VNETs mit Ihrer ExpressRoute-Leitung eingerichtet ist. Suchen Sie anschließend über den **Marketplace** in der Liste der Dienste nach „Netzwerkleistungsmonitor“. Klicken Sie in die Ausgabe, um die Seite **Netzwerkleistungsmonitor** zu öffnen.
 
    >[!NOTE]
-   >Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden.  Wenn Sie einen vorhandenen Arbeitsbereich verwenden möchten, müssen Sie sicherstellen, dass der Arbeitsbereich zur neuen Abfragesprache migriert wurde. [Weitere Informationen](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden.  Wenn Sie einen vorhandenen Arbeitsbereich verwenden möchten, müssen Sie sicherstellen, dass der Arbeitsbereich zur neuen Abfragesprache migriert wurde. [Weitere Informationen](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
    >
 
    ![Portal](.\media\how-to-npm\3.png)<br><br>
@@ -118,7 +118,7 @@ Es wird empfohlen, dass Sie zur Bereitstellung von Redundanz mindestens zwei Age
   >
   
   >[!NOTE]
-  >Agents, die von SCOM (einschließlich [MMA](https://technet.microsoft.com/en-us/library/dn465154(v=sc.12).aspx)) gepusht werden, sind möglicherweise nicht in der Lage, ihren Standort konsistent zu ermitteln, wenn sie in Azure gehostet werden.  Es wird empfohlen, diese Agents nicht in Azure-VNETs zu verwenden, um ExpressRoute zu überwachen.
+  >Agents, die von SCOM (einschließlich [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)) gepusht werden, sind möglicherweise nicht in der Lage, ihren Standort konsistent zu ermitteln, wenn sie in Azure gehostet werden.  Es wird empfohlen, diese Agents nicht in Azure-VNETs zu verwenden, um ExpressRoute zu überwachen.
   >
   >
 

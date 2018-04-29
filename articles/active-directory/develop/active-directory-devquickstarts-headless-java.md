@@ -1,11 +1,11 @@
 ---
 title: Erste Schritte mit der Azure AD Java-Befehlszeile | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie eine Java-Befehlszeilen-App erstellen, die Benutzer für den Zugriff auf eine API anmeldet."
+description: Erfahren Sie, wie Sie eine Java-Befehlszeilen-App erstellen, die Benutzer für den Zugriff auf eine API anmeldet.
 services: active-directory
 documentationcenter: java
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 51e1a8f9-6ff0-4643-a350-0ba794e26fd1
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 895741c6a33434633b8c35df959b3c68d005ba3e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a0e12711e4a7e67861d61ae4575c4956531cf841
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="using-java-command-line-app-to-access-an-api-with-azure-ad"></a>Verwenden der Java-Befehlszeilen-App für den Zugriff auf eine API mit Azure AD
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -258,7 +258,7 @@ In Ihrem Verzeichnis `/targets` sollte sich nun die Datei `adal4jsample.war` bef
 `http://localhost:8080/adal4jsample/`
 
 > [!NOTE]
-> Mit den aktuellen Tomcat-Servern können WAR-Dateien einfach bereitgestellt werden. Navigieren Sie einfach zu `http://localhost:8080/manager/`, und führen Sie die Schritte zum Hochladen der Datei „adal4jsample.war“ aus. Sie wird automatisch mit dem richtigen Endpunkt bereitgestellt.
+> Mit den aktuellen Tomcat-Servern können WAR-Dateien einfach bereitgestellt werden. Navigieren Sie einfach zu `http://localhost:8080/manager/`, und führen Sie die Schritte zum Hochladen der Datei `adal4jsample.war` aus. Sie wird automatisch mit dem richtigen Endpunkt bereitgestellt.
 > 
 > 
 

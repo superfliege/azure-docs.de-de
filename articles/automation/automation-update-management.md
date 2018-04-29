@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c9a546f82d3300b37f861fff53421ebbf9fe3804
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2c54435d893753306e903c0851e319fc3d1621b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -51,7 +51,7 @@ In der folgenden Tabelle sind die unterstützten Betriebssysteme aufgeführt:
 |Betriebssystem  |Notizen  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Unterstützt nur Updatebewertungen         |
-|Windows Server 2008 R2 SP1 und höher     |.NET Framework 4.5 und WMF 5.0 oder höher sind für Windows Server 2008 R2 SP1 erforderlich        |
+|Windows Server 2008 R2 SP1 und höher     |Windows PowerShell 4.0 oder höher erforderlich ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855)).<br> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616)) empfohlen.         |
 |CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
@@ -252,7 +252,7 @@ Sollten Sie Probleme beim Onboarding der Lösung oder eines virtuellen Computers
 | Unable to Register Machine for Patch Management,<br>Registration Failed with Exception<br>System.Net.Http.HttpRequestException: An error occurred while sending the request. ---><br>System.Net.WebException: The underlying connection<br>was closed: An unexpected error<br>occurred on a receive. ---> System.ComponentModel.Win32Exception:<br>The client and server cannot communicate,<br>because they do not possess a common algorithm (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "System.Net.Http.HttpRequestException" bei der Registrierung: Fehler beim Senden der Anforderung. System.Net.WebException: Die zugrunde liegende Verbindung wurde getrennt. Unerwarteter Fehler bei einem Empfangsvorgang. ---> System.ComponentModel.Win32Exception: Client und Server können nicht kommunizieren, da sie keinen gemeinsamen Algorithmus besitzen.) | Proxy/Gateway/Kommunikation durch Firewall blockiert | [Prüfen Sie die Netzwerkanforderungen.](automation-offering-get-started.md#network-planning)|
 | Unable to Register Machine for Patch Management,<br>Registration Failed with Exception<br>Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value. (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "Newtonsoft.Json.JsonReaderException" bei der Registrierung: Fehler beim Analysieren des positiven Unendlichkeitswerts.) | Proxy/Gateway/Kommunikation durch Firewall blockiert | [Prüfen Sie die Netzwerkanforderungen.](automation-offering-get-started.md#network-planning)|
 | Das durch den Dienst "<wsid>.oms.opinsights.azure.com" vorgelegte Zertifikat<br>wurde nicht durch eine für Microsoft-Dienste verwendete<br>Zertifizierungsstelle ausgestellt. Kontakt<br>Ihren Netzwerkadministrator überprüfen, ob ein Proxy die<br>TLS/SSL-Kommunikation abfängt. |Proxy/Gateway/Kommunikation durch Firewall blockiert | [Prüfen Sie die Netzwerkanforderungen.](automation-offering-get-started.md#network-planning)|
-| Unable to Register Machine for Patch Management,<br>Registration Failed with Exception<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Failed to create a self-signed certificate. ---><br>System.UnauthorizedAccessException: Access is denied. (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "AgentService.HybridRegistration.PowerShell.Certificates.CertificateCreationException" bei der Registrierung: Fehler beim Erstellen eines selbstsignierten Zertifikats. System.UnauthorizedAccessException: Zugriff verweigert.) | Fehler beim Erstellen eines selbstsignierten Zertifikats | Vergewissern Sie sich, dass das Systemkonto<br>Lesezugriff auf den folgenden Ordner hat:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|
+| Unable to Register Machine for Patch Management,<br>Registration Failed with Exception<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Failed to create a self-signed certificate. ---><br>System.UnauthorizedAccessException: Access is denied. (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "AgentService.HybridRegistration.PowerShell.Certificates.CertificateCreationException" bei der Registrierung: Fehler beim Erstellen eines selbstsignierten Zertifikats. System.UnauthorizedAccessException: Zugriff verweigert.) | Fehler beim Erstellen eines selbstsignierten Zertifikats | Vergewissern Sie sich, dass das Systemkonto<br>Lesezugriff auf den folgenden Ordner hat:<br>**C:\ProgramData\Microsoft\**<br>** Crypto\RSA**|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

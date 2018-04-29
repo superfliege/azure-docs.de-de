@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: c49cfad5f362f4402be476066f0e8c0158f20d73
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3903e0f55e996d2ff793f17fb710843c5c64127f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
@@ -37,7 +37,6 @@ Für kennwortbasiertes SSO können folgende Browser verwendet werden:
 - **Microsoft Edge:** Unter Windows 10 Anniversary Edition oder höher 
 - **Chrome:** Unter Windows 7 oder höher und MacOS X oder höher
 - **Firefox 26.0 oder höher:** Unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
-- **Internet Explorer 8, 9, 10, 11:** Unter Windows 7 oder höher (eingeschränkte Unterstützung)
 
 ## <a name="install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
@@ -79,7 +78,7 @@ Sie können die Erweiterung für Chrome und Microsoft Edge auch direkt von den f
    3. Klicken Sie auf das Symbol für die Erweiterung, um sich anzumelden.
 
 * Um eine App über die Erweiterung zu starten, gehen Sie wie folgt vor:
-   1. Melden Sie sich nach der Erweiterungsinstallation bei der Erweiterung an, indem Sie auf **Melden Sie sich an, um loszulegen** klicken.
+   1. Melden Sie sich nach der Installation bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
    2. Klicken Sie auf das Symbol für die Erweiterung, um das dazugehörige Menü zu öffnen.
    3. Suchen Sie nach einer App, die im Portal „Meine Apps“ zur Verfügung steht.
    4. Wählen Sie die App in den Suchergebnissen aus.  

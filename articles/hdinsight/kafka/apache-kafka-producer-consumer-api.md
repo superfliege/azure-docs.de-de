@@ -1,8 +1,8 @@
 ---
-title: "Verwenden der Apache Kafka Producer- und Consumer-APIs – Azure HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Apache Kafka Producer- und Consumer-APIs mit Kafka in HDInsight verwenden. Mit diesen APIs können Sie Anwendungen entwickeln, die in Apache Kafka schreiben und lesen."
+title: Verwenden der Apache Kafka Producer- und Consumer-APIs – Azure HDInsight | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Apache Kafka Producer- und Consumer-APIs mit Kafka in HDInsight verwenden. Mit diesen APIs können Sie Anwendungen entwickeln, die in Apache Kafka schreiben und lesen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -12,14 +12,14 @@ ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/18/2018
+ms.topic: conceptual
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: b57745d6bd993a993e923c964327d9071e745413
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 01592401c4c88adeed49b11df4e7963e27b1bcee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="apache-kafka-producer-and-consumer-apis"></a>Apache Kafka Producer- und Consumer-APIs
 
@@ -43,7 +43,7 @@ Dieses Beispiel erfordert Kafka in HDInsight 3.6. Informationen zum Erstellen ei
 
 ## <a name="build-and-deploy-the-example"></a>Erstellen und Bereitstellen des Beispiels
 
-1. Laden Sie die Beispiele unter [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) herunter.
+1. Laden Sie die Beispiele von [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) herunter.
 
 2. Wechseln Sie zum Verzeichnis `Producer-Consumer`, und führen Sie folgenden Befehl aus:
 

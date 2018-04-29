@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über Azure Cosmos DB | Microsoft-Dokumentation"
-description: "Hilfreiche Informationen zur Übersicht über Azure Cosmos DB im Azure-Portal"
+title: Übersicht über Azure Cosmos DB | Microsoft-Dokumentation
+description: Hilfreiche Informationen zur Übersicht über Azure Cosmos DB im Azure-Portal
 services: cosmos-db
 author: sewatson
 manager: lwelicki
@@ -8,11 +8,11 @@ ms.service: cosmos-db
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: sewatson
-ms.openlocfilehash: 9644a587d72973239e34073188ad2cd37eaab5dc
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 13fe8d81c656aeb07947fcd8b2c8a9157b810ca6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-documentation"></a>Dokumentation für Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Erfahren Sie mehr über die Verwendung von Azure Cosmo DB zum Erstellen einer gl
 
 Erfahren Sie mehr über die App-Entwicklung mit Azure Cosmos DB:
 
-- Entwickeln einer App mit Cosmos DB: [SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb) | [Table](/azure/cosmos-db/tutorial-develop-table-dotnet) | [Graph](/azure/cosmos-db/tutorial-develop-graph-dotnet)
+- Entwickeln einer App mit Cosmos DB: [SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb-nodejs) | [Table](/azure/cosmos-db/tutorial-develop-table-dotnet) | [Graph](/azure/cosmos-db/tutorial-develop-graph-dotnet)
 - Importieren von Daten in Cosmos DB: [SQL](/azure/cosmos-db/sql-api-import-data) | [MongoDB](/azure/cosmos-db/mongodb-migrate) 
 - Abfragen von Daten mit Cosmos DB: [SQL](/azure/cosmos-db/tutorial-query-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [Table](/azure/cosmos-db/tutorial-query-table) | [Graph](/azure/cosmos-db/tutorial-query-graph)
 - Globale Datenbankreplikation mit Cosmos DB: [SQL](/azure/cosmos-db/tutorial-global-distribution-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [Table](/azure/cosmos-db/tutorial-global-distribution-table | [Graph](/azure/cosmos-db/tutorial-global-distribution-graph)
@@ -60,7 +60,7 @@ Erfahren Sie mehr über die App-Entwicklung mit Azure Cosmos DB:
 
 Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
 
-- [Azure-Befehlszeilenschnittstelle](/azure/cosmos-db/cli-samples)
+- [Azure-CLI](/azure/cosmos-db/cli-samples)
 - [Azure PowerShell](/azure/cosmos-db/powershell-samples)
 
 ## <a name="more"></a>Weitere Informationen

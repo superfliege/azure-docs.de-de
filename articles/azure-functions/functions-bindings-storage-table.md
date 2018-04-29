@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: e6d2891a8ea531bf5c7cc7e1c74b890e01f2b56b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: cdfde0d888c8434443dcd05109f646eca8c0df19
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-Bindungen für Azure Functions
 
@@ -390,7 +390,7 @@ Die Table Storage-Eingabebindung unterstützt folgende Szenarien:
 Verwenden Sie eine Azure Table Storage-Ausgabebindung, um Entitäten in eine Tabelle in einem Azure Storage-Konto zu schreiben.
 
 > [!NOTE]
-> Das Aktualisieren vorhandener Entitäten wird von dieser Ausgabebindung nicht unterstützt. Verwenden Sie den `TableOperation.Replace`-Vorgang [aus dem Azure Storage-SDK](https://docs.microsoft.com/en-us/azure/cosmos-db/table-storage-how-to-use-dotnet#replace-an-entity) zum Aktualisieren einer vorhandenen Entität.   
+> Das Aktualisieren vorhandener Entitäten wird von dieser Ausgabebindung nicht unterstützt. Verwenden Sie den `TableOperation.Replace`-Vorgang [aus dem Azure Storage-SDK](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-dotnet#replace-an-entity) zum Aktualisieren einer vorhandenen Entität.   
 
 ## <a name="output---example"></a>Ausgabe: Beispiel
 

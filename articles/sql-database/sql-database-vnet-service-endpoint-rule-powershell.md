@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 489d1044de49c63ac7e1423708cc0638355ab1b5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5fcf33d3d54b118c1c25f1467a496da3644a2345
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>Verwenden von PowerShell zum Erstellen eines Endpunkts und einer Regel für den virtuellen Dienst für Azure SQL-Datenbank
 
@@ -50,6 +50,9 @@ Die folgende Liste zeigt die Abfolge von anderen *wichtigen* Cmdlets, die Sie au
 - Sie können sich bereits bei Azure anmelden, z.B. über das [Azure-Portal][http-azure-portal-link-ref-477t].
 - Sie können bereits PowerShell-Skripts ausführen.
 
+> [!NOTE]
+> Vergewissern Sie sich, dass Dienstendpunkte für das VNET/Subnetz aktiviert sind, das Sie dem Server hinzufügen möchten, da andernfalls die VNET-Firewallregel nicht erstellt werden kann.
+
 #### <a name="one-script-divided-into-four-chunks"></a>Ein in vier Blöcke unterteiltes Skript
 
 Das PowerShell-Beispielskript ist in eine Abfolge von kleineren Skripts unterteilt. Die Aufteilung erleichtert das Lernen und bietet Flexibilität. Die Skripts müssen in ihrer angegebenen Reihenfolge ausgeführt werden. Wenn Sie keine Zeit für das Ausführen der Skripts haben: Die tatsächliche Testausgabe wird nach Skript 4 angezeigt.
@@ -79,7 +82,7 @@ Dieses erste PowerShell-Skript weist Variablen Werte zu. Die nachfolgenden Skrip
 ###########################################################
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 ###########################################################
 ##  Assignments to variables used by the later scripts.  ##
@@ -519,7 +522,7 @@ In diesem PowerShell-Skript werden keine Aktualisierungen vorgenommen, es sei de
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 # Assignments to variables used by the later scripts.
 # You can EDIT these values, if necessary.

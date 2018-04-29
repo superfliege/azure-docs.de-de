@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: dd54ca5a172bdb65b7781f2fb764b00f50e5df28
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: eb37ce7e61796494be0a9282afdc620b0ca5886a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Nachweis des Besitzes für X.509-Zertifizierungsstellenzertifikate mit Ihrem Device Provisioning-Dienst
 
@@ -58,7 +58,7 @@ Microsoft bietet Tools und Beispiele, die Ihnen dabei helfen können, ein signie
 
 - Das **Azure IoT Hub C SDK** bietet PowerShell- (Windows) und Bash-Skripts (Linux), mit denen Sie Zertifizierungsstellen- und untergeordnete Zertifikate für die Entwicklung und zum Nachweis des Besitzes mit einem Prüfcode erstellen können. Sie können die entsprechenden [Dateien](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) für Ihr System in einen Arbeitsordner herunterladen und die Anweisungen in der [Infodatei zum Verwalten von ZS-Zertifikaten](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) befolgen, um einen Besitznachweis für ein Zertifizierungsstellenzertifikat auszuführen. 
 - Das **Azure IoT Hub C# SDK** enthält ein [Beispiel zum Überprüfen des Gruppenzertifikats](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample), mit dem Sie einen Besitznachweis ausführen können.
-- Sie können die Schritte im Artikel [PowerShell-Skripts zum Verwalten von X.509-Zertifikaten, die von einer Zertifizierungsstelle signiert sind](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates) in der IoT Hub-Dokumentation befolgen, insbesondere das Skript im Abschnitt [Nachweis des rechtmäßigen Besitzes Ihres X.509-Zertifikats](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates#signverificationcode).
+- Sie können die Schritte im Artikel [PowerShell-Skripts zum Verwalten von X.509-Zertifikaten, die von einer Zertifizierungsstelle signiert sind](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates) in der IoT Hub-Dokumentation befolgen, insbesondere das Skript im Abschnitt [Nachweis des rechtmäßigen Besitzes Ihres X.509-Zertifikats](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates#signverificationcode).
  
 > [!IMPORTANT]
 > Zusätzlich zum Ausführen des Besitznachweises ermöglichen die zuvor genannten PowerShell- und Bash-Skripts auch, Stammzertifikate, Zwischenzertifikate und untergeordnete Zertifikate zu erstellen, um Geräte zu authentifizieren und bereitzustellen. Diese Zertifikate sollten nur für die Entwicklung verwendet werden. Sie sollten nie in einer Produktionsumgebung verwendet werden. 

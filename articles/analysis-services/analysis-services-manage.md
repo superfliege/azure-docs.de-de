@@ -1,25 +1,18 @@
 ---
 title: Verwalten von Azure Analysis Services | Microsoft Docs
 description: Erfahren Sie, wie Sie in Azure einen Analysis Services-Server verwalten.
-services: analysis-services
-documentationcenter: 
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 79491d0b-b00d-4e02-9ca7-adc99bc02fdb
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 11aa42fbe15dd68dfac128b707fd6bdbfd0b24d1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 0cad50788eeb4a31d1e3f6f7e6c038ba2a8d4d9b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-analysis-services"></a>Verwalten von Analysis Services
 Nachdem Sie in Azure einen Analysis Services-Server erstellt haben, müssen Sie möglicherweise sofort oder zu einem späteren Zeitpunkt einige Verwaltungsaufgaben ausführen. Sie können z. B. Daten aktualisieren, steuern, wem Zugriff auf die Modelle auf dem Server gewährt wird, oder die Integrität des Servers überwachen. Einige Verwaltungsaufgaben können nur im Azure-Portal, andere in SQL Server Management Studio (SSMS) und bestimmte sowohl im Portal als auch in SSMS ausgeführt werden.
@@ -47,13 +40,18 @@ Verwenden Sie die neueste Version von SSMS, um alle aktuellen Features zu erhalt
    
     ![Abrufen von Servernamen in Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. Klicken Sie in SSMS im **Objekt-Explorer** auf **Verbinden** > **Analysis Services**.
-3. Fügen Sie im Dialogfeld **Mit Server verbinden** den Servernamen ein, und wählen Sie dann in **Authentifizierung** einen der folgenden Authentifizierungstypen aus:
-   
+3. Fügen Sie im Dialogfeld **Mit Server verbinden** den Servernamen ein, und wählen Sie dann in **Authentifizierung** einen der folgenden Authentifizierungstypen aus:   
+    > [!NOTE]
+    > Es empfiehlt sich der Authentifizierungstyp **Active Directory: universell mit MFA-Unterstützung**.
+
+    > [!NOTE]
+    > Wenn Sie sich über ein entsprechendes Konto (Microsoft-Konto, Live ID, Yahoo, Gmail usw.) anmelden, belassen Sie das Kennwortfeld leer. Nachdem Sie auf „Verbinden“ geklickt haben, werden Sie zur Eingabe des Kennworts aufgefordert.
+
     **Windows-Authentifizierung**, um Ihre Windows-Domäne\Ihren Benutzernamen und Ihr Kennwort als Anmeldeinformationen zu verwenden.
 
     **Active Directory-Kennwortauthentifizierung**, um ein Organisationskonto zu verwenden. Dies ist beispielsweise beim Herstellen einer Verbindung von einem nicht mit der Domäne verbundenen Computer sinnvoll.
 
-    **Universelle Active Directory-Authentifizierung**, um [nicht interaktive oder Multi-Factor Authentication](../sql-database/sql-database-ssms-mfa-authentication.md) zu verwenden. 
+    **Active Directory: universell mit MFA-Unterstützung**, wenn [nicht interaktive oder mehrstufige Authentifizierung](../sql-database/sql-database-ssms-mfa-authentication.md) verwendet werden soll. 
    
     ![Herstellen der Verbindung in SSMS](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

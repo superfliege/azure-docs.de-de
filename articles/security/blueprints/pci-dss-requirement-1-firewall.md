@@ -1,5 +1,5 @@
 ---
-title: "Blueprint zur Azure-Zahlungsverarbeitung – Firewallanforderungen"
+title: Blueprint zur Azure-Zahlungsverarbeitung – Firewallanforderungen
 description: PCI-DSS-Anforderung 1
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 995ecd5ef876695145fc6313aba2a46d2cc085cc
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 4e04d6417f1468c1bafada1a93ab63a73e39653d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="firewall-requirements-for-pci-dss-compliant-environments"></a>Firewallanforderungen für PCI-DSS-konforme Umgebungen 
 ## <a name="pci-dss-requirement-1"></a>PCI-DSS-Anforderung 1
@@ -57,7 +57,7 @@ Andere Systemkomponenten können Firewallfunktionen bereitstellen, sofern sie di
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Eine Contoso Webstore-Instanz erstellt ein CI/CD DevOps-Modell, um sicherzustellen, dass alle Änderungen ordnungsgemäß verwaltet werden. [Operations Management Suite (OMS)](/azure/operations-management-suite/) bietet eine umfassende Protokollierung von Änderungen. Änderungen können auf Ihre Richtigkeit hin überprüft werden. Genauere Anweisungen finden Sie in den [PCI-Anleitungen für die Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).<br /><br />[Azure Security Center](https://azure.microsoft.com/services/security-center/) bietet eine zentrale Ansicht der Sicherheitsstatus sämtlicher Azure-Ressourcen. Sie können auf einen Blick überprüfen, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und schnell Ressourcen ermitteln, die Ihre Aufmerksamkeit erfordern.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Eine Contoso Webstore-Instanz erstellt ein CI/CD DevOps-Modell, um sicherzustellen, dass alle Änderungen ordnungsgemäß verwaltet werden. Log Analytics ermöglicht die umfassende Protokollierung von Änderungen. Änderungen können auf Ihre Richtigkeit hin überprüft werden. Genauere Anweisungen finden Sie in den [PCI-Anleitungen für die Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).<br /><br />[Azure Security Center](https://azure.microsoft.com/services/security-center/) bietet eine zentrale Ansicht der Sicherheitsstatus sämtlicher Azure-Ressourcen. Sie können auf einen Blick überprüfen, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und schnell Ressourcen ermitteln, die Ihre Aufmerksamkeit erfordern.|
 
 
 
@@ -109,7 +109,7 @@ Andere Systemkomponenten können Firewallfunktionen bereitstellen, sofern sie di
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verwendet die [rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)](/azure/active-directory/role-based-access-control-configure), um Benutzerrollen zu isolieren. Die rollenbasierte Zugriffssteuerung in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Es gibt spezielle Konfigurationen für den Abonnementzugriff und den Zugriff auf Azure Key Vault.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verwendet die [rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)](/azure/role-based-access-control/role-assignments-portal), um Benutzerrollen zu isolieren. Die rollenbasierte Zugriffssteuerung in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Es gibt spezielle Konfigurationen für den Abonnementzugriff und den Zugriff auf Azure Key Vault.|
 
 
 

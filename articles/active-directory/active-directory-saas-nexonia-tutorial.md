@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: a7a71eb4de1723be1fd32a35bee848885738b029
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 027b7ae5b87cc8349670b2270124c18d68242a9f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>Tutorial: Azure Active Directory-Integration mit Nexonia
 
@@ -95,7 +95,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Nexonia m�
 In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Nexonia-Anwendung.
 
   > [!Note]
-   > Wenn bei der Integration Probleme auftreten, finden Sie unter diesem [Link](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery) Hinweise zur Problembehandlung. Wenn Sie danach immer noch keine Lösung gefunden haben, übermitteln Sie im Azure-Portal eine Supportanfrage.
+   > Wenn bei der Integration Probleme auftreten, finden Sie unter diesem [Link](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery) Hinweise zur Problembehandlung. Wenn Sie danach immer noch keine Lösung gefunden haben, übermitteln Sie im Azure-Portal eine Supportanfrage.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Nexonia die folgenden Schritte aus:**
 

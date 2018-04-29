@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric CLI – sfctl service | Microsoft-Dokumentation"
+title: Azure Service Fabric CLI – sfctl service | Microsoft-Dokumentation
 description: Beschreibt die sfctl service-Befehle der Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/23/2018
 ms.author: ryanwi
 ms.openlocfilehash: 5b30d3732ff00e5bb79e2d58a9f0b3e5b29dedf8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-service"></a>sfctl service
 Ermöglicht es, Dienste, Diensttypen und Dienstpakete zu erstellen, zu löschen und zu verwalten.
@@ -93,7 +93,7 @@ Erstellt den angegebenen Service Fabric-Dienst aus der Beschreibung.
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o           | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose             | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-service-delete"></a>sfctl service delete
@@ -116,7 +116,7 @@ Löscht einen vorhandene Service Fabric-Dienst. Ein Dienst muss erstellt worden 
 | --debug             | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h           | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o         | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query             | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query             | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose           | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-service-description"></a>sfctl service description
@@ -138,7 +138,7 @@ Ruft die Beschreibung eines vorhandenen Service Fabric-Diensts ab. Ein Dienst mu
 | --debug             | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h           | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o         | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query             | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query             | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose           | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-service-health"></a>sfctl service health
@@ -163,7 +163,7 @@ Ruft die Integritätsinformationen des angegebenen Diensts ab. Verwenden Sie „
 | --debug                      | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                    | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                  | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.                  Standardwert: json.|
-| --query                      | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                      | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose                    | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-service-info"></a>sfctl service info
@@ -186,7 +186,7 @@ Gibt die Informationen zu dem angegebenen Dienst ab, der zu der angegebenen Serv
 | --debug                 | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h               | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o             | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query                 | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                 | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose               | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-service-list"></a>sfctl service list
@@ -210,7 +210,7 @@ Gibt die Informationen zu allen Diensten zurück, die zu der Anwendung gehören,
 | --debug                 | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h               | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o             | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query                 | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                 | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose               | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-service-manifest"></a>sfctl service manifest
@@ -234,7 +234,7 @@ Ruft das Manifest ab, in dem ein Diensttyp beschrieben ist. Die Antwort enthält
 | --debug                           | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                         | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                       | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.                       Standardwert: json.|
-| --query                           | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                           | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose                         | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-service-recover"></a>sfctl service recover
@@ -256,7 +256,7 @@ Veranlasst den Service Fabric-Cluster zu versuchen, den angegebenen Dienst wiede
 | --debug             | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h           | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o         | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query             | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query             | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose           | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-service-resolve"></a>sfctl service resolve
@@ -281,7 +281,7 @@ Lösen Sie eine Service Fabric-Dienstpartition auf, um die Endpunkte der Dienstr
 | --debug             | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h           | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o         | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query             | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query             | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose           | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-service-update"></a>sfctl service update
@@ -315,7 +315,7 @@ Aktualisiert den angegebenen Dienst mithilfe der angegebenen Updatebeschreibung.
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o           | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose             | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="next-steps"></a>Nächste Schritte

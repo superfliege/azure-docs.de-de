@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung | Microsoft-Dokumentation"
-description: "Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung."
+title: 'Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung | Microsoft-Dokumentation'
+description: 'Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung.'
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 0ef5b84820cfcaf86f526ddd0565463e12b96331
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 4358b57284721642957d56ad8cfeea2b0f53fd89
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -41,47 +41,44 @@ ms.lasthandoff: 01/16/2018
 
 **F: Ich habe das Gerät vor kurzem registriert. Warum kann ich das Gerät nicht in meinen Benutzerinformationen im Azure-Portal sehen?**
 
-**A:** Windows 10-Geräte, die mit der automatischen Geräteregistrierung in die Domäne eingebunden werden, werden nicht in den Informationen unter BENUTZER angezeigt.
+**A:** Windows 10-Geräte, die in Azure AD eingebundene Hybridgeräte sind, werden nicht unter den BENUTZER-Geräten angezeigt.
 Mit PowerShell können Sie alle Geräte anzeigen. 
 
-Nur die folgenden Geräte werden in den Informationen unter BENUTZER aufgeführt:
+Nur die folgenden Geräte werden unter den BENUTZER-Geräten aufgeführt:
 
-- Alle persönlichen Geräte, die nicht in das Unternehmen eingebunden sind 
-- Alle Geräte ohne Windows 10/Windows Server 2016 
+- Alle persönlichen Geräte, die keine in Azure AD eingebundenen Hybridgeräte sind. 
+- Alle Geräte, die keine Windows 10/Windows Server 2016-Geräte sind.
 - Alle Geräte ohne Windows 
 
 ---
 
 **F: Warum kann ich im Azure-Portal nicht alle Geräte sehen, die in Azure Active Directory registriert sind?** 
 
-**A:** Derzeit besteht keine Möglichkeit, alle registrierten Geräte im Azure-Portal anzuzeigen. Sie können mit Azure PowerShell alle Geräte finden. Weitere Informationen finden Sie im [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)-Cmdlet.
+**A:** Sie können diese jetzt unter „Azure AD-Verzeichnis“ -> Menü „Alle Geräte“ sehen. Sie können auch Azure PowerShell verwenden, um nach allen Geräten zu suchen. Weitere Informationen finden Sie im [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)-Cmdlet.
 
 --- 
 
 **F: Wie ermittle ich den Geräteregistrierungsstatus des Clients?**
 
-**A:** Der Geräteregistrierungsstatus hängt von folgenden Faktoren ab:
+**A:** Führen Sie für Geräte mit Windows 10, Windows Server 2016 oder höher „dsregcmd.exe/status“.
 
-- Art des Geräts
-- Registrierung des Geräts 
-- Details im Zusammenhang damit 
- 
+Führen Sie für frühere Betriebssystemversionen das Programm „%programFiles%\Microsoft Workplace Join\autoworkplace.exe“ aus.
 
 ---
 
 **F: Warum ist ein Gerät, das ich im Azure-Portal oder mit Windows PowerShell gelöscht habe, immer noch als registriert aufgeführt?**
 
-**A:** Dies ist beabsichtigt. Das Gerät hat keinen Zugriff auf Ressourcen in der Cloud. Wenn Sie das Gerät entfernen und erneut registrieren möchten, muss dies manuell auf dem Gerät erfolgen. 
+**A:** Dies ist beabsichtigt. Das Gerät hat keinen Zugriff auf Ressourcen in der Cloud. Wenn Sie das Gerät registrieren möchten, muss dies manuell auf dem Gerät erfolgen. 
 
-Für Windows 10 und Windows Server 2016, die in die lokale AD-Domäne eingebunden sind:
+So bereinigen Sie den Verknüpfungsstatus aus Windows 10 und Windows Server 2016, die in die lokale AD-Domäne eingebunden sind:
 
 1.  Öffnen Sie die Eingabeaufforderung als Administrator.
 
 2.  Geben Sie `dsregcmd.exe /debug /leave` ein
 
-3.  Melden Sie sich ab und erneut an, um den geplanten Task auszulösen, der das Gerät erneut registriert. 
+3.  Melden Sie sich ab und erneut an, um den geplanten Task auszulösen, der das Gerät erneut in Azure AD registriert. 
 
-Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
+Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 
 1.  Öffnen Sie die Eingabeaufforderung als Administrator.
 2.  Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`ein.
@@ -97,9 +94,9 @@ Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
 
 -   Wenn Sie „Geschäfts-, Schul- oder Unikonto hinzufügen“ verwendet haben, erstellt jeder Windows-Benutzer, der „Geschäfts-, Schul- oder Unikonto hinzufügen“ verwendet, einen neuen Gerätedatensatz mit demselben Gerätenamen.
 
--   Andere Windows-Plattformen, die mit der automatischen Registrierung in die lokale AD-Domäne eingebunden sind, erstellen einen neuen Gerätedatensatz mit demselben Gerätenamen für jeden Domänenbenutzer, der sich beim Gerät anmeldet. 
+-   Für frühere Windows-Versionen, die über die automatische Registrierung in die lokale AD-Domäne eingebunden sind, wird ein neuer Gerätedatensatz mit demselben Gerätenamen für jeden Domänenbenutzer erstellt, der sich beim Gerät anmeldet. 
 
--   Ein AADJ-Computer, der gelöscht, neu installiert und mit demselben Namen wieder eingebunden wurde, wird als anderer Datensatz mit demselben Gerätenamen angezeigt.
+-   Ein in Azure AD eingebundener Computer, der gelöscht, neu installiert und mit demselben Namen wieder eingebunden wurde, wird als anderer Datensatz mit demselben Gerätenamen angezeigt.
 
 ---
 
@@ -108,21 +105,21 @@ Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
 **A:** Das Widerrufen kann bis zu einer Stunde dauern.
 
 >[!Note] 
->Bei verlorenen Geräten wird empfohlen, das Gerät zu löschen, um sicherzustellen, dass Benutzer nicht auf das Gerät zugreifen können. Weitere Informationen finden Sie unter [Registrieren von Geräten für die Verwaltung in Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>Für ein registriertes Gerät wird empfohlen, das Gerät zu löschen, um sicherzustellen, dass Benutzer nicht auf die Ressourcen zugreifen können. Weitere Informationen finden Sie unter [Registrieren von Geräten für die Verwaltung in Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 
 ---
 
 **F: Warum wird meinen Benutzern angezeigt: „You can’t get there from here“ (Von hier haben Sie darauf keinen Zugriff)?**
 
-**A:** Wenn Sie bestimmte Regeln für bedingten Zugriff konfiguriert haben, die einen spezifischen Gerätestatus erfordern, und das Gerät die Kriterien nicht erfüllt, werden Benutzer blockiert, und sie erhalten diese Meldung. Bitte bewerten Sie die Regeln, und stellen Sie sicher, dass das Gerät die Kriterien erfüllen kann, damit diese Meldung nicht mehr angezeigt wird.
+**A:** Wenn Sie bestimmte Regeln für bedingten Zugriff konfiguriert haben, die einen spezifischen Gerätestatus erfordern, und das Gerät die Kriterien nicht erfüllt, werden Benutzer blockiert, und sie erhalten diese Meldung. Bitte werten Sie die Richtlinien zum bedingten Zugriff aus, und stellen Sie sicher, dass das Gerät die Kriterien erfüllen kann, damit diese Meldung nicht mehr angezeigt wird.
 
 ---
 
 
 **F: Ich sehe den Gerätedatensatz im Azure-Portal in den Informationen unter BENUTZER und sehe, dass der Status auf dem Client „registriert“ lautet. Sind diese Einstellungen für den bedingten Zugriff richtig?**
 
-**A:** Der Gerätedatensatz (deviceID) und der Status im Azure-Portal müssen dem Client entsprechen und sämtliche Auswertungskriterien für den bedingten Zugriff erfüllen. Weitere Details finden Sie unter [Erste Schritte bei der Azure Active Directory-Geräteregistrierung](active-directory-device-registration.md).
+**A:** Der Verknüpfungsstatus des Geräts, der in „deviceID“ festgehalten ist, muss mit dem Status in Azure AD übereinstimmen und alle Bewertungskriterien für bedingten Zugriff erfüllen. Weitere Details finden Sie unter [Erste Schritte bei der Azure Active Directory-Geräteregistrierung](active-directory-device-registration.md).
 
 ---
 
@@ -140,9 +137,9 @@ Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
 
 ---
 
-**F: Warum sehe ich das Dialogfeld „Oops… an error occurred!“ (Hoppla, ein Fehler ist aufgetreten.), wenn ich versuche, meinen PC einzubinden?**
+**F: Warum sehe ich das Dialogfeld „Leider ist ein Fehler aufgetreten“, wenn ich versuche, meinen PC in Azure AD einzubinden?**
 
-**A:** Dies ist ein Ergebnis der Einrichtung der Azure Active Directory-Registrierung bei Intune. Weitere Informationen finden Sie unter [Einrichten der Windows-Geräteverwaltung](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
+**A:** Dies ist ein Ergebnis der Einrichtung der Azure Active Directory-Registrierung bei Intune. Stellen Sie sicher, dass dem Benutzer, der ein Einbinden in Azure AD versucht, die richtige Intune-Lizenz zugewiesen wurde. Weitere Informationen finden Sie unter [Einrichten der Windows-Geräteverwaltung](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
 
 ---
 

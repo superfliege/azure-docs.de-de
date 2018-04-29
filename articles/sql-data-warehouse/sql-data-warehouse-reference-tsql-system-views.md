@@ -1,27 +1,24 @@
 ---
-title: SQL Data Warehouse-Systemsichten | Microsoft Docs
-description: Links zum Inhalt von Systemsichten für SQL Data Warehouse
+title: Systemsichten – Azure SQL Data Warehouse | Microsoft-Dokumentation
+description: Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten Systemsichten
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: ''
-ms.assetid: 21ec594b-d270-4202-a8cd-bb150e5ae12c
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 01/22/2018
-ms.author: barbkess
-ms.openlocfilehash: 96bd74a9c68cc77d35832836afa966958ed37264
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 59929a851bca967e36e5d4cf9a02a20dae117928
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="system-views"></a>Systemsichten
+# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>In Azure SQL Data Warehouse unterstützte Systemsichten
+Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQL-Anweisungen
+
 ## <a name="sql-data-warehouse-catalog-views"></a>SQL Data Warehouse-Katalogsichten
 * [sys.pdw_column_distribution_properties](http://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](http://msdn.microsoft.com/library/mt203892.aspx)
@@ -233,14 +230,4 @@ Die folgenden DMVs gelten für SQL Data Warehouse, müssen jedoch ausgeführt we
 * [VIEWS](http://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Referenzinformationen finden Sie unter [SQL Data Warehouse-Referenz – Übersicht][SQL Data Warehouse-Referenz – Übersicht].
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-
-<!--Other Web references-->
+Weitere Informationen finden Sie unter [Sprachelemente](sql-data-warehouse-reference-tsql-statements.md) und [Systemsichten](sql-data-warehouse-reference-tsql-language-elements.md).

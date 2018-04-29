@@ -1,12 +1,12 @@
 ---
-title: "Häufig gestellte Fragen zu Power BI-Arbeitsbereichssammlungen"
-description: "Häufig gestellte Fragen im Zusammenhang mit den Power BI-Arbeitsbereichssammlungen"
+title: Häufig gestellte Fragen zu Power BI-Arbeitsbereichssammlungen
+description: Häufig gestellte Fragen im Zusammenhang mit den Power BI-Arbeitsbereichssammlungen
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1475ed4f-fc84-4865-b243-e8a47d8bda59
 ms.service: power-bi-embedded
@@ -15,17 +15,17 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 6b33f497a5dbc889945e2147586f79edf1bd9aeb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 6915538e47207ee9a45f2647a84924d79c7b2851
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Häufig gestellte Fragen zu Power BI-Arbeitsbereichssammlungen
 
 > [!IMPORTANT]
-> Power BI-Arbeitsbereichssammlungen sind veraltet und nur noch bis Juni 2018 (oder bis zum Termin in Ihrem Vertrag) verfügbar. Es wird empfohlen, die Migration zu Power BI Embedded zu planen, um Unterbrechungen in Ihrer Anwendung zu vermeiden. Informationen zur Migration Ihrer Daten zu Power BI Embedded finden Sie unter [Migrieren von Inhalten aus Power BI-Arbeitsbereichssammlungen zu Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
+> Power BI-Arbeitsbereichssammlungen sind veraltet und nur noch bis Juni 2018 (oder bis zum Termin in Ihrem Vertrag) verfügbar. Es wird empfohlen, die Migration zu Power BI Embedded zu planen, um Unterbrechungen für Ihre Anwendung zu vermeiden. Informationen zur Migration Ihrer Daten zu Power BI Embedded finden Sie unter [Migrieren von Inhalten aus Power BI-Arbeitsbereichssammlungen zu Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
 ## <a name="what-is-microsoft-power-bi-workspace-collections"></a>Was sind Microsoft Power BI-Arbeitsbereichssammlungen?
 Power BI-Arbeitsbereichssammlungen sind ein Azure-Dienst, mit dessen Hilfe Anwendungsentwickler beeindruckende, vollständig interaktive Berichte und Visualisierungen in die für Kunden zugänglichen Apps einbinden können, ohne die Zeit und Kosten für die Erstellung eigener, ganz neuer Steuerelemente aufwenden zu müssen. Die Power BI-Arbeitsbereichssammlungen sind nun mit SLA in neun Rechenzentren auf der ganzen Welt verfügbar. Darüber hinaus haben wir Funktionen wie die Unterstützung von Datensicherheit über RLS (Sicherheit auf Zeilenebene) in den Power BI-Arbeitsbereichssammlungen verbessert, um erweiterte Filtervorgänge zu ermöglichen. Auch das Preismodell für die Power BI-Arbeitsbereichssammlungen wurde vereinfacht und aktualisiert.

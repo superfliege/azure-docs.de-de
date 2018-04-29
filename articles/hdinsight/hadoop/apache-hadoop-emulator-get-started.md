@@ -1,27 +1,25 @@
 ---
-title: "Anleitung zur Verwendung einer Hadoop-Sandbox – Emulator – Azure HDInsight | Microsoft-Dokumentation"
-description: "Um sich mit dem Hadoop-Ökosystem vertraut zu machen, können Sie eine Hadoop-Sandbox von Hortonworks auf einem virtuellen Azure-Computer einrichten. "
+title: Anleitung zur Verwendung einer Hadoop-Sandbox – Emulator – Azure HDInsight | Microsoft-Dokumentation
+description: 'Um sich mit dem Hadoop-Ökosystem vertraut zu machen, können Sie eine Hadoop-Sandbox von Hortonworks auf einem virtuellen Azure-Computer einrichten. '
 keywords: hadoop emulator,hadoop sandbox
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
 author: nitinme
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 ms.assetid: 6ad5bb58-8215-4e3d-a07f-07fcd8839cc6
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: d7df18a80470beb8dc25cf6add6b7a61f45dcfe7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0b4daa8c832d40457b19ffe4aee1a365796b2435
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Erste Schritte mit einer Hadoop-Sandbox, einem Emulator auf einem virtuellen Computer
 
@@ -52,7 +50,7 @@ Erweitern Sie das Archiv, um eine Sandbox einer älteren HDP-Version herunterzul
 1. Wählen Sie „Hortonworks Sandbox“, **Start** und anschließend **Normal Start** (Normaler Start) aus. Nach Abschluss des Startvorgangs für den virtuellen Computer werden Anmeldeanweisungen angezeigt.
    
     ![Normaler Start](./media/apache-hadoop-emulator-get-started/normal-start.png)
-2. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel http://127.0.0.1:8888).
+2. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel http://127.0.0.1:8888)).
 
 ## <a name="set-sandbox-passwords"></a>Festlegen der Sandbox-Kennwörter
 

@@ -1,8 +1,8 @@
 ---
 title: Antworten auf Warnungen in Azure Log Analytics | Microsoft-Dokumentation
-description: "Warnungen in Log Analytics identifizieren wichtige Informationen in Ihrem Azure-Arbeitsbereich. Anhand von Warnungen werden Sie proaktiv über Probleme informiert, oder es werden Aktionen aufgerufen, die das Problem beheben sollen.  In diesem Artikel wird beschrieben, wie Sie eine Warnungsregel erstellen, und es werden die verschiedenen Aktionen vorgestellt, die Sie durchführen können."
+description: Warnungen in Log Analytics identifizieren wichtige Informationen in Ihrem Azure-Arbeitsbereich. Anhand von Warnungen werden Sie proaktiv über Probleme informiert, oder es werden Aktionen aufgerufen, die das Problem beheben sollen.  In diesem Artikel wird beschrieben, wie Sie eine Warnungsregel erstellen, und es werden die verschiedenen Aktionen vorgestellt, die Sie durchführen können.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -12,16 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/08/2018
+ms.date: 04/13/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e80481f074bc196caae7c03f54134eaef0fb46d5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 717adf1b19b9de8542ec507df3a01b187d0df8a5
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>Hinzufügen von Aktionen zu Warnungsregeln in Log Analytics
+
+> [!NOTE]
+> Warnungen in Log Analytics werden [auf Azure erweitert](../monitoring-and-diagnostics/monitoring-alerts-extend.md).  Warnungen in Azure verwenden [Aktionsgruppen](../monitoring-and-diagnostics/monitoring-action-groups.md) zum Definieren ihrer Aktionen anstelle der in diesem Artikel beschriebenen Informationen.
+
+
 Wenn eine [Warnung in Log Analytics erstellt wird](log-analytics-alerts.md), können Sie optional [eine Warnungsregel konfigurieren](log-analytics-alerts.md), um eine oder mehrere Aktionen auszuführen.  Dieser Artikel beschreibt die verschiedenen verfügbaren Aktionen und Details zu ihrer jeweiligen Konfiguration.
 
 | anzuzeigen. | BESCHREIBUNG |
@@ -32,7 +37,7 @@ Wenn eine [Warnung in Log Analytics erstellt wird](log-analytics-alerts.md), kö
 
 
 ## <a name="email-actions"></a>E-Mail-Aktionen
-Bei E-Mail-Aktionen wird eine E-Mail mit den Details der Warnung an einen oder mehrere Empfänger gesendet.  Sie können den Betreff der E-Mail angeben, aber der Inhalt ist ein von Log Analytics erstelltes Standardformat.  Darin sind zusammenfassende Informationen enthalten, z.B. der Name der Warnung sowie die Details von bis zu zehn Datensätzen, die von der Protokollsuche zurückgegeben werden.  Außerdem ist ein Link zu einer Protokollsuche in Log Analytics enthalten, mit der alle Datensätze dieser Abfrage zurückgegeben werden.   Der Absender der E-Mail lautet *Microsoft Operations Management Suite Team &lt;noreply@oms.microsoft.com&gt;*. 
+Bei E-Mail-Aktionen wird eine E-Mail mit den Details der Warnung an einen oder mehrere Empfänger gesendet.  Sie können den Betreff der E-Mail angeben, der Inhalt ist jedoch ein von Log Analytics erstelltes Standardformat.  Darin sind zusammenfassende Informationen enthalten, z.B. der Name der Warnung sowie die Details von bis zu zehn Datensätzen, die von der Protokollsuche zurückgegeben werden.  Außerdem ist ein Link zu einer Protokollsuche in Log Analytics enthalten, mit der alle Datensätze aus dieser Abfrage zurückgegeben werden.   Der Absender der E-Mail lautet *Microsoft Operations Management Suite Team &lt;noreply@oms.microsoft.com&gt;*. 
 
 E-Mail-Aktionen erfordern die in der folgenden Tabelle aufgeführten Eigenschaften.
 
@@ -56,8 +61,6 @@ Webhook-Aktionen erfordern die in der folgenden Tabelle aufgeführten Eigenschaf
 
 Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um die an den externen Dienst gesendeten Daten handelt.  Die Nutzlast enthält standardmäßig die Werte in der folgenden Tabelle.  Sie können diese Nutzlast auch durch eine benutzerdefinierte eigene Nutzlast ersetzen.  In diesem Fall können Sie die Variablen in der Tabelle für die einzelnen Parameter verwenden, um deren Wert in die benutzerdefinierte Nutzlast einzubinden.
 
->[!NOTE]
-> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, hat sich die Webhooknutzlast geändert.  Details des Formats werden in [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) beschrieben.  Ein Beispiel finden Sie unten in den [Beispielen](#sample-payload).
 
 | Parameter | Variable | BESCHREIBUNG |
 |:--- |:--- |:--- |
@@ -110,9 +113,9 @@ Runbook-Aktionen erfordern die in der folgenden Tabelle aufgeführten Eigenschaf
 | Runbook | Runbook, das Sie starten möchten, wenn eine Warnung erstellt wird. |
 | Run on (Ausführen auf) | Geben Sie **Azure** an, um das Runbook in der Cloud auszuführen.  Geben Sie **Hybrid Worker** an, um das Runbook auf einem Agent auszuführen, auf dem [Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md ) installiert ist.  |
 
-Bei Runbookaktionen wird das Runbook mit einem [Webhook](../automation/automation-webhooks.md) gestartet.  Wenn Sie die Warnungsregel erstellen, wird für das Runbook automatisch ein neuer Webhook mit dem Namen **OMS Alert Remediation** gefolgt von einer GUID erstellt.  
+Bei Runbookaktionen wird das Runbook mit einem [Webhook](../automation/automation-webhooks.md) gestartet.  Wenn Sie die Warnungsregel erstellen, wird für das Runbook automatisch ein neuer Webhook mit dem Namen **OMS Alert Remediation** (gefolgt von einer GUID) erstellt.  
 
-Sie können die Parameter des Runbooks nicht direkt ausfüllen, aber der [$WebhookData-Parameter](../automation/automation-webhooks.md) enthält die Details zur Warnung, einschließlich der Ergebnisse der Protokollsuche, die sie ausgelöst hat.  Das Runbook muss **$WebhookData** als Parameter definieren, damit ein Zugriff auf die Eigenschaften der Warnung möglich ist.  Die Warnungsdaten sind jetzt in einer einzelnen Eigenschaft mit dem Namen **SearchResult** (für Runbookaktionen und Webhookaktionen mit Standardnutzlast) oder **SearchResults** (Webhookaktionen mit benutzerdefinierter Nutzlast einschließlich **IncludeSearchResults: true**) in der **RequestBody**-Eigenschaft von **$WebhookData** im Json-Format verfügbar.  Darin enthalten sind die Eigenschaften, die in der folgenden Tabelle aufgeführt sind.
+Sie können die Parameter des Runbooks nicht direkt mit Daten auffüllen, aber der [$WebhookData-Parameter](../automation/automation-webhooks.md) enthält die Details zur Warnung, einschließlich der Ergebnisse der Protokollsuche, die sie ausgelöst hat.  Das Runbook muss **$WebhookData** als Parameter definieren, damit ein Zugriff auf die Eigenschaften der Warnung möglich ist.  Die Warnungsdaten sind jetzt in einer einzelnen Eigenschaft mit dem Namen **SearchResult** (für Runbookaktionen und Webhookaktionen mit Standardnutzlast) oder **SearchResults** (Webhookaktionen mit benutzerdefinierter Nutzlast einschließlich **IncludeSearchResults: true**) in der **RequestBody**-Eigenschaft von **$WebhookData** im Json-Format verfügbar.  Darin enthalten sind die Eigenschaften, die in der folgenden Tabelle aufgeführt werden.
 
 >[!NOTE]
 > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, hat sich die Runbooknutzlast geändert.  Details des Formats werden in [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) beschrieben.  Ein Beispiel finden Sie unten in den [Beispielen](#sample-payload).  
@@ -126,38 +129,7 @@ Sie können die Parameter des Runbooks nicht direkt ausfüllen, aber der [$Webho
 Das folgende Runbook würde beispielsweise die von der Protokollsuche zurückgegebenen Datensätze extrahieren und basierend auf dem Typ der einzelnen Datensätze verschiedene Eigenschaften zuweisen.  Beachten Sie, dass das Runbook mit der Konvertierung von **RequestBody** aus dem JSON-Format beginnt, damit es in PowerShell als Objekt verarbeitet werden kann.
 
 >[!NOTE]
-> Beide dieser Runbooks verwenden **SearchResult**, also die Eigenschaft, die Ergebnisse für Runbookaktionen und Webhookaktionen mit Standardnutzlast enthält.  Wenn das Runbook aus einer Webhookantwort mit einer benutzerdefinierten Nutzlast aufgerufen würde, müssten Sie diese Eigenschaft in **SearchResults** ändern.
-
-Das folgende Runbook funktioniert mit der Nutzlast aus einem [veralteten Log Analytics-Arbeitsbereich](log-analytics-log-search-upgrade.md).
-
-    param ( 
-        [object]$WebhookData
-    )
-
-    $RequestBody = ConvertFrom-JSON -InputObject $WebhookData.RequestBody
-    $Records     = $RequestBody.SearchResult.value
-
-    foreach ($Record in $Records)
-    {
-        $Computer = $Record.Computer
-
-        if ($Record.Type -eq 'Event')
-        {
-            $EventNo    = $Record.EventID
-            $EventLevel = $Record.EventLevelName
-            $EventData  = $Record.EventData
-        }
-
-        if ($Record.Type -eq 'Perf')
-        {
-            $Object    = $Record.ObjectName
-            $Counter   = $Record.CounterName
-            $Instance  = $Record.InstanceName
-            $Value     = $Record.CounterValue
-        }
-    }
-
-Das folgende Runbook funktioniert mit der Nutzlast aus einem [aktualisierten Log Analytics-Arbeitsbereich](log-analytics-log-search-upgrade.md).
+> Dieses Runbook verwendet **SearchResult**, also die Eigenschaft, die Ergebnisse für Runbookaktionen und Webhookaktionen mit Standardnutzlast enthält.  Wenn das Runbook aus einer Webhookantwort mit einer benutzerdefinierten Nutzlast aufgerufen würde, müssten Sie diese Eigenschaft in **SearchResults** ändern.
 
     param ( 
         [object]$WebhookData
@@ -208,88 +180,12 @@ Das folgende Runbook funktioniert mit der Nutzlast aus einem [aktualisierten Log
 
 
 ## <a name="sample-payload"></a>Beispielnutzlast
-In diesem Abschnitt wird die Beispielnutzlast für Webhook- und Runbookaktionen sowohl in einem Vorgänger- als auch [aktualisierten Log Analytics-Arbeitsbereich](log-analytics-log-search-upgrade.md) gezeigt.
+Dieser Abschnitt zeigt eine Beispielnutzlast für Webhook- und Runbookaktionen.
 
 ### <a name="webhook-actions"></a>Webhookaktionen
-In beiden Beispielen wird **SearchResult** verwendet, also die Eigenschaft, die Ergebnisse für Webhookaktionen mit Standardnutzlast enthält.  Wenn der Webhook eine benutzerdefinierte Nutzlast verwendet hat, die Suchergebnisse enthält, wäre diese Eigenschaft **SearchResults**.
+Dieses Beispiel verwendet **SearchResult**, also die Eigenschaft, die Ergebnisse für Webhookaktionen mit Standardnutzlast enthält.  Wenn der Webhook eine benutzerdefinierte Nutzlast verwendet hat, die Suchergebnisse enthält, wäre diese Eigenschaft **SearchResults**.
 
-#### <a name="legacy-workspace"></a>Vorgängerarbeitsbereich.
-Es folgt eine Beispielnutzlast für eine Webhookaktion in einem Vorgängerarbeitsbereich.
-
-    {
-    "WorkspaceId": "workspaceID",
-    "AlertRuleName": "WebhookAlert",
-    "SearchQuery": "Type=Usage",
-    "SearchResult": {
-        "id": "subscriptions/subscriptionID/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspace-workspaceID/search/SearchGUID|10.1.0.7|2017-09-27T10-30-38Z",
-        "__metadata": {
-        "resultType": "raw",
-        "total": 1,
-        "top": 2147483647,
-        "RequestId": "SearchID|10.1.0.7|2017-09-27T10-30-38Z",
-        "CoreSummaries": [
-            {
-            "Status": "Successful",
-            "NumberOfDocuments": 135000000
-            }
-        ],
-        "Status": "Successful",
-        "NumberOfDocuments": 135000000,
-        "StartTime": "2017-09-27T10:30:38.9453282Z",
-        "LastUpdated": "2017-09-27T10:30:44.0907473Z",
-        "ETag": "636421050440907473",
-        "sort": [
-            {
-            "name": "TimeGenerated",
-            "order": "desc"
-            }
-        ],
-        "requestTime": 361
-        },
-        "value": [
-        {
-            "Computer": "-",
-            "SourceSystem": "OMS",
-            "TimeGenerated": "2017-09-26T13:59:59Z",
-            "ResourceUri": "/subscriptions/df1ec963-d784-4d11-a779-1b3eeb9ecb78/resourcegroups/mms-eus/providers/microsoft.operationalinsights/workspaces/workspace-861bd466-5400-44be-9552-5ba40823c3aa",
-            "DataType": "Operation",
-            "StartTime": "2017-09-26T13:00:00Z",
-            "EndTime": "2017-09-26T13:59:59Z",
-            "Solution": "LogManagement",
-            "BatchesWithinSla": 8,
-            "BatchesOutsideSla": 0,
-            "BatchesCapped": 0,
-            "TotalBatches": 8,
-            "AvgLatencyInSeconds": 0.0,
-            "Quantity": 0.002502,
-            "QuantityUnit": "MBytes",
-            "IsBillable": false,
-            "MeterId": "a4e29a95-5b4c-408b-80e3-113f9410566e",
-            "LinkedMeterId": "00000000-0000-0000-0000-000000000000",
-            "id": "954f7083-cd55-3f0a-72cb-3d78cd6444a3",
-            "Type": "Usage",
-            "MG": "00000000-0000-0000-0000-000000000000",
-            "__metadata": {
-            "Type": "Usage",
-            "TimeGenerated": "2017-09-26T13:59:59Z"
-            }
-        }
-        ]
-    },
-    "SearchIntervalStartTimeUtc": "2017-09-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2017-09-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 1,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://workspaceID.portal.mms.microsoft.com/#Workspace/search/index?_timeInterval.intervalEnd=2017-09-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Type%3DUsage",
-    "Description": null,
-    "Severity": "Low"
-    }
-
-
-#### <a name="upgraded-workspace"></a>Aktualisierter Arbeitsbereich.
-Es folgt eine Beispielnutzlast für eine Webhookaktion in einem aktualisierten Arbeitsbereich.
+Es folgt eine Beispielnutzlast für eine Webhookaktion.
 
     {
     "WorkspaceId": "workspaceID",
@@ -427,64 +323,7 @@ Es folgt eine Beispielnutzlast für eine Webhookaktion in einem aktualisierten A
 
 ### <a name="runbooks"></a>Runbooks
 
-#### <a name="legacy-workspace"></a>Vorgängerarbeitsbereich
-Es folgt eine Beispielnutzlast für eine Runbookaktion in einem Vorgängerarbeitsbereich.
-
-    {
-        "SearchResult": {
-            "id": "subscriptions/subscriptionID/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspace-workspaceID/search/searchGUID|10.1.0.7|TimeStamp",
-            "__metadata": {
-                "resultType": "raw",
-                "total": 1,
-                "top": 2147483647,
-                "RequestId": "searchGUID|10.1.0.7|2017-09-27T10-51-43Z",
-                "CoreSummaries": [{
-                    "Status": "Successful",
-                    "NumberOfDocuments": 135000000
-                }],
-                "Status": "Successful",
-                "NumberOfDocuments": 135000000,
-                "StartTime": "2017-09-27T10:51:43.3075124Z",
-                "LastUpdated": "2017-09-27T10:51:51.1002092Z",
-                "ETag": "636421063111002092",
-                "sort": [{
-                    "name": "TimeGenerated",
-                    "order": "desc"
-                }],
-                "requestTime": 511
-            },
-            "value": [{
-                "Computer": "-",
-                "SourceSystem": "OMS",
-                "TimeGenerated": "2017-09-26T13:59:59Z",
-                "ResourceUri": "/subscriptions/AnotherSubscriptionID/resourcegroups/SampleResourceGroup/providers/microsoft.operationalinsights/workspaces/workspace-workspaceID",
-                "DataType": "Operation",
-                "StartTime": "2017-09-26T13:00:00Z",
-                "EndTime": "2017-09-26T13:59:59Z",
-                "Solution": "LogManagement",
-                "BatchesWithinSla": 8,
-                "BatchesOutsideSla": 0,
-                "BatchesCapped": 0,
-                "TotalBatches": 8,
-                "AvgLatencyInSeconds": 0.0,
-                "Quantity": 0.002502,
-                "QuantityUnit": "MBytes",
-                "IsBillable": false,
-                "MeterId": "a4e29a95-5b4c-408b-80e3-113f9410566e",
-                "LinkedMeterId": "00000000-0000-0000-0000-000000000000",
-                "id": "954f7083-cd55-3f0a-72cb-3d78cd6444a3",
-                "Type": "Usage",
-                "MG": "00000000-0000-0000-0000-000000000000",
-                "__metadata": {
-                    "Type": "Usage",
-                    "TimeGenerated": "2017-09-26T13:59:59Z"
-                }
-            }]
-        }
-    }
-
-#### <a name="upgraded-workspace"></a>Aktualisierter Arbeitsbereich
-Es folgt eine Beispielnutzlast für eine Runbookaktion in einem aktualisierten Arbeitsbereich.
+Es folgt eine Beispielnutzlast für eine Runbookaktion.
 
     {
     "WorkspaceId": "workspaceID",
@@ -603,6 +442,7 @@ Es folgt eine Beispielnutzlast für eine Runbookaktion in einem aktualisierten A
                 "a4e29a95-5b4c-408b-80e3-113f9410566e",
                 "00000000-0000-0000-0000-000000000000",
                 "Usage"
+            ]
             ]
         }
         ]

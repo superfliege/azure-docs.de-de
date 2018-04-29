@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit Azure Application Insights mit Java in Eclipse | Microsoft Docs
-description: "Verwenden Sie das Eclipse-Plug-In zum Hinzufügen einer Leistungs- und Nutzungsüberwachung zu Ihrer Java-Website mit Application Insights"
+description: Verwenden Sie das Eclipse-Plug-In zum Hinzufügen einer Leistungs- und Nutzungsüberwachung zu Ihrer Java-Website mit Application Insights
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 616cbfed405454d2abbb6bb526166d2c72e4365d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3cddfb918f98dfd41e84a6cc5473df6e26d1a482
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Erste Schritte mit Application Insights mit Java in Eclipse
 Das Application Insights SDK sendet Telemetriedaten aus Ihrer Java-Anwendung, damit Sie die Nutzung und Leistung analysieren können. Das Eclipse-Plug-In für Application Insights installiert das SDK automatisch in Ihrem Projekt, damit Sie ohne Konfiguration Telemetriedaten sowie eine API verwenden können, mit der Sie benutzerdefinierte Telemetrie programmieren können.   
@@ -28,7 +28,7 @@ Derzeit funktioniert das Plug-In für Maven-Projekte und für dynamische Webproj
 
 Sie benötigen Folgendes:
 
-* Oracle JRE 1.6 oder höher
+* JRE 1.7 oder 1.8
 * Ein Abonnement für [Microsoft Azure](https://azure.microsoft.com/).
 * [Eclipse IDE für Java EE-Entwickler](http://www.eclipse.org/downloads/), Indigo oder höher.
 * Windows 7 oder höher oder Windows Server 2008 oder höher
@@ -39,7 +39,7 @@ Sie müssen diesen Schritt nur einmal pro Computer durchführen. Bei diesem Schr
 1. Klicken Sie in Eclipse auf "Hilfe" und dann auf "Neue Software installieren".
 
     ![Hilfe, Neue Software installieren](./media/app-insights-java-eclipse/0-plugin.png)
-2. Das SDK befindet sich auf „http://dl.windowsazure.com/eclipse“ unter dem Azure-Toolkit.
+2. Das SDK befindet sich in http://dl.microsoft.com/eclipse unter dem Azure-Toolkit.
 3. Deaktivieren Sie **Contact all update sites...**
 
     ![Deaktivieren Sie für das Application Insights SDK "Contact all update sites"](./media/app-insights-java-eclipse/1-plugin.png)
@@ -47,7 +47,7 @@ Sie müssen diesen Schritt nur einmal pro Computer durchführen. Bei diesem Schr
 Führen für jedes Java-Projekt die verbleibenden Schritte aus.
 
 ## <a name="create-an-application-insights-resource-in-azure"></a>Erstellen einer Application Insights-Ressource in Azure
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Erstellen Sie eine neue Application Insights-Ressource. Legen Sie den Anwendungstyp auf "Java-Webanwendung" fest.  
 
     ![Klicken Sie auf +, und wählen Sie "Application Insights"](./media/app-insights-java-eclipse/01-create.png)  

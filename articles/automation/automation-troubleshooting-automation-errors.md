@@ -10,18 +10,18 @@ ms.topic: article
 manager: carmonm
 tags: top-support-issue
 keywords: Automation-Fehler, Problembehandlung, Problem
-ms.openlocfilehash: 9764068dd7a1a499c61695f39bff726a8ea3aac9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 44200ae9deb1a5c11c81550173b3f6f90b5d62ab
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Problembehandlung für allgemeine Probleme in Azure Automation 
 Dieser Artikel bietet Hilfe für die Problembehandlung häufiger Fehler, die in Azure Automation auftreten können, und enthält mögliche Lösungen zum Beheben dieser Fehler.
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Authentifizierungsfehler beim Verwenden von Azure Automation-Runbooks
 ### <a name="scenario-sign-in-to-azure-account-failed"></a>Szenario: Fehler beim Anmelden am Azure-Konto
-**Fehler**: Sie erhalten beim Verwenden des Add-AzureAccount- oder Login-AzureRmAccount-Cmdlets den Fehler „Unknown_user_type: Unbekannter Benutzertyp“.
+**Fehler**: Sie erhalten beim Verwenden des Add-AzureAccount- oder Connect-AzureRmAccount-Cmdlets den Fehler „Unknown_user_type: Unbekannter Benutzertyp“.
 
 **Ursache des Fehlers:** Dieser Fehler tritt auf, wenn der Assetname für die Anmeldeinformationen ungültig ist oder Benutzername und Kennwort, die Sie zur Einrichtung des Automation-Anmeldeinformationsassets verwendet haben, nicht gültig sind.
 
@@ -34,7 +34,7 @@ Dieser Artikel bietet Hilfe für die Problembehandlung häufiger Fehler, die in 
         #Using Azure Service Management   
         Add-AzureAccount –Credential $Cred  
         #Using Azure Resource Manager  
-        Login-AzureRmAccount –Credential $Cred
+        Connect-AzureRmAccount –Credential $Cred
 3. Wenn die Authentifizierung lokal fehlschlägt, bedeutet dies, dass Sie Ihre Azure Active Directory-Anmeldeinformationen nicht richtig eingerichtet haben. Informationen zur richtigen Einrichtung des Azure Active Directory-Kontos finden Sie im Blogbeitrag [Authenticating to Azure using Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) (Authentifizieren in Azure mit Azure Active Directory).  
 
 ### <a name="scenario-unable-to-find-the-azure-subscription"></a>Szenario: Azure-Abonnement nicht gefunden

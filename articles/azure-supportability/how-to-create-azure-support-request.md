@@ -2,10 +2,10 @@
 title: Erstellen einer Azure-Supportanfrage | Microsoft Docs
 description: Erfahren Sie, wie Sie eine Azure-Supportanfrage erstellen.
 services: Azure Supportability
-documentationcenter: 
+documentationcenter: ''
 author: ganganarayanan
 manager: scotthit
-editor: 
+editor: ''
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
 ms.workload: na
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: 70a4762383d64dc8d568c628cf260ebd8f2d179d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b45bd2a1a2599908d2077198dce0062071b79af
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Gewusst wie: Erstellen einer Azure-Supportanfrage
 ## <a name="summary"></a>Zusammenfassung
-Azure-Kunden können Supportanfragen im Azure-Portal unter [https://portal.azure.com](https://portal.azure.com)erstellen und verwalten.
+Azure-Kunden können Supportanfragen im Azure-Portal unter [https://portal.azure.com](https://portal.azure.com) erstellen und verwalten.
 
 > [!NOTE]
-> Das Azure-Portal für Deutschland hat die Adresse [https://portal.microsoftazure.de](https://portal.microsoftazure.de), die des Azure-Portals für die US-Regierung lautet [https://portal.azure.us](https://portal.azure.us).
-> 
-> 
+> Das Azure-Portal für Deutschland befindet sich unter [https://portal.microsoftazure.de](https://portal.microsoftazure.de) .  
+> Das Azure-Portal für die US-Regierung befindet sich unter [https://portal.azure.us](https://portal.azure.us).
+
 
 Basierend auf Kundenfeedback haben wir die Benutzeroberfläche für Supportanfragen aktualisiert, um drei Hauptziele zu erreichen:
 
@@ -39,6 +39,10 @@ Basierend auf Kundenfeedback haben wir die Benutzeroberfläche für Supportanfra
 Sie können eine Supportanfrage oben über das Navigationsmenü oder direkt auf dem Blatt einer Ressource erstellen.
 
 **In der oberen Navigationsleiste**
+
+![Hilfe und Support](./media/how-to-create-azure-support-request/HelpandSupport.png)
+
+Wählen Sie auf der Seite „Hilfe und Support“ die Option „Neue Supportanfrage“ aus.
 
 ![Neue Supportanfrage](./media/how-to-create-azure-support-request/NewSupportRequest.png)
 
@@ -56,36 +60,57 @@ Indem Sie im ersten Schritt des Assistenten den Dienst („Virtueller Computer u
 
 > [!NOTE]
 > In Azure wird unbegrenzter Support für die Abonnementverwaltung bereitgestellt (Dinge wie Abrechnung, Kontingentanpassungen und Kontenübertragungen). Für technischen Support benötigen Sie einen Supportplan. [Erfahren Sie mehr über Supportpläne](https://azure.microsoft.com/support/plans).
-> 
-> 
+>
+>
 
 ## <a name="problem"></a>Problem
 Im zweiten Schritt des Assistenten werden weitere Details zum Problem gesammelt. Indem in diesem Schritt genaue Details bereitgestellt werden, können wir Ihren Fall an den besten Supporttechniker für das Problem weiterleiten und so schnell wie möglich mit der Diagnose des Problems beginnen.
 
-![Blatt „Problem“](./media/how-to-create-azure-support-request/Problem.png)
+![Blatt „Problem“](./media/how-to-create-azure-support-request/Problem01.png)
 
 Wenn wir weiterhin das obige Beispiel mit der Verbindung für den virtuellen Computer verwenden, würden Sie dieses Formular ausfüllen, um ein Problem mit der Netzwerkverbindung anzugeben. Sie würden weitere Details zum Problem angeben, z.B. den ungefähren Zeitpunkt, zu dem das Problem aufgetreten ist.
 
+![Blatt „Problem“ 2](./media/how-to-create-azure-support-request/Problem02.png)
+
 ## <a name="related-help"></a>Verwandte Hilfethemen
-Für einige Probleme stellen wir für die Problembehandlung Links der Art „Verwandte Hilfethemen“ bereit. Wenn Ihnen die empfohlenen Dokumente nicht weiterhelfen, können Sie mit dem Prozess fortfahren, um eine Supportanfrage zu erstellen.
+Je nach Art des Problems und der von Ihnen gewählten Kategorie bieten wir eine Lösung, mit der Sie Ihr Problem in den Griff bekommen.
+
 ![Verwandte Hilfethemen](./media/how-to-create-azure-support-request/RelatedHelp.png)
 
+Wir bieten auch kontextbezogene Selbsthilfelösungen an, die auf der Textbeschreibung Ihres Problems basieren.
+
+![Verwandte Hilfethemen 2](./media/how-to-create-azure-support-request/RelatedHelp02.png)
+
+Wenn Ihnen die empfohlenen Lösungen nicht weiterhelfen, können Sie mit dem Prozess zum Erstellen einer Supportanfrage fortfahren.
+
+![Blatt „Problem“ 3](./media/how-to-create-azure-support-request/Problem03.png)
+
 ## <a name="contact-information"></a>Kontaktinformationen
-Im letzten Schritt des Assistenten werden Ihre Kontaktinformationen bestätigt, damit wir wissen, wie Sie erreichbar sind.
+Im letzten Schritt des Assistenten werden Ihre Kontaktoptionen und -informationen bestätigt, damit wir wissen, wie Sie erreichbar sind.
+
 ![Kontaktinformationen](./media/how-to-create-azure-support-request/ContactInformation.png)
 
 Je nach Schweregrad des Problems werden Sie ggf. aufgefordert anzugeben, ob Sie während der Geschäftszeiten kontaktiert werden möchten oder eine Antwort rund um die Uhr vorziehen. Dies bedeutet, dass wir uns jederzeit an Sie wenden können.
+
 ![Kontaktinformationen – Rund um die Uhr](./media/how-to-create-azure-support-request/ContactInformation-2.png)
 
-## <a name="manage-support-requests"></a>Verwalten von Supportanfragen
-Nach dem Erstellen der Supportanfrage können Sie die Details auf der Seite **Supportanfragen verwalten** anzeigen.
+## <a name="all-support-requests"></a>Alle Supportanfragen
+Nach dem Erstellen der Supportanfrage können Sie die Details auf der Seite **Alle Supportanfragen** anzeigen.
 
 **In der oberen Navigationsleiste**
 
-![Link „Supportanfrage verwalten“](./media/how-to-create-azure-support-request/ManageSupportRequest-link.png)
+![Hilfe und Support](./media/how-to-create-azure-support-request/HelpandSupport.png)
 
-Auf der Seite **Supportanfragen verwalten** können Sie alle Supportanfragen und den dazugehörigen Status anzeigen.
-![Supportanfrage verwalten](./media/how-to-create-azure-support-request/ManageSupportRequest.png)
+Wählen Sie im linken Menü auf der Seite „Hilfe und Support“ die Option „Alle Supportanfragen“ aus.
+
+![Link „Alle Supportanfragen“](./media/how-to-create-azure-support-request/AllSupportRequest-link.png)
+
+Auf der Seite **Alle Supportanfragen** können Sie alle Supportanfragen samt Status anzeigen.
+
+![Alle Supportanfragen](./media/how-to-create-azure-support-request/AllSupportRequest.png)
+
+Die Seite „Supportanfragen“ bietet Kunden die Möglichkeit, Vorgänge nach Abonnement, Erstellungsdatum (UTC) und Status zu filtern.
+Darüber hinaus können Sie Supportanfragen auf dieser Seite sortieren und suchen.
 
 Wählen Sie die Supportanfrage aus, um die Details einzublenden, z.B. den Schweregrad und den geschätzten Zeitraum, den der Supporttechniker für eine Antwort benötigt.
 ![VID](./media/how-to-create-azure-support-request/VID.png)
@@ -96,8 +121,8 @@ Wenn Sie auf die Kachel klicken, wird die Liste mit den Schweregraden angezeigt,
 
 > [!NOTE]
 > Der maximale Schweregrad richtet sich nach Ihrem Supportplan. [Erfahren Sie mehr über Supportpläne](https://azure.microsoft.com/support/plans).
-> 
-> 
+>
+>
 
 ![VID-2](./media/how-to-create-azure-support-request/VID-2.png)
 
@@ -106,4 +131,3 @@ Wir sind stets offen für Feedback und Vorschläge. Sie können uns gern Ihre [V
 
 ## <a name="learn-more"></a>Weitere Informationen
 [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq)
-

@@ -16,15 +16,15 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a02844c678c08d8aefbceb16d3908faeffd755fb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 396452faf36bc43a185fd6492f952b7bfd9511cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-data-lake-store-resources-by-using-storage-explorer"></a>Verwalten von Azure Data Lake Store-Ressourcen mit Storage-Explorer
 
-[Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview) ist ein Dienst zum Speichern großer Mengen von unstrukturierten Daten, z.B. als Text- oder Binärdaten. Sie können per HTTP oder HTTPS von jedem Ort aus auf die Daten zugreifen. Mit Data Lake Store in Azure Storage-Explorer können Sie auf Data Lake Store-Daten und -Ressourcen sowie andere Azure-Entitäten wie Blobs und Warteschlangen zugreifen und diese verwalten. Nun können Sie mit demselben Tool Ihre verschiedenen Azure-Entitäten an einem Ort verwalten.
+[Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) ist ein Dienst zum Speichern großer Mengen von unstrukturierten Daten, z.B. als Text- oder Binärdaten. Sie können per HTTP oder HTTPS von jedem Ort aus auf die Daten zugreifen. Mit Data Lake Store in Azure Storage-Explorer können Sie auf Data Lake Store-Daten und -Ressourcen sowie andere Azure-Entitäten wie Blobs und Warteschlangen zugreifen und diese verwalten. Nun können Sie mit demselben Tool Ihre verschiedenen Azure-Entitäten an einem Ort verwalten.
 
 Ein weiterer Vorteil besteht darin, dass Sie keine Abonnementberechtigung zum Verwalten von Data Lake Store-Daten benötigen. In Storage-Explorer können Sie den Data Lake Store-Pfad an den Knoten **Local and Attached** (Lokal und angefügt) anfügen, sofern Ihnen die Berechtigung gewährt wird.
 
@@ -32,7 +32,7 @@ Ein weiterer Vorteil besteht darin, dass Sie keine Abonnementberechtigung zum Ve
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 *   Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial).
-*   Ein Azure Data Lake Store-Konto. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit dem Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal).
+*   Ein Azure Data Lake Store-Konto. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit dem Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
 ## <a name="install-storage-explorer"></a>Installieren von Storage-Explorer
 
@@ -197,7 +197,7 @@ Wenn Sie über eine URL verfügen, können Sie sie im Datei-Explorer oder Browse
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sehen Sie sich die [neuesten Versionsanmerkungen und Videos zum Storage-Explorer](http://www.storageexplorer.com) an.
-* Erfahren Sie, wie Sie [Azure Cosmos DB in Azure Storage-Explorer verwalten](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer).
-* [Erste Schritte mit dem Storage-Explorer](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-* [Erste Schritte mit Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview)
+* Erfahren Sie, wie Sie [Azure Cosmos DB in Azure Storage-Explorer verwalten](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
+* [Erste Schritte mit dem Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+* [Erste Schritte mit Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)
 * Sehen Sie sich ein [YouTube-Video zur Verwendung von Azure Cosmos DB in Azure Storage-Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) an.

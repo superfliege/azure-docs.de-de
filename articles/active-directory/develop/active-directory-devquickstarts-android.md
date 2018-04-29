@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 8ea69fbc95b9d9b2452f041e99c46d223581bdac
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 25a908c542bf8fdd8008841a1865cdfb40d847fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-android-getting-started"></a>Azure AD Android – Erste Schritte
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -28,7 +28,7 @@ Bei der Entwicklung einer Desktopanwendung ist es für Sie mit Azure Active Dire
 
 Für Android-Clients, die auf geschützte Ressourcen zugreifen müssen, ist unter Azure AD die Active Directory Authentication Library (ADAL) verfügbar. Die einzige Aufgabe der ADAL besteht darin, Ihrer App das Abrufen von Zugriffstoken zu erleichtern. Um Ihnen zu zeigen, wie einfach es geht, erstellen wir eine Android-Anwendung für Aufgabenlisten, mit der folgende Aktionen ausgeführt werden können:
 
-* Abrufen von Zugriffstoken zum Aufrufen einer Aufgabenlisten-API mit dem [OAuth 2.0-Authentifizierungsprotokoll](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code)
+* Abrufen von Zugriffstoken zum Aufrufen einer Aufgabenlisten-API mit dem [OAuth 2.0-Authentifizierungsprotokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)
 * Abrufen der Aufgabenliste eines Benutzers
 * Abmelden von Benutzern
 
@@ -274,7 +274,7 @@ Beachten Sie, dass die Korrelations-IDs zentraler Bestandteil der Diagnose in de
 #### <a name="errors--exceptions"></a>Fehler und Ausnahmen
 Ausnahmen sind die erste Diagnosemaßnahme. Wir versuchen, hilfreiche Fehlermeldungen für Sie bereitzustellen. Sie können uns ein Problem melden, falls Sie eine Fehlermeldung finden, die nicht hilfreich ist. Geben Sie dabei auch die Geräteinformationen an, z.B. Modell und SDK-Nummer.
 
-Wenn Sie mehr darüber erfahren möchten, welche Fehler Ihre App beheben sollte, lesen Sie die [Bewährten Methoden bei der Fehlerbehandlung](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling). 
+Wenn Sie mehr darüber erfahren möchten, welche Fehler Ihre App beheben sollte, lesen Sie die [Bewährten Methoden bei der Fehlerbehandlung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-adal-error-handling). 
 
 #### <a name="logs"></a>Protokolle
 Sie können die Bibliothek so konfigurieren, dass Protokollmeldungen generiert werden, die Sie zum Diagnostizieren von Problemen verwenden können. Sie können die Protokollierung konfigurieren, indem Sie den folgenden Aufruf verwenden. Hiermit können Sie einen Rückruf konfigurieren, der von der ADAL zum Weitergeben der Protokollmeldungen genutzt wird, wenn diese erzeugt werden.

@@ -5,37 +5,57 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/29/2018
+ms.topic: conceptual
+ms.date: 04/08/2018
 ms.author: raynew
-ms.openlocfilehash: 28ddecc45faa213d1fd536b5ad8690e151037505
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b2a6e3052c64ab6a2865a0c24a4876cb2b98d1a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Unterstützungsmatrix für die Replikation von VMware-VMs und physischen Servern in Azure
 
 Dieser Artikel enthält eine Übersicht über die unterstützten Komponenten und Einstellungen für die Notfallwiederherstellung von VMware-VMs in Azure mit [Azure Site Recovery](site-recovery-overview.md).
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="replication-scenario"></a>Replikationsszenario
 
 **Szenario** | **Details**
 --- | ---
-Virtuelle VMware-Computer | Sie können die Notfallwiederherstellung für lokale VMware-VMs in Azure ausführen. Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.
-Physische Server | Sie können die Notfallwiederherstellung für lokale physische Windows- und Linux-Server in Azure ausführen. Dieses Szenario können Sie im Azure-Portal bereitstellen.
+Virtuelle VMware-Computer | Replikation lokaler VMware-VMs in Azure. Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.
+Physische Server | Die Replikation lokaler physischen Windows-/Linux-Server in Azure. Dieses Szenario können Sie im Azure-Portal bereitstellen.
 
 ## <a name="on-premises-virtualization-servers"></a>Lokale Virtualisierungsserver
 
 **Server** | **Anforderungen** | **Details**
 --- | --- | ---
-VMware | vCenter Server 6.5, 6.0 oder 5.5 bzw. vSphere 6.5, 6.0 oder 5.5 | Es wird die Verwendung eines vCenter-Servers empfohlen.
+VMware | vCenter Server 6.5, 6.0 oder 5.5 bzw. vSphere 6.5, 6.0 oder 5.5 | Es wird die Verwendung eines vCenter-Servers empfohlen.<br/><br/> Ihre vSphere-Hosts und vCenter-Server sollten sich im gleichen Netzwerk befinden wie der Prozessserver. Die Prozessserverkomponenten werden standardmäßig auf dem Konfigurationsserver ausgeführt. Daher wird der Konfigurationsserver in diesem Netzwerk eingerichtet – es sei denn, Sie richten einen dedizierten Prozessserver ein. 
 Physisch | N/V
 
+## <a name="site-recovery-configuration-server"></a>Site Recovery-Konfigurationsserver
+
+Der Konfigurationsserver ist ein lokaler Computer, auf dem Site Recovery-Komponenten ausgeführt werden (unter anderem der Konfigurationsserver, der Prozessserver und der Masterzielserver). Für die VMware-Replikation muss der Konfigurationsserver mit sämtlichen Anforderungen eingerichtet werden. Erstellen Sie hierzu mithilfe einer OVF-Vorlage einen virtuellen VMware-Computer. Für die Replikation eines physischen Servers muss der Konfigurationsservercomputer manuell eingerichtet werden.
+
+**Komponente** | **Anforderungen**
+--- |---
+CPU-Kerne | 8 
+RAM | 12 GB
+Anzahl der Datenträger | Drei Datenträger<br/><br/> Hierzu zählen der Betriebssystemdatenträger, der Prozessservercache-Datenträger und das Aufbewahrungslaufwerk für das Failback.
+Freier Speicherplatz auf dem Datenträger | 600 GB für den Prozessservercache.
+Freier Speicherplatz auf dem Datenträger | 600 GB für das Aufbewahrungslaufwerk.
+Betriebssystem  | Windows Server 2012 R2 oder Windows Server 2016 | 
+Gebietsschema des Betriebssystems | Englisch (en-us) 
+PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") muss installiert sein.
+Windows Server-Rollen | Folgende Komponenten dürfen nicht aktiviert werden: <br> - Active Directory Domain Services <br>- Internetinformationsdienste <br> - Hyper-V |
+Gruppenrichtlinien| Folgende Komponenten dürfen nicht aktiviert werden: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+IIS | Stellen Sie sicher, dass Folgendes erfüllt ist:<br/><br/> - Es ist noch keine Standardwebsite vorhanden. <br> - Die [anonyme Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) ist aktiviert. <br> - Die Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ist aktiviert.  <br> - Es ist noch keine Website/App vorhanden, die an Port 443 lauscht.<br>
+NIC-Typ | VMXNET3 (bei Bereitstellung als VMware-VM) 
+Art der IP-Adresse | statischen 
+Ports | 443 für die Steuerkanalorchestrierung<br>9443 für den Datentransport
 
 ## <a name="replicated-machines"></a>Replizierte Computer
 
-In der folgenden Tabelle ist die Replikationsunterstützung für VMware-VMs und physische Server zusammengefasst. Site Recovery unterstützt die Replikation aller Workloads, die auf einem Computer mit einem unterstützten Betriebssystem ausgeführt werden.
+Site Recovery unterstützt die Replikation beliebiger Workloads, die auf einem unterstützten Computer ausgeführt werden.
 
 **Komponente** | **Details**
 --- | ---

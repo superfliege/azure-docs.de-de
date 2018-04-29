@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.openlocfilehash: a00b908f9811822f262d2c6113e3ff5fc364b1b4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>Erstellen benutzerdefinierter Routen (UDR) mit einer Vorlage
 
@@ -186,7 +186,7 @@ Führen Sie zum Bereitstellen der Azure Resource Manager-Vorlage mithilfe der Az
 
         info:    New mode is arm
 
-3. Navigieren Sie über Ihren Browser zu **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, kopieren Sie den Inhalt der JSON-Datei, und fügen Sie ihn in eine neue Datei auf Ihrem Computer ein. Kopieren Sie für dieses Szenario die folgenden Werte in eine Datei mit dem Namen **c:\udr\azuredeploy.parameters.json**.
+3. Navigieren Sie im Browser zu **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, kopieren Sie den Inhalt der JSON-Datei, und fügen Sie ihn in eine neue Datei auf Ihrem Computer ein. Kopieren Sie für dieses Szenario die folgenden Werte in eine Datei mit dem Namen **c:\udr\azuredeploy.parameters.json**.
 
     ```json
         {

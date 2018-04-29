@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: 445adb7f57332a285494c744763f633806d2675e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 54ec12f24ddbad6227a306aeae86658807f85b4e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>Erweitern (Kopieren) von Warnungen aus dem OMS-Portal in Azure
 Im Operations Management Suite-Portal (OMS) werden nur Log Analytics-Warnungen angezeigt.  Die neue Oberfläche für Warnungen umfasst nun die Warnungsanzeige übergreifend für verschiedene Dienste und Komponenten in Microsoft Azure. Die neue Oberfläche, die als **Warnungen** unter Azure Monitor im Azure-Portal zur Verfügung steht, enthält sowohl für Log Analytics als auch Application Insights Aktivitätsprotokollwarnungen, Metrikwarnungen und Protokollwarnungen. 
@@ -43,7 +43,7 @@ Wenn für Warnungen in einem Log Analytics-Arbeitsbereich die Erweiterung in Azu
  ![Während des geplanten Zeitraums werden Benutzeraktionen für Warnungen an Azure umgeleitet](./media/monitor-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
-> Für das Erweitern von Warnungen aus dem OMS-Portal in Azure fallen keine Gebühren an, und die Nutzung von Azure-Warnungen für abfragebasierte Log Analytics-Warnungen wird nicht in Rechnung gestellt, sofern dies im Rahmen der in der [Preisrichtlinie für Azure Monitor](https://azure.microsoft.com/en-us/pricing/details/monitor/) angegebenen Grenzen und Bedingungen geschieht.  
+> Für das Erweitern von Warnungen aus dem OMS-Portal in Azure fallen keine Gebühren an, und die Nutzung von Azure-Warnungen für abfragebasierte Log Analytics-Warnungen wird nicht in Rechnung gestellt, sofern dies im Rahmen der in der [Preisrichtlinie für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) angegebenen Grenzen und Bedingungen geschieht.  
 
 Benutzer können die Vorteile der Erweiterung von Warnungen bereits vor diesem Datum nutzen, indem sie sich freiwillig für die Verwaltung ihrer Warnungen in Azure entscheiden.
 

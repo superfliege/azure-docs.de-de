@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: cd8274ab6b50eee83bc3e41ea543930aa309e790
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: caf2c54c986f8c4dd951628fd6908d42e7ddd281
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
-Dieser Artikel enthält die Schritte zum Vorbereiten Ihrer Umgebung zum Sichern eines mit Azure Resource Manager bereitgestellten virtuellen Computers (VM). In den im Verfahren dargestellten Schritten wird das Azure-Portal genutzt. Speichern Sie die Sicherungsdaten für den virtuellen Computer in einem Recovery Services-Tresor. Der Tresor enthält die Sicherungsdaten für klassische und vom Resource Manager bereitgestellte virtuelle Computer.
+Dieser Artikel enthält die Schritte zum Vorbereiten Ihrer Umgebung zum Sichern eines mit Azure Resource Manager bereitgestellten virtuellen Computers (VM). In den im Verfahren dargestellten Schritten wird das Azure-Portal genutzt. Wenn Sie einen virtuellen Computer sichern, werden die Sicherungsdaten oder Wiederherstellungspunkte in einem Recovery Services-Tresor gespeichert. Recovery Services-Tresore speichern die Sicherungsdaten für klassische und vom Resource Manager bereitgestellte virtuelle Computer.
 
 > [!NOTE]
 > Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../azure-resource-manager/resource-manager-deployment-model.md).
 
 Bevor Sie einen mit dem Resource Manager bereitgestellten virtuellen Computer schützen (oder sichern) können, stellen Sie sicher, dass folgende Voraussetzungen erfüllt sind:
 
-* Erstellen Sie einen Recovery Services-Tresor *in derselben Region, in der sich Ihre VM befindet* (oder geben Sie einen dort vorhandenen Recovery Services-Tresor an).
+* Erstellen oder identifizieren Sie einen Recovery Services-Tresor *in der Region, in der sich auch Ihr virtueller Computer befindet*.
 * Wählen Sie ein Szenario aus, definieren Sie die Sicherungsrichtlinie, und definieren Sie die zu schützenden Elemente.
-* Überprüfen Sie, ob ein VM-Agent auf dem virtuellen Computer installiert ist.
+* Überprüfen Sie, ob ein VM-Agent (Erweiterung) auf dem virtuellen Computer installiert ist.
 * Überprüfen Sie die Netzwerkverbindung.
 * Wenn Sie für virtuelle Linux-Computer die Sicherungsumgebung für anwendungskonsistente Sicherungen anpassen möchten, führen Sie die [Schritte zum Konfigurieren von Skripts vor und nach der Momentaufnahme](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) aus.
 
@@ -51,11 +51,11 @@ Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen ve
 * Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
 * Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
 * Das Sichern von virtuellen Linux-Computern, die mit Linux Unified Key Setup (LUKS) verschlüsselt sind, wird nicht unterstützt.
-* Das Sichern von virtuellen Computern, die freigegebene Clustervolumes (Cluster Shared Volumes, CSV) oder eine Konfiguration für Dateiserver mit horizontaler Skalierung enthalten, wird nicht empfohlen. Dafür müssen alle während einer Momentaufnahmenaufgabe in der Clusterkonfiguration enthaltenen virtuellen Computer berücksichtigt werden. Azure Backup unterstützt keine Multi-VM-Konsistenz. 
+* Das Sichern von virtuellen Computern, die freigegebene Clustervolumes (Cluster Shared Volumes, CSV) oder eine Konfiguration für Dateiserver mit horizontaler Skalierung enthalten, wird nicht empfohlen. Wenn dies der Fall ist, wird ein Fehler bei CSV-Schreibern erwartet. Dafür müssen alle während einer Momentaufnahmenaufgabe in der Clusterkonfiguration enthaltenen virtuellen Computer berücksichtigt werden. Azure Backup unterstützt keine Multi-VM-Konsistenz. 
 * Im Netzwerk bereitgestellte und an einen virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
 * Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Wenn Sie versuchen, die VM wiederherzustellen, obwohl die VM vorhanden ist, wird die Wiederherstellung nicht ausgeführt.
 * Die regionsübergreifende Sicherung und Wiederherstellung wird nicht unterstützt.
-* Die Sicherung und Wiederherstellung von virtuellen Computern mit nicht verwalteten Datenträgern in Speicherkonten mit angewendeten Netzwerkregeln wird nicht unterstützt. 
+* Die Sicherung und Wiederherstellung von virtuellen Computern mit nicht verwalteten Datenträgern in Speicherkonten mit angewendeten Netzwerkregeln wird für Kunden mit dem alten VM-Sicherungsstapel nicht unterstützt. 
 * Stellen Sie beim Konfigurieren der Sicherung sicher, dass die Speicherkontoeinstellungen für **Firewalls und virtuelle Netzwerke** Zugriff von allen Netzwerken zulassen.
 * Sie können virtuelle Computer in allen öffentlichen Regionen von Azure sichern. (Siehe [Checkliste](https://azure.microsoft.com/regions/#services) der unterstützten Regionen.) Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
 * Das Wiederherstellen eines virtuellen Domänencontrollercomputers, der Teil einer Konfiguration mit mehreren Domänencontrollern ist, wird nur über PowerShell unterstützt. Weitere Informationen finden Sie unter [Wiederherstellen von Multi-DC-Domänencontrollern](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
@@ -167,7 +167,7 @@ Bevor Sie einen virtuellen Computer mit einem Recovery Services-Tresor registrie
 
    ![Schaltfläche „Sicherung aktivieren“](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
-Nachdem die Sicherung erfolgreich aktiviert wurde, wird die Sicherungsrichtlinie nach dem Zeitplan ausgeführt. Wenn Sie einen bedarfsgesteuerten Sicherungsauftrag generieren möchten, um die virtuellen Computer jetzt zu sichern, finden Sie weitere Informationen unter [Auslösen des Sicherungsauftrags](./backup-azure-arm-vms.md#triggering-the-backup-job).
+Nachdem die Sicherung erfolgreich aktiviert wurde, wird die Sicherungsrichtlinie nach dem Zeitplan ausgeführt. Wenn Sie einen bedarfsgesteuerten Sicherungsauftrag generieren möchten, um die virtuellen Computer jetzt zu sichern, finden Sie weitere Informationen unter [Auslösen des Sicherungsauftrags](./backup-azure-vms-first-look-arm.md#initial-backup).
 
 Wenn Sie Probleme beim Registrieren des virtuellen Computers haben, überprüfen Sie die folgenden Informationen zum Installieren des VM-Agents und zu Netzwerkverbindungen. Die folgenden Informationen sind wahrscheinlich nicht erforderlich, wenn Sie in Azure erstellte virtuelle Computer schützen möchten. Wenn Sie jedoch Ihre virtuellen Computer zu Azure migriert haben, vergewissern Sie sich, dass Sie den VM-Agent ordnungsgemäß installiert haben und dass Ihr virtueller Computer mit dem virtuellen Netzwerk kommunizieren kann.
 
@@ -208,6 +208,10 @@ Ausführliche Informationen und Anweisungen zur Aufnahme der IP-Bereiche der Azu
 Mit [Diensttags](../virtual-network/security-overview.md#service-tags) können Sie Verbindungen zum Speichern bestimmter Regionen zulassen. Stellen Sie sicher, dass die Regel, die Zugriff auf das Speicherkonto zulässt, eine höhere Priorität hat, als die Regel, die den Internetzugriff blockiert. 
 
 ![NSG mit Speichertags für eine Region](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+Das folgende Video führt Sie durch die Schrittanleitung zum Konfigurieren von Diensttags: 
+
+>[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
 > [!WARNING]
 > Speicherdiensttags sind nur in bestimmten Regionen und in der Vorschau verfügbar. Eine Liste der Regionen finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).

@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e2a2b885dd0dc5b240aef234ef1ff139d788de3c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: a70f02fca5ebf575bc009623c3af648a5a80fd70
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Data Lake Store
 
@@ -99,7 +99,7 @@ In diesem Tutorial authentifizieren Sie sich bei der REST-API für das Data Lake
 > [!NOTE]
 > Die Client-SDKs für das Data Lake Store-Dateisystem unterstützen noch keine verwalteten Dienstidentitäten (MSIs).  Dieses Tutorial wird aktualisiert, wenn die Unterstützung im SDK hinzugefügt wird.
 
-Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client. Wenn Sie Windows verwenden, können Sie den SSH-Client im [Windows-Subsystem für Linux](https://msdn.microsoft.com/commandline/wsl/about) verwenden. Wenn Sie Hilfe beim Konfigurieren der SSH-Clientschlüssel benötigen, finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](~/articles/virtual-machines/linux/ssh-from-windows.md) oder [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](~/articles/virtual-machines/linux/mac-create-ssh-keys.md) weitere Informationen.
+Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client. Wenn Sie Windows verwenden, können Sie den SSH-Client im [Windows-Subsystem für Linux](https://msdn.microsoft.com/commandline/wsl/about) verwenden. Wenn Sie Hilfe beim Konfigurieren der SSH-Clientschlüssel benötigen, lesen Sie die Informationen unter [Vorgehensweise: Verwenden von SSH-Schlüsseln mit Windows in Azure](~/articles/virtual-machines/linux/ssh-from-windows.md) oder [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
 
 1. Navigieren Sie im Portal zu Ihrem virtuellen Linux-Computer, und klicken Sie in der **Übersicht** auf **Verbinden**.  
 2. **Verbinden** Sie den virtuellen Computer mit dem gewünschten SSH-Client. 
@@ -187,7 +187,7 @@ Glückwunsch!  Sie haben sich mit einer VM-MSI beim Data Lake Store-Dateisystem 
 ## <a name="related-content"></a>Verwandte Inhalte
 
 - Einen Überblick über MSI finden Sie unter [Übersicht über verwaltete Dienstidentitäten](msi-overview.md).
-- Für Verwaltungsaufgaben verwendet Data Lake Store den Azure Resource Manager.  Weitere Informationen zum Verwenden einer VM-MSI zur Authentifizierung bei Resource Manager finden Sie unter [Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) mit einer Linux-VM für den Zugriff auf Azure Resource Manager](msi-tutorial-linux-vm-access-arm.md).
+- Für Verwaltungsaufgaben verwendet Data Lake Store den Azure Resource Manager.  Weitere Informationen zum Verwenden einer VM-MSI zur Authentifizierung bei Resource Manager finden Sie unter [Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) mit einer Linux-VM für den Zugriff auf Azure Resource Manager](../managed-service-identity/msi-tutorial-linux-vm-access-arm.md).
 - Erfahren Sie mehr über die [Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).
 - Erfahren Sie mehr über [Dateisystemvorgänge in Azure Data Lake Store per REST-API](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md) oder [WebHDFS-Dateisystem-APIs](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis.md).
 - Erfahren Sie mehr über die [Zugriffssteuerung in Data Lake Store](~/articles/data-lake-store/data-lake-store-access-control.md).

@@ -1,6 +1,6 @@
 ---
-title: "Sicherheits- und Identitätsdienste von Azure Deutschland | Microsoft-Dokumentation"
-description: "Vergleich der Sicherheits- und Identitätsdienste für Azure Deutschland"
+title: Sicherheits- und Identitätsdienste von Azure Deutschland | Microsoft-Dokumentation
+description: Vergleich der Sicherheits- und Identitätsdienste für Azure Deutschland
 services: germany
 cloud: na
 documentationcenter: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: b79878afa6da121ece73044412102976be531090
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee98e074b8bf21abe198506899b99be4e2908f14
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-germany-security-and-identity-services"></a>Sicherheits- und Identitätsdienste von Azure Deutschland
-## <a name="key-vault"></a>Key Vault
-Einzelheiten zum Azure Key Vault-Dienst und seiner Verwendung finden Sie in der [globalen Dokumentation zu Key Vault](../key-vault/index.md).
+## <a name="key-vault"></a>Schlüsseltresor
+Einzelheiten zum Azure Key Vault-Dienst und seiner Verwendung finden Sie in der [globalen Dokumentation zu Key Vault](../key-vault/index.yml).
 
 Key Vault ist in Azure Deutschland allgemein verfügbar. Wie auch bei der globalen Azure-Umgebung gibt es keine Erweiterung. Key Vault ist daher nur über PowerShell und die CLI verfügbar.
 

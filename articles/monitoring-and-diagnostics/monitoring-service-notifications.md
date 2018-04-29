@@ -1,8 +1,8 @@
 ---
 title: Was sind Azure-Dienstintegritätsbenachrichtigungen? | Microsoft-Dokumentation
 description: Mit Dienstintegritätsbenachrichtigungen können Sie von Microsoft Azure veröffentlichte Dienstintegritätsmeldungen anzeigen.
-author: anirudhcavale
-manager: orenr
+author: dkamstra
+manager: chrad
 editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
-ms.author: ancav
-ms.openlocfilehash: 4a95e9882515e6a2861292829a44847e11f39063
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 4/12/2017
+ms.author: dukek
+ms.openlocfilehash: 6821828d3e39a87b8c93f74e7e0583bf9fe1fe4a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
 
@@ -41,7 +41,7 @@ channels | Einer der folgenden Werte: **Admin** oder **Vorgang**.
 correlationId | Normalerweise eine GUID im Zeichenfolgenformat. Ereignisse, die zur gleichen Aktion gehören, weisen normalerweise den gleichen correlationId-Wert auf.
 eventDataId | Der eindeutige Bezeichner eines Ereignisses.
 eventName | Der Titel eines Ereignisses.
-level | Das Level eines Ereignisses. Einer der folgenden Werte: **Kritisch**, **Fehler**, **Warnung** oder **Information**.
+level | Die Stufe eines Ereignisses
 resourceProviderName | Der Name des Ressourcenanbieters für die betroffene Ressource.
 resourceType| Der Ressourcentyp der betroffenen Ressource.
 subStatus | Üblicherweise der HTTP-Statuscode des entsprechenden REST-Aufrufs, kann aber auch weitere Zeichenfolgen zur Beschreibung eines untergeordneten Status enthalten. Beispiele: „OK“ (HTTP-Statuscode: 200), „Erstellt“ (HTTP-Statuscode: 201), „Akzeptiert“ (HTTP-Statuscode: 202), „Kein Inhalt“ (HTTP-Statuscode: 204), „Ungültige Anforderung“ (HTTP-Statuscode: 400), „Nicht gefunden“ (HTTP-Statuscode: 404), „Konflikt“ (HTTP-Statuscode: 409), „Interner Serverfehler“ (HTTP-Statuscode: 500), „Dienst nicht verfügbar“ (HTTP-Statuscode: 503) und „Gatewaytimeout“ (HTTP-Statuscode: 504).
@@ -54,14 +54,52 @@ category | Diese Eigenschaft lautet immer **ServiceHealth**.
 Ressourcen-ID | Die Ressourcen-ID der betroffenen Ressource.
 Properties.title | Der lokalisierte Titel für diese Kommunikation. Englisch ist der Standard.
 Properties.communication | Die lokalisierten Details der Kommunikation mit HTML-Markup. Englisch ist der Standard.
-Properties.incidentType | Einer der folgenden Werte **AssistedRecovery**, **ActionRequired**, **Information**, **Incident**, **Wartung** oder **Sicherheit**.
+Properties.incidentType | Einer der folgenden Werte: **ActionRequired**, **Information**, **Incident**, **Maintenance** oder **Security**.
 Properties.trackingId | Der Incident, dem dieses Ereignis zugeordnet ist. Verwenden Sie diese Option, um die Ereignisse im Zusammenhang mit einem Vorfall zu korrelieren.
 Properties.impactedServices | Ein JSON-Blob mit Escapezeichen, das die vom Incident betroffenen Dienste und Regionen beschreibt. Die Eigenschaft umfasst eine Liste der Dienste, von denen jeder über einen **ServiceName** verfügt, sowie eine Liste der betroffenen Regionen, von denen jede einen **RegionName** aufweist.
 Properties.defaultLanguageTitle | Die Kommunikation auf Englisch.
 Properties.defaultLanguageContent | Die Kommunikation auf Englisch, entweder als HTML-Markup oder Nur-Text.
-Properties.stage | Die möglichen Werte für **AssistedRecovery**, **ActionRequired**, **Information**, **Incident** und **Sicherheit** sind **Aktiv** oder **Aufgelöst**. Für **Wartung** sind folgende Werte möglich: **Aktiv**, **Geplant**, **InProgress**, **Abgebrochen**, **Neu geplant**, **Aufgelöst** oder **Abgeschlossen**.
+Properties.stage | Die möglichen Werte für **Incident** und **Security** sind **Active,** **Resolved** oder **RCA**. Der einzige Wert für **ActionRequired** oder **Information** ist **Active**. Für **Maintenance** sind folgende Werte möglich: **Active**, **Planned**, **InProgress**, **Canceled**, **Rescheduled**, **Resolved** oder **Complete**.
 Properties.communicationId | Die Kommunikation, der dieses Ereignis ist zugeordnet ist.
 
+### <a name="details-on-service-health-level-information"></a>Details zu Informationen zur Dienstintegritätsebene
+  <ul>
+    <li><b>Aktion erforderlich</b> (properties.incidentType == ActionRequired) <dl>
+            <dt>Zur Information</dt>
+            <dd>Aktion des Administrators erforderlich, um Auswirkungen auf bestehende Dienste zu vermeiden</dd>
+        </dl>
+    </li>
+    <li><b>Wartung</b> (properties.incidentType == Maintenance) <dl>
+            <dt>Warnung</dt>
+            <dd>Notfallwartung<dd>
+            <dt>Zur Information</dt>
+            <dd>Standardmäßig geplante Wartung</dd>
+        </dl>
+    </li>
+    <li><b>Informationen</b> (properties.incidentType == Information) <dl>
+            <dt>Zur Information</dt>
+            <dd>Administrator muss ggf. eingreifen, um Auswirkungen auf bestehende Dienste zu vermeiden</dd>
+        </dl>
+    </li>
+    <li><b>Sicherheit</b> (properties.incidentType == Security) <dl>
+            <dt>Fehler</dt>
+            <dd>Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.</dd>
+            <dt>Warnung</dt>
+            <dd>Probleme beim Zugriff auf bestimmte Dienste und/oder bestimmte Regionen wirken sich auf eine Teilmenge von Kunden aus.</dd>
+            <dt>Zur Information</dt>
+            <dd>Probleme, die sich auf den Verwaltungsbetrieb und/oder die Latenz auswirken, ohne die Verfügbarkeit von Diensten zu beeinträchtigen.</dd>
+        </dl>
+    </li>
+    <li><b>Dienstprobleme</b> (properties.incidentType == Incident) <dl>
+            <dt>Fehler</dt>
+            <dd>Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.</dd>
+            <dt>Warnung</dt>
+            <dd>Probleme beim Zugriff auf bestimmte Dienste und/oder bestimmte Regionen wirken sich auf eine Teilmenge von Kunden aus.</dd>
+            <dt>Zur Information</dt>
+            <dd>Probleme, die sich auf den Verwaltungsbetrieb und/oder die Latenz auswirken, ohne die Verfügbarkeit von Diensten zu beeinträchtigen.</dd>
+        </dl>
+    </li>
+  </ul>
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Anzeigen Ihrer Dienstintegritätsbenachrichtigungen im Azure-Portal
 1.  Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Überwachen** aus.

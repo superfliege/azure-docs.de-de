@@ -1,8 +1,8 @@
 ---
-title: "Verwenden von Hadoop Sqoop mit Curl in HDInsight – Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Sqoop-Aufträge mithilfe von Curl remote an HDInsight übermitteln."
+title: Verwenden von Hadoop Sqoop mit Curl in HDInsight – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Sqoop-Aufträge mithilfe von Curl remote an HDInsight übermitteln.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 39798321-78ca-428c-bcfe-322e49af4059
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 08e7288d4d9d06f3a74464817892c2b03ae8a86c
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 66c82cc22b9b460281928c4892dab8308ccf1098
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Ausführen von Sqoop-Aufträgen mit Hadoop in HDInsight mit Curl
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -63,7 +61,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
    * **-u** – Der Benutzername und das Kennwort für die Authentifizierung der Anforderung
    * **-G** – Gibt an, dass dies eine GET-Anforderung ist
      
-     Der Anfang der URL, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, ist für alle Anforderungen identisch. Der Pfad, **/status**, gibt an, dass die Anforderung den Status von WebHCat (auch bekannt als Templeton) für den Server zurückgibt. 
+     Der Anfang der URL (**https://CLUSTERNAME.azurehdinsight.net/templeton/v1**) ist für alle Anforderungen gleich. Der Pfad, **/status**, gibt an, dass die Anforderung den Status von WebHCat (auch bekannt als Templeton) für den Server zurückgibt. 
 2. Geben Sie den folgenden Befehl an, um einen Sqoop-Auftrag zu übermitteln:
 
     ```bash
@@ -98,7 +96,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
    > Diese Curl-Anforderung gibt ein JSON-Dokument (JavaScript Object Notation) mit Informationen zum Auftrag zurück. Mithilfe von "jq" wird nur der Statuswert abgerufen.
    > 
    > 
-4. Sobald der Status des Auftrags zu **ERFOLGREICH** wechselt, können Sie die Ergebnisse des Auftrags aus dem Azure Blob-Speicher abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall ist dieser **wasb:///example/data/sqoop/curl**. Diese Adresse speichert die Ausgabe des Auftrags im Verzeichnis **example/data/sqoop/curl** des Standardspeichercontainers, der von Ihrem HDInsight-Cluster verwendet wird.
+4. Sobald der Status des Auftrags zu **ERFOLGREICH** wechselt, können Sie die Ergebnisse des Auftrags aus Azure Blob Storage abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall ist dieser **wasb:///example/data/sqoop/curl**. Diese Adresse speichert die Ausgabe des Auftrags im Verzeichnis **example/data/sqoop/curl** des Standardspeichercontainers, der von Ihrem HDInsight-Cluster verwendet wird.
    
     Sie können über das Azure-Portal auf die Blobs „stderr“ und „stdout“ zugreifen.  Sie können auch mithilfe von Microsoft SQL Server Management Studio die Daten überprüfen, die in die log4jlogs-Tabelle hochgeladen werden.
 

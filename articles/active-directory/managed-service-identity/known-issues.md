@@ -14,11 +14,11 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 84390f73fdac6554699dd43a0a36d16eace9a2bb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a50854b2e12db9a202d769f9e5feebee8e5f9395
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory
 
@@ -26,9 +26,9 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="frequently-asked-questions-faqs"></a>Häufig gestellte Fragen (FAQs)
 
-### <a name="is-there-a-private-preview-available-for-additional-features"></a>Ist eine private Vorschauversion für zusätzliche Features verfügbar?
+### <a name="is-there-a-private-preview-program-available-for-upcoming-msi-features-and-integrations"></a>Gibt es ein privates Vorschauprogramm für bald verfügbare MSI-Features und -Integrationen?
 
-Ja. Wenn Sie für die Anmeldung in der privaten Vorschauversion berücksichtigt werden möchten, [besuchen Sie unsere Registrierungsseite](https://aka.ms/azuremsiprivatepreview).
+Ja. Wenn Sie für die Registrierung im privaten Vorschauprogramm berücksichtigt werden möchten, [besuchen Sie unsere Registrierungsseite](https://aka.ms/azuremsiprivatepreview).
 
 ### <a name="does-msi-work-with-azure-cloud-services"></a>Funktioniert MSI mit Azure Cloud Services?
 
@@ -42,10 +42,24 @@ Nein, MSI ist noch nicht in ADAL oder MSAL integriert. Ausführliche Information
 
 Bei der Sicherheitsgrenze der Identität handelt es sich um die Ressource, an die sie angefügt ist. Die Sicherheitsgrenze einer VM-MSI ist beispielsweise der virtuelle Computer. Jeglicher Code, der auf diesem virtuellen Computer ausgeführt wird, kann den MSI-Endpunkt aufrufen und Token anfordern. Ähnlich verhält es sich mit anderen Ressourcen, die MSI unterstützen.
 
+### <a name="should-i-use-the-msi-vm-imds-endpoint-or-the-msi-vm-extension-endpoint"></a>Sollte ich den MSI VM IMDS-Endpunkt oder den MSI VM-Erweiterungsendpunkt verwenden?
+
+Wenn Sie MSI mit virtuellen Computern verwenden, empfehlen wir die Verwendung des MSI IMDS-Endpunkts. Der Azure Instance Metadata Service ist ein REST-Endpunkt, der für alle virtuellen IaaS-Computer verfügbar ist, die mit Azure Resource Manager erstellt wurden. Die Verwendung von MSI über IMDS ist z.B. mit den folgenden Vorteilen verbunden:
+
+1. Alle von Azure IaaS unterstützten Betriebssysteme können MSI über IMDS verwenden. 
+2. Es ist nicht mehr erforderlich, eine Erweiterung auf Ihrem virtuellen Computer zu installieren, um MSI zu aktivieren. 
+3. Die von MSI verwendeten Zertifikate sind auf dem virtuellen Computer nicht mehr vorhanden. 
+4. Der Endpunkt ist eine bekannte, nicht routingfähige IP-Adresse, auf die nur innerhalb des virtuellen Computers zugegriffen werden kann. 
+
+Die MSI VM-Erweiterung ist weiterhin verfügbar und kann zurzeit noch verwendet werden. Allerdings wird der IMDS-Endpunkt in Zukunft Standard werden. Die MSI VM-Erweiterung wird bald als veraltet eingestuft. 
+
+Weitere Informationen zum Azure Instance Metada Service finden Sie in der [IMDS-Dokumentation](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service)
+
 ### <a name="what-are-the-supported-linux-distributions"></a>Welche Linux-Distributionen werden unterstützt?
 
-Die folgenden Linux-Distributionen unterstützen MSI: 
+Alle Linux-Distributionen, die von Azure IaaS unterstützt werden, können über den IMDS-Endpunkt mit MSI verwendet werden. 
 
+Hinweis: Die MSI VM-Erweiterung unterstützt nur die folgenden Linux-Distributionen:
 - CoreOS Stable
 - CentOS 7.1
 - RedHat 7.2

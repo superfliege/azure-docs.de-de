@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: aa74596906206ba4460e80af9015955c0b848cd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 718990b69cc75709af819ad7df9a77ad0f8f33ce
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
 
@@ -66,7 +66,7 @@ Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
 * **VM-Erstellung:** Eine NIC mit aktiviertem beschleunigten Netzwerkbetrieb kann nur an eine VM angefügt werden, während diese erstellt wird. Die NIC kann nicht an eine vorhandene VM angefügt werden. Wenn Sie den virtuellen Computer zu einer vorhandenen Verfügbarkeitsgruppe hinzufügen, muss der beschleunigte Netzwerkbetrieb für alle virtuellen Computer in der Verfügbarkeitsgruppe aktiviert sein.
 * **Bereitstellung nur über den Azure Resource Manager:** Virtuelle Computer (klassisch) können nicht mit beschleunigtem Netzwerkbetrieb bereitgestellt werden.
 
-In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure-Befehlszeilenschnittstelle dargestellt, Sie können jedoch auch [über das Azure-Portal einen virtuellen Computer mit beschleunigtem Netzwerkbetrieb erstellen](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie einen virtuellen Computer mit einem unterstützten Betriebssystem und einer unterstützten VM-Größe im Portal erstellen, wählen Sie unter **Einstellungen** für **Beschleunigter Netzwerkbetrieb** die Option **Aktiviert** aus. Nach dem Erstellen des virtuellen Computers müssen Sie die Anweisungen unter [Bestätigen der Aktivierung des beschleunigten Netzwerkbetriebs](#confirm-that-accelerated-networking-is-enabled) abschließen.
+In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure-Befehlszeilenschnittstelle dargestellt, Sie können jedoch auch [über das Azure-Portal einen virtuellen Computer mit beschleunigtem Netzwerkbetrieb erstellen](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie einen virtuellen Computer im Portal erstellen, wählen Sie unter **Einstellungen** für **Beschleunigter Netzwerkbetrieb** die Option **Aktiviert** aus. Die Option zum Aktivieren des beschleunigten Netzwerkbetriebs wird nur dann im Portal angezeigt, wenn Sie ein [unterstütztes Betriebssystem](#supported-operating-systems) und die [Größe des virtuellen Computers](#supported-vm-instances) ausgewählt haben. Nach dem Erstellen des virtuellen Computers müssen Sie die Anweisungen unter [Bestätigen der Aktivierung des beschleunigten Netzwerkbetriebs](#confirm-that-accelerated-networking-is-enabled) abschließen.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 

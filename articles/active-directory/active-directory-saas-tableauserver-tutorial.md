@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
 ms.openlocfilehash: 3b0390c8b95a46b2c134252532bef118ea4df52d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Tutorial: Azure Active Directory-Integration mit Tableau Server
 
@@ -158,7 +158,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
   
    b. Aktivieren Sie das Kontrollkästchen **Use SAML for single sign-on**.
    
-   c. „Tableau Server return URL“: Die URL, auf die Tableau Server-Benutzer zugreifen, z.B. http://tableau_server. Es wird nicht empfohlen, http://localhost zu verwenden. Die Verwendung einer URL mit einem nachstehenden Schrägstrich (z.B. http://tableau_server/) wird nicht unterstützt. Kopieren Sie den Wert von **Tableau Server return URL**, und fügen Sie ihn im Abschnitt **Tableau Server-Domäne und -URLs** in das Azure AD-Textfeld **Anmelde-URL** ein.
+   c. „Tableau Server return URL“: Die URL, auf die Tableau Server-Benutzer zugreifen, z. B. http://tableau_server. Ein Verwenden von http://localhost ist nicht zu empfehlen. Die Verwendung einer URL mit einem nachstehenden Schrägstrich (z. B. http://tableau_server/)) wird nicht unterstützt. Kopieren Sie den Wert von **Tableau Server return URL**, und fügen Sie ihn im Abschnitt **Tableau Server-Domäne und -URLs** in das Azure AD-Textfeld **Anmelde-URL** ein.
    
    d. „SAML entity ID“: Die Entitäts-ID zur eindeutigen Identifizierung Ihrer Tableau Server-Installation durch den IdP. Sie können in dieses Feld erneut Ihre Tableau Server-URL eingeben, es muss jedoch nicht die Tableau Server-URL verwendet werden. Kopieren Sie die **SAML-Entitäts-ID**, und fügen Sie sie im Abschnitt **Tableau Server-Domäne und -URLs** in das Azure AD-Textfeld **Bezeichner** ein.
      

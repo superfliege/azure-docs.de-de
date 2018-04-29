@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
 ms.topic: article
-ms.date: 04/01/2018
+ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 72e0ed535139c088c4235b43a12ea96da080dc8a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 86b0e78f362d1cf3c2480aad97ef5281c5f3bc95
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>Einrichten der SQL-Datensynchronisierung (Vorschauversion)
 In diesem Tutorial erfahren Sie, wie sie Azure SQL-Datensynchronisierung einrichten können, indem Sie eine hybride Synchronisierungsgruppe erstellen, die Azure SQL-Datenbank und SQL Server-Instanzen enthält. Die neue Synchronisierungsgruppe ist vollständig konfiguriert und synchronisiert mit dem von Ihnen festgelegten Zeitplan.
@@ -151,7 +151,7 @@ Führen Sie auf der Seite **Lokale Konfiguration** die folgenden Schritte aus:
         ![Eingabe des Agent-Schlüssels und der Anmeldeinformationen des Servers](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 
         >   [!NOTE] 
-        >   Wenn Sie jetzt eine Fehlermeldung der Firewall erhalten, müssen Sie eine Firewallregel in Azure aufstellen, um eingehenden Datenverkehr vom SQL-Servercomputer zuzulassen. Sie können die Regel manuell im Verwaltungsportal erstellen, aber möglicherweise ist es für Sie einfacher, diese in SSMS (SQL Server Management Studio) zu erstellen. Versuchen Sie in SSMS eine Verbindung mit der Hub-Datenbank in Azure herzustellen. Geben Sie den Namen „\<hub_datenbank_name\>.database.windows.net“ ein. Führen Sie zum Konfigurieren der Azure-Firewallregel die Schritte im Dialogfeld aus. Kehren Sie dann zur Anwendung des Clientsynchronisierungs-Agents zurück.
+        >   Wenn Sie jetzt eine Fehlermeldung der Firewall erhalten, müssen Sie eine Firewallregel in Azure aufstellen, um eingehenden Datenverkehr vom SQL-Servercomputer zuzulassen. Sie können die Regel manuell im Verwaltungsportal erstellen, aber möglicherweise ist es für Sie einfacher, diese in SSMS (SQL Server Management Studio) zu erstellen. Versuchen Sie in SSMS eine Verbindung mit der Hub-Datenbank in Azure herzustellen. Geben Sie den Namen im Format „<Name der Hub-Datenbank>.database.windows.net“ ein. Führen Sie zum Konfigurieren der Azure-Firewallregel die Schritte im Dialogfeld aus. Kehren Sie dann zur Anwendung des Clientsynchronisierungs-Agents zurück.
 
     9.  Klicken Sie in der Anwendung des Clientsynchronisierungs-Agents auf **Register** (Registrieren), um eine SQL-Serverdatenbank beim Agent zu registrieren. Das Dialogfeld **SQL Server-Konfiguration** wird geöffnet.
 
@@ -225,7 +225,16 @@ Nicht unbedingt. In einer Synchronisierungsgruppe mit einem Hub und drei Spokes 
 
 ### <a name="how-do-i-get-schema-changes-into-a-sync-group"></a>Wie übertrage ich Schemaänderungen in eine Synchronisierungsgruppe?
 
-Schemaänderungen müssen manuell vorgenommen werden.
+Alle Schemaänderungen müssen manuell vorgenommen und verteilt werden.
+1. Replizieren Sie die Schemaänderungen manuell auf dem Hub und auf allen Synchronisierungsmitgliedern.
+2. Aktualisieren Sie das Synchronisierungsschema.
+
+**Hinzufügen neuer Tabellen und Spalten:** Neue Tabellen und Spalten haben keine Auswirkungen auf die aktuelle Synchronisierung. Die Datensynchronisierung berücksichtigt neue Tabellen und Spalten erst, nachdem Sie sie dem Synchronisierungsschema hinzugefügt haben. Gehen Sie beim Hinzufügen neuer Datenbankobjekte am besten wie folgt vor:
+1. Fügen Sie die neuen Tabellen oder Spalten dem Hub und allen Synchronisierungsmitgliedern hinzu.
+2. Fügen Sie die neuen Tabellen oder Spalten dem Synchronisierungsschema hinzu.
+3. Fügen Sie Werte in die neuen Tabellen und Spalten ein.
+
+**Ändern des Datentyps einer Spalte:** Wenn Sie den Datentyp einer vorhandenen Spalte ändern, funktioniert die Datensynchronisierung weiterhin – vorausgesetzt, die neuen Werte sind mit dem ursprünglich im Synchronisierungsschema definierten Datentyp kompatibel. Wenn Sie also beispielsweise in der Quelldatenbank den Typ von **int** in **bigint** ändern, funktioniert die Datensynchronisierung weiterhin, solange Sie keinen Wert einfügen, der für den Datentyp **int** zu groß ist. Replizieren Sie die Schemaänderung manuell auf dem Hub sowie auf allen Synchronisierungsmitgliedern, und aktualisieren Sie anschließend das Synchronisierungsschema, um die Änderung abzuschließen.
 
 ### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>Wie kann ich eine Datenbank durch Datensynchronisierung exportieren und importieren?
 Nachdem Sie eine Datenbank als `.bacpac`-Datei exportiert und die Datei zum Erstellen einer neuen Datenbank importiert haben, müssen Sie die folgenden zwei Schritte ausführen, um die Datensynchronisierung in der neuen Datenbank zu verwenden:

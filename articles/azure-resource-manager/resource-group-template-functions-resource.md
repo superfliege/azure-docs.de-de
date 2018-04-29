@@ -1,12 +1,12 @@
 ---
-title: "Azure Resource Manager-Vorlagenfunktionen – Ressourcen | Microsoft Docs"
-description: "Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können."
+title: Azure Resource Manager-Vorlagenfunktionen – Ressourcen | Microsoft Docs
+description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: f92afd27540e935ed901151d980377b9b34ea8f5
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f2ff44fc6644f3a4294f7b2c752a7f3ab05f351d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Ressourcenfunktionen für Azure Resource Manager-Vorlagen
 
 Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerten bereit:
 
-* [listKeys und list{Value}](#listkeys)
+* [listKeys](#listkeys)
+* [listSecrets](#list)
+* [list*](#list)
 * [providers](#providers)
 * [Referenz](#reference)
 * [Ressourcengruppe](#resourcegroup)
@@ -36,12 +38,14 @@ Informationen zum Abrufen von Werten aus Parametern, Variablen oder der aktuelle
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="listkeys-and-listvalue"></a>listKeys und list{Value}
+## <a name="listkeys-listsecrets-and-list"></a>listKeys, listSecrets und list*
 `listKeys(resourceName or resourceIdentifier, apiVersion)`
+
+`listSecrets(resourceName or resourceIdentifier, apiVersion)`
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion)`
 
-Gibt die Werte für einen beliebigen Ressourcentyp zurück, der den list-Vorgang unterstützt. Am häufigsten wird `listKeys` verwendet. 
+Gibt die Werte für einen beliebigen Ressourcentyp zurück, der den list-Vorgang unterstützt. Am häufigsten werden `listKeys` und `listSecrets` verwendet. 
 
 ### <a name="parameters"></a>Parameter
 
@@ -251,7 +255,7 @@ Jeder Ressourcentyp gibt andere Eigenschaften für die Verweisfunktion zurück. 
 
 ### <a name="remarks"></a>Anmerkungen
 
-Die Verweisfunktion leitet ihren Wert von einem Laufzeitstatus ab und kann somit nicht im Variablenabschnitt verwendet werden. Sie kann im Ausgabeabschnitt einer Vorlage oder [verknüpften Vorlage](resource-group-linked-templates.md#link-or-nest-a-template) verwendet werden. Sie kann nicht im Ausgabeabschnitt einer [verschachtelten Vorlage](resource-group-linked-templates.md#link-or-nest-a-template) verwendet werden. Um die Werte für eine bereitgestellte Ressource in einer verschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre verschachtelte Vorlage in eine verknüpfte Vorlage. 
+Die Verweisfunktion leitet ihren Wert von einem Laufzeitstatus ab und kann somit nicht im Variablenabschnitt verwendet werden. Sie kann im Ausgabeabschnitt einer Vorlage oder [verknüpften Vorlage](resource-group-linked-templates.md#link-or-nest-a-template) verwendet werden. Sie kann nicht im Ausgabeabschnitt einer [verschachtelten Vorlage](resource-group-linked-templates.md#link-or-nest-a-template) verwendet werden. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre geschachtelte Vorlage in eine verknüpfte Vorlage. 
 
 Mithilfe der Referenzfunktion können Sie implizit deklarieren, dass eine Ressource von einer anderen abhängt, wenn die referenzierte Ressource innerhalb der gleichen Vorlage zur Verfügung gestellt wird. Die „dependsOn“-Eigenschaft muss nicht zusätzlich verwendet werden. Die Funktion wird nicht ausgewertet, bis die Ressource, auf die verwiesen wird, die Bereitstellung abgeschlossen hat.
 

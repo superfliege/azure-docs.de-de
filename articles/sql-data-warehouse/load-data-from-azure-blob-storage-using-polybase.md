@@ -1,31 +1,24 @@
 ---
-title: 'Tutorial: Laden von Daten mit PolyBase aus Azure Storage Blob in Azure SQL Data Warehouse | Microsoft-Dokumentation'
-description: Ein Tutorial, in dem das Azure-Portal und SQL Server Management Studio zum Laden von Daten zu New Yorker Taxis aus Azure Blob Storage in Azure SQL Data Warehouse verwendet wird.
+title: 'Tutorial: Laden von Daten zu New Yorker Taxis in Azure SQL Data Warehouse | Microsoft-Dokumentation'
+description: Ein Tutorial, in dem das Azure-Portal und SQL Server Management Studio zum Laden von Daten zu New Yorker Taxis aus einem öffentlichen Azure-Blob in Azure SQL Data Warehouse verwendet wird.
 services: sql-data-warehouse
-documentationcenter: ''
 author: ckarst
-manager: jhubbard
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.custom: mvc,develop data warehouses
-ms.devlang: na
-ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 03/16/2018
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
 ms.author: cakarst
-ms.reviewer: barbkess
-ms.openlocfilehash: 77e1666a5c8cc51495f2058ff76b2b99a3212db0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: igorstan
+ms.openlocfilehash: fb918cc70a3a3d21e86c9d530e264199794886f1
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>Tutorial: Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage in Azure SQL Data Warehouse
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Tutorial: Laden von Daten zu New Yorker Taxis in Azure SQL Data Warehouse
 
-PolyBase ist die Standardtechnologie zum Laden von Daten in SQL Data Warehouse. In diesem Tutorial verwenden Sie PolyBase, um Taxidaten aus New York aus Azure Blob Storage in Azure SQL Data Warehouse zum laden. In diesem Tutorial werden das [Azure-Portal](https://portal.azure.com) und [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) für folgende Zwecke verwendet: 
+In diesem Tutorial wird PolyBase verwendet, um Daten zu New Yorker Taxis aus einem öffentlichen Azure-Blob in Azure SQL Data Warehouse zu laden. In diesem Tutorial werden das [Azure-Portal](https://portal.azure.com) und [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) für folgende Zwecke verwendet: 
 
 > [!div class="checklist"]
 > * Erstellen eines Data Warehouse im Azure-Portal
@@ -50,7 +43,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Erstellen eines leeren SQL Data Warehouse
 
-Ein Azure SQL Data Warehouse wird mit einer definierten Gruppe von [Computeressourcen](performance-tiers.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
+Ein Azure SQL Data Warehouse wird mit einer definierten Gruppe von [Computeressourcen](memory-and-concurrency-limits.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
 
 Führen Sie die folgenden Schritte aus, um ein leeres SQL ­Data Warehouse zu erstellen. 
 
@@ -170,7 +163,7 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
 
 ## <a name="create-a-user-for-loading-data"></a>Erstellen eines Benutzers zum Laden von Daten
 
-Das Serveradministratorkonto dient zum Ausführen von Verwaltungsvorgänge und eignet sich nicht zum Ausführen von Abfragen für Benutzerdaten. Das Laden von Daten ist ein speicherintensiver Vorgang. [Arbeitsspeicher-Höchstwerte](performance-tiers.md#memory-maximums) werden entsprechend der [Leistungsstufe](performance-tiers.md) und der [Ressourcenklasse](resource-classes-for-workload-management.md) definiert. 
+Das Serveradministratorkonto dient zum Ausführen von Verwaltungsvorgänge und eignet sich nicht zum Ausführen von Abfragen für Benutzerdaten. Das Laden von Daten ist ein speicherintensiver Vorgang. Arbeitsspeicher-Höchstwerte werden entsprechend der [Leistungsstufe](memory-and-concurrency-limits.md#performance-tiers), der [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md) und der [Ressourcenklasse](resource-classes-for-workload-management.md) definiert. 
 
 Es wird empfohlen, eine Anmeldung und einen Benutzer speziell zum Laden von Daten zu erstellen. Fügen Sie dann den Benutzer für das Laden einer [Ressourcenklasse](resource-classes-for-workload-management.md) hinzu, die eine geeignete maximale Speicherbelegung ermöglicht.
 
@@ -221,7 +214,7 @@ Im ersten Schritt zum Laden von Daten melden Sie sich als „LoaderRC20“ an.
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Erstellen externer Tabellen für die Beispieldaten
 
-Sie können nun mit dem Laden von Daten in das neue Data Warehouse beginnen. In diesem Tutorial wird gezeigt, wie Sie mit [Polybase](/sql/relational-databases/polybase/polybase-guide) Daten zu New Yorker Taxis aus einem Azure Storage Blob laden. Informationen zum Übertragen Ihrer Daten in Azure Blob Storage oder zum direkten Laden der Daten aus Ihrer Quelle in SQL Data Warehouse finden Sie in der [Ladeübersicht](sql-data-warehouse-overview-load.md).
+Sie können nun mit dem Laden von Daten in das neue Data Warehouse beginnen. In diesem Tutorial wird gezeigt, wie Sie mit externen Tabellen Daten zu New Yorker Taxis aus einem Azure-Speicherblob laden. Informationen zum Übertragen Ihrer Daten in Azure Blob Storage oder zum direkten Laden der Daten aus Ihrer Quelle in SQL Data Warehouse finden Sie in der [Ladeübersicht](sql-data-warehouse-overview-load.md).
 
 Führen Sie die folgenden SQL-Skripts aus, und geben Sie Informationen zu den Daten an, die Sie laden möchten. Diese Informationen umfassen den aktuellen Speicherort der Daten, das Format des Dateninhalts und die Tabellendefinition für die Daten. 
 

@@ -1,6 +1,6 @@
 ---
-title: "Ausführen eines DR-Drills für Hyper-V-VMs an einen sekundären Standort mit Azure Site Recovery | Microsoft Docs"
-description: "Erfahren Sie, wie ein DR-Drill für Hyper-V-VMs in VMM-Clouds in ein sekundäres Datencenter mit Azure Site Recovery ausgeführt wird."
+title: Ausführen eines DR-Drills für Hyper-V-VMs an einen sekundären Standort mit Azure Site Recovery | Microsoft Docs
+description: Erfahren Sie, wie ein DR-Drill für Hyper-V-VMs in VMM-Clouds in ein sekundäres Datencenter mit Azure Site Recovery ausgeführt wird.
 services: site-recovery
 author: ponatara
 manager: abhemraj
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: ponatara
-ms.openlocfilehash: a586eac3be39a4d3fb35dff7a4b1cc40f32f2720
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c389776f62db5fd04f67ef22822e21fd4aee368f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Ausführen eines DR-Drills für Hyper-V-VMs an einen sekundären Standort
 
@@ -52,10 +52,17 @@ Bei einem Testfailover werden Sie zum Auswählen von Netzwerkeinstellungen für 
 ### <a name="best-practices"></a>Bewährte Methoden
 
 - Das Testen eines Produktionsnetzwerks führt zu einem Ausfall von Produktionsworkloads. Bitten Sie Ihre Benutzer, während der Notfallwiederherstellungsübung keine zugehörigen Apps zu verwenden.
-- Das Testnetzwerk muss nicht dem für das Testfailover verwendeten Typ des logischen VMM-Netzwerks entsprechen. Allerdings funktionieren einige Kombinationen nicht: Wenn das Replikat DHCP und eine VLAN-basierte Isolation verwendet, benötigt das VM-Netzwerk für das Replikat keinen statischen IP-Adresspool. In diesem Fall kann für das Testfailover also keine Windows-Netzwerkvirtualisierung verwendet werden, da keine Adresspools verfügbar sind. 
-        Das Testfailover funktioniert nicht, wenn das Replikatnetzwerk keine Isolation verwendet und im Testnetzwerk Windows-Netzwerkvirtualisierung verwendet wird. Das liegt daran, dass das nicht isolierte Netzwerk nicht über die Subnetze verfügt, die zum Erstellen eines Netzwerks mit Windows-Netzwerkvirtualisierung erforderlich sind.
+
+- Das Testnetzwerk muss nicht dem für das Testfailover verwendeten Typ des logischen VMM-Netzwerks entsprechen. Einige Kombinationen funktionieren jedoch nicht:
+
+     - Wenn das Replikat DHCP und eine VLAN-basierte Isolation verwendet, benötigt das VM-Netzwerk für das Replikat keinen statischen IP-Adresspool. In diesem Fall kann für das Testfailover also keine Windows-Netzwerkvirtualisierung verwendet werden, da keine Adresspools verfügbar sind. 
+        
+     - Das Testfailover funktioniert nicht, wenn das Replikatnetzwerk keine Isolation verwendet und im Testnetzwerk Windows-Netzwerkvirtualisierung verwendet wird. Das liegt daran, dass das nicht isolierte Netzwerk nicht über die Subnetze verfügt, die zum Erstellen eines Netzwerks mit Windows-Netzwerkvirtualisierung erforderlich sind.
+        
 - Es wird empfohlen, nicht das für die Netzwerkzuordnung ausgewählte Netzwerk für das Testfailover zu verwenden.
+
 - Auf welche Weise nach dem Failover eine Verbindung zwischen virtuellen Replikatcomputern und zugeordneten VM-Netzwerken besteht, hängt davon ab, wie das VM-Netzwerk in der VMM-Konsole konfiguriert ist.
+
 
 ### <a name="vm-network-configured-with-no-isolation-or-vlan-isolation"></a>Ohne Isolation oder VLAN-Isolation konfiguriertes VM-Netzwerk
 

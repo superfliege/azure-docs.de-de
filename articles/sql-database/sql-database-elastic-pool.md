@@ -7,14 +7,14 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 04/04/2018
+ms.date: 04/10/2018
 ms.author: ninarn
 ms.topic: article
-ms.openlocfilehash: 6c2e4e7f99aeec3028e8df520dc6896234b5c969
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 33f4430baacbe50f3d4c7da857ee4345d4f74928
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen
 
@@ -32,7 +32,7 @@ Pools für elastische Datenbanken lösen dieses Problem, indem sie sicherstellen
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
-Mit Pools für elastische Datenbanken können Entwickler Ressourcen für einen Pool erwerben, der von mehreren Datenbanken genutzt wird, um unvorhersehbare Auslastungszeiten von einzelnen Datenbanken abzufedern. Sie können Ressourcen für den Pool entweder basierend auf dem [DTU-basierten Kaufmodell (Vorschauversion)](sql-database-service-tiers.md#dtu-based-purchasing-model) oder dem [V-Kern-basierten Kaufmodell (Vorschauversion)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview) konfigurieren. Die Ressourcenanforderungen eines Pools werden anhand der zusammengefassten Auslastung der hierin befindlichen Datenbanken ermittelt. Die Anzahl der für den Pool verfügbaren Ressourcen wird vom Budget des Entwicklers gesteuert. Der Entwickler fügt dem Pool einfach Datenbanken hinzu, legt die minimalen und maximalen Ressourcen für die Datenbanken fest (je nach ausgewähltem Ressourcenmodell die minimale und maximale Anzahl von DTUs oder V-Kernen), und legt dann basierend auf dem Budget die Ressourcen des Pools fest. Mithilfe von Pools können Entwickler ihre Dienste problemlos und kontinuierlich ausbauen, von schlanken Startups bis hin zu etablierten Unternehmen.
+Mit Pools für elastische Datenbanken können Entwickler Ressourcen für einen Pool erwerben, der von mehreren Datenbanken genutzt wird, um unvorhersehbare Auslastungszeiten von einzelnen Datenbanken abzufedern. Sie können Ressourcen für den Pool entweder basierend auf dem [DTU-basierten Kaufmodell (Vorschauversion)](sql-database-service-tiers.md#dtu-based-purchasing-model) oder dem [V-Kern-basierten Kaufmodell (Vorschauversion)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview) konfigurieren. Die Ressourcenanforderungen eines Pools werden anhand der zusammengefassten Auslastung der hierin befindlichen Datenbanken ermittelt. Die Anzahl der für den Pool verfügbaren Ressourcen wird vom Budget des Entwicklers gesteuert. Der Entwickler fügt dem Pool einfach Datenbanken hinzu, legt die minimalen und maximalen Ressourcen für die Datenbanken fest (je nach ausgewähltem Ressourcenmodell die minimale und maximale Anzahl von DTUs oder virtuellen Kernen), und legt dann basierend auf dem Budget die Ressourcen des Pools fest. Mithilfe von Pools können Entwickler ihre Dienste problemlos und kontinuierlich ausbauen, von schlanken Startups bis hin zu etablierten Unternehmen.
 
 Im Pool können einzelne Datenbanken die automatische Skalierung innerhalb der angegebenen Parameter flexibel automatisch skalieren. Bei hoher Auslastung kann eine Datenbank mehr Ressourcen nutzen, um die Anforderungen zu erfüllen. Datenbanken verbrauchen bei geringerer Auslastung weniger Ressourcen und ohne Auslastung gar keine Ressourcen. Durch die Bereitstellung von Ressourcen für den gesamten Pool und nicht nur für einzelne Datenbanken vereinfachen Sie Ihre Verwaltungsaufgaben. Außerdem verfügen Sie über ein vorhersagbares Budget für den Pool. Einem vorhandenen Pool können zusätzliche Ressourcen hinzugefügt werden, ohne dass es zu Datenbankausfällen kommt. Es gilt jedoch die Ausnahme, dass die Datenbanken unter Umständen verschoben werden müssen, um die zusätzlichen Computeressourcen für die neue eDTU-Reservierung bereitzustellen. Ebenso können zusätzliche Ressourcen, die nicht mehr benötigt werden, zu jedem beliebigen Zeitpunkt aus einem vorhandenen Pool entfernt werden. Und Sie können dem Pool Datenbanken hinzufügen oder Datenbanken aus dem Pool entfernen. Wenn die Ressourcen für eine Datenbank voraussichtlich nicht ausgeschöpft werden, sollten Sie sie entfernen.
 
@@ -74,14 +74,14 @@ Die folgenden Faustregeln hinsichtlich der Anzahl der Datenbanken und ihrer Ausl
 
 ### <a name="minimum-number-of-databases"></a>Minimale Anzahl Datenbanken
 
-Wenn die Menge der Ressourcen für einzelne Datenbanken mehr als dem 1,5-fachen der für den Pool benötigten Ressourcen entspricht, ist ein Pool für elastische Datenbanken kostengünstiger.
+Wenn die aggregierte Menge der Ressourcen für einzelne Datenbanken mehr als dem 1,5-fachen der für den Pool benötigten Ressourcen entspricht, ist ein Pool für elastische Datenbanken kostengünstiger.
 
 ***Beispiel für das DTU-basierte Kaufmodell***<br>
 Es werden mindestens zwei S3-Datenbanken oder mindestens 15 S0-Datenbanken benötigt, damit ein Pool mit 100 eDTUs kosteneffizienter als die Verwendung von Leistungsebenen für einzelne Datenbanken ist.
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maximale Anzahl von gleichzeitig unter Spitzenlast laufenden Datenbanken
 
-Bei der gemeinsamen Nutzung von Ressourcen können nicht alle Datenbanken in einem Pool gleichzeitig Ressourcen bis zum verfügbaren Grenzwert für einzelne Datenbanken verwendet werden. Je weniger Datenbanken gleichzeitig auf Spitzenlast genutzt werden, desto niedriger können die Poolressourcen festgelegt werden und desto kosteneffizienter wird der Pool. Im Allgemeinen sollten nicht mehr als zwei Drittel der Datenbanken (67 %) im Pool gleichzeitig den Ressourcengrenzwert erreichen.
+Bei der gemeinsamen Nutzung von Ressourcen können nicht alle Datenbanken in einem Pool gleichzeitig Ressourcen bis zum verfügbaren Grenzwert für einzelne Datenbanken verwenden. Je weniger Datenbanken gleichzeitig auf Spitzenlast genutzt werden, desto niedriger können die Poolressourcen festgelegt werden und desto kosteneffizienter wird der Pool. Im Allgemeinen sollten nicht mehr als zwei Drittel der Datenbanken (67 %) im Pool gleichzeitig den Ressourcengrenzwert erreichen.
 
 ***Beispiel für das DTU-basierte Kaufmodell***<br>
 Um die Kosten für drei S3-Datenbanken in einem Pool mit 200 eDTUs zu senken, können höchstens zwei dieser Datenbanken gleichzeitig mit Spitzenauslastung ausgeführt werden. Andernfalls müsste der Pool auf mehr als 200 eDTUs ausgelegt werden, wenn mehr als zwei dieser vier S3-Datenbanken gleichzeitig mit Spitzenauslastung ausgeführt werden. Wenn die Größe des Pools auf mehr als 200 eDTUs geändert wird, müssten weitere S3-Datenbanken zum Pool hinzugefügt werden, damit die Kosten unterhalb der Leistungsstufe für einzelne Datenbanken bleiben.
@@ -98,7 +98,7 @@ Eine S3-Datenbank, die zu Spitzenzeiten 100 DTUs und im Durchschnitt 67 DTUs ode
 
 Die optimale Größe eines Pools hängt von den zusammengefassten Ressourcen ab, die für alle Datenbanken im Pool benötigt werden. Dies setzt voraus, dass Sie die folgenden Mengen ermitteln:
 
-* Maximale Ressourcen, die von allen Datenbanken im Pool (je nach ausgewähltem Ressourcenmodell die maximale Anzahl von DTUs oder V-Kernen) verwendet werden.
+* Maximale Ressourcen, die von allen Datenbanken im Pool (je nach ausgewähltem Ressourcenmodell die maximale Anzahl von DTUs oder virtuellen Kernen) verwendet werden.
 * Maximale Speicherbytes, die von allen Datenbanken im Pool verwendet werden.
 
 Verfügbare Dienstebenen für jedes Ressourcenmodell finden Sie im [DTU-basierten Kaufmodell](sql-database-service-tiers.md#dtu-based-purchasing-model) oder im [V-Kern-basierten Kaufmodell (Vorschauversion)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
@@ -269,17 +269,17 @@ Verwenden Sie zum Erstellen und Verwalten von Pools für elastische SQL-Datenban
 |[Pools für elastische Datenbanken – Abrufen](/rest/api/sql/elasticpools/get)|Ruft einen Pool für elastische Datenbanken ab|
 |[Pools für elastische Datenbanken – Auflisten nach Server](/rest/api/sql/elasticpools/listbyserver)|Gibt eine Liste der Pools für elastische Datenbanken auf einem Server zurück.|
 |[Pools für elastische Datenbanken – Aktualisieren](/rest/api/sql/elasticpools/update)|Aktualisiert einen vorhandenen Pool für elastische Datenbanken|
-|[Empfohlene Pools für elastische Datenbanken – Abrufen](/rest/api/sql/recommendedelasticpools/get)|Ruft einen empfohlenen Pool für elastische Datenbanken ab|
+|[Empfohlene Pools für elastische Datenbanken – Abrufen](/rest/api/sql/recommendedelasticpools/get)|Ruft einen empfohlenen Pool für elastische Datenbanken ab.|
 |[Empfohlene Pools für elastische Datenbanken – Auflisten nach Server](/rest/api/sql/recommendedelasticpools/listbyserver)|Gibt empfohlene Pools für elastische Datenbanken zurück|
-|[Empfohlene Pools für elastische Datenbanken – Auflisten von Metriken](/rest/api/sql/recommendedelasticpools/listmetrics)|Gibt Metriken zu empfohlenen Pools für elastische Datenbanken zurück|
+|[Empfohlene Pools für elastische Datenbanken – Auflisten von Metriken](/rest/api/sql/recommendedelasticpools/listmetrics)|Gibt Metriken zu empfohlenen Pools für elastische Datenbanken zurück.|
 |[Pool für elastische Datenbanken – Aktivitäten](/rest/api/sql/elasticpoolactivities)|Gibt Aktivitäten des Pools für elastische Datenbanken zurück|
 |[Pool für elastische Datenbanken – Datenbankaktivitäten](/rest/api/sql/elasticpooldatabaseactivities)|Gibt Aktivitäten in Datenbanken in einem Pool für elastische Datenbanken zurück|
 |[Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
 |[Datenbanken – Abrufen](/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
 |[Datenbanken – Abrufen nach Pool für elastische Datenbanken](/rest/api/sql/databases/getbyelasticpool)|Ruft eine Datenbank in einem Pool für elastische Datenbanken ab|
-|[Datenbanken – Abrufen nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/getbyrecommendedelasticpool)|Ruft eine Datenbank in einem empfohlenen Pool für elastische Datenbanken ab|
+|[Datenbanken – Abrufen nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/getbyrecommendedelasticpool)|Ruft eine Datenbank in einem empfohlenen Pool für elastische Datenbanken ab.|
 |[Datenbanken – Auflisten nach Pool für elastische Datenbanken](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
-|[Datenbanken – Auflisten nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück|
+|[Datenbanken – Auflisten nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück.|
 |[Datenbanken – Auflisten nach Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
 |[Datenbanken – Aktualisieren](/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank|
 

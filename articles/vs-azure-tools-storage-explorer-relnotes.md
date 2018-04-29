@@ -1,12 +1,12 @@
 ---
-title: "Versionshinweise für Microsoft Azure Storage-Explorer (Vorschauversion)"
-description: "Versionshinweise für den Microsoft Azure Storage-Explorer (Vorschauversion)"
+title: Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
+description: Anmerkungen zu dieser Version für den Microsoft Azure Storage-Explorer
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storage
 ms.devlang: multiple
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 0e5523e297979a89ffd4b4ed51c8476fb1354419
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 8ec74f69d2de7b167fcc66d0e2499d052f0bf18e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Versionshinweise für Microsoft Azure Storage-Explorer (Vorschauversion)
+# <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
 
 Dieser Artikel enthält die Versionshinweise für den Azure Storage-Explorer 0.9.6 (Vorschauversion) sowie die Versionshinweise für frühere Versionen.
 
-Bei der [Vorschauversion des Microsoft Azure Storage-Explorers](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können.
+Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie ganz einfach mit Azure Storage-Daten arbeiten können – unter Windows, macOS und Linux.
 
 ## <a name="version-096"></a>Version 0.9.6
 28.02.2018

@@ -1,39 +1,37 @@
 ---
-title: Gespeicherte Prozeduren in SQL Data Warehouse | Microsoft Docs
-description: "Tipps zum Implementieren von gespeicherten Prozeduren in Azure SQL Data Warehouse für die Entwicklung von Lösungen"
+title: Verwenden gespeicherter Prozeduren in Azure SQL Data Warehouse | Microsoft-Dokumentation
+description: Tipps zum Implementieren von gespeicherten Prozeduren in Azure SQL Data Warehouse für die Entwicklung von Lösungen
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 9b238789-6efe-4820-bf77-5a5da2afa0e8
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: e42d80f0ca35f3fbb67389c66d072bc40d8a8d2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 5659e8f29d87c48c447a5cb81c836b0be9dabd45
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="stored-procedures-in-sql-data-warehouse"></a>Gespeicherte Prozeduren in SQL Data Warehouse
-SQL Data Warehouse unterstützt viele Transact-SQL-Features aus SQL Server. Darüber hinaus sind bestimmte Features für das horizontale Hochskalieren vorhanden, die genutzt werden sollten, um die Leistung einer Lösung zu verbessern.
+# <a name="using-stored-procedures-in-sql-data-warehouse"></a>Verwenden gespeicherter Prozeduren in Azure SQL Data Warehouse
+Tipps zum Implementieren von gespeicherten Prozeduren in Azure SQL Data Warehouse für die Entwicklung von Lösungen
+
+## <a name="what-to-expect"></a>Ausblick
+
+SQL Data Warehouse unterstützt viele der T-SQL-Features, die in SQL Server verwendet werden. Darüber hinaus sind bestimmte Features für das horizontale Hochskalieren vorhanden, mit denen Sie die Leistung Ihrer Lösung verbessern können.
 
 In Bezug auf die Verwaltung der Skalierung und Leistung von SQL Data Warehouse sind auch einige Features und Funktionen vorhanden, die Unterschiede beim Verhalten aufweisen. Es gibt auch Features, die nicht unterstützt werden.
 
-In diesem Artikel wird erläutert, wie Sie gespeicherte Prozeduren in SQL Data Warehouse implementieren.
 
 ## <a name="introducing-stored-procedures"></a>Einführung in gespeicherte Prozeduren
-Gespeicherte Prozeduren sind eine hervorragende Möglichkeit zum Einschließen (Kapseln) von SQL-Code. Hierbei wird Code im Data Warehouse in der Nähe Ihrer Daten gespeichert. Indem Code in besser verwaltbare Einheiten eingeschlossen wird, unterstützen gespeicherte Prozeduren Entwickler beim Modularisieren ihrer Lösungen. Dies ermöglicht eine bessere Wiederverwendbarkeit des Codes. Für jede gespeicherte Prozedur können außerdem Parameter verwendet werden, um sie flexibler zu machen.
+Gespeicherte Prozeduren sind eine hervorragende Möglichkeit zum Einschließen (Kapseln) von SQL-Code. Hierbei wird Code im Data Warehouse in der Nähe Ihrer Daten gespeichert. Gespeicherte Prozeduren unterstützen Entwickler beim Modularisieren ihrer Lösungen, indem Code in besser verwaltbare Einheiten eingeschlossen wird. Dies ermöglicht eine bessere Wiederverwendbarkeit des Codes. Für jede gespeicherte Prozedur können außerdem Parameter verwendet werden, um sie flexibler zu machen.
 
-SQL Data Warehouse bietet eine vereinfachte und optimierte Implementierung von gespeicherten Prozeduren. Der größte Unterschied im Vergleich zu SQL Server ist, dass die gespeicherte Prozedur kein vorab kompilierter Code ist. In Data Warehouses ist die Kompilierungszeit im Allgemeinen weniger wichtig. Wichtiger ist es, dass der Code der gespeicherten Prozedur richtig optimiert wird, wenn er für große Datenvolumina verwendet wird. Das Ziel besteht darin, Stunden, Minuten und Sekunden zu sparen, keine Millisekunden. Es ist daher hilfreicher, gespeicherte Prozeduren als Container für SQL-Logik zu betrachten.     
+SQL Data Warehouse bietet eine vereinfachte und optimierte Implementierung von gespeicherten Prozeduren. Der größte Unterschied im Vergleich zu SQL Server ist, dass die gespeicherte Prozedur kein vorab kompilierter Code ist. In Data Warehouses ist die Kompilierzeit im Vergleich zu der benötigten Zeit, um Abfragen für große Datenmengen auszuführen, relativ gering. Es ist wichtiger sicherzustellen, dass der Code der gespeicherten Prozedur für große Abfragen ordnungsgemäß optimiert ist. Das Ziel besteht darin, Stunden, Minuten und Sekunden zu sparen, keine Millisekunden. Es ist daher hilfreicher, gespeicherte Prozeduren als Container für SQL-Logik zu betrachten.     
 
-Wenn SQL Data Warehouse Ihre gespeicherte Prozedur ausführt, werden die SQL-Anweisungen zur Laufzeit analysiert, übersetzt und optimiert. Während dieses Vorgangs wird jede Anweisung in verteilte Abfragen konvertiert. Der SQL-Code, der für die Daten tatsächlich ausgeführt wird, unterscheidet sich von der übermittelten Abfrage.
+Wenn SQL Data Warehouse Ihre gespeicherte Prozedur ausführt, werden die SQL-Anweisungen zur Laufzeit analysiert, übersetzt und optimiert. Während dieses Vorgangs wird jede Anweisung in verteilte Abfragen konvertiert. Der SQL-Code, der für die Daten ausgeführt wird, unterscheidet sich von der übermittelten Abfrage.
 
 ## <a name="nesting-stored-procedures"></a>Schachteln von gespeicherten Prozeduren
 Wenn gespeicherte Prozeduren andere gespeicherte Prozeduren aufrufen oder dynamischen SQL-Code ausführen, wird die innere gespeicherte Prozedur bzw. der Codeaufruf als „geschachtelt“ bezeichnet.
@@ -45,7 +43,7 @@ Der Aufruf der obersten gespeicherten Prozedur entspricht Schachtelungsebene 1.
 ```sql
 EXEC prc_nesting
 ```
-Wenn die gespeicherte Prozedur auch einen weiteren EXEC-Aufruf durchführt, wird dadurch die Schachtelungsebene auf 2 erhöht.
+Wenn die gespeicherte Prozedur auch einen weiteren EXEC-Aufruf durchführt, wird die Schachtelungsebene auf 2 erhöht.
 
 ```sql
 CREATE PROCEDURE prc_nesting
@@ -54,7 +52,7 @@ EXEC prc_nesting_2  -- This call is nest level 2
 GO
 EXEC prc_nesting
 ```
-Wenn die zweite Prozedur dann dynamischen SQL-Code ausführt, wird dadurch die Schachtelungsebene auf 3 erhöht.
+Wenn die zweite Prozedur dann dynamischen SQL-Code ausführt, wird die Schachtelungsebene auf 3 erhöht.
 
 ```sql
 CREATE PROCEDURE prc_nesting_2
@@ -64,12 +62,10 @@ GO
 EXEC prc_nesting
 ```
 
-Beachten Sie, dass @@NESTLEVEL von SQL Data Warehouse derzeit nicht unterstützt wird. Sie müssen die Schachtelungsebene selbst verfolgen. Es ist eher unwahrscheinlich, dass Sie die Obergrenze von acht Schachtelungsebenen erreichen. Falls doch, müssen Sie Ihren Code entsprechend anpassen, damit diese Obergrenze eingehalten wird.
+Beachten Sie, dass [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql) von SQL Data Warehouse derzeit nicht unterstützt wird. Sie müssen die Schachtelungsebene nachverfolgen. Es ist unwahrscheinlich, dass Sie die Grenze von acht Schachtelungsebenen überschreiten. Sollte dies dennoch der Fall sein, müssen Sie Ihren Code so überarbeiten, damit dieser innerhalb des Grenzwerts bleibt.
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
-SQL Data Warehouse lässt nicht zu, dass Sie das Resultset einer gespeicherten Prozedur mit einer INSERT-Anweisung verwenden. Es gibt aber eine andere Möglichkeit.
-
-Ein Beispiel hierzu finden Sie im folgenden Artikel zu [temporären Tabellen] .
+SQL Data Warehouse lässt nicht zu, dass Sie das Resultset einer gespeicherten Prozedur mit einer INSERT-Anweisung verwenden. Es gibt aber eine andere Möglichkeit. Ein Beispiel finden Sie im Artikel unter [Temporäre Tabellen](sql-data-warehouse-tables-temporary.md). 
 
 ## <a name="limitations"></a>Einschränkungen
 Es gibt einige Aspekte von gespeicherten Transact-SQL-Prozeduren, die in SQL Data Warehouse nicht implementiert sind.
@@ -80,6 +76,7 @@ Sie lauten wie folgt:
 * Nummerierte gespeicherte Prozeduren
 * Erweiterte gespeicherte Prozeduren
 * Gespeicherte CLR-Prozeduren
+* 
 * Verschlüsselungsoption
 * Replikationsoption
 * Tabellenwertparameter
@@ -89,15 +86,5 @@ Sie lauten wie folgt:
 * return-Anweisung
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][development overview].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[temporären Tabellen]: ./sql-data-warehouse-tables-temporary.md#modularizing-code
-[development overview]: ./sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[nest level]: https://msdn.microsoft.com/library/ms187371.aspx
-
-<!--Other Web references-->

@@ -1,8 +1,8 @@
 ---
 title: Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight unter Linux | Microsoft Docs
-description: "Erfahren Sie, wie Sie Apache Storm-Topologien mithilfe des Storm-Dashboards in Linux-basiertem HDInsight bereitstellen, überwachen und verwalten. Hadoop-Tools für Visual Studio verwenden"
+description: Erfahren Sie, wie Sie Apache Storm-Topologien mithilfe des Storm-Dashboards in Linux-basiertem HDInsight bereitstellen, überwachen und verwalten. Hadoop-Tools für Visual Studio verwenden
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: 35086e62-d6d8-4ccf-8cae-00073464a1e1
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 18b7b5d56acb4d9d0c2ed007f0521193e37d82e8
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9dd63e1f3ec381dd99495ebc6193198611c76c88
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight
 
@@ -95,7 +93,7 @@ Mithilfe der HDInsight-Tools können C#- oder hybride Topologien an Ihre Storm-C
 
 ## <a name="submit-a-topology-programmatically"></a>Senden einer Topologie: programmgesteuert
 
-Sie können mit dem Nimbus-Dienst programmgesteuert eine Topologie bereitstellen. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) zeigt, wie Sie eine Topologie über den Nimbus-Dienst bereitstellen und starten.
+Sie können mit dem Nimbus-Dienst programmgesteuert eine Topologie bereitstellen. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) stellt eine Java-Beispielanwendung bereit, die zeigt, wie Sie eine Topologie über den Nimbus-Dienst bereitstellen und starten.
 
 ## <a name="monitor-and-manage-visual-studio"></a>Überwachen und Verwalten: Visual Studio
 
@@ -166,7 +164,7 @@ Durch das Ausgleichen einer Topologie kann das System die Parallelität der Topo
 
 ## <a name="monitor-and-manage-storm-ui"></a>Überwachen und Verwalten: Storm-Benutzeroberfläche
 
-Die Storm-Benutzeroberfläche bietet eine Weboberfläche zum Arbeiten mit ausgeführten Topologien und befindet sich auf dem HDInsight-Cluster. Öffnen Sie **https://CLUSTERNAME.azurehdinsight.net/stormui** in einem Browser, wobei **CLUSTERNAME** der Name Ihres Clusters ist.
+Die Storm-Benutzeroberfläche bietet eine Weboberfläche zum Arbeiten mit ausgeführten Topologien und befindet sich auf dem HDInsight-Cluster. Wenn Sie die Storm-Benutzeroberfläche anzeigen möchten, öffnen Sie **https://CLUSTERNAME.azurehdinsight.net/stormui** in einem Browser, wobei **CLUSTERNAME** der Name Ihres Clusters ist.
 
 > [!NOTE]
 > Wenn Sie dazu aufgefordert werden, einen Benutzernamen und ein Kennwort anzugeben, geben Sie den Namen des Cluster-Administrators (Admin) und das entsprechende Kennwort ein, die Sie beim Erstellen des Clusters verwendet haben.
@@ -175,38 +173,38 @@ Die Storm-Benutzeroberfläche bietet eine Weboberfläche zum Arbeiten mit ausgef
 
 Die Hauptseite der Storm-Benutzeroberfläche bietet die folgenden Informationen:
 
-* **Clusterzusammenfassung:**grundlegende Informationen zum Storm-Cluster.
-* **Topologiezusammenfassung:**eine Liste der aktiven Topologien. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Topologien anzuzeigen.
-* **Supervisor-Zusammenfassung:**Informationen zum Storm-Supervisor.
-* **Nimbus-Konfiguration:**die Nimbus-Konfiguration für den Cluster.
+* **Clusterzusammenfassung:** grundlegende Informationen zum Storm-Cluster.
+* **Topologiezusammenfassung:** eine Liste der aktiven Topologien. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Topologien anzuzeigen.
+* **Supervisor-Zusammenfassung:** Informationen zum Storm-Supervisor.
+* **Nimbus-Konfiguration:** die Nimbus-Konfiguration für den Cluster.
 
 ### <a name="topology-summary"></a>Topologiezusammenfassung:
 
 Wenn Sie einen Link aus dem Abschnitt **Topologiezusammenfassung** auswählen, werden die folgenden Informationen zur Topologie angezeigt:
 
-* **Topologiezusammenfassung:**grundlegende Informationen zur Topologie.
-* **Topologieaktionen:**Verwaltungsaktionen, die für die Topologie ausgeführt werden können.
+* **Topologiezusammenfassung:** grundlegende Informationen zur Topologie.
+* **Topologieaktionen:** Verwaltungsaktionen, die für die Topologie ausgeführt werden können.
 
-  * **Aktivieren:**setzt die Verarbeitung einer deaktivierten Topologie fort.
-  * **Deaktivieren:**hält eine aktive Topologie an.
-  * **Ausgleichen:**passt die Parallelität der Topologie an. Sie sollten aktive Topologien ausgleichen, nachdem Sie die Anzahl der Knoten im Cluster geändert haben. Dieser Vorgang ermöglicht der Topologie, die Parallelität anzupassen, um die höhere oder geringere Anzahl der Knoten im Cluster zu kompensieren.
+  * **Aktivieren:** setzt die Verarbeitung einer deaktivierten Topologie fort.
+  * **Deaktivieren:** hält eine aktive Topologie an.
+  * **Ausgleichen:** passt die Parallelität der Topologie an. Sie sollten aktive Topologien ausgleichen, nachdem Sie die Anzahl der Knoten im Cluster geändert haben. Dieser Vorgang ermöglicht der Topologie, die Parallelität anzupassen, um die höhere oder geringere Anzahl der Knoten im Cluster zu kompensieren.
 
     Weitere Informationen finden Sie unter <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Grundlegendes zur Parallelität einer Storm-Topologie</a>.
-  * **Beenden:**beendet eine Storm-Topologie nach dem angegebenen Timeout.
-* **Topologiestatistik:**Statistiken zur Topologie. Verwenden Sie die Links in der Spalte **Fenster**, um den Zeitrahmen für die verbleibenden Einträge auf der Seite festzulegen.
-* **Spouts:**die von der Topologie verwendeten Spouts. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Spouts anzuzeigen.
-* **Bolts:**die von der Topologie verwendeten Bolts. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Bolts anzuzeigen.
-* **Topologiekonfiguration:**die Konfiguration der ausgewählten Topologie.
+  * **Beenden:** beendet eine Storm-Topologie nach dem angegebenen Timeout.
+* **Topologiestatistik:** Statistiken zur Topologie. Verwenden Sie die Links in der Spalte **Fenster**, um den Zeitrahmen für die verbleibenden Einträge auf der Seite festzulegen.
+* **Spouts:** die von der Topologie verwendeten Spouts. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Spouts anzuzeigen.
+* **Bolts:** die von der Topologie verwendeten Bolts. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Bolts anzuzeigen.
+* **Topologiekonfiguration:** die Konfiguration der ausgewählten Topologie.
 
 ### <a name="spout-and-bolt-summary"></a>Spout und Bolt: Zusammenfassung
 
 Wenn Sie im Abschnitt **Spouts** oder **Bolts** einen Spout auswählen, werden die folgenden Informationen zum ausgewählten Element angezeigt:
 
-* **Komponentenübersicht:**grundlegende Informationen zum Spout oder Bolt.
-* **Statistik für Spout/Bolt:**Statistiken zum Spout oder Bolt. Verwenden Sie die Links in der Spalte **Fenster**, um den Zeitrahmen für die verbleibenden Einträge auf der Seite festzulegen.
+* **Komponentenübersicht:** grundlegende Informationen zum Spout oder Bolt.
+* **Statistik für Spout/Bolt:** Statistiken zum Spout oder Bolt. Verwenden Sie die Links in der Spalte **Fenster**, um den Zeitrahmen für die verbleibenden Einträge auf der Seite festzulegen.
 * **Eingabestatistik** (nur Bolt): Informationen zu den Eingabedatenströmen, die vom Bolt verbraucht werden.
 * **Ausgabestatistik**: Informationen zu den Datenströmen, die von diesem Spout oder Bolt ausgegeben werden.
-* **Ausführer:**Informationen zu den Instanzen von Spout oder Bolt. Wählen Sie den Eintrag **Port** für einen bestimmten Ausführer aus, um ein Protokoll mit Diagnoseinformationen anzuzeigen, das für diese Instanz generiert wurde.
+* **Ausführer:** Informationen zu den Instanzen von Spout oder Bolt. Wählen Sie den Eintrag **Port** für einen bestimmten Ausführer aus, um ein Protokoll mit Diagnoseinformationen anzuzeigen, das für diese Instanz generiert wurde.
 * **Fehler**: Fehlerinformationen für diesen Spout oder Bolt.
 
 ## <a name="monitor-and-manage-rest-api"></a>Überwachen und Verwalten: REST-API

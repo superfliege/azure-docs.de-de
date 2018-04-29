@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 8fb20fc9e6249a2d19d62df1ce331ce873d5fd3d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9a360b41b24f4aca3c3aba29387ecd55faf881b7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Verwalten der Kosten durch die Steuerung der Datenmenge und -aufbewahrung in Log Analytics
 Log Analytics ist für die Skalierung und Unterstützung der täglichen Sammlung, Indizierung und Speicherung enormer Datenmengen aus beliebigen Quellen in Ihrem Unternehmen oder aus in Azure bereitgestellten Quellen konzipiert.  Dies ist zwar ggf. die primäre Motivation für die Verwendung in Ihrem Unternehmen, letztendlich geht es jedoch um Kosteneffizienz. In diesem Zusammenhang ist es wichtig zu verstehen, dass die Kosten eines Log Analytics-Arbeitsbereichs nicht nur auf dem Umfang der gesammelten Daten basieren, sondern auch davon abhängen, welcher Tarif gewählt wurde und wie lange die von den verbundenen Quellen generierten Daten gespeichert werden sollen.  
@@ -33,15 +33,14 @@ Für Daten können abhängig von den folgenden Faktoren erhebliche Kosten anfall
 - Aufbewahrungsdauer der Daten im Arbeitsbereich  
 - Anzahl aktivierter Managementlösungen, Datenquelle und Sammlungshäufigkeit 
 
+Lesen Sie die Dokumentationen für die einzelnen Lösungen, da diese eine Schätzung des Umfang der gesammelten Daten bietet.   
+
+Im Tarif „Free“ ist die Aufbewahrung der Daten auf sieben Tage beschränkt. Bei den Tarifen "Pro GB (eigenständig)“ und „Pro Knoten (OMS)“ sind gesammelte Daten der letzten 31 Tage verfügbar, und die Aufbewahrungsdauer kann auf bis zu zwei Jahre erhöht werden. Gebühren fallen an, wenn Sie eine längere Aufbewahrungsdauer auswählen. Im Tarif „Free“ liegt das Erfassungslimit bei 500 MB pro Tag. Sollten Sie dieses zulässige Volumen immer wieder überschreiten, können Sie Ihren Arbeitsbereich auf den GB- oder knotenbasierten Tarif umstellen, um Daten über diesen Grenzwert hinaus zu sammeln. Sie können Ihren Tariftyp jederzeit ändern. Weitere Informationen zu den Preisen finden Sie unter [Preisdetails](https://azure.microsoft.com/pricing/details/log-analytics/). 
+
 > [!NOTE]
-> Lesen Sie die Dokumentationen für die einzelnen Lösungen, da diese eine Schätzung des Umfang der gesammelten Daten bietet.   
+> Im April 2018 haben wir ein [neues Preismodell für die Azure-Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/). Bei diesem Modell gilt für das gesamte Portfolio der Überwachungsdienste das einfache Prinzip der nutzungsbasierten Bezahlung. Erfahren Sie mehr über das [neue Preismodell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), die [Bewertung der Auswirkungen einer Migration zu diesem Modell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) basierend auf Ihren Verwendungsmustern und [die Auswahl des neuen Modells](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model). 
 
-Im Tarif *Free* ist die Aufbewahrung der Daten ist auf sieben Tage beschränkt. In den Tarifen *Standalone* und *Paid* stehen die gesammelten Daten der letzten 31 Tage zur Verfügung. Im Tarif *Free* liegt das Erfassungslimit bei 500 MB pro Tag. Sollten Sie dieses zulässige Volumen immer wieder überschreiten, können Sie Ihren Arbeitsbereich auf einen kostenpflichtigen Tarif umstellen, um Daten über diesen Grenzwert hinaus zu sammeln. 
-
-> [!NOTE]
-> Gebühren fallen an, wenn Sie in einem kostenpflichtigen Tarif eine längere Aufbewahrungsdauer auswählen. Sie können Ihren Tariftyp jederzeit ändern. Weitere Informationen zu den Preisen finden Sie unter [Preisdetails](https://azure.microsoft.com/pricing/details/log-analytics/). 
-
-Zur Kostenkontrolle kann das Datenvolumen auf zwei Arten beschränkt werden: tägliche Obergrenze und Datenaufbewahrung.  
+Die Verwaltung der Datenmenge ist unabhängig vom Preismodell oder Tarif ein fundamentaler Aspekt der Kostenkontrolle. Abgesehen von der Wahl und Konfiguration der spezifischen Lösung kann das Datenvolumen in Log Analytics auf zwei Arten beschränkt werden: tägliche Obergrenze und Datenaufbewahrung.  
 
 ## <a name="review-estimated-cost"></a>Überprüfen der geschätzten Kosten
 Mit Log Analytics können Sie auf der Grundlage aktueller Nutzungsmuster problemlos die zu erwartenden Kosten ermitteln.  Führen Sie dazu die folgenden Schritte aus.  

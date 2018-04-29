@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric – programmgesteuertes Skalieren| Microsoft-Dokumentation"
-description: "Programmgesteuertes horizontales Herunter- oder Hochskalieren eines Azure Service Fabric-Clusters gemäß benutzerdefinierten Triggern"
+title: Azure Service Fabric – programmgesteuertes Skalieren| Microsoft-Dokumentation
+description: Programmgesteuertes horizontales Herunter- oder Hochskalieren eines Azure Service Fabric-Clusters gemäß benutzerdefinierten Triggern
 services: service-fabric
 documentationcenter: .net
 author: mjrousos
 manager: jonjung
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,38 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: bfa020e29a9bb67f0634d220725bc11279e1565c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b875351ef80050687fcf85e35da132cf37bab83b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Programmgesteuertes Skalieren eines Service Fabric-Clusters 
 
-Grundlagen zum Skalieren eines Service Fabric-Clusters in Azure finden Sie in der Dokumentation zu [Clusterskalierung](./service-fabric-cluster-scale-up-down.md). Der Artikel beschreibt, wie Service Fabric-Cluster auf Skalierungsgruppen für virtuelle Computer aufgebaut werden und entweder manuell oder mit automatischen Skalierungsregeln skaliert werden können. In diesem Dokument werden programmgesteuerte Methoden für die Koordination von Azure-Skalierungsvorgängen für komplexere Szenarien behandelt. 
+Service Fabric-Cluster, die in Azure ausgeführt werden, basieren auf VM-Skalierungsgruppen.  Im Artikel zur [Clusterskalierung](./service-fabric-cluster-scale-up-down.md) wird beschrieben, wie Service Fabric-Cluster entweder manuell oder mit Regeln für die automatische Skalierung skaliert werden können. In diesem Artikel wird beschrieben, wie Sie Anmeldeinformationen verwalten und einen Cluster horizontal hoch- oder herunterskalieren, indem Sie das Azure Fluent-Compute-SDK verwenden. Dies ist ein anspruchsvolleres Szenario. Eine Übersicht hierzu finden Sie in dem Artikel, in dem die [programmgesteuerten Methoden zum Koordinieren von Azure-Skalierungsvorgängen](service-fabric-cluster-scaling.md#programmatic-scaling) beschrieben werden. 
 
-## <a name="reasons-for-programmatic-scaling"></a>Gründe für die programmgesteuerte Skalierung
-In vielen Szenarien ist die manuelle oder automatisch geregelte Skalierung eine gute Lösung. In anderen Szenarien ist sie jedoch möglicherweise nicht geeignet. Mögliche Nachteile dieser Ansätze:
-
-- Das manuelle Skalieren erfordert, dass Sie sich anmelden und Skalierungsvorgänge explizit anfordern. Wenn Skalierungsvorgänge häufig oder zu unvorhersehbaren Zeiten erforderlich sind, ist dieser Ansatz u.U. keine geeignete Lösung.
-- Wenn Regeln für automatische Skalierung eine Instanz aus einer VM-Skalierungsgruppe entfernen, entfernen sie nicht automatisch Informationen dieses Knotens aus dem zugeordneten Service Fabric-Cluster, es sei denn, der Knotentyp weist die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ auf. Da Regeln für automatische Skalierung auf Skalierungsgruppenebene gelten (anstatt auf Service Fabric-Ebene), können sie Service Fabric-Knoten entfernen, ohne diese ordnungsgemäß heruntergefahren. Diese grobe Knotenentfernung hinterlässt Service Fabric-Knoten nach Vorgängen zum horizontalen Herunterskalieren in verwaistem Zustand. Eine Person (oder ein Dienst) müsste den Zustand entfernter Knoten im Service Fabric-Cluster in regelmäßigen Abständen bereinigen.
-  - Ein Knotentyp mit der Dauerhaftigkeitsstufe „Gold“ oder „Silber“ bereinigt entfernte Knoten automatisch. Daher ist keine weitere Bereinigung erforderlich.
-- Zwar werden [viele Metriken](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md) von Regeln für automatische Skalierung unterstützt, es handelt sich jedoch immer noch um einen begrenzten Satz. Wenn Ihr Szenario die Skalierung basierend auf einer Metrik erfordert, die in diesem Satz nicht enthalten ist, sind Regeln für automatische Skalierung möglicherweise keine gute Wahl.
-
-Aufgrund dieser Einschränkungen möchten Sie möglicherweise stärker benutzerdefinierte Modelle für die automatische Skalierung implementieren. 
-
-## <a name="scaling-apis"></a>Skalieren von APIs
-Azure-APIs sind vorhanden, sodass Anwendungen programmgesteuert mit den VM-Skalierungsgruppen und Service Fabric-Clustern arbeiten können. Wenn vorhandene Optionen zur automatischen Skalierung für Ihr Szenario nicht funktionieren, ermöglichen diese APIs das Implementieren einer benutzerdefinierten Skalierungslogik. 
-
-Ein Verfahren zur Implementierung dieser selbst erstellen Funktionalität für automatische Skalierung ist das Hinzufügen eines neuen zustandslosen Diensts zur Service Fabric-Anwendung, um Skalierungsvorgänge zu verwalten. Innerhalb der `RunAsync`-Methode des Dienstes kann ein Satz von Triggern ermitteln, ob eine Skalierung erforderlich ist (dabei werden auch Parameter wie z.B. die maximale Clustergröße überprüft und cooldown-Einstellungen skaliert).   
-
-Die API, die für Interaktionen mit der VM-Skalierungsgruppe (sowohl zum Überprüfen als auch zum Ändern der aktuellen Anzahl von VM-Instanzen) verwendet wird, ist die Fluent-Bibliothek [Azure.Management.Compute](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/). Die Fluent-Compute-Bibliothek stellt eine benutzerfreundliche API für die Interaktion mit VM-Skalierungsgruppen bereit.
-
-Verwenden Sie für die Interaktion mit dem Service Fabric-Cluster selbst [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient).
-
-Natürlich muss der Skalierungscode nicht als Dienst im Cluster ausgeführt werden, um skaliert zu werden. Sowohl `IAzure` als auch `FabricClient` können eine Remoteverbindung mit ihren jeweils zugeordneten Azure-Ressoucen herstellen, damit der Skalierungsdienst einfach eine Konsolenanwendung oder ein Windows-Dienst sein kann, die bzw. der außerhalb der Service Fabric-Anwendung ausgeführt werden kann. 
-
-## <a name="credential-management"></a>Verwaltung von Anmeldeinformationen
+## <a name="manage-credentials"></a>Verwalten von Anmeldeinformationen
 Eine Herausforderung beim Schreiben von einem Dienst für die Skalierung besteht darin, dass der Dienst ohne eine interaktive Anmeldung Zugriff auf VM-Skalierungsgruppenressourcen haben muss. Der Zugriff auf den Service Fabric-Cluster ist einfach, wenn der Skalierungsdienst seine eigene Service Fabric-Anwendung ändert, für den Zugriff auf die Skalierungsgruppe jedoch Anmeldeinformationen erforderlich sind. Für die Anmeldung können Sie einen mit [Azure CLI 2.0](https://github.com/azure/azure-cli) erstellen [Dienstprinzipal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) verwenden.
 
 Ein Dienstprinzipal kann mit den folgenden Schritten erstellt werden:
@@ -140,12 +119,6 @@ Wie beim horizontalen Hochskalieren können auch hier PowerShell-Cmdlets zum Än
 ```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
-
-## <a name="potential-drawbacks"></a>Mögliche Nachteile
-
-Wie in den vorhergehenden Codeausschnitten veranschaulicht, bietet das Erstellen eines eigenen Skalierungsdiensts das höchsten Maß an Kontrolle und Individualisierbarkeit für das Skalierungsverhalten Ihrer Anwendung. Dies kann für Szenarien hilfreich sein, die eine genaue Kontrolle darüber erfordern, wann oder wie eine Anwendung horizontal herunter- oder hochskaliert wird. Diese Kontrolle bringt jedoch den Nachteil von komplexem Code mit sich. Für diesen Ansatz benötigen Sie anspruchsvollen eigenen Skalierungscode.
-
-Der geeignete Ansatz für die Service Fabric-Skalierung hängt von Ihrem Szenario ab. Wenn selten skaliert wird, ist die Möglichkeit zum manuellen Hinzufügen oder Entfernen von Knoten wahrscheinlich ausreichend. Bei komplexeren Szenarien stellen Regeln für automatische Skalierung und SDKs, die eine programmgesteuerte Skalierung ermöglichen, leistungsfähige Alternativen dar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

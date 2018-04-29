@@ -1,5 +1,5 @@
 ---
-title: Skalierbarkeit von Service Fabric-Diensten | Microsoft-Dokumentation
+title: Skalierbarkeit von Service Fabric-Diensten | Microsoft Docs
 description: Beschreibt, wie Sie die Service Fabric-Dienste skalieren.
 services: service-fabric
 documentationcenter: .net
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: aeda1184610398c0445238ea2e7ccbea866ed418
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6d8484a4c30fdd17cbb4773e6ff822b73efd5c4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scaling-in-service-fabric"></a>Skalierung in Service Fabric
 Azure Service Fabric erleichtert das Erstellen skalierbarer Anwendungen durch Verwalten der Dienste, Partitionen und Replikate auf den Knoten eines Clusters. Das Ausführen vieler Workloads auf derselben Hardware ermöglicht eine maximale Ressourcennutzung, bietet jedoch auch Flexibilität bei der Auswahl der Skalierung für die Workloads. Dieses Channel 9-Video erklärt, wie Sie skalierbare Microserviceanwendungen erstellen können:
@@ -117,12 +117,7 @@ Service Fabric erhält durch [Metriken](service-fabric-cluster-resource-manager-
 ## <a name="scaling-by-adding-and-removing-nodes-from-the-cluster"></a>Skalieren durch das Hinzufügen und Entfernen von Knoten im Cluster 
 Eine weitere Möglichkeit der Skalierung mit Service Fabric ist das Ändern der Clustergröße. Zum Ändern der Clustergröße müssen Knoten eines oder mehrere Knotentypen im Cluster hinzugefügt oder entfernt werden. Betrachten Sie beispielsweise den Fall, in dem alle Knoten im Cluster aktiv sind. Dies bedeutet, dass fast alle Ressourcen des Clusters genutzt werden. In diesem Fall ist das Hinzufügen weiterer Knoten zum Cluster die beste Skalierungsmethode. Sobald dem Cluster neue Knoten hinzugefügt wurden, verschiebt der Clusterressourcen-Manager von Service Fabric Dienste auf diese Knoten, sodass die Gesamtauslastung der vorhandenen Knoten verringert wird. Für zustandslose Dienste mit der Instanzenanzahl -1 werden automatisch weitere Dienstinstanzen erstellt. Dies ermöglicht das Verschieben einiger Aufrufe von den vorhandenen Knoten zu den neuen Knoten. 
 
-Das Hinzufügen und Entfernen von Knoten im Cluster kann über das Resource Manager-PowerShell-Modul von Service Fabric erfolgen.
-
-```posh
-Add-AzureRmServiceFabricNode -ResourceGroupName $resourceGroupName -Name $clusterResourceName -NodeType $nodeTypeName  -NumberOfNodesToAdd 5 
-Remove-AzureRmServiceFabricNode -ResourceGroupName $resourceGroupName -Name $clusterResourceName -NodeType $nodeTypeName -NumberOfNodesToRemove 5
-```
+Weitere Informationen finden Sie unter [Scaling Service Fabric clusters](service-fabric-cluster-scaling.md) (Skalieren von Service Fabric-Clustern).
 
 ## <a name="putting-it-all-together"></a>Zusammenfügen des Gesamtbilds
 Sehen wir uns alle Ideen, die wir hier besprochen haben, in einem Beispiel an. Betrachten Sie den folgenden Dienst: Sie möchten einen Dienst erstellen, der als Adressbuch fungiert und Namen und Kontaktinformationen speichert. 

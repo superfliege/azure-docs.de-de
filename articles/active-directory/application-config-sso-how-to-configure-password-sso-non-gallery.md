@@ -1,11 +1,11 @@
 ---
-title: "Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie eine benutzerdefinierte Anwendung für das sichere einmalige Anmelden mit Kennwort konfigurieren, wenn die Anwendung nicht im Azure AD-Anwendungskatalog aufgeführt ist."
+title: Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie eine benutzerdefinierte Anwendung für das sichere einmalige Anmelden mit Kennwort konfigurieren, wenn die Anwendung nicht im Azure AD-Anwendungskatalog aufgeführt ist.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: fd93b3fa5b601a276047feab67758fe1a29d4e27
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b928d71fbff232ae93dbf3d24517e7efc4cf8bfd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 
@@ -112,6 +112,8 @@ Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folg
 10. Weisen Sie der Anwendung Benutzer zu.
 
 11. Darüber hinaus können Sie Anmeldeinformationen für einen Benutzer angeben, indem Sie die Zeile des Benutzers auswählen, auf **Anmeldeinformationen aktualisieren** klicken und den Benutzernamen und das Kennwort für den Benutzer eingeben. Andernfalls werden die Benutzer beim Start der Anwendung aufgefordert, die Anmeldeinformationen selbst einzugeben.
+
+12. **Optional:** Bei bestimmten Anwendungen für soziale Medien wie etwa Twitter und Facebook besteht auch die Möglichkeit, das automatische Rollover des Kennworts für die Anwendung mit einer bestimmten Häufigkeit zu aktivieren. Wählen Sie zum Aktivieren dieser Option **Dieses Benutzer- oder Gruppenkennwort automatisch über Azure AD verwalten**, wenn Sie die Anmeldedaten für einen Benutzer oder eine Gruppe eingeben. Wählen Sie anschließend **Rolloverhäufigkeit (in Wochen)**.
 
 ## <a name="assign-a-user-to-an-application-directly"></a>Direktes Zuweisen eines Benutzers zu einer Anwendung
 

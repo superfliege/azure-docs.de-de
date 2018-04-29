@@ -1,6 +1,6 @@
 ---
-title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – System- und Kommunikationsschutz"
-description: "Automatisierung von Webanwendungen für FedRAMP – System- und Kommunikationsschutz"
+title: Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – System- und Kommunikationsschutz
+description: Automatisierung von Webanwendungen für FedRAMP – System- und Kommunikationsschutz
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: ce0917cec67612736103932903eab18d7f0f21bb
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 6749ad50cd1ea1cd4ec6ca2f86fef43a9f1515d9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="system-and-communications-protection-sc"></a>System- und Kommunikationsschutz (System and Communications, SC)
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint stellt eine Application Gateway-Instanz und einen Lastenausgleich bereit und konfiguriert Regeln für Netzwerksicherheitsgruppen, um das Pendeln an Außengrenzen und zwischen den internen Subnetzen zu steuern. Ereignis- und Diagnoseprotokolle zu Application Gateway, Lastenausgleich und Netzwerksicherheitsgruppen werden von OMS Log Analytics gesammelt, um Kunden die Überwachung zu ermöglichen. |
+| **Kunde** | Dieser Blueprint stellt eine Application Gateway-Instanz und einen Lastenausgleich bereit und konfiguriert Regeln für Netzwerksicherheitsgruppen, um das Pendeln an Außengrenzen und zwischen den internen Subnetzen zu steuern. Ereignis- und Diagnoseprotokolle zu Application Gateway, Lastenausgleich und Netzwerksicherheitsgruppen werden von Log Analytics gesammelt, um Kunden die Überwachung zu ermöglichen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 

@@ -2,7 +2,7 @@
 title: Sichern einer App in Azure
 description: Erfahren Sie, wie Sie Sicherungen Ihrer Apps in Azure App Service erstellen.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 435370a8758d439a5fcce2e04efd11b4aaaf0357
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 66423fecce92cd933cc8680810aa2abe5e25a90d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](app-service-web-overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen. 
@@ -35,9 +35,9 @@ App Service kann die folgenden Informationen in einem Azure-Speicherkonto und ei
 * Datenbank, die mit Ihrer App verbunden ist.
 
 Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt: 
-   - [SQL-Datenbank](https://azure.microsoft.com/en-us/services/sql-database/)
-   - [Azure-Datenbank für MySQL (Vorschau)](https://azure.microsoft.com/en-us/services/mysql)
-   - [Azure-Datenbank für PostgreSQL (Vorschau)](https://azure.microsoft.com/en-us/services/postgres)
+   - [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)
+   - [Azure-Datenbank für MySQL (Vorschau)](https://azure.microsoft.com/services/mysql)
+   - [Azure-Datenbank für PostgreSQL (Vorschau)](https://azure.microsoft.com/services/postgres)
    - [MySQL In-App](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 

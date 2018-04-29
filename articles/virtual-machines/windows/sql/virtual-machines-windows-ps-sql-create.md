@@ -1,11 +1,11 @@
 ---
-title: "Bereitstellungsleitfaden für SQL Server-VMs mit Azure PowerShell | Microsoft-Dokumentation"
-description: "Enthält Schritte und PowerShell-Befehle zum Erstellen eines virtuellen Azure-Computers über Images aus dem Katalog von virtuellen Computern mit SQL Server."
+title: Bereitstellungsleitfaden für SQL Server-VMs mit Azure PowerShell | Microsoft-Dokumentation
+description: Enthält Schritte und PowerShell-Befehle zum Erstellen eines virtuellen Azure-Computers über Images aus dem Katalog von virtuellen Computern mit SQL Server.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 2f94cf2ab84179161c8d0a4f2ae6f73ded1d65c3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7dff9fd736b1b0c616ee2d4f2591d632345156b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Bereitstellen von SQL Server-VMs mit Azure PowerShell
 
@@ -31,10 +31,10 @@ Für diesen Artikel ist Version 3.6 oder höher des Azure PowerShell-Moduls erfo
 
 ## <a name="configure-your-subscription"></a>Konfigurieren Ihres Abonnements
 
-1. Öffnen Sie PowerShell, und führen Sie das Cmdlet **Add-AzureRmAccount** aus, um den Zugriff auf Ihr Azure-Konto einzurichten.
+1. Öffnen Sie PowerShell, und führen Sie das Cmdlet **Connect-AzureRmAccount** aus, um den Zugriff auf Ihr Azure-Konto einzurichten.
 
    ```PowerShell
-   Add-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 1. Es sollte eine Anmeldeseite angezeigt werden, auf der Sie Ihre Anmeldeinformationen eingeben können. Verwenden Sie die E-Mail-Adresse und das Kennwort für die Anmeldung beim Azure-Portal.
@@ -327,7 +327,7 @@ Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 Mit dem Befehl **Remove-AzureRmResourceGroup** können Sie alle dem virtuellen Computer zugeordneten Ressourcen endgültig entfernen. Dadurch wird auch der virtuelle Computer endgültig gelöscht. Seien Sie daher vorsichtig, wenn Sie diesen Befehl verwenden.
 
 ## <a name="example-script"></a>Beispielskript
-Das folgende Skript enthält das vollständige PowerShell-Skript für dieses Tutorial. Es wird davon ausgegangen, dass Sie das Azure-Abonnement bereits eingerichtet haben, das mit den Befehlen **Add-AzureRmAccount** und **Select-AzureRmSubscription** verwendet werden soll.
+Das folgende Skript enthält das vollständige PowerShell-Skript für dieses Tutorial. Es wird davon ausgegangen, dass Sie das Azure-Abonnement bereits eingerichtet haben, das mit den Befehlen **Connect-AzureRmAccount** und **Select-AzureRmSubscription** verwendet werden soll.
 
 ```PowerShell
 # Variables

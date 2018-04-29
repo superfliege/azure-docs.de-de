@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 11f57f866981cd4d376705dd24e2f0c54126e337
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ac7fa42c93e42e93800c3b26154cdabb85756698
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack-Update 1803
 
@@ -44,10 +44,11 @@ Die Buildnummer des Azure Stack-Updates 1803 ist **20180329.1**.
 
 
 ### <a name="post-update-steps"></a>Schritte nach dem Update
-Installieren Sie nach der Installation von 1803 alle entsprechenden Hotfixes. Weitere Informationen finden Sie in den folgenden Knowledge Base-Artikeln sowie in unserer [Wartungsrichtlinie](azure-stack-servicing-policy.md).
+- Installieren Sie nach der Installation von 1803 alle entsprechenden Hotfixes. Weitere Informationen finden Sie in den folgenden Knowledge Base-Artikeln sowie in unserer [Wartungsrichtlinie](azure-stack-servicing-policy.md).
 
-- [KB 4103348 – Netzwerkcontroller-API-Dienst stürzt ab, wenn versucht wird, ein Azure Stack-Update zu installieren](https://support.microsoft.com/en-us/help/4103348)
+  - [KB 4103348 – Netzwerkcontroller-API-Dienst stürzt ab, wenn versucht wird, ein Azure Stack-Update zu installieren](https://support.microsoft.com/en-us/help/4103348)
 
+- Überprüfen Sie nach der Installation dieses Updates die Firewallkonfiguration, um sicherzustellen, dass die [erforderlichen Ports](azure-stack-integrate-endpoints.md) offen sind. Mit diesem Update beispielsweise wird Azure Monitor eingeführt, der einen Wechsel von Überwachungsprotokollen zu Aktivitätsprotokollen beinhaltet. Durch diese Änderung wird jetzt Port 13012 verwendet, der ebenfalls offen sein muss.  
 
 ### <a name="new-features"></a>Neue Funktionen 
 Dieses Update enthält die folgenden Verbesserungen und Fehlerbehebungen für Azure Stack.
@@ -169,7 +170,7 @@ Im Folgenden werden bekannte Probleme nach der Installation zum Build **20180323
     - *Zulassen*:
  
       ```powershell    
-      Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+      Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
       
       $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
       
@@ -199,7 +200,7 @@ Im Folgenden werden bekannte Probleme nach der Installation zum Build **20180323
 
         ```powershell
         
-        Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+        Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
         
         $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
         

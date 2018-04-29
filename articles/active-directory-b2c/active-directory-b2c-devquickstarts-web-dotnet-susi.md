@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 3f601fbbbb9aab0f942b26da9ad1c8c0a0dc9b16
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 052d81f8170273bb0e40572322349550e7219363
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Erstellen Sie mithilfe von Azure Active Directory B2C eine ASP.NET-Web-App mit Registrierung, Anmeldung, Profilbearbeitung und Kennwortzurücksetzung.
 
@@ -28,7 +28,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie müssen eine Verbindung Ihres B2C-Mandanten mit einem Azure-Konto herstellen. Sie können [hier](https://azure.microsoft.com/en-us/) ein kostenloses Azure-Konto erstellen.
+- Sie müssen eine Verbindung Ihres B2C-Mandanten mit einem Azure-Konto herstellen. Sie können [hier](https://azure.microsoft.com/) ein kostenloses Azure-Konto erstellen.
 - Sie benötigen [Microsoft Visual Studio](https://www.visualstudio.com/) oder eine ähnliche Anwendung zum Anzeigen und Ändern des Beispielcodes.
 
 ## <a name="create-an-azure-ad-b2c-directory"></a>Erstellen eines Azure AD B2C-Verzeichnisses

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.openlocfilehash: f898c626d52b1a4e7df72284190749f4481999ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: de3d430ad984c9b173f77138417532badc3a7497
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C: Ein Hilfsprogramm, mit dem das Anpassungsfeature für die Seitenbenutzeroberfläche (UI) veranschaulicht werden kann
 Dies ist ein Begleitartikel zum [Hauptartikel zur Anpassung der Benutzeroberfläche](active-directory-b2c-reference-ui-customization.md) in Azure Active Directory (Azure AD) B2C. In den folgenden Schritten wird beschrieben, wie Sie das Feature zum Anpassen der Seiten-UI verwenden. Zu diesem Zweck haben wir HTML- und CSS-Beispielinhalte bereitgestellt.
@@ -29,7 +29,7 @@ Die von uns bereitgestellten Beispielinhalte können zum Anpassen von zwei Seite
 ## <a name="register-an-application"></a>Registrieren einer Anwendung
 Sie müssen das [Registrieren einer Anwendung](active-directory-b2c-app-registration.md) in Ihrem B2C-Mandanten durchführen, der zum Ausführen Ihrer Richtlinie verwendet werden kann. Nach dem Registrieren der Anwendung stehen Ihnen einige Optionen zum eigentlichen Ausführen der Registrierungsrichtlinie zur Verfügung:
 
-* Erstellen Sie eine der Azure AD B2C-Schnellstart-Anwendungen, die unter [Registrieren und Anmelden von Kunden in den Anwendungen](active-directory-b2c-overview.md#get-started)im Abschnitt „Erste Schritte“ aufgeführt sind.
+* Erstellen Sie eine der Azure AD B2C-Schnellstart-Anwendungen, die unter [Registrieren und Anmelden von Kunden in den Anwendungen](active-directory-b2c-overview.md)im Abschnitt „Erste Schritte“ aufgeführt sind.
 * Verwenden Sie die fertige Anwendung [Azure AD B2C Playground](https://aadb2cplayground.azurewebsites.net) . Wenn Sie die Playground-Anwendung wählen, müssen Sie eine Anwendung mit dem **Umleitungs-URI** `https://aadb2cplayground.azurewebsites.net/` im B2C-Mandanten registrieren.
 * Verwenden Sie im **Azure-Portal** die Schaltfläche [Jetzt ausführen](https://portal.azure.com/)für Ihre Richtlinie.
 
@@ -39,7 +39,7 @@ Um das Aussehen und Verhalten Ihrer Richtlinie anzupassen, müssen Sie zuerst HT
 Für dieses Tutorial haben wir bereits einige Beispielinhalte erstellt und in Azure Blob Storage gehostet. Die Beispielinhalte umfassen eine sehr einfache Anpassung des Designs unseres fiktiven Unternehmens „Wingtip Toys“. Gehen Sie folgendermaßen vor, um dies für Ihre eigene Richtlinie auszuprobieren:
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) bei Ihrem Mandanten an, und navigieren Sie zum Blatt mit den B2C-Funktionen.
-2. Klicken Sie auf **Registrierungs- oder Anmelderichtlinien**, und klicken Sie dann auf Ihre Richtlinie (z.B. „b2c\_1\_sign\_up\_sign\_in“).
+2. Klicken Sie auf **Registrierungs- oder Anmelderichtlinien**, klicken Sie auf Ihre Richtlinie und dann auf „Bearbeiten“ (z.B. „b2c\_1\_sign\_up\_sign\_in“).
 3. Klicken Sie auf **Seite für die Benutzeroberflächenanpassung** und anschließend auf **Einheitliche Seite für Registrierung oder Anmeldung**.
 4. Stellen Sie die Option **Benutzerdefinierte Seite verwenden** auf **Ja** ein. Geben Sie im Feld **Benutzerdefinierter Seiten-URI** den Wert `https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/unified.html` ein. Klicken Sie auf **OK**.
 5. Klicken Sie auf **Registrierungsseite für lokales Konto**. Stellen Sie die Option **Benutzerdefinierte Vorlage verwenden** auf **Ja** ein. Geben Sie im Feld **Benutzerdefinierter Seiten-URI** den Wert `https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/selfasserted.html` ein.

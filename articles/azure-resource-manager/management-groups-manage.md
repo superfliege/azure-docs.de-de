@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: cba3f9290aff1808133b9d7780e4169fa25a10b2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ba51c2f8eb8db1f74c4501b045234c222b00da5c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen 
 Bei Verwaltungsgruppen handelt es sich um Container, mit denen Sie Zugriff, Richtlinien und Konformität abonnementübergreifend verwalten können. Sie können diese Container ändern, löschen und verwalten, um Hierarchien zu erhalten, die mit [Azure Policy](../azure-policy/azure-policy-introduction.md) und mit der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure](../role-based-access-control/overview.md) verwendet werden können. Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organize your resources with Azure Management Groups](management-groups-overview.md) (Organisieren von Ressourcen mit Azure-Verwaltungsgruppen).
 
-Das Feature für Verwaltungsgruppen ist in einer öffentlichen Vorschauversion verfügbar. Melden Sie sich zur Verwendung von Verwaltungsgruppen beim [Azure-Portal](https://portal.azure.com) an. Alternativ können Sie zur Verwaltung Ihrer Verwaltungsgruppen [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), die [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available) oder die [REST-API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) verwenden.
+Das Feature für Verwaltungsgruppen ist in einer öffentlichen Vorschauversion verfügbar. Melden Sie sich zur Verwendung von Verwaltungsgruppen beim [Azure-Portal](https://portal.azure.com) an. Alternativ können Sie zur Verwaltung Ihrer Verwaltungsgruppen [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), die [Azure CLI](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available) oder die [REST-API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) verwenden.
 
 Wenn Sie Änderungen an einer Verwaltungsgruppe vornehmen möchten, müssen Sie Mitglied der Rolle „Besitzer“ oder „Mitwirkender“ für die Verwaltungsgruppe sein. Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 
@@ -231,4 +231,4 @@ Weitere Informationen zu Verwaltungsgruppen finden Sie unter folgenden Links:
 - [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](management-groups-create.md)
 - [Installieren des Azure Powershell-Moduls](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)
 - [Spezifikationen zur REST-API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview)
-- [Installieren der Erweiterung für die Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)
+- [Installieren der Erweiterung für die Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)

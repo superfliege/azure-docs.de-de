@@ -3,8 +3,8 @@ title: Bewährte Methoden für die Azure-Identitäts- und Zugriffssicherheit | M
 description: In diesem Artikel werden einige bewährte Methoden zur Identitätsverwaltung und Zugriffssteuerung mit integrierten Azure-Funktionen beschrieben.
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
+author: barclayn
+manager: mbaldwin
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
 ms.service: security
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
-ms.author: yurid
-ms.openlocfilehash: 761013ad82fb8fa7d84e7929341d2e7d9e2d724c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: af01676276232f4dba5a11c219a3b83259945dfb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
+
 Die Identität wird häufig als neue Grenzschicht für die Sicherheit angesehen, indem diese Rolle vom herkömmlichen netzwerkzentrierten Ansatz übernommen wird. Die Weiterentwicklung dieses Dreh- und Angelpunkts für die Bereiche Sicherheit und Investitionen basiert darauf, dass Umkreisnetzwerke immer durchlässiger geworden sind und die Verteidigung des Umkreisnetzwerks nicht mehr so effektiv wie vor der immensen Nutzung von [BYOD](http://aka.ms/byodcg)-Geräten und Cloudanwendungen sein kann.
 
 In diesem Artikel werden bewährte Methoden für die Azure-Identitätsverwaltung und die Sicherheit der Zugriffssteuerung beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit [Azure AD](../active-directory/active-directory-whatis.md) und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -47,18 +48,20 @@ Der Artikel enthält bewährte Methoden zur Azure-Identitätsverwaltung und Sich
 * Aktives Überwachen auf verdächtige Aktivitäten
 
 ## <a name="centralize-your-identity-management"></a>Zentralisieren der Identitätsverwaltung
+
 Ein wichtiger Schritt zum Schützen Ihrer Identität ist die Sicherstellung, dass die IT-Mitarbeiter Konten unabhängig vom Erstellungsort von einem zentralen Standort aus verwalten können. In den meisten IT-Abteilungen von Unternehmen liegt das primäre Kontenverzeichnis lokal vor. Aber die Zahl der Hybrid-Cloudbereitstellungen nimmt zu, und es ist wichtig, dass Sie verstehen, wie Sie lokale Verzeichnisse und Cloudverzeichnisse integrieren und Endbenutzern eine nahtlose Oberfläche bieten können.
 
 Wir empfehlen Ihnen zwei Optionen, um dieses Szenario mit [Hybrididentitäten](../active-directory/active-directory-hybrid-identity-design-considerations-overview.md) zu erreichen:
 
 * Synchronisieren des lokalen Verzeichnisses mit Ihrem Cloudverzeichnis per Azure AD Connect
-* Aktivieren des einmaligen Anmeldens mit [Kennworthashsynchronisierung](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization), [Passthrough-Authentifizierung](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq) oder Erstellen eines Verbundes Ihrer lokalen Identität mit dem Cloudverzeichnis unter Verwendung von [Active Directory-Verbunddienste ](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/deploying-federation-servers) (Active Directory Federation Services, AD FS)
+* Aktivieren des einmaligen Anmeldens mit [Kennworthashsynchronisierung](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization), [Passthrough-Authentifizierung](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq) oder Erstellen eines Verbundes Ihrer lokalen Identität mit dem Cloudverzeichnis unter Verwendung von [Active Directory-Verbunddienste ](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) (Active Directory Federation Services, AD FS)
 
 Für Organisationen, die ihre lokale Identität nicht in die Cloudidentität integrieren, fällt beim Verwalten der Konten Mehraufwand an. Dies erhöht die Wahrscheinlichkeit von Fehlern und Sicherheitsverletzungen.
 
 Weitere Informationen zur Azure AD-Synchronisierung finden Sie im Artikel [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory/active-directory-aadconnect.md).
 
 ## <a name="enable-single-sign-on-sso"></a>Ermöglichen des einmaligen Anmeldens (SSO)
+
 Wenn Sie mehrere Verzeichnisse verwalten müssen, wird dies nicht nur für die IT-Abteilung zu einem Verwaltungsproblem, sondern auch für die Endbenutzer, die sich mehrere Kennwörter merken müssen. Bei Verwendung von [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) geben Sie Ihren Benutzern die Möglichkeit, die gleiche Gruppe von Anmeldeinformationen zum Anmelden und Zugreifen auf die benötigten Ressourcen zu nutzen. Dabei spielt es keine Rolle, ob sich eine Ressource lokal oder in der Cloud befindet.
 
 Verwenden Sie SSO, um Benutzern zu ermöglichen, basierend auf ihrem Organisationskonto in Azure AD auf ihre [SaaS-Anwendungen](../active-directory/active-directory-appssoaccess-whatis.md) zuzugreifen. Dies gilt nicht nur für Microsoft SaaS-Apps, sondern auch für andere Apps, z.B. [Google-Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) und [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Ihre Anwendung kann so konfiguriert werden, dass Azure AD als [SAML-Identitätsanbieter](../active-directory/fundamentals-identity.md) verwendet wird. Als Sicherheitsmaßnahme stellt Azure AD nur dann ein Token aus, das den Benutzern die Anmeldung bei der Anwendung erlaubt, wenn ihnen zuvor mit Azure AD Zugriff gewährt wurde. Sie können den Zugriff direkt oder über eine Gruppe gewähren, deren Mitglied die Benutzer sind.
@@ -73,6 +76,7 @@ Für Organisationen, die SSO für ihre Benutzer und Anwendungen nicht erzwingen,
 Weitere Informationen zu Azure AD SSO finden Sie im Artikel [Verwaltung der Active Directory-Verbunddienste und Anpassung mit Azure AD Connect](../active-directory/active-directory-aadconnect-federation-management.md).
 
 ## <a name="deploy-password-management"></a>Bereitstellen der Kennwortverwaltung
+
 Bei Szenarien, in denen Sie mehrere Mandanten verwenden oder Benutzern das [Zurücksetzen ihres Kennworts](../active-directory/active-directory-passwords-update-your-own-password.md) ermöglichen möchten, ist es wichtig, dass Sie zur Verhinderung von Missbrauch geeignete Sicherheitsrichtlinien verwenden. In Azure können Sie die Funktion für die Self-Service-Kennwortzurücksetzung nutzen und die Sicherheitsoptionen anpassen, um Ihre geschäftlichen Anforderungen zu erfüllen.
 
 Es ist wichtig, Feedback von diesen Benutzern zu erhalten und aus den Erfahrungen zu lernen, die diese beim Ausführen der Schritte machen. Stellen Sie basierend auf diesen Erfahrungen einen Plan zur Lösung von potenziellen Problemen auf, die während der Bereitstellung für eine größere Gruppe auftreten können. Wir empfehlen Ihnen auch, den [Bericht zur Registrierung für die Kennwortzurücksetzung](../active-directory/active-directory-passwords-get-insights.md) zu verwenden, um die registrierten Benutzer zu überwachen.
@@ -82,6 +86,7 @@ Für Organisationen, die Supportanrufe zum Thema Kennwortänderung vermeiden mö
 Weitere Informationen zur Kennwortzurücksetzung finden Sie im Artikel [Bereitstellen der Kennwortverwaltung und Schulen der Benutzer zu deren Verwendung](../active-directory/authentication/howto-sspr-deployment.md).
 
 ## <a name="enforce-multi-factor-authentication-mfa-for-users"></a>Erzwingen der Multi-Factor Authentication (MFA) für Benutzer
+
 Für Organisationen, die Branchenstandards erfüllen müssen, z.B. [PCI DSS Version 3.2](http://blog.pcisecuritystandards.org/preparing-for-pci-dss-32), ist die Multi-Factor Authentication zwingend erforderlich, um Benutzer authentifizieren zu können. Über die Erfüllung von Branchenstandards hinaus kann die Erzwingung von MFA für die Authentifizierung von Benutzern für Organisationen auch eine Hilfe darstellen, wenn es um eine Lösung für Angriffe geht, bei denen Anmeldeinformationen gestohlen werden, z.B. [Pass-the-Hash (PtH)](http://aka.ms/PtHPaper).
 
 Durch die Aktivierung von Azure MFA für Ihre Benutzer fügen Sie eine zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen hinzu. In diesem Fall greift eine Transaktion möglicherweise auf ein Dokument zu, das sich auf einem Dateiserver oder in Ihrem SharePoint Online-Konto befindet. Azure MFA hilft der IT, die Wahrscheinlichkeit zu verringern, dass kompromittierte Anmeldeinformationen Zugriff auf die Daten einer Organisation haben.
@@ -93,6 +98,7 @@ Eine Alternative für Organisationen, die die gesamte Authentifizierung weiterhi
 Weitere Informationen über Azure Multi-Factor Authentication finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="use-role-based-access-control-rbac"></a>Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)
+
 Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Die rollenbasierte Zugriffssteuerung in Azure (RBAC) kann verwendet werden, um Benutzern, Gruppen und Anwendungen Berechtigungen für einen bestimmten Bereich zu erteilen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein.
 
 Sie können [integrierte RBAC-Rollen](../role-based-access-control/built-in-roles.md) in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Ziehen Sie die Verwendung von *Speicherkontomitwirkender* für Cloudoperatoren in Betracht, die Speicherkonten verwalten müssen, und nutzen Sie die Rolle *Klassischer Speicherkontomitwirkender*, um klassische Speicherkonten zu verwalten. Überlegen Sie sich, ob Sie Cloudoperatoren, die VMs und Speicherkonten verwalten müssen, zur Rolle *Mitwirkender für virtuelle Computer* hinzufügen.
@@ -102,6 +108,7 @@ Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie RBA
 Lesen Sie den Artikel [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md), um mehr über die Azure RBAC zu erfahren.
 
 ## <a name="control-locations-where-resources-are-created-using-resource-manager"></a>Steuern von Standorten, an denen Ressourcen erstellt werden, mit Resource Manager
+
 Es ist wichtig, für Cloudbediener die Durchführung von Aufgaben zu ermöglichen und gleichzeitig die Nichteinhaltung von Konventionen zu verhindern, die zum Verwalten der Ressourcen einer Organisation erforderlich sind. Organisationen, die die Orte steuern möchten, an denen Ressourcen erstellt werden, sollten diese Orte hartcodieren.
 
 Hierzu können Organisationen Sicherheitsrichtlinien erstellen, die über Definitionen verfügen, mit denen die jeweils verweigerten Aktionen oder Ressourcen beschrieben werden. Sie weisen diese Richtliniendefinitionen dem gewünschten Ziel zu, z. B. einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource.
@@ -118,6 +125,7 @@ Organisationen, die die Erstellung von Ressourcen nicht steuern, sind anfällige
 Weitere Informationen zur Erstellung von Richtlinien mit Azure Resource Manager finden Sie im Artikel [Was ist Azure Policy](../azure-policy/azure-policy-introduction.md).
 
 ## <a name="guide-developers-to-leverage-identity-capabilities-for-saas-apps"></a>Anleiten von Entwicklern zur Nutzung von Identitätsfunktionen für SaaS-Apps
+
 Die Benutzeridentität wird in vielen Szenarien genutzt, wenn Benutzer auf [SaaS-Apps](https://azure.microsoft.com/marketplace/active-directory/all/) zugreifen, die in ein lokales Verzeichnis oder ein Cloudverzeichnis integriert werden können. Zuallererst empfehlen wir, dass Entwickler zum Entwickeln dieser Apps eine sichere Methodik verwenden, z.B. [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx). Azure AD vereinfacht die Authentifizierung für Entwickler mittels Identity as a Service durch Unterstützung branchenüblicher Protokolle wie [OAuth 2.0](http://oauth.net/2/) und [OpenID Connect](http://openid.net/connect/) sowie durch offene Quellbibliotheken für verschiedene Plattformen.
 
 Stellen Sie sicher, dass alle Anwendungen, für die die Authentifizierung an Azure AD outgesourct wird, registriert sind. Dies ist ein erforderlicher Vorgang. Der Grund ist, dass Azure AD die Kommunikation mit der Anwendung koordinieren muss, wenn die Anmeldung (SSO) verarbeitet wird oder Token ausgetauscht werden. Die Sitzung des Benutzers läuft ab, wenn die Gültigkeitsdauer des von Azure AD ausgestellten Tokens abläuft. Werten Sie immer aus, ob dieser Zeitraum für Ihre Anwendung verwendet werden soll oder ob Sie den Zeitraum reduzieren können. Das Reduzieren der Gültigkeitsdauer kann als Sicherheitsmaßnahme fungieren, bei der Benutzer nach einer bestimmten Zeit der Inaktivität zum Abmelden gezwungen werden.
@@ -127,6 +135,7 @@ Organisationen, die keine Identitätssteuerung für den Zugriff auf Apps erzwing
 Weitere Informationen zu Authentifizierungsszenarien für SaaS-Apps finden Sie im Artikel [Authentifizierungsszenarien für Azure AD](../active-directory/active-directory-authentication-scenarios.md).
 
 ## <a name="actively-monitor-for-suspicious-activities"></a>Aktives Überwachen auf verdächtige Aktivitäten
+
 Laut [Verizon 2016 Data Breach-Bericht](http://www.verizonenterprise.com/verizon-insights-lab/dbir/2016/) sind für die Kompromittierung von Anmeldeinformationen weiterhin steigende Fallzahlen zu verzeichnen, und diese Art von Angriff ist für Cyberkriminelle zu einem der einträglichsten Geschäfte geworden. Aus diesem Grund ist es wichtig, dass Sie ein System zur aktiven Überwachung der Identität verwenden, mit dem verdächtige Aktivitäten schnell erkannt werden und eine Warnung ausgelöst wird, damit dies näher untersucht werden kann. Azure AD bietet zwei wichtige Funktionen, die für Organisationen beim Überwachen ihrer Identitäten hilfreich sind: Azure AD Premium-[Anomalieberichte](../active-directory/active-directory-view-access-usage-reports.md) und Azure AD-[Identitätsschutz](../active-directory/active-directory-identityprotection.md).
 
 Verwenden Sie auf jeden Fall Anomalieberichte, um Versuche der folgenden Art identifizieren zu können: [Anmeldung ohne Nachverfolgung](../active-directory/active-directory-reporting-sign-ins-from-unknown-sources.md), [Brute-Force](../active-directory/active-directory-reporting-sign-ins-after-multiple-failures.md)-Angriffe gegen ein bestimmtes Konto, Anmeldung von mehreren Standorten, Anmeldung mit infizierten Geräten und Verwendung verdächtiger IP-Adressen. Bedenken Sie, dass es sich hierbei um Berichte handelt. Anders ausgedrückt: Sie müssen über Prozesse und Verfahren verfügen, mit denen IT-Administratoren diese Berichte täglich oder bei Bedarf ausführen können (normalerweise in einem Szenario mit Reaktionen auf Zwischenfälle).

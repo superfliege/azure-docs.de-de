@@ -12,21 +12,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 04/06/2018
 ms.author: genli
-ms.openlocfilehash: 2743a00404a2ee990147dfb6e73e9c2369eb4753
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9026b702e6e0d27817955c70c733bf372005dd4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Behandeln von Problemen mit einem virtuellen Azure-Computer unter Verwendung der geschachtelten Virtualisierung in Azure
 
-In diesem Artikel erfahren Sie, wie Sie in Microsoft Azure eine geschachtelte Virtualisierungsumgebung erstellen, um den Datenträger des virtuellen Computers zur Problembehandlung auf dem Hyper-V-Host (virtueller Wiederherstellungscomputer) einbinden zu können.
+In diesem Artikel erfahren Sie, wie Sie in Microsoft Azure eine geschachtelte Virtualisierungsumgebung erstellen, um den Datenträger des virtuellen Computers zur Problembehandlung auf dem Hyper-V-Host (virtueller Rettungscomputer) einbinden zu können.
 
-## <a name="prerequisite"></a>Voraussetzung
+## <a name="prerequisites"></a>Voraussetzungen
 
-Um den virtuellen Computer mit dem Problem einbinden zu können, muss der virtuelle Wiederherstellungscomputer folgende Voraussetzungen erfüllen:
+Um den virtuellen Computer mit dem Problem einbinden zu können, muss der virtuelle Rettungscomputer folgende Voraussetzungen erfüllen:
 
 -   Er muss sich am gleichen Standort befinden wie der virtuelle Computer mit dem Problem.
 
@@ -34,9 +34,9 @@ Um den virtuellen Computer mit dem Problem einbinden zu können, muss der virtue
 
 -   Er muss die gleiche Art von Speicherkonto (Standard oder Premium) verwenden wie der virtuelle Computer mit dem Problem.
 
-## <a name="step-1-create-a-recovery-vm-and-install-hyper-v-role"></a>Schritt 1: Erstellen eines virtuellen Wiederherstellungscomputers und Installieren der Hyper-V-Rolle
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Schritt 1: Erstellen eines virtuellen Rettungscomputers und Installieren der Hyper-V-Rolle
 
-1.  Erstellen Sie einen neuen virtuellen Wiederherstellungscomputer:
+1.  Erstellen Sie einen neuen virtuellen Rettungscomputer:
 
     -  Betriebssystem: Windows Server 2016 Datacenter
 
@@ -46,13 +46,13 @@ Um den virtuellen Computer mit dem Problem einbinden zu können, muss der virtue
 
     -  Speichertyp: Gleicher Typ wie bei dem Computer mit dem Problem (Standard oder Premium)
 
-2.  Stellen Sie nach dem Erstellen des virtuellen Wiederherstellungscomputers eine Remotedesktopverbindung mit ihm her.
+2.  Stellen Sie nach dem Erstellen des virtuellen Rettungscomputers eine Remotedesktopverbindung mit ihm her.
 
 3.  Klicken Sie im Server-Manager auf **Verwalten** > **Rollen und Features hinzufügen**.
 
 4.  Wählen Sie im Abschnitt **Installationstyp** die Option **Rollenbasierte oder featurebasierte Installation** aus.
 
-5.  Vergewissern Sie sich im Abschnitt **Zielserver auswählen**, dass der virtuelle Wiederherstellungscomputer ausgewählt ist.
+5.  Vergewissern Sie sich im Abschnitt **Zielserver auswählen**, dass der virtuelle Rettungscomputer ausgewählt ist.
 
 6.  Klicken Sie auf **Hyper-V-Rolle** > **Features hinzufügen**.
 
@@ -70,25 +70,25 @@ Um den virtuellen Computer mit dem Problem einbinden zu können, muss der virtue
 
 13. Lassen Sie die Installation der Hyper-V-Rolle auf dem Server zu. Dieser Vorgang dauert einige Minuten. Anschließend wird der Server automatisch neu gestartet.
 
-## <a name="step-2-create-the-problem-vm-on-the-recovery-vms-hyper-v-server"></a>Schritt 2: Erstellen des virtuellen Computers mit dem Problem auf dem Hyper-V-Server des virtuellen Wiederherstellungscomputers
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Schritt 2: Erstellen des virtuellen Computers mit dem Problem auf dem Hyper-V-Server des virtuellen Rettungscomputers
 
 1.  Notieren Sie sich den Namen des Datenträgers des virtuellen Computers mit dem Problem, und löschen Sie anschließend den virtuellen Computer mit dem Problem. Bewahren Sie alle angefügten Datenträger auf. 
 
-2.  Fügen Sie den Betriebssystemdatenträger des virtuellen Computers mit dem Problem als Datenträger des virtuellen Wiederherstellungscomputers an.
+2.  Fügen Sie den Betriebssystemdatenträger des virtuellen Computers mit dem Problem als Datenträger des virtuellen Rettungscomputers an.
 
-    1.  Navigieren Sie nach dem Löschen des virtuellen Computers mit dem Problem zum virtuellen Wiederherstellungscomputer.
+    1.  Navigieren Sie nach dem Löschen des virtuellen Computers mit dem Problem zum virtuellen Rettungscomputer.
 
     2.  Klicken Sie auf **Datenträger** und anschließend auf **Datenträger hinzufügen**.
 
     3.  Wählen Sie den Datenträger des virtuellen Computers mit dem Problem aus, und klicken Sie anschließend auf **Speichern**.
 
-3.  Stellen Sie nach dem erfolgreichen Anfügen des Datenträgers eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
+3.  Stellen Sie nach dem erfolgreichen Anfügen des Datenträgers eine Remotedesktopverbindung mit dem virtuellen Rettungscomputer her.
 
 4.  Öffnen Sie die Datenträgerverwaltung (diskmgmt.msc). Vergewissern Sie sich, dass der Datenträger des virtuellen Computers mit dem Problem den Status **Offline** hat.
 
 5.  Öffnen Sie den Hyper-V-Manager: Wählen Sie im **Server-Manager** die **Hyper-V-Rolle** aus. Klicken Sie mit der rechten Maustaste auf den Server, und wählen Sie den **Hyper-V Manager** aus.
 
-6.  Klicken Sie im Hyper-V-Manager mit der rechten Maustaste auf den virtuellen Wiederherstellungscomputer, und klicken Sie auf **Neu** > **Virtueller Computer** > **Weiter**.
+6.  Klicken Sie im Hyper-V-Manager mit der rechten Maustaste auf den virtuellen Rettungscomputer, und klicken Sie auf **Neu** > **Virtueller Computer** > **Weiter**.
 
 7.  Geben Sie einen Namen für den virtuellen Computer ein, und klicken Sie auf **Weiter**.
 
@@ -125,7 +125,7 @@ Um den virtuellen Computer mit dem Problem einbinden zu können, muss der virtue
 
 1.  Wenn Sie den virtuellen Computer wieder online geschaltet haben, fahren Sie den virtuellen Computer im Hyper-V-Manager herunter.
 
-2.  Klicken Sie im [Azure-Portal](https://portal.azure.com) auf den virtuellen Wiederherstellungscomputer und anschließend auf „Datenträger“. Kopieren Sie dann den Namen des Datenträgers. Der Name wird im nächsten Schritt benötigt. Trennen Sie den eingebauten Datenträger vom virtuellen Wiederherstellungscomputer.
+2.  Klicken Sie im [Azure-Portal](https://portal.azure.com) auf den virtuellen Rettungscomputer und anschließend auf „Datenträger“. Kopieren Sie dann den Namen des Datenträgers. Der Name wird im nächsten Schritt benötigt. Trennen Sie den eingebauten Datenträger vom virtuellen Rettungscomputer.
 
 3.  Navigieren Sie zu **Alle Ressourcen**, suchen Sie nach dem Namen des Datenträgers, und wählen Sie den Datenträger aus.
 

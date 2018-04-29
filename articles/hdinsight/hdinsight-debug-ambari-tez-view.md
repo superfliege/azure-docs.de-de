@@ -1,8 +1,8 @@
 ---
-title: "Verwenden der Ambari-Tez-Ansicht mit HDInsight – Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Ambari-Tez-Ansicht zum Debuggen von Tez-Aufträgen in HDInsight verwenden."
+title: Verwenden der Ambari-Tez-Ansicht mit HDInsight – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Ambari-Tez-Ansicht zum Debuggen von Tez-Aufträgen in HDInsight verwenden.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: 9c39ea56-670b-4699-aba0-0f64c261e411
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: bf34bc5a65c2beb55c7039868e4d90d83d28de51
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 98874377f31a435e7dd9736410c123ef623928d0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>Debuggen von Tez-Aufträgen in HDInsight mithilfe von Ambari-Ansichten
 
@@ -52,7 +50,7 @@ Die Tez-Ansicht enthält nur Daten, wenn ein Auftrag, der die Tez-Engine verwend
 
 Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen:
 
-1. Öffnen Sie einen Webbrowser „https://CLUSTERNAME.azurehdinsight.net“, wobei **CLUSTERNAME** für den Namen des HDInsight-Clusters steht.
+1. Öffnen Sie einen Webbrowser https://CLUSTERNAME.azurehdinsight.net, wobei **CLUSTERNAME** der Name des HDInsight-Clusters ist.
 
 2. Wählen im Menü oben auf der Seite das Symbol **Ansichten** aus. Das Symbol sieht aus wie eine Reihe von Quadraten. Wählen Sie in der eingeblendeten Dropdownliste **Hive-Ansicht** aus.
 

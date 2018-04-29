@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: e7fc12c9b4cc79109975e34f64f236394c33af25
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c161b8fb70f20ef7d82834e6c61daff759726b93
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -170,7 +170,7 @@ Weitere Informationen finden Sie unter [Create or update a set](https://msdn.mic
     ```powershell
     Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
     ```
@@ -402,9 +402,9 @@ Update-AzureRmVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vms
  
 Den Wert für „extensionName“ finden Sie in `$vmss`.
    
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-operations-management-suite"></a>Gibt es ein Beispiel für eine VM-Skalierungsgruppenvorlage mit Operations Management Suite-Integration?
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-log-analytics"></a>Gibt es ein Beispiel für eine VM-Skalierungsgruppenvorlage, die in Log Analytics integriert ist?
 
-Ein Beispiel für eine VM-Skalierungsgruppenvorlage mit Operations Management Suite-Integration finden Sie unter [Deploy Azure Service Fabric Cluster and enable monitoring using OMS Log Analytics](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric) (Bereitstellen eines Azure Service Fabric-Clusters und Aktivieren der Überwachung mithilfe von Log Analytics) im zweiten Beispiel.
+Ein Beispiel für eine VM-Skalierungsgruppenvorlage, die in Log Analytics integriert ist, finden Sie unter [Deploy Azure Service Fabric Cluster and enable monitoring using OMS Log Analytics](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric) (Bereitstellen eines Azure Service Fabric-Clusters und Aktivieren der Überwachung mithilfe von Log Analytics) im zweiten Beispiel.
    
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>Erweiterungen scheinen in VM-Skalierungsgruppen parallel ausgeführt zu werden. Das führt zu einem Fehler bei meiner benutzerdefinierten Skripterweiterung. Wie kann ich dieses Problem beheben?
 
@@ -693,9 +693,9 @@ Ja. Sie können einen virtuellen Computer mittels Reimaging zurücksetzen, ohne 
 
 Weitere Informationen finden Sie unter [Manage all VMs in a set](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set) (Verwalten aller virtuellen Computer in einer Gruppe).
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-oms-operations-management-suite"></a>Ist es möglich, Skalierungsgruppen in Azure OMS (Operations Management Suite) zu integrieren?
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-log-analytics"></a>Ist es möglich, Skalierungsgruppen in Azure Log Analytics zu integrieren?
 
-Ja, Sie können dazu die OMS-Erweiterung auf den virtuellen Computern der Skalierungsgruppen installieren. Hier folgt ein Beispiel für die Azure-Befehlszeilenschnittstelle:
+Ja, Sie können dazu die Log Analytics-Erweiterung auf den virtuellen Computern der Skalierungsgruppen installieren. Hier folgt ein Beispiel für die Azure-Befehlszeilenschnittstelle:
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```

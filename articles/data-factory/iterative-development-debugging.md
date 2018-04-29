@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie Data Factory-Pipelines im Azure-Portal i
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 04/04/2018
+ms.date: 04/16/2018
 ms.topic: article
 ms.service: data-factory
 services: data-factory
@@ -12,11 +12,11 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: adb5ffd65d4b2b591abba5d4b3481b7ca08de579
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6a6fbd721e4f0af977fe7fa03adc4459de7611f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratives Entwickeln und Debuggen mit Azure Data Factory
 
@@ -45,9 +45,17 @@ Beim Ausführen von Testläufen müssen Sie Ihre Änderungen nicht in der Data F
 
 ## <a name="setting-breakpoints-for-debugging"></a>Festlegen von Breakpoints für das Debuggen
 
-Mit Data Factory können Sie das Debuggen auch bis zum Erreichen einer bestimmten Aktivität in Ihrer Pipelinecanvas ausführen. Legen Sie einfach einen Breakpoint für die Aktivität fest, bis zu dem der Test ausgeführt werden soll, und klicken Sie auf **Debuggen**. Data Factory stellt sicher, dass die Testläufe nur bis zur Breakpoint-Aktivität auf der Pipelinecanvas ausgeführt werden. Dieses Feature namens *Debug Until* (Debuggen bis) ist nützlich, wenn Sie nicht die gesamte Pipeline, sondern nur eine Teilmenge der Aktivitäten in der Pipeline testen möchten.
+Mit Data Factory können Sie das Debuggen auch bis zum Erreichen einer bestimmten Aktivität in der Pipelinecanvas ausführen. Legen Sie einfach einen Breakpoint für die Aktivität fest, bis zu dem der Test ausgeführt werden soll, und klicken Sie auf **Debuggen**. Data Factory stellt sicher, dass die Testläufe nur bis zur Breakpoint-Aktivität auf der Pipelinecanvas ausgeführt werden. Dieses Feature namens *Debug Until* (Debuggen bis) ist nützlich, wenn Sie nicht die gesamte Pipeline, sondern nur eine Teilmenge der Aktivitäten in der Pipeline testen möchten.
 
 ![Breakpoints auf der Pipelinecanvas](media/iterative-development-debugging/iterative-development-image4.png)
+
+Um einen Haltepunkt festzulegen, wählen Sie ein Element auf der Pipelinecanvas aus. Eine Option *Debug Until* wird als ein leerer roter Kreis in der oberen rechten Ecke des Elements angezeigt.
+
+![Vor dem Festlegen eines Haltepunkts für das ausgewählte Element](media/iterative-development-debugging/iterative-development-image5.png)
+
+Nachdem Sie die Option *Debug Until* ausgewählt haben, ändert sich der leere Kreis in einen ausgefüllten roten Kreis, um anzugeben, dass der Breakpoint aktiviert ist.
+
+![Nach dem Festlegen eines Haltepunkts für das ausgewählte Element](media/iterative-development-debugging/iterative-development-image6.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Continuous Integration und Continuous Deployment in Azure Data Factory](continuous-integration-deployment.md)

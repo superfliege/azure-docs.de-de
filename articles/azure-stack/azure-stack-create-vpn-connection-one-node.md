@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: brenduns
 ms.reviewer: scottnap
-ms.openlocfilehash: 8bb10be63ef31ebe6241c15a79dafe71923a4cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6520da6b866ebddd66604dd8f27acfc5a9bcef4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Erstellen einer Site-to-Site-VPN-Verbindung zwischen zwei virtuellen Netzwerken in unterschiedlichen Azure Stack Development Kit-Umgebungen
 ## <a name="overview"></a>Übersicht
@@ -34,7 +34,7 @@ Das folgende Diagramm zeigt die fertige Verbindungskonfiguration:
 Vergewissern Sie sich zum Durchführen der Verbindungskonfiguration zunächst, dass Sie über folgende Elemente verfügen:
 
 * Zwei Server und andere erforderliche Komponenten, welche die in [Schnellstart: Evaluieren des Azure Stack Development Kit](azure-stack-deploy-overview.md) beschriebenen Hardware-Anforderungen des Azure Stack Development Kits erfüllen. 
-* Das [Bereitstellungspaket für das Azure Stack Development Kit](https://azure.microsoft.com/en-us/overview/azure-stack/try/).
+* Das [Bereitstellungspaket für das Azure Stack Development Kit](https://azure.microsoft.com/overview/azure-stack/try/).
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Bereitstellen der Azure Stack Development Kit-Umgebungen
 Zum Durchführen der Verbindungskonfiguration müssen Sie zwei Azure Stack Development Kit-Umgebungen bereitstellen.

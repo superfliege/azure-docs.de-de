@@ -19,8 +19,8 @@ Die iothubowner-Verbindungszeichenfolge wird für dieses Tutorial nicht benötig
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) Ihren IoT-Hub.
 
-2. Klicken Sie auf **Geräte-Explorer**.
-3. Klicken Sie im Geräte-Explorer-Bereich auf **Hinzufügen**, um Ihrem IoT Hub ein Gerät hinzuzufügen. Gehen Sie wie folgt vor:
+2. Klicken Sie auf **IoT-Geräte**.
+3. Klicken Sie im Bereich „IoT-Geräte“ auf **Hinzufügen**, um Ihrem IoT Hub ein Gerät hinzuzufügen. Gehen Sie wie folgt vor:
 
    **Geräte-ID**: Geben Sie die ID des neuen Geräts ein. Bei Geräte-IDs wird die Groß-/Kleinschreibung beachtet.
 
@@ -30,12 +30,15 @@ Die iothubowner-Verbindungszeichenfolge wird für dieses Tutorial nicht benötig
 
    **Connect device to IoT Hub** (Gerät mit IoT Hub verbinden): Klicken Sie auf **Aktivieren**.
 
-   ![Hinzufügen eines Geräts im Geräte-Explorer Ihres IoT Hubs](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-device-explorer-portal.png)
+   ![Hinzufügen eines Geräts im Bereich „IoT-Geräte“ Ihres IoT Hubs](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-iot-devices-portal.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 4. Klicken Sie auf **Speichern**.
-5. Öffnen Sie das Gerät nach der Erstellung im Bereich **Geräte-Explorer**.
+5. Öffnen Sie das Gerät nach der Erstellung im Bereich **IoT-Geräte**.
+
+   ![Liste der IoT-Geräte in IoT Hub](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_device-list-in-iot-devices-portal.png)
+
 6. Notieren Sie sich den Primärschlüssel der Verbindungszeichenfolge.
 
-   ![Abrufen der Geräte-Verbindungszeichenfolge](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_get-device-connection-string-in-device-explorer-portal.png)
+   ![Abrufen der Geräte-Verbindungszeichenfolge](../articles/iot-hub/media/iot-hub-create-hub-and-device/8_get-device-connection-string-in-iot-devices-portal.png)

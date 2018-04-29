@@ -1,24 +1,18 @@
 ---
 title: Azure Analysis Services-Aliasservernamen | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Servernamenaliase erstellen und verwenden.
-services: analysis-services
-documentationcenter: 
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: e0119580c4128ffd237127a62e29dac34297da5d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: e55438c629b861e8dc095892c6c519855cd5e632
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="alias-server-names"></a>Aliasservernamen
 
@@ -31,7 +25,7 @@ Aliasservernamen ermöglichen Folgendes:
 - Weiterleitung von Benutzern an unterschiedliche Server (abhängig von der Tageszeit) 
 - Weiterleitung von Benutzern in verschiedenen Regionen an Instanzen, die jeweils geografisch näher liegen (wie bei Verwendung von Azure Traffic Manager) 
 
-Als Alias kann jeder HTTP-Endpunkt fungieren, der einen gültigen Azure Analysis Services-Servernamen zurückgibt.
+Als Alias kann jeder HTTPS-Endpunkt fungieren, der einen gültigen Azure Analysis Services-Servernamen zurückgibt. Der Endpunkt muss HTTPS über Port 443 unterstützen, und der Port darf nicht im URI angegeben werden.
 
 ![Alias mit Linkformat](media/analysis-services-alias/aas-alias-browser.png)
 

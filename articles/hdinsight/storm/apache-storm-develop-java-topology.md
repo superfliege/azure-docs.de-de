@@ -1,8 +1,8 @@
 ---
-title: "Apache Storm-Beispiel, Java-Topologie – Azure HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Apache Storm-Topologien in Java erstellen, indem Sie eine Beispieltopologie zur Wortzählung erstellen."
+title: Apache Storm-Beispiel, Java-Topologie – Azure HDInsight | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Apache Storm-Topologien in Java erstellen, indem Sie eine Beispieltopologie zur Wortzählung erstellen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,17 +11,15 @@ keywords: Apache Storm, Apache Storm-Beispiel, Storm-Java, Storm-Topologiebeispi
 ms.assetid: a8838f29-9c08-4fd9-99ef-26655d1bf6d7
 ms.service: hdinsight
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 2403261f05d9e5aab2e50939720b3eb007aecd6e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5f2a6de9737569c75e0350e2aceec19b149d9549
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Erstellen einer Apache Storm-Topologie in Java
 
@@ -30,13 +28,13 @@ In diesem Artikel erfahren Sie, wie Sie eine Java-basierte Topologie für Apache
 Nach Abschluss der Schritte in diesem Dokument können Sie die Topologie für Apache Storm in HDInsight bereitstellen.
 
 > [!NOTE]
-> Eine vollständige Version der Storm-Topologiebeispiele, die in diesem Dokument erstellt werden, finden Sie unter [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
+> Eine abgeschlossene Version der Storm-Topologiebeispiele, die in diesem Dokument erstellt wurden, finden Sie unter [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Java Developer Kit (JDK), Version 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-* [Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven ist ein Projektbuildsystem für Java-Projekte.
+* [Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven ist ein Projekterstellungssystem für Java-Projekte.
 
 * Ein Text-Editor oder eine IDE.
 
@@ -169,7 +167,7 @@ Mithilfe von Maven-Plug-Ins können Sie die Buildphasen des Projekts anpassen. B
 </build>
 ```
 
-Dieser Abschnitt wird zum Hinzufügen von Plug-Ins, Ressourcen und anderen Optionen für die Buildkonfiguration verwendet. Eine vollständige Referenz zur Datei **pom.xml** finden Sie unter [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).
+Dieser Abschnitt wird zum Hinzufügen von Plug-Ins, Ressourcen und anderen Optionen für die Buildkonfiguration verwendet. Eine vollständige Referenz der Datei **pom.xml** finden Sie unter [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).
 
 ### <a name="add-plug-ins"></a>Hinzufügen von Plug-Ins
 
@@ -238,11 +236,11 @@ Dieses Beispiel fügt dem Verzeichnis „resources“ im Stammverzeichnis des Pr
 
 Eine Java-basierte Apache Storm-Topologie besteht aus drei Komponenten, die Sie als Abhängigkeit erstellen (oder referenzieren) müssen.
 
-* **Spouts:**liest Daten aus externen Quellen und gibt Datenströme in die Topologie aus.
+* **Spouts:** liest Daten aus externen Quellen und gibt Datenströme in die Topologie aus.
 
-* **Bolts.**verarbeitet Datenströme, die von Spouts oder anderen Bolts ausgegeben werden, und gibt einen oder mehrere Datenströme aus.
+* **Bolts.** verarbeitet Datenströme, die von Spouts oder anderen Bolts ausgegeben werden, und gibt einen oder mehrere Datenströme aus.
 
-* **Topology:**definiert die Anordnung der Spouts und Bolts und stellt den Einstiegspunkt für die Topologie bereit.
+* **Topology:** definiert die Anordnung der Spouts und Bolts und stellt den Einstiegspunkt für die Topologie bereit.
 
 ### <a name="create-the-spout"></a>Erstellen des Spouts
 
@@ -720,7 +718,7 @@ Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.ap
     ```
 
     > [!WARNING]
-    > Wenn in der Topologie Storm 1.0.1-Bits verwendet werden, schlägt dieser Befehl fehl. Dieser Fehler wird durch [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055) verursacht. [Installieren Sie stattdessen Storm in Ihrer Entwicklungsumgebung](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), und führen Sie die folgenden Schritte aus:
+    > Wenn in der Topologie Storm 1.0.1-Bits verwendet werden, schlägt dieser Befehl fehl. Dieser Fehler wird verursacht durch [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). [Installieren Sie stattdessen Storm in Ihrer Entwicklungsumgebung](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), und führen Sie die folgenden Schritte aus:
     >
     > Wenn Sie [Storm in der Entwicklungsumgebung installiert haben](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), können Sie stattdessen die folgenden Befehle verwenden:
     >

@@ -16,12 +16,12 @@ Bei der Migration werden folgende klassische IaaS-Ressourcen unterstützt:
 * Virtuelle Netzwerke
 * VPN-Gateways
 * ExpressRoute-Gateways _(nur im gleichen Abonnement wie das virtuelle Netzwerk)_
-* Netzwerksicherheitsgruppen 
-* Routingtabellen 
-* Reservierte IP-Adressen 
+* Netzwerksicherheitsgruppen
+* Routingtabellen
+* Reservierte IP-Adressen
 
 ## <a name="supported-scopes-of-migration"></a>Unterstützte Migrationsbereiche
-Compute-, Netzwerk- und Speicherressourcen können auf vier Arten migriert werden. Folgende Optionen stehen zur Verfügung: 
+Compute-, Netzwerk- und Speicherressourcen können auf vier Arten migriert werden. Folgende Optionen stehen zur Verfügung:
 
 * Migration virtueller Computer (NICHT in einem virtuellen Netzwerk)
 * Migration virtueller Computer (in einem virtuellen Netzwerk)
@@ -77,7 +77,7 @@ Die folgenden Funktionen werden derzeit nicht unterstützt: Optional können Sie
 | Compute | VM-Images. | Die diesen Datenträgern zugrunde liegenden VHD-Blobs werden zusammen mit dem Speicherkonto migriert. |
 | Netzwerk | Endpunkt-ACLs. | Entfernen Sie Endpunkt-ACLs, und wiederholen Sie die Migration. |
 | Netzwerk | Application Gateway | Entfernen Sie die Application Gateway-Instanz, bevor Sie mit der Migration beginnen, und erstellen Sie sie nach Abschluss der Migration neu. |
-| Netzwerk | Virtuelle Netzwerke mit VNet-Peering. | Migrieren Sie das virtuelle Netzwerk zu Resource Manager, und führen Sie dann das Peering durch. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](../articles/virtual-network/virtual-network-peering-overview.md). | 
+| Netzwerk | Virtuelle Netzwerke mit VNet-Peering. | Migrieren Sie das virtuelle Netzwerk zu Resource Manager, und führen Sie dann das Peering durch. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](../articles/virtual-network/virtual-network-peering-overview.md). |
 
 ### <a name="unsupported-configurations"></a>Nicht unterstützte Konfigurationen
 Die folgenden Konfigurationen werden derzeit nicht unterstützt:
@@ -85,7 +85,7 @@ Die folgenden Konfigurationen werden derzeit nicht unterstützt:
 | Dienst | Konfiguration | Empfehlung |
 | --- | --- | --- |
 | Ressourcen-Manager |Rollenbasierte Zugriffssteuerung (RBAC) für klassische Ressourcen |Da der URI der Ressourcen nach der Migration geändert wird, sollten Sie die RBAC-Richtlinienaktualisierungen planen, die nach der Migration ausgeführt werden müssen. |
-| Compute |Mehrere Subnetze, die einem virtuellen Computer zugeordnet sind |Aktualisieren Sie die Subnetzkonfiguration so, dass nur auf Subnetze verwiesen wird. |
+| Compute |Mehrere Subnetze, die einem virtuellen Computer zugeordnet sind |Aktualisieren Sie die Subnetzkonfiguration so, dass nur auf ein Subnetz verwiesen wird. Dazu müssen Sie möglicherweise eine sekundäre NIC (die auf ein anderes Subnetz verweist) vom virtuellen Computer entfernen und nach Abschluss der Migration wieder hinzufügen. |
 | Compute |Virtuelle Computer, die zu einem virtuellen Netzwerk gehören, aber denen kein explizites Subnetz zugewiesen ist |Sie können die VM optional löschen. |
 | Compute |Virtuelle Computer mit Warnungen, Richtlinien für automatische Skalierung |Die Migration wird durchlaufen, und diese Einstellungen werden gelöscht. Wir empfehlen Ihnen dringend, vor der Migration Ihre Umgebung auszuwerten. Alternativ hierzu können Sie die Warnungseinstellungen nach Abschluss der Migration neu konfigurieren. |
 | Compute |XML-VM-Erweiterungen (BGInfo 1.*, Visual Studio Debugger, Web Deploy und Remotedebuggen) |Dies wird nicht unterstützt. Es wird empfohlen, dass Sie diese Erweiterungen vom virtuellen Computer entfernen, um die Migration fortzusetzen. Andernfalls werden sie während der Migration automatisch gelöscht. |

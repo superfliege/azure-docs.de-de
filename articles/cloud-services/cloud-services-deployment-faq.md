@@ -1,11 +1,11 @@
 ---
-title: "Probleme mit der Bereitstellung in Microsoft Azure Cloud Services – Häufig gestellte Fragen | Microsoft-Dokumentation"
-description: "Dieser Artikel behandelt häufig gestellte Fragen zur Bereitstellung in Microsoft Azure Cloud Services."
+title: Probleme mit der Bereitstellung in Microsoft Azure Cloud Services – Häufig gestellte Fragen | Microsoft-Dokumentation
+description: Dieser Artikel behandelt häufig gestellte Fragen zur Bereitstellung in Microsoft Azure Cloud Services.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: genli
-ms.openlocfilehash: 61d1cc511bf541e75ffda3e84b116f78a434f6f1
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: effc0eb872a1f63e32c1958234c173a53c381620
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Bereitstellung in Microsoft Azure Cloud Services – Häufig gestellte Fragen (FAQs)
 
@@ -79,4 +79,4 @@ Da es sich bei Cloud Services um eine klassische Ressource handelt, die nicht di
 
 Im klassischen Portal wurde das Paket direkt in die Verwaltungs-API-Schicht hochgeladen, und die API-Schicht speicherte das Paket dann vorübergehend in einem internen Speicherkonto.  Dieser Vorgang verursacht Leistungs- und Skalierbarkeitsprobleme, da die API-Schicht nicht als Dateiuploaddienst konzipiert wurde.  Im Azure-Portal (Resource Manager-Bereitstellungsmodell) haben wir den Zwischenschritt des ersten Hochladens in die API-Schicht umgangen, da dies zu schnelleren und zuverlässigeren Bereitstellungen führt. 
 
-Was die Kosten anbelangt, so ist sie sehr gering, und Sie können dasselbe Speicherkonto für alle Bereitstellungen wiederverwenden. Sie können den [Speicherkostenrechner](https://azure.microsoft.com/en-us/pricing/calculator/#storage1) verwenden, um die Kosten zu ermitteln, die für das Hochladen des Dienstpakets (CSPKG), das Herunterladen des CSPKG und das anschließenden Löschen des CSPKG anfallen. 
+Was die Kosten anbelangt, so ist sie sehr gering, und Sie können dasselbe Speicherkonto für alle Bereitstellungen wiederverwenden. Sie können den [Speicherkostenrechner](https://azure.microsoft.com/pricing/calculator/#storage1) verwenden, um die Kosten zu ermitteln, die für das Hochladen des Dienstpakets (CSPKG), das Herunterladen des CSPKG und das anschließenden Löschen des CSPKG anfallen. 

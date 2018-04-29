@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Connect Health-Vorgänge"
-description: "In diesem Artikel werden zusätzliche Vorgänge beschrieben, die nach der Bereitstellung von Azure AD Connect Health ausgeführt werden können."
+title: Azure Active Directory Connect Health-Vorgänge
+description: In diesem Artikel werden zusätzliche Vorgänge beschrieben, die nach der Bereitstellung von Azure AD Connect Health ausgeführt werden können.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 98dc12a857d910e8822dcfbb61209aa9ef773f47
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: c9920857f7d1910921b4bb3771e770fb4c3a42c3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health-Vorgänge
 In diesem Thema werden die verschiedenen Vorgänge beschrieben, die Sie mit Azure Active Directory (Azure AD) Connect Health durchführen können.
@@ -91,9 +91,9 @@ Beim Löschen einer Dienstinstanz sind folgende Punkte zu beachten:
 4. Klicken Sie auf **Löschen**.
    <br><br>
 
-[//]: # (Start of RBAC section)
+[//]: # (Beginn des RBAC-Abschnitts)
 ## <a name="manage-access-with-role-based-access-control"></a>Verwalten des Zugriffs per rollenbasierter Zugriffssteuerung
-Die [rollenbasierte Zugriffssteuerung (RBAC)](../role-based-access-control-configure.md) für Azure AD Connect Health ermöglicht den Zugriff auf andere Benutzer und Gruppen als die globalen Administratoren. Mit der rollenbasierten Zugriffssteuerung werden den entsprechenden Benutzern und Gruppen Rollen zugewiesen, und es ist ein Mechanismus zum Einschränken der globalen Administratoren in Ihrem Verzeichnis vorhanden.
+Die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/role-assignments-portal.md) für Azure AD Connect Health ermöglicht den Zugriff auf andere Benutzer und Gruppen als die globalen Administratoren. Mit der rollenbasierten Zugriffssteuerung werden den entsprechenden Benutzern und Gruppen Rollen zugewiesen, und es ist ein Mechanismus zum Einschränken der globalen Administratoren in Ihrem Verzeichnis vorhanden.
 
 ### <a name="roles"></a>Rollen
 Azure AD Connect Health unterstützt die folgenden integrierten Rollen:
@@ -153,7 +153,7 @@ Jetzt haben die aufgeführten Benutzer und Gruppen gemäß ihren zugewiesenen Ro
 Sie können Benutzer oder Gruppen entfernen, die der rollenbasierten Zugriffssteuerung von Azure AD Connect Health hinzugefügt wurden. Klicken Sie hierfür einfach mit der rechten Maustaste auf den Benutzer oder die Gruppe, und wählen Sie **Entfernen**.<br>
 ![Screenshot: Rollenbasierte Zugriffssteuerung von Azure AD Connect Health – Fenster „Benutzer“ mit Hervorhebung von „Entfernen“](./media/active-directory-aadconnect-health/RBAC_remove.png)
 
-[//]: # (End of RBAC section)
+[//]: # (Ende des RBAC-Abschnitts)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

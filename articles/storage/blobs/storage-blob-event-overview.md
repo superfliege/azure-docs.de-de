@@ -1,5 +1,5 @@
 ---
-title: Reaktion auf Azure Blob Storage-Ereignisse | Microsoft-Dokumentation
+title: Reagieren auf Azure Blob Storage-Ereignisse | Microsoft-Dokumentation
 description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid.
 services: storage,event-grid
 keywords: ''
@@ -8,11 +8,11 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: ea2ec712c8d8b5f85f020535ab0544986f0da53a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2762466c0130ead36372a93f4c3b852cb378a02a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktion auf Blob Storage-Ereignisse
 
@@ -24,7 +24,7 @@ Die Verfügbarkeit von Storage-Ereignissen ist an die [Verfügbarkeit](../../eve
 
 ![Event Grid-Modell](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
-## <a name="blob-storage-accounts"></a>Blob Storage-Konten
+## <a name="blob-storage-accounts"></a>Blob-Speicherkonten
 Blob Storage-Ereignisse stehen in [Blob Storage-Konten](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) und in [Speicherkonten des Typs „Allgemein v2“](../common/storage-account-options.md#general-purpose-v2) zur Verfügung. Bei **Allgemein v2** (General Purpose v2, GPv2) handelt es sich um Speicherkonten, die alle Features für alle Speicherdienste unterstützen, z.B. Blobs, Dateien, Warteschlangen und Tabellen. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten. 
 
 ## <a name="available-blob-storage-events"></a>Verfügbare Blob Storage-Ereignisse
@@ -92,7 +92,7 @@ Blobereignisabonnements können basierend auf dem Ereignistyp sowie auf dem Cont
 
 Der Betreff von Blob Storage-Ereignissen verwendet das Format:
 
-```json
+```
 /blobServices/default/containers/<containername>/blobs/<blobname>
 ```
 
@@ -100,19 +100,19 @@ Zur Übereinstimmung mit allen Ereignissen für ein Speicherkonto können Sie de
 
 Verwenden Sie zur Übereinstimmung mit Ereignissen aus Blobs, die in einem Satz von Containern erstellt wurden und ein gemeinsames Präfix verwenden, einen `subjectBeginsWith`-Filter wie:
 
-```json
+```
 /blobServices/default/containers/containerprefix
 ```
 
 Verwenden Sie zur Übereinstimmung mit Ereignissen aus Blobs, die in einem bestimmten Container erstellt wurden, einen `subjectBeginsWith`-Filter wie:
 
-```json
+```
 /blobServices/default/containers/containername/
 ```
 
 Verwenden Sie zur Übereinstimmung mit Ereignissen aus Blobs, die in einem bestimmten Container erstellt wurden und ein gemeinsames Blobnamenspräfix verwenden, einen `subjectBeginsWith`-Filter wie:
 
-```json
+```
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
 

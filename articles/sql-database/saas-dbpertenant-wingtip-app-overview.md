@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 224639dcc7da950801c7a5959ec14fc5ac7313e0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cf54c789d766c4bd3d353028e75e34c961470070
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Einführung in eine mehrinstanzenfähige SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet.
 
@@ -24,7 +24,7 @@ Der Quellcode der Anwendung und die Verwaltungsskripts sind im GitHub-Repository
 
 ## <a name="application-architecture"></a>Anwendungsarchitektur
 
-Die Wingtip-SaaS-App verwendet das Modell mit einer Datenbank pro Mandant. Zudem nutzt sie Pools für elastische SQL-Datenbanken, um die Effizienz zu maximieren. Für die Bereitstellung von Mandanten und deren Zuordnung mit den jeweiligen Daten wird eine Katalogdatenbank verwendet. Die Wingtip-SaaS-Kernanwendung verwendet einen Pool mit drei Beispielmandanten sowie eine Katalogdatenbank. Die anfängliche Bereitstellung wird nach Abschluss vieler Wingtip-SaaS-Tutorials durch Add-Ons ergänzt. Dabei werden Add-Ons wie analytische Datenbanken und datenbankübergreifende Schemaverwaltung eingeführt.
+Die Wingtip-SaaS-App verwendet das Modell mit einer Datenbank pro Mandant. Zudem nutzt sie Pools für elastische SQL-Datenbanken, um die Effizienz zu maximieren. Für die Bereitstellung von Mandanten und deren Zuordnung mit den jeweiligen Daten wird eine Katalogdatenbank verwendet. Die Wingtip-SaaS-Kernanwendung verwendet einen Pool mit drei Beispielmandanten sowie eine Katalogdatenbank. Die Katalog- und Mandantenserver wurden mit DNS-Aliasen bereitgestellt. Diese Aliase werden zum Verwalten eines Verweises auf die aktiven Ressourcen verwendet, die von der Wingtip-Anwendung genutzt werden. Die Aliase werden aktualisiert, um in den Tutorials zur Notfallwiederherstellung auf Wiederherstellungsressourcen zu verweisen. Die anfängliche Bereitstellung wird nach Abschluss vieler Wingtip-SaaS-Tutorials durch Add-Ons ergänzt. Dabei werden Add-Ons wie analytische Datenbanken und datenbankübergreifende Schemaverwaltung eingeführt.
 
 
 ![Architektur der SaaS-Anwendung Wingtip](media/saas-dbpertenant-wingtip-app-overview/app-architecture.png)

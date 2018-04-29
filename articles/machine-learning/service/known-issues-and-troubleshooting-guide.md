@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: e421797d85dd031b77788958db6b1df62a292a8a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: db910096f776f2f8710c0ac03f0378491018fc09
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning-Workbench – bekannte Probleme und Anleitung zur Problembehandlung 
 Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu suchen und zu beheben, die bei der Verwendung der Anwendung Azure Machine Learning Workbench auftreten können. 
@@ -137,7 +137,7 @@ Sie können die Projekte und Arbeitsbereiche auch über die Workbench-App lösch
 Wenn Sie das Windows 10 Fall Creators Update besitzen und das Projekt in einem lokalen Ordner erstellt wird, der OneDrive zugeordnet ist, können Sie möglicherweise keine Dateien in Workbench öffnen. Dies liegt an einem durch das Fall Creators Update eingeführten Fehler, der bewirkt, dass Node.js-Code in OneDrive-Ordnern zu Fehlern führt. Der Fehler wird demnächst durch Windows Update behoben, Sie sollten jedoch bis zu diesem Zeitpunkt keine Projekte in OneDrive-Ordnern erstellen.
 
 ## <a name="file-name-too-long-on-windows"></a>Dateiname unter Windows zu lang
-Wenn Sie Workbench unter Windows verwenden, kann das Problem der Standardbeschränkung der Dateinamenlänge auf maximal 260 Zeichen und dadurch der Fehler „Das System kann den angegebenen Pfad nicht finden“ auftreten. Sie können die Einstellung eines Registrierungsschlüssels ändern, um viel längere Dateipfadnamen zu gestatten. Ausführliche Informationen zum Festlegen des Registrierungsschlüssels _MAX_PATH_ finden Sie in [diesem Artikel](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath).
+Wenn Sie Workbench unter Windows verwenden, kann das Problem der Standardbeschränkung der Dateinamenlänge auf maximal 260 Zeichen und dadurch der Fehler „Das System kann den angegebenen Pfad nicht finden“ auftreten. Sie können die Einstellung eines Registrierungsschlüssels ändern, um viel längere Dateipfadnamen zu gestatten. Ausführliche Informationen zum Festlegen des Registrierungsschlüssels _MAX_PATH_ finden Sie in [diesem Artikel](https://msdn.microsoft.com/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath).
 
 ## <a name="interrupt-cli-execution-output"></a>Unterbrechen der Ausgabe der CLI-Ausführung
 Wenn Sie eine Experimentieren-Ausführung mit `az ml experiment submit` oder `az ml notebook start` starten und die Ausgabe unterbrechen möchten: 

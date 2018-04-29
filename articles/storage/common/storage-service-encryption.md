@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: 1963d011462255d45de327ec17b7fad564d87654
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5e4df176104111f44ca95df2b2d5d1c81ed3a4e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption für ruhende Daten
 
@@ -72,7 +72,7 @@ A: Ja – vorausgesetzt, Sie [verwenden Ihre eigenen Verschlüsselungsschlüssel
 
 **F: Ist Storage Service Encryption beim Erstellen eines Speicherkontos standardmäßig aktiviert?**
 
-A: Ja, Storage Service Encryption (mit von Microsoft verwalteten Schlüsseln) ist standardmäßig für alle Speicherkonten (Azure Resource Manager-Speicherkonten und klassische Speicherkonten) aktiviert. Die Funktion ist außerdem für alle Dienste aktiviert: Blob Storage, Table Storage, Queue Storage und Azure Files.
+A: Ja, die Speicherdienstverschlüsselung ist standardmäßig für alle Speicherkonten und Azure Storage-Dienste aktiviert.
 
 **F: Wo liegt der Unterschied zu Azure Disk Encryption?**
 

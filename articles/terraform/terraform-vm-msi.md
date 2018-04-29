@@ -7,11 +7,11 @@ manager: rloutlaw
 ms.author: tarcher
 ms.date: 3/12/2018
 ms.topic: article
-ms.openlocfilehash: db45e9fe1eb724e6404f5e83bbbe4f62ee32343d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5f0ee2904c1072a5ad8c5f7ae1c90e649cc4813c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Verwenden eines Azure Marketplace-Images zum Erstellen eines virtuellen Terraform-Computers für Linux mit verwalteter Dienstidentität
 
@@ -88,7 +88,7 @@ Das vorherige Skript verwendet den Mechanismus zur [interaktiven Anmeldung mit A
 
  `cp  ~/tfTemplate/remoteState.tf .`
 
- Weitere Informationen zur Remotezustandsverwaltung finden Sie auf [dieser Seite zum Terraform-Remotezustand](https://www.terraform.io/docs/state/remote.html). Der Speicherzugriffsschlüssel wird in dieser Datei verfügbar gemacht und muss sorgfältig in die Quellcodeverwaltung eingecheckt werden.  
+ Weitere Informationen zur Remotezustandsverwaltung finden Sie auf [dieser Seite zum Terraform-Remotezustand](https://www.terraform.io/docs/state/remote.html). Der Speicherzugriffsschlüssel ist in dieser Datei nicht geschützt und muss daher entfernt werden, bevor Terraform-Konfigurationsdateien in die Quellcodeverwaltung gelangen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie einen virtuellen Terraform-Computer für Linux in Azure einrichten. In folgenden zusätzlichen Ressourcen können Sie mehr über Terraform in Azure erfahren: 

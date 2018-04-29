@@ -8,7 +8,7 @@ Die folgenden Schritte zeigen, wie Sie die Kennwortauthentifizierung für eine A
 1. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Abonnement an:
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. Wenn Sie über mehrere Azure-Abonnements verfügen, erhalten Sie durch die Anmeldung bei Azure Zugriff auf alle Azure-Abonnements, die mit Ihren Anmeldeinformationen verknüpft sind. Führen Sie den folgenden Befehl aus, um eine Liste der Azure-Abonnements anzuzeigen, die Sie verwenden können:
@@ -27,9 +27,9 @@ Die folgenden Schritte zeigen, wie Sie die Kennwortauthentifizierung für eine A
 2. Notieren Sie sich Ihre **TenantId** und Ihre **SubscriptionId**. Diese werden später benötigt.
 3. Erstellen Sie mit dem folgenden Befehl eine neue Azure Active Directory-Anwendung, und ersetzen Sie die Platzhalter:
    
-   * **{Display name}:** ein Anzeigename für Ihre Anwendung, z.B. **MySampleApp**.
-   * **{Home page URL}:** Die URL der Startseite der App, z.B. **http://mysampleapp/home**. Diese URL muss nicht auf eine echte Anwendung verweisen.
-   * **{Application identifier}:** Ein eindeutiger Bezeichner, z.B. **http://meinebeispielapp**. Diese URL muss nicht auf eine echte Anwendung verweisen.
+   * **{Display name}:** Der Anzeigename für Ihre Anwendung, z.B. **MySampleApp**.
+   * **{Home page URL}:** Die URL der Startseite Ihrer App, z.B. **http://mysampleapp/home**. Diese URL muss nicht auf eine echte Anwendung verweisen.
+   * **{Application identifier}:** Ein eindeutiger Bezeichner, z.B. **http://mysampleapp**. Diese URL muss nicht auf eine echte Anwendung verweisen.
    * **{Password}:** Ein Kennwort, das Sie zur Authentifizierung mit Ihrer App verwenden werden.
      
      ```powershell
@@ -52,7 +52,7 @@ Sie haben jetzt eine Azure AD-Anwendung fertig erstellt, mit der die Authentifiz
 * TenantId
 * SubscriptionId
 * ApplicationId
-* Kennwort
+* Password
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
 [lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps

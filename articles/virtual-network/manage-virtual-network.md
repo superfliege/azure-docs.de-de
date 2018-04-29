@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 213888ff47db56be8bfb99a816da4da245c39211
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ce858553a67bce714ceae43a5bb2f86839d9c507
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -43,7 +43,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
 1. Wählen Sie **+ Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.
 2. Geben Sie Werte für folgende Einstellungen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen**:
-    - **Name**: Der Name muss in der ausgewählten [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), in der Sie das virtuelle Netzwerk erstellen möchten, eindeutig sein. Sie können den Namen nicht ändern, nachdem das virtuelle Netzwerk erstellt wurde. Sie können im Laufe der Zeit mehrere virtuelle Netzwerke erstellen. Benennungsvorschläge finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). Durch die Verwendung einer Benennungskonvention können Sie einfacher mehrere virtuelle Netzwerke verwalten.
+    - **Name**: Der Name muss in der ausgewählten [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), in der Sie das virtuelle Netzwerk erstellen möchten, eindeutig sein. Sie können den Namen nicht ändern, nachdem das virtuelle Netzwerk erstellt wurde. Sie können im Laufe der Zeit mehrere virtuelle Netzwerke erstellen. Benennungsvorschläge finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). Durch die Verwendung einer Benennungskonvention können Sie einfacher mehrere virtuelle Netzwerke verwalten.
     - **Adressraum**: Der Adressraum für ein virtuelles Netzwerk besteht aus einem oder mehreren Adressbereichen, die sich nicht überschneiden und in der CIDR-Notation angegeben sind. Die von Ihnen definierten Adressbereiche können öffentlich oder privat (RFC 1918) sein. Ganz gleich, ob Sie den Adressbereich als öffentlich oder privat definieren – der Adressbereich ist nur innerhalb des virtuellen Netzwerks, über miteinander verbundene virtuelle Netzwerke und über beliebige lokale Netzwerke erreichbar, die Sie mit dem virtuellen Netzwerk verbunden haben. Sie können die folgenden Adressbereiche nicht hinzufügen:
         - 224.0.0.0/4 (Multicast)
         - 255.255.255.255/32 (Übertragung)

@@ -7,14 +7,14 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 04/10/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: b633c3c4a4f476cb8e89afde8adeb94558643d4b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b36099c6fd2deb6b627c8ccd7cc9e13c328f54e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server 
 
@@ -239,7 +239,7 @@ Die [semantische Suche](https://docs.microsoft.com/sql/relational-databases/sear
 ### <a name="linked-servers"></a>Verknüpfte Server
  
 Verbindungsserver in einer verwalteten Instanz unterstützen eine begrenzte Anzahl von Zielen: 
-- Unterstützte Ziele: SQL Server, SQL-Datenbank, verwaltete Instanz und SQL Server auf einem virtuellen Computer.
+- Unterstützte Ziele: SQL Server und SQL-Datenbank
 - Nicht unterstützte Ziele: Dateien, Analysis Services und andere RDBMS.
 
 Vorgänge
@@ -418,5 +418,5 @@ Es kann nur ein Datenbank-E-Mail-Profil festgelegt werden, für das der Name `Az
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Ausführliche Informationen zur verwalteten Instanz finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md).
-- Eine Liste der Funktionen und einen Funktionsvergleich finden Sie unter [Allgemeine SQL-Funktionen](sql-database-features.md).
-- Ein Tutorial finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-tutorial-portal.md).
+- Eine Liste der Features und einen Funktionsvergleich finden Sie unter [Allgemeine SQL-Features](sql-database-features.md).
+- Ein Tutorial, in dem die Erstellung einer neuen verwalteten Instanz gezeigt wird, finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-create-tutorial-portal.md).

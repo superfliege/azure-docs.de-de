@@ -1,27 +1,25 @@
 ---
-title: "Azure-Toolkit für IntelliJ: Remotedebuggen von Spark-Anwendungen per SSH | Microsoft-Dokumentation"
-description: "Hier finden Sie eine ausführliche Anleitung zur Verwendung der HDInsight Tools im Azure-Toolkit für IntelliJ zum Remotedebuggen von Anwendungen in HDInsight-Clustern per SSH."
+title: 'Azure-Toolkit für IntelliJ: Remotedebuggen von Spark-Anwendungen per SSH | Microsoft-Dokumentation'
+description: Hier finden Sie eine ausführliche Anleitung zur Verwendung der HDInsight Tools im Azure-Toolkit für IntelliJ zum Remotedebuggen von Anwendungen in HDInsight-Clustern per SSH.
 keywords: Remotedebuggen von IntelliJ, Remotedebugging IntelliJ, SSH IntelliJ, HDInsight, Debuggen von Intellij, Debuggen
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: jejiang
 manager: DJ
 editor: Jenny Jiang
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: 
-ms.devlang: 
-ms.topic: article
+ms.devlang: ''
+ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: jejiang
-ms.openlocfilehash: dfffe935cd7e896fb251a3ed40a5493fbf836a6c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ede6267d55808fef7ddb8f076bd9c4927ce2e924
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Lokales oder Remotedebuggen von Spark-Anwendungen in einem HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ per SSH
 

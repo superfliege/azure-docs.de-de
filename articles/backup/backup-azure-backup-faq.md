@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zu Azure Backup | Microsoft Docs
+title: Häufig gestellte Fragen zu Azure Backup | Microsoft-Dokumentation
 description: 'Antworten auf häufig gestellte Fragen zu Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 services: backup
 documentationcenter: ''
@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/21/2017
+ms.date: 4/11/2018
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 39e7c95f236f53d7b7c4de0e5b792debe5c0c6f6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9dfd600a0e3271afff0dd7ce634c78bf87ab314f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Fragen zum Azure Backup-Dienst
 In diesem Artikel werden allgemeine Fragen zu den Azure Backup-Komponenten beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Fragen zu Azure Backup können Sie durch Klicken auf **Kommentare** (rechts) stellen. Kommentare erscheinen am Ende dieses Artikels. Zum Kommentieren wird ein Livefyre-Konto benötigt. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -30,10 +30,10 @@ Verwenden Sie die Links auf der rechten Seite unter **In diesem Artikel**, um si
 ## <a name="recovery-services-vault"></a>Recovery Services-Tresor
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>Gibt es eine Beschränkung hinsichtlich der Anzahl von Tresoren, die in einem Azure-Abonnement erstellt werden können? <br/>
-Ja. Seit Januar 2018 können für jede unterstützte Region von Azure Backup pro Abonnement bis zu 25 Recovery Services-Tresore erstellt werden. Erstellen Sie ein zusätzliches Abonnement, falls Sie zusätzliche Tresore benötigen.
+Ja. Pro Abonnement können für jede unterstützte Region von Azure Backup bis zu 500 Recovery Services-Tresore erstellt werden. Erstellen Sie ein zusätzliches Abonnement, falls Sie zusätzliche Tresore benötigen.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können? <br/>
-Sie können bis zu 200 virtuelle Azure-Computer pro Tresor registrieren. Bei Verwendung von MAB-Agents können Sie bis zu 50 Agents pro Tresor verwenden. Sie können 50 MAB-Server/DPM-Server bei einem Tresor registrieren.
+Sie können bis zu 1000 virtuelle Azure-Computer pro Tresor registrieren. Bei Verwendung von MAB-Agents können Sie bis zu 50 MAB-Agents pro Tresor verwenden. Sie können 50 MAB-Server/DPM-Server bei einem Tresor registrieren.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Wie kann ich bei der Wiederherstellung von Daten die Daten eines Servers von einem anderen Server isolieren, wenn meine Organisation über einen Tresor verfügt?<br/>
 Alle für denselben Tresor registrierten Server können die Daten wiederherstellen, die von anderen Servern *mit derselben Passphrase*gesichert wurden. Wenn Sie Server verwenden, deren Sicherungsdaten Sie von anderen Servern Ihrer Organisation isolieren möchten, sollten Sie für diese Server eine speziell dafür vorgesehene Passphrase nutzen. So können Sie beispielsweise für die Server der Personalabteilung, für die Server der Buchhaltung und für die Speicherserver jeweils eine eigene Verschlüsselungspassphrase verwenden.
@@ -81,13 +81,13 @@ Nein. Alle Daten, die vor dem Abbrechen des Sicherungsauftrags in den Tresor üb
 Wenn Sie einen Sicherungsauftrag für eine Azure-VM abbrechen, werden die übertragenen Daten ignoriert. Beim nächsten Sicherungsauftrag werden die Daten inkrementell bezogen auf den letzten erfolgreichen Sicherungsauftrag übertragen.
 
 ### <a name="are-there-limits-on-when-or-how-many-times-a-backup-job-can-be-scheduledbr"></a>Gelten Grenzwerte in Bezug darauf, wann und wie häufig ein Sicherungsauftrag geplant werden kann?<br/>
-Ja. Sie können Sicherungsaufträge unter Windows Server oder auf Windows-Arbeitsstationen bis zu dreimal pro Tag ausführen. Für System Center DPM können Sie Sicherungsaufträge bis zu zweimal pro Tag ausführen. Für IaaS-VMs können Sie einen Sicherungsauftrag einmal pro Tag ausführen. Sie können die Planungsrichtlinie für Windows Server oder eine Windows-Arbeitsstation verwenden, um tägliche oder wöchentliche Zeitpläne anzugeben. Mit System Center DPM können Sie tägliche, wöchentliche, monatliche und jährliche Zeitpläne angeben.
+Ja. Sie können Sicherungsaufträge unter Windows Server oder auf Windows-Arbeitsstationen bis zu dreimal pro Tag ausführen. Für System Center DPM können Sie Sicherungsaufträge bis zu zweimal pro Tag ausführen. Für IaaS-VMs können Sie einen Sicherungsauftrag einmal pro Tag ausführen. Verwenden Sie die Planungsrichtlinie für Windows Server oder eine Windows-Arbeitsstation, um tägliche oder wöchentliche Zeitpläne anzugeben. Mit System Center DPM können Sie tägliche, wöchentliche, monatliche und jährliche Zeitpläne angeben.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Warum ist die Datenmenge, die an den Recovery Services-Tresor übertragen wird, kleiner als die von mir gesicherte Datenmenge?<br/>
  Alle Daten, die vom Azure Backup-Agent, von SCDPM oder Azure Backup Server gesichert werden, werden vor der Übertragung komprimiert und verschlüsselt. Nach Anwendung der Komprimierung und Verschlüsselung sind die Daten im Recovery Services-Tresor 30 bis 40 Prozent kleiner.
 
 ## <a name="what-can-i-back-up"></a>Für die Sicherung geeignete Daten
-### <a name="which-operating-systems-do-azure-backup-support-br"></a>Welche Betriebssysteme werden von Azure Backup unterstützt? <br/>
+### <a name="which-operating-systems-does-azure-backup-support-br"></a>Welche Betriebssysteme werden von Azure Backup unterstützt? <br/>
 Azure Backup unterstützt die folgenden Betriebssysteme für die Sicherung von Dateien und Ordnern sowie Workloadanwendungen, die mithilfe von Azure Backup Server und System Center Data Protection Manager (DPM) geschützt werden.
 
 | Betriebssystem | Plattform | SKU |
@@ -112,7 +112,7 @@ Azure Backup unterstützt die folgenden Betriebssysteme für die Sicherung von D
 
 
 ### <a name="is-there-a-limit-on-the-size-of-each-data-source-being-backed-up-br"></a>Gibt es eine Größenbeschränkung für die einzelnen Datenquellen, die gesichert werden? <br/>
-Es gibt keine Beschränkung für die Menge der Daten, die in einem Tresor gesichert werden können. Azure Backup beschränkt zwar die maximale Größe der Datenquelle, diese Beschränkung ist jedoch großzügig bemessen. Seit August 2015 beträgt die maximale Größe für eine Datenquelle für die unterstützten Betriebssysteme:
+Azure Backup erzwingt eine maximale Größe für eine Datenquelle, jedoch sind die Grenzwerte für die Quelle sehr hoch. Seit August 2015 beträgt die maximale Größe für eine Datenquelle für die unterstützten Betriebssysteme:
 
 | Nr. | Betriebssystem | Maximale Größe der Datenquelle |
 |:---:|:--- |:--- |
@@ -132,13 +132,16 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 | Microsoft Exchange |Summe aller Exchange-Datenbanken eines zu sichernden Exchange-Servers |
 | BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu sichernden Computers |
 
-Bei Azure VM Backup kann jeder virtuelle Computer über bis zu 16 Datenträger mit einer Größe von jeweils bis zu 4095 GB verfügen. <br>
+Für Azure-IaaS-VM-Sicherungen kann jede VM bis zu 16 Datenträger haben, und jeder Datenträger kann bis zu 4095 GB groß sein.
+
+### <a name="is-there-a-limit-on-the-amount-of-data-held-in-a-recovery-services-vault"></a>Gibt es einen Grenzwert für die Datenmenge in einem Recovery Services-Tresor?
+Es gibt keine Beschränkung für die Menge der Daten, die in einem Recovery Services-Tresor gesichert werden können.
 
 ## <a name="retention-policy-and-recovery-points"></a>Aufbewahrungsrichtlinie und Wiederherstellungspunkte
 ### <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-that-is-on-windows-server-without-dpmbr"></a>Gibt es einen Unterschied zwischen der Aufbewahrungsrichtlinie für DPM und Windows Server bzw. Windows-Client (also unter Windows Server ohne DPM)?<br/>
 Nein. Sowohl für DPM als auch für Windows Server bzw. Windows-Clients gelten tägliche, wöchentliche, monatliche und jährliche Aufbewahrungsrichtlinien.
 
-### <a name="can-i-configure-my-retention-policies-selectively--ie-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Kann ich meine Aufbewahrungsrichtlinien selektiv konfigurieren – d.h. wöchentlich und täglich, jedoch nicht jährlich und monatlich?<br/>
+### <a name="can-i-configure-my-retention-policies-selectively--that-is-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Kann ich meine Aufbewahrungsrichtlinien selektiv konfigurieren – d.h. wöchentlich und täglich, jedoch nicht jährlich und monatlich?<br/>
 Ja, durch die Struktur der Azure Backup-Aufbewahrungsrichtlinie können Sie die Aufbewahrungsrichtlinie entsprechend Ihren Anforderungen flexibel definieren.
 
 ### <a name="can-i-schedule-a-backup-at-6pm-and-specify-retention-policies-at-a-different-timebr"></a>Kann ich eine Sicherung um 18:00 Uhr planen und Aufbewahrungsrichtlinien für einen anderen Zeitpunkt festlegen?<br/>

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1def417f97a94fa0770b99606cd3a68189d1d51b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 04380e5e9e0f1f9b0c88fdba8d21b3e7e8e8a358
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="volumes-with-azure-files"></a>Volumes mit Azure Files
 
@@ -66,7 +66,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-file-share-as-volume"></a>Einbinden einer Dateifreigabe als Volume
 
-Sie können Ihre Azure Files-Freigabe in Ihren Pod einbinden, indem Sie das Volume in der entsprechenden Spezifikation konfigurieren. Erstellen Sie eine neue Datei namens „`azure-files-pod.yaml`“ mit folgendem Inhalt. Aktualisieren Sie „`aksshare`“ mit dem Namen der Azure Files-Freigabe.
+Binden Sie Ihre Azure Files-Freigabe in Ihren Pod ein, indem Sie das Volume in der entsprechenden Spezifikation konfigurieren. Erstellen Sie eine neue Datei namens „`azure-files-pod.yaml`“ mit folgendem Inhalt. Aktualisieren Sie „`aksshare`“ mit dem Namen der Azure Files-Freigabe.
 
 ```yaml
 apiVersion: v1
@@ -94,7 +94,7 @@ Verwenden Sie „kubectl“, um einen Pod zu erstellen.
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Sie haben jetzt einen aktiven Container, bei dem Ihre Azure-Dateifreigabe in das Verzeichnis `/mnt/azure` eingebunden ist. Sie können Ihre Volumeeinbindung anzeigen, wenn Sie Ihren Pod über `kubectl describe pod azure-files-pod` untersuchen.
+Sie haben jetzt einen aktiven Container, bei dem Ihre Azure-Dateifreigabe in das Verzeichnis `/mnt/azure` eingebunden ist.  Sie können Ihre Volumeeinbindung anzeigen, wenn Sie Ihren Pod über `kubectl describe pod azure-files-pod` untersuchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

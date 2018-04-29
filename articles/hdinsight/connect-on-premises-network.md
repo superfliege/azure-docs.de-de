@@ -8,16 +8,14 @@ editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 9470e052b4f57e52fa140b53fa7c32d199c58e1e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ea793af7fc4565c054675af7cbf88b74722690f7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>Verbinden von HDInsight mit Ihrem lokalen Netzwerk
 
@@ -297,7 +295,7 @@ Folgen Sie den Anweisungen im Dokument [Erstellen von Linux-basierten Clustern i
 
 ## <a name="connecting-to-hdinsight"></a>Verbindungsherstellung mit HDInsight
 
-In der Dokumentation zu HDInsight wird in den meisten Fällen vorausgesetzt, dass Sie über das Internet auf den Cluster zugreifen können. Dies würde z.B. bedeuten, dass Sie eine Verbindung mit dem Cluster unter https://CLUSTERNAME.azurehdinsight.net herstellen können. Diese Adresse verwendet das öffentliche Gateway, das nicht verfügbar ist, wenn Sie über NSGs oder benutzerdefinierte Routen den Zugriff aus dem Internet beschränken.
+In der Dokumentation zu HDInsight wird in den meisten Fällen vorausgesetzt, dass Sie über das Internet auf den Cluster zugreifen können. Sie müssen z.B. unter https://CLUSTERNAME.azurehdinsight.net eine Verbindung mit dem Cluster herstellen können. Diese Adresse verwendet das öffentliche Gateway, das nicht verfügbar ist, wenn Sie über NSGs oder benutzerdefinierte Routen den Zugriff aus dem Internet beschränken.
 
 Einigen Dokumente verweisen auch auf `headnodehost` beim Herstellen einer Verbindung mit dem Cluster über eine SSH-Sitzung. Diese Adresse ist nur von Knoten innerhalb eines Clusters verfügbar und kann nicht auf Clients verwendet werden, die über das virtuelle Netzwerk verbunden sind.
 

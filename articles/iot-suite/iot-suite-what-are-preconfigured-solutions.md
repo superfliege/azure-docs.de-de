@@ -1,12 +1,12 @@
 ---
-title: "Vorkonfigurierte Azure IoT Suite-Lösungen – Übersicht | Microsoft-Dokumentation"
-description: "Enthält eine Beschreibung der vorkonfigurierten Azure IoT Suite-Lösungen und ihrer Architektur mit Links zu zusätzlichen Ressourcen."
-services: 
+title: Vorkonfigurierte Azure IoT Suite-Lösungen – Übersicht | Microsoft-Dokumentation
+description: Enthält eine Beschreibung der vorkonfigurierten Azure IoT Suite-Lösungen und ihrer Architektur mit Links zu zusätzlichen Ressourcen.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59009f37-9ba0-4e17-a189-7ea354a858a2
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 17/01/2018
 ms.author: dobett
-ms.openlocfilehash: b29c5fe9543c5fe6da9ff52da6549fdcacff868f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b7b9f61a8fb46d5d591b317049cfd60b723a7e77
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Was ist Azure IoT Suite?
 
@@ -64,7 +64,7 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 | [Vorhersagbarer Wartungsbedarf](iot-suite-predictive-overview.md)   |Ja |Ja |-   |-   |Ja |Ja |Ja |
 | [Verbundene Factory](iot-suite-connected-factory-overview.md) |Ja |- |- |Ja |Ja |Ja |-   |
 
-* *Datenerfassung:*Skalierbarer Dateneingang in der Cloud
+* *Datenerfassung:* Skalierbarer Dateneingang in der Cloud
 * *Geräteidentität:* Verwalten eindeutiger Geräteidentitäten und Steuern des Gerätezugriffs auf die Lösung.
 * *Geräteverwaltung:* Verwalten von Gerätemetadaten und Ausführen von Vorgängen wie Geräteneustarts und Firmwareupgrades.
 * *Befehl und Steuerung:* Senden von Nachrichten aus der Cloud an ein Gerät, um eine Aktion des Geräts zu veranlassen.
@@ -97,7 +97,7 @@ Wenn Sie eine vorkonfigurierte Lösung bereitstellen, werden während des Bereit
 * [Azure Time Series Insights](../time-series-insights/index.yml): Dieser Dienst wird von den vorkonfigurierten Lösungen verwendet, um die Telemetriedaten Ihrer Geräte zu analysieren und anzuzeigen.
 * [Azure Container Service](../container-service/index.yml): Dieser Dienst hostet und verwaltet die Microservices in den vorkonfigurierten Lösungen.
 * [Azure Cosmos DB](../cosmos-db/index.yml) und [Azure Storage](../storage/index.yml) für die Datenspeicherung.
-* [Azure Stream Analytics](../stream-analytics/index.md): Die vorkonfigurierte Lösung für die vorbeugende Wartung nutzt diesen Dienst zum Verarbeiten von eingehenden Telemetriedaten, Durchführen der Aggregation und Erkennen von Ereignissen. Diese vorkonfigurierte Lösung verwendet Stream Analytics auch für die Verarbeitung informativer Meldungen, die Daten wie Metadaten oder Antworten auf Befehle von Geräten enthalten.
+* [Azure Stream Analytics](../stream-analytics/index.yml): Die vorkonfigurierte Lösung für die vorbeugende Wartung nutzt diesen Dienst zum Verarbeiten von eingehenden Telemetriedaten, Durchführen der Aggregation und Erkennen von Ereignissen. Diese vorkonfigurierte Lösung verwendet Stream Analytics auch für die Verarbeitung informativer Meldungen, die Daten wie Metadaten oder Antworten auf Befehle von Geräten enthalten.
 * [Azure-Web-Apps](../app-service/index.yml) zum Hosten des benutzerdefinierten Anwendungscodes in den vorkonfigurierten Lösungen.
 
 Eine Übersicht über die Architektur einer typischen IoT-Lösung finden Sie unter [Microsoft Azure und das Internet der Dinge (IoT)](iot-suite-what-is-azure-iot.md).

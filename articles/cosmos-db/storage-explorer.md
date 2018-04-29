@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 8c584ec0c8d89a232d573399cfabe02fc8aa1c87
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ff4ee0a47129be5df03112006dcd45a62ad410af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Verwalten von Azure Cosmos DB in Azure Storage-Explorer
 
@@ -76,7 +76,7 @@ Eine alternative Möglichkeit zum Herstellen einer Verbindung mit einer Azure Co
 
 Verwenden Sie die folgenden Schritte, um eine Verbindung mit Azure Cosmos DB per Emulator herzustellen. Derzeit wird nur das SQL-Konto unterstützt.
 
-1. Installieren Sie den Emulator, und starten Sie ihn. Informationen zur Installation des Emulators finden Sie im Artikel zum [Cosmos DB-Emulator](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator).
+1. Installieren Sie den Emulator, und starten Sie ihn. Informationen zur Installation des Emulators finden Sie im Artikel zum [Cosmos DB-Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
 
 2. Suchen Sie in der linken Struktur nach **Local and Attached** (Lokal und angefügt), klicken Sie mit der rechten Maustaste auf **Cosmos DB-Konten**, und wählen Sie **Connect to Cosmos DB Emulator...** (Mit Cosmos DB-Emulator verbinden...).
 
@@ -210,7 +210,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-[Azure Cosmos DB in Azure Storage-Explorer](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer) ist eine eigenständige App, mit der Sie von Windows, macOS oder Linux eine Verbindung mit Azure Cosmos DB-Konten, die in Azure und Sovereign Clouds gehostet werden, herstellen können. Sie können damit Azure Cosmos DB-Entitäten verwalten, Daten bearbeiten und gespeicherte Prozeduren und Trigger zusammen mit anderen Azure-Entitäten wie Speicherblobs und Warteschlangen aktualisieren.
+[Azure Cosmos DB in Azure Storage-Explorer](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) ist eine eigenständige App, mit der Sie von Windows, macOS oder Linux eine Verbindung mit Azure Cosmos DB-Konten, die in Azure und Sovereign Clouds gehostet werden, herstellen können. Sie können damit Azure Cosmos DB-Entitäten verwalten, Daten bearbeiten und gespeicherte Prozeduren und Trigger zusammen mit anderen Azure-Entitäten wie Speicherblobs und Warteschlangen aktualisieren.
 
 Hierbei handelt es sich um Lösungen für allgemeine Probleme, die bei Azure Cosmos DB im Storage-Explorer auftreten.
 

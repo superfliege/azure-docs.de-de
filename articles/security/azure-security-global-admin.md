@@ -8,11 +8,11 @@ editor: TomSh
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: barclayn
-ms.openlocfilehash: a247f5afbca491dc9c31c74453860961188411c9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a7a08c54fe0c59e1e100e1c46e7a640da0692077
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enforce-multi-factor-authentication-mfa-for-subscription-administrators"></a>Erzwingen der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für Abonnementadministratoren
 
@@ -23,7 +23,7 @@ Aktivieren Sie darüber hinaus [Azure Multi-Factor Authentication (MFA)](https:/
 
 Beispiel: Sie erzwingen Azure MFA für Ihre Benutzer und konfigurieren den Vorgang so, dass zur Verifizierung ein Telefonanruf oder eine SMS verwendet wird. Wenn die Anmeldeinformationen eines Benutzers kompromittiert werden, kann der Angreifer dann nicht auf Ressourcen zugreifen, da er keinen Zugriff auf das Telefon des Benutzers hat. Organisationen, die keine zusätzliche Schicht zur Identitätssicherung hinzufügen, sind anfälliger für Angriffe mit dem Ziel des Diebstahls von Anmeldeinformationen, was wiederum zu kompromittierten Daten führen kann.
 
-Eine Alternative für Organisationen, die die gesamte Authentifizierung weiterhin lokal steuern möchten, ist die Verwendung des [Azure Multi-Factor Authentication-Servers](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/multi-factor-authentication-get-started-server). Dies wird auch als „MFA lokal“ bezeichnet. Mithilfe dieser Methode können Sie weiterhin die Multi-Factor Authentication erzwingen und dabei den MFA-Server lokal halten.
+Eine Alternative für Organisationen, die die gesamte Authentifizierung weiterhin lokal steuern möchten, ist die Verwendung des [Azure Multi-Factor Authentication-Servers](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-server). Dies wird auch als „MFA lokal“ bezeichnet. Mithilfe dieser Methode können Sie weiterhin die Multi-Factor Authentication erzwingen und dabei den MFA-Server lokal halten.
 
 Mit folgendem Microsoft Azure AD-V2-PowerShell-Befehl können Sie überprüfen, wer in Ihrer Organisation über Administratorrechte verfügt:
 
@@ -33,7 +33,7 @@ Get-AzureADDirectoryRole | Where { $_.DisplayName -eq "Company Administrator" } 
 
 ## <a name="enabling-mfa"></a>Aktivieren von MFA
 
-Erfahren Sie, wie [MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/multi-factor-authentication-whats-next) arbeitet, bevor Sie fortfahren.
+Erfahren Sie, wie [MFA](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next) arbeitet, bevor Sie fortfahren.
 
 Solange Ihre Benutzer über Lizenzen verfügen, die Azure Multi-Factor Authentication enthalten, müssen Sie nichts unternehmen, um Azure MFA zu aktivieren. Sie können die zweistufige Überprüfung auf Benutzerbasis obligatorisch machen. Azure MFA kann mit den folgenden Lizenzen aktiviert werden:
 
@@ -43,5 +43,5 @@ Solange Ihre Benutzer über Lizenzen verfügen, die Azure Multi-Factor Authentic
 
 ## <a name="turn-on-two-step-verification-for-users"></a>Aktivieren der zweistufigen Überprüfung für Benutzer
 
-Verwenden Sie eine der unter [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) aufgeführten Verfahrensweisen, um mit der Verwendung von Azure MFA zu beginnen. Sie können die zweistufige Überprüfung auch für alle Anmeldungen erzwingen oder Richtlinien für bedingten Zugriff erstellen, um die zweistufige Überprüfung nur dann vorauszusetzen, wenn Sie es für wichtig erachten.
+Verwenden Sie eine der unter [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) aufgeführten Verfahrensweisen, um mit der Verwendung von Azure MFA zu beginnen. Sie können die zweistufige Überprüfung auch für alle Anmeldungen erzwingen oder Richtlinien für bedingten Zugriff erstellen, um die zweistufige Überprüfung nur dann vorauszusetzen, wenn Sie es für wichtig erachten.
 

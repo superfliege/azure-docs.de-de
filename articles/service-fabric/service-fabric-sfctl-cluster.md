@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric CLI – sfctl cluster | Microsoft-Dokumentation"
+title: Azure Service Fabric CLI – sfctl cluster | Microsoft-Dokumentation
 description: Beschreibt die sfctl cluster-Befehle der Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: c83dc3eeb6ca0d66b0c70236354fd7bab80f355f
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Ermöglicht es, Service Fabric-Cluster auszuwählen, zu verwalten und zu betreiben.
@@ -68,7 +68,7 @@ Ruft die Integrität eines Service Fabric-Clusters ab. Verwenden Sie „EventsHe
 | --debug                        | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                      | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                    | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.                    Standardwert: json.|
-| --query                        | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                        | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose                      | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-cluster-manifest"></a>sfctl cluster manifest
@@ -89,7 +89,7 @@ Ruft das Service Fabric-Clustermanifest ab. Das Clustermanifest enthält Eigensc
 | --debug  | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h| Zeigt diese Hilfemeldung an und beendet.|
 | --output -o | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query  | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query  | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose| Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-cluster-provision"></a>sfctl cluster provision
@@ -111,7 +111,7 @@ Stellt die Code- oder Konfigurationspakete eines Service Fabric-Clusters bereit.
 | --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h  | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o| Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose  | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-cluster-select"></a>sfctl cluster select
@@ -138,7 +138,7 @@ Wird eine Verbindung mit einem sicheren Cluster hergestellt, geben Sie eine Zert
 | --debug           | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h         | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o       | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query           | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query           | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose         | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-cluster-unprovision"></a>sfctl cluster unprovision
@@ -159,7 +159,7 @@ Hebt die Bereitstellung der Code- oder Konfigurationspakete eines Service Fabric
 |--debug         | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
  |   --help -h       | Zeigt diese Hilfemeldung an und beendet.|
  |   --output -o     | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
- |   --query         | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+ |   --query         | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
  |   --verbose       | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 
@@ -197,7 +197,7 @@ Startet ein Upgraden der Code- oder Konfigurationsversion eines Service Fabric-C
 |--debug                               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 |    --help -h                             | Zeigt diese Hilfemeldung an und beendet.|
 |    --output -o                           | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv. Standardwert: json.|
-|    --query                               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+|    --query                               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 |    --verbose                             | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="next-steps"></a>Nächste Schritte

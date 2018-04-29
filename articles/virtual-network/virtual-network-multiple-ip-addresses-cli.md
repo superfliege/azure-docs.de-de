@@ -1,13 +1,13 @@
 ---
-title: "Virtueller Computer mit mehreren IP-Adressen – Azure CLI | Microsoft-Dokumentation"
+title: Virtueller Computer mit mehreren IP-Adressen – Azure CLI | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einem virtuellen Computer mit der Azure-Befehlszeilenschnittstelle (CLI) mehrere IP-Adressen zuweisen.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: aa0f84299dcb4800cd332d8276785f6b08152060
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: c11883156f53ab53ebe6f84d66232f81f8cf31ff
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/17/2017
 
 In diesem Artikel wird beschrieben, wie Sie über das Azure Resource Manager-Bereitstellungsmodell mithilfe der Azure CLI einen virtuellen Computer erstellen. Ressourcen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können nicht mehrere IP-Adressen zugewiesen werden. Weitere Informationen zu den Azure-Bereitstellungsmodellen finden Sie im Artikel zum Thema [Understand deployment models (Bereitstellungsmodelle verstehen)](../resource-manager-deployment-model.md).
 
-[!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
+[!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>Erstellen eines virtuellen Computers mit mehreren IP-Adressen
 
@@ -167,7 +167,7 @@ Fügen Sie die privaten IP-Adressen dem Betriebssystem des virtuellen Computers 
 
 ## <a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
 
-Sie können zu einer vorhandenen NIC zusätzliche private und öffentliche IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte aus. Die Beispiele bauen auf dem in diesem Artikel beschriebenen [Szenario](#Scenario) auf.
+Sie können zu einer vorhandenen Azure-Netzwerkschnittstelle zusätzliche private und öffentliche IP-Adressen hinzufügen, indem Sie die nachfolgenden Schritte ausführen. Die Beispiele bauen auf dem in diesem Artikel beschriebenen [Szenario](#Scenario) auf.
 
 1. Öffnen Sie eine Befehlsshell, und führen Sie die verbleibenden Schritte in diesem Abschnitt in einer einzigen Sitzung aus. Wenn Sie die Azure CLI noch nicht installiert und konfiguriert haben, führen Sie die Schritte im Artikel [Installieren der Azure CLI 2.0](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) aus, und melden Sie sich dann mit dem Befehl `az-login` bei Ihrem Azure-Konto an.
 

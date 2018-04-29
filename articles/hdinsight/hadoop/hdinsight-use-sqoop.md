@@ -1,26 +1,24 @@
 ---
-title: "Ausführen von Apache Sqoop-Aufträgen mit Azure HDInsight (Hadoop) | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Azure PowerShell auf einer Arbeitsstation verwenden können, um Sqoop-Importe und -Exporte zwischen einem Hadoop-Cluster und einer Azure SQL-Datenbank auszuführen."
+title: Ausführen von Apache Sqoop-Aufträgen mit Azure HDInsight (Hadoop) | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure PowerShell auf einer Arbeitsstation verwenden können, um Sqoop-Importe und -Exporte zwischen einem Hadoop-Cluster und einer Azure SQL-Datenbank auszuführen.
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 ms.assetid: 2fdcc6b7-6ad5-4397-a30b-e7e389b66c7a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: e96003de4a0dd4a5d8b060bb5883e51291827316
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0e72585906b972c3d7ffb2513fceb27e3e8bc1c5
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Verwenden von Sqoop mit Hadoop in HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -62,7 +60,7 @@ Der HDInsight-Cluster wird mit einigen Beispieldaten geliefert. Sie verwenden di
 In diesem Tutorial verwenden Sie diese beiden Datasets zum Testen des Sqoop-Imports- und -Exports.
 
 ## <a name="create-cluster-and-sql-database"></a>Erstellen von Cluster und SQL-Datenbank
-In diesem Abschnitt wird gezeigt, wie Sie mit dem Azure-Portal und einer Azure Resource Manager-Vorlage einen Cluster, eine SQL-Datenbank und die SQL-Datenbankschemas erstellen, die Sie zum Ausführen des Tutorials benötigen. Die Vorlage finden Sie in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Die Resource Manager-Vorlage ruft ein bacpac-Paket auf, um die Tabellenschemas in der SQL-Datenbank bereitzustellen.  Das BACPAC-Paket befindet sich in einem öffentlichen Blobcontainer (https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac). Wenn Sie einen privaten Container für die bacpac-Dateien verwenden möchten, verwenden Sie die folgenden Werte in der Vorlage:
+In diesem Abschnitt wird gezeigt, wie Sie mit dem Azure-Portal und einer Azure Resource Manager-Vorlage einen Cluster, eine SQL-Datenbank und die SQL-Datenbankschemas erstellen, die Sie zum Ausführen des Tutorials benötigen. Die Vorlage finden Sie in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Die Resource Manager-Vorlage ruft ein bacpac-Paket auf, um die Tabellenschemas in der SQL-Datenbank bereitzustellen.  Das BACPAC-Paket befindet sich in einem öffentlichen Blobcontainer, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Wenn Sie einen privaten Container für die bacpac-Dateien verwenden möchten, verwenden Sie die folgenden Werte in der Vorlage:
    
 ```json
 "storageKeyType": "Primary",
@@ -308,7 +306,7 @@ $ErrorActionPreference = "Stop"
 #region - Connect to Azure subscription
 Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
 try{Get-AzureRmContext}
-catch{Login-AzureRmAccount}
+catch{Connect-AzureRmAccount}
 #endregion
 
 #region - Create Azure resouce group

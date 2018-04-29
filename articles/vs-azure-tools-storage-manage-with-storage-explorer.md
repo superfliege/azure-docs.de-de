@@ -1,11 +1,11 @@
 ---
-title: Erste Schritte mit dem Storage-Explorer (Vorschau) | Microsoft-Dokumentation
-description: Verwalten von Azure Storage-Ressourcen mit dem Storage-Explorer (Vorschauversion)
+title: Erste Schritte mit dem Storage-Explorer | Microsoft-Dokumentation
+description: Verwalten von Azure Storage-Ressourcen mit dem Storage-Explorer
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
 ms.devlang: multiple
@@ -14,33 +14,60 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 27b3775d81ec6dc093dae4ee46167c5d5a9c9e19
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e8ebbd1a0ac2153913a2e5f506505ffb481b3822
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="get-started-with-storage-explorer-preview"></a>Erste Schritte mit dem Storage-Explorer (Vorschau)
+# <a name="get-started-with-storage-explorer"></a>Erste Schritte mit dem Storage-Explorer
 ## <a name="overview"></a>Übersicht
-Bei der Vorschauversion des Azure Storage-Explorers handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können. In diesem Artikel werden mehrere Möglichkeiten zum Verbinden und Verwalten Ihrer Azure-Speicherkonten beschrieben.
+Beim Azure Storage-Explorer handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können. In diesem Artikel werden mehrere Möglichkeiten zum Verbinden und Verwalten Ihrer Azure-Speicherkonten beschrieben.
 
-![Microsoft Azure Storage-Explorer (Vorschau)][0]
+![Microsoft Azure Storage-Explorer][0]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* [Herunterladen und Installieren des Storage-Explorers (Vorschau)](http://www.storageexplorer.com)
 
-> [!NOTE]
-> Für andere Linux-Distributionen als Ubuntu 16.04 müssen Sie einige Abhängigkeiten ggf. manuell installieren. Die folgenden Pakete sind im Allgemeinen erforderlich:
-> * libgconf-2-4
-> * libsecret
-> * Aktuelle GCC
->
-> Abhängig von Ihrer Distribution müssen Sie möglicherweise weitere Pakete installieren. Die [Anmerkungen zu dieser Version](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) des Storage-Explorers enthalten spezielle Schritte für einige Distributionen.
->
->
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+Der Azure Storage-Explorer wird in folgenden Windows-Versionen unterstützt:
+
+* Windows 10 (empfohlen)
+* Windows 8
+* Windows 7
+
+[Herunterladen und Installieren des Storage-Explorers](http://www.storageexplorer.com)
+
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+Der Azure Storage-Explorer wird in folgenden macOS-Versionen unterstützt:
+
+* macOS 10.12 „Sierra“ und höher
+
+[Herunterladen und Installieren des Storage-Explorers](http://www.storageexplorer.com)
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+Der Azure Storage-Explorer wird in folgenden Linux-Distributionen unterstützt:
+
+* Ubuntu 16.04 x64 (empfohlen)
+* Ubuntu 17.10 x64
+* Ubuntu 14.04 x64
+
+Der Azure Storage-Explorer funktioniert möglicherweise mit anderen Distributionen, es werden jedoch nur die oben aufgeführten Versionen offiziell unterstützt.
+
+Darüber hinaus müssen zum Ausführen des Azure Storage-Explorers unter Linux die folgenden Abhängigkeiten/Bibliotheken installiert sein:
+
+* [.NET Core 2.x](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* libsecret (Hinweis: libsecret-1.so.0 muss auf dem Computer installiert sein. Wenn Sie eine andere Version von libsecret installiert haben, können Sie versuchen, eine symbolische Verknüpfung zwischen der SO-Datei und libsecret-1.so.0 herzustellen.)
+* libgconf-2-4
+* Aktuelle GCC
+
+Die [Anmerkungen zu dieser Version](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) des Azure Storage-Explorers enthalten spezielle Schritte für einige Distributionen.
+
+[Herunterladen und Installieren des Storage-Explorers](http://www.storageexplorer.com)
+
+---
 
 ## <a name="connect-to-a-storage-account-or-service"></a>Herstellen der Verbindung mit einem Speicherkonto oder Dienst
-Es gibt verschiedene Möglichkeiten, wie Sie den Storage-Explorer (Vorschau) mit Speicherkonten verbinden können. Sie haben beispielsweise folgende Möglichkeiten:
+Es gibt verschiedene Möglichkeiten, wie Sie den Storage-Explorer mit Speicherkonten verbinden können. Sie haben beispielsweise folgende Möglichkeiten:
 * Verbinden mit Speicherkonten, die Ihren Azure-Abonnements zugeordnet sind
 * Verbinden mit freigegebenen Speicherkonten und Diensten aus anderen Azure-Abonnements
 * Verbinden mit und Verwalten von lokalem Speicher mithilfe des Azure-Speicheremulators 
@@ -60,7 +87,7 @@ Darüber hinaus können Sie mit Speicherkonten in Azure (global und national) ar
 >
 >
 
-1. Wählen Sie in Storage-Explorer (Vorschau) **Konten verwalten** aus, um zum **Panel für die Kontoverwaltung** zu wechseln.
+1. Wählen Sie im Storage-Explorer **Konten verwalten** aus, um zum **Bereich für die Kontoverwaltung** zu wechseln.
 
     ![Konten verwalten][1]
 
@@ -79,7 +106,7 @@ Darüber hinaus können Sie mit Speicherkonten in Azure (global und national) ar
     ![Ausgewählte Azure-Abonnements][4]
 
 ## <a name="work-with-local-development-storage"></a>Verwenden von lokalem Entwicklungsspeicher
-Mit dem Storage-Explorer (Vorschau) können Sie unter Verwendung des Azure-Speicheremulators Schritte für den lokalen Speicher ausführen. Dadurch können Sie die Verwendung von Azure Storage simulieren, ohne dass unbedingt ein Speicherkonto in Azure bereitgestellt werden muss, da das Speicherkonto vom Azure-Speicheremulator emuliert wird.
+Mit dem Storage-Explorer können Sie unter Verwendung des Azure-Speicheremulators Schritte für den lokalen Speicher ausführen. Dadurch können Sie die Verwendung von Azure Storage simulieren, ohne dass unbedingt ein Speicherkonto in Azure bereitgestellt werden muss, da das Speicherkonto vom Azure-Speicheremulator emuliert wird.
 
 > [!NOTE]
 > Der Azure-Speicheremulator wird derzeit nur für Windows unterstützt.
@@ -91,7 +118,7 @@ Mit dem Storage-Explorer (Vorschau) können Sie unter Verwendung des Azure-Speic
 >
 >
 
-1. Erweitern Sie im linken Bereich des Storage-Explorers (Vorschau) den Knoten **(Lokal und angefügt)** > **Speicherkonten** > **(Entwicklung)** > **Blobcontainer**.
+1. Erweitern Sie im linken Bereich des Storage-Explorers den Knoten **(Lokal und angefügt)** > **Speicherkonten** > **(Entwicklung)** > **Blobcontainer**.
 
     ![Lokaler Entwicklungsknoten][5]
 
@@ -102,12 +129,9 @@ Mit dem Storage-Explorer (Vorschau) können Sie unter Verwendung des Azure-Speic
 3. Nach der Installation des Emulators können Sie lokale Blobs, Warteschlangen und Tabellen erstellen und nutzen. Weitere Informationen zur Verwendung der einzelnen Speicherkontotypen finden Sie in den folgenden Anleitungen:
 
     * [Verwalten von Azure Blob Storage-Ressourcen](vs-azure-tools-storage-explorer-blobs.md)
-    * Verwalten von Azure-Dateifreigabespeicher-Ressourcen: *In Kürze verfügbar*
-    * Verwalten von Azure Queue Storage-Ressourcen: *In Kürze verfügbar*
-    * Verwalten von Azure Table Storage-Ressourcen: *In Kürze verfügbar*
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>Anfügen oder Trennen eines externen Speicherkontos
-Mit dem Storage-Explorer (Vorschau) können Sie das Anfügen an externe Speicherkonten durchführen, damit Speicherkonten auf einfache Weise für die gemeinsame Nutzung freigegeben werden können. In diesem Abschnitt wird das Anfügen an externe Speicherkonten und das spätere Trennen beschrieben.
+Mit dem Storage-Explorer können Sie das Anfügen an externe Speicherkonten durchführen, damit Speicherkonten auf einfache Weise für die gemeinsame Nutzung freigegeben werden können. In diesem Abschnitt wird das Anfügen an externe Speicherkonten und das spätere Trennen beschrieben.
 
 ### <a name="get-the-storage-account-credentials"></a>Beschaffen der Anmeldeinformationen für Speicherkonten
 Um ein externes Speicherkonto freigeben zu können, muss der Besitzer des Kontos zuerst die Anmeldeinformationen (Kontoname und Schlüssel) für das Konto ermitteln und diese Informationen dann an die Person weitergeben, die das Anfügen an das genannte Konto durchführen möchte. Gehen Sie im Azure-Portal wie folgt vor, um die Anmeldeinformationen für das Speicherkonto abzurufen:
@@ -129,9 +153,9 @@ Um ein externes Speicherkonto freigeben zu können, muss der Besitzer des Kontos
     ![Zugriffsschlüssel][8]
 
 ### <a name="attach-to-an-external-storage-account"></a>Anfügen an ein externes Speicherkonto
-Zum Anfügen an ein externes Speicherkonto benötigen Sie den Namen und Schlüssel des Kontos. Im Abschnitt „Beschaffen der Anmeldeinformationen für Speicherkonten“ erfahren Sie, wie Sie diese Werte über das Azure-Portal abrufen. Im Portal heißt der Kontoschlüssel allerdings **Schlüssel1**. Wenn im Storage-Explorer (Vorschau) also ein Kontoschlüssel verlangt wird, geben Sie den Wert von **Schlüssel1** ein.
+Zum Anfügen an ein externes Speicherkonto benötigen Sie den Namen und Schlüssel des Kontos. Im Abschnitt „Beschaffen der Anmeldeinformationen für Speicherkonten“ erfahren Sie, wie Sie diese Werte über das Azure-Portal abrufen. Im Portal heißt der Kontoschlüssel allerdings **Schlüssel1**. Wenn im Storage-Explorer also ein Kontoschlüssel verlangt wird, geben Sie den Wert von **Schlüssel1** ein.
 
-1. Öffnen Sie im Storage-Explorer (Vorschau) das Dialogfeld **Verbinden**.
+1. Öffnen Sie im Storage-Explorer das Dialogfeld **Verbinden**.
 
     ![Option „Mit Azure Storage verbinden“][9]
 
@@ -172,10 +196,10 @@ Ein Beispiel: Benutzer A ist Administrator eines Azure-Abonnements, und Benutzer
 
 2. Benutzer A gibt die SAS an die Person weiter, die auf das Speicherkonto zugreifen möchte (in diesem Beispiel also an Benutzer B).  
 
-3. Benutzer B verwendet den Storage-Explorer (Vorschau), um das Anfügen an das Konto von Benutzer A mit der bereitgestellten SAS durchzuführen.
+3. Benutzer B verwendet den Storage-Explorer, um das Anfügen an das Konto von Benutzer A mit der bereitgestellten SAS durchzuführen.
 
 ### <a name="generate-a-sas-connection-string-for-the-account-you-want-to-share"></a>Generieren einer SAS-Verbindungszeichenfolge für das freizugebende Konto
-1. Klicken Sie im Storage-Explorer (Vorschau) mit der rechten Maustaste auf das Speicherkonto, das Sie freigeben möchten, und wählen Sie **Shared Access Signature abrufen...** aus.
+1. Klicken Sie im Storage-Explorer mit der rechten Maustaste auf das Speicherkonto, das Sie freigeben möchten, und wählen Sie **Shared Access Signature abrufen...** aus.
 
     ![Kontextmenüoption „SAS abrufen“][14]
 
@@ -186,7 +210,7 @@ Ein Beispiel: Benutzer A ist Administrator eines Azure-Abonnements, und Benutzer
 3. Wählen Sie neben dem Textfeld **Verbindungszeichenfolge** die Option **Kopieren** aus, um die Verbindungszeichenfolge in die Zwischenablage zu kopieren, und klicken Sie anschließend auf **Schließen**.
 
 ### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>Anfügen an ein Speicherkonto unter Verwendung einer SAS-Verbindungszeichenfolge
-1. Öffnen Sie im Storage-Explorer (Vorschau) das Dialogfeld **Verbinden**.
+1. Öffnen Sie im Storage-Explorer das Dialogfeld **Verbinden**.
 
     ![Option „Mit Azure Storage verbinden“][9]
 
@@ -213,12 +237,9 @@ Im Abschnitt „Anfügen eines Speicherkontos unter Verwendung einer SAS“ wird
 In diesem Kontext kann es sich bei einem Dienst um einen Blobcontainer, eine Warteschlange, eine Tabelle oder eine Dateifreigabe handeln. Informationen zum Generieren der SAS für einen aufgeführten Dienst finden Sie in den folgenden Themen:
 
 * [Abrufen der SAS für einen Blobcontainer](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
-* Abrufen der SAS für eine Dateifreigabe: *In Kürze verfügbar*
-* Abrufen der SAS für eine Warteschlange: *In Kürze verfügbar*
-* Abrufen der SAS für eine Tabelle: *In Kürze verfügbar*
 
 ### <a name="attach-to-the-shared-account-service-by-using-a-sas-uri"></a>Anfügen an den freigegebenen Kontodienst unter Verwendung eines SAS-URI
-1. Öffnen Sie im Storage-Explorer (Vorschau) das Dialogfeld **Verbinden**.
+1. Öffnen Sie im Storage-Explorer das Dialogfeld **Verbinden**.
 
     ![Option „Mit Azure Storage verbinden“][9]
 
@@ -251,7 +272,7 @@ Neben der Verwaltung von Azure Cosmos DB-Konten über das Azure-Abonnement kann 
 
  ## <a name="connect-to-azure-data-lake-store-by-uri"></a>Herstellen einer Verbindung mit Azure Data Lake Store über den URI
 Wenn Sie auf Ressourcen zugreifen möchten, die in Ihrem Abonnement nicht vorhanden sind, müssen andere Personen Ihnen die Berechtigung zum Abrufen des URI für die Ressourcen gewähren. In diesem Fall können Sie eine Verbindung mit der Data Lake Store-Instanz herstellen, indem Sie nach dem Anmelden den URI verwenden. Führen Sie die folgenden Schritte aus.
-1. Öffnen Sie den Storage-Explorer (Vorschau).
+1. Öffnen Sie den Storage-Explorer.
 2. Erweitern Sie im linken Bereich die Option **Local and Attached** (Lokal und angefügt).
 3. Klicken Sie mit der rechten Maustaste auf **Data Lake Store**, und wählen Sie im Kontextmenü die Option **Connect to Data Lake Store...** (Verbindung mit Data Lake Store herstellen...).
 
@@ -276,9 +297,9 @@ Sobald Sie Text in das Suchfeld eingeben, werden im linken Bereich alle Ressourc
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwalten von Azure Blob Storage-Ressourcen mit dem Storage-Explorer (Vorschau)](vs-azure-tools-storage-explorer-blobs.md)
+* [Verwalten von Azure Blob Storage-Ressourcen mit dem Storage-Explorer](vs-azure-tools-storage-explorer-blobs.md)
 * [Verwalten von Azure Cosmos DB in Azure Storage-Explorer (Vorschau)](./cosmos-db/storage-explorer.md)
-* [Verwalten von Azure Data Lake Store-Ressourcen mit Storage-Explorer (Vorschau)](./data-lake-store/data-lake-store-in-storage-explorer.md)
+* [Verwalten von Azure Data Lake Store-Ressourcen mit Storage-Explorer](./data-lake-store/data-lake-store-in-storage-explorer.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Overview.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageAccounts.png

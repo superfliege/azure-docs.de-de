@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5a2b3dbce1d969eaa9937ad866fd055ae72e6529
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0ba58f1384d7c93af30f9b175a5a154811c9a1e0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 
@@ -42,7 +42,7 @@ Die folgenden Umgebungen werden unterstützt:
 
 1. Falls noch nicht geschehen, [aktivieren Sie Application Insights für Ihre Web-App](app-insights-asp-net.md).
 
-2. Binden Sie das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre App ein. 
+2. Binden Sie das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre App ein.
 
 3. Überprüfen Sie die Standardoptionen, die zum Paket [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) hinzugefügt wurden:
 
@@ -92,10 +92,18 @@ Die folgenden Umgebungen werden unterstützt:
 
 3. Ändern Sie die `Startup`-Klasse Ihrer Anwendung, um den Telemetrieprozessor des Momentaufnahmesammlers hinzuzufügen und zu konfigurieren.
 
+    Fügen Sie `Startup.cs` die folgenden using-Anweisungen hinzu.
+
    ```csharp
    using Microsoft.ApplicationInsights.SnapshotCollector;
    using Microsoft.Extensions.Options;
-   ...
+   using Microsoft.ApplicationInsights.AspNetCore;
+   using Microsoft.ApplicationInsights.Extensibility;
+   ```
+
+   Fügen Sie der `Startup`-Klasse die folgende `SnapshotCollectorTelemetryProcessorFactory`-Klasse hinzu.
+
+   ```csharp
    class Startup
    {
        private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
@@ -111,11 +119,11 @@ Die folgenden Umgebungen werden unterstützt:
                return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
            }
        }
+       ...
+    ```
+    Fügen Sie der Startpipeline die Dienste `SnapshotCollectorConfiguration` und `SnapshotCollectorTelemetryProcessorFactory` hinzu:
 
-       public Startup(IConfiguration configuration) => Configuration = configuration;
-
-       public IConfiguration Configuration { get; }
-
+    ```csharp
        // This method gets called by the runtime. Use this method to add services to the container.
        public void ConfigureServices(IServiceCollection services)
        {
@@ -178,7 +186,7 @@ Die folgenden Umgebungen werden unterstützt:
         }
    }
     ```
-    
+
 ## <a name="grant-permissions"></a>Erteilen von Berechtigungen
 
 Besitzer des Azure-Abonnements können Momentaufnahmen überprüfen. Anderen Benutzern muss durch einen Besitzer eine entsprechende Berechtigung erteilt werden.
@@ -208,7 +216,7 @@ In der Ansicht der Debug-Momentaufnahme sehen Sie eine Aufrufliste und einen Var
 Momentaufnahmen enthalten möglicherweise vertrauliche Informationen und können standardmäßig nicht angezeigt werden. Zum Anzeigen von Momentaufnahmen muss Ihnen die Rolle `Application Insights Snapshot Debugger` zugewiesen sein.
 
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>Debuggen von Momentaufnahmen mit Visual Studio 2017 Enterprise
-1. Klicken Sie auf die Schaltfläche **Momentaufnahme herunterladen**, um eine Datei vom Typ `.diagsession` herunterzuladen, die von Visual Studio 2017 Enterprise geöffnet werden kann. 
+1. Klicken Sie auf die Schaltfläche **Momentaufnahme herunterladen**, um eine Datei vom Typ `.diagsession` herunterzuladen, die von Visual Studio 2017 Enterprise geöffnet werden kann.
 
 2. Zum Öffnen der Datei vom Typ `.diagsession` müssen Sie zuerst [die Momentaufnahmedebugger-Erweiterung für Visual Studio herunterladen und installieren](https://aka.ms/snapshotdebugger).
 
@@ -312,7 +320,7 @@ Sie sollten mindestens zwei gleichzeitige Momentaufnahmen zulassen.
 Wenn Ihre Anwendung beispielsweise 1 GB des gesamten Arbeitssatzes verwendet, sollten Sie sicherstellen, dass ein Speicherplatz von mindestens 2 GB zum Speichern von Momentaufnahmen zur Verfügung steht.
 Führen Sie die folgenden Schritte aus, um Ihre Clouddienstrolle mit einer dedizierten lokalen Ressource für Momentaufnahmen zu konfigurieren.
 
-1. Fügen Sie Ihrem Clouddienst eine neue lokale Ressource hinzu, indem Sie die Cloud Service-Definitionsdatei (CSDF) bearbeiten. Im folgenden Beispiel wird eine Ressource namens `SnapshotStore` mit einer Größe von 5 GB definiert.
+1. Fügen Sie Ihrem Clouddienst eine neue lokale Ressource hinzu, indem Sie die Clouddienst-Definitionsdatei (.csdef) bearbeiten. Im folgenden Beispiel wird eine Ressource namens `SnapshotStore` mit einer Größe von 5 GB definiert.
    ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
@@ -379,5 +387,5 @@ Wenn trotzdem keine Ausnahme mit dieser Momentaufnahme-ID angezeigt wird, wurde 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Legen Sie Fangpunkte in Ihrem Code fest](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications), um Momentaufnahmen abzurufen, ohne auf eine Ausnahme warten zu müssen.
-* Unter [Diagnostizieren von Ausnahmen in Ihren Web-Apps](app-insights-asp-net-exceptions.md) erfahren Sie, wie Sie weitere Ausnahmen für Application Insights sichtbar machen. 
+* Unter [Diagnostizieren von Ausnahmen in Ihren Web-Apps](app-insights-asp-net-exceptions.md) erfahren Sie, wie Sie weitere Ausnahmen für Application Insights sichtbar machen.
 * Die [intelligente Erkennung](app-insights-proactive-diagnostics.md) ermittelt automatisch Leistungsanomalien.

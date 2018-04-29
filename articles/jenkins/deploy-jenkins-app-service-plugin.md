@@ -1,12 +1,12 @@
 ---
 title: Bereitstellen in Azure App Service mit dem Jenkins-Plug-In | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie das Jenkins-Plug-In für Azure App Service zum Bereitstellen einer Java-Web-App für Azure in Jenkins verwenden."
+description: Erfahren Sie, wie Sie das Jenkins-Plug-In für Azure App Service zum Bereitstellen einer Java-Web-App für Azure in Jenkins verwenden.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0e5916b2f8f901ff549ef74fca57cf09dc9fec21
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0128ad37e3ba66710279de42cf4eae0ce5431b5b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Bereitstellen in Azure App Service mit dem Jenkins-Plug-In 
 
@@ -39,7 +39,7 @@ Wenn Sie noch nicht über einen Jenkins-Master verfügen, sollten Sie mit der [P
 * [Jenkins-Git-Client-Plug-In](https://plugins.jenkins.io/git-client) Version 2.4.6 
 * [Docker-Commons-Plug-In](https://plugins.jenkins.io/docker-commons) Version 1.4.0
 * [Azure-Anmeldeinformationen](https://plugins.jenkins.io/azure-credentials) Version 1.2
-* [Azure App Service](https://plugins.jenkins.io/azure-app-server) Version 0.1
+* [Azure App Service](https://plugins.jenkins.io/azure-app-service) Version 0.1
 
 Mithilfe des Jenkins-Plug-Ins können Sie eine Web-App in einer beliebigen Sprache bereitstellen, die von Web-Apps unterstützt wird, wie beispielsweise C#, PHP, Java und Node.js. In diesem Tutorial wird eine [einfache Java-Web-App für Azure](https://github.com/azure-devops/javawebappsample) verwendet. Wählen Sie die Schaltfläche **Fork** (Verzweigen) in der rechten oberen Ecke der GitHub-Benutzeroberfläche aus, um das Repository in Ihr GitHub-Konto zu verzweigen.  
 > [!NOTE]
@@ -90,7 +90,7 @@ Vor dem Einrichten des Auftrags in Jenkins benötigen Sie einen Azure App Servic
 ### <a name="set-up-the-jenkins-job"></a>Einrichten des Jenkins-Auftrags
 
 1. Erstellen Sie im Jenkins-Dashboard ein neues **Freestyle**-Projekt.
-2. Konfigurieren Sie das Feld **Quellcodeverwaltung** so, dass Ihre lokale Verzweigung der [einfachen Java-Web-App für Azure](https://github.com/azure-devops/javawebappsample) verwendet wird. Geben Sie die **Repository-URL** an. Zum Beispiel: „http://github.com/&lt;Ihre_ID>/javawebappsample“.
+2. Konfigurieren Sie das Feld **Quellcodeverwaltung** so, dass Ihre lokale Verzweigung der [einfachen Java-Web-App für Azure](https://github.com/azure-devops/javawebappsample) verwendet wird. Geben Sie die **Repository-URL** an. Beispiel: http://github.com/&lt;Ihre_ID>/javawebappsample.
 3. Fügen Sie zum Erstellen des Projekts mithilfe von Maven einen Schritt hinzu, indem Sie den Befehl **Execute shell** (Shell ausführen) hinzufügen. Für dieses Beispiel wird ein zusätzlicher Schritt benötigt, um die \*.WAR-Datei im Zielordner in **ROOT.war** umzubenennen:   
     ```bash
     mvn clean package
@@ -143,7 +143,7 @@ Vor dem Einrichten des Auftrags in Jenkins benötigen Sie eine Web-App unter Lin
 ### <a name="set-up-the-jenkins-job-for-docker"></a>Einrichten des Jenkins-Auftrags für Docker
 
 1. Erstellen Sie im Jenkins-Dashboard ein neues **Freestyle**-Projekt.
-2. Konfigurieren Sie das Feld **Quellcodeverwaltung** so, dass Ihre lokale Verzweigung der [einfachen Java-Web-App für Azure](https://github.com/azure-devops/javawebappsample) verwendet wird. Geben Sie die **Repository-URL** an. Zum Beispiel: „http://github.com/&lt;Ihre_ID>/javawebappsample“.
+2. Konfigurieren Sie das Feld **Quellcodeverwaltung** so, dass Ihre lokale Verzweigung der [einfachen Java-Web-App für Azure](https://github.com/azure-devops/javawebappsample) verwendet wird. Geben Sie die **Repository-URL** an. Beispiel: http://github.com/&lt;Ihre_ID>/javawebappsample.
 3. Fügen Sie zum Erstellen des Projekts mithilfe von Maven einen Schritt hinzu, indem Sie den Befehl **Execute shell** (Shell ausführen) hinzufügen. Fügen Sie dem Befehl die folgende Zeile hinzu:
     ```bash
     mvn clean package

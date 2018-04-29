@@ -2,12 +2,12 @@
 title: Sicheres Migrieren von Benutzern zwischen Produktlizenzen mithilfe von gruppenbasierter Lizenzierung in Azure Active Directory | Microsoft-Dokumentation
 description: Beschreibt die empfohlene Vorgehensweise beim Migrieren von Benutzern zwischen verschiedenen Produktlizenzen (Office 365 Enterprise E1 und E3) mithilfe von gruppenbasierter Lizenzierung
 services: active-directory
-keywords: "Azure AD-Lizenzierung"
-documentationcenter: 
+keywords: Azure AD-Lizenzierung
+documentationcenter: ''
 author: piotrci
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/07/2018
 ms.author: piotrci
-ms.openlocfilehash: bb27b3fb739bbcea56026733b41e6cadf21b8953
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 068457044af7af7a55bdbcc4043da3028a68b2d0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Sicheres Migrieren von Benutzern zwischen Produktlizenzen mithilfe von gruppenbasierter Lizenzierung in Azure Active Directory
 
@@ -27,7 +27,7 @@ Dieser Artikel beschreibt die empfohlene Methode zum Verschieben von Benutzern z
 
 -   Einfache Migration zwischen Produktlizenzen, die keine widersprüchlichen Servicepläne enthalten, z.B eine Migration zwischen Office 365 Enterprise E3 und Office 365 Enterprise E5.
 
--   Komplexere Migration zwischen Produktlizenzen, die widersprüchlichen Servicepläne enthalten, z.B eine Migration zwischen Office 365 Enterprise E1 und Office 365 Enterprise E3. Weitere Informationen zu Konflikten finden Sie unter [In Konflikt stehende Diensteeinstellungen](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans) und [Servicepläne, die nicht zur selben Zeit zugewiesen werden können](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time).
+-   Komplexere Migration zwischen Produktlizenzen, die widersprüchlichen Servicepläne enthalten, z.B eine Migration zwischen Office 365 Enterprise E1 und Office 365 Enterprise E3. Weitere Informationen zu Konflikten finden Sie unter [In Konflikt stehende Diensteeinstellungen](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans) und [Servicepläne, die nicht zur selben Zeit zugewiesen werden können](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time).
 
 Dieser Artikel enthält PowerShell-Beispielcode, der zum Ausführen der Migrations- und Überprüfungsschritte verwendet werden kann. Der Code besonders für umfangreiche Vorgänge nützlich, in denen eine manuelle Ausführung der Schritte nicht möglich ist.
 
@@ -37,7 +37,7 @@ Vor dem Beginn der Migration ist es wichtig, sicherzustellen, dass bestimmte Ann
 -   Benutzer verfügen über die *Quelllizenz*, die mithilfe der gruppenbasierten Lizenzierung zugewiesen wird. Die Lizenzen für das Produkt, aus dem die Benutzer verschoben werden sollen, werden aus einer einzigen Quellgruppe geerbt und nicht direkt zugewiesen.
 
     >[!NOTE]
-    >Wenn Lizenzen auch direkt zugewiesen sind, verhindern sie möglicherweise die Anwendung der *Ziellizenz*. Erfahren Sie mehr über [direkte und gruppenbasierte Lizenzzuweisung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses). Es empfiehlt sich, mithilfe eines [PowerShell-Skripts](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group) zu prüfen, ob Benutzer über direkte Lizenzen verfügen.
+    >Wenn Lizenzen auch direkt zugewiesen sind, verhindern sie möglicherweise die Anwendung der *Ziellizenz*. Erfahren Sie mehr über [direkte und gruppenbasierte Lizenzzuweisung](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses). Es empfiehlt sich, mithilfe eines [PowerShell-Skripts](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group) zu prüfen, ob Benutzer über direkte Lizenzen verfügen.
 
 -   Sie haben genügend verfügbare Lizenzen für das Zielprodukt. Wenn Sie nicht über genügend Lizenzen verfügen, erhalten einige Benutzer möglicherweise die *Ziellizenz* nicht. Sie können [die Anzahl der verfügbaren Lizenzen überprüfen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products).
 
@@ -54,7 +54,7 @@ Das Migrationsziel ist es, mithilfe von gruppenbasierter Lizenzierung die Benutz
 
 3.  Fügen Sie der Zielgruppe einen Batch von Benutzern hinzu. Die gruppenbasierte Lizenzierung übernimmt die Änderung und weist die *Ziellizenz* zu. Dieser Prozess kann je nach Größe des Batches und anderen Aktivitäten im Mandanten längere Zeit dauern.
 
-4.  Stellen Sie sicher, dass der Batch von Benutzern von vollständig von der gruppenbasierten Lizenzierung verarbeitet wird. Vergewissern Sie sich, dass jedem Benutzer die *Ziellizenz* zugewiesen ist. Stellen Sie sicher, dass bei den Benutzern keine Fehler aufgetreten sind, z.B. durch Konflikte mit anderen Produkten oder eine zu geringe Anzahl von Lizenzen. Weitere Informationen zu Fehlern finden Sie unter [Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
+4.  Stellen Sie sicher, dass der Batch von Benutzern von vollständig von der gruppenbasierten Lizenzierung verarbeitet wird. Vergewissern Sie sich, dass jedem Benutzer die *Ziellizenz* zugewiesen ist. Stellen Sie sicher, dass bei den Benutzern keine Fehler aufgetreten sind, z.B. durch Konflikte mit anderen Produkten oder eine zu geringe Anzahl von Lizenzen. Weitere Informationen zu Fehlern finden Sie unter [Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
 
 5.  Nun sind den Benutzern sowohl die *Quell-* als auch die *Ziellizenzen* zugewiesen.
 
@@ -175,7 +175,7 @@ Check passed for all users. Exiting check loop.
 ```
 
 ## <a name="migrate-users-between-products-that-have-conflicting-service-plans"></a>Migrieren von Benutzern zwischen Produkten mit widersprüchlichen Serviceplänen
-Das Migrationsziel ist es, mithilfe von gruppenbasierter Lizenzierung die Benutzerlizenzen von einer *Quelllizenz* (in diesem Beispiel: Office 365 Enterprise E1) in eine *Ziellizenz* (in diesem Beispiel: Office 365 Enterprise E3) zu ändern. Die beiden Produkte in diesem Szenario enthalten widersprüchliche Servicepläne, sodass eine Problemumgehung gefunden werden muss, um eine nahtlose Benutzermigration zu ermöglichen. Weitere Informationen zu diesen Konflikten finden Sie unter [Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory: In Konflikt stehende Diensteeinstellungen](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). Während der Migration sollten Benutzer zu keinem Zeitpunkt die Zugriffsmöglichkeit für Dienste oder Daten verlieren. Die Migration erfolgt in kleinen „Batches“. Sie können das Ergebnis für jeden Batch überprüfen und die Anzahl möglicher Probleme einschränken, die während des Prozesses auftreten können. Im Ganzen verläuft der Prozess dann wie folgt:
+Das Migrationsziel ist es, mithilfe von gruppenbasierter Lizenzierung die Benutzerlizenzen von einer *Quelllizenz* (in diesem Beispiel: Office 365 Enterprise E1) in eine *Ziellizenz* (in diesem Beispiel: Office 365 Enterprise E3) zu ändern. Die beiden Produkte in diesem Szenario enthalten widersprüchliche Servicepläne, sodass eine Problemumgehung gefunden werden muss, um eine nahtlose Benutzermigration zu ermöglichen. Weitere Informationen zu diesen Konflikten finden Sie unter [Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory: In Konflikt stehende Diensteeinstellungen](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). Während der Migration sollten Benutzer zu keinem Zeitpunkt die Zugriffsmöglichkeit für Dienste oder Daten verlieren. Die Migration erfolgt in kleinen „Batches“. Sie können das Ergebnis für jeden Batch überprüfen und die Anzahl möglicher Probleme einschränken, die während des Prozesses auftreten können. Im Ganzen verläuft der Prozess dann wie folgt:
 
 1.  Benutzer sind Mitglieder einer Quellgruppe und erben die *Quelllizenz* aus dieser Gruppe.
 
@@ -183,7 +183,7 @@ Das Migrationsziel ist es, mithilfe von gruppenbasierter Lizenzierung die Benutz
 
 3.  Fügen Sie der Zielgruppe einen Batch von Benutzern hinzu. Die gruppenbasierte Lizenzierung übernimmt die Änderung und versucht, die *Ziellizenz* zuzuweisen. Die Zuweisung schlägt aufgrund von Konflikten zwischen Diensten in den beiden Produkten fehl. Die gruppenbasierte Lizenzierung zeichnet das Fehlschlagen für jeden Benutzer als Fehler auf. Dieser Prozess kann je nach Größe des Batches und anderen Aktivitäten im Mandanten längere Zeit dauern.
 
-4.  Stellen Sie sicher, dass der Batch von Benutzern von vollständig von der gruppenbasierten Lizenzierung verarbeitet wird. Vergewissern Sie sich, dass der Konfliktfehler für jeden Benutzer aufgezeichnet wurde. Stellen Sie sicher, dass für keinen Benutzer ein unerwarteter Fehler aufgetreten ist. Weitere Informationen zu Fehlern finden Sie unter [Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
+4.  Stellen Sie sicher, dass der Batch von Benutzern von vollständig von der gruppenbasierten Lizenzierung verarbeitet wird. Vergewissern Sie sich, dass der Konfliktfehler für jeden Benutzer aufgezeichnet wurde. Stellen Sie sicher, dass für keinen Benutzer ein unerwarteter Fehler aufgetreten ist. Weitere Informationen zu Fehlern finden Sie unter [Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
 
 5.  An diesem Punkt ist den Benutzern weiterhin die *Quelllizenz* zugewiesen und es liegt ein Fehler aufgrund eines Konflikts für die *Ziellizenz* vor. Die *Ziellizenz* ist den Benutzern also noch nicht zugewiesen.
 
@@ -317,7 +317,7 @@ Dieser Abschnitt enthält den erforderlichen PowerShell-Code zum Ausführen der 
 >[!WARNING]
 >Dieser Code dient als Beispiel zu Demonstrationszwecken. Wenn Sie ihn in Ihrer Umgebung verwenden möchten, sollten Sie den Code zunächst in kleinerem Umfang oder in einem separaten Testmandanten testen. Passen Sie den Code hierzu ggf. an die spezifischen Anforderungen Ihrer Umgebung an.
 
-Folgen Sie zum Ausführen des Codes den Anweisungen in den [Bibliotheken für Azure AD PowerShell v1.0](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0). Führen Sie vor dem Ausführen des Skripts das Cmdlet `connect-msolservice` aus, um sich beim Mandanten anzumelden.
+Folgen Sie zum Ausführen des Codes den Anweisungen in den [Bibliotheken für Azure AD PowerShell v1.0](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0). Führen Sie vor dem Ausführen des Skripts das Cmdlet `connect-msolservice` aus, um sich beim Mandanten anzumelden.
 
 ```
 # BEGIN: Helper functions that are used in the scripts.

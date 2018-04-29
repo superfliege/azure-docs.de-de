@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/26/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 349661352d17b015d4c605b39f1e42aa482949ac
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: cbc1efaee7404c3ffc82acea0846136c43eba2a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Generieren von Signieranforderungen für Azure Stack-Zertifikate
 
@@ -49,7 +49,7 @@ Ihr System muss die folgenden Voraussetzungen erfüllen, bevor Sie die Zertifika
 
 Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu überprüfen: 
 
-1.  Installieren Sie AzsReadinessChecker an einer PowerShell-Eingabeaufforderung (5.1 oder höher), indem Sie das folgende Cmdlet ausführen:
+1.  Führen Sie an einer PowerShell-Eingabeaufforderung (5.1 oder höher) das folgende Cmdlet aus, um AzsReadinessChecker zu installieren:
 
     ````PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
@@ -82,13 +82,13 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu
 5. So generieren Sie eine einzige Zertifikatsanforderung mit mehreren alternativen Antragstellernamen, einschließlich derjenigen, die für PaaS-Dienste benötigt werden
 
     ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleSAN -OutputRequestPath $OutputDirectory -IncludePaaS
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IncludePaaS
     ````
 
 6. So generieren Sie individuelle Zertifikatsignieranforderungen für jeden DNS-Namen ohne PaaS-Dienste
 
     ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleSAN -OutputRequestPath $OutputDirectory
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory
     ````
 
 7. Überprüfen Sie die Ausgabe:

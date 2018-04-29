@@ -2,7 +2,7 @@
 title: 'Endbenutzerauthentifizierung: .NET SDK mit Data Lake Store mit Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von Azure Active Directory mit .NET SDK umsetzen.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: ea71743e775da8cfd85ecbd20e9c5981a198e05c
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 524b00c9fac8b874576cb756c1c8ee39e15e9882
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-net-sdk"></a>Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von .NET SDK
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des .NET SDK die Authentifizier
    4. Schließen Sie den **NuGet-Paket-Manager**.
 
 6. Öffnen Sie **Program.cs**.
-7. Ersetzen Sie die using-Anweisungen durch die folgenden Zeilen:
+7. Ersetzen Sie die „using“-Anweisungen durch die folgenden Zeilen:
 
     ```csharp
     using System;

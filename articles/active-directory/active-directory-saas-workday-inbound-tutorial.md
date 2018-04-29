@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b632622868480638174b616780441e13c16a52c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -468,7 +468,7 @@ Falls sich Ihr Azure Active Directory-Mandant in einem der europäischen Datence
 
 **Behandeln von Problemen mit dem Agent**
 
-Das [Windows-Ereignisprotokoll](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx) auf dem Windows Server-Computer, der als Host für den Agent fungiert, enthält Ereignisse für alle Vorgänge, die der Agent ausgeführt hat. So zeigen Sie diese Ereignisse an:
+Das [Windows-Ereignisprotokoll](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) auf dem Windows Server-Computer, der als Host für den Agent fungiert, enthält Ereignisse für alle Vorgänge, die der Agent ausgeführt hat. So zeigen Sie diese Ereignisse an:
     
 1. Öffnen Sie **Eventvwr.msc**.
 2. Klicken Sie auf **Windows-Protokolle > Anwendung**.
@@ -491,7 +491,7 @@ Nach Abschluss der Teile 1 bis 3 können Sie im Azure-Portal den Bereitstellungs
 
 4. Im Azure-Portal können Sie sich auf der Registerkarte **Überwachungsprotokolle** jederzeit ansehen, welche Aktionen der Bereitstellungsdienst ausgeführt hat. Die Überwachungsprotokolle enthalten alle einzelnen Synchronisierungsereignisse des Bereitstellungsdiensts – beispielsweise, welche Benutzer in Workday gelesen und anschließend Active Directory hinzugefügt oder dort aktualisiert wurden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](active-directory-saas-provisioning-reporting.md)**
 
-5.  Prüfen Sie im [Windows-Ereignisprotokoll](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx) auf dem Windows Server-Computer, der als Host für den Agent fungiert, ob neue Fehler oder Warnungen vorliegen. Starten Sie zum Anzeigen dieser Ereignisse **Eventvwr.msc** auf dem Server, und klicken Sie auf **Windows-Protokolle > Anwendung**. Alle bereitstellungsbezogenen Meldungen werden unter der Quelle **AADSyncAgent** protokolliert. 
+5.  Prüfen Sie im [Windows-Ereignisprotokoll](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) auf dem Windows Server-Computer, der als Host für den Agent fungiert, ob neue Fehler oder Warnungen vorliegen. Starten Sie zum Anzeigen dieser Ereignisse **Eventvwr.msc** auf dem Server, und klicken Sie auf **Windows-Protokolle > Anwendung**. Alle bereitstellungsbezogenen Meldungen werden unter der Quelle **AADSyncAgent** protokolliert. 
     
 
 6. Anschließend wird auf der Registerkarte **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben:
@@ -819,7 +819,7 @@ Es gibt zwei Möglichkeiten zur Einhaltung der DSGVO:
 1. Extrahieren von Daten für eine Person und Entfernen der Daten dieser Person aus den Windows-Ereignisprotokollen auf Anforderung 
 2. Aufbewahrung von Windows-Ereignisprotokollen aus dem AADSyncAgent-Prozess für maximal 48 Stunden
 
-Informationen zum Konfigurieren der Datenaufbewahrung für die Windows-Ereignisprotokolle finden Sie unter [Settings for event logs](https://technet.microsoft.com/en-us/library/cc952132.aspx) (Einstellungen für Ereignisprotokolle). Allgemeine Informationen zum Windows-Ereignisprotokoll finden Sie in [diesem Artikel](https://msdn.microsoft.com/en-us/library/windows/desktop/aa385772.aspx).
+Informationen zum Konfigurieren der Datenaufbewahrung für die Windows-Ereignisprotokolle finden Sie unter [Settings for event logs](https://technet.microsoft.com/library/cc952132.aspx) (Einstellungen für Ereignisprotokolle). Allgemeine Informationen zum Windows-Ereignisprotokoll finden Sie in [diesem Artikel](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

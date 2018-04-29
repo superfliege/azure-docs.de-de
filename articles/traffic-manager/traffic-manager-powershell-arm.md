@@ -1,6 +1,6 @@
 ---
 title: Verwenden von PowerShell zum Verwalten von Traffic Manager in Azure | Microsoft Docs
-description: "Verwenden von PowerShell für Traffic Manager mit Azure Resource Manager"
+description: Verwenden von PowerShell für Traffic Manager mit Azure Resource Manager
 services: traffic-manager
 documentationcenter: na
 author: kumudd
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1cd7bd7e32c96398d72c7cd3b51e2b456d60f01d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 951e845e23a1ed0cbdc83fc24a97a545f00c52ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Verwenden von PowerShell zum Verwalten von Traffic Manager
 
@@ -56,9 +56,9 @@ $profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName M
 
 In der folgenden Tabelle sind die Parameter beschrieben:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
-| Name |Der Ressourcenname für die Traffic Manager-Profilressource. Profile in der gleichen Ressourcengruppe müssen eindeutige Namen aufweisen. Dieser Name unterscheidet sich von den DNS-Namen, die für DNS-Abfragen verwendet werden. |
+| NAME |Der Ressourcenname für die Traffic Manager-Profilressource. Profile in der gleichen Ressourcengruppe müssen eindeutige Namen aufweisen. Dieser Name unterscheidet sich von den DNS-Namen, die für DNS-Abfragen verwendet werden. |
 | ResourceGroupName |Name der Ressourcengruppe, in der die Profilressource enthalten ist |
 | TrafficRoutingMethod |Gibt die Routingmethode an. Hiermit wird ermittelt, welcher Endpunkt als Reaktion auf eine DNS-Abfrage zurückgegeben wird. Mögliche Werte sind „Leistung“, „Gewichtung“ und „Priorität“. |
 | RelativeDnsName |Gibt den Hostnamenteil des DNS-Namens an, der von diesem Traffic Manager-Profil bereitgestellt wird. Dieser Wert wird mit dem DNS-Domänennamen kombiniert, der von Azure Traffic Manager zum Erstellen des vollqualifizierten Domänennamens (FQDN) des Profils verwendet wird. So wird z.B. der Wert „Contoso“ zu „contoso.trafficmanager.net“. |
@@ -203,6 +203,18 @@ In diesem Beispiel fügen wir einem vorhandenen übergeordneten Profil ein vorha
 ```powershell
 $child = Get-AzureRmTrafficManagerEndpoint -Name child -ResourceGroupName MyRG
 New-AzureRmTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceGroupName MyRG -Type NestedEndpoints -TargetResourceId $child.Id -EndpointStatus Enabled -EndpointLocation "North Europe" -MinChildEndpoints 2
+```
+
+## <a name="adding-endpoints-from-another-subscription"></a>Hinzufügen von Endpunkten aus einem anderen Abonnement
+
+Der Traffic Manager kann mit Endpunkten aus anderen Abonnements verwendet werden. Um die erforderliche Eingabe abzurufen, müssen Sie zum Abonnement mit dem Endpunkt wechseln, der zum Traffic Manager hinzufügt werden soll. Dann müssen Sie mit dem Traffic Manager-Profil zu den Abonnements wechseln und diesen den Endpunkt hinzufügen. Im folgenden Beispiel wird gezeigt, wie dies mit einer öffentlichen IP-Adresse implementiert wird.
+
+```powershell
+Set-AzureRmContext -SubscriptionId $EndpointSubscription
+$ip = Get-AzureRmPublicIpAddress -Name $IpAddresName -ResourceGroupName $EndpointRG
+
+Set-AzureRmContext -SubscriptionId $trafficmanagerSubscription
+New-AzureRmTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName -ResourceGroupName $TrafficManagerRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
 ```
 
 ## <a name="update-a-traffic-manager-endpoint"></a>Aktualisieren eines Traffic Manager-Endpunkts

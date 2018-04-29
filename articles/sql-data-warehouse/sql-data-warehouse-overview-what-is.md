@@ -1,25 +1,20 @@
 ---
-title: Was ist Azure SQL Data Warehouse? | Microsoft Docs
-description: "Verteilte Datenbank der Enterprise-Klasse, die mehrere Petabyte an relationalen und nicht relationalen Daten verarbeiten kann Sie ist das branchenweit erste Cloud-Data Warehouse mit Funktionen zum Vergrößern, Verkleinern und Anhalten innerhalb weniger Sekunden."
+title: Was ist Azure SQL Data Warehouse? | Microsoft-Dokumentation
+description: Verteilte Datenbank der Enterprise-Klasse, die mehrere Petabyte an relationalen und nicht relationalen Daten verarbeiten kann Sie ist das branchenweit erste Cloud-Data Warehouse mit Funktionen zum Vergrößern, Verkleinern und Anhalten innerhalb weniger Sekunden.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jenniehubbard
-editor: 
-ms.assetid: 4006c201-ec71-4982-b8ba-24bba879d7bb
+author: igorstanko
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: hero-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: overview
-ms.date: 10/23/2017
-ms.author: jrj
-ms.openlocfilehash: 7fd17c29c413905084c6b3736018d111d3b28fea
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.topic: overview
+ms.component: design
+ms.date: 04/17/2018
+ms.author: igorstan
+ms.reviewer: igorstan
+ms.openlocfilehash: 57b94a57ae0279a391cb4269f7b1625499748bae
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Was ist Azure SQL Data Warehouse?
 
@@ -37,13 +32,6 @@ SQL Data Warehouse speichert Daten in relationalen Tabellen mit spaltenbasiertem
 
 Die Analyseergebnisse können an Berichtsdatenbanken oder Anwendungen auf der ganzen Welt übermittelt werden. Business Analysts können so Erkenntnisse gewinnen und fundierte Geschäftsentscheidungen treffen.
 
-## <a name="optimization-choices"></a>Optimierungsoptionen
-
-Die auf Flexibilität ausgelegten [Leistungsstufen](performance-tiers.md) von SQL Data Warehouse ermöglichen die Erfüllung von Datenanforderungen jeglicher Größe. Sie können sich für ein Data Warehouse mit optimierter Elastizität oder für ein Data Warehouse mit Computeoptimierung entscheiden. 
-
-- Die **Leistungsstufe „Optimiert für Elastizität“** trennt die Compute- und die Speicherebene in der Architektur. Diese Option eignet sich besonders für Workloads, die durch häufige Skalierung optimal von der Trennung zwischen Compute und Speicher profitieren können, um vorübergehende Aktivitätsspitzen zu unterstützen. Diese Computestufe hat den niedrigsten Einstiegspreis und deckt dank Skalierung den größten Teil der Kundenworkloads ab.
-
-- Die **Leistungsstufe „Optimiert für Compute“** nutzt die neueste Azure-Hardware, um einen neuen NVMe-SSD-Zwischenspeicher einzuführen, der dafür sorgt, dass besonders häufig verwendete Daten in der Nähe der CPUs bleiben – also genau dort, wo Sie sie haben möchten. Dank automatischem Tiering des Speichers eignet sich diese Leistungsstufe hervorragend für komplexe Abfragen, da sämtliche Eingaben/Ausgaben lokal auf der Computeebene abgewickelt werden. Darüber hinaus wird der Columnstore erweitert, um eine unbegrenzte Menge an Daten in Ihrem SQL Data Warehouse speichern zu können. Die Leistungsstufe „Optimiert für Compute“ bietet die größtmögliche Skalierbarkeit und ermöglicht eine Skalierung auf bis zu 30.000 cDWU (compute Data Warehouse Units). Diese Stufe empfiehlt sich für Workloads mit kontinuierlich hohem Leistungsbedarf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht haben, können Sie sich nun darüber informieren, wie Sie schnell [eine SQL Data Warehouse-Instanz erstellen][create a SQL Data Warehouse] und [Beispieldaten][load sample data] laden. Falls Sie mit Azure noch nicht vertraut sind und auf neue Terminologie stoßen, ist das [Azure-Glossar][Azure glossary] sehr nützlich. Weitere SQL Data Warehouse-Ressourcen:  

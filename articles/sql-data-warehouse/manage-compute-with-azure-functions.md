@@ -1,33 +1,28 @@
 ---
-title: "Azure SQL Data Warehouse – Verwenden von Azure Functions zum Automatisieren von SQL Data Warehouse-Computeebenen | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie Azure Functions zum Verwalten der Computevorgänge Ihres Data Warehouse verwenden."
+title: 'Tutorial: Verwalten von Computeressourcen mit Azure Functions in Azure SQL Data Warehouse | Microsoft-Dokumentation'
+description: Es wird beschrieben, wie Sie Azure Functions zum Verwalten der Computevorgänge Ihres Data Warehouse verwenden.
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: johnmac
-editor: barbkess
-ms.assetid: 52DFC191-E094-4B04-893F-B64D5828A901
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: hero-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: quickstart
-ms.date: 11/06/2017
-ms.author: elbutter
-ms.openlocfilehash: 8947da9d34261be46ad9aea961b6020141484172
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/27/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: 48428ef329de4719a25afd20c21ac102bba540a8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="use-azure-functions-to-automate-sql-dw-compute-levels"></a>Verwenden von Azure Functions zum Automatisieren von SQL DW-Computeebenen
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Verwalten von Computeressourcen mit Azure Functions in Azure SQL Data Warehouse
 
-In diesem Tutorial wird veranschaulicht, wie Sie Azure Functions zum Verwalten der Computeebenen Ihres Azure SQL Data Warehouse verwenden können. Diese Architekturen werden für die Nutzung mit dem SQL Data Warehouse [Optimiert für Elastizität][Performance Tiers] empfohlen.
+In diesem Tutorial werden Computeressourcen für ein Data Warehouse mit Azure Functions in Azure SQL Data Warehouse verwaltet.
 
 Zum Nutzen einer Azure-Funktionen-App mit SQL Data Warehouse müssen Sie ein [Dienstprinzipalkonto](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) mit Zugriff vom Typ „Mitwirkender“ unter demselben Abonnement wie Ihre Data Warehouse-Instanz erstellen. 
 
-## <a name="deploy-timer-based-scaler-with-an-azure-resource-manager-template"></a>Bereitstellen einer zeitgeberbasierten Skalierungsfunktion mit einer Azure Resource Manager-Vorlage
+## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Bereitstellen einer zeitgeberbasierten Skalierungsfunktion mit einer Azure Resource Manager-Vorlage
 
 Sie benötigen die folgenden Informationen, um die Vorlage bereitzustellen:
 
@@ -39,7 +34,7 @@ Sie benötigen die folgenden Informationen, um die Vorlage bereitzustellen:
 - Dienstprinzipal-Anwendungs-ID
 - Geheimer Schlüssel des Dienstprinzipals
 
-Stellen Sie diese Vorlage bereit, nachdem Sie die oben angegebenen Informationen beschafft haben:
+Stellen Sie diese Vorlage bereit, nachdem Sie die zuvor angegebenen Informationen ermittelt haben:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
@@ -47,17 +42,17 @@ Stellen Sie diese Vorlage bereit, nachdem Sie die oben angegebenen Informationen
 
 Nach dem Bereitstellen der Vorlage sollten drei neue Ressourcen vorhanden sein: ein kostenloser Azure App Service-Plan, ein nutzungsbasierter Funktionen-App-Plan und ein Speicherkonto für die Verarbeitung der Protokollierung und der Warteschlange für die Vorgänge. Fahren Sie mit dem Lesen der anderen Abschnitte fort, um zu erfahren, wie Sie die bereitgestellten Funktionen an Ihre Anforderungen anpassen.
 
-### <a name="change-the-scale-up-or-scale-down-compute-level"></a>Ändern der Computeebene für das zentrale Hochskalieren oder Herunterskalieren
+## <a name="change-the-compute-level"></a>Ändern der Computeebene
 
 1. Navigieren Sie zu Ihrem Funktionen-App-Dienst. Wenn Sie die Vorlage mit den Standardwerten bereitgestellt haben, sollte dieser Dienst den Namen *DWOperations* haben. Nach dem Öffnen Ihrer Funktionen-App sollte zu sehen sein, dass für Ihren Funktionen-App-Dienst fünf Funktionen bereitgestellt wurden. 
 
    ![Funktionen, die mit der Vorlage bereitgestellt werden](media/manage-compute-with-azure-functions/five-functions.png)
 
-2. Wählen Sie in Abhängigkeit davon, ob Sie die Zeit für das zentrale Hoch- oder Herunterskalieren ändern möchten, die Option *DWScaleDownTrigger* oder *DWScaleUpTrigger*. Wählen Sie in der Dropdownliste die Option „Integrieren“.
+2. Wählen Sie in Abhängigkeit davon, ob Sie die Zeit für das zentrale Hoch- oder Herunterskalieren ändern möchten, die Option *DWScaleDownTrigger* oder *DWScaleUpTrigger*. Wählen Sie im Dropdownmenü „Integrieren“ aus.
 
    ![Auswählen von „Integrieren“ als Funktion](media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. Derzeit sollte der angezeigte Wert *%ScaleDownTime%* oder *%ScaleUpTime%* lauten. Diese Werte geben an, dass der Zeitplan auf Werten basiert, die in Ihren [Anwendungseinstellungen][Application Settings] definiert sind. Sie können dies vorerst ignorieren und den Zeitplan basierend auf den nächsten Schritten auf Ihre bevorzugte Zeit festlegen.
+3. Derzeit sollte der angezeigte Wert *%ScaleDownTime%* oder *%ScaleUpTime%* lauten. Diese Werte geben an, dass der Zeitplan auf Werten basiert, die in Ihren [Anwendungseinstellungen][Application Settings] definiert sind. Sie können diesen Wert vorerst ignorieren und den Zeitplan basierend auf den nächsten Schritten auf Ihre bevorzugte Zeit festlegen.
 
 4. Fügen Sie im Zeitplanbereich die Zeit per CRON-Ausdruck hinzu, um anzugeben, wie oft für SQL Data Warehouse das zentrale Hochskalieren durchgeführt werden soll. 
 
@@ -68,10 +63,10 @@ Nach dem Bereitstellen der Vorlage sollten drei neue Ressourcen vorhanden sein: 
   {second} {minute} {hour} {day} {month} {day-of-week}
   ```
 
-  *"0 30 9 * * 1-5"* steht beispielsweise für eine Auslösung an jedem Wochentag um 9:30 Uhr. Weitere Informationen finden Sie im Artikel mit den [Zeitplanbeispielen][schedule examples] für Azure Functions.
+  *"0 30 9 * * 1-5"* steht beispielsweise für eine Auslösung an jedem Werktag um 9:30 Uhr. Weitere Informationen finden Sie im Artikel mit den [Zeitplanbeispielen][schedule examples] für Azure Functions.
 
 
-### <a name="change-the-scale-up-or-scale-down-time"></a>Ändern der Zeit für das zentrale Hoch- oder Herunterskalieren
+## <a name="change-the-time-of-the-scale-operation"></a>Ändern des Zeitpunkts des Skalierungsvorgangs
 
 1. Navigieren Sie zu Ihrem Funktionen-App-Dienst. Wenn Sie die Vorlage mit den Standardwerten bereitgestellt haben, sollte dieser Dienst den Namen *DWOperations* haben. Nach dem Öffnen Ihrer Funktionen-App sollte zu sehen sein, dass für Ihren Funktionen-App-Dienst fünf Funktionen bereitgestellt wurden. 
 
@@ -79,9 +74,9 @@ Nach dem Bereitstellen der Vorlage sollten drei neue Ressourcen vorhanden sein: 
 
    ![Ändern der Funktionstrigger-Computeebene](media/manage-compute-with-azure-functions/index-js.png)
 
-3. Ändern Sie den Wert von *ServiceLevelObjective* in die gewünschte Ebene, und wählen Sie „Speichern“. Dies ist die Computeebene, auf die Ihre Data Warehouse-Instanz basierend auf dem im Abschnitt „Integrieren“ definierten Zeitplan skaliert wird.
+3. Ändern Sie den Wert von *ServiceLevelObjective* in die gewünschte Ebene, und wählen Sie „Speichern“. Dieser Wert ist die Computeebene, auf die Ihre Data Warehouse-Instanz basierend auf dem im Abschnitt „Integrieren“ definierten Zeitplan skaliert wird.
 
-### <a name="use-pause-or-resume-instead-of-scale"></a>Verwenden des Anhaltens/Fortsetzens anstelle der Skalierung 
+## <a name="use-pause-or-resume-instead-of-scale"></a>Verwenden des Anhaltens/Fortsetzens anstelle der Skalierung 
 
 Derzeit sind standardmäßig die Funktionen *DWScaleDownTrigger* und *DWScaleUpTrigger* aktiviert. Wenn Sie stattdessen die Funktion zum Anhalten und Fortsetzen verwenden möchten, können Sie *DWPauseTrigger* oder *DWResumeTrigger* aktivieren.
 
@@ -95,13 +90,13 @@ Derzeit sind standardmäßig die Funktionen *DWScaleDownTrigger* und *DWScaleUpT
 
 3. Navigieren Sie für die Trigger jeweils zur Registerkarte *Integrieren*, um den Zeitplan zu ändern.
 
-   [!NOTE]: The functional difference between the scaling triggers and the pause/resume triggers is the message that is sent to the queue. See [Add a new trigger function][Add a new trigger function] for more information.
+   > [!NOTE]
+   > Die funktionelle Unterschied zwischen den Skalierungstriggern und den Triggern zum Anhalten/Fortsetzen ist die Nachricht, die an die Warteschlange gesendet wird. Weitere Informationen finden Sie unter [Hinzufügen einer neuen Triggerfunktion][Add a new trigger function].
 
 
+## <a name="add-a-new-trigger-function"></a>Hinzufügen einer neuen Triggerfunktion
 
-### <a name="add-a-new-trigger-function"></a>Hinzufügen einer neuen Triggerfunktion
-
-Derzeit sind nur zwei Skalierungsfunktionen in der Vorlage enthalten. Dies bedeutet, dass Sie im Laufe eines Tags nur einmal zentral herunter- und hochskalieren können. Sie müssen einen weiteren Trigger hinzufügen, um eine feinere Steuerung zu ermöglichen, z.B. mehrfaches zentrales Herunterskalieren an einem Tag oder Nutzung von unterschiedlichen Skalierungsverhalten am Wochenende.
+Derzeit sind nur zwei Skalierungsfunktionen in der Vorlage enthalten. Mit diesen Funktionen können Sie im Laufe eines Tags nur einmal zentral herunter- und hochskalieren. Sie müssen einen weiteren Trigger hinzufügen, um eine präzisere Steuerung zu ermöglichen, z.B. mehrfaches zentrales Herunterskalieren an einem Tag oder Nutzung von unterschiedlichen Skalierungsverhalten am Wochenende.
 
 1. Erstellen Sie eine neue leere Funktion. Wählen Sie die Schaltfläche *+* neben „Functions“, um den Bereich mit der Funktionsvorlage anzuzeigen.
 
@@ -140,34 +135,34 @@ Derzeit sind nur zwei Skalierungsfunktionen in der Vorlage enthalten. Dies bedeu
    ```
 
 
-### <a name="complex-scheduling"></a>Komplexe Zeitpläne
+## <a name="complex-scheduling"></a>Komplexe Zeitpläne
 
 In diesem Abschnitt wird kurz demonstriert, wie Sie eine komplexere Zeitplanung für das Anhalten, Fortsetzen und Skalieren erreichen.
 
-#### <a name="example-1"></a>Beispiel 1:
+### <a name="example-1"></a>Beispiel 1:
 
 Tägliches zentrales Hochskalieren um 8:00 Uhr auf DW600 und zentrales Herunterskalieren um 20:00 Uhr auf DW200
 
-| Funktion  | Zeitplan     | Vorgang                                |
+| Funktion  | Schedule     | Vorgang                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW600"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-#### <a name="example-2"></a>Beispiel 2: 
+### <a name="example-2"></a>Beispiel 2: 
 
 Tägliches zentrales Hochskalieren um 8:00 Uhr auf DW1000, zentrales Herunterskalieren auf DW600 um 16:00 Uhr und auf DW200 um 22:00 Uhr
 
-| Funktion  | Zeitplan     | Vorgang                                |
+| Funktion  | Schedule     | Vorgang                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
 | Function3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-#### <a name="example-3"></a>Beispiel 3: 
+### <a name="example-3"></a>Beispiel 3: 
 
 Zentrales Hochskalieren um 8:00 Uhr auf DW1000, zentrales Herunterskalieren auf DW600 um 16:00 Uhr an Wochentagen; Anhalten am Freitag um 23:00 Uhr, Fortsetzen am Montag um 7:00 Uhr
 
-| Funktion  | Zeitplan       | Vorgang                                |
+| Funktion  | Schedule       | Vorgang                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -188,5 +183,3 @@ Sehen Sie sich das [Beispielrepository](https://github.com/Microsoft/sql-data-wa
 
 [Application Settings]: ../azure-functions/functions-how-to-use-azure-function-app-settings.md
 [Add a new trigger function]: manage-compute-with-azure-functions.md#add-a-new-trigger-function
-
-[Performance Tiers]: performance-tiers.md

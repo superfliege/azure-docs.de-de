@@ -1,22 +1,22 @@
 ---
-title: "Dokumentation für den Azure-Ratgeber – Tutorials | Microsoft-Dokumentation"
-description: 
+title: Dokumentation zum Azure Advisor – Tutorials | Microsoft-Dokumentation
+description: ''
 services: advisor
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: advisor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 29aa1bfcc0060e456c1e4b4b13ff7857fcff8373
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: b7bf7931bcf25e03430218c973ba8e283738d64c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-advisor-documentation"></a>Azure Advisor-Dokumentation
 
@@ -42,7 +42,7 @@ Bei Azure Advisor handelt es sich um einen personalisierten Cloudberater, der Si
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/resources/videos/index/?services=advisor">
+        <a href="https://azure.microsoft.com/resources/videos/index/?services=advisor">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -52,7 +52,7 @@ Bei Azure Advisor handelt es sich um einen personalisierten Cloudberater, der Si
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure-Ratgeber – Videobibliothek</h3>
+                        <h3>Azure Advisor – Videobibliothek</h3>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@ Bei Azure Advisor handelt es sich um einen personalisierten Cloudberater, der Si
 
 ---
 
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">

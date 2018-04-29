@@ -1,11 +1,11 @@
 ---
 title: Einrichten eines Azure Service Fabric-Linux-Clusters unter Windows | Microsoft-Dokumentation
-description: "In diesem Artikel wird beschrieben, wie Sie Service Fabric-Linux-Cluster einrichten, die auf Windows-Entwicklungscomputern ausgeführt werden. Dies ist insbesondere für die plattformübergreifende Entwicklung von Nutzen."
+description: In diesem Artikel wird beschrieben, wie Sie Service Fabric-Linux-Cluster einrichten, die auf Windows-Entwicklungscomputern ausgeführt werden. Dies ist insbesondere für die plattformübergreifende Entwicklung von Nutzen.
 services: service-fabric
 documentationcenter: .net
 author: suhuruli
 manager: mfussell
-editor: 
+editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
 ms.devlang: java
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: db6ad8b83ce34a8b86de822bc074e8a13345a1b4
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 89c1cf36c3b92376dedb1cb29d190c4c6d8f619b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Einrichten eines Linux-Service Fabric-Clusters auf Ihrem Windows-Entwicklungscomputer
 
@@ -36,7 +36,7 @@ Linux-basierte Service Fabric-Cluster werden nicht nativ unter Windows ausgefüh
 
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>Erstellen eines lokalen Containers und Einrichten von Service Fabric
-Führen Sie die folgenden Schritte aus, um einen lokalen Docker-Container einzurichten und darin einen Service Fabric-Cluster auszuführen:
+Führen Sie die folgenden Schritte in PowerShell aus, um einen lokalen Docker-Container einzurichten und darin einen Service Fabric-Cluster auszuführen:
 
 1. Rufen Sie das Image per Pullvorgang aus dem Docker-Hub-Repository ab:
 

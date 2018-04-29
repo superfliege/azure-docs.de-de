@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 9153efb73e84d7b84a732217b92a9c66617e90ae
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 602cd6c3b2be8881bebbcebe30ec2520358b731f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Melden von Azure Stack-Nutzungsdaten an Azure 
 
@@ -27,7 +27,7 @@ Nutzungsdaten, auch Verbrauchsdaten genannt, stellen die Menge der verwendeten R
 Azure Stack-Systeme mit mehreren Knoten, die das nutzungsbasierte Abrechnungsmodell verwenden, sollten die Nutzungsdaten aus Abrechnungsgründen an Azure melden.  Azure Stack-Betreiber sollten ihre Azure Stack-Instanz so konfigurieren, dass diese Nutzungsdaten an Azure meldet.
 
 > [!NOTE]
-> Die Nutzungsdaten-Berichterstellung ist für die Benutzer der Azure Stack-Systeme mit mehreren Knoten erforderlich, die im Rahmen des nutzungsbasierten Modells lizenziert sind. Sie ist optional für Kunden, die im Rahmen des Kapazitätsmodells lizenziert sind (siehe [Azure Stack erwerben](https://azure.microsoft.com/en-us/overview/azure-stack/how-to-buy/)). Für Azure Stack Development Kit-Benutzer können Azure Stack-Betreiber Nutzungsdaten melden und die Funktion testen. Allerdings werden Benutzern keinerlei Kosten berechnet, die für die Nutzung anfallen. 
+> Die Nutzungsdaten-Berichterstellung ist für die Benutzer der Azure Stack-Systeme mit mehreren Knoten erforderlich, die im Rahmen des nutzungsbasierten Modells lizenziert sind. Sie ist optional für Kunden, die im Rahmen des Kapazitätsmodells lizenziert sind (siehe [Azure Stack erwerben](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)). Für Azure Stack Development Kit-Benutzer können Azure Stack-Betreiber Nutzungsdaten melden und die Funktion testen. Allerdings werden Benutzern keinerlei Kosten berechnet, die für die Nutzung anfallen. 
 
 
 ![Abrechnungsablauf](media/azure-stack-usage-reporting/billing-flow.png)

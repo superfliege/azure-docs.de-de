@@ -1,11 +1,11 @@
 ---
 title: Grundlegendes zum Azure IoT Hub-D2C-Messaging | Microsoft-Dokumentation
-description: "Entwicklerhandbuch: Verwenden des D2C-Messaging mit IoT Hub. Enthält Informationen zum Senden von Telemetriedaten und anderen Daten und zum Übermitteln von Nachrichten mithilfe von Routing."
+description: 'Entwicklerhandbuch: Verwenden des D2C-Messaging mit IoT Hub. Enthält Informationen zum Senden von Telemetriedaten und anderen Daten und zum Übermitteln von Nachrichten mithilfe von Routing.'
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 48b904818c80b9175d45b88345634f11cf4a4812
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 54b2961713f529438f5508bb0615824ec6bec214
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>Senden von D2C-Nachrichten an IoT Hub
 
@@ -32,7 +32,7 @@ D2C-Messaging mit IoT Hub weist folgende Merkmale auf:
 * D2C-Nachrichten sind dauerhafter Art und werden bis zu sieben Tage lang auf dem Standardendpunkt der IoT Hub-Instanz (**messages/events**) aufbewahrt.
 * D2C-Nachrichten dürfen maximal 256 KB groß sein. Sie können in Batches gruppiert werden, um den Sendevorgang zu optimieren. Die Batches können maximal 256 KB groß sein.
 * Wie im Abschnitt [Verwalten des Zugriffs auf IoT Hub][lnk-devguide-security] erläutert, ermöglicht IoT Hub Authentifizierung und Zugriffssteuerung auf Gerätebasis.
-* Mit IoT Hub können Sie bis zu zehn benutzerdefinierte Endpunkte erstellen. Nachrichten werden basierend auf Routen, die auf Ihrem IoT Hub konfiguriert sind, an die Endpunkte gesendet. Weitere Informationen finden Sie unter [Routingregeln](#routing-rules).
+* Mit IoT Hub können Sie bis zu zehn benutzerdefinierte Endpunkte erstellen. Nachrichten werden basierend auf Routen, die auf Ihrem IoT Hub konfiguriert sind, an die Endpunkte gesendet. Weitere Informationen finden Sie unter [Routingregeln](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
 * IoT Hub ermöglicht Millionen gleichzeitig verbundener Geräte (siehe [Kontingente und Drosselung][lnk-quotas]).
 * IoT Hub erlaubt keine beliebige Partitionierung. D2C-Nachrichten werden gemäß ihrer ursprünglichen **deviceId**partitioniert.
 

@@ -1,8 +1,8 @@
 ---
 title: Erste Schritte mit der U-SQL-Sprache | Microsoft-Dokumentation
-description: "Enthält eine grundlegende Beschreibung der U-SQL-Sprache."
+description: Enthält eine grundlegende Beschreibung der U-SQL-Sprache.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
-ms.openlocfilehash: 38c4e1b9bd24ef0b8a81f6154620f3f98d3b5ac1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e7efdac8b032055b5344f34f5f9ad2679bddb107
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-u-sql"></a>Erste Schritte mit U-SQL
 U-SQL ist eine Sprache, bei der deklarative SQL mit imperativen C#-Elementen kombiniert wird, damit Sie Daten jedweden Umfangs verarbeiten können. Mit der skalierbaren Funktion für verteilte Abfragen von U-SQL können Sie Daten über relationale Speicher, z.B. Azure SQL-Datenbank, hinweg effizient analysieren. Mit U-SQL können Sie unstrukturierte Daten verarbeiten, indem Sie ein Schema zum Lesen anwenden und benutzerdefinierte Logik und UDFs einfügen. Darüber hinaus bietet U-SQL eine Erweiterbarkeit, die Ihnen eine präzisere Steuerung der Ausführung in großem Umfang ermöglicht. 
@@ -226,7 +226,7 @@ Die U-SQL-Klausel HAVING kann verwendet werden, um die Ausgabe auf Gruppen zu be
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-Erweiterte Aggregationsszenarien finden Sie in der U-SQL-Referenzdokumentation für [Aggregat-, Analyse- und Referenzfunktionen](https://msdn.microsoft.com/en-us/library/azure/mt621335.aspx).
+Erweiterte Aggregationsszenarien finden Sie in der U-SQL-Referenzdokumentation für [Aggregat-, Analyse- und Referenzfunktionen](https://msdn.microsoft.com/library/azure/mt621335.aspx).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)

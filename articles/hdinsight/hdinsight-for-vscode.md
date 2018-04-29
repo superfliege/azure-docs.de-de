@@ -12,15 +12,13 @@ ms.assetid: ''
 ms.service: HDInsight
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 8c976e5508c928943e2a5e4820f72520554f9b5d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e8dc802d67b4cd2e38ab195b771ceeaa07876e58
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Verwenden von Azure HDInsight Tools for Visual Studio Code
 
@@ -31,7 +29,7 @@ Hier erfahren Sie, wie Sie Azure HDInsight Tools for Visual Studio Code (VS Code
 
 Für die Schritte in diesem Artikel ist Folgendes erforderlich:
 
-- Ein HDInsight-Cluster.  Informationen zum Erstellen eines Clusters finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight]( hdinsight-hadoop-linux-tutorial-get-started.md).
+- Ein HDInsight-Cluster. Informationen zum Erstellen eines Clusters finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight]( hdinsight-hadoop-linux-tutorial-get-started.md).
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
 - [Mono](http://www.mono-project.com/docs/getting-started/install/). Mono wird nur für Linux und macOS benötigt.
 
@@ -102,7 +100,7 @@ Bevor Sie Skripts aus VS Code an HDInsight-Cluster übermitteln können, müssen
     - Übermitteln von PySpark-Batchskripts
     - Festlegen von Konfigurationen
 
-**So verknüpfen Sie einen Cluster**
+<a id="linkcluster"></a>**Verknüpfen eines Clusters**
 
 Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernamens oder einen Hadoop-Sicherheitscluster mithilfe des Domänenbenutzernamens (z.B. user1@contoso.com) verknüpfen.
 1. Öffnen Sie die Befehlspalette, indem Sie **STRG+UMSCHALT+P** auswählen, und geben Sie dann **HDInsight: Cluster verknüpfen** ein.
@@ -114,7 +112,7 @@ Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernam
    ![Dialogfeld „Cluster verknüpfen“](./media/hdinsight-for-vscode/link-cluster-process.png)
 
    > [!NOTE]
-   > Wir verwenden den verknüpften Benutzernamen und das Kennwort, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat. 
+   > Der verknüpfte Benutzername und das Kennwort werden verwendet, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat. 
    
 3. Sie können einen verknüpften Cluster mithilfe des Befehls **Cluster auflisten** anzeigen. Jetzt können Sie ein Skript an diesen verknüpften Cluster übermitteln.
 
@@ -277,8 +275,50 @@ Mit HDInsight Tools for Visual Studio Code können Sie auch interaktive PySpark-
 
 Nach dem Übermitteln eines Python-Auftrags werden die Übermittlungsprotokolle in Visual Studio Code im Fenster **AUSGABE** angezeigt. Die **URL der Spark-Benutzeroberfläche** und die **URL der Yarn-Benutzeroberfläche** werden ebenfalls angezeigt. Sie können die URL in einem Webbrowser öffnen, um den Auftragsstatus nachzuverfolgen.
 
-
+>[!NOTE]
+>PySpark3 wird nicht mehr in Livy 0.4 unterstützt (HDI Spark 2.2-Cluster). Für Python wird nur „PySpark“ unterstützt. Es ist ein bekanntes Problem, dass ein Fehler beim Senden an Spark 2.2 mit Python3 auftritt.
    
+## <a name="livy-configuration"></a>Livy-Konfiguration
+Livy-Konfiguration wird unterstützt. Entsprechende Einstellungen können Sie in den Projekteinstellungen im Arbeitsbereichsordner vornehmen. Weitere Details finden Sie in der [Livy-INFODATEI](https://github.com/cloudera/livy/blob/master/README.rst ).
+
++ Die Projekteinstellungen:
+
+    ![Livy-Konfiguration](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+
++ Die unterstützten Livy-Konfigurationen:   
+
+    **POST /batches**   
+    Anforderungstext
+
+    | Name | Beschreibung | Typ | 
+    | :- | :- | :- | 
+    | file | Die Datei, die die auszuführende Anwendung enthält. | Pfad (erforderlich) | 
+    | proxyUser | Der Benutzer, dessen Identität bei Auftragsausführung gewechselt wird. | Zeichenfolge | 
+    | className | Die Java-/Spark-Hauptklasse der Anwendung. | Zeichenfolge |
+    | args | Die Befehlszeilenargumente, die an die Anwendung übergeben werden sollen. | Liste von Zeichenfolgen | 
+    | jars | JAR-Dateien, die in dieser Sitzung verwendet werden. | Liste von Zeichenfolgen | 
+    | pyFiles | Python-Dateien, die in dieser Sitzung verwendet werden. | Liste von Zeichenfolgen |
+    | files | Dateien, die in dieser Sitzung verwendet werden. | Liste von Zeichenfolgen |
+    | driverMemory | Die Menge an Arbeitsspeicher, der für den Treiberprozess verwendet wird. | Zeichenfolge |
+    | driverCores | Die Anzahl von Kernen, die für den Treiberprozess verwendet wird. | int |
+    | executorMemory | Die Menge an Arbeitsspeicher, die pro Executorprozess verwendet wird. | Zeichenfolge |
+    | executorCores | Die Anzahl von Kernen, die für jeden Executor verwendet wird. | int |
+    | numExecutors | Die Anzahl von Executors, die für diese Sitzung gestartet werden. | int |
+    | archives | Die Archive, die in dieser Sitzung verwendet werden. | Liste von Zeichenfolgen |
+    | queue | Der Name der YARN-Warteschlange, an den gesendet wird. | Zeichenfolge |
+    | name | Der Name dieser Sitzung. | Zeichenfolge |
+    | conf | Eigenschaften der Spark-Konfiguration. | Zuordnung von Schlüssel=Wert |
+
+    Antworttext   
+    Das erstellte Batchobjekt
+
+    | Name | Beschreibung | Typ | 
+    | :- | :- | :- | 
+    | id | Die Sitzungs-ID | int | 
+    | appId | Die Anwendungs-ID dieser Sitzung |  Zeichenfolge |
+    | appInfo | Die detaillierten Anwendungsinformationen | Zuordnung von Schlüssel=Wert |
+    | log | Die Protokollzeilen | Liste von Zeichenfolgen |
+    | state |   Der Batchstatus | Zeichenfolge |
 
 
 ## <a name="additional-features"></a>Zusätzliche Funktionen

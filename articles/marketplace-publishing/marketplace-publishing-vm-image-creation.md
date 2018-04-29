@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: mbaldwin
-ms.openlocfilehash: f7b19066ca3fa156456766ff82afeadadc6b1efa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cb1d529f8e3eaabb4d49e8bbea03cab8e838cfa2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Anleitung zum Erstellen eines VM-Images für Azure Marketplace
 In diesem Artikel ( **Schritt 2**) werden Sie durch die Vorbereitung der virtuellen Festplatten (VHDs) geführt, die Sie im Azure Marketplace bereitstellen möchten. Ihre VHDs bilden die Grundlage Ihrer SKU. Der Prozess variiert in Abhängigkeit davon, ob Sie eine Linux- oder Windows-basierte SKU bereitstellen. Dieser Artikel deckt beide Szenarien ab. Dieser Vorgang kann parallel zum [Erstellen und Registrieren eines Kontos][link-acct-creation] ausgeführt werden.
@@ -446,7 +446,7 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe der Azure CLI.
 
     b. **`<Storage Account Key>`**: Geben Sie den Schlüssel Ihres Speicherkontos an.
 
-    c. **`<Permission Start Date>`**: Wählen Sie den Tag vor dem aktuellen Datum aus, um in Bezug auf die UTC-Zeit sicherzugehen. Wenn beispielsweise das aktuelle Datum der 26. Oktober 2016 ist, muss der Wert „10/25/2016“ lauten. Wenn Sie Azure CLI 2.0 (az-Befehl) verwenden, geben Sie bei Start- und Enddatum das Datum und die Uhrzeit an, z.B.: „10-25-2016T00:00:00Z“.
+    c. **`<Permission Start Date>`**: Wählen Sie den Tag vor dem aktuellen Datum aus, um in Bezug auf die UTC-Zeit sicherzugehen. Wenn beispielsweise das aktuelle Datum der 25. Oktober 2016 ist, muss der Wert „10/25/2016“ lauten. Wenn Sie Azure CLI 2.0 (az-Befehl) verwenden, geben Sie bei Start- und Enddatum das Datum und die Uhrzeit an, z.B.: „10-25-2016T00:00:00Z“.
 
     d. **`<Permission End Date>`**: Wählen Sie ein Datum, das mindestens drei Wochen nach dem **Startdatum** liegt. Der Wert sollte **11/02/2016** lauten. Wenn Sie Azure CLI 2.0 (az-Befehl) verwenden, geben Sie bei Start- und Enddatum das Datum und die Uhrzeit an, z.B.: „11-02-2016T00:00:00Z“.
 

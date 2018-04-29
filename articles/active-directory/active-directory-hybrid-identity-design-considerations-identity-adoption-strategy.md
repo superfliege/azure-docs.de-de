@@ -1,11 +1,11 @@
 ---
-title: "Entwerfen von Hybrididentitäten – Strategie für die Einführung in Azure | Microsoft-Dokumentation"
-description: "Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen. Nachdem diese Bedingungen erfüllt sind, wird der Benutzer authentifiziert und erhält Zugriff auf die Anwendung."
-documentationcenter: 
+title: Entwerfen von Hybrididentitäten – Strategie für die Einführung in Azure | Microsoft-Dokumentation
+description: Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen. Nachdem diese Bedingungen erfüllt sind, wird der Benutzer authentifiziert und erhält Zugriff auf die Anwendung.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e6c9cbc4f158e62092c7a9e401e618880e5ea3b6
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 290c41e62080edcd9a2fad1b5045bac4328cc4cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definieren einer Strategie zur Hybrididentitätsübernahme
 In dieser Aufgabe definieren Sie die Strategie zur Hybrididentitätsübernahme für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die hier erörtert wurden:
@@ -81,7 +81,7 @@ Wenn Sie in Aufgabe 1 ermittelt haben, dass Sie einen Drittanbieter-IdP haben od
 
 * Jeder SAML 2.0-Anbieter, der mit dem SP-Lite-Profil kompatibel ist, kann die Authentifizierung bei Azure AD und zugehörigen Anwendungen unterstützen
 * Die passive Authentifizierung wird unterstützt, was die Authentifizierung bei OWA, SPO usw. erleichtert
-* Exchange Online-Clients können über das SAML 2.0 Enhanced Client Profile (ECP) unterstützt werden
+* Exchange Online-Clients können über das SAML 2.0 Enhanced Client Profile (ECP) unterstützt werden.
 
 Sie müssen auch wissen, welche Funktionen nicht zur Verfügung stehen:
 
@@ -90,7 +90,7 @@ Sie müssen auch wissen, welche Funktionen nicht zur Verfügung stehen:
 * Der Übergang von Office zur passiven Authentifizierung erlaubt zwar die Unterstützung reiner SAML 2.0-IdPs, jedoch immer noch auf clientspezifischer Basis
 
 > [!NOTE]
-> Die aktuelle Liste finden Sie im Artikel unter „http://aka.ms/ssoproviders“.
+> Die aktuelle Liste finden Sie im Artikel unter https://aka.ms/ssoproviders.
 > 
 > 
 
@@ -196,7 +196,7 @@ Selbst wenn Sie sich für eine Lösung für Ihre Strategie entschieden haben, m�
 | Lokales AD |Multi-Factor Authentication-Server |
 
 > [!NOTE]
-> Sie sollten außerdem sicherstellen, dass die ausgewählte Entwurfsoption für die mehrstufige Authentifizierung die Features unterstützt, die für Ihren Entwurf erforderlich sind.  Weitere Informationen finden Sie unter [Auswählen der richtigen mehrstufigen Sicherheitslösung](../multi-factor-authentication/multi-factor-authentication-get-started.md#what-am-i-trying-to-secure).
+> Sie sollten außerdem sicherstellen, dass die ausgewählte Entwurfsoption für die mehrstufige Authentifizierung die Features unterstützt, die für Ihren Entwurf erforderlich sind.  Weitere Informationen finden Sie unter [Auswählen der richtigen mehrstufigen Sicherheitslösung](authentication/concept-mfa-whichversion.md#what-am-i-trying-to-secure).
 > 
 > 
 

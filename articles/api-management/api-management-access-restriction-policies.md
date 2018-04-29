@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management-Richtlinien für die Zugriffsbeschränkung | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über die Richtlinien für die Zugriffsbeschränkung, die für die Verwendung in Azure API Management verfügbar sind."
+title: Azure API Management-Richtlinien für die Zugriffsbeschränkung | Microsoft-Dokumentation
+description: Erfahren Sie mehr über die Richtlinien für die Zugriffsbeschränkung, die für die Verwendung in Azure API Management verfügbar sind.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 11cc5841d2f804f0d120dddda226bf05a0612607
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5fbb4f8a15ee7ee8b6cecbe76391e2b2a7e4be1b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -88,8 +88,8 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 ```xml  
 <rate-limit calls="number" renewal-period="seconds">  
-    <api name="name" calls="number" renewal-period="seconds">  
-        <operation name="name" calls="number" renewal-period="seconds" />  
+    <api name="API name" id="API id" calls="number" renewal-period="seconds" />  
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />  
     </api>  
 </rate-limit>  
 ```  
@@ -113,8 +113,8 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
 |set-limit|Stammelement|Ja|  
-|api|Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufratenbegrenzungen werden unabhängig voneinander angewendet.|Nein |  
-|operation|Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung auf Vorgänge innerhalb einer API zu erzwingen. Aufrufratenbegrenzungen für Produkte, APIs und Vorgänge werden unabhängig voneinander angewendet.|Nein |  
+|api|Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufratenbegrenzungen werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.|Nein |  
+|operation|Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung auf Vorgänge innerhalb einer API zu erzwingen. Aufrufratenbegrenzungen für Produkte, APIs und Vorgänge werden unabhängig voneinander angewendet. Auf „operation“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.|Nein |  
   
 ### <a name="attributes"></a>Attribute  
   
@@ -243,8 +243,8 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 ```xml  
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">  
-    <api name="name" calls="number" bandwidth="kilobytes">  
-        <operation name="name" calls="number" bandwidth="kilobytes" />  
+    <api name="API name" id="API id" calls="number" renewal-period="seconds" />  
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />  
     </api>  
 </quota>  
 ```  
@@ -268,8 +268,8 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
 |quota|Stammelement|Ja|  
-|api|Fügen Sie mindestens eins dieser Elemente hinzu, um ein Kontingent für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Kontingente werden unabhängig voneinander angewendet.|Nein |  
-|operation|Fügen Sie mindestens eins dieser Elemente hinzu, um ein Kontingent auf Vorgänge innerhalb einer API zu erzwingen. Kontingente für Produkte, APIs und Vorgänge werden unabhängig voneinander angewendet.|Nein |  
+|api|Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufkontingente werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.|Nein |  
+|operation|Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für Vorgänge innerhalb einer API zu erzwingen. Aufrufkontingente für Produkte, APIs und Vorgänge werden unabhängig voneinander angewendet. Auf „operation“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.|Nein |  
   
 ### <a name="attributes"></a>Attribute  
   

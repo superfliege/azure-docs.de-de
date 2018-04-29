@@ -2,11 +2,11 @@
 title: Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen | Microsoft-Dokumentation
 description: Informationen zum Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1c1369ea-7dfd-4b6e-978b-8f78908fd6f6
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: ae9627c6bb5e7bb099598acaa2eb29375c35593e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 74d34e708fb74daa295642d50643b78af8f6cb7a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Informationen zum Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen
 
@@ -43,10 +43,10 @@ App-Token sind JWT (JSON Web Token), die mit einem Ihrer Schlüssel signiert sin
 
 Ihr App-Token kann folgende Ansprüche enthalten:
 
-| Anspruch | Beschreibung |
+| Anspruch | BESCHREIBUNG |
 | --- | --- |
 | **ver** |Die Version des App-Tokens. Die aktuelle Version ist 0.2.0. |
-| **aud** |Der vorgesehene Empfänger des Tokens. Verwenden Sie für Power BI-Arbeitsbereichssammlungen „https://analysis.windows.net/powerbi/api“. |
+| **aud** |Der vorgesehene Empfänger des Tokens. Verwenden Sie für Power BI-Arbeitsbereichssammlungen https://analysis.windows.net/powerbi/api. |
 | **iss** |Eine Zeichenfolge, die die Anwendung angibt, die das Token ausgestellt hat. |
 | **type** |Die Art des App-Tokens, das erstellt wird. Aktuell wird nur der Typ **embed**unterstützt. |
 | **wcn** |Der Name der Arbeitsbereichssammlung, für die das Token ausgegeben wird. |
@@ -99,7 +99,7 @@ Bei der Verwendung von Einbettungstoken möchten Sie vielleicht die Nutzung der 
 
 Im Folgenden sehen Sie die verfügbaren Bereiche für Power BI-Arbeitsbereichssammlungen.
 
-|Umfang|Beschreibung|
+|Umfang|BESCHREIBUNG|
 |---|---|
 |Dataset.Read|Stellt die Berechtigung zum Lesen des angegebenen Datasets bereit.|
 |Dataset.Write|Stellt die Berechtigung zum Schreiben in das angegebene Dataset bereit.|
@@ -179,7 +179,7 @@ Nachdem aus **Power BI-Arbeitsbereichssammlungen** ein Bericht an den Benutzer g
 
 ![Beispiel eines in eine Anwendung eingebetteten Berichts](media/get-started-sample/sample-web-app.png)
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
 [Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen: Beispiel](get-started-sample.md)  

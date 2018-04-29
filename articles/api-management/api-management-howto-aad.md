@@ -1,11 +1,11 @@
 ---
-title: "Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory – Azure API Management | Microsoft-Dokumentation"
+title: Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory – Azure API Management | Microsoft-Dokumentation
 description: Erfahren Sie, wie Benutzer mithilfe von Azure Active Directory in Azure API Management autorisiert werden.
 services: api-management
 documentationcenter: API Management
-author: juliako
+author: miaojiang
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d89257cba70fb82d56fb1beef8a8efe66a8af02d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9f3669d205ab4bd24ccba53ffb532fe1d88131ac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -62,7 +62,7 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
     Auf der rechten Seite wird der Bereich **Erstellen** angezeigt. Dort geben Sie die relevanten Informationen zur Azure AD-App ein.
 17. Geben Sie einen Namen für die Anwendung ein.
 18. Wählen Sie **Web-App/API** als Anwendungstyp aus.
-19. Geben Sie als Anmelde-URL die Anmelde-URL Ihres Entwicklerportals ein. In diesem Beispiel lautet die Anmelde-URL https://apimwithaad.portal.azure-api.net/signin.
+19. Geben Sie als Anmelde-URL die Anmelde-URL Ihres Entwicklerportals ein. In diesem Beispiel ist die Anmelde-URL gleich https://apimwithaad.portal.azure-api.net/signin.
 20. Klicken Sie auf **Erstellen**, um die Anwendung zu erstellen.
 21. Um Ihre App zu finden, wählen Sie **App-Registrierungen** aus, und suchen Sie nach dem Namen.
 
@@ -87,7 +87,7 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
     Fügen Sie den Wert **Anwendungs-ID** im Fenster **Identitätsanbieter hinzufügen** in das Feld **Client-ID** ein.
 28. Wechseln Sie zurück zur Azure AD-Konfiguration, und wählen Sie **Schlüssel** aus.
 29. Erstellen Sie einen neuen Schlüssel, indem Sie einen Namen und eine Dauer angeben. 
-30. Wählen Sie **Speichern** aus. Der Schlüssel wird generiert.
+30. Wählen Sie **Speichern**aus. Der Schlüssel wird generiert.
 
     Kopieren Sie den Schlüssel in die Zwischenablage.
 
@@ -104,11 +104,11 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
 
     Sie können im Abschnitt **Zulässige Mandanten** mehrere Domänen angeben. Bevor sich Benutzer aus einer anderen Domäne als der ursprünglichen Domäne (der Domäne, in der die Anwendung registriert wurde) anmelden können, muss ein globaler Administrator dieser anderen Domäne der Anwendung Berechtigungen für den Verzeichnisdatenzugriff erteilen. Um Berechtigungen zu erteilen, müssen Sie als globaler Administrator folgendermaßen vorgehen:
     
-    a. Wechseln Sie zu `https://<URL of your developer portal>/aadadminconsent` (z.B.: https://contoso.portal.azure-api.net/aadadminconsent).
+    a. Wechseln Sie zu `https://<URL of your developer portal>/aadadminconsent` (z. B. https://contoso.portal.azure-api.net/aadadminconsent).
     
     b. Geben Sie den Domänennamen des Azure AD-Mandanten ein, auf den Zugriff erteilt werden soll.
     
-    c. Klicken Sie auf **Senden**. 
+    c. Klicken Sie auf **Submit** (Senden). 
     
     Im folgenden Beispiel versucht ein globaler Administrator von miaoaad.onmicrosoft.com, Berechtigungen für dieses spezifische Entwicklerportal zu erteilen. 
 
@@ -134,7 +134,7 @@ Um eine externe Azure AD-Gruppe zu konfigurieren, muss zunächst die Azure AD-In
 
 Externe Azure AD-Gruppen werden über die Registerkarte **Gruppen** Ihrer API Management-Instanz hinzugefügt.
 
-1. Wählen Sie die Registerkarte **Gruppen** aus.
+1. Wählen Sie die Registerkarte **Gruppen** .
 2. Klicken Sie auf die Schaltfläche **AAD-Gruppe hinzufügen**.
    ![Schaltfläche „AAD-Gruppe hinzufügen“](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. Wählen Sie die Gruppe aus, die Sie hinzufügen möchten.

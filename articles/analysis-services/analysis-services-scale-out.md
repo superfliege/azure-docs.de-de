@@ -1,24 +1,18 @@
 ---
 title: Horizontales Hochskalieren von Azure Analysis Services | Microsoft-Dokumentation
 description: Replizieren von Azure Analysis Services-Servern mittels horizontalem Hochskalieren
-services: analysis-services
-documentationcenter: 
 author: minewiskan
-manager: erikre
-editor: 
-ms.assetid: 
+manager: kfile
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/16/2018
 ms.author: owend
-ms.openlocfilehash: d00f6bbc285cca028f22ced69ad03d8a2814d76a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: ee9210953306fbe317e9ed63c02fb90452ffbd15
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -28,7 +22,7 @@ Durch horizontales Hochskalieren können Clientabfragen auf mehrere *Abfragerepl
 
 In einer typischen Serverbereitstellung fungiert ein einzelner Server sowohl als Verarbeitungs- als auch als Abfrageserver. Wenn die Anzahl von Clientabfragen für Modelle auf dem Server die QPUs (Query Processing Units) für den Tarif Ihres Servers übersteigt oder die Modellverarbeitung mit einem hohen Aufkommen von Abfrageworkloads zusammenfällt, kann sich dies negativ auf die Leistung auswirken. 
 
-Mit der horizontalen Hochskalierung können Sie einen Abfragepool mit bis zu sieben zusätzlichen Replikaten erstellen, sodass Sie zusammen mit Ihrem Server über insgesamt acht verfügen. Sie können die Anzahl von Abfragereplikaten jederzeit skalieren, um die QPU-Anforderungen in kritischen Zeiten zu erfüllen, und Sie können einen Verarbeitungsserver aus dem Abfragepool herauslösen. 
+Mit der horizontalen Hochskalierung können Sie einen Abfragepool mit bis zu sieben zusätzlichen Replikaten erstellen, sodass Sie zusammen mit Ihrem Server über insgesamt acht verfügen. Sie können die Anzahl von Abfragereplikaten jederzeit skalieren, um die QPU-Anforderungen in kritischen Zeiten zu erfüllen, und Sie können einen Verarbeitungsserver aus dem Abfragepool herauslösen. Alle Abfragereplikate werden in der gleichen Region wie Ihr Server erstellt.
 
 Verarbeitungsworkloads werden unabhängig von der Anzahl von Abfragereplikaten in einem Abfragepool nicht auf Abfragereplikate verteilt. Ein einzelner Server fungiert als Verarbeitungsserver. Abfragereplikate bedienen ausschließlich Abfragen für die Modelle, die zwischen den einzelnen Replikaten im Abfragepool synchronisiert werden. 
 
@@ -79,7 +73,13 @@ Verwenden Sie die **sync**-Operation.
 `GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
-Um die Synchronisierung über PowerShell auszuführen, nehmen Sie eine [Aktualisierung auf das neueste](https://github.com/Azure/azure-powershell/releases) AzureRM-Modul, Version 5.01 oder höher, vor. Verwendung Sie [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+Vor der Verwendung von PowerShell müssen Sie [das neueste AzureRM-Modul installieren oder aktualisieren](https://github.com/Azure/azure-powershell/releases). 
+
+Verwenden Sie [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver), um die Anzahl der Abfragereplikate festzulegen. Geben Sie den optionalen Parameter `-ReadonlyReplicaCount` an.
+
+Verwenden Sie [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance), um die Synchronisierung auszuführen.
+
+
 
 ## <a name="connections"></a>Verbindungen
 

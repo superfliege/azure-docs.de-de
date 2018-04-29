@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 264befc6c60b87d41658b4da763e477fbb7e3f8c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bbda406633f97d9a6c90bc49374268df28b68f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals
 
@@ -46,13 +46,13 @@ Um diesen Artikel abzuschließen, müssen Sie über ausreichende Berechtigungen 
 
    ![App-Registrierungen anzeigen](./media/resource-group-create-service-principal-portal/view-app-registrations.png)
 
-1. Wenn die App-Registrierungseinstellung auf **Nein** festgelegt ist, können nur Administratorbenutzer Apps registrieren. Überprüfen Sie, ob Ihr Konto ein Administrator für den Azure AD-Mandanten ist. Wählen Sie **Übersicht**, und sehen Sie sich Ihre Benutzerinformationen an. Gehen Sie wie folgt vor, wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung (aus dem vorherigen Schritt) aber auf Administratoren begrenzt ist: Bitten Sie Ihren Administrator, Ihnen entweder eine Administratorrolle zuzuweisen oder es Benutzern zu erlauben, Apps zu registrieren.
+1. Wenn die Einstellung „App-Registrierungen“ auf **Nein** festgelegt ist, können nur [globale Administratoren](../active-directory/active-directory-assign-admin-roles-azure-portal.md) Apps registrieren. Überprüfen Sie, ob Ihr Konto ein Administrator für den Azure AD-Mandanten ist. Wählen Sie **Übersicht**, und sehen Sie sich Ihre Benutzerinformationen an. Gehen Sie wie folgt vor, wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung (aus dem vorherigen Schritt) aber auf Administratoren begrenzt ist: Bitten Sie Ihren Administrator, entweder Ihnen die Rolle „Globaler Administrator“ zuzuweisen oder Benutzern zu erlauben, Apps zu registrieren.
 
    ![Benutzer suchen](./media/resource-group-create-service-principal-portal/view-user-info.png)
 
 ### <a name="check-azure-subscription-permissions"></a>Überprüfen der Berechtigungen des Azure-Abonnements
 
-Ihr Konto muss in Ihrem Azure-Abonnement über `Microsoft.Authorization/*/Write`-Zugriff verfügen, um einer Rolle eine AD-App zuzuweisen. Diese Aktion wird über die Rolle [Besitzer](../active-directory/role-based-access-built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](../active-directory/role-based-access-built-in-roles.md#user-access-administrator) gewährt. Wenn Ihr Konto der Rolle **Mitwirkender** zugewiesen ist, verfügen Sie nicht über die erforderliche Berechtigung. Beim Versuch, einer Rolle den Dienstprinzipal zuzuweisen, erhalten Sie eine Fehlermeldung.
+Ihr Konto muss in Ihrem Azure-Abonnement über `Microsoft.Authorization/*/Write`-Zugriff verfügen, um einer Rolle eine AD-App zuzuweisen. Diese Aktion wird über die Rolle [Besitzer](../role-based-access-control/built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) gewährt. Wenn Ihr Konto der Rolle **Mitwirkender** zugewiesen ist, verfügen Sie nicht über die erforderliche Berechtigung. Beim Versuch, einer Rolle den Dienstprinzipal zuzuweisen, erhalten Sie eine Fehlermeldung.
 
 So überprüfen Sie die Berechtigungen Ihres Abonnements
 
@@ -101,9 +101,9 @@ Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung und 
 
    ![Client-ID](./media/resource-group-create-service-principal-portal/copy-app-id.png)
 
-1. Wählen Sie zum Generieren eines Authentifizierungsschlüssels die Option **Einstellungen**.
+1. Klicken Sie zum Generieren eines Authentifizierungsschlüssels auf **Einstellungen**.
 
-   ![Auswählen von „Einstellungen“](./media/resource-group-create-service-principal-portal/select-settings.png)
+   ![Klicken auf „Einstellungen“](./media/resource-group-create-service-principal-portal/select-settings.png)
 
 1. Wählen Sie zum Generieren eines Authentifizierungsschlüssels die Option **Schlüssel** aus.
 
@@ -135,7 +135,7 @@ Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanford
 
 ## <a name="assign-application-to-role"></a>Zuweisen einer Anwendung zur Rolle
 
-Um auf Ressourcen in Ihrem Abonnement zuzugreifen, müssen Sie die Anwendung einer Rolle zuweisen. Entscheiden Sie, welche Rolle die geeigneten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
+Um auf Ressourcen in Ihrem Abonnement zuzugreifen, müssen Sie die Anwendung einer Rolle zuweisen. Entscheiden Sie, welche Rolle die geeigneten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](../role-based-access-control/built-in-roles.md).
 
 Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Wenn z.B. der Leserolle für eine Ressourcengruppe eine Anwendung hinzugefügt wird, kann diese Rolle die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen.
 
@@ -167,5 +167,5 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Einrichten einer Anwendung mit mehreren Mandanten finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
-* Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md).  
-* Eine Liste der verfügbaren Aktionen, die Benutzern erteilt oder verweigert werden können, finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../active-directory/role-based-access-control-resource-provider-operations.md).
+* Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/role-assignments-portal.md).  
+* Eine Liste der verfügbaren Aktionen, die Benutzern erteilt oder verweigert werden können, finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../role-based-access-control/resource-provider-operations.md).

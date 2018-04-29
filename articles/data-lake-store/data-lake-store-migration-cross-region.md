@@ -1,8 +1,8 @@
 ---
-title: "Regionsübergreifende Migration in Azure Data Lake Store | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über die regionsübergreifende Migration für Azure Data Lake Store."
+title: Regionsübergreifende Migration in Azure Data Lake Store | Microsoft-Dokumentation
+description: Erfahren Sie mehr über die regionsübergreifende Migration für Azure Data Lake Store.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: swums
 manager: amitkul
 editor: swums
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: b04cca6e551a15a31bbebc4932ea05dd39e8e916
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 488a9954cef210b727518375e218fe084129a6f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>Regionsübergreifende Migration in Azure Data Lake Store
 
@@ -45,11 +45,11 @@ Weitere wichtige Details, die beim Planen der Migration zu berücksichtigen sind
 
 * **Tools**. Es wird empfohlen, die [Kopieraktivität von Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) zu verwenden, um Data Lake Store-Dateien zu kopieren. Data Factory unterstützt das Verschieben von Daten mit hoher Leistung und Zuverlässigkeit. Bedenken Sie, dass Data Factory nur die Ordnerhierarchie und den Inhalt der Dateien kopiert. Sie müssen manuell alle Zugriffssteuerungslisten (access control lists, ACLs), die Sie im alten Konto verwenden, auf das neue Konto anwenden. Weitere Informationen, einschließlich der Leistungsziele für die günstigsten Szenarios, finden Sie unter [Handbuch zur Leistung und Optimierung der Kopieraktivität](../data-factory/copy-activity-performance.md). Wenn Sie Daten schneller kopieren möchten, müssen Sie möglicherweise zusätzliche Einheiten für Clouddatenverschiebungen verwenden. Einige andere Tools, z.B. AdlCopy, unterstützen kein Kopieren von Daten zwischen Regionen.  
 
-* **Bandbreitengebühren**. [Bandbreitengebühren](https://azure.microsoft.com/en-us/pricing/details/bandwidth/) werden geltend gemacht, da Daten aus einer Azure-Region hinaus übertragen werden.
+* **Bandbreitengebühren**. [Bandbreitengebühren](https://azure.microsoft.com/pricing/details/bandwidth/) werden geltend gemacht, da Daten aus einer Azure-Region hinaus übertragen werden.
 
 * **ACLs für Ihre Daten**. Sichern Sie Ihre Daten in der neuen Region durch Anwenden von ACLs auf Dateien und Ordner. Weitere Informationen finden Sie unter [Schützen von Daten, die im Azure Data Lake Store gespeichert sind](data-lake-store-secure-data.md). Es wird empfohlen, dass Sie die Migration zum Aktualisieren und Anpassen Ihrer ACLs verwenden. Möglicherweise möchten die Einstellungen, die mit Ihrer aktuellen Einstellungen ähnliche verwenden. Sie können die ACLs, die auf alle Dateien angewendet werden, mithilfe vom Azure-Portal, [PowerShell-Cmdlets](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission) oder SDKs anzeigen.  
 
 * **Speicherort von Analysediensten**. Für optimale Leistung sollten sich Ihre Analysedienste, wie etwa Azure Data Lake Analytics oder Azure HDInsight, in der gleichen Region wie Ihre Daten befinden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
+* [Übersicht über Azure Data Lake Store](data-lake-store-overview.md)

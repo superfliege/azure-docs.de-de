@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 49685d5b0e30356cab7f1f530bcc97e193d7fd90
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: c39f11eae08e74e1bb29a5587fa4a8f0ba7c6a5b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
@@ -34,10 +34,10 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
 - Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
 - Öffnen Sie bei Verwendung des Portals https://portal.azure.com, und melden Sie sich mit Ihrem Azure-Konto an.
-- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.2.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
-- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.26 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
+- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.4.1 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.28 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
-Dem Konto, mit dem Sie sich bei Azure anmelden, müssen mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ Ihres Abonnements zugewiesen sein. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+Dem Konto, mit dem Sie sich bei Azure anmelden, müssen mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ Ihres Abonnements zugewiesen sein. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 
 ## <a name="create-a-network-interface"></a>Erstellen einer Netzwerkschnittstelle
 
@@ -62,6 +62,8 @@ Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine N
 
 Das Portal stellt keine Option bereit, mit der Sie der Netzwerkschnittstelle beim Erstellen eine öffentliche IP-Adresse zuweisen können. Sie können allerdings im Portal eine öffentliche IP-Adresse erstellen und diese einer Netzwerkschnittstelle zuweisen, wenn Sie im Portal einen virtuellen Computer erstellen. Informationen zum Hinzufügen einer öffentlichen IP-Adresse zur Netzwerkschnittstelle nach deren Erstellung finden Sie unter [Verwalten von IP-Adressen](virtual-network-network-interface-addresses.md). Wenn Sie eine Netzwerkschnittstelle mit einer öffentlichen IP-Adresse erstellen möchten, müssen Sie zum Erstellen der Netzwerkschnittstelle die Befehlszeilenschnittstelle oder PowerShell verwenden.
 
+Nicht das Portal, aber Azure CLI und PowerShell bieten die Option zum Zuweisen der Netzwerkschnittstelle zu Anwendungssicherheitsgruppen. Weitere Informationen zu Anwendungssicherheitsgruppen finden Sie unter [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups).
+
 >[!Note]
 > Azure weist der Netzwerkschnittstelle erst dann eine MAC-Adresse zu, wenn die Netzwerkschnittstelle an einen virtuellen Computer angefügt und der virtuelle Computer erstmalig gestartet wurde. Die MAC-Adresse, die Azure der Netzwerkschnittstelle zuweist, kann nicht angegeben werden. Die MAC-Adresse bleibt der Netzwerkschnittstelle zugewiesen, bis die Netzwerkschnittstelle gelöscht oder die private IP-Adresse, die der primären IP-Konfiguration der primären Netzwerkschnittstelle zugewiesen ist, geändert wird. Weitere Informationen zu IP-Adressen und IP-Konfigurationen finden Sie unter [Verwalten von IP-Adressen](virtual-network-network-interface-addresses.md).
 
@@ -74,7 +76,7 @@ Das Portal stellt keine Option bereit, mit der Sie der Netzwerkschnittstelle bei
 
 ## <a name="view-network-interface-settings"></a>Anzeigen der Einstellungen von Netzwerkschnittstellen
 
-Sie können die meisten Einstellungen für eine Netzwerkschnittstelle anzeigen und ändern, nachdem diese erstellt wurde. Das Portal zeigt kein DNS-Suffix für die Netzwerkschnittstelle an. Sie können mithilfe der PowerShell- oder Azure CLI-[Befehle](#view-settings-commands) das DNS-Suffix anzeigen.
+Sie können die meisten Einstellungen für eine Netzwerkschnittstelle anzeigen und ändern, nachdem diese erstellt wurde. Das Portal zeigt weder das DNS-Suffix noch die Mitgliedschaft in einer Anwendungssicherheitsgruppe für die Netzwerkschnittstelle an. Sie können mithilfe der PowerShell- oder Azure CLI-[Befehle](#view-settings-commands) das DNS-Suffix und die Mitgliedschaft in einer Anwendungssicherheitsgruppe anzeigen.
 
 1. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, wählen Sie dies aus.
 2. Wählen Sie in der Liste die Netzwerkschnittstelle aus, die Sie anzeigen oder deren Einstellungen Sie ändern möchten.
@@ -82,10 +84,10 @@ Sie können die meisten Einstellungen für eine Netzwerkschnittstelle anzeigen u
     - **Übersicht:** enthält Informationen über die Netzwerkschnittstelle, z.B. die zugewiesenen IP-Adressen, das virtuelle Netzwerk/Subnetz, dem die Netzwerkschnittstelle zugewiesen ist, und der virtuelle Computer, an den die Netzwerkschnittstelle angefügt ist (sofern zutreffend). Die folgende Abbildung zeigt die Übersicht über die Einstellungen für eine Netzwerkschnittstelle mit dem Namen **mywebserver256**: ![Übersicht über die Netzwerkschnittstelle](./media/virtual-network-network-interface/nic-overview.png) Sie können eine Netzwerkschnittstelle in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben, indem Sie neben der **Ressourcengruppe** oder dem **Abonnementnamen** (**ändern**) auswählen. Wenn Sie die Netzwerkschnittstelle verschieben, müssen Sie alle Ressourcen für die Netzwerkschnittstelle ebenfalls verschieben. Wenn die Netzwerkschnittstelle an einen virtuellen Computer angefügt ist, müssen Sie z.B. auch den virtuellen Computer und andere mit dem virtuellen Computer verknüpfte Ressourcen verschieben. Informationen zum Verschieben von Netzwerkschnittstellen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-portal). Hier erfahren Sie, welche Voraussetzungen erfüllt sein müssen und wie Sie Ressourcen über das Azure-Portal, mithilfe von PowerShell oder unter Verwendung der Azure CLI verschieben.
     - **IP-Konfigurationen:** Hier werden die öffentlichen und privaten IPv4- und IPv6-Adressen aufgeführt, die IP-Konfigurationen zugewiesen sind. Wenn einer IP-Konfiguration eine IPv6-Adresse zugewiesen ist, wird die Adresse nicht angezeigt. Weitere Informationen zu IP-Konfigurationen und zum Hinzufügen und Entfernen von IP-Adressen finden Sie unter [Konfigurieren von IP-Adressen für eine Azure-Netzwerkschnittstelle](virtual-network-network-interface-addresses.md). Die IP-Weiterleitung und Subnetzzuweisung werden auch in diesem Abschnitt konfiguriert. Weitere Informationen zu diesen Einstellungen finden Sie unter [Aktivieren oder Deaktivieren der IP-Weiterleitung](#enable-or-disable-ip-forwarding) und [Ändern der Subnetzzuweisung](#change-subnet-assignment).
     - **DNS-Server:** Sie können angeben, welcher DNS-Server einer Netzwerkschnittstelle durch die Azure-DHCP-Server zugewiesen wird. Die Netzwerkschnittstelle kann die Einstellung vom virtuellen Netzwerk, dem die Netzwerkschnittstelle zugewiesen ist, erben. Sie können aber auch benutzerdefinierte Einstellungen festlegen, die die entsprechenden Einstellungen für das virtuelle Netzwerk, dem sie zugewiesen ist, überschreiben. Um zu ändern, was angezeigt wird, lesen Sie [Ändern von DNS-Servern](#change-dns-servers).
-    - **Netzwerksicherheitsgruppe (NSG):** zeigt an, welche Netzwerksicherheitsgruppe (NSG) der Netzwerkschnittstelle zugeordnet ist (falls vorhanden). Eine NSG enthält ein- und ausgehende Regeln zum Filtern von Netzwerkdatenverkehr für die Netzwerkschnittstelle. Falls der Netzwerkschnittstelle eine NSG zugeordnet ist, wird der Name der zugeordneten NSG angezeigt. Zum Ändern der angezeigten Informationen führen Sie die Schritte unter [Verwalten der Zuordnungen von Netzwerksicherheitsgruppen](virtual-network-manage-nsg-arm-portal.md#manage-associations) durch.
+    - **Netzwerksicherheitsgruppe (NSG):** zeigt an, welche Netzwerksicherheitsgruppe (NSG) der Netzwerkschnittstelle zugeordnet ist (falls vorhanden). Eine NSG enthält ein- und ausgehende Regeln zum Filtern von Netzwerkdatenverkehr für die Netzwerkschnittstelle. Falls der Netzwerkschnittstelle eine NSG zugeordnet ist, wird der Name der zugeordneten NSG angezeigt. Wie Sie ändern, was angezeigt wird, erfahren Sie unter [Zuordnen oder Trennen einer Netzwerksicherheitsgruppe](#associate-or-dissociate-a-network-security-group).
     - **Eigenschaften:** zeigt wichtige Einstellungen für die Netzwerkschnittstelle an, z.B. die MAC-Adresse (leer, wenn die Netzwerkschnittstelle an keine VM angefügt ist) und das Abonnement, dem sie angehört.
-    - **Effektive Sicherheitsregeln:** Sicherheitsregeln werden aufgelistet, wenn die Netzwerkschnittstelle an einen aktiven virtuellen Computer angefügt und der Netzwerkschnittstelle oder dem Subnetz, mit dem sie verbunden ist, eine NSG zugeordnet ist. Weitere Informationen zu den angezeigten Informationen finden Sie unter [Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal](virtual-network-nsg-troubleshoot-portal.md#nsg). Weitere Informationen zu NSGs finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](virtual-networks-nsg.md).
-    - **Effektive Routen:** Routen werden aufgelistet, wenn die Netzwerkschnittstelle an einen aktiven virtuellen Computer angefügt ist. Bei den Routen handelt es sich um eine Kombination aus den Azure-Standardrouten, benutzerdefinierten Routen und BGP-Routen, die ggf. für das Subnetz vorhanden sind, dem die Netzwerkschnittstelle zugewiesen ist. Weitere Informationen zur Anzeige finden Sie unter [Problembehandlung bei Routen über das Azure-Portal](virtual-network-routes-troubleshoot-portal.md#view-effective-routes-for-a-network-interface). Weitere Informationen zu Azure-Standardeinstellungen und benutzerdefinierten Routen finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](virtual-networks-udr-overview.md).
+    - **Effektive Sicherheitsregeln:** Sicherheitsregeln werden aufgelistet, wenn die Netzwerkschnittstelle an einen aktiven virtuellen Computer angefügt und der Netzwerkschnittstelle oder dem Subnetz, mit dem sie verbunden ist, eine NSG zugeordnet ist. Weitere Informationen darüber, was angezeigt wird, finden Sie unter [Anzeigen effektiver Sicherheitsregeln](#view-effective-security-rules). Weitere Informationen zu NSGs finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](security-overview.md).
+    - **Effektive Routen:** Routen werden aufgelistet, wenn die Netzwerkschnittstelle an einen aktiven virtuellen Computer angefügt ist. Bei den Routen handelt es sich um eine Kombination aus den Azure-Standardrouten, benutzerdefinierten Routen und BGP-Routen, die ggf. für das Subnetz vorhanden sind, dem die Netzwerkschnittstelle zugewiesen ist. Weitere Informationen darüber, was angezeigt wird, finden Sie unter [Anzeigen effektiver Routen](#view-effective-routes). Weitere Informationen zu Azure-Standardrouten und benutzerdefinierten Routen finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md).
     - **Allgemeine Azure Resource Manager-Einstellungen:** Weitere Informationen zu allgemeinen Azure Resource Manager-Einstellungen finden Sie unter [Aktivitätsprotokolle](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [Zugriffssteuerung (IAM, Identity and Access Management)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [Tags](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags), [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Exportieren der Vorlage aus der Ressourcengruppe](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
 
 <a name="view-settings-commands"></a>**Befehle**
@@ -157,10 +159,34 @@ Sie können das Subnetz, aber nicht das virtuelle Netzwerk ändern, dem eine Net
 |Befehlszeilenschnittstelle (CLI)|[az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
 |PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
+## <a name="add-to-or-remove-from-application-security-groups"></a>Hinzufügen einer Netzwerkschnittstelle zu einer Anwendungssicherheitsgruppe bzw. deren Entfernen daraus
+
+Nicht das Portal, aber Azure CLI und PowerShell bieten die Option zum Zuweisen einer Netzwerkschnittstelle zu Anwendungssicherheitsgruppen bzw. zum Trennen einer Netzwerkschnittstelle von Anwendungssicherheitsgruppen. Weitere Informationen zu Anwendungssicherheitsgruppen finden Sie unter [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups) und [Erstellen einer Anwendungssicherheitsgruppe](#create-an-application-security-group).
+
+**Befehle**
+
+|Tool|Get-Help|
+|---|---|
+|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
+
+## <a name="associate-or-dissociate-a-network-security-group"></a>Zuordnen oder Trennen einer Netzwerksicherheitsgruppe
+
+1. Geben Sie im Suchfeld oben im Portal den Suchbegriff *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, wählen Sie dies aus.
+2. Wählen Sie in der Liste die Netzwerkschnittstelle aus, der Sie eine Netzwerksicherheitsgruppe zuordnen möchten, oder die Sie von einer Netzwerksicherheitsgruppe trennen möchten.
+3. Wählen Sie die Option **Netzwerksicherheitsgruppe** unter **EINSTELLUNGEN**.
+4. Wählen Sie **Bearbeiten** aus.
+5. Wählen Sie **Netzwerksicherheitsgruppe** und dann die Netzwerksicherheitsgruppe aus, die Sie der Netzwerkschnittstelle zuordnen möchten, oder wählen Sie **Keine** aus, um eine Netzwerksicherheitsgruppe zu trennen.
+6. Wählen Sie **Speichern**aus.
+
+**Befehle**
+
+- Azure CLI: [az network nic update](/cli/azure/network/nic#az-network-nic-update)
+- PowerShell: [Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)
 
 ## <a name="delete-a-network-interface"></a>Löschen einer Netzwerkschnittstelle
 
-Sie können eine Netzwerkschnittstelle löschen, solange diese nicht an einen virtuellen Computer angefügt ist. Wenn sie an einen virtuellen Computer angefügt ist, müssen Sie den virtuellen Computer zunächst in den Status „Beendet (Zuordnung aufgehoben)“ versetzen und dann die Netzwerkschnittstelle vom virtuellen Computer trennen, bevor Sie die Netzwerkschnittstelle löschen können. Die Schritte zum Trennen einer Netzwerkschnittstelle von einem virtuellen Computer finden Sie unter [Trennen einer Netzwerkschnittstelle von einem virtuellen Computer](virtual-network-network-interface-vm.md#remove-a-network-interface-from-a-vm). Beim Löschen eines virtuellen Computers werden alle angefügten Netzwerkschnittstellen getrennt, die Netzwerkschnittstellen werden aber nicht gelöscht.
+Sie können eine Netzwerkschnittstelle löschen, solange diese nicht an einen virtuellen Computer angefügt ist. Wenn eine Netzwerkschnittstelle einem virtuellen Computer angefügt ist, müssen Sie den virtuellen Computer zunächst in den Status „Beendet (Zuordnung aufgehoben)“ versetzen und dann die Netzwerkschnittstelle vom virtuellen Computer trennen. Die Schritte zum Trennen einer Netzwerkschnittstelle von einem virtuellen Computer finden Sie unter [Trennen einer Netzwerkschnittstelle von einem virtuellen Computer](virtual-network-network-interface-vm.md#remove-a-network-interface-from-a-vm). Sie können eine Netzwerkschnittstelle jedoch nicht von einer VM trennen, wenn sie als einzige Netzwerkschnittstelle der VM angefügt ist. Einer VM muss mindestens eine Netzwerkschnittstelle angefügt sein. Beim Löschen eines virtuellen Computers werden alle angefügten Netzwerkschnittstellen getrennt, die Netzwerkschnittstellen werden aber nicht gelöscht.
 
 1. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, wählen Sie dies aus.
 2. Wählen Sie **...** auf der rechten Seite der Netzwerkschnittstelle aus, die Sie aus der Liste der Netzwerkschnittstellen löschen möchten.
@@ -176,10 +202,46 @@ Wenn Sie eine Netzwerkschnittstelle löschen, werden alle ihr zugewiesenen MAC- 
 |Befehlszeilenschnittstelle (CLI)|[az network nic delete](/cli/azure/network/nic#az_network_nic_delete)|
 |PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
 
-## <a name="next-steps"></a>Nächste Schritte
-In den folgenden Artikeln erfahren Sie, wie Sie virtuelle Computer mit mehreren Netzwerkschnittstellen oder IP-Adressen erstellen:
+## <a name="resolve-connectivity-issues"></a>Lösen von Konnektivitätsproblemen
+
+Wenn die ein- oder ausgehende Kommunikation bei einem virtuellen Computer nicht möglich ist, können Sicherheitsregeln der Netzwerksicherheitsgruppe oder für eine Netzwerkschnittstelle gültige Routen die Ursache des Problems sein. Folgende Optionen zum Beheben des Problems stehen Ihnen zur Verfügung:
+
+### <a name="view-effective-security-rules"></a>Anzeigen effektiver Sicherheitsregeln
+
+Die effektiven Sicherheitsregeln für jede Netzwerkschnittstelle, die einem virtuellen Computer angefügt sind, stellen eine Kombination der Regeln dar, die Sie in einer Netzwerksicherheitsgruppe erstellt haben, und der [Standardsicherheitsregeln](security-overview.md#default-security-rules). Wenn Sie die effektiven Sicherheitsregeln für eine Netzwerkschnittstelle kennen, können Sie leichter feststellen, warum Sie nicht mit einem virtuellen Computer kommunizieren können. Sie können die effektiven Regeln für alle Netzwerkschnittstellen anzeigen, die einem ausgeführten virtuellen Computer angefügt sind.
+
+1. Geben Sie im Suchfeld oben im Portal den Namen eines virtuellen Computers ein, für den Sie effektive Sicherheitsregeln anzeigen möchten. Wenn Sie den Namen eines virtuellen Computers kennen, geben Sie im Suchfeld *Virtuelle Computer* ein. Wählen Sie **Virtuelle Computer** aus, wenn der Begriff in den Suchergebnissen angezeigt wird, und wählen Sie in der Liste einen virtuellen Computer aus.
+2. Wählen Sie unter **EINSTELLUNGEN** die Option **Netzwerk**.
+3. Wählen Sie den Namen einer Netzwerkschnittstelle aus.
+4. Wählen Sie unter **SUPPORT + PROBLEMBEHANDLUNG** die Option **Effektive Sicherheitsregeln** aus.
+5. Überprüfen Sie die Liste der effektiven Sicherheitsregeln, um zu bestimmen, ob die richtigen Regeln für die erforderliche ein- und ausgehende Kommunikation vorhanden sind. Weitere Informationen über den Inhalt der Liste finden Sie unter [Netzwerksicherheit](security-overview.md).
+
+Die IP-Flussüberprüfungsfunktion von Azure Network Watcher kann Ihnen ebenfalls helfen, zu bestimmen, ob Sicherheitsregeln die Kommunikation zwischen einem virtuellen Computer und einem Endpunkt verhindern. Weitere Informationen finden Sie unter [Diagnose eines VM-Netzwerkdatenverkehr-Filterproblems – Azure-Portal](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Befehle**
+
+- Azure CLI: [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
+- PowerShell: [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup) 
+
+### <a name="view-effective-routes"></a>Anzeigen effektiver Routen
+
+Die effektiven Routen für die Netzwerkschnittstellen, die einem virtuellen Computer angefügt sind, sind eine Kombination der Standardrouten, der von Ihnen erstellten Routen und der Routen, die von lokalen Netzwerken per BGP über das Gateway eines virtuellen Azure-Netzwerks verteilt werden. Wenn Sie die effektiven Routen für eine Netzwerkschnittstelle kennen, können Sie leichter feststellen, warum Sie nicht mit einem virtuellen Computer kommunizieren können. Sie können die effektiven Routen für alle Netzwerkschnittstellen anzeigen, die an einen ausgeführten virtuellen Computer angefügt sind.
+
+1. Geben Sie im Suchfeld oben im Portal den Namen eines virtuellen Computers ein, für den Sie effektive Sicherheitsregeln anzeigen möchten. Wenn Sie den Namen eines virtuellen Computers kennen, geben Sie im Suchfeld *Virtuelle Computer* ein. Wählen Sie **Virtuelle Computer** aus, wenn der Begriff in den Suchergebnissen angezeigt wird, und wählen Sie in der Liste einen virtuellen Computer aus.
+2. Wählen Sie unter **EINSTELLUNGEN** die Option **Netzwerk**.
+3. Wählen Sie den Namen einer Netzwerkschnittstelle aus.
+4. Wählen Sie unter **SUPPORT + PROBLEMBEHANDLUNG** die Option **Effektive Routen**.
+5. Überprüfen Sie die Liste der effektiven Routen, um zu bestimmen, ob die richtigen Routen für die erforderliche ein- und ausgehende Kommunikation vorhanden sind. Weitere Informationen zu den in der Liste angezeigten Inhalten finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md).
+
+Die „Nächster Hop“-Funktion von Azure Network Watcher kann Ihnen ebenfalls helfen, zu bestimmen, ob Routen die Kommunikation zwischen einem virtuellen Computer und einem Endpunkt verhindern. Weitere Informationen finden Sie unter [Diagnose eines VM-Netzwerkroutingproblems – Azure-Portal](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+**Befehle**
+
+- Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
+- PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable)
+
+## <a name="next-steps"></a>Nächste Schritte
+In den folgenden Artikeln erfahren Sie, wie Sie virtuelle Computer mit mehreren Netzwerkschnittstellen oder IP-Adressen erstellen:
 
 |Aufgabe|Tool|
 |---|---|

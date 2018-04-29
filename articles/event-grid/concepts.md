@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/16/2018
 ms.author: babanisa
-ms.openlocfilehash: e55127e60470f8f95235893a14113b80e8d6565b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e5499fca98118de6ef8e08c8ce278b90520425e6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Begriffe in Azure Event Grid
 
@@ -20,7 +20,7 @@ Zu den zentralen Begriffen in Azure Event Grid zählen Folgende:
 
 ## <a name="events"></a>Ereignisse
 
-Ein Ereignis ist die kleinste Informationsmenge, die einen Vorgang im System umfassend beschreibt.  Jedes Ereignis enthält allgemeine Informationen wie Quelle des Ereignisses, Zeitpunkt, an dem das Ereignis aufgetreten ist, und den eindeutigen Bezeichner.  Jedes Ereignis enthält auch spezielle Informationen, die nur für den jeweiligen Ereignistyp relevant sind. Beispielsweise enthält ein Ereignis zu einer neuen Datei, die in Azure Storage erstellt wird, Details über die Datei, z.B. den Wert von `lastTimeModified`. Alternativ enthält ein Ereignis zum Neustart eines virtuellen Computers den Namen des virtuellen Computers und den Grund für den Neustart. Jedes Ereignis ist auf 64 KB Daten begrenzt.
+Ein Ereignis ist die kleinste Informationsmenge, die einen Vorgang im System umfassend beschreibt. Jedes Ereignis enthält allgemeine Informationen wie Quelle des Ereignisses, Zeitpunkt, an dem das Ereignis aufgetreten ist, und den eindeutigen Bezeichner. Jedes Ereignis enthält auch spezielle Informationen, die nur für den jeweiligen Ereignistyp relevant sind. Beispielsweise enthält ein Ereignis zu einer neuen Datei, die in Azure Storage erstellt wird, Details über die Datei, z.B. den Wert von `lastTimeModified`. Alternativ enthält ein Ereignis zum Neustart eines virtuellen Computers den Namen des virtuellen Computers und den Grund für den Neustart. Jedes Ereignis ist auf 64 KB Daten begrenzt.
 
 ## <a name="event-sourcespublishers"></a>Ereignisquellen/-herausgeber
 
@@ -32,7 +32,7 @@ Herausgeber kategorisieren Ereignisse in Themen. Dieses Thema enthält einen End
 
 Systemthemen sind integrierte Themen, die von Azure-Diensten bereitgestellt werden. Benutzerdefinierte Themen sind Anwendungs- und Drittanbieterthemen.
 
-Beim Entwerfen Ihrer Anwendung erstellen Sie ein benutzerdefiniertes Thema für jede Kategorie von verwandten Ereignissen. Denken Sie beispielsweise an eine Anwendung, die Ereignisse im Zusammenhang mit der Änderung von Benutzerkonten und der Verarbeitung von Bestellungen sendet. Es ist unwahrscheinlich, dass ein Ereignishandler beide Ereigniskategorien benötigt. Erstellen Sie zwei benutzerdefinierte Themen, und lassen Sie Ereignishandler das jeweils relevante Thema abonnieren. Wenn der Ereignishandler das benutzerdefinierte Thema abonniert, kann er nach Ereignistyp filtern.
+Beim Entwerfen Ihrer Anwendung können Sie flexibel entscheiden, wie viele Themen erstellt werden sollen. Erstellen Sie für große Lösungen ein benutzerdefiniertes Thema für jede Kategorie von verwandten Ereignissen. Denken Sie beispielsweise an eine Anwendung, die Ereignisse im Zusammenhang mit der Änderung von Benutzerkonten und der Verarbeitung von Bestellungen sendet. Es ist unwahrscheinlich, dass ein Ereignishandler beide Ereigniskategorien benötigt. Erstellen Sie zwei benutzerdefinierte Themen, und lassen Sie Ereignishandler das jeweils relevante Thema abonnieren. Für kleine Lösungen empfiehlt es sich ggf., alle Ereignisse an ein Thema zu senden. Ereignisabonnenten können nach den gewünschten Ereignistypen filtern.
 
 ## <a name="event-subscriptions"></a>Ereignisabonnements
 
@@ -40,7 +40,7 @@ Ein Abonnement gibt in Event Grid an, welche Ereignisse zu einem Thema ein Abonn
 
 ## <a name="event-handlers"></a>Ereignishandler
 
-In Bezug auf Event Grid ist ein Ereignishandler das Ziel, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen.  Event Grid unterstützt mehrere Abonnententypen. Je nach Typ des Abonnenten führt Event Grid unterschiedliche Methoden durch, um die Übermittlung des Ereignisses zu gewährleisten.  Bei HTTP-Webhookereignishandlern wird das Ereignis solange wiederholt, bis der Handler einen Statuscode von `200 – OK` zurückgibt. Bei Azure Storage Queue werden die Ereignisse solange wiederholt, bis der Warteschlangendienst den Nachrichtenpush in der Warteschlange verarbeiten kann.
+In Bezug auf Event Grid ist ein Ereignishandler das Ziel, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Event Grid unterstützt mehrere Abonnententypen. Je nach Typ des Abonnenten führt Event Grid unterschiedliche Methoden durch, um die Übermittlung des Ereignisses zu gewährleisten. Bei HTTP-Webhookereignishandlern wird das Ereignis solange wiederholt, bis der Handler einen Statuscode von `200 – OK` zurückgibt. Bei Azure Storage Queue werden die Ereignisse solange wiederholt, bis der Warteschlangendienst den Nachrichtenpush in der Warteschlange verarbeiten kann.
 
 ## <a name="filters"></a>Filter
 

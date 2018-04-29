@@ -1,12 +1,12 @@
 ---
-title: "Lösen von Problemen aufgrund von Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio | Microsoft-Dokumentation"
-description: "Problembehandlung bei möglichen Lösungen für Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio."
+title: Lösen von Problemen aufgrund von Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio | Microsoft-Dokumentation
+description: Problembehandlung bei möglichen Lösungen für Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/16/2016
 ms.author: yanacai
-ms.openlocfilehash: 9b284ef33be4b935569fc368d81ddf040b2c2b7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1d33b5d2392832899fd30636e9d40231fc74ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Lösen von Problemen aufgrund von Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio
 
@@ -49,13 +49,13 @@ Anstatt nur _State_ als Partitionsschlüssel zu verwenden, können Sie auch mehr
 
 ### <a name="option-4-use-round-robin-distribution"></a>Option 4: Roundrobinverteilung
 
-Wenn sich kein geeigneter Schlüssel für Partitionierung und Verteilung finden lässt, können Sie versuchen, eine Roundrobinverteilung zu verwenden. Die Roundrobinverteilung behandelt alle Zeilen gleich und fügt sie nach dem Zufallsprinzip in die entsprechenden Buckets ein. Die Daten werden gleichmäßig verteilt, aber es gehen alle Ortsinformationen verloren, wodurch die Auftragsleistung bei einigen Vorgängen sinken kann. Wenn Sie außerdem ohnehin eine Aggregierung für den schiefen Schlüssel durchführen, bleibt das Problem mit der Datenschiefe weiterhin bestehen. Weitere Informationen zur Roundrobinverteilung finden Sie unter [CREATE TABLE (U-SQL): Creating a Table with Schema](https://msdn.microsoft.com/en-us/library/mt706196.aspx#dis_sch) (CREATE TABLE [U-SQL]: Erstellen einer Tabelle mit Schema) im Abschnitt zu U-SQL-Tabellenverteilungen.
+Wenn sich kein geeigneter Schlüssel für Partitionierung und Verteilung finden lässt, können Sie versuchen, eine Roundrobinverteilung zu verwenden. Die Roundrobinverteilung behandelt alle Zeilen gleich und fügt sie nach dem Zufallsprinzip in die entsprechenden Buckets ein. Die Daten werden gleichmäßig verteilt, aber es gehen alle Ortsinformationen verloren, wodurch die Auftragsleistung bei einigen Vorgängen sinken kann. Wenn Sie außerdem ohnehin eine Aggregierung für den schiefen Schlüssel durchführen, bleibt das Problem mit der Datenschiefe weiterhin bestehen. Weitere Informationen zur Roundrobinverteilung finden Sie unter [CREATE TABLE (U-SQL): Creating a Table with Schema](https://msdn.microsoft.com/library/mt706196.aspx#dis_sch) (CREATE TABLE [U-SQL]: Erstellen einer Tabelle mit Schema) im Abschnitt zu U-SQL-Tabellenverteilungen.
 
 ## <a name="solution-2-improve-the-query-plan"></a>Lösung 2 Verbessern des Abfrageplans
 
 ### <a name="option-1-use-the-create-statistics-statement"></a>Option 1: Verwenden der CREATE STATISTICS-Anweisung
 
-U-SQL stellt eine CREATE STATISTICS-Anweisung für Tabellen bereit. Diese Anweisung bietet dem Abfrageoptimierer mehr Informationen zu den in einer Tabelle gespeicherten Datenmerkmalen, wie z.B. die Werteverteilung. Bei den meisten Abfragen generiert der Abfrageoptimierer bereits die notwendigen Statistiken für einen hochwertigen Abfrageplan. In einigen Fällen müssen Sie möglicherweise die Abfrageleistung verbessern, indem Sie mit CREATE STATISTICS weitere Statistiken erstellen oder den Abfrageentwurf ändern. Weitere Informationen finden Sie auf der Seite [CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/en-us/library/azure/mt771898.aspx).
+U-SQL stellt eine CREATE STATISTICS-Anweisung für Tabellen bereit. Diese Anweisung bietet dem Abfrageoptimierer mehr Informationen zu den in einer Tabelle gespeicherten Datenmerkmalen, wie z.B. die Werteverteilung. Bei den meisten Abfragen generiert der Abfrageoptimierer bereits die notwendigen Statistiken für einen hochwertigen Abfrageplan. In einigen Fällen müssen Sie möglicherweise die Abfrageleistung verbessern, indem Sie mit CREATE STATISTICS weitere Statistiken erstellen oder den Abfrageentwurf ändern. Weitere Informationen finden Sie auf der Seite [CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/library/azure/mt771898.aspx).
 
 Codebeispiel:
 

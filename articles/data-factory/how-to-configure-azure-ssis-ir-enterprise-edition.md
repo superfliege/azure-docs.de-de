@@ -1,0 +1,67 @@
+---
+title: Enterprise Edition der Azure-SSIS-Integrationslaufzeit | Microsoft-Dokumentation
+description: In diesem Artikel werden die Features und die Konfiguration der Enterprise Edition für die Azure-SSIS-Integrationslaufzeit beschrieben.
+services: data-factory
+documentationcenter: ''
+author: douglaslMS
+manager: craigg
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 04/13/2018
+ms.author: douglasl
+ms.openlocfilehash: 42c0c000ef661a1a256ebf49cd099a4cae2185c0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/16/2018
+---
+# <a name="enterprise-edition-of-the-azure-ssis-integration-runtime"></a>Enterprise Edition der Azure-SSIS-Integrationslaufzeit
+
+Mit der Enterprise Edition der Azure-SSIS-Integrationslaufzeit können Sie die folgenden erweiterten und Premium-Features verwenden:
+-   CDC-Komponenten (Change Data Capture)
+-   Oracle-, Teradata- und SAP BW-Connectors
+-   SQL Server Analysis Services (SSAS) und Azure Analysis Services (AAS) – Connectors und Transformationen
+-   Transformationen für Fuzzygruppierung und Fuzzysuche
+-   Transformationen für Ausdrucksextrahierung und Ausdruckssuche
+
+Für einige dieser Features müssen Sie zusätzliche Komponenten installieren, um die Azure-SSIS-Integrationslaufzeit anzupassen. Weitere Informationen zur Installation der zusätzlichen Komponenten finden Sie unter [Benutzerdefiniertes Setup von Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
+
+## <a name="enterprise-features"></a>Enterprise-Features
+
+| **Enterprise-Features** | **Beschreibungen** |
+|---|---|
+| CDC-Komponenten | Die CDC-Quelle, Kontrollaufgabe und Splitter-Transformation sind für die Enterprise Edition der Azure-SSIS-Integrationslaufzeit vorinstalliert. Zum Herstellen einer Verbindung mit Oracle müssen Sie außerdem den CDC-Designer und -Dienst auf einem anderen Computer installieren. |
+| Oracle-Connectors | Der Oracle-Verbindungs-Manager, die Quelle und das Ziel sind für die Enterprise Edition der Azure-SSIS-Integrationslaufzeit vorinstalliert. Sie müssen auch den OCI-Treiber (Oracle Call Interface) installieren und, falls erforderlich, die Oracle Transport Network Substrate-Komponente (TNS) für die Azure-SSIS-Integrationslaufzeit konfigurieren. Weitere Informationen finden Sie unter [Benutzerdefiniertes Setup von Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| Teradata-Connectors | Sie müssen den Teradata-Verbindungs-Manager, die Quelle und das Ziel sowie die TPT-API (Teradata Parallel Transporter) und den Teradata-ODBC-Treiber für die Enterprise Edition der Azure-SSIS-Integrationslaufzeit installieren. Weitere Informationen finden Sie unter [Benutzerdefiniertes Setup von Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| SAP BW-Connectors | Der SAP BW-Verbindungs-Manager, die Quelle und das Ziel sind für die Enterprise Edition der Azure-SSIS-Integrationslaufzeit vorinstalliert. Außerdem müssen Sie den SAP BW-Treiber für die Azure-SSIS-Integrationslaufzeit installieren. Diese Connectors unterstützen SAP BW 7.0 oder früher. Zum Herstellen einer Verbindung mit höheren Versionen von SAP BW oder anderen SAP-Produkten können Sie SAP-Connectors von Drittanbietern für die Azure-SSIS-Integrationslaufzeit erwerben und installieren. Weitere Informationen zur Installation der zusätzlichen Komponenten finden Sie unter [Benutzerdefiniertes Setup von Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| Analysis Services-Komponenten               | Das Data Mining-Modelltraining-Ziel, das Ziel für die Dimensionsverarbeitung und das Ziel für die Partitionsverarbeitung sowie die Data Mining-Abfragetransformation sind für die Enterprise Edition der Azure-SSIS-Integrationslaufzeit vorinstalliert. Alle diese Komponenten unterstützen SQL Server Analysis Services (SSAS), aber nur das Ziel für die Partitionsverarbeitung unterstützt Azure Analysis Services (AAS). Zum Herstellen einer Verbindung mit SSAS müssen Sie außerdem [Anmeldeinformationen für die Windows-Authentifizierung in SSISDB konfigurieren](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). Zusätzlich zu diesen Komponenten sind auch der Analysis Services-Task „DDL ausführen“, der Task für die Analysis Services-Verarbeitung und der Data Mining-Abfragetask für die Standard bzw. Enterprise Edition der Azure-SSIS-Integrationslaufzeit vorinstalliert. |
+| Transformationen für Fuzzygruppierung und Fuzzysuche  | Die Transformationen für die Fuzzygruppierung und Fuzzysuche sind für die Enterprise Edition der Azure-SSIS-Integrationslaufzeit vorinstalliert. Diese Komponenten unterstützen für die Speicherung von Verweisdaten sowohl SQL Server als auch Azure SQL-Datenbank. |
+| Transformationen für Ausdrucksextrahierung und Ausdruckssuche | Die Transformationen für die Ausdrucksextrahierung und Ausdruckssuche sind für die Enterprise Edition der Azure-SSIS-Integrationslaufzeit vorinstalliert. Diese Komponenten unterstützen für die Speicherung von Verweisdaten sowohl SQL Server als auch Azure SQL-Datenbank. |
+
+## <a name="instructions"></a>Anleitung
+
+1.  Laden Sie [Azure PowerShell (Version 5.4 oder höher)](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) herunter, und installieren Sie diese.
+
+2.  Wenn Sie die Azure-SSIS-Integrationslaufzeit mit PowerShell bereitstellen oder neu konfigurieren, sollten Sie `Set-AzureRmDataFactoryV2IntegrationRuntime` mit **Enterprise** als Wert für den Parameter **Edition** ausführen, bevor Sie die Azure-SSIS-Integrationslaufzeit starten. Hier ist ein Beispielskript angegeben:
+
+    ```powershell
+    $MyAzureSsisIrEdition = "Enterprise"
+
+    Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName
+                                               -Name $MyAzureSsisIrName
+                                               -ResourceGroupName $MyResourceGroupName
+                                               -Edition $MyAzureSsisIrEdition
+
+    Start-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName
+                                                 -Name $MyAzureSsisIrName
+                                                 -ResourceGroupName $MyResourceGroupName
+    ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+-   [Benutzerdefiniertes Setup von Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md)
+
+-   [Entwicklung von kostenpflichtigen oder lizenzierten benutzerdefinierten Komponenten für Azure-SSIS Integration Runtime](how-to-develop-azure-ssis-ir-licensed-components.md)

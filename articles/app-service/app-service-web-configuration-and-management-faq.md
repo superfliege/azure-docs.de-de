@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: efbed264babe0b192590380639cdc1c8861b4f38
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6aa0c08fad98eeff7c937f817ca0a8fa20238c4a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -84,7 +84,7 @@ So rufen Sie die Liste ausgehender IP-Adressen für Ihre Web-App ab
 
 Die Liste ausgehender IP-Adressen wird angezeigt.
 
-Wenn Ihre Website in einer App Service-Umgebung für PowerApps gehostet wird, erfahren Sie unter [Ausgehende Netzwerkadressen](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses), wie Sie Ihre ausgehende IP-Adresse abrufen.
+Um mehr darüber zu erfahren, wie Sie die ausgehende IP-Adresse abrufen, wenn Ihre Website in einer App Service-Umgebung gehostet wird, lesen Sie [Ausgehende Netzwerkadressen](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses).
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Wie kann eine reservierte oder dedizierte eingehende IP-Adresse für meine Web-App abgerufen werden?
 
@@ -185,7 +185,7 @@ Sie haben zwei Optionen zum Aufzeichnen einer F12-Ablaufverfolgung:
 3. Überprüfen Sie, ob die Registerkarte **Netzwerk** ausgewählt ist, und klicken Sie dann auf die grüne Schaltfläche **Wiedergeben**.
 4. Führen Sie die Schritte zum Reproduzieren des Problems aus.
 5. Klicken Sie auf die rote Schaltfläche **Beenden**.
-6. Klicken Sie auf die Schaltfläche **Speichern** (Datenträgersymbol), und speichern Sie die HAR-Datei (in Internet Explorer und Microsoft Edge). *Oder* klicken Sie mit der rechten Maustaste auf die HAR-Datei, und wählen Sie dann **HAR mit Inhalte speichern** (in Chrome) aus.
+6. Klicken Sie auf die Schaltfläche **Speichern** (Datenträgersymbol), und speichern Sie die HAR-Datei (in Internet Explorer und Edge). *Oder* klicken Sie mit der rechten Maustaste auf die HAR-Datei, und wählen Sie dann **HAR mit Inhalte speichern** (in Chrome) aus.
 
 ### <a name="f12-console-output"></a>F12-Konsolenausgabe
 
@@ -268,7 +268,7 @@ Wie die Meldung andeutet, kann dieser Überprüfungsvorgang auf Betrug bis zu 24
 Wenn nach 24 Stunden diese Meldung immer noch für Ihr App Service-Zertifikat angezeigt wird, führen Sie das folgende PowerShell-Skript aus. Das Skript kontaktiert den [Zertifikatanbieter](https://www.godaddy.com/) direkt mit Bitte um Behebung des Problems.
 
 ```
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Set-AzureRmContext -SubscriptionId <subId>
 $actionProperties = @{
     "Name"= "<Customer Email Address>"

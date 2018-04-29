@@ -5,19 +5,19 @@ services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: a40fa94260b488e9c01ac09b22da8c0677d73968
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3d54da43141dc2bdf34c9f71adc41dc7cf24ff10
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Verwenden von Nachrichtenrouten und benutzerdefinierten Endpunkten für D2C-Nachrichten
 
@@ -31,6 +31,8 @@ Mit IoT Hub können Sie [D2C-Nachrichten][lnk-device-to-cloud] basierend auf den
 | **Endpunkt**  | Der Name des Endpunkts, an den vom IoT Hub diejenigen Nachrichten gesendet werden, für die sich eine Übereinstimmung ergeben hat. Es ist ratsam, dass sich Endpunkte in derselben Region wie der IoT Hub befinden, da sonst ggf. Kosten für regionsübergreifende Schreibvorgänge anfallen. |
 
 Es kann vorkommen, dass sich für eine einzelne Nachricht Übereinstimmungen mit den Bedingungen mehrerer Routingregeln ergeben. In diesem Fall sendet der IoT Hub die Nachricht jeweils an alle Endpunkte, die den entsprechenden Regeln zugeordnet sind. Der IoT Hub führt bei der Nachrichtenzustellung eine automatische Deduplizierung durch. Wenn also eine Nachricht mit mehreren Regeln mit demselben Ziel übereinstimmt, wird sie nur einmal in das Ziel geschrieben.
+
+## <a name="endpoints-and-routing"></a>Endpunkte und Routing
 
 Eine IoT Hub-Instanz verfügt standardmäßig über einen [integrierten Endpunkt][lnk-built-in]. Sie können benutzerdefinierte Endpunkte für das Routing von Nachrichten erstellen, indem Sie andere Dienste Ihres Abonnements mit dem Hub verknüpfen. IoT Hub unterstützt derzeit Azure Storage Container, Event Hubs, Service Bus-Warteschlangen und Service Bus-Themen als benutzerdefinierte Endpunkte.
 
@@ -50,6 +52,12 @@ Weitere Informationen zum Lesen von benutzerdefinierten Endpunkten finden Sie un
 * Lesen aus [Event Hubs][lnk-getstarted-eh]
 * Lesen aus [Service Bus-Warteschlangen][lnk-getstarted-queue]
 * Lesen aus [Service Bus-Themen][lnk-getstarted-topic]
+
+## <a name="latency"></a>Latency
+
+Wenn Sie Geräte-zu-Cloud-Telemetrienachrichten über integrierte Endpunkte weiterleiten, kommt es nach der Erstellung der ersten Route zu einer leichten Erhöhung der Gesamtlatenz.
+
+In den meisten Fällen beträgt die durchschnittliche Latenz weniger als eine Sekunde. Sie können die Latenz mithilfe der [IoT Hub-Metrik](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) **d2c.endpoints.latency.builtIn.events** überwachen. Das Erstellen oder Löschen einer Route nach der ersten hat keinen Einfluss auf die Gesamtlatenz.
 
 ### <a name="next-steps"></a>Nächste Schritte
 

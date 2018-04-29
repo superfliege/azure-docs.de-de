@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 72a823ef04ad69d1d3b40377c32a02bacb8328c2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6d2681ad05890fc5f9f2821245e0f0280bf45a5f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Verwalten des Ablaufs von Azure Blob Storage im Azure Content Delivery Network
 > [!div class="op_single_selector"]
@@ -148,7 +148,7 @@ class Program
 ## <a name="setting-cache-control-headers-by-using-other-methods"></a>Festlegen von Cache-Control-Headern mithilfe anderer Methoden
 
 ### <a name="azure-storage-explorer"></a>Azure Storage-Explorer
-Mit dem [Azure Storage-Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) können Sie Ihre Blob Storage-Ressourcen anzeigen und bearbeiten, darunter beispielsweise Eigenschaften wie *CacheControl*. 
+Mit dem [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) können Sie Ihre Blob Storage-Ressourcen anzeigen und bearbeiten, darunter beispielsweise Eigenschaften wie *CacheControl*. 
 
 So aktualisieren Sie die *CacheControl*-Eigenschaft eines Blobs mit dem Azure Storage-Explorer:
    1. Wählen Sie ein Blob aus, und klicken Sie dann im Kontextmenü auf **Eigenschaften**. 
@@ -168,8 +168,8 @@ azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .
 ### <a name="azure-storage-services-rest-api"></a>REST-API für Azure-Speicherdienste
 Sie können die [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx) verwenden, um die Eigenschaft *x-ms-blob-cache-control* mithilfe der folgenden Vorgänge für eine Anforderung explizit festzulegen:
   
-   - [Put Blob](https://msdn.microsoft.com/en-us/library/azure/dd179451.aspx)
-   - [Put Block List](https://msdn.microsoft.com/en-us/library/azure/dd179467.aspx)
+   - [Put Blob](https://msdn.microsoft.com/library/azure/dd179451.aspx)
+   - [Put Block List](https://msdn.microsoft.com/library/azure/dd179467.aspx)
    - [Set Blob Properties](https://msdn.microsoft.com/library/azure/ee691966.aspx)
 
 ## <a name="testing-the-cache-control-header"></a>Testen des Cache-Control-Headers

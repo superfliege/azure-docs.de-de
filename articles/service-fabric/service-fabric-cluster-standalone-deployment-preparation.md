@@ -1,23 +1,23 @@
 ---
-title: "Vorbereiten der Bereitstellung eines eigenständigen Azure Service Fabric-Clusters | Microsoft-Dokumentation"
-description: "Diese Dokumentation erläutert die Vorbereitung der Umgebung und Erstellung der Clusterkonfiguration. Diese Aktionen müssen vor der Bereitstellung eines Clusters durchgeführt werden, der eine Produktionsworkload verarbeiten soll."
+title: Vorbereiten der Bereitstellung eines eigenständigen Azure Service Fabric-Clusters | Microsoft-Dokumentation
+description: Diese Dokumentation erläutert die Vorbereitung der Umgebung und Erstellung der Clusterkonfiguration. Diese Aktionen müssen vor der Bereitstellung eines Clusters durchgeführt werden, der eine Produktionsworkload verarbeiten soll.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/12/2017
-ms.author: dekapur;maburlik;chackdan
-ms.openlocfilehash: b1190ec5a3ff70a368b29465699f9082d2b989bf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: dekapur;maburlik;aljo
+ms.openlocfilehash: 62673025f5c597f6ed958ad523190d937a52c912
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 <a id="preparemachines"></a>
 
@@ -49,7 +49,7 @@ Beim Angeben von UDs in „ClusterConfig.json“ können Sie jeweils den Namen d
 
 Ausführlichere Informationen zu FDs und UDs finden Sie im Artikel [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
 
-Wenn Sie die vollständige Kontrolle über die Wartung und Verwaltung der Knoten haben, d.h. wenn Sie für das Aktualisieren und Ersetzen von Computern zuständig sind, sollte sich ein Cluster in der Produktion über mindestens drei FDs erstrecken, damit er in einer Produktionsumgebung unterstützt wird. Für Cluster in Umgebungen (d.h. VM-Instanzen mit Amazon Web Services), in denen Sie nicht die vollständige Kontrolle über die Computer haben, sollten mindestens fünf FDs in Ihrem Cluster vorhanden sein. Jede FD kann mehrere Knoten enthalten. Dadurch sollen Probleme verhindert werden, die von Computerupgrades und -updates verursacht werden, die abhängig vom Zeitpunkt die Ausführung von Anwendungen und Diensten in Clustern beeinträchtigen können.
+Wenn Sie die vollständige Kontrolle über die Wartung und Verwaltung der Knoten haben (also Sie für das Aktualisieren und Ersetzen von Computern zuständig sind), sollte sich ein Cluster in der Produktion über mindestens drei FDs erstrecken, damit er in einer Produktionsumgebung unterstützt wird. Für Cluster in Umgebungen (d.h. VM-Instanzen mit Amazon Web Services), in denen Sie nicht die vollständige Kontrolle über die Computer haben, sollten mindestens fünf FDs in Ihrem Cluster vorhanden sein. Jede FD kann mehrere Knoten enthalten. Hierdurch sollen Probleme durch Computerupgrades und -updates verhindert werden, die abhängig vom Zeitpunkt die Ausführung von Anwendungen und Diensten in Clustern beeinträchtigen können.
 
 ## <a name="determine-the-initial-cluster-size"></a>Bestimmen der anfänglichen Clustergröße
 
@@ -99,7 +99,7 @@ Wenn ein Clusteradministrator einen eigenständigen Service Fabric-Cluster konfi
 * Das Service Fabric-SDK muss deinstalliert sein.
 * Die Service Fabric-Laufzeit muss deinstalliert sein. 
 * Der Windows-Firewalldienst (mpssvc) muss aktiviert sein.
-* Der Remoteregistrierungsdienst (remoteregistry) muss aktiviert sein.
+* Der Remoteregistrierungsdienst (Remoteregistrierung) muss aktiviert sein.
 * Die Dateifreigabe (SMB) muss aktiviert sein.
 * Die erforderlichen Ports müssen geöffnet sein, basierend auf den Ports der Clusterkonfiguration.
 * Die erforderlichen Ports für den Windows SMB-Dienst und den Remoteregistrierungsdienst müssen geöffnet sein: 135, 137, 138, 139 und 445.

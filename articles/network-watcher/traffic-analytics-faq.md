@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 01d5150bff8642a1a3fe9b7ac063923916f191c0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3ab06b624d1e433641d190d9621592ef83df3344
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Datenverkehrsanalysen
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/28/2018
 12.  Ich erhalte die folgende Meldung: „1) Ihre NSG-Datenflussprotokolle werden zum ersten Mal analysiert. Dieser Vorgang kann 20 bis 30 Minuten in Anspruch nehmen. Schauen Sie später wieder vorbei. 2) Wenn der oben genannte Schritt nicht funktioniert und sich Ihr Arbeitsbereich unter der SKU „Free“ befindet, überprüfen Sie hier die Nutzung Ihres Arbeitsbereichs, um das Kontingent zu prüfen, oder suchen Sie in den häufig gestellten Fragen nach weiteren Informationen.“ Wie behebe ich dieses Problem?
 
         Es gibt folgende Gründe für diese Fehlermeldung:
-        - Datenverkehrsanalysen wurden möglicherweise erst kürzlich aktiviert und aggregieren gerade eine ausreichende Datenmenge, um aussagekräftige Erkenntnisse zu gewinnen, bevor Berichte erstellt werden können. In diesem Fall versuchen Sie es in 30 Minuten noch einmal.
+        - Datenverkehrsanalysen wurden möglicherweise erst kürzlich aktiviert und haben noch keine ausreichende Datenmenge aggregiert, um aussagekräftige Erkenntnisse zu gewinnen.
         - Ihr OMS-Arbeitsbereich befindet sich unter der SKU „Free“ und hat die Kontingentgrenzen überschritten. In diesem Fall kann es erforderlich sein, einen Arbeitsbereich in einer SKU mit größerer Kapazität zu verwenden.
     
         Wenn das Problem weiterhin auftritt, wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
@@ -104,11 +104,15 @@ ms.lasthandoff: 03/28/2018
 
         Sie sehen die Ressourceninformationen im Dashboard, aber es gibt keine datenflussbezogenen Statistiken. Es dürfen keine Daten, da keine Kommunikationsdatenflüsse zwischen den Ressourcen stattfindet. Warten Sie 60 Minuten, und überprüfen Sie dann den Status erneut. Wenn Sie sicher sind, dass es Kommunikationsdatenflüsse zwischen Ressourcen gibt, dann wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-14.  Was kosten Datenverkehrsanalysen?
+14. Kann ich Datenverkehrsanalysen mithilfe von PowerShell oder einer Azure Resource Manager-Vorlage konfigurieren?
+
+    Nein, Datenverkehrsanalysen können nur im Azure-Portal konfiguriert werden.
+
+15.  Was kosten Datenverkehrsanalysen?
 
         Bei Datenverkehrsanalysen werden die Erweiterung reduzierter Protokolle sowie die Speicherung der erweiterten Protokolle in einem Log Analytics-Arbeitsbereich gemessen. Während der Vorschauphase fallen bei Datenverkehrsanalysen keine Gebühren für die Erweiterung der reduzierten Protokolle an. Die Speicherung von Daten in einem Arbeitsbereich wird jedoch nach den veröffentlichten Tarifen abgerechnet. Diese Antwort wird aktualisiert, sobald die Preise für Datenverkehrsanalysen verfügbar sind.
 
-15.  Wie kann ich mit einer Tastatur in der Kartenansicht navigieren?
+16.  Wie kann ich mit einer Tastatur in der Kartenansicht navigieren?
 
         Die Seite mit der Kartenansicht enthält zwei Hauptbereiche:
     

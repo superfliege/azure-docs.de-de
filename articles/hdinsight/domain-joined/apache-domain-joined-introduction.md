@@ -1,30 +1,26 @@
 ---
-title: "Hadoop-Sicherheit – In die Domäne eingebundene HDInsight-Cluster – Azure | Microsoft-Dokumentation"
+title: HDInsight – in die Domäne eingebundene HDInsight-Cluster – Azure
 description: 'Inhalt:'
 services: hdinsight
-documentationcenter: 
-author: saurinsh
+author: omidm1
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 10/31/2016
-ms.author: saurinsh
-ms.openlocfilehash: 0a3558973014e47d470ef89d5d0f7c9ac15cb4d9
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 6225bd824e3bcff24b84c79f39ce209f16caafd8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>Einführung in die Hadoop-Sicherheit mit in die Domäne eingebundenen HDInsight-Clustern
 
-Von Azure HDInsight wurde bislang nur ein einzelner lokaler Administratorbenutzer unterstützt. Für kleinere Anwendungsteams oder Abteilungen hat das hervorragend funktioniert. Mit der zunehmenden Verbreitung von Hadoop-basierten Workloads im Unternehmenssektor gewinnen jedoch professionelle Funktionen wie Active Directory-basierte Authentifizierung, Unterstützung mehrerer Benutzer und rollenbasierte Zugriffssteuerung immer mehr an Bedeutung. Mithilfe von in die Domäne eingebundenen HDInsight-Clustern können Sie einen HDInsight-Cluster erstellen, der einer Active Directory-Domäne angehört, und anschließend eine Liste mit Mitarbeitern des Unternehmens konfigurieren, die sich für die Anmeldung bei dem HDInsight-Cluster über Azure Active Directory authentifizieren können. Externe Benutzer können sich nicht bei dem HDInsight-Cluster anmelden oder darauf zugreifen. Der Unternehmensadministrator kann mithilfe von [Apache Ranger](http://hortonworks.com/apache/ranger/) die rollenbasierte Zugriffskontrolle für Hive-Sicherheit konfigurieren und so den Datenzugriff optimal beschränken. Darüber hinaus kann der Administrator den mitarbeiterspezifischen Datenzugriff sowie jegliche Änderung der Zugriffssteuerungsrichtlinien überwachen und so ein hohes Maß an Kontrolle über Unternehmensressourcen erreichen.
+Von Azure HDInsight wurde bislang nur ein einzelner lokaler Administratorbenutzer unterstützt. Für kleinere Anwendungsteams oder Abteilungen hat das hervorragend funktioniert. Mit der zunehmenden Verbreitung von Hadoop-basierten Workloads im Unternehmenssektor gewinnen jedoch professionelle Funktionen wie Active Directory-basierte Authentifizierung, Unterstützung mehrerer Benutzer und rollenbasierte Zugriffssteuerung immer mehr an Bedeutung. Mithilfe von in die Domäne eingebundenen HDInsight-Clustern können Sie einen HDInsight-Cluster erstellen, der einer Active Directory-Domäne angehört, und anschließend eine Liste mit Mitarbeitern des Unternehmens konfigurieren, die sich für die Anmeldung bei dem HDInsight-Cluster über Azure Active Directory authentifizieren können. Externe Benutzer können sich nicht bei dem HDInsight-Cluster anmelden oder darauf zugreifen. Der Unternehmensadministrator kann mithilfe von [Apache Ranger](http://hortonworks.com/apache/ranger/) die rollenbasierte Zugriffssteuerung für Hive-Sicherheit konfigurieren und so den Datenzugriff optimal beschränken. Darüber hinaus kann der Administrator den mitarbeiterspezifischen Datenzugriff sowie jegliche Änderung der Zugriffssteuerungsrichtlinien überwachen und so ein hohes Maß an Kontrolle über Unternehmensressourcen erreichen.
 
 > [!NOTE]
 > Die in diesem Artikel beschriebenen neuen Features sind nur für die folgenden Clustertypen verfügbar: Hadoop, Spark und Interactive Query. Andere Workloads (etwa HBase, Storm und Kafka) kommen in späteren Versionen hinzu.
@@ -35,7 +31,7 @@ Von Azure HDInsight wurde bislang nur ein einzelner lokaler Administratorbenutze
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 ## <a name="benefits"></a>Vorteile
-Die Unternehmenssicherheit basiert auf vier zentralen Säulen: Umgebungssicherheit, Authentifizierung, Autorisierung und Verschlüsselung.
+Die Unternehmenssicherheit basiert auf vier Hauptsäulen: Umgebungssicherheit, Authentifizierung, Autorisierung und Verschlüsselung.
 
 ![Vorteile von in die Domäne eingebundenen HDInsight-Clustern (Säulen)](./media/apache-domain-joined-introduction/hdinsight-domain-joined-four-pillars.png)zu erstellen und zu verwalten.
 
@@ -56,6 +52,9 @@ Datenschutz spielt eine wichtige Rolle bei der Erfüllung der Sicherheits- und C
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Konfigurieren eines in die Domäne eingebundenen HDInsight-Clusters finden Sie unter [Configure Domain-joined HDInsight clusters (Preview)](apache-domain-joined-configure.md) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]).
-* Informationen zum Verwalten eines in die Domäne eingebundenen HDInsight-Clusters finden Sie unter [Manage Domain-joined HDInsight clusters (Preview)](apache-domain-joined-manage.md) (Verwalten von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]).
+* Informationen zum Verwalten eines in die Domäne eingebundenen HDInsight-Clusters finden Sie unter [Verwalten von in die Domäne eingebundenen HDInsight-Clustern](apache-domain-joined-manage.md).
 * Informationen zum Konfigurieren von Hive-Richtlinien und zum Ausführen von Hive-Abfragen finden Sie unter [Configure Hive policies in Domain-joined HDInsight (Preview)](apache-domain-joined-run-hive.md) (Konfigurieren von Hive-Richtlinien für in die Domäne eingebundene HDInsight-Cluster).
 * Informationen zum Ausführen von Hive-Abfragen per SSH für in die Domäne eingebundene HDInsight-Cluster finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* Informationen zur Verwendung von VSCode für die Verknüpfung mit einem in die Domäne eingebunden Cluster finden Sie unter [So verknüpfen Sie einen Cluster](../hdinsight-for-vscode.md#linkcluster).
+* Informationen zur Verwendung von IntelliJ für die Verknüpfung mit einem in die Domäne eingebunden Cluster finden Sie unter [Verknüpfen eines Clusters](../spark/apache-spark-intellij-tool-plugin.md#linkcluster).
+* Informationen zur Verwendung von Eclipse für die Verknüpfung mit einem in die Domäne eingebunden Cluster finden Sie unter [Verknüpfen eines Clusters](../spark/apache-spark-eclipse-tool-plugin.md#linkcluster).

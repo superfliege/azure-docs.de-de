@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 46d4962040a78942adbad443d5cbde64755ddadf
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 855cb159474836e4c015f84d7d57546b5e1a2e99
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +68,7 @@ Einige Datenspeicher unterstützen die Verschlüsselung von ruhenden Daten. Es e
 Transparent Data Encryption (TDE) in Azure SQL Data Warehouse ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu werden die Schritte für die Echtzeitverschlüsselung und -entschlüsselung der ruhenden Daten ausgeführt. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Sichern einer Datenbank in SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL-Datenbank
-Auch Azure SQL-Datenbank unterstützt Transparent Data Encryption (TDE), die Schutz vor der Bedrohung durch schädliche Aktivitäten bietet. Hierzu werden die Daten in Echtzeit ver- und entschlüsselt, ohne dass Änderungen der Anwendung erforderlich sind. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Auch Azure SQL-Datenbank unterstützt Transparent Data Encryption (TDE), die Schutz vor der Bedrohung durch schädliche Aktivitäten bietet. Hierzu werden die Daten in Echtzeit ver- und entschlüsselt, ohne dass Änderungen der Anwendung erforderlich sind. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Azure Data Lake Store bietet ebenfalls eine Verschlüsselung für Daten, die im Konto gespeichert sind. Wenn diese Option aktiviert ist, verschlüsselt Data Lake Store Daten automatisch vor der dauerhaften Speicherung und entschlüsselt Daten vor dem Abrufen. So ist der Vorgang für den Client, der auf die Daten zugreift, transparent. Weitere Informationen finden Sie unter [Sicherheit in Azure Data Lake Store](../data-lake-store/data-lake-store-security-overview.md). 
@@ -86,7 +86,7 @@ Amazon Redshift unterstützt die Clusterverschlüsselung für ruhende Daten. Wei
 Salesforce unterstützt Shield Platform Encryption, die eine Verschlüsselung aller Dateien, Anlagen und benutzerdefinierten Felder ermöglicht. Weitere Informationen finden Sie unter [Grundlegendes zum OAuth-Webserver-Authentifizierungsfluss](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios"></a>Hybridszenario
-Hybridszenarien erfordern, dass die selbstgehostete Integration Runtime in einem lokalen Netzwerk oder einem virtuellen Netzwerk (Azure) oder innerhalb einer virtuellen Private Cloud (Amazon) installiert wird. Die selbstgehostete Integrationslaufzeit muss auf die lokalen Datenspeicher zugreifen können. Weitere Informationen zur selbstgehosteten Integration Runtime finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime). 
+Hybridszenarien erfordern, dass die selbstgehostete Integration Runtime in einem lokalen Netzwerk oder einem virtuellen Netzwerk (Azure) oder innerhalb einer virtuellen Private Cloud (Amazon) installiert wird. Die selbstgehostete Integrationslaufzeit muss auf die lokalen Datenspeicher zugreifen können. Weitere Informationen zur selbstgehosteten Integration Runtime finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime). 
 
 ![Kanäle der selbstgehosteten Integrationslaufzeit](media/data-movement-security-considerations/data-management-gateway-channels.png)
 

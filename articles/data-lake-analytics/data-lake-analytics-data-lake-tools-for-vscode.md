@@ -1,10 +1,10 @@
 ---
-title: "Azure Data Lake Tools: Verwenden von Azure Data Lake Tools für Visual Studio Code | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Azure Data Lake Tools für Visual Studio Code verwenden, um U-SQL-Skripts zu erstellen, zu testen und auszuführen. "
+title: 'Azure Data Lake Tools: Verwenden von Azure Data Lake Tools für Visual Studio Code | Microsoft-Dokumentation'
+description: 'Erfahren Sie, wie Sie Azure Data Lake Tools für Visual Studio Code verwenden, um U-SQL-Skripts zu erstellen, zu testen und auszuführen. '
 Keywords: VScode,Azure Data Lake Tools,Local run,Local debug,Local Debug,preview file,upload to storage path,download,upload
 services: data-lake-analytics
-documentationcenter: 
-author: jejiang
+documentationcenter: ''
+author: Jejiang
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: jejiang
-ms.openlocfilehash: 7e1e2c0a5481a81e9267bcf87076076b377a1496
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: fcd821c91a8c94792eeed83940abe1c72d0b2fb8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Verwenden von Azure Data Lake Tools für Visual Studio Code
 
@@ -356,13 +356,13 @@ Der Status wird am unteren Rand der Statusleiste angezeigt, wenn der Download un
 
 **Azure-Integration** 
 
-- Vor der Anmeldung bei Azure können Sie **DATALAKE EXPLORER** erweitern und auf **Bei Azure anmelden** klicken, um sich bei Azure anzumelden. Nach der Anmeldung werden im linken Bereich von **DATALAKE EXPLORER** alle Abonnements unter Ihrem Azure-Konto angezeigt. 
+- Vor der Anmeldung bei Azure können Sie **AZURE DATALAKE** erweitern und auf **Bei Azure anmelden** klicken, um sich bei Azure anzumelden. Nach der Anmeldung werden im linken Bereich von **AZURE DATALAKE** alle Abonnements unter Ihrem Azure-Konto angezeigt. 
 
    ![Data Lake-Explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/sign-in-datalake-explorer.png)
 
    ![Data Lake-Explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
-**ADLA-Metadaten: Navigation** 
+**ADLA-Metadaten: Navigation**
 
 - Erweitern Sie Ihr Azure-Abonnement. Sie können in Ihrer U-SQL-Datenbank navigieren sowie die **Schemas**, **Anmeldeinformationen** und **Assemblys**, die **Tabelle**, den **Index** und Ähnliches unter dem Knoten „U-SQL-Datenbanken“ anzeigen.
 
@@ -382,11 +382,31 @@ Der Status wird am unteren Rand der Statusleiste angezeigt, wenn der Download un
 
 **ADLS-Integration** 
 
- - Navigieren Sie zu **Speicherkonto**. Das Kontextmenü des Dateiknotens bietet folgende Optionen: **Vorschau**, **Herunterladen**, **Löschen**, **Relativen Pfad kopieren** und **Vollständigen Pfad kopieren**. Im Kontextmenü des Ordnerknotens stehen folgende Optionen zur Verfügung: **Aktualisieren**, **Hochladen**, **Ordner hochladen** und **Löschen**.
+Navigieren zu **Data Lake Store**
+
+ - Wenn Sie mit der rechten Maustaste auf den Ordnerknoten klicken, können Sie im Kontextmenü **Aktualisieren**, **Löschen**, **Hochladen**, **Ordner hochladen**, **Relativen Pfad kopieren** oder **Vollständigen Pfad kopieren** wählen.
 
    ![Data Lake-Explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
+ - Wenn Sie mit der rechten Maustaste auf den Ordnerknoten klicken, können Sie im Kontextmenü **Herunterladen**, **Vorschau**, **Löschen**, **Relativen Pfad kopieren** oder **Vollständigen Pfad kopieren** wählen. 
+
    ![Data Lake-Explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-download-preview-file.png)
+
+**WASB-Integration**
+
+Navigieren zu **Blob Storage**
+
+- Wenn Sie mit der rechten Maustaste auf den Blobcontainerknoten klicken, können Sie im Kontextmenü **Aktualisieren**, **Blobcontainer löschen** oder **Blob hochladen** wählen.
+
+    ![Blob Storage-Blobcontainerknoten](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
+
+- Wenn Sie mit der rechten Maustaste auf den Ordnerknoten klicken, können Sie im Kontextmenü **Aktualisieren** oder **Blob aktualisieren** wählen.
+
+    ![Blob Storage-Ordnerknoten](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
+
+- Wenn Sie mit der rechten Maustaste auf den Ordnerknoten klicken, können Sie im Kontextmenü **Vorschau/Bearbeiten**, **Herunterladen**, **Löschen**, **Relativen Pfad kopieren** oder **Vollständigen Pfad kopieren** wählen.
+
+    ![Blob Storage-Dateiknoten](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-file-node.png)
 
 ## <a name="open-adl-storage-explorer-in-portal"></a>Öffnen des ADL Storage-Explorers im Portal
 1. Drücken Sie STRG+UMSCHALT+P, um die Befehlspalette zu öffnen.

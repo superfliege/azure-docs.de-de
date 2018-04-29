@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 16f5c515231f486e3576b95a0d103d2fa34842ff
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: cd11ea68f298395236abf83295b939462ba00964
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 In diesem Artikel wird beschrieben, wie ein DNS-Domänenname in einem nicht verwalteten Verzeichnis in Azure Active Directory (Azure AD) übernommen wird. Wenn sich ein Self-Service-Benutzer für einen Clouddienst registriert, der Azure AD verwendet, wird er auf der Grundlage seiner E-Mail-Domäne einem nicht verwalteten Azure AD-Verzeichnis hinzugefügt. Weitere Informationen zur Self-Service- oder „viralen“ Registrierung für einen Dienst finden Sie im Artikel zu der Frage, [was die Self-Service-Registrierung für Azure Active Directory ist]().
@@ -83,14 +83,12 @@ Wenn Sie die Inhaberschaft des Domänennamens bestätigt haben, entfernt Azure A
 - Benutzer
 - Abonnements
 - Lizenzzuweisungen
- 
-Die [Option **ForceTakeover**](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) für die externe Administratorübernahme eines Domänennamens wird nur für zwei Dienste unterstützt, Power BI und Azure RMS.
 
 ### <a name="support-for-external-admin-takeover"></a>Unterstützung für eine externe Administratorübernahme
 Die externe Administratorübernahme wird von folgenden Onlinediensten unterstützt:
 
 - Power BI
-- Azure Rights Management Service (RMS)
+- Azure Rights Management
 - Exchange Online
 
 Die unterstützten Tarife umfassen:
@@ -99,12 +97,19 @@ Die unterstützten Tarife umfassen:
 - Power BI Pro
 - PowerApps Free
 - PowerFlow Free
-- Azure Rights Management Service Basic (RMS)
-- Azure Rights Management Service Enterprise (RMS)
+- RMS for Individuals
 - Microsoft Stream
 - die kostenlose Testversion von Dynamics 365
 
-Die externe Administratorübernahme wird für keinen Dienst mit Tarifen unterstützt, die SharePoint, OneDrive oder Skype für Unternehmen enthalten, z.B. über ein kostenloses Abonnement für Office oder das Office Basic SKU.
+Die externe Administratorübernahme wird für keinen Dienst mit Tarifen unterstützt, die SharePoint, OneDrive oder Skype For Business enthalten, z. B. über ein kostenloses Abonnement für Office oder das Office Basic SKU. Optional können Sie die [**ForceTakeover**-Option](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) verwenden, um den Domänennamen aus dem nicht verwalteten Mandanten zu entfernen und diesen Namen für den gewünschten Mandanten zu überprüfen. Diese ForceTakeover-Option bewirkt nicht, dass Benutzer verschoben werden oder Zugriff auf das Abonnement erhalten bleibt. Stattdessen bewirkt diese Option nur, dass der Domänenname verschoben wird. 
+
+#### <a name="more-information-about-rms-for-individuals"></a>Weitere Informationen zu RMS for Individuals
+
+Für [RMS for Individuals](/information-protection/understand-explore/rms-for-individuals) werden, wenn sich der nicht verwaltete Mandant in derselben Region befindet wie der Mandant, den Sie besitzen, der automatisch erstellte [Mandantenschlüssel für Azure Information Protection](/information-protection/plan-design/plan-implement-tenant-key) und [Standardschutzvorlagen](/information-protection/deploy-use/configure-usage-rights#rights-included-in-the-default-templates) zusätzlich mit dem Domänennamen verschoben. 
+
+Die Schlüssel und die Vorlagen werden nicht verschoben, wenn sich der nicht verwaltete Mandant in einer anderen Region befindet. Angenommen, der nicht verwaltete Mandant befindet sich in Europa, und der Mandant, den Sie besitzen, befindet sich in Nordamerika. 
+
+Obwohl RMS for Individuals so konzipiert ist, dass es die Azure AD-Authentifizierung unterstützt, um geschützte Inhalte zu öffnen, hindert es Benutzer nicht daran, ebenfalls Inhalte zu schützen. Haben Benutzer Inhalte mit dem RMS for Individuals-Abonnement geschützt, und wurden die Schlüssel und die Vorlagen nicht verschoben, kann nach der Domänenübernahme nicht auf diese Inhalte zugegriffen werden.    
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Azure AD-PowerShell-Cmdlets für die ForceTakeover-Option
 Diese Cmdlets werden im [PowerShell-Beispiel](#powershell-example) verwendet.

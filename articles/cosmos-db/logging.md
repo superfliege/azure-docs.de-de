@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 6bad6c7cd641a2ef5461ee37b89c0bdc6a221017
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 103d9d36ae1290f7af18be83f41bd9b83dbd3fbe
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Diagnoseprotokollierung für Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Sobald Sie damit begonnen haben, mindestens eine Azure Cosmos DB-Datenbank zu ve
 
 ## <a name="logs-available-in-azure"></a>In Azure verfügbare Protokolle
 
-Bevor wir uns mit der Überwachung Ihres Azure Cosmos DB-Kontos befassen, sollten einige Punkte zur Protokollierung und Überwachung verdeutlicht werden. Auf der Azure-Plattform stehen verschiedene Typen von Protokollen bereit. Es gibt [Azure-Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [Azure-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [Azure-Metriken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), Ereignisse, Taktüberwachung, Vorgangsprotokolle usw. Eine Vielzahl von Protokollen ist verfügbar. Die vollständige Liste der Protokolle ist in [Azure Log Analytics](https://azure.microsoft.com/en-us/services/log-analytics/) im Azure-Portal enthalten. 
+Bevor wir uns mit der Überwachung Ihres Azure Cosmos DB-Kontos befassen, sollten einige Punkte zur Protokollierung und Überwachung verdeutlicht werden. Auf der Azure-Plattform stehen verschiedene Typen von Protokollen bereit. Es gibt [Azure-Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [Azure-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [Azure-Metriken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), Ereignisse, Taktüberwachung, Vorgangsprotokolle usw. Eine Vielzahl von Protokollen ist verfügbar. Die vollständige Liste der Protokolle ist in [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) im Azure-Portal enthalten. 
 
 Die folgende Abbildung zeigt die verschiedenen Arten verfügbarer Azure-Protokolle:
 
@@ -51,7 +51,7 @@ Aktivitätsprotokolle (Vorgänge auf Steuerungsebene) können weitaus umfangreic
 
 ### <a name="azure-metrics"></a>Azure-Metriken
 
-[Azure-Metriken](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics) umfassen die wichtigsten Typen von Azure-Telemetriedaten (auch als _Leistungsindikatoren_ bezeichnet), die von den meisten Azure-Ressourcen ausgegeben werden. Mit Metriken können Sie Informationen zu Durchsatz, Speicher, Konsistenz, Verfügbarkeit und Latenz Ihrer Azure Cosmos DB-Ressourcen anzeigen. Weitere Informationen finden Sie unter [Überwachen und Debuggen mit Metriken in Azure Cosmos DB](use-metrics.md).
+[Azure-Metriken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) umfassen die wichtigsten Typen von Azure-Telemetriedaten (auch als _Leistungsindikatoren_ bezeichnet), die von den meisten Azure-Ressourcen ausgegeben werden. Mit Metriken können Sie Informationen zu Durchsatz, Speicher, Konsistenz, Verfügbarkeit und Latenz Ihrer Azure Cosmos DB-Ressourcen anzeigen. Weitere Informationen finden Sie unter [Überwachen und Debuggen mit Metriken in Azure Cosmos DB](use-metrics.md).
 
 ### <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 

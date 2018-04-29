@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: pabutler
-ms.openlocfilehash: 64becc80192e69bd332d6657637c845acf93748b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: eb6db45ca0fcb6879aeaeaaf70715691cac438b0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="saas-applications-technical-publishing-guide"></a>Technischer Leitfaden für die Veröffentlichung von SaaS-Anwendungen
 
 Willkommen beim technischen Leitfaden für die Veröffentlichung von Azure Marketplace-SaaS-Anwendungen. Dieser Leitfaden soll zukünftige und bestehende Herausgeber dabei unterstützen, ihre Anwendungen und Dienste mithilfe des Angebots für SaaS-Anwendungen im Azure Marketplace zu listen.  
-Das Angebot für SaaS-Anwendungen empfiehlt sich, wenn Ihre Lösung in Ihrem eigenen Azure-Abonnement bereitgestellt wird und Kunden sich über eine Schnittstelle anmelden, die Sie entwerfen und verwalten, um die Anwendung zu testen. In diesem Angebot wird [Azure Active Directory (Azure AD)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis) verwendet, um Ihre vorhandene Testumgebung zu nutzen. Anders gesagt: Es handelt sich um eine kostenlose Testversion, die vom Kunden gesteuert und kontrolliert und von einem Partner gehostet wird. Es ist von entscheidender Bedeutung, dass Ihre Lösung auf eine Weise bereitgestellt wird, die es Käufern von Cloudlösungen ermöglicht, Ihre Lösung kostenlos und unabhängig auszuprobieren. Das Testerlebnis eines solchen Angebots kommt der Art und Weise entgegen, in der Kunden nach Cloudlösungen suchen.  
+Das Angebot für SaaS-Anwendungen empfiehlt sich, wenn Ihre Lösung in Ihrem eigenen Azure-Abonnement bereitgestellt wird und Kunden sich über eine Schnittstelle anmelden, die Sie entwerfen und verwalten, um die Anwendung zu testen. In diesem Angebot wird [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) verwendet, um Ihre vorhandene Testumgebung zu nutzen. Anders gesagt: Es handelt sich um eine kostenlose Testversion, die vom Kunden gesteuert und kontrolliert und von einem Partner gehostet wird. Es ist von entscheidender Bedeutung, dass Ihre Lösung auf eine Weise bereitgestellt wird, die es Käufern von Cloudlösungen ermöglicht, Ihre Lösung kostenlos und unabhängig auszuprobieren. Das Testerlebnis eines solchen Angebots kommt der Art und Weise entgegen, in der Kunden nach Cloudlösungen suchen.  
 
 Eine Übersicht über alle Marketplace-Angebote finden Sie im [Marketplace-Leitfaden für Herausgeber](https://aka.ms/sellerguide).
 
@@ -31,21 +31,21 @@ Eine Übersicht über alle Marketplace-Angebote finden Sie im [Marketplace-Leitf
 Die technischen Voraussetzungen für SaaS-Anwendungen sind einfach. Herausgeber müssen nur für die Integration in Azure AD sorgen, um eine Veröffentlichung zu ermöglichen.  Die Integration von Anwendungen in Azure AD ist umfassend dokumentiert, und Microsoft bietet verschiedene SDKs und Ressourcen für diesen Zweck.  
 
 Als Erstes empfiehlt es sich, ein Abonnement speziell für die Veröffentlichung im Azure Marketplace einzurichten, sodass Sie diese Arbeit von anderen Initiativen trennen können. Darüber hinaus empfehlen wir die Installation der folgenden Tools in Ihrer Entwicklungsumgebung (falls die Tools nicht bereits vorhanden sind): 
-- [Azure-CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)  
-- [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-5.0.0)  
+- [Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)  
+- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)  
 - [Azure-Entwicklungstools (Informationen zu den verfügbaren Tools)](https://azure.microsoft.com/tools/)  
 - [Visual Studio Code](https://code.visualstudio.com/)  
 
-### <a name="resources"></a>Ressourcen
+### <a name="resources"></a>angeben
 Die folgenden Listen enthalten Links zu den besten Azure AD-Ressourcen für den Einstieg: 
 
-**Dokumentation**
+**Documentation**
 
-- [Entwicklerhandbuch zu Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+- [Entwicklerhandbuch zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
-- [Integration in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-to-integrate)
+- [Integration in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
-- [Integrieren von Anwendungen in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+- [Integrieren von Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
 - [Azure Roadmap – Sicherheit und Identität](https://azure.microsoft.com/roadmap/?category=security-identity)
 

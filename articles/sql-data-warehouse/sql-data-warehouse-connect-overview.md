@@ -1,31 +1,26 @@
 ---
 title: Verbinden mit Azure SQL Data Warehouse | Microsoft Docs
-description: "Gewusst wie: Suchen des Servernamens und der Verbindungszeichenfolge für Azure SQL Data Warehouse"
+description: Verbindung mit Azure SQL Data Warehouse
 services: sql-data-warehouse
-documentationcenter: NA
-author: antvgski
-manager: jhubbard
-editor: 
-ms.assetid: e52872ca-ae74-4e25-9c56-d49c85c8d0f0
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: connect
-ms.date: 12/14/2017
-ms.author: anvang;barbkess;kevin
-ms.openlocfilehash: 804d91d309fcce42f0ac50ac98dbad9c5648b4eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: b2aff8379667191017830bf441ee101e773d2dfc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Verbinden mit Azure SQL Data Warehouse
-Dieser Artikel unterstützt Sie beim erstmaligen Herstellen einer Verbindung mit SQL Data Warehouse.
+Verbindung mit Azure SQL Data Warehouse
 
 ## <a name="find-your-server-name"></a>Suchen des Servernamens
-Um eine Verbindung mit SQL Data Warehouse herstellen zu können, müssen Sie zunächst wissen, wie Sie den Servernamen finden.  Der Servername im folgenden Beispiel lautet etwa „samplesvr.database.windows.net“. So ermitteln Sie den vollqualifizierten Servernamen
+Der Servername im folgenden Beispiel lautet etwa „samplesvr.database.windows.net“. So ermitteln Sie den vollqualifizierten Servernamen
 
 1. Öffnen Sie das [Azure-Portal][Azure portal].
 2. Klicken Sie auf **SQL Data Warehouses**.
@@ -35,7 +30,7 @@ Um eine Verbindung mit SQL Data Warehouse herstellen zu können, müssen Sie zun
     ![Vollständiger Servername][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Unterstützte Treiber und Verbindungszeichenfolgen
-Azure SQL Data Warehouse unterstützt [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] und [JDBC][JDBC]. Klicken Sie auf einen der genannten Treiber, um zur neuesten Version und Dokumentation zu gelangen. Zur automatischen Erstellung der Verbindungszeichenfolge für den verwendeten Treiber können Sie im Azure-Portal auf **Datenbank-Verbindungszeichenfolgen anzeigen** klicken, wie im vorherigen Beispiel zu sehen.  Im Anschluss finden Sie auch einige Beispielverbindungszeichenfolgen für die einzelnen Treiber.
+Azure SQL Data Warehouse unterstützt [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] und [JDBC][JDBC]. Um zur neuesten Version und Dokumentation zu gelangen, klicken Sie auf einen der genannten Treiber. Zur automatischen Erstellung der Verbindungszeichenfolge für den verwendeten Treiber klicken Sie im Azure-Portal auf **Datenbank-Verbindungszeichenfolgen anzeigen**, wie im vorherigen Beispiel zu sehen. Im Anschluss finden Sie auch einige Beispielverbindungszeichenfolgen für die einzelnen Treiber.
 
 > [!NOTE]
 > Es empfiehlt sich, das Verbindungstimeout auf 300 Sekunden festzulegen, damit die Verbindung bei kurzen Ausfällen bestehen bleibt.

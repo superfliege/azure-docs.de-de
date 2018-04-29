@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: dfa116981cb0ce912ee83fade54f2502262178bc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9ecd8dc40e168c2fd37e3d58ee588a0d9626a04a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informationen zu VPN Gateway-Einstellungen
 
@@ -79,9 +79,9 @@ New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
 ```
 
-###  <a name="resizechange"></a>Ändern der Größe bzw. Änderung einer SKU
+###  <a name="resizechange"></a>Ändern der Größe oder Wechseln der SKU
 
-Das Ändern der Größe einer Gateway-SKU ist relativ einfach. Während des Ändern der Größe des Gateways treten kaum Ausfallzeiten auf. Es gibt jedoch auch Regeln hinsichtlich der Größenänderung:
+Wenn Sie über ein VPN-Gateway verfügen und eine andere Gateway-SKU verwenden möchten, können Sie entweder die Größe Ihrer Gateway-SKU ändern oder zu einer anderen SKU wechseln. Wenn Sie zu einer anderen Gateway-SKU wechseln, löschen Sie das vorhandene Gateway vollständig und erstellen ein neues. Dies kann bis zu 45 Minuten dauern. Wenn Sie hingegen die Größe einer Gateway-SKU ändern, ist die Ausfallzeit nur gering, da Sie das Gateway nicht löschen und neu erstellen müssen. Wenn Sie die Möglichkeit haben, die Größe der Gateways-SKU zu ändern anstatt zu einer anderen SKU zu wechseln, sollten Sie diese Option bevorzugen. Es gibt jedoch auch Regeln hinsichtlich der Größenänderung:
 
 1. Sie können die SKU-Größe zwischen VpnGw1, VpnGw2 und VpnGw3 ändern.
 2. Bei Verwendung der alten Gateway-SKUs kann die Größe weiterhin zwischen Basic-, Standard- und HighPerformance-SKUs geändert werden.

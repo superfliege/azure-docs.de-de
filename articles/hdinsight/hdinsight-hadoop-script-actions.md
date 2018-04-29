@@ -9,18 +9,16 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 836d68a8-8b21-4d69-8b61-281a7fe67f21
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: ac2a087bb0a9d8cac15dfea2448a9c42cee4a1f4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 98040f10eb15245f36eb0b365dcdf0f5ba7f107a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Entwickeln von Script Action-Skripts für Windows-basierte HDInsight-Cluster
 Entwickeln von Skriptaktionsskripts für HDInsight Weitere Informationen zu Skriptaktionsskripts finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md). Der gleiche Artikel, der für den Linux-basierten HDInsight-Cluster verfasst wurde, befindet sich unter [Entwickeln von Skriptaktionsskripts für HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -102,7 +100,7 @@ Dieses Beispielskript finden Sie auch unter [https://hditutorialdata.blob.core.w
 
 HDInsight verfügt über mehrere Skripts zum Installieren zusätzlicher Komponenten auf HDInsight-Clustern:
 
-| Name | Skript |
+| NAME | Skript |
 | --- | --- |
 | **Installieren von Spark** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]. |
 | **Installieren von R** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von R in HDInsight-Clustern][hdinsight-r-scripts]. |
@@ -178,7 +176,7 @@ Wenn Sie ein benutzerdefiniertes Skript für einen HDInsight-Cluster entwickeln,
 
     HDInsight hat eine Aktiv-Passiv-Architektur für Hochverfügbarkeit, in dem sich ein Hauptknoten im aktiven Modus (d.h. die HDInsight-Dienste werden ausgeführt) und der andere Hauptknoten im Standby-Modus (d.h. HDInsight-Dienste werden nicht ausgeführt) befindet. Die Knoten schalten zwischen aktivem und passivem Modus um, wenn die HDInsight-Dienste unterbrochen werden. Wenn eine Skriptaktion zur Installation von Diensten auf beiden Hauptknoten für Hochverfügbarkeit verwendet wird, ist der HDInsight-Failovermechanismus nicht in der Lage, für diese vom Benutzer installierten Dienste automatisch ein Failover durchzuführen. Daher müssen vom Benutzer installierte Dienste auf HDInsight-Hauptknoten, die hoch verfügbar sein sollen, im Aktiv-Passiv-Modus über ihren eigenen Failovermechanismus verfügen oder sich im Aktiv-Aktiv-Modus befinden.
 
-    Ein HDInsight-Skriptaktionsbefehl wird auf beiden Hauptknoten ausgeführt, wenn die Hauptknotenrolle im *ClusterRoleCollection* -Parameter angegeben wird. Vergewissern Sie sich beim Entwurf eines benutzerdefinierten Skripts, dass Ihrem Skript diese Konfiguration bekannt ist. Sie sollten beispielsweise keine Probleme bekommen, wenn dieselben Dienste auf beiden Hauptknoten installiert und gestartet wurden und letztlich in Konkurrenz zueinander treten. Daten gehen auch beim Reimaging verloren, weshalb mithilfe von Skriptaktionen installierte Software bei solchen Ereignissen ausfallsicher sein muss. Anwendungen sollten so konzipiert sein, dass sie mit hoch verfügbaren Daten arbeiten können, die über viele Knoten verteilt werden. Beachten Sie, dass für maximal 1/5 der Knoten eines Clusters gleichzeitig ein neues Image erstellt werden kann.
+    Ein HDInsight-Skriptaktionsbefehl wird auf beiden Hauptknoten ausgeführt, wenn die Hauptknotenrolle im *ClusterRoleCollection* -Parameter angegeben wird. Vergewissern Sie sich beim Entwurf eines benutzerdefinierten Skripts, dass Ihrem Skript diese Konfiguration bekannt ist. Sie sollten beispielsweise keine Probleme bekommen, wenn dieselben Dienste auf beiden Hauptknoten installiert und gestartet wurden und letztlich in Konkurrenz zueinander treten. Daten gehen auch beim Reimaging verloren, weshalb mithilfe von Skriptaktionen installierte Software bei solchen Ereignissen ausfallsicher sein muss. Anwendungen sollten so konzipiert sein, dass sie mit hoch verfügbaren Daten arbeiten können, die über viele Knoten verteilt werden. Für maximal 1/5 der Knoten eines Clusters kann gleichzeitig ein neues Image erstellt werden.
 * Konfigurieren benutzerdefinierter Komponenten zur Verwendung von Azure Blob Storage
 
     Die benutzerdefinierten Komponenten, die Sie auf den Clusterknoten installieren, sind möglicherweise standardmäßig so konfiguriert, dass sie den HDFS-Speicher (Hadoop Distributed File System) verwenden. Ändern Sie die Konfiguration, um stattdessen Azure Blob Storage zu verwenden. Cluster-Reimages werden mit dem HDFS-Dateisystem formatiert, sodass Sie alle darauf gespeicherten Daten verlieren würden. Mit Azure Blob Storage wird stattdessen sichergestellt, dass Ihre Daten erhalten bleiben.
@@ -192,14 +190,14 @@ Bei der Entwicklung von Skriptaktionen müssen häufig Umgebungsvariablen festge
     Write-HDILog "Starting environment variable setting at: $(Get-Date)";
     [Environment]::SetEnvironmentVariable('MDS_RUNNER_CUSTOM_CLUSTER', 'true', 'Machine');
 
-Mit dieser Anweisung wird die Umgebungsvariable **MDS_RUNNER_CUSTOM_CLUSTER** auf den Wert „true“ und auch der Gültigkeitsbereich dieser Variablen (für den gesamten Computer) festgelegt. Mitunter ist es wichtig, dass Umgebungsvariablen im entsprechenden Bereich (Computer oder Benutzer) festgelegt werden. [Hier][1] finden Sie weitere Informationen zum Festlegen von Umgebungsvariablen.
+Mit dieser Anweisung wird die Umgebungsvariable **MDS_RUNNER_CUSTOM_CLUSTER** auf den Wert „true“ und auch der Gültigkeitsbereich dieser Variablen (für den gesamten Computer) festgelegt. Es ist wichtig, dass Umgebungsvariablen im entsprechenden Bereich (Computer oder Benutzer) festgelegt werden. [Hier][1] finden Sie weitere Informationen zum Festlegen von Umgebungsvariablen.
 
 ### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Zugriff auf Speicherorte benutzerdefinierter Skripts
-Skripts zur Anpassung eines Clusters müssen entweder im Standardspeicherkonto des Clusters oder in einem öffentlichen schreibgeschützten Container eines anderen Speicherkontos enthalten sein. Wenn Ihr Skript auf externe Ressourcen zugreift, müssen diese öffentlich zugänglich sein (oder mindestens einen öffentlichen Lesezugriff aufweisen). Sie möchten z. B. auf eine Datei zugreifen und sie mithilfe des Befehls "SaveFile-HDI" speichern.
+Skripts zur Anpassung eines Clusters müssen entweder im Standardspeicherkonto des Clusters oder in einem öffentlichen schreibgeschützten Container eines anderen Speicherkontos enthalten sein. Wenn Ihr Skript auf externe Ressourcen zugreift, müssen die Ressourcen öffentlich lesbar sein. Sie möchten z.B. auf eine Datei zugreifen und sie mithilfe des Befehls „SaveFile-HDI“ speichern.
 
     Save-HDIFile -SrcUri 'https://somestorageaccount.blob.core.windows.net/somecontainer/some-file.jar' -DestFile 'C:\apps\dist\hadoop-2.4.0.2.1.9.0-2196\share\hadoop\mapreduce\some-file.jar'
 
-In diesem Beispiel müssen Sie sicherstellen, dass der Container "somecontainer" im Speicherkonto "somestorageaccount" öffentlich zugänglich ist. Andernfalls löst das Skript die Ausnahme „Nicht gefunden“ aus und führt zu einem Fehler.
+In diesem Beispiel müssen Sie sicherstellen, dass der Container `somecontainer` im Speicherkonto `somestorageaccount` öffentlich zugänglich ist. Andernfalls löst das Skript die Ausnahme „Nicht gefunden“ aus und führt zu einem Fehler.
 
 ### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Übergeben von Parametern an das Cmdlet "Add-AzureRmHDInsightScriptAction"
 Um mehrere Parameter an das Cmdlet "Add-AzureRmHDInsightScriptAction" zu übergeben, müssen Sie den Zeichenfolgenwert so formatieren, dass er alle Parameter für das Skript enthält. Beispiel: 
@@ -238,9 +236,9 @@ Es folgen unsere Schritte bei der Vorbereitung der Bereitstellung dieser Skripts
 
 1. Legen Sie Daten mit den benutzerdefinierten Skripts an einem Speicherort ab, auf den die Clusterknoten während der Bereitstellung zugreifen können. Dies kann ein beliebiges Standardkonto oder zusätzliches Speicherkonto, das während der Bereitstellung angegeben wurde, oder ein anderer öffentlich zugänglicher Speichercontainer sein.
 2. Fügen Sie Skripts Überprüfungen hinzu, um sicherzustellen, dass sie idempotent ausgeführt werden, damit das Skript mehrmals auf demselben Knoten ausgeführt werden kann.
-3. Verwenden Sie das PowerShell-Cmdlet **Write-Output** , um für eine Ausgabe in STDOUT und STDERR zu sorgen. Verwenden Sie nicht **Write-Host**.
-4. Verwenden Sie einen temporären Dateiordner wie "$env:TEMP", um die heruntergeladene von den Skripts verwendete Dateien aufzubewahren, und leeren Sie den Ordner nach der Ausführung der Skripts.
-5. Installieren Sie benutzerdefinierte Software nur auf "D:\" oder in "C:\apps". Andere Speicherorte auf Laufwerk C:\ dürfen nicht verwendet werden, da sie reserviert sind. Beachten Sie, dass das Installieren von Dateien auf Laufwerk C:\ außerhalb des Ordners „C:/apps“ beim Erstellen neuer Imanges des Knotens zu Einrichtungsfehlern führen kann.
+3. Verwenden Sie das Azure PowerShell-Cmdlet `Write-Output`, um für eine Ausgabe in STDOUT und STDERR zu sorgen. Verwenden Sie nicht `Write-Host`.
+4. Verwenden Sie einen temporären Dateiordner wie `$env:TEMP`, um die heruntergeladenen von den Skripts verwendeten Dateien aufzubewahren, und leeren Sie den Ordner nach Ausführung der Skripts.
+5. Installieren Sie benutzerdefinierte Software nur auf "D:\" oder in "C:\apps". Andere Speicherorte auf Laufwerk C:\ dürfen nicht verwendet werden, da sie reserviert sind. Das Installieren von Dateien auf Laufwerk C:\ außerhalb des Ordners „C:/apps“ kann beim Erstellen neuer Images des Knotens zu Einrichtungsfehlern führen.
 6. Wenn sich Einstellungen auf Betriebssystemebene oder Hadoop-Dienstkonfigurationsdateien geändert haben, können Sie bei Bedarf die HDInsight-Dienste neu starten. Diese können dann Einstellungen auf Betriebssystemebene übernehmen, z. B. die in den Skripts festgelegten Umgebungsvariablen.
 
 ## <a name="debug-custom-scripts"></a>Debuggen von benutzerdefinierten Skripts

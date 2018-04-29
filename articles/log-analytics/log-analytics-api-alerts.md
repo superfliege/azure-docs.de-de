@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 04/10/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ed0ac6e2041ef503470f7317a5736deecd1d2b8f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6987900ac2ef535fe31d4d1ecadb1a302a9c0be
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API
 Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Operations Management Suite (OMS) erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
@@ -101,7 +101,7 @@ Die Eigenschaften aller Aktionen sind in der folgenden Tabelle aufgeführt.  Unt
 ### <a name="retrieving-actions"></a>Abrufen von Aktionen
 
 > [!NOTE]
-> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+> Ab dem 14. Mai 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
 
 Verwenden Sie die Get-Methode, um alle Aktionen für einen Zeitplan abzurufen.
 
@@ -124,7 +124,7 @@ Das Anforderungsformat zum Erstellen einer neuen Aktion variiert je nach Aktivit
 ### <a name="deleting-actions"></a>Löschen von Aktionen
 
 > [!NOTE]
-> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+> Ab dem 14. Mai 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
 
 Verwenden Sie die Delete-Methode mit der Aktions-ID, um eine Aktion zu löschen.
 
@@ -144,7 +144,7 @@ Ein Zeitplan sollte nur über genau eine Warnungsaktion verfügen.  Warnungsakti
 | Webhookaktionen | Pushen von Daten von Warnungen zum gewünschten Dienst als JSON |Nicht erforderlich, wenn Warnungen auf Azure erweitert werden|
 
 > [!NOTE]
-> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
+> Ab dem 14. Mai 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
 
 #### <a name="thresholds"></a>Schwellenwerte
 Eine Warnungsaktion sollte nur über genau einen Schwellenwert verfügen.  Wenn die Ergebnisse einer gespeicherten Suche mit dem Schwellenwert in einer Aktion übereinstimmen, die der Suche zugeordnet ist, werden alle anderen Prozesse in dieser Aktion ausgeführt.  Eine Aktion kann einen Schwellenwert auch nur zu dem Zweck enthalten, dass sie mit Aktionen eines anderen Typs verwendet werden kann, die keine Schwellenwerte aufweisen.
@@ -216,7 +216,7 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine Schwereg
 #### <a name="action-groups"></a>Aktionsgruppen
 Alle Warnungen in Azure verwenden Aktionsgruppen als Standardmechanismus für die Behandlung von Aktionen. Mit Aktionsgruppen können Sie Ihre Aktionen einmal angeben und die Aktionsgruppe dann mehreren Warnungen zuordnen. Dies gilt für sämtliche Bereiche in Azure, sodass Sie dieselbe Aktion nicht mehrmals deklarieren müssen. Aktionsgruppen unterstützen mehrere Aktionen – einschließlich E-Mails, SMS, Sprachanrufen, ITSM-Verbindungen, Automation-Runbooks, Webhook-URIs und anderen. 
 
-Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Runbook-Automatisierungsdetails und weitere Aktionen müssen zuerst in einer Aktivitätsgruppe definiert werden, bevor eine Warnung erstellt werden kann. Es ist möglich, im Portal [Aktionsgruppen aus Azure Monitor zu erstellen](../monitoring-and-diagnostics/monitoring-action-groups.md) oder die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) zu verwenden.
+Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Runbook-Automatisierungsdetails und weitere Aktionen müssen zuerst in einer Aktivitätsgruppe definiert werden, bevor eine Warnung erstellt werden kann. Es ist möglich, im Portal [Aktionsgruppen aus Azure Monitor zu erstellen](../monitoring-and-diagnostics/monitoring-action-groups.md) oder die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) zu verwenden.
 
 Um eine Zuordnung einer Aktionsgruppe zu einer Warnung hinzuzufügen, geben Sie die eindeutige Azure Resource Manager-ID der Aktionsgruppe in der Warnungsdefinition an. Im Folgenden finden Sie eine Beispieldarstellung:
 
@@ -322,7 +322,7 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine zugeordn
 Per E-Mail-Benachrichtigung werden E-Mails an einen oder mehrere Empfänger gesendet.  Sie enthalten die Eigenschaften, die in der folgenden Tabelle angegeben sind.
 
 > [!NOTE]
-> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie E-Mail-Benachrichtigungen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+> Ab dem 14. Mai 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie E-Mail-Benachrichtigungen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
    
 
 | Eigenschaft | BESCHREIBUNG |
@@ -366,7 +366,7 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine E-Mail-A
 Bei Behebungen wird ein Runbook in Azure Automation gestartet, mit dem versucht wird, das von der Warnung identifizierte Problem zu korrigieren.  Sie müssen einen Webhook für das Runbook erstellen, das in der Aktion für die Problembehebung verwendet wird, und anschließend den URI in der WebhookUri-Eigenschaft angeben.  Wenn Sie diese Aktion mit der OMS-Konsole erstellen, wird automatisch ein neuer Webhook für das Runbook erstellt.
 
 > [!NOTE]
-> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie die Wartung mithilfe von Runbooks nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+> Ab dem 14. Mai 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie die Wartung mithilfe von Runbooks nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
 
 Behebungen enthalten die Eigenschaften, die in der folgenden Tabelle angegeben sind.
 
@@ -425,7 +425,7 @@ Unten ist ein vollständiges Beispiel zur Erstellung einer neuen E-Mail-Benachri
 Bei Webhookaktionen wird ein Prozess gestartet, indem eine URL aufgerufen und optional eine zu sendende Nutzlast bereitgestellt wird.  Diese Aktionen sind mit Aktionen zur Problembehebung vergleichbar. Sie sind aber für Webhooks bestimmt, mit denen andere Prozesse als Azure Automation-Runbooks aufgerufen werden können.  Außerdem verfügen sie über die zusätzliche Option zum Angeben einer Nutzlast, die für den Remoteprozess bereitgestellt wird.
 
 > [!NOTE]
-> Ab dem 23. April 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Erweiterung von Warnungen in Azure bereits vor dem 23. April 2018 freiwillig auslösen. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie Webhooks nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+> Ab dem 14. Mai 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure erweitert. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie Webhooks nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
 
 
 Webhookaktionen verfügen nicht über einen Schwellenwert, sondern sollten stattdessen einem Zeitplan hinzugefügt werden, der über eine Warnungsaktion mit Schwellenwert verfügt.  

@@ -1,28 +1,28 @@
 ---
-title: "Verwalten des Gerätezugriffs für den Azure IoT Hub Device Provisioning-Dienst | Microsoft-Dokumentation"
-description: "Vorgehensweise zum Widerrufen des Gerätezugriffs auf Ihren DP-Dienst im Azure-Portal"
+title: Aufheben der Registrierung eines Geräts bei IoT Hub Device Provisioning Service
+description: Aufheben der Registrierung eines Geräts, um die Bereitstellung durch IoT Hub Device Provisioning Service zu verhindern
 services: iot-dps
-keywords: 
-author: JimacoMS
-ms.author: v-jamebr
-ms.date: 12/22/2017
+keywords: ''
+author: bryanla
+ms.author: v-jamebr;bryanla
+ms.date: 04/05/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 12aebf3a56aa7469a765ab6fc67aa65b254db71a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 50074eaecacf603d2bc6170183fd632b4a1ab2d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="revoke-device-access-to-your-provisioning-service-in-the-azure-portal"></a>Widerrufen des Gerätezugriffs auf Ihren Bereitstellungsdienst im Azure-Portal
+# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Aufheben der Registrierung eines Geräts bei IoT Hub Device Provisioning Service
 
-Für bedeutende Systeme wie IoT-Lösungen ist eine ordnungsgemäße Verwaltung der Geräteanmeldeinformationen von entscheidender Bedeutung. Für derartige Systeme hat es sich bewährt, einen klaren Plan für das Widerrufen des Gerätezugriffs zu besitzen, für den Fall, dass die Anmeldeinformationen – beispielsweise ein SAS-Token (Shared Access Signature) oder ein X.509-Zertifikat – gefährdet sind. In diesem Artikel wird beschrieben, wie beim Bereitstellungsschritt der Gerätezugriff widerrufen wird.
+Für bedeutende Systeme wie IoT-Lösungen ist eine ordnungsgemäße Verwaltung der Geräteanmeldeinformationen von entscheidender Bedeutung. Für derartige Systeme hat es sich bewährt, einen klaren Plan für das Widerrufen des Gerätezugriffs zu besitzen, für den Fall, dass die Anmeldeinformationen – beispielsweise ein SAS-Token (Shared Access Signature) oder ein X.509-Zertifikat – gefährdet sind. 
 
-Weitere Informationen zum Widerrufen des Gerätezugriffs auf einen IoT Hub nach der Gerätebereitstellung finden Sie unter [Deaktivieren von Geräten](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices).
+Die Registrierung eines Geräts beim Device Provisioning-Dienst ermöglicht die [automatische Bereitstellung](concepts-auto-provisioning.md) des Geräts. Ein bereitgestelltes Gerät wurde bei IoT Hub registriert und kann seinen anfänglichen [Gerätezwillingsstatus](~/articles/iot-hub/iot-hub-devguide-device-twins.md) erhalten und mit dem Melden von Telemetriedaten beginnen. In diesem Artikel erfahren Sie, wie Sie die Registrierung eines Geräts bei Ihrer Bereitstellungsdienstinstanz aufheben und so die weitere Bereitstellung des Geräts verhindern.
 
 > [!NOTE] 
 > Achten Sie auf die Wiederholungsrichtlinie von Geräten, für die Sie den Zugriff widerrufen. Ein Gerät, das beispielsweise eine unbegrenzte Wiederholungsrichtlinie aufweist, führt kontinuierlich eine Registrierung beim Bereitstellungsdienst aus. Hierbei werden Dienstressourcen verbraucht, was sich möglicherweise auf die Leistung auswirkt.
@@ -37,10 +37,10 @@ So fügen Sie das Gerät durch Deaktivieren des Registrierungseintrags vorüberg
 2. Wählen Sie in der Liste der Ressourcen den Bereitstellungsdienst aus, für den Sie Ihr Gerät zur Blacklist hinzufügen möchten.
 3. Wählen Sie in Ihrem Bereitstellungsdienst **Registrierungen verwalten** und dann die Registerkarte **Individuelle Registrierungen** aus.
 4. Wählen Sie den Eintrag für das Gerät aus, das zur Blacklist hinzugefügt werden soll. 
-5. Wählen Sie **Deaktivieren** für den Umschalter **Eintrag aktivieren** und dann **Speichern** aus.  
+5. Scrollen Sie ganz nach unten, legen Sie den Umschalter **Eintrag aktivieren** auf **Deaktivieren** fest, und klicken Sie anschließend auf **Speichern**.  
 
-   ![Deaktivieren eines Eintrags für eine individuelle Registrierung im Portal](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
-    
+   [![Deaktivieren eines Eintrags für eine individuelle Registrierung im Portal](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+
 So fügen Sie das Gerät durch Löschen des jeweiligen Registrierungseintrags dauerhaft zur Blacklist hinzu
 
 1. Melden Sie sich beim Azure-Portal an, und wählen Sie im linken Menü **Alle Ressourcen** aus.
@@ -64,9 +64,8 @@ So fügen Sie das Zertifikat durch Deaktivieren der Registrierungsgruppe vorübe
 1. Melden Sie sich beim Azure-Portal an, und wählen Sie im linken Menü **Alle Ressourcen** aus.
 2. Wählen Sie in der Liste der Ressourcen den Bereitstellungsdienst aus, für den Sie das Signaturzertifikat zur Blacklist hinzufügen möchten.
 3. Wählen Sie in Ihrem Bereitstellungsdienst **Registrierungen verwalten** und dann die Registerkarte **Registrierungsgruppen** aus.
-4. Wählen Sie die Registrierungsgruppe für das Zertifikat aus, das zur Blacklist hinzugefügt werden soll.
-5. Wählen Sie im Registrierungsgruppeneintrag **Gruppe bearbeiten** aus.
-6. Wählen Sie **Deaktivieren** für den Umschalter **Eintrag aktivieren** und dann **Speichern** aus.  
+4. Wählen Sie die Registrierungsgruppe aus, die das Zertifikat verwendet, das zur Blacklist hinzugefügt werden soll.
+5. Wählen Sie **Deaktivieren** für den Umschalter **Eintrag aktivieren** und dann **Speichern** aus.  
 
    ![Deaktivieren des Eintrags für die Registrierungsgruppe im Portal](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
@@ -96,12 +95,15 @@ Um ein einzelnes Gerät in einer Registrierungsgruppe zur Blacklist hinzuzufüge
 2. Wählen Sie in der Liste der Ressourcen den Bereitstellungsdienst aus, der die Registrierungsgruppe für das zur Blacklist hinzuzufügende Gerät enthält.
 3. Wählen Sie in Ihrem Bereitstellungsdienst **Registrierungen verwalten** und dann die Registerkarte **Individuelle Registrierungen** aus.
 4. Klicken Sie ganz oben auf die Schaltfläche **Hinzufügen**. 
-5. Wählen Sie als Sicherheitsmechanismus für das Gerät **X.509** aus, und laden Sie das Gerätezertifikat hoch. Dies ist das signierte auf dem Gerät installierte Endeinheitszertifikat. Das Gerät verwendet diese zum Generieren von Zertifikaten für die Authentifizierung.
+5. Wählen Sie als Nachweismechanismus für das Gerät **X.509** aus, und laden Sie das Gerätezertifikat hoch. Dies ist das signierte auf dem Gerät installierte Endeinheitszertifikat. Das Gerät verwendet diese zum Generieren von Zertifikaten für die Authentifizierung.
 6. Geben Sie unter **IoT Hub-Geräte-ID** die ID für das Gerät ein. 
 7. Wählen Sie **Deaktivieren** für den Umschalter **Eintrag aktivieren** und dann **Speichern** aus. 
 
-   ![Deaktivieren eines Eintrags für eine individuelle Registrierung im Portal](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
+    [![Deaktivieren des Geräts über die Gruppenregistrierung im Portal mithilfe eines deaktivierten individuellen Registrierungseintrags](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
 Nach erfolgreicher Erstellung Ihrer Registrierung sollte Ihr Gerät auf der Registerkarte **Individuelle Registrierungen** angezeigt werden.
 
+## <a name="next-steps"></a>Nächste Schritte
+
+Die Aufhebung der Registrierung ist auch Teil der Bereitstellungsaufhebung. Zur Aufhebung der Bereitstellung eines Geräts muss sowohl die Registrierung beim Bereitstellungsdienst als auch die Registrierung bei IoT Hub aufgehoben werden. Informationen zum gesamten Prozess finden Sie unter [Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden](how-to-unprovision-devices.md). 
 

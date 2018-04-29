@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.openlocfilehash: 93397e5370863b11b7c153bbf234d6bfdd808718
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/16/2018
+ms.openlocfilehash: 63648dfe02a0b5ed00d0a7206a6aabbe200f94c4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Durchführen von Standpunktanalysen mit Azure Stream Analytics und Azure Machine Learning
 Dieser Artikel beschreibt, wie Sie schnell einen einfachen Azure Stream Analytics-Auftrag mit Azure Machine Learning-Integration einrichten. Sie nutzen ein Stimmungsanalysemodell für Machine Learning aus dem Cortana Intelligence-Katalog, um Streamingtextdaten zu analysieren und den Stimmungswert in Echtzeit zu ermitteln. Über die Cortana Intelligence Suite können Sie diese Aufgabe ausführen, ohne sich um die Komplexität der Erstellung eines Analysemodells für die Stimmung kümmern zu müssen.
@@ -25,7 +25,7 @@ Sie können das in diesem Artikel Gelernte u.a. in folgenden Szenarien anwenden:
 * Bewerten von Kommentaren in Foren sowie zu Blogs und Videos 
 * Für viele andere Szenarien zur Vorhersage in Echtzeit
 
-In einem realen Szenario erhalten Sie die Daten direkt aus einem Datenstrom von Twitter. Um das Tutorial zu vereinfachen, haben wir es so verfasst, dass der Stream Analytics-Auftrag Tweets aus einer CSV-Datei in Azure Blob Storage abruft. Sie können eine eigene CSV-Datei erstellen oder eine CSV-Beispieldatei verwenden, wie in der folgenden Abbildung gezeigt:
+In einem realen Szenario erhalten Sie die Daten direkt aus einem Datenstrom von Twitter. Um das Tutorial zu vereinfachen, wurde es so verfasst, dass der Stream Analytics-Auftrag Tweets aus einer CSV-Datei in Azure Blob Storage abruft. Sie können eine eigene CSV-Datei erstellen oder eine CSV-Beispieldatei verwenden, wie in der folgenden Abbildung gezeigt:
 
 ![Beispiel-Tweets in einer CSV-Datei](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
@@ -39,7 +39,7 @@ Die folgende Abbildung veranschaulicht diese Konfiguration. Um ein realistischer
 Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
 * Ein aktives Azure-Abonnement.
-* Eine CSV-Datei mit einigen Daten. Sie können die oben gezeigte Datei aus [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv) herunterladen oder selbst eine Datei erstellen. In diesem Artikel wird davon ausgegangen, dass Sie die Datei von GitHub verwenden.
+* Eine CSV-Datei mit einigen Daten. Sie können die oben gezeigte Datei aus [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv) herunterladen oder selbst eine Datei erstellen. In diesem Artikel wird davon ausgegangen, dass Sie die Datei aus GitHub verwenden.
 
 Im Allgemeinen führen Sie mit den Aufgaben in diesem Artikel folgende Aktionen aus:
 
@@ -105,7 +105,7 @@ Nachdem sich die Beispieldaten in einem Blob befinden, können Sie das Standpunk
 
    ![Testergebnisse in Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
-7. Klicken Sie in der Spalte **Apps** auf den Link **Excel 2010 or earlier workbook** (Arbeitsmappe für Excel 2010 oder früher), um eine Excel-Arbeitsmappe herunterzuladen. Die Arbeitsmappe enthält einen API-Schlüssel und die URL, die Sie später zum Einrichten des Stream Analytics-Auftrags benötigen.
+7. Klicken Sie in der Spalte **Apps** auf den Link **Excel 2010 or earlier workbook** (Arbeitsmappe für Excel 2010 oder früher), um eine Excel-Arbeitsmappe herunterzuladen. Die Arbeitsmappe enthält den API-Schlüssel und die URL, die Sie später zum Einrichten des Stream Analytics-Auftrags benötigen.
 
     ![Stream Analytics und Machine Learning auf einen Blick](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
@@ -157,7 +157,7 @@ Der Auftrag sendet die Ergebnisse an denselben Blobspeicher, aus dem er die Eing
 
    |Feld  |Wert  |
    |---------|---------|
-   |**Ausgabealias** | Verwenden Sie den Namen `datainput`, und wählen Sie die Option **Select blob storage from your subscription** (Blobspeicher aus Ihrem Abonnement wählen).       |
+   |**Ausgabealias** | Verwenden Sie den Namen `datamloutput`, und wählen Sie die Option **Select blob storage from your subscription** (Blobspeicher aus Ihrem Abonnement wählen).       |
    |**Speicherkonto**  |  Wählen Sie das zuvor erstellte Speicherkonto aus.  |
    |**Container**  | Wählen Sie den zuvor erstellten Container (`azuresamldemoblob`) aus.        |
    |**Ereignisserialisierungsformat**  |  Wählen Sie **CSV**.       |
@@ -200,12 +200,13 @@ Stream Analytics verwendet eine deklarative, SQL-basierte Abfrage zur Analyse un
 
     ```
     WITH sentiment AS (  
-    SELECT text, sentiment(text) as result from datainput  
+    SELECT text, sentiment(text) as result 
+    FROM datainput  
     )  
 
-    Select text, result.[Score]  
-    Into datamloutput
-    From sentiment  
+    SELECT text, result.[Score]  
+    INTO datamloutput
+    FROM sentiment  
     ```    
 
     Die Abfrage ruft die Funktion auf, die Sie zuvor erstellt haben (`sentiment`), um für jeden Tweet in der Eingabe eine Standpunktanalyse durchzuführen. 

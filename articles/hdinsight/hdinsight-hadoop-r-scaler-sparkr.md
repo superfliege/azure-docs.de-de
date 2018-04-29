@@ -2,7 +2,7 @@
 title: Verwenden von ScaleR und SparkR mit Azure HDInsight | Microsoft-Dokumentation
 description: Verwenden von ScaleR und SparkR mit R Server und HDInsight
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -10,37 +10,37 @@ tags: azure-portal
 ms.assetid: 5a76f897-02e8-4437-8f2b-4fb12225854a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: b84c365defbaadbc83c86e6e387c15a63e0f17ce
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4306f265bf7f52f9bc307def2256dd62e94e004f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinieren von ScaleR und SparkR in HDInsight
 
-In diesem Artikel wird gezeigt, wie Verspätungen bei Flugankünften mithilfe eines logistischen **ScaleR**-Regressionsmodells aus Daten von Flugverspätungen durch eine Verknüpfung mit Wetterdaten mit **SparkR** vorhergesagt werden. Dieses Szenario veranschaulicht die Fähigkeiten von ScaleR zur Datenbearbeitung in Spark in Kombination mit Microsoft R Server für Analysezwecke. Durch die Kombination dieser Technologien können Sie die neuesten Funktionen bei der verteilten Verarbeitung anwenden.
+In diesem Dokument wird erläutert, wie Flugverspätungen mithilfe eines logistischen **ScaleR**-Regressionsmodells vorhergesagt werden können. Das Beispiel nutzt Flugverspätungs- und Wetterdaten, die mit **SparkR** verknüpft werden.
 
-Obwohl beide Pakete im Spark-Ausführungsmodul von Hadoop ausgeführt werden, sind sie für die Freigabe von Daten im Arbeitsspeicher gesperrt, das sie jeweils ihre eigenen Spark-Sitzungen erfordern. Bis dieses Problem in einer der nächsten Versionen von R Server behoben wird, besteht die Problemumgehung darin, nicht überlappende Spark-Sitzungen zu verwenden und Daten mithilfe von Zwischendateien auszutauschen. Die folgenden Anweisungen zeigen, dass diese Anforderungen einfach zu erfüllen sind.
+Obwohl beide Pakete in der Spark-Ausführungs-Engine von Hadoop ausgeführt werden, sind sie für die Freigabe von Daten im Arbeitsspeicher gesperrt, das sie jeweils ihre eigenen Spark-Sitzungen erfordern. Bis dieses Problem in einer der nächsten Versionen von R Server behoben wird, besteht die Problemumgehung darin, nicht überlappende Spark-Sitzungen zu verwenden und Daten mithilfe von Zwischendateien auszutauschen. Die folgenden Anweisungen zeigen, dass diese Anforderungen einfach zu erfüllen sind.
 
-Wir verwenden ein Beispiel, das zuerst im Rahmen eines Vortrags bei der Strata 2016 von Mario Inchiosa und Roni Burd vorgestellt wurde. Es ist auch über das Webinar [Building a Scalable Data Science Platform with R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio) (Erstellen einer skalierbaren Data Science-Plattform mit R) verfügbar. Im Beispiel wird SparkR verwendet, um das bekannte DataSet mit Ankunftsverspätungen von Fluglinien mit Wetterdaten an den Abflug- und Ankunftsflughäfen zu verknüpfen. Die verknüpften Daten werden dann als Eingabe für ein logistisches ScaleR-Regressionsmodell verwendet, um die Verspätungen bei Flugankünften vorherzusagen.
+Dieses Beispiel wurde ursprünglich bei einem Vortrag von Mario Inchiosa und Roni Burd auf der Strata 2016 vorgestellt. Sie finden diesen Vortrag unter [Building a Scalable Data Science Platform with R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
-Der beschriebene Code wurde ursprünglich für R Server unter Spark in einem HDInsight-Cluster in Azure geschrieben. Das Konzept der Kombination von SparkR und ScaleR in einem Skript gilt jedoch auch im Kontext lokaler Umgebungen. Im Folgenden setzen wir einen mittleren Wissensstand in Bezug auf R und die [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction)-Bibliothek von R Server voraus. Sie erhalten während des Szenarios auch eine Einführung in [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html).
+Der Code wurde ursprünglich für R Server unter Spark in einem HDInsight-Cluster in Azure geschrieben. Das Konzept der Kombination von SparkR und ScaleR in einem Skript gilt jedoch auch im Kontext lokaler Umgebungen. 
+
+Für die Schritte in diesem Dokument setzen wir einen mittleren Wissensstand in Bezug auf R und die [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction)-Bibliothek von R Server voraus. Sie erhalten im Verlauf des Szenarios auch eine Einführung in [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html).
 
 ## <a name="the-airline-and-weather-datasets"></a>Datasets mit Fluglinien- und Wetterdaten
 
-Das öffentliche Fluglinien-DataSet **AirOnTime08to12CSV** enthält Informationen zu Ankunfts- und Abflugdaten für alle kommerziellen Flüge in den USA für den Zeitraum Oktober 1987 bis Dezember 2012. Dies ist ein großes Dataset mit insgesamt fast 150 Millionen Datensätzen. Im entpackten Zustand ist es knapp 4 GB groß. Es steht in den [Archiven der US-Regierung](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236) zur Verfügung. Außerdem wird es als komfortable ZIP-Datei („AirOnTimeCSV.zip“) mit 303 separaten CSV-Monatsdateien im [DataSet-Repository von Revolution Analytics](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/) angeboten.
+Die Flugdaten stehen in den [Archiven der US-Regierung](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236) zur Verfügung. Sie sind auch in der ZIP-Datei [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip) verfügbar.
 
-Um die Auswirkungen des Wetters auf Verspätungen von Flügen ermitteln zu können, benötigen wir zusätzlich die Wetterdaten der einzelnen Flughäfen. Diese können als ZIP-Dateien mit unformatiertem Inhalt für den jeweiligen Monat aus dem [Repository der National Oceanic and Atmospheric Administration](http://www.ncdc.noaa.gov/orders/qclcd/) heruntergeladen werden. Für dieses Beispiel haben wir die Wetterdaten für den Zeitraum Mai 2007 bis Dezember 2012 abgerufen und die nach Stunden unterteilten Datendateien in den 68 einzelnen ZIP-Dateien für die Monate verwendet. Die ZIP-Dateien für die einzelnen Monate enthalten auch eine Zuordnung („JJJJMMstation.txt“) für die ID der Wetterstation (WBAN), den jeweils zugeordneten Flughafen (CallSign) und den UTC-Zeitzonenversatz des Flughafens (TimeZone). All diese Daten werden beim Verknüpfen der Verspätungsdaten der Fluglinien mit den Wetterdaten benötigt.
+Die Wetterdaten können als ZIP-Dateien mit unformatiertem Inhalt für den jeweiligen Monat aus dem [Repository der National Oceanic and Atmospheric Administration](http://www.ncdc.noaa.gov/orders/qclcd/) heruntergeladen werden. Laden Sie in diesem Beispiel die Daten für Mai 2007 bis Dezember 2012 herunter. Verwenden Sie die stündlichen Datendateien und die Datei `YYYYMMMstation.txt` in jedem der ZIP-Archive. 
 
 ## <a name="setting-up-the-spark-environment"></a>Einrichten der Spark-Umgebung
 
-Der erste Schritt ist das Einrichten der Spark-Umgebung. Wir beginnen, indem wir auf das Verzeichnis mit unseren Eingabedatenverzeichnissen verweisen, einen Spark-Rechenkontext erstellen und eine Protokollierungsfunktion für die Protokollierung zu Informationszwecken an der Konsole erstellen:
+Richten Sie mithilfe des folgenden Codes die Spark-Umgebung ein:
 
 ```
 workDir        <- '~'  
@@ -85,7 +85,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Als Nächstes fügen wir „Spark_Home“ dem Suchpfad für R-Pakete hinzu, damit wir SparkR verwenden können, und initialisieren eine SparkR-Sitzung:
+Fügen Sie als Nächstes dem Suchpfad für R-Pakete `Spark_Home` hinzu. Durch Hinzufügen dieses Elements zum Suchpfad können Sie SparkR verwenden und eine SparkR-Sitzung initialisieren:
 
 ```
 #..setup for use of SparkR  
@@ -108,7 +108,7 @@ sqlContext <- sparkRSQL.init(sc)
 
 ## <a name="preparing-the-weather-data"></a>Vorbereiten der Wetterdaten
 
-Für die Vorbereitung der Wetterdaten unterteilen wir diese in die Spalten, die für die Modellierung erforderlich sind: 
+Zur Vorbereitung der Wetterdaten unterteilen Sie diese in die Spalten, die für die Modellierung erforderlich sind: 
 
 - „Visibility“
 - „DryBulbCelsius“
@@ -117,17 +117,9 @@ Für die Vorbereitung der Wetterdaten unterteilen wir diese in die Spalten, die 
 - „WindSpeed“
 - „Altimeter“
 
-Anschließend fügen wir einen der Wetterstation zugeordneten Flughafencode ein und konvertieren die Messwerte von der Ortszeit in UTC.
+Fügen Sie anschließend einen der Wetterstation zugeordneten Flughafencode ein, und konvertieren Sie die Messwerte von der Ortszeit in UTC.
 
-Wir beginnen, indem wir eine Datei zum Zuordnen der Wetterstationsinformationen (WBAN) zu einem Flughafencode erstellen. Wir könnten diese Korrelation aus der Zuordnungsdatei ableiten, die in den Wetterdaten enthalten ist. Dazu ordnen wir das Feld *CallSign* (z.B. LAX) in der Wetterdatendatei dem Feld *Origin* in den Flugliniendaten zu. Es gibt jedoch bereits eine andere Zuordnung, die wir verwenden können und die *WBAN* der *AirportID* (z.B. 12892 für LAX) zuordnet und die *TimeZone* enthält, die in der CSV-Datei „wban-to-airport-id-tz.csv“ gespeichert wurde. Beispiel:
-
-| AirportID | WBAN | TimeZone
-|-----------|------|---------
-| 10685 | 54831 | -6
-| 14871 | 24232 | -8
-| .. | .. | ..
-
-Der unten angegebene Code bewirkt Folgendes: Alle Dateien mit den unformatierten stündlichen Wetterdaten werden gelesen, entsprechende Teilmengen werden den erforderlichen Spalten hinzugefügt, die Zuordnungsdatei mit den Wetterdaten wird verknüpft, Datum und Uhrzeit von Messungen werden an UTC angepasst, und anschließend wird eine neue Version der Datei geschrieben:
+Beginnen Sie, indem Sie eine Datei zum Zuordnen der Wetterstationsinformationen (WBAN) zu einem Flughafencode erstellen. Der unten angegebene Code bewirkt Folgendes: Alle Dateien mit den unformatierten stündlichen Wetterdaten werden gelesen, entsprechende Teilmengen werden den erforderlichen Spalten hinzugefügt, die Zuordnungsdatei mit den Wetterdaten wird verknüpft, Datum und Uhrzeit von Messungen werden an UTC angepasst, und anschließend wird eine neue Version der Datei geschrieben:
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
