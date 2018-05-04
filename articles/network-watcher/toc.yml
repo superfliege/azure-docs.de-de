@@ -17,6 +17,12 @@
   items:
     - name: Diagnostizieren eines VM-Routingproblems
       href: diagnose-vm-network-routing-problem.md
+    - name: Überwachen der Kommunikation zwischen virtuellen Computern
+      href: connection-monitor.md
+    - name: Diagnostizieren eines Kommunikationsproblems zwischen Netzwerken
+      href: diagnose-communication-problem-between-networks.md
+    - name: Protokollieren des VM-Netzwerkdatenverkehrs
+      href: network-watcher-nsg-flow-logging-portal.md
 - name: Konzepte
   items:
     - name: Diagnostizieren von Problemen mit dem Filter für VM-Netzwerkdatenverkehr
@@ -87,14 +93,10 @@
                   href: network-watcher-intrusion-detection-open-source-tools.md
                 - name: Visualisieren von Netzwerk-Datenverkehrsmustern mithilfe von Open Source-Tools
                   href: network-watcher-using-open-source-tools.md
-    - name: Überwachen von Netzwerkverbindungen
-      href: connection-monitor.md
     - name: Arbeiten mit Netzwerksicherheitsgruppen
       items:
         - name: Konfigurieren von NSG-Datenflussprotokollen
           items:
-            - name: Azure-Portal
-              href: network-watcher-nsg-flow-logging-portal.md
             - name: Azure PowerShell
               href: network-watcher-nsg-flow-logging-powershell.md
             - name: Azure-Befehlszeilenschnittstelle
@@ -136,8 +138,6 @@
       items:
         - name: Problembehandlung
           items:
-            - name: Azure-Portal
-              href: network-watcher-troubleshoot-manage-portal.md
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md
             - name: Azure-Befehlszeilenschnittstelle

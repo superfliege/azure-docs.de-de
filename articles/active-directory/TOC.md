@@ -53,6 +53,7 @@
 #### [Einladungs-E-Mail](active-directory-b2b-invitation-email.md)
 #### [Einlösen der Einladung](active-directory-b2b-redemption-experience.md)
 #### [Hinzufügen von B2B-Benutzern ohne Einladung](active-directory-b2b-add-user-without-invite.md)
+#### [Zulassen oder Blockieren von Einladungen](active-directory-b2b-allow-deny-list.md)
 #### [Bedingter Zugriff für B2B](active-directory-b2b-mfa-instructions.md)
 #### [B2B-Freigaberichtlinien](active-directory-b2b-delegate-invitations.md)
 #### [Hinzufügen eines B2B-Benutzers zu einer Rolle](active-directory-b2b-add-guest-to-role.md)
@@ -273,6 +274,7 @@
 ### [Verwaltungseinheiten](active-directory-administrative-units-management.md)
 ### [Konfigurieren der Tokengültigkeitsdauer](active-directory-configurable-token-lifetimes.md)
 ### [Verwalten von Administratorkonten mit Notfallzugriff](active-directory-admin-manage-emergency-access-accounts.md)
+### [Sichern von privilegierten Rollen](admin-roles-best-practices.md)
 
 ## Zugriffsüberprüfungen
 ### [Übersicht über Zugriffsüberprüfungen](active-directory-azure-ad-controls-access-reviews-overview.md)

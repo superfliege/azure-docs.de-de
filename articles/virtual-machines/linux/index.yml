@@ -3,7 +3,7 @@ documentType: LandingData
 title: Virtuelle Linux-Computer
 metadata:
   document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
-  title: "Dokumentation für Azure Virtual Machines (Linux) – Tutorials, API-Referenz"
+  title: Dokumentation für Azure Virtual Machines (Linux) – Tutorials, API-Referenz
   meta.description: Learn how to create a virtual machine using the Linux distribution of your choice. Documentation shows different ways to create VM templates.
   services: virtual-machines\linux
   author: czeumault
@@ -14,13 +14,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 41531cf8ea7d4f94caafac0fd2ecaa1902eb8988
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.openlocfilehash: 374e6a75d9ddfb5765418b1044dc525f14f86f67
+  ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 05/03/2018
 abstract:
-  description: "Azure Linux Virtual Machines bietet eine auf Red Hat, Ubuntu oder der von Ihnen gewünschten Linux-Verteilung basierende sichere, virtuelle On-Demand-Infrastruktur mit umfangreicher Skalierung. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie virtuelle Linux-Computer erstellen, konfigurieren, verwalten, aktualisieren und skalieren."
+  description: Azure Linux Virtual Machines bietet eine auf Red Hat, Ubuntu oder der von Ihnen gewünschten Linux-Verteilung basierende sichere, virtuelle On-Demand-Infrastruktur mit umfangreicher Skalierung. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie virtuelle Linux-Computer erstellen, konfigurieren, verwalten, aktualisieren und skalieren.
   aside:
     image:
       alt: 
@@ -31,7 +31,7 @@ abstract:
     href: https://azure.microsoft.com/resources/videos/create-linux-virtual-machine/
     width: 250
 sections:
-- title: "Fünfminütige Schnellstarts"
+- title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
     text: 'Erfahren Sie, wie Sie einen NGINX-Webserver auf einem virtuellen Computer unter Ubuntu bereitstellen:'
@@ -50,23 +50,24 @@ sections:
         src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
       text: Azure PowerShell
       href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-- title: "Schritt-für-Schritt-Tutorials"
+- title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
-    text: Informationen zum Bereitstellen, Verwalten und Skalieren von virtuellen Linux-Computern in Azure
+    text: Enthält Informationen dazu, wie Sie virtuelle Linux-Computer in Azure bereitstellen, verwalten und skalieren.
   - type: list
     style: ordered
     items:
     - html: <a href="/azure/virtual-machines/linux/tutorial-manage-vm">Erstellen und Verwalten von virtuellen Linux-Computern</a>
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-manage-disks\">Erstellen und Verwalten von VM-Datenträgern</a></li>"
+    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-disks">Erstellen und Verwalten von VM-Datenträgern</a></li>
     - html: <a href="/azure/virtual-machines/linux/tutorial-automate-vm-deployment">Automatisieren der VM-Konfiguration</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-custom-images">Erstellen von benutzerdefinierten VM-Images</a>
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-availability-sets\">Erstellen eines hoch verfügbaren virtuellen Computers</a>"
+    - html: <a href="/azure/virtual-machines/linux/tutorial-availability-sets">Erstellen eines hoch verfügbaren virtuellen Computers</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-create-vmss">Erstellen einer VM-Skalierungsgruppe</a>
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-load-balancer\">Lastenausgleich für virtuelle Computer</a>"
+    - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">Lastenausgleich für virtuelle Computer</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">Verwalten virtueller Computer und virtueller Netzwerke</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">Sichern virtueller Computer</a>
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-monitoring\">Überwachen und Aktualisieren von virtuellen Computern</a>"
+    - html: <a href="/azure/virtual-machines/linux/tutorial-govern-resources">Steuern virtueller Computer</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Überwachen und Aktualisieren von virtuellen Computern</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">Verwalten der Sicherheit auf virtuellen Computern</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Erstellen einer CI/CD-Infrastruktur mit Jenkins, Docker und GitHub</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">CI/CD mit Team Services</a>
@@ -88,7 +89,7 @@ sections:
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - title: "Erste Schritte mit IaaS-Überwachung"
+    - title: Erste Schritte mit IaaS-Überwachung
       href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg

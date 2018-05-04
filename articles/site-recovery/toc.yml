@@ -111,6 +111,8 @@
       href: site-recovery-role-based-linked-access-control.md
     - name: Informationen zu Azure Traffic Manager mit Site Recovery
       href: concepts-traffic-manager-with-site-recovery.md
+    - name: Informationen zu ExpressRoute mit Site Recovery
+      href: concepts-expressroute-with-site-recovery.md
     - name: Häufig gestellte Fragen
       href: site-recovery-faq.md
 - name: Anleitungen
@@ -119,12 +121,14 @@
       items:
         - name: Netzwerk
           items:
-            - name: Verwalten von Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer (Vorschauversion)
+            - name: Verwalten von Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer
               href: azure-to-azure-about-networking.md
             - name: Vorbereiten der Netzwerkzuordnung für die Notfallwiederherstellung für virtuelle Azure-Computer
               href: azure-to-azure-network-mapping.md
             - name: Einrichten der IP-Adressierung für Failover
               href: site-recovery-retain-ip-azure-vm-failover.md
+            - name: ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
+              href: azure-vm-disaster-recovery-with-expressroute.md
         - name: Notfallwiederherstellung
           items:
             - name: Notfallwiederherstellung von virtuellen Azure-Computern nach der Migration zu Azure
@@ -141,6 +145,12 @@
           items:
             - name: Problembehandlung für die Replikation von Azure zu Azure
               href: azure-to-azure-troubleshoot-errors.md
+            - name: Problembehandlung für die Azure Site Recovery-Erweiterung
+              href: site-recovery-extension-troubleshoot.md
+        - name: Verwalten
+          items:
+            - name: Automatische Aktualisierung der Mobility Service-Erweiterung
+              href: azure-to-azure-autoupdate.md
     - name: VMware/physisch zu Azure
       items:
         - name: Netzwerk

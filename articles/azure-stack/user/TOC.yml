@@ -21,8 +21,12 @@
       href: azure-stack-quick-create-vm-linux-cli.md
 - name: Tutorials
   items:
-    - name: Bereitstellen von Apps für Azure und Azure Stack
+    - name: Bereitstellen von Apps in Azure und Azure Stack
       href: azure-stack-solution-pipeline.md
+    - name: Konfigurieren einer Hybrid Cloud-Identität
+      href: azure-stack-solution-hybrid-identity.md
+    - name: Konfigurieren der Hybrid Cloud-Konnektivität
+      href: azure-stack-solution-hybrid-connectivity.md
 - name: Anleitungen
   items:
     - name: Verwenden des Portals für Azure Stack

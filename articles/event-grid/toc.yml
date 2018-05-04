@@ -59,6 +59,8 @@
       href: monitor-event-delivery.md
     - name: Abfragen von Ereignisabonnements
       href: query-event-subscriptions.md
+    - name: Verwenden des CloudEvents-Schemas
+      href: cloudevents-schema.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

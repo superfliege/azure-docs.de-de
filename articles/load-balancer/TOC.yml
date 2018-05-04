@@ -22,6 +22,8 @@
       href: powershell-samples.md
 - name: Tutorials
   items:
+    - name: Vornehmen eines Lastausgleichs für den internen eingehenden Datenverkehr virtueller Computer
+      href: tutorial-load-balancer-basic-internal-portal.md
     - name: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer bestimmten Verfügbarkeitszone

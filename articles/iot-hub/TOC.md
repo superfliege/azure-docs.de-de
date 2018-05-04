@@ -71,6 +71,7 @@
 #### [Verwalten von Geräteidentitäten](iot-hub-devguide-identity-registry.md)
 #### [Verwalten des Zugriffs auf IoT Hub](iot-hub-devguide-security.md)
 #### [Grundlegendes zu Gerätezwillingen](iot-hub-devguide-device-twins.md)
+#### [Grundlegendes zu Modulzwillingen](iot-hub-devguide-module-twins.md)
 #### [Aufrufen von direkten Methoden auf einem Gerät](iot-hub-devguide-direct-methods.md)
 #### [Planen von Aufträgen auf mehreren Geräten](iot-hub-devguide-jobs.md)
 #### [IoT Hub-Endpunkte](iot-hub-devguide-endpoints.md)
@@ -106,6 +107,9 @@
 #### [.NET-Back-End-/.NET-Gerät](iot-hub-csharp-csharp-twin-getstarted.md)
 #### [Java-Back-End-/Java-Gerät](iot-hub-java-java-twin-getstarted.md)
 #### [Python-Back-End/Python-Gerät](iot-hub-python-twin-getstarted.md)
+### Erste Schritte mit Modulzwillingen
+#### [Portal-Back-End/.NET-Gerät](iot-hub-portal-csharp-module-twin-getstarted.md)
+#### [.NET-Back-End-/.NET-Gerät](iot-hub-csharp-csharp-module-twin-getstarted.md)
 ### Verwenden direkter Methoden
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-direct-methods.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-direct-methods.md)
